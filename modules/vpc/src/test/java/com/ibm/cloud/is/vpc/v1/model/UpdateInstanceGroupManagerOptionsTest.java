@@ -1,0 +1,62 @@
+/*
+ * (C) Copyright IBM Corp. 2020.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ */
+
+package com.ibm.cloud.is.vpc.v1.model;
+
+import com.ibm.cloud.is.vpc.v1.model.UpdateInstanceGroupManagerOptions;
+import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
+
+import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
+import java.io.InputStream;
+
+import java.util.HashMap;
+import java.util.List;
+
+import org.testng.annotations.Test;
+import static org.testng.Assert.*;
+
+/**
+ * Unit test class for the UpdateInstanceGroupManagerOptions model.
+ */
+public class UpdateInstanceGroupManagerOptionsTest {
+  final HashMap<String, InputStream> mockStreamMap = TestUtilities.createMockStreamMap();
+  final List<FileWithMetadata> mockListFileWithMetadata = TestUtilities.creatMockListFileWithMetadata();
+
+  @Test
+  public void testUpdateInstanceGroupManagerOptions() throws Throwable {
+    UpdateInstanceGroupManagerOptions updateInstanceGroupManagerOptionsModel = new UpdateInstanceGroupManagerOptions.Builder()
+      .instanceGroupId("testString")
+      .id("testString")
+      .name("my-instance-group-manager")
+      .managementEnabled(true)
+      .aggregationWindow(Long.valueOf("120"))
+      .cooldown(Long.valueOf("210"))
+      .maxMembershipCount(Long.valueOf("10"))
+      .minMembershipCount(Long.valueOf("10"))
+      .build();
+    assertEquals(updateInstanceGroupManagerOptionsModel.instanceGroupId(), "testString");
+    assertEquals(updateInstanceGroupManagerOptionsModel.id(), "testString");
+    assertEquals(updateInstanceGroupManagerOptionsModel.name(), "my-instance-group-manager");
+    assertEquals(updateInstanceGroupManagerOptionsModel.managementEnabled(), Boolean.valueOf(true));
+    assertEquals(updateInstanceGroupManagerOptionsModel.aggregationWindow(), Long.valueOf("120"));
+    assertEquals(updateInstanceGroupManagerOptionsModel.cooldown(), Long.valueOf("210"));
+    assertEquals(updateInstanceGroupManagerOptionsModel.maxMembershipCount(), Long.valueOf("10"));
+    assertEquals(updateInstanceGroupManagerOptionsModel.minMembershipCount(), Long.valueOf("10"));
+  }
+
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testUpdateInstanceGroupManagerOptionsError() throws Throwable {
+    new UpdateInstanceGroupManagerOptions.Builder().build();
+  }
+
+}

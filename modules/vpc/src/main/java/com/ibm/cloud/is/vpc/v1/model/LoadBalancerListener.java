@@ -1,0 +1,185 @@
+/*
+ * (C) Copyright IBM Corp. 2020.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ */
+package com.ibm.cloud.is.vpc.v1.model;
+
+import java.util.Date;
+import java.util.List;
+
+import com.google.gson.annotations.SerializedName;
+import com.ibm.cloud.sdk.core.service.model.GenericModel;
+
+/**
+ * LoadBalancerListener.
+ */
+public class LoadBalancerListener extends GenericModel {
+
+  /**
+   * The listener protocol. Load balancers in the `network` family support `tcp`. Load balancers in the `application`
+   * family support `tcp`, `http`, and `https`.
+   */
+  public interface Protocol {
+    /** http. */
+    String HTTP = "http";
+    /** https. */
+    String HTTPS = "https";
+    /** tcp. */
+    String TCP = "tcp";
+  }
+
+  /**
+   * The provisioning status of this listener.
+   */
+  public interface ProvisioningStatus {
+    /** active. */
+    String ACTIVE = "active";
+    /** create_pending. */
+    String CREATE_PENDING = "create_pending";
+    /** delete_pending. */
+    String DELETE_PENDING = "delete_pending";
+    /** failed. */
+    String FAILED = "failed";
+    /** maintenance_pending. */
+    String MAINTENANCE_PENDING = "maintenance_pending";
+    /** update_pending. */
+    String UPDATE_PENDING = "update_pending";
+  }
+
+  protected String id;
+  protected String href;
+  @SerializedName("connection_limit")
+  protected Long connectionLimit;
+  protected Long port;
+  protected String protocol;
+  @SerializedName("certificate_instance")
+  protected CertificateInstanceReference certificateInstance;
+  @SerializedName("created_at")
+  protected Date createdAt;
+  @SerializedName("default_pool")
+  protected LoadBalancerPoolReference defaultPool;
+  protected List<LoadBalancerListenerPolicyReference> policies;
+  @SerializedName("provisioning_status")
+  protected String provisioningStatus;
+
+  /**
+   * Gets the id.
+   *
+   * The unique identifier for this load balancer listener.
+   *
+   * @return the id
+   */
+  public String getId() {
+    return id;
+  }
+
+  /**
+   * Gets the href.
+   *
+   * The listener's canonical URL.
+   *
+   * @return the href
+   */
+  public String getHref() {
+    return href;
+  }
+
+  /**
+   * Gets the connectionLimit.
+   *
+   * The connection limit of the listener.
+   *
+   * @return the connectionLimit
+   */
+  public Long getConnectionLimit() {
+    return connectionLimit;
+  }
+
+  /**
+   * Gets the port.
+   *
+   * The listener port number.
+   *
+   * @return the port
+   */
+  public Long getPort() {
+    return port;
+  }
+
+  /**
+   * Gets the protocol.
+   *
+   * The listener protocol. Load balancers in the `network` family support `tcp`. Load balancers in the `application`
+   * family support `tcp`, `http`, and `https`.
+   *
+   * @return the protocol
+   */
+  public String getProtocol() {
+    return protocol;
+  }
+
+  /**
+   * Gets the certificateInstance.
+   *
+   * The certificate instance used for SSL termination. It is applicable only to `https`
+   * protocol.
+   *
+   * @return the certificateInstance
+   */
+  public CertificateInstanceReference getCertificateInstance() {
+    return certificateInstance;
+  }
+
+  /**
+   * Gets the createdAt.
+   *
+   * The date and time that this listener was created.
+   *
+   * @return the createdAt
+   */
+  public Date getCreatedAt() {
+    return createdAt;
+  }
+
+  /**
+   * Gets the defaultPool.
+   *
+   * The default pool associated with the listener.
+   *
+   * @return the defaultPool
+   */
+  public LoadBalancerPoolReference getDefaultPool() {
+    return defaultPool;
+  }
+
+  /**
+   * Gets the policies.
+   *
+   * The list of policies of this listener.
+   *
+   * @return the policies
+   */
+  public List<LoadBalancerListenerPolicyReference> getPolicies() {
+    return policies;
+  }
+
+  /**
+   * Gets the provisioningStatus.
+   *
+   * The provisioning status of this listener.
+   *
+   * @return the provisioningStatus
+   */
+  public String getProvisioningStatus() {
+    return provisioningStatus;
+  }
+}
+

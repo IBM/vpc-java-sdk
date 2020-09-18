@@ -1,0 +1,62 @@
+/*
+ * (C) Copyright IBM Corp. 2020.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ */
+
+package com.ibm.cloud.is.vpc.v1.model;
+
+import com.ibm.cloud.is.vpc.v1.model.UpdateLoadBalancerListenerPolicyRuleOptions;
+import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
+
+import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
+import java.io.InputStream;
+
+import java.util.HashMap;
+import java.util.List;
+
+import org.testng.annotations.Test;
+import static org.testng.Assert.*;
+
+/**
+ * Unit test class for the UpdateLoadBalancerListenerPolicyRuleOptions model.
+ */
+public class UpdateLoadBalancerListenerPolicyRuleOptionsTest {
+  final HashMap<String, InputStream> mockStreamMap = TestUtilities.createMockStreamMap();
+  final List<FileWithMetadata> mockListFileWithMetadata = TestUtilities.creatMockListFileWithMetadata();
+
+  @Test
+  public void testUpdateLoadBalancerListenerPolicyRuleOptions() throws Throwable {
+    UpdateLoadBalancerListenerPolicyRuleOptions updateLoadBalancerListenerPolicyRuleOptionsModel = new UpdateLoadBalancerListenerPolicyRuleOptions.Builder()
+      .loadBalancerId("testString")
+      .listenerId("testString")
+      .policyId("testString")
+      .id("testString")
+      .condition("contains")
+      .field("MY-APP-HEADER")
+      .type("header")
+      .value("testString")
+      .build();
+    assertEquals(updateLoadBalancerListenerPolicyRuleOptionsModel.loadBalancerId(), "testString");
+    assertEquals(updateLoadBalancerListenerPolicyRuleOptionsModel.listenerId(), "testString");
+    assertEquals(updateLoadBalancerListenerPolicyRuleOptionsModel.policyId(), "testString");
+    assertEquals(updateLoadBalancerListenerPolicyRuleOptionsModel.id(), "testString");
+    assertEquals(updateLoadBalancerListenerPolicyRuleOptionsModel.condition(), "contains");
+    assertEquals(updateLoadBalancerListenerPolicyRuleOptionsModel.field(), "MY-APP-HEADER");
+    assertEquals(updateLoadBalancerListenerPolicyRuleOptionsModel.type(), "header");
+    assertEquals(updateLoadBalancerListenerPolicyRuleOptionsModel.value(), "testString");
+  }
+
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testUpdateLoadBalancerListenerPolicyRuleOptionsError() throws Throwable {
+    new UpdateLoadBalancerListenerPolicyRuleOptions.Builder().build();
+  }
+
+}

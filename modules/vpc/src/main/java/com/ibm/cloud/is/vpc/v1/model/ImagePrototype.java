@@ -1,0 +1,84 @@
+/*
+ * (C) Copyright IBM Corp. 2020.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ */
+package com.ibm.cloud.is.vpc.v1.model;
+
+import com.google.gson.annotations.SerializedName;
+import com.ibm.cloud.sdk.core.service.model.GenericModel;
+
+/**
+ * ImagePrototype.
+ *
+ * Classes which extend this class:
+ * - ImagePrototypeImageByFile
+ */
+public class ImagePrototype extends GenericModel {
+
+  protected String name;
+  @SerializedName("resource_group")
+  protected ResourceGroupIdentity resourceGroup;
+  protected ImageFilePrototype file;
+  @SerializedName("operating_system")
+  protected OperatingSystemIdentity operatingSystem;
+
+  protected ImagePrototype() {
+  }
+
+  /**
+   * Gets the name.
+   *
+   * The unique user-defined name for this image. Names starting with "ibm-" are not allowed. If unspecified, the name
+   * will be a hyphenated list of randomly-selected words.
+   *
+   * @return the name
+   */
+  public String name() {
+    return name;
+  }
+
+  /**
+   * Gets the resourceGroup.
+   *
+   * The resource group to use. If unspecified, the account's [default resource
+   * group](https://cloud.ibm.com/apidocs/resource-manager#introduction) is used.
+   *
+   * @return the resourceGroup
+   */
+  public ResourceGroupIdentity resourceGroup() {
+    return resourceGroup;
+  }
+
+  /**
+   * Gets the file.
+   *
+   * The file from which to create the image.
+   *
+   * @return the file
+   */
+  public ImageFilePrototype file() {
+    return file;
+  }
+
+  /**
+   * Gets the operatingSystem.
+   *
+   * The identity of the [supported operating
+   * system](https://cloud.ibm.com/apidocs/vpc#retrieves-all-operating-systems) included in
+   * this image.
+   *
+   * @return the operatingSystem
+   */
+  public OperatingSystemIdentity operatingSystem() {
+    return operatingSystem;
+  }
+}
+

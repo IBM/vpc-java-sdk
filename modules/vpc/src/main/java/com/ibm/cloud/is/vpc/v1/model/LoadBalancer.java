@@ -1,0 +1,254 @@
+/*
+ * (C) Copyright IBM Corp. 2020.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ */
+package com.ibm.cloud.is.vpc.v1.model;
+
+import java.util.Date;
+import java.util.List;
+
+import com.google.gson.annotations.SerializedName;
+import com.ibm.cloud.sdk.core.service.model.GenericModel;
+
+/**
+ * LoadBalancer.
+ */
+public class LoadBalancer extends GenericModel {
+
+  /**
+   * The operating status of this load balancer.
+   */
+  public interface OperatingStatus {
+    /** offline. */
+    String OFFLINE = "offline";
+    /** online. */
+    String ONLINE = "online";
+  }
+
+  /**
+   * The provisioning status of this load balancer.
+   */
+  public interface ProvisioningStatus {
+    /** active. */
+    String ACTIVE = "active";
+    /** create_pending. */
+    String CREATE_PENDING = "create_pending";
+    /** delete_pending. */
+    String DELETE_PENDING = "delete_pending";
+    /** failed. */
+    String FAILED = "failed";
+    /** maintenance_pending. */
+    String MAINTENANCE_PENDING = "maintenance_pending";
+    /** update_pending. */
+    String UPDATE_PENDING = "update_pending";
+  }
+
+  protected LoadBalancerProfileReference profile;
+  protected String id;
+  protected String crn;
+  protected String href;
+  protected String name;
+  @SerializedName("created_at")
+  protected Date createdAt;
+  protected String hostname;
+  @SerializedName("is_public")
+  protected Boolean isPublic;
+  protected List<LoadBalancerListenerReference> listeners;
+  @SerializedName("operating_status")
+  protected String operatingStatus;
+  protected List<LoadBalancerPoolReference> pools;
+  @SerializedName("private_ips")
+  protected List<IP> privateIps;
+  @SerializedName("provisioning_status")
+  protected String provisioningStatus;
+  @SerializedName("public_ips")
+  protected List<IP> publicIps;
+  @SerializedName("resource_group")
+  protected ResourceGroupReference resourceGroup;
+  protected List<SubnetReference> subnets;
+
+  /**
+   * Gets the profile.
+   *
+   * The profile to use for this load balancer.
+   *
+   * @return the profile
+   */
+  public LoadBalancerProfileReference getProfile() {
+    return profile;
+  }
+
+  /**
+   * Gets the id.
+   *
+   * The unique identifier for this load balancer.
+   *
+   * @return the id
+   */
+  public String getId() {
+    return id;
+  }
+
+  /**
+   * Gets the crn.
+   *
+   * The load balancer's CRN.
+   *
+   * @return the crn
+   */
+  public String getCrn() {
+    return crn;
+  }
+
+  /**
+   * Gets the href.
+   *
+   * The load balancer's canonical URL.
+   *
+   * @return the href
+   */
+  public String getHref() {
+    return href;
+  }
+
+  /**
+   * Gets the name.
+   *
+   * The unique user-defined name for this load balancer.
+   *
+   * @return the name
+   */
+  public String getName() {
+    return name;
+  }
+
+  /**
+   * Gets the createdAt.
+   *
+   * The date and time that this load balancer was created.
+   *
+   * @return the createdAt
+   */
+  public Date getCreatedAt() {
+    return createdAt;
+  }
+
+  /**
+   * Gets the hostname.
+   *
+   * Fully qualified domain name assigned to this load balancer.
+   *
+   * @return the hostname
+   */
+  public String getHostname() {
+    return hostname;
+  }
+
+  /**
+   * Gets the isPublic.
+   *
+   * The type of this load balancer, public or private.
+   *
+   * @return the isPublic
+   */
+  public Boolean isIsPublic() {
+    return isPublic;
+  }
+
+  /**
+   * Gets the listeners.
+   *
+   * The listeners of this load balancer.
+   *
+   * @return the listeners
+   */
+  public List<LoadBalancerListenerReference> getListeners() {
+    return listeners;
+  }
+
+  /**
+   * Gets the operatingStatus.
+   *
+   * The operating status of this load balancer.
+   *
+   * @return the operatingStatus
+   */
+  public String getOperatingStatus() {
+    return operatingStatus;
+  }
+
+  /**
+   * Gets the pools.
+   *
+   * The pools of this load balancer.
+   *
+   * @return the pools
+   */
+  public List<LoadBalancerPoolReference> getPools() {
+    return pools;
+  }
+
+  /**
+   * Gets the privateIps.
+   *
+   * The private IP addresses assigned to this load balancer.
+   *
+   * @return the privateIps
+   */
+  public List<IP> getPrivateIps() {
+    return privateIps;
+  }
+
+  /**
+   * Gets the provisioningStatus.
+   *
+   * The provisioning status of this load balancer.
+   *
+   * @return the provisioningStatus
+   */
+  public String getProvisioningStatus() {
+    return provisioningStatus;
+  }
+
+  /**
+   * Gets the publicIps.
+   *
+   * The public IP addresses assigned to this load balancer. These are applicable only for public load balancers.
+   *
+   * @return the publicIps
+   */
+  public List<IP> getPublicIps() {
+    return publicIps;
+  }
+
+  /**
+   * Gets the resourceGroup.
+   *
+   * The resource group for this load balancer.
+   *
+   * @return the resourceGroup
+   */
+  public ResourceGroupReference getResourceGroup() {
+    return resourceGroup;
+  }
+
+  /**
+   * Gets the subnets.
+   *
+   * The subnets this load balancer is part of.
+   *
+   * @return the subnets
+   */
+  public List<SubnetReference> getSubnets() {
+    return subnets;
+  }
+}
+
