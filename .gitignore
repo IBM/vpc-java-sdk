@@ -43,6 +43,7 @@ hs_err_pid*
 *.env
 
 package-lock.json
+node_modules
 
 # Examples depedency file
 /**/dependency-reduced-pom.xml
