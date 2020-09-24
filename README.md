@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.com/IBM/vpc-java-sdk.svg?branch=master)](https://travis-ci.com/IBM/vpc-java-sdk)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.ibm.cloud/vpc/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.ibm.cloud/vpc)
 [![Javadoc](https://img.shields.io/static/v1?label=javadoc&message=latest&color=blue)](https://ibm.github.io/vpc-java-sdk/docs/latest)
 [![Release](https://img.shields.io/github/v/release/IBM/vpc-java-sdk)](https://github.com/IBM/vpc-java-sdk/releases/latest)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
