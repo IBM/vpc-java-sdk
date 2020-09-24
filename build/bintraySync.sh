@@ -20,6 +20,7 @@ pkgversion=$5
 
 # List of maven artifacts to be sync'd from bintray to maven central"
 package_names="
+com.ibm.cloud:is
 com.ibm.cloud:vpc
 com.ibm.cloud:is-common"
 
