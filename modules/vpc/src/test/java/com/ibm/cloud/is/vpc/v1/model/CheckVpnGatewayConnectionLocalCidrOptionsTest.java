@@ -13,7 +13,7 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
-import com.ibm.cloud.is.vpc.v1.model.CheckVpnGatewayConnectionLocalCidrOptions;
+import com.ibm.cloud.is.vpc.v1.model.CheckVpnGatewayConnectionLocalCIDROptions;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -23,29 +23,29 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
 /**
- * Unit test class for the CheckVpnGatewayConnectionLocalCidrOptions model.
+ * Unit test class for the CheckVpnGatewayConnectionLocalCIDROptions model.
  */
-public class CheckVpnGatewayConnectionLocalCidrOptionsTest {
+public class CheckVpnGatewayConnectionLocalCIDROptionsTest {
   final HashMap<String, InputStream> mockStreamMap = TestUtilities.createMockStreamMap();
   final List<FileWithMetadata> mockListFileWithMetadata = TestUtilities.creatMockListFileWithMetadata();
 
   @Test
-  public void testCheckVpnGatewayConnectionLocalCidrOptions() throws Throwable {
-    CheckVpnGatewayConnectionLocalCidrOptions checkVpnGatewayConnectionLocalCidrOptionsModel = new CheckVpnGatewayConnectionLocalCidrOptions.Builder()
+  public void testCheckVpnGatewayConnectionLocalCIDROptions() throws Throwable {
+    CheckVpnGatewayConnectionLocalCIDROptions checkVpnGatewayConnectionLocalCIDROptionsModel = new CheckVpnGatewayConnectionLocalCIDROptions.Builder()
       .vpnGatewayId("testString")
       .id("testString")
       .cidrPrefix("testString")
       .prefixLength("testString")
       .build();
-    assertEquals(checkVpnGatewayConnectionLocalCidrOptionsModel.vpnGatewayId(), "testString");
-    assertEquals(checkVpnGatewayConnectionLocalCidrOptionsModel.id(), "testString");
-    assertEquals(checkVpnGatewayConnectionLocalCidrOptionsModel.cidrPrefix(), "testString");
-    assertEquals(checkVpnGatewayConnectionLocalCidrOptionsModel.prefixLength(), "testString");
+    assertEquals(checkVpnGatewayConnectionLocalCIDROptionsModel.vpnGatewayId(), "testString");
+    assertEquals(checkVpnGatewayConnectionLocalCIDROptionsModel.id(), "testString");
+    assertEquals(checkVpnGatewayConnectionLocalCIDROptionsModel.cidrPrefix(), "testString");
+    assertEquals(checkVpnGatewayConnectionLocalCIDROptionsModel.prefixLength(), "testString");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)
-  public void testCheckVpnGatewayConnectionLocalCidrOptionsError() throws Throwable {
-    new CheckVpnGatewayConnectionLocalCidrOptions.Builder().build();
+  public void testCheckVpnGatewayConnectionLocalCIDROptionsError() throws Throwable {
+    new CheckVpnGatewayConnectionLocalCIDROptions.Builder().build();
   }
 
 }

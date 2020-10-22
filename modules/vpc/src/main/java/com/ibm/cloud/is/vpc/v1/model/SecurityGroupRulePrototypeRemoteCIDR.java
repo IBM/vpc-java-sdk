@@ -24,8 +24,8 @@ public class SecurityGroupRulePrototypeRemoteCIDR extends SecurityGroupRuleProto
   public static class Builder {
     private String cidrBlock;
 
-    public Builder(SecurityGroupRulePrototypeRemote securityGroupRulePrototypeRemoteCidr) {
-      this.cidrBlock = securityGroupRulePrototypeRemoteCidr.cidrBlock;
+    public Builder(SecurityGroupRulePrototypeRemote securityGroupRulePrototypeRemoteCIDR) {
+      this.cidrBlock = securityGroupRulePrototypeRemoteCIDR.cidrBlock;
     }
 
     /**

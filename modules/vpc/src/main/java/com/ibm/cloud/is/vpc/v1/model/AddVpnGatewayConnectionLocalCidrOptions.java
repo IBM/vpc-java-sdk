@@ -15,9 +15,9 @@ package com.ibm.cloud.is.vpc.v1.model;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * The addVpnGatewayConnectionLocalCidr options.
+ * The addVpnGatewayConnectionLocalCIDR options.
  */
-public class AddVpnGatewayConnectionLocalCidrOptions extends GenericModel {
+public class AddVpnGatewayConnectionLocalCIDROptions extends GenericModel {
 
   protected String vpnGatewayId;
   protected String id;
@@ -33,11 +33,11 @@ public class AddVpnGatewayConnectionLocalCidrOptions extends GenericModel {
     private String cidrPrefix;
     private String prefixLength;
 
-    private Builder(AddVpnGatewayConnectionLocalCidrOptions addVpnGatewayConnectionLocalCidrOptions) {
-      this.vpnGatewayId = addVpnGatewayConnectionLocalCidrOptions.vpnGatewayId;
-      this.id = addVpnGatewayConnectionLocalCidrOptions.id;
-      this.cidrPrefix = addVpnGatewayConnectionLocalCidrOptions.cidrPrefix;
-      this.prefixLength = addVpnGatewayConnectionLocalCidrOptions.prefixLength;
+    private Builder(AddVpnGatewayConnectionLocalCIDROptions addVpnGatewayConnectionLocalCIDROptions) {
+      this.vpnGatewayId = addVpnGatewayConnectionLocalCIDROptions.vpnGatewayId;
+      this.id = addVpnGatewayConnectionLocalCIDROptions.id;
+      this.cidrPrefix = addVpnGatewayConnectionLocalCIDROptions.cidrPrefix;
+      this.prefixLength = addVpnGatewayConnectionLocalCIDROptions.prefixLength;
     }
 
     /**
@@ -62,19 +62,19 @@ public class AddVpnGatewayConnectionLocalCidrOptions extends GenericModel {
     }
 
     /**
-     * Builds a AddVpnGatewayConnectionLocalCidrOptions.
+     * Builds a AddVpnGatewayConnectionLocalCIDROptions.
      *
-     * @return the new AddVpnGatewayConnectionLocalCidrOptions instance
+     * @return the new AddVpnGatewayConnectionLocalCIDROptions instance
      */
-    public AddVpnGatewayConnectionLocalCidrOptions build() {
-      return new AddVpnGatewayConnectionLocalCidrOptions(this);
+    public AddVpnGatewayConnectionLocalCIDROptions build() {
+      return new AddVpnGatewayConnectionLocalCIDROptions(this);
     }
 
     /**
      * Set the vpnGatewayId.
      *
      * @param vpnGatewayId the vpnGatewayId
-     * @return the AddVpnGatewayConnectionLocalCidrOptions builder
+     * @return the AddVpnGatewayConnectionLocalCIDROptions builder
      */
     public Builder vpnGatewayId(String vpnGatewayId) {
       this.vpnGatewayId = vpnGatewayId;
@@ -85,7 +85,7 @@ public class AddVpnGatewayConnectionLocalCidrOptions extends GenericModel {
      * Set the id.
      *
      * @param id the id
-     * @return the AddVpnGatewayConnectionLocalCidrOptions builder
+     * @return the AddVpnGatewayConnectionLocalCIDROptions builder
      */
     public Builder id(String id) {
       this.id = id;
@@ -96,7 +96,7 @@ public class AddVpnGatewayConnectionLocalCidrOptions extends GenericModel {
      * Set the cidrPrefix.
      *
      * @param cidrPrefix the cidrPrefix
-     * @return the AddVpnGatewayConnectionLocalCidrOptions builder
+     * @return the AddVpnGatewayConnectionLocalCIDROptions builder
      */
     public Builder cidrPrefix(String cidrPrefix) {
       this.cidrPrefix = cidrPrefix;
@@ -107,7 +107,7 @@ public class AddVpnGatewayConnectionLocalCidrOptions extends GenericModel {
      * Set the prefixLength.
      *
      * @param prefixLength the prefixLength
-     * @return the AddVpnGatewayConnectionLocalCidrOptions builder
+     * @return the AddVpnGatewayConnectionLocalCIDROptions builder
      */
     public Builder prefixLength(String prefixLength) {
       this.prefixLength = prefixLength;
@@ -115,7 +115,7 @@ public class AddVpnGatewayConnectionLocalCidrOptions extends GenericModel {
     }
   }
 
-  protected AddVpnGatewayConnectionLocalCidrOptions(Builder builder) {
+  protected AddVpnGatewayConnectionLocalCIDROptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.vpnGatewayId,
       "vpnGatewayId cannot be empty");
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,
@@ -133,7 +133,7 @@ public class AddVpnGatewayConnectionLocalCidrOptions extends GenericModel {
   /**
    * New builder.
    *
-   * @return a AddVpnGatewayConnectionLocalCidrOptions builder
+   * @return a AddVpnGatewayConnectionLocalCIDROptions builder
    */
   public Builder newBuilder() {
     return new Builder(this);

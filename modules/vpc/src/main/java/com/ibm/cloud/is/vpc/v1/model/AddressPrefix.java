@@ -87,7 +87,7 @@ public class AddressPrefix extends GenericModel {
    *
    * @return the cidr
    */
-  public String getCidr() {
+  public String getCIDR() {
     return cidr;
   }
 

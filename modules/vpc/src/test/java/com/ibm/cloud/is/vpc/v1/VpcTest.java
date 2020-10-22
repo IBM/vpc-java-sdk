@@ -15,8 +15,8 @@ package com.ibm.cloud.is.vpc.v1;
 import com.ibm.cloud.is.vpc.v1.Vpc;
 import com.ibm.cloud.is.vpc.v1.model.AddInstanceNetworkInterfaceFloatingIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.AddSecurityGroupNetworkInterfaceOptions;
-import com.ibm.cloud.is.vpc.v1.model.AddVpnGatewayConnectionLocalCidrOptions;
-import com.ibm.cloud.is.vpc.v1.model.AddVpnGatewayConnectionPeerCidrOptions;
+import com.ibm.cloud.is.vpc.v1.model.AddVpnGatewayConnectionLocalCIDROptions;
+import com.ibm.cloud.is.vpc.v1.model.AddVpnGatewayConnectionPeerCIDROptions;
 import com.ibm.cloud.is.vpc.v1.model.AddressPrefix;
 import com.ibm.cloud.is.vpc.v1.model.AddressPrefixCollection;
 import com.ibm.cloud.is.vpc.v1.model.AddressPrefixCollectionFirst;
@@ -25,8 +25,8 @@ import com.ibm.cloud.is.vpc.v1.model.AddressPrefixPatch;
 import com.ibm.cloud.is.vpc.v1.model.CertificateInstanceIdentity;
 import com.ibm.cloud.is.vpc.v1.model.CertificateInstanceIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.CertificateInstanceReference;
-import com.ibm.cloud.is.vpc.v1.model.CheckVpnGatewayConnectionLocalCidrOptions;
-import com.ibm.cloud.is.vpc.v1.model.CheckVpnGatewayConnectionPeerCidrOptions;
+import com.ibm.cloud.is.vpc.v1.model.CheckVpnGatewayConnectionLocalCIDROptions;
+import com.ibm.cloud.is.vpc.v1.model.CheckVpnGatewayConnectionPeerCIDROptions;
 import com.ibm.cloud.is.vpc.v1.model.CloudObjectStorageBucketIdentity;
 import com.ibm.cloud.is.vpc.v1.model.CloudObjectStorageBucketIdentityByName;
 import com.ibm.cloud.is.vpc.v1.model.CloudObjectStorageBucketReference;
@@ -512,8 +512,8 @@ import com.ibm.cloud.is.vpc.v1.model.RegionCollection;
 import com.ibm.cloud.is.vpc.v1.model.RegionReference;
 import com.ibm.cloud.is.vpc.v1.model.RemoveInstanceNetworkInterfaceFloatingIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.RemoveSecurityGroupNetworkInterfaceOptions;
-import com.ibm.cloud.is.vpc.v1.model.RemoveVpnGatewayConnectionLocalCidrOptions;
-import com.ibm.cloud.is.vpc.v1.model.RemoveVpnGatewayConnectionPeerCidrOptions;
+import com.ibm.cloud.is.vpc.v1.model.RemoveVpnGatewayConnectionLocalCIDROptions;
+import com.ibm.cloud.is.vpc.v1.model.RemoveVpnGatewayConnectionPeerCIDROptions;
 import com.ibm.cloud.is.vpc.v1.model.ReplaceLoadBalancerPoolMembersOptions;
 import com.ibm.cloud.is.vpc.v1.model.ReplaceSubnetNetworkAclOptions;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupIdentity;
@@ -9670,10 +9670,10 @@ public class VpcTest extends PowerMockTestCase {
   }
 
   @Test
-  public void testRemoveVpnGatewayConnectionLocalCidrWOptions() throws Throwable {
+  public void testRemoveVpnGatewayConnectionLocalCIDRWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "";
-    String removeVpnGatewayConnectionLocalCidrPath = "/vpn_gateways/testString/connections/testString/local_cidrs/testString/testString";
+    String removeVpnGatewayConnectionLocalCIDRPath = "/vpn_gateways/testString/connections/testString/local_cidrs/testString/testString";
 
     server.enqueue(new MockResponse()
     .setResponseCode(204)
@@ -9681,8 +9681,8 @@ public class VpcTest extends PowerMockTestCase {
 
     constructClientService();
 
-    // Construct an instance of the RemoveVpnGatewayConnectionLocalCidrOptions model
-    RemoveVpnGatewayConnectionLocalCidrOptions removeVpnGatewayConnectionLocalCidrOptionsModel = new RemoveVpnGatewayConnectionLocalCidrOptions.Builder()
+    // Construct an instance of the RemoveVpnGatewayConnectionLocalCIDROptions model
+    RemoveVpnGatewayConnectionLocalCIDROptions removeVpnGatewayConnectionLocalCIDROptionsModel = new RemoveVpnGatewayConnectionLocalCIDROptions.Builder()
     .vpnGatewayId("testString")
     .id("testString")
     .cidrPrefix("testString")
@@ -9690,7 +9690,7 @@ public class VpcTest extends PowerMockTestCase {
     .build();
 
     // Invoke operation with valid options model (positive test)
-    Response<Void> response = vpcService.removeVpnGatewayConnectionLocalCidr(removeVpnGatewayConnectionLocalCidrOptionsModel).execute();
+    Response<Void> response = vpcService.removeVpnGatewayConnectionLocalCIDR(removeVpnGatewayConnectionLocalCIDROptionsModel).execute();
     assertNotNull(response);
     Void responseObj = response.getResult();
     // Response does not have a return type. Check that the result is null.
@@ -9709,26 +9709,26 @@ public class VpcTest extends PowerMockTestCase {
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
-    assertEquals(parsedPath, removeVpnGatewayConnectionLocalCidrPath);
+    assertEquals(parsedPath, removeVpnGatewayConnectionLocalCIDRPath);
   }
 
-  // Test the removeVpnGatewayConnectionLocalCidr operation with null options model parameter
+  // Test the removeVpnGatewayConnectionLocalCIDR operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
-  public void testRemoveVpnGatewayConnectionLocalCidrNoOptions() throws Throwable {
+  public void testRemoveVpnGatewayConnectionLocalCIDRNoOptions() throws Throwable {
     // construct the service
     constructClientService();
 
     server.enqueue(new MockResponse());
 
     // Invoke operation with null options model (negative test)
-    vpcService.removeVpnGatewayConnectionLocalCidr(null).execute();
+    vpcService.removeVpnGatewayConnectionLocalCIDR(null).execute();
   }
 
   @Test
-  public void testCheckVpnGatewayConnectionLocalCidrWOptions() throws Throwable {
+  public void testCheckVpnGatewayConnectionLocalCIDRWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "";
-    String checkVpnGatewayConnectionLocalCidrPath = "/vpn_gateways/testString/connections/testString/local_cidrs/testString/testString";
+    String checkVpnGatewayConnectionLocalCIDRPath = "/vpn_gateways/testString/connections/testString/local_cidrs/testString/testString";
 
     server.enqueue(new MockResponse()
     .setResponseCode(204)
@@ -9736,8 +9736,8 @@ public class VpcTest extends PowerMockTestCase {
 
     constructClientService();
 
-    // Construct an instance of the CheckVpnGatewayConnectionLocalCidrOptions model
-    CheckVpnGatewayConnectionLocalCidrOptions checkVpnGatewayConnectionLocalCidrOptionsModel = new CheckVpnGatewayConnectionLocalCidrOptions.Builder()
+    // Construct an instance of the CheckVpnGatewayConnectionLocalCIDROptions model
+    CheckVpnGatewayConnectionLocalCIDROptions checkVpnGatewayConnectionLocalCIDROptionsModel = new CheckVpnGatewayConnectionLocalCIDROptions.Builder()
     .vpnGatewayId("testString")
     .id("testString")
     .cidrPrefix("testString")
@@ -9745,7 +9745,7 @@ public class VpcTest extends PowerMockTestCase {
     .build();
 
     // Invoke operation with valid options model (positive test)
-    Response<Void> response = vpcService.checkVpnGatewayConnectionLocalCidr(checkVpnGatewayConnectionLocalCidrOptionsModel).execute();
+    Response<Void> response = vpcService.checkVpnGatewayConnectionLocalCIDR(checkVpnGatewayConnectionLocalCIDROptionsModel).execute();
     assertNotNull(response);
     Void responseObj = response.getResult();
     // Response does not have a return type. Check that the result is null.
@@ -9764,26 +9764,26 @@ public class VpcTest extends PowerMockTestCase {
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
-    assertEquals(parsedPath, checkVpnGatewayConnectionLocalCidrPath);
+    assertEquals(parsedPath, checkVpnGatewayConnectionLocalCIDRPath);
   }
 
-  // Test the checkVpnGatewayConnectionLocalCidr operation with null options model parameter
+  // Test the checkVpnGatewayConnectionLocalCIDR operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
-  public void testCheckVpnGatewayConnectionLocalCidrNoOptions() throws Throwable {
+  public void testCheckVpnGatewayConnectionLocalCIDRNoOptions() throws Throwable {
     // construct the service
     constructClientService();
 
     server.enqueue(new MockResponse());
 
     // Invoke operation with null options model (negative test)
-    vpcService.checkVpnGatewayConnectionLocalCidr(null).execute();
+    vpcService.checkVpnGatewayConnectionLocalCIDR(null).execute();
   }
 
   @Test
-  public void testAddVpnGatewayConnectionLocalCidrWOptions() throws Throwable {
+  public void testAddVpnGatewayConnectionLocalCIDRWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "";
-    String addVpnGatewayConnectionLocalCidrPath = "/vpn_gateways/testString/connections/testString/local_cidrs/testString/testString";
+    String addVpnGatewayConnectionLocalCIDRPath = "/vpn_gateways/testString/connections/testString/local_cidrs/testString/testString";
 
     server.enqueue(new MockResponse()
     .setResponseCode(204)
@@ -9791,8 +9791,8 @@ public class VpcTest extends PowerMockTestCase {
 
     constructClientService();
 
-    // Construct an instance of the AddVpnGatewayConnectionLocalCidrOptions model
-    AddVpnGatewayConnectionLocalCidrOptions addVpnGatewayConnectionLocalCidrOptionsModel = new AddVpnGatewayConnectionLocalCidrOptions.Builder()
+    // Construct an instance of the AddVpnGatewayConnectionLocalCIDROptions model
+    AddVpnGatewayConnectionLocalCIDROptions addVpnGatewayConnectionLocalCIDROptionsModel = new AddVpnGatewayConnectionLocalCIDROptions.Builder()
     .vpnGatewayId("testString")
     .id("testString")
     .cidrPrefix("testString")
@@ -9800,7 +9800,7 @@ public class VpcTest extends PowerMockTestCase {
     .build();
 
     // Invoke operation with valid options model (positive test)
-    Response<Void> response = vpcService.addVpnGatewayConnectionLocalCidr(addVpnGatewayConnectionLocalCidrOptionsModel).execute();
+    Response<Void> response = vpcService.addVpnGatewayConnectionLocalCIDR(addVpnGatewayConnectionLocalCIDROptionsModel).execute();
     assertNotNull(response);
     Void responseObj = response.getResult();
     // Response does not have a return type. Check that the result is null.
@@ -9819,19 +9819,19 @@ public class VpcTest extends PowerMockTestCase {
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
-    assertEquals(parsedPath, addVpnGatewayConnectionLocalCidrPath);
+    assertEquals(parsedPath, addVpnGatewayConnectionLocalCIDRPath);
   }
 
-  // Test the addVpnGatewayConnectionLocalCidr operation with null options model parameter
+  // Test the addVpnGatewayConnectionLocalCIDR operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
-  public void testAddVpnGatewayConnectionLocalCidrNoOptions() throws Throwable {
+  public void testAddVpnGatewayConnectionLocalCIDRNoOptions() throws Throwable {
     // construct the service
     constructClientService();
 
     server.enqueue(new MockResponse());
 
     // Invoke operation with null options model (negative test)
-    vpcService.addVpnGatewayConnectionLocalCidr(null).execute();
+    vpcService.addVpnGatewayConnectionLocalCIDR(null).execute();
   }
 
   @Test
@@ -9888,10 +9888,10 @@ public class VpcTest extends PowerMockTestCase {
   }
 
   @Test
-  public void testRemoveVpnGatewayConnectionPeerCidrWOptions() throws Throwable {
+  public void testRemoveVpnGatewayConnectionPeerCIDRWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "";
-    String removeVpnGatewayConnectionPeerCidrPath = "/vpn_gateways/testString/connections/testString/peer_cidrs/testString/testString";
+    String removeVpnGatewayConnectionPeerCIDRPath = "/vpn_gateways/testString/connections/testString/peer_cidrs/testString/testString";
 
     server.enqueue(new MockResponse()
     .setResponseCode(204)
@@ -9899,8 +9899,8 @@ public class VpcTest extends PowerMockTestCase {
 
     constructClientService();
 
-    // Construct an instance of the RemoveVpnGatewayConnectionPeerCidrOptions model
-    RemoveVpnGatewayConnectionPeerCidrOptions removeVpnGatewayConnectionPeerCidrOptionsModel = new RemoveVpnGatewayConnectionPeerCidrOptions.Builder()
+    // Construct an instance of the RemoveVpnGatewayConnectionPeerCIDROptions model
+    RemoveVpnGatewayConnectionPeerCIDROptions removeVpnGatewayConnectionPeerCIDROptionsModel = new RemoveVpnGatewayConnectionPeerCIDROptions.Builder()
     .vpnGatewayId("testString")
     .id("testString")
     .cidrPrefix("testString")
@@ -9908,7 +9908,7 @@ public class VpcTest extends PowerMockTestCase {
     .build();
 
     // Invoke operation with valid options model (positive test)
-    Response<Void> response = vpcService.removeVpnGatewayConnectionPeerCidr(removeVpnGatewayConnectionPeerCidrOptionsModel).execute();
+    Response<Void> response = vpcService.removeVpnGatewayConnectionPeerCIDR(removeVpnGatewayConnectionPeerCIDROptionsModel).execute();
     assertNotNull(response);
     Void responseObj = response.getResult();
     // Response does not have a return type. Check that the result is null.
@@ -9927,26 +9927,26 @@ public class VpcTest extends PowerMockTestCase {
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
-    assertEquals(parsedPath, removeVpnGatewayConnectionPeerCidrPath);
+    assertEquals(parsedPath, removeVpnGatewayConnectionPeerCIDRPath);
   }
 
-  // Test the removeVpnGatewayConnectionPeerCidr operation with null options model parameter
+  // Test the removeVpnGatewayConnectionPeerCIDR operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
-  public void testRemoveVpnGatewayConnectionPeerCidrNoOptions() throws Throwable {
+  public void testRemoveVpnGatewayConnectionPeerCIDRNoOptions() throws Throwable {
     // construct the service
     constructClientService();
 
     server.enqueue(new MockResponse());
 
     // Invoke operation with null options model (negative test)
-    vpcService.removeVpnGatewayConnectionPeerCidr(null).execute();
+    vpcService.removeVpnGatewayConnectionPeerCIDR(null).execute();
   }
 
   @Test
-  public void testCheckVpnGatewayConnectionPeerCidrWOptions() throws Throwable {
+  public void testCheckVpnGatewayConnectionPeerCIDRWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "";
-    String checkVpnGatewayConnectionPeerCidrPath = "/vpn_gateways/testString/connections/testString/peer_cidrs/testString/testString";
+    String checkVpnGatewayConnectionPeerCIDRPath = "/vpn_gateways/testString/connections/testString/peer_cidrs/testString/testString";
 
     server.enqueue(new MockResponse()
     .setResponseCode(204)
@@ -9954,8 +9954,8 @@ public class VpcTest extends PowerMockTestCase {
 
     constructClientService();
 
-    // Construct an instance of the CheckVpnGatewayConnectionPeerCidrOptions model
-    CheckVpnGatewayConnectionPeerCidrOptions checkVpnGatewayConnectionPeerCidrOptionsModel = new CheckVpnGatewayConnectionPeerCidrOptions.Builder()
+    // Construct an instance of the CheckVpnGatewayConnectionPeerCIDROptions model
+    CheckVpnGatewayConnectionPeerCIDROptions checkVpnGatewayConnectionPeerCIDROptionsModel = new CheckVpnGatewayConnectionPeerCIDROptions.Builder()
     .vpnGatewayId("testString")
     .id("testString")
     .cidrPrefix("testString")
@@ -9963,7 +9963,7 @@ public class VpcTest extends PowerMockTestCase {
     .build();
 
     // Invoke operation with valid options model (positive test)
-    Response<Void> response = vpcService.checkVpnGatewayConnectionPeerCidr(checkVpnGatewayConnectionPeerCidrOptionsModel).execute();
+    Response<Void> response = vpcService.checkVpnGatewayConnectionPeerCIDR(checkVpnGatewayConnectionPeerCIDROptionsModel).execute();
     assertNotNull(response);
     Void responseObj = response.getResult();
     // Response does not have a return type. Check that the result is null.
@@ -9982,26 +9982,26 @@ public class VpcTest extends PowerMockTestCase {
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
-    assertEquals(parsedPath, checkVpnGatewayConnectionPeerCidrPath);
+    assertEquals(parsedPath, checkVpnGatewayConnectionPeerCIDRPath);
   }
 
-  // Test the checkVpnGatewayConnectionPeerCidr operation with null options model parameter
+  // Test the checkVpnGatewayConnectionPeerCIDR operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
-  public void testCheckVpnGatewayConnectionPeerCidrNoOptions() throws Throwable {
+  public void testCheckVpnGatewayConnectionPeerCIDRNoOptions() throws Throwable {
     // construct the service
     constructClientService();
 
     server.enqueue(new MockResponse());
 
     // Invoke operation with null options model (negative test)
-    vpcService.checkVpnGatewayConnectionPeerCidr(null).execute();
+    vpcService.checkVpnGatewayConnectionPeerCIDR(null).execute();
   }
 
   @Test
-  public void testAddVpnGatewayConnectionPeerCidrWOptions() throws Throwable {
+  public void testAddVpnGatewayConnectionPeerCIDRWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "";
-    String addVpnGatewayConnectionPeerCidrPath = "/vpn_gateways/testString/connections/testString/peer_cidrs/testString/testString";
+    String addVpnGatewayConnectionPeerCIDRPath = "/vpn_gateways/testString/connections/testString/peer_cidrs/testString/testString";
 
     server.enqueue(new MockResponse()
     .setResponseCode(204)
@@ -10009,8 +10009,8 @@ public class VpcTest extends PowerMockTestCase {
 
     constructClientService();
 
-    // Construct an instance of the AddVpnGatewayConnectionPeerCidrOptions model
-    AddVpnGatewayConnectionPeerCidrOptions addVpnGatewayConnectionPeerCidrOptionsModel = new AddVpnGatewayConnectionPeerCidrOptions.Builder()
+    // Construct an instance of the AddVpnGatewayConnectionPeerCIDROptions model
+    AddVpnGatewayConnectionPeerCIDROptions addVpnGatewayConnectionPeerCIDROptionsModel = new AddVpnGatewayConnectionPeerCIDROptions.Builder()
     .vpnGatewayId("testString")
     .id("testString")
     .cidrPrefix("testString")
@@ -10018,7 +10018,7 @@ public class VpcTest extends PowerMockTestCase {
     .build();
 
     // Invoke operation with valid options model (positive test)
-    Response<Void> response = vpcService.addVpnGatewayConnectionPeerCidr(addVpnGatewayConnectionPeerCidrOptionsModel).execute();
+    Response<Void> response = vpcService.addVpnGatewayConnectionPeerCIDR(addVpnGatewayConnectionPeerCIDROptionsModel).execute();
     assertNotNull(response);
     Void responseObj = response.getResult();
     // Response does not have a return type. Check that the result is null.
@@ -10037,19 +10037,19 @@ public class VpcTest extends PowerMockTestCase {
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
-    assertEquals(parsedPath, addVpnGatewayConnectionPeerCidrPath);
+    assertEquals(parsedPath, addVpnGatewayConnectionPeerCIDRPath);
   }
 
-  // Test the addVpnGatewayConnectionPeerCidr operation with null options model parameter
+  // Test the addVpnGatewayConnectionPeerCIDR operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
-  public void testAddVpnGatewayConnectionPeerCidrNoOptions() throws Throwable {
+  public void testAddVpnGatewayConnectionPeerCIDRNoOptions() throws Throwable {
     // construct the service
     constructClientService();
 
     server.enqueue(new MockResponse());
 
     // Invoke operation with null options model (negative test)
-    vpcService.addVpnGatewayConnectionPeerCidr(null).execute();
+    vpcService.addVpnGatewayConnectionPeerCIDR(null).execute();
   }
 
   @Test

@@ -15,9 +15,9 @@ package com.ibm.cloud.is.vpc.v1.model;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * The addVpnGatewayConnectionPeerCidr options.
+ * The addVpnGatewayConnectionPeerCIDR options.
  */
-public class AddVpnGatewayConnectionPeerCidrOptions extends GenericModel {
+public class AddVpnGatewayConnectionPeerCIDROptions extends GenericModel {
 
   protected String vpnGatewayId;
   protected String id;
@@ -33,11 +33,11 @@ public class AddVpnGatewayConnectionPeerCidrOptions extends GenericModel {
     private String cidrPrefix;
     private String prefixLength;
 
-    private Builder(AddVpnGatewayConnectionPeerCidrOptions addVpnGatewayConnectionPeerCidrOptions) {
-      this.vpnGatewayId = addVpnGatewayConnectionPeerCidrOptions.vpnGatewayId;
-      this.id = addVpnGatewayConnectionPeerCidrOptions.id;
-      this.cidrPrefix = addVpnGatewayConnectionPeerCidrOptions.cidrPrefix;
-      this.prefixLength = addVpnGatewayConnectionPeerCidrOptions.prefixLength;
+    private Builder(AddVpnGatewayConnectionPeerCIDROptions addVpnGatewayConnectionPeerCIDROptions) {
+      this.vpnGatewayId = addVpnGatewayConnectionPeerCIDROptions.vpnGatewayId;
+      this.id = addVpnGatewayConnectionPeerCIDROptions.id;
+      this.cidrPrefix = addVpnGatewayConnectionPeerCIDROptions.cidrPrefix;
+      this.prefixLength = addVpnGatewayConnectionPeerCIDROptions.prefixLength;
     }
 
     /**
@@ -62,19 +62,19 @@ public class AddVpnGatewayConnectionPeerCidrOptions extends GenericModel {
     }
 
     /**
-     * Builds a AddVpnGatewayConnectionPeerCidrOptions.
+     * Builds a AddVpnGatewayConnectionPeerCIDROptions.
      *
-     * @return the new AddVpnGatewayConnectionPeerCidrOptions instance
+     * @return the new AddVpnGatewayConnectionPeerCIDROptions instance
      */
-    public AddVpnGatewayConnectionPeerCidrOptions build() {
-      return new AddVpnGatewayConnectionPeerCidrOptions(this);
+    public AddVpnGatewayConnectionPeerCIDROptions build() {
+      return new AddVpnGatewayConnectionPeerCIDROptions(this);
     }
 
     /**
      * Set the vpnGatewayId.
      *
      * @param vpnGatewayId the vpnGatewayId
-     * @return the AddVpnGatewayConnectionPeerCidrOptions builder
+     * @return the AddVpnGatewayConnectionPeerCIDROptions builder
      */
     public Builder vpnGatewayId(String vpnGatewayId) {
       this.vpnGatewayId = vpnGatewayId;
@@ -85,7 +85,7 @@ public class AddVpnGatewayConnectionPeerCidrOptions extends GenericModel {
      * Set the id.
      *
      * @param id the id
-     * @return the AddVpnGatewayConnectionPeerCidrOptions builder
+     * @return the AddVpnGatewayConnectionPeerCIDROptions builder
      */
     public Builder id(String id) {
       this.id = id;
@@ -96,7 +96,7 @@ public class AddVpnGatewayConnectionPeerCidrOptions extends GenericModel {
      * Set the cidrPrefix.
      *
      * @param cidrPrefix the cidrPrefix
-     * @return the AddVpnGatewayConnectionPeerCidrOptions builder
+     * @return the AddVpnGatewayConnectionPeerCIDROptions builder
      */
     public Builder cidrPrefix(String cidrPrefix) {
       this.cidrPrefix = cidrPrefix;
@@ -107,7 +107,7 @@ public class AddVpnGatewayConnectionPeerCidrOptions extends GenericModel {
      * Set the prefixLength.
      *
      * @param prefixLength the prefixLength
-     * @return the AddVpnGatewayConnectionPeerCidrOptions builder
+     * @return the AddVpnGatewayConnectionPeerCIDROptions builder
      */
     public Builder prefixLength(String prefixLength) {
       this.prefixLength = prefixLength;
@@ -115,7 +115,7 @@ public class AddVpnGatewayConnectionPeerCidrOptions extends GenericModel {
     }
   }
 
-  protected AddVpnGatewayConnectionPeerCidrOptions(Builder builder) {
+  protected AddVpnGatewayConnectionPeerCIDROptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.vpnGatewayId,
       "vpnGatewayId cannot be empty");
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,
@@ -133,7 +133,7 @@ public class AddVpnGatewayConnectionPeerCidrOptions extends GenericModel {
   /**
    * New builder.
    *
-   * @return a AddVpnGatewayConnectionPeerCidrOptions builder
+   * @return a AddVpnGatewayConnectionPeerCIDROptions builder
    */
   public Builder newBuilder() {
     return new Builder(this);

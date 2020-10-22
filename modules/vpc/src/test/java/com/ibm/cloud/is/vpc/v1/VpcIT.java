@@ -16,14 +16,14 @@ package com.ibm.cloud.is.vpc.v1;
 import com.ibm.cloud.is.test.SdkIntegrationTestBase;
 import com.ibm.cloud.is.vpc.v1.model.AddInstanceNetworkInterfaceFloatingIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.AddSecurityGroupNetworkInterfaceOptions;
-import com.ibm.cloud.is.vpc.v1.model.AddVpnGatewayConnectionLocalCidrOptions;
-import com.ibm.cloud.is.vpc.v1.model.AddVpnGatewayConnectionPeerCidrOptions;
+import com.ibm.cloud.is.vpc.v1.model.AddVpnGatewayConnectionLocalCIDROptions;
+import com.ibm.cloud.is.vpc.v1.model.AddVpnGatewayConnectionPeerCIDROptions;
 import com.ibm.cloud.is.vpc.v1.model.AddressPrefix;
 import com.ibm.cloud.is.vpc.v1.model.AddressPrefixCollection;
 import com.ibm.cloud.is.vpc.v1.model.AddressPrefixCollection;
 import com.ibm.cloud.is.vpc.v1.model.AddressPrefixPatch;
-import com.ibm.cloud.is.vpc.v1.model.CheckVpnGatewayConnectionLocalCidrOptions;
-import com.ibm.cloud.is.vpc.v1.model.CheckVpnGatewayConnectionPeerCidrOptions;
+import com.ibm.cloud.is.vpc.v1.model.CheckVpnGatewayConnectionLocalCIDROptions;
+import com.ibm.cloud.is.vpc.v1.model.CheckVpnGatewayConnectionPeerCIDROptions;
 import com.ibm.cloud.is.vpc.v1.model.CloudObjectStorageBucketIdentityByName;
 import com.ibm.cloud.is.vpc.v1.model.CreateFloatingIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateFlowLogCollectorOptions;
@@ -314,8 +314,8 @@ import com.ibm.cloud.is.vpc.v1.model.Region;
 import com.ibm.cloud.is.vpc.v1.model.RegionCollection;
 import com.ibm.cloud.is.vpc.v1.model.RemoveInstanceNetworkInterfaceFloatingIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.RemoveSecurityGroupNetworkInterfaceOptions;
-import com.ibm.cloud.is.vpc.v1.model.RemoveVpnGatewayConnectionLocalCidrOptions;
-import com.ibm.cloud.is.vpc.v1.model.RemoveVpnGatewayConnectionPeerCidrOptions;
+import com.ibm.cloud.is.vpc.v1.model.RemoveVpnGatewayConnectionLocalCIDROptions;
+import com.ibm.cloud.is.vpc.v1.model.RemoveVpnGatewayConnectionPeerCIDROptions;
 import com.ibm.cloud.is.vpc.v1.model.ReplaceLoadBalancerPoolMembersOptions;
 import com.ibm.cloud.is.vpc.v1.model.ReplaceSubnetNetworkAclOptions;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupIdentityById;
@@ -698,16 +698,16 @@ public class VpcIT extends SdkIntegrationTestBase {
     testGetVpnGatewayConnection();
     testUpdateVpnGatewayConnection();
 
-    testAddVpnGatewayConnectionLocalCidr();
+    testAddVpnGatewayConnectionLocalCIDR();
     testListVpnGatewayConnectionLocalCIDRs();
-    testCheckVpnGatewayConnectionLocalCidr();
+    testCheckVpnGatewayConnectionLocalCIDR();
 
-    testAddVpnGatewayConnectionPeerCidr();
+    testAddVpnGatewayConnectionPeerCIDR();
     testListVpnGatewayConnectionPeerCIDRs();
-    testCheckVpnGatewayConnectionPeerCidr();
+    testCheckVpnGatewayConnectionPeerCIDR();
 
-    testRemoveVpnGatewayConnectionLocalCidr();
-    testRemoveVpnGatewayConnectionPeerCidr();
+    testRemoveVpnGatewayConnectionLocalCIDR();
+    testRemoveVpnGatewayConnectionPeerCIDR();
 
   }
 
@@ -3197,7 +3197,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       SubnetPrototypeSubnetByCIDR subnetPrototypeModel = new SubnetPrototypeSubnetByCIDR.Builder()
       .name(generateName("subnet"))
       .vpc(vpcIdentityModel)
-      .ipv4CidrBlock("10.152.0.0/24")
+      .ipv4CIDRBlock("10.152.0.0/24")
       .zone(zoneIdentityModel)
       .build();
 
@@ -4217,9 +4217,9 @@ public class VpcIT extends SdkIntegrationTestBase {
   }
 
 
-  public void testCheckVpnGatewayConnectionLocalCidr() throws Exception {
+  public void testCheckVpnGatewayConnectionLocalCIDR() throws Exception {
     try {
-      CheckVpnGatewayConnectionLocalCidrOptions checkVpnGatewayConnectionLocalCidrOptions = new CheckVpnGatewayConnectionLocalCidrOptions.Builder()
+      CheckVpnGatewayConnectionLocalCIDROptions checkVpnGatewayConnectionLocalCIDROptions = new CheckVpnGatewayConnectionLocalCIDROptions.Builder()
       .vpnGatewayId(store.get("created-vpng"))
       .id(store.get("created-vpng-conn"))
       .cidrPrefix("192.122.0.0")
@@ -4227,7 +4227,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       .build();
 
 
-      Response<Void> response = service.checkVpnGatewayConnectionLocalCidr(checkVpnGatewayConnectionLocalCidrOptions).execute();
+      Response<Void> response = service.checkVpnGatewayConnectionLocalCIDR(checkVpnGatewayConnectionLocalCIDROptions).execute();
 
       assertNotNull(response);
       assertEquals(response.getStatusCode(), 204);
@@ -4240,9 +4240,9 @@ public class VpcIT extends SdkIntegrationTestBase {
   }
 
 
-  public void testAddVpnGatewayConnectionLocalCidr() throws Exception {
+  public void testAddVpnGatewayConnectionLocalCIDR() throws Exception {
     try {
-      AddVpnGatewayConnectionLocalCidrOptions addVpnGatewayConnectionLocalCidrOptions = new AddVpnGatewayConnectionLocalCidrOptions.Builder()
+      AddVpnGatewayConnectionLocalCIDROptions addVpnGatewayConnectionLocalCIDROptions = new AddVpnGatewayConnectionLocalCIDROptions.Builder()
       .vpnGatewayId(store.get("created-vpng"))
       .id(store.get("created-vpng-conn"))
       .cidrPrefix("192.122.0.0")
@@ -4250,7 +4250,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       .build();
 
 
-      Response<Void> response = service.addVpnGatewayConnectionLocalCidr(addVpnGatewayConnectionLocalCidrOptions).execute();
+      Response<Void> response = service.addVpnGatewayConnectionLocalCIDR(addVpnGatewayConnectionLocalCIDROptions).execute();
 
       assertNotNull(response);
       assertEquals(response.getStatusCode(), 204);
@@ -4286,9 +4286,9 @@ public class VpcIT extends SdkIntegrationTestBase {
   }
 
 
-  public void testCheckVpnGatewayConnectionPeerCidr() throws Exception {
+  public void testCheckVpnGatewayConnectionPeerCIDR() throws Exception {
     try {
-      CheckVpnGatewayConnectionPeerCidrOptions checkVpnGatewayConnectionPeerCidrOptions = new CheckVpnGatewayConnectionPeerCidrOptions.Builder()
+      CheckVpnGatewayConnectionPeerCIDROptions checkVpnGatewayConnectionPeerCIDROptions = new CheckVpnGatewayConnectionPeerCIDROptions.Builder()
       .vpnGatewayId(store.get("created-vpng"))
       .id(store.get("created-vpng-conn"))
       .cidrPrefix("192.129.0.0")
@@ -4296,7 +4296,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       .build();
 
 
-      Response<Void> response = service.checkVpnGatewayConnectionPeerCidr(checkVpnGatewayConnectionPeerCidrOptions).execute();
+      Response<Void> response = service.checkVpnGatewayConnectionPeerCIDR(checkVpnGatewayConnectionPeerCIDROptions).execute();
 
       assertNotNull(response);
       assertEquals(response.getStatusCode(), 204);
@@ -4309,9 +4309,9 @@ public class VpcIT extends SdkIntegrationTestBase {
   }
 
 
-  public void testAddVpnGatewayConnectionPeerCidr() throws Exception {
+  public void testAddVpnGatewayConnectionPeerCIDR() throws Exception {
     try {
-      AddVpnGatewayConnectionPeerCidrOptions addVpnGatewayConnectionPeerCidrOptions = new AddVpnGatewayConnectionPeerCidrOptions.Builder()
+      AddVpnGatewayConnectionPeerCIDROptions addVpnGatewayConnectionPeerCIDROptions = new AddVpnGatewayConnectionPeerCIDROptions.Builder()
       .vpnGatewayId(store.get("created-vpng"))
       .id(store.get("created-vpng-conn"))
       .cidrPrefix("192.129.0.0")
@@ -4319,7 +4319,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       .build();
 
 
-      Response<Void> response = service.addVpnGatewayConnectionPeerCidr(addVpnGatewayConnectionPeerCidrOptions).execute();
+      Response<Void> response = service.addVpnGatewayConnectionPeerCIDR(addVpnGatewayConnectionPeerCIDROptions).execute();
 
       assertNotNull(response);
       assertEquals(response.getStatusCode(), 204);
@@ -4331,9 +4331,9 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  public void testRemoveVpnGatewayConnectionPeerCidr() throws Exception {
+  public void testRemoveVpnGatewayConnectionPeerCIDR() throws Exception {
     try {
-      RemoveVpnGatewayConnectionPeerCidrOptions removeVpnGatewayConnectionPeerCidrOptions = new RemoveVpnGatewayConnectionPeerCidrOptions.Builder()
+      RemoveVpnGatewayConnectionPeerCIDROptions removeVpnGatewayConnectionPeerCIDROptions = new RemoveVpnGatewayConnectionPeerCIDROptions.Builder()
       .vpnGatewayId(store.get("created-vpng"))
       .id(store.get("created-vpng-conn"))
       .cidrPrefix("192.129.0.0")
@@ -4341,7 +4341,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       .build();
 
 
-      Response<Void> response = service.removeVpnGatewayConnectionPeerCidr(removeVpnGatewayConnectionPeerCidrOptions).execute();
+      Response<Void> response = service.removeVpnGatewayConnectionPeerCIDR(removeVpnGatewayConnectionPeerCIDROptions).execute();
 
       assertNotNull(response);
       assertEquals(response.getStatusCode(), 204);
@@ -4354,9 +4354,9 @@ public class VpcIT extends SdkIntegrationTestBase {
   }
 
 
-  public void testRemoveVpnGatewayConnectionLocalCidr() throws Exception {
+  public void testRemoveVpnGatewayConnectionLocalCIDR() throws Exception {
     try {
-      RemoveVpnGatewayConnectionLocalCidrOptions removeVpnGatewayConnectionLocalCidrOptions = new RemoveVpnGatewayConnectionLocalCidrOptions.Builder()
+      RemoveVpnGatewayConnectionLocalCIDROptions removeVpnGatewayConnectionLocalCIDROptions = new RemoveVpnGatewayConnectionLocalCIDROptions.Builder()
       .vpnGatewayId(store.get("created-vpng"))
       .id(store.get("created-vpng-conn"))
       .cidrPrefix("192.122.0.0")
@@ -4364,7 +4364,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       .build();
 
 
-      Response<Void> response = service.removeVpnGatewayConnectionLocalCidr(removeVpnGatewayConnectionLocalCidrOptions).execute();
+      Response<Void> response = service.removeVpnGatewayConnectionLocalCIDR(removeVpnGatewayConnectionLocalCIDROptions).execute();
 
       assertNotNull(response);
       assertEquals(response.getStatusCode(), 204);

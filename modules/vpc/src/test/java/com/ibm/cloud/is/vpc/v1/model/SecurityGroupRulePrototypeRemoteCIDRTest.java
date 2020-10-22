@@ -31,16 +31,16 @@ public class SecurityGroupRulePrototypeRemoteCIDRTest {
 
   @Test
   public void testSecurityGroupRulePrototypeRemoteCIDR() throws Throwable {
-    SecurityGroupRulePrototypeRemoteCIDR securityGroupRulePrototypeRemoteCidrModel = new SecurityGroupRulePrototypeRemoteCIDR.Builder()
+    SecurityGroupRulePrototypeRemoteCIDR securityGroupRulePrototypeRemoteCIDRModel = new SecurityGroupRulePrototypeRemoteCIDR.Builder()
       .cidrBlock("192.168.3.0/24")
       .build();
-    assertEquals(securityGroupRulePrototypeRemoteCidrModel.cidrBlock(), "192.168.3.0/24");
+    assertEquals(securityGroupRulePrototypeRemoteCIDRModel.cidrBlock(), "192.168.3.0/24");
 
-    String json = TestUtilities.serialize(securityGroupRulePrototypeRemoteCidrModel);
+    String json = TestUtilities.serialize(securityGroupRulePrototypeRemoteCIDRModel);
 
-    SecurityGroupRulePrototypeRemoteCIDR securityGroupRulePrototypeRemoteCidrModelNew = TestUtilities.deserialize(json, SecurityGroupRulePrototypeRemoteCIDR.class);
-    assertTrue(securityGroupRulePrototypeRemoteCidrModelNew instanceof SecurityGroupRulePrototypeRemoteCIDR);
-    assertEquals(securityGroupRulePrototypeRemoteCidrModelNew.cidrBlock(), "192.168.3.0/24");
+    SecurityGroupRulePrototypeRemoteCIDR securityGroupRulePrototypeRemoteCIDRModelNew = TestUtilities.deserialize(json, SecurityGroupRulePrototypeRemoteCIDR.class);
+    assertTrue(securityGroupRulePrototypeRemoteCIDRModelNew instanceof SecurityGroupRulePrototypeRemoteCIDR);
+    assertEquals(securityGroupRulePrototypeRemoteCIDRModelNew.cidrBlock(), "192.168.3.0/24");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

@@ -31,7 +31,7 @@ public class SecurityGroupRuleRemoteCIDRTest {
 
   @Test
   public void testSecurityGroupRuleRemoteCIDR() throws Throwable {
-    SecurityGroupRuleRemoteCIDR securityGroupRuleRemoteCidrModel = new SecurityGroupRuleRemoteCIDR();
-    assertNull(securityGroupRuleRemoteCidrModel.getCidrBlock());
+    SecurityGroupRuleRemoteCIDR securityGroupRuleRemoteCIDRModel = new SecurityGroupRuleRemoteCIDR();
+    assertNull(securityGroupRuleRemoteCIDRModel.getCIDRBlock());
   }
 }

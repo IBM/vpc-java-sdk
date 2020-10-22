@@ -46,7 +46,7 @@ public class SubnetTest {
     assertNull(subnetModel.getNetworkAcl());
     assertNull(subnetModel.getTotalIpv4AddressCount());
     assertNull(subnetModel.getCreatedAt());
-    assertNull(subnetModel.getIpv4CidrBlock());
+    assertNull(subnetModel.getIpv4CIDRBlock());
     assertNull(subnetModel.getPublicGateway());
     assertNull(subnetModel.getStatus());
     assertNull(subnetModel.getVpc());

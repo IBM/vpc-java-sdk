@@ -61,37 +61,37 @@ public class SubnetPrototypeSubnetByCIDRTest {
       .build();
     assertEquals(zoneIdentityModel.name(), "us-south-1");
 
-    SubnetPrototypeSubnetByCIDR subnetPrototypeSubnetByCidrModel = new SubnetPrototypeSubnetByCIDR.Builder()
+    SubnetPrototypeSubnetByCIDR subnetPrototypeSubnetByCIDRModel = new SubnetPrototypeSubnetByCIDR.Builder()
       .name("my-subnet")
       .networkAcl(networkAclIdentityModel)
       .publicGateway(publicGatewayIdentityModel)
       .ipVersion("ipv4")
       .resourceGroup(resourceGroupIdentityModel)
       .vpc(vpcIdentityModel)
-      .ipv4CidrBlock("10.0.0.0/24")
+      .ipv4CIDRBlock("10.0.0.0/24")
       .zone(zoneIdentityModel)
       .build();
-    assertEquals(subnetPrototypeSubnetByCidrModel.name(), "my-subnet");
-    assertEquals(subnetPrototypeSubnetByCidrModel.networkAcl(), networkAclIdentityModel);
-    assertEquals(subnetPrototypeSubnetByCidrModel.publicGateway(), publicGatewayIdentityModel);
-    assertEquals(subnetPrototypeSubnetByCidrModel.ipVersion(), "ipv4");
-    assertEquals(subnetPrototypeSubnetByCidrModel.resourceGroup(), resourceGroupIdentityModel);
-    assertEquals(subnetPrototypeSubnetByCidrModel.vpc(), vpcIdentityModel);
-    assertEquals(subnetPrototypeSubnetByCidrModel.ipv4CidrBlock(), "10.0.0.0/24");
-    assertEquals(subnetPrototypeSubnetByCidrModel.zone(), zoneIdentityModel);
+    assertEquals(subnetPrototypeSubnetByCIDRModel.name(), "my-subnet");
+    assertEquals(subnetPrototypeSubnetByCIDRModel.networkAcl(), networkAclIdentityModel);
+    assertEquals(subnetPrototypeSubnetByCIDRModel.publicGateway(), publicGatewayIdentityModel);
+    assertEquals(subnetPrototypeSubnetByCIDRModel.ipVersion(), "ipv4");
+    assertEquals(subnetPrototypeSubnetByCIDRModel.resourceGroup(), resourceGroupIdentityModel);
+    assertEquals(subnetPrototypeSubnetByCIDRModel.vpc(), vpcIdentityModel);
+    assertEquals(subnetPrototypeSubnetByCIDRModel.ipv4CIDRBlock(), "10.0.0.0/24");
+    assertEquals(subnetPrototypeSubnetByCIDRModel.zone(), zoneIdentityModel);
 
-    String json = TestUtilities.serialize(subnetPrototypeSubnetByCidrModel);
+    String json = TestUtilities.serialize(subnetPrototypeSubnetByCIDRModel);
 
-    SubnetPrototypeSubnetByCIDR subnetPrototypeSubnetByCidrModelNew = TestUtilities.deserialize(json, SubnetPrototypeSubnetByCIDR.class);
-    assertTrue(subnetPrototypeSubnetByCidrModelNew instanceof SubnetPrototypeSubnetByCIDR);
-    assertEquals(subnetPrototypeSubnetByCidrModelNew.name(), "my-subnet");
-    assertEquals(subnetPrototypeSubnetByCidrModelNew.networkAcl().toString(), networkAclIdentityModel.toString());
-    assertEquals(subnetPrototypeSubnetByCidrModelNew.publicGateway().toString(), publicGatewayIdentityModel.toString());
-    assertEquals(subnetPrototypeSubnetByCidrModelNew.ipVersion(), "ipv4");
-    assertEquals(subnetPrototypeSubnetByCidrModelNew.resourceGroup().toString(), resourceGroupIdentityModel.toString());
-    assertEquals(subnetPrototypeSubnetByCidrModelNew.vpc().toString(), vpcIdentityModel.toString());
-    assertEquals(subnetPrototypeSubnetByCidrModelNew.ipv4CidrBlock(), "10.0.0.0/24");
-    assertEquals(subnetPrototypeSubnetByCidrModelNew.zone().toString(), zoneIdentityModel.toString());
+    SubnetPrototypeSubnetByCIDR subnetPrototypeSubnetByCIDRModelNew = TestUtilities.deserialize(json, SubnetPrototypeSubnetByCIDR.class);
+    assertTrue(subnetPrototypeSubnetByCIDRModelNew instanceof SubnetPrototypeSubnetByCIDR);
+    assertEquals(subnetPrototypeSubnetByCIDRModelNew.name(), "my-subnet");
+    assertEquals(subnetPrototypeSubnetByCIDRModelNew.networkAcl().toString(), networkAclIdentityModel.toString());
+    assertEquals(subnetPrototypeSubnetByCIDRModelNew.publicGateway().toString(), publicGatewayIdentityModel.toString());
+    assertEquals(subnetPrototypeSubnetByCIDRModelNew.ipVersion(), "ipv4");
+    assertEquals(subnetPrototypeSubnetByCIDRModelNew.resourceGroup().toString(), resourceGroupIdentityModel.toString());
+    assertEquals(subnetPrototypeSubnetByCIDRModelNew.vpc().toString(), vpcIdentityModel.toString());
+    assertEquals(subnetPrototypeSubnetByCIDRModelNew.ipv4CIDRBlock(), "10.0.0.0/24");
+    assertEquals(subnetPrototypeSubnetByCIDRModelNew.zone().toString(), zoneIdentityModel.toString());
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

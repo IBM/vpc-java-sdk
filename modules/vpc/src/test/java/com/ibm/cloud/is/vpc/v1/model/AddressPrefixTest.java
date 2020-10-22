@@ -37,7 +37,7 @@ public class AddressPrefixTest {
     assertNull(addressPrefixModel.getHref());
     assertNull(addressPrefixModel.getName());
     assertNull(addressPrefixModel.isIsDefault());
-    assertNull(addressPrefixModel.getCidr());
+    assertNull(addressPrefixModel.getCIDR());
     assertNull(addressPrefixModel.getCreatedAt());
     assertNull(addressPrefixModel.isHasSubnets());
     assertNull(addressPrefixModel.getZone());

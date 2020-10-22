@@ -13,7 +13,7 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
-import com.ibm.cloud.is.vpc.v1.model.RemoveVpnGatewayConnectionPeerCidrOptions;
+import com.ibm.cloud.is.vpc.v1.model.RemoveVpnGatewayConnectionPeerCIDROptions;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -23,29 +23,29 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
 /**
- * Unit test class for the RemoveVpnGatewayConnectionPeerCidrOptions model.
+ * Unit test class for the RemoveVpnGatewayConnectionPeerCIDROptions model.
  */
-public class RemoveVpnGatewayConnectionPeerCidrOptionsTest {
+public class RemoveVpnGatewayConnectionPeerCIDROptionsTest {
   final HashMap<String, InputStream> mockStreamMap = TestUtilities.createMockStreamMap();
   final List<FileWithMetadata> mockListFileWithMetadata = TestUtilities.creatMockListFileWithMetadata();
 
   @Test
-  public void testRemoveVpnGatewayConnectionPeerCidrOptions() throws Throwable {
-    RemoveVpnGatewayConnectionPeerCidrOptions removeVpnGatewayConnectionPeerCidrOptionsModel = new RemoveVpnGatewayConnectionPeerCidrOptions.Builder()
+  public void testRemoveVpnGatewayConnectionPeerCIDROptions() throws Throwable {
+    RemoveVpnGatewayConnectionPeerCIDROptions removeVpnGatewayConnectionPeerCIDROptionsModel = new RemoveVpnGatewayConnectionPeerCIDROptions.Builder()
       .vpnGatewayId("testString")
       .id("testString")
       .cidrPrefix("testString")
       .prefixLength("testString")
       .build();
-    assertEquals(removeVpnGatewayConnectionPeerCidrOptionsModel.vpnGatewayId(), "testString");
-    assertEquals(removeVpnGatewayConnectionPeerCidrOptionsModel.id(), "testString");
-    assertEquals(removeVpnGatewayConnectionPeerCidrOptionsModel.cidrPrefix(), "testString");
-    assertEquals(removeVpnGatewayConnectionPeerCidrOptionsModel.prefixLength(), "testString");
+    assertEquals(removeVpnGatewayConnectionPeerCIDROptionsModel.vpnGatewayId(), "testString");
+    assertEquals(removeVpnGatewayConnectionPeerCIDROptionsModel.id(), "testString");
+    assertEquals(removeVpnGatewayConnectionPeerCIDROptionsModel.cidrPrefix(), "testString");
+    assertEquals(removeVpnGatewayConnectionPeerCIDROptionsModel.prefixLength(), "testString");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)
-  public void testRemoveVpnGatewayConnectionPeerCidrOptionsError() throws Throwable {
-    new RemoveVpnGatewayConnectionPeerCidrOptions.Builder().build();
+  public void testRemoveVpnGatewayConnectionPeerCIDROptionsError() throws Throwable {
+    new RemoveVpnGatewayConnectionPeerCIDROptions.Builder().build();
   }
 
 }

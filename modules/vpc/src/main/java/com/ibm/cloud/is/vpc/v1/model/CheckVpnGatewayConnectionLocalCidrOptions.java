@@ -15,9 +15,9 @@ package com.ibm.cloud.is.vpc.v1.model;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * The checkVpnGatewayConnectionLocalCidr options.
+ * The checkVpnGatewayConnectionLocalCIDR options.
  */
-public class CheckVpnGatewayConnectionLocalCidrOptions extends GenericModel {
+public class CheckVpnGatewayConnectionLocalCIDROptions extends GenericModel {
 
   protected String vpnGatewayId;
   protected String id;
@@ -33,11 +33,11 @@ public class CheckVpnGatewayConnectionLocalCidrOptions extends GenericModel {
     private String cidrPrefix;
     private String prefixLength;
 
-    private Builder(CheckVpnGatewayConnectionLocalCidrOptions checkVpnGatewayConnectionLocalCidrOptions) {
-      this.vpnGatewayId = checkVpnGatewayConnectionLocalCidrOptions.vpnGatewayId;
-      this.id = checkVpnGatewayConnectionLocalCidrOptions.id;
-      this.cidrPrefix = checkVpnGatewayConnectionLocalCidrOptions.cidrPrefix;
-      this.prefixLength = checkVpnGatewayConnectionLocalCidrOptions.prefixLength;
+    private Builder(CheckVpnGatewayConnectionLocalCIDROptions checkVpnGatewayConnectionLocalCIDROptions) {
+      this.vpnGatewayId = checkVpnGatewayConnectionLocalCIDROptions.vpnGatewayId;
+      this.id = checkVpnGatewayConnectionLocalCIDROptions.id;
+      this.cidrPrefix = checkVpnGatewayConnectionLocalCIDROptions.cidrPrefix;
+      this.prefixLength = checkVpnGatewayConnectionLocalCIDROptions.prefixLength;
     }
 
     /**
@@ -62,19 +62,19 @@ public class CheckVpnGatewayConnectionLocalCidrOptions extends GenericModel {
     }
 
     /**
-     * Builds a CheckVpnGatewayConnectionLocalCidrOptions.
+     * Builds a CheckVpnGatewayConnectionLocalCIDROptions.
      *
-     * @return the new CheckVpnGatewayConnectionLocalCidrOptions instance
+     * @return the new CheckVpnGatewayConnectionLocalCIDROptions instance
      */
-    public CheckVpnGatewayConnectionLocalCidrOptions build() {
-      return new CheckVpnGatewayConnectionLocalCidrOptions(this);
+    public CheckVpnGatewayConnectionLocalCIDROptions build() {
+      return new CheckVpnGatewayConnectionLocalCIDROptions(this);
     }
 
     /**
      * Set the vpnGatewayId.
      *
      * @param vpnGatewayId the vpnGatewayId
-     * @return the CheckVpnGatewayConnectionLocalCidrOptions builder
+     * @return the CheckVpnGatewayConnectionLocalCIDROptions builder
      */
     public Builder vpnGatewayId(String vpnGatewayId) {
       this.vpnGatewayId = vpnGatewayId;
@@ -85,7 +85,7 @@ public class CheckVpnGatewayConnectionLocalCidrOptions extends GenericModel {
      * Set the id.
      *
      * @param id the id
-     * @return the CheckVpnGatewayConnectionLocalCidrOptions builder
+     * @return the CheckVpnGatewayConnectionLocalCIDROptions builder
      */
     public Builder id(String id) {
       this.id = id;
@@ -96,7 +96,7 @@ public class CheckVpnGatewayConnectionLocalCidrOptions extends GenericModel {
      * Set the cidrPrefix.
      *
      * @param cidrPrefix the cidrPrefix
-     * @return the CheckVpnGatewayConnectionLocalCidrOptions builder
+     * @return the CheckVpnGatewayConnectionLocalCIDROptions builder
      */
     public Builder cidrPrefix(String cidrPrefix) {
       this.cidrPrefix = cidrPrefix;
@@ -107,7 +107,7 @@ public class CheckVpnGatewayConnectionLocalCidrOptions extends GenericModel {
      * Set the prefixLength.
      *
      * @param prefixLength the prefixLength
-     * @return the CheckVpnGatewayConnectionLocalCidrOptions builder
+     * @return the CheckVpnGatewayConnectionLocalCIDROptions builder
      */
     public Builder prefixLength(String prefixLength) {
       this.prefixLength = prefixLength;
@@ -115,7 +115,7 @@ public class CheckVpnGatewayConnectionLocalCidrOptions extends GenericModel {
     }
   }
 
-  protected CheckVpnGatewayConnectionLocalCidrOptions(Builder builder) {
+  protected CheckVpnGatewayConnectionLocalCIDROptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.vpnGatewayId,
       "vpnGatewayId cannot be empty");
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,
@@ -133,7 +133,7 @@ public class CheckVpnGatewayConnectionLocalCidrOptions extends GenericModel {
   /**
    * New builder.
    *
-   * @return a CheckVpnGatewayConnectionLocalCidrOptions builder
+   * @return a CheckVpnGatewayConnectionLocalCIDROptions builder
    */
   public Builder newBuilder() {
     return new Builder(this);

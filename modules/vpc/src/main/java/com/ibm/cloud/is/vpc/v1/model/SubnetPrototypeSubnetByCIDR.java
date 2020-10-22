@@ -36,18 +36,18 @@ public class SubnetPrototypeSubnetByCIDR extends SubnetPrototype {
     private String ipVersion;
     private ResourceGroupIdentity resourceGroup;
     private VPCIdentity vpc;
-    private String ipv4CidrBlock;
+    private String ipv4CIDRBlock;
     private ZoneIdentity zone;
 
-    public Builder(SubnetPrototype subnetPrototypeSubnetByCidr) {
-      this.name = subnetPrototypeSubnetByCidr.name;
-      this.networkAcl = subnetPrototypeSubnetByCidr.networkAcl;
-      this.publicGateway = subnetPrototypeSubnetByCidr.publicGateway;
-      this.ipVersion = subnetPrototypeSubnetByCidr.ipVersion;
-      this.resourceGroup = subnetPrototypeSubnetByCidr.resourceGroup;
-      this.vpc = subnetPrototypeSubnetByCidr.vpc;
-      this.ipv4CidrBlock = subnetPrototypeSubnetByCidr.ipv4CidrBlock;
-      this.zone = subnetPrototypeSubnetByCidr.zone;
+    public Builder(SubnetPrototype subnetPrototypeSubnetByCIDR) {
+      this.name = subnetPrototypeSubnetByCIDR.name;
+      this.networkAcl = subnetPrototypeSubnetByCIDR.networkAcl;
+      this.publicGateway = subnetPrototypeSubnetByCIDR.publicGateway;
+      this.ipVersion = subnetPrototypeSubnetByCIDR.ipVersion;
+      this.resourceGroup = subnetPrototypeSubnetByCIDR.resourceGroup;
+      this.vpc = subnetPrototypeSubnetByCIDR.vpc;
+      this.ipv4CIDRBlock = subnetPrototypeSubnetByCIDR.ipv4CIDRBlock;
+      this.zone = subnetPrototypeSubnetByCIDR.zone;
     }
 
     /**
@@ -60,11 +60,11 @@ public class SubnetPrototypeSubnetByCIDR extends SubnetPrototype {
      * Instantiates a new builder with required properties.
      *
      * @param vpc the vpc
-     * @param ipv4CidrBlock the ipv4CidrBlock
+     * @param ipv4CIDRBlock the ipv4CIDRBlock
      */
-    public Builder(VPCIdentity vpc, String ipv4CidrBlock) {
+    public Builder(VPCIdentity vpc, String ipv4CIDRBlock) {
       this.vpc = vpc;
-      this.ipv4CidrBlock = ipv4CidrBlock;
+      this.ipv4CIDRBlock = ipv4CIDRBlock;
     }
 
     /**
@@ -143,13 +143,13 @@ public class SubnetPrototypeSubnetByCIDR extends SubnetPrototype {
     }
 
     /**
-     * Set the ipv4CidrBlock.
+     * Set the ipv4CIDRBlock.
      *
-     * @param ipv4CidrBlock the ipv4CidrBlock
+     * @param ipv4CIDRBlock the ipv4CIDRBlock
      * @return the SubnetPrototypeSubnetByCIDR builder
      */
-    public Builder ipv4CidrBlock(String ipv4CidrBlock) {
-      this.ipv4CidrBlock = ipv4CidrBlock;
+    public Builder ipv4CIDRBlock(String ipv4CIDRBlock) {
+      this.ipv4CIDRBlock = ipv4CIDRBlock;
       return this;
     }
 
@@ -168,15 +168,15 @@ public class SubnetPrototypeSubnetByCIDR extends SubnetPrototype {
   protected SubnetPrototypeSubnetByCIDR(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.vpc,
       "vpc cannot be null");
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.ipv4CidrBlock,
-      "ipv4CidrBlock cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.ipv4CIDRBlock,
+      "ipv4CIDRBlock cannot be null");
     name = builder.name;
     networkAcl = builder.networkAcl;
     publicGateway = builder.publicGateway;
     ipVersion = builder.ipVersion;
     resourceGroup = builder.resourceGroup;
     vpc = builder.vpc;
-    ipv4CidrBlock = builder.ipv4CidrBlock;
+    ipv4CIDRBlock = builder.ipv4CIDRBlock;
     zone = builder.zone;
   }
 

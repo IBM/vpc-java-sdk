@@ -60,7 +60,7 @@ public class SecurityGroupRuleRemote extends GenericModel {
    *
    * @return the cidrBlock
    */
-  public String getCidrBlock() {
+  public String getCIDRBlock() {
     return cidrBlock;
   }
 

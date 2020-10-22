@@ -21,12 +21,12 @@ import com.google.gson.JsonObject;
 import com.ibm.cloud.is.common.SdkCommon;
 import com.ibm.cloud.is.vpc.v1.model.AddInstanceNetworkInterfaceFloatingIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.AddSecurityGroupNetworkInterfaceOptions;
-import com.ibm.cloud.is.vpc.v1.model.AddVpnGatewayConnectionLocalCidrOptions;
-import com.ibm.cloud.is.vpc.v1.model.AddVpnGatewayConnectionPeerCidrOptions;
+import com.ibm.cloud.is.vpc.v1.model.AddVpnGatewayConnectionLocalCIDROptions;
+import com.ibm.cloud.is.vpc.v1.model.AddVpnGatewayConnectionPeerCIDROptions;
 import com.ibm.cloud.is.vpc.v1.model.AddressPrefix;
 import com.ibm.cloud.is.vpc.v1.model.AddressPrefixCollection;
-import com.ibm.cloud.is.vpc.v1.model.CheckVpnGatewayConnectionLocalCidrOptions;
-import com.ibm.cloud.is.vpc.v1.model.CheckVpnGatewayConnectionPeerCidrOptions;
+import com.ibm.cloud.is.vpc.v1.model.CheckVpnGatewayConnectionLocalCIDROptions;
+import com.ibm.cloud.is.vpc.v1.model.CheckVpnGatewayConnectionPeerCIDROptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateFloatingIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateFlowLogCollectorOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateIkePolicyOptions;
@@ -244,8 +244,8 @@ import com.ibm.cloud.is.vpc.v1.model.Region;
 import com.ibm.cloud.is.vpc.v1.model.RegionCollection;
 import com.ibm.cloud.is.vpc.v1.model.RemoveInstanceNetworkInterfaceFloatingIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.RemoveSecurityGroupNetworkInterfaceOptions;
-import com.ibm.cloud.is.vpc.v1.model.RemoveVpnGatewayConnectionLocalCidrOptions;
-import com.ibm.cloud.is.vpc.v1.model.RemoveVpnGatewayConnectionPeerCidrOptions;
+import com.ibm.cloud.is.vpc.v1.model.RemoveVpnGatewayConnectionLocalCIDROptions;
+import com.ibm.cloud.is.vpc.v1.model.RemoveVpnGatewayConnectionPeerCIDROptions;
 import com.ibm.cloud.is.vpc.v1.model.ReplaceLoadBalancerPoolMembersOptions;
 import com.ibm.cloud.is.vpc.v1.model.ReplaceSubnetNetworkAclOptions;
 import com.ibm.cloud.is.vpc.v1.model.Route;
@@ -5193,19 +5193,19 @@ public class Vpc extends BaseService {
    *
    * This request removes a CIDR from a VPN gateway connection.
    *
-   * @param removeVpnGatewayConnectionLocalCidrOptions the {@link RemoveVpnGatewayConnectionLocalCidrOptions} containing the options for the call
+   * @param removeVpnGatewayConnectionLocalCIDROptions the {@link RemoveVpnGatewayConnectionLocalCIDROptions} containing the options for the call
    * @return a {@link ServiceCall} with a void result
    */
-  public ServiceCall<Void> removeVpnGatewayConnectionLocalCidr(RemoveVpnGatewayConnectionLocalCidrOptions removeVpnGatewayConnectionLocalCidrOptions) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(removeVpnGatewayConnectionLocalCidrOptions,
-      "removeVpnGatewayConnectionLocalCidrOptions cannot be null");
+  public ServiceCall<Void> removeVpnGatewayConnectionLocalCIDR(RemoveVpnGatewayConnectionLocalCIDROptions removeVpnGatewayConnectionLocalCIDROptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(removeVpnGatewayConnectionLocalCIDROptions,
+      "removeVpnGatewayConnectionLocalCIDROptions cannot be null");
     Map<String, String> pathParamsMap = new HashMap<String, String>();
-    pathParamsMap.put("vpn_gateway_id", removeVpnGatewayConnectionLocalCidrOptions.vpnGatewayId());
-    pathParamsMap.put("id", removeVpnGatewayConnectionLocalCidrOptions.id());
-    pathParamsMap.put("cidr_prefix", removeVpnGatewayConnectionLocalCidrOptions.cidrPrefix());
-    pathParamsMap.put("prefix_length", removeVpnGatewayConnectionLocalCidrOptions.prefixLength());
+    pathParamsMap.put("vpn_gateway_id", removeVpnGatewayConnectionLocalCIDROptions.vpnGatewayId());
+    pathParamsMap.put("id", removeVpnGatewayConnectionLocalCIDROptions.id());
+    pathParamsMap.put("cidr_prefix", removeVpnGatewayConnectionLocalCIDROptions.cidrPrefix());
+    pathParamsMap.put("prefix_length", removeVpnGatewayConnectionLocalCIDROptions.prefixLength());
     RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/vpn_gateways/{vpn_gateway_id}/connections/{id}/local_cidrs/{cidr_prefix}/{prefix_length}", pathParamsMap));
-    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "removeVpnGatewayConnectionLocalCidr");
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "removeVpnGatewayConnectionLocalCIDR");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
@@ -5220,19 +5220,19 @@ public class Vpc extends BaseService {
    *
    * This request succeeds if a CIDR exists on the specified VPN gateway connection and fails otherwise.
    *
-   * @param checkVpnGatewayConnectionLocalCidrOptions the {@link CheckVpnGatewayConnectionLocalCidrOptions} containing the options for the call
+   * @param checkVpnGatewayConnectionLocalCIDROptions the {@link CheckVpnGatewayConnectionLocalCIDROptions} containing the options for the call
    * @return a {@link ServiceCall} with a void result
    */
-  public ServiceCall<Void> checkVpnGatewayConnectionLocalCidr(CheckVpnGatewayConnectionLocalCidrOptions checkVpnGatewayConnectionLocalCidrOptions) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(checkVpnGatewayConnectionLocalCidrOptions,
-      "checkVpnGatewayConnectionLocalCidrOptions cannot be null");
+  public ServiceCall<Void> checkVpnGatewayConnectionLocalCIDR(CheckVpnGatewayConnectionLocalCIDROptions checkVpnGatewayConnectionLocalCIDROptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(checkVpnGatewayConnectionLocalCIDROptions,
+      "checkVpnGatewayConnectionLocalCIDROptions cannot be null");
     Map<String, String> pathParamsMap = new HashMap<String, String>();
-    pathParamsMap.put("vpn_gateway_id", checkVpnGatewayConnectionLocalCidrOptions.vpnGatewayId());
-    pathParamsMap.put("id", checkVpnGatewayConnectionLocalCidrOptions.id());
-    pathParamsMap.put("cidr_prefix", checkVpnGatewayConnectionLocalCidrOptions.cidrPrefix());
-    pathParamsMap.put("prefix_length", checkVpnGatewayConnectionLocalCidrOptions.prefixLength());
+    pathParamsMap.put("vpn_gateway_id", checkVpnGatewayConnectionLocalCIDROptions.vpnGatewayId());
+    pathParamsMap.put("id", checkVpnGatewayConnectionLocalCIDROptions.id());
+    pathParamsMap.put("cidr_prefix", checkVpnGatewayConnectionLocalCIDROptions.cidrPrefix());
+    pathParamsMap.put("prefix_length", checkVpnGatewayConnectionLocalCIDROptions.prefixLength());
     RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/vpn_gateways/{vpn_gateway_id}/connections/{id}/local_cidrs/{cidr_prefix}/{prefix_length}", pathParamsMap));
-    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "checkVpnGatewayConnectionLocalCidr");
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "checkVpnGatewayConnectionLocalCIDR");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
@@ -5248,19 +5248,19 @@ public class Vpc extends BaseService {
    * This request adds the specified CIDR to the specified VPN gateway connection. A request body is not required, and
    * if supplied, is ignored. This request succeeds if the CIDR already exists on the specified VPN gateway connection.
    *
-   * @param addVpnGatewayConnectionLocalCidrOptions the {@link AddVpnGatewayConnectionLocalCidrOptions} containing the options for the call
+   * @param addVpnGatewayConnectionLocalCIDROptions the {@link AddVpnGatewayConnectionLocalCIDROptions} containing the options for the call
    * @return a {@link ServiceCall} with a void result
    */
-  public ServiceCall<Void> addVpnGatewayConnectionLocalCidr(AddVpnGatewayConnectionLocalCidrOptions addVpnGatewayConnectionLocalCidrOptions) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(addVpnGatewayConnectionLocalCidrOptions,
-      "addVpnGatewayConnectionLocalCidrOptions cannot be null");
+  public ServiceCall<Void> addVpnGatewayConnectionLocalCIDR(AddVpnGatewayConnectionLocalCIDROptions addVpnGatewayConnectionLocalCIDROptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(addVpnGatewayConnectionLocalCIDROptions,
+      "addVpnGatewayConnectionLocalCIDROptions cannot be null");
     Map<String, String> pathParamsMap = new HashMap<String, String>();
-    pathParamsMap.put("vpn_gateway_id", addVpnGatewayConnectionLocalCidrOptions.vpnGatewayId());
-    pathParamsMap.put("id", addVpnGatewayConnectionLocalCidrOptions.id());
-    pathParamsMap.put("cidr_prefix", addVpnGatewayConnectionLocalCidrOptions.cidrPrefix());
-    pathParamsMap.put("prefix_length", addVpnGatewayConnectionLocalCidrOptions.prefixLength());
+    pathParamsMap.put("vpn_gateway_id", addVpnGatewayConnectionLocalCIDROptions.vpnGatewayId());
+    pathParamsMap.put("id", addVpnGatewayConnectionLocalCIDROptions.id());
+    pathParamsMap.put("cidr_prefix", addVpnGatewayConnectionLocalCIDROptions.cidrPrefix());
+    pathParamsMap.put("prefix_length", addVpnGatewayConnectionLocalCIDROptions.prefixLength());
     RequestBuilder builder = RequestBuilder.put(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/vpn_gateways/{vpn_gateway_id}/connections/{id}/local_cidrs/{cidr_prefix}/{prefix_length}", pathParamsMap));
-    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "addVpnGatewayConnectionLocalCidr");
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "addVpnGatewayConnectionLocalCIDR");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
@@ -5302,19 +5302,19 @@ public class Vpc extends BaseService {
    *
    * This request removes a CIDR from a VPN gateway connection.
    *
-   * @param removeVpnGatewayConnectionPeerCidrOptions the {@link RemoveVpnGatewayConnectionPeerCidrOptions} containing the options for the call
+   * @param removeVpnGatewayConnectionPeerCIDROptions the {@link RemoveVpnGatewayConnectionPeerCIDROptions} containing the options for the call
    * @return a {@link ServiceCall} with a void result
    */
-  public ServiceCall<Void> removeVpnGatewayConnectionPeerCidr(RemoveVpnGatewayConnectionPeerCidrOptions removeVpnGatewayConnectionPeerCidrOptions) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(removeVpnGatewayConnectionPeerCidrOptions,
-      "removeVpnGatewayConnectionPeerCidrOptions cannot be null");
+  public ServiceCall<Void> removeVpnGatewayConnectionPeerCIDR(RemoveVpnGatewayConnectionPeerCIDROptions removeVpnGatewayConnectionPeerCIDROptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(removeVpnGatewayConnectionPeerCIDROptions,
+      "removeVpnGatewayConnectionPeerCIDROptions cannot be null");
     Map<String, String> pathParamsMap = new HashMap<String, String>();
-    pathParamsMap.put("vpn_gateway_id", removeVpnGatewayConnectionPeerCidrOptions.vpnGatewayId());
-    pathParamsMap.put("id", removeVpnGatewayConnectionPeerCidrOptions.id());
-    pathParamsMap.put("cidr_prefix", removeVpnGatewayConnectionPeerCidrOptions.cidrPrefix());
-    pathParamsMap.put("prefix_length", removeVpnGatewayConnectionPeerCidrOptions.prefixLength());
+    pathParamsMap.put("vpn_gateway_id", removeVpnGatewayConnectionPeerCIDROptions.vpnGatewayId());
+    pathParamsMap.put("id", removeVpnGatewayConnectionPeerCIDROptions.id());
+    pathParamsMap.put("cidr_prefix", removeVpnGatewayConnectionPeerCIDROptions.cidrPrefix());
+    pathParamsMap.put("prefix_length", removeVpnGatewayConnectionPeerCIDROptions.prefixLength());
     RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/vpn_gateways/{vpn_gateway_id}/connections/{id}/peer_cidrs/{cidr_prefix}/{prefix_length}", pathParamsMap));
-    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "removeVpnGatewayConnectionPeerCidr");
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "removeVpnGatewayConnectionPeerCIDR");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
@@ -5329,19 +5329,19 @@ public class Vpc extends BaseService {
    *
    * This request succeeds if a CIDR exists on the specified VPN gateway connection and fails otherwise.
    *
-   * @param checkVpnGatewayConnectionPeerCidrOptions the {@link CheckVpnGatewayConnectionPeerCidrOptions} containing the options for the call
+   * @param checkVpnGatewayConnectionPeerCIDROptions the {@link CheckVpnGatewayConnectionPeerCIDROptions} containing the options for the call
    * @return a {@link ServiceCall} with a void result
    */
-  public ServiceCall<Void> checkVpnGatewayConnectionPeerCidr(CheckVpnGatewayConnectionPeerCidrOptions checkVpnGatewayConnectionPeerCidrOptions) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(checkVpnGatewayConnectionPeerCidrOptions,
-      "checkVpnGatewayConnectionPeerCidrOptions cannot be null");
+  public ServiceCall<Void> checkVpnGatewayConnectionPeerCIDR(CheckVpnGatewayConnectionPeerCIDROptions checkVpnGatewayConnectionPeerCIDROptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(checkVpnGatewayConnectionPeerCIDROptions,
+      "checkVpnGatewayConnectionPeerCIDROptions cannot be null");
     Map<String, String> pathParamsMap = new HashMap<String, String>();
-    pathParamsMap.put("vpn_gateway_id", checkVpnGatewayConnectionPeerCidrOptions.vpnGatewayId());
-    pathParamsMap.put("id", checkVpnGatewayConnectionPeerCidrOptions.id());
-    pathParamsMap.put("cidr_prefix", checkVpnGatewayConnectionPeerCidrOptions.cidrPrefix());
-    pathParamsMap.put("prefix_length", checkVpnGatewayConnectionPeerCidrOptions.prefixLength());
+    pathParamsMap.put("vpn_gateway_id", checkVpnGatewayConnectionPeerCIDROptions.vpnGatewayId());
+    pathParamsMap.put("id", checkVpnGatewayConnectionPeerCIDROptions.id());
+    pathParamsMap.put("cidr_prefix", checkVpnGatewayConnectionPeerCIDROptions.cidrPrefix());
+    pathParamsMap.put("prefix_length", checkVpnGatewayConnectionPeerCIDROptions.prefixLength());
     RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/vpn_gateways/{vpn_gateway_id}/connections/{id}/peer_cidrs/{cidr_prefix}/{prefix_length}", pathParamsMap));
-    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "checkVpnGatewayConnectionPeerCidr");
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "checkVpnGatewayConnectionPeerCIDR");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
@@ -5357,19 +5357,19 @@ public class Vpc extends BaseService {
    * This request adds the specified CIDR to the specified VPN gateway connection. A request body is not required, and
    * if supplied, is ignored. This request succeeds if the CIDR already exists on the specified VPN gateway connection.
    *
-   * @param addVpnGatewayConnectionPeerCidrOptions the {@link AddVpnGatewayConnectionPeerCidrOptions} containing the options for the call
+   * @param addVpnGatewayConnectionPeerCIDROptions the {@link AddVpnGatewayConnectionPeerCIDROptions} containing the options for the call
    * @return a {@link ServiceCall} with a void result
    */
-  public ServiceCall<Void> addVpnGatewayConnectionPeerCidr(AddVpnGatewayConnectionPeerCidrOptions addVpnGatewayConnectionPeerCidrOptions) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(addVpnGatewayConnectionPeerCidrOptions,
-      "addVpnGatewayConnectionPeerCidrOptions cannot be null");
+  public ServiceCall<Void> addVpnGatewayConnectionPeerCIDR(AddVpnGatewayConnectionPeerCIDROptions addVpnGatewayConnectionPeerCIDROptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(addVpnGatewayConnectionPeerCIDROptions,
+      "addVpnGatewayConnectionPeerCIDROptions cannot be null");
     Map<String, String> pathParamsMap = new HashMap<String, String>();
-    pathParamsMap.put("vpn_gateway_id", addVpnGatewayConnectionPeerCidrOptions.vpnGatewayId());
-    pathParamsMap.put("id", addVpnGatewayConnectionPeerCidrOptions.id());
-    pathParamsMap.put("cidr_prefix", addVpnGatewayConnectionPeerCidrOptions.cidrPrefix());
-    pathParamsMap.put("prefix_length", addVpnGatewayConnectionPeerCidrOptions.prefixLength());
+    pathParamsMap.put("vpn_gateway_id", addVpnGatewayConnectionPeerCIDROptions.vpnGatewayId());
+    pathParamsMap.put("id", addVpnGatewayConnectionPeerCIDROptions.id());
+    pathParamsMap.put("cidr_prefix", addVpnGatewayConnectionPeerCIDROptions.cidrPrefix());
+    pathParamsMap.put("prefix_length", addVpnGatewayConnectionPeerCIDROptions.prefixLength());
     RequestBuilder builder = RequestBuilder.put(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/vpn_gateways/{vpn_gateway_id}/connections/{id}/peer_cidrs/{cidr_prefix}/{prefix_length}", pathParamsMap));
-    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "addVpnGatewayConnectionPeerCidr");
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "addVpnGatewayConnectionPeerCIDR");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }

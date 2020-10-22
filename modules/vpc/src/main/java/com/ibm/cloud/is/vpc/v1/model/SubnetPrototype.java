@@ -46,7 +46,7 @@ public class SubnetPrototype extends GenericModel {
   protected Long totalIpv4AddressCount;
   protected ZoneIdentity zone;
   @SerializedName("ipv4_cidr_block")
-  protected String ipv4CidrBlock;
+  protected String ipv4CIDRBlock;
 
   protected SubnetPrototype() {
   }
@@ -143,17 +143,17 @@ public class SubnetPrototype extends GenericModel {
   }
 
   /**
-   * Gets the ipv4CidrBlock.
+   * Gets the ipv4CIDRBlock.
    *
    * The IPv4 range of the subnet, expressed in CIDR format. The prefix length of the subnet's CIDR must be between `/8`
    * (16,777,216 addresses) and `/29` (8 addresses). The IPv4 range of the subnet's CIDR must fall within an existing
    * address prefix in the VPC. The subnet will be created in the zone of the address prefix that contains the IPv4
    * CIDR. If zone is specified, it must match the zone of the address prefix that contains the subnet's IPv4 CIDR.
    *
-   * @return the ipv4CidrBlock
+   * @return the ipv4CIDRBlock
    */
-  public String ipv4CidrBlock() {
-    return ipv4CidrBlock;
+  public String ipv4CIDRBlock() {
+    return ipv4CIDRBlock;
   }
 }
 

@@ -59,7 +59,7 @@ public class Subnet extends GenericModel {
   @SerializedName("created_at")
   protected Date createdAt;
   @SerializedName("ipv4_cidr_block")
-  protected String ipv4CidrBlock;
+  protected String ipv4CIDRBlock;
   @SerializedName("public_gateway")
   protected PublicGatewayReference publicGateway;
   protected String status;
@@ -172,14 +172,14 @@ public class Subnet extends GenericModel {
   }
 
   /**
-   * Gets the ipv4CidrBlock.
+   * Gets the ipv4CIDRBlock.
    *
    * The IPv4 range of the subnet, expressed in CIDR format.
    *
-   * @return the ipv4CidrBlock
+   * @return the ipv4CIDRBlock
    */
-  public String getIpv4CidrBlock() {
-    return ipv4CidrBlock;
+  public String getIpv4CIDRBlock() {
+    return ipv4CIDRBlock;
   }
 
   /**
