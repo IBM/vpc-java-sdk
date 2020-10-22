@@ -13,17 +13,12 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
-import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolHealthMonitorPatch;
-import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolSessionPersistencePatch;
 import com.ibm.cloud.is.vpc.v1.model.UpdateLoadBalancerPoolOptions;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
-
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-
 import java.util.HashMap;
 import java.util.List;
-
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
@@ -36,42 +31,14 @@ public class UpdateLoadBalancerPoolOptionsTest {
 
   @Test
   public void testUpdateLoadBalancerPoolOptions() throws Throwable {
-    LoadBalancerPoolHealthMonitorPatch loadBalancerPoolHealthMonitorPatchModel = new LoadBalancerPoolHealthMonitorPatch.Builder()
-      .delay(Long.valueOf("5"))
-      .maxRetries(Long.valueOf("2"))
-      .port(Long.valueOf("22"))
-      .timeout(Long.valueOf("2"))
-      .type("http")
-      .urlPath("/")
-      .build();
-    assertEquals(loadBalancerPoolHealthMonitorPatchModel.delay(), Long.valueOf("5"));
-    assertEquals(loadBalancerPoolHealthMonitorPatchModel.maxRetries(), Long.valueOf("2"));
-    assertEquals(loadBalancerPoolHealthMonitorPatchModel.port(), Long.valueOf("22"));
-    assertEquals(loadBalancerPoolHealthMonitorPatchModel.timeout(), Long.valueOf("2"));
-    assertEquals(loadBalancerPoolHealthMonitorPatchModel.type(), "http");
-    assertEquals(loadBalancerPoolHealthMonitorPatchModel.urlPath(), "/");
-
-    LoadBalancerPoolSessionPersistencePatch loadBalancerPoolSessionPersistencePatchModel = new LoadBalancerPoolSessionPersistencePatch.Builder()
-      .type("source_ip")
-      .build();
-    assertEquals(loadBalancerPoolSessionPersistencePatchModel.type(), "source_ip");
-
     UpdateLoadBalancerPoolOptions updateLoadBalancerPoolOptionsModel = new UpdateLoadBalancerPoolOptions.Builder()
       .loadBalancerId("testString")
       .id("testString")
-      .name("my-load-balancer-pool")
-      .algorithm("least_connections")
-      .protocol("http")
-      .healthMonitor(loadBalancerPoolHealthMonitorPatchModel)
-      .sessionPersistence(loadBalancerPoolSessionPersistencePatchModel)
+      .loadBalancerPoolPatch(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
       .build();
     assertEquals(updateLoadBalancerPoolOptionsModel.loadBalancerId(), "testString");
     assertEquals(updateLoadBalancerPoolOptionsModel.id(), "testString");
-    assertEquals(updateLoadBalancerPoolOptionsModel.name(), "my-load-balancer-pool");
-    assertEquals(updateLoadBalancerPoolOptionsModel.algorithm(), "least_connections");
-    assertEquals(updateLoadBalancerPoolOptionsModel.protocol(), "http");
-    assertEquals(updateLoadBalancerPoolOptionsModel.healthMonitor(), loadBalancerPoolHealthMonitorPatchModel);
-    assertEquals(updateLoadBalancerPoolOptionsModel.sessionPersistence(), loadBalancerPoolSessionPersistencePatchModel);
+    assertEquals(updateLoadBalancerPoolOptionsModel.loadBalancerPoolPatch(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } });
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

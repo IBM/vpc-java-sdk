@@ -12,6 +12,8 @@
  */
 package com.ibm.cloud.is.vpc.v1.model;
 
+import java.util.Map;
+
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
@@ -20,18 +22,18 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class UpdateLoadBalancerOptions extends GenericModel {
 
   protected String id;
-  protected String name;
+  protected Map<String, Object> loadBalancerPatch;
 
   /**
    * Builder.
    */
   public static class Builder {
     private String id;
-    private String name;
+    private Map<String, Object> loadBalancerPatch;
 
     private Builder(UpdateLoadBalancerOptions updateLoadBalancerOptions) {
       this.id = updateLoadBalancerOptions.id;
-      this.name = updateLoadBalancerOptions.name;
+      this.loadBalancerPatch = updateLoadBalancerOptions.loadBalancerPatch;
     }
 
     /**
@@ -44,9 +46,11 @@ public class UpdateLoadBalancerOptions extends GenericModel {
      * Instantiates a new builder with required properties.
      *
      * @param id the id
+     * @param loadBalancerPatch the loadBalancerPatch
      */
-    public Builder(String id) {
+    public Builder(String id, Map<String, Object> loadBalancerPatch) {
       this.id = id;
+      this.loadBalancerPatch = loadBalancerPatch;
     }
 
     /**
@@ -70,13 +74,13 @@ public class UpdateLoadBalancerOptions extends GenericModel {
     }
 
     /**
-     * Set the name.
+     * Set the loadBalancerPatch.
      *
-     * @param name the name
+     * @param loadBalancerPatch the loadBalancerPatch
      * @return the UpdateLoadBalancerOptions builder
      */
-    public Builder name(String name) {
-      this.name = name;
+    public Builder loadBalancerPatch(Map<String, Object> loadBalancerPatch) {
+      this.loadBalancerPatch = loadBalancerPatch;
       return this;
     }
   }
@@ -84,8 +88,10 @@ public class UpdateLoadBalancerOptions extends GenericModel {
   protected UpdateLoadBalancerOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,
       "id cannot be empty");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.loadBalancerPatch,
+      "loadBalancerPatch cannot be null");
     id = builder.id;
-    name = builder.name;
+    loadBalancerPatch = builder.loadBalancerPatch;
   }
 
   /**
@@ -109,14 +115,14 @@ public class UpdateLoadBalancerOptions extends GenericModel {
   }
 
   /**
-   * Gets the name.
+   * Gets the loadBalancerPatch.
    *
-   * The unique user-defined name for this load balancer.
+   * The load balancer patch.
    *
-   * @return the name
+   * @return the loadBalancerPatch
    */
-  public String name() {
-    return name;
+  public Map<String, Object> loadBalancerPatch() {
+    return loadBalancerPatch;
   }
 }
 

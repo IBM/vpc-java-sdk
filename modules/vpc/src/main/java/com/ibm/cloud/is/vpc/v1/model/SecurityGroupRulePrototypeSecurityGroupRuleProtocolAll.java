@@ -76,15 +76,6 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolAll extends Secu
     }
 
     /**
-     * Instantiates a new builder with required properties.
-     *
-     * @param direction the direction
-     */
-    public Builder(String direction) {
-      this.direction = direction;
-    }
-
-    /**
      * Builds a SecurityGroupRulePrototypeSecurityGroupRuleProtocolAll.
      *
      * @return the new SecurityGroupRulePrototypeSecurityGroupRuleProtocolAll instance

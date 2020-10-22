@@ -15,13 +15,10 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.UpdateVolumeOptions;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
-
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-
 import java.util.HashMap;
 import java.util.List;
-
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
@@ -36,10 +33,10 @@ public class UpdateVolumeOptionsTest {
   public void testUpdateVolumeOptions() throws Throwable {
     UpdateVolumeOptions updateVolumeOptionsModel = new UpdateVolumeOptions.Builder()
       .id("testString")
-      .name("my-volume")
+      .volumePatch(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
       .build();
     assertEquals(updateVolumeOptionsModel.id(), "testString");
-    assertEquals(updateVolumeOptionsModel.name(), "my-volume");
+    assertEquals(updateVolumeOptionsModel.volumePatch(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } });
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

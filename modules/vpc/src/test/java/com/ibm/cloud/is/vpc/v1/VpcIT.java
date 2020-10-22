@@ -21,6 +21,7 @@ import com.ibm.cloud.is.vpc.v1.model.AddVpnGatewayConnectionPeerCidrOptions;
 import com.ibm.cloud.is.vpc.v1.model.AddressPrefix;
 import com.ibm.cloud.is.vpc.v1.model.AddressPrefixCollection;
 import com.ibm.cloud.is.vpc.v1.model.AddressPrefixCollection;
+import com.ibm.cloud.is.vpc.v1.model.AddressPrefixPatch;
 import com.ibm.cloud.is.vpc.v1.model.CheckVpnGatewayConnectionLocalCidrOptions;
 import com.ibm.cloud.is.vpc.v1.model.CheckVpnGatewayConnectionPeerCidrOptions;
 import com.ibm.cloud.is.vpc.v1.model.CloudObjectStorageBucketIdentityByName;
@@ -98,12 +99,14 @@ import com.ibm.cloud.is.vpc.v1.model.DeleteVpnGatewayConnectionOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteVpnGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIP;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPCollection;
+import com.ibm.cloud.is.vpc.v1.model.FloatingIPPatch;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPPrototypeFloatingIPByZone;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPUnpaginatedCollection;
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollector;
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorCollection;
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorCollection;
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorCollection;
+import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorPatch;
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorPrototypeTargetNetworkInterfaceIdentityNetworkInterfaceIdentityNetworkInterfaceIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorPrototypeTargetSubnetIdentitySubnetIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.GetFloatingIpOptions;
@@ -157,13 +160,16 @@ import com.ibm.cloud.is.vpc.v1.model.GetVpnGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.IKEPolicy;
 import com.ibm.cloud.is.vpc.v1.model.IKEPolicyCollection;
 import com.ibm.cloud.is.vpc.v1.model.IKEPolicyIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.IKEPolicyPatch;
 import com.ibm.cloud.is.vpc.v1.model.IPsecPolicy;
 import com.ibm.cloud.is.vpc.v1.model.IPsecPolicyCollection;
 import com.ibm.cloud.is.vpc.v1.model.IPsecPolicyIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.IPsecPolicyPatch;
 import com.ibm.cloud.is.vpc.v1.model.Image;
 import com.ibm.cloud.is.vpc.v1.model.ImageCollection;
 import com.ibm.cloud.is.vpc.v1.model.ImageFilePrototype;
 import com.ibm.cloud.is.vpc.v1.model.ImageIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.ImagePatch;
 import com.ibm.cloud.is.vpc.v1.model.ImagePrototypeImageByFile;
 import com.ibm.cloud.is.vpc.v1.model.Instance;
 import com.ibm.cloud.is.vpc.v1.model.InstanceAction;
@@ -172,13 +178,18 @@ import com.ibm.cloud.is.vpc.v1.model.InstanceGroup;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupCollection;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManager;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerCollection;
+import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerPatch;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerPolicy;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerPolicyCollection;
+import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerPolicyPatch;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerPolicyPrototypeInstanceGroupManagerTargetPolicyPrototype;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerPrototypeInstanceGroupManagerAutoScalePrototype;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupMembership;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupMembershipCollection;
+import com.ibm.cloud.is.vpc.v1.model.InstanceGroupMembershipPatch;
+import com.ibm.cloud.is.vpc.v1.model.InstanceGroupPatch;
 import com.ibm.cloud.is.vpc.v1.model.InstanceInitialization;
+import com.ibm.cloud.is.vpc.v1.model.InstancePatch;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfile;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileCollection;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileCollection;
@@ -188,11 +199,13 @@ import com.ibm.cloud.is.vpc.v1.model.InstancePrototypeInstanceByImage;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplate;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateCollection;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.InstanceTemplatePatch;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplatePrototypeInstanceByImage;
 import com.ibm.cloud.is.vpc.v1.model.Key;
 import com.ibm.cloud.is.vpc.v1.model.KeyCollection;
 import com.ibm.cloud.is.vpc.v1.model.KeyIdentity;
 import com.ibm.cloud.is.vpc.v1.model.KeyIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.KeyPatch;
 import com.ibm.cloud.is.vpc.v1.model.ListFloatingIpsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListFlowLogCollectorsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListIkePoliciesOptions;
@@ -246,18 +259,26 @@ import com.ibm.cloud.is.vpc.v1.model.LoadBalancer;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerCollection;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListener;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerCollection;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPatch;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicy;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyCollection;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyPatch;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyRule;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyRuleCollection;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyRulePatch;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPatch;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPool;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolCollection;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolHealthMonitorPatch;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolHealthMonitorPrototype;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolMember;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolMemberCollection;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolMemberPatch;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolMemberPrototype;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolMemberTargetPrototypeIP;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolPatch;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolSessionPersistencePatch;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfile;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileCollection;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerStatistics;
@@ -266,16 +287,19 @@ import com.ibm.cloud.is.vpc.v1.model.NetworkACLCollection;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.NetworkACLPatch;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLPrototypeNetworkACLByRules;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLRule;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLRule;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLRuleCollection;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLRuleIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.NetworkACLRulePatch;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLRulePrototypeNetworkACLContext;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolAll;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLRulePrototypeNetworkACLRuleProtocolICMP;
 import com.ibm.cloud.is.vpc.v1.model.NetworkInterface;
 import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceCollection;
+import com.ibm.cloud.is.vpc.v1.model.NetworkInterfacePatch;
 import com.ibm.cloud.is.vpc.v1.model.NetworkInterfacePrototype;
 import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceUnpaginatedCollection;
 import com.ibm.cloud.is.vpc.v1.model.OperatingSystem;
@@ -284,6 +308,7 @@ import com.ibm.cloud.is.vpc.v1.model.OperatingSystemIdentityByName;
 import com.ibm.cloud.is.vpc.v1.model.PublicGateway;
 import com.ibm.cloud.is.vpc.v1.model.PublicGatewayCollection;
 import com.ibm.cloud.is.vpc.v1.model.PublicGatewayIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.PublicGatewayPatch;
 import com.ibm.cloud.is.vpc.v1.model.PublicGatewayPrototypeFloatingIpFloatingIPIdentityFloatingIPIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.Region;
 import com.ibm.cloud.is.vpc.v1.model.RegionCollection;
@@ -297,13 +322,16 @@ import com.ibm.cloud.is.vpc.v1.model.ResourceGroupIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.Route;
 import com.ibm.cloud.is.vpc.v1.model.RouteCollection;
 import com.ibm.cloud.is.vpc.v1.model.RouteNextHopPrototypeRouteNextHopIP;
+import com.ibm.cloud.is.vpc.v1.model.RoutePatch;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroup;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupCollection;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupCollection;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupCollection;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupIdentity;
+import com.ibm.cloud.is.vpc.v1.model.SecurityGroupPatch;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRule;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleCollection;
+import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRulePatch;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRulePatchRemoteIP;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRulePrototype;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRulePrototypeRemoteIP;
@@ -313,6 +341,7 @@ import com.ibm.cloud.is.vpc.v1.model.Subnet;
 import com.ibm.cloud.is.vpc.v1.model.SubnetCollection;
 import com.ibm.cloud.is.vpc.v1.model.SubnetIdentity;
 import com.ibm.cloud.is.vpc.v1.model.SubnetIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.SubnetPatch;
 import com.ibm.cloud.is.vpc.v1.model.SubnetPrototypeSubnetByCIDR;
 import com.ibm.cloud.is.vpc.v1.model.SubnetPrototypeSubnetByTotalCount;
 import com.ibm.cloud.is.vpc.v1.model.SubnetPrototypeSubnetByTotalCount;
@@ -354,18 +383,24 @@ import com.ibm.cloud.is.vpc.v1.model.UpdateVpnGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.VPC;
 import com.ibm.cloud.is.vpc.v1.model.VPCCollection;
 import com.ibm.cloud.is.vpc.v1.model.VPCIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.VPCPatch;
 import com.ibm.cloud.is.vpc.v1.model.VPNGateway;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayCollection;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnection;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionCollection;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionDPDPrototype;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionLocalCIDRs;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionPatch;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionPeerCIDRs;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionPrototypeVPNGatewayConnectionPolicyModePrototype;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayPatch;
 import com.ibm.cloud.is.vpc.v1.model.Volume;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachment;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentCollection;
+import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPatch;
 import com.ibm.cloud.is.vpc.v1.model.VolumeCollection;
 import com.ibm.cloud.is.vpc.v1.model.VolumeIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.VolumePatch;
 import com.ibm.cloud.is.vpc.v1.model.VolumeProfile;
 import com.ibm.cloud.is.vpc.v1.model.VolumeProfileCollection;
 import com.ibm.cloud.is.vpc.v1.model.VolumeProfileIdentityByName;
@@ -799,11 +834,15 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testUpdateFloatingIp() throws Exception {
     try {
 
-      UpdateFloatingIpOptions updateFloatingIpOptions = new UpdateFloatingIpOptions.Builder()
-      .id(store.get("created-floating-ip"))
+      FloatingIPPatch floatingIpPatchModel = new FloatingIPPatch.Builder()
       .name(generateName("fip"))
       .build();
+      Map<String, Object> floatingIpPatchModelAsPatch = floatingIpPatchModel.asPatch();
 
+      UpdateFloatingIpOptions updateFloatingIpOptions = new UpdateFloatingIpOptions.Builder()
+      .id(store.get("created-floating-ip"))
+      .floatingIpPatch(floatingIpPatchModelAsPatch)
+      .build();
 
       Response<FloatingIP> response = service.updateFloatingIp(updateFloatingIpOptions).execute();
 
@@ -897,11 +936,15 @@ public class VpcIT extends SdkIntegrationTestBase {
 
   public void testUpdateFlowLogCollector() throws Exception {
     try {
-      UpdateFlowLogCollectorOptions updateFlowLogCollectorOptions = new UpdateFlowLogCollectorOptions.Builder()
-      .id(store.get("created-flow-log"))
+      FlowLogCollectorPatch flowLogCollectorPatchModel = new FlowLogCollectorPatch.Builder()
       .active(true)
       .build();
+      Map<String, Object> flowLogCollectorPatchModelAsPatch = flowLogCollectorPatchModel.asPatch();
 
+      UpdateFlowLogCollectorOptions updateFlowLogCollectorOptions = new UpdateFlowLogCollectorOptions.Builder()
+      .id(store.get("created-flow-log"))
+      .flowLogCollectorPatch(flowLogCollectorPatchModelAsPatch)
+      .build();
 
       Response<FlowLogCollector> response = service.updateFlowLogCollector(updateFlowLogCollectorOptions).execute();
 
@@ -1089,9 +1132,14 @@ public class VpcIT extends SdkIntegrationTestBase {
 
   public void testUpdateImage() throws Exception {
     try {
-      UpdateImageOptions updateImageOptions = new UpdateImageOptions.Builder()
-      .id("testString")
+      ImagePatch imagePatchModel = new ImagePatch.Builder()
       .name("my-image")
+      .build();
+      Map<String, Object> imagePatchModelAsPatch = imagePatchModel.asPatch();
+
+      UpdateImageOptions updateImageOptions = new UpdateImageOptions.Builder()
+      .id(store.get("image"))
+      .imagePatch(imagePatchModelAsPatch)
       .build();
 
 
@@ -1308,12 +1356,15 @@ public class VpcIT extends SdkIntegrationTestBase {
 
   public void testUpdateInstance() throws Exception {
     try {
-      UpdateInstanceOptions updateInstanceOptions = new UpdateInstanceOptions.Builder()
-      .id(store.get("created-instance"))
+      InstancePatch instancePatchModel = new InstancePatch.Builder()
       .name(generateName("instance"))
       .build();
+      Map<String, Object> instancePatchModelAsPatch = instancePatchModel.asPatch();
 
-
+      UpdateInstanceOptions updateInstanceOptions = new UpdateInstanceOptions.Builder()
+      .id(store.get("created-instance"))
+      .instancePatch(instancePatchModelAsPatch)
+      .build();
       Response<Instance> response = service.updateInstance(updateInstanceOptions).execute();
 
       assertNotNull(response);
@@ -1450,12 +1501,16 @@ public class VpcIT extends SdkIntegrationTestBase {
 
   public void testUpdateInstanceNetworkInterface() throws Exception {
     try {
+      NetworkInterfacePatch networkInterfacePatchModel = new NetworkInterfacePatch.Builder()
+      .name(generateName("nic"))
+      .build();
+      Map<String, Object> networkInterfacePatchModelAsPatch = networkInterfacePatchModel.asPatch();
+
       UpdateInstanceNetworkInterfaceOptions updateInstanceNetworkInterfaceOptions = new UpdateInstanceNetworkInterfaceOptions.Builder()
       .instanceId(store.get("created-instance"))
       .id(store.get("second-nic"))
-      .name(generateName("nic"))
+      .networkInterfacePatch(networkInterfacePatchModelAsPatch)
       .build();
-
 
       Response<NetworkInterface> response = service.updateInstanceNetworkInterface(updateInstanceNetworkInterfaceOptions).execute();
 
@@ -1614,11 +1669,16 @@ public class VpcIT extends SdkIntegrationTestBase {
 
   public void testUpdateInstanceVolumeAttachment() throws Exception {
     try {
+      VolumeAttachmentPatch volumeAttachmentPatchModel = new VolumeAttachmentPatch.Builder()
+      .deleteVolumeOnInstanceDelete(true)
+      .name(generateName("data-vol"))
+      .build();
+      Map<String, Object> volumeAttachmentPatchModelAsPatch = volumeAttachmentPatchModel.asPatch();
+
       UpdateInstanceVolumeAttachmentOptions updateInstanceVolumeAttachmentOptions = new UpdateInstanceVolumeAttachmentOptions.Builder()
       .instanceId(store.get("created-instance"))
       .id(store.get("created-data-vol"))
-      .deleteVolumeOnInstanceDelete(true)
-      .name(generateName("data-vol"))
+      .volumeAttachmentPatch(volumeAttachmentPatchModelAsPatch)
       .build();
 
 
@@ -1745,9 +1805,14 @@ public class VpcIT extends SdkIntegrationTestBase {
 
   public void testUpdateLoadBalancer() throws Exception {
     try {
+      LoadBalancerPatch loadBalancerPatchModel = new LoadBalancerPatch.Builder()
+      .name(generateName("lb"))
+      .build();
+      Map<String, Object> loadBalancerPatchModelAsPatch = loadBalancerPatchModel.asPatch();
+
       UpdateLoadBalancerOptions updateLoadBalancerOptions = new UpdateLoadBalancerOptions.Builder()
       .id(store.get("created-lb"))
-      .name(generateName("lb"))
+      .loadBalancerPatch(loadBalancerPatchModelAsPatch)
       .build();
 
       Response<LoadBalancer> response = service.updateLoadBalancer(updateLoadBalancerOptions).execute();
@@ -1856,12 +1921,17 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testUpdateLoadBalancerListener() throws Exception {
     try {
 
-      UpdateLoadBalancerListenerOptions updateLoadBalancerListenerOptions = new UpdateLoadBalancerListenerOptions.Builder()
-      .loadBalancerId(store.get("created-lb"))
-      .id(store.get("created-listener"))
+      LoadBalancerListenerPatch loadBalancerListenerPatchModel = new LoadBalancerListenerPatch.Builder()
       .connectionLimit(Long.valueOf("2000"))
       .port(Long.valueOf("443"))
       .protocol("http")
+      .build();
+      Map<String, Object> loadBalancerListenerPatchModelAsPatch = loadBalancerListenerPatchModel.asPatch();
+
+      UpdateLoadBalancerListenerOptions updateLoadBalancerListenerOptions = new UpdateLoadBalancerListenerOptions.Builder()
+      .loadBalancerId(store.get("created-lb"))
+      .id(store.get("created-listener"))
+      .loadBalancerListenerPatch(loadBalancerListenerPatchModelAsPatch)
       .build();
 
       Response<LoadBalancerListener> response = service.updateLoadBalancerListener(updateLoadBalancerListenerOptions).execute();
@@ -1952,12 +2022,17 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testUpdateLoadBalancerListenerPolicy() throws Exception {
     try {
 
+      LoadBalancerListenerPolicyPatch loadBalancerListenerPolicyPatchModel = new LoadBalancerListenerPolicyPatch.Builder()
+      .name(generateName("lb-policy"))
+      .priority(Long.valueOf("5"))
+      .build();
+      Map<String, Object> loadBalancerListenerPolicyPatchModelAsPatch = loadBalancerListenerPolicyPatchModel.asPatch();
+
       UpdateLoadBalancerListenerPolicyOptions updateLoadBalancerListenerPolicyOptions = new UpdateLoadBalancerListenerPolicyOptions.Builder()
       .loadBalancerId(store.get("created-lb"))
       .listenerId(store.get("created-listener"))
       .id(store.get("created-lbpolicy"))
-      .name(generateName("lb-policy"))
-      .priority(Long.valueOf("5"))
+      .loadBalancerListenerPolicyPatch(loadBalancerListenerPolicyPatchModelAsPatch)
       .build();
 
       Response<LoadBalancerListenerPolicy> response = service.updateLoadBalancerListenerPolicy(updateLoadBalancerListenerPolicyOptions).execute();
@@ -2052,17 +2127,21 @@ public class VpcIT extends SdkIntegrationTestBase {
 
   public void testUpdateLoadBalancerListenerPolicyRule() throws Exception {
     try {
-      UpdateLoadBalancerListenerPolicyRuleOptions updateLoadBalancerListenerPolicyRuleOptions = new UpdateLoadBalancerListenerPolicyRuleOptions.Builder()
-      .loadBalancerId(store.get("created-lb"))
-     .listenerId(store.get("created-listener"))
-      .policyId(store.get("created-lbpolicy"))
-      .id(store.get("created-lbpolicyrule"))
+      LoadBalancerListenerPolicyRulePatch loadBalancerListenerPolicyRulePatchModel = new LoadBalancerListenerPolicyRulePatch.Builder()
       .condition("contains")
       .field("MY-APP-HEADER")
-      .type("path")
-      .value("test-value")
+      .type("header")
+      .value("testString")
       .build();
+      Map<String, Object> loadBalancerListenerPolicyRulePatchModelAsPatch = loadBalancerListenerPolicyRulePatchModel.asPatch();
 
+      UpdateLoadBalancerListenerPolicyRuleOptions updateLoadBalancerListenerPolicyRuleOptions = new UpdateLoadBalancerListenerPolicyRuleOptions.Builder()
+      .loadBalancerId(store.get("created-lb"))
+      .listenerId(store.get("created-listener"))
+      .policyId(store.get("created-lbpolicy"))
+      .id(store.get("created-lbpolicyrule"))
+      .loadBalancerListenerPolicyRulePatch(loadBalancerListenerPolicyRulePatchModelAsPatch)
+      .build();
 
       Response<LoadBalancerListenerPolicyRule> response = service.updateLoadBalancerListenerPolicyRule(updateLoadBalancerListenerPolicyRuleOptions).execute();
 
@@ -2162,14 +2241,33 @@ public class VpcIT extends SdkIntegrationTestBase {
 
   public void testUpdateLoadBalancerPool() throws Exception {
     try {
+      LoadBalancerPoolHealthMonitorPatch loadBalancerPoolHealthMonitorPatchModel = new LoadBalancerPoolHealthMonitorPatch.Builder()
+      .delay(Long.valueOf("5"))
+      .maxRetries(Long.valueOf("2"))
+      .port(Long.valueOf("22"))
+      .timeout(Long.valueOf("2"))
+      .type("http")
+      .urlPath("/")
+      .build();
+
+      LoadBalancerPoolSessionPersistencePatch loadBalancerPoolSessionPersistencePatchModel = new LoadBalancerPoolSessionPersistencePatch.Builder()
+      .type("source_ip")
+      .build();
+
+      LoadBalancerPoolPatch loadBalancerPoolPatchModel = new LoadBalancerPoolPatch.Builder()
+      .name(generateName("lb-pool"))
+      .algorithm("least_connections")
+      .protocol("http")
+      .healthMonitor(loadBalancerPoolHealthMonitorPatchModel)
+      .sessionPersistence(loadBalancerPoolSessionPersistencePatchModel)
+      .build();
+      Map<String, Object> loadBalancerPoolPatchModelAsPatch = loadBalancerPoolPatchModel.asPatch();
+
       UpdateLoadBalancerPoolOptions updateLoadBalancerPoolOptions = new UpdateLoadBalancerPoolOptions.Builder()
       .loadBalancerId(store.get("created-lb"))
       .id(store.get("created-lbpool"))
-      .algorithm("least_connections")
-      .name(generateName("lb-pool"))
-      .protocol("http")
+      .loadBalancerPoolPatch(loadBalancerPoolPatchModelAsPatch)
       .build();
-
 
       Response<LoadBalancerPool> response = service.updateLoadBalancerPool(updateLoadBalancerPoolOptions).execute();
 
@@ -2255,7 +2353,6 @@ public class VpcIT extends SdkIntegrationTestBase {
       .members(new java.util.ArrayList<LoadBalancerPoolMemberPrototype>(java.util.Arrays.asList(loadBalancerPoolMemberPrototypeModel)))
       .build();
 
-
       Response<LoadBalancerPoolMemberCollection> response = service.replaceLoadBalancerPoolMembers(replaceLoadBalancerPoolMembersOptions).execute();
 
       assertNotNull(response);
@@ -2300,15 +2397,19 @@ public class VpcIT extends SdkIntegrationTestBase {
       .address("192.168.3.4")
       .build();
 
+      LoadBalancerPoolMemberPatch loadBalancerPoolMemberPatchModel = new LoadBalancerPoolMemberPatch.Builder()
+      .port(Long.valueOf("80"))
+      .weight(Long.valueOf("50"))
+      .target(loadBalancerPoolMemberTargetPrototypeModel)
+      .build();
+      Map<String, Object> loadBalancerPoolMemberPatchModelAsPatch = loadBalancerPoolMemberPatchModel.asPatch();
+
       UpdateLoadBalancerPoolMemberOptions updateLoadBalancerPoolMemberOptions = new UpdateLoadBalancerPoolMemberOptions.Builder()
       .loadBalancerId(store.get("created-lb"))
       .poolId(store.get("created-lbpool"))
       .id(store.get("created-lbpoolmember"))
-      .port(Long.valueOf("80"))
-      .target(loadBalancerPoolMemberTargetPrototypeModel)
-      .weight(Long.valueOf("50"))
+      .loadBalancerPoolMemberPatch(loadBalancerPoolMemberPatchModelAsPatch)
       .build();
-
 
       Response<LoadBalancerPoolMember> response = service.updateLoadBalancerPoolMember(updateLoadBalancerPoolMemberOptions).execute();
 
@@ -2413,11 +2514,15 @@ public class VpcIT extends SdkIntegrationTestBase {
 
   public void testUpdateNetworkAcl() throws Exception {
     try {
-      UpdateNetworkAclOptions updateNetworkAclOptions = new UpdateNetworkAclOptions.Builder()
-      .id(store.get("created-acl"))
+      NetworkACLPatch networkAclPatchModel = new NetworkACLPatch.Builder()
       .name(generateName("acl"))
       .build();
+      Map<String, Object> networkAclPatchModelAsPatch = networkAclPatchModel.asPatch();
 
+      UpdateNetworkAclOptions updateNetworkAclOptions = new UpdateNetworkAclOptions.Builder()
+      .id(store.get("created-acl"))
+      .networkAclPatch(networkAclPatchModelAsPatch)
+      .build();
 
       Response<NetworkACL> response = service.updateNetworkAcl(updateNetworkAclOptions).execute();
 
@@ -2518,20 +2623,26 @@ public class VpcIT extends SdkIntegrationTestBase {
 
   public void testUpdateNetworkAclRule() throws Exception {
     try {
+      NetworkACLRulePatch networkAclRulePatchModel = new NetworkACLRulePatch.Builder()
+      .action("allow")
+      .destination("192.168.3.2/32")
+      .direction("inbound")
+      .source("192.168.3.2/32")
+      .destinationPortMax(Long.valueOf("22"))
+      .destinationPortMin(Long.valueOf("22"))
+      .sourcePortMax(Long.valueOf("65535"))
+      .sourcePortMin(Long.valueOf("49152"))
+      .code(Long.valueOf("0"))
+      .type(Long.valueOf("8"))
+      .build();
+      Map<String, Object> networkAclRulePatchModelAsPatch = networkAclRulePatchModel.asPatch();
+
       UpdateNetworkAclRuleOptions updateNetworkAclRuleOptions = new UpdateNetworkAclRuleOptions.Builder()
       .networkAclId(store.get("created-acl"))
       .id(store.get("created-acl-rule"))
-      .action("deny")
-      .code(Long.valueOf("0"))
-      .destination("192.168.3.2/32")
-      .destinationPortMax(Long.valueOf("22"))
-      .destinationPortMin(Long.valueOf("22"))
-      .direction("inbound")
-      .source("192.168.3.2/32")
-      .sourcePortMax(Long.valueOf("65535"))
-      .sourcePortMin(Long.valueOf("49152"))
-      .type(Long.valueOf("8"))
+      .networkAclRulePatch(networkAclRulePatchModelAsPatch)
       .build();
+
 
 
       Response<NetworkACLRule> response = service.updateNetworkAclRule(updateNetworkAclRuleOptions).execute();
@@ -2630,11 +2741,15 @@ public class VpcIT extends SdkIntegrationTestBase {
 
   public void testUpdatePublicGateway() throws Exception {
     try {
-      UpdatePublicGatewayOptions updatePublicGatewayOptions = new UpdatePublicGatewayOptions.Builder()
-      .id(store.get("created-pgw"))
+      PublicGatewayPatch publicGatewayPatchModel = new PublicGatewayPatch.Builder()
       .name(generateName("pgw"))
       .build();
+      Map<String, Object> publicGatewayPatchModelAsPatch = publicGatewayPatchModel.asPatch();
 
+      UpdatePublicGatewayOptions updatePublicGatewayOptions = new UpdatePublicGatewayOptions.Builder()
+      .id(store.get("created-pgw"))
+      .publicGatewayPatch(publicGatewayPatchModelAsPatch)
+      .build();
 
       Response<PublicGateway> response = service.updatePublicGateway(updatePublicGatewayOptions).execute();
 
@@ -2723,11 +2838,15 @@ public class VpcIT extends SdkIntegrationTestBase {
 
   public void testUpdateKey() throws Exception {
     try {
-      UpdateKeyOptions updateKeyOptions = new UpdateKeyOptions.Builder()
-      .id(store.get("created-key"))
+      KeyPatch keyPatchModel = new KeyPatch.Builder()
       .name(generateName("key"))
       .build();
+      Map<String, Object> keyPatchModelAsPatch = keyPatchModel.asPatch();
 
+      UpdateKeyOptions updateKeyOptions = new UpdateKeyOptions.Builder()
+      .id(store.get("created-key"))
+      .keyPatch(keyPatchModelAsPatch)
+      .build();
 
       Response<Key> response = service.updateKey(updateKeyOptions).execute();
 
@@ -2827,11 +2946,15 @@ public class VpcIT extends SdkIntegrationTestBase {
 
   public void testUpdateSecurityGroup() throws Exception {
     try {
-      UpdateSecurityGroupOptions updateSecurityGroupOptions = new UpdateSecurityGroupOptions.Builder()
-      .id(store.get("created-sg"))
+      SecurityGroupPatch securityGroupPatchModel = new SecurityGroupPatch.Builder()
       .name(generateName("sg"))
       .build();
+      Map<String, Object> securityGroupPatchModelAsPatch = securityGroupPatchModel.asPatch();
 
+      UpdateSecurityGroupOptions updateSecurityGroupOptions = new UpdateSecurityGroupOptions.Builder()
+      .id(store.get("created-sg"))
+      .securityGroupPatch(securityGroupPatchModelAsPatch)
+      .build();
 
       Response<SecurityGroup> response = service.updateSecurityGroup(updateSecurityGroupOptions).execute();
 
@@ -3000,18 +3123,26 @@ public class VpcIT extends SdkIntegrationTestBase {
 
   public void testUpdateSecurityGroupRule() throws Exception {
     try {
+      SecurityGroupRulePatchRemoteIP securityGroupRulePatchRemoteModel = new SecurityGroupRulePatchRemoteIP.Builder()
+      .address("192.168.3.4")
+      .build();
+
+      SecurityGroupRulePatch securityGroupRulePatchModel = new SecurityGroupRulePatch.Builder()
+      .remote(securityGroupRulePatchRemoteModel)
+      .direction("inbound")
+      .ipVersion("ipv4")
+      .code(Long.valueOf("0"))
+      .portMax(Long.valueOf("22"))
+      .portMin(Long.valueOf("22"))
+      .type(Long.valueOf("8"))
+      .build();
+      Map<String, Object> securityGroupRulePatchModelAsPatch = securityGroupRulePatchModel.asPatch();
+
       UpdateSecurityGroupRuleOptions updateSecurityGroupRuleOptions = new UpdateSecurityGroupRuleOptions.Builder()
       .securityGroupId(store.get("created-sg"))
       .id(store.get("created-sg-rule"))
-      .code(Long.valueOf("0"))
-      .direction("outbound")
-      .ipVersion("ipv4")
-      .portMax(Long.valueOf("22"))
-      .portMin(Long.valueOf("22"))
-      // .remote(securityGroupRulePatchRemoteModel)
-      .type(Long.valueOf("8"))
+      .securityGroupRulePatch(securityGroupRulePatchModelAsPatch)
       .build();
-
 
       Response<SecurityGroupRule> response = service.updateSecurityGroupRule(updateSecurityGroupRuleOptions).execute();
 
@@ -3115,11 +3246,15 @@ public class VpcIT extends SdkIntegrationTestBase {
 
   public void testUpdateSubnet() throws Exception {
     try {
-      UpdateSubnetOptions updateSubnetOptions = new UpdateSubnetOptions.Builder()
-      .id(store.get("created-subnet"))
+      SubnetPatch subnetPatchModel = new SubnetPatch.Builder()
       .name(generateName("subnet"))
       .build();
+      Map<String, Object> subnetPatchModelAsPatch = subnetPatchModel.asPatch();
 
+      UpdateSubnetOptions updateSubnetOptions = new UpdateSubnetOptions.Builder()
+      .id(store.get("created-subnet"))
+      .subnetPatch(subnetPatchModelAsPatch)
+      .build();
 
       Response<Subnet> response = service.updateSubnet(updateSubnetOptions).execute();
 
@@ -3311,11 +3446,15 @@ public class VpcIT extends SdkIntegrationTestBase {
 
   public void testUpdateVpc() throws Exception {
     try {
-      UpdateVpcOptions updateVpcOptions = new UpdateVpcOptions.Builder()
-      .id(store.get("created-vpc"))
+      VPCPatch vpcPatchModel = new VPCPatch.Builder()
       .name(generateName("vpc"))
       .build();
+      Map<String, Object> vpcPatchModelAsPatch = vpcPatchModel.asPatch();
 
+      UpdateVpcOptions updateVpcOptions = new UpdateVpcOptions.Builder()
+      .id(store.get("created-vpc"))
+      .vpcPatch(vpcPatchModelAsPatch)
+      .build();
 
       Response<VPC> response = service.updateVpc(updateVpcOptions).execute();
 
@@ -3452,14 +3591,17 @@ public class VpcIT extends SdkIntegrationTestBase {
 
   public void testUpdateVpcAddressPrefix() throws Exception {
     try {
+      AddressPrefixPatch addressPrefixPatchModel = new AddressPrefixPatch.Builder()
+      .name(generateName("addr-prefix"))
+      .isDefault(false)
+      .build();
+      Map<String, Object> addressPrefixPatchModelAsPatch = addressPrefixPatchModel.asPatch();
+
       UpdateVpcAddressPrefixOptions updateVpcAddressPrefixOptions = new UpdateVpcAddressPrefixOptions.Builder()
       .vpcId(store.get("created-vpc"))
       .id(store.get("created-addrprefix"))
-      .isDefault(false)
-      .name(generateName("addr-prefix"))
+      .addressPrefixPatch(addressPrefixPatchModelAsPatch)
       .build();
-
-
       Response<AddressPrefix> response = service.updateVpcAddressPrefix(updateVpcAddressPrefixOptions).execute();
 
       assertNotNull(response);
@@ -3558,13 +3700,16 @@ public class VpcIT extends SdkIntegrationTestBase {
 
   public void testUpdateVpcRoute() throws Exception {
     try {
+      RoutePatch routePatchModel = new RoutePatch.Builder()
+      .name(generateName("vpc-route"))
+      .build();
+      Map<String, Object> routePatchModelAsPatch = routePatchModel.asPatch();
+
       UpdateVpcRouteOptions updateVpcRouteOptions = new UpdateVpcRouteOptions.Builder()
       .vpcId(store.get("created-vpc"))
       .id(store.get("created-route"))
-      .name(generateName("vpc-route"))
+      .routePatch(routePatchModelAsPatch)
       .build();
-
-
       Response<Route> response = service.updateVpcRoute(updateVpcRouteOptions).execute();
 
       assertNotNull(response);
@@ -3652,11 +3797,19 @@ public class VpcIT extends SdkIntegrationTestBase {
 
   public void testUpdateIkePolicy() throws Exception {
     try {
+      IKEPolicyPatch ikePolicyPatchModel = new IKEPolicyPatch.Builder()
+      .authenticationAlgorithm("md5")
+      .dhGroup(Long.valueOf("2"))
+      .encryptionAlgorithm("triple_des")
+      .ikeVersion(Long.valueOf("1"))
+      .keyLifetime(Long.valueOf("28800"))
+      .build();
+      Map<String, Object> ikePolicyPatchModelAsPatch = ikePolicyPatchModel.asPatch();
+
       UpdateIkePolicyOptions updateIkePolicyOptions = new UpdateIkePolicyOptions.Builder()
       .id(store.get("created-ike"))
-      .encryptionAlgorithm("triple_des")
+      .ikePolicyPatch(ikePolicyPatchModelAsPatch)
       .build();
-
 
       Response<IKEPolicy> response = service.updateIkePolicy(updateIkePolicyOptions).execute();
 
@@ -3767,13 +3920,18 @@ public class VpcIT extends SdkIntegrationTestBase {
 
   public void testUpdateIpsecPolicy() throws Exception {
     try {
-      UpdateIpsecPolicyOptions updateIpsecPolicyOptions = new UpdateIpsecPolicyOptions.Builder()
-      .id(store.get("created-ipsec"))
+      IPsecPolicyPatch iPsecPolicyPatchModel = new IPsecPolicyPatch.Builder()
+      .name("my-ipsec-policy")
       .authenticationAlgorithm("md5")
       .encryptionAlgorithm("triple_des")
       .keyLifetime(Long.valueOf("3600"))
-      .name(generateName("ipsec"))
       .pfs("disabled")
+      .build();
+      Map<String, Object> iPsecPolicyPatchModelAsPatch = iPsecPolicyPatchModel.asPatch();
+
+      UpdateIpsecPolicyOptions updateIpsecPolicyOptions = new UpdateIpsecPolicyOptions.Builder()
+      .id(store.get("created-ipsec"))
+      .iPsecPolicyPatch(iPsecPolicyPatchModelAsPatch)
       .build();
 
 
@@ -3887,11 +4045,15 @@ public class VpcIT extends SdkIntegrationTestBase {
 
   public void testUpdateVpnGateway() throws Exception {
     try {
-      UpdateVpnGatewayOptions updateVpnGatewayOptions = new UpdateVpnGatewayOptions.Builder()
-      .id(store.get("created-vpng"))
+      VPNGatewayPatch vpnGatewayPatchModel = new VPNGatewayPatch.Builder()
       .name(generateName("vpn-gateway"))
       .build();
+      Map<String, Object> vpnGatewayPatchModelAsPatch = vpnGatewayPatchModel.asPatch();
 
+      UpdateVpnGatewayOptions updateVpnGatewayOptions = new UpdateVpnGatewayOptions.Builder()
+      .id(store.get("created-vpng"))
+      .vpnGatewayPatch(vpnGatewayPatchModelAsPatch)
+      .build();
 
       Response<VPNGateway> response = service.updateVpnGateway(updateVpnGatewayOptions).execute();
 
@@ -3931,12 +4093,6 @@ public class VpcIT extends SdkIntegrationTestBase {
 
   public void testCreateVpnGatewayConnection() throws Exception {
     try {
-      VPNGatewayConnectionDPDPrototype vpnGatewayConnectionDpdPrototypeModel = new VPNGatewayConnectionDPDPrototype.Builder()
-      .action("restart")
-      .interval(Long.valueOf("30"))
-      .timeout(Long.valueOf("120"))
-      .build();
-
       IKEPolicyIdentityById ikePolicyIdentityModel = new IKEPolicyIdentityById.Builder()
       .id(store.get("created-ike"))
       .build();
@@ -3945,17 +4101,21 @@ public class VpcIT extends SdkIntegrationTestBase {
       .id(store.get("created-ipsec"))
       .build();
 
-      CreateVpnGatewayConnectionOptions createVpnGatewayConnectionOptions = new CreateVpnGatewayConnectionOptions.Builder()
-      .vpnGatewayId(store.get("created-vpng"))
-      .peerAddress("169.21.50.5")
-      .psk("lkj14b1oi0alcniejkso")
+      VPNGatewayConnectionPrototypeVPNGatewayConnectionPolicyModePrototype vpnGatewayConnectionPrototypeModel = new VPNGatewayConnectionPrototypeVPNGatewayConnectionPolicyModePrototype.Builder()
       .adminStateUp(true)
-      .deadPeerDetection(vpnGatewayConnectionDpdPrototypeModel)
+      .peerAddress("169.21.50.5")
+      .name(generateName("my-vpn-connection"))
+      .psk("lkj14b1oi0alcniejkso")
       .ikePolicy(ikePolicyIdentityModel)
       .ipsecPolicy(iPsecPolicyIdentityModel)
       .localCidrs(new java.util.ArrayList<String>(java.util.Arrays.asList("192.168.1.0/24")))
-      .name(generateName("vpn-conn"))
       .peerCidrs(new java.util.ArrayList<String>(java.util.Arrays.asList("10.45.1.0/24")))
+      .build();
+
+
+      CreateVpnGatewayConnectionOptions createVpnGatewayConnectionOptions = new CreateVpnGatewayConnectionOptions.Builder()
+      .vpnGatewayId(store.get("created-vpng"))
+      .vpnGatewayConnectionPrototype(vpnGatewayConnectionPrototypeModel)
       .build();
 
 
@@ -3998,13 +4158,18 @@ public class VpcIT extends SdkIntegrationTestBase {
 
   public void testUpdateVpnGatewayConnection() throws Exception {
     try {
+      VPNGatewayConnectionPatch vpnGatewayConnectionPatchModel = new VPNGatewayConnectionPatch.Builder()
+      .adminStateUp(true)
+      .peerAddress("169.21.50.5")
+      .psk("lkj14b1oi0alcniejkso")
+      .build();
+      Map<String, Object> vpnGatewayConnectionPatchModelAsPatch = vpnGatewayConnectionPatchModel.asPatch();
 
       UpdateVpnGatewayConnectionOptions updateVpnGatewayConnectionOptions = new UpdateVpnGatewayConnectionOptions.Builder()
       .vpnGatewayId(store.get("created-vpng"))
       .id(store.get("created-vpng-conn"))
-      .psk("some-key")
+      .vpnGatewayConnectionPatch(vpnGatewayConnectionPatchModelAsPatch)
       .build();
-
 
       Response<VPNGatewayConnection> response = service.updateVpnGatewayConnection(updateVpnGatewayConnectionOptions).execute();
 
@@ -4374,11 +4539,15 @@ public class VpcIT extends SdkIntegrationTestBase {
 
   public void testUpdateInstanceTemplate() throws Exception {
     try {
-      UpdateInstanceTemplateOptions updateInstanceTemplateOptions = new UpdateInstanceTemplateOptions.Builder()
-      .id(store.get("created-instance-template"))
+      InstanceTemplatePatch instanceTemplatePatchModel = new InstanceTemplatePatch.Builder()
       .name(generateName("template-2"))
       .build();
+      Map<String, Object> instanceTemplatePatchModelAsPatch = instanceTemplatePatchModel.asPatch();
 
+      UpdateInstanceTemplateOptions updateInstanceTemplateOptions = new UpdateInstanceTemplateOptions.Builder()
+      .id(store.get("created-instance-template"))
+      .instanceTemplatePatch(instanceTemplatePatchModelAsPatch)
+      .build();
 
       Response<InstanceTemplate> response = service.updateInstanceTemplate(updateInstanceTemplateOptions).execute();
 
@@ -4490,11 +4659,15 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testUpdateInstanceGroup() throws Exception {
     try {
 
+      InstanceGroupPatch instanceGroupPatchModel = new InstanceGroupPatch.Builder()
+      .name("my-instance-group")
+      .build();
+      Map<String, Object> instanceGroupPatchModelAsPatch = instanceGroupPatchModel.asPatch();
+
       UpdateInstanceGroupOptions updateInstanceGroupOptions = new UpdateInstanceGroupOptions.Builder()
       .id(store.get("created-instance-group"))
-      .name(generateName("ig-2"))
+      .instanceGroupPatch(instanceGroupPatchModelAsPatch)
       .build();
-
 
       Response<InstanceGroup> response = service.updateInstanceGroup(updateInstanceGroupOptions).execute();
 
@@ -4588,12 +4761,18 @@ public class VpcIT extends SdkIntegrationTestBase {
 
   public void testUpdateInstanceGroupManager() throws Exception {
     try {
+      InstanceGroupManagerPatch instanceGroupManagerPatchModel = new InstanceGroupManagerPatch.Builder()
+      .managementEnabled(true)
+      .aggregationWindow(Long.valueOf("120"))
+      .cooldown(Long.valueOf("210"))
+      .build();
+      Map<String, Object> instanceGroupManagerPatchModelAsPatch = instanceGroupManagerPatchModel.asPatch();
+
       UpdateInstanceGroupManagerOptions updateInstanceGroupManagerOptions = new UpdateInstanceGroupManagerOptions.Builder()
       .instanceGroupId(store.get("created-instance-group"))
       .id(store.get("created-instance-group-manager"))
-      .managementEnabled(true)
+      .instanceGroupManagerPatch(instanceGroupManagerPatchModelAsPatch)
       .build();
-
 
       Response<InstanceGroupManager> response = service.updateInstanceGroupManager(updateInstanceGroupManagerOptions).execute();
 
@@ -4686,13 +4865,18 @@ public class VpcIT extends SdkIntegrationTestBase {
 
   public void testUpdateInstanceGroupManagerPolicy() throws Exception {
     try {
+      InstanceGroupManagerPolicyPatch instanceGroupManagerPolicyPatchModel = new InstanceGroupManagerPolicyPatch.Builder()
+      .metricType("cpu")
+      .metricValue(Long.valueOf("26"))
+      .build();
+      Map<String, Object> instanceGroupManagerPolicyPatchModelAsPatch = instanceGroupManagerPolicyPatchModel.asPatch();
+
       UpdateInstanceGroupManagerPolicyOptions updateInstanceGroupManagerPolicyOptions = new UpdateInstanceGroupManagerPolicyOptions.Builder()
       .instanceGroupId(store.get("created-instance-group"))
       .instanceGroupManagerId(store.get("created-instance-group-manager"))
       .id(store.get("created-instance-group-man-policy"))
-      .metricValue(Long.valueOf("20"))
+      .instanceGroupManagerPolicyPatch(instanceGroupManagerPolicyPatchModelAsPatch)
       .build();
-
 
       Response<InstanceGroupManagerPolicy> response = service.updateInstanceGroupManagerPolicy(updateInstanceGroupManagerPolicyOptions).execute();
 
@@ -4753,12 +4937,16 @@ public class VpcIT extends SdkIntegrationTestBase {
 
   public void testUpdateInstanceGroupMembership() throws Exception {
     try {
+      InstanceGroupMembershipPatch instanceGroupMembershipPatchModel = new InstanceGroupMembershipPatch.Builder()
+      .name("my-instance-group-membership")
+      .build();
+      Map<String, Object> instanceGroupMembershipPatchModelAsPatch = instanceGroupMembershipPatchModel.asPatch();
+
       UpdateInstanceGroupMembershipOptions updateInstanceGroupMembershipOptions = new UpdateInstanceGroupMembershipOptions.Builder()
       .instanceGroupId(store.get("created-instance-group"))
       .id(store.get("created-membership"))
-      .name("my-instance-group-membership")
+      .instanceGroupMembershipPatch(instanceGroupMembershipPatchModelAsPatch)
       .build();
-
 
       Response<InstanceGroupMembership> response = service.updateInstanceGroupMembership(updateInstanceGroupMembershipOptions).execute();
 
@@ -4946,11 +5134,15 @@ public class VpcIT extends SdkIntegrationTestBase {
 
   public void testUpdateVolume() throws Exception {
     try {
-      UpdateVolumeOptions updateVolumeOptions = new UpdateVolumeOptions.Builder()
-      .id(store.get("created-volume"))
+      VolumePatch volumePatchModel = new VolumePatch.Builder()
       .name(generateName("volume"))
       .build();
+      Map<String, Object> volumePatchModelAsPatch = volumePatchModel.asPatch();
 
+      UpdateVolumeOptions updateVolumeOptions = new UpdateVolumeOptions.Builder()
+      .id(store.get("created-volume"))
+      .volumePatch(volumePatchModelAsPatch)
+      .build();
 
       Response<Volume> response = service.updateVolume(updateVolumeOptions).execute();
 

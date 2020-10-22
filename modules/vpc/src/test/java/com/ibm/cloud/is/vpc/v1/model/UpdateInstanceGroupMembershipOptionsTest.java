@@ -15,13 +15,10 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.UpdateInstanceGroupMembershipOptions;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
-
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-
 import java.util.HashMap;
 import java.util.List;
-
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
@@ -37,11 +34,11 @@ public class UpdateInstanceGroupMembershipOptionsTest {
     UpdateInstanceGroupMembershipOptions updateInstanceGroupMembershipOptionsModel = new UpdateInstanceGroupMembershipOptions.Builder()
       .instanceGroupId("testString")
       .id("testString")
-      .name("my-instance-group-membership")
+      .instanceGroupMembershipPatch(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
       .build();
     assertEquals(updateInstanceGroupMembershipOptionsModel.instanceGroupId(), "testString");
     assertEquals(updateInstanceGroupMembershipOptionsModel.id(), "testString");
-    assertEquals(updateInstanceGroupMembershipOptionsModel.name(), "my-instance-group-membership");
+    assertEquals(updateInstanceGroupMembershipOptionsModel.instanceGroupMembershipPatch(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } });
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

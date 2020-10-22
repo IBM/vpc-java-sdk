@@ -13,16 +13,12 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
-import com.ibm.cloud.is.vpc.v1.model.FloatingIPPatchTargetNetworkInterfaceIdentityNetworkInterfaceIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.UpdateFloatingIpOptions;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
-
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-
 import java.util.HashMap;
 import java.util.List;
-
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
@@ -35,19 +31,12 @@ public class UpdateFloatingIpOptionsTest {
 
   @Test
   public void testUpdateFloatingIpOptions() throws Throwable {
-    FloatingIPPatchTargetNetworkInterfaceIdentityNetworkInterfaceIdentityById floatingIpPatchTargetNetworkInterfaceIdentityModel = new FloatingIPPatchTargetNetworkInterfaceIdentityNetworkInterfaceIdentityById.Builder()
-      .id("69e55145-cc7d-4d8e-9e1f-cc3fb60b1793")
-      .build();
-    assertEquals(floatingIpPatchTargetNetworkInterfaceIdentityModel.id(), "69e55145-cc7d-4d8e-9e1f-cc3fb60b1793");
-
     UpdateFloatingIpOptions updateFloatingIpOptionsModel = new UpdateFloatingIpOptions.Builder()
       .id("testString")
-      .name("my-floating-ip")
-      .target(floatingIpPatchTargetNetworkInterfaceIdentityModel)
+      .floatingIpPatch(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
       .build();
     assertEquals(updateFloatingIpOptionsModel.id(), "testString");
-    assertEquals(updateFloatingIpOptionsModel.name(), "my-floating-ip");
-    assertEquals(updateFloatingIpOptionsModel.target(), floatingIpPatchTargetNetworkInterfaceIdentityModel);
+    assertEquals(updateFloatingIpOptionsModel.floatingIpPatch(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } });
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

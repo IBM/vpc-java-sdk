@@ -13,9 +13,9 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 /**
- * LoadBalancerListenerPolicyTargetReferenceLoadBalancerPoolReference.
+ * LoadBalancerListenerPolicyTargetLoadBalancerListenerPolicyRedirectURL.
  */
-public class LoadBalancerListenerPolicyTargetReferenceLoadBalancerPoolReference extends LoadBalancerListenerPolicyTargetReference {
+public class LoadBalancerListenerPolicyTargetLoadBalancerListenerPolicyRedirectURL extends LoadBalancerListenerPolicyTarget {
 
 }
 

@@ -12,6 +12,8 @@
  */
 package com.ibm.cloud.is.vpc.v1.model;
 
+import java.util.Map;
+
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
@@ -21,13 +23,7 @@ public class UpdateVpnGatewayConnectionOptions extends GenericModel {
 
   protected String vpnGatewayId;
   protected String id;
-  protected Boolean adminStateUp;
-  protected String peerAddress;
-  protected String name;
-  protected String psk;
-  protected VPNGatewayConnectionDPDPrototype deadPeerDetection;
-  protected IKEPolicyIdentity ikePolicy;
-  protected IPsecPolicyIdentity ipsecPolicy;
+  protected Map<String, Object> vpnGatewayConnectionPatch;
 
   /**
    * Builder.
@@ -35,24 +31,12 @@ public class UpdateVpnGatewayConnectionOptions extends GenericModel {
   public static class Builder {
     private String vpnGatewayId;
     private String id;
-    private Boolean adminStateUp;
-    private String peerAddress;
-    private String name;
-    private String psk;
-    private VPNGatewayConnectionDPDPrototype deadPeerDetection;
-    private IKEPolicyIdentity ikePolicy;
-    private IPsecPolicyIdentity ipsecPolicy;
+    private Map<String, Object> vpnGatewayConnectionPatch;
 
     private Builder(UpdateVpnGatewayConnectionOptions updateVpnGatewayConnectionOptions) {
       this.vpnGatewayId = updateVpnGatewayConnectionOptions.vpnGatewayId;
       this.id = updateVpnGatewayConnectionOptions.id;
-      this.adminStateUp = updateVpnGatewayConnectionOptions.adminStateUp;
-      this.peerAddress = updateVpnGatewayConnectionOptions.peerAddress;
-      this.name = updateVpnGatewayConnectionOptions.name;
-      this.psk = updateVpnGatewayConnectionOptions.psk;
-      this.deadPeerDetection = updateVpnGatewayConnectionOptions.deadPeerDetection;
-      this.ikePolicy = updateVpnGatewayConnectionOptions.ikePolicy;
-      this.ipsecPolicy = updateVpnGatewayConnectionOptions.ipsecPolicy;
+      this.vpnGatewayConnectionPatch = updateVpnGatewayConnectionOptions.vpnGatewayConnectionPatch;
     }
 
     /**
@@ -66,10 +50,12 @@ public class UpdateVpnGatewayConnectionOptions extends GenericModel {
      *
      * @param vpnGatewayId the vpnGatewayId
      * @param id the id
+     * @param vpnGatewayConnectionPatch the vpnGatewayConnectionPatch
      */
-    public Builder(String vpnGatewayId, String id) {
+    public Builder(String vpnGatewayId, String id, Map<String, Object> vpnGatewayConnectionPatch) {
       this.vpnGatewayId = vpnGatewayId;
       this.id = id;
+      this.vpnGatewayConnectionPatch = vpnGatewayConnectionPatch;
     }
 
     /**
@@ -104,79 +90,13 @@ public class UpdateVpnGatewayConnectionOptions extends GenericModel {
     }
 
     /**
-     * Set the adminStateUp.
+     * Set the vpnGatewayConnectionPatch.
      *
-     * @param adminStateUp the adminStateUp
+     * @param vpnGatewayConnectionPatch the vpnGatewayConnectionPatch
      * @return the UpdateVpnGatewayConnectionOptions builder
      */
-    public Builder adminStateUp(Boolean adminStateUp) {
-      this.adminStateUp = adminStateUp;
-      return this;
-    }
-
-    /**
-     * Set the peerAddress.
-     *
-     * @param peerAddress the peerAddress
-     * @return the UpdateVpnGatewayConnectionOptions builder
-     */
-    public Builder peerAddress(String peerAddress) {
-      this.peerAddress = peerAddress;
-      return this;
-    }
-
-    /**
-     * Set the name.
-     *
-     * @param name the name
-     * @return the UpdateVpnGatewayConnectionOptions builder
-     */
-    public Builder name(String name) {
-      this.name = name;
-      return this;
-    }
-
-    /**
-     * Set the psk.
-     *
-     * @param psk the psk
-     * @return the UpdateVpnGatewayConnectionOptions builder
-     */
-    public Builder psk(String psk) {
-      this.psk = psk;
-      return this;
-    }
-
-    /**
-     * Set the deadPeerDetection.
-     *
-     * @param deadPeerDetection the deadPeerDetection
-     * @return the UpdateVpnGatewayConnectionOptions builder
-     */
-    public Builder deadPeerDetection(VPNGatewayConnectionDPDPrototype deadPeerDetection) {
-      this.deadPeerDetection = deadPeerDetection;
-      return this;
-    }
-
-    /**
-     * Set the ikePolicy.
-     *
-     * @param ikePolicy the ikePolicy
-     * @return the UpdateVpnGatewayConnectionOptions builder
-     */
-    public Builder ikePolicy(IKEPolicyIdentity ikePolicy) {
-      this.ikePolicy = ikePolicy;
-      return this;
-    }
-
-    /**
-     * Set the ipsecPolicy.
-     *
-     * @param ipsecPolicy the ipsecPolicy
-     * @return the UpdateVpnGatewayConnectionOptions builder
-     */
-    public Builder ipsecPolicy(IPsecPolicyIdentity ipsecPolicy) {
-      this.ipsecPolicy = ipsecPolicy;
+    public Builder vpnGatewayConnectionPatch(Map<String, Object> vpnGatewayConnectionPatch) {
+      this.vpnGatewayConnectionPatch = vpnGatewayConnectionPatch;
       return this;
     }
   }
@@ -186,15 +106,11 @@ public class UpdateVpnGatewayConnectionOptions extends GenericModel {
       "vpnGatewayId cannot be empty");
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,
       "id cannot be empty");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.vpnGatewayConnectionPatch,
+      "vpnGatewayConnectionPatch cannot be null");
     vpnGatewayId = builder.vpnGatewayId;
     id = builder.id;
-    adminStateUp = builder.adminStateUp;
-    peerAddress = builder.peerAddress;
-    name = builder.name;
-    psk = builder.psk;
-    deadPeerDetection = builder.deadPeerDetection;
-    ikePolicy = builder.ikePolicy;
-    ipsecPolicy = builder.ipsecPolicy;
+    vpnGatewayConnectionPatch = builder.vpnGatewayConnectionPatch;
   }
 
   /**
@@ -229,81 +145,14 @@ public class UpdateVpnGatewayConnectionOptions extends GenericModel {
   }
 
   /**
-   * Gets the adminStateUp.
+   * Gets the vpnGatewayConnectionPatch.
    *
-   * If set to false, the VPN connection is shut down.
+   * The VPN gateway connection patch.
    *
-   * @return the adminStateUp
+   * @return the vpnGatewayConnectionPatch
    */
-  public Boolean adminStateUp() {
-    return adminStateUp;
-  }
-
-  /**
-   * Gets the peerAddress.
-   *
-   * The IP address of the peer VPN gateway.
-   *
-   * @return the peerAddress
-   */
-  public String peerAddress() {
-    return peerAddress;
-  }
-
-  /**
-   * Gets the name.
-   *
-   * The user-defined name for this VPN gateway connection.
-   *
-   * @return the name
-   */
-  public String name() {
-    return name;
-  }
-
-  /**
-   * Gets the psk.
-   *
-   * The preshared key.
-   *
-   * @return the psk
-   */
-  public String psk() {
-    return psk;
-  }
-
-  /**
-   * Gets the deadPeerDetection.
-   *
-   * The Dead Peer Detection settings.
-   *
-   * @return the deadPeerDetection
-   */
-  public VPNGatewayConnectionDPDPrototype deadPeerDetection() {
-    return deadPeerDetection;
-  }
-
-  /**
-   * Gets the ikePolicy.
-   *
-   * Optional IKE policy configuration. The absence of a policy indicates autonegotiation.
-   *
-   * @return the ikePolicy
-   */
-  public IKEPolicyIdentity ikePolicy() {
-    return ikePolicy;
-  }
-
-  /**
-   * Gets the ipsecPolicy.
-   *
-   * Optional IPsec policy configuration. The absence of a policy indicates
-   * autonegotiation.
-   *
-   * @return the ipsecPolicy
-   */
-  public IPsecPolicyIdentity ipsecPolicy() {
-    return ipsecPolicy;
+  public Map<String, Object> vpnGatewayConnectionPatch() {
+    return vpnGatewayConnectionPatch;
   }
 }
 

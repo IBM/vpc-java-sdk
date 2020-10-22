@@ -12,6 +12,8 @@
  */
 package com.ibm.cloud.is.vpc.v1.model;
 
+import java.util.Map;
+
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
@@ -19,26 +21,9 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class UpdateLoadBalancerListenerOptions extends GenericModel {
 
-  /**
-   * The listener protocol. Load balancers in the `network` family support `tcp`. Load balancers in the `application`
-   * family support `tcp`, `http`, and `https`.
-   */
-  public interface Protocol {
-    /** http. */
-    String HTTP = "http";
-    /** https. */
-    String HTTPS = "https";
-    /** tcp. */
-    String TCP = "tcp";
-  }
-
   protected String loadBalancerId;
   protected String id;
-  protected Long connectionLimit;
-  protected Long port;
-  protected String protocol;
-  protected CertificateInstanceIdentity certificateInstance;
-  protected LoadBalancerPoolIdentity defaultPool;
+  protected Map<String, Object> loadBalancerListenerPatch;
 
   /**
    * Builder.
@@ -46,20 +31,12 @@ public class UpdateLoadBalancerListenerOptions extends GenericModel {
   public static class Builder {
     private String loadBalancerId;
     private String id;
-    private Long connectionLimit;
-    private Long port;
-    private String protocol;
-    private CertificateInstanceIdentity certificateInstance;
-    private LoadBalancerPoolIdentity defaultPool;
+    private Map<String, Object> loadBalancerListenerPatch;
 
     private Builder(UpdateLoadBalancerListenerOptions updateLoadBalancerListenerOptions) {
       this.loadBalancerId = updateLoadBalancerListenerOptions.loadBalancerId;
       this.id = updateLoadBalancerListenerOptions.id;
-      this.connectionLimit = updateLoadBalancerListenerOptions.connectionLimit;
-      this.port = updateLoadBalancerListenerOptions.port;
-      this.protocol = updateLoadBalancerListenerOptions.protocol;
-      this.certificateInstance = updateLoadBalancerListenerOptions.certificateInstance;
-      this.defaultPool = updateLoadBalancerListenerOptions.defaultPool;
+      this.loadBalancerListenerPatch = updateLoadBalancerListenerOptions.loadBalancerListenerPatch;
     }
 
     /**
@@ -73,10 +50,12 @@ public class UpdateLoadBalancerListenerOptions extends GenericModel {
      *
      * @param loadBalancerId the loadBalancerId
      * @param id the id
+     * @param loadBalancerListenerPatch the loadBalancerListenerPatch
      */
-    public Builder(String loadBalancerId, String id) {
+    public Builder(String loadBalancerId, String id, Map<String, Object> loadBalancerListenerPatch) {
       this.loadBalancerId = loadBalancerId;
       this.id = id;
+      this.loadBalancerListenerPatch = loadBalancerListenerPatch;
     }
 
     /**
@@ -111,57 +90,13 @@ public class UpdateLoadBalancerListenerOptions extends GenericModel {
     }
 
     /**
-     * Set the connectionLimit.
+     * Set the loadBalancerListenerPatch.
      *
-     * @param connectionLimit the connectionLimit
+     * @param loadBalancerListenerPatch the loadBalancerListenerPatch
      * @return the UpdateLoadBalancerListenerOptions builder
      */
-    public Builder connectionLimit(long connectionLimit) {
-      this.connectionLimit = connectionLimit;
-      return this;
-    }
-
-    /**
-     * Set the port.
-     *
-     * @param port the port
-     * @return the UpdateLoadBalancerListenerOptions builder
-     */
-    public Builder port(long port) {
-      this.port = port;
-      return this;
-    }
-
-    /**
-     * Set the protocol.
-     *
-     * @param protocol the protocol
-     * @return the UpdateLoadBalancerListenerOptions builder
-     */
-    public Builder protocol(String protocol) {
-      this.protocol = protocol;
-      return this;
-    }
-
-    /**
-     * Set the certificateInstance.
-     *
-     * @param certificateInstance the certificateInstance
-     * @return the UpdateLoadBalancerListenerOptions builder
-     */
-    public Builder certificateInstance(CertificateInstanceIdentity certificateInstance) {
-      this.certificateInstance = certificateInstance;
-      return this;
-    }
-
-    /**
-     * Set the defaultPool.
-     *
-     * @param defaultPool the defaultPool
-     * @return the UpdateLoadBalancerListenerOptions builder
-     */
-    public Builder defaultPool(LoadBalancerPoolIdentity defaultPool) {
-      this.defaultPool = defaultPool;
+    public Builder loadBalancerListenerPatch(Map<String, Object> loadBalancerListenerPatch) {
+      this.loadBalancerListenerPatch = loadBalancerListenerPatch;
       return this;
     }
   }
@@ -171,13 +106,11 @@ public class UpdateLoadBalancerListenerOptions extends GenericModel {
       "loadBalancerId cannot be empty");
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,
       "id cannot be empty");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.loadBalancerListenerPatch,
+      "loadBalancerListenerPatch cannot be null");
     loadBalancerId = builder.loadBalancerId;
     id = builder.id;
-    connectionLimit = builder.connectionLimit;
-    port = builder.port;
-    protocol = builder.protocol;
-    certificateInstance = builder.certificateInstance;
-    defaultPool = builder.defaultPool;
+    loadBalancerListenerPatch = builder.loadBalancerListenerPatch;
   }
 
   /**
@@ -212,60 +145,14 @@ public class UpdateLoadBalancerListenerOptions extends GenericModel {
   }
 
   /**
-   * Gets the connectionLimit.
+   * Gets the loadBalancerListenerPatch.
    *
-   * The connection limit of the listener.
+   * The load balancer listener patch.
    *
-   * @return the connectionLimit
+   * @return the loadBalancerListenerPatch
    */
-  public Long connectionLimit() {
-    return connectionLimit;
-  }
-
-  /**
-   * Gets the port.
-   *
-   * The listener port number.
-   *
-   * @return the port
-   */
-  public Long port() {
-    return port;
-  }
-
-  /**
-   * Gets the protocol.
-   *
-   * The listener protocol. Load balancers in the `network` family support `tcp`. Load balancers in the `application`
-   * family support `tcp`, `http`, and `https`.
-   *
-   * @return the protocol
-   */
-  public String protocol() {
-    return protocol;
-  }
-
-  /**
-   * Gets the certificateInstance.
-   *
-   * The certificate instance used for SSL termination. It is applicable only to `https`
-   * protocol.
-   *
-   * @return the certificateInstance
-   */
-  public CertificateInstanceIdentity certificateInstance() {
-    return certificateInstance;
-  }
-
-  /**
-   * Gets the defaultPool.
-   *
-   * The default pool associated with the listener.
-   *
-   * @return the defaultPool
-   */
-  public LoadBalancerPoolIdentity defaultPool() {
-    return defaultPool;
+  public Map<String, Object> loadBalancerListenerPatch() {
+    return loadBalancerListenerPatch;
   }
 }
 

@@ -15,13 +15,10 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.UpdateInstanceGroupManagerOptions;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
-
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-
 import java.util.HashMap;
 import java.util.List;
-
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
@@ -37,21 +34,11 @@ public class UpdateInstanceGroupManagerOptionsTest {
     UpdateInstanceGroupManagerOptions updateInstanceGroupManagerOptionsModel = new UpdateInstanceGroupManagerOptions.Builder()
       .instanceGroupId("testString")
       .id("testString")
-      .name("my-instance-group-manager")
-      .managementEnabled(true)
-      .aggregationWindow(Long.valueOf("120"))
-      .cooldown(Long.valueOf("210"))
-      .maxMembershipCount(Long.valueOf("10"))
-      .minMembershipCount(Long.valueOf("10"))
+      .instanceGroupManagerPatch(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
       .build();
     assertEquals(updateInstanceGroupManagerOptionsModel.instanceGroupId(), "testString");
     assertEquals(updateInstanceGroupManagerOptionsModel.id(), "testString");
-    assertEquals(updateInstanceGroupManagerOptionsModel.name(), "my-instance-group-manager");
-    assertEquals(updateInstanceGroupManagerOptionsModel.managementEnabled(), Boolean.valueOf(true));
-    assertEquals(updateInstanceGroupManagerOptionsModel.aggregationWindow(), Long.valueOf("120"));
-    assertEquals(updateInstanceGroupManagerOptionsModel.cooldown(), Long.valueOf("210"));
-    assertEquals(updateInstanceGroupManagerOptionsModel.maxMembershipCount(), Long.valueOf("10"));
-    assertEquals(updateInstanceGroupManagerOptionsModel.minMembershipCount(), Long.valueOf("10"));
+    assertEquals(updateInstanceGroupManagerOptionsModel.instanceGroupManagerPatch(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } });
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

@@ -24,7 +24,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  * - FlowLogCollectorTargetNetworkInterfaceReferenceTargetContext
  * - FlowLogCollectorTargetInstanceReference
  * - FlowLogCollectorTargetSubnetReference
- * - FlowLogCollectorTargetVPCReference
+ * - FlowLogCollectorTargetById
  */
 public class FlowLogCollectorTarget extends GenericModel {
 

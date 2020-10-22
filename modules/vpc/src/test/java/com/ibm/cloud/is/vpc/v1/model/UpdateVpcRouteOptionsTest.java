@@ -15,13 +15,10 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.UpdateVpcRouteOptions;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
-
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-
 import java.util.HashMap;
 import java.util.List;
-
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
@@ -37,11 +34,11 @@ public class UpdateVpcRouteOptionsTest {
     UpdateVpcRouteOptions updateVpcRouteOptionsModel = new UpdateVpcRouteOptions.Builder()
       .vpcId("testString")
       .id("testString")
-      .name("my-route-2")
+      .routePatch(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
       .build();
     assertEquals(updateVpcRouteOptionsModel.vpcId(), "testString");
     assertEquals(updateVpcRouteOptionsModel.id(), "testString");
-    assertEquals(updateVpcRouteOptionsModel.name(), "my-route-2");
+    assertEquals(updateVpcRouteOptionsModel.routePatch(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } });
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

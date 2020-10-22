@@ -166,7 +166,7 @@ public class CreateVpcAddressPrefixOptions extends GenericModel {
    *
    * The IPv4 range of the address prefix, expressed in CIDR format. The request must not overlap with any existing
    * address prefixes in the VPC, and must fall within the [RFC 1918](https://tools.ietf.org/html/rfc1918) address
-   * ranges. The prefix length of the address prefix's CIDR must be between `/8` (16,777,216 addresses) and `/29` (8
+   * ranges. The prefix length of the address prefix's CIDR must be between `/9` (8,388,608 addresses) and `/29` (8
    * addresses).
    *
    * @return the cidr

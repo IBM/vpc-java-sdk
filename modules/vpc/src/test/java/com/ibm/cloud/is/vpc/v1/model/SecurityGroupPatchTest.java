@@ -13,31 +13,45 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
-import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorTargetVPCReference;
+import com.ibm.cloud.is.vpc.v1.model.SecurityGroupPatch;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
-
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-
 import java.util.HashMap;
 import java.util.List;
-
+import java.util.Map;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
 /**
- * Unit test class for the FlowLogCollectorTargetVPCReference model.
+ * Unit test class for the SecurityGroupPatch model.
  */
-public class FlowLogCollectorTargetVPCReferenceTest {
+public class SecurityGroupPatchTest {
   final HashMap<String, InputStream> mockStreamMap = TestUtilities.createMockStreamMap();
   final List<FileWithMetadata> mockListFileWithMetadata = TestUtilities.creatMockListFileWithMetadata();
 
   @Test
-  public void testFlowLogCollectorTargetVPCReference() throws Throwable {
-    FlowLogCollectorTargetVPCReference flowLogCollectorTargetVpcReferenceModel = new FlowLogCollectorTargetVPCReference();
-    assertNull(flowLogCollectorTargetVpcReferenceModel.getId());
-    assertNull(flowLogCollectorTargetVpcReferenceModel.getCrn());
-    assertNull(flowLogCollectorTargetVpcReferenceModel.getHref());
-    assertNull(flowLogCollectorTargetVpcReferenceModel.getName());
+  public void testSecurityGroupPatch() throws Throwable {
+    SecurityGroupPatch securityGroupPatchModel = new SecurityGroupPatch.Builder()
+      .name("my-security-group")
+      .build();
+    assertEquals(securityGroupPatchModel.name(), "my-security-group");
+
+    String json = TestUtilities.serialize(securityGroupPatchModel);
+
+    SecurityGroupPatch securityGroupPatchModelNew = TestUtilities.deserialize(json, SecurityGroupPatch.class);
+    assertTrue(securityGroupPatchModelNew instanceof SecurityGroupPatch);
+    assertEquals(securityGroupPatchModelNew.name(), "my-security-group");
   }
+  @Test
+  public void testSecurityGroupPatchAsPatch() throws Throwable {
+    SecurityGroupPatch securityGroupPatchModel = new SecurityGroupPatch.Builder()
+      .name("my-security-group")
+      .build();
+
+    Map<String, Object> mergePatch = securityGroupPatchModel.asPatch();
+
+    assertEquals(mergePatch.get("name"), "my-security-group");
+  }
+
 }

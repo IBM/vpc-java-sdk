@@ -12,6 +12,8 @@
  */
 package com.ibm.cloud.is.vpc.v1.model;
 
+import java.util.Map;
+
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
@@ -19,38 +21,11 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class UpdateLoadBalancerListenerPolicyRuleOptions extends GenericModel {
 
-  /**
-   * The condition of the rule.
-   */
-  public interface Condition {
-    /** contains. */
-    String CONTAINS = "contains";
-    /** equals. */
-    String EQUALS = "equals";
-    /** matches_regex. */
-    String MATCHES_REGEX = "matches_regex";
-  }
-
-  /**
-   * The type of the rule.
-   */
-  public interface Type {
-    /** header. */
-    String HEADER = "header";
-    /** hostname. */
-    String HOSTNAME = "hostname";
-    /** path. */
-    String PATH = "path";
-  }
-
   protected String loadBalancerId;
   protected String listenerId;
   protected String policyId;
   protected String id;
-  protected String condition;
-  protected String field;
-  protected String type;
-  protected String value;
+  protected Map<String, Object> loadBalancerListenerPolicyRulePatch;
 
   /**
    * Builder.
@@ -60,20 +35,14 @@ public class UpdateLoadBalancerListenerPolicyRuleOptions extends GenericModel {
     private String listenerId;
     private String policyId;
     private String id;
-    private String condition;
-    private String field;
-    private String type;
-    private String value;
+    private Map<String, Object> loadBalancerListenerPolicyRulePatch;
 
     private Builder(UpdateLoadBalancerListenerPolicyRuleOptions updateLoadBalancerListenerPolicyRuleOptions) {
       this.loadBalancerId = updateLoadBalancerListenerPolicyRuleOptions.loadBalancerId;
       this.listenerId = updateLoadBalancerListenerPolicyRuleOptions.listenerId;
       this.policyId = updateLoadBalancerListenerPolicyRuleOptions.policyId;
       this.id = updateLoadBalancerListenerPolicyRuleOptions.id;
-      this.condition = updateLoadBalancerListenerPolicyRuleOptions.condition;
-      this.field = updateLoadBalancerListenerPolicyRuleOptions.field;
-      this.type = updateLoadBalancerListenerPolicyRuleOptions.type;
-      this.value = updateLoadBalancerListenerPolicyRuleOptions.value;
+      this.loadBalancerListenerPolicyRulePatch = updateLoadBalancerListenerPolicyRuleOptions.loadBalancerListenerPolicyRulePatch;
     }
 
     /**
@@ -89,12 +58,14 @@ public class UpdateLoadBalancerListenerPolicyRuleOptions extends GenericModel {
      * @param listenerId the listenerId
      * @param policyId the policyId
      * @param id the id
+     * @param loadBalancerListenerPolicyRulePatch the loadBalancerListenerPolicyRulePatch
      */
-    public Builder(String loadBalancerId, String listenerId, String policyId, String id) {
+    public Builder(String loadBalancerId, String listenerId, String policyId, String id, Map<String, Object> loadBalancerListenerPolicyRulePatch) {
       this.loadBalancerId = loadBalancerId;
       this.listenerId = listenerId;
       this.policyId = policyId;
       this.id = id;
+      this.loadBalancerListenerPolicyRulePatch = loadBalancerListenerPolicyRulePatch;
     }
 
     /**
@@ -151,46 +122,13 @@ public class UpdateLoadBalancerListenerPolicyRuleOptions extends GenericModel {
     }
 
     /**
-     * Set the condition.
+     * Set the loadBalancerListenerPolicyRulePatch.
      *
-     * @param condition the condition
+     * @param loadBalancerListenerPolicyRulePatch the loadBalancerListenerPolicyRulePatch
      * @return the UpdateLoadBalancerListenerPolicyRuleOptions builder
      */
-    public Builder condition(String condition) {
-      this.condition = condition;
-      return this;
-    }
-
-    /**
-     * Set the field.
-     *
-     * @param field the field
-     * @return the UpdateLoadBalancerListenerPolicyRuleOptions builder
-     */
-    public Builder field(String field) {
-      this.field = field;
-      return this;
-    }
-
-    /**
-     * Set the type.
-     *
-     * @param type the type
-     * @return the UpdateLoadBalancerListenerPolicyRuleOptions builder
-     */
-    public Builder type(String type) {
-      this.type = type;
-      return this;
-    }
-
-    /**
-     * Set the value.
-     *
-     * @param value the value
-     * @return the UpdateLoadBalancerListenerPolicyRuleOptions builder
-     */
-    public Builder value(String value) {
-      this.value = value;
+    public Builder loadBalancerListenerPolicyRulePatch(Map<String, Object> loadBalancerListenerPolicyRulePatch) {
+      this.loadBalancerListenerPolicyRulePatch = loadBalancerListenerPolicyRulePatch;
       return this;
     }
   }
@@ -204,14 +142,13 @@ public class UpdateLoadBalancerListenerPolicyRuleOptions extends GenericModel {
       "policyId cannot be empty");
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,
       "id cannot be empty");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.loadBalancerListenerPolicyRulePatch,
+      "loadBalancerListenerPolicyRulePatch cannot be null");
     loadBalancerId = builder.loadBalancerId;
     listenerId = builder.listenerId;
     policyId = builder.policyId;
     id = builder.id;
-    condition = builder.condition;
-    field = builder.field;
-    type = builder.type;
-    value = builder.value;
+    loadBalancerListenerPolicyRulePatch = builder.loadBalancerListenerPolicyRulePatch;
   }
 
   /**
@@ -268,47 +205,14 @@ public class UpdateLoadBalancerListenerPolicyRuleOptions extends GenericModel {
   }
 
   /**
-   * Gets the condition.
+   * Gets the loadBalancerListenerPolicyRulePatch.
    *
-   * The condition of the rule.
+   * The listener policy rule patch.
    *
-   * @return the condition
+   * @return the loadBalancerListenerPolicyRulePatch
    */
-  public String condition() {
-    return condition;
-  }
-
-  /**
-   * Gets the field.
-   *
-   * HTTP header field. This is only applicable to "header" rule type.
-   *
-   * @return the field
-   */
-  public String field() {
-    return field;
-  }
-
-  /**
-   * Gets the type.
-   *
-   * The type of the rule.
-   *
-   * @return the type
-   */
-  public String type() {
-    return type;
-  }
-
-  /**
-   * Gets the value.
-   *
-   * Value to be matched for rule condition.
-   *
-   * @return the value
-   */
-  public String value() {
-    return value;
+  public Map<String, Object> loadBalancerListenerPolicyRulePatch() {
+    return loadBalancerListenerPolicyRulePatch;
   }
 }
 

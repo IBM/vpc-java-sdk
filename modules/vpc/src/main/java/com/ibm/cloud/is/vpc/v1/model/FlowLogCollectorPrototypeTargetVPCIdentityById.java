@@ -13,9 +13,9 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 /**
- * FlowLogCollectorPrototypeTargetVPCIdentityVPCIdentityById.
+ * FlowLogCollectorPrototypeTargetVPCIdentityById.
  */
-public class FlowLogCollectorPrototypeTargetVPCIdentityVPCIdentityById extends FlowLogCollectorPrototypeTargetVPCIdentity {
+public class FlowLogCollectorPrototypeTargetVPCIdentityById extends FlowLogCollectorPrototypeTargetVPCIdentity {
 
 
   /**
@@ -24,8 +24,8 @@ public class FlowLogCollectorPrototypeTargetVPCIdentityVPCIdentityById extends F
   public static class Builder {
     private String id;
 
-    public Builder(FlowLogCollectorPrototypeTargetVPCIdentity flowLogCollectorPrototypeTargetVpcIdentityVpcIdentityById) {
-      this.id = flowLogCollectorPrototypeTargetVpcIdentityVpcIdentityById.id;
+    public Builder(FlowLogCollectorPrototypeTargetVPCIdentity flowLogCollectorPrototypeTargetVpcIdentityById) {
+      this.id = flowLogCollectorPrototypeTargetVpcIdentityById.id;
     }
 
     /**
@@ -44,19 +44,19 @@ public class FlowLogCollectorPrototypeTargetVPCIdentityVPCIdentityById extends F
     }
 
     /**
-     * Builds a FlowLogCollectorPrototypeTargetVPCIdentityVPCIdentityById.
+     * Builds a FlowLogCollectorPrototypeTargetVPCIdentityById.
      *
-     * @return the new FlowLogCollectorPrototypeTargetVPCIdentityVPCIdentityById instance
+     * @return the new FlowLogCollectorPrototypeTargetVPCIdentityById instance
      */
-    public FlowLogCollectorPrototypeTargetVPCIdentityVPCIdentityById build() {
-      return new FlowLogCollectorPrototypeTargetVPCIdentityVPCIdentityById(this);
+    public FlowLogCollectorPrototypeTargetVPCIdentityById build() {
+      return new FlowLogCollectorPrototypeTargetVPCIdentityById(this);
     }
 
     /**
      * Set the id.
      *
      * @param id the id
-     * @return the FlowLogCollectorPrototypeTargetVPCIdentityVPCIdentityById builder
+     * @return the FlowLogCollectorPrototypeTargetVPCIdentityById builder
      */
     public Builder id(String id) {
       this.id = id;
@@ -64,7 +64,7 @@ public class FlowLogCollectorPrototypeTargetVPCIdentityVPCIdentityById extends F
     }
   }
 
-  protected FlowLogCollectorPrototypeTargetVPCIdentityVPCIdentityById(Builder builder) {
+  protected FlowLogCollectorPrototypeTargetVPCIdentityById(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.id,
       "id cannot be null");
     id = builder.id;
@@ -73,7 +73,7 @@ public class FlowLogCollectorPrototypeTargetVPCIdentityVPCIdentityById extends F
   /**
    * New builder.
    *
-   * @return a FlowLogCollectorPrototypeTargetVPCIdentityVPCIdentityById builder
+   * @return a FlowLogCollectorPrototypeTargetVPCIdentityById builder
    */
   public Builder newBuilder() {
     return new Builder(this);

@@ -15,13 +15,10 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.UpdateInstanceVolumeAttachmentOptions;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
-
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-
 import java.util.HashMap;
 import java.util.List;
-
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
@@ -37,13 +34,11 @@ public class UpdateInstanceVolumeAttachmentOptionsTest {
     UpdateInstanceVolumeAttachmentOptions updateInstanceVolumeAttachmentOptionsModel = new UpdateInstanceVolumeAttachmentOptions.Builder()
       .instanceId("testString")
       .id("testString")
-      .name("my-volume-attachment")
-      .deleteVolumeOnInstanceDelete(true)
+      .volumeAttachmentPatch(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
       .build();
     assertEquals(updateInstanceVolumeAttachmentOptionsModel.instanceId(), "testString");
     assertEquals(updateInstanceVolumeAttachmentOptionsModel.id(), "testString");
-    assertEquals(updateInstanceVolumeAttachmentOptionsModel.name(), "my-volume-attachment");
-    assertEquals(updateInstanceVolumeAttachmentOptionsModel.deleteVolumeOnInstanceDelete(), Boolean.valueOf(true));
+    assertEquals(updateInstanceVolumeAttachmentOptionsModel.volumeAttachmentPatch(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } });
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

@@ -20,22 +20,22 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class VolumeAttachmentPrototypeInstanceByImageContext extends GenericModel {
 
-  protected String name;
   @SerializedName("delete_volume_on_instance_delete")
   protected Boolean deleteVolumeOnInstanceDelete;
+  protected String name;
   protected VolumePrototypeInstanceByImageContext volume;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private String name;
     private Boolean deleteVolumeOnInstanceDelete;
+    private String name;
     private VolumePrototypeInstanceByImageContext volume;
 
     private Builder(VolumeAttachmentPrototypeInstanceByImageContext volumeAttachmentPrototypeInstanceByImageContext) {
-      this.name = volumeAttachmentPrototypeInstanceByImageContext.name;
       this.deleteVolumeOnInstanceDelete = volumeAttachmentPrototypeInstanceByImageContext.deleteVolumeOnInstanceDelete;
+      this.name = volumeAttachmentPrototypeInstanceByImageContext.name;
       this.volume = volumeAttachmentPrototypeInstanceByImageContext.volume;
     }
 
@@ -64,17 +64,6 @@ public class VolumeAttachmentPrototypeInstanceByImageContext extends GenericMode
     }
 
     /**
-     * Set the name.
-     *
-     * @param name the name
-     * @return the VolumeAttachmentPrototypeInstanceByImageContext builder
-     */
-    public Builder name(String name) {
-      this.name = name;
-      return this;
-    }
-
-    /**
      * Set the deleteVolumeOnInstanceDelete.
      *
      * @param deleteVolumeOnInstanceDelete the deleteVolumeOnInstanceDelete
@@ -82,6 +71,17 @@ public class VolumeAttachmentPrototypeInstanceByImageContext extends GenericMode
      */
     public Builder deleteVolumeOnInstanceDelete(Boolean deleteVolumeOnInstanceDelete) {
       this.deleteVolumeOnInstanceDelete = deleteVolumeOnInstanceDelete;
+      return this;
+    }
+
+    /**
+     * Set the name.
+     *
+     * @param name the name
+     * @return the VolumeAttachmentPrototypeInstanceByImageContext builder
+     */
+    public Builder name(String name) {
+      this.name = name;
       return this;
     }
 
@@ -100,8 +100,8 @@ public class VolumeAttachmentPrototypeInstanceByImageContext extends GenericMode
   protected VolumeAttachmentPrototypeInstanceByImageContext(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.volume,
       "volume cannot be null");
-    name = builder.name;
     deleteVolumeOnInstanceDelete = builder.deleteVolumeOnInstanceDelete;
+    name = builder.name;
     volume = builder.volume;
   }
 
@@ -112,17 +112,6 @@ public class VolumeAttachmentPrototypeInstanceByImageContext extends GenericMode
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the name.
-   *
-   * The user-defined name for this volume attachment.
-   *
-   * @return the name
-   */
-  public String name() {
-    return name;
   }
 
   /**
@@ -137,10 +126,20 @@ public class VolumeAttachmentPrototypeInstanceByImageContext extends GenericMode
   }
 
   /**
+   * Gets the name.
+   *
+   * The user-defined name for this volume attachment.
+   *
+   * @return the name
+   */
+  public String name() {
+    return name;
+  }
+
+  /**
    * Gets the volume.
    *
-   * The identity of the volume to attach to the instance, or a prototype object for a
-   * new volume.
+   * A prototype object for a new volume.
    *
    * @return the volume
    */

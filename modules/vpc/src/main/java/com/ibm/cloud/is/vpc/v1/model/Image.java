@@ -23,6 +23,16 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class Image extends GenericModel {
 
   /**
+   * The type of encryption used on the image.
+   */
+  public interface Encryption {
+    /** none. */
+    String NONE = "none";
+    /** user_managed. */
+    String USER_MANAGED = "user_managed";
+  }
+
+  /**
    * The status of this image.
    */
   public interface Status {
@@ -34,6 +44,8 @@ public class Image extends GenericModel {
     String DEPRECATED = "deprecated";
     /** failed. */
     String FAILED = "failed";
+    /** unusable. */
+    String UNUSABLE = "unusable";
     /** pending. */
     String PENDING = "pending";
     /** tentative. */
@@ -58,6 +70,9 @@ public class Image extends GenericModel {
   protected Long minimumProvisionedSize;
   @SerializedName("resource_group")
   protected ResourceGroupReference resourceGroup;
+  protected String encryption;
+  @SerializedName("encryption_key")
+  protected EncryptionKeyReference encryptionKey;
   @SerializedName("created_at")
   protected Date createdAt;
   protected ImageFile file;
@@ -133,6 +148,31 @@ public class Image extends GenericModel {
    */
   public ResourceGroupReference getResourceGroup() {
     return resourceGroup;
+  }
+
+  /**
+   * Gets the encryption.
+   *
+   * The type of encryption used on the image.
+   *
+   * @return the encryption
+   */
+  public String getEncryption() {
+    return encryption;
+  }
+
+  /**
+   * Gets the encryptionKey.
+   *
+   * The key that will be used to encrypt volumes created from this image (unless an
+   * alternate `encryption_key` is provided at volume creation).
+   *
+   * This property will be present for images with an `encryption` type of `user_managed`.
+   *
+   * @return the encryptionKey
+   */
+  public EncryptionKeyReference getEncryptionKey() {
+    return encryptionKey;
   }
 
   /**

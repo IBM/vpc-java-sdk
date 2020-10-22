@@ -16,7 +16,7 @@ package com.ibm.cloud.is.vpc.v1.model;
  * Identifies a VPC by a unique property.
  *
  * Classes which extend this class:
- * - FlowLogCollectorPrototypeTargetVPCIdentityVPCIdentityById
+ * - FlowLogCollectorPrototypeTargetVPCIdentityById
  * - FlowLogCollectorPrototypeTargetVPCIdentityVPCIdentityByCRN
  * - FlowLogCollectorPrototypeTargetVPCIdentityVPCIdentityByHref
  */

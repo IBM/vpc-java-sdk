@@ -12,6 +12,8 @@
  */
 package com.ibm.cloud.is.vpc.v1.model;
 
+import java.util.Map;
+
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
@@ -20,18 +22,18 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class UpdateVolumeOptions extends GenericModel {
 
   protected String id;
-  protected String name;
+  protected Map<String, Object> volumePatch;
 
   /**
    * Builder.
    */
   public static class Builder {
     private String id;
-    private String name;
+    private Map<String, Object> volumePatch;
 
     private Builder(UpdateVolumeOptions updateVolumeOptions) {
       this.id = updateVolumeOptions.id;
-      this.name = updateVolumeOptions.name;
+      this.volumePatch = updateVolumeOptions.volumePatch;
     }
 
     /**
@@ -44,9 +46,11 @@ public class UpdateVolumeOptions extends GenericModel {
      * Instantiates a new builder with required properties.
      *
      * @param id the id
+     * @param volumePatch the volumePatch
      */
-    public Builder(String id) {
+    public Builder(String id, Map<String, Object> volumePatch) {
       this.id = id;
+      this.volumePatch = volumePatch;
     }
 
     /**
@@ -70,13 +74,13 @@ public class UpdateVolumeOptions extends GenericModel {
     }
 
     /**
-     * Set the name.
+     * Set the volumePatch.
      *
-     * @param name the name
+     * @param volumePatch the volumePatch
      * @return the UpdateVolumeOptions builder
      */
-    public Builder name(String name) {
-      this.name = name;
+    public Builder volumePatch(Map<String, Object> volumePatch) {
+      this.volumePatch = volumePatch;
       return this;
     }
   }
@@ -84,8 +88,10 @@ public class UpdateVolumeOptions extends GenericModel {
   protected UpdateVolumeOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,
       "id cannot be empty");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.volumePatch,
+      "volumePatch cannot be null");
     id = builder.id;
-    name = builder.name;
+    volumePatch = builder.volumePatch;
   }
 
   /**
@@ -109,14 +115,14 @@ public class UpdateVolumeOptions extends GenericModel {
   }
 
   /**
-   * Gets the name.
+   * Gets the volumePatch.
    *
-   * The unique user-defined name for this volume.
+   * The volume patch.
    *
-   * @return the name
+   * @return the volumePatch
    */
-  public String name() {
-    return name;
+  public Map<String, Object> volumePatch() {
+    return volumePatch;
   }
 }
 

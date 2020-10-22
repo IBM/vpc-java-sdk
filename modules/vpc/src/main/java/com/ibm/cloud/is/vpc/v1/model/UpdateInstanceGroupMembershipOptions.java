@@ -12,6 +12,8 @@
  */
 package com.ibm.cloud.is.vpc.v1.model;
 
+import java.util.Map;
+
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
@@ -21,7 +23,7 @@ public class UpdateInstanceGroupMembershipOptions extends GenericModel {
 
   protected String instanceGroupId;
   protected String id;
-  protected String name;
+  protected Map<String, Object> instanceGroupMembershipPatch;
 
   /**
    * Builder.
@@ -29,12 +31,12 @@ public class UpdateInstanceGroupMembershipOptions extends GenericModel {
   public static class Builder {
     private String instanceGroupId;
     private String id;
-    private String name;
+    private Map<String, Object> instanceGroupMembershipPatch;
 
     private Builder(UpdateInstanceGroupMembershipOptions updateInstanceGroupMembershipOptions) {
       this.instanceGroupId = updateInstanceGroupMembershipOptions.instanceGroupId;
       this.id = updateInstanceGroupMembershipOptions.id;
-      this.name = updateInstanceGroupMembershipOptions.name;
+      this.instanceGroupMembershipPatch = updateInstanceGroupMembershipOptions.instanceGroupMembershipPatch;
     }
 
     /**
@@ -48,10 +50,12 @@ public class UpdateInstanceGroupMembershipOptions extends GenericModel {
      *
      * @param instanceGroupId the instanceGroupId
      * @param id the id
+     * @param instanceGroupMembershipPatch the instanceGroupMembershipPatch
      */
-    public Builder(String instanceGroupId, String id) {
+    public Builder(String instanceGroupId, String id, Map<String, Object> instanceGroupMembershipPatch) {
       this.instanceGroupId = instanceGroupId;
       this.id = id;
+      this.instanceGroupMembershipPatch = instanceGroupMembershipPatch;
     }
 
     /**
@@ -86,13 +90,13 @@ public class UpdateInstanceGroupMembershipOptions extends GenericModel {
     }
 
     /**
-     * Set the name.
+     * Set the instanceGroupMembershipPatch.
      *
-     * @param name the name
+     * @param instanceGroupMembershipPatch the instanceGroupMembershipPatch
      * @return the UpdateInstanceGroupMembershipOptions builder
      */
-    public Builder name(String name) {
-      this.name = name;
+    public Builder instanceGroupMembershipPatch(Map<String, Object> instanceGroupMembershipPatch) {
+      this.instanceGroupMembershipPatch = instanceGroupMembershipPatch;
       return this;
     }
   }
@@ -102,9 +106,11 @@ public class UpdateInstanceGroupMembershipOptions extends GenericModel {
       "instanceGroupId cannot be empty");
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,
       "id cannot be empty");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.instanceGroupMembershipPatch,
+      "instanceGroupMembershipPatch cannot be null");
     instanceGroupId = builder.instanceGroupId;
     id = builder.id;
-    name = builder.name;
+    instanceGroupMembershipPatch = builder.instanceGroupMembershipPatch;
   }
 
   /**
@@ -139,14 +145,14 @@ public class UpdateInstanceGroupMembershipOptions extends GenericModel {
   }
 
   /**
-   * Gets the name.
+   * Gets the instanceGroupMembershipPatch.
    *
-   * The user-defined name for this instance group membership. Names must be unique within the instance group.
+   * The instance group membership patch.
    *
-   * @return the name
+   * @return the instanceGroupMembershipPatch
    */
-  public String name() {
-    return name;
+  public Map<String, Object> instanceGroupMembershipPatch() {
+    return instanceGroupMembershipPatch;
   }
 }
 

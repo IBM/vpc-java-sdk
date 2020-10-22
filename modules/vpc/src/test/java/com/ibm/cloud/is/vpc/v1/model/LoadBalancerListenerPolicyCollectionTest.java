@@ -16,17 +16,14 @@ package com.ibm.cloud.is.vpc.v1.model;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicy;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyCollection;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyRuleReference;
-import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetReferenceLoadBalancerPoolReference;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetLoadBalancerPoolReference;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
-
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
-
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 

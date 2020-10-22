@@ -12,6 +12,8 @@
  */
 package com.ibm.cloud.is.vpc.v1.model;
 
+import java.util.Map;
+
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
@@ -20,24 +22,18 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class UpdateSubnetOptions extends GenericModel {
 
   protected String id;
-  protected String name;
-  protected NetworkACLIdentity networkAcl;
-  protected PublicGatewayIdentity publicGateway;
+  protected Map<String, Object> subnetPatch;
 
   /**
    * Builder.
    */
   public static class Builder {
     private String id;
-    private String name;
-    private NetworkACLIdentity networkAcl;
-    private PublicGatewayIdentity publicGateway;
+    private Map<String, Object> subnetPatch;
 
     private Builder(UpdateSubnetOptions updateSubnetOptions) {
       this.id = updateSubnetOptions.id;
-      this.name = updateSubnetOptions.name;
-      this.networkAcl = updateSubnetOptions.networkAcl;
-      this.publicGateway = updateSubnetOptions.publicGateway;
+      this.subnetPatch = updateSubnetOptions.subnetPatch;
     }
 
     /**
@@ -50,9 +46,11 @@ public class UpdateSubnetOptions extends GenericModel {
      * Instantiates a new builder with required properties.
      *
      * @param id the id
+     * @param subnetPatch the subnetPatch
      */
-    public Builder(String id) {
+    public Builder(String id, Map<String, Object> subnetPatch) {
       this.id = id;
+      this.subnetPatch = subnetPatch;
     }
 
     /**
@@ -76,35 +74,13 @@ public class UpdateSubnetOptions extends GenericModel {
     }
 
     /**
-     * Set the name.
+     * Set the subnetPatch.
      *
-     * @param name the name
+     * @param subnetPatch the subnetPatch
      * @return the UpdateSubnetOptions builder
      */
-    public Builder name(String name) {
-      this.name = name;
-      return this;
-    }
-
-    /**
-     * Set the networkAcl.
-     *
-     * @param networkAcl the networkAcl
-     * @return the UpdateSubnetOptions builder
-     */
-    public Builder networkAcl(NetworkACLIdentity networkAcl) {
-      this.networkAcl = networkAcl;
-      return this;
-    }
-
-    /**
-     * Set the publicGateway.
-     *
-     * @param publicGateway the publicGateway
-     * @return the UpdateSubnetOptions builder
-     */
-    public Builder publicGateway(PublicGatewayIdentity publicGateway) {
-      this.publicGateway = publicGateway;
+    public Builder subnetPatch(Map<String, Object> subnetPatch) {
+      this.subnetPatch = subnetPatch;
       return this;
     }
   }
@@ -112,10 +88,10 @@ public class UpdateSubnetOptions extends GenericModel {
   protected UpdateSubnetOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,
       "id cannot be empty");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.subnetPatch,
+      "subnetPatch cannot be null");
     id = builder.id;
-    name = builder.name;
-    networkAcl = builder.networkAcl;
-    publicGateway = builder.publicGateway;
+    subnetPatch = builder.subnetPatch;
   }
 
   /**
@@ -139,36 +115,14 @@ public class UpdateSubnetOptions extends GenericModel {
   }
 
   /**
-   * Gets the name.
+   * Gets the subnetPatch.
    *
-   * The user-defined name for this subnet. Names must be unique within the VPC the subnet resides in.
+   * The subnet patch.
    *
-   * @return the name
+   * @return the subnetPatch
    */
-  public String name() {
-    return name;
-  }
-
-  /**
-   * Gets the networkAcl.
-   *
-   * The network ACL to use for this subnet.
-   *
-   * @return the networkAcl
-   */
-  public NetworkACLIdentity networkAcl() {
-    return networkAcl;
-  }
-
-  /**
-   * Gets the publicGateway.
-   *
-   * The public gateway to handle internet bound traffic for this subnet.
-   *
-   * @return the publicGateway
-   */
-  public PublicGatewayIdentity publicGateway() {
-    return publicGateway;
+  public Map<String, Object> subnetPatch() {
+    return subnetPatch;
   }
 }
 

@@ -16,13 +16,10 @@ package com.ibm.cloud.is.vpc.v1.model;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLRuleNetworkACLRuleProtocolAll;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLRuleReference;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
-
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-
 import java.util.HashMap;
 import java.util.List;
-
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
@@ -47,5 +44,6 @@ public class NetworkACLRuleNetworkACLRuleProtocolAllTest {
     assertNull(networkAclRuleNetworkAclRuleProtocolAllModel.getBefore());
     assertNull(networkAclRuleNetworkAclRuleProtocolAllModel.getCreatedAt());
     assertNull(networkAclRuleNetworkAclRuleProtocolAllModel.getIpVersion());
+    assertNotNull(networkAclRuleNetworkAclRuleProtocolAllModel);
   }
 }

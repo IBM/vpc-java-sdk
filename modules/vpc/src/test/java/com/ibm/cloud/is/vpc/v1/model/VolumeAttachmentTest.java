@@ -17,13 +17,10 @@ import com.ibm.cloud.is.vpc.v1.model.VolumeAttachment;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentDevice;
 import com.ibm.cloud.is.vpc.v1.model.VolumeReference;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
-
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-
 import java.util.HashMap;
 import java.util.List;
-
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
@@ -37,8 +34,8 @@ public class VolumeAttachmentTest {
   @Test
   public void testVolumeAttachment() throws Throwable {
     VolumeAttachment volumeAttachmentModel = new VolumeAttachment();
-    assertNull(volumeAttachmentModel.getName());
     assertNull(volumeAttachmentModel.isDeleteVolumeOnInstanceDelete());
+    assertNull(volumeAttachmentModel.getName());
     assertNull(volumeAttachmentModel.getId());
     assertNull(volumeAttachmentModel.getHref());
     assertNull(volumeAttachmentModel.getDevice());

@@ -37,7 +37,7 @@ public class VPNGatewayConnectionReference extends GenericModel {
   /**
    * Gets the id.
    *
-   * The unique identifier for this VPN connection.
+   * The unique identifier for this VPN gateway connection.
    *
    * @return the id
    */

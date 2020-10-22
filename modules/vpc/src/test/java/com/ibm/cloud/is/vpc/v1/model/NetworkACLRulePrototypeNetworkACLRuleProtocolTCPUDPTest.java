@@ -16,13 +16,10 @@ package com.ibm.cloud.is.vpc.v1.model;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLRuleIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLRulePrototypeNetworkACLRuleProtocolTCPUDP;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
-
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-
 import java.util.HashMap;
 import java.util.List;
-
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
@@ -81,10 +78,4 @@ public class NetworkACLRulePrototypeNetworkACLRuleProtocolTCPUDPTest {
     assertEquals(networkAclRulePrototypeNetworkAclRuleProtocolTcpudpModelNew.sourcePortMax(), Long.valueOf("65535"));
     assertEquals(networkAclRulePrototypeNetworkAclRuleProtocolTcpudpModelNew.sourcePortMin(), Long.valueOf("49152"));
   }
-
-  @Test(expectedExceptions = IllegalArgumentException.class)
-  public void testNetworkACLRulePrototypeNetworkACLRuleProtocolTCPUDPError() throws Throwable {
-    new NetworkACLRulePrototypeNetworkACLRuleProtocolTCPUDP.Builder().build();
-  }
-
 }

@@ -12,6 +12,8 @@
  */
 package com.ibm.cloud.is.vpc.v1.model;
 
+import java.util.Map;
+
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
@@ -21,7 +23,7 @@ public class UpdateInstanceNetworkInterfaceOptions extends GenericModel {
 
   protected String instanceId;
   protected String id;
-  protected String name;
+  protected Map<String, Object> networkInterfacePatch;
 
   /**
    * Builder.
@@ -29,12 +31,12 @@ public class UpdateInstanceNetworkInterfaceOptions extends GenericModel {
   public static class Builder {
     private String instanceId;
     private String id;
-    private String name;
+    private Map<String, Object> networkInterfacePatch;
 
     private Builder(UpdateInstanceNetworkInterfaceOptions updateInstanceNetworkInterfaceOptions) {
       this.instanceId = updateInstanceNetworkInterfaceOptions.instanceId;
       this.id = updateInstanceNetworkInterfaceOptions.id;
-      this.name = updateInstanceNetworkInterfaceOptions.name;
+      this.networkInterfacePatch = updateInstanceNetworkInterfaceOptions.networkInterfacePatch;
     }
 
     /**
@@ -48,10 +50,12 @@ public class UpdateInstanceNetworkInterfaceOptions extends GenericModel {
      *
      * @param instanceId the instanceId
      * @param id the id
+     * @param networkInterfacePatch the networkInterfacePatch
      */
-    public Builder(String instanceId, String id) {
+    public Builder(String instanceId, String id, Map<String, Object> networkInterfacePatch) {
       this.instanceId = instanceId;
       this.id = id;
+      this.networkInterfacePatch = networkInterfacePatch;
     }
 
     /**
@@ -86,13 +90,13 @@ public class UpdateInstanceNetworkInterfaceOptions extends GenericModel {
     }
 
     /**
-     * Set the name.
+     * Set the networkInterfacePatch.
      *
-     * @param name the name
+     * @param networkInterfacePatch the networkInterfacePatch
      * @return the UpdateInstanceNetworkInterfaceOptions builder
      */
-    public Builder name(String name) {
-      this.name = name;
+    public Builder networkInterfacePatch(Map<String, Object> networkInterfacePatch) {
+      this.networkInterfacePatch = networkInterfacePatch;
       return this;
     }
   }
@@ -102,9 +106,11 @@ public class UpdateInstanceNetworkInterfaceOptions extends GenericModel {
       "instanceId cannot be empty");
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,
       "id cannot be empty");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.networkInterfacePatch,
+      "networkInterfacePatch cannot be null");
     instanceId = builder.instanceId;
     id = builder.id;
-    name = builder.name;
+    networkInterfacePatch = builder.networkInterfacePatch;
   }
 
   /**
@@ -139,14 +145,14 @@ public class UpdateInstanceNetworkInterfaceOptions extends GenericModel {
   }
 
   /**
-   * Gets the name.
+   * Gets the networkInterfacePatch.
    *
-   * The user-defined name for this network interface.
+   * The network interface patch.
    *
-   * @return the name
+   * @return the networkInterfacePatch
    */
-  public String name() {
-    return name;
+  public Map<String, Object> networkInterfacePatch() {
+    return networkInterfacePatch;
   }
 }
 

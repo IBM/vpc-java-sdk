@@ -81,15 +81,6 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolTCPUDP extends S
     }
 
     /**
-     * Instantiates a new builder with required properties.
-     *
-     * @param direction the direction
-     */
-    public Builder(String direction) {
-      this.direction = direction;
-    }
-
-    /**
      * Builds a SecurityGroupRulePrototypeSecurityGroupRuleProtocolTCPUDP.
      *
      * @return the new SecurityGroupRulePrototypeSecurityGroupRuleProtocolTCPUDP instance

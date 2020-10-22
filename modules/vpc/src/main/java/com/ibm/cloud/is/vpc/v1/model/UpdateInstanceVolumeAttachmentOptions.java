@@ -12,6 +12,8 @@
  */
 package com.ibm.cloud.is.vpc.v1.model;
 
+import java.util.Map;
+
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
@@ -21,8 +23,7 @@ public class UpdateInstanceVolumeAttachmentOptions extends GenericModel {
 
   protected String instanceId;
   protected String id;
-  protected String name;
-  protected Boolean deleteVolumeOnInstanceDelete;
+  protected Map<String, Object> volumeAttachmentPatch;
 
   /**
    * Builder.
@@ -30,14 +31,12 @@ public class UpdateInstanceVolumeAttachmentOptions extends GenericModel {
   public static class Builder {
     private String instanceId;
     private String id;
-    private String name;
-    private Boolean deleteVolumeOnInstanceDelete;
+    private Map<String, Object> volumeAttachmentPatch;
 
     private Builder(UpdateInstanceVolumeAttachmentOptions updateInstanceVolumeAttachmentOptions) {
       this.instanceId = updateInstanceVolumeAttachmentOptions.instanceId;
       this.id = updateInstanceVolumeAttachmentOptions.id;
-      this.name = updateInstanceVolumeAttachmentOptions.name;
-      this.deleteVolumeOnInstanceDelete = updateInstanceVolumeAttachmentOptions.deleteVolumeOnInstanceDelete;
+      this.volumeAttachmentPatch = updateInstanceVolumeAttachmentOptions.volumeAttachmentPatch;
     }
 
     /**
@@ -51,10 +50,12 @@ public class UpdateInstanceVolumeAttachmentOptions extends GenericModel {
      *
      * @param instanceId the instanceId
      * @param id the id
+     * @param volumeAttachmentPatch the volumeAttachmentPatch
      */
-    public Builder(String instanceId, String id) {
+    public Builder(String instanceId, String id, Map<String, Object> volumeAttachmentPatch) {
       this.instanceId = instanceId;
       this.id = id;
+      this.volumeAttachmentPatch = volumeAttachmentPatch;
     }
 
     /**
@@ -89,24 +90,13 @@ public class UpdateInstanceVolumeAttachmentOptions extends GenericModel {
     }
 
     /**
-     * Set the name.
+     * Set the volumeAttachmentPatch.
      *
-     * @param name the name
+     * @param volumeAttachmentPatch the volumeAttachmentPatch
      * @return the UpdateInstanceVolumeAttachmentOptions builder
      */
-    public Builder name(String name) {
-      this.name = name;
-      return this;
-    }
-
-    /**
-     * Set the deleteVolumeOnInstanceDelete.
-     *
-     * @param deleteVolumeOnInstanceDelete the deleteVolumeOnInstanceDelete
-     * @return the UpdateInstanceVolumeAttachmentOptions builder
-     */
-    public Builder deleteVolumeOnInstanceDelete(Boolean deleteVolumeOnInstanceDelete) {
-      this.deleteVolumeOnInstanceDelete = deleteVolumeOnInstanceDelete;
+    public Builder volumeAttachmentPatch(Map<String, Object> volumeAttachmentPatch) {
+      this.volumeAttachmentPatch = volumeAttachmentPatch;
       return this;
     }
   }
@@ -116,10 +106,11 @@ public class UpdateInstanceVolumeAttachmentOptions extends GenericModel {
       "instanceId cannot be empty");
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,
       "id cannot be empty");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.volumeAttachmentPatch,
+      "volumeAttachmentPatch cannot be null");
     instanceId = builder.instanceId;
     id = builder.id;
-    name = builder.name;
-    deleteVolumeOnInstanceDelete = builder.deleteVolumeOnInstanceDelete;
+    volumeAttachmentPatch = builder.volumeAttachmentPatch;
   }
 
   /**
@@ -154,25 +145,14 @@ public class UpdateInstanceVolumeAttachmentOptions extends GenericModel {
   }
 
   /**
-   * Gets the name.
+   * Gets the volumeAttachmentPatch.
    *
-   * The user-defined name for this volume attachment.
+   * The volume attachment patch.
    *
-   * @return the name
+   * @return the volumeAttachmentPatch
    */
-  public String name() {
-    return name;
-  }
-
-  /**
-   * Gets the deleteVolumeOnInstanceDelete.
-   *
-   * If set to true, when deleting the instance the volume will also be deleted.
-   *
-   * @return the deleteVolumeOnInstanceDelete
-   */
-  public Boolean deleteVolumeOnInstanceDelete() {
-    return deleteVolumeOnInstanceDelete;
+  public Map<String, Object> volumeAttachmentPatch() {
+    return volumeAttachmentPatch;
   }
 }
 

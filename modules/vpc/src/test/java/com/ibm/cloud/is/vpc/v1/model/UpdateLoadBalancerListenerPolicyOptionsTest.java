@@ -13,16 +13,12 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
-import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyPatchTargetLoadBalancerPoolIdentityLoadBalancerPoolIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.UpdateLoadBalancerListenerPolicyOptions;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
-
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-
 import java.util.HashMap;
 import java.util.List;
-
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
@@ -35,25 +31,16 @@ public class UpdateLoadBalancerListenerPolicyOptionsTest {
 
   @Test
   public void testUpdateLoadBalancerListenerPolicyOptions() throws Throwable {
-    LoadBalancerListenerPolicyPatchTargetLoadBalancerPoolIdentityLoadBalancerPoolIdentityById loadBalancerListenerPolicyPatchTargetModel = new LoadBalancerListenerPolicyPatchTargetLoadBalancerPoolIdentityLoadBalancerPoolIdentityById.Builder()
-      .id("70294e14-4e61-11e8-bcf4-0242ac110004")
-      .build();
-    assertEquals(loadBalancerListenerPolicyPatchTargetModel.id(), "70294e14-4e61-11e8-bcf4-0242ac110004");
-
     UpdateLoadBalancerListenerPolicyOptions updateLoadBalancerListenerPolicyOptionsModel = new UpdateLoadBalancerListenerPolicyOptions.Builder()
       .loadBalancerId("testString")
       .listenerId("testString")
       .id("testString")
-      .name("my-policy")
-      .priority(Long.valueOf("5"))
-      .target(loadBalancerListenerPolicyPatchTargetModel)
+      .loadBalancerListenerPolicyPatch(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
       .build();
     assertEquals(updateLoadBalancerListenerPolicyOptionsModel.loadBalancerId(), "testString");
     assertEquals(updateLoadBalancerListenerPolicyOptionsModel.listenerId(), "testString");
     assertEquals(updateLoadBalancerListenerPolicyOptionsModel.id(), "testString");
-    assertEquals(updateLoadBalancerListenerPolicyOptionsModel.name(), "my-policy");
-    assertEquals(updateLoadBalancerListenerPolicyOptionsModel.priority(), Long.valueOf("5"));
-    assertEquals(updateLoadBalancerListenerPolicyOptionsModel.target(), loadBalancerListenerPolicyPatchTargetModel);
+    assertEquals(updateLoadBalancerListenerPolicyOptionsModel.loadBalancerListenerPolicyPatch(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } });
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

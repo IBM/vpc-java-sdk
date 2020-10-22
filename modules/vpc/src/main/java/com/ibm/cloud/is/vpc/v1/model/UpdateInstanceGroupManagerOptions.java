@@ -12,6 +12,8 @@
  */
 package com.ibm.cloud.is.vpc.v1.model;
 
+import java.util.Map;
+
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
@@ -21,12 +23,7 @@ public class UpdateInstanceGroupManagerOptions extends GenericModel {
 
   protected String instanceGroupId;
   protected String id;
-  protected String name;
-  protected Boolean managementEnabled;
-  protected Long aggregationWindow;
-  protected Long cooldown;
-  protected Long maxMembershipCount;
-  protected Long minMembershipCount;
+  protected Map<String, Object> instanceGroupManagerPatch;
 
   /**
    * Builder.
@@ -34,22 +31,12 @@ public class UpdateInstanceGroupManagerOptions extends GenericModel {
   public static class Builder {
     private String instanceGroupId;
     private String id;
-    private String name;
-    private Boolean managementEnabled;
-    private Long aggregationWindow;
-    private Long cooldown;
-    private Long maxMembershipCount;
-    private Long minMembershipCount;
+    private Map<String, Object> instanceGroupManagerPatch;
 
     private Builder(UpdateInstanceGroupManagerOptions updateInstanceGroupManagerOptions) {
       this.instanceGroupId = updateInstanceGroupManagerOptions.instanceGroupId;
       this.id = updateInstanceGroupManagerOptions.id;
-      this.name = updateInstanceGroupManagerOptions.name;
-      this.managementEnabled = updateInstanceGroupManagerOptions.managementEnabled;
-      this.aggregationWindow = updateInstanceGroupManagerOptions.aggregationWindow;
-      this.cooldown = updateInstanceGroupManagerOptions.cooldown;
-      this.maxMembershipCount = updateInstanceGroupManagerOptions.maxMembershipCount;
-      this.minMembershipCount = updateInstanceGroupManagerOptions.minMembershipCount;
+      this.instanceGroupManagerPatch = updateInstanceGroupManagerOptions.instanceGroupManagerPatch;
     }
 
     /**
@@ -63,10 +50,12 @@ public class UpdateInstanceGroupManagerOptions extends GenericModel {
      *
      * @param instanceGroupId the instanceGroupId
      * @param id the id
+     * @param instanceGroupManagerPatch the instanceGroupManagerPatch
      */
-    public Builder(String instanceGroupId, String id) {
+    public Builder(String instanceGroupId, String id, Map<String, Object> instanceGroupManagerPatch) {
       this.instanceGroupId = instanceGroupId;
       this.id = id;
+      this.instanceGroupManagerPatch = instanceGroupManagerPatch;
     }
 
     /**
@@ -101,68 +90,13 @@ public class UpdateInstanceGroupManagerOptions extends GenericModel {
     }
 
     /**
-     * Set the name.
+     * Set the instanceGroupManagerPatch.
      *
-     * @param name the name
+     * @param instanceGroupManagerPatch the instanceGroupManagerPatch
      * @return the UpdateInstanceGroupManagerOptions builder
      */
-    public Builder name(String name) {
-      this.name = name;
-      return this;
-    }
-
-    /**
-     * Set the managementEnabled.
-     *
-     * @param managementEnabled the managementEnabled
-     * @return the UpdateInstanceGroupManagerOptions builder
-     */
-    public Builder managementEnabled(Boolean managementEnabled) {
-      this.managementEnabled = managementEnabled;
-      return this;
-    }
-
-    /**
-     * Set the aggregationWindow.
-     *
-     * @param aggregationWindow the aggregationWindow
-     * @return the UpdateInstanceGroupManagerOptions builder
-     */
-    public Builder aggregationWindow(long aggregationWindow) {
-      this.aggregationWindow = aggregationWindow;
-      return this;
-    }
-
-    /**
-     * Set the cooldown.
-     *
-     * @param cooldown the cooldown
-     * @return the UpdateInstanceGroupManagerOptions builder
-     */
-    public Builder cooldown(long cooldown) {
-      this.cooldown = cooldown;
-      return this;
-    }
-
-    /**
-     * Set the maxMembershipCount.
-     *
-     * @param maxMembershipCount the maxMembershipCount
-     * @return the UpdateInstanceGroupManagerOptions builder
-     */
-    public Builder maxMembershipCount(long maxMembershipCount) {
-      this.maxMembershipCount = maxMembershipCount;
-      return this;
-    }
-
-    /**
-     * Set the minMembershipCount.
-     *
-     * @param minMembershipCount the minMembershipCount
-     * @return the UpdateInstanceGroupManagerOptions builder
-     */
-    public Builder minMembershipCount(long minMembershipCount) {
-      this.minMembershipCount = minMembershipCount;
+    public Builder instanceGroupManagerPatch(Map<String, Object> instanceGroupManagerPatch) {
+      this.instanceGroupManagerPatch = instanceGroupManagerPatch;
       return this;
     }
   }
@@ -172,14 +106,11 @@ public class UpdateInstanceGroupManagerOptions extends GenericModel {
       "instanceGroupId cannot be empty");
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,
       "id cannot be empty");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.instanceGroupManagerPatch,
+      "instanceGroupManagerPatch cannot be null");
     instanceGroupId = builder.instanceGroupId;
     id = builder.id;
-    name = builder.name;
-    managementEnabled = builder.managementEnabled;
-    aggregationWindow = builder.aggregationWindow;
-    cooldown = builder.cooldown;
-    maxMembershipCount = builder.maxMembershipCount;
-    minMembershipCount = builder.minMembershipCount;
+    instanceGroupManagerPatch = builder.instanceGroupManagerPatch;
   }
 
   /**
@@ -214,69 +145,14 @@ public class UpdateInstanceGroupManagerOptions extends GenericModel {
   }
 
   /**
-   * Gets the name.
+   * Gets the instanceGroupManagerPatch.
    *
-   * The user-defined name for this instance group manager. Names must be unique within the instance group.
+   * The instance group manager patch.
    *
-   * @return the name
+   * @return the instanceGroupManagerPatch
    */
-  public String name() {
-    return name;
-  }
-
-  /**
-   * Gets the managementEnabled.
-   *
-   * If set to `true`, this manager will control the instance group.
-   *
-   * @return the managementEnabled
-   */
-  public Boolean managementEnabled() {
-    return managementEnabled;
-  }
-
-  /**
-   * Gets the aggregationWindow.
-   *
-   * The time window in seconds to aggregate metrics prior to evaluation.
-   *
-   * @return the aggregationWindow
-   */
-  public Long aggregationWindow() {
-    return aggregationWindow;
-  }
-
-  /**
-   * Gets the cooldown.
-   *
-   * The duration of time in seconds to pause further scale actions after scaling has taken place.
-   *
-   * @return the cooldown
-   */
-  public Long cooldown() {
-    return cooldown;
-  }
-
-  /**
-   * Gets the maxMembershipCount.
-   *
-   * The maximum number of members in a managed instance group.
-   *
-   * @return the maxMembershipCount
-   */
-  public Long maxMembershipCount() {
-    return maxMembershipCount;
-  }
-
-  /**
-   * Gets the minMembershipCount.
-   *
-   * The minimum number of members in a managed instance group.
-   *
-   * @return the minMembershipCount
-   */
-  public Long minMembershipCount() {
-    return minMembershipCount;
+  public Map<String, Object> instanceGroupManagerPatch() {
+    return instanceGroupManagerPatch;
   }
 }
 

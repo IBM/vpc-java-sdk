@@ -20,10 +20,10 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  * `LoadBalancerListenerPolicyRedirectURL` is in the response if `action` is `redirect`.
  *
  * Classes which extend this class:
- * - LoadBalancerListenerPolicyTargetReferenceLoadBalancerPoolReference
- * - LoadBalancerListenerPolicyTargetReferenceLoadBalancerListenerPolicyRedirectURL
+ * - LoadBalancerListenerPolicyTargetLoadBalancerPoolReference
+ * - LoadBalancerListenerPolicyTargetLoadBalancerListenerPolicyRedirectURL
  */
-public class LoadBalancerListenerPolicyTargetReference extends GenericModel {
+public class LoadBalancerListenerPolicyTarget extends GenericModel {
 
   protected String id;
   protected String href;
@@ -32,7 +32,7 @@ public class LoadBalancerListenerPolicyTargetReference extends GenericModel {
   protected Long httpStatusCode;
   protected String url;
 
-  protected LoadBalancerListenerPolicyTargetReference() {
+  protected LoadBalancerListenerPolicyTarget() {
   }
 
   /**

@@ -21,8 +21,8 @@ public class CreateInstanceVolumeAttachmentOptions extends GenericModel {
 
   protected String instanceId;
   protected VolumeIdentity volume;
-  protected String name;
   protected Boolean deleteVolumeOnInstanceDelete;
+  protected String name;
 
   /**
    * Builder.
@@ -30,14 +30,14 @@ public class CreateInstanceVolumeAttachmentOptions extends GenericModel {
   public static class Builder {
     private String instanceId;
     private VolumeIdentity volume;
-    private String name;
     private Boolean deleteVolumeOnInstanceDelete;
+    private String name;
 
     private Builder(CreateInstanceVolumeAttachmentOptions createInstanceVolumeAttachmentOptions) {
       this.instanceId = createInstanceVolumeAttachmentOptions.instanceId;
       this.volume = createInstanceVolumeAttachmentOptions.volume;
-      this.name = createInstanceVolumeAttachmentOptions.name;
       this.deleteVolumeOnInstanceDelete = createInstanceVolumeAttachmentOptions.deleteVolumeOnInstanceDelete;
+      this.name = createInstanceVolumeAttachmentOptions.name;
     }
 
     /**
@@ -89,17 +89,6 @@ public class CreateInstanceVolumeAttachmentOptions extends GenericModel {
     }
 
     /**
-     * Set the name.
-     *
-     * @param name the name
-     * @return the CreateInstanceVolumeAttachmentOptions builder
-     */
-    public Builder name(String name) {
-      this.name = name;
-      return this;
-    }
-
-    /**
      * Set the deleteVolumeOnInstanceDelete.
      *
      * @param deleteVolumeOnInstanceDelete the deleteVolumeOnInstanceDelete
@@ -107,6 +96,17 @@ public class CreateInstanceVolumeAttachmentOptions extends GenericModel {
      */
     public Builder deleteVolumeOnInstanceDelete(Boolean deleteVolumeOnInstanceDelete) {
       this.deleteVolumeOnInstanceDelete = deleteVolumeOnInstanceDelete;
+      return this;
+    }
+
+    /**
+     * Set the name.
+     *
+     * @param name the name
+     * @return the CreateInstanceVolumeAttachmentOptions builder
+     */
+    public Builder name(String name) {
+      this.name = name;
       return this;
     }
   }
@@ -118,8 +118,8 @@ public class CreateInstanceVolumeAttachmentOptions extends GenericModel {
       "volume cannot be null");
     instanceId = builder.instanceId;
     volume = builder.volume;
-    name = builder.name;
     deleteVolumeOnInstanceDelete = builder.deleteVolumeOnInstanceDelete;
+    name = builder.name;
   }
 
   /**
@@ -154,6 +154,17 @@ public class CreateInstanceVolumeAttachmentOptions extends GenericModel {
   }
 
   /**
+   * Gets the deleteVolumeOnInstanceDelete.
+   *
+   * If set to true, when deleting the instance the volume will also be deleted.
+   *
+   * @return the deleteVolumeOnInstanceDelete
+   */
+  public Boolean deleteVolumeOnInstanceDelete() {
+    return deleteVolumeOnInstanceDelete;
+  }
+
+  /**
    * Gets the name.
    *
    * The user-defined name for this volume attachment. If unspecified, the name will be a hyphenated list of
@@ -163,17 +174,6 @@ public class CreateInstanceVolumeAttachmentOptions extends GenericModel {
    */
   public String name() {
     return name;
-  }
-
-  /**
-   * Gets the deleteVolumeOnInstanceDelete.
-   *
-   * If set to true, when deleting the instance the volume will also be deleted.
-   *
-   * @return the deleteVolumeOnInstanceDelete
-   */
-  public Boolean deleteVolumeOnInstanceDelete() {
-    return deleteVolumeOnInstanceDelete;
   }
 }
 

@@ -12,6 +12,8 @@
  */
 package com.ibm.cloud.is.vpc.v1.model;
 
+import java.util.Map;
+
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
@@ -20,18 +22,18 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class UpdateVpnGatewayOptions extends GenericModel {
 
   protected String id;
-  protected String name;
+  protected Map<String, Object> vpnGatewayPatch;
 
   /**
    * Builder.
    */
   public static class Builder {
     private String id;
-    private String name;
+    private Map<String, Object> vpnGatewayPatch;
 
     private Builder(UpdateVpnGatewayOptions updateVpnGatewayOptions) {
       this.id = updateVpnGatewayOptions.id;
-      this.name = updateVpnGatewayOptions.name;
+      this.vpnGatewayPatch = updateVpnGatewayOptions.vpnGatewayPatch;
     }
 
     /**
@@ -44,9 +46,11 @@ public class UpdateVpnGatewayOptions extends GenericModel {
      * Instantiates a new builder with required properties.
      *
      * @param id the id
+     * @param vpnGatewayPatch the vpnGatewayPatch
      */
-    public Builder(String id) {
+    public Builder(String id, Map<String, Object> vpnGatewayPatch) {
       this.id = id;
+      this.vpnGatewayPatch = vpnGatewayPatch;
     }
 
     /**
@@ -70,13 +74,13 @@ public class UpdateVpnGatewayOptions extends GenericModel {
     }
 
     /**
-     * Set the name.
+     * Set the vpnGatewayPatch.
      *
-     * @param name the name
+     * @param vpnGatewayPatch the vpnGatewayPatch
      * @return the UpdateVpnGatewayOptions builder
      */
-    public Builder name(String name) {
-      this.name = name;
+    public Builder vpnGatewayPatch(Map<String, Object> vpnGatewayPatch) {
+      this.vpnGatewayPatch = vpnGatewayPatch;
       return this;
     }
   }
@@ -84,8 +88,10 @@ public class UpdateVpnGatewayOptions extends GenericModel {
   protected UpdateVpnGatewayOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,
       "id cannot be empty");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.vpnGatewayPatch,
+      "vpnGatewayPatch cannot be null");
     id = builder.id;
-    name = builder.name;
+    vpnGatewayPatch = builder.vpnGatewayPatch;
   }
 
   /**
@@ -109,14 +115,14 @@ public class UpdateVpnGatewayOptions extends GenericModel {
   }
 
   /**
-   * Gets the name.
+   * Gets the vpnGatewayPatch.
    *
-   * The user-defined name for this VPN gateway.
+   * The VPN gateway patch.
    *
-   * @return the name
+   * @return the vpnGatewayPatch
    */
-  public String name() {
-    return name;
+  public Map<String, Object> vpnGatewayPatch() {
+    return vpnGatewayPatch;
   }
 }
 

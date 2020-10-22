@@ -12,6 +12,8 @@
  */
 package com.ibm.cloud.is.vpc.v1.model;
 
+import java.util.Map;
+
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
@@ -19,40 +21,9 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class UpdateNetworkAclRuleOptions extends GenericModel {
 
-  /**
-   * Whether to allow or deny matching traffic.
-   */
-  public interface Action {
-    /** allow. */
-    String ALLOW = "allow";
-    /** deny. */
-    String DENY = "deny";
-  }
-
-  /**
-   * Whether the traffic to be matched is `inbound` or `outbound`.
-   */
-  public interface Direction {
-    /** inbound. */
-    String INBOUND = "inbound";
-    /** outbound. */
-    String OUTBOUND = "outbound";
-  }
-
   protected String networkAclId;
   protected String id;
-  protected String name;
-  protected String action;
-  protected String destination;
-  protected String direction;
-  protected String source;
-  protected Long destinationPortMax;
-  protected Long destinationPortMin;
-  protected Long sourcePortMax;
-  protected Long sourcePortMin;
-  protected Long code;
-  protected Long type;
-  protected NetworkACLRuleIdentity before;
+  protected Map<String, Object> networkAclRulePatch;
 
   /**
    * Builder.
@@ -60,34 +31,12 @@ public class UpdateNetworkAclRuleOptions extends GenericModel {
   public static class Builder {
     private String networkAclId;
     private String id;
-    private String name;
-    private String action;
-    private String destination;
-    private String direction;
-    private String source;
-    private Long destinationPortMax;
-    private Long destinationPortMin;
-    private Long sourcePortMax;
-    private Long sourcePortMin;
-    private Long code;
-    private Long type;
-    private NetworkACLRuleIdentity before;
+    private Map<String, Object> networkAclRulePatch;
 
     private Builder(UpdateNetworkAclRuleOptions updateNetworkAclRuleOptions) {
       this.networkAclId = updateNetworkAclRuleOptions.networkAclId;
       this.id = updateNetworkAclRuleOptions.id;
-      this.name = updateNetworkAclRuleOptions.name;
-      this.action = updateNetworkAclRuleOptions.action;
-      this.destination = updateNetworkAclRuleOptions.destination;
-      this.direction = updateNetworkAclRuleOptions.direction;
-      this.source = updateNetworkAclRuleOptions.source;
-      this.destinationPortMax = updateNetworkAclRuleOptions.destinationPortMax;
-      this.destinationPortMin = updateNetworkAclRuleOptions.destinationPortMin;
-      this.sourcePortMax = updateNetworkAclRuleOptions.sourcePortMax;
-      this.sourcePortMin = updateNetworkAclRuleOptions.sourcePortMin;
-      this.code = updateNetworkAclRuleOptions.code;
-      this.type = updateNetworkAclRuleOptions.type;
-      this.before = updateNetworkAclRuleOptions.before;
+      this.networkAclRulePatch = updateNetworkAclRuleOptions.networkAclRulePatch;
     }
 
     /**
@@ -101,10 +50,12 @@ public class UpdateNetworkAclRuleOptions extends GenericModel {
      *
      * @param networkAclId the networkAclId
      * @param id the id
+     * @param networkAclRulePatch the networkAclRulePatch
      */
-    public Builder(String networkAclId, String id) {
+    public Builder(String networkAclId, String id, Map<String, Object> networkAclRulePatch) {
       this.networkAclId = networkAclId;
       this.id = id;
+      this.networkAclRulePatch = networkAclRulePatch;
     }
 
     /**
@@ -139,134 +90,13 @@ public class UpdateNetworkAclRuleOptions extends GenericModel {
     }
 
     /**
-     * Set the name.
+     * Set the networkAclRulePatch.
      *
-     * @param name the name
+     * @param networkAclRulePatch the networkAclRulePatch
      * @return the UpdateNetworkAclRuleOptions builder
      */
-    public Builder name(String name) {
-      this.name = name;
-      return this;
-    }
-
-    /**
-     * Set the action.
-     *
-     * @param action the action
-     * @return the UpdateNetworkAclRuleOptions builder
-     */
-    public Builder action(String action) {
-      this.action = action;
-      return this;
-    }
-
-    /**
-     * Set the destination.
-     *
-     * @param destination the destination
-     * @return the UpdateNetworkAclRuleOptions builder
-     */
-    public Builder destination(String destination) {
-      this.destination = destination;
-      return this;
-    }
-
-    /**
-     * Set the direction.
-     *
-     * @param direction the direction
-     * @return the UpdateNetworkAclRuleOptions builder
-     */
-    public Builder direction(String direction) {
-      this.direction = direction;
-      return this;
-    }
-
-    /**
-     * Set the source.
-     *
-     * @param source the source
-     * @return the UpdateNetworkAclRuleOptions builder
-     */
-    public Builder source(String source) {
-      this.source = source;
-      return this;
-    }
-
-    /**
-     * Set the destinationPortMax.
-     *
-     * @param destinationPortMax the destinationPortMax
-     * @return the UpdateNetworkAclRuleOptions builder
-     */
-    public Builder destinationPortMax(long destinationPortMax) {
-      this.destinationPortMax = destinationPortMax;
-      return this;
-    }
-
-    /**
-     * Set the destinationPortMin.
-     *
-     * @param destinationPortMin the destinationPortMin
-     * @return the UpdateNetworkAclRuleOptions builder
-     */
-    public Builder destinationPortMin(long destinationPortMin) {
-      this.destinationPortMin = destinationPortMin;
-      return this;
-    }
-
-    /**
-     * Set the sourcePortMax.
-     *
-     * @param sourcePortMax the sourcePortMax
-     * @return the UpdateNetworkAclRuleOptions builder
-     */
-    public Builder sourcePortMax(long sourcePortMax) {
-      this.sourcePortMax = sourcePortMax;
-      return this;
-    }
-
-    /**
-     * Set the sourcePortMin.
-     *
-     * @param sourcePortMin the sourcePortMin
-     * @return the UpdateNetworkAclRuleOptions builder
-     */
-    public Builder sourcePortMin(long sourcePortMin) {
-      this.sourcePortMin = sourcePortMin;
-      return this;
-    }
-
-    /**
-     * Set the code.
-     *
-     * @param code the code
-     * @return the UpdateNetworkAclRuleOptions builder
-     */
-    public Builder code(long code) {
-      this.code = code;
-      return this;
-    }
-
-    /**
-     * Set the type.
-     *
-     * @param type the type
-     * @return the UpdateNetworkAclRuleOptions builder
-     */
-    public Builder type(long type) {
-      this.type = type;
-      return this;
-    }
-
-    /**
-     * Set the before.
-     *
-     * @param before the before
-     * @return the UpdateNetworkAclRuleOptions builder
-     */
-    public Builder before(NetworkACLRuleIdentity before) {
-      this.before = before;
+    public Builder networkAclRulePatch(Map<String, Object> networkAclRulePatch) {
+      this.networkAclRulePatch = networkAclRulePatch;
       return this;
     }
   }
@@ -276,20 +106,11 @@ public class UpdateNetworkAclRuleOptions extends GenericModel {
       "networkAclId cannot be empty");
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,
       "id cannot be empty");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.networkAclRulePatch,
+      "networkAclRulePatch cannot be null");
     networkAclId = builder.networkAclId;
     id = builder.id;
-    name = builder.name;
-    action = builder.action;
-    destination = builder.destination;
-    direction = builder.direction;
-    source = builder.source;
-    destinationPortMax = builder.destinationPortMax;
-    destinationPortMin = builder.destinationPortMin;
-    sourcePortMax = builder.sourcePortMax;
-    sourcePortMin = builder.sourcePortMin;
-    code = builder.code;
-    type = builder.type;
-    before = builder.before;
+    networkAclRulePatch = builder.networkAclRulePatch;
   }
 
   /**
@@ -324,136 +145,14 @@ public class UpdateNetworkAclRuleOptions extends GenericModel {
   }
 
   /**
-   * Gets the name.
+   * Gets the networkAclRulePatch.
    *
-   * The user-defined name for this rule. Names must be unique within the network ACL the rule resides in.
+   * The network ACL rule patch.
    *
-   * @return the name
+   * @return the networkAclRulePatch
    */
-  public String name() {
-    return name;
-  }
-
-  /**
-   * Gets the action.
-   *
-   * Whether to allow or deny matching traffic.
-   *
-   * @return the action
-   */
-  public String action() {
-    return action;
-  }
-
-  /**
-   * Gets the destination.
-   *
-   * The destination IP address or CIDR block. The CIDR block `0.0.0.0/0` applies to all addresses.
-   *
-   * @return the destination
-   */
-  public String destination() {
-    return destination;
-  }
-
-  /**
-   * Gets the direction.
-   *
-   * Whether the traffic to be matched is `inbound` or `outbound`.
-   *
-   * @return the direction
-   */
-  public String direction() {
-    return direction;
-  }
-
-  /**
-   * Gets the source.
-   *
-   * The source IP address or CIDR block.  The CIDR block `0.0.0.0/0` applies to all addresses.
-   *
-   * @return the source
-   */
-  public String source() {
-    return source;
-  }
-
-  /**
-   * Gets the destinationPortMax.
-   *
-   * The inclusive upper bound of TCP/UDP destination port range.
-   *
-   * @return the destinationPortMax
-   */
-  public Long destinationPortMax() {
-    return destinationPortMax;
-  }
-
-  /**
-   * Gets the destinationPortMin.
-   *
-   * The inclusive lower bound of TCP/UDP destination port range.
-   *
-   * @return the destinationPortMin
-   */
-  public Long destinationPortMin() {
-    return destinationPortMin;
-  }
-
-  /**
-   * Gets the sourcePortMax.
-   *
-   * The inclusive upper bound of TCP/UDP source port range.
-   *
-   * @return the sourcePortMax
-   */
-  public Long sourcePortMax() {
-    return sourcePortMax;
-  }
-
-  /**
-   * Gets the sourcePortMin.
-   *
-   * The inclusive lower bound of TCP/UDP source port range.
-   *
-   * @return the sourcePortMin
-   */
-  public Long sourcePortMin() {
-    return sourcePortMin;
-  }
-
-  /**
-   * Gets the code.
-   *
-   * The ICMP traffic code to allow.
-   *
-   * @return the code
-   */
-  public Long code() {
-    return code;
-  }
-
-  /**
-   * Gets the type.
-   *
-   * The ICMP traffic type to allow.
-   *
-   * @return the type
-   */
-  public Long type() {
-    return type;
-  }
-
-  /**
-   * Gets the before.
-   *
-   * The rule to move this rule immediately before. Specify `null` to move this rule after
-   * all existing rules.
-   *
-   * @return the before
-   */
-  public NetworkACLRuleIdentity before() {
-    return before;
+  public Map<String, Object> networkAclRulePatch() {
+    return networkAclRulePatch;
   }
 }
 

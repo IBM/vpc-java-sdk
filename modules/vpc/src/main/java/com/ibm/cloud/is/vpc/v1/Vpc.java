@@ -12,7 +12,7 @@
  */
 
 /*
- * IBM OpenAPI SDK Code Generator Version: 3.12.0-64fe8d3f-20200820-144050
+ * IBM OpenAPI SDK Code Generator Version: 3.12.3-81ed37e0-20200929-215851
  */
 
 package com.ibm.cloud.is.vpc.v1;
@@ -313,6 +313,7 @@ import com.ibm.cloud.sdk.core.security.Authenticator;
 import com.ibm.cloud.sdk.core.security.ConfigBasedAuthenticatorFactory;
 import com.ibm.cloud.sdk.core.service.BaseService;
 import com.ibm.cloud.sdk.core.util.ResponseConverterUtils;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -328,7 +329,7 @@ public class Vpc extends BaseService {
 
   public static final String DEFAULT_SERVICE_URL = "https://us-south.iaas.cloud.ibm.com/v1";
 
-  private String version = "2020-08-25";
+  private String version = "2020-10-06";
 
   private Long generation = Long.valueOf(2);
 
@@ -344,15 +345,16 @@ public class Vpc extends BaseService {
     return newInstance(version, DEFAULT_SERVICE_NAME);
   }
 
- /**
+   /**
    * Class method which constructs an instance of the `Vpc` client.
    * The default service name and version is used to configure the client instance.
    *
    * @return an instance of the `Vpc` client using external configuration
    */
   public static Vpc newInstance() {
-    return newInstance("2020-07-28", DEFAULT_SERVICE_NAME);
+    return newInstance("2020-10-06", DEFAULT_SERVICE_NAME);
   }
+
 
   /**
    * Class method which constructs an instance of the `Vpc` client.
@@ -442,23 +444,22 @@ public class Vpc extends BaseService {
     if (listVpcsOptions == null) {
       listVpcsOptions = new ListVpcsOptions.Builder().build();
     }
-    String[] pathSegments = { "vpcs" };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments));
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/vpcs"));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listVpcs");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     if (listVpcsOptions.start() != null) {
-      builder.query("start", listVpcsOptions.start());
+      builder.query("start", String.valueOf(listVpcsOptions.start()));
     }
     if (listVpcsOptions.limit() != null) {
       builder.query("limit", String.valueOf(listVpcsOptions.limit()));
     }
     if (listVpcsOptions.resourceGroupId() != null) {
-      builder.query("resource_group.id", listVpcsOptions.resourceGroupId());
+      builder.query("resource_group.id", String.valueOf(listVpcsOptions.resourceGroupId()));
     }
     if (listVpcsOptions.classicAccess() != null) {
       builder.query("classic_access", String.valueOf(listVpcsOptions.classicAccess()));
@@ -496,14 +497,13 @@ public class Vpc extends BaseService {
       createVpcOptions = new CreateVpcOptions.Builder().build();
       skipBody = true;
     }
-    String[] pathSegments = { "vpcs" };
-    RequestBuilder builder = RequestBuilder.post(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments));
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/vpcs"));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "createVpc");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     if (!skipBody) {
       final JsonObject contentJson = new JsonObject();
@@ -552,14 +552,14 @@ public class Vpc extends BaseService {
   public ServiceCall<Void> deleteVpc(DeleteVpcOptions deleteVpcOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(deleteVpcOptions,
       "deleteVpcOptions cannot be null");
-    String[] pathSegments = { "vpcs" };
-    String[] pathParameters = { deleteVpcOptions.id() };
-    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", deleteVpcOptions.id());
+    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/vpcs/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "deleteVpc");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
     return createServiceCall(builder.build(), responseConverter);
@@ -576,15 +576,15 @@ public class Vpc extends BaseService {
   public ServiceCall<VPC> getVpc(GetVpcOptions getVpcOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(getVpcOptions,
       "getVpcOptions cannot be null");
-    String[] pathSegments = { "vpcs" };
-    String[] pathParameters = { getVpcOptions.id() };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", getVpcOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/vpcs/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getVpc");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<VPC> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<VPC>() { }.getType());
@@ -602,21 +602,17 @@ public class Vpc extends BaseService {
   public ServiceCall<VPC> updateVpc(UpdateVpcOptions updateVpcOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(updateVpcOptions,
       "updateVpcOptions cannot be null");
-    String[] pathSegments = { "vpcs" };
-    String[] pathParameters = { updateVpcOptions.id() };
-    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", updateVpcOptions.id());
+    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/vpcs/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "updateVpc");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    final JsonObject contentJson = new JsonObject();
-    if (updateVpcOptions.name() != null) {
-      contentJson.addProperty("name", updateVpcOptions.name());
-    }
-    builder.bodyJson(contentJson);
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateVpcOptions.vpcPatch()), "application/merge-patch+json");
     ResponseConverter<VPC> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<VPC>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -634,15 +630,15 @@ public class Vpc extends BaseService {
   public ServiceCall<DefaultNetworkACL> getVpcDefaultNetworkAcl(GetVpcDefaultNetworkAclOptions getVpcDefaultNetworkAclOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(getVpcDefaultNetworkAclOptions,
       "getVpcDefaultNetworkAclOptions cannot be null");
-    String[] pathSegments = { "vpcs", "default_network_acl" };
-    String[] pathParameters = { getVpcDefaultNetworkAclOptions.id() };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", getVpcDefaultNetworkAclOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/vpcs/{id}/default_network_acl", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getVpcDefaultNetworkAcl");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<DefaultNetworkACL> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<DefaultNetworkACL>() { }.getType());
@@ -661,15 +657,15 @@ public class Vpc extends BaseService {
   public ServiceCall<DefaultSecurityGroup> getVpcDefaultSecurityGroup(GetVpcDefaultSecurityGroupOptions getVpcDefaultSecurityGroupOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(getVpcDefaultSecurityGroupOptions,
       "getVpcDefaultSecurityGroupOptions cannot be null");
-    String[] pathSegments = { "vpcs", "default_security_group" };
-    String[] pathParameters = { getVpcDefaultSecurityGroupOptions.id() };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", getVpcDefaultSecurityGroupOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/vpcs/{id}/default_security_group", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getVpcDefaultSecurityGroup");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<DefaultSecurityGroup> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<DefaultSecurityGroup>() { }.getType());
@@ -687,18 +683,18 @@ public class Vpc extends BaseService {
   public ServiceCall<AddressPrefixCollection> listVpcAddressPrefixes(ListVpcAddressPrefixesOptions listVpcAddressPrefixesOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(listVpcAddressPrefixesOptions,
       "listVpcAddressPrefixesOptions cannot be null");
-    String[] pathSegments = { "vpcs", "address_prefixes" };
-    String[] pathParameters = { listVpcAddressPrefixesOptions.vpcId() };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("vpc_id", listVpcAddressPrefixesOptions.vpcId());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/vpcs/{vpc_id}/address_prefixes", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listVpcAddressPrefixes");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     if (listVpcAddressPrefixesOptions.start() != null) {
-      builder.query("start", listVpcAddressPrefixesOptions.start());
+      builder.query("start", String.valueOf(listVpcAddressPrefixesOptions.start()));
     }
     if (listVpcAddressPrefixesOptions.limit() != null) {
       builder.query("limit", String.valueOf(listVpcAddressPrefixesOptions.limit()));
@@ -720,15 +716,15 @@ public class Vpc extends BaseService {
   public ServiceCall<AddressPrefix> createVpcAddressPrefix(CreateVpcAddressPrefixOptions createVpcAddressPrefixOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(createVpcAddressPrefixOptions,
       "createVpcAddressPrefixOptions cannot be null");
-    String[] pathSegments = { "vpcs", "address_prefixes" };
-    String[] pathParameters = { createVpcAddressPrefixOptions.vpcId() };
-    RequestBuilder builder = RequestBuilder.post(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("vpc_id", createVpcAddressPrefixOptions.vpcId());
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/vpcs/{vpc_id}/address_prefixes", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "createVpcAddressPrefix");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     final JsonObject contentJson = new JsonObject();
     contentJson.addProperty("cidr", createVpcAddressPrefixOptions.cidr());
@@ -757,14 +753,15 @@ public class Vpc extends BaseService {
   public ServiceCall<Void> deleteVpcAddressPrefix(DeleteVpcAddressPrefixOptions deleteVpcAddressPrefixOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(deleteVpcAddressPrefixOptions,
       "deleteVpcAddressPrefixOptions cannot be null");
-    String[] pathSegments = { "vpcs", "address_prefixes" };
-    String[] pathParameters = { deleteVpcAddressPrefixOptions.vpcId(), deleteVpcAddressPrefixOptions.id() };
-    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("vpc_id", deleteVpcAddressPrefixOptions.vpcId());
+    pathParamsMap.put("id", deleteVpcAddressPrefixOptions.id());
+    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/vpcs/{vpc_id}/address_prefixes/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "deleteVpcAddressPrefix");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
     return createServiceCall(builder.build(), responseConverter);
@@ -781,15 +778,16 @@ public class Vpc extends BaseService {
   public ServiceCall<AddressPrefix> getVpcAddressPrefix(GetVpcAddressPrefixOptions getVpcAddressPrefixOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(getVpcAddressPrefixOptions,
       "getVpcAddressPrefixOptions cannot be null");
-    String[] pathSegments = { "vpcs", "address_prefixes" };
-    String[] pathParameters = { getVpcAddressPrefixOptions.vpcId(), getVpcAddressPrefixOptions.id() };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("vpc_id", getVpcAddressPrefixOptions.vpcId());
+    pathParamsMap.put("id", getVpcAddressPrefixOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/vpcs/{vpc_id}/address_prefixes/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getVpcAddressPrefix");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<AddressPrefix> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<AddressPrefix>() { }.getType());
@@ -808,24 +806,18 @@ public class Vpc extends BaseService {
   public ServiceCall<AddressPrefix> updateVpcAddressPrefix(UpdateVpcAddressPrefixOptions updateVpcAddressPrefixOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(updateVpcAddressPrefixOptions,
       "updateVpcAddressPrefixOptions cannot be null");
-    String[] pathSegments = { "vpcs", "address_prefixes" };
-    String[] pathParameters = { updateVpcAddressPrefixOptions.vpcId(), updateVpcAddressPrefixOptions.id() };
-    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("vpc_id", updateVpcAddressPrefixOptions.vpcId());
+    pathParamsMap.put("id", updateVpcAddressPrefixOptions.id());
+    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/vpcs/{vpc_id}/address_prefixes/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "updateVpcAddressPrefix");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    final JsonObject contentJson = new JsonObject();
-    if (updateVpcAddressPrefixOptions.name() != null) {
-      contentJson.addProperty("name", updateVpcAddressPrefixOptions.name());
-    }
-    if (updateVpcAddressPrefixOptions.isDefault() != null) {
-      contentJson.addProperty("is_default", updateVpcAddressPrefixOptions.isDefault());
-    }
-    builder.bodyJson(contentJson);
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateVpcAddressPrefixOptions.addressPrefixPatch()), "application/merge-patch+json");
     ResponseConverter<AddressPrefix> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<AddressPrefix>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -834,10 +826,9 @@ public class Vpc extends BaseService {
   /**
    * List all routes in the VPC's default routing table.
    *
-   * This request retrieves routes in the VPC's default routing table. For compatibility, routes with `action` values
-   * other than `deliver` are omitted. Each route is zone-specific and directs any packets matching its destination CIDR
-   * block to a `next_hop` IP address. The most specific route matching a packet's destination will be used. If multiple
-   * equally-specific routes exist, traffic will be distributed across them.
+   * This request retrieves routes in the VPC's default routing table. Each route is zone-specific and directs any
+   * packets matching its destination CIDR block to a `next_hop` IP address. The most specific route matching a packet's
+   * destination will be used. If multiple equally-specific routes exist, traffic will be distributed across them.
    *
    * @param listVpcRoutesOptions the {@link ListVpcRoutesOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link RouteCollection}
@@ -845,18 +836,18 @@ public class Vpc extends BaseService {
   public ServiceCall<RouteCollection> listVpcRoutes(ListVpcRoutesOptions listVpcRoutesOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(listVpcRoutesOptions,
       "listVpcRoutesOptions cannot be null");
-    String[] pathSegments = { "vpcs", "routes" };
-    String[] pathParameters = { listVpcRoutesOptions.vpcId() };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("vpc_id", listVpcRoutesOptions.vpcId());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/vpcs/{vpc_id}/routes", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listVpcRoutes");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     if (listVpcRoutesOptions.zoneName() != null) {
-      builder.query("zone.name", listVpcRoutesOptions.zoneName());
+      builder.query("zone.name", String.valueOf(listVpcRoutesOptions.zoneName()));
     }
     ResponseConverter<RouteCollection> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<RouteCollection>() { }.getType());
@@ -876,15 +867,15 @@ public class Vpc extends BaseService {
   public ServiceCall<Route> createVpcRoute(CreateVpcRouteOptions createVpcRouteOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(createVpcRouteOptions,
       "createVpcRouteOptions cannot be null");
-    String[] pathSegments = { "vpcs", "routes" };
-    String[] pathParameters = { createVpcRouteOptions.vpcId() };
-    RequestBuilder builder = RequestBuilder.post(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("vpc_id", createVpcRouteOptions.vpcId());
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/vpcs/{vpc_id}/routes", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "createVpcRoute");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     final JsonObject contentJson = new JsonObject();
     contentJson.add("next_hop", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createVpcRouteOptions.nextHop()));
@@ -910,14 +901,15 @@ public class Vpc extends BaseService {
   public ServiceCall<Void> deleteVpcRoute(DeleteVpcRouteOptions deleteVpcRouteOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(deleteVpcRouteOptions,
       "deleteVpcRouteOptions cannot be null");
-    String[] pathSegments = { "vpcs", "routes" };
-    String[] pathParameters = { deleteVpcRouteOptions.vpcId(), deleteVpcRouteOptions.id() };
-    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("vpc_id", deleteVpcRouteOptions.vpcId());
+    pathParamsMap.put("id", deleteVpcRouteOptions.id());
+    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/vpcs/{vpc_id}/routes/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "deleteVpcRoute");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
     return createServiceCall(builder.build(), responseConverter);
@@ -934,15 +926,16 @@ public class Vpc extends BaseService {
   public ServiceCall<Route> getVpcRoute(GetVpcRouteOptions getVpcRouteOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(getVpcRouteOptions,
       "getVpcRouteOptions cannot be null");
-    String[] pathSegments = { "vpcs", "routes" };
-    String[] pathParameters = { getVpcRouteOptions.vpcId(), getVpcRouteOptions.id() };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("vpc_id", getVpcRouteOptions.vpcId());
+    pathParamsMap.put("id", getVpcRouteOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/vpcs/{vpc_id}/routes/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getVpcRoute");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<Route> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<Route>() { }.getType());
@@ -961,21 +954,18 @@ public class Vpc extends BaseService {
   public ServiceCall<Route> updateVpcRoute(UpdateVpcRouteOptions updateVpcRouteOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(updateVpcRouteOptions,
       "updateVpcRouteOptions cannot be null");
-    String[] pathSegments = { "vpcs", "routes" };
-    String[] pathParameters = { updateVpcRouteOptions.vpcId(), updateVpcRouteOptions.id() };
-    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("vpc_id", updateVpcRouteOptions.vpcId());
+    pathParamsMap.put("id", updateVpcRouteOptions.id());
+    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/vpcs/{vpc_id}/routes/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "updateVpcRoute");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    final JsonObject contentJson = new JsonObject();
-    if (updateVpcRouteOptions.name() != null) {
-      contentJson.addProperty("name", updateVpcRouteOptions.name());
-    }
-    builder.bodyJson(contentJson);
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateVpcRouteOptions.routePatch()), "application/merge-patch+json");
     ResponseConverter<Route> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<Route>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -994,23 +984,22 @@ public class Vpc extends BaseService {
     if (listSubnetsOptions == null) {
       listSubnetsOptions = new ListSubnetsOptions.Builder().build();
     }
-    String[] pathSegments = { "subnets" };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments));
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/subnets"));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listSubnets");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     if (listSubnetsOptions.start() != null) {
-      builder.query("start", listSubnetsOptions.start());
+      builder.query("start", String.valueOf(listSubnetsOptions.start()));
     }
     if (listSubnetsOptions.limit() != null) {
       builder.query("limit", String.valueOf(listSubnetsOptions.limit()));
     }
     if (listSubnetsOptions.resourceGroupId() != null) {
-      builder.query("resource_group.id", listSubnetsOptions.resourceGroupId());
+      builder.query("resource_group.id", String.valueOf(listSubnetsOptions.resourceGroupId()));
     }
     ResponseConverter<SubnetCollection> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<SubnetCollection>() { }.getType());
@@ -1042,14 +1031,13 @@ public class Vpc extends BaseService {
   public ServiceCall<Subnet> createSubnet(CreateSubnetOptions createSubnetOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(createSubnetOptions,
       "createSubnetOptions cannot be null");
-    String[] pathSegments = { "subnets" };
-    RequestBuilder builder = RequestBuilder.post(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments));
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/subnets"));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "createSubnet");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(createSubnetOptions.subnetPrototype()), "application/json");
     ResponseConverter<Subnet> responseConverter =
@@ -1072,14 +1060,14 @@ public class Vpc extends BaseService {
   public ServiceCall<Void> deleteSubnet(DeleteSubnetOptions deleteSubnetOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(deleteSubnetOptions,
       "deleteSubnetOptions cannot be null");
-    String[] pathSegments = { "subnets" };
-    String[] pathParameters = { deleteSubnetOptions.id() };
-    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", deleteSubnetOptions.id());
+    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/subnets/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "deleteSubnet");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
     return createServiceCall(builder.build(), responseConverter);
@@ -1096,15 +1084,15 @@ public class Vpc extends BaseService {
   public ServiceCall<Subnet> getSubnet(GetSubnetOptions getSubnetOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(getSubnetOptions,
       "getSubnetOptions cannot be null");
-    String[] pathSegments = { "subnets" };
-    String[] pathParameters = { getSubnetOptions.id() };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", getSubnetOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/subnets/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getSubnet");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<Subnet> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<Subnet>() { }.getType());
@@ -1123,27 +1111,17 @@ public class Vpc extends BaseService {
   public ServiceCall<Subnet> updateSubnet(UpdateSubnetOptions updateSubnetOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(updateSubnetOptions,
       "updateSubnetOptions cannot be null");
-    String[] pathSegments = { "subnets" };
-    String[] pathParameters = { updateSubnetOptions.id() };
-    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", updateSubnetOptions.id());
+    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/subnets/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "updateSubnet");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    final JsonObject contentJson = new JsonObject();
-    if (updateSubnetOptions.name() != null) {
-      contentJson.addProperty("name", updateSubnetOptions.name());
-    }
-    if (updateSubnetOptions.networkAcl() != null) {
-      contentJson.add("network_acl", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(updateSubnetOptions.networkAcl()));
-    }
-    if (updateSubnetOptions.publicGateway() != null) {
-      contentJson.add("public_gateway", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(updateSubnetOptions.publicGateway()));
-    }
-    builder.bodyJson(contentJson);
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateSubnetOptions.subnetPatch()), "application/merge-patch+json");
     ResponseConverter<Subnet> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<Subnet>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -1160,15 +1138,15 @@ public class Vpc extends BaseService {
   public ServiceCall<NetworkACL> getSubnetNetworkAcl(GetSubnetNetworkAclOptions getSubnetNetworkAclOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(getSubnetNetworkAclOptions,
       "getSubnetNetworkAclOptions cannot be null");
-    String[] pathSegments = { "subnets", "network_acl" };
-    String[] pathParameters = { getSubnetNetworkAclOptions.id() };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", getSubnetNetworkAclOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/subnets/{id}/network_acl", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getSubnetNetworkAcl");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<NetworkACL> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<NetworkACL>() { }.getType());
@@ -1187,15 +1165,15 @@ public class Vpc extends BaseService {
   public ServiceCall<NetworkACL> replaceSubnetNetworkAcl(ReplaceSubnetNetworkAclOptions replaceSubnetNetworkAclOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(replaceSubnetNetworkAclOptions,
       "replaceSubnetNetworkAclOptions cannot be null");
-    String[] pathSegments = { "subnets", "network_acl" };
-    String[] pathParameters = { replaceSubnetNetworkAclOptions.id() };
-    RequestBuilder builder = RequestBuilder.put(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", replaceSubnetNetworkAclOptions.id());
+    RequestBuilder builder = RequestBuilder.put(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/subnets/{id}/network_acl", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "replaceSubnetNetworkAcl");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(replaceSubnetNetworkAclOptions.networkAclIdentity()), "application/json");
     ResponseConverter<NetworkACL> responseConverter =
@@ -1214,14 +1192,14 @@ public class Vpc extends BaseService {
   public ServiceCall<Void> unsetSubnetPublicGateway(UnsetSubnetPublicGatewayOptions unsetSubnetPublicGatewayOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(unsetSubnetPublicGatewayOptions,
       "unsetSubnetPublicGatewayOptions cannot be null");
-    String[] pathSegments = { "subnets", "public_gateway" };
-    String[] pathParameters = { unsetSubnetPublicGatewayOptions.id() };
-    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", unsetSubnetPublicGatewayOptions.id());
+    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/subnets/{id}/public_gateway", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "unsetSubnetPublicGateway");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
     return createServiceCall(builder.build(), responseConverter);
@@ -1238,15 +1216,15 @@ public class Vpc extends BaseService {
   public ServiceCall<PublicGateway> getSubnetPublicGateway(GetSubnetPublicGatewayOptions getSubnetPublicGatewayOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(getSubnetPublicGatewayOptions,
       "getSubnetPublicGatewayOptions cannot be null");
-    String[] pathSegments = { "subnets", "public_gateway" };
-    String[] pathParameters = { getSubnetPublicGatewayOptions.id() };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", getSubnetPublicGatewayOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/subnets/{id}/public_gateway", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getSubnetPublicGateway");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<PublicGateway> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<PublicGateway>() { }.getType());
@@ -1265,15 +1243,15 @@ public class Vpc extends BaseService {
   public ServiceCall<PublicGateway> setSubnetPublicGateway(SetSubnetPublicGatewayOptions setSubnetPublicGatewayOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(setSubnetPublicGatewayOptions,
       "setSubnetPublicGatewayOptions cannot be null");
-    String[] pathSegments = { "subnets", "public_gateway" };
-    String[] pathParameters = { setSubnetPublicGatewayOptions.id() };
-    RequestBuilder builder = RequestBuilder.put(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", setSubnetPublicGatewayOptions.id());
+    RequestBuilder builder = RequestBuilder.put(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/subnets/{id}/public_gateway", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "setSubnetPublicGateway");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(setSubnetPublicGatewayOptions.publicGatewayIdentity()), "application/json");
     ResponseConverter<PublicGateway> responseConverter =
@@ -1287,6 +1265,9 @@ public class Vpc extends BaseService {
    * This request lists all provisionable images available in the region. An image provides source data for a volume.
    * Images are either system-provided, or created from another source, such as importing from object storage.
    *
+   * The images will be sorted by their `created_at` property values, with the newest first. Images with identical
+   * `created_at` values will be secondarily sorted by ascending `id` property values.
+   *
    * @param listImagesOptions the {@link ListImagesOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link ImageCollection}
    */
@@ -1294,29 +1275,28 @@ public class Vpc extends BaseService {
     if (listImagesOptions == null) {
       listImagesOptions = new ListImagesOptions.Builder().build();
     }
-    String[] pathSegments = { "images" };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments));
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/images"));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listImages");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     if (listImagesOptions.start() != null) {
-      builder.query("start", listImagesOptions.start());
+      builder.query("start", String.valueOf(listImagesOptions.start()));
     }
     if (listImagesOptions.limit() != null) {
       builder.query("limit", String.valueOf(listImagesOptions.limit()));
     }
     if (listImagesOptions.resourceGroupId() != null) {
-      builder.query("resource_group.id", listImagesOptions.resourceGroupId());
+      builder.query("resource_group.id", String.valueOf(listImagesOptions.resourceGroupId()));
     }
     if (listImagesOptions.name() != null) {
-      builder.query("name", listImagesOptions.name());
+      builder.query("name", String.valueOf(listImagesOptions.name()));
     }
     if (listImagesOptions.visibility() != null) {
-      builder.query("visibility", listImagesOptions.visibility());
+      builder.query("visibility", String.valueOf(listImagesOptions.visibility()));
     }
     ResponseConverter<ImageCollection> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<ImageCollection>() { }.getType());
@@ -1328,6 +1308,9 @@ public class Vpc extends BaseService {
    *
    * This request lists all provisionable images available in the region. An image provides source data for a volume.
    * Images are either system-provided, or created from another source, such as importing from object storage.
+   *
+   * The images will be sorted by their `created_at` property values, with the newest first. Images with identical
+   * `created_at` values will be secondarily sorted by ascending `id` property values.
    *
    * @return a {@link ServiceCall} with a result of type {@link ImageCollection}
    */
@@ -1348,14 +1331,13 @@ public class Vpc extends BaseService {
   public ServiceCall<Image> createImage(CreateImageOptions createImageOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(createImageOptions,
       "createImageOptions cannot be null");
-    String[] pathSegments = { "images" };
-    RequestBuilder builder = RequestBuilder.post(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments));
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/images"));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "createImage");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(createImageOptions.imagePrototype()), "application/json");
     ResponseConverter<Image> responseConverter =
@@ -1375,14 +1357,14 @@ public class Vpc extends BaseService {
   public ServiceCall<Void> deleteImage(DeleteImageOptions deleteImageOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(deleteImageOptions,
       "deleteImageOptions cannot be null");
-    String[] pathSegments = { "images" };
-    String[] pathParameters = { deleteImageOptions.id() };
-    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", deleteImageOptions.id());
+    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/images/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "deleteImage");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
     return createServiceCall(builder.build(), responseConverter);
@@ -1399,15 +1381,15 @@ public class Vpc extends BaseService {
   public ServiceCall<Image> getImage(GetImageOptions getImageOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(getImageOptions,
       "getImageOptions cannot be null");
-    String[] pathSegments = { "images" };
-    String[] pathParameters = { getImageOptions.id() };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", getImageOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/images/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getImage");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<Image> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<Image>() { }.getType());
@@ -1427,21 +1409,17 @@ public class Vpc extends BaseService {
   public ServiceCall<Image> updateImage(UpdateImageOptions updateImageOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(updateImageOptions,
       "updateImageOptions cannot be null");
-    String[] pathSegments = { "images" };
-    String[] pathParameters = { updateImageOptions.id() };
-    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", updateImageOptions.id());
+    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/images/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "updateImage");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    final JsonObject contentJson = new JsonObject();
-    if (updateImageOptions.name() != null) {
-      contentJson.addProperty("name", updateImageOptions.name());
-    }
-    builder.bodyJson(contentJson);
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateImageOptions.imagePatch()), "application/merge-patch+json");
     ResponseConverter<Image> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<Image>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -1459,17 +1437,16 @@ public class Vpc extends BaseService {
     if (listOperatingSystemsOptions == null) {
       listOperatingSystemsOptions = new ListOperatingSystemsOptions.Builder().build();
     }
-    String[] pathSegments = { "operating_systems" };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments));
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/operating_systems"));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listOperatingSystems");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     if (listOperatingSystemsOptions.start() != null) {
-      builder.query("start", listOperatingSystemsOptions.start());
+      builder.query("start", String.valueOf(listOperatingSystemsOptions.start()));
     }
     if (listOperatingSystemsOptions.limit() != null) {
       builder.query("limit", String.valueOf(listOperatingSystemsOptions.limit()));
@@ -1501,15 +1478,15 @@ public class Vpc extends BaseService {
   public ServiceCall<OperatingSystem> getOperatingSystem(GetOperatingSystemOptions getOperatingSystemOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(getOperatingSystemOptions,
       "getOperatingSystemOptions cannot be null");
-    String[] pathSegments = { "operating_systems" };
-    String[] pathParameters = { getOperatingSystemOptions.name() };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("name", getOperatingSystemOptions.name());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/operating_systems/{name}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getOperatingSystem");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<OperatingSystem> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<OperatingSystem>() { }.getType());
@@ -1529,17 +1506,16 @@ public class Vpc extends BaseService {
     if (listKeysOptions == null) {
       listKeysOptions = new ListKeysOptions.Builder().build();
     }
-    String[] pathSegments = { "keys" };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments));
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/keys"));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listKeys");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     if (listKeysOptions.resourceGroupId() != null) {
-      builder.query("resource_group.id", listKeysOptions.resourceGroupId());
+      builder.query("resource_group.id", String.valueOf(listKeysOptions.resourceGroupId()));
     }
     ResponseConverter<KeyCollection> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<KeyCollection>() { }.getType());
@@ -1571,14 +1547,13 @@ public class Vpc extends BaseService {
   public ServiceCall<Key> createKey(CreateKeyOptions createKeyOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(createKeyOptions,
       "createKeyOptions cannot be null");
-    String[] pathSegments = { "keys" };
-    RequestBuilder builder = RequestBuilder.post(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments));
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/keys"));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "createKey");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     final JsonObject contentJson = new JsonObject();
     contentJson.addProperty("public_key", createKeyOptions.publicKey());
@@ -1608,14 +1583,14 @@ public class Vpc extends BaseService {
   public ServiceCall<Void> deleteKey(DeleteKeyOptions deleteKeyOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(deleteKeyOptions,
       "deleteKeyOptions cannot be null");
-    String[] pathSegments = { "keys" };
-    String[] pathParameters = { deleteKeyOptions.id() };
-    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", deleteKeyOptions.id());
+    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/keys/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "deleteKey");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
     return createServiceCall(builder.build(), responseConverter);
@@ -1632,15 +1607,15 @@ public class Vpc extends BaseService {
   public ServiceCall<Key> getKey(GetKeyOptions getKeyOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(getKeyOptions,
       "getKeyOptions cannot be null");
-    String[] pathSegments = { "keys" };
-    String[] pathParameters = { getKeyOptions.id() };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", getKeyOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/keys/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getKey");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<Key> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<Key>() { }.getType());
@@ -1658,21 +1633,17 @@ public class Vpc extends BaseService {
   public ServiceCall<Key> updateKey(UpdateKeyOptions updateKeyOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(updateKeyOptions,
       "updateKeyOptions cannot be null");
-    String[] pathSegments = { "keys" };
-    String[] pathParameters = { updateKeyOptions.id() };
-    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", updateKeyOptions.id());
+    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/keys/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "updateKey");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    final JsonObject contentJson = new JsonObject();
-    if (updateKeyOptions.name() != null) {
-      contentJson.addProperty("name", updateKeyOptions.name());
-    }
-    builder.bodyJson(contentJson);
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateKeyOptions.keyPatch()), "application/merge-patch+json");
     ResponseConverter<Key> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<Key>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -1681,21 +1652,17 @@ public class Vpc extends BaseService {
   /**
    * List all instance profiles.
    *
-   * This request lists all instance profiles available in the region. An instance profile specifies the performance
-   * characteristics and pricing model for an instance.
-   *
    * @param listInstanceProfilesOptions the {@link ListInstanceProfilesOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link InstanceProfileCollection}
    */
   public ServiceCall<InstanceProfileCollection> listInstanceProfiles(ListInstanceProfilesOptions listInstanceProfilesOptions) {
-    String[] pathSegments = { "instance/profiles" };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments));
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/instance/profiles"));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listInstanceProfiles");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<InstanceProfileCollection> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<InstanceProfileCollection>() { }.getType());
@@ -1704,9 +1671,6 @@ public class Vpc extends BaseService {
 
   /**
    * List all instance profiles.
-   *
-   * This request lists all instance profiles available in the region. An instance profile specifies the performance
-   * characteristics and pricing model for an instance.
    *
    * @return a {@link ServiceCall} with a result of type {@link InstanceProfileCollection}
    */
@@ -1725,15 +1689,15 @@ public class Vpc extends BaseService {
   public ServiceCall<InstanceProfile> getInstanceProfile(GetInstanceProfileOptions getInstanceProfileOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(getInstanceProfileOptions,
       "getInstanceProfileOptions cannot be null");
-    String[] pathSegments = { "instance/profiles" };
-    String[] pathParameters = { getInstanceProfileOptions.name() };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("name", getInstanceProfileOptions.name());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/instance/profiles/{name}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getInstanceProfile");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<InstanceProfile> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<InstanceProfile>() { }.getType());
@@ -1747,14 +1711,13 @@ public class Vpc extends BaseService {
    * @return a {@link ServiceCall} with a result of type {@link InstanceTemplateCollection}
    */
   public ServiceCall<InstanceTemplateCollection> listInstanceTemplates(ListInstanceTemplatesOptions listInstanceTemplatesOptions) {
-    String[] pathSegments = { "instance/templates" };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments));
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/instance/templates"));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listInstanceTemplates");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<InstanceTemplateCollection> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<InstanceTemplateCollection>() { }.getType());
@@ -1781,14 +1744,13 @@ public class Vpc extends BaseService {
   public ServiceCall<InstanceTemplate> createInstanceTemplate(CreateInstanceTemplateOptions createInstanceTemplateOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(createInstanceTemplateOptions,
       "createInstanceTemplateOptions cannot be null");
-    String[] pathSegments = { "instance/templates" };
-    RequestBuilder builder = RequestBuilder.post(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments));
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/instance/templates"));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "createInstanceTemplate");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(createInstanceTemplateOptions.instanceTemplatePrototype()), "application/json");
     ResponseConverter<InstanceTemplate> responseConverter =
@@ -1807,14 +1769,14 @@ public class Vpc extends BaseService {
   public ServiceCall<Void> deleteInstanceTemplate(DeleteInstanceTemplateOptions deleteInstanceTemplateOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(deleteInstanceTemplateOptions,
       "deleteInstanceTemplateOptions cannot be null");
-    String[] pathSegments = { "instance/templates" };
-    String[] pathParameters = { deleteInstanceTemplateOptions.id() };
-    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", deleteInstanceTemplateOptions.id());
+    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/instance/templates/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "deleteInstanceTemplate");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
     return createServiceCall(builder.build(), responseConverter);
@@ -1829,15 +1791,15 @@ public class Vpc extends BaseService {
   public ServiceCall<InstanceTemplate> getInstanceTemplate(GetInstanceTemplateOptions getInstanceTemplateOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(getInstanceTemplateOptions,
       "getInstanceTemplateOptions cannot be null");
-    String[] pathSegments = { "instance/templates" };
-    String[] pathParameters = { getInstanceTemplateOptions.id() };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", getInstanceTemplateOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/instance/templates/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getInstanceTemplate");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<InstanceTemplate> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<InstanceTemplate>() { }.getType());
@@ -1857,21 +1819,17 @@ public class Vpc extends BaseService {
   public ServiceCall<InstanceTemplate> updateInstanceTemplate(UpdateInstanceTemplateOptions updateInstanceTemplateOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(updateInstanceTemplateOptions,
       "updateInstanceTemplateOptions cannot be null");
-    String[] pathSegments = { "instance/templates" };
-    String[] pathParameters = { updateInstanceTemplateOptions.id() };
-    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", updateInstanceTemplateOptions.id());
+    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/instance/templates/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "updateInstanceTemplate");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    final JsonObject contentJson = new JsonObject();
-    if (updateInstanceTemplateOptions.name() != null) {
-      contentJson.addProperty("name", updateInstanceTemplateOptions.name());
-    }
-    builder.bodyJson(contentJson);
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateInstanceTemplateOptions.instanceTemplatePatch()), "application/merge-patch+json");
     ResponseConverter<InstanceTemplate> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<InstanceTemplate>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -1889,35 +1847,34 @@ public class Vpc extends BaseService {
     if (listInstancesOptions == null) {
       listInstancesOptions = new ListInstancesOptions.Builder().build();
     }
-    String[] pathSegments = { "instances" };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments));
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/instances"));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listInstances");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     if (listInstancesOptions.start() != null) {
-      builder.query("start", listInstancesOptions.start());
+      builder.query("start", String.valueOf(listInstancesOptions.start()));
     }
     if (listInstancesOptions.limit() != null) {
       builder.query("limit", String.valueOf(listInstancesOptions.limit()));
     }
     if (listInstancesOptions.resourceGroupId() != null) {
-      builder.query("resource_group.id", listInstancesOptions.resourceGroupId());
+      builder.query("resource_group.id", String.valueOf(listInstancesOptions.resourceGroupId()));
     }
     if (listInstancesOptions.name() != null) {
-      builder.query("name", listInstancesOptions.name());
+      builder.query("name", String.valueOf(listInstancesOptions.name()));
     }
     if (listInstancesOptions.vpcId() != null) {
-      builder.query("vpc.id", listInstancesOptions.vpcId());
+      builder.query("vpc.id", String.valueOf(listInstancesOptions.vpcId()));
     }
     if (listInstancesOptions.vpcCrn() != null) {
-      builder.query("vpc.crn", listInstancesOptions.vpcCrn());
+      builder.query("vpc.crn", String.valueOf(listInstancesOptions.vpcCrn()));
     }
     if (listInstancesOptions.vpcName() != null) {
-      builder.query("vpc.name", listInstancesOptions.vpcName());
+      builder.query("vpc.name", String.valueOf(listInstancesOptions.vpcName()));
     }
     ResponseConverter<InstanceCollection> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<InstanceCollection>() { }.getType());
@@ -1948,14 +1905,13 @@ public class Vpc extends BaseService {
   public ServiceCall<Instance> createInstance(CreateInstanceOptions createInstanceOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(createInstanceOptions,
       "createInstanceOptions cannot be null");
-    String[] pathSegments = { "instances" };
-    RequestBuilder builder = RequestBuilder.post(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments));
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/instances"));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "createInstance");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(createInstanceOptions.instancePrototype()), "application/json");
     ResponseConverter<Instance> responseConverter =
@@ -1976,14 +1932,14 @@ public class Vpc extends BaseService {
   public ServiceCall<Void> deleteInstance(DeleteInstanceOptions deleteInstanceOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(deleteInstanceOptions,
       "deleteInstanceOptions cannot be null");
-    String[] pathSegments = { "instances" };
-    String[] pathParameters = { deleteInstanceOptions.id() };
-    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", deleteInstanceOptions.id());
+    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/instances/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "deleteInstance");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
     return createServiceCall(builder.build(), responseConverter);
@@ -2000,15 +1956,15 @@ public class Vpc extends BaseService {
   public ServiceCall<Instance> getInstance(GetInstanceOptions getInstanceOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(getInstanceOptions,
       "getInstanceOptions cannot be null");
-    String[] pathSegments = { "instances" };
-    String[] pathParameters = { getInstanceOptions.id() };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", getInstanceOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/instances/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getInstance");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<Instance> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<Instance>() { }.getType());
@@ -2027,21 +1983,17 @@ public class Vpc extends BaseService {
   public ServiceCall<Instance> updateInstance(UpdateInstanceOptions updateInstanceOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(updateInstanceOptions,
       "updateInstanceOptions cannot be null");
-    String[] pathSegments = { "instances" };
-    String[] pathParameters = { updateInstanceOptions.id() };
-    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", updateInstanceOptions.id());
+    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/instances/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "updateInstance");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    final JsonObject contentJson = new JsonObject();
-    if (updateInstanceOptions.name() != null) {
-      contentJson.addProperty("name", updateInstanceOptions.name());
-    }
-    builder.bodyJson(contentJson);
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateInstanceOptions.instancePatch()), "application/merge-patch+json");
     ResponseConverter<Instance> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<Instance>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -2059,15 +2011,15 @@ public class Vpc extends BaseService {
   public ServiceCall<InstanceInitialization> getInstanceInitialization(GetInstanceInitializationOptions getInstanceInitializationOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(getInstanceInitializationOptions,
       "getInstanceInitializationOptions cannot be null");
-    String[] pathSegments = { "instances", "initialization" };
-    String[] pathParameters = { getInstanceInitializationOptions.id() };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", getInstanceInitializationOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/instances/{id}/initialization", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getInstanceInitialization");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<InstanceInitialization> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<InstanceInitialization>() { }.getType());
@@ -2086,15 +2038,15 @@ public class Vpc extends BaseService {
   public ServiceCall<InstanceAction> createInstanceAction(CreateInstanceActionOptions createInstanceActionOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(createInstanceActionOptions,
       "createInstanceActionOptions cannot be null");
-    String[] pathSegments = { "instances", "actions" };
-    String[] pathParameters = { createInstanceActionOptions.instanceId() };
-    RequestBuilder builder = RequestBuilder.post(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("instance_id", createInstanceActionOptions.instanceId());
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/instances/{instance_id}/actions", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "createInstanceAction");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     final JsonObject contentJson = new JsonObject();
     contentJson.addProperty("type", createInstanceActionOptions.type());
@@ -2121,15 +2073,15 @@ public class Vpc extends BaseService {
   public ServiceCall<NetworkInterfaceUnpaginatedCollection> listInstanceNetworkInterfaces(ListInstanceNetworkInterfacesOptions listInstanceNetworkInterfacesOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(listInstanceNetworkInterfacesOptions,
       "listInstanceNetworkInterfacesOptions cannot be null");
-    String[] pathSegments = { "instances", "network_interfaces" };
-    String[] pathParameters = { listInstanceNetworkInterfacesOptions.instanceId() };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("instance_id", listInstanceNetworkInterfacesOptions.instanceId());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/instances/{instance_id}/network_interfaces", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listInstanceNetworkInterfaces");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<NetworkInterfaceUnpaginatedCollection> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<NetworkInterfaceUnpaginatedCollection>() { }.getType());
@@ -2150,15 +2102,15 @@ public class Vpc extends BaseService {
   public ServiceCall<NetworkInterface> createInstanceNetworkInterface(CreateInstanceNetworkInterfaceOptions createInstanceNetworkInterfaceOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(createInstanceNetworkInterfaceOptions,
       "createInstanceNetworkInterfaceOptions cannot be null");
-    String[] pathSegments = { "instances", "network_interfaces" };
-    String[] pathParameters = { createInstanceNetworkInterfaceOptions.instanceId() };
-    RequestBuilder builder = RequestBuilder.post(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("instance_id", createInstanceNetworkInterfaceOptions.instanceId());
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/instances/{instance_id}/network_interfaces", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "createInstanceNetworkInterface");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     final JsonObject contentJson = new JsonObject();
     contentJson.add("subnet", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createInstanceNetworkInterfaceOptions.subnet()));
@@ -2190,14 +2142,15 @@ public class Vpc extends BaseService {
   public ServiceCall<Void> deleteInstanceNetworkInterface(DeleteInstanceNetworkInterfaceOptions deleteInstanceNetworkInterfaceOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(deleteInstanceNetworkInterfaceOptions,
       "deleteInstanceNetworkInterfaceOptions cannot be null");
-    String[] pathSegments = { "instances", "network_interfaces" };
-    String[] pathParameters = { deleteInstanceNetworkInterfaceOptions.instanceId(), deleteInstanceNetworkInterfaceOptions.id() };
-    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("instance_id", deleteInstanceNetworkInterfaceOptions.instanceId());
+    pathParamsMap.put("id", deleteInstanceNetworkInterfaceOptions.id());
+    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/instances/{instance_id}/network_interfaces/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "deleteInstanceNetworkInterface");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
     return createServiceCall(builder.build(), responseConverter);
@@ -2214,15 +2167,16 @@ public class Vpc extends BaseService {
   public ServiceCall<NetworkInterface> getInstanceNetworkInterface(GetInstanceNetworkInterfaceOptions getInstanceNetworkInterfaceOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(getInstanceNetworkInterfaceOptions,
       "getInstanceNetworkInterfaceOptions cannot be null");
-    String[] pathSegments = { "instances", "network_interfaces" };
-    String[] pathParameters = { getInstanceNetworkInterfaceOptions.instanceId(), getInstanceNetworkInterfaceOptions.id() };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("instance_id", getInstanceNetworkInterfaceOptions.instanceId());
+    pathParamsMap.put("id", getInstanceNetworkInterfaceOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/instances/{instance_id}/network_interfaces/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getInstanceNetworkInterface");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<NetworkInterface> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<NetworkInterface>() { }.getType());
@@ -2242,21 +2196,18 @@ public class Vpc extends BaseService {
   public ServiceCall<NetworkInterface> updateInstanceNetworkInterface(UpdateInstanceNetworkInterfaceOptions updateInstanceNetworkInterfaceOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(updateInstanceNetworkInterfaceOptions,
       "updateInstanceNetworkInterfaceOptions cannot be null");
-    String[] pathSegments = { "instances", "network_interfaces" };
-    String[] pathParameters = { updateInstanceNetworkInterfaceOptions.instanceId(), updateInstanceNetworkInterfaceOptions.id() };
-    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("instance_id", updateInstanceNetworkInterfaceOptions.instanceId());
+    pathParamsMap.put("id", updateInstanceNetworkInterfaceOptions.id());
+    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/instances/{instance_id}/network_interfaces/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "updateInstanceNetworkInterface");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    final JsonObject contentJson = new JsonObject();
-    if (updateInstanceNetworkInterfaceOptions.name() != null) {
-      contentJson.addProperty("name", updateInstanceNetworkInterfaceOptions.name());
-    }
-    builder.bodyJson(contentJson);
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateInstanceNetworkInterfaceOptions.networkInterfacePatch()), "application/merge-patch+json");
     ResponseConverter<NetworkInterface> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<NetworkInterface>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -2273,15 +2224,16 @@ public class Vpc extends BaseService {
   public ServiceCall<FloatingIPUnpaginatedCollection> listInstanceNetworkInterfaceFloatingIps(ListInstanceNetworkInterfaceFloatingIpsOptions listInstanceNetworkInterfaceFloatingIpsOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(listInstanceNetworkInterfaceFloatingIpsOptions,
       "listInstanceNetworkInterfaceFloatingIpsOptions cannot be null");
-    String[] pathSegments = { "instances", "network_interfaces", "floating_ips" };
-    String[] pathParameters = { listInstanceNetworkInterfaceFloatingIpsOptions.instanceId(), listInstanceNetworkInterfaceFloatingIpsOptions.networkInterfaceId() };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("instance_id", listInstanceNetworkInterfaceFloatingIpsOptions.instanceId());
+    pathParamsMap.put("network_interface_id", listInstanceNetworkInterfaceFloatingIpsOptions.networkInterfaceId());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/instances/{instance_id}/network_interfaces/{network_interface_id}/floating_ips", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listInstanceNetworkInterfaceFloatingIps");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<FloatingIPUnpaginatedCollection> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<FloatingIPUnpaginatedCollection>() { }.getType());
@@ -2299,14 +2251,16 @@ public class Vpc extends BaseService {
   public ServiceCall<Void> removeInstanceNetworkInterfaceFloatingIp(RemoveInstanceNetworkInterfaceFloatingIpOptions removeInstanceNetworkInterfaceFloatingIpOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(removeInstanceNetworkInterfaceFloatingIpOptions,
       "removeInstanceNetworkInterfaceFloatingIpOptions cannot be null");
-    String[] pathSegments = { "instances", "network_interfaces", "floating_ips" };
-    String[] pathParameters = { removeInstanceNetworkInterfaceFloatingIpOptions.instanceId(), removeInstanceNetworkInterfaceFloatingIpOptions.networkInterfaceId(), removeInstanceNetworkInterfaceFloatingIpOptions.id() };
-    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("instance_id", removeInstanceNetworkInterfaceFloatingIpOptions.instanceId());
+    pathParamsMap.put("network_interface_id", removeInstanceNetworkInterfaceFloatingIpOptions.networkInterfaceId());
+    pathParamsMap.put("id", removeInstanceNetworkInterfaceFloatingIpOptions.id());
+    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/instances/{instance_id}/network_interfaces/{network_interface_id}/floating_ips/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "removeInstanceNetworkInterfaceFloatingIp");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
     return createServiceCall(builder.build(), responseConverter);
@@ -2324,15 +2278,17 @@ public class Vpc extends BaseService {
   public ServiceCall<FloatingIP> getInstanceNetworkInterfaceFloatingIp(GetInstanceNetworkInterfaceFloatingIpOptions getInstanceNetworkInterfaceFloatingIpOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(getInstanceNetworkInterfaceFloatingIpOptions,
       "getInstanceNetworkInterfaceFloatingIpOptions cannot be null");
-    String[] pathSegments = { "instances", "network_interfaces", "floating_ips" };
-    String[] pathParameters = { getInstanceNetworkInterfaceFloatingIpOptions.instanceId(), getInstanceNetworkInterfaceFloatingIpOptions.networkInterfaceId(), getInstanceNetworkInterfaceFloatingIpOptions.id() };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("instance_id", getInstanceNetworkInterfaceFloatingIpOptions.instanceId());
+    pathParamsMap.put("network_interface_id", getInstanceNetworkInterfaceFloatingIpOptions.networkInterfaceId());
+    pathParamsMap.put("id", getInstanceNetworkInterfaceFloatingIpOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/instances/{instance_id}/network_interfaces/{network_interface_id}/floating_ips/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getInstanceNetworkInterfaceFloatingIp");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<FloatingIP> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<FloatingIP>() { }.getType());
@@ -2352,15 +2308,17 @@ public class Vpc extends BaseService {
   public ServiceCall<FloatingIP> addInstanceNetworkInterfaceFloatingIp(AddInstanceNetworkInterfaceFloatingIpOptions addInstanceNetworkInterfaceFloatingIpOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(addInstanceNetworkInterfaceFloatingIpOptions,
       "addInstanceNetworkInterfaceFloatingIpOptions cannot be null");
-    String[] pathSegments = { "instances", "network_interfaces", "floating_ips" };
-    String[] pathParameters = { addInstanceNetworkInterfaceFloatingIpOptions.instanceId(), addInstanceNetworkInterfaceFloatingIpOptions.networkInterfaceId(), addInstanceNetworkInterfaceFloatingIpOptions.id() };
-    RequestBuilder builder = RequestBuilder.put(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("instance_id", addInstanceNetworkInterfaceFloatingIpOptions.instanceId());
+    pathParamsMap.put("network_interface_id", addInstanceNetworkInterfaceFloatingIpOptions.networkInterfaceId());
+    pathParamsMap.put("id", addInstanceNetworkInterfaceFloatingIpOptions.id());
+    RequestBuilder builder = RequestBuilder.put(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/instances/{instance_id}/network_interfaces/{network_interface_id}/floating_ips/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "addInstanceNetworkInterfaceFloatingIp");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<FloatingIP> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<FloatingIP>() { }.getType());
@@ -2380,15 +2338,15 @@ public class Vpc extends BaseService {
   public ServiceCall<VolumeAttachmentCollection> listInstanceVolumeAttachments(ListInstanceVolumeAttachmentsOptions listInstanceVolumeAttachmentsOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(listInstanceVolumeAttachmentsOptions,
       "listInstanceVolumeAttachmentsOptions cannot be null");
-    String[] pathSegments = { "instances", "volume_attachments" };
-    String[] pathParameters = { listInstanceVolumeAttachmentsOptions.instanceId() };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("instance_id", listInstanceVolumeAttachmentsOptions.instanceId());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/instances/{instance_id}/volume_attachments", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listInstanceVolumeAttachments");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<VolumeAttachmentCollection> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<VolumeAttachmentCollection>() { }.getType());
@@ -2408,23 +2366,23 @@ public class Vpc extends BaseService {
   public ServiceCall<VolumeAttachment> createInstanceVolumeAttachment(CreateInstanceVolumeAttachmentOptions createInstanceVolumeAttachmentOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(createInstanceVolumeAttachmentOptions,
       "createInstanceVolumeAttachmentOptions cannot be null");
-    String[] pathSegments = { "instances", "volume_attachments" };
-    String[] pathParameters = { createInstanceVolumeAttachmentOptions.instanceId() };
-    RequestBuilder builder = RequestBuilder.post(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("instance_id", createInstanceVolumeAttachmentOptions.instanceId());
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/instances/{instance_id}/volume_attachments", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "createInstanceVolumeAttachment");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     final JsonObject contentJson = new JsonObject();
     contentJson.add("volume", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createInstanceVolumeAttachmentOptions.volume()));
-    if (createInstanceVolumeAttachmentOptions.name() != null) {
-      contentJson.addProperty("name", createInstanceVolumeAttachmentOptions.name());
-    }
     if (createInstanceVolumeAttachmentOptions.deleteVolumeOnInstanceDelete() != null) {
       contentJson.addProperty("delete_volume_on_instance_delete", createInstanceVolumeAttachmentOptions.deleteVolumeOnInstanceDelete());
+    }
+    if (createInstanceVolumeAttachmentOptions.name() != null) {
+      contentJson.addProperty("name", createInstanceVolumeAttachmentOptions.name());
     }
     builder.bodyJson(contentJson);
     ResponseConverter<VolumeAttachment> responseConverter =
@@ -2443,14 +2401,15 @@ public class Vpc extends BaseService {
   public ServiceCall<Void> deleteInstanceVolumeAttachment(DeleteInstanceVolumeAttachmentOptions deleteInstanceVolumeAttachmentOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(deleteInstanceVolumeAttachmentOptions,
       "deleteInstanceVolumeAttachmentOptions cannot be null");
-    String[] pathSegments = { "instances", "volume_attachments" };
-    String[] pathParameters = { deleteInstanceVolumeAttachmentOptions.instanceId(), deleteInstanceVolumeAttachmentOptions.id() };
-    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("instance_id", deleteInstanceVolumeAttachmentOptions.instanceId());
+    pathParamsMap.put("id", deleteInstanceVolumeAttachmentOptions.id());
+    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/instances/{instance_id}/volume_attachments/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "deleteInstanceVolumeAttachment");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
     return createServiceCall(builder.build(), responseConverter);
@@ -2467,15 +2426,16 @@ public class Vpc extends BaseService {
   public ServiceCall<VolumeAttachment> getInstanceVolumeAttachment(GetInstanceVolumeAttachmentOptions getInstanceVolumeAttachmentOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(getInstanceVolumeAttachmentOptions,
       "getInstanceVolumeAttachmentOptions cannot be null");
-    String[] pathSegments = { "instances", "volume_attachments" };
-    String[] pathParameters = { getInstanceVolumeAttachmentOptions.instanceId(), getInstanceVolumeAttachmentOptions.id() };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("instance_id", getInstanceVolumeAttachmentOptions.instanceId());
+    pathParamsMap.put("id", getInstanceVolumeAttachmentOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/instances/{instance_id}/volume_attachments/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getInstanceVolumeAttachment");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<VolumeAttachment> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<VolumeAttachment>() { }.getType());
@@ -2495,24 +2455,18 @@ public class Vpc extends BaseService {
   public ServiceCall<VolumeAttachment> updateInstanceVolumeAttachment(UpdateInstanceVolumeAttachmentOptions updateInstanceVolumeAttachmentOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(updateInstanceVolumeAttachmentOptions,
       "updateInstanceVolumeAttachmentOptions cannot be null");
-    String[] pathSegments = { "instances", "volume_attachments" };
-    String[] pathParameters = { updateInstanceVolumeAttachmentOptions.instanceId(), updateInstanceVolumeAttachmentOptions.id() };
-    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("instance_id", updateInstanceVolumeAttachmentOptions.instanceId());
+    pathParamsMap.put("id", updateInstanceVolumeAttachmentOptions.id());
+    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/instances/{instance_id}/volume_attachments/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "updateInstanceVolumeAttachment");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    final JsonObject contentJson = new JsonObject();
-    if (updateInstanceVolumeAttachmentOptions.name() != null) {
-      contentJson.addProperty("name", updateInstanceVolumeAttachmentOptions.name());
-    }
-    if (updateInstanceVolumeAttachmentOptions.deleteVolumeOnInstanceDelete() != null) {
-      contentJson.addProperty("delete_volume_on_instance_delete", updateInstanceVolumeAttachmentOptions.deleteVolumeOnInstanceDelete());
-    }
-    builder.bodyJson(contentJson);
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateInstanceVolumeAttachmentOptions.volumeAttachmentPatch()), "application/merge-patch+json");
     ResponseConverter<VolumeAttachment> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<VolumeAttachment>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -2528,17 +2482,16 @@ public class Vpc extends BaseService {
     if (listInstanceGroupsOptions == null) {
       listInstanceGroupsOptions = new ListInstanceGroupsOptions.Builder().build();
     }
-    String[] pathSegments = { "instance_groups" };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments));
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/instance_groups"));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listInstanceGroups");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     if (listInstanceGroupsOptions.start() != null) {
-      builder.query("start", listInstanceGroupsOptions.start());
+      builder.query("start", String.valueOf(listInstanceGroupsOptions.start()));
     }
     if (listInstanceGroupsOptions.limit() != null) {
       builder.query("limit", String.valueOf(listInstanceGroupsOptions.limit()));
@@ -2568,14 +2521,13 @@ public class Vpc extends BaseService {
   public ServiceCall<InstanceGroup> createInstanceGroup(CreateInstanceGroupOptions createInstanceGroupOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(createInstanceGroupOptions,
       "createInstanceGroupOptions cannot be null");
-    String[] pathSegments = { "instance_groups" };
-    RequestBuilder builder = RequestBuilder.post(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments));
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/instance_groups"));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "createInstanceGroup");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     final JsonObject contentJson = new JsonObject();
     contentJson.add("instance_template", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createInstanceGroupOptions.instanceTemplate()));
@@ -2616,14 +2568,14 @@ public class Vpc extends BaseService {
   public ServiceCall<Void> deleteInstanceGroup(DeleteInstanceGroupOptions deleteInstanceGroupOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(deleteInstanceGroupOptions,
       "deleteInstanceGroupOptions cannot be null");
-    String[] pathSegments = { "instance_groups" };
-    String[] pathParameters = { deleteInstanceGroupOptions.id() };
-    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", deleteInstanceGroupOptions.id());
+    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/instance_groups/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "deleteInstanceGroup");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
     return createServiceCall(builder.build(), responseConverter);
@@ -2640,15 +2592,15 @@ public class Vpc extends BaseService {
   public ServiceCall<InstanceGroup> getInstanceGroup(GetInstanceGroupOptions getInstanceGroupOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(getInstanceGroupOptions,
       "getInstanceGroupOptions cannot be null");
-    String[] pathSegments = { "instance_groups" };
-    String[] pathParameters = { getInstanceGroupOptions.id() };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", getInstanceGroupOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/instance_groups/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getInstanceGroup");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<InstanceGroup> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<InstanceGroup>() { }.getType());
@@ -2667,39 +2619,17 @@ public class Vpc extends BaseService {
   public ServiceCall<InstanceGroup> updateInstanceGroup(UpdateInstanceGroupOptions updateInstanceGroupOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(updateInstanceGroupOptions,
       "updateInstanceGroupOptions cannot be null");
-    String[] pathSegments = { "instance_groups" };
-    String[] pathParameters = { updateInstanceGroupOptions.id() };
-    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", updateInstanceGroupOptions.id());
+    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/instance_groups/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "updateInstanceGroup");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    final JsonObject contentJson = new JsonObject();
-    if (updateInstanceGroupOptions.name() != null) {
-      contentJson.addProperty("name", updateInstanceGroupOptions.name());
-    }
-    if (updateInstanceGroupOptions.membershipCount() != null) {
-      contentJson.addProperty("membership_count", updateInstanceGroupOptions.membershipCount());
-    }
-    if (updateInstanceGroupOptions.instanceTemplate() != null) {
-      contentJson.add("instance_template", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(updateInstanceGroupOptions.instanceTemplate()));
-    }
-    if (updateInstanceGroupOptions.subnets() != null) {
-      contentJson.add("subnets", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(updateInstanceGroupOptions.subnets()));
-    }
-    if (updateInstanceGroupOptions.applicationPort() != null) {
-      contentJson.addProperty("application_port", updateInstanceGroupOptions.applicationPort());
-    }
-    if (updateInstanceGroupOptions.loadBalancer() != null) {
-      contentJson.add("load_balancer", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(updateInstanceGroupOptions.loadBalancer()));
-    }
-    if (updateInstanceGroupOptions.loadBalancerPool() != null) {
-      contentJson.add("load_balancer_pool", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(updateInstanceGroupOptions.loadBalancerPool()));
-    }
-    builder.bodyJson(contentJson);
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateInstanceGroupOptions.instanceGroupPatch()), "application/merge-patch+json");
     ResponseConverter<InstanceGroup> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<InstanceGroup>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -2716,14 +2646,14 @@ public class Vpc extends BaseService {
   public ServiceCall<Void> deleteInstanceGroupLoadBalancer(DeleteInstanceGroupLoadBalancerOptions deleteInstanceGroupLoadBalancerOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(deleteInstanceGroupLoadBalancerOptions,
       "deleteInstanceGroupLoadBalancerOptions cannot be null");
-    String[] pathSegments = { "instance_groups", "load_balancer" };
-    String[] pathParameters = { deleteInstanceGroupLoadBalancerOptions.instanceGroupId() };
-    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("instance_group_id", deleteInstanceGroupLoadBalancerOptions.instanceGroupId());
+    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/instance_groups/{instance_group_id}/load_balancer", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "deleteInstanceGroupLoadBalancer");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
     return createServiceCall(builder.build(), responseConverter);
@@ -2740,15 +2670,15 @@ public class Vpc extends BaseService {
   public ServiceCall<InstanceGroupManagerCollection> listInstanceGroupManagers(ListInstanceGroupManagersOptions listInstanceGroupManagersOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(listInstanceGroupManagersOptions,
       "listInstanceGroupManagersOptions cannot be null");
-    String[] pathSegments = { "instance_groups", "managers" };
-    String[] pathParameters = { listInstanceGroupManagersOptions.instanceGroupId() };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("instance_group_id", listInstanceGroupManagersOptions.instanceGroupId());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/instance_groups/{instance_group_id}/managers", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listInstanceGroupManagers");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<InstanceGroupManagerCollection> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<InstanceGroupManagerCollection>() { }.getType());
@@ -2766,15 +2696,15 @@ public class Vpc extends BaseService {
   public ServiceCall<InstanceGroupManager> createInstanceGroupManager(CreateInstanceGroupManagerOptions createInstanceGroupManagerOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(createInstanceGroupManagerOptions,
       "createInstanceGroupManagerOptions cannot be null");
-    String[] pathSegments = { "instance_groups", "managers" };
-    String[] pathParameters = { createInstanceGroupManagerOptions.instanceGroupId() };
-    RequestBuilder builder = RequestBuilder.post(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("instance_group_id", createInstanceGroupManagerOptions.instanceGroupId());
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/instance_groups/{instance_group_id}/managers", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "createInstanceGroupManager");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(createInstanceGroupManagerOptions.instanceGroupManagerPrototype()), "application/json");
     ResponseConverter<InstanceGroupManager> responseConverter =
@@ -2793,14 +2723,15 @@ public class Vpc extends BaseService {
   public ServiceCall<Void> deleteInstanceGroupManager(DeleteInstanceGroupManagerOptions deleteInstanceGroupManagerOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(deleteInstanceGroupManagerOptions,
       "deleteInstanceGroupManagerOptions cannot be null");
-    String[] pathSegments = { "instance_groups", "managers" };
-    String[] pathParameters = { deleteInstanceGroupManagerOptions.instanceGroupId(), deleteInstanceGroupManagerOptions.id() };
-    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("instance_group_id", deleteInstanceGroupManagerOptions.instanceGroupId());
+    pathParamsMap.put("id", deleteInstanceGroupManagerOptions.id());
+    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/instance_groups/{instance_group_id}/managers/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "deleteInstanceGroupManager");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
     return createServiceCall(builder.build(), responseConverter);
@@ -2817,15 +2748,16 @@ public class Vpc extends BaseService {
   public ServiceCall<InstanceGroupManager> getInstanceGroupManager(GetInstanceGroupManagerOptions getInstanceGroupManagerOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(getInstanceGroupManagerOptions,
       "getInstanceGroupManagerOptions cannot be null");
-    String[] pathSegments = { "instance_groups", "managers" };
-    String[] pathParameters = { getInstanceGroupManagerOptions.instanceGroupId(), getInstanceGroupManagerOptions.id() };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("instance_group_id", getInstanceGroupManagerOptions.instanceGroupId());
+    pathParamsMap.put("id", getInstanceGroupManagerOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/instance_groups/{instance_group_id}/managers/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getInstanceGroupManager");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<InstanceGroupManager> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<InstanceGroupManager>() { }.getType());
@@ -2843,36 +2775,18 @@ public class Vpc extends BaseService {
   public ServiceCall<InstanceGroupManager> updateInstanceGroupManager(UpdateInstanceGroupManagerOptions updateInstanceGroupManagerOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(updateInstanceGroupManagerOptions,
       "updateInstanceGroupManagerOptions cannot be null");
-    String[] pathSegments = { "instance_groups", "managers" };
-    String[] pathParameters = { updateInstanceGroupManagerOptions.instanceGroupId(), updateInstanceGroupManagerOptions.id() };
-    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("instance_group_id", updateInstanceGroupManagerOptions.instanceGroupId());
+    pathParamsMap.put("id", updateInstanceGroupManagerOptions.id());
+    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/instance_groups/{instance_group_id}/managers/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "updateInstanceGroupManager");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    final JsonObject contentJson = new JsonObject();
-    if (updateInstanceGroupManagerOptions.name() != null) {
-      contentJson.addProperty("name", updateInstanceGroupManagerOptions.name());
-    }
-    if (updateInstanceGroupManagerOptions.managementEnabled() != null) {
-      contentJson.addProperty("management_enabled", updateInstanceGroupManagerOptions.managementEnabled());
-    }
-    if (updateInstanceGroupManagerOptions.aggregationWindow() != null) {
-      contentJson.addProperty("aggregation_window", updateInstanceGroupManagerOptions.aggregationWindow());
-    }
-    if (updateInstanceGroupManagerOptions.cooldown() != null) {
-      contentJson.addProperty("cooldown", updateInstanceGroupManagerOptions.cooldown());
-    }
-    if (updateInstanceGroupManagerOptions.maxMembershipCount() != null) {
-      contentJson.addProperty("max_membership_count", updateInstanceGroupManagerOptions.maxMembershipCount());
-    }
-    if (updateInstanceGroupManagerOptions.minMembershipCount() != null) {
-      contentJson.addProperty("min_membership_count", updateInstanceGroupManagerOptions.minMembershipCount());
-    }
-    builder.bodyJson(contentJson);
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateInstanceGroupManagerOptions.instanceGroupManagerPatch()), "application/merge-patch+json");
     ResponseConverter<InstanceGroupManager> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<InstanceGroupManager>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -2887,15 +2801,16 @@ public class Vpc extends BaseService {
   public ServiceCall<InstanceGroupManagerPolicyCollection> listInstanceGroupManagerPolicies(ListInstanceGroupManagerPoliciesOptions listInstanceGroupManagerPoliciesOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(listInstanceGroupManagerPoliciesOptions,
       "listInstanceGroupManagerPoliciesOptions cannot be null");
-    String[] pathSegments = { "instance_groups", "managers", "policies" };
-    String[] pathParameters = { listInstanceGroupManagerPoliciesOptions.instanceGroupId(), listInstanceGroupManagerPoliciesOptions.instanceGroupManagerId() };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("instance_group_id", listInstanceGroupManagerPoliciesOptions.instanceGroupId());
+    pathParamsMap.put("instance_group_manager_id", listInstanceGroupManagerPoliciesOptions.instanceGroupManagerId());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/instance_groups/{instance_group_id}/managers/{instance_group_manager_id}/policies", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listInstanceGroupManagerPolicies");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<InstanceGroupManagerPolicyCollection> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<InstanceGroupManagerPolicyCollection>() { }.getType());
@@ -2913,15 +2828,16 @@ public class Vpc extends BaseService {
   public ServiceCall<InstanceGroupManagerPolicy> createInstanceGroupManagerPolicy(CreateInstanceGroupManagerPolicyOptions createInstanceGroupManagerPolicyOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(createInstanceGroupManagerPolicyOptions,
       "createInstanceGroupManagerPolicyOptions cannot be null");
-    String[] pathSegments = { "instance_groups", "managers", "policies" };
-    String[] pathParameters = { createInstanceGroupManagerPolicyOptions.instanceGroupId(), createInstanceGroupManagerPolicyOptions.instanceGroupManagerId() };
-    RequestBuilder builder = RequestBuilder.post(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("instance_group_id", createInstanceGroupManagerPolicyOptions.instanceGroupId());
+    pathParamsMap.put("instance_group_manager_id", createInstanceGroupManagerPolicyOptions.instanceGroupManagerId());
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/instance_groups/{instance_group_id}/managers/{instance_group_manager_id}/policies", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "createInstanceGroupManagerPolicy");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(createInstanceGroupManagerPolicyOptions.instanceGroupManagerPolicyPrototype()), "application/json");
     ResponseConverter<InstanceGroupManagerPolicy> responseConverter =
@@ -2940,14 +2856,16 @@ public class Vpc extends BaseService {
   public ServiceCall<Void> deleteInstanceGroupManagerPolicy(DeleteInstanceGroupManagerPolicyOptions deleteInstanceGroupManagerPolicyOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(deleteInstanceGroupManagerPolicyOptions,
       "deleteInstanceGroupManagerPolicyOptions cannot be null");
-    String[] pathSegments = { "instance_groups", "managers", "policies" };
-    String[] pathParameters = { deleteInstanceGroupManagerPolicyOptions.instanceGroupId(), deleteInstanceGroupManagerPolicyOptions.instanceGroupManagerId(), deleteInstanceGroupManagerPolicyOptions.id() };
-    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("instance_group_id", deleteInstanceGroupManagerPolicyOptions.instanceGroupId());
+    pathParamsMap.put("instance_group_manager_id", deleteInstanceGroupManagerPolicyOptions.instanceGroupManagerId());
+    pathParamsMap.put("id", deleteInstanceGroupManagerPolicyOptions.id());
+    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/instance_groups/{instance_group_id}/managers/{instance_group_manager_id}/policies/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "deleteInstanceGroupManagerPolicy");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
     return createServiceCall(builder.build(), responseConverter);
@@ -2964,15 +2882,17 @@ public class Vpc extends BaseService {
   public ServiceCall<InstanceGroupManagerPolicy> getInstanceGroupManagerPolicy(GetInstanceGroupManagerPolicyOptions getInstanceGroupManagerPolicyOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(getInstanceGroupManagerPolicyOptions,
       "getInstanceGroupManagerPolicyOptions cannot be null");
-    String[] pathSegments = { "instance_groups", "managers", "policies" };
-    String[] pathParameters = { getInstanceGroupManagerPolicyOptions.instanceGroupId(), getInstanceGroupManagerPolicyOptions.instanceGroupManagerId(), getInstanceGroupManagerPolicyOptions.id() };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("instance_group_id", getInstanceGroupManagerPolicyOptions.instanceGroupId());
+    pathParamsMap.put("instance_group_manager_id", getInstanceGroupManagerPolicyOptions.instanceGroupManagerId());
+    pathParamsMap.put("id", getInstanceGroupManagerPolicyOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/instance_groups/{instance_group_id}/managers/{instance_group_manager_id}/policies/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getInstanceGroupManagerPolicy");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<InstanceGroupManagerPolicy> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<InstanceGroupManagerPolicy>() { }.getType());
@@ -2990,27 +2910,19 @@ public class Vpc extends BaseService {
   public ServiceCall<InstanceGroupManagerPolicy> updateInstanceGroupManagerPolicy(UpdateInstanceGroupManagerPolicyOptions updateInstanceGroupManagerPolicyOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(updateInstanceGroupManagerPolicyOptions,
       "updateInstanceGroupManagerPolicyOptions cannot be null");
-    String[] pathSegments = { "instance_groups", "managers", "policies" };
-    String[] pathParameters = { updateInstanceGroupManagerPolicyOptions.instanceGroupId(), updateInstanceGroupManagerPolicyOptions.instanceGroupManagerId(), updateInstanceGroupManagerPolicyOptions.id() };
-    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("instance_group_id", updateInstanceGroupManagerPolicyOptions.instanceGroupId());
+    pathParamsMap.put("instance_group_manager_id", updateInstanceGroupManagerPolicyOptions.instanceGroupManagerId());
+    pathParamsMap.put("id", updateInstanceGroupManagerPolicyOptions.id());
+    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/instance_groups/{instance_group_id}/managers/{instance_group_manager_id}/policies/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "updateInstanceGroupManagerPolicy");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    final JsonObject contentJson = new JsonObject();
-    if (updateInstanceGroupManagerPolicyOptions.name() != null) {
-      contentJson.addProperty("name", updateInstanceGroupManagerPolicyOptions.name());
-    }
-    if (updateInstanceGroupManagerPolicyOptions.metricType() != null) {
-      contentJson.addProperty("metric_type", updateInstanceGroupManagerPolicyOptions.metricType());
-    }
-    if (updateInstanceGroupManagerPolicyOptions.metricValue() != null) {
-      contentJson.addProperty("metric_value", updateInstanceGroupManagerPolicyOptions.metricValue());
-    }
-    builder.bodyJson(contentJson);
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateInstanceGroupManagerPolicyOptions.instanceGroupManagerPolicyPatch()), "application/merge-patch+json");
     ResponseConverter<InstanceGroupManagerPolicy> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<InstanceGroupManagerPolicy>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -3028,14 +2940,14 @@ public class Vpc extends BaseService {
   public ServiceCall<Void> deleteInstanceGroupMemberships(DeleteInstanceGroupMembershipsOptions deleteInstanceGroupMembershipsOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(deleteInstanceGroupMembershipsOptions,
       "deleteInstanceGroupMembershipsOptions cannot be null");
-    String[] pathSegments = { "instance_groups", "memberships" };
-    String[] pathParameters = { deleteInstanceGroupMembershipsOptions.instanceGroupId() };
-    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("instance_group_id", deleteInstanceGroupMembershipsOptions.instanceGroupId());
+    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/instance_groups/{instance_group_id}/memberships", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "deleteInstanceGroupMemberships");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
     return createServiceCall(builder.build(), responseConverter);
@@ -3050,15 +2962,15 @@ public class Vpc extends BaseService {
   public ServiceCall<InstanceGroupMembershipCollection> listInstanceGroupMemberships(ListInstanceGroupMembershipsOptions listInstanceGroupMembershipsOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(listInstanceGroupMembershipsOptions,
       "listInstanceGroupMembershipsOptions cannot be null");
-    String[] pathSegments = { "instance_groups", "memberships" };
-    String[] pathParameters = { listInstanceGroupMembershipsOptions.instanceGroupId() };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("instance_group_id", listInstanceGroupMembershipsOptions.instanceGroupId());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/instance_groups/{instance_group_id}/memberships", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listInstanceGroupMemberships");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<InstanceGroupMembershipCollection> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<InstanceGroupMembershipCollection>() { }.getType());
@@ -3077,14 +2989,15 @@ public class Vpc extends BaseService {
   public ServiceCall<Void> deleteInstanceGroupMembership(DeleteInstanceGroupMembershipOptions deleteInstanceGroupMembershipOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(deleteInstanceGroupMembershipOptions,
       "deleteInstanceGroupMembershipOptions cannot be null");
-    String[] pathSegments = { "instance_groups", "memberships" };
-    String[] pathParameters = { deleteInstanceGroupMembershipOptions.instanceGroupId(), deleteInstanceGroupMembershipOptions.id() };
-    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("instance_group_id", deleteInstanceGroupMembershipOptions.instanceGroupId());
+    pathParamsMap.put("id", deleteInstanceGroupMembershipOptions.id());
+    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/instance_groups/{instance_group_id}/memberships/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "deleteInstanceGroupMembership");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
     return createServiceCall(builder.build(), responseConverter);
@@ -3101,15 +3014,16 @@ public class Vpc extends BaseService {
   public ServiceCall<InstanceGroupMembership> getInstanceGroupMembership(GetInstanceGroupMembershipOptions getInstanceGroupMembershipOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(getInstanceGroupMembershipOptions,
       "getInstanceGroupMembershipOptions cannot be null");
-    String[] pathSegments = { "instance_groups", "memberships" };
-    String[] pathParameters = { getInstanceGroupMembershipOptions.instanceGroupId(), getInstanceGroupMembershipOptions.id() };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("instance_group_id", getInstanceGroupMembershipOptions.instanceGroupId());
+    pathParamsMap.put("id", getInstanceGroupMembershipOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/instance_groups/{instance_group_id}/memberships/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getInstanceGroupMembership");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<InstanceGroupMembership> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<InstanceGroupMembership>() { }.getType());
@@ -3127,21 +3041,18 @@ public class Vpc extends BaseService {
   public ServiceCall<InstanceGroupMembership> updateInstanceGroupMembership(UpdateInstanceGroupMembershipOptions updateInstanceGroupMembershipOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(updateInstanceGroupMembershipOptions,
       "updateInstanceGroupMembershipOptions cannot be null");
-    String[] pathSegments = { "instance_groups", "memberships" };
-    String[] pathParameters = { updateInstanceGroupMembershipOptions.instanceGroupId(), updateInstanceGroupMembershipOptions.id() };
-    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("instance_group_id", updateInstanceGroupMembershipOptions.instanceGroupId());
+    pathParamsMap.put("id", updateInstanceGroupMembershipOptions.id());
+    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/instance_groups/{instance_group_id}/memberships/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "updateInstanceGroupMembership");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    final JsonObject contentJson = new JsonObject();
-    if (updateInstanceGroupMembershipOptions.name() != null) {
-      contentJson.addProperty("name", updateInstanceGroupMembershipOptions.name());
-    }
-    builder.bodyJson(contentJson);
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateInstanceGroupMembershipOptions.instanceGroupMembershipPatch()), "application/merge-patch+json");
     ResponseConverter<InstanceGroupMembership> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<InstanceGroupMembership>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -3160,17 +3071,16 @@ public class Vpc extends BaseService {
     if (listVolumeProfilesOptions == null) {
       listVolumeProfilesOptions = new ListVolumeProfilesOptions.Builder().build();
     }
-    String[] pathSegments = { "volume/profiles" };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments));
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/volume/profiles"));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listVolumeProfiles");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     if (listVolumeProfilesOptions.start() != null) {
-      builder.query("start", listVolumeProfilesOptions.start());
+      builder.query("start", String.valueOf(listVolumeProfilesOptions.start()));
     }
     if (listVolumeProfilesOptions.limit() != null) {
       builder.query("limit", String.valueOf(listVolumeProfilesOptions.limit()));
@@ -3203,15 +3113,15 @@ public class Vpc extends BaseService {
   public ServiceCall<VolumeProfile> getVolumeProfile(GetVolumeProfileOptions getVolumeProfileOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(getVolumeProfileOptions,
       "getVolumeProfileOptions cannot be null");
-    String[] pathSegments = { "volume/profiles" };
-    String[] pathParameters = { getVolumeProfileOptions.name() };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("name", getVolumeProfileOptions.name());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/volume/profiles/{name}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getVolumeProfile");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<VolumeProfile> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<VolumeProfile>() { }.getType());
@@ -3231,26 +3141,25 @@ public class Vpc extends BaseService {
     if (listVolumesOptions == null) {
       listVolumesOptions = new ListVolumesOptions.Builder().build();
     }
-    String[] pathSegments = { "volumes" };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments));
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/volumes"));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listVolumes");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     if (listVolumesOptions.start() != null) {
-      builder.query("start", listVolumesOptions.start());
+      builder.query("start", String.valueOf(listVolumesOptions.start()));
     }
     if (listVolumesOptions.limit() != null) {
       builder.query("limit", String.valueOf(listVolumesOptions.limit()));
     }
     if (listVolumesOptions.name() != null) {
-      builder.query("name", listVolumesOptions.name());
+      builder.query("name", String.valueOf(listVolumesOptions.name()));
     }
     if (listVolumesOptions.zoneName() != null) {
-      builder.query("zone.name", listVolumesOptions.zoneName());
+      builder.query("zone.name", String.valueOf(listVolumesOptions.zoneName()));
     }
     ResponseConverter<VolumeCollection> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<VolumeCollection>() { }.getType());
@@ -3281,14 +3190,13 @@ public class Vpc extends BaseService {
   public ServiceCall<Volume> createVolume(CreateVolumeOptions createVolumeOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(createVolumeOptions,
       "createVolumeOptions cannot be null");
-    String[] pathSegments = { "volumes" };
-    RequestBuilder builder = RequestBuilder.post(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments));
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/volumes"));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "createVolume");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(createVolumeOptions.volumePrototype()), "application/json");
     ResponseConverter<Volume> responseConverter =
@@ -3308,14 +3216,14 @@ public class Vpc extends BaseService {
   public ServiceCall<Void> deleteVolume(DeleteVolumeOptions deleteVolumeOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(deleteVolumeOptions,
       "deleteVolumeOptions cannot be null");
-    String[] pathSegments = { "volumes" };
-    String[] pathParameters = { deleteVolumeOptions.id() };
-    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", deleteVolumeOptions.id());
+    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/volumes/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "deleteVolume");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
     return createServiceCall(builder.build(), responseConverter);
@@ -3332,15 +3240,15 @@ public class Vpc extends BaseService {
   public ServiceCall<Volume> getVolume(GetVolumeOptions getVolumeOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(getVolumeOptions,
       "getVolumeOptions cannot be null");
-    String[] pathSegments = { "volumes" };
-    String[] pathParameters = { getVolumeOptions.id() };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", getVolumeOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/volumes/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getVolume");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<Volume> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<Volume>() { }.getType());
@@ -3359,21 +3267,17 @@ public class Vpc extends BaseService {
   public ServiceCall<Volume> updateVolume(UpdateVolumeOptions updateVolumeOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(updateVolumeOptions,
       "updateVolumeOptions cannot be null");
-    String[] pathSegments = { "volumes" };
-    String[] pathParameters = { updateVolumeOptions.id() };
-    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", updateVolumeOptions.id());
+    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/volumes/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "updateVolume");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    final JsonObject contentJson = new JsonObject();
-    if (updateVolumeOptions.name() != null) {
-      contentJson.addProperty("name", updateVolumeOptions.name());
-    }
-    builder.bodyJson(contentJson);
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateVolumeOptions.volumePatch()), "application/merge-patch+json");
     ResponseConverter<Volume> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<Volume>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -3392,14 +3296,13 @@ public class Vpc extends BaseService {
    * @return a {@link ServiceCall} with a result of type {@link RegionCollection}
    */
   public ServiceCall<RegionCollection> listRegions(ListRegionsOptions listRegionsOptions) {
-    String[] pathSegments = { "regions" };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments));
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/regions"));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listRegions");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<RegionCollection> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<RegionCollection>() { }.getType());
@@ -3432,15 +3335,15 @@ public class Vpc extends BaseService {
   public ServiceCall<Region> getRegion(GetRegionOptions getRegionOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(getRegionOptions,
       "getRegionOptions cannot be null");
-    String[] pathSegments = { "regions" };
-    String[] pathParameters = { getRegionOptions.name() };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("name", getRegionOptions.name());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/regions/{name}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getRegion");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<Region> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<Region>() { }.getType());
@@ -3459,15 +3362,15 @@ public class Vpc extends BaseService {
   public ServiceCall<ZoneCollection> listRegionZones(ListRegionZonesOptions listRegionZonesOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(listRegionZonesOptions,
       "listRegionZonesOptions cannot be null");
-    String[] pathSegments = { "regions", "zones" };
-    String[] pathParameters = { listRegionZonesOptions.regionName() };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("region_name", listRegionZonesOptions.regionName());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/regions/{region_name}/zones", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listRegionZones");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<ZoneCollection> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<ZoneCollection>() { }.getType());
@@ -3485,15 +3388,16 @@ public class Vpc extends BaseService {
   public ServiceCall<Zone> getRegionZone(GetRegionZoneOptions getRegionZoneOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(getRegionZoneOptions,
       "getRegionZoneOptions cannot be null");
-    String[] pathSegments = { "regions", "zones" };
-    String[] pathParameters = { getRegionZoneOptions.regionName(), getRegionZoneOptions.zoneName() };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("region_name", getRegionZoneOptions.regionName());
+    pathParamsMap.put("zone_name", getRegionZoneOptions.zoneName());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/regions/{region_name}/zones/{zone_name}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getRegionZone");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<Zone> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<Zone>() { }.getType());
@@ -3514,23 +3418,22 @@ public class Vpc extends BaseService {
     if (listPublicGatewaysOptions == null) {
       listPublicGatewaysOptions = new ListPublicGatewaysOptions.Builder().build();
     }
-    String[] pathSegments = { "public_gateways" };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments));
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/public_gateways"));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listPublicGateways");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     if (listPublicGatewaysOptions.start() != null) {
-      builder.query("start", listPublicGatewaysOptions.start());
+      builder.query("start", String.valueOf(listPublicGatewaysOptions.start()));
     }
     if (listPublicGatewaysOptions.limit() != null) {
       builder.query("limit", String.valueOf(listPublicGatewaysOptions.limit()));
     }
     if (listPublicGatewaysOptions.resourceGroupId() != null) {
-      builder.query("resource_group.id", listPublicGatewaysOptions.resourceGroupId());
+      builder.query("resource_group.id", String.valueOf(listPublicGatewaysOptions.resourceGroupId()));
     }
     ResponseConverter<PublicGatewayCollection> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<PublicGatewayCollection>() { }.getType());
@@ -3566,14 +3469,13 @@ public class Vpc extends BaseService {
   public ServiceCall<PublicGateway> createPublicGateway(CreatePublicGatewayOptions createPublicGatewayOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(createPublicGatewayOptions,
       "createPublicGatewayOptions cannot be null");
-    String[] pathSegments = { "public_gateways" };
-    RequestBuilder builder = RequestBuilder.post(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments));
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/public_gateways"));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "createPublicGateway");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     final JsonObject contentJson = new JsonObject();
     contentJson.add("vpc", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createPublicGatewayOptions.vpc()));
@@ -3606,14 +3508,14 @@ public class Vpc extends BaseService {
   public ServiceCall<Void> deletePublicGateway(DeletePublicGatewayOptions deletePublicGatewayOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(deletePublicGatewayOptions,
       "deletePublicGatewayOptions cannot be null");
-    String[] pathSegments = { "public_gateways" };
-    String[] pathParameters = { deletePublicGatewayOptions.id() };
-    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", deletePublicGatewayOptions.id());
+    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/public_gateways/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "deletePublicGateway");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
     return createServiceCall(builder.build(), responseConverter);
@@ -3630,15 +3532,15 @@ public class Vpc extends BaseService {
   public ServiceCall<PublicGateway> getPublicGateway(GetPublicGatewayOptions getPublicGatewayOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(getPublicGatewayOptions,
       "getPublicGatewayOptions cannot be null");
-    String[] pathSegments = { "public_gateways" };
-    String[] pathParameters = { getPublicGatewayOptions.id() };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", getPublicGatewayOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/public_gateways/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getPublicGateway");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<PublicGateway> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<PublicGateway>() { }.getType());
@@ -3656,21 +3558,17 @@ public class Vpc extends BaseService {
   public ServiceCall<PublicGateway> updatePublicGateway(UpdatePublicGatewayOptions updatePublicGatewayOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(updatePublicGatewayOptions,
       "updatePublicGatewayOptions cannot be null");
-    String[] pathSegments = { "public_gateways" };
-    String[] pathParameters = { updatePublicGatewayOptions.id() };
-    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", updatePublicGatewayOptions.id());
+    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/public_gateways/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "updatePublicGateway");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    final JsonObject contentJson = new JsonObject();
-    if (updatePublicGatewayOptions.name() != null) {
-      contentJson.addProperty("name", updatePublicGatewayOptions.name());
-    }
-    builder.bodyJson(contentJson);
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updatePublicGatewayOptions.publicGatewayPatch()), "application/merge-patch+json");
     ResponseConverter<PublicGateway> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<PublicGateway>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -3689,23 +3587,22 @@ public class Vpc extends BaseService {
     if (listFloatingIpsOptions == null) {
       listFloatingIpsOptions = new ListFloatingIpsOptions.Builder().build();
     }
-    String[] pathSegments = { "floating_ips" };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments));
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/floating_ips"));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listFloatingIps");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     if (listFloatingIpsOptions.start() != null) {
-      builder.query("start", listFloatingIpsOptions.start());
+      builder.query("start", String.valueOf(listFloatingIpsOptions.start()));
     }
     if (listFloatingIpsOptions.limit() != null) {
       builder.query("limit", String.valueOf(listFloatingIpsOptions.limit()));
     }
     if (listFloatingIpsOptions.resourceGroupId() != null) {
-      builder.query("resource_group.id", listFloatingIpsOptions.resourceGroupId());
+      builder.query("resource_group.id", String.valueOf(listFloatingIpsOptions.resourceGroupId()));
     }
     ResponseConverter<FloatingIPCollection> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<FloatingIPCollection>() { }.getType());
@@ -3735,14 +3632,13 @@ public class Vpc extends BaseService {
   public ServiceCall<FloatingIP> createFloatingIp(CreateFloatingIpOptions createFloatingIpOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(createFloatingIpOptions,
       "createFloatingIpOptions cannot be null");
-    String[] pathSegments = { "floating_ips" };
-    RequestBuilder builder = RequestBuilder.post(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments));
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/floating_ips"));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "createFloatingIp");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(createFloatingIpOptions.floatingIpPrototype()), "application/json");
     ResponseConverter<FloatingIP> responseConverter =
@@ -3762,14 +3658,14 @@ public class Vpc extends BaseService {
   public ServiceCall<Void> deleteFloatingIp(DeleteFloatingIpOptions deleteFloatingIpOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(deleteFloatingIpOptions,
       "deleteFloatingIpOptions cannot be null");
-    String[] pathSegments = { "floating_ips" };
-    String[] pathParameters = { deleteFloatingIpOptions.id() };
-    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", deleteFloatingIpOptions.id());
+    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/floating_ips/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "deleteFloatingIp");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
     return createServiceCall(builder.build(), responseConverter);
@@ -3786,15 +3682,15 @@ public class Vpc extends BaseService {
   public ServiceCall<FloatingIP> getFloatingIp(GetFloatingIpOptions getFloatingIpOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(getFloatingIpOptions,
       "getFloatingIpOptions cannot be null");
-    String[] pathSegments = { "floating_ips" };
-    String[] pathParameters = { getFloatingIpOptions.id() };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", getFloatingIpOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/floating_ips/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getFloatingIp");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<FloatingIP> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<FloatingIP>() { }.getType());
@@ -3812,24 +3708,17 @@ public class Vpc extends BaseService {
   public ServiceCall<FloatingIP> updateFloatingIp(UpdateFloatingIpOptions updateFloatingIpOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(updateFloatingIpOptions,
       "updateFloatingIpOptions cannot be null");
-    String[] pathSegments = { "floating_ips" };
-    String[] pathParameters = { updateFloatingIpOptions.id() };
-    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", updateFloatingIpOptions.id());
+    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/floating_ips/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "updateFloatingIp");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    final JsonObject contentJson = new JsonObject();
-    if (updateFloatingIpOptions.name() != null) {
-      contentJson.addProperty("name", updateFloatingIpOptions.name());
-    }
-    if (updateFloatingIpOptions.target() != null) {
-      contentJson.add("target", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(updateFloatingIpOptions.target()));
-    }
-    builder.bodyJson(contentJson);
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateFloatingIpOptions.floatingIpPatch()), "application/merge-patch+json");
     ResponseConverter<FloatingIP> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<FloatingIP>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -3849,23 +3738,22 @@ public class Vpc extends BaseService {
     if (listNetworkAclsOptions == null) {
       listNetworkAclsOptions = new ListNetworkAclsOptions.Builder().build();
     }
-    String[] pathSegments = { "network_acls" };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments));
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/network_acls"));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listNetworkAcls");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     if (listNetworkAclsOptions.start() != null) {
-      builder.query("start", listNetworkAclsOptions.start());
+      builder.query("start", String.valueOf(listNetworkAclsOptions.start()));
     }
     if (listNetworkAclsOptions.limit() != null) {
       builder.query("limit", String.valueOf(listNetworkAclsOptions.limit()));
     }
     if (listNetworkAclsOptions.resourceGroupId() != null) {
-      builder.query("resource_group.id", listNetworkAclsOptions.resourceGroupId());
+      builder.query("resource_group.id", String.valueOf(listNetworkAclsOptions.resourceGroupId()));
     }
     ResponseConverter<NetworkACLCollection> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<NetworkACLCollection>() { }.getType());
@@ -3898,14 +3786,13 @@ public class Vpc extends BaseService {
     if (createNetworkAclOptions == null) {
       createNetworkAclOptions = new CreateNetworkAclOptions.Builder().build();
     }
-    String[] pathSegments = { "network_acls" };
-    RequestBuilder builder = RequestBuilder.post(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments));
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/network_acls"));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "createNetworkAcl");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     if (createNetworkAclOptions.networkAclPrototype() != null) {
       builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(createNetworkAclOptions.networkAclPrototype()), "application/json");
@@ -3939,14 +3826,14 @@ public class Vpc extends BaseService {
   public ServiceCall<Void> deleteNetworkAcl(DeleteNetworkAclOptions deleteNetworkAclOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(deleteNetworkAclOptions,
       "deleteNetworkAclOptions cannot be null");
-    String[] pathSegments = { "network_acls" };
-    String[] pathParameters = { deleteNetworkAclOptions.id() };
-    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", deleteNetworkAclOptions.id());
+    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/network_acls/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "deleteNetworkAcl");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
     return createServiceCall(builder.build(), responseConverter);
@@ -3963,15 +3850,15 @@ public class Vpc extends BaseService {
   public ServiceCall<NetworkACL> getNetworkAcl(GetNetworkAclOptions getNetworkAclOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(getNetworkAclOptions,
       "getNetworkAclOptions cannot be null");
-    String[] pathSegments = { "network_acls" };
-    String[] pathParameters = { getNetworkAclOptions.id() };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", getNetworkAclOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/network_acls/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getNetworkAcl");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<NetworkACL> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<NetworkACL>() { }.getType());
@@ -3989,21 +3876,17 @@ public class Vpc extends BaseService {
   public ServiceCall<NetworkACL> updateNetworkAcl(UpdateNetworkAclOptions updateNetworkAclOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(updateNetworkAclOptions,
       "updateNetworkAclOptions cannot be null");
-    String[] pathSegments = { "network_acls" };
-    String[] pathParameters = { updateNetworkAclOptions.id() };
-    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", updateNetworkAclOptions.id());
+    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/network_acls/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "updateNetworkAcl");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    final JsonObject contentJson = new JsonObject();
-    if (updateNetworkAclOptions.name() != null) {
-      contentJson.addProperty("name", updateNetworkAclOptions.name());
-    }
-    builder.bodyJson(contentJson);
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateNetworkAclOptions.networkAclPatch()), "application/merge-patch+json");
     ResponseConverter<NetworkACL> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<NetworkACL>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -4021,24 +3904,24 @@ public class Vpc extends BaseService {
   public ServiceCall<NetworkACLRuleCollection> listNetworkAclRules(ListNetworkAclRulesOptions listNetworkAclRulesOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(listNetworkAclRulesOptions,
       "listNetworkAclRulesOptions cannot be null");
-    String[] pathSegments = { "network_acls", "rules" };
-    String[] pathParameters = { listNetworkAclRulesOptions.networkAclId() };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("network_acl_id", listNetworkAclRulesOptions.networkAclId());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/network_acls/{network_acl_id}/rules", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listNetworkAclRules");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     if (listNetworkAclRulesOptions.start() != null) {
-      builder.query("start", listNetworkAclRulesOptions.start());
+      builder.query("start", String.valueOf(listNetworkAclRulesOptions.start()));
     }
     if (listNetworkAclRulesOptions.limit() != null) {
       builder.query("limit", String.valueOf(listNetworkAclRulesOptions.limit()));
     }
     if (listNetworkAclRulesOptions.direction() != null) {
-      builder.query("direction", listNetworkAclRulesOptions.direction());
+      builder.query("direction", String.valueOf(listNetworkAclRulesOptions.direction()));
     }
     ResponseConverter<NetworkACLRuleCollection> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<NetworkACLRuleCollection>() { }.getType());
@@ -4057,15 +3940,15 @@ public class Vpc extends BaseService {
   public ServiceCall<NetworkACLRule> createNetworkAclRule(CreateNetworkAclRuleOptions createNetworkAclRuleOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(createNetworkAclRuleOptions,
       "createNetworkAclRuleOptions cannot be null");
-    String[] pathSegments = { "network_acls", "rules" };
-    String[] pathParameters = { createNetworkAclRuleOptions.networkAclId() };
-    RequestBuilder builder = RequestBuilder.post(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("network_acl_id", createNetworkAclRuleOptions.networkAclId());
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/network_acls/{network_acl_id}/rules", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "createNetworkAclRule");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(createNetworkAclRuleOptions.networkAclRulePrototype()), "application/json");
     ResponseConverter<NetworkACLRule> responseConverter =
@@ -4084,14 +3967,15 @@ public class Vpc extends BaseService {
   public ServiceCall<Void> deleteNetworkAclRule(DeleteNetworkAclRuleOptions deleteNetworkAclRuleOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(deleteNetworkAclRuleOptions,
       "deleteNetworkAclRuleOptions cannot be null");
-    String[] pathSegments = { "network_acls", "rules" };
-    String[] pathParameters = { deleteNetworkAclRuleOptions.networkAclId(), deleteNetworkAclRuleOptions.id() };
-    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("network_acl_id", deleteNetworkAclRuleOptions.networkAclId());
+    pathParamsMap.put("id", deleteNetworkAclRuleOptions.id());
+    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/network_acls/{network_acl_id}/rules/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "deleteNetworkAclRule");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
     return createServiceCall(builder.build(), responseConverter);
@@ -4108,15 +3992,16 @@ public class Vpc extends BaseService {
   public ServiceCall<NetworkACLRule> getNetworkAclRule(GetNetworkAclRuleOptions getNetworkAclRuleOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(getNetworkAclRuleOptions,
       "getNetworkAclRuleOptions cannot be null");
-    String[] pathSegments = { "network_acls", "rules" };
-    String[] pathParameters = { getNetworkAclRuleOptions.networkAclId(), getNetworkAclRuleOptions.id() };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("network_acl_id", getNetworkAclRuleOptions.networkAclId());
+    pathParamsMap.put("id", getNetworkAclRuleOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/network_acls/{network_acl_id}/rules/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getNetworkAclRule");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<NetworkACLRule> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<NetworkACLRule>() { }.getType());
@@ -4135,54 +4020,18 @@ public class Vpc extends BaseService {
   public ServiceCall<NetworkACLRule> updateNetworkAclRule(UpdateNetworkAclRuleOptions updateNetworkAclRuleOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(updateNetworkAclRuleOptions,
       "updateNetworkAclRuleOptions cannot be null");
-    String[] pathSegments = { "network_acls", "rules" };
-    String[] pathParameters = { updateNetworkAclRuleOptions.networkAclId(), updateNetworkAclRuleOptions.id() };
-    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("network_acl_id", updateNetworkAclRuleOptions.networkAclId());
+    pathParamsMap.put("id", updateNetworkAclRuleOptions.id());
+    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/network_acls/{network_acl_id}/rules/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "updateNetworkAclRule");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    final JsonObject contentJson = new JsonObject();
-    if (updateNetworkAclRuleOptions.name() != null) {
-      contentJson.addProperty("name", updateNetworkAclRuleOptions.name());
-    }
-    if (updateNetworkAclRuleOptions.action() != null) {
-      contentJson.addProperty("action", updateNetworkAclRuleOptions.action());
-    }
-    if (updateNetworkAclRuleOptions.destination() != null) {
-      contentJson.addProperty("destination", updateNetworkAclRuleOptions.destination());
-    }
-    if (updateNetworkAclRuleOptions.direction() != null) {
-      contentJson.addProperty("direction", updateNetworkAclRuleOptions.direction());
-    }
-    if (updateNetworkAclRuleOptions.source() != null) {
-      contentJson.addProperty("source", updateNetworkAclRuleOptions.source());
-    }
-    if (updateNetworkAclRuleOptions.destinationPortMax() != null) {
-      contentJson.addProperty("destination_port_max", updateNetworkAclRuleOptions.destinationPortMax());
-    }
-    if (updateNetworkAclRuleOptions.destinationPortMin() != null) {
-      contentJson.addProperty("destination_port_min", updateNetworkAclRuleOptions.destinationPortMin());
-    }
-    if (updateNetworkAclRuleOptions.sourcePortMax() != null) {
-      contentJson.addProperty("source_port_max", updateNetworkAclRuleOptions.sourcePortMax());
-    }
-    if (updateNetworkAclRuleOptions.sourcePortMin() != null) {
-      contentJson.addProperty("source_port_min", updateNetworkAclRuleOptions.sourcePortMin());
-    }
-    if (updateNetworkAclRuleOptions.code() != null) {
-      contentJson.addProperty("code", updateNetworkAclRuleOptions.code());
-    }
-    if (updateNetworkAclRuleOptions.type() != null) {
-      contentJson.addProperty("type", updateNetworkAclRuleOptions.type());
-    }
-    if (updateNetworkAclRuleOptions.before() != null) {
-      contentJson.add("before", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(updateNetworkAclRuleOptions.before()));
-    }
-    builder.bodyJson(contentJson);
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateNetworkAclRuleOptions.networkAclRulePatch()), "application/merge-patch+json");
     ResponseConverter<NetworkACLRule> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<NetworkACLRule>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -4203,32 +4052,31 @@ public class Vpc extends BaseService {
     if (listSecurityGroupsOptions == null) {
       listSecurityGroupsOptions = new ListSecurityGroupsOptions.Builder().build();
     }
-    String[] pathSegments = { "security_groups" };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments));
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/security_groups"));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listSecurityGroups");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     if (listSecurityGroupsOptions.start() != null) {
-      builder.query("start", listSecurityGroupsOptions.start());
+      builder.query("start", String.valueOf(listSecurityGroupsOptions.start()));
     }
     if (listSecurityGroupsOptions.limit() != null) {
       builder.query("limit", String.valueOf(listSecurityGroupsOptions.limit()));
     }
     if (listSecurityGroupsOptions.resourceGroupId() != null) {
-      builder.query("resource_group.id", listSecurityGroupsOptions.resourceGroupId());
+      builder.query("resource_group.id", String.valueOf(listSecurityGroupsOptions.resourceGroupId()));
     }
     if (listSecurityGroupsOptions.vpcId() != null) {
-      builder.query("vpc.id", listSecurityGroupsOptions.vpcId());
+      builder.query("vpc.id", String.valueOf(listSecurityGroupsOptions.vpcId()));
     }
     if (listSecurityGroupsOptions.vpcCrn() != null) {
-      builder.query("vpc.crn", listSecurityGroupsOptions.vpcCrn());
+      builder.query("vpc.crn", String.valueOf(listSecurityGroupsOptions.vpcCrn()));
     }
     if (listSecurityGroupsOptions.vpcName() != null) {
-      builder.query("vpc.name", listSecurityGroupsOptions.vpcName());
+      builder.query("vpc.name", String.valueOf(listSecurityGroupsOptions.vpcName()));
     }
     ResponseConverter<SecurityGroupCollection> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<SecurityGroupCollection>() { }.getType());
@@ -4264,14 +4112,13 @@ public class Vpc extends BaseService {
   public ServiceCall<SecurityGroup> createSecurityGroup(CreateSecurityGroupOptions createSecurityGroupOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(createSecurityGroupOptions,
       "createSecurityGroupOptions cannot be null");
-    String[] pathSegments = { "security_groups" };
-    RequestBuilder builder = RequestBuilder.post(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments));
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/security_groups"));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "createSecurityGroup");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     final JsonObject contentJson = new JsonObject();
     contentJson.add("vpc", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createSecurityGroupOptions.vpc()));
@@ -4303,14 +4150,14 @@ public class Vpc extends BaseService {
   public ServiceCall<Void> deleteSecurityGroup(DeleteSecurityGroupOptions deleteSecurityGroupOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(deleteSecurityGroupOptions,
       "deleteSecurityGroupOptions cannot be null");
-    String[] pathSegments = { "security_groups" };
-    String[] pathParameters = { deleteSecurityGroupOptions.id() };
-    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", deleteSecurityGroupOptions.id());
+    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/security_groups/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "deleteSecurityGroup");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
     return createServiceCall(builder.build(), responseConverter);
@@ -4327,15 +4174,15 @@ public class Vpc extends BaseService {
   public ServiceCall<SecurityGroup> getSecurityGroup(GetSecurityGroupOptions getSecurityGroupOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(getSecurityGroupOptions,
       "getSecurityGroupOptions cannot be null");
-    String[] pathSegments = { "security_groups" };
-    String[] pathParameters = { getSecurityGroupOptions.id() };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", getSecurityGroupOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/security_groups/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getSecurityGroup");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<SecurityGroup> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<SecurityGroup>() { }.getType());
@@ -4355,21 +4202,17 @@ public class Vpc extends BaseService {
   public ServiceCall<SecurityGroup> updateSecurityGroup(UpdateSecurityGroupOptions updateSecurityGroupOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(updateSecurityGroupOptions,
       "updateSecurityGroupOptions cannot be null");
-    String[] pathSegments = { "security_groups" };
-    String[] pathParameters = { updateSecurityGroupOptions.id() };
-    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", updateSecurityGroupOptions.id());
+    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/security_groups/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "updateSecurityGroup");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    final JsonObject contentJson = new JsonObject();
-    if (updateSecurityGroupOptions.name() != null) {
-      contentJson.addProperty("name", updateSecurityGroupOptions.name());
-    }
-    builder.bodyJson(contentJson);
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateSecurityGroupOptions.securityGroupPatch()), "application/merge-patch+json");
     ResponseConverter<SecurityGroup> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<SecurityGroup>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -4387,18 +4230,18 @@ public class Vpc extends BaseService {
   public ServiceCall<NetworkInterfaceCollection> listSecurityGroupNetworkInterfaces(ListSecurityGroupNetworkInterfacesOptions listSecurityGroupNetworkInterfacesOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(listSecurityGroupNetworkInterfacesOptions,
       "listSecurityGroupNetworkInterfacesOptions cannot be null");
-    String[] pathSegments = { "security_groups", "network_interfaces" };
-    String[] pathParameters = { listSecurityGroupNetworkInterfacesOptions.securityGroupId() };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("security_group_id", listSecurityGroupNetworkInterfacesOptions.securityGroupId());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/security_groups/{security_group_id}/network_interfaces", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listSecurityGroupNetworkInterfaces");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     if (listSecurityGroupNetworkInterfacesOptions.start() != null) {
-      builder.query("start", listSecurityGroupNetworkInterfacesOptions.start());
+      builder.query("start", String.valueOf(listSecurityGroupNetworkInterfacesOptions.start()));
     }
     if (listSecurityGroupNetworkInterfacesOptions.limit() != null) {
       builder.query("limit", String.valueOf(listSecurityGroupNetworkInterfacesOptions.limit()));
@@ -4422,14 +4265,15 @@ public class Vpc extends BaseService {
   public ServiceCall<Void> removeSecurityGroupNetworkInterface(RemoveSecurityGroupNetworkInterfaceOptions removeSecurityGroupNetworkInterfaceOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(removeSecurityGroupNetworkInterfaceOptions,
       "removeSecurityGroupNetworkInterfaceOptions cannot be null");
-    String[] pathSegments = { "security_groups", "network_interfaces" };
-    String[] pathParameters = { removeSecurityGroupNetworkInterfaceOptions.securityGroupId(), removeSecurityGroupNetworkInterfaceOptions.id() };
-    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("security_group_id", removeSecurityGroupNetworkInterfaceOptions.securityGroupId());
+    pathParamsMap.put("id", removeSecurityGroupNetworkInterfaceOptions.id());
+    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/security_groups/{security_group_id}/network_interfaces/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "removeSecurityGroupNetworkInterface");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
     return createServiceCall(builder.build(), responseConverter);
@@ -4447,15 +4291,16 @@ public class Vpc extends BaseService {
   public ServiceCall<NetworkInterface> getSecurityGroupNetworkInterface(GetSecurityGroupNetworkInterfaceOptions getSecurityGroupNetworkInterfaceOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(getSecurityGroupNetworkInterfaceOptions,
       "getSecurityGroupNetworkInterfaceOptions cannot be null");
-    String[] pathSegments = { "security_groups", "network_interfaces" };
-    String[] pathParameters = { getSecurityGroupNetworkInterfaceOptions.securityGroupId(), getSecurityGroupNetworkInterfaceOptions.id() };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("security_group_id", getSecurityGroupNetworkInterfaceOptions.securityGroupId());
+    pathParamsMap.put("id", getSecurityGroupNetworkInterfaceOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/security_groups/{security_group_id}/network_interfaces/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getSecurityGroupNetworkInterface");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<NetworkInterface> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<NetworkInterface>() { }.getType());
@@ -4475,15 +4320,16 @@ public class Vpc extends BaseService {
   public ServiceCall<NetworkInterface> addSecurityGroupNetworkInterface(AddSecurityGroupNetworkInterfaceOptions addSecurityGroupNetworkInterfaceOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(addSecurityGroupNetworkInterfaceOptions,
       "addSecurityGroupNetworkInterfaceOptions cannot be null");
-    String[] pathSegments = { "security_groups", "network_interfaces" };
-    String[] pathParameters = { addSecurityGroupNetworkInterfaceOptions.securityGroupId(), addSecurityGroupNetworkInterfaceOptions.id() };
-    RequestBuilder builder = RequestBuilder.put(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("security_group_id", addSecurityGroupNetworkInterfaceOptions.securityGroupId());
+    pathParamsMap.put("id", addSecurityGroupNetworkInterfaceOptions.id());
+    RequestBuilder builder = RequestBuilder.put(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/security_groups/{security_group_id}/network_interfaces/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "addSecurityGroupNetworkInterface");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<NetworkInterface> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<NetworkInterface>() { }.getType());
@@ -4503,15 +4349,15 @@ public class Vpc extends BaseService {
   public ServiceCall<SecurityGroupRuleCollection> listSecurityGroupRules(ListSecurityGroupRulesOptions listSecurityGroupRulesOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(listSecurityGroupRulesOptions,
       "listSecurityGroupRulesOptions cannot be null");
-    String[] pathSegments = { "security_groups", "rules" };
-    String[] pathParameters = { listSecurityGroupRulesOptions.securityGroupId() };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("security_group_id", listSecurityGroupRulesOptions.securityGroupId());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/security_groups/{security_group_id}/rules", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listSecurityGroupRules");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<SecurityGroupRuleCollection> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<SecurityGroupRuleCollection>() { }.getType());
@@ -4534,15 +4380,15 @@ public class Vpc extends BaseService {
   public ServiceCall<SecurityGroupRule> createSecurityGroupRule(CreateSecurityGroupRuleOptions createSecurityGroupRuleOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(createSecurityGroupRuleOptions,
       "createSecurityGroupRuleOptions cannot be null");
-    String[] pathSegments = { "security_groups", "rules" };
-    String[] pathParameters = { createSecurityGroupRuleOptions.securityGroupId() };
-    RequestBuilder builder = RequestBuilder.post(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("security_group_id", createSecurityGroupRuleOptions.securityGroupId());
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/security_groups/{security_group_id}/rules", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "createSecurityGroupRule");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(createSecurityGroupRuleOptions.securityGroupRulePrototype()), "application/json");
     ResponseConverter<SecurityGroupRule> responseConverter =
@@ -4562,14 +4408,15 @@ public class Vpc extends BaseService {
   public ServiceCall<Void> deleteSecurityGroupRule(DeleteSecurityGroupRuleOptions deleteSecurityGroupRuleOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(deleteSecurityGroupRuleOptions,
       "deleteSecurityGroupRuleOptions cannot be null");
-    String[] pathSegments = { "security_groups", "rules" };
-    String[] pathParameters = { deleteSecurityGroupRuleOptions.securityGroupId(), deleteSecurityGroupRuleOptions.id() };
-    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("security_group_id", deleteSecurityGroupRuleOptions.securityGroupId());
+    pathParamsMap.put("id", deleteSecurityGroupRuleOptions.id());
+    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/security_groups/{security_group_id}/rules/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "deleteSecurityGroupRule");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
     return createServiceCall(builder.build(), responseConverter);
@@ -4586,15 +4433,16 @@ public class Vpc extends BaseService {
   public ServiceCall<SecurityGroupRule> getSecurityGroupRule(GetSecurityGroupRuleOptions getSecurityGroupRuleOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(getSecurityGroupRuleOptions,
       "getSecurityGroupRuleOptions cannot be null");
-    String[] pathSegments = { "security_groups", "rules" };
-    String[] pathParameters = { getSecurityGroupRuleOptions.securityGroupId(), getSecurityGroupRuleOptions.id() };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("security_group_id", getSecurityGroupRuleOptions.securityGroupId());
+    pathParamsMap.put("id", getSecurityGroupRuleOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/security_groups/{security_group_id}/rules/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getSecurityGroupRule");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<SecurityGroupRule> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<SecurityGroupRule>() { }.getType());
@@ -4614,39 +4462,18 @@ public class Vpc extends BaseService {
   public ServiceCall<SecurityGroupRule> updateSecurityGroupRule(UpdateSecurityGroupRuleOptions updateSecurityGroupRuleOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(updateSecurityGroupRuleOptions,
       "updateSecurityGroupRuleOptions cannot be null");
-    String[] pathSegments = { "security_groups", "rules" };
-    String[] pathParameters = { updateSecurityGroupRuleOptions.securityGroupId(), updateSecurityGroupRuleOptions.id() };
-    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("security_group_id", updateSecurityGroupRuleOptions.securityGroupId());
+    pathParamsMap.put("id", updateSecurityGroupRuleOptions.id());
+    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/security_groups/{security_group_id}/rules/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "updateSecurityGroupRule");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    final JsonObject contentJson = new JsonObject();
-    if (updateSecurityGroupRuleOptions.remote() != null) {
-      contentJson.add("remote", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(updateSecurityGroupRuleOptions.remote()));
-    }
-    if (updateSecurityGroupRuleOptions.direction() != null) {
-      contentJson.addProperty("direction", updateSecurityGroupRuleOptions.direction());
-    }
-    if (updateSecurityGroupRuleOptions.ipVersion() != null) {
-      contentJson.addProperty("ip_version", updateSecurityGroupRuleOptions.ipVersion());
-    }
-    if (updateSecurityGroupRuleOptions.code() != null) {
-      contentJson.addProperty("code", updateSecurityGroupRuleOptions.code());
-    }
-    if (updateSecurityGroupRuleOptions.portMax() != null) {
-      contentJson.addProperty("port_max", updateSecurityGroupRuleOptions.portMax());
-    }
-    if (updateSecurityGroupRuleOptions.portMin() != null) {
-      contentJson.addProperty("port_min", updateSecurityGroupRuleOptions.portMin());
-    }
-    if (updateSecurityGroupRuleOptions.type() != null) {
-      contentJson.addProperty("type", updateSecurityGroupRuleOptions.type());
-    }
-    builder.bodyJson(contentJson);
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateSecurityGroupRuleOptions.securityGroupRulePatch()), "application/merge-patch+json");
     ResponseConverter<SecurityGroupRule> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<SecurityGroupRule>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -4664,17 +4491,16 @@ public class Vpc extends BaseService {
     if (listIkePoliciesOptions == null) {
       listIkePoliciesOptions = new ListIkePoliciesOptions.Builder().build();
     }
-    String[] pathSegments = { "ike_policies" };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments));
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/ike_policies"));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listIkePolicies");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     if (listIkePoliciesOptions.start() != null) {
-      builder.query("start", listIkePoliciesOptions.start());
+      builder.query("start", String.valueOf(listIkePoliciesOptions.start()));
     }
     if (listIkePoliciesOptions.limit() != null) {
       builder.query("limit", String.valueOf(listIkePoliciesOptions.limit()));
@@ -4706,14 +4532,13 @@ public class Vpc extends BaseService {
   public ServiceCall<IKEPolicy> createIkePolicy(CreateIkePolicyOptions createIkePolicyOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(createIkePolicyOptions,
       "createIkePolicyOptions cannot be null");
-    String[] pathSegments = { "ike_policies" };
-    RequestBuilder builder = RequestBuilder.post(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments));
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/ike_policies"));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "createIkePolicy");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     final JsonObject contentJson = new JsonObject();
     contentJson.addProperty("authentication_algorithm", createIkePolicyOptions.authenticationAlgorithm());
@@ -4746,14 +4571,14 @@ public class Vpc extends BaseService {
   public ServiceCall<Void> deleteIkePolicy(DeleteIkePolicyOptions deleteIkePolicyOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(deleteIkePolicyOptions,
       "deleteIkePolicyOptions cannot be null");
-    String[] pathSegments = { "ike_policies" };
-    String[] pathParameters = { deleteIkePolicyOptions.id() };
-    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", deleteIkePolicyOptions.id());
+    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/ike_policies/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "deleteIkePolicy");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
     return createServiceCall(builder.build(), responseConverter);
@@ -4770,15 +4595,15 @@ public class Vpc extends BaseService {
   public ServiceCall<IKEPolicy> getIkePolicy(GetIkePolicyOptions getIkePolicyOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(getIkePolicyOptions,
       "getIkePolicyOptions cannot be null");
-    String[] pathSegments = { "ike_policies" };
-    String[] pathParameters = { getIkePolicyOptions.id() };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", getIkePolicyOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/ike_policies/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getIkePolicy");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<IKEPolicy> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<IKEPolicy>() { }.getType());
@@ -4796,36 +4621,17 @@ public class Vpc extends BaseService {
   public ServiceCall<IKEPolicy> updateIkePolicy(UpdateIkePolicyOptions updateIkePolicyOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(updateIkePolicyOptions,
       "updateIkePolicyOptions cannot be null");
-    String[] pathSegments = { "ike_policies" };
-    String[] pathParameters = { updateIkePolicyOptions.id() };
-    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", updateIkePolicyOptions.id());
+    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/ike_policies/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "updateIkePolicy");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    final JsonObject contentJson = new JsonObject();
-    if (updateIkePolicyOptions.name() != null) {
-      contentJson.addProperty("name", updateIkePolicyOptions.name());
-    }
-    if (updateIkePolicyOptions.authenticationAlgorithm() != null) {
-      contentJson.addProperty("authentication_algorithm", updateIkePolicyOptions.authenticationAlgorithm());
-    }
-    if (updateIkePolicyOptions.dhGroup() != null) {
-      contentJson.addProperty("dh_group", updateIkePolicyOptions.dhGroup());
-    }
-    if (updateIkePolicyOptions.encryptionAlgorithm() != null) {
-      contentJson.addProperty("encryption_algorithm", updateIkePolicyOptions.encryptionAlgorithm());
-    }
-    if (updateIkePolicyOptions.ikeVersion() != null) {
-      contentJson.addProperty("ike_version", updateIkePolicyOptions.ikeVersion());
-    }
-    if (updateIkePolicyOptions.keyLifetime() != null) {
-      contentJson.addProperty("key_lifetime", updateIkePolicyOptions.keyLifetime());
-    }
-    builder.bodyJson(contentJson);
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateIkePolicyOptions.ikePolicyPatch()), "application/merge-patch+json");
     ResponseConverter<IKEPolicy> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<IKEPolicy>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -4842,15 +4648,15 @@ public class Vpc extends BaseService {
   public ServiceCall<VPNGatewayConnectionCollection> listIkePolicyConnections(ListIkePolicyConnectionsOptions listIkePolicyConnectionsOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(listIkePolicyConnectionsOptions,
       "listIkePolicyConnectionsOptions cannot be null");
-    String[] pathSegments = { "ike_policies", "connections" };
-    String[] pathParameters = { listIkePolicyConnectionsOptions.id() };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", listIkePolicyConnectionsOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/ike_policies/{id}/connections", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listIkePolicyConnections");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<VPNGatewayConnectionCollection> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<VPNGatewayConnectionCollection>() { }.getType());
@@ -4869,17 +4675,16 @@ public class Vpc extends BaseService {
     if (listIpsecPoliciesOptions == null) {
       listIpsecPoliciesOptions = new ListIpsecPoliciesOptions.Builder().build();
     }
-    String[] pathSegments = { "ipsec_policies" };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments));
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/ipsec_policies"));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listIpsecPolicies");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     if (listIpsecPoliciesOptions.start() != null) {
-      builder.query("start", listIpsecPoliciesOptions.start());
+      builder.query("start", String.valueOf(listIpsecPoliciesOptions.start()));
     }
     if (listIpsecPoliciesOptions.limit() != null) {
       builder.query("limit", String.valueOf(listIpsecPoliciesOptions.limit()));
@@ -4911,14 +4716,13 @@ public class Vpc extends BaseService {
   public ServiceCall<IPsecPolicy> createIpsecPolicy(CreateIpsecPolicyOptions createIpsecPolicyOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(createIpsecPolicyOptions,
       "createIpsecPolicyOptions cannot be null");
-    String[] pathSegments = { "ipsec_policies" };
-    RequestBuilder builder = RequestBuilder.post(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments));
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/ipsec_policies"));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "createIpsecPolicy");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     final JsonObject contentJson = new JsonObject();
     contentJson.addProperty("authentication_algorithm", createIpsecPolicyOptions.authenticationAlgorithm());
@@ -4950,14 +4754,14 @@ public class Vpc extends BaseService {
   public ServiceCall<Void> deleteIpsecPolicy(DeleteIpsecPolicyOptions deleteIpsecPolicyOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(deleteIpsecPolicyOptions,
       "deleteIpsecPolicyOptions cannot be null");
-    String[] pathSegments = { "ipsec_policies" };
-    String[] pathParameters = { deleteIpsecPolicyOptions.id() };
-    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", deleteIpsecPolicyOptions.id());
+    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/ipsec_policies/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "deleteIpsecPolicy");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
     return createServiceCall(builder.build(), responseConverter);
@@ -4974,15 +4778,15 @@ public class Vpc extends BaseService {
   public ServiceCall<IPsecPolicy> getIpsecPolicy(GetIpsecPolicyOptions getIpsecPolicyOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(getIpsecPolicyOptions,
       "getIpsecPolicyOptions cannot be null");
-    String[] pathSegments = { "ipsec_policies" };
-    String[] pathParameters = { getIpsecPolicyOptions.id() };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", getIpsecPolicyOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/ipsec_policies/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getIpsecPolicy");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<IPsecPolicy> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<IPsecPolicy>() { }.getType());
@@ -5000,33 +4804,17 @@ public class Vpc extends BaseService {
   public ServiceCall<IPsecPolicy> updateIpsecPolicy(UpdateIpsecPolicyOptions updateIpsecPolicyOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(updateIpsecPolicyOptions,
       "updateIpsecPolicyOptions cannot be null");
-    String[] pathSegments = { "ipsec_policies" };
-    String[] pathParameters = { updateIpsecPolicyOptions.id() };
-    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", updateIpsecPolicyOptions.id());
+    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/ipsec_policies/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "updateIpsecPolicy");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    final JsonObject contentJson = new JsonObject();
-    if (updateIpsecPolicyOptions.name() != null) {
-      contentJson.addProperty("name", updateIpsecPolicyOptions.name());
-    }
-    if (updateIpsecPolicyOptions.authenticationAlgorithm() != null) {
-      contentJson.addProperty("authentication_algorithm", updateIpsecPolicyOptions.authenticationAlgorithm());
-    }
-    if (updateIpsecPolicyOptions.encryptionAlgorithm() != null) {
-      contentJson.addProperty("encryption_algorithm", updateIpsecPolicyOptions.encryptionAlgorithm());
-    }
-    if (updateIpsecPolicyOptions.keyLifetime() != null) {
-      contentJson.addProperty("key_lifetime", updateIpsecPolicyOptions.keyLifetime());
-    }
-    if (updateIpsecPolicyOptions.pfs() != null) {
-      contentJson.addProperty("pfs", updateIpsecPolicyOptions.pfs());
-    }
-    builder.bodyJson(contentJson);
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateIpsecPolicyOptions.iPsecPolicyPatch()), "application/merge-patch+json");
     ResponseConverter<IPsecPolicy> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<IPsecPolicy>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -5043,15 +4831,15 @@ public class Vpc extends BaseService {
   public ServiceCall<VPNGatewayConnectionCollection> listIpsecPolicyConnections(ListIpsecPolicyConnectionsOptions listIpsecPolicyConnectionsOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(listIpsecPolicyConnectionsOptions,
       "listIpsecPolicyConnectionsOptions cannot be null");
-    String[] pathSegments = { "ipsec_policies", "connections" };
-    String[] pathParameters = { listIpsecPolicyConnectionsOptions.id() };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", listIpsecPolicyConnectionsOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/ipsec_policies/{id}/connections", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listIpsecPolicyConnections");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<VPNGatewayConnectionCollection> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<VPNGatewayConnectionCollection>() { }.getType());
@@ -5070,23 +4858,22 @@ public class Vpc extends BaseService {
     if (listVpnGatewaysOptions == null) {
       listVpnGatewaysOptions = new ListVpnGatewaysOptions.Builder().build();
     }
-    String[] pathSegments = { "vpn_gateways" };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments));
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/vpn_gateways"));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listVpnGateways");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     if (listVpnGatewaysOptions.start() != null) {
-      builder.query("start", listVpnGatewaysOptions.start());
+      builder.query("start", String.valueOf(listVpnGatewaysOptions.start()));
     }
     if (listVpnGatewaysOptions.limit() != null) {
       builder.query("limit", String.valueOf(listVpnGatewaysOptions.limit()));
     }
     if (listVpnGatewaysOptions.resourceGroupId() != null) {
-      builder.query("resource_group.id", listVpnGatewaysOptions.resourceGroupId());
+      builder.query("resource_group.id", String.valueOf(listVpnGatewaysOptions.resourceGroupId()));
     }
     ResponseConverter<VPNGatewayCollection> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<VPNGatewayCollection>() { }.getType());
@@ -5115,14 +4902,13 @@ public class Vpc extends BaseService {
   public ServiceCall<VPNGateway> createVpnGateway(CreateVpnGatewayOptions createVpnGatewayOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(createVpnGatewayOptions,
       "createVpnGatewayOptions cannot be null");
-    String[] pathSegments = { "vpn_gateways" };
-    RequestBuilder builder = RequestBuilder.post(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments));
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/vpn_gateways"));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "createVpnGateway");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     final JsonObject contentJson = new JsonObject();
     contentJson.add("subnet", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createVpnGatewayOptions.subnet()));
@@ -5150,14 +4936,14 @@ public class Vpc extends BaseService {
   public ServiceCall<Void> deleteVpnGateway(DeleteVpnGatewayOptions deleteVpnGatewayOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(deleteVpnGatewayOptions,
       "deleteVpnGatewayOptions cannot be null");
-    String[] pathSegments = { "vpn_gateways" };
-    String[] pathParameters = { deleteVpnGatewayOptions.id() };
-    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", deleteVpnGatewayOptions.id());
+    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/vpn_gateways/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "deleteVpnGateway");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
     return createServiceCall(builder.build(), responseConverter);
@@ -5174,15 +4960,15 @@ public class Vpc extends BaseService {
   public ServiceCall<VPNGateway> getVpnGateway(GetVpnGatewayOptions getVpnGatewayOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(getVpnGatewayOptions,
       "getVpnGatewayOptions cannot be null");
-    String[] pathSegments = { "vpn_gateways" };
-    String[] pathParameters = { getVpnGatewayOptions.id() };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", getVpnGatewayOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/vpn_gateways/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getVpnGateway");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<VPNGateway> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<VPNGateway>() { }.getType());
@@ -5200,21 +4986,17 @@ public class Vpc extends BaseService {
   public ServiceCall<VPNGateway> updateVpnGateway(UpdateVpnGatewayOptions updateVpnGatewayOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(updateVpnGatewayOptions,
       "updateVpnGatewayOptions cannot be null");
-    String[] pathSegments = { "vpn_gateways" };
-    String[] pathParameters = { updateVpnGatewayOptions.id() };
-    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", updateVpnGatewayOptions.id());
+    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/vpn_gateways/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "updateVpnGateway");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    final JsonObject contentJson = new JsonObject();
-    if (updateVpnGatewayOptions.name() != null) {
-      contentJson.addProperty("name", updateVpnGatewayOptions.name());
-    }
-    builder.bodyJson(contentJson);
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateVpnGatewayOptions.vpnGatewayPatch()), "application/merge-patch+json");
     ResponseConverter<VPNGateway> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<VPNGateway>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -5231,18 +5013,18 @@ public class Vpc extends BaseService {
   public ServiceCall<VPNGatewayConnectionCollection> listVpnGatewayConnections(ListVpnGatewayConnectionsOptions listVpnGatewayConnectionsOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(listVpnGatewayConnectionsOptions,
       "listVpnGatewayConnectionsOptions cannot be null");
-    String[] pathSegments = { "vpn_gateways", "connections" };
-    String[] pathParameters = { listVpnGatewayConnectionsOptions.vpnGatewayId() };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("vpn_gateway_id", listVpnGatewayConnectionsOptions.vpnGatewayId());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/vpn_gateways/{vpn_gateway_id}/connections", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listVpnGatewayConnections");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     if (listVpnGatewayConnectionsOptions.status() != null) {
-      builder.query("status", listVpnGatewayConnectionsOptions.status());
+      builder.query("status", String.valueOf(listVpnGatewayConnectionsOptions.status()));
     }
     ResponseConverter<VPNGatewayConnectionCollection> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<VPNGatewayConnectionCollection>() { }.getType());
@@ -5260,41 +5042,17 @@ public class Vpc extends BaseService {
   public ServiceCall<VPNGatewayConnection> createVpnGatewayConnection(CreateVpnGatewayConnectionOptions createVpnGatewayConnectionOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(createVpnGatewayConnectionOptions,
       "createVpnGatewayConnectionOptions cannot be null");
-    String[] pathSegments = { "vpn_gateways", "connections" };
-    String[] pathParameters = { createVpnGatewayConnectionOptions.vpnGatewayId() };
-    RequestBuilder builder = RequestBuilder.post(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("vpn_gateway_id", createVpnGatewayConnectionOptions.vpnGatewayId());
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/vpn_gateways/{vpn_gateway_id}/connections", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "createVpnGatewayConnection");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    final JsonObject contentJson = new JsonObject();
-    contentJson.addProperty("peer_address", createVpnGatewayConnectionOptions.peerAddress());
-    contentJson.addProperty("psk", createVpnGatewayConnectionOptions.psk());
-    if (createVpnGatewayConnectionOptions.adminStateUp() != null) {
-      contentJson.addProperty("admin_state_up", createVpnGatewayConnectionOptions.adminStateUp());
-    }
-    if (createVpnGatewayConnectionOptions.name() != null) {
-      contentJson.addProperty("name", createVpnGatewayConnectionOptions.name());
-    }
-    if (createVpnGatewayConnectionOptions.deadPeerDetection() != null) {
-      contentJson.add("dead_peer_detection", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createVpnGatewayConnectionOptions.deadPeerDetection()));
-    }
-    if (createVpnGatewayConnectionOptions.ikePolicy() != null) {
-      contentJson.add("ike_policy", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createVpnGatewayConnectionOptions.ikePolicy()));
-    }
-    if (createVpnGatewayConnectionOptions.ipsecPolicy() != null) {
-      contentJson.add("ipsec_policy", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createVpnGatewayConnectionOptions.ipsecPolicy()));
-    }
-    if (createVpnGatewayConnectionOptions.localCidrs() != null) {
-      contentJson.add("local_cidrs", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createVpnGatewayConnectionOptions.localCidrs()));
-    }
-    if (createVpnGatewayConnectionOptions.peerCidrs() != null) {
-      contentJson.add("peer_cidrs", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createVpnGatewayConnectionOptions.peerCidrs()));
-    }
-    builder.bodyJson(contentJson);
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(createVpnGatewayConnectionOptions.vpnGatewayConnectionPrototype()), "application/json");
     ResponseConverter<VPNGatewayConnection> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<VPNGatewayConnection>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -5311,14 +5069,15 @@ public class Vpc extends BaseService {
   public ServiceCall<Void> deleteVpnGatewayConnection(DeleteVpnGatewayConnectionOptions deleteVpnGatewayConnectionOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(deleteVpnGatewayConnectionOptions,
       "deleteVpnGatewayConnectionOptions cannot be null");
-    String[] pathSegments = { "vpn_gateways", "connections" };
-    String[] pathParameters = { deleteVpnGatewayConnectionOptions.vpnGatewayId(), deleteVpnGatewayConnectionOptions.id() };
-    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("vpn_gateway_id", deleteVpnGatewayConnectionOptions.vpnGatewayId());
+    pathParamsMap.put("id", deleteVpnGatewayConnectionOptions.id());
+    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/vpn_gateways/{vpn_gateway_id}/connections/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "deleteVpnGatewayConnection");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
     return createServiceCall(builder.build(), responseConverter);
@@ -5335,15 +5094,16 @@ public class Vpc extends BaseService {
   public ServiceCall<VPNGatewayConnection> getVpnGatewayConnection(GetVpnGatewayConnectionOptions getVpnGatewayConnectionOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(getVpnGatewayConnectionOptions,
       "getVpnGatewayConnectionOptions cannot be null");
-    String[] pathSegments = { "vpn_gateways", "connections" };
-    String[] pathParameters = { getVpnGatewayConnectionOptions.vpnGatewayId(), getVpnGatewayConnectionOptions.id() };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("vpn_gateway_id", getVpnGatewayConnectionOptions.vpnGatewayId());
+    pathParamsMap.put("id", getVpnGatewayConnectionOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/vpn_gateways/{vpn_gateway_id}/connections/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getVpnGatewayConnection");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<VPNGatewayConnection> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<VPNGatewayConnection>() { }.getType());
@@ -5361,39 +5121,18 @@ public class Vpc extends BaseService {
   public ServiceCall<VPNGatewayConnection> updateVpnGatewayConnection(UpdateVpnGatewayConnectionOptions updateVpnGatewayConnectionOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(updateVpnGatewayConnectionOptions,
       "updateVpnGatewayConnectionOptions cannot be null");
-    String[] pathSegments = { "vpn_gateways", "connections" };
-    String[] pathParameters = { updateVpnGatewayConnectionOptions.vpnGatewayId(), updateVpnGatewayConnectionOptions.id() };
-    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("vpn_gateway_id", updateVpnGatewayConnectionOptions.vpnGatewayId());
+    pathParamsMap.put("id", updateVpnGatewayConnectionOptions.id());
+    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/vpn_gateways/{vpn_gateway_id}/connections/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "updateVpnGatewayConnection");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    final JsonObject contentJson = new JsonObject();
-    if (updateVpnGatewayConnectionOptions.adminStateUp() != null) {
-      contentJson.addProperty("admin_state_up", updateVpnGatewayConnectionOptions.adminStateUp());
-    }
-    if (updateVpnGatewayConnectionOptions.peerAddress() != null) {
-      contentJson.addProperty("peer_address", updateVpnGatewayConnectionOptions.peerAddress());
-    }
-    if (updateVpnGatewayConnectionOptions.name() != null) {
-      contentJson.addProperty("name", updateVpnGatewayConnectionOptions.name());
-    }
-    if (updateVpnGatewayConnectionOptions.psk() != null) {
-      contentJson.addProperty("psk", updateVpnGatewayConnectionOptions.psk());
-    }
-    if (updateVpnGatewayConnectionOptions.deadPeerDetection() != null) {
-      contentJson.add("dead_peer_detection", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(updateVpnGatewayConnectionOptions.deadPeerDetection()));
-    }
-    if (updateVpnGatewayConnectionOptions.ikePolicy() != null) {
-      contentJson.add("ike_policy", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(updateVpnGatewayConnectionOptions.ikePolicy()));
-    }
-    if (updateVpnGatewayConnectionOptions.ipsecPolicy() != null) {
-      contentJson.add("ipsec_policy", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(updateVpnGatewayConnectionOptions.ipsecPolicy()));
-    }
-    builder.bodyJson(contentJson);
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateVpnGatewayConnectionOptions.vpnGatewayConnectionPatch()), "application/merge-patch+json");
     ResponseConverter<VPNGatewayConnection> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<VPNGatewayConnection>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -5410,15 +5149,16 @@ public class Vpc extends BaseService {
   public ServiceCall<VPNGatewayConnectionLocalCIDRs> listVpnGatewayConnectionLocalCidrs(ListVpnGatewayConnectionLocalCidrsOptions listVpnGatewayConnectionLocalCidrsOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(listVpnGatewayConnectionLocalCidrsOptions,
       "listVpnGatewayConnectionLocalCidrsOptions cannot be null");
-    String[] pathSegments = { "vpn_gateways", "connections", "local_cidrs" };
-    String[] pathParameters = { listVpnGatewayConnectionLocalCidrsOptions.vpnGatewayId(), listVpnGatewayConnectionLocalCidrsOptions.id() };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("vpn_gateway_id", listVpnGatewayConnectionLocalCidrsOptions.vpnGatewayId());
+    pathParamsMap.put("id", listVpnGatewayConnectionLocalCidrsOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/vpn_gateways/{vpn_gateway_id}/connections/{id}/local_cidrs", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listVpnGatewayConnectionLocalCidrs");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<VPNGatewayConnectionLocalCIDRs> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<VPNGatewayConnectionLocalCIDRs>() { }.getType());
@@ -5436,14 +5176,17 @@ public class Vpc extends BaseService {
   public ServiceCall<Void> removeVpnGatewayConnectionLocalCidr(RemoveVpnGatewayConnectionLocalCidrOptions removeVpnGatewayConnectionLocalCidrOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(removeVpnGatewayConnectionLocalCidrOptions,
       "removeVpnGatewayConnectionLocalCidrOptions cannot be null");
-    String[] pathSegments = { "vpn_gateways", "connections", "local_cidrs", "" };
-    String[] pathParameters = { removeVpnGatewayConnectionLocalCidrOptions.vpnGatewayId(), removeVpnGatewayConnectionLocalCidrOptions.id(), removeVpnGatewayConnectionLocalCidrOptions.cidrPrefix(), removeVpnGatewayConnectionLocalCidrOptions.prefixLength() };
-    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("vpn_gateway_id", removeVpnGatewayConnectionLocalCidrOptions.vpnGatewayId());
+    pathParamsMap.put("id", removeVpnGatewayConnectionLocalCidrOptions.id());
+    pathParamsMap.put("cidr_prefix", removeVpnGatewayConnectionLocalCidrOptions.cidrPrefix());
+    pathParamsMap.put("prefix_length", removeVpnGatewayConnectionLocalCidrOptions.prefixLength());
+    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/vpn_gateways/{vpn_gateway_id}/connections/{id}/local_cidrs/{cidr_prefix}/{prefix_length}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "removeVpnGatewayConnectionLocalCidr");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
     return createServiceCall(builder.build(), responseConverter);
@@ -5460,14 +5203,17 @@ public class Vpc extends BaseService {
   public ServiceCall<Void> checkVpnGatewayConnectionLocalCidr(CheckVpnGatewayConnectionLocalCidrOptions checkVpnGatewayConnectionLocalCidrOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(checkVpnGatewayConnectionLocalCidrOptions,
       "checkVpnGatewayConnectionLocalCidrOptions cannot be null");
-    String[] pathSegments = { "vpn_gateways", "connections", "local_cidrs", "" };
-    String[] pathParameters = { checkVpnGatewayConnectionLocalCidrOptions.vpnGatewayId(), checkVpnGatewayConnectionLocalCidrOptions.id(), checkVpnGatewayConnectionLocalCidrOptions.cidrPrefix(), checkVpnGatewayConnectionLocalCidrOptions.prefixLength() };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("vpn_gateway_id", checkVpnGatewayConnectionLocalCidrOptions.vpnGatewayId());
+    pathParamsMap.put("id", checkVpnGatewayConnectionLocalCidrOptions.id());
+    pathParamsMap.put("cidr_prefix", checkVpnGatewayConnectionLocalCidrOptions.cidrPrefix());
+    pathParamsMap.put("prefix_length", checkVpnGatewayConnectionLocalCidrOptions.prefixLength());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/vpn_gateways/{vpn_gateway_id}/connections/{id}/local_cidrs/{cidr_prefix}/{prefix_length}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "checkVpnGatewayConnectionLocalCidr");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
     return createServiceCall(builder.build(), responseConverter);
@@ -5485,14 +5231,17 @@ public class Vpc extends BaseService {
   public ServiceCall<Void> addVpnGatewayConnectionLocalCidr(AddVpnGatewayConnectionLocalCidrOptions addVpnGatewayConnectionLocalCidrOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(addVpnGatewayConnectionLocalCidrOptions,
       "addVpnGatewayConnectionLocalCidrOptions cannot be null");
-    String[] pathSegments = { "vpn_gateways", "connections", "local_cidrs", "" };
-    String[] pathParameters = { addVpnGatewayConnectionLocalCidrOptions.vpnGatewayId(), addVpnGatewayConnectionLocalCidrOptions.id(), addVpnGatewayConnectionLocalCidrOptions.cidrPrefix(), addVpnGatewayConnectionLocalCidrOptions.prefixLength() };
-    RequestBuilder builder = RequestBuilder.put(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("vpn_gateway_id", addVpnGatewayConnectionLocalCidrOptions.vpnGatewayId());
+    pathParamsMap.put("id", addVpnGatewayConnectionLocalCidrOptions.id());
+    pathParamsMap.put("cidr_prefix", addVpnGatewayConnectionLocalCidrOptions.cidrPrefix());
+    pathParamsMap.put("prefix_length", addVpnGatewayConnectionLocalCidrOptions.prefixLength());
+    RequestBuilder builder = RequestBuilder.put(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/vpn_gateways/{vpn_gateway_id}/connections/{id}/local_cidrs/{cidr_prefix}/{prefix_length}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "addVpnGatewayConnectionLocalCidr");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
     return createServiceCall(builder.build(), responseConverter);
@@ -5509,15 +5258,16 @@ public class Vpc extends BaseService {
   public ServiceCall<VPNGatewayConnectionPeerCIDRs> listVpnGatewayConnectionPeerCidrs(ListVpnGatewayConnectionPeerCidrsOptions listVpnGatewayConnectionPeerCidrsOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(listVpnGatewayConnectionPeerCidrsOptions,
       "listVpnGatewayConnectionPeerCidrsOptions cannot be null");
-    String[] pathSegments = { "vpn_gateways", "connections", "peer_cidrs" };
-    String[] pathParameters = { listVpnGatewayConnectionPeerCidrsOptions.vpnGatewayId(), listVpnGatewayConnectionPeerCidrsOptions.id() };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("vpn_gateway_id", listVpnGatewayConnectionPeerCidrsOptions.vpnGatewayId());
+    pathParamsMap.put("id", listVpnGatewayConnectionPeerCidrsOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/vpn_gateways/{vpn_gateway_id}/connections/{id}/peer_cidrs", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listVpnGatewayConnectionPeerCidrs");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<VPNGatewayConnectionPeerCIDRs> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<VPNGatewayConnectionPeerCIDRs>() { }.getType());
@@ -5535,14 +5285,17 @@ public class Vpc extends BaseService {
   public ServiceCall<Void> removeVpnGatewayConnectionPeerCidr(RemoveVpnGatewayConnectionPeerCidrOptions removeVpnGatewayConnectionPeerCidrOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(removeVpnGatewayConnectionPeerCidrOptions,
       "removeVpnGatewayConnectionPeerCidrOptions cannot be null");
-    String[] pathSegments = { "vpn_gateways", "connections", "peer_cidrs", "" };
-    String[] pathParameters = { removeVpnGatewayConnectionPeerCidrOptions.vpnGatewayId(), removeVpnGatewayConnectionPeerCidrOptions.id(), removeVpnGatewayConnectionPeerCidrOptions.cidrPrefix(), removeVpnGatewayConnectionPeerCidrOptions.prefixLength() };
-    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("vpn_gateway_id", removeVpnGatewayConnectionPeerCidrOptions.vpnGatewayId());
+    pathParamsMap.put("id", removeVpnGatewayConnectionPeerCidrOptions.id());
+    pathParamsMap.put("cidr_prefix", removeVpnGatewayConnectionPeerCidrOptions.cidrPrefix());
+    pathParamsMap.put("prefix_length", removeVpnGatewayConnectionPeerCidrOptions.prefixLength());
+    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/vpn_gateways/{vpn_gateway_id}/connections/{id}/peer_cidrs/{cidr_prefix}/{prefix_length}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "removeVpnGatewayConnectionPeerCidr");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
     return createServiceCall(builder.build(), responseConverter);
@@ -5559,14 +5312,17 @@ public class Vpc extends BaseService {
   public ServiceCall<Void> checkVpnGatewayConnectionPeerCidr(CheckVpnGatewayConnectionPeerCidrOptions checkVpnGatewayConnectionPeerCidrOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(checkVpnGatewayConnectionPeerCidrOptions,
       "checkVpnGatewayConnectionPeerCidrOptions cannot be null");
-    String[] pathSegments = { "vpn_gateways", "connections", "peer_cidrs", "" };
-    String[] pathParameters = { checkVpnGatewayConnectionPeerCidrOptions.vpnGatewayId(), checkVpnGatewayConnectionPeerCidrOptions.id(), checkVpnGatewayConnectionPeerCidrOptions.cidrPrefix(), checkVpnGatewayConnectionPeerCidrOptions.prefixLength() };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("vpn_gateway_id", checkVpnGatewayConnectionPeerCidrOptions.vpnGatewayId());
+    pathParamsMap.put("id", checkVpnGatewayConnectionPeerCidrOptions.id());
+    pathParamsMap.put("cidr_prefix", checkVpnGatewayConnectionPeerCidrOptions.cidrPrefix());
+    pathParamsMap.put("prefix_length", checkVpnGatewayConnectionPeerCidrOptions.prefixLength());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/vpn_gateways/{vpn_gateway_id}/connections/{id}/peer_cidrs/{cidr_prefix}/{prefix_length}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "checkVpnGatewayConnectionPeerCidr");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
     return createServiceCall(builder.build(), responseConverter);
@@ -5584,14 +5340,17 @@ public class Vpc extends BaseService {
   public ServiceCall<Void> addVpnGatewayConnectionPeerCidr(AddVpnGatewayConnectionPeerCidrOptions addVpnGatewayConnectionPeerCidrOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(addVpnGatewayConnectionPeerCidrOptions,
       "addVpnGatewayConnectionPeerCidrOptions cannot be null");
-    String[] pathSegments = { "vpn_gateways", "connections", "peer_cidrs", "" };
-    String[] pathParameters = { addVpnGatewayConnectionPeerCidrOptions.vpnGatewayId(), addVpnGatewayConnectionPeerCidrOptions.id(), addVpnGatewayConnectionPeerCidrOptions.cidrPrefix(), addVpnGatewayConnectionPeerCidrOptions.prefixLength() };
-    RequestBuilder builder = RequestBuilder.put(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("vpn_gateway_id", addVpnGatewayConnectionPeerCidrOptions.vpnGatewayId());
+    pathParamsMap.put("id", addVpnGatewayConnectionPeerCidrOptions.id());
+    pathParamsMap.put("cidr_prefix", addVpnGatewayConnectionPeerCidrOptions.cidrPrefix());
+    pathParamsMap.put("prefix_length", addVpnGatewayConnectionPeerCidrOptions.prefixLength());
+    RequestBuilder builder = RequestBuilder.put(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/vpn_gateways/{vpn_gateway_id}/connections/{id}/peer_cidrs/{cidr_prefix}/{prefix_length}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "addVpnGatewayConnectionPeerCidr");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
     return createServiceCall(builder.build(), responseConverter);
@@ -5610,17 +5369,16 @@ public class Vpc extends BaseService {
     if (listLoadBalancerProfilesOptions == null) {
       listLoadBalancerProfilesOptions = new ListLoadBalancerProfilesOptions.Builder().build();
     }
-    String[] pathSegments = { "load_balancer/profiles" };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments));
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/load_balancer/profiles"));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listLoadBalancerProfiles");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     if (listLoadBalancerProfilesOptions.start() != null) {
-      builder.query("start", listLoadBalancerProfilesOptions.start());
+      builder.query("start", String.valueOf(listLoadBalancerProfilesOptions.start()));
     }
     if (listLoadBalancerProfilesOptions.limit() != null) {
       builder.query("limit", String.valueOf(listLoadBalancerProfilesOptions.limit()));
@@ -5653,15 +5411,15 @@ public class Vpc extends BaseService {
   public ServiceCall<LoadBalancerProfile> getLoadBalancerProfile(GetLoadBalancerProfileOptions getLoadBalancerProfileOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(getLoadBalancerProfileOptions,
       "getLoadBalancerProfileOptions cannot be null");
-    String[] pathSegments = { "load_balancer/profiles" };
-    String[] pathParameters = { getLoadBalancerProfileOptions.name() };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("name", getLoadBalancerProfileOptions.name());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/load_balancer/profiles/{name}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getLoadBalancerProfile");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<LoadBalancerProfile> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<LoadBalancerProfile>() { }.getType());
@@ -5677,14 +5435,13 @@ public class Vpc extends BaseService {
    * @return a {@link ServiceCall} with a result of type {@link LoadBalancerCollection}
    */
   public ServiceCall<LoadBalancerCollection> listLoadBalancers(ListLoadBalancersOptions listLoadBalancersOptions) {
-    String[] pathSegments = { "load_balancers" };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments));
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/load_balancers"));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listLoadBalancers");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<LoadBalancerCollection> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<LoadBalancerCollection>() { }.getType());
@@ -5713,14 +5470,13 @@ public class Vpc extends BaseService {
   public ServiceCall<LoadBalancer> createLoadBalancer(CreateLoadBalancerOptions createLoadBalancerOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(createLoadBalancerOptions,
       "createLoadBalancerOptions cannot be null");
-    String[] pathSegments = { "load_balancers" };
-    RequestBuilder builder = RequestBuilder.post(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments));
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/load_balancers"));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "createLoadBalancer");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     final JsonObject contentJson = new JsonObject();
     contentJson.addProperty("is_public", createLoadBalancerOptions.isPublic());
@@ -5757,14 +5513,14 @@ public class Vpc extends BaseService {
   public ServiceCall<Void> deleteLoadBalancer(DeleteLoadBalancerOptions deleteLoadBalancerOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(deleteLoadBalancerOptions,
       "deleteLoadBalancerOptions cannot be null");
-    String[] pathSegments = { "load_balancers" };
-    String[] pathParameters = { deleteLoadBalancerOptions.id() };
-    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", deleteLoadBalancerOptions.id());
+    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/load_balancers/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "deleteLoadBalancer");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
     return createServiceCall(builder.build(), responseConverter);
@@ -5781,15 +5537,15 @@ public class Vpc extends BaseService {
   public ServiceCall<LoadBalancer> getLoadBalancer(GetLoadBalancerOptions getLoadBalancerOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(getLoadBalancerOptions,
       "getLoadBalancerOptions cannot be null");
-    String[] pathSegments = { "load_balancers" };
-    String[] pathParameters = { getLoadBalancerOptions.id() };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", getLoadBalancerOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/load_balancers/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getLoadBalancer");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<LoadBalancer> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<LoadBalancer>() { }.getType());
@@ -5807,21 +5563,17 @@ public class Vpc extends BaseService {
   public ServiceCall<LoadBalancer> updateLoadBalancer(UpdateLoadBalancerOptions updateLoadBalancerOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(updateLoadBalancerOptions,
       "updateLoadBalancerOptions cannot be null");
-    String[] pathSegments = { "load_balancers" };
-    String[] pathParameters = { updateLoadBalancerOptions.id() };
-    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", updateLoadBalancerOptions.id());
+    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/load_balancers/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "updateLoadBalancer");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    final JsonObject contentJson = new JsonObject();
-    if (updateLoadBalancerOptions.name() != null) {
-      contentJson.addProperty("name", updateLoadBalancerOptions.name());
-    }
-    builder.bodyJson(contentJson);
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateLoadBalancerOptions.loadBalancerPatch()), "application/merge-patch+json");
     ResponseConverter<LoadBalancer> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<LoadBalancer>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -5838,15 +5590,15 @@ public class Vpc extends BaseService {
   public ServiceCall<LoadBalancerStatistics> getLoadBalancerStatistics(GetLoadBalancerStatisticsOptions getLoadBalancerStatisticsOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(getLoadBalancerStatisticsOptions,
       "getLoadBalancerStatisticsOptions cannot be null");
-    String[] pathSegments = { "load_balancers", "statistics" };
-    String[] pathParameters = { getLoadBalancerStatisticsOptions.id() };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", getLoadBalancerStatisticsOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/load_balancers/{id}/statistics", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getLoadBalancerStatistics");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<LoadBalancerStatistics> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<LoadBalancerStatistics>() { }.getType());
@@ -5864,15 +5616,15 @@ public class Vpc extends BaseService {
   public ServiceCall<LoadBalancerListenerCollection> listLoadBalancerListeners(ListLoadBalancerListenersOptions listLoadBalancerListenersOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(listLoadBalancerListenersOptions,
       "listLoadBalancerListenersOptions cannot be null");
-    String[] pathSegments = { "load_balancers", "listeners" };
-    String[] pathParameters = { listLoadBalancerListenersOptions.loadBalancerId() };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("load_balancer_id", listLoadBalancerListenersOptions.loadBalancerId());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/load_balancers/{load_balancer_id}/listeners", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listLoadBalancerListeners");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<LoadBalancerListenerCollection> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<LoadBalancerListenerCollection>() { }.getType());
@@ -5890,15 +5642,15 @@ public class Vpc extends BaseService {
   public ServiceCall<LoadBalancerListener> createLoadBalancerListener(CreateLoadBalancerListenerOptions createLoadBalancerListenerOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(createLoadBalancerListenerOptions,
       "createLoadBalancerListenerOptions cannot be null");
-    String[] pathSegments = { "load_balancers", "listeners" };
-    String[] pathParameters = { createLoadBalancerListenerOptions.loadBalancerId() };
-    RequestBuilder builder = RequestBuilder.post(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("load_balancer_id", createLoadBalancerListenerOptions.loadBalancerId());
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/load_balancers/{load_balancer_id}/listeners", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "createLoadBalancerListener");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     final JsonObject contentJson = new JsonObject();
     contentJson.addProperty("port", createLoadBalancerListenerOptions.port());
@@ -5932,14 +5684,15 @@ public class Vpc extends BaseService {
   public ServiceCall<Void> deleteLoadBalancerListener(DeleteLoadBalancerListenerOptions deleteLoadBalancerListenerOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(deleteLoadBalancerListenerOptions,
       "deleteLoadBalancerListenerOptions cannot be null");
-    String[] pathSegments = { "load_balancers", "listeners" };
-    String[] pathParameters = { deleteLoadBalancerListenerOptions.loadBalancerId(), deleteLoadBalancerListenerOptions.id() };
-    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("load_balancer_id", deleteLoadBalancerListenerOptions.loadBalancerId());
+    pathParamsMap.put("id", deleteLoadBalancerListenerOptions.id());
+    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/load_balancers/{load_balancer_id}/listeners/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "deleteLoadBalancerListener");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
     return createServiceCall(builder.build(), responseConverter);
@@ -5956,15 +5709,16 @@ public class Vpc extends BaseService {
   public ServiceCall<LoadBalancerListener> getLoadBalancerListener(GetLoadBalancerListenerOptions getLoadBalancerListenerOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(getLoadBalancerListenerOptions,
       "getLoadBalancerListenerOptions cannot be null");
-    String[] pathSegments = { "load_balancers", "listeners" };
-    String[] pathParameters = { getLoadBalancerListenerOptions.loadBalancerId(), getLoadBalancerListenerOptions.id() };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("load_balancer_id", getLoadBalancerListenerOptions.loadBalancerId());
+    pathParamsMap.put("id", getLoadBalancerListenerOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/load_balancers/{load_balancer_id}/listeners/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getLoadBalancerListener");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<LoadBalancerListener> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<LoadBalancerListener>() { }.getType());
@@ -5982,33 +5736,18 @@ public class Vpc extends BaseService {
   public ServiceCall<LoadBalancerListener> updateLoadBalancerListener(UpdateLoadBalancerListenerOptions updateLoadBalancerListenerOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(updateLoadBalancerListenerOptions,
       "updateLoadBalancerListenerOptions cannot be null");
-    String[] pathSegments = { "load_balancers", "listeners" };
-    String[] pathParameters = { updateLoadBalancerListenerOptions.loadBalancerId(), updateLoadBalancerListenerOptions.id() };
-    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("load_balancer_id", updateLoadBalancerListenerOptions.loadBalancerId());
+    pathParamsMap.put("id", updateLoadBalancerListenerOptions.id());
+    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/load_balancers/{load_balancer_id}/listeners/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "updateLoadBalancerListener");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    final JsonObject contentJson = new JsonObject();
-    if (updateLoadBalancerListenerOptions.connectionLimit() != null) {
-      contentJson.addProperty("connection_limit", updateLoadBalancerListenerOptions.connectionLimit());
-    }
-    if (updateLoadBalancerListenerOptions.port() != null) {
-      contentJson.addProperty("port", updateLoadBalancerListenerOptions.port());
-    }
-    if (updateLoadBalancerListenerOptions.protocol() != null) {
-      contentJson.addProperty("protocol", updateLoadBalancerListenerOptions.protocol());
-    }
-    if (updateLoadBalancerListenerOptions.certificateInstance() != null) {
-      contentJson.add("certificate_instance", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(updateLoadBalancerListenerOptions.certificateInstance()));
-    }
-    if (updateLoadBalancerListenerOptions.defaultPool() != null) {
-      contentJson.add("default_pool", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(updateLoadBalancerListenerOptions.defaultPool()));
-    }
-    builder.bodyJson(contentJson);
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateLoadBalancerListenerOptions.loadBalancerListenerPatch()), "application/merge-patch+json");
     ResponseConverter<LoadBalancerListener> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<LoadBalancerListener>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -6025,15 +5764,16 @@ public class Vpc extends BaseService {
   public ServiceCall<LoadBalancerListenerPolicyCollection> listLoadBalancerListenerPolicies(ListLoadBalancerListenerPoliciesOptions listLoadBalancerListenerPoliciesOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(listLoadBalancerListenerPoliciesOptions,
       "listLoadBalancerListenerPoliciesOptions cannot be null");
-    String[] pathSegments = { "load_balancers", "listeners", "policies" };
-    String[] pathParameters = { listLoadBalancerListenerPoliciesOptions.loadBalancerId(), listLoadBalancerListenerPoliciesOptions.listenerId() };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("load_balancer_id", listLoadBalancerListenerPoliciesOptions.loadBalancerId());
+    pathParamsMap.put("listener_id", listLoadBalancerListenerPoliciesOptions.listenerId());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/load_balancers/{load_balancer_id}/listeners/{listener_id}/policies", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listLoadBalancerListenerPolicies");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<LoadBalancerListenerPolicyCollection> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<LoadBalancerListenerPolicyCollection>() { }.getType());
@@ -6051,15 +5791,16 @@ public class Vpc extends BaseService {
   public ServiceCall<LoadBalancerListenerPolicy> createLoadBalancerListenerPolicy(CreateLoadBalancerListenerPolicyOptions createLoadBalancerListenerPolicyOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(createLoadBalancerListenerPolicyOptions,
       "createLoadBalancerListenerPolicyOptions cannot be null");
-    String[] pathSegments = { "load_balancers", "listeners", "policies" };
-    String[] pathParameters = { createLoadBalancerListenerPolicyOptions.loadBalancerId(), createLoadBalancerListenerPolicyOptions.listenerId() };
-    RequestBuilder builder = RequestBuilder.post(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("load_balancer_id", createLoadBalancerListenerPolicyOptions.loadBalancerId());
+    pathParamsMap.put("listener_id", createLoadBalancerListenerPolicyOptions.listenerId());
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/load_balancers/{load_balancer_id}/listeners/{listener_id}/policies", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "createLoadBalancerListenerPolicy");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     final JsonObject contentJson = new JsonObject();
     contentJson.addProperty("priority", createLoadBalancerListenerPolicyOptions.priority());
@@ -6090,14 +5831,16 @@ public class Vpc extends BaseService {
   public ServiceCall<Void> deleteLoadBalancerListenerPolicy(DeleteLoadBalancerListenerPolicyOptions deleteLoadBalancerListenerPolicyOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(deleteLoadBalancerListenerPolicyOptions,
       "deleteLoadBalancerListenerPolicyOptions cannot be null");
-    String[] pathSegments = { "load_balancers", "listeners", "policies" };
-    String[] pathParameters = { deleteLoadBalancerListenerPolicyOptions.loadBalancerId(), deleteLoadBalancerListenerPolicyOptions.listenerId(), deleteLoadBalancerListenerPolicyOptions.id() };
-    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("load_balancer_id", deleteLoadBalancerListenerPolicyOptions.loadBalancerId());
+    pathParamsMap.put("listener_id", deleteLoadBalancerListenerPolicyOptions.listenerId());
+    pathParamsMap.put("id", deleteLoadBalancerListenerPolicyOptions.id());
+    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/load_balancers/{load_balancer_id}/listeners/{listener_id}/policies/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "deleteLoadBalancerListenerPolicy");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
     return createServiceCall(builder.build(), responseConverter);
@@ -6114,15 +5857,17 @@ public class Vpc extends BaseService {
   public ServiceCall<LoadBalancerListenerPolicy> getLoadBalancerListenerPolicy(GetLoadBalancerListenerPolicyOptions getLoadBalancerListenerPolicyOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(getLoadBalancerListenerPolicyOptions,
       "getLoadBalancerListenerPolicyOptions cannot be null");
-    String[] pathSegments = { "load_balancers", "listeners", "policies" };
-    String[] pathParameters = { getLoadBalancerListenerPolicyOptions.loadBalancerId(), getLoadBalancerListenerPolicyOptions.listenerId(), getLoadBalancerListenerPolicyOptions.id() };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("load_balancer_id", getLoadBalancerListenerPolicyOptions.loadBalancerId());
+    pathParamsMap.put("listener_id", getLoadBalancerListenerPolicyOptions.listenerId());
+    pathParamsMap.put("id", getLoadBalancerListenerPolicyOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/load_balancers/{load_balancer_id}/listeners/{listener_id}/policies/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getLoadBalancerListenerPolicy");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<LoadBalancerListenerPolicy> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<LoadBalancerListenerPolicy>() { }.getType());
@@ -6140,27 +5885,19 @@ public class Vpc extends BaseService {
   public ServiceCall<LoadBalancerListenerPolicy> updateLoadBalancerListenerPolicy(UpdateLoadBalancerListenerPolicyOptions updateLoadBalancerListenerPolicyOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(updateLoadBalancerListenerPolicyOptions,
       "updateLoadBalancerListenerPolicyOptions cannot be null");
-    String[] pathSegments = { "load_balancers", "listeners", "policies" };
-    String[] pathParameters = { updateLoadBalancerListenerPolicyOptions.loadBalancerId(), updateLoadBalancerListenerPolicyOptions.listenerId(), updateLoadBalancerListenerPolicyOptions.id() };
-    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("load_balancer_id", updateLoadBalancerListenerPolicyOptions.loadBalancerId());
+    pathParamsMap.put("listener_id", updateLoadBalancerListenerPolicyOptions.listenerId());
+    pathParamsMap.put("id", updateLoadBalancerListenerPolicyOptions.id());
+    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/load_balancers/{load_balancer_id}/listeners/{listener_id}/policies/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "updateLoadBalancerListenerPolicy");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    final JsonObject contentJson = new JsonObject();
-    if (updateLoadBalancerListenerPolicyOptions.name() != null) {
-      contentJson.addProperty("name", updateLoadBalancerListenerPolicyOptions.name());
-    }
-    if (updateLoadBalancerListenerPolicyOptions.priority() != null) {
-      contentJson.addProperty("priority", updateLoadBalancerListenerPolicyOptions.priority());
-    }
-    if (updateLoadBalancerListenerPolicyOptions.target() != null) {
-      contentJson.add("target", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(updateLoadBalancerListenerPolicyOptions.target()));
-    }
-    builder.bodyJson(contentJson);
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateLoadBalancerListenerPolicyOptions.loadBalancerListenerPolicyPatch()), "application/merge-patch+json");
     ResponseConverter<LoadBalancerListenerPolicy> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<LoadBalancerListenerPolicy>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -6177,15 +5914,17 @@ public class Vpc extends BaseService {
   public ServiceCall<LoadBalancerListenerPolicyRuleCollection> listLoadBalancerListenerPolicyRules(ListLoadBalancerListenerPolicyRulesOptions listLoadBalancerListenerPolicyRulesOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(listLoadBalancerListenerPolicyRulesOptions,
       "listLoadBalancerListenerPolicyRulesOptions cannot be null");
-    String[] pathSegments = { "load_balancers", "listeners", "policies", "rules" };
-    String[] pathParameters = { listLoadBalancerListenerPolicyRulesOptions.loadBalancerId(), listLoadBalancerListenerPolicyRulesOptions.listenerId(), listLoadBalancerListenerPolicyRulesOptions.policyId() };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("load_balancer_id", listLoadBalancerListenerPolicyRulesOptions.loadBalancerId());
+    pathParamsMap.put("listener_id", listLoadBalancerListenerPolicyRulesOptions.listenerId());
+    pathParamsMap.put("policy_id", listLoadBalancerListenerPolicyRulesOptions.policyId());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/load_balancers/{load_balancer_id}/listeners/{listener_id}/policies/{policy_id}/rules", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listLoadBalancerListenerPolicyRules");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<LoadBalancerListenerPolicyRuleCollection> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<LoadBalancerListenerPolicyRuleCollection>() { }.getType());
@@ -6203,15 +5942,17 @@ public class Vpc extends BaseService {
   public ServiceCall<LoadBalancerListenerPolicyRule> createLoadBalancerListenerPolicyRule(CreateLoadBalancerListenerPolicyRuleOptions createLoadBalancerListenerPolicyRuleOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(createLoadBalancerListenerPolicyRuleOptions,
       "createLoadBalancerListenerPolicyRuleOptions cannot be null");
-    String[] pathSegments = { "load_balancers", "listeners", "policies", "rules" };
-    String[] pathParameters = { createLoadBalancerListenerPolicyRuleOptions.loadBalancerId(), createLoadBalancerListenerPolicyRuleOptions.listenerId(), createLoadBalancerListenerPolicyRuleOptions.policyId() };
-    RequestBuilder builder = RequestBuilder.post(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("load_balancer_id", createLoadBalancerListenerPolicyRuleOptions.loadBalancerId());
+    pathParamsMap.put("listener_id", createLoadBalancerListenerPolicyRuleOptions.listenerId());
+    pathParamsMap.put("policy_id", createLoadBalancerListenerPolicyRuleOptions.policyId());
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/load_balancers/{load_balancer_id}/listeners/{listener_id}/policies/{policy_id}/rules", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "createLoadBalancerListenerPolicyRule");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     final JsonObject contentJson = new JsonObject();
     contentJson.addProperty("condition", createLoadBalancerListenerPolicyRuleOptions.condition());
@@ -6237,14 +5978,17 @@ public class Vpc extends BaseService {
   public ServiceCall<Void> deleteLoadBalancerListenerPolicyRule(DeleteLoadBalancerListenerPolicyRuleOptions deleteLoadBalancerListenerPolicyRuleOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(deleteLoadBalancerListenerPolicyRuleOptions,
       "deleteLoadBalancerListenerPolicyRuleOptions cannot be null");
-    String[] pathSegments = { "load_balancers", "listeners", "policies", "rules" };
-    String[] pathParameters = { deleteLoadBalancerListenerPolicyRuleOptions.loadBalancerId(), deleteLoadBalancerListenerPolicyRuleOptions.listenerId(), deleteLoadBalancerListenerPolicyRuleOptions.policyId(), deleteLoadBalancerListenerPolicyRuleOptions.id() };
-    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("load_balancer_id", deleteLoadBalancerListenerPolicyRuleOptions.loadBalancerId());
+    pathParamsMap.put("listener_id", deleteLoadBalancerListenerPolicyRuleOptions.listenerId());
+    pathParamsMap.put("policy_id", deleteLoadBalancerListenerPolicyRuleOptions.policyId());
+    pathParamsMap.put("id", deleteLoadBalancerListenerPolicyRuleOptions.id());
+    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/load_balancers/{load_balancer_id}/listeners/{listener_id}/policies/{policy_id}/rules/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "deleteLoadBalancerListenerPolicyRule");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
     return createServiceCall(builder.build(), responseConverter);
@@ -6261,15 +6005,18 @@ public class Vpc extends BaseService {
   public ServiceCall<LoadBalancerListenerPolicyRule> getLoadBalancerListenerPolicyRule(GetLoadBalancerListenerPolicyRuleOptions getLoadBalancerListenerPolicyRuleOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(getLoadBalancerListenerPolicyRuleOptions,
       "getLoadBalancerListenerPolicyRuleOptions cannot be null");
-    String[] pathSegments = { "load_balancers", "listeners", "policies", "rules" };
-    String[] pathParameters = { getLoadBalancerListenerPolicyRuleOptions.loadBalancerId(), getLoadBalancerListenerPolicyRuleOptions.listenerId(), getLoadBalancerListenerPolicyRuleOptions.policyId(), getLoadBalancerListenerPolicyRuleOptions.id() };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("load_balancer_id", getLoadBalancerListenerPolicyRuleOptions.loadBalancerId());
+    pathParamsMap.put("listener_id", getLoadBalancerListenerPolicyRuleOptions.listenerId());
+    pathParamsMap.put("policy_id", getLoadBalancerListenerPolicyRuleOptions.policyId());
+    pathParamsMap.put("id", getLoadBalancerListenerPolicyRuleOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/load_balancers/{load_balancer_id}/listeners/{listener_id}/policies/{policy_id}/rules/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getLoadBalancerListenerPolicyRule");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<LoadBalancerListenerPolicyRule> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<LoadBalancerListenerPolicyRule>() { }.getType());
@@ -6287,30 +6034,20 @@ public class Vpc extends BaseService {
   public ServiceCall<LoadBalancerListenerPolicyRule> updateLoadBalancerListenerPolicyRule(UpdateLoadBalancerListenerPolicyRuleOptions updateLoadBalancerListenerPolicyRuleOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(updateLoadBalancerListenerPolicyRuleOptions,
       "updateLoadBalancerListenerPolicyRuleOptions cannot be null");
-    String[] pathSegments = { "load_balancers", "listeners", "policies", "rules" };
-    String[] pathParameters = { updateLoadBalancerListenerPolicyRuleOptions.loadBalancerId(), updateLoadBalancerListenerPolicyRuleOptions.listenerId(), updateLoadBalancerListenerPolicyRuleOptions.policyId(), updateLoadBalancerListenerPolicyRuleOptions.id() };
-    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("load_balancer_id", updateLoadBalancerListenerPolicyRuleOptions.loadBalancerId());
+    pathParamsMap.put("listener_id", updateLoadBalancerListenerPolicyRuleOptions.listenerId());
+    pathParamsMap.put("policy_id", updateLoadBalancerListenerPolicyRuleOptions.policyId());
+    pathParamsMap.put("id", updateLoadBalancerListenerPolicyRuleOptions.id());
+    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/load_balancers/{load_balancer_id}/listeners/{listener_id}/policies/{policy_id}/rules/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "updateLoadBalancerListenerPolicyRule");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    final JsonObject contentJson = new JsonObject();
-    if (updateLoadBalancerListenerPolicyRuleOptions.condition() != null) {
-      contentJson.addProperty("condition", updateLoadBalancerListenerPolicyRuleOptions.condition());
-    }
-    if (updateLoadBalancerListenerPolicyRuleOptions.field() != null) {
-      contentJson.addProperty("field", updateLoadBalancerListenerPolicyRuleOptions.field());
-    }
-    if (updateLoadBalancerListenerPolicyRuleOptions.type() != null) {
-      contentJson.addProperty("type", updateLoadBalancerListenerPolicyRuleOptions.type());
-    }
-    if (updateLoadBalancerListenerPolicyRuleOptions.value() != null) {
-      contentJson.addProperty("value", updateLoadBalancerListenerPolicyRuleOptions.value());
-    }
-    builder.bodyJson(contentJson);
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateLoadBalancerListenerPolicyRuleOptions.loadBalancerListenerPolicyRulePatch()), "application/merge-patch+json");
     ResponseConverter<LoadBalancerListenerPolicyRule> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<LoadBalancerListenerPolicyRule>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -6327,15 +6064,15 @@ public class Vpc extends BaseService {
   public ServiceCall<LoadBalancerPoolCollection> listLoadBalancerPools(ListLoadBalancerPoolsOptions listLoadBalancerPoolsOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(listLoadBalancerPoolsOptions,
       "listLoadBalancerPoolsOptions cannot be null");
-    String[] pathSegments = { "load_balancers", "pools" };
-    String[] pathParameters = { listLoadBalancerPoolsOptions.loadBalancerId() };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("load_balancer_id", listLoadBalancerPoolsOptions.loadBalancerId());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/load_balancers/{load_balancer_id}/pools", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listLoadBalancerPools");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<LoadBalancerPoolCollection> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<LoadBalancerPoolCollection>() { }.getType());
@@ -6353,15 +6090,15 @@ public class Vpc extends BaseService {
   public ServiceCall<LoadBalancerPool> createLoadBalancerPool(CreateLoadBalancerPoolOptions createLoadBalancerPoolOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(createLoadBalancerPoolOptions,
       "createLoadBalancerPoolOptions cannot be null");
-    String[] pathSegments = { "load_balancers", "pools" };
-    String[] pathParameters = { createLoadBalancerPoolOptions.loadBalancerId() };
-    RequestBuilder builder = RequestBuilder.post(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("load_balancer_id", createLoadBalancerPoolOptions.loadBalancerId());
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/load_balancers/{load_balancer_id}/pools", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "createLoadBalancerPool");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     final JsonObject contentJson = new JsonObject();
     contentJson.addProperty("algorithm", createLoadBalancerPoolOptions.algorithm());
@@ -6393,14 +6130,15 @@ public class Vpc extends BaseService {
   public ServiceCall<Void> deleteLoadBalancerPool(DeleteLoadBalancerPoolOptions deleteLoadBalancerPoolOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(deleteLoadBalancerPoolOptions,
       "deleteLoadBalancerPoolOptions cannot be null");
-    String[] pathSegments = { "load_balancers", "pools" };
-    String[] pathParameters = { deleteLoadBalancerPoolOptions.loadBalancerId(), deleteLoadBalancerPoolOptions.id() };
-    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("load_balancer_id", deleteLoadBalancerPoolOptions.loadBalancerId());
+    pathParamsMap.put("id", deleteLoadBalancerPoolOptions.id());
+    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/load_balancers/{load_balancer_id}/pools/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "deleteLoadBalancerPool");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
     return createServiceCall(builder.build(), responseConverter);
@@ -6417,15 +6155,16 @@ public class Vpc extends BaseService {
   public ServiceCall<LoadBalancerPool> getLoadBalancerPool(GetLoadBalancerPoolOptions getLoadBalancerPoolOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(getLoadBalancerPoolOptions,
       "getLoadBalancerPoolOptions cannot be null");
-    String[] pathSegments = { "load_balancers", "pools" };
-    String[] pathParameters = { getLoadBalancerPoolOptions.loadBalancerId(), getLoadBalancerPoolOptions.id() };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("load_balancer_id", getLoadBalancerPoolOptions.loadBalancerId());
+    pathParamsMap.put("id", getLoadBalancerPoolOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/load_balancers/{load_balancer_id}/pools/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getLoadBalancerPool");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<LoadBalancerPool> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<LoadBalancerPool>() { }.getType());
@@ -6443,33 +6182,18 @@ public class Vpc extends BaseService {
   public ServiceCall<LoadBalancerPool> updateLoadBalancerPool(UpdateLoadBalancerPoolOptions updateLoadBalancerPoolOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(updateLoadBalancerPoolOptions,
       "updateLoadBalancerPoolOptions cannot be null");
-    String[] pathSegments = { "load_balancers", "pools" };
-    String[] pathParameters = { updateLoadBalancerPoolOptions.loadBalancerId(), updateLoadBalancerPoolOptions.id() };
-    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("load_balancer_id", updateLoadBalancerPoolOptions.loadBalancerId());
+    pathParamsMap.put("id", updateLoadBalancerPoolOptions.id());
+    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/load_balancers/{load_balancer_id}/pools/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "updateLoadBalancerPool");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    final JsonObject contentJson = new JsonObject();
-    if (updateLoadBalancerPoolOptions.name() != null) {
-      contentJson.addProperty("name", updateLoadBalancerPoolOptions.name());
-    }
-    if (updateLoadBalancerPoolOptions.algorithm() != null) {
-      contentJson.addProperty("algorithm", updateLoadBalancerPoolOptions.algorithm());
-    }
-    if (updateLoadBalancerPoolOptions.protocol() != null) {
-      contentJson.addProperty("protocol", updateLoadBalancerPoolOptions.protocol());
-    }
-    if (updateLoadBalancerPoolOptions.healthMonitor() != null) {
-      contentJson.add("health_monitor", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(updateLoadBalancerPoolOptions.healthMonitor()));
-    }
-    if (updateLoadBalancerPoolOptions.sessionPersistence() != null) {
-      contentJson.add("session_persistence", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(updateLoadBalancerPoolOptions.sessionPersistence()));
-    }
-    builder.bodyJson(contentJson);
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateLoadBalancerPoolOptions.loadBalancerPoolPatch()), "application/merge-patch+json");
     ResponseConverter<LoadBalancerPool> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<LoadBalancerPool>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -6486,15 +6210,16 @@ public class Vpc extends BaseService {
   public ServiceCall<LoadBalancerPoolMemberCollection> listLoadBalancerPoolMembers(ListLoadBalancerPoolMembersOptions listLoadBalancerPoolMembersOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(listLoadBalancerPoolMembersOptions,
       "listLoadBalancerPoolMembersOptions cannot be null");
-    String[] pathSegments = { "load_balancers", "pools", "members" };
-    String[] pathParameters = { listLoadBalancerPoolMembersOptions.loadBalancerId(), listLoadBalancerPoolMembersOptions.poolId() };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("load_balancer_id", listLoadBalancerPoolMembersOptions.loadBalancerId());
+    pathParamsMap.put("pool_id", listLoadBalancerPoolMembersOptions.poolId());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/load_balancers/{load_balancer_id}/pools/{pool_id}/members", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listLoadBalancerPoolMembers");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<LoadBalancerPoolMemberCollection> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<LoadBalancerPoolMemberCollection>() { }.getType());
@@ -6512,15 +6237,16 @@ public class Vpc extends BaseService {
   public ServiceCall<LoadBalancerPoolMember> createLoadBalancerPoolMember(CreateLoadBalancerPoolMemberOptions createLoadBalancerPoolMemberOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(createLoadBalancerPoolMemberOptions,
       "createLoadBalancerPoolMemberOptions cannot be null");
-    String[] pathSegments = { "load_balancers", "pools", "members" };
-    String[] pathParameters = { createLoadBalancerPoolMemberOptions.loadBalancerId(), createLoadBalancerPoolMemberOptions.poolId() };
-    RequestBuilder builder = RequestBuilder.post(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("load_balancer_id", createLoadBalancerPoolMemberOptions.loadBalancerId());
+    pathParamsMap.put("pool_id", createLoadBalancerPoolMemberOptions.poolId());
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/load_balancers/{load_balancer_id}/pools/{pool_id}/members", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "createLoadBalancerPoolMember");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     final JsonObject contentJson = new JsonObject();
     contentJson.addProperty("port", createLoadBalancerPoolMemberOptions.port());
@@ -6545,15 +6271,16 @@ public class Vpc extends BaseService {
   public ServiceCall<LoadBalancerPoolMemberCollection> replaceLoadBalancerPoolMembers(ReplaceLoadBalancerPoolMembersOptions replaceLoadBalancerPoolMembersOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(replaceLoadBalancerPoolMembersOptions,
       "replaceLoadBalancerPoolMembersOptions cannot be null");
-    String[] pathSegments = { "load_balancers", "pools", "members" };
-    String[] pathParameters = { replaceLoadBalancerPoolMembersOptions.loadBalancerId(), replaceLoadBalancerPoolMembersOptions.poolId() };
-    RequestBuilder builder = RequestBuilder.put(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("load_balancer_id", replaceLoadBalancerPoolMembersOptions.loadBalancerId());
+    pathParamsMap.put("pool_id", replaceLoadBalancerPoolMembersOptions.poolId());
+    RequestBuilder builder = RequestBuilder.put(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/load_balancers/{load_balancer_id}/pools/{pool_id}/members", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "replaceLoadBalancerPoolMembers");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     final JsonObject contentJson = new JsonObject();
     contentJson.add("members", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(replaceLoadBalancerPoolMembersOptions.members()));
@@ -6574,14 +6301,16 @@ public class Vpc extends BaseService {
   public ServiceCall<Void> deleteLoadBalancerPoolMember(DeleteLoadBalancerPoolMemberOptions deleteLoadBalancerPoolMemberOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(deleteLoadBalancerPoolMemberOptions,
       "deleteLoadBalancerPoolMemberOptions cannot be null");
-    String[] pathSegments = { "load_balancers", "pools", "members" };
-    String[] pathParameters = { deleteLoadBalancerPoolMemberOptions.loadBalancerId(), deleteLoadBalancerPoolMemberOptions.poolId(), deleteLoadBalancerPoolMemberOptions.id() };
-    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("load_balancer_id", deleteLoadBalancerPoolMemberOptions.loadBalancerId());
+    pathParamsMap.put("pool_id", deleteLoadBalancerPoolMemberOptions.poolId());
+    pathParamsMap.put("id", deleteLoadBalancerPoolMemberOptions.id());
+    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/load_balancers/{load_balancer_id}/pools/{pool_id}/members/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "deleteLoadBalancerPoolMember");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
     return createServiceCall(builder.build(), responseConverter);
@@ -6598,15 +6327,17 @@ public class Vpc extends BaseService {
   public ServiceCall<LoadBalancerPoolMember> getLoadBalancerPoolMember(GetLoadBalancerPoolMemberOptions getLoadBalancerPoolMemberOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(getLoadBalancerPoolMemberOptions,
       "getLoadBalancerPoolMemberOptions cannot be null");
-    String[] pathSegments = { "load_balancers", "pools", "members" };
-    String[] pathParameters = { getLoadBalancerPoolMemberOptions.loadBalancerId(), getLoadBalancerPoolMemberOptions.poolId(), getLoadBalancerPoolMemberOptions.id() };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("load_balancer_id", getLoadBalancerPoolMemberOptions.loadBalancerId());
+    pathParamsMap.put("pool_id", getLoadBalancerPoolMemberOptions.poolId());
+    pathParamsMap.put("id", getLoadBalancerPoolMemberOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/load_balancers/{load_balancer_id}/pools/{pool_id}/members/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getLoadBalancerPoolMember");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<LoadBalancerPoolMember> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<LoadBalancerPoolMember>() { }.getType());
@@ -6624,27 +6355,19 @@ public class Vpc extends BaseService {
   public ServiceCall<LoadBalancerPoolMember> updateLoadBalancerPoolMember(UpdateLoadBalancerPoolMemberOptions updateLoadBalancerPoolMemberOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(updateLoadBalancerPoolMemberOptions,
       "updateLoadBalancerPoolMemberOptions cannot be null");
-    String[] pathSegments = { "load_balancers", "pools", "members" };
-    String[] pathParameters = { updateLoadBalancerPoolMemberOptions.loadBalancerId(), updateLoadBalancerPoolMemberOptions.poolId(), updateLoadBalancerPoolMemberOptions.id() };
-    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("load_balancer_id", updateLoadBalancerPoolMemberOptions.loadBalancerId());
+    pathParamsMap.put("pool_id", updateLoadBalancerPoolMemberOptions.poolId());
+    pathParamsMap.put("id", updateLoadBalancerPoolMemberOptions.id());
+    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/load_balancers/{load_balancer_id}/pools/{pool_id}/members/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "updateLoadBalancerPoolMember");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    final JsonObject contentJson = new JsonObject();
-    if (updateLoadBalancerPoolMemberOptions.port() != null) {
-      contentJson.addProperty("port", updateLoadBalancerPoolMemberOptions.port());
-    }
-    if (updateLoadBalancerPoolMemberOptions.weight() != null) {
-      contentJson.addProperty("weight", updateLoadBalancerPoolMemberOptions.weight());
-    }
-    if (updateLoadBalancerPoolMemberOptions.target() != null) {
-      contentJson.add("target", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(updateLoadBalancerPoolMemberOptions.target()));
-    }
-    builder.bodyJson(contentJson);
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateLoadBalancerPoolMemberOptions.loadBalancerPoolMemberPatch()), "application/merge-patch+json");
     ResponseConverter<LoadBalancerPoolMember> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<LoadBalancerPoolMember>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -6663,41 +6386,40 @@ public class Vpc extends BaseService {
     if (listFlowLogCollectorsOptions == null) {
       listFlowLogCollectorsOptions = new ListFlowLogCollectorsOptions.Builder().build();
     }
-    String[] pathSegments = { "flow_log_collectors" };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments));
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/flow_log_collectors"));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listFlowLogCollectors");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     if (listFlowLogCollectorsOptions.start() != null) {
-      builder.query("start", listFlowLogCollectorsOptions.start());
+      builder.query("start", String.valueOf(listFlowLogCollectorsOptions.start()));
     }
     if (listFlowLogCollectorsOptions.limit() != null) {
       builder.query("limit", String.valueOf(listFlowLogCollectorsOptions.limit()));
     }
     if (listFlowLogCollectorsOptions.resourceGroupId() != null) {
-      builder.query("resource_group.id", listFlowLogCollectorsOptions.resourceGroupId());
+      builder.query("resource_group.id", String.valueOf(listFlowLogCollectorsOptions.resourceGroupId()));
     }
     if (listFlowLogCollectorsOptions.name() != null) {
-      builder.query("name", listFlowLogCollectorsOptions.name());
+      builder.query("name", String.valueOf(listFlowLogCollectorsOptions.name()));
     }
     if (listFlowLogCollectorsOptions.vpcId() != null) {
-      builder.query("vpc.id", listFlowLogCollectorsOptions.vpcId());
+      builder.query("vpc.id", String.valueOf(listFlowLogCollectorsOptions.vpcId()));
     }
     if (listFlowLogCollectorsOptions.vpcCrn() != null) {
-      builder.query("vpc.crn", listFlowLogCollectorsOptions.vpcCrn());
+      builder.query("vpc.crn", String.valueOf(listFlowLogCollectorsOptions.vpcCrn()));
     }
     if (listFlowLogCollectorsOptions.vpcName() != null) {
-      builder.query("vpc.name", listFlowLogCollectorsOptions.vpcName());
+      builder.query("vpc.name", String.valueOf(listFlowLogCollectorsOptions.vpcName()));
     }
     if (listFlowLogCollectorsOptions.targetId() != null) {
-      builder.query("target.id", listFlowLogCollectorsOptions.targetId());
+      builder.query("target.id", String.valueOf(listFlowLogCollectorsOptions.targetId()));
     }
     if (listFlowLogCollectorsOptions.targetResourceType() != null) {
-      builder.query("target.resource_type", listFlowLogCollectorsOptions.targetResourceType());
+      builder.query("target.resource_type", String.valueOf(listFlowLogCollectorsOptions.targetResourceType()));
     }
     ResponseConverter<FlowLogCollectorCollection> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<FlowLogCollectorCollection>() { }.getType());
@@ -6729,14 +6451,13 @@ public class Vpc extends BaseService {
   public ServiceCall<FlowLogCollector> createFlowLogCollector(CreateFlowLogCollectorOptions createFlowLogCollectorOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(createFlowLogCollectorOptions,
       "createFlowLogCollectorOptions cannot be null");
-    String[] pathSegments = { "flow_log_collectors" };
-    RequestBuilder builder = RequestBuilder.post(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments));
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/flow_log_collectors"));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "createFlowLogCollector");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     final JsonObject contentJson = new JsonObject();
     contentJson.add("storage_bucket", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createFlowLogCollectorOptions.storageBucket()));
@@ -6768,14 +6489,14 @@ public class Vpc extends BaseService {
   public ServiceCall<Void> deleteFlowLogCollector(DeleteFlowLogCollectorOptions deleteFlowLogCollectorOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(deleteFlowLogCollectorOptions,
       "deleteFlowLogCollectorOptions cannot be null");
-    String[] pathSegments = { "flow_log_collectors" };
-    String[] pathParameters = { deleteFlowLogCollectorOptions.id() };
-    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", deleteFlowLogCollectorOptions.id());
+    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/flow_log_collectors/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "deleteFlowLogCollector");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
     return createServiceCall(builder.build(), responseConverter);
@@ -6792,15 +6513,15 @@ public class Vpc extends BaseService {
   public ServiceCall<FlowLogCollector> getFlowLogCollector(GetFlowLogCollectorOptions getFlowLogCollectorOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(getFlowLogCollectorOptions,
       "getFlowLogCollectorOptions cannot be null");
-    String[] pathSegments = { "flow_log_collectors" };
-    String[] pathParameters = { getFlowLogCollectorOptions.id() };
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", getFlowLogCollectorOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/flow_log_collectors/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getFlowLogCollector");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<FlowLogCollector> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<FlowLogCollector>() { }.getType());
@@ -6820,24 +6541,17 @@ public class Vpc extends BaseService {
   public ServiceCall<FlowLogCollector> updateFlowLogCollector(UpdateFlowLogCollectorOptions updateFlowLogCollectorOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(updateFlowLogCollectorOptions,
       "updateFlowLogCollectorOptions cannot be null");
-    String[] pathSegments = { "flow_log_collectors" };
-    String[] pathParameters = { updateFlowLogCollectorOptions.id() };
-    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.constructHttpUrl(getServiceUrl(), pathSegments, pathParameters));
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", updateFlowLogCollectorOptions.id());
+    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/flow_log_collectors/{id}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "updateFlowLogCollector");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    builder.query("version", this.version);
+    builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    final JsonObject contentJson = new JsonObject();
-    if (updateFlowLogCollectorOptions.name() != null) {
-      contentJson.addProperty("name", updateFlowLogCollectorOptions.name());
-    }
-    if (updateFlowLogCollectorOptions.active() != null) {
-      contentJson.addProperty("active", updateFlowLogCollectorOptions.active());
-    }
-    builder.bodyJson(contentJson);
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateFlowLogCollectorOptions.flowLogCollectorPatch()), "application/merge-patch+json");
     ResponseConverter<FlowLogCollector> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<FlowLogCollector>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);

@@ -35,6 +35,10 @@ public class Volume extends GenericModel {
 
   /**
    * The status of the volume.
+   *
+   * The enumerated values for this property will expand in the future. When processing this property, check for and log
+   * unknown values. Optionally halt processing and surface the error, or bypass the volume on which the unexpected
+   * property value was encountered.
    */
   public interface Status {
     /** available. */
@@ -43,6 +47,8 @@ public class Volume extends GenericModel {
     String FAILED = "failed";
     /** pending. */
     String PENDING = "pending";
+    /** unusable. */
+    String UNUSABLE = "unusable";
     /** pending_deletion. */
     String PENDING_DELETION = "pending_deletion";
   }
@@ -195,6 +201,10 @@ public class Volume extends GenericModel {
    * Gets the status.
    *
    * The status of the volume.
+   *
+   * The enumerated values for this property will expand in the future. When processing this property, check for and log
+   * unknown values. Optionally halt processing and surface the error, or bypass the volume on which the unexpected
+   * property value was encountered.
    *
    * @return the status
    */

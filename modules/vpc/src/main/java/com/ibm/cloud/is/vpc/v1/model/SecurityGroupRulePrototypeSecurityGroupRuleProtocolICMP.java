@@ -82,15 +82,6 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolICMP extends Sec
     }
 
     /**
-     * Instantiates a new builder with required properties.
-     *
-     * @param direction the direction
-     */
-    public Builder(String direction) {
-      this.direction = direction;
-    }
-
-    /**
      * Builds a SecurityGroupRulePrototypeSecurityGroupRuleProtocolICMP.
      *
      * @return the new SecurityGroupRulePrototypeSecurityGroupRuleProtocolICMP instance

@@ -15,13 +15,10 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.UpdateFlowLogCollectorOptions;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
-
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-
 import java.util.HashMap;
 import java.util.List;
-
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
@@ -36,12 +33,10 @@ public class UpdateFlowLogCollectorOptionsTest {
   public void testUpdateFlowLogCollectorOptions() throws Throwable {
     UpdateFlowLogCollectorOptions updateFlowLogCollectorOptionsModel = new UpdateFlowLogCollectorOptions.Builder()
       .id("testString")
-      .name("my-flow-log-collector")
-      .active(true)
+      .flowLogCollectorPatch(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
       .build();
     assertEquals(updateFlowLogCollectorOptionsModel.id(), "testString");
-    assertEquals(updateFlowLogCollectorOptionsModel.name(), "my-flow-log-collector");
-    assertEquals(updateFlowLogCollectorOptionsModel.active(), Boolean.valueOf(true));
+    assertEquals(updateFlowLogCollectorOptionsModel.flowLogCollectorPatch(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } });
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

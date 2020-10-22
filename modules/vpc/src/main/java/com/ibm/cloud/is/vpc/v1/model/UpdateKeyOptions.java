@@ -12,6 +12,8 @@
  */
 package com.ibm.cloud.is.vpc.v1.model;
 
+import java.util.Map;
+
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
@@ -20,18 +22,18 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class UpdateKeyOptions extends GenericModel {
 
   protected String id;
-  protected String name;
+  protected Map<String, Object> keyPatch;
 
   /**
    * Builder.
    */
   public static class Builder {
     private String id;
-    private String name;
+    private Map<String, Object> keyPatch;
 
     private Builder(UpdateKeyOptions updateKeyOptions) {
       this.id = updateKeyOptions.id;
-      this.name = updateKeyOptions.name;
+      this.keyPatch = updateKeyOptions.keyPatch;
     }
 
     /**
@@ -44,9 +46,11 @@ public class UpdateKeyOptions extends GenericModel {
      * Instantiates a new builder with required properties.
      *
      * @param id the id
+     * @param keyPatch the keyPatch
      */
-    public Builder(String id) {
+    public Builder(String id, Map<String, Object> keyPatch) {
       this.id = id;
+      this.keyPatch = keyPatch;
     }
 
     /**
@@ -70,13 +74,13 @@ public class UpdateKeyOptions extends GenericModel {
     }
 
     /**
-     * Set the name.
+     * Set the keyPatch.
      *
-     * @param name the name
+     * @param keyPatch the keyPatch
      * @return the UpdateKeyOptions builder
      */
-    public Builder name(String name) {
-      this.name = name;
+    public Builder keyPatch(Map<String, Object> keyPatch) {
+      this.keyPatch = keyPatch;
       return this;
     }
   }
@@ -84,8 +88,10 @@ public class UpdateKeyOptions extends GenericModel {
   protected UpdateKeyOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,
       "id cannot be empty");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.keyPatch,
+      "keyPatch cannot be null");
     id = builder.id;
-    name = builder.name;
+    keyPatch = builder.keyPatch;
   }
 
   /**
@@ -109,14 +115,14 @@ public class UpdateKeyOptions extends GenericModel {
   }
 
   /**
-   * Gets the name.
+   * Gets the keyPatch.
    *
-   * The user-defined name for this key.
+   * The key patch.
    *
-   * @return the name
+   * @return the keyPatch
    */
-  public String name() {
-    return name;
+  public Map<String, Object> keyPatch() {
+    return keyPatch;
   }
 }
 

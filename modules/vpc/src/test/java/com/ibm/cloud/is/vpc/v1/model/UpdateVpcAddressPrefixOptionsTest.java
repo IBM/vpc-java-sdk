@@ -15,13 +15,10 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.UpdateVpcAddressPrefixOptions;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
-
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-
 import java.util.HashMap;
 import java.util.List;
-
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
@@ -37,13 +34,11 @@ public class UpdateVpcAddressPrefixOptionsTest {
     UpdateVpcAddressPrefixOptions updateVpcAddressPrefixOptionsModel = new UpdateVpcAddressPrefixOptions.Builder()
       .vpcId("testString")
       .id("testString")
-      .name("my-address-prefix-2")
-      .isDefault(false)
+      .addressPrefixPatch(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
       .build();
     assertEquals(updateVpcAddressPrefixOptionsModel.vpcId(), "testString");
     assertEquals(updateVpcAddressPrefixOptionsModel.id(), "testString");
-    assertEquals(updateVpcAddressPrefixOptionsModel.name(), "my-address-prefix-2");
-    assertEquals(updateVpcAddressPrefixOptionsModel.isDefault(), Boolean.valueOf(false));
+    assertEquals(updateVpcAddressPrefixOptionsModel.addressPrefixPatch(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } });
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

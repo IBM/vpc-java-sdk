@@ -15,13 +15,10 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.UpdateKeyOptions;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
-
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-
 import java.util.HashMap;
 import java.util.List;
-
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
@@ -36,10 +33,10 @@ public class UpdateKeyOptionsTest {
   public void testUpdateKeyOptions() throws Throwable {
     UpdateKeyOptions updateKeyOptionsModel = new UpdateKeyOptions.Builder()
       .id("testString")
-      .name("my-key")
+      .keyPatch(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
       .build();
     assertEquals(updateKeyOptionsModel.id(), "testString");
-    assertEquals(updateKeyOptionsModel.name(), "my-key");
+    assertEquals(updateKeyOptionsModel.keyPatch(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } });
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

@@ -18,13 +18,10 @@ import com.ibm.cloud.is.vpc.v1.model.VolumeProfileCollection;
 import com.ibm.cloud.is.vpc.v1.model.VolumeProfileCollectionFirst;
 import com.ibm.cloud.is.vpc.v1.model.VolumeProfileCollectionNext;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
-
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-
 import java.util.HashMap;
 import java.util.List;
-
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 

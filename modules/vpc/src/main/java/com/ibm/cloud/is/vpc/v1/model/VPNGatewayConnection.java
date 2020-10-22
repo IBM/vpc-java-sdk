@@ -20,6 +20,9 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
  * VPNGatewayConnection.
+ *
+ * Classes which extend this class:
+ * - VPNGatewayConnectionPolicyMode
  */
 public class VPNGatewayConnection extends GenericModel {
 
@@ -48,7 +51,7 @@ public class VPNGatewayConnection extends GenericModel {
   }
 
   /**
-   * The status of a VPN connection.
+   * The status of a VPN gateway connection.
    */
   public interface Status {
     /** down. */
@@ -67,10 +70,6 @@ public class VPNGatewayConnection extends GenericModel {
   @SerializedName("peer_address")
   protected String peerAddress;
   protected String psk;
-  @SerializedName("local_cidrs")
-  protected List<String> localCidrs;
-  @SerializedName("peer_cidrs")
-  protected List<String> peerCidrs;
   @SerializedName("route_mode")
   protected String routeMode;
   @SerializedName("authentication_mode")
@@ -84,11 +83,18 @@ public class VPNGatewayConnection extends GenericModel {
   protected IKEPolicyReference ikePolicy;
   @SerializedName("ipsec_policy")
   protected IPsecPolicyReference ipsecPolicy;
+  @SerializedName("local_cidrs")
+  protected List<String> localCidrs;
+  @SerializedName("peer_cidrs")
+  protected List<String> peerCidrs;
+
+  protected VPNGatewayConnection() {
+  }
 
   /**
    * Gets the id.
    *
-   * The unique identifier for this VPN connection.
+   * The unique identifier for this VPN gateway connection.
    *
    * @return the id
    */
@@ -132,7 +138,7 @@ public class VPNGatewayConnection extends GenericModel {
   /**
    * Gets the adminStateUp.
    *
-   * If set to false, the VPN connection is shut down.
+   * If set to false, the VPN gateway connection is shut down.
    *
    * @return the adminStateUp
    */
@@ -163,28 +169,6 @@ public class VPNGatewayConnection extends GenericModel {
   }
 
   /**
-   * Gets the localCidrs.
-   *
-   * A collection of local CIDRs for this resource.
-   *
-   * @return the localCidrs
-   */
-  public List<String> getLocalCidrs() {
-    return localCidrs;
-  }
-
-  /**
-   * Gets the peerCidrs.
-   *
-   * A collection of peer CIDRs for this resource.
-   *
-   * @return the peerCidrs
-   */
-  public List<String> getPeerCidrs() {
-    return peerCidrs;
-  }
-
-  /**
    * Gets the routeMode.
    *
    * The routing mode. Only `policy` is currently supported.
@@ -209,7 +193,7 @@ public class VPNGatewayConnection extends GenericModel {
   /**
    * Gets the status.
    *
-   * The status of a VPN connection.
+   * The status of a VPN gateway connection.
    *
    * @return the status
    */
@@ -260,6 +244,28 @@ public class VPNGatewayConnection extends GenericModel {
    */
   public IPsecPolicyReference getIpsecPolicy() {
     return ipsecPolicy;
+  }
+
+  /**
+   * Gets the localCidrs.
+   *
+   * A collection of local CIDRs for this resource.
+   *
+   * @return the localCidrs
+   */
+  public List<String> getLocalCidrs() {
+    return localCidrs;
+  }
+
+  /**
+   * Gets the peerCidrs.
+   *
+   * A collection of peer CIDRs for this resource.
+   *
+   * @return the peerCidrs
+   */
+  public List<String> getPeerCidrs() {
+    return peerCidrs;
   }
 }
 

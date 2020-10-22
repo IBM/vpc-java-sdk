@@ -22,6 +22,67 @@ public class EncryptionKeyReference extends GenericModel {
   protected String crn;
 
   /**
+   * Builder.
+   */
+  public static class Builder {
+    private String crn;
+
+    private Builder(EncryptionKeyReference encryptionKeyReference) {
+      this.crn = encryptionKeyReference.crn;
+    }
+
+    /**
+     * Instantiates a new builder.
+     */
+    public Builder() {
+    }
+
+    /**
+     * Instantiates a new builder with required properties.
+     *
+     * @param crn the crn
+     */
+    public Builder(String crn) {
+      this.crn = crn;
+    }
+
+    /**
+     * Builds a EncryptionKeyReference.
+     *
+     * @return the new EncryptionKeyReference instance
+     */
+    public EncryptionKeyReference build() {
+      return new EncryptionKeyReference(this);
+    }
+
+    /**
+     * Set the crn.
+     *
+     * @param crn the crn
+     * @return the EncryptionKeyReference builder
+     */
+    public Builder crn(String crn) {
+      this.crn = crn;
+      return this;
+    }
+  }
+
+  protected EncryptionKeyReference(Builder builder) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.crn,
+      "crn cannot be null");
+    crn = builder.crn;
+  }
+
+  /**
+   * New builder.
+   *
+   * @return a EncryptionKeyReference builder
+   */
+  public Builder newBuilder() {
+    return new Builder(this);
+  }
+
+  /**
    * Gets the crn.
    *
    * The CRN of the [Key Protect Root
@@ -30,7 +91,7 @@ public class EncryptionKeyReference extends GenericModel {
    *
    * @return the crn
    */
-  public String getCrn() {
+  public String crn() {
     return crn;
   }
 }

@@ -16,13 +16,10 @@ package com.ibm.cloud.is.vpc.v1.model;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRulePrototypeRemoteIP;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRulePrototypeSecurityGroupRuleProtocolAll;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
-
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-
 import java.util.HashMap;
 import java.util.List;
-
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
@@ -59,11 +56,6 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolAllTest {
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolAllModelNew.ipVersion(), "ipv4");
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolAllModelNew.protocol(), "all");
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolAllModelNew.remote().toString(), securityGroupRulePrototypeRemoteModel.toString());
+    assertNotNull(securityGroupRulePrototypeSecurityGroupRuleProtocolAllModel);
   }
-
-  @Test(expectedExceptions = IllegalArgumentException.class)
-  public void testSecurityGroupRulePrototypeSecurityGroupRuleProtocolAllError() throws Throwable {
-    new SecurityGroupRulePrototypeSecurityGroupRuleProtocolAll.Builder().build();
-  }
-
 }

@@ -24,6 +24,10 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class ImagePrototype extends GenericModel {
 
   protected String name;
+  @SerializedName("encrypted_data_key")
+  protected String encryptedDataKey;
+  @SerializedName("encryption_key")
+  protected EncryptionKeyReference encryptionKey;
   @SerializedName("resource_group")
   protected ResourceGroupIdentity resourceGroup;
   protected ImageFilePrototype file;
@@ -43,6 +47,39 @@ public class ImagePrototype extends GenericModel {
    */
   public String name() {
     return name;
+  }
+
+  /**
+   * Gets the encryptedDataKey.
+   *
+   * A base64-encoded, encrypted representation of the key that was used to encrypt the data for this image.
+   *
+   * That representation is created by wrapping the key's value with the `encryption_key` root key (which must also be
+   * provided), using either [Key Protect](https://cloud.ibm.com/docs/key-protect?topic=key-protect-wrap-keys) or the
+   * [Hyper Protect Crypto Service](https://cloud.ibm.com/docs/services/hs-crypto?topic=hs-crypto-wrap-keys).
+   *
+   * If this property is not provided, the imported image is treated as unencrypted.
+   *
+   * @return the encryptedDataKey
+   */
+  public String encryptedDataKey() {
+    return encryptedDataKey;
+  }
+
+  /**
+   * Gets the encryptionKey.
+   *
+   * A reference to the root key that was used to wrap the data key (which is ultimately
+   * represented as `encrypted_data_key`). Additionally, the root key will be used to encrypt
+   * volumes created from this image (unless an alternate `encryption_key` is provided at
+   * volume creation).
+   *
+   * If this property is not provided, the imported image is treated as unencrypted.
+   *
+   * @return the encryptionKey
+   */
+  public EncryptionKeyReference encryptionKey() {
+    return encryptionKey;
   }
 
   /**

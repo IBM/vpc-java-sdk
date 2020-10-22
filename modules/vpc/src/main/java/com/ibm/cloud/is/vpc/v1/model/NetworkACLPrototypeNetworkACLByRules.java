@@ -44,15 +44,6 @@ public class NetworkACLPrototypeNetworkACLByRules extends NetworkACLPrototype {
     }
 
     /**
-     * Instantiates a new builder with required properties.
-     *
-     * @param vpc the vpc
-     */
-    public Builder(VPCIdentity vpc) {
-      this.vpc = vpc;
-    }
-
-    /**
      * Builds a NetworkACLPrototypeNetworkACLByRules.
      *
      * @return the new NetworkACLPrototypeNetworkACLByRules instance
