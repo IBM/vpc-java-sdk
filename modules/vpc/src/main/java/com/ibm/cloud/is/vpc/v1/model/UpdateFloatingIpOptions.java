@@ -12,6 +12,8 @@
  */
 package com.ibm.cloud.is.vpc.v1.model;
 
+import java.util.Map;
+
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
@@ -20,21 +22,18 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class UpdateFloatingIpOptions extends GenericModel {
 
   protected String id;
-  protected String name;
-  protected FloatingIPPatchTargetNetworkInterfaceIdentity target;
+  protected Map<String, Object> floatingIpPatch;
 
   /**
    * Builder.
    */
   public static class Builder {
     private String id;
-    private String name;
-    private FloatingIPPatchTargetNetworkInterfaceIdentity target;
+    private Map<String, Object> floatingIpPatch;
 
     private Builder(UpdateFloatingIpOptions updateFloatingIpOptions) {
       this.id = updateFloatingIpOptions.id;
-      this.name = updateFloatingIpOptions.name;
-      this.target = updateFloatingIpOptions.target;
+      this.floatingIpPatch = updateFloatingIpOptions.floatingIpPatch;
     }
 
     /**
@@ -47,9 +46,11 @@ public class UpdateFloatingIpOptions extends GenericModel {
      * Instantiates a new builder with required properties.
      *
      * @param id the id
+     * @param floatingIpPatch the floatingIpPatch
      */
-    public Builder(String id) {
+    public Builder(String id, Map<String, Object> floatingIpPatch) {
       this.id = id;
+      this.floatingIpPatch = floatingIpPatch;
     }
 
     /**
@@ -73,24 +74,13 @@ public class UpdateFloatingIpOptions extends GenericModel {
     }
 
     /**
-     * Set the name.
+     * Set the floatingIpPatch.
      *
-     * @param name the name
+     * @param floatingIpPatch the floatingIpPatch
      * @return the UpdateFloatingIpOptions builder
      */
-    public Builder name(String name) {
-      this.name = name;
-      return this;
-    }
-
-    /**
-     * Set the target.
-     *
-     * @param target the target
-     * @return the UpdateFloatingIpOptions builder
-     */
-    public Builder target(FloatingIPPatchTargetNetworkInterfaceIdentity target) {
-      this.target = target;
+    public Builder floatingIpPatch(Map<String, Object> floatingIpPatch) {
+      this.floatingIpPatch = floatingIpPatch;
       return this;
     }
   }
@@ -98,9 +88,10 @@ public class UpdateFloatingIpOptions extends GenericModel {
   protected UpdateFloatingIpOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,
       "id cannot be empty");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.floatingIpPatch,
+      "floatingIpPatch cannot be null");
     id = builder.id;
-    name = builder.name;
-    target = builder.target;
+    floatingIpPatch = builder.floatingIpPatch;
   }
 
   /**
@@ -124,27 +115,14 @@ public class UpdateFloatingIpOptions extends GenericModel {
   }
 
   /**
-   * Gets the name.
+   * Gets the floatingIpPatch.
    *
-   * The unique user-defined name for this floating IP.
+   * The floating IP patch.
    *
-   * @return the name
+   * @return the floatingIpPatch
    */
-  public String name() {
-    return name;
-  }
-
-  /**
-   * Gets the target.
-   *
-   * A new network interface to bind this floating IP to, replacing any existing binding.
-   * For this request to succeed, the existing floating IP must not be required by another
-   * resource, such as a public gateway.
-   *
-   * @return the target
-   */
-  public FloatingIPPatchTargetNetworkInterfaceIdentity target() {
-    return target;
+  public Map<String, Object> floatingIpPatch() {
+    return floatingIpPatch;
   }
 }
 

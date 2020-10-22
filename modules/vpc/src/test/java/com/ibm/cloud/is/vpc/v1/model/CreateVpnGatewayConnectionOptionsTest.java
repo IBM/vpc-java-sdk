@@ -18,15 +18,12 @@ import com.ibm.cloud.is.vpc.v1.model.IKEPolicyIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.IPsecPolicyIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionDPDPrototype;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
-
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
-
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
@@ -67,8 +64,8 @@ public class CreateVpnGatewayConnectionOptionsTest {
       .deadPeerDetection(vpnGatewayConnectionDpdPrototypeModel)
       .ikePolicy(ikePolicyIdentityModel)
       .ipsecPolicy(iPsecPolicyIdentityModel)
-      .localCidrs(new java.util.ArrayList<String>(java.util.Arrays.asList("192.168.1.0/24")))
-      .peerCidrs(new java.util.ArrayList<String>(java.util.Arrays.asList("10.45.1.0/24")))
+      .localCIDRs(new java.util.ArrayList<String>(java.util.Arrays.asList("192.168.1.0/24")))
+      .peerCIDRs(new java.util.ArrayList<String>(java.util.Arrays.asList("10.45.1.0/24")))
       .build();
     assertEquals(createVpnGatewayConnectionOptionsModel.vpnGatewayId(), "testString");
     assertEquals(createVpnGatewayConnectionOptionsModel.peerAddress(), "169.21.50.5");
@@ -78,8 +75,8 @@ public class CreateVpnGatewayConnectionOptionsTest {
     assertEquals(createVpnGatewayConnectionOptionsModel.deadPeerDetection(), vpnGatewayConnectionDpdPrototypeModel);
     assertEquals(createVpnGatewayConnectionOptionsModel.ikePolicy(), ikePolicyIdentityModel);
     assertEquals(createVpnGatewayConnectionOptionsModel.ipsecPolicy(), iPsecPolicyIdentityModel);
-    assertEquals(createVpnGatewayConnectionOptionsModel.localCidrs(), new java.util.ArrayList<String>(java.util.Arrays.asList("192.168.1.0/24")));
-    assertEquals(createVpnGatewayConnectionOptionsModel.peerCidrs(), new java.util.ArrayList<String>(java.util.Arrays.asList("10.45.1.0/24")));
+    assertEquals(createVpnGatewayConnectionOptionsModel.localCIDRs(), new java.util.ArrayList<String>(java.util.Arrays.asList("192.168.1.0/24")));
+    assertEquals(createVpnGatewayConnectionOptionsModel.peerCIDRs(), new java.util.ArrayList<String>(java.util.Arrays.asList("10.45.1.0/24")));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

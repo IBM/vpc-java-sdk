@@ -12,6 +12,8 @@
  */
 package com.ibm.cloud.is.vpc.v1.model;
 
+import java.util.Map;
+
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
@@ -21,7 +23,7 @@ public class UpdateVpcRouteOptions extends GenericModel {
 
   protected String vpcId;
   protected String id;
-  protected String name;
+  protected Map<String, Object> routePatch;
 
   /**
    * Builder.
@@ -29,12 +31,12 @@ public class UpdateVpcRouteOptions extends GenericModel {
   public static class Builder {
     private String vpcId;
     private String id;
-    private String name;
+    private Map<String, Object> routePatch;
 
     private Builder(UpdateVpcRouteOptions updateVpcRouteOptions) {
       this.vpcId = updateVpcRouteOptions.vpcId;
       this.id = updateVpcRouteOptions.id;
-      this.name = updateVpcRouteOptions.name;
+      this.routePatch = updateVpcRouteOptions.routePatch;
     }
 
     /**
@@ -48,10 +50,12 @@ public class UpdateVpcRouteOptions extends GenericModel {
      *
      * @param vpcId the vpcId
      * @param id the id
+     * @param routePatch the routePatch
      */
-    public Builder(String vpcId, String id) {
+    public Builder(String vpcId, String id, Map<String, Object> routePatch) {
       this.vpcId = vpcId;
       this.id = id;
+      this.routePatch = routePatch;
     }
 
     /**
@@ -86,13 +90,13 @@ public class UpdateVpcRouteOptions extends GenericModel {
     }
 
     /**
-     * Set the name.
+     * Set the routePatch.
      *
-     * @param name the name
+     * @param routePatch the routePatch
      * @return the UpdateVpcRouteOptions builder
      */
-    public Builder name(String name) {
-      this.name = name;
+    public Builder routePatch(Map<String, Object> routePatch) {
+      this.routePatch = routePatch;
       return this;
     }
   }
@@ -102,9 +106,11 @@ public class UpdateVpcRouteOptions extends GenericModel {
       "vpcId cannot be empty");
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,
       "id cannot be empty");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.routePatch,
+      "routePatch cannot be null");
     vpcId = builder.vpcId;
     id = builder.id;
-    name = builder.name;
+    routePatch = builder.routePatch;
   }
 
   /**
@@ -139,14 +145,14 @@ public class UpdateVpcRouteOptions extends GenericModel {
   }
 
   /**
-   * Gets the name.
+   * Gets the routePatch.
    *
-   * The user-defined name for this route. Names must be unique within the VPC routing table the route resides in.
+   * The route patch.
    *
-   * @return the name
+   * @return the routePatch
    */
-  public String name() {
-    return name;
+  public Map<String, Object> routePatch() {
+    return routePatch;
   }
 }
 

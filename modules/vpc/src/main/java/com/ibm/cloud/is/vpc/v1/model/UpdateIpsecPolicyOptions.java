@@ -12,6 +12,8 @@
  */
 package com.ibm.cloud.is.vpc.v1.model;
 
+import java.util.Map;
+
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
@@ -19,69 +21,19 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class UpdateIpsecPolicyOptions extends GenericModel {
 
-  /**
-   * The authentication algorithm.
-   */
-  public interface AuthenticationAlgorithm {
-    /** md5. */
-    String MD5 = "md5";
-    /** sha1. */
-    String SHA1 = "sha1";
-    /** sha256. */
-    String SHA256 = "sha256";
-  }
-
-  /**
-   * The encryption algorithm.
-   */
-  public interface EncryptionAlgorithm {
-    /** triple_des. */
-    String TRIPLE_DES = "triple_des";
-    /** aes128. */
-    String AES128 = "aes128";
-    /** aes256. */
-    String AES256 = "aes256";
-  }
-
-  /**
-   * Perfect Forward Secrecy.
-   */
-  public interface Pfs {
-    /** disabled. */
-    String DISABLED = "disabled";
-    /** group_14. */
-    String GROUP_14 = "group_14";
-    /** group_2. */
-    String GROUP_2 = "group_2";
-    /** group_5. */
-    String GROUP_5 = "group_5";
-  }
-
   protected String id;
-  protected String name;
-  protected String authenticationAlgorithm;
-  protected String encryptionAlgorithm;
-  protected Long keyLifetime;
-  protected String pfs;
+  protected Map<String, Object> iPsecPolicyPatch;
 
   /**
    * Builder.
    */
   public static class Builder {
     private String id;
-    private String name;
-    private String authenticationAlgorithm;
-    private String encryptionAlgorithm;
-    private Long keyLifetime;
-    private String pfs;
+    private Map<String, Object> iPsecPolicyPatch;
 
     private Builder(UpdateIpsecPolicyOptions updateIpsecPolicyOptions) {
       this.id = updateIpsecPolicyOptions.id;
-      this.name = updateIpsecPolicyOptions.name;
-      this.authenticationAlgorithm = updateIpsecPolicyOptions.authenticationAlgorithm;
-      this.encryptionAlgorithm = updateIpsecPolicyOptions.encryptionAlgorithm;
-      this.keyLifetime = updateIpsecPolicyOptions.keyLifetime;
-      this.pfs = updateIpsecPolicyOptions.pfs;
+      this.iPsecPolicyPatch = updateIpsecPolicyOptions.iPsecPolicyPatch;
     }
 
     /**
@@ -94,9 +46,11 @@ public class UpdateIpsecPolicyOptions extends GenericModel {
      * Instantiates a new builder with required properties.
      *
      * @param id the id
+     * @param iPsecPolicyPatch the iPsecPolicyPatch
      */
-    public Builder(String id) {
+    public Builder(String id, Map<String, Object> iPsecPolicyPatch) {
       this.id = id;
+      this.iPsecPolicyPatch = iPsecPolicyPatch;
     }
 
     /**
@@ -120,57 +74,13 @@ public class UpdateIpsecPolicyOptions extends GenericModel {
     }
 
     /**
-     * Set the name.
+     * Set the iPsecPolicyPatch.
      *
-     * @param name the name
+     * @param iPsecPolicyPatch the iPsecPolicyPatch
      * @return the UpdateIpsecPolicyOptions builder
      */
-    public Builder name(String name) {
-      this.name = name;
-      return this;
-    }
-
-    /**
-     * Set the authenticationAlgorithm.
-     *
-     * @param authenticationAlgorithm the authenticationAlgorithm
-     * @return the UpdateIpsecPolicyOptions builder
-     */
-    public Builder authenticationAlgorithm(String authenticationAlgorithm) {
-      this.authenticationAlgorithm = authenticationAlgorithm;
-      return this;
-    }
-
-    /**
-     * Set the encryptionAlgorithm.
-     *
-     * @param encryptionAlgorithm the encryptionAlgorithm
-     * @return the UpdateIpsecPolicyOptions builder
-     */
-    public Builder encryptionAlgorithm(String encryptionAlgorithm) {
-      this.encryptionAlgorithm = encryptionAlgorithm;
-      return this;
-    }
-
-    /**
-     * Set the keyLifetime.
-     *
-     * @param keyLifetime the keyLifetime
-     * @return the UpdateIpsecPolicyOptions builder
-     */
-    public Builder keyLifetime(long keyLifetime) {
-      this.keyLifetime = keyLifetime;
-      return this;
-    }
-
-    /**
-     * Set the pfs.
-     *
-     * @param pfs the pfs
-     * @return the UpdateIpsecPolicyOptions builder
-     */
-    public Builder pfs(String pfs) {
-      this.pfs = pfs;
+    public Builder iPsecPolicyPatch(Map<String, Object> iPsecPolicyPatch) {
+      this.iPsecPolicyPatch = iPsecPolicyPatch;
       return this;
     }
   }
@@ -178,12 +88,10 @@ public class UpdateIpsecPolicyOptions extends GenericModel {
   protected UpdateIpsecPolicyOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,
       "id cannot be empty");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.iPsecPolicyPatch,
+      "iPsecPolicyPatch cannot be null");
     id = builder.id;
-    name = builder.name;
-    authenticationAlgorithm = builder.authenticationAlgorithm;
-    encryptionAlgorithm = builder.encryptionAlgorithm;
-    keyLifetime = builder.keyLifetime;
-    pfs = builder.pfs;
+    iPsecPolicyPatch = builder.iPsecPolicyPatch;
   }
 
   /**
@@ -207,58 +115,14 @@ public class UpdateIpsecPolicyOptions extends GenericModel {
   }
 
   /**
-   * Gets the name.
+   * Gets the iPsecPolicyPatch.
    *
-   * The user-defined name for this IPsec policy.
+   * The IPsec policy patch.
    *
-   * @return the name
+   * @return the iPsecPolicyPatch
    */
-  public String name() {
-    return name;
-  }
-
-  /**
-   * Gets the authenticationAlgorithm.
-   *
-   * The authentication algorithm.
-   *
-   * @return the authenticationAlgorithm
-   */
-  public String authenticationAlgorithm() {
-    return authenticationAlgorithm;
-  }
-
-  /**
-   * Gets the encryptionAlgorithm.
-   *
-   * The encryption algorithm.
-   *
-   * @return the encryptionAlgorithm
-   */
-  public String encryptionAlgorithm() {
-    return encryptionAlgorithm;
-  }
-
-  /**
-   * Gets the keyLifetime.
-   *
-   * The key lifetime in seconds.
-   *
-   * @return the keyLifetime
-   */
-  public Long keyLifetime() {
-    return keyLifetime;
-  }
-
-  /**
-   * Gets the pfs.
-   *
-   * Perfect Forward Secrecy.
-   *
-   * @return the pfs
-   */
-  public String pfs() {
-    return pfs;
+  public Map<String, Object> iPsecPolicyPatch() {
+    return iPsecPolicyPatch;
   }
 }
 

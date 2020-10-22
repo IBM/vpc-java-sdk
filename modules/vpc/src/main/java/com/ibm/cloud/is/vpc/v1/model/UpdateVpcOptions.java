@@ -12,6 +12,8 @@
  */
 package com.ibm.cloud.is.vpc.v1.model;
 
+import java.util.Map;
+
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
@@ -20,18 +22,18 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class UpdateVpcOptions extends GenericModel {
 
   protected String id;
-  protected String name;
+  protected Map<String, Object> vpcPatch;
 
   /**
    * Builder.
    */
   public static class Builder {
     private String id;
-    private String name;
+    private Map<String, Object> vpcPatch;
 
     private Builder(UpdateVpcOptions updateVpcOptions) {
       this.id = updateVpcOptions.id;
-      this.name = updateVpcOptions.name;
+      this.vpcPatch = updateVpcOptions.vpcPatch;
     }
 
     /**
@@ -44,9 +46,11 @@ public class UpdateVpcOptions extends GenericModel {
      * Instantiates a new builder with required properties.
      *
      * @param id the id
+     * @param vpcPatch the vpcPatch
      */
-    public Builder(String id) {
+    public Builder(String id, Map<String, Object> vpcPatch) {
       this.id = id;
+      this.vpcPatch = vpcPatch;
     }
 
     /**
@@ -70,13 +74,13 @@ public class UpdateVpcOptions extends GenericModel {
     }
 
     /**
-     * Set the name.
+     * Set the vpcPatch.
      *
-     * @param name the name
+     * @param vpcPatch the vpcPatch
      * @return the UpdateVpcOptions builder
      */
-    public Builder name(String name) {
-      this.name = name;
+    public Builder vpcPatch(Map<String, Object> vpcPatch) {
+      this.vpcPatch = vpcPatch;
       return this;
     }
   }
@@ -84,8 +88,10 @@ public class UpdateVpcOptions extends GenericModel {
   protected UpdateVpcOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,
       "id cannot be empty");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.vpcPatch,
+      "vpcPatch cannot be null");
     id = builder.id;
-    name = builder.name;
+    vpcPatch = builder.vpcPatch;
   }
 
   /**
@@ -109,14 +115,14 @@ public class UpdateVpcOptions extends GenericModel {
   }
 
   /**
-   * Gets the name.
+   * Gets the vpcPatch.
    *
-   * The unique user-defined name for this VPC.
+   * The VPC patch.
    *
-   * @return the name
+   * @return the vpcPatch
    */
-  public String name() {
-    return name;
+  public Map<String, Object> vpcPatch() {
+    return vpcPatch;
   }
 }
 

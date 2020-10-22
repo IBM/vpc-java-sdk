@@ -13,38 +13,35 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
-import com.ibm.cloud.is.vpc.v1.model.ListVpnGatewayConnectionPeerCidrsOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListVpnGatewayConnectionPeerCIDRsOptions;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
-
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-
 import java.util.HashMap;
 import java.util.List;
-
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
 /**
- * Unit test class for the ListVpnGatewayConnectionPeerCidrsOptions model.
+ * Unit test class for the ListVpnGatewayConnectionPeerCIDRsOptions model.
  */
-public class ListVpnGatewayConnectionPeerCidrsOptionsTest {
+public class ListVpnGatewayConnectionPeerCIDRsOptionsTest {
   final HashMap<String, InputStream> mockStreamMap = TestUtilities.createMockStreamMap();
   final List<FileWithMetadata> mockListFileWithMetadata = TestUtilities.creatMockListFileWithMetadata();
 
   @Test
-  public void testListVpnGatewayConnectionPeerCidrsOptions() throws Throwable {
-    ListVpnGatewayConnectionPeerCidrsOptions listVpnGatewayConnectionPeerCidrsOptionsModel = new ListVpnGatewayConnectionPeerCidrsOptions.Builder()
+  public void testListVpnGatewayConnectionPeerCIDRsOptions() throws Throwable {
+    ListVpnGatewayConnectionPeerCIDRsOptions listVpnGatewayConnectionPeerCIDRsOptionsModel = new ListVpnGatewayConnectionPeerCIDRsOptions.Builder()
       .vpnGatewayId("testString")
       .id("testString")
       .build();
-    assertEquals(listVpnGatewayConnectionPeerCidrsOptionsModel.vpnGatewayId(), "testString");
-    assertEquals(listVpnGatewayConnectionPeerCidrsOptionsModel.id(), "testString");
+    assertEquals(listVpnGatewayConnectionPeerCIDRsOptionsModel.vpnGatewayId(), "testString");
+    assertEquals(listVpnGatewayConnectionPeerCIDRsOptionsModel.id(), "testString");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)
-  public void testListVpnGatewayConnectionPeerCidrsOptionsError() throws Throwable {
-    new ListVpnGatewayConnectionPeerCidrsOptions.Builder().build();
+  public void testListVpnGatewayConnectionPeerCIDRsOptionsError() throws Throwable {
+    new ListVpnGatewayConnectionPeerCIDRsOptions.Builder().build();
   }
 
 }

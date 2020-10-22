@@ -15,13 +15,10 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.UpdatePublicGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
-
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-
 import java.util.HashMap;
 import java.util.List;
-
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
@@ -36,10 +33,10 @@ public class UpdatePublicGatewayOptionsTest {
   public void testUpdatePublicGatewayOptions() throws Throwable {
     UpdatePublicGatewayOptions updatePublicGatewayOptionsModel = new UpdatePublicGatewayOptions.Builder()
       .id("testString")
-      .name("my-public-gateway")
+      .publicGatewayPatch(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
       .build();
     assertEquals(updatePublicGatewayOptionsModel.id(), "testString");
-    assertEquals(updatePublicGatewayOptionsModel.name(), "my-public-gateway");
+    assertEquals(updatePublicGatewayOptionsModel.publicGatewayPatch(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } });
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

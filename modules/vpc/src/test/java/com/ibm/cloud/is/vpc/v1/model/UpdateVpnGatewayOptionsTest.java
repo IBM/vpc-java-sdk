@@ -15,13 +15,10 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.UpdateVpnGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
-
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-
 import java.util.HashMap;
 import java.util.List;
-
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
@@ -36,10 +33,10 @@ public class UpdateVpnGatewayOptionsTest {
   public void testUpdateVpnGatewayOptions() throws Throwable {
     UpdateVpnGatewayOptions updateVpnGatewayOptionsModel = new UpdateVpnGatewayOptions.Builder()
       .id("testString")
-      .name("my-vpn-gateway")
+      .vpnGatewayPatch(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
       .build();
     assertEquals(updateVpnGatewayOptionsModel.id(), "testString");
-    assertEquals(updateVpnGatewayOptionsModel.name(), "my-vpn-gateway");
+    assertEquals(updateVpnGatewayOptionsModel.vpnGatewayPatch(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } });
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

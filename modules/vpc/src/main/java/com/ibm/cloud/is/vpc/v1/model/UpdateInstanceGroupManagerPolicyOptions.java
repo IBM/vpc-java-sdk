@@ -12,6 +12,8 @@
  */
 package com.ibm.cloud.is.vpc.v1.model;
 
+import java.util.Map;
+
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
@@ -19,26 +21,10 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class UpdateInstanceGroupManagerPolicyOptions extends GenericModel {
 
-  /**
-   * The type of metric to be evaluated.
-   */
-  public interface MetricType {
-    /** cpu. */
-    String CPU = "cpu";
-    /** memory. */
-    String MEMORY = "memory";
-    /** network_in. */
-    String NETWORK_IN = "network_in";
-    /** network_out. */
-    String NETWORK_OUT = "network_out";
-  }
-
   protected String instanceGroupId;
   protected String instanceGroupManagerId;
   protected String id;
-  protected String name;
-  protected String metricType;
-  protected Long metricValue;
+  protected Map<String, Object> instanceGroupManagerPolicyPatch;
 
   /**
    * Builder.
@@ -47,17 +33,13 @@ public class UpdateInstanceGroupManagerPolicyOptions extends GenericModel {
     private String instanceGroupId;
     private String instanceGroupManagerId;
     private String id;
-    private String name;
-    private String metricType;
-    private Long metricValue;
+    private Map<String, Object> instanceGroupManagerPolicyPatch;
 
     private Builder(UpdateInstanceGroupManagerPolicyOptions updateInstanceGroupManagerPolicyOptions) {
       this.instanceGroupId = updateInstanceGroupManagerPolicyOptions.instanceGroupId;
       this.instanceGroupManagerId = updateInstanceGroupManagerPolicyOptions.instanceGroupManagerId;
       this.id = updateInstanceGroupManagerPolicyOptions.id;
-      this.name = updateInstanceGroupManagerPolicyOptions.name;
-      this.metricType = updateInstanceGroupManagerPolicyOptions.metricType;
-      this.metricValue = updateInstanceGroupManagerPolicyOptions.metricValue;
+      this.instanceGroupManagerPolicyPatch = updateInstanceGroupManagerPolicyOptions.instanceGroupManagerPolicyPatch;
     }
 
     /**
@@ -72,11 +54,13 @@ public class UpdateInstanceGroupManagerPolicyOptions extends GenericModel {
      * @param instanceGroupId the instanceGroupId
      * @param instanceGroupManagerId the instanceGroupManagerId
      * @param id the id
+     * @param instanceGroupManagerPolicyPatch the instanceGroupManagerPolicyPatch
      */
-    public Builder(String instanceGroupId, String instanceGroupManagerId, String id) {
+    public Builder(String instanceGroupId, String instanceGroupManagerId, String id, Map<String, Object> instanceGroupManagerPolicyPatch) {
       this.instanceGroupId = instanceGroupId;
       this.instanceGroupManagerId = instanceGroupManagerId;
       this.id = id;
+      this.instanceGroupManagerPolicyPatch = instanceGroupManagerPolicyPatch;
     }
 
     /**
@@ -122,35 +106,13 @@ public class UpdateInstanceGroupManagerPolicyOptions extends GenericModel {
     }
 
     /**
-     * Set the name.
+     * Set the instanceGroupManagerPolicyPatch.
      *
-     * @param name the name
+     * @param instanceGroupManagerPolicyPatch the instanceGroupManagerPolicyPatch
      * @return the UpdateInstanceGroupManagerPolicyOptions builder
      */
-    public Builder name(String name) {
-      this.name = name;
-      return this;
-    }
-
-    /**
-     * Set the metricType.
-     *
-     * @param metricType the metricType
-     * @return the UpdateInstanceGroupManagerPolicyOptions builder
-     */
-    public Builder metricType(String metricType) {
-      this.metricType = metricType;
-      return this;
-    }
-
-    /**
-     * Set the metricValue.
-     *
-     * @param metricValue the metricValue
-     * @return the UpdateInstanceGroupManagerPolicyOptions builder
-     */
-    public Builder metricValue(long metricValue) {
-      this.metricValue = metricValue;
+    public Builder instanceGroupManagerPolicyPatch(Map<String, Object> instanceGroupManagerPolicyPatch) {
+      this.instanceGroupManagerPolicyPatch = instanceGroupManagerPolicyPatch;
       return this;
     }
   }
@@ -162,12 +124,12 @@ public class UpdateInstanceGroupManagerPolicyOptions extends GenericModel {
       "instanceGroupManagerId cannot be empty");
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,
       "id cannot be empty");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.instanceGroupManagerPolicyPatch,
+      "instanceGroupManagerPolicyPatch cannot be null");
     instanceGroupId = builder.instanceGroupId;
     instanceGroupManagerId = builder.instanceGroupManagerId;
     id = builder.id;
-    name = builder.name;
-    metricType = builder.metricType;
-    metricValue = builder.metricValue;
+    instanceGroupManagerPolicyPatch = builder.instanceGroupManagerPolicyPatch;
   }
 
   /**
@@ -213,37 +175,14 @@ public class UpdateInstanceGroupManagerPolicyOptions extends GenericModel {
   }
 
   /**
-   * Gets the name.
+   * Gets the instanceGroupManagerPolicyPatch.
    *
-   * The user-defined name for this instance group manager policy. Names must be unique within the instance group
-   * manager.
+   * The instance group manager policy patch.
    *
-   * @return the name
+   * @return the instanceGroupManagerPolicyPatch
    */
-  public String name() {
-    return name;
-  }
-
-  /**
-   * Gets the metricType.
-   *
-   * The type of metric to be evaluated.
-   *
-   * @return the metricType
-   */
-  public String metricType() {
-    return metricType;
-  }
-
-  /**
-   * Gets the metricValue.
-   *
-   * The metric value to be evaluated.
-   *
-   * @return the metricValue
-   */
-  public Long metricValue() {
-    return metricValue;
+  public Map<String, Object> instanceGroupManagerPolicyPatch() {
+    return instanceGroupManagerPolicyPatch;
   }
 }
 

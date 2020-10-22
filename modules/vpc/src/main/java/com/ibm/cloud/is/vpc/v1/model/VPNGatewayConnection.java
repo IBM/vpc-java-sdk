@@ -68,9 +68,9 @@ public class VPNGatewayConnection extends GenericModel {
   protected String peerAddress;
   protected String psk;
   @SerializedName("local_cidrs")
-  protected List<String> localCidrs;
+  protected List<String> localCIDRs;
   @SerializedName("peer_cidrs")
-  protected List<String> peerCidrs;
+  protected List<String> peerCIDRs;
   @SerializedName("route_mode")
   protected String routeMode;
   @SerializedName("authentication_mode")
@@ -163,25 +163,25 @@ public class VPNGatewayConnection extends GenericModel {
   }
 
   /**
-   * Gets the localCidrs.
+   * Gets the localCIDRs.
    *
    * A collection of local CIDRs for this resource.
    *
-   * @return the localCidrs
+   * @return the localCIDRs
    */
-  public List<String> getLocalCidrs() {
-    return localCidrs;
+  public List<String> getLocalCIDRs() {
+    return localCIDRs;
   }
 
   /**
-   * Gets the peerCidrs.
+   * Gets the peerCIDRs.
    *
    * A collection of peer CIDRs for this resource.
    *
-   * @return the peerCidrs
+   * @return the peerCIDRs
    */
-  public List<String> getPeerCidrs() {
-    return peerCidrs;
+  public List<String> getPeerCIDRs() {
+    return peerCIDRs;
   }
 
   /**

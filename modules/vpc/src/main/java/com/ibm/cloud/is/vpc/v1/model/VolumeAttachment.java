@@ -44,9 +44,9 @@ public class VolumeAttachment extends GenericModel {
     String DATA = "data";
   }
 
-  protected String name;
   @SerializedName("delete_volume_on_instance_delete")
   protected Boolean deleteVolumeOnInstanceDelete;
+  protected String name;
   protected String id;
   protected String href;
   protected VolumeAttachmentDevice device;
@@ -57,17 +57,6 @@ public class VolumeAttachment extends GenericModel {
   protected String type;
 
   /**
-   * Gets the name.
-   *
-   * The user-defined name for this volume attachment.
-   *
-   * @return the name
-   */
-  public String getName() {
-    return name;
-  }
-
-  /**
    * Gets the deleteVolumeOnInstanceDelete.
    *
    * If set to true, when deleting the instance the volume will also be deleted.
@@ -76,6 +65,17 @@ public class VolumeAttachment extends GenericModel {
    */
   public Boolean isDeleteVolumeOnInstanceDelete() {
     return deleteVolumeOnInstanceDelete;
+  }
+
+  /**
+   * Gets the name.
+   *
+   * The user-defined name for this volume attachment.
+   *
+   * @return the name
+   */
+  public String getName() {
+    return name;
   }
 
   /**

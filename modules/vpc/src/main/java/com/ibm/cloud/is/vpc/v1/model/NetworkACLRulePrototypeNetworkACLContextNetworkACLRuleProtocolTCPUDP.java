@@ -87,23 +87,6 @@ public class NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolTCPUD
     }
 
     /**
-     * Instantiates a new builder with required properties.
-     *
-     * @param action the action
-     * @param destination the destination
-     * @param direction the direction
-     * @param source the source
-     * @param protocol the protocol
-     */
-    public Builder(String action, String destination, String direction, String source, String protocol) {
-      this.action = action;
-      this.destination = destination;
-      this.direction = direction;
-      this.source = source;
-      this.protocol = protocol;
-    }
-
-    /**
      * Builds a NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolTCPUDP.
      *
      * @return the new NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolTCPUDP instance

@@ -16,13 +16,10 @@ package com.ibm.cloud.is.vpc.v1.model;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLRuleIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLRulePrototypeNetworkACLRuleProtocolICMP;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
-
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-
 import java.util.HashMap;
 import java.util.List;
-
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
@@ -75,10 +72,4 @@ public class NetworkACLRulePrototypeNetworkACLRuleProtocolICMPTest {
     assertEquals(networkAclRulePrototypeNetworkAclRuleProtocolIcmpModelNew.code(), Long.valueOf("0"));
     assertEquals(networkAclRulePrototypeNetworkAclRuleProtocolIcmpModelNew.type(), Long.valueOf("8"));
   }
-
-  @Test(expectedExceptions = IllegalArgumentException.class)
-  public void testNetworkACLRulePrototypeNetworkACLRuleProtocolICMPError() throws Throwable {
-    new NetworkACLRulePrototypeNetworkACLRuleProtocolICMP.Builder().build();
-  }
-
 }

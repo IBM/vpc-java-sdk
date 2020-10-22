@@ -30,15 +30,12 @@ import com.ibm.cloud.is.vpc.v1.model.VolumeProfileIdentityByName;
 import com.ibm.cloud.is.vpc.v1.model.VolumePrototypeInstanceByImageContext;
 import com.ibm.cloud.is.vpc.v1.model.ZoneIdentityByName;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
-
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
-
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
@@ -88,12 +85,12 @@ public class InstancePrototypeInstanceByImageTest {
     assertEquals(volumeAttachmentPrototypeInstanceContextVolumeModel.id(), "1a6b7274-678d-4dfb-8981-c71dd9d4daa5");
 
     VolumeAttachmentPrototypeInstanceContext volumeAttachmentPrototypeInstanceContextModel = new VolumeAttachmentPrototypeInstanceContext.Builder()
-      .name("my-volume-attachment")
       .deleteVolumeOnInstanceDelete(true)
+      .name("my-volume-attachment")
       .volume(volumeAttachmentPrototypeInstanceContextVolumeModel)
       .build();
-    assertEquals(volumeAttachmentPrototypeInstanceContextModel.name(), "my-volume-attachment");
     assertEquals(volumeAttachmentPrototypeInstanceContextModel.deleteVolumeOnInstanceDelete(), Boolean.valueOf(true));
+    assertEquals(volumeAttachmentPrototypeInstanceContextModel.name(), "my-volume-attachment");
     assertEquals(volumeAttachmentPrototypeInstanceContextModel.volume(), volumeAttachmentPrototypeInstanceContextVolumeModel);
 
     VPCIdentityById vpcIdentityModel = new VPCIdentityById.Builder()
@@ -135,12 +132,12 @@ public class InstancePrototypeInstanceByImageTest {
     assertEquals(volumePrototypeInstanceByImageContextModel.iops(), Long.valueOf("10000"));
 
     VolumeAttachmentPrototypeInstanceByImageContext volumeAttachmentPrototypeInstanceByImageContextModel = new VolumeAttachmentPrototypeInstanceByImageContext.Builder()
-      .name("my-volume-attachment")
       .deleteVolumeOnInstanceDelete(true)
+      .name("my-volume-attachment")
       .volume(volumePrototypeInstanceByImageContextModel)
       .build();
-    assertEquals(volumeAttachmentPrototypeInstanceByImageContextModel.name(), "my-volume-attachment");
     assertEquals(volumeAttachmentPrototypeInstanceByImageContextModel.deleteVolumeOnInstanceDelete(), Boolean.valueOf(true));
+    assertEquals(volumeAttachmentPrototypeInstanceByImageContextModel.name(), "my-volume-attachment");
     assertEquals(volumeAttachmentPrototypeInstanceByImageContextModel.volume(), volumePrototypeInstanceByImageContextModel);
 
     ImageIdentityById imageIdentityModel = new ImageIdentityById.Builder()

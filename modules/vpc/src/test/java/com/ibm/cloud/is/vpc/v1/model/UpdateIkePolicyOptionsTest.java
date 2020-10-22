@@ -15,13 +15,10 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.UpdateIkePolicyOptions;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
-
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-
 import java.util.HashMap;
 import java.util.List;
-
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
@@ -36,20 +33,10 @@ public class UpdateIkePolicyOptionsTest {
   public void testUpdateIkePolicyOptions() throws Throwable {
     UpdateIkePolicyOptions updateIkePolicyOptionsModel = new UpdateIkePolicyOptions.Builder()
       .id("testString")
-      .name("my-ike-policy")
-      .authenticationAlgorithm("md5")
-      .dhGroup(Long.valueOf("2"))
-      .encryptionAlgorithm("triple_des")
-      .ikeVersion(Long.valueOf("1"))
-      .keyLifetime(Long.valueOf("28800"))
+      .ikePolicyPatch(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
       .build();
     assertEquals(updateIkePolicyOptionsModel.id(), "testString");
-    assertEquals(updateIkePolicyOptionsModel.name(), "my-ike-policy");
-    assertEquals(updateIkePolicyOptionsModel.authenticationAlgorithm(), "md5");
-    assertEquals(updateIkePolicyOptionsModel.dhGroup(), Long.valueOf("2"));
-    assertEquals(updateIkePolicyOptionsModel.encryptionAlgorithm(), "triple_des");
-    assertEquals(updateIkePolicyOptionsModel.ikeVersion(), Long.valueOf("1"));
-    assertEquals(updateIkePolicyOptionsModel.keyLifetime(), Long.valueOf("28800"));
+    assertEquals(updateIkePolicyOptionsModel.ikePolicyPatch(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } });
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

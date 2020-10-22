@@ -15,9 +15,9 @@ package com.ibm.cloud.is.vpc.v1.model;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * The listVpnGatewayConnectionLocalCidrs options.
+ * The listVpnGatewayConnectionLocalCIDRs options.
  */
-public class ListVpnGatewayConnectionLocalCidrsOptions extends GenericModel {
+public class ListVpnGatewayConnectionLocalCIDRsOptions extends GenericModel {
 
   protected String vpnGatewayId;
   protected String id;
@@ -29,9 +29,9 @@ public class ListVpnGatewayConnectionLocalCidrsOptions extends GenericModel {
     private String vpnGatewayId;
     private String id;
 
-    private Builder(ListVpnGatewayConnectionLocalCidrsOptions listVpnGatewayConnectionLocalCidrsOptions) {
-      this.vpnGatewayId = listVpnGatewayConnectionLocalCidrsOptions.vpnGatewayId;
-      this.id = listVpnGatewayConnectionLocalCidrsOptions.id;
+    private Builder(ListVpnGatewayConnectionLocalCIDRsOptions listVpnGatewayConnectionLocalCIDRsOptions) {
+      this.vpnGatewayId = listVpnGatewayConnectionLocalCIDRsOptions.vpnGatewayId;
+      this.id = listVpnGatewayConnectionLocalCIDRsOptions.id;
     }
 
     /**
@@ -52,19 +52,19 @@ public class ListVpnGatewayConnectionLocalCidrsOptions extends GenericModel {
     }
 
     /**
-     * Builds a ListVpnGatewayConnectionLocalCidrsOptions.
+     * Builds a ListVpnGatewayConnectionLocalCIDRsOptions.
      *
-     * @return the new ListVpnGatewayConnectionLocalCidrsOptions instance
+     * @return the new ListVpnGatewayConnectionLocalCIDRsOptions instance
      */
-    public ListVpnGatewayConnectionLocalCidrsOptions build() {
-      return new ListVpnGatewayConnectionLocalCidrsOptions(this);
+    public ListVpnGatewayConnectionLocalCIDRsOptions build() {
+      return new ListVpnGatewayConnectionLocalCIDRsOptions(this);
     }
 
     /**
      * Set the vpnGatewayId.
      *
      * @param vpnGatewayId the vpnGatewayId
-     * @return the ListVpnGatewayConnectionLocalCidrsOptions builder
+     * @return the ListVpnGatewayConnectionLocalCIDRsOptions builder
      */
     public Builder vpnGatewayId(String vpnGatewayId) {
       this.vpnGatewayId = vpnGatewayId;
@@ -75,7 +75,7 @@ public class ListVpnGatewayConnectionLocalCidrsOptions extends GenericModel {
      * Set the id.
      *
      * @param id the id
-     * @return the ListVpnGatewayConnectionLocalCidrsOptions builder
+     * @return the ListVpnGatewayConnectionLocalCIDRsOptions builder
      */
     public Builder id(String id) {
       this.id = id;
@@ -83,7 +83,7 @@ public class ListVpnGatewayConnectionLocalCidrsOptions extends GenericModel {
     }
   }
 
-  protected ListVpnGatewayConnectionLocalCidrsOptions(Builder builder) {
+  protected ListVpnGatewayConnectionLocalCIDRsOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.vpnGatewayId,
       "vpnGatewayId cannot be empty");
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,
@@ -95,7 +95,7 @@ public class ListVpnGatewayConnectionLocalCidrsOptions extends GenericModel {
   /**
    * New builder.
    *
-   * @return a ListVpnGatewayConnectionLocalCidrsOptions builder
+   * @return a ListVpnGatewayConnectionLocalCIDRsOptions builder
    */
   public Builder newBuilder() {
     return new Builder(this);

@@ -12,6 +12,8 @@
  */
 package com.ibm.cloud.is.vpc.v1.model;
 
+import java.util.Map;
+
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
@@ -20,21 +22,18 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class UpdateFlowLogCollectorOptions extends GenericModel {
 
   protected String id;
-  protected String name;
-  protected Boolean active;
+  protected Map<String, Object> flowLogCollectorPatch;
 
   /**
    * Builder.
    */
   public static class Builder {
     private String id;
-    private String name;
-    private Boolean active;
+    private Map<String, Object> flowLogCollectorPatch;
 
     private Builder(UpdateFlowLogCollectorOptions updateFlowLogCollectorOptions) {
       this.id = updateFlowLogCollectorOptions.id;
-      this.name = updateFlowLogCollectorOptions.name;
-      this.active = updateFlowLogCollectorOptions.active;
+      this.flowLogCollectorPatch = updateFlowLogCollectorOptions.flowLogCollectorPatch;
     }
 
     /**
@@ -47,9 +46,11 @@ public class UpdateFlowLogCollectorOptions extends GenericModel {
      * Instantiates a new builder with required properties.
      *
      * @param id the id
+     * @param flowLogCollectorPatch the flowLogCollectorPatch
      */
-    public Builder(String id) {
+    public Builder(String id, Map<String, Object> flowLogCollectorPatch) {
       this.id = id;
+      this.flowLogCollectorPatch = flowLogCollectorPatch;
     }
 
     /**
@@ -73,24 +74,13 @@ public class UpdateFlowLogCollectorOptions extends GenericModel {
     }
 
     /**
-     * Set the name.
+     * Set the flowLogCollectorPatch.
      *
-     * @param name the name
+     * @param flowLogCollectorPatch the flowLogCollectorPatch
      * @return the UpdateFlowLogCollectorOptions builder
      */
-    public Builder name(String name) {
-      this.name = name;
-      return this;
-    }
-
-    /**
-     * Set the active.
-     *
-     * @param active the active
-     * @return the UpdateFlowLogCollectorOptions builder
-     */
-    public Builder active(Boolean active) {
-      this.active = active;
+    public Builder flowLogCollectorPatch(Map<String, Object> flowLogCollectorPatch) {
+      this.flowLogCollectorPatch = flowLogCollectorPatch;
       return this;
     }
   }
@@ -98,9 +88,10 @@ public class UpdateFlowLogCollectorOptions extends GenericModel {
   protected UpdateFlowLogCollectorOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,
       "id cannot be empty");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.flowLogCollectorPatch,
+      "flowLogCollectorPatch cannot be null");
     id = builder.id;
-    name = builder.name;
-    active = builder.active;
+    flowLogCollectorPatch = builder.flowLogCollectorPatch;
   }
 
   /**
@@ -124,26 +115,14 @@ public class UpdateFlowLogCollectorOptions extends GenericModel {
   }
 
   /**
-   * Gets the name.
+   * Gets the flowLogCollectorPatch.
    *
-   * The unique user-defined name for this flow log collector.
+   * The flow log collector patch.
    *
-   * @return the name
+   * @return the flowLogCollectorPatch
    */
-  public String name() {
-    return name;
-  }
-
-  /**
-   * Gets the active.
-   *
-   * Indicates whether this collector is active. Updating to false deactivates the collector and updating to true
-   * activates the collector.
-   *
-   * @return the active
-   */
-  public Boolean active() {
-    return active;
+  public Map<String, Object> flowLogCollectorPatch() {
+    return flowLogCollectorPatch;
   }
 }
 

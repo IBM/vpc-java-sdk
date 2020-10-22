@@ -12,6 +12,8 @@
  */
 package com.ibm.cloud.is.vpc.v1.model;
 
+import java.util.Map;
+
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
@@ -19,35 +21,9 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class UpdateSecurityGroupRuleOptions extends GenericModel {
 
-  /**
-   * The direction of traffic to enforce, either `inbound` or `outbound`.
-   */
-  public interface Direction {
-    /** inbound. */
-    String INBOUND = "inbound";
-    /** outbound. */
-    String OUTBOUND = "outbound";
-  }
-
-  /**
-   * The IP version to enforce. The format of `remote.address` or `remote.cidr_block` must match this field, if they are
-   * used. Alternatively, if `remote` references a security group, then this rule only applies to IP addresses (network
-   * interfaces) in that group matching this IP version.
-   */
-  public interface IpVersion {
-    /** ipv4. */
-    String IPV4 = "ipv4";
-  }
-
   protected String securityGroupId;
   protected String id;
-  protected SecurityGroupRulePatchRemote remote;
-  protected String direction;
-  protected String ipVersion;
-  protected Long code;
-  protected Long portMax;
-  protected Long portMin;
-  protected Long type;
+  protected Map<String, Object> securityGroupRulePatch;
 
   /**
    * Builder.
@@ -55,24 +31,12 @@ public class UpdateSecurityGroupRuleOptions extends GenericModel {
   public static class Builder {
     private String securityGroupId;
     private String id;
-    private SecurityGroupRulePatchRemote remote;
-    private String direction;
-    private String ipVersion;
-    private Long code;
-    private Long portMax;
-    private Long portMin;
-    private Long type;
+    private Map<String, Object> securityGroupRulePatch;
 
     private Builder(UpdateSecurityGroupRuleOptions updateSecurityGroupRuleOptions) {
       this.securityGroupId = updateSecurityGroupRuleOptions.securityGroupId;
       this.id = updateSecurityGroupRuleOptions.id;
-      this.remote = updateSecurityGroupRuleOptions.remote;
-      this.direction = updateSecurityGroupRuleOptions.direction;
-      this.ipVersion = updateSecurityGroupRuleOptions.ipVersion;
-      this.code = updateSecurityGroupRuleOptions.code;
-      this.portMax = updateSecurityGroupRuleOptions.portMax;
-      this.portMin = updateSecurityGroupRuleOptions.portMin;
-      this.type = updateSecurityGroupRuleOptions.type;
+      this.securityGroupRulePatch = updateSecurityGroupRuleOptions.securityGroupRulePatch;
     }
 
     /**
@@ -86,10 +50,12 @@ public class UpdateSecurityGroupRuleOptions extends GenericModel {
      *
      * @param securityGroupId the securityGroupId
      * @param id the id
+     * @param securityGroupRulePatch the securityGroupRulePatch
      */
-    public Builder(String securityGroupId, String id) {
+    public Builder(String securityGroupId, String id, Map<String, Object> securityGroupRulePatch) {
       this.securityGroupId = securityGroupId;
       this.id = id;
+      this.securityGroupRulePatch = securityGroupRulePatch;
     }
 
     /**
@@ -124,79 +90,13 @@ public class UpdateSecurityGroupRuleOptions extends GenericModel {
     }
 
     /**
-     * Set the remote.
+     * Set the securityGroupRulePatch.
      *
-     * @param remote the remote
+     * @param securityGroupRulePatch the securityGroupRulePatch
      * @return the UpdateSecurityGroupRuleOptions builder
      */
-    public Builder remote(SecurityGroupRulePatchRemote remote) {
-      this.remote = remote;
-      return this;
-    }
-
-    /**
-     * Set the direction.
-     *
-     * @param direction the direction
-     * @return the UpdateSecurityGroupRuleOptions builder
-     */
-    public Builder direction(String direction) {
-      this.direction = direction;
-      return this;
-    }
-
-    /**
-     * Set the ipVersion.
-     *
-     * @param ipVersion the ipVersion
-     * @return the UpdateSecurityGroupRuleOptions builder
-     */
-    public Builder ipVersion(String ipVersion) {
-      this.ipVersion = ipVersion;
-      return this;
-    }
-
-    /**
-     * Set the code.
-     *
-     * @param code the code
-     * @return the UpdateSecurityGroupRuleOptions builder
-     */
-    public Builder code(long code) {
-      this.code = code;
-      return this;
-    }
-
-    /**
-     * Set the portMax.
-     *
-     * @param portMax the portMax
-     * @return the UpdateSecurityGroupRuleOptions builder
-     */
-    public Builder portMax(long portMax) {
-      this.portMax = portMax;
-      return this;
-    }
-
-    /**
-     * Set the portMin.
-     *
-     * @param portMin the portMin
-     * @return the UpdateSecurityGroupRuleOptions builder
-     */
-    public Builder portMin(long portMin) {
-      this.portMin = portMin;
-      return this;
-    }
-
-    /**
-     * Set the type.
-     *
-     * @param type the type
-     * @return the UpdateSecurityGroupRuleOptions builder
-     */
-    public Builder type(long type) {
-      this.type = type;
+    public Builder securityGroupRulePatch(Map<String, Object> securityGroupRulePatch) {
+      this.securityGroupRulePatch = securityGroupRulePatch;
       return this;
     }
   }
@@ -206,15 +106,11 @@ public class UpdateSecurityGroupRuleOptions extends GenericModel {
       "securityGroupId cannot be empty");
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,
       "id cannot be empty");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.securityGroupRulePatch,
+      "securityGroupRulePatch cannot be null");
     securityGroupId = builder.securityGroupId;
     id = builder.id;
-    remote = builder.remote;
-    direction = builder.direction;
-    ipVersion = builder.ipVersion;
-    code = builder.code;
-    portMax = builder.portMax;
-    portMin = builder.portMin;
-    type = builder.type;
+    securityGroupRulePatch = builder.securityGroupRulePatch;
   }
 
   /**
@@ -249,85 +145,14 @@ public class UpdateSecurityGroupRuleOptions extends GenericModel {
   }
 
   /**
-   * Gets the remote.
+   * Gets the securityGroupRulePatch.
    *
-   * The IP addresses or security groups from which this rule will allow traffic (or to
-   * which, for outbound rules). Can be specified as an IP address, a CIDR block, or a
-   * security group. A CIDR block of `0.0.0.0/0` will allow traffic from any source (or to
-   * any source, for outbound rules).
+   * The security group rule patch.
    *
-   * @return the remote
+   * @return the securityGroupRulePatch
    */
-  public SecurityGroupRulePatchRemote remote() {
-    return remote;
-  }
-
-  /**
-   * Gets the direction.
-   *
-   * The direction of traffic to enforce, either `inbound` or `outbound`.
-   *
-   * @return the direction
-   */
-  public String direction() {
-    return direction;
-  }
-
-  /**
-   * Gets the ipVersion.
-   *
-   * The IP version to enforce. The format of `remote.address` or `remote.cidr_block` must match this field, if they are
-   * used. Alternatively, if `remote` references a security group, then this rule only applies to IP addresses (network
-   * interfaces) in that group matching this IP version.
-   *
-   * @return the ipVersion
-   */
-  public String ipVersion() {
-    return ipVersion;
-  }
-
-  /**
-   * Gets the code.
-   *
-   * The ICMP traffic code to allow.
-   *
-   * @return the code
-   */
-  public Long code() {
-    return code;
-  }
-
-  /**
-   * Gets the portMax.
-   *
-   * The inclusive upper bound of TCP/UDP port range.
-   *
-   * @return the portMax
-   */
-  public Long portMax() {
-    return portMax;
-  }
-
-  /**
-   * Gets the portMin.
-   *
-   * The inclusive lower bound of TCP/UDP port range.
-   *
-   * @return the portMin
-   */
-  public Long portMin() {
-    return portMin;
-  }
-
-  /**
-   * Gets the type.
-   *
-   * The ICMP traffic type to allow.
-   *
-   * @return the type
-   */
-  public Long type() {
-    return type;
+  public Map<String, Object> securityGroupRulePatch() {
+    return securityGroupRulePatch;
   }
 }
 

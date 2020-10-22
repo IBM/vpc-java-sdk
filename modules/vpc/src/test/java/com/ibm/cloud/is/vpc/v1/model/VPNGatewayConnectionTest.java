@@ -18,13 +18,10 @@ import com.ibm.cloud.is.vpc.v1.model.IPsecPolicyReference;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnection;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionDPD;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
-
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-
 import java.util.HashMap;
 import java.util.List;
-
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
@@ -45,8 +42,8 @@ public class VPNGatewayConnectionTest {
     assertNull(vpnGatewayConnectionModel.isAdminStateUp());
     assertNull(vpnGatewayConnectionModel.getPeerAddress());
     assertNull(vpnGatewayConnectionModel.getPsk());
-    assertNull(vpnGatewayConnectionModel.getLocalCidrs());
-    assertNull(vpnGatewayConnectionModel.getPeerCidrs());
+    assertNull(vpnGatewayConnectionModel.getLocalCIDRs());
+    assertNull(vpnGatewayConnectionModel.getPeerCIDRs());
     assertNull(vpnGatewayConnectionModel.getRouteMode());
     assertNull(vpnGatewayConnectionModel.getAuthenticationMode());
     assertNull(vpnGatewayConnectionModel.getStatus());

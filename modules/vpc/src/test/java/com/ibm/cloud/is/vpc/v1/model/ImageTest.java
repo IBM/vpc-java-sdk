@@ -13,18 +13,16 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.ibm.cloud.is.vpc.v1.model.EncryptionKeyReference;
 import com.ibm.cloud.is.vpc.v1.model.Image;
 import com.ibm.cloud.is.vpc.v1.model.ImageFile;
 import com.ibm.cloud.is.vpc.v1.model.OperatingSystem;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
-
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-
 import java.util.HashMap;
 import java.util.List;
-
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
@@ -44,6 +42,8 @@ public class ImageTest {
     assertNull(imageModel.getName());
     assertNull(imageModel.getMinimumProvisionedSize());
     assertNull(imageModel.getResourceGroup());
+    assertNull(imageModel.getEncryption());
+    assertNull(imageModel.getEncryptionKey());
     assertNull(imageModel.getCreatedAt());
     assertNull(imageModel.getFile());
     assertNull(imageModel.getOperatingSystem());

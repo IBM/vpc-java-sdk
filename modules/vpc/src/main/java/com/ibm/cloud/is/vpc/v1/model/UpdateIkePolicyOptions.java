@@ -12,6 +12,8 @@
  */
 package com.ibm.cloud.is.vpc.v1.model;
 
+import java.util.Map;
+
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
@@ -19,58 +21,19 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class UpdateIkePolicyOptions extends GenericModel {
 
-  /**
-   * The authentication algorithm.
-   */
-  public interface AuthenticationAlgorithm {
-    /** md5. */
-    String MD5 = "md5";
-    /** sha1. */
-    String SHA1 = "sha1";
-    /** sha256. */
-    String SHA256 = "sha256";
-  }
-
-  /**
-   * The encryption algorithm.
-   */
-  public interface EncryptionAlgorithm {
-    /** triple_des. */
-    String TRIPLE_DES = "triple_des";
-    /** aes128. */
-    String AES128 = "aes128";
-    /** aes256. */
-    String AES256 = "aes256";
-  }
-
   protected String id;
-  protected String name;
-  protected String authenticationAlgorithm;
-  protected Long dhGroup;
-  protected String encryptionAlgorithm;
-  protected Long ikeVersion;
-  protected Long keyLifetime;
+  protected Map<String, Object> ikePolicyPatch;
 
   /**
    * Builder.
    */
   public static class Builder {
     private String id;
-    private String name;
-    private String authenticationAlgorithm;
-    private Long dhGroup;
-    private String encryptionAlgorithm;
-    private Long ikeVersion;
-    private Long keyLifetime;
+    private Map<String, Object> ikePolicyPatch;
 
     private Builder(UpdateIkePolicyOptions updateIkePolicyOptions) {
       this.id = updateIkePolicyOptions.id;
-      this.name = updateIkePolicyOptions.name;
-      this.authenticationAlgorithm = updateIkePolicyOptions.authenticationAlgorithm;
-      this.dhGroup = updateIkePolicyOptions.dhGroup;
-      this.encryptionAlgorithm = updateIkePolicyOptions.encryptionAlgorithm;
-      this.ikeVersion = updateIkePolicyOptions.ikeVersion;
-      this.keyLifetime = updateIkePolicyOptions.keyLifetime;
+      this.ikePolicyPatch = updateIkePolicyOptions.ikePolicyPatch;
     }
 
     /**
@@ -83,9 +46,11 @@ public class UpdateIkePolicyOptions extends GenericModel {
      * Instantiates a new builder with required properties.
      *
      * @param id the id
+     * @param ikePolicyPatch the ikePolicyPatch
      */
-    public Builder(String id) {
+    public Builder(String id, Map<String, Object> ikePolicyPatch) {
       this.id = id;
+      this.ikePolicyPatch = ikePolicyPatch;
     }
 
     /**
@@ -109,68 +74,13 @@ public class UpdateIkePolicyOptions extends GenericModel {
     }
 
     /**
-     * Set the name.
+     * Set the ikePolicyPatch.
      *
-     * @param name the name
+     * @param ikePolicyPatch the ikePolicyPatch
      * @return the UpdateIkePolicyOptions builder
      */
-    public Builder name(String name) {
-      this.name = name;
-      return this;
-    }
-
-    /**
-     * Set the authenticationAlgorithm.
-     *
-     * @param authenticationAlgorithm the authenticationAlgorithm
-     * @return the UpdateIkePolicyOptions builder
-     */
-    public Builder authenticationAlgorithm(String authenticationAlgorithm) {
-      this.authenticationAlgorithm = authenticationAlgorithm;
-      return this;
-    }
-
-    /**
-     * Set the dhGroup.
-     *
-     * @param dhGroup the dhGroup
-     * @return the UpdateIkePolicyOptions builder
-     */
-    public Builder dhGroup(long dhGroup) {
-      this.dhGroup = dhGroup;
-      return this;
-    }
-
-    /**
-     * Set the encryptionAlgorithm.
-     *
-     * @param encryptionAlgorithm the encryptionAlgorithm
-     * @return the UpdateIkePolicyOptions builder
-     */
-    public Builder encryptionAlgorithm(String encryptionAlgorithm) {
-      this.encryptionAlgorithm = encryptionAlgorithm;
-      return this;
-    }
-
-    /**
-     * Set the ikeVersion.
-     *
-     * @param ikeVersion the ikeVersion
-     * @return the UpdateIkePolicyOptions builder
-     */
-    public Builder ikeVersion(long ikeVersion) {
-      this.ikeVersion = ikeVersion;
-      return this;
-    }
-
-    /**
-     * Set the keyLifetime.
-     *
-     * @param keyLifetime the keyLifetime
-     * @return the UpdateIkePolicyOptions builder
-     */
-    public Builder keyLifetime(long keyLifetime) {
-      this.keyLifetime = keyLifetime;
+    public Builder ikePolicyPatch(Map<String, Object> ikePolicyPatch) {
+      this.ikePolicyPatch = ikePolicyPatch;
       return this;
     }
   }
@@ -178,13 +88,10 @@ public class UpdateIkePolicyOptions extends GenericModel {
   protected UpdateIkePolicyOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,
       "id cannot be empty");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.ikePolicyPatch,
+      "ikePolicyPatch cannot be null");
     id = builder.id;
-    name = builder.name;
-    authenticationAlgorithm = builder.authenticationAlgorithm;
-    dhGroup = builder.dhGroup;
-    encryptionAlgorithm = builder.encryptionAlgorithm;
-    ikeVersion = builder.ikeVersion;
-    keyLifetime = builder.keyLifetime;
+    ikePolicyPatch = builder.ikePolicyPatch;
   }
 
   /**
@@ -208,69 +115,14 @@ public class UpdateIkePolicyOptions extends GenericModel {
   }
 
   /**
-   * Gets the name.
+   * Gets the ikePolicyPatch.
    *
-   * The user-defined name for this IKE policy.
+   * The IKE policy patch.
    *
-   * @return the name
+   * @return the ikePolicyPatch
    */
-  public String name() {
-    return name;
-  }
-
-  /**
-   * Gets the authenticationAlgorithm.
-   *
-   * The authentication algorithm.
-   *
-   * @return the authenticationAlgorithm
-   */
-  public String authenticationAlgorithm() {
-    return authenticationAlgorithm;
-  }
-
-  /**
-   * Gets the dhGroup.
-   *
-   * The Diffie-Hellman group.
-   *
-   * @return the dhGroup
-   */
-  public Long dhGroup() {
-    return dhGroup;
-  }
-
-  /**
-   * Gets the encryptionAlgorithm.
-   *
-   * The encryption algorithm.
-   *
-   * @return the encryptionAlgorithm
-   */
-  public String encryptionAlgorithm() {
-    return encryptionAlgorithm;
-  }
-
-  /**
-   * Gets the ikeVersion.
-   *
-   * The IKE protocol version.
-   *
-   * @return the ikeVersion
-   */
-  public Long ikeVersion() {
-    return ikeVersion;
-  }
-
-  /**
-   * Gets the keyLifetime.
-   *
-   * The key lifetime in seconds.
-   *
-   * @return the keyLifetime
-   */
-  public Long keyLifetime() {
-    return keyLifetime;
+  public Map<String, Object> ikePolicyPatch() {
+    return ikePolicyPatch;
   }
 }
 

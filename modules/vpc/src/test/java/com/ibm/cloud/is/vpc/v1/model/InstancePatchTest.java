@@ -13,29 +13,45 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
-import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetReferenceLoadBalancerListenerPolicyRedirectURL;
+import com.ibm.cloud.is.vpc.v1.model.InstancePatch;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
-
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-
 import java.util.HashMap;
 import java.util.List;
-
+import java.util.Map;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
 /**
- * Unit test class for the LoadBalancerListenerPolicyTargetReferenceLoadBalancerListenerPolicyRedirectURL model.
+ * Unit test class for the InstancePatch model.
  */
-public class LoadBalancerListenerPolicyTargetReferenceLoadBalancerListenerPolicyRedirectURLTest {
+public class InstancePatchTest {
   final HashMap<String, InputStream> mockStreamMap = TestUtilities.createMockStreamMap();
   final List<FileWithMetadata> mockListFileWithMetadata = TestUtilities.creatMockListFileWithMetadata();
 
   @Test
-  public void testLoadBalancerListenerPolicyTargetReferenceLoadBalancerListenerPolicyRedirectURL() throws Throwable {
-    LoadBalancerListenerPolicyTargetReferenceLoadBalancerListenerPolicyRedirectURL loadBalancerListenerPolicyTargetReferenceLoadBalancerListenerPolicyRedirectUrlModel = new LoadBalancerListenerPolicyTargetReferenceLoadBalancerListenerPolicyRedirectURL();
-    assertNull(loadBalancerListenerPolicyTargetReferenceLoadBalancerListenerPolicyRedirectUrlModel.getHttpStatusCode());
-    assertNull(loadBalancerListenerPolicyTargetReferenceLoadBalancerListenerPolicyRedirectUrlModel.getUrl());
+  public void testInstancePatch() throws Throwable {
+    InstancePatch instancePatchModel = new InstancePatch.Builder()
+      .name("my-instance")
+      .build();
+    assertEquals(instancePatchModel.name(), "my-instance");
+
+    String json = TestUtilities.serialize(instancePatchModel);
+
+    InstancePatch instancePatchModelNew = TestUtilities.deserialize(json, InstancePatch.class);
+    assertTrue(instancePatchModelNew instanceof InstancePatch);
+    assertEquals(instancePatchModelNew.name(), "my-instance");
   }
+  @Test
+  public void testInstancePatchAsPatch() throws Throwable {
+    InstancePatch instancePatchModel = new InstancePatch.Builder()
+      .name("my-instance")
+      .build();
+
+    Map<String, Object> mergePatch = instancePatchModel.asPatch();
+
+    assertEquals(mergePatch.get("name"), "my-instance");
+  }
+
 }

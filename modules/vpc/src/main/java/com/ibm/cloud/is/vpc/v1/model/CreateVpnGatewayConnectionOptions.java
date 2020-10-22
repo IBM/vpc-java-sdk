@@ -30,8 +30,8 @@ public class CreateVpnGatewayConnectionOptions extends GenericModel {
   protected VPNGatewayConnectionDPDPrototype deadPeerDetection;
   protected IKEPolicyIdentity ikePolicy;
   protected IPsecPolicyIdentity ipsecPolicy;
-  protected List<String> localCidrs;
-  protected List<String> peerCidrs;
+  protected List<String> localCIDRs;
+  protected List<String> peerCIDRs;
 
   /**
    * Builder.
@@ -45,8 +45,8 @@ public class CreateVpnGatewayConnectionOptions extends GenericModel {
     private VPNGatewayConnectionDPDPrototype deadPeerDetection;
     private IKEPolicyIdentity ikePolicy;
     private IPsecPolicyIdentity ipsecPolicy;
-    private List<String> localCidrs;
-    private List<String> peerCidrs;
+    private List<String> localCIDRs;
+    private List<String> peerCIDRs;
 
     private Builder(CreateVpnGatewayConnectionOptions createVpnGatewayConnectionOptions) {
       this.vpnGatewayId = createVpnGatewayConnectionOptions.vpnGatewayId;
@@ -57,8 +57,8 @@ public class CreateVpnGatewayConnectionOptions extends GenericModel {
       this.deadPeerDetection = createVpnGatewayConnectionOptions.deadPeerDetection;
       this.ikePolicy = createVpnGatewayConnectionOptions.ikePolicy;
       this.ipsecPolicy = createVpnGatewayConnectionOptions.ipsecPolicy;
-      this.localCidrs = createVpnGatewayConnectionOptions.localCidrs;
-      this.peerCidrs = createVpnGatewayConnectionOptions.peerCidrs;
+      this.localCIDRs = createVpnGatewayConnectionOptions.localCIDRs;
+      this.peerCIDRs = createVpnGatewayConnectionOptions.peerCIDRs;
     }
 
     /**
@@ -90,34 +90,34 @@ public class CreateVpnGatewayConnectionOptions extends GenericModel {
     }
 
     /**
-     * Adds an localCidrs to localCidrs.
+     * Adds an localCIDRs to localCIDRs.
      *
-     * @param localCidrs the new localCidrs
+     * @param localCIDRs the new localCIDRs
      * @return the CreateVpnGatewayConnectionOptions builder
      */
-    public Builder addLocalCidrs(String localCidrs) {
-      com.ibm.cloud.sdk.core.util.Validator.notNull(localCidrs,
-        "localCidrs cannot be null");
-      if (this.localCidrs == null) {
-        this.localCidrs = new ArrayList<String>();
+    public Builder addLocalCIDRs(String localCIDRs) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(localCIDRs,
+        "localCIDRs cannot be null");
+      if (this.localCIDRs == null) {
+        this.localCIDRs = new ArrayList<String>();
       }
-      this.localCidrs.add(localCidrs);
+      this.localCIDRs.add(localCIDRs);
       return this;
     }
 
     /**
-     * Adds an peerCidrs to peerCidrs.
+     * Adds an peerCIDRs to peerCIDRs.
      *
-     * @param peerCidrs the new peerCidrs
+     * @param peerCIDRs the new peerCIDRs
      * @return the CreateVpnGatewayConnectionOptions builder
      */
-    public Builder addPeerCidrs(String peerCidrs) {
-      com.ibm.cloud.sdk.core.util.Validator.notNull(peerCidrs,
-        "peerCidrs cannot be null");
-      if (this.peerCidrs == null) {
-        this.peerCidrs = new ArrayList<String>();
+    public Builder addPeerCIDRs(String peerCIDRs) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(peerCIDRs,
+        "peerCIDRs cannot be null");
+      if (this.peerCIDRs == null) {
+        this.peerCIDRs = new ArrayList<String>();
       }
-      this.peerCidrs.add(peerCidrs);
+      this.peerCIDRs.add(peerCIDRs);
       return this;
     }
 
@@ -210,26 +210,26 @@ public class CreateVpnGatewayConnectionOptions extends GenericModel {
     }
 
     /**
-     * Set the localCidrs.
-     * Existing localCidrs will be replaced.
+     * Set the localCIDRs.
+     * Existing localCIDRs will be replaced.
      *
-     * @param localCidrs the localCidrs
+     * @param localCIDRs the localCIDRs
      * @return the CreateVpnGatewayConnectionOptions builder
      */
-    public Builder localCidrs(List<String> localCidrs) {
-      this.localCidrs = localCidrs;
+    public Builder localCIDRs(List<String> localCIDRs) {
+      this.localCIDRs = localCIDRs;
       return this;
     }
 
     /**
-     * Set the peerCidrs.
-     * Existing peerCidrs will be replaced.
+     * Set the peerCIDRs.
+     * Existing peerCIDRs will be replaced.
      *
-     * @param peerCidrs the peerCidrs
+     * @param peerCIDRs the peerCIDRs
      * @return the CreateVpnGatewayConnectionOptions builder
      */
-    public Builder peerCidrs(List<String> peerCidrs) {
-      this.peerCidrs = peerCidrs;
+    public Builder peerCIDRs(List<String> peerCIDRs) {
+      this.peerCIDRs = peerCIDRs;
       return this;
     }
   }
@@ -249,8 +249,8 @@ public class CreateVpnGatewayConnectionOptions extends GenericModel {
     deadPeerDetection = builder.deadPeerDetection;
     ikePolicy = builder.ikePolicy;
     ipsecPolicy = builder.ipsecPolicy;
-    localCidrs = builder.localCidrs;
-    peerCidrs = builder.peerCidrs;
+    localCIDRs = builder.localCIDRs;
+    peerCIDRs = builder.peerCIDRs;
   }
 
   /**
@@ -352,25 +352,25 @@ public class CreateVpnGatewayConnectionOptions extends GenericModel {
   }
 
   /**
-   * Gets the localCidrs.
+   * Gets the localCIDRs.
    *
    * A collection of local CIDRs for this resource.
    *
-   * @return the localCidrs
+   * @return the localCIDRs
    */
-  public List<String> localCidrs() {
-    return localCidrs;
+  public List<String> localCIDRs() {
+    return localCIDRs;
   }
 
   /**
-   * Gets the peerCidrs.
+   * Gets the peerCIDRs.
    *
    * A collection of peer CIDRs for this resource.
    *
-   * @return the peerCidrs
+   * @return the peerCIDRs
    */
-  public List<String> peerCidrs() {
-    return peerCidrs;
+  public List<String> peerCIDRs() {
+    return peerCIDRs;
   }
 }
 

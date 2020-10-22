@@ -12,6 +12,8 @@
  */
 package com.ibm.cloud.is.vpc.v1.model;
 
+import java.util.Map;
+
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
@@ -20,18 +22,18 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class UpdateSecurityGroupOptions extends GenericModel {
 
   protected String id;
-  protected String name;
+  protected Map<String, Object> securityGroupPatch;
 
   /**
    * Builder.
    */
   public static class Builder {
     private String id;
-    private String name;
+    private Map<String, Object> securityGroupPatch;
 
     private Builder(UpdateSecurityGroupOptions updateSecurityGroupOptions) {
       this.id = updateSecurityGroupOptions.id;
-      this.name = updateSecurityGroupOptions.name;
+      this.securityGroupPatch = updateSecurityGroupOptions.securityGroupPatch;
     }
 
     /**
@@ -44,9 +46,11 @@ public class UpdateSecurityGroupOptions extends GenericModel {
      * Instantiates a new builder with required properties.
      *
      * @param id the id
+     * @param securityGroupPatch the securityGroupPatch
      */
-    public Builder(String id) {
+    public Builder(String id, Map<String, Object> securityGroupPatch) {
       this.id = id;
+      this.securityGroupPatch = securityGroupPatch;
     }
 
     /**
@@ -70,13 +74,13 @@ public class UpdateSecurityGroupOptions extends GenericModel {
     }
 
     /**
-     * Set the name.
+     * Set the securityGroupPatch.
      *
-     * @param name the name
+     * @param securityGroupPatch the securityGroupPatch
      * @return the UpdateSecurityGroupOptions builder
      */
-    public Builder name(String name) {
-      this.name = name;
+    public Builder securityGroupPatch(Map<String, Object> securityGroupPatch) {
+      this.securityGroupPatch = securityGroupPatch;
       return this;
     }
   }
@@ -84,8 +88,10 @@ public class UpdateSecurityGroupOptions extends GenericModel {
   protected UpdateSecurityGroupOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,
       "id cannot be empty");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.securityGroupPatch,
+      "securityGroupPatch cannot be null");
     id = builder.id;
-    name = builder.name;
+    securityGroupPatch = builder.securityGroupPatch;
   }
 
   /**
@@ -109,14 +115,14 @@ public class UpdateSecurityGroupOptions extends GenericModel {
   }
 
   /**
-   * Gets the name.
+   * Gets the securityGroupPatch.
    *
-   * The user-defined name for this security group. Names must be unique within the VPC the security group resides in.
+   * The security group patch.
    *
-   * @return the name
+   * @return the securityGroupPatch
    */
-  public String name() {
-    return name;
+  public Map<String, Object> securityGroupPatch() {
+    return securityGroupPatch;
   }
 }
 

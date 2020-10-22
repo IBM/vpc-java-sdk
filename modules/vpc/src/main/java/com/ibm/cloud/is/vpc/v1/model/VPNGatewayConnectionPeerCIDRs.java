@@ -23,17 +23,17 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class VPNGatewayConnectionPeerCIDRs extends GenericModel {
 
   @SerializedName("peer_cidrs")
-  protected List<String> peerCidrs;
+  protected List<String> peerCIDRs;
 
   /**
-   * Gets the peerCidrs.
+   * Gets the peerCIDRs.
    *
    * A collection of peer CIDRs for this resource.
    *
-   * @return the peerCidrs
+   * @return the peerCIDRs
    */
-  public List<String> getPeerCidrs() {
-    return peerCidrs;
+  public List<String> getPeerCIDRs() {
+    return peerCIDRs;
   }
 }
 

@@ -23,17 +23,17 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class VPNGatewayConnectionLocalCIDRs extends GenericModel {
 
   @SerializedName("local_cidrs")
-  protected List<String> localCidrs;
+  protected List<String> localCIDRs;
 
   /**
-   * Gets the localCidrs.
+   * Gets the localCIDRs.
    *
    * A collection of local CIDRs for this resource.
    *
-   * @return the localCidrs
+   * @return the localCIDRs
    */
-  public List<String> getLocalCidrs() {
-    return localCidrs;
+  public List<String> getLocalCIDRs() {
+    return localCIDRs;
   }
 }
 

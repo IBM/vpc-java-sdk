@@ -12,6 +12,8 @@
  */
 package com.ibm.cloud.is.vpc.v1.model;
 
+import java.util.Map;
+
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
@@ -20,18 +22,18 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class UpdatePublicGatewayOptions extends GenericModel {
 
   protected String id;
-  protected String name;
+  protected Map<String, Object> publicGatewayPatch;
 
   /**
    * Builder.
    */
   public static class Builder {
     private String id;
-    private String name;
+    private Map<String, Object> publicGatewayPatch;
 
     private Builder(UpdatePublicGatewayOptions updatePublicGatewayOptions) {
       this.id = updatePublicGatewayOptions.id;
-      this.name = updatePublicGatewayOptions.name;
+      this.publicGatewayPatch = updatePublicGatewayOptions.publicGatewayPatch;
     }
 
     /**
@@ -44,9 +46,11 @@ public class UpdatePublicGatewayOptions extends GenericModel {
      * Instantiates a new builder with required properties.
      *
      * @param id the id
+     * @param publicGatewayPatch the publicGatewayPatch
      */
-    public Builder(String id) {
+    public Builder(String id, Map<String, Object> publicGatewayPatch) {
       this.id = id;
+      this.publicGatewayPatch = publicGatewayPatch;
     }
 
     /**
@@ -70,13 +74,13 @@ public class UpdatePublicGatewayOptions extends GenericModel {
     }
 
     /**
-     * Set the name.
+     * Set the publicGatewayPatch.
      *
-     * @param name the name
+     * @param publicGatewayPatch the publicGatewayPatch
      * @return the UpdatePublicGatewayOptions builder
      */
-    public Builder name(String name) {
-      this.name = name;
+    public Builder publicGatewayPatch(Map<String, Object> publicGatewayPatch) {
+      this.publicGatewayPatch = publicGatewayPatch;
       return this;
     }
   }
@@ -84,8 +88,10 @@ public class UpdatePublicGatewayOptions extends GenericModel {
   protected UpdatePublicGatewayOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,
       "id cannot be empty");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.publicGatewayPatch,
+      "publicGatewayPatch cannot be null");
     id = builder.id;
-    name = builder.name;
+    publicGatewayPatch = builder.publicGatewayPatch;
   }
 
   /**
@@ -109,14 +115,14 @@ public class UpdatePublicGatewayOptions extends GenericModel {
   }
 
   /**
-   * Gets the name.
+   * Gets the publicGatewayPatch.
    *
-   * The user-defined name for this public gateway. Names must be unique within the VPC the public gateway resides in.
+   * The public gateway patch.
    *
-   * @return the name
+   * @return the publicGatewayPatch
    */
-  public String name() {
-    return name;
+  public Map<String, Object> publicGatewayPatch() {
+    return publicGatewayPatch;
   }
 }
 

@@ -63,7 +63,7 @@ public class LoadBalancerListenerPolicy extends GenericModel {
   @SerializedName("provisioning_status")
   protected String provisioningStatus;
   protected List<LoadBalancerListenerPolicyRuleReference> rules;
-  protected LoadBalancerListenerPolicyTargetReference target;
+  protected LoadBalancerListenerPolicyTarget target;
 
   /**
    * Gets the id.
@@ -161,7 +161,7 @@ public class LoadBalancerListenerPolicy extends GenericModel {
    *
    * @return the target
    */
-  public LoadBalancerListenerPolicyTargetReference getTarget() {
+  public LoadBalancerListenerPolicyTarget getTarget() {
     return target;
   }
 }

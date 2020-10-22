@@ -15,13 +15,10 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.UpdateIpsecPolicyOptions;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
-
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-
 import java.util.HashMap;
 import java.util.List;
-
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
@@ -36,18 +33,10 @@ public class UpdateIpsecPolicyOptionsTest {
   public void testUpdateIpsecPolicyOptions() throws Throwable {
     UpdateIpsecPolicyOptions updateIpsecPolicyOptionsModel = new UpdateIpsecPolicyOptions.Builder()
       .id("testString")
-      .name("my-ipsec-policy")
-      .authenticationAlgorithm("md5")
-      .encryptionAlgorithm("triple_des")
-      .keyLifetime(Long.valueOf("3600"))
-      .pfs("disabled")
+      .iPsecPolicyPatch(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
       .build();
     assertEquals(updateIpsecPolicyOptionsModel.id(), "testString");
-    assertEquals(updateIpsecPolicyOptionsModel.name(), "my-ipsec-policy");
-    assertEquals(updateIpsecPolicyOptionsModel.authenticationAlgorithm(), "md5");
-    assertEquals(updateIpsecPolicyOptionsModel.encryptionAlgorithm(), "triple_des");
-    assertEquals(updateIpsecPolicyOptionsModel.keyLifetime(), Long.valueOf("3600"));
-    assertEquals(updateIpsecPolicyOptionsModel.pfs(), "disabled");
+    assertEquals(updateIpsecPolicyOptionsModel.iPsecPolicyPatch(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } });
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

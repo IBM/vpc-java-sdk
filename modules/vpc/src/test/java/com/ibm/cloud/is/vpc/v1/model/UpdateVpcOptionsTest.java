@@ -15,13 +15,10 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.UpdateVpcOptions;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
-
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-
 import java.util.HashMap;
 import java.util.List;
-
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
@@ -36,10 +33,10 @@ public class UpdateVpcOptionsTest {
   public void testUpdateVpcOptions() throws Throwable {
     UpdateVpcOptions updateVpcOptionsModel = new UpdateVpcOptions.Builder()
       .id("testString")
-      .name("my-vpc")
+      .vpcPatch(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
       .build();
     assertEquals(updateVpcOptionsModel.id(), "testString");
-    assertEquals(updateVpcOptionsModel.name(), "my-vpc");
+    assertEquals(updateVpcOptionsModel.vpcPatch(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } });
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

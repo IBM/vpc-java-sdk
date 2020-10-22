@@ -2,4 +2,4 @@ package:
 	mvn package
 
 install:
-	mvn clean install
+	mvn clean install -DskipITs

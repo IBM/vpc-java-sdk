@@ -21,6 +21,7 @@ import com.ibm.cloud.is.vpc.v1.model.AddressPrefix;
 import com.ibm.cloud.is.vpc.v1.model.AddressPrefixCollection;
 import com.ibm.cloud.is.vpc.v1.model.AddressPrefixCollectionFirst;
 import com.ibm.cloud.is.vpc.v1.model.AddressPrefixCollectionNext;
+import com.ibm.cloud.is.vpc.v1.model.AddressPrefixPatch;
 import com.ibm.cloud.is.vpc.v1.model.CertificateInstanceIdentity;
 import com.ibm.cloud.is.vpc.v1.model.CertificateInstanceIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.CertificateInstanceReference;
@@ -107,6 +108,7 @@ import com.ibm.cloud.is.vpc.v1.model.FloatingIPByTargetTargetNetworkInterfaceIde
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPCollection;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPCollectionFirst;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPCollectionNext;
+import com.ibm.cloud.is.vpc.v1.model.FloatingIPPatch;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPPatchTargetNetworkInterfaceIdentity;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPPatchTargetNetworkInterfaceIdentityNetworkInterfaceIdentityByHref;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPPatchTargetNetworkInterfaceIdentityNetworkInterfaceIdentityById;
@@ -122,6 +124,7 @@ import com.ibm.cloud.is.vpc.v1.model.FlowLogCollector;
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorCollection;
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorCollectionFirst;
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorCollectionNext;
+import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorPatch;
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorPrototypeTarget;
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorPrototypeTargetInstanceIdentity;
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorPrototypeTargetInstanceIdentityInstanceIdentityByCRN;
@@ -196,6 +199,7 @@ import com.ibm.cloud.is.vpc.v1.model.IKEPolicyCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.IKEPolicyIdentity;
 import com.ibm.cloud.is.vpc.v1.model.IKEPolicyIdentityByHref;
 import com.ibm.cloud.is.vpc.v1.model.IKEPolicyIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.IKEPolicyPatch;
 import com.ibm.cloud.is.vpc.v1.model.IKEPolicyReference;
 import com.ibm.cloud.is.vpc.v1.model.IP;
 import com.ibm.cloud.is.vpc.v1.model.IPsecPolicy;
@@ -205,6 +209,7 @@ import com.ibm.cloud.is.vpc.v1.model.IPsecPolicyCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.IPsecPolicyIdentity;
 import com.ibm.cloud.is.vpc.v1.model.IPsecPolicyIdentityByHref;
 import com.ibm.cloud.is.vpc.v1.model.IPsecPolicyIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.IPsecPolicyPatch;
 import com.ibm.cloud.is.vpc.v1.model.IPsecPolicyReference;
 import com.ibm.cloud.is.vpc.v1.model.Image;
 import com.ibm.cloud.is.vpc.v1.model.ImageCollection;
@@ -216,6 +221,7 @@ import com.ibm.cloud.is.vpc.v1.model.ImageIdentity;
 import com.ibm.cloud.is.vpc.v1.model.ImageIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.ImageIdentityByHref;
 import com.ibm.cloud.is.vpc.v1.model.ImageIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.ImagePatch;
 import com.ibm.cloud.is.vpc.v1.model.ImagePrototype;
 import com.ibm.cloud.is.vpc.v1.model.ImagePrototypeImageByFile;
 import com.ibm.cloud.is.vpc.v1.model.ImageReference;
@@ -233,11 +239,13 @@ import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManager;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerCollection;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerCollectionFirst;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerCollectionNext;
+import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerPatch;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerPolicy;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerPolicyCollection;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerPolicyCollectionFirst;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerPolicyCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerPolicyInstanceGroupManagerTargetPolicy;
+import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerPolicyPatch;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerPolicyPrototype;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerPolicyPrototypeInstanceGroupManagerTargetPolicyPrototype;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerPolicyReference;
@@ -248,9 +256,12 @@ import com.ibm.cloud.is.vpc.v1.model.InstanceGroupMembership;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupMembershipCollection;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupMembershipCollectionFirst;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupMembershipCollectionNext;
+import com.ibm.cloud.is.vpc.v1.model.InstanceGroupMembershipPatch;
+import com.ibm.cloud.is.vpc.v1.model.InstanceGroupPatch;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.InstanceInitialization;
 import com.ibm.cloud.is.vpc.v1.model.InstanceInitializationPassword;
+import com.ibm.cloud.is.vpc.v1.model.InstancePatch;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfile;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileBandwidth;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileBandwidthDependent;
@@ -291,6 +302,7 @@ import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateIdentityByHref;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateInstanceByImage;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateInstanceBySourceTemplate;
+import com.ibm.cloud.is.vpc.v1.model.InstanceTemplatePatch;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplatePrototype;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplatePrototypeInstanceByImage;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplatePrototypeInstanceBySourceTemplate;
@@ -303,6 +315,7 @@ import com.ibm.cloud.is.vpc.v1.model.KeyIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.KeyIdentityByHref;
 import com.ibm.cloud.is.vpc.v1.model.KeyIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.KeyIdentityKeyIdentityByFingerprint;
+import com.ibm.cloud.is.vpc.v1.model.KeyPatch;
 import com.ibm.cloud.is.vpc.v1.model.KeyReferenceInstanceInitializationContext;
 import com.ibm.cloud.is.vpc.v1.model.KeyReferenceInstanceInitializationContextKeyIdentityByFingerprint;
 import com.ibm.cloud.is.vpc.v1.model.KeyReferenceInstanceInitializationContextKeyReference;
@@ -346,8 +359,8 @@ import com.ibm.cloud.is.vpc.v1.model.ListVolumesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListVpcAddressPrefixesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListVpcRoutesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListVpcsOptions;
-import com.ibm.cloud.is.vpc.v1.model.ListVpnGatewayConnectionLocalCidrsOptions;
-import com.ibm.cloud.is.vpc.v1.model.ListVpnGatewayConnectionPeerCidrsOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListVpnGatewayConnectionLocalCIDRsOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListVpnGatewayConnectionPeerCIDRsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListVpnGatewayConnectionsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListVpnGatewaysOptions;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancer;
@@ -358,8 +371,10 @@ import com.ibm.cloud.is.vpc.v1.model.LoadBalancerIdentityByHref;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListener;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerCollection;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPatch;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicy;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyCollection;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyPatch;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyPatchTarget;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyPatchTargetLoadBalancerListenerPolicyRedirectURLPatch;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyPatchTargetLoadBalancerPoolIdentity;
@@ -374,13 +389,15 @@ import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyPrototypeTargetLo
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyReference;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyRule;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyRuleCollection;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyRulePatch;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyRulePrototype;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyRuleReference;
-import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetReference;
-import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetReferenceLoadBalancerListenerPolicyRedirectURL;
-import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetReferenceLoadBalancerPoolReference;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTarget;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetLoadBalancerListenerPolicyRedirectURL;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetLoadBalancerPoolReference;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPrototypeLoadBalancerContext;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerReference;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPatch;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPool;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolCollection;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolHealthMonitor;
@@ -392,6 +409,7 @@ import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolIdentityByName;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolMember;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolMemberCollection;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolMemberPatch;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolMemberPrototype;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolMemberReference;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolMemberTarget;
@@ -403,6 +421,7 @@ import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolMemberTargetPrototypeInstan
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityByHref;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolPatch;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolPrototype;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolReference;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolSessionPersistence;
@@ -425,6 +444,7 @@ import com.ibm.cloud.is.vpc.v1.model.NetworkACLIdentity;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLIdentityByHref;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.NetworkACLPatch;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLPrototype;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLPrototypeNetworkACLByRules;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLPrototypeNetworkACLBySourceNetworkACL;
@@ -443,6 +463,7 @@ import com.ibm.cloud.is.vpc.v1.model.NetworkACLRuleItemNetworkACLRuleProtocolTCP
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLRuleNetworkACLRuleProtocolAll;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLRuleNetworkACLRuleProtocolICMP;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLRuleNetworkACLRuleProtocolTCPUDP;
+import com.ibm.cloud.is.vpc.v1.model.NetworkACLRulePatch;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLRulePrototype;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLRulePrototypeNetworkACLContext;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolAll;
@@ -457,6 +478,7 @@ import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceCollection;
 import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceCollectionFirst;
 import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceInstanceContextReference;
+import com.ibm.cloud.is.vpc.v1.model.NetworkInterfacePatch;
 import com.ibm.cloud.is.vpc.v1.model.NetworkInterfacePrototype;
 import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceReference;
 import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceUnpaginatedCollection;
@@ -476,6 +498,7 @@ import com.ibm.cloud.is.vpc.v1.model.PublicGatewayIdentity;
 import com.ibm.cloud.is.vpc.v1.model.PublicGatewayIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.PublicGatewayIdentityByHref;
 import com.ibm.cloud.is.vpc.v1.model.PublicGatewayIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.PublicGatewayPatch;
 import com.ibm.cloud.is.vpc.v1.model.PublicGatewayPrototypeFloatingIp;
 import com.ibm.cloud.is.vpc.v1.model.PublicGatewayPrototypeFloatingIpFloatingIPIdentity;
 import com.ibm.cloud.is.vpc.v1.model.PublicGatewayPrototypeFloatingIpFloatingIPIdentityFloatingIPIdentityByAddress;
@@ -502,6 +525,7 @@ import com.ibm.cloud.is.vpc.v1.model.RouteNextHop;
 import com.ibm.cloud.is.vpc.v1.model.RouteNextHopIP;
 import com.ibm.cloud.is.vpc.v1.model.RouteNextHopPrototype;
 import com.ibm.cloud.is.vpc.v1.model.RouteNextHopPrototypeRouteNextHopIP;
+import com.ibm.cloud.is.vpc.v1.model.RoutePatch;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroup;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupCollection;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupCollectionFirst;
@@ -510,9 +534,11 @@ import com.ibm.cloud.is.vpc.v1.model.SecurityGroupIdentity;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupIdentityByHref;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.SecurityGroupPatch;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRule;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleCollection;
+import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRulePatch;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRulePatchRemote;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRulePatchRemoteCIDR;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRulePatchRemoteIP;
@@ -547,6 +573,7 @@ import com.ibm.cloud.is.vpc.v1.model.SubnetIdentity;
 import com.ibm.cloud.is.vpc.v1.model.SubnetIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.SubnetIdentityByHref;
 import com.ibm.cloud.is.vpc.v1.model.SubnetIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.SubnetPatch;
 import com.ibm.cloud.is.vpc.v1.model.SubnetPrototype;
 import com.ibm.cloud.is.vpc.v1.model.SubnetPrototypeSubnetByCIDR;
 import com.ibm.cloud.is.vpc.v1.model.SubnetPrototypeSubnetByTotalCount;
@@ -593,6 +620,7 @@ import com.ibm.cloud.is.vpc.v1.model.VPCIdentity;
 import com.ibm.cloud.is.vpc.v1.model.VPCIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.VPCIdentityByHref;
 import com.ibm.cloud.is.vpc.v1.model.VPCIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.VPCPatch;
 import com.ibm.cloud.is.vpc.v1.model.VPCReference;
 import com.ibm.cloud.is.vpc.v1.model.VPNGateway;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayCollection;
@@ -603,13 +631,16 @@ import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionCollection;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionDPD;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionDPDPrototype;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionLocalCIDRs;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionPatch;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionPeerCIDRs;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionReference;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayPatch;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayPublicIp;
 import com.ibm.cloud.is.vpc.v1.model.Volume;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachment;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentCollection;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentDevice;
+import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPatch;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototypeInstanceByImageContext;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototypeInstanceContext;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototypeInstanceContextVolume;
@@ -628,6 +659,7 @@ import com.ibm.cloud.is.vpc.v1.model.VolumeIdentity;
 import com.ibm.cloud.is.vpc.v1.model.VolumeIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.VolumeIdentityByHref;
 import com.ibm.cloud.is.vpc.v1.model.VolumeIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.VolumePatch;
 import com.ibm.cloud.is.vpc.v1.model.VolumeProfile;
 import com.ibm.cloud.is.vpc.v1.model.VolumeProfileCollection;
 import com.ibm.cloud.is.vpc.v1.model.VolumeProfileCollectionFirst;
@@ -651,30 +683,23 @@ import com.ibm.cloud.sdk.core.http.Response;
 import com.ibm.cloud.sdk.core.security.Authenticator;
 import com.ibm.cloud.sdk.core.security.NoAuthAuthenticator;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
-
 import com.ibm.cloud.sdk.core.util.EnvironmentUtils;
-
 import java.io.IOException;
 import java.io.InputStream;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import okhttp3.mockwebserver.MockResponse;
 import okhttp3.mockwebserver.MockWebServer;
 import okhttp3.mockwebserver.RecordedRequest;
-
 import org.powermock.api.mockito.PowerMockito;
 import org.powermock.core.classloader.annotations.PowerMockIgnore;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.testng.PowerMockTestCase;
-
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
@@ -733,7 +758,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testListVpcsWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"first\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs?limit=20\"}, \"limit\": 20, \"next\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs?start=9d5a91a3e2cbd233b5a5b33436855ed1&limit=20\"}, \"total_count\": 132, \"vpcs\": [{\"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\", \"default_network_acl\": {\"id\": \"a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::network-acl:a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"name\": \"my-network-acl\"}, \"classic_access\": false, \"default_security_group\": {\"id\": \"be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::security-group:be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"name\": \"my-security-group\"}, \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"created_at\": \"2019-01-01T12:00:00\", \"cse_source_ips\": [{\"ip\": {\"address\": \"192.168.3.4\"}, \"zone\": {\"name\": \"us-south-1\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\"}}], \"status\": \"available\"}]}";
-    String listVpcsPath = java.net.URLEncoder.encode("/vpcs", "UTF-8").replace("%2F", "/");
+    String listVpcsPath = "/vpcs";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -780,7 +805,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testCreateVpcWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\", \"default_network_acl\": {\"id\": \"a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::network-acl:a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"name\": \"my-network-acl\"}, \"classic_access\": false, \"default_security_group\": {\"id\": \"be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::security-group:be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"name\": \"my-security-group\"}, \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"created_at\": \"2019-01-01T12:00:00\", \"cse_source_ips\": [{\"ip\": {\"address\": \"192.168.3.4\"}, \"zone\": {\"name\": \"us-south-1\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\"}}], \"status\": \"available\"}";
-    String createVpcPath = java.net.URLEncoder.encode("/vpcs", "UTF-8").replace("%2F", "/");
+    String createVpcPath = "/vpcs";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -828,7 +853,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testDeleteVpcWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "";
-    String deleteVpcPath = java.net.URLEncoder.encode("/vpcs/testString", "UTF-8").replace("%2F", "/");
+    String deleteVpcPath = "/vpcs/testString";
 
     server.enqueue(new MockResponse()
     .setResponseCode(204)
@@ -880,7 +905,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testGetVpcWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\", \"default_network_acl\": {\"id\": \"a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::network-acl:a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"name\": \"my-network-acl\"}, \"classic_access\": false, \"default_security_group\": {\"id\": \"be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::security-group:be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"name\": \"my-security-group\"}, \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"created_at\": \"2019-01-01T12:00:00\", \"cse_source_ips\": [{\"ip\": {\"address\": \"192.168.3.4\"}, \"zone\": {\"name\": \"us-south-1\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\"}}], \"status\": \"available\"}";
-    String getVpcPath = java.net.URLEncoder.encode("/vpcs/testString", "UTF-8").replace("%2F", "/");
+    String getVpcPath = "/vpcs/testString";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -932,7 +957,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testUpdateVpcWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\", \"default_network_acl\": {\"id\": \"a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::network-acl:a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"name\": \"my-network-acl\"}, \"classic_access\": false, \"default_security_group\": {\"id\": \"be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::security-group:be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"name\": \"my-security-group\"}, \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"created_at\": \"2019-01-01T12:00:00\", \"cse_source_ips\": [{\"ip\": {\"address\": \"192.168.3.4\"}, \"zone\": {\"name\": \"us-south-1\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\"}}], \"status\": \"available\"}";
-    String updateVpcPath = java.net.URLEncoder.encode("/vpcs/testString", "UTF-8").replace("%2F", "/");
+    String updateVpcPath = "/vpcs/testString";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -941,10 +966,16 @@ public class VpcTest extends PowerMockTestCase {
 
     constructClientService();
 
+    // Construct an instance of the VPCPatch model
+    VPCPatch vpcPatchModel = new VPCPatch.Builder()
+    .name("my-vpc")
+    .build();
+    Map<String, Object> vpcPatchModelAsPatch = vpcPatchModel.asPatch();
+
     // Construct an instance of the UpdateVpcOptions model
     UpdateVpcOptions updateVpcOptionsModel = new UpdateVpcOptions.Builder()
     .id("testString")
-    .name("my-vpc")
+    .vpcPatch(vpcPatchModelAsPatch)
     .build();
 
     // Invoke operation with valid options model (positive test)
@@ -985,7 +1016,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testGetVpcDefaultNetworkAclWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::network-acl:a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"name\": \"mnemonic-ersatz-eatery-malaise\", \"vpc\": {\"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\"}, \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"created_at\": \"2019-01-01T12:00:00\", \"rules\": [{\"id\": \"8daca77a-4980-4d33-8f3e-7038797be8f9\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/a4e28308-8ee7-46ab-8108-9f881f22bdbf/rules/8daca77a-4980-4d33-8f3e-7038797be8f9\", \"name\": \"my-rule-2\", \"action\": \"allow\", \"destination\": \"192.168.3.0/24\", \"direction\": \"inbound\", \"source\": \"192.168.3.0/24\", \"protocol\": \"udp\", \"before\": {\"id\": \"8daca77a-4980-4d33-8f3e-7038797be8f9\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/a4e28308-8ee7-46ab-8108-9f881f22bdbf/rules/8daca77a-4980-4d33-8f3e-7038797be8f9\", \"name\": \"my-rule-1\"}, \"created_at\": \"2019-01-01T12:00:00\", \"ip_version\": \"ipv4\", \"destination_port_max\": 22, \"destination_port_min\": 22, \"source_port_max\": 65535, \"source_port_min\": 49152}], \"subnets\": [{\"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}]}";
-    String getVpcDefaultNetworkAclPath = java.net.URLEncoder.encode("/vpcs/testString/default_network_acl", "UTF-8").replace("%2F", "/");
+    String getVpcDefaultNetworkAclPath = "/vpcs/testString/default_network_acl";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -1037,7 +1068,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testGetVpcDefaultSecurityGroupWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::security-group:be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"name\": \"observant-chip-emphatic-engraver\", \"rules\": [{\"id\": \"6f2a6efe-21e2-401c-b237-620aa26ba16a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/be5df5ca-12a0-494b-907e-aa6ec2bfa271/rules/6f2a6efe-21e2-401c-b237-620aa26ba16a\", \"direction\": \"inbound\", \"ip_version\": \"ipv4\", \"protocol\": \"udp\", \"remote\": {\"address\": \"192.168.3.4\"}, \"port_max\": 22, \"port_min\": 22}], \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"created_at\": \"2019-01-01T12:00:00\", \"vpc\": {\"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\"}}";
-    String getVpcDefaultSecurityGroupPath = java.net.URLEncoder.encode("/vpcs/testString/default_security_group", "UTF-8").replace("%2F", "/");
+    String getVpcDefaultSecurityGroupPath = "/vpcs/testString/default_security_group";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -1089,7 +1120,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testListVpcAddressPrefixesWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"first\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/a4e28308-8ee7-46ab-8108-9f881f22bdbf/address_prefixes?limit=20\"}, \"limit\": 20, \"next\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/a4e28308-8ee7-46ab-8108-9f881f22bdbf/address_prefixes?start=9d5a91a3e2cbd233b5a5b33436855ed1&limit=20\"}, \"total_count\": 132, \"address_prefixes\": [{\"id\": \"1a15dca5-7e33-45e1-b7c5-bc690e569531\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/8e454ead-0db7-48ac-9a8b-2698d8c470a7/address_prefixes/1a15dca5-7e33-45e1-b7c5-bc690e569531\", \"name\": \"my-address-prefix-2\", \"is_default\": false, \"cidr\": \"192.168.3.0/24\", \"created_at\": \"2019-01-01T12:00:00\", \"has_subnets\": true, \"zone\": {\"name\": \"us-south-1\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\"}}]}";
-    String listVpcAddressPrefixesPath = java.net.URLEncoder.encode("/vpcs/testString/address_prefixes", "UTF-8").replace("%2F", "/");
+    String listVpcAddressPrefixesPath = "/vpcs/testString/address_prefixes";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -1145,7 +1176,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testCreateVpcAddressPrefixWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"1a15dca5-7e33-45e1-b7c5-bc690e569531\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/8e454ead-0db7-48ac-9a8b-2698d8c470a7/address_prefixes/1a15dca5-7e33-45e1-b7c5-bc690e569531\", \"name\": \"my-address-prefix-2\", \"is_default\": false, \"cidr\": \"192.168.3.0/24\", \"created_at\": \"2019-01-01T12:00:00\", \"has_subnets\": true, \"zone\": {\"name\": \"us-south-1\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\"}}";
-    String createVpcAddressPrefixPath = java.net.URLEncoder.encode("/vpcs/testString/address_prefixes", "UTF-8").replace("%2F", "/");
+    String createVpcAddressPrefixPath = "/vpcs/testString/address_prefixes";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -1206,7 +1237,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testDeleteVpcAddressPrefixWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "";
-    String deleteVpcAddressPrefixPath = java.net.URLEncoder.encode("/vpcs/testString/address_prefixes/testString", "UTF-8").replace("%2F", "/");
+    String deleteVpcAddressPrefixPath = "/vpcs/testString/address_prefixes/testString";
 
     server.enqueue(new MockResponse()
     .setResponseCode(204)
@@ -1259,7 +1290,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testGetVpcAddressPrefixWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"1a15dca5-7e33-45e1-b7c5-bc690e569531\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/8e454ead-0db7-48ac-9a8b-2698d8c470a7/address_prefixes/1a15dca5-7e33-45e1-b7c5-bc690e569531\", \"name\": \"my-address-prefix-2\", \"is_default\": false, \"cidr\": \"192.168.3.0/24\", \"created_at\": \"2019-01-01T12:00:00\", \"has_subnets\": true, \"zone\": {\"name\": \"us-south-1\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\"}}";
-    String getVpcAddressPrefixPath = java.net.URLEncoder.encode("/vpcs/testString/address_prefixes/testString", "UTF-8").replace("%2F", "/");
+    String getVpcAddressPrefixPath = "/vpcs/testString/address_prefixes/testString";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -1312,7 +1343,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testUpdateVpcAddressPrefixWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"1a15dca5-7e33-45e1-b7c5-bc690e569531\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/8e454ead-0db7-48ac-9a8b-2698d8c470a7/address_prefixes/1a15dca5-7e33-45e1-b7c5-bc690e569531\", \"name\": \"my-address-prefix-2\", \"is_default\": false, \"cidr\": \"192.168.3.0/24\", \"created_at\": \"2019-01-01T12:00:00\", \"has_subnets\": true, \"zone\": {\"name\": \"us-south-1\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\"}}";
-    String updateVpcAddressPrefixPath = java.net.URLEncoder.encode("/vpcs/testString/address_prefixes/testString", "UTF-8").replace("%2F", "/");
+    String updateVpcAddressPrefixPath = "/vpcs/testString/address_prefixes/testString";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -1321,12 +1352,18 @@ public class VpcTest extends PowerMockTestCase {
 
     constructClientService();
 
+    // Construct an instance of the AddressPrefixPatch model
+    AddressPrefixPatch addressPrefixPatchModel = new AddressPrefixPatch.Builder()
+    .name("my-address-prefix-2")
+    .isDefault(false)
+    .build();
+    Map<String, Object> addressPrefixPatchModelAsPatch = addressPrefixPatchModel.asPatch();
+
     // Construct an instance of the UpdateVpcAddressPrefixOptions model
     UpdateVpcAddressPrefixOptions updateVpcAddressPrefixOptionsModel = new UpdateVpcAddressPrefixOptions.Builder()
     .vpcId("testString")
     .id("testString")
-    .name("my-address-prefix-2")
-    .isDefault(false)
+    .addressPrefixPatch(addressPrefixPatchModelAsPatch)
     .build();
 
     // Invoke operation with valid options model (positive test)
@@ -1367,7 +1404,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testListVpcRoutesWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"routes\": [{\"next_hop\": {\"address\": \"192.168.3.4\"}, \"id\": \"1a15dca5-7e33-45e1-b7c5-bc690e569531\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/8e454ead-0db7-48ac-9a8b-2698d8c470a7/routes/1a15dca5-7e33-45e1-b7c5-bc690e569531\", \"name\": \"my-route-1\", \"created_at\": \"2019-01-01T12:00:00\", \"destination\": \"192.168.3.0/24\", \"lifecycle_state\": \"stable\", \"zone\": {\"name\": \"us-south-1\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\"}}]}";
-    String listVpcRoutesPath = java.net.URLEncoder.encode("/vpcs/testString/routes", "UTF-8").replace("%2F", "/");
+    String listVpcRoutesPath = "/vpcs/testString/routes";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -1421,7 +1458,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testCreateVpcRouteWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"next_hop\": {\"address\": \"192.168.3.4\"}, \"id\": \"1a15dca5-7e33-45e1-b7c5-bc690e569531\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/8e454ead-0db7-48ac-9a8b-2698d8c470a7/routes/1a15dca5-7e33-45e1-b7c5-bc690e569531\", \"name\": \"my-route-1\", \"created_at\": \"2019-01-01T12:00:00\", \"destination\": \"192.168.3.0/24\", \"lifecycle_state\": \"stable\", \"zone\": {\"name\": \"us-south-1\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\"}}";
-    String createVpcRoutePath = java.net.URLEncoder.encode("/vpcs/testString/routes", "UTF-8").replace("%2F", "/");
+    String createVpcRoutePath = "/vpcs/testString/routes";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -1487,7 +1524,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testDeleteVpcRouteWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "";
-    String deleteVpcRoutePath = java.net.URLEncoder.encode("/vpcs/testString/routes/testString", "UTF-8").replace("%2F", "/");
+    String deleteVpcRoutePath = "/vpcs/testString/routes/testString";
 
     server.enqueue(new MockResponse()
     .setResponseCode(204)
@@ -1540,7 +1577,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testGetVpcRouteWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"next_hop\": {\"address\": \"192.168.3.4\"}, \"id\": \"1a15dca5-7e33-45e1-b7c5-bc690e569531\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/8e454ead-0db7-48ac-9a8b-2698d8c470a7/routes/1a15dca5-7e33-45e1-b7c5-bc690e569531\", \"name\": \"my-route-1\", \"created_at\": \"2019-01-01T12:00:00\", \"destination\": \"192.168.3.0/24\", \"lifecycle_state\": \"stable\", \"zone\": {\"name\": \"us-south-1\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\"}}";
-    String getVpcRoutePath = java.net.URLEncoder.encode("/vpcs/testString/routes/testString", "UTF-8").replace("%2F", "/");
+    String getVpcRoutePath = "/vpcs/testString/routes/testString";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -1593,7 +1630,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testUpdateVpcRouteWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"next_hop\": {\"address\": \"192.168.3.4\"}, \"id\": \"1a15dca5-7e33-45e1-b7c5-bc690e569531\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/8e454ead-0db7-48ac-9a8b-2698d8c470a7/routes/1a15dca5-7e33-45e1-b7c5-bc690e569531\", \"name\": \"my-route-1\", \"created_at\": \"2019-01-01T12:00:00\", \"destination\": \"192.168.3.0/24\", \"lifecycle_state\": \"stable\", \"zone\": {\"name\": \"us-south-1\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\"}}";
-    String updateVpcRoutePath = java.net.URLEncoder.encode("/vpcs/testString/routes/testString", "UTF-8").replace("%2F", "/");
+    String updateVpcRoutePath = "/vpcs/testString/routes/testString";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -1602,11 +1639,17 @@ public class VpcTest extends PowerMockTestCase {
 
     constructClientService();
 
+    // Construct an instance of the RoutePatch model
+    RoutePatch routePatchModel = new RoutePatch.Builder()
+    .name("my-route-2")
+    .build();
+    Map<String, Object> routePatchModelAsPatch = routePatchModel.asPatch();
+
     // Construct an instance of the UpdateVpcRouteOptions model
     UpdateVpcRouteOptions updateVpcRouteOptionsModel = new UpdateVpcRouteOptions.Builder()
     .vpcId("testString")
     .id("testString")
-    .name("my-route-2")
+    .routePatch(routePatchModelAsPatch)
     .build();
 
     // Invoke operation with valid options model (positive test)
@@ -1647,7 +1690,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testListSubnetsWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"first\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets?limit=20\"}, \"limit\": 20, \"next\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets?start=9d5a91a3e2cbd233b5a5b33436855ed1&limit=20\"}, \"total_count\": 132, \"subnets\": [{\"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\", \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"available_ipv4_address_count\": 15, \"network_acl\": {\"id\": \"a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::network-acl:a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"name\": \"my-network-acl\"}, \"total_ipv4_address_count\": 256, \"created_at\": \"2019-01-01T12:00:00\", \"ipv4_cidr_block\": \"10.0.0.0/24\", \"public_gateway\": {\"id\": \"dc5431ef-1fc6-4861-adc9-a59d077d1241\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::public-gateway:dc5431ef-1fc6-4861-adc9-a59d077d1241\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/public_gateways/dc5431ef-1fc6-4861-adc9-a59d077d1241\", \"name\": \"my-public-gateway\", \"resource_type\": \"public_gateway\"}, \"status\": \"available\", \"vpc\": {\"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\"}, \"zone\": {\"name\": \"us-south-1\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\"}, \"ip_version\": \"ipv4\"}]}";
-    String listSubnetsPath = java.net.URLEncoder.encode("/subnets", "UTF-8").replace("%2F", "/");
+    String listSubnetsPath = "/subnets";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -1692,7 +1735,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testCreateSubnetWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\", \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"available_ipv4_address_count\": 15, \"network_acl\": {\"id\": \"a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::network-acl:a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"name\": \"my-network-acl\"}, \"total_ipv4_address_count\": 256, \"created_at\": \"2019-01-01T12:00:00\", \"ipv4_cidr_block\": \"10.0.0.0/24\", \"public_gateway\": {\"id\": \"dc5431ef-1fc6-4861-adc9-a59d077d1241\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::public-gateway:dc5431ef-1fc6-4861-adc9-a59d077d1241\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/public_gateways/dc5431ef-1fc6-4861-adc9-a59d077d1241\", \"name\": \"my-public-gateway\", \"resource_type\": \"public_gateway\"}, \"status\": \"available\", \"vpc\": {\"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\"}, \"zone\": {\"name\": \"us-south-1\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\"}, \"ip_version\": \"ipv4\"}";
-    String createSubnetPath = java.net.URLEncoder.encode("/subnets", "UTF-8").replace("%2F", "/");
+    String createSubnetPath = "/subnets";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -1781,7 +1824,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testDeleteSubnetWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "";
-    String deleteSubnetPath = java.net.URLEncoder.encode("/subnets/testString", "UTF-8").replace("%2F", "/");
+    String deleteSubnetPath = "/subnets/testString";
 
     server.enqueue(new MockResponse()
     .setResponseCode(204)
@@ -1833,7 +1876,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testGetSubnetWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\", \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"available_ipv4_address_count\": 15, \"network_acl\": {\"id\": \"a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::network-acl:a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"name\": \"my-network-acl\"}, \"total_ipv4_address_count\": 256, \"created_at\": \"2019-01-01T12:00:00\", \"ipv4_cidr_block\": \"10.0.0.0/24\", \"public_gateway\": {\"id\": \"dc5431ef-1fc6-4861-adc9-a59d077d1241\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::public-gateway:dc5431ef-1fc6-4861-adc9-a59d077d1241\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/public_gateways/dc5431ef-1fc6-4861-adc9-a59d077d1241\", \"name\": \"my-public-gateway\", \"resource_type\": \"public_gateway\"}, \"status\": \"available\", \"vpc\": {\"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\"}, \"zone\": {\"name\": \"us-south-1\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\"}, \"ip_version\": \"ipv4\"}";
-    String getSubnetPath = java.net.URLEncoder.encode("/subnets/testString", "UTF-8").replace("%2F", "/");
+    String getSubnetPath = "/subnets/testString";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -1885,7 +1928,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testUpdateSubnetWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\", \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"available_ipv4_address_count\": 15, \"network_acl\": {\"id\": \"a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::network-acl:a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"name\": \"my-network-acl\"}, \"total_ipv4_address_count\": 256, \"created_at\": \"2019-01-01T12:00:00\", \"ipv4_cidr_block\": \"10.0.0.0/24\", \"public_gateway\": {\"id\": \"dc5431ef-1fc6-4861-adc9-a59d077d1241\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::public-gateway:dc5431ef-1fc6-4861-adc9-a59d077d1241\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/public_gateways/dc5431ef-1fc6-4861-adc9-a59d077d1241\", \"name\": \"my-public-gateway\", \"resource_type\": \"public_gateway\"}, \"status\": \"available\", \"vpc\": {\"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\"}, \"zone\": {\"name\": \"us-south-1\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\"}, \"ip_version\": \"ipv4\"}";
-    String updateSubnetPath = java.net.URLEncoder.encode("/subnets/testString", "UTF-8").replace("%2F", "/");
+    String updateSubnetPath = "/subnets/testString";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -1904,12 +1947,18 @@ public class VpcTest extends PowerMockTestCase {
     .id("dc5431ef-1fc6-4861-adc9-a59d077d1241")
     .build();
 
-    // Construct an instance of the UpdateSubnetOptions model
-    UpdateSubnetOptions updateSubnetOptionsModel = new UpdateSubnetOptions.Builder()
-    .id("testString")
+    // Construct an instance of the SubnetPatch model
+    SubnetPatch subnetPatchModel = new SubnetPatch.Builder()
     .name("my-subnet")
     .networkAcl(networkAclIdentityModel)
     .publicGateway(publicGatewayIdentityModel)
+    .build();
+    Map<String, Object> subnetPatchModelAsPatch = subnetPatchModel.asPatch();
+
+    // Construct an instance of the UpdateSubnetOptions model
+    UpdateSubnetOptions updateSubnetOptionsModel = new UpdateSubnetOptions.Builder()
+    .id("testString")
+    .subnetPatch(subnetPatchModelAsPatch)
     .build();
 
     // Invoke operation with valid options model (positive test)
@@ -1950,7 +1999,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testGetSubnetNetworkAclWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::network-acl:a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"name\": \"my-network-acl\", \"vpc\": {\"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\"}, \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"created_at\": \"2019-01-01T12:00:00\", \"rules\": [{\"id\": \"8daca77a-4980-4d33-8f3e-7038797be8f9\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/a4e28308-8ee7-46ab-8108-9f881f22bdbf/rules/8daca77a-4980-4d33-8f3e-7038797be8f9\", \"name\": \"my-rule-2\", \"action\": \"allow\", \"destination\": \"192.168.3.0/24\", \"direction\": \"inbound\", \"source\": \"192.168.3.0/24\", \"protocol\": \"udp\", \"before\": {\"id\": \"8daca77a-4980-4d33-8f3e-7038797be8f9\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/a4e28308-8ee7-46ab-8108-9f881f22bdbf/rules/8daca77a-4980-4d33-8f3e-7038797be8f9\", \"name\": \"my-rule-1\"}, \"created_at\": \"2019-01-01T12:00:00\", \"ip_version\": \"ipv4\", \"destination_port_max\": 22, \"destination_port_min\": 22, \"source_port_max\": 65535, \"source_port_min\": 49152}], \"subnets\": [{\"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}]}";
-    String getSubnetNetworkAclPath = java.net.URLEncoder.encode("/subnets/testString/network_acl", "UTF-8").replace("%2F", "/");
+    String getSubnetNetworkAclPath = "/subnets/testString/network_acl";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -2002,7 +2051,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testReplaceSubnetNetworkAclWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::network-acl:a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"name\": \"my-network-acl\", \"vpc\": {\"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\"}, \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"created_at\": \"2019-01-01T12:00:00\", \"rules\": [{\"id\": \"8daca77a-4980-4d33-8f3e-7038797be8f9\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/a4e28308-8ee7-46ab-8108-9f881f22bdbf/rules/8daca77a-4980-4d33-8f3e-7038797be8f9\", \"name\": \"my-rule-2\", \"action\": \"allow\", \"destination\": \"192.168.3.0/24\", \"direction\": \"inbound\", \"source\": \"192.168.3.0/24\", \"protocol\": \"udp\", \"before\": {\"id\": \"8daca77a-4980-4d33-8f3e-7038797be8f9\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/a4e28308-8ee7-46ab-8108-9f881f22bdbf/rules/8daca77a-4980-4d33-8f3e-7038797be8f9\", \"name\": \"my-rule-1\"}, \"created_at\": \"2019-01-01T12:00:00\", \"ip_version\": \"ipv4\", \"destination_port_max\": 22, \"destination_port_min\": 22, \"source_port_max\": 65535, \"source_port_min\": 49152}], \"subnets\": [{\"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}]}";
-    String replaceSubnetNetworkAclPath = java.net.URLEncoder.encode("/subnets/testString/network_acl", "UTF-8").replace("%2F", "/");
+    String replaceSubnetNetworkAclPath = "/subnets/testString/network_acl";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -2060,7 +2109,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testUnsetSubnetPublicGatewayWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "";
-    String unsetSubnetPublicGatewayPath = java.net.URLEncoder.encode("/subnets/testString/public_gateway", "UTF-8").replace("%2F", "/");
+    String unsetSubnetPublicGatewayPath = "/subnets/testString/public_gateway";
 
     server.enqueue(new MockResponse()
     .setResponseCode(204)
@@ -2112,7 +2161,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testGetSubnetPublicGatewayWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"dc5431ef-1fc6-4861-adc9-a59d077d1241\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::public-gateway:dc5431ef-1fc6-4861-adc9-a59d077d1241\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/public_gateways/dc5431ef-1fc6-4861-adc9-a59d077d1241\", \"name\": \"my-public-gateway\", \"resource_type\": \"public_gateway\", \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"created_at\": \"2019-01-01T12:00:00\", \"floating_ip\": {\"id\": \"39300233-9995-4806-89a5-3c1b6eb88689\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::floating-ip:39300233-9995-4806-89a5-3c1b6eb88689\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/floating_ips/39300233-9995-4806-89a5-3c1b6eb88689\", \"address\": \"203.0.113.1\", \"name\": \"my-floating-ip\"}, \"status\": \"available\", \"vpc\": {\"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\"}, \"zone\": {\"name\": \"us-south-1\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\"}}";
-    String getSubnetPublicGatewayPath = java.net.URLEncoder.encode("/subnets/testString/public_gateway", "UTF-8").replace("%2F", "/");
+    String getSubnetPublicGatewayPath = "/subnets/testString/public_gateway";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -2164,7 +2213,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testSetSubnetPublicGatewayWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"dc5431ef-1fc6-4861-adc9-a59d077d1241\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::public-gateway:dc5431ef-1fc6-4861-adc9-a59d077d1241\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/public_gateways/dc5431ef-1fc6-4861-adc9-a59d077d1241\", \"name\": \"my-public-gateway\", \"resource_type\": \"public_gateway\", \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"created_at\": \"2019-01-01T12:00:00\", \"floating_ip\": {\"id\": \"39300233-9995-4806-89a5-3c1b6eb88689\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::floating-ip:39300233-9995-4806-89a5-3c1b6eb88689\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/floating_ips/39300233-9995-4806-89a5-3c1b6eb88689\", \"address\": \"203.0.113.1\", \"name\": \"my-floating-ip\"}, \"status\": \"available\", \"vpc\": {\"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\"}, \"zone\": {\"name\": \"us-south-1\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\"}}";
-    String setSubnetPublicGatewayPath = java.net.URLEncoder.encode("/subnets/testString/public_gateway", "UTF-8").replace("%2F", "/");
+    String setSubnetPublicGatewayPath = "/subnets/testString/public_gateway";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -2221,8 +2270,8 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testListImagesWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"first\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images?limit=20\"}, \"limit\": 20, \"next\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images?start=9d5a91a3e2cbd233b5a5b33436855ed1&limit=20\"}, \"images\": [{\"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"name\": \"my-image\", \"minimum_provisioned_size\": 22, \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"created_at\": \"2019-01-01T12:00:00\", \"file\": {\"size\": 1}, \"operating_system\": {\"name\": \"ubuntu-16-amd64\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-16-amd64\", \"architecture\": \"amd64\", \"display_name\": \"Ubuntu Server 16.04 LTS amd64\", \"family\": \"Ubuntu Server\", \"vendor\": \"Canonical\", \"version\": \"16.04 LTS\"}, \"status\": \"available\", \"visibility\": \"private\"}]}";
-    String listImagesPath = java.net.URLEncoder.encode("/images", "UTF-8").replace("%2F", "/");
+    String mockResponseBody = "{\"first\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images?limit=20\"}, \"limit\": 20, \"next\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images?start=9d5a91a3e2cbd233b5a5b33436855ed1&limit=20\"}, \"images\": [{\"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"name\": \"my-image\", \"minimum_provisioned_size\": 22, \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"encryption\": \"user_managed\", \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"created_at\": \"2019-01-01T12:00:00\", \"file\": {\"size\": 1}, \"operating_system\": {\"name\": \"ubuntu-16-amd64\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-16-amd64\", \"architecture\": \"amd64\", \"display_name\": \"Ubuntu Server 16.04 LTS amd64\", \"family\": \"Ubuntu Server\", \"vendor\": \"Canonical\", \"version\": \"16.04 LTS\"}, \"status\": \"available\", \"visibility\": \"private\"}]}";
+    String listImagesPath = "/images";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -2270,8 +2319,8 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testCreateImageWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"name\": \"my-image\", \"minimum_provisioned_size\": 22, \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"created_at\": \"2019-01-01T12:00:00\", \"file\": {\"size\": 1}, \"operating_system\": {\"name\": \"ubuntu-16-amd64\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-16-amd64\", \"architecture\": \"amd64\", \"display_name\": \"Ubuntu Server 16.04 LTS amd64\", \"family\": \"Ubuntu Server\", \"vendor\": \"Canonical\", \"version\": \"16.04 LTS\"}, \"status\": \"available\", \"visibility\": \"private\"}";
-    String createImagePath = java.net.URLEncoder.encode("/images", "UTF-8").replace("%2F", "/");
+    String mockResponseBody = "{\"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"name\": \"my-image\", \"minimum_provisioned_size\": 22, \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"encryption\": \"user_managed\", \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"created_at\": \"2019-01-01T12:00:00\", \"file\": {\"size\": 1}, \"operating_system\": {\"name\": \"ubuntu-16-amd64\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-16-amd64\", \"architecture\": \"amd64\", \"display_name\": \"Ubuntu Server 16.04 LTS amd64\", \"family\": \"Ubuntu Server\", \"vendor\": \"Canonical\", \"version\": \"16.04 LTS\"}, \"status\": \"available\", \"visibility\": \"private\"}";
+    String createImagePath = "/images";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -2280,6 +2329,11 @@ public class VpcTest extends PowerMockTestCase {
 
     constructClientService();
 
+    // Construct an instance of the EncryptionKeyReference model
+    EncryptionKeyReference encryptionKeyReferenceModel = new EncryptionKeyReference.Builder()
+    .crn("crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179")
+    .build();
+
     // Construct an instance of the ResourceGroupIdentityById model
     ResourceGroupIdentityById resourceGroupIdentityModel = new ResourceGroupIdentityById.Builder()
     .id("fee82deba12e4c0fb69c3b09d1f12345")
@@ -2287,17 +2341,19 @@ public class VpcTest extends PowerMockTestCase {
 
     // Construct an instance of the ImageFilePrototype model
     ImageFilePrototype imageFilePrototypeModel = new ImageFilePrototype.Builder()
-    .href("cos://us-south/custom-image-vpc-bucket/customImage-0.vhd")
+    .href("cos://us-south/my-bucket/my-image.qcow2")
     .build();
 
     // Construct an instance of the OperatingSystemIdentityByName model
     OperatingSystemIdentityByName operatingSystemIdentityModel = new OperatingSystemIdentityByName.Builder()
-    .name("ubuntu-16-amd64")
+    .name("debian-9-amd64")
     .build();
 
     // Construct an instance of the ImagePrototypeImageByFile model
     ImagePrototypeImageByFile imagePrototypeModel = new ImagePrototypeImageByFile.Builder()
     .name("my-image")
+    .encryptedDataKey("testString")
+    .encryptionKey(encryptionKeyReferenceModel)
     .resourceGroup(resourceGroupIdentityModel)
     .file(imageFilePrototypeModel)
     .operatingSystem(operatingSystemIdentityModel)
@@ -2346,7 +2402,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testDeleteImageWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "";
-    String deleteImagePath = java.net.URLEncoder.encode("/images/testString", "UTF-8").replace("%2F", "/");
+    String deleteImagePath = "/images/testString";
 
     server.enqueue(new MockResponse()
     .setResponseCode(202)
@@ -2397,8 +2453,8 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testGetImageWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"name\": \"my-image\", \"minimum_provisioned_size\": 22, \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"created_at\": \"2019-01-01T12:00:00\", \"file\": {\"size\": 1}, \"operating_system\": {\"name\": \"ubuntu-16-amd64\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-16-amd64\", \"architecture\": \"amd64\", \"display_name\": \"Ubuntu Server 16.04 LTS amd64\", \"family\": \"Ubuntu Server\", \"vendor\": \"Canonical\", \"version\": \"16.04 LTS\"}, \"status\": \"available\", \"visibility\": \"private\"}";
-    String getImagePath = java.net.URLEncoder.encode("/images/testString", "UTF-8").replace("%2F", "/");
+    String mockResponseBody = "{\"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"name\": \"my-image\", \"minimum_provisioned_size\": 22, \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"encryption\": \"user_managed\", \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"created_at\": \"2019-01-01T12:00:00\", \"file\": {\"size\": 1}, \"operating_system\": {\"name\": \"ubuntu-16-amd64\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-16-amd64\", \"architecture\": \"amd64\", \"display_name\": \"Ubuntu Server 16.04 LTS amd64\", \"family\": \"Ubuntu Server\", \"vendor\": \"Canonical\", \"version\": \"16.04 LTS\"}, \"status\": \"available\", \"visibility\": \"private\"}";
+    String getImagePath = "/images/testString";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -2449,8 +2505,8 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testUpdateImageWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"name\": \"my-image\", \"minimum_provisioned_size\": 22, \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"created_at\": \"2019-01-01T12:00:00\", \"file\": {\"size\": 1}, \"operating_system\": {\"name\": \"ubuntu-16-amd64\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-16-amd64\", \"architecture\": \"amd64\", \"display_name\": \"Ubuntu Server 16.04 LTS amd64\", \"family\": \"Ubuntu Server\", \"vendor\": \"Canonical\", \"version\": \"16.04 LTS\"}, \"status\": \"available\", \"visibility\": \"private\"}";
-    String updateImagePath = java.net.URLEncoder.encode("/images/testString", "UTF-8").replace("%2F", "/");
+    String mockResponseBody = "{\"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"name\": \"my-image\", \"minimum_provisioned_size\": 22, \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"encryption\": \"user_managed\", \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"created_at\": \"2019-01-01T12:00:00\", \"file\": {\"size\": 1}, \"operating_system\": {\"name\": \"ubuntu-16-amd64\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-16-amd64\", \"architecture\": \"amd64\", \"display_name\": \"Ubuntu Server 16.04 LTS amd64\", \"family\": \"Ubuntu Server\", \"vendor\": \"Canonical\", \"version\": \"16.04 LTS\"}, \"status\": \"available\", \"visibility\": \"private\"}";
+    String updateImagePath = "/images/testString";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -2459,10 +2515,16 @@ public class VpcTest extends PowerMockTestCase {
 
     constructClientService();
 
+    // Construct an instance of the ImagePatch model
+    ImagePatch imagePatchModel = new ImagePatch.Builder()
+    .name("my-image")
+    .build();
+    Map<String, Object> imagePatchModelAsPatch = imagePatchModel.asPatch();
+
     // Construct an instance of the UpdateImageOptions model
     UpdateImageOptions updateImageOptionsModel = new UpdateImageOptions.Builder()
     .id("testString")
-    .name("my-image")
+    .imagePatch(imagePatchModelAsPatch)
     .build();
 
     // Invoke operation with valid options model (positive test)
@@ -2503,7 +2565,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testListOperatingSystemsWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"first\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/operating_systems?limit=20\"}, \"limit\": 20, \"next\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/operating_systems?start=9d5a91a3e2cbd233b5a5b33436855ed1&limit=20\"}, \"operating_systems\": [{\"name\": \"ubuntu-16-amd64\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-16-amd64\", \"architecture\": \"amd64\", \"display_name\": \"Ubuntu Server 16.04 LTS amd64\", \"family\": \"Ubuntu Server\", \"vendor\": \"Canonical\", \"version\": \"16.04 LTS\"}]}";
-    String listOperatingSystemsPath = java.net.URLEncoder.encode("/operating_systems", "UTF-8").replace("%2F", "/");
+    String listOperatingSystemsPath = "/operating_systems";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -2546,7 +2608,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testGetOperatingSystemWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"name\": \"ubuntu-16-amd64\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-16-amd64\", \"architecture\": \"amd64\", \"display_name\": \"Ubuntu Server 16.04 LTS amd64\", \"family\": \"Ubuntu Server\", \"vendor\": \"Canonical\", \"version\": \"16.04 LTS\"}";
-    String getOperatingSystemPath = java.net.URLEncoder.encode("/operating_systems/testString", "UTF-8").replace("%2F", "/");
+    String getOperatingSystemPath = "/operating_systems/testString";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -2598,7 +2660,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testListKeysWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"keys\": [{\"id\": \"a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::key:a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/keys/a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"fingerprint\": \"SHA256:yxavE4CIOL2NlsqcurRO3xGjkP6m/0mp8ugojH5yxlY\", \"name\": \"my-key\", \"public_key\": \"AAAAB3NzaC1yc2EAAAADAQABAAABAQDDGe50Bxa5T5NDddrrtbx2Y4/VGbiCgXqnBsYToIUKoFSHTQl5IX3PasGnneKanhcLwWz5M5MoCRvhxTp66NKzIfAz7r+FX9rxgR+ZgcM253YAqOVeIpOU408simDZKriTlN8kYsXL7P34tsWuAJf4MgZtJAQxous/2byetpdCv8ddnT4X3ltOg9w+LqSCPYfNivqH00Eh7S1Ldz7I8aw5WOp5a+sQFP/RbwfpwHp+ny7DfeIOokcuI42tJkoBn7UsLTVpCSmXr2EDRlSWe/1M/iHNRBzaT3CK0+SwZWd2AEjePxSnWKNGIEUJDlUYp7hKhiQcgT5ZAnWU121oc5En\", \"type\": \"rsa\", \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"created_at\": \"2019-01-01T12:00:00\", \"length\": 2048}]}";
-    String listKeysPath = java.net.URLEncoder.encode("/keys", "UTF-8").replace("%2F", "/");
+    String listKeysPath = "/keys";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -2639,7 +2701,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testCreateKeyWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::key:a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/keys/a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"fingerprint\": \"SHA256:yxavE4CIOL2NlsqcurRO3xGjkP6m/0mp8ugojH5yxlY\", \"name\": \"my-key\", \"public_key\": \"AAAAB3NzaC1yc2EAAAADAQABAAABAQDDGe50Bxa5T5NDddrrtbx2Y4/VGbiCgXqnBsYToIUKoFSHTQl5IX3PasGnneKanhcLwWz5M5MoCRvhxTp66NKzIfAz7r+FX9rxgR+ZgcM253YAqOVeIpOU408simDZKriTlN8kYsXL7P34tsWuAJf4MgZtJAQxous/2byetpdCv8ddnT4X3ltOg9w+LqSCPYfNivqH00Eh7S1Ldz7I8aw5WOp5a+sQFP/RbwfpwHp+ny7DfeIOokcuI42tJkoBn7UsLTVpCSmXr2EDRlSWe/1M/iHNRBzaT3CK0+SwZWd2AEjePxSnWKNGIEUJDlUYp7hKhiQcgT5ZAnWU121oc5En\", \"type\": \"rsa\", \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"created_at\": \"2019-01-01T12:00:00\", \"length\": 2048}";
-    String createKeyPath = java.net.URLEncoder.encode("/keys", "UTF-8").replace("%2F", "/");
+    String createKeyPath = "/keys";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -2699,7 +2761,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testDeleteKeyWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "";
-    String deleteKeyPath = java.net.URLEncoder.encode("/keys/testString", "UTF-8").replace("%2F", "/");
+    String deleteKeyPath = "/keys/testString";
 
     server.enqueue(new MockResponse()
     .setResponseCode(204)
@@ -2751,7 +2813,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testGetKeyWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::key:a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/keys/a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"fingerprint\": \"SHA256:yxavE4CIOL2NlsqcurRO3xGjkP6m/0mp8ugojH5yxlY\", \"name\": \"my-key\", \"public_key\": \"AAAAB3NzaC1yc2EAAAADAQABAAABAQDDGe50Bxa5T5NDddrrtbx2Y4/VGbiCgXqnBsYToIUKoFSHTQl5IX3PasGnneKanhcLwWz5M5MoCRvhxTp66NKzIfAz7r+FX9rxgR+ZgcM253YAqOVeIpOU408simDZKriTlN8kYsXL7P34tsWuAJf4MgZtJAQxous/2byetpdCv8ddnT4X3ltOg9w+LqSCPYfNivqH00Eh7S1Ldz7I8aw5WOp5a+sQFP/RbwfpwHp+ny7DfeIOokcuI42tJkoBn7UsLTVpCSmXr2EDRlSWe/1M/iHNRBzaT3CK0+SwZWd2AEjePxSnWKNGIEUJDlUYp7hKhiQcgT5ZAnWU121oc5En\", \"type\": \"rsa\", \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"created_at\": \"2019-01-01T12:00:00\", \"length\": 2048}";
-    String getKeyPath = java.net.URLEncoder.encode("/keys/testString", "UTF-8").replace("%2F", "/");
+    String getKeyPath = "/keys/testString";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -2803,7 +2865,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testUpdateKeyWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::key:a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/keys/a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"fingerprint\": \"SHA256:yxavE4CIOL2NlsqcurRO3xGjkP6m/0mp8ugojH5yxlY\", \"name\": \"my-key\", \"public_key\": \"AAAAB3NzaC1yc2EAAAADAQABAAABAQDDGe50Bxa5T5NDddrrtbx2Y4/VGbiCgXqnBsYToIUKoFSHTQl5IX3PasGnneKanhcLwWz5M5MoCRvhxTp66NKzIfAz7r+FX9rxgR+ZgcM253YAqOVeIpOU408simDZKriTlN8kYsXL7P34tsWuAJf4MgZtJAQxous/2byetpdCv8ddnT4X3ltOg9w+LqSCPYfNivqH00Eh7S1Ldz7I8aw5WOp5a+sQFP/RbwfpwHp+ny7DfeIOokcuI42tJkoBn7UsLTVpCSmXr2EDRlSWe/1M/iHNRBzaT3CK0+SwZWd2AEjePxSnWKNGIEUJDlUYp7hKhiQcgT5ZAnWU121oc5En\", \"type\": \"rsa\", \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"created_at\": \"2019-01-01T12:00:00\", \"length\": 2048}";
-    String updateKeyPath = java.net.URLEncoder.encode("/keys/testString", "UTF-8").replace("%2F", "/");
+    String updateKeyPath = "/keys/testString";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -2812,10 +2874,16 @@ public class VpcTest extends PowerMockTestCase {
 
     constructClientService();
 
+    // Construct an instance of the KeyPatch model
+    KeyPatch keyPatchModel = new KeyPatch.Builder()
+    .name("my-key")
+    .build();
+    Map<String, Object> keyPatchModelAsPatch = keyPatchModel.asPatch();
+
     // Construct an instance of the UpdateKeyOptions model
     UpdateKeyOptions updateKeyOptionsModel = new UpdateKeyOptions.Builder()
     .id("testString")
-    .name("my-key")
+    .keyPatch(keyPatchModelAsPatch)
     .build();
 
     // Invoke operation with valid options model (positive test)
@@ -2856,7 +2924,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testListInstanceProfilesWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"profiles\": [{\"name\": \"bc1-4x16\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/profiles/bc1-4x16\", \"bandwidth\": {\"type\": \"fixed\", \"value\": 20000}, \"port_speed\": {\"type\": \"fixed\", \"value\": 1000}, \"memory\": {\"type\": \"fixed\", \"value\": 16}, \"os_architecture\": {\"type\": \"enum\", \"default\": \"xDefault\", \"values\": [\"amd64\"]}, \"vcpu_architecture\": {\"type\": \"fixed\", \"value\": \"amd64\", \"default\": \"xDefault\"}, \"vcpu_count\": {\"type\": \"fixed\", \"value\": 16}, \"family\": \"balanced\"}]}";
-    String listInstanceProfilesPath = java.net.URLEncoder.encode("/instance/profiles", "UTF-8").replace("%2F", "/");
+    String listInstanceProfilesPath = "/instance/profiles";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -2894,7 +2962,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testGetInstanceProfileWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"name\": \"bc1-4x16\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/profiles/bc1-4x16\", \"bandwidth\": {\"type\": \"fixed\", \"value\": 20000}, \"port_speed\": {\"type\": \"fixed\", \"value\": 1000}, \"memory\": {\"type\": \"fixed\", \"value\": 16}, \"os_architecture\": {\"type\": \"enum\", \"default\": \"xDefault\", \"values\": [\"amd64\"]}, \"vcpu_architecture\": {\"type\": \"fixed\", \"value\": \"amd64\", \"default\": \"xDefault\"}, \"vcpu_count\": {\"type\": \"fixed\", \"value\": 16}, \"family\": \"balanced\"}";
-    String getInstanceProfilePath = java.net.URLEncoder.encode("/instance/profiles/testString", "UTF-8").replace("%2F", "/");
+    String getInstanceProfilePath = "/instance/profiles/testString";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -2945,8 +3013,8 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testListInstanceTemplatesWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"first\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/templates?limit=20\"}, \"limit\": 20, \"next\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/templates?start=9d5a91a3e2cbd233b5a5b33436855ed1&limit=20\"}, \"total_count\": 132, \"templates\": [{\"id\": \"a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/templates/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance-template:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance-template\", \"keys\": [{\"id\": \"a6b1a881-2ce8-41a3-80fc-36316a73f803\"}], \"network_interfaces\": [{\"name\": \"my-network-interface\", \"primary_ipv4_address\": \"10.0.0.5\", \"security_groups\": [{\"id\": \"be5df5ca-12a0-494b-907e-aa6ec2bfa271\"}], \"subnet\": {\"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\"}}], \"profile\": {\"name\": \"bc1-4x16\"}, \"user_data\": \"userData\", \"volume_attachments\": [{\"name\": \"my-volume-attachment\", \"delete_volume_on_instance_delete\": true, \"volume\": {\"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\"}}], \"vpc\": {\"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\"}, \"created_at\": \"2019-01-01T12:00:00\", \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"primary_network_interface\": {\"name\": \"my-network-interface\", \"primary_ipv4_address\": \"10.0.0.5\", \"security_groups\": [{\"id\": \"be5df5ca-12a0-494b-907e-aa6ec2bfa271\"}], \"subnet\": {\"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\"}}, \"zone\": {\"name\": \"us-south-1\"}, \"boot_volume_attachment\": {\"name\": \"my-volume-attachment\", \"delete_volume_on_instance_delete\": true, \"volume\": {\"name\": \"my-volume\", \"profile\": {\"name\": \"general-purpose\"}, \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"capacity\": 100, \"iops\": 10000}}, \"image\": {\"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\"}}]}";
-    String listInstanceTemplatesPath = java.net.URLEncoder.encode("/instance/templates", "UTF-8").replace("%2F", "/");
+    String mockResponseBody = "{\"first\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/templates?limit=20\"}, \"limit\": 20, \"next\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/templates?start=9d5a91a3e2cbd233b5a5b33436855ed1&limit=20\"}, \"total_count\": 132, \"templates\": [{\"id\": \"a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/templates/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance-template:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance-template\", \"keys\": [{\"id\": \"a6b1a881-2ce8-41a3-80fc-36316a73f803\"}], \"network_interfaces\": [{\"name\": \"my-network-interface\", \"primary_ipv4_address\": \"10.0.0.5\", \"security_groups\": [{\"id\": \"be5df5ca-12a0-494b-907e-aa6ec2bfa271\"}], \"subnet\": {\"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\"}}], \"profile\": {\"name\": \"bc1-4x16\"}, \"user_data\": \"userData\", \"volume_attachments\": [{\"delete_volume_on_instance_delete\": true, \"name\": \"my-volume-attachment\", \"volume\": {\"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\"}}], \"vpc\": {\"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\"}, \"created_at\": \"2019-01-01T12:00:00\", \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"primary_network_interface\": {\"name\": \"my-network-interface\", \"primary_ipv4_address\": \"10.0.0.5\", \"security_groups\": [{\"id\": \"be5df5ca-12a0-494b-907e-aa6ec2bfa271\"}], \"subnet\": {\"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\"}}, \"zone\": {\"name\": \"us-south-1\"}, \"boot_volume_attachment\": {\"delete_volume_on_instance_delete\": true, \"name\": \"my-volume-attachment\", \"volume\": {\"name\": \"my-volume\", \"profile\": {\"name\": \"general-purpose\"}, \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"capacity\": 100, \"iops\": 10000}}, \"image\": {\"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\"}}]}";
+    String listInstanceTemplatesPath = "/instance/templates";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -2983,8 +3051,8 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testCreateInstanceTemplateWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"id\": \"a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/templates/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance-template:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance-template\", \"keys\": [{\"id\": \"a6b1a881-2ce8-41a3-80fc-36316a73f803\"}], \"network_interfaces\": [{\"name\": \"my-network-interface\", \"primary_ipv4_address\": \"10.0.0.5\", \"security_groups\": [{\"id\": \"be5df5ca-12a0-494b-907e-aa6ec2bfa271\"}], \"subnet\": {\"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\"}}], \"profile\": {\"name\": \"bc1-4x16\"}, \"user_data\": \"userData\", \"volume_attachments\": [{\"name\": \"my-volume-attachment\", \"delete_volume_on_instance_delete\": true, \"volume\": {\"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\"}}], \"vpc\": {\"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\"}, \"created_at\": \"2019-01-01T12:00:00\", \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"primary_network_interface\": {\"name\": \"my-network-interface\", \"primary_ipv4_address\": \"10.0.0.5\", \"security_groups\": [{\"id\": \"be5df5ca-12a0-494b-907e-aa6ec2bfa271\"}], \"subnet\": {\"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\"}}, \"zone\": {\"name\": \"us-south-1\"}, \"boot_volume_attachment\": {\"name\": \"my-volume-attachment\", \"delete_volume_on_instance_delete\": true, \"volume\": {\"name\": \"my-volume\", \"profile\": {\"name\": \"general-purpose\"}, \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"capacity\": 100, \"iops\": 10000}}, \"image\": {\"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\"}}";
-    String createInstanceTemplatePath = java.net.URLEncoder.encode("/instance/templates", "UTF-8").replace("%2F", "/");
+    String mockResponseBody = "{\"id\": \"a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/templates/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance-template:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance-template\", \"keys\": [{\"id\": \"a6b1a881-2ce8-41a3-80fc-36316a73f803\"}], \"network_interfaces\": [{\"name\": \"my-network-interface\", \"primary_ipv4_address\": \"10.0.0.5\", \"security_groups\": [{\"id\": \"be5df5ca-12a0-494b-907e-aa6ec2bfa271\"}], \"subnet\": {\"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\"}}], \"profile\": {\"name\": \"bc1-4x16\"}, \"user_data\": \"userData\", \"volume_attachments\": [{\"delete_volume_on_instance_delete\": true, \"name\": \"my-volume-attachment\", \"volume\": {\"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\"}}], \"vpc\": {\"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\"}, \"created_at\": \"2019-01-01T12:00:00\", \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"primary_network_interface\": {\"name\": \"my-network-interface\", \"primary_ipv4_address\": \"10.0.0.5\", \"security_groups\": [{\"id\": \"be5df5ca-12a0-494b-907e-aa6ec2bfa271\"}], \"subnet\": {\"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\"}}, \"zone\": {\"name\": \"us-south-1\"}, \"boot_volume_attachment\": {\"delete_volume_on_instance_delete\": true, \"name\": \"my-volume-attachment\", \"volume\": {\"name\": \"my-volume\", \"profile\": {\"name\": \"general-purpose\"}, \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"capacity\": 100, \"iops\": 10000}}, \"image\": {\"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\"}}";
+    String createInstanceTemplatePath = "/instance/templates";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -2993,9 +3061,9 @@ public class VpcTest extends PowerMockTestCase {
 
     constructClientService();
 
-    // Construct an instance of the KeyIdentityById model
-    KeyIdentityById keyIdentityModel = new KeyIdentityById.Builder()
-    .id("a6b1a881-2ce8-41a3-80fc-36316a73f803")
+    // Construct an instance of the KeyIdentityKeyIdentityByFingerprint model
+    KeyIdentityKeyIdentityByFingerprint keyIdentityModel = new KeyIdentityKeyIdentityByFingerprint.Builder()
+    .fingerprint("SHA256:yxavE4CIOL2NlsqcurRO3xGjkP6m/0mp8ugojH5yxlY")
     .build();
 
     // Construct an instance of the SecurityGroupIdentityById model
@@ -3018,7 +3086,7 @@ public class VpcTest extends PowerMockTestCase {
 
     // Construct an instance of the InstanceProfileIdentityByName model
     InstanceProfileIdentityByName instanceProfileIdentityModel = new InstanceProfileIdentityByName.Builder()
-    .name("cc1-16x32")
+    .name("gc.balanced.4x16")
     .build();
 
     // Construct an instance of the VolumeAttachmentPrototypeInstanceContextVolumeVolumeIdentityVolumeIdentityById model
@@ -3028,8 +3096,8 @@ public class VpcTest extends PowerMockTestCase {
 
     // Construct an instance of the VolumeAttachmentPrototypeInstanceContext model
     VolumeAttachmentPrototypeInstanceContext volumeAttachmentPrototypeInstanceContextModel = new VolumeAttachmentPrototypeInstanceContext.Builder()
-    .name("my-volume-attachment")
     .deleteVolumeOnInstanceDelete(true)
+    .name("my-volume-attachment")
     .volume(volumeAttachmentPrototypeInstanceContextVolumeModel)
     .build();
 
@@ -3069,8 +3137,8 @@ public class VpcTest extends PowerMockTestCase {
 
     // Construct an instance of the VolumeAttachmentPrototypeInstanceByImageContext model
     VolumeAttachmentPrototypeInstanceByImageContext volumeAttachmentPrototypeInstanceByImageContextModel = new VolumeAttachmentPrototypeInstanceByImageContext.Builder()
-    .name("my-volume-attachment")
     .deleteVolumeOnInstanceDelete(true)
+    .name("my-volume-attachment")
     .volume(volumePrototypeInstanceByImageContextModel)
     .build();
 
@@ -3138,7 +3206,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testDeleteInstanceTemplateWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "";
-    String deleteInstanceTemplatePath = java.net.URLEncoder.encode("/instance/templates/testString", "UTF-8").replace("%2F", "/");
+    String deleteInstanceTemplatePath = "/instance/templates/testString";
 
     server.enqueue(new MockResponse()
     .setResponseCode(204)
@@ -3189,8 +3257,8 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testGetInstanceTemplateWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"id\": \"a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/templates/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance-template:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance-template\", \"keys\": [{\"id\": \"a6b1a881-2ce8-41a3-80fc-36316a73f803\"}], \"network_interfaces\": [{\"name\": \"my-network-interface\", \"primary_ipv4_address\": \"10.0.0.5\", \"security_groups\": [{\"id\": \"be5df5ca-12a0-494b-907e-aa6ec2bfa271\"}], \"subnet\": {\"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\"}}], \"profile\": {\"name\": \"bc1-4x16\"}, \"user_data\": \"userData\", \"volume_attachments\": [{\"name\": \"my-volume-attachment\", \"delete_volume_on_instance_delete\": true, \"volume\": {\"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\"}}], \"vpc\": {\"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\"}, \"created_at\": \"2019-01-01T12:00:00\", \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"primary_network_interface\": {\"name\": \"my-network-interface\", \"primary_ipv4_address\": \"10.0.0.5\", \"security_groups\": [{\"id\": \"be5df5ca-12a0-494b-907e-aa6ec2bfa271\"}], \"subnet\": {\"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\"}}, \"zone\": {\"name\": \"us-south-1\"}, \"boot_volume_attachment\": {\"name\": \"my-volume-attachment\", \"delete_volume_on_instance_delete\": true, \"volume\": {\"name\": \"my-volume\", \"profile\": {\"name\": \"general-purpose\"}, \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"capacity\": 100, \"iops\": 10000}}, \"image\": {\"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\"}}";
-    String getInstanceTemplatePath = java.net.URLEncoder.encode("/instance/templates/testString", "UTF-8").replace("%2F", "/");
+    String mockResponseBody = "{\"id\": \"a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/templates/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance-template:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance-template\", \"keys\": [{\"id\": \"a6b1a881-2ce8-41a3-80fc-36316a73f803\"}], \"network_interfaces\": [{\"name\": \"my-network-interface\", \"primary_ipv4_address\": \"10.0.0.5\", \"security_groups\": [{\"id\": \"be5df5ca-12a0-494b-907e-aa6ec2bfa271\"}], \"subnet\": {\"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\"}}], \"profile\": {\"name\": \"bc1-4x16\"}, \"user_data\": \"userData\", \"volume_attachments\": [{\"delete_volume_on_instance_delete\": true, \"name\": \"my-volume-attachment\", \"volume\": {\"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\"}}], \"vpc\": {\"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\"}, \"created_at\": \"2019-01-01T12:00:00\", \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"primary_network_interface\": {\"name\": \"my-network-interface\", \"primary_ipv4_address\": \"10.0.0.5\", \"security_groups\": [{\"id\": \"be5df5ca-12a0-494b-907e-aa6ec2bfa271\"}], \"subnet\": {\"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\"}}, \"zone\": {\"name\": \"us-south-1\"}, \"boot_volume_attachment\": {\"delete_volume_on_instance_delete\": true, \"name\": \"my-volume-attachment\", \"volume\": {\"name\": \"my-volume\", \"profile\": {\"name\": \"general-purpose\"}, \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"capacity\": 100, \"iops\": 10000}}, \"image\": {\"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\"}}";
+    String getInstanceTemplatePath = "/instance/templates/testString";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -3241,8 +3309,8 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testUpdateInstanceTemplateWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"id\": \"a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/templates/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance-template:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance-template\", \"keys\": [{\"id\": \"a6b1a881-2ce8-41a3-80fc-36316a73f803\"}], \"network_interfaces\": [{\"name\": \"my-network-interface\", \"primary_ipv4_address\": \"10.0.0.5\", \"security_groups\": [{\"id\": \"be5df5ca-12a0-494b-907e-aa6ec2bfa271\"}], \"subnet\": {\"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\"}}], \"profile\": {\"name\": \"bc1-4x16\"}, \"user_data\": \"userData\", \"volume_attachments\": [{\"name\": \"my-volume-attachment\", \"delete_volume_on_instance_delete\": true, \"volume\": {\"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\"}}], \"vpc\": {\"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\"}, \"created_at\": \"2019-01-01T12:00:00\", \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"primary_network_interface\": {\"name\": \"my-network-interface\", \"primary_ipv4_address\": \"10.0.0.5\", \"security_groups\": [{\"id\": \"be5df5ca-12a0-494b-907e-aa6ec2bfa271\"}], \"subnet\": {\"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\"}}, \"zone\": {\"name\": \"us-south-1\"}, \"boot_volume_attachment\": {\"name\": \"my-volume-attachment\", \"delete_volume_on_instance_delete\": true, \"volume\": {\"name\": \"my-volume\", \"profile\": {\"name\": \"general-purpose\"}, \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"capacity\": 100, \"iops\": 10000}}, \"image\": {\"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\"}}";
-    String updateInstanceTemplatePath = java.net.URLEncoder.encode("/instance/templates/testString", "UTF-8").replace("%2F", "/");
+    String mockResponseBody = "{\"id\": \"a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/templates/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance-template:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance-template\", \"keys\": [{\"id\": \"a6b1a881-2ce8-41a3-80fc-36316a73f803\"}], \"network_interfaces\": [{\"name\": \"my-network-interface\", \"primary_ipv4_address\": \"10.0.0.5\", \"security_groups\": [{\"id\": \"be5df5ca-12a0-494b-907e-aa6ec2bfa271\"}], \"subnet\": {\"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\"}}], \"profile\": {\"name\": \"bc1-4x16\"}, \"user_data\": \"userData\", \"volume_attachments\": [{\"delete_volume_on_instance_delete\": true, \"name\": \"my-volume-attachment\", \"volume\": {\"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\"}}], \"vpc\": {\"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\"}, \"created_at\": \"2019-01-01T12:00:00\", \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"primary_network_interface\": {\"name\": \"my-network-interface\", \"primary_ipv4_address\": \"10.0.0.5\", \"security_groups\": [{\"id\": \"be5df5ca-12a0-494b-907e-aa6ec2bfa271\"}], \"subnet\": {\"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\"}}, \"zone\": {\"name\": \"us-south-1\"}, \"boot_volume_attachment\": {\"delete_volume_on_instance_delete\": true, \"name\": \"my-volume-attachment\", \"volume\": {\"name\": \"my-volume\", \"profile\": {\"name\": \"general-purpose\"}, \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"capacity\": 100, \"iops\": 10000}}, \"image\": {\"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\"}}";
+    String updateInstanceTemplatePath = "/instance/templates/testString";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -3251,10 +3319,16 @@ public class VpcTest extends PowerMockTestCase {
 
     constructClientService();
 
+    // Construct an instance of the InstanceTemplatePatch model
+    InstanceTemplatePatch instanceTemplatePatchModel = new InstanceTemplatePatch.Builder()
+    .name("my-instance-template")
+    .build();
+    Map<String, Object> instanceTemplatePatchModelAsPatch = instanceTemplatePatchModel.asPatch();
+
     // Construct an instance of the UpdateInstanceTemplateOptions model
     UpdateInstanceTemplateOptions updateInstanceTemplateOptionsModel = new UpdateInstanceTemplateOptions.Builder()
     .id("testString")
-    .name("my-instance-template")
+    .instanceTemplatePatch(instanceTemplatePatchModelAsPatch)
     .build();
 
     // Invoke operation with valid options model (positive test)
@@ -3295,7 +3369,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testListInstancesWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"first\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances?limit=20\"}, \"limit\": 20, \"next\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances?start=9d5a91a3e2cbd233b5a5b33436855ed1&limit=20\"}, \"total_count\": 132, \"instances\": [{\"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance\", \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"bandwidth\": 1000, \"boot_volume_attachment\": {\"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"name\": \"my-volume-attachment\", \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"volume\": {\"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}}, \"created_at\": \"2019-01-01T12:00:00\", \"gpu\": {\"count\": 1, \"manufacturer\": \"nvidia\", \"memory\": 1, \"model\": \"Tesla V100\"}, \"image\": {\"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"name\": \"my-image\"}, \"memory\": 8, \"network_interfaces\": [{\"name\": \"my-network-interface\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\", \"subnet\": {\"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}}], \"primary_network_interface\": {\"name\": \"my-network-interface\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\", \"subnet\": {\"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}}, \"profile\": {\"name\": \"bc1-4x16\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/profiles/bc1-4x16\"}, \"status\": \"failed\", \"vcpu\": {\"architecture\": \"amd64\", \"count\": 4}, \"volume_attachments\": [{\"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"name\": \"my-volume-attachment\", \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"volume\": {\"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}}], \"vpc\": {\"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\"}, \"zone\": {\"name\": \"us-south-1\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\"}}]}";
-    String listInstancesPath = java.net.URLEncoder.encode("/instances", "UTF-8").replace("%2F", "/");
+    String listInstancesPath = "/instances";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -3348,7 +3422,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testCreateInstanceWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance\", \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"bandwidth\": 1000, \"boot_volume_attachment\": {\"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"name\": \"my-volume-attachment\", \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"volume\": {\"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}}, \"created_at\": \"2019-01-01T12:00:00\", \"gpu\": {\"count\": 1, \"manufacturer\": \"nvidia\", \"memory\": 1, \"model\": \"Tesla V100\"}, \"image\": {\"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"name\": \"my-image\"}, \"memory\": 8, \"network_interfaces\": [{\"name\": \"my-network-interface\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\", \"subnet\": {\"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}}], \"primary_network_interface\": {\"name\": \"my-network-interface\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\", \"subnet\": {\"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}}, \"profile\": {\"name\": \"bc1-4x16\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/profiles/bc1-4x16\"}, \"status\": \"failed\", \"vcpu\": {\"architecture\": \"amd64\", \"count\": 4}, \"volume_attachments\": [{\"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"name\": \"my-volume-attachment\", \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"volume\": {\"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}}], \"vpc\": {\"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\"}, \"zone\": {\"name\": \"us-south-1\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\"}}";
-    String createInstancePath = java.net.URLEncoder.encode("/instances", "UTF-8").replace("%2F", "/");
+    String createInstancePath = "/instances";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -3357,9 +3431,9 @@ public class VpcTest extends PowerMockTestCase {
 
     constructClientService();
 
-    // Construct an instance of the KeyIdentityById model
-    KeyIdentityById keyIdentityModel = new KeyIdentityById.Builder()
-    .id("a6b1a881-2ce8-41a3-80fc-36316a73f803")
+    // Construct an instance of the KeyIdentityKeyIdentityByFingerprint model
+    KeyIdentityKeyIdentityByFingerprint keyIdentityModel = new KeyIdentityKeyIdentityByFingerprint.Builder()
+    .fingerprint("SHA256:RJ+YWs2kupwFGiJuLqY85twmcdLOUcjIc9cA6IR8n8E")
     .build();
 
     // Construct an instance of the SecurityGroupIdentityById model
@@ -3382,7 +3456,7 @@ public class VpcTest extends PowerMockTestCase {
 
     // Construct an instance of the InstanceProfileIdentityByName model
     InstanceProfileIdentityByName instanceProfileIdentityModel = new InstanceProfileIdentityByName.Builder()
-    .name("cc1-16x32")
+    .name("gc.balanced.4x16")
     .build();
 
     // Construct an instance of the VolumeAttachmentPrototypeInstanceContextVolumeVolumeIdentityVolumeIdentityById model
@@ -3392,8 +3466,8 @@ public class VpcTest extends PowerMockTestCase {
 
     // Construct an instance of the VolumeAttachmentPrototypeInstanceContext model
     VolumeAttachmentPrototypeInstanceContext volumeAttachmentPrototypeInstanceContextModel = new VolumeAttachmentPrototypeInstanceContext.Builder()
-    .name("my-volume-attachment")
     .deleteVolumeOnInstanceDelete(true)
+    .name("my-volume-attachment")
     .volume(volumeAttachmentPrototypeInstanceContextVolumeModel)
     .build();
 
@@ -3433,8 +3507,8 @@ public class VpcTest extends PowerMockTestCase {
 
     // Construct an instance of the VolumeAttachmentPrototypeInstanceByImageContext model
     VolumeAttachmentPrototypeInstanceByImageContext volumeAttachmentPrototypeInstanceByImageContextModel = new VolumeAttachmentPrototypeInstanceByImageContext.Builder()
-    .name("my-volume-attachment")
     .deleteVolumeOnInstanceDelete(true)
+    .name("my-volume-attachment")
     .volume(volumePrototypeInstanceByImageContextModel)
     .build();
 
@@ -3502,7 +3576,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testDeleteInstanceWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "";
-    String deleteInstancePath = java.net.URLEncoder.encode("/instances/testString", "UTF-8").replace("%2F", "/");
+    String deleteInstancePath = "/instances/testString";
 
     server.enqueue(new MockResponse()
     .setResponseCode(204)
@@ -3554,7 +3628,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testGetInstanceWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance\", \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"bandwidth\": 1000, \"boot_volume_attachment\": {\"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"name\": \"my-volume-attachment\", \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"volume\": {\"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}}, \"created_at\": \"2019-01-01T12:00:00\", \"gpu\": {\"count\": 1, \"manufacturer\": \"nvidia\", \"memory\": 1, \"model\": \"Tesla V100\"}, \"image\": {\"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"name\": \"my-image\"}, \"memory\": 8, \"network_interfaces\": [{\"name\": \"my-network-interface\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\", \"subnet\": {\"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}}], \"primary_network_interface\": {\"name\": \"my-network-interface\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\", \"subnet\": {\"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}}, \"profile\": {\"name\": \"bc1-4x16\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/profiles/bc1-4x16\"}, \"status\": \"failed\", \"vcpu\": {\"architecture\": \"amd64\", \"count\": 4}, \"volume_attachments\": [{\"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"name\": \"my-volume-attachment\", \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"volume\": {\"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}}], \"vpc\": {\"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\"}, \"zone\": {\"name\": \"us-south-1\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\"}}";
-    String getInstancePath = java.net.URLEncoder.encode("/instances/testString", "UTF-8").replace("%2F", "/");
+    String getInstancePath = "/instances/testString";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -3606,7 +3680,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testUpdateInstanceWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance\", \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"bandwidth\": 1000, \"boot_volume_attachment\": {\"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"name\": \"my-volume-attachment\", \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"volume\": {\"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}}, \"created_at\": \"2019-01-01T12:00:00\", \"gpu\": {\"count\": 1, \"manufacturer\": \"nvidia\", \"memory\": 1, \"model\": \"Tesla V100\"}, \"image\": {\"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"name\": \"my-image\"}, \"memory\": 8, \"network_interfaces\": [{\"name\": \"my-network-interface\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\", \"subnet\": {\"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}}], \"primary_network_interface\": {\"name\": \"my-network-interface\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\", \"subnet\": {\"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}}, \"profile\": {\"name\": \"bc1-4x16\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/profiles/bc1-4x16\"}, \"status\": \"failed\", \"vcpu\": {\"architecture\": \"amd64\", \"count\": 4}, \"volume_attachments\": [{\"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"name\": \"my-volume-attachment\", \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"volume\": {\"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}}], \"vpc\": {\"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\"}, \"zone\": {\"name\": \"us-south-1\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\"}}";
-    String updateInstancePath = java.net.URLEncoder.encode("/instances/testString", "UTF-8").replace("%2F", "/");
+    String updateInstancePath = "/instances/testString";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -3615,10 +3689,16 @@ public class VpcTest extends PowerMockTestCase {
 
     constructClientService();
 
+    // Construct an instance of the InstancePatch model
+    InstancePatch instancePatchModel = new InstancePatch.Builder()
+    .name("my-instance")
+    .build();
+    Map<String, Object> instancePatchModelAsPatch = instancePatchModel.asPatch();
+
     // Construct an instance of the UpdateInstanceOptions model
     UpdateInstanceOptions updateInstanceOptionsModel = new UpdateInstanceOptions.Builder()
     .id("testString")
-    .name("my-instance")
+    .instancePatch(instancePatchModelAsPatch)
     .build();
 
     // Invoke operation with valid options model (positive test)
@@ -3659,7 +3739,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testGetInstanceInitializationWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"keys\": [{\"id\": \"a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::key:a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/keys/a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"fingerprint\": \"SHA256:yxavE4CIOL2NlsqcurRO3xGjkP6m/0mp8ugojH5yxlY\", \"name\": \"my-key\"}], \"password\": {\"encrypted_password\": \"VGhpcyBpcyBhbiBlbmNvZGVkIGJ5dGUgYXJyYXku\", \"encryption_key\": {\"id\": \"a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::key:a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/keys/a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"fingerprint\": \"SHA256:yxavE4CIOL2NlsqcurRO3xGjkP6m/0mp8ugojH5yxlY\", \"name\": \"my-key\"}}}";
-    String getInstanceInitializationPath = java.net.URLEncoder.encode("/instances/testString/initialization", "UTF-8").replace("%2F", "/");
+    String getInstanceInitializationPath = "/instances/testString/initialization";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -3711,7 +3791,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testCreateInstanceActionWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"109a1b6e-1242-4de1-be44-38705e9474ed\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/actions/109a1b6e-1242-4de1-be44-38705e9474ed\", \"force\": false, \"type\": \"reboot\", \"completed_at\": \"2019-01-01T12:00:00\", \"created_at\": \"2019-01-01T12:00:00\", \"started_at\": \"2019-01-01T12:00:00\", \"status\": \"completed\"}";
-    String createInstanceActionPath = java.net.URLEncoder.encode("/instances/testString/actions", "UTF-8").replace("%2F", "/");
+    String createInstanceActionPath = "/instances/testString/actions";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -3765,7 +3845,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testListInstanceNetworkInterfacesWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"network_interfaces\": [{\"name\": \"my-network-interface\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\", \"security_groups\": [{\"id\": \"be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::security-group:be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"name\": \"my-security-group\"}], \"created_at\": \"2019-01-01T12:00:00\", \"floating_ips\": [{\"id\": \"39300233-9995-4806-89a5-3c1b6eb88689\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::floating-ip:39300233-9995-4806-89a5-3c1b6eb88689\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/floating_ips/39300233-9995-4806-89a5-3c1b6eb88689\", \"address\": \"203.0.113.1\", \"name\": \"my-floating-ip\"}], \"port_speed\": 1000, \"status\": \"available\", \"subnet\": {\"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}, \"type\": \"primary\"}]}";
-    String listInstanceNetworkInterfacesPath = java.net.URLEncoder.encode("/instances/testString/network_interfaces", "UTF-8").replace("%2F", "/");
+    String listInstanceNetworkInterfacesPath = "/instances/testString/network_interfaces";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -3817,7 +3897,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testCreateInstanceNetworkInterfaceWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"name\": \"my-network-interface\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\", \"security_groups\": [{\"id\": \"be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::security-group:be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"name\": \"my-security-group\"}], \"created_at\": \"2019-01-01T12:00:00\", \"floating_ips\": [{\"id\": \"39300233-9995-4806-89a5-3c1b6eb88689\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::floating-ip:39300233-9995-4806-89a5-3c1b6eb88689\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/floating_ips/39300233-9995-4806-89a5-3c1b6eb88689\", \"address\": \"203.0.113.1\", \"name\": \"my-floating-ip\"}], \"port_speed\": 1000, \"status\": \"available\", \"subnet\": {\"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}, \"type\": \"primary\"}";
-    String createInstanceNetworkInterfacePath = java.net.URLEncoder.encode("/instances/testString/network_interfaces", "UTF-8").replace("%2F", "/");
+    String createInstanceNetworkInterfacePath = "/instances/testString/network_interfaces";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -3883,7 +3963,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testDeleteInstanceNetworkInterfaceWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "";
-    String deleteInstanceNetworkInterfacePath = java.net.URLEncoder.encode("/instances/testString/network_interfaces/testString", "UTF-8").replace("%2F", "/");
+    String deleteInstanceNetworkInterfacePath = "/instances/testString/network_interfaces/testString";
 
     server.enqueue(new MockResponse()
     .setResponseCode(204)
@@ -3936,7 +4016,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testGetInstanceNetworkInterfaceWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"name\": \"my-network-interface\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\", \"security_groups\": [{\"id\": \"be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::security-group:be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"name\": \"my-security-group\"}], \"created_at\": \"2019-01-01T12:00:00\", \"floating_ips\": [{\"id\": \"39300233-9995-4806-89a5-3c1b6eb88689\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::floating-ip:39300233-9995-4806-89a5-3c1b6eb88689\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/floating_ips/39300233-9995-4806-89a5-3c1b6eb88689\", \"address\": \"203.0.113.1\", \"name\": \"my-floating-ip\"}], \"port_speed\": 1000, \"status\": \"available\", \"subnet\": {\"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}, \"type\": \"primary\"}";
-    String getInstanceNetworkInterfacePath = java.net.URLEncoder.encode("/instances/testString/network_interfaces/testString", "UTF-8").replace("%2F", "/");
+    String getInstanceNetworkInterfacePath = "/instances/testString/network_interfaces/testString";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -3989,7 +4069,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testUpdateInstanceNetworkInterfaceWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"name\": \"my-network-interface\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\", \"security_groups\": [{\"id\": \"be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::security-group:be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"name\": \"my-security-group\"}], \"created_at\": \"2019-01-01T12:00:00\", \"floating_ips\": [{\"id\": \"39300233-9995-4806-89a5-3c1b6eb88689\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::floating-ip:39300233-9995-4806-89a5-3c1b6eb88689\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/floating_ips/39300233-9995-4806-89a5-3c1b6eb88689\", \"address\": \"203.0.113.1\", \"name\": \"my-floating-ip\"}], \"port_speed\": 1000, \"status\": \"available\", \"subnet\": {\"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}, \"type\": \"primary\"}";
-    String updateInstanceNetworkInterfacePath = java.net.URLEncoder.encode("/instances/testString/network_interfaces/testString", "UTF-8").replace("%2F", "/");
+    String updateInstanceNetworkInterfacePath = "/instances/testString/network_interfaces/testString";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -3998,11 +4078,17 @@ public class VpcTest extends PowerMockTestCase {
 
     constructClientService();
 
+    // Construct an instance of the NetworkInterfacePatch model
+    NetworkInterfacePatch networkInterfacePatchModel = new NetworkInterfacePatch.Builder()
+    .name("my-network-interface")
+    .build();
+    Map<String, Object> networkInterfacePatchModelAsPatch = networkInterfacePatchModel.asPatch();
+
     // Construct an instance of the UpdateInstanceNetworkInterfaceOptions model
     UpdateInstanceNetworkInterfaceOptions updateInstanceNetworkInterfaceOptionsModel = new UpdateInstanceNetworkInterfaceOptions.Builder()
     .instanceId("testString")
     .id("testString")
-    .name("my-network-interface")
+    .networkInterfacePatch(networkInterfacePatchModelAsPatch)
     .build();
 
     // Invoke operation with valid options model (positive test)
@@ -4043,7 +4129,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testListInstanceNetworkInterfaceFloatingIpsWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"floating_ips\": [{\"id\": \"39300233-9995-4806-89a5-3c1b6eb88689\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::floating-ip:39300233-9995-4806-89a5-3c1b6eb88689\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/floating_ips/39300233-9995-4806-89a5-3c1b6eb88689\", \"address\": \"203.0.113.1\", \"name\": \"my-floating-ip\", \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"created_at\": \"2019-01-01T12:00:00\", \"status\": \"available\", \"target\": {\"name\": \"my-network-interface\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\"}, \"zone\": {\"name\": \"us-south-1\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\"}}]}";
-    String listInstanceNetworkInterfaceFloatingIpsPath = java.net.URLEncoder.encode("/instances/testString/network_interfaces/testString/floating_ips", "UTF-8").replace("%2F", "/");
+    String listInstanceNetworkInterfaceFloatingIpsPath = "/instances/testString/network_interfaces/testString/floating_ips";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -4096,7 +4182,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testRemoveInstanceNetworkInterfaceFloatingIpWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "";
-    String removeInstanceNetworkInterfaceFloatingIpPath = java.net.URLEncoder.encode("/instances/testString/network_interfaces/testString/floating_ips/testString", "UTF-8").replace("%2F", "/");
+    String removeInstanceNetworkInterfaceFloatingIpPath = "/instances/testString/network_interfaces/testString/floating_ips/testString";
 
     server.enqueue(new MockResponse()
     .setResponseCode(204)
@@ -4150,7 +4236,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testGetInstanceNetworkInterfaceFloatingIpWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"39300233-9995-4806-89a5-3c1b6eb88689\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::floating-ip:39300233-9995-4806-89a5-3c1b6eb88689\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/floating_ips/39300233-9995-4806-89a5-3c1b6eb88689\", \"address\": \"203.0.113.1\", \"name\": \"my-floating-ip\", \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"created_at\": \"2019-01-01T12:00:00\", \"status\": \"available\", \"target\": {\"name\": \"my-network-interface\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\"}, \"zone\": {\"name\": \"us-south-1\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\"}}";
-    String getInstanceNetworkInterfaceFloatingIpPath = java.net.URLEncoder.encode("/instances/testString/network_interfaces/testString/floating_ips/testString", "UTF-8").replace("%2F", "/");
+    String getInstanceNetworkInterfaceFloatingIpPath = "/instances/testString/network_interfaces/testString/floating_ips/testString";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -4204,7 +4290,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testAddInstanceNetworkInterfaceFloatingIpWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"39300233-9995-4806-89a5-3c1b6eb88689\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::floating-ip:39300233-9995-4806-89a5-3c1b6eb88689\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/floating_ips/39300233-9995-4806-89a5-3c1b6eb88689\", \"address\": \"203.0.113.1\", \"name\": \"my-floating-ip\", \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"created_at\": \"2019-01-01T12:00:00\", \"status\": \"available\", \"target\": {\"name\": \"my-network-interface\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\"}, \"zone\": {\"name\": \"us-south-1\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\"}}";
-    String addInstanceNetworkInterfaceFloatingIpPath = java.net.URLEncoder.encode("/instances/testString/network_interfaces/testString/floating_ips/testString", "UTF-8").replace("%2F", "/");
+    String addInstanceNetworkInterfaceFloatingIpPath = "/instances/testString/network_interfaces/testString/floating_ips/testString";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -4257,8 +4343,8 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testListInstanceVolumeAttachmentsWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"volume_attachments\": [{\"name\": \"my-volume-attachment\", \"delete_volume_on_instance_delete\": true, \"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"volume\": {\"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}, \"created_at\": \"2019-01-01T12:00:00\", \"status\": \"attached\", \"type\": \"boot\"}]}";
-    String listInstanceVolumeAttachmentsPath = java.net.URLEncoder.encode("/instances/testString/volume_attachments", "UTF-8").replace("%2F", "/");
+    String mockResponseBody = "{\"volume_attachments\": [{\"delete_volume_on_instance_delete\": true, \"name\": \"my-volume-attachment\", \"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"volume\": {\"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}, \"created_at\": \"2019-01-01T12:00:00\", \"status\": \"attached\", \"type\": \"boot\"}]}";
+    String listInstanceVolumeAttachmentsPath = "/instances/testString/volume_attachments";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -4309,8 +4395,8 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testCreateInstanceVolumeAttachmentWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"name\": \"my-volume-attachment\", \"delete_volume_on_instance_delete\": true, \"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"volume\": {\"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}, \"created_at\": \"2019-01-01T12:00:00\", \"status\": \"attached\", \"type\": \"boot\"}";
-    String createInstanceVolumeAttachmentPath = java.net.URLEncoder.encode("/instances/testString/volume_attachments", "UTF-8").replace("%2F", "/");
+    String mockResponseBody = "{\"delete_volume_on_instance_delete\": true, \"name\": \"my-volume-attachment\", \"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"volume\": {\"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}, \"created_at\": \"2019-01-01T12:00:00\", \"status\": \"attached\", \"type\": \"boot\"}";
+    String createInstanceVolumeAttachmentPath = "/instances/testString/volume_attachments";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -4328,8 +4414,8 @@ public class VpcTest extends PowerMockTestCase {
     CreateInstanceVolumeAttachmentOptions createInstanceVolumeAttachmentOptionsModel = new CreateInstanceVolumeAttachmentOptions.Builder()
     .instanceId("testString")
     .volume(volumeIdentityModel)
-    .name("my-volume-attachment")
     .deleteVolumeOnInstanceDelete(true)
+    .name("my-volume-attachment")
     .build();
 
     // Invoke operation with valid options model (positive test)
@@ -4370,7 +4456,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testDeleteInstanceVolumeAttachmentWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "";
-    String deleteInstanceVolumeAttachmentPath = java.net.URLEncoder.encode("/instances/testString/volume_attachments/testString", "UTF-8").replace("%2F", "/");
+    String deleteInstanceVolumeAttachmentPath = "/instances/testString/volume_attachments/testString";
 
     server.enqueue(new MockResponse()
     .setResponseCode(204)
@@ -4422,8 +4508,8 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testGetInstanceVolumeAttachmentWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"name\": \"my-volume-attachment\", \"delete_volume_on_instance_delete\": true, \"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"volume\": {\"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}, \"created_at\": \"2019-01-01T12:00:00\", \"status\": \"attached\", \"type\": \"boot\"}";
-    String getInstanceVolumeAttachmentPath = java.net.URLEncoder.encode("/instances/testString/volume_attachments/testString", "UTF-8").replace("%2F", "/");
+    String mockResponseBody = "{\"delete_volume_on_instance_delete\": true, \"name\": \"my-volume-attachment\", \"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"volume\": {\"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}, \"created_at\": \"2019-01-01T12:00:00\", \"status\": \"attached\", \"type\": \"boot\"}";
+    String getInstanceVolumeAttachmentPath = "/instances/testString/volume_attachments/testString";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -4475,8 +4561,8 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testUpdateInstanceVolumeAttachmentWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"name\": \"my-volume-attachment\", \"delete_volume_on_instance_delete\": true, \"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"volume\": {\"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}, \"created_at\": \"2019-01-01T12:00:00\", \"status\": \"attached\", \"type\": \"boot\"}";
-    String updateInstanceVolumeAttachmentPath = java.net.URLEncoder.encode("/instances/testString/volume_attachments/testString", "UTF-8").replace("%2F", "/");
+    String mockResponseBody = "{\"delete_volume_on_instance_delete\": true, \"name\": \"my-volume-attachment\", \"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"volume\": {\"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}, \"created_at\": \"2019-01-01T12:00:00\", \"status\": \"attached\", \"type\": \"boot\"}";
+    String updateInstanceVolumeAttachmentPath = "/instances/testString/volume_attachments/testString";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -4485,12 +4571,18 @@ public class VpcTest extends PowerMockTestCase {
 
     constructClientService();
 
+    // Construct an instance of the VolumeAttachmentPatch model
+    VolumeAttachmentPatch volumeAttachmentPatchModel = new VolumeAttachmentPatch.Builder()
+    .deleteVolumeOnInstanceDelete(true)
+    .name("my-volume-attachment")
+    .build();
+    Map<String, Object> volumeAttachmentPatchModelAsPatch = volumeAttachmentPatchModel.asPatch();
+
     // Construct an instance of the UpdateInstanceVolumeAttachmentOptions model
     UpdateInstanceVolumeAttachmentOptions updateInstanceVolumeAttachmentOptionsModel = new UpdateInstanceVolumeAttachmentOptions.Builder()
     .instanceId("testString")
     .id("testString")
-    .name("my-volume-attachment")
-    .deleteVolumeOnInstanceDelete(true)
+    .volumeAttachmentPatch(volumeAttachmentPatchModelAsPatch)
     .build();
 
     // Invoke operation with valid options model (positive test)
@@ -4531,7 +4623,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testListInstanceGroupsWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"first\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups?limit=20\"}, \"limit\": 20, \"next\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups?start=9d5a91a3e2cbd233b5a5b33436855ed1&limit=20\"}, \"total_count\": 132, \"instance_groups\": [{\"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance-group:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance-group\", \"membership_count\": 10, \"application_port\": 22, \"load_balancer_pool\": {\"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004\", \"name\": \"my-load-balancer-pool\"}, \"created_at\": \"2019-01-01T12:00:00\", \"instance_template\": {\"id\": \"a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/templates/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance-template:1e09281b-f177-46fb-baf1-bc152b2e391a\"}, \"managers\": [{\"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/1e09281b-f177-46fb-baf1-bc152b2e391a/managers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"name\": \"my-instance-group-manager\"}], \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"status\": \"deleting\", \"subnets\": [{\"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}], \"vpc\": {\"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\"}}]}";
-    String listInstanceGroupsPath = java.net.URLEncoder.encode("/instance_groups", "UTF-8").replace("%2F", "/");
+    String listInstanceGroupsPath = "/instance_groups";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -4574,7 +4666,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testCreateInstanceGroupWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance-group:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance-group\", \"membership_count\": 10, \"application_port\": 22, \"load_balancer_pool\": {\"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004\", \"name\": \"my-load-balancer-pool\"}, \"created_at\": \"2019-01-01T12:00:00\", \"instance_template\": {\"id\": \"a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/templates/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance-template:1e09281b-f177-46fb-baf1-bc152b2e391a\"}, \"managers\": [{\"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/1e09281b-f177-46fb-baf1-bc152b2e391a/managers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"name\": \"my-instance-group-manager\"}], \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"status\": \"deleting\", \"subnets\": [{\"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}], \"vpc\": {\"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\"}}";
-    String createInstanceGroupPath = java.net.URLEncoder.encode("/instance_groups", "UTF-8").replace("%2F", "/");
+    String createInstanceGroupPath = "/instance_groups";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -4658,7 +4750,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testDeleteInstanceGroupWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "";
-    String deleteInstanceGroupPath = java.net.URLEncoder.encode("/instance_groups/testString", "UTF-8").replace("%2F", "/");
+    String deleteInstanceGroupPath = "/instance_groups/testString";
 
     server.enqueue(new MockResponse()
     .setResponseCode(204)
@@ -4710,7 +4802,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testGetInstanceGroupWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance-group:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance-group\", \"membership_count\": 10, \"application_port\": 22, \"load_balancer_pool\": {\"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004\", \"name\": \"my-load-balancer-pool\"}, \"created_at\": \"2019-01-01T12:00:00\", \"instance_template\": {\"id\": \"a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/templates/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance-template:1e09281b-f177-46fb-baf1-bc152b2e391a\"}, \"managers\": [{\"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/1e09281b-f177-46fb-baf1-bc152b2e391a/managers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"name\": \"my-instance-group-manager\"}], \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"status\": \"deleting\", \"subnets\": [{\"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}], \"vpc\": {\"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\"}}";
-    String getInstanceGroupPath = java.net.URLEncoder.encode("/instance_groups/testString", "UTF-8").replace("%2F", "/");
+    String getInstanceGroupPath = "/instance_groups/testString";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -4762,7 +4854,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testUpdateInstanceGroupWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance-group:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance-group\", \"membership_count\": 10, \"application_port\": 22, \"load_balancer_pool\": {\"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004\", \"name\": \"my-load-balancer-pool\"}, \"created_at\": \"2019-01-01T12:00:00\", \"instance_template\": {\"id\": \"a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/templates/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance-template:1e09281b-f177-46fb-baf1-bc152b2e391a\"}, \"managers\": [{\"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/1e09281b-f177-46fb-baf1-bc152b2e391a/managers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"name\": \"my-instance-group-manager\"}], \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"status\": \"deleting\", \"subnets\": [{\"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}], \"vpc\": {\"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\"}}";
-    String updateInstanceGroupPath = java.net.URLEncoder.encode("/instance_groups/testString", "UTF-8").replace("%2F", "/");
+    String updateInstanceGroupPath = "/instance_groups/testString";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -4791,9 +4883,8 @@ public class VpcTest extends PowerMockTestCase {
     .id("70294e14-4e61-11e8-bcf4-0242ac110004")
     .build();
 
-    // Construct an instance of the UpdateInstanceGroupOptions model
-    UpdateInstanceGroupOptions updateInstanceGroupOptionsModel = new UpdateInstanceGroupOptions.Builder()
-    .id("testString")
+    // Construct an instance of the InstanceGroupPatch model
+    InstanceGroupPatch instanceGroupPatchModel = new InstanceGroupPatch.Builder()
     .name("my-instance-group")
     .membershipCount(Long.valueOf("10"))
     .instanceTemplate(instanceTemplateIdentityModel)
@@ -4801,6 +4892,13 @@ public class VpcTest extends PowerMockTestCase {
     .applicationPort(Long.valueOf("22"))
     .loadBalancer(loadBalancerIdentityModel)
     .loadBalancerPool(loadBalancerPoolIdentityModel)
+    .build();
+    Map<String, Object> instanceGroupPatchModelAsPatch = instanceGroupPatchModel.asPatch();
+
+    // Construct an instance of the UpdateInstanceGroupOptions model
+    UpdateInstanceGroupOptions updateInstanceGroupOptionsModel = new UpdateInstanceGroupOptions.Builder()
+    .id("testString")
+    .instanceGroupPatch(instanceGroupPatchModelAsPatch)
     .build();
 
     // Invoke operation with valid options model (positive test)
@@ -4841,7 +4939,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testDeleteInstanceGroupLoadBalancerWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "";
-    String deleteInstanceGroupLoadBalancerPath = java.net.URLEncoder.encode("/instance_groups/testString/load_balancer", "UTF-8").replace("%2F", "/");
+    String deleteInstanceGroupLoadBalancerPath = "/instance_groups/testString/load_balancer";
 
     server.enqueue(new MockResponse()
     .setResponseCode(204)
@@ -4893,7 +4991,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testListInstanceGroupManagersWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"first\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/managers?limit=20\"}, \"limit\": 20, \"next\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/managers?start=9d5a91a3e2cbd233b5a5b33436855ed1&limit=20\"}, \"total_count\": 132, \"managers\": [{\"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/1e09281b-f177-46fb-baf1-bc152b2e391a/managers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"name\": \"my-instance-group-manager\", \"management_enabled\": false, \"aggregation_window\": 120, \"cooldown\": 210, \"max_membership_count\": 10, \"min_membership_count\": 10, \"manager_type\": \"autoscale\", \"policies\": [{\"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/managers/4c939b00-601f-11ea-bca2-000c29475bed/policies/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance-group-manager-policy\"}]}]}";
-    String listInstanceGroupManagersPath = java.net.URLEncoder.encode("/instance_groups/testString/managers", "UTF-8").replace("%2F", "/");
+    String listInstanceGroupManagersPath = "/instance_groups/testString/managers";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -4945,7 +5043,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testCreateInstanceGroupManagerWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/1e09281b-f177-46fb-baf1-bc152b2e391a/managers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"name\": \"my-instance-group-manager\", \"management_enabled\": false, \"aggregation_window\": 120, \"cooldown\": 210, \"max_membership_count\": 10, \"min_membership_count\": 10, \"manager_type\": \"autoscale\", \"policies\": [{\"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/managers/4c939b00-601f-11ea-bca2-000c29475bed/policies/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance-group-manager-policy\"}]}";
-    String createInstanceGroupManagerPath = java.net.URLEncoder.encode("/instance_groups/testString/managers", "UTF-8").replace("%2F", "/");
+    String createInstanceGroupManagerPath = "/instance_groups/testString/managers";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -5009,7 +5107,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testDeleteInstanceGroupManagerWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "";
-    String deleteInstanceGroupManagerPath = java.net.URLEncoder.encode("/instance_groups/testString/managers/testString", "UTF-8").replace("%2F", "/");
+    String deleteInstanceGroupManagerPath = "/instance_groups/testString/managers/testString";
 
     server.enqueue(new MockResponse()
     .setResponseCode(204)
@@ -5062,7 +5160,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testGetInstanceGroupManagerWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/1e09281b-f177-46fb-baf1-bc152b2e391a/managers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"name\": \"my-instance-group-manager\", \"management_enabled\": false, \"aggregation_window\": 120, \"cooldown\": 210, \"max_membership_count\": 10, \"min_membership_count\": 10, \"manager_type\": \"autoscale\", \"policies\": [{\"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/managers/4c939b00-601f-11ea-bca2-000c29475bed/policies/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance-group-manager-policy\"}]}";
-    String getInstanceGroupManagerPath = java.net.URLEncoder.encode("/instance_groups/testString/managers/testString", "UTF-8").replace("%2F", "/");
+    String getInstanceGroupManagerPath = "/instance_groups/testString/managers/testString";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -5115,7 +5213,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testUpdateInstanceGroupManagerWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/1e09281b-f177-46fb-baf1-bc152b2e391a/managers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"name\": \"my-instance-group-manager\", \"management_enabled\": false, \"aggregation_window\": 120, \"cooldown\": 210, \"max_membership_count\": 10, \"min_membership_count\": 10, \"manager_type\": \"autoscale\", \"policies\": [{\"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/managers/4c939b00-601f-11ea-bca2-000c29475bed/policies/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance-group-manager-policy\"}]}";
-    String updateInstanceGroupManagerPath = java.net.URLEncoder.encode("/instance_groups/testString/managers/testString", "UTF-8").replace("%2F", "/");
+    String updateInstanceGroupManagerPath = "/instance_groups/testString/managers/testString";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -5124,16 +5222,22 @@ public class VpcTest extends PowerMockTestCase {
 
     constructClientService();
 
-    // Construct an instance of the UpdateInstanceGroupManagerOptions model
-    UpdateInstanceGroupManagerOptions updateInstanceGroupManagerOptionsModel = new UpdateInstanceGroupManagerOptions.Builder()
-    .instanceGroupId("testString")
-    .id("testString")
+    // Construct an instance of the InstanceGroupManagerPatch model
+    InstanceGroupManagerPatch instanceGroupManagerPatchModel = new InstanceGroupManagerPatch.Builder()
     .name("my-instance-group-manager")
     .managementEnabled(true)
     .aggregationWindow(Long.valueOf("120"))
     .cooldown(Long.valueOf("210"))
     .maxMembershipCount(Long.valueOf("10"))
     .minMembershipCount(Long.valueOf("10"))
+    .build();
+    Map<String, Object> instanceGroupManagerPatchModelAsPatch = instanceGroupManagerPatchModel.asPatch();
+
+    // Construct an instance of the UpdateInstanceGroupManagerOptions model
+    UpdateInstanceGroupManagerOptions updateInstanceGroupManagerOptionsModel = new UpdateInstanceGroupManagerOptions.Builder()
+    .instanceGroupId("testString")
+    .id("testString")
+    .instanceGroupManagerPatch(instanceGroupManagerPatchModelAsPatch)
     .build();
 
     // Invoke operation with valid options model (positive test)
@@ -5174,7 +5278,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testListInstanceGroupManagerPoliciesWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"first\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/managers/4c939b00-601f-11ea-bca2-000c29475bed/policies?limit=20\"}, \"limit\": 20, \"next\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/managers/4c939b00-601f-11ea-bca2-000c29475bed/policies?start=9d5a91a3e2cbd233b5a5b33436855ed1&limit=20\"}, \"total_count\": 132, \"policies\": [{\"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/managers/4c939b00-601f-11ea-bca2-000c29475bed/policies/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance-group-manager-policy\", \"metric_type\": \"cpu\", \"metric_value\": 11, \"policy_type\": \"target\"}]}";
-    String listInstanceGroupManagerPoliciesPath = java.net.URLEncoder.encode("/instance_groups/testString/managers/testString/policies", "UTF-8").replace("%2F", "/");
+    String listInstanceGroupManagerPoliciesPath = "/instance_groups/testString/managers/testString/policies";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -5227,7 +5331,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testCreateInstanceGroupManagerPolicyWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/managers/4c939b00-601f-11ea-bca2-000c29475bed/policies/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance-group-manager-policy\", \"metric_type\": \"cpu\", \"metric_value\": 11, \"policy_type\": \"target\"}";
-    String createInstanceGroupManagerPolicyPath = java.net.URLEncoder.encode("/instance_groups/testString/managers/testString/policies", "UTF-8").replace("%2F", "/");
+    String createInstanceGroupManagerPolicyPath = "/instance_groups/testString/managers/testString/policies";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -5289,7 +5393,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testDeleteInstanceGroupManagerPolicyWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "";
-    String deleteInstanceGroupManagerPolicyPath = java.net.URLEncoder.encode("/instance_groups/testString/managers/testString/policies/testString", "UTF-8").replace("%2F", "/");
+    String deleteInstanceGroupManagerPolicyPath = "/instance_groups/testString/managers/testString/policies/testString";
 
     server.enqueue(new MockResponse()
     .setResponseCode(204)
@@ -5343,7 +5447,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testGetInstanceGroupManagerPolicyWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/managers/4c939b00-601f-11ea-bca2-000c29475bed/policies/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance-group-manager-policy\", \"metric_type\": \"cpu\", \"metric_value\": 11, \"policy_type\": \"target\"}";
-    String getInstanceGroupManagerPolicyPath = java.net.URLEncoder.encode("/instance_groups/testString/managers/testString/policies/testString", "UTF-8").replace("%2F", "/");
+    String getInstanceGroupManagerPolicyPath = "/instance_groups/testString/managers/testString/policies/testString";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -5397,7 +5501,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testUpdateInstanceGroupManagerPolicyWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/managers/4c939b00-601f-11ea-bca2-000c29475bed/policies/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance-group-manager-policy\", \"metric_type\": \"cpu\", \"metric_value\": 11, \"policy_type\": \"target\"}";
-    String updateInstanceGroupManagerPolicyPath = java.net.URLEncoder.encode("/instance_groups/testString/managers/testString/policies/testString", "UTF-8").replace("%2F", "/");
+    String updateInstanceGroupManagerPolicyPath = "/instance_groups/testString/managers/testString/policies/testString";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -5406,14 +5510,20 @@ public class VpcTest extends PowerMockTestCase {
 
     constructClientService();
 
+    // Construct an instance of the InstanceGroupManagerPolicyPatch model
+    InstanceGroupManagerPolicyPatch instanceGroupManagerPolicyPatchModel = new InstanceGroupManagerPolicyPatch.Builder()
+    .name("my-instance-group-manager-policy")
+    .metricType("cpu")
+    .metricValue(Long.valueOf("26"))
+    .build();
+    Map<String, Object> instanceGroupManagerPolicyPatchModelAsPatch = instanceGroupManagerPolicyPatchModel.asPatch();
+
     // Construct an instance of the UpdateInstanceGroupManagerPolicyOptions model
     UpdateInstanceGroupManagerPolicyOptions updateInstanceGroupManagerPolicyOptionsModel = new UpdateInstanceGroupManagerPolicyOptions.Builder()
     .instanceGroupId("testString")
     .instanceGroupManagerId("testString")
     .id("testString")
-    .name("my-instance-group-manager-policy")
-    .metricType("cpu")
-    .metricValue(Long.valueOf("26"))
+    .instanceGroupManagerPolicyPatch(instanceGroupManagerPolicyPatchModelAsPatch)
     .build();
 
     // Invoke operation with valid options model (positive test)
@@ -5454,7 +5564,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testDeleteInstanceGroupMembershipsWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "";
-    String deleteInstanceGroupMembershipsPath = java.net.URLEncoder.encode("/instance_groups/testString/memberships", "UTF-8").replace("%2F", "/");
+    String deleteInstanceGroupMembershipsPath = "/instance_groups/testString/memberships";
 
     server.enqueue(new MockResponse()
     .setResponseCode(204)
@@ -5506,7 +5616,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testListInstanceGroupMembershipsWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"first\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/7241e2a8-601f-11ea-8503-000c29475bed/memberships?limit=20\"}, \"limit\": 20, \"next\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/7241e2a8-601f-11ea-8503-000c29475bed/memberships?start=9d5a91a3e2cbd233b5a5b33436855ed1&limit=20\"}, \"total_count\": 132, \"memberships\": [{\"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/1e09281b-f177-46fb-baf1-bc152b2e391a/memberships/8b002d86-601f-11ea-898b-000c29475bed\", \"name\": \"my-instance-group-membership\", \"delete_instance_on_membership_delete\": true, \"instance\": {\"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance\"}, \"instance_template\": {\"id\": \"a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/templates/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance-template:1e09281b-f177-46fb-baf1-bc152b2e391a\"}, \"pool_member\": {\"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004/members/80294e14-4e61-11e8-bcf4-0242ac110004\"}, \"status\": \"deleting\"}]}";
-    String listInstanceGroupMembershipsPath = java.net.URLEncoder.encode("/instance_groups/testString/memberships", "UTF-8").replace("%2F", "/");
+    String listInstanceGroupMembershipsPath = "/instance_groups/testString/memberships";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -5558,7 +5668,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testDeleteInstanceGroupMembershipWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "";
-    String deleteInstanceGroupMembershipPath = java.net.URLEncoder.encode("/instance_groups/testString/memberships/testString", "UTF-8").replace("%2F", "/");
+    String deleteInstanceGroupMembershipPath = "/instance_groups/testString/memberships/testString";
 
     server.enqueue(new MockResponse()
     .setResponseCode(204)
@@ -5611,7 +5721,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testGetInstanceGroupMembershipWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/1e09281b-f177-46fb-baf1-bc152b2e391a/memberships/8b002d86-601f-11ea-898b-000c29475bed\", \"name\": \"my-instance-group-membership\", \"delete_instance_on_membership_delete\": true, \"instance\": {\"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance\"}, \"instance_template\": {\"id\": \"a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/templates/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance-template:1e09281b-f177-46fb-baf1-bc152b2e391a\"}, \"pool_member\": {\"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004/members/80294e14-4e61-11e8-bcf4-0242ac110004\"}, \"status\": \"deleting\"}";
-    String getInstanceGroupMembershipPath = java.net.URLEncoder.encode("/instance_groups/testString/memberships/testString", "UTF-8").replace("%2F", "/");
+    String getInstanceGroupMembershipPath = "/instance_groups/testString/memberships/testString";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -5664,7 +5774,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testUpdateInstanceGroupMembershipWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/1e09281b-f177-46fb-baf1-bc152b2e391a/memberships/8b002d86-601f-11ea-898b-000c29475bed\", \"name\": \"my-instance-group-membership\", \"delete_instance_on_membership_delete\": true, \"instance\": {\"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance\"}, \"instance_template\": {\"id\": \"a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/templates/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance-template:1e09281b-f177-46fb-baf1-bc152b2e391a\"}, \"pool_member\": {\"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004/members/80294e14-4e61-11e8-bcf4-0242ac110004\"}, \"status\": \"deleting\"}";
-    String updateInstanceGroupMembershipPath = java.net.URLEncoder.encode("/instance_groups/testString/memberships/testString", "UTF-8").replace("%2F", "/");
+    String updateInstanceGroupMembershipPath = "/instance_groups/testString/memberships/testString";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -5673,11 +5783,17 @@ public class VpcTest extends PowerMockTestCase {
 
     constructClientService();
 
+    // Construct an instance of the InstanceGroupMembershipPatch model
+    InstanceGroupMembershipPatch instanceGroupMembershipPatchModel = new InstanceGroupMembershipPatch.Builder()
+    .name("my-instance-group-membership")
+    .build();
+    Map<String, Object> instanceGroupMembershipPatchModelAsPatch = instanceGroupMembershipPatchModel.asPatch();
+
     // Construct an instance of the UpdateInstanceGroupMembershipOptions model
     UpdateInstanceGroupMembershipOptions updateInstanceGroupMembershipOptionsModel = new UpdateInstanceGroupMembershipOptions.Builder()
     .instanceGroupId("testString")
     .id("testString")
-    .name("my-instance-group-membership")
+    .instanceGroupMembershipPatch(instanceGroupMembershipPatchModelAsPatch)
     .build();
 
     // Invoke operation with valid options model (positive test)
@@ -5718,7 +5834,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testListVolumeProfilesWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"first\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volume/profiles?limit=20\"}, \"limit\": 20, \"next\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volume/profiles?start=9d5a91a3e2cbd233b5a5b33436855ed1&limit=20\"}, \"total_count\": 132, \"profiles\": [{\"name\": \"general-purpose\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volume/profiles/general-purpose\", \"family\": \"tiered\"}]}";
-    String listVolumeProfilesPath = java.net.URLEncoder.encode("/volume/profiles", "UTF-8").replace("%2F", "/");
+    String listVolumeProfilesPath = "/volume/profiles";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -5761,7 +5877,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testGetVolumeProfileWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"name\": \"general-purpose\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volume/profiles/general-purpose\", \"family\": \"tiered\"}";
-    String getVolumeProfilePath = java.net.URLEncoder.encode("/volume/profiles/testString", "UTF-8").replace("%2F", "/");
+    String getVolumeProfilePath = "/volume/profiles/testString";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -5813,7 +5929,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testListVolumesWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"first\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes?limit=20\"}, \"limit\": 20, \"next\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes?start=9d5a91a3e2cbd233b5a5b33436855ed1&limit=20\"}, \"volumes\": [{\"iops\": 10000, \"capacity\": 100, \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\", \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"created_at\": \"2019-01-01T12:00:00\", \"encryption\": \"provider_managed\", \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"profile\": {\"name\": \"general-purpose\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volume/profiles/general-purpose\"}, \"status\": \"available\", \"volume_attachments\": [{\"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"name\": \"my-volume-attachment\", \"delete_volume_on_instance_delete\": true, \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"instance\": {\"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance\"}, \"type\": \"boot\"}], \"zone\": {\"name\": \"us-south-1\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\"}}]}";
-    String listVolumesPath = java.net.URLEncoder.encode("/volumes", "UTF-8").replace("%2F", "/");
+    String listVolumesPath = "/volumes";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -5860,7 +5976,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testCreateVolumeWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"iops\": 10000, \"capacity\": 100, \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\", \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"created_at\": \"2019-01-01T12:00:00\", \"encryption\": \"provider_managed\", \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"profile\": {\"name\": \"general-purpose\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volume/profiles/general-purpose\"}, \"status\": \"available\", \"volume_attachments\": [{\"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"name\": \"my-volume-attachment\", \"delete_volume_on_instance_delete\": true, \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"instance\": {\"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance\"}, \"type\": \"boot\"}], \"zone\": {\"name\": \"us-south-1\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\"}}";
-    String createVolumePath = java.net.URLEncoder.encode("/volumes", "UTF-8").replace("%2F", "/");
+    String createVolumePath = "/volumes";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -5943,7 +6059,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testDeleteVolumeWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "";
-    String deleteVolumePath = java.net.URLEncoder.encode("/volumes/testString", "UTF-8").replace("%2F", "/");
+    String deleteVolumePath = "/volumes/testString";
 
     server.enqueue(new MockResponse()
     .setResponseCode(204)
@@ -5995,7 +6111,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testGetVolumeWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"iops\": 10000, \"capacity\": 100, \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\", \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"created_at\": \"2019-01-01T12:00:00\", \"encryption\": \"provider_managed\", \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"profile\": {\"name\": \"general-purpose\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volume/profiles/general-purpose\"}, \"status\": \"available\", \"volume_attachments\": [{\"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"name\": \"my-volume-attachment\", \"delete_volume_on_instance_delete\": true, \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"instance\": {\"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance\"}, \"type\": \"boot\"}], \"zone\": {\"name\": \"us-south-1\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\"}}";
-    String getVolumePath = java.net.URLEncoder.encode("/volumes/testString", "UTF-8").replace("%2F", "/");
+    String getVolumePath = "/volumes/testString";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -6047,7 +6163,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testUpdateVolumeWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"iops\": 10000, \"capacity\": 100, \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\", \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"created_at\": \"2019-01-01T12:00:00\", \"encryption\": \"provider_managed\", \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"profile\": {\"name\": \"general-purpose\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volume/profiles/general-purpose\"}, \"status\": \"available\", \"volume_attachments\": [{\"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"name\": \"my-volume-attachment\", \"delete_volume_on_instance_delete\": true, \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"instance\": {\"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance\"}, \"type\": \"boot\"}], \"zone\": {\"name\": \"us-south-1\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\"}}";
-    String updateVolumePath = java.net.URLEncoder.encode("/volumes/testString", "UTF-8").replace("%2F", "/");
+    String updateVolumePath = "/volumes/testString";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -6056,10 +6172,16 @@ public class VpcTest extends PowerMockTestCase {
 
     constructClientService();
 
+    // Construct an instance of the VolumePatch model
+    VolumePatch volumePatchModel = new VolumePatch.Builder()
+    .name("my-volume")
+    .build();
+    Map<String, Object> volumePatchModelAsPatch = volumePatchModel.asPatch();
+
     // Construct an instance of the UpdateVolumeOptions model
     UpdateVolumeOptions updateVolumeOptionsModel = new UpdateVolumeOptions.Builder()
     .id("testString")
-    .name("my-volume")
+    .volumePatch(volumePatchModelAsPatch)
     .build();
 
     // Invoke operation with valid options model (positive test)
@@ -6100,7 +6222,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testListRegionsWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"regions\": [{\"name\": \"us-south\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"endpoint\": \"endpoint\", \"status\": \"available\"}]}";
-    String listRegionsPath = java.net.URLEncoder.encode("/regions", "UTF-8").replace("%2F", "/");
+    String listRegionsPath = "/regions";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -6138,7 +6260,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testGetRegionWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"name\": \"us-south\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"endpoint\": \"endpoint\", \"status\": \"available\"}";
-    String getRegionPath = java.net.URLEncoder.encode("/regions/testString", "UTF-8").replace("%2F", "/");
+    String getRegionPath = "/regions/testString";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -6190,7 +6312,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testListRegionZonesWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"zones\": [{\"name\": \"us-south-1\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"region\": {\"name\": \"us-south\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\"}, \"status\": \"available\"}]}";
-    String listRegionZonesPath = java.net.URLEncoder.encode("/regions/testString/zones", "UTF-8").replace("%2F", "/");
+    String listRegionZonesPath = "/regions/testString/zones";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -6242,7 +6364,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testGetRegionZoneWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"name\": \"us-south-1\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"region\": {\"name\": \"us-south\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\"}, \"status\": \"available\"}";
-    String getRegionZonePath = java.net.URLEncoder.encode("/regions/testString/zones/testString", "UTF-8").replace("%2F", "/");
+    String getRegionZonePath = "/regions/testString/zones/testString";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -6295,7 +6417,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testListPublicGatewaysWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"first\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/public_gateways?limit=20\"}, \"limit\": 20, \"next\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/public_gateways?start=9d5a91a3e2cbd233b5a5b33436855ed1&limit=20\"}, \"total_count\": 132, \"public_gateways\": [{\"id\": \"dc5431ef-1fc6-4861-adc9-a59d077d1241\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::public-gateway:dc5431ef-1fc6-4861-adc9-a59d077d1241\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/public_gateways/dc5431ef-1fc6-4861-adc9-a59d077d1241\", \"name\": \"my-public-gateway\", \"resource_type\": \"public_gateway\", \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"created_at\": \"2019-01-01T12:00:00\", \"floating_ip\": {\"id\": \"39300233-9995-4806-89a5-3c1b6eb88689\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::floating-ip:39300233-9995-4806-89a5-3c1b6eb88689\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/floating_ips/39300233-9995-4806-89a5-3c1b6eb88689\", \"address\": \"203.0.113.1\", \"name\": \"my-floating-ip\"}, \"status\": \"available\", \"vpc\": {\"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\"}, \"zone\": {\"name\": \"us-south-1\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\"}}]}";
-    String listPublicGatewaysPath = java.net.URLEncoder.encode("/public_gateways", "UTF-8").replace("%2F", "/");
+    String listPublicGatewaysPath = "/public_gateways";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -6340,7 +6462,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testCreatePublicGatewayWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"dc5431ef-1fc6-4861-adc9-a59d077d1241\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::public-gateway:dc5431ef-1fc6-4861-adc9-a59d077d1241\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/public_gateways/dc5431ef-1fc6-4861-adc9-a59d077d1241\", \"name\": \"my-public-gateway\", \"resource_type\": \"public_gateway\", \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"created_at\": \"2019-01-01T12:00:00\", \"floating_ip\": {\"id\": \"39300233-9995-4806-89a5-3c1b6eb88689\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::floating-ip:39300233-9995-4806-89a5-3c1b6eb88689\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/floating_ips/39300233-9995-4806-89a5-3c1b6eb88689\", \"address\": \"203.0.113.1\", \"name\": \"my-floating-ip\"}, \"status\": \"available\", \"vpc\": {\"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\"}, \"zone\": {\"name\": \"us-south-1\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\"}}";
-    String createPublicGatewayPath = java.net.URLEncoder.encode("/public_gateways", "UTF-8").replace("%2F", "/");
+    String createPublicGatewayPath = "/public_gateways";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -6416,7 +6538,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testDeletePublicGatewayWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "";
-    String deletePublicGatewayPath = java.net.URLEncoder.encode("/public_gateways/testString", "UTF-8").replace("%2F", "/");
+    String deletePublicGatewayPath = "/public_gateways/testString";
 
     server.enqueue(new MockResponse()
     .setResponseCode(204)
@@ -6468,7 +6590,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testGetPublicGatewayWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"dc5431ef-1fc6-4861-adc9-a59d077d1241\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::public-gateway:dc5431ef-1fc6-4861-adc9-a59d077d1241\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/public_gateways/dc5431ef-1fc6-4861-adc9-a59d077d1241\", \"name\": \"my-public-gateway\", \"resource_type\": \"public_gateway\", \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"created_at\": \"2019-01-01T12:00:00\", \"floating_ip\": {\"id\": \"39300233-9995-4806-89a5-3c1b6eb88689\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::floating-ip:39300233-9995-4806-89a5-3c1b6eb88689\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/floating_ips/39300233-9995-4806-89a5-3c1b6eb88689\", \"address\": \"203.0.113.1\", \"name\": \"my-floating-ip\"}, \"status\": \"available\", \"vpc\": {\"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\"}, \"zone\": {\"name\": \"us-south-1\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\"}}";
-    String getPublicGatewayPath = java.net.URLEncoder.encode("/public_gateways/testString", "UTF-8").replace("%2F", "/");
+    String getPublicGatewayPath = "/public_gateways/testString";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -6520,7 +6642,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testUpdatePublicGatewayWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"dc5431ef-1fc6-4861-adc9-a59d077d1241\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::public-gateway:dc5431ef-1fc6-4861-adc9-a59d077d1241\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/public_gateways/dc5431ef-1fc6-4861-adc9-a59d077d1241\", \"name\": \"my-public-gateway\", \"resource_type\": \"public_gateway\", \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"created_at\": \"2019-01-01T12:00:00\", \"floating_ip\": {\"id\": \"39300233-9995-4806-89a5-3c1b6eb88689\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::floating-ip:39300233-9995-4806-89a5-3c1b6eb88689\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/floating_ips/39300233-9995-4806-89a5-3c1b6eb88689\", \"address\": \"203.0.113.1\", \"name\": \"my-floating-ip\"}, \"status\": \"available\", \"vpc\": {\"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\"}, \"zone\": {\"name\": \"us-south-1\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\"}}";
-    String updatePublicGatewayPath = java.net.URLEncoder.encode("/public_gateways/testString", "UTF-8").replace("%2F", "/");
+    String updatePublicGatewayPath = "/public_gateways/testString";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -6529,10 +6651,16 @@ public class VpcTest extends PowerMockTestCase {
 
     constructClientService();
 
+    // Construct an instance of the PublicGatewayPatch model
+    PublicGatewayPatch publicGatewayPatchModel = new PublicGatewayPatch.Builder()
+    .name("my-public-gateway")
+    .build();
+    Map<String, Object> publicGatewayPatchModelAsPatch = publicGatewayPatchModel.asPatch();
+
     // Construct an instance of the UpdatePublicGatewayOptions model
     UpdatePublicGatewayOptions updatePublicGatewayOptionsModel = new UpdatePublicGatewayOptions.Builder()
     .id("testString")
-    .name("my-public-gateway")
+    .publicGatewayPatch(publicGatewayPatchModelAsPatch)
     .build();
 
     // Invoke operation with valid options model (positive test)
@@ -6573,7 +6701,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testListFloatingIpsWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"first\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/floating_ips?limit=20\"}, \"limit\": 20, \"next\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/floating_ips?start=9d5a91a3e2cbd233b5a5b33436855ed1&limit=20\"}, \"total_count\": 132, \"floating_ips\": [{\"id\": \"39300233-9995-4806-89a5-3c1b6eb88689\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::floating-ip:39300233-9995-4806-89a5-3c1b6eb88689\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/floating_ips/39300233-9995-4806-89a5-3c1b6eb88689\", \"address\": \"203.0.113.1\", \"name\": \"my-floating-ip\", \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"created_at\": \"2019-01-01T12:00:00\", \"status\": \"available\", \"target\": {\"name\": \"my-network-interface\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\"}, \"zone\": {\"name\": \"us-south-1\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\"}}]}";
-    String listFloatingIpsPath = java.net.URLEncoder.encode("/floating_ips", "UTF-8").replace("%2F", "/");
+    String listFloatingIpsPath = "/floating_ips";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -6618,7 +6746,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testCreateFloatingIpWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"39300233-9995-4806-89a5-3c1b6eb88689\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::floating-ip:39300233-9995-4806-89a5-3c1b6eb88689\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/floating_ips/39300233-9995-4806-89a5-3c1b6eb88689\", \"address\": \"203.0.113.1\", \"name\": \"my-floating-ip\", \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"created_at\": \"2019-01-01T12:00:00\", \"status\": \"available\", \"target\": {\"name\": \"my-network-interface\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\"}, \"zone\": {\"name\": \"us-south-1\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\"}}";
-    String createFloatingIpPath = java.net.URLEncoder.encode("/floating_ips", "UTF-8").replace("%2F", "/");
+    String createFloatingIpPath = "/floating_ips";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -6687,7 +6815,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testDeleteFloatingIpWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "";
-    String deleteFloatingIpPath = java.net.URLEncoder.encode("/floating_ips/testString", "UTF-8").replace("%2F", "/");
+    String deleteFloatingIpPath = "/floating_ips/testString";
 
     server.enqueue(new MockResponse()
     .setResponseCode(204)
@@ -6739,7 +6867,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testGetFloatingIpWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"39300233-9995-4806-89a5-3c1b6eb88689\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::floating-ip:39300233-9995-4806-89a5-3c1b6eb88689\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/floating_ips/39300233-9995-4806-89a5-3c1b6eb88689\", \"address\": \"203.0.113.1\", \"name\": \"my-floating-ip\", \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"created_at\": \"2019-01-01T12:00:00\", \"status\": \"available\", \"target\": {\"name\": \"my-network-interface\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\"}, \"zone\": {\"name\": \"us-south-1\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\"}}";
-    String getFloatingIpPath = java.net.URLEncoder.encode("/floating_ips/testString", "UTF-8").replace("%2F", "/");
+    String getFloatingIpPath = "/floating_ips/testString";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -6791,7 +6919,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testUpdateFloatingIpWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"39300233-9995-4806-89a5-3c1b6eb88689\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::floating-ip:39300233-9995-4806-89a5-3c1b6eb88689\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/floating_ips/39300233-9995-4806-89a5-3c1b6eb88689\", \"address\": \"203.0.113.1\", \"name\": \"my-floating-ip\", \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"created_at\": \"2019-01-01T12:00:00\", \"status\": \"available\", \"target\": {\"name\": \"my-network-interface\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\"}, \"zone\": {\"name\": \"us-south-1\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\"}}";
-    String updateFloatingIpPath = java.net.URLEncoder.encode("/floating_ips/testString", "UTF-8").replace("%2F", "/");
+    String updateFloatingIpPath = "/floating_ips/testString";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -6802,14 +6930,20 @@ public class VpcTest extends PowerMockTestCase {
 
     // Construct an instance of the FloatingIPPatchTargetNetworkInterfaceIdentityNetworkInterfaceIdentityById model
     FloatingIPPatchTargetNetworkInterfaceIdentityNetworkInterfaceIdentityById floatingIpPatchTargetNetworkInterfaceIdentityModel = new FloatingIPPatchTargetNetworkInterfaceIdentityNetworkInterfaceIdentityById.Builder()
-    .id("10c02d81-0ecb-4dc5-897d-28392913b81e")
+    .id("69e55145-cc7d-4d8e-9e1f-cc3fb60b1793")
     .build();
+
+    // Construct an instance of the FloatingIPPatch model
+    FloatingIPPatch floatingIpPatchModel = new FloatingIPPatch.Builder()
+    .name("my-floating-ip")
+    .target(floatingIpPatchTargetNetworkInterfaceIdentityModel)
+    .build();
+    Map<String, Object> floatingIpPatchModelAsPatch = floatingIpPatchModel.asPatch();
 
     // Construct an instance of the UpdateFloatingIpOptions model
     UpdateFloatingIpOptions updateFloatingIpOptionsModel = new UpdateFloatingIpOptions.Builder()
     .id("testString")
-    .name("my-floating-ip")
-    .target(floatingIpPatchTargetNetworkInterfaceIdentityModel)
+    .floatingIpPatch(floatingIpPatchModelAsPatch)
     .build();
 
     // Invoke operation with valid options model (positive test)
@@ -6850,7 +6984,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testListNetworkAclsWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"first\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls?limit=20\"}, \"limit\": 20, \"next\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls?start=9d5a91a3e2cbd233b5a5b33436855ed1&limit=20\"}, \"total_count\": 132, \"network_acls\": [{\"id\": \"a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::network-acl:a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"name\": \"my-network-acl\", \"vpc\": {\"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\"}, \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"created_at\": \"2019-01-01T12:00:00\", \"rules\": [{\"id\": \"8daca77a-4980-4d33-8f3e-7038797be8f9\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/a4e28308-8ee7-46ab-8108-9f881f22bdbf/rules/8daca77a-4980-4d33-8f3e-7038797be8f9\", \"name\": \"my-rule-2\", \"action\": \"allow\", \"destination\": \"192.168.3.0/24\", \"direction\": \"inbound\", \"source\": \"192.168.3.0/24\", \"protocol\": \"udp\", \"before\": {\"id\": \"8daca77a-4980-4d33-8f3e-7038797be8f9\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/a4e28308-8ee7-46ab-8108-9f881f22bdbf/rules/8daca77a-4980-4d33-8f3e-7038797be8f9\", \"name\": \"my-rule-1\"}, \"created_at\": \"2019-01-01T12:00:00\", \"ip_version\": \"ipv4\", \"destination_port_max\": 22, \"destination_port_min\": 22, \"source_port_max\": 65535, \"source_port_min\": 49152}], \"subnets\": [{\"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}]}]}";
-    String listNetworkAclsPath = java.net.URLEncoder.encode("/network_acls", "UTF-8").replace("%2F", "/");
+    String listNetworkAclsPath = "/network_acls";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -6895,7 +7029,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testCreateNetworkAclWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::network-acl:a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"name\": \"my-network-acl\", \"vpc\": {\"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\"}, \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"created_at\": \"2019-01-01T12:00:00\", \"rules\": [{\"id\": \"8daca77a-4980-4d33-8f3e-7038797be8f9\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/a4e28308-8ee7-46ab-8108-9f881f22bdbf/rules/8daca77a-4980-4d33-8f3e-7038797be8f9\", \"name\": \"my-rule-2\", \"action\": \"allow\", \"destination\": \"192.168.3.0/24\", \"direction\": \"inbound\", \"source\": \"192.168.3.0/24\", \"protocol\": \"udp\", \"before\": {\"id\": \"8daca77a-4980-4d33-8f3e-7038797be8f9\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/a4e28308-8ee7-46ab-8108-9f881f22bdbf/rules/8daca77a-4980-4d33-8f3e-7038797be8f9\", \"name\": \"my-rule-1\"}, \"created_at\": \"2019-01-01T12:00:00\", \"ip_version\": \"ipv4\", \"destination_port_max\": 22, \"destination_port_min\": 22, \"source_port_max\": 65535, \"source_port_min\": 49152}], \"subnets\": [{\"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}]}";
-    String createNetworkAclPath = java.net.URLEncoder.encode("/network_acls", "UTF-8").replace("%2F", "/");
+    String createNetworkAclPath = "/network_acls";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -6963,7 +7097,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testDeleteNetworkAclWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "";
-    String deleteNetworkAclPath = java.net.URLEncoder.encode("/network_acls/testString", "UTF-8").replace("%2F", "/");
+    String deleteNetworkAclPath = "/network_acls/testString";
 
     server.enqueue(new MockResponse()
     .setResponseCode(204)
@@ -7015,7 +7149,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testGetNetworkAclWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::network-acl:a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"name\": \"my-network-acl\", \"vpc\": {\"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\"}, \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"created_at\": \"2019-01-01T12:00:00\", \"rules\": [{\"id\": \"8daca77a-4980-4d33-8f3e-7038797be8f9\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/a4e28308-8ee7-46ab-8108-9f881f22bdbf/rules/8daca77a-4980-4d33-8f3e-7038797be8f9\", \"name\": \"my-rule-2\", \"action\": \"allow\", \"destination\": \"192.168.3.0/24\", \"direction\": \"inbound\", \"source\": \"192.168.3.0/24\", \"protocol\": \"udp\", \"before\": {\"id\": \"8daca77a-4980-4d33-8f3e-7038797be8f9\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/a4e28308-8ee7-46ab-8108-9f881f22bdbf/rules/8daca77a-4980-4d33-8f3e-7038797be8f9\", \"name\": \"my-rule-1\"}, \"created_at\": \"2019-01-01T12:00:00\", \"ip_version\": \"ipv4\", \"destination_port_max\": 22, \"destination_port_min\": 22, \"source_port_max\": 65535, \"source_port_min\": 49152}], \"subnets\": [{\"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}]}";
-    String getNetworkAclPath = java.net.URLEncoder.encode("/network_acls/testString", "UTF-8").replace("%2F", "/");
+    String getNetworkAclPath = "/network_acls/testString";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -7067,7 +7201,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testUpdateNetworkAclWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::network-acl:a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"name\": \"my-network-acl\", \"vpc\": {\"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\"}, \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"created_at\": \"2019-01-01T12:00:00\", \"rules\": [{\"id\": \"8daca77a-4980-4d33-8f3e-7038797be8f9\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/a4e28308-8ee7-46ab-8108-9f881f22bdbf/rules/8daca77a-4980-4d33-8f3e-7038797be8f9\", \"name\": \"my-rule-2\", \"action\": \"allow\", \"destination\": \"192.168.3.0/24\", \"direction\": \"inbound\", \"source\": \"192.168.3.0/24\", \"protocol\": \"udp\", \"before\": {\"id\": \"8daca77a-4980-4d33-8f3e-7038797be8f9\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/a4e28308-8ee7-46ab-8108-9f881f22bdbf/rules/8daca77a-4980-4d33-8f3e-7038797be8f9\", \"name\": \"my-rule-1\"}, \"created_at\": \"2019-01-01T12:00:00\", \"ip_version\": \"ipv4\", \"destination_port_max\": 22, \"destination_port_min\": 22, \"source_port_max\": 65535, \"source_port_min\": 49152}], \"subnets\": [{\"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}]}";
-    String updateNetworkAclPath = java.net.URLEncoder.encode("/network_acls/testString", "UTF-8").replace("%2F", "/");
+    String updateNetworkAclPath = "/network_acls/testString";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -7076,10 +7210,16 @@ public class VpcTest extends PowerMockTestCase {
 
     constructClientService();
 
+    // Construct an instance of the NetworkACLPatch model
+    NetworkACLPatch networkAclPatchModel = new NetworkACLPatch.Builder()
+    .name("my-network-acl")
+    .build();
+    Map<String, Object> networkAclPatchModelAsPatch = networkAclPatchModel.asPatch();
+
     // Construct an instance of the UpdateNetworkAclOptions model
     UpdateNetworkAclOptions updateNetworkAclOptionsModel = new UpdateNetworkAclOptions.Builder()
     .id("testString")
-    .name("my-network-acl")
+    .networkAclPatch(networkAclPatchModelAsPatch)
     .build();
 
     // Invoke operation with valid options model (positive test)
@@ -7120,7 +7260,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testListNetworkAclRulesWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"first\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/a4e28308-8ee7-46ab-8108-9f881f22bdbf/rules?limit=20\"}, \"limit\": 20, \"next\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/a4e28308-8ee7-46ab-8108-9f881f22bdbf/rules?start=9d5a91a3e2cbd233b5a5b33436855ed1&limit=20\"}, \"total_count\": 132, \"rules\": [{\"id\": \"8daca77a-4980-4d33-8f3e-7038797be8f9\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/a4e28308-8ee7-46ab-8108-9f881f22bdbf/rules/8daca77a-4980-4d33-8f3e-7038797be8f9\", \"name\": \"my-rule-2\", \"action\": \"allow\", \"destination\": \"192.168.3.0/24\", \"direction\": \"inbound\", \"source\": \"192.168.3.0/24\", \"protocol\": \"udp\", \"before\": {\"id\": \"8daca77a-4980-4d33-8f3e-7038797be8f9\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/a4e28308-8ee7-46ab-8108-9f881f22bdbf/rules/8daca77a-4980-4d33-8f3e-7038797be8f9\", \"name\": \"my-rule-1\"}, \"created_at\": \"2019-01-01T12:00:00\", \"ip_version\": \"ipv4\", \"destination_port_max\": 22, \"destination_port_min\": 22, \"source_port_max\": 65535, \"source_port_min\": 49152}]}";
-    String listNetworkAclRulesPath = java.net.URLEncoder.encode("/network_acls/testString/rules", "UTF-8").replace("%2F", "/");
+    String listNetworkAclRulesPath = "/network_acls/testString/rules";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -7178,7 +7318,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testCreateNetworkAclRuleWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"8daca77a-4980-4d33-8f3e-7038797be8f9\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/a4e28308-8ee7-46ab-8108-9f881f22bdbf/rules/8daca77a-4980-4d33-8f3e-7038797be8f9\", \"name\": \"my-rule-2\", \"action\": \"allow\", \"destination\": \"192.168.3.0/24\", \"direction\": \"inbound\", \"source\": \"192.168.3.0/24\", \"protocol\": \"all\", \"before\": {\"id\": \"8daca77a-4980-4d33-8f3e-7038797be8f9\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/a4e28308-8ee7-46ab-8108-9f881f22bdbf/rules/8daca77a-4980-4d33-8f3e-7038797be8f9\", \"name\": \"my-rule-1\"}, \"created_at\": \"2019-01-01T12:00:00\", \"ip_version\": \"ipv4\"}";
-    String createNetworkAclRulePath = java.net.URLEncoder.encode("/network_acls/testString/rules", "UTF-8").replace("%2F", "/");
+    String createNetworkAclRulePath = "/network_acls/testString/rules";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -7249,7 +7389,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testDeleteNetworkAclRuleWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "";
-    String deleteNetworkAclRulePath = java.net.URLEncoder.encode("/network_acls/testString/rules/testString", "UTF-8").replace("%2F", "/");
+    String deleteNetworkAclRulePath = "/network_acls/testString/rules/testString";
 
     server.enqueue(new MockResponse()
     .setResponseCode(204)
@@ -7302,7 +7442,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testGetNetworkAclRuleWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"8daca77a-4980-4d33-8f3e-7038797be8f9\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/a4e28308-8ee7-46ab-8108-9f881f22bdbf/rules/8daca77a-4980-4d33-8f3e-7038797be8f9\", \"name\": \"my-rule-2\", \"action\": \"allow\", \"destination\": \"192.168.3.0/24\", \"direction\": \"inbound\", \"source\": \"192.168.3.0/24\", \"protocol\": \"all\", \"before\": {\"id\": \"8daca77a-4980-4d33-8f3e-7038797be8f9\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/a4e28308-8ee7-46ab-8108-9f881f22bdbf/rules/8daca77a-4980-4d33-8f3e-7038797be8f9\", \"name\": \"my-rule-1\"}, \"created_at\": \"2019-01-01T12:00:00\", \"ip_version\": \"ipv4\"}";
-    String getNetworkAclRulePath = java.net.URLEncoder.encode("/network_acls/testString/rules/testString", "UTF-8").replace("%2F", "/");
+    String getNetworkAclRulePath = "/network_acls/testString/rules/testString";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -7355,7 +7495,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testUpdateNetworkAclRuleWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"8daca77a-4980-4d33-8f3e-7038797be8f9\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/a4e28308-8ee7-46ab-8108-9f881f22bdbf/rules/8daca77a-4980-4d33-8f3e-7038797be8f9\", \"name\": \"my-rule-2\", \"action\": \"allow\", \"destination\": \"192.168.3.0/24\", \"direction\": \"inbound\", \"source\": \"192.168.3.0/24\", \"protocol\": \"all\", \"before\": {\"id\": \"8daca77a-4980-4d33-8f3e-7038797be8f9\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/a4e28308-8ee7-46ab-8108-9f881f22bdbf/rules/8daca77a-4980-4d33-8f3e-7038797be8f9\", \"name\": \"my-rule-1\"}, \"created_at\": \"2019-01-01T12:00:00\", \"ip_version\": \"ipv4\"}";
-    String updateNetworkAclRulePath = java.net.URLEncoder.encode("/network_acls/testString/rules/testString", "UTF-8").replace("%2F", "/");
+    String updateNetworkAclRulePath = "/network_acls/testString/rules/testString";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -7369,10 +7509,8 @@ public class VpcTest extends PowerMockTestCase {
     .id("8daca77a-4980-4d33-8f3e-7038797be8f9")
     .build();
 
-    // Construct an instance of the UpdateNetworkAclRuleOptions model
-    UpdateNetworkAclRuleOptions updateNetworkAclRuleOptionsModel = new UpdateNetworkAclRuleOptions.Builder()
-    .networkAclId("testString")
-    .id("testString")
+    // Construct an instance of the NetworkACLRulePatch model
+    NetworkACLRulePatch networkAclRulePatchModel = new NetworkACLRulePatch.Builder()
     .name("my-rule-2")
     .action("allow")
     .destination("192.168.3.2/32")
@@ -7385,6 +7523,14 @@ public class VpcTest extends PowerMockTestCase {
     .code(Long.valueOf("0"))
     .type(Long.valueOf("8"))
     .before(networkAclRuleIdentityModel)
+    .build();
+    Map<String, Object> networkAclRulePatchModelAsPatch = networkAclRulePatchModel.asPatch();
+
+    // Construct an instance of the UpdateNetworkAclRuleOptions model
+    UpdateNetworkAclRuleOptions updateNetworkAclRuleOptionsModel = new UpdateNetworkAclRuleOptions.Builder()
+    .networkAclId("testString")
+    .id("testString")
+    .networkAclRulePatch(networkAclRulePatchModelAsPatch)
     .build();
 
     // Invoke operation with valid options model (positive test)
@@ -7425,7 +7571,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testListSecurityGroupsWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"first\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups?limit=20\"}, \"limit\": 20, \"next\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups?start=9d5a91a3e2cbd233b5a5b33436855ed1&limit=20\"}, \"total_count\": 132, \"security_groups\": [{\"id\": \"be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::security-group:be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"name\": \"my-security-group\", \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"created_at\": \"2019-01-01T12:00:00\", \"network_interfaces\": [{\"name\": \"my-network-interface\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\"}], \"rules\": [{\"id\": \"6f2a6efe-21e2-401c-b237-620aa26ba16a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/be5df5ca-12a0-494b-907e-aa6ec2bfa271/rules/6f2a6efe-21e2-401c-b237-620aa26ba16a\", \"direction\": \"inbound\", \"ip_version\": \"ipv4\", \"protocol\": \"udp\", \"remote\": {\"address\": \"192.168.3.4\"}, \"port_max\": 22, \"port_min\": 22}], \"vpc\": {\"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\"}}]}";
-    String listSecurityGroupsPath = java.net.URLEncoder.encode("/security_groups", "UTF-8").replace("%2F", "/");
+    String listSecurityGroupsPath = "/security_groups";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -7476,7 +7622,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testCreateSecurityGroupWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::security-group:be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"name\": \"my-security-group\", \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"created_at\": \"2019-01-01T12:00:00\", \"network_interfaces\": [{\"name\": \"my-network-interface\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\"}], \"rules\": [{\"id\": \"6f2a6efe-21e2-401c-b237-620aa26ba16a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/be5df5ca-12a0-494b-907e-aa6ec2bfa271/rules/6f2a6efe-21e2-401c-b237-620aa26ba16a\", \"direction\": \"inbound\", \"ip_version\": \"ipv4\", \"protocol\": \"udp\", \"remote\": {\"address\": \"192.168.3.4\"}, \"port_max\": 22, \"port_min\": 22}], \"vpc\": {\"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\"}}";
-    String createSecurityGroupPath = java.net.URLEncoder.encode("/security_groups", "UTF-8").replace("%2F", "/");
+    String createSecurityGroupPath = "/security_groups";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -7556,7 +7702,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testDeleteSecurityGroupWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "";
-    String deleteSecurityGroupPath = java.net.URLEncoder.encode("/security_groups/testString", "UTF-8").replace("%2F", "/");
+    String deleteSecurityGroupPath = "/security_groups/testString";
 
     server.enqueue(new MockResponse()
     .setResponseCode(204)
@@ -7608,7 +7754,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testGetSecurityGroupWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::security-group:be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"name\": \"my-security-group\", \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"created_at\": \"2019-01-01T12:00:00\", \"network_interfaces\": [{\"name\": \"my-network-interface\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\"}], \"rules\": [{\"id\": \"6f2a6efe-21e2-401c-b237-620aa26ba16a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/be5df5ca-12a0-494b-907e-aa6ec2bfa271/rules/6f2a6efe-21e2-401c-b237-620aa26ba16a\", \"direction\": \"inbound\", \"ip_version\": \"ipv4\", \"protocol\": \"udp\", \"remote\": {\"address\": \"192.168.3.4\"}, \"port_max\": 22, \"port_min\": 22}], \"vpc\": {\"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\"}}";
-    String getSecurityGroupPath = java.net.URLEncoder.encode("/security_groups/testString", "UTF-8").replace("%2F", "/");
+    String getSecurityGroupPath = "/security_groups/testString";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -7660,7 +7806,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testUpdateSecurityGroupWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::security-group:be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"name\": \"my-security-group\", \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"created_at\": \"2019-01-01T12:00:00\", \"network_interfaces\": [{\"name\": \"my-network-interface\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\"}], \"rules\": [{\"id\": \"6f2a6efe-21e2-401c-b237-620aa26ba16a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/be5df5ca-12a0-494b-907e-aa6ec2bfa271/rules/6f2a6efe-21e2-401c-b237-620aa26ba16a\", \"direction\": \"inbound\", \"ip_version\": \"ipv4\", \"protocol\": \"udp\", \"remote\": {\"address\": \"192.168.3.4\"}, \"port_max\": 22, \"port_min\": 22}], \"vpc\": {\"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\"}}";
-    String updateSecurityGroupPath = java.net.URLEncoder.encode("/security_groups/testString", "UTF-8").replace("%2F", "/");
+    String updateSecurityGroupPath = "/security_groups/testString";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -7669,10 +7815,16 @@ public class VpcTest extends PowerMockTestCase {
 
     constructClientService();
 
+    // Construct an instance of the SecurityGroupPatch model
+    SecurityGroupPatch securityGroupPatchModel = new SecurityGroupPatch.Builder()
+    .name("my-security-group")
+    .build();
+    Map<String, Object> securityGroupPatchModelAsPatch = securityGroupPatchModel.asPatch();
+
     // Construct an instance of the UpdateSecurityGroupOptions model
     UpdateSecurityGroupOptions updateSecurityGroupOptionsModel = new UpdateSecurityGroupOptions.Builder()
     .id("testString")
-    .name("my-security-group")
+    .securityGroupPatch(securityGroupPatchModelAsPatch)
     .build();
 
     // Invoke operation with valid options model (positive test)
@@ -7713,7 +7865,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testListSecurityGroupNetworkInterfacesWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"first\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/3b2669a2-4c2b-4003-bc91-1b81f1326267/network_interfaces?limit=20\"}, \"limit\": 20, \"next\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/3b2669a2-4c2b-4003-bc91-1b81f1326267/network_interfaces?start=d3e721fd-c988-4670-9927-dbd5e7b07fc6&limit=20\"}, \"total_count\": 132, \"network_interfaces\": [{\"name\": \"my-network-interface\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\", \"security_groups\": [{\"id\": \"be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::security-group:be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"name\": \"my-security-group\"}], \"created_at\": \"2019-01-01T12:00:00\", \"floating_ips\": [{\"id\": \"39300233-9995-4806-89a5-3c1b6eb88689\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::floating-ip:39300233-9995-4806-89a5-3c1b6eb88689\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/floating_ips/39300233-9995-4806-89a5-3c1b6eb88689\", \"address\": \"203.0.113.1\", \"name\": \"my-floating-ip\"}], \"port_speed\": 1000, \"status\": \"available\", \"subnet\": {\"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}, \"type\": \"primary\"}]}";
-    String listSecurityGroupNetworkInterfacesPath = java.net.URLEncoder.encode("/security_groups/testString/network_interfaces", "UTF-8").replace("%2F", "/");
+    String listSecurityGroupNetworkInterfacesPath = "/security_groups/testString/network_interfaces";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -7769,7 +7921,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testRemoveSecurityGroupNetworkInterfaceWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "";
-    String removeSecurityGroupNetworkInterfacePath = java.net.URLEncoder.encode("/security_groups/testString/network_interfaces/testString", "UTF-8").replace("%2F", "/");
+    String removeSecurityGroupNetworkInterfacePath = "/security_groups/testString/network_interfaces/testString";
 
     server.enqueue(new MockResponse()
     .setResponseCode(204)
@@ -7822,7 +7974,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testGetSecurityGroupNetworkInterfaceWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"name\": \"my-network-interface\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\", \"security_groups\": [{\"id\": \"be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::security-group:be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"name\": \"my-security-group\"}], \"created_at\": \"2019-01-01T12:00:00\", \"floating_ips\": [{\"id\": \"39300233-9995-4806-89a5-3c1b6eb88689\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::floating-ip:39300233-9995-4806-89a5-3c1b6eb88689\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/floating_ips/39300233-9995-4806-89a5-3c1b6eb88689\", \"address\": \"203.0.113.1\", \"name\": \"my-floating-ip\"}], \"port_speed\": 1000, \"status\": \"available\", \"subnet\": {\"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}, \"type\": \"primary\"}";
-    String getSecurityGroupNetworkInterfacePath = java.net.URLEncoder.encode("/security_groups/testString/network_interfaces/testString", "UTF-8").replace("%2F", "/");
+    String getSecurityGroupNetworkInterfacePath = "/security_groups/testString/network_interfaces/testString";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -7875,7 +8027,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testAddSecurityGroupNetworkInterfaceWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"name\": \"my-network-interface\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\", \"security_groups\": [{\"id\": \"be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::security-group:be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"name\": \"my-security-group\"}], \"created_at\": \"2019-01-01T12:00:00\", \"floating_ips\": [{\"id\": \"39300233-9995-4806-89a5-3c1b6eb88689\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::floating-ip:39300233-9995-4806-89a5-3c1b6eb88689\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/floating_ips/39300233-9995-4806-89a5-3c1b6eb88689\", \"address\": \"203.0.113.1\", \"name\": \"my-floating-ip\"}], \"port_speed\": 1000, \"status\": \"available\", \"subnet\": {\"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}, \"type\": \"primary\"}";
-    String addSecurityGroupNetworkInterfacePath = java.net.URLEncoder.encode("/security_groups/testString/network_interfaces/testString", "UTF-8").replace("%2F", "/");
+    String addSecurityGroupNetworkInterfacePath = "/security_groups/testString/network_interfaces/testString";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -7928,7 +8080,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testListSecurityGroupRulesWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"rules\": [{\"id\": \"6f2a6efe-21e2-401c-b237-620aa26ba16a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/be5df5ca-12a0-494b-907e-aa6ec2bfa271/rules/6f2a6efe-21e2-401c-b237-620aa26ba16a\", \"direction\": \"inbound\", \"ip_version\": \"ipv4\", \"protocol\": \"udp\", \"remote\": {\"address\": \"192.168.3.4\"}, \"port_max\": 22, \"port_min\": 22}]}";
-    String listSecurityGroupRulesPath = java.net.URLEncoder.encode("/security_groups/testString/rules", "UTF-8").replace("%2F", "/");
+    String listSecurityGroupRulesPath = "/security_groups/testString/rules";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -7980,7 +8132,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testCreateSecurityGroupRuleWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"6f2a6efe-21e2-401c-b237-620aa26ba16a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/be5df5ca-12a0-494b-907e-aa6ec2bfa271/rules/6f2a6efe-21e2-401c-b237-620aa26ba16a\", \"direction\": \"inbound\", \"ip_version\": \"ipv4\", \"protocol\": \"udp\", \"remote\": {\"address\": \"192.168.3.4\"}, \"port_max\": 22, \"port_min\": 22}";
-    String createSecurityGroupRulePath = java.net.URLEncoder.encode("/security_groups/testString/rules", "UTF-8").replace("%2F", "/");
+    String createSecurityGroupRulePath = "/security_groups/testString/rules";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -8048,7 +8200,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testDeleteSecurityGroupRuleWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "";
-    String deleteSecurityGroupRulePath = java.net.URLEncoder.encode("/security_groups/testString/rules/testString", "UTF-8").replace("%2F", "/");
+    String deleteSecurityGroupRulePath = "/security_groups/testString/rules/testString";
 
     server.enqueue(new MockResponse()
     .setResponseCode(204)
@@ -8101,7 +8253,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testGetSecurityGroupRuleWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"6f2a6efe-21e2-401c-b237-620aa26ba16a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/be5df5ca-12a0-494b-907e-aa6ec2bfa271/rules/6f2a6efe-21e2-401c-b237-620aa26ba16a\", \"direction\": \"inbound\", \"ip_version\": \"ipv4\", \"protocol\": \"udp\", \"remote\": {\"address\": \"192.168.3.4\"}, \"port_max\": 22, \"port_min\": 22}";
-    String getSecurityGroupRulePath = java.net.URLEncoder.encode("/security_groups/testString/rules/testString", "UTF-8").replace("%2F", "/");
+    String getSecurityGroupRulePath = "/security_groups/testString/rules/testString";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -8154,7 +8306,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testUpdateSecurityGroupRuleWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"6f2a6efe-21e2-401c-b237-620aa26ba16a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/be5df5ca-12a0-494b-907e-aa6ec2bfa271/rules/6f2a6efe-21e2-401c-b237-620aa26ba16a\", \"direction\": \"inbound\", \"ip_version\": \"ipv4\", \"protocol\": \"udp\", \"remote\": {\"address\": \"192.168.3.4\"}, \"port_max\": 22, \"port_min\": 22}";
-    String updateSecurityGroupRulePath = java.net.URLEncoder.encode("/security_groups/testString/rules/testString", "UTF-8").replace("%2F", "/");
+    String updateSecurityGroupRulePath = "/security_groups/testString/rules/testString";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -8168,10 +8320,8 @@ public class VpcTest extends PowerMockTestCase {
     .address("192.168.3.4")
     .build();
 
-    // Construct an instance of the UpdateSecurityGroupRuleOptions model
-    UpdateSecurityGroupRuleOptions updateSecurityGroupRuleOptionsModel = new UpdateSecurityGroupRuleOptions.Builder()
-    .securityGroupId("testString")
-    .id("testString")
+    // Construct an instance of the SecurityGroupRulePatch model
+    SecurityGroupRulePatch securityGroupRulePatchModel = new SecurityGroupRulePatch.Builder()
     .remote(securityGroupRulePatchRemoteModel)
     .direction("inbound")
     .ipVersion("ipv4")
@@ -8179,6 +8329,14 @@ public class VpcTest extends PowerMockTestCase {
     .portMax(Long.valueOf("22"))
     .portMin(Long.valueOf("22"))
     .type(Long.valueOf("8"))
+    .build();
+    Map<String, Object> securityGroupRulePatchModelAsPatch = securityGroupRulePatchModel.asPatch();
+
+    // Construct an instance of the UpdateSecurityGroupRuleOptions model
+    UpdateSecurityGroupRuleOptions updateSecurityGroupRuleOptionsModel = new UpdateSecurityGroupRuleOptions.Builder()
+    .securityGroupId("testString")
+    .id("testString")
+    .securityGroupRulePatch(securityGroupRulePatchModelAsPatch)
     .build();
 
     // Invoke operation with valid options model (positive test)
@@ -8219,7 +8377,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testListIkePoliciesWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"first\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/ike_policies?limit=20\"}, \"limit\": 20, \"next\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/ike_policies?start=9d5a91a3e2cbd233b5a5b33436855ed&limit=20\"}, \"total_count\": 132, \"ike_policies\": [{\"id\": \"ddf51bec-3424-11e8-b467-0ed5f89f718b\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/ike_policies/ddf51bec-3424-11e8-b467-0ed5f89f718b\", \"name\": \"my-ike-policy\", \"resource_type\": \"ike_policy\", \"authentication_algorithm\": \"md5\", \"dh_group\": 2, \"encryption_algorithm\": \"triple_des\", \"ike_version\": 1, \"key_lifetime\": 28800, \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"connections\": [{\"id\": \"a10a5771-dc23-442c-8460-c3601d8542f7\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpn_gateways/ddf51bec-3424-11e8-b467-0ed5f89f718b/connections/93487806-7743-4c46-81d6-72869883ea0b\", \"name\": \"my-vpn-connection\", \"resource_type\": \"vpn_gateway_connection\"}], \"created_at\": \"2019-01-01T12:00:00\", \"negotiation_mode\": \"main\"}]}";
-    String listIkePoliciesPath = java.net.URLEncoder.encode("/ike_policies", "UTF-8").replace("%2F", "/");
+    String listIkePoliciesPath = "/ike_policies";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -8262,7 +8420,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testCreateIkePolicyWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"ddf51bec-3424-11e8-b467-0ed5f89f718b\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/ike_policies/ddf51bec-3424-11e8-b467-0ed5f89f718b\", \"name\": \"my-ike-policy\", \"resource_type\": \"ike_policy\", \"authentication_algorithm\": \"md5\", \"dh_group\": 2, \"encryption_algorithm\": \"triple_des\", \"ike_version\": 1, \"key_lifetime\": 28800, \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"connections\": [{\"id\": \"a10a5771-dc23-442c-8460-c3601d8542f7\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpn_gateways/ddf51bec-3424-11e8-b467-0ed5f89f718b/connections/93487806-7743-4c46-81d6-72869883ea0b\", \"name\": \"my-vpn-connection\", \"resource_type\": \"vpn_gateway_connection\"}], \"created_at\": \"2019-01-01T12:00:00\", \"negotiation_mode\": \"main\"}";
-    String createIkePolicyPath = java.net.URLEncoder.encode("/ike_policies", "UTF-8").replace("%2F", "/");
+    String createIkePolicyPath = "/ike_policies";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -8325,7 +8483,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testDeleteIkePolicyWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "";
-    String deleteIkePolicyPath = java.net.URLEncoder.encode("/ike_policies/testString", "UTF-8").replace("%2F", "/");
+    String deleteIkePolicyPath = "/ike_policies/testString";
 
     server.enqueue(new MockResponse()
     .setResponseCode(204)
@@ -8377,7 +8535,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testGetIkePolicyWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"ddf51bec-3424-11e8-b467-0ed5f89f718b\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/ike_policies/ddf51bec-3424-11e8-b467-0ed5f89f718b\", \"name\": \"my-ike-policy\", \"resource_type\": \"ike_policy\", \"authentication_algorithm\": \"md5\", \"dh_group\": 2, \"encryption_algorithm\": \"triple_des\", \"ike_version\": 1, \"key_lifetime\": 28800, \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"connections\": [{\"id\": \"a10a5771-dc23-442c-8460-c3601d8542f7\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpn_gateways/ddf51bec-3424-11e8-b467-0ed5f89f718b/connections/93487806-7743-4c46-81d6-72869883ea0b\", \"name\": \"my-vpn-connection\", \"resource_type\": \"vpn_gateway_connection\"}], \"created_at\": \"2019-01-01T12:00:00\", \"negotiation_mode\": \"main\"}";
-    String getIkePolicyPath = java.net.URLEncoder.encode("/ike_policies/testString", "UTF-8").replace("%2F", "/");
+    String getIkePolicyPath = "/ike_policies/testString";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -8429,7 +8587,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testUpdateIkePolicyWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"ddf51bec-3424-11e8-b467-0ed5f89f718b\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/ike_policies/ddf51bec-3424-11e8-b467-0ed5f89f718b\", \"name\": \"my-ike-policy\", \"resource_type\": \"ike_policy\", \"authentication_algorithm\": \"md5\", \"dh_group\": 2, \"encryption_algorithm\": \"triple_des\", \"ike_version\": 1, \"key_lifetime\": 28800, \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"connections\": [{\"id\": \"a10a5771-dc23-442c-8460-c3601d8542f7\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpn_gateways/ddf51bec-3424-11e8-b467-0ed5f89f718b/connections/93487806-7743-4c46-81d6-72869883ea0b\", \"name\": \"my-vpn-connection\", \"resource_type\": \"vpn_gateway_connection\"}], \"created_at\": \"2019-01-01T12:00:00\", \"negotiation_mode\": \"main\"}";
-    String updateIkePolicyPath = java.net.URLEncoder.encode("/ike_policies/testString", "UTF-8").replace("%2F", "/");
+    String updateIkePolicyPath = "/ike_policies/testString";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -8438,15 +8596,21 @@ public class VpcTest extends PowerMockTestCase {
 
     constructClientService();
 
-    // Construct an instance of the UpdateIkePolicyOptions model
-    UpdateIkePolicyOptions updateIkePolicyOptionsModel = new UpdateIkePolicyOptions.Builder()
-    .id("testString")
+    // Construct an instance of the IKEPolicyPatch model
+    IKEPolicyPatch ikePolicyPatchModel = new IKEPolicyPatch.Builder()
     .name("my-ike-policy")
     .authenticationAlgorithm("md5")
     .dhGroup(Long.valueOf("2"))
     .encryptionAlgorithm("triple_des")
     .ikeVersion(Long.valueOf("1"))
     .keyLifetime(Long.valueOf("28800"))
+    .build();
+    Map<String, Object> ikePolicyPatchModelAsPatch = ikePolicyPatchModel.asPatch();
+
+    // Construct an instance of the UpdateIkePolicyOptions model
+    UpdateIkePolicyOptions updateIkePolicyOptionsModel = new UpdateIkePolicyOptions.Builder()
+    .id("testString")
+    .ikePolicyPatch(ikePolicyPatchModelAsPatch)
     .build();
 
     // Invoke operation with valid options model (positive test)
@@ -8487,7 +8651,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testListIkePolicyConnectionsWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"connections\": [{\"id\": \"a10a5771-dc23-442c-8460-c3601d8542f7\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpn_gateways/ddf51bec-3424-11e8-b467-0ed5f89f718b/connections/93487806-7743-4c46-81d6-72869883ea0b\", \"name\": \"my-vpn-connection\", \"resource_type\": \"vpn_gateway_connection\", \"admin_state_up\": true, \"peer_address\": \"169.21.50.5\", \"psk\": \"lkj14b1oi0alcniejkso\", \"local_cidrs\": [\"192.168.1.0/24\"], \"peer_cidrs\": [\"10.45.1.0/24\"], \"route_mode\": \"policy\", \"authentication_mode\": \"psk\", \"status\": \"down\", \"created_at\": \"2019-01-01T12:00:00\", \"dead_peer_detection\": {\"action\": \"restart\", \"interval\": 30, \"timeout\": 120}, \"ike_policy\": {\"id\": \"ddf51bec-3424-11e8-b467-0ed5f89f718b\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/ike_policies/ddf51bec-3424-11e8-b467-0ed5f89f718b\", \"name\": \"my-ike-policy\", \"resource_type\": \"ike_policy\"}, \"ipsec_policy\": {\"id\": \"ddf51bec-3424-11e8-b467-0ed5f89f718b\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/ipsec_policies/ddf51bec-3424-11e8-b467-0ed5f89f718b\", \"name\": \"my-ipsec-policy\", \"resource_type\": \"ipsec_policy\"}}]}";
-    String listIkePolicyConnectionsPath = java.net.URLEncoder.encode("/ike_policies/testString/connections", "UTF-8").replace("%2F", "/");
+    String listIkePolicyConnectionsPath = "/ike_policies/testString/connections";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -8539,7 +8703,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testListIpsecPoliciesWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"first\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/ipsec_policies?limit=20\"}, \"limit\": 20, \"next\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/ipsec_policies?start=9d5a91a3e2cbd233b5a5b33436855ed&limit=20\"}, \"total_count\": 132, \"ipsec_policies\": [{\"id\": \"ddf51bec-3424-11e8-b467-0ed5f89f718b\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/ipsec_policies/ddf51bec-3424-11e8-b467-0ed5f89f718b\", \"name\": \"my-ipsec-policy\", \"resource_type\": \"ipsec_policy\", \"authentication_algorithm\": \"md5\", \"encryption_algorithm\": \"triple_des\", \"key_lifetime\": 3600, \"pfs\": \"disabled\", \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"connections\": [{\"id\": \"a10a5771-dc23-442c-8460-c3601d8542f7\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpn_gateways/ddf51bec-3424-11e8-b467-0ed5f89f718b/connections/93487806-7743-4c46-81d6-72869883ea0b\", \"name\": \"my-vpn-connection\", \"resource_type\": \"vpn_gateway_connection\"}], \"created_at\": \"2019-01-01T12:00:00\", \"encapsulation_mode\": \"tunnel\", \"transform_protocol\": \"esp\"}]}";
-    String listIpsecPoliciesPath = java.net.URLEncoder.encode("/ipsec_policies", "UTF-8").replace("%2F", "/");
+    String listIpsecPoliciesPath = "/ipsec_policies";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -8582,7 +8746,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testCreateIpsecPolicyWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"ddf51bec-3424-11e8-b467-0ed5f89f718b\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/ipsec_policies/ddf51bec-3424-11e8-b467-0ed5f89f718b\", \"name\": \"my-ipsec-policy\", \"resource_type\": \"ipsec_policy\", \"authentication_algorithm\": \"md5\", \"encryption_algorithm\": \"triple_des\", \"key_lifetime\": 3600, \"pfs\": \"disabled\", \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"connections\": [{\"id\": \"a10a5771-dc23-442c-8460-c3601d8542f7\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpn_gateways/ddf51bec-3424-11e8-b467-0ed5f89f718b/connections/93487806-7743-4c46-81d6-72869883ea0b\", \"name\": \"my-vpn-connection\", \"resource_type\": \"vpn_gateway_connection\"}], \"created_at\": \"2019-01-01T12:00:00\", \"encapsulation_mode\": \"tunnel\", \"transform_protocol\": \"esp\"}";
-    String createIpsecPolicyPath = java.net.URLEncoder.encode("/ipsec_policies", "UTF-8").replace("%2F", "/");
+    String createIpsecPolicyPath = "/ipsec_policies";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -8644,7 +8808,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testDeleteIpsecPolicyWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "";
-    String deleteIpsecPolicyPath = java.net.URLEncoder.encode("/ipsec_policies/testString", "UTF-8").replace("%2F", "/");
+    String deleteIpsecPolicyPath = "/ipsec_policies/testString";
 
     server.enqueue(new MockResponse()
     .setResponseCode(204)
@@ -8696,7 +8860,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testGetIpsecPolicyWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"ddf51bec-3424-11e8-b467-0ed5f89f718b\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/ipsec_policies/ddf51bec-3424-11e8-b467-0ed5f89f718b\", \"name\": \"my-ipsec-policy\", \"resource_type\": \"ipsec_policy\", \"authentication_algorithm\": \"md5\", \"encryption_algorithm\": \"triple_des\", \"key_lifetime\": 3600, \"pfs\": \"disabled\", \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"connections\": [{\"id\": \"a10a5771-dc23-442c-8460-c3601d8542f7\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpn_gateways/ddf51bec-3424-11e8-b467-0ed5f89f718b/connections/93487806-7743-4c46-81d6-72869883ea0b\", \"name\": \"my-vpn-connection\", \"resource_type\": \"vpn_gateway_connection\"}], \"created_at\": \"2019-01-01T12:00:00\", \"encapsulation_mode\": \"tunnel\", \"transform_protocol\": \"esp\"}";
-    String getIpsecPolicyPath = java.net.URLEncoder.encode("/ipsec_policies/testString", "UTF-8").replace("%2F", "/");
+    String getIpsecPolicyPath = "/ipsec_policies/testString";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -8748,7 +8912,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testUpdateIpsecPolicyWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"ddf51bec-3424-11e8-b467-0ed5f89f718b\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/ipsec_policies/ddf51bec-3424-11e8-b467-0ed5f89f718b\", \"name\": \"my-ipsec-policy\", \"resource_type\": \"ipsec_policy\", \"authentication_algorithm\": \"md5\", \"encryption_algorithm\": \"triple_des\", \"key_lifetime\": 3600, \"pfs\": \"disabled\", \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"connections\": [{\"id\": \"a10a5771-dc23-442c-8460-c3601d8542f7\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpn_gateways/ddf51bec-3424-11e8-b467-0ed5f89f718b/connections/93487806-7743-4c46-81d6-72869883ea0b\", \"name\": \"my-vpn-connection\", \"resource_type\": \"vpn_gateway_connection\"}], \"created_at\": \"2019-01-01T12:00:00\", \"encapsulation_mode\": \"tunnel\", \"transform_protocol\": \"esp\"}";
-    String updateIpsecPolicyPath = java.net.URLEncoder.encode("/ipsec_policies/testString", "UTF-8").replace("%2F", "/");
+    String updateIpsecPolicyPath = "/ipsec_policies/testString";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -8757,14 +8921,20 @@ public class VpcTest extends PowerMockTestCase {
 
     constructClientService();
 
-    // Construct an instance of the UpdateIpsecPolicyOptions model
-    UpdateIpsecPolicyOptions updateIpsecPolicyOptionsModel = new UpdateIpsecPolicyOptions.Builder()
-    .id("testString")
+    // Construct an instance of the IPsecPolicyPatch model
+    IPsecPolicyPatch iPsecPolicyPatchModel = new IPsecPolicyPatch.Builder()
     .name("my-ipsec-policy")
     .authenticationAlgorithm("md5")
     .encryptionAlgorithm("triple_des")
     .keyLifetime(Long.valueOf("3600"))
     .pfs("disabled")
+    .build();
+    Map<String, Object> iPsecPolicyPatchModelAsPatch = iPsecPolicyPatchModel.asPatch();
+
+    // Construct an instance of the UpdateIpsecPolicyOptions model
+    UpdateIpsecPolicyOptions updateIpsecPolicyOptionsModel = new UpdateIpsecPolicyOptions.Builder()
+    .id("testString")
+    .iPsecPolicyPatch(iPsecPolicyPatchModelAsPatch)
     .build();
 
     // Invoke operation with valid options model (positive test)
@@ -8805,7 +8975,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testListIpsecPolicyConnectionsWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"connections\": [{\"id\": \"a10a5771-dc23-442c-8460-c3601d8542f7\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpn_gateways/ddf51bec-3424-11e8-b467-0ed5f89f718b/connections/93487806-7743-4c46-81d6-72869883ea0b\", \"name\": \"my-vpn-connection\", \"resource_type\": \"vpn_gateway_connection\", \"admin_state_up\": true, \"peer_address\": \"169.21.50.5\", \"psk\": \"lkj14b1oi0alcniejkso\", \"local_cidrs\": [\"192.168.1.0/24\"], \"peer_cidrs\": [\"10.45.1.0/24\"], \"route_mode\": \"policy\", \"authentication_mode\": \"psk\", \"status\": \"down\", \"created_at\": \"2019-01-01T12:00:00\", \"dead_peer_detection\": {\"action\": \"restart\", \"interval\": 30, \"timeout\": 120}, \"ike_policy\": {\"id\": \"ddf51bec-3424-11e8-b467-0ed5f89f718b\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/ike_policies/ddf51bec-3424-11e8-b467-0ed5f89f718b\", \"name\": \"my-ike-policy\", \"resource_type\": \"ike_policy\"}, \"ipsec_policy\": {\"id\": \"ddf51bec-3424-11e8-b467-0ed5f89f718b\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/ipsec_policies/ddf51bec-3424-11e8-b467-0ed5f89f718b\", \"name\": \"my-ipsec-policy\", \"resource_type\": \"ipsec_policy\"}}]}";
-    String listIpsecPolicyConnectionsPath = java.net.URLEncoder.encode("/ipsec_policies/testString/connections", "UTF-8").replace("%2F", "/");
+    String listIpsecPolicyConnectionsPath = "/ipsec_policies/testString/connections";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -8857,7 +9027,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testListVpnGatewaysWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"first\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpn_gateways?limit=20\"}, \"limit\": 20, \"next\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpn_gateways?start=9d5a91a3e2cbd233b5a5b33436855ed&limit=20\"}, \"total_count\": 132, \"vpn_gateways\": [{\"id\": \"ddf51bec-3424-11e8-b467-0ed5f89f718b\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpn:ddf51bec-3424-11e8-b467-0ed5f89f718b\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpn_gateways/ddf51bec-3424-11e8-b467-0ed5f89f718b\", \"name\": \"my-vpn-gateway\", \"resource_type\": \"vpn_gateway\", \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"public_ip\": {\"address\": \"192.168.3.4\"}, \"connections\": [{\"id\": \"a10a5771-dc23-442c-8460-c3601d8542f7\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpn_gateways/ddf51bec-3424-11e8-b467-0ed5f89f718b/connections/93487806-7743-4c46-81d6-72869883ea0b\", \"name\": \"my-vpn-connection\", \"resource_type\": \"vpn_gateway_connection\"}], \"created_at\": \"2019-01-01T12:00:00\", \"status\": \"available\", \"subnet\": {\"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}}]}";
-    String listVpnGatewaysPath = java.net.URLEncoder.encode("/vpn_gateways", "UTF-8").replace("%2F", "/");
+    String listVpnGatewaysPath = "/vpn_gateways";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -8902,7 +9072,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testCreateVpnGatewayWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"ddf51bec-3424-11e8-b467-0ed5f89f718b\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpn:ddf51bec-3424-11e8-b467-0ed5f89f718b\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpn_gateways/ddf51bec-3424-11e8-b467-0ed5f89f718b\", \"name\": \"my-vpn-gateway\", \"resource_type\": \"vpn_gateway\", \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"public_ip\": {\"address\": \"192.168.3.4\"}, \"connections\": [{\"id\": \"a10a5771-dc23-442c-8460-c3601d8542f7\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpn_gateways/ddf51bec-3424-11e8-b467-0ed5f89f718b/connections/93487806-7743-4c46-81d6-72869883ea0b\", \"name\": \"my-vpn-connection\", \"resource_type\": \"vpn_gateway_connection\"}], \"created_at\": \"2019-01-01T12:00:00\", \"status\": \"available\", \"subnet\": {\"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}}";
-    String createVpnGatewayPath = java.net.URLEncoder.encode("/vpn_gateways", "UTF-8").replace("%2F", "/");
+    String createVpnGatewayPath = "/vpn_gateways";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -8966,7 +9136,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testDeleteVpnGatewayWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "";
-    String deleteVpnGatewayPath = java.net.URLEncoder.encode("/vpn_gateways/testString", "UTF-8").replace("%2F", "/");
+    String deleteVpnGatewayPath = "/vpn_gateways/testString";
 
     server.enqueue(new MockResponse()
     .setResponseCode(202)
@@ -9018,7 +9188,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testGetVpnGatewayWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"ddf51bec-3424-11e8-b467-0ed5f89f718b\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpn:ddf51bec-3424-11e8-b467-0ed5f89f718b\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpn_gateways/ddf51bec-3424-11e8-b467-0ed5f89f718b\", \"name\": \"my-vpn-gateway\", \"resource_type\": \"vpn_gateway\", \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"public_ip\": {\"address\": \"192.168.3.4\"}, \"connections\": [{\"id\": \"a10a5771-dc23-442c-8460-c3601d8542f7\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpn_gateways/ddf51bec-3424-11e8-b467-0ed5f89f718b/connections/93487806-7743-4c46-81d6-72869883ea0b\", \"name\": \"my-vpn-connection\", \"resource_type\": \"vpn_gateway_connection\"}], \"created_at\": \"2019-01-01T12:00:00\", \"status\": \"available\", \"subnet\": {\"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}}";
-    String getVpnGatewayPath = java.net.URLEncoder.encode("/vpn_gateways/testString", "UTF-8").replace("%2F", "/");
+    String getVpnGatewayPath = "/vpn_gateways/testString";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -9070,7 +9240,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testUpdateVpnGatewayWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"ddf51bec-3424-11e8-b467-0ed5f89f718b\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpn:ddf51bec-3424-11e8-b467-0ed5f89f718b\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpn_gateways/ddf51bec-3424-11e8-b467-0ed5f89f718b\", \"name\": \"my-vpn-gateway\", \"resource_type\": \"vpn_gateway\", \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"public_ip\": {\"address\": \"192.168.3.4\"}, \"connections\": [{\"id\": \"a10a5771-dc23-442c-8460-c3601d8542f7\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpn_gateways/ddf51bec-3424-11e8-b467-0ed5f89f718b/connections/93487806-7743-4c46-81d6-72869883ea0b\", \"name\": \"my-vpn-connection\", \"resource_type\": \"vpn_gateway_connection\"}], \"created_at\": \"2019-01-01T12:00:00\", \"status\": \"available\", \"subnet\": {\"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}}";
-    String updateVpnGatewayPath = java.net.URLEncoder.encode("/vpn_gateways/testString", "UTF-8").replace("%2F", "/");
+    String updateVpnGatewayPath = "/vpn_gateways/testString";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -9079,10 +9249,16 @@ public class VpcTest extends PowerMockTestCase {
 
     constructClientService();
 
+    // Construct an instance of the VPNGatewayPatch model
+    VPNGatewayPatch vpnGatewayPatchModel = new VPNGatewayPatch.Builder()
+    .name("my-vpn-gateway")
+    .build();
+    Map<String, Object> vpnGatewayPatchModelAsPatch = vpnGatewayPatchModel.asPatch();
+
     // Construct an instance of the UpdateVpnGatewayOptions model
     UpdateVpnGatewayOptions updateVpnGatewayOptionsModel = new UpdateVpnGatewayOptions.Builder()
     .id("testString")
-    .name("my-vpn-gateway")
+    .vpnGatewayPatch(vpnGatewayPatchModelAsPatch)
     .build();
 
     // Invoke operation with valid options model (positive test)
@@ -9123,7 +9299,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testListVpnGatewayConnectionsWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"connections\": [{\"id\": \"a10a5771-dc23-442c-8460-c3601d8542f7\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpn_gateways/ddf51bec-3424-11e8-b467-0ed5f89f718b/connections/93487806-7743-4c46-81d6-72869883ea0b\", \"name\": \"my-vpn-connection\", \"resource_type\": \"vpn_gateway_connection\", \"admin_state_up\": true, \"peer_address\": \"169.21.50.5\", \"psk\": \"lkj14b1oi0alcniejkso\", \"local_cidrs\": [\"192.168.1.0/24\"], \"peer_cidrs\": [\"10.45.1.0/24\"], \"route_mode\": \"policy\", \"authentication_mode\": \"psk\", \"status\": \"down\", \"created_at\": \"2019-01-01T12:00:00\", \"dead_peer_detection\": {\"action\": \"restart\", \"interval\": 30, \"timeout\": 120}, \"ike_policy\": {\"id\": \"ddf51bec-3424-11e8-b467-0ed5f89f718b\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/ike_policies/ddf51bec-3424-11e8-b467-0ed5f89f718b\", \"name\": \"my-ike-policy\", \"resource_type\": \"ike_policy\"}, \"ipsec_policy\": {\"id\": \"ddf51bec-3424-11e8-b467-0ed5f89f718b\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/ipsec_policies/ddf51bec-3424-11e8-b467-0ed5f89f718b\", \"name\": \"my-ipsec-policy\", \"resource_type\": \"ipsec_policy\"}}]}";
-    String listVpnGatewayConnectionsPath = java.net.URLEncoder.encode("/vpn_gateways/testString/connections", "UTF-8").replace("%2F", "/");
+    String listVpnGatewayConnectionsPath = "/vpn_gateways/testString/connections";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -9177,7 +9353,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testCreateVpnGatewayConnectionWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"a10a5771-dc23-442c-8460-c3601d8542f7\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpn_gateways/ddf51bec-3424-11e8-b467-0ed5f89f718b/connections/93487806-7743-4c46-81d6-72869883ea0b\", \"name\": \"my-vpn-connection\", \"resource_type\": \"vpn_gateway_connection\", \"admin_state_up\": true, \"peer_address\": \"169.21.50.5\", \"psk\": \"lkj14b1oi0alcniejkso\", \"local_cidrs\": [\"192.168.1.0/24\"], \"peer_cidrs\": [\"10.45.1.0/24\"], \"route_mode\": \"policy\", \"authentication_mode\": \"psk\", \"status\": \"down\", \"created_at\": \"2019-01-01T12:00:00\", \"dead_peer_detection\": {\"action\": \"restart\", \"interval\": 30, \"timeout\": 120}, \"ike_policy\": {\"id\": \"ddf51bec-3424-11e8-b467-0ed5f89f718b\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/ike_policies/ddf51bec-3424-11e8-b467-0ed5f89f718b\", \"name\": \"my-ike-policy\", \"resource_type\": \"ike_policy\"}, \"ipsec_policy\": {\"id\": \"ddf51bec-3424-11e8-b467-0ed5f89f718b\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/ipsec_policies/ddf51bec-3424-11e8-b467-0ed5f89f718b\", \"name\": \"my-ipsec-policy\", \"resource_type\": \"ipsec_policy\"}}";
-    String createVpnGatewayConnectionPath = java.net.URLEncoder.encode("/vpn_gateways/testString/connections", "UTF-8").replace("%2F", "/");
+    String createVpnGatewayConnectionPath = "/vpn_gateways/testString/connections";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -9213,8 +9389,8 @@ public class VpcTest extends PowerMockTestCase {
     .deadPeerDetection(vpnGatewayConnectionDpdPrototypeModel)
     .ikePolicy(ikePolicyIdentityModel)
     .ipsecPolicy(iPsecPolicyIdentityModel)
-    .localCidrs(new java.util.ArrayList<String>(java.util.Arrays.asList("192.168.1.0/24")))
-    .peerCidrs(new java.util.ArrayList<String>(java.util.Arrays.asList("10.45.1.0/24")))
+    .localCIDRs(new java.util.ArrayList<String>(java.util.Arrays.asList("192.168.1.0/24")))
+    .peerCIDRs(new java.util.ArrayList<String>(java.util.Arrays.asList("10.45.1.0/24")))
     .build();
 
     // Invoke operation with valid options model (positive test)
@@ -9255,7 +9431,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testDeleteVpnGatewayConnectionWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "";
-    String deleteVpnGatewayConnectionPath = java.net.URLEncoder.encode("/vpn_gateways/testString/connections/testString", "UTF-8").replace("%2F", "/");
+    String deleteVpnGatewayConnectionPath = "/vpn_gateways/testString/connections/testString";
 
     server.enqueue(new MockResponse()
     .setResponseCode(202)
@@ -9308,7 +9484,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testGetVpnGatewayConnectionWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"a10a5771-dc23-442c-8460-c3601d8542f7\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpn_gateways/ddf51bec-3424-11e8-b467-0ed5f89f718b/connections/93487806-7743-4c46-81d6-72869883ea0b\", \"name\": \"my-vpn-connection\", \"resource_type\": \"vpn_gateway_connection\", \"admin_state_up\": true, \"peer_address\": \"169.21.50.5\", \"psk\": \"lkj14b1oi0alcniejkso\", \"local_cidrs\": [\"192.168.1.0/24\"], \"peer_cidrs\": [\"10.45.1.0/24\"], \"route_mode\": \"policy\", \"authentication_mode\": \"psk\", \"status\": \"down\", \"created_at\": \"2019-01-01T12:00:00\", \"dead_peer_detection\": {\"action\": \"restart\", \"interval\": 30, \"timeout\": 120}, \"ike_policy\": {\"id\": \"ddf51bec-3424-11e8-b467-0ed5f89f718b\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/ike_policies/ddf51bec-3424-11e8-b467-0ed5f89f718b\", \"name\": \"my-ike-policy\", \"resource_type\": \"ike_policy\"}, \"ipsec_policy\": {\"id\": \"ddf51bec-3424-11e8-b467-0ed5f89f718b\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/ipsec_policies/ddf51bec-3424-11e8-b467-0ed5f89f718b\", \"name\": \"my-ipsec-policy\", \"resource_type\": \"ipsec_policy\"}}";
-    String getVpnGatewayConnectionPath = java.net.URLEncoder.encode("/vpn_gateways/testString/connections/testString", "UTF-8").replace("%2F", "/");
+    String getVpnGatewayConnectionPath = "/vpn_gateways/testString/connections/testString";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -9361,7 +9537,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testUpdateVpnGatewayConnectionWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"a10a5771-dc23-442c-8460-c3601d8542f7\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpn_gateways/ddf51bec-3424-11e8-b467-0ed5f89f718b/connections/93487806-7743-4c46-81d6-72869883ea0b\", \"name\": \"my-vpn-connection\", \"resource_type\": \"vpn_gateway_connection\", \"admin_state_up\": true, \"peer_address\": \"169.21.50.5\", \"psk\": \"lkj14b1oi0alcniejkso\", \"local_cidrs\": [\"192.168.1.0/24\"], \"peer_cidrs\": [\"10.45.1.0/24\"], \"route_mode\": \"policy\", \"authentication_mode\": \"psk\", \"status\": \"down\", \"created_at\": \"2019-01-01T12:00:00\", \"dead_peer_detection\": {\"action\": \"restart\", \"interval\": 30, \"timeout\": 120}, \"ike_policy\": {\"id\": \"ddf51bec-3424-11e8-b467-0ed5f89f718b\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/ike_policies/ddf51bec-3424-11e8-b467-0ed5f89f718b\", \"name\": \"my-ike-policy\", \"resource_type\": \"ike_policy\"}, \"ipsec_policy\": {\"id\": \"ddf51bec-3424-11e8-b467-0ed5f89f718b\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/ipsec_policies/ddf51bec-3424-11e8-b467-0ed5f89f718b\", \"name\": \"my-ipsec-policy\", \"resource_type\": \"ipsec_policy\"}}";
-    String updateVpnGatewayConnectionPath = java.net.URLEncoder.encode("/vpn_gateways/testString/connections/testString", "UTF-8").replace("%2F", "/");
+    String updateVpnGatewayConnectionPath = "/vpn_gateways/testString/connections/testString";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -9387,10 +9563,8 @@ public class VpcTest extends PowerMockTestCase {
     .id("ddf51bec-3424-11e8-b467-0ed5f89f718b")
     .build();
 
-    // Construct an instance of the UpdateVpnGatewayConnectionOptions model
-    UpdateVpnGatewayConnectionOptions updateVpnGatewayConnectionOptionsModel = new UpdateVpnGatewayConnectionOptions.Builder()
-    .vpnGatewayId("testString")
-    .id("testString")
+    // Construct an instance of the VPNGatewayConnectionPatch model
+    VPNGatewayConnectionPatch vpnGatewayConnectionPatchModel = new VPNGatewayConnectionPatch.Builder()
     .adminStateUp(true)
     .peerAddress("169.21.50.5")
     .name("my-vpn-connection")
@@ -9398,6 +9572,14 @@ public class VpcTest extends PowerMockTestCase {
     .deadPeerDetection(vpnGatewayConnectionDpdPrototypeModel)
     .ikePolicy(ikePolicyIdentityModel)
     .ipsecPolicy(iPsecPolicyIdentityModel)
+    .build();
+    Map<String, Object> vpnGatewayConnectionPatchModelAsPatch = vpnGatewayConnectionPatchModel.asPatch();
+
+    // Construct an instance of the UpdateVpnGatewayConnectionOptions model
+    UpdateVpnGatewayConnectionOptions updateVpnGatewayConnectionOptionsModel = new UpdateVpnGatewayConnectionOptions.Builder()
+    .vpnGatewayId("testString")
+    .id("testString")
+    .vpnGatewayConnectionPatch(vpnGatewayConnectionPatchModelAsPatch)
     .build();
 
     // Invoke operation with valid options model (positive test)
@@ -9435,10 +9617,10 @@ public class VpcTest extends PowerMockTestCase {
   }
 
   @Test
-  public void testListVpnGatewayConnectionLocalCidrsWOptions() throws Throwable {
+  public void testListVpnGatewayConnectionLocalCIDRsWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"local_cidrs\": [\"192.168.1.0/24\"]}";
-    String listVpnGatewayConnectionLocalCidrsPath = java.net.URLEncoder.encode("/vpn_gateways/testString/connections/testString/local_cidrs", "UTF-8").replace("%2F", "/");
+    String listVpnGatewayConnectionLocalCIDRsPath = "/vpn_gateways/testString/connections/testString/local_cidrs";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -9447,14 +9629,14 @@ public class VpcTest extends PowerMockTestCase {
 
     constructClientService();
 
-    // Construct an instance of the ListVpnGatewayConnectionLocalCidrsOptions model
-    ListVpnGatewayConnectionLocalCidrsOptions listVpnGatewayConnectionLocalCidrsOptionsModel = new ListVpnGatewayConnectionLocalCidrsOptions.Builder()
+    // Construct an instance of the ListVpnGatewayConnectionLocalCIDRsOptions model
+    ListVpnGatewayConnectionLocalCIDRsOptions listVpnGatewayConnectionLocalCIDRsOptionsModel = new ListVpnGatewayConnectionLocalCIDRsOptions.Builder()
     .vpnGatewayId("testString")
     .id("testString")
     .build();
 
     // Invoke operation with valid options model (positive test)
-    Response<VPNGatewayConnectionLocalCIDRs> response = vpcService.listVpnGatewayConnectionLocalCidrs(listVpnGatewayConnectionLocalCidrsOptionsModel).execute();
+    Response<VPNGatewayConnectionLocalCIDRs> response = vpcService.listVpnGatewayConnectionLocalCIDRs(listVpnGatewayConnectionLocalCIDRsOptionsModel).execute();
     assertNotNull(response);
     VPNGatewayConnectionLocalCIDRs responseObj = response.getResult();
     assertNotNull(responseObj);
@@ -9472,26 +9654,26 @@ public class VpcTest extends PowerMockTestCase {
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
-    assertEquals(parsedPath, listVpnGatewayConnectionLocalCidrsPath);
+    assertEquals(parsedPath, listVpnGatewayConnectionLocalCIDRsPath);
   }
 
-  // Test the listVpnGatewayConnectionLocalCidrs operation with null options model parameter
+  // Test the listVpnGatewayConnectionLocalCIDRs operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
-  public void testListVpnGatewayConnectionLocalCidrsNoOptions() throws Throwable {
+  public void testListVpnGatewayConnectionLocalCIDRsNoOptions() throws Throwable {
     // construct the service
     constructClientService();
 
     server.enqueue(new MockResponse());
 
     // Invoke operation with null options model (negative test)
-    vpcService.listVpnGatewayConnectionLocalCidrs(null).execute();
+    vpcService.listVpnGatewayConnectionLocalCIDRs(null).execute();
   }
 
   @Test
   public void testRemoveVpnGatewayConnectionLocalCidrWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "";
-    String removeVpnGatewayConnectionLocalCidrPath = java.net.URLEncoder.encode("/vpn_gateways/testString/connections/testString/local_cidrs/testString/testString", "UTF-8").replace("%2F", "/");
+    String removeVpnGatewayConnectionLocalCidrPath = "/vpn_gateways/testString/connections/testString/local_cidrs/testString/testString";
 
     server.enqueue(new MockResponse()
     .setResponseCode(204)
@@ -9546,7 +9728,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testCheckVpnGatewayConnectionLocalCidrWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "";
-    String checkVpnGatewayConnectionLocalCidrPath = java.net.URLEncoder.encode("/vpn_gateways/testString/connections/testString/local_cidrs/testString/testString", "UTF-8").replace("%2F", "/");
+    String checkVpnGatewayConnectionLocalCidrPath = "/vpn_gateways/testString/connections/testString/local_cidrs/testString/testString";
 
     server.enqueue(new MockResponse()
     .setResponseCode(204)
@@ -9601,7 +9783,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testAddVpnGatewayConnectionLocalCidrWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "";
-    String addVpnGatewayConnectionLocalCidrPath = java.net.URLEncoder.encode("/vpn_gateways/testString/connections/testString/local_cidrs/testString/testString", "UTF-8").replace("%2F", "/");
+    String addVpnGatewayConnectionLocalCidrPath = "/vpn_gateways/testString/connections/testString/local_cidrs/testString/testString";
 
     server.enqueue(new MockResponse()
     .setResponseCode(204)
@@ -9653,10 +9835,10 @@ public class VpcTest extends PowerMockTestCase {
   }
 
   @Test
-  public void testListVpnGatewayConnectionPeerCidrsWOptions() throws Throwable {
+  public void testListVpnGatewayConnectionPeerCIDRsWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"peer_cidrs\": [\"10.45.1.0/24\"]}";
-    String listVpnGatewayConnectionPeerCidrsPath = java.net.URLEncoder.encode("/vpn_gateways/testString/connections/testString/peer_cidrs", "UTF-8").replace("%2F", "/");
+    String listVpnGatewayConnectionPeerCIDRsPath = "/vpn_gateways/testString/connections/testString/peer_cidrs";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -9665,14 +9847,14 @@ public class VpcTest extends PowerMockTestCase {
 
     constructClientService();
 
-    // Construct an instance of the ListVpnGatewayConnectionPeerCidrsOptions model
-    ListVpnGatewayConnectionPeerCidrsOptions listVpnGatewayConnectionPeerCidrsOptionsModel = new ListVpnGatewayConnectionPeerCidrsOptions.Builder()
+    // Construct an instance of the ListVpnGatewayConnectionPeerCIDRsOptions model
+    ListVpnGatewayConnectionPeerCIDRsOptions listVpnGatewayConnectionPeerCIDRsOptionsModel = new ListVpnGatewayConnectionPeerCIDRsOptions.Builder()
     .vpnGatewayId("testString")
     .id("testString")
     .build();
 
     // Invoke operation with valid options model (positive test)
-    Response<VPNGatewayConnectionPeerCIDRs> response = vpcService.listVpnGatewayConnectionPeerCidrs(listVpnGatewayConnectionPeerCidrsOptionsModel).execute();
+    Response<VPNGatewayConnectionPeerCIDRs> response = vpcService.listVpnGatewayConnectionPeerCIDRs(listVpnGatewayConnectionPeerCIDRsOptionsModel).execute();
     assertNotNull(response);
     VPNGatewayConnectionPeerCIDRs responseObj = response.getResult();
     assertNotNull(responseObj);
@@ -9690,26 +9872,26 @@ public class VpcTest extends PowerMockTestCase {
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
-    assertEquals(parsedPath, listVpnGatewayConnectionPeerCidrsPath);
+    assertEquals(parsedPath, listVpnGatewayConnectionPeerCIDRsPath);
   }
 
-  // Test the listVpnGatewayConnectionPeerCidrs operation with null options model parameter
+  // Test the listVpnGatewayConnectionPeerCIDRs operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
-  public void testListVpnGatewayConnectionPeerCidrsNoOptions() throws Throwable {
+  public void testListVpnGatewayConnectionPeerCIDRsNoOptions() throws Throwable {
     // construct the service
     constructClientService();
 
     server.enqueue(new MockResponse());
 
     // Invoke operation with null options model (negative test)
-    vpcService.listVpnGatewayConnectionPeerCidrs(null).execute();
+    vpcService.listVpnGatewayConnectionPeerCIDRs(null).execute();
   }
 
   @Test
   public void testRemoveVpnGatewayConnectionPeerCidrWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "";
-    String removeVpnGatewayConnectionPeerCidrPath = java.net.URLEncoder.encode("/vpn_gateways/testString/connections/testString/peer_cidrs/testString/testString", "UTF-8").replace("%2F", "/");
+    String removeVpnGatewayConnectionPeerCidrPath = "/vpn_gateways/testString/connections/testString/peer_cidrs/testString/testString";
 
     server.enqueue(new MockResponse()
     .setResponseCode(204)
@@ -9764,7 +9946,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testCheckVpnGatewayConnectionPeerCidrWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "";
-    String checkVpnGatewayConnectionPeerCidrPath = java.net.URLEncoder.encode("/vpn_gateways/testString/connections/testString/peer_cidrs/testString/testString", "UTF-8").replace("%2F", "/");
+    String checkVpnGatewayConnectionPeerCidrPath = "/vpn_gateways/testString/connections/testString/peer_cidrs/testString/testString";
 
     server.enqueue(new MockResponse()
     .setResponseCode(204)
@@ -9819,7 +10001,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testAddVpnGatewayConnectionPeerCidrWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "";
-    String addVpnGatewayConnectionPeerCidrPath = java.net.URLEncoder.encode("/vpn_gateways/testString/connections/testString/peer_cidrs/testString/testString", "UTF-8").replace("%2F", "/");
+    String addVpnGatewayConnectionPeerCidrPath = "/vpn_gateways/testString/connections/testString/peer_cidrs/testString/testString";
 
     server.enqueue(new MockResponse()
     .setResponseCode(204)
@@ -9874,7 +10056,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testListLoadBalancerProfilesWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"first\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancer/profiles?limit=20\"}, \"limit\": 20, \"next\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancer/profiles?start=9d5a91a3e2cbd233b5a5b33436855ed1&limit=20\"}, \"total_count\": 132, \"profiles\": [{\"name\": \"network-fixed\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancer/profiles/network-fixed\", \"family\": \"network\"}]}";
-    String listLoadBalancerProfilesPath = java.net.URLEncoder.encode("/load_balancer/profiles", "UTF-8").replace("%2F", "/");
+    String listLoadBalancerProfilesPath = "/load_balancer/profiles";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -9917,7 +10099,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testGetLoadBalancerProfileWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"name\": \"network-fixed\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancer/profiles/network-fixed\", \"family\": \"network\"}";
-    String getLoadBalancerProfilePath = java.net.URLEncoder.encode("/load_balancer/profiles/testString", "UTF-8").replace("%2F", "/");
+    String getLoadBalancerProfilePath = "/load_balancer/profiles/testString";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -9969,7 +10151,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testListLoadBalancersWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"load_balancers\": [{\"profile\": {\"name\": \"network-fixed\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancer/profiles/network-fixed\", \"family\": \"network\"}, \"id\": \"dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::load-balancer:dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"name\": \"my-load-balancer\", \"created_at\": \"2019-01-01T12:00:00\", \"hostname\": \"myloadbalancer-123456-us-south-1.lb.bluemix.net\", \"is_public\": true, \"listeners\": [{\"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004\"}], \"operating_status\": \"offline\", \"pools\": [{\"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004\", \"name\": \"my-load-balancer-pool\"}], \"private_ips\": [{\"address\": \"192.168.3.4\"}], \"provisioning_status\": \"active\", \"public_ips\": [{\"address\": \"192.168.3.4\"}], \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"subnets\": [{\"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}]}]}";
-    String listLoadBalancersPath = java.net.URLEncoder.encode("/load_balancers", "UTF-8").replace("%2F", "/");
+    String listLoadBalancersPath = "/load_balancers";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -10007,7 +10189,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testCreateLoadBalancerWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"profile\": {\"name\": \"network-fixed\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancer/profiles/network-fixed\", \"family\": \"network\"}, \"id\": \"dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::load-balancer:dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"name\": \"my-load-balancer\", \"created_at\": \"2019-01-01T12:00:00\", \"hostname\": \"myloadbalancer-123456-us-south-1.lb.bluemix.net\", \"is_public\": true, \"listeners\": [{\"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004\"}], \"operating_status\": \"offline\", \"pools\": [{\"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004\", \"name\": \"my-load-balancer-pool\"}], \"private_ips\": [{\"address\": \"192.168.3.4\"}], \"provisioning_status\": \"active\", \"public_ips\": [{\"address\": \"192.168.3.4\"}], \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"subnets\": [{\"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}]}";
-    String createLoadBalancerPath = java.net.URLEncoder.encode("/load_balancers", "UTF-8").replace("%2F", "/");
+    String createLoadBalancerPath = "/load_balancers";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -10130,7 +10312,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testDeleteLoadBalancerWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "";
-    String deleteLoadBalancerPath = java.net.URLEncoder.encode("/load_balancers/testString", "UTF-8").replace("%2F", "/");
+    String deleteLoadBalancerPath = "/load_balancers/testString";
 
     server.enqueue(new MockResponse()
     .setResponseCode(204)
@@ -10182,7 +10364,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testGetLoadBalancerWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"profile\": {\"name\": \"network-fixed\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancer/profiles/network-fixed\", \"family\": \"network\"}, \"id\": \"dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::load-balancer:dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"name\": \"my-load-balancer\", \"created_at\": \"2019-01-01T12:00:00\", \"hostname\": \"myloadbalancer-123456-us-south-1.lb.bluemix.net\", \"is_public\": true, \"listeners\": [{\"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004\"}], \"operating_status\": \"offline\", \"pools\": [{\"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004\", \"name\": \"my-load-balancer-pool\"}], \"private_ips\": [{\"address\": \"192.168.3.4\"}], \"provisioning_status\": \"active\", \"public_ips\": [{\"address\": \"192.168.3.4\"}], \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"subnets\": [{\"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}]}";
-    String getLoadBalancerPath = java.net.URLEncoder.encode("/load_balancers/testString", "UTF-8").replace("%2F", "/");
+    String getLoadBalancerPath = "/load_balancers/testString";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -10234,7 +10416,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testUpdateLoadBalancerWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"profile\": {\"name\": \"network-fixed\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancer/profiles/network-fixed\", \"family\": \"network\"}, \"id\": \"dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::load-balancer:dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"name\": \"my-load-balancer\", \"created_at\": \"2019-01-01T12:00:00\", \"hostname\": \"myloadbalancer-123456-us-south-1.lb.bluemix.net\", \"is_public\": true, \"listeners\": [{\"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004\"}], \"operating_status\": \"offline\", \"pools\": [{\"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004\", \"name\": \"my-load-balancer-pool\"}], \"private_ips\": [{\"address\": \"192.168.3.4\"}], \"provisioning_status\": \"active\", \"public_ips\": [{\"address\": \"192.168.3.4\"}], \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"subnets\": [{\"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}]}";
-    String updateLoadBalancerPath = java.net.URLEncoder.encode("/load_balancers/testString", "UTF-8").replace("%2F", "/");
+    String updateLoadBalancerPath = "/load_balancers/testString";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -10243,10 +10425,16 @@ public class VpcTest extends PowerMockTestCase {
 
     constructClientService();
 
+    // Construct an instance of the LoadBalancerPatch model
+    LoadBalancerPatch loadBalancerPatchModel = new LoadBalancerPatch.Builder()
+    .name("my-load-balancer")
+    .build();
+    Map<String, Object> loadBalancerPatchModelAsPatch = loadBalancerPatchModel.asPatch();
+
     // Construct an instance of the UpdateLoadBalancerOptions model
     UpdateLoadBalancerOptions updateLoadBalancerOptionsModel = new UpdateLoadBalancerOptions.Builder()
     .id("testString")
-    .name("my-load-balancer")
+    .loadBalancerPatch(loadBalancerPatchModelAsPatch)
     .build();
 
     // Invoke operation with valid options model (positive test)
@@ -10287,7 +10475,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testGetLoadBalancerStatisticsWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"active_connections\": 797, \"connection_rate\": 91.121, \"data_processed_this_month\": 10093173145, \"throughput\": 167.278}";
-    String getLoadBalancerStatisticsPath = java.net.URLEncoder.encode("/load_balancers/testString/statistics", "UTF-8").replace("%2F", "/");
+    String getLoadBalancerStatisticsPath = "/load_balancers/testString/statistics";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -10339,7 +10527,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testListLoadBalancerListenersWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"listeners\": [{\"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004\", \"connection_limit\": 2000, \"port\": 443, \"protocol\": \"http\", \"certificate_instance\": {\"crn\": \"crn:v1:bluemix:public:cloudcerts:us-south:a/123456:b8866ea4-b8df-467e-801a-da1db7e020bf:certificate:78ff9c4c97d013fb2a95b21dddde7758\"}, \"created_at\": \"2019-01-01T12:00:00\", \"default_pool\": {\"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004\", \"name\": \"my-load-balancer-pool\"}, \"policies\": [{\"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004/policies/f3187486-7b27-4c79-990c-47d33c0e2278\"}], \"provisioning_status\": \"active\"}]}";
-    String listLoadBalancerListenersPath = java.net.URLEncoder.encode("/load_balancers/testString/listeners", "UTF-8").replace("%2F", "/");
+    String listLoadBalancerListenersPath = "/load_balancers/testString/listeners";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -10391,7 +10579,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testCreateLoadBalancerListenerWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004\", \"connection_limit\": 2000, \"port\": 443, \"protocol\": \"http\", \"certificate_instance\": {\"crn\": \"crn:v1:bluemix:public:cloudcerts:us-south:a/123456:b8866ea4-b8df-467e-801a-da1db7e020bf:certificate:78ff9c4c97d013fb2a95b21dddde7758\"}, \"created_at\": \"2019-01-01T12:00:00\", \"default_pool\": {\"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004\", \"name\": \"my-load-balancer-pool\"}, \"policies\": [{\"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004/policies/f3187486-7b27-4c79-990c-47d33c0e2278\"}], \"provisioning_status\": \"active\"}";
-    String createLoadBalancerListenerPath = java.net.URLEncoder.encode("/load_balancers/testString/listeners", "UTF-8").replace("%2F", "/");
+    String createLoadBalancerListenerPath = "/load_balancers/testString/listeners";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -10481,7 +10669,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testDeleteLoadBalancerListenerWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "";
-    String deleteLoadBalancerListenerPath = java.net.URLEncoder.encode("/load_balancers/testString/listeners/testString", "UTF-8").replace("%2F", "/");
+    String deleteLoadBalancerListenerPath = "/load_balancers/testString/listeners/testString";
 
     server.enqueue(new MockResponse()
     .setResponseCode(204)
@@ -10534,7 +10722,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testGetLoadBalancerListenerWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004\", \"connection_limit\": 2000, \"port\": 443, \"protocol\": \"http\", \"certificate_instance\": {\"crn\": \"crn:v1:bluemix:public:cloudcerts:us-south:a/123456:b8866ea4-b8df-467e-801a-da1db7e020bf:certificate:78ff9c4c97d013fb2a95b21dddde7758\"}, \"created_at\": \"2019-01-01T12:00:00\", \"default_pool\": {\"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004\", \"name\": \"my-load-balancer-pool\"}, \"policies\": [{\"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004/policies/f3187486-7b27-4c79-990c-47d33c0e2278\"}], \"provisioning_status\": \"active\"}";
-    String getLoadBalancerListenerPath = java.net.URLEncoder.encode("/load_balancers/testString/listeners/testString", "UTF-8").replace("%2F", "/");
+    String getLoadBalancerListenerPath = "/load_balancers/testString/listeners/testString";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -10587,7 +10775,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testUpdateLoadBalancerListenerWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004\", \"connection_limit\": 2000, \"port\": 443, \"protocol\": \"http\", \"certificate_instance\": {\"crn\": \"crn:v1:bluemix:public:cloudcerts:us-south:a/123456:b8866ea4-b8df-467e-801a-da1db7e020bf:certificate:78ff9c4c97d013fb2a95b21dddde7758\"}, \"created_at\": \"2019-01-01T12:00:00\", \"default_pool\": {\"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004\", \"name\": \"my-load-balancer-pool\"}, \"policies\": [{\"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004/policies/f3187486-7b27-4c79-990c-47d33c0e2278\"}], \"provisioning_status\": \"active\"}";
-    String updateLoadBalancerListenerPath = java.net.URLEncoder.encode("/load_balancers/testString/listeners/testString", "UTF-8").replace("%2F", "/");
+    String updateLoadBalancerListenerPath = "/load_balancers/testString/listeners/testString";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -10606,15 +10794,21 @@ public class VpcTest extends PowerMockTestCase {
     .id("70294e14-4e61-11e8-bcf4-0242ac110004")
     .build();
 
-    // Construct an instance of the UpdateLoadBalancerListenerOptions model
-    UpdateLoadBalancerListenerOptions updateLoadBalancerListenerOptionsModel = new UpdateLoadBalancerListenerOptions.Builder()
-    .loadBalancerId("testString")
-    .id("testString")
+    // Construct an instance of the LoadBalancerListenerPatch model
+    LoadBalancerListenerPatch loadBalancerListenerPatchModel = new LoadBalancerListenerPatch.Builder()
     .connectionLimit(Long.valueOf("2000"))
     .port(Long.valueOf("443"))
     .protocol("http")
     .certificateInstance(certificateInstanceIdentityModel)
     .defaultPool(loadBalancerPoolIdentityModel)
+    .build();
+    Map<String, Object> loadBalancerListenerPatchModelAsPatch = loadBalancerListenerPatchModel.asPatch();
+
+    // Construct an instance of the UpdateLoadBalancerListenerOptions model
+    UpdateLoadBalancerListenerOptions updateLoadBalancerListenerOptionsModel = new UpdateLoadBalancerListenerOptions.Builder()
+    .loadBalancerId("testString")
+    .id("testString")
+    .loadBalancerListenerPatch(loadBalancerListenerPatchModelAsPatch)
     .build();
 
     // Invoke operation with valid options model (positive test)
@@ -10655,7 +10849,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testListLoadBalancerListenerPoliciesWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"policies\": [{\"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004/policies/f3187486-7b27-4c79-990c-47d33c0e2278\", \"name\": \"my-policy\", \"priority\": 5, \"action\": \"forward\", \"created_at\": \"2019-01-01T12:00:00\", \"provisioning_status\": \"active\", \"rules\": [{\"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004/policies/f3187486-7b27-4c79-990c-47d33c0e2278/rules/873a84b0-84d6-49c6-8948-1fa527b25762\"}], \"target\": {\"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004\", \"name\": \"my-load-balancer-pool\"}}]}";
-    String listLoadBalancerListenerPoliciesPath = java.net.URLEncoder.encode("/load_balancers/testString/listeners/testString/policies", "UTF-8").replace("%2F", "/");
+    String listLoadBalancerListenerPoliciesPath = "/load_balancers/testString/listeners/testString/policies";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -10708,7 +10902,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testCreateLoadBalancerListenerPolicyWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004/policies/f3187486-7b27-4c79-990c-47d33c0e2278\", \"name\": \"my-policy\", \"priority\": 5, \"action\": \"forward\", \"created_at\": \"2019-01-01T12:00:00\", \"provisioning_status\": \"active\", \"rules\": [{\"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004/policies/f3187486-7b27-4c79-990c-47d33c0e2278/rules/873a84b0-84d6-49c6-8948-1fa527b25762\"}], \"target\": {\"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004\", \"name\": \"my-load-balancer-pool\"}}";
-    String createLoadBalancerListenerPolicyPath = java.net.URLEncoder.encode("/load_balancers/testString/listeners/testString/policies", "UTF-8").replace("%2F", "/");
+    String createLoadBalancerListenerPolicyPath = "/load_balancers/testString/listeners/testString/policies";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -10779,7 +10973,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testDeleteLoadBalancerListenerPolicyWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "";
-    String deleteLoadBalancerListenerPolicyPath = java.net.URLEncoder.encode("/load_balancers/testString/listeners/testString/policies/testString", "UTF-8").replace("%2F", "/");
+    String deleteLoadBalancerListenerPolicyPath = "/load_balancers/testString/listeners/testString/policies/testString";
 
     server.enqueue(new MockResponse()
     .setResponseCode(204)
@@ -10833,7 +11027,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testGetLoadBalancerListenerPolicyWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004/policies/f3187486-7b27-4c79-990c-47d33c0e2278\", \"name\": \"my-policy\", \"priority\": 5, \"action\": \"forward\", \"created_at\": \"2019-01-01T12:00:00\", \"provisioning_status\": \"active\", \"rules\": [{\"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004/policies/f3187486-7b27-4c79-990c-47d33c0e2278/rules/873a84b0-84d6-49c6-8948-1fa527b25762\"}], \"target\": {\"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004\", \"name\": \"my-load-balancer-pool\"}}";
-    String getLoadBalancerListenerPolicyPath = java.net.URLEncoder.encode("/load_balancers/testString/listeners/testString/policies/testString", "UTF-8").replace("%2F", "/");
+    String getLoadBalancerListenerPolicyPath = "/load_balancers/testString/listeners/testString/policies/testString";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -10887,7 +11081,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testUpdateLoadBalancerListenerPolicyWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004/policies/f3187486-7b27-4c79-990c-47d33c0e2278\", \"name\": \"my-policy\", \"priority\": 5, \"action\": \"forward\", \"created_at\": \"2019-01-01T12:00:00\", \"provisioning_status\": \"active\", \"rules\": [{\"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004/policies/f3187486-7b27-4c79-990c-47d33c0e2278/rules/873a84b0-84d6-49c6-8948-1fa527b25762\"}], \"target\": {\"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004\", \"name\": \"my-load-balancer-pool\"}}";
-    String updateLoadBalancerListenerPolicyPath = java.net.URLEncoder.encode("/load_balancers/testString/listeners/testString/policies/testString", "UTF-8").replace("%2F", "/");
+    String updateLoadBalancerListenerPolicyPath = "/load_balancers/testString/listeners/testString/policies/testString";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -10901,14 +11095,20 @@ public class VpcTest extends PowerMockTestCase {
     .id("70294e14-4e61-11e8-bcf4-0242ac110004")
     .build();
 
+    // Construct an instance of the LoadBalancerListenerPolicyPatch model
+    LoadBalancerListenerPolicyPatch loadBalancerListenerPolicyPatchModel = new LoadBalancerListenerPolicyPatch.Builder()
+    .name("my-policy")
+    .priority(Long.valueOf("5"))
+    .target(loadBalancerListenerPolicyPatchTargetModel)
+    .build();
+    Map<String, Object> loadBalancerListenerPolicyPatchModelAsPatch = loadBalancerListenerPolicyPatchModel.asPatch();
+
     // Construct an instance of the UpdateLoadBalancerListenerPolicyOptions model
     UpdateLoadBalancerListenerPolicyOptions updateLoadBalancerListenerPolicyOptionsModel = new UpdateLoadBalancerListenerPolicyOptions.Builder()
     .loadBalancerId("testString")
     .listenerId("testString")
     .id("testString")
-    .name("my-policy")
-    .priority(Long.valueOf("5"))
-    .target(loadBalancerListenerPolicyPatchTargetModel)
+    .loadBalancerListenerPolicyPatch(loadBalancerListenerPolicyPatchModelAsPatch)
     .build();
 
     // Invoke operation with valid options model (positive test)
@@ -10949,7 +11149,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testListLoadBalancerListenerPolicyRulesWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"rules\": [{\"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004/policies/f3187486-7b27-4c79-990c-47d33c0e2278/rules/873a84b0-84d6-49c6-8948-1fa527b25762\", \"condition\": \"contains\", \"field\": \"MY-APP-HEADER\", \"type\": \"header\", \"value\": \"value\", \"created_at\": \"2019-01-01T12:00:00\", \"provisioning_status\": \"active\"}]}";
-    String listLoadBalancerListenerPolicyRulesPath = java.net.URLEncoder.encode("/load_balancers/testString/listeners/testString/policies/testString/rules", "UTF-8").replace("%2F", "/");
+    String listLoadBalancerListenerPolicyRulesPath = "/load_balancers/testString/listeners/testString/policies/testString/rules";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -11003,7 +11203,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testCreateLoadBalancerListenerPolicyRuleWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004/policies/f3187486-7b27-4c79-990c-47d33c0e2278/rules/873a84b0-84d6-49c6-8948-1fa527b25762\", \"condition\": \"contains\", \"field\": \"MY-APP-HEADER\", \"type\": \"header\", \"value\": \"value\", \"created_at\": \"2019-01-01T12:00:00\", \"provisioning_status\": \"active\"}";
-    String createLoadBalancerListenerPolicyRulePath = java.net.URLEncoder.encode("/load_balancers/testString/listeners/testString/policies/testString/rules", "UTF-8").replace("%2F", "/");
+    String createLoadBalancerListenerPolicyRulePath = "/load_balancers/testString/listeners/testString/policies/testString/rules";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -11061,7 +11261,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testDeleteLoadBalancerListenerPolicyRuleWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "";
-    String deleteLoadBalancerListenerPolicyRulePath = java.net.URLEncoder.encode("/load_balancers/testString/listeners/testString/policies/testString/rules/testString", "UTF-8").replace("%2F", "/");
+    String deleteLoadBalancerListenerPolicyRulePath = "/load_balancers/testString/listeners/testString/policies/testString/rules/testString";
 
     server.enqueue(new MockResponse()
     .setResponseCode(204)
@@ -11116,7 +11316,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testGetLoadBalancerListenerPolicyRuleWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004/policies/f3187486-7b27-4c79-990c-47d33c0e2278/rules/873a84b0-84d6-49c6-8948-1fa527b25762\", \"condition\": \"contains\", \"field\": \"MY-APP-HEADER\", \"type\": \"header\", \"value\": \"value\", \"created_at\": \"2019-01-01T12:00:00\", \"provisioning_status\": \"active\"}";
-    String getLoadBalancerListenerPolicyRulePath = java.net.URLEncoder.encode("/load_balancers/testString/listeners/testString/policies/testString/rules/testString", "UTF-8").replace("%2F", "/");
+    String getLoadBalancerListenerPolicyRulePath = "/load_balancers/testString/listeners/testString/policies/testString/rules/testString";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -11171,7 +11371,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testUpdateLoadBalancerListenerPolicyRuleWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004/policies/f3187486-7b27-4c79-990c-47d33c0e2278/rules/873a84b0-84d6-49c6-8948-1fa527b25762\", \"condition\": \"contains\", \"field\": \"MY-APP-HEADER\", \"type\": \"header\", \"value\": \"value\", \"created_at\": \"2019-01-01T12:00:00\", \"provisioning_status\": \"active\"}";
-    String updateLoadBalancerListenerPolicyRulePath = java.net.URLEncoder.encode("/load_balancers/testString/listeners/testString/policies/testString/rules/testString", "UTF-8").replace("%2F", "/");
+    String updateLoadBalancerListenerPolicyRulePath = "/load_balancers/testString/listeners/testString/policies/testString/rules/testString";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -11180,16 +11380,22 @@ public class VpcTest extends PowerMockTestCase {
 
     constructClientService();
 
+    // Construct an instance of the LoadBalancerListenerPolicyRulePatch model
+    LoadBalancerListenerPolicyRulePatch loadBalancerListenerPolicyRulePatchModel = new LoadBalancerListenerPolicyRulePatch.Builder()
+    .condition("contains")
+    .field("MY-APP-HEADER")
+    .type("header")
+    .value("testString")
+    .build();
+    Map<String, Object> loadBalancerListenerPolicyRulePatchModelAsPatch = loadBalancerListenerPolicyRulePatchModel.asPatch();
+
     // Construct an instance of the UpdateLoadBalancerListenerPolicyRuleOptions model
     UpdateLoadBalancerListenerPolicyRuleOptions updateLoadBalancerListenerPolicyRuleOptionsModel = new UpdateLoadBalancerListenerPolicyRuleOptions.Builder()
     .loadBalancerId("testString")
     .listenerId("testString")
     .policyId("testString")
     .id("testString")
-    .condition("contains")
-    .field("MY-APP-HEADER")
-    .type("header")
-    .value("testString")
+    .loadBalancerListenerPolicyRulePatch(loadBalancerListenerPolicyRulePatchModelAsPatch)
     .build();
 
     // Invoke operation with valid options model (positive test)
@@ -11230,7 +11436,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testListLoadBalancerPoolsWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"pools\": [{\"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004\", \"name\": \"my-load-balancer-pool\", \"algorithm\": \"least_connections\", \"protocol\": \"http\", \"created_at\": \"2019-01-01T12:00:00\", \"health_monitor\": {\"delay\": 5, \"max_retries\": 2, \"port\": 22, \"timeout\": 2, \"type\": \"http\", \"url_path\": \"/\"}, \"instance_group\": {\"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance-group:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance-group\"}, \"members\": [{\"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004/members/80294e14-4e61-11e8-bcf4-0242ac110004\"}], \"provisioning_status\": \"active\", \"session_persistence\": {\"type\": \"source_ip\"}}]}";
-    String listLoadBalancerPoolsPath = java.net.URLEncoder.encode("/load_balancers/testString/pools", "UTF-8").replace("%2F", "/");
+    String listLoadBalancerPoolsPath = "/load_balancers/testString/pools";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -11282,7 +11488,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testCreateLoadBalancerPoolWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004\", \"name\": \"my-load-balancer-pool\", \"algorithm\": \"least_connections\", \"protocol\": \"http\", \"created_at\": \"2019-01-01T12:00:00\", \"health_monitor\": {\"delay\": 5, \"max_retries\": 2, \"port\": 22, \"timeout\": 2, \"type\": \"http\", \"url_path\": \"/\"}, \"instance_group\": {\"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance-group:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance-group\"}, \"members\": [{\"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004/members/80294e14-4e61-11e8-bcf4-0242ac110004\"}], \"provisioning_status\": \"active\", \"session_persistence\": {\"type\": \"source_ip\"}}";
-    String createLoadBalancerPoolPath = java.net.URLEncoder.encode("/load_balancers/testString/pools", "UTF-8").replace("%2F", "/");
+    String createLoadBalancerPoolPath = "/load_balancers/testString/pools";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -11367,7 +11573,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testDeleteLoadBalancerPoolWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "";
-    String deleteLoadBalancerPoolPath = java.net.URLEncoder.encode("/load_balancers/testString/pools/testString", "UTF-8").replace("%2F", "/");
+    String deleteLoadBalancerPoolPath = "/load_balancers/testString/pools/testString";
 
     server.enqueue(new MockResponse()
     .setResponseCode(204)
@@ -11420,7 +11626,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testGetLoadBalancerPoolWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004\", \"name\": \"my-load-balancer-pool\", \"algorithm\": \"least_connections\", \"protocol\": \"http\", \"created_at\": \"2019-01-01T12:00:00\", \"health_monitor\": {\"delay\": 5, \"max_retries\": 2, \"port\": 22, \"timeout\": 2, \"type\": \"http\", \"url_path\": \"/\"}, \"instance_group\": {\"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance-group:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance-group\"}, \"members\": [{\"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004/members/80294e14-4e61-11e8-bcf4-0242ac110004\"}], \"provisioning_status\": \"active\", \"session_persistence\": {\"type\": \"source_ip\"}}";
-    String getLoadBalancerPoolPath = java.net.URLEncoder.encode("/load_balancers/testString/pools/testString", "UTF-8").replace("%2F", "/");
+    String getLoadBalancerPoolPath = "/load_balancers/testString/pools/testString";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -11473,7 +11679,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testUpdateLoadBalancerPoolWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004\", \"name\": \"my-load-balancer-pool\", \"algorithm\": \"least_connections\", \"protocol\": \"http\", \"created_at\": \"2019-01-01T12:00:00\", \"health_monitor\": {\"delay\": 5, \"max_retries\": 2, \"port\": 22, \"timeout\": 2, \"type\": \"http\", \"url_path\": \"/\"}, \"instance_group\": {\"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance-group:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance-group\"}, \"members\": [{\"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004/members/80294e14-4e61-11e8-bcf4-0242ac110004\"}], \"provisioning_status\": \"active\", \"session_persistence\": {\"type\": \"source_ip\"}}";
-    String updateLoadBalancerPoolPath = java.net.URLEncoder.encode("/load_balancers/testString/pools/testString", "UTF-8").replace("%2F", "/");
+    String updateLoadBalancerPoolPath = "/load_balancers/testString/pools/testString";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -11497,15 +11703,21 @@ public class VpcTest extends PowerMockTestCase {
     .type("source_ip")
     .build();
 
-    // Construct an instance of the UpdateLoadBalancerPoolOptions model
-    UpdateLoadBalancerPoolOptions updateLoadBalancerPoolOptionsModel = new UpdateLoadBalancerPoolOptions.Builder()
-    .loadBalancerId("testString")
-    .id("testString")
+    // Construct an instance of the LoadBalancerPoolPatch model
+    LoadBalancerPoolPatch loadBalancerPoolPatchModel = new LoadBalancerPoolPatch.Builder()
     .name("my-load-balancer-pool")
     .algorithm("least_connections")
     .protocol("http")
     .healthMonitor(loadBalancerPoolHealthMonitorPatchModel)
     .sessionPersistence(loadBalancerPoolSessionPersistencePatchModel)
+    .build();
+    Map<String, Object> loadBalancerPoolPatchModelAsPatch = loadBalancerPoolPatchModel.asPatch();
+
+    // Construct an instance of the UpdateLoadBalancerPoolOptions model
+    UpdateLoadBalancerPoolOptions updateLoadBalancerPoolOptionsModel = new UpdateLoadBalancerPoolOptions.Builder()
+    .loadBalancerId("testString")
+    .id("testString")
+    .loadBalancerPoolPatch(loadBalancerPoolPatchModelAsPatch)
     .build();
 
     // Invoke operation with valid options model (positive test)
@@ -11546,7 +11758,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testListLoadBalancerPoolMembersWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"members\": [{\"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004/members/80294e14-4e61-11e8-bcf4-0242ac110004\", \"port\": 80, \"weight\": 50, \"health\": \"faulted\", \"created_at\": \"2019-01-01T12:00:00\", \"provisioning_status\": \"active\", \"target\": {\"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance\"}}]}";
-    String listLoadBalancerPoolMembersPath = java.net.URLEncoder.encode("/load_balancers/testString/pools/testString/members", "UTF-8").replace("%2F", "/");
+    String listLoadBalancerPoolMembersPath = "/load_balancers/testString/pools/testString/members";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -11599,7 +11811,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testCreateLoadBalancerPoolMemberWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004/members/80294e14-4e61-11e8-bcf4-0242ac110004\", \"port\": 80, \"weight\": 50, \"health\": \"faulted\", \"created_at\": \"2019-01-01T12:00:00\", \"provisioning_status\": \"active\", \"target\": {\"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance\"}}";
-    String createLoadBalancerPoolMemberPath = java.net.URLEncoder.encode("/load_balancers/testString/pools/testString/members", "UTF-8").replace("%2F", "/");
+    String createLoadBalancerPoolMemberPath = "/load_balancers/testString/pools/testString/members";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -11660,7 +11872,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testReplaceLoadBalancerPoolMembersWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"members\": [{\"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004/members/80294e14-4e61-11e8-bcf4-0242ac110004\", \"port\": 80, \"weight\": 50, \"health\": \"faulted\", \"created_at\": \"2019-01-01T12:00:00\", \"provisioning_status\": \"active\", \"target\": {\"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance\"}}]}";
-    String replaceLoadBalancerPoolMembersPath = java.net.URLEncoder.encode("/load_balancers/testString/pools/testString/members", "UTF-8").replace("%2F", "/");
+    String replaceLoadBalancerPoolMembersPath = "/load_balancers/testString/pools/testString/members";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -11726,7 +11938,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testDeleteLoadBalancerPoolMemberWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "";
-    String deleteLoadBalancerPoolMemberPath = java.net.URLEncoder.encode("/load_balancers/testString/pools/testString/members/testString", "UTF-8").replace("%2F", "/");
+    String deleteLoadBalancerPoolMemberPath = "/load_balancers/testString/pools/testString/members/testString";
 
     server.enqueue(new MockResponse()
     .setResponseCode(204)
@@ -11780,7 +11992,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testGetLoadBalancerPoolMemberWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004/members/80294e14-4e61-11e8-bcf4-0242ac110004\", \"port\": 80, \"weight\": 50, \"health\": \"faulted\", \"created_at\": \"2019-01-01T12:00:00\", \"provisioning_status\": \"active\", \"target\": {\"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance\"}}";
-    String getLoadBalancerPoolMemberPath = java.net.URLEncoder.encode("/load_balancers/testString/pools/testString/members/testString", "UTF-8").replace("%2F", "/");
+    String getLoadBalancerPoolMemberPath = "/load_balancers/testString/pools/testString/members/testString";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -11834,7 +12046,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testUpdateLoadBalancerPoolMemberWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004/members/80294e14-4e61-11e8-bcf4-0242ac110004\", \"port\": 80, \"weight\": 50, \"health\": \"faulted\", \"created_at\": \"2019-01-01T12:00:00\", \"provisioning_status\": \"active\", \"target\": {\"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance\"}}";
-    String updateLoadBalancerPoolMemberPath = java.net.URLEncoder.encode("/load_balancers/testString/pools/testString/members/testString", "UTF-8").replace("%2F", "/");
+    String updateLoadBalancerPoolMemberPath = "/load_balancers/testString/pools/testString/members/testString";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -11848,14 +12060,20 @@ public class VpcTest extends PowerMockTestCase {
     .id("1e09281b-f177-46fb-baf1-bc152b2e391a")
     .build();
 
+    // Construct an instance of the LoadBalancerPoolMemberPatch model
+    LoadBalancerPoolMemberPatch loadBalancerPoolMemberPatchModel = new LoadBalancerPoolMemberPatch.Builder()
+    .port(Long.valueOf("80"))
+    .weight(Long.valueOf("50"))
+    .target(loadBalancerPoolMemberTargetPrototypeModel)
+    .build();
+    Map<String, Object> loadBalancerPoolMemberPatchModelAsPatch = loadBalancerPoolMemberPatchModel.asPatch();
+
     // Construct an instance of the UpdateLoadBalancerPoolMemberOptions model
     UpdateLoadBalancerPoolMemberOptions updateLoadBalancerPoolMemberOptionsModel = new UpdateLoadBalancerPoolMemberOptions.Builder()
     .loadBalancerId("testString")
     .poolId("testString")
     .id("testString")
-    .port(Long.valueOf("80"))
-    .weight(Long.valueOf("50"))
-    .target(loadBalancerPoolMemberTargetPrototypeModel)
+    .loadBalancerPoolMemberPatch(loadBalancerPoolMemberPatchModelAsPatch)
     .build();
 
     // Invoke operation with valid options model (positive test)
@@ -11896,7 +12114,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testListFlowLogCollectorsWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"first\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/flow_log_collectors?limit=20\"}, \"limit\": 20, \"next\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/flow_log_collectors?start=9d5a91a3e2cbd233b5a5b33436855ed1&limit=20\"}, \"total_count\": 132, \"flow_log_collectors\": [{\"id\": \"39300233-9995-4806-89a5-3c1b6eb88689\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::flow-log-collector:39300233-9995-4806-89a5-3c1b6eb88689\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/flow_log_collectors/39300233-9995-4806-89a5-3c1b6eb88689\", \"name\": \"my-flow-log-collector\", \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"active\": true, \"auto_delete\": true, \"created_at\": \"2019-01-01T12:00:00\", \"lifecycle_state\": \"stable\", \"storage_bucket\": {\"name\": \"bucket-27200-lwx4cfvcue\"}, \"target\": {\"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"name\": \"my-network-interface\", \"resource_type\": \"network_interface\"}, \"vpc\": {\"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\"}}]}";
-    String listFlowLogCollectorsPath = java.net.URLEncoder.encode("/flow_log_collectors", "UTF-8").replace("%2F", "/");
+    String listFlowLogCollectorsPath = "/flow_log_collectors";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -11953,7 +12171,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testCreateFlowLogCollectorWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"39300233-9995-4806-89a5-3c1b6eb88689\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::flow-log-collector:39300233-9995-4806-89a5-3c1b6eb88689\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/flow_log_collectors/39300233-9995-4806-89a5-3c1b6eb88689\", \"name\": \"my-flow-log-collector\", \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"active\": true, \"auto_delete\": true, \"created_at\": \"2019-01-01T12:00:00\", \"lifecycle_state\": \"stable\", \"storage_bucket\": {\"name\": \"bucket-27200-lwx4cfvcue\"}, \"target\": {\"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"name\": \"my-network-interface\", \"resource_type\": \"network_interface\"}, \"vpc\": {\"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\"}}";
-    String createFlowLogCollectorPath = java.net.URLEncoder.encode("/flow_log_collectors", "UTF-8").replace("%2F", "/");
+    String createFlowLogCollectorPath = "/flow_log_collectors";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -12024,7 +12242,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testDeleteFlowLogCollectorWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "";
-    String deleteFlowLogCollectorPath = java.net.URLEncoder.encode("/flow_log_collectors/testString", "UTF-8").replace("%2F", "/");
+    String deleteFlowLogCollectorPath = "/flow_log_collectors/testString";
 
     server.enqueue(new MockResponse()
     .setResponseCode(204)
@@ -12076,7 +12294,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testGetFlowLogCollectorWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"39300233-9995-4806-89a5-3c1b6eb88689\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::flow-log-collector:39300233-9995-4806-89a5-3c1b6eb88689\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/flow_log_collectors/39300233-9995-4806-89a5-3c1b6eb88689\", \"name\": \"my-flow-log-collector\", \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"active\": true, \"auto_delete\": true, \"created_at\": \"2019-01-01T12:00:00\", \"lifecycle_state\": \"stable\", \"storage_bucket\": {\"name\": \"bucket-27200-lwx4cfvcue\"}, \"target\": {\"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"name\": \"my-network-interface\", \"resource_type\": \"network_interface\"}, \"vpc\": {\"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\"}}";
-    String getFlowLogCollectorPath = java.net.URLEncoder.encode("/flow_log_collectors/testString", "UTF-8").replace("%2F", "/");
+    String getFlowLogCollectorPath = "/flow_log_collectors/testString";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -12128,7 +12346,7 @@ public class VpcTest extends PowerMockTestCase {
   public void testUpdateFlowLogCollectorWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"id\": \"39300233-9995-4806-89a5-3c1b6eb88689\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::flow-log-collector:39300233-9995-4806-89a5-3c1b6eb88689\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/flow_log_collectors/39300233-9995-4806-89a5-3c1b6eb88689\", \"name\": \"my-flow-log-collector\", \"resource_group\": {\"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\", \"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\"}, \"active\": true, \"auto_delete\": true, \"created_at\": \"2019-01-01T12:00:00\", \"lifecycle_state\": \"stable\", \"storage_bucket\": {\"name\": \"bucket-27200-lwx4cfvcue\"}, \"target\": {\"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"name\": \"my-network-interface\", \"resource_type\": \"network_interface\"}, \"vpc\": {\"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\"}}";
-    String updateFlowLogCollectorPath = java.net.URLEncoder.encode("/flow_log_collectors/testString", "UTF-8").replace("%2F", "/");
+    String updateFlowLogCollectorPath = "/flow_log_collectors/testString";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -12137,11 +12355,17 @@ public class VpcTest extends PowerMockTestCase {
 
     constructClientService();
 
+    // Construct an instance of the FlowLogCollectorPatch model
+    FlowLogCollectorPatch flowLogCollectorPatchModel = new FlowLogCollectorPatch.Builder()
+    .name("my-flow-log-collector")
+    .active(true)
+    .build();
+    Map<String, Object> flowLogCollectorPatchModelAsPatch = flowLogCollectorPatchModel.asPatch();
+
     // Construct an instance of the UpdateFlowLogCollectorOptions model
     UpdateFlowLogCollectorOptions updateFlowLogCollectorOptionsModel = new UpdateFlowLogCollectorOptions.Builder()
     .id("testString")
-    .name("my-flow-log-collector")
-    .active(true)
+    .flowLogCollectorPatch(flowLogCollectorPatchModelAsPatch)
     .build();
 
     // Invoke operation with valid options model (positive test)

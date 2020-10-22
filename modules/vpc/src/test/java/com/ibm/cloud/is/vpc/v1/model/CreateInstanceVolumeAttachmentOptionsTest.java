@@ -16,13 +16,10 @@ package com.ibm.cloud.is.vpc.v1.model;
 import com.ibm.cloud.is.vpc.v1.model.CreateInstanceVolumeAttachmentOptions;
 import com.ibm.cloud.is.vpc.v1.model.VolumeIdentityById;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
-
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-
 import java.util.HashMap;
 import java.util.List;
-
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
@@ -43,13 +40,13 @@ public class CreateInstanceVolumeAttachmentOptionsTest {
     CreateInstanceVolumeAttachmentOptions createInstanceVolumeAttachmentOptionsModel = new CreateInstanceVolumeAttachmentOptions.Builder()
       .instanceId("testString")
       .volume(volumeIdentityModel)
-      .name("my-volume-attachment")
       .deleteVolumeOnInstanceDelete(true)
+      .name("my-volume-attachment")
       .build();
     assertEquals(createInstanceVolumeAttachmentOptionsModel.instanceId(), "testString");
     assertEquals(createInstanceVolumeAttachmentOptionsModel.volume(), volumeIdentityModel);
-    assertEquals(createInstanceVolumeAttachmentOptionsModel.name(), "my-volume-attachment");
     assertEquals(createInstanceVolumeAttachmentOptionsModel.deleteVolumeOnInstanceDelete(), Boolean.valueOf(true));
+    assertEquals(createInstanceVolumeAttachmentOptionsModel.name(), "my-volume-attachment");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

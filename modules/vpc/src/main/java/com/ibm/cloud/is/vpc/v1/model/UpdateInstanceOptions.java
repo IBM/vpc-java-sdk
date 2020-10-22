@@ -12,6 +12,8 @@
  */
 package com.ibm.cloud.is.vpc.v1.model;
 
+import java.util.Map;
+
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
@@ -20,18 +22,18 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class UpdateInstanceOptions extends GenericModel {
 
   protected String id;
-  protected String name;
+  protected Map<String, Object> instancePatch;
 
   /**
    * Builder.
    */
   public static class Builder {
     private String id;
-    private String name;
+    private Map<String, Object> instancePatch;
 
     private Builder(UpdateInstanceOptions updateInstanceOptions) {
       this.id = updateInstanceOptions.id;
-      this.name = updateInstanceOptions.name;
+      this.instancePatch = updateInstanceOptions.instancePatch;
     }
 
     /**
@@ -44,9 +46,11 @@ public class UpdateInstanceOptions extends GenericModel {
      * Instantiates a new builder with required properties.
      *
      * @param id the id
+     * @param instancePatch the instancePatch
      */
-    public Builder(String id) {
+    public Builder(String id, Map<String, Object> instancePatch) {
       this.id = id;
+      this.instancePatch = instancePatch;
     }
 
     /**
@@ -70,13 +74,13 @@ public class UpdateInstanceOptions extends GenericModel {
     }
 
     /**
-     * Set the name.
+     * Set the instancePatch.
      *
-     * @param name the name
+     * @param instancePatch the instancePatch
      * @return the UpdateInstanceOptions builder
      */
-    public Builder name(String name) {
-      this.name = name;
+    public Builder instancePatch(Map<String, Object> instancePatch) {
+      this.instancePatch = instancePatch;
       return this;
     }
   }
@@ -84,8 +88,10 @@ public class UpdateInstanceOptions extends GenericModel {
   protected UpdateInstanceOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,
       "id cannot be empty");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.instancePatch,
+      "instancePatch cannot be null");
     id = builder.id;
-    name = builder.name;
+    instancePatch = builder.instancePatch;
   }
 
   /**
@@ -109,14 +115,14 @@ public class UpdateInstanceOptions extends GenericModel {
   }
 
   /**
-   * Gets the name.
+   * Gets the instancePatch.
    *
-   * The user-defined name for this virtual server instance (and default system hostname).
+   * The instance patch.
    *
-   * @return the name
+   * @return the instancePatch
    */
-  public String name() {
-    return name;
+  public Map<String, Object> instancePatch() {
+    return instancePatch;
   }
 }
 

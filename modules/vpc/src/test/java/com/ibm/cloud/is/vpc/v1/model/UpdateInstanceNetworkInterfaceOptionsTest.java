@@ -15,13 +15,10 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.UpdateInstanceNetworkInterfaceOptions;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
-
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-
 import java.util.HashMap;
 import java.util.List;
-
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
@@ -37,11 +34,11 @@ public class UpdateInstanceNetworkInterfaceOptionsTest {
     UpdateInstanceNetworkInterfaceOptions updateInstanceNetworkInterfaceOptionsModel = new UpdateInstanceNetworkInterfaceOptions.Builder()
       .instanceId("testString")
       .id("testString")
-      .name("my-network-interface")
+      .networkInterfacePatch(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
       .build();
     assertEquals(updateInstanceNetworkInterfaceOptionsModel.instanceId(), "testString");
     assertEquals(updateInstanceNetworkInterfaceOptionsModel.id(), "testString");
-    assertEquals(updateInstanceNetworkInterfaceOptionsModel.name(), "my-network-interface");
+    assertEquals(updateInstanceNetworkInterfaceOptionsModel.networkInterfacePatch(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } });
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

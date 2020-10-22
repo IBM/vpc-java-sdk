@@ -12,6 +12,8 @@
  */
 package com.ibm.cloud.is.vpc.v1.model;
 
+import java.util.Map;
+
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
@@ -20,18 +22,18 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class UpdateNetworkAclOptions extends GenericModel {
 
   protected String id;
-  protected String name;
+  protected Map<String, Object> networkAclPatch;
 
   /**
    * Builder.
    */
   public static class Builder {
     private String id;
-    private String name;
+    private Map<String, Object> networkAclPatch;
 
     private Builder(UpdateNetworkAclOptions updateNetworkAclOptions) {
       this.id = updateNetworkAclOptions.id;
-      this.name = updateNetworkAclOptions.name;
+      this.networkAclPatch = updateNetworkAclOptions.networkAclPatch;
     }
 
     /**
@@ -44,9 +46,11 @@ public class UpdateNetworkAclOptions extends GenericModel {
      * Instantiates a new builder with required properties.
      *
      * @param id the id
+     * @param networkAclPatch the networkAclPatch
      */
-    public Builder(String id) {
+    public Builder(String id, Map<String, Object> networkAclPatch) {
       this.id = id;
+      this.networkAclPatch = networkAclPatch;
     }
 
     /**
@@ -70,13 +74,13 @@ public class UpdateNetworkAclOptions extends GenericModel {
     }
 
     /**
-     * Set the name.
+     * Set the networkAclPatch.
      *
-     * @param name the name
+     * @param networkAclPatch the networkAclPatch
      * @return the UpdateNetworkAclOptions builder
      */
-    public Builder name(String name) {
-      this.name = name;
+    public Builder networkAclPatch(Map<String, Object> networkAclPatch) {
+      this.networkAclPatch = networkAclPatch;
       return this;
     }
   }
@@ -84,8 +88,10 @@ public class UpdateNetworkAclOptions extends GenericModel {
   protected UpdateNetworkAclOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,
       "id cannot be empty");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.networkAclPatch,
+      "networkAclPatch cannot be null");
     id = builder.id;
-    name = builder.name;
+    networkAclPatch = builder.networkAclPatch;
   }
 
   /**
@@ -109,14 +115,14 @@ public class UpdateNetworkAclOptions extends GenericModel {
   }
 
   /**
-   * Gets the name.
+   * Gets the networkAclPatch.
    *
-   * The user-defined name for this network ACL. Names must be unique within the VPC the Network ACL resides in.
+   * The network ACL patch.
    *
-   * @return the name
+   * @return the networkAclPatch
    */
-  public String name() {
-    return name;
+  public Map<String, Object> networkAclPatch() {
+    return networkAclPatch;
   }
 }
 

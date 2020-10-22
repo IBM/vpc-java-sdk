@@ -12,6 +12,8 @@
  */
 package com.ibm.cloud.is.vpc.v1.model;
 
+import java.util.Map;
+
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
@@ -20,18 +22,18 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class UpdateImageOptions extends GenericModel {
 
   protected String id;
-  protected String name;
+  protected Map<String, Object> imagePatch;
 
   /**
    * Builder.
    */
   public static class Builder {
     private String id;
-    private String name;
+    private Map<String, Object> imagePatch;
 
     private Builder(UpdateImageOptions updateImageOptions) {
       this.id = updateImageOptions.id;
-      this.name = updateImageOptions.name;
+      this.imagePatch = updateImageOptions.imagePatch;
     }
 
     /**
@@ -44,9 +46,11 @@ public class UpdateImageOptions extends GenericModel {
      * Instantiates a new builder with required properties.
      *
      * @param id the id
+     * @param imagePatch the imagePatch
      */
-    public Builder(String id) {
+    public Builder(String id, Map<String, Object> imagePatch) {
       this.id = id;
+      this.imagePatch = imagePatch;
     }
 
     /**
@@ -70,13 +74,13 @@ public class UpdateImageOptions extends GenericModel {
     }
 
     /**
-     * Set the name.
+     * Set the imagePatch.
      *
-     * @param name the name
+     * @param imagePatch the imagePatch
      * @return the UpdateImageOptions builder
      */
-    public Builder name(String name) {
-      this.name = name;
+    public Builder imagePatch(Map<String, Object> imagePatch) {
+      this.imagePatch = imagePatch;
       return this;
     }
   }
@@ -84,8 +88,10 @@ public class UpdateImageOptions extends GenericModel {
   protected UpdateImageOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,
       "id cannot be empty");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.imagePatch,
+      "imagePatch cannot be null");
     id = builder.id;
-    name = builder.name;
+    imagePatch = builder.imagePatch;
   }
 
   /**
@@ -109,14 +115,14 @@ public class UpdateImageOptions extends GenericModel {
   }
 
   /**
-   * Gets the name.
+   * Gets the imagePatch.
    *
-   * The unique user-defined name for this image. Names starting with "ibm-" are not allowed.
+   * The image patch.
    *
-   * @return the name
+   * @return the imagePatch
    */
-  public String name() {
-    return name;
+  public Map<String, Object> imagePatch() {
+    return imagePatch;
   }
 }
 

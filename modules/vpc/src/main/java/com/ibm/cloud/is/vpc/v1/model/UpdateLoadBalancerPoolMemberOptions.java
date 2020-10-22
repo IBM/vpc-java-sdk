@@ -12,6 +12,8 @@
  */
 package com.ibm.cloud.is.vpc.v1.model;
 
+import java.util.Map;
+
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
@@ -22,9 +24,7 @@ public class UpdateLoadBalancerPoolMemberOptions extends GenericModel {
   protected String loadBalancerId;
   protected String poolId;
   protected String id;
-  protected Long port;
-  protected Long weight;
-  protected LoadBalancerPoolMemberTargetPrototype target;
+  protected Map<String, Object> loadBalancerPoolMemberPatch;
 
   /**
    * Builder.
@@ -33,17 +33,13 @@ public class UpdateLoadBalancerPoolMemberOptions extends GenericModel {
     private String loadBalancerId;
     private String poolId;
     private String id;
-    private Long port;
-    private Long weight;
-    private LoadBalancerPoolMemberTargetPrototype target;
+    private Map<String, Object> loadBalancerPoolMemberPatch;
 
     private Builder(UpdateLoadBalancerPoolMemberOptions updateLoadBalancerPoolMemberOptions) {
       this.loadBalancerId = updateLoadBalancerPoolMemberOptions.loadBalancerId;
       this.poolId = updateLoadBalancerPoolMemberOptions.poolId;
       this.id = updateLoadBalancerPoolMemberOptions.id;
-      this.port = updateLoadBalancerPoolMemberOptions.port;
-      this.weight = updateLoadBalancerPoolMemberOptions.weight;
-      this.target = updateLoadBalancerPoolMemberOptions.target;
+      this.loadBalancerPoolMemberPatch = updateLoadBalancerPoolMemberOptions.loadBalancerPoolMemberPatch;
     }
 
     /**
@@ -58,11 +54,13 @@ public class UpdateLoadBalancerPoolMemberOptions extends GenericModel {
      * @param loadBalancerId the loadBalancerId
      * @param poolId the poolId
      * @param id the id
+     * @param loadBalancerPoolMemberPatch the loadBalancerPoolMemberPatch
      */
-    public Builder(String loadBalancerId, String poolId, String id) {
+    public Builder(String loadBalancerId, String poolId, String id, Map<String, Object> loadBalancerPoolMemberPatch) {
       this.loadBalancerId = loadBalancerId;
       this.poolId = poolId;
       this.id = id;
+      this.loadBalancerPoolMemberPatch = loadBalancerPoolMemberPatch;
     }
 
     /**
@@ -108,35 +106,13 @@ public class UpdateLoadBalancerPoolMemberOptions extends GenericModel {
     }
 
     /**
-     * Set the port.
+     * Set the loadBalancerPoolMemberPatch.
      *
-     * @param port the port
+     * @param loadBalancerPoolMemberPatch the loadBalancerPoolMemberPatch
      * @return the UpdateLoadBalancerPoolMemberOptions builder
      */
-    public Builder port(long port) {
-      this.port = port;
-      return this;
-    }
-
-    /**
-     * Set the weight.
-     *
-     * @param weight the weight
-     * @return the UpdateLoadBalancerPoolMemberOptions builder
-     */
-    public Builder weight(long weight) {
-      this.weight = weight;
-      return this;
-    }
-
-    /**
-     * Set the target.
-     *
-     * @param target the target
-     * @return the UpdateLoadBalancerPoolMemberOptions builder
-     */
-    public Builder target(LoadBalancerPoolMemberTargetPrototype target) {
-      this.target = target;
+    public Builder loadBalancerPoolMemberPatch(Map<String, Object> loadBalancerPoolMemberPatch) {
+      this.loadBalancerPoolMemberPatch = loadBalancerPoolMemberPatch;
       return this;
     }
   }
@@ -148,12 +124,12 @@ public class UpdateLoadBalancerPoolMemberOptions extends GenericModel {
       "poolId cannot be empty");
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,
       "id cannot be empty");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.loadBalancerPoolMemberPatch,
+      "loadBalancerPoolMemberPatch cannot be null");
     loadBalancerId = builder.loadBalancerId;
     poolId = builder.poolId;
     id = builder.id;
-    port = builder.port;
-    weight = builder.weight;
-    target = builder.target;
+    loadBalancerPoolMemberPatch = builder.loadBalancerPoolMemberPatch;
   }
 
   /**
@@ -199,39 +175,14 @@ public class UpdateLoadBalancerPoolMemberOptions extends GenericModel {
   }
 
   /**
-   * Gets the port.
+   * Gets the loadBalancerPoolMemberPatch.
    *
-   * The port number of the application running in the server member.
+   * The load balancer pool member patch.
    *
-   * @return the port
+   * @return the loadBalancerPoolMemberPatch
    */
-  public Long port() {
-    return port;
-  }
-
-  /**
-   * Gets the weight.
-   *
-   * Weight of the server member. This takes effect only when the load balancing algorithm of its belonging pool is
-   * `weighted_round_robin`.
-   *
-   * @return the weight
-   */
-  public Long weight() {
-    return weight;
-  }
-
-  /**
-   * Gets the target.
-   *
-   * The pool member target. Load balancers in the `network` family
-   * support instances. Load balancers in the `application` family support
-   * IP addresses.
-   *
-   * @return the target
-   */
-  public LoadBalancerPoolMemberTargetPrototype target() {
-    return target;
+  public Map<String, Object> loadBalancerPoolMemberPatch() {
+    return loadBalancerPoolMemberPatch;
   }
 }
 

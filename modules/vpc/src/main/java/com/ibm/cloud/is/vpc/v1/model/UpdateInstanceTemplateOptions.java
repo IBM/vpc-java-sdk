@@ -12,6 +12,8 @@
  */
 package com.ibm.cloud.is.vpc.v1.model;
 
+import java.util.Map;
+
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
@@ -20,18 +22,18 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class UpdateInstanceTemplateOptions extends GenericModel {
 
   protected String id;
-  protected String name;
+  protected Map<String, Object> instanceTemplatePatch;
 
   /**
    * Builder.
    */
   public static class Builder {
     private String id;
-    private String name;
+    private Map<String, Object> instanceTemplatePatch;
 
     private Builder(UpdateInstanceTemplateOptions updateInstanceTemplateOptions) {
       this.id = updateInstanceTemplateOptions.id;
-      this.name = updateInstanceTemplateOptions.name;
+      this.instanceTemplatePatch = updateInstanceTemplateOptions.instanceTemplatePatch;
     }
 
     /**
@@ -44,9 +46,11 @@ public class UpdateInstanceTemplateOptions extends GenericModel {
      * Instantiates a new builder with required properties.
      *
      * @param id the id
+     * @param instanceTemplatePatch the instanceTemplatePatch
      */
-    public Builder(String id) {
+    public Builder(String id, Map<String, Object> instanceTemplatePatch) {
       this.id = id;
+      this.instanceTemplatePatch = instanceTemplatePatch;
     }
 
     /**
@@ -70,13 +74,13 @@ public class UpdateInstanceTemplateOptions extends GenericModel {
     }
 
     /**
-     * Set the name.
+     * Set the instanceTemplatePatch.
      *
-     * @param name the name
+     * @param instanceTemplatePatch the instanceTemplatePatch
      * @return the UpdateInstanceTemplateOptions builder
      */
-    public Builder name(String name) {
-      this.name = name;
+    public Builder instanceTemplatePatch(Map<String, Object> instanceTemplatePatch) {
+      this.instanceTemplatePatch = instanceTemplatePatch;
       return this;
     }
   }
@@ -84,8 +88,10 @@ public class UpdateInstanceTemplateOptions extends GenericModel {
   protected UpdateInstanceTemplateOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,
       "id cannot be empty");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.instanceTemplatePatch,
+      "instanceTemplatePatch cannot be null");
     id = builder.id;
-    name = builder.name;
+    instanceTemplatePatch = builder.instanceTemplatePatch;
   }
 
   /**
@@ -109,14 +115,14 @@ public class UpdateInstanceTemplateOptions extends GenericModel {
   }
 
   /**
-   * Gets the name.
+   * Gets the instanceTemplatePatch.
    *
-   * The unique user-defined name for this instance template.
+   * The instance template patch.
    *
-   * @return the name
+   * @return the instanceTemplatePatch
    */
-  public String name() {
-    return name;
+  public Map<String, Object> instanceTemplatePatch() {
+    return instanceTemplatePatch;
   }
 }
 

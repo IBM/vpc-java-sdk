@@ -15,13 +15,10 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.UpdateInstanceGroupManagerPolicyOptions;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
-
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-
 import java.util.HashMap;
 import java.util.List;
-
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
@@ -38,16 +35,12 @@ public class UpdateInstanceGroupManagerPolicyOptionsTest {
       .instanceGroupId("testString")
       .instanceGroupManagerId("testString")
       .id("testString")
-      .name("my-instance-group-manager-policy")
-      .metricType("cpu")
-      .metricValue(Long.valueOf("26"))
+      .instanceGroupManagerPolicyPatch(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
       .build();
     assertEquals(updateInstanceGroupManagerPolicyOptionsModel.instanceGroupId(), "testString");
     assertEquals(updateInstanceGroupManagerPolicyOptionsModel.instanceGroupManagerId(), "testString");
     assertEquals(updateInstanceGroupManagerPolicyOptionsModel.id(), "testString");
-    assertEquals(updateInstanceGroupManagerPolicyOptionsModel.name(), "my-instance-group-manager-policy");
-    assertEquals(updateInstanceGroupManagerPolicyOptionsModel.metricType(), "cpu");
-    assertEquals(updateInstanceGroupManagerPolicyOptionsModel.metricValue(), Long.valueOf("26"));
+    assertEquals(updateInstanceGroupManagerPolicyOptionsModel.instanceGroupManagerPolicyPatch(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } });
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

@@ -12,6 +12,8 @@
  */
 package com.ibm.cloud.is.vpc.v1.model;
 
+import java.util.Map;
+
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
@@ -22,9 +24,7 @@ public class UpdateLoadBalancerListenerPolicyOptions extends GenericModel {
   protected String loadBalancerId;
   protected String listenerId;
   protected String id;
-  protected String name;
-  protected Long priority;
-  protected LoadBalancerListenerPolicyPatchTarget target;
+  protected Map<String, Object> loadBalancerListenerPolicyPatch;
 
   /**
    * Builder.
@@ -33,17 +33,13 @@ public class UpdateLoadBalancerListenerPolicyOptions extends GenericModel {
     private String loadBalancerId;
     private String listenerId;
     private String id;
-    private String name;
-    private Long priority;
-    private LoadBalancerListenerPolicyPatchTarget target;
+    private Map<String, Object> loadBalancerListenerPolicyPatch;
 
     private Builder(UpdateLoadBalancerListenerPolicyOptions updateLoadBalancerListenerPolicyOptions) {
       this.loadBalancerId = updateLoadBalancerListenerPolicyOptions.loadBalancerId;
       this.listenerId = updateLoadBalancerListenerPolicyOptions.listenerId;
       this.id = updateLoadBalancerListenerPolicyOptions.id;
-      this.name = updateLoadBalancerListenerPolicyOptions.name;
-      this.priority = updateLoadBalancerListenerPolicyOptions.priority;
-      this.target = updateLoadBalancerListenerPolicyOptions.target;
+      this.loadBalancerListenerPolicyPatch = updateLoadBalancerListenerPolicyOptions.loadBalancerListenerPolicyPatch;
     }
 
     /**
@@ -58,11 +54,13 @@ public class UpdateLoadBalancerListenerPolicyOptions extends GenericModel {
      * @param loadBalancerId the loadBalancerId
      * @param listenerId the listenerId
      * @param id the id
+     * @param loadBalancerListenerPolicyPatch the loadBalancerListenerPolicyPatch
      */
-    public Builder(String loadBalancerId, String listenerId, String id) {
+    public Builder(String loadBalancerId, String listenerId, String id, Map<String, Object> loadBalancerListenerPolicyPatch) {
       this.loadBalancerId = loadBalancerId;
       this.listenerId = listenerId;
       this.id = id;
+      this.loadBalancerListenerPolicyPatch = loadBalancerListenerPolicyPatch;
     }
 
     /**
@@ -108,35 +106,13 @@ public class UpdateLoadBalancerListenerPolicyOptions extends GenericModel {
     }
 
     /**
-     * Set the name.
+     * Set the loadBalancerListenerPolicyPatch.
      *
-     * @param name the name
+     * @param loadBalancerListenerPolicyPatch the loadBalancerListenerPolicyPatch
      * @return the UpdateLoadBalancerListenerPolicyOptions builder
      */
-    public Builder name(String name) {
-      this.name = name;
-      return this;
-    }
-
-    /**
-     * Set the priority.
-     *
-     * @param priority the priority
-     * @return the UpdateLoadBalancerListenerPolicyOptions builder
-     */
-    public Builder priority(long priority) {
-      this.priority = priority;
-      return this;
-    }
-
-    /**
-     * Set the target.
-     *
-     * @param target the target
-     * @return the UpdateLoadBalancerListenerPolicyOptions builder
-     */
-    public Builder target(LoadBalancerListenerPolicyPatchTarget target) {
-      this.target = target;
+    public Builder loadBalancerListenerPolicyPatch(Map<String, Object> loadBalancerListenerPolicyPatch) {
+      this.loadBalancerListenerPolicyPatch = loadBalancerListenerPolicyPatch;
       return this;
     }
   }
@@ -148,12 +124,12 @@ public class UpdateLoadBalancerListenerPolicyOptions extends GenericModel {
       "listenerId cannot be empty");
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,
       "id cannot be empty");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.loadBalancerListenerPolicyPatch,
+      "loadBalancerListenerPolicyPatch cannot be null");
     loadBalancerId = builder.loadBalancerId;
     listenerId = builder.listenerId;
     id = builder.id;
-    name = builder.name;
-    priority = builder.priority;
-    target = builder.target;
+    loadBalancerListenerPolicyPatch = builder.loadBalancerListenerPolicyPatch;
   }
 
   /**
@@ -199,40 +175,14 @@ public class UpdateLoadBalancerListenerPolicyOptions extends GenericModel {
   }
 
   /**
-   * Gets the name.
+   * Gets the loadBalancerListenerPolicyPatch.
    *
-   * The user-defined name for this policy. Names must be unique within the load balancer listener the policy resides
-   * in.
+   * The listener policy patch.
    *
-   * @return the name
+   * @return the loadBalancerListenerPolicyPatch
    */
-  public String name() {
-    return name;
-  }
-
-  /**
-   * Gets the priority.
-   *
-   * Priority of the policy. Lower value indicates higher priority.
-   *
-   * @return the priority
-   */
-  public Long priority() {
-    return priority;
-  }
-
-  /**
-   * Gets the target.
-   *
-   * When `action` is `forward`, `LoadBalancerPoolIdentity` specifies which pool the load
-   * balancer forwards the traffic to. When `action` is `redirect`,
-   * `LoadBalancerListenerPolicyRedirectURLPatch` specifies the url and http
-   * status code used in the redirect response.
-   *
-   * @return the target
-   */
-  public LoadBalancerListenerPolicyPatchTarget target() {
-    return target;
+  public Map<String, Object> loadBalancerListenerPolicyPatch() {
+    return loadBalancerListenerPolicyPatch;
   }
 }
 

@@ -13,30 +13,45 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
-import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetReferenceLoadBalancerPoolReference;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPatch;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
-
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-
 import java.util.HashMap;
 import java.util.List;
-
+import java.util.Map;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
 /**
- * Unit test class for the LoadBalancerListenerPolicyTargetReferenceLoadBalancerPoolReference model.
+ * Unit test class for the LoadBalancerPatch model.
  */
-public class LoadBalancerListenerPolicyTargetReferenceLoadBalancerPoolReferenceTest {
+public class LoadBalancerPatchTest {
   final HashMap<String, InputStream> mockStreamMap = TestUtilities.createMockStreamMap();
   final List<FileWithMetadata> mockListFileWithMetadata = TestUtilities.creatMockListFileWithMetadata();
 
   @Test
-  public void testLoadBalancerListenerPolicyTargetReferenceLoadBalancerPoolReference() throws Throwable {
-    LoadBalancerListenerPolicyTargetReferenceLoadBalancerPoolReference loadBalancerListenerPolicyTargetReferenceLoadBalancerPoolReferenceModel = new LoadBalancerListenerPolicyTargetReferenceLoadBalancerPoolReference();
-    assertNull(loadBalancerListenerPolicyTargetReferenceLoadBalancerPoolReferenceModel.getId());
-    assertNull(loadBalancerListenerPolicyTargetReferenceLoadBalancerPoolReferenceModel.getHref());
-    assertNull(loadBalancerListenerPolicyTargetReferenceLoadBalancerPoolReferenceModel.getName());
+  public void testLoadBalancerPatch() throws Throwable {
+    LoadBalancerPatch loadBalancerPatchModel = new LoadBalancerPatch.Builder()
+      .name("my-load-balancer")
+      .build();
+    assertEquals(loadBalancerPatchModel.name(), "my-load-balancer");
+
+    String json = TestUtilities.serialize(loadBalancerPatchModel);
+
+    LoadBalancerPatch loadBalancerPatchModelNew = TestUtilities.deserialize(json, LoadBalancerPatch.class);
+    assertTrue(loadBalancerPatchModelNew instanceof LoadBalancerPatch);
+    assertEquals(loadBalancerPatchModelNew.name(), "my-load-balancer");
   }
+  @Test
+  public void testLoadBalancerPatchAsPatch() throws Throwable {
+    LoadBalancerPatch loadBalancerPatchModel = new LoadBalancerPatch.Builder()
+      .name("my-load-balancer")
+      .build();
+
+    Map<String, Object> mergePatch = loadBalancerPatchModel.asPatch();
+
+    assertEquals(mergePatch.get("name"), "my-load-balancer");
+  }
+
 }

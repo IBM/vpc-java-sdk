@@ -12,6 +12,8 @@
  */
 package com.ibm.cloud.is.vpc.v1.model;
 
+import java.util.Map;
+
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
@@ -19,41 +21,9 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class UpdateLoadBalancerPoolOptions extends GenericModel {
 
-  /**
-   * The load balancing algorithm.
-   */
-  public interface Algorithm {
-    /** least_connections. */
-    String LEAST_CONNECTIONS = "least_connections";
-    /** round_robin. */
-    String ROUND_ROBIN = "round_robin";
-    /** weighted_round_robin. */
-    String WEIGHTED_ROUND_ROBIN = "weighted_round_robin";
-  }
-
-  /**
-   * The protocol used for this load balancer pool.
-   *
-   * The enumerated values for this property are expected to expand in the future. When processing this property, check
-   * for and log unknown values. Optionally halt processing and surface the error, or bypass the pool on which the
-   * unexpected property value was encountered.
-   */
-  public interface Protocol {
-    /** http. */
-    String HTTP = "http";
-    /** tcp. */
-    String TCP = "tcp";
-    /** https. */
-    String HTTPS = "https";
-  }
-
   protected String loadBalancerId;
   protected String id;
-  protected String name;
-  protected String algorithm;
-  protected String protocol;
-  protected LoadBalancerPoolHealthMonitorPatch healthMonitor;
-  protected LoadBalancerPoolSessionPersistencePatch sessionPersistence;
+  protected Map<String, Object> loadBalancerPoolPatch;
 
   /**
    * Builder.
@@ -61,20 +31,12 @@ public class UpdateLoadBalancerPoolOptions extends GenericModel {
   public static class Builder {
     private String loadBalancerId;
     private String id;
-    private String name;
-    private String algorithm;
-    private String protocol;
-    private LoadBalancerPoolHealthMonitorPatch healthMonitor;
-    private LoadBalancerPoolSessionPersistencePatch sessionPersistence;
+    private Map<String, Object> loadBalancerPoolPatch;
 
     private Builder(UpdateLoadBalancerPoolOptions updateLoadBalancerPoolOptions) {
       this.loadBalancerId = updateLoadBalancerPoolOptions.loadBalancerId;
       this.id = updateLoadBalancerPoolOptions.id;
-      this.name = updateLoadBalancerPoolOptions.name;
-      this.algorithm = updateLoadBalancerPoolOptions.algorithm;
-      this.protocol = updateLoadBalancerPoolOptions.protocol;
-      this.healthMonitor = updateLoadBalancerPoolOptions.healthMonitor;
-      this.sessionPersistence = updateLoadBalancerPoolOptions.sessionPersistence;
+      this.loadBalancerPoolPatch = updateLoadBalancerPoolOptions.loadBalancerPoolPatch;
     }
 
     /**
@@ -88,10 +50,12 @@ public class UpdateLoadBalancerPoolOptions extends GenericModel {
      *
      * @param loadBalancerId the loadBalancerId
      * @param id the id
+     * @param loadBalancerPoolPatch the loadBalancerPoolPatch
      */
-    public Builder(String loadBalancerId, String id) {
+    public Builder(String loadBalancerId, String id, Map<String, Object> loadBalancerPoolPatch) {
       this.loadBalancerId = loadBalancerId;
       this.id = id;
+      this.loadBalancerPoolPatch = loadBalancerPoolPatch;
     }
 
     /**
@@ -126,57 +90,13 @@ public class UpdateLoadBalancerPoolOptions extends GenericModel {
     }
 
     /**
-     * Set the name.
+     * Set the loadBalancerPoolPatch.
      *
-     * @param name the name
+     * @param loadBalancerPoolPatch the loadBalancerPoolPatch
      * @return the UpdateLoadBalancerPoolOptions builder
      */
-    public Builder name(String name) {
-      this.name = name;
-      return this;
-    }
-
-    /**
-     * Set the algorithm.
-     *
-     * @param algorithm the algorithm
-     * @return the UpdateLoadBalancerPoolOptions builder
-     */
-    public Builder algorithm(String algorithm) {
-      this.algorithm = algorithm;
-      return this;
-    }
-
-    /**
-     * Set the protocol.
-     *
-     * @param protocol the protocol
-     * @return the UpdateLoadBalancerPoolOptions builder
-     */
-    public Builder protocol(String protocol) {
-      this.protocol = protocol;
-      return this;
-    }
-
-    /**
-     * Set the healthMonitor.
-     *
-     * @param healthMonitor the healthMonitor
-     * @return the UpdateLoadBalancerPoolOptions builder
-     */
-    public Builder healthMonitor(LoadBalancerPoolHealthMonitorPatch healthMonitor) {
-      this.healthMonitor = healthMonitor;
-      return this;
-    }
-
-    /**
-     * Set the sessionPersistence.
-     *
-     * @param sessionPersistence the sessionPersistence
-     * @return the UpdateLoadBalancerPoolOptions builder
-     */
-    public Builder sessionPersistence(LoadBalancerPoolSessionPersistencePatch sessionPersistence) {
-      this.sessionPersistence = sessionPersistence;
+    public Builder loadBalancerPoolPatch(Map<String, Object> loadBalancerPoolPatch) {
+      this.loadBalancerPoolPatch = loadBalancerPoolPatch;
       return this;
     }
   }
@@ -186,13 +106,11 @@ public class UpdateLoadBalancerPoolOptions extends GenericModel {
       "loadBalancerId cannot be empty");
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,
       "id cannot be empty");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.loadBalancerPoolPatch,
+      "loadBalancerPoolPatch cannot be null");
     loadBalancerId = builder.loadBalancerId;
     id = builder.id;
-    name = builder.name;
-    algorithm = builder.algorithm;
-    protocol = builder.protocol;
-    healthMonitor = builder.healthMonitor;
-    sessionPersistence = builder.sessionPersistence;
+    loadBalancerPoolPatch = builder.loadBalancerPoolPatch;
   }
 
   /**
@@ -227,62 +145,14 @@ public class UpdateLoadBalancerPoolOptions extends GenericModel {
   }
 
   /**
-   * Gets the name.
+   * Gets the loadBalancerPoolPatch.
    *
-   * The user-defined name for this load balancer pool.
+   * The load balancer pool patch.
    *
-   * @return the name
+   * @return the loadBalancerPoolPatch
    */
-  public String name() {
-    return name;
-  }
-
-  /**
-   * Gets the algorithm.
-   *
-   * The load balancing algorithm.
-   *
-   * @return the algorithm
-   */
-  public String algorithm() {
-    return algorithm;
-  }
-
-  /**
-   * Gets the protocol.
-   *
-   * The protocol used for this load balancer pool.
-   *
-   * The enumerated values for this property are expected to expand in the future. When processing this property, check
-   * for and log unknown values. Optionally halt processing and surface the error, or bypass the pool on which the
-   * unexpected property value was encountered.
-   *
-   * @return the protocol
-   */
-  public String protocol() {
-    return protocol;
-  }
-
-  /**
-   * Gets the healthMonitor.
-   *
-   * The health monitor of this pool.
-   *
-   * @return the healthMonitor
-   */
-  public LoadBalancerPoolHealthMonitorPatch healthMonitor() {
-    return healthMonitor;
-  }
-
-  /**
-   * Gets the sessionPersistence.
-   *
-   * The session persistence of this pool.
-   *
-   * @return the sessionPersistence
-   */
-  public LoadBalancerPoolSessionPersistencePatch sessionPersistence() {
-    return sessionPersistence;
+  public Map<String, Object> loadBalancerPoolPatch() {
+    return loadBalancerPoolPatch;
   }
 }
 

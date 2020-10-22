@@ -13,29 +13,45 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
-import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetReference;
+import com.ibm.cloud.is.vpc.v1.model.SecurityGroupPatch;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
-
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-
 import java.util.HashMap;
 import java.util.List;
-
+import java.util.Map;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
 /**
- * Unit test class for the LoadBalancerListenerPolicyTargetReference model.
+ * Unit test class for the SecurityGroupPatch model.
  */
-public class LoadBalancerListenerPolicyTargetReferenceTest {
+public class SecurityGroupPatchTest {
   final HashMap<String, InputStream> mockStreamMap = TestUtilities.createMockStreamMap();
   final List<FileWithMetadata> mockListFileWithMetadata = TestUtilities.creatMockListFileWithMetadata();
 
-  // TODO: Add tests for models that are abstract
   @Test
-  public void testLoadBalancerListenerPolicyTargetReference() throws Throwable {
-    LoadBalancerListenerPolicyTargetReference loadBalancerListenerPolicyTargetReferenceModel = new LoadBalancerListenerPolicyTargetReference();
-    assertNotNull(loadBalancerListenerPolicyTargetReferenceModel);
+  public void testSecurityGroupPatch() throws Throwable {
+    SecurityGroupPatch securityGroupPatchModel = new SecurityGroupPatch.Builder()
+      .name("my-security-group")
+      .build();
+    assertEquals(securityGroupPatchModel.name(), "my-security-group");
+
+    String json = TestUtilities.serialize(securityGroupPatchModel);
+
+    SecurityGroupPatch securityGroupPatchModelNew = TestUtilities.deserialize(json, SecurityGroupPatch.class);
+    assertTrue(securityGroupPatchModelNew instanceof SecurityGroupPatch);
+    assertEquals(securityGroupPatchModelNew.name(), "my-security-group");
   }
+  @Test
+  public void testSecurityGroupPatchAsPatch() throws Throwable {
+    SecurityGroupPatch securityGroupPatchModel = new SecurityGroupPatch.Builder()
+      .name("my-security-group")
+      .build();
+
+    Map<String, Object> mergePatch = securityGroupPatchModel.asPatch();
+
+    assertEquals(mergePatch.get("name"), "my-security-group");
+  }
+
 }

@@ -18,13 +18,10 @@ import com.ibm.cloud.is.vpc.v1.model.OperatingSystemCollection;
 import com.ibm.cloud.is.vpc.v1.model.OperatingSystemCollectionFirst;
 import com.ibm.cloud.is.vpc.v1.model.OperatingSystemCollectionNext;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
-
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-
 import java.util.HashMap;
 import java.util.List;
-
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 

@@ -13,16 +13,12 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
-import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.UpdateLoadBalancerPoolMemberOptions;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
-
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-
 import java.util.HashMap;
 import java.util.List;
-
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
@@ -35,25 +31,16 @@ public class UpdateLoadBalancerPoolMemberOptionsTest {
 
   @Test
   public void testUpdateLoadBalancerPoolMemberOptions() throws Throwable {
-    LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityById loadBalancerPoolMemberTargetPrototypeModel = new LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityById.Builder()
-      .id("1e09281b-f177-46fb-baf1-bc152b2e391a")
-      .build();
-    assertEquals(loadBalancerPoolMemberTargetPrototypeModel.id(), "1e09281b-f177-46fb-baf1-bc152b2e391a");
-
     UpdateLoadBalancerPoolMemberOptions updateLoadBalancerPoolMemberOptionsModel = new UpdateLoadBalancerPoolMemberOptions.Builder()
       .loadBalancerId("testString")
       .poolId("testString")
       .id("testString")
-      .port(Long.valueOf("80"))
-      .weight(Long.valueOf("50"))
-      .target(loadBalancerPoolMemberTargetPrototypeModel)
+      .loadBalancerPoolMemberPatch(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
       .build();
     assertEquals(updateLoadBalancerPoolMemberOptionsModel.loadBalancerId(), "testString");
     assertEquals(updateLoadBalancerPoolMemberOptionsModel.poolId(), "testString");
     assertEquals(updateLoadBalancerPoolMemberOptionsModel.id(), "testString");
-    assertEquals(updateLoadBalancerPoolMemberOptionsModel.port(), Long.valueOf("80"));
-    assertEquals(updateLoadBalancerPoolMemberOptionsModel.weight(), Long.valueOf("50"));
-    assertEquals(updateLoadBalancerPoolMemberOptionsModel.target(), loadBalancerPoolMemberTargetPrototypeModel);
+    assertEquals(updateLoadBalancerPoolMemberOptionsModel.loadBalancerPoolMemberPatch(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } });
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

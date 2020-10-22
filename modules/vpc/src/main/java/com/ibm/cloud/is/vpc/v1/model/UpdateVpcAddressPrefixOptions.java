@@ -12,6 +12,8 @@
  */
 package com.ibm.cloud.is.vpc.v1.model;
 
+import java.util.Map;
+
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
@@ -21,8 +23,7 @@ public class UpdateVpcAddressPrefixOptions extends GenericModel {
 
   protected String vpcId;
   protected String id;
-  protected String name;
-  protected Boolean isDefault;
+  protected Map<String, Object> addressPrefixPatch;
 
   /**
    * Builder.
@@ -30,14 +31,12 @@ public class UpdateVpcAddressPrefixOptions extends GenericModel {
   public static class Builder {
     private String vpcId;
     private String id;
-    private String name;
-    private Boolean isDefault;
+    private Map<String, Object> addressPrefixPatch;
 
     private Builder(UpdateVpcAddressPrefixOptions updateVpcAddressPrefixOptions) {
       this.vpcId = updateVpcAddressPrefixOptions.vpcId;
       this.id = updateVpcAddressPrefixOptions.id;
-      this.name = updateVpcAddressPrefixOptions.name;
-      this.isDefault = updateVpcAddressPrefixOptions.isDefault;
+      this.addressPrefixPatch = updateVpcAddressPrefixOptions.addressPrefixPatch;
     }
 
     /**
@@ -51,10 +50,12 @@ public class UpdateVpcAddressPrefixOptions extends GenericModel {
      *
      * @param vpcId the vpcId
      * @param id the id
+     * @param addressPrefixPatch the addressPrefixPatch
      */
-    public Builder(String vpcId, String id) {
+    public Builder(String vpcId, String id, Map<String, Object> addressPrefixPatch) {
       this.vpcId = vpcId;
       this.id = id;
+      this.addressPrefixPatch = addressPrefixPatch;
     }
 
     /**
@@ -89,24 +90,13 @@ public class UpdateVpcAddressPrefixOptions extends GenericModel {
     }
 
     /**
-     * Set the name.
+     * Set the addressPrefixPatch.
      *
-     * @param name the name
+     * @param addressPrefixPatch the addressPrefixPatch
      * @return the UpdateVpcAddressPrefixOptions builder
      */
-    public Builder name(String name) {
-      this.name = name;
-      return this;
-    }
-
-    /**
-     * Set the isDefault.
-     *
-     * @param isDefault the isDefault
-     * @return the UpdateVpcAddressPrefixOptions builder
-     */
-    public Builder isDefault(Boolean isDefault) {
-      this.isDefault = isDefault;
+    public Builder addressPrefixPatch(Map<String, Object> addressPrefixPatch) {
+      this.addressPrefixPatch = addressPrefixPatch;
       return this;
     }
   }
@@ -116,10 +106,11 @@ public class UpdateVpcAddressPrefixOptions extends GenericModel {
       "vpcId cannot be empty");
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,
       "id cannot be empty");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.addressPrefixPatch,
+      "addressPrefixPatch cannot be null");
     vpcId = builder.vpcId;
     id = builder.id;
-    name = builder.name;
-    isDefault = builder.isDefault;
+    addressPrefixPatch = builder.addressPrefixPatch;
   }
 
   /**
@@ -154,27 +145,14 @@ public class UpdateVpcAddressPrefixOptions extends GenericModel {
   }
 
   /**
-   * Gets the name.
+   * Gets the addressPrefixPatch.
    *
-   * The user-defined name for this address prefix. Names must be unique within the VPC the address prefix resides in.
+   * The prefix patch.
    *
-   * @return the name
+   * @return the addressPrefixPatch
    */
-  public String name() {
-    return name;
-  }
-
-  /**
-   * Gets the isDefault.
-   *
-   * Indicates whether this is the default prefix for this zone in this VPC. Updating to true makes this prefix the
-   * default prefix for this zone in this VPC, provided the VPC currently has no default address prefix for this zone.
-   * Updating to false removes the default prefix for this zone in this VPC.
-   *
-   * @return the isDefault
-   */
-  public Boolean isDefault() {
-    return isDefault;
+  public Map<String, Object> addressPrefixPatch() {
+    return addressPrefixPatch;
   }
 }
 

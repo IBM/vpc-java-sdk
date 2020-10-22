@@ -13,17 +13,12 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
-import com.ibm.cloud.is.vpc.v1.model.NetworkACLIdentityById;
-import com.ibm.cloud.is.vpc.v1.model.PublicGatewayIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.UpdateSubnetOptions;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
-
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-
 import java.util.HashMap;
 import java.util.List;
-
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
@@ -36,26 +31,12 @@ public class UpdateSubnetOptionsTest {
 
   @Test
   public void testUpdateSubnetOptions() throws Throwable {
-    NetworkACLIdentityById networkAclIdentityModel = new NetworkACLIdentityById.Builder()
-      .id("a4e28308-8ee7-46ab-8108-9f881f22bdbf")
-      .build();
-    assertEquals(networkAclIdentityModel.id(), "a4e28308-8ee7-46ab-8108-9f881f22bdbf");
-
-    PublicGatewayIdentityById publicGatewayIdentityModel = new PublicGatewayIdentityById.Builder()
-      .id("dc5431ef-1fc6-4861-adc9-a59d077d1241")
-      .build();
-    assertEquals(publicGatewayIdentityModel.id(), "dc5431ef-1fc6-4861-adc9-a59d077d1241");
-
     UpdateSubnetOptions updateSubnetOptionsModel = new UpdateSubnetOptions.Builder()
       .id("testString")
-      .name("my-subnet")
-      .networkAcl(networkAclIdentityModel)
-      .publicGateway(publicGatewayIdentityModel)
+      .subnetPatch(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
       .build();
     assertEquals(updateSubnetOptionsModel.id(), "testString");
-    assertEquals(updateSubnetOptionsModel.name(), "my-subnet");
-    assertEquals(updateSubnetOptionsModel.networkAcl(), networkAclIdentityModel);
-    assertEquals(updateSubnetOptionsModel.publicGateway(), publicGatewayIdentityModel);
+    assertEquals(updateSubnetOptionsModel.subnetPatch(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } });
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

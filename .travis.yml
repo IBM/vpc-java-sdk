@@ -42,7 +42,7 @@ before_script:
       && mvn versions:set -DnewVersion=${TRAVIS_TAG} -DgenerateBackupPoms=false
       || true
 script:
--  mvn clean verify $MVN_ARGS
+-  mvn clean verify -DskipITs $MVN_ARGS
 
 before_deploy:
 - pip install --user bump2version

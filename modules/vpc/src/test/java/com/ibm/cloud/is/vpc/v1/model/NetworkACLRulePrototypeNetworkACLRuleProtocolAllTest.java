@@ -16,13 +16,10 @@ package com.ibm.cloud.is.vpc.v1.model;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLRuleIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLRulePrototypeNetworkACLRuleProtocolAll;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
-
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-
 import java.util.HashMap;
 import java.util.List;
-
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
@@ -68,11 +65,6 @@ public class NetworkACLRulePrototypeNetworkACLRuleProtocolAllTest {
     assertEquals(networkAclRulePrototypeNetworkAclRuleProtocolAllModelNew.source(), "192.168.3.2/32");
     assertEquals(networkAclRulePrototypeNetworkAclRuleProtocolAllModelNew.protocol(), "all");
     assertEquals(networkAclRulePrototypeNetworkAclRuleProtocolAllModelNew.before().toString(), networkAclRuleIdentityModel.toString());
+    assertNotNull(networkAclRulePrototypeNetworkAclRuleProtocolAllModel);
   }
-
-  @Test(expectedExceptions = IllegalArgumentException.class)
-  public void testNetworkACLRulePrototypeNetworkACLRuleProtocolAllError() throws Throwable {
-    new NetworkACLRulePrototypeNetworkACLRuleProtocolAll.Builder().build();
-  }
-
 }

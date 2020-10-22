@@ -13,38 +13,35 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
-import com.ibm.cloud.is.vpc.v1.model.ListVpnGatewayConnectionLocalCidrsOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListVpnGatewayConnectionLocalCIDRsOptions;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
-
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-
 import java.util.HashMap;
 import java.util.List;
-
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
 /**
- * Unit test class for the ListVpnGatewayConnectionLocalCidrsOptions model.
+ * Unit test class for the ListVpnGatewayConnectionLocalCIDRsOptions model.
  */
-public class ListVpnGatewayConnectionLocalCidrsOptionsTest {
+public class ListVpnGatewayConnectionLocalCIDRsOptionsTest {
   final HashMap<String, InputStream> mockStreamMap = TestUtilities.createMockStreamMap();
   final List<FileWithMetadata> mockListFileWithMetadata = TestUtilities.creatMockListFileWithMetadata();
 
   @Test
-  public void testListVpnGatewayConnectionLocalCidrsOptions() throws Throwable {
-    ListVpnGatewayConnectionLocalCidrsOptions listVpnGatewayConnectionLocalCidrsOptionsModel = new ListVpnGatewayConnectionLocalCidrsOptions.Builder()
+  public void testListVpnGatewayConnectionLocalCIDRsOptions() throws Throwable {
+    ListVpnGatewayConnectionLocalCIDRsOptions listVpnGatewayConnectionLocalCIDRsOptionsModel = new ListVpnGatewayConnectionLocalCIDRsOptions.Builder()
       .vpnGatewayId("testString")
       .id("testString")
       .build();
-    assertEquals(listVpnGatewayConnectionLocalCidrsOptionsModel.vpnGatewayId(), "testString");
-    assertEquals(listVpnGatewayConnectionLocalCidrsOptionsModel.id(), "testString");
+    assertEquals(listVpnGatewayConnectionLocalCIDRsOptionsModel.vpnGatewayId(), "testString");
+    assertEquals(listVpnGatewayConnectionLocalCIDRsOptionsModel.id(), "testString");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)
-  public void testListVpnGatewayConnectionLocalCidrsOptionsError() throws Throwable {
-    new ListVpnGatewayConnectionLocalCidrsOptions.Builder().build();
+  public void testListVpnGatewayConnectionLocalCIDRsOptionsError() throws Throwable {
+    new ListVpnGatewayConnectionLocalCIDRsOptions.Builder().build();
   }
 
 }
