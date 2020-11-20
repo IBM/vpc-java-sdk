@@ -30,47 +30,15 @@ public class VolumeAttachmentReferenceVolumeContext extends GenericModel {
     String DATA = "data";
   }
 
-  protected String id;
-  protected String href;
-  protected String name;
   @SerializedName("delete_volume_on_instance_delete")
   protected Boolean deleteVolumeOnInstanceDelete;
+  protected VolumeAttachmentReferenceVolumeContextDeleted deleted;
   protected VolumeAttachmentDevice device;
+  protected String href;
+  protected String id;
   protected InstanceReference instance;
+  protected String name;
   protected String type;
-
-  /**
-   * Gets the id.
-   *
-   * The unique identifier for this volume attachment.
-   *
-   * @return the id
-   */
-  public String getId() {
-    return id;
-  }
-
-  /**
-   * Gets the href.
-   *
-   * The URL for this volume attachment.
-   *
-   * @return the href
-   */
-  public String getHref() {
-    return href;
-  }
-
-  /**
-   * Gets the name.
-   *
-   * The user-defined name for this volume attachment.
-   *
-   * @return the name
-   */
-  public String getName() {
-    return name;
-  }
 
   /**
    * Gets the deleteVolumeOnInstanceDelete.
@@ -81,6 +49,18 @@ public class VolumeAttachmentReferenceVolumeContext extends GenericModel {
    */
   public Boolean isDeleteVolumeOnInstanceDelete() {
     return deleteVolumeOnInstanceDelete;
+  }
+
+  /**
+   * Gets the deleted.
+   *
+   * If present, this property indicates the referenced resource has been deleted and provides
+   * some supplementary information.
+   *
+   * @return the deleted
+   */
+  public VolumeAttachmentReferenceVolumeContextDeleted getDeleted() {
+    return deleted;
   }
 
   /**
@@ -97,6 +77,28 @@ public class VolumeAttachmentReferenceVolumeContext extends GenericModel {
   }
 
   /**
+   * Gets the href.
+   *
+   * The URL for this volume attachment.
+   *
+   * @return the href
+   */
+  public String getHref() {
+    return href;
+  }
+
+  /**
+   * Gets the id.
+   *
+   * The unique identifier for this volume attachment.
+   *
+   * @return the id
+   */
+  public String getId() {
+    return id;
+  }
+
+  /**
    * Gets the instance.
    *
    * The attached instance.
@@ -105,6 +107,17 @@ public class VolumeAttachmentReferenceVolumeContext extends GenericModel {
    */
   public InstanceReference getInstance() {
     return instance;
+  }
+
+  /**
+   * Gets the name.
+   *
+   * The user-defined name for this volume attachment.
+   *
+   * @return the name
+   */
+  public String getName() {
+    return name;
   }
 
   /**

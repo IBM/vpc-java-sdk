@@ -24,14 +24,6 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class IKEPolicy extends GenericModel {
 
   /**
-   * The resource type.
-   */
-  public interface ResourceType {
-    /** ike_policy. */
-    String IKE_POLICY = "ike_policy";
-  }
-
-  /**
    * The authentication algorithm.
    */
   public interface AuthenticationAlgorithm {
@@ -63,72 +55,36 @@ public class IKEPolicy extends GenericModel {
     String MAIN = "main";
   }
 
-  protected String id;
-  protected String href;
-  protected String name;
-  @SerializedName("resource_type")
-  protected String resourceType;
+  /**
+   * The resource type.
+   */
+  public interface ResourceType {
+    /** ike_policy. */
+    String IKE_POLICY = "ike_policy";
+  }
+
   @SerializedName("authentication_algorithm")
   protected String authenticationAlgorithm;
+  protected List<VPNGatewayConnectionReference> connections;
+  @SerializedName("created_at")
+  protected Date createdAt;
   @SerializedName("dh_group")
   protected Long dhGroup;
   @SerializedName("encryption_algorithm")
   protected String encryptionAlgorithm;
+  protected String href;
+  protected String id;
   @SerializedName("ike_version")
   protected Long ikeVersion;
   @SerializedName("key_lifetime")
   protected Long keyLifetime;
-  @SerializedName("resource_group")
-  protected ResourceGroupReference resourceGroup;
-  protected List<VPNGatewayConnectionReference> connections;
-  @SerializedName("created_at")
-  protected Date createdAt;
+  protected String name;
   @SerializedName("negotiation_mode")
   protected String negotiationMode;
-
-  /**
-   * Gets the id.
-   *
-   * The unique identifier for this IKE policy.
-   *
-   * @return the id
-   */
-  public String getId() {
-    return id;
-  }
-
-  /**
-   * Gets the href.
-   *
-   * The IKE policy's canonical URL.
-   *
-   * @return the href
-   */
-  public String getHref() {
-    return href;
-  }
-
-  /**
-   * Gets the name.
-   *
-   * The user-defined name for this IKE policy.
-   *
-   * @return the name
-   */
-  public String getName() {
-    return name;
-  }
-
-  /**
-   * Gets the resourceType.
-   *
-   * The resource type.
-   *
-   * @return the resourceType
-   */
-  public String getResourceType() {
-    return resourceType;
-  }
+  @SerializedName("resource_group")
+  protected ResourceGroupReference resourceGroup;
+  @SerializedName("resource_type")
+  protected String resourceType;
 
   /**
    * Gets the authenticationAlgorithm.
@@ -139,61 +95,6 @@ public class IKEPolicy extends GenericModel {
    */
   public String getAuthenticationAlgorithm() {
     return authenticationAlgorithm;
-  }
-
-  /**
-   * Gets the dhGroup.
-   *
-   * The Diffie-Hellman group.
-   *
-   * @return the dhGroup
-   */
-  public Long getDhGroup() {
-    return dhGroup;
-  }
-
-  /**
-   * Gets the encryptionAlgorithm.
-   *
-   * The encryption algorithm.
-   *
-   * @return the encryptionAlgorithm
-   */
-  public String getEncryptionAlgorithm() {
-    return encryptionAlgorithm;
-  }
-
-  /**
-   * Gets the ikeVersion.
-   *
-   * The IKE protocol version.
-   *
-   * @return the ikeVersion
-   */
-  public Long getIkeVersion() {
-    return ikeVersion;
-  }
-
-  /**
-   * Gets the keyLifetime.
-   *
-   * The key lifetime in seconds.
-   *
-   * @return the keyLifetime
-   */
-  public Long getKeyLifetime() {
-    return keyLifetime;
-  }
-
-  /**
-   * Gets the resourceGroup.
-   *
-   * The resource group for this IKE policy.
-   *
-   * @return the resourceGroup
-   */
-  public ResourceGroupReference getResourceGroup() {
-    return resourceGroup;
   }
 
   /**
@@ -219,6 +120,83 @@ public class IKEPolicy extends GenericModel {
   }
 
   /**
+   * Gets the dhGroup.
+   *
+   * The Diffie-Hellman group.
+   *
+   * @return the dhGroup
+   */
+  public Long getDhGroup() {
+    return dhGroup;
+  }
+
+  /**
+   * Gets the encryptionAlgorithm.
+   *
+   * The encryption algorithm.
+   *
+   * @return the encryptionAlgorithm
+   */
+  public String getEncryptionAlgorithm() {
+    return encryptionAlgorithm;
+  }
+
+  /**
+   * Gets the href.
+   *
+   * The IKE policy's canonical URL.
+   *
+   * @return the href
+   */
+  public String getHref() {
+    return href;
+  }
+
+  /**
+   * Gets the id.
+   *
+   * The unique identifier for this IKE policy.
+   *
+   * @return the id
+   */
+  public String getId() {
+    return id;
+  }
+
+  /**
+   * Gets the ikeVersion.
+   *
+   * The IKE protocol version.
+   *
+   * @return the ikeVersion
+   */
+  public Long getIkeVersion() {
+    return ikeVersion;
+  }
+
+  /**
+   * Gets the keyLifetime.
+   *
+   * The key lifetime in seconds.
+   *
+   * @return the keyLifetime
+   */
+  public Long getKeyLifetime() {
+    return keyLifetime;
+  }
+
+  /**
+   * Gets the name.
+   *
+   * The user-defined name for this IKE policy.
+   *
+   * @return the name
+   */
+  public String getName() {
+    return name;
+  }
+
+  /**
    * Gets the negotiationMode.
    *
    * The IKE negotiation mode. Only `main` is supported.
@@ -227,6 +205,28 @@ public class IKEPolicy extends GenericModel {
    */
   public String getNegotiationMode() {
     return negotiationMode;
+  }
+
+  /**
+   * Gets the resourceGroup.
+   *
+   * The resource group for this IKE policy.
+   *
+   * @return the resourceGroup
+   */
+  public ResourceGroupReference getResourceGroup() {
+    return resourceGroup;
+  }
+
+  /**
+   * Gets the resourceType.
+   *
+   * The resource type.
+   *
+   * @return the resourceType
+   */
+  public String getResourceType() {
+    return resourceType;
   }
 }
 

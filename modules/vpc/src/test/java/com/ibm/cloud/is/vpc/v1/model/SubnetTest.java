@@ -14,10 +14,15 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLReference;
+import com.ibm.cloud.is.vpc.v1.model.NetworkACLReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.PublicGatewayReference;
+import com.ibm.cloud.is.vpc.v1.model.PublicGatewayReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;
+import com.ibm.cloud.is.vpc.v1.model.RoutingTableReference;
+import com.ibm.cloud.is.vpc.v1.model.RoutingTableReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.Subnet;
 import com.ibm.cloud.is.vpc.v1.model.VPCReference;
+import com.ibm.cloud.is.vpc.v1.model.VPCReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.ZoneReference;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
@@ -37,20 +42,21 @@ public class SubnetTest {
   @Test
   public void testSubnet() throws Throwable {
     Subnet subnetModel = new Subnet();
-    assertNull(subnetModel.getId());
+    assertNull(subnetModel.getAvailableIpv4AddressCount());
+    assertNull(subnetModel.getCreatedAt());
     assertNull(subnetModel.getCrn());
     assertNull(subnetModel.getHref());
-    assertNull(subnetModel.getName());
-    assertNull(subnetModel.getResourceGroup());
-    assertNull(subnetModel.getAvailableIpv4AddressCount());
-    assertNull(subnetModel.getNetworkAcl());
-    assertNull(subnetModel.getTotalIpv4AddressCount());
-    assertNull(subnetModel.getCreatedAt());
+    assertNull(subnetModel.getId());
+    assertNull(subnetModel.getIpVersion());
     assertNull(subnetModel.getIpv4CidrBlock());
+    assertNull(subnetModel.getName());
+    assertNull(subnetModel.getNetworkAcl());
     assertNull(subnetModel.getPublicGateway());
+    assertNull(subnetModel.getResourceGroup());
+    assertNull(subnetModel.getRoutingTable());
     assertNull(subnetModel.getStatus());
+    assertNull(subnetModel.getTotalIpv4AddressCount());
     assertNull(subnetModel.getVpc());
     assertNull(subnetModel.getZone());
-    assertNull(subnetModel.getIpVersion());
   }
 }

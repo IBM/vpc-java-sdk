@@ -22,63 +22,17 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class AddressPrefix extends GenericModel {
 
-  protected String id;
-  protected String href;
-  protected String name;
-  @SerializedName("is_default")
-  protected Boolean isDefault;
   protected String cidr;
   @SerializedName("created_at")
   protected Date createdAt;
   @SerializedName("has_subnets")
   protected Boolean hasSubnets;
+  protected String href;
+  protected String id;
+  @SerializedName("is_default")
+  protected Boolean isDefault;
+  protected String name;
   protected ZoneReference zone;
-
-  /**
-   * Gets the id.
-   *
-   * The unique identifier for this address prefix.
-   *
-   * @return the id
-   */
-  public String getId() {
-    return id;
-  }
-
-  /**
-   * Gets the href.
-   *
-   * The URL for this address prefix.
-   *
-   * @return the href
-   */
-  public String getHref() {
-    return href;
-  }
-
-  /**
-   * Gets the name.
-   *
-   * The user-defined name for this address prefix. Names must be unique within the VPC the address prefix resides in.
-   *
-   * @return the name
-   */
-  public String getName() {
-    return name;
-  }
-
-  /**
-   * Gets the isDefault.
-   *
-   * Indicates whether this is the default prefix for this zone in this VPC. If a default prefix was automatically
-   * created when the VPC was created, the prefix is automatically named using a hyphenated list of randomly-selected
-   * words, but may be updated with a user-specified name.
-   *
-   * @return the isDefault
-   */
-  public Boolean isIsDefault() {
-    return isDefault;
-  }
 
   /**
    * Gets the cidr.
@@ -111,6 +65,52 @@ public class AddressPrefix extends GenericModel {
    */
   public Boolean isHasSubnets() {
     return hasSubnets;
+  }
+
+  /**
+   * Gets the href.
+   *
+   * The URL for this address prefix.
+   *
+   * @return the href
+   */
+  public String getHref() {
+    return href;
+  }
+
+  /**
+   * Gets the id.
+   *
+   * The unique identifier for this address prefix.
+   *
+   * @return the id
+   */
+  public String getId() {
+    return id;
+  }
+
+  /**
+   * Gets the isDefault.
+   *
+   * Indicates whether this is the default prefix for this zone in this VPC. If a default prefix was automatically
+   * created when the VPC was created, the prefix is automatically named using a hyphenated list of randomly-selected
+   * words, but may be updated with a user-specified name.
+   *
+   * @return the isDefault
+   */
+  public Boolean isIsDefault() {
+    return isDefault;
+  }
+
+  /**
+   * Gets the name.
+   *
+   * The user-defined name for this address prefix. Names must be unique within the VPC the address prefix resides in.
+   *
+   * @return the name
+   */
+  public String getName() {
+    return name;
   }
 
   /**

@@ -16,8 +16,8 @@ package com.ibm.cloud.is.vpc.v1.model;
 import com.ibm.cloud.is.vpc.v1.model.CertificateInstanceIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.CreateLoadBalancerListenerOptions;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyPrototype;
-import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyPrototypeTargetLoadBalancerPoolIdentityLoadBalancerPoolIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyRulePrototype;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetPrototypeLoadBalancerPoolIdentityLoadBalancerPoolIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolIdentityById;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
@@ -59,38 +59,40 @@ public class CreateLoadBalancerListenerOptionsTest {
     assertEquals(loadBalancerListenerPolicyRulePrototypeModel.type(), "header");
     assertEquals(loadBalancerListenerPolicyRulePrototypeModel.value(), "testString");
 
-    LoadBalancerListenerPolicyPrototypeTargetLoadBalancerPoolIdentityLoadBalancerPoolIdentityById loadBalancerListenerPolicyPrototypeTargetModel = new LoadBalancerListenerPolicyPrototypeTargetLoadBalancerPoolIdentityLoadBalancerPoolIdentityById.Builder()
+    LoadBalancerListenerPolicyTargetPrototypeLoadBalancerPoolIdentityLoadBalancerPoolIdentityById loadBalancerListenerPolicyTargetPrototypeModel = new LoadBalancerListenerPolicyTargetPrototypeLoadBalancerPoolIdentityLoadBalancerPoolIdentityById.Builder()
       .id("70294e14-4e61-11e8-bcf4-0242ac110004")
       .build();
-    assertEquals(loadBalancerListenerPolicyPrototypeTargetModel.id(), "70294e14-4e61-11e8-bcf4-0242ac110004");
+    assertEquals(loadBalancerListenerPolicyTargetPrototypeModel.id(), "70294e14-4e61-11e8-bcf4-0242ac110004");
 
     LoadBalancerListenerPolicyPrototype loadBalancerListenerPolicyPrototypeModel = new LoadBalancerListenerPolicyPrototype.Builder()
+      .action("forward")
       .name("my-policy")
       .priority(Long.valueOf("5"))
-      .action("forward")
       .rules(new java.util.ArrayList<LoadBalancerListenerPolicyRulePrototype>(java.util.Arrays.asList(loadBalancerListenerPolicyRulePrototypeModel)))
-      .target(loadBalancerListenerPolicyPrototypeTargetModel)
+      .target(loadBalancerListenerPolicyTargetPrototypeModel)
       .build();
+    assertEquals(loadBalancerListenerPolicyPrototypeModel.action(), "forward");
     assertEquals(loadBalancerListenerPolicyPrototypeModel.name(), "my-policy");
     assertEquals(loadBalancerListenerPolicyPrototypeModel.priority(), Long.valueOf("5"));
-    assertEquals(loadBalancerListenerPolicyPrototypeModel.action(), "forward");
     assertEquals(loadBalancerListenerPolicyPrototypeModel.rules(), new java.util.ArrayList<LoadBalancerListenerPolicyRulePrototype>(java.util.Arrays.asList(loadBalancerListenerPolicyRulePrototypeModel)));
-    assertEquals(loadBalancerListenerPolicyPrototypeModel.target(), loadBalancerListenerPolicyPrototypeTargetModel);
+    assertEquals(loadBalancerListenerPolicyPrototypeModel.target(), loadBalancerListenerPolicyTargetPrototypeModel);
 
     CreateLoadBalancerListenerOptions createLoadBalancerListenerOptionsModel = new CreateLoadBalancerListenerOptions.Builder()
       .loadBalancerId("testString")
       .port(Long.valueOf("443"))
       .protocol("http")
-      .connectionLimit(Long.valueOf("2000"))
+      .acceptProxyProtocol(true)
       .certificateInstance(certificateInstanceIdentityModel)
+      .connectionLimit(Long.valueOf("2000"))
       .defaultPool(loadBalancerPoolIdentityModel)
       .policies(new java.util.ArrayList<LoadBalancerListenerPolicyPrototype>(java.util.Arrays.asList(loadBalancerListenerPolicyPrototypeModel)))
       .build();
     assertEquals(createLoadBalancerListenerOptionsModel.loadBalancerId(), "testString");
     assertEquals(createLoadBalancerListenerOptionsModel.port(), Long.valueOf("443"));
     assertEquals(createLoadBalancerListenerOptionsModel.protocol(), "http");
-    assertEquals(createLoadBalancerListenerOptionsModel.connectionLimit(), Long.valueOf("2000"));
+    assertEquals(createLoadBalancerListenerOptionsModel.acceptProxyProtocol(), Boolean.valueOf(true));
     assertEquals(createLoadBalancerListenerOptionsModel.certificateInstance(), certificateInstanceIdentityModel);
+    assertEquals(createLoadBalancerListenerOptionsModel.connectionLimit(), Long.valueOf("2000"));
     assertEquals(createLoadBalancerListenerOptionsModel.defaultPool(), loadBalancerPoolIdentityModel);
     assertEquals(createLoadBalancerListenerOptionsModel.policies(), new java.util.ArrayList<LoadBalancerListenerPolicyPrototype>(java.util.Arrays.asList(loadBalancerListenerPolicyPrototypeModel)));
   }

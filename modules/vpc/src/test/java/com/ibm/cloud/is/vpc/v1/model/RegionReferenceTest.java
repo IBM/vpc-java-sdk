@@ -32,7 +32,7 @@ public class RegionReferenceTest {
   @Test
   public void testRegionReference() throws Throwable {
     RegionReference regionReferenceModel = new RegionReference();
-    assertNull(regionReferenceModel.getName());
     assertNull(regionReferenceModel.getHref());
+    assertNull(regionReferenceModel.getName());
   }
 }

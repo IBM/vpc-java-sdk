@@ -53,27 +53,38 @@ public class LoadBalancerListenerPolicy extends GenericModel {
     String UPDATE_PENDING = "update_pending";
   }
 
-  protected String id;
-  protected String href;
-  protected String name;
-  protected Long priority;
   protected String action;
   @SerializedName("created_at")
   protected Date createdAt;
+  protected String href;
+  protected String id;
+  protected String name;
+  protected Long priority;
   @SerializedName("provisioning_status")
   protected String provisioningStatus;
   protected List<LoadBalancerListenerPolicyRuleReference> rules;
   protected LoadBalancerListenerPolicyTarget target;
 
   /**
-   * Gets the id.
+   * Gets the action.
    *
-   * The policy's unique identifier.
+   * The policy action.
    *
-   * @return the id
+   * @return the action
    */
-  public String getId() {
-    return id;
+  public String getAction() {
+    return action;
+  }
+
+  /**
+   * Gets the createdAt.
+   *
+   * The date and time that this policy was created.
+   *
+   * @return the createdAt
+   */
+  public Date getCreatedAt() {
+    return createdAt;
   }
 
   /**
@@ -85,6 +96,17 @@ public class LoadBalancerListenerPolicy extends GenericModel {
    */
   public String getHref() {
     return href;
+  }
+
+  /**
+   * Gets the id.
+   *
+   * The policy's unique identifier.
+   *
+   * @return the id
+   */
+  public String getId() {
+    return id;
   }
 
   /**
@@ -107,28 +129,6 @@ public class LoadBalancerListenerPolicy extends GenericModel {
    */
   public Long getPriority() {
     return priority;
-  }
-
-  /**
-   * Gets the action.
-   *
-   * The policy action.
-   *
-   * @return the action
-   */
-  public String getAction() {
-    return action;
-  }
-
-  /**
-   * Gets the createdAt.
-   *
-   * The date and time that this policy was created.
-   *
-   * @return the createdAt
-   */
-  public Date getCreatedAt() {
-    return createdAt;
   }
 
   /**

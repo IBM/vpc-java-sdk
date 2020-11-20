@@ -24,6 +24,7 @@ public class CreateInstanceNetworkInterfaceOptions extends GenericModel {
 
   protected String instanceId;
   protected SubnetIdentity subnet;
+  protected Boolean allowIpSpoofing;
   protected String name;
   protected String primaryIpv4Address;
   protected List<SecurityGroupIdentity> securityGroups;
@@ -34,6 +35,7 @@ public class CreateInstanceNetworkInterfaceOptions extends GenericModel {
   public static class Builder {
     private String instanceId;
     private SubnetIdentity subnet;
+    private Boolean allowIpSpoofing;
     private String name;
     private String primaryIpv4Address;
     private List<SecurityGroupIdentity> securityGroups;
@@ -41,6 +43,7 @@ public class CreateInstanceNetworkInterfaceOptions extends GenericModel {
     private Builder(CreateInstanceNetworkInterfaceOptions createInstanceNetworkInterfaceOptions) {
       this.instanceId = createInstanceNetworkInterfaceOptions.instanceId;
       this.subnet = createInstanceNetworkInterfaceOptions.subnet;
+      this.allowIpSpoofing = createInstanceNetworkInterfaceOptions.allowIpSpoofing;
       this.name = createInstanceNetworkInterfaceOptions.name;
       this.primaryIpv4Address = createInstanceNetworkInterfaceOptions.primaryIpv4Address;
       this.securityGroups = createInstanceNetworkInterfaceOptions.securityGroups;
@@ -111,6 +114,17 @@ public class CreateInstanceNetworkInterfaceOptions extends GenericModel {
     }
 
     /**
+     * Set the allowIpSpoofing.
+     *
+     * @param allowIpSpoofing the allowIpSpoofing
+     * @return the CreateInstanceNetworkInterfaceOptions builder
+     */
+    public Builder allowIpSpoofing(Boolean allowIpSpoofing) {
+      this.allowIpSpoofing = allowIpSpoofing;
+      return this;
+    }
+
+    /**
      * Set the name.
      *
      * @param name the name
@@ -152,6 +166,7 @@ public class CreateInstanceNetworkInterfaceOptions extends GenericModel {
      */
     public Builder networkInterfacePrototype(NetworkInterfacePrototype networkInterfacePrototype) {
       this.subnet = networkInterfacePrototype.subnet();
+      this.allowIpSpoofing = networkInterfacePrototype.allowIpSpoofing();
       this.name = networkInterfacePrototype.name();
       this.primaryIpv4Address = networkInterfacePrototype.primaryIpv4Address();
       this.securityGroups = networkInterfacePrototype.securityGroups();
@@ -166,6 +181,7 @@ public class CreateInstanceNetworkInterfaceOptions extends GenericModel {
       "subnet cannot be null");
     instanceId = builder.instanceId;
     subnet = builder.subnet;
+    allowIpSpoofing = builder.allowIpSpoofing;
     name = builder.name;
     primaryIpv4Address = builder.primaryIpv4Address;
     securityGroups = builder.securityGroups;
@@ -200,6 +216,18 @@ public class CreateInstanceNetworkInterfaceOptions extends GenericModel {
    */
   public SubnetIdentity subnet() {
     return subnet;
+  }
+
+  /**
+   * Gets the allowIpSpoofing.
+   *
+   * Indicates whether IP spoofing is allowed on this interface. If false, IP spoofing is prevented on this interface.
+   * If true, IP spoofing is allowed on this interface.
+   *
+   * @return the allowIpSpoofing
+   */
+  public Boolean allowIpSpoofing() {
+    return allowIpSpoofing;
   }
 
   /**

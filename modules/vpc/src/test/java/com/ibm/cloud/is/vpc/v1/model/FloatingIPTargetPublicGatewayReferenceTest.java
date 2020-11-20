@@ -14,6 +14,7 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPTargetPublicGatewayReference;
+import com.ibm.cloud.is.vpc.v1.model.PublicGatewayReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -32,9 +33,10 @@ public class FloatingIPTargetPublicGatewayReferenceTest {
   @Test
   public void testFloatingIPTargetPublicGatewayReference() throws Throwable {
     FloatingIPTargetPublicGatewayReference floatingIpTargetPublicGatewayReferenceModel = new FloatingIPTargetPublicGatewayReference();
-    assertNull(floatingIpTargetPublicGatewayReferenceModel.getId());
     assertNull(floatingIpTargetPublicGatewayReferenceModel.getCrn());
+    assertNull(floatingIpTargetPublicGatewayReferenceModel.getDeleted());
     assertNull(floatingIpTargetPublicGatewayReferenceModel.getHref());
+    assertNull(floatingIpTargetPublicGatewayReferenceModel.getId());
     assertNull(floatingIpTargetPublicGatewayReferenceModel.getName());
     assertNull(floatingIpTargetPublicGatewayReferenceModel.getResourceType());
   }

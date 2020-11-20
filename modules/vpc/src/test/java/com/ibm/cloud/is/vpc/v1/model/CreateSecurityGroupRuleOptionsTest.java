@@ -14,8 +14,8 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.CreateSecurityGroupRuleOptions;
-import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRulePrototypeRemoteIP;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRulePrototypeSecurityGroupRuleProtocolICMP;
+import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleRemotePrototypeIP;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -33,24 +33,24 @@ public class CreateSecurityGroupRuleOptionsTest {
 
   @Test
   public void testCreateSecurityGroupRuleOptions() throws Throwable {
-    SecurityGroupRulePrototypeRemoteIP securityGroupRulePrototypeRemoteModel = new SecurityGroupRulePrototypeRemoteIP.Builder()
+    SecurityGroupRuleRemotePrototypeIP securityGroupRuleRemotePrototypeModel = new SecurityGroupRuleRemotePrototypeIP.Builder()
       .address("192.168.3.4")
       .build();
-    assertEquals(securityGroupRulePrototypeRemoteModel.address(), "192.168.3.4");
+    assertEquals(securityGroupRuleRemotePrototypeModel.address(), "192.168.3.4");
 
     SecurityGroupRulePrototypeSecurityGroupRuleProtocolICMP securityGroupRulePrototypeModel = new SecurityGroupRulePrototypeSecurityGroupRuleProtocolICMP.Builder()
       .direction("inbound")
       .ipVersion("ipv4")
-      .protocol("icmp")
-      .remote(securityGroupRulePrototypeRemoteModel)
+      .remote(securityGroupRuleRemotePrototypeModel)
       .code(Long.valueOf("0"))
+      .protocol("icmp")
       .type(Long.valueOf("8"))
       .build();
     assertEquals(securityGroupRulePrototypeModel.direction(), "inbound");
     assertEquals(securityGroupRulePrototypeModel.ipVersion(), "ipv4");
-    assertEquals(securityGroupRulePrototypeModel.protocol(), "icmp");
-    assertEquals(securityGroupRulePrototypeModel.remote(), securityGroupRulePrototypeRemoteModel);
+    assertEquals(securityGroupRulePrototypeModel.remote(), securityGroupRuleRemotePrototypeModel);
     assertEquals(securityGroupRulePrototypeModel.code(), Long.valueOf("0"));
+    assertEquals(securityGroupRulePrototypeModel.protocol(), "icmp");
     assertEquals(securityGroupRulePrototypeModel.type(), Long.valueOf("8"));
 
     CreateSecurityGroupRuleOptions createSecurityGroupRuleOptionsModel = new CreateSecurityGroupRuleOptions.Builder()

@@ -15,6 +15,7 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManager;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerPolicyReference;
+import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerPolicyReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -33,15 +34,15 @@ public class InstanceGroupManagerTest {
   @Test
   public void testInstanceGroupManager() throws Throwable {
     InstanceGroupManager instanceGroupManagerModel = new InstanceGroupManager();
-    assertNull(instanceGroupManagerModel.getId());
-    assertNull(instanceGroupManagerModel.getHref());
-    assertNull(instanceGroupManagerModel.getName());
-    assertNull(instanceGroupManagerModel.isManagementEnabled());
     assertNull(instanceGroupManagerModel.getAggregationWindow());
     assertNull(instanceGroupManagerModel.getCooldown());
+    assertNull(instanceGroupManagerModel.getHref());
+    assertNull(instanceGroupManagerModel.getId());
+    assertNull(instanceGroupManagerModel.isManagementEnabled());
+    assertNull(instanceGroupManagerModel.getManagerType());
     assertNull(instanceGroupManagerModel.getMaxMembershipCount());
     assertNull(instanceGroupManagerModel.getMinMembershipCount());
-    assertNull(instanceGroupManagerModel.getManagerType());
+    assertNull(instanceGroupManagerModel.getName());
     assertNull(instanceGroupManagerModel.getPolicies());
   }
 }

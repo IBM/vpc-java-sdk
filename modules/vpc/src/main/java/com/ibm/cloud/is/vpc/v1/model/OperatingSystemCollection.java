@@ -31,7 +31,7 @@ public class OperatingSystemCollection extends GenericModel {
   /**
    * Gets the first.
    *
-   * A reference to the first page of resources.
+   * A link to the first page of resources.
    *
    * @return the first
    */
@@ -53,7 +53,7 @@ public class OperatingSystemCollection extends GenericModel {
   /**
    * Gets the next.
    *
-   * A reference to the next page of resources; this reference is included for all pages
+   * A link to the next page of resources. This property is present for all pages
    * except the last page.
    *
    * @return the next

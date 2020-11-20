@@ -34,13 +34,13 @@ public class RouteTest {
   @Test
   public void testRoute() throws Throwable {
     Route routeModel = new Route();
-    assertNull(routeModel.getNextHop());
-    assertNull(routeModel.getId());
-    assertNull(routeModel.getHref());
-    assertNull(routeModel.getName());
     assertNull(routeModel.getCreatedAt());
     assertNull(routeModel.getDestination());
+    assertNull(routeModel.getHref());
+    assertNull(routeModel.getId());
     assertNull(routeModel.getLifecycleState());
+    assertNull(routeModel.getName());
+    assertNull(routeModel.getNextHop());
     assertNull(routeModel.getZone());
   }
 }

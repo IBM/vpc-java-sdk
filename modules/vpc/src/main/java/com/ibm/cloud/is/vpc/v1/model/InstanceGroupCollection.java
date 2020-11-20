@@ -23,22 +23,33 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class InstanceGroupCollection extends GenericModel {
 
   protected InstanceGroupCollectionFirst first;
+  @SerializedName("instance_groups")
+  protected List<InstanceGroup> instanceGroups;
   protected Long limit;
   protected InstanceGroupCollectionNext next;
   @SerializedName("total_count")
   protected Long totalCount;
-  @SerializedName("instance_groups")
-  protected List<InstanceGroup> instanceGroups;
 
   /**
    * Gets the first.
    *
-   * A reference to the first page of resources.
+   * A link to the first page of resources.
    *
    * @return the first
    */
   public InstanceGroupCollectionFirst getFirst() {
     return first;
+  }
+
+  /**
+   * Gets the instanceGroups.
+   *
+   * Collection of instance groups.
+   *
+   * @return the instanceGroups
+   */
+  public List<InstanceGroup> getInstanceGroups() {
+    return instanceGroups;
   }
 
   /**
@@ -55,7 +66,7 @@ public class InstanceGroupCollection extends GenericModel {
   /**
    * Gets the next.
    *
-   * A reference to the next page of resources; this reference is included for all pages
+   * A link to the next page of resources. This property is present for all pages
    * except the last page.
    *
    * @return the next
@@ -73,17 +84,6 @@ public class InstanceGroupCollection extends GenericModel {
    */
   public Long getTotalCount() {
     return totalCount;
-  }
-
-  /**
-   * Gets the instanceGroups.
-   *
-   * Collection of instance groups.
-   *
-   * @return the instanceGroups
-   */
-  public List<InstanceGroup> getInstanceGroups() {
-    return instanceGroups;
   }
 }
 

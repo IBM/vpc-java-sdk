@@ -36,28 +36,39 @@ public class FloatingIP extends GenericModel {
     String PENDING = "pending";
   }
 
-  protected String id;
+  protected String address;
+  @SerializedName("created_at")
+  protected Date createdAt;
   protected String crn;
   protected String href;
-  protected String address;
+  protected String id;
   protected String name;
   @SerializedName("resource_group")
   protected ResourceGroupReference resourceGroup;
-  @SerializedName("created_at")
-  protected Date createdAt;
   protected String status;
   protected FloatingIPTarget target;
   protected ZoneReference zone;
 
   /**
-   * Gets the id.
+   * Gets the address.
    *
-   * The unique identifier for this floating IP.
+   * The globally unique IP address.
    *
-   * @return the id
+   * @return the address
    */
-  public String getId() {
-    return id;
+  public String getAddress() {
+    return address;
+  }
+
+  /**
+   * Gets the createdAt.
+   *
+   * The date and time that the floating IP was created.
+   *
+   * @return the createdAt
+   */
+  public Date getCreatedAt() {
+    return createdAt;
   }
 
   /**
@@ -83,14 +94,14 @@ public class FloatingIP extends GenericModel {
   }
 
   /**
-   * Gets the address.
+   * Gets the id.
    *
-   * The globally unique IP address.
+   * The unique identifier for this floating IP.
    *
-   * @return the address
+   * @return the id
    */
-  public String getAddress() {
-    return address;
+  public String getId() {
+    return id;
   }
 
   /**
@@ -113,17 +124,6 @@ public class FloatingIP extends GenericModel {
    */
   public ResourceGroupReference getResourceGroup() {
     return resourceGroup;
-  }
-
-  /**
-   * Gets the createdAt.
-   *
-   * The date and time that the floating IP was created.
-   *
-   * @return the createdAt
-   */
-  public Date getCreatedAt() {
-    return createdAt;
   }
 
   /**

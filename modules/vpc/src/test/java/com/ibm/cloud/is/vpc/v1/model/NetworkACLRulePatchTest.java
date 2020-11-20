@@ -13,7 +13,7 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
-import com.ibm.cloud.is.vpc.v1.model.NetworkACLRuleIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.NetworkACLRuleBeforePatchNetworkACLRuleIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLRulePatch;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
@@ -33,90 +33,90 @@ public class NetworkACLRulePatchTest {
 
   @Test
   public void testNetworkACLRulePatch() throws Throwable {
-    NetworkACLRuleIdentityById networkAclRuleIdentityModel = new NetworkACLRuleIdentityById.Builder()
+    NetworkACLRuleBeforePatchNetworkACLRuleIdentityById networkAclRuleBeforePatchModel = new NetworkACLRuleBeforePatchNetworkACLRuleIdentityById.Builder()
       .id("8daca77a-4980-4d33-8f3e-7038797be8f9")
       .build();
-    assertEquals(networkAclRuleIdentityModel.id(), "8daca77a-4980-4d33-8f3e-7038797be8f9");
+    assertEquals(networkAclRuleBeforePatchModel.id(), "8daca77a-4980-4d33-8f3e-7038797be8f9");
 
     NetworkACLRulePatch networkAclRulePatchModel = new NetworkACLRulePatch.Builder()
-      .name("my-rule-2")
       .action("allow")
+      .before(networkAclRuleBeforePatchModel)
+      .code(Long.valueOf("0"))
       .destination("192.168.3.2/32")
-      .direction("inbound")
-      .source("192.168.3.2/32")
       .destinationPortMax(Long.valueOf("22"))
       .destinationPortMin(Long.valueOf("22"))
+      .direction("inbound")
+      .name("my-rule-2")
+      .source("192.168.3.2/32")
       .sourcePortMax(Long.valueOf("65535"))
       .sourcePortMin(Long.valueOf("49152"))
-      .code(Long.valueOf("0"))
       .type(Long.valueOf("8"))
-      .before(networkAclRuleIdentityModel)
       .build();
-    assertEquals(networkAclRulePatchModel.name(), "my-rule-2");
     assertEquals(networkAclRulePatchModel.action(), "allow");
+    assertEquals(networkAclRulePatchModel.before(), networkAclRuleBeforePatchModel);
+    assertEquals(networkAclRulePatchModel.code(), Long.valueOf("0"));
     assertEquals(networkAclRulePatchModel.destination(), "192.168.3.2/32");
-    assertEquals(networkAclRulePatchModel.direction(), "inbound");
-    assertEquals(networkAclRulePatchModel.source(), "192.168.3.2/32");
     assertEquals(networkAclRulePatchModel.destinationPortMax(), Long.valueOf("22"));
     assertEquals(networkAclRulePatchModel.destinationPortMin(), Long.valueOf("22"));
+    assertEquals(networkAclRulePatchModel.direction(), "inbound");
+    assertEquals(networkAclRulePatchModel.name(), "my-rule-2");
+    assertEquals(networkAclRulePatchModel.source(), "192.168.3.2/32");
     assertEquals(networkAclRulePatchModel.sourcePortMax(), Long.valueOf("65535"));
     assertEquals(networkAclRulePatchModel.sourcePortMin(), Long.valueOf("49152"));
-    assertEquals(networkAclRulePatchModel.code(), Long.valueOf("0"));
     assertEquals(networkAclRulePatchModel.type(), Long.valueOf("8"));
-    assertEquals(networkAclRulePatchModel.before(), networkAclRuleIdentityModel);
 
     String json = TestUtilities.serialize(networkAclRulePatchModel);
 
     NetworkACLRulePatch networkAclRulePatchModelNew = TestUtilities.deserialize(json, NetworkACLRulePatch.class);
     assertTrue(networkAclRulePatchModelNew instanceof NetworkACLRulePatch);
-    assertEquals(networkAclRulePatchModelNew.name(), "my-rule-2");
     assertEquals(networkAclRulePatchModelNew.action(), "allow");
+    assertEquals(networkAclRulePatchModelNew.before().toString(), networkAclRuleBeforePatchModel.toString());
+    assertEquals(networkAclRulePatchModelNew.code(), Long.valueOf("0"));
     assertEquals(networkAclRulePatchModelNew.destination(), "192.168.3.2/32");
-    assertEquals(networkAclRulePatchModelNew.direction(), "inbound");
-    assertEquals(networkAclRulePatchModelNew.source(), "192.168.3.2/32");
     assertEquals(networkAclRulePatchModelNew.destinationPortMax(), Long.valueOf("22"));
     assertEquals(networkAclRulePatchModelNew.destinationPortMin(), Long.valueOf("22"));
+    assertEquals(networkAclRulePatchModelNew.direction(), "inbound");
+    assertEquals(networkAclRulePatchModelNew.name(), "my-rule-2");
+    assertEquals(networkAclRulePatchModelNew.source(), "192.168.3.2/32");
     assertEquals(networkAclRulePatchModelNew.sourcePortMax(), Long.valueOf("65535"));
     assertEquals(networkAclRulePatchModelNew.sourcePortMin(), Long.valueOf("49152"));
-    assertEquals(networkAclRulePatchModelNew.code(), Long.valueOf("0"));
     assertEquals(networkAclRulePatchModelNew.type(), Long.valueOf("8"));
-    assertEquals(networkAclRulePatchModelNew.before().toString(), networkAclRuleIdentityModel.toString());
   }
   @Test
   public void testNetworkACLRulePatchAsPatch() throws Throwable {
-    NetworkACLRuleIdentityById networkAclRuleIdentityModel = new NetworkACLRuleIdentityById.Builder()
+    NetworkACLRuleBeforePatchNetworkACLRuleIdentityById networkAclRuleBeforePatchModel = new NetworkACLRuleBeforePatchNetworkACLRuleIdentityById.Builder()
       .id("8daca77a-4980-4d33-8f3e-7038797be8f9")
       .build();
 
     NetworkACLRulePatch networkAclRulePatchModel = new NetworkACLRulePatch.Builder()
-      .name("my-rule-2")
       .action("allow")
+      .before(networkAclRuleBeforePatchModel)
+      .code(Long.valueOf("0"))
       .destination("192.168.3.2/32")
-      .direction("inbound")
-      .source("192.168.3.2/32")
       .destinationPortMax(Long.valueOf("22"))
       .destinationPortMin(Long.valueOf("22"))
+      .direction("inbound")
+      .name("my-rule-2")
+      .source("192.168.3.2/32")
       .sourcePortMax(Long.valueOf("65535"))
       .sourcePortMin(Long.valueOf("49152"))
-      .code(Long.valueOf("0"))
       .type(Long.valueOf("8"))
-      .before(networkAclRuleIdentityModel)
       .build();
 
     Map<String, Object> mergePatch = networkAclRulePatchModel.asPatch();
 
-    assertEquals(mergePatch.get("name"), "my-rule-2");
     assertEquals(mergePatch.get("action"), "allow");
+    assertTrue(mergePatch.containsKey("before"));
+    assertTrue(mergePatch.containsKey("code"));
     assertEquals(mergePatch.get("destination"), "192.168.3.2/32");
-    assertEquals(mergePatch.get("direction"), "inbound");
-    assertEquals(mergePatch.get("source"), "192.168.3.2/32");
     assertTrue(mergePatch.containsKey("destination_port_max"));
     assertTrue(mergePatch.containsKey("destination_port_min"));
+    assertEquals(mergePatch.get("direction"), "inbound");
+    assertEquals(mergePatch.get("name"), "my-rule-2");
+    assertEquals(mergePatch.get("source"), "192.168.3.2/32");
     assertTrue(mergePatch.containsKey("source_port_max"));
     assertTrue(mergePatch.containsKey("source_port_min"));
-    assertTrue(mergePatch.containsKey("code"));
     assertTrue(mergePatch.containsKey("type"));
-    assertTrue(mergePatch.containsKey("before"));
   }
 
 }

@@ -14,6 +14,7 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.PublicGatewayReference;
+import com.ibm.cloud.is.vpc.v1.model.PublicGatewayReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -32,9 +33,10 @@ public class PublicGatewayReferenceTest {
   @Test
   public void testPublicGatewayReference() throws Throwable {
     PublicGatewayReference publicGatewayReferenceModel = new PublicGatewayReference();
-    assertNull(publicGatewayReferenceModel.getId());
     assertNull(publicGatewayReferenceModel.getCrn());
+    assertNull(publicGatewayReferenceModel.getDeleted());
     assertNull(publicGatewayReferenceModel.getHref());
+    assertNull(publicGatewayReferenceModel.getId());
     assertNull(publicGatewayReferenceModel.getName());
     assertNull(publicGatewayReferenceModel.getResourceType());
   }

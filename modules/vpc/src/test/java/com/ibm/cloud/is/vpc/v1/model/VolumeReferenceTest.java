@@ -14,6 +14,7 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.VolumeReference;
+import com.ibm.cloud.is.vpc.v1.model.VolumeReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -32,9 +33,10 @@ public class VolumeReferenceTest {
   @Test
   public void testVolumeReference() throws Throwable {
     VolumeReference volumeReferenceModel = new VolumeReference();
-    assertNull(volumeReferenceModel.getId());
     assertNull(volumeReferenceModel.getCrn());
+    assertNull(volumeReferenceModel.getDeleted());
     assertNull(volumeReferenceModel.getHref());
+    assertNull(volumeReferenceModel.getId());
     assertNull(volumeReferenceModel.getName());
   }
 }

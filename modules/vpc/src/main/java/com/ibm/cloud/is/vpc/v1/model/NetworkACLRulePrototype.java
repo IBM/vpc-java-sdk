@@ -55,27 +55,13 @@ public class NetworkACLRulePrototype extends GenericModel {
     String OUTBOUND = "outbound";
   }
 
-  /**
-   * The protocol to enforce.
-   */
-  public interface Protocol {
-    /** all. */
-    String ALL = "all";
-    /** icmp. */
-    String ICMP = "icmp";
-    /** tcp. */
-    String TCP = "tcp";
-    /** udp. */
-    String UDP = "udp";
-  }
-
-  protected String name;
   protected String action;
+  protected NetworkACLRuleBeforePrototype before;
   protected String destination;
   protected String direction;
-  protected String source;
+  protected String name;
   protected String protocol;
-  protected NetworkACLRuleIdentity before;
+  protected String source;
   @SerializedName("destination_port_max")
   protected Long destinationPortMax;
   @SerializedName("destination_port_min")
@@ -91,18 +77,6 @@ public class NetworkACLRulePrototype extends GenericModel {
   }
 
   /**
-   * Gets the name.
-   *
-   * The user-defined name for this rule. Names must be unique within the network ACL the rule resides in. If
-   * unspecified, the name will be a hyphenated list of randomly-selected words.
-   *
-   * @return the name
-   */
-  public String name() {
-    return name;
-  }
-
-  /**
    * Gets the action.
    *
    * Whether to allow or deny matching traffic.
@@ -111,6 +85,18 @@ public class NetworkACLRulePrototype extends GenericModel {
    */
   public String action() {
     return action;
+  }
+
+  /**
+   * Gets the before.
+   *
+   * The rule to insert this rule immediately before. If omitted, this rule will be
+   * inserted after all existing rules.
+   *
+   * @return the before
+   */
+  public NetworkACLRuleBeforePrototype before() {
+    return before;
   }
 
   /**
@@ -136,14 +122,15 @@ public class NetworkACLRulePrototype extends GenericModel {
   }
 
   /**
-   * Gets the source.
+   * Gets the name.
    *
-   * The source IP address or CIDR block.  The CIDR block `0.0.0.0/0` applies to all addresses.
+   * The user-defined name for this rule. Names must be unique within the network ACL the rule resides in. If
+   * unspecified, the name will be a hyphenated list of randomly-selected words.
    *
-   * @return the source
+   * @return the name
    */
-  public String source() {
-    return source;
+  public String name() {
+    return name;
   }
 
   /**
@@ -158,15 +145,14 @@ public class NetworkACLRulePrototype extends GenericModel {
   }
 
   /**
-   * Gets the before.
+   * Gets the source.
    *
-   * The rule to insert this rule immediately before. If omitted, this rule will be
-   * inserted after all existing rules.
+   * The source IP address or CIDR block.  The CIDR block `0.0.0.0/0` applies to all addresses.
    *
-   * @return the before
+   * @return the source
    */
-  public NetworkACLRuleIdentity before() {
-    return before;
+  public String source() {
+    return source;
   }
 
   /**

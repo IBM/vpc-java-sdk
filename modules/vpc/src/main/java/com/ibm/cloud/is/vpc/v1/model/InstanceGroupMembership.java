@@ -41,27 +41,27 @@ public class InstanceGroupMembership extends GenericModel {
     String UNHEALTHY = "unhealthy";
   }
 
-  protected String id;
-  protected String href;
-  protected String name;
   @SerializedName("delete_instance_on_membership_delete")
   protected Boolean deleteInstanceOnMembershipDelete;
+  protected String href;
+  protected String id;
   protected InstanceReference instance;
   @SerializedName("instance_template")
   protected InstanceTemplateReference instanceTemplate;
+  protected String name;
   @SerializedName("pool_member")
   protected LoadBalancerPoolMemberReference poolMember;
   protected String status;
 
   /**
-   * Gets the id.
+   * Gets the deleteInstanceOnMembershipDelete.
    *
-   * The unique identifier for this instance group membership.
+   * If set to true, when deleting the membership the instance will also be deleted.
    *
-   * @return the id
+   * @return the deleteInstanceOnMembershipDelete
    */
-  public String getId() {
-    return id;
+  public Boolean isDeleteInstanceOnMembershipDelete() {
+    return deleteInstanceOnMembershipDelete;
   }
 
   /**
@@ -76,25 +76,14 @@ public class InstanceGroupMembership extends GenericModel {
   }
 
   /**
-   * Gets the name.
+   * Gets the id.
    *
-   * The user-defined name for this instance group membership. Names must be unique within the instance group.
+   * The unique identifier for this instance group membership.
    *
-   * @return the name
+   * @return the id
    */
-  public String getName() {
-    return name;
-  }
-
-  /**
-   * Gets the deleteInstanceOnMembershipDelete.
-   *
-   * If set to true, when deleting the membership the instance will also be deleted.
-   *
-   * @return the deleteInstanceOnMembershipDelete
-   */
-  public Boolean isDeleteInstanceOnMembershipDelete() {
-    return deleteInstanceOnMembershipDelete;
+  public String getId() {
+    return id;
   }
 
   /**
@@ -113,6 +102,17 @@ public class InstanceGroupMembership extends GenericModel {
    */
   public InstanceTemplateReference getInstanceTemplate() {
     return instanceTemplate;
+  }
+
+  /**
+   * Gets the name.
+   *
+   * The user-defined name for this instance group membership. Names must be unique within the instance group.
+   *
+   * @return the name
+   */
+  public String getName() {
+    return name;
   }
 
   /**

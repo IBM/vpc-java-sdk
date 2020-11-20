@@ -28,23 +28,13 @@ public class PublicGatewayReference extends GenericModel {
     String PUBLIC_GATEWAY = "public_gateway";
   }
 
-  protected String id;
   protected String crn;
+  protected PublicGatewayReferenceDeleted deleted;
   protected String href;
+  protected String id;
   protected String name;
   @SerializedName("resource_type")
   protected String resourceType;
-
-  /**
-   * Gets the id.
-   *
-   * The unique identifier for this public gateway.
-   *
-   * @return the id
-   */
-  public String getId() {
-    return id;
-  }
 
   /**
    * Gets the crn.
@@ -58,6 +48,18 @@ public class PublicGatewayReference extends GenericModel {
   }
 
   /**
+   * Gets the deleted.
+   *
+   * If present, this property indicates the referenced resource has been deleted and provides
+   * some supplementary information.
+   *
+   * @return the deleted
+   */
+  public PublicGatewayReferenceDeleted getDeleted() {
+    return deleted;
+  }
+
+  /**
    * Gets the href.
    *
    * The URL for this public gateway.
@@ -66,6 +68,17 @@ public class PublicGatewayReference extends GenericModel {
    */
   public String getHref() {
     return href;
+  }
+
+  /**
+   * Gets the id.
+   *
+   * The unique identifier for this public gateway.
+   *
+   * @return the id
+   */
+  public String getId() {
+    return id;
   }
 
   /**

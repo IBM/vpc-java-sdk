@@ -40,14 +40,14 @@ public class InstanceProfileTest {
   @Test
   public void testInstanceProfile() throws Throwable {
     InstanceProfile instanceProfileModel = new InstanceProfile();
-    assertNull(instanceProfileModel.getName());
-    assertNull(instanceProfileModel.getHref());
     assertNull(instanceProfileModel.getBandwidth());
-    assertNull(instanceProfileModel.getPortSpeed());
+    assertNull(instanceProfileModel.getFamily());
+    assertNull(instanceProfileModel.getHref());
     assertNull(instanceProfileModel.getMemory());
+    assertNull(instanceProfileModel.getName());
     assertNull(instanceProfileModel.getOsArchitecture());
+    assertNull(instanceProfileModel.getPortSpeed());
     assertNull(instanceProfileModel.getVcpuArchitecture());
     assertNull(instanceProfileModel.getVcpuCount());
-    assertNull(instanceProfileModel.getFamily());
   }
 }

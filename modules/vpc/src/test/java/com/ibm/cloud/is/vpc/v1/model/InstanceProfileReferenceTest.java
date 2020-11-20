@@ -32,7 +32,7 @@ public class InstanceProfileReferenceTest {
   @Test
   public void testInstanceProfileReference() throws Throwable {
     InstanceProfileReference instanceProfileReferenceModel = new InstanceProfileReference();
-    assertNull(instanceProfileReferenceModel.getName());
     assertNull(instanceProfileReferenceModel.getHref());
+    assertNull(instanceProfileReferenceModel.getName());
   }
 }

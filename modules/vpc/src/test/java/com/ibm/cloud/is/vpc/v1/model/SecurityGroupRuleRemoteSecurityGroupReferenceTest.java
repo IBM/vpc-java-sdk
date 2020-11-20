@@ -13,6 +13,7 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.ibm.cloud.is.vpc.v1.model.SecurityGroupReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleRemoteSecurityGroupReference;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
@@ -32,9 +33,10 @@ public class SecurityGroupRuleRemoteSecurityGroupReferenceTest {
   @Test
   public void testSecurityGroupRuleRemoteSecurityGroupReference() throws Throwable {
     SecurityGroupRuleRemoteSecurityGroupReference securityGroupRuleRemoteSecurityGroupReferenceModel = new SecurityGroupRuleRemoteSecurityGroupReference();
-    assertNull(securityGroupRuleRemoteSecurityGroupReferenceModel.getId());
     assertNull(securityGroupRuleRemoteSecurityGroupReferenceModel.getCrn());
+    assertNull(securityGroupRuleRemoteSecurityGroupReferenceModel.getDeleted());
     assertNull(securityGroupRuleRemoteSecurityGroupReferenceModel.getHref());
+    assertNull(securityGroupRuleRemoteSecurityGroupReferenceModel.getId());
     assertNull(securityGroupRuleRemoteSecurityGroupReferenceModel.getName());
   }
 }

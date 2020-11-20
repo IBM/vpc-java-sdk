@@ -20,6 +20,10 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
  * VPNGateway.
+ *
+ * Classes which extend this class:
+ * - VPNGatewayRouteMode
+ * - VPNGatewayPolicyMode
  */
 public class VPNGateway extends GenericModel {
 
@@ -45,97 +49,31 @@ public class VPNGateway extends GenericModel {
     String PENDING = "pending";
   }
 
-  protected String id;
-  protected String crn;
-  protected String href;
-  protected String name;
-  @SerializedName("resource_type")
-  protected String resourceType;
-  @SerializedName("resource_group")
-  protected ResourceGroupReference resourceGroup;
-  @SerializedName("public_ip")
-  protected VPNGatewayPublicIp publicIp;
+  /**
+   * Route mode VPN gateway.
+   */
+  public interface Mode {
+    /** route. */
+    String ROUTE = "route";
+  }
+
   protected List<VPNGatewayConnectionReference> connections;
   @SerializedName("created_at")
   protected Date createdAt;
+  protected String crn;
+  protected String href;
+  protected String id;
+  protected List<VPNGatewayMember> members;
+  protected String name;
+  @SerializedName("resource_group")
+  protected ResourceGroupReference resourceGroup;
+  @SerializedName("resource_type")
+  protected String resourceType;
   protected String status;
   protected SubnetReference subnet;
+  protected String mode;
 
-  /**
-   * Gets the id.
-   *
-   * The unique identifier for this VPN gateway.
-   *
-   * @return the id
-   */
-  public String getId() {
-    return id;
-  }
-
-  /**
-   * Gets the crn.
-   *
-   * The VPN gateway's CRN.
-   *
-   * @return the crn
-   */
-  public String getCrn() {
-    return crn;
-  }
-
-  /**
-   * Gets the href.
-   *
-   * The VPN gateway's canonical URL.
-   *
-   * @return the href
-   */
-  public String getHref() {
-    return href;
-  }
-
-  /**
-   * Gets the name.
-   *
-   * The user-defined name for this VPN gateway.
-   *
-   * @return the name
-   */
-  public String getName() {
-    return name;
-  }
-
-  /**
-   * Gets the resourceType.
-   *
-   * The resource type.
-   *
-   * @return the resourceType
-   */
-  public String getResourceType() {
-    return resourceType;
-  }
-
-  /**
-   * Gets the resourceGroup.
-   *
-   * The resource group for this VPN gateway.
-   *
-   * @return the resourceGroup
-   */
-  public ResourceGroupReference getResourceGroup() {
-    return resourceGroup;
-  }
-
-  /**
-   * Gets the publicIp.
-   *
-   * The public IP address assigned to this VPN gateway.
-   *
-   * @return the publicIp
-   */
-  public VPNGatewayPublicIp getPublicIp() {
-    return publicIp;
+  protected VPNGateway() {
   }
 
   /**
@@ -161,6 +99,83 @@ public class VPNGateway extends GenericModel {
   }
 
   /**
+   * Gets the crn.
+   *
+   * The VPN gateway's CRN.
+   *
+   * @return the crn
+   */
+  public String getCrn() {
+    return crn;
+  }
+
+  /**
+   * Gets the href.
+   *
+   * The VPN gateway's canonical URL.
+   *
+   * @return the href
+   */
+  public String getHref() {
+    return href;
+  }
+
+  /**
+   * Gets the id.
+   *
+   * The unique identifier for this VPN gateway.
+   *
+   * @return the id
+   */
+  public String getId() {
+    return id;
+  }
+
+  /**
+   * Gets the members.
+   *
+   * Collection of VPN gateway members.
+   *
+   * @return the members
+   */
+  public List<VPNGatewayMember> getMembers() {
+    return members;
+  }
+
+  /**
+   * Gets the name.
+   *
+   * The user-defined name for this VPN gateway.
+   *
+   * @return the name
+   */
+  public String getName() {
+    return name;
+  }
+
+  /**
+   * Gets the resourceGroup.
+   *
+   * The resource group for this VPN gateway.
+   *
+   * @return the resourceGroup
+   */
+  public ResourceGroupReference getResourceGroup() {
+    return resourceGroup;
+  }
+
+  /**
+   * Gets the resourceType.
+   *
+   * The resource type.
+   *
+   * @return the resourceType
+   */
+  public String getResourceType() {
+    return resourceType;
+  }
+
+  /**
    * Gets the status.
    *
    * The status of the VPN gateway.
@@ -178,6 +193,17 @@ public class VPNGateway extends GenericModel {
    */
   public SubnetReference getSubnet() {
     return subnet;
+  }
+
+  /**
+   * Gets the mode.
+   *
+   * Route mode VPN gateway.
+   *
+   * @return the mode
+   */
+  public String getMode() {
+    return mode;
   }
 }
 

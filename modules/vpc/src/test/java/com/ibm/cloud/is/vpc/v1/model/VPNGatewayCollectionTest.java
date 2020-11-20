@@ -13,14 +13,17 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.ibm.cloud.is.vpc.v1.model.IP;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.SubnetReference;
-import com.ibm.cloud.is.vpc.v1.model.VPNGateway;
+import com.ibm.cloud.is.vpc.v1.model.SubnetReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayCollection;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayCollectionFirst;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionReference;
-import com.ibm.cloud.is.vpc.v1.model.VPNGatewayPublicIp;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionReferenceDeleted;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayMember;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayRouteMode;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;

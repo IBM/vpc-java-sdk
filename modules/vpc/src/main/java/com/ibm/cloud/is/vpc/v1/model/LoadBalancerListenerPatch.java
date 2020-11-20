@@ -25,7 +25,8 @@ public class LoadBalancerListenerPatch extends GenericModel {
 
   /**
    * The listener protocol. Load balancers in the `network` family support `tcp`. Load balancers in the `application`
-   * family support `tcp`, `http`, and `https`.
+   * family support `tcp`, `http`, and `https`. Each listener in the load balancer must have a unique `port` and
+   * `protocol` combination.
    */
   public interface Protocol {
     /** http. */
@@ -36,31 +37,35 @@ public class LoadBalancerListenerPatch extends GenericModel {
     String TCP = "tcp";
   }
 
-  @SerializedName("connection_limit")
-  protected Long connectionLimit;
-  protected Long port;
-  protected String protocol;
+  @SerializedName("accept_proxy_protocol")
+  protected Boolean acceptProxyProtocol;
   @SerializedName("certificate_instance")
   protected CertificateInstanceIdentity certificateInstance;
+  @SerializedName("connection_limit")
+  protected Long connectionLimit;
   @SerializedName("default_pool")
   protected LoadBalancerPoolIdentity defaultPool;
+  protected Long port;
+  protected String protocol;
 
   /**
    * Builder.
    */
   public static class Builder {
+    private Boolean acceptProxyProtocol;
+    private CertificateInstanceIdentity certificateInstance;
     private Long connectionLimit;
+    private LoadBalancerPoolIdentity defaultPool;
     private Long port;
     private String protocol;
-    private CertificateInstanceIdentity certificateInstance;
-    private LoadBalancerPoolIdentity defaultPool;
 
     private Builder(LoadBalancerListenerPatch loadBalancerListenerPatch) {
+      this.acceptProxyProtocol = loadBalancerListenerPatch.acceptProxyProtocol;
+      this.certificateInstance = loadBalancerListenerPatch.certificateInstance;
       this.connectionLimit = loadBalancerListenerPatch.connectionLimit;
+      this.defaultPool = loadBalancerListenerPatch.defaultPool;
       this.port = loadBalancerListenerPatch.port;
       this.protocol = loadBalancerListenerPatch.protocol;
-      this.certificateInstance = loadBalancerListenerPatch.certificateInstance;
-      this.defaultPool = loadBalancerListenerPatch.defaultPool;
     }
 
     /**
@@ -79,6 +84,28 @@ public class LoadBalancerListenerPatch extends GenericModel {
     }
 
     /**
+     * Set the acceptProxyProtocol.
+     *
+     * @param acceptProxyProtocol the acceptProxyProtocol
+     * @return the LoadBalancerListenerPatch builder
+     */
+    public Builder acceptProxyProtocol(Boolean acceptProxyProtocol) {
+      this.acceptProxyProtocol = acceptProxyProtocol;
+      return this;
+    }
+
+    /**
+     * Set the certificateInstance.
+     *
+     * @param certificateInstance the certificateInstance
+     * @return the LoadBalancerListenerPatch builder
+     */
+    public Builder certificateInstance(CertificateInstanceIdentity certificateInstance) {
+      this.certificateInstance = certificateInstance;
+      return this;
+    }
+
+    /**
      * Set the connectionLimit.
      *
      * @param connectionLimit the connectionLimit
@@ -86,6 +113,17 @@ public class LoadBalancerListenerPatch extends GenericModel {
      */
     public Builder connectionLimit(long connectionLimit) {
       this.connectionLimit = connectionLimit;
+      return this;
+    }
+
+    /**
+     * Set the defaultPool.
+     *
+     * @param defaultPool the defaultPool
+     * @return the LoadBalancerListenerPatch builder
+     */
+    public Builder defaultPool(LoadBalancerPoolIdentity defaultPool) {
+      this.defaultPool = defaultPool;
       return this;
     }
 
@@ -110,36 +148,15 @@ public class LoadBalancerListenerPatch extends GenericModel {
       this.protocol = protocol;
       return this;
     }
-
-    /**
-     * Set the certificateInstance.
-     *
-     * @param certificateInstance the certificateInstance
-     * @return the LoadBalancerListenerPatch builder
-     */
-    public Builder certificateInstance(CertificateInstanceIdentity certificateInstance) {
-      this.certificateInstance = certificateInstance;
-      return this;
-    }
-
-    /**
-     * Set the defaultPool.
-     *
-     * @param defaultPool the defaultPool
-     * @return the LoadBalancerListenerPatch builder
-     */
-    public Builder defaultPool(LoadBalancerPoolIdentity defaultPool) {
-      this.defaultPool = defaultPool;
-      return this;
-    }
   }
 
   protected LoadBalancerListenerPatch(Builder builder) {
+    acceptProxyProtocol = builder.acceptProxyProtocol;
+    certificateInstance = builder.certificateInstance;
     connectionLimit = builder.connectionLimit;
+    defaultPool = builder.defaultPool;
     port = builder.port;
     protocol = builder.protocol;
-    certificateInstance = builder.certificateInstance;
-    defaultPool = builder.defaultPool;
   }
 
   /**
@@ -152,37 +169,15 @@ public class LoadBalancerListenerPatch extends GenericModel {
   }
 
   /**
-   * Gets the connectionLimit.
+   * Gets the acceptProxyProtocol.
    *
-   * The connection limit of the listener.
+   * If set to `true`, this listener will accept and forward PROXY protocol information. Supported by load balancers in
+   * the `application` family (otherwise always `false`).
    *
-   * @return the connectionLimit
+   * @return the acceptProxyProtocol
    */
-  public Long connectionLimit() {
-    return connectionLimit;
-  }
-
-  /**
-   * Gets the port.
-   *
-   * The listener port number.
-   *
-   * @return the port
-   */
-  public Long port() {
-    return port;
-  }
-
-  /**
-   * Gets the protocol.
-   *
-   * The listener protocol. Load balancers in the `network` family support `tcp`. Load balancers in the `application`
-   * family support `tcp`, `http`, and `https`.
-   *
-   * @return the protocol
-   */
-  public String protocol() {
-    return protocol;
+  public Boolean acceptProxyProtocol() {
+    return acceptProxyProtocol;
   }
 
   /**
@@ -198,14 +193,54 @@ public class LoadBalancerListenerPatch extends GenericModel {
   }
 
   /**
+   * Gets the connectionLimit.
+   *
+   * The connection limit of the listener.
+   *
+   * @return the connectionLimit
+   */
+  public Long connectionLimit() {
+    return connectionLimit;
+  }
+
+  /**
    * Gets the defaultPool.
    *
-   * The default pool associated with the listener.
+   * The default pool associated with the listener. The specified pool must:
+   *
+   * - Belong to this load balancer
+   * - Have the same `protocol` as this listener
+   * - Not already be the default pool for another listener.
    *
    * @return the defaultPool
    */
   public LoadBalancerPoolIdentity defaultPool() {
     return defaultPool;
+  }
+
+  /**
+   * Gets the port.
+   *
+   * The listener port number. Each listener in the load balancer must have a unique
+   * `port` and `protocol` combination.
+   *
+   * @return the port
+   */
+  public Long port() {
+    return port;
+  }
+
+  /**
+   * Gets the protocol.
+   *
+   * The listener protocol. Load balancers in the `network` family support `tcp`. Load balancers in the `application`
+   * family support `tcp`, `http`, and `https`. Each listener in the load balancer must have a unique `port` and
+   * `protocol` combination.
+   *
+   * @return the protocol
+   */
+  public String protocol() {
+    return protocol;
   }
 
   /**

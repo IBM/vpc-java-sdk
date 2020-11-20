@@ -33,30 +33,30 @@ public class FlowLogCollectorPatchTest {
   @Test
   public void testFlowLogCollectorPatch() throws Throwable {
     FlowLogCollectorPatch flowLogCollectorPatchModel = new FlowLogCollectorPatch.Builder()
-      .name("my-flow-log-collector")
       .active(true)
+      .name("my-flow-log-collector")
       .build();
-    assertEquals(flowLogCollectorPatchModel.name(), "my-flow-log-collector");
     assertEquals(flowLogCollectorPatchModel.active(), Boolean.valueOf(true));
+    assertEquals(flowLogCollectorPatchModel.name(), "my-flow-log-collector");
 
     String json = TestUtilities.serialize(flowLogCollectorPatchModel);
 
     FlowLogCollectorPatch flowLogCollectorPatchModelNew = TestUtilities.deserialize(json, FlowLogCollectorPatch.class);
     assertTrue(flowLogCollectorPatchModelNew instanceof FlowLogCollectorPatch);
-    assertEquals(flowLogCollectorPatchModelNew.name(), "my-flow-log-collector");
     assertEquals(flowLogCollectorPatchModelNew.active(), Boolean.valueOf(true));
+    assertEquals(flowLogCollectorPatchModelNew.name(), "my-flow-log-collector");
   }
   @Test
   public void testFlowLogCollectorPatchAsPatch() throws Throwable {
     FlowLogCollectorPatch flowLogCollectorPatchModel = new FlowLogCollectorPatch.Builder()
-      .name("my-flow-log-collector")
       .active(true)
+      .name("my-flow-log-collector")
       .build();
 
     Map<String, Object> mergePatch = flowLogCollectorPatchModel.asPatch();
 
-    assertEquals(mergePatch.get("name"), "my-flow-log-collector");
     assertTrue(mergePatch.containsKey("active"));
+    assertEquals(mergePatch.get("name"), "my-flow-log-collector");
   }
 
 }

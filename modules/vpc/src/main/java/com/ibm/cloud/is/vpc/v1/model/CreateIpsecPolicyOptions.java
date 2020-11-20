@@ -60,8 +60,8 @@ public class CreateIpsecPolicyOptions extends GenericModel {
   protected String authenticationAlgorithm;
   protected String encryptionAlgorithm;
   protected String pfs;
-  protected String name;
   protected Long keyLifetime;
+  protected String name;
   protected ResourceGroupIdentity resourceGroup;
 
   /**
@@ -71,16 +71,16 @@ public class CreateIpsecPolicyOptions extends GenericModel {
     private String authenticationAlgorithm;
     private String encryptionAlgorithm;
     private String pfs;
-    private String name;
     private Long keyLifetime;
+    private String name;
     private ResourceGroupIdentity resourceGroup;
 
     private Builder(CreateIpsecPolicyOptions createIpsecPolicyOptions) {
       this.authenticationAlgorithm = createIpsecPolicyOptions.authenticationAlgorithm;
       this.encryptionAlgorithm = createIpsecPolicyOptions.encryptionAlgorithm;
       this.pfs = createIpsecPolicyOptions.pfs;
-      this.name = createIpsecPolicyOptions.name;
       this.keyLifetime = createIpsecPolicyOptions.keyLifetime;
+      this.name = createIpsecPolicyOptions.name;
       this.resourceGroup = createIpsecPolicyOptions.resourceGroup;
     }
 
@@ -146,17 +146,6 @@ public class CreateIpsecPolicyOptions extends GenericModel {
     }
 
     /**
-     * Set the name.
-     *
-     * @param name the name
-     * @return the CreateIpsecPolicyOptions builder
-     */
-    public Builder name(String name) {
-      this.name = name;
-      return this;
-    }
-
-    /**
      * Set the keyLifetime.
      *
      * @param keyLifetime the keyLifetime
@@ -164,6 +153,17 @@ public class CreateIpsecPolicyOptions extends GenericModel {
      */
     public Builder keyLifetime(long keyLifetime) {
       this.keyLifetime = keyLifetime;
+      return this;
+    }
+
+    /**
+     * Set the name.
+     *
+     * @param name the name
+     * @return the CreateIpsecPolicyOptions builder
+     */
+    public Builder name(String name) {
+      this.name = name;
       return this;
     }
 
@@ -189,8 +189,8 @@ public class CreateIpsecPolicyOptions extends GenericModel {
     authenticationAlgorithm = builder.authenticationAlgorithm;
     encryptionAlgorithm = builder.encryptionAlgorithm;
     pfs = builder.pfs;
-    name = builder.name;
     keyLifetime = builder.keyLifetime;
+    name = builder.name;
     resourceGroup = builder.resourceGroup;
   }
 
@@ -237,17 +237,6 @@ public class CreateIpsecPolicyOptions extends GenericModel {
   }
 
   /**
-   * Gets the name.
-   *
-   * The user-defined name for this IPsec policy.
-   *
-   * @return the name
-   */
-  public String name() {
-    return name;
-  }
-
-  /**
    * Gets the keyLifetime.
    *
    * The key lifetime in seconds.
@@ -256,6 +245,17 @@ public class CreateIpsecPolicyOptions extends GenericModel {
    */
   public Long keyLifetime() {
     return keyLifetime;
+  }
+
+  /**
+   * Gets the name.
+   *
+   * The user-defined name for this IPsec policy.
+   *
+   * @return the name
+   */
+  public String name() {
+    return name;
   }
 
   /**

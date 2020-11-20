@@ -19,9 +19,20 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class ResourceGroupReference extends GenericModel {
 
+  protected String href;
   protected String id;
   protected String name;
-  protected String href;
+
+  /**
+   * Gets the href.
+   *
+   * The URL for this resource group.
+   *
+   * @return the href
+   */
+  public String getHref() {
+    return href;
+  }
 
   /**
    * Gets the id.
@@ -43,17 +54,6 @@ public class ResourceGroupReference extends GenericModel {
    */
   public String getName() {
     return name;
-  }
-
-  /**
-   * Gets the href.
-   *
-   * The URL for this resource group.
-   *
-   * @return the href
-   */
-  public String getHref() {
-    return href;
   }
 }
 

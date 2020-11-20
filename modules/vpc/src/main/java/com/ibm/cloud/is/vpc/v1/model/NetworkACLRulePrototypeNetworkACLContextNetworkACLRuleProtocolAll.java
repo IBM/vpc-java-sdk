@@ -43,12 +43,6 @@ public class NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolAll e
   public interface Protocol {
     /** all. */
     String ALL = "all";
-    /** icmp. */
-    String ICMP = "icmp";
-    /** tcp. */
-    String TCP = "tcp";
-    /** udp. */
-    String UDP = "udp";
   }
 
 
@@ -56,18 +50,18 @@ public class NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolAll e
    * Builder.
    */
   public static class Builder {
-    private String name;
     private String action;
     private String destination;
     private String direction;
+    private String name;
     private String source;
     private String protocol;
 
     public Builder(NetworkACLRulePrototypeNetworkACLContext networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolAll) {
-      this.name = networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolAll.name;
       this.action = networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolAll.action;
       this.destination = networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolAll.destination;
       this.direction = networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolAll.direction;
+      this.name = networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolAll.name;
       this.source = networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolAll.source;
       this.protocol = networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolAll.protocol;
     }
@@ -79,23 +73,29 @@ public class NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolAll e
     }
 
     /**
+     * Instantiates a new builder with required properties.
+     *
+     * @param action the action
+     * @param destination the destination
+     * @param direction the direction
+     * @param source the source
+     * @param protocol the protocol
+     */
+    public Builder(String action, String destination, String direction, String source, String protocol) {
+      this.action = action;
+      this.destination = destination;
+      this.direction = direction;
+      this.source = source;
+      this.protocol = protocol;
+    }
+
+    /**
      * Builds a NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolAll.
      *
      * @return the new NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolAll instance
      */
     public NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolAll build() {
       return new NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolAll(this);
-    }
-
-    /**
-     * Set the name.
-     *
-     * @param name the name
-     * @return the NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolAll builder
-     */
-    public Builder name(String name) {
-      this.name = name;
-      return this;
     }
 
     /**
@@ -128,6 +128,17 @@ public class NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolAll e
      */
     public Builder direction(String direction) {
       this.direction = direction;
+      return this;
+    }
+
+    /**
+     * Set the name.
+     *
+     * @param name the name
+     * @return the NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolAll builder
+     */
+    public Builder name(String name) {
+      this.name = name;
       return this;
     }
 
@@ -165,10 +176,10 @@ public class NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolAll e
       "source cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.protocol,
       "protocol cannot be null");
-    name = builder.name;
     action = builder.action;
     destination = builder.destination;
     direction = builder.direction;
+    name = builder.name;
     source = builder.source;
     protocol = builder.protocol;
   }

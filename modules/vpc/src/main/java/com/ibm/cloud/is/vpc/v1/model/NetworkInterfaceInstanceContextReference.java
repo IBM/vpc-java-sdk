@@ -28,9 +28,10 @@ public class NetworkInterfaceInstanceContextReference extends GenericModel {
     String NETWORK_INTERFACE = "network_interface";
   }
 
-  protected String name;
-  protected String id;
+  protected NetworkInterfaceInstanceContextReferenceDeleted deleted;
   protected String href;
+  protected String id;
+  protected String name;
   @SerializedName("primary_ipv4_address")
   protected String primaryIpv4Address;
   @SerializedName("resource_type")
@@ -38,14 +39,26 @@ public class NetworkInterfaceInstanceContextReference extends GenericModel {
   protected SubnetReference subnet;
 
   /**
-   * Gets the name.
+   * Gets the deleted.
    *
-   * The user-defined name for this network interface.
+   * If present, this property indicates the referenced resource has been deleted and provides
+   * some supplementary information.
    *
-   * @return the name
+   * @return the deleted
    */
-  public String getName() {
-    return name;
+  public NetworkInterfaceInstanceContextReferenceDeleted getDeleted() {
+    return deleted;
+  }
+
+  /**
+   * Gets the href.
+   *
+   * The URL for this network interface.
+   *
+   * @return the href
+   */
+  public String getHref() {
+    return href;
   }
 
   /**
@@ -60,14 +73,14 @@ public class NetworkInterfaceInstanceContextReference extends GenericModel {
   }
 
   /**
-   * Gets the href.
+   * Gets the name.
    *
-   * The URL for this network interface.
+   * The user-defined name for this network interface.
    *
-   * @return the href
+   * @return the name
    */
-  public String getHref() {
-    return href;
+  public String getName() {
+    return name;
   }
 
   /**

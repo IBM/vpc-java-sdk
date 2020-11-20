@@ -33,91 +33,10 @@ public class VPNGatewayConnectionPatchTest {
   final HashMap<String, InputStream> mockStreamMap = TestUtilities.createMockStreamMap();
   final List<FileWithMetadata> mockListFileWithMetadata = TestUtilities.creatMockListFileWithMetadata();
 
+  // TODO: Add tests for models that are abstract
   @Test
   public void testVPNGatewayConnectionPatch() throws Throwable {
-    VPNGatewayConnectionDPDPrototype vpnGatewayConnectionDpdPrototypeModel = new VPNGatewayConnectionDPDPrototype.Builder()
-      .action("restart")
-      .interval(Long.valueOf("30"))
-      .timeout(Long.valueOf("120"))
-      .build();
-    assertEquals(vpnGatewayConnectionDpdPrototypeModel.action(), "restart");
-    assertEquals(vpnGatewayConnectionDpdPrototypeModel.interval(), Long.valueOf("30"));
-    assertEquals(vpnGatewayConnectionDpdPrototypeModel.timeout(), Long.valueOf("120"));
-
-    IKEPolicyIdentityById ikePolicyIdentityModel = new IKEPolicyIdentityById.Builder()
-      .id("ddf51bec-3424-11e8-b467-0ed5f89f718b")
-      .build();
-    assertEquals(ikePolicyIdentityModel.id(), "ddf51bec-3424-11e8-b467-0ed5f89f718b");
-
-    IPsecPolicyIdentityById iPsecPolicyIdentityModel = new IPsecPolicyIdentityById.Builder()
-      .id("ddf51bec-3424-11e8-b467-0ed5f89f718b")
-      .build();
-    assertEquals(iPsecPolicyIdentityModel.id(), "ddf51bec-3424-11e8-b467-0ed5f89f718b");
-
-    VPNGatewayConnectionPatch vpnGatewayConnectionPatchModel = new VPNGatewayConnectionPatch.Builder()
-      .adminStateUp(true)
-      .peerAddress("169.21.50.5")
-      .name("my-vpn-connection")
-      .psk("lkj14b1oi0alcniejkso")
-      .deadPeerDetection(vpnGatewayConnectionDpdPrototypeModel)
-      .ikePolicy(ikePolicyIdentityModel)
-      .ipsecPolicy(iPsecPolicyIdentityModel)
-      .build();
-    assertEquals(vpnGatewayConnectionPatchModel.adminStateUp(), Boolean.valueOf(true));
-    assertEquals(vpnGatewayConnectionPatchModel.peerAddress(), "169.21.50.5");
-    assertEquals(vpnGatewayConnectionPatchModel.name(), "my-vpn-connection");
-    assertEquals(vpnGatewayConnectionPatchModel.psk(), "lkj14b1oi0alcniejkso");
-    assertEquals(vpnGatewayConnectionPatchModel.deadPeerDetection(), vpnGatewayConnectionDpdPrototypeModel);
-    assertEquals(vpnGatewayConnectionPatchModel.ikePolicy(), ikePolicyIdentityModel);
-    assertEquals(vpnGatewayConnectionPatchModel.ipsecPolicy(), iPsecPolicyIdentityModel);
-
-    String json = TestUtilities.serialize(vpnGatewayConnectionPatchModel);
-
-    VPNGatewayConnectionPatch vpnGatewayConnectionPatchModelNew = TestUtilities.deserialize(json, VPNGatewayConnectionPatch.class);
-    assertTrue(vpnGatewayConnectionPatchModelNew instanceof VPNGatewayConnectionPatch);
-    assertEquals(vpnGatewayConnectionPatchModelNew.adminStateUp(), Boolean.valueOf(true));
-    assertEquals(vpnGatewayConnectionPatchModelNew.peerAddress(), "169.21.50.5");
-    assertEquals(vpnGatewayConnectionPatchModelNew.name(), "my-vpn-connection");
-    assertEquals(vpnGatewayConnectionPatchModelNew.psk(), "lkj14b1oi0alcniejkso");
-    assertEquals(vpnGatewayConnectionPatchModelNew.deadPeerDetection().toString(), vpnGatewayConnectionDpdPrototypeModel.toString());
-    assertEquals(vpnGatewayConnectionPatchModelNew.ikePolicy().toString(), ikePolicyIdentityModel.toString());
-    assertEquals(vpnGatewayConnectionPatchModelNew.ipsecPolicy().toString(), iPsecPolicyIdentityModel.toString());
+    VPNGatewayConnectionPatch vpnGatewayConnectionPatchModel = new VPNGatewayConnectionPatch();
+    assertNotNull(vpnGatewayConnectionPatchModel);
   }
-  @Test
-  public void testVPNGatewayConnectionPatchAsPatch() throws Throwable {
-    VPNGatewayConnectionDPDPrototype vpnGatewayConnectionDpdPrototypeModel = new VPNGatewayConnectionDPDPrototype.Builder()
-      .action("restart")
-      .interval(Long.valueOf("30"))
-      .timeout(Long.valueOf("120"))
-      .build();
-
-    IKEPolicyIdentityById ikePolicyIdentityModel = new IKEPolicyIdentityById.Builder()
-      .id("ddf51bec-3424-11e8-b467-0ed5f89f718b")
-      .build();
-
-    IPsecPolicyIdentityById iPsecPolicyIdentityModel = new IPsecPolicyIdentityById.Builder()
-      .id("ddf51bec-3424-11e8-b467-0ed5f89f718b")
-      .build();
-
-    VPNGatewayConnectionPatch vpnGatewayConnectionPatchModel = new VPNGatewayConnectionPatch.Builder()
-      .adminStateUp(true)
-      .peerAddress("169.21.50.5")
-      .name("my-vpn-connection")
-      .psk("lkj14b1oi0alcniejkso")
-      .deadPeerDetection(vpnGatewayConnectionDpdPrototypeModel)
-      .ikePolicy(ikePolicyIdentityModel)
-      .ipsecPolicy(iPsecPolicyIdentityModel)
-      .build();
-
-    Map<String, Object> mergePatch = vpnGatewayConnectionPatchModel.asPatch();
-
-    assertTrue(mergePatch.containsKey("admin_state_up"));
-    assertEquals(mergePatch.get("peer_address"), "169.21.50.5");
-    assertEquals(mergePatch.get("name"), "my-vpn-connection");
-    assertEquals(mergePatch.get("psk"), "lkj14b1oi0alcniejkso");
-    assertTrue(mergePatch.containsKey("dead_peer_detection"));
-    assertTrue(mergePatch.containsKey("ike_policy"));
-    assertTrue(mergePatch.containsKey("ipsec_policy"));
-  }
-
 }

@@ -23,27 +23,27 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class NetworkACL extends GenericModel {
 
-  protected String id;
-  protected String crn;
-  protected String href;
-  protected String name;
-  protected VPCReference vpc;
-  @SerializedName("resource_group")
-  protected ResourceGroupReference resourceGroup;
   @SerializedName("created_at")
   protected Date createdAt;
+  protected String crn;
+  protected String href;
+  protected String id;
+  protected String name;
+  @SerializedName("resource_group")
+  protected ResourceGroupReference resourceGroup;
   protected List<NetworkACLRuleItem> rules;
   protected List<SubnetReference> subnets;
+  protected VPCReference vpc;
 
   /**
-   * Gets the id.
+   * Gets the createdAt.
    *
-   * The unique identifier for this network ACL.
+   * The date and time that the network ACL was created.
    *
-   * @return the id
+   * @return the createdAt
    */
-  public String getId() {
-    return id;
+  public Date getCreatedAt() {
+    return createdAt;
   }
 
   /**
@@ -69,6 +69,17 @@ public class NetworkACL extends GenericModel {
   }
 
   /**
+   * Gets the id.
+   *
+   * The unique identifier for this network ACL.
+   *
+   * @return the id
+   */
+  public String getId() {
+    return id;
+  }
+
+  /**
    * Gets the name.
    *
    * The user-defined name for this network ACL.
@@ -80,17 +91,6 @@ public class NetworkACL extends GenericModel {
   }
 
   /**
-   * Gets the vpc.
-   *
-   * The VPC this network ACL is a part of.
-   *
-   * @return the vpc
-   */
-  public VPCReference getVpc() {
-    return vpc;
-  }
-
-  /**
    * Gets the resourceGroup.
    *
    * The resource group for this network ACL.
@@ -99,17 +99,6 @@ public class NetworkACL extends GenericModel {
    */
   public ResourceGroupReference getResourceGroup() {
     return resourceGroup;
-  }
-
-  /**
-   * Gets the createdAt.
-   *
-   * The date and time that the network ACL was created.
-   *
-   * @return the createdAt
-   */
-  public Date getCreatedAt() {
-    return createdAt;
   }
 
   /**
@@ -132,6 +121,17 @@ public class NetworkACL extends GenericModel {
    */
   public List<SubnetReference> getSubnets() {
     return subnets;
+  }
+
+  /**
+   * Gets the vpc.
+   *
+   * The VPC this network ACL is a part of.
+   *
+   * @return the vpc
+   */
+  public VPCReference getVpc() {
+    return vpc;
   }
 }
 

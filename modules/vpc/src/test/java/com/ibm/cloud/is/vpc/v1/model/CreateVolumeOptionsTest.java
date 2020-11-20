@@ -36,15 +36,15 @@ public class CreateVolumeOptionsTest {
 
   @Test
   public void testCreateVolumeOptions() throws Throwable {
-    VolumeProfileIdentityByName volumeProfileIdentityModel = new VolumeProfileIdentityByName.Builder()
-      .name("general-purpose")
-      .build();
-    assertEquals(volumeProfileIdentityModel.name(), "general-purpose");
-
     EncryptionKeyIdentityByCRN encryptionKeyIdentityModel = new EncryptionKeyIdentityByCRN.Builder()
       .crn("crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179")
       .build();
     assertEquals(encryptionKeyIdentityModel.crn(), "crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179");
+
+    VolumeProfileIdentityByName volumeProfileIdentityModel = new VolumeProfileIdentityByName.Builder()
+      .name("general-purpose")
+      .build();
+    assertEquals(volumeProfileIdentityModel.name(), "general-purpose");
 
     ResourceGroupIdentityById resourceGroupIdentityModel = new ResourceGroupIdentityById.Builder()
       .id("fee82deba12e4c0fb69c3b09d1f12345")
@@ -57,18 +57,18 @@ public class CreateVolumeOptionsTest {
     assertEquals(zoneIdentityModel.name(), "us-south-1");
 
     VolumePrototypeVolumeByCapacity volumePrototypeModel = new VolumePrototypeVolumeByCapacity.Builder()
-      .name("my-volume")
-      .profile(volumeProfileIdentityModel)
       .encryptionKey(encryptionKeyIdentityModel)
       .iops(Long.valueOf("10000"))
+      .name("my-volume")
+      .profile(volumeProfileIdentityModel)
       .resourceGroup(resourceGroupIdentityModel)
       .zone(zoneIdentityModel)
       .capacity(Long.valueOf("100"))
       .build();
-    assertEquals(volumePrototypeModel.name(), "my-volume");
-    assertEquals(volumePrototypeModel.profile(), volumeProfileIdentityModel);
     assertEquals(volumePrototypeModel.encryptionKey(), encryptionKeyIdentityModel);
     assertEquals(volumePrototypeModel.iops(), Long.valueOf("10000"));
+    assertEquals(volumePrototypeModel.name(), "my-volume");
+    assertEquals(volumePrototypeModel.profile(), volumeProfileIdentityModel);
     assertEquals(volumePrototypeModel.resourceGroup(), resourceGroupIdentityModel);
     assertEquals(volumePrototypeModel.zone(), zoneIdentityModel);
     assertEquals(volumePrototypeModel.capacity(), Long.valueOf("100"));

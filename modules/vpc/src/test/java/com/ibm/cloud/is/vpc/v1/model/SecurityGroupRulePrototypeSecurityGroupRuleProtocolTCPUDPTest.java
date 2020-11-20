@@ -13,8 +13,8 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
-import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRulePrototypeRemoteIP;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRulePrototypeSecurityGroupRuleProtocolTCPUDP;
+import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleRemotePrototypeIP;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -32,25 +32,25 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolTCPUDPTest {
 
   @Test
   public void testSecurityGroupRulePrototypeSecurityGroupRuleProtocolTCPUDP() throws Throwable {
-    SecurityGroupRulePrototypeRemoteIP securityGroupRulePrototypeRemoteModel = new SecurityGroupRulePrototypeRemoteIP.Builder()
+    SecurityGroupRuleRemotePrototypeIP securityGroupRuleRemotePrototypeModel = new SecurityGroupRuleRemotePrototypeIP.Builder()
       .address("192.168.3.4")
       .build();
-    assertEquals(securityGroupRulePrototypeRemoteModel.address(), "192.168.3.4");
+    assertEquals(securityGroupRuleRemotePrototypeModel.address(), "192.168.3.4");
 
     SecurityGroupRulePrototypeSecurityGroupRuleProtocolTCPUDP securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudpModel = new SecurityGroupRulePrototypeSecurityGroupRuleProtocolTCPUDP.Builder()
       .direction("inbound")
       .ipVersion("ipv4")
-      .protocol("udp")
-      .remote(securityGroupRulePrototypeRemoteModel)
+      .remote(securityGroupRuleRemotePrototypeModel)
       .portMax(Long.valueOf("22"))
       .portMin(Long.valueOf("22"))
+      .protocol("udp")
       .build();
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudpModel.direction(), "inbound");
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudpModel.ipVersion(), "ipv4");
-    assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudpModel.protocol(), "udp");
-    assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudpModel.remote(), securityGroupRulePrototypeRemoteModel);
+    assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudpModel.remote(), securityGroupRuleRemotePrototypeModel);
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudpModel.portMax(), Long.valueOf("22"));
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudpModel.portMin(), Long.valueOf("22"));
+    assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudpModel.protocol(), "udp");
 
     String json = TestUtilities.serialize(securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudpModel);
 
@@ -58,9 +58,15 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolTCPUDPTest {
     assertTrue(securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudpModelNew instanceof SecurityGroupRulePrototypeSecurityGroupRuleProtocolTCPUDP);
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudpModelNew.direction(), "inbound");
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudpModelNew.ipVersion(), "ipv4");
-    assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudpModelNew.protocol(), "udp");
-    assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudpModelNew.remote().toString(), securityGroupRulePrototypeRemoteModel.toString());
+    assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudpModelNew.remote().toString(), securityGroupRuleRemotePrototypeModel.toString());
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudpModelNew.portMax(), Long.valueOf("22"));
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudpModelNew.portMin(), Long.valueOf("22"));
+    assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudpModelNew.protocol(), "udp");
   }
+
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testSecurityGroupRulePrototypeSecurityGroupRuleProtocolTCPUDPError() throws Throwable {
+    new SecurityGroupRulePrototypeSecurityGroupRuleProtocolTCPUDP.Builder().build();
+  }
+
 }

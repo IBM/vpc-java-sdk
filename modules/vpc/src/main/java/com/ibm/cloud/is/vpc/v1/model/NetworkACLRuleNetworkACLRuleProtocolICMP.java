@@ -38,20 +38,6 @@ public class NetworkACLRuleNetworkACLRuleProtocolICMP extends NetworkACLRule {
   }
 
   /**
-   * The protocol to enforce.
-   */
-  public interface Protocol {
-    /** all. */
-    String ALL = "all";
-    /** icmp. */
-    String ICMP = "icmp";
-    /** tcp. */
-    String TCP = "tcp";
-    /** udp. */
-    String UDP = "udp";
-  }
-
-  /**
    * The IP version for this rule.
    */
   public interface IpVersion {
@@ -59,6 +45,14 @@ public class NetworkACLRuleNetworkACLRuleProtocolICMP extends NetworkACLRule {
     String IPV4 = "ipv4";
     /** ipv6. */
     String IPV6 = "ipv6";
+  }
+
+  /**
+   * The protocol to enforce.
+   */
+  public interface Protocol {
+    /** icmp. */
+    String ICMP = "icmp";
   }
 
 }

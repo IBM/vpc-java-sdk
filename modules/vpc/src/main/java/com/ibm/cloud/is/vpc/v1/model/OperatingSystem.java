@@ -20,36 +20,14 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class OperatingSystem extends GenericModel {
 
-  protected String name;
-  protected String href;
   protected String architecture;
   @SerializedName("display_name")
   protected String displayName;
   protected String family;
+  protected String href;
+  protected String name;
   protected String vendor;
   protected String version;
-
-  /**
-   * Gets the name.
-   *
-   * The unique name of the operating system.
-   *
-   * @return the name
-   */
-  public String getName() {
-    return name;
-  }
-
-  /**
-   * Gets the href.
-   *
-   * The URL for this operating system.
-   *
-   * @return the href
-   */
-  public String getHref() {
-    return href;
-  }
 
   /**
    * Gets the architecture.
@@ -82,6 +60,28 @@ public class OperatingSystem extends GenericModel {
    */
   public String getFamily() {
     return family;
+  }
+
+  /**
+   * Gets the href.
+   *
+   * The URL for this operating system.
+   *
+   * @return the href
+   */
+  public String getHref() {
+    return href;
+  }
+
+  /**
+   * Gets the name.
+   *
+   * The globally unique name for this operating system.
+   *
+   * @return the name
+   */
+  public String getName() {
+    return name;
   }
 
   /**

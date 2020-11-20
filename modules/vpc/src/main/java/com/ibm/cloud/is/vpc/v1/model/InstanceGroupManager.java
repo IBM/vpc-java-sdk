@@ -30,65 +30,21 @@ public class InstanceGroupManager extends GenericModel {
     String AUTOSCALE = "autoscale";
   }
 
-  protected String id;
-  protected String href;
-  protected String name;
-  @SerializedName("management_enabled")
-  protected Boolean managementEnabled;
   @SerializedName("aggregation_window")
   protected Long aggregationWindow;
   protected Long cooldown;
+  protected String href;
+  protected String id;
+  @SerializedName("management_enabled")
+  protected Boolean managementEnabled;
+  @SerializedName("manager_type")
+  protected String managerType;
   @SerializedName("max_membership_count")
   protected Long maxMembershipCount;
   @SerializedName("min_membership_count")
   protected Long minMembershipCount;
-  @SerializedName("manager_type")
-  protected String managerType;
+  protected String name;
   protected List<InstanceGroupManagerPolicyReference> policies;
-
-  /**
-   * Gets the id.
-   *
-   * The unique identifier for this instance group manager.
-   *
-   * @return the id
-   */
-  public String getId() {
-    return id;
-  }
-
-  /**
-   * Gets the href.
-   *
-   * The URL for this instance group manager.
-   *
-   * @return the href
-   */
-  public String getHref() {
-    return href;
-  }
-
-  /**
-   * Gets the name.
-   *
-   * The user-defined name for this instance group manager. Names must be unique within the instance group.
-   *
-   * @return the name
-   */
-  public String getName() {
-    return name;
-  }
-
-  /**
-   * Gets the managementEnabled.
-   *
-   * If set to `true`, this manager will control the instance group.
-   *
-   * @return the managementEnabled
-   */
-  public Boolean isManagementEnabled() {
-    return managementEnabled;
-  }
 
   /**
    * Gets the aggregationWindow.
@@ -110,6 +66,50 @@ public class InstanceGroupManager extends GenericModel {
    */
   public Long getCooldown() {
     return cooldown;
+  }
+
+  /**
+   * Gets the href.
+   *
+   * The URL for this instance group manager.
+   *
+   * @return the href
+   */
+  public String getHref() {
+    return href;
+  }
+
+  /**
+   * Gets the id.
+   *
+   * The unique identifier for this instance group manager.
+   *
+   * @return the id
+   */
+  public String getId() {
+    return id;
+  }
+
+  /**
+   * Gets the managementEnabled.
+   *
+   * If set to `true`, this manager will control the instance group.
+   *
+   * @return the managementEnabled
+   */
+  public Boolean isManagementEnabled() {
+    return managementEnabled;
+  }
+
+  /**
+   * Gets the managerType.
+   *
+   * The type of instance group manager.
+   *
+   * @return the managerType
+   */
+  public String getManagerType() {
+    return managerType;
   }
 
   /**
@@ -135,14 +135,14 @@ public class InstanceGroupManager extends GenericModel {
   }
 
   /**
-   * Gets the managerType.
+   * Gets the name.
    *
-   * The type of instance group manager.
+   * The user-defined name for this instance group manager. Names must be unique within the instance group.
    *
-   * @return the managerType
+   * @return the name
    */
-  public String getManagerType() {
-    return managerType;
+  public String getName() {
+    return name;
   }
 
   /**

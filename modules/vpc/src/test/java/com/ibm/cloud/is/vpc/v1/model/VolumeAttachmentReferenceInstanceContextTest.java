@@ -15,7 +15,9 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentDevice;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentReferenceInstanceContext;
+import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentReferenceInstanceContextDeleted;
 import com.ibm.cloud.is.vpc.v1.model.VolumeReference;
+import com.ibm.cloud.is.vpc.v1.model.VolumeReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -34,10 +36,11 @@ public class VolumeAttachmentReferenceInstanceContextTest {
   @Test
   public void testVolumeAttachmentReferenceInstanceContext() throws Throwable {
     VolumeAttachmentReferenceInstanceContext volumeAttachmentReferenceInstanceContextModel = new VolumeAttachmentReferenceInstanceContext();
-    assertNull(volumeAttachmentReferenceInstanceContextModel.getId());
-    assertNull(volumeAttachmentReferenceInstanceContextModel.getHref());
-    assertNull(volumeAttachmentReferenceInstanceContextModel.getName());
+    assertNull(volumeAttachmentReferenceInstanceContextModel.getDeleted());
     assertNull(volumeAttachmentReferenceInstanceContextModel.getDevice());
+    assertNull(volumeAttachmentReferenceInstanceContextModel.getHref());
+    assertNull(volumeAttachmentReferenceInstanceContextModel.getId());
+    assertNull(volumeAttachmentReferenceInstanceContextModel.getName());
     assertNull(volumeAttachmentReferenceInstanceContextModel.getVolume());
   }
 }

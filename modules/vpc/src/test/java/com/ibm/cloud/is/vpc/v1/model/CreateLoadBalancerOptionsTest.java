@@ -54,15 +54,17 @@ public class CreateLoadBalancerOptionsTest {
     assertEquals(loadBalancerPoolIdentityByNameModel.name(), "my-load-balancer-pool");
 
     LoadBalancerListenerPrototypeLoadBalancerContext loadBalancerListenerPrototypeLoadBalancerContextModel = new LoadBalancerListenerPrototypeLoadBalancerContext.Builder()
+      .acceptProxyProtocol(true)
       .connectionLimit(Long.valueOf("2000"))
+      .defaultPool(loadBalancerPoolIdentityByNameModel)
       .port(Long.valueOf("443"))
       .protocol("http")
-      .defaultPool(loadBalancerPoolIdentityByNameModel)
       .build();
+    assertEquals(loadBalancerListenerPrototypeLoadBalancerContextModel.acceptProxyProtocol(), Boolean.valueOf(true));
     assertEquals(loadBalancerListenerPrototypeLoadBalancerContextModel.connectionLimit(), Long.valueOf("2000"));
+    assertEquals(loadBalancerListenerPrototypeLoadBalancerContextModel.defaultPool(), loadBalancerPoolIdentityByNameModel);
     assertEquals(loadBalancerListenerPrototypeLoadBalancerContextModel.port(), Long.valueOf("443"));
     assertEquals(loadBalancerListenerPrototypeLoadBalancerContextModel.protocol(), "http");
-    assertEquals(loadBalancerListenerPrototypeLoadBalancerContextModel.defaultPool(), loadBalancerPoolIdentityByNameModel);
 
     LoadBalancerPoolHealthMonitorPrototype loadBalancerPoolHealthMonitorPrototypeModel = new LoadBalancerPoolHealthMonitorPrototype.Builder()
       .delay(Long.valueOf("5"))
@@ -86,12 +88,12 @@ public class CreateLoadBalancerOptionsTest {
 
     LoadBalancerPoolMemberPrototype loadBalancerPoolMemberPrototypeModel = new LoadBalancerPoolMemberPrototype.Builder()
       .port(Long.valueOf("80"))
-      .weight(Long.valueOf("50"))
       .target(loadBalancerPoolMemberTargetPrototypeModel)
+      .weight(Long.valueOf("50"))
       .build();
     assertEquals(loadBalancerPoolMemberPrototypeModel.port(), Long.valueOf("80"));
-    assertEquals(loadBalancerPoolMemberPrototypeModel.weight(), Long.valueOf("50"));
     assertEquals(loadBalancerPoolMemberPrototypeModel.target(), loadBalancerPoolMemberTargetPrototypeModel);
+    assertEquals(loadBalancerPoolMemberPrototypeModel.weight(), Long.valueOf("50"));
 
     LoadBalancerPoolSessionPersistencePrototype loadBalancerPoolSessionPersistencePrototypeModel = new LoadBalancerPoolSessionPersistencePrototype.Builder()
       .type("source_ip")
@@ -99,18 +101,20 @@ public class CreateLoadBalancerOptionsTest {
     assertEquals(loadBalancerPoolSessionPersistencePrototypeModel.type(), "source_ip");
 
     LoadBalancerPoolPrototype loadBalancerPoolPrototypeModel = new LoadBalancerPoolPrototype.Builder()
-      .name("my-load-balancer-pool")
       .algorithm("least_connections")
-      .protocol("http")
       .healthMonitor(loadBalancerPoolHealthMonitorPrototypeModel)
       .members(new java.util.ArrayList<LoadBalancerPoolMemberPrototype>(java.util.Arrays.asList(loadBalancerPoolMemberPrototypeModel)))
+      .name("my-load-balancer-pool")
+      .protocol("http")
+      .proxyProtocol("disabled")
       .sessionPersistence(loadBalancerPoolSessionPersistencePrototypeModel)
       .build();
-    assertEquals(loadBalancerPoolPrototypeModel.name(), "my-load-balancer-pool");
     assertEquals(loadBalancerPoolPrototypeModel.algorithm(), "least_connections");
-    assertEquals(loadBalancerPoolPrototypeModel.protocol(), "http");
     assertEquals(loadBalancerPoolPrototypeModel.healthMonitor(), loadBalancerPoolHealthMonitorPrototypeModel);
     assertEquals(loadBalancerPoolPrototypeModel.members(), new java.util.ArrayList<LoadBalancerPoolMemberPrototype>(java.util.Arrays.asList(loadBalancerPoolMemberPrototypeModel)));
+    assertEquals(loadBalancerPoolPrototypeModel.name(), "my-load-balancer-pool");
+    assertEquals(loadBalancerPoolPrototypeModel.protocol(), "http");
+    assertEquals(loadBalancerPoolPrototypeModel.proxyProtocol(), "disabled");
     assertEquals(loadBalancerPoolPrototypeModel.sessionPersistence(), loadBalancerPoolSessionPersistencePrototypeModel);
 
     LoadBalancerProfileIdentityByName loadBalancerProfileIdentityModel = new LoadBalancerProfileIdentityByName.Builder()
@@ -126,16 +130,16 @@ public class CreateLoadBalancerOptionsTest {
     CreateLoadBalancerOptions createLoadBalancerOptionsModel = new CreateLoadBalancerOptions.Builder()
       .isPublic(true)
       .subnets(new java.util.ArrayList<SubnetIdentity>(java.util.Arrays.asList(subnetIdentityModel)))
-      .name("my-load-balancer")
       .listeners(new java.util.ArrayList<LoadBalancerListenerPrototypeLoadBalancerContext>(java.util.Arrays.asList(loadBalancerListenerPrototypeLoadBalancerContextModel)))
+      .name("my-load-balancer")
       .pools(new java.util.ArrayList<LoadBalancerPoolPrototype>(java.util.Arrays.asList(loadBalancerPoolPrototypeModel)))
       .profile(loadBalancerProfileIdentityModel)
       .resourceGroup(resourceGroupIdentityModel)
       .build();
     assertEquals(createLoadBalancerOptionsModel.isPublic(), Boolean.valueOf(true));
     assertEquals(createLoadBalancerOptionsModel.subnets(), new java.util.ArrayList<SubnetIdentity>(java.util.Arrays.asList(subnetIdentityModel)));
-    assertEquals(createLoadBalancerOptionsModel.name(), "my-load-balancer");
     assertEquals(createLoadBalancerOptionsModel.listeners(), new java.util.ArrayList<LoadBalancerListenerPrototypeLoadBalancerContext>(java.util.Arrays.asList(loadBalancerListenerPrototypeLoadBalancerContextModel)));
+    assertEquals(createLoadBalancerOptionsModel.name(), "my-load-balancer");
     assertEquals(createLoadBalancerOptionsModel.pools(), new java.util.ArrayList<LoadBalancerPoolPrototype>(java.util.Arrays.asList(loadBalancerPoolPrototypeModel)));
     assertEquals(createLoadBalancerOptionsModel.profile(), loadBalancerProfileIdentityModel);
     assertEquals(createLoadBalancerOptionsModel.resourceGroup(), resourceGroupIdentityModel);

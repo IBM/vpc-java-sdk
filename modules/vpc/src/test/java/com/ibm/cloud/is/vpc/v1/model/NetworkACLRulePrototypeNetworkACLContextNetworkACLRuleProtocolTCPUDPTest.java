@@ -32,25 +32,25 @@ public class NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolTCPUD
   @Test
   public void testNetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolTCPUDP() throws Throwable {
     NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolTCPUDP networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolTcpudpModel = new NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolTCPUDP.Builder()
-      .name("my-rule-2")
       .action("allow")
       .destination("192.168.3.2/32")
       .direction("inbound")
+      .name("my-rule-2")
       .source("192.168.3.2/32")
-      .protocol("udp")
       .destinationPortMax(Long.valueOf("22"))
       .destinationPortMin(Long.valueOf("22"))
+      .protocol("udp")
       .sourcePortMax(Long.valueOf("65535"))
       .sourcePortMin(Long.valueOf("49152"))
       .build();
-    assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolTcpudpModel.name(), "my-rule-2");
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolTcpudpModel.action(), "allow");
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolTcpudpModel.destination(), "192.168.3.2/32");
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolTcpudpModel.direction(), "inbound");
+    assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolTcpudpModel.name(), "my-rule-2");
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolTcpudpModel.source(), "192.168.3.2/32");
-    assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolTcpudpModel.protocol(), "udp");
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolTcpudpModel.destinationPortMax(), Long.valueOf("22"));
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolTcpudpModel.destinationPortMin(), Long.valueOf("22"));
+    assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolTcpudpModel.protocol(), "udp");
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolTcpudpModel.sourcePortMax(), Long.valueOf("65535"));
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolTcpudpModel.sourcePortMin(), Long.valueOf("49152"));
 
@@ -58,15 +58,21 @@ public class NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolTCPUD
 
     NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolTCPUDP networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolTcpudpModelNew = TestUtilities.deserialize(json, NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolTCPUDP.class);
     assertTrue(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolTcpudpModelNew instanceof NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolTCPUDP);
-    assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolTcpudpModelNew.name(), "my-rule-2");
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolTcpudpModelNew.action(), "allow");
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolTcpudpModelNew.destination(), "192.168.3.2/32");
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolTcpudpModelNew.direction(), "inbound");
+    assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolTcpudpModelNew.name(), "my-rule-2");
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolTcpudpModelNew.source(), "192.168.3.2/32");
-    assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolTcpudpModelNew.protocol(), "udp");
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolTcpudpModelNew.destinationPortMax(), Long.valueOf("22"));
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolTcpudpModelNew.destinationPortMin(), Long.valueOf("22"));
+    assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolTcpudpModelNew.protocol(), "udp");
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolTcpudpModelNew.sourcePortMax(), Long.valueOf("65535"));
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolTcpudpModelNew.sourcePortMin(), Long.valueOf("49152"));
   }
+
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testNetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolTCPUDPError() throws Throwable {
+    new NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolTCPUDP.Builder().build();
+  }
+
 }

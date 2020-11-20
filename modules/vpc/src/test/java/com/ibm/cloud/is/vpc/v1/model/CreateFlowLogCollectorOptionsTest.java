@@ -15,7 +15,7 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.CloudObjectStorageBucketIdentityByName;
 import com.ibm.cloud.is.vpc.v1.model.CreateFlowLogCollectorOptions;
-import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorPrototypeTargetNetworkInterfaceIdentityNetworkInterfaceIdentityNetworkInterfaceIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceIdentityNetworkInterfaceIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupIdentityById;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
@@ -39,10 +39,10 @@ public class CreateFlowLogCollectorOptionsTest {
       .build();
     assertEquals(cloudObjectStorageBucketIdentityModel.name(), "bucket-27200-lwx4cfvcue");
 
-    FlowLogCollectorPrototypeTargetNetworkInterfaceIdentityNetworkInterfaceIdentityNetworkInterfaceIdentityById flowLogCollectorPrototypeTargetModel = new FlowLogCollectorPrototypeTargetNetworkInterfaceIdentityNetworkInterfaceIdentityNetworkInterfaceIdentityById.Builder()
+    FlowLogCollectorTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceIdentityNetworkInterfaceIdentityById flowLogCollectorTargetPrototypeModel = new FlowLogCollectorTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceIdentityNetworkInterfaceIdentityById.Builder()
       .id("10c02d81-0ecb-4dc5-897d-28392913b81e")
       .build();
-    assertEquals(flowLogCollectorPrototypeTargetModel.id(), "10c02d81-0ecb-4dc5-897d-28392913b81e");
+    assertEquals(flowLogCollectorTargetPrototypeModel.id(), "10c02d81-0ecb-4dc5-897d-28392913b81e");
 
     ResourceGroupIdentityById resourceGroupIdentityModel = new ResourceGroupIdentityById.Builder()
       .id("fee82deba12e4c0fb69c3b09d1f12345")
@@ -51,15 +51,15 @@ public class CreateFlowLogCollectorOptionsTest {
 
     CreateFlowLogCollectorOptions createFlowLogCollectorOptionsModel = new CreateFlowLogCollectorOptions.Builder()
       .storageBucket(cloudObjectStorageBucketIdentityModel)
-      .target(flowLogCollectorPrototypeTargetModel)
-      .name("my-flow-log-collector")
+      .target(flowLogCollectorTargetPrototypeModel)
       .active(false)
+      .name("my-flow-log-collector")
       .resourceGroup(resourceGroupIdentityModel)
       .build();
     assertEquals(createFlowLogCollectorOptionsModel.storageBucket(), cloudObjectStorageBucketIdentityModel);
-    assertEquals(createFlowLogCollectorOptionsModel.target(), flowLogCollectorPrototypeTargetModel);
-    assertEquals(createFlowLogCollectorOptionsModel.name(), "my-flow-log-collector");
+    assertEquals(createFlowLogCollectorOptionsModel.target(), flowLogCollectorTargetPrototypeModel);
     assertEquals(createFlowLogCollectorOptionsModel.active(), Boolean.valueOf(false));
+    assertEquals(createFlowLogCollectorOptionsModel.name(), "my-flow-log-collector");
     assertEquals(createFlowLogCollectorOptionsModel.resourceGroup(), resourceGroupIdentityModel);
   }
 

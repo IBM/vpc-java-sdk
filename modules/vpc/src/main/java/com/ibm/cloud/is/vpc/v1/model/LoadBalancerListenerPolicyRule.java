@@ -35,18 +35,6 @@ public class LoadBalancerListenerPolicyRule extends GenericModel {
   }
 
   /**
-   * The type of the rule.
-   */
-  public interface Type {
-    /** header. */
-    String HEADER = "header";
-    /** hostname. */
-    String HOSTNAME = "hostname";
-    /** path. */
-    String PATH = "path";
-  }
-
-  /**
    * The provisioning status of this rule.
    */
   public interface ProvisioningStatus {
@@ -64,26 +52,60 @@ public class LoadBalancerListenerPolicyRule extends GenericModel {
     String UPDATE_PENDING = "update_pending";
   }
 
-  protected String id;
-  protected String href;
+  /**
+   * The type of the rule.
+   */
+  public interface Type {
+    /** header. */
+    String HEADER = "header";
+    /** hostname. */
+    String HOSTNAME = "hostname";
+    /** path. */
+    String PATH = "path";
+  }
+
   protected String condition;
-  protected String field;
-  protected String type;
-  protected String value;
   @SerializedName("created_at")
   protected Date createdAt;
+  protected String field;
+  protected String href;
+  protected String id;
   @SerializedName("provisioning_status")
   protected String provisioningStatus;
+  protected String type;
+  protected String value;
 
   /**
-   * Gets the id.
+   * Gets the condition.
    *
-   * The rule's unique identifier.
+   * The condition of the rule.
    *
-   * @return the id
+   * @return the condition
    */
-  public String getId() {
-    return id;
+  public String getCondition() {
+    return condition;
+  }
+
+  /**
+   * Gets the createdAt.
+   *
+   * The date and time that this rule was created.
+   *
+   * @return the createdAt
+   */
+  public Date getCreatedAt() {
+    return createdAt;
+  }
+
+  /**
+   * Gets the field.
+   *
+   * HTTP header field. This is only applicable to "header" rule type.
+   *
+   * @return the field
+   */
+  public String getField() {
+    return field;
   }
 
   /**
@@ -98,25 +120,25 @@ public class LoadBalancerListenerPolicyRule extends GenericModel {
   }
 
   /**
-   * Gets the condition.
+   * Gets the id.
    *
-   * The condition of the rule.
+   * The rule's unique identifier.
    *
-   * @return the condition
+   * @return the id
    */
-  public String getCondition() {
-    return condition;
+  public String getId() {
+    return id;
   }
 
   /**
-   * Gets the field.
+   * Gets the provisioningStatus.
    *
-   * HTTP header field. This is only applicable to "header" rule type.
+   * The provisioning status of this rule.
    *
-   * @return the field
+   * @return the provisioningStatus
    */
-  public String getField() {
-    return field;
+  public String getProvisioningStatus() {
+    return provisioningStatus;
   }
 
   /**
@@ -139,28 +161,6 @@ public class LoadBalancerListenerPolicyRule extends GenericModel {
    */
   public String getValue() {
     return value;
-  }
-
-  /**
-   * Gets the createdAt.
-   *
-   * The date and time that this rule was created.
-   *
-   * @return the createdAt
-   */
-  public Date getCreatedAt() {
-    return createdAt;
-  }
-
-  /**
-   * Gets the provisioningStatus.
-   *
-   * The provisioning status of this rule.
-   *
-   * @return the provisioningStatus
-   */
-  public String getProvisioningStatus() {
-    return provisioningStatus;
   }
 }
 

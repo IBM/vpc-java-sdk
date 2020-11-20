@@ -24,14 +24,6 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class IPsecPolicy extends GenericModel {
 
   /**
-   * The resource type.
-   */
-  public interface ResourceType {
-    /** ipsec_policy. */
-    String IPSEC_POLICY = "ipsec_policy";
-  }
-
-  /**
    * The authentication algorithm.
    */
   public interface AuthenticationAlgorithm {
@@ -41,6 +33,14 @@ public class IPsecPolicy extends GenericModel {
     String SHA1 = "sha1";
     /** sha256. */
     String SHA256 = "sha256";
+  }
+
+  /**
+   * The encapsulation mode used. Only `tunnel` is supported.
+   */
+  public interface EncapsulationMode {
+    /** tunnel. */
+    String TUNNEL = "tunnel";
   }
 
   /**
@@ -70,11 +70,11 @@ public class IPsecPolicy extends GenericModel {
   }
 
   /**
-   * The encapsulation mode used. Only `tunnel` is supported.
+   * The resource type.
    */
-  public interface EncapsulationMode {
-    /** tunnel. */
-    String TUNNEL = "tunnel";
+  public interface ResourceType {
+    /** ipsec_policy. */
+    String IPSEC_POLICY = "ipsec_policy";
   }
 
   /**
@@ -85,71 +85,27 @@ public class IPsecPolicy extends GenericModel {
     String ESP = "esp";
   }
 
-  protected String id;
-  protected String href;
-  protected String name;
-  @SerializedName("resource_type")
-  protected String resourceType;
   @SerializedName("authentication_algorithm")
   protected String authenticationAlgorithm;
-  @SerializedName("encryption_algorithm")
-  protected String encryptionAlgorithm;
-  @SerializedName("key_lifetime")
-  protected Long keyLifetime;
-  protected String pfs;
-  @SerializedName("resource_group")
-  protected ResourceGroupReference resourceGroup;
   protected List<VPNGatewayConnectionReference> connections;
   @SerializedName("created_at")
   protected Date createdAt;
   @SerializedName("encapsulation_mode")
   protected String encapsulationMode;
+  @SerializedName("encryption_algorithm")
+  protected String encryptionAlgorithm;
+  protected String href;
+  protected String id;
+  @SerializedName("key_lifetime")
+  protected Long keyLifetime;
+  protected String name;
+  protected String pfs;
+  @SerializedName("resource_group")
+  protected ResourceGroupReference resourceGroup;
+  @SerializedName("resource_type")
+  protected String resourceType;
   @SerializedName("transform_protocol")
   protected String transformProtocol;
-
-  /**
-   * Gets the id.
-   *
-   * The unique identifier for this IPsec policy.
-   *
-   * @return the id
-   */
-  public String getId() {
-    return id;
-  }
-
-  /**
-   * Gets the href.
-   *
-   * The IPsec policy's canonical URL.
-   *
-   * @return the href
-   */
-  public String getHref() {
-    return href;
-  }
-
-  /**
-   * Gets the name.
-   *
-   * The user-defined name for this IPsec policy.
-   *
-   * @return the name
-   */
-  public String getName() {
-    return name;
-  }
-
-  /**
-   * Gets the resourceType.
-   *
-   * The resource type.
-   *
-   * @return the resourceType
-   */
-  public String getResourceType() {
-    return resourceType;
-  }
 
   /**
    * Gets the authenticationAlgorithm.
@@ -160,50 +116,6 @@ public class IPsecPolicy extends GenericModel {
    */
   public String getAuthenticationAlgorithm() {
     return authenticationAlgorithm;
-  }
-
-  /**
-   * Gets the encryptionAlgorithm.
-   *
-   * The encryption algorithm.
-   *
-   * @return the encryptionAlgorithm
-   */
-  public String getEncryptionAlgorithm() {
-    return encryptionAlgorithm;
-  }
-
-  /**
-   * Gets the keyLifetime.
-   *
-   * The key lifetime in seconds.
-   *
-   * @return the keyLifetime
-   */
-  public Long getKeyLifetime() {
-    return keyLifetime;
-  }
-
-  /**
-   * Gets the pfs.
-   *
-   * Perfect Forward Secrecy.
-   *
-   * @return the pfs
-   */
-  public String getPfs() {
-    return pfs;
-  }
-
-  /**
-   * Gets the resourceGroup.
-   *
-   * The resource group for this IPsec policy.
-   *
-   * @return the resourceGroup
-   */
-  public ResourceGroupReference getResourceGroup() {
-    return resourceGroup;
   }
 
   /**
@@ -237,6 +149,94 @@ public class IPsecPolicy extends GenericModel {
    */
   public String getEncapsulationMode() {
     return encapsulationMode;
+  }
+
+  /**
+   * Gets the encryptionAlgorithm.
+   *
+   * The encryption algorithm.
+   *
+   * @return the encryptionAlgorithm
+   */
+  public String getEncryptionAlgorithm() {
+    return encryptionAlgorithm;
+  }
+
+  /**
+   * Gets the href.
+   *
+   * The IPsec policy's canonical URL.
+   *
+   * @return the href
+   */
+  public String getHref() {
+    return href;
+  }
+
+  /**
+   * Gets the id.
+   *
+   * The unique identifier for this IPsec policy.
+   *
+   * @return the id
+   */
+  public String getId() {
+    return id;
+  }
+
+  /**
+   * Gets the keyLifetime.
+   *
+   * The key lifetime in seconds.
+   *
+   * @return the keyLifetime
+   */
+  public Long getKeyLifetime() {
+    return keyLifetime;
+  }
+
+  /**
+   * Gets the name.
+   *
+   * The user-defined name for this IPsec policy.
+   *
+   * @return the name
+   */
+  public String getName() {
+    return name;
+  }
+
+  /**
+   * Gets the pfs.
+   *
+   * Perfect Forward Secrecy.
+   *
+   * @return the pfs
+   */
+  public String getPfs() {
+    return pfs;
+  }
+
+  /**
+   * Gets the resourceGroup.
+   *
+   * The resource group for this IPsec policy.
+   *
+   * @return the resourceGroup
+   */
+  public ResourceGroupReference getResourceGroup() {
+    return resourceGroup;
+  }
+
+  /**
+   * Gets the resourceType.
+   *
+   * The resource type.
+   *
+   * @return the resourceType
+   */
+  public String getResourceType() {
+    return resourceType;
   }
 
   /**

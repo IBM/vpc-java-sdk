@@ -13,7 +13,7 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
-import com.ibm.cloud.is.vpc.v1.model.FloatingIPByTargetTargetNetworkInterfaceIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.FloatingIPByTargetNetworkInterfaceIdentityNetworkInterfaceIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPPrototypeFloatingIPByTarget;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupIdentityById;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
@@ -38,19 +38,19 @@ public class FloatingIPPrototypeFloatingIPByTargetTest {
       .build();
     assertEquals(resourceGroupIdentityModel.id(), "fee82deba12e4c0fb69c3b09d1f12345");
 
-    FloatingIPByTargetTargetNetworkInterfaceIdentityById floatingIpByTargetTargetModel = new FloatingIPByTargetTargetNetworkInterfaceIdentityById.Builder()
-      .id("10c02d81-0ecb-4dc5-897d-28392913b81e")
+    FloatingIPByTargetNetworkInterfaceIdentityNetworkInterfaceIdentityById floatingIpByTargetNetworkInterfaceIdentityModel = new FloatingIPByTargetNetworkInterfaceIdentityNetworkInterfaceIdentityById.Builder()
+      .id("69e55145-cc7d-4d8e-9e1f-cc3fb60b1793")
       .build();
-    assertEquals(floatingIpByTargetTargetModel.id(), "10c02d81-0ecb-4dc5-897d-28392913b81e");
+    assertEquals(floatingIpByTargetNetworkInterfaceIdentityModel.id(), "69e55145-cc7d-4d8e-9e1f-cc3fb60b1793");
 
     FloatingIPPrototypeFloatingIPByTarget floatingIpPrototypeFloatingIpByTargetModel = new FloatingIPPrototypeFloatingIPByTarget.Builder()
       .name("my-floating-ip")
       .resourceGroup(resourceGroupIdentityModel)
-      .target(floatingIpByTargetTargetModel)
+      .target(floatingIpByTargetNetworkInterfaceIdentityModel)
       .build();
     assertEquals(floatingIpPrototypeFloatingIpByTargetModel.name(), "my-floating-ip");
     assertEquals(floatingIpPrototypeFloatingIpByTargetModel.resourceGroup(), resourceGroupIdentityModel);
-    assertEquals(floatingIpPrototypeFloatingIpByTargetModel.target(), floatingIpByTargetTargetModel);
+    assertEquals(floatingIpPrototypeFloatingIpByTargetModel.target(), floatingIpByTargetNetworkInterfaceIdentityModel);
 
     String json = TestUtilities.serialize(floatingIpPrototypeFloatingIpByTargetModel);
 
@@ -58,7 +58,7 @@ public class FloatingIPPrototypeFloatingIPByTargetTest {
     assertTrue(floatingIpPrototypeFloatingIpByTargetModelNew instanceof FloatingIPPrototypeFloatingIPByTarget);
     assertEquals(floatingIpPrototypeFloatingIpByTargetModelNew.name(), "my-floating-ip");
     assertEquals(floatingIpPrototypeFloatingIpByTargetModelNew.resourceGroup().toString(), resourceGroupIdentityModel.toString());
-    assertEquals(floatingIpPrototypeFloatingIpByTargetModelNew.target().toString(), floatingIpByTargetTargetModel.toString());
+    assertEquals(floatingIpPrototypeFloatingIpByTargetModelNew.target().toString(), floatingIpByTargetNetworkInterfaceIdentityModel.toString());
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

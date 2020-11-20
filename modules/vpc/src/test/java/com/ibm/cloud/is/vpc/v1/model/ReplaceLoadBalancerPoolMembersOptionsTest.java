@@ -42,12 +42,12 @@ public class ReplaceLoadBalancerPoolMembersOptionsTest {
 
     LoadBalancerPoolMemberPrototype loadBalancerPoolMemberPrototypeModel = new LoadBalancerPoolMemberPrototype.Builder()
       .port(Long.valueOf("80"))
-      .weight(Long.valueOf("50"))
       .target(loadBalancerPoolMemberTargetPrototypeModel)
+      .weight(Long.valueOf("50"))
       .build();
     assertEquals(loadBalancerPoolMemberPrototypeModel.port(), Long.valueOf("80"));
-    assertEquals(loadBalancerPoolMemberPrototypeModel.weight(), Long.valueOf("50"));
     assertEquals(loadBalancerPoolMemberPrototypeModel.target(), loadBalancerPoolMemberTargetPrototypeModel);
+    assertEquals(loadBalancerPoolMemberPrototypeModel.weight(), Long.valueOf("50"));
 
     ReplaceLoadBalancerPoolMembersOptions replaceLoadBalancerPoolMembersOptionsModel = new ReplaceLoadBalancerPoolMembersOptions.Builder()
       .loadBalancerId("testString")

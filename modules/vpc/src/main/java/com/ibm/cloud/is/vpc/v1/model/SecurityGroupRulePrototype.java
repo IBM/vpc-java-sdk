@@ -55,25 +55,11 @@ public class SecurityGroupRulePrototype extends GenericModel {
     String IPV4 = "ipv4";
   }
 
-  /**
-   * The protocol to enforce.
-   */
-  public interface Protocol {
-    /** all. */
-    String ALL = "all";
-    /** icmp. */
-    String ICMP = "icmp";
-    /** tcp. */
-    String TCP = "tcp";
-    /** udp. */
-    String UDP = "udp";
-  }
-
   protected String direction;
   @SerializedName("ip_version")
   protected String ipVersion;
   protected String protocol;
-  protected SecurityGroupRulePrototypeRemote remote;
+  protected SecurityGroupRuleRemotePrototype remote;
   protected Long code;
   protected Long type;
   @SerializedName("port_max")
@@ -129,7 +115,7 @@ public class SecurityGroupRulePrototype extends GenericModel {
    *
    * @return the remote
    */
-  public SecurityGroupRulePrototypeRemote remote() {
+  public SecurityGroupRuleRemotePrototype remote() {
     return remote;
   }
 

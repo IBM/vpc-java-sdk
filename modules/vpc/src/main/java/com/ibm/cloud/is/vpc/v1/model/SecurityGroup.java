@@ -23,28 +23,28 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class SecurityGroup extends GenericModel {
 
-  protected String id;
-  protected String crn;
-  protected String href;
-  protected String name;
-  @SerializedName("resource_group")
-  protected ResourceGroupReference resourceGroup;
   @SerializedName("created_at")
   protected Date createdAt;
+  protected String crn;
+  protected String href;
+  protected String id;
+  protected String name;
   @SerializedName("network_interfaces")
   protected List<NetworkInterfaceReference> networkInterfaces;
+  @SerializedName("resource_group")
+  protected ResourceGroupReference resourceGroup;
   protected List<SecurityGroupRule> rules;
   protected VPCReference vpc;
 
   /**
-   * Gets the id.
+   * Gets the createdAt.
    *
-   * The unique identifier for this security group.
+   * The date and time that this security group was created.
    *
-   * @return the id
+   * @return the createdAt
    */
-  public String getId() {
-    return id;
+  public Date getCreatedAt() {
+    return createdAt;
   }
 
   /**
@@ -70,6 +70,17 @@ public class SecurityGroup extends GenericModel {
   }
 
   /**
+   * Gets the id.
+   *
+   * The unique identifier for this security group.
+   *
+   * @return the id
+   */
+  public String getId() {
+    return id;
+  }
+
+  /**
    * Gets the name.
    *
    * The user-defined name for this security group. Names must be unique within the VPC the security group resides in.
@@ -81,28 +92,6 @@ public class SecurityGroup extends GenericModel {
   }
 
   /**
-   * Gets the resourceGroup.
-   *
-   * The resource group for this security group.
-   *
-   * @return the resourceGroup
-   */
-  public ResourceGroupReference getResourceGroup() {
-    return resourceGroup;
-  }
-
-  /**
-   * Gets the createdAt.
-   *
-   * The date and time that this security group was created.
-   *
-   * @return the createdAt
-   */
-  public Date getCreatedAt() {
-    return createdAt;
-  }
-
-  /**
    * Gets the networkInterfaces.
    *
    * Array of references to network interfaces.
@@ -111,6 +100,17 @@ public class SecurityGroup extends GenericModel {
    */
   public List<NetworkInterfaceReference> getNetworkInterfaces() {
     return networkInterfaces;
+  }
+
+  /**
+   * Gets the resourceGroup.
+   *
+   * The resource group for this security group.
+   *
+   * @return the resourceGroup
+   */
+  public ResourceGroupReference getResourceGroup() {
+    return resourceGroup;
   }
 
   /**

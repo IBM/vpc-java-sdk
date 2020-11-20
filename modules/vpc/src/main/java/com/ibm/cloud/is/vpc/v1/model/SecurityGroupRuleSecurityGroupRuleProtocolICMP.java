@@ -44,14 +44,8 @@ public class SecurityGroupRuleSecurityGroupRuleProtocolICMP extends SecurityGrou
    * The protocol to enforce.
    */
   public interface Protocol {
-    /** all. */
-    String ALL = "all";
     /** icmp. */
     String ICMP = "icmp";
-    /** tcp. */
-    String TCP = "tcp";
-    /** udp. */
-    String UDP = "udp";
   }
 
 }

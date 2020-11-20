@@ -26,7 +26,7 @@ public class RegionCollection extends GenericModel {
   /**
    * Gets the regions.
    *
-   * Array of Region objects.
+   * Collection of regions.
    *
    * @return the regions
    */

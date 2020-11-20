@@ -28,21 +28,23 @@ public class IPsecPolicyReference extends GenericModel {
     String IPSEC_POLICY = "ipsec_policy";
   }
 
-  protected String id;
+  protected IPsecPolicyReferenceDeleted deleted;
   protected String href;
+  protected String id;
   protected String name;
   @SerializedName("resource_type")
   protected String resourceType;
 
   /**
-   * Gets the id.
+   * Gets the deleted.
    *
-   * The unique identifier for this IPsec policy.
+   * If present, this property indicates the referenced resource has been deleted and provides
+   * some supplementary information.
    *
-   * @return the id
+   * @return the deleted
    */
-  public String getId() {
-    return id;
+  public IPsecPolicyReferenceDeleted getDeleted() {
+    return deleted;
   }
 
   /**
@@ -54,6 +56,17 @@ public class IPsecPolicyReference extends GenericModel {
    */
   public String getHref() {
     return href;
+  }
+
+  /**
+   * Gets the id.
+   *
+   * The unique identifier for this IPsec policy.
+   *
+   * @return the id
+   */
+  public String getId() {
+    return id;
   }
 
   /**

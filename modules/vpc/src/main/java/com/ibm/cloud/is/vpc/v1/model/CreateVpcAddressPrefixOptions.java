@@ -22,8 +22,8 @@ public class CreateVpcAddressPrefixOptions extends GenericModel {
   protected String vpcId;
   protected String cidr;
   protected ZoneIdentity zone;
-  protected String name;
   protected Boolean isDefault;
+  protected String name;
 
   /**
    * Builder.
@@ -32,15 +32,15 @@ public class CreateVpcAddressPrefixOptions extends GenericModel {
     private String vpcId;
     private String cidr;
     private ZoneIdentity zone;
-    private String name;
     private Boolean isDefault;
+    private String name;
 
     private Builder(CreateVpcAddressPrefixOptions createVpcAddressPrefixOptions) {
       this.vpcId = createVpcAddressPrefixOptions.vpcId;
       this.cidr = createVpcAddressPrefixOptions.cidr;
       this.zone = createVpcAddressPrefixOptions.zone;
-      this.name = createVpcAddressPrefixOptions.name;
       this.isDefault = createVpcAddressPrefixOptions.isDefault;
+      this.name = createVpcAddressPrefixOptions.name;
     }
 
     /**
@@ -105,17 +105,6 @@ public class CreateVpcAddressPrefixOptions extends GenericModel {
     }
 
     /**
-     * Set the name.
-     *
-     * @param name the name
-     * @return the CreateVpcAddressPrefixOptions builder
-     */
-    public Builder name(String name) {
-      this.name = name;
-      return this;
-    }
-
-    /**
      * Set the isDefault.
      *
      * @param isDefault the isDefault
@@ -123,6 +112,17 @@ public class CreateVpcAddressPrefixOptions extends GenericModel {
      */
     public Builder isDefault(Boolean isDefault) {
       this.isDefault = isDefault;
+      return this;
+    }
+
+    /**
+     * Set the name.
+     *
+     * @param name the name
+     * @return the CreateVpcAddressPrefixOptions builder
+     */
+    public Builder name(String name) {
+      this.name = name;
       return this;
     }
   }
@@ -137,8 +137,8 @@ public class CreateVpcAddressPrefixOptions extends GenericModel {
     vpcId = builder.vpcId;
     cidr = builder.cidr;
     zone = builder.zone;
-    name = builder.name;
     isDefault = builder.isDefault;
+    name = builder.name;
   }
 
   /**
@@ -187,18 +187,6 @@ public class CreateVpcAddressPrefixOptions extends GenericModel {
   }
 
   /**
-   * Gets the name.
-   *
-   * The user-defined name for this address prefix. Names must be unique within the VPC the address prefix resides in.
-   * If unspecified, the name will be a hyphenated list of randomly-selected words.
-   *
-   * @return the name
-   */
-  public String name() {
-    return name;
-  }
-
-  /**
    * Gets the isDefault.
    *
    * Indicates whether this is the default prefix for this zone in this VPC. If true, this prefix will become the
@@ -209,6 +197,18 @@ public class CreateVpcAddressPrefixOptions extends GenericModel {
    */
   public Boolean isDefault() {
     return isDefault;
+  }
+
+  /**
+   * Gets the name.
+   *
+   * The user-defined name for this address prefix. Names must be unique within the VPC the address prefix resides in.
+   * If unspecified, the name will be a hyphenated list of randomly-selected words.
+   *
+   * @return the name
+   */
+  public String name() {
+    return name;
   }
 }
 

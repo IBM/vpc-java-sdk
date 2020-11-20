@@ -14,7 +14,7 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.CreatePublicGatewayOptions;
-import com.ibm.cloud.is.vpc.v1.model.PublicGatewayPrototypeFloatingIpFloatingIPIdentityFloatingIPIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.PublicGatewayFloatingIPPrototypeFloatingIPIdentityFloatingIPIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.VPCIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.ZoneIdentityByName;
@@ -45,10 +45,10 @@ public class CreatePublicGatewayOptionsTest {
       .build();
     assertEquals(zoneIdentityModel.name(), "us-south-1");
 
-    PublicGatewayPrototypeFloatingIpFloatingIPIdentityFloatingIPIdentityById publicGatewayPrototypeFloatingIpModel = new PublicGatewayPrototypeFloatingIpFloatingIPIdentityFloatingIPIdentityById.Builder()
+    PublicGatewayFloatingIPPrototypeFloatingIPIdentityFloatingIPIdentityById publicGatewayFloatingIpPrototypeModel = new PublicGatewayFloatingIPPrototypeFloatingIPIdentityFloatingIPIdentityById.Builder()
       .id("39300233-9995-4806-89a5-3c1b6eb88689")
       .build();
-    assertEquals(publicGatewayPrototypeFloatingIpModel.id(), "39300233-9995-4806-89a5-3c1b6eb88689");
+    assertEquals(publicGatewayFloatingIpPrototypeModel.id(), "39300233-9995-4806-89a5-3c1b6eb88689");
 
     ResourceGroupIdentityById resourceGroupIdentityModel = new ResourceGroupIdentityById.Builder()
       .id("fee82deba12e4c0fb69c3b09d1f12345")
@@ -58,14 +58,14 @@ public class CreatePublicGatewayOptionsTest {
     CreatePublicGatewayOptions createPublicGatewayOptionsModel = new CreatePublicGatewayOptions.Builder()
       .vpc(vpcIdentityModel)
       .zone(zoneIdentityModel)
+      .floatingIp(publicGatewayFloatingIpPrototypeModel)
       .name("my-public-gateway")
-      .floatingIp(publicGatewayPrototypeFloatingIpModel)
       .resourceGroup(resourceGroupIdentityModel)
       .build();
     assertEquals(createPublicGatewayOptionsModel.vpc(), vpcIdentityModel);
     assertEquals(createPublicGatewayOptionsModel.zone(), zoneIdentityModel);
+    assertEquals(createPublicGatewayOptionsModel.floatingIp(), publicGatewayFloatingIpPrototypeModel);
     assertEquals(createPublicGatewayOptionsModel.name(), "my-public-gateway");
-    assertEquals(createPublicGatewayOptionsModel.floatingIp(), publicGatewayPrototypeFloatingIpModel);
     assertEquals(createPublicGatewayOptionsModel.resourceGroup(), resourceGroupIdentityModel);
   }
 

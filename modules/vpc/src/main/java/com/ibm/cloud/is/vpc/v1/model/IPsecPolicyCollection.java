@@ -23,22 +23,33 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class IPsecPolicyCollection extends GenericModel {
 
   protected IPsecPolicyCollectionFirst first;
+  @SerializedName("ipsec_policies")
+  protected List<IPsecPolicy> ipsecPolicies;
   protected Long limit;
   protected IPsecPolicyCollectionNext next;
   @SerializedName("total_count")
   protected Long totalCount;
-  @SerializedName("ipsec_policies")
-  protected List<IPsecPolicy> ipsecPolicies;
 
   /**
    * Gets the first.
    *
-   * A reference to the first page of resources.
+   * A link to the first page of resources.
    *
    * @return the first
    */
   public IPsecPolicyCollectionFirst getFirst() {
     return first;
+  }
+
+  /**
+   * Gets the ipsecPolicies.
+   *
+   * Collection of IPsec policies.
+   *
+   * @return the ipsecPolicies
+   */
+  public List<IPsecPolicy> getIpsecPolicies() {
+    return ipsecPolicies;
   }
 
   /**
@@ -55,7 +66,7 @@ public class IPsecPolicyCollection extends GenericModel {
   /**
    * Gets the next.
    *
-   * A reference to the next page of resources; this reference is included for all pages
+   * A link to the next page of resources. This property is present for all pages
    * except the last page.
    *
    * @return the next
@@ -73,17 +84,6 @@ public class IPsecPolicyCollection extends GenericModel {
    */
   public Long getTotalCount() {
     return totalCount;
-  }
-
-  /**
-   * Gets the ipsecPolicies.
-   *
-   * Collection of IPsec policies.
-   *
-   * @return the ipsecPolicies
-   */
-  public List<IPsecPolicy> getIpsecPolicies() {
-    return ipsecPolicies;
   }
 }
 

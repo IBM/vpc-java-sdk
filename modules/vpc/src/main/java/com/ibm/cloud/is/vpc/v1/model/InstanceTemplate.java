@@ -27,29 +27,29 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class InstanceTemplate extends GenericModel {
 
-  protected String id;
-  protected String href;
+  @SerializedName("created_at")
+  protected Date createdAt;
   protected String crn;
-  protected String name;
+  protected String href;
+  protected String id;
   protected List<KeyIdentity> keys;
+  protected String name;
   @SerializedName("network_interfaces")
   protected List<NetworkInterfacePrototype> networkInterfaces;
   protected InstanceProfileIdentity profile;
+  @SerializedName("resource_group")
+  protected ResourceGroupReference resourceGroup;
   @SerializedName("user_data")
   protected String userData;
   @SerializedName("volume_attachments")
   protected List<VolumeAttachmentPrototypeInstanceContext> volumeAttachments;
   protected VPCIdentity vpc;
-  @SerializedName("created_at")
-  protected Date createdAt;
-  @SerializedName("resource_group")
-  protected ResourceGroupReference resourceGroup;
-  @SerializedName("primary_network_interface")
-  protected NetworkInterfacePrototype primaryNetworkInterface;
-  protected ZoneIdentity zone;
   @SerializedName("boot_volume_attachment")
   protected VolumeAttachmentPrototypeInstanceByImageContext bootVolumeAttachment;
   protected ImageIdentity image;
+  @SerializedName("primary_network_interface")
+  protected NetworkInterfacePrototype primaryNetworkInterface;
+  protected ZoneIdentity zone;
   @SerializedName("source_template")
   protected InstanceTemplateIdentity sourceTemplate;
 
@@ -57,25 +57,14 @@ public class InstanceTemplate extends GenericModel {
   }
 
   /**
-   * Gets the id.
+   * Gets the createdAt.
    *
-   * The unique identifier for this instance template.
+   * The date and time that the instance template was created.
    *
-   * @return the id
+   * @return the createdAt
    */
-  public String getId() {
-    return id;
-  }
-
-  /**
-   * Gets the href.
-   *
-   * The URL for this instance template.
-   *
-   * @return the href
-   */
-  public String getHref() {
-    return href;
+  public Date getCreatedAt() {
+    return createdAt;
   }
 
   /**
@@ -90,14 +79,25 @@ public class InstanceTemplate extends GenericModel {
   }
 
   /**
-   * Gets the name.
+   * Gets the href.
    *
-   * The unique user-defined name for this instance template.
+   * The URL for this instance template.
    *
-   * @return the name
+   * @return the href
    */
-  public String getName() {
-    return name;
+  public String getHref() {
+    return href;
+  }
+
+  /**
+   * Gets the id.
+   *
+   * The unique identifier for this instance template.
+   *
+   * @return the id
+   */
+  public String getId() {
+    return id;
   }
 
   /**
@@ -114,6 +114,17 @@ public class InstanceTemplate extends GenericModel {
    */
   public List<KeyIdentity> getKeys() {
     return keys;
+  }
+
+  /**
+   * Gets the name.
+   *
+   * The unique user-defined name for this instance template.
+   *
+   * @return the name
+   */
+  public String getName() {
+    return name;
   }
 
   /**
@@ -136,6 +147,17 @@ public class InstanceTemplate extends GenericModel {
    */
   public InstanceProfileIdentity getProfile() {
     return profile;
+  }
+
+  /**
+   * Gets the resourceGroup.
+   *
+   * The resource group for this instance template.
+   *
+   * @return the resourceGroup
+   */
+  public ResourceGroupReference getResourceGroup() {
+    return resourceGroup;
   }
 
   /**
@@ -173,25 +195,25 @@ public class InstanceTemplate extends GenericModel {
   }
 
   /**
-   * Gets the createdAt.
+   * Gets the bootVolumeAttachment.
    *
-   * The date and time that the instance template was created.
+   * The boot volume attachment for the virtual server instance.
    *
-   * @return the createdAt
+   * @return the bootVolumeAttachment
    */
-  public Date getCreatedAt() {
-    return createdAt;
+  public VolumeAttachmentPrototypeInstanceByImageContext getBootVolumeAttachment() {
+    return bootVolumeAttachment;
   }
 
   /**
-   * Gets the resourceGroup.
+   * Gets the image.
    *
-   * The resource group for this instance template.
+   * The identity of the image to use when provisioning the virtual server instance.
    *
-   * @return the resourceGroup
+   * @return the image
    */
-  public ResourceGroupReference getResourceGroup() {
-    return resourceGroup;
+  public ImageIdentity getImage() {
+    return image;
   }
 
   /**
@@ -214,28 +236,6 @@ public class InstanceTemplate extends GenericModel {
    */
   public ZoneIdentity getZone() {
     return zone;
-  }
-
-  /**
-   * Gets the bootVolumeAttachment.
-   *
-   * The boot volume attachment for the virtual server instance.
-   *
-   * @return the bootVolumeAttachment
-   */
-  public VolumeAttachmentPrototypeInstanceByImageContext getBootVolumeAttachment() {
-    return bootVolumeAttachment;
-  }
-
-  /**
-   * Gets the image.
-   *
-   * The identity of the image to be used when provisioning the virtual server instance.
-   *
-   * @return the image
-   */
-  public ImageIdentity getImage() {
-    return image;
   }
 
   /**

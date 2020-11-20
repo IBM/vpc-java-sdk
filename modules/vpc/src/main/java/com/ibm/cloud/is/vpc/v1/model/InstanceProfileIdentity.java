@@ -32,7 +32,7 @@ public class InstanceProfileIdentity extends GenericModel {
   /**
    * Gets the name.
    *
-   * The name for this virtual server instance profile.
+   * The globally unique name for this virtual server instance profile.
    *
    * @return the name
    */

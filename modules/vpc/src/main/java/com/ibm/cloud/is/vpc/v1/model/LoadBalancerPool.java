@@ -69,55 +69,41 @@ public class LoadBalancerPool extends GenericModel {
     String UPDATE_PENDING = "update_pending";
   }
 
-  protected String id;
-  protected String href;
-  protected String name;
+  /**
+   * The PROXY protocol setting for this pool:
+   * - `v1`: Enabled with version 1 (human-readable header format)
+   * - `v2`: Enabled with version 2 (binary header format)
+   * - `disabled`: Disabled
+   *
+   * Supported by load balancers in the `application` family (otherwise always `disabled`).
+   */
+  public interface ProxyProtocol {
+    /** disabled. */
+    String DISABLED = "disabled";
+    /** v1. */
+    String V1 = "v1";
+    /** v2. */
+    String V2 = "v2";
+  }
+
   protected String algorithm;
-  protected String protocol;
   @SerializedName("created_at")
   protected Date createdAt;
   @SerializedName("health_monitor")
   protected LoadBalancerPoolHealthMonitor healthMonitor;
+  protected String href;
+  protected String id;
   @SerializedName("instance_group")
   protected InstanceGroupReference instanceGroup;
   protected List<LoadBalancerPoolMemberReference> members;
+  protected String name;
+  protected String protocol;
   @SerializedName("provisioning_status")
   protected String provisioningStatus;
+  @SerializedName("proxy_protocol")
+  protected String proxyProtocol;
   @SerializedName("session_persistence")
   protected LoadBalancerPoolSessionPersistence sessionPersistence;
-
-  /**
-   * Gets the id.
-   *
-   * The unique identifier for this load balancer pool.
-   *
-   * @return the id
-   */
-  public String getId() {
-    return id;
-  }
-
-  /**
-   * Gets the href.
-   *
-   * The pool's canonical URL.
-   *
-   * @return the href
-   */
-  public String getHref() {
-    return href;
-  }
-
-  /**
-   * Gets the name.
-   *
-   * The user-defined name for this load balancer pool.
-   *
-   * @return the name
-   */
-  public String getName() {
-    return name;
-  }
 
   /**
    * Gets the algorithm.
@@ -128,21 +114,6 @@ public class LoadBalancerPool extends GenericModel {
    */
   public String getAlgorithm() {
     return algorithm;
-  }
-
-  /**
-   * Gets the protocol.
-   *
-   * The protocol used for this load balancer pool.
-   *
-   * The enumerated values for this property are expected to expand in the future. When processing this property, check
-   * for and log unknown values. Optionally halt processing and surface the error, or bypass the pool on which the
-   * unexpected property value was encountered.
-   *
-   * @return the protocol
-   */
-  public String getProtocol() {
-    return protocol;
   }
 
   /**
@@ -168,6 +139,28 @@ public class LoadBalancerPool extends GenericModel {
   }
 
   /**
+   * Gets the href.
+   *
+   * The pool's canonical URL.
+   *
+   * @return the href
+   */
+  public String getHref() {
+    return href;
+  }
+
+  /**
+   * Gets the id.
+   *
+   * The unique identifier for this load balancer pool.
+   *
+   * @return the id
+   */
+  public String getId() {
+    return id;
+  }
+
+  /**
    * Gets the instanceGroup.
    *
    * The instance group that is managing this pool.
@@ -190,6 +183,32 @@ public class LoadBalancerPool extends GenericModel {
   }
 
   /**
+   * Gets the name.
+   *
+   * The user-defined name for this load balancer pool.
+   *
+   * @return the name
+   */
+  public String getName() {
+    return name;
+  }
+
+  /**
+   * Gets the protocol.
+   *
+   * The protocol used for this load balancer pool.
+   *
+   * The enumerated values for this property are expected to expand in the future. When processing this property, check
+   * for and log unknown values. Optionally halt processing and surface the error, or bypass the pool on which the
+   * unexpected property value was encountered.
+   *
+   * @return the protocol
+   */
+  public String getProtocol() {
+    return protocol;
+  }
+
+  /**
    * Gets the provisioningStatus.
    *
    * The provisioning status of this pool.
@@ -198,6 +217,22 @@ public class LoadBalancerPool extends GenericModel {
    */
   public String getProvisioningStatus() {
     return provisioningStatus;
+  }
+
+  /**
+   * Gets the proxyProtocol.
+   *
+   * The PROXY protocol setting for this pool:
+   * - `v1`: Enabled with version 1 (human-readable header format)
+   * - `v2`: Enabled with version 2 (binary header format)
+   * - `disabled`: Disabled
+   *
+   * Supported by load balancers in the `application` family (otherwise always `disabled`).
+   *
+   * @return the proxyProtocol
+   */
+  public String getProxyProtocol() {
+    return proxyProtocol;
   }
 
   /**

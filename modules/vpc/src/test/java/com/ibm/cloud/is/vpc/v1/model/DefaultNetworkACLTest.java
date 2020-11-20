@@ -14,11 +14,14 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.DefaultNetworkACL;
-import com.ibm.cloud.is.vpc.v1.model.NetworkACLRuleItemNetworkACLRuleProtocolTCPUDP;
+import com.ibm.cloud.is.vpc.v1.model.NetworkACLRuleItemNetworkACLRuleProtocolICMP;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLRuleReference;
+import com.ibm.cloud.is.vpc.v1.model.NetworkACLRuleReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.SubnetReference;
+import com.ibm.cloud.is.vpc.v1.model.SubnetReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.VPCReference;
+import com.ibm.cloud.is.vpc.v1.model.VPCReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -37,14 +40,14 @@ public class DefaultNetworkACLTest {
   @Test
   public void testDefaultNetworkACL() throws Throwable {
     DefaultNetworkACL defaultNetworkAclModel = new DefaultNetworkACL();
-    assertNull(defaultNetworkAclModel.getId());
+    assertNull(defaultNetworkAclModel.getCreatedAt());
     assertNull(defaultNetworkAclModel.getCrn());
     assertNull(defaultNetworkAclModel.getHref());
+    assertNull(defaultNetworkAclModel.getId());
     assertNull(defaultNetworkAclModel.getName());
-    assertNull(defaultNetworkAclModel.getVpc());
     assertNull(defaultNetworkAclModel.getResourceGroup());
-    assertNull(defaultNetworkAclModel.getCreatedAt());
     assertNull(defaultNetworkAclModel.getRules());
     assertNull(defaultNetworkAclModel.getSubnets());
+    assertNull(defaultNetworkAclModel.getVpc());
   }
 }

@@ -15,8 +15,12 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.IP;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLReference;
+import com.ibm.cloud.is.vpc.v1.model.NetworkACLReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;
+import com.ibm.cloud.is.vpc.v1.model.RoutingTableReference;
+import com.ibm.cloud.is.vpc.v1.model.RoutingTableReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupReference;
+import com.ibm.cloud.is.vpc.v1.model.SecurityGroupReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.VPC;
 import com.ibm.cloud.is.vpc.v1.model.VPCCSESourceIP;
 import com.ibm.cloud.is.vpc.v1.model.VPCCollection;

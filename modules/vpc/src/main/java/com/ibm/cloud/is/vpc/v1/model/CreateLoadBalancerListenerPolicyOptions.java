@@ -36,11 +36,11 @@ public class CreateLoadBalancerListenerPolicyOptions extends GenericModel {
 
   protected String loadBalancerId;
   protected String listenerId;
-  protected Long priority;
   protected String action;
+  protected Long priority;
   protected String name;
   protected List<LoadBalancerListenerPolicyRulePrototype> rules;
-  protected LoadBalancerListenerPolicyPrototypeTarget target;
+  protected LoadBalancerListenerPolicyTargetPrototype target;
 
   /**
    * Builder.
@@ -48,17 +48,17 @@ public class CreateLoadBalancerListenerPolicyOptions extends GenericModel {
   public static class Builder {
     private String loadBalancerId;
     private String listenerId;
-    private Long priority;
     private String action;
+    private Long priority;
     private String name;
     private List<LoadBalancerListenerPolicyRulePrototype> rules;
-    private LoadBalancerListenerPolicyPrototypeTarget target;
+    private LoadBalancerListenerPolicyTargetPrototype target;
 
     private Builder(CreateLoadBalancerListenerPolicyOptions createLoadBalancerListenerPolicyOptions) {
       this.loadBalancerId = createLoadBalancerListenerPolicyOptions.loadBalancerId;
       this.listenerId = createLoadBalancerListenerPolicyOptions.listenerId;
-      this.priority = createLoadBalancerListenerPolicyOptions.priority;
       this.action = createLoadBalancerListenerPolicyOptions.action;
+      this.priority = createLoadBalancerListenerPolicyOptions.priority;
       this.name = createLoadBalancerListenerPolicyOptions.name;
       this.rules = createLoadBalancerListenerPolicyOptions.rules;
       this.target = createLoadBalancerListenerPolicyOptions.target;
@@ -75,14 +75,14 @@ public class CreateLoadBalancerListenerPolicyOptions extends GenericModel {
      *
      * @param loadBalancerId the loadBalancerId
      * @param listenerId the listenerId
-     * @param priority the priority
      * @param action the action
+     * @param priority the priority
      */
-    public Builder(String loadBalancerId, String listenerId, Long priority, String action) {
+    public Builder(String loadBalancerId, String listenerId, String action, Long priority) {
       this.loadBalancerId = loadBalancerId;
       this.listenerId = listenerId;
-      this.priority = priority;
       this.action = action;
+      this.priority = priority;
     }
 
     /**
@@ -133,17 +133,6 @@ public class CreateLoadBalancerListenerPolicyOptions extends GenericModel {
     }
 
     /**
-     * Set the priority.
-     *
-     * @param priority the priority
-     * @return the CreateLoadBalancerListenerPolicyOptions builder
-     */
-    public Builder priority(long priority) {
-      this.priority = priority;
-      return this;
-    }
-
-    /**
      * Set the action.
      *
      * @param action the action
@@ -151,6 +140,17 @@ public class CreateLoadBalancerListenerPolicyOptions extends GenericModel {
      */
     public Builder action(String action) {
       this.action = action;
+      return this;
+    }
+
+    /**
+     * Set the priority.
+     *
+     * @param priority the priority
+     * @return the CreateLoadBalancerListenerPolicyOptions builder
+     */
+    public Builder priority(long priority) {
+      this.priority = priority;
       return this;
     }
 
@@ -183,7 +183,7 @@ public class CreateLoadBalancerListenerPolicyOptions extends GenericModel {
      * @param target the target
      * @return the CreateLoadBalancerListenerPolicyOptions builder
      */
-    public Builder target(LoadBalancerListenerPolicyPrototypeTarget target) {
+    public Builder target(LoadBalancerListenerPolicyTargetPrototype target) {
       this.target = target;
       return this;
     }
@@ -194,14 +194,14 @@ public class CreateLoadBalancerListenerPolicyOptions extends GenericModel {
       "loadBalancerId cannot be empty");
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.listenerId,
       "listenerId cannot be empty");
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.priority,
-      "priority cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.action,
       "action cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.priority,
+      "priority cannot be null");
     loadBalancerId = builder.loadBalancerId;
     listenerId = builder.listenerId;
-    priority = builder.priority;
     action = builder.action;
+    priority = builder.priority;
     name = builder.name;
     rules = builder.rules;
     target = builder.target;
@@ -239,17 +239,6 @@ public class CreateLoadBalancerListenerPolicyOptions extends GenericModel {
   }
 
   /**
-   * Gets the priority.
-   *
-   * Priority of the policy. Lower value indicates higher priority.
-   *
-   * @return the priority
-   */
-  public Long priority() {
-    return priority;
-  }
-
-  /**
    * Gets the action.
    *
    * The policy action.
@@ -258,6 +247,17 @@ public class CreateLoadBalancerListenerPolicyOptions extends GenericModel {
    */
   public String action() {
     return action;
+  }
+
+  /**
+   * Gets the priority.
+   *
+   * Priority of the policy. Lower value indicates higher priority.
+   *
+   * @return the priority
+   */
+  public Long priority() {
+    return priority;
   }
 
   /**
@@ -293,7 +293,7 @@ public class CreateLoadBalancerListenerPolicyOptions extends GenericModel {
    *
    * @return the target
    */
-  public LoadBalancerListenerPolicyPrototypeTarget target() {
+  public LoadBalancerListenerPolicyTargetPrototype target() {
     return target;
   }
 }

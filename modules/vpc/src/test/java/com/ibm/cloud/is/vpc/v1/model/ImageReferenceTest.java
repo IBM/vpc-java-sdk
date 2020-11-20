@@ -14,6 +14,7 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.ImageReference;
+import com.ibm.cloud.is.vpc.v1.model.ImageReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -32,9 +33,10 @@ public class ImageReferenceTest {
   @Test
   public void testImageReference() throws Throwable {
     ImageReference imageReferenceModel = new ImageReference();
-    assertNull(imageReferenceModel.getId());
     assertNull(imageReferenceModel.getCrn());
+    assertNull(imageReferenceModel.getDeleted());
     assertNull(imageReferenceModel.getHref());
+    assertNull(imageReferenceModel.getId());
     assertNull(imageReferenceModel.getName());
   }
 }

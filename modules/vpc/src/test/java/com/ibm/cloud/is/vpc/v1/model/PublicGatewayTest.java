@@ -13,10 +13,12 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.ibm.cloud.is.vpc.v1.model.FloatingIPReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.PublicGateway;
 import com.ibm.cloud.is.vpc.v1.model.PublicGatewayFloatingIp;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.VPCReference;
+import com.ibm.cloud.is.vpc.v1.model.VPCReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.ZoneReference;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
@@ -36,14 +38,14 @@ public class PublicGatewayTest {
   @Test
   public void testPublicGateway() throws Throwable {
     PublicGateway publicGatewayModel = new PublicGateway();
-    assertNull(publicGatewayModel.getId());
-    assertNull(publicGatewayModel.getCrn());
-    assertNull(publicGatewayModel.getHref());
-    assertNull(publicGatewayModel.getName());
-    assertNull(publicGatewayModel.getResourceType());
-    assertNull(publicGatewayModel.getResourceGroup());
     assertNull(publicGatewayModel.getCreatedAt());
+    assertNull(publicGatewayModel.getCrn());
     assertNull(publicGatewayModel.getFloatingIp());
+    assertNull(publicGatewayModel.getHref());
+    assertNull(publicGatewayModel.getId());
+    assertNull(publicGatewayModel.getName());
+    assertNull(publicGatewayModel.getResourceGroup());
+    assertNull(publicGatewayModel.getResourceType());
     assertNull(publicGatewayModel.getStatus());
     assertNull(publicGatewayModel.getVpc());
     assertNull(publicGatewayModel.getZone());

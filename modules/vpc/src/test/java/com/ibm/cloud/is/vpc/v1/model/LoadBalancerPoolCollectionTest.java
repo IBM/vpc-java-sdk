@@ -14,10 +14,12 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupReference;
+import com.ibm.cloud.is.vpc.v1.model.InstanceGroupReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPool;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolCollection;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolHealthMonitor;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolMemberReference;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolMemberReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolSessionPersistence;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;

@@ -33,15 +33,15 @@ public class KeyTest {
   @Test
   public void testKey() throws Throwable {
     Key keyModel = new Key();
-    assertNull(keyModel.getId());
+    assertNull(keyModel.getCreatedAt());
     assertNull(keyModel.getCrn());
-    assertNull(keyModel.getHref());
     assertNull(keyModel.getFingerprint());
+    assertNull(keyModel.getHref());
+    assertNull(keyModel.getId());
+    assertNull(keyModel.getLength());
     assertNull(keyModel.getName());
     assertNull(keyModel.getPublicKey());
-    assertNull(keyModel.getType());
     assertNull(keyModel.getResourceGroup());
-    assertNull(keyModel.getCreatedAt());
-    assertNull(keyModel.getLength());
+    assertNull(keyModel.getType());
   }
 }

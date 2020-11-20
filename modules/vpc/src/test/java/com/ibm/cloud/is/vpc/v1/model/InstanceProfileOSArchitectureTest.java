@@ -32,8 +32,8 @@ public class InstanceProfileOSArchitectureTest {
   @Test
   public void testInstanceProfileOSArchitecture() throws Throwable {
     InstanceProfileOSArchitecture instanceProfileOsArchitectureModel = new InstanceProfileOSArchitecture();
-    assertNull(instanceProfileOsArchitectureModel.getType());
     assertNull(instanceProfileOsArchitectureModel.getXDefault());
+    assertNull(instanceProfileOsArchitectureModel.getType());
     assertNull(instanceProfileOsArchitectureModel.getValues());
   }
 }

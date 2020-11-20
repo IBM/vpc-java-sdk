@@ -21,6 +21,8 @@ public class ListVpcRoutesOptions extends GenericModel {
 
   protected String vpcId;
   protected String zoneName;
+  protected String start;
+  protected Long limit;
 
   /**
    * Builder.
@@ -28,10 +30,14 @@ public class ListVpcRoutesOptions extends GenericModel {
   public static class Builder {
     private String vpcId;
     private String zoneName;
+    private String start;
+    private Long limit;
 
     private Builder(ListVpcRoutesOptions listVpcRoutesOptions) {
       this.vpcId = listVpcRoutesOptions.vpcId;
       this.zoneName = listVpcRoutesOptions.zoneName;
+      this.start = listVpcRoutesOptions.start;
+      this.limit = listVpcRoutesOptions.limit;
     }
 
     /**
@@ -79,6 +85,28 @@ public class ListVpcRoutesOptions extends GenericModel {
       this.zoneName = zoneName;
       return this;
     }
+
+    /**
+     * Set the start.
+     *
+     * @param start the start
+     * @return the ListVpcRoutesOptions builder
+     */
+    public Builder start(String start) {
+      this.start = start;
+      return this;
+    }
+
+    /**
+     * Set the limit.
+     *
+     * @param limit the limit
+     * @return the ListVpcRoutesOptions builder
+     */
+    public Builder limit(long limit) {
+      this.limit = limit;
+      return this;
+    }
   }
 
   protected ListVpcRoutesOptions(Builder builder) {
@@ -86,6 +114,8 @@ public class ListVpcRoutesOptions extends GenericModel {
       "vpcId cannot be empty");
     vpcId = builder.vpcId;
     zoneName = builder.zoneName;
+    start = builder.start;
+    limit = builder.limit;
   }
 
   /**
@@ -117,6 +147,28 @@ public class ListVpcRoutesOptions extends GenericModel {
    */
   public String zoneName() {
     return zoneName;
+  }
+
+  /**
+   * Gets the start.
+   *
+   * A server-supplied token determining what resource to start the page on.
+   *
+   * @return the start
+   */
+  public String start() {
+    return start;
+  }
+
+  /**
+   * Gets the limit.
+   *
+   * The number of resources to return on a page.
+   *
+   * @return the limit
+   */
+  public Long limit() {
+    return limit;
   }
 }
 

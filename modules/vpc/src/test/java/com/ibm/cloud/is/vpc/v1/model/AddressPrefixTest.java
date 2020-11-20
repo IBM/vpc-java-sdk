@@ -33,13 +33,13 @@ public class AddressPrefixTest {
   @Test
   public void testAddressPrefix() throws Throwable {
     AddressPrefix addressPrefixModel = new AddressPrefix();
-    assertNull(addressPrefixModel.getId());
-    assertNull(addressPrefixModel.getHref());
-    assertNull(addressPrefixModel.getName());
-    assertNull(addressPrefixModel.isIsDefault());
     assertNull(addressPrefixModel.getCidr());
     assertNull(addressPrefixModel.getCreatedAt());
     assertNull(addressPrefixModel.isHasSubnets());
+    assertNull(addressPrefixModel.getHref());
+    assertNull(addressPrefixModel.getId());
+    assertNull(addressPrefixModel.isIsDefault());
+    assertNull(addressPrefixModel.getName());
     assertNull(addressPrefixModel.getZone());
   }
 }

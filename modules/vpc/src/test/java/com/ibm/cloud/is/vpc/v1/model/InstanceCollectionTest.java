@@ -14,6 +14,7 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.ImageReference;
+import com.ibm.cloud.is.vpc.v1.model.ImageReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.Instance;
 import com.ibm.cloud.is.vpc.v1.model.InstanceCollection;
 import com.ibm.cloud.is.vpc.v1.model.InstanceCollectionFirst;
@@ -22,12 +23,17 @@ import com.ibm.cloud.is.vpc.v1.model.InstanceGPU;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileReference;
 import com.ibm.cloud.is.vpc.v1.model.InstanceVCPU;
 import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceInstanceContextReference;
+import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceInstanceContextReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.SubnetReference;
+import com.ibm.cloud.is.vpc.v1.model.SubnetReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.VPCReference;
+import com.ibm.cloud.is.vpc.v1.model.VPCReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentDevice;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentReferenceInstanceContext;
+import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentReferenceInstanceContextDeleted;
 import com.ibm.cloud.is.vpc.v1.model.VolumeReference;
+import com.ibm.cloud.is.vpc.v1.model.VolumeReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.ZoneReference;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
@@ -50,9 +56,9 @@ public class InstanceCollectionTest {
   public void testInstanceCollection() throws Throwable {
     InstanceCollection instanceCollectionModel = new InstanceCollection();
     assertNull(instanceCollectionModel.getFirst());
+    assertNull(instanceCollectionModel.getInstances());
     assertNull(instanceCollectionModel.getLimit());
     assertNull(instanceCollectionModel.getNext());
     assertNull(instanceCollectionModel.getTotalCount());
-    assertNull(instanceCollectionModel.getInstances());
   }
 }

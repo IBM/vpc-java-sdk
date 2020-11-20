@@ -14,7 +14,7 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyPatch;
-import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyPatchTargetLoadBalancerPoolIdentityLoadBalancerPoolIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetPatchLoadBalancerPoolIdentityLoadBalancerPoolIdentityById;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -33,19 +33,19 @@ public class LoadBalancerListenerPolicyPatchTest {
 
   @Test
   public void testLoadBalancerListenerPolicyPatch() throws Throwable {
-    LoadBalancerListenerPolicyPatchTargetLoadBalancerPoolIdentityLoadBalancerPoolIdentityById loadBalancerListenerPolicyPatchTargetModel = new LoadBalancerListenerPolicyPatchTargetLoadBalancerPoolIdentityLoadBalancerPoolIdentityById.Builder()
+    LoadBalancerListenerPolicyTargetPatchLoadBalancerPoolIdentityLoadBalancerPoolIdentityById loadBalancerListenerPolicyTargetPatchModel = new LoadBalancerListenerPolicyTargetPatchLoadBalancerPoolIdentityLoadBalancerPoolIdentityById.Builder()
       .id("70294e14-4e61-11e8-bcf4-0242ac110004")
       .build();
-    assertEquals(loadBalancerListenerPolicyPatchTargetModel.id(), "70294e14-4e61-11e8-bcf4-0242ac110004");
+    assertEquals(loadBalancerListenerPolicyTargetPatchModel.id(), "70294e14-4e61-11e8-bcf4-0242ac110004");
 
     LoadBalancerListenerPolicyPatch loadBalancerListenerPolicyPatchModel = new LoadBalancerListenerPolicyPatch.Builder()
       .name("my-policy")
       .priority(Long.valueOf("5"))
-      .target(loadBalancerListenerPolicyPatchTargetModel)
+      .target(loadBalancerListenerPolicyTargetPatchModel)
       .build();
     assertEquals(loadBalancerListenerPolicyPatchModel.name(), "my-policy");
     assertEquals(loadBalancerListenerPolicyPatchModel.priority(), Long.valueOf("5"));
-    assertEquals(loadBalancerListenerPolicyPatchModel.target(), loadBalancerListenerPolicyPatchTargetModel);
+    assertEquals(loadBalancerListenerPolicyPatchModel.target(), loadBalancerListenerPolicyTargetPatchModel);
 
     String json = TestUtilities.serialize(loadBalancerListenerPolicyPatchModel);
 
@@ -53,18 +53,18 @@ public class LoadBalancerListenerPolicyPatchTest {
     assertTrue(loadBalancerListenerPolicyPatchModelNew instanceof LoadBalancerListenerPolicyPatch);
     assertEquals(loadBalancerListenerPolicyPatchModelNew.name(), "my-policy");
     assertEquals(loadBalancerListenerPolicyPatchModelNew.priority(), Long.valueOf("5"));
-    assertEquals(loadBalancerListenerPolicyPatchModelNew.target().toString(), loadBalancerListenerPolicyPatchTargetModel.toString());
+    assertEquals(loadBalancerListenerPolicyPatchModelNew.target().toString(), loadBalancerListenerPolicyTargetPatchModel.toString());
   }
   @Test
   public void testLoadBalancerListenerPolicyPatchAsPatch() throws Throwable {
-    LoadBalancerListenerPolicyPatchTargetLoadBalancerPoolIdentityLoadBalancerPoolIdentityById loadBalancerListenerPolicyPatchTargetModel = new LoadBalancerListenerPolicyPatchTargetLoadBalancerPoolIdentityLoadBalancerPoolIdentityById.Builder()
+    LoadBalancerListenerPolicyTargetPatchLoadBalancerPoolIdentityLoadBalancerPoolIdentityById loadBalancerListenerPolicyTargetPatchModel = new LoadBalancerListenerPolicyTargetPatchLoadBalancerPoolIdentityLoadBalancerPoolIdentityById.Builder()
       .id("70294e14-4e61-11e8-bcf4-0242ac110004")
       .build();
 
     LoadBalancerListenerPolicyPatch loadBalancerListenerPolicyPatchModel = new LoadBalancerListenerPolicyPatch.Builder()
       .name("my-policy")
       .priority(Long.valueOf("5"))
-      .target(loadBalancerListenerPolicyPatchTargetModel)
+      .target(loadBalancerListenerPolicyTargetPatchModel)
       .build();
 
     Map<String, Object> mergePatch = loadBalancerListenerPolicyPatchModel.asPatch();

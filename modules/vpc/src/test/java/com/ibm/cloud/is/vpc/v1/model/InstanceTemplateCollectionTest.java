@@ -28,7 +28,7 @@ import com.ibm.cloud.is.vpc.v1.model.SubnetIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.VPCIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototypeInstanceByImageContext;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototypeInstanceContext;
-import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototypeInstanceContextVolumeVolumeIdentityVolumeIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentVolumePrototypeInstanceContextVolumeIdentityVolumeIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.VolumeProfileIdentityByName;
 import com.ibm.cloud.is.vpc.v1.model.VolumePrototypeInstanceByImageContext;
 import com.ibm.cloud.is.vpc.v1.model.ZoneIdentityByName;
@@ -55,7 +55,7 @@ public class InstanceTemplateCollectionTest {
     assertNull(instanceTemplateCollectionModel.getFirst());
     assertNull(instanceTemplateCollectionModel.getLimit());
     assertNull(instanceTemplateCollectionModel.getNext());
-    assertNull(instanceTemplateCollectionModel.getTotalCount());
     assertNull(instanceTemplateCollectionModel.getTemplates());
+    assertNull(instanceTemplateCollectionModel.getTotalCount());
   }
 }

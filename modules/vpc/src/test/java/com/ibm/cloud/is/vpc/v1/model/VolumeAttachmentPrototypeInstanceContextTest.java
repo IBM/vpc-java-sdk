@@ -14,7 +14,7 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototypeInstanceContext;
-import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototypeInstanceContextVolumeVolumeIdentityVolumeIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentVolumePrototypeInstanceContextVolumeIdentityVolumeIdentityById;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -32,19 +32,19 @@ public class VolumeAttachmentPrototypeInstanceContextTest {
 
   @Test
   public void testVolumeAttachmentPrototypeInstanceContext() throws Throwable {
-    VolumeAttachmentPrototypeInstanceContextVolumeVolumeIdentityVolumeIdentityById volumeAttachmentPrototypeInstanceContextVolumeModel = new VolumeAttachmentPrototypeInstanceContextVolumeVolumeIdentityVolumeIdentityById.Builder()
+    VolumeAttachmentVolumePrototypeInstanceContextVolumeIdentityVolumeIdentityById volumeAttachmentVolumePrototypeInstanceContextModel = new VolumeAttachmentVolumePrototypeInstanceContextVolumeIdentityVolumeIdentityById.Builder()
       .id("1a6b7274-678d-4dfb-8981-c71dd9d4daa5")
       .build();
-    assertEquals(volumeAttachmentPrototypeInstanceContextVolumeModel.id(), "1a6b7274-678d-4dfb-8981-c71dd9d4daa5");
+    assertEquals(volumeAttachmentVolumePrototypeInstanceContextModel.id(), "1a6b7274-678d-4dfb-8981-c71dd9d4daa5");
 
     VolumeAttachmentPrototypeInstanceContext volumeAttachmentPrototypeInstanceContextModel = new VolumeAttachmentPrototypeInstanceContext.Builder()
       .deleteVolumeOnInstanceDelete(true)
       .name("my-volume-attachment")
-      .volume(volumeAttachmentPrototypeInstanceContextVolumeModel)
+      .volume(volumeAttachmentVolumePrototypeInstanceContextModel)
       .build();
     assertEquals(volumeAttachmentPrototypeInstanceContextModel.deleteVolumeOnInstanceDelete(), Boolean.valueOf(true));
     assertEquals(volumeAttachmentPrototypeInstanceContextModel.name(), "my-volume-attachment");
-    assertEquals(volumeAttachmentPrototypeInstanceContextModel.volume(), volumeAttachmentPrototypeInstanceContextVolumeModel);
+    assertEquals(volumeAttachmentPrototypeInstanceContextModel.volume(), volumeAttachmentVolumePrototypeInstanceContextModel);
 
     String json = TestUtilities.serialize(volumeAttachmentPrototypeInstanceContextModel);
 
@@ -52,7 +52,7 @@ public class VolumeAttachmentPrototypeInstanceContextTest {
     assertTrue(volumeAttachmentPrototypeInstanceContextModelNew instanceof VolumeAttachmentPrototypeInstanceContext);
     assertEquals(volumeAttachmentPrototypeInstanceContextModelNew.deleteVolumeOnInstanceDelete(), Boolean.valueOf(true));
     assertEquals(volumeAttachmentPrototypeInstanceContextModelNew.name(), "my-volume-attachment");
-    assertEquals(volumeAttachmentPrototypeInstanceContextModelNew.volume().toString(), volumeAttachmentPrototypeInstanceContextVolumeModel.toString());
+    assertEquals(volumeAttachmentPrototypeInstanceContextModelNew.volume().toString(), volumeAttachmentVolumePrototypeInstanceContextModel.toString());
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

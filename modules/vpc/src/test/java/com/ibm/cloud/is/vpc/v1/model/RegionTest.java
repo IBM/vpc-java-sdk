@@ -32,9 +32,9 @@ public class RegionTest {
   @Test
   public void testRegion() throws Throwable {
     Region regionModel = new Region();
-    assertNull(regionModel.getName());
-    assertNull(regionModel.getHref());
     assertNull(regionModel.getEndpoint());
+    assertNull(regionModel.getHref());
+    assertNull(regionModel.getName());
     assertNull(regionModel.getStatus());
   }
 }

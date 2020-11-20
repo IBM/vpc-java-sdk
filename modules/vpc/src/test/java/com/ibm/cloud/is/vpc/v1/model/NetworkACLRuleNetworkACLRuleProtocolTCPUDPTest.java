@@ -15,6 +15,7 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLRuleNetworkACLRuleProtocolTCPUDP;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLRuleReference;
+import com.ibm.cloud.is.vpc.v1.model.NetworkACLRuleReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -33,19 +34,19 @@ public class NetworkACLRuleNetworkACLRuleProtocolTCPUDPTest {
   @Test
   public void testNetworkACLRuleNetworkACLRuleProtocolTCPUDP() throws Throwable {
     NetworkACLRuleNetworkACLRuleProtocolTCPUDP networkAclRuleNetworkAclRuleProtocolTcpudpModel = new NetworkACLRuleNetworkACLRuleProtocolTCPUDP();
-    assertNull(networkAclRuleNetworkAclRuleProtocolTcpudpModel.getId());
-    assertNull(networkAclRuleNetworkAclRuleProtocolTcpudpModel.getHref());
-    assertNull(networkAclRuleNetworkAclRuleProtocolTcpudpModel.getName());
     assertNull(networkAclRuleNetworkAclRuleProtocolTcpudpModel.getAction());
-    assertNull(networkAclRuleNetworkAclRuleProtocolTcpudpModel.getDestination());
-    assertNull(networkAclRuleNetworkAclRuleProtocolTcpudpModel.getDirection());
-    assertNull(networkAclRuleNetworkAclRuleProtocolTcpudpModel.getSource());
-    assertNull(networkAclRuleNetworkAclRuleProtocolTcpudpModel.getProtocol());
     assertNull(networkAclRuleNetworkAclRuleProtocolTcpudpModel.getBefore());
     assertNull(networkAclRuleNetworkAclRuleProtocolTcpudpModel.getCreatedAt());
+    assertNull(networkAclRuleNetworkAclRuleProtocolTcpudpModel.getDestination());
+    assertNull(networkAclRuleNetworkAclRuleProtocolTcpudpModel.getDirection());
+    assertNull(networkAclRuleNetworkAclRuleProtocolTcpudpModel.getHref());
+    assertNull(networkAclRuleNetworkAclRuleProtocolTcpudpModel.getId());
     assertNull(networkAclRuleNetworkAclRuleProtocolTcpudpModel.getIpVersion());
+    assertNull(networkAclRuleNetworkAclRuleProtocolTcpudpModel.getName());
+    assertNull(networkAclRuleNetworkAclRuleProtocolTcpudpModel.getSource());
     assertNull(networkAclRuleNetworkAclRuleProtocolTcpudpModel.getDestinationPortMax());
     assertNull(networkAclRuleNetworkAclRuleProtocolTcpudpModel.getDestinationPortMin());
+    assertNull(networkAclRuleNetworkAclRuleProtocolTcpudpModel.getProtocol());
     assertNull(networkAclRuleNetworkAclRuleProtocolTcpudpModel.getSourcePortMax());
     assertNull(networkAclRuleNetworkAclRuleProtocolTcpudpModel.getSourcePortMin());
   }

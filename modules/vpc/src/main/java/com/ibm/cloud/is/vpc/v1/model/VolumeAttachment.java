@@ -44,17 +44,28 @@ public class VolumeAttachment extends GenericModel {
     String DATA = "data";
   }
 
-  @SerializedName("delete_volume_on_instance_delete")
-  protected Boolean deleteVolumeOnInstanceDelete;
-  protected String name;
-  protected String id;
-  protected String href;
-  protected VolumeAttachmentDevice device;
-  protected VolumeReference volume;
   @SerializedName("created_at")
   protected Date createdAt;
+  @SerializedName("delete_volume_on_instance_delete")
+  protected Boolean deleteVolumeOnInstanceDelete;
+  protected VolumeAttachmentDevice device;
+  protected String href;
+  protected String id;
+  protected String name;
   protected String status;
   protected String type;
+  protected VolumeReference volume;
+
+  /**
+   * Gets the createdAt.
+   *
+   * The date and time that the volume was attached.
+   *
+   * @return the createdAt
+   */
+  public Date getCreatedAt() {
+    return createdAt;
+  }
 
   /**
    * Gets the deleteVolumeOnInstanceDelete.
@@ -65,39 +76,6 @@ public class VolumeAttachment extends GenericModel {
    */
   public Boolean isDeleteVolumeOnInstanceDelete() {
     return deleteVolumeOnInstanceDelete;
-  }
-
-  /**
-   * Gets the name.
-   *
-   * The user-defined name for this volume attachment.
-   *
-   * @return the name
-   */
-  public String getName() {
-    return name;
-  }
-
-  /**
-   * Gets the id.
-   *
-   * The unique identifier for this volume attachment.
-   *
-   * @return the id
-   */
-  public String getId() {
-    return id;
-  }
-
-  /**
-   * Gets the href.
-   *
-   * The URL for this volume attachment.
-   *
-   * @return the href
-   */
-  public String getHref() {
-    return href;
   }
 
   /**
@@ -114,25 +92,36 @@ public class VolumeAttachment extends GenericModel {
   }
 
   /**
-   * Gets the volume.
+   * Gets the href.
    *
-   * The attached volume.
+   * The URL for this volume attachment.
    *
-   * @return the volume
+   * @return the href
    */
-  public VolumeReference getVolume() {
-    return volume;
+  public String getHref() {
+    return href;
   }
 
   /**
-   * Gets the createdAt.
+   * Gets the id.
    *
-   * The date and time that the volume was attached.
+   * The unique identifier for this volume attachment.
    *
-   * @return the createdAt
+   * @return the id
    */
-  public Date getCreatedAt() {
-    return createdAt;
+  public String getId() {
+    return id;
+  }
+
+  /**
+   * Gets the name.
+   *
+   * The user-defined name for this volume attachment.
+   *
+   * @return the name
+   */
+  public String getName() {
+    return name;
   }
 
   /**
@@ -155,6 +144,17 @@ public class VolumeAttachment extends GenericModel {
    */
   public String getType() {
     return type;
+  }
+
+  /**
+   * Gets the volume.
+   *
+   * The attached volume.
+   *
+   * @return the volume
+   */
+  public VolumeReference getVolume() {
+    return volume;
   }
 }
 

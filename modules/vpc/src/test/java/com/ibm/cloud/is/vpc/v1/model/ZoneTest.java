@@ -33,8 +33,8 @@ public class ZoneTest {
   @Test
   public void testZone() throws Throwable {
     Zone zoneModel = new Zone();
-    assertNull(zoneModel.getName());
     assertNull(zoneModel.getHref());
+    assertNull(zoneModel.getName());
     assertNull(zoneModel.getRegion());
     assertNull(zoneModel.getStatus());
   }

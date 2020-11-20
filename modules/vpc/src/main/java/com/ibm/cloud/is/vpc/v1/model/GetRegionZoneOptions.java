@@ -20,18 +20,18 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class GetRegionZoneOptions extends GenericModel {
 
   protected String regionName;
-  protected String zoneName;
+  protected String name;
 
   /**
    * Builder.
    */
   public static class Builder {
     private String regionName;
-    private String zoneName;
+    private String name;
 
     private Builder(GetRegionZoneOptions getRegionZoneOptions) {
       this.regionName = getRegionZoneOptions.regionName;
-      this.zoneName = getRegionZoneOptions.zoneName;
+      this.name = getRegionZoneOptions.name;
     }
 
     /**
@@ -44,11 +44,11 @@ public class GetRegionZoneOptions extends GenericModel {
      * Instantiates a new builder with required properties.
      *
      * @param regionName the regionName
-     * @param zoneName the zoneName
+     * @param name the name
      */
-    public Builder(String regionName, String zoneName) {
+    public Builder(String regionName, String name) {
       this.regionName = regionName;
-      this.zoneName = zoneName;
+      this.name = name;
     }
 
     /**
@@ -72,13 +72,13 @@ public class GetRegionZoneOptions extends GenericModel {
     }
 
     /**
-     * Set the zoneName.
+     * Set the name.
      *
-     * @param zoneName the zoneName
+     * @param name the name
      * @return the GetRegionZoneOptions builder
      */
-    public Builder zoneName(String zoneName) {
-      this.zoneName = zoneName;
+    public Builder name(String name) {
+      this.name = name;
       return this;
     }
   }
@@ -86,10 +86,10 @@ public class GetRegionZoneOptions extends GenericModel {
   protected GetRegionZoneOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.regionName,
       "regionName cannot be empty");
-    com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.zoneName,
-      "zoneName cannot be empty");
+    com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.name,
+      "name cannot be empty");
     regionName = builder.regionName;
-    zoneName = builder.zoneName;
+    name = builder.name;
   }
 
   /**
@@ -113,14 +113,14 @@ public class GetRegionZoneOptions extends GenericModel {
   }
 
   /**
-   * Gets the zoneName.
+   * Gets the name.
    *
    * The zone name.
    *
-   * @return the zoneName
+   * @return the name
    */
-  public String zoneName() {
-    return zoneName;
+  public String name() {
+    return name;
   }
 }
 

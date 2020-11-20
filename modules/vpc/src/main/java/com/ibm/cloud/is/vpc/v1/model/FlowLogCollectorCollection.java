@@ -23,22 +23,33 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class FlowLogCollectorCollection extends GenericModel {
 
   protected FlowLogCollectorCollectionFirst first;
+  @SerializedName("flow_log_collectors")
+  protected List<FlowLogCollector> flowLogCollectors;
   protected Long limit;
   protected FlowLogCollectorCollectionNext next;
   @SerializedName("total_count")
   protected Long totalCount;
-  @SerializedName("flow_log_collectors")
-  protected List<FlowLogCollector> flowLogCollectors;
 
   /**
    * Gets the first.
    *
-   * A reference to the first page of resources.
+   * A link to the first page of resources.
    *
    * @return the first
    */
   public FlowLogCollectorCollectionFirst getFirst() {
     return first;
+  }
+
+  /**
+   * Gets the flowLogCollectors.
+   *
+   * Collection of flow log collectors.
+   *
+   * @return the flowLogCollectors
+   */
+  public List<FlowLogCollector> getFlowLogCollectors() {
+    return flowLogCollectors;
   }
 
   /**
@@ -55,7 +66,7 @@ public class FlowLogCollectorCollection extends GenericModel {
   /**
    * Gets the next.
    *
-   * A reference to the next page of resources; this reference is included for all pages
+   * A link to the next page of resources. This property is present for all pages
    * except the last page.
    *
    * @return the next
@@ -73,17 +84,6 @@ public class FlowLogCollectorCollection extends GenericModel {
    */
   public Long getTotalCount() {
     return totalCount;
-  }
-
-  /**
-   * Gets the flowLogCollectors.
-   *
-   * Collection of flow log collectors.
-   *
-   * @return the flowLogCollectors
-   */
-  public List<FlowLogCollector> getFlowLogCollectors() {
-    return flowLogCollectors;
   }
 }
 

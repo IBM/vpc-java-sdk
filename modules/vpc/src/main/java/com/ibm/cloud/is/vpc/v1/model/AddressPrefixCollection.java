@@ -22,18 +22,29 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class AddressPrefixCollection extends GenericModel {
 
+  @SerializedName("address_prefixes")
+  protected List<AddressPrefix> addressPrefixes;
   protected AddressPrefixCollectionFirst first;
   protected Long limit;
   protected AddressPrefixCollectionNext next;
   @SerializedName("total_count")
   protected Long totalCount;
-  @SerializedName("address_prefixes")
-  protected List<AddressPrefix> addressPrefixes;
+
+  /**
+   * Gets the addressPrefixes.
+   *
+   * Collection of address prefixes.
+   *
+   * @return the addressPrefixes
+   */
+  public List<AddressPrefix> getAddressPrefixes() {
+    return addressPrefixes;
+  }
 
   /**
    * Gets the first.
    *
-   * A reference to the first page of resources.
+   * A link to the first page of resources.
    *
    * @return the first
    */
@@ -55,7 +66,7 @@ public class AddressPrefixCollection extends GenericModel {
   /**
    * Gets the next.
    *
-   * A reference to the next page of resources; this reference is included for all pages
+   * A link to the next page of resources. This property is present for all pages
    * except the last page.
    *
    * @return the next
@@ -73,17 +84,6 @@ public class AddressPrefixCollection extends GenericModel {
    */
   public Long getTotalCount() {
     return totalCount;
-  }
-
-  /**
-   * Gets the addressPrefixes.
-   *
-   * Collection of address prefixes.
-   *
-   * @return the addressPrefixes
-   */
-  public List<AddressPrefix> getAddressPrefixes() {
-    return addressPrefixes;
   }
 }
 

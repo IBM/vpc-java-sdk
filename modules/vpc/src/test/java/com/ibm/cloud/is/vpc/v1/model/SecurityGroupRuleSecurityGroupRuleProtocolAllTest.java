@@ -33,12 +33,11 @@ public class SecurityGroupRuleSecurityGroupRuleProtocolAllTest {
   @Test
   public void testSecurityGroupRuleSecurityGroupRuleProtocolAll() throws Throwable {
     SecurityGroupRuleSecurityGroupRuleProtocolAll securityGroupRuleSecurityGroupRuleProtocolAllModel = new SecurityGroupRuleSecurityGroupRuleProtocolAll();
-    assertNull(securityGroupRuleSecurityGroupRuleProtocolAllModel.getId());
-    assertNull(securityGroupRuleSecurityGroupRuleProtocolAllModel.getHref());
     assertNull(securityGroupRuleSecurityGroupRuleProtocolAllModel.getDirection());
+    assertNull(securityGroupRuleSecurityGroupRuleProtocolAllModel.getHref());
+    assertNull(securityGroupRuleSecurityGroupRuleProtocolAllModel.getId());
     assertNull(securityGroupRuleSecurityGroupRuleProtocolAllModel.getIpVersion());
-    assertNull(securityGroupRuleSecurityGroupRuleProtocolAllModel.getProtocol());
     assertNull(securityGroupRuleSecurityGroupRuleProtocolAllModel.getRemote());
-    assertNotNull(securityGroupRuleSecurityGroupRuleProtocolAllModel);
+    assertNull(securityGroupRuleSecurityGroupRuleProtocolAllModel.getProtocol());
   }
 }

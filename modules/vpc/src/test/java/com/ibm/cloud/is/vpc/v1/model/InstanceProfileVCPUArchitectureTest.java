@@ -32,8 +32,8 @@ public class InstanceProfileVCPUArchitectureTest {
   @Test
   public void testInstanceProfileVCPUArchitecture() throws Throwable {
     InstanceProfileVCPUArchitecture instanceProfileVcpuArchitectureModel = new InstanceProfileVCPUArchitecture();
+    assertNull(instanceProfileVcpuArchitectureModel.getXDefault());
     assertNull(instanceProfileVcpuArchitectureModel.getType());
     assertNull(instanceProfileVcpuArchitectureModel.getValue());
-    assertNull(instanceProfileVcpuArchitectureModel.getXDefault());
   }
 }

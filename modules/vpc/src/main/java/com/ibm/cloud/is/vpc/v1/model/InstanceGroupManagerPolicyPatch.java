@@ -37,24 +37,24 @@ public class InstanceGroupManagerPolicyPatch extends GenericModel {
     String NETWORK_OUT = "network_out";
   }
 
-  protected String name;
   @SerializedName("metric_type")
   protected String metricType;
   @SerializedName("metric_value")
   protected Long metricValue;
+  protected String name;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private String name;
     private String metricType;
     private Long metricValue;
+    private String name;
 
     private Builder(InstanceGroupManagerPolicyPatch instanceGroupManagerPolicyPatch) {
-      this.name = instanceGroupManagerPolicyPatch.name;
       this.metricType = instanceGroupManagerPolicyPatch.metricType;
       this.metricValue = instanceGroupManagerPolicyPatch.metricValue;
+      this.name = instanceGroupManagerPolicyPatch.name;
     }
 
     /**
@@ -70,17 +70,6 @@ public class InstanceGroupManagerPolicyPatch extends GenericModel {
      */
     public InstanceGroupManagerPolicyPatch build() {
       return new InstanceGroupManagerPolicyPatch(this);
-    }
-
-    /**
-     * Set the name.
-     *
-     * @param name the name
-     * @return the InstanceGroupManagerPolicyPatch builder
-     */
-    public Builder name(String name) {
-      this.name = name;
-      return this;
     }
 
     /**
@@ -104,12 +93,23 @@ public class InstanceGroupManagerPolicyPatch extends GenericModel {
       this.metricValue = metricValue;
       return this;
     }
+
+    /**
+     * Set the name.
+     *
+     * @param name the name
+     * @return the InstanceGroupManagerPolicyPatch builder
+     */
+    public Builder name(String name) {
+      this.name = name;
+      return this;
+    }
   }
 
   protected InstanceGroupManagerPolicyPatch(Builder builder) {
-    name = builder.name;
     metricType = builder.metricType;
     metricValue = builder.metricValue;
+    name = builder.name;
   }
 
   /**
@@ -119,18 +119,6 @@ public class InstanceGroupManagerPolicyPatch extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the name.
-   *
-   * The user-defined name for this instance group manager policy. Names must be unique within the instance group
-   * manager.
-   *
-   * @return the name
-   */
-  public String name() {
-    return name;
   }
 
   /**
@@ -153,6 +141,18 @@ public class InstanceGroupManagerPolicyPatch extends GenericModel {
    */
   public Long metricValue() {
     return metricValue;
+  }
+
+  /**
+   * Gets the name.
+   *
+   * The user-defined name for this instance group manager policy. Names must be unique within the instance group
+   * manager.
+   *
+   * @return the name
+   */
+  public String name() {
+    return name;
   }
 
   /**

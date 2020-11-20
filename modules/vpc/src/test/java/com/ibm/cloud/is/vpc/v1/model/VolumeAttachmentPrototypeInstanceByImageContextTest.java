@@ -34,28 +34,28 @@ public class VolumeAttachmentPrototypeInstanceByImageContextTest {
 
   @Test
   public void testVolumeAttachmentPrototypeInstanceByImageContext() throws Throwable {
-    VolumeProfileIdentityByName volumeProfileIdentityModel = new VolumeProfileIdentityByName.Builder()
-      .name("general-purpose")
-      .build();
-    assertEquals(volumeProfileIdentityModel.name(), "general-purpose");
-
     EncryptionKeyIdentityByCRN encryptionKeyIdentityModel = new EncryptionKeyIdentityByCRN.Builder()
       .crn("crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179")
       .build();
     assertEquals(encryptionKeyIdentityModel.crn(), "crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179");
 
+    VolumeProfileIdentityByName volumeProfileIdentityModel = new VolumeProfileIdentityByName.Builder()
+      .name("general-purpose")
+      .build();
+    assertEquals(volumeProfileIdentityModel.name(), "general-purpose");
+
     VolumePrototypeInstanceByImageContext volumePrototypeInstanceByImageContextModel = new VolumePrototypeInstanceByImageContext.Builder()
+      .capacity(Long.valueOf("100"))
+      .encryptionKey(encryptionKeyIdentityModel)
+      .iops(Long.valueOf("10000"))
       .name("my-volume")
       .profile(volumeProfileIdentityModel)
-      .encryptionKey(encryptionKeyIdentityModel)
-      .capacity(Long.valueOf("100"))
-      .iops(Long.valueOf("10000"))
       .build();
+    assertEquals(volumePrototypeInstanceByImageContextModel.capacity(), Long.valueOf("100"));
+    assertEquals(volumePrototypeInstanceByImageContextModel.encryptionKey(), encryptionKeyIdentityModel);
+    assertEquals(volumePrototypeInstanceByImageContextModel.iops(), Long.valueOf("10000"));
     assertEquals(volumePrototypeInstanceByImageContextModel.name(), "my-volume");
     assertEquals(volumePrototypeInstanceByImageContextModel.profile(), volumeProfileIdentityModel);
-    assertEquals(volumePrototypeInstanceByImageContextModel.encryptionKey(), encryptionKeyIdentityModel);
-    assertEquals(volumePrototypeInstanceByImageContextModel.capacity(), Long.valueOf("100"));
-    assertEquals(volumePrototypeInstanceByImageContextModel.iops(), Long.valueOf("10000"));
 
     VolumeAttachmentPrototypeInstanceByImageContext volumeAttachmentPrototypeInstanceByImageContextModel = new VolumeAttachmentPrototypeInstanceByImageContext.Builder()
       .deleteVolumeOnInstanceDelete(true)

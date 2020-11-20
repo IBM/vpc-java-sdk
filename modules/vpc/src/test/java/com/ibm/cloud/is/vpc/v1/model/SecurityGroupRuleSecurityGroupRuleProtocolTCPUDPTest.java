@@ -33,13 +33,13 @@ public class SecurityGroupRuleSecurityGroupRuleProtocolTCPUDPTest {
   @Test
   public void testSecurityGroupRuleSecurityGroupRuleProtocolTCPUDP() throws Throwable {
     SecurityGroupRuleSecurityGroupRuleProtocolTCPUDP securityGroupRuleSecurityGroupRuleProtocolTcpudpModel = new SecurityGroupRuleSecurityGroupRuleProtocolTCPUDP();
-    assertNull(securityGroupRuleSecurityGroupRuleProtocolTcpudpModel.getId());
-    assertNull(securityGroupRuleSecurityGroupRuleProtocolTcpudpModel.getHref());
     assertNull(securityGroupRuleSecurityGroupRuleProtocolTcpudpModel.getDirection());
+    assertNull(securityGroupRuleSecurityGroupRuleProtocolTcpudpModel.getHref());
+    assertNull(securityGroupRuleSecurityGroupRuleProtocolTcpudpModel.getId());
     assertNull(securityGroupRuleSecurityGroupRuleProtocolTcpudpModel.getIpVersion());
-    assertNull(securityGroupRuleSecurityGroupRuleProtocolTcpudpModel.getProtocol());
     assertNull(securityGroupRuleSecurityGroupRuleProtocolTcpudpModel.getRemote());
     assertNull(securityGroupRuleSecurityGroupRuleProtocolTcpudpModel.getPortMax());
     assertNull(securityGroupRuleSecurityGroupRuleProtocolTcpudpModel.getPortMin());
+    assertNull(securityGroupRuleSecurityGroupRuleProtocolTcpudpModel.getProtocol());
   }
 }

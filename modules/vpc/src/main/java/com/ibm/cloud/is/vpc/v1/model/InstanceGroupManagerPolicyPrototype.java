@@ -38,7 +38,7 @@ public class InstanceGroupManagerPolicyPrototype extends GenericModel {
   }
 
   /**
-   * The type of Policy for the Instance Group.
+   * The type of policy for the instance group.
    */
   public interface PolicyType {
     /** target. */
@@ -93,7 +93,7 @@ public class InstanceGroupManagerPolicyPrototype extends GenericModel {
   /**
    * Gets the policyType.
    *
-   * The type of Policy for the Instance Group.
+   * The type of policy for the instance group.
    *
    * @return the policyType
    */

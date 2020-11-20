@@ -14,14 +14,16 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceReference;
+import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroup;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupCollection;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupCollectionFirst;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleRemoteIP;
-import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleSecurityGroupRuleProtocolTCPUDP;
+import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleSecurityGroupRuleProtocolAll;
 import com.ibm.cloud.is.vpc.v1.model.VPCReference;
+import com.ibm.cloud.is.vpc.v1.model.VPCReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -45,7 +47,7 @@ public class SecurityGroupCollectionTest {
     assertNull(securityGroupCollectionModel.getFirst());
     assertNull(securityGroupCollectionModel.getLimit());
     assertNull(securityGroupCollectionModel.getNext());
-    assertNull(securityGroupCollectionModel.getTotalCount());
     assertNull(securityGroupCollectionModel.getSecurityGroups());
+    assertNull(securityGroupCollectionModel.getTotalCount());
   }
 }

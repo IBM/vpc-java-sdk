@@ -16,6 +16,7 @@ package com.ibm.cloud.is.vpc.v1.model;
 import com.ibm.cloud.is.vpc.v1.model.IKEPolicy;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionReference;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -34,18 +35,18 @@ public class IKEPolicyTest {
   @Test
   public void testIKEPolicy() throws Throwable {
     IKEPolicy ikePolicyModel = new IKEPolicy();
-    assertNull(ikePolicyModel.getId());
-    assertNull(ikePolicyModel.getHref());
-    assertNull(ikePolicyModel.getName());
-    assertNull(ikePolicyModel.getResourceType());
     assertNull(ikePolicyModel.getAuthenticationAlgorithm());
-    assertNull(ikePolicyModel.getDhGroup());
-    assertNull(ikePolicyModel.getEncryptionAlgorithm());
-    assertNull(ikePolicyModel.getIkeVersion());
-    assertNull(ikePolicyModel.getKeyLifetime());
-    assertNull(ikePolicyModel.getResourceGroup());
     assertNull(ikePolicyModel.getConnections());
     assertNull(ikePolicyModel.getCreatedAt());
+    assertNull(ikePolicyModel.getDhGroup());
+    assertNull(ikePolicyModel.getEncryptionAlgorithm());
+    assertNull(ikePolicyModel.getHref());
+    assertNull(ikePolicyModel.getId());
+    assertNull(ikePolicyModel.getIkeVersion());
+    assertNull(ikePolicyModel.getKeyLifetime());
+    assertNull(ikePolicyModel.getName());
     assertNull(ikePolicyModel.getNegotiationMode());
+    assertNull(ikePolicyModel.getResourceGroup());
+    assertNull(ikePolicyModel.getResourceType());
   }
 }

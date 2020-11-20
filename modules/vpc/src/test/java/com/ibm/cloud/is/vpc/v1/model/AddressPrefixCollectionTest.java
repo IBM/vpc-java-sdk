@@ -36,10 +36,10 @@ public class AddressPrefixCollectionTest {
   @Test
   public void testAddressPrefixCollection() throws Throwable {
     AddressPrefixCollection addressPrefixCollectionModel = new AddressPrefixCollection();
+    assertNull(addressPrefixCollectionModel.getAddressPrefixes());
     assertNull(addressPrefixCollectionModel.getFirst());
     assertNull(addressPrefixCollectionModel.getLimit());
     assertNull(addressPrefixCollectionModel.getNext());
     assertNull(addressPrefixCollectionModel.getTotalCount());
-    assertNull(addressPrefixCollectionModel.getAddressPrefixes());
   }
 }

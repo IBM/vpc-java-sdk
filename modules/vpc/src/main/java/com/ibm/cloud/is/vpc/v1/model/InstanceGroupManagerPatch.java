@@ -23,35 +23,35 @@ import com.ibm.cloud.sdk.core.util.GsonSingleton;
  */
 public class InstanceGroupManagerPatch extends GenericModel {
 
-  protected String name;
-  @SerializedName("management_enabled")
-  protected Boolean managementEnabled;
   @SerializedName("aggregation_window")
   protected Long aggregationWindow;
   protected Long cooldown;
+  @SerializedName("management_enabled")
+  protected Boolean managementEnabled;
   @SerializedName("max_membership_count")
   protected Long maxMembershipCount;
   @SerializedName("min_membership_count")
   protected Long minMembershipCount;
+  protected String name;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private String name;
-    private Boolean managementEnabled;
     private Long aggregationWindow;
     private Long cooldown;
+    private Boolean managementEnabled;
     private Long maxMembershipCount;
     private Long minMembershipCount;
+    private String name;
 
     private Builder(InstanceGroupManagerPatch instanceGroupManagerPatch) {
-      this.name = instanceGroupManagerPatch.name;
-      this.managementEnabled = instanceGroupManagerPatch.managementEnabled;
       this.aggregationWindow = instanceGroupManagerPatch.aggregationWindow;
       this.cooldown = instanceGroupManagerPatch.cooldown;
+      this.managementEnabled = instanceGroupManagerPatch.managementEnabled;
       this.maxMembershipCount = instanceGroupManagerPatch.maxMembershipCount;
       this.minMembershipCount = instanceGroupManagerPatch.minMembershipCount;
+      this.name = instanceGroupManagerPatch.name;
     }
 
     /**
@@ -67,28 +67,6 @@ public class InstanceGroupManagerPatch extends GenericModel {
      */
     public InstanceGroupManagerPatch build() {
       return new InstanceGroupManagerPatch(this);
-    }
-
-    /**
-     * Set the name.
-     *
-     * @param name the name
-     * @return the InstanceGroupManagerPatch builder
-     */
-    public Builder name(String name) {
-      this.name = name;
-      return this;
-    }
-
-    /**
-     * Set the managementEnabled.
-     *
-     * @param managementEnabled the managementEnabled
-     * @return the InstanceGroupManagerPatch builder
-     */
-    public Builder managementEnabled(Boolean managementEnabled) {
-      this.managementEnabled = managementEnabled;
-      return this;
     }
 
     /**
@@ -114,6 +92,17 @@ public class InstanceGroupManagerPatch extends GenericModel {
     }
 
     /**
+     * Set the managementEnabled.
+     *
+     * @param managementEnabled the managementEnabled
+     * @return the InstanceGroupManagerPatch builder
+     */
+    public Builder managementEnabled(Boolean managementEnabled) {
+      this.managementEnabled = managementEnabled;
+      return this;
+    }
+
+    /**
      * Set the maxMembershipCount.
      *
      * @param maxMembershipCount the maxMembershipCount
@@ -134,15 +123,26 @@ public class InstanceGroupManagerPatch extends GenericModel {
       this.minMembershipCount = minMembershipCount;
       return this;
     }
+
+    /**
+     * Set the name.
+     *
+     * @param name the name
+     * @return the InstanceGroupManagerPatch builder
+     */
+    public Builder name(String name) {
+      this.name = name;
+      return this;
+    }
   }
 
   protected InstanceGroupManagerPatch(Builder builder) {
-    name = builder.name;
-    managementEnabled = builder.managementEnabled;
     aggregationWindow = builder.aggregationWindow;
     cooldown = builder.cooldown;
+    managementEnabled = builder.managementEnabled;
     maxMembershipCount = builder.maxMembershipCount;
     minMembershipCount = builder.minMembershipCount;
+    name = builder.name;
   }
 
   /**
@@ -152,28 +152,6 @@ public class InstanceGroupManagerPatch extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the name.
-   *
-   * The user-defined name for this instance group manager. Names must be unique within the instance group.
-   *
-   * @return the name
-   */
-  public String name() {
-    return name;
-  }
-
-  /**
-   * Gets the managementEnabled.
-   *
-   * If set to `true`, this manager will control the instance group.
-   *
-   * @return the managementEnabled
-   */
-  public Boolean managementEnabled() {
-    return managementEnabled;
   }
 
   /**
@@ -199,6 +177,17 @@ public class InstanceGroupManagerPatch extends GenericModel {
   }
 
   /**
+   * Gets the managementEnabled.
+   *
+   * If set to `true`, this manager will control the instance group.
+   *
+   * @return the managementEnabled
+   */
+  public Boolean managementEnabled() {
+    return managementEnabled;
+  }
+
+  /**
    * Gets the maxMembershipCount.
    *
    * The maximum number of members in a managed instance group.
@@ -218,6 +207,17 @@ public class InstanceGroupManagerPatch extends GenericModel {
    */
   public Long minMembershipCount() {
     return minMembershipCount;
+  }
+
+  /**
+   * Gets the name.
+   *
+   * The user-defined name for this instance group manager. Names must be unique within the instance group.
+   *
+   * @return the name
+   */
+  public String name() {
+    return name;
   }
 
   /**

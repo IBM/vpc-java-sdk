@@ -20,154 +20,36 @@ import com.ibm.cloud.sdk.core.util.GsonSingleton;
 
 /**
  * VPNGatewayConnectionPatch.
+ *
+ * Classes which extend this class:
+ * - VPNGatewayConnectionPatchVPNGatewayConnectionStaticRouteModePatch
  */
 public class VPNGatewayConnectionPatch extends GenericModel {
 
+  /**
+   * Routing protocols are disabled for this VPN gateway connection.
+   */
+  public interface RoutingProtocol {
+    /** none. */
+    String NONE = "none";
+  }
+
   @SerializedName("admin_state_up")
   protected Boolean adminStateUp;
-  @SerializedName("peer_address")
-  protected String peerAddress;
-  protected String name;
-  protected String psk;
   @SerializedName("dead_peer_detection")
   protected VPNGatewayConnectionDPDPrototype deadPeerDetection;
   @SerializedName("ike_policy")
   protected IKEPolicyIdentity ikePolicy;
   @SerializedName("ipsec_policy")
   protected IPsecPolicyIdentity ipsecPolicy;
+  protected String name;
+  @SerializedName("peer_address")
+  protected String peerAddress;
+  protected String psk;
+  @SerializedName("routing_protocol")
+  protected String routingProtocol;
 
-  /**
-   * Builder.
-   */
-  public static class Builder {
-    private Boolean adminStateUp;
-    private String peerAddress;
-    private String name;
-    private String psk;
-    private VPNGatewayConnectionDPDPrototype deadPeerDetection;
-    private IKEPolicyIdentity ikePolicy;
-    private IPsecPolicyIdentity ipsecPolicy;
-
-    private Builder(VPNGatewayConnectionPatch vpnGatewayConnectionPatch) {
-      this.adminStateUp = vpnGatewayConnectionPatch.adminStateUp;
-      this.peerAddress = vpnGatewayConnectionPatch.peerAddress;
-      this.name = vpnGatewayConnectionPatch.name;
-      this.psk = vpnGatewayConnectionPatch.psk;
-      this.deadPeerDetection = vpnGatewayConnectionPatch.deadPeerDetection;
-      this.ikePolicy = vpnGatewayConnectionPatch.ikePolicy;
-      this.ipsecPolicy = vpnGatewayConnectionPatch.ipsecPolicy;
-    }
-
-    /**
-     * Instantiates a new builder.
-     */
-    public Builder() {
-    }
-
-    /**
-     * Builds a VPNGatewayConnectionPatch.
-     *
-     * @return the new VPNGatewayConnectionPatch instance
-     */
-    public VPNGatewayConnectionPatch build() {
-      return new VPNGatewayConnectionPatch(this);
-    }
-
-    /**
-     * Set the adminStateUp.
-     *
-     * @param adminStateUp the adminStateUp
-     * @return the VPNGatewayConnectionPatch builder
-     */
-    public Builder adminStateUp(Boolean adminStateUp) {
-      this.adminStateUp = adminStateUp;
-      return this;
-    }
-
-    /**
-     * Set the peerAddress.
-     *
-     * @param peerAddress the peerAddress
-     * @return the VPNGatewayConnectionPatch builder
-     */
-    public Builder peerAddress(String peerAddress) {
-      this.peerAddress = peerAddress;
-      return this;
-    }
-
-    /**
-     * Set the name.
-     *
-     * @param name the name
-     * @return the VPNGatewayConnectionPatch builder
-     */
-    public Builder name(String name) {
-      this.name = name;
-      return this;
-    }
-
-    /**
-     * Set the psk.
-     *
-     * @param psk the psk
-     * @return the VPNGatewayConnectionPatch builder
-     */
-    public Builder psk(String psk) {
-      this.psk = psk;
-      return this;
-    }
-
-    /**
-     * Set the deadPeerDetection.
-     *
-     * @param deadPeerDetection the deadPeerDetection
-     * @return the VPNGatewayConnectionPatch builder
-     */
-    public Builder deadPeerDetection(VPNGatewayConnectionDPDPrototype deadPeerDetection) {
-      this.deadPeerDetection = deadPeerDetection;
-      return this;
-    }
-
-    /**
-     * Set the ikePolicy.
-     *
-     * @param ikePolicy the ikePolicy
-     * @return the VPNGatewayConnectionPatch builder
-     */
-    public Builder ikePolicy(IKEPolicyIdentity ikePolicy) {
-      this.ikePolicy = ikePolicy;
-      return this;
-    }
-
-    /**
-     * Set the ipsecPolicy.
-     *
-     * @param ipsecPolicy the ipsecPolicy
-     * @return the VPNGatewayConnectionPatch builder
-     */
-    public Builder ipsecPolicy(IPsecPolicyIdentity ipsecPolicy) {
-      this.ipsecPolicy = ipsecPolicy;
-      return this;
-    }
-  }
-
-  protected VPNGatewayConnectionPatch(Builder builder) {
-    adminStateUp = builder.adminStateUp;
-    peerAddress = builder.peerAddress;
-    name = builder.name;
-    psk = builder.psk;
-    deadPeerDetection = builder.deadPeerDetection;
-    ikePolicy = builder.ikePolicy;
-    ipsecPolicy = builder.ipsecPolicy;
-  }
-
-  /**
-   * New builder.
-   *
-   * @return a VPNGatewayConnectionPatch builder
-   */
-  public Builder newBuilder() {
-    return new Builder(this);
+  protected VPNGatewayConnectionPatch() {
   }
 
   /**
@@ -179,39 +61,6 @@ public class VPNGatewayConnectionPatch extends GenericModel {
    */
   public Boolean adminStateUp() {
     return adminStateUp;
-  }
-
-  /**
-   * Gets the peerAddress.
-   *
-   * The IP address of the peer VPN gateway.
-   *
-   * @return the peerAddress
-   */
-  public String peerAddress() {
-    return peerAddress;
-  }
-
-  /**
-   * Gets the name.
-   *
-   * The user-defined name for this VPN gateway connection.
-   *
-   * @return the name
-   */
-  public String name() {
-    return name;
-  }
-
-  /**
-   * Gets the psk.
-   *
-   * The preshared key.
-   *
-   * @return the psk
-   */
-  public String psk() {
-    return psk;
   }
 
   /**
@@ -246,6 +95,50 @@ public class VPNGatewayConnectionPatch extends GenericModel {
    */
   public IPsecPolicyIdentity ipsecPolicy() {
     return ipsecPolicy;
+  }
+
+  /**
+   * Gets the name.
+   *
+   * The user-defined name for this VPN gateway connection.
+   *
+   * @return the name
+   */
+  public String name() {
+    return name;
+  }
+
+  /**
+   * Gets the peerAddress.
+   *
+   * The IP address of the peer VPN gateway.
+   *
+   * @return the peerAddress
+   */
+  public String peerAddress() {
+    return peerAddress;
+  }
+
+  /**
+   * Gets the psk.
+   *
+   * The preshared key.
+   *
+   * @return the psk
+   */
+  public String psk() {
+    return psk;
+  }
+
+  /**
+   * Gets the routingProtocol.
+   *
+   * Routing protocols are disabled for this VPN gateway connection.
+   *
+   * @return the routingProtocol
+   */
+  public String routingProtocol() {
+    return routingProtocol;
   }
 
   /**

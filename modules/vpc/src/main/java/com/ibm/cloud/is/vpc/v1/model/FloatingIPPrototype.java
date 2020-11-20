@@ -28,7 +28,7 @@ public class FloatingIPPrototype extends GenericModel {
   @SerializedName("resource_group")
   protected ResourceGroupIdentity resourceGroup;
   protected ZoneIdentity zone;
-  protected FloatingIPByTargetTarget target;
+  protected FloatingIPByTargetNetworkInterfaceIdentity target;
 
   protected FloatingIPPrototype() {
   }
@@ -75,7 +75,7 @@ public class FloatingIPPrototype extends GenericModel {
    *
    * @return the target
    */
-  public FloatingIPByTargetTarget target() {
+  public FloatingIPByTargetNetworkInterfaceIdentity target() {
     return target;
   }
 }

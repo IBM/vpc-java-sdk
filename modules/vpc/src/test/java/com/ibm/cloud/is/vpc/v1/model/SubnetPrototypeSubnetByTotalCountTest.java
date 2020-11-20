@@ -16,6 +16,7 @@ package com.ibm.cloud.is.vpc.v1.model;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.PublicGatewayIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.RoutingTableIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.SubnetPrototypeSubnetByTotalCount;
 import com.ibm.cloud.is.vpc.v1.model.VPCIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.ZoneIdentityByName;
@@ -51,6 +52,11 @@ public class SubnetPrototypeSubnetByTotalCountTest {
       .build();
     assertEquals(resourceGroupIdentityModel.id(), "fee82deba12e4c0fb69c3b09d1f12345");
 
+    RoutingTableIdentityById routingTableIdentityModel = new RoutingTableIdentityById.Builder()
+      .id("6885e83f-03b2-4603-8a86-db2a0f55c840")
+      .build();
+    assertEquals(routingTableIdentityModel.id(), "6885e83f-03b2-4603-8a86-db2a0f55c840");
+
     VPCIdentityById vpcIdentityModel = new VPCIdentityById.Builder()
       .id("4727d842-f94f-4a2d-824a-9bc9b02c523b")
       .build();
@@ -62,20 +68,22 @@ public class SubnetPrototypeSubnetByTotalCountTest {
     assertEquals(zoneIdentityModel.name(), "us-south-1");
 
     SubnetPrototypeSubnetByTotalCount subnetPrototypeSubnetByTotalCountModel = new SubnetPrototypeSubnetByTotalCount.Builder()
+      .ipVersion("ipv4")
       .name("my-subnet")
       .networkAcl(networkAclIdentityModel)
       .publicGateway(publicGatewayIdentityModel)
-      .ipVersion("ipv4")
       .resourceGroup(resourceGroupIdentityModel)
+      .routingTable(routingTableIdentityModel)
       .vpc(vpcIdentityModel)
       .totalIpv4AddressCount(Long.valueOf("256"))
       .zone(zoneIdentityModel)
       .build();
+    assertEquals(subnetPrototypeSubnetByTotalCountModel.ipVersion(), "ipv4");
     assertEquals(subnetPrototypeSubnetByTotalCountModel.name(), "my-subnet");
     assertEquals(subnetPrototypeSubnetByTotalCountModel.networkAcl(), networkAclIdentityModel);
     assertEquals(subnetPrototypeSubnetByTotalCountModel.publicGateway(), publicGatewayIdentityModel);
-    assertEquals(subnetPrototypeSubnetByTotalCountModel.ipVersion(), "ipv4");
     assertEquals(subnetPrototypeSubnetByTotalCountModel.resourceGroup(), resourceGroupIdentityModel);
+    assertEquals(subnetPrototypeSubnetByTotalCountModel.routingTable(), routingTableIdentityModel);
     assertEquals(subnetPrototypeSubnetByTotalCountModel.vpc(), vpcIdentityModel);
     assertEquals(subnetPrototypeSubnetByTotalCountModel.totalIpv4AddressCount(), Long.valueOf("256"));
     assertEquals(subnetPrototypeSubnetByTotalCountModel.zone(), zoneIdentityModel);
@@ -84,11 +92,12 @@ public class SubnetPrototypeSubnetByTotalCountTest {
 
     SubnetPrototypeSubnetByTotalCount subnetPrototypeSubnetByTotalCountModelNew = TestUtilities.deserialize(json, SubnetPrototypeSubnetByTotalCount.class);
     assertTrue(subnetPrototypeSubnetByTotalCountModelNew instanceof SubnetPrototypeSubnetByTotalCount);
+    assertEquals(subnetPrototypeSubnetByTotalCountModelNew.ipVersion(), "ipv4");
     assertEquals(subnetPrototypeSubnetByTotalCountModelNew.name(), "my-subnet");
     assertEquals(subnetPrototypeSubnetByTotalCountModelNew.networkAcl().toString(), networkAclIdentityModel.toString());
     assertEquals(subnetPrototypeSubnetByTotalCountModelNew.publicGateway().toString(), publicGatewayIdentityModel.toString());
-    assertEquals(subnetPrototypeSubnetByTotalCountModelNew.ipVersion(), "ipv4");
     assertEquals(subnetPrototypeSubnetByTotalCountModelNew.resourceGroup().toString(), resourceGroupIdentityModel.toString());
+    assertEquals(subnetPrototypeSubnetByTotalCountModelNew.routingTable().toString(), routingTableIdentityModel.toString());
     assertEquals(subnetPrototypeSubnetByTotalCountModelNew.vpc().toString(), vpcIdentityModel.toString());
     assertEquals(subnetPrototypeSubnetByTotalCountModelNew.totalIpv4AddressCount(), Long.valueOf("256"));
     assertEquals(subnetPrototypeSubnetByTotalCountModelNew.zone().toString(), zoneIdentityModel.toString());

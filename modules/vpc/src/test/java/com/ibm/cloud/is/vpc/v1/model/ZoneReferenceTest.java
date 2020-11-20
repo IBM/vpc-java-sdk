@@ -32,7 +32,7 @@ public class ZoneReferenceTest {
   @Test
   public void testZoneReference() throws Throwable {
     ZoneReference zoneReferenceModel = new ZoneReference();
-    assertNull(zoneReferenceModel.getName());
     assertNull(zoneReferenceModel.getHref());
+    assertNull(zoneReferenceModel.getName());
   }
 }

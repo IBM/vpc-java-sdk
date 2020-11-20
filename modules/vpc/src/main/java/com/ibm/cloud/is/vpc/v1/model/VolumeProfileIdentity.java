@@ -32,7 +32,7 @@ public class VolumeProfileIdentity extends GenericModel {
   /**
    * Gets the name.
    *
-   * The name for this volume profile.
+   * The globally unique name for this volume profile.
    *
    * @return the name
    */

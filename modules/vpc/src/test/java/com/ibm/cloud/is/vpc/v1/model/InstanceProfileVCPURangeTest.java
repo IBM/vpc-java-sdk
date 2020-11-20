@@ -32,10 +32,10 @@ public class InstanceProfileVCPURangeTest {
   @Test
   public void testInstanceProfileVCPURange() throws Throwable {
     InstanceProfileVCPURange instanceProfileVcpuRangeModel = new InstanceProfileVCPURange();
-    assertNull(instanceProfileVcpuRangeModel.getType());
     assertNull(instanceProfileVcpuRangeModel.getXDefault());
     assertNull(instanceProfileVcpuRangeModel.getMax());
     assertNull(instanceProfileVcpuRangeModel.getMin());
     assertNull(instanceProfileVcpuRangeModel.getStep());
+    assertNull(instanceProfileVcpuRangeModel.getType());
   }
 }

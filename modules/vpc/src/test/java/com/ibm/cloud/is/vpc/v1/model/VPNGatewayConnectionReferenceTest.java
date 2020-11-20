@@ -14,6 +14,7 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionReference;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -32,8 +33,9 @@ public class VPNGatewayConnectionReferenceTest {
   @Test
   public void testVPNGatewayConnectionReference() throws Throwable {
     VPNGatewayConnectionReference vpnGatewayConnectionReferenceModel = new VPNGatewayConnectionReference();
-    assertNull(vpnGatewayConnectionReferenceModel.getId());
+    assertNull(vpnGatewayConnectionReferenceModel.getDeleted());
     assertNull(vpnGatewayConnectionReferenceModel.getHref());
+    assertNull(vpnGatewayConnectionReferenceModel.getId());
     assertNull(vpnGatewayConnectionReferenceModel.getName());
     assertNull(vpnGatewayConnectionReferenceModel.getResourceType());
   }

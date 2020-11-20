@@ -23,36 +23,36 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class Key extends GenericModel {
 
   /**
-   * The cryptosystem used by this key.
+   * The crypto-system used by this key.
    */
   public interface Type {
     /** rsa. */
     String RSA = "rsa";
   }
 
-  protected String id;
+  @SerializedName("created_at")
+  protected Date createdAt;
   protected String crn;
-  protected String href;
   protected String fingerprint;
+  protected String href;
+  protected String id;
+  protected Long length;
   protected String name;
   @SerializedName("public_key")
   protected String publicKey;
-  protected String type;
   @SerializedName("resource_group")
   protected ResourceGroupReference resourceGroup;
-  @SerializedName("created_at")
-  protected Date createdAt;
-  protected Long length;
+  protected String type;
 
   /**
-   * Gets the id.
+   * Gets the createdAt.
    *
-   * The unique identifier for this key.
+   * The date and time that the key was created.
    *
-   * @return the id
+   * @return the createdAt
    */
-  public String getId() {
-    return id;
+  public Date getCreatedAt() {
+    return createdAt;
   }
 
   /**
@@ -67,6 +67,18 @@ public class Key extends GenericModel {
   }
 
   /**
+   * Gets the fingerprint.
+   *
+   * The fingerprint for this key.  The value is returned base64-encoded and prefixed with the hash algorithm (always
+   * `SHA256`).
+   *
+   * @return the fingerprint
+   */
+  public String getFingerprint() {
+    return fingerprint;
+  }
+
+  /**
    * Gets the href.
    *
    * The URL for this key.
@@ -78,15 +90,25 @@ public class Key extends GenericModel {
   }
 
   /**
-   * Gets the fingerprint.
+   * Gets the id.
    *
-   * The fingerprint for this key.  The value is returned base64-encoded and prefixed with the hash algorithm (always
-   * `SHA256`).
+   * The unique identifier for this key.
    *
-   * @return the fingerprint
+   * @return the id
    */
-  public String getFingerprint() {
-    return fingerprint;
+  public String getId() {
+    return id;
+  }
+
+  /**
+   * Gets the length.
+   *
+   * The length of this key (in bits).
+   *
+   * @return the length
+   */
+  public Long getLength() {
+    return length;
   }
 
   /**
@@ -113,17 +135,6 @@ public class Key extends GenericModel {
   }
 
   /**
-   * Gets the type.
-   *
-   * The cryptosystem used by this key.
-   *
-   * @return the type
-   */
-  public String getType() {
-    return type;
-  }
-
-  /**
    * Gets the resourceGroup.
    *
    * The resource group for this key.
@@ -135,25 +146,14 @@ public class Key extends GenericModel {
   }
 
   /**
-   * Gets the createdAt.
+   * Gets the type.
    *
-   * The date and time that the key was created.
+   * The crypto-system used by this key.
    *
-   * @return the createdAt
+   * @return the type
    */
-  public Date getCreatedAt() {
-    return createdAt;
-  }
-
-  /**
-   * Gets the length.
-   *
-   * The length of this key (in bits).
-   *
-   * @return the length
-   */
-  public Long getLength() {
-    return length;
+  public String getType() {
+    return type;
   }
 }
 

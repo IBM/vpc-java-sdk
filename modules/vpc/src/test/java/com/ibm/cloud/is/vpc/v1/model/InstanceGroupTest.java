@@ -15,11 +15,16 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroup;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerReference;
+import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateReference;
+import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolReference;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.SubnetReference;
+import com.ibm.cloud.is.vpc.v1.model.SubnetReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.VPCReference;
+import com.ibm.cloud.is.vpc.v1.model.VPCReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -38,16 +43,16 @@ public class InstanceGroupTest {
   @Test
   public void testInstanceGroup() throws Throwable {
     InstanceGroup instanceGroupModel = new InstanceGroup();
-    assertNull(instanceGroupModel.getId());
+    assertNull(instanceGroupModel.getApplicationPort());
+    assertNull(instanceGroupModel.getCreatedAt());
     assertNull(instanceGroupModel.getCrn());
     assertNull(instanceGroupModel.getHref());
-    assertNull(instanceGroupModel.getName());
-    assertNull(instanceGroupModel.getMembershipCount());
-    assertNull(instanceGroupModel.getApplicationPort());
-    assertNull(instanceGroupModel.getLoadBalancerPool());
-    assertNull(instanceGroupModel.getCreatedAt());
+    assertNull(instanceGroupModel.getId());
     assertNull(instanceGroupModel.getInstanceTemplate());
+    assertNull(instanceGroupModel.getLoadBalancerPool());
     assertNull(instanceGroupModel.getManagers());
+    assertNull(instanceGroupModel.getMembershipCount());
+    assertNull(instanceGroupModel.getName());
     assertNull(instanceGroupModel.getResourceGroup());
     assertNull(instanceGroupModel.getStatus());
     assertNull(instanceGroupModel.getSubnets());

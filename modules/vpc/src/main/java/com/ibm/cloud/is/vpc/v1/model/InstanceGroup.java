@@ -42,21 +42,21 @@ public class InstanceGroup extends GenericModel {
     String UNHEALTHY = "unhealthy";
   }
 
-  protected String id;
-  protected String crn;
-  protected String href;
-  protected String name;
-  @SerializedName("membership_count")
-  protected Long membershipCount;
   @SerializedName("application_port")
   protected Long applicationPort;
-  @SerializedName("load_balancer_pool")
-  protected LoadBalancerPoolReference loadBalancerPool;
   @SerializedName("created_at")
   protected Date createdAt;
+  protected String crn;
+  protected String href;
+  protected String id;
   @SerializedName("instance_template")
   protected InstanceTemplateReference instanceTemplate;
+  @SerializedName("load_balancer_pool")
+  protected LoadBalancerPoolReference loadBalancerPool;
   protected List<InstanceGroupManagerReference> managers;
+  @SerializedName("membership_count")
+  protected Long membershipCount;
+  protected String name;
   @SerializedName("resource_group")
   protected ResourceGroupReference resourceGroup;
   protected String status;
@@ -64,14 +64,26 @@ public class InstanceGroup extends GenericModel {
   protected VPCReference vpc;
 
   /**
-   * Gets the id.
+   * Gets the applicationPort.
    *
-   * The unique identifier for this instance group.
+   * Required if specifying a load balancer pool only. Used by the instance group when scaling up instances to supply
+   * the port for the load balancer pool member.
    *
-   * @return the id
+   * @return the applicationPort
    */
-  public String getId() {
-    return id;
+  public Long getApplicationPort() {
+    return applicationPort;
+  }
+
+  /**
+   * Gets the createdAt.
+   *
+   * The date and time that the instance group was created.
+   *
+   * @return the createdAt
+   */
+  public Date getCreatedAt() {
+    return createdAt;
   }
 
   /**
@@ -97,37 +109,25 @@ public class InstanceGroup extends GenericModel {
   }
 
   /**
-   * Gets the name.
+   * Gets the id.
    *
-   * The user-defined name for this instance group.
+   * The unique identifier for this instance group.
    *
-   * @return the name
+   * @return the id
    */
-  public String getName() {
-    return name;
+  public String getId() {
+    return id;
   }
 
   /**
-   * Gets the membershipCount.
+   * Gets the instanceTemplate.
    *
-   * The number of instances in the instance group.
+   * The template used to create new instances for this group.
    *
-   * @return the membershipCount
+   * @return the instanceTemplate
    */
-  public Long getMembershipCount() {
-    return membershipCount;
-  }
-
-  /**
-   * Gets the applicationPort.
-   *
-   * Required if specifying a load balancer pool only. Used by the instance group when scaling up instances to supply
-   * the port for the load balancer pool member.
-   *
-   * @return the applicationPort
-   */
-  public Long getApplicationPort() {
-    return applicationPort;
+  public InstanceTemplateReference getInstanceTemplate() {
+    return instanceTemplate;
   }
 
   /**
@@ -144,28 +144,6 @@ public class InstanceGroup extends GenericModel {
   }
 
   /**
-   * Gets the createdAt.
-   *
-   * The date and time that the instance group was created.
-   *
-   * @return the createdAt
-   */
-  public Date getCreatedAt() {
-    return createdAt;
-  }
-
-  /**
-   * Gets the instanceTemplate.
-   *
-   * The template used to create new instances for this group.
-   *
-   * @return the instanceTemplate
-   */
-  public InstanceTemplateReference getInstanceTemplate() {
-    return instanceTemplate;
-  }
-
-  /**
    * Gets the managers.
    *
    * Array of references to managers for the instance group.
@@ -174,6 +152,28 @@ public class InstanceGroup extends GenericModel {
    */
   public List<InstanceGroupManagerReference> getManagers() {
     return managers;
+  }
+
+  /**
+   * Gets the membershipCount.
+   *
+   * The number of instances in the instance group.
+   *
+   * @return the membershipCount
+   */
+  public Long getMembershipCount() {
+    return membershipCount;
+  }
+
+  /**
+   * Gets the name.
+   *
+   * The user-defined name for this instance group.
+   *
+   * @return the name
+   */
+  public String getName() {
+    return name;
   }
 
   /**

@@ -53,34 +53,70 @@ public class NetworkInterface extends GenericModel {
     String SECONDARY = "secondary";
   }
 
-  protected String name;
-  protected String id;
+  @SerializedName("allow_ip_spoofing")
+  protected Boolean allowIpSpoofing;
+  @SerializedName("created_at")
+  protected Date createdAt;
+  @SerializedName("floating_ips")
+  protected List<FloatingIPReference> floatingIps;
   protected String href;
+  protected String id;
+  protected String name;
+  @SerializedName("port_speed")
+  protected Long portSpeed;
   @SerializedName("primary_ipv4_address")
   protected String primaryIpv4Address;
   @SerializedName("resource_type")
   protected String resourceType;
   @SerializedName("security_groups")
   protected List<SecurityGroupReference> securityGroups;
-  @SerializedName("created_at")
-  protected Date createdAt;
-  @SerializedName("floating_ips")
-  protected List<FloatingIPReference> floatingIps;
-  @SerializedName("port_speed")
-  protected Long portSpeed;
   protected String status;
   protected SubnetReference subnet;
   protected String type;
 
   /**
-   * Gets the name.
+   * Gets the allowIpSpoofing.
    *
-   * The user-defined name for this network interface.
+   * Indicates whether IP spoofing is allowed on this interface. If false, IP spoofing is prevented on this interface.
+   * If true, IP spoofing is allowed on this interface.
    *
-   * @return the name
+   * @return the allowIpSpoofing
    */
-  public String getName() {
-    return name;
+  public Boolean isAllowIpSpoofing() {
+    return allowIpSpoofing;
+  }
+
+  /**
+   * Gets the createdAt.
+   *
+   * The date and time that the network interface was created.
+   *
+   * @return the createdAt
+   */
+  public Date getCreatedAt() {
+    return createdAt;
+  }
+
+  /**
+   * Gets the floatingIps.
+   *
+   * Array of references to floating IPs associated with this network interface.
+   *
+   * @return the floatingIps
+   */
+  public List<FloatingIPReference> getFloatingIps() {
+    return floatingIps;
+  }
+
+  /**
+   * Gets the href.
+   *
+   * The URL for this network interface.
+   *
+   * @return the href
+   */
+  public String getHref() {
+    return href;
   }
 
   /**
@@ -95,14 +131,25 @@ public class NetworkInterface extends GenericModel {
   }
 
   /**
-   * Gets the href.
+   * Gets the name.
    *
-   * The URL for this network interface.
+   * The user-defined name for this network interface.
    *
-   * @return the href
+   * @return the name
    */
-  public String getHref() {
-    return href;
+  public String getName() {
+    return name;
+  }
+
+  /**
+   * Gets the portSpeed.
+   *
+   * The network interface port speed in Mbps.
+   *
+   * @return the portSpeed
+   */
+  public Long getPortSpeed() {
+    return portSpeed;
   }
 
   /**
@@ -136,39 +183,6 @@ public class NetworkInterface extends GenericModel {
    */
   public List<SecurityGroupReference> getSecurityGroups() {
     return securityGroups;
-  }
-
-  /**
-   * Gets the createdAt.
-   *
-   * The date and time that the network interface was created.
-   *
-   * @return the createdAt
-   */
-  public Date getCreatedAt() {
-    return createdAt;
-  }
-
-  /**
-   * Gets the floatingIps.
-   *
-   * Array of references to floating IPs associated with this network interface.
-   *
-   * @return the floatingIps
-   */
-  public List<FloatingIPReference> getFloatingIps() {
-    return floatingIps;
-  }
-
-  /**
-   * Gets the portSpeed.
-   *
-   * The network interface port speed in Mbps.
-   *
-   * @return the portSpeed
-   */
-  public Long getPortSpeed() {
-    return portSpeed;
   }
 
   /**

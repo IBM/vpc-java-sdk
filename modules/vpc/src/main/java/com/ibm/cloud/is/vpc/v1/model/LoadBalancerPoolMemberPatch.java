@@ -23,21 +23,21 @@ import com.ibm.cloud.sdk.core.util.GsonSingleton;
 public class LoadBalancerPoolMemberPatch extends GenericModel {
 
   protected Long port;
-  protected Long weight;
   protected LoadBalancerPoolMemberTargetPrototype target;
+  protected Long weight;
 
   /**
    * Builder.
    */
   public static class Builder {
     private Long port;
-    private Long weight;
     private LoadBalancerPoolMemberTargetPrototype target;
+    private Long weight;
 
     private Builder(LoadBalancerPoolMemberPatch loadBalancerPoolMemberPatch) {
       this.port = loadBalancerPoolMemberPatch.port;
-      this.weight = loadBalancerPoolMemberPatch.weight;
       this.target = loadBalancerPoolMemberPatch.target;
+      this.weight = loadBalancerPoolMemberPatch.weight;
     }
 
     /**
@@ -67,17 +67,6 @@ public class LoadBalancerPoolMemberPatch extends GenericModel {
     }
 
     /**
-     * Set the weight.
-     *
-     * @param weight the weight
-     * @return the LoadBalancerPoolMemberPatch builder
-     */
-    public Builder weight(long weight) {
-      this.weight = weight;
-      return this;
-    }
-
-    /**
      * Set the target.
      *
      * @param target the target
@@ -87,12 +76,23 @@ public class LoadBalancerPoolMemberPatch extends GenericModel {
       this.target = target;
       return this;
     }
+
+    /**
+     * Set the weight.
+     *
+     * @param weight the weight
+     * @return the LoadBalancerPoolMemberPatch builder
+     */
+    public Builder weight(long weight) {
+      this.weight = weight;
+      return this;
+    }
   }
 
   protected LoadBalancerPoolMemberPatch(Builder builder) {
     port = builder.port;
-    weight = builder.weight;
     target = builder.target;
+    weight = builder.weight;
   }
 
   /**
@@ -116,28 +116,27 @@ public class LoadBalancerPoolMemberPatch extends GenericModel {
   }
 
   /**
+   * Gets the target.
+   *
+   * The pool member target. Load balancers in the `network` family support virtual server
+   * instances. Load balancers in the `application` family support IP addresses.
+   *
+   * @return the target
+   */
+  public LoadBalancerPoolMemberTargetPrototype target() {
+    return target;
+  }
+
+  /**
    * Gets the weight.
    *
-   * Weight of the server member. This takes effect only when the load balancing algorithm of its belonging pool is
+   * Weight of the server member. Applicable only if the pool algorithm is
    * `weighted_round_robin`.
    *
    * @return the weight
    */
   public Long weight() {
     return weight;
-  }
-
-  /**
-   * Gets the target.
-   *
-   * The pool member target. Load balancers in the `network` family
-   * support instances. Load balancers in the `application` family support
-   * IP addresses.
-   *
-   * @return the target
-   */
-  public LoadBalancerPoolMemberTargetPrototype target() {
-    return target;
   }
 
   /**

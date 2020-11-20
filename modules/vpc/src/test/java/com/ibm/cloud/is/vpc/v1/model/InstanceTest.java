@@ -14,17 +14,23 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.ImageReference;
+import com.ibm.cloud.is.vpc.v1.model.ImageReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.Instance;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGPU;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileReference;
 import com.ibm.cloud.is.vpc.v1.model.InstanceVCPU;
 import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceInstanceContextReference;
+import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceInstanceContextReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.SubnetReference;
+import com.ibm.cloud.is.vpc.v1.model.SubnetReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.VPCReference;
+import com.ibm.cloud.is.vpc.v1.model.VPCReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentDevice;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentReferenceInstanceContext;
+import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentReferenceInstanceContextDeleted;
 import com.ibm.cloud.is.vpc.v1.model.VolumeReference;
+import com.ibm.cloud.is.vpc.v1.model.VolumeReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.ZoneReference;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
@@ -44,20 +50,20 @@ public class InstanceTest {
   @Test
   public void testInstance() throws Throwable {
     Instance instanceModel = new Instance();
-    assertNull(instanceModel.getId());
-    assertNull(instanceModel.getCrn());
-    assertNull(instanceModel.getHref());
-    assertNull(instanceModel.getName());
-    assertNull(instanceModel.getResourceGroup());
     assertNull(instanceModel.getBandwidth());
     assertNull(instanceModel.getBootVolumeAttachment());
     assertNull(instanceModel.getCreatedAt());
+    assertNull(instanceModel.getCrn());
     assertNull(instanceModel.getGpu());
+    assertNull(instanceModel.getHref());
+    assertNull(instanceModel.getId());
     assertNull(instanceModel.getImage());
     assertNull(instanceModel.getMemory());
+    assertNull(instanceModel.getName());
     assertNull(instanceModel.getNetworkInterfaces());
     assertNull(instanceModel.getPrimaryNetworkInterface());
     assertNull(instanceModel.getProfile());
+    assertNull(instanceModel.getResourceGroup());
     assertNull(instanceModel.getStatus());
     assertNull(instanceModel.getVcpu());
     assertNull(instanceModel.getVolumeAttachments());

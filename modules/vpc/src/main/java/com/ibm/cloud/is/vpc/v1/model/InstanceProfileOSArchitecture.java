@@ -30,21 +30,10 @@ public class InstanceProfileOSArchitecture extends GenericModel {
     String X_ENUM = "enum";
   }
 
-  protected String type;
   @SerializedName("default")
   protected String xDefault;
+  protected String type;
   protected List<String> values;
-
-  /**
-   * Gets the type.
-   *
-   * The type for this profile field.
-   *
-   * @return the type
-   */
-  public String getType() {
-    return type;
-  }
 
   /**
    * Gets the xDefault.
@@ -55,6 +44,17 @@ public class InstanceProfileOSArchitecture extends GenericModel {
    */
   public String getXDefault() {
     return xDefault;
+  }
+
+  /**
+   * Gets the type.
+   *
+   * The type for this profile field.
+   *
+   * @return the type
+   */
+  public String getType() {
+    return type;
   }
 
   /**

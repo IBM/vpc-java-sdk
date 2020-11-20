@@ -13,7 +13,7 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 /**
- * The IP address of the next hop to which to route packets. Must be an IP address within a subnet assigned to `zone`.
+ * The IP address of the next hop to which to route packets.
  */
 public class RouteNextHopPrototypeRouteNextHopIP extends RouteNextHopPrototype {
 

@@ -34,9 +34,13 @@ public class ListVpcRoutesOptionsTest {
     ListVpcRoutesOptions listVpcRoutesOptionsModel = new ListVpcRoutesOptions.Builder()
       .vpcId("testString")
       .zoneName("testString")
+      .start("testString")
+      .limit(Long.valueOf("1"))
       .build();
     assertEquals(listVpcRoutesOptionsModel.vpcId(), "testString");
     assertEquals(listVpcRoutesOptionsModel.zoneName(), "testString");
+    assertEquals(listVpcRoutesOptionsModel.start(), "testString");
+    assertEquals(listVpcRoutesOptionsModel.limit(), Long.valueOf("1"));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

@@ -47,8 +47,8 @@ public class CreateIkePolicyOptions extends GenericModel {
   protected Long dhGroup;
   protected String encryptionAlgorithm;
   protected Long ikeVersion;
-  protected String name;
   protected Long keyLifetime;
+  protected String name;
   protected ResourceGroupIdentity resourceGroup;
 
   /**
@@ -59,8 +59,8 @@ public class CreateIkePolicyOptions extends GenericModel {
     private Long dhGroup;
     private String encryptionAlgorithm;
     private Long ikeVersion;
-    private String name;
     private Long keyLifetime;
+    private String name;
     private ResourceGroupIdentity resourceGroup;
 
     private Builder(CreateIkePolicyOptions createIkePolicyOptions) {
@@ -68,8 +68,8 @@ public class CreateIkePolicyOptions extends GenericModel {
       this.dhGroup = createIkePolicyOptions.dhGroup;
       this.encryptionAlgorithm = createIkePolicyOptions.encryptionAlgorithm;
       this.ikeVersion = createIkePolicyOptions.ikeVersion;
-      this.name = createIkePolicyOptions.name;
       this.keyLifetime = createIkePolicyOptions.keyLifetime;
+      this.name = createIkePolicyOptions.name;
       this.resourceGroup = createIkePolicyOptions.resourceGroup;
     }
 
@@ -148,17 +148,6 @@ public class CreateIkePolicyOptions extends GenericModel {
     }
 
     /**
-     * Set the name.
-     *
-     * @param name the name
-     * @return the CreateIkePolicyOptions builder
-     */
-    public Builder name(String name) {
-      this.name = name;
-      return this;
-    }
-
-    /**
      * Set the keyLifetime.
      *
      * @param keyLifetime the keyLifetime
@@ -166,6 +155,17 @@ public class CreateIkePolicyOptions extends GenericModel {
      */
     public Builder keyLifetime(long keyLifetime) {
       this.keyLifetime = keyLifetime;
+      return this;
+    }
+
+    /**
+     * Set the name.
+     *
+     * @param name the name
+     * @return the CreateIkePolicyOptions builder
+     */
+    public Builder name(String name) {
+      this.name = name;
       return this;
     }
 
@@ -194,8 +194,8 @@ public class CreateIkePolicyOptions extends GenericModel {
     dhGroup = builder.dhGroup;
     encryptionAlgorithm = builder.encryptionAlgorithm;
     ikeVersion = builder.ikeVersion;
-    name = builder.name;
     keyLifetime = builder.keyLifetime;
+    name = builder.name;
     resourceGroup = builder.resourceGroup;
   }
 
@@ -253,17 +253,6 @@ public class CreateIkePolicyOptions extends GenericModel {
   }
 
   /**
-   * Gets the name.
-   *
-   * The user-defined name for this IKE policy.
-   *
-   * @return the name
-   */
-  public String name() {
-    return name;
-  }
-
-  /**
    * Gets the keyLifetime.
    *
    * The key lifetime in seconds.
@@ -272,6 +261,17 @@ public class CreateIkePolicyOptions extends GenericModel {
    */
   public Long keyLifetime() {
     return keyLifetime;
+  }
+
+  /**
+   * Gets the name.
+   *
+   * The user-defined name for this IKE policy.
+   *
+   * @return the name
+   */
+  public String name() {
+    return name;
   }
 
   /**

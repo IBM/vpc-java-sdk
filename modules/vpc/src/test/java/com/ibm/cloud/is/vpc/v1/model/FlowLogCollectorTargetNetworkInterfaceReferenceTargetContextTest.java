@@ -14,6 +14,7 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorTargetNetworkInterfaceReferenceTargetContext;
+import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceReferenceTargetContextDeleted;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -32,8 +33,9 @@ public class FlowLogCollectorTargetNetworkInterfaceReferenceTargetContextTest {
   @Test
   public void testFlowLogCollectorTargetNetworkInterfaceReferenceTargetContext() throws Throwable {
     FlowLogCollectorTargetNetworkInterfaceReferenceTargetContext flowLogCollectorTargetNetworkInterfaceReferenceTargetContextModel = new FlowLogCollectorTargetNetworkInterfaceReferenceTargetContext();
-    assertNull(flowLogCollectorTargetNetworkInterfaceReferenceTargetContextModel.getId());
+    assertNull(flowLogCollectorTargetNetworkInterfaceReferenceTargetContextModel.getDeleted());
     assertNull(flowLogCollectorTargetNetworkInterfaceReferenceTargetContextModel.getHref());
+    assertNull(flowLogCollectorTargetNetworkInterfaceReferenceTargetContextModel.getId());
     assertNull(flowLogCollectorTargetNetworkInterfaceReferenceTargetContextModel.getName());
     assertNull(flowLogCollectorTargetNetworkInterfaceReferenceTargetContextModel.getResourceType());
   }

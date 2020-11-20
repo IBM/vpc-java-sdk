@@ -32,10 +32,10 @@ public class InstanceProfileMemoryRangeTest {
   @Test
   public void testInstanceProfileMemoryRange() throws Throwable {
     InstanceProfileMemoryRange instanceProfileMemoryRangeModel = new InstanceProfileMemoryRange();
-    assertNull(instanceProfileMemoryRangeModel.getType());
     assertNull(instanceProfileMemoryRangeModel.getXDefault());
     assertNull(instanceProfileMemoryRangeModel.getMax());
     assertNull(instanceProfileMemoryRangeModel.getMin());
     assertNull(instanceProfileMemoryRangeModel.getStep());
+    assertNull(instanceProfileMemoryRangeModel.getType());
   }
 }

@@ -21,8 +21,8 @@ public class CreatePublicGatewayOptions extends GenericModel {
 
   protected VPCIdentity vpc;
   protected ZoneIdentity zone;
+  protected PublicGatewayFloatingIPPrototype floatingIp;
   protected String name;
-  protected PublicGatewayPrototypeFloatingIp floatingIp;
   protected ResourceGroupIdentity resourceGroup;
 
   /**
@@ -31,15 +31,15 @@ public class CreatePublicGatewayOptions extends GenericModel {
   public static class Builder {
     private VPCIdentity vpc;
     private ZoneIdentity zone;
+    private PublicGatewayFloatingIPPrototype floatingIp;
     private String name;
-    private PublicGatewayPrototypeFloatingIp floatingIp;
     private ResourceGroupIdentity resourceGroup;
 
     private Builder(CreatePublicGatewayOptions createPublicGatewayOptions) {
       this.vpc = createPublicGatewayOptions.vpc;
       this.zone = createPublicGatewayOptions.zone;
-      this.name = createPublicGatewayOptions.name;
       this.floatingIp = createPublicGatewayOptions.floatingIp;
+      this.name = createPublicGatewayOptions.name;
       this.resourceGroup = createPublicGatewayOptions.resourceGroup;
     }
 
@@ -92,6 +92,17 @@ public class CreatePublicGatewayOptions extends GenericModel {
     }
 
     /**
+     * Set the floatingIp.
+     *
+     * @param floatingIp the floatingIp
+     * @return the CreatePublicGatewayOptions builder
+     */
+    public Builder floatingIp(PublicGatewayFloatingIPPrototype floatingIp) {
+      this.floatingIp = floatingIp;
+      return this;
+    }
+
+    /**
      * Set the name.
      *
      * @param name the name
@@ -99,17 +110,6 @@ public class CreatePublicGatewayOptions extends GenericModel {
      */
     public Builder name(String name) {
       this.name = name;
-      return this;
-    }
-
-    /**
-     * Set the floatingIp.
-     *
-     * @param floatingIp the floatingIp
-     * @return the CreatePublicGatewayOptions builder
-     */
-    public Builder floatingIp(PublicGatewayPrototypeFloatingIp floatingIp) {
-      this.floatingIp = floatingIp;
       return this;
     }
 
@@ -132,8 +132,8 @@ public class CreatePublicGatewayOptions extends GenericModel {
       "zone cannot be null");
     vpc = builder.vpc;
     zone = builder.zone;
-    name = builder.name;
     floatingIp = builder.floatingIp;
+    name = builder.name;
     resourceGroup = builder.resourceGroup;
   }
 
@@ -169,6 +169,15 @@ public class CreatePublicGatewayOptions extends GenericModel {
   }
 
   /**
+   * Gets the floatingIp.
+   *
+   * @return the floatingIp
+   */
+  public PublicGatewayFloatingIPPrototype floatingIp() {
+    return floatingIp;
+  }
+
+  /**
    * Gets the name.
    *
    * The user-defined name for this public gateway. Names must be unique within the VPC the public gateway resides in.
@@ -178,15 +187,6 @@ public class CreatePublicGatewayOptions extends GenericModel {
    */
   public String name() {
     return name;
-  }
-
-  /**
-   * Gets the floatingIp.
-   *
-   * @return the floatingIp
-   */
-  public PublicGatewayPrototypeFloatingIp floatingIp() {
-    return floatingIp;
   }
 
   /**

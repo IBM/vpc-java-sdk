@@ -23,22 +23,33 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class FloatingIPCollection extends GenericModel {
 
   protected FloatingIPCollectionFirst first;
+  @SerializedName("floating_ips")
+  protected List<FloatingIP> floatingIps;
   protected Long limit;
   protected FloatingIPCollectionNext next;
   @SerializedName("total_count")
   protected Long totalCount;
-  @SerializedName("floating_ips")
-  protected List<FloatingIP> floatingIps;
 
   /**
    * Gets the first.
    *
-   * A reference to the first page of resources.
+   * A link to the first page of resources.
    *
    * @return the first
    */
   public FloatingIPCollectionFirst getFirst() {
     return first;
+  }
+
+  /**
+   * Gets the floatingIps.
+   *
+   * Collection of floating IPs.
+   *
+   * @return the floatingIps
+   */
+  public List<FloatingIP> getFloatingIps() {
+    return floatingIps;
   }
 
   /**
@@ -55,7 +66,7 @@ public class FloatingIPCollection extends GenericModel {
   /**
    * Gets the next.
    *
-   * A reference to the next page of resources; this reference is included for all pages
+   * A link to the next page of resources. This property is present for all pages
    * except the last page.
    *
    * @return the next
@@ -73,17 +84,6 @@ public class FloatingIPCollection extends GenericModel {
    */
   public Long getTotalCount() {
     return totalCount;
-  }
-
-  /**
-   * Gets the floatingIps.
-   *
-   * Collection of floating IPs.
-   *
-   * @return the floatingIps
-   */
-  public List<FloatingIP> getFloatingIps() {
-    return floatingIps;
   }
 }
 

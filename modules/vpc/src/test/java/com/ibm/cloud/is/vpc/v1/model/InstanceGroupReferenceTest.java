@@ -14,6 +14,7 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupReference;
+import com.ibm.cloud.is.vpc.v1.model.InstanceGroupReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -32,9 +33,10 @@ public class InstanceGroupReferenceTest {
   @Test
   public void testInstanceGroupReference() throws Throwable {
     InstanceGroupReference instanceGroupReferenceModel = new InstanceGroupReference();
-    assertNull(instanceGroupReferenceModel.getId());
     assertNull(instanceGroupReferenceModel.getCrn());
+    assertNull(instanceGroupReferenceModel.getDeleted());
     assertNull(instanceGroupReferenceModel.getHref());
+    assertNull(instanceGroupReferenceModel.getId());
     assertNull(instanceGroupReferenceModel.getName());
   }
 }

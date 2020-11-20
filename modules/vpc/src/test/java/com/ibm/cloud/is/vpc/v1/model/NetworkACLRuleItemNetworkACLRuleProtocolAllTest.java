@@ -15,6 +15,7 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLRuleItemNetworkACLRuleProtocolAll;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLRuleReference;
+import com.ibm.cloud.is.vpc.v1.model.NetworkACLRuleReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -33,17 +34,16 @@ public class NetworkACLRuleItemNetworkACLRuleProtocolAllTest {
   @Test
   public void testNetworkACLRuleItemNetworkACLRuleProtocolAll() throws Throwable {
     NetworkACLRuleItemNetworkACLRuleProtocolAll networkAclRuleItemNetworkAclRuleProtocolAllModel = new NetworkACLRuleItemNetworkACLRuleProtocolAll();
-    assertNull(networkAclRuleItemNetworkAclRuleProtocolAllModel.getId());
-    assertNull(networkAclRuleItemNetworkAclRuleProtocolAllModel.getHref());
-    assertNull(networkAclRuleItemNetworkAclRuleProtocolAllModel.getName());
     assertNull(networkAclRuleItemNetworkAclRuleProtocolAllModel.getAction());
-    assertNull(networkAclRuleItemNetworkAclRuleProtocolAllModel.getDestination());
-    assertNull(networkAclRuleItemNetworkAclRuleProtocolAllModel.getDirection());
-    assertNull(networkAclRuleItemNetworkAclRuleProtocolAllModel.getSource());
-    assertNull(networkAclRuleItemNetworkAclRuleProtocolAllModel.getProtocol());
     assertNull(networkAclRuleItemNetworkAclRuleProtocolAllModel.getBefore());
     assertNull(networkAclRuleItemNetworkAclRuleProtocolAllModel.getCreatedAt());
+    assertNull(networkAclRuleItemNetworkAclRuleProtocolAllModel.getDestination());
+    assertNull(networkAclRuleItemNetworkAclRuleProtocolAllModel.getDirection());
+    assertNull(networkAclRuleItemNetworkAclRuleProtocolAllModel.getHref());
+    assertNull(networkAclRuleItemNetworkAclRuleProtocolAllModel.getId());
     assertNull(networkAclRuleItemNetworkAclRuleProtocolAllModel.getIpVersion());
-    assertNotNull(networkAclRuleItemNetworkAclRuleProtocolAllModel);
+    assertNull(networkAclRuleItemNetworkAclRuleProtocolAllModel.getName());
+    assertNull(networkAclRuleItemNetworkAclRuleProtocolAllModel.getSource());
+    assertNull(networkAclRuleItemNetworkAclRuleProtocolAllModel.getProtocol());
   }
 }

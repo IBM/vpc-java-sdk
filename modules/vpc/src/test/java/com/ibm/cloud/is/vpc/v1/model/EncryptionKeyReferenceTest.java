@@ -31,21 +31,7 @@ public class EncryptionKeyReferenceTest {
 
   @Test
   public void testEncryptionKeyReference() throws Throwable {
-    EncryptionKeyReference encryptionKeyReferenceModel = new EncryptionKeyReference.Builder()
-      .crn("crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179")
-      .build();
-    assertEquals(encryptionKeyReferenceModel.crn(), "crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179");
-
-    String json = TestUtilities.serialize(encryptionKeyReferenceModel);
-
-    EncryptionKeyReference encryptionKeyReferenceModelNew = TestUtilities.deserialize(json, EncryptionKeyReference.class);
-    assertTrue(encryptionKeyReferenceModelNew instanceof EncryptionKeyReference);
-    assertEquals(encryptionKeyReferenceModelNew.crn(), "crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179");
+    EncryptionKeyReference encryptionKeyReferenceModel = new EncryptionKeyReference();
+    assertNull(encryptionKeyReferenceModel.getCrn());
   }
-
-  @Test(expectedExceptions = IllegalArgumentException.class)
-  public void testEncryptionKeyReferenceError() throws Throwable {
-    new EncryptionKeyReference.Builder().build();
-  }
-
 }

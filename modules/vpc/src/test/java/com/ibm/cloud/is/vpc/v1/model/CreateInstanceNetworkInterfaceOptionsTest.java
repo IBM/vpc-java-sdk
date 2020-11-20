@@ -48,12 +48,14 @@ public class CreateInstanceNetworkInterfaceOptionsTest {
     CreateInstanceNetworkInterfaceOptions createInstanceNetworkInterfaceOptionsModel = new CreateInstanceNetworkInterfaceOptions.Builder()
       .instanceId("testString")
       .subnet(subnetIdentityModel)
+      .allowIpSpoofing(true)
       .name("my-network-interface")
       .primaryIpv4Address("10.0.0.5")
       .securityGroups(new java.util.ArrayList<SecurityGroupIdentity>(java.util.Arrays.asList(securityGroupIdentityModel)))
       .build();
     assertEquals(createInstanceNetworkInterfaceOptionsModel.instanceId(), "testString");
     assertEquals(createInstanceNetworkInterfaceOptionsModel.subnet(), subnetIdentityModel);
+    assertEquals(createInstanceNetworkInterfaceOptionsModel.allowIpSpoofing(), Boolean.valueOf(true));
     assertEquals(createInstanceNetworkInterfaceOptionsModel.name(), "my-network-interface");
     assertEquals(createInstanceNetworkInterfaceOptionsModel.primaryIpv4Address(), "10.0.0.5");
     assertEquals(createInstanceNetworkInterfaceOptionsModel.securityGroups(), new java.util.ArrayList<SecurityGroupIdentity>(java.util.Arrays.asList(securityGroupIdentityModel)));

@@ -32,15 +32,17 @@ public class SubnetPrototype extends GenericModel {
     String IPV4 = "ipv4";
   }
 
+  @SerializedName("ip_version")
+  protected String ipVersion;
   protected String name;
   @SerializedName("network_acl")
   protected NetworkACLIdentity networkAcl;
   @SerializedName("public_gateway")
   protected PublicGatewayIdentity publicGateway;
-  @SerializedName("ip_version")
-  protected String ipVersion;
   @SerializedName("resource_group")
   protected ResourceGroupIdentity resourceGroup;
+  @SerializedName("routing_table")
+  protected RoutingTableIdentity routingTable;
   protected VPCIdentity vpc;
   @SerializedName("total_ipv4_address_count")
   protected Long totalIpv4AddressCount;
@@ -49,6 +51,17 @@ public class SubnetPrototype extends GenericModel {
   protected String ipv4CidrBlock;
 
   protected SubnetPrototype() {
+  }
+
+  /**
+   * Gets the ipVersion.
+   *
+   * The IP version(s) to support for this subnet.
+   *
+   * @return the ipVersion
+   */
+  public String ipVersion() {
+    return ipVersion;
   }
 
   /**
@@ -86,17 +99,6 @@ public class SubnetPrototype extends GenericModel {
   }
 
   /**
-   * Gets the ipVersion.
-   *
-   * The IP version(s) to support for this subnet.
-   *
-   * @return the ipVersion
-   */
-  public String ipVersion() {
-    return ipVersion;
-  }
-
-  /**
    * Gets the resourceGroup.
    *
    * The resource group to use. If unspecified, the account's [default resource
@@ -106,6 +108,19 @@ public class SubnetPrototype extends GenericModel {
    */
   public ResourceGroupIdentity resourceGroup() {
     return resourceGroup;
+  }
+
+  /**
+   * Gets the routingTable.
+   *
+   * The routing table to use for this subnet. If unspecified, the default routing table
+   * for the VPC is used. The routing table properties `route_direct_link_ingress`,
+   * `route_transit_gateway_ingress`, and `route_vpc_zone_ingress` must be `false`.
+   *
+   * @return the routingTable
+   */
+  public RoutingTableIdentity routingTable() {
+    return routingTable;
   }
 
   /**

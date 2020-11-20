@@ -25,7 +25,8 @@ public class LoadBalancerListener extends GenericModel {
 
   /**
    * The listener protocol. Load balancers in the `network` family support `tcp`. Load balancers in the `application`
-   * family support `tcp`, `http`, and `https`.
+   * family support `tcp`, `http`, and `https`. Each listener in the load balancer must have a unique `port` and
+   * `protocol` combination.
    */
   public interface Protocol {
     /** http. */
@@ -54,76 +55,34 @@ public class LoadBalancerListener extends GenericModel {
     String UPDATE_PENDING = "update_pending";
   }
 
-  protected String id;
-  protected String href;
-  @SerializedName("connection_limit")
-  protected Long connectionLimit;
-  protected Long port;
-  protected String protocol;
+  @SerializedName("accept_proxy_protocol")
+  protected Boolean acceptProxyProtocol;
   @SerializedName("certificate_instance")
   protected CertificateInstanceReference certificateInstance;
+  @SerializedName("connection_limit")
+  protected Long connectionLimit;
   @SerializedName("created_at")
   protected Date createdAt;
   @SerializedName("default_pool")
   protected LoadBalancerPoolReference defaultPool;
+  protected String href;
+  protected String id;
   protected List<LoadBalancerListenerPolicyReference> policies;
+  protected Long port;
+  protected String protocol;
   @SerializedName("provisioning_status")
   protected String provisioningStatus;
 
   /**
-   * Gets the id.
+   * Gets the acceptProxyProtocol.
    *
-   * The unique identifier for this load balancer listener.
+   * If set to `true`, this listener will accept and forward PROXY protocol information. Supported by load balancers in
+   * the `application` family (otherwise always `false`).
    *
-   * @return the id
+   * @return the acceptProxyProtocol
    */
-  public String getId() {
-    return id;
-  }
-
-  /**
-   * Gets the href.
-   *
-   * The listener's canonical URL.
-   *
-   * @return the href
-   */
-  public String getHref() {
-    return href;
-  }
-
-  /**
-   * Gets the connectionLimit.
-   *
-   * The connection limit of the listener.
-   *
-   * @return the connectionLimit
-   */
-  public Long getConnectionLimit() {
-    return connectionLimit;
-  }
-
-  /**
-   * Gets the port.
-   *
-   * The listener port number.
-   *
-   * @return the port
-   */
-  public Long getPort() {
-    return port;
-  }
-
-  /**
-   * Gets the protocol.
-   *
-   * The listener protocol. Load balancers in the `network` family support `tcp`. Load balancers in the `application`
-   * family support `tcp`, `http`, and `https`.
-   *
-   * @return the protocol
-   */
-  public String getProtocol() {
-    return protocol;
+  public Boolean isAcceptProxyProtocol() {
+    return acceptProxyProtocol;
   }
 
   /**
@@ -136,6 +95,17 @@ public class LoadBalancerListener extends GenericModel {
    */
   public CertificateInstanceReference getCertificateInstance() {
     return certificateInstance;
+  }
+
+  /**
+   * Gets the connectionLimit.
+   *
+   * The connection limit of the listener.
+   *
+   * @return the connectionLimit
+   */
+  public Long getConnectionLimit() {
+    return connectionLimit;
   }
 
   /**
@@ -161,6 +131,28 @@ public class LoadBalancerListener extends GenericModel {
   }
 
   /**
+   * Gets the href.
+   *
+   * The listener's canonical URL.
+   *
+   * @return the href
+   */
+  public String getHref() {
+    return href;
+  }
+
+  /**
+   * Gets the id.
+   *
+   * The unique identifier for this load balancer listener.
+   *
+   * @return the id
+   */
+  public String getId() {
+    return id;
+  }
+
+  /**
    * Gets the policies.
    *
    * The list of policies of this listener.
@@ -169,6 +161,31 @@ public class LoadBalancerListener extends GenericModel {
    */
   public List<LoadBalancerListenerPolicyReference> getPolicies() {
     return policies;
+  }
+
+  /**
+   * Gets the port.
+   *
+   * The listener port number. Each listener in the load balancer must have a unique
+   * `port` and `protocol` combination.
+   *
+   * @return the port
+   */
+  public Long getPort() {
+    return port;
+  }
+
+  /**
+   * Gets the protocol.
+   *
+   * The listener protocol. Load balancers in the `network` family support `tcp`. Load balancers in the `application`
+   * family support `tcp`, `http`, and `https`. Each listener in the load balancer must have a unique `port` and
+   * `protocol` combination.
+   *
+   * @return the protocol
+   */
+  public String getProtocol() {
+    return protocol;
   }
 
   /**

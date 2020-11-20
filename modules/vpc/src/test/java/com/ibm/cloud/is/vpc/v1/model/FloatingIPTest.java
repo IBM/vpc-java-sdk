@@ -15,6 +15,7 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.FloatingIP;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPTargetNetworkInterfaceReference;
+import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.ZoneReference;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
@@ -35,13 +36,13 @@ public class FloatingIPTest {
   @Test
   public void testFloatingIP() throws Throwable {
     FloatingIP floatingIpModel = new FloatingIP();
-    assertNull(floatingIpModel.getId());
+    assertNull(floatingIpModel.getAddress());
+    assertNull(floatingIpModel.getCreatedAt());
     assertNull(floatingIpModel.getCrn());
     assertNull(floatingIpModel.getHref());
-    assertNull(floatingIpModel.getAddress());
+    assertNull(floatingIpModel.getId());
     assertNull(floatingIpModel.getName());
     assertNull(floatingIpModel.getResourceGroup());
-    assertNull(floatingIpModel.getCreatedAt());
     assertNull(floatingIpModel.getStatus());
     assertNull(floatingIpModel.getTarget());
     assertNull(floatingIpModel.getZone());

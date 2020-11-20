@@ -34,26 +34,26 @@ public class LoadBalancerListenerPolicyPrototype extends GenericModel {
     String REJECT = "reject";
   }
 
+  protected String action;
   protected String name;
   protected Long priority;
-  protected String action;
   protected List<LoadBalancerListenerPolicyRulePrototype> rules;
-  protected LoadBalancerListenerPolicyPrototypeTarget target;
+  protected LoadBalancerListenerPolicyTargetPrototype target;
 
   /**
    * Builder.
    */
   public static class Builder {
+    private String action;
     private String name;
     private Long priority;
-    private String action;
     private List<LoadBalancerListenerPolicyRulePrototype> rules;
-    private LoadBalancerListenerPolicyPrototypeTarget target;
+    private LoadBalancerListenerPolicyTargetPrototype target;
 
     private Builder(LoadBalancerListenerPolicyPrototype loadBalancerListenerPolicyPrototype) {
+      this.action = loadBalancerListenerPolicyPrototype.action;
       this.name = loadBalancerListenerPolicyPrototype.name;
       this.priority = loadBalancerListenerPolicyPrototype.priority;
-      this.action = loadBalancerListenerPolicyPrototype.action;
       this.rules = loadBalancerListenerPolicyPrototype.rules;
       this.target = loadBalancerListenerPolicyPrototype.target;
     }
@@ -67,12 +67,12 @@ public class LoadBalancerListenerPolicyPrototype extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param priority the priority
      * @param action the action
+     * @param priority the priority
      */
-    public Builder(Long priority, String action) {
-      this.priority = priority;
+    public Builder(String action, Long priority) {
       this.action = action;
+      this.priority = priority;
     }
 
     /**
@@ -101,6 +101,17 @@ public class LoadBalancerListenerPolicyPrototype extends GenericModel {
     }
 
     /**
+     * Set the action.
+     *
+     * @param action the action
+     * @return the LoadBalancerListenerPolicyPrototype builder
+     */
+    public Builder action(String action) {
+      this.action = action;
+      return this;
+    }
+
+    /**
      * Set the name.
      *
      * @param name the name
@@ -123,17 +134,6 @@ public class LoadBalancerListenerPolicyPrototype extends GenericModel {
     }
 
     /**
-     * Set the action.
-     *
-     * @param action the action
-     * @return the LoadBalancerListenerPolicyPrototype builder
-     */
-    public Builder action(String action) {
-      this.action = action;
-      return this;
-    }
-
-    /**
      * Set the rules.
      * Existing rules will be replaced.
      *
@@ -151,20 +151,20 @@ public class LoadBalancerListenerPolicyPrototype extends GenericModel {
      * @param target the target
      * @return the LoadBalancerListenerPolicyPrototype builder
      */
-    public Builder target(LoadBalancerListenerPolicyPrototypeTarget target) {
+    public Builder target(LoadBalancerListenerPolicyTargetPrototype target) {
       this.target = target;
       return this;
     }
   }
 
   protected LoadBalancerListenerPolicyPrototype(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.priority,
-      "priority cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.action,
       "action cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.priority,
+      "priority cannot be null");
+    action = builder.action;
     name = builder.name;
     priority = builder.priority;
-    action = builder.action;
     rules = builder.rules;
     target = builder.target;
   }
@@ -176,6 +176,17 @@ public class LoadBalancerListenerPolicyPrototype extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
+  }
+
+  /**
+   * Gets the action.
+   *
+   * The policy action.
+   *
+   * @return the action
+   */
+  public String action() {
+    return action;
   }
 
   /**
@@ -202,17 +213,6 @@ public class LoadBalancerListenerPolicyPrototype extends GenericModel {
   }
 
   /**
-   * Gets the action.
-   *
-   * The policy action.
-   *
-   * @return the action
-   */
-  public String action() {
-    return action;
-  }
-
-  /**
    * Gets the rules.
    *
    * The list of rules of this policy.
@@ -233,7 +233,7 @@ public class LoadBalancerListenerPolicyPrototype extends GenericModel {
    *
    * @return the target
    */
-  public LoadBalancerListenerPolicyPrototypeTarget target() {
+  public LoadBalancerListenerPolicyTargetPrototype target() {
     return target;
   }
 }

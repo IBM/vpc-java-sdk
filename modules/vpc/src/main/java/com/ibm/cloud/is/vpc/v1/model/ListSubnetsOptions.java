@@ -22,6 +22,8 @@ public class ListSubnetsOptions extends GenericModel {
   protected String start;
   protected Long limit;
   protected String resourceGroupId;
+  protected String routingTableId;
+  protected String routingTableName;
 
   /**
    * Builder.
@@ -30,11 +32,15 @@ public class ListSubnetsOptions extends GenericModel {
     private String start;
     private Long limit;
     private String resourceGroupId;
+    private String routingTableId;
+    private String routingTableName;
 
     private Builder(ListSubnetsOptions listSubnetsOptions) {
       this.start = listSubnetsOptions.start;
       this.limit = listSubnetsOptions.limit;
       this.resourceGroupId = listSubnetsOptions.resourceGroupId;
+      this.routingTableId = listSubnetsOptions.routingTableId;
+      this.routingTableName = listSubnetsOptions.routingTableName;
     }
 
     /**
@@ -84,12 +90,36 @@ public class ListSubnetsOptions extends GenericModel {
       this.resourceGroupId = resourceGroupId;
       return this;
     }
+
+    /**
+     * Set the routingTableId.
+     *
+     * @param routingTableId the routingTableId
+     * @return the ListSubnetsOptions builder
+     */
+    public Builder routingTableId(String routingTableId) {
+      this.routingTableId = routingTableId;
+      return this;
+    }
+
+    /**
+     * Set the routingTableName.
+     *
+     * @param routingTableName the routingTableName
+     * @return the ListSubnetsOptions builder
+     */
+    public Builder routingTableName(String routingTableName) {
+      this.routingTableName = routingTableName;
+      return this;
+    }
   }
 
   protected ListSubnetsOptions(Builder builder) {
     start = builder.start;
     limit = builder.limit;
     resourceGroupId = builder.resourceGroupId;
+    routingTableId = builder.routingTableId;
+    routingTableName = builder.routingTableName;
   }
 
   /**
@@ -133,6 +163,28 @@ public class ListSubnetsOptions extends GenericModel {
    */
   public String resourceGroupId() {
     return resourceGroupId;
+  }
+
+  /**
+   * Gets the routingTableId.
+   *
+   * Filters the collection to subnets with the routing table of the specified identifier.
+   *
+   * @return the routingTableId
+   */
+  public String routingTableId() {
+    return routingTableId;
+  }
+
+  /**
+   * Gets the routingTableName.
+   *
+   * Filters the collection to subnets with the routing table of the specified name.
+   *
+   * @return the routingTableName
+   */
+  public String routingTableName() {
+    return routingTableName;
   }
 }
 

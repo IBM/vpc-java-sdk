@@ -24,12 +24,12 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class ImagePrototype extends GenericModel {
 
   protected String name;
+  @SerializedName("resource_group")
+  protected ResourceGroupIdentity resourceGroup;
   @SerializedName("encrypted_data_key")
   protected String encryptedDataKey;
   @SerializedName("encryption_key")
-  protected EncryptionKeyReference encryptionKey;
-  @SerializedName("resource_group")
-  protected ResourceGroupIdentity resourceGroup;
+  protected EncryptionKeyIdentity encryptionKey;
   protected ImageFilePrototype file;
   @SerializedName("operating_system")
   protected OperatingSystemIdentity operatingSystem;
@@ -47,6 +47,18 @@ public class ImagePrototype extends GenericModel {
    */
   public String name() {
     return name;
+  }
+
+  /**
+   * Gets the resourceGroup.
+   *
+   * The resource group to use. If unspecified, the account's [default resource
+   * group](https://cloud.ibm.com/apidocs/resource-manager#introduction) is used.
+   *
+   * @return the resourceGroup
+   */
+  public ResourceGroupIdentity resourceGroup() {
+    return resourceGroup;
   }
 
   /**
@@ -69,7 +81,7 @@ public class ImagePrototype extends GenericModel {
   /**
    * Gets the encryptionKey.
    *
-   * A reference to the root key that was used to wrap the data key (which is ultimately
+   * The identity of the root key that was used to wrap the data key (which is ultimately
    * represented as `encrypted_data_key`). Additionally, the root key will be used to encrypt
    * volumes created from this image (unless an alternate `encryption_key` is provided at
    * volume creation).
@@ -78,20 +90,8 @@ public class ImagePrototype extends GenericModel {
    *
    * @return the encryptionKey
    */
-  public EncryptionKeyReference encryptionKey() {
+  public EncryptionKeyIdentity encryptionKey() {
     return encryptionKey;
-  }
-
-  /**
-   * Gets the resourceGroup.
-   *
-   * The resource group to use. If unspecified, the account's [default resource
-   * group](https://cloud.ibm.com/apidocs/resource-manager#introduction) is used.
-   *
-   * @return the resourceGroup
-   */
-  public ResourceGroupIdentity resourceGroup() {
-    return resourceGroup;
   }
 
   /**
@@ -109,7 +109,7 @@ public class ImagePrototype extends GenericModel {
    * Gets the operatingSystem.
    *
    * The identity of the [supported operating
-   * system](https://cloud.ibm.com/apidocs/vpc#retrieves-all-operating-systems) included in
+   * system](https://cloud.ibm.com/apidocs/vpc#list-operating-systems) included in
    * this image.
    *
    * @return the operatingSystem

@@ -14,9 +14,11 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupReference;
+import com.ibm.cloud.is.vpc.v1.model.InstanceGroupReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPool;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolHealthMonitor;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolMemberReference;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolMemberReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolSessionPersistence;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
@@ -36,16 +38,17 @@ public class LoadBalancerPoolTest {
   @Test
   public void testLoadBalancerPool() throws Throwable {
     LoadBalancerPool loadBalancerPoolModel = new LoadBalancerPool();
-    assertNull(loadBalancerPoolModel.getId());
-    assertNull(loadBalancerPoolModel.getHref());
-    assertNull(loadBalancerPoolModel.getName());
     assertNull(loadBalancerPoolModel.getAlgorithm());
-    assertNull(loadBalancerPoolModel.getProtocol());
     assertNull(loadBalancerPoolModel.getCreatedAt());
     assertNull(loadBalancerPoolModel.getHealthMonitor());
+    assertNull(loadBalancerPoolModel.getHref());
+    assertNull(loadBalancerPoolModel.getId());
     assertNull(loadBalancerPoolModel.getInstanceGroup());
     assertNull(loadBalancerPoolModel.getMembers());
+    assertNull(loadBalancerPoolModel.getName());
+    assertNull(loadBalancerPoolModel.getProtocol());
     assertNull(loadBalancerPoolModel.getProvisioningStatus());
+    assertNull(loadBalancerPoolModel.getProxyProtocol());
     assertNull(loadBalancerPoolModel.getSessionPersistence());
   }
 }

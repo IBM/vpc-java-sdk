@@ -15,8 +15,8 @@ package com.ibm.cloud.is.vpc.v1.model;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * The pool member target. Load balancers in the `network` family support instances. Load balancers in the `application`
- * family support IP addresses.
+ * The pool member target. Load balancers in the `network` family support virtual server instances. Load balancers in
+ * the `application` family support IP addresses.
  *
  * Classes which extend this class:
  * - LoadBalancerPoolMemberTargetInstanceReference
@@ -24,24 +24,14 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class LoadBalancerPoolMemberTarget extends GenericModel {
 
-  protected String id;
   protected String crn;
+  protected InstanceReferenceDeleted deleted;
   protected String href;
+  protected String id;
   protected String name;
   protected String address;
 
   protected LoadBalancerPoolMemberTarget() {
-  }
-
-  /**
-   * Gets the id.
-   *
-   * The unique identifier for this virtual server instance.
-   *
-   * @return the id
-   */
-  public String getId() {
-    return id;
   }
 
   /**
@@ -56,6 +46,18 @@ public class LoadBalancerPoolMemberTarget extends GenericModel {
   }
 
   /**
+   * Gets the deleted.
+   *
+   * If present, this property indicates the referenced resource has been deleted and provides
+   * some supplementary information.
+   *
+   * @return the deleted
+   */
+  public InstanceReferenceDeleted getDeleted() {
+    return deleted;
+  }
+
+  /**
    * Gets the href.
    *
    * The URL for this virtual server instance.
@@ -64,6 +66,17 @@ public class LoadBalancerPoolMemberTarget extends GenericModel {
    */
   public String getHref() {
     return href;
+  }
+
+  /**
+   * Gets the id.
+   *
+   * The unique identifier for this virtual server instance.
+   *
+   * @return the id
+   */
+  public String getId() {
+    return id;
   }
 
   /**

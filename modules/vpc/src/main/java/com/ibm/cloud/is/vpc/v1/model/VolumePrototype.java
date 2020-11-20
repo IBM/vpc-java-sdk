@@ -23,39 +23,17 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class VolumePrototype extends GenericModel {
 
-  protected String name;
-  protected VolumeProfileIdentity profile;
   @SerializedName("encryption_key")
   protected EncryptionKeyIdentity encryptionKey;
   protected Long iops;
+  protected String name;
+  protected VolumeProfileIdentity profile;
   @SerializedName("resource_group")
   protected ResourceGroupIdentity resourceGroup;
   protected ZoneIdentity zone;
   protected Long capacity;
 
   protected VolumePrototype() {
-  }
-
-  /**
-   * Gets the name.
-   *
-   * The unique user-defined name for this volume.
-   *
-   * @return the name
-   */
-  public String name() {
-    return name;
-  }
-
-  /**
-   * Gets the profile.
-   *
-   * The profile to use for this volume.
-   *
-   * @return the profile
-   */
-  public VolumeProfileIdentity profile() {
-    return profile;
   }
 
   /**
@@ -84,6 +62,28 @@ public class VolumePrototype extends GenericModel {
   }
 
   /**
+   * Gets the name.
+   *
+   * The unique user-defined name for this volume.
+   *
+   * @return the name
+   */
+  public String name() {
+    return name;
+  }
+
+  /**
+   * Gets the profile.
+   *
+   * The profile to use for this volume.
+   *
+   * @return the profile
+   */
+  public VolumeProfileIdentity profile() {
+    return profile;
+  }
+
+  /**
    * Gets the resourceGroup.
    *
    * The resource group to use. If unspecified, the account's [default resource
@@ -109,8 +109,8 @@ public class VolumePrototype extends GenericModel {
   /**
    * Gets the capacity.
    *
-   * The capacity of the volume in gigabytes. Note that the specified minimum and maximum capacity values for creating
-   * or updating volumes may expand in the future.
+   * The capacity of the volume in gigabytes. The specified minimum and maximum capacity values for creating or updating
+   * volumes may expand in the future.
    *
    * @return the capacity
    */

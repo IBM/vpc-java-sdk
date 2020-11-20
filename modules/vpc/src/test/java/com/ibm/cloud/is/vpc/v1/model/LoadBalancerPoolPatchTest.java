@@ -55,26 +55,29 @@ public class LoadBalancerPoolPatchTest {
     assertEquals(loadBalancerPoolSessionPersistencePatchModel.type(), "source_ip");
 
     LoadBalancerPoolPatch loadBalancerPoolPatchModel = new LoadBalancerPoolPatch.Builder()
-      .name("my-load-balancer-pool")
       .algorithm("least_connections")
-      .protocol("http")
       .healthMonitor(loadBalancerPoolHealthMonitorPatchModel)
+      .name("my-load-balancer-pool")
+      .protocol("http")
+      .proxyProtocol("disabled")
       .sessionPersistence(loadBalancerPoolSessionPersistencePatchModel)
       .build();
-    assertEquals(loadBalancerPoolPatchModel.name(), "my-load-balancer-pool");
     assertEquals(loadBalancerPoolPatchModel.algorithm(), "least_connections");
-    assertEquals(loadBalancerPoolPatchModel.protocol(), "http");
     assertEquals(loadBalancerPoolPatchModel.healthMonitor(), loadBalancerPoolHealthMonitorPatchModel);
+    assertEquals(loadBalancerPoolPatchModel.name(), "my-load-balancer-pool");
+    assertEquals(loadBalancerPoolPatchModel.protocol(), "http");
+    assertEquals(loadBalancerPoolPatchModel.proxyProtocol(), "disabled");
     assertEquals(loadBalancerPoolPatchModel.sessionPersistence(), loadBalancerPoolSessionPersistencePatchModel);
 
     String json = TestUtilities.serialize(loadBalancerPoolPatchModel);
 
     LoadBalancerPoolPatch loadBalancerPoolPatchModelNew = TestUtilities.deserialize(json, LoadBalancerPoolPatch.class);
     assertTrue(loadBalancerPoolPatchModelNew instanceof LoadBalancerPoolPatch);
-    assertEquals(loadBalancerPoolPatchModelNew.name(), "my-load-balancer-pool");
     assertEquals(loadBalancerPoolPatchModelNew.algorithm(), "least_connections");
-    assertEquals(loadBalancerPoolPatchModelNew.protocol(), "http");
     assertEquals(loadBalancerPoolPatchModelNew.healthMonitor().toString(), loadBalancerPoolHealthMonitorPatchModel.toString());
+    assertEquals(loadBalancerPoolPatchModelNew.name(), "my-load-balancer-pool");
+    assertEquals(loadBalancerPoolPatchModelNew.protocol(), "http");
+    assertEquals(loadBalancerPoolPatchModelNew.proxyProtocol(), "disabled");
     assertEquals(loadBalancerPoolPatchModelNew.sessionPersistence().toString(), loadBalancerPoolSessionPersistencePatchModel.toString());
   }
   @Test
@@ -93,19 +96,21 @@ public class LoadBalancerPoolPatchTest {
       .build();
 
     LoadBalancerPoolPatch loadBalancerPoolPatchModel = new LoadBalancerPoolPatch.Builder()
-      .name("my-load-balancer-pool")
       .algorithm("least_connections")
-      .protocol("http")
       .healthMonitor(loadBalancerPoolHealthMonitorPatchModel)
+      .name("my-load-balancer-pool")
+      .protocol("http")
+      .proxyProtocol("disabled")
       .sessionPersistence(loadBalancerPoolSessionPersistencePatchModel)
       .build();
 
     Map<String, Object> mergePatch = loadBalancerPoolPatchModel.asPatch();
 
-    assertEquals(mergePatch.get("name"), "my-load-balancer-pool");
     assertEquals(mergePatch.get("algorithm"), "least_connections");
-    assertEquals(mergePatch.get("protocol"), "http");
     assertTrue(mergePatch.containsKey("health_monitor"));
+    assertEquals(mergePatch.get("name"), "my-load-balancer-pool");
+    assertEquals(mergePatch.get("protocol"), "http");
+    assertEquals(mergePatch.get("proxy_protocol"), "disabled");
     assertTrue(mergePatch.containsKey("session_persistence"));
   }
 

@@ -43,11 +43,6 @@ public class InstanceGroupPatchTest {
       .build();
     assertEquals(instanceTemplateIdentityModel.id(), "a6b1a881-2ce8-41a3-80fc-36316a73f803");
 
-    SubnetIdentityById subnetIdentityModel = new SubnetIdentityById.Builder()
-      .id("7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
-      .build();
-    assertEquals(subnetIdentityModel.id(), "7ec86020-1c6e-4889-b3f0-a15f2e50f87e");
-
     LoadBalancerIdentityById loadBalancerIdentityModel = new LoadBalancerIdentityById.Builder()
       .id("dd754295-e9e0-4c9d-bf6c-58fbc59e5727")
       .build();
@@ -58,42 +53,43 @@ public class InstanceGroupPatchTest {
       .build();
     assertEquals(loadBalancerPoolIdentityModel.id(), "70294e14-4e61-11e8-bcf4-0242ac110004");
 
+    SubnetIdentityById subnetIdentityModel = new SubnetIdentityById.Builder()
+      .id("7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
+      .build();
+    assertEquals(subnetIdentityModel.id(), "7ec86020-1c6e-4889-b3f0-a15f2e50f87e");
+
     InstanceGroupPatch instanceGroupPatchModel = new InstanceGroupPatch.Builder()
-      .name("my-instance-group")
-      .membershipCount(Long.valueOf("10"))
-      .instanceTemplate(instanceTemplateIdentityModel)
-      .subnets(new java.util.ArrayList<SubnetIdentity>(java.util.Arrays.asList(subnetIdentityModel)))
       .applicationPort(Long.valueOf("22"))
+      .instanceTemplate(instanceTemplateIdentityModel)
       .loadBalancer(loadBalancerIdentityModel)
       .loadBalancerPool(loadBalancerPoolIdentityModel)
+      .membershipCount(Long.valueOf("10"))
+      .name("my-instance-group")
+      .subnets(new java.util.ArrayList<SubnetIdentity>(java.util.Arrays.asList(subnetIdentityModel)))
       .build();
-    assertEquals(instanceGroupPatchModel.name(), "my-instance-group");
-    assertEquals(instanceGroupPatchModel.membershipCount(), Long.valueOf("10"));
-    assertEquals(instanceGroupPatchModel.instanceTemplate(), instanceTemplateIdentityModel);
-    assertEquals(instanceGroupPatchModel.subnets(), new java.util.ArrayList<SubnetIdentity>(java.util.Arrays.asList(subnetIdentityModel)));
     assertEquals(instanceGroupPatchModel.applicationPort(), Long.valueOf("22"));
+    assertEquals(instanceGroupPatchModel.instanceTemplate(), instanceTemplateIdentityModel);
     assertEquals(instanceGroupPatchModel.loadBalancer(), loadBalancerIdentityModel);
     assertEquals(instanceGroupPatchModel.loadBalancerPool(), loadBalancerPoolIdentityModel);
+    assertEquals(instanceGroupPatchModel.membershipCount(), Long.valueOf("10"));
+    assertEquals(instanceGroupPatchModel.name(), "my-instance-group");
+    assertEquals(instanceGroupPatchModel.subnets(), new java.util.ArrayList<SubnetIdentity>(java.util.Arrays.asList(subnetIdentityModel)));
 
     String json = TestUtilities.serialize(instanceGroupPatchModel);
 
     InstanceGroupPatch instanceGroupPatchModelNew = TestUtilities.deserialize(json, InstanceGroupPatch.class);
     assertTrue(instanceGroupPatchModelNew instanceof InstanceGroupPatch);
-    assertEquals(instanceGroupPatchModelNew.name(), "my-instance-group");
-    assertEquals(instanceGroupPatchModelNew.membershipCount(), Long.valueOf("10"));
-    assertEquals(instanceGroupPatchModelNew.instanceTemplate().toString(), instanceTemplateIdentityModel.toString());
     assertEquals(instanceGroupPatchModelNew.applicationPort(), Long.valueOf("22"));
+    assertEquals(instanceGroupPatchModelNew.instanceTemplate().toString(), instanceTemplateIdentityModel.toString());
     assertEquals(instanceGroupPatchModelNew.loadBalancer().toString(), loadBalancerIdentityModel.toString());
     assertEquals(instanceGroupPatchModelNew.loadBalancerPool().toString(), loadBalancerPoolIdentityModel.toString());
+    assertEquals(instanceGroupPatchModelNew.membershipCount(), Long.valueOf("10"));
+    assertEquals(instanceGroupPatchModelNew.name(), "my-instance-group");
   }
   @Test
   public void testInstanceGroupPatchAsPatch() throws Throwable {
     InstanceTemplateIdentityById instanceTemplateIdentityModel = new InstanceTemplateIdentityById.Builder()
       .id("a6b1a881-2ce8-41a3-80fc-36316a73f803")
-      .build();
-
-    SubnetIdentityById subnetIdentityModel = new SubnetIdentityById.Builder()
-      .id("7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
       .build();
 
     LoadBalancerIdentityById loadBalancerIdentityModel = new LoadBalancerIdentityById.Builder()
@@ -104,25 +100,29 @@ public class InstanceGroupPatchTest {
       .id("70294e14-4e61-11e8-bcf4-0242ac110004")
       .build();
 
+    SubnetIdentityById subnetIdentityModel = new SubnetIdentityById.Builder()
+      .id("7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
+      .build();
+
     InstanceGroupPatch instanceGroupPatchModel = new InstanceGroupPatch.Builder()
-      .name("my-instance-group")
-      .membershipCount(Long.valueOf("10"))
-      .instanceTemplate(instanceTemplateIdentityModel)
-      .subnets(new java.util.ArrayList<SubnetIdentity>(java.util.Arrays.asList(subnetIdentityModel)))
       .applicationPort(Long.valueOf("22"))
+      .instanceTemplate(instanceTemplateIdentityModel)
       .loadBalancer(loadBalancerIdentityModel)
       .loadBalancerPool(loadBalancerPoolIdentityModel)
+      .membershipCount(Long.valueOf("10"))
+      .name("my-instance-group")
+      .subnets(new java.util.ArrayList<SubnetIdentity>(java.util.Arrays.asList(subnetIdentityModel)))
       .build();
 
     Map<String, Object> mergePatch = instanceGroupPatchModel.asPatch();
 
-    assertEquals(mergePatch.get("name"), "my-instance-group");
-    assertTrue(mergePatch.containsKey("membership_count"));
-    assertTrue(mergePatch.containsKey("instance_template"));
-    assertTrue(mergePatch.containsKey("subnets"));
     assertTrue(mergePatch.containsKey("application_port"));
+    assertTrue(mergePatch.containsKey("instance_template"));
     assertTrue(mergePatch.containsKey("load_balancer"));
     assertTrue(mergePatch.containsKey("load_balancer_pool"));
+    assertTrue(mergePatch.containsKey("membership_count"));
+    assertEquals(mergePatch.get("name"), "my-instance-group");
+    assertTrue(mergePatch.containsKey("subnets"));
   }
 
 }

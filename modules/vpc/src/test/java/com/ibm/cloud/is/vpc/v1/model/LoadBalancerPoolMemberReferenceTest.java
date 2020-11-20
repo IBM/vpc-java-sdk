@@ -14,6 +14,7 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolMemberReference;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolMemberReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -32,7 +33,8 @@ public class LoadBalancerPoolMemberReferenceTest {
   @Test
   public void testLoadBalancerPoolMemberReference() throws Throwable {
     LoadBalancerPoolMemberReference loadBalancerPoolMemberReferenceModel = new LoadBalancerPoolMemberReference();
-    assertNull(loadBalancerPoolMemberReferenceModel.getId());
+    assertNull(loadBalancerPoolMemberReferenceModel.getDeleted());
     assertNull(loadBalancerPoolMemberReferenceModel.getHref());
+    assertNull(loadBalancerPoolMemberReferenceModel.getId());
   }
 }

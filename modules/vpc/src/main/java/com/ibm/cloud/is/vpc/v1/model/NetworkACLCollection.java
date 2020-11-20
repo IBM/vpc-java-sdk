@@ -24,16 +24,16 @@ public class NetworkACLCollection extends GenericModel {
 
   protected NetworkACLCollectionFirst first;
   protected Long limit;
+  @SerializedName("network_acls")
+  protected List<NetworkACL> networkAcls;
   protected NetworkACLCollectionNext next;
   @SerializedName("total_count")
   protected Long totalCount;
-  @SerializedName("network_acls")
-  protected List<NetworkACL> networkAcls;
 
   /**
    * Gets the first.
    *
-   * A reference to the first page of resources.
+   * A link to the first page of resources.
    *
    * @return the first
    */
@@ -53,9 +53,20 @@ public class NetworkACLCollection extends GenericModel {
   }
 
   /**
+   * Gets the networkAcls.
+   *
+   * Collection of network ACLs.
+   *
+   * @return the networkAcls
+   */
+  public List<NetworkACL> getNetworkAcls() {
+    return networkAcls;
+  }
+
+  /**
    * Gets the next.
    *
-   * A reference to the next page of resources; this reference is included for all pages
+   * A link to the next page of resources. This property is present for all pages
    * except the last page.
    *
    * @return the next
@@ -73,17 +84,6 @@ public class NetworkACLCollection extends GenericModel {
    */
   public Long getTotalCount() {
     return totalCount;
-  }
-
-  /**
-   * Gets the networkAcls.
-   *
-   * Collection of network ACLs.
-   *
-   * @return the networkAcls
-   */
-  public List<NetworkACL> getNetworkAcls() {
-    return networkAcls;
   }
 }
 

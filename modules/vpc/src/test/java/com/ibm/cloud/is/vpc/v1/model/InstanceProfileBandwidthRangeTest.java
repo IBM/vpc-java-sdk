@@ -32,10 +32,10 @@ public class InstanceProfileBandwidthRangeTest {
   @Test
   public void testInstanceProfileBandwidthRange() throws Throwable {
     InstanceProfileBandwidthRange instanceProfileBandwidthRangeModel = new InstanceProfileBandwidthRange();
-    assertNull(instanceProfileBandwidthRangeModel.getType());
     assertNull(instanceProfileBandwidthRangeModel.getXDefault());
     assertNull(instanceProfileBandwidthRangeModel.getMax());
     assertNull(instanceProfileBandwidthRangeModel.getMin());
     assertNull(instanceProfileBandwidthRangeModel.getStep());
+    assertNull(instanceProfileBandwidthRangeModel.getType());
   }
 }

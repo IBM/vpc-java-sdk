@@ -13,8 +13,8 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
-import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRulePrototypeRemoteIP;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRulePrototypeSecurityGroupRuleProtocolAll;
+import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleRemotePrototypeIP;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -32,21 +32,21 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolAllTest {
 
   @Test
   public void testSecurityGroupRulePrototypeSecurityGroupRuleProtocolAll() throws Throwable {
-    SecurityGroupRulePrototypeRemoteIP securityGroupRulePrototypeRemoteModel = new SecurityGroupRulePrototypeRemoteIP.Builder()
+    SecurityGroupRuleRemotePrototypeIP securityGroupRuleRemotePrototypeModel = new SecurityGroupRuleRemotePrototypeIP.Builder()
       .address("192.168.3.4")
       .build();
-    assertEquals(securityGroupRulePrototypeRemoteModel.address(), "192.168.3.4");
+    assertEquals(securityGroupRuleRemotePrototypeModel.address(), "192.168.3.4");
 
     SecurityGroupRulePrototypeSecurityGroupRuleProtocolAll securityGroupRulePrototypeSecurityGroupRuleProtocolAllModel = new SecurityGroupRulePrototypeSecurityGroupRuleProtocolAll.Builder()
       .direction("inbound")
       .ipVersion("ipv4")
+      .remote(securityGroupRuleRemotePrototypeModel)
       .protocol("all")
-      .remote(securityGroupRulePrototypeRemoteModel)
       .build();
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolAllModel.direction(), "inbound");
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolAllModel.ipVersion(), "ipv4");
+    assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolAllModel.remote(), securityGroupRuleRemotePrototypeModel);
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolAllModel.protocol(), "all");
-    assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolAllModel.remote(), securityGroupRulePrototypeRemoteModel);
 
     String json = TestUtilities.serialize(securityGroupRulePrototypeSecurityGroupRuleProtocolAllModel);
 
@@ -54,8 +54,13 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolAllTest {
     assertTrue(securityGroupRulePrototypeSecurityGroupRuleProtocolAllModelNew instanceof SecurityGroupRulePrototypeSecurityGroupRuleProtocolAll);
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolAllModelNew.direction(), "inbound");
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolAllModelNew.ipVersion(), "ipv4");
+    assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolAllModelNew.remote().toString(), securityGroupRuleRemotePrototypeModel.toString());
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolAllModelNew.protocol(), "all");
-    assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolAllModelNew.remote().toString(), securityGroupRulePrototypeRemoteModel.toString());
-    assertNotNull(securityGroupRulePrototypeSecurityGroupRuleProtocolAllModel);
   }
+
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testSecurityGroupRulePrototypeSecurityGroupRuleProtocolAllError() throws Throwable {
+    new SecurityGroupRulePrototypeSecurityGroupRuleProtocolAll.Builder().build();
+  }
+
 }

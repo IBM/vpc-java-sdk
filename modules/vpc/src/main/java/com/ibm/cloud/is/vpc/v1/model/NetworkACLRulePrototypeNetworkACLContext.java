@@ -55,26 +55,12 @@ public class NetworkACLRulePrototypeNetworkACLContext extends GenericModel {
     String OUTBOUND = "outbound";
   }
 
-  /**
-   * The protocol to enforce.
-   */
-  public interface Protocol {
-    /** all. */
-    String ALL = "all";
-    /** icmp. */
-    String ICMP = "icmp";
-    /** tcp. */
-    String TCP = "tcp";
-    /** udp. */
-    String UDP = "udp";
-  }
-
-  protected String name;
   protected String action;
   protected String destination;
   protected String direction;
-  protected String source;
+  protected String name;
   protected String protocol;
+  protected String source;
   @SerializedName("destination_port_max")
   protected Long destinationPortMax;
   @SerializedName("destination_port_min")
@@ -87,18 +73,6 @@ public class NetworkACLRulePrototypeNetworkACLContext extends GenericModel {
   protected Long type;
 
   protected NetworkACLRulePrototypeNetworkACLContext() {
-  }
-
-  /**
-   * Gets the name.
-   *
-   * The user-defined name for this rule. Names must be unique within the network ACL the rule resides in. If
-   * unspecified, the name will be a hyphenated list of randomly-selected words.
-   *
-   * @return the name
-   */
-  public String name() {
-    return name;
   }
 
   /**
@@ -135,14 +109,15 @@ public class NetworkACLRulePrototypeNetworkACLContext extends GenericModel {
   }
 
   /**
-   * Gets the source.
+   * Gets the name.
    *
-   * The source IP address or CIDR block.  The CIDR block `0.0.0.0/0` applies to all addresses.
+   * The user-defined name for this rule. Names must be unique within the network ACL the rule resides in. If
+   * unspecified, the name will be a hyphenated list of randomly-selected words.
    *
-   * @return the source
+   * @return the name
    */
-  public String source() {
-    return source;
+  public String name() {
+    return name;
   }
 
   /**
@@ -154,6 +129,17 @@ public class NetworkACLRulePrototypeNetworkACLContext extends GenericModel {
    */
   public String protocol() {
     return protocol;
+  }
+
+  /**
+   * Gets the source.
+   *
+   * The source IP address or CIDR block.  The CIDR block `0.0.0.0/0` applies to all addresses.
+   *
+   * @return the source
+   */
+  public String source() {
+    return source;
   }
 
   /**

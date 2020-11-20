@@ -14,9 +14,12 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPReference;
+import com.ibm.cloud.is.vpc.v1.model.FloatingIPReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.NetworkInterface;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupReference;
+import com.ibm.cloud.is.vpc.v1.model.SecurityGroupReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.SubnetReference;
+import com.ibm.cloud.is.vpc.v1.model.SubnetReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -35,15 +38,16 @@ public class NetworkInterfaceTest {
   @Test
   public void testNetworkInterface() throws Throwable {
     NetworkInterface networkInterfaceModel = new NetworkInterface();
-    assertNull(networkInterfaceModel.getName());
-    assertNull(networkInterfaceModel.getId());
+    assertNull(networkInterfaceModel.isAllowIpSpoofing());
+    assertNull(networkInterfaceModel.getCreatedAt());
+    assertNull(networkInterfaceModel.getFloatingIps());
     assertNull(networkInterfaceModel.getHref());
+    assertNull(networkInterfaceModel.getId());
+    assertNull(networkInterfaceModel.getName());
+    assertNull(networkInterfaceModel.getPortSpeed());
     assertNull(networkInterfaceModel.getPrimaryIpv4Address());
     assertNull(networkInterfaceModel.getResourceType());
     assertNull(networkInterfaceModel.getSecurityGroups());
-    assertNull(networkInterfaceModel.getCreatedAt());
-    assertNull(networkInterfaceModel.getFloatingIps());
-    assertNull(networkInterfaceModel.getPortSpeed());
     assertNull(networkInterfaceModel.getStatus());
     assertNull(networkInterfaceModel.getSubnet());
     assertNull(networkInterfaceModel.getType());

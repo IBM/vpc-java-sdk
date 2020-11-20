@@ -24,15 +24,15 @@ public class InstanceGroupManagerCollection extends GenericModel {
 
   protected InstanceGroupManagerCollectionFirst first;
   protected Long limit;
+  protected List<InstanceGroupManager> managers;
   protected InstanceGroupManagerCollectionNext next;
   @SerializedName("total_count")
   protected Long totalCount;
-  protected List<InstanceGroupManager> managers;
 
   /**
    * Gets the first.
    *
-   * A reference to the first page of resources.
+   * A link to the first page of resources.
    *
    * @return the first
    */
@@ -52,9 +52,20 @@ public class InstanceGroupManagerCollection extends GenericModel {
   }
 
   /**
+   * Gets the managers.
+   *
+   * Collection of instance group managers.
+   *
+   * @return the managers
+   */
+  public List<InstanceGroupManager> getManagers() {
+    return managers;
+  }
+
+  /**
    * Gets the next.
    *
-   * A reference to the next page of resources; this reference is included for all pages
+   * A link to the next page of resources. This property is present for all pages
    * except the last page.
    *
    * @return the next
@@ -72,17 +83,6 @@ public class InstanceGroupManagerCollection extends GenericModel {
    */
   public Long getTotalCount() {
     return totalCount;
-  }
-
-  /**
-   * Gets the managers.
-   *
-   * Collection of instance group managers.
-   *
-   * @return the managers
-   */
-  public List<InstanceGroupManager> getManagers() {
-    return managers;
   }
 }
 

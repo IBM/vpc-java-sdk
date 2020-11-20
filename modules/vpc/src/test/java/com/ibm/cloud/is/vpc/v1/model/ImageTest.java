@@ -36,17 +36,17 @@ public class ImageTest {
   @Test
   public void testImage() throws Throwable {
     Image imageModel = new Image();
-    assertNull(imageModel.getId());
+    assertNull(imageModel.getCreatedAt());
     assertNull(imageModel.getCrn());
-    assertNull(imageModel.getHref());
-    assertNull(imageModel.getName());
-    assertNull(imageModel.getMinimumProvisionedSize());
-    assertNull(imageModel.getResourceGroup());
     assertNull(imageModel.getEncryption());
     assertNull(imageModel.getEncryptionKey());
-    assertNull(imageModel.getCreatedAt());
     assertNull(imageModel.getFile());
+    assertNull(imageModel.getHref());
+    assertNull(imageModel.getId());
+    assertNull(imageModel.getMinimumProvisionedSize());
+    assertNull(imageModel.getName());
     assertNull(imageModel.getOperatingSystem());
+    assertNull(imageModel.getResourceGroup());
     assertNull(imageModel.getStatus());
     assertNull(imageModel.getVisibility());
   }

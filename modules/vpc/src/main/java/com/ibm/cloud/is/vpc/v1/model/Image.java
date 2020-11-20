@@ -62,34 +62,34 @@ public class Image extends GenericModel {
     String X_PUBLIC = "public";
   }
 
-  protected String id;
+  @SerializedName("created_at")
+  protected Date createdAt;
   protected String crn;
-  protected String href;
-  protected String name;
-  @SerializedName("minimum_provisioned_size")
-  protected Long minimumProvisionedSize;
-  @SerializedName("resource_group")
-  protected ResourceGroupReference resourceGroup;
   protected String encryption;
   @SerializedName("encryption_key")
   protected EncryptionKeyReference encryptionKey;
-  @SerializedName("created_at")
-  protected Date createdAt;
   protected ImageFile file;
+  protected String href;
+  protected String id;
+  @SerializedName("minimum_provisioned_size")
+  protected Long minimumProvisionedSize;
+  protected String name;
   @SerializedName("operating_system")
   protected OperatingSystem operatingSystem;
+  @SerializedName("resource_group")
+  protected ResourceGroupReference resourceGroup;
   protected String status;
   protected String visibility;
 
   /**
-   * Gets the id.
+   * Gets the createdAt.
    *
-   * The unique identifier for this image.
+   * The date and time that the image was created.
    *
-   * @return the id
+   * @return the createdAt
    */
-  public String getId() {
-    return id;
+  public Date getCreatedAt() {
+    return createdAt;
   }
 
   /**
@@ -101,53 +101,6 @@ public class Image extends GenericModel {
    */
   public String getCrn() {
     return crn;
-  }
-
-  /**
-   * Gets the href.
-   *
-   * The URL for this image.
-   *
-   * @return the href
-   */
-  public String getHref() {
-    return href;
-  }
-
-  /**
-   * Gets the name.
-   *
-   * The user-defined or system-provided name for this image.
-   *
-   * @return the name
-   */
-  public String getName() {
-    return name;
-  }
-
-  /**
-   * Gets the minimumProvisionedSize.
-   *
-   * The minimum size (in gigabytes) of a volume onto which this image may be provisioned.
-   *
-   * This property may be absent if the image has a `status` of `pending`, `tentative`, or
-   * `failed`.
-   *
-   * @return the minimumProvisionedSize
-   */
-  public Long getMinimumProvisionedSize() {
-    return minimumProvisionedSize;
-  }
-
-  /**
-   * Gets the resourceGroup.
-   *
-   * The resource group for this image.
-   *
-   * @return the resourceGroup
-   */
-  public ResourceGroupReference getResourceGroup() {
-    return resourceGroup;
   }
 
   /**
@@ -176,17 +129,6 @@ public class Image extends GenericModel {
   }
 
   /**
-   * Gets the createdAt.
-   *
-   * The date and time that the image was created.
-   *
-   * @return the createdAt
-   */
-  public Date getCreatedAt() {
-    return createdAt;
-  }
-
-  /**
    * Gets the file.
    *
    * Details for the stored image file.
@@ -198,6 +140,53 @@ public class Image extends GenericModel {
   }
 
   /**
+   * Gets the href.
+   *
+   * The URL for this image.
+   *
+   * @return the href
+   */
+  public String getHref() {
+    return href;
+  }
+
+  /**
+   * Gets the id.
+   *
+   * The unique identifier for this image.
+   *
+   * @return the id
+   */
+  public String getId() {
+    return id;
+  }
+
+  /**
+   * Gets the minimumProvisionedSize.
+   *
+   * The minimum size (in gigabytes) of a volume onto which this image may be provisioned.
+   *
+   * This property may be absent if the image has a `status` of `pending`, `tentative`, or
+   * `failed`.
+   *
+   * @return the minimumProvisionedSize
+   */
+  public Long getMinimumProvisionedSize() {
+    return minimumProvisionedSize;
+  }
+
+  /**
+   * Gets the name.
+   *
+   * The user-defined or system-provided name for this image.
+   *
+   * @return the name
+   */
+  public String getName() {
+    return name;
+  }
+
+  /**
    * Gets the operatingSystem.
    *
    * The operating system included in this image.
@@ -206,6 +195,17 @@ public class Image extends GenericModel {
    */
   public OperatingSystem getOperatingSystem() {
     return operatingSystem;
+  }
+
+  /**
+   * Gets the resourceGroup.
+   *
+   * The resource group for this image.
+   *
+   * @return the resourceGroup
+   */
+  public ResourceGroupReference getResourceGroup() {
+    return resourceGroup;
   }
 
   /**

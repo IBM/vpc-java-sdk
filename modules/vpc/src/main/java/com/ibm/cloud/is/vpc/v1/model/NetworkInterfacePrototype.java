@@ -23,6 +23,8 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class NetworkInterfacePrototype extends GenericModel {
 
+  @SerializedName("allow_ip_spoofing")
+  protected Boolean allowIpSpoofing;
   protected String name;
   @SerializedName("primary_ipv4_address")
   protected String primaryIpv4Address;
@@ -34,12 +36,14 @@ public class NetworkInterfacePrototype extends GenericModel {
    * Builder.
    */
   public static class Builder {
+    private Boolean allowIpSpoofing;
     private String name;
     private String primaryIpv4Address;
     private List<SecurityGroupIdentity> securityGroups;
     private SubnetIdentity subnet;
 
     private Builder(NetworkInterfacePrototype networkInterfacePrototype) {
+      this.allowIpSpoofing = networkInterfacePrototype.allowIpSpoofing;
       this.name = networkInterfacePrototype.name;
       this.primaryIpv4Address = networkInterfacePrototype.primaryIpv4Address;
       this.securityGroups = networkInterfacePrototype.securityGroups;
@@ -83,6 +87,17 @@ public class NetworkInterfacePrototype extends GenericModel {
         this.securityGroups = new ArrayList<SecurityGroupIdentity>();
       }
       this.securityGroups.add(securityGroups);
+      return this;
+    }
+
+    /**
+     * Set the allowIpSpoofing.
+     *
+     * @param allowIpSpoofing the allowIpSpoofing
+     * @return the NetworkInterfacePrototype builder
+     */
+    public Builder allowIpSpoofing(Boolean allowIpSpoofing) {
+      this.allowIpSpoofing = allowIpSpoofing;
       return this;
     }
 
@@ -135,6 +150,7 @@ public class NetworkInterfacePrototype extends GenericModel {
   protected NetworkInterfacePrototype(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.subnet,
       "subnet cannot be null");
+    allowIpSpoofing = builder.allowIpSpoofing;
     name = builder.name;
     primaryIpv4Address = builder.primaryIpv4Address;
     securityGroups = builder.securityGroups;
@@ -148,6 +164,18 @@ public class NetworkInterfacePrototype extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
+  }
+
+  /**
+   * Gets the allowIpSpoofing.
+   *
+   * Indicates whether IP spoofing is allowed on this interface. If false, IP spoofing is prevented on this interface.
+   * If true, IP spoofing is allowed on this interface.
+   *
+   * @return the allowIpSpoofing
+   */
+  public Boolean allowIpSpoofing() {
+    return allowIpSpoofing;
   }
 
   /**

@@ -18,6 +18,7 @@ import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerCollection;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerCollectionFirst;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerPolicyReference;
+import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerPolicyReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -40,8 +41,8 @@ public class InstanceGroupManagerCollectionTest {
     InstanceGroupManagerCollection instanceGroupManagerCollectionModel = new InstanceGroupManagerCollection();
     assertNull(instanceGroupManagerCollectionModel.getFirst());
     assertNull(instanceGroupManagerCollectionModel.getLimit());
+    assertNull(instanceGroupManagerCollectionModel.getManagers());
     assertNull(instanceGroupManagerCollectionModel.getNext());
     assertNull(instanceGroupManagerCollectionModel.getTotalCount());
-    assertNull(instanceGroupManagerCollectionModel.getManagers());
   }
 }

@@ -32,7 +32,7 @@ public class OperatingSystemIdentity extends GenericModel {
   /**
    * Gets the name.
    *
-   * The unique name of the operating system.
+   * The globally unique name for this operating system.
    *
    * @return the name
    */

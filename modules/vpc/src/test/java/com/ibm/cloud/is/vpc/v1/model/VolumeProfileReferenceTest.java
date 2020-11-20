@@ -32,7 +32,7 @@ public class VolumeProfileReferenceTest {
   @Test
   public void testVolumeProfileReference() throws Throwable {
     VolumeProfileReference volumeProfileReferenceModel = new VolumeProfileReference();
-    assertNull(volumeProfileReferenceModel.getName());
     assertNull(volumeProfileReferenceModel.getHref());
+    assertNull(volumeProfileReferenceModel.getName());
   }
 }

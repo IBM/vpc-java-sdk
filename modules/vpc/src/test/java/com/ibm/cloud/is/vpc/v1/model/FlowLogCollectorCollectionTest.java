@@ -19,8 +19,10 @@ import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorCollection;
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorCollectionFirst;
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorTargetNetworkInterfaceReferenceTargetContext;
+import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceReferenceTargetContextDeleted;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.VPCReference;
+import com.ibm.cloud.is.vpc.v1.model.VPCReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -40,9 +42,9 @@ public class FlowLogCollectorCollectionTest {
   public void testFlowLogCollectorCollection() throws Throwable {
     FlowLogCollectorCollection flowLogCollectorCollectionModel = new FlowLogCollectorCollection();
     assertNull(flowLogCollectorCollectionModel.getFirst());
+    assertNull(flowLogCollectorCollectionModel.getFlowLogCollectors());
     assertNull(flowLogCollectorCollectionModel.getLimit());
     assertNull(flowLogCollectorCollectionModel.getNext());
     assertNull(flowLogCollectorCollectionModel.getTotalCount());
-    assertNull(flowLogCollectorCollectionModel.getFlowLogCollectors());
   }
 }

@@ -26,23 +26,23 @@ public class VPNGatewayConnectionPrototypeVPNGatewayConnectionPolicyModePrototyp
    */
   public static class Builder {
     private Boolean adminStateUp;
-    private String peerAddress;
-    private String name;
-    private String psk;
     private VPNGatewayConnectionDPDPrototype deadPeerDetection;
     private IKEPolicyIdentity ikePolicy;
     private IPsecPolicyIdentity ipsecPolicy;
+    private String name;
+    private String peerAddress;
+    private String psk;
     private List<String> localCidrs;
     private List<String> peerCidrs;
 
     public Builder(VPNGatewayConnectionPrototype vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototype) {
       this.adminStateUp = vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototype.adminStateUp;
-      this.peerAddress = vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototype.peerAddress;
-      this.name = vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototype.name;
-      this.psk = vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototype.psk;
       this.deadPeerDetection = vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototype.deadPeerDetection;
       this.ikePolicy = vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototype.ikePolicy;
       this.ipsecPolicy = vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototype.ipsecPolicy;
+      this.name = vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototype.name;
+      this.peerAddress = vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototype.peerAddress;
+      this.psk = vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototype.psk;
       this.localCidrs = vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototype.localCidrs;
       this.peerCidrs = vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototype.peerCidrs;
     }
@@ -121,39 +121,6 @@ public class VPNGatewayConnectionPrototypeVPNGatewayConnectionPolicyModePrototyp
     }
 
     /**
-     * Set the peerAddress.
-     *
-     * @param peerAddress the peerAddress
-     * @return the VPNGatewayConnectionPrototypeVPNGatewayConnectionPolicyModePrototype builder
-     */
-    public Builder peerAddress(String peerAddress) {
-      this.peerAddress = peerAddress;
-      return this;
-    }
-
-    /**
-     * Set the name.
-     *
-     * @param name the name
-     * @return the VPNGatewayConnectionPrototypeVPNGatewayConnectionPolicyModePrototype builder
-     */
-    public Builder name(String name) {
-      this.name = name;
-      return this;
-    }
-
-    /**
-     * Set the psk.
-     *
-     * @param psk the psk
-     * @return the VPNGatewayConnectionPrototypeVPNGatewayConnectionPolicyModePrototype builder
-     */
-    public Builder psk(String psk) {
-      this.psk = psk;
-      return this;
-    }
-
-    /**
      * Set the deadPeerDetection.
      *
      * @param deadPeerDetection the deadPeerDetection
@@ -183,6 +150,39 @@ public class VPNGatewayConnectionPrototypeVPNGatewayConnectionPolicyModePrototyp
      */
     public Builder ipsecPolicy(IPsecPolicyIdentity ipsecPolicy) {
       this.ipsecPolicy = ipsecPolicy;
+      return this;
+    }
+
+    /**
+     * Set the name.
+     *
+     * @param name the name
+     * @return the VPNGatewayConnectionPrototypeVPNGatewayConnectionPolicyModePrototype builder
+     */
+    public Builder name(String name) {
+      this.name = name;
+      return this;
+    }
+
+    /**
+     * Set the peerAddress.
+     *
+     * @param peerAddress the peerAddress
+     * @return the VPNGatewayConnectionPrototypeVPNGatewayConnectionPolicyModePrototype builder
+     */
+    public Builder peerAddress(String peerAddress) {
+      this.peerAddress = peerAddress;
+      return this;
+    }
+
+    /**
+     * Set the psk.
+     *
+     * @param psk the psk
+     * @return the VPNGatewayConnectionPrototypeVPNGatewayConnectionPolicyModePrototype builder
+     */
+    public Builder psk(String psk) {
+      this.psk = psk;
       return this;
     }
 
@@ -221,12 +221,12 @@ public class VPNGatewayConnectionPrototypeVPNGatewayConnectionPolicyModePrototyp
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.peerCidrs,
       "peerCidrs cannot be null");
     adminStateUp = builder.adminStateUp;
-    peerAddress = builder.peerAddress;
-    name = builder.name;
-    psk = builder.psk;
     deadPeerDetection = builder.deadPeerDetection;
     ikePolicy = builder.ikePolicy;
     ipsecPolicy = builder.ipsecPolicy;
+    name = builder.name;
+    peerAddress = builder.peerAddress;
+    psk = builder.psk;
     localCidrs = builder.localCidrs;
     peerCidrs = builder.peerCidrs;
   }

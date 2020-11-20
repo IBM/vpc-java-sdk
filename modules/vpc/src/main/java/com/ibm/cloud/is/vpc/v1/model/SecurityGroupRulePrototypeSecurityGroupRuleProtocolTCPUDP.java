@@ -43,10 +43,6 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolTCPUDP extends S
    * The protocol to enforce.
    */
   public interface Protocol {
-    /** all. */
-    String ALL = "all";
-    /** icmp. */
-    String ICMP = "icmp";
     /** tcp. */
     String TCP = "tcp";
     /** udp. */
@@ -60,24 +56,35 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolTCPUDP extends S
   public static class Builder {
     private String direction;
     private String ipVersion;
-    private String protocol;
-    private SecurityGroupRulePrototypeRemote remote;
+    private SecurityGroupRuleRemotePrototype remote;
     private Long portMax;
     private Long portMin;
+    private String protocol;
 
     public Builder(SecurityGroupRulePrototype securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudp) {
       this.direction = securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudp.direction;
       this.ipVersion = securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudp.ipVersion;
-      this.protocol = securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudp.protocol;
       this.remote = securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudp.remote;
       this.portMax = securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudp.portMax;
       this.portMin = securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudp.portMin;
+      this.protocol = securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudp.protocol;
     }
 
     /**
      * Instantiates a new builder.
      */
     public Builder() {
+    }
+
+    /**
+     * Instantiates a new builder with required properties.
+     *
+     * @param direction the direction
+     * @param protocol the protocol
+     */
+    public Builder(String direction, String protocol) {
+      this.direction = direction;
+      this.protocol = protocol;
     }
 
     /**
@@ -112,23 +119,12 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolTCPUDP extends S
     }
 
     /**
-     * Set the protocol.
-     *
-     * @param protocol the protocol
-     * @return the SecurityGroupRulePrototypeSecurityGroupRuleProtocolTCPUDP builder
-     */
-    public Builder protocol(String protocol) {
-      this.protocol = protocol;
-      return this;
-    }
-
-    /**
      * Set the remote.
      *
      * @param remote the remote
      * @return the SecurityGroupRulePrototypeSecurityGroupRuleProtocolTCPUDP builder
      */
-    public Builder remote(SecurityGroupRulePrototypeRemote remote) {
+    public Builder remote(SecurityGroupRuleRemotePrototype remote) {
       this.remote = remote;
       return this;
     }
@@ -154,17 +150,30 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolTCPUDP extends S
       this.portMin = portMin;
       return this;
     }
+
+    /**
+     * Set the protocol.
+     *
+     * @param protocol the protocol
+     * @return the SecurityGroupRulePrototypeSecurityGroupRuleProtocolTCPUDP builder
+     */
+    public Builder protocol(String protocol) {
+      this.protocol = protocol;
+      return this;
+    }
   }
 
   protected SecurityGroupRulePrototypeSecurityGroupRuleProtocolTCPUDP(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.direction,
       "direction cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.protocol,
+      "protocol cannot be null");
     direction = builder.direction;
     ipVersion = builder.ipVersion;
-    protocol = builder.protocol;
     remote = builder.remote;
     portMax = builder.portMax;
     portMin = builder.portMin;
+    protocol = builder.protocol;
   }
 
   /**

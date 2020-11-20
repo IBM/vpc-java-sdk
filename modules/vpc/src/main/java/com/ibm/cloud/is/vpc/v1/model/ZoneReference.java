@@ -19,19 +19,8 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class ZoneReference extends GenericModel {
 
-  protected String name;
   protected String href;
-
-  /**
-   * Gets the name.
-   *
-   * The name for this zone.
-   *
-   * @return the name
-   */
-  public String getName() {
-    return name;
-  }
+  protected String name;
 
   /**
    * Gets the href.
@@ -42,6 +31,17 @@ public class ZoneReference extends GenericModel {
    */
   public String getHref() {
     return href;
+  }
+
+  /**
+   * Gets the name.
+   *
+   * The globally unique name for this zone.
+   *
+   * @return the name
+   */
+  public String getName() {
+    return name;
   }
 }
 

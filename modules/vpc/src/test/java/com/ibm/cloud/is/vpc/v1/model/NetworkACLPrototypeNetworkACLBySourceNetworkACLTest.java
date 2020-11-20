@@ -34,15 +34,15 @@ public class NetworkACLPrototypeNetworkACLBySourceNetworkACLTest {
 
   @Test
   public void testNetworkACLPrototypeNetworkACLBySourceNetworkACL() throws Throwable {
-    VPCIdentityById vpcIdentityModel = new VPCIdentityById.Builder()
-      .id("cf7cd5a-2f30-4336-a495-6addc820cd61")
-      .build();
-    assertEquals(vpcIdentityModel.id(), "cf7cd5a-2f30-4336-a495-6addc820cd61");
-
     ResourceGroupIdentityById resourceGroupIdentityModel = new ResourceGroupIdentityById.Builder()
       .id("fee82deba12e4c0fb69c3b09d1f12345")
       .build();
     assertEquals(resourceGroupIdentityModel.id(), "fee82deba12e4c0fb69c3b09d1f12345");
+
+    VPCIdentityById vpcIdentityModel = new VPCIdentityById.Builder()
+      .id("cf7cd5a-2f30-4336-a495-6addc820cd61")
+      .build();
+    assertEquals(vpcIdentityModel.id(), "cf7cd5a-2f30-4336-a495-6addc820cd61");
 
     NetworkACLIdentityById networkAclIdentityModel = new NetworkACLIdentityById.Builder()
       .id("a4e28308-8ee7-46ab-8108-9f881f22bdbf")
@@ -51,13 +51,13 @@ public class NetworkACLPrototypeNetworkACLBySourceNetworkACLTest {
 
     NetworkACLPrototypeNetworkACLBySourceNetworkACL networkAclPrototypeNetworkAclBySourceNetworkAclModel = new NetworkACLPrototypeNetworkACLBySourceNetworkACL.Builder()
       .name("my-network-acl")
-      .vpc(vpcIdentityModel)
       .resourceGroup(resourceGroupIdentityModel)
+      .vpc(vpcIdentityModel)
       .sourceNetworkAcl(networkAclIdentityModel)
       .build();
     assertEquals(networkAclPrototypeNetworkAclBySourceNetworkAclModel.name(), "my-network-acl");
-    assertEquals(networkAclPrototypeNetworkAclBySourceNetworkAclModel.vpc(), vpcIdentityModel);
     assertEquals(networkAclPrototypeNetworkAclBySourceNetworkAclModel.resourceGroup(), resourceGroupIdentityModel);
+    assertEquals(networkAclPrototypeNetworkAclBySourceNetworkAclModel.vpc(), vpcIdentityModel);
     assertEquals(networkAclPrototypeNetworkAclBySourceNetworkAclModel.sourceNetworkAcl(), networkAclIdentityModel);
 
     String json = TestUtilities.serialize(networkAclPrototypeNetworkAclBySourceNetworkAclModel);
@@ -65,8 +65,8 @@ public class NetworkACLPrototypeNetworkACLBySourceNetworkACLTest {
     NetworkACLPrototypeNetworkACLBySourceNetworkACL networkAclPrototypeNetworkAclBySourceNetworkAclModelNew = TestUtilities.deserialize(json, NetworkACLPrototypeNetworkACLBySourceNetworkACL.class);
     assertTrue(networkAclPrototypeNetworkAclBySourceNetworkAclModelNew instanceof NetworkACLPrototypeNetworkACLBySourceNetworkACL);
     assertEquals(networkAclPrototypeNetworkAclBySourceNetworkAclModelNew.name(), "my-network-acl");
-    assertEquals(networkAclPrototypeNetworkAclBySourceNetworkAclModelNew.vpc().toString(), vpcIdentityModel.toString());
     assertEquals(networkAclPrototypeNetworkAclBySourceNetworkAclModelNew.resourceGroup().toString(), resourceGroupIdentityModel.toString());
+    assertEquals(networkAclPrototypeNetworkAclBySourceNetworkAclModelNew.vpc().toString(), vpcIdentityModel.toString());
     assertEquals(networkAclPrototypeNetworkAclBySourceNetworkAclModelNew.sourceNetworkAcl().toString(), networkAclIdentityModel.toString());
   }
 

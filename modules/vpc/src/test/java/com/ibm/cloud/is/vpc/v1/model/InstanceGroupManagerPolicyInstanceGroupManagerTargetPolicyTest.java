@@ -32,8 +32,8 @@ public class InstanceGroupManagerPolicyInstanceGroupManagerTargetPolicyTest {
   @Test
   public void testInstanceGroupManagerPolicyInstanceGroupManagerTargetPolicy() throws Throwable {
     InstanceGroupManagerPolicyInstanceGroupManagerTargetPolicy instanceGroupManagerPolicyInstanceGroupManagerTargetPolicyModel = new InstanceGroupManagerPolicyInstanceGroupManagerTargetPolicy();
-    assertNull(instanceGroupManagerPolicyInstanceGroupManagerTargetPolicyModel.getId());
     assertNull(instanceGroupManagerPolicyInstanceGroupManagerTargetPolicyModel.getHref());
+    assertNull(instanceGroupManagerPolicyInstanceGroupManagerTargetPolicyModel.getId());
     assertNull(instanceGroupManagerPolicyInstanceGroupManagerTargetPolicyModel.getName());
     assertNull(instanceGroupManagerPolicyInstanceGroupManagerTargetPolicyModel.getMetricType());
     assertNull(instanceGroupManagerPolicyInstanceGroupManagerTargetPolicyModel.getMetricValue());

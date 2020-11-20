@@ -32,8 +32,8 @@ public class LoadBalancerProfileReferenceTest {
   @Test
   public void testLoadBalancerProfileReference() throws Throwable {
     LoadBalancerProfileReference loadBalancerProfileReferenceModel = new LoadBalancerProfileReference();
-    assertNull(loadBalancerProfileReferenceModel.getName());
-    assertNull(loadBalancerProfileReferenceModel.getHref());
     assertNull(loadBalancerProfileReferenceModel.getFamily());
+    assertNull(loadBalancerProfileReferenceModel.getHref());
+    assertNull(loadBalancerProfileReferenceModel.getName());
   }
 }

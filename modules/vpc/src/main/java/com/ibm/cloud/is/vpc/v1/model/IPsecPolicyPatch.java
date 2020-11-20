@@ -61,30 +61,30 @@ public class IPsecPolicyPatch extends GenericModel {
     String GROUP_5 = "group_5";
   }
 
-  protected String name;
   @SerializedName("authentication_algorithm")
   protected String authenticationAlgorithm;
   @SerializedName("encryption_algorithm")
   protected String encryptionAlgorithm;
   @SerializedName("key_lifetime")
   protected Long keyLifetime;
+  protected String name;
   protected String pfs;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private String name;
     private String authenticationAlgorithm;
     private String encryptionAlgorithm;
     private Long keyLifetime;
+    private String name;
     private String pfs;
 
     private Builder(IPsecPolicyPatch iPsecPolicyPatch) {
-      this.name = iPsecPolicyPatch.name;
       this.authenticationAlgorithm = iPsecPolicyPatch.authenticationAlgorithm;
       this.encryptionAlgorithm = iPsecPolicyPatch.encryptionAlgorithm;
       this.keyLifetime = iPsecPolicyPatch.keyLifetime;
+      this.name = iPsecPolicyPatch.name;
       this.pfs = iPsecPolicyPatch.pfs;
     }
 
@@ -101,17 +101,6 @@ public class IPsecPolicyPatch extends GenericModel {
      */
     public IPsecPolicyPatch build() {
       return new IPsecPolicyPatch(this);
-    }
-
-    /**
-     * Set the name.
-     *
-     * @param name the name
-     * @return the IPsecPolicyPatch builder
-     */
-    public Builder name(String name) {
-      this.name = name;
-      return this;
     }
 
     /**
@@ -148,6 +137,17 @@ public class IPsecPolicyPatch extends GenericModel {
     }
 
     /**
+     * Set the name.
+     *
+     * @param name the name
+     * @return the IPsecPolicyPatch builder
+     */
+    public Builder name(String name) {
+      this.name = name;
+      return this;
+    }
+
+    /**
      * Set the pfs.
      *
      * @param pfs the pfs
@@ -160,10 +160,10 @@ public class IPsecPolicyPatch extends GenericModel {
   }
 
   protected IPsecPolicyPatch(Builder builder) {
-    name = builder.name;
     authenticationAlgorithm = builder.authenticationAlgorithm;
     encryptionAlgorithm = builder.encryptionAlgorithm;
     keyLifetime = builder.keyLifetime;
+    name = builder.name;
     pfs = builder.pfs;
   }
 
@@ -174,17 +174,6 @@ public class IPsecPolicyPatch extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the name.
-   *
-   * The user-defined name for this IPsec policy.
-   *
-   * @return the name
-   */
-  public String name() {
-    return name;
   }
 
   /**
@@ -218,6 +207,17 @@ public class IPsecPolicyPatch extends GenericModel {
    */
   public Long keyLifetime() {
     return keyLifetime;
+  }
+
+  /**
+   * Gets the name.
+   *
+   * The user-defined name for this IPsec policy.
+   *
+   * @return the name
+   */
+  public String name() {
+    return name;
   }
 
   /**

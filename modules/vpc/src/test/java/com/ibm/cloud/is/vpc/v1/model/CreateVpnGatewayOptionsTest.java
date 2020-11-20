@@ -16,6 +16,7 @@ package com.ibm.cloud.is.vpc.v1.model;
 import com.ibm.cloud.is.vpc.v1.model.CreateVpnGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.SubnetIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayPrototypeVPNGatewayRouteModePrototype;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -33,24 +34,31 @@ public class CreateVpnGatewayOptionsTest {
 
   @Test
   public void testCreateVpnGatewayOptions() throws Throwable {
-    SubnetIdentityById subnetIdentityModel = new SubnetIdentityById.Builder()
-      .id("7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
-      .build();
-    assertEquals(subnetIdentityModel.id(), "7ec86020-1c6e-4889-b3f0-a15f2e50f87e");
-
     ResourceGroupIdentityById resourceGroupIdentityModel = new ResourceGroupIdentityById.Builder()
       .id("fee82deba12e4c0fb69c3b09d1f12345")
       .build();
     assertEquals(resourceGroupIdentityModel.id(), "fee82deba12e4c0fb69c3b09d1f12345");
 
-    CreateVpnGatewayOptions createVpnGatewayOptionsModel = new CreateVpnGatewayOptions.Builder()
-      .subnet(subnetIdentityModel)
+    SubnetIdentityById subnetIdentityModel = new SubnetIdentityById.Builder()
+      .id("7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
+      .build();
+    assertEquals(subnetIdentityModel.id(), "7ec86020-1c6e-4889-b3f0-a15f2e50f87e");
+
+    VPNGatewayPrototypeVPNGatewayRouteModePrototype vpnGatewayPrototypeModel = new VPNGatewayPrototypeVPNGatewayRouteModePrototype.Builder()
       .name("my-vpn-gateway")
       .resourceGroup(resourceGroupIdentityModel)
+      .subnet(subnetIdentityModel)
+      .mode("route")
       .build();
-    assertEquals(createVpnGatewayOptionsModel.subnet(), subnetIdentityModel);
-    assertEquals(createVpnGatewayOptionsModel.name(), "my-vpn-gateway");
-    assertEquals(createVpnGatewayOptionsModel.resourceGroup(), resourceGroupIdentityModel);
+    assertEquals(vpnGatewayPrototypeModel.name(), "my-vpn-gateway");
+    assertEquals(vpnGatewayPrototypeModel.resourceGroup(), resourceGroupIdentityModel);
+    assertEquals(vpnGatewayPrototypeModel.subnet(), subnetIdentityModel);
+    assertEquals(vpnGatewayPrototypeModel.mode(), "route");
+
+    CreateVpnGatewayOptions createVpnGatewayOptionsModel = new CreateVpnGatewayOptions.Builder()
+      .vpnGatewayPrototype(vpnGatewayPrototypeModel)
+      .build();
+    assertEquals(createVpnGatewayOptionsModel.vpnGatewayPrototype(), vpnGatewayPrototypeModel);
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

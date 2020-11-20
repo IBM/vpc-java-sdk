@@ -13,11 +13,14 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.ibm.cloud.is.vpc.v1.model.IP;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.SubnetReference;
+import com.ibm.cloud.is.vpc.v1.model.SubnetReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.VPNGateway;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionReference;
-import com.ibm.cloud.is.vpc.v1.model.VPNGatewayPublicIp;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionReferenceDeleted;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayMember;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -33,19 +36,10 @@ public class VPNGatewayTest {
   final HashMap<String, InputStream> mockStreamMap = TestUtilities.createMockStreamMap();
   final List<FileWithMetadata> mockListFileWithMetadata = TestUtilities.creatMockListFileWithMetadata();
 
+  // TODO: Add tests for models that are abstract
   @Test
   public void testVPNGateway() throws Throwable {
     VPNGateway vpnGatewayModel = new VPNGateway();
-    assertNull(vpnGatewayModel.getId());
-    assertNull(vpnGatewayModel.getCrn());
-    assertNull(vpnGatewayModel.getHref());
-    assertNull(vpnGatewayModel.getName());
-    assertNull(vpnGatewayModel.getResourceType());
-    assertNull(vpnGatewayModel.getResourceGroup());
-    assertNull(vpnGatewayModel.getPublicIp());
-    assertNull(vpnGatewayModel.getConnections());
-    assertNull(vpnGatewayModel.getCreatedAt());
-    assertNull(vpnGatewayModel.getStatus());
-    assertNull(vpnGatewayModel.getSubnet());
+    assertNotNull(vpnGatewayModel);
   }
 }

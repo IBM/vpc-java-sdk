@@ -14,6 +14,7 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPTargetNetworkInterfaceReference;
+import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -32,9 +33,10 @@ public class FloatingIPTargetNetworkInterfaceReferenceTest {
   @Test
   public void testFloatingIPTargetNetworkInterfaceReference() throws Throwable {
     FloatingIPTargetNetworkInterfaceReference floatingIpTargetNetworkInterfaceReferenceModel = new FloatingIPTargetNetworkInterfaceReference();
-    assertNull(floatingIpTargetNetworkInterfaceReferenceModel.getName());
-    assertNull(floatingIpTargetNetworkInterfaceReferenceModel.getId());
+    assertNull(floatingIpTargetNetworkInterfaceReferenceModel.getDeleted());
     assertNull(floatingIpTargetNetworkInterfaceReferenceModel.getHref());
+    assertNull(floatingIpTargetNetworkInterfaceReferenceModel.getId());
+    assertNull(floatingIpTargetNetworkInterfaceReferenceModel.getName());
     assertNull(floatingIpTargetNetworkInterfaceReferenceModel.getPrimaryIpv4Address());
     assertNull(floatingIpTargetNetworkInterfaceReferenceModel.getResourceType());
   }

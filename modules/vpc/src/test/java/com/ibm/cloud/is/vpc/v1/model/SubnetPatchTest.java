@@ -15,6 +15,7 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.PublicGatewayIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.RoutingTableIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.SubnetPatch;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
@@ -44,14 +45,21 @@ public class SubnetPatchTest {
       .build();
     assertEquals(publicGatewayIdentityModel.id(), "dc5431ef-1fc6-4861-adc9-a59d077d1241");
 
+    RoutingTableIdentityById routingTableIdentityModel = new RoutingTableIdentityById.Builder()
+      .id("6885e83f-03b2-4603-8a86-db2a0f55c840")
+      .build();
+    assertEquals(routingTableIdentityModel.id(), "6885e83f-03b2-4603-8a86-db2a0f55c840");
+
     SubnetPatch subnetPatchModel = new SubnetPatch.Builder()
       .name("my-subnet")
       .networkAcl(networkAclIdentityModel)
       .publicGateway(publicGatewayIdentityModel)
+      .routingTable(routingTableIdentityModel)
       .build();
     assertEquals(subnetPatchModel.name(), "my-subnet");
     assertEquals(subnetPatchModel.networkAcl(), networkAclIdentityModel);
     assertEquals(subnetPatchModel.publicGateway(), publicGatewayIdentityModel);
+    assertEquals(subnetPatchModel.routingTable(), routingTableIdentityModel);
 
     String json = TestUtilities.serialize(subnetPatchModel);
 
@@ -60,6 +68,7 @@ public class SubnetPatchTest {
     assertEquals(subnetPatchModelNew.name(), "my-subnet");
     assertEquals(subnetPatchModelNew.networkAcl().toString(), networkAclIdentityModel.toString());
     assertEquals(subnetPatchModelNew.publicGateway().toString(), publicGatewayIdentityModel.toString());
+    assertEquals(subnetPatchModelNew.routingTable().toString(), routingTableIdentityModel.toString());
   }
   @Test
   public void testSubnetPatchAsPatch() throws Throwable {
@@ -71,10 +80,15 @@ public class SubnetPatchTest {
       .id("dc5431ef-1fc6-4861-adc9-a59d077d1241")
       .build();
 
+    RoutingTableIdentityById routingTableIdentityModel = new RoutingTableIdentityById.Builder()
+      .id("6885e83f-03b2-4603-8a86-db2a0f55c840")
+      .build();
+
     SubnetPatch subnetPatchModel = new SubnetPatch.Builder()
       .name("my-subnet")
       .networkAcl(networkAclIdentityModel)
       .publicGateway(publicGatewayIdentityModel)
+      .routingTable(routingTableIdentityModel)
       .build();
 
     Map<String, Object> mergePatch = subnetPatchModel.asPatch();
@@ -82,6 +96,7 @@ public class SubnetPatchTest {
     assertEquals(mergePatch.get("name"), "my-subnet");
     assertTrue(mergePatch.containsKey("network_acl"));
     assertTrue(mergePatch.containsKey("public_gateway"));
+    assertTrue(mergePatch.containsKey("routing_table"));
   }
 
 }

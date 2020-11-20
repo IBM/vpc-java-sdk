@@ -41,14 +41,8 @@ public class NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolICMP 
    * The protocol to enforce.
    */
   public interface Protocol {
-    /** all. */
-    String ALL = "all";
     /** icmp. */
     String ICMP = "icmp";
-    /** tcp. */
-    String TCP = "tcp";
-    /** udp. */
-    String UDP = "udp";
   }
 
 
@@ -56,23 +50,23 @@ public class NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolICMP 
    * Builder.
    */
   public static class Builder {
-    private String name;
     private String action;
     private String destination;
     private String direction;
+    private String name;
     private String source;
-    private String protocol;
     private Long code;
+    private String protocol;
     private Long type;
 
     public Builder(NetworkACLRulePrototypeNetworkACLContext networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolIcmp) {
-      this.name = networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolIcmp.name;
       this.action = networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolIcmp.action;
       this.destination = networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolIcmp.destination;
       this.direction = networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolIcmp.direction;
+      this.name = networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolIcmp.name;
       this.source = networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolIcmp.source;
-      this.protocol = networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolIcmp.protocol;
       this.code = networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolIcmp.code;
+      this.protocol = networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolIcmp.protocol;
       this.type = networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolIcmp.type;
     }
 
@@ -83,23 +77,29 @@ public class NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolICMP 
     }
 
     /**
+     * Instantiates a new builder with required properties.
+     *
+     * @param action the action
+     * @param destination the destination
+     * @param direction the direction
+     * @param source the source
+     * @param protocol the protocol
+     */
+    public Builder(String action, String destination, String direction, String source, String protocol) {
+      this.action = action;
+      this.destination = destination;
+      this.direction = direction;
+      this.source = source;
+      this.protocol = protocol;
+    }
+
+    /**
      * Builds a NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolICMP.
      *
      * @return the new NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolICMP instance
      */
     public NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolICMP build() {
       return new NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolICMP(this);
-    }
-
-    /**
-     * Set the name.
-     *
-     * @param name the name
-     * @return the NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolICMP builder
-     */
-    public Builder name(String name) {
-      this.name = name;
-      return this;
     }
 
     /**
@@ -136,6 +136,17 @@ public class NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolICMP 
     }
 
     /**
+     * Set the name.
+     *
+     * @param name the name
+     * @return the NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolICMP builder
+     */
+    public Builder name(String name) {
+      this.name = name;
+      return this;
+    }
+
+    /**
      * Set the source.
      *
      * @param source the source
@@ -147,17 +158,6 @@ public class NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolICMP 
     }
 
     /**
-     * Set the protocol.
-     *
-     * @param protocol the protocol
-     * @return the NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolICMP builder
-     */
-    public Builder protocol(String protocol) {
-      this.protocol = protocol;
-      return this;
-    }
-
-    /**
      * Set the code.
      *
      * @param code the code
@@ -165,6 +165,17 @@ public class NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolICMP 
      */
     public Builder code(long code) {
       this.code = code;
+      return this;
+    }
+
+    /**
+     * Set the protocol.
+     *
+     * @param protocol the protocol
+     * @return the NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolICMP builder
+     */
+    public Builder protocol(String protocol) {
+      this.protocol = protocol;
       return this;
     }
 
@@ -191,13 +202,13 @@ public class NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolICMP 
       "source cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.protocol,
       "protocol cannot be null");
-    name = builder.name;
     action = builder.action;
     destination = builder.destination;
     direction = builder.direction;
+    name = builder.name;
     source = builder.source;
-    protocol = builder.protocol;
     code = builder.code;
+    protocol = builder.protocol;
     type = builder.type;
   }
 

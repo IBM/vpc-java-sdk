@@ -43,36 +43,36 @@ public class SecurityGroupRulePatch extends GenericModel {
     String IPV4 = "ipv4";
   }
 
-  protected SecurityGroupRulePatchRemote remote;
+  protected Long code;
   protected String direction;
   @SerializedName("ip_version")
   protected String ipVersion;
-  protected Long code;
   @SerializedName("port_max")
   protected Long portMax;
   @SerializedName("port_min")
   protected Long portMin;
+  protected SecurityGroupRuleRemotePatch remote;
   protected Long type;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private SecurityGroupRulePatchRemote remote;
+    private Long code;
     private String direction;
     private String ipVersion;
-    private Long code;
     private Long portMax;
     private Long portMin;
+    private SecurityGroupRuleRemotePatch remote;
     private Long type;
 
     private Builder(SecurityGroupRulePatch securityGroupRulePatch) {
-      this.remote = securityGroupRulePatch.remote;
+      this.code = securityGroupRulePatch.code;
       this.direction = securityGroupRulePatch.direction;
       this.ipVersion = securityGroupRulePatch.ipVersion;
-      this.code = securityGroupRulePatch.code;
       this.portMax = securityGroupRulePatch.portMax;
       this.portMin = securityGroupRulePatch.portMin;
+      this.remote = securityGroupRulePatch.remote;
       this.type = securityGroupRulePatch.type;
     }
 
@@ -92,13 +92,13 @@ public class SecurityGroupRulePatch extends GenericModel {
     }
 
     /**
-     * Set the remote.
+     * Set the code.
      *
-     * @param remote the remote
+     * @param code the code
      * @return the SecurityGroupRulePatch builder
      */
-    public Builder remote(SecurityGroupRulePatchRemote remote) {
-      this.remote = remote;
+    public Builder code(long code) {
+      this.code = code;
       return this;
     }
 
@@ -125,17 +125,6 @@ public class SecurityGroupRulePatch extends GenericModel {
     }
 
     /**
-     * Set the code.
-     *
-     * @param code the code
-     * @return the SecurityGroupRulePatch builder
-     */
-    public Builder code(long code) {
-      this.code = code;
-      return this;
-    }
-
-    /**
      * Set the portMax.
      *
      * @param portMax the portMax
@@ -158,6 +147,17 @@ public class SecurityGroupRulePatch extends GenericModel {
     }
 
     /**
+     * Set the remote.
+     *
+     * @param remote the remote
+     * @return the SecurityGroupRulePatch builder
+     */
+    public Builder remote(SecurityGroupRuleRemotePatch remote) {
+      this.remote = remote;
+      return this;
+    }
+
+    /**
      * Set the type.
      *
      * @param type the type
@@ -170,12 +170,12 @@ public class SecurityGroupRulePatch extends GenericModel {
   }
 
   protected SecurityGroupRulePatch(Builder builder) {
-    remote = builder.remote;
+    code = builder.code;
     direction = builder.direction;
     ipVersion = builder.ipVersion;
-    code = builder.code;
     portMax = builder.portMax;
     portMin = builder.portMin;
+    remote = builder.remote;
     type = builder.type;
   }
 
@@ -189,17 +189,14 @@ public class SecurityGroupRulePatch extends GenericModel {
   }
 
   /**
-   * Gets the remote.
+   * Gets the code.
    *
-   * The IP addresses or security groups from which this rule will allow traffic (or to
-   * which, for outbound rules). Can be specified as an IP address, a CIDR block, or a
-   * security group. A CIDR block of `0.0.0.0/0` will allow traffic from any source (or to
-   * any source, for outbound rules).
+   * The ICMP traffic code to allow.
    *
-   * @return the remote
+   * @return the code
    */
-  public SecurityGroupRulePatchRemote remote() {
-    return remote;
+  public Long code() {
+    return code;
   }
 
   /**
@@ -227,17 +224,6 @@ public class SecurityGroupRulePatch extends GenericModel {
   }
 
   /**
-   * Gets the code.
-   *
-   * The ICMP traffic code to allow.
-   *
-   * @return the code
-   */
-  public Long code() {
-    return code;
-  }
-
-  /**
    * Gets the portMax.
    *
    * The inclusive upper bound of TCP/UDP port range.
@@ -257,6 +243,20 @@ public class SecurityGroupRulePatch extends GenericModel {
    */
   public Long portMin() {
     return portMin;
+  }
+
+  /**
+   * Gets the remote.
+   *
+   * The IP addresses or security groups from which this rule will allow traffic (or to
+   * which, for outbound rules). Can be specified as an IP address, a CIDR block, or a
+   * security group. A CIDR block of `0.0.0.0/0` will allow traffic from any source (or to
+   * any source, for outbound rules).
+   *
+   * @return the remote
+   */
+  public SecurityGroupRuleRemotePatch remote() {
+    return remote;
   }
 
   /**

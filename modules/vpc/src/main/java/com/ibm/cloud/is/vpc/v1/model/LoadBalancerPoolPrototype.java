@@ -36,11 +36,9 @@ public class LoadBalancerPoolPrototype extends GenericModel {
   }
 
   /**
-   * The protocol used for this load balancer pool.
-   *
-   * The enumerated values for this property are expected to expand in the future. When processing this property, check
-   * for and log unknown values. Optionally halt processing and surface the error, or bypass the pool on which the
-   * unexpected property value was encountered.
+   * The protocol used for this load balancer pool. Load balancers in the `network` family support `tcp`. Load balancers
+   * in the `application` family support `tcp`, `http`, and
+   * `https`.
    */
   public interface Protocol {
     /** http. */
@@ -51,12 +49,31 @@ public class LoadBalancerPoolPrototype extends GenericModel {
     String HTTPS = "https";
   }
 
-  protected String name;
+  /**
+   * The PROXY protocol setting for this pool:
+   * - `v1`: Enabled with version 1 (human-readable header format)
+   * - `v2`: Enabled with version 2 (binary header format)
+   * - `disabled`: Disabled
+   *
+   * Supported by load balancers in the `application` family (otherwise always `disabled`).
+   */
+  public interface ProxyProtocol {
+    /** disabled. */
+    String DISABLED = "disabled";
+    /** v1. */
+    String V1 = "v1";
+    /** v2. */
+    String V2 = "v2";
+  }
+
   protected String algorithm;
-  protected String protocol;
   @SerializedName("health_monitor")
   protected LoadBalancerPoolHealthMonitorPrototype healthMonitor;
   protected List<LoadBalancerPoolMemberPrototype> members;
+  protected String name;
+  protected String protocol;
+  @SerializedName("proxy_protocol")
+  protected String proxyProtocol;
   @SerializedName("session_persistence")
   protected LoadBalancerPoolSessionPersistencePrototype sessionPersistence;
 
@@ -64,19 +81,21 @@ public class LoadBalancerPoolPrototype extends GenericModel {
    * Builder.
    */
   public static class Builder {
-    private String name;
     private String algorithm;
-    private String protocol;
     private LoadBalancerPoolHealthMonitorPrototype healthMonitor;
     private List<LoadBalancerPoolMemberPrototype> members;
+    private String name;
+    private String protocol;
+    private String proxyProtocol;
     private LoadBalancerPoolSessionPersistencePrototype sessionPersistence;
 
     private Builder(LoadBalancerPoolPrototype loadBalancerPoolPrototype) {
-      this.name = loadBalancerPoolPrototype.name;
       this.algorithm = loadBalancerPoolPrototype.algorithm;
-      this.protocol = loadBalancerPoolPrototype.protocol;
       this.healthMonitor = loadBalancerPoolPrototype.healthMonitor;
       this.members = loadBalancerPoolPrototype.members;
+      this.name = loadBalancerPoolPrototype.name;
+      this.protocol = loadBalancerPoolPrototype.protocol;
+      this.proxyProtocol = loadBalancerPoolPrototype.proxyProtocol;
       this.sessionPersistence = loadBalancerPoolPrototype.sessionPersistence;
     }
 
@@ -90,13 +109,13 @@ public class LoadBalancerPoolPrototype extends GenericModel {
      * Instantiates a new builder with required properties.
      *
      * @param algorithm the algorithm
-     * @param protocol the protocol
      * @param healthMonitor the healthMonitor
+     * @param protocol the protocol
      */
-    public Builder(String algorithm, String protocol, LoadBalancerPoolHealthMonitorPrototype healthMonitor) {
+    public Builder(String algorithm, LoadBalancerPoolHealthMonitorPrototype healthMonitor, String protocol) {
       this.algorithm = algorithm;
-      this.protocol = protocol;
       this.healthMonitor = healthMonitor;
+      this.protocol = protocol;
     }
 
     /**
@@ -125,17 +144,6 @@ public class LoadBalancerPoolPrototype extends GenericModel {
     }
 
     /**
-     * Set the name.
-     *
-     * @param name the name
-     * @return the LoadBalancerPoolPrototype builder
-     */
-    public Builder name(String name) {
-      this.name = name;
-      return this;
-    }
-
-    /**
      * Set the algorithm.
      *
      * @param algorithm the algorithm
@@ -143,17 +151,6 @@ public class LoadBalancerPoolPrototype extends GenericModel {
      */
     public Builder algorithm(String algorithm) {
       this.algorithm = algorithm;
-      return this;
-    }
-
-    /**
-     * Set the protocol.
-     *
-     * @param protocol the protocol
-     * @return the LoadBalancerPoolPrototype builder
-     */
-    public Builder protocol(String protocol) {
-      this.protocol = protocol;
       return this;
     }
 
@@ -181,6 +178,39 @@ public class LoadBalancerPoolPrototype extends GenericModel {
     }
 
     /**
+     * Set the name.
+     *
+     * @param name the name
+     * @return the LoadBalancerPoolPrototype builder
+     */
+    public Builder name(String name) {
+      this.name = name;
+      return this;
+    }
+
+    /**
+     * Set the protocol.
+     *
+     * @param protocol the protocol
+     * @return the LoadBalancerPoolPrototype builder
+     */
+    public Builder protocol(String protocol) {
+      this.protocol = protocol;
+      return this;
+    }
+
+    /**
+     * Set the proxyProtocol.
+     *
+     * @param proxyProtocol the proxyProtocol
+     * @return the LoadBalancerPoolPrototype builder
+     */
+    public Builder proxyProtocol(String proxyProtocol) {
+      this.proxyProtocol = proxyProtocol;
+      return this;
+    }
+
+    /**
      * Set the sessionPersistence.
      *
      * @param sessionPersistence the sessionPersistence
@@ -195,15 +225,16 @@ public class LoadBalancerPoolPrototype extends GenericModel {
   protected LoadBalancerPoolPrototype(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.algorithm,
       "algorithm cannot be null");
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.protocol,
-      "protocol cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.healthMonitor,
       "healthMonitor cannot be null");
-    name = builder.name;
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.protocol,
+      "protocol cannot be null");
     algorithm = builder.algorithm;
-    protocol = builder.protocol;
     healthMonitor = builder.healthMonitor;
     members = builder.members;
+    name = builder.name;
+    protocol = builder.protocol;
+    proxyProtocol = builder.proxyProtocol;
     sessionPersistence = builder.sessionPersistence;
   }
 
@@ -217,18 +248,6 @@ public class LoadBalancerPoolPrototype extends GenericModel {
   }
 
   /**
-   * Gets the name.
-   *
-   * The user-defined name for this load balancer pool. If unspecified, the name will be a hyphenated list of
-   * randomly-selected words.
-   *
-   * @return the name
-   */
-  public String name() {
-    return name;
-  }
-
-  /**
    * Gets the algorithm.
    *
    * The load balancing algorithm.
@@ -237,21 +256,6 @@ public class LoadBalancerPoolPrototype extends GenericModel {
    */
   public String algorithm() {
     return algorithm;
-  }
-
-  /**
-   * Gets the protocol.
-   *
-   * The protocol used for this load balancer pool.
-   *
-   * The enumerated values for this property are expected to expand in the future. When processing this property, check
-   * for and log unknown values. Optionally halt processing and surface the error, or bypass the pool on which the
-   * unexpected property value was encountered.
-   *
-   * @return the protocol
-   */
-  public String protocol() {
-    return protocol;
   }
 
   /**
@@ -269,12 +273,53 @@ public class LoadBalancerPoolPrototype extends GenericModel {
    * Gets the members.
    *
    * The members for this load balancer pool. For load balancers in the `network` family, the same `port` and `target`
-   * tuple cannot be shared by a member of any other load balancer.
+   * tuple cannot be shared by a pool member of any other load balancer in the same VPC.
    *
    * @return the members
    */
   public List<LoadBalancerPoolMemberPrototype> members() {
     return members;
+  }
+
+  /**
+   * Gets the name.
+   *
+   * The user-defined name for this load balancer pool. If unspecified, the name will be a hyphenated list of
+   * randomly-selected words.
+   *
+   * @return the name
+   */
+  public String name() {
+    return name;
+  }
+
+  /**
+   * Gets the protocol.
+   *
+   * The protocol used for this load balancer pool. Load balancers in the `network` family support `tcp`. Load balancers
+   * in the `application` family support `tcp`, `http`, and
+   * `https`.
+   *
+   * @return the protocol
+   */
+  public String protocol() {
+    return protocol;
+  }
+
+  /**
+   * Gets the proxyProtocol.
+   *
+   * The PROXY protocol setting for this pool:
+   * - `v1`: Enabled with version 1 (human-readable header format)
+   * - `v2`: Enabled with version 2 (binary header format)
+   * - `disabled`: Disabled
+   *
+   * Supported by load balancers in the `application` family (otherwise always `disabled`).
+   *
+   * @return the proxyProtocol
+   */
+  public String proxyProtocol() {
+    return proxyProtocol;
   }
 
   /**

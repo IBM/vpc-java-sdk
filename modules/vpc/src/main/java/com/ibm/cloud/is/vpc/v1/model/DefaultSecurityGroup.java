@@ -23,26 +23,26 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class DefaultSecurityGroup extends GenericModel {
 
-  protected String id;
-  protected String crn;
-  protected String href;
-  protected String name;
-  protected List<SecurityGroupRule> rules;
-  @SerializedName("resource_group")
-  protected ResourceGroupReference resourceGroup;
   @SerializedName("created_at")
   protected Date createdAt;
+  protected String crn;
+  protected String href;
+  protected String id;
+  protected String name;
+  @SerializedName("resource_group")
+  protected ResourceGroupReference resourceGroup;
+  protected List<SecurityGroupRule> rules;
   protected VPCReference vpc;
 
   /**
-   * Gets the id.
+   * Gets the createdAt.
    *
-   * The unique identifier for this security group.
+   * The date and time that this security group was created.
    *
-   * @return the id
+   * @return the createdAt
    */
-  public String getId() {
-    return id;
+  public Date getCreatedAt() {
+    return createdAt;
   }
 
   /**
@@ -68,6 +68,17 @@ public class DefaultSecurityGroup extends GenericModel {
   }
 
   /**
+   * Gets the id.
+   *
+   * The unique identifier for this security group.
+   *
+   * @return the id
+   */
+  public String getId() {
+    return id;
+  }
+
+  /**
    * Gets the name.
    *
    * The name of the default security group created for a VPC. The name will be a hyphenated list of randomly-selected
@@ -77,19 +88,6 @@ public class DefaultSecurityGroup extends GenericModel {
    */
   public String getName() {
     return name;
-  }
-
-  /**
-   * Gets the rules.
-   *
-   * Array of rules for the default security group for a VPC. Defaults to allowing all outbound traffic, and allowing
-   * all inbound traffic from other interfaces in the VPC’s default security group. Rules in the default security group
-   * may be changed, added or removed.
-   *
-   * @return the rules
-   */
-  public List<SecurityGroupRule> getRules() {
-    return rules;
   }
 
   /**
@@ -104,14 +102,16 @@ public class DefaultSecurityGroup extends GenericModel {
   }
 
   /**
-   * Gets the createdAt.
+   * Gets the rules.
    *
-   * The date and time that this security group was created.
+   * Array of rules for the default security group for a VPC. Defaults to allowing all outbound traffic, and allowing
+   * all inbound traffic from other interfaces in the VPC's default security group. Rules in the default security group
+   * may be changed, added or removed.
    *
-   * @return the createdAt
+   * @return the rules
    */
-  public Date getCreatedAt() {
-    return createdAt;
+  public List<SecurityGroupRule> getRules() {
+    return rules;
   }
 
   /**

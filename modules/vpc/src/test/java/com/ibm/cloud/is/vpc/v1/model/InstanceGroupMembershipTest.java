@@ -15,8 +15,11 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupMembership;
 import com.ibm.cloud.is.vpc.v1.model.InstanceReference;
+import com.ibm.cloud.is.vpc.v1.model.InstanceReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateReference;
+import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolMemberReference;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolMemberReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -35,12 +38,12 @@ public class InstanceGroupMembershipTest {
   @Test
   public void testInstanceGroupMembership() throws Throwable {
     InstanceGroupMembership instanceGroupMembershipModel = new InstanceGroupMembership();
-    assertNull(instanceGroupMembershipModel.getId());
-    assertNull(instanceGroupMembershipModel.getHref());
-    assertNull(instanceGroupMembershipModel.getName());
     assertNull(instanceGroupMembershipModel.isDeleteInstanceOnMembershipDelete());
+    assertNull(instanceGroupMembershipModel.getHref());
+    assertNull(instanceGroupMembershipModel.getId());
     assertNull(instanceGroupMembershipModel.getInstance());
     assertNull(instanceGroupMembershipModel.getInstanceTemplate());
+    assertNull(instanceGroupMembershipModel.getName());
     assertNull(instanceGroupMembershipModel.getPoolMember());
     assertNull(instanceGroupMembershipModel.getStatus());
   }

@@ -37,78 +37,25 @@ public class VPC extends GenericModel {
     String PENDING = "pending";
   }
 
-  protected String id;
-  protected String crn;
-  protected String href;
-  protected String name;
-  @SerializedName("default_network_acl")
-  protected NetworkACLReference defaultNetworkAcl;
   @SerializedName("classic_access")
   protected Boolean classicAccess;
-  @SerializedName("default_security_group")
-  protected SecurityGroupReference defaultSecurityGroup;
-  @SerializedName("resource_group")
-  protected ResourceGroupReference resourceGroup;
   @SerializedName("created_at")
   protected Date createdAt;
+  protected String crn;
   @SerializedName("cse_source_ips")
   protected List<VPCCSESourceIP> cseSourceIps;
+  @SerializedName("default_network_acl")
+  protected NetworkACLReference defaultNetworkAcl;
+  @SerializedName("default_routing_table")
+  protected RoutingTableReference defaultRoutingTable;
+  @SerializedName("default_security_group")
+  protected SecurityGroupReference defaultSecurityGroup;
+  protected String href;
+  protected String id;
+  protected String name;
+  @SerializedName("resource_group")
+  protected ResourceGroupReference resourceGroup;
   protected String status;
-
-  /**
-   * Gets the id.
-   *
-   * The unique identifier for this VPC.
-   *
-   * @return the id
-   */
-  public String getId() {
-    return id;
-  }
-
-  /**
-   * Gets the crn.
-   *
-   * The CRN for this VPC.
-   *
-   * @return the crn
-   */
-  public String getCrn() {
-    return crn;
-  }
-
-  /**
-   * Gets the href.
-   *
-   * The URL for this VPC.
-   *
-   * @return the href
-   */
-  public String getHref() {
-    return href;
-  }
-
-  /**
-   * Gets the name.
-   *
-   * The unique user-defined name for this VPC.
-   *
-   * @return the name
-   */
-  public String getName() {
-    return name;
-  }
-
-  /**
-   * Gets the defaultNetworkAcl.
-   *
-   * The default network ACL to use for subnets created in this VPC.
-   *
-   * @return the defaultNetworkAcl
-   */
-  public NetworkACLReference getDefaultNetworkAcl() {
-    return defaultNetworkAcl;
-  }
 
   /**
    * Gets the classicAccess.
@@ -124,28 +71,6 @@ public class VPC extends GenericModel {
   }
 
   /**
-   * Gets the defaultSecurityGroup.
-   *
-   * The default security group to use for network interfaces created in this VPC.
-   *
-   * @return the defaultSecurityGroup
-   */
-  public SecurityGroupReference getDefaultSecurityGroup() {
-    return defaultSecurityGroup;
-  }
-
-  /**
-   * Gets the resourceGroup.
-   *
-   * The resource group for this VPC.
-   *
-   * @return the resourceGroup
-   */
-  public ResourceGroupReference getResourceGroup() {
-    return resourceGroup;
-  }
-
-  /**
    * Gets the createdAt.
    *
    * The date and time that the VPC was created.
@@ -154,6 +79,17 @@ public class VPC extends GenericModel {
    */
   public Date getCreatedAt() {
     return createdAt;
+  }
+
+  /**
+   * Gets the crn.
+   *
+   * The CRN for this VPC.
+   *
+   * @return the crn
+   */
+  public String getCrn() {
+    return crn;
   }
 
   /**
@@ -166,6 +102,83 @@ public class VPC extends GenericModel {
    */
   public List<VPCCSESourceIP> getCseSourceIps() {
     return cseSourceIps;
+  }
+
+  /**
+   * Gets the defaultNetworkAcl.
+   *
+   * The default network ACL to use for subnets created in this VPC.
+   *
+   * @return the defaultNetworkAcl
+   */
+  public NetworkACLReference getDefaultNetworkAcl() {
+    return defaultNetworkAcl;
+  }
+
+  /**
+   * Gets the defaultRoutingTable.
+   *
+   * The default routing table to use for subnets created in this VPC.
+   *
+   * @return the defaultRoutingTable
+   */
+  public RoutingTableReference getDefaultRoutingTable() {
+    return defaultRoutingTable;
+  }
+
+  /**
+   * Gets the defaultSecurityGroup.
+   *
+   * The default security group to use for network interfaces created in this VPC.
+   *
+   * @return the defaultSecurityGroup
+   */
+  public SecurityGroupReference getDefaultSecurityGroup() {
+    return defaultSecurityGroup;
+  }
+
+  /**
+   * Gets the href.
+   *
+   * The URL for this VPC.
+   *
+   * @return the href
+   */
+  public String getHref() {
+    return href;
+  }
+
+  /**
+   * Gets the id.
+   *
+   * The unique identifier for this VPC.
+   *
+   * @return the id
+   */
+  public String getId() {
+    return id;
+  }
+
+  /**
+   * Gets the name.
+   *
+   * The unique user-defined name for this VPC.
+   *
+   * @return the name
+   */
+  public String getName() {
+    return name;
+  }
+
+  /**
+   * Gets the resourceGroup.
+   *
+   * The resource group for this VPC.
+   *
+   * @return the resourceGroup
+   */
+  public ResourceGroupReference getResourceGroup() {
+    return resourceGroup;
   }
 
   /**

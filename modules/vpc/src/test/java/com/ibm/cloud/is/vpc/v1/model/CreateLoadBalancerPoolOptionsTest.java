@@ -59,12 +59,12 @@ public class CreateLoadBalancerPoolOptionsTest {
 
     LoadBalancerPoolMemberPrototype loadBalancerPoolMemberPrototypeModel = new LoadBalancerPoolMemberPrototype.Builder()
       .port(Long.valueOf("80"))
-      .weight(Long.valueOf("50"))
       .target(loadBalancerPoolMemberTargetPrototypeModel)
+      .weight(Long.valueOf("50"))
       .build();
     assertEquals(loadBalancerPoolMemberPrototypeModel.port(), Long.valueOf("80"));
-    assertEquals(loadBalancerPoolMemberPrototypeModel.weight(), Long.valueOf("50"));
     assertEquals(loadBalancerPoolMemberPrototypeModel.target(), loadBalancerPoolMemberTargetPrototypeModel);
+    assertEquals(loadBalancerPoolMemberPrototypeModel.weight(), Long.valueOf("50"));
 
     LoadBalancerPoolSessionPersistencePrototype loadBalancerPoolSessionPersistencePrototypeModel = new LoadBalancerPoolSessionPersistencePrototype.Builder()
       .type("source_ip")
@@ -74,18 +74,20 @@ public class CreateLoadBalancerPoolOptionsTest {
     CreateLoadBalancerPoolOptions createLoadBalancerPoolOptionsModel = new CreateLoadBalancerPoolOptions.Builder()
       .loadBalancerId("testString")
       .algorithm("least_connections")
-      .protocol("http")
       .healthMonitor(loadBalancerPoolHealthMonitorPrototypeModel)
-      .name("my-load-balancer-pool")
+      .protocol("http")
       .members(new java.util.ArrayList<LoadBalancerPoolMemberPrototype>(java.util.Arrays.asList(loadBalancerPoolMemberPrototypeModel)))
+      .name("my-load-balancer-pool")
+      .proxyProtocol("disabled")
       .sessionPersistence(loadBalancerPoolSessionPersistencePrototypeModel)
       .build();
     assertEquals(createLoadBalancerPoolOptionsModel.loadBalancerId(), "testString");
     assertEquals(createLoadBalancerPoolOptionsModel.algorithm(), "least_connections");
-    assertEquals(createLoadBalancerPoolOptionsModel.protocol(), "http");
     assertEquals(createLoadBalancerPoolOptionsModel.healthMonitor(), loadBalancerPoolHealthMonitorPrototypeModel);
-    assertEquals(createLoadBalancerPoolOptionsModel.name(), "my-load-balancer-pool");
+    assertEquals(createLoadBalancerPoolOptionsModel.protocol(), "http");
     assertEquals(createLoadBalancerPoolOptionsModel.members(), new java.util.ArrayList<LoadBalancerPoolMemberPrototype>(java.util.Arrays.asList(loadBalancerPoolMemberPrototypeModel)));
+    assertEquals(createLoadBalancerPoolOptionsModel.name(), "my-load-balancer-pool");
+    assertEquals(createLoadBalancerPoolOptionsModel.proxyProtocol(), "disabled");
     assertEquals(createLoadBalancerPoolOptionsModel.sessionPersistence(), loadBalancerPoolSessionPersistencePrototypeModel);
   }
 

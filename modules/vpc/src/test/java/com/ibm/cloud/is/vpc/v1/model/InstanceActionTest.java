@@ -32,13 +32,13 @@ public class InstanceActionTest {
   @Test
   public void testInstanceAction() throws Throwable {
     InstanceAction instanceActionModel = new InstanceAction();
-    assertNull(instanceActionModel.getId());
-    assertNull(instanceActionModel.getHref());
-    assertNull(instanceActionModel.isForce());
-    assertNull(instanceActionModel.getType());
     assertNull(instanceActionModel.getCompletedAt());
     assertNull(instanceActionModel.getCreatedAt());
+    assertNull(instanceActionModel.isForce());
+    assertNull(instanceActionModel.getHref());
+    assertNull(instanceActionModel.getId());
     assertNull(instanceActionModel.getStartedAt());
     assertNull(instanceActionModel.getStatus());
+    assertNull(instanceActionModel.getType());
   }
 }

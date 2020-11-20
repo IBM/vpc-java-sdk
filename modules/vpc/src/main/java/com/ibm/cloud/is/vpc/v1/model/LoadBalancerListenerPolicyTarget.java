@@ -25,8 +25,9 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class LoadBalancerListenerPolicyTarget extends GenericModel {
 
-  protected String id;
+  protected LoadBalancerPoolReferenceDeleted deleted;
   protected String href;
+  protected String id;
   protected String name;
   @SerializedName("http_status_code")
   protected Long httpStatusCode;
@@ -36,14 +37,15 @@ public class LoadBalancerListenerPolicyTarget extends GenericModel {
   }
 
   /**
-   * Gets the id.
+   * Gets the deleted.
    *
-   * The unique identifier for this load balancer pool.
+   * If present, this property indicates the referenced resource has been deleted and provides
+   * some supplementary information.
    *
-   * @return the id
+   * @return the deleted
    */
-  public String getId() {
-    return id;
+  public LoadBalancerPoolReferenceDeleted getDeleted() {
+    return deleted;
   }
 
   /**
@@ -55,6 +57,17 @@ public class LoadBalancerListenerPolicyTarget extends GenericModel {
    */
   public String getHref() {
     return href;
+  }
+
+  /**
+   * Gets the id.
+   *
+   * The unique identifier for this load balancer pool.
+   *
+   * @return the id
+   */
+  public String getId() {
+    return id;
   }
 
   /**

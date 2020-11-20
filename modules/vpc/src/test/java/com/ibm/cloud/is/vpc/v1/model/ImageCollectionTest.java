@@ -40,8 +40,8 @@ public class ImageCollectionTest {
   public void testImageCollection() throws Throwable {
     ImageCollection imageCollectionModel = new ImageCollection();
     assertNull(imageCollectionModel.getFirst());
+    assertNull(imageCollectionModel.getImages());
     assertNull(imageCollectionModel.getLimit());
     assertNull(imageCollectionModel.getNext());
-    assertNull(imageCollectionModel.getImages());
   }
 }

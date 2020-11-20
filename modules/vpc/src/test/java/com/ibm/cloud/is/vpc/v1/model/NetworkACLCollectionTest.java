@@ -17,11 +17,14 @@ import com.ibm.cloud.is.vpc.v1.model.NetworkACL;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLCollection;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLCollectionFirst;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLCollectionNext;
-import com.ibm.cloud.is.vpc.v1.model.NetworkACLRuleItemNetworkACLRuleProtocolTCPUDP;
+import com.ibm.cloud.is.vpc.v1.model.NetworkACLRuleItemNetworkACLRuleProtocolICMP;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLRuleReference;
+import com.ibm.cloud.is.vpc.v1.model.NetworkACLRuleReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.SubnetReference;
+import com.ibm.cloud.is.vpc.v1.model.SubnetReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.VPCReference;
+import com.ibm.cloud.is.vpc.v1.model.VPCReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -44,8 +47,8 @@ public class NetworkACLCollectionTest {
     NetworkACLCollection networkAclCollectionModel = new NetworkACLCollection();
     assertNull(networkAclCollectionModel.getFirst());
     assertNull(networkAclCollectionModel.getLimit());
+    assertNull(networkAclCollectionModel.getNetworkAcls());
     assertNull(networkAclCollectionModel.getNext());
     assertNull(networkAclCollectionModel.getTotalCount());
-    assertNull(networkAclCollectionModel.getNetworkAcls());
   }
 }

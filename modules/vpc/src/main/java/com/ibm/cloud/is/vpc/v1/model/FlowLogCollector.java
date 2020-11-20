@@ -44,78 +44,23 @@ public class FlowLogCollector extends GenericModel {
     String SUSPENDED = "suspended";
   }
 
-  protected String id;
-  protected String crn;
-  protected String href;
-  protected String name;
-  @SerializedName("resource_group")
-  protected ResourceGroupReference resourceGroup;
   protected Boolean active;
   @SerializedName("auto_delete")
   protected Boolean autoDelete;
   @SerializedName("created_at")
   protected Date createdAt;
+  protected String crn;
+  protected String href;
+  protected String id;
   @SerializedName("lifecycle_state")
   protected String lifecycleState;
+  protected String name;
+  @SerializedName("resource_group")
+  protected ResourceGroupReference resourceGroup;
   @SerializedName("storage_bucket")
   protected CloudObjectStorageBucketReference storageBucket;
   protected FlowLogCollectorTarget target;
   protected VPCReference vpc;
-
-  /**
-   * Gets the id.
-   *
-   * The unique identifier for this flow log collector.
-   *
-   * @return the id
-   */
-  public String getId() {
-    return id;
-  }
-
-  /**
-   * Gets the crn.
-   *
-   * The CRN for this flow log collector.
-   *
-   * @return the crn
-   */
-  public String getCrn() {
-    return crn;
-  }
-
-  /**
-   * Gets the href.
-   *
-   * The URL for this flow log collector.
-   *
-   * @return the href
-   */
-  public String getHref() {
-    return href;
-  }
-
-  /**
-   * Gets the name.
-   *
-   * The unique user-defined name for this flow log collector.
-   *
-   * @return the name
-   */
-  public String getName() {
-    return name;
-  }
-
-  /**
-   * Gets the resourceGroup.
-   *
-   * The resource group for this flow log collector.
-   *
-   * @return the resourceGroup
-   */
-  public ResourceGroupReference getResourceGroup() {
-    return resourceGroup;
-  }
 
   /**
    * Gets the active.
@@ -151,6 +96,39 @@ public class FlowLogCollector extends GenericModel {
   }
 
   /**
+   * Gets the crn.
+   *
+   * The CRN for this flow log collector.
+   *
+   * @return the crn
+   */
+  public String getCrn() {
+    return crn;
+  }
+
+  /**
+   * Gets the href.
+   *
+   * The URL for this flow log collector.
+   *
+   * @return the href
+   */
+  public String getHref() {
+    return href;
+  }
+
+  /**
+   * Gets the id.
+   *
+   * The unique identifier for this flow log collector.
+   *
+   * @return the id
+   */
+  public String getId() {
+    return id;
+  }
+
+  /**
    * Gets the lifecycleState.
    *
    * The lifecycle state of the flow log collector.
@@ -159,6 +137,28 @@ public class FlowLogCollector extends GenericModel {
    */
   public String getLifecycleState() {
     return lifecycleState;
+  }
+
+  /**
+   * Gets the name.
+   *
+   * The unique user-defined name for this flow log collector.
+   *
+   * @return the name
+   */
+  public String getName() {
+    return name;
+  }
+
+  /**
+   * Gets the resourceGroup.
+   *
+   * The resource group for this flow log collector.
+   *
+   * @return the resourceGroup
+   */
+  public ResourceGroupReference getResourceGroup() {
+    return resourceGroup;
   }
 
   /**

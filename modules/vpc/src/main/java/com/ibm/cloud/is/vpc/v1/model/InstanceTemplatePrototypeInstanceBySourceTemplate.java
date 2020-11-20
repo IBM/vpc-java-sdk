@@ -25,34 +25,34 @@ public class InstanceTemplatePrototypeInstanceBySourceTemplate extends InstanceT
    * Builder.
    */
   public static class Builder {
-    private String name;
     private List<KeyIdentity> keys;
+    private String name;
     private List<NetworkInterfacePrototype> networkInterfaces;
     private InstanceProfileIdentity profile;
+    private ResourceGroupIdentity resourceGroup;
     private String userData;
     private List<VolumeAttachmentPrototypeInstanceContext> volumeAttachments;
     private VPCIdentity vpc;
-    private ResourceGroupIdentity resourceGroup;
-    private NetworkInterfacePrototype primaryNetworkInterface;
-    private ZoneIdentity zone;
     private VolumeAttachmentPrototypeInstanceByImageContext bootVolumeAttachment;
     private ImageIdentity image;
+    private NetworkInterfacePrototype primaryNetworkInterface;
     private InstanceTemplateIdentity sourceTemplate;
+    private ZoneIdentity zone;
 
     public Builder(InstanceTemplatePrototype instanceTemplatePrototypeInstanceBySourceTemplate) {
-      this.name = instanceTemplatePrototypeInstanceBySourceTemplate.name;
       this.keys = instanceTemplatePrototypeInstanceBySourceTemplate.keys;
+      this.name = instanceTemplatePrototypeInstanceBySourceTemplate.name;
       this.networkInterfaces = instanceTemplatePrototypeInstanceBySourceTemplate.networkInterfaces;
       this.profile = instanceTemplatePrototypeInstanceBySourceTemplate.profile;
+      this.resourceGroup = instanceTemplatePrototypeInstanceBySourceTemplate.resourceGroup;
       this.userData = instanceTemplatePrototypeInstanceBySourceTemplate.userData;
       this.volumeAttachments = instanceTemplatePrototypeInstanceBySourceTemplate.volumeAttachments;
       this.vpc = instanceTemplatePrototypeInstanceBySourceTemplate.vpc;
-      this.resourceGroup = instanceTemplatePrototypeInstanceBySourceTemplate.resourceGroup;
-      this.primaryNetworkInterface = instanceTemplatePrototypeInstanceBySourceTemplate.primaryNetworkInterface;
-      this.zone = instanceTemplatePrototypeInstanceBySourceTemplate.zone;
       this.bootVolumeAttachment = instanceTemplatePrototypeInstanceBySourceTemplate.bootVolumeAttachment;
       this.image = instanceTemplatePrototypeInstanceBySourceTemplate.image;
+      this.primaryNetworkInterface = instanceTemplatePrototypeInstanceBySourceTemplate.primaryNetworkInterface;
       this.sourceTemplate = instanceTemplatePrototypeInstanceBySourceTemplate.sourceTemplate;
+      this.zone = instanceTemplatePrototypeInstanceBySourceTemplate.zone;
     }
 
     /**
@@ -128,17 +128,6 @@ public class InstanceTemplatePrototypeInstanceBySourceTemplate extends InstanceT
     }
 
     /**
-     * Set the name.
-     *
-     * @param name the name
-     * @return the InstanceTemplatePrototypeInstanceBySourceTemplate builder
-     */
-    public Builder name(String name) {
-      this.name = name;
-      return this;
-    }
-
-    /**
      * Set the keys.
      * Existing keys will be replaced.
      *
@@ -147,6 +136,17 @@ public class InstanceTemplatePrototypeInstanceBySourceTemplate extends InstanceT
      */
     public Builder keys(List<KeyIdentity> keys) {
       this.keys = keys;
+      return this;
+    }
+
+    /**
+     * Set the name.
+     *
+     * @param name the name
+     * @return the InstanceTemplatePrototypeInstanceBySourceTemplate builder
+     */
+    public Builder name(String name) {
+      this.name = name;
       return this;
     }
 
@@ -170,6 +170,17 @@ public class InstanceTemplatePrototypeInstanceBySourceTemplate extends InstanceT
      */
     public Builder profile(InstanceProfileIdentity profile) {
       this.profile = profile;
+      return this;
+    }
+
+    /**
+     * Set the resourceGroup.
+     *
+     * @param resourceGroup the resourceGroup
+     * @return the InstanceTemplatePrototypeInstanceBySourceTemplate builder
+     */
+    public Builder resourceGroup(ResourceGroupIdentity resourceGroup) {
+      this.resourceGroup = resourceGroup;
       return this;
     }
 
@@ -208,39 +219,6 @@ public class InstanceTemplatePrototypeInstanceBySourceTemplate extends InstanceT
     }
 
     /**
-     * Set the resourceGroup.
-     *
-     * @param resourceGroup the resourceGroup
-     * @return the InstanceTemplatePrototypeInstanceBySourceTemplate builder
-     */
-    public Builder resourceGroup(ResourceGroupIdentity resourceGroup) {
-      this.resourceGroup = resourceGroup;
-      return this;
-    }
-
-    /**
-     * Set the primaryNetworkInterface.
-     *
-     * @param primaryNetworkInterface the primaryNetworkInterface
-     * @return the InstanceTemplatePrototypeInstanceBySourceTemplate builder
-     */
-    public Builder primaryNetworkInterface(NetworkInterfacePrototype primaryNetworkInterface) {
-      this.primaryNetworkInterface = primaryNetworkInterface;
-      return this;
-    }
-
-    /**
-     * Set the zone.
-     *
-     * @param zone the zone
-     * @return the InstanceTemplatePrototypeInstanceBySourceTemplate builder
-     */
-    public Builder zone(ZoneIdentity zone) {
-      this.zone = zone;
-      return this;
-    }
-
-    /**
      * Set the bootVolumeAttachment.
      *
      * @param bootVolumeAttachment the bootVolumeAttachment
@@ -263,6 +241,17 @@ public class InstanceTemplatePrototypeInstanceBySourceTemplate extends InstanceT
     }
 
     /**
+     * Set the primaryNetworkInterface.
+     *
+     * @param primaryNetworkInterface the primaryNetworkInterface
+     * @return the InstanceTemplatePrototypeInstanceBySourceTemplate builder
+     */
+    public Builder primaryNetworkInterface(NetworkInterfacePrototype primaryNetworkInterface) {
+      this.primaryNetworkInterface = primaryNetworkInterface;
+      return this;
+    }
+
+    /**
      * Set the sourceTemplate.
      *
      * @param sourceTemplate the sourceTemplate
@@ -272,24 +261,35 @@ public class InstanceTemplatePrototypeInstanceBySourceTemplate extends InstanceT
       this.sourceTemplate = sourceTemplate;
       return this;
     }
+
+    /**
+     * Set the zone.
+     *
+     * @param zone the zone
+     * @return the InstanceTemplatePrototypeInstanceBySourceTemplate builder
+     */
+    public Builder zone(ZoneIdentity zone) {
+      this.zone = zone;
+      return this;
+    }
   }
 
   protected InstanceTemplatePrototypeInstanceBySourceTemplate(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.sourceTemplate,
       "sourceTemplate cannot be null");
-    name = builder.name;
     keys = builder.keys;
+    name = builder.name;
     networkInterfaces = builder.networkInterfaces;
     profile = builder.profile;
+    resourceGroup = builder.resourceGroup;
     userData = builder.userData;
     volumeAttachments = builder.volumeAttachments;
     vpc = builder.vpc;
-    resourceGroup = builder.resourceGroup;
-    primaryNetworkInterface = builder.primaryNetworkInterface;
-    zone = builder.zone;
     bootVolumeAttachment = builder.bootVolumeAttachment;
     image = builder.image;
+    primaryNetworkInterface = builder.primaryNetworkInterface;
     sourceTemplate = builder.sourceTemplate;
+    zone = builder.zone;
   }
 
   /**

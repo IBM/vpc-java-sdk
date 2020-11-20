@@ -53,101 +53,35 @@ public class Volume extends GenericModel {
     String PENDING_DELETION = "pending_deletion";
   }
 
-  protected Long iops;
   protected Long capacity;
-  protected String id;
-  protected String crn;
-  protected String href;
-  protected String name;
-  @SerializedName("resource_group")
-  protected ResourceGroupReference resourceGroup;
   @SerializedName("created_at")
   protected Date createdAt;
+  protected String crn;
   protected String encryption;
   @SerializedName("encryption_key")
   protected EncryptionKeyReference encryptionKey;
+  protected String href;
+  protected String id;
+  protected Long iops;
+  protected String name;
   protected VolumeProfileReference profile;
+  @SerializedName("resource_group")
+  protected ResourceGroupReference resourceGroup;
   protected String status;
   @SerializedName("volume_attachments")
   protected List<VolumeAttachmentReferenceVolumeContext> volumeAttachments;
   protected ZoneReference zone;
 
   /**
-   * Gets the iops.
-   *
-   * The bandwidth for the volume.
-   *
-   * @return the iops
-   */
-  public Long getIops() {
-    return iops;
-  }
-
-  /**
    * Gets the capacity.
    *
-   * The capacity of the volume in gigabytes. Note that the specified minimum and maximum capacity values for creating
-   * or updating volumes may expand in the future.
+   * The capacity of the volume in gigabytes. The specified minimum and maximum capacity values for creating or updating
+   * volumes may expand in the future.
    *
    * @return the capacity
    */
   public Long getCapacity() {
     return capacity;
-  }
-
-  /**
-   * Gets the id.
-   *
-   * The unique identifier for this volume.
-   *
-   * @return the id
-   */
-  public String getId() {
-    return id;
-  }
-
-  /**
-   * Gets the crn.
-   *
-   * The CRN for this volume.
-   *
-   * @return the crn
-   */
-  public String getCrn() {
-    return crn;
-  }
-
-  /**
-   * Gets the href.
-   *
-   * The URL for this volume.
-   *
-   * @return the href
-   */
-  public String getHref() {
-    return href;
-  }
-
-  /**
-   * Gets the name.
-   *
-   * The unique user-defined name for this volume.
-   *
-   * @return the name
-   */
-  public String getName() {
-    return name;
-  }
-
-  /**
-   * Gets the resourceGroup.
-   *
-   * The resource group for this volume.
-   *
-   * @return the resourceGroup
-   */
-  public ResourceGroupReference getResourceGroup() {
-    return resourceGroup;
   }
 
   /**
@@ -159,6 +93,17 @@ public class Volume extends GenericModel {
    */
   public Date getCreatedAt() {
     return createdAt;
+  }
+
+  /**
+   * Gets the crn.
+   *
+   * The CRN for this volume.
+   *
+   * @return the crn
+   */
+  public String getCrn() {
+    return crn;
   }
 
   /**
@@ -187,6 +132,50 @@ public class Volume extends GenericModel {
   }
 
   /**
+   * Gets the href.
+   *
+   * The URL for this volume.
+   *
+   * @return the href
+   */
+  public String getHref() {
+    return href;
+  }
+
+  /**
+   * Gets the id.
+   *
+   * The unique identifier for this volume.
+   *
+   * @return the id
+   */
+  public String getId() {
+    return id;
+  }
+
+  /**
+   * Gets the iops.
+   *
+   * The bandwidth for the volume.
+   *
+   * @return the iops
+   */
+  public Long getIops() {
+    return iops;
+  }
+
+  /**
+   * Gets the name.
+   *
+   * The unique user-defined name for this volume.
+   *
+   * @return the name
+   */
+  public String getName() {
+    return name;
+  }
+
+  /**
    * Gets the profile.
    *
    * The profile this volume uses.
@@ -195,6 +184,17 @@ public class Volume extends GenericModel {
    */
   public VolumeProfileReference getProfile() {
     return profile;
+  }
+
+  /**
+   * Gets the resourceGroup.
+   *
+   * The resource group for this volume.
+   *
+   * @return the resourceGroup
+   */
+  public ResourceGroupReference getResourceGroup() {
+    return resourceGroup;
   }
 
   /**

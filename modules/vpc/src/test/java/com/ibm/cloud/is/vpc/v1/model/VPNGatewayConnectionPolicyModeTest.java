@@ -14,7 +14,9 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.IKEPolicyReference;
+import com.ibm.cloud.is.vpc.v1.model.IKEPolicyReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.IPsecPolicyReference;
+import com.ibm.cloud.is.vpc.v1.model.IPsecPolicyReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionDPD;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionPolicyMode;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
@@ -35,20 +37,20 @@ public class VPNGatewayConnectionPolicyModeTest {
   @Test
   public void testVPNGatewayConnectionPolicyMode() throws Throwable {
     VPNGatewayConnectionPolicyMode vpnGatewayConnectionPolicyModeModel = new VPNGatewayConnectionPolicyMode();
-    assertNull(vpnGatewayConnectionPolicyModeModel.getId());
-    assertNull(vpnGatewayConnectionPolicyModeModel.getHref());
-    assertNull(vpnGatewayConnectionPolicyModeModel.getName());
-    assertNull(vpnGatewayConnectionPolicyModeModel.getResourceType());
     assertNull(vpnGatewayConnectionPolicyModeModel.isAdminStateUp());
-    assertNull(vpnGatewayConnectionPolicyModeModel.getPeerAddress());
-    assertNull(vpnGatewayConnectionPolicyModeModel.getPsk());
-    assertNull(vpnGatewayConnectionPolicyModeModel.getRouteMode());
     assertNull(vpnGatewayConnectionPolicyModeModel.getAuthenticationMode());
-    assertNull(vpnGatewayConnectionPolicyModeModel.getStatus());
     assertNull(vpnGatewayConnectionPolicyModeModel.getCreatedAt());
     assertNull(vpnGatewayConnectionPolicyModeModel.getDeadPeerDetection());
+    assertNull(vpnGatewayConnectionPolicyModeModel.getHref());
+    assertNull(vpnGatewayConnectionPolicyModeModel.getId());
     assertNull(vpnGatewayConnectionPolicyModeModel.getIkePolicy());
     assertNull(vpnGatewayConnectionPolicyModeModel.getIpsecPolicy());
+    assertNull(vpnGatewayConnectionPolicyModeModel.getMode());
+    assertNull(vpnGatewayConnectionPolicyModeModel.getName());
+    assertNull(vpnGatewayConnectionPolicyModeModel.getPeerAddress());
+    assertNull(vpnGatewayConnectionPolicyModeModel.getPsk());
+    assertNull(vpnGatewayConnectionPolicyModeModel.getResourceType());
+    assertNull(vpnGatewayConnectionPolicyModeModel.getStatus());
     assertNull(vpnGatewayConnectionPolicyModeModel.getLocalCidrs());
     assertNull(vpnGatewayConnectionPolicyModeModel.getPeerCidrs());
   }

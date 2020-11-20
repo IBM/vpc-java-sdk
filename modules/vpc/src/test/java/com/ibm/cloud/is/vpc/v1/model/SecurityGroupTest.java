@@ -14,11 +14,13 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceReference;
+import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroup;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleRemoteIP;
-import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleSecurityGroupRuleProtocolTCPUDP;
+import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleSecurityGroupRuleProtocolAll;
 import com.ibm.cloud.is.vpc.v1.model.VPCReference;
+import com.ibm.cloud.is.vpc.v1.model.VPCReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -37,13 +39,13 @@ public class SecurityGroupTest {
   @Test
   public void testSecurityGroup() throws Throwable {
     SecurityGroup securityGroupModel = new SecurityGroup();
-    assertNull(securityGroupModel.getId());
+    assertNull(securityGroupModel.getCreatedAt());
     assertNull(securityGroupModel.getCrn());
     assertNull(securityGroupModel.getHref());
+    assertNull(securityGroupModel.getId());
     assertNull(securityGroupModel.getName());
-    assertNull(securityGroupModel.getResourceGroup());
-    assertNull(securityGroupModel.getCreatedAt());
     assertNull(securityGroupModel.getNetworkInterfaces());
+    assertNull(securityGroupModel.getResourceGroup());
     assertNull(securityGroupModel.getRules());
     assertNull(securityGroupModel.getVpc());
   }

@@ -28,10 +28,21 @@ public class InstanceProfileVCPUArchitecture extends GenericModel {
     String FIXED = "fixed";
   }
 
-  protected String type;
-  protected String value;
   @SerializedName("default")
   protected String xDefault;
+  protected String type;
+  protected String value;
+
+  /**
+   * Gets the xDefault.
+   *
+   * The default VCPU architecture for an instance with this profile.
+   *
+   * @return the xDefault
+   */
+  public String getXDefault() {
+    return xDefault;
+  }
 
   /**
    * Gets the type.
@@ -53,17 +64,6 @@ public class InstanceProfileVCPUArchitecture extends GenericModel {
    */
   public String getValue() {
     return value;
-  }
-
-  /**
-   * Gets the xDefault.
-   *
-   * The default VCPU architecture for an instance with this profile.
-   *
-   * @return the xDefault
-   */
-  public String getXDefault() {
-    return xDefault;
   }
 }
 

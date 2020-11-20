@@ -40,13 +40,13 @@ public class CreateKeyOptionsTest {
     CreateKeyOptions createKeyOptionsModel = new CreateKeyOptions.Builder()
       .publicKey("AAAAB3NzaC1yc2EAAAADAQABAAABAQDDGe50Bxa5T5NDddrrtbx2Y4/VGbiCgXqnBsYToIUKoFSHTQl5IX3PasGnneKanhcLwWz5M5MoCRvhxTp66NKzIfAz7r+FX9rxgR+ZgcM253YAqOVeIpOU408simDZKriTlN8kYsXL7P34tsWuAJf4MgZtJAQxous/2byetpdCv8ddnT4X3ltOg9w+LqSCPYfNivqH00Eh7S1Ldz7I8aw5WOp5a+sQFP/RbwfpwHp+ny7DfeIOokcuI42tJkoBn7UsLTVpCSmXr2EDRlSWe/1M/iHNRBzaT3CK0+SwZWd2AEjePxSnWKNGIEUJDlUYp7hKhiQcgT5ZAnWU121oc5En")
       .name("my-key")
-      .type("rsa")
       .resourceGroup(resourceGroupIdentityModel)
+      .type("rsa")
       .build();
     assertEquals(createKeyOptionsModel.publicKey(), "AAAAB3NzaC1yc2EAAAADAQABAAABAQDDGe50Bxa5T5NDddrrtbx2Y4/VGbiCgXqnBsYToIUKoFSHTQl5IX3PasGnneKanhcLwWz5M5MoCRvhxTp66NKzIfAz7r+FX9rxgR+ZgcM253YAqOVeIpOU408simDZKriTlN8kYsXL7P34tsWuAJf4MgZtJAQxous/2byetpdCv8ddnT4X3ltOg9w+LqSCPYfNivqH00Eh7S1Ldz7I8aw5WOp5a+sQFP/RbwfpwHp+ny7DfeIOokcuI42tJkoBn7UsLTVpCSmXr2EDRlSWe/1M/iHNRBzaT3CK0+SwZWd2AEjePxSnWKNGIEUJDlUYp7hKhiQcgT5ZAnWU121oc5En");
     assertEquals(createKeyOptionsModel.name(), "my-key");
-    assertEquals(createKeyOptionsModel.type(), "rsa");
     assertEquals(createKeyOptionsModel.resourceGroup(), resourceGroupIdentityModel);
+    assertEquals(createKeyOptionsModel.type(), "rsa");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

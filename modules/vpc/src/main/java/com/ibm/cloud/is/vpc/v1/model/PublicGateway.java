@@ -44,31 +44,31 @@ public class PublicGateway extends GenericModel {
     String PENDING = "pending";
   }
 
-  protected String id;
-  protected String crn;
-  protected String href;
-  protected String name;
-  @SerializedName("resource_type")
-  protected String resourceType;
-  @SerializedName("resource_group")
-  protected ResourceGroupReference resourceGroup;
   @SerializedName("created_at")
   protected Date createdAt;
+  protected String crn;
   @SerializedName("floating_ip")
   protected PublicGatewayFloatingIp floatingIp;
+  protected String href;
+  protected String id;
+  protected String name;
+  @SerializedName("resource_group")
+  protected ResourceGroupReference resourceGroup;
+  @SerializedName("resource_type")
+  protected String resourceType;
   protected String status;
   protected VPCReference vpc;
   protected ZoneReference zone;
 
   /**
-   * Gets the id.
+   * Gets the createdAt.
    *
-   * The unique identifier for this public gateway.
+   * The date and time that the public gateway was created.
    *
-   * @return the id
+   * @return the createdAt
    */
-  public String getId() {
-    return id;
+  public Date getCreatedAt() {
+    return createdAt;
   }
 
   /**
@@ -83,6 +83,17 @@ public class PublicGateway extends GenericModel {
   }
 
   /**
+   * Gets the floatingIp.
+   *
+   * Reference to the floating IP which is bound to this public gateway.
+   *
+   * @return the floatingIp
+   */
+  public PublicGatewayFloatingIp getFloatingIp() {
+    return floatingIp;
+  }
+
+  /**
    * Gets the href.
    *
    * The URL for this public gateway.
@@ -91,6 +102,17 @@ public class PublicGateway extends GenericModel {
    */
   public String getHref() {
     return href;
+  }
+
+  /**
+   * Gets the id.
+   *
+   * The unique identifier for this public gateway.
+   *
+   * @return the id
+   */
+  public String getId() {
+    return id;
   }
 
   /**
@@ -105,17 +127,6 @@ public class PublicGateway extends GenericModel {
   }
 
   /**
-   * Gets the resourceType.
-   *
-   * The resource type.
-   *
-   * @return the resourceType
-   */
-  public String getResourceType() {
-    return resourceType;
-  }
-
-  /**
    * Gets the resourceGroup.
    *
    * The resource group for this public gateway.
@@ -127,25 +138,14 @@ public class PublicGateway extends GenericModel {
   }
 
   /**
-   * Gets the createdAt.
+   * Gets the resourceType.
    *
-   * The date and time that the public gateway was created.
+   * The resource type.
    *
-   * @return the createdAt
+   * @return the resourceType
    */
-  public Date getCreatedAt() {
-    return createdAt;
-  }
-
-  /**
-   * Gets the floatingIp.
-   *
-   * Reference to the floating IP which is bound to this public gateway.
-   *
-   * @return the floatingIp
-   */
-  public PublicGatewayFloatingIp getFloatingIp() {
-    return floatingIp;
+  public String getResourceType() {
+    return resourceType;
   }
 
   /**

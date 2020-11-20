@@ -32,7 +32,7 @@ public class LoadBalancerProfileIdentity extends GenericModel {
   /**
    * Gets the name.
    *
-   * The name for this load balancer profile.
+   * The globally unique name for this load balancer profile.
    *
    * @return the name
    */

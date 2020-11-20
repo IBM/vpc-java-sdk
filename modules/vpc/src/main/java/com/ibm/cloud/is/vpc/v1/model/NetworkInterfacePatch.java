@@ -14,6 +14,7 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 import java.util.Map;
 
+import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 import com.ibm.cloud.sdk.core.util.GsonSingleton;
 
@@ -22,15 +23,19 @@ import com.ibm.cloud.sdk.core.util.GsonSingleton;
  */
 public class NetworkInterfacePatch extends GenericModel {
 
+  @SerializedName("allow_ip_spoofing")
+  protected Boolean allowIpSpoofing;
   protected String name;
 
   /**
    * Builder.
    */
   public static class Builder {
+    private Boolean allowIpSpoofing;
     private String name;
 
     private Builder(NetworkInterfacePatch networkInterfacePatch) {
+      this.allowIpSpoofing = networkInterfacePatch.allowIpSpoofing;
       this.name = networkInterfacePatch.name;
     }
 
@@ -50,6 +55,17 @@ public class NetworkInterfacePatch extends GenericModel {
     }
 
     /**
+     * Set the allowIpSpoofing.
+     *
+     * @param allowIpSpoofing the allowIpSpoofing
+     * @return the NetworkInterfacePatch builder
+     */
+    public Builder allowIpSpoofing(Boolean allowIpSpoofing) {
+      this.allowIpSpoofing = allowIpSpoofing;
+      return this;
+    }
+
+    /**
      * Set the name.
      *
      * @param name the name
@@ -62,6 +78,7 @@ public class NetworkInterfacePatch extends GenericModel {
   }
 
   protected NetworkInterfacePatch(Builder builder) {
+    allowIpSpoofing = builder.allowIpSpoofing;
     name = builder.name;
   }
 
@@ -72,6 +89,18 @@ public class NetworkInterfacePatch extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
+  }
+
+  /**
+   * Gets the allowIpSpoofing.
+   *
+   * Indicates whether IP spoofing is allowed on this interface. Updating to true allows IP spoofing on this interface.
+   * Updating to false prevents IP spoofing on this interface.
+   *
+   * @return the allowIpSpoofing
+   */
+  public Boolean allowIpSpoofing() {
+    return allowIpSpoofing;
   }
 
   /**

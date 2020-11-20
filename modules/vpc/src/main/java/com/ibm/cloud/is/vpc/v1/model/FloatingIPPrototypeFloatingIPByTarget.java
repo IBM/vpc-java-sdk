@@ -24,7 +24,7 @@ public class FloatingIPPrototypeFloatingIPByTarget extends FloatingIPPrototype {
   public static class Builder {
     private String name;
     private ResourceGroupIdentity resourceGroup;
-    private FloatingIPByTargetTarget target;
+    private FloatingIPByTargetNetworkInterfaceIdentity target;
 
     public Builder(FloatingIPPrototype floatingIpPrototypeFloatingIpByTarget) {
       this.name = floatingIpPrototypeFloatingIpByTarget.name;
@@ -43,7 +43,7 @@ public class FloatingIPPrototypeFloatingIPByTarget extends FloatingIPPrototype {
      *
      * @param target the target
      */
-    public Builder(FloatingIPByTargetTarget target) {
+    public Builder(FloatingIPByTargetNetworkInterfaceIdentity target) {
       this.target = target;
     }
 
@@ -84,7 +84,7 @@ public class FloatingIPPrototypeFloatingIPByTarget extends FloatingIPPrototype {
      * @param target the target
      * @return the FloatingIPPrototypeFloatingIPByTarget builder
      */
-    public Builder target(FloatingIPByTargetTarget target) {
+    public Builder target(FloatingIPByTargetNetworkInterfaceIdentity target) {
       this.target = target;
       return this;
     }

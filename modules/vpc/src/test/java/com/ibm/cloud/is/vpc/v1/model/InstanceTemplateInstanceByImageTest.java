@@ -25,7 +25,7 @@ import com.ibm.cloud.is.vpc.v1.model.SubnetIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.VPCIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototypeInstanceByImageContext;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototypeInstanceContext;
-import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototypeInstanceContextVolumeVolumeIdentityVolumeIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentVolumePrototypeInstanceContextVolumeIdentityVolumeIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.VolumeProfileIdentityByName;
 import com.ibm.cloud.is.vpc.v1.model.VolumePrototypeInstanceByImageContext;
 import com.ibm.cloud.is.vpc.v1.model.ZoneIdentityByName;
@@ -49,21 +49,21 @@ public class InstanceTemplateInstanceByImageTest {
   @Test
   public void testInstanceTemplateInstanceByImage() throws Throwable {
     InstanceTemplateInstanceByImage instanceTemplateInstanceByImageModel = new InstanceTemplateInstanceByImage();
-    assertNull(instanceTemplateInstanceByImageModel.getId());
-    assertNull(instanceTemplateInstanceByImageModel.getHref());
+    assertNull(instanceTemplateInstanceByImageModel.getCreatedAt());
     assertNull(instanceTemplateInstanceByImageModel.getCrn());
-    assertNull(instanceTemplateInstanceByImageModel.getName());
+    assertNull(instanceTemplateInstanceByImageModel.getHref());
+    assertNull(instanceTemplateInstanceByImageModel.getId());
     assertNull(instanceTemplateInstanceByImageModel.getKeys());
+    assertNull(instanceTemplateInstanceByImageModel.getName());
     assertNull(instanceTemplateInstanceByImageModel.getNetworkInterfaces());
     assertNull(instanceTemplateInstanceByImageModel.getProfile());
+    assertNull(instanceTemplateInstanceByImageModel.getResourceGroup());
     assertNull(instanceTemplateInstanceByImageModel.getUserData());
     assertNull(instanceTemplateInstanceByImageModel.getVolumeAttachments());
     assertNull(instanceTemplateInstanceByImageModel.getVpc());
-    assertNull(instanceTemplateInstanceByImageModel.getCreatedAt());
-    assertNull(instanceTemplateInstanceByImageModel.getResourceGroup());
-    assertNull(instanceTemplateInstanceByImageModel.getPrimaryNetworkInterface());
-    assertNull(instanceTemplateInstanceByImageModel.getZone());
     assertNull(instanceTemplateInstanceByImageModel.getBootVolumeAttachment());
     assertNull(instanceTemplateInstanceByImageModel.getImage());
+    assertNull(instanceTemplateInstanceByImageModel.getPrimaryNetworkInterface());
+    assertNull(instanceTemplateInstanceByImageModel.getZone());
   }
 }

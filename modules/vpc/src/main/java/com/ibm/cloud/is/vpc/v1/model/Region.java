@@ -29,20 +29,20 @@ public class Region extends GenericModel {
     String UNAVAILABLE = "unavailable";
   }
 
-  protected String name;
-  protected String href;
   protected String endpoint;
+  protected String href;
+  protected String name;
   protected String status;
 
   /**
-   * Gets the name.
+   * Gets the endpoint.
    *
-   * The name for this region.
+   * The API endpoint for this region.
    *
-   * @return the name
+   * @return the endpoint
    */
-  public String getName() {
-    return name;
+  public String getEndpoint() {
+    return endpoint;
   }
 
   /**
@@ -57,14 +57,14 @@ public class Region extends GenericModel {
   }
 
   /**
-   * Gets the endpoint.
+   * Gets the name.
    *
-   * The API endpoint for this region.
+   * The globally unique name for this region.
    *
-   * @return the endpoint
+   * @return the name
    */
-  public String getEndpoint() {
-    return endpoint;
+  public String getName() {
+    return name;
   }
 
   /**

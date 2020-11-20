@@ -22,19 +22,19 @@ import com.ibm.cloud.sdk.core.util.GsonSingleton;
  */
 public class FlowLogCollectorPatch extends GenericModel {
 
-  protected String name;
   protected Boolean active;
+  protected String name;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private String name;
     private Boolean active;
+    private String name;
 
     private Builder(FlowLogCollectorPatch flowLogCollectorPatch) {
-      this.name = flowLogCollectorPatch.name;
       this.active = flowLogCollectorPatch.active;
+      this.name = flowLogCollectorPatch.name;
     }
 
     /**
@@ -53,17 +53,6 @@ public class FlowLogCollectorPatch extends GenericModel {
     }
 
     /**
-     * Set the name.
-     *
-     * @param name the name
-     * @return the FlowLogCollectorPatch builder
-     */
-    public Builder name(String name) {
-      this.name = name;
-      return this;
-    }
-
-    /**
      * Set the active.
      *
      * @param active the active
@@ -73,11 +62,22 @@ public class FlowLogCollectorPatch extends GenericModel {
       this.active = active;
       return this;
     }
+
+    /**
+     * Set the name.
+     *
+     * @param name the name
+     * @return the FlowLogCollectorPatch builder
+     */
+    public Builder name(String name) {
+      this.name = name;
+      return this;
+    }
   }
 
   protected FlowLogCollectorPatch(Builder builder) {
-    name = builder.name;
     active = builder.active;
+    name = builder.name;
   }
 
   /**
@@ -90,17 +90,6 @@ public class FlowLogCollectorPatch extends GenericModel {
   }
 
   /**
-   * Gets the name.
-   *
-   * The unique user-defined name for this flow log collector.
-   *
-   * @return the name
-   */
-  public String name() {
-    return name;
-  }
-
-  /**
    * Gets the active.
    *
    * Indicates whether this collector is active. Updating to false deactivates the collector and updating to true
@@ -110,6 +99,17 @@ public class FlowLogCollectorPatch extends GenericModel {
    */
   public Boolean active() {
     return active;
+  }
+
+  /**
+   * Gets the name.
+   *
+   * The unique user-defined name for this flow log collector.
+   *
+   * @return the name
+   */
+  public String name() {
+    return name;
   }
 
   /**

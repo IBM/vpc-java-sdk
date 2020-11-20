@@ -19,21 +19,11 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class InstanceGroupReference extends GenericModel {
 
-  protected String id;
   protected String crn;
+  protected InstanceGroupReferenceDeleted deleted;
   protected String href;
+  protected String id;
   protected String name;
-
-  /**
-   * Gets the id.
-   *
-   * The unique identifier for this instance group.
-   *
-   * @return the id
-   */
-  public String getId() {
-    return id;
-  }
 
   /**
    * Gets the crn.
@@ -47,6 +37,18 @@ public class InstanceGroupReference extends GenericModel {
   }
 
   /**
+   * Gets the deleted.
+   *
+   * If present, this property indicates the referenced resource has been deleted and provides
+   * some supplementary information.
+   *
+   * @return the deleted
+   */
+  public InstanceGroupReferenceDeleted getDeleted() {
+    return deleted;
+  }
+
+  /**
    * Gets the href.
    *
    * The URL for this instance group.
@@ -55,6 +57,17 @@ public class InstanceGroupReference extends GenericModel {
    */
   public String getHref() {
     return href;
+  }
+
+  /**
+   * Gets the id.
+   *
+   * The unique identifier for this instance group.
+   *
+   * @return the id
+   */
+  public String getId() {
+    return id;
   }
 
   /**

@@ -23,14 +23,14 @@ public class NetworkACLPrototypeNetworkACLBySourceNetworkACL extends NetworkACLP
    */
   public static class Builder {
     private String name;
-    private VPCIdentity vpc;
     private ResourceGroupIdentity resourceGroup;
+    private VPCIdentity vpc;
     private NetworkACLIdentity sourceNetworkAcl;
 
     public Builder(NetworkACLPrototype networkAclPrototypeNetworkAclBySourceNetworkAcl) {
       this.name = networkAclPrototypeNetworkAclBySourceNetworkAcl.name;
-      this.vpc = networkAclPrototypeNetworkAclBySourceNetworkAcl.vpc;
       this.resourceGroup = networkAclPrototypeNetworkAclBySourceNetworkAcl.resourceGroup;
+      this.vpc = networkAclPrototypeNetworkAclBySourceNetworkAcl.vpc;
       this.sourceNetworkAcl = networkAclPrototypeNetworkAclBySourceNetworkAcl.sourceNetworkAcl;
     }
 
@@ -72,17 +72,6 @@ public class NetworkACLPrototypeNetworkACLBySourceNetworkACL extends NetworkACLP
     }
 
     /**
-     * Set the vpc.
-     *
-     * @param vpc the vpc
-     * @return the NetworkACLPrototypeNetworkACLBySourceNetworkACL builder
-     */
-    public Builder vpc(VPCIdentity vpc) {
-      this.vpc = vpc;
-      return this;
-    }
-
-    /**
      * Set the resourceGroup.
      *
      * @param resourceGroup the resourceGroup
@@ -90,6 +79,17 @@ public class NetworkACLPrototypeNetworkACLBySourceNetworkACL extends NetworkACLP
      */
     public Builder resourceGroup(ResourceGroupIdentity resourceGroup) {
       this.resourceGroup = resourceGroup;
+      return this;
+    }
+
+    /**
+     * Set the vpc.
+     *
+     * @param vpc the vpc
+     * @return the NetworkACLPrototypeNetworkACLBySourceNetworkACL builder
+     */
+    public Builder vpc(VPCIdentity vpc) {
+      this.vpc = vpc;
       return this;
     }
 
@@ -111,8 +111,8 @@ public class NetworkACLPrototypeNetworkACLBySourceNetworkACL extends NetworkACLP
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.sourceNetworkAcl,
       "sourceNetworkAcl cannot be null");
     name = builder.name;
-    vpc = builder.vpc;
     resourceGroup = builder.resourceGroup;
+    vpc = builder.vpc;
     sourceNetworkAcl = builder.sourceNetworkAcl;
   }
 

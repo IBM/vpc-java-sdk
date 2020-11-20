@@ -40,20 +40,20 @@ public class LoadBalancerPoolMemberPatchTest {
 
     LoadBalancerPoolMemberPatch loadBalancerPoolMemberPatchModel = new LoadBalancerPoolMemberPatch.Builder()
       .port(Long.valueOf("80"))
-      .weight(Long.valueOf("50"))
       .target(loadBalancerPoolMemberTargetPrototypeModel)
+      .weight(Long.valueOf("50"))
       .build();
     assertEquals(loadBalancerPoolMemberPatchModel.port(), Long.valueOf("80"));
-    assertEquals(loadBalancerPoolMemberPatchModel.weight(), Long.valueOf("50"));
     assertEquals(loadBalancerPoolMemberPatchModel.target(), loadBalancerPoolMemberTargetPrototypeModel);
+    assertEquals(loadBalancerPoolMemberPatchModel.weight(), Long.valueOf("50"));
 
     String json = TestUtilities.serialize(loadBalancerPoolMemberPatchModel);
 
     LoadBalancerPoolMemberPatch loadBalancerPoolMemberPatchModelNew = TestUtilities.deserialize(json, LoadBalancerPoolMemberPatch.class);
     assertTrue(loadBalancerPoolMemberPatchModelNew instanceof LoadBalancerPoolMemberPatch);
     assertEquals(loadBalancerPoolMemberPatchModelNew.port(), Long.valueOf("80"));
-    assertEquals(loadBalancerPoolMemberPatchModelNew.weight(), Long.valueOf("50"));
     assertEquals(loadBalancerPoolMemberPatchModelNew.target().toString(), loadBalancerPoolMemberTargetPrototypeModel.toString());
+    assertEquals(loadBalancerPoolMemberPatchModelNew.weight(), Long.valueOf("50"));
   }
   @Test
   public void testLoadBalancerPoolMemberPatchAsPatch() throws Throwable {
@@ -63,15 +63,15 @@ public class LoadBalancerPoolMemberPatchTest {
 
     LoadBalancerPoolMemberPatch loadBalancerPoolMemberPatchModel = new LoadBalancerPoolMemberPatch.Builder()
       .port(Long.valueOf("80"))
-      .weight(Long.valueOf("50"))
       .target(loadBalancerPoolMemberTargetPrototypeModel)
+      .weight(Long.valueOf("50"))
       .build();
 
     Map<String, Object> mergePatch = loadBalancerPoolMemberPatchModel.asPatch();
 
     assertTrue(mergePatch.containsKey("port"));
-    assertTrue(mergePatch.containsKey("weight"));
     assertTrue(mergePatch.containsKey("target"));
+    assertTrue(mergePatch.containsKey("weight"));
   }
 
 }

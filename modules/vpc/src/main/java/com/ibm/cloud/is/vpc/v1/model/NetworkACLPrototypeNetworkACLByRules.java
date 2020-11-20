@@ -26,14 +26,14 @@ public class NetworkACLPrototypeNetworkACLByRules extends NetworkACLPrototype {
    */
   public static class Builder {
     private String name;
-    private VPCIdentity vpc;
     private ResourceGroupIdentity resourceGroup;
+    private VPCIdentity vpc;
     private List<NetworkACLRulePrototypeNetworkACLContext> rules;
 
     public Builder(NetworkACLPrototype networkAclPrototypeNetworkAclByRules) {
       this.name = networkAclPrototypeNetworkAclByRules.name;
-      this.vpc = networkAclPrototypeNetworkAclByRules.vpc;
       this.resourceGroup = networkAclPrototypeNetworkAclByRules.resourceGroup;
+      this.vpc = networkAclPrototypeNetworkAclByRules.vpc;
       this.rules = networkAclPrototypeNetworkAclByRules.rules;
     }
 
@@ -80,17 +80,6 @@ public class NetworkACLPrototypeNetworkACLByRules extends NetworkACLPrototype {
     }
 
     /**
-     * Set the vpc.
-     *
-     * @param vpc the vpc
-     * @return the NetworkACLPrototypeNetworkACLByRules builder
-     */
-    public Builder vpc(VPCIdentity vpc) {
-      this.vpc = vpc;
-      return this;
-    }
-
-    /**
      * Set the resourceGroup.
      *
      * @param resourceGroup the resourceGroup
@@ -98,6 +87,17 @@ public class NetworkACLPrototypeNetworkACLByRules extends NetworkACLPrototype {
      */
     public Builder resourceGroup(ResourceGroupIdentity resourceGroup) {
       this.resourceGroup = resourceGroup;
+      return this;
+    }
+
+    /**
+     * Set the vpc.
+     *
+     * @param vpc the vpc
+     * @return the NetworkACLPrototypeNetworkACLByRules builder
+     */
+    public Builder vpc(VPCIdentity vpc) {
+      this.vpc = vpc;
       return this;
     }
 
@@ -118,8 +118,8 @@ public class NetworkACLPrototypeNetworkACLByRules extends NetworkACLPrototype {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.vpc,
       "vpc cannot be null");
     name = builder.name;
-    vpc = builder.vpc;
     resourceGroup = builder.resourceGroup;
+    vpc = builder.vpc;
     rules = builder.rules;
   }
 

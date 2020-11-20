@@ -19,21 +19,22 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class PublicGatewayFloatingIp extends GenericModel {
 
-  protected String id;
-  protected String crn;
-  protected String href;
   protected String address;
+  protected String crn;
+  protected FloatingIPReferenceDeleted deleted;
+  protected String href;
+  protected String id;
   protected String name;
 
   /**
-   * Gets the id.
+   * Gets the address.
    *
-   * The unique identifier for this floating IP.
+   * The globally unique IP address.
    *
-   * @return the id
+   * @return the address
    */
-  public String getId() {
-    return id;
+  public String getAddress() {
+    return address;
   }
 
   /**
@@ -48,6 +49,18 @@ public class PublicGatewayFloatingIp extends GenericModel {
   }
 
   /**
+   * Gets the deleted.
+   *
+   * If present, this property indicates the referenced resource has been deleted and provides
+   * some supplementary information.
+   *
+   * @return the deleted
+   */
+  public FloatingIPReferenceDeleted getDeleted() {
+    return deleted;
+  }
+
+  /**
    * Gets the href.
    *
    * The URL for this floating IP.
@@ -59,14 +72,14 @@ public class PublicGatewayFloatingIp extends GenericModel {
   }
 
   /**
-   * Gets the address.
+   * Gets the id.
    *
-   * The globally unique IP address.
+   * The unique identifier for this floating IP.
    *
-   * @return the address
+   * @return the id
    */
-  public String getAddress() {
-    return address;
+  public String getId() {
+    return id;
   }
 
   /**

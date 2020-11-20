@@ -32,8 +32,8 @@ public class InstanceProfileBandwidthEnumTest {
   @Test
   public void testInstanceProfileBandwidthEnum() throws Throwable {
     InstanceProfileBandwidthEnum instanceProfileBandwidthEnumModel = new InstanceProfileBandwidthEnum();
-    assertNull(instanceProfileBandwidthEnumModel.getType());
     assertNull(instanceProfileBandwidthEnumModel.getXDefault());
+    assertNull(instanceProfileBandwidthEnumModel.getType());
     assertNull(instanceProfileBandwidthEnumModel.getValues());
   }
 }

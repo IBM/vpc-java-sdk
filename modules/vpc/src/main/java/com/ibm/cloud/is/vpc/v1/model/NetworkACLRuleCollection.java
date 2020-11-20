@@ -25,14 +25,14 @@ public class NetworkACLRuleCollection extends GenericModel {
   protected NetworkACLRuleCollectionFirst first;
   protected Long limit;
   protected NetworkACLRuleCollectionNext next;
+  protected List<NetworkACLRuleItem> rules;
   @SerializedName("total_count")
   protected Long totalCount;
-  protected List<NetworkACLRuleItem> rules;
 
   /**
    * Gets the first.
    *
-   * A reference to the first page of resources.
+   * A link to the first page of resources.
    *
    * @return the first
    */
@@ -54,13 +54,24 @@ public class NetworkACLRuleCollection extends GenericModel {
   /**
    * Gets the next.
    *
-   * A reference to the next page of resources; this reference is included for all pages
+   * A link to the next page of resources. This property is present for all pages
    * except the last page.
    *
    * @return the next
    */
   public NetworkACLRuleCollectionNext getNext() {
     return next;
+  }
+
+  /**
+   * Gets the rules.
+   *
+   * Ordered collection of network ACL rules.
+   *
+   * @return the rules
+   */
+  public List<NetworkACLRuleItem> getRules() {
+    return rules;
   }
 
   /**
@@ -72,17 +83,6 @@ public class NetworkACLRuleCollection extends GenericModel {
    */
   public Long getTotalCount() {
     return totalCount;
-  }
-
-  /**
-   * Gets the rules.
-   *
-   * Ordered collection of Network ACL rules.
-   *
-   * @return the rules
-   */
-  public List<NetworkACLRuleItem> getRules() {
-    return rules;
   }
 }
 

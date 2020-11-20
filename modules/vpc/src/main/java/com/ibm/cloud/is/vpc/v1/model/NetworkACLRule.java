@@ -58,20 +58,6 @@ public class NetworkACLRule extends GenericModel {
   }
 
   /**
-   * The protocol to enforce.
-   */
-  public interface Protocol {
-    /** all. */
-    String ALL = "all";
-    /** icmp. */
-    String ICMP = "icmp";
-    /** tcp. */
-    String TCP = "tcp";
-    /** udp. */
-    String UDP = "udp";
-  }
-
-  /**
    * The IP version for this rule.
    */
   public interface IpVersion {
@@ -81,19 +67,19 @@ public class NetworkACLRule extends GenericModel {
     String IPV6 = "ipv6";
   }
 
-  protected String id;
-  protected String href;
-  protected String name;
   protected String action;
-  protected String destination;
-  protected String direction;
-  protected String source;
-  protected String protocol;
   protected NetworkACLRuleReference before;
   @SerializedName("created_at")
   protected Date createdAt;
+  protected String destination;
+  protected String direction;
+  protected String href;
+  protected String id;
   @SerializedName("ip_version")
   protected String ipVersion;
+  protected String name;
+  protected String protocol;
+  protected String source;
   @SerializedName("destination_port_max")
   protected Long destinationPortMax;
   @SerializedName("destination_port_min")
@@ -109,40 +95,6 @@ public class NetworkACLRule extends GenericModel {
   }
 
   /**
-   * Gets the id.
-   *
-   * The unique identifier for this Network ACL rule.
-   *
-   * @return the id
-   */
-  public String getId() {
-    return id;
-  }
-
-  /**
-   * Gets the href.
-   *
-   * The URL for this Network ACL rule.
-   *
-   * @return the href
-   */
-  public String getHref() {
-    return href;
-  }
-
-  /**
-   * Gets the name.
-   *
-   * The user-defined name for this rule. Names must be unique within the network ACL the rule resides in. If
-   * unspecified, the name will be a hyphenated list of randomly-selected words.
-   *
-   * @return the name
-   */
-  public String getName() {
-    return name;
-  }
-
-  /**
    * Gets the action.
    *
    * Whether to allow or deny matching traffic.
@@ -151,50 +103,6 @@ public class NetworkACLRule extends GenericModel {
    */
   public String getAction() {
     return action;
-  }
-
-  /**
-   * Gets the destination.
-   *
-   * The destination CIDR block. The CIDR block `0.0.0.0/0` applies to all addresses.
-   *
-   * @return the destination
-   */
-  public String getDestination() {
-    return destination;
-  }
-
-  /**
-   * Gets the direction.
-   *
-   * Whether the traffic to be matched is `inbound` or `outbound`.
-   *
-   * @return the direction
-   */
-  public String getDirection() {
-    return direction;
-  }
-
-  /**
-   * Gets the source.
-   *
-   * The source CIDR block. The CIDR block `0.0.0.0/0` applies to all addresses.
-   *
-   * @return the source
-   */
-  public String getSource() {
-    return source;
-  }
-
-  /**
-   * Gets the protocol.
-   *
-   * The protocol to enforce.
-   *
-   * @return the protocol
-   */
-  public String getProtocol() {
-    return protocol;
   }
 
   /**
@@ -220,6 +128,50 @@ public class NetworkACLRule extends GenericModel {
   }
 
   /**
+   * Gets the destination.
+   *
+   * The destination CIDR block. The CIDR block `0.0.0.0/0` applies to all addresses.
+   *
+   * @return the destination
+   */
+  public String getDestination() {
+    return destination;
+  }
+
+  /**
+   * Gets the direction.
+   *
+   * Whether the traffic to be matched is `inbound` or `outbound`.
+   *
+   * @return the direction
+   */
+  public String getDirection() {
+    return direction;
+  }
+
+  /**
+   * Gets the href.
+   *
+   * The URL for this network ACL rule.
+   *
+   * @return the href
+   */
+  public String getHref() {
+    return href;
+  }
+
+  /**
+   * Gets the id.
+   *
+   * The unique identifier for this network ACL rule.
+   *
+   * @return the id
+   */
+  public String getId() {
+    return id;
+  }
+
+  /**
    * Gets the ipVersion.
    *
    * The IP version for this rule.
@@ -228,6 +180,40 @@ public class NetworkACLRule extends GenericModel {
    */
   public String getIpVersion() {
     return ipVersion;
+  }
+
+  /**
+   * Gets the name.
+   *
+   * The user-defined name for this rule. Names must be unique within the network ACL the rule resides in. If
+   * unspecified, the name will be a hyphenated list of randomly-selected words.
+   *
+   * @return the name
+   */
+  public String getName() {
+    return name;
+  }
+
+  /**
+   * Gets the protocol.
+   *
+   * The protocol to enforce.
+   *
+   * @return the protocol
+   */
+  public String getProtocol() {
+    return protocol;
+  }
+
+  /**
+   * Gets the source.
+   *
+   * The source CIDR block. The CIDR block `0.0.0.0/0` applies to all addresses.
+   *
+   * @return the source
+   */
+  public String getSource() {
+    return source;
   }
 
   /**

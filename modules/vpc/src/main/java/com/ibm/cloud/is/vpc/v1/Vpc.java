@@ -19,6 +19,7 @@ package com.ibm.cloud.is.vpc.v1;
 
 import com.google.gson.JsonObject;
 import com.ibm.cloud.is.common.SdkCommon;
+import com.ibm.cloud.is.vpc.v1.model.AddEndpointGatewayIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.AddInstanceNetworkInterfaceFloatingIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.AddSecurityGroupNetworkInterfaceOptions;
 import com.ibm.cloud.is.vpc.v1.model.AddVpnGatewayConnectionLocalCidrOptions;
@@ -27,6 +28,7 @@ import com.ibm.cloud.is.vpc.v1.model.AddressPrefix;
 import com.ibm.cloud.is.vpc.v1.model.AddressPrefixCollection;
 import com.ibm.cloud.is.vpc.v1.model.CheckVpnGatewayConnectionLocalCidrOptions;
 import com.ibm.cloud.is.vpc.v1.model.CheckVpnGatewayConnectionPeerCidrOptions;
+import com.ibm.cloud.is.vpc.v1.model.CreateEndpointGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateFloatingIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateFlowLogCollectorOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateIkePolicyOptions;
@@ -53,14 +55,19 @@ import com.ibm.cloud.is.vpc.v1.model.CreatePublicGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateSecurityGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateSecurityGroupRuleOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateSubnetOptions;
+import com.ibm.cloud.is.vpc.v1.model.CreateSubnetReservedIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateVolumeOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateVpcAddressPrefixOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateVpcOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateVpcRouteOptions;
+import com.ibm.cloud.is.vpc.v1.model.CreateVpcRoutingTableOptions;
+import com.ibm.cloud.is.vpc.v1.model.CreateVpcRoutingTableRouteOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateVpnGatewayConnectionOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateVpnGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.DefaultNetworkACL;
+import com.ibm.cloud.is.vpc.v1.model.DefaultRoutingTable;
 import com.ibm.cloud.is.vpc.v1.model.DefaultSecurityGroup;
+import com.ibm.cloud.is.vpc.v1.model.DeleteEndpointGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteFloatingIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteFlowLogCollectorOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteIkePolicyOptions;
@@ -89,17 +96,24 @@ import com.ibm.cloud.is.vpc.v1.model.DeletePublicGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteSecurityGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteSecurityGroupRuleOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteSubnetOptions;
+import com.ibm.cloud.is.vpc.v1.model.DeleteSubnetReservedIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteVolumeOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteVpcAddressPrefixOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteVpcOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteVpcRouteOptions;
+import com.ibm.cloud.is.vpc.v1.model.DeleteVpcRoutingTableOptions;
+import com.ibm.cloud.is.vpc.v1.model.DeleteVpcRoutingTableRouteOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteVpnGatewayConnectionOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteVpnGatewayOptions;
+import com.ibm.cloud.is.vpc.v1.model.EndpointGateway;
+import com.ibm.cloud.is.vpc.v1.model.EndpointGatewayCollection;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIP;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPCollection;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPUnpaginatedCollection;
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollector;
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorCollection;
+import com.ibm.cloud.is.vpc.v1.model.GetEndpointGatewayIpOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetEndpointGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetFloatingIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetFlowLogCollectorOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetIkePolicyOptions;
@@ -137,13 +151,18 @@ import com.ibm.cloud.is.vpc.v1.model.GetSecurityGroupRuleOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetSubnetNetworkAclOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetSubnetOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetSubnetPublicGatewayOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetSubnetReservedIpOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetSubnetRoutingTableOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetVolumeOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetVolumeProfileOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetVpcAddressPrefixOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetVpcDefaultNetworkAclOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetVpcDefaultRoutingTableOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetVpcDefaultSecurityGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetVpcOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetVpcRouteOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetVpcRoutingTableOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetVpcRoutingTableRouteOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetVpnGatewayConnectionOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetVpnGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.IKEPolicy;
@@ -170,6 +189,8 @@ import com.ibm.cloud.is.vpc.v1.model.InstanceTemplate;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateCollection;
 import com.ibm.cloud.is.vpc.v1.model.Key;
 import com.ibm.cloud.is.vpc.v1.model.KeyCollection;
+import com.ibm.cloud.is.vpc.v1.model.ListEndpointGatewayIpsOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListEndpointGatewaysOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListFloatingIpsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListFlowLogCollectorsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListIkePoliciesOptions;
@@ -204,11 +225,14 @@ import com.ibm.cloud.is.vpc.v1.model.ListRegionsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListSecurityGroupNetworkInterfacesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListSecurityGroupRulesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListSecurityGroupsOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListSubnetReservedIpsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListSubnetsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListVolumeProfilesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListVolumesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListVpcAddressPrefixesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListVpcRoutesOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListVpcRoutingTableRoutesOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListVpcRoutingTablesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListVpcsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListVpnGatewayConnectionLocalCidrsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListVpnGatewayConnectionPeerCidrsOptions;
@@ -242,14 +266,21 @@ import com.ibm.cloud.is.vpc.v1.model.PublicGateway;
 import com.ibm.cloud.is.vpc.v1.model.PublicGatewayCollection;
 import com.ibm.cloud.is.vpc.v1.model.Region;
 import com.ibm.cloud.is.vpc.v1.model.RegionCollection;
+import com.ibm.cloud.is.vpc.v1.model.RemoveEndpointGatewayIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.RemoveInstanceNetworkInterfaceFloatingIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.RemoveSecurityGroupNetworkInterfaceOptions;
 import com.ibm.cloud.is.vpc.v1.model.RemoveVpnGatewayConnectionLocalCidrOptions;
 import com.ibm.cloud.is.vpc.v1.model.RemoveVpnGatewayConnectionPeerCidrOptions;
 import com.ibm.cloud.is.vpc.v1.model.ReplaceLoadBalancerPoolMembersOptions;
 import com.ibm.cloud.is.vpc.v1.model.ReplaceSubnetNetworkAclOptions;
+import com.ibm.cloud.is.vpc.v1.model.ReplaceSubnetRoutingTableOptions;
+import com.ibm.cloud.is.vpc.v1.model.ReservedIP;
+import com.ibm.cloud.is.vpc.v1.model.ReservedIPCollection;
+import com.ibm.cloud.is.vpc.v1.model.ReservedIPCollectionEndpointGatewayContext;
 import com.ibm.cloud.is.vpc.v1.model.Route;
 import com.ibm.cloud.is.vpc.v1.model.RouteCollection;
+import com.ibm.cloud.is.vpc.v1.model.RoutingTable;
+import com.ibm.cloud.is.vpc.v1.model.RoutingTableCollection;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroup;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupCollection;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRule;
@@ -258,6 +289,7 @@ import com.ibm.cloud.is.vpc.v1.model.SetSubnetPublicGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.Subnet;
 import com.ibm.cloud.is.vpc.v1.model.SubnetCollection;
 import com.ibm.cloud.is.vpc.v1.model.UnsetSubnetPublicGatewayOptions;
+import com.ibm.cloud.is.vpc.v1.model.UpdateEndpointGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateFloatingIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateFlowLogCollectorOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateIkePolicyOptions;
@@ -284,10 +316,13 @@ import com.ibm.cloud.is.vpc.v1.model.UpdatePublicGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateSecurityGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateSecurityGroupRuleOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateSubnetOptions;
+import com.ibm.cloud.is.vpc.v1.model.UpdateSubnetReservedIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateVolumeOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateVpcAddressPrefixOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateVpcOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateVpcRouteOptions;
+import com.ibm.cloud.is.vpc.v1.model.UpdateVpcRoutingTableOptions;
+import com.ibm.cloud.is.vpc.v1.model.UpdateVpcRoutingTableRouteOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateVpnGatewayConnectionOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateVpnGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.VPC;
@@ -329,7 +364,7 @@ public class Vpc extends BaseService {
 
   public static final String DEFAULT_SERVICE_URL = "https://us-south.iaas.cloud.ibm.com/v1";
 
-  private String version = "2020-10-06";
+  private String version = "2020-11-17";
 
   private Long generation = Long.valueOf(2);
 
@@ -352,11 +387,10 @@ public class Vpc extends BaseService {
    * @return an instance of the `Vpc` client using external configuration
    */
   public static Vpc newInstance() {
-    return newInstance("2020-10-06", DEFAULT_SERVICE_NAME);
+    return newInstance("2020-11-13", DEFAULT_SERVICE_NAME);
   }
 
-
-  /**
+    /**
    * Class method which constructs an instance of the `Vpc` client.
    * The specified service name is used to configure the client instance.
    *
@@ -507,14 +541,14 @@ public class Vpc extends BaseService {
     builder.query("generation", String.valueOf(this.generation));
     if (!skipBody) {
       final JsonObject contentJson = new JsonObject();
-      if (createVpcOptions.name() != null) {
-        contentJson.addProperty("name", createVpcOptions.name());
-      }
       if (createVpcOptions.addressPrefixManagement() != null) {
         contentJson.addProperty("address_prefix_management", createVpcOptions.addressPrefixManagement());
       }
       if (createVpcOptions.classicAccess() != null) {
         contentJson.addProperty("classic_access", createVpcOptions.classicAccess());
+      }
+      if (createVpcOptions.name() != null) {
+        contentJson.addProperty("name", createVpcOptions.name());
       }
       if (createVpcOptions.resourceGroup() != null) {
         contentJson.add("resource_group", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createVpcOptions.resourceGroup()));
@@ -646,6 +680,34 @@ public class Vpc extends BaseService {
   }
 
   /**
+   * Retrieve a VPC's default routing table.
+   *
+   * This request retrieves the default routing table for the VPC specified by the identifier in the URL. The default
+   * routing table is associated with any subnets in the VPC which have not been explicitly associated with a
+   * user-defined routing table.
+   *
+   * @param getVpcDefaultRoutingTableOptions the {@link GetVpcDefaultRoutingTableOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link DefaultRoutingTable}
+   */
+  public ServiceCall<DefaultRoutingTable> getVpcDefaultRoutingTable(GetVpcDefaultRoutingTableOptions getVpcDefaultRoutingTableOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(getVpcDefaultRoutingTableOptions,
+      "getVpcDefaultRoutingTableOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", getVpcDefaultRoutingTableOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/vpcs/{id}/default_routing_table", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getVpcDefaultRoutingTable");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<DefaultRoutingTable> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<DefaultRoutingTable>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
    * Retrieve a VPC's default security group.
    *
    * This request retrieves the default security group for the VPC specified by the identifier in the URL. The default
@@ -729,11 +791,11 @@ public class Vpc extends BaseService {
     final JsonObject contentJson = new JsonObject();
     contentJson.addProperty("cidr", createVpcAddressPrefixOptions.cidr());
     contentJson.add("zone", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createVpcAddressPrefixOptions.zone()));
-    if (createVpcAddressPrefixOptions.name() != null) {
-      contentJson.addProperty("name", createVpcAddressPrefixOptions.name());
-    }
     if (createVpcAddressPrefixOptions.isDefault() != null) {
       contentJson.addProperty("is_default", createVpcAddressPrefixOptions.isDefault());
+    }
+    if (createVpcAddressPrefixOptions.name() != null) {
+      contentJson.addProperty("name", createVpcAddressPrefixOptions.name());
     }
     builder.bodyJson(contentJson);
     ResponseConverter<AddressPrefix> responseConverter =
@@ -849,6 +911,12 @@ public class Vpc extends BaseService {
     if (listVpcRoutesOptions.zoneName() != null) {
       builder.query("zone.name", String.valueOf(listVpcRoutesOptions.zoneName()));
     }
+    if (listVpcRoutesOptions.start() != null) {
+      builder.query("start", String.valueOf(listVpcRoutesOptions.start()));
+    }
+    if (listVpcRoutesOptions.limit() != null) {
+      builder.query("limit", String.valueOf(listVpcRoutesOptions.limit()));
+    }
     ResponseConverter<RouteCollection> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<RouteCollection>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -878,9 +946,12 @@ public class Vpc extends BaseService {
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     final JsonObject contentJson = new JsonObject();
-    contentJson.add("next_hop", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createVpcRouteOptions.nextHop()));
     contentJson.addProperty("destination", createVpcRouteOptions.destination());
+    contentJson.add("next_hop", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createVpcRouteOptions.nextHop()));
     contentJson.add("zone", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createVpcRouteOptions.zone()));
+    if (createVpcRouteOptions.action() != null) {
+      contentJson.addProperty("action", createVpcRouteOptions.action());
+    }
     if (createVpcRouteOptions.name() != null) {
       contentJson.addProperty("name", createVpcRouteOptions.name());
     }
@@ -972,6 +1043,331 @@ public class Vpc extends BaseService {
   }
 
   /**
+   * List all routing tables for a VPC.
+   *
+   * This request lists all user-defined routing tables for a VPC.  Each subnet in a VPC is associated with a routing
+   * table, which controls delivery of packets sent on that subnet according to the action of the most specific matching
+   * route in the table.  If multiple equally-specific routes exist, traffic will be distributed across them.  If no
+   * routes match, delivery will be controlled by the system's built-in routes.
+   *
+   * @param listVpcRoutingTablesOptions the {@link ListVpcRoutingTablesOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link RoutingTableCollection}
+   */
+  public ServiceCall<RoutingTableCollection> listVpcRoutingTables(ListVpcRoutingTablesOptions listVpcRoutingTablesOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(listVpcRoutingTablesOptions,
+      "listVpcRoutingTablesOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("vpc_id", listVpcRoutingTablesOptions.vpcId());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/vpcs/{vpc_id}/routing_tables", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listVpcRoutingTables");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    if (listVpcRoutingTablesOptions.start() != null) {
+      builder.query("start", String.valueOf(listVpcRoutingTablesOptions.start()));
+    }
+    if (listVpcRoutingTablesOptions.limit() != null) {
+      builder.query("limit", String.valueOf(listVpcRoutingTablesOptions.limit()));
+    }
+    if (listVpcRoutingTablesOptions.isDefault() != null) {
+      builder.query("is_default", String.valueOf(listVpcRoutingTablesOptions.isDefault()));
+    }
+    ResponseConverter<RoutingTableCollection> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<RoutingTableCollection>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Create a VPC routing table.
+   *
+   * This request creates a user-defined routing table from a routing table prototype object. The prototype object is
+   * structured in the same way as a retrieved routing table, and contains the information necessary to create the new
+   * routing table.
+   *
+   * @param createVpcRoutingTableOptions the {@link CreateVpcRoutingTableOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link RoutingTable}
+   */
+  public ServiceCall<RoutingTable> createVpcRoutingTable(CreateVpcRoutingTableOptions createVpcRoutingTableOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(createVpcRoutingTableOptions,
+      "createVpcRoutingTableOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("vpc_id", createVpcRoutingTableOptions.vpcId());
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/vpcs/{vpc_id}/routing_tables", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "createVpcRoutingTable");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    final JsonObject contentJson = new JsonObject();
+    if (createVpcRoutingTableOptions.name() != null) {
+      contentJson.addProperty("name", createVpcRoutingTableOptions.name());
+    }
+    if (createVpcRoutingTableOptions.routeDirectLinkIngress() != null) {
+      contentJson.addProperty("route_direct_link_ingress", createVpcRoutingTableOptions.routeDirectLinkIngress());
+    }
+    if (createVpcRoutingTableOptions.routeTransitGatewayIngress() != null) {
+      contentJson.addProperty("route_transit_gateway_ingress", createVpcRoutingTableOptions.routeTransitGatewayIngress());
+    }
+    if (createVpcRoutingTableOptions.routeVpcZoneIngress() != null) {
+      contentJson.addProperty("route_vpc_zone_ingress", createVpcRoutingTableOptions.routeVpcZoneIngress());
+    }
+    if (createVpcRoutingTableOptions.routes() != null) {
+      contentJson.add("routes", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createVpcRoutingTableOptions.routes()));
+    }
+    builder.bodyJson(contentJson);
+    ResponseConverter<RoutingTable> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<RoutingTable>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Delete specified VPC routing table.
+   *
+   * This request deletes a routing table.  A routing table cannot be deleted if it is associated with any subnets in
+   * the VPC. Additionally, a VPC's default routing table cannot be deleted. This operation cannot be reversed.
+   *
+   * @param deleteVpcRoutingTableOptions the {@link DeleteVpcRoutingTableOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a void result
+   */
+  public ServiceCall<Void> deleteVpcRoutingTable(DeleteVpcRoutingTableOptions deleteVpcRoutingTableOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(deleteVpcRoutingTableOptions,
+      "deleteVpcRoutingTableOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("vpc_id", deleteVpcRoutingTableOptions.vpcId());
+    pathParamsMap.put("id", deleteVpcRoutingTableOptions.id());
+    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/vpcs/{vpc_id}/routing_tables/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "deleteVpcRoutingTable");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Retrieve specified VPC routing table.
+   *
+   * This request retrieves a single routing table specified by the identifier in the URL.
+   *
+   * @param getVpcRoutingTableOptions the {@link GetVpcRoutingTableOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link RoutingTable}
+   */
+  public ServiceCall<RoutingTable> getVpcRoutingTable(GetVpcRoutingTableOptions getVpcRoutingTableOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(getVpcRoutingTableOptions,
+      "getVpcRoutingTableOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("vpc_id", getVpcRoutingTableOptions.vpcId());
+    pathParamsMap.put("id", getVpcRoutingTableOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/vpcs/{vpc_id}/routing_tables/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getVpcRoutingTable");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<RoutingTable> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<RoutingTable>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Update specified VPC routing table.
+   *
+   * This request updates a routing table with the information in a provided routing table patch. The patch object is
+   * structured in the same way as a retrieved table and contains only the information to be updated.
+   *
+   * @param updateVpcRoutingTableOptions the {@link UpdateVpcRoutingTableOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link RoutingTable}
+   */
+  public ServiceCall<RoutingTable> updateVpcRoutingTable(UpdateVpcRoutingTableOptions updateVpcRoutingTableOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(updateVpcRoutingTableOptions,
+      "updateVpcRoutingTableOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("vpc_id", updateVpcRoutingTableOptions.vpcId());
+    pathParamsMap.put("id", updateVpcRoutingTableOptions.id());
+    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/vpcs/{vpc_id}/routing_tables/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "updateVpcRoutingTable");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateVpcRoutingTableOptions.routingTablePatch()), "application/merge-patch+json");
+    ResponseConverter<RoutingTable> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<RoutingTable>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * List all the routes of a VPC routing table.
+   *
+   * This request lists all the routes for the specified VPC routing table.  If a subnet has been associated with this
+   * routing table, delivery of packets sent on a subnet is performed according to the action of the most specific
+   * matching route in the table (provided the subnet and route are in the same zone).  If multiple equally-specific
+   * routes exist, traffic will be distributed across them.  If no routes match, delivery will be controlled by the
+   * system's built-in routes.
+   *
+   * @param listVpcRoutingTableRoutesOptions the {@link ListVpcRoutingTableRoutesOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link RouteCollection}
+   */
+  public ServiceCall<RouteCollection> listVpcRoutingTableRoutes(ListVpcRoutingTableRoutesOptions listVpcRoutingTableRoutesOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(listVpcRoutingTableRoutesOptions,
+      "listVpcRoutingTableRoutesOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("vpc_id", listVpcRoutingTableRoutesOptions.vpcId());
+    pathParamsMap.put("routing_table_id", listVpcRoutingTableRoutesOptions.routingTableId());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/vpcs/{vpc_id}/routing_tables/{routing_table_id}/routes", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listVpcRoutingTableRoutes");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    if (listVpcRoutingTableRoutesOptions.start() != null) {
+      builder.query("start", String.valueOf(listVpcRoutingTableRoutesOptions.start()));
+    }
+    if (listVpcRoutingTableRoutesOptions.limit() != null) {
+      builder.query("limit", String.valueOf(listVpcRoutingTableRoutesOptions.limit()));
+    }
+    ResponseConverter<RouteCollection> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<RouteCollection>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Create a VPC route.
+   *
+   * This request creates a new VPC route from a VPC route prototype object. The prototype object is structured in the
+   * same way as a retrieved VPC route and contains the information necessary to create the route.
+   *
+   * @param createVpcRoutingTableRouteOptions the {@link CreateVpcRoutingTableRouteOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link Route}
+   */
+  public ServiceCall<Route> createVpcRoutingTableRoute(CreateVpcRoutingTableRouteOptions createVpcRoutingTableRouteOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(createVpcRoutingTableRouteOptions,
+      "createVpcRoutingTableRouteOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("vpc_id", createVpcRoutingTableRouteOptions.vpcId());
+    pathParamsMap.put("routing_table_id", createVpcRoutingTableRouteOptions.routingTableId());
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/vpcs/{vpc_id}/routing_tables/{routing_table_id}/routes", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "createVpcRoutingTableRoute");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    final JsonObject contentJson = new JsonObject();
+    contentJson.addProperty("destination", createVpcRoutingTableRouteOptions.destination());
+    contentJson.add("next_hop", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createVpcRoutingTableRouteOptions.nextHop()));
+    contentJson.add("zone", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createVpcRoutingTableRouteOptions.zone()));
+    if (createVpcRoutingTableRouteOptions.action() != null) {
+      contentJson.addProperty("action", createVpcRoutingTableRouteOptions.action());
+    }
+    if (createVpcRoutingTableRouteOptions.name() != null) {
+      contentJson.addProperty("name", createVpcRoutingTableRouteOptions.name());
+    }
+    builder.bodyJson(contentJson);
+    ResponseConverter<Route> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<Route>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Delete the specified VPC route.
+   *
+   * This request deletes a VPC route. This operation cannot be reversed.
+   *
+   * @param deleteVpcRoutingTableRouteOptions the {@link DeleteVpcRoutingTableRouteOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a void result
+   */
+  public ServiceCall<Void> deleteVpcRoutingTableRoute(DeleteVpcRoutingTableRouteOptions deleteVpcRoutingTableRouteOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(deleteVpcRoutingTableRouteOptions,
+      "deleteVpcRoutingTableRouteOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("vpc_id", deleteVpcRoutingTableRouteOptions.vpcId());
+    pathParamsMap.put("routing_table_id", deleteVpcRoutingTableRouteOptions.routingTableId());
+    pathParamsMap.put("id", deleteVpcRoutingTableRouteOptions.id());
+    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/vpcs/{vpc_id}/routing_tables/{routing_table_id}/routes/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "deleteVpcRoutingTableRoute");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Retrieve the specified VPC route.
+   *
+   * This request retrieves a single VPC route specified by the identifier in the URL path.
+   *
+   * @param getVpcRoutingTableRouteOptions the {@link GetVpcRoutingTableRouteOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link Route}
+   */
+  public ServiceCall<Route> getVpcRoutingTableRoute(GetVpcRoutingTableRouteOptions getVpcRoutingTableRouteOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(getVpcRoutingTableRouteOptions,
+      "getVpcRoutingTableRouteOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("vpc_id", getVpcRoutingTableRouteOptions.vpcId());
+    pathParamsMap.put("routing_table_id", getVpcRoutingTableRouteOptions.routingTableId());
+    pathParamsMap.put("id", getVpcRoutingTableRouteOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/vpcs/{vpc_id}/routing_tables/{routing_table_id}/routes/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getVpcRoutingTableRoute");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<Route> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<Route>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Update the specified VPC route.
+   *
+   * This request updates a VPC route with the information provided in a route patch object. The patch object is
+   * structured in the same way as a retrieved VPC route and needs to contain only the information to be updated.
+   *
+   * @param updateVpcRoutingTableRouteOptions the {@link UpdateVpcRoutingTableRouteOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link Route}
+   */
+  public ServiceCall<Route> updateVpcRoutingTableRoute(UpdateVpcRoutingTableRouteOptions updateVpcRoutingTableRouteOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(updateVpcRoutingTableRouteOptions,
+      "updateVpcRoutingTableRouteOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("vpc_id", updateVpcRoutingTableRouteOptions.vpcId());
+    pathParamsMap.put("routing_table_id", updateVpcRoutingTableRouteOptions.routingTableId());
+    pathParamsMap.put("id", updateVpcRoutingTableRouteOptions.id());
+    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/vpcs/{vpc_id}/routing_tables/{routing_table_id}/routes/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "updateVpcRoutingTableRoute");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateVpcRoutingTableRouteOptions.routePatch()), "application/merge-patch+json");
+    ResponseConverter<Route> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<Route>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
    * List all subnets.
    *
    * This request lists all subnets in the region. Subnets are contiguous ranges of IP addresses specified in CIDR block
@@ -1000,6 +1396,12 @@ public class Vpc extends BaseService {
     }
     if (listSubnetsOptions.resourceGroupId() != null) {
       builder.query("resource_group.id", String.valueOf(listSubnetsOptions.resourceGroupId()));
+    }
+    if (listSubnetsOptions.routingTableId() != null) {
+      builder.query("routing_table.id", String.valueOf(listSubnetsOptions.routingTableId()));
+    }
+    if (listSubnetsOptions.routingTableName() != null) {
+      builder.query("routing_table.name", String.valueOf(listSubnetsOptions.routingTableName()));
     }
     ResponseConverter<SubnetCollection> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<SubnetCollection>() { }.getType());
@@ -1051,8 +1453,7 @@ public class Vpc extends BaseService {
    * This request deletes a subnet. This operation cannot be reversed. For this request to succeed, the subnet must not
    * be referenced by any network interfaces, VPN gateways, or load balancers. A delete operation automatically detaches
    * the subnet from any network ACLs, public gateways, or endpoint gateways. All flow log collectors with `auto_delete`
-   * set to
-   * `true` targeting the subnet or any resource in the subnet are automatically deleted.
+   * set to `true` targeting the subnet or any resource in the subnet are automatically deleted.
    *
    * @param deleteSubnetOptions the {@link DeleteSubnetOptions} containing the options for the call
    * @return a {@link ServiceCall} with a void result
@@ -1256,6 +1657,216 @@ public class Vpc extends BaseService {
     builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(setSubnetPublicGatewayOptions.publicGatewayIdentity()), "application/json");
     ResponseConverter<PublicGateway> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<PublicGateway>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Retrieve a subnet's attached routing table.
+   *
+   * This request retrieves the routing table attached to the subnet specified by the identifier in the URL.
+   *
+   * @param getSubnetRoutingTableOptions the {@link GetSubnetRoutingTableOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link RoutingTable}
+   */
+  public ServiceCall<RoutingTable> getSubnetRoutingTable(GetSubnetRoutingTableOptions getSubnetRoutingTableOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(getSubnetRoutingTableOptions,
+      "getSubnetRoutingTableOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", getSubnetRoutingTableOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/subnets/{id}/routing_table", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getSubnetRoutingTable");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<RoutingTable> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<RoutingTable>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Attach a routing table to a subnet.
+   *
+   * This request attaches the routing table, specified in the request body, to the subnet specified by the subnet
+   * identifier in the URL. This replaces the existing routing table on the subnet.
+   *
+   * For this request to succeed, the routing table `route_direct_link_ingress`,
+   * `route_transit_gateway_ingress`, and `route_vpc_zone_ingress` properties must be `false`.
+   *
+   * @param replaceSubnetRoutingTableOptions the {@link ReplaceSubnetRoutingTableOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link RoutingTable}
+   */
+  public ServiceCall<RoutingTable> replaceSubnetRoutingTable(ReplaceSubnetRoutingTableOptions replaceSubnetRoutingTableOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(replaceSubnetRoutingTableOptions,
+      "replaceSubnetRoutingTableOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", replaceSubnetRoutingTableOptions.id());
+    RequestBuilder builder = RequestBuilder.put(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/subnets/{id}/routing_table", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "replaceSubnetRoutingTable");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(replaceSubnetRoutingTableOptions.routingTableIdentity()), "application/json");
+    ResponseConverter<RoutingTable> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<RoutingTable>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * List all reserved IPs in a subnet.
+   *
+   * This request lists reserved IPs in the subnet that are unbound or bound to an endpoint gateway.
+   *
+   * @param listSubnetReservedIpsOptions the {@link ListSubnetReservedIpsOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link ReservedIPCollection}
+   */
+  public ServiceCall<ReservedIPCollection> listSubnetReservedIps(ListSubnetReservedIpsOptions listSubnetReservedIpsOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(listSubnetReservedIpsOptions,
+      "listSubnetReservedIpsOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("subnet_id", listSubnetReservedIpsOptions.subnetId());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/subnets/{subnet_id}/reserved_ips", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listSubnetReservedIps");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    if (listSubnetReservedIpsOptions.start() != null) {
+      builder.query("start", String.valueOf(listSubnetReservedIpsOptions.start()));
+    }
+    if (listSubnetReservedIpsOptions.limit() != null) {
+      builder.query("limit", String.valueOf(listSubnetReservedIpsOptions.limit()));
+    }
+    if (listSubnetReservedIpsOptions.sort() != null) {
+      builder.query("sort", String.valueOf(listSubnetReservedIpsOptions.sort()));
+    }
+    ResponseConverter<ReservedIPCollection> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<ReservedIPCollection>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Reserve an IP in a subnet.
+   *
+   * This request reserves a system-selected IP address in a subnet.
+   *
+   * @param createSubnetReservedIpOptions the {@link CreateSubnetReservedIpOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link ReservedIP}
+   */
+  public ServiceCall<ReservedIP> createSubnetReservedIp(CreateSubnetReservedIpOptions createSubnetReservedIpOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(createSubnetReservedIpOptions,
+      "createSubnetReservedIpOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("subnet_id", createSubnetReservedIpOptions.subnetId());
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/subnets/{subnet_id}/reserved_ips", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "createSubnetReservedIp");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    final JsonObject contentJson = new JsonObject();
+    if (createSubnetReservedIpOptions.autoDelete() != null) {
+      contentJson.addProperty("auto_delete", createSubnetReservedIpOptions.autoDelete());
+    }
+    if (createSubnetReservedIpOptions.name() != null) {
+      contentJson.addProperty("name", createSubnetReservedIpOptions.name());
+    }
+    if (createSubnetReservedIpOptions.target() != null) {
+      contentJson.add("target", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createSubnetReservedIpOptions.target()));
+    }
+    builder.bodyJson(contentJson);
+    ResponseConverter<ReservedIP> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<ReservedIP>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Release specified reserved IP.
+   *
+   * This request releases a reserved IP. This operation cannot be reversed.
+   *
+   * @param deleteSubnetReservedIpOptions the {@link DeleteSubnetReservedIpOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a void result
+   */
+  public ServiceCall<Void> deleteSubnetReservedIp(DeleteSubnetReservedIpOptions deleteSubnetReservedIpOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(deleteSubnetReservedIpOptions,
+      "deleteSubnetReservedIpOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("subnet_id", deleteSubnetReservedIpOptions.subnetId());
+    pathParamsMap.put("id", deleteSubnetReservedIpOptions.id());
+    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/subnets/{subnet_id}/reserved_ips/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "deleteSubnetReservedIp");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Retrieve specified reserved IP.
+   *
+   * This request retrieves a single reserved IP specified by the identifier in the URL.
+   *
+   * @param getSubnetReservedIpOptions the {@link GetSubnetReservedIpOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link ReservedIP}
+   */
+  public ServiceCall<ReservedIP> getSubnetReservedIp(GetSubnetReservedIpOptions getSubnetReservedIpOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(getSubnetReservedIpOptions,
+      "getSubnetReservedIpOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("subnet_id", getSubnetReservedIpOptions.subnetId());
+    pathParamsMap.put("id", getSubnetReservedIpOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/subnets/{subnet_id}/reserved_ips/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getSubnetReservedIp");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<ReservedIP> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<ReservedIP>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Update specified reserved IP.
+   *
+   * This request updates a reserved IP with the information in a provided reserved IP patch. The reserved IP patch
+   * object is structured in the same way as a retrieved reserved IP and contains only the information to be updated.
+   *
+   * @param updateSubnetReservedIpOptions the {@link UpdateSubnetReservedIpOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link ReservedIP}
+   */
+  public ServiceCall<ReservedIP> updateSubnetReservedIp(UpdateSubnetReservedIpOptions updateSubnetReservedIpOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(updateSubnetReservedIpOptions,
+      "updateSubnetReservedIpOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("subnet_id", updateSubnetReservedIpOptions.subnetId());
+    pathParamsMap.put("id", updateSubnetReservedIpOptions.id());
+    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/subnets/{subnet_id}/reserved_ips/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "updateSubnetReservedIp");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateSubnetReservedIpOptions.reservedIpPatch()), "application/merge-patch+json");
+    ResponseConverter<ReservedIP> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<ReservedIP>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
   }
 
@@ -1560,11 +2171,11 @@ public class Vpc extends BaseService {
     if (createKeyOptions.name() != null) {
       contentJson.addProperty("name", createKeyOptions.name());
     }
-    if (createKeyOptions.type() != null) {
-      contentJson.addProperty("type", createKeyOptions.type());
-    }
     if (createKeyOptions.resourceGroup() != null) {
       contentJson.add("resource_group", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createKeyOptions.resourceGroup()));
+    }
+    if (createKeyOptions.type() != null) {
+      contentJson.addProperty("type", createKeyOptions.type());
     }
     builder.bodyJson(contentJson);
     ResponseConverter<Key> responseConverter =
@@ -2114,6 +2725,9 @@ public class Vpc extends BaseService {
     builder.query("generation", String.valueOf(this.generation));
     final JsonObject contentJson = new JsonObject();
     contentJson.add("subnet", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createInstanceNetworkInterfaceOptions.subnet()));
+    if (createInstanceNetworkInterfaceOptions.allowIpSpoofing() != null) {
+      contentJson.addProperty("allow_ip_spoofing", createInstanceNetworkInterfaceOptions.allowIpSpoofing());
+    }
     if (createInstanceNetworkInterfaceOptions.name() != null) {
       contentJson.addProperty("name", createInstanceNetworkInterfaceOptions.name());
     }
@@ -2532,12 +3146,6 @@ public class Vpc extends BaseService {
     final JsonObject contentJson = new JsonObject();
     contentJson.add("instance_template", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createInstanceGroupOptions.instanceTemplate()));
     contentJson.add("subnets", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createInstanceGroupOptions.subnets()));
-    if (createInstanceGroupOptions.name() != null) {
-      contentJson.addProperty("name", createInstanceGroupOptions.name());
-    }
-    if (createInstanceGroupOptions.membershipCount() != null) {
-      contentJson.addProperty("membership_count", createInstanceGroupOptions.membershipCount());
-    }
     if (createInstanceGroupOptions.applicationPort() != null) {
       contentJson.addProperty("application_port", createInstanceGroupOptions.applicationPort());
     }
@@ -2546,6 +3154,12 @@ public class Vpc extends BaseService {
     }
     if (createInstanceGroupOptions.loadBalancerPool() != null) {
       contentJson.add("load_balancer_pool", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createInstanceGroupOptions.loadBalancerPool()));
+    }
+    if (createInstanceGroupOptions.membershipCount() != null) {
+      contentJson.addProperty("membership_count", createInstanceGroupOptions.membershipCount());
+    }
+    if (createInstanceGroupOptions.name() != null) {
+      contentJson.addProperty("name", createInstanceGroupOptions.name());
     }
     if (createInstanceGroupOptions.resourceGroup() != null) {
       contentJson.add("resource_group", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createInstanceGroupOptions.resourceGroup()));
@@ -3390,8 +4004,8 @@ public class Vpc extends BaseService {
       "getRegionZoneOptions cannot be null");
     Map<String, String> pathParamsMap = new HashMap<String, String>();
     pathParamsMap.put("region_name", getRegionZoneOptions.regionName());
-    pathParamsMap.put("zone_name", getRegionZoneOptions.zoneName());
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/regions/{region_name}/zones/{zone_name}", pathParamsMap));
+    pathParamsMap.put("name", getRegionZoneOptions.name());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/regions/{region_name}/zones/{name}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getRegionZone");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
@@ -3480,11 +4094,11 @@ public class Vpc extends BaseService {
     final JsonObject contentJson = new JsonObject();
     contentJson.add("vpc", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createPublicGatewayOptions.vpc()));
     contentJson.add("zone", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createPublicGatewayOptions.zone()));
-    if (createPublicGatewayOptions.name() != null) {
-      contentJson.addProperty("name", createPublicGatewayOptions.name());
-    }
     if (createPublicGatewayOptions.floatingIp() != null) {
       contentJson.add("floating_ip", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createPublicGatewayOptions.floatingIp()));
+    }
+    if (createPublicGatewayOptions.name() != null) {
+      contentJson.addProperty("name", createPublicGatewayOptions.name());
     }
     if (createPublicGatewayOptions.resourceGroup() != null) {
       contentJson.add("resource_group", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createPublicGatewayOptions.resourceGroup()));
@@ -4102,7 +4716,7 @@ public class Vpc extends BaseService {
    *
    * This request creates a new security group from a security group prototype object. The prototype object is
    * structured in the same way as a retrieved security group, and contains the information necessary to create the new
-   * security group. If security group rules are included in the protoype object, those rules will be added to the
+   * security group. If security group rules are included in the prototype object, those rules will be added to the
    * security group. Each security group is scoped to one VPC. Only network interfaces on instances in that VPC can be
    * added to the security group.
    *
@@ -4545,11 +5159,11 @@ public class Vpc extends BaseService {
     contentJson.addProperty("dh_group", createIkePolicyOptions.dhGroup());
     contentJson.addProperty("encryption_algorithm", createIkePolicyOptions.encryptionAlgorithm());
     contentJson.addProperty("ike_version", createIkePolicyOptions.ikeVersion());
-    if (createIkePolicyOptions.name() != null) {
-      contentJson.addProperty("name", createIkePolicyOptions.name());
-    }
     if (createIkePolicyOptions.keyLifetime() != null) {
       contentJson.addProperty("key_lifetime", createIkePolicyOptions.keyLifetime());
+    }
+    if (createIkePolicyOptions.name() != null) {
+      contentJson.addProperty("name", createIkePolicyOptions.name());
     }
     if (createIkePolicyOptions.resourceGroup() != null) {
       contentJson.add("resource_group", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createIkePolicyOptions.resourceGroup()));
@@ -4728,11 +5342,11 @@ public class Vpc extends BaseService {
     contentJson.addProperty("authentication_algorithm", createIpsecPolicyOptions.authenticationAlgorithm());
     contentJson.addProperty("encryption_algorithm", createIpsecPolicyOptions.encryptionAlgorithm());
     contentJson.addProperty("pfs", createIpsecPolicyOptions.pfs());
-    if (createIpsecPolicyOptions.name() != null) {
-      contentJson.addProperty("name", createIpsecPolicyOptions.name());
-    }
     if (createIpsecPolicyOptions.keyLifetime() != null) {
       contentJson.addProperty("key_lifetime", createIpsecPolicyOptions.keyLifetime());
+    }
+    if (createIpsecPolicyOptions.name() != null) {
+      contentJson.addProperty("name", createIpsecPolicyOptions.name());
     }
     if (createIpsecPolicyOptions.resourceGroup() != null) {
       contentJson.add("resource_group", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createIpsecPolicyOptions.resourceGroup()));
@@ -4875,6 +5489,9 @@ public class Vpc extends BaseService {
     if (listVpnGatewaysOptions.resourceGroupId() != null) {
       builder.query("resource_group.id", String.valueOf(listVpnGatewaysOptions.resourceGroupId()));
     }
+    if (listVpnGatewaysOptions.mode() != null) {
+      builder.query("mode", String.valueOf(listVpnGatewaysOptions.mode()));
+    }
     ResponseConverter<VPNGatewayCollection> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<VPNGatewayCollection>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -4910,15 +5527,7 @@ public class Vpc extends BaseService {
     builder.header("Accept", "application/json");
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    final JsonObject contentJson = new JsonObject();
-    contentJson.add("subnet", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createVpnGatewayOptions.subnet()));
-    if (createVpnGatewayOptions.name() != null) {
-      contentJson.addProperty("name", createVpnGatewayOptions.name());
-    }
-    if (createVpnGatewayOptions.resourceGroup() != null) {
-      contentJson.add("resource_group", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createVpnGatewayOptions.resourceGroup()));
-    }
-    builder.bodyJson(contentJson);
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(createVpnGatewayOptions.vpnGatewayPrototype()), "application/json");
     ResponseConverter<VPNGateway> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<VPNGateway>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -5481,11 +6090,11 @@ public class Vpc extends BaseService {
     final JsonObject contentJson = new JsonObject();
     contentJson.addProperty("is_public", createLoadBalancerOptions.isPublic());
     contentJson.add("subnets", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createLoadBalancerOptions.subnets()));
-    if (createLoadBalancerOptions.name() != null) {
-      contentJson.addProperty("name", createLoadBalancerOptions.name());
-    }
     if (createLoadBalancerOptions.listeners() != null) {
       contentJson.add("listeners", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createLoadBalancerOptions.listeners()));
+    }
+    if (createLoadBalancerOptions.name() != null) {
+      contentJson.addProperty("name", createLoadBalancerOptions.name());
     }
     if (createLoadBalancerOptions.pools() != null) {
       contentJson.add("pools", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createLoadBalancerOptions.pools()));
@@ -5655,11 +6264,14 @@ public class Vpc extends BaseService {
     final JsonObject contentJson = new JsonObject();
     contentJson.addProperty("port", createLoadBalancerListenerOptions.port());
     contentJson.addProperty("protocol", createLoadBalancerListenerOptions.protocol());
-    if (createLoadBalancerListenerOptions.connectionLimit() != null) {
-      contentJson.addProperty("connection_limit", createLoadBalancerListenerOptions.connectionLimit());
+    if (createLoadBalancerListenerOptions.acceptProxyProtocol() != null) {
+      contentJson.addProperty("accept_proxy_protocol", createLoadBalancerListenerOptions.acceptProxyProtocol());
     }
     if (createLoadBalancerListenerOptions.certificateInstance() != null) {
       contentJson.add("certificate_instance", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createLoadBalancerListenerOptions.certificateInstance()));
+    }
+    if (createLoadBalancerListenerOptions.connectionLimit() != null) {
+      contentJson.addProperty("connection_limit", createLoadBalancerListenerOptions.connectionLimit());
     }
     if (createLoadBalancerListenerOptions.defaultPool() != null) {
       contentJson.add("default_pool", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createLoadBalancerListenerOptions.defaultPool()));
@@ -5803,8 +6415,8 @@ public class Vpc extends BaseService {
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     final JsonObject contentJson = new JsonObject();
-    contentJson.addProperty("priority", createLoadBalancerListenerPolicyOptions.priority());
     contentJson.addProperty("action", createLoadBalancerListenerPolicyOptions.action());
+    contentJson.addProperty("priority", createLoadBalancerListenerPolicyOptions.priority());
     if (createLoadBalancerListenerPolicyOptions.name() != null) {
       contentJson.addProperty("name", createLoadBalancerListenerPolicyOptions.name());
     }
@@ -6102,13 +6714,16 @@ public class Vpc extends BaseService {
     builder.query("generation", String.valueOf(this.generation));
     final JsonObject contentJson = new JsonObject();
     contentJson.addProperty("algorithm", createLoadBalancerPoolOptions.algorithm());
-    contentJson.addProperty("protocol", createLoadBalancerPoolOptions.protocol());
     contentJson.add("health_monitor", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createLoadBalancerPoolOptions.healthMonitor()));
+    contentJson.addProperty("protocol", createLoadBalancerPoolOptions.protocol());
+    if (createLoadBalancerPoolOptions.members() != null) {
+      contentJson.add("members", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createLoadBalancerPoolOptions.members()));
+    }
     if (createLoadBalancerPoolOptions.name() != null) {
       contentJson.addProperty("name", createLoadBalancerPoolOptions.name());
     }
-    if (createLoadBalancerPoolOptions.members() != null) {
-      contentJson.add("members", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createLoadBalancerPoolOptions.members()));
+    if (createLoadBalancerPoolOptions.proxyProtocol() != null) {
+      contentJson.addProperty("proxy_protocol", createLoadBalancerPoolOptions.proxyProtocol());
     }
     if (createLoadBalancerPoolOptions.sessionPersistence() != null) {
       contentJson.add("session_persistence", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createLoadBalancerPoolOptions.sessionPersistence()));
@@ -6122,7 +6737,8 @@ public class Vpc extends BaseService {
   /**
    * Delete a pool.
    *
-   * This request deletes a load balancer pool. This operation cannot be reversed.
+   * This request deletes a load balancer pool. This operation cannot be reversed. The pool must not currently be the
+   * default pool for any listener in the load balancer.
    *
    * @param deleteLoadBalancerPoolOptions the {@link DeleteLoadBalancerPoolOptions} containing the options for the call
    * @return a {@link ServiceCall} with a void result
@@ -6374,6 +6990,291 @@ public class Vpc extends BaseService {
   }
 
   /**
+   * List all endpoint gateways.
+   *
+   * This request lists all endpoint gateways. An endpoint gateway maps one or more reserved IPs in a VPC to a target
+   * outside the VPC.
+   *
+   * @param listEndpointGatewaysOptions the {@link ListEndpointGatewaysOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link EndpointGatewayCollection}
+   */
+  public ServiceCall<EndpointGatewayCollection> listEndpointGateways(ListEndpointGatewaysOptions listEndpointGatewaysOptions) {
+    if (listEndpointGatewaysOptions == null) {
+      listEndpointGatewaysOptions = new ListEndpointGatewaysOptions.Builder().build();
+    }
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/endpoint_gateways"));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listEndpointGateways");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    if (listEndpointGatewaysOptions.name() != null) {
+      builder.query("name", String.valueOf(listEndpointGatewaysOptions.name()));
+    }
+    if (listEndpointGatewaysOptions.start() != null) {
+      builder.query("start", String.valueOf(listEndpointGatewaysOptions.start()));
+    }
+    if (listEndpointGatewaysOptions.limit() != null) {
+      builder.query("limit", String.valueOf(listEndpointGatewaysOptions.limit()));
+    }
+    if (listEndpointGatewaysOptions.resourceGroupId() != null) {
+      builder.query("resource_group.id", String.valueOf(listEndpointGatewaysOptions.resourceGroupId()));
+    }
+    ResponseConverter<EndpointGatewayCollection> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<EndpointGatewayCollection>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * List all endpoint gateways.
+   *
+   * This request lists all endpoint gateways. An endpoint gateway maps one or more reserved IPs in a VPC to a target
+   * outside the VPC.
+   *
+   * @return a {@link ServiceCall} with a result of type {@link EndpointGatewayCollection}
+   */
+  public ServiceCall<EndpointGatewayCollection> listEndpointGateways() {
+    return listEndpointGateways(null);
+  }
+
+  /**
+   * Create an endpoint gateway.
+   *
+   * This request creates a new endpoint gateway. An endpoint gateway maps one or more reserved IPs in a VPC to a target
+   * outside the VPC.
+   *
+   * @param createEndpointGatewayOptions the {@link CreateEndpointGatewayOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link EndpointGateway}
+   */
+  public ServiceCall<EndpointGateway> createEndpointGateway(CreateEndpointGatewayOptions createEndpointGatewayOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(createEndpointGatewayOptions,
+      "createEndpointGatewayOptions cannot be null");
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/endpoint_gateways"));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "createEndpointGateway");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    final JsonObject contentJson = new JsonObject();
+    contentJson.add("target", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createEndpointGatewayOptions.target()));
+    contentJson.add("vpc", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createEndpointGatewayOptions.vpc()));
+    if (createEndpointGatewayOptions.ips() != null) {
+      contentJson.add("ips", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createEndpointGatewayOptions.ips()));
+    }
+    if (createEndpointGatewayOptions.name() != null) {
+      contentJson.addProperty("name", createEndpointGatewayOptions.name());
+    }
+    if (createEndpointGatewayOptions.resourceGroup() != null) {
+      contentJson.add("resource_group", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createEndpointGatewayOptions.resourceGroup()));
+    }
+    builder.bodyJson(contentJson);
+    ResponseConverter<EndpointGateway> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<EndpointGateway>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * List all reserved IPs bound to an endpoint gateway.
+   *
+   * This request retrieves all reserved IPs bound to an endpoint gateway.
+   *
+   * @param listEndpointGatewayIpsOptions the {@link ListEndpointGatewayIpsOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link ReservedIPCollectionEndpointGatewayContext}
+   */
+  public ServiceCall<ReservedIPCollectionEndpointGatewayContext> listEndpointGatewayIps(ListEndpointGatewayIpsOptions listEndpointGatewayIpsOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(listEndpointGatewayIpsOptions,
+      "listEndpointGatewayIpsOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("endpoint_gateway_id", listEndpointGatewayIpsOptions.endpointGatewayId());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/endpoint_gateways/{endpoint_gateway_id}/ips", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listEndpointGatewayIps");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    if (listEndpointGatewayIpsOptions.start() != null) {
+      builder.query("start", String.valueOf(listEndpointGatewayIpsOptions.start()));
+    }
+    if (listEndpointGatewayIpsOptions.limit() != null) {
+      builder.query("limit", String.valueOf(listEndpointGatewayIpsOptions.limit()));
+    }
+    if (listEndpointGatewayIpsOptions.sort() != null) {
+      builder.query("sort", String.valueOf(listEndpointGatewayIpsOptions.sort()));
+    }
+    ResponseConverter<ReservedIPCollectionEndpointGatewayContext> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<ReservedIPCollectionEndpointGatewayContext>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Unbind a reserved IP from an endpoint gateway.
+   *
+   * This request unbinds the specified reserved IP from the specified endpoint gateway. If the reserved IP has
+   * `auto_delete` set to `true`, the reserved IP will be deleted.
+   *
+   * @param removeEndpointGatewayIpOptions the {@link RemoveEndpointGatewayIpOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a void result
+   */
+  public ServiceCall<Void> removeEndpointGatewayIp(RemoveEndpointGatewayIpOptions removeEndpointGatewayIpOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(removeEndpointGatewayIpOptions,
+      "removeEndpointGatewayIpOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("endpoint_gateway_id", removeEndpointGatewayIpOptions.endpointGatewayId());
+    pathParamsMap.put("id", removeEndpointGatewayIpOptions.id());
+    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/endpoint_gateways/{endpoint_gateway_id}/ips/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "removeEndpointGatewayIp");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Retrieve a reserved IP bound to an endpoint gateway.
+   *
+   * This request a retrieves the specified reserved IP address if it is bound to the endpoint gateway specified in the
+   * URL.
+   *
+   * @param getEndpointGatewayIpOptions the {@link GetEndpointGatewayIpOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link ReservedIP}
+   */
+  public ServiceCall<ReservedIP> getEndpointGatewayIp(GetEndpointGatewayIpOptions getEndpointGatewayIpOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(getEndpointGatewayIpOptions,
+      "getEndpointGatewayIpOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("endpoint_gateway_id", getEndpointGatewayIpOptions.endpointGatewayId());
+    pathParamsMap.put("id", getEndpointGatewayIpOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/endpoint_gateways/{endpoint_gateway_id}/ips/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getEndpointGatewayIp");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<ReservedIP> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<ReservedIP>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Bind a reserved IP to an endpoint gateway.
+   *
+   * This request binds the specified reserved IP to the specified endpoint gateway. For this request to succeed, the
+   * reserved IP must currently be unbound and must not have a floating IP bound to it.
+   *
+   * @param addEndpointGatewayIpOptions the {@link AddEndpointGatewayIpOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link ReservedIP}
+   */
+  public ServiceCall<ReservedIP> addEndpointGatewayIp(AddEndpointGatewayIpOptions addEndpointGatewayIpOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(addEndpointGatewayIpOptions,
+      "addEndpointGatewayIpOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("endpoint_gateway_id", addEndpointGatewayIpOptions.endpointGatewayId());
+    pathParamsMap.put("id", addEndpointGatewayIpOptions.id());
+    RequestBuilder builder = RequestBuilder.put(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/endpoint_gateways/{endpoint_gateway_id}/ips/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "addEndpointGatewayIp");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<ReservedIP> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<ReservedIP>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Delete an endpoint gateway.
+   *
+   * This request deletes an endpoint gateway. This operation cannot be reversed.
+   *
+   * Reserved IPs that were bound to the endpoint gateway will be released if their
+   * `auto_delete` property is set to true.
+   *
+   * @param deleteEndpointGatewayOptions the {@link DeleteEndpointGatewayOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a void result
+   */
+  public ServiceCall<Void> deleteEndpointGateway(DeleteEndpointGatewayOptions deleteEndpointGatewayOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(deleteEndpointGatewayOptions,
+      "deleteEndpointGatewayOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", deleteEndpointGatewayOptions.id());
+    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/endpoint_gateways/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "deleteEndpointGateway");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Retrieve an endpoint gateway.
+   *
+   * This request retrieves a single endpoint gateway specified by the identifier in the URL.
+   *
+   * @param getEndpointGatewayOptions the {@link GetEndpointGatewayOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link EndpointGateway}
+   */
+  public ServiceCall<EndpointGateway> getEndpointGateway(GetEndpointGatewayOptions getEndpointGatewayOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(getEndpointGatewayOptions,
+      "getEndpointGatewayOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", getEndpointGatewayOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/endpoint_gateways/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getEndpointGateway");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<EndpointGateway> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<EndpointGateway>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Update an endpoint gateway.
+   *
+   * This request updates an endpoint gateway's name.
+   *
+   * @param updateEndpointGatewayOptions the {@link UpdateEndpointGatewayOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link EndpointGateway}
+   */
+  public ServiceCall<EndpointGateway> updateEndpointGateway(UpdateEndpointGatewayOptions updateEndpointGatewayOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(updateEndpointGatewayOptions,
+      "updateEndpointGatewayOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", updateEndpointGatewayOptions.id());
+    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/endpoint_gateways/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "updateEndpointGateway");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateEndpointGatewayOptions.endpointGatewayPatch()), "application/merge-patch+json");
+    ResponseConverter<EndpointGateway> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<EndpointGateway>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
    * List all flow log collectors.
    *
    * This request retrieves all flow log collectors in the region. A flow log collector summarizes data sent over one or
@@ -6462,11 +7363,11 @@ public class Vpc extends BaseService {
     final JsonObject contentJson = new JsonObject();
     contentJson.add("storage_bucket", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createFlowLogCollectorOptions.storageBucket()));
     contentJson.add("target", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createFlowLogCollectorOptions.target()));
-    if (createFlowLogCollectorOptions.name() != null) {
-      contentJson.addProperty("name", createFlowLogCollectorOptions.name());
-    }
     if (createFlowLogCollectorOptions.active() != null) {
       contentJson.addProperty("active", createFlowLogCollectorOptions.active());
+    }
+    if (createFlowLogCollectorOptions.name() != null) {
+      contentJson.addProperty("name", createFlowLogCollectorOptions.name());
     }
     if (createFlowLogCollectorOptions.resourceGroup() != null) {
       contentJson.add("resource_group", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createFlowLogCollectorOptions.resourceGroup()));

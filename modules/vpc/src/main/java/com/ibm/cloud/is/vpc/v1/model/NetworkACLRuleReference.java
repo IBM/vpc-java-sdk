@@ -19,25 +19,27 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class NetworkACLRuleReference extends GenericModel {
 
-  protected String id;
+  protected NetworkACLRuleReferenceDeleted deleted;
   protected String href;
+  protected String id;
   protected String name;
 
   /**
-   * Gets the id.
+   * Gets the deleted.
    *
-   * The unique identifier for this Network ACL rule.
+   * If present, this property indicates the referenced resource has been deleted and provides
+   * some supplementary information.
    *
-   * @return the id
+   * @return the deleted
    */
-  public String getId() {
-    return id;
+  public NetworkACLRuleReferenceDeleted getDeleted() {
+    return deleted;
   }
 
   /**
    * Gets the href.
    *
-   * The URL for this Network ACL rule.
+   * The URL for this network ACL rule.
    *
    * @return the href
    */
@@ -46,9 +48,20 @@ public class NetworkACLRuleReference extends GenericModel {
   }
 
   /**
+   * Gets the id.
+   *
+   * The unique identifier for this network ACL rule.
+   *
+   * @return the id
+   */
+  public String getId() {
+    return id;
+  }
+
+  /**
    * Gets the name.
    *
-   * The user-defined name for this Network ACL rule.
+   * The user-defined name for this network ACL rule.
    *
    * @return the name
    */

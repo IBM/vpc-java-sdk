@@ -24,7 +24,7 @@ public class LoadBalancerListenerPolicyPatch extends GenericModel {
 
   protected String name;
   protected Long priority;
-  protected LoadBalancerListenerPolicyPatchTarget target;
+  protected LoadBalancerListenerPolicyTargetPatch target;
 
   /**
    * Builder.
@@ -32,7 +32,7 @@ public class LoadBalancerListenerPolicyPatch extends GenericModel {
   public static class Builder {
     private String name;
     private Long priority;
-    private LoadBalancerListenerPolicyPatchTarget target;
+    private LoadBalancerListenerPolicyTargetPatch target;
 
     private Builder(LoadBalancerListenerPolicyPatch loadBalancerListenerPolicyPatch) {
       this.name = loadBalancerListenerPolicyPatch.name;
@@ -83,7 +83,7 @@ public class LoadBalancerListenerPolicyPatch extends GenericModel {
      * @param target the target
      * @return the LoadBalancerListenerPolicyPatch builder
      */
-    public Builder target(LoadBalancerListenerPolicyPatchTarget target) {
+    public Builder target(LoadBalancerListenerPolicyTargetPatch target) {
       this.target = target;
       return this;
     }
@@ -137,7 +137,7 @@ public class LoadBalancerListenerPolicyPatch extends GenericModel {
    *
    * @return the target
    */
-  public LoadBalancerListenerPolicyPatchTarget target() {
+  public LoadBalancerListenerPolicyTargetPatch target() {
     return target;
   }
 

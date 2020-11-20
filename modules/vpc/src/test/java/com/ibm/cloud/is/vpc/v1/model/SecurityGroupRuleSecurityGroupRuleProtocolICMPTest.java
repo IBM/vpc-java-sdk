@@ -33,13 +33,13 @@ public class SecurityGroupRuleSecurityGroupRuleProtocolICMPTest {
   @Test
   public void testSecurityGroupRuleSecurityGroupRuleProtocolICMP() throws Throwable {
     SecurityGroupRuleSecurityGroupRuleProtocolICMP securityGroupRuleSecurityGroupRuleProtocolIcmpModel = new SecurityGroupRuleSecurityGroupRuleProtocolICMP();
-    assertNull(securityGroupRuleSecurityGroupRuleProtocolIcmpModel.getId());
-    assertNull(securityGroupRuleSecurityGroupRuleProtocolIcmpModel.getHref());
     assertNull(securityGroupRuleSecurityGroupRuleProtocolIcmpModel.getDirection());
+    assertNull(securityGroupRuleSecurityGroupRuleProtocolIcmpModel.getHref());
+    assertNull(securityGroupRuleSecurityGroupRuleProtocolIcmpModel.getId());
     assertNull(securityGroupRuleSecurityGroupRuleProtocolIcmpModel.getIpVersion());
-    assertNull(securityGroupRuleSecurityGroupRuleProtocolIcmpModel.getProtocol());
     assertNull(securityGroupRuleSecurityGroupRuleProtocolIcmpModel.getRemote());
     assertNull(securityGroupRuleSecurityGroupRuleProtocolIcmpModel.getCode());
+    assertNull(securityGroupRuleSecurityGroupRuleProtocolIcmpModel.getProtocol());
     assertNull(securityGroupRuleSecurityGroupRuleProtocolIcmpModel.getType());
   }
 }

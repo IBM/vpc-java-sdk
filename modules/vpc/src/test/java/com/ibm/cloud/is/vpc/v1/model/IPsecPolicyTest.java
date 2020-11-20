@@ -16,6 +16,7 @@ package com.ibm.cloud.is.vpc.v1.model;
 import com.ibm.cloud.is.vpc.v1.model.IPsecPolicy;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionReference;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -34,18 +35,18 @@ public class IPsecPolicyTest {
   @Test
   public void testIPsecPolicy() throws Throwable {
     IPsecPolicy iPsecPolicyModel = new IPsecPolicy();
-    assertNull(iPsecPolicyModel.getId());
-    assertNull(iPsecPolicyModel.getHref());
-    assertNull(iPsecPolicyModel.getName());
-    assertNull(iPsecPolicyModel.getResourceType());
     assertNull(iPsecPolicyModel.getAuthenticationAlgorithm());
-    assertNull(iPsecPolicyModel.getEncryptionAlgorithm());
-    assertNull(iPsecPolicyModel.getKeyLifetime());
-    assertNull(iPsecPolicyModel.getPfs());
-    assertNull(iPsecPolicyModel.getResourceGroup());
     assertNull(iPsecPolicyModel.getConnections());
     assertNull(iPsecPolicyModel.getCreatedAt());
     assertNull(iPsecPolicyModel.getEncapsulationMode());
+    assertNull(iPsecPolicyModel.getEncryptionAlgorithm());
+    assertNull(iPsecPolicyModel.getHref());
+    assertNull(iPsecPolicyModel.getId());
+    assertNull(iPsecPolicyModel.getKeyLifetime());
+    assertNull(iPsecPolicyModel.getName());
+    assertNull(iPsecPolicyModel.getPfs());
+    assertNull(iPsecPolicyModel.getResourceGroup());
+    assertNull(iPsecPolicyModel.getResourceType());
     assertNull(iPsecPolicyModel.getTransformProtocol());
   }
 }

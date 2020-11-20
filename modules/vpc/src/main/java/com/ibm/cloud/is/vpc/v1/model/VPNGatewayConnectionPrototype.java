@@ -21,22 +21,33 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  * VPNGatewayConnectionPrototype.
  *
  * Classes which extend this class:
+ * - VPNGatewayConnectionPrototypeVPNGatewayConnectionStaticRouteModePrototype
  * - VPNGatewayConnectionPrototypeVPNGatewayConnectionPolicyModePrototype
  */
 public class VPNGatewayConnectionPrototype extends GenericModel {
 
+  /**
+   * Routing protocols are disabled for this VPN gateway connection.
+   */
+  public interface RoutingProtocol {
+    /** none. */
+    String NONE = "none";
+  }
+
   @SerializedName("admin_state_up")
   protected Boolean adminStateUp;
-  @SerializedName("peer_address")
-  protected String peerAddress;
-  protected String name;
-  protected String psk;
   @SerializedName("dead_peer_detection")
   protected VPNGatewayConnectionDPDPrototype deadPeerDetection;
   @SerializedName("ike_policy")
   protected IKEPolicyIdentity ikePolicy;
   @SerializedName("ipsec_policy")
   protected IPsecPolicyIdentity ipsecPolicy;
+  protected String name;
+  @SerializedName("peer_address")
+  protected String peerAddress;
+  protected String psk;
+  @SerializedName("routing_protocol")
+  protected String routingProtocol;
   @SerializedName("local_cidrs")
   protected List<String> localCidrs;
   @SerializedName("peer_cidrs")
@@ -54,39 +65,6 @@ public class VPNGatewayConnectionPrototype extends GenericModel {
    */
   public Boolean adminStateUp() {
     return adminStateUp;
-  }
-
-  /**
-   * Gets the peerAddress.
-   *
-   * The IP address of the peer VPN gateway.
-   *
-   * @return the peerAddress
-   */
-  public String peerAddress() {
-    return peerAddress;
-  }
-
-  /**
-   * Gets the name.
-   *
-   * The user-defined name for this VPN gateway connection.
-   *
-   * @return the name
-   */
-  public String name() {
-    return name;
-  }
-
-  /**
-   * Gets the psk.
-   *
-   * The preshared key.
-   *
-   * @return the psk
-   */
-  public String psk() {
-    return psk;
   }
 
   /**
@@ -121,6 +99,50 @@ public class VPNGatewayConnectionPrototype extends GenericModel {
    */
   public IPsecPolicyIdentity ipsecPolicy() {
     return ipsecPolicy;
+  }
+
+  /**
+   * Gets the name.
+   *
+   * The user-defined name for this VPN gateway connection.
+   *
+   * @return the name
+   */
+  public String name() {
+    return name;
+  }
+
+  /**
+   * Gets the peerAddress.
+   *
+   * The IP address of the peer VPN gateway.
+   *
+   * @return the peerAddress
+   */
+  public String peerAddress() {
+    return peerAddress;
+  }
+
+  /**
+   * Gets the psk.
+   *
+   * The preshared key.
+   *
+   * @return the psk
+   */
+  public String psk() {
+    return psk;
+  }
+
+  /**
+   * Gets the routingProtocol.
+   *
+   * Routing protocols are disabled for this VPN gateway connection.
+   *
+   * @return the routingProtocol
+   */
+  public String routingProtocol() {
+    return routingProtocol;
   }
 
   /**

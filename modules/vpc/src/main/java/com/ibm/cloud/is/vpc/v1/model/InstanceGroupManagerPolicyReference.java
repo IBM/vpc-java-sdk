@@ -19,19 +19,21 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class InstanceGroupManagerPolicyReference extends GenericModel {
 
-  protected String id;
+  protected InstanceGroupManagerPolicyReferenceDeleted deleted;
   protected String href;
+  protected String id;
   protected String name;
 
   /**
-   * Gets the id.
+   * Gets the deleted.
    *
-   * The unique identifier for this instance group manager policy.
+   * If present, this property indicates the referenced resource has been deleted and provides
+   * some supplementary information.
    *
-   * @return the id
+   * @return the deleted
    */
-  public String getId() {
-    return id;
+  public InstanceGroupManagerPolicyReferenceDeleted getDeleted() {
+    return deleted;
   }
 
   /**
@@ -43,6 +45,17 @@ public class InstanceGroupManagerPolicyReference extends GenericModel {
    */
   public String getHref() {
     return href;
+  }
+
+  /**
+   * Gets the id.
+   *
+   * The unique identifier for this instance group manager policy.
+   *
+   * @return the id
+   */
+  public String getId() {
+    return id;
   }
 
   /**

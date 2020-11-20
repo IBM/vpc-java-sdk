@@ -20,9 +20,9 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class CreateFlowLogCollectorOptions extends GenericModel {
 
   protected CloudObjectStorageBucketIdentity storageBucket;
-  protected FlowLogCollectorPrototypeTarget target;
-  protected String name;
+  protected FlowLogCollectorTargetPrototype target;
   protected Boolean active;
+  protected String name;
   protected ResourceGroupIdentity resourceGroup;
 
   /**
@@ -30,16 +30,16 @@ public class CreateFlowLogCollectorOptions extends GenericModel {
    */
   public static class Builder {
     private CloudObjectStorageBucketIdentity storageBucket;
-    private FlowLogCollectorPrototypeTarget target;
-    private String name;
+    private FlowLogCollectorTargetPrototype target;
     private Boolean active;
+    private String name;
     private ResourceGroupIdentity resourceGroup;
 
     private Builder(CreateFlowLogCollectorOptions createFlowLogCollectorOptions) {
       this.storageBucket = createFlowLogCollectorOptions.storageBucket;
       this.target = createFlowLogCollectorOptions.target;
-      this.name = createFlowLogCollectorOptions.name;
       this.active = createFlowLogCollectorOptions.active;
+      this.name = createFlowLogCollectorOptions.name;
       this.resourceGroup = createFlowLogCollectorOptions.resourceGroup;
     }
 
@@ -55,7 +55,7 @@ public class CreateFlowLogCollectorOptions extends GenericModel {
      * @param storageBucket the storageBucket
      * @param target the target
      */
-    public Builder(CloudObjectStorageBucketIdentity storageBucket, FlowLogCollectorPrototypeTarget target) {
+    public Builder(CloudObjectStorageBucketIdentity storageBucket, FlowLogCollectorTargetPrototype target) {
       this.storageBucket = storageBucket;
       this.target = target;
     }
@@ -86,19 +86,8 @@ public class CreateFlowLogCollectorOptions extends GenericModel {
      * @param target the target
      * @return the CreateFlowLogCollectorOptions builder
      */
-    public Builder target(FlowLogCollectorPrototypeTarget target) {
+    public Builder target(FlowLogCollectorTargetPrototype target) {
       this.target = target;
-      return this;
-    }
-
-    /**
-     * Set the name.
-     *
-     * @param name the name
-     * @return the CreateFlowLogCollectorOptions builder
-     */
-    public Builder name(String name) {
-      this.name = name;
       return this;
     }
 
@@ -110,6 +99,17 @@ public class CreateFlowLogCollectorOptions extends GenericModel {
      */
     public Builder active(Boolean active) {
       this.active = active;
+      return this;
+    }
+
+    /**
+     * Set the name.
+     *
+     * @param name the name
+     * @return the CreateFlowLogCollectorOptions builder
+     */
+    public Builder name(String name) {
+      this.name = name;
       return this;
     }
 
@@ -132,8 +132,8 @@ public class CreateFlowLogCollectorOptions extends GenericModel {
       "target cannot be null");
     storageBucket = builder.storageBucket;
     target = builder.target;
-    name = builder.name;
     active = builder.active;
+    name = builder.name;
     resourceGroup = builder.resourceGroup;
   }
 
@@ -163,14 +163,25 @@ public class CreateFlowLogCollectorOptions extends GenericModel {
   /**
    * Gets the target.
    *
-   * The target this collector is to collect flow logs for. If the target is an instance,
+   * The target this collector will collect flow logs for. If the target is an instance,
    * subnet, or VPC, flow logs will not be collected for any network interfaces within the
    * target that are themselves the target of a more specific flow log collector.
    *
    * @return the target
    */
-  public FlowLogCollectorPrototypeTarget target() {
+  public FlowLogCollectorTargetPrototype target() {
     return target;
+  }
+
+  /**
+   * Gets the active.
+   *
+   * Indicates whether this collector is active. If false, this collector is created in inactive mode.
+   *
+   * @return the active
+   */
+  public Boolean active() {
+    return active;
   }
 
   /**
@@ -183,17 +194,6 @@ public class CreateFlowLogCollectorOptions extends GenericModel {
    */
   public String name() {
     return name;
-  }
-
-  /**
-   * Gets the active.
-   *
-   * Indicates whether this collector is active. If false, this collector is created in inactive mode.
-   *
-   * @return the active
-   */
-  public Boolean active() {
-    return active;
   }
 
   /**

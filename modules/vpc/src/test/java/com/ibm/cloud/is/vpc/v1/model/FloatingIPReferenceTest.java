@@ -14,6 +14,7 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPReference;
+import com.ibm.cloud.is.vpc.v1.model.FloatingIPReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -32,10 +33,11 @@ public class FloatingIPReferenceTest {
   @Test
   public void testFloatingIPReference() throws Throwable {
     FloatingIPReference floatingIpReferenceModel = new FloatingIPReference();
-    assertNull(floatingIpReferenceModel.getId());
-    assertNull(floatingIpReferenceModel.getCrn());
-    assertNull(floatingIpReferenceModel.getHref());
     assertNull(floatingIpReferenceModel.getAddress());
+    assertNull(floatingIpReferenceModel.getCrn());
+    assertNull(floatingIpReferenceModel.getDeleted());
+    assertNull(floatingIpReferenceModel.getHref());
+    assertNull(floatingIpReferenceModel.getId());
     assertNull(floatingIpReferenceModel.getName());
   }
 }

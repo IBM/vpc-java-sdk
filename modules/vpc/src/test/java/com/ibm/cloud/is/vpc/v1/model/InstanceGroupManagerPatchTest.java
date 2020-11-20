@@ -33,50 +33,50 @@ public class InstanceGroupManagerPatchTest {
   @Test
   public void testInstanceGroupManagerPatch() throws Throwable {
     InstanceGroupManagerPatch instanceGroupManagerPatchModel = new InstanceGroupManagerPatch.Builder()
-      .name("my-instance-group-manager")
-      .managementEnabled(true)
       .aggregationWindow(Long.valueOf("120"))
       .cooldown(Long.valueOf("210"))
+      .managementEnabled(true)
       .maxMembershipCount(Long.valueOf("10"))
       .minMembershipCount(Long.valueOf("10"))
+      .name("my-instance-group-manager")
       .build();
-    assertEquals(instanceGroupManagerPatchModel.name(), "my-instance-group-manager");
-    assertEquals(instanceGroupManagerPatchModel.managementEnabled(), Boolean.valueOf(true));
     assertEquals(instanceGroupManagerPatchModel.aggregationWindow(), Long.valueOf("120"));
     assertEquals(instanceGroupManagerPatchModel.cooldown(), Long.valueOf("210"));
+    assertEquals(instanceGroupManagerPatchModel.managementEnabled(), Boolean.valueOf(true));
     assertEquals(instanceGroupManagerPatchModel.maxMembershipCount(), Long.valueOf("10"));
     assertEquals(instanceGroupManagerPatchModel.minMembershipCount(), Long.valueOf("10"));
+    assertEquals(instanceGroupManagerPatchModel.name(), "my-instance-group-manager");
 
     String json = TestUtilities.serialize(instanceGroupManagerPatchModel);
 
     InstanceGroupManagerPatch instanceGroupManagerPatchModelNew = TestUtilities.deserialize(json, InstanceGroupManagerPatch.class);
     assertTrue(instanceGroupManagerPatchModelNew instanceof InstanceGroupManagerPatch);
-    assertEquals(instanceGroupManagerPatchModelNew.name(), "my-instance-group-manager");
-    assertEquals(instanceGroupManagerPatchModelNew.managementEnabled(), Boolean.valueOf(true));
     assertEquals(instanceGroupManagerPatchModelNew.aggregationWindow(), Long.valueOf("120"));
     assertEquals(instanceGroupManagerPatchModelNew.cooldown(), Long.valueOf("210"));
+    assertEquals(instanceGroupManagerPatchModelNew.managementEnabled(), Boolean.valueOf(true));
     assertEquals(instanceGroupManagerPatchModelNew.maxMembershipCount(), Long.valueOf("10"));
     assertEquals(instanceGroupManagerPatchModelNew.minMembershipCount(), Long.valueOf("10"));
+    assertEquals(instanceGroupManagerPatchModelNew.name(), "my-instance-group-manager");
   }
   @Test
   public void testInstanceGroupManagerPatchAsPatch() throws Throwable {
     InstanceGroupManagerPatch instanceGroupManagerPatchModel = new InstanceGroupManagerPatch.Builder()
-      .name("my-instance-group-manager")
-      .managementEnabled(true)
       .aggregationWindow(Long.valueOf("120"))
       .cooldown(Long.valueOf("210"))
+      .managementEnabled(true)
       .maxMembershipCount(Long.valueOf("10"))
       .minMembershipCount(Long.valueOf("10"))
+      .name("my-instance-group-manager")
       .build();
 
     Map<String, Object> mergePatch = instanceGroupManagerPatchModel.asPatch();
 
-    assertEquals(mergePatch.get("name"), "my-instance-group-manager");
-    assertTrue(mergePatch.containsKey("management_enabled"));
     assertTrue(mergePatch.containsKey("aggregation_window"));
     assertTrue(mergePatch.containsKey("cooldown"));
+    assertTrue(mergePatch.containsKey("management_enabled"));
     assertTrue(mergePatch.containsKey("max_membership_count"));
     assertTrue(mergePatch.containsKey("min_membership_count"));
+    assertEquals(mergePatch.get("name"), "my-instance-group-manager");
   }
 
 }

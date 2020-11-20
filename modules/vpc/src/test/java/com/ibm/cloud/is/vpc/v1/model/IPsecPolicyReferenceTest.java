@@ -14,6 +14,7 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.IPsecPolicyReference;
+import com.ibm.cloud.is.vpc.v1.model.IPsecPolicyReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -32,8 +33,9 @@ public class IPsecPolicyReferenceTest {
   @Test
   public void testIPsecPolicyReference() throws Throwable {
     IPsecPolicyReference iPsecPolicyReferenceModel = new IPsecPolicyReference();
-    assertNull(iPsecPolicyReferenceModel.getId());
+    assertNull(iPsecPolicyReferenceModel.getDeleted());
     assertNull(iPsecPolicyReferenceModel.getHref());
+    assertNull(iPsecPolicyReferenceModel.getId());
     assertNull(iPsecPolicyReferenceModel.getName());
     assertNull(iPsecPolicyReferenceModel.getResourceType());
   }

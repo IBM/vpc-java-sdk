@@ -19,6 +19,7 @@ import com.ibm.cloud.is.vpc.v1.model.IPsecPolicyCollectionFirst;
 import com.ibm.cloud.is.vpc.v1.model.IPsecPolicyCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionReference;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -40,9 +41,9 @@ public class IPsecPolicyCollectionTest {
   public void testIPsecPolicyCollection() throws Throwable {
     IPsecPolicyCollection iPsecPolicyCollectionModel = new IPsecPolicyCollection();
     assertNull(iPsecPolicyCollectionModel.getFirst());
+    assertNull(iPsecPolicyCollectionModel.getIpsecPolicies());
     assertNull(iPsecPolicyCollectionModel.getLimit());
     assertNull(iPsecPolicyCollectionModel.getNext());
     assertNull(iPsecPolicyCollectionModel.getTotalCount());
-    assertNull(iPsecPolicyCollectionModel.getIpsecPolicies());
   }
 }

@@ -66,20 +66,20 @@ public class CreateInstanceGroupOptionsTest {
     CreateInstanceGroupOptions createInstanceGroupOptionsModel = new CreateInstanceGroupOptions.Builder()
       .instanceTemplate(instanceTemplateIdentityModel)
       .subnets(new java.util.ArrayList<SubnetIdentity>(java.util.Arrays.asList(subnetIdentityModel)))
-      .name("my-instance-group")
-      .membershipCount(Long.valueOf("10"))
       .applicationPort(Long.valueOf("22"))
       .loadBalancer(loadBalancerIdentityModel)
       .loadBalancerPool(loadBalancerPoolIdentityModel)
+      .membershipCount(Long.valueOf("10"))
+      .name("my-instance-group")
       .resourceGroup(resourceGroupIdentityModel)
       .build();
     assertEquals(createInstanceGroupOptionsModel.instanceTemplate(), instanceTemplateIdentityModel);
     assertEquals(createInstanceGroupOptionsModel.subnets(), new java.util.ArrayList<SubnetIdentity>(java.util.Arrays.asList(subnetIdentityModel)));
-    assertEquals(createInstanceGroupOptionsModel.name(), "my-instance-group");
-    assertEquals(createInstanceGroupOptionsModel.membershipCount(), Long.valueOf("10"));
     assertEquals(createInstanceGroupOptionsModel.applicationPort(), Long.valueOf("22"));
     assertEquals(createInstanceGroupOptionsModel.loadBalancer(), loadBalancerIdentityModel);
     assertEquals(createInstanceGroupOptionsModel.loadBalancerPool(), loadBalancerPoolIdentityModel);
+    assertEquals(createInstanceGroupOptionsModel.membershipCount(), Long.valueOf("10"));
+    assertEquals(createInstanceGroupOptionsModel.name(), "my-instance-group");
     assertEquals(createInstanceGroupOptionsModel.resourceGroup(), resourceGroupIdentityModel);
   }
 

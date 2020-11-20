@@ -52,60 +52,26 @@ public class LoadBalancerPoolMember extends GenericModel {
     String UPDATE_PENDING = "update_pending";
   }
 
-  protected String id;
-  protected String href;
-  protected Long port;
-  protected Long weight;
-  protected String health;
   @SerializedName("created_at")
   protected Date createdAt;
+  protected String health;
+  protected String href;
+  protected String id;
+  protected Long port;
   @SerializedName("provisioning_status")
   protected String provisioningStatus;
   protected LoadBalancerPoolMemberTarget target;
+  protected Long weight;
 
   /**
-   * Gets the id.
+   * Gets the createdAt.
    *
-   * The unique identifier for this load balancer pool member.
+   * The date and time that this member was created.
    *
-   * @return the id
+   * @return the createdAt
    */
-  public String getId() {
-    return id;
-  }
-
-  /**
-   * Gets the href.
-   *
-   * The member's canonical URL.
-   *
-   * @return the href
-   */
-  public String getHref() {
-    return href;
-  }
-
-  /**
-   * Gets the port.
-   *
-   * The port number of the application running in the server member.
-   *
-   * @return the port
-   */
-  public Long getPort() {
-    return port;
-  }
-
-  /**
-   * Gets the weight.
-   *
-   * Weight of the server member. This takes effect only when the load balancing algorithm of its belonging pool is
-   * `weighted_round_robin`.
-   *
-   * @return the weight
-   */
-  public Long getWeight() {
-    return weight;
+  public Date getCreatedAt() {
+    return createdAt;
   }
 
   /**
@@ -120,14 +86,36 @@ public class LoadBalancerPoolMember extends GenericModel {
   }
 
   /**
-   * Gets the createdAt.
+   * Gets the href.
    *
-   * The date and time that this member was created.
+   * The member's canonical URL.
    *
-   * @return the createdAt
+   * @return the href
    */
-  public Date getCreatedAt() {
-    return createdAt;
+  public String getHref() {
+    return href;
+  }
+
+  /**
+   * Gets the id.
+   *
+   * The unique identifier for this load balancer pool member.
+   *
+   * @return the id
+   */
+  public String getId() {
+    return id;
+  }
+
+  /**
+   * Gets the port.
+   *
+   * The port number of the application running in the server member.
+   *
+   * @return the port
+   */
+  public Long getPort() {
+    return port;
   }
 
   /**
@@ -144,14 +132,25 @@ public class LoadBalancerPoolMember extends GenericModel {
   /**
    * Gets the target.
    *
-   * The pool member target. Load balancers in the `network` family
-   * support instances. Load balancers in the `application` family support
-   * IP addresses.
+   * The pool member target. Load balancers in the `network` family support virtual server
+   * instances. Load balancers in the `application` family support IP addresses.
    *
    * @return the target
    */
   public LoadBalancerPoolMemberTarget getTarget() {
     return target;
+  }
+
+  /**
+   * Gets the weight.
+   *
+   * Weight of the server member. Applicable only if the pool algorithm is
+   * `weighted_round_robin`.
+   *
+   * @return the weight
+   */
+  public Long getWeight() {
+    return weight;
   }
 }
 

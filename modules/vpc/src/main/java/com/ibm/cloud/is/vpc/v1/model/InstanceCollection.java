@@ -23,21 +23,32 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class InstanceCollection extends GenericModel {
 
   protected InstanceCollectionFirst first;
+  protected List<Instance> instances;
   protected Long limit;
   protected InstanceCollectionNext next;
   @SerializedName("total_count")
   protected Long totalCount;
-  protected List<Instance> instances;
 
   /**
    * Gets the first.
    *
-   * A reference to the first page of resources.
+   * A link to the first page of resources.
    *
    * @return the first
    */
   public InstanceCollectionFirst getFirst() {
     return first;
+  }
+
+  /**
+   * Gets the instances.
+   *
+   * Collection of virtual server instances.
+   *
+   * @return the instances
+   */
+  public List<Instance> getInstances() {
+    return instances;
   }
 
   /**
@@ -54,7 +65,7 @@ public class InstanceCollection extends GenericModel {
   /**
    * Gets the next.
    *
-   * A reference to the next page of resources; this reference is included for all pages
+   * A link to the next page of resources. This property is present for all pages
    * except the last page.
    *
    * @return the next
@@ -72,17 +83,6 @@ public class InstanceCollection extends GenericModel {
    */
   public Long getTotalCount() {
     return totalCount;
-  }
-
-  /**
-   * Gets the instances.
-   *
-   * Collection of virtual server instances.
-   *
-   * @return the instances
-   */
-  public List<Instance> getInstances() {
-    return instances;
   }
 }
 

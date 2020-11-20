@@ -14,7 +14,7 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.CreateFloatingIpOptions;
-import com.ibm.cloud.is.vpc.v1.model.FloatingIPByTargetTargetNetworkInterfaceIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.FloatingIPByTargetNetworkInterfaceIdentityNetworkInterfaceIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPPrototypeFloatingIPByTarget;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupIdentityById;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
@@ -39,19 +39,19 @@ public class CreateFloatingIpOptionsTest {
       .build();
     assertEquals(resourceGroupIdentityModel.id(), "fee82deba12e4c0fb69c3b09d1f12345");
 
-    FloatingIPByTargetTargetNetworkInterfaceIdentityById floatingIpByTargetTargetModel = new FloatingIPByTargetTargetNetworkInterfaceIdentityById.Builder()
+    FloatingIPByTargetNetworkInterfaceIdentityNetworkInterfaceIdentityById floatingIpByTargetNetworkInterfaceIdentityModel = new FloatingIPByTargetNetworkInterfaceIdentityNetworkInterfaceIdentityById.Builder()
       .id("69e55145-cc7d-4d8e-9e1f-cc3fb60b1793")
       .build();
-    assertEquals(floatingIpByTargetTargetModel.id(), "69e55145-cc7d-4d8e-9e1f-cc3fb60b1793");
+    assertEquals(floatingIpByTargetNetworkInterfaceIdentityModel.id(), "69e55145-cc7d-4d8e-9e1f-cc3fb60b1793");
 
     FloatingIPPrototypeFloatingIPByTarget floatingIpPrototypeModel = new FloatingIPPrototypeFloatingIPByTarget.Builder()
       .name("my-new-floating-ip")
       .resourceGroup(resourceGroupIdentityModel)
-      .target(floatingIpByTargetTargetModel)
+      .target(floatingIpByTargetNetworkInterfaceIdentityModel)
       .build();
     assertEquals(floatingIpPrototypeModel.name(), "my-new-floating-ip");
     assertEquals(floatingIpPrototypeModel.resourceGroup(), resourceGroupIdentityModel);
-    assertEquals(floatingIpPrototypeModel.target(), floatingIpByTargetTargetModel);
+    assertEquals(floatingIpPrototypeModel.target(), floatingIpByTargetNetworkInterfaceIdentityModel);
 
     CreateFloatingIpOptions createFloatingIpOptionsModel = new CreateFloatingIpOptions.Builder()
       .floatingIpPrototype(floatingIpPrototypeModel)

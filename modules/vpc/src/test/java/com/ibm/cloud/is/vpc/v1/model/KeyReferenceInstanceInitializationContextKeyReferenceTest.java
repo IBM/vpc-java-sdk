@@ -13,6 +13,7 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.ibm.cloud.is.vpc.v1.model.KeyReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.KeyReferenceInstanceInitializationContextKeyReference;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
@@ -32,10 +33,11 @@ public class KeyReferenceInstanceInitializationContextKeyReferenceTest {
   @Test
   public void testKeyReferenceInstanceInitializationContextKeyReference() throws Throwable {
     KeyReferenceInstanceInitializationContextKeyReference keyReferenceInstanceInitializationContextKeyReferenceModel = new KeyReferenceInstanceInitializationContextKeyReference();
-    assertNull(keyReferenceInstanceInitializationContextKeyReferenceModel.getId());
     assertNull(keyReferenceInstanceInitializationContextKeyReferenceModel.getCrn());
-    assertNull(keyReferenceInstanceInitializationContextKeyReferenceModel.getHref());
+    assertNull(keyReferenceInstanceInitializationContextKeyReferenceModel.getDeleted());
     assertNull(keyReferenceInstanceInitializationContextKeyReferenceModel.getFingerprint());
+    assertNull(keyReferenceInstanceInitializationContextKeyReferenceModel.getHref());
+    assertNull(keyReferenceInstanceInitializationContextKeyReferenceModel.getId());
     assertNull(keyReferenceInstanceInitializationContextKeyReferenceModel.getName());
   }
 }

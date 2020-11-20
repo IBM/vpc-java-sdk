@@ -32,7 +32,7 @@ public class ZoneIdentity extends GenericModel {
   /**
    * Gets the name.
    *
-   * The name for this zone.
+   * The globally unique name for this zone.
    *
    * @return the name
    */

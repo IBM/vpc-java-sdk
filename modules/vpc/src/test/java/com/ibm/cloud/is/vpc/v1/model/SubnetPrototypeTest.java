@@ -16,6 +16,7 @@ package com.ibm.cloud.is.vpc.v1.model;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.PublicGatewayIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.RoutingTableIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.SubnetPrototype;
 import com.ibm.cloud.is.vpc.v1.model.VPCIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.ZoneIdentityByName;

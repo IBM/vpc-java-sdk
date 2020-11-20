@@ -23,20 +23,20 @@ import com.ibm.cloud.sdk.core.util.GsonSingleton;
  */
 public class AddressPrefixPatch extends GenericModel {
 
-  protected String name;
   @SerializedName("is_default")
   protected Boolean isDefault;
+  protected String name;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private String name;
     private Boolean isDefault;
+    private String name;
 
     private Builder(AddressPrefixPatch addressPrefixPatch) {
-      this.name = addressPrefixPatch.name;
       this.isDefault = addressPrefixPatch.isDefault;
+      this.name = addressPrefixPatch.name;
     }
 
     /**
@@ -55,17 +55,6 @@ public class AddressPrefixPatch extends GenericModel {
     }
 
     /**
-     * Set the name.
-     *
-     * @param name the name
-     * @return the AddressPrefixPatch builder
-     */
-    public Builder name(String name) {
-      this.name = name;
-      return this;
-    }
-
-    /**
      * Set the isDefault.
      *
      * @param isDefault the isDefault
@@ -75,11 +64,22 @@ public class AddressPrefixPatch extends GenericModel {
       this.isDefault = isDefault;
       return this;
     }
+
+    /**
+     * Set the name.
+     *
+     * @param name the name
+     * @return the AddressPrefixPatch builder
+     */
+    public Builder name(String name) {
+      this.name = name;
+      return this;
+    }
   }
 
   protected AddressPrefixPatch(Builder builder) {
-    name = builder.name;
     isDefault = builder.isDefault;
+    name = builder.name;
   }
 
   /**
@@ -89,17 +89,6 @@ public class AddressPrefixPatch extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the name.
-   *
-   * The user-defined name for this address prefix. Names must be unique within the VPC the address prefix resides in.
-   *
-   * @return the name
-   */
-  public String name() {
-    return name;
   }
 
   /**
@@ -113,6 +102,17 @@ public class AddressPrefixPatch extends GenericModel {
    */
   public Boolean isDefault() {
     return isDefault;
+  }
+
+  /**
+   * Gets the name.
+   *
+   * The user-defined name for this address prefix. Names must be unique within the VPC the address prefix resides in.
+   *
+   * @return the name
+   */
+  public String name() {
+    return name;
   }
 
   /**

@@ -23,24 +23,14 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class KeyReferenceInstanceInitializationContext extends GenericModel {
 
-  protected String id;
   protected String crn;
-  protected String href;
+  protected KeyReferenceDeleted deleted;
   protected String fingerprint;
+  protected String href;
+  protected String id;
   protected String name;
 
   protected KeyReferenceInstanceInitializationContext() {
-  }
-
-  /**
-   * Gets the id.
-   *
-   * The unique identifier for this key.
-   *
-   * @return the id
-   */
-  public String getId() {
-    return id;
   }
 
   /**
@@ -55,14 +45,15 @@ public class KeyReferenceInstanceInitializationContext extends GenericModel {
   }
 
   /**
-   * Gets the href.
+   * Gets the deleted.
    *
-   * The URL for this key.
+   * If present, this property indicates the referenced resource has been deleted and provides
+   * some supplementary information.
    *
-   * @return the href
+   * @return the deleted
    */
-  public String getHref() {
-    return href;
+  public KeyReferenceDeleted getDeleted() {
+    return deleted;
   }
 
   /**
@@ -75,6 +66,28 @@ public class KeyReferenceInstanceInitializationContext extends GenericModel {
    */
   public String getFingerprint() {
     return fingerprint;
+  }
+
+  /**
+   * Gets the href.
+   *
+   * The URL for this key.
+   *
+   * @return the href
+   */
+  public String getHref() {
+    return href;
+  }
+
+  /**
+   * Gets the id.
+   *
+   * The unique identifier for this key.
+   *
+   * @return the id
+   */
+  public String getId() {
+    return id;
   }
 
   /**

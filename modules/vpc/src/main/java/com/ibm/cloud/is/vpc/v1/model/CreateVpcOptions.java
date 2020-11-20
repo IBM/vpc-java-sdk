@@ -30,24 +30,24 @@ public class CreateVpcOptions extends GenericModel {
     String MANUAL = "manual";
   }
 
-  protected String name;
   protected String addressPrefixManagement;
   protected Boolean classicAccess;
+  protected String name;
   protected ResourceGroupIdentity resourceGroup;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private String name;
     private String addressPrefixManagement;
     private Boolean classicAccess;
+    private String name;
     private ResourceGroupIdentity resourceGroup;
 
     private Builder(CreateVpcOptions createVpcOptions) {
-      this.name = createVpcOptions.name;
       this.addressPrefixManagement = createVpcOptions.addressPrefixManagement;
       this.classicAccess = createVpcOptions.classicAccess;
+      this.name = createVpcOptions.name;
       this.resourceGroup = createVpcOptions.resourceGroup;
     }
 
@@ -64,17 +64,6 @@ public class CreateVpcOptions extends GenericModel {
      */
     public CreateVpcOptions build() {
       return new CreateVpcOptions(this);
-    }
-
-    /**
-     * Set the name.
-     *
-     * @param name the name
-     * @return the CreateVpcOptions builder
-     */
-    public Builder name(String name) {
-      this.name = name;
-      return this;
     }
 
     /**
@@ -100,6 +89,17 @@ public class CreateVpcOptions extends GenericModel {
     }
 
     /**
+     * Set the name.
+     *
+     * @param name the name
+     * @return the CreateVpcOptions builder
+     */
+    public Builder name(String name) {
+      this.name = name;
+      return this;
+    }
+
+    /**
      * Set the resourceGroup.
      *
      * @param resourceGroup the resourceGroup
@@ -112,9 +112,9 @@ public class CreateVpcOptions extends GenericModel {
   }
 
   protected CreateVpcOptions(Builder builder) {
-    name = builder.name;
     addressPrefixManagement = builder.addressPrefixManagement;
     classicAccess = builder.classicAccess;
+    name = builder.name;
     resourceGroup = builder.resourceGroup;
   }
 
@@ -125,18 +125,6 @@ public class CreateVpcOptions extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the name.
-   *
-   * The unique user-defined name for this VPC. If unspecified, the name will be a hyphenated list of randomly-selected
-   * words.
-   *
-   * @return the name
-   */
-  public String name() {
-    return name;
   }
 
   /**
@@ -162,6 +150,18 @@ public class CreateVpcOptions extends GenericModel {
    */
   public Boolean classicAccess() {
     return classicAccess;
+  }
+
+  /**
+   * Gets the name.
+   *
+   * The unique user-defined name for this VPC. If unspecified, the name will be a hyphenated list of randomly-selected
+   * words.
+   *
+   * @return the name
+   */
+  public String name() {
+    return name;
   }
 
   /**

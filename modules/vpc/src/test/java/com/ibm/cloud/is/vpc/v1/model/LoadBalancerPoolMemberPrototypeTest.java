@@ -39,20 +39,20 @@ public class LoadBalancerPoolMemberPrototypeTest {
 
     LoadBalancerPoolMemberPrototype loadBalancerPoolMemberPrototypeModel = new LoadBalancerPoolMemberPrototype.Builder()
       .port(Long.valueOf("80"))
-      .weight(Long.valueOf("50"))
       .target(loadBalancerPoolMemberTargetPrototypeModel)
+      .weight(Long.valueOf("50"))
       .build();
     assertEquals(loadBalancerPoolMemberPrototypeModel.port(), Long.valueOf("80"));
-    assertEquals(loadBalancerPoolMemberPrototypeModel.weight(), Long.valueOf("50"));
     assertEquals(loadBalancerPoolMemberPrototypeModel.target(), loadBalancerPoolMemberTargetPrototypeModel);
+    assertEquals(loadBalancerPoolMemberPrototypeModel.weight(), Long.valueOf("50"));
 
     String json = TestUtilities.serialize(loadBalancerPoolMemberPrototypeModel);
 
     LoadBalancerPoolMemberPrototype loadBalancerPoolMemberPrototypeModelNew = TestUtilities.deserialize(json, LoadBalancerPoolMemberPrototype.class);
     assertTrue(loadBalancerPoolMemberPrototypeModelNew instanceof LoadBalancerPoolMemberPrototype);
     assertEquals(loadBalancerPoolMemberPrototypeModelNew.port(), Long.valueOf("80"));
-    assertEquals(loadBalancerPoolMemberPrototypeModelNew.weight(), Long.valueOf("50"));
     assertEquals(loadBalancerPoolMemberPrototypeModelNew.target().toString(), loadBalancerPoolMemberTargetPrototypeModel.toString());
+    assertEquals(loadBalancerPoolMemberPrototypeModelNew.weight(), Long.valueOf("50"));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

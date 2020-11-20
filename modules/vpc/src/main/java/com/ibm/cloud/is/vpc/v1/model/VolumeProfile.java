@@ -19,19 +19,19 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class VolumeProfile extends GenericModel {
 
-  protected String name;
-  protected String href;
   protected String family;
+  protected String href;
+  protected String name;
 
   /**
-   * Gets the name.
+   * Gets the family.
    *
-   * The name for this volume profile.
+   * The product family this volume profile belongs to.
    *
-   * @return the name
+   * @return the family
    */
-  public String getName() {
-    return name;
+  public String getFamily() {
+    return family;
   }
 
   /**
@@ -46,14 +46,14 @@ public class VolumeProfile extends GenericModel {
   }
 
   /**
-   * Gets the family.
+   * Gets the name.
    *
-   * The product family this volume profile belongs to.
+   * The globally unique name for this volume profile.
    *
-   * @return the family
+   * @return the name
    */
-  public String getFamily() {
-    return family;
+  public String getName() {
+    return name;
   }
 }
 

@@ -13,6 +13,7 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.ibm.cloud.is.vpc.v1.model.InstanceReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolMemberTargetInstanceReference;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
@@ -32,9 +33,10 @@ public class LoadBalancerPoolMemberTargetInstanceReferenceTest {
   @Test
   public void testLoadBalancerPoolMemberTargetInstanceReference() throws Throwable {
     LoadBalancerPoolMemberTargetInstanceReference loadBalancerPoolMemberTargetInstanceReferenceModel = new LoadBalancerPoolMemberTargetInstanceReference();
-    assertNull(loadBalancerPoolMemberTargetInstanceReferenceModel.getId());
     assertNull(loadBalancerPoolMemberTargetInstanceReferenceModel.getCrn());
+    assertNull(loadBalancerPoolMemberTargetInstanceReferenceModel.getDeleted());
     assertNull(loadBalancerPoolMemberTargetInstanceReferenceModel.getHref());
+    assertNull(loadBalancerPoolMemberTargetInstanceReferenceModel.getId());
     assertNull(loadBalancerPoolMemberTargetInstanceReferenceModel.getName());
   }
 }

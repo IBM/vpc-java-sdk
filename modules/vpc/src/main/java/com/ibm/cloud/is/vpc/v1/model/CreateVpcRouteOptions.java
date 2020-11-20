@@ -19,10 +19,26 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class CreateVpcRouteOptions extends GenericModel {
 
+  /**
+   * The action to perform with a packet matching the route:
+   * - `delegate`: delegate to the system's built-in routes
+   * - `deliver`: deliver the packet to the specified `next_hop`
+   * - `drop`: drop the packet.
+   */
+  public interface Action {
+    /** delegate. */
+    String DELEGATE = "delegate";
+    /** deliver. */
+    String DELIVER = "deliver";
+    /** drop. */
+    String DROP = "drop";
+  }
+
   protected String vpcId;
-  protected RouteNextHopPrototype nextHop;
   protected String destination;
+  protected RouteNextHopPrototype nextHop;
   protected ZoneIdentity zone;
+  protected String action;
   protected String name;
 
   /**
@@ -30,16 +46,18 @@ public class CreateVpcRouteOptions extends GenericModel {
    */
   public static class Builder {
     private String vpcId;
-    private RouteNextHopPrototype nextHop;
     private String destination;
+    private RouteNextHopPrototype nextHop;
     private ZoneIdentity zone;
+    private String action;
     private String name;
 
     private Builder(CreateVpcRouteOptions createVpcRouteOptions) {
       this.vpcId = createVpcRouteOptions.vpcId;
-      this.nextHop = createVpcRouteOptions.nextHop;
       this.destination = createVpcRouteOptions.destination;
+      this.nextHop = createVpcRouteOptions.nextHop;
       this.zone = createVpcRouteOptions.zone;
+      this.action = createVpcRouteOptions.action;
       this.name = createVpcRouteOptions.name;
     }
 
@@ -53,14 +71,14 @@ public class CreateVpcRouteOptions extends GenericModel {
      * Instantiates a new builder with required properties.
      *
      * @param vpcId the vpcId
-     * @param nextHop the nextHop
      * @param destination the destination
+     * @param nextHop the nextHop
      * @param zone the zone
      */
-    public Builder(String vpcId, RouteNextHopPrototype nextHop, String destination, ZoneIdentity zone) {
+    public Builder(String vpcId, String destination, RouteNextHopPrototype nextHop, ZoneIdentity zone) {
       this.vpcId = vpcId;
-      this.nextHop = nextHop;
       this.destination = destination;
+      this.nextHop = nextHop;
       this.zone = zone;
     }
 
@@ -85,17 +103,6 @@ public class CreateVpcRouteOptions extends GenericModel {
     }
 
     /**
-     * Set the nextHop.
-     *
-     * @param nextHop the nextHop
-     * @return the CreateVpcRouteOptions builder
-     */
-    public Builder nextHop(RouteNextHopPrototype nextHop) {
-      this.nextHop = nextHop;
-      return this;
-    }
-
-    /**
      * Set the destination.
      *
      * @param destination the destination
@@ -107,6 +114,17 @@ public class CreateVpcRouteOptions extends GenericModel {
     }
 
     /**
+     * Set the nextHop.
+     *
+     * @param nextHop the nextHop
+     * @return the CreateVpcRouteOptions builder
+     */
+    public Builder nextHop(RouteNextHopPrototype nextHop) {
+      this.nextHop = nextHop;
+      return this;
+    }
+
+    /**
      * Set the zone.
      *
      * @param zone the zone
@@ -114,6 +132,17 @@ public class CreateVpcRouteOptions extends GenericModel {
      */
     public Builder zone(ZoneIdentity zone) {
       this.zone = zone;
+      return this;
+    }
+
+    /**
+     * Set the action.
+     *
+     * @param action the action
+     * @return the CreateVpcRouteOptions builder
+     */
+    public Builder action(String action) {
+      this.action = action;
       return this;
     }
 
@@ -132,16 +161,17 @@ public class CreateVpcRouteOptions extends GenericModel {
   protected CreateVpcRouteOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.vpcId,
       "vpcId cannot be empty");
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.nextHop,
-      "nextHop cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.destination,
       "destination cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.nextHop,
+      "nextHop cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.zone,
       "zone cannot be null");
     vpcId = builder.vpcId;
-    nextHop = builder.nextHop;
     destination = builder.destination;
+    nextHop = builder.nextHop;
     zone = builder.zone;
+    action = builder.action;
     name = builder.name;
   }
 
@@ -166,25 +196,28 @@ public class CreateVpcRouteOptions extends GenericModel {
   }
 
   /**
-   * Gets the nextHop.
-   *
-   * The next hop that packets will be delivered to.
-   *
-   * @return the nextHop
-   */
-  public RouteNextHopPrototype nextHop() {
-    return nextHop;
-  }
-
-  /**
    * Gets the destination.
    *
-   * The destination of the route. Must not overlap with destinations for existing user-defined routes within the VPC.
+   * The destination of the route. At most two routes per `zone` in a table can have the same destination, and only if
+   * both routes have an `action` of `deliver` and the
+   * `next_hop` is an IP address.
    *
    * @return the destination
    */
   public String destination() {
     return destination;
+  }
+
+  /**
+   * Gets the nextHop.
+   *
+   * If `action` is `deliver`, the next hop that packets will be delivered to.  For
+   * other `action` values, its `address` will be `0.0.0.0`.
+   *
+   * @return the nextHop
+   */
+  public RouteNextHopPrototype nextHop() {
+    return nextHop;
   }
 
   /**
@@ -197,6 +230,20 @@ public class CreateVpcRouteOptions extends GenericModel {
    */
   public ZoneIdentity zone() {
     return zone;
+  }
+
+  /**
+   * Gets the action.
+   *
+   * The action to perform with a packet matching the route:
+   * - `delegate`: delegate to the system's built-in routes
+   * - `deliver`: deliver the packet to the specified `next_hop`
+   * - `drop`: drop the packet.
+   *
+   * @return the action
+   */
+  public String action() {
+    return action;
   }
 
   /**

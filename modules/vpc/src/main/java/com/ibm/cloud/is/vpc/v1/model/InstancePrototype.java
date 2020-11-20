@@ -26,40 +26,28 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class InstancePrototype extends GenericModel {
 
-  protected String name;
   protected List<KeyIdentity> keys;
+  protected String name;
   @SerializedName("network_interfaces")
   protected List<NetworkInterfacePrototype> networkInterfaces;
   protected InstanceProfileIdentity profile;
+  @SerializedName("resource_group")
+  protected ResourceGroupIdentity resourceGroup;
   @SerializedName("user_data")
   protected String userData;
   @SerializedName("volume_attachments")
   protected List<VolumeAttachmentPrototypeInstanceContext> volumeAttachments;
   protected VPCIdentity vpc;
-  @SerializedName("resource_group")
-  protected ResourceGroupIdentity resourceGroup;
-  @SerializedName("primary_network_interface")
-  protected NetworkInterfacePrototype primaryNetworkInterface;
-  protected ZoneIdentity zone;
   @SerializedName("boot_volume_attachment")
   protected VolumeAttachmentPrototypeInstanceByImageContext bootVolumeAttachment;
   protected ImageIdentity image;
+  @SerializedName("primary_network_interface")
+  protected NetworkInterfacePrototype primaryNetworkInterface;
+  protected ZoneIdentity zone;
   @SerializedName("source_template")
   protected InstanceTemplateIdentity sourceTemplate;
 
   protected InstancePrototype() {
-  }
-
-  /**
-   * Gets the name.
-   *
-   * The unique user-defined name for this virtual server instance (and default system hostname). If unspecified, the
-   * name will be a hyphenated list of randomly-selected words.
-   *
-   * @return the name
-   */
-  public String name() {
-    return name;
   }
 
   /**
@@ -76,6 +64,18 @@ public class InstancePrototype extends GenericModel {
    */
   public List<KeyIdentity> keys() {
     return keys;
+  }
+
+  /**
+   * Gets the name.
+   *
+   * The unique user-defined name for this virtual server instance (and default system hostname). If unspecified, the
+   * name will be a hyphenated list of randomly-selected words.
+   *
+   * @return the name
+   */
+  public String name() {
+    return name;
   }
 
   /**
@@ -98,6 +98,18 @@ public class InstancePrototype extends GenericModel {
    */
   public InstanceProfileIdentity profile() {
     return profile;
+  }
+
+  /**
+   * Gets the resourceGroup.
+   *
+   * The resource group to use. If unspecified, the account's [default resource
+   * group](https://cloud.ibm.com/apidocs/resource-manager#introduction) is used.
+   *
+   * @return the resourceGroup
+   */
+  public ResourceGroupIdentity resourceGroup() {
+    return resourceGroup;
   }
 
   /**
@@ -135,15 +147,25 @@ public class InstancePrototype extends GenericModel {
   }
 
   /**
-   * Gets the resourceGroup.
+   * Gets the bootVolumeAttachment.
    *
-   * The resource group to use. If unspecified, the account's [default resource
-   * group](https://cloud.ibm.com/apidocs/resource-manager#introduction) is used.
+   * The boot volume attachment for the virtual server instance.
    *
-   * @return the resourceGroup
+   * @return the bootVolumeAttachment
    */
-  public ResourceGroupIdentity resourceGroup() {
-    return resourceGroup;
+  public VolumeAttachmentPrototypeInstanceByImageContext bootVolumeAttachment() {
+    return bootVolumeAttachment;
+  }
+
+  /**
+   * Gets the image.
+   *
+   * The identity of the image to use when provisioning the virtual server instance.
+   *
+   * @return the image
+   */
+  public ImageIdentity image() {
+    return image;
   }
 
   /**
@@ -166,28 +188,6 @@ public class InstancePrototype extends GenericModel {
    */
   public ZoneIdentity zone() {
     return zone;
-  }
-
-  /**
-   * Gets the bootVolumeAttachment.
-   *
-   * The boot volume attachment for the virtual server instance.
-   *
-   * @return the bootVolumeAttachment
-   */
-  public VolumeAttachmentPrototypeInstanceByImageContext bootVolumeAttachment() {
-    return bootVolumeAttachment;
-  }
-
-  /**
-   * Gets the image.
-   *
-   * The identity of the image to be used when provisioning the virtual server instance.
-   *
-   * @return the image
-   */
-  public ImageIdentity image() {
-    return image;
   }
 
   /**

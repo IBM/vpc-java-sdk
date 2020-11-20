@@ -19,6 +19,7 @@ import com.ibm.cloud.is.vpc.v1.model.IKEPolicyCollectionFirst;
 import com.ibm.cloud.is.vpc.v1.model.IKEPolicyCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionReference;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -40,9 +41,9 @@ public class IKEPolicyCollectionTest {
   public void testIKEPolicyCollection() throws Throwable {
     IKEPolicyCollection ikePolicyCollectionModel = new IKEPolicyCollection();
     assertNull(ikePolicyCollectionModel.getFirst());
+    assertNull(ikePolicyCollectionModel.getIkePolicies());
     assertNull(ikePolicyCollectionModel.getLimit());
     assertNull(ikePolicyCollectionModel.getNext());
     assertNull(ikePolicyCollectionModel.getTotalCount());
-    assertNull(ikePolicyCollectionModel.getIkePolicies());
   }
 }

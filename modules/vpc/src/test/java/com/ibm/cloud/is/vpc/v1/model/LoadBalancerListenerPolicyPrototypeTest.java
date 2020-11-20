@@ -14,8 +14,8 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyPrototype;
-import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyPrototypeTargetLoadBalancerPoolIdentityLoadBalancerPoolIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyRulePrototype;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetPrototypeLoadBalancerPoolIdentityLoadBalancerPoolIdentityById;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -46,32 +46,32 @@ public class LoadBalancerListenerPolicyPrototypeTest {
     assertEquals(loadBalancerListenerPolicyRulePrototypeModel.type(), "header");
     assertEquals(loadBalancerListenerPolicyRulePrototypeModel.value(), "testString");
 
-    LoadBalancerListenerPolicyPrototypeTargetLoadBalancerPoolIdentityLoadBalancerPoolIdentityById loadBalancerListenerPolicyPrototypeTargetModel = new LoadBalancerListenerPolicyPrototypeTargetLoadBalancerPoolIdentityLoadBalancerPoolIdentityById.Builder()
+    LoadBalancerListenerPolicyTargetPrototypeLoadBalancerPoolIdentityLoadBalancerPoolIdentityById loadBalancerListenerPolicyTargetPrototypeModel = new LoadBalancerListenerPolicyTargetPrototypeLoadBalancerPoolIdentityLoadBalancerPoolIdentityById.Builder()
       .id("70294e14-4e61-11e8-bcf4-0242ac110004")
       .build();
-    assertEquals(loadBalancerListenerPolicyPrototypeTargetModel.id(), "70294e14-4e61-11e8-bcf4-0242ac110004");
+    assertEquals(loadBalancerListenerPolicyTargetPrototypeModel.id(), "70294e14-4e61-11e8-bcf4-0242ac110004");
 
     LoadBalancerListenerPolicyPrototype loadBalancerListenerPolicyPrototypeModel = new LoadBalancerListenerPolicyPrototype.Builder()
+      .action("forward")
       .name("my-policy")
       .priority(Long.valueOf("5"))
-      .action("forward")
       .rules(new java.util.ArrayList<LoadBalancerListenerPolicyRulePrototype>(java.util.Arrays.asList(loadBalancerListenerPolicyRulePrototypeModel)))
-      .target(loadBalancerListenerPolicyPrototypeTargetModel)
+      .target(loadBalancerListenerPolicyTargetPrototypeModel)
       .build();
+    assertEquals(loadBalancerListenerPolicyPrototypeModel.action(), "forward");
     assertEquals(loadBalancerListenerPolicyPrototypeModel.name(), "my-policy");
     assertEquals(loadBalancerListenerPolicyPrototypeModel.priority(), Long.valueOf("5"));
-    assertEquals(loadBalancerListenerPolicyPrototypeModel.action(), "forward");
     assertEquals(loadBalancerListenerPolicyPrototypeModel.rules(), new java.util.ArrayList<LoadBalancerListenerPolicyRulePrototype>(java.util.Arrays.asList(loadBalancerListenerPolicyRulePrototypeModel)));
-    assertEquals(loadBalancerListenerPolicyPrototypeModel.target(), loadBalancerListenerPolicyPrototypeTargetModel);
+    assertEquals(loadBalancerListenerPolicyPrototypeModel.target(), loadBalancerListenerPolicyTargetPrototypeModel);
 
     String json = TestUtilities.serialize(loadBalancerListenerPolicyPrototypeModel);
 
     LoadBalancerListenerPolicyPrototype loadBalancerListenerPolicyPrototypeModelNew = TestUtilities.deserialize(json, LoadBalancerListenerPolicyPrototype.class);
     assertTrue(loadBalancerListenerPolicyPrototypeModelNew instanceof LoadBalancerListenerPolicyPrototype);
+    assertEquals(loadBalancerListenerPolicyPrototypeModelNew.action(), "forward");
     assertEquals(loadBalancerListenerPolicyPrototypeModelNew.name(), "my-policy");
     assertEquals(loadBalancerListenerPolicyPrototypeModelNew.priority(), Long.valueOf("5"));
-    assertEquals(loadBalancerListenerPolicyPrototypeModelNew.action(), "forward");
-    assertEquals(loadBalancerListenerPolicyPrototypeModelNew.target().toString(), loadBalancerListenerPolicyPrototypeTargetModel.toString());
+    assertEquals(loadBalancerListenerPolicyPrototypeModelNew.target().toString(), loadBalancerListenerPolicyTargetPrototypeModel.toString());
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

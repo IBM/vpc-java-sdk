@@ -14,6 +14,7 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorTargetSubnetReference;
+import com.ibm.cloud.is.vpc.v1.model.SubnetReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -32,9 +33,10 @@ public class FlowLogCollectorTargetSubnetReferenceTest {
   @Test
   public void testFlowLogCollectorTargetSubnetReference() throws Throwable {
     FlowLogCollectorTargetSubnetReference flowLogCollectorTargetSubnetReferenceModel = new FlowLogCollectorTargetSubnetReference();
-    assertNull(flowLogCollectorTargetSubnetReferenceModel.getId());
     assertNull(flowLogCollectorTargetSubnetReferenceModel.getCrn());
+    assertNull(flowLogCollectorTargetSubnetReferenceModel.getDeleted());
     assertNull(flowLogCollectorTargetSubnetReferenceModel.getHref());
+    assertNull(flowLogCollectorTargetSubnetReferenceModel.getId());
     assertNull(flowLogCollectorTargetSubnetReferenceModel.getName());
   }
 }

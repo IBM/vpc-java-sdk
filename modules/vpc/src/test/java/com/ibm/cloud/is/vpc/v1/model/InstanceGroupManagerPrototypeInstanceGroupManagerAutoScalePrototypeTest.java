@@ -32,33 +32,33 @@ public class InstanceGroupManagerPrototypeInstanceGroupManagerAutoScalePrototype
   @Test
   public void testInstanceGroupManagerPrototypeInstanceGroupManagerAutoScalePrototype() throws Throwable {
     InstanceGroupManagerPrototypeInstanceGroupManagerAutoScalePrototype instanceGroupManagerPrototypeInstanceGroupManagerAutoScalePrototypeModel = new InstanceGroupManagerPrototypeInstanceGroupManagerAutoScalePrototype.Builder()
-      .name("my-instance-group-manager")
       .managementEnabled(true)
+      .name("my-instance-group-manager")
       .aggregationWindow(Long.valueOf("120"))
       .cooldown(Long.valueOf("210"))
+      .managerType("autoscale")
       .maxMembershipCount(Long.valueOf("10"))
       .minMembershipCount(Long.valueOf("10"))
-      .managerType("autoscale")
       .build();
-    assertEquals(instanceGroupManagerPrototypeInstanceGroupManagerAutoScalePrototypeModel.name(), "my-instance-group-manager");
     assertEquals(instanceGroupManagerPrototypeInstanceGroupManagerAutoScalePrototypeModel.managementEnabled(), Boolean.valueOf(true));
+    assertEquals(instanceGroupManagerPrototypeInstanceGroupManagerAutoScalePrototypeModel.name(), "my-instance-group-manager");
     assertEquals(instanceGroupManagerPrototypeInstanceGroupManagerAutoScalePrototypeModel.aggregationWindow(), Long.valueOf("120"));
     assertEquals(instanceGroupManagerPrototypeInstanceGroupManagerAutoScalePrototypeModel.cooldown(), Long.valueOf("210"));
+    assertEquals(instanceGroupManagerPrototypeInstanceGroupManagerAutoScalePrototypeModel.managerType(), "autoscale");
     assertEquals(instanceGroupManagerPrototypeInstanceGroupManagerAutoScalePrototypeModel.maxMembershipCount(), Long.valueOf("10"));
     assertEquals(instanceGroupManagerPrototypeInstanceGroupManagerAutoScalePrototypeModel.minMembershipCount(), Long.valueOf("10"));
-    assertEquals(instanceGroupManagerPrototypeInstanceGroupManagerAutoScalePrototypeModel.managerType(), "autoscale");
 
     String json = TestUtilities.serialize(instanceGroupManagerPrototypeInstanceGroupManagerAutoScalePrototypeModel);
 
     InstanceGroupManagerPrototypeInstanceGroupManagerAutoScalePrototype instanceGroupManagerPrototypeInstanceGroupManagerAutoScalePrototypeModelNew = TestUtilities.deserialize(json, InstanceGroupManagerPrototypeInstanceGroupManagerAutoScalePrototype.class);
     assertTrue(instanceGroupManagerPrototypeInstanceGroupManagerAutoScalePrototypeModelNew instanceof InstanceGroupManagerPrototypeInstanceGroupManagerAutoScalePrototype);
-    assertEquals(instanceGroupManagerPrototypeInstanceGroupManagerAutoScalePrototypeModelNew.name(), "my-instance-group-manager");
     assertEquals(instanceGroupManagerPrototypeInstanceGroupManagerAutoScalePrototypeModelNew.managementEnabled(), Boolean.valueOf(true));
+    assertEquals(instanceGroupManagerPrototypeInstanceGroupManagerAutoScalePrototypeModelNew.name(), "my-instance-group-manager");
     assertEquals(instanceGroupManagerPrototypeInstanceGroupManagerAutoScalePrototypeModelNew.aggregationWindow(), Long.valueOf("120"));
     assertEquals(instanceGroupManagerPrototypeInstanceGroupManagerAutoScalePrototypeModelNew.cooldown(), Long.valueOf("210"));
+    assertEquals(instanceGroupManagerPrototypeInstanceGroupManagerAutoScalePrototypeModelNew.managerType(), "autoscale");
     assertEquals(instanceGroupManagerPrototypeInstanceGroupManagerAutoScalePrototypeModelNew.maxMembershipCount(), Long.valueOf("10"));
     assertEquals(instanceGroupManagerPrototypeInstanceGroupManagerAutoScalePrototypeModelNew.minMembershipCount(), Long.valueOf("10"));
-    assertEquals(instanceGroupManagerPrototypeInstanceGroupManagerAutoScalePrototypeModelNew.managerType(), "autoscale");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

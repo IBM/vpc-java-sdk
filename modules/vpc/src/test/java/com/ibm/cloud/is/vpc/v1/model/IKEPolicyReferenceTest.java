@@ -14,6 +14,7 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.IKEPolicyReference;
+import com.ibm.cloud.is.vpc.v1.model.IKEPolicyReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -32,8 +33,9 @@ public class IKEPolicyReferenceTest {
   @Test
   public void testIKEPolicyReference() throws Throwable {
     IKEPolicyReference ikePolicyReferenceModel = new IKEPolicyReference();
-    assertNull(ikePolicyReferenceModel.getId());
+    assertNull(ikePolicyReferenceModel.getDeleted());
     assertNull(ikePolicyReferenceModel.getHref());
+    assertNull(ikePolicyReferenceModel.getId());
     assertNull(ikePolicyReferenceModel.getName());
     assertNull(ikePolicyReferenceModel.getResourceType());
   }

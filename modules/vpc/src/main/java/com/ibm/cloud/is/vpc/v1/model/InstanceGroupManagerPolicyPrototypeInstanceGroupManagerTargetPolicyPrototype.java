@@ -32,7 +32,7 @@ public class InstanceGroupManagerPolicyPrototypeInstanceGroupManagerTargetPolicy
   }
 
   /**
-   * The type of Policy for the Instance Group.
+   * The type of policy for the instance group.
    */
   public interface PolicyType {
     /** target. */

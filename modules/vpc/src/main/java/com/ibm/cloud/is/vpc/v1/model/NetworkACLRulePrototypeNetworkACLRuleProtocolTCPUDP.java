@@ -41,10 +41,6 @@ public class NetworkACLRulePrototypeNetworkACLRuleProtocolTCPUDP extends Network
    * The protocol to enforce.
    */
   public interface Protocol {
-    /** all. */
-    String ALL = "all";
-    /** icmp. */
-    String ICMP = "icmp";
     /** tcp. */
     String TCP = "tcp";
     /** udp. */
@@ -56,28 +52,28 @@ public class NetworkACLRulePrototypeNetworkACLRuleProtocolTCPUDP extends Network
    * Builder.
    */
   public static class Builder {
-    private String name;
     private String action;
+    private NetworkACLRuleBeforePrototype before;
     private String destination;
     private String direction;
+    private String name;
     private String source;
-    private String protocol;
-    private NetworkACLRuleIdentity before;
     private Long destinationPortMax;
     private Long destinationPortMin;
+    private String protocol;
     private Long sourcePortMax;
     private Long sourcePortMin;
 
     public Builder(NetworkACLRulePrototype networkAclRulePrototypeNetworkAclRuleProtocolTcpudp) {
-      this.name = networkAclRulePrototypeNetworkAclRuleProtocolTcpudp.name;
       this.action = networkAclRulePrototypeNetworkAclRuleProtocolTcpudp.action;
+      this.before = networkAclRulePrototypeNetworkAclRuleProtocolTcpudp.before;
       this.destination = networkAclRulePrototypeNetworkAclRuleProtocolTcpudp.destination;
       this.direction = networkAclRulePrototypeNetworkAclRuleProtocolTcpudp.direction;
+      this.name = networkAclRulePrototypeNetworkAclRuleProtocolTcpudp.name;
       this.source = networkAclRulePrototypeNetworkAclRuleProtocolTcpudp.source;
-      this.protocol = networkAclRulePrototypeNetworkAclRuleProtocolTcpudp.protocol;
-      this.before = networkAclRulePrototypeNetworkAclRuleProtocolTcpudp.before;
       this.destinationPortMax = networkAclRulePrototypeNetworkAclRuleProtocolTcpudp.destinationPortMax;
       this.destinationPortMin = networkAclRulePrototypeNetworkAclRuleProtocolTcpudp.destinationPortMin;
+      this.protocol = networkAclRulePrototypeNetworkAclRuleProtocolTcpudp.protocol;
       this.sourcePortMax = networkAclRulePrototypeNetworkAclRuleProtocolTcpudp.sourcePortMax;
       this.sourcePortMin = networkAclRulePrototypeNetworkAclRuleProtocolTcpudp.sourcePortMin;
     }
@@ -86,6 +82,23 @@ public class NetworkACLRulePrototypeNetworkACLRuleProtocolTCPUDP extends Network
      * Instantiates a new builder.
      */
     public Builder() {
+    }
+
+    /**
+     * Instantiates a new builder with required properties.
+     *
+     * @param action the action
+     * @param destination the destination
+     * @param direction the direction
+     * @param source the source
+     * @param protocol the protocol
+     */
+    public Builder(String action, String destination, String direction, String source, String protocol) {
+      this.action = action;
+      this.destination = destination;
+      this.direction = direction;
+      this.source = source;
+      this.protocol = protocol;
     }
 
     /**
@@ -98,17 +111,6 @@ public class NetworkACLRulePrototypeNetworkACLRuleProtocolTCPUDP extends Network
     }
 
     /**
-     * Set the name.
-     *
-     * @param name the name
-     * @return the NetworkACLRulePrototypeNetworkACLRuleProtocolTCPUDP builder
-     */
-    public Builder name(String name) {
-      this.name = name;
-      return this;
-    }
-
-    /**
      * Set the action.
      *
      * @param action the action
@@ -116,6 +118,17 @@ public class NetworkACLRulePrototypeNetworkACLRuleProtocolTCPUDP extends Network
      */
     public Builder action(String action) {
       this.action = action;
+      return this;
+    }
+
+    /**
+     * Set the before.
+     *
+     * @param before the before
+     * @return the NetworkACLRulePrototypeNetworkACLRuleProtocolTCPUDP builder
+     */
+    public Builder before(NetworkACLRuleBeforePrototype before) {
+      this.before = before;
       return this;
     }
 
@@ -142,6 +155,17 @@ public class NetworkACLRulePrototypeNetworkACLRuleProtocolTCPUDP extends Network
     }
 
     /**
+     * Set the name.
+     *
+     * @param name the name
+     * @return the NetworkACLRulePrototypeNetworkACLRuleProtocolTCPUDP builder
+     */
+    public Builder name(String name) {
+      this.name = name;
+      return this;
+    }
+
+    /**
      * Set the source.
      *
      * @param source the source
@@ -149,28 +173,6 @@ public class NetworkACLRulePrototypeNetworkACLRuleProtocolTCPUDP extends Network
      */
     public Builder source(String source) {
       this.source = source;
-      return this;
-    }
-
-    /**
-     * Set the protocol.
-     *
-     * @param protocol the protocol
-     * @return the NetworkACLRulePrototypeNetworkACLRuleProtocolTCPUDP builder
-     */
-    public Builder protocol(String protocol) {
-      this.protocol = protocol;
-      return this;
-    }
-
-    /**
-     * Set the before.
-     *
-     * @param before the before
-     * @return the NetworkACLRulePrototypeNetworkACLRuleProtocolTCPUDP builder
-     */
-    public Builder before(NetworkACLRuleIdentity before) {
-      this.before = before;
       return this;
     }
 
@@ -193,6 +195,17 @@ public class NetworkACLRulePrototypeNetworkACLRuleProtocolTCPUDP extends Network
      */
     public Builder destinationPortMin(long destinationPortMin) {
       this.destinationPortMin = destinationPortMin;
+      return this;
+    }
+
+    /**
+     * Set the protocol.
+     *
+     * @param protocol the protocol
+     * @return the NetworkACLRulePrototypeNetworkACLRuleProtocolTCPUDP builder
+     */
+    public Builder protocol(String protocol) {
+      this.protocol = protocol;
       return this;
     }
 
@@ -230,15 +243,15 @@ public class NetworkACLRulePrototypeNetworkACLRuleProtocolTCPUDP extends Network
       "source cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.protocol,
       "protocol cannot be null");
-    name = builder.name;
     action = builder.action;
+    before = builder.before;
     destination = builder.destination;
     direction = builder.direction;
+    name = builder.name;
     source = builder.source;
-    protocol = builder.protocol;
-    before = builder.before;
     destinationPortMax = builder.destinationPortMax;
     destinationPortMin = builder.destinationPortMin;
+    protocol = builder.protocol;
     sourcePortMax = builder.sourcePortMax;
     sourcePortMin = builder.sourcePortMin;
   }

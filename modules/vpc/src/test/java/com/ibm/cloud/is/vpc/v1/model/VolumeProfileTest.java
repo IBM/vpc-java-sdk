@@ -32,8 +32,8 @@ public class VolumeProfileTest {
   @Test
   public void testVolumeProfile() throws Throwable {
     VolumeProfile volumeProfileModel = new VolumeProfile();
-    assertNull(volumeProfileModel.getName());
-    assertNull(volumeProfileModel.getHref());
     assertNull(volumeProfileModel.getFamily());
+    assertNull(volumeProfileModel.getHref());
+    assertNull(volumeProfileModel.getName());
   }
 }

@@ -33,24 +33,29 @@ public class NetworkInterfacePatchTest {
   @Test
   public void testNetworkInterfacePatch() throws Throwable {
     NetworkInterfacePatch networkInterfacePatchModel = new NetworkInterfacePatch.Builder()
+      .allowIpSpoofing(true)
       .name("my-network-interface")
       .build();
+    assertEquals(networkInterfacePatchModel.allowIpSpoofing(), Boolean.valueOf(true));
     assertEquals(networkInterfacePatchModel.name(), "my-network-interface");
 
     String json = TestUtilities.serialize(networkInterfacePatchModel);
 
     NetworkInterfacePatch networkInterfacePatchModelNew = TestUtilities.deserialize(json, NetworkInterfacePatch.class);
     assertTrue(networkInterfacePatchModelNew instanceof NetworkInterfacePatch);
+    assertEquals(networkInterfacePatchModelNew.allowIpSpoofing(), Boolean.valueOf(true));
     assertEquals(networkInterfacePatchModelNew.name(), "my-network-interface");
   }
   @Test
   public void testNetworkInterfacePatchAsPatch() throws Throwable {
     NetworkInterfacePatch networkInterfacePatchModel = new NetworkInterfacePatch.Builder()
+      .allowIpSpoofing(true)
       .name("my-network-interface")
       .build();
 
     Map<String, Object> mergePatch = networkInterfacePatchModel.asPatch();
 
+    assertTrue(mergePatch.containsKey("allow_ip_spoofing"));
     assertEquals(mergePatch.get("name"), "my-network-interface");
   }
 

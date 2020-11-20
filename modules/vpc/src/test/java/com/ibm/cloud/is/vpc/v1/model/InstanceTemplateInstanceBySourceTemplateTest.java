@@ -26,7 +26,7 @@ import com.ibm.cloud.is.vpc.v1.model.SubnetIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.VPCIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototypeInstanceByImageContext;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototypeInstanceContext;
-import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototypeInstanceContextVolumeVolumeIdentityVolumeIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentVolumePrototypeInstanceContextVolumeIdentityVolumeIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.VolumeProfileIdentityByName;
 import com.ibm.cloud.is.vpc.v1.model.VolumePrototypeInstanceByImageContext;
 import com.ibm.cloud.is.vpc.v1.model.ZoneIdentityByName;
@@ -50,22 +50,22 @@ public class InstanceTemplateInstanceBySourceTemplateTest {
   @Test
   public void testInstanceTemplateInstanceBySourceTemplate() throws Throwable {
     InstanceTemplateInstanceBySourceTemplate instanceTemplateInstanceBySourceTemplateModel = new InstanceTemplateInstanceBySourceTemplate();
-    assertNull(instanceTemplateInstanceBySourceTemplateModel.getId());
-    assertNull(instanceTemplateInstanceBySourceTemplateModel.getHref());
+    assertNull(instanceTemplateInstanceBySourceTemplateModel.getCreatedAt());
     assertNull(instanceTemplateInstanceBySourceTemplateModel.getCrn());
-    assertNull(instanceTemplateInstanceBySourceTemplateModel.getName());
+    assertNull(instanceTemplateInstanceBySourceTemplateModel.getHref());
+    assertNull(instanceTemplateInstanceBySourceTemplateModel.getId());
     assertNull(instanceTemplateInstanceBySourceTemplateModel.getKeys());
+    assertNull(instanceTemplateInstanceBySourceTemplateModel.getName());
     assertNull(instanceTemplateInstanceBySourceTemplateModel.getNetworkInterfaces());
     assertNull(instanceTemplateInstanceBySourceTemplateModel.getProfile());
+    assertNull(instanceTemplateInstanceBySourceTemplateModel.getResourceGroup());
     assertNull(instanceTemplateInstanceBySourceTemplateModel.getUserData());
     assertNull(instanceTemplateInstanceBySourceTemplateModel.getVolumeAttachments());
     assertNull(instanceTemplateInstanceBySourceTemplateModel.getVpc());
-    assertNull(instanceTemplateInstanceBySourceTemplateModel.getCreatedAt());
-    assertNull(instanceTemplateInstanceBySourceTemplateModel.getResourceGroup());
-    assertNull(instanceTemplateInstanceBySourceTemplateModel.getPrimaryNetworkInterface());
-    assertNull(instanceTemplateInstanceBySourceTemplateModel.getZone());
     assertNull(instanceTemplateInstanceBySourceTemplateModel.getBootVolumeAttachment());
     assertNull(instanceTemplateInstanceBySourceTemplateModel.getImage());
+    assertNull(instanceTemplateInstanceBySourceTemplateModel.getPrimaryNetworkInterface());
     assertNull(instanceTemplateInstanceBySourceTemplateModel.getSourceTemplate());
+    assertNull(instanceTemplateInstanceBySourceTemplateModel.getZone());
   }
 }

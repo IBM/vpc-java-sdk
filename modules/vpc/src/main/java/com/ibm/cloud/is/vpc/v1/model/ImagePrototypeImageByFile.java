@@ -23,17 +23,17 @@ public class ImagePrototypeImageByFile extends ImagePrototype {
    */
   public static class Builder {
     private String name;
-    private String encryptedDataKey;
-    private EncryptionKeyReference encryptionKey;
     private ResourceGroupIdentity resourceGroup;
+    private String encryptedDataKey;
+    private EncryptionKeyIdentity encryptionKey;
     private ImageFilePrototype file;
     private OperatingSystemIdentity operatingSystem;
 
     public Builder(ImagePrototype imagePrototypeImageByFile) {
       this.name = imagePrototypeImageByFile.name;
+      this.resourceGroup = imagePrototypeImageByFile.resourceGroup;
       this.encryptedDataKey = imagePrototypeImageByFile.encryptedDataKey;
       this.encryptionKey = imagePrototypeImageByFile.encryptionKey;
-      this.resourceGroup = imagePrototypeImageByFile.resourceGroup;
       this.file = imagePrototypeImageByFile.file;
       this.operatingSystem = imagePrototypeImageByFile.operatingSystem;
     }
@@ -76,6 +76,17 @@ public class ImagePrototypeImageByFile extends ImagePrototype {
     }
 
     /**
+     * Set the resourceGroup.
+     *
+     * @param resourceGroup the resourceGroup
+     * @return the ImagePrototypeImageByFile builder
+     */
+    public Builder resourceGroup(ResourceGroupIdentity resourceGroup) {
+      this.resourceGroup = resourceGroup;
+      return this;
+    }
+
+    /**
      * Set the encryptedDataKey.
      *
      * @param encryptedDataKey the encryptedDataKey
@@ -92,19 +103,8 @@ public class ImagePrototypeImageByFile extends ImagePrototype {
      * @param encryptionKey the encryptionKey
      * @return the ImagePrototypeImageByFile builder
      */
-    public Builder encryptionKey(EncryptionKeyReference encryptionKey) {
+    public Builder encryptionKey(EncryptionKeyIdentity encryptionKey) {
       this.encryptionKey = encryptionKey;
-      return this;
-    }
-
-    /**
-     * Set the resourceGroup.
-     *
-     * @param resourceGroup the resourceGroup
-     * @return the ImagePrototypeImageByFile builder
-     */
-    public Builder resourceGroup(ResourceGroupIdentity resourceGroup) {
-      this.resourceGroup = resourceGroup;
       return this;
     }
 
@@ -137,9 +137,9 @@ public class ImagePrototypeImageByFile extends ImagePrototype {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.operatingSystem,
       "operatingSystem cannot be null");
     name = builder.name;
+    resourceGroup = builder.resourceGroup;
     encryptedDataKey = builder.encryptedDataKey;
     encryptionKey = builder.encryptionKey;
-    resourceGroup = builder.resourceGroup;
     file = builder.file;
     operatingSystem = builder.operatingSystem;
   }

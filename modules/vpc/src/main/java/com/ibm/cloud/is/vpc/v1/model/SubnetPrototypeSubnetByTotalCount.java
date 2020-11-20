@@ -30,21 +30,23 @@ public class SubnetPrototypeSubnetByTotalCount extends SubnetPrototype {
    * Builder.
    */
   public static class Builder {
+    private String ipVersion;
     private String name;
     private NetworkACLIdentity networkAcl;
     private PublicGatewayIdentity publicGateway;
-    private String ipVersion;
     private ResourceGroupIdentity resourceGroup;
+    private RoutingTableIdentity routingTable;
     private VPCIdentity vpc;
     private Long totalIpv4AddressCount;
     private ZoneIdentity zone;
 
     public Builder(SubnetPrototype subnetPrototypeSubnetByTotalCount) {
+      this.ipVersion = subnetPrototypeSubnetByTotalCount.ipVersion;
       this.name = subnetPrototypeSubnetByTotalCount.name;
       this.networkAcl = subnetPrototypeSubnetByTotalCount.networkAcl;
       this.publicGateway = subnetPrototypeSubnetByTotalCount.publicGateway;
-      this.ipVersion = subnetPrototypeSubnetByTotalCount.ipVersion;
       this.resourceGroup = subnetPrototypeSubnetByTotalCount.resourceGroup;
+      this.routingTable = subnetPrototypeSubnetByTotalCount.routingTable;
       this.vpc = subnetPrototypeSubnetByTotalCount.vpc;
       this.totalIpv4AddressCount = subnetPrototypeSubnetByTotalCount.totalIpv4AddressCount;
       this.zone = subnetPrototypeSubnetByTotalCount.zone;
@@ -76,6 +78,17 @@ public class SubnetPrototypeSubnetByTotalCount extends SubnetPrototype {
      */
     public SubnetPrototypeSubnetByTotalCount build() {
       return new SubnetPrototypeSubnetByTotalCount(this);
+    }
+
+    /**
+     * Set the ipVersion.
+     *
+     * @param ipVersion the ipVersion
+     * @return the SubnetPrototypeSubnetByTotalCount builder
+     */
+    public Builder ipVersion(String ipVersion) {
+      this.ipVersion = ipVersion;
+      return this;
     }
 
     /**
@@ -112,17 +125,6 @@ public class SubnetPrototypeSubnetByTotalCount extends SubnetPrototype {
     }
 
     /**
-     * Set the ipVersion.
-     *
-     * @param ipVersion the ipVersion
-     * @return the SubnetPrototypeSubnetByTotalCount builder
-     */
-    public Builder ipVersion(String ipVersion) {
-      this.ipVersion = ipVersion;
-      return this;
-    }
-
-    /**
      * Set the resourceGroup.
      *
      * @param resourceGroup the resourceGroup
@@ -130,6 +132,17 @@ public class SubnetPrototypeSubnetByTotalCount extends SubnetPrototype {
      */
     public Builder resourceGroup(ResourceGroupIdentity resourceGroup) {
       this.resourceGroup = resourceGroup;
+      return this;
+    }
+
+    /**
+     * Set the routingTable.
+     *
+     * @param routingTable the routingTable
+     * @return the SubnetPrototypeSubnetByTotalCount builder
+     */
+    public Builder routingTable(RoutingTableIdentity routingTable) {
+      this.routingTable = routingTable;
       return this;
     }
 
@@ -174,11 +187,12 @@ public class SubnetPrototypeSubnetByTotalCount extends SubnetPrototype {
       "totalIpv4AddressCount cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.zone,
       "zone cannot be null");
+    ipVersion = builder.ipVersion;
     name = builder.name;
     networkAcl = builder.networkAcl;
     publicGateway = builder.publicGateway;
-    ipVersion = builder.ipVersion;
     resourceGroup = builder.resourceGroup;
+    routingTable = builder.routingTable;
     vpc = builder.vpc;
     totalIpv4AddressCount = builder.totalIpv4AddressCount;
     zone = builder.zone;

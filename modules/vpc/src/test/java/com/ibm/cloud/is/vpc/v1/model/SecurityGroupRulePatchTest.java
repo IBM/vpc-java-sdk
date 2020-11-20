@@ -14,7 +14,7 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRulePatch;
-import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRulePatchRemoteCIDR;
+import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleRemotePatchCIDR;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -33,64 +33,64 @@ public class SecurityGroupRulePatchTest {
 
   @Test
   public void testSecurityGroupRulePatch() throws Throwable {
-    SecurityGroupRulePatchRemoteCIDR securityGroupRulePatchRemoteModel = new SecurityGroupRulePatchRemoteCIDR.Builder()
+    SecurityGroupRuleRemotePatchCIDR securityGroupRuleRemotePatchModel = new SecurityGroupRuleRemotePatchCIDR.Builder()
       .cidrBlock("10.0.0.0/16")
       .build();
-    assertEquals(securityGroupRulePatchRemoteModel.cidrBlock(), "10.0.0.0/16");
+    assertEquals(securityGroupRuleRemotePatchModel.cidrBlock(), "10.0.0.0/16");
 
     SecurityGroupRulePatch securityGroupRulePatchModel = new SecurityGroupRulePatch.Builder()
-      .remote(securityGroupRulePatchRemoteModel)
+      .code(Long.valueOf("0"))
       .direction("inbound")
       .ipVersion("ipv4")
-      .code(Long.valueOf("0"))
       .portMax(Long.valueOf("22"))
       .portMin(Long.valueOf("22"))
+      .remote(securityGroupRuleRemotePatchModel)
       .type(Long.valueOf("8"))
       .build();
-    assertEquals(securityGroupRulePatchModel.remote(), securityGroupRulePatchRemoteModel);
+    assertEquals(securityGroupRulePatchModel.code(), Long.valueOf("0"));
     assertEquals(securityGroupRulePatchModel.direction(), "inbound");
     assertEquals(securityGroupRulePatchModel.ipVersion(), "ipv4");
-    assertEquals(securityGroupRulePatchModel.code(), Long.valueOf("0"));
     assertEquals(securityGroupRulePatchModel.portMax(), Long.valueOf("22"));
     assertEquals(securityGroupRulePatchModel.portMin(), Long.valueOf("22"));
+    assertEquals(securityGroupRulePatchModel.remote(), securityGroupRuleRemotePatchModel);
     assertEquals(securityGroupRulePatchModel.type(), Long.valueOf("8"));
 
     String json = TestUtilities.serialize(securityGroupRulePatchModel);
 
     SecurityGroupRulePatch securityGroupRulePatchModelNew = TestUtilities.deserialize(json, SecurityGroupRulePatch.class);
     assertTrue(securityGroupRulePatchModelNew instanceof SecurityGroupRulePatch);
-    assertEquals(securityGroupRulePatchModelNew.remote().toString(), securityGroupRulePatchRemoteModel.toString());
+    assertEquals(securityGroupRulePatchModelNew.code(), Long.valueOf("0"));
     assertEquals(securityGroupRulePatchModelNew.direction(), "inbound");
     assertEquals(securityGroupRulePatchModelNew.ipVersion(), "ipv4");
-    assertEquals(securityGroupRulePatchModelNew.code(), Long.valueOf("0"));
     assertEquals(securityGroupRulePatchModelNew.portMax(), Long.valueOf("22"));
     assertEquals(securityGroupRulePatchModelNew.portMin(), Long.valueOf("22"));
+    assertEquals(securityGroupRulePatchModelNew.remote().toString(), securityGroupRuleRemotePatchModel.toString());
     assertEquals(securityGroupRulePatchModelNew.type(), Long.valueOf("8"));
   }
   @Test
   public void testSecurityGroupRulePatchAsPatch() throws Throwable {
-    SecurityGroupRulePatchRemoteCIDR securityGroupRulePatchRemoteModel = new SecurityGroupRulePatchRemoteCIDR.Builder()
+    SecurityGroupRuleRemotePatchCIDR securityGroupRuleRemotePatchModel = new SecurityGroupRuleRemotePatchCIDR.Builder()
       .cidrBlock("10.0.0.0/16")
       .build();
 
     SecurityGroupRulePatch securityGroupRulePatchModel = new SecurityGroupRulePatch.Builder()
-      .remote(securityGroupRulePatchRemoteModel)
+      .code(Long.valueOf("0"))
       .direction("inbound")
       .ipVersion("ipv4")
-      .code(Long.valueOf("0"))
       .portMax(Long.valueOf("22"))
       .portMin(Long.valueOf("22"))
+      .remote(securityGroupRuleRemotePatchModel)
       .type(Long.valueOf("8"))
       .build();
 
     Map<String, Object> mergePatch = securityGroupRulePatchModel.asPatch();
 
-    assertTrue(mergePatch.containsKey("remote"));
+    assertTrue(mergePatch.containsKey("code"));
     assertEquals(mergePatch.get("direction"), "inbound");
     assertEquals(mergePatch.get("ip_version"), "ipv4");
-    assertTrue(mergePatch.containsKey("code"));
     assertTrue(mergePatch.containsKey("port_max"));
     assertTrue(mergePatch.containsKey("port_min"));
+    assertTrue(mergePatch.containsKey("remote"));
     assertTrue(mergePatch.containsKey("type"));
   }
 

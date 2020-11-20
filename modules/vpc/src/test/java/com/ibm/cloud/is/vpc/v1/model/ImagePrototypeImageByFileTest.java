@@ -13,7 +13,7 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
-import com.ibm.cloud.is.vpc.v1.model.EncryptionKeyReference;
+import com.ibm.cloud.is.vpc.v1.model.EncryptionKeyIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.ImageFilePrototype;
 import com.ibm.cloud.is.vpc.v1.model.ImagePrototypeImageByFile;
 import com.ibm.cloud.is.vpc.v1.model.OperatingSystemIdentityByName;
@@ -35,15 +35,15 @@ public class ImagePrototypeImageByFileTest {
 
   @Test
   public void testImagePrototypeImageByFile() throws Throwable {
-    EncryptionKeyReference encryptionKeyReferenceModel = new EncryptionKeyReference.Builder()
-      .crn("crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179")
-      .build();
-    assertEquals(encryptionKeyReferenceModel.crn(), "crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179");
-
     ResourceGroupIdentityById resourceGroupIdentityModel = new ResourceGroupIdentityById.Builder()
       .id("fee82deba12e4c0fb69c3b09d1f12345")
       .build();
     assertEquals(resourceGroupIdentityModel.id(), "fee82deba12e4c0fb69c3b09d1f12345");
+
+    EncryptionKeyIdentityByCRN encryptionKeyIdentityModel = new EncryptionKeyIdentityByCRN.Builder()
+      .crn("crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179")
+      .build();
+    assertEquals(encryptionKeyIdentityModel.crn(), "crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179");
 
     ImageFilePrototype imageFilePrototypeModel = new ImageFilePrototype.Builder()
       .href("cos://us-south/custom-image-vpc-bucket/customImage-0.vhd")
@@ -57,16 +57,16 @@ public class ImagePrototypeImageByFileTest {
 
     ImagePrototypeImageByFile imagePrototypeImageByFileModel = new ImagePrototypeImageByFile.Builder()
       .name("my-image")
-      .encryptedDataKey("testString")
-      .encryptionKey(encryptionKeyReferenceModel)
       .resourceGroup(resourceGroupIdentityModel)
+      .encryptedDataKey("testString")
+      .encryptionKey(encryptionKeyIdentityModel)
       .file(imageFilePrototypeModel)
       .operatingSystem(operatingSystemIdentityModel)
       .build();
     assertEquals(imagePrototypeImageByFileModel.name(), "my-image");
-    assertEquals(imagePrototypeImageByFileModel.encryptedDataKey(), "testString");
-    assertEquals(imagePrototypeImageByFileModel.encryptionKey(), encryptionKeyReferenceModel);
     assertEquals(imagePrototypeImageByFileModel.resourceGroup(), resourceGroupIdentityModel);
+    assertEquals(imagePrototypeImageByFileModel.encryptedDataKey(), "testString");
+    assertEquals(imagePrototypeImageByFileModel.encryptionKey(), encryptionKeyIdentityModel);
     assertEquals(imagePrototypeImageByFileModel.file(), imageFilePrototypeModel);
     assertEquals(imagePrototypeImageByFileModel.operatingSystem(), operatingSystemIdentityModel);
 
@@ -75,9 +75,9 @@ public class ImagePrototypeImageByFileTest {
     ImagePrototypeImageByFile imagePrototypeImageByFileModelNew = TestUtilities.deserialize(json, ImagePrototypeImageByFile.class);
     assertTrue(imagePrototypeImageByFileModelNew instanceof ImagePrototypeImageByFile);
     assertEquals(imagePrototypeImageByFileModelNew.name(), "my-image");
-    assertEquals(imagePrototypeImageByFileModelNew.encryptedDataKey(), "testString");
-    assertEquals(imagePrototypeImageByFileModelNew.encryptionKey().toString(), encryptionKeyReferenceModel.toString());
     assertEquals(imagePrototypeImageByFileModelNew.resourceGroup().toString(), resourceGroupIdentityModel.toString());
+    assertEquals(imagePrototypeImageByFileModelNew.encryptedDataKey(), "testString");
+    assertEquals(imagePrototypeImageByFileModelNew.encryptionKey().toString(), encryptionKeyIdentityModel.toString());
     assertEquals(imagePrototypeImageByFileModelNew.file().toString(), imageFilePrototypeModel.toString());
     assertEquals(imagePrototypeImageByFileModelNew.operatingSystem().toString(), operatingSystemIdentityModel.toString());
   }

@@ -32,13 +32,13 @@ public class LoadBalancerListenerPolicyRuleTest {
   @Test
   public void testLoadBalancerListenerPolicyRule() throws Throwable {
     LoadBalancerListenerPolicyRule loadBalancerListenerPolicyRuleModel = new LoadBalancerListenerPolicyRule();
-    assertNull(loadBalancerListenerPolicyRuleModel.getId());
-    assertNull(loadBalancerListenerPolicyRuleModel.getHref());
     assertNull(loadBalancerListenerPolicyRuleModel.getCondition());
+    assertNull(loadBalancerListenerPolicyRuleModel.getCreatedAt());
     assertNull(loadBalancerListenerPolicyRuleModel.getField());
+    assertNull(loadBalancerListenerPolicyRuleModel.getHref());
+    assertNull(loadBalancerListenerPolicyRuleModel.getId());
+    assertNull(loadBalancerListenerPolicyRuleModel.getProvisioningStatus());
     assertNull(loadBalancerListenerPolicyRuleModel.getType());
     assertNull(loadBalancerListenerPolicyRuleModel.getValue());
-    assertNull(loadBalancerListenerPolicyRuleModel.getCreatedAt());
-    assertNull(loadBalancerListenerPolicyRuleModel.getProvisioningStatus());
   }
 }

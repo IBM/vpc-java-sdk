@@ -15,8 +15,12 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.IP;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLReference;
+import com.ibm.cloud.is.vpc.v1.model.NetworkACLReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;
+import com.ibm.cloud.is.vpc.v1.model.RoutingTableReference;
+import com.ibm.cloud.is.vpc.v1.model.RoutingTableReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupReference;
+import com.ibm.cloud.is.vpc.v1.model.SecurityGroupReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.VPC;
 import com.ibm.cloud.is.vpc.v1.model.VPCCSESourceIP;
 import com.ibm.cloud.is.vpc.v1.model.ZoneReference;
@@ -38,16 +42,17 @@ public class VPCTest {
   @Test
   public void testVPC() throws Throwable {
     VPC vpcModel = new VPC();
-    assertNull(vpcModel.getId());
-    assertNull(vpcModel.getCrn());
-    assertNull(vpcModel.getHref());
-    assertNull(vpcModel.getName());
-    assertNull(vpcModel.getDefaultNetworkAcl());
     assertNull(vpcModel.isClassicAccess());
-    assertNull(vpcModel.getDefaultSecurityGroup());
-    assertNull(vpcModel.getResourceGroup());
     assertNull(vpcModel.getCreatedAt());
+    assertNull(vpcModel.getCrn());
     assertNull(vpcModel.getCseSourceIps());
+    assertNull(vpcModel.getDefaultNetworkAcl());
+    assertNull(vpcModel.getDefaultRoutingTable());
+    assertNull(vpcModel.getDefaultSecurityGroup());
+    assertNull(vpcModel.getHref());
+    assertNull(vpcModel.getId());
+    assertNull(vpcModel.getName());
+    assertNull(vpcModel.getResourceGroup());
     assertNull(vpcModel.getStatus());
   }
 }

@@ -20,29 +20,29 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class VolumePrototypeInstanceByImageContext extends GenericModel {
 
-  protected String name;
-  protected VolumeProfileIdentity profile;
+  protected Long capacity;
   @SerializedName("encryption_key")
   protected EncryptionKeyIdentity encryptionKey;
-  protected Long capacity;
   protected Long iops;
+  protected String name;
+  protected VolumeProfileIdentity profile;
 
   /**
    * Builder.
    */
   public static class Builder {
+    private Long capacity;
+    private EncryptionKeyIdentity encryptionKey;
+    private Long iops;
     private String name;
     private VolumeProfileIdentity profile;
-    private EncryptionKeyIdentity encryptionKey;
-    private Long capacity;
-    private Long iops;
 
     private Builder(VolumePrototypeInstanceByImageContext volumePrototypeInstanceByImageContext) {
+      this.capacity = volumePrototypeInstanceByImageContext.capacity;
+      this.encryptionKey = volumePrototypeInstanceByImageContext.encryptionKey;
+      this.iops = volumePrototypeInstanceByImageContext.iops;
       this.name = volumePrototypeInstanceByImageContext.name;
       this.profile = volumePrototypeInstanceByImageContext.profile;
-      this.encryptionKey = volumePrototypeInstanceByImageContext.encryptionKey;
-      this.capacity = volumePrototypeInstanceByImageContext.capacity;
-      this.iops = volumePrototypeInstanceByImageContext.iops;
     }
 
     /**
@@ -70,6 +70,39 @@ public class VolumePrototypeInstanceByImageContext extends GenericModel {
     }
 
     /**
+     * Set the capacity.
+     *
+     * @param capacity the capacity
+     * @return the VolumePrototypeInstanceByImageContext builder
+     */
+    public Builder capacity(long capacity) {
+      this.capacity = capacity;
+      return this;
+    }
+
+    /**
+     * Set the encryptionKey.
+     *
+     * @param encryptionKey the encryptionKey
+     * @return the VolumePrototypeInstanceByImageContext builder
+     */
+    public Builder encryptionKey(EncryptionKeyIdentity encryptionKey) {
+      this.encryptionKey = encryptionKey;
+      return this;
+    }
+
+    /**
+     * Set the iops.
+     *
+     * @param iops the iops
+     * @return the VolumePrototypeInstanceByImageContext builder
+     */
+    public Builder iops(long iops) {
+      this.iops = iops;
+      return this;
+    }
+
+    /**
      * Set the name.
      *
      * @param name the name
@@ -90,49 +123,16 @@ public class VolumePrototypeInstanceByImageContext extends GenericModel {
       this.profile = profile;
       return this;
     }
-
-    /**
-     * Set the encryptionKey.
-     *
-     * @param encryptionKey the encryptionKey
-     * @return the VolumePrototypeInstanceByImageContext builder
-     */
-    public Builder encryptionKey(EncryptionKeyIdentity encryptionKey) {
-      this.encryptionKey = encryptionKey;
-      return this;
-    }
-
-    /**
-     * Set the capacity.
-     *
-     * @param capacity the capacity
-     * @return the VolumePrototypeInstanceByImageContext builder
-     */
-    public Builder capacity(long capacity) {
-      this.capacity = capacity;
-      return this;
-    }
-
-    /**
-     * Set the iops.
-     *
-     * @param iops the iops
-     * @return the VolumePrototypeInstanceByImageContext builder
-     */
-    public Builder iops(long iops) {
-      this.iops = iops;
-      return this;
-    }
   }
 
   protected VolumePrototypeInstanceByImageContext(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.profile,
       "profile cannot be null");
+    capacity = builder.capacity;
+    encryptionKey = builder.encryptionKey;
+    iops = builder.iops;
     name = builder.name;
     profile = builder.profile;
-    encryptionKey = builder.encryptionKey;
-    capacity = builder.capacity;
-    iops = builder.iops;
   }
 
   /**
@@ -142,6 +142,44 @@ public class VolumePrototypeInstanceByImageContext extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
+  }
+
+  /**
+   * Gets the capacity.
+   *
+   * The capacity of the volume in gigabytes. The specified minimum and maximum capacity values for creating or updating
+   * volumes may expand in the future.
+   *
+   * @return the capacity
+   */
+  public Long capacity() {
+    return capacity;
+  }
+
+  /**
+   * Gets the encryptionKey.
+   *
+   * The identity of the root key to use to wrap the data encryption key for the volume.
+   *
+   * If this property is not provided but the image is encrypted, the image's
+   * `encryption_key` will be used. Otherwise, the `encryption` type for the
+   * volume will be `provider_managed`.
+   *
+   * @return the encryptionKey
+   */
+  public EncryptionKeyIdentity encryptionKey() {
+    return encryptionKey;
+  }
+
+  /**
+   * Gets the iops.
+   *
+   * The bandwidth for the volume.
+   *
+   * @return the iops
+   */
+  public Long iops() {
+    return iops;
   }
 
   /**
@@ -164,44 +202,6 @@ public class VolumePrototypeInstanceByImageContext extends GenericModel {
    */
   public VolumeProfileIdentity profile() {
     return profile;
-  }
-
-  /**
-   * Gets the encryptionKey.
-   *
-   * The identity of the root key to use to wrap the data encryption key for the volume.
-   *
-   * If this property is not provided but the image is encrypted, the image's
-   * `encryption_key` will be used. Otherwise, the `encryption` type for the
-   * volume will be `provider_managed`.
-   *
-   * @return the encryptionKey
-   */
-  public EncryptionKeyIdentity encryptionKey() {
-    return encryptionKey;
-  }
-
-  /**
-   * Gets the capacity.
-   *
-   * The capacity of the volume in gigabytes. Note that the specified minimum and maximum capacity values for creating
-   * or updating volumes may expand in the future.
-   *
-   * @return the capacity
-   */
-  public Long capacity() {
-    return capacity;
-  }
-
-  /**
-   * Gets the iops.
-   *
-   * The bandwidth for the volume.
-   *
-   * @return the iops
-   */
-  public Long iops() {
-    return iops;
   }
 }
 

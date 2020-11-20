@@ -33,35 +33,35 @@ public class InstanceGroupManagerPolicyPatchTest {
   @Test
   public void testInstanceGroupManagerPolicyPatch() throws Throwable {
     InstanceGroupManagerPolicyPatch instanceGroupManagerPolicyPatchModel = new InstanceGroupManagerPolicyPatch.Builder()
-      .name("my-instance-group-manager-policy")
       .metricType("cpu")
       .metricValue(Long.valueOf("26"))
+      .name("my-instance-group-manager-policy")
       .build();
-    assertEquals(instanceGroupManagerPolicyPatchModel.name(), "my-instance-group-manager-policy");
     assertEquals(instanceGroupManagerPolicyPatchModel.metricType(), "cpu");
     assertEquals(instanceGroupManagerPolicyPatchModel.metricValue(), Long.valueOf("26"));
+    assertEquals(instanceGroupManagerPolicyPatchModel.name(), "my-instance-group-manager-policy");
 
     String json = TestUtilities.serialize(instanceGroupManagerPolicyPatchModel);
 
     InstanceGroupManagerPolicyPatch instanceGroupManagerPolicyPatchModelNew = TestUtilities.deserialize(json, InstanceGroupManagerPolicyPatch.class);
     assertTrue(instanceGroupManagerPolicyPatchModelNew instanceof InstanceGroupManagerPolicyPatch);
-    assertEquals(instanceGroupManagerPolicyPatchModelNew.name(), "my-instance-group-manager-policy");
     assertEquals(instanceGroupManagerPolicyPatchModelNew.metricType(), "cpu");
     assertEquals(instanceGroupManagerPolicyPatchModelNew.metricValue(), Long.valueOf("26"));
+    assertEquals(instanceGroupManagerPolicyPatchModelNew.name(), "my-instance-group-manager-policy");
   }
   @Test
   public void testInstanceGroupManagerPolicyPatchAsPatch() throws Throwable {
     InstanceGroupManagerPolicyPatch instanceGroupManagerPolicyPatchModel = new InstanceGroupManagerPolicyPatch.Builder()
-      .name("my-instance-group-manager-policy")
       .metricType("cpu")
       .metricValue(Long.valueOf("26"))
+      .name("my-instance-group-manager-policy")
       .build();
 
     Map<String, Object> mergePatch = instanceGroupManagerPolicyPatchModel.asPatch();
 
-    assertEquals(mergePatch.get("name"), "my-instance-group-manager-policy");
     assertEquals(mergePatch.get("metric_type"), "cpu");
     assertTrue(mergePatch.containsKey("metric_value"));
+    assertEquals(mergePatch.get("name"), "my-instance-group-manager-policy");
   }
 
 }

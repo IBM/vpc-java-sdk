@@ -14,6 +14,7 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateReference;
+import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -32,8 +33,9 @@ public class InstanceTemplateReferenceTest {
   @Test
   public void testInstanceTemplateReference() throws Throwable {
     InstanceTemplateReference instanceTemplateReferenceModel = new InstanceTemplateReference();
-    assertNull(instanceTemplateReferenceModel.getId());
-    assertNull(instanceTemplateReferenceModel.getHref());
     assertNull(instanceTemplateReferenceModel.getCrn());
+    assertNull(instanceTemplateReferenceModel.getDeleted());
+    assertNull(instanceTemplateReferenceModel.getHref());
+    assertNull(instanceTemplateReferenceModel.getId());
   }
 }

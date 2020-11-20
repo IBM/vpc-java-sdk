@@ -16,8 +16,9 @@ package com.ibm.cloud.is.vpc.v1.model;
 import com.ibm.cloud.is.vpc.v1.model.DefaultSecurityGroup;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleRemoteIP;
-import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleSecurityGroupRuleProtocolTCPUDP;
+import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleSecurityGroupRuleProtocolAll;
 import com.ibm.cloud.is.vpc.v1.model.VPCReference;
+import com.ibm.cloud.is.vpc.v1.model.VPCReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -36,13 +37,13 @@ public class DefaultSecurityGroupTest {
   @Test
   public void testDefaultSecurityGroup() throws Throwable {
     DefaultSecurityGroup defaultSecurityGroupModel = new DefaultSecurityGroup();
-    assertNull(defaultSecurityGroupModel.getId());
+    assertNull(defaultSecurityGroupModel.getCreatedAt());
     assertNull(defaultSecurityGroupModel.getCrn());
     assertNull(defaultSecurityGroupModel.getHref());
+    assertNull(defaultSecurityGroupModel.getId());
     assertNull(defaultSecurityGroupModel.getName());
-    assertNull(defaultSecurityGroupModel.getRules());
     assertNull(defaultSecurityGroupModel.getResourceGroup());
-    assertNull(defaultSecurityGroupModel.getCreatedAt());
+    assertNull(defaultSecurityGroupModel.getRules());
     assertNull(defaultSecurityGroupModel.getVpc());
   }
 }

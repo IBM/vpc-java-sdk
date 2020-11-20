@@ -14,6 +14,7 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerReference;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -32,7 +33,8 @@ public class LoadBalancerListenerReferenceTest {
   @Test
   public void testLoadBalancerListenerReference() throws Throwable {
     LoadBalancerListenerReference loadBalancerListenerReferenceModel = new LoadBalancerListenerReference();
-    assertNull(loadBalancerListenerReferenceModel.getId());
+    assertNull(loadBalancerListenerReferenceModel.getDeleted());
     assertNull(loadBalancerListenerReferenceModel.getHref());
+    assertNull(loadBalancerListenerReferenceModel.getId());
   }
 }

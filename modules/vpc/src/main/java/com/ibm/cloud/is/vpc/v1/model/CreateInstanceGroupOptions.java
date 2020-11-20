@@ -24,11 +24,11 @@ public class CreateInstanceGroupOptions extends GenericModel {
 
   protected InstanceTemplateIdentity instanceTemplate;
   protected List<SubnetIdentity> subnets;
-  protected String name;
-  protected Long membershipCount;
   protected Long applicationPort;
   protected LoadBalancerIdentity loadBalancer;
   protected LoadBalancerPoolIdentity loadBalancerPool;
+  protected Long membershipCount;
+  protected String name;
   protected ResourceGroupIdentity resourceGroup;
 
   /**
@@ -37,21 +37,21 @@ public class CreateInstanceGroupOptions extends GenericModel {
   public static class Builder {
     private InstanceTemplateIdentity instanceTemplate;
     private List<SubnetIdentity> subnets;
-    private String name;
-    private Long membershipCount;
     private Long applicationPort;
     private LoadBalancerIdentity loadBalancer;
     private LoadBalancerPoolIdentity loadBalancerPool;
+    private Long membershipCount;
+    private String name;
     private ResourceGroupIdentity resourceGroup;
 
     private Builder(CreateInstanceGroupOptions createInstanceGroupOptions) {
       this.instanceTemplate = createInstanceGroupOptions.instanceTemplate;
       this.subnets = createInstanceGroupOptions.subnets;
-      this.name = createInstanceGroupOptions.name;
-      this.membershipCount = createInstanceGroupOptions.membershipCount;
       this.applicationPort = createInstanceGroupOptions.applicationPort;
       this.loadBalancer = createInstanceGroupOptions.loadBalancer;
       this.loadBalancerPool = createInstanceGroupOptions.loadBalancerPool;
+      this.membershipCount = createInstanceGroupOptions.membershipCount;
+      this.name = createInstanceGroupOptions.name;
       this.resourceGroup = createInstanceGroupOptions.resourceGroup;
     }
 
@@ -121,28 +121,6 @@ public class CreateInstanceGroupOptions extends GenericModel {
     }
 
     /**
-     * Set the name.
-     *
-     * @param name the name
-     * @return the CreateInstanceGroupOptions builder
-     */
-    public Builder name(String name) {
-      this.name = name;
-      return this;
-    }
-
-    /**
-     * Set the membershipCount.
-     *
-     * @param membershipCount the membershipCount
-     * @return the CreateInstanceGroupOptions builder
-     */
-    public Builder membershipCount(long membershipCount) {
-      this.membershipCount = membershipCount;
-      return this;
-    }
-
-    /**
      * Set the applicationPort.
      *
      * @param applicationPort the applicationPort
@@ -176,6 +154,28 @@ public class CreateInstanceGroupOptions extends GenericModel {
     }
 
     /**
+     * Set the membershipCount.
+     *
+     * @param membershipCount the membershipCount
+     * @return the CreateInstanceGroupOptions builder
+     */
+    public Builder membershipCount(long membershipCount) {
+      this.membershipCount = membershipCount;
+      return this;
+    }
+
+    /**
+     * Set the name.
+     *
+     * @param name the name
+     * @return the CreateInstanceGroupOptions builder
+     */
+    public Builder name(String name) {
+      this.name = name;
+      return this;
+    }
+
+    /**
      * Set the resourceGroup.
      *
      * @param resourceGroup the resourceGroup
@@ -194,11 +194,11 @@ public class CreateInstanceGroupOptions extends GenericModel {
       "subnets cannot be null");
     instanceTemplate = builder.instanceTemplate;
     subnets = builder.subnets;
-    name = builder.name;
-    membershipCount = builder.membershipCount;
     applicationPort = builder.applicationPort;
     loadBalancer = builder.loadBalancer;
     loadBalancerPool = builder.loadBalancerPool;
+    membershipCount = builder.membershipCount;
+    name = builder.name;
     resourceGroup = builder.resourceGroup;
   }
 
@@ -231,28 +231,6 @@ public class CreateInstanceGroupOptions extends GenericModel {
    */
   public List<SubnetIdentity> subnets() {
     return subnets;
-  }
-
-  /**
-   * Gets the name.
-   *
-   * The user-defined name for this instance group.
-   *
-   * @return the name
-   */
-  public String name() {
-    return name;
-  }
-
-  /**
-   * Gets the membershipCount.
-   *
-   * The number of instances in the instance group.
-   *
-   * @return the membershipCount
-   */
-  public Long membershipCount() {
-    return membershipCount;
   }
 
   /**
@@ -291,6 +269,28 @@ public class CreateInstanceGroupOptions extends GenericModel {
    */
   public LoadBalancerPoolIdentity loadBalancerPool() {
     return loadBalancerPool;
+  }
+
+  /**
+   * Gets the membershipCount.
+   *
+   * The number of instances in the instance group.
+   *
+   * @return the membershipCount
+   */
+  public Long membershipCount() {
+    return membershipCount;
+  }
+
+  /**
+   * Gets the name.
+   *
+   * The user-defined name for this instance group.
+   *
+   * @return the name
+   */
+  public String name() {
+    return name;
   }
 
   /**

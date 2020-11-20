@@ -14,6 +14,7 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.SubnetReference;
+import com.ibm.cloud.is.vpc.v1.model.SubnetReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -32,9 +33,10 @@ public class SubnetReferenceTest {
   @Test
   public void testSubnetReference() throws Throwable {
     SubnetReference subnetReferenceModel = new SubnetReference();
-    assertNull(subnetReferenceModel.getId());
     assertNull(subnetReferenceModel.getCrn());
+    assertNull(subnetReferenceModel.getDeleted());
     assertNull(subnetReferenceModel.getHref());
+    assertNull(subnetReferenceModel.getId());
     assertNull(subnetReferenceModel.getName());
   }
 }

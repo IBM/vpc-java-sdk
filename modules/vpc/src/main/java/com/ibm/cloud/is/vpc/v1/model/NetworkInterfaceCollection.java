@@ -24,16 +24,16 @@ public class NetworkInterfaceCollection extends GenericModel {
 
   protected NetworkInterfaceCollectionFirst first;
   protected Long limit;
+  @SerializedName("network_interfaces")
+  protected List<NetworkInterface> networkInterfaces;
   protected NetworkInterfaceCollectionNext next;
   @SerializedName("total_count")
   protected Long totalCount;
-  @SerializedName("network_interfaces")
-  protected List<NetworkInterface> networkInterfaces;
 
   /**
    * Gets the first.
    *
-   * A reference to the first page of resources.
+   * A link to the first page of resources.
    *
    * @return the first
    */
@@ -53,9 +53,20 @@ public class NetworkInterfaceCollection extends GenericModel {
   }
 
   /**
+   * Gets the networkInterfaces.
+   *
+   * Collection of network interfaces.
+   *
+   * @return the networkInterfaces
+   */
+  public List<NetworkInterface> getNetworkInterfaces() {
+    return networkInterfaces;
+  }
+
+  /**
    * Gets the next.
    *
-   * A reference to the next page of resources; this reference is included for all pages
+   * A link to the next page of resources. This property is present for all pages
    * except the last page.
    *
    * @return the next
@@ -73,17 +84,6 @@ public class NetworkInterfaceCollection extends GenericModel {
    */
   public Long getTotalCount() {
     return totalCount;
-  }
-
-  /**
-   * Gets the networkInterfaces.
-   *
-   * Collection of network interfaces.
-   *
-   * @return the networkInterfaces
-   */
-  public List<NetworkInterface> getNetworkInterfaces() {
-    return networkInterfaces;
   }
 }
 

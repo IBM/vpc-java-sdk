@@ -43,12 +43,6 @@ public class NetworkACLRulePrototypeNetworkACLRuleProtocolAll extends NetworkACL
   public interface Protocol {
     /** all. */
     String ALL = "all";
-    /** icmp. */
-    String ICMP = "icmp";
-    /** tcp. */
-    String TCP = "tcp";
-    /** udp. */
-    String UDP = "udp";
   }
 
 
@@ -56,28 +50,45 @@ public class NetworkACLRulePrototypeNetworkACLRuleProtocolAll extends NetworkACL
    * Builder.
    */
   public static class Builder {
-    private String name;
     private String action;
+    private NetworkACLRuleBeforePrototype before;
     private String destination;
     private String direction;
+    private String name;
     private String source;
     private String protocol;
-    private NetworkACLRuleIdentity before;
 
     public Builder(NetworkACLRulePrototype networkAclRulePrototypeNetworkAclRuleProtocolAll) {
-      this.name = networkAclRulePrototypeNetworkAclRuleProtocolAll.name;
       this.action = networkAclRulePrototypeNetworkAclRuleProtocolAll.action;
+      this.before = networkAclRulePrototypeNetworkAclRuleProtocolAll.before;
       this.destination = networkAclRulePrototypeNetworkAclRuleProtocolAll.destination;
       this.direction = networkAclRulePrototypeNetworkAclRuleProtocolAll.direction;
+      this.name = networkAclRulePrototypeNetworkAclRuleProtocolAll.name;
       this.source = networkAclRulePrototypeNetworkAclRuleProtocolAll.source;
       this.protocol = networkAclRulePrototypeNetworkAclRuleProtocolAll.protocol;
-      this.before = networkAclRulePrototypeNetworkAclRuleProtocolAll.before;
     }
 
     /**
      * Instantiates a new builder.
      */
     public Builder() {
+    }
+
+    /**
+     * Instantiates a new builder with required properties.
+     *
+     * @param action the action
+     * @param destination the destination
+     * @param direction the direction
+     * @param source the source
+     * @param protocol the protocol
+     */
+    public Builder(String action, String destination, String direction, String source, String protocol) {
+      this.action = action;
+      this.destination = destination;
+      this.direction = direction;
+      this.source = source;
+      this.protocol = protocol;
     }
 
     /**
@@ -90,17 +101,6 @@ public class NetworkACLRulePrototypeNetworkACLRuleProtocolAll extends NetworkACL
     }
 
     /**
-     * Set the name.
-     *
-     * @param name the name
-     * @return the NetworkACLRulePrototypeNetworkACLRuleProtocolAll builder
-     */
-    public Builder name(String name) {
-      this.name = name;
-      return this;
-    }
-
-    /**
      * Set the action.
      *
      * @param action the action
@@ -108,6 +108,17 @@ public class NetworkACLRulePrototypeNetworkACLRuleProtocolAll extends NetworkACL
      */
     public Builder action(String action) {
       this.action = action;
+      return this;
+    }
+
+    /**
+     * Set the before.
+     *
+     * @param before the before
+     * @return the NetworkACLRulePrototypeNetworkACLRuleProtocolAll builder
+     */
+    public Builder before(NetworkACLRuleBeforePrototype before) {
+      this.before = before;
       return this;
     }
 
@@ -134,6 +145,17 @@ public class NetworkACLRulePrototypeNetworkACLRuleProtocolAll extends NetworkACL
     }
 
     /**
+     * Set the name.
+     *
+     * @param name the name
+     * @return the NetworkACLRulePrototypeNetworkACLRuleProtocolAll builder
+     */
+    public Builder name(String name) {
+      this.name = name;
+      return this;
+    }
+
+    /**
      * Set the source.
      *
      * @param source the source
@@ -154,17 +176,6 @@ public class NetworkACLRulePrototypeNetworkACLRuleProtocolAll extends NetworkACL
       this.protocol = protocol;
       return this;
     }
-
-    /**
-     * Set the before.
-     *
-     * @param before the before
-     * @return the NetworkACLRulePrototypeNetworkACLRuleProtocolAll builder
-     */
-    public Builder before(NetworkACLRuleIdentity before) {
-      this.before = before;
-      return this;
-    }
   }
 
   protected NetworkACLRulePrototypeNetworkACLRuleProtocolAll(Builder builder) {
@@ -178,13 +189,13 @@ public class NetworkACLRulePrototypeNetworkACLRuleProtocolAll extends NetworkACL
       "source cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.protocol,
       "protocol cannot be null");
-    name = builder.name;
     action = builder.action;
+    before = builder.before;
     destination = builder.destination;
     direction = builder.direction;
+    name = builder.name;
     source = builder.source;
     protocol = builder.protocol;
-    before = builder.before;
   }
 
   /**

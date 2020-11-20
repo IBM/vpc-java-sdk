@@ -44,14 +44,8 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolICMP extends Sec
    * The protocol to enforce.
    */
   public interface Protocol {
-    /** all. */
-    String ALL = "all";
     /** icmp. */
     String ICMP = "icmp";
-    /** tcp. */
-    String TCP = "tcp";
-    /** udp. */
-    String UDP = "udp";
   }
 
 
@@ -61,17 +55,17 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolICMP extends Sec
   public static class Builder {
     private String direction;
     private String ipVersion;
-    private String protocol;
-    private SecurityGroupRulePrototypeRemote remote;
+    private SecurityGroupRuleRemotePrototype remote;
     private Long code;
+    private String protocol;
     private Long type;
 
     public Builder(SecurityGroupRulePrototype securityGroupRulePrototypeSecurityGroupRuleProtocolIcmp) {
       this.direction = securityGroupRulePrototypeSecurityGroupRuleProtocolIcmp.direction;
       this.ipVersion = securityGroupRulePrototypeSecurityGroupRuleProtocolIcmp.ipVersion;
-      this.protocol = securityGroupRulePrototypeSecurityGroupRuleProtocolIcmp.protocol;
       this.remote = securityGroupRulePrototypeSecurityGroupRuleProtocolIcmp.remote;
       this.code = securityGroupRulePrototypeSecurityGroupRuleProtocolIcmp.code;
+      this.protocol = securityGroupRulePrototypeSecurityGroupRuleProtocolIcmp.protocol;
       this.type = securityGroupRulePrototypeSecurityGroupRuleProtocolIcmp.type;
     }
 
@@ -79,6 +73,17 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolICMP extends Sec
      * Instantiates a new builder.
      */
     public Builder() {
+    }
+
+    /**
+     * Instantiates a new builder with required properties.
+     *
+     * @param direction the direction
+     * @param protocol the protocol
+     */
+    public Builder(String direction, String protocol) {
+      this.direction = direction;
+      this.protocol = protocol;
     }
 
     /**
@@ -113,23 +118,12 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolICMP extends Sec
     }
 
     /**
-     * Set the protocol.
-     *
-     * @param protocol the protocol
-     * @return the SecurityGroupRulePrototypeSecurityGroupRuleProtocolICMP builder
-     */
-    public Builder protocol(String protocol) {
-      this.protocol = protocol;
-      return this;
-    }
-
-    /**
      * Set the remote.
      *
      * @param remote the remote
      * @return the SecurityGroupRulePrototypeSecurityGroupRuleProtocolICMP builder
      */
-    public Builder remote(SecurityGroupRulePrototypeRemote remote) {
+    public Builder remote(SecurityGroupRuleRemotePrototype remote) {
       this.remote = remote;
       return this;
     }
@@ -142,6 +136,17 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolICMP extends Sec
      */
     public Builder code(long code) {
       this.code = code;
+      return this;
+    }
+
+    /**
+     * Set the protocol.
+     *
+     * @param protocol the protocol
+     * @return the SecurityGroupRulePrototypeSecurityGroupRuleProtocolICMP builder
+     */
+    public Builder protocol(String protocol) {
+      this.protocol = protocol;
       return this;
     }
 
@@ -160,11 +165,13 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolICMP extends Sec
   protected SecurityGroupRulePrototypeSecurityGroupRuleProtocolICMP(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.direction,
       "direction cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.protocol,
+      "protocol cannot be null");
     direction = builder.direction;
     ipVersion = builder.ipVersion;
-    protocol = builder.protocol;
     remote = builder.remote;
     code = builder.code;
+    protocol = builder.protocol;
     type = builder.type;
   }
 

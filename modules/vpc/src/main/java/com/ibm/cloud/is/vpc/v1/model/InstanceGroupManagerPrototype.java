@@ -31,31 +31,20 @@ public class InstanceGroupManagerPrototype extends GenericModel {
     String AUTOSCALE = "autoscale";
   }
 
-  protected String name;
   @SerializedName("management_enabled")
   protected Boolean managementEnabled;
+  protected String name;
   @SerializedName("aggregation_window")
   protected Long aggregationWindow;
   protected Long cooldown;
+  @SerializedName("manager_type")
+  protected String managerType;
   @SerializedName("max_membership_count")
   protected Long maxMembershipCount;
   @SerializedName("min_membership_count")
   protected Long minMembershipCount;
-  @SerializedName("manager_type")
-  protected String managerType;
 
   protected InstanceGroupManagerPrototype() {
-  }
-
-  /**
-   * Gets the name.
-   *
-   * The user-defined name for this instance group manager. Names must be unique within the instance group.
-   *
-   * @return the name
-   */
-  public String name() {
-    return name;
   }
 
   /**
@@ -67,6 +56,17 @@ public class InstanceGroupManagerPrototype extends GenericModel {
    */
   public Boolean managementEnabled() {
     return managementEnabled;
+  }
+
+  /**
+   * Gets the name.
+   *
+   * The user-defined name for this instance group manager. Names must be unique within the instance group.
+   *
+   * @return the name
+   */
+  public String name() {
+    return name;
   }
 
   /**
@@ -92,6 +92,17 @@ public class InstanceGroupManagerPrototype extends GenericModel {
   }
 
   /**
+   * Gets the managerType.
+   *
+   * The type of instance group manager.
+   *
+   * @return the managerType
+   */
+  public String managerType() {
+    return managerType;
+  }
+
+  /**
    * Gets the maxMembershipCount.
    *
    * The maximum number of members in a managed instance group.
@@ -111,17 +122,6 @@ public class InstanceGroupManagerPrototype extends GenericModel {
    */
   public Long minMembershipCount() {
     return minMembershipCount;
-  }
-
-  /**
-   * Gets the managerType.
-   *
-   * The type of instance group manager.
-   *
-   * @return the managerType
-   */
-  public String managerType() {
-    return managerType;
   }
 }
 

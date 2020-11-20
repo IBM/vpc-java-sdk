@@ -38,7 +38,7 @@ public class LoadBalancerProfileCollectionTest {
     assertNull(loadBalancerProfileCollectionModel.getFirst());
     assertNull(loadBalancerProfileCollectionModel.getLimit());
     assertNull(loadBalancerProfileCollectionModel.getNext());
-    assertNull(loadBalancerProfileCollectionModel.getTotalCount());
     assertNull(loadBalancerProfileCollectionModel.getProfiles());
+    assertNull(loadBalancerProfileCollectionModel.getTotalCount());
   }
 }

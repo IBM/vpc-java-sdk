@@ -14,13 +14,18 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLReference;
+import com.ibm.cloud.is.vpc.v1.model.NetworkACLReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.PublicGatewayReference;
+import com.ibm.cloud.is.vpc.v1.model.PublicGatewayReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;
+import com.ibm.cloud.is.vpc.v1.model.RoutingTableReference;
+import com.ibm.cloud.is.vpc.v1.model.RoutingTableReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.Subnet;
 import com.ibm.cloud.is.vpc.v1.model.SubnetCollection;
 import com.ibm.cloud.is.vpc.v1.model.SubnetCollectionFirst;
 import com.ibm.cloud.is.vpc.v1.model.SubnetCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.VPCReference;
+import com.ibm.cloud.is.vpc.v1.model.VPCReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.ZoneReference;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
@@ -43,7 +48,7 @@ public class SubnetCollectionTest {
     assertNull(subnetCollectionModel.getFirst());
     assertNull(subnetCollectionModel.getLimit());
     assertNull(subnetCollectionModel.getNext());
-    assertNull(subnetCollectionModel.getTotalCount());
     assertNull(subnetCollectionModel.getSubnets());
+    assertNull(subnetCollectionModel.getTotalCount());
   }
 }

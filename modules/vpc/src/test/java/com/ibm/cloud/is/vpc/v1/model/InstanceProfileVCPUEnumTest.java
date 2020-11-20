@@ -32,8 +32,8 @@ public class InstanceProfileVCPUEnumTest {
   @Test
   public void testInstanceProfileVCPUEnum() throws Throwable {
     InstanceProfileVCPUEnum instanceProfileVcpuEnumModel = new InstanceProfileVCPUEnum();
-    assertNull(instanceProfileVcpuEnumModel.getType());
     assertNull(instanceProfileVcpuEnumModel.getXDefault());
+    assertNull(instanceProfileVcpuEnumModel.getType());
     assertNull(instanceProfileVcpuEnumModel.getValues());
   }
 }

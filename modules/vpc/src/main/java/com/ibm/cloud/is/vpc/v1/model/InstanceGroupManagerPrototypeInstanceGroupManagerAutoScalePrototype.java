@@ -30,22 +30,22 @@ public class InstanceGroupManagerPrototypeInstanceGroupManagerAutoScalePrototype
    * Builder.
    */
   public static class Builder {
-    private String name;
     private Boolean managementEnabled;
+    private String name;
     private Long aggregationWindow;
     private Long cooldown;
+    private String managerType;
     private Long maxMembershipCount;
     private Long minMembershipCount;
-    private String managerType;
 
     public Builder(InstanceGroupManagerPrototype instanceGroupManagerPrototypeInstanceGroupManagerAutoScalePrototype) {
-      this.name = instanceGroupManagerPrototypeInstanceGroupManagerAutoScalePrototype.name;
       this.managementEnabled = instanceGroupManagerPrototypeInstanceGroupManagerAutoScalePrototype.managementEnabled;
+      this.name = instanceGroupManagerPrototypeInstanceGroupManagerAutoScalePrototype.name;
       this.aggregationWindow = instanceGroupManagerPrototypeInstanceGroupManagerAutoScalePrototype.aggregationWindow;
       this.cooldown = instanceGroupManagerPrototypeInstanceGroupManagerAutoScalePrototype.cooldown;
+      this.managerType = instanceGroupManagerPrototypeInstanceGroupManagerAutoScalePrototype.managerType;
       this.maxMembershipCount = instanceGroupManagerPrototypeInstanceGroupManagerAutoScalePrototype.maxMembershipCount;
       this.minMembershipCount = instanceGroupManagerPrototypeInstanceGroupManagerAutoScalePrototype.minMembershipCount;
-      this.managerType = instanceGroupManagerPrototypeInstanceGroupManagerAutoScalePrototype.managerType;
     }
 
     /**
@@ -57,12 +57,12 @@ public class InstanceGroupManagerPrototypeInstanceGroupManagerAutoScalePrototype
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param maxMembershipCount the maxMembershipCount
      * @param managerType the managerType
+     * @param maxMembershipCount the maxMembershipCount
      */
-    public Builder(Long maxMembershipCount, String managerType) {
-      this.maxMembershipCount = maxMembershipCount;
+    public Builder(String managerType, Long maxMembershipCount) {
       this.managerType = managerType;
+      this.maxMembershipCount = maxMembershipCount;
     }
 
     /**
@@ -75,17 +75,6 @@ public class InstanceGroupManagerPrototypeInstanceGroupManagerAutoScalePrototype
     }
 
     /**
-     * Set the name.
-     *
-     * @param name the name
-     * @return the InstanceGroupManagerPrototypeInstanceGroupManagerAutoScalePrototype builder
-     */
-    public Builder name(String name) {
-      this.name = name;
-      return this;
-    }
-
-    /**
      * Set the managementEnabled.
      *
      * @param managementEnabled the managementEnabled
@@ -93,6 +82,17 @@ public class InstanceGroupManagerPrototypeInstanceGroupManagerAutoScalePrototype
      */
     public Builder managementEnabled(Boolean managementEnabled) {
       this.managementEnabled = managementEnabled;
+      return this;
+    }
+
+    /**
+     * Set the name.
+     *
+     * @param name the name
+     * @return the InstanceGroupManagerPrototypeInstanceGroupManagerAutoScalePrototype builder
+     */
+    public Builder name(String name) {
+      this.name = name;
       return this;
     }
 
@@ -119,6 +119,17 @@ public class InstanceGroupManagerPrototypeInstanceGroupManagerAutoScalePrototype
     }
 
     /**
+     * Set the managerType.
+     *
+     * @param managerType the managerType
+     * @return the InstanceGroupManagerPrototypeInstanceGroupManagerAutoScalePrototype builder
+     */
+    public Builder managerType(String managerType) {
+      this.managerType = managerType;
+      return this;
+    }
+
+    /**
      * Set the maxMembershipCount.
      *
      * @param maxMembershipCount the maxMembershipCount
@@ -139,31 +150,20 @@ public class InstanceGroupManagerPrototypeInstanceGroupManagerAutoScalePrototype
       this.minMembershipCount = minMembershipCount;
       return this;
     }
-
-    /**
-     * Set the managerType.
-     *
-     * @param managerType the managerType
-     * @return the InstanceGroupManagerPrototypeInstanceGroupManagerAutoScalePrototype builder
-     */
-    public Builder managerType(String managerType) {
-      this.managerType = managerType;
-      return this;
-    }
   }
 
   protected InstanceGroupManagerPrototypeInstanceGroupManagerAutoScalePrototype(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.maxMembershipCount,
-      "maxMembershipCount cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.managerType,
       "managerType cannot be null");
-    name = builder.name;
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.maxMembershipCount,
+      "maxMembershipCount cannot be null");
     managementEnabled = builder.managementEnabled;
+    name = builder.name;
     aggregationWindow = builder.aggregationWindow;
     cooldown = builder.cooldown;
+    managerType = builder.managerType;
     maxMembershipCount = builder.maxMembershipCount;
     minMembershipCount = builder.minMembershipCount;
-    managerType = builder.managerType;
   }
 
   /**

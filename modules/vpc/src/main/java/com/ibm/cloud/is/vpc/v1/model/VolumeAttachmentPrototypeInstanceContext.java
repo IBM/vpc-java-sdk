@@ -23,7 +23,7 @@ public class VolumeAttachmentPrototypeInstanceContext extends GenericModel {
   @SerializedName("delete_volume_on_instance_delete")
   protected Boolean deleteVolumeOnInstanceDelete;
   protected String name;
-  protected VolumeAttachmentPrototypeInstanceContextVolume volume;
+  protected VolumeAttachmentVolumePrototypeInstanceContext volume;
 
   /**
    * Builder.
@@ -31,7 +31,7 @@ public class VolumeAttachmentPrototypeInstanceContext extends GenericModel {
   public static class Builder {
     private Boolean deleteVolumeOnInstanceDelete;
     private String name;
-    private VolumeAttachmentPrototypeInstanceContextVolume volume;
+    private VolumeAttachmentVolumePrototypeInstanceContext volume;
 
     private Builder(VolumeAttachmentPrototypeInstanceContext volumeAttachmentPrototypeInstanceContext) {
       this.deleteVolumeOnInstanceDelete = volumeAttachmentPrototypeInstanceContext.deleteVolumeOnInstanceDelete;
@@ -50,7 +50,7 @@ public class VolumeAttachmentPrototypeInstanceContext extends GenericModel {
      *
      * @param volume the volume
      */
-    public Builder(VolumeAttachmentPrototypeInstanceContextVolume volume) {
+    public Builder(VolumeAttachmentVolumePrototypeInstanceContext volume) {
       this.volume = volume;
     }
 
@@ -91,7 +91,7 @@ public class VolumeAttachmentPrototypeInstanceContext extends GenericModel {
      * @param volume the volume
      * @return the VolumeAttachmentPrototypeInstanceContext builder
      */
-    public Builder volume(VolumeAttachmentPrototypeInstanceContextVolume volume) {
+    public Builder volume(VolumeAttachmentVolumePrototypeInstanceContext volume) {
       this.volume = volume;
       return this;
     }
@@ -144,7 +144,7 @@ public class VolumeAttachmentPrototypeInstanceContext extends GenericModel {
    *
    * @return the volume
    */
-  public VolumeAttachmentPrototypeInstanceContextVolume volume() {
+  public VolumeAttachmentVolumePrototypeInstanceContext volume() {
     return volume;
   }
 }

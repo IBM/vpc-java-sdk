@@ -16,6 +16,7 @@ package com.ibm.cloud.is.vpc.v1.model;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachment;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentDevice;
 import com.ibm.cloud.is.vpc.v1.model.VolumeReference;
+import com.ibm.cloud.is.vpc.v1.model.VolumeReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -34,14 +35,14 @@ public class VolumeAttachmentTest {
   @Test
   public void testVolumeAttachment() throws Throwable {
     VolumeAttachment volumeAttachmentModel = new VolumeAttachment();
-    assertNull(volumeAttachmentModel.isDeleteVolumeOnInstanceDelete());
-    assertNull(volumeAttachmentModel.getName());
-    assertNull(volumeAttachmentModel.getId());
-    assertNull(volumeAttachmentModel.getHref());
-    assertNull(volumeAttachmentModel.getDevice());
-    assertNull(volumeAttachmentModel.getVolume());
     assertNull(volumeAttachmentModel.getCreatedAt());
+    assertNull(volumeAttachmentModel.isDeleteVolumeOnInstanceDelete());
+    assertNull(volumeAttachmentModel.getDevice());
+    assertNull(volumeAttachmentModel.getHref());
+    assertNull(volumeAttachmentModel.getId());
+    assertNull(volumeAttachmentModel.getName());
     assertNull(volumeAttachmentModel.getStatus());
     assertNull(volumeAttachmentModel.getType());
+    assertNull(volumeAttachmentModel.getVolume());
   }
 }

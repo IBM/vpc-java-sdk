@@ -38,7 +38,7 @@ public class VolumeProfileCollectionTest {
     assertNull(volumeProfileCollectionModel.getFirst());
     assertNull(volumeProfileCollectionModel.getLimit());
     assertNull(volumeProfileCollectionModel.getNext());
-    assertNull(volumeProfileCollectionModel.getTotalCount());
     assertNull(volumeProfileCollectionModel.getProfiles());
+    assertNull(volumeProfileCollectionModel.getTotalCount());
   }
 }

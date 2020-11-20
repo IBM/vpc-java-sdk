@@ -14,6 +14,7 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.VPCReference;
+import com.ibm.cloud.is.vpc.v1.model.VPCReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -32,9 +33,10 @@ public class VPCReferenceTest {
   @Test
   public void testVPCReference() throws Throwable {
     VPCReference vpcReferenceModel = new VPCReference();
-    assertNull(vpcReferenceModel.getId());
     assertNull(vpcReferenceModel.getCrn());
+    assertNull(vpcReferenceModel.getDeleted());
     assertNull(vpcReferenceModel.getHref());
+    assertNull(vpcReferenceModel.getId());
     assertNull(vpcReferenceModel.getName());
   }
 }

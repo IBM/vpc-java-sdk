@@ -19,21 +19,36 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class VolumeAttachmentReferenceInstanceContext extends GenericModel {
 
-  protected String id;
-  protected String href;
-  protected String name;
+  protected VolumeAttachmentReferenceInstanceContextDeleted deleted;
   protected VolumeAttachmentDevice device;
+  protected String href;
+  protected String id;
+  protected String name;
   protected VolumeReference volume;
 
   /**
-   * Gets the id.
+   * Gets the deleted.
    *
-   * The unique identifier for this volume attachment.
+   * If present, this property indicates the referenced resource has been deleted and provides
+   * some supplementary information.
    *
-   * @return the id
+   * @return the deleted
    */
-  public String getId() {
-    return id;
+  public VolumeAttachmentReferenceInstanceContextDeleted getDeleted() {
+    return deleted;
+  }
+
+  /**
+   * Gets the device.
+   *
+   * Information about how the volume is exposed to the instance operating system.
+   *
+   * This property may be absent if the volume attachment's `status` is not `attached`.
+   *
+   * @return the device
+   */
+  public VolumeAttachmentDevice getDevice() {
+    return device;
   }
 
   /**
@@ -48,6 +63,17 @@ public class VolumeAttachmentReferenceInstanceContext extends GenericModel {
   }
 
   /**
+   * Gets the id.
+   *
+   * The unique identifier for this volume attachment.
+   *
+   * @return the id
+   */
+  public String getId() {
+    return id;
+  }
+
+  /**
    * Gets the name.
    *
    * The user-defined name for this volume attachment.
@@ -56,19 +82,6 @@ public class VolumeAttachmentReferenceInstanceContext extends GenericModel {
    */
   public String getName() {
     return name;
-  }
-
-  /**
-   * Gets the device.
-   *
-   * Information about how the volume is exposed to the instance operating system.
-   *
-   * This property may be absent if the volume attachment's `status` is not `attached`.
-   *
-   * @return the device
-   */
-  public VolumeAttachmentDevice getDevice() {
-    return device;
   }
 
   /**

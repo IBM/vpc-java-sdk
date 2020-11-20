@@ -45,15 +45,17 @@ public class CreateVpcRouteOptionsTest {
 
     CreateVpcRouteOptions createVpcRouteOptionsModel = new CreateVpcRouteOptions.Builder()
       .vpcId("testString")
-      .nextHop(routeNextHopPrototypeModel)
       .destination("192.168.3.0/24")
+      .nextHop(routeNextHopPrototypeModel)
       .zone(zoneIdentityModel)
+      .action("delegate")
       .name("my-route-2")
       .build();
     assertEquals(createVpcRouteOptionsModel.vpcId(), "testString");
-    assertEquals(createVpcRouteOptionsModel.nextHop(), routeNextHopPrototypeModel);
     assertEquals(createVpcRouteOptionsModel.destination(), "192.168.3.0/24");
+    assertEquals(createVpcRouteOptionsModel.nextHop(), routeNextHopPrototypeModel);
     assertEquals(createVpcRouteOptionsModel.zone(), zoneIdentityModel);
+    assertEquals(createVpcRouteOptionsModel.action(), "delegate");
     assertEquals(createVpcRouteOptionsModel.name(), "my-route-2");
   }
 

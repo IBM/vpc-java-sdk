@@ -16,8 +16,10 @@ package com.ibm.cloud.is.vpc.v1.model;
 import com.ibm.cloud.is.vpc.v1.model.CloudObjectStorageBucketReference;
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollector;
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorTargetNetworkInterfaceReferenceTargetContext;
+import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceReferenceTargetContextDeleted;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.VPCReference;
+import com.ibm.cloud.is.vpc.v1.model.VPCReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -36,15 +38,15 @@ public class FlowLogCollectorTest {
   @Test
   public void testFlowLogCollector() throws Throwable {
     FlowLogCollector flowLogCollectorModel = new FlowLogCollector();
-    assertNull(flowLogCollectorModel.getId());
-    assertNull(flowLogCollectorModel.getCrn());
-    assertNull(flowLogCollectorModel.getHref());
-    assertNull(flowLogCollectorModel.getName());
-    assertNull(flowLogCollectorModel.getResourceGroup());
     assertNull(flowLogCollectorModel.isActive());
     assertNull(flowLogCollectorModel.isAutoDelete());
     assertNull(flowLogCollectorModel.getCreatedAt());
+    assertNull(flowLogCollectorModel.getCrn());
+    assertNull(flowLogCollectorModel.getHref());
+    assertNull(flowLogCollectorModel.getId());
     assertNull(flowLogCollectorModel.getLifecycleState());
+    assertNull(flowLogCollectorModel.getName());
+    assertNull(flowLogCollectorModel.getResourceGroup());
     assertNull(flowLogCollectorModel.getStorageBucket());
     assertNull(flowLogCollectorModel.getTarget());
     assertNull(flowLogCollectorModel.getVpc());

@@ -19,9 +19,20 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class ListVpnGatewaysOptions extends GenericModel {
 
+  /**
+   * Filters the collection to VPN gateways with the specified mode.
+   */
+  public interface Mode {
+    /** policy. */
+    String POLICY = "policy";
+    /** route. */
+    String ROUTE = "route";
+  }
+
   protected String start;
   protected Long limit;
   protected String resourceGroupId;
+  protected String mode;
 
   /**
    * Builder.
@@ -30,11 +41,13 @@ public class ListVpnGatewaysOptions extends GenericModel {
     private String start;
     private Long limit;
     private String resourceGroupId;
+    private String mode;
 
     private Builder(ListVpnGatewaysOptions listVpnGatewaysOptions) {
       this.start = listVpnGatewaysOptions.start;
       this.limit = listVpnGatewaysOptions.limit;
       this.resourceGroupId = listVpnGatewaysOptions.resourceGroupId;
+      this.mode = listVpnGatewaysOptions.mode;
     }
 
     /**
@@ -84,12 +97,24 @@ public class ListVpnGatewaysOptions extends GenericModel {
       this.resourceGroupId = resourceGroupId;
       return this;
     }
+
+    /**
+     * Set the mode.
+     *
+     * @param mode the mode
+     * @return the ListVpnGatewaysOptions builder
+     */
+    public Builder mode(String mode) {
+      this.mode = mode;
+      return this;
+    }
   }
 
   protected ListVpnGatewaysOptions(Builder builder) {
     start = builder.start;
     limit = builder.limit;
     resourceGroupId = builder.resourceGroupId;
+    mode = builder.mode;
   }
 
   /**
@@ -133,6 +158,17 @@ public class ListVpnGatewaysOptions extends GenericModel {
    */
   public String resourceGroupId() {
     return resourceGroupId;
+  }
+
+  /**
+   * Gets the mode.
+   *
+   * Filters the collection to VPN gateways with the specified mode.
+   *
+   * @return the mode
+   */
+  public String mode() {
+    return mode;
   }
 }
 

@@ -47,7 +47,6 @@ public class IKEPolicyPatch extends GenericModel {
     String AES256 = "aes256";
   }
 
-  protected String name;
   @SerializedName("authentication_algorithm")
   protected String authenticationAlgorithm;
   @SerializedName("dh_group")
@@ -58,25 +57,26 @@ public class IKEPolicyPatch extends GenericModel {
   protected Long ikeVersion;
   @SerializedName("key_lifetime")
   protected Long keyLifetime;
+  protected String name;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private String name;
     private String authenticationAlgorithm;
     private Long dhGroup;
     private String encryptionAlgorithm;
     private Long ikeVersion;
     private Long keyLifetime;
+    private String name;
 
     private Builder(IKEPolicyPatch ikePolicyPatch) {
-      this.name = ikePolicyPatch.name;
       this.authenticationAlgorithm = ikePolicyPatch.authenticationAlgorithm;
       this.dhGroup = ikePolicyPatch.dhGroup;
       this.encryptionAlgorithm = ikePolicyPatch.encryptionAlgorithm;
       this.ikeVersion = ikePolicyPatch.ikeVersion;
       this.keyLifetime = ikePolicyPatch.keyLifetime;
+      this.name = ikePolicyPatch.name;
     }
 
     /**
@@ -92,17 +92,6 @@ public class IKEPolicyPatch extends GenericModel {
      */
     public IKEPolicyPatch build() {
       return new IKEPolicyPatch(this);
-    }
-
-    /**
-     * Set the name.
-     *
-     * @param name the name
-     * @return the IKEPolicyPatch builder
-     */
-    public Builder name(String name) {
-      this.name = name;
-      return this;
     }
 
     /**
@@ -159,15 +148,26 @@ public class IKEPolicyPatch extends GenericModel {
       this.keyLifetime = keyLifetime;
       return this;
     }
+
+    /**
+     * Set the name.
+     *
+     * @param name the name
+     * @return the IKEPolicyPatch builder
+     */
+    public Builder name(String name) {
+      this.name = name;
+      return this;
+    }
   }
 
   protected IKEPolicyPatch(Builder builder) {
-    name = builder.name;
     authenticationAlgorithm = builder.authenticationAlgorithm;
     dhGroup = builder.dhGroup;
     encryptionAlgorithm = builder.encryptionAlgorithm;
     ikeVersion = builder.ikeVersion;
     keyLifetime = builder.keyLifetime;
+    name = builder.name;
   }
 
   /**
@@ -177,17 +177,6 @@ public class IKEPolicyPatch extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the name.
-   *
-   * The user-defined name for this IKE policy.
-   *
-   * @return the name
-   */
-  public String name() {
-    return name;
   }
 
   /**
@@ -243,6 +232,17 @@ public class IKEPolicyPatch extends GenericModel {
    */
   public Long keyLifetime() {
     return keyLifetime;
+  }
+
+  /**
+   * Gets the name.
+   *
+   * The user-defined name for this IKE policy.
+   *
+   * @return the name
+   */
+  public String name() {
+    return name;
   }
 
   /**

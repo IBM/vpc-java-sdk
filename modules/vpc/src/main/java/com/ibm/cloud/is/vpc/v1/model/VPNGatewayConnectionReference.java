@@ -28,21 +28,23 @@ public class VPNGatewayConnectionReference extends GenericModel {
     String VPN_GATEWAY_CONNECTION = "vpn_gateway_connection";
   }
 
-  protected String id;
+  protected VPNGatewayConnectionReferenceDeleted deleted;
   protected String href;
+  protected String id;
   protected String name;
   @SerializedName("resource_type")
   protected String resourceType;
 
   /**
-   * Gets the id.
+   * Gets the deleted.
    *
-   * The unique identifier for this VPN gateway connection.
+   * If present, this property indicates the referenced resource has been deleted and provides
+   * some supplementary information.
    *
-   * @return the id
+   * @return the deleted
    */
-  public String getId() {
-    return id;
+  public VPNGatewayConnectionReferenceDeleted getDeleted() {
+    return deleted;
   }
 
   /**
@@ -54,6 +56,17 @@ public class VPNGatewayConnectionReference extends GenericModel {
    */
   public String getHref() {
     return href;
+  }
+
+  /**
+   * Gets the id.
+   *
+   * The unique identifier for this VPN gateway connection.
+   *
+   * @return the id
+   */
+  public String getId() {
+    return id;
   }
 
   /**

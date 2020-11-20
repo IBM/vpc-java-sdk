@@ -25,32 +25,32 @@ public class InstancePrototypeInstanceByImage extends InstancePrototype {
    * Builder.
    */
   public static class Builder {
-    private String name;
     private List<KeyIdentity> keys;
+    private String name;
     private List<NetworkInterfacePrototype> networkInterfaces;
     private InstanceProfileIdentity profile;
+    private ResourceGroupIdentity resourceGroup;
     private String userData;
     private List<VolumeAttachmentPrototypeInstanceContext> volumeAttachments;
     private VPCIdentity vpc;
-    private ResourceGroupIdentity resourceGroup;
-    private NetworkInterfacePrototype primaryNetworkInterface;
-    private ZoneIdentity zone;
     private VolumeAttachmentPrototypeInstanceByImageContext bootVolumeAttachment;
     private ImageIdentity image;
+    private NetworkInterfacePrototype primaryNetworkInterface;
+    private ZoneIdentity zone;
 
     public Builder(InstancePrototype instancePrototypeInstanceByImage) {
-      this.name = instancePrototypeInstanceByImage.name;
       this.keys = instancePrototypeInstanceByImage.keys;
+      this.name = instancePrototypeInstanceByImage.name;
       this.networkInterfaces = instancePrototypeInstanceByImage.networkInterfaces;
       this.profile = instancePrototypeInstanceByImage.profile;
+      this.resourceGroup = instancePrototypeInstanceByImage.resourceGroup;
       this.userData = instancePrototypeInstanceByImage.userData;
       this.volumeAttachments = instancePrototypeInstanceByImage.volumeAttachments;
       this.vpc = instancePrototypeInstanceByImage.vpc;
-      this.resourceGroup = instancePrototypeInstanceByImage.resourceGroup;
-      this.primaryNetworkInterface = instancePrototypeInstanceByImage.primaryNetworkInterface;
-      this.zone = instancePrototypeInstanceByImage.zone;
       this.bootVolumeAttachment = instancePrototypeInstanceByImage.bootVolumeAttachment;
       this.image = instancePrototypeInstanceByImage.image;
+      this.primaryNetworkInterface = instancePrototypeInstanceByImage.primaryNetworkInterface;
+      this.zone = instancePrototypeInstanceByImage.zone;
     }
 
     /**
@@ -62,14 +62,14 @@ public class InstancePrototypeInstanceByImage extends InstancePrototype {
     /**
      * Instantiates a new builder with required properties.
      *
+     * @param image the image
      * @param primaryNetworkInterface the primaryNetworkInterface
      * @param zone the zone
-     * @param image the image
      */
-    public Builder(NetworkInterfacePrototype primaryNetworkInterface, ZoneIdentity zone, ImageIdentity image) {
+    public Builder(ImageIdentity image, NetworkInterfacePrototype primaryNetworkInterface, ZoneIdentity zone) {
+      this.image = image;
       this.primaryNetworkInterface = primaryNetworkInterface;
       this.zone = zone;
-      this.image = image;
     }
 
     /**
@@ -130,17 +130,6 @@ public class InstancePrototypeInstanceByImage extends InstancePrototype {
     }
 
     /**
-     * Set the name.
-     *
-     * @param name the name
-     * @return the InstancePrototypeInstanceByImage builder
-     */
-    public Builder name(String name) {
-      this.name = name;
-      return this;
-    }
-
-    /**
      * Set the keys.
      * Existing keys will be replaced.
      *
@@ -149,6 +138,17 @@ public class InstancePrototypeInstanceByImage extends InstancePrototype {
      */
     public Builder keys(List<KeyIdentity> keys) {
       this.keys = keys;
+      return this;
+    }
+
+    /**
+     * Set the name.
+     *
+     * @param name the name
+     * @return the InstancePrototypeInstanceByImage builder
+     */
+    public Builder name(String name) {
+      this.name = name;
       return this;
     }
 
@@ -172,6 +172,17 @@ public class InstancePrototypeInstanceByImage extends InstancePrototype {
      */
     public Builder profile(InstanceProfileIdentity profile) {
       this.profile = profile;
+      return this;
+    }
+
+    /**
+     * Set the resourceGroup.
+     *
+     * @param resourceGroup the resourceGroup
+     * @return the InstancePrototypeInstanceByImage builder
+     */
+    public Builder resourceGroup(ResourceGroupIdentity resourceGroup) {
+      this.resourceGroup = resourceGroup;
       return this;
     }
 
@@ -210,13 +221,24 @@ public class InstancePrototypeInstanceByImage extends InstancePrototype {
     }
 
     /**
-     * Set the resourceGroup.
+     * Set the bootVolumeAttachment.
      *
-     * @param resourceGroup the resourceGroup
+     * @param bootVolumeAttachment the bootVolumeAttachment
      * @return the InstancePrototypeInstanceByImage builder
      */
-    public Builder resourceGroup(ResourceGroupIdentity resourceGroup) {
-      this.resourceGroup = resourceGroup;
+    public Builder bootVolumeAttachment(VolumeAttachmentPrototypeInstanceByImageContext bootVolumeAttachment) {
+      this.bootVolumeAttachment = bootVolumeAttachment;
+      return this;
+    }
+
+    /**
+     * Set the image.
+     *
+     * @param image the image
+     * @return the InstancePrototypeInstanceByImage builder
+     */
+    public Builder image(ImageIdentity image) {
+      this.image = image;
       return this;
     }
 
@@ -241,49 +263,27 @@ public class InstancePrototypeInstanceByImage extends InstancePrototype {
       this.zone = zone;
       return this;
     }
-
-    /**
-     * Set the bootVolumeAttachment.
-     *
-     * @param bootVolumeAttachment the bootVolumeAttachment
-     * @return the InstancePrototypeInstanceByImage builder
-     */
-    public Builder bootVolumeAttachment(VolumeAttachmentPrototypeInstanceByImageContext bootVolumeAttachment) {
-      this.bootVolumeAttachment = bootVolumeAttachment;
-      return this;
-    }
-
-    /**
-     * Set the image.
-     *
-     * @param image the image
-     * @return the InstancePrototypeInstanceByImage builder
-     */
-    public Builder image(ImageIdentity image) {
-      this.image = image;
-      return this;
-    }
   }
 
   protected InstancePrototypeInstanceByImage(Builder builder) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.image,
+      "image cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.primaryNetworkInterface,
       "primaryNetworkInterface cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.zone,
       "zone cannot be null");
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.image,
-      "image cannot be null");
-    name = builder.name;
     keys = builder.keys;
+    name = builder.name;
     networkInterfaces = builder.networkInterfaces;
     profile = builder.profile;
+    resourceGroup = builder.resourceGroup;
     userData = builder.userData;
     volumeAttachments = builder.volumeAttachments;
     vpc = builder.vpc;
-    resourceGroup = builder.resourceGroup;
-    primaryNetworkInterface = builder.primaryNetworkInterface;
-    zone = builder.zone;
     bootVolumeAttachment = builder.bootVolumeAttachment;
     image = builder.image;
+    primaryNetworkInterface = builder.primaryNetworkInterface;
+    zone = builder.zone;
   }
 
   /**

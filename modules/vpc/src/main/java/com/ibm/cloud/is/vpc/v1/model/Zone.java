@@ -31,21 +31,10 @@ public class Zone extends GenericModel {
     String UNAVAILABLE = "unavailable";
   }
 
-  protected String name;
   protected String href;
+  protected String name;
   protected RegionReference region;
   protected String status;
-
-  /**
-   * Gets the name.
-   *
-   * The name for this zone.
-   *
-   * @return the name
-   */
-  public String getName() {
-    return name;
-  }
 
   /**
    * Gets the href.
@@ -56,6 +45,17 @@ public class Zone extends GenericModel {
    */
   public String getHref() {
     return href;
+  }
+
+  /**
+   * Gets the name.
+   *
+   * The globally unique name for this zone.
+   *
+   * @return the name
+   */
+  public String getName() {
+    return name;
   }
 
   /**

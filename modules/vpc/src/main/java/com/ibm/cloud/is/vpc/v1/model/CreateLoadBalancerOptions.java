@@ -24,8 +24,8 @@ public class CreateLoadBalancerOptions extends GenericModel {
 
   protected Boolean isPublic;
   protected List<SubnetIdentity> subnets;
-  protected String name;
   protected List<LoadBalancerListenerPrototypeLoadBalancerContext> listeners;
+  protected String name;
   protected List<LoadBalancerPoolPrototype> pools;
   protected LoadBalancerProfileIdentity profile;
   protected ResourceGroupIdentity resourceGroup;
@@ -36,8 +36,8 @@ public class CreateLoadBalancerOptions extends GenericModel {
   public static class Builder {
     private Boolean isPublic;
     private List<SubnetIdentity> subnets;
-    private String name;
     private List<LoadBalancerListenerPrototypeLoadBalancerContext> listeners;
+    private String name;
     private List<LoadBalancerPoolPrototype> pools;
     private LoadBalancerProfileIdentity profile;
     private ResourceGroupIdentity resourceGroup;
@@ -45,8 +45,8 @@ public class CreateLoadBalancerOptions extends GenericModel {
     private Builder(CreateLoadBalancerOptions createLoadBalancerOptions) {
       this.isPublic = createLoadBalancerOptions.isPublic;
       this.subnets = createLoadBalancerOptions.subnets;
-      this.name = createLoadBalancerOptions.name;
       this.listeners = createLoadBalancerOptions.listeners;
+      this.name = createLoadBalancerOptions.name;
       this.pools = createLoadBalancerOptions.pools;
       this.profile = createLoadBalancerOptions.profile;
       this.resourceGroup = createLoadBalancerOptions.resourceGroup;
@@ -150,17 +150,6 @@ public class CreateLoadBalancerOptions extends GenericModel {
     }
 
     /**
-     * Set the name.
-     *
-     * @param name the name
-     * @return the CreateLoadBalancerOptions builder
-     */
-    public Builder name(String name) {
-      this.name = name;
-      return this;
-    }
-
-    /**
      * Set the listeners.
      * Existing listeners will be replaced.
      *
@@ -169,6 +158,17 @@ public class CreateLoadBalancerOptions extends GenericModel {
      */
     public Builder listeners(List<LoadBalancerListenerPrototypeLoadBalancerContext> listeners) {
       this.listeners = listeners;
+      return this;
+    }
+
+    /**
+     * Set the name.
+     *
+     * @param name the name
+     * @return the CreateLoadBalancerOptions builder
+     */
+    public Builder name(String name) {
+      this.name = name;
       return this;
     }
 
@@ -214,8 +214,8 @@ public class CreateLoadBalancerOptions extends GenericModel {
       "subnets cannot be null");
     isPublic = builder.isPublic;
     subnets = builder.subnets;
-    name = builder.name;
     listeners = builder.listeners;
+    name = builder.name;
     pools = builder.pools;
     profile = builder.profile;
     resourceGroup = builder.resourceGroup;
@@ -233,7 +233,7 @@ public class CreateLoadBalancerOptions extends GenericModel {
   /**
    * Gets the isPublic.
    *
-   * The type of this load balancer, public or private.
+   * Indicates whether this load balancer is public or private.
    *
    * @return the isPublic
    */
@@ -253,6 +253,17 @@ public class CreateLoadBalancerOptions extends GenericModel {
   }
 
   /**
+   * Gets the listeners.
+   *
+   * The listeners of this load balancer.
+   *
+   * @return the listeners
+   */
+  public List<LoadBalancerListenerPrototypeLoadBalancerContext> listeners() {
+    return listeners;
+  }
+
+  /**
    * Gets the name.
    *
    * The user-defined name for this load balancer. If unspecified, the name will be a hyphenated list of
@@ -262,17 +273,6 @@ public class CreateLoadBalancerOptions extends GenericModel {
    */
   public String name() {
     return name;
-  }
-
-  /**
-   * Gets the listeners.
-   *
-   * The listeners of this load balancer.
-   *
-   * @return the listeners
-   */
-  public List<LoadBalancerListenerPrototypeLoadBalancerContext> listeners() {
-    return listeners;
   }
 
   /**

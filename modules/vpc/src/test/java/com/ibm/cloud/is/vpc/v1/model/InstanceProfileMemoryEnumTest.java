@@ -32,8 +32,8 @@ public class InstanceProfileMemoryEnumTest {
   @Test
   public void testInstanceProfileMemoryEnum() throws Throwable {
     InstanceProfileMemoryEnum instanceProfileMemoryEnumModel = new InstanceProfileMemoryEnum();
-    assertNull(instanceProfileMemoryEnumModel.getType());
     assertNull(instanceProfileMemoryEnumModel.getXDefault());
+    assertNull(instanceProfileMemoryEnumModel.getType());
     assertNull(instanceProfileMemoryEnumModel.getValues());
   }
 }

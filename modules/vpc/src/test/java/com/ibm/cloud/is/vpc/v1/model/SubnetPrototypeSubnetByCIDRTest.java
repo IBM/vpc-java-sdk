@@ -16,6 +16,7 @@ package com.ibm.cloud.is.vpc.v1.model;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.PublicGatewayIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.RoutingTableIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.SubnetPrototypeSubnetByCIDR;
 import com.ibm.cloud.is.vpc.v1.model.VPCIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.ZoneIdentityByName;
@@ -51,6 +52,11 @@ public class SubnetPrototypeSubnetByCIDRTest {
       .build();
     assertEquals(resourceGroupIdentityModel.id(), "fee82deba12e4c0fb69c3b09d1f12345");
 
+    RoutingTableIdentityById routingTableIdentityModel = new RoutingTableIdentityById.Builder()
+      .id("6885e83f-03b2-4603-8a86-db2a0f55c840")
+      .build();
+    assertEquals(routingTableIdentityModel.id(), "6885e83f-03b2-4603-8a86-db2a0f55c840");
+
     VPCIdentityById vpcIdentityModel = new VPCIdentityById.Builder()
       .id("4727d842-f94f-4a2d-824a-9bc9b02c523b")
       .build();
@@ -62,20 +68,22 @@ public class SubnetPrototypeSubnetByCIDRTest {
     assertEquals(zoneIdentityModel.name(), "us-south-1");
 
     SubnetPrototypeSubnetByCIDR subnetPrototypeSubnetByCidrModel = new SubnetPrototypeSubnetByCIDR.Builder()
+      .ipVersion("ipv4")
       .name("my-subnet")
       .networkAcl(networkAclIdentityModel)
       .publicGateway(publicGatewayIdentityModel)
-      .ipVersion("ipv4")
       .resourceGroup(resourceGroupIdentityModel)
+      .routingTable(routingTableIdentityModel)
       .vpc(vpcIdentityModel)
       .ipv4CidrBlock("10.0.0.0/24")
       .zone(zoneIdentityModel)
       .build();
+    assertEquals(subnetPrototypeSubnetByCidrModel.ipVersion(), "ipv4");
     assertEquals(subnetPrototypeSubnetByCidrModel.name(), "my-subnet");
     assertEquals(subnetPrototypeSubnetByCidrModel.networkAcl(), networkAclIdentityModel);
     assertEquals(subnetPrototypeSubnetByCidrModel.publicGateway(), publicGatewayIdentityModel);
-    assertEquals(subnetPrototypeSubnetByCidrModel.ipVersion(), "ipv4");
     assertEquals(subnetPrototypeSubnetByCidrModel.resourceGroup(), resourceGroupIdentityModel);
+    assertEquals(subnetPrototypeSubnetByCidrModel.routingTable(), routingTableIdentityModel);
     assertEquals(subnetPrototypeSubnetByCidrModel.vpc(), vpcIdentityModel);
     assertEquals(subnetPrototypeSubnetByCidrModel.ipv4CidrBlock(), "10.0.0.0/24");
     assertEquals(subnetPrototypeSubnetByCidrModel.zone(), zoneIdentityModel);
@@ -84,11 +92,12 @@ public class SubnetPrototypeSubnetByCIDRTest {
 
     SubnetPrototypeSubnetByCIDR subnetPrototypeSubnetByCidrModelNew = TestUtilities.deserialize(json, SubnetPrototypeSubnetByCIDR.class);
     assertTrue(subnetPrototypeSubnetByCidrModelNew instanceof SubnetPrototypeSubnetByCIDR);
+    assertEquals(subnetPrototypeSubnetByCidrModelNew.ipVersion(), "ipv4");
     assertEquals(subnetPrototypeSubnetByCidrModelNew.name(), "my-subnet");
     assertEquals(subnetPrototypeSubnetByCidrModelNew.networkAcl().toString(), networkAclIdentityModel.toString());
     assertEquals(subnetPrototypeSubnetByCidrModelNew.publicGateway().toString(), publicGatewayIdentityModel.toString());
-    assertEquals(subnetPrototypeSubnetByCidrModelNew.ipVersion(), "ipv4");
     assertEquals(subnetPrototypeSubnetByCidrModelNew.resourceGroup().toString(), resourceGroupIdentityModel.toString());
+    assertEquals(subnetPrototypeSubnetByCidrModelNew.routingTable().toString(), routingTableIdentityModel.toString());
     assertEquals(subnetPrototypeSubnetByCidrModelNew.vpc().toString(), vpcIdentityModel.toString());
     assertEquals(subnetPrototypeSubnetByCidrModelNew.ipv4CidrBlock(), "10.0.0.0/24");
     assertEquals(subnetPrototypeSubnetByCidrModelNew.zone().toString(), zoneIdentityModel.toString());

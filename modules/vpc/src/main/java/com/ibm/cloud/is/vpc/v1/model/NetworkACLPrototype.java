@@ -27,9 +27,9 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class NetworkACLPrototype extends GenericModel {
 
   protected String name;
-  protected VPCIdentity vpc;
   @SerializedName("resource_group")
   protected ResourceGroupIdentity resourceGroup;
+  protected VPCIdentity vpc;
   protected List<NetworkACLRulePrototypeNetworkACLContext> rules;
   @SerializedName("source_network_acl")
   protected NetworkACLIdentity sourceNetworkAcl;
@@ -40,24 +40,13 @@ public class NetworkACLPrototype extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this network ACL. Names must be unique within the VPC the Network ACL resides in. If
+   * The user-defined name for this network ACL. Names must be unique within the VPC the network ACL resides in. If
    * unspecified, the name will be a hyphenated list of randomly-selected words.
    *
    * @return the name
    */
   public String name() {
     return name;
-  }
-
-  /**
-   * Gets the vpc.
-   *
-   * The VPC this network ACL is to be a part of.
-   *
-   * @return the vpc
-   */
-  public VPCIdentity vpc() {
-    return vpc;
   }
 
   /**
@@ -70,6 +59,17 @@ public class NetworkACLPrototype extends GenericModel {
    */
   public ResourceGroupIdentity resourceGroup() {
     return resourceGroup;
+  }
+
+  /**
+   * Gets the vpc.
+   *
+   * The VPC this network ACL is to be a part of.
+   *
+   * @return the vpc
+   */
+  public VPCIdentity vpc() {
+    return vpc;
   }
 
   /**

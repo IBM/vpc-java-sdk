@@ -14,6 +14,7 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceReference;
+import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -32,9 +33,10 @@ public class NetworkInterfaceReferenceTest {
   @Test
   public void testNetworkInterfaceReference() throws Throwable {
     NetworkInterfaceReference networkInterfaceReferenceModel = new NetworkInterfaceReference();
-    assertNull(networkInterfaceReferenceModel.getName());
-    assertNull(networkInterfaceReferenceModel.getId());
+    assertNull(networkInterfaceReferenceModel.getDeleted());
     assertNull(networkInterfaceReferenceModel.getHref());
+    assertNull(networkInterfaceReferenceModel.getId());
+    assertNull(networkInterfaceReferenceModel.getName());
     assertNull(networkInterfaceReferenceModel.getPrimaryIpv4Address());
     assertNull(networkInterfaceReferenceModel.getResourceType());
   }

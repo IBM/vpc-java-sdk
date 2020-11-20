@@ -14,6 +14,7 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLReference;
+import com.ibm.cloud.is.vpc.v1.model.NetworkACLReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -32,9 +33,10 @@ public class NetworkACLReferenceTest {
   @Test
   public void testNetworkACLReference() throws Throwable {
     NetworkACLReference networkAclReferenceModel = new NetworkACLReference();
-    assertNull(networkAclReferenceModel.getId());
     assertNull(networkAclReferenceModel.getCrn());
+    assertNull(networkAclReferenceModel.getDeleted());
     assertNull(networkAclReferenceModel.getHref());
+    assertNull(networkAclReferenceModel.getId());
     assertNull(networkAclReferenceModel.getName());
   }
 }

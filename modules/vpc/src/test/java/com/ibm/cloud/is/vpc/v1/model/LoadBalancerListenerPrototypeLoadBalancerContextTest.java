@@ -38,24 +38,27 @@ public class LoadBalancerListenerPrototypeLoadBalancerContextTest {
     assertEquals(loadBalancerPoolIdentityByNameModel.name(), "my-load-balancer-pool");
 
     LoadBalancerListenerPrototypeLoadBalancerContext loadBalancerListenerPrototypeLoadBalancerContextModel = new LoadBalancerListenerPrototypeLoadBalancerContext.Builder()
+      .acceptProxyProtocol(true)
       .connectionLimit(Long.valueOf("2000"))
+      .defaultPool(loadBalancerPoolIdentityByNameModel)
       .port(Long.valueOf("443"))
       .protocol("http")
-      .defaultPool(loadBalancerPoolIdentityByNameModel)
       .build();
+    assertEquals(loadBalancerListenerPrototypeLoadBalancerContextModel.acceptProxyProtocol(), Boolean.valueOf(true));
     assertEquals(loadBalancerListenerPrototypeLoadBalancerContextModel.connectionLimit(), Long.valueOf("2000"));
+    assertEquals(loadBalancerListenerPrototypeLoadBalancerContextModel.defaultPool(), loadBalancerPoolIdentityByNameModel);
     assertEquals(loadBalancerListenerPrototypeLoadBalancerContextModel.port(), Long.valueOf("443"));
     assertEquals(loadBalancerListenerPrototypeLoadBalancerContextModel.protocol(), "http");
-    assertEquals(loadBalancerListenerPrototypeLoadBalancerContextModel.defaultPool(), loadBalancerPoolIdentityByNameModel);
 
     String json = TestUtilities.serialize(loadBalancerListenerPrototypeLoadBalancerContextModel);
 
     LoadBalancerListenerPrototypeLoadBalancerContext loadBalancerListenerPrototypeLoadBalancerContextModelNew = TestUtilities.deserialize(json, LoadBalancerListenerPrototypeLoadBalancerContext.class);
     assertTrue(loadBalancerListenerPrototypeLoadBalancerContextModelNew instanceof LoadBalancerListenerPrototypeLoadBalancerContext);
+    assertEquals(loadBalancerListenerPrototypeLoadBalancerContextModelNew.acceptProxyProtocol(), Boolean.valueOf(true));
     assertEquals(loadBalancerListenerPrototypeLoadBalancerContextModelNew.connectionLimit(), Long.valueOf("2000"));
+    assertEquals(loadBalancerListenerPrototypeLoadBalancerContextModelNew.defaultPool().toString(), loadBalancerPoolIdentityByNameModel.toString());
     assertEquals(loadBalancerListenerPrototypeLoadBalancerContextModelNew.port(), Long.valueOf("443"));
     assertEquals(loadBalancerListenerPrototypeLoadBalancerContextModelNew.protocol(), "http");
-    assertEquals(loadBalancerListenerPrototypeLoadBalancerContextModelNew.defaultPool().toString(), loadBalancerPoolIdentityByNameModel.toString());
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

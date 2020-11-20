@@ -13,6 +13,7 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.ibm.cloud.is.vpc.v1.model.InstanceReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolMember;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolMemberTargetInstanceReference;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
@@ -33,13 +34,13 @@ public class LoadBalancerPoolMemberTest {
   @Test
   public void testLoadBalancerPoolMember() throws Throwable {
     LoadBalancerPoolMember loadBalancerPoolMemberModel = new LoadBalancerPoolMember();
-    assertNull(loadBalancerPoolMemberModel.getId());
-    assertNull(loadBalancerPoolMemberModel.getHref());
-    assertNull(loadBalancerPoolMemberModel.getPort());
-    assertNull(loadBalancerPoolMemberModel.getWeight());
-    assertNull(loadBalancerPoolMemberModel.getHealth());
     assertNull(loadBalancerPoolMemberModel.getCreatedAt());
+    assertNull(loadBalancerPoolMemberModel.getHealth());
+    assertNull(loadBalancerPoolMemberModel.getHref());
+    assertNull(loadBalancerPoolMemberModel.getId());
+    assertNull(loadBalancerPoolMemberModel.getPort());
     assertNull(loadBalancerPoolMemberModel.getProvisioningStatus());
     assertNull(loadBalancerPoolMemberModel.getTarget());
+    assertNull(loadBalancerPoolMemberModel.getWeight());
   }
 }

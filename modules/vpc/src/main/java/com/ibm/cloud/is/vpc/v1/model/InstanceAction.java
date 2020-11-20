@@ -23,18 +23,6 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class InstanceAction extends GenericModel {
 
   /**
-   * The type of action.
-   */
-  public interface Type {
-    /** reboot. */
-    String REBOOT = "reboot";
-    /** start. */
-    String START = "start";
-    /** stop. */
-    String STOP = "stop";
-  }
-
-  /**
    * The current status of this action.
    */
   public interface Status {
@@ -48,62 +36,29 @@ public class InstanceAction extends GenericModel {
     String RUNNING = "running";
   }
 
-  protected String id;
-  protected String href;
-  protected Boolean force;
-  protected String type;
+  /**
+   * The type of action.
+   */
+  public interface Type {
+    /** reboot. */
+    String REBOOT = "reboot";
+    /** start. */
+    String START = "start";
+    /** stop. */
+    String STOP = "stop";
+  }
+
   @SerializedName("completed_at")
   protected Date completedAt;
   @SerializedName("created_at")
   protected Date createdAt;
+  protected Boolean force;
+  protected String href;
+  protected String id;
   @SerializedName("started_at")
   protected Date startedAt;
   protected String status;
-
-  /**
-   * Gets the id.
-   *
-   * The identifier for this instance action.
-   *
-   * @return the id
-   */
-  public String getId() {
-    return id;
-  }
-
-  /**
-   * Gets the href.
-   *
-   * The URL for this instance action.
-   *
-   * @return the href
-   */
-  public String getHref() {
-    return href;
-  }
-
-  /**
-   * Gets the force.
-   *
-   * If set to true, the action will be forced immediately, and all queued actions deleted. Ignored for the start
-   * action.
-   *
-   * @return the force
-   */
-  public Boolean isForce() {
-    return force;
-  }
-
-  /**
-   * Gets the type.
-   *
-   * The type of action.
-   *
-   * @return the type
-   */
-  public String getType() {
-    return type;
-  }
+  protected String type;
 
   /**
    * Gets the completedAt.
@@ -128,6 +83,40 @@ public class InstanceAction extends GenericModel {
   }
 
   /**
+   * Gets the force.
+   *
+   * If set to true, the action will be forced immediately, and all queued actions deleted. Ignored for the start
+   * action.
+   *
+   * @return the force
+   */
+  public Boolean isForce() {
+    return force;
+  }
+
+  /**
+   * Gets the href.
+   *
+   * The URL for this instance action.
+   *
+   * @return the href
+   */
+  public String getHref() {
+    return href;
+  }
+
+  /**
+   * Gets the id.
+   *
+   * The identifier for this instance action.
+   *
+   * @return the id
+   */
+  public String getId() {
+    return id;
+  }
+
+  /**
    * Gets the startedAt.
    *
    * The date and time that the action was started.
@@ -147,6 +136,17 @@ public class InstanceAction extends GenericModel {
    */
   public String getStatus() {
     return status;
+  }
+
+  /**
+   * Gets the type.
+   *
+   * The type of action.
+   *
+   * @return the type
+   */
+  public String getType() {
+    return type;
   }
 }
 

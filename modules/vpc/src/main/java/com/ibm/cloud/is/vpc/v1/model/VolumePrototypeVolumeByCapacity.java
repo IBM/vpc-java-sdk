@@ -22,19 +22,19 @@ public class VolumePrototypeVolumeByCapacity extends VolumePrototype {
    * Builder.
    */
   public static class Builder {
-    private String name;
-    private VolumeProfileIdentity profile;
     private EncryptionKeyIdentity encryptionKey;
     private Long iops;
+    private String name;
+    private VolumeProfileIdentity profile;
     private ResourceGroupIdentity resourceGroup;
     private ZoneIdentity zone;
     private Long capacity;
 
     public Builder(VolumePrototype volumePrototypeVolumeByCapacity) {
-      this.name = volumePrototypeVolumeByCapacity.name;
-      this.profile = volumePrototypeVolumeByCapacity.profile;
       this.encryptionKey = volumePrototypeVolumeByCapacity.encryptionKey;
       this.iops = volumePrototypeVolumeByCapacity.iops;
+      this.name = volumePrototypeVolumeByCapacity.name;
+      this.profile = volumePrototypeVolumeByCapacity.profile;
       this.resourceGroup = volumePrototypeVolumeByCapacity.resourceGroup;
       this.zone = volumePrototypeVolumeByCapacity.zone;
       this.capacity = volumePrototypeVolumeByCapacity.capacity;
@@ -69,28 +69,6 @@ public class VolumePrototypeVolumeByCapacity extends VolumePrototype {
     }
 
     /**
-     * Set the name.
-     *
-     * @param name the name
-     * @return the VolumePrototypeVolumeByCapacity builder
-     */
-    public Builder name(String name) {
-      this.name = name;
-      return this;
-    }
-
-    /**
-     * Set the profile.
-     *
-     * @param profile the profile
-     * @return the VolumePrototypeVolumeByCapacity builder
-     */
-    public Builder profile(VolumeProfileIdentity profile) {
-      this.profile = profile;
-      return this;
-    }
-
-    /**
      * Set the encryptionKey.
      *
      * @param encryptionKey the encryptionKey
@@ -109,6 +87,28 @@ public class VolumePrototypeVolumeByCapacity extends VolumePrototype {
      */
     public Builder iops(long iops) {
       this.iops = iops;
+      return this;
+    }
+
+    /**
+     * Set the name.
+     *
+     * @param name the name
+     * @return the VolumePrototypeVolumeByCapacity builder
+     */
+    public Builder name(String name) {
+      this.name = name;
+      return this;
+    }
+
+    /**
+     * Set the profile.
+     *
+     * @param profile the profile
+     * @return the VolumePrototypeVolumeByCapacity builder
+     */
+    public Builder profile(VolumeProfileIdentity profile) {
+      this.profile = profile;
       return this;
     }
 
@@ -153,10 +153,10 @@ public class VolumePrototypeVolumeByCapacity extends VolumePrototype {
       "zone cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.capacity,
       "capacity cannot be null");
-    name = builder.name;
-    profile = builder.profile;
     encryptionKey = builder.encryptionKey;
     iops = builder.iops;
+    name = builder.name;
+    profile = builder.profile;
     resourceGroup = builder.resourceGroup;
     zone = builder.zone;
     capacity = builder.capacity;

@@ -44,61 +44,17 @@ public class Route extends GenericModel {
     String SUSPENDED = "suspended";
   }
 
-  @SerializedName("next_hop")
-  protected RouteNextHop nextHop;
-  protected String id;
-  protected String href;
-  protected String name;
   @SerializedName("created_at")
   protected Date createdAt;
   protected String destination;
+  protected String href;
+  protected String id;
   @SerializedName("lifecycle_state")
   protected String lifecycleState;
+  protected String name;
+  @SerializedName("next_hop")
+  protected RouteNextHop nextHop;
   protected ZoneReference zone;
-
-  /**
-   * Gets the nextHop.
-   *
-   * The next hop that packets will be delivered to.
-   *
-   * @return the nextHop
-   */
-  public RouteNextHop getNextHop() {
-    return nextHop;
-  }
-
-  /**
-   * Gets the id.
-   *
-   * The unique identifier for this route.
-   *
-   * @return the id
-   */
-  public String getId() {
-    return id;
-  }
-
-  /**
-   * Gets the href.
-   *
-   * The URL for this route.
-   *
-   * @return the href
-   */
-  public String getHref() {
-    return href;
-  }
-
-  /**
-   * Gets the name.
-   *
-   * The user-defined name for this route.
-   *
-   * @return the name
-   */
-  public String getName() {
-    return name;
-  }
 
   /**
    * Gets the createdAt.
@@ -123,6 +79,28 @@ public class Route extends GenericModel {
   }
 
   /**
+   * Gets the href.
+   *
+   * The URL for this route.
+   *
+   * @return the href
+   */
+  public String getHref() {
+    return href;
+  }
+
+  /**
+   * Gets the id.
+   *
+   * The unique identifier for this route.
+   *
+   * @return the id
+   */
+  public String getId() {
+    return id;
+  }
+
+  /**
    * Gets the lifecycleState.
    *
    * The lifecycle state of the route.
@@ -131,6 +109,29 @@ public class Route extends GenericModel {
    */
   public String getLifecycleState() {
     return lifecycleState;
+  }
+
+  /**
+   * Gets the name.
+   *
+   * The user-defined name for this route.
+   *
+   * @return the name
+   */
+  public String getName() {
+    return name;
+  }
+
+  /**
+   * Gets the nextHop.
+   *
+   * If `action` is `deliver`, the next hop that packets will be delivered to.  For
+   * other `action` values, its `address` will be `0.0.0.0`.
+   *
+   * @return the nextHop
+   */
+  public RouteNextHop getNextHop() {
+    return nextHop;
   }
 
   /**

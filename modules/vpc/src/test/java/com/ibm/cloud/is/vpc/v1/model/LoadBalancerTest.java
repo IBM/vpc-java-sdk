@@ -16,10 +16,13 @@ package com.ibm.cloud.is.vpc.v1.model;
 import com.ibm.cloud.is.vpc.v1.model.IP;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancer;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerReference;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolReference;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileReference;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.SubnetReference;
+import com.ibm.cloud.is.vpc.v1.model.SubnetReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -38,18 +41,18 @@ public class LoadBalancerTest {
   @Test
   public void testLoadBalancer() throws Throwable {
     LoadBalancer loadBalancerModel = new LoadBalancer();
-    assertNull(loadBalancerModel.getProfile());
-    assertNull(loadBalancerModel.getId());
-    assertNull(loadBalancerModel.getCrn());
-    assertNull(loadBalancerModel.getHref());
-    assertNull(loadBalancerModel.getName());
     assertNull(loadBalancerModel.getCreatedAt());
+    assertNull(loadBalancerModel.getCrn());
     assertNull(loadBalancerModel.getHostname());
+    assertNull(loadBalancerModel.getHref());
+    assertNull(loadBalancerModel.getId());
     assertNull(loadBalancerModel.isIsPublic());
     assertNull(loadBalancerModel.getListeners());
+    assertNull(loadBalancerModel.getName());
     assertNull(loadBalancerModel.getOperatingStatus());
     assertNull(loadBalancerModel.getPools());
     assertNull(loadBalancerModel.getPrivateIps());
+    assertNull(loadBalancerModel.getProfile());
     assertNull(loadBalancerModel.getProvisioningStatus());
     assertNull(loadBalancerModel.getPublicIps());
     assertNull(loadBalancerModel.getResourceGroup());

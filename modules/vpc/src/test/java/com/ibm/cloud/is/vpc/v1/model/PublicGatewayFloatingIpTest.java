@@ -13,6 +13,7 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.ibm.cloud.is.vpc.v1.model.FloatingIPReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.PublicGatewayFloatingIp;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
@@ -32,10 +33,11 @@ public class PublicGatewayFloatingIpTest {
   @Test
   public void testPublicGatewayFloatingIp() throws Throwable {
     PublicGatewayFloatingIp publicGatewayFloatingIpModel = new PublicGatewayFloatingIp();
-    assertNull(publicGatewayFloatingIpModel.getId());
-    assertNull(publicGatewayFloatingIpModel.getCrn());
-    assertNull(publicGatewayFloatingIpModel.getHref());
     assertNull(publicGatewayFloatingIpModel.getAddress());
+    assertNull(publicGatewayFloatingIpModel.getCrn());
+    assertNull(publicGatewayFloatingIpModel.getDeleted());
+    assertNull(publicGatewayFloatingIpModel.getHref());
+    assertNull(publicGatewayFloatingIpModel.getId());
     assertNull(publicGatewayFloatingIpModel.getName());
   }
 }

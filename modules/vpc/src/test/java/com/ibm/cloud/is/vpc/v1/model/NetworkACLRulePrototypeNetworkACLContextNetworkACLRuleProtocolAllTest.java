@@ -32,17 +32,17 @@ public class NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolAllTe
   @Test
   public void testNetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolAll() throws Throwable {
     NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolAll networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolAllModel = new NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolAll.Builder()
-      .name("my-rule-2")
       .action("allow")
       .destination("192.168.3.2/32")
       .direction("inbound")
+      .name("my-rule-2")
       .source("192.168.3.2/32")
       .protocol("all")
       .build();
-    assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolAllModel.name(), "my-rule-2");
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolAllModel.action(), "allow");
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolAllModel.destination(), "192.168.3.2/32");
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolAllModel.direction(), "inbound");
+    assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolAllModel.name(), "my-rule-2");
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolAllModel.source(), "192.168.3.2/32");
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolAllModel.protocol(), "all");
 
@@ -50,12 +50,17 @@ public class NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolAllTe
 
     NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolAll networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolAllModelNew = TestUtilities.deserialize(json, NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolAll.class);
     assertTrue(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolAllModelNew instanceof NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolAll);
-    assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolAllModelNew.name(), "my-rule-2");
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolAllModelNew.action(), "allow");
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolAllModelNew.destination(), "192.168.3.2/32");
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolAllModelNew.direction(), "inbound");
+    assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolAllModelNew.name(), "my-rule-2");
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolAllModelNew.source(), "192.168.3.2/32");
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolAllModelNew.protocol(), "all");
-    assertNotNull(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolAllModel);
   }
+
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testNetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolAllError() throws Throwable {
+    new NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolAll.Builder().build();
+  }
+
 }

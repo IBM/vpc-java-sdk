@@ -22,19 +22,30 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class ImageCollection extends GenericModel {
 
   protected ImageCollectionFirst first;
+  protected List<Image> images;
   protected Long limit;
   protected ImageCollectionNext next;
-  protected List<Image> images;
 
   /**
    * Gets the first.
    *
-   * A reference to the first page of resources.
+   * A link to the first page of resources.
    *
    * @return the first
    */
   public ImageCollectionFirst getFirst() {
     return first;
+  }
+
+  /**
+   * Gets the images.
+   *
+   * Collection of images.
+   *
+   * @return the images
+   */
+  public List<Image> getImages() {
+    return images;
   }
 
   /**
@@ -51,24 +62,13 @@ public class ImageCollection extends GenericModel {
   /**
    * Gets the next.
    *
-   * A reference to the next page of resources; this reference is included for all pages
+   * A link to the next page of resources. This property is present for all pages
    * except the last page.
    *
    * @return the next
    */
   public ImageCollectionNext getNext() {
     return next;
-  }
-
-  /**
-   * Gets the images.
-   *
-   * Collection of images.
-   *
-   * @return the images
-   */
-  public List<Image> getImages() {
-    return images;
   }
 }
 

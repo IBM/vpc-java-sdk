@@ -43,10 +43,6 @@ public class SecurityGroupRuleSecurityGroupRuleProtocolTCPUDP extends SecurityGr
    * The protocol to enforce.
    */
   public interface Protocol {
-    /** all. */
-    String ALL = "all";
-    /** icmp. */
-    String ICMP = "icmp";
     /** tcp. */
     String TCP = "tcp";
     /** udp. */

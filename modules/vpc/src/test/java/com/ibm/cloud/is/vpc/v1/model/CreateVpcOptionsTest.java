@@ -38,14 +38,14 @@ public class CreateVpcOptionsTest {
     assertEquals(resourceGroupIdentityModel.id(), "fee82deba12e4c0fb69c3b09d1f12345");
 
     CreateVpcOptions createVpcOptionsModel = new CreateVpcOptions.Builder()
-      .name("my-vpc")
       .addressPrefixManagement("manual")
       .classicAccess(false)
+      .name("my-vpc")
       .resourceGroup(resourceGroupIdentityModel)
       .build();
-    assertEquals(createVpcOptionsModel.name(), "my-vpc");
     assertEquals(createVpcOptionsModel.addressPrefixManagement(), "manual");
     assertEquals(createVpcOptionsModel.classicAccess(), Boolean.valueOf(false));
+    assertEquals(createVpcOptionsModel.name(), "my-vpc");
     assertEquals(createVpcOptionsModel.resourceGroup(), resourceGroupIdentityModel);
   }
 }

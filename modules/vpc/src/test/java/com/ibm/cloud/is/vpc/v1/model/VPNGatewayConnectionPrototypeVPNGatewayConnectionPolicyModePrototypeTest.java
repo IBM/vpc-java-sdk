@@ -57,22 +57,22 @@ public class VPNGatewayConnectionPrototypeVPNGatewayConnectionPolicyModePrototyp
 
     VPNGatewayConnectionPrototypeVPNGatewayConnectionPolicyModePrototype vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototypeModel = new VPNGatewayConnectionPrototypeVPNGatewayConnectionPolicyModePrototype.Builder()
       .adminStateUp(true)
-      .peerAddress("169.21.50.5")
-      .name("my-vpn-connection")
-      .psk("lkj14b1oi0alcniejkso")
       .deadPeerDetection(vpnGatewayConnectionDpdPrototypeModel)
       .ikePolicy(ikePolicyIdentityModel)
       .ipsecPolicy(iPsecPolicyIdentityModel)
+      .name("my-vpn-connection")
+      .peerAddress("169.21.50.5")
+      .psk("lkj14b1oi0alcniejkso")
       .localCidrs(new java.util.ArrayList<String>(java.util.Arrays.asList("192.168.1.0/24")))
       .peerCidrs(new java.util.ArrayList<String>(java.util.Arrays.asList("10.45.1.0/24")))
       .build();
     assertEquals(vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototypeModel.adminStateUp(), Boolean.valueOf(true));
-    assertEquals(vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototypeModel.peerAddress(), "169.21.50.5");
-    assertEquals(vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototypeModel.name(), "my-vpn-connection");
-    assertEquals(vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototypeModel.psk(), "lkj14b1oi0alcniejkso");
     assertEquals(vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototypeModel.deadPeerDetection(), vpnGatewayConnectionDpdPrototypeModel);
     assertEquals(vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototypeModel.ikePolicy(), ikePolicyIdentityModel);
     assertEquals(vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototypeModel.ipsecPolicy(), iPsecPolicyIdentityModel);
+    assertEquals(vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototypeModel.name(), "my-vpn-connection");
+    assertEquals(vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototypeModel.peerAddress(), "169.21.50.5");
+    assertEquals(vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototypeModel.psk(), "lkj14b1oi0alcniejkso");
     assertEquals(vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototypeModel.localCidrs(), new java.util.ArrayList<String>(java.util.Arrays.asList("192.168.1.0/24")));
     assertEquals(vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototypeModel.peerCidrs(), new java.util.ArrayList<String>(java.util.Arrays.asList("10.45.1.0/24")));
 
@@ -81,12 +81,12 @@ public class VPNGatewayConnectionPrototypeVPNGatewayConnectionPolicyModePrototyp
     VPNGatewayConnectionPrototypeVPNGatewayConnectionPolicyModePrototype vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototypeModelNew = TestUtilities.deserialize(json, VPNGatewayConnectionPrototypeVPNGatewayConnectionPolicyModePrototype.class);
     assertTrue(vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototypeModelNew instanceof VPNGatewayConnectionPrototypeVPNGatewayConnectionPolicyModePrototype);
     assertEquals(vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototypeModelNew.adminStateUp(), Boolean.valueOf(true));
-    assertEquals(vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototypeModelNew.peerAddress(), "169.21.50.5");
-    assertEquals(vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototypeModelNew.name(), "my-vpn-connection");
-    assertEquals(vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototypeModelNew.psk(), "lkj14b1oi0alcniejkso");
     assertEquals(vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototypeModelNew.deadPeerDetection().toString(), vpnGatewayConnectionDpdPrototypeModel.toString());
     assertEquals(vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototypeModelNew.ikePolicy().toString(), ikePolicyIdentityModel.toString());
     assertEquals(vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototypeModelNew.ipsecPolicy().toString(), iPsecPolicyIdentityModel.toString());
+    assertEquals(vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototypeModelNew.name(), "my-vpn-connection");
+    assertEquals(vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototypeModelNew.peerAddress(), "169.21.50.5");
+    assertEquals(vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototypeModelNew.psk(), "lkj14b1oi0alcniejkso");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

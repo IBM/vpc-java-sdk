@@ -55,23 +55,9 @@ public class SecurityGroupRule extends GenericModel {
     String IPV4 = "ipv4";
   }
 
-  /**
-   * The protocol to enforce.
-   */
-  public interface Protocol {
-    /** all. */
-    String ALL = "all";
-    /** icmp. */
-    String ICMP = "icmp";
-    /** tcp. */
-    String TCP = "tcp";
-    /** udp. */
-    String UDP = "udp";
-  }
-
-  protected String id;
-  protected String href;
   protected String direction;
+  protected String href;
+  protected String id;
   @SerializedName("ip_version")
   protected String ipVersion;
   protected String protocol;
@@ -87,14 +73,14 @@ public class SecurityGroupRule extends GenericModel {
   }
 
   /**
-   * Gets the id.
+   * Gets the direction.
    *
-   * The unique identifier for this security group rule.
+   * The direction of traffic to enforce, either `inbound` or `outbound`.
    *
-   * @return the id
+   * @return the direction
    */
-  public String getId() {
-    return id;
+  public String getDirection() {
+    return direction;
   }
 
   /**
@@ -109,14 +95,14 @@ public class SecurityGroupRule extends GenericModel {
   }
 
   /**
-   * Gets the direction.
+   * Gets the id.
    *
-   * The direction of traffic to enforce, either `inbound` or `outbound`.
+   * The unique identifier for this security group rule.
    *
-   * @return the direction
+   * @return the id
    */
-  public String getDirection() {
-    return direction;
+  public String getId() {
+    return id;
   }
 
   /**

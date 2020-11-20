@@ -33,50 +33,50 @@ public class IKEPolicyPatchTest {
   @Test
   public void testIKEPolicyPatch() throws Throwable {
     IKEPolicyPatch ikePolicyPatchModel = new IKEPolicyPatch.Builder()
-      .name("my-ike-policy")
       .authenticationAlgorithm("md5")
       .dhGroup(Long.valueOf("2"))
       .encryptionAlgorithm("triple_des")
       .ikeVersion(Long.valueOf("1"))
       .keyLifetime(Long.valueOf("28800"))
+      .name("my-ike-policy")
       .build();
-    assertEquals(ikePolicyPatchModel.name(), "my-ike-policy");
     assertEquals(ikePolicyPatchModel.authenticationAlgorithm(), "md5");
     assertEquals(ikePolicyPatchModel.dhGroup(), Long.valueOf("2"));
     assertEquals(ikePolicyPatchModel.encryptionAlgorithm(), "triple_des");
     assertEquals(ikePolicyPatchModel.ikeVersion(), Long.valueOf("1"));
     assertEquals(ikePolicyPatchModel.keyLifetime(), Long.valueOf("28800"));
+    assertEquals(ikePolicyPatchModel.name(), "my-ike-policy");
 
     String json = TestUtilities.serialize(ikePolicyPatchModel);
 
     IKEPolicyPatch ikePolicyPatchModelNew = TestUtilities.deserialize(json, IKEPolicyPatch.class);
     assertTrue(ikePolicyPatchModelNew instanceof IKEPolicyPatch);
-    assertEquals(ikePolicyPatchModelNew.name(), "my-ike-policy");
     assertEquals(ikePolicyPatchModelNew.authenticationAlgorithm(), "md5");
     assertEquals(ikePolicyPatchModelNew.dhGroup(), Long.valueOf("2"));
     assertEquals(ikePolicyPatchModelNew.encryptionAlgorithm(), "triple_des");
     assertEquals(ikePolicyPatchModelNew.ikeVersion(), Long.valueOf("1"));
     assertEquals(ikePolicyPatchModelNew.keyLifetime(), Long.valueOf("28800"));
+    assertEquals(ikePolicyPatchModelNew.name(), "my-ike-policy");
   }
   @Test
   public void testIKEPolicyPatchAsPatch() throws Throwable {
     IKEPolicyPatch ikePolicyPatchModel = new IKEPolicyPatch.Builder()
-      .name("my-ike-policy")
       .authenticationAlgorithm("md5")
       .dhGroup(Long.valueOf("2"))
       .encryptionAlgorithm("triple_des")
       .ikeVersion(Long.valueOf("1"))
       .keyLifetime(Long.valueOf("28800"))
+      .name("my-ike-policy")
       .build();
 
     Map<String, Object> mergePatch = ikePolicyPatchModel.asPatch();
 
-    assertEquals(mergePatch.get("name"), "my-ike-policy");
     assertEquals(mergePatch.get("authentication_algorithm"), "md5");
     assertTrue(mergePatch.containsKey("dh_group"));
     assertEquals(mergePatch.get("encryption_algorithm"), "triple_des");
     assertTrue(mergePatch.containsKey("ike_version"));
     assertTrue(mergePatch.containsKey("key_lifetime"));
+    assertEquals(mergePatch.get("name"), "my-ike-policy");
   }
 
 }

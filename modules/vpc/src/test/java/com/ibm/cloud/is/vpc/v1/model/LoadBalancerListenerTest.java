@@ -16,7 +16,9 @@ package com.ibm.cloud.is.vpc.v1.model;
 import com.ibm.cloud.is.vpc.v1.model.CertificateInstanceReference;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListener;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyReference;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolReference;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -35,15 +37,16 @@ public class LoadBalancerListenerTest {
   @Test
   public void testLoadBalancerListener() throws Throwable {
     LoadBalancerListener loadBalancerListenerModel = new LoadBalancerListener();
-    assertNull(loadBalancerListenerModel.getId());
-    assertNull(loadBalancerListenerModel.getHref());
-    assertNull(loadBalancerListenerModel.getConnectionLimit());
-    assertNull(loadBalancerListenerModel.getPort());
-    assertNull(loadBalancerListenerModel.getProtocol());
+    assertNull(loadBalancerListenerModel.isAcceptProxyProtocol());
     assertNull(loadBalancerListenerModel.getCertificateInstance());
+    assertNull(loadBalancerListenerModel.getConnectionLimit());
     assertNull(loadBalancerListenerModel.getCreatedAt());
     assertNull(loadBalancerListenerModel.getDefaultPool());
+    assertNull(loadBalancerListenerModel.getHref());
+    assertNull(loadBalancerListenerModel.getId());
     assertNull(loadBalancerListenerModel.getPolicies());
+    assertNull(loadBalancerListenerModel.getPort());
+    assertNull(loadBalancerListenerModel.getProtocol());
     assertNull(loadBalancerListenerModel.getProvisioningStatus());
   }
 }

@@ -15,7 +15,7 @@ package com.ibm.cloud.is.vpc.v1.model;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * A reference to the first page of resources.
+ * A link to the first page of resources.
  */
 public class NetworkACLCollectionFirst extends GenericModel {
 
@@ -24,7 +24,7 @@ public class NetworkACLCollectionFirst extends GenericModel {
   /**
    * Gets the href.
    *
-   * The URL for the first page of resources.
+   * The URL for a page of resources.
    *
    * @return the href
    */

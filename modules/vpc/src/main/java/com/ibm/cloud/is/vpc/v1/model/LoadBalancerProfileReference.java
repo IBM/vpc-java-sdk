@@ -19,19 +19,19 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class LoadBalancerProfileReference extends GenericModel {
 
-  protected String name;
-  protected String href;
   protected String family;
+  protected String href;
+  protected String name;
 
   /**
-   * Gets the name.
+   * Gets the family.
    *
-   * The name for this load balancer profile.
+   * The product family this load balancer profile belongs to.
    *
-   * @return the name
+   * @return the family
    */
-  public String getName() {
-    return name;
+  public String getFamily() {
+    return family;
   }
 
   /**
@@ -46,14 +46,14 @@ public class LoadBalancerProfileReference extends GenericModel {
   }
 
   /**
-   * Gets the family.
+   * Gets the name.
    *
-   * The product family this load balancer profile belongs to.
+   * The globally unique name for this load balancer profile.
    *
-   * @return the family
+   * @return the name
    */
-  public String getFamily() {
-    return family;
+  public String getName() {
+    return name;
   }
 }
 

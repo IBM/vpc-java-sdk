@@ -19,22 +19,16 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class CreateVpnGatewayOptions extends GenericModel {
 
-  protected SubnetIdentity subnet;
-  protected String name;
-  protected ResourceGroupIdentity resourceGroup;
+  protected VPNGatewayPrototype vpnGatewayPrototype;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private SubnetIdentity subnet;
-    private String name;
-    private ResourceGroupIdentity resourceGroup;
+    private VPNGatewayPrototype vpnGatewayPrototype;
 
     private Builder(CreateVpnGatewayOptions createVpnGatewayOptions) {
-      this.subnet = createVpnGatewayOptions.subnet;
-      this.name = createVpnGatewayOptions.name;
-      this.resourceGroup = createVpnGatewayOptions.resourceGroup;
+      this.vpnGatewayPrototype = createVpnGatewayOptions.vpnGatewayPrototype;
     }
 
     /**
@@ -46,10 +40,10 @@ public class CreateVpnGatewayOptions extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param subnet the subnet
+     * @param vpnGatewayPrototype the vpnGatewayPrototype
      */
-    public Builder(SubnetIdentity subnet) {
-      this.subnet = subnet;
+    public Builder(VPNGatewayPrototype vpnGatewayPrototype) {
+      this.vpnGatewayPrototype = vpnGatewayPrototype;
     }
 
     /**
@@ -62,45 +56,21 @@ public class CreateVpnGatewayOptions extends GenericModel {
     }
 
     /**
-     * Set the subnet.
+     * Set the vpnGatewayPrototype.
      *
-     * @param subnet the subnet
+     * @param vpnGatewayPrototype the vpnGatewayPrototype
      * @return the CreateVpnGatewayOptions builder
      */
-    public Builder subnet(SubnetIdentity subnet) {
-      this.subnet = subnet;
-      return this;
-    }
-
-    /**
-     * Set the name.
-     *
-     * @param name the name
-     * @return the CreateVpnGatewayOptions builder
-     */
-    public Builder name(String name) {
-      this.name = name;
-      return this;
-    }
-
-    /**
-     * Set the resourceGroup.
-     *
-     * @param resourceGroup the resourceGroup
-     * @return the CreateVpnGatewayOptions builder
-     */
-    public Builder resourceGroup(ResourceGroupIdentity resourceGroup) {
-      this.resourceGroup = resourceGroup;
+    public Builder vpnGatewayPrototype(VPNGatewayPrototype vpnGatewayPrototype) {
+      this.vpnGatewayPrototype = vpnGatewayPrototype;
       return this;
     }
   }
 
   protected CreateVpnGatewayOptions(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.subnet,
-      "subnet cannot be null");
-    subnet = builder.subnet;
-    name = builder.name;
-    resourceGroup = builder.resourceGroup;
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.vpnGatewayPrototype,
+      "vpnGatewayPrototype cannot be null");
+    vpnGatewayPrototype = builder.vpnGatewayPrototype;
   }
 
   /**
@@ -113,37 +83,14 @@ public class CreateVpnGatewayOptions extends GenericModel {
   }
 
   /**
-   * Gets the subnet.
+   * Gets the vpnGatewayPrototype.
    *
-   * Identifies a subnet by a unique property.
+   * The VPN gateway prototype object.
    *
-   * @return the subnet
+   * @return the vpnGatewayPrototype
    */
-  public SubnetIdentity subnet() {
-    return subnet;
-  }
-
-  /**
-   * Gets the name.
-   *
-   * The user-defined name for this VPN gateway.
-   *
-   * @return the name
-   */
-  public String name() {
-    return name;
-  }
-
-  /**
-   * Gets the resourceGroup.
-   *
-   * The resource group to use. If unspecified, the account's [default resource
-   * group](https://cloud.ibm.com/apidocs/resource-manager#introduction) is used.
-   *
-   * @return the resourceGroup
-   */
-  public ResourceGroupIdentity resourceGroup() {
-    return resourceGroup;
+  public VPNGatewayPrototype vpnGatewayPrototype() {
+    return vpnGatewayPrototype;
   }
 }
 

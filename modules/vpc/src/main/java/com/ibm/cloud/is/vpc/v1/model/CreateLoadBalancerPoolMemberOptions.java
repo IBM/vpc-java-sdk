@@ -190,9 +190,8 @@ public class CreateLoadBalancerPoolMemberOptions extends GenericModel {
   /**
    * Gets the target.
    *
-   * The pool member target. Load balancers in the `network` family
-   * support instances. Load balancers in the `application` family support
-   * IP addresses.
+   * The pool member target. Load balancers in the `network` family support virtual server
+   * instances. Load balancers in the `application` family support IP addresses.
    *
    * @return the target
    */
@@ -203,7 +202,7 @@ public class CreateLoadBalancerPoolMemberOptions extends GenericModel {
   /**
    * Gets the weight.
    *
-   * Weight of the server member. This takes effect only when the load balancing algorithm of its belonging pool is
+   * Weight of the server member. Applicable only if the pool algorithm is
    * `weighted_round_robin`.
    *
    * @return the weight

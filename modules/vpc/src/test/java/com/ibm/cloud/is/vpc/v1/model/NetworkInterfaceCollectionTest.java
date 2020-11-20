@@ -14,12 +14,15 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPReference;
+import com.ibm.cloud.is.vpc.v1.model.FloatingIPReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.NetworkInterface;
 import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceCollection;
 import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceCollectionFirst;
 import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupReference;
+import com.ibm.cloud.is.vpc.v1.model.SecurityGroupReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.SubnetReference;
+import com.ibm.cloud.is.vpc.v1.model.SubnetReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -42,8 +45,8 @@ public class NetworkInterfaceCollectionTest {
     NetworkInterfaceCollection networkInterfaceCollectionModel = new NetworkInterfaceCollection();
     assertNull(networkInterfaceCollectionModel.getFirst());
     assertNull(networkInterfaceCollectionModel.getLimit());
+    assertNull(networkInterfaceCollectionModel.getNetworkInterfaces());
     assertNull(networkInterfaceCollectionModel.getNext());
     assertNull(networkInterfaceCollectionModel.getTotalCount());
-    assertNull(networkInterfaceCollectionModel.getNetworkInterfaces());
   }
 }

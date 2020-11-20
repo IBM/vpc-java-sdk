@@ -38,7 +38,7 @@ public class InstanceGroupManagerPolicyCollectionTest {
     assertNull(instanceGroupManagerPolicyCollectionModel.getFirst());
     assertNull(instanceGroupManagerPolicyCollectionModel.getLimit());
     assertNull(instanceGroupManagerPolicyCollectionModel.getNext());
-    assertNull(instanceGroupManagerPolicyCollectionModel.getTotalCount());
     assertNull(instanceGroupManagerPolicyCollectionModel.getPolicies());
+    assertNull(instanceGroupManagerPolicyCollectionModel.getTotalCount());
   }
 }

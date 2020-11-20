@@ -24,15 +24,15 @@ public class InstanceGroupMembershipCollection extends GenericModel {
 
   protected InstanceGroupMembershipCollectionFirst first;
   protected Long limit;
+  protected List<InstanceGroupMembership> memberships;
   protected InstanceGroupMembershipCollectionNext next;
   @SerializedName("total_count")
   protected Long totalCount;
-  protected List<InstanceGroupMembership> memberships;
 
   /**
    * Gets the first.
    *
-   * A reference to the first page of resources.
+   * A link to the first page of resources.
    *
    * @return the first
    */
@@ -52,9 +52,20 @@ public class InstanceGroupMembershipCollection extends GenericModel {
   }
 
   /**
+   * Gets the memberships.
+   *
+   * Collection of instance group memberships.
+   *
+   * @return the memberships
+   */
+  public List<InstanceGroupMembership> getMemberships() {
+    return memberships;
+  }
+
+  /**
    * Gets the next.
    *
-   * A reference to the next page of resources; this reference is included for all pages
+   * A link to the next page of resources. This property is present for all pages
    * except the last page.
    *
    * @return the next
@@ -72,17 +83,6 @@ public class InstanceGroupMembershipCollection extends GenericModel {
    */
   public Long getTotalCount() {
     return totalCount;
-  }
-
-  /**
-   * Gets the memberships.
-   *
-   * Collection of instance group memberships.
-   *
-   * @return the memberships
-   */
-  public List<InstanceGroupMembership> getMemberships() {
-    return memberships;
   }
 }
 

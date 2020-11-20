@@ -45,27 +45,30 @@ public class LoadBalancerListenerPatchTest {
     assertEquals(loadBalancerPoolIdentityModel.id(), "70294e14-4e61-11e8-bcf4-0242ac110004");
 
     LoadBalancerListenerPatch loadBalancerListenerPatchModel = new LoadBalancerListenerPatch.Builder()
+      .acceptProxyProtocol(true)
+      .certificateInstance(certificateInstanceIdentityModel)
       .connectionLimit(Long.valueOf("2000"))
+      .defaultPool(loadBalancerPoolIdentityModel)
       .port(Long.valueOf("443"))
       .protocol("http")
-      .certificateInstance(certificateInstanceIdentityModel)
-      .defaultPool(loadBalancerPoolIdentityModel)
       .build();
+    assertEquals(loadBalancerListenerPatchModel.acceptProxyProtocol(), Boolean.valueOf(true));
+    assertEquals(loadBalancerListenerPatchModel.certificateInstance(), certificateInstanceIdentityModel);
     assertEquals(loadBalancerListenerPatchModel.connectionLimit(), Long.valueOf("2000"));
+    assertEquals(loadBalancerListenerPatchModel.defaultPool(), loadBalancerPoolIdentityModel);
     assertEquals(loadBalancerListenerPatchModel.port(), Long.valueOf("443"));
     assertEquals(loadBalancerListenerPatchModel.protocol(), "http");
-    assertEquals(loadBalancerListenerPatchModel.certificateInstance(), certificateInstanceIdentityModel);
-    assertEquals(loadBalancerListenerPatchModel.defaultPool(), loadBalancerPoolIdentityModel);
 
     String json = TestUtilities.serialize(loadBalancerListenerPatchModel);
 
     LoadBalancerListenerPatch loadBalancerListenerPatchModelNew = TestUtilities.deserialize(json, LoadBalancerListenerPatch.class);
     assertTrue(loadBalancerListenerPatchModelNew instanceof LoadBalancerListenerPatch);
+    assertEquals(loadBalancerListenerPatchModelNew.acceptProxyProtocol(), Boolean.valueOf(true));
+    assertEquals(loadBalancerListenerPatchModelNew.certificateInstance().toString(), certificateInstanceIdentityModel.toString());
     assertEquals(loadBalancerListenerPatchModelNew.connectionLimit(), Long.valueOf("2000"));
+    assertEquals(loadBalancerListenerPatchModelNew.defaultPool().toString(), loadBalancerPoolIdentityModel.toString());
     assertEquals(loadBalancerListenerPatchModelNew.port(), Long.valueOf("443"));
     assertEquals(loadBalancerListenerPatchModelNew.protocol(), "http");
-    assertEquals(loadBalancerListenerPatchModelNew.certificateInstance().toString(), certificateInstanceIdentityModel.toString());
-    assertEquals(loadBalancerListenerPatchModelNew.defaultPool().toString(), loadBalancerPoolIdentityModel.toString());
   }
   @Test
   public void testLoadBalancerListenerPatchAsPatch() throws Throwable {
@@ -78,20 +81,22 @@ public class LoadBalancerListenerPatchTest {
       .build();
 
     LoadBalancerListenerPatch loadBalancerListenerPatchModel = new LoadBalancerListenerPatch.Builder()
+      .acceptProxyProtocol(true)
+      .certificateInstance(certificateInstanceIdentityModel)
       .connectionLimit(Long.valueOf("2000"))
+      .defaultPool(loadBalancerPoolIdentityModel)
       .port(Long.valueOf("443"))
       .protocol("http")
-      .certificateInstance(certificateInstanceIdentityModel)
-      .defaultPool(loadBalancerPoolIdentityModel)
       .build();
 
     Map<String, Object> mergePatch = loadBalancerListenerPatchModel.asPatch();
 
+    assertTrue(mergePatch.containsKey("accept_proxy_protocol"));
+    assertTrue(mergePatch.containsKey("certificate_instance"));
     assertTrue(mergePatch.containsKey("connection_limit"));
+    assertTrue(mergePatch.containsKey("default_pool"));
     assertTrue(mergePatch.containsKey("port"));
     assertEquals(mergePatch.get("protocol"), "http");
-    assertTrue(mergePatch.containsKey("certificate_instance"));
-    assertTrue(mergePatch.containsKey("default_pool"));
   }
 
 }

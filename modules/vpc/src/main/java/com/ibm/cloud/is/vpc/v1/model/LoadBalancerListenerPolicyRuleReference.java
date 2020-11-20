@@ -19,18 +19,20 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class LoadBalancerListenerPolicyRuleReference extends GenericModel {
 
-  protected String id;
+  protected LoadBalancerListenerPolicyRuleReferenceDeleted deleted;
   protected String href;
+  protected String id;
 
   /**
-   * Gets the id.
+   * Gets the deleted.
    *
-   * The rule's unique identifier.
+   * If present, this property indicates the referenced resource has been deleted and provides
+   * some supplementary information.
    *
-   * @return the id
+   * @return the deleted
    */
-  public String getId() {
-    return id;
+  public LoadBalancerListenerPolicyRuleReferenceDeleted getDeleted() {
+    return deleted;
   }
 
   /**
@@ -42,6 +44,17 @@ public class LoadBalancerListenerPolicyRuleReference extends GenericModel {
    */
   public String getHref() {
     return href;
+  }
+
+  /**
+   * Gets the id.
+   *
+   * The rule's unique identifier.
+   *
+   * @return the id
+   */
+  public String getId() {
+    return id;
   }
 }
 

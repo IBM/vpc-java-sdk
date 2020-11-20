@@ -18,27 +18,29 @@ package com.ibm.cloud.is.vpc.v1.model;
 public class VPNGatewayConnectionPolicyMode extends VPNGatewayConnection {
 
   /**
-   * The resource type.
-   */
-  public interface ResourceType {
-    /** vpn_gateway_connection. */
-    String VPN_GATEWAY_CONNECTION = "vpn_gateway_connection";
-  }
-
-  /**
-   * The routing mode. Only `policy` is currently supported.
-   */
-  public interface RouteMode {
-    /** policy. */
-    String POLICY = "policy";
-  }
-
-  /**
    * The authentication mode. Only `psk` is currently supported.
    */
   public interface AuthenticationMode {
     /** psk. */
     String PSK = "psk";
+  }
+
+  /**
+   * The mode of the VPN gateway.
+   */
+  public interface Mode {
+    /** policy. */
+    String POLICY = "policy";
+    /** route. */
+    String ROUTE = "route";
+  }
+
+  /**
+   * The resource type.
+   */
+  public interface ResourceType {
+    /** vpn_gateway_connection. */
+    String VPN_GATEWAY_CONNECTION = "vpn_gateway_connection";
   }
 
   /**

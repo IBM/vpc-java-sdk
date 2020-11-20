@@ -38,15 +38,15 @@ public class InstanceGroupManagerPolicy extends GenericModel {
   }
 
   /**
-   * The type of Policy for the Instance Group.
+   * The type of policy for the instance group.
    */
   public interface PolicyType {
     /** target. */
     String TARGET = "target";
   }
 
-  protected String id;
   protected String href;
+  protected String id;
   protected String name;
   @SerializedName("metric_type")
   protected String metricType;
@@ -59,17 +59,6 @@ public class InstanceGroupManagerPolicy extends GenericModel {
   }
 
   /**
-   * Gets the id.
-   *
-   * The unique identifier for this instance group manager policy.
-   *
-   * @return the id
-   */
-  public String getId() {
-    return id;
-  }
-
-  /**
    * Gets the href.
    *
    * The URL for this instance group manager policy.
@@ -78,6 +67,17 @@ public class InstanceGroupManagerPolicy extends GenericModel {
    */
   public String getHref() {
     return href;
+  }
+
+  /**
+   * Gets the id.
+   *
+   * The unique identifier for this instance group manager policy.
+   *
+   * @return the id
+   */
+  public String getId() {
+    return id;
   }
 
   /**
@@ -117,7 +117,7 @@ public class InstanceGroupManagerPolicy extends GenericModel {
   /**
    * Gets the policyType.
    *
-   * The type of Policy for the Instance Group.
+   * The type of policy for the instance group.
    *
    * @return the policyType
    */

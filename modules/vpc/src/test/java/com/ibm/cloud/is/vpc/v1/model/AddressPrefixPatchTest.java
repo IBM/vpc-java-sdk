@@ -33,30 +33,30 @@ public class AddressPrefixPatchTest {
   @Test
   public void testAddressPrefixPatch() throws Throwable {
     AddressPrefixPatch addressPrefixPatchModel = new AddressPrefixPatch.Builder()
-      .name("my-address-prefix-2")
       .isDefault(false)
+      .name("my-address-prefix-2")
       .build();
-    assertEquals(addressPrefixPatchModel.name(), "my-address-prefix-2");
     assertEquals(addressPrefixPatchModel.isDefault(), Boolean.valueOf(false));
+    assertEquals(addressPrefixPatchModel.name(), "my-address-prefix-2");
 
     String json = TestUtilities.serialize(addressPrefixPatchModel);
 
     AddressPrefixPatch addressPrefixPatchModelNew = TestUtilities.deserialize(json, AddressPrefixPatch.class);
     assertTrue(addressPrefixPatchModelNew instanceof AddressPrefixPatch);
-    assertEquals(addressPrefixPatchModelNew.name(), "my-address-prefix-2");
     assertEquals(addressPrefixPatchModelNew.isDefault(), Boolean.valueOf(false));
+    assertEquals(addressPrefixPatchModelNew.name(), "my-address-prefix-2");
   }
   @Test
   public void testAddressPrefixPatchAsPatch() throws Throwable {
     AddressPrefixPatch addressPrefixPatchModel = new AddressPrefixPatch.Builder()
-      .name("my-address-prefix-2")
       .isDefault(false)
+      .name("my-address-prefix-2")
       .build();
 
     Map<String, Object> mergePatch = addressPrefixPatchModel.asPatch();
 
-    assertEquals(mergePatch.get("name"), "my-address-prefix-2");
     assertTrue(mergePatch.containsKey("is_default"));
+    assertEquals(mergePatch.get("name"), "my-address-prefix-2");
   }
 
 }

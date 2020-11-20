@@ -32,8 +32,8 @@ public class ResourceGroupReferenceTest {
   @Test
   public void testResourceGroupReference() throws Throwable {
     ResourceGroupReference resourceGroupReferenceModel = new ResourceGroupReference();
+    assertNull(resourceGroupReferenceModel.getHref());
     assertNull(resourceGroupReferenceModel.getId());
     assertNull(resourceGroupReferenceModel.getName());
-    assertNull(resourceGroupReferenceModel.getHref());
   }
 }

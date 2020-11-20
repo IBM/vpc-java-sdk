@@ -43,53 +43,53 @@ public class NetworkACLRulePatch extends GenericModel {
     String OUTBOUND = "outbound";
   }
 
-  protected String name;
   protected String action;
+  protected NetworkACLRuleBeforePatch before;
+  protected Long code;
   protected String destination;
-  protected String direction;
-  protected String source;
   @SerializedName("destination_port_max")
   protected Long destinationPortMax;
   @SerializedName("destination_port_min")
   protected Long destinationPortMin;
+  protected String direction;
+  protected String name;
+  protected String source;
   @SerializedName("source_port_max")
   protected Long sourcePortMax;
   @SerializedName("source_port_min")
   protected Long sourcePortMin;
-  protected Long code;
   protected Long type;
-  protected NetworkACLRuleIdentity before;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private String name;
     private String action;
+    private NetworkACLRuleBeforePatch before;
+    private Long code;
     private String destination;
-    private String direction;
-    private String source;
     private Long destinationPortMax;
     private Long destinationPortMin;
+    private String direction;
+    private String name;
+    private String source;
     private Long sourcePortMax;
     private Long sourcePortMin;
-    private Long code;
     private Long type;
-    private NetworkACLRuleIdentity before;
 
     private Builder(NetworkACLRulePatch networkAclRulePatch) {
-      this.name = networkAclRulePatch.name;
       this.action = networkAclRulePatch.action;
+      this.before = networkAclRulePatch.before;
+      this.code = networkAclRulePatch.code;
       this.destination = networkAclRulePatch.destination;
-      this.direction = networkAclRulePatch.direction;
-      this.source = networkAclRulePatch.source;
       this.destinationPortMax = networkAclRulePatch.destinationPortMax;
       this.destinationPortMin = networkAclRulePatch.destinationPortMin;
+      this.direction = networkAclRulePatch.direction;
+      this.name = networkAclRulePatch.name;
+      this.source = networkAclRulePatch.source;
       this.sourcePortMax = networkAclRulePatch.sourcePortMax;
       this.sourcePortMin = networkAclRulePatch.sourcePortMin;
-      this.code = networkAclRulePatch.code;
       this.type = networkAclRulePatch.type;
-      this.before = networkAclRulePatch.before;
     }
 
     /**
@@ -108,17 +108,6 @@ public class NetworkACLRulePatch extends GenericModel {
     }
 
     /**
-     * Set the name.
-     *
-     * @param name the name
-     * @return the NetworkACLRulePatch builder
-     */
-    public Builder name(String name) {
-      this.name = name;
-      return this;
-    }
-
-    /**
      * Set the action.
      *
      * @param action the action
@@ -130,6 +119,28 @@ public class NetworkACLRulePatch extends GenericModel {
     }
 
     /**
+     * Set the before.
+     *
+     * @param before the before
+     * @return the NetworkACLRulePatch builder
+     */
+    public Builder before(NetworkACLRuleBeforePatch before) {
+      this.before = before;
+      return this;
+    }
+
+    /**
+     * Set the code.
+     *
+     * @param code the code
+     * @return the NetworkACLRulePatch builder
+     */
+    public Builder code(long code) {
+      this.code = code;
+      return this;
+    }
+
+    /**
      * Set the destination.
      *
      * @param destination the destination
@@ -137,28 +148,6 @@ public class NetworkACLRulePatch extends GenericModel {
      */
     public Builder destination(String destination) {
       this.destination = destination;
-      return this;
-    }
-
-    /**
-     * Set the direction.
-     *
-     * @param direction the direction
-     * @return the NetworkACLRulePatch builder
-     */
-    public Builder direction(String direction) {
-      this.direction = direction;
-      return this;
-    }
-
-    /**
-     * Set the source.
-     *
-     * @param source the source
-     * @return the NetworkACLRulePatch builder
-     */
-    public Builder source(String source) {
-      this.source = source;
       return this;
     }
 
@@ -185,6 +174,39 @@ public class NetworkACLRulePatch extends GenericModel {
     }
 
     /**
+     * Set the direction.
+     *
+     * @param direction the direction
+     * @return the NetworkACLRulePatch builder
+     */
+    public Builder direction(String direction) {
+      this.direction = direction;
+      return this;
+    }
+
+    /**
+     * Set the name.
+     *
+     * @param name the name
+     * @return the NetworkACLRulePatch builder
+     */
+    public Builder name(String name) {
+      this.name = name;
+      return this;
+    }
+
+    /**
+     * Set the source.
+     *
+     * @param source the source
+     * @return the NetworkACLRulePatch builder
+     */
+    public Builder source(String source) {
+      this.source = source;
+      return this;
+    }
+
+    /**
      * Set the sourcePortMax.
      *
      * @param sourcePortMax the sourcePortMax
@@ -207,17 +229,6 @@ public class NetworkACLRulePatch extends GenericModel {
     }
 
     /**
-     * Set the code.
-     *
-     * @param code the code
-     * @return the NetworkACLRulePatch builder
-     */
-    public Builder code(long code) {
-      this.code = code;
-      return this;
-    }
-
-    /**
      * Set the type.
      *
      * @param type the type
@@ -227,32 +238,21 @@ public class NetworkACLRulePatch extends GenericModel {
       this.type = type;
       return this;
     }
-
-    /**
-     * Set the before.
-     *
-     * @param before the before
-     * @return the NetworkACLRulePatch builder
-     */
-    public Builder before(NetworkACLRuleIdentity before) {
-      this.before = before;
-      return this;
-    }
   }
 
   protected NetworkACLRulePatch(Builder builder) {
-    name = builder.name;
     action = builder.action;
+    before = builder.before;
+    code = builder.code;
     destination = builder.destination;
-    direction = builder.direction;
-    source = builder.source;
     destinationPortMax = builder.destinationPortMax;
     destinationPortMin = builder.destinationPortMin;
+    direction = builder.direction;
+    name = builder.name;
+    source = builder.source;
     sourcePortMax = builder.sourcePortMax;
     sourcePortMin = builder.sourcePortMin;
-    code = builder.code;
     type = builder.type;
-    before = builder.before;
   }
 
   /**
@@ -262,17 +262,6 @@ public class NetworkACLRulePatch extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
-  }
-
-  /**
-   * Gets the name.
-   *
-   * The user-defined name for this rule. Names must be unique within the network ACL the rule resides in.
-   *
-   * @return the name
-   */
-  public String name() {
-    return name;
   }
 
   /**
@@ -287,6 +276,29 @@ public class NetworkACLRulePatch extends GenericModel {
   }
 
   /**
+   * Gets the before.
+   *
+   * The rule to move this rule immediately before. Specify `null` to move this rule after
+   * all existing rules.
+   *
+   * @return the before
+   */
+  public NetworkACLRuleBeforePatch before() {
+    return before;
+  }
+
+  /**
+   * Gets the code.
+   *
+   * The ICMP traffic code to allow.
+   *
+   * @return the code
+   */
+  public Long code() {
+    return code;
+  }
+
+  /**
    * Gets the destination.
    *
    * The destination IP address or CIDR block. The CIDR block `0.0.0.0/0` applies to all addresses.
@@ -295,28 +307,6 @@ public class NetworkACLRulePatch extends GenericModel {
    */
   public String destination() {
     return destination;
-  }
-
-  /**
-   * Gets the direction.
-   *
-   * Whether the traffic to be matched is `inbound` or `outbound`.
-   *
-   * @return the direction
-   */
-  public String direction() {
-    return direction;
-  }
-
-  /**
-   * Gets the source.
-   *
-   * The source IP address or CIDR block.  The CIDR block `0.0.0.0/0` applies to all addresses.
-   *
-   * @return the source
-   */
-  public String source() {
-    return source;
   }
 
   /**
@@ -342,6 +332,39 @@ public class NetworkACLRulePatch extends GenericModel {
   }
 
   /**
+   * Gets the direction.
+   *
+   * Whether the traffic to be matched is `inbound` or `outbound`.
+   *
+   * @return the direction
+   */
+  public String direction() {
+    return direction;
+  }
+
+  /**
+   * Gets the name.
+   *
+   * The user-defined name for this rule. Names must be unique within the network ACL the rule resides in.
+   *
+   * @return the name
+   */
+  public String name() {
+    return name;
+  }
+
+  /**
+   * Gets the source.
+   *
+   * The source IP address or CIDR block.  The CIDR block `0.0.0.0/0` applies to all addresses.
+   *
+   * @return the source
+   */
+  public String source() {
+    return source;
+  }
+
+  /**
    * Gets the sourcePortMax.
    *
    * The inclusive upper bound of TCP/UDP source port range.
@@ -364,17 +387,6 @@ public class NetworkACLRulePatch extends GenericModel {
   }
 
   /**
-   * Gets the code.
-   *
-   * The ICMP traffic code to allow.
-   *
-   * @return the code
-   */
-  public Long code() {
-    return code;
-  }
-
-  /**
    * Gets the type.
    *
    * The ICMP traffic type to allow.
@@ -383,18 +395,6 @@ public class NetworkACLRulePatch extends GenericModel {
    */
   public Long type() {
     return type;
-  }
-
-  /**
-   * Gets the before.
-   *
-   * The rule to move this rule immediately before. Specify `null` to move this rule after
-   * all existing rules.
-   *
-   * @return the before
-   */
-  public NetworkACLRuleIdentity before() {
-    return before;
   }
 
   /**

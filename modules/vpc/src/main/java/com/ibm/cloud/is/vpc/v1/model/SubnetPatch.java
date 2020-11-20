@@ -28,6 +28,8 @@ public class SubnetPatch extends GenericModel {
   protected NetworkACLIdentity networkAcl;
   @SerializedName("public_gateway")
   protected PublicGatewayIdentity publicGateway;
+  @SerializedName("routing_table")
+  protected RoutingTableIdentity routingTable;
 
   /**
    * Builder.
@@ -36,11 +38,13 @@ public class SubnetPatch extends GenericModel {
     private String name;
     private NetworkACLIdentity networkAcl;
     private PublicGatewayIdentity publicGateway;
+    private RoutingTableIdentity routingTable;
 
     private Builder(SubnetPatch subnetPatch) {
       this.name = subnetPatch.name;
       this.networkAcl = subnetPatch.networkAcl;
       this.publicGateway = subnetPatch.publicGateway;
+      this.routingTable = subnetPatch.routingTable;
     }
 
     /**
@@ -90,12 +94,24 @@ public class SubnetPatch extends GenericModel {
       this.publicGateway = publicGateway;
       return this;
     }
+
+    /**
+     * Set the routingTable.
+     *
+     * @param routingTable the routingTable
+     * @return the SubnetPatch builder
+     */
+    public Builder routingTable(RoutingTableIdentity routingTable) {
+      this.routingTable = routingTable;
+      return this;
+    }
   }
 
   protected SubnetPatch(Builder builder) {
     name = builder.name;
     networkAcl = builder.networkAcl;
     publicGateway = builder.publicGateway;
+    routingTable = builder.routingTable;
   }
 
   /**
@@ -138,6 +154,19 @@ public class SubnetPatch extends GenericModel {
    */
   public PublicGatewayIdentity publicGateway() {
     return publicGateway;
+  }
+
+  /**
+   * Gets the routingTable.
+   *
+   * The routing table to use for this subnet.  The routing table properties
+   * `route_direct_link_ingress`, `route_transit_gateway_ingress`, and
+   * `route_vpc_zone_ingress` must be `false`.
+   *
+   * @return the routingTable
+   */
+  public RoutingTableIdentity routingTable() {
+    return routingTable;
   }
 
   /**

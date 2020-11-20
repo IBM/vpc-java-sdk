@@ -14,17 +14,18 @@
 package com.ibm.cloud.is.vpc.v1;
 
 import com.ibm.cloud.is.test.SdkIntegrationTestBase;
+import com.ibm.cloud.is.vpc.v1.model.AddEndpointGatewayIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.AddInstanceNetworkInterfaceFloatingIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.AddSecurityGroupNetworkInterfaceOptions;
 import com.ibm.cloud.is.vpc.v1.model.AddVpnGatewayConnectionLocalCidrOptions;
 import com.ibm.cloud.is.vpc.v1.model.AddVpnGatewayConnectionPeerCidrOptions;
 import com.ibm.cloud.is.vpc.v1.model.AddressPrefix;
 import com.ibm.cloud.is.vpc.v1.model.AddressPrefixCollection;
-import com.ibm.cloud.is.vpc.v1.model.AddressPrefixCollection;
 import com.ibm.cloud.is.vpc.v1.model.AddressPrefixPatch;
 import com.ibm.cloud.is.vpc.v1.model.CheckVpnGatewayConnectionLocalCidrOptions;
 import com.ibm.cloud.is.vpc.v1.model.CheckVpnGatewayConnectionPeerCidrOptions;
 import com.ibm.cloud.is.vpc.v1.model.CloudObjectStorageBucketIdentityByName;
+import com.ibm.cloud.is.vpc.v1.model.CreateEndpointGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateFloatingIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateFlowLogCollectorOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateIkePolicyOptions;
@@ -51,14 +52,19 @@ import com.ibm.cloud.is.vpc.v1.model.CreatePublicGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateSecurityGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateSecurityGroupRuleOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateSubnetOptions;
+import com.ibm.cloud.is.vpc.v1.model.CreateSubnetReservedIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateVolumeOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateVpcAddressPrefixOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateVpcOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateVpcRouteOptions;
+import com.ibm.cloud.is.vpc.v1.model.CreateVpcRoutingTableOptions;
+import com.ibm.cloud.is.vpc.v1.model.CreateVpcRoutingTableRouteOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateVpnGatewayConnectionOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateVpnGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.DefaultNetworkACL;
+import com.ibm.cloud.is.vpc.v1.model.DefaultRoutingTable;
 import com.ibm.cloud.is.vpc.v1.model.DefaultSecurityGroup;
+import com.ibm.cloud.is.vpc.v1.model.DeleteEndpointGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteFloatingIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteFlowLogCollectorOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteIkePolicyOptions;
@@ -82,21 +88,24 @@ import com.ibm.cloud.is.vpc.v1.model.DeleteLoadBalancerOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteLoadBalancerPoolMemberOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteLoadBalancerPoolOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteNetworkAclOptions;
-import com.ibm.cloud.is.vpc.v1.model.DeleteNetworkAclOptions;
-import com.ibm.cloud.is.vpc.v1.model.DeleteNetworkAclRuleOptions;
-import com.ibm.cloud.is.vpc.v1.model.DeleteNetworkAclRuleOptions;
-import com.ibm.cloud.is.vpc.v1.model.DeleteNetworkAclRuleOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteNetworkAclRuleOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeletePublicGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteSecurityGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteSecurityGroupRuleOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteSubnetOptions;
+import com.ibm.cloud.is.vpc.v1.model.DeleteSubnetReservedIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteVolumeOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteVpcAddressPrefixOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteVpcOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteVpcRouteOptions;
+import com.ibm.cloud.is.vpc.v1.model.DeleteVpcRoutingTableOptions;
+import com.ibm.cloud.is.vpc.v1.model.DeleteVpcRoutingTableRouteOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteVpnGatewayConnectionOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteVpnGatewayOptions;
+import com.ibm.cloud.is.vpc.v1.model.EndpointGateway;
+import com.ibm.cloud.is.vpc.v1.model.EndpointGatewayCollection;
+import com.ibm.cloud.is.vpc.v1.model.EndpointGatewayPatch;
+import com.ibm.cloud.is.vpc.v1.model.EndpointGatewayTargetPrototypeProviderInfrastructureServiceIdentityProviderInfrastructureServiceIdentityByName;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIP;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPCollection;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPPatch;
@@ -104,11 +113,10 @@ import com.ibm.cloud.is.vpc.v1.model.FloatingIPPrototypeFloatingIPByZone;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPUnpaginatedCollection;
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollector;
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorCollection;
-import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorCollection;
-import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorCollection;
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorPatch;
-import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorPrototypeTargetNetworkInterfaceIdentityNetworkInterfaceIdentityNetworkInterfaceIdentityById;
-import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorPrototypeTargetSubnetIdentitySubnetIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorTargetPrototypeSubnetIdentitySubnetIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.GetEndpointGatewayIpOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetEndpointGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetFloatingIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetFlowLogCollectorOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetIkePolicyOptions;
@@ -136,8 +144,6 @@ import com.ibm.cloud.is.vpc.v1.model.GetLoadBalancerProfileOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetLoadBalancerStatisticsOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetNetworkAclOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetNetworkAclRuleOptions;
-import com.ibm.cloud.is.vpc.v1.model.GetNetworkAclRuleOptions;
-import com.ibm.cloud.is.vpc.v1.model.GetNetworkAclRuleOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetOperatingSystemOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetPublicGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetRegionOptions;
@@ -148,13 +154,18 @@ import com.ibm.cloud.is.vpc.v1.model.GetSecurityGroupRuleOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetSubnetNetworkAclOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetSubnetOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetSubnetPublicGatewayOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetSubnetReservedIpOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetSubnetRoutingTableOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetVolumeOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetVolumeProfileOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetVpcAddressPrefixOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetVpcDefaultNetworkAclOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetVpcDefaultRoutingTableOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetVpcDefaultSecurityGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetVpcOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetVpcRouteOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetVpcRoutingTableOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetVpcRoutingTableRouteOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetVpnGatewayConnectionOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetVpnGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.IKEPolicy;
@@ -192,8 +203,6 @@ import com.ibm.cloud.is.vpc.v1.model.InstanceInitialization;
 import com.ibm.cloud.is.vpc.v1.model.InstancePatch;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfile;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileCollection;
-import com.ibm.cloud.is.vpc.v1.model.InstanceProfileCollection;
-import com.ibm.cloud.is.vpc.v1.model.InstanceProfileCollection;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileIdentityByName;
 import com.ibm.cloud.is.vpc.v1.model.InstancePrototypeInstanceByImage;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplate;
@@ -206,6 +215,8 @@ import com.ibm.cloud.is.vpc.v1.model.KeyCollection;
 import com.ibm.cloud.is.vpc.v1.model.KeyIdentity;
 import com.ibm.cloud.is.vpc.v1.model.KeyIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.KeyPatch;
+import com.ibm.cloud.is.vpc.v1.model.ListEndpointGatewayIpsOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListEndpointGatewaysOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListFloatingIpsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListFlowLogCollectorsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListIkePoliciesOptions;
@@ -233,8 +244,6 @@ import com.ibm.cloud.is.vpc.v1.model.ListLoadBalancerProfilesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListLoadBalancersOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListNetworkAclRulesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListNetworkAclsOptions;
-import com.ibm.cloud.is.vpc.v1.model.ListNetworkAclsOptions;
-import com.ibm.cloud.is.vpc.v1.model.ListNetworkAclsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListOperatingSystemsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListPublicGatewaysOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListRegionZonesOptions;
@@ -242,14 +251,14 @@ import com.ibm.cloud.is.vpc.v1.model.ListRegionsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListSecurityGroupNetworkInterfacesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListSecurityGroupRulesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListSecurityGroupsOptions;
-import com.ibm.cloud.is.vpc.v1.model.ListSecurityGroupsOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListSubnetReservedIpsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListSubnetsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListVolumeProfilesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListVolumesOptions;
-import com.ibm.cloud.is.vpc.v1.model.ListVolumesOptions;
-import com.ibm.cloud.is.vpc.v1.model.ListVolumesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListVpcAddressPrefixesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListVpcRoutesOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListVpcRoutingTableRoutesOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListVpcRoutingTablesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListVpcsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListVpnGatewayConnectionLocalCidrsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListVpnGatewayConnectionPeerCidrsOptions;
@@ -276,7 +285,6 @@ import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolMemberCollection;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolMemberPatch;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolMemberPrototype;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolMemberTargetPrototypeIP;
-import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolPatch;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolSessionPersistencePatch;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfile;
@@ -285,14 +293,10 @@ import com.ibm.cloud.is.vpc.v1.model.LoadBalancerStatistics;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACL;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLCollection;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLIdentityById;
-import com.ibm.cloud.is.vpc.v1.model.NetworkACLIdentityById;
-import com.ibm.cloud.is.vpc.v1.model.NetworkACLIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLPatch;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLPrototypeNetworkACLByRules;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLRule;
-import com.ibm.cloud.is.vpc.v1.model.NetworkACLRule;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLRuleCollection;
-import com.ibm.cloud.is.vpc.v1.model.NetworkACLRuleIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLRulePatch;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLRulePrototypeNetworkACLContext;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolAll;
@@ -309,33 +313,38 @@ import com.ibm.cloud.is.vpc.v1.model.PublicGateway;
 import com.ibm.cloud.is.vpc.v1.model.PublicGatewayCollection;
 import com.ibm.cloud.is.vpc.v1.model.PublicGatewayIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.PublicGatewayPatch;
-import com.ibm.cloud.is.vpc.v1.model.PublicGatewayPrototypeFloatingIpFloatingIPIdentityFloatingIPIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.Region;
 import com.ibm.cloud.is.vpc.v1.model.RegionCollection;
+import com.ibm.cloud.is.vpc.v1.model.RemoveEndpointGatewayIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.RemoveInstanceNetworkInterfaceFloatingIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.RemoveSecurityGroupNetworkInterfaceOptions;
 import com.ibm.cloud.is.vpc.v1.model.RemoveVpnGatewayConnectionLocalCidrOptions;
 import com.ibm.cloud.is.vpc.v1.model.RemoveVpnGatewayConnectionPeerCidrOptions;
 import com.ibm.cloud.is.vpc.v1.model.ReplaceLoadBalancerPoolMembersOptions;
 import com.ibm.cloud.is.vpc.v1.model.ReplaceSubnetNetworkAclOptions;
-import com.ibm.cloud.is.vpc.v1.model.ResourceGroupIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.ReplaceSubnetRoutingTableOptions;
+import com.ibm.cloud.is.vpc.v1.model.ReservedIP;
+import com.ibm.cloud.is.vpc.v1.model.ReservedIPCollection;
+import com.ibm.cloud.is.vpc.v1.model.ReservedIPCollectionEndpointGatewayContext;
+import com.ibm.cloud.is.vpc.v1.model.ReservedIPPatch;
 import com.ibm.cloud.is.vpc.v1.model.Route;
 import com.ibm.cloud.is.vpc.v1.model.RouteCollection;
 import com.ibm.cloud.is.vpc.v1.model.RouteNextHopPrototypeRouteNextHopIP;
 import com.ibm.cloud.is.vpc.v1.model.RoutePatch;
+import com.ibm.cloud.is.vpc.v1.model.RoutePrototype;
+import com.ibm.cloud.is.vpc.v1.model.RoutingTable;
+import com.ibm.cloud.is.vpc.v1.model.RoutingTableCollection;
+import com.ibm.cloud.is.vpc.v1.model.RoutingTableIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.RoutingTablePatch;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroup;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupCollection;
-import com.ibm.cloud.is.vpc.v1.model.SecurityGroupCollection;
-import com.ibm.cloud.is.vpc.v1.model.SecurityGroupCollection;
-import com.ibm.cloud.is.vpc.v1.model.SecurityGroupIdentity;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupPatch;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRule;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleCollection;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRulePatch;
-import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRulePatchRemoteIP;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRulePrototype;
-import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRulePrototypeRemoteIP;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRulePrototypeSecurityGroupRuleProtocolICMP;
+import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleRemotePatchIP;
 import com.ibm.cloud.is.vpc.v1.model.SetSubnetPublicGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.Subnet;
 import com.ibm.cloud.is.vpc.v1.model.SubnetCollection;
@@ -343,11 +352,8 @@ import com.ibm.cloud.is.vpc.v1.model.SubnetIdentity;
 import com.ibm.cloud.is.vpc.v1.model.SubnetIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.SubnetPatch;
 import com.ibm.cloud.is.vpc.v1.model.SubnetPrototypeSubnetByCIDR;
-import com.ibm.cloud.is.vpc.v1.model.SubnetPrototypeSubnetByTotalCount;
-import com.ibm.cloud.is.vpc.v1.model.SubnetPrototypeSubnetByTotalCount;
-import com.ibm.cloud.is.vpc.v1.model.SubnetPrototypeSubnetByTotalCount;
-import com.ibm.cloud.is.vpc.v1.model.SubnetPrototypeSubnetByTotalCount;
 import com.ibm.cloud.is.vpc.v1.model.UnsetSubnetPublicGatewayOptions;
+import com.ibm.cloud.is.vpc.v1.model.UpdateEndpointGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateFloatingIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateFlowLogCollectorOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateIkePolicyOptions;
@@ -374,10 +380,13 @@ import com.ibm.cloud.is.vpc.v1.model.UpdatePublicGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateSecurityGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateSecurityGroupRuleOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateSubnetOptions;
+import com.ibm.cloud.is.vpc.v1.model.UpdateSubnetReservedIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateVolumeOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateVpcAddressPrefixOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateVpcOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateVpcRouteOptions;
+import com.ibm.cloud.is.vpc.v1.model.UpdateVpcRoutingTableOptions;
+import com.ibm.cloud.is.vpc.v1.model.UpdateVpcRoutingTableRouteOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateVpnGatewayConnectionOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateVpnGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.VPC;
@@ -390,10 +399,11 @@ import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnection;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionCollection;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionDPDPrototype;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionLocalCIDRs;
-import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionPatch;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionPatchVPNGatewayConnectionStaticRouteModePatch;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionPeerCIDRs;
-import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionPrototypeVPNGatewayConnectionPolicyModePrototype;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionPrototypeVPNGatewayConnectionStaticRouteModePrototype;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayPatch;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayPrototypeVPNGatewayRouteModePrototype;
 import com.ibm.cloud.is.vpc.v1.model.Volume;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachment;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentCollection;
@@ -433,7 +443,6 @@ public class VpcIT extends SdkIntegrationTestBase {
   final HashMap<String, InputStream> mockStreamMap = TestUtilities.createMockStreamMap();
   final List<FileWithMetadata> mockListFileWithMetadata = TestUtilities.creatMockListFileWithMetadata();
 
-  // String version = "2020-07-28";
   /**
    * This method provides our config filename to the base class.
    */
@@ -596,6 +605,48 @@ public class VpcIT extends SdkIntegrationTestBase {
     testCreatePublicGateway();
     testGetPublicGateway();
     testUpdatePublicGateway();
+  }
+
+  public void testSubnetReservedIps() throws Exception {
+    testCreateSubnetReservedIp();
+    testListSubnetReservedIps();
+    testGetSubnetReservedIp();
+    testUpdateSubnetReservedIp();
+  }
+
+  public void testEndpointGateways() throws Exception {
+    testCreateEndpointGateway();
+
+    testListEndpointGateways();
+    testGetEndpointGateway();
+    testUpdateEndpointGateway();
+
+    testAddEndpointGatewayIp();
+    testListEndpointGatewayIps();
+    testGetEndpointGatewayIp();
+    testRemoveEndpointGatewayIp();
+
+    testDeleteEndpointGateway();
+  }
+
+  public void testVPCRoutingTables() throws Exception {
+    testCreateVpcRoutingTable();
+    testGetVpcRoutingTable();
+    testListVpcRoutingTables();
+    testUpdateVpcRoutingTable();
+
+    testCreateVpcRoutingTableRoute();
+    testListVpcRoutingTableRoutes();
+    testGetVpcRoutingTableRoute();
+    testUpdateVpcRoutingTableRoute();
+
+    testReplaceSubnetRoutingTable();
+    testGetSubnetRoutingTable();
+    testGetVpcDefaultRoutingTable();
+
+    testDeleteVpcRoutingTableRoute();
+    testDeleteVpcRoutingTable();
+
   }
 
   public void testInstanceGroups() throws Exception {
@@ -885,7 +936,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       .name("my-bucket")
       .build();
 
-      FlowLogCollectorPrototypeTargetSubnetIdentitySubnetIdentityById flowLogCollectorPrototypeTargetModel = new FlowLogCollectorPrototypeTargetSubnetIdentitySubnetIdentityById.Builder()
+      FlowLogCollectorTargetPrototypeSubnetIdentitySubnetIdentityById flowLogCollectorPrototypeTargetModel = new FlowLogCollectorTargetPrototypeSubnetIdentitySubnetIdentityById.Builder()
       .id(store.get("created-subnet"))
       .build();
 
@@ -1030,7 +1081,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     try {
       GetRegionZoneOptions getRegionZoneOptions = new GetRegionZoneOptions.Builder()
       .regionName(store.get("region"))
-      .zoneName(store.get("zone"))
+      .name(store.get("zone"))
       .build();
 
 
@@ -1681,7 +1732,6 @@ public class VpcIT extends SdkIntegrationTestBase {
       .volumeAttachmentPatch(volumeAttachmentPatchModelAsPatch)
       .build();
 
-
       Response<VolumeAttachment> response = service.updateInstanceVolumeAttachment(updateInstanceVolumeAttachmentOptions).execute();
 
       assertNotNull(response);
@@ -1920,7 +1970,6 @@ public class VpcIT extends SdkIntegrationTestBase {
 
   public void testUpdateLoadBalancerListener() throws Exception {
     try {
-
       LoadBalancerListenerPatch loadBalancerListenerPatchModel = new LoadBalancerListenerPatch.Builder()
       .connectionLimit(Long.valueOf("2000"))
       .port(Long.valueOf("443"))
@@ -1933,6 +1982,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       .id(store.get("created-listener"))
       .loadBalancerListenerPatch(loadBalancerListenerPatchModelAsPatch)
       .build();
+
 
       Response<LoadBalancerListener> response = service.updateLoadBalancerListener(updateLoadBalancerListenerOptions).execute();
 
@@ -2021,7 +2071,6 @@ public class VpcIT extends SdkIntegrationTestBase {
 
   public void testUpdateLoadBalancerListenerPolicy() throws Exception {
     try {
-
       LoadBalancerListenerPolicyPatch loadBalancerListenerPolicyPatchModel = new LoadBalancerListenerPolicyPatch.Builder()
       .name(generateName("lb-policy"))
       .priority(Long.valueOf("5"))
@@ -2034,6 +2083,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       .id(store.get("created-lbpolicy"))
       .loadBalancerListenerPolicyPatch(loadBalancerListenerPolicyPatchModelAsPatch)
       .build();
+
 
       Response<LoadBalancerListenerPolicy> response = service.updateLoadBalancerListenerPolicy(updateLoadBalancerListenerPolicyOptions).execute();
 
@@ -2142,6 +2192,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       .id(store.get("created-lbpolicyrule"))
       .loadBalancerListenerPolicyRulePatch(loadBalancerListenerPolicyRulePatchModelAsPatch)
       .build();
+
 
       Response<LoadBalancerListenerPolicyRule> response = service.updateLoadBalancerListenerPolicyRule(updateLoadBalancerListenerPolicyRuleOptions).execute();
 
@@ -2353,6 +2404,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       .members(new java.util.ArrayList<LoadBalancerPoolMemberPrototype>(java.util.Arrays.asList(loadBalancerPoolMemberPrototypeModel)))
       .build();
 
+
       Response<LoadBalancerPoolMemberCollection> response = service.replaceLoadBalancerPoolMembers(replaceLoadBalancerPoolMembersOptions).execute();
 
       assertNotNull(response);
@@ -2410,6 +2462,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       .id(store.get("created-lbpoolmember"))
       .loadBalancerPoolMemberPatch(loadBalancerPoolMemberPatchModelAsPatch)
       .build();
+
 
       Response<LoadBalancerPoolMember> response = service.updateLoadBalancerPoolMember(updateLoadBalancerPoolMemberOptions).execute();
 
@@ -2523,6 +2576,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       .id(store.get("created-acl"))
       .networkAclPatch(networkAclPatchModelAsPatch)
       .build();
+
 
       Response<NetworkACL> response = service.updateNetworkAcl(updateNetworkAclOptions).execute();
 
@@ -2642,8 +2696,6 @@ public class VpcIT extends SdkIntegrationTestBase {
       .id(store.get("created-acl-rule"))
       .networkAclRulePatch(networkAclRulePatchModelAsPatch)
       .build();
-
-
 
       Response<NetworkACLRule> response = service.updateNetworkAclRule(updateNetworkAclRuleOptions).execute();
 
@@ -2847,7 +2899,6 @@ public class VpcIT extends SdkIntegrationTestBase {
       .id(store.get("created-key"))
       .keyPatch(keyPatchModelAsPatch)
       .build();
-
       Response<Key> response = service.updateKey(updateKeyOptions).execute();
 
       assertNotNull(response);
@@ -2946,6 +2997,7 @@ public class VpcIT extends SdkIntegrationTestBase {
 
   public void testUpdateSecurityGroup() throws Exception {
     try {
+
       SecurityGroupPatch securityGroupPatchModel = new SecurityGroupPatch.Builder()
       .name(generateName("sg"))
       .build();
@@ -3123,7 +3175,7 @@ public class VpcIT extends SdkIntegrationTestBase {
 
   public void testUpdateSecurityGroupRule() throws Exception {
     try {
-      SecurityGroupRulePatchRemoteIP securityGroupRulePatchRemoteModel = new SecurityGroupRulePatchRemoteIP.Builder()
+      SecurityGroupRuleRemotePatchIP securityGroupRulePatchRemoteModel = new SecurityGroupRuleRemotePatchIP.Builder()
       .address("192.168.3.4")
       .build();
 
@@ -3602,6 +3654,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       .id(store.get("created-addrprefix"))
       .addressPrefixPatch(addressPrefixPatchModelAsPatch)
       .build();
+
+
       Response<AddressPrefix> response = service.updateVpcAddressPrefix(updateVpcAddressPrefixOptions).execute();
 
       assertNotNull(response);
@@ -3710,6 +3764,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       .id(store.get("created-route"))
       .routePatch(routePatchModelAsPatch)
       .build();
+
       Response<Route> response = service.updateVpcRoute(updateVpcRouteOptions).execute();
 
       assertNotNull(response);
@@ -3797,6 +3852,7 @@ public class VpcIT extends SdkIntegrationTestBase {
 
   public void testUpdateIkePolicy() throws Exception {
     try {
+
       IKEPolicyPatch ikePolicyPatchModel = new IKEPolicyPatch.Builder()
       .authenticationAlgorithm("md5")
       .dhGroup(Long.valueOf("2"))
@@ -3810,6 +3866,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       .id(store.get("created-ike"))
       .ikePolicyPatch(ikePolicyPatchModelAsPatch)
       .build();
+
 
       Response<IKEPolicy> response = service.updateIkePolicy(updateIkePolicyOptions).execute();
 
@@ -3934,7 +3991,6 @@ public class VpcIT extends SdkIntegrationTestBase {
       .iPsecPolicyPatch(iPsecPolicyPatchModelAsPatch)
       .build();
 
-
       Response<IPsecPolicy> response = service.updateIpsecPolicy(updateIpsecPolicyOptions).execute();
 
       assertNotNull(response);
@@ -4000,9 +4056,14 @@ public class VpcIT extends SdkIntegrationTestBase {
       .id(store.get("created-subnet"))
       .build();
 
-      CreateVpnGatewayOptions createVpnGatewayOptions = new CreateVpnGatewayOptions.Builder()
-      .subnet(subnetIdentityModel)
+      VPNGatewayPrototypeVPNGatewayRouteModePrototype vpnGatewayPrototypeModel = new VPNGatewayPrototypeVPNGatewayRouteModePrototype.Builder()
       .name(generateName("vpn-gateway"))
+      .subnet(subnetIdentityModel)
+      .mode("route")
+      .build();
+
+      CreateVpnGatewayOptions createVpnGatewayOptions = new CreateVpnGatewayOptions.Builder()
+      .vpnGatewayPrototype(vpnGatewayPrototypeModel)
       .build();
 
 
@@ -4055,6 +4116,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       .vpnGatewayPatch(vpnGatewayPatchModelAsPatch)
       .build();
 
+
       Response<VPNGateway> response = service.updateVpnGateway(updateVpnGatewayOptions).execute();
 
       assertNotNull(response);
@@ -4093,6 +4155,12 @@ public class VpcIT extends SdkIntegrationTestBase {
 
   public void testCreateVpnGatewayConnection() throws Exception {
     try {
+      VPNGatewayConnectionDPDPrototype vpnGatewayConnectionDpdPrototypeModel = new VPNGatewayConnectionDPDPrototype.Builder()
+      .action("restart")
+      .interval(Long.valueOf("30"))
+      .timeout(Long.valueOf("120"))
+      .build();
+
       IKEPolicyIdentityById ikePolicyIdentityModel = new IKEPolicyIdentityById.Builder()
       .id(store.get("created-ike"))
       .build();
@@ -4101,22 +4169,22 @@ public class VpcIT extends SdkIntegrationTestBase {
       .id(store.get("created-ipsec"))
       .build();
 
-      VPNGatewayConnectionPrototypeVPNGatewayConnectionPolicyModePrototype vpnGatewayConnectionPrototypeModel = new VPNGatewayConnectionPrototypeVPNGatewayConnectionPolicyModePrototype.Builder()
-      .adminStateUp(true)
+      VPNGatewayConnectionPrototypeVPNGatewayConnectionStaticRouteModePrototype vpnGatewayConnectionPrototypeModel = new VPNGatewayConnectionPrototypeVPNGatewayConnectionStaticRouteModePrototype.Builder()
       .peerAddress("169.21.50.5")
-      .name(generateName("my-vpn-connection"))
       .psk("lkj14b1oi0alcniejkso")
+      .adminStateUp(true)
+      .deadPeerDetection(vpnGatewayConnectionDpdPrototypeModel)
       .ikePolicy(ikePolicyIdentityModel)
       .ipsecPolicy(iPsecPolicyIdentityModel)
-      .localCidrs(new java.util.ArrayList<String>(java.util.Arrays.asList("192.168.1.0/24")))
-      .peerCidrs(new java.util.ArrayList<String>(java.util.Arrays.asList("10.45.1.0/24")))
+      .name(generateName("vpn-conn"))
+      .routingProtocol("none")
       .build();
-
 
       CreateVpnGatewayConnectionOptions createVpnGatewayConnectionOptions = new CreateVpnGatewayConnectionOptions.Builder()
       .vpnGatewayId(store.get("created-vpng"))
       .vpnGatewayConnectionPrototype(vpnGatewayConnectionPrototypeModel)
       .build();
+
 
 
       Response<VPNGatewayConnection> response = service.createVpnGatewayConnection(createVpnGatewayConnectionOptions).execute();
@@ -4158,11 +4226,14 @@ public class VpcIT extends SdkIntegrationTestBase {
 
   public void testUpdateVpnGatewayConnection() throws Exception {
     try {
-      VPNGatewayConnectionPatch vpnGatewayConnectionPatchModel = new VPNGatewayConnectionPatch.Builder()
+
+      VPNGatewayConnectionPatchVPNGatewayConnectionStaticRouteModePatch vpnGatewayConnectionPatchModel = new VPNGatewayConnectionPatchVPNGatewayConnectionStaticRouteModePatch.Builder()
       .adminStateUp(true)
       .peerAddress("169.21.50.5")
       .psk("lkj14b1oi0alcniejkso")
+      .routingProtocol("none")
       .build();
+
       Map<String, Object> vpnGatewayConnectionPatchModelAsPatch = vpnGatewayConnectionPatchModel.asPatch();
 
       UpdateVpnGatewayConnectionOptions updateVpnGatewayConnectionOptions = new UpdateVpnGatewayConnectionOptions.Builder()
@@ -4170,6 +4241,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       .id(store.get("created-vpng-conn"))
       .vpnGatewayConnectionPatch(vpnGatewayConnectionPatchModelAsPatch)
       .build();
+
 
       Response<VPNGatewayConnection> response = service.updateVpnGatewayConnection(updateVpnGatewayConnectionOptions).execute();
 
@@ -4366,74 +4438,6 @@ public class VpcIT extends SdkIntegrationTestBase {
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
     }
   }
-
-
-  public void testListVolumeProfiles() throws Exception {
-    try {
-      ListVolumeProfilesOptions listVolumeProfilesOptions = new ListVolumeProfilesOptions.Builder()
-      .limit(Long.valueOf("1"))
-      .build();
-
-
-      Response<VolumeProfileCollection> response = service.listVolumeProfiles(listVolumeProfilesOptions).execute();
-
-      assertNotNull(response);
-      assertEquals(response.getStatusCode(), 200);
-
-      VolumeProfileCollection volumeProfileCollectionResult = response.getResult();
-      store.put("volume-profile", volumeProfileCollectionResult.getProfiles().get(0).getName());
-
-      assertNotNull(volumeProfileCollectionResult);
-    } catch (ServiceResponseException e) {
-        fail(String.format("Service returned status code %s: %s\nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
-    }
-  }
-
-
-  public void testGetVolumeProfile() throws Exception {
-    try {
-      GetVolumeProfileOptions getVolumeProfileOptions = new GetVolumeProfileOptions.Builder()
-      .name(store.get("volume-profile"))
-      .build();
-
-
-      Response<VolumeProfile> response = service.getVolumeProfile(getVolumeProfileOptions).execute();
-
-      assertNotNull(response);
-      assertEquals(response.getStatusCode(), 200);
-
-      VolumeProfile volumeProfileResult = response.getResult();
-
-      assertNotNull(volumeProfileResult);
-    } catch (ServiceResponseException e) {
-        fail(String.format("Service returned status code %s: %s\nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
-    }
-  }
-
-
-  public void testListVolumes() throws Exception {
-    try {
-      ListVolumesOptions listVolumesOptions = new ListVolumesOptions.Builder()
-      .limit(Long.valueOf("1"))
-      .build();
-
-
-      Response<VolumeCollection> response = service.listVolumes(listVolumesOptions).execute();
-
-      assertNotNull(response);
-      assertEquals(response.getStatusCode(), 200);
-
-      VolumeCollection volumeCollectionResult = response.getResult();
-
-      assertNotNull(volumeCollectionResult);
-    } catch (ServiceResponseException e) {
-        fail(String.format("Service returned status code %s: %s\nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
-    }
-  }
-
 
   public void testListInstanceTemplates() throws Exception {
     try {
@@ -4658,7 +4662,6 @@ public class VpcIT extends SdkIntegrationTestBase {
 
   public void testUpdateInstanceGroup() throws Exception {
     try {
-
       InstanceGroupPatch instanceGroupPatchModel = new InstanceGroupPatch.Builder()
       .name("my-instance-group")
       .build();
@@ -4668,6 +4671,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       .id(store.get("created-instance-group"))
       .instanceGroupPatch(instanceGroupPatchModelAsPatch)
       .build();
+
 
       Response<InstanceGroup> response = service.updateInstanceGroup(updateInstanceGroupOptions).execute();
 
@@ -4877,7 +4881,6 @@ public class VpcIT extends SdkIntegrationTestBase {
       .id(store.get("created-instance-group-man-policy"))
       .instanceGroupManagerPolicyPatch(instanceGroupManagerPolicyPatchModelAsPatch)
       .build();
-
       Response<InstanceGroupManagerPolicy> response = service.updateInstanceGroupManagerPolicy(updateInstanceGroupManagerPolicyOptions).execute();
 
       assertNotNull(response);
@@ -4937,6 +4940,7 @@ public class VpcIT extends SdkIntegrationTestBase {
 
   public void testUpdateInstanceGroupMembership() throws Exception {
     try {
+
       InstanceGroupMembershipPatch instanceGroupMembershipPatchModel = new InstanceGroupMembershipPatch.Builder()
       .name("my-instance-group-membership")
       .build();
@@ -5067,11 +5071,74 @@ public class VpcIT extends SdkIntegrationTestBase {
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
     }
   }
+  public void testListVolumeProfiles() throws Exception {
+    try {
+      ListVolumeProfilesOptions listVolumeProfilesOptions = new ListVolumeProfilesOptions.Builder()
+      .limit(Long.valueOf("1"))
+      .build();
+
+
+      Response<VolumeProfileCollection> response = service.listVolumeProfiles(listVolumeProfilesOptions).execute();
+
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      VolumeProfileCollection volumeProfileCollectionResult = response.getResult();
+      store.put("volume-profile", volumeProfileCollectionResult.getProfiles().get(0).getName());
+
+      assertNotNull(volumeProfileCollectionResult);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %s: %s\nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+
+  public void testGetVolumeProfile() throws Exception {
+    try {
+      GetVolumeProfileOptions getVolumeProfileOptions = new GetVolumeProfileOptions.Builder()
+      .name(store.get("volume-profile"))
+      .build();
+
+
+      Response<VolumeProfile> response = service.getVolumeProfile(getVolumeProfileOptions).execute();
+
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      VolumeProfile volumeProfileResult = response.getResult();
+
+      assertNotNull(volumeProfileResult);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %s: %s\nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+
+  public void testListVolumes() throws Exception {
+    try {
+      ListVolumesOptions listVolumesOptions = new ListVolumesOptions.Builder()
+      .limit(Long.valueOf("1"))
+      .build();
+
+
+      Response<VolumeCollection> response = service.listVolumes(listVolumesOptions).execute();
+
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      VolumeCollection volumeCollectionResult = response.getResult();
+
+      assertNotNull(volumeCollectionResult);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %s: %s\nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
 
   public void testCreateVolume() throws Exception {
     try {
-
-
       VolumeProfileIdentityByName volumeProfileIdentityModel = new VolumeProfileIdentityByName.Builder()
       .name("general-purpose")
       .build();
@@ -5158,7 +5225,598 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
+//
+public void testListEndpointGateways() throws Exception {
+  try {
+    ListEndpointGatewaysOptions listEndpointGatewaysOptions = new ListEndpointGatewaysOptions.Builder()
+    .build();
 
+    Response<EndpointGatewayCollection> response = service.listEndpointGateways(listEndpointGatewaysOptions).execute();
+    assertNotNull(response);
+    assertEquals(response.getStatusCode(), 200);
+
+    EndpointGatewayCollection endpointGatewayCollectionResult = response.getResult();
+
+    assertNotNull(endpointGatewayCollectionResult);
+  } catch (ServiceResponseException e) {
+      fail(String.format("Service returned status code %d: %s\nError details: %s",
+        e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+  }
+}
+
+public void testCreateEndpointGateway() throws Exception {
+  try {
+    EndpointGatewayTargetPrototypeProviderInfrastructureServiceIdentityProviderInfrastructureServiceIdentityByName endpointGatewayTargetPrototypeModel = new EndpointGatewayTargetPrototypeProviderInfrastructureServiceIdentityProviderInfrastructureServiceIdentityByName.Builder()
+    .resourceType("provider_infrastructure_service")
+    .name("ibm-ntp-server")
+    .build();
+
+    VPCIdentityById vpcIdentityModel = new VPCIdentityById.Builder()
+    .id(store.get("zone"))
+    .build();
+
+    CreateEndpointGatewayOptions createEndpointGatewayOptions = new CreateEndpointGatewayOptions.Builder()
+    .target(endpointGatewayTargetPrototypeModel)
+    .vpc(vpcIdentityModel)
+    .build();
+
+    Response<EndpointGateway> response = service.createEndpointGateway(createEndpointGatewayOptions).execute();
+    assertNotNull(response);
+    assertEquals(response.getStatusCode(), 201);
+
+    EndpointGateway endpointGatewayResult = response.getResult();
+    store.put("created-endpoint-gateway", endpointGatewayResult.getId());
+    assertNotNull(endpointGatewayResult);
+  } catch (ServiceResponseException e) {
+      fail(String.format("Service returned status code %d: %s\nError details: %s",
+        e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+  }
+}
+
+public void testListEndpointGatewayIps() throws Exception {
+  try {
+    ListEndpointGatewayIpsOptions listEndpointGatewayIpsOptions = new ListEndpointGatewayIpsOptions.Builder()
+    .endpointGatewayId(store.get("created-endpoint-gateway"))
+    .build();
+
+    Response<ReservedIPCollectionEndpointGatewayContext> response = service.listEndpointGatewayIps(listEndpointGatewayIpsOptions).execute();
+    assertNotNull(response);
+    assertEquals(response.getStatusCode(), 200);
+
+    ReservedIPCollectionEndpointGatewayContext reservedIpCollectionEndpointGatewayContextResult = response.getResult();
+    assertNotNull(reservedIpCollectionEndpointGatewayContextResult);
+  } catch (ServiceResponseException e) {
+      fail(String.format("Service returned status code %d: %s\nError details: %s",
+        e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+  }
+}
+
+
+public void testGetEndpointGatewayIp() throws Exception {
+  try {
+    GetEndpointGatewayIpOptions getEndpointGatewayIpOptions = new GetEndpointGatewayIpOptions.Builder()
+    .endpointGatewayId(store.get("created-endpoint-gateway"))
+    .id(store.get("created-endpoint-gateway-ip"))
+    .build();
+
+    Response<ReservedIP> response = service.getEndpointGatewayIp(getEndpointGatewayIpOptions).execute();
+    assertNotNull(response);
+    assertEquals(response.getStatusCode(), 200);
+
+    ReservedIP reservedIpResult = response.getResult();
+
+    assertNotNull(reservedIpResult);
+  } catch (ServiceResponseException e) {
+      fail(String.format("Service returned status code %d: %s\nError details: %s",
+        e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+  }
+}
+
+public void testAddEndpointGatewayIp() throws Exception {
+  try {
+    AddEndpointGatewayIpOptions addEndpointGatewayIpOptions = new AddEndpointGatewayIpOptions.Builder()
+    .endpointGatewayId(store.get("created-endpoint-gateway"))
+    .id(store.get("created-reserved-ip"))
+    .build();
+
+    Response<ReservedIP> response = service.addEndpointGatewayIp(addEndpointGatewayIpOptions).execute();
+    assertNotNull(response);
+    assertEquals(response.getStatusCode(), 201);
+
+    ReservedIP reservedIpResult = response.getResult();
+    store.put("created-endpoint-gateway-ip", reservedIpResult.getId());
+    assertNotNull(reservedIpResult);
+  } catch (ServiceResponseException e) {
+      fail(String.format("Service returned status code %d: %s\nError details: %s",
+        e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+  }
+}
+
+public void testGetEndpointGateway() throws Exception {
+  try {
+    GetEndpointGatewayOptions getEndpointGatewayOptions = new GetEndpointGatewayOptions.Builder()
+    .id(store.get("created-endpoint-gateway"))
+    .build();
+
+    Response<EndpointGateway> response = service.getEndpointGateway(getEndpointGatewayOptions).execute();
+    assertNotNull(response);
+    assertEquals(response.getStatusCode(), 200);
+
+    EndpointGateway endpointGatewayResult = response.getResult();
+
+    assertNotNull(endpointGatewayResult);
+  } catch (ServiceResponseException e) {
+      fail(String.format("Service returned status code %d: %s\nError details: %s",
+        e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+  }
+}
+
+public void testUpdateEndpointGateway() throws Exception {
+  try {
+    EndpointGatewayPatch endpointGatewayPatchModel = new EndpointGatewayPatch.Builder()
+    .name("my-endpoint-gateway")
+    .build();
+    Map<String, Object> endpointGatewayPatchModelAsPatch = endpointGatewayPatchModel.asPatch();
+
+    UpdateEndpointGatewayOptions updateEndpointGatewayOptions = new UpdateEndpointGatewayOptions.Builder()
+    .id(store.get("created-endpoint-gateway"))
+    .endpointGatewayPatch(endpointGatewayPatchModelAsPatch)
+    .build();
+
+    Response<EndpointGateway> response = service.updateEndpointGateway(updateEndpointGatewayOptions).execute();
+    assertNotNull(response);
+    assertEquals(response.getStatusCode(), 200);
+
+    EndpointGateway endpointGatewayResult = response.getResult();
+
+    assertNotNull(endpointGatewayResult);
+  } catch (ServiceResponseException e) {
+      fail(String.format("Service returned status code %d: %s\nError details: %s",
+        e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+  }
+}
+
+public void testRemoveEndpointGatewayIp() throws Exception {
+  try {
+    RemoveEndpointGatewayIpOptions removeEndpointGatewayIpOptions = new RemoveEndpointGatewayIpOptions.Builder()
+    .endpointGatewayId(store.get("created-endpoint-gateway"))
+    .id(store.get("created-reserved-ip"))
+    .build();
+
+    Response<Void> response = service.removeEndpointGatewayIp(removeEndpointGatewayIpOptions).execute();
+    assertNotNull(response);
+    assertEquals(response.getStatusCode(), 204);
+  } catch (ServiceResponseException e) {
+      fail(String.format("Service returned status code %d: %s\nError details: %s",
+        e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+  }
+}
+
+
+public void testDeleteEndpointGateway() throws Exception {
+  try {
+    DeleteEndpointGatewayOptions deleteEndpointGatewayOptions = new DeleteEndpointGatewayOptions.Builder()
+    .id(store.get("created-endpoint-gateway"))
+    .build();
+
+    Response<Void> response = service.deleteEndpointGateway(deleteEndpointGatewayOptions).execute();
+    assertNotNull(response);
+    assertEquals(response.getStatusCode(), 204);
+  } catch (ServiceResponseException e) {
+      fail(String.format("Service returned status code %d: %s\nError details: %s",
+        e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+  }
+}
+
+public void testListSubnetReservedIps() throws Exception {
+  try {
+    ListSubnetReservedIpsOptions listSubnetReservedIpsOptions = new ListSubnetReservedIpsOptions.Builder()
+    .subnetId(store.get("created-subnet"))
+    .build();
+
+    Response<ReservedIPCollection> response = service.listSubnetReservedIps(listSubnetReservedIpsOptions).execute();
+    assertNotNull(response);
+    assertEquals(response.getStatusCode(), 200);
+
+    ReservedIPCollection reservedIpCollectionResult = response.getResult();
+
+    assertNotNull(reservedIpCollectionResult);
+  } catch (ServiceResponseException e) {
+      fail(String.format("Service returned status code %d: %s\nError details: %s",
+        e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+  }
+}
+
+
+public void testCreateSubnetReservedIp() throws Exception {
+  try {
+
+    CreateSubnetReservedIpOptions createSubnetReservedIpOptions = new CreateSubnetReservedIpOptions.Builder()
+    .subnetId(store.get("created-subnet"))
+    .autoDelete(false)
+    .name("my-reserved-ip")
+    .build();
+
+    Response<ReservedIP> response = service.createSubnetReservedIp(createSubnetReservedIpOptions).execute();
+    assertNotNull(response);
+    assertEquals(response.getStatusCode(), 201);
+
+    ReservedIP reservedIpResult = response.getResult();
+
+    assertNotNull(reservedIpResult);
+  } catch (ServiceResponseException e) {
+      fail(String.format("Service returned status code %d: %s\nError details: %s",
+        e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+  }
+}
+
+
+public void testGetSubnetReservedIp() throws Exception {
+  try {
+    GetSubnetReservedIpOptions getSubnetReservedIpOptions = new GetSubnetReservedIpOptions.Builder()
+    .subnetId(store.get("created-subnet"))
+    .id("testString")
+    .build();
+
+    Response<ReservedIP> response = service.getSubnetReservedIp(getSubnetReservedIpOptions).execute();
+    assertNotNull(response);
+    assertEquals(response.getStatusCode(), 200);
+
+    ReservedIP reservedIpResult = response.getResult();
+    store.put("created-reserved-ip", reservedIpResult.getId());
+    assertNotNull(reservedIpResult);
+  } catch (ServiceResponseException e) {
+      fail(String.format("Service returned status code %d: %s\nError details: %s",
+        e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+  }
+}
+
+
+public void testUpdateSubnetReservedIp() throws Exception {
+  try {
+    ReservedIPPatch reservedIpPatchModel = new ReservedIPPatch.Builder()
+    .autoDelete(false)
+    .name("my-reserved-ip-2")
+    .build();
+    Map<String, Object> reservedIpPatchModelAsPatch = reservedIpPatchModel.asPatch();
+
+    UpdateSubnetReservedIpOptions updateSubnetReservedIpOptions = new UpdateSubnetReservedIpOptions.Builder()
+    .subnetId(store.get("created-subnet"))
+    .id(store.get("created-reserved-ip"))
+    .reservedIpPatch(reservedIpPatchModelAsPatch)
+    .build();
+
+    Response<ReservedIP> response = service.updateSubnetReservedIp(updateSubnetReservedIpOptions).execute();
+    assertNotNull(response);
+    assertEquals(response.getStatusCode(), 200);
+
+    ReservedIP reservedIpResult = response.getResult();
+
+    assertNotNull(reservedIpResult);
+  } catch (ServiceResponseException e) {
+      fail(String.format("Service returned status code %d: %s\nError details: %s",
+        e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+  }
+}
+
+
+public void testDeleteSubnetReservedIp() throws Exception {
+  try {
+    DeleteSubnetReservedIpOptions deleteSubnetReservedIpOptions = new DeleteSubnetReservedIpOptions.Builder()
+    .subnetId(store.get("created-subnet"))
+    .id(store.get("created-reserved-ip"))
+    .build();
+
+    Response<Void> response = service.deleteSubnetReservedIp(deleteSubnetReservedIpOptions).execute();
+    assertNotNull(response);
+    assertEquals(response.getStatusCode(), 204);
+  } catch (ServiceResponseException e) {
+      fail(String.format("Service returned status code %d: %s\nError details: %s",
+        e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+  }
+}
+
+public void testGetSubnetRoutingTable() throws Exception {
+  try {
+    GetSubnetRoutingTableOptions getSubnetRoutingTableOptions = new GetSubnetRoutingTableOptions.Builder()
+    .id(store.get("created-subnet"))
+    .build();
+
+    Response<RoutingTable> response = service.getSubnetRoutingTable(getSubnetRoutingTableOptions).execute();
+    assertNotNull(response);
+    assertEquals(response.getStatusCode(), 200);
+
+    RoutingTable routingTableResult = response.getResult();
+
+    assertNotNull(routingTableResult);
+  } catch (ServiceResponseException e) {
+      fail(String.format("Service returned status code %d: %s\nError details: %s",
+        e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+  }
+}
+
+
+public void testReplaceSubnetRoutingTable() throws Exception {
+  try {
+    RoutingTableIdentityById routingTableIdentityModel = new RoutingTableIdentityById.Builder()
+    .id(store.get("created-routing-table"))
+    .build();
+
+    ReplaceSubnetRoutingTableOptions replaceSubnetRoutingTableOptions = new ReplaceSubnetRoutingTableOptions.Builder()
+    .id(store.get("created-subnet"))
+    .routingTableIdentity(routingTableIdentityModel)
+    .build();
+
+    Response<RoutingTable> response = service.replaceSubnetRoutingTable(replaceSubnetRoutingTableOptions).execute();
+    assertNotNull(response);
+    assertEquals(response.getStatusCode(), 201);
+
+    RoutingTable routingTableResult = response.getResult();
+
+    assertNotNull(routingTableResult);
+  } catch (ServiceResponseException e) {
+      fail(String.format("Service returned status code %d: %s\nError details: %s",
+        e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+  }
+}
+
+
+public void testGetVpcDefaultRoutingTable() throws Exception {
+  try {
+    GetVpcDefaultRoutingTableOptions getVpcDefaultRoutingTableOptions = new GetVpcDefaultRoutingTableOptions.Builder()
+    .id(store.get("created-vpc"))
+    .build();
+
+    Response<DefaultRoutingTable> response = service.getVpcDefaultRoutingTable(getVpcDefaultRoutingTableOptions).execute();
+    assertNotNull(response);
+    assertEquals(response.getStatusCode(), 200);
+
+    DefaultRoutingTable defaultRoutingTableResult = response.getResult();
+
+    assertNotNull(defaultRoutingTableResult);
+  } catch (ServiceResponseException e) {
+      fail(String.format("Service returned status code %d: %s\nError details: %s",
+        e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+  }
+}
+
+public void testListVpcRoutingTables() throws Exception {
+  try {
+    ListVpcRoutingTablesOptions listVpcRoutingTablesOptions = new ListVpcRoutingTablesOptions.Builder()
+    .vpcId(store.get("created-vpc"))
+    .build();
+
+    Response<RoutingTableCollection> response = service.listVpcRoutingTables(listVpcRoutingTablesOptions).execute();
+    assertNotNull(response);
+    assertEquals(response.getStatusCode(), 200);
+
+    RoutingTableCollection routingTableCollectionResult = response.getResult();
+
+    assertNotNull(routingTableCollectionResult);
+
+  } catch (ServiceResponseException e) {
+      fail(String.format("Service returned status code %s: %s\nError details: %s",
+        e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+  }
+}
+
+public void testCreateVpcRoutingTable() throws Exception {
+  try {
+    RouteNextHopPrototypeRouteNextHopIP routeNextHopPrototypeModel = new RouteNextHopPrototypeRouteNextHopIP.Builder()
+    .address("192.168.3.4")
+    .build();
+
+    ZoneIdentityByName zoneIdentityModel = new ZoneIdentityByName.Builder()
+    .name(store.get("zone"))
+    .build();
+
+    RoutePrototype routePrototypeModel = new RoutePrototype.Builder()
+    .action("delegate")
+    .destination("192.168.3.0/24")
+    .nextHop(routeNextHopPrototypeModel)
+    .zone(zoneIdentityModel)
+    .build();
+
+    CreateVpcRoutingTableOptions createVpcRoutingTableOptions = new CreateVpcRoutingTableOptions.Builder()
+    .vpcId(store.get("created-vpc"))
+    .routes(new java.util.ArrayList<RoutePrototype>(java.util.Arrays.asList(routePrototypeModel)))
+    .build();
+
+    Response<RoutingTable> response = service.createVpcRoutingTable(createVpcRoutingTableOptions).execute();
+    assertNotNull(response);
+    assertEquals(response.getStatusCode(), 201);
+
+    RoutingTable routingTableResult = response.getResult();
+    store.put("created-routing-table", routingTableResult.getId());
+    assertNotNull(routingTableResult);
+  } catch (ServiceResponseException e) {
+      fail(String.format("Service returned status code %d: %s\nError details: %s",
+        e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+  }
+}
+
+public void testGetVpcRoutingTable() throws Exception {
+  try {
+    GetVpcRoutingTableOptions getVpcRoutingTableOptions = new GetVpcRoutingTableOptions.Builder()
+    .vpcId(store.get("created-vpc"))
+    .id(store.get("created-routing-table"))
+    .build();
+
+    Response<RoutingTable> response = service.getVpcRoutingTable(getVpcRoutingTableOptions).execute();
+    assertNotNull(response);
+    assertEquals(response.getStatusCode(), 200);
+
+    RoutingTable routingTableResult = response.getResult();
+
+    assertNotNull(routingTableResult);
+  } catch (ServiceResponseException e) {
+      fail(String.format("Service returned status code %d: %s\nError details: %s",
+        e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+  }
+}
+
+public void testUpdateVpcRoutingTable() throws Exception {
+  try {
+    RoutingTablePatch routingTablePatchModel = new RoutingTablePatch.Builder()
+    .name(generateName("my-routing-table"))
+    .build();
+    Map<String, Object> routingTablePatchModelAsPatch = routingTablePatchModel.asPatch();
+
+    UpdateVpcRoutingTableOptions updateVpcRoutingTableOptions = new UpdateVpcRoutingTableOptions.Builder()
+    .vpcId(store.get("created-vpc"))
+    .id(store.get("created-routing-table"))
+    .routingTablePatch(routingTablePatchModelAsPatch)
+    .build();
+
+    Response<RoutingTable> response = service.updateVpcRoutingTable(updateVpcRoutingTableOptions).execute();
+    assertNotNull(response);
+    assertEquals(response.getStatusCode(), 200);
+
+    RoutingTable routingTableResult = response.getResult();
+
+    assertNotNull(routingTableResult);
+  } catch (ServiceResponseException e) {
+      fail(String.format("Service returned status code %d: %s\nError details: %s",
+        e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+  }
+}
+
+public void testListVpcRoutingTableRoutes() throws Exception {
+  try {
+    ListVpcRoutingTableRoutesOptions listVpcRoutingTableRoutesOptions = new ListVpcRoutingTableRoutesOptions.Builder()
+    .vpcId(store.get("created-vpc"))
+    .routingTableId(store.get("created-routing-table"))
+    .build();
+
+    Response<RouteCollection> response = service.listVpcRoutingTableRoutes(listVpcRoutingTableRoutesOptions).execute();
+    assertNotNull(response);
+    assertEquals(response.getStatusCode(), 200);
+
+    RouteCollection routeCollectionResult = response.getResult();
+
+    assertNotNull(routeCollectionResult);
+  } catch (ServiceResponseException e) {
+      fail(String.format("Service returned status code %d: %s\nError details: %s",
+        e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+  }
+}
+
+public void testCreateVpcRoutingTableRoute() throws Exception {
+  try {
+    RouteNextHopPrototypeRouteNextHopIP routeNextHopPrototypeModel = new RouteNextHopPrototypeRouteNextHopIP.Builder()
+    .address("192.168.3.4")
+    .build();
+
+    ZoneIdentityByName zoneIdentityModel = new ZoneIdentityByName.Builder()
+    .name(store.get("zone"))
+    .build();
+
+    CreateVpcRoutingTableRouteOptions createVpcRoutingTableRouteOptions = new CreateVpcRoutingTableRouteOptions.Builder()
+    .vpcId(store.get("created-vpc"))
+    .routingTableId(store.get("created-routing-table"))
+    .destination("192.168.3.0/24")
+    .nextHop(routeNextHopPrototypeModel)
+    .zone(zoneIdentityModel)
+    .action("delegate")
+    .name("my-route-2")
+    .build();
+
+    Response<Route> response = service.createVpcRoutingTableRoute(createVpcRoutingTableRouteOptions).execute();
+    assertNotNull(response);
+    assertEquals(response.getStatusCode(), 201);
+
+    Route routeResult = response.getResult();
+    store.put("created-routing-table-route", routeResult.getId());
+
+    assertNotNull(routeResult);
+  } catch (ServiceResponseException e) {
+      fail(String.format("Service returned status code %d: %s\nError details: %s",
+        e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+  }
+}
+
+public void testGetVpcRoutingTableRoute() throws Exception {
+  try {
+    GetVpcRoutingTableRouteOptions getVpcRoutingTableRouteOptions = new GetVpcRoutingTableRouteOptions.Builder()
+    .vpcId(store.get("created-vpc"))
+    .routingTableId(store.get("created-routing-table"))
+    .id(store.get("created-routing-table-route"))
+    .build();
+
+    Response<Route> response = service.getVpcRoutingTableRoute(getVpcRoutingTableRouteOptions).execute();
+    assertNotNull(response);
+    assertEquals(response.getStatusCode(), 200);
+
+    Route routeResult = response.getResult();
+
+    assertNotNull(routeResult);
+  } catch (ServiceResponseException e) {
+      fail(String.format("Service returned status code %d: %s\nError details: %s",
+        e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+  }
+}
+
+public void testDeleteVpcRoutingTableRoute() throws Exception {
+  try {
+    DeleteVpcRoutingTableRouteOptions deleteVpcRoutingTableRouteOptions = new DeleteVpcRoutingTableRouteOptions.Builder()
+    .vpcId(store.get("created-vpc"))
+    .routingTableId(store.get("created-routing-table"))
+    .id(store.get("created-routing-table-route"))
+    .build();
+
+    Response<Void> response = service.deleteVpcRoutingTableRoute(deleteVpcRoutingTableRouteOptions).execute();
+    assertNotNull(response);
+    assertEquals(response.getStatusCode(), 204);
+  } catch (ServiceResponseException e) {
+      fail(String.format("Service returned status code %d: %s\nError details: %s",
+        e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+  }
+}
+
+public void testDeleteVpcRoutingTable() throws Exception {
+  try {
+    DeleteVpcRoutingTableOptions deleteVpcRoutingTableOptions = new DeleteVpcRoutingTableOptions.Builder()
+    .vpcId(store.get("created-vpc"))
+    .id(store.get("created-routing-table"))
+    .build();
+
+    Response<Void> response = service.deleteVpcRoutingTable(deleteVpcRoutingTableOptions).execute();
+    assertNotNull(response);
+    assertEquals(response.getStatusCode(), 204);
+  } catch (ServiceResponseException e) {
+      fail(String.format("Service returned status code %d: %s\nError details: %s",
+        e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+  }
+}
+
+
+public void testUpdateVpcRoutingTableRoute() throws Exception {
+  try {
+    RoutePatch routePatchModel = new RoutePatch.Builder()
+    .name("my-route-2")
+    .build();
+    Map<String, Object> routePatchModelAsPatch = routePatchModel.asPatch();
+
+    UpdateVpcRoutingTableRouteOptions updateVpcRoutingTableRouteOptions = new UpdateVpcRoutingTableRouteOptions.Builder()
+    .vpcId(store.get("created-vpc"))
+    .routingTableId(store.get("created-routing-table"))
+    .id(store.get("created-routing-table-route"))
+    .routePatch(routePatchModelAsPatch)
+    .build();
+
+    Response<Route> response = service.updateVpcRoutingTableRoute(updateVpcRoutingTableRouteOptions).execute();
+    assertNotNull(response);
+    assertEquals(response.getStatusCode(), 200);
+
+    Route routeResult = response.getResult();
+
+    assertNotNull(routeResult);
+  } catch (ServiceResponseException e) {
+      fail(String.format("Service returned status code %d: %s\nError details: %s",
+        e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+  }
+}
+//
   public void testUnsetSubnetPublicGateway() throws Exception {
     try {
       UnsetSubnetPublicGatewayOptions unsetSubnetPublicGatewayOptions = new UnsetSubnetPublicGatewayOptions.Builder()
@@ -5770,7 +6428,7 @@ public class VpcIT extends SdkIntegrationTestBase {
   @AfterClass
   public void tearDown() throws Exception {
     // Add any clean up logic here
-
+    testDeleteSubnetReservedIp();
     testDeleteInstanceNetworkInterface();
     deleteFloatingIp();
     testDeletePublicGateway();

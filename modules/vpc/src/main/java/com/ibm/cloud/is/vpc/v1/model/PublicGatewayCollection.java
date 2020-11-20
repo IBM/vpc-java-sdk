@@ -25,15 +25,15 @@ public class PublicGatewayCollection extends GenericModel {
   protected PublicGatewayCollectionFirst first;
   protected Long limit;
   protected PublicGatewayCollectionNext next;
-  @SerializedName("total_count")
-  protected Long totalCount;
   @SerializedName("public_gateways")
   protected List<PublicGateway> publicGateways;
+  @SerializedName("total_count")
+  protected Long totalCount;
 
   /**
    * Gets the first.
    *
-   * A reference to the first page of resources.
+   * A link to the first page of resources.
    *
    * @return the first
    */
@@ -55,24 +55,13 @@ public class PublicGatewayCollection extends GenericModel {
   /**
    * Gets the next.
    *
-   * A reference to the next page of resources; this reference is included for all pages
+   * A link to the next page of resources. This property is present for all pages
    * except the last page.
    *
    * @return the next
    */
   public PublicGatewayCollectionNext getNext() {
     return next;
-  }
-
-  /**
-   * Gets the totalCount.
-   *
-   * The total number of resources across all pages.
-   *
-   * @return the totalCount
-   */
-  public Long getTotalCount() {
-    return totalCount;
   }
 
   /**
@@ -84,6 +73,17 @@ public class PublicGatewayCollection extends GenericModel {
    */
   public List<PublicGateway> getPublicGateways() {
     return publicGateways;
+  }
+
+  /**
+   * Gets the totalCount.
+   *
+   * The total number of resources across all pages.
+   *
+   * @return the totalCount
+   */
+  public Long getTotalCount() {
+    return totalCount;
   }
 }
 

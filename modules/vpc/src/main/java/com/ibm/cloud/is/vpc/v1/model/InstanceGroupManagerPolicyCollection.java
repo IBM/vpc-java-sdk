@@ -25,14 +25,14 @@ public class InstanceGroupManagerPolicyCollection extends GenericModel {
   protected InstanceGroupManagerPolicyCollectionFirst first;
   protected Long limit;
   protected InstanceGroupManagerPolicyCollectionNext next;
+  protected List<InstanceGroupManagerPolicy> policies;
   @SerializedName("total_count")
   protected Long totalCount;
-  protected List<InstanceGroupManagerPolicy> policies;
 
   /**
    * Gets the first.
    *
-   * A reference to the first page of resources.
+   * A link to the first page of resources.
    *
    * @return the first
    */
@@ -54,24 +54,13 @@ public class InstanceGroupManagerPolicyCollection extends GenericModel {
   /**
    * Gets the next.
    *
-   * A reference to the next page of resources; this reference is included for all pages
+   * A link to the next page of resources. This property is present for all pages
    * except the last page.
    *
    * @return the next
    */
   public InstanceGroupManagerPolicyCollectionNext getNext() {
     return next;
-  }
-
-  /**
-   * Gets the totalCount.
-   *
-   * The total number of resources across all pages.
-   *
-   * @return the totalCount
-   */
-  public Long getTotalCount() {
-    return totalCount;
   }
 
   /**
@@ -83,6 +72,17 @@ public class InstanceGroupManagerPolicyCollection extends GenericModel {
    */
   public List<InstanceGroupManagerPolicy> getPolicies() {
     return policies;
+  }
+
+  /**
+   * Gets the totalCount.
+   *
+   * The total number of resources across all pages.
+   *
+   * @return the totalCount
+   */
+  public Long getTotalCount() {
+    return totalCount;
   }
 }
 

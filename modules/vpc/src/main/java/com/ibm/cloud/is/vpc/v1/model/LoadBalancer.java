@@ -51,22 +51,22 @@ public class LoadBalancer extends GenericModel {
     String UPDATE_PENDING = "update_pending";
   }
 
-  protected LoadBalancerProfileReference profile;
-  protected String id;
-  protected String crn;
-  protected String href;
-  protected String name;
   @SerializedName("created_at")
   protected Date createdAt;
+  protected String crn;
   protected String hostname;
+  protected String href;
+  protected String id;
   @SerializedName("is_public")
   protected Boolean isPublic;
   protected List<LoadBalancerListenerReference> listeners;
+  protected String name;
   @SerializedName("operating_status")
   protected String operatingStatus;
   protected List<LoadBalancerPoolReference> pools;
   @SerializedName("private_ips")
   protected List<IP> privateIps;
+  protected LoadBalancerProfileReference profile;
   @SerializedName("provisioning_status")
   protected String provisioningStatus;
   @SerializedName("public_ips")
@@ -76,25 +76,14 @@ public class LoadBalancer extends GenericModel {
   protected List<SubnetReference> subnets;
 
   /**
-   * Gets the profile.
+   * Gets the createdAt.
    *
-   * The profile to use for this load balancer.
+   * The date and time that this load balancer was created.
    *
-   * @return the profile
+   * @return the createdAt
    */
-  public LoadBalancerProfileReference getProfile() {
-    return profile;
-  }
-
-  /**
-   * Gets the id.
-   *
-   * The unique identifier for this load balancer.
-   *
-   * @return the id
-   */
-  public String getId() {
-    return id;
+  public Date getCreatedAt() {
+    return createdAt;
   }
 
   /**
@@ -109,6 +98,17 @@ public class LoadBalancer extends GenericModel {
   }
 
   /**
+   * Gets the hostname.
+   *
+   * Fully qualified domain name assigned to this load balancer.
+   *
+   * @return the hostname
+   */
+  public String getHostname() {
+    return hostname;
+  }
+
+  /**
    * Gets the href.
    *
    * The load balancer's canonical URL.
@@ -120,36 +120,14 @@ public class LoadBalancer extends GenericModel {
   }
 
   /**
-   * Gets the name.
+   * Gets the id.
    *
-   * The unique user-defined name for this load balancer.
+   * The unique identifier for this load balancer.
    *
-   * @return the name
+   * @return the id
    */
-  public String getName() {
-    return name;
-  }
-
-  /**
-   * Gets the createdAt.
-   *
-   * The date and time that this load balancer was created.
-   *
-   * @return the createdAt
-   */
-  public Date getCreatedAt() {
-    return createdAt;
-  }
-
-  /**
-   * Gets the hostname.
-   *
-   * Fully qualified domain name assigned to this load balancer.
-   *
-   * @return the hostname
-   */
-  public String getHostname() {
-    return hostname;
+  public String getId() {
+    return id;
   }
 
   /**
@@ -172,6 +150,17 @@ public class LoadBalancer extends GenericModel {
    */
   public List<LoadBalancerListenerReference> getListeners() {
     return listeners;
+  }
+
+  /**
+   * Gets the name.
+   *
+   * The unique user-defined name for this load balancer.
+   *
+   * @return the name
+   */
+  public String getName() {
+    return name;
   }
 
   /**
@@ -208,6 +197,17 @@ public class LoadBalancer extends GenericModel {
   }
 
   /**
+   * Gets the profile.
+   *
+   * The profile to use for this load balancer.
+   *
+   * @return the profile
+   */
+  public LoadBalancerProfileReference getProfile() {
+    return profile;
+  }
+
+  /**
    * Gets the provisioningStatus.
    *
    * The provisioning status of this load balancer.
@@ -221,7 +221,7 @@ public class LoadBalancer extends GenericModel {
   /**
    * Gets the publicIps.
    *
-   * The public IP addresses assigned to this load balancer. These are applicable only for public load balancers.
+   * The public IP addresses assigned to this load balancer. Applicable only for public load balancers.
    *
    * @return the publicIps
    */

@@ -20,7 +20,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class CreateKeyOptions extends GenericModel {
 
   /**
-   * The cryptosystem used by this key.
+   * The crypto-system used by this key.
    */
   public interface Type {
     /** rsa. */
@@ -29,8 +29,8 @@ public class CreateKeyOptions extends GenericModel {
 
   protected String publicKey;
   protected String name;
-  protected String type;
   protected ResourceGroupIdentity resourceGroup;
+  protected String type;
 
   /**
    * Builder.
@@ -38,14 +38,14 @@ public class CreateKeyOptions extends GenericModel {
   public static class Builder {
     private String publicKey;
     private String name;
-    private String type;
     private ResourceGroupIdentity resourceGroup;
+    private String type;
 
     private Builder(CreateKeyOptions createKeyOptions) {
       this.publicKey = createKeyOptions.publicKey;
       this.name = createKeyOptions.name;
-      this.type = createKeyOptions.type;
       this.resourceGroup = createKeyOptions.resourceGroup;
+      this.type = createKeyOptions.type;
     }
 
     /**
@@ -95,17 +95,6 @@ public class CreateKeyOptions extends GenericModel {
     }
 
     /**
-     * Set the type.
-     *
-     * @param type the type
-     * @return the CreateKeyOptions builder
-     */
-    public Builder type(String type) {
-      this.type = type;
-      return this;
-    }
-
-    /**
      * Set the resourceGroup.
      *
      * @param resourceGroup the resourceGroup
@@ -115,6 +104,17 @@ public class CreateKeyOptions extends GenericModel {
       this.resourceGroup = resourceGroup;
       return this;
     }
+
+    /**
+     * Set the type.
+     *
+     * @param type the type
+     * @return the CreateKeyOptions builder
+     */
+    public Builder type(String type) {
+      this.type = type;
+      return this;
+    }
   }
 
   protected CreateKeyOptions(Builder builder) {
@@ -122,8 +122,8 @@ public class CreateKeyOptions extends GenericModel {
       "publicKey cannot be null");
     publicKey = builder.publicKey;
     name = builder.name;
-    type = builder.type;
     resourceGroup = builder.resourceGroup;
+    type = builder.type;
   }
 
   /**
@@ -160,17 +160,6 @@ public class CreateKeyOptions extends GenericModel {
   }
 
   /**
-   * Gets the type.
-   *
-   * The cryptosystem used by this key.
-   *
-   * @return the type
-   */
-  public String type() {
-    return type;
-  }
-
-  /**
    * Gets the resourceGroup.
    *
    * The resource group to use. If unspecified, the account's [default resource
@@ -180,6 +169,17 @@ public class CreateKeyOptions extends GenericModel {
    */
   public ResourceGroupIdentity resourceGroup() {
     return resourceGroup;
+  }
+
+  /**
+   * Gets the type.
+   *
+   * The crypto-system used by this key.
+   *
+   * @return the type
+   */
+  public String type() {
+    return type;
   }
 }
 

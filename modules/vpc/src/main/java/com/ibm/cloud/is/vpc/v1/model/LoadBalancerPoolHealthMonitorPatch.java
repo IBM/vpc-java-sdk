@@ -243,7 +243,7 @@ public class LoadBalancerPoolHealthMonitorPatch extends GenericModel {
   /**
    * Gets the urlPath.
    *
-   * The health check URL. This is applicable only to `http` type of health monitor.
+   * The health check URL path. Applicable only if the health monitor `type` is `http` or `https`.
    *
    * @return the urlPath
    */

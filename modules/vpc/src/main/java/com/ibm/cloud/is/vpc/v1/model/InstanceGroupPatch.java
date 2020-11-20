@@ -25,39 +25,39 @@ import com.ibm.cloud.sdk.core.util.GsonSingleton;
  */
 public class InstanceGroupPatch extends GenericModel {
 
-  protected String name;
-  @SerializedName("membership_count")
-  protected Long membershipCount;
-  @SerializedName("instance_template")
-  protected InstanceTemplateIdentity instanceTemplate;
-  protected List<SubnetIdentity> subnets;
   @SerializedName("application_port")
   protected Long applicationPort;
+  @SerializedName("instance_template")
+  protected InstanceTemplateIdentity instanceTemplate;
   @SerializedName("load_balancer")
   protected LoadBalancerIdentity loadBalancer;
   @SerializedName("load_balancer_pool")
   protected LoadBalancerPoolIdentity loadBalancerPool;
+  @SerializedName("membership_count")
+  protected Long membershipCount;
+  protected String name;
+  protected List<SubnetIdentity> subnets;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private String name;
-    private Long membershipCount;
-    private InstanceTemplateIdentity instanceTemplate;
-    private List<SubnetIdentity> subnets;
     private Long applicationPort;
+    private InstanceTemplateIdentity instanceTemplate;
     private LoadBalancerIdentity loadBalancer;
     private LoadBalancerPoolIdentity loadBalancerPool;
+    private Long membershipCount;
+    private String name;
+    private List<SubnetIdentity> subnets;
 
     private Builder(InstanceGroupPatch instanceGroupPatch) {
-      this.name = instanceGroupPatch.name;
-      this.membershipCount = instanceGroupPatch.membershipCount;
-      this.instanceTemplate = instanceGroupPatch.instanceTemplate;
-      this.subnets = instanceGroupPatch.subnets;
       this.applicationPort = instanceGroupPatch.applicationPort;
+      this.instanceTemplate = instanceGroupPatch.instanceTemplate;
       this.loadBalancer = instanceGroupPatch.loadBalancer;
       this.loadBalancerPool = instanceGroupPatch.loadBalancerPool;
+      this.membershipCount = instanceGroupPatch.membershipCount;
+      this.name = instanceGroupPatch.name;
+      this.subnets = instanceGroupPatch.subnets;
     }
 
     /**
@@ -92,24 +92,13 @@ public class InstanceGroupPatch extends GenericModel {
     }
 
     /**
-     * Set the name.
+     * Set the applicationPort.
      *
-     * @param name the name
+     * @param applicationPort the applicationPort
      * @return the InstanceGroupPatch builder
      */
-    public Builder name(String name) {
-      this.name = name;
-      return this;
-    }
-
-    /**
-     * Set the membershipCount.
-     *
-     * @param membershipCount the membershipCount
-     * @return the InstanceGroupPatch builder
-     */
-    public Builder membershipCount(long membershipCount) {
-      this.membershipCount = membershipCount;
+    public Builder applicationPort(long applicationPort) {
+      this.applicationPort = applicationPort;
       return this;
     }
 
@@ -121,29 +110,6 @@ public class InstanceGroupPatch extends GenericModel {
      */
     public Builder instanceTemplate(InstanceTemplateIdentity instanceTemplate) {
       this.instanceTemplate = instanceTemplate;
-      return this;
-    }
-
-    /**
-     * Set the subnets.
-     * Existing subnets will be replaced.
-     *
-     * @param subnets the subnets
-     * @return the InstanceGroupPatch builder
-     */
-    public Builder subnets(List<SubnetIdentity> subnets) {
-      this.subnets = subnets;
-      return this;
-    }
-
-    /**
-     * Set the applicationPort.
-     *
-     * @param applicationPort the applicationPort
-     * @return the InstanceGroupPatch builder
-     */
-    public Builder applicationPort(long applicationPort) {
-      this.applicationPort = applicationPort;
       return this;
     }
 
@@ -168,16 +134,50 @@ public class InstanceGroupPatch extends GenericModel {
       this.loadBalancerPool = loadBalancerPool;
       return this;
     }
+
+    /**
+     * Set the membershipCount.
+     *
+     * @param membershipCount the membershipCount
+     * @return the InstanceGroupPatch builder
+     */
+    public Builder membershipCount(long membershipCount) {
+      this.membershipCount = membershipCount;
+      return this;
+    }
+
+    /**
+     * Set the name.
+     *
+     * @param name the name
+     * @return the InstanceGroupPatch builder
+     */
+    public Builder name(String name) {
+      this.name = name;
+      return this;
+    }
+
+    /**
+     * Set the subnets.
+     * Existing subnets will be replaced.
+     *
+     * @param subnets the subnets
+     * @return the InstanceGroupPatch builder
+     */
+    public Builder subnets(List<SubnetIdentity> subnets) {
+      this.subnets = subnets;
+      return this;
+    }
   }
 
   protected InstanceGroupPatch(Builder builder) {
-    name = builder.name;
-    membershipCount = builder.membershipCount;
-    instanceTemplate = builder.instanceTemplate;
-    subnets = builder.subnets;
     applicationPort = builder.applicationPort;
+    instanceTemplate = builder.instanceTemplate;
     loadBalancer = builder.loadBalancer;
     loadBalancerPool = builder.loadBalancerPool;
+    membershipCount = builder.membershipCount;
+    name = builder.name;
+    subnets = builder.subnets;
   }
 
   /**
@@ -190,25 +190,15 @@ public class InstanceGroupPatch extends GenericModel {
   }
 
   /**
-   * Gets the name.
+   * Gets the applicationPort.
    *
-   * The user-defined name for this instance group.
+   * Required if specifying a load balancer pool only. Used by the instance group when scaling up instances to supply
+   * the port for the load balancer pool member.
    *
-   * @return the name
+   * @return the applicationPort
    */
-  public String name() {
-    return name;
-  }
-
-  /**
-   * Gets the membershipCount.
-   *
-   * The number of instances in the instance group.
-   *
-   * @return the membershipCount
-   */
-  public Long membershipCount() {
-    return membershipCount;
+  public Long applicationPort() {
+    return applicationPort;
   }
 
   /**
@@ -220,29 +210,6 @@ public class InstanceGroupPatch extends GenericModel {
    */
   public InstanceTemplateIdentity instanceTemplate() {
     return instanceTemplate;
-  }
-
-  /**
-   * Gets the subnets.
-   *
-   * Array of identities to subnets to use when creating new instances.
-   *
-   * @return the subnets
-   */
-  public List<SubnetIdentity> subnets() {
-    return subnets;
-  }
-
-  /**
-   * Gets the applicationPort.
-   *
-   * Required if specifying a load balancer pool only. Used by the instance group when scaling up instances to supply
-   * the port for the load balancer pool member.
-   *
-   * @return the applicationPort
-   */
-  public Long applicationPort() {
-    return applicationPort;
   }
 
   /**
@@ -269,6 +236,39 @@ public class InstanceGroupPatch extends GenericModel {
    */
   public LoadBalancerPoolIdentity loadBalancerPool() {
     return loadBalancerPool;
+  }
+
+  /**
+   * Gets the membershipCount.
+   *
+   * The number of instances in the instance group.
+   *
+   * @return the membershipCount
+   */
+  public Long membershipCount() {
+    return membershipCount;
+  }
+
+  /**
+   * Gets the name.
+   *
+   * The user-defined name for this instance group.
+   *
+   * @return the name
+   */
+  public String name() {
+    return name;
+  }
+
+  /**
+   * Gets the subnets.
+   *
+   * Array of identities to subnets to use when creating new instances.
+   *
+   * @return the subnets
+   */
+  public List<SubnetIdentity> subnets() {
+    return subnets;
   }
 
   /**

@@ -15,10 +15,12 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.EncryptionKeyReference;
 import com.ibm.cloud.is.vpc.v1.model.InstanceReference;
+import com.ibm.cloud.is.vpc.v1.model.InstanceReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.Volume;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentDevice;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentReferenceVolumeContext;
+import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentReferenceVolumeContextDeleted;
 import com.ibm.cloud.is.vpc.v1.model.VolumeProfileReference;
 import com.ibm.cloud.is.vpc.v1.model.ZoneReference;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
@@ -39,17 +41,17 @@ public class VolumeTest {
   @Test
   public void testVolume() throws Throwable {
     Volume volumeModel = new Volume();
-    assertNull(volumeModel.getIops());
     assertNull(volumeModel.getCapacity());
-    assertNull(volumeModel.getId());
-    assertNull(volumeModel.getCrn());
-    assertNull(volumeModel.getHref());
-    assertNull(volumeModel.getName());
-    assertNull(volumeModel.getResourceGroup());
     assertNull(volumeModel.getCreatedAt());
+    assertNull(volumeModel.getCrn());
     assertNull(volumeModel.getEncryption());
     assertNull(volumeModel.getEncryptionKey());
+    assertNull(volumeModel.getHref());
+    assertNull(volumeModel.getId());
+    assertNull(volumeModel.getIops());
+    assertNull(volumeModel.getName());
     assertNull(volumeModel.getProfile());
+    assertNull(volumeModel.getResourceGroup());
     assertNull(volumeModel.getStatus());
     assertNull(volumeModel.getVolumeAttachments());
     assertNull(volumeModel.getZone());

@@ -51,11 +51,30 @@ public class LoadBalancerPoolPatch extends GenericModel {
     String HTTPS = "https";
   }
 
-  protected String name;
+  /**
+   * The PROXY protocol setting for this pool:
+   * - `v1`: Enabled with version 1 (human-readable header format)
+   * - `v2`: Enabled with version 2 (binary header format)
+   * - `disabled`: Disabled
+   *
+   * Supported by load balancers in the `application` family (otherwise always `disabled`).
+   */
+  public interface ProxyProtocol {
+    /** disabled. */
+    String DISABLED = "disabled";
+    /** v1. */
+    String V1 = "v1";
+    /** v2. */
+    String V2 = "v2";
+  }
+
   protected String algorithm;
-  protected String protocol;
   @SerializedName("health_monitor")
   protected LoadBalancerPoolHealthMonitorPatch healthMonitor;
+  protected String name;
+  protected String protocol;
+  @SerializedName("proxy_protocol")
+  protected String proxyProtocol;
   @SerializedName("session_persistence")
   protected LoadBalancerPoolSessionPersistencePatch sessionPersistence;
 
@@ -63,17 +82,19 @@ public class LoadBalancerPoolPatch extends GenericModel {
    * Builder.
    */
   public static class Builder {
-    private String name;
     private String algorithm;
-    private String protocol;
     private LoadBalancerPoolHealthMonitorPatch healthMonitor;
+    private String name;
+    private String protocol;
+    private String proxyProtocol;
     private LoadBalancerPoolSessionPersistencePatch sessionPersistence;
 
     private Builder(LoadBalancerPoolPatch loadBalancerPoolPatch) {
-      this.name = loadBalancerPoolPatch.name;
       this.algorithm = loadBalancerPoolPatch.algorithm;
-      this.protocol = loadBalancerPoolPatch.protocol;
       this.healthMonitor = loadBalancerPoolPatch.healthMonitor;
+      this.name = loadBalancerPoolPatch.name;
+      this.protocol = loadBalancerPoolPatch.protocol;
+      this.proxyProtocol = loadBalancerPoolPatch.proxyProtocol;
       this.sessionPersistence = loadBalancerPoolPatch.sessionPersistence;
     }
 
@@ -93,17 +114,6 @@ public class LoadBalancerPoolPatch extends GenericModel {
     }
 
     /**
-     * Set the name.
-     *
-     * @param name the name
-     * @return the LoadBalancerPoolPatch builder
-     */
-    public Builder name(String name) {
-      this.name = name;
-      return this;
-    }
-
-    /**
      * Set the algorithm.
      *
      * @param algorithm the algorithm
@@ -111,6 +121,28 @@ public class LoadBalancerPoolPatch extends GenericModel {
      */
     public Builder algorithm(String algorithm) {
       this.algorithm = algorithm;
+      return this;
+    }
+
+    /**
+     * Set the healthMonitor.
+     *
+     * @param healthMonitor the healthMonitor
+     * @return the LoadBalancerPoolPatch builder
+     */
+    public Builder healthMonitor(LoadBalancerPoolHealthMonitorPatch healthMonitor) {
+      this.healthMonitor = healthMonitor;
+      return this;
+    }
+
+    /**
+     * Set the name.
+     *
+     * @param name the name
+     * @return the LoadBalancerPoolPatch builder
+     */
+    public Builder name(String name) {
+      this.name = name;
       return this;
     }
 
@@ -126,13 +158,13 @@ public class LoadBalancerPoolPatch extends GenericModel {
     }
 
     /**
-     * Set the healthMonitor.
+     * Set the proxyProtocol.
      *
-     * @param healthMonitor the healthMonitor
+     * @param proxyProtocol the proxyProtocol
      * @return the LoadBalancerPoolPatch builder
      */
-    public Builder healthMonitor(LoadBalancerPoolHealthMonitorPatch healthMonitor) {
-      this.healthMonitor = healthMonitor;
+    public Builder proxyProtocol(String proxyProtocol) {
+      this.proxyProtocol = proxyProtocol;
       return this;
     }
 
@@ -149,10 +181,11 @@ public class LoadBalancerPoolPatch extends GenericModel {
   }
 
   protected LoadBalancerPoolPatch(Builder builder) {
-    name = builder.name;
     algorithm = builder.algorithm;
-    protocol = builder.protocol;
     healthMonitor = builder.healthMonitor;
+    name = builder.name;
+    protocol = builder.protocol;
+    proxyProtocol = builder.proxyProtocol;
     sessionPersistence = builder.sessionPersistence;
   }
 
@@ -166,17 +199,6 @@ public class LoadBalancerPoolPatch extends GenericModel {
   }
 
   /**
-   * Gets the name.
-   *
-   * The user-defined name for this load balancer pool.
-   *
-   * @return the name
-   */
-  public String name() {
-    return name;
-  }
-
-  /**
    * Gets the algorithm.
    *
    * The load balancing algorithm.
@@ -185,6 +207,28 @@ public class LoadBalancerPoolPatch extends GenericModel {
    */
   public String algorithm() {
     return algorithm;
+  }
+
+  /**
+   * Gets the healthMonitor.
+   *
+   * The health monitor of this pool.
+   *
+   * @return the healthMonitor
+   */
+  public LoadBalancerPoolHealthMonitorPatch healthMonitor() {
+    return healthMonitor;
+  }
+
+  /**
+   * Gets the name.
+   *
+   * The user-defined name for this load balancer pool.
+   *
+   * @return the name
+   */
+  public String name() {
+    return name;
   }
 
   /**
@@ -203,14 +247,19 @@ public class LoadBalancerPoolPatch extends GenericModel {
   }
 
   /**
-   * Gets the healthMonitor.
+   * Gets the proxyProtocol.
    *
-   * The health monitor of this pool.
+   * The PROXY protocol setting for this pool:
+   * - `v1`: Enabled with version 1 (human-readable header format)
+   * - `v2`: Enabled with version 2 (binary header format)
+   * - `disabled`: Disabled
    *
-   * @return the healthMonitor
+   * Supported by load balancers in the `application` family (otherwise always `disabled`).
+   *
+   * @return the proxyProtocol
    */
-  public LoadBalancerPoolHealthMonitorPatch healthMonitor() {
-    return healthMonitor;
+  public String proxyProtocol() {
+    return proxyProtocol;
   }
 
   /**

@@ -20,29 +20,38 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class InstanceProfile extends GenericModel {
 
-  protected String name;
-  protected String href;
   protected InstanceProfileBandwidth bandwidth;
-  @SerializedName("port_speed")
-  protected InstanceProfilePortSpeed portSpeed;
+  protected String family;
+  protected String href;
   protected InstanceProfileMemory memory;
+  protected String name;
   @SerializedName("os_architecture")
   protected InstanceProfileOSArchitecture osArchitecture;
+  @SerializedName("port_speed")
+  protected InstanceProfilePortSpeed portSpeed;
   @SerializedName("vcpu_architecture")
   protected InstanceProfileVCPUArchitecture vcpuArchitecture;
   @SerializedName("vcpu_count")
   protected InstanceProfileVCPU vcpuCount;
-  protected String family;
 
   /**
-   * Gets the name.
+   * Gets the bandwidth.
    *
-   * The name for this virtual server instance profile.
-   *
-   * @return the name
+   * @return the bandwidth
    */
-  public String getName() {
-    return name;
+  public InstanceProfileBandwidth getBandwidth() {
+    return bandwidth;
+  }
+
+  /**
+   * Gets the family.
+   *
+   * The product family this virtual server instance profile belongs to.
+   *
+   * @return the family
+   */
+  public String getFamily() {
+    return family;
   }
 
   /**
@@ -57,24 +66,6 @@ public class InstanceProfile extends GenericModel {
   }
 
   /**
-   * Gets the bandwidth.
-   *
-   * @return the bandwidth
-   */
-  public InstanceProfileBandwidth getBandwidth() {
-    return bandwidth;
-  }
-
-  /**
-   * Gets the portSpeed.
-   *
-   * @return the portSpeed
-   */
-  public InstanceProfilePortSpeed getPortSpeed() {
-    return portSpeed;
-  }
-
-  /**
    * Gets the memory.
    *
    * @return the memory
@@ -84,12 +75,32 @@ public class InstanceProfile extends GenericModel {
   }
 
   /**
+   * Gets the name.
+   *
+   * The globally unique name for this virtual server instance profile.
+   *
+   * @return the name
+   */
+  public String getName() {
+    return name;
+  }
+
+  /**
    * Gets the osArchitecture.
    *
    * @return the osArchitecture
    */
   public InstanceProfileOSArchitecture getOsArchitecture() {
     return osArchitecture;
+  }
+
+  /**
+   * Gets the portSpeed.
+   *
+   * @return the portSpeed
+   */
+  public InstanceProfilePortSpeed getPortSpeed() {
+    return portSpeed;
   }
 
   /**
@@ -108,17 +119,6 @@ public class InstanceProfile extends GenericModel {
    */
   public InstanceProfileVCPU getVcpuCount() {
     return vcpuCount;
-  }
-
-  /**
-   * Gets the family.
-   *
-   * The product family this virtual server instance profile belongs to.
-   *
-   * @return the family
-   */
-  public String getFamily() {
-    return family;
   }
 }
 

@@ -18,6 +18,7 @@ import com.ibm.cloud.is.vpc.v1.model.FloatingIPCollection;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPCollectionFirst;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPTargetNetworkInterfaceReference;
+import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.ZoneReference;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
@@ -39,9 +40,9 @@ public class FloatingIPCollectionTest {
   public void testFloatingIPCollection() throws Throwable {
     FloatingIPCollection floatingIpCollectionModel = new FloatingIPCollection();
     assertNull(floatingIpCollectionModel.getFirst());
+    assertNull(floatingIpCollectionModel.getFloatingIps());
     assertNull(floatingIpCollectionModel.getLimit());
     assertNull(floatingIpCollectionModel.getNext());
     assertNull(floatingIpCollectionModel.getTotalCount());
-    assertNull(floatingIpCollectionModel.getFloatingIps());
   }
 }

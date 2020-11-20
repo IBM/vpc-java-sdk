@@ -44,12 +44,6 @@ public class SecurityGroupRuleSecurityGroupRuleProtocolAll extends SecurityGroup
   public interface Protocol {
     /** all. */
     String ALL = "all";
-    /** icmp. */
-    String ICMP = "icmp";
-    /** tcp. */
-    String TCP = "tcp";
-    /** udp. */
-    String UDP = "udp";
   }
 
 }

@@ -14,6 +14,7 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorTargetInstanceReference;
+import com.ibm.cloud.is.vpc.v1.model.InstanceReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -32,9 +33,10 @@ public class FlowLogCollectorTargetInstanceReferenceTest {
   @Test
   public void testFlowLogCollectorTargetInstanceReference() throws Throwable {
     FlowLogCollectorTargetInstanceReference flowLogCollectorTargetInstanceReferenceModel = new FlowLogCollectorTargetInstanceReference();
-    assertNull(flowLogCollectorTargetInstanceReferenceModel.getId());
     assertNull(flowLogCollectorTargetInstanceReferenceModel.getCrn());
+    assertNull(flowLogCollectorTargetInstanceReferenceModel.getDeleted());
     assertNull(flowLogCollectorTargetInstanceReferenceModel.getHref());
+    assertNull(flowLogCollectorTargetInstanceReferenceModel.getId());
     assertNull(flowLogCollectorTargetInstanceReferenceModel.getName());
   }
 }

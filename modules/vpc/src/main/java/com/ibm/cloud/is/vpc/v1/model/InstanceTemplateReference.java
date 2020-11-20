@@ -19,19 +19,32 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class InstanceTemplateReference extends GenericModel {
 
-  protected String id;
-  protected String href;
   protected String crn;
+  protected InstanceTemplateReferenceDeleted deleted;
+  protected String href;
+  protected String id;
 
   /**
-   * Gets the id.
+   * Gets the crn.
    *
-   * The unique identifier for this instance template.
+   * The CRN for this instance template.
    *
-   * @return the id
+   * @return the crn
    */
-  public String getId() {
-    return id;
+  public String getCrn() {
+    return crn;
+  }
+
+  /**
+   * Gets the deleted.
+   *
+   * If present, this property indicates the referenced resource has been deleted and provides
+   * some supplementary information.
+   *
+   * @return the deleted
+   */
+  public InstanceTemplateReferenceDeleted getDeleted() {
+    return deleted;
   }
 
   /**
@@ -46,14 +59,14 @@ public class InstanceTemplateReference extends GenericModel {
   }
 
   /**
-   * Gets the crn.
+   * Gets the id.
    *
-   * The CRN for this instance template.
+   * The unique identifier for this instance template.
    *
-   * @return the crn
+   * @return the id
    */
-  public String getCrn() {
-    return crn;
+  public String getId() {
+    return id;
   }
 }
 

@@ -33,21 +33,21 @@ public class CreateInstanceGroupManagerOptionsTest {
   @Test
   public void testCreateInstanceGroupManagerOptions() throws Throwable {
     InstanceGroupManagerPrototypeInstanceGroupManagerAutoScalePrototype instanceGroupManagerPrototypeModel = new InstanceGroupManagerPrototypeInstanceGroupManagerAutoScalePrototype.Builder()
-      .name("my-instance-group-manager")
       .managementEnabled(true)
+      .name("my-instance-group-manager")
       .aggregationWindow(Long.valueOf("120"))
       .cooldown(Long.valueOf("210"))
+      .managerType("autoscale")
       .maxMembershipCount(Long.valueOf("10"))
       .minMembershipCount(Long.valueOf("10"))
-      .managerType("autoscale")
       .build();
-    assertEquals(instanceGroupManagerPrototypeModel.name(), "my-instance-group-manager");
     assertEquals(instanceGroupManagerPrototypeModel.managementEnabled(), Boolean.valueOf(true));
+    assertEquals(instanceGroupManagerPrototypeModel.name(), "my-instance-group-manager");
     assertEquals(instanceGroupManagerPrototypeModel.aggregationWindow(), Long.valueOf("120"));
     assertEquals(instanceGroupManagerPrototypeModel.cooldown(), Long.valueOf("210"));
+    assertEquals(instanceGroupManagerPrototypeModel.managerType(), "autoscale");
     assertEquals(instanceGroupManagerPrototypeModel.maxMembershipCount(), Long.valueOf("10"));
     assertEquals(instanceGroupManagerPrototypeModel.minMembershipCount(), Long.valueOf("10"));
-    assertEquals(instanceGroupManagerPrototypeModel.managerType(), "autoscale");
 
     CreateInstanceGroupManagerOptions createInstanceGroupManagerOptionsModel = new CreateInstanceGroupManagerOptions.Builder()
       .instanceGroupId("testString")

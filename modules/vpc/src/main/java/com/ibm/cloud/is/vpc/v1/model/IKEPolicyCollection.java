@@ -23,22 +23,33 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class IKEPolicyCollection extends GenericModel {
 
   protected IKEPolicyCollectionFirst first;
+  @SerializedName("ike_policies")
+  protected List<IKEPolicy> ikePolicies;
   protected Long limit;
   protected IKEPolicyCollectionNext next;
   @SerializedName("total_count")
   protected Long totalCount;
-  @SerializedName("ike_policies")
-  protected List<IKEPolicy> ikePolicies;
 
   /**
    * Gets the first.
    *
-   * A reference to the first page of resources.
+   * A link to the first page of resources.
    *
    * @return the first
    */
   public IKEPolicyCollectionFirst getFirst() {
     return first;
+  }
+
+  /**
+   * Gets the ikePolicies.
+   *
+   * Collection of IKE policies.
+   *
+   * @return the ikePolicies
+   */
+  public List<IKEPolicy> getIkePolicies() {
+    return ikePolicies;
   }
 
   /**
@@ -55,7 +66,7 @@ public class IKEPolicyCollection extends GenericModel {
   /**
    * Gets the next.
    *
-   * A reference to the next page of resources; this reference is included for all pages
+   * A link to the next page of resources. This property is present for all pages
    * except the last page.
    *
    * @return the next
@@ -73,17 +84,6 @@ public class IKEPolicyCollection extends GenericModel {
    */
   public Long getTotalCount() {
     return totalCount;
-  }
-
-  /**
-   * Gets the ikePolicies.
-   *
-   * Collection of IKE policies.
-   *
-   * @return the ikePolicies
-   */
-  public List<IKEPolicy> getIkePolicies() {
-    return ikePolicies;
   }
 }
 

@@ -49,86 +49,31 @@ public class Instance extends GenericModel {
     String STOPPING = "stopping";
   }
 
-  protected String id;
-  protected String crn;
-  protected String href;
-  protected String name;
-  @SerializedName("resource_group")
-  protected ResourceGroupReference resourceGroup;
   protected Long bandwidth;
   @SerializedName("boot_volume_attachment")
   protected VolumeAttachmentReferenceInstanceContext bootVolumeAttachment;
   @SerializedName("created_at")
   protected Date createdAt;
+  protected String crn;
   protected InstanceGPU gpu;
+  protected String href;
+  protected String id;
   protected ImageReference image;
   protected Long memory;
+  protected String name;
   @SerializedName("network_interfaces")
   protected List<NetworkInterfaceInstanceContextReference> networkInterfaces;
   @SerializedName("primary_network_interface")
   protected NetworkInterfaceInstanceContextReference primaryNetworkInterface;
   protected InstanceProfileReference profile;
+  @SerializedName("resource_group")
+  protected ResourceGroupReference resourceGroup;
   protected String status;
   protected InstanceVCPU vcpu;
   @SerializedName("volume_attachments")
   protected List<VolumeAttachmentReferenceInstanceContext> volumeAttachments;
   protected VPCReference vpc;
   protected ZoneReference zone;
-
-  /**
-   * Gets the id.
-   *
-   * The unique identifier for this virtual server instance.
-   *
-   * @return the id
-   */
-  public String getId() {
-    return id;
-  }
-
-  /**
-   * Gets the crn.
-   *
-   * The CRN for this virtual server instance.
-   *
-   * @return the crn
-   */
-  public String getCrn() {
-    return crn;
-  }
-
-  /**
-   * Gets the href.
-   *
-   * The URL for this virtual server instance.
-   *
-   * @return the href
-   */
-  public String getHref() {
-    return href;
-  }
-
-  /**
-   * Gets the name.
-   *
-   * The user-defined name for this virtual server instance (and default system hostname).
-   *
-   * @return the name
-   */
-  public String getName() {
-    return name;
-  }
-
-  /**
-   * Gets the resourceGroup.
-   *
-   * The resource group for this instance.
-   *
-   * @return the resourceGroup
-   */
-  public ResourceGroupReference getResourceGroup() {
-    return resourceGroup;
-  }
 
   /**
    * Gets the bandwidth.
@@ -164,6 +109,17 @@ public class Instance extends GenericModel {
   }
 
   /**
+   * Gets the crn.
+   *
+   * The CRN for this virtual server instance.
+   *
+   * @return the crn
+   */
+  public String getCrn() {
+    return crn;
+  }
+
+  /**
    * Gets the gpu.
    *
    * The virtual server instance GPU configuration.
@@ -172,6 +128,28 @@ public class Instance extends GenericModel {
    */
   public InstanceGPU getGpu() {
     return gpu;
+  }
+
+  /**
+   * Gets the href.
+   *
+   * The URL for this virtual server instance.
+   *
+   * @return the href
+   */
+  public String getHref() {
+    return href;
+  }
+
+  /**
+   * Gets the id.
+   *
+   * The unique identifier for this virtual server instance.
+   *
+   * @return the id
+   */
+  public String getId() {
+    return id;
   }
 
   /**
@@ -194,6 +172,17 @@ public class Instance extends GenericModel {
    */
   public Long getMemory() {
     return memory;
+  }
+
+  /**
+   * Gets the name.
+   *
+   * The user-defined name for this virtual server instance (and default system hostname).
+   *
+   * @return the name
+   */
+  public String getName() {
+    return name;
   }
 
   /**
@@ -227,6 +216,17 @@ public class Instance extends GenericModel {
    */
   public InstanceProfileReference getProfile() {
     return profile;
+  }
+
+  /**
+   * Gets the resourceGroup.
+   *
+   * The resource group for this instance.
+   *
+   * @return the resourceGroup
+   */
+  public ResourceGroupReference getResourceGroup() {
+    return resourceGroup;
   }
 
   /**

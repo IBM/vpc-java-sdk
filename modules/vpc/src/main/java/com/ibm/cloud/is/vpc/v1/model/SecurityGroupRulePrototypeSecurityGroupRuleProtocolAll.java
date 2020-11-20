@@ -44,12 +44,6 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolAll extends Secu
   public interface Protocol {
     /** all. */
     String ALL = "all";
-    /** icmp. */
-    String ICMP = "icmp";
-    /** tcp. */
-    String TCP = "tcp";
-    /** udp. */
-    String UDP = "udp";
   }
 
 
@@ -59,20 +53,31 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolAll extends Secu
   public static class Builder {
     private String direction;
     private String ipVersion;
+    private SecurityGroupRuleRemotePrototype remote;
     private String protocol;
-    private SecurityGroupRulePrototypeRemote remote;
 
     public Builder(SecurityGroupRulePrototype securityGroupRulePrototypeSecurityGroupRuleProtocolAll) {
       this.direction = securityGroupRulePrototypeSecurityGroupRuleProtocolAll.direction;
       this.ipVersion = securityGroupRulePrototypeSecurityGroupRuleProtocolAll.ipVersion;
-      this.protocol = securityGroupRulePrototypeSecurityGroupRuleProtocolAll.protocol;
       this.remote = securityGroupRulePrototypeSecurityGroupRuleProtocolAll.remote;
+      this.protocol = securityGroupRulePrototypeSecurityGroupRuleProtocolAll.protocol;
     }
 
     /**
      * Instantiates a new builder.
      */
     public Builder() {
+    }
+
+    /**
+     * Instantiates a new builder with required properties.
+     *
+     * @param direction the direction
+     * @param protocol the protocol
+     */
+    public Builder(String direction, String protocol) {
+      this.direction = direction;
+      this.protocol = protocol;
     }
 
     /**
@@ -107,6 +112,17 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolAll extends Secu
     }
 
     /**
+     * Set the remote.
+     *
+     * @param remote the remote
+     * @return the SecurityGroupRulePrototypeSecurityGroupRuleProtocolAll builder
+     */
+    public Builder remote(SecurityGroupRuleRemotePrototype remote) {
+      this.remote = remote;
+      return this;
+    }
+
+    /**
      * Set the protocol.
      *
      * @param protocol the protocol
@@ -116,26 +132,17 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolAll extends Secu
       this.protocol = protocol;
       return this;
     }
-
-    /**
-     * Set the remote.
-     *
-     * @param remote the remote
-     * @return the SecurityGroupRulePrototypeSecurityGroupRuleProtocolAll builder
-     */
-    public Builder remote(SecurityGroupRulePrototypeRemote remote) {
-      this.remote = remote;
-      return this;
-    }
   }
 
   protected SecurityGroupRulePrototypeSecurityGroupRuleProtocolAll(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.direction,
       "direction cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.protocol,
+      "protocol cannot be null");
     direction = builder.direction;
     ipVersion = builder.ipVersion;
-    protocol = builder.protocol;
     remote = builder.remote;
+    protocol = builder.protocol;
   }
 
   /**
