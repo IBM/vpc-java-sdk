@@ -25,6 +25,7 @@ import com.ibm.cloud.is.vpc.v1.model.VolumeCollection;
 import com.ibm.cloud.is.vpc.v1.model.VolumeCollectionFirst;
 import com.ibm.cloud.is.vpc.v1.model.VolumeCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.VolumeProfileReference;
+import com.ibm.cloud.is.vpc.v1.model.VolumeStatusReason;
 import com.ibm.cloud.is.vpc.v1.model.ZoneReference;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;

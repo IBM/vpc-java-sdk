@@ -13,6 +13,7 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import java.util.Date;
+import java.util.List;
 
 import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
@@ -33,7 +34,20 @@ public class Image extends GenericModel {
   }
 
   /**
-   * The status of this image.
+   * The status of this image
+   * - available: image can be used (provisionable)
+   * - deleting: image is being deleted, and can no longer be used to provision new
+   *   resources
+   * - deprecated: image can be used, but is slated to become `obsolete` (provisionable)
+   * - failed: image is corrupt or did not pass validation
+   * - obsolete: image can no longer be used to provision new resources
+   * - pending: image is being imported and is not yet `available`
+   * - tentative: image import has timed out (contact support)
+   * - unusable: image cannot be used (see `status_reasons[]` for possible remediation)
+   *
+   * The enumerated values for this property are expected to expand in the future. When processing this property, check
+   * for and log unknown values. Optionally halt processing and surface the error, or bypass the image on which the
+   * unexpected property value was encountered.
    */
   public interface Status {
     /** available. */
@@ -79,6 +93,8 @@ public class Image extends GenericModel {
   @SerializedName("resource_group")
   protected ResourceGroupReference resourceGroup;
   protected String status;
+  @SerializedName("status_reasons")
+  protected List<ImageStatusReason> statusReasons;
   protected String visibility;
 
   /**
@@ -211,12 +227,40 @@ public class Image extends GenericModel {
   /**
    * Gets the status.
    *
-   * The status of this image.
+   * The status of this image
+   * - available: image can be used (provisionable)
+   * - deleting: image is being deleted, and can no longer be used to provision new
+   *   resources
+   * - deprecated: image can be used, but is slated to become `obsolete` (provisionable)
+   * - failed: image is corrupt or did not pass validation
+   * - obsolete: image can no longer be used to provision new resources
+   * - pending: image is being imported and is not yet `available`
+   * - tentative: image import has timed out (contact support)
+   * - unusable: image cannot be used (see `status_reasons[]` for possible remediation)
+   *
+   * The enumerated values for this property are expected to expand in the future. When processing this property, check
+   * for and log unknown values. Optionally halt processing and surface the error, or bypass the image on which the
+   * unexpected property value was encountered.
    *
    * @return the status
    */
   public String getStatus() {
     return status;
+  }
+
+  /**
+   * Gets the statusReasons.
+   *
+   * Array of reasons for the current status (if any).
+   *
+   * The enumerated reason code values for this property will expand in the future. When processing this property, check
+   * for and log unknown values. Optionally halt processing and surface the error, or bypass the resource on which the
+   * unexpected reason code was encountered.
+   *
+   * @return the statusReasons
+   */
+  public List<ImageStatusReason> getStatusReasons() {
+    return statusReasons;
   }
 
   /**

@@ -16,6 +16,7 @@ package com.ibm.cloud.is.vpc.v1.model;
 import com.ibm.cloud.is.vpc.v1.model.EncryptionKeyReference;
 import com.ibm.cloud.is.vpc.v1.model.Image;
 import com.ibm.cloud.is.vpc.v1.model.ImageFile;
+import com.ibm.cloud.is.vpc.v1.model.ImageStatusReason;
 import com.ibm.cloud.is.vpc.v1.model.OperatingSystem;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
@@ -48,6 +49,7 @@ public class ImageTest {
     assertNull(imageModel.getOperatingSystem());
     assertNull(imageModel.getResourceGroup());
     assertNull(imageModel.getStatus());
+    assertNull(imageModel.getStatusReasons());
     assertNull(imageModel.getVisibility());
   }
 }

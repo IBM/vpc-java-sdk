@@ -37,5 +37,6 @@ public class InstanceTemplateReferenceTest {
     assertNull(instanceTemplateReferenceModel.getDeleted());
     assertNull(instanceTemplateReferenceModel.getHref());
     assertNull(instanceTemplateReferenceModel.getId());
+    assertNull(instanceTemplateReferenceModel.getName());
   }
 }

@@ -159,8 +159,8 @@ public class DefaultRoutingTable extends GenericModel {
    *
    * Incoming traffic will be routed according to the routing table with one exception: routes with an `action` of
    * `deliver` are treated as `drop` unless the `next_hop` is an IP address within the VPC's address prefix ranges.
-   * Therefore, if an incoming packet matches a route with with a `next_hop` of an internet-bound IP address or a VPN
-   * gateway connection, the packet will be dropped.
+   * Therefore, if an incoming packet matches a route with a `next_hop` of an internet-bound IP address or a VPN gateway
+   * connection, the packet will be dropped.
    *
    * @return the routeDirectLinkIngress
    */
@@ -176,8 +176,8 @@ public class DefaultRoutingTable extends GenericModel {
    *
    * Incoming traffic will be routed according to the routing table with one exception: routes with an `action` of
    * `deliver` are treated as `drop` unless the `next_hop` is an IP address within the VPC's address prefix ranges.
-   * Therefore, if an incoming packet matches a route with with a `next_hop` of an internet-bound IP address or a VPN
-   * gateway connection, the packet will be dropped.
+   * Therefore, if an incoming packet matches a route with a `next_hop` of an internet-bound IP address or a VPN gateway
+   * connection, the packet will be dropped.
    *
    * @return the routeTransitGatewayIngress
    */
@@ -193,8 +193,8 @@ public class DefaultRoutingTable extends GenericModel {
    *
    * Incoming traffic will be routed according to the routing table with one exception: routes with an `action` of
    * `deliver` are treated as `drop` unless the `next_hop` is an IP address within the VPC's address prefix ranges.
-   * Therefore, if an incoming packet matches a route with with a `next_hop` of an internet-bound IP address or a VPN
-   * gateway connection, the packet will be dropped.
+   * Therefore, if an incoming packet matches a route with a `next_hop` of an internet-bound IP address or a VPN gateway
+   * connection, the packet will be dropped.
    *
    * @return the routeVpcZoneIngress
    */

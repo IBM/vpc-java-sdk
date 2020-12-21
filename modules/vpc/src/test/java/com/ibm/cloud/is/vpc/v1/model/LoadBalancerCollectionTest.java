@@ -18,6 +18,8 @@ import com.ibm.cloud.is.vpc.v1.model.LoadBalancer;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerCollection;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerReference;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerReferenceDeleted;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerLogging;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerLoggingDatapath;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolReference;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileReference;

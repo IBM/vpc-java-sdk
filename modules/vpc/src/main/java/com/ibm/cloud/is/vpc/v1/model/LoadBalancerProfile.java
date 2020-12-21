@@ -12,6 +12,7 @@
  */
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
@@ -21,6 +22,8 @@ public class LoadBalancerProfile extends GenericModel {
 
   protected String family;
   protected String href;
+  @SerializedName("logging_supported")
+  protected LoadBalancerProfileLoggingSupported loggingSupported;
   protected String name;
 
   /**
@@ -43,6 +46,17 @@ public class LoadBalancerProfile extends GenericModel {
    */
   public String getHref() {
     return href;
+  }
+
+  /**
+   * Gets the loggingSupported.
+   *
+   * Indicates which logging type(s) are supported for a load balancer with this profile.
+   *
+   * @return the loggingSupported
+   */
+  public LoadBalancerProfileLoggingSupported getLoggingSupported() {
+    return loggingSupported;
   }
 
   /**

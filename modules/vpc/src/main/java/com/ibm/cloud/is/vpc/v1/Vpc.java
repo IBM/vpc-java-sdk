@@ -28,6 +28,8 @@ import com.ibm.cloud.is.vpc.v1.model.AddressPrefix;
 import com.ibm.cloud.is.vpc.v1.model.AddressPrefixCollection;
 import com.ibm.cloud.is.vpc.v1.model.CheckVpnGatewayConnectionLocalCidrOptions;
 import com.ibm.cloud.is.vpc.v1.model.CheckVpnGatewayConnectionPeerCidrOptions;
+import com.ibm.cloud.is.vpc.v1.model.CreateDedicatedHostGroupOptions;
+import com.ibm.cloud.is.vpc.v1.model.CreateDedicatedHostOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateEndpointGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateFloatingIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateFlowLogCollectorOptions;
@@ -64,9 +66,17 @@ import com.ibm.cloud.is.vpc.v1.model.CreateVpcRoutingTableOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateVpcRoutingTableRouteOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateVpnGatewayConnectionOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateVpnGatewayOptions;
+import com.ibm.cloud.is.vpc.v1.model.DedicatedHost;
+import com.ibm.cloud.is.vpc.v1.model.DedicatedHostCollection;
+import com.ibm.cloud.is.vpc.v1.model.DedicatedHostGroup;
+import com.ibm.cloud.is.vpc.v1.model.DedicatedHostGroupCollection;
+import com.ibm.cloud.is.vpc.v1.model.DedicatedHostProfile;
+import com.ibm.cloud.is.vpc.v1.model.DedicatedHostProfileCollection;
 import com.ibm.cloud.is.vpc.v1.model.DefaultNetworkACL;
 import com.ibm.cloud.is.vpc.v1.model.DefaultRoutingTable;
 import com.ibm.cloud.is.vpc.v1.model.DefaultSecurityGroup;
+import com.ibm.cloud.is.vpc.v1.model.DeleteDedicatedHostGroupOptions;
+import com.ibm.cloud.is.vpc.v1.model.DeleteDedicatedHostOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteEndpointGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteFloatingIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteFlowLogCollectorOptions;
@@ -112,6 +122,9 @@ import com.ibm.cloud.is.vpc.v1.model.FloatingIPCollection;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPUnpaginatedCollection;
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollector;
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorCollection;
+import com.ibm.cloud.is.vpc.v1.model.GetDedicatedHostGroupOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetDedicatedHostOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetDedicatedHostProfileOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetEndpointGatewayIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetEndpointGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetFloatingIpOptions;
@@ -189,6 +202,9 @@ import com.ibm.cloud.is.vpc.v1.model.InstanceTemplate;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateCollection;
 import com.ibm.cloud.is.vpc.v1.model.Key;
 import com.ibm.cloud.is.vpc.v1.model.KeyCollection;
+import com.ibm.cloud.is.vpc.v1.model.ListDedicatedHostGroupsOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListDedicatedHostProfilesOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListDedicatedHostsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListEndpointGatewayIpsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListEndpointGatewaysOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListFloatingIpsOptions;
@@ -289,6 +305,8 @@ import com.ibm.cloud.is.vpc.v1.model.SetSubnetPublicGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.Subnet;
 import com.ibm.cloud.is.vpc.v1.model.SubnetCollection;
 import com.ibm.cloud.is.vpc.v1.model.UnsetSubnetPublicGatewayOptions;
+import com.ibm.cloud.is.vpc.v1.model.UpdateDedicatedHostGroupOptions;
+import com.ibm.cloud.is.vpc.v1.model.UpdateDedicatedHostOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateEndpointGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateFloatingIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateFlowLogCollectorOptions;
@@ -364,7 +382,7 @@ public class Vpc extends BaseService {
 
   public static final String DEFAULT_SERVICE_URL = "https://us-south.iaas.cloud.ibm.com/v1";
 
-  private String version = "2020-11-17";
+  private String version = "2020-12-15";
 
   private Long generation = Long.valueOf(2);
 
@@ -387,7 +405,7 @@ public class Vpc extends BaseService {
    * @return an instance of the `Vpc` client using external configuration
    */
   public static Vpc newInstance() {
-    return newInstance("2020-11-13", DEFAULT_SERVICE_NAME);
+    return newInstance("2020-12-15", DEFAULT_SERVICE_NAME);
   }
 
     /**
@@ -2263,6 +2281,9 @@ public class Vpc extends BaseService {
   /**
    * List all instance profiles.
    *
+   * This request lists provisionable instance profiles in the region. An instance profile specifies the performance
+   * characteristics and pricing model for an instance.
+   *
    * @param listInstanceProfilesOptions the {@link ListInstanceProfilesOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link InstanceProfileCollection}
    */
@@ -2282,6 +2303,9 @@ public class Vpc extends BaseService {
 
   /**
    * List all instance profiles.
+   *
+   * This request lists provisionable instance profiles in the region. An instance profile specifies the performance
+   * characteristics and pricing model for an instance.
    *
    * @return a {@link ServiceCall} with a result of type {@link InstanceProfileCollection}
    */
@@ -2318,6 +2342,8 @@ public class Vpc extends BaseService {
   /**
    * Get instance templates.
    *
+   * This request lists all instance templates in the region.
+   *
    * @param listInstanceTemplatesOptions the {@link ListInstanceTemplatesOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link InstanceTemplateCollection}
    */
@@ -2337,6 +2363,8 @@ public class Vpc extends BaseService {
 
   /**
    * Get instance templates.
+   *
+   * This request lists all instance templates in the region.
    *
    * @return a {@link ServiceCall} with a result of type {@link InstanceTemplateCollection}
    */
@@ -2395,6 +2423,8 @@ public class Vpc extends BaseService {
 
   /**
    * Retrieve specified instance template.
+   *
+   * This request retrieves a single instance template specified by the identifier in the URL.
    *
    * @param getInstanceTemplateOptions the {@link GetInstanceTemplateOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link InstanceTemplate}
@@ -3089,6 +3119,8 @@ public class Vpc extends BaseService {
   /**
    * List all instance groups.
    *
+   * This request lists all instance groups in the region.
+   *
    * @param listInstanceGroupsOptions the {@link ListInstanceGroupsOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link InstanceGroupCollection}
    */
@@ -3117,6 +3149,8 @@ public class Vpc extends BaseService {
 
   /**
    * List all instance groups.
+   *
+   * This request lists all instance groups in the region.
    *
    * @return a {@link ServiceCall} with a result of type {@link InstanceGroupCollection}
    */
@@ -3409,6 +3443,8 @@ public class Vpc extends BaseService {
   /**
    * List all policies for an instance group manager.
    *
+   * This request lists all instance group policies for an instance group manager.
+   *
    * @param listInstanceGroupManagerPoliciesOptions the {@link ListInstanceGroupManagerPoliciesOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link InstanceGroupManagerPolicyCollection}
    */
@@ -3570,6 +3606,8 @@ public class Vpc extends BaseService {
   /**
    * List all memberships for the instance group.
    *
+   * This request lists all instance group memberships for an instance group.
+   *
    * @param listInstanceGroupMembershipsOptions the {@link ListInstanceGroupMembershipsOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link InstanceGroupMembershipCollection}
    */
@@ -3669,6 +3707,417 @@ public class Vpc extends BaseService {
     builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateInstanceGroupMembershipOptions.instanceGroupMembershipPatch()), "application/merge-patch+json");
     ResponseConverter<InstanceGroupMembership> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<InstanceGroupMembership>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * List all dedicated host groups.
+   *
+   * This request lists all dedicated host groups in the region. Host groups are a collection of dedicated hosts for
+   * placement of instances. Each dedicated host must belong to one and only one group. Host groups do not span zones.
+   *
+   * @param listDedicatedHostGroupsOptions the {@link ListDedicatedHostGroupsOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link DedicatedHostGroupCollection}
+   */
+  public ServiceCall<DedicatedHostGroupCollection> listDedicatedHostGroups(ListDedicatedHostGroupsOptions listDedicatedHostGroupsOptions) {
+    if (listDedicatedHostGroupsOptions == null) {
+      listDedicatedHostGroupsOptions = new ListDedicatedHostGroupsOptions.Builder().build();
+    }
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/dedicated_host/groups"));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listDedicatedHostGroups");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    if (listDedicatedHostGroupsOptions.start() != null) {
+      builder.query("start", String.valueOf(listDedicatedHostGroupsOptions.start()));
+    }
+    if (listDedicatedHostGroupsOptions.limit() != null) {
+      builder.query("limit", String.valueOf(listDedicatedHostGroupsOptions.limit()));
+    }
+    if (listDedicatedHostGroupsOptions.resourceGroupId() != null) {
+      builder.query("resource_group.id", String.valueOf(listDedicatedHostGroupsOptions.resourceGroupId()));
+    }
+    if (listDedicatedHostGroupsOptions.zoneName() != null) {
+      builder.query("zone.name", String.valueOf(listDedicatedHostGroupsOptions.zoneName()));
+    }
+    ResponseConverter<DedicatedHostGroupCollection> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<DedicatedHostGroupCollection>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * List all dedicated host groups.
+   *
+   * This request lists all dedicated host groups in the region. Host groups are a collection of dedicated hosts for
+   * placement of instances. Each dedicated host must belong to one and only one group. Host groups do not span zones.
+   *
+   * @return a {@link ServiceCall} with a result of type {@link DedicatedHostGroupCollection}
+   */
+  public ServiceCall<DedicatedHostGroupCollection> listDedicatedHostGroups() {
+    return listDedicatedHostGroups(null);
+  }
+
+  /**
+   * Create a dedicated host group.
+   *
+   * This request creates a new dedicated host group.
+   *
+   * @param createDedicatedHostGroupOptions the {@link CreateDedicatedHostGroupOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link DedicatedHostGroup}
+   */
+  public ServiceCall<DedicatedHostGroup> createDedicatedHostGroup(CreateDedicatedHostGroupOptions createDedicatedHostGroupOptions) {
+    boolean skipBody = false;
+    if (createDedicatedHostGroupOptions == null) {
+      createDedicatedHostGroupOptions = new CreateDedicatedHostGroupOptions.Builder().build();
+      skipBody = true;
+    }
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/dedicated_host/groups"));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "createDedicatedHostGroup");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    if (!skipBody) {
+      final JsonObject contentJson = new JsonObject();
+      if (createDedicatedHostGroupOptions.xClass() != null) {
+        contentJson.addProperty("class", createDedicatedHostGroupOptions.xClass());
+      }
+      if (createDedicatedHostGroupOptions.family() != null) {
+        contentJson.addProperty("family", createDedicatedHostGroupOptions.family());
+      }
+      if (createDedicatedHostGroupOptions.name() != null) {
+        contentJson.addProperty("name", createDedicatedHostGroupOptions.name());
+      }
+      if (createDedicatedHostGroupOptions.resourceGroup() != null) {
+        contentJson.add("resource_group", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createDedicatedHostGroupOptions.resourceGroup()));
+      }
+      if (createDedicatedHostGroupOptions.zone() != null) {
+        contentJson.add("zone", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createDedicatedHostGroupOptions.zone()));
+      }
+      builder.bodyJson(contentJson);
+    }
+    ResponseConverter<DedicatedHostGroup> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<DedicatedHostGroup>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Create a dedicated host group.
+   *
+   * This request creates a new dedicated host group.
+   *
+   * @return a {@link ServiceCall} with a result of type {@link DedicatedHostGroup}
+   */
+  public ServiceCall<DedicatedHostGroup> createDedicatedHostGroup() {
+    return createDedicatedHostGroup(null);
+  }
+
+  /**
+   * Delete specified dedicated host group.
+   *
+   * This request deletes a dedicated host group.
+   *
+   * @param deleteDedicatedHostGroupOptions the {@link DeleteDedicatedHostGroupOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a void result
+   */
+  public ServiceCall<Void> deleteDedicatedHostGroup(DeleteDedicatedHostGroupOptions deleteDedicatedHostGroupOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(deleteDedicatedHostGroupOptions,
+      "deleteDedicatedHostGroupOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", deleteDedicatedHostGroupOptions.id());
+    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/dedicated_host/groups/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "deleteDedicatedHostGroup");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Retrieve a dedicated host group.
+   *
+   * This request retrieves a single dedicated host group specified by the identifier in the URL.
+   *
+   * @param getDedicatedHostGroupOptions the {@link GetDedicatedHostGroupOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link DedicatedHostGroup}
+   */
+  public ServiceCall<DedicatedHostGroup> getDedicatedHostGroup(GetDedicatedHostGroupOptions getDedicatedHostGroupOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(getDedicatedHostGroupOptions,
+      "getDedicatedHostGroupOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", getDedicatedHostGroupOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/dedicated_host/groups/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getDedicatedHostGroup");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<DedicatedHostGroup> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<DedicatedHostGroup>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Update specified dedicated host group.
+   *
+   * This request updates a dedicated host group with the information in a provided dedicated host group patch. The
+   * dedicated host group patch object is structured in the same way as a retrieved dedicated host group and contains
+   * only the information to be updated.
+   *
+   * @param updateDedicatedHostGroupOptions the {@link UpdateDedicatedHostGroupOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link DedicatedHostGroup}
+   */
+  public ServiceCall<DedicatedHostGroup> updateDedicatedHostGroup(UpdateDedicatedHostGroupOptions updateDedicatedHostGroupOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(updateDedicatedHostGroupOptions,
+      "updateDedicatedHostGroupOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", updateDedicatedHostGroupOptions.id());
+    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/dedicated_host/groups/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "updateDedicatedHostGroup");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateDedicatedHostGroupOptions.dedicatedHostGroupPatch()), "application/merge-patch+json");
+    ResponseConverter<DedicatedHostGroup> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<DedicatedHostGroup>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * List all dedicated host profiles.
+   *
+   * This request lists provisionable dedicated host profiles in the region. A dedicated host profile specifies the
+   * hardware characteristics for a dedicated host.
+   *
+   * @param listDedicatedHostProfilesOptions the {@link ListDedicatedHostProfilesOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link DedicatedHostProfileCollection}
+   */
+  public ServiceCall<DedicatedHostProfileCollection> listDedicatedHostProfiles(ListDedicatedHostProfilesOptions listDedicatedHostProfilesOptions) {
+    if (listDedicatedHostProfilesOptions == null) {
+      listDedicatedHostProfilesOptions = new ListDedicatedHostProfilesOptions.Builder().build();
+    }
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/dedicated_host/profiles"));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listDedicatedHostProfiles");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    if (listDedicatedHostProfilesOptions.start() != null) {
+      builder.query("start", String.valueOf(listDedicatedHostProfilesOptions.start()));
+    }
+    if (listDedicatedHostProfilesOptions.limit() != null) {
+      builder.query("limit", String.valueOf(listDedicatedHostProfilesOptions.limit()));
+    }
+    ResponseConverter<DedicatedHostProfileCollection> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<DedicatedHostProfileCollection>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * List all dedicated host profiles.
+   *
+   * This request lists provisionable dedicated host profiles in the region. A dedicated host profile specifies the
+   * hardware characteristics for a dedicated host.
+   *
+   * @return a {@link ServiceCall} with a result of type {@link DedicatedHostProfileCollection}
+   */
+  public ServiceCall<DedicatedHostProfileCollection> listDedicatedHostProfiles() {
+    return listDedicatedHostProfiles(null);
+  }
+
+  /**
+   * Retrieve specified dedicated host profile.
+   *
+   * This request retrieves a single dedicated host profile specified by the name in the URL.
+   *
+   * @param getDedicatedHostProfileOptions the {@link GetDedicatedHostProfileOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link DedicatedHostProfile}
+   */
+  public ServiceCall<DedicatedHostProfile> getDedicatedHostProfile(GetDedicatedHostProfileOptions getDedicatedHostProfileOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(getDedicatedHostProfileOptions,
+      "getDedicatedHostProfileOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("name", getDedicatedHostProfileOptions.name());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/dedicated_host/profiles/{name}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getDedicatedHostProfile");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<DedicatedHostProfile> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<DedicatedHostProfile>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * List all dedicated hosts.
+   *
+   * This request lists all dedicated hosts.
+   *
+   * @param listDedicatedHostsOptions the {@link ListDedicatedHostsOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link DedicatedHostCollection}
+   */
+  public ServiceCall<DedicatedHostCollection> listDedicatedHosts(ListDedicatedHostsOptions listDedicatedHostsOptions) {
+    if (listDedicatedHostsOptions == null) {
+      listDedicatedHostsOptions = new ListDedicatedHostsOptions.Builder().build();
+    }
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/dedicated_hosts"));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listDedicatedHosts");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    if (listDedicatedHostsOptions.dedicatedHostGroupId() != null) {
+      builder.query("dedicated_host_group.id", String.valueOf(listDedicatedHostsOptions.dedicatedHostGroupId()));
+    }
+    if (listDedicatedHostsOptions.start() != null) {
+      builder.query("start", String.valueOf(listDedicatedHostsOptions.start()));
+    }
+    if (listDedicatedHostsOptions.limit() != null) {
+      builder.query("limit", String.valueOf(listDedicatedHostsOptions.limit()));
+    }
+    if (listDedicatedHostsOptions.resourceGroupId() != null) {
+      builder.query("resource_group.id", String.valueOf(listDedicatedHostsOptions.resourceGroupId()));
+    }
+    if (listDedicatedHostsOptions.zoneName() != null) {
+      builder.query("zone.name", String.valueOf(listDedicatedHostsOptions.zoneName()));
+    }
+    ResponseConverter<DedicatedHostCollection> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<DedicatedHostCollection>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * List all dedicated hosts.
+   *
+   * This request lists all dedicated hosts.
+   *
+   * @return a {@link ServiceCall} with a result of type {@link DedicatedHostCollection}
+   */
+  public ServiceCall<DedicatedHostCollection> listDedicatedHosts() {
+    return listDedicatedHosts(null);
+  }
+
+  /**
+   * Create a dedicated host.
+   *
+   * This request creates a new dedicated host.
+   *
+   * @param createDedicatedHostOptions the {@link CreateDedicatedHostOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link DedicatedHost}
+   */
+  public ServiceCall<DedicatedHost> createDedicatedHost(CreateDedicatedHostOptions createDedicatedHostOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(createDedicatedHostOptions,
+      "createDedicatedHostOptions cannot be null");
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/dedicated_hosts"));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "createDedicatedHost");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(createDedicatedHostOptions.dedicatedHostPrototype()), "application/json");
+    ResponseConverter<DedicatedHost> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<DedicatedHost>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Delete specified dedicated host.
+   *
+   * This request deletes a dedicated host.
+   *
+   * @param deleteDedicatedHostOptions the {@link DeleteDedicatedHostOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a void result
+   */
+  public ServiceCall<Void> deleteDedicatedHost(DeleteDedicatedHostOptions deleteDedicatedHostOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(deleteDedicatedHostOptions,
+      "deleteDedicatedHostOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", deleteDedicatedHostOptions.id());
+    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/dedicated_hosts/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "deleteDedicatedHost");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Retrieve a dedicated host.
+   *
+   * This request retrieves a single dedicated host specified by the identifiers in the URL.
+   *
+   * @param getDedicatedHostOptions the {@link GetDedicatedHostOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link DedicatedHost}
+   */
+  public ServiceCall<DedicatedHost> getDedicatedHost(GetDedicatedHostOptions getDedicatedHostOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(getDedicatedHostOptions,
+      "getDedicatedHostOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", getDedicatedHostOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/dedicated_hosts/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getDedicatedHost");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<DedicatedHost> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<DedicatedHost>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Update specified dedicated host.
+   *
+   * This request updates a dedicated host with the information in a provided dedicated host patch. The dedicated host
+   * patch object is structured in the same way as a retrieved dedicated host and contains only the information to be
+   * updated.
+   *
+   * @param updateDedicatedHostOptions the {@link UpdateDedicatedHostOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link DedicatedHost}
+   */
+  public ServiceCall<DedicatedHost> updateDedicatedHost(UpdateDedicatedHostOptions updateDedicatedHostOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(updateDedicatedHostOptions,
+      "updateDedicatedHostOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", updateDedicatedHostOptions.id());
+    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/dedicated_hosts/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "updateDedicatedHost");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateDedicatedHostOptions.dedicatedHostPatch()), "application/merge-patch+json");
+    ResponseConverter<DedicatedHost> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<DedicatedHost>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
   }
 
@@ -3901,7 +4350,7 @@ public class Vpc extends BaseService {
    * List all regions.
    *
    * This request lists all regions. Each region is a separate geographic area that contains multiple isolated zones.
-   * Resources can be provisioned into a one or more zones in a region. Each zone is isolated, but connected to other
+   * Resources can be provisioned into one or more zones in a region. Each zone is isolated, but connected to other
    * zones in the same region with low-latency and high-bandwidth links. Regions represent the top-level of fault
    * isolation available. Resources deployed within a single region also benefit from the low latency afforded by
    * geographic proximity.
@@ -3927,7 +4376,7 @@ public class Vpc extends BaseService {
    * List all regions.
    *
    * This request lists all regions. Each region is a separate geographic area that contains multiple isolated zones.
-   * Resources can be provisioned into a one or more zones in a region. Each zone is isolated, but connected to other
+   * Resources can be provisioned into one or more zones in a region. Each zone is isolated, but connected to other
    * zones in the same region with low-latency and high-bandwidth links. Regions represent the top-level of fault
    * isolation available. Resources deployed within a single region also benefit from the low latency afforded by
    * geographic proximity.
@@ -6092,6 +6541,9 @@ public class Vpc extends BaseService {
     contentJson.add("subnets", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createLoadBalancerOptions.subnets()));
     if (createLoadBalancerOptions.listeners() != null) {
       contentJson.add("listeners", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createLoadBalancerOptions.listeners()));
+    }
+    if (createLoadBalancerOptions.logging() != null) {
+      contentJson.add("logging", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createLoadBalancerOptions.logging()));
     }
     if (createLoadBalancerOptions.name() != null) {
       contentJson.addProperty("name", createLoadBalancerOptions.name());

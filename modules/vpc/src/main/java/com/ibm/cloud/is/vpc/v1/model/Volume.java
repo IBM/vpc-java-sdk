@@ -68,6 +68,8 @@ public class Volume extends GenericModel {
   @SerializedName("resource_group")
   protected ResourceGroupReference resourceGroup;
   protected String status;
+  @SerializedName("status_reasons")
+  protected List<VolumeStatusReason> statusReasons;
   @SerializedName("volume_attachments")
   protected List<VolumeAttachmentReferenceVolumeContext> volumeAttachments;
   protected ZoneReference zone;
@@ -210,6 +212,21 @@ public class Volume extends GenericModel {
    */
   public String getStatus() {
     return status;
+  }
+
+  /**
+   * Gets the statusReasons.
+   *
+   * Array of reasons for the current status (if any).
+   *
+   * The enumerated reason code values for this property will expand in the future. When processing this property, check
+   * for and log unknown values. Optionally halt processing and surface the error, or bypass the resource on which the
+   * unexpected reason code was encountered.
+   *
+   * @return the statusReasons
+   */
+  public List<VolumeStatusReason> getStatusReasons() {
+    return statusReasons;
   }
 
   /**

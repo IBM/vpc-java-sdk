@@ -27,6 +27,8 @@ public class Instance extends GenericModel {
    * The status of the virtual server instance.
    */
   public interface Status {
+    /** deleting. */
+    String DELETING = "deleting";
     /** failed. */
     String FAILED = "failed";
     /** paused. */
@@ -210,7 +212,7 @@ public class Instance extends GenericModel {
   /**
    * Gets the profile.
    *
-   * The profile this virtual server instance uses.
+   * The profile for this virtual server instance.
    *
    * @return the profile
    */

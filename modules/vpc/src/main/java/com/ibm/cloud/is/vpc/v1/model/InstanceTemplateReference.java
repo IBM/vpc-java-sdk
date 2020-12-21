@@ -23,6 +23,7 @@ public class InstanceTemplateReference extends GenericModel {
   protected InstanceTemplateReferenceDeleted deleted;
   protected String href;
   protected String id;
+  protected String name;
 
   /**
    * Gets the crn.
@@ -67,6 +68,17 @@ public class InstanceTemplateReference extends GenericModel {
    */
   public String getId() {
     return id;
+  }
+
+  /**
+   * Gets the name.
+   *
+   * The unique user-defined name for this instance template.
+   *
+   * @return the name
+   */
+  public String getName() {
+    return name;
   }
 }
 

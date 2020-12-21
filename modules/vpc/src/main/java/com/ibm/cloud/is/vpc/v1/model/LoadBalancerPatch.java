@@ -22,15 +22,18 @@ import com.ibm.cloud.sdk.core.util.GsonSingleton;
  */
 public class LoadBalancerPatch extends GenericModel {
 
+  protected LoadBalancerLogging logging;
   protected String name;
 
   /**
    * Builder.
    */
   public static class Builder {
+    private LoadBalancerLogging logging;
     private String name;
 
     private Builder(LoadBalancerPatch loadBalancerPatch) {
+      this.logging = loadBalancerPatch.logging;
       this.name = loadBalancerPatch.name;
     }
 
@@ -50,6 +53,17 @@ public class LoadBalancerPatch extends GenericModel {
     }
 
     /**
+     * Set the logging.
+     *
+     * @param logging the logging
+     * @return the LoadBalancerPatch builder
+     */
+    public Builder logging(LoadBalancerLogging logging) {
+      this.logging = logging;
+      return this;
+    }
+
+    /**
      * Set the name.
      *
      * @param name the name
@@ -62,6 +76,7 @@ public class LoadBalancerPatch extends GenericModel {
   }
 
   protected LoadBalancerPatch(Builder builder) {
+    logging = builder.logging;
     name = builder.name;
   }
 
@@ -72,6 +87,19 @@ public class LoadBalancerPatch extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
+  }
+
+  /**
+   * Gets the logging.
+   *
+   * The logging configuration to use for this load balancer.
+   *
+   * To activate logging, the load balancer profile must support the specified logging type.
+   *
+   * @return the logging
+   */
+  public LoadBalancerLogging logging() {
+    return logging;
   }
 
   /**

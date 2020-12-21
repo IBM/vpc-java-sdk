@@ -31,6 +31,8 @@ import com.ibm.cloud.is.vpc.v1.model.CheckVpnGatewayConnectionPeerCidrOptions;
 import com.ibm.cloud.is.vpc.v1.model.CloudObjectStorageBucketIdentity;
 import com.ibm.cloud.is.vpc.v1.model.CloudObjectStorageBucketIdentityByName;
 import com.ibm.cloud.is.vpc.v1.model.CloudObjectStorageBucketReference;
+import com.ibm.cloud.is.vpc.v1.model.CreateDedicatedHostGroupOptions;
+import com.ibm.cloud.is.vpc.v1.model.CreateDedicatedHostOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateEndpointGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateFloatingIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateFlowLogCollectorOptions;
@@ -67,9 +69,55 @@ import com.ibm.cloud.is.vpc.v1.model.CreateVpcRoutingTableOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateVpcRoutingTableRouteOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateVpnGatewayConnectionOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateVpnGatewayOptions;
+import com.ibm.cloud.is.vpc.v1.model.DedicatedHost;
+import com.ibm.cloud.is.vpc.v1.model.DedicatedHostCollection;
+import com.ibm.cloud.is.vpc.v1.model.DedicatedHostCollectionFirst;
+import com.ibm.cloud.is.vpc.v1.model.DedicatedHostCollectionNext;
+import com.ibm.cloud.is.vpc.v1.model.DedicatedHostGroup;
+import com.ibm.cloud.is.vpc.v1.model.DedicatedHostGroupCollection;
+import com.ibm.cloud.is.vpc.v1.model.DedicatedHostGroupCollectionFirst;
+import com.ibm.cloud.is.vpc.v1.model.DedicatedHostGroupCollectionNext;
+import com.ibm.cloud.is.vpc.v1.model.DedicatedHostGroupIdentity;
+import com.ibm.cloud.is.vpc.v1.model.DedicatedHostGroupIdentityByCRN;
+import com.ibm.cloud.is.vpc.v1.model.DedicatedHostGroupIdentityByHref;
+import com.ibm.cloud.is.vpc.v1.model.DedicatedHostGroupIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.DedicatedHostGroupPatch;
+import com.ibm.cloud.is.vpc.v1.model.DedicatedHostGroupReference;
+import com.ibm.cloud.is.vpc.v1.model.DedicatedHostGroupReferenceDeleted;
+import com.ibm.cloud.is.vpc.v1.model.DedicatedHostPatch;
+import com.ibm.cloud.is.vpc.v1.model.DedicatedHostProfile;
+import com.ibm.cloud.is.vpc.v1.model.DedicatedHostProfileCollection;
+import com.ibm.cloud.is.vpc.v1.model.DedicatedHostProfileCollectionFirst;
+import com.ibm.cloud.is.vpc.v1.model.DedicatedHostProfileCollectionNext;
+import com.ibm.cloud.is.vpc.v1.model.DedicatedHostProfileIdentity;
+import com.ibm.cloud.is.vpc.v1.model.DedicatedHostProfileIdentityByHref;
+import com.ibm.cloud.is.vpc.v1.model.DedicatedHostProfileIdentityByName;
+import com.ibm.cloud.is.vpc.v1.model.DedicatedHostProfileMemory;
+import com.ibm.cloud.is.vpc.v1.model.DedicatedHostProfileMemoryDependent;
+import com.ibm.cloud.is.vpc.v1.model.DedicatedHostProfileMemoryEnum;
+import com.ibm.cloud.is.vpc.v1.model.DedicatedHostProfileMemoryFixed;
+import com.ibm.cloud.is.vpc.v1.model.DedicatedHostProfileMemoryRange;
+import com.ibm.cloud.is.vpc.v1.model.DedicatedHostProfileReference;
+import com.ibm.cloud.is.vpc.v1.model.DedicatedHostProfileSocket;
+import com.ibm.cloud.is.vpc.v1.model.DedicatedHostProfileSocketDependent;
+import com.ibm.cloud.is.vpc.v1.model.DedicatedHostProfileSocketEnum;
+import com.ibm.cloud.is.vpc.v1.model.DedicatedHostProfileSocketFixed;
+import com.ibm.cloud.is.vpc.v1.model.DedicatedHostProfileSocketRange;
+import com.ibm.cloud.is.vpc.v1.model.DedicatedHostProfileVCPU;
+import com.ibm.cloud.is.vpc.v1.model.DedicatedHostProfileVCPUArchitecture;
+import com.ibm.cloud.is.vpc.v1.model.DedicatedHostProfileVCPUDependent;
+import com.ibm.cloud.is.vpc.v1.model.DedicatedHostProfileVCPUEnum;
+import com.ibm.cloud.is.vpc.v1.model.DedicatedHostProfileVCPUFixed;
+import com.ibm.cloud.is.vpc.v1.model.DedicatedHostProfileVCPURange;
+import com.ibm.cloud.is.vpc.v1.model.DedicatedHostPrototype;
+import com.ibm.cloud.is.vpc.v1.model.DedicatedHostPrototypeDedicatedHostByGroup;
+import com.ibm.cloud.is.vpc.v1.model.DedicatedHostReference;
+import com.ibm.cloud.is.vpc.v1.model.DedicatedHostReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.DefaultNetworkACL;
 import com.ibm.cloud.is.vpc.v1.model.DefaultRoutingTable;
 import com.ibm.cloud.is.vpc.v1.model.DefaultSecurityGroup;
+import com.ibm.cloud.is.vpc.v1.model.DeleteDedicatedHostGroupOptions;
+import com.ibm.cloud.is.vpc.v1.model.DeleteDedicatedHostOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteEndpointGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteFloatingIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteFlowLogCollectorOptions;
@@ -176,6 +224,9 @@ import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorTargetPrototypeVPCIdentityV
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorTargetPrototypeVPCIdentityVPCIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorTargetSubnetReference;
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorTargetVPCReference;
+import com.ibm.cloud.is.vpc.v1.model.GetDedicatedHostGroupOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetDedicatedHostOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetDedicatedHostProfileOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetEndpointGatewayIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetEndpointGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetFloatingIpOptions;
@@ -265,6 +316,7 @@ import com.ibm.cloud.is.vpc.v1.model.ImagePrototype;
 import com.ibm.cloud.is.vpc.v1.model.ImagePrototypeImageByFile;
 import com.ibm.cloud.is.vpc.v1.model.ImageReference;
 import com.ibm.cloud.is.vpc.v1.model.ImageReferenceDeleted;
+import com.ibm.cloud.is.vpc.v1.model.ImageStatusReason;
 import com.ibm.cloud.is.vpc.v1.model.Instance;
 import com.ibm.cloud.is.vpc.v1.model.InstanceAction;
 import com.ibm.cloud.is.vpc.v1.model.InstanceCollection;
@@ -365,6 +417,9 @@ import com.ibm.cloud.is.vpc.v1.model.KeyReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.KeyReferenceInstanceInitializationContext;
 import com.ibm.cloud.is.vpc.v1.model.KeyReferenceInstanceInitializationContextKeyIdentityByFingerprint;
 import com.ibm.cloud.is.vpc.v1.model.KeyReferenceInstanceInitializationContextKeyReference;
+import com.ibm.cloud.is.vpc.v1.model.ListDedicatedHostGroupsOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListDedicatedHostProfilesOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListDedicatedHostsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListEndpointGatewayIpsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListEndpointGatewaysOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListFloatingIpsOptions;
@@ -451,6 +506,8 @@ import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetPrototypeLo
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPrototypeLoadBalancerContext;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerReference;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerReferenceDeleted;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerLogging;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerLoggingDatapath;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPatch;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPool;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolCollection;
@@ -490,6 +547,7 @@ import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileIdentity;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileIdentityByHref;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileIdentityByName;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileLoggingSupported;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileReference;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerStatistics;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACL;
@@ -681,6 +739,8 @@ import com.ibm.cloud.is.vpc.v1.model.SubnetPrototypeSubnetByTotalCount;
 import com.ibm.cloud.is.vpc.v1.model.SubnetReference;
 import com.ibm.cloud.is.vpc.v1.model.SubnetReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.UnsetSubnetPublicGatewayOptions;
+import com.ibm.cloud.is.vpc.v1.model.UpdateDedicatedHostGroupOptions;
+import com.ibm.cloud.is.vpc.v1.model.UpdateDedicatedHostOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateEndpointGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateFloatingIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateFlowLogCollectorOptions;
@@ -717,6 +777,7 @@ import com.ibm.cloud.is.vpc.v1.model.UpdateVpcRoutingTableOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateVpcRoutingTableRouteOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateVpnGatewayConnectionOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateVpnGatewayOptions;
+import com.ibm.cloud.is.vpc.v1.model.VCPU;
 import com.ibm.cloud.is.vpc.v1.model.VPC;
 import com.ibm.cloud.is.vpc.v1.model.VPCCSESourceIP;
 import com.ibm.cloud.is.vpc.v1.model.VPCCollection;
@@ -795,6 +856,7 @@ import com.ibm.cloud.is.vpc.v1.model.VolumePrototypeInstanceByImageContext;
 import com.ibm.cloud.is.vpc.v1.model.VolumePrototypeVolumeByCapacity;
 import com.ibm.cloud.is.vpc.v1.model.VolumeReference;
 import com.ibm.cloud.is.vpc.v1.model.VolumeReferenceDeleted;
+import com.ibm.cloud.is.vpc.v1.model.VolumeStatusReason;
 import com.ibm.cloud.is.vpc.v1.model.Zone;
 import com.ibm.cloud.is.vpc.v1.model.ZoneCollection;
 import com.ibm.cloud.is.vpc.v1.model.ZoneIdentity;
@@ -3458,7 +3520,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testListImagesWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"first\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images?limit=20\"}, \"images\": [{\"created_at\": \"2019-01-01T12:00:00\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"encryption\": \"user_managed\", \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"file\": {\"size\": 1}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"minimum_provisioned_size\": 22, \"name\": \"my-image\", \"operating_system\": {\"architecture\": \"amd64\", \"display_name\": \"Ubuntu Server 16.04 LTS amd64\", \"family\": \"Ubuntu Server\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-16-amd64\", \"name\": \"ubuntu-16-amd64\", \"vendor\": \"Canonical\", \"version\": \"16.04 LTS\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"status\": \"available\", \"visibility\": \"private\"}], \"limit\": 20, \"next\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images?start=9d5a91a3e2cbd233b5a5b33436855ed1&limit=20\"}}";
+    String mockResponseBody = "{\"first\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images?limit=20\"}, \"images\": [{\"created_at\": \"2019-01-01T12:00:00\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"encryption\": \"user_managed\", \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"file\": {\"size\": 1}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"minimum_provisioned_size\": 22, \"name\": \"my-image\", \"operating_system\": {\"architecture\": \"amd64\", \"display_name\": \"Ubuntu Server 16.04 LTS amd64\", \"family\": \"Ubuntu Server\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-16-amd64\", \"name\": \"ubuntu-16-amd64\", \"vendor\": \"Canonical\", \"version\": \"16.04 LTS\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"status\": \"available\", \"status_reasons\": [{\"code\": \"encryption_key_deleted\", \"message\": \"message\", \"more_info\": \"https://cloud.ibm.com/docs/key-protect?topic=key-protect-restore-keys\"}], \"visibility\": \"private\"}], \"limit\": 20, \"next\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images?start=9d5a91a3e2cbd233b5a5b33436855ed1&limit=20\"}}";
     String listImagesPath = "/images";
 
     server.enqueue(new MockResponse()
@@ -3507,7 +3569,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testCreateImageWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"encryption\": \"user_managed\", \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"file\": {\"size\": 1}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"minimum_provisioned_size\": 22, \"name\": \"my-image\", \"operating_system\": {\"architecture\": \"amd64\", \"display_name\": \"Ubuntu Server 16.04 LTS amd64\", \"family\": \"Ubuntu Server\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-16-amd64\", \"name\": \"ubuntu-16-amd64\", \"vendor\": \"Canonical\", \"version\": \"16.04 LTS\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"status\": \"available\", \"visibility\": \"private\"}";
+    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"encryption\": \"user_managed\", \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"file\": {\"size\": 1}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"minimum_provisioned_size\": 22, \"name\": \"my-image\", \"operating_system\": {\"architecture\": \"amd64\", \"display_name\": \"Ubuntu Server 16.04 LTS amd64\", \"family\": \"Ubuntu Server\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-16-amd64\", \"name\": \"ubuntu-16-amd64\", \"vendor\": \"Canonical\", \"version\": \"16.04 LTS\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"status\": \"available\", \"status_reasons\": [{\"code\": \"encryption_key_deleted\", \"message\": \"message\", \"more_info\": \"https://cloud.ibm.com/docs/key-protect?topic=key-protect-restore-keys\"}], \"visibility\": \"private\"}";
     String createImagePath = "/images";
 
     server.enqueue(new MockResponse()
@@ -3641,7 +3703,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testGetImageWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"encryption\": \"user_managed\", \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"file\": {\"size\": 1}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"minimum_provisioned_size\": 22, \"name\": \"my-image\", \"operating_system\": {\"architecture\": \"amd64\", \"display_name\": \"Ubuntu Server 16.04 LTS amd64\", \"family\": \"Ubuntu Server\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-16-amd64\", \"name\": \"ubuntu-16-amd64\", \"vendor\": \"Canonical\", \"version\": \"16.04 LTS\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"status\": \"available\", \"visibility\": \"private\"}";
+    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"encryption\": \"user_managed\", \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"file\": {\"size\": 1}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"minimum_provisioned_size\": 22, \"name\": \"my-image\", \"operating_system\": {\"architecture\": \"amd64\", \"display_name\": \"Ubuntu Server 16.04 LTS amd64\", \"family\": \"Ubuntu Server\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-16-amd64\", \"name\": \"ubuntu-16-amd64\", \"vendor\": \"Canonical\", \"version\": \"16.04 LTS\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"status\": \"available\", \"status_reasons\": [{\"code\": \"encryption_key_deleted\", \"message\": \"message\", \"more_info\": \"https://cloud.ibm.com/docs/key-protect?topic=key-protect-restore-keys\"}], \"visibility\": \"private\"}";
     String getImagePath = "/images/testString";
 
     server.enqueue(new MockResponse()
@@ -3693,7 +3755,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testUpdateImageWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"encryption\": \"user_managed\", \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"file\": {\"size\": 1}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"minimum_provisioned_size\": 22, \"name\": \"my-image\", \"operating_system\": {\"architecture\": \"amd64\", \"display_name\": \"Ubuntu Server 16.04 LTS amd64\", \"family\": \"Ubuntu Server\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-16-amd64\", \"name\": \"ubuntu-16-amd64\", \"vendor\": \"Canonical\", \"version\": \"16.04 LTS\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"status\": \"available\", \"visibility\": \"private\"}";
+    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"encryption\": \"user_managed\", \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"file\": {\"size\": 1}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"minimum_provisioned_size\": 22, \"name\": \"my-image\", \"operating_system\": {\"architecture\": \"amd64\", \"display_name\": \"Ubuntu Server 16.04 LTS amd64\", \"family\": \"Ubuntu Server\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-16-amd64\", \"name\": \"ubuntu-16-amd64\", \"vendor\": \"Canonical\", \"version\": \"16.04 LTS\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"status\": \"available\", \"status_reasons\": [{\"code\": \"encryption_key_deleted\", \"message\": \"message\", \"more_info\": \"https://cloud.ibm.com/docs/key-protect?topic=key-protect-restore-keys\"}], \"visibility\": \"private\"}";
     String updateImagePath = "/images/testString";
 
     server.enqueue(new MockResponse()
@@ -4249,9 +4311,9 @@ public class VpcTest extends PowerMockTestCase {
 
     constructClientService();
 
-    // Construct an instance of the KeyIdentityKeyIdentityByFingerprint model
-    KeyIdentityKeyIdentityByFingerprint keyIdentityModel = new KeyIdentityKeyIdentityByFingerprint.Builder()
-    .fingerprint("SHA256:yxavE4CIOL2NlsqcurRO3xGjkP6m/0mp8ugojH5yxlY")
+    // Construct an instance of the KeyIdentityById model
+    KeyIdentityById keyIdentityModel = new KeyIdentityById.Builder()
+    .id("363f6d70-0000-0001-0000-00000013b96c")
     .build();
 
     // Construct an instance of the SecurityGroupIdentityById model
@@ -4297,7 +4359,7 @@ public class VpcTest extends PowerMockTestCase {
 
     // Construct an instance of the VPCIdentityById model
     VPCIdentityById vpcIdentityModel = new VPCIdentityById.Builder()
-    .id("4727d842-f94f-4a2d-824a-9bc9b02c523b")
+    .id("dc201ab2-8536-4904-86a8-084d84582133")
     .build();
 
     // Construct an instance of the EncryptionKeyIdentityByCRN model
@@ -4328,7 +4390,7 @@ public class VpcTest extends PowerMockTestCase {
 
     // Construct an instance of the ImageIdentityById model
     ImageIdentityById imageIdentityModel = new ImageIdentityById.Builder()
-    .id("72b27b5c-f4b0-48bb-b954-5becc7c1dcb8")
+    .id("3f9a2d96-830e-4100-9b4c-663225a3f872")
     .build();
 
     // Construct an instance of the ZoneIdentityByName model
@@ -4339,7 +4401,7 @@ public class VpcTest extends PowerMockTestCase {
     // Construct an instance of the InstanceTemplatePrototypeInstanceByImage model
     InstanceTemplatePrototypeInstanceByImage instanceTemplatePrototypeModel = new InstanceTemplatePrototypeInstanceByImage.Builder()
     .keys(new java.util.ArrayList<KeyIdentity>(java.util.Arrays.asList(keyIdentityModel)))
-    .name("my-instance")
+    .name("my-instance-template")
     .networkInterfaces(new java.util.ArrayList<NetworkInterfacePrototype>(java.util.Arrays.asList(networkInterfacePrototypeModel)))
     .profile(instanceProfileIdentityModel)
     .resourceGroup(resourceGroupIdentityModel)
@@ -4557,7 +4619,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testListInstancesWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"first\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances?limit=20\"}, \"instances\": [{\"bandwidth\": 1000, \"boot_volume_attachment\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"name\": \"my-volume-attachment\", \"volume\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}}, \"created_at\": \"2019-01-01T12:00:00\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"gpu\": {\"count\": 1, \"manufacturer\": \"nvidia\", \"memory\": 1, \"model\": \"Tesla V100\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"image\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"name\": \"my-image\"}, \"memory\": 8, \"name\": \"my-instance\", \"network_interfaces\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"name\": \"my-network-interface\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\", \"subnet\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}}], \"primary_network_interface\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"name\": \"my-network-interface\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\", \"subnet\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}}, \"profile\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/profiles/bc1-4x16\", \"name\": \"bc1-4x16\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"status\": \"failed\", \"vcpu\": {\"architecture\": \"amd64\", \"count\": 4}, \"volume_attachments\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"name\": \"my-volume-attachment\", \"volume\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}}], \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\"}, \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}], \"limit\": 20, \"next\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances?start=9d5a91a3e2cbd233b5a5b33436855ed1&limit=20\"}, \"total_count\": 132}";
+    String mockResponseBody = "{\"first\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances?limit=20\"}, \"instances\": [{\"bandwidth\": 1000, \"boot_volume_attachment\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"name\": \"my-volume-attachment\", \"volume\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}}, \"created_at\": \"2019-01-01T12:00:00\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"gpu\": {\"count\": 1, \"manufacturer\": \"nvidia\", \"memory\": 1, \"model\": \"Tesla V100\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"image\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"name\": \"my-image\"}, \"memory\": 8, \"name\": \"my-instance\", \"network_interfaces\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"name\": \"my-network-interface\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\", \"subnet\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}}], \"primary_network_interface\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"name\": \"my-network-interface\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\", \"subnet\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}}, \"profile\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/profiles/bc1-4x16\", \"name\": \"bc1-4x16\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"status\": \"deleting\", \"vcpu\": {\"architecture\": \"amd64\", \"count\": 4}, \"volume_attachments\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"name\": \"my-volume-attachment\", \"volume\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}}], \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\"}, \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}], \"limit\": 20, \"next\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances?start=9d5a91a3e2cbd233b5a5b33436855ed1&limit=20\"}, \"total_count\": 132}";
     String listInstancesPath = "/instances";
 
     server.enqueue(new MockResponse()
@@ -4610,7 +4672,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testCreateInstanceWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"bandwidth\": 1000, \"boot_volume_attachment\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"name\": \"my-volume-attachment\", \"volume\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}}, \"created_at\": \"2019-01-01T12:00:00\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"gpu\": {\"count\": 1, \"manufacturer\": \"nvidia\", \"memory\": 1, \"model\": \"Tesla V100\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"image\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"name\": \"my-image\"}, \"memory\": 8, \"name\": \"my-instance\", \"network_interfaces\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"name\": \"my-network-interface\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\", \"subnet\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}}], \"primary_network_interface\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"name\": \"my-network-interface\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\", \"subnet\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}}, \"profile\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/profiles/bc1-4x16\", \"name\": \"bc1-4x16\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"status\": \"failed\", \"vcpu\": {\"architecture\": \"amd64\", \"count\": 4}, \"volume_attachments\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"name\": \"my-volume-attachment\", \"volume\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}}], \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\"}, \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}";
+    String mockResponseBody = "{\"bandwidth\": 1000, \"boot_volume_attachment\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"name\": \"my-volume-attachment\", \"volume\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}}, \"created_at\": \"2019-01-01T12:00:00\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"gpu\": {\"count\": 1, \"manufacturer\": \"nvidia\", \"memory\": 1, \"model\": \"Tesla V100\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"image\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"name\": \"my-image\"}, \"memory\": 8, \"name\": \"my-instance\", \"network_interfaces\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"name\": \"my-network-interface\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\", \"subnet\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}}], \"primary_network_interface\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"name\": \"my-network-interface\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\", \"subnet\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}}, \"profile\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/profiles/bc1-4x16\", \"name\": \"bc1-4x16\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"status\": \"deleting\", \"vcpu\": {\"architecture\": \"amd64\", \"count\": 4}, \"volume_attachments\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"name\": \"my-volume-attachment\", \"volume\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}}], \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\"}, \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}";
     String createInstancePath = "/instances";
 
     server.enqueue(new MockResponse()
@@ -4620,9 +4682,9 @@ public class VpcTest extends PowerMockTestCase {
 
     constructClientService();
 
-    // Construct an instance of the KeyIdentityKeyIdentityByFingerprint model
-    KeyIdentityKeyIdentityByFingerprint keyIdentityModel = new KeyIdentityKeyIdentityByFingerprint.Builder()
-    .fingerprint("SHA256:RJ+YWs2kupwFGiJuLqY85twmcdLOUcjIc9cA6IR8n8E")
+    // Construct an instance of the KeyIdentityById model
+    KeyIdentityById keyIdentityModel = new KeyIdentityById.Builder()
+    .id("363f6d70-0000-0001-0000-00000013b96c")
     .build();
 
     // Construct an instance of the SecurityGroupIdentityById model
@@ -4654,9 +4716,23 @@ public class VpcTest extends PowerMockTestCase {
     .id("fee82deba12e4c0fb69c3b09d1f12345")
     .build();
 
-    // Construct an instance of the VolumeAttachmentVolumePrototypeInstanceContextVolumeIdentityVolumeIdentityById model
-    VolumeAttachmentVolumePrototypeInstanceContextVolumeIdentityVolumeIdentityById volumeAttachmentVolumePrototypeInstanceContextModel = new VolumeAttachmentVolumePrototypeInstanceContextVolumeIdentityVolumeIdentityById.Builder()
-    .id("1a6b7274-678d-4dfb-8981-c71dd9d4daa5")
+    // Construct an instance of the EncryptionKeyIdentityByCRN model
+    EncryptionKeyIdentityByCRN encryptionKeyIdentityModel = new EncryptionKeyIdentityByCRN.Builder()
+    .crn("crn:[...]")
+    .build();
+
+    // Construct an instance of the VolumeProfileIdentityByName model
+    VolumeProfileIdentityByName volumeProfileIdentityModel = new VolumeProfileIdentityByName.Builder()
+    .name("5iops-tier")
+    .build();
+
+    // Construct an instance of the VolumeAttachmentVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeByCapacity model
+    VolumeAttachmentVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeByCapacity volumeAttachmentVolumePrototypeInstanceContextModel = new VolumeAttachmentVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeByCapacity.Builder()
+    .encryptionKey(encryptionKeyIdentityModel)
+    .iops(Long.valueOf("10000"))
+    .name("my-data-volume")
+    .profile(volumeProfileIdentityModel)
+    .capacity(Long.valueOf("1000"))
     .build();
 
     // Construct an instance of the VolumeAttachmentPrototypeInstanceContext model
@@ -4668,17 +4744,7 @@ public class VpcTest extends PowerMockTestCase {
 
     // Construct an instance of the VPCIdentityById model
     VPCIdentityById vpcIdentityModel = new VPCIdentityById.Builder()
-    .id("4727d842-f94f-4a2d-824a-9bc9b02c523b")
-    .build();
-
-    // Construct an instance of the EncryptionKeyIdentityByCRN model
-    EncryptionKeyIdentityByCRN encryptionKeyIdentityModel = new EncryptionKeyIdentityByCRN.Builder()
-    .crn("crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179")
-    .build();
-
-    // Construct an instance of the VolumeProfileIdentityByName model
-    VolumeProfileIdentityByName volumeProfileIdentityModel = new VolumeProfileIdentityByName.Builder()
-    .name("general-purpose")
+    .id("f0aae929-7047-46d1-92e1-9102b07a7f6f")
     .build();
 
     // Construct an instance of the VolumePrototypeInstanceByImageContext model
@@ -4686,7 +4752,7 @@ public class VpcTest extends PowerMockTestCase {
     .capacity(Long.valueOf("100"))
     .encryptionKey(encryptionKeyIdentityModel)
     .iops(Long.valueOf("10000"))
-    .name("my-volume")
+    .name("my-boot-volume")
     .profile(volumeProfileIdentityModel)
     .build();
 
@@ -4699,7 +4765,7 @@ public class VpcTest extends PowerMockTestCase {
 
     // Construct an instance of the ImageIdentityById model
     ImageIdentityById imageIdentityModel = new ImageIdentityById.Builder()
-    .id("72b27b5c-f4b0-48bb-b954-5becc7c1dcb8")
+    .id("9aaf3bcb-dcd7-4de7-bb60-24e39ff9d366")
     .build();
 
     // Construct an instance of the ZoneIdentityByName model
@@ -4817,7 +4883,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testGetInstanceWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"bandwidth\": 1000, \"boot_volume_attachment\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"name\": \"my-volume-attachment\", \"volume\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}}, \"created_at\": \"2019-01-01T12:00:00\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"gpu\": {\"count\": 1, \"manufacturer\": \"nvidia\", \"memory\": 1, \"model\": \"Tesla V100\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"image\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"name\": \"my-image\"}, \"memory\": 8, \"name\": \"my-instance\", \"network_interfaces\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"name\": \"my-network-interface\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\", \"subnet\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}}], \"primary_network_interface\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"name\": \"my-network-interface\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\", \"subnet\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}}, \"profile\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/profiles/bc1-4x16\", \"name\": \"bc1-4x16\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"status\": \"failed\", \"vcpu\": {\"architecture\": \"amd64\", \"count\": 4}, \"volume_attachments\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"name\": \"my-volume-attachment\", \"volume\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}}], \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\"}, \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}";
+    String mockResponseBody = "{\"bandwidth\": 1000, \"boot_volume_attachment\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"name\": \"my-volume-attachment\", \"volume\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}}, \"created_at\": \"2019-01-01T12:00:00\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"gpu\": {\"count\": 1, \"manufacturer\": \"nvidia\", \"memory\": 1, \"model\": \"Tesla V100\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"image\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"name\": \"my-image\"}, \"memory\": 8, \"name\": \"my-instance\", \"network_interfaces\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"name\": \"my-network-interface\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\", \"subnet\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}}], \"primary_network_interface\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"name\": \"my-network-interface\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\", \"subnet\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}}, \"profile\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/profiles/bc1-4x16\", \"name\": \"bc1-4x16\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"status\": \"deleting\", \"vcpu\": {\"architecture\": \"amd64\", \"count\": 4}, \"volume_attachments\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"name\": \"my-volume-attachment\", \"volume\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}}], \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\"}, \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}";
     String getInstancePath = "/instances/testString";
 
     server.enqueue(new MockResponse()
@@ -4869,7 +4935,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testUpdateInstanceWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"bandwidth\": 1000, \"boot_volume_attachment\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"name\": \"my-volume-attachment\", \"volume\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}}, \"created_at\": \"2019-01-01T12:00:00\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"gpu\": {\"count\": 1, \"manufacturer\": \"nvidia\", \"memory\": 1, \"model\": \"Tesla V100\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"image\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"name\": \"my-image\"}, \"memory\": 8, \"name\": \"my-instance\", \"network_interfaces\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"name\": \"my-network-interface\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\", \"subnet\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}}], \"primary_network_interface\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"name\": \"my-network-interface\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\", \"subnet\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}}, \"profile\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/profiles/bc1-4x16\", \"name\": \"bc1-4x16\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"status\": \"failed\", \"vcpu\": {\"architecture\": \"amd64\", \"count\": 4}, \"volume_attachments\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"name\": \"my-volume-attachment\", \"volume\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}}], \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\"}, \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}";
+    String mockResponseBody = "{\"bandwidth\": 1000, \"boot_volume_attachment\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"name\": \"my-volume-attachment\", \"volume\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}}, \"created_at\": \"2019-01-01T12:00:00\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"gpu\": {\"count\": 1, \"manufacturer\": \"nvidia\", \"memory\": 1, \"model\": \"Tesla V100\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"image\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"name\": \"my-image\"}, \"memory\": 8, \"name\": \"my-instance\", \"network_interfaces\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"name\": \"my-network-interface\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\", \"subnet\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}}], \"primary_network_interface\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"name\": \"my-network-interface\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\", \"subnet\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}}, \"profile\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/profiles/bc1-4x16\", \"name\": \"bc1-4x16\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"status\": \"deleting\", \"vcpu\": {\"architecture\": \"amd64\", \"count\": 4}, \"volume_attachments\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"name\": \"my-volume-attachment\", \"volume\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}}], \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\"}, \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}";
     String updateInstancePath = "/instances/testString";
 
     server.enqueue(new MockResponse()
@@ -5272,7 +5338,7 @@ public class VpcTest extends PowerMockTestCase {
     // Construct an instance of the NetworkInterfacePatch model
     NetworkInterfacePatch networkInterfacePatchModel = new NetworkInterfacePatch.Builder()
     .allowIpSpoofing(true)
-    .name("my-network-interface")
+    .name("my-network-interface-1")
     .build();
     Map<String, Object> networkInterfacePatchModelAsPatch = networkInterfacePatchModel.asPatch();
 
@@ -5814,7 +5880,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testListInstanceGroupsWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"first\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups?limit=20\"}, \"instance_groups\": [{\"application_port\": 22, \"created_at\": \"2019-01-01T12:00:00\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance-group:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"instance_template\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance-template:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/templates/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"a6b1a881-2ce8-41a3-80fc-36316a73f803\"}, \"load_balancer_pool\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"name\": \"my-load-balancer-pool\"}, \"managers\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/1e09281b-f177-46fb-baf1-bc152b2e391a/managers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance-group-manager\"}], \"membership_count\": 10, \"name\": \"my-instance-group\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"status\": \"deleting\", \"subnets\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}], \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\"}}], \"limit\": 20, \"next\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups?start=9d5a91a3e2cbd233b5a5b33436855ed1&limit=20\"}, \"total_count\": 132}";
+    String mockResponseBody = "{\"first\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups?limit=20\"}, \"instance_groups\": [{\"application_port\": 22, \"created_at\": \"2019-01-01T12:00:00\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance-group:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"instance_template\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance-template:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/templates/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"name\": \"my-instance-template\"}, \"load_balancer_pool\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"name\": \"my-load-balancer-pool\"}, \"managers\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/1e09281b-f177-46fb-baf1-bc152b2e391a/managers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance-group-manager\"}], \"membership_count\": 10, \"name\": \"my-instance-group\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"status\": \"deleting\", \"subnets\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}], \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\"}}], \"limit\": 20, \"next\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups?start=9d5a91a3e2cbd233b5a5b33436855ed1&limit=20\"}, \"total_count\": 132}";
     String listInstanceGroupsPath = "/instance_groups";
 
     server.enqueue(new MockResponse()
@@ -5857,7 +5923,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testCreateInstanceGroupWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"application_port\": 22, \"created_at\": \"2019-01-01T12:00:00\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance-group:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"instance_template\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance-template:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/templates/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"a6b1a881-2ce8-41a3-80fc-36316a73f803\"}, \"load_balancer_pool\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"name\": \"my-load-balancer-pool\"}, \"managers\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/1e09281b-f177-46fb-baf1-bc152b2e391a/managers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance-group-manager\"}], \"membership_count\": 10, \"name\": \"my-instance-group\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"status\": \"deleting\", \"subnets\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}], \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\"}}";
+    String mockResponseBody = "{\"application_port\": 22, \"created_at\": \"2019-01-01T12:00:00\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance-group:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"instance_template\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance-template:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/templates/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"name\": \"my-instance-template\"}, \"load_balancer_pool\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"name\": \"my-load-balancer-pool\"}, \"managers\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/1e09281b-f177-46fb-baf1-bc152b2e391a/managers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance-group-manager\"}], \"membership_count\": 10, \"name\": \"my-instance-group\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"status\": \"deleting\", \"subnets\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}], \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\"}}";
     String createInstanceGroupPath = "/instance_groups";
 
     server.enqueue(new MockResponse()
@@ -5993,7 +6059,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testGetInstanceGroupWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"application_port\": 22, \"created_at\": \"2019-01-01T12:00:00\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance-group:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"instance_template\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance-template:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/templates/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"a6b1a881-2ce8-41a3-80fc-36316a73f803\"}, \"load_balancer_pool\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"name\": \"my-load-balancer-pool\"}, \"managers\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/1e09281b-f177-46fb-baf1-bc152b2e391a/managers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance-group-manager\"}], \"membership_count\": 10, \"name\": \"my-instance-group\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"status\": \"deleting\", \"subnets\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}], \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\"}}";
+    String mockResponseBody = "{\"application_port\": 22, \"created_at\": \"2019-01-01T12:00:00\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance-group:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"instance_template\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance-template:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/templates/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"name\": \"my-instance-template\"}, \"load_balancer_pool\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"name\": \"my-load-balancer-pool\"}, \"managers\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/1e09281b-f177-46fb-baf1-bc152b2e391a/managers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance-group-manager\"}], \"membership_count\": 10, \"name\": \"my-instance-group\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"status\": \"deleting\", \"subnets\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}], \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\"}}";
     String getInstanceGroupPath = "/instance_groups/testString";
 
     server.enqueue(new MockResponse()
@@ -6045,7 +6111,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testUpdateInstanceGroupWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"application_port\": 22, \"created_at\": \"2019-01-01T12:00:00\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance-group:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"instance_template\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance-template:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/templates/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"a6b1a881-2ce8-41a3-80fc-36316a73f803\"}, \"load_balancer_pool\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"name\": \"my-load-balancer-pool\"}, \"managers\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/1e09281b-f177-46fb-baf1-bc152b2e391a/managers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance-group-manager\"}], \"membership_count\": 10, \"name\": \"my-instance-group\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"status\": \"deleting\", \"subnets\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}], \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\"}}";
+    String mockResponseBody = "{\"application_port\": 22, \"created_at\": \"2019-01-01T12:00:00\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance-group:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"instance_template\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance-template:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/templates/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"name\": \"my-instance-template\"}, \"load_balancer_pool\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"name\": \"my-load-balancer-pool\"}, \"managers\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/1e09281b-f177-46fb-baf1-bc152b2e391a/managers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance-group-manager\"}], \"membership_count\": 10, \"name\": \"my-instance-group\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"status\": \"deleting\", \"subnets\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}], \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\"}}";
     String updateInstanceGroupPath = "/instance_groups/testString";
 
     server.enqueue(new MockResponse()
@@ -6807,7 +6873,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testListInstanceGroupMembershipsWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"first\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/7241e2a8-601f-11ea-8503-000c29475bed/memberships?limit=20\"}, \"limit\": 20, \"memberships\": [{\"delete_instance_on_membership_delete\": true, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/1e09281b-f177-46fb-baf1-bc152b2e391a/memberships/8b002d86-601f-11ea-898b-000c29475bed\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"instance\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance\"}, \"instance_template\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance-template:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/templates/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"a6b1a881-2ce8-41a3-80fc-36316a73f803\"}, \"name\": \"my-instance-group-membership\", \"pool_member\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004/members/80294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\"}, \"status\": \"deleting\"}], \"next\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/7241e2a8-601f-11ea-8503-000c29475bed/memberships?start=9d5a91a3e2cbd233b5a5b33436855ed1&limit=20\"}, \"total_count\": 132}";
+    String mockResponseBody = "{\"first\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/7241e2a8-601f-11ea-8503-000c29475bed/memberships?limit=20\"}, \"limit\": 20, \"memberships\": [{\"delete_instance_on_membership_delete\": true, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/1e09281b-f177-46fb-baf1-bc152b2e391a/memberships/8b002d86-601f-11ea-898b-000c29475bed\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"instance\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance\"}, \"instance_template\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance-template:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/templates/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"name\": \"my-instance-template\"}, \"name\": \"my-instance-group-membership\", \"pool_member\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004/members/80294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\"}, \"status\": \"deleting\"}], \"next\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/7241e2a8-601f-11ea-8503-000c29475bed/memberships?start=9d5a91a3e2cbd233b5a5b33436855ed1&limit=20\"}, \"total_count\": 132}";
     String listInstanceGroupMembershipsPath = "/instance_groups/testString/memberships";
 
     server.enqueue(new MockResponse()
@@ -6912,7 +6978,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testGetInstanceGroupMembershipWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"delete_instance_on_membership_delete\": true, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/1e09281b-f177-46fb-baf1-bc152b2e391a/memberships/8b002d86-601f-11ea-898b-000c29475bed\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"instance\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance\"}, \"instance_template\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance-template:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/templates/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"a6b1a881-2ce8-41a3-80fc-36316a73f803\"}, \"name\": \"my-instance-group-membership\", \"pool_member\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004/members/80294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\"}, \"status\": \"deleting\"}";
+    String mockResponseBody = "{\"delete_instance_on_membership_delete\": true, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/1e09281b-f177-46fb-baf1-bc152b2e391a/memberships/8b002d86-601f-11ea-898b-000c29475bed\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"instance\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance\"}, \"instance_template\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance-template:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/templates/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"name\": \"my-instance-template\"}, \"name\": \"my-instance-group-membership\", \"pool_member\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004/members/80294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\"}, \"status\": \"deleting\"}";
     String getInstanceGroupMembershipPath = "/instance_groups/testString/memberships/testString";
 
     server.enqueue(new MockResponse()
@@ -6965,7 +7031,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testUpdateInstanceGroupMembershipWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"delete_instance_on_membership_delete\": true, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/1e09281b-f177-46fb-baf1-bc152b2e391a/memberships/8b002d86-601f-11ea-898b-000c29475bed\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"instance\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance\"}, \"instance_template\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance-template:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/templates/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"a6b1a881-2ce8-41a3-80fc-36316a73f803\"}, \"name\": \"my-instance-group-membership\", \"pool_member\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004/members/80294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\"}, \"status\": \"deleting\"}";
+    String mockResponseBody = "{\"delete_instance_on_membership_delete\": true, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/1e09281b-f177-46fb-baf1-bc152b2e391a/memberships/8b002d86-601f-11ea-898b-000c29475bed\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"instance\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance\"}, \"instance_template\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance-template:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/templates/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"name\": \"my-instance-template\"}, \"name\": \"my-instance-group-membership\", \"pool_member\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004/members/80294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\"}, \"status\": \"deleting\"}";
     String updateInstanceGroupMembershipPath = "/instance_groups/testString/memberships/testString";
 
     server.enqueue(new MockResponse()
@@ -7020,6 +7086,654 @@ public class VpcTest extends PowerMockTestCase {
 
     // Invoke operation with null options model (negative test)
     vpcService.updateInstanceGroupMembership(null).execute();
+  }
+
+  @Test
+  public void testListDedicatedHostGroupsWOptions() throws Throwable {
+    // Schedule some responses.
+    String mockResponseBody = "{\"first\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/dedicated_host/groups?limit=20\"}, \"groups\": [{\"class\": \"mx2\", \"created_at\": \"2019-01-01T12:00:00\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::dedicated-host-group:bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0\", \"dedicated_hosts\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::dedicated-host:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/dedicated_hosts/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-host\", \"resource_type\": \"dedicated_host\"}], \"family\": \"balanced\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/dedicated_host/groups/bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0\", \"id\": \"bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0\", \"name\": \"my-host-group\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"dedicated_host_group\", \"supported_instance_profiles\": [{\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/profiles/bc1-4x16\", \"name\": \"bc1-4x16\"}], \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}], \"limit\": 20, \"next\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/dedicated_host/groups?start=9d5a91a3e2cbd233b5a5b33436855ed1&limit=20\"}, \"total_count\": 132}";
+    String listDedicatedHostGroupsPath = "/dedicated_host/groups";
+
+    server.enqueue(new MockResponse()
+    .setHeader("Content-type", "application/json")
+    .setResponseCode(200)
+    .setBody(mockResponseBody));
+
+    constructClientService();
+
+    // Construct an instance of the ListDedicatedHostGroupsOptions model
+    ListDedicatedHostGroupsOptions listDedicatedHostGroupsOptionsModel = new ListDedicatedHostGroupsOptions.Builder()
+    .start("testString")
+    .limit(Long.valueOf("1"))
+    .resourceGroupId("testString")
+    .zoneName("testString")
+    .build();
+
+    // Invoke operation with valid options model (positive test)
+    Response<DedicatedHostGroupCollection> response = vpcService.listDedicatedHostGroups(listDedicatedHostGroupsOptionsModel).execute();
+    assertNotNull(response);
+    DedicatedHostGroupCollection responseObj = response.getResult();
+    assertNotNull(responseObj);
+
+    // Verify the contents of the request
+    RecordedRequest request = server.takeRequest();
+    assertNotNull(request);
+    assertEquals(request.getMethod(), "GET");
+
+    // Check query
+    Map<String, String> query = TestUtilities.parseQueryString(request);
+    assertNotNull(query);
+    // Get query params
+    assertEquals(query.get("version"), "testString");
+    assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
+    assertEquals(query.get("start"), "testString");
+    assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("1"));
+    assertEquals(query.get("resource_group.id"), "testString");
+    assertEquals(query.get("zone.name"), "testString");
+    // Check request path
+    String parsedPath = TestUtilities.parseReqPath(request);
+    assertEquals(parsedPath, listDedicatedHostGroupsPath);
+  }
+
+  @Test
+  public void testCreateDedicatedHostGroupWOptions() throws Throwable {
+    // Schedule some responses.
+    String mockResponseBody = "{\"class\": \"mx2\", \"created_at\": \"2019-01-01T12:00:00\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::dedicated-host-group:bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0\", \"dedicated_hosts\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::dedicated-host:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/dedicated_hosts/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-host\", \"resource_type\": \"dedicated_host\"}], \"family\": \"balanced\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/dedicated_host/groups/bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0\", \"id\": \"bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0\", \"name\": \"my-host-group\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"dedicated_host_group\", \"supported_instance_profiles\": [{\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/profiles/bc1-4x16\", \"name\": \"bc1-4x16\"}], \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}";
+    String createDedicatedHostGroupPath = "/dedicated_host/groups";
+
+    server.enqueue(new MockResponse()
+    .setHeader("Content-type", "application/json")
+    .setResponseCode(201)
+    .setBody(mockResponseBody));
+
+    constructClientService();
+
+    // Construct an instance of the ResourceGroupIdentityById model
+    ResourceGroupIdentityById resourceGroupIdentityModel = new ResourceGroupIdentityById.Builder()
+    .id("fee82deba12e4c0fb69c3b09d1f12345")
+    .build();
+
+    // Construct an instance of the ZoneIdentityByName model
+    ZoneIdentityByName zoneIdentityModel = new ZoneIdentityByName.Builder()
+    .name("us-south-1")
+    .build();
+
+    // Construct an instance of the CreateDedicatedHostGroupOptions model
+    CreateDedicatedHostGroupOptions createDedicatedHostGroupOptionsModel = new CreateDedicatedHostGroupOptions.Builder()
+    .xClass("mx2")
+    .family("balanced")
+    .name("testString")
+    .resourceGroup(resourceGroupIdentityModel)
+    .zone(zoneIdentityModel)
+    .build();
+
+    // Invoke operation with valid options model (positive test)
+    Response<DedicatedHostGroup> response = vpcService.createDedicatedHostGroup(createDedicatedHostGroupOptionsModel).execute();
+    assertNotNull(response);
+    DedicatedHostGroup responseObj = response.getResult();
+    assertNotNull(responseObj);
+
+    // Verify the contents of the request
+    RecordedRequest request = server.takeRequest();
+    assertNotNull(request);
+    assertEquals(request.getMethod(), "POST");
+
+    // Check query
+    Map<String, String> query = TestUtilities.parseQueryString(request);
+    assertNotNull(query);
+    // Get query params
+    assertEquals(query.get("version"), "testString");
+    assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
+    // Check request path
+    String parsedPath = TestUtilities.parseReqPath(request);
+    assertEquals(parsedPath, createDedicatedHostGroupPath);
+  }
+
+  @Test
+  public void testDeleteDedicatedHostGroupWOptions() throws Throwable {
+    // Schedule some responses.
+    String mockResponseBody = "";
+    String deleteDedicatedHostGroupPath = "/dedicated_host/groups/testString";
+
+    server.enqueue(new MockResponse()
+    .setResponseCode(204)
+    .setBody(mockResponseBody));
+
+    constructClientService();
+
+    // Construct an instance of the DeleteDedicatedHostGroupOptions model
+    DeleteDedicatedHostGroupOptions deleteDedicatedHostGroupOptionsModel = new DeleteDedicatedHostGroupOptions.Builder()
+    .id("testString")
+    .build();
+
+    // Invoke operation with valid options model (positive test)
+    Response<Void> response = vpcService.deleteDedicatedHostGroup(deleteDedicatedHostGroupOptionsModel).execute();
+    assertNotNull(response);
+    Void responseObj = response.getResult();
+    // Response does not have a return type. Check that the result is null.
+    assertNull(responseObj);
+
+    // Verify the contents of the request
+    RecordedRequest request = server.takeRequest();
+    assertNotNull(request);
+    assertEquals(request.getMethod(), "DELETE");
+
+    // Check query
+    Map<String, String> query = TestUtilities.parseQueryString(request);
+    assertNotNull(query);
+    // Get query params
+    assertEquals(query.get("version"), "testString");
+    assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
+    // Check request path
+    String parsedPath = TestUtilities.parseReqPath(request);
+    assertEquals(parsedPath, deleteDedicatedHostGroupPath);
+  }
+
+  // Test the deleteDedicatedHostGroup operation with null options model parameter
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testDeleteDedicatedHostGroupNoOptions() throws Throwable {
+    // construct the service
+    constructClientService();
+
+    server.enqueue(new MockResponse());
+
+    // Invoke operation with null options model (negative test)
+    vpcService.deleteDedicatedHostGroup(null).execute();
+  }
+
+  @Test
+  public void testGetDedicatedHostGroupWOptions() throws Throwable {
+    // Schedule some responses.
+    String mockResponseBody = "{\"class\": \"mx2\", \"created_at\": \"2019-01-01T12:00:00\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::dedicated-host-group:bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0\", \"dedicated_hosts\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::dedicated-host:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/dedicated_hosts/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-host\", \"resource_type\": \"dedicated_host\"}], \"family\": \"balanced\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/dedicated_host/groups/bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0\", \"id\": \"bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0\", \"name\": \"my-host-group\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"dedicated_host_group\", \"supported_instance_profiles\": [{\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/profiles/bc1-4x16\", \"name\": \"bc1-4x16\"}], \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}";
+    String getDedicatedHostGroupPath = "/dedicated_host/groups/testString";
+
+    server.enqueue(new MockResponse()
+    .setHeader("Content-type", "application/json")
+    .setResponseCode(200)
+    .setBody(mockResponseBody));
+
+    constructClientService();
+
+    // Construct an instance of the GetDedicatedHostGroupOptions model
+    GetDedicatedHostGroupOptions getDedicatedHostGroupOptionsModel = new GetDedicatedHostGroupOptions.Builder()
+    .id("testString")
+    .build();
+
+    // Invoke operation with valid options model (positive test)
+    Response<DedicatedHostGroup> response = vpcService.getDedicatedHostGroup(getDedicatedHostGroupOptionsModel).execute();
+    assertNotNull(response);
+    DedicatedHostGroup responseObj = response.getResult();
+    assertNotNull(responseObj);
+
+    // Verify the contents of the request
+    RecordedRequest request = server.takeRequest();
+    assertNotNull(request);
+    assertEquals(request.getMethod(), "GET");
+
+    // Check query
+    Map<String, String> query = TestUtilities.parseQueryString(request);
+    assertNotNull(query);
+    // Get query params
+    assertEquals(query.get("version"), "testString");
+    assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
+    // Check request path
+    String parsedPath = TestUtilities.parseReqPath(request);
+    assertEquals(parsedPath, getDedicatedHostGroupPath);
+  }
+
+  // Test the getDedicatedHostGroup operation with null options model parameter
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testGetDedicatedHostGroupNoOptions() throws Throwable {
+    // construct the service
+    constructClientService();
+
+    server.enqueue(new MockResponse());
+
+    // Invoke operation with null options model (negative test)
+    vpcService.getDedicatedHostGroup(null).execute();
+  }
+
+  @Test
+  public void testUpdateDedicatedHostGroupWOptions() throws Throwable {
+    // Schedule some responses.
+    String mockResponseBody = "{\"class\": \"mx2\", \"created_at\": \"2019-01-01T12:00:00\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::dedicated-host-group:bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0\", \"dedicated_hosts\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::dedicated-host:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/dedicated_hosts/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-host\", \"resource_type\": \"dedicated_host\"}], \"family\": \"balanced\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/dedicated_host/groups/bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0\", \"id\": \"bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0\", \"name\": \"my-host-group\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"dedicated_host_group\", \"supported_instance_profiles\": [{\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/profiles/bc1-4x16\", \"name\": \"bc1-4x16\"}], \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}";
+    String updateDedicatedHostGroupPath = "/dedicated_host/groups/testString";
+
+    server.enqueue(new MockResponse()
+    .setHeader("Content-type", "application/json")
+    .setResponseCode(200)
+    .setBody(mockResponseBody));
+
+    constructClientService();
+
+    // Construct an instance of the DedicatedHostGroupPatch model
+    DedicatedHostGroupPatch dedicatedHostGroupPatchModel = new DedicatedHostGroupPatch.Builder()
+    .name("my-host-group-modified")
+    .build();
+    Map<String, Object> dedicatedHostGroupPatchModelAsPatch = dedicatedHostGroupPatchModel.asPatch();
+
+    // Construct an instance of the UpdateDedicatedHostGroupOptions model
+    UpdateDedicatedHostGroupOptions updateDedicatedHostGroupOptionsModel = new UpdateDedicatedHostGroupOptions.Builder()
+    .id("testString")
+    .dedicatedHostGroupPatch(dedicatedHostGroupPatchModelAsPatch)
+    .build();
+
+    // Invoke operation with valid options model (positive test)
+    Response<DedicatedHostGroup> response = vpcService.updateDedicatedHostGroup(updateDedicatedHostGroupOptionsModel).execute();
+    assertNotNull(response);
+    DedicatedHostGroup responseObj = response.getResult();
+    assertNotNull(responseObj);
+
+    // Verify the contents of the request
+    RecordedRequest request = server.takeRequest();
+    assertNotNull(request);
+    assertEquals(request.getMethod(), "PATCH");
+
+    // Check query
+    Map<String, String> query = TestUtilities.parseQueryString(request);
+    assertNotNull(query);
+    // Get query params
+    assertEquals(query.get("version"), "testString");
+    assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
+    // Check request path
+    String parsedPath = TestUtilities.parseReqPath(request);
+    assertEquals(parsedPath, updateDedicatedHostGroupPath);
+  }
+
+  // Test the updateDedicatedHostGroup operation with null options model parameter
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testUpdateDedicatedHostGroupNoOptions() throws Throwable {
+    // construct the service
+    constructClientService();
+
+    server.enqueue(new MockResponse());
+
+    // Invoke operation with null options model (negative test)
+    vpcService.updateDedicatedHostGroup(null).execute();
+  }
+
+  @Test
+  public void testListDedicatedHostProfilesWOptions() throws Throwable {
+    // Schedule some responses.
+    String mockResponseBody = "{\"first\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/dedicated_host/profiles?limit=20\"}, \"limit\": 20, \"next\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/dedicated_host/profiles?start=9da91&limit=20\"}, \"profiles\": [{\"class\": \"mx2\", \"family\": \"balanced\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/dedicated_hosts/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"memory\": {\"type\": \"fixed\", \"value\": 16}, \"name\": \"mx2-host-152x1216\", \"socket_count\": {\"type\": \"fixed\", \"value\": 2}, \"supported_instance_profiles\": [{\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/profiles/bc1-4x16\", \"name\": \"bc1-4x16\"}], \"vcpu_architecture\": {\"type\": \"fixed\", \"value\": \"amd64\"}, \"vcpu_count\": {\"type\": \"fixed\", \"value\": 16}}], \"total_count\": 132}";
+    String listDedicatedHostProfilesPath = "/dedicated_host/profiles";
+
+    server.enqueue(new MockResponse()
+    .setHeader("Content-type", "application/json")
+    .setResponseCode(200)
+    .setBody(mockResponseBody));
+
+    constructClientService();
+
+    // Construct an instance of the ListDedicatedHostProfilesOptions model
+    ListDedicatedHostProfilesOptions listDedicatedHostProfilesOptionsModel = new ListDedicatedHostProfilesOptions.Builder()
+    .start("testString")
+    .limit(Long.valueOf("1"))
+    .build();
+
+    // Invoke operation with valid options model (positive test)
+    Response<DedicatedHostProfileCollection> response = vpcService.listDedicatedHostProfiles(listDedicatedHostProfilesOptionsModel).execute();
+    assertNotNull(response);
+    DedicatedHostProfileCollection responseObj = response.getResult();
+    assertNotNull(responseObj);
+
+    // Verify the contents of the request
+    RecordedRequest request = server.takeRequest();
+    assertNotNull(request);
+    assertEquals(request.getMethod(), "GET");
+
+    // Check query
+    Map<String, String> query = TestUtilities.parseQueryString(request);
+    assertNotNull(query);
+    // Get query params
+    assertEquals(query.get("version"), "testString");
+    assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
+    assertEquals(query.get("start"), "testString");
+    assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("1"));
+    // Check request path
+    String parsedPath = TestUtilities.parseReqPath(request);
+    assertEquals(parsedPath, listDedicatedHostProfilesPath);
+  }
+
+  @Test
+  public void testGetDedicatedHostProfileWOptions() throws Throwable {
+    // Schedule some responses.
+    String mockResponseBody = "{\"class\": \"mx2\", \"family\": \"balanced\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/dedicated_hosts/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"memory\": {\"type\": \"fixed\", \"value\": 16}, \"name\": \"mx2-host-152x1216\", \"socket_count\": {\"type\": \"fixed\", \"value\": 2}, \"supported_instance_profiles\": [{\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/profiles/bc1-4x16\", \"name\": \"bc1-4x16\"}], \"vcpu_architecture\": {\"type\": \"fixed\", \"value\": \"amd64\"}, \"vcpu_count\": {\"type\": \"fixed\", \"value\": 16}}";
+    String getDedicatedHostProfilePath = "/dedicated_host/profiles/testString";
+
+    server.enqueue(new MockResponse()
+    .setHeader("Content-type", "application/json")
+    .setResponseCode(200)
+    .setBody(mockResponseBody));
+
+    constructClientService();
+
+    // Construct an instance of the GetDedicatedHostProfileOptions model
+    GetDedicatedHostProfileOptions getDedicatedHostProfileOptionsModel = new GetDedicatedHostProfileOptions.Builder()
+    .name("testString")
+    .build();
+
+    // Invoke operation with valid options model (positive test)
+    Response<DedicatedHostProfile> response = vpcService.getDedicatedHostProfile(getDedicatedHostProfileOptionsModel).execute();
+    assertNotNull(response);
+    DedicatedHostProfile responseObj = response.getResult();
+    assertNotNull(responseObj);
+
+    // Verify the contents of the request
+    RecordedRequest request = server.takeRequest();
+    assertNotNull(request);
+    assertEquals(request.getMethod(), "GET");
+
+    // Check query
+    Map<String, String> query = TestUtilities.parseQueryString(request);
+    assertNotNull(query);
+    // Get query params
+    assertEquals(query.get("version"), "testString");
+    assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
+    // Check request path
+    String parsedPath = TestUtilities.parseReqPath(request);
+    assertEquals(parsedPath, getDedicatedHostProfilePath);
+  }
+
+  // Test the getDedicatedHostProfile operation with null options model parameter
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testGetDedicatedHostProfileNoOptions() throws Throwable {
+    // construct the service
+    constructClientService();
+
+    server.enqueue(new MockResponse());
+
+    // Invoke operation with null options model (negative test)
+    vpcService.getDedicatedHostProfile(null).execute();
+  }
+
+  @Test
+  public void testListDedicatedHostsWOptions() throws Throwable {
+    // Schedule some responses.
+    String mockResponseBody = "{\"dedicated_hosts\": [{\"available_memory\": 128, \"available_vcpu\": {\"architecture\": \"amd64\", \"count\": 4}, \"created_at\": \"2019-01-01T12:00:00\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::dedicated-host:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"group\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::dedicated-host-group:bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/dedicated_host/groups/bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0\", \"id\": \"bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0\", \"name\": \"my-host-group\", \"resource_type\": \"dedicated_host_group\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/dedicated_hosts/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"instance_placement_enabled\": true, \"instances\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance\"}], \"lifecycle_state\": \"stable\", \"memory\": 128, \"name\": \"my-host\", \"profile\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/dedicated_hosts/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"mx2-host-152x1216\"}, \"provisionable\": false, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"dedicated_host\", \"socket_count\": 4, \"state\": \"available\", \"supported_instance_profiles\": [{\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/profiles/bc1-4x16\", \"name\": \"bc1-4x16\"}], \"vcpu\": {\"architecture\": \"amd64\", \"count\": 4}, \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}], \"first\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/dedicated_hosts?limit=20\"}, \"limit\": 20, \"next\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/dedicated_hosts?start=9d5a91a3e2cbd233b5a5b33436855ed1&limit=20\"}, \"total_count\": 132}";
+    String listDedicatedHostsPath = "/dedicated_hosts";
+
+    server.enqueue(new MockResponse()
+    .setHeader("Content-type", "application/json")
+    .setResponseCode(200)
+    .setBody(mockResponseBody));
+
+    constructClientService();
+
+    // Construct an instance of the ListDedicatedHostsOptions model
+    ListDedicatedHostsOptions listDedicatedHostsOptionsModel = new ListDedicatedHostsOptions.Builder()
+    .dedicatedHostGroupId("testString")
+    .start("testString")
+    .limit(Long.valueOf("1"))
+    .resourceGroupId("testString")
+    .zoneName("testString")
+    .build();
+
+    // Invoke operation with valid options model (positive test)
+    Response<DedicatedHostCollection> response = vpcService.listDedicatedHosts(listDedicatedHostsOptionsModel).execute();
+    assertNotNull(response);
+    DedicatedHostCollection responseObj = response.getResult();
+    assertNotNull(responseObj);
+
+    // Verify the contents of the request
+    RecordedRequest request = server.takeRequest();
+    assertNotNull(request);
+    assertEquals(request.getMethod(), "GET");
+
+    // Check query
+    Map<String, String> query = TestUtilities.parseQueryString(request);
+    assertNotNull(query);
+    // Get query params
+    assertEquals(query.get("version"), "testString");
+    assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
+    assertEquals(query.get("dedicated_host_group.id"), "testString");
+    assertEquals(query.get("start"), "testString");
+    assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("1"));
+    assertEquals(query.get("resource_group.id"), "testString");
+    assertEquals(query.get("zone.name"), "testString");
+    // Check request path
+    String parsedPath = TestUtilities.parseReqPath(request);
+    assertEquals(parsedPath, listDedicatedHostsPath);
+  }
+
+  @Test
+  public void testCreateDedicatedHostWOptions() throws Throwable {
+    // Schedule some responses.
+    String mockResponseBody = "{\"available_memory\": 128, \"available_vcpu\": {\"architecture\": \"amd64\", \"count\": 4}, \"created_at\": \"2019-01-01T12:00:00\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::dedicated-host:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"group\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::dedicated-host-group:bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/dedicated_host/groups/bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0\", \"id\": \"bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0\", \"name\": \"my-host-group\", \"resource_type\": \"dedicated_host_group\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/dedicated_hosts/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"instance_placement_enabled\": true, \"instances\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance\"}], \"lifecycle_state\": \"stable\", \"memory\": 128, \"name\": \"my-host\", \"profile\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/dedicated_hosts/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"mx2-host-152x1216\"}, \"provisionable\": false, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"dedicated_host\", \"socket_count\": 4, \"state\": \"available\", \"supported_instance_profiles\": [{\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/profiles/bc1-4x16\", \"name\": \"bc1-4x16\"}], \"vcpu\": {\"architecture\": \"amd64\", \"count\": 4}, \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}";
+    String createDedicatedHostPath = "/dedicated_hosts";
+
+    server.enqueue(new MockResponse()
+    .setHeader("Content-type", "application/json")
+    .setResponseCode(201)
+    .setBody(mockResponseBody));
+
+    constructClientService();
+
+    // Construct an instance of the DedicatedHostProfileIdentityByName model
+    DedicatedHostProfileIdentityByName dedicatedHostProfileIdentityModel = new DedicatedHostProfileIdentityByName.Builder()
+    .name("m-62x496")
+    .build();
+
+    // Construct an instance of the ResourceGroupIdentityById model
+    ResourceGroupIdentityById resourceGroupIdentityModel = new ResourceGroupIdentityById.Builder()
+    .id("fee82deba12e4c0fb69c3b09d1f12345")
+    .build();
+
+    // Construct an instance of the DedicatedHostGroupIdentityById model
+    DedicatedHostGroupIdentityById dedicatedHostGroupIdentityModel = new DedicatedHostGroupIdentityById.Builder()
+    .id("0c8eccb4-271c-4518-956c-32bfce5cf83b")
+    .build();
+
+    // Construct an instance of the DedicatedHostPrototypeDedicatedHostByGroup model
+    DedicatedHostPrototypeDedicatedHostByGroup dedicatedHostPrototypeModel = new DedicatedHostPrototypeDedicatedHostByGroup.Builder()
+    .instancePlacementEnabled(true)
+    .name("my-host")
+    .profile(dedicatedHostProfileIdentityModel)
+    .resourceGroup(resourceGroupIdentityModel)
+    .group(dedicatedHostGroupIdentityModel)
+    .build();
+
+    // Construct an instance of the CreateDedicatedHostOptions model
+    CreateDedicatedHostOptions createDedicatedHostOptionsModel = new CreateDedicatedHostOptions.Builder()
+    .dedicatedHostPrototype(dedicatedHostPrototypeModel)
+    .build();
+
+    // Invoke operation with valid options model (positive test)
+    Response<DedicatedHost> response = vpcService.createDedicatedHost(createDedicatedHostOptionsModel).execute();
+    assertNotNull(response);
+    DedicatedHost responseObj = response.getResult();
+    assertNotNull(responseObj);
+
+    // Verify the contents of the request
+    RecordedRequest request = server.takeRequest();
+    assertNotNull(request);
+    assertEquals(request.getMethod(), "POST");
+
+    // Check query
+    Map<String, String> query = TestUtilities.parseQueryString(request);
+    assertNotNull(query);
+    // Get query params
+    assertEquals(query.get("version"), "testString");
+    assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
+    // Check request path
+    String parsedPath = TestUtilities.parseReqPath(request);
+    assertEquals(parsedPath, createDedicatedHostPath);
+  }
+
+  // Test the createDedicatedHost operation with null options model parameter
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testCreateDedicatedHostNoOptions() throws Throwable {
+    // construct the service
+    constructClientService();
+
+    server.enqueue(new MockResponse());
+
+    // Invoke operation with null options model (negative test)
+    vpcService.createDedicatedHost(null).execute();
+  }
+
+  @Test
+  public void testDeleteDedicatedHostWOptions() throws Throwable {
+    // Schedule some responses.
+    String mockResponseBody = "";
+    String deleteDedicatedHostPath = "/dedicated_hosts/testString";
+
+    server.enqueue(new MockResponse()
+    .setResponseCode(204)
+    .setBody(mockResponseBody));
+
+    constructClientService();
+
+    // Construct an instance of the DeleteDedicatedHostOptions model
+    DeleteDedicatedHostOptions deleteDedicatedHostOptionsModel = new DeleteDedicatedHostOptions.Builder()
+    .id("testString")
+    .build();
+
+    // Invoke operation with valid options model (positive test)
+    Response<Void> response = vpcService.deleteDedicatedHost(deleteDedicatedHostOptionsModel).execute();
+    assertNotNull(response);
+    Void responseObj = response.getResult();
+    // Response does not have a return type. Check that the result is null.
+    assertNull(responseObj);
+
+    // Verify the contents of the request
+    RecordedRequest request = server.takeRequest();
+    assertNotNull(request);
+    assertEquals(request.getMethod(), "DELETE");
+
+    // Check query
+    Map<String, String> query = TestUtilities.parseQueryString(request);
+    assertNotNull(query);
+    // Get query params
+    assertEquals(query.get("version"), "testString");
+    assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
+    // Check request path
+    String parsedPath = TestUtilities.parseReqPath(request);
+    assertEquals(parsedPath, deleteDedicatedHostPath);
+  }
+
+  // Test the deleteDedicatedHost operation with null options model parameter
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testDeleteDedicatedHostNoOptions() throws Throwable {
+    // construct the service
+    constructClientService();
+
+    server.enqueue(new MockResponse());
+
+    // Invoke operation with null options model (negative test)
+    vpcService.deleteDedicatedHost(null).execute();
+  }
+
+  @Test
+  public void testGetDedicatedHostWOptions() throws Throwable {
+    // Schedule some responses.
+    String mockResponseBody = "{\"available_memory\": 128, \"available_vcpu\": {\"architecture\": \"amd64\", \"count\": 4}, \"created_at\": \"2019-01-01T12:00:00\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::dedicated-host:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"group\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::dedicated-host-group:bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/dedicated_host/groups/bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0\", \"id\": \"bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0\", \"name\": \"my-host-group\", \"resource_type\": \"dedicated_host_group\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/dedicated_hosts/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"instance_placement_enabled\": true, \"instances\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance\"}], \"lifecycle_state\": \"stable\", \"memory\": 128, \"name\": \"my-host\", \"profile\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/dedicated_hosts/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"mx2-host-152x1216\"}, \"provisionable\": false, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"dedicated_host\", \"socket_count\": 4, \"state\": \"available\", \"supported_instance_profiles\": [{\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/profiles/bc1-4x16\", \"name\": \"bc1-4x16\"}], \"vcpu\": {\"architecture\": \"amd64\", \"count\": 4}, \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}";
+    String getDedicatedHostPath = "/dedicated_hosts/testString";
+
+    server.enqueue(new MockResponse()
+    .setHeader("Content-type", "application/json")
+    .setResponseCode(200)
+    .setBody(mockResponseBody));
+
+    constructClientService();
+
+    // Construct an instance of the GetDedicatedHostOptions model
+    GetDedicatedHostOptions getDedicatedHostOptionsModel = new GetDedicatedHostOptions.Builder()
+    .id("testString")
+    .build();
+
+    // Invoke operation with valid options model (positive test)
+    Response<DedicatedHost> response = vpcService.getDedicatedHost(getDedicatedHostOptionsModel).execute();
+    assertNotNull(response);
+    DedicatedHost responseObj = response.getResult();
+    assertNotNull(responseObj);
+
+    // Verify the contents of the request
+    RecordedRequest request = server.takeRequest();
+    assertNotNull(request);
+    assertEquals(request.getMethod(), "GET");
+
+    // Check query
+    Map<String, String> query = TestUtilities.parseQueryString(request);
+    assertNotNull(query);
+    // Get query params
+    assertEquals(query.get("version"), "testString");
+    assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
+    // Check request path
+    String parsedPath = TestUtilities.parseReqPath(request);
+    assertEquals(parsedPath, getDedicatedHostPath);
+  }
+
+  // Test the getDedicatedHost operation with null options model parameter
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testGetDedicatedHostNoOptions() throws Throwable {
+    // construct the service
+    constructClientService();
+
+    server.enqueue(new MockResponse());
+
+    // Invoke operation with null options model (negative test)
+    vpcService.getDedicatedHost(null).execute();
+  }
+
+  @Test
+  public void testUpdateDedicatedHostWOptions() throws Throwable {
+    // Schedule some responses.
+    String mockResponseBody = "{\"available_memory\": 128, \"available_vcpu\": {\"architecture\": \"amd64\", \"count\": 4}, \"created_at\": \"2019-01-01T12:00:00\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::dedicated-host:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"group\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::dedicated-host-group:bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/dedicated_host/groups/bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0\", \"id\": \"bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0\", \"name\": \"my-host-group\", \"resource_type\": \"dedicated_host_group\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/dedicated_hosts/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"instance_placement_enabled\": true, \"instances\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance\"}], \"lifecycle_state\": \"stable\", \"memory\": 128, \"name\": \"my-host\", \"profile\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/dedicated_hosts/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"mx2-host-152x1216\"}, \"provisionable\": false, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"dedicated_host\", \"socket_count\": 4, \"state\": \"available\", \"supported_instance_profiles\": [{\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/profiles/bc1-4x16\", \"name\": \"bc1-4x16\"}], \"vcpu\": {\"architecture\": \"amd64\", \"count\": 4}, \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}";
+    String updateDedicatedHostPath = "/dedicated_hosts/testString";
+
+    server.enqueue(new MockResponse()
+    .setHeader("Content-type", "application/json")
+    .setResponseCode(200)
+    .setBody(mockResponseBody));
+
+    constructClientService();
+
+    // Construct an instance of the DedicatedHostPatch model
+    DedicatedHostPatch dedicatedHostPatchModel = new DedicatedHostPatch.Builder()
+    .instancePlacementEnabled(true)
+    .name("my-host")
+    .build();
+    Map<String, Object> dedicatedHostPatchModelAsPatch = dedicatedHostPatchModel.asPatch();
+
+    // Construct an instance of the UpdateDedicatedHostOptions model
+    UpdateDedicatedHostOptions updateDedicatedHostOptionsModel = new UpdateDedicatedHostOptions.Builder()
+    .id("testString")
+    .dedicatedHostPatch(dedicatedHostPatchModelAsPatch)
+    .build();
+
+    // Invoke operation with valid options model (positive test)
+    Response<DedicatedHost> response = vpcService.updateDedicatedHost(updateDedicatedHostOptionsModel).execute();
+    assertNotNull(response);
+    DedicatedHost responseObj = response.getResult();
+    assertNotNull(responseObj);
+
+    // Verify the contents of the request
+    RecordedRequest request = server.takeRequest();
+    assertNotNull(request);
+    assertEquals(request.getMethod(), "PATCH");
+
+    // Check query
+    Map<String, String> query = TestUtilities.parseQueryString(request);
+    assertNotNull(query);
+    // Get query params
+    assertEquals(query.get("version"), "testString");
+    assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
+    // Check request path
+    String parsedPath = TestUtilities.parseReqPath(request);
+    assertEquals(parsedPath, updateDedicatedHostPath);
+  }
+
+  // Test the updateDedicatedHost operation with null options model parameter
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testUpdateDedicatedHostNoOptions() throws Throwable {
+    // construct the service
+    constructClientService();
+
+    server.enqueue(new MockResponse());
+
+    // Invoke operation with null options model (negative test)
+    vpcService.updateDedicatedHost(null).execute();
   }
 
   @Test
@@ -7120,7 +7834,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testListVolumesWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"first\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes?limit=20\"}, \"limit\": 20, \"next\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes?start=9d5a91a3e2cbd233b5a5b33436855ed1&limit=20\"}, \"volumes\": [{\"capacity\": 100, \"created_at\": \"2019-01-01T12:00:00\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"encryption\": \"provider_managed\", \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"iops\": 10000, \"name\": \"my-volume\", \"profile\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volume/profiles/general-purpose\", \"name\": \"general-purpose\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"status\": \"available\", \"volume_attachments\": [{\"delete_volume_on_instance_delete\": true, \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"instance\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance\"}, \"name\": \"my-volume-attachment\", \"type\": \"boot\"}], \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}]}";
+    String mockResponseBody = "{\"first\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes?limit=20\"}, \"limit\": 20, \"next\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes?start=9d5a91a3e2cbd233b5a5b33436855ed1&limit=20\"}, \"volumes\": [{\"capacity\": 100, \"created_at\": \"2019-01-01T12:00:00\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"encryption\": \"provider_managed\", \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"iops\": 10000, \"name\": \"my-volume\", \"profile\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volume/profiles/general-purpose\", \"name\": \"general-purpose\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"status\": \"available\", \"status_reasons\": [{\"code\": \"encryption_key_deleted\", \"message\": \"message\", \"more_info\": \"https://cloud.ibm.com/docs/key-protect?topic=key-protect-restore-keys\"}], \"volume_attachments\": [{\"delete_volume_on_instance_delete\": true, \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"instance\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance\"}, \"name\": \"my-volume-attachment\", \"type\": \"boot\"}], \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}]}";
     String listVolumesPath = "/volumes";
 
     server.enqueue(new MockResponse()
@@ -7167,7 +7881,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testCreateVolumeWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"capacity\": 100, \"created_at\": \"2019-01-01T12:00:00\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"encryption\": \"provider_managed\", \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"iops\": 10000, \"name\": \"my-volume\", \"profile\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volume/profiles/general-purpose\", \"name\": \"general-purpose\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"status\": \"available\", \"volume_attachments\": [{\"delete_volume_on_instance_delete\": true, \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"instance\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance\"}, \"name\": \"my-volume-attachment\", \"type\": \"boot\"}], \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}";
+    String mockResponseBody = "{\"capacity\": 100, \"created_at\": \"2019-01-01T12:00:00\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"encryption\": \"provider_managed\", \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"iops\": 10000, \"name\": \"my-volume\", \"profile\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volume/profiles/general-purpose\", \"name\": \"general-purpose\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"status\": \"available\", \"status_reasons\": [{\"code\": \"encryption_key_deleted\", \"message\": \"message\", \"more_info\": \"https://cloud.ibm.com/docs/key-protect?topic=key-protect-restore-keys\"}], \"volume_attachments\": [{\"delete_volume_on_instance_delete\": true, \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"instance\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance\"}, \"name\": \"my-volume-attachment\", \"type\": \"boot\"}], \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}";
     String createVolumePath = "/volumes";
 
     server.enqueue(new MockResponse()
@@ -7184,7 +7898,7 @@ public class VpcTest extends PowerMockTestCase {
 
     // Construct an instance of the VolumeProfileIdentityByName model
     VolumeProfileIdentityByName volumeProfileIdentityModel = new VolumeProfileIdentityByName.Builder()
-    .name("general-purpose")
+    .name("5iops-tier")
     .build();
 
     // Construct an instance of the ResourceGroupIdentityById model
@@ -7302,7 +8016,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testGetVolumeWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"capacity\": 100, \"created_at\": \"2019-01-01T12:00:00\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"encryption\": \"provider_managed\", \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"iops\": 10000, \"name\": \"my-volume\", \"profile\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volume/profiles/general-purpose\", \"name\": \"general-purpose\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"status\": \"available\", \"volume_attachments\": [{\"delete_volume_on_instance_delete\": true, \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"instance\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance\"}, \"name\": \"my-volume-attachment\", \"type\": \"boot\"}], \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}";
+    String mockResponseBody = "{\"capacity\": 100, \"created_at\": \"2019-01-01T12:00:00\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"encryption\": \"provider_managed\", \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"iops\": 10000, \"name\": \"my-volume\", \"profile\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volume/profiles/general-purpose\", \"name\": \"general-purpose\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"status\": \"available\", \"status_reasons\": [{\"code\": \"encryption_key_deleted\", \"message\": \"message\", \"more_info\": \"https://cloud.ibm.com/docs/key-protect?topic=key-protect-restore-keys\"}], \"volume_attachments\": [{\"delete_volume_on_instance_delete\": true, \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"instance\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance\"}, \"name\": \"my-volume-attachment\", \"type\": \"boot\"}], \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}";
     String getVolumePath = "/volumes/testString";
 
     server.enqueue(new MockResponse()
@@ -7354,7 +8068,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testUpdateVolumeWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"capacity\": 100, \"created_at\": \"2019-01-01T12:00:00\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"encryption\": \"provider_managed\", \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"iops\": 10000, \"name\": \"my-volume\", \"profile\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volume/profiles/general-purpose\", \"name\": \"general-purpose\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"status\": \"available\", \"volume_attachments\": [{\"delete_volume_on_instance_delete\": true, \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"instance\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance\"}, \"name\": \"my-volume-attachment\", \"type\": \"boot\"}], \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}";
+    String mockResponseBody = "{\"capacity\": 100, \"created_at\": \"2019-01-01T12:00:00\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"encryption\": \"provider_managed\", \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"iops\": 10000, \"name\": \"my-volume\", \"profile\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volume/profiles/general-purpose\", \"name\": \"general-purpose\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"status\": \"available\", \"status_reasons\": [{\"code\": \"encryption_key_deleted\", \"message\": \"message\", \"more_info\": \"https://cloud.ibm.com/docs/key-protect?topic=key-protect-restore-keys\"}], \"volume_attachments\": [{\"delete_volume_on_instance_delete\": true, \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"instance\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance\"}, \"name\": \"my-volume-attachment\", \"type\": \"boot\"}], \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}";
     String updateVolumePath = "/volumes/testString";
 
     server.enqueue(new MockResponse()
@@ -8237,7 +8951,7 @@ public class VpcTest extends PowerMockTestCase {
 
     // Construct an instance of the VPCIdentityById model
     VPCIdentityById vpcIdentityModel = new VPCIdentityById.Builder()
-    .id("cf7cd5a-2f30-4336-a495-6addc820cd61")
+    .id("f0aae929-7047-46d1-92e1-9102b07a7f6f")
     .build();
 
     // Construct an instance of the NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolTCPUDP model
@@ -11264,7 +11978,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testListLoadBalancerProfilesWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"first\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancer/profiles?limit=20\"}, \"limit\": 20, \"next\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancer/profiles?start=9d5a91a3e2cbd233b5a5b33436855ed1&limit=20\"}, \"profiles\": [{\"family\": \"network\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancer/profiles/network-fixed\", \"name\": \"network-fixed\"}], \"total_count\": 132}";
+    String mockResponseBody = "{\"first\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancer/profiles?limit=20\"}, \"limit\": 20, \"next\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancer/profiles?start=9d5a91a3e2cbd233b5a5b33436855ed1&limit=20\"}, \"profiles\": [{\"family\": \"network\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancer/profiles/network-fixed\", \"logging_supported\": {\"type\": \"fixed\", \"value\": [\"datapath\"]}, \"name\": \"network-fixed\"}], \"total_count\": 132}";
     String listLoadBalancerProfilesPath = "/load_balancer/profiles";
 
     server.enqueue(new MockResponse()
@@ -11307,7 +12021,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testGetLoadBalancerProfileWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"family\": \"network\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancer/profiles/network-fixed\", \"name\": \"network-fixed\"}";
+    String mockResponseBody = "{\"family\": \"network\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancer/profiles/network-fixed\", \"logging_supported\": {\"type\": \"fixed\", \"value\": [\"datapath\"]}, \"name\": \"network-fixed\"}";
     String getLoadBalancerProfilePath = "/load_balancer/profiles/testString";
 
     server.enqueue(new MockResponse()
@@ -11359,7 +12073,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testListLoadBalancersWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"load_balancers\": [{\"created_at\": \"2019-01-01T12:00:00\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::load-balancer:dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"hostname\": \"my-load-balancer-123456-us-south-1.lb.bluemix.net\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"id\": \"dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"is_public\": true, \"listeners\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\"}], \"name\": \"my-load-balancer\", \"operating_status\": \"offline\", \"pools\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"name\": \"my-load-balancer-pool\"}], \"private_ips\": [{\"address\": \"192.168.3.4\"}], \"profile\": {\"family\": \"network\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancer/profiles/network-fixed\", \"name\": \"network-fixed\"}, \"provisioning_status\": \"active\", \"public_ips\": [{\"address\": \"192.168.3.4\"}], \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"subnets\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}]}]}";
+    String mockResponseBody = "{\"load_balancers\": [{\"created_at\": \"2019-01-01T12:00:00\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::load-balancer:dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"hostname\": \"my-load-balancer-123456-us-south-1.lb.bluemix.net\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"id\": \"dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"is_public\": true, \"listeners\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\"}], \"logging\": {\"datapath\": {\"active\": true}}, \"name\": \"my-load-balancer\", \"operating_status\": \"offline\", \"pools\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"name\": \"my-load-balancer-pool\"}], \"private_ips\": [{\"address\": \"192.168.3.4\"}], \"profile\": {\"family\": \"network\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancer/profiles/network-fixed\", \"name\": \"network-fixed\"}, \"provisioning_status\": \"active\", \"public_ips\": [{\"address\": \"192.168.3.4\"}], \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"subnets\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}]}]}";
     String listLoadBalancersPath = "/load_balancers";
 
     server.enqueue(new MockResponse()
@@ -11397,7 +12111,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testCreateLoadBalancerWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::load-balancer:dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"hostname\": \"my-load-balancer-123456-us-south-1.lb.bluemix.net\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"id\": \"dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"is_public\": true, \"listeners\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\"}], \"name\": \"my-load-balancer\", \"operating_status\": \"offline\", \"pools\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"name\": \"my-load-balancer-pool\"}], \"private_ips\": [{\"address\": \"192.168.3.4\"}], \"profile\": {\"family\": \"network\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancer/profiles/network-fixed\", \"name\": \"network-fixed\"}, \"provisioning_status\": \"active\", \"public_ips\": [{\"address\": \"192.168.3.4\"}], \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"subnets\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}]}";
+    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::load-balancer:dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"hostname\": \"my-load-balancer-123456-us-south-1.lb.bluemix.net\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"id\": \"dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"is_public\": true, \"listeners\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\"}], \"logging\": {\"datapath\": {\"active\": true}}, \"name\": \"my-load-balancer\", \"operating_status\": \"offline\", \"pools\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"name\": \"my-load-balancer-pool\"}], \"private_ips\": [{\"address\": \"192.168.3.4\"}], \"profile\": {\"family\": \"network\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancer/profiles/network-fixed\", \"name\": \"network-fixed\"}, \"provisioning_status\": \"active\", \"public_ips\": [{\"address\": \"192.168.3.4\"}], \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"subnets\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}]}";
     String createLoadBalancerPath = "/load_balancers";
 
     server.enqueue(new MockResponse()
@@ -11424,6 +12138,16 @@ public class VpcTest extends PowerMockTestCase {
     .defaultPool(loadBalancerPoolIdentityByNameModel)
     .port(Long.valueOf("443"))
     .protocol("http")
+    .build();
+
+    // Construct an instance of the LoadBalancerLoggingDatapath model
+    LoadBalancerLoggingDatapath loadBalancerLoggingDatapathModel = new LoadBalancerLoggingDatapath.Builder()
+    .active(true)
+    .build();
+
+    // Construct an instance of the LoadBalancerLogging model
+    LoadBalancerLogging loadBalancerLoggingModel = new LoadBalancerLogging.Builder()
+    .datapath(loadBalancerLoggingDatapathModel)
     .build();
 
     // Construct an instance of the LoadBalancerPoolHealthMonitorPrototype model
@@ -11479,6 +12203,7 @@ public class VpcTest extends PowerMockTestCase {
     .isPublic(true)
     .subnets(new java.util.ArrayList<SubnetIdentity>(java.util.Arrays.asList(subnetIdentityModel)))
     .listeners(new java.util.ArrayList<LoadBalancerListenerPrototypeLoadBalancerContext>(java.util.Arrays.asList(loadBalancerListenerPrototypeLoadBalancerContextModel)))
+    .logging(loadBalancerLoggingModel)
     .name("my-load-balancer")
     .pools(new java.util.ArrayList<LoadBalancerPoolPrototype>(java.util.Arrays.asList(loadBalancerPoolPrototypeModel)))
     .profile(loadBalancerProfileIdentityModel)
@@ -11574,7 +12299,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testGetLoadBalancerWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::load-balancer:dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"hostname\": \"my-load-balancer-123456-us-south-1.lb.bluemix.net\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"id\": \"dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"is_public\": true, \"listeners\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\"}], \"name\": \"my-load-balancer\", \"operating_status\": \"offline\", \"pools\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"name\": \"my-load-balancer-pool\"}], \"private_ips\": [{\"address\": \"192.168.3.4\"}], \"profile\": {\"family\": \"network\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancer/profiles/network-fixed\", \"name\": \"network-fixed\"}, \"provisioning_status\": \"active\", \"public_ips\": [{\"address\": \"192.168.3.4\"}], \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"subnets\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}]}";
+    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::load-balancer:dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"hostname\": \"my-load-balancer-123456-us-south-1.lb.bluemix.net\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"id\": \"dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"is_public\": true, \"listeners\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\"}], \"logging\": {\"datapath\": {\"active\": true}}, \"name\": \"my-load-balancer\", \"operating_status\": \"offline\", \"pools\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"name\": \"my-load-balancer-pool\"}], \"private_ips\": [{\"address\": \"192.168.3.4\"}], \"profile\": {\"family\": \"network\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancer/profiles/network-fixed\", \"name\": \"network-fixed\"}, \"provisioning_status\": \"active\", \"public_ips\": [{\"address\": \"192.168.3.4\"}], \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"subnets\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}]}";
     String getLoadBalancerPath = "/load_balancers/testString";
 
     server.enqueue(new MockResponse()
@@ -11626,7 +12351,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testUpdateLoadBalancerWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::load-balancer:dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"hostname\": \"my-load-balancer-123456-us-south-1.lb.bluemix.net\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"id\": \"dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"is_public\": true, \"listeners\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\"}], \"name\": \"my-load-balancer\", \"operating_status\": \"offline\", \"pools\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"name\": \"my-load-balancer-pool\"}], \"private_ips\": [{\"address\": \"192.168.3.4\"}], \"profile\": {\"family\": \"network\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancer/profiles/network-fixed\", \"name\": \"network-fixed\"}, \"provisioning_status\": \"active\", \"public_ips\": [{\"address\": \"192.168.3.4\"}], \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"subnets\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}]}";
+    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::load-balancer:dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"hostname\": \"my-load-balancer-123456-us-south-1.lb.bluemix.net\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"id\": \"dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"is_public\": true, \"listeners\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\"}], \"logging\": {\"datapath\": {\"active\": true}}, \"name\": \"my-load-balancer\", \"operating_status\": \"offline\", \"pools\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"name\": \"my-load-balancer-pool\"}], \"private_ips\": [{\"address\": \"192.168.3.4\"}], \"profile\": {\"family\": \"network\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancer/profiles/network-fixed\", \"name\": \"network-fixed\"}, \"provisioning_status\": \"active\", \"public_ips\": [{\"address\": \"192.168.3.4\"}], \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"subnets\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}]}";
     String updateLoadBalancerPath = "/load_balancers/testString";
 
     server.enqueue(new MockResponse()
@@ -11636,8 +12361,19 @@ public class VpcTest extends PowerMockTestCase {
 
     constructClientService();
 
+    // Construct an instance of the LoadBalancerLoggingDatapath model
+    LoadBalancerLoggingDatapath loadBalancerLoggingDatapathModel = new LoadBalancerLoggingDatapath.Builder()
+    .active(true)
+    .build();
+
+    // Construct an instance of the LoadBalancerLogging model
+    LoadBalancerLogging loadBalancerLoggingModel = new LoadBalancerLogging.Builder()
+    .datapath(loadBalancerLoggingDatapathModel)
+    .build();
+
     // Construct an instance of the LoadBalancerPatch model
     LoadBalancerPatch loadBalancerPatchModel = new LoadBalancerPatch.Builder()
+    .logging(loadBalancerLoggingModel)
     .name("my-load-balancer")
     .build();
     Map<String, Object> loadBalancerPatchModelAsPatch = loadBalancerPatchModel.asPatch();

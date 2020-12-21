@@ -22,6 +22,7 @@ import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentDevice;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentReferenceVolumeContext;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentReferenceVolumeContextDeleted;
 import com.ibm.cloud.is.vpc.v1.model.VolumeProfileReference;
+import com.ibm.cloud.is.vpc.v1.model.VolumeStatusReason;
 import com.ibm.cloud.is.vpc.v1.model.ZoneReference;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
@@ -53,6 +54,7 @@ public class VolumeTest {
     assertNull(volumeModel.getProfile());
     assertNull(volumeModel.getResourceGroup());
     assertNull(volumeModel.getStatus());
+    assertNull(volumeModel.getStatusReasons());
     assertNull(volumeModel.getVolumeAttachments());
     assertNull(volumeModel.getZone());
   }

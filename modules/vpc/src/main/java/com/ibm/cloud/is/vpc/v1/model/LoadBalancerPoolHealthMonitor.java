@@ -107,7 +107,9 @@ public class LoadBalancerPoolHealthMonitor extends GenericModel {
   /**
    * Gets the urlPath.
    *
-   * The health check URL path. Applicable only if the health monitor `type` is `http` or `https`.
+   * The health check URL path. Applicable only if the health monitor `type` is `http` or
+   * `https`. This value must be in the format of an [origin-form request
+   * target](https://tools.ietf.org/html/rfc7230#section-5.3.1).
    *
    * @return the urlPath
    */

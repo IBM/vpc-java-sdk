@@ -33,9 +33,9 @@ public class ReplaceSubnetNetworkAclOptionsTest {
   @Test
   public void testReplaceSubnetNetworkAclOptions() throws Throwable {
     NetworkACLIdentityById networkAclIdentityModel = new NetworkACLIdentityById.Builder()
-      .id("a4e28308-8ee7-46ab-8108-9f881f22bdbf")
+      .id("8ec3e730-f2b0-4855-a1a5-88be30024658")
       .build();
-    assertEquals(networkAclIdentityModel.id(), "a4e28308-8ee7-46ab-8108-9f881f22bdbf");
+    assertEquals(networkAclIdentityModel.id(), "8ec3e730-f2b0-4855-a1a5-88be30024658");
 
     ReplaceSubnetNetworkAclOptions replaceSubnetNetworkAclOptionsModel = new ReplaceSubnetNetworkAclOptions.Builder()
       .id("testString")

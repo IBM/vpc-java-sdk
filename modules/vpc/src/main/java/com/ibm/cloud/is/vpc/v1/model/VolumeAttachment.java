@@ -30,6 +30,8 @@ public class VolumeAttachment extends GenericModel {
     String ATTACHED = "attached";
     /** attaching. */
     String ATTACHING = "attaching";
+    /** deleting. */
+    String DELETING = "deleting";
     /** detaching. */
     String DETACHING = "detaching";
   }

@@ -25,6 +25,7 @@ public class CreateLoadBalancerOptions extends GenericModel {
   protected Boolean isPublic;
   protected List<SubnetIdentity> subnets;
   protected List<LoadBalancerListenerPrototypeLoadBalancerContext> listeners;
+  protected LoadBalancerLogging logging;
   protected String name;
   protected List<LoadBalancerPoolPrototype> pools;
   protected LoadBalancerProfileIdentity profile;
@@ -37,6 +38,7 @@ public class CreateLoadBalancerOptions extends GenericModel {
     private Boolean isPublic;
     private List<SubnetIdentity> subnets;
     private List<LoadBalancerListenerPrototypeLoadBalancerContext> listeners;
+    private LoadBalancerLogging logging;
     private String name;
     private List<LoadBalancerPoolPrototype> pools;
     private LoadBalancerProfileIdentity profile;
@@ -46,6 +48,7 @@ public class CreateLoadBalancerOptions extends GenericModel {
       this.isPublic = createLoadBalancerOptions.isPublic;
       this.subnets = createLoadBalancerOptions.subnets;
       this.listeners = createLoadBalancerOptions.listeners;
+      this.logging = createLoadBalancerOptions.logging;
       this.name = createLoadBalancerOptions.name;
       this.pools = createLoadBalancerOptions.pools;
       this.profile = createLoadBalancerOptions.profile;
@@ -162,6 +165,17 @@ public class CreateLoadBalancerOptions extends GenericModel {
     }
 
     /**
+     * Set the logging.
+     *
+     * @param logging the logging
+     * @return the CreateLoadBalancerOptions builder
+     */
+    public Builder logging(LoadBalancerLogging logging) {
+      this.logging = logging;
+      return this;
+    }
+
+    /**
      * Set the name.
      *
      * @param name the name
@@ -215,6 +229,7 @@ public class CreateLoadBalancerOptions extends GenericModel {
     isPublic = builder.isPublic;
     subnets = builder.subnets;
     listeners = builder.listeners;
+    logging = builder.logging;
     name = builder.name;
     pools = builder.pools;
     profile = builder.profile;
@@ -261,6 +276,22 @@ public class CreateLoadBalancerOptions extends GenericModel {
    */
   public List<LoadBalancerListenerPrototypeLoadBalancerContext> listeners() {
     return listeners;
+  }
+
+  /**
+   * Gets the logging.
+   *
+   * The logging configuration to use for this load balancer. See [VPC Datapath
+   * Logging](https://cloud.ibm.com/docs/vpc?topic=vpc-datapath-logging)
+   * on the logging format, fields and permitted values.
+   *
+   * To activate logging, the load balancer profile must support the specified logging
+   * type.
+   *
+   * @return the logging
+   */
+  public LoadBalancerLogging logging() {
+    return logging;
   }
 
   /**

@@ -15,6 +15,8 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.CreateLoadBalancerOptions;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPrototypeLoadBalancerContext;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerLogging;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerLoggingDatapath;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolHealthMonitorPrototype;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolIdentityByName;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolMemberPrototype;
@@ -65,6 +67,16 @@ public class CreateLoadBalancerOptionsTest {
     assertEquals(loadBalancerListenerPrototypeLoadBalancerContextModel.defaultPool(), loadBalancerPoolIdentityByNameModel);
     assertEquals(loadBalancerListenerPrototypeLoadBalancerContextModel.port(), Long.valueOf("443"));
     assertEquals(loadBalancerListenerPrototypeLoadBalancerContextModel.protocol(), "http");
+
+    LoadBalancerLoggingDatapath loadBalancerLoggingDatapathModel = new LoadBalancerLoggingDatapath.Builder()
+      .active(true)
+      .build();
+    assertEquals(loadBalancerLoggingDatapathModel.active(), Boolean.valueOf(true));
+
+    LoadBalancerLogging loadBalancerLoggingModel = new LoadBalancerLogging.Builder()
+      .datapath(loadBalancerLoggingDatapathModel)
+      .build();
+    assertEquals(loadBalancerLoggingModel.datapath(), loadBalancerLoggingDatapathModel);
 
     LoadBalancerPoolHealthMonitorPrototype loadBalancerPoolHealthMonitorPrototypeModel = new LoadBalancerPoolHealthMonitorPrototype.Builder()
       .delay(Long.valueOf("5"))
@@ -131,6 +143,7 @@ public class CreateLoadBalancerOptionsTest {
       .isPublic(true)
       .subnets(new java.util.ArrayList<SubnetIdentity>(java.util.Arrays.asList(subnetIdentityModel)))
       .listeners(new java.util.ArrayList<LoadBalancerListenerPrototypeLoadBalancerContext>(java.util.Arrays.asList(loadBalancerListenerPrototypeLoadBalancerContextModel)))
+      .logging(loadBalancerLoggingModel)
       .name("my-load-balancer")
       .pools(new java.util.ArrayList<LoadBalancerPoolPrototype>(java.util.Arrays.asList(loadBalancerPoolPrototypeModel)))
       .profile(loadBalancerProfileIdentityModel)
@@ -139,6 +152,7 @@ public class CreateLoadBalancerOptionsTest {
     assertEquals(createLoadBalancerOptionsModel.isPublic(), Boolean.valueOf(true));
     assertEquals(createLoadBalancerOptionsModel.subnets(), new java.util.ArrayList<SubnetIdentity>(java.util.Arrays.asList(subnetIdentityModel)));
     assertEquals(createLoadBalancerOptionsModel.listeners(), new java.util.ArrayList<LoadBalancerListenerPrototypeLoadBalancerContext>(java.util.Arrays.asList(loadBalancerListenerPrototypeLoadBalancerContextModel)));
+    assertEquals(createLoadBalancerOptionsModel.logging(), loadBalancerLoggingModel);
     assertEquals(createLoadBalancerOptionsModel.name(), "my-load-balancer");
     assertEquals(createLoadBalancerOptionsModel.pools(), new java.util.ArrayList<LoadBalancerPoolPrototype>(java.util.Arrays.asList(loadBalancerPoolPrototypeModel)));
     assertEquals(createLoadBalancerOptionsModel.profile(), loadBalancerProfileIdentityModel);

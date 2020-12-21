@@ -60,6 +60,7 @@ public class LoadBalancer extends GenericModel {
   @SerializedName("is_public")
   protected Boolean isPublic;
   protected List<LoadBalancerListenerReference> listeners;
+  protected LoadBalancerLogging logging;
   protected String name;
   @SerializedName("operating_status")
   protected String operatingStatus;
@@ -153,6 +154,17 @@ public class LoadBalancer extends GenericModel {
   }
 
   /**
+   * Gets the logging.
+   *
+   * The logging configuration for this load balancer.
+   *
+   * @return the logging
+   */
+  public LoadBalancerLogging getLogging() {
+    return logging;
+  }
+
+  /**
    * Gets the name.
    *
    * The unique user-defined name for this load balancer.
@@ -221,7 +233,9 @@ public class LoadBalancer extends GenericModel {
   /**
    * Gets the publicIps.
    *
-   * The public IP addresses assigned to this load balancer. Applicable only for public load balancers.
+   * The public IP addresses assigned to this load balancer.
+   *
+   * Applicable only for public load balancers.
    *
    * @return the publicIps
    */

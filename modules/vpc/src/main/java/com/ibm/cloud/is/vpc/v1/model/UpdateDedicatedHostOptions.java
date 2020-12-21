@@ -1,0 +1,128 @@
+/*
+ * (C) Copyright IBM Corp. 2020.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ */
+package com.ibm.cloud.is.vpc.v1.model;
+
+import java.util.Map;
+
+import com.ibm.cloud.sdk.core.service.model.GenericModel;
+
+/**
+ * The updateDedicatedHost options.
+ */
+public class UpdateDedicatedHostOptions extends GenericModel {
+
+  protected String id;
+  protected Map<String, Object> dedicatedHostPatch;
+
+  /**
+   * Builder.
+   */
+  public static class Builder {
+    private String id;
+    private Map<String, Object> dedicatedHostPatch;
+
+    private Builder(UpdateDedicatedHostOptions updateDedicatedHostOptions) {
+      this.id = updateDedicatedHostOptions.id;
+      this.dedicatedHostPatch = updateDedicatedHostOptions.dedicatedHostPatch;
+    }
+
+    /**
+     * Instantiates a new builder.
+     */
+    public Builder() {
+    }
+
+    /**
+     * Instantiates a new builder with required properties.
+     *
+     * @param id the id
+     * @param dedicatedHostPatch the dedicatedHostPatch
+     */
+    public Builder(String id, Map<String, Object> dedicatedHostPatch) {
+      this.id = id;
+      this.dedicatedHostPatch = dedicatedHostPatch;
+    }
+
+    /**
+     * Builds a UpdateDedicatedHostOptions.
+     *
+     * @return the new UpdateDedicatedHostOptions instance
+     */
+    public UpdateDedicatedHostOptions build() {
+      return new UpdateDedicatedHostOptions(this);
+    }
+
+    /**
+     * Set the id.
+     *
+     * @param id the id
+     * @return the UpdateDedicatedHostOptions builder
+     */
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
+
+    /**
+     * Set the dedicatedHostPatch.
+     *
+     * @param dedicatedHostPatch the dedicatedHostPatch
+     * @return the UpdateDedicatedHostOptions builder
+     */
+    public Builder dedicatedHostPatch(Map<String, Object> dedicatedHostPatch) {
+      this.dedicatedHostPatch = dedicatedHostPatch;
+      return this;
+    }
+  }
+
+  protected UpdateDedicatedHostOptions(Builder builder) {
+    com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,
+      "id cannot be empty");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.dedicatedHostPatch,
+      "dedicatedHostPatch cannot be null");
+    id = builder.id;
+    dedicatedHostPatch = builder.dedicatedHostPatch;
+  }
+
+  /**
+   * New builder.
+   *
+   * @return a UpdateDedicatedHostOptions builder
+   */
+  public Builder newBuilder() {
+    return new Builder(this);
+  }
+
+  /**
+   * Gets the id.
+   *
+   * The dedicated host identifier.
+   *
+   * @return the id
+   */
+  public String id() {
+    return id;
+  }
+
+  /**
+   * Gets the dedicatedHostPatch.
+   *
+   * The dedicated host patch.
+   *
+   * @return the dedicatedHostPatch
+   */
+  public Map<String, Object> dedicatedHostPatch() {
+    return dedicatedHostPatch;
+  }
+}
+

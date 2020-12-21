@@ -14,9 +14,12 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfile;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileLoggingSupported;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import org.testng.annotations.Test;
@@ -34,6 +37,7 @@ public class LoadBalancerProfileTest {
     LoadBalancerProfile loadBalancerProfileModel = new LoadBalancerProfile();
     assertNull(loadBalancerProfileModel.getFamily());
     assertNull(loadBalancerProfileModel.getHref());
+    assertNull(loadBalancerProfileModel.getLoggingSupported());
     assertNull(loadBalancerProfileModel.getName());
   }
 }

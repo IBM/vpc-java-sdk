@@ -13,6 +13,8 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerLogging;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerLoggingDatapath;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPatch;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
@@ -32,25 +34,48 @@ public class LoadBalancerPatchTest {
 
   @Test
   public void testLoadBalancerPatch() throws Throwable {
+    LoadBalancerLoggingDatapath loadBalancerLoggingDatapathModel = new LoadBalancerLoggingDatapath.Builder()
+      .active(true)
+      .build();
+    assertEquals(loadBalancerLoggingDatapathModel.active(), Boolean.valueOf(true));
+
+    LoadBalancerLogging loadBalancerLoggingModel = new LoadBalancerLogging.Builder()
+      .datapath(loadBalancerLoggingDatapathModel)
+      .build();
+    assertEquals(loadBalancerLoggingModel.datapath(), loadBalancerLoggingDatapathModel);
+
     LoadBalancerPatch loadBalancerPatchModel = new LoadBalancerPatch.Builder()
+      .logging(loadBalancerLoggingModel)
       .name("my-load-balancer")
       .build();
+    assertEquals(loadBalancerPatchModel.logging(), loadBalancerLoggingModel);
     assertEquals(loadBalancerPatchModel.name(), "my-load-balancer");
 
     String json = TestUtilities.serialize(loadBalancerPatchModel);
 
     LoadBalancerPatch loadBalancerPatchModelNew = TestUtilities.deserialize(json, LoadBalancerPatch.class);
     assertTrue(loadBalancerPatchModelNew instanceof LoadBalancerPatch);
+    assertEquals(loadBalancerPatchModelNew.logging().toString(), loadBalancerLoggingModel.toString());
     assertEquals(loadBalancerPatchModelNew.name(), "my-load-balancer");
   }
   @Test
   public void testLoadBalancerPatchAsPatch() throws Throwable {
+    LoadBalancerLoggingDatapath loadBalancerLoggingDatapathModel = new LoadBalancerLoggingDatapath.Builder()
+      .active(true)
+      .build();
+
+    LoadBalancerLogging loadBalancerLoggingModel = new LoadBalancerLogging.Builder()
+      .datapath(loadBalancerLoggingDatapathModel)
+      .build();
+
     LoadBalancerPatch loadBalancerPatchModel = new LoadBalancerPatch.Builder()
+      .logging(loadBalancerLoggingModel)
       .name("my-load-balancer")
       .build();
 
     Map<String, Object> mergePatch = loadBalancerPatchModel.asPatch();
 
+    assertTrue(mergePatch.containsKey("logging"));
     assertEquals(mergePatch.get("name"), "my-load-balancer");
   }
 

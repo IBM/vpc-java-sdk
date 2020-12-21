@@ -19,7 +19,7 @@ import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * Collection of rules in a default security group.
+ * DefaultSecurityGroup.
  */
 public class DefaultSecurityGroup extends GenericModel {
 
