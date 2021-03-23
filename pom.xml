@@ -21,7 +21,7 @@
             of the SDK generator used to generate your SDK code.
             See this link for details: https://github.ibm.com/CloudEngineering/openapi-sdkgen/wiki/Compatibility-Chart
         -->
-        <sdk-core-version>9.3.0</sdk-core-version>
+        <sdk-core-version>9.8.1</sdk-core-version>
 
         <git-repository-name>vpc-java-sdk</git-repository-name>
 
