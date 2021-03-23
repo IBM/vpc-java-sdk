@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2020.
+ * (C) Copyright IBM Corp. 2021.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -16,6 +16,7 @@ package com.ibm.cloud.is.vpc.v1.model;
 import com.ibm.cloud.is.vpc.v1.model.EncryptionKeyReference;
 import com.ibm.cloud.is.vpc.v1.model.Image;
 import com.ibm.cloud.is.vpc.v1.model.ImageFile;
+import com.ibm.cloud.is.vpc.v1.model.ImageFileChecksums;
 import com.ibm.cloud.is.vpc.v1.model.ImageStatusReason;
 import com.ibm.cloud.is.vpc.v1.model.OperatingSystem;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;

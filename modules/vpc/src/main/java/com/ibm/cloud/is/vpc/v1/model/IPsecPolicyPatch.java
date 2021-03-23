@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2020.
+ * (C) Copyright IBM Corp. 2021.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -33,6 +33,8 @@ public class IPsecPolicyPatch extends GenericModel {
     String SHA1 = "sha1";
     /** sha256. */
     String SHA256 = "sha256";
+    /** sha512. */
+    String SHA512 = "sha512";
   }
 
   /**
@@ -55,6 +57,8 @@ public class IPsecPolicyPatch extends GenericModel {
     String DISABLED = "disabled";
     /** group_14. */
     String GROUP_14 = "group_14";
+    /** group_19. */
+    String GROUP_19 = "group_19";
     /** group_2. */
     String GROUP_2 = "group_2";
     /** group_5. */

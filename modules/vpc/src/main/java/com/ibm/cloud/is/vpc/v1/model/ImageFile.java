@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2020.
+ * (C) Copyright IBM Corp. 2021.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -19,7 +19,22 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class ImageFile extends GenericModel {
 
+  protected ImageFileChecksums checksums;
   protected Long size;
+
+  /**
+   * Gets the checksums.
+   *
+   * Checksums for this image file.
+   *
+   * This property may be absent if the associated image has a `status` of `pending` or
+   * `failed`.
+   *
+   * @return the checksums
+   */
+  public ImageFileChecksums getChecksums() {
+    return checksums;
+  }
 
   /**
    * Gets the size.

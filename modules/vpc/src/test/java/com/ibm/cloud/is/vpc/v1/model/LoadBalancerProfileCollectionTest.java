@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2020.
+ * (C) Copyright IBM Corp. 2021.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -18,6 +18,7 @@ import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileCollection;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileCollectionFirst;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileLoggingSupported;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileSecurityGroupsSupportedFixed;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;

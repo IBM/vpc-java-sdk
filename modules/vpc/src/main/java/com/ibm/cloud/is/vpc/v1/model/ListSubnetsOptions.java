@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2020.
+ * (C) Copyright IBM Corp. 2021.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -168,7 +168,7 @@ public class ListSubnetsOptions extends GenericModel {
   /**
    * Gets the routingTableId.
    *
-   * Filters the collection to subnets with the routing table of the specified identifier.
+   * Filters the collection to subnets attached to the routing table with the specified identifier.
    *
    * @return the routingTableId
    */
@@ -179,7 +179,7 @@ public class ListSubnetsOptions extends GenericModel {
   /**
    * Gets the routingTableName.
    *
-   * Filters the collection to subnets with the routing table of the specified name.
+   * Filters the collection to subnets attached to the routing table with the specified name.
    *
    * @return the routingTableName
    */

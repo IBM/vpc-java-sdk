@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2020.
+ * (C) Copyright IBM Corp. 2021.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -19,6 +19,9 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
  * InstanceGroupManager.
+ *
+ * Classes which extend this class:
+ * - InstanceGroupManagerAutoScale
  */
 public class InstanceGroupManager extends GenericModel {
 
@@ -30,42 +33,23 @@ public class InstanceGroupManager extends GenericModel {
     String AUTOSCALE = "autoscale";
   }
 
-  @SerializedName("aggregation_window")
-  protected Long aggregationWindow;
-  protected Long cooldown;
   protected String href;
   protected String id;
   @SerializedName("management_enabled")
   protected Boolean managementEnabled;
+  protected String name;
+  @SerializedName("aggregation_window")
+  protected Long aggregationWindow;
+  protected Long cooldown;
   @SerializedName("manager_type")
   protected String managerType;
   @SerializedName("max_membership_count")
   protected Long maxMembershipCount;
   @SerializedName("min_membership_count")
   protected Long minMembershipCount;
-  protected String name;
   protected List<InstanceGroupManagerPolicyReference> policies;
 
-  /**
-   * Gets the aggregationWindow.
-   *
-   * The time window in seconds to aggregate metrics prior to evaluation.
-   *
-   * @return the aggregationWindow
-   */
-  public Long getAggregationWindow() {
-    return aggregationWindow;
-  }
-
-  /**
-   * Gets the cooldown.
-   *
-   * The duration of time in seconds to pause further scale actions after scaling has taken place.
-   *
-   * @return the cooldown
-   */
-  public Long getCooldown() {
-    return cooldown;
+  protected InstanceGroupManager() {
   }
 
   /**
@@ -102,6 +86,39 @@ public class InstanceGroupManager extends GenericModel {
   }
 
   /**
+   * Gets the name.
+   *
+   * The user-defined name for this instance group manager. Names must be unique within the instance group.
+   *
+   * @return the name
+   */
+  public String getName() {
+    return name;
+  }
+
+  /**
+   * Gets the aggregationWindow.
+   *
+   * The time window in seconds to aggregate metrics prior to evaluation.
+   *
+   * @return the aggregationWindow
+   */
+  public Long getAggregationWindow() {
+    return aggregationWindow;
+  }
+
+  /**
+   * Gets the cooldown.
+   *
+   * The duration of time in seconds to pause further scale actions after scaling has taken place.
+   *
+   * @return the cooldown
+   */
+  public Long getCooldown() {
+    return cooldown;
+  }
+
+  /**
    * Gets the managerType.
    *
    * The type of instance group manager.
@@ -132,17 +149,6 @@ public class InstanceGroupManager extends GenericModel {
    */
   public Long getMinMembershipCount() {
     return minMembershipCount;
-  }
-
-  /**
-   * Gets the name.
-   *
-   * The user-defined name for this instance group manager. Names must be unique within the instance group.
-   *
-   * @return the name
-   */
-  public String getName() {
-    return name;
   }
 
   /**

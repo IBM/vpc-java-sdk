@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2020.
+ * (C) Copyright IBM Corp. 2021.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -20,6 +20,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  *
  * Classes which extend this class:
  * - DedicatedHostPrototypeDedicatedHostByGroup
+//  * - DedicatedHostPrototypeDedicatedHostByZone
  */
 public class DedicatedHostPrototype extends GenericModel {
 
@@ -30,6 +31,7 @@ public class DedicatedHostPrototype extends GenericModel {
   @SerializedName("resource_group")
   protected ResourceGroupIdentity resourceGroup;
   protected DedicatedHostGroupIdentity group;
+  protected ZoneIdentity zone;
 
   protected DedicatedHostPrototype() {
   }
@@ -89,6 +91,17 @@ public class DedicatedHostPrototype extends GenericModel {
    */
   public DedicatedHostGroupIdentity group() {
     return group;
+  }
+
+  /**
+   * Gets the zone.
+   *
+   * The zone this dedicated host will reside in.
+   *
+   * @return the zone
+   */
+  public ZoneIdentity zone() {
+    return zone;
   }
 }
 

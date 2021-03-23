@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2020.
+ * (C) Copyright IBM Corp. 2021.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -25,7 +25,7 @@ public class VPCCSESourceIP extends GenericModel {
   /**
    * Gets the ip.
    *
-   * The Cloud Service Endpoint source IP address for this zone.
+   * The cloud service endpoint source IP address for this zone.
    *
    * @return the ip
    */
@@ -36,7 +36,7 @@ public class VPCCSESourceIP extends GenericModel {
   /**
    * Gets the zone.
    *
-   * The zone this Cloud Service Endpoint source IP belongs to.
+   * The zone this cloud service endpoint source IP resides in.
    *
    * @return the zone
    */

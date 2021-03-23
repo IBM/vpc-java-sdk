@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2020.
+ * (C) Copyright IBM Corp. 2021.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -23,12 +23,16 @@ public class RoutePrototype extends GenericModel {
   /**
    * The action to perform with a packet matching the route:
    * - `delegate`: delegate to the system's built-in routes
+   * - `delegate_vpc`: delegate to the system's built-in routes, ignoring Internet-bound
+   *   routes
    * - `deliver`: deliver the packet to the specified `next_hop`
    * - `drop`: drop the packet.
    */
   public interface Action {
     /** delegate. */
     String DELEGATE = "delegate";
+    /** delegate_vpc. */
+    String DELEGATE_VPC = "delegate_vpc";
     /** deliver. */
     String DELIVER = "deliver";
     /** drop. */
@@ -70,12 +74,10 @@ public class RoutePrototype extends GenericModel {
      * Instantiates a new builder with required properties.
      *
      * @param destination the destination
-     * @param nextHop the nextHop
      * @param zone the zone
      */
-    public Builder(String destination, RouteNextHopPrototype nextHop, ZoneIdentity zone) {
+    public Builder(String destination, ZoneIdentity zone) {
       this.destination = destination;
-      this.nextHop = nextHop;
       this.zone = zone;
     }
 
@@ -147,8 +149,6 @@ public class RoutePrototype extends GenericModel {
   protected RoutePrototype(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.destination,
       "destination cannot be null");
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.nextHop,
-      "nextHop cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.zone,
       "zone cannot be null");
     action = builder.action;
@@ -172,6 +172,8 @@ public class RoutePrototype extends GenericModel {
    *
    * The action to perform with a packet matching the route:
    * - `delegate`: delegate to the system's built-in routes
+   * - `delegate_vpc`: delegate to the system's built-in routes, ignoring Internet-bound
+   *   routes
    * - `deliver`: deliver the packet to the specified `next_hop`
    * - `drop`: drop the packet.
    *
@@ -210,7 +212,7 @@ public class RoutePrototype extends GenericModel {
    * Gets the nextHop.
    *
    * If `action` is `deliver`, the next hop that packets will be delivered to.  For
-   * other `action` values, its `address` will be `0.0.0.0`.
+   * other `action` values, it must be omitted or specified as `0.0.0.0`.
    *
    * @return the nextHop
    */

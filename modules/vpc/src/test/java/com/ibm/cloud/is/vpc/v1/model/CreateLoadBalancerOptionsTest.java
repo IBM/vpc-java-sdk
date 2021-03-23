@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2020.
+ * (C) Copyright IBM Corp. 2021.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -25,6 +25,7 @@ import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolPrototype;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolSessionPersistencePrototype;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileIdentityByName;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.SecurityGroupIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.SubnetIdentityById;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
@@ -139,6 +140,11 @@ public class CreateLoadBalancerOptionsTest {
       .build();
     assertEquals(resourceGroupIdentityModel.id(), "fee82deba12e4c0fb69c3b09d1f12345");
 
+    SecurityGroupIdentityById securityGroupIdentityModel = new SecurityGroupIdentityById.Builder()
+      .id("be5df5ca-12a0-494b-907e-aa6ec2bfa271")
+      .build();
+    assertEquals(securityGroupIdentityModel.id(), "be5df5ca-12a0-494b-907e-aa6ec2bfa271");
+
     CreateLoadBalancerOptions createLoadBalancerOptionsModel = new CreateLoadBalancerOptions.Builder()
       .isPublic(true)
       .subnets(new java.util.ArrayList<SubnetIdentity>(java.util.Arrays.asList(subnetIdentityModel)))
@@ -148,6 +154,7 @@ public class CreateLoadBalancerOptionsTest {
       .pools(new java.util.ArrayList<LoadBalancerPoolPrototype>(java.util.Arrays.asList(loadBalancerPoolPrototypeModel)))
       .profile(loadBalancerProfileIdentityModel)
       .resourceGroup(resourceGroupIdentityModel)
+      .securityGroups(new java.util.ArrayList<SecurityGroupIdentity>(java.util.Arrays.asList(securityGroupIdentityModel)))
       .build();
     assertEquals(createLoadBalancerOptionsModel.isPublic(), Boolean.valueOf(true));
     assertEquals(createLoadBalancerOptionsModel.subnets(), new java.util.ArrayList<SubnetIdentity>(java.util.Arrays.asList(subnetIdentityModel)));
@@ -157,6 +164,7 @@ public class CreateLoadBalancerOptionsTest {
     assertEquals(createLoadBalancerOptionsModel.pools(), new java.util.ArrayList<LoadBalancerPoolPrototype>(java.util.Arrays.asList(loadBalancerPoolPrototypeModel)));
     assertEquals(createLoadBalancerOptionsModel.profile(), loadBalancerProfileIdentityModel);
     assertEquals(createLoadBalancerOptionsModel.resourceGroup(), resourceGroupIdentityModel);
+    assertEquals(createLoadBalancerOptionsModel.securityGroups(), new java.util.ArrayList<SecurityGroupIdentity>(java.util.Arrays.asList(securityGroupIdentityModel)));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

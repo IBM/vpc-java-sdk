@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2020.
+ * (C) Copyright IBM Corp. 2021.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -163,7 +163,7 @@ public class CreateFlowLogCollectorOptions extends GenericModel {
   /**
    * Gets the target.
    *
-   * The target this collector is collecting flow logs for. If the target is an instance,
+   * The target this collector will collect flow logs for. If the target is an instance,
    * subnet, or VPC, flow logs will not be collected for any network interfaces within the
    * target that are themselves the target of a more specific flow log collector.
    *
@@ -176,7 +176,7 @@ public class CreateFlowLogCollectorOptions extends GenericModel {
   /**
    * Gets the active.
    *
-   * Indicates whether this collector is active. If false, this collector is created in inactive mode.
+   * Indicates whether this collector will be active upon creation.
    *
    * @return the active
    */

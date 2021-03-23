@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2020.
+ * (C) Copyright IBM Corp. 2021.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -168,7 +168,7 @@ public class Instance extends GenericModel {
   /**
    * Gets the memory.
    *
-   * The amount of memory in gigabytes.
+   * The amount of memory, truncated to whole gibibytes.
    *
    * @return the memory
    */
@@ -267,7 +267,7 @@ public class Instance extends GenericModel {
   /**
    * Gets the vpc.
    *
-   * The VPC the virtual server instance resides in.
+   * The VPC this virtual server instance resides in.
    *
    * @return the vpc
    */
@@ -278,7 +278,7 @@ public class Instance extends GenericModel {
   /**
    * Gets the zone.
    *
-   * The zone the virtual server instance resides in.
+   * The zone this virtual server instance resides in.
    *
    * @return the zone
    */

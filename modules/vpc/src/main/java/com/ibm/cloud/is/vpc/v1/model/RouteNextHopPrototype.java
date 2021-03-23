@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2020.
+ * (C) Copyright IBM Corp. 2021.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -19,10 +19,13 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  *
  * Classes which extend this class:
  * - RouteNextHopPrototypeRouteNextHopIP
+ * - RouteNextHopPrototypeVPNGatewayConnectionIdentity
  */
 public class RouteNextHopPrototype extends GenericModel {
 
   protected String address;
+  protected String id;
+  protected String href;
 
   protected RouteNextHopPrototype() {
   }
@@ -38,6 +41,28 @@ public class RouteNextHopPrototype extends GenericModel {
    */
   public String address() {
     return address;
+  }
+
+  /**
+   * Gets the id.
+   *
+   * The unique identifier for this VPN gateway connection.
+   *
+   * @return the id
+   */
+  public String id() {
+    return id;
+  }
+
+  /**
+   * Gets the href.
+   *
+   * The VPN connection's canonical URL.
+   *
+   * @return the href
+   */
+  public String href() {
+    return href;
   }
 }
 

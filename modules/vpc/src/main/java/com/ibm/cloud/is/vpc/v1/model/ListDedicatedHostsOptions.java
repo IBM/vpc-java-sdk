@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2020.
+ * (C) Copyright IBM Corp. 2021.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -134,7 +134,7 @@ public class ListDedicatedHostsOptions extends GenericModel {
   /**
    * Gets the dedicatedHostGroupId.
    *
-   * Filters the collection to dedicated host groups with specified identifier.
+   * Filters the collection to dedicated host groups with the specified identifier.
    *
    * @return the dedicatedHostGroupId
    */

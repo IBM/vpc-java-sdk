@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2020.
+ * (C) Copyright IBM Corp. 2021.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -74,6 +74,10 @@ public class LoadBalancer extends GenericModel {
   protected List<IP> publicIps;
   @SerializedName("resource_group")
   protected ResourceGroupReference resourceGroup;
+  @SerializedName("security_groups")
+  protected List<SecurityGroupReference> securityGroups;
+  @SerializedName("security_groups_supported")
+  protected Boolean securityGroupsSupported;
   protected List<SubnetReference> subnets;
 
   /**
@@ -252,6 +256,30 @@ public class LoadBalancer extends GenericModel {
    */
   public ResourceGroupReference getResourceGroup() {
     return resourceGroup;
+  }
+
+  /**
+   * Gets the securityGroups.
+   *
+   * The security groups targeting this load balancer.
+   *
+   * Applicable only for load balancers that support security groups.
+   *
+   * @return the securityGroups
+   */
+  public List<SecurityGroupReference> getSecurityGroups() {
+    return securityGroups;
+  }
+
+  /**
+   * Gets the securityGroupsSupported.
+   *
+   * Indicates whether this load balancer supports security groups.
+   *
+   * @return the securityGroupsSupported
+   */
+  public Boolean isSecurityGroupsSupported() {
+    return securityGroupsSupported;
   }
 
   /**

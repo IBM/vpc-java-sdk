@@ -12,7 +12,7 @@
  */
 
 /*
- * IBM OpenAPI SDK Code Generator Version: 3.12.3-81ed37e0-20200929-215851
+ * IBM OpenAPI SDK Code Generator Version: 3.28.0-55613c9e-20210220-164656
  */
 
 package com.ibm.cloud.is.vpc.v1;
@@ -56,6 +56,7 @@ import com.ibm.cloud.is.vpc.v1.model.CreateNetworkAclRuleOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreatePublicGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateSecurityGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateSecurityGroupRuleOptions;
+import com.ibm.cloud.is.vpc.v1.model.CreateSecurityGroupTargetBindingOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateSubnetOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateSubnetReservedIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateVolumeOptions;
@@ -105,6 +106,7 @@ import com.ibm.cloud.is.vpc.v1.model.DeleteNetworkAclRuleOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeletePublicGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteSecurityGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteSecurityGroupRuleOptions;
+import com.ibm.cloud.is.vpc.v1.model.DeleteSecurityGroupTargetBindingOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteSubnetOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteSubnetReservedIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteVolumeOptions;
@@ -161,6 +163,7 @@ import com.ibm.cloud.is.vpc.v1.model.GetRegionZoneOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetSecurityGroupNetworkInterfaceOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetSecurityGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetSecurityGroupRuleOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetSecurityGroupTargetOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetSubnetNetworkAclOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetSubnetOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetSubnetPublicGatewayOptions;
@@ -240,6 +243,7 @@ import com.ibm.cloud.is.vpc.v1.model.ListRegionZonesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListRegionsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListSecurityGroupNetworkInterfacesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListSecurityGroupRulesOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListSecurityGroupTargetsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListSecurityGroupsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListSubnetReservedIpsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListSubnetsOptions;
@@ -301,6 +305,8 @@ import com.ibm.cloud.is.vpc.v1.model.SecurityGroup;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupCollection;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRule;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleCollection;
+import com.ibm.cloud.is.vpc.v1.model.SecurityGroupTargetCollection;
+import com.ibm.cloud.is.vpc.v1.model.SecurityGroupTargetReference;
 import com.ibm.cloud.is.vpc.v1.model.SetSubnetPublicGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.Subnet;
 import com.ibm.cloud.is.vpc.v1.model.SubnetCollection;
@@ -382,7 +388,7 @@ public class Vpc extends BaseService {
 
   public static final String DEFAULT_SERVICE_URL = "https://us-south.iaas.cloud.ibm.com/v1";
 
-  private String version = "2021-01-12";
+  private String version;
 
   private Long generation = Long.valueOf(2);
 
@@ -405,7 +411,7 @@ public class Vpc extends BaseService {
    * @return an instance of the `Vpc` client using external configuration
    */
   public static Vpc newInstance() {
-    return newInstance("2021-01-12", DEFAULT_SERVICE_NAME);
+    return newInstance("2021-03-09", DEFAULT_SERVICE_NAME);
   }
 
   /**
@@ -965,13 +971,15 @@ public class Vpc extends BaseService {
     builder.query("generation", String.valueOf(this.generation));
     final JsonObject contentJson = new JsonObject();
     contentJson.addProperty("destination", createVpcRouteOptions.destination());
-    contentJson.add("next_hop", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createVpcRouteOptions.nextHop()));
     contentJson.add("zone", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createVpcRouteOptions.zone()));
     if (createVpcRouteOptions.action() != null) {
       contentJson.addProperty("action", createVpcRouteOptions.action());
     }
     if (createVpcRouteOptions.name() != null) {
       contentJson.addProperty("name", createVpcRouteOptions.name());
+    }
+    if (createVpcRouteOptions.nextHop() != null) {
+      contentJson.add("next_hop", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createVpcRouteOptions.nextHop()));
     }
     builder.bodyJson(contentJson);
     ResponseConverter<Route> responseConverter =
@@ -1286,13 +1294,15 @@ public class Vpc extends BaseService {
     builder.query("generation", String.valueOf(this.generation));
     final JsonObject contentJson = new JsonObject();
     contentJson.addProperty("destination", createVpcRoutingTableRouteOptions.destination());
-    contentJson.add("next_hop", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createVpcRoutingTableRouteOptions.nextHop()));
     contentJson.add("zone", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createVpcRoutingTableRouteOptions.zone()));
     if (createVpcRoutingTableRouteOptions.action() != null) {
       contentJson.addProperty("action", createVpcRoutingTableRouteOptions.action());
     }
     if (createVpcRoutingTableRouteOptions.name() != null) {
       contentJson.addProperty("name", createVpcRoutingTableRouteOptions.name());
+    }
+    if (createVpcRoutingTableRouteOptions.nextHop() != null) {
+      contentJson.add("next_hop", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createVpcRoutingTableRouteOptions.nextHop()));
     }
     builder.bodyJson(contentJson);
     ResponseConverter<Route> responseConverter =
@@ -5542,6 +5552,132 @@ public class Vpc extends BaseService {
   }
 
   /**
+   * List all targets associated with a security group.
+   *
+   * This request lists all targets associated with a security group, to which the rules in the security group are
+   * applied.
+   *
+   * @param listSecurityGroupTargetsOptions the {@link ListSecurityGroupTargetsOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link SecurityGroupTargetCollection}
+   */
+  public ServiceCall<SecurityGroupTargetCollection> listSecurityGroupTargets(ListSecurityGroupTargetsOptions listSecurityGroupTargetsOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(listSecurityGroupTargetsOptions,
+      "listSecurityGroupTargetsOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("security_group_id", listSecurityGroupTargetsOptions.securityGroupId());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/security_groups/{security_group_id}/targets", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listSecurityGroupTargets");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    if (listSecurityGroupTargetsOptions.start() != null) {
+      builder.query("start", String.valueOf(listSecurityGroupTargetsOptions.start()));
+    }
+    if (listSecurityGroupTargetsOptions.limit() != null) {
+      builder.query("limit", String.valueOf(listSecurityGroupTargetsOptions.limit()));
+    }
+    ResponseConverter<SecurityGroupTargetCollection> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<SecurityGroupTargetCollection>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Remove a target from a security group.
+   *
+   * This request removes a target from a security group. For this request to succeed, the target must be attached to at
+   * least one other security group.  The supplied target identifier can be:
+   *
+   * - A network interface identifier
+   * - An application load balancer identifier
+   *
+   * Security groups are stateful, so any changes to a target's security groups are applied to new connections. Existing
+   * connections are not affected.
+   *
+   * @param deleteSecurityGroupTargetBindingOptions the {@link DeleteSecurityGroupTargetBindingOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a void result
+   */
+  public ServiceCall<Void> deleteSecurityGroupTargetBinding(DeleteSecurityGroupTargetBindingOptions deleteSecurityGroupTargetBindingOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(deleteSecurityGroupTargetBindingOptions,
+      "deleteSecurityGroupTargetBindingOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("security_group_id", deleteSecurityGroupTargetBindingOptions.securityGroupId());
+    pathParamsMap.put("id", deleteSecurityGroupTargetBindingOptions.id());
+    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/security_groups/{security_group_id}/targets/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "deleteSecurityGroupTargetBinding");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Retrieve a security group target.
+   *
+   * This request retrieves a single target specified by the identifier in the URL path. The target must be an existing
+   * target of the security group.
+   *
+   * @param getSecurityGroupTargetOptions the {@link GetSecurityGroupTargetOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link SecurityGroupTargetReference}
+   */
+  public ServiceCall<SecurityGroupTargetReference> getSecurityGroupTarget(GetSecurityGroupTargetOptions getSecurityGroupTargetOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(getSecurityGroupTargetOptions,
+      "getSecurityGroupTargetOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("security_group_id", getSecurityGroupTargetOptions.securityGroupId());
+    pathParamsMap.put("id", getSecurityGroupTargetOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/security_groups/{security_group_id}/targets/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getSecurityGroupTarget");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<SecurityGroupTargetReference> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<SecurityGroupTargetReference>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Add a target to a security group.
+   *
+   * This request adds a resource to an existing security group. The supplied target identifier can be:
+   *
+   * - A network interface identifier
+   * - An application load balancer identifier
+   *
+   * When a target is added to a security group, the security group rules are applied to the target. A request body is
+   * not required, and if supplied, is ignored.
+   *
+   * @param createSecurityGroupTargetBindingOptions the {@link CreateSecurityGroupTargetBindingOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link SecurityGroupTargetReference}
+   */
+  public ServiceCall<SecurityGroupTargetReference> createSecurityGroupTargetBinding(CreateSecurityGroupTargetBindingOptions createSecurityGroupTargetBindingOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(createSecurityGroupTargetBindingOptions,
+      "createSecurityGroupTargetBindingOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("security_group_id", createSecurityGroupTargetBindingOptions.securityGroupId());
+    pathParamsMap.put("id", createSecurityGroupTargetBindingOptions.id());
+    RequestBuilder builder = RequestBuilder.put(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/security_groups/{security_group_id}/targets/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "createSecurityGroupTargetBinding");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<SecurityGroupTargetReference> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<SecurityGroupTargetReference>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
    * List all IKE policies.
    *
    * This request lists all IKE policies in the region.
@@ -6556,6 +6692,9 @@ public class Vpc extends BaseService {
     if (createLoadBalancerOptions.resourceGroup() != null) {
       contentJson.add("resource_group", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createLoadBalancerOptions.resourceGroup()));
     }
+    if (createLoadBalancerOptions.securityGroups() != null) {
+      contentJson.add("security_groups", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createLoadBalancerOptions.securityGroups()));
+    }
     builder.bodyJson(contentJson);
     ResponseConverter<LoadBalancer> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<LoadBalancer>() { }.getType());
@@ -7328,9 +7467,10 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * Update load balancer pool members.
+   * Replace load balancer pool members.
    *
-   * This request updates members of the load balancer pool from a collection of member prototype objects.
+   * This request replaces the existing members of the load balancer pool with new members created from the collection
+   * of member prototype objects.
    *
    * @param replaceLoadBalancerPoolMembersOptions the {@link ReplaceLoadBalancerPoolMembersOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link LoadBalancerPoolMemberCollection}
@@ -7620,8 +7760,10 @@ public class Vpc extends BaseService {
   /**
    * Bind a reserved IP to an endpoint gateway.
    *
-   * This request binds the specified reserved IP to the specified endpoint gateway. For this request to succeed, the
-   * reserved IP must currently be unbound and must not have a floating IP bound to it.
+   * This request binds the specified reserved IP to the specified endpoint gateway. The reserved IP:
+   *
+   * - must currently be unbound
+   * - must not be in the same zone as any other reserved IP bound to the endpoint gateway.
    *
    * @param addEndpointGatewayIpOptions the {@link AddEndpointGatewayIpOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link ReservedIP}

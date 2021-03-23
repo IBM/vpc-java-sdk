@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2020.
+ * (C) Copyright IBM Corp. 2021.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -33,32 +33,32 @@ public class CreateVpcRoutingTableRouteOptionsTest {
 
   @Test
   public void testCreateVpcRoutingTableRouteOptions() throws Throwable {
-    RouteNextHopPrototypeRouteNextHopIP routeNextHopPrototypeModel = new RouteNextHopPrototypeRouteNextHopIP.Builder()
-      .address("192.168.3.4")
-      .build();
-    assertEquals(routeNextHopPrototypeModel.address(), "192.168.3.4");
-
     ZoneIdentityByName zoneIdentityModel = new ZoneIdentityByName.Builder()
       .name("us-south-1")
       .build();
     assertEquals(zoneIdentityModel.name(), "us-south-1");
 
+    RouteNextHopPrototypeRouteNextHopIP routeNextHopPrototypeModel = new RouteNextHopPrototypeRouteNextHopIP.Builder()
+      .address("192.168.3.4")
+      .build();
+    assertEquals(routeNextHopPrototypeModel.address(), "192.168.3.4");
+
     CreateVpcRoutingTableRouteOptions createVpcRoutingTableRouteOptionsModel = new CreateVpcRoutingTableRouteOptions.Builder()
       .vpcId("testString")
       .routingTableId("testString")
       .destination("192.168.3.0/24")
-      .nextHop(routeNextHopPrototypeModel)
       .zone(zoneIdentityModel)
       .action("delegate")
       .name("my-route-2")
+      .nextHop(routeNextHopPrototypeModel)
       .build();
     assertEquals(createVpcRoutingTableRouteOptionsModel.vpcId(), "testString");
     assertEquals(createVpcRoutingTableRouteOptionsModel.routingTableId(), "testString");
     assertEquals(createVpcRoutingTableRouteOptionsModel.destination(), "192.168.3.0/24");
-    assertEquals(createVpcRoutingTableRouteOptionsModel.nextHop(), routeNextHopPrototypeModel);
     assertEquals(createVpcRoutingTableRouteOptionsModel.zone(), zoneIdentityModel);
     assertEquals(createVpcRoutingTableRouteOptionsModel.action(), "delegate");
     assertEquals(createVpcRoutingTableRouteOptionsModel.name(), "my-route-2");
+    assertEquals(createVpcRoutingTableRouteOptionsModel.nextHop(), routeNextHopPrototypeModel);
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

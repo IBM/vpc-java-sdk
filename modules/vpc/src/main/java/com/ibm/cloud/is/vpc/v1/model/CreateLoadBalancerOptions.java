@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2020.
+ * (C) Copyright IBM Corp. 2021.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -30,6 +30,7 @@ public class CreateLoadBalancerOptions extends GenericModel {
   protected List<LoadBalancerPoolPrototype> pools;
   protected LoadBalancerProfileIdentity profile;
   protected ResourceGroupIdentity resourceGroup;
+  protected List<SecurityGroupIdentity> securityGroups;
 
   /**
    * Builder.
@@ -43,6 +44,7 @@ public class CreateLoadBalancerOptions extends GenericModel {
     private List<LoadBalancerPoolPrototype> pools;
     private LoadBalancerProfileIdentity profile;
     private ResourceGroupIdentity resourceGroup;
+    private List<SecurityGroupIdentity> securityGroups;
 
     private Builder(CreateLoadBalancerOptions createLoadBalancerOptions) {
       this.isPublic = createLoadBalancerOptions.isPublic;
@@ -53,6 +55,7 @@ public class CreateLoadBalancerOptions extends GenericModel {
       this.pools = createLoadBalancerOptions.pools;
       this.profile = createLoadBalancerOptions.profile;
       this.resourceGroup = createLoadBalancerOptions.resourceGroup;
+      this.securityGroups = createLoadBalancerOptions.securityGroups;
     }
 
     /**
@@ -126,6 +129,22 @@ public class CreateLoadBalancerOptions extends GenericModel {
         this.pools = new ArrayList<LoadBalancerPoolPrototype>();
       }
       this.pools.add(pools);
+      return this;
+    }
+
+    /**
+     * Adds an securityGroups to securityGroups.
+     *
+     * @param securityGroups the new securityGroups
+     * @return the CreateLoadBalancerOptions builder
+     */
+    public Builder addSecurityGroups(SecurityGroupIdentity securityGroups) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(securityGroups,
+        "securityGroups cannot be null");
+      if (this.securityGroups == null) {
+        this.securityGroups = new ArrayList<SecurityGroupIdentity>();
+      }
+      this.securityGroups.add(securityGroups);
       return this;
     }
 
@@ -219,6 +238,18 @@ public class CreateLoadBalancerOptions extends GenericModel {
       this.resourceGroup = resourceGroup;
       return this;
     }
+
+    /**
+     * Set the securityGroups.
+     * Existing securityGroups will be replaced.
+     *
+     * @param securityGroups the securityGroups
+     * @return the CreateLoadBalancerOptions builder
+     */
+    public Builder securityGroups(List<SecurityGroupIdentity> securityGroups) {
+      this.securityGroups = securityGroups;
+      return this;
+    }
   }
 
   protected CreateLoadBalancerOptions(Builder builder) {
@@ -234,6 +265,7 @@ public class CreateLoadBalancerOptions extends GenericModel {
     pools = builder.pools;
     profile = builder.profile;
     resourceGroup = builder.resourceGroup;
+    securityGroups = builder.securityGroups;
   }
 
   /**
@@ -338,6 +370,19 @@ public class CreateLoadBalancerOptions extends GenericModel {
    */
   public ResourceGroupIdentity resourceGroup() {
     return resourceGroup;
+  }
+
+  /**
+   * Gets the securityGroups.
+   *
+   * The security groups to use for this load balancer.
+   *
+   * The load balancer profile must support security groups.
+   *
+   * @return the securityGroups
+   */
+  public List<SecurityGroupIdentity> securityGroups() {
+    return securityGroups;
   }
 }
 

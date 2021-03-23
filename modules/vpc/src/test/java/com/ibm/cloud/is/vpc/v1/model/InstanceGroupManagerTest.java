@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2020.
+ * (C) Copyright IBM Corp. 2021.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -31,18 +31,10 @@ public class InstanceGroupManagerTest {
   final HashMap<String, InputStream> mockStreamMap = TestUtilities.createMockStreamMap();
   final List<FileWithMetadata> mockListFileWithMetadata = TestUtilities.creatMockListFileWithMetadata();
 
+  // TODO: Add tests for models that are abstract
   @Test
   public void testInstanceGroupManager() throws Throwable {
     InstanceGroupManager instanceGroupManagerModel = new InstanceGroupManager();
-    assertNull(instanceGroupManagerModel.getAggregationWindow());
-    assertNull(instanceGroupManagerModel.getCooldown());
-    assertNull(instanceGroupManagerModel.getHref());
-    assertNull(instanceGroupManagerModel.getId());
-    assertNull(instanceGroupManagerModel.isManagementEnabled());
-    assertNull(instanceGroupManagerModel.getManagerType());
-    assertNull(instanceGroupManagerModel.getMaxMembershipCount());
-    assertNull(instanceGroupManagerModel.getMinMembershipCount());
-    assertNull(instanceGroupManagerModel.getName());
-    assertNull(instanceGroupManagerModel.getPolicies());
+    assertNotNull(instanceGroupManagerModel);
   }
 }

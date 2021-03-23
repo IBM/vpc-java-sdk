@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2020.
+ * (C) Copyright IBM Corp. 2021.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -25,6 +25,8 @@ public class LoadBalancerProfile extends GenericModel {
   @SerializedName("logging_supported")
   protected LoadBalancerProfileLoggingSupported loggingSupported;
   protected String name;
+  @SerializedName("security_groups_supported")
+  protected LoadBalancerProfileSecurityGroupsSupported securityGroupsSupported;
 
   /**
    * Gets the family.
@@ -68,6 +70,15 @@ public class LoadBalancerProfile extends GenericModel {
    */
   public String getName() {
     return name;
+  }
+
+  /**
+   * Gets the securityGroupsSupported.
+   *
+   * @return the securityGroupsSupported
+   */
+  public LoadBalancerProfileSecurityGroupsSupported getSecurityGroupsSupported() {
+    return securityGroupsSupported;
   }
 }
 
