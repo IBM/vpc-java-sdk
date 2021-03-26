@@ -10,7 +10,7 @@
         <relativePath>../..</relativePath>
     </parent>
 
-    <artifactId>vpc-examples</artifactId>
+    <artifactId>is-examples</artifactId>
     <packaging>jar</packaging>
     <name>IBM Cloud VPC Code Examples</name>
 
