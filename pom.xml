@@ -172,6 +172,16 @@
         <pluginManagement>
             <plugins>
                 <plugin>
+                    <groupId>org.sonatype.plugins</groupId>
+                    <artifactId>nexus-staging-maven-plugin</artifactId>
+                    <version>${nexus-staging-plugin-version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-gpg-plugin</artifactId>
+                    <version>${maven-gpg-plugin-version}</version>
+                </plugin>
+                <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-deploy-plugin</artifactId>
                     <version>${maven-deploy-plugin-version}</version>
@@ -358,47 +368,6 @@
                 <configuration>
                     <skip>true</skip>
                 </configuration>
-            </plugin>
-
-            <!-- Enable alternate bintray-maven-plugin -->
-            <plugin>
-                <groupId>com.carrotgarden.maven</groupId>
-                <artifactId>bintray-maven-plugin</artifactId>
-                <configuration>
-                    <skip>false</skip>
-
-                    <!-- Bintray oranization name. -->
-                    <subject>${bintray.org}</subject>
-
-                    <!-- Bintray target repository. -->
-                    <repository>${bintray.repo}</repository>
-
-                    <!-- Bintray credentials in settings.xml. -->
-                    <serverId>bintray</serverId>
-
-                    <!-- We'll use the maven coordinates for the bintray package name -->
-                    <bintrayPackage>${project.groupId}:${project.artifactId}</bintrayPackage>
-
-                    <!-- Use the project's github url when creating each module's package in the bintray repo -->
-                    <packageVcsUrl>${bintray.package.url}</packageVcsUrl>
-
-                    <performDestroy>false</performDestroy>
-                    <performCleanup>false</performCleanup>
-                    <performDeploy>true</performDeploy>
-                    <performEnsure>true</performEnsure>
-                    <performPublish>true</performPublish>
-                    <retryFailedDeploymentCount>2</retryFailedDeploymentCount>
-                </configuration>
-                <executions>
-                    <!-- Activate "bintray:deploy" during "deploy" -->
-                    <execution>
-                        <id>bintray-deploy</id>
-                        <phase>deploy</phase>
-                        <goals>
-                            <goal>deploy</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

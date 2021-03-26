@@ -60,9 +60,9 @@ The current version of this SDK is: 0.4.0
 Each service's artifact coordinates are listed in the table above.
 
 The project artifacts are published on the following public maven repositories:
-- [JCenter](https://bintray.com/bintray/jcenter) - For information on how to use the
+<!-- - [JCenter](https://bintray.com/bintray/jcenter) - For information on how to use the
 public JCenter maven repository, open [this link](https://bintray.com/bintray/jcenter)
-then click the `Set Me Up!` button.
+then click the `Set Me Up!` button. -->
 - [Maven Central](https://repo1.maven.org/maven2/) - This is the default public repository
 used by maven when searching for dependencies.  To use this repository within your
 gradle build, please see
