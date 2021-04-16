@@ -9,9 +9,6 @@
 # IBM Cloud VPC Java SDK Version 0.4.3
 Java client library to interact with various [IBM Cloud VPC offerings](https://cloud.ibm.com/apidocs/vpc?code=java?).
 
-Disclaimer: this SDK is being released initially as a **pre-release** version.
-Changes might occur which impact applications that use this SDK.
-
 ## Table of Contents
 
 <!--
