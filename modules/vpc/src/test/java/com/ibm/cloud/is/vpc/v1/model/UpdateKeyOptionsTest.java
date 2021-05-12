@@ -33,10 +33,10 @@ public class UpdateKeyOptionsTest {
   public void testUpdateKeyOptions() throws Throwable {
     UpdateKeyOptions updateKeyOptionsModel = new UpdateKeyOptions.Builder()
       .id("testString")
-      .keyPatch(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
+      .keyPatch(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
       .build();
     assertEquals(updateKeyOptionsModel.id(), "testString");
-    assertEquals(updateKeyOptionsModel.keyPatch(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } });
+    assertEquals(updateKeyOptionsModel.keyPatch(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

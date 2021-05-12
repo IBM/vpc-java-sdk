@@ -33,10 +33,10 @@ public class UpdateSubnetOptionsTest {
   public void testUpdateSubnetOptions() throws Throwable {
     UpdateSubnetOptions updateSubnetOptionsModel = new UpdateSubnetOptions.Builder()
       .id("testString")
-      .subnetPatch(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
+      .subnetPatch(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
       .build();
     assertEquals(updateSubnetOptionsModel.id(), "testString");
-    assertEquals(updateSubnetOptionsModel.subnetPatch(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } });
+    assertEquals(updateSubnetOptionsModel.subnetPatch(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

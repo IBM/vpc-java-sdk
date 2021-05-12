@@ -21,6 +21,8 @@ public class ListInstanceGroupManagerPoliciesOptions extends GenericModel {
 
   protected String instanceGroupId;
   protected String instanceGroupManagerId;
+  protected String start;
+  protected Long limit;
 
   /**
    * Builder.
@@ -28,10 +30,14 @@ public class ListInstanceGroupManagerPoliciesOptions extends GenericModel {
   public static class Builder {
     private String instanceGroupId;
     private String instanceGroupManagerId;
+    private String start;
+    private Long limit;
 
     private Builder(ListInstanceGroupManagerPoliciesOptions listInstanceGroupManagerPoliciesOptions) {
       this.instanceGroupId = listInstanceGroupManagerPoliciesOptions.instanceGroupId;
       this.instanceGroupManagerId = listInstanceGroupManagerPoliciesOptions.instanceGroupManagerId;
+      this.start = listInstanceGroupManagerPoliciesOptions.start;
+      this.limit = listInstanceGroupManagerPoliciesOptions.limit;
     }
 
     /**
@@ -81,6 +87,28 @@ public class ListInstanceGroupManagerPoliciesOptions extends GenericModel {
       this.instanceGroupManagerId = instanceGroupManagerId;
       return this;
     }
+
+    /**
+     * Set the start.
+     *
+     * @param start the start
+     * @return the ListInstanceGroupManagerPoliciesOptions builder
+     */
+    public Builder start(String start) {
+      this.start = start;
+      return this;
+    }
+
+    /**
+     * Set the limit.
+     *
+     * @param limit the limit
+     * @return the ListInstanceGroupManagerPoliciesOptions builder
+     */
+    public Builder limit(long limit) {
+      this.limit = limit;
+      return this;
+    }
   }
 
   protected ListInstanceGroupManagerPoliciesOptions(Builder builder) {
@@ -90,6 +118,8 @@ public class ListInstanceGroupManagerPoliciesOptions extends GenericModel {
       "instanceGroupManagerId cannot be empty");
     instanceGroupId = builder.instanceGroupId;
     instanceGroupManagerId = builder.instanceGroupManagerId;
+    start = builder.start;
+    limit = builder.limit;
   }
 
   /**
@@ -121,6 +151,28 @@ public class ListInstanceGroupManagerPoliciesOptions extends GenericModel {
    */
   public String instanceGroupManagerId() {
     return instanceGroupManagerId;
+  }
+
+  /**
+   * Gets the start.
+   *
+   * A server-supplied token determining what resource to start the page on.
+   *
+   * @return the start
+   */
+  public String start() {
+    return start;
+  }
+
+  /**
+   * Gets the limit.
+   *
+   * The number of resources to return on a page.
+   *
+   * @return the limit
+   */
+  public Long limit() {
+    return limit;
   }
 }
 

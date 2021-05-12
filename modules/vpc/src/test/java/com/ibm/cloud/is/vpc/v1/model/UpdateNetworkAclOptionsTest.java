@@ -33,10 +33,10 @@ public class UpdateNetworkAclOptionsTest {
   public void testUpdateNetworkAclOptions() throws Throwable {
     UpdateNetworkAclOptions updateNetworkAclOptionsModel = new UpdateNetworkAclOptions.Builder()
       .id("testString")
-      .networkAclPatch(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
+      .networkAclPatch(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
       .build();
     assertEquals(updateNetworkAclOptionsModel.id(), "testString");
-    assertEquals(updateNetworkAclOptionsModel.networkAclPatch(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } });
+    assertEquals(updateNetworkAclOptionsModel.networkAclPatch(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

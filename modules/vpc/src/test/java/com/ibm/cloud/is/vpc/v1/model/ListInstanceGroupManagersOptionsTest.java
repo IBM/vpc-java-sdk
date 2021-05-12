@@ -33,8 +33,12 @@ public class ListInstanceGroupManagersOptionsTest {
   public void testListInstanceGroupManagersOptions() throws Throwable {
     ListInstanceGroupManagersOptions listInstanceGroupManagersOptionsModel = new ListInstanceGroupManagersOptions.Builder()
       .instanceGroupId("testString")
+      .start("testString")
+      .limit(Long.valueOf("1"))
       .build();
     assertEquals(listInstanceGroupManagersOptionsModel.instanceGroupId(), "testString");
+    assertEquals(listInstanceGroupManagersOptionsModel.start(), "testString");
+    assertEquals(listInstanceGroupManagersOptionsModel.limit(), Long.valueOf("1"));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

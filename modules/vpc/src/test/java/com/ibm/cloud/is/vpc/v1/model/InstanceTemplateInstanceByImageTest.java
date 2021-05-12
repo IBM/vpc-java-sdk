@@ -15,6 +15,7 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.EncryptionKeyIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.ImageIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.InstancePlacementTargetPrototypeDedicatedHostIdentityDedicatedHostIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileIdentityByName;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateInstanceByImage;
 import com.ibm.cloud.is.vpc.v1.model.KeyIdentityById;
@@ -56,6 +57,7 @@ public class InstanceTemplateInstanceByImageTest {
     assertNull(instanceTemplateInstanceByImageModel.getKeys());
     assertNull(instanceTemplateInstanceByImageModel.getName());
     assertNull(instanceTemplateInstanceByImageModel.getNetworkInterfaces());
+    assertNull(instanceTemplateInstanceByImageModel.getPlacementTarget());
     assertNull(instanceTemplateInstanceByImageModel.getProfile());
     assertNull(instanceTemplateInstanceByImageModel.getResourceGroup());
     assertNull(instanceTemplateInstanceByImageModel.getUserData());

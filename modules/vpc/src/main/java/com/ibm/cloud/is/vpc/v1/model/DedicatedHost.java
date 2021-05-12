@@ -78,6 +78,7 @@ public class DedicatedHost extends GenericModel {
   @SerializedName("created_at")
   protected Date createdAt;
   protected String crn;
+  protected List<DedicatedHostDisk> disks;
   protected DedicatedHostGroupReference group;
   protected String href;
   protected String id;
@@ -144,6 +145,17 @@ public class DedicatedHost extends GenericModel {
    */
   public String getCrn() {
     return crn;
+  }
+
+  /**
+   * Gets the disks.
+   *
+   * Collection of the dedicated host's disks.
+   *
+   * @return the disks
+   */
+  public List<DedicatedHostDisk> getDisks() {
+    return disks;
   }
 
   /**

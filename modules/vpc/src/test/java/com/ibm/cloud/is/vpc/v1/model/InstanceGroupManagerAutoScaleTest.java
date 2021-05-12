@@ -34,10 +34,12 @@ public class InstanceGroupManagerAutoScaleTest {
   @Test
   public void testInstanceGroupManagerAutoScale() throws Throwable {
     InstanceGroupManagerAutoScale instanceGroupManagerAutoScaleModel = new InstanceGroupManagerAutoScale();
+    assertNull(instanceGroupManagerAutoScaleModel.getCreatedAt());
     assertNull(instanceGroupManagerAutoScaleModel.getHref());
     assertNull(instanceGroupManagerAutoScaleModel.getId());
     assertNull(instanceGroupManagerAutoScaleModel.isManagementEnabled());
     assertNull(instanceGroupManagerAutoScaleModel.getName());
+    assertNull(instanceGroupManagerAutoScaleModel.getUpdatedAt());
     assertNull(instanceGroupManagerAutoScaleModel.getAggregationWindow());
     assertNull(instanceGroupManagerAutoScaleModel.getCooldown());
     assertNull(instanceGroupManagerAutoScaleModel.getManagerType());

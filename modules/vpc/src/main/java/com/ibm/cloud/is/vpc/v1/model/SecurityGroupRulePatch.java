@@ -191,7 +191,7 @@ public class SecurityGroupRulePatch extends GenericModel {
   /**
    * Gets the code.
    *
-   * The ICMP traffic code to allow.
+   * The ICMP traffic code to allow. Specify `null` to remove an existing ICMP traffic code value.
    *
    * @return the code
    */
@@ -226,7 +226,8 @@ public class SecurityGroupRulePatch extends GenericModel {
   /**
    * Gets the portMax.
    *
-   * The inclusive upper bound of TCP/UDP port range.
+   * The inclusive upper bound of the protocol port range. Specify `null` to clear an existing upper bound. If a lower
+   * bound has been set, the upper bound must also be set, and must not be smaller.
    *
    * @return the portMax
    */
@@ -237,7 +238,8 @@ public class SecurityGroupRulePatch extends GenericModel {
   /**
    * Gets the portMin.
    *
-   * The inclusive lower bound of TCP/UDP port range.
+   * The inclusive lower bound of the protocol port range. Specify `null` to clear an existing lower bound. If an upper
+   * bound has been set, the lower bound must also be set, and must not be larger.
    *
    * @return the portMin
    */
@@ -262,7 +264,7 @@ public class SecurityGroupRulePatch extends GenericModel {
   /**
    * Gets the type.
    *
-   * The ICMP traffic type to allow.
+   * The ICMP traffic type to allow. Specify `null` to remove an existing ICMP traffic type value.
    *
    * @return the type
    */

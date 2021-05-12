@@ -15,6 +15,10 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfile;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileBandwidthFixed;
+import com.ibm.cloud.is.vpc.v1.model.InstanceProfileDisk;
+import com.ibm.cloud.is.vpc.v1.model.InstanceProfileDiskQuantityFixed;
+import com.ibm.cloud.is.vpc.v1.model.InstanceProfileDiskSizeFixed;
+import com.ibm.cloud.is.vpc.v1.model.InstanceProfileDiskSupportedInterfaces;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileMemoryFixed;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileOSArchitecture;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfilePortSpeedFixed;
@@ -41,6 +45,7 @@ public class InstanceProfileTest {
   public void testInstanceProfile() throws Throwable {
     InstanceProfile instanceProfileModel = new InstanceProfile();
     assertNull(instanceProfileModel.getBandwidth());
+    assertNull(instanceProfileModel.getDisks());
     assertNull(instanceProfileModel.getFamily());
     assertNull(instanceProfileModel.getHref());
     assertNull(instanceProfileModel.getMemory());

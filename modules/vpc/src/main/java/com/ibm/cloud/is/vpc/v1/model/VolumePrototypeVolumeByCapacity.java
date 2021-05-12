@@ -22,22 +22,22 @@ public class VolumePrototypeVolumeByCapacity extends VolumePrototype {
    * Builder.
    */
   public static class Builder {
-    private EncryptionKeyIdentity encryptionKey;
     private Long iops;
     private String name;
     private VolumeProfileIdentity profile;
     private ResourceGroupIdentity resourceGroup;
     private ZoneIdentity zone;
     private Long capacity;
+    private EncryptionKeyIdentity encryptionKey;
 
     public Builder(VolumePrototype volumePrototypeVolumeByCapacity) {
-      this.encryptionKey = volumePrototypeVolumeByCapacity.encryptionKey;
       this.iops = volumePrototypeVolumeByCapacity.iops;
       this.name = volumePrototypeVolumeByCapacity.name;
       this.profile = volumePrototypeVolumeByCapacity.profile;
       this.resourceGroup = volumePrototypeVolumeByCapacity.resourceGroup;
       this.zone = volumePrototypeVolumeByCapacity.zone;
       this.capacity = volumePrototypeVolumeByCapacity.capacity;
+      this.encryptionKey = volumePrototypeVolumeByCapacity.encryptionKey;
     }
 
     /**
@@ -66,17 +66,6 @@ public class VolumePrototypeVolumeByCapacity extends VolumePrototype {
      */
     public VolumePrototypeVolumeByCapacity build() {
       return new VolumePrototypeVolumeByCapacity(this);
-    }
-
-    /**
-     * Set the encryptionKey.
-     *
-     * @param encryptionKey the encryptionKey
-     * @return the VolumePrototypeVolumeByCapacity builder
-     */
-    public Builder encryptionKey(EncryptionKeyIdentity encryptionKey) {
-      this.encryptionKey = encryptionKey;
-      return this;
     }
 
     /**
@@ -144,6 +133,17 @@ public class VolumePrototypeVolumeByCapacity extends VolumePrototype {
       this.capacity = capacity;
       return this;
     }
+
+    /**
+     * Set the encryptionKey.
+     *
+     * @param encryptionKey the encryptionKey
+     * @return the VolumePrototypeVolumeByCapacity builder
+     */
+    public Builder encryptionKey(EncryptionKeyIdentity encryptionKey) {
+      this.encryptionKey = encryptionKey;
+      return this;
+    }
   }
 
   protected VolumePrototypeVolumeByCapacity(Builder builder) {
@@ -153,13 +153,13 @@ public class VolumePrototypeVolumeByCapacity extends VolumePrototype {
       "zone cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.capacity,
       "capacity cannot be null");
-    encryptionKey = builder.encryptionKey;
     iops = builder.iops;
     name = builder.name;
     profile = builder.profile;
     resourceGroup = builder.resourceGroup;
     zone = builder.zone;
     capacity = builder.capacity;
+    encryptionKey = builder.encryptionKey;
   }
 
   /**

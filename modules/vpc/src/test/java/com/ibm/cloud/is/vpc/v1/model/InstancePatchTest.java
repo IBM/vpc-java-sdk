@@ -14,6 +14,7 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.InstancePatch;
+import com.ibm.cloud.is.vpc.v1.model.InstancePatchProfileInstanceProfileIdentityByName;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -32,26 +33,40 @@ public class InstancePatchTest {
 
   @Test
   public void testInstancePatch() throws Throwable {
+    InstancePatchProfileInstanceProfileIdentityByName instancePatchProfileModel = new InstancePatchProfileInstanceProfileIdentityByName.Builder()
+      .name("bc1-4x16")
+      .build();
+    assertEquals(instancePatchProfileModel.name(), "bc1-4x16");
+
     InstancePatch instancePatchModel = new InstancePatch.Builder()
       .name("my-instance")
+      .profile(instancePatchProfileModel)
       .build();
     assertEquals(instancePatchModel.name(), "my-instance");
+    assertEquals(instancePatchModel.profile(), instancePatchProfileModel);
 
     String json = TestUtilities.serialize(instancePatchModel);
 
     InstancePatch instancePatchModelNew = TestUtilities.deserialize(json, InstancePatch.class);
     assertTrue(instancePatchModelNew instanceof InstancePatch);
     assertEquals(instancePatchModelNew.name(), "my-instance");
+    assertEquals(instancePatchModelNew.profile().toString(), instancePatchProfileModel.toString());
   }
   @Test
   public void testInstancePatchAsPatch() throws Throwable {
+    InstancePatchProfileInstanceProfileIdentityByName instancePatchProfileModel = new InstancePatchProfileInstanceProfileIdentityByName.Builder()
+      .name("bc1-4x16")
+      .build();
+
     InstancePatch instancePatchModel = new InstancePatch.Builder()
       .name("my-instance")
+      .profile(instancePatchProfileModel)
       .build();
 
     Map<String, Object> mergePatch = instancePatchModel.asPatch();
 
     assertEquals(mergePatch.get("name"), "my-instance");
+    assertTrue(mergePatch.containsKey("profile"));
   }
 
 }

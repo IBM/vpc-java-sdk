@@ -36,6 +36,8 @@ public class LoadBalancerListenerPolicyRulePatch extends GenericModel {
 
   /**
    * The type of the rule.
+   *
+   * Body rules are applied to form-encoded request bodies using the `UTF-8` character set.
    */
   public interface Type {
     /** header. */
@@ -44,6 +46,10 @@ public class LoadBalancerListenerPolicyRulePatch extends GenericModel {
     String HOSTNAME = "hostname";
     /** path. */
     String PATH = "path";
+    /** query. */
+    String QUERY = "query";
+    /** body. */
+    String BODY = "body";
   }
 
   protected String condition;
@@ -157,7 +163,14 @@ public class LoadBalancerListenerPolicyRulePatch extends GenericModel {
   /**
    * Gets the field.
    *
-   * HTTP header field. This is only applicable to "header" rule type.
+   * The field. This is applicable to `header`, `query`, and `body` rule types.
+   *
+   * If the rule type is `header`, this field is required.
+   *
+   * If the rule type is `query`, this is optional. If specified and the rule condition is not
+   * `matches_regex`, the value must be percent-encoded.
+   *
+   * If the rule type is `body`, this is optional.
    *
    * @return the field
    */
@@ -170,6 +183,8 @@ public class LoadBalancerListenerPolicyRulePatch extends GenericModel {
    *
    * The type of the rule.
    *
+   * Body rules are applied to form-encoded request bodies using the `UTF-8` character set.
+   *
    * @return the type
    */
   public String type() {
@@ -180,6 +195,8 @@ public class LoadBalancerListenerPolicyRulePatch extends GenericModel {
    * Gets the value.
    *
    * Value to be matched for rule condition.
+   *
+   * If the rule type is `query` and the rule condition is not `matches_regex`, the value must be percent-encoded.
    *
    * @return the value
    */

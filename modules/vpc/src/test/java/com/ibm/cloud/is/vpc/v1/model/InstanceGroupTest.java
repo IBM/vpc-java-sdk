@@ -56,6 +56,7 @@ public class InstanceGroupTest {
     assertNull(instanceGroupModel.getResourceGroup());
     assertNull(instanceGroupModel.getStatus());
     assertNull(instanceGroupModel.getSubnets());
+    assertNull(instanceGroupModel.getUpdatedAt());
     assertNull(instanceGroupModel.getVpc());
   }
 }

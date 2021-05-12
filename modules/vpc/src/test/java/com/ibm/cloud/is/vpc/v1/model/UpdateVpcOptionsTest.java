@@ -33,10 +33,10 @@ public class UpdateVpcOptionsTest {
   public void testUpdateVpcOptions() throws Throwable {
     UpdateVpcOptions updateVpcOptionsModel = new UpdateVpcOptions.Builder()
       .id("testString")
-      .vpcPatch(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
+      .vpcPatch(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
       .build();
     assertEquals(updateVpcOptionsModel.id(), "testString");
-    assertEquals(updateVpcOptionsModel.vpcPatch(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } });
+    assertEquals(updateVpcOptionsModel.vpcPatch(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

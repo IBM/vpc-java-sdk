@@ -38,6 +38,7 @@ public class InstanceGroupMembershipTest {
   @Test
   public void testInstanceGroupMembership() throws Throwable {
     InstanceGroupMembership instanceGroupMembershipModel = new InstanceGroupMembership();
+    assertNull(instanceGroupMembershipModel.getCreatedAt());
     assertNull(instanceGroupMembershipModel.isDeleteInstanceOnMembershipDelete());
     assertNull(instanceGroupMembershipModel.getHref());
     assertNull(instanceGroupMembershipModel.getId());
@@ -46,5 +47,6 @@ public class InstanceGroupMembershipTest {
     assertNull(instanceGroupMembershipModel.getName());
     assertNull(instanceGroupMembershipModel.getPoolMember());
     assertNull(instanceGroupMembershipModel.getStatus());
+    assertNull(instanceGroupMembershipModel.getUpdatedAt());
   }
 }

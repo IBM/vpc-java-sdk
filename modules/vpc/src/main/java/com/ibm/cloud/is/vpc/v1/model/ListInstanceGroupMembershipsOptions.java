@@ -20,15 +20,21 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class ListInstanceGroupMembershipsOptions extends GenericModel {
 
   protected String instanceGroupId;
+  protected String start;
+  protected Long limit;
 
   /**
    * Builder.
    */
   public static class Builder {
     private String instanceGroupId;
+    private String start;
+    private Long limit;
 
     private Builder(ListInstanceGroupMembershipsOptions listInstanceGroupMembershipsOptions) {
       this.instanceGroupId = listInstanceGroupMembershipsOptions.instanceGroupId;
+      this.start = listInstanceGroupMembershipsOptions.start;
+      this.limit = listInstanceGroupMembershipsOptions.limit;
     }
 
     /**
@@ -65,12 +71,36 @@ public class ListInstanceGroupMembershipsOptions extends GenericModel {
       this.instanceGroupId = instanceGroupId;
       return this;
     }
+
+    /**
+     * Set the start.
+     *
+     * @param start the start
+     * @return the ListInstanceGroupMembershipsOptions builder
+     */
+    public Builder start(String start) {
+      this.start = start;
+      return this;
+    }
+
+    /**
+     * Set the limit.
+     *
+     * @param limit the limit
+     * @return the ListInstanceGroupMembershipsOptions builder
+     */
+    public Builder limit(long limit) {
+      this.limit = limit;
+      return this;
+    }
   }
 
   protected ListInstanceGroupMembershipsOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.instanceGroupId,
       "instanceGroupId cannot be empty");
     instanceGroupId = builder.instanceGroupId;
+    start = builder.start;
+    limit = builder.limit;
   }
 
   /**
@@ -91,6 +121,28 @@ public class ListInstanceGroupMembershipsOptions extends GenericModel {
    */
   public String instanceGroupId() {
     return instanceGroupId;
+  }
+
+  /**
+   * Gets the start.
+   *
+   * A server-supplied token determining what resource to start the page on.
+   *
+   * @return the start
+   */
+  public String start() {
+    return start;
+  }
+
+  /**
+   * Gets the limit.
+   *
+   * The number of resources to return on a page.
+   *
+   * @return the limit
+   */
+  public Long limit() {
+    return limit;
   }
 }
 

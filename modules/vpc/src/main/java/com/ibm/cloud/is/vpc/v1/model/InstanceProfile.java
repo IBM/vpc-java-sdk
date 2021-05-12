@@ -12,6 +12,8 @@
  */
 package com.ibm.cloud.is.vpc.v1.model;
 
+import java.util.List;
+
 import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
@@ -21,6 +23,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class InstanceProfile extends GenericModel {
 
   protected InstanceProfileBandwidth bandwidth;
+  protected List<InstanceProfileDisk> disks;
   protected String family;
   protected String href;
   protected InstanceProfileMemory memory;
@@ -41,6 +44,17 @@ public class InstanceProfile extends GenericModel {
    */
   public InstanceProfileBandwidth getBandwidth() {
     return bandwidth;
+  }
+
+  /**
+   * Gets the disks.
+   *
+   * Collection of the instance profile's disks.
+   *
+   * @return the disks
+   */
+  public List<InstanceProfileDisk> getDisks() {
+    return disks;
   }
 
   /**

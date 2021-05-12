@@ -15,6 +15,7 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.EncryptionKeyIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.ImageIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.InstancePlacementTargetPrototypeDedicatedHostIdentityDedicatedHostIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileIdentityByName;
 import com.ibm.cloud.is.vpc.v1.model.InstancePrototypeInstanceByImage;
 import com.ibm.cloud.is.vpc.v1.model.KeyIdentityById;
@@ -75,6 +76,11 @@ public class InstancePrototypeInstanceByImageTest {
     assertEquals(networkInterfacePrototypeModel.primaryIpv4Address(), "10.0.0.5");
     assertEquals(networkInterfacePrototypeModel.securityGroups(), new java.util.ArrayList<SecurityGroupIdentity>(java.util.Arrays.asList(securityGroupIdentityModel)));
     assertEquals(networkInterfacePrototypeModel.subnet(), subnetIdentityModel);
+
+    InstancePlacementTargetPrototypeDedicatedHostIdentityDedicatedHostIdentityById instancePlacementTargetPrototypeModel = new InstancePlacementTargetPrototypeDedicatedHostIdentityDedicatedHostIdentityById.Builder()
+      .id("1e09281b-f177-46fb-baf1-bc152b2e391a")
+      .build();
+    assertEquals(instancePlacementTargetPrototypeModel.id(), "1e09281b-f177-46fb-baf1-bc152b2e391a");
 
     InstanceProfileIdentityByName instanceProfileIdentityModel = new InstanceProfileIdentityByName.Builder()
       .name("cc1-16x32")
@@ -151,6 +157,7 @@ public class InstancePrototypeInstanceByImageTest {
       .keys(new java.util.ArrayList<KeyIdentity>(java.util.Arrays.asList(keyIdentityModel)))
       .name("my-instance")
       .networkInterfaces(new java.util.ArrayList<NetworkInterfacePrototype>(java.util.Arrays.asList(networkInterfacePrototypeModel)))
+      .placementTarget(instancePlacementTargetPrototypeModel)
       .profile(instanceProfileIdentityModel)
       .resourceGroup(resourceGroupIdentityModel)
       .userData("testString")
@@ -164,6 +171,7 @@ public class InstancePrototypeInstanceByImageTest {
     assertEquals(instancePrototypeInstanceByImageModel.keys(), new java.util.ArrayList<KeyIdentity>(java.util.Arrays.asList(keyIdentityModel)));
     assertEquals(instancePrototypeInstanceByImageModel.name(), "my-instance");
     assertEquals(instancePrototypeInstanceByImageModel.networkInterfaces(), new java.util.ArrayList<NetworkInterfacePrototype>(java.util.Arrays.asList(networkInterfacePrototypeModel)));
+    assertEquals(instancePrototypeInstanceByImageModel.placementTarget(), instancePlacementTargetPrototypeModel);
     assertEquals(instancePrototypeInstanceByImageModel.profile(), instanceProfileIdentityModel);
     assertEquals(instancePrototypeInstanceByImageModel.resourceGroup(), resourceGroupIdentityModel);
     assertEquals(instancePrototypeInstanceByImageModel.userData(), "testString");
@@ -179,6 +187,7 @@ public class InstancePrototypeInstanceByImageTest {
     InstancePrototypeInstanceByImage instancePrototypeInstanceByImageModelNew = TestUtilities.deserialize(json, InstancePrototypeInstanceByImage.class);
     assertTrue(instancePrototypeInstanceByImageModelNew instanceof InstancePrototypeInstanceByImage);
     assertEquals(instancePrototypeInstanceByImageModelNew.name(), "my-instance");
+    assertEquals(instancePrototypeInstanceByImageModelNew.placementTarget().toString(), instancePlacementTargetPrototypeModel.toString());
     assertEquals(instancePrototypeInstanceByImageModelNew.profile().toString(), instanceProfileIdentityModel.toString());
     assertEquals(instancePrototypeInstanceByImageModelNew.resourceGroup().toString(), resourceGroupIdentityModel.toString());
     assertEquals(instancePrototypeInstanceByImageModelNew.userData(), "testString");

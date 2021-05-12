@@ -221,8 +221,8 @@ public class LoadBalancerListenerPatch extends GenericModel {
   /**
    * Gets the port.
    *
-   * The listener port number. Each listener in the load balancer must have a unique
-   * `port` and `protocol` combination.
+   * The listener port number, or the inclusive lower bound of the port range. Each listener in the load balancer must
+   * have a unique `port` and `protocol` combination.
    *
    * @return the port
    */

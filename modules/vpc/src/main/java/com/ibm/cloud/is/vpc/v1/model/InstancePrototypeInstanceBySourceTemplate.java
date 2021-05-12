@@ -28,6 +28,7 @@ public class InstancePrototypeInstanceBySourceTemplate extends InstancePrototype
     private List<KeyIdentity> keys;
     private String name;
     private List<NetworkInterfacePrototype> networkInterfaces;
+    private InstancePlacementTargetPrototype placementTarget;
     private InstanceProfileIdentity profile;
     private ResourceGroupIdentity resourceGroup;
     private String userData;
@@ -43,6 +44,7 @@ public class InstancePrototypeInstanceBySourceTemplate extends InstancePrototype
       this.keys = instancePrototypeInstanceBySourceTemplate.keys;
       this.name = instancePrototypeInstanceBySourceTemplate.name;
       this.networkInterfaces = instancePrototypeInstanceBySourceTemplate.networkInterfaces;
+      this.placementTarget = instancePrototypeInstanceBySourceTemplate.placementTarget;
       this.profile = instancePrototypeInstanceBySourceTemplate.profile;
       this.resourceGroup = instancePrototypeInstanceBySourceTemplate.resourceGroup;
       this.userData = instancePrototypeInstanceBySourceTemplate.userData;
@@ -159,6 +161,17 @@ public class InstancePrototypeInstanceBySourceTemplate extends InstancePrototype
      */
     public Builder networkInterfaces(List<NetworkInterfacePrototype> networkInterfaces) {
       this.networkInterfaces = networkInterfaces;
+      return this;
+    }
+
+    /**
+     * Set the placementTarget.
+     *
+     * @param placementTarget the placementTarget
+     * @return the InstancePrototypeInstanceBySourceTemplate builder
+     */
+    public Builder placementTarget(InstancePlacementTargetPrototype placementTarget) {
+      this.placementTarget = placementTarget;
       return this;
     }
 
@@ -280,6 +293,7 @@ public class InstancePrototypeInstanceBySourceTemplate extends InstancePrototype
     keys = builder.keys;
     name = builder.name;
     networkInterfaces = builder.networkInterfaces;
+    placementTarget = builder.placementTarget;
     profile = builder.profile;
     resourceGroup = builder.resourceGroup;
     userData = builder.userData;

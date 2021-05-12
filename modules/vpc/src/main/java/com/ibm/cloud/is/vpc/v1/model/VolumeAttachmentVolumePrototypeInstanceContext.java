@@ -27,12 +27,12 @@ public class VolumeAttachmentVolumePrototypeInstanceContext extends GenericModel
   protected String id;
   protected String crn;
   protected String href;
-  @SerializedName("encryption_key")
-  protected EncryptionKeyIdentity encryptionKey;
   protected Long iops;
   protected String name;
   protected VolumeProfileIdentity profile;
   protected Long capacity;
+  @SerializedName("encryption_key")
+  protected EncryptionKeyIdentity encryptionKey;
 
   protected VolumeAttachmentVolumePrototypeInstanceContext() {
   }
@@ -68,20 +68,6 @@ public class VolumeAttachmentVolumePrototypeInstanceContext extends GenericModel
    */
   public String href() {
     return href;
-  }
-
-  /**
-   * Gets the encryptionKey.
-   *
-   * The identity of the root key to use to wrap the data encryption key for the volume.
-   *
-   * If this property is not provided, the `encryption` type for the volume will be
-   * `provider_managed`.
-   *
-   * @return the encryptionKey
-   */
-  public EncryptionKeyIdentity encryptionKey() {
-    return encryptionKey;
   }
 
   /**
@@ -127,6 +113,20 @@ public class VolumeAttachmentVolumePrototypeInstanceContext extends GenericModel
    */
   public Long capacity() {
     return capacity;
+  }
+
+  /**
+   * Gets the encryptionKey.
+   *
+   * The identity of the root key to use to wrap the data encryption key for the volume.
+   *
+   * If this property is not provided, the `encryption` type for the volume will be
+   * `provider_managed`.
+   *
+   * @return the encryptionKey
+   */
+  public EncryptionKeyIdentity encryptionKey() {
+    return encryptionKey;
   }
 }
 

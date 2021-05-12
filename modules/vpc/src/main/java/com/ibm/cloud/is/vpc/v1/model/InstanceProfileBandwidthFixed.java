@@ -13,7 +13,8 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 /**
- * The total bandwidth (in megabits per second) shared across the network interfaces of an instance with this profile.
+ * The total bandwidth (in megabits per second) shared across the network interfaces and storage volumes of an instance
+ * with this profile.
  */
 public class InstanceProfileBandwidthFixed extends InstanceProfileBandwidth {
 

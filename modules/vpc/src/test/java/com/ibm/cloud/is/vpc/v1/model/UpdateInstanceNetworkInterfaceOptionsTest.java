@@ -34,11 +34,11 @@ public class UpdateInstanceNetworkInterfaceOptionsTest {
     UpdateInstanceNetworkInterfaceOptions updateInstanceNetworkInterfaceOptionsModel = new UpdateInstanceNetworkInterfaceOptions.Builder()
       .instanceId("testString")
       .id("testString")
-      .networkInterfacePatch(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
+      .networkInterfacePatch(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
       .build();
     assertEquals(updateInstanceNetworkInterfaceOptionsModel.instanceId(), "testString");
     assertEquals(updateInstanceNetworkInterfaceOptionsModel.id(), "testString");
-    assertEquals(updateInstanceNetworkInterfaceOptionsModel.networkInterfacePatch(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } });
+    assertEquals(updateInstanceNetworkInterfaceOptionsModel.networkInterfacePatch(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

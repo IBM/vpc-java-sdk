@@ -34,11 +34,11 @@ public class UpdateNetworkAclRuleOptionsTest {
     UpdateNetworkAclRuleOptions updateNetworkAclRuleOptionsModel = new UpdateNetworkAclRuleOptions.Builder()
       .networkAclId("testString")
       .id("testString")
-      .networkAclRulePatch(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
+      .networkAclRulePatch(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
       .build();
     assertEquals(updateNetworkAclRuleOptionsModel.networkAclId(), "testString");
     assertEquals(updateNetworkAclRuleOptionsModel.id(), "testString");
-    assertEquals(updateNetworkAclRuleOptionsModel.networkAclRulePatch(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } });
+    assertEquals(updateNetworkAclRuleOptionsModel.networkAclRulePatch(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

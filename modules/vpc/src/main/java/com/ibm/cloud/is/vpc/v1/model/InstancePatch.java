@@ -23,15 +23,18 @@ import com.ibm.cloud.sdk.core.util.GsonSingleton;
 public class InstancePatch extends GenericModel {
 
   protected String name;
+  protected InstancePatchProfile profile;
 
   /**
    * Builder.
    */
   public static class Builder {
     private String name;
+    private InstancePatchProfile profile;
 
     private Builder(InstancePatch instancePatch) {
       this.name = instancePatch.name;
+      this.profile = instancePatch.profile;
     }
 
     /**
@@ -59,10 +62,22 @@ public class InstancePatch extends GenericModel {
       this.name = name;
       return this;
     }
+
+    /**
+     * Set the profile.
+     *
+     * @param profile the profile
+     * @return the InstancePatch builder
+     */
+    public Builder profile(InstancePatchProfile profile) {
+      this.profile = profile;
+      return this;
+    }
   }
 
   protected InstancePatch(Builder builder) {
     name = builder.name;
+    profile = builder.profile;
   }
 
   /**
@@ -83,6 +98,25 @@ public class InstancePatch extends GenericModel {
    */
   public String name() {
     return name;
+  }
+
+  /**
+   * Gets the profile.
+   *
+   * The profile to use for this virtual server instance. For the profile to be changed,
+   * the instance `status` must be `stopping` or `stopped`. In addition, the requested
+   * profile must:
+   * - Match the current profile's instance disk support. (Note: If the current profile
+   *   supports instance storage disks, the requested profile can have a different
+   *   instance storage disk configuration.)
+   * - Be compatible with any `placement_target` constraints. For example, if the
+   *   instance is placed on a dedicated host, the requested profile `family` must be
+   *   the same as the dedicated host `family`.
+   *
+   * @return the profile
+   */
+  public InstancePatchProfile profile() {
+    return profile;
   }
 
   /**

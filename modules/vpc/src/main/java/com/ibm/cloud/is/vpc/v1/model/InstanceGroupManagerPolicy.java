@@ -12,6 +12,8 @@
  */
 package com.ibm.cloud.is.vpc.v1.model;
 
+import java.util.Date;
+
 import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
@@ -45,9 +47,13 @@ public class InstanceGroupManagerPolicy extends GenericModel {
     String TARGET = "target";
   }
 
+  @SerializedName("created_at")
+  protected Date createdAt;
   protected String href;
   protected String id;
   protected String name;
+  @SerializedName("updated_at")
+  protected Date updatedAt;
   @SerializedName("metric_type")
   protected String metricType;
   @SerializedName("metric_value")
@@ -56,6 +62,17 @@ public class InstanceGroupManagerPolicy extends GenericModel {
   protected String policyType;
 
   protected InstanceGroupManagerPolicy() {
+  }
+
+  /**
+   * Gets the createdAt.
+   *
+   * The date and time that the instance group manager policy was created.
+   *
+   * @return the createdAt
+   */
+  public Date getCreatedAt() {
+    return createdAt;
   }
 
   /**
@@ -90,6 +107,17 @@ public class InstanceGroupManagerPolicy extends GenericModel {
    */
   public String getName() {
     return name;
+  }
+
+  /**
+   * Gets the updatedAt.
+   *
+   * The date and time that the instance group manager policy was updated.
+   *
+   * @return the updatedAt
+   */
+  public Date getUpdatedAt() {
+    return updatedAt;
   }
 
   /**

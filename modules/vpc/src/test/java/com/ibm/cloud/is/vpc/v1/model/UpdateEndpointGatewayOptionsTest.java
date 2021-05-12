@@ -33,10 +33,10 @@ public class UpdateEndpointGatewayOptionsTest {
   public void testUpdateEndpointGatewayOptions() throws Throwable {
     UpdateEndpointGatewayOptions updateEndpointGatewayOptionsModel = new UpdateEndpointGatewayOptions.Builder()
       .id("testString")
-      .endpointGatewayPatch(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
+      .endpointGatewayPatch(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
       .build();
     assertEquals(updateEndpointGatewayOptionsModel.id(), "testString");
-    assertEquals(updateEndpointGatewayOptionsModel.endpointGatewayPatch(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } });
+    assertEquals(updateEndpointGatewayOptionsModel.endpointGatewayPatch(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

@@ -14,6 +14,11 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostProfile;
+import com.ibm.cloud.is.vpc.v1.model.DedicatedHostProfileDisk;
+import com.ibm.cloud.is.vpc.v1.model.DedicatedHostProfileDiskInterface;
+import com.ibm.cloud.is.vpc.v1.model.DedicatedHostProfileDiskQuantity;
+import com.ibm.cloud.is.vpc.v1.model.DedicatedHostProfileDiskSize;
+import com.ibm.cloud.is.vpc.v1.model.DedicatedHostProfileDiskSupportedInterfaces;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostProfileMemoryFixed;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostProfileSocketFixed;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostProfileVCPUArchitecture;
@@ -22,6 +27,8 @@ import com.ibm.cloud.is.vpc.v1.model.InstanceProfileReference;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import org.testng.annotations.Test;
@@ -38,6 +45,7 @@ public class DedicatedHostProfileTest {
   public void testDedicatedHostProfile() throws Throwable {
     DedicatedHostProfile dedicatedHostProfileModel = new DedicatedHostProfile();
     assertNull(dedicatedHostProfileModel.getXClass());
+    assertNull(dedicatedHostProfileModel.getDisks());
     assertNull(dedicatedHostProfileModel.getFamily());
     assertNull(dedicatedHostProfileModel.getHref());
     assertNull(dedicatedHostProfileModel.getMemory());

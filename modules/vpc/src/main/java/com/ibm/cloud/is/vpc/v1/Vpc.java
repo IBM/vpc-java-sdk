@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2020, 2021.
+ * (C) Copyright IBM Corp. 2021.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -12,7 +12,7 @@
  */
 
 /*
- * IBM OpenAPI SDK Code Generator Version: 3.28.0-55613c9e-20210220-164656
+ * IBM OpenAPI SDK Code Generator Version: 3.31.0-902c9336-20210504-161156
  */
 
 package com.ibm.cloud.is.vpc.v1;
@@ -36,6 +36,8 @@ import com.ibm.cloud.is.vpc.v1.model.CreateFlowLogCollectorOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateIkePolicyOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateImageOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateInstanceActionOptions;
+import com.ibm.cloud.is.vpc.v1.model.CreateInstanceConsoleAccessTokenOptions;
+import com.ibm.cloud.is.vpc.v1.model.CreateInstanceGroupManagerActionOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateInstanceGroupManagerOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateInstanceGroupManagerPolicyOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateInstanceGroupOptions;
@@ -69,6 +71,8 @@ import com.ibm.cloud.is.vpc.v1.model.CreateVpnGatewayConnectionOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateVpnGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHost;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostCollection;
+import com.ibm.cloud.is.vpc.v1.model.DedicatedHostDisk;
+import com.ibm.cloud.is.vpc.v1.model.DedicatedHostDiskCollection;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostGroup;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostGroupCollection;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostProfile;
@@ -84,6 +88,7 @@ import com.ibm.cloud.is.vpc.v1.model.DeleteFlowLogCollectorOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteIkePolicyOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteImageOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteInstanceGroupLoadBalancerOptions;
+import com.ibm.cloud.is.vpc.v1.model.DeleteInstanceGroupManagerActionOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteInstanceGroupManagerOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteInstanceGroupManagerPolicyOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteInstanceGroupMembershipOptions;
@@ -124,6 +129,7 @@ import com.ibm.cloud.is.vpc.v1.model.FloatingIPCollection;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPUnpaginatedCollection;
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollector;
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorCollection;
+import com.ibm.cloud.is.vpc.v1.model.GetDedicatedHostDiskOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetDedicatedHostGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetDedicatedHostOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetDedicatedHostProfileOptions;
@@ -133,6 +139,8 @@ import com.ibm.cloud.is.vpc.v1.model.GetFloatingIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetFlowLogCollectorOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetIkePolicyOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetImageOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetInstanceDiskOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetInstanceGroupManagerActionOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetInstanceGroupManagerOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetInstanceGroupManagerPolicyOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetInstanceGroupMembershipOptions;
@@ -190,9 +198,14 @@ import com.ibm.cloud.is.vpc.v1.model.ImageCollection;
 import com.ibm.cloud.is.vpc.v1.model.Instance;
 import com.ibm.cloud.is.vpc.v1.model.InstanceAction;
 import com.ibm.cloud.is.vpc.v1.model.InstanceCollection;
+import com.ibm.cloud.is.vpc.v1.model.InstanceConsoleAccessToken;
+import com.ibm.cloud.is.vpc.v1.model.InstanceDisk;
+import com.ibm.cloud.is.vpc.v1.model.InstanceDiskCollection;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroup;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupCollection;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManager;
+import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerAction;
+import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerActionsCollection;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerCollection;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerPolicy;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerPolicyCollection;
@@ -205,6 +218,7 @@ import com.ibm.cloud.is.vpc.v1.model.InstanceTemplate;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateCollection;
 import com.ibm.cloud.is.vpc.v1.model.Key;
 import com.ibm.cloud.is.vpc.v1.model.KeyCollection;
+import com.ibm.cloud.is.vpc.v1.model.ListDedicatedHostDisksOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListDedicatedHostGroupsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListDedicatedHostProfilesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListDedicatedHostsOptions;
@@ -215,6 +229,8 @@ import com.ibm.cloud.is.vpc.v1.model.ListFlowLogCollectorsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListIkePoliciesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListIkePolicyConnectionsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListImagesOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListInstanceDisksOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListInstanceGroupManagerActionsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListInstanceGroupManagerPoliciesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListInstanceGroupManagersOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListInstanceGroupMembershipsOptions;
@@ -311,6 +327,7 @@ import com.ibm.cloud.is.vpc.v1.model.SetSubnetPublicGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.Subnet;
 import com.ibm.cloud.is.vpc.v1.model.SubnetCollection;
 import com.ibm.cloud.is.vpc.v1.model.UnsetSubnetPublicGatewayOptions;
+import com.ibm.cloud.is.vpc.v1.model.UpdateDedicatedHostDiskOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateDedicatedHostGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateDedicatedHostOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateEndpointGatewayOptions;
@@ -318,6 +335,8 @@ import com.ibm.cloud.is.vpc.v1.model.UpdateFloatingIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateFlowLogCollectorOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateIkePolicyOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateImageOptions;
+import com.ibm.cloud.is.vpc.v1.model.UpdateInstanceDiskOptions;
+import com.ibm.cloud.is.vpc.v1.model.UpdateInstanceGroupManagerActionOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateInstanceGroupManagerOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateInstanceGroupManagerPolicyOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateInstanceGroupMembershipOptions;
@@ -390,7 +409,7 @@ public class Vpc extends BaseService {
 
   private String version;
 
-  private Long generation = Long.valueOf(2);
+  private Long generation = Long.valueOf("2");
 
  /**
    * Class method which constructs an instance of the `Vpc` client.
@@ -404,14 +423,14 @@ public class Vpc extends BaseService {
     return newInstance(version, DEFAULT_SERVICE_NAME);
   }
 
-   /**
+       /**
    * Class method which constructs an instance of the `Vpc` client.
    * The default service name and version is used to configure the client instance.
    *
    * @return an instance of the `Vpc` client using external configuration
    */
   public static Vpc newInstance() {
-    return newInstance("2021-03-09", DEFAULT_SERVICE_NAME);
+    return newInstance("2021-05-06", DEFAULT_SERVICE_NAME);
   }
 
   /**
@@ -1986,8 +2005,9 @@ public class Vpc extends BaseService {
   /**
    * Delete an image.
    *
-   * This request deletes an image. This operation cannot be reversed. System-provided images are not allowed to be
-   * deleted. An image with a `status` of `pending`, `tentative`, or `deleting` cannot be deleted.
+   * This request deletes an image. This operation cannot be reversed. A system-provided image is not allowed to be
+   * deleted. Additionally, an image cannot be deleted if it has a
+   * `status` of `pending`, `tentative`, or `deleting`.
    *
    * @param deleteImageOptions the {@link DeleteImageOptions} containing the options for the call
    * @return a {@link ServiceCall} with a void result
@@ -2038,7 +2058,7 @@ public class Vpc extends BaseService {
    * Update an image.
    *
    * This request updates an image with the information in a provided image patch. The image patch object is structured
-   * in the same way as a retrieved image and contains only the information to be updated. System-provided images are
+   * in the same way as a retrieved image and contains only the information to be updated. A system-provided image is
    * not allowed to be updated. An image with a `status` of `deleting` cannot be updated.
    *
    * @param updateImageOptions the {@link UpdateImageOptions} containing the options for the call
@@ -2710,6 +2730,124 @@ public class Vpc extends BaseService {
   }
 
   /**
+   * Create a console access token for an instance.
+   *
+   * This request creates a new single-use console access token for an instance. All console configuration is provided
+   * at token create time, and the token is subsequently used in the `access_token` query parameter for the WebSocket
+   * request.  The access token is only valid for a short period of time, and a maximum of one token is valid for a
+   * given instance at a time.
+   *
+   * @param createInstanceConsoleAccessTokenOptions the {@link CreateInstanceConsoleAccessTokenOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link InstanceConsoleAccessToken}
+   */
+  public ServiceCall<InstanceConsoleAccessToken> createInstanceConsoleAccessToken(CreateInstanceConsoleAccessTokenOptions createInstanceConsoleAccessTokenOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(createInstanceConsoleAccessTokenOptions,
+      "createInstanceConsoleAccessTokenOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("instance_id", createInstanceConsoleAccessTokenOptions.instanceId());
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/instances/{instance_id}/console_access_token", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "createInstanceConsoleAccessToken");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    final JsonObject contentJson = new JsonObject();
+    contentJson.addProperty("console_type", createInstanceConsoleAccessTokenOptions.consoleType());
+    if (createInstanceConsoleAccessTokenOptions.force() != null) {
+      contentJson.addProperty("force", createInstanceConsoleAccessTokenOptions.force());
+    }
+    builder.bodyJson(contentJson);
+    ResponseConverter<InstanceConsoleAccessToken> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<InstanceConsoleAccessToken>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * List all disks on an instance.
+   *
+   * This request lists all disks on an instance.  A disk is a block device that is locally attached to the instance's
+   * physical host and is also referred to as instance storage. By default, the listed disks are sorted by their
+   * `created_at` property values, with the newest disk first.
+   *
+   * @param listInstanceDisksOptions the {@link ListInstanceDisksOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link InstanceDiskCollection}
+   */
+  public ServiceCall<InstanceDiskCollection> listInstanceDisks(ListInstanceDisksOptions listInstanceDisksOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(listInstanceDisksOptions,
+      "listInstanceDisksOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("instance_id", listInstanceDisksOptions.instanceId());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/instances/{instance_id}/disks", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listInstanceDisks");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<InstanceDiskCollection> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<InstanceDiskCollection>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Retrieve an instance disk.
+   *
+   * This request retrieves a single instance disk specified by the identifier in the URL.
+   *
+   * @param getInstanceDiskOptions the {@link GetInstanceDiskOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link InstanceDisk}
+   */
+  public ServiceCall<InstanceDisk> getInstanceDisk(GetInstanceDiskOptions getInstanceDiskOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(getInstanceDiskOptions,
+      "getInstanceDiskOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("instance_id", getInstanceDiskOptions.instanceId());
+    pathParamsMap.put("id", getInstanceDiskOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/instances/{instance_id}/disks/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getInstanceDisk");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<InstanceDisk> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<InstanceDisk>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Update an instance disk.
+   *
+   * This request updates the instance disk with the information in a provided patch.
+   *
+   * @param updateInstanceDiskOptions the {@link UpdateInstanceDiskOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link InstanceDisk}
+   */
+  public ServiceCall<InstanceDisk> updateInstanceDisk(UpdateInstanceDiskOptions updateInstanceDiskOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(updateInstanceDiskOptions,
+      "updateInstanceDiskOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("instance_id", updateInstanceDiskOptions.instanceId());
+    pathParamsMap.put("id", updateInstanceDiskOptions.id());
+    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/instances/{instance_id}/disks/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "updateInstanceDisk");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateInstanceDiskOptions.instanceDiskPatch()), "application/merge-patch+json");
+    ResponseConverter<InstanceDisk> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<InstanceDisk>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
    * List all network interfaces on an instance.
    *
    * This request lists all network interfaces on an instance. A network interface is an abstract representation of a
@@ -2839,9 +2977,9 @@ public class Vpc extends BaseService {
   /**
    * Update a network interface.
    *
-   * This request updates a network interface with the information in a provided network interface patch. The network
-   * interface patch object is structured in the same way as a retrieved network interface and can contain an updated
-   * name and/or port speed.
+   * This request updates a network interface with the information provided in a network interface patch object. The
+   * network interface patch object is structured in the same way as a retrieved network interface and needs to contain
+   * only the information to be updated.
    *
    * @param updateInstanceNetworkInterfaceOptions the {@link UpdateInstanceNetworkInterfaceOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link NetworkInterface}
@@ -3098,9 +3236,9 @@ public class Vpc extends BaseService {
   /**
    * Update a volume attachment.
    *
-   * This request updates a volume attachment with the information in a provided volume attachment patch. The volume
-   * attachment patch object is structured in the same way as a retrieved volume attachment and can contain an updated
-   * name.
+   * This request updates a volume attachment with the information provided in a volume attachment patch object. The
+   * volume attachment patch object is structured in the same way as a retrieved volume attachment and needs to contain
+   * only the information to be updated.
    *
    * @param updateInstanceVolumeAttachmentOptions the {@link UpdateInstanceVolumeAttachmentOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link VolumeAttachment}
@@ -3337,6 +3475,12 @@ public class Vpc extends BaseService {
     builder.header("Accept", "application/json");
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
+    if (listInstanceGroupManagersOptions.start() != null) {
+      builder.query("start", String.valueOf(listInstanceGroupManagersOptions.start()));
+    }
+    if (listInstanceGroupManagersOptions.limit() != null) {
+      builder.query("limit", String.valueOf(listInstanceGroupManagersOptions.limit()));
+    }
     ResponseConverter<InstanceGroupManagerCollection> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<InstanceGroupManagerCollection>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -3450,6 +3594,150 @@ public class Vpc extends BaseService {
   }
 
   /**
+   * List all actions for an instance group manager.
+   *
+   * This request lists all instance group actions for an instance group manager.
+   *
+   * @param listInstanceGroupManagerActionsOptions the {@link ListInstanceGroupManagerActionsOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link InstanceGroupManagerActionsCollection}
+   */
+  public ServiceCall<InstanceGroupManagerActionsCollection> listInstanceGroupManagerActions(ListInstanceGroupManagerActionsOptions listInstanceGroupManagerActionsOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(listInstanceGroupManagerActionsOptions,
+      "listInstanceGroupManagerActionsOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("instance_group_id", listInstanceGroupManagerActionsOptions.instanceGroupId());
+    pathParamsMap.put("instance_group_manager_id", listInstanceGroupManagerActionsOptions.instanceGroupManagerId());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/instance_groups/{instance_group_id}/managers/{instance_group_manager_id}/actions", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listInstanceGroupManagerActions");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    if (listInstanceGroupManagerActionsOptions.start() != null) {
+      builder.query("start", String.valueOf(listInstanceGroupManagerActionsOptions.start()));
+    }
+    if (listInstanceGroupManagerActionsOptions.limit() != null) {
+      builder.query("limit", String.valueOf(listInstanceGroupManagerActionsOptions.limit()));
+    }
+    ResponseConverter<InstanceGroupManagerActionsCollection> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<InstanceGroupManagerActionsCollection>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Create an instance group manager action.
+   *
+   * This request creates a new instance group manager action.
+   *
+   * @param createInstanceGroupManagerActionOptions the {@link CreateInstanceGroupManagerActionOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link InstanceGroupManagerAction}
+   */
+  public ServiceCall<InstanceGroupManagerAction> createInstanceGroupManagerAction(CreateInstanceGroupManagerActionOptions createInstanceGroupManagerActionOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(createInstanceGroupManagerActionOptions,
+      "createInstanceGroupManagerActionOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("instance_group_id", createInstanceGroupManagerActionOptions.instanceGroupId());
+    pathParamsMap.put("instance_group_manager_id", createInstanceGroupManagerActionOptions.instanceGroupManagerId());
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/instance_groups/{instance_group_id}/managers/{instance_group_manager_id}/actions", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "createInstanceGroupManagerAction");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(createInstanceGroupManagerActionOptions.instanceGroupManagerActionPrototype()), "application/json");
+    ResponseConverter<InstanceGroupManagerAction> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<InstanceGroupManagerAction>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Delete specified instance group manager action.
+   *
+   * This request deletes an instance group manager action. This operation cannot be reversed.
+   *
+   * @param deleteInstanceGroupManagerActionOptions the {@link DeleteInstanceGroupManagerActionOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a void result
+   */
+  public ServiceCall<Void> deleteInstanceGroupManagerAction(DeleteInstanceGroupManagerActionOptions deleteInstanceGroupManagerActionOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(deleteInstanceGroupManagerActionOptions,
+      "deleteInstanceGroupManagerActionOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("instance_group_id", deleteInstanceGroupManagerActionOptions.instanceGroupId());
+    pathParamsMap.put("instance_group_manager_id", deleteInstanceGroupManagerActionOptions.instanceGroupManagerId());
+    pathParamsMap.put("id", deleteInstanceGroupManagerActionOptions.id());
+    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/instance_groups/{instance_group_id}/managers/{instance_group_manager_id}/actions/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "deleteInstanceGroupManagerAction");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Retrieve specified instance group manager action.
+   *
+   * This request retrieves a single instance group manager action specified by identifier in the URL.
+   *
+   * @param getInstanceGroupManagerActionOptions the {@link GetInstanceGroupManagerActionOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link InstanceGroupManagerAction}
+   */
+  public ServiceCall<InstanceGroupManagerAction> getInstanceGroupManagerAction(GetInstanceGroupManagerActionOptions getInstanceGroupManagerActionOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(getInstanceGroupManagerActionOptions,
+      "getInstanceGroupManagerActionOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("instance_group_id", getInstanceGroupManagerActionOptions.instanceGroupId());
+    pathParamsMap.put("instance_group_manager_id", getInstanceGroupManagerActionOptions.instanceGroupManagerId());
+    pathParamsMap.put("id", getInstanceGroupManagerActionOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/instance_groups/{instance_group_id}/managers/{instance_group_manager_id}/actions/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getInstanceGroupManagerAction");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<InstanceGroupManagerAction> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<InstanceGroupManagerAction>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Update specified instance group manager action.
+   *
+   * This request updates an instance group manager action.
+   *
+   * @param updateInstanceGroupManagerActionOptions the {@link UpdateInstanceGroupManagerActionOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link InstanceGroupManagerAction}
+   */
+  public ServiceCall<InstanceGroupManagerAction> updateInstanceGroupManagerAction(UpdateInstanceGroupManagerActionOptions updateInstanceGroupManagerActionOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(updateInstanceGroupManagerActionOptions,
+      "updateInstanceGroupManagerActionOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("instance_group_id", updateInstanceGroupManagerActionOptions.instanceGroupId());
+    pathParamsMap.put("instance_group_manager_id", updateInstanceGroupManagerActionOptions.instanceGroupManagerId());
+    pathParamsMap.put("id", updateInstanceGroupManagerActionOptions.id());
+    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/instance_groups/{instance_group_id}/managers/{instance_group_manager_id}/actions/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "updateInstanceGroupManagerAction");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateInstanceGroupManagerActionOptions.instanceGroupManagerActionPatch()), "application/merge-patch+json");
+    ResponseConverter<InstanceGroupManagerAction> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<InstanceGroupManagerAction>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
    * List all policies for an instance group manager.
    *
    * This request lists all policies for an instance group manager.
@@ -3471,6 +3759,12 @@ public class Vpc extends BaseService {
     builder.header("Accept", "application/json");
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
+    if (listInstanceGroupManagerPoliciesOptions.start() != null) {
+      builder.query("start", String.valueOf(listInstanceGroupManagerPoliciesOptions.start()));
+    }
+    if (listInstanceGroupManagerPoliciesOptions.limit() != null) {
+      builder.query("limit", String.valueOf(listInstanceGroupManagerPoliciesOptions.limit()));
+    }
     ResponseConverter<InstanceGroupManagerPolicyCollection> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<InstanceGroupManagerPolicyCollection>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -3633,6 +3927,12 @@ public class Vpc extends BaseService {
     builder.header("Accept", "application/json");
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
+    if (listInstanceGroupMembershipsOptions.start() != null) {
+      builder.query("start", String.valueOf(listInstanceGroupMembershipsOptions.start()));
+    }
+    if (listInstanceGroupMembershipsOptions.limit() != null) {
+      builder.query("limit", String.valueOf(listInstanceGroupMembershipsOptions.limit()));
+    }
     ResponseConverter<InstanceGroupMembershipCollection> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<InstanceGroupMembershipCollection>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -4048,6 +4348,89 @@ public class Vpc extends BaseService {
     builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(createDedicatedHostOptions.dedicatedHostPrototype()), "application/json");
     ResponseConverter<DedicatedHost> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<DedicatedHost>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * List all disks on a dedicated host.
+   *
+   * This request lists all disks on a dedicated host.  A disk is a physical device that is locally attached to the
+   * compute node. By default, the listed disks are sorted by their
+   * `created_at` property values, with the newest disk first.
+   *
+   * @param listDedicatedHostDisksOptions the {@link ListDedicatedHostDisksOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link DedicatedHostDiskCollection}
+   */
+  public ServiceCall<DedicatedHostDiskCollection> listDedicatedHostDisks(ListDedicatedHostDisksOptions listDedicatedHostDisksOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(listDedicatedHostDisksOptions,
+      "listDedicatedHostDisksOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("dedicated_host_id", listDedicatedHostDisksOptions.dedicatedHostId());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/dedicated_hosts/{dedicated_host_id}/disks", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listDedicatedHostDisks");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<DedicatedHostDiskCollection> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<DedicatedHostDiskCollection>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Retrieve a dedicated host disk.
+   *
+   * This request retrieves a single dedicated host disk specified by the identifier in the URL.
+   *
+   * @param getDedicatedHostDiskOptions the {@link GetDedicatedHostDiskOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link DedicatedHostDisk}
+   */
+  public ServiceCall<DedicatedHostDisk> getDedicatedHostDisk(GetDedicatedHostDiskOptions getDedicatedHostDiskOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(getDedicatedHostDiskOptions,
+      "getDedicatedHostDiskOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("dedicated_host_id", getDedicatedHostDiskOptions.dedicatedHostId());
+    pathParamsMap.put("id", getDedicatedHostDiskOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/dedicated_hosts/{dedicated_host_id}/disks/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getDedicatedHostDisk");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<DedicatedHostDisk> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<DedicatedHostDisk>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Update a dedicated host disk.
+   *
+   * This request updates the dedicated host disk with the information in a provided patch.
+   *
+   * @param updateDedicatedHostDiskOptions the {@link UpdateDedicatedHostDiskOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link DedicatedHostDisk}
+   */
+  public ServiceCall<DedicatedHostDisk> updateDedicatedHostDisk(UpdateDedicatedHostDiskOptions updateDedicatedHostDiskOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(updateDedicatedHostDiskOptions,
+      "updateDedicatedHostDiskOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("dedicated_host_id", updateDedicatedHostDiskOptions.dedicatedHostId());
+    pathParamsMap.put("id", updateDedicatedHostDiskOptions.id());
+    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/dedicated_hosts/{dedicated_host_id}/disks/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "updateDedicatedHostDisk");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateDedicatedHostDiskOptions.dedicatedHostDiskPatch()), "application/merge-patch+json");
+    ResponseConverter<DedicatedHostDisk> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<DedicatedHostDisk>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
   }
 

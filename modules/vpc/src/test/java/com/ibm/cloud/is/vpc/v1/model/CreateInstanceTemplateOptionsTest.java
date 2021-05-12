@@ -16,6 +16,7 @@ package com.ibm.cloud.is.vpc.v1.model;
 import com.ibm.cloud.is.vpc.v1.model.CreateInstanceTemplateOptions;
 import com.ibm.cloud.is.vpc.v1.model.EncryptionKeyIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.ImageIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.InstancePlacementTargetPrototypeDedicatedHostIdentityDedicatedHostIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileIdentityByName;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplatePrototypeInstanceByImage;
 import com.ibm.cloud.is.vpc.v1.model.KeyIdentityById;
@@ -76,6 +77,11 @@ public class CreateInstanceTemplateOptionsTest {
     assertEquals(networkInterfacePrototypeModel.primaryIpv4Address(), "10.0.0.5");
     assertEquals(networkInterfacePrototypeModel.securityGroups(), new java.util.ArrayList<SecurityGroupIdentity>(java.util.Arrays.asList(securityGroupIdentityModel)));
     assertEquals(networkInterfacePrototypeModel.subnet(), subnetIdentityModel);
+
+    InstancePlacementTargetPrototypeDedicatedHostIdentityDedicatedHostIdentityById instancePlacementTargetPrototypeModel = new InstancePlacementTargetPrototypeDedicatedHostIdentityDedicatedHostIdentityById.Builder()
+      .id("1e09281b-f177-46fb-baf1-bc152b2e391a")
+      .build();
+    assertEquals(instancePlacementTargetPrototypeModel.id(), "1e09281b-f177-46fb-baf1-bc152b2e391a");
 
     InstanceProfileIdentityByName instanceProfileIdentityModel = new InstanceProfileIdentityByName.Builder()
       .name("cc1-16x32")
@@ -152,6 +158,7 @@ public class CreateInstanceTemplateOptionsTest {
       .keys(new java.util.ArrayList<KeyIdentity>(java.util.Arrays.asList(keyIdentityModel)))
       .name("my-instance")
       .networkInterfaces(new java.util.ArrayList<NetworkInterfacePrototype>(java.util.Arrays.asList(networkInterfacePrototypeModel)))
+      .placementTarget(instancePlacementTargetPrototypeModel)
       .profile(instanceProfileIdentityModel)
       .resourceGroup(resourceGroupIdentityModel)
       .userData("testString")
@@ -165,6 +172,7 @@ public class CreateInstanceTemplateOptionsTest {
     assertEquals(instanceTemplatePrototypeModel.keys(), new java.util.ArrayList<KeyIdentity>(java.util.Arrays.asList(keyIdentityModel)));
     assertEquals(instanceTemplatePrototypeModel.name(), "my-instance");
     assertEquals(instanceTemplatePrototypeModel.networkInterfaces(), new java.util.ArrayList<NetworkInterfacePrototype>(java.util.Arrays.asList(networkInterfacePrototypeModel)));
+    assertEquals(instanceTemplatePrototypeModel.placementTarget(), instancePlacementTargetPrototypeModel);
     assertEquals(instanceTemplatePrototypeModel.profile(), instanceProfileIdentityModel);
     assertEquals(instanceTemplatePrototypeModel.resourceGroup(), resourceGroupIdentityModel);
     assertEquals(instanceTemplatePrototypeModel.userData(), "testString");

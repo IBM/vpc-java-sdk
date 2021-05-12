@@ -33,6 +33,7 @@ public class OperatingSystemTest {
   public void testOperatingSystem() throws Throwable {
     OperatingSystem operatingSystemModel = new OperatingSystem();
     assertNull(operatingSystemModel.getArchitecture());
+    assertNull(operatingSystemModel.isDedicatedHostOnly());
     assertNull(operatingSystemModel.getDisplayName());
     assertNull(operatingSystemModel.getFamily());
     assertNull(operatingSystemModel.getHref());

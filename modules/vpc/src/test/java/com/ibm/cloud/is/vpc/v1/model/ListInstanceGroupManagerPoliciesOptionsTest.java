@@ -34,9 +34,13 @@ public class ListInstanceGroupManagerPoliciesOptionsTest {
     ListInstanceGroupManagerPoliciesOptions listInstanceGroupManagerPoliciesOptionsModel = new ListInstanceGroupManagerPoliciesOptions.Builder()
       .instanceGroupId("testString")
       .instanceGroupManagerId("testString")
+      .start("testString")
+      .limit(Long.valueOf("1"))
       .build();
     assertEquals(listInstanceGroupManagerPoliciesOptionsModel.instanceGroupId(), "testString");
     assertEquals(listInstanceGroupManagerPoliciesOptionsModel.instanceGroupManagerId(), "testString");
+    assertEquals(listInstanceGroupManagerPoliciesOptionsModel.start(), "testString");
+    assertEquals(listInstanceGroupManagerPoliciesOptionsModel.limit(), Long.valueOf("1"));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

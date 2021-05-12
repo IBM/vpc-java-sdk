@@ -28,6 +28,7 @@ public class InstanceTemplatePrototypeInstanceByImage extends InstanceTemplatePr
     private List<KeyIdentity> keys;
     private String name;
     private List<NetworkInterfacePrototype> networkInterfaces;
+    private InstancePlacementTargetPrototype placementTarget;
     private InstanceProfileIdentity profile;
     private ResourceGroupIdentity resourceGroup;
     private String userData;
@@ -42,6 +43,7 @@ public class InstanceTemplatePrototypeInstanceByImage extends InstanceTemplatePr
       this.keys = instanceTemplatePrototypeInstanceByImage.keys;
       this.name = instanceTemplatePrototypeInstanceByImage.name;
       this.networkInterfaces = instanceTemplatePrototypeInstanceByImage.networkInterfaces;
+      this.placementTarget = instanceTemplatePrototypeInstanceByImage.placementTarget;
       this.profile = instanceTemplatePrototypeInstanceByImage.profile;
       this.resourceGroup = instanceTemplatePrototypeInstanceByImage.resourceGroup;
       this.userData = instanceTemplatePrototypeInstanceByImage.userData;
@@ -165,6 +167,17 @@ public class InstanceTemplatePrototypeInstanceByImage extends InstanceTemplatePr
     }
 
     /**
+     * Set the placementTarget.
+     *
+     * @param placementTarget the placementTarget
+     * @return the InstanceTemplatePrototypeInstanceByImage builder
+     */
+    public Builder placementTarget(InstancePlacementTargetPrototype placementTarget) {
+      this.placementTarget = placementTarget;
+      return this;
+    }
+
+    /**
      * Set the profile.
      *
      * @param profile the profile
@@ -275,6 +288,7 @@ public class InstanceTemplatePrototypeInstanceByImage extends InstanceTemplatePr
     keys = builder.keys;
     name = builder.name;
     networkInterfaces = builder.networkInterfaces;
+    placementTarget = builder.placementTarget;
     profile = builder.profile;
     resourceGroup = builder.resourceGroup;
     userData = builder.userData;

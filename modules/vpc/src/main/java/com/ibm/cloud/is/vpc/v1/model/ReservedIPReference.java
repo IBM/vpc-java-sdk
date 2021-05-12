@@ -28,12 +28,26 @@ public class ReservedIPReference extends GenericModel {
     String SUBNET_RESERVED_IP = "subnet_reserved_ip";
   }
 
+  protected String address;
   protected ReservedIPReferenceDeleted deleted;
   protected String href;
   protected String id;
   protected String name;
   @SerializedName("resource_type")
   protected String resourceType;
+
+  /**
+   * Gets the address.
+   *
+   * The IP address. This property may add support for IPv6 addresses in the future. When processing a value in this
+   * property, verify that the address is in an expected format. If it is not, log an error. Optionally halt processing
+   * and surface the error, or bypass the resource on which the unexpected IP address format was encountered.
+   *
+   * @return the address
+   */
+  public String getAddress() {
+    return address;
+  }
 
   /**
    * Gets the deleted.

@@ -14,9 +14,12 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHost;
+import com.ibm.cloud.is.vpc.v1.model.DedicatedHostDisk;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostGroupReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostProfileReference;
+import com.ibm.cloud.is.vpc.v1.model.InstanceDiskReference;
+import com.ibm.cloud.is.vpc.v1.model.InstanceDiskReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileReference;
 import com.ibm.cloud.is.vpc.v1.model.InstanceReference;
 import com.ibm.cloud.is.vpc.v1.model.InstanceReferenceDeleted;
@@ -25,7 +28,10 @@ import com.ibm.cloud.is.vpc.v1.model.VCPU;
 import com.ibm.cloud.is.vpc.v1.model.ZoneReference;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
+import com.ibm.cloud.sdk.core.util.DateUtils;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import org.testng.annotations.Test;
@@ -45,6 +51,7 @@ public class DedicatedHostTest {
     assertNull(dedicatedHostModel.getAvailableVcpu());
     assertNull(dedicatedHostModel.getCreatedAt());
     assertNull(dedicatedHostModel.getCrn());
+    assertNull(dedicatedHostModel.getDisks());
     assertNull(dedicatedHostModel.getGroup());
     assertNull(dedicatedHostModel.getHref());
     assertNull(dedicatedHostModel.getId());

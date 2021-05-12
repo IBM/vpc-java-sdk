@@ -33,6 +33,7 @@ public class ReservedIPReferenceTest {
   @Test
   public void testReservedIPReference() throws Throwable {
     ReservedIPReference reservedIpReferenceModel = new ReservedIPReference();
+    assertNull(reservedIpReferenceModel.getAddress());
     assertNull(reservedIpReferenceModel.getDeleted());
     assertNull(reservedIpReferenceModel.getHref());
     assertNull(reservedIpReferenceModel.getId());

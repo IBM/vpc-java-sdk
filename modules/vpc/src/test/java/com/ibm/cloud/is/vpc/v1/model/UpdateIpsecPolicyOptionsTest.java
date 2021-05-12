@@ -33,10 +33,10 @@ public class UpdateIpsecPolicyOptionsTest {
   public void testUpdateIpsecPolicyOptions() throws Throwable {
     UpdateIpsecPolicyOptions updateIpsecPolicyOptionsModel = new UpdateIpsecPolicyOptions.Builder()
       .id("testString")
-      .iPsecPolicyPatch(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
+      .iPsecPolicyPatch(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
       .build();
     assertEquals(updateIpsecPolicyOptionsModel.id(), "testString");
-    assertEquals(updateIpsecPolicyOptionsModel.iPsecPolicyPatch(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } });
+    assertEquals(updateIpsecPolicyOptionsModel.iPsecPolicyPatch(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

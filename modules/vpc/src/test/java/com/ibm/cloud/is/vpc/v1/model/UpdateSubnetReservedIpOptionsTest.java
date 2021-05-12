@@ -34,11 +34,11 @@ public class UpdateSubnetReservedIpOptionsTest {
     UpdateSubnetReservedIpOptions updateSubnetReservedIpOptionsModel = new UpdateSubnetReservedIpOptions.Builder()
       .subnetId("testString")
       .id("testString")
-      .reservedIpPatch(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
+      .reservedIpPatch(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
       .build();
     assertEquals(updateSubnetReservedIpOptionsModel.subnetId(), "testString");
     assertEquals(updateSubnetReservedIpOptionsModel.id(), "testString");
-    assertEquals(updateSubnetReservedIpOptionsModel.reservedIpPatch(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } });
+    assertEquals(updateSubnetReservedIpOptionsModel.reservedIpPatch(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

@@ -12,6 +12,7 @@
  */
 package com.ibm.cloud.is.vpc.v1.model;
 
+import java.util.Date;
 import java.util.List;
 
 import com.google.gson.annotations.SerializedName;
@@ -22,6 +23,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  *
  * Classes which extend this class:
  * - InstanceGroupManagerAutoScale
+ * - InstanceGroupManagerScheduled
  */
 public class InstanceGroupManager extends GenericModel {
 
@@ -33,11 +35,15 @@ public class InstanceGroupManager extends GenericModel {
     String AUTOSCALE = "autoscale";
   }
 
+  @SerializedName("created_at")
+  protected Date createdAt;
   protected String href;
   protected String id;
   @SerializedName("management_enabled")
   protected Boolean managementEnabled;
   protected String name;
+  @SerializedName("updated_at")
+  protected Date updatedAt;
   @SerializedName("aggregation_window")
   protected Long aggregationWindow;
   protected Long cooldown;
@@ -48,8 +54,20 @@ public class InstanceGroupManager extends GenericModel {
   @SerializedName("min_membership_count")
   protected Long minMembershipCount;
   protected List<InstanceGroupManagerPolicyReference> policies;
+  protected List<InstanceGroupManagerActionReference> actions;
 
   protected InstanceGroupManager() {
+  }
+
+  /**
+   * Gets the createdAt.
+   *
+   * The date and time that the instance group manager was created.
+   *
+   * @return the createdAt
+   */
+  public Date getCreatedAt() {
+    return createdAt;
   }
 
   /**
@@ -94,6 +112,17 @@ public class InstanceGroupManager extends GenericModel {
    */
   public String getName() {
     return name;
+  }
+
+  /**
+   * Gets the updatedAt.
+   *
+   * The date and time that the instance group manager was updated.
+   *
+   * @return the updatedAt
+   */
+  public Date getUpdatedAt() {
+    return updatedAt;
   }
 
   /**
@@ -160,6 +189,17 @@ public class InstanceGroupManager extends GenericModel {
    */
   public List<InstanceGroupManagerPolicyReference> getPolicies() {
     return policies;
+  }
+
+  /**
+   * Gets the actions.
+   *
+   * The actions of the instance group manager.
+   *
+   * @return the actions
+   */
+  public List<InstanceGroupManagerActionReference> getActions() {
+    return actions;
   }
 }
 

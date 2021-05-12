@@ -33,10 +33,10 @@ public class UpdateVpnGatewayOptionsTest {
   public void testUpdateVpnGatewayOptions() throws Throwable {
     UpdateVpnGatewayOptions updateVpnGatewayOptionsModel = new UpdateVpnGatewayOptions.Builder()
       .id("testString")
-      .vpnGatewayPatch(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
+      .vpnGatewayPatch(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
       .build();
     assertEquals(updateVpnGatewayOptionsModel.id(), "testString");
-    assertEquals(updateVpnGatewayOptionsModel.vpnGatewayPatch(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } });
+    assertEquals(updateVpnGatewayOptionsModel.vpnGatewayPatch(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

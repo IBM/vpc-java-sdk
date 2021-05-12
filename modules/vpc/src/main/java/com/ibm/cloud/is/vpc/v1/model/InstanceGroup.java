@@ -61,6 +61,8 @@ public class InstanceGroup extends GenericModel {
   protected ResourceGroupReference resourceGroup;
   protected String status;
   protected List<SubnetReference> subnets;
+  @SerializedName("updated_at")
+  protected Date updatedAt;
   protected VPCReference vpc;
 
   /**
@@ -210,6 +212,17 @@ public class InstanceGroup extends GenericModel {
    */
   public List<SubnetReference> getSubnets() {
     return subnets;
+  }
+
+  /**
+   * Gets the updatedAt.
+   *
+   * The date and time that the instance group was updated.
+   *
+   * @return the updatedAt
+   */
+  public Date getUpdatedAt() {
+    return updatedAt;
   }
 
   /**

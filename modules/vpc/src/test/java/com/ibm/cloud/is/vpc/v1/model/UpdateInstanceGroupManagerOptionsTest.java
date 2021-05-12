@@ -34,11 +34,11 @@ public class UpdateInstanceGroupManagerOptionsTest {
     UpdateInstanceGroupManagerOptions updateInstanceGroupManagerOptionsModel = new UpdateInstanceGroupManagerOptions.Builder()
       .instanceGroupId("testString")
       .id("testString")
-      .instanceGroupManagerPatch(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
+      .instanceGroupManagerPatch(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
       .build();
     assertEquals(updateInstanceGroupManagerOptionsModel.instanceGroupId(), "testString");
     assertEquals(updateInstanceGroupManagerOptionsModel.id(), "testString");
-    assertEquals(updateInstanceGroupManagerOptionsModel.instanceGroupManagerPatch(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } });
+    assertEquals(updateInstanceGroupManagerOptionsModel.instanceGroupManagerPatch(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

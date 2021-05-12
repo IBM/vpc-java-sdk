@@ -47,10 +47,10 @@ public class Volume extends GenericModel {
     String FAILED = "failed";
     /** pending. */
     String PENDING = "pending";
-    /** unusable. */
-    String UNUSABLE = "unusable";
     /** pending_deletion. */
     String PENDING_DELETION = "pending_deletion";
+    /** unusable. */
+    String UNUSABLE = "unusable";
   }
 
   protected Long capacity;

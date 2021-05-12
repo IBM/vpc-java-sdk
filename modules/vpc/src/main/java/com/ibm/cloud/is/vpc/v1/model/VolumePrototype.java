@@ -23,8 +23,6 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class VolumePrototype extends GenericModel {
 
-  @SerializedName("encryption_key")
-  protected EncryptionKeyIdentity encryptionKey;
   protected Long iops;
   protected String name;
   protected VolumeProfileIdentity profile;
@@ -32,22 +30,10 @@ public class VolumePrototype extends GenericModel {
   protected ResourceGroupIdentity resourceGroup;
   protected ZoneIdentity zone;
   protected Long capacity;
+  @SerializedName("encryption_key")
+  protected EncryptionKeyIdentity encryptionKey;
 
   protected VolumePrototype() {
-  }
-
-  /**
-   * Gets the encryptionKey.
-   *
-   * The identity of the root key to use to wrap the data encryption key for the volume.
-   *
-   * If this property is not provided, the `encryption` type for the volume will be
-   * `provider_managed`.
-   *
-   * @return the encryptionKey
-   */
-  public EncryptionKeyIdentity encryptionKey() {
-    return encryptionKey;
   }
 
   /**
@@ -116,6 +102,20 @@ public class VolumePrototype extends GenericModel {
    */
   public Long capacity() {
     return capacity;
+  }
+
+  /**
+   * Gets the encryptionKey.
+   *
+   * The identity of the root key to use to wrap the data encryption key for the volume.
+   *
+   * If this property is not provided, the `encryption` type for the volume will be
+   * `provider_managed`.
+   *
+   * @return the encryptionKey
+   */
+  public EncryptionKeyIdentity encryptionKey() {
+    return encryptionKey;
   }
 }
 

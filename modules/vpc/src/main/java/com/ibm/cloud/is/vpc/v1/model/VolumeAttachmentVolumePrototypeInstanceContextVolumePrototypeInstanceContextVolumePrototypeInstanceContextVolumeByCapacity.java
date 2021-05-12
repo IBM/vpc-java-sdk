@@ -22,18 +22,18 @@ public class VolumeAttachmentVolumePrototypeInstanceContextVolumePrototypeInstan
    * Builder.
    */
   public static class Builder {
-    private EncryptionKeyIdentity encryptionKey;
     private Long iops;
     private String name;
     private VolumeProfileIdentity profile;
     private Long capacity;
+    private EncryptionKeyIdentity encryptionKey;
 
     public Builder(VolumeAttachmentVolumePrototypeInstanceContextVolumePrototypeInstanceContext volumeAttachmentVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeByCapacity) {
-      this.encryptionKey = volumeAttachmentVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeByCapacity.encryptionKey;
       this.iops = volumeAttachmentVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeByCapacity.iops;
       this.name = volumeAttachmentVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeByCapacity.name;
       this.profile = volumeAttachmentVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeByCapacity.profile;
       this.capacity = volumeAttachmentVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeByCapacity.capacity;
+      this.encryptionKey = volumeAttachmentVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeByCapacity.encryptionKey;
     }
 
     /**
@@ -60,17 +60,6 @@ public class VolumeAttachmentVolumePrototypeInstanceContextVolumePrototypeInstan
      */
     public VolumeAttachmentVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeByCapacity build() {
       return new VolumeAttachmentVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeByCapacity(this);
-    }
-
-    /**
-     * Set the encryptionKey.
-     *
-     * @param encryptionKey the encryptionKey
-     * @return the VolumeAttachmentVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeByCapacity builder
-     */
-    public Builder encryptionKey(EncryptionKeyIdentity encryptionKey) {
-      this.encryptionKey = encryptionKey;
-      return this;
     }
 
     /**
@@ -116,6 +105,17 @@ public class VolumeAttachmentVolumePrototypeInstanceContextVolumePrototypeInstan
       this.capacity = capacity;
       return this;
     }
+
+    /**
+     * Set the encryptionKey.
+     *
+     * @param encryptionKey the encryptionKey
+     * @return the VolumeAttachmentVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeByCapacity builder
+     */
+    public Builder encryptionKey(EncryptionKeyIdentity encryptionKey) {
+      this.encryptionKey = encryptionKey;
+      return this;
+    }
   }
 
   protected VolumeAttachmentVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeByCapacity(Builder builder) {
@@ -123,11 +123,11 @@ public class VolumeAttachmentVolumePrototypeInstanceContextVolumePrototypeInstan
       "profile cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.capacity,
       "capacity cannot be null");
-    encryptionKey = builder.encryptionKey;
     iops = builder.iops;
     name = builder.name;
     profile = builder.profile;
     capacity = builder.capacity;
+    encryptionKey = builder.encryptionKey;
   }
 
   /**

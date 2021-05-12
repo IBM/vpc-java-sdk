@@ -20,7 +20,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  *
  * Classes which extend this class:
  * - DedicatedHostPrototypeDedicatedHostByGroup
-//  * - DedicatedHostPrototypeDedicatedHostByZone
+ * - DedicatedHostPrototypeDedicatedHostByZone
  */
 public class DedicatedHostPrototype extends GenericModel {
 

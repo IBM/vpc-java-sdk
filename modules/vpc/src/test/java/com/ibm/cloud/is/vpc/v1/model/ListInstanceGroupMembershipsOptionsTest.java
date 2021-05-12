@@ -33,8 +33,12 @@ public class ListInstanceGroupMembershipsOptionsTest {
   public void testListInstanceGroupMembershipsOptions() throws Throwable {
     ListInstanceGroupMembershipsOptions listInstanceGroupMembershipsOptionsModel = new ListInstanceGroupMembershipsOptions.Builder()
       .instanceGroupId("testString")
+      .start("testString")
+      .limit(Long.valueOf("1"))
       .build();
     assertEquals(listInstanceGroupMembershipsOptionsModel.instanceGroupId(), "testString");
+    assertEquals(listInstanceGroupMembershipsOptionsModel.start(), "testString");
+    assertEquals(listInstanceGroupMembershipsOptionsModel.limit(), Long.valueOf("1"));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

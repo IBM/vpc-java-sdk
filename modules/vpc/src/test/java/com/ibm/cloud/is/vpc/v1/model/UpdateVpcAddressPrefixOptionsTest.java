@@ -34,11 +34,11 @@ public class UpdateVpcAddressPrefixOptionsTest {
     UpdateVpcAddressPrefixOptions updateVpcAddressPrefixOptionsModel = new UpdateVpcAddressPrefixOptions.Builder()
       .vpcId("testString")
       .id("testString")
-      .addressPrefixPatch(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
+      .addressPrefixPatch(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
       .build();
     assertEquals(updateVpcAddressPrefixOptionsModel.vpcId(), "testString");
     assertEquals(updateVpcAddressPrefixOptionsModel.id(), "testString");
-    assertEquals(updateVpcAddressPrefixOptionsModel.addressPrefixPatch(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } });
+    assertEquals(updateVpcAddressPrefixOptionsModel.addressPrefixPatch(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

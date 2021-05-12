@@ -33,10 +33,10 @@ public class UpdateSecurityGroupOptionsTest {
   public void testUpdateSecurityGroupOptions() throws Throwable {
     UpdateSecurityGroupOptions updateSecurityGroupOptionsModel = new UpdateSecurityGroupOptions.Builder()
       .id("testString")
-      .securityGroupPatch(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
+      .securityGroupPatch(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
       .build();
     assertEquals(updateSecurityGroupOptionsModel.id(), "testString");
-    assertEquals(updateSecurityGroupOptionsModel.securityGroupPatch(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } });
+    assertEquals(updateSecurityGroupOptionsModel.securityGroupPatch(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

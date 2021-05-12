@@ -14,7 +14,7 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 /**
  * If `protocol` is either `tcp` or `udp`, then the rule may also contain `port_min` and
- * `port_max`. Either both should be set, or neither. When neither is set then traffic is allowed on all ports. For a
+ * `port_max`. Either both must be set, or neither. When neither is set then traffic is allowed on all ports. For a
  * single port, set both to the same value.
  */
 public class SecurityGroupRuleSecurityGroupRuleProtocolTCPUDP extends SecurityGroupRule {

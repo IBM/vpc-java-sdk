@@ -34,11 +34,11 @@ public class UpdateVpcRoutingTableOptionsTest {
     UpdateVpcRoutingTableOptions updateVpcRoutingTableOptionsModel = new UpdateVpcRoutingTableOptions.Builder()
       .vpcId("testString")
       .id("testString")
-      .routingTablePatch(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
+      .routingTablePatch(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
       .build();
     assertEquals(updateVpcRoutingTableOptionsModel.vpcId(), "testString");
     assertEquals(updateVpcRoutingTableOptionsModel.id(), "testString");
-    assertEquals(updateVpcRoutingTableOptionsModel.routingTablePatch(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } });
+    assertEquals(updateVpcRoutingTableOptionsModel.routingTablePatch(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

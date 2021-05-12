@@ -57,6 +57,7 @@ public class Instance extends GenericModel {
   @SerializedName("created_at")
   protected Date createdAt;
   protected String crn;
+  protected List<InstanceDisk> disks;
   protected InstanceGPU gpu;
   protected String href;
   protected String id;
@@ -71,6 +72,8 @@ public class Instance extends GenericModel {
   @SerializedName("resource_group")
   protected ResourceGroupReference resourceGroup;
   protected String status;
+  @SerializedName("status_reasons")
+  protected List<InstanceStatusReason> statusReasons;
   protected InstanceVCPU vcpu;
   @SerializedName("volume_attachments")
   protected List<VolumeAttachmentReferenceInstanceContext> volumeAttachments;
@@ -119,6 +122,17 @@ public class Instance extends GenericModel {
    */
   public String getCrn() {
     return crn;
+  }
+
+  /**
+   * Gets the disks.
+   *
+   * Collection of the instance's disks.
+   *
+   * @return the disks
+   */
+  public List<InstanceDisk> getDisks() {
+    return disks;
   }
 
   /**
@@ -240,6 +254,21 @@ public class Instance extends GenericModel {
    */
   public String getStatus() {
     return status;
+  }
+
+  /**
+   * Gets the statusReasons.
+   *
+   * Array of reasons for the current status (if any).
+   *
+   * The enumerated reason code values for this property will expand in the future. When processing this property, check
+   * for and log unknown values. Optionally halt processing and surface the error, or bypass the resource on which the
+   * unexpected reason code was encountered.
+   *
+   * @return the statusReasons
+   */
+  public List<InstanceStatusReason> getStatusReasons() {
+    return statusReasons;
   }
 
   /**

@@ -28,6 +28,7 @@ public class InstanceTemplatePrototypeInstanceBySourceTemplate extends InstanceT
     private List<KeyIdentity> keys;
     private String name;
     private List<NetworkInterfacePrototype> networkInterfaces;
+    private InstancePlacementTargetPrototype placementTarget;
     private InstanceProfileIdentity profile;
     private ResourceGroupIdentity resourceGroup;
     private String userData;
@@ -43,6 +44,7 @@ public class InstanceTemplatePrototypeInstanceBySourceTemplate extends InstanceT
       this.keys = instanceTemplatePrototypeInstanceBySourceTemplate.keys;
       this.name = instanceTemplatePrototypeInstanceBySourceTemplate.name;
       this.networkInterfaces = instanceTemplatePrototypeInstanceBySourceTemplate.networkInterfaces;
+      this.placementTarget = instanceTemplatePrototypeInstanceBySourceTemplate.placementTarget;
       this.profile = instanceTemplatePrototypeInstanceBySourceTemplate.profile;
       this.resourceGroup = instanceTemplatePrototypeInstanceBySourceTemplate.resourceGroup;
       this.userData = instanceTemplatePrototypeInstanceBySourceTemplate.userData;
@@ -159,6 +161,17 @@ public class InstanceTemplatePrototypeInstanceBySourceTemplate extends InstanceT
      */
     public Builder networkInterfaces(List<NetworkInterfacePrototype> networkInterfaces) {
       this.networkInterfaces = networkInterfaces;
+      return this;
+    }
+
+    /**
+     * Set the placementTarget.
+     *
+     * @param placementTarget the placementTarget
+     * @return the InstanceTemplatePrototypeInstanceBySourceTemplate builder
+     */
+    public Builder placementTarget(InstancePlacementTargetPrototype placementTarget) {
+      this.placementTarget = placementTarget;
       return this;
     }
 
@@ -280,6 +293,7 @@ public class InstanceTemplatePrototypeInstanceBySourceTemplate extends InstanceT
     keys = builder.keys;
     name = builder.name;
     networkInterfaces = builder.networkInterfaces;
+    placementTarget = builder.placementTarget;
     profile = builder.profile;
     resourceGroup = builder.resourceGroup;
     userData = builder.userData;

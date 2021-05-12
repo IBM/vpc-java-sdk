@@ -30,6 +30,8 @@ public class InstancePrototype extends GenericModel {
   protected String name;
   @SerializedName("network_interfaces")
   protected List<NetworkInterfacePrototype> networkInterfaces;
+  @SerializedName("placement_target")
+  protected InstancePlacementTargetPrototype placementTarget;
   protected InstanceProfileIdentity profile;
   @SerializedName("resource_group")
   protected ResourceGroupIdentity resourceGroup;
@@ -87,6 +89,17 @@ public class InstancePrototype extends GenericModel {
    */
   public List<NetworkInterfacePrototype> networkInterfaces() {
     return networkInterfaces;
+  }
+
+  /**
+   * Gets the placementTarget.
+   *
+   * The placement restrictions to use for the virtual server instance.
+   *
+   * @return the placementTarget
+   */
+  public InstancePlacementTargetPrototype placementTarget() {
+    return placementTarget;
   }
 
   /**

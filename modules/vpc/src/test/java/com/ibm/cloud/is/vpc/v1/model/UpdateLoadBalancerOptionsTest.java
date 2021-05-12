@@ -33,10 +33,10 @@ public class UpdateLoadBalancerOptionsTest {
   public void testUpdateLoadBalancerOptions() throws Throwable {
     UpdateLoadBalancerOptions updateLoadBalancerOptionsModel = new UpdateLoadBalancerOptions.Builder()
       .id("testString")
-      .loadBalancerPatch(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
+      .loadBalancerPatch(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
       .build();
     assertEquals(updateLoadBalancerOptionsModel.id(), "testString");
-    assertEquals(updateLoadBalancerOptionsModel.loadBalancerPatch(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } });
+    assertEquals(updateLoadBalancerOptionsModel.loadBalancerPatch(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

@@ -16,7 +16,9 @@ import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * SecurityGroupTargetReference.
+ * The resource types that can be security group targets are expected to expand in the future. When iterating over
+ * security group targets, do not assume that every target resource will be from a known set of resource types.
+ * Optionally halt processing and surface an error, or bypass resources of unrecognized types.
  *
  * Classes which extend this class:
  * - SecurityGroupTargetReferenceNetworkInterfaceReferenceTargetContext

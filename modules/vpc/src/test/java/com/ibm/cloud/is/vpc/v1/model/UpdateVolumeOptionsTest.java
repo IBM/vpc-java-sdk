@@ -33,10 +33,10 @@ public class UpdateVolumeOptionsTest {
   public void testUpdateVolumeOptions() throws Throwable {
     UpdateVolumeOptions updateVolumeOptionsModel = new UpdateVolumeOptions.Builder()
       .id("testString")
-      .volumePatch(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
+      .volumePatch(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
       .build();
     assertEquals(updateVolumeOptionsModel.id(), "testString");
-    assertEquals(updateVolumeOptionsModel.volumePatch(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } });
+    assertEquals(updateVolumeOptionsModel.volumePatch(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

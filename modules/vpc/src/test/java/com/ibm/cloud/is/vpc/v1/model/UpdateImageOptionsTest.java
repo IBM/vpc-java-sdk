@@ -33,10 +33,10 @@ public class UpdateImageOptionsTest {
   public void testUpdateImageOptions() throws Throwable {
     UpdateImageOptions updateImageOptionsModel = new UpdateImageOptions.Builder()
       .id("testString")
-      .imagePatch(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
+      .imagePatch(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
       .build();
     assertEquals(updateImageOptionsModel.id(), "testString");
-    assertEquals(updateImageOptionsModel.imagePatch(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } });
+    assertEquals(updateImageOptionsModel.imagePatch(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

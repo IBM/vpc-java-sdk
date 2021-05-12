@@ -40,6 +40,7 @@ public class DedicatedHostProfile extends GenericModel {
 
   @SerializedName("class")
   protected String xClass;
+  protected List<DedicatedHostProfileDisk> disks;
   protected String family;
   protected String href;
   protected DedicatedHostProfileMemory memory;
@@ -62,6 +63,17 @@ public class DedicatedHostProfile extends GenericModel {
    */
   public String getXClass() {
     return xClass;
+  }
+
+  /**
+   * Gets the disks.
+   *
+   * Collection of the dedicated host profile's disks.
+   *
+   * @return the disks
+   */
+  public List<DedicatedHostProfileDisk> getDisks() {
+    return disks;
   }
 
   /**

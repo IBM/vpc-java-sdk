@@ -35,12 +35,12 @@ public class UpdateLoadBalancerPoolMemberOptionsTest {
       .loadBalancerId("testString")
       .poolId("testString")
       .id("testString")
-      .loadBalancerPoolMemberPatch(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
+      .loadBalancerPoolMemberPatch(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
       .build();
     assertEquals(updateLoadBalancerPoolMemberOptionsModel.loadBalancerId(), "testString");
     assertEquals(updateLoadBalancerPoolMemberOptionsModel.poolId(), "testString");
     assertEquals(updateLoadBalancerPoolMemberOptionsModel.id(), "testString");
-    assertEquals(updateLoadBalancerPoolMemberOptionsModel.loadBalancerPoolMemberPatch(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } });
+    assertEquals(updateLoadBalancerPoolMemberOptionsModel.loadBalancerPoolMemberPatch(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

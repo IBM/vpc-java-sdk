@@ -34,11 +34,11 @@ public class UpdateInstanceGroupMembershipOptionsTest {
     UpdateInstanceGroupMembershipOptions updateInstanceGroupMembershipOptionsModel = new UpdateInstanceGroupMembershipOptions.Builder()
       .instanceGroupId("testString")
       .id("testString")
-      .instanceGroupMembershipPatch(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
+      .instanceGroupMembershipPatch(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
       .build();
     assertEquals(updateInstanceGroupMembershipOptionsModel.instanceGroupId(), "testString");
     assertEquals(updateInstanceGroupMembershipOptionsModel.id(), "testString");
-    assertEquals(updateInstanceGroupMembershipOptionsModel.instanceGroupMembershipPatch(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } });
+    assertEquals(updateInstanceGroupMembershipOptionsModel.instanceGroupMembershipPatch(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

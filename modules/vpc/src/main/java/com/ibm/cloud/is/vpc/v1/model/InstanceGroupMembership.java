@@ -12,6 +12,8 @@
  */
 package com.ibm.cloud.is.vpc.v1.model;
 
+import java.util.Date;
+
 import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
@@ -41,6 +43,8 @@ public class InstanceGroupMembership extends GenericModel {
     String UNHEALTHY = "unhealthy";
   }
 
+  @SerializedName("created_at")
+  protected Date createdAt;
   @SerializedName("delete_instance_on_membership_delete")
   protected Boolean deleteInstanceOnMembershipDelete;
   protected String href;
@@ -52,6 +56,19 @@ public class InstanceGroupMembership extends GenericModel {
   @SerializedName("pool_member")
   protected LoadBalancerPoolMemberReference poolMember;
   protected String status;
+  @SerializedName("updated_at")
+  protected Date updatedAt;
+
+  /**
+   * Gets the createdAt.
+   *
+   * The date and time that the instance group manager policy was created.
+   *
+   * @return the createdAt
+   */
+  public Date getCreatedAt() {
+    return createdAt;
+  }
 
   /**
    * Gets the deleteInstanceOnMembershipDelete.
@@ -138,6 +155,17 @@ public class InstanceGroupMembership extends GenericModel {
    */
   public String getStatus() {
     return status;
+  }
+
+  /**
+   * Gets the updatedAt.
+   *
+   * The date and time that the instance group membership was updated.
+   *
+   * @return the updatedAt
+   */
+  public Date getUpdatedAt() {
+    return updatedAt;
   }
 }
 

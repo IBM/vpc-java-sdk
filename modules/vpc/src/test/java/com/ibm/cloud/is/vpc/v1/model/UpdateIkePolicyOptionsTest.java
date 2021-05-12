@@ -33,10 +33,10 @@ public class UpdateIkePolicyOptionsTest {
   public void testUpdateIkePolicyOptions() throws Throwable {
     UpdateIkePolicyOptions updateIkePolicyOptionsModel = new UpdateIkePolicyOptions.Builder()
       .id("testString")
-      .ikePolicyPatch(new java.util.HashMap<String, Object>() { { put("foo", "testString"); } })
+      .ikePolicyPatch(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
       .build();
     assertEquals(updateIkePolicyOptionsModel.id(), "testString");
-    assertEquals(updateIkePolicyOptionsModel.ikePolicyPatch(), new java.util.HashMap<String, Object>() { { put("foo", "testString"); } });
+    assertEquals(updateIkePolicyOptionsModel.ikePolicyPatch(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

@@ -240,6 +240,11 @@ public class LoadBalancerPool extends GenericModel {
    *
    * The session persistence of this pool.
    *
+   * The enumerated values for this property are expected to expand in the future. When
+   * processing this property, check for and log unknown values. Optionally halt
+   * processing and surface the error, or bypass the pool on which the unexpected
+   * property value was encountered.
+   *
    * @return the sessionPersistence
    */
   public LoadBalancerPoolSessionPersistence getSessionPersistence() {

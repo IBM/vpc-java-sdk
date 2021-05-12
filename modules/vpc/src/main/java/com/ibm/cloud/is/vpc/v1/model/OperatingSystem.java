@@ -21,6 +21,8 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class OperatingSystem extends GenericModel {
 
   protected String architecture;
+  @SerializedName("dedicated_host_only")
+  protected Boolean dedicatedHostOnly;
   @SerializedName("display_name")
   protected String displayName;
   protected String family;
@@ -38,6 +40,17 @@ public class OperatingSystem extends GenericModel {
    */
   public String getArchitecture() {
     return architecture;
+  }
+
+  /**
+   * Gets the dedicatedHostOnly.
+   *
+   * Images with this operating system can only be used on dedicated hosts or dedicated host groups.
+   *
+   * @return the dedicatedHostOnly
+   */
+  public Boolean isDedicatedHostOnly() {
+    return dedicatedHostOnly;
   }
 
   /**
