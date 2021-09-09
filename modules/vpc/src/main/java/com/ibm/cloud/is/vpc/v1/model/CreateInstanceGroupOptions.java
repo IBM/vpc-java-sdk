@@ -214,7 +214,7 @@ public class CreateInstanceGroupOptions extends GenericModel {
   /**
    * Gets the instanceTemplate.
    *
-   * Instance template to use when creating new instances.
+   * Identifies an instance template by a unique property.
    *
    * @return the instanceTemplate
    */
@@ -225,7 +225,7 @@ public class CreateInstanceGroupOptions extends GenericModel {
   /**
    * Gets the subnets.
    *
-   * Array of identities to subnets to use when creating new instances.
+   * The subnets to use when creating new instances.
    *
    * @return the subnets
    */

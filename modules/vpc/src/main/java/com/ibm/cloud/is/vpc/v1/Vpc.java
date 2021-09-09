@@ -12,7 +12,7 @@
  */
 
 /*
- * IBM OpenAPI SDK Code Generator Version: 3.31.0-902c9336-20210504-161156
+ * IBM OpenAPI SDK Code Generator Version: 3.38.0-07189efd-20210827-205025
  */
 
 package com.ibm.cloud.is.vpc.v1;
@@ -55,10 +55,12 @@ import com.ibm.cloud.is.vpc.v1.model.CreateLoadBalancerPoolMemberOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateLoadBalancerPoolOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateNetworkAclOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateNetworkAclRuleOptions;
+import com.ibm.cloud.is.vpc.v1.model.CreatePlacementGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreatePublicGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateSecurityGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateSecurityGroupRuleOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateSecurityGroupTargetBindingOptions;
+import com.ibm.cloud.is.vpc.v1.model.CreateSnapshotOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateSubnetOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateSubnetReservedIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateVolumeOptions;
@@ -108,10 +110,13 @@ import com.ibm.cloud.is.vpc.v1.model.DeleteLoadBalancerPoolMemberOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteLoadBalancerPoolOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteNetworkAclOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteNetworkAclRuleOptions;
+import com.ibm.cloud.is.vpc.v1.model.DeletePlacementGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeletePublicGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteSecurityGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteSecurityGroupRuleOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteSecurityGroupTargetBindingOptions;
+import com.ibm.cloud.is.vpc.v1.model.DeleteSnapshotOptions;
+import com.ibm.cloud.is.vpc.v1.model.DeleteSnapshotsOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteSubnetOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteSubnetReservedIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteVolumeOptions;
@@ -165,6 +170,7 @@ import com.ibm.cloud.is.vpc.v1.model.GetLoadBalancerStatisticsOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetNetworkAclOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetNetworkAclRuleOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetOperatingSystemOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetPlacementGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetPublicGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetRegionOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetRegionZoneOptions;
@@ -172,6 +178,7 @@ import com.ibm.cloud.is.vpc.v1.model.GetSecurityGroupNetworkInterfaceOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetSecurityGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetSecurityGroupRuleOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetSecurityGroupTargetOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetSnapshotOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetSubnetNetworkAclOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetSubnetOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetSubnetPublicGatewayOptions;
@@ -254,6 +261,7 @@ import com.ibm.cloud.is.vpc.v1.model.ListLoadBalancersOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListNetworkAclRulesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListNetworkAclsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListOperatingSystemsOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListPlacementGroupsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListPublicGatewaysOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListRegionZonesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListRegionsOptions;
@@ -261,6 +269,7 @@ import com.ibm.cloud.is.vpc.v1.model.ListSecurityGroupNetworkInterfacesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListSecurityGroupRulesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListSecurityGroupTargetsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListSecurityGroupsOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListSnapshotsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListSubnetReservedIpsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListSubnetsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListVolumeProfilesOptions;
@@ -298,6 +307,8 @@ import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceCollection;
 import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceUnpaginatedCollection;
 import com.ibm.cloud.is.vpc.v1.model.OperatingSystem;
 import com.ibm.cloud.is.vpc.v1.model.OperatingSystemCollection;
+import com.ibm.cloud.is.vpc.v1.model.PlacementGroup;
+import com.ibm.cloud.is.vpc.v1.model.PlacementGroupCollection;
 import com.ibm.cloud.is.vpc.v1.model.PublicGateway;
 import com.ibm.cloud.is.vpc.v1.model.PublicGatewayCollection;
 import com.ibm.cloud.is.vpc.v1.model.Region;
@@ -324,6 +335,8 @@ import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleCollection;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupTargetCollection;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupTargetReference;
 import com.ibm.cloud.is.vpc.v1.model.SetSubnetPublicGatewayOptions;
+import com.ibm.cloud.is.vpc.v1.model.Snapshot;
+import com.ibm.cloud.is.vpc.v1.model.SnapshotCollection;
 import com.ibm.cloud.is.vpc.v1.model.Subnet;
 import com.ibm.cloud.is.vpc.v1.model.SubnetCollection;
 import com.ibm.cloud.is.vpc.v1.model.UnsetSubnetPublicGatewayOptions;
@@ -355,9 +368,11 @@ import com.ibm.cloud.is.vpc.v1.model.UpdateLoadBalancerPoolMemberOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateLoadBalancerPoolOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateNetworkAclOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateNetworkAclRuleOptions;
+import com.ibm.cloud.is.vpc.v1.model.UpdatePlacementGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdatePublicGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateSecurityGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateSecurityGroupRuleOptions;
+import com.ibm.cloud.is.vpc.v1.model.UpdateSnapshotOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateSubnetOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateSubnetReservedIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateVolumeOptions;
@@ -399,7 +414,7 @@ import java.util.Map.Entry;
  * The IBM Cloud Virtual Private Cloud (VPC) API can be used to programmatically provision and manage infrastructure
  * resources, including virtual server instances, subnets, volumes, and load balancers.
  *
- * @version v1
+ * API Version: 2021-09-07
  */
 public class Vpc extends BaseService {
 
@@ -407,7 +422,7 @@ public class Vpc extends BaseService {
 
   public static final String DEFAULT_SERVICE_URL = "https://us-south.iaas.cloud.ibm.com/v1";
 
-  private String version;
+  private String version = "2021-09-07";
 
   private Long generation = Long.valueOf("2");
 
@@ -415,36 +430,22 @@ public class Vpc extends BaseService {
    * Class method which constructs an instance of the `Vpc` client.
    * The default service name is used to configure the client instance.
    *
-   * @param version Requests the version of the API as of a date in the format `YYYY-MM-DD`. Any date up to the current
- * date may be provided. Specify the current date to request the latest version.
-   * @return an instance of the `Vpc` client using external configuration
-   */
-  public static Vpc newInstance(String version) {
-    return newInstance(version, DEFAULT_SERVICE_NAME);
-  }
-
-       /**
-   * Class method which constructs an instance of the `Vpc` client.
-   * The default service name and version is used to configure the client instance.
-   *
    * @return an instance of the `Vpc` client using external configuration
    */
   public static Vpc newInstance() {
-    return newInstance("2021-05-06", DEFAULT_SERVICE_NAME);
+    return newInstance(DEFAULT_SERVICE_NAME);
   }
 
   /**
    * Class method which constructs an instance of the `Vpc` client.
    * The specified service name is used to configure the client instance.
    *
-   * @param version Requests the version of the API as of a date in the format `YYYY-MM-DD`. Any date up to the current
- * date may be provided. Specify the current date to request the latest version.
    * @param serviceName the service name to be used when configuring the client instance
    * @return an instance of the `Vpc` client using external configuration
    */
-  public static Vpc newInstance(String version, String serviceName) {
+  public static Vpc newInstance(String serviceName) {
     Authenticator authenticator = ConfigBasedAuthenticatorFactory.getAuthenticator(serviceName);
-    Vpc service = new Vpc(version, serviceName, authenticator);
+    Vpc service = new Vpc(serviceName, authenticator);
     service.configureService(serviceName);
     return service;
   }
@@ -453,12 +454,10 @@ public class Vpc extends BaseService {
    * Constructs an instance of the `Vpc` client.
    * The specified service name and authenticator are used to configure the client instance.
    *
-   * @param version Requests the version of the API as of a date in the format `YYYY-MM-DD`. Any date up to the current
- * date may be provided. Specify the current date to request the latest version.
    * @param serviceName the service name to be used when configuring the client instance
    * @param authenticator the {@link Authenticator} instance to be configured for this client
    */
-  public Vpc(String version, String serviceName, Authenticator authenticator) {
+  public Vpc(String serviceName, Authenticator authenticator) {
     super(serviceName, authenticator);
     setServiceUrl(DEFAULT_SERVICE_URL);
     setVersion(version);
@@ -1979,8 +1978,9 @@ public class Vpc extends BaseService {
    * Create an image.
    *
    * This request creates a new image from an image prototype object. The prototype object is structured in the same way
-   * as a retrieved image, and contains the information necessary to create the new image. A URL to the image file on
-   * object storage must be provided.
+   * as a retrieved image, and contains the information necessary to create the new image. If an image is being
+   * imported, a URL to the image file on object storage must be specified. If an image is being created from an
+   * existing volume, that volume must be specified.
    *
    * @param createImageOptions the {@link CreateImageOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link Image}
@@ -2172,6 +2172,12 @@ public class Vpc extends BaseService {
     builder.header("Accept", "application/json");
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
+    if (listKeysOptions.start() != null) {
+      builder.query("start", String.valueOf(listKeysOptions.start()));
+    }
+    if (listKeysOptions.limit() != null) {
+      builder.query("limit", String.valueOf(listKeysOptions.limit()));
+    }
     if (listKeysOptions.resourceGroupId() != null) {
       builder.query("resource_group.id", String.valueOf(listKeysOptions.resourceGroupId()));
     }
@@ -2404,7 +2410,11 @@ public class Vpc extends BaseService {
   /**
    * Create an instance template.
    *
-   * This request creates a new instance template.
+   * This request creates a new instance template. The prototype object is structured in the same way as a retrieved
+   * instance template, and contains the information necessary to provision a new instance from the template.
+   *
+   * If a `source_template` is specified in the prototype object, its contents are copied into the new template prior to
+   * copying any other properties provided in the prototype object.
    *
    * @param createInstanceTemplateOptions the {@link CreateInstanceTemplateOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link InstanceTemplate}
@@ -2545,6 +2555,24 @@ public class Vpc extends BaseService {
     }
     if (listInstancesOptions.vpcName() != null) {
       builder.query("vpc.name", String.valueOf(listInstancesOptions.vpcName()));
+    }
+    if (listInstancesOptions.dedicatedHostId() != null) {
+      builder.query("dedicated_host.id", String.valueOf(listInstancesOptions.dedicatedHostId()));
+    }
+    if (listInstancesOptions.dedicatedHostCrn() != null) {
+      builder.query("dedicated_host.crn", String.valueOf(listInstancesOptions.dedicatedHostCrn()));
+    }
+    if (listInstancesOptions.dedicatedHostName() != null) {
+      builder.query("dedicated_host.name", String.valueOf(listInstancesOptions.dedicatedHostName()));
+    }
+    if (listInstancesOptions.placementGroupId() != null) {
+      builder.query("placement_group.id", String.valueOf(listInstancesOptions.placementGroupId()));
+    }
+    if (listInstancesOptions.placementGroupCrn() != null) {
+      builder.query("placement_group.crn", String.valueOf(listInstancesOptions.placementGroupCrn()));
+    }
+    if (listInstancesOptions.placementGroupName() != null) {
+      builder.query("placement_group.name", String.valueOf(listInstancesOptions.placementGroupName()));
     }
     ResponseConverter<InstanceCollection> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<InstanceCollection>() { }.getType());
@@ -4514,6 +4542,161 @@ public class Vpc extends BaseService {
   }
 
   /**
+   * List all placement groups.
+   *
+   * This request lists all placement groups in the region.
+   *
+   * @param listPlacementGroupsOptions the {@link ListPlacementGroupsOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link PlacementGroupCollection}
+   */
+  public ServiceCall<PlacementGroupCollection> listPlacementGroups(ListPlacementGroupsOptions listPlacementGroupsOptions) {
+    if (listPlacementGroupsOptions == null) {
+      listPlacementGroupsOptions = new ListPlacementGroupsOptions.Builder().build();
+    }
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/placement_groups"));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listPlacementGroups");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    if (listPlacementGroupsOptions.start() != null) {
+      builder.query("start", String.valueOf(listPlacementGroupsOptions.start()));
+    }
+    if (listPlacementGroupsOptions.limit() != null) {
+      builder.query("limit", String.valueOf(listPlacementGroupsOptions.limit()));
+    }
+    ResponseConverter<PlacementGroupCollection> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<PlacementGroupCollection>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * List all placement groups.
+   *
+   * This request lists all placement groups in the region.
+   *
+   * @return a {@link ServiceCall} with a result of type {@link PlacementGroupCollection}
+   */
+  public ServiceCall<PlacementGroupCollection> listPlacementGroups() {
+    return listPlacementGroups(null);
+  }
+
+  /**
+   * Create a placement group.
+   *
+   * This request creates a new placement group.
+   *
+   * @param createPlacementGroupOptions the {@link CreatePlacementGroupOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link PlacementGroup}
+   */
+  public ServiceCall<PlacementGroup> createPlacementGroup(CreatePlacementGroupOptions createPlacementGroupOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(createPlacementGroupOptions,
+      "createPlacementGroupOptions cannot be null");
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/placement_groups"));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "createPlacementGroup");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    final JsonObject contentJson = new JsonObject();
+    contentJson.addProperty("strategy", createPlacementGroupOptions.strategy());
+    if (createPlacementGroupOptions.name() != null) {
+      contentJson.addProperty("name", createPlacementGroupOptions.name());
+    }
+    if (createPlacementGroupOptions.resourceGroup() != null) {
+      contentJson.add("resource_group", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createPlacementGroupOptions.resourceGroup()));
+    }
+    builder.bodyJson(contentJson);
+    ResponseConverter<PlacementGroup> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<PlacementGroup>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Delete a placement group.
+   *
+   * This request deletes a placement group. This operation cannot be reversed. For this request to succeed, the
+   * placement group must not be associated with an instance.
+   *
+   * @param deletePlacementGroupOptions the {@link DeletePlacementGroupOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a void result
+   */
+  public ServiceCall<Void> deletePlacementGroup(DeletePlacementGroupOptions deletePlacementGroupOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(deletePlacementGroupOptions,
+      "deletePlacementGroupOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", deletePlacementGroupOptions.id());
+    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/placement_groups/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "deletePlacementGroup");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Retrieve a placement group.
+   *
+   * This request retrieves a single placement group specified by identifier in the URL.
+   *
+   * @param getPlacementGroupOptions the {@link GetPlacementGroupOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link PlacementGroup}
+   */
+  public ServiceCall<PlacementGroup> getPlacementGroup(GetPlacementGroupOptions getPlacementGroupOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(getPlacementGroupOptions,
+      "getPlacementGroupOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", getPlacementGroupOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/placement_groups/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getPlacementGroup");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<PlacementGroup> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<PlacementGroup>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Update a placement group.
+   *
+   * This request updates a placement group with the information provided placement group patch. The placement group
+   * patch object is structured in the same way as a retrieved placement group and contains only the information to be
+   * updated.
+   *
+   * @param updatePlacementGroupOptions the {@link UpdatePlacementGroupOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link PlacementGroup}
+   */
+  public ServiceCall<PlacementGroup> updatePlacementGroup(UpdatePlacementGroupOptions updatePlacementGroupOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(updatePlacementGroupOptions,
+      "updatePlacementGroupOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", updatePlacementGroupOptions.id());
+    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/placement_groups/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "updatePlacementGroup");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updatePlacementGroupOptions.placementGroupPatch()), "application/merge-patch+json");
+    ResponseConverter<PlacementGroup> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<PlacementGroup>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
    * List all volume profiles.
    *
    * This request lists all volume profiles available in the region. A volume profile specifies the performance
@@ -4735,6 +4918,205 @@ public class Vpc extends BaseService {
     builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateVolumeOptions.volumePatch()), "application/merge-patch+json");
     ResponseConverter<Volume> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<Volume>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Delete a filtered collection of snapshots.
+   *
+   * This request deletes all snapshots created from a specific source volume.
+   *
+   * @param deleteSnapshotsOptions the {@link DeleteSnapshotsOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a void result
+   */
+  public ServiceCall<Void> deleteSnapshots(DeleteSnapshotsOptions deleteSnapshotsOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(deleteSnapshotsOptions,
+      "deleteSnapshotsOptions cannot be null");
+    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/snapshots"));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "deleteSnapshots");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    builder.query("source_volume.id", String.valueOf(deleteSnapshotsOptions.sourceVolumeId()));
+    ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * List all snapshots.
+   *
+   * This request lists all snapshots in the region. A snapshot preserves the data of a volume at the time the snapshot
+   * is created.
+   *
+   * @param listSnapshotsOptions the {@link ListSnapshotsOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link SnapshotCollection}
+   */
+  public ServiceCall<SnapshotCollection> listSnapshots(ListSnapshotsOptions listSnapshotsOptions) {
+    if (listSnapshotsOptions == null) {
+      listSnapshotsOptions = new ListSnapshotsOptions.Builder().build();
+    }
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/snapshots"));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listSnapshots");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    if (listSnapshotsOptions.start() != null) {
+      builder.query("start", String.valueOf(listSnapshotsOptions.start()));
+    }
+    if (listSnapshotsOptions.limit() != null) {
+      builder.query("limit", String.valueOf(listSnapshotsOptions.limit()));
+    }
+    if (listSnapshotsOptions.resourceGroupId() != null) {
+      builder.query("resource_group.id", String.valueOf(listSnapshotsOptions.resourceGroupId()));
+    }
+    if (listSnapshotsOptions.name() != null) {
+      builder.query("name", String.valueOf(listSnapshotsOptions.name()));
+    }
+    if (listSnapshotsOptions.sourceVolumeId() != null) {
+      builder.query("source_volume.id", String.valueOf(listSnapshotsOptions.sourceVolumeId()));
+    }
+    if (listSnapshotsOptions.sourceVolumeCrn() != null) {
+      builder.query("source_volume.crn", String.valueOf(listSnapshotsOptions.sourceVolumeCrn()));
+    }
+    if (listSnapshotsOptions.sourceImageId() != null) {
+      builder.query("source_image.id", String.valueOf(listSnapshotsOptions.sourceImageId()));
+    }
+    if (listSnapshotsOptions.sourceImageCrn() != null) {
+      builder.query("source_image.crn", String.valueOf(listSnapshotsOptions.sourceImageCrn()));
+    }
+    if (listSnapshotsOptions.sort() != null) {
+      builder.query("sort", String.valueOf(listSnapshotsOptions.sort()));
+    }
+    ResponseConverter<SnapshotCollection> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<SnapshotCollection>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * List all snapshots.
+   *
+   * This request lists all snapshots in the region. A snapshot preserves the data of a volume at the time the snapshot
+   * is created.
+   *
+   * @return a {@link ServiceCall} with a result of type {@link SnapshotCollection}
+   */
+  public ServiceCall<SnapshotCollection> listSnapshots() {
+    return listSnapshots(null);
+  }
+
+  /**
+   * Create a snapshot.
+   *
+   * This request creates a new snapshot from a snapshot prototype object.  The prototype object is structured in the
+   * same way as a retrieved snapshot, and contains the information necessary to provision the new snapshot.
+   *
+   * @param createSnapshotOptions the {@link CreateSnapshotOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link Snapshot}
+   */
+  public ServiceCall<Snapshot> createSnapshot(CreateSnapshotOptions createSnapshotOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(createSnapshotOptions,
+      "createSnapshotOptions cannot be null");
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/snapshots"));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "createSnapshot");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    final JsonObject contentJson = new JsonObject();
+    contentJson.add("source_volume", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createSnapshotOptions.sourceVolume()));
+    if (createSnapshotOptions.name() != null) {
+      contentJson.addProperty("name", createSnapshotOptions.name());
+    }
+    if (createSnapshotOptions.resourceGroup() != null) {
+      contentJson.add("resource_group", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createSnapshotOptions.resourceGroup()));
+    }
+    builder.bodyJson(contentJson);
+    ResponseConverter<Snapshot> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<Snapshot>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Delete a snapshot.
+   *
+   * This request deletes a snapshot. This operation cannot be reversed.
+   *
+   * @param deleteSnapshotOptions the {@link DeleteSnapshotOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a void result
+   */
+  public ServiceCall<Void> deleteSnapshot(DeleteSnapshotOptions deleteSnapshotOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(deleteSnapshotOptions,
+      "deleteSnapshotOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", deleteSnapshotOptions.id());
+    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/snapshots/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "deleteSnapshot");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Retrieve a snapshot.
+   *
+   * This request retrieves a single snapshot specified by the identifier in the URL.
+   *
+   * @param getSnapshotOptions the {@link GetSnapshotOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link Snapshot}
+   */
+  public ServiceCall<Snapshot> getSnapshot(GetSnapshotOptions getSnapshotOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(getSnapshotOptions,
+      "getSnapshotOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", getSnapshotOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/snapshots/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getSnapshot");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<Snapshot> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<Snapshot>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Update a snapshot.
+   *
+   * This request updates a snapshot's name.
+   *
+   * @param updateSnapshotOptions the {@link UpdateSnapshotOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link Snapshot}
+   */
+  public ServiceCall<Snapshot> updateSnapshot(UpdateSnapshotOptions updateSnapshotOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(updateSnapshotOptions,
+      "updateSnapshotOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", updateSnapshotOptions.id());
+    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/snapshots/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "updateSnapshot");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateSnapshotOptions.snapshotPatch()), "application/merge-patch+json");
+    ResponseConverter<Snapshot> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<Snapshot>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
   }
 
@@ -7011,6 +7393,9 @@ public class Vpc extends BaseService {
    * @return a {@link ServiceCall} with a result of type {@link LoadBalancerCollection}
    */
   public ServiceCall<LoadBalancerCollection> listLoadBalancers(ListLoadBalancersOptions listLoadBalancersOptions) {
+    if (listLoadBalancersOptions == null) {
+      listLoadBalancersOptions = new ListLoadBalancersOptions.Builder().build();
+    }
     RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/load_balancers"));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listLoadBalancers");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
@@ -7019,6 +7404,12 @@ public class Vpc extends BaseService {
     builder.header("Accept", "application/json");
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
+    if (listLoadBalancersOptions.start() != null) {
+      builder.query("start", String.valueOf(listLoadBalancersOptions.start()));
+    }
+    if (listLoadBalancersOptions.limit() != null) {
+      builder.query("limit", String.valueOf(listLoadBalancersOptions.limit()));
+    }
     ResponseConverter<LoadBalancerCollection> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<LoadBalancerCollection>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -7249,6 +7640,9 @@ public class Vpc extends BaseService {
     if (createLoadBalancerListenerOptions.defaultPool() != null) {
       contentJson.add("default_pool", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createLoadBalancerListenerOptions.defaultPool()));
     }
+    if (createLoadBalancerListenerOptions.httpsRedirect() != null) {
+      contentJson.add("https_redirect", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createLoadBalancerListenerOptions.httpsRedirect()));
+    }
     if (createLoadBalancerListenerOptions.policies() != null) {
       contentJson.add("policies", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createLoadBalancerListenerOptions.policies()));
     }
@@ -7261,7 +7655,8 @@ public class Vpc extends BaseService {
   /**
    * Delete a load balancer listener.
    *
-   * This request deletes a load balancer listener. This operation cannot be reversed.
+   * This request deletes a load balancer listener. This operation cannot be reversed. For this operation to succeed,
+   * the listener must not be the target of another load balancer listener.
    *
    * @param deleteLoadBalancerListenerOptions the {@link DeleteLoadBalancerListenerOptions} containing the options for the call
    * @return a {@link ServiceCall} with a void result

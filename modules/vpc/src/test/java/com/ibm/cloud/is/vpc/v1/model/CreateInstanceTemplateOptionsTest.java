@@ -123,13 +123,13 @@ public class CreateInstanceTemplateOptionsTest {
     assertEquals(volumeProfileIdentityModel.name(), "general-purpose");
 
     VolumePrototypeInstanceByImageContext volumePrototypeInstanceByImageContextModel = new VolumePrototypeInstanceByImageContext.Builder()
-      .capacity(Long.valueOf("100"))
+      .capacity(Long.valueOf("26"))
       .encryptionKey(encryptionKeyIdentityModel)
       .iops(Long.valueOf("10000"))
       .name("my-volume")
       .profile(volumeProfileIdentityModel)
       .build();
-    assertEquals(volumePrototypeInstanceByImageContextModel.capacity(), Long.valueOf("100"));
+    assertEquals(volumePrototypeInstanceByImageContextModel.capacity(), Long.valueOf("26"));
     assertEquals(volumePrototypeInstanceByImageContextModel.encryptionKey(), encryptionKeyIdentityModel);
     assertEquals(volumePrototypeInstanceByImageContextModel.iops(), Long.valueOf("10000"));
     assertEquals(volumePrototypeInstanceByImageContextModel.name(), "my-volume");
@@ -161,6 +161,7 @@ public class CreateInstanceTemplateOptionsTest {
       .placementTarget(instancePlacementTargetPrototypeModel)
       .profile(instanceProfileIdentityModel)
       .resourceGroup(resourceGroupIdentityModel)
+      .totalVolumeBandwidth(Long.valueOf("500"))
       .userData("testString")
       .volumeAttachments(new java.util.ArrayList<VolumeAttachmentPrototypeInstanceContext>(java.util.Arrays.asList(volumeAttachmentPrototypeInstanceContextModel)))
       .vpc(vpcIdentityModel)
@@ -175,6 +176,7 @@ public class CreateInstanceTemplateOptionsTest {
     assertEquals(instanceTemplatePrototypeModel.placementTarget(), instancePlacementTargetPrototypeModel);
     assertEquals(instanceTemplatePrototypeModel.profile(), instanceProfileIdentityModel);
     assertEquals(instanceTemplatePrototypeModel.resourceGroup(), resourceGroupIdentityModel);
+    assertEquals(instanceTemplatePrototypeModel.totalVolumeBandwidth(), Long.valueOf("500"));
     assertEquals(instanceTemplatePrototypeModel.userData(), "testString");
     assertEquals(instanceTemplatePrototypeModel.volumeAttachments(), new java.util.ArrayList<VolumeAttachmentPrototypeInstanceContext>(java.util.Arrays.asList(volumeAttachmentPrototypeInstanceContextModel)));
     assertEquals(instanceTemplatePrototypeModel.vpc(), vpcIdentityModel);

@@ -139,8 +139,7 @@ public class VolumeAttachmentPrototypeInstanceContext extends GenericModel {
   /**
    * Gets the volume.
    *
-   * The identity of the volume to attach to the instance, or a prototype object for a new
-   * volume.
+   * An existing volume to attach to the instance, or a prototype object for a new volume.
    *
    * @return the volume
    */

@@ -21,7 +21,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  * - KeyIdentityById
  * - KeyIdentityByCRN
  * - KeyIdentityByHref
- * - KeyIdentityKeyIdentityByFingerprint
+ * - KeyIdentityByFingerprint
  */
 public class KeyIdentity extends GenericModel {
 

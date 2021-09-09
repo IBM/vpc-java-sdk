@@ -38,6 +38,8 @@ public class InstanceStatusReason extends GenericModel {
     String CANNOT_START_STORAGE = "cannot_start_storage";
     /** encryption_key_deleted. */
     String ENCRYPTION_KEY_DELETED = "encryption_key_deleted";
+    /** stopped_for_image_creation. */
+    String STOPPED_FOR_IMAGE_CREATION = "stopped_for_image_creation";
   }
 
   protected String code;

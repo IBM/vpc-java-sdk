@@ -39,18 +39,18 @@ public class CreateSecurityGroupRuleOptionsTest {
     assertEquals(securityGroupRuleRemotePrototypeModel.address(), "192.168.3.4");
 
     SecurityGroupRulePrototypeSecurityGroupRuleProtocolICMP securityGroupRulePrototypeModel = new SecurityGroupRulePrototypeSecurityGroupRuleProtocolICMP.Builder()
+      .code(Long.valueOf("0"))
       .direction("inbound")
       .ipVersion("ipv4")
-      .remote(securityGroupRuleRemotePrototypeModel)
-      .code(Long.valueOf("0"))
       .protocol("icmp")
+      .remote(securityGroupRuleRemotePrototypeModel)
       .type(Long.valueOf("8"))
       .build();
+    assertEquals(securityGroupRulePrototypeModel.code(), Long.valueOf("0"));
     assertEquals(securityGroupRulePrototypeModel.direction(), "inbound");
     assertEquals(securityGroupRulePrototypeModel.ipVersion(), "ipv4");
-    assertEquals(securityGroupRulePrototypeModel.remote(), securityGroupRuleRemotePrototypeModel);
-    assertEquals(securityGroupRulePrototypeModel.code(), Long.valueOf("0"));
     assertEquals(securityGroupRulePrototypeModel.protocol(), "icmp");
+    assertEquals(securityGroupRulePrototypeModel.remote(), securityGroupRuleRemotePrototypeModel);
     assertEquals(securityGroupRulePrototypeModel.type(), Long.valueOf("8"));
 
     CreateSecurityGroupRuleOptions createSecurityGroupRuleOptionsModel = new CreateSecurityGroupRuleOptions.Builder()

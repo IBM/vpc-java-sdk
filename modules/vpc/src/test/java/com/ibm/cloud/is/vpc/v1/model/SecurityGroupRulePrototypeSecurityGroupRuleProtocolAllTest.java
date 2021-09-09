@@ -40,13 +40,13 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolAllTest {
     SecurityGroupRulePrototypeSecurityGroupRuleProtocolAll securityGroupRulePrototypeSecurityGroupRuleProtocolAllModel = new SecurityGroupRulePrototypeSecurityGroupRuleProtocolAll.Builder()
       .direction("inbound")
       .ipVersion("ipv4")
-      .remote(securityGroupRuleRemotePrototypeModel)
       .protocol("all")
+      .remote(securityGroupRuleRemotePrototypeModel)
       .build();
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolAllModel.direction(), "inbound");
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolAllModel.ipVersion(), "ipv4");
-    assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolAllModel.remote(), securityGroupRuleRemotePrototypeModel);
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolAllModel.protocol(), "all");
+    assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolAllModel.remote(), securityGroupRuleRemotePrototypeModel);
 
     String json = TestUtilities.serialize(securityGroupRulePrototypeSecurityGroupRuleProtocolAllModel);
 
@@ -54,8 +54,8 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolAllTest {
     assertTrue(securityGroupRulePrototypeSecurityGroupRuleProtocolAllModelNew instanceof SecurityGroupRulePrototypeSecurityGroupRuleProtocolAll);
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolAllModelNew.direction(), "inbound");
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolAllModelNew.ipVersion(), "ipv4");
-    assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolAllModelNew.remote().toString(), securityGroupRuleRemotePrototypeModel.toString());
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolAllModelNew.protocol(), "all");
+    assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolAllModelNew.remote().toString(), securityGroupRuleRemotePrototypeModel.toString());
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

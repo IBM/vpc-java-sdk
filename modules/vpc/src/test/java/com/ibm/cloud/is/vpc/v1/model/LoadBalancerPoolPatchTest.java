@@ -50,8 +50,10 @@ public class LoadBalancerPoolPatchTest {
     assertEquals(loadBalancerPoolHealthMonitorPatchModel.urlPath(), "/");
 
     LoadBalancerPoolSessionPersistencePatch loadBalancerPoolSessionPersistencePatchModel = new LoadBalancerPoolSessionPersistencePatch.Builder()
+      .cookieName("my-cookie-name")
       .type("source_ip")
       .build();
+    assertEquals(loadBalancerPoolSessionPersistencePatchModel.cookieName(), "my-cookie-name");
     assertEquals(loadBalancerPoolSessionPersistencePatchModel.type(), "source_ip");
 
     LoadBalancerPoolPatch loadBalancerPoolPatchModel = new LoadBalancerPoolPatch.Builder()
@@ -92,6 +94,7 @@ public class LoadBalancerPoolPatchTest {
       .build();
 
     LoadBalancerPoolSessionPersistencePatch loadBalancerPoolSessionPersistencePatchModel = new LoadBalancerPoolSessionPersistencePatch.Builder()
+      .cookieName("my-cookie-name")
       .type("source_ip")
       .build();
 

@@ -32,6 +32,7 @@ public class LoadBalancerPoolSessionPersistenceTest {
   @Test
   public void testLoadBalancerPoolSessionPersistence() throws Throwable {
     LoadBalancerPoolSessionPersistence loadBalancerPoolSessionPersistenceModel = new LoadBalancerPoolSessionPersistence();
+    assertNull(loadBalancerPoolSessionPersistenceModel.getCookieName());
     assertNull(loadBalancerPoolSessionPersistenceModel.getType());
   }
 }

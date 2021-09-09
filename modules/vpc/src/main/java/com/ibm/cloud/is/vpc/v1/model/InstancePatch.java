@@ -14,6 +14,7 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 import java.util.Map;
 
+import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 import com.ibm.cloud.sdk.core.util.GsonSingleton;
 
@@ -24,6 +25,8 @@ public class InstancePatch extends GenericModel {
 
   protected String name;
   protected InstancePatchProfile profile;
+  @SerializedName("total_volume_bandwidth")
+  protected Long totalVolumeBandwidth;
 
   /**
    * Builder.
@@ -31,10 +34,12 @@ public class InstancePatch extends GenericModel {
   public static class Builder {
     private String name;
     private InstancePatchProfile profile;
+    private Long totalVolumeBandwidth;
 
     private Builder(InstancePatch instancePatch) {
       this.name = instancePatch.name;
       this.profile = instancePatch.profile;
+      this.totalVolumeBandwidth = instancePatch.totalVolumeBandwidth;
     }
 
     /**
@@ -73,11 +78,23 @@ public class InstancePatch extends GenericModel {
       this.profile = profile;
       return this;
     }
+
+    /**
+     * Set the totalVolumeBandwidth.
+     *
+     * @param totalVolumeBandwidth the totalVolumeBandwidth
+     * @return the InstancePatch builder
+     */
+    public Builder totalVolumeBandwidth(long totalVolumeBandwidth) {
+      this.totalVolumeBandwidth = totalVolumeBandwidth;
+      return this;
+    }
   }
 
   protected InstancePatch(Builder builder) {
     name = builder.name;
     profile = builder.profile;
+    totalVolumeBandwidth = builder.totalVolumeBandwidth;
   }
 
   /**
@@ -106,9 +123,9 @@ public class InstancePatch extends GenericModel {
    * The profile to use for this virtual server instance. For the profile to be changed,
    * the instance `status` must be `stopping` or `stopped`. In addition, the requested
    * profile must:
-   * - Match the current profile's instance disk support. (Note: If the current profile
-   *   supports instance storage disks, the requested profile can have a different
-   *   instance storage disk configuration.)
+   * - Have matching instance disk support. Any disks associated with the current profile
+   *   will be deleted, and any disks associated with the requested profile will be
+   *   created.
    * - Be compatible with any `placement_target` constraints. For example, if the
    *   instance is placed on a dedicated host, the requested profile `family` must be
    *   the same as the dedicated host `family`.
@@ -117,6 +134,19 @@ public class InstancePatch extends GenericModel {
    */
   public InstancePatchProfile profile() {
     return profile;
+  }
+
+  /**
+   * Gets the totalVolumeBandwidth.
+   *
+   * The amount of bandwidth (in megabits per second) allocated exclusively to instance storage volumes. An increase in
+   * this value will result in a corresponding decrease to
+   * `total_network_bandwidth`.
+   *
+   * @return the totalVolumeBandwidth
+   */
+  public Long totalVolumeBandwidth() {
+    return totalVolumeBandwidth;
   }
 
   /**

@@ -16,12 +16,14 @@ import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * `LoadBalancerPoolReference` is in the response if `action` is `forward`.
- * `LoadBalancerListenerPolicyRedirectURL` is in the response if `action` is `redirect`.
+ * - If `action` is `forward`, the response is a `LoadBalancerPoolReference`
+ * - If `action` is `redirect`, the response is a `LoadBalancerListenerPolicyRedirectURL`
+ * - If `action` is `https_redirect`, the response is a `LoadBalancerListenerHTTPSRedirect`.
  *
  * Classes which extend this class:
  * - LoadBalancerListenerPolicyTargetLoadBalancerPoolReference
  * - LoadBalancerListenerPolicyTargetLoadBalancerListenerPolicyRedirectURL
+ * - LoadBalancerListenerPolicyTargetLoadBalancerListenerHTTPSRedirect
  */
 public class LoadBalancerListenerPolicyTarget extends GenericModel {
 
@@ -32,6 +34,8 @@ public class LoadBalancerListenerPolicyTarget extends GenericModel {
   @SerializedName("http_status_code")
   protected Long httpStatusCode;
   protected String url;
+  protected LoadBalancerListenerReference listener;
+  protected String uri;
 
   protected LoadBalancerListenerPolicyTarget() {
   }
@@ -84,7 +88,7 @@ public class LoadBalancerListenerPolicyTarget extends GenericModel {
   /**
    * Gets the httpStatusCode.
    *
-   * The http status code in the redirect response.
+   * The HTTP status code for this redirect.
    *
    * @return the httpStatusCode
    */
@@ -101,6 +105,26 @@ public class LoadBalancerListenerPolicyTarget extends GenericModel {
    */
   public String getUrl() {
     return url;
+  }
+
+  /**
+   * Gets the listener.
+   *
+   * @return the listener
+   */
+  public LoadBalancerListenerReference getListener() {
+    return listener;
+  }
+
+  /**
+   * Gets the uri.
+   *
+   * The redirect relative target URI.
+   *
+   * @return the uri
+   */
+  public String getUri() {
+    return uri;
   }
 }
 

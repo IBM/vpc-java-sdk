@@ -284,7 +284,7 @@ public class VPNGatewayConnection extends GenericModel {
   /**
    * Gets the localCidrs.
    *
-   * A collection of local CIDRs for this resource.
+   * The local CIDRs for this resource.
    *
    * @return the localCidrs
    */
@@ -295,7 +295,7 @@ public class VPNGatewayConnection extends GenericModel {
   /**
    * Gets the peerCidrs.
    *
-   * A collection of peer CIDRs for this resource.
+   * The peer CIDRs for this resource.
    *
    * @return the peerCidrs
    */

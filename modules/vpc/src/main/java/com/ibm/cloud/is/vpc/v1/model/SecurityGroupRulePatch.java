@@ -34,9 +34,9 @@ public class SecurityGroupRulePatch extends GenericModel {
   }
 
   /**
-   * The IP version to enforce. The format of `remote.address` or `remote.cidr_block` must match this field, if they are
-   * used. Alternatively, if `remote` references a security group, then this rule only applies to IP addresses (network
-   * interfaces) in that group matching this IP version.
+   * The IP version to enforce. The format of `remote.address` or `remote.cidr_block` must match this property, if they
+   * are used. Alternatively, if `remote` references a security group, then this rule only applies to IP addresses
+   * (network interfaces) in that group matching this IP version.
    */
   public interface IpVersion {
     /** ipv4. */
@@ -213,9 +213,9 @@ public class SecurityGroupRulePatch extends GenericModel {
   /**
    * Gets the ipVersion.
    *
-   * The IP version to enforce. The format of `remote.address` or `remote.cidr_block` must match this field, if they are
-   * used. Alternatively, if `remote` references a security group, then this rule only applies to IP addresses (network
-   * interfaces) in that group matching this IP version.
+   * The IP version to enforce. The format of `remote.address` or `remote.cidr_block` must match this property, if they
+   * are used. Alternatively, if `remote` references a security group, then this rule only applies to IP addresses
+   * (network interfaces) in that group matching this IP version.
    *
    * @return the ipVersion
    */

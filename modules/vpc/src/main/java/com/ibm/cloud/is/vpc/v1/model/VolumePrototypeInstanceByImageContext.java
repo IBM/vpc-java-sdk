@@ -12,20 +12,11 @@
  */
 package com.ibm.cloud.is.vpc.v1.model;
 
-import com.google.gson.annotations.SerializedName;
-import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
  * VolumePrototypeInstanceByImageContext.
  */
-public class VolumePrototypeInstanceByImageContext extends GenericModel {
-
-  protected Long capacity;
-  @SerializedName("encryption_key")
-  protected EncryptionKeyIdentity encryptionKey;
-  protected Long iops;
-  protected String name;
-  protected VolumeProfileIdentity profile;
+public class VolumePrototypeInstanceByImageContext extends VolumeAttachmentPrototypeInstanceWrapper {
 
   /**
    * Builder.
@@ -147,8 +138,10 @@ public class VolumePrototypeInstanceByImageContext extends GenericModel {
   /**
    * Gets the capacity.
    *
-   * The capacity of the volume in gigabytes. The specified minimum and maximum capacity values for creating or updating
-   * volumes may expand in the future.
+   * The capacity to use for the volume (in gigabytes). The only allowed value is the image's
+   * `minimum_provisioned_size`, but the allowed values are expected to expand in the future.
+   *
+   * If unspecified, the capacity will be the image's `minimum_provisioned_size`.
    *
    * @return the capacity
    */
@@ -159,7 +152,7 @@ public class VolumePrototypeInstanceByImageContext extends GenericModel {
   /**
    * Gets the encryptionKey.
    *
-   * The identity of the root key to use to wrap the data encryption key for the volume.
+   * The root key to use to wrap the data encryption key for the volume.
    *
    * If this property is not provided but the image is encrypted, the image's
    * `encryption_key` will be used. Otherwise, the `encryption` type for the
@@ -174,7 +167,7 @@ public class VolumePrototypeInstanceByImageContext extends GenericModel {
   /**
    * Gets the iops.
    *
-   * The bandwidth for the volume.
+   * The maximum I/O operations per second (IOPS) for the volume.
    *
    * @return the iops
    */

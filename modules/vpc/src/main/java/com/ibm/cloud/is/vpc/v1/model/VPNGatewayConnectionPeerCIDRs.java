@@ -28,7 +28,7 @@ public class VPNGatewayConnectionPeerCIDRs extends GenericModel {
   /**
    * Gets the peerCidrs.
    *
-   * A collection of peer CIDRs for this resource.
+   * The peer CIDRs for this resource.
    *
    * @return the peerCidrs
    */

@@ -84,8 +84,8 @@ public class InstanceGroupManagerAction extends GenericModel {
   protected Date lastAppliedAt;
   @SerializedName("next_run_at")
   protected Date nextRunAt;
-  protected InstanceGroupManagerScheduledActionGroupGroup group;
-  protected InstanceGroupManagerScheduledActionManagerManager manager;
+  protected InstanceGroupManagerScheduledActionGroup group;
+  protected InstanceGroupManagerScheduledActionManager manager;
 
   protected InstanceGroupManagerAction() {
   }
@@ -248,7 +248,7 @@ public class InstanceGroupManagerAction extends GenericModel {
    *
    * @return the group
    */
-  public InstanceGroupManagerScheduledActionGroupGroup getGroup() {
+  public InstanceGroupManagerScheduledActionGroup getGroup() {
     return group;
   }
 
@@ -257,7 +257,7 @@ public class InstanceGroupManagerAction extends GenericModel {
    *
    * @return the manager
    */
-  public InstanceGroupManagerScheduledActionManagerManager getManager() {
+  public InstanceGroupManagerScheduledActionManager getManager() {
     return manager;
   }
 }

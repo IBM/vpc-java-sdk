@@ -39,7 +39,8 @@ public class VolumePrototype extends GenericModel {
   /**
    * Gets the iops.
    *
-   * The bandwidth for the volume.
+   * The maximum I/O operations per second (IOPS) to use for the volume. Applicable only to volumes using a profile
+   * `family` of `custom`. The volume must be attached as a data volume to a running virtual server instance.
    *
    * @return the iops
    */
@@ -95,8 +96,8 @@ public class VolumePrototype extends GenericModel {
   /**
    * Gets the capacity.
    *
-   * The capacity of the volume in gigabytes. The specified minimum and maximum capacity values for creating or updating
-   * volumes may expand in the future.
+   * The capacity to use for the volume (in gigabytes). The specified minimum and maximum capacity values for creating
+   * or updating volumes may expand in the future.
    *
    * @return the capacity
    */
@@ -107,7 +108,7 @@ public class VolumePrototype extends GenericModel {
   /**
    * Gets the encryptionKey.
    *
-   * The identity of the root key to use to wrap the data encryption key for the volume.
+   * The root key to use to wrap the data encryption key for the volume.
    *
    * If this property is not provided, the `encryption` type for the volume will be
    * `provider_managed`.

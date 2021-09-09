@@ -79,7 +79,7 @@ public class VPNGateway extends GenericModel {
   /**
    * Gets the connections.
    *
-   * Collection of references to VPN gateway connections.
+   * Connections for this VPN gateway.
    *
    * @return the connections
    */

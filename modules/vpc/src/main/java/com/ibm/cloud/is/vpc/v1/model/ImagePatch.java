@@ -77,7 +77,7 @@ public class ImagePatch extends GenericModel {
   /**
    * Gets the name.
    *
-   * The unique user-defined name for this image. Names starting with "ibm-" are not allowed.
+   * The unique user-defined name for this image. Names starting with `ibm-` are not allowed.
    *
    * @return the name
    */

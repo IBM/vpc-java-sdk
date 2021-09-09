@@ -181,7 +181,7 @@ public class LoadBalancerListenerPolicyRulePrototype extends GenericModel {
    *
    * The field. This is applicable to `header`, `query`, and `body` rule types.
    *
-   * If the rule type is `header`, this field is required.
+   * If the rule type is `header`, this property is required.
    *
    * If the rule type is `query`, this is optional. If specified and the rule condition is not
    * `matches_regex`, the value must be percent-encoded.

@@ -53,6 +53,9 @@ public class Volume extends GenericModel {
     String UNUSABLE = "unusable";
   }
 
+  protected Boolean active;
+  protected Long bandwidth;
+  protected Boolean busy;
   protected Long capacity;
   @SerializedName("created_at")
   protected Date createdAt;
@@ -64,9 +67,15 @@ public class Volume extends GenericModel {
   protected String id;
   protected Long iops;
   protected String name;
+  @SerializedName("operating_system")
+  protected OperatingSystemReference operatingSystem;
   protected VolumeProfileReference profile;
   @SerializedName("resource_group")
   protected ResourceGroupReference resourceGroup;
+  @SerializedName("source_image")
+  protected ImageReference sourceImage;
+  @SerializedName("source_snapshot")
+  protected SnapshotReference sourceSnapshot;
   protected String status;
   @SerializedName("status_reasons")
   protected List<VolumeStatusReason> statusReasons;
@@ -75,10 +84,44 @@ public class Volume extends GenericModel {
   protected ZoneReference zone;
 
   /**
+   * Gets the active.
+   *
+   * Indicates whether a running virtual server instance has an attachment to this volume.
+   *
+   * @return the active
+   */
+  public Boolean isActive() {
+    return active;
+  }
+
+  /**
+   * Gets the bandwidth.
+   *
+   * The maximum bandwidth (in megabits per second) for the volume.
+   *
+   * @return the bandwidth
+   */
+  public Long getBandwidth() {
+    return bandwidth;
+  }
+
+  /**
+   * Gets the busy.
+   *
+   * Indicates whether this volume is performing an operation that must be serialized. If an operation specifies that it
+   * requires serialization, the operation will fail unless this property is `false`.
+   *
+   * @return the busy
+   */
+  public Boolean isBusy() {
+    return busy;
+  }
+
+  /**
    * Gets the capacity.
    *
-   * The capacity of the volume in gigabytes. The specified minimum and maximum capacity values for creating or updating
-   * volumes may expand in the future.
+   * The capacity to use for the volume (in gigabytes). The specified minimum and maximum capacity values for creating
+   * or updating volumes may expand in the future.
    *
    * @return the capacity
    */
@@ -122,7 +165,7 @@ public class Volume extends GenericModel {
   /**
    * Gets the encryptionKey.
    *
-   * A reference to the root key used to wrap the data encryption key for the volume.
+   * The root key used to wrap the data encryption key for the volume.
    *
    * This property will be present for volumes with an `encryption` type of
    * `user_managed`.
@@ -158,7 +201,7 @@ public class Volume extends GenericModel {
   /**
    * Gets the iops.
    *
-   * The bandwidth for the volume.
+   * The maximum I/O operations per second (IOPS) for the volume.
    *
    * @return the iops
    */
@@ -175,6 +218,18 @@ public class Volume extends GenericModel {
    */
   public String getName() {
     return name;
+  }
+
+  /**
+   * Gets the operatingSystem.
+   *
+   * The operating system associated with this volume. If absent, this volume was not
+   * created from an image, or the image did not include an operating system.
+   *
+   * @return the operatingSystem
+   */
+  public OperatingSystemReference getOperatingSystem() {
+    return operatingSystem;
   }
 
   /**
@@ -200,6 +255,30 @@ public class Volume extends GenericModel {
   }
 
   /**
+   * Gets the sourceImage.
+   *
+   * The image from which this volume was created (this may be
+   * [deleted](https://cloud.ibm.com/apidocs/vpc#deleted-resources)).
+   * If absent, this volume was not created from an image.
+   *
+   * @return the sourceImage
+   */
+  public ImageReference getSourceImage() {
+    return sourceImage;
+  }
+
+  /**
+   * Gets the sourceSnapshot.
+   *
+   * The snapshot from which this volume was cloned.
+   *
+   * @return the sourceSnapshot
+   */
+  public SnapshotReference getSourceSnapshot() {
+    return sourceSnapshot;
+  }
+
+  /**
    * Gets the status.
    *
    * The status of the volume.
@@ -217,7 +296,7 @@ public class Volume extends GenericModel {
   /**
    * Gets the statusReasons.
    *
-   * Array of reasons for the current status (if any).
+   * The reasons for the current status (if any).
    *
    * The enumerated reason code values for this property will expand in the future. When processing this property, check
    * for and log unknown values. Optionally halt processing and surface the error, or bypass the resource on which the
@@ -232,7 +311,7 @@ public class Volume extends GenericModel {
   /**
    * Gets the volumeAttachments.
    *
-   * The collection of volume attachments attaching instances to the volume.
+   * The volume attachments for this volume.
    *
    * @return the volumeAttachments
    */

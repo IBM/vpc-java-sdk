@@ -25,6 +25,10 @@ public class LoadBalancerListenerPolicy extends GenericModel {
 
   /**
    * The policy action.
+   *
+   * The enumerated values for this property are expected to expand in the future. When processing this property, check
+   * for and log unknown values. Optionally halt processing and surface the error, or bypass the policy on which the
+   * unexpected property value was encountered.
    */
   public interface Action {
     /** forward. */
@@ -33,6 +37,8 @@ public class LoadBalancerListenerPolicy extends GenericModel {
     String REDIRECT = "redirect";
     /** reject. */
     String REJECT = "reject";
+    /** https_redirect. */
+    String HTTPS_REDIRECT = "https_redirect";
   }
 
   /**
@@ -69,6 +75,10 @@ public class LoadBalancerListenerPolicy extends GenericModel {
    * Gets the action.
    *
    * The policy action.
+   *
+   * The enumerated values for this property are expected to expand in the future. When processing this property, check
+   * for and log unknown values. Optionally halt processing and surface the error, or bypass the policy on which the
+   * unexpected property value was encountered.
    *
    * @return the action
    */
@@ -145,7 +155,7 @@ public class LoadBalancerListenerPolicy extends GenericModel {
   /**
    * Gets the rules.
    *
-   * The rules of this policy.
+   * The rules for this policy.
    *
    * @return the rules
    */
@@ -156,8 +166,9 @@ public class LoadBalancerListenerPolicy extends GenericModel {
   /**
    * Gets the target.
    *
-   * `LoadBalancerPoolReference` is in the response if `action` is `forward`.
-   * `LoadBalancerListenerPolicyRedirectURL` is in the response if `action` is `redirect`.
+   * - If `action` is `forward`, the response is a `LoadBalancerPoolReference`
+   * - If `action` is `redirect`, the response is a `LoadBalancerListenerPolicyRedirectURL`
+   * - If `action` is `https_redirect`, the response is a `LoadBalancerListenerHTTPSRedirect`.
    *
    * @return the target
    */

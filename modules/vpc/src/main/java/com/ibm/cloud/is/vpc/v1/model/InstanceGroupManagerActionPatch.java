@@ -21,33 +21,121 @@ import com.ibm.cloud.sdk.core.util.GsonSingleton;
 
 /**
  * InstanceGroupManagerActionPatch.
- *
- * Classes which extend this class:
- * - InstanceGroupManagerActionPatchScheduledActionPatch
  */
 public class InstanceGroupManagerActionPatch extends GenericModel {
 
-  protected String name;
   @SerializedName("cron_spec")
   protected String cronSpec;
-  protected InstanceGroupManagerScheduledActionGroupPatch group;
-  protected InstanceGroupManagerScheduledActionByManagerPatchManager manager;
+  protected InstanceGroupManagerActionGroupPatch group;
+  protected InstanceGroupManagerActionManagerPatch manager;
+  protected String name;
   @SerializedName("run_at")
   protected Date runAt;
 
-  protected InstanceGroupManagerActionPatch() {
+  /**
+   * Builder.
+   */
+  public static class Builder {
+    private String cronSpec;
+    private InstanceGroupManagerActionGroupPatch group;
+    private InstanceGroupManagerActionManagerPatch manager;
+    private String name;
+    private Date runAt;
+
+    private Builder(InstanceGroupManagerActionPatch instanceGroupManagerActionPatch) {
+      this.cronSpec = instanceGroupManagerActionPatch.cronSpec;
+      this.group = instanceGroupManagerActionPatch.group;
+      this.manager = instanceGroupManagerActionPatch.manager;
+      this.name = instanceGroupManagerActionPatch.name;
+      this.runAt = instanceGroupManagerActionPatch.runAt;
+    }
+
+    /**
+     * Instantiates a new builder.
+     */
+    public Builder() {
+    }
+
+    /**
+     * Builds a InstanceGroupManagerActionPatch.
+     *
+     * @return the new InstanceGroupManagerActionPatch instance
+     */
+    public InstanceGroupManagerActionPatch build() {
+      return new InstanceGroupManagerActionPatch(this);
+    }
+
+    /**
+     * Set the cronSpec.
+     *
+     * @param cronSpec the cronSpec
+     * @return the InstanceGroupManagerActionPatch builder
+     */
+    public Builder cronSpec(String cronSpec) {
+      this.cronSpec = cronSpec;
+      return this;
+    }
+
+    /**
+     * Set the group.
+     *
+     * @param group the group
+     * @return the InstanceGroupManagerActionPatch builder
+     */
+    public Builder group(InstanceGroupManagerActionGroupPatch group) {
+      this.group = group;
+      return this;
+    }
+
+    /**
+     * Set the manager.
+     *
+     * @param manager the manager
+     * @return the InstanceGroupManagerActionPatch builder
+     */
+    public Builder manager(InstanceGroupManagerActionManagerPatch manager) {
+      this.manager = manager;
+      return this;
+    }
+
+    /**
+     * Set the name.
+     *
+     * @param name the name
+     * @return the InstanceGroupManagerActionPatch builder
+     */
+    public Builder name(String name) {
+      this.name = name;
+      return this;
+    }
+
+    /**
+     * Set the runAt.
+     *
+     * @param runAt the runAt
+     * @return the InstanceGroupManagerActionPatch builder
+     */
+    public Builder runAt(Date runAt) {
+      this.runAt = runAt;
+      return this;
+    }
+  }
+
+  protected InstanceGroupManagerActionPatch(Builder builder) {
+    cronSpec = builder.cronSpec;
+    group = builder.group;
+    manager = builder.manager;
+    name = builder.name;
+    runAt = builder.runAt;
   }
 
   /**
-   * Gets the name.
+   * New builder.
    *
-   * The user-defined name for this instance group manager action. Names must be unique within the instance group
-   * manager.
-   *
-   * @return the name
+   * @return a InstanceGroupManagerActionPatch builder
    */
-  public String name() {
-    return name;
+  public Builder newBuilder() {
+    return new Builder(this);
   }
 
   /**
@@ -67,7 +155,7 @@ public class InstanceGroupManagerActionPatch extends GenericModel {
    *
    * @return the group
    */
-  public InstanceGroupManagerScheduledActionGroupPatch group() {
+  public InstanceGroupManagerActionGroupPatch group() {
     return group;
   }
 
@@ -76,8 +164,20 @@ public class InstanceGroupManagerActionPatch extends GenericModel {
    *
    * @return the manager
    */
-  public InstanceGroupManagerScheduledActionByManagerPatchManager manager() {
+  public InstanceGroupManagerActionManagerPatch manager() {
     return manager;
+  }
+
+  /**
+   * Gets the name.
+   *
+   * The user-defined name for this instance group manager action. Names must be unique within the instance group
+   * manager.
+   *
+   * @return the name
+   */
+  public String name() {
+    return name;
   }
 
   /**

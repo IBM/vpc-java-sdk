@@ -20,6 +20,8 @@ import com.ibm.cloud.is.vpc.v1.model.ImageFileChecksums;
 import com.ibm.cloud.is.vpc.v1.model.ImageStatusReason;
 import com.ibm.cloud.is.vpc.v1.model.OperatingSystem;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;
+import com.ibm.cloud.is.vpc.v1.model.VolumeReference;
+import com.ibm.cloud.is.vpc.v1.model.VolumeReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -49,6 +51,7 @@ public class ImageTest {
     assertNull(imageModel.getName());
     assertNull(imageModel.getOperatingSystem());
     assertNull(imageModel.getResourceGroup());
+    assertNull(imageModel.getSourceVolume());
     assertNull(imageModel.getStatus());
     assertNull(imageModel.getStatusReasons());
     assertNull(imageModel.getVisibility());

@@ -16,6 +16,8 @@ package com.ibm.cloud.is.vpc.v1.model;
 import com.ibm.cloud.is.vpc.v1.model.IP;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancer;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerCollection;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerCollectionFirst;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerReference;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerLogging;
@@ -49,6 +51,10 @@ public class LoadBalancerCollectionTest {
   @Test
   public void testLoadBalancerCollection() throws Throwable {
     LoadBalancerCollection loadBalancerCollectionModel = new LoadBalancerCollection();
+    assertNull(loadBalancerCollectionModel.getFirst());
+    assertNull(loadBalancerCollectionModel.getLimit());
     assertNull(loadBalancerCollectionModel.getLoadBalancers());
+    assertNull(loadBalancerCollectionModel.getNext());
+    assertNull(loadBalancerCollectionModel.getTotalCount());
   }
 }

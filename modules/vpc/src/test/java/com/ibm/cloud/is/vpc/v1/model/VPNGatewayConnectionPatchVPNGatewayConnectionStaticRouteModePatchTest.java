@@ -22,6 +22,7 @@ import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
@@ -85,4 +86,43 @@ public class VPNGatewayConnectionPatchVPNGatewayConnectionStaticRouteModePatchTe
     assertEquals(vpnGatewayConnectionPatchVpnGatewayConnectionStaticRouteModePatchModelNew.psk(), "lkj14b1oi0alcniejkso");
     assertEquals(vpnGatewayConnectionPatchVpnGatewayConnectionStaticRouteModePatchModelNew.routingProtocol(), "none");
   }
+  @Test
+  public void testVPNGatewayConnectionPatchVPNGatewayConnectionStaticRouteModePatchAsPatch() throws Throwable {
+    VPNGatewayConnectionDPDPrototype vpnGatewayConnectionDpdPrototypeModel = new VPNGatewayConnectionDPDPrototype.Builder()
+      .action("restart")
+      .interval(Long.valueOf("30"))
+      .timeout(Long.valueOf("120"))
+      .build();
+
+    IKEPolicyIdentityById ikePolicyIdentityModel = new IKEPolicyIdentityById.Builder()
+      .id("ddf51bec-3424-11e8-b467-0ed5f89f718b")
+      .build();
+
+    IPsecPolicyIdentityById iPsecPolicyIdentityModel = new IPsecPolicyIdentityById.Builder()
+      .id("ddf51bec-3424-11e8-b467-0ed5f89f718b")
+      .build();
+
+    VPNGatewayConnectionPatchVPNGatewayConnectionStaticRouteModePatch vpnGatewayConnectionPatchVpnGatewayConnectionStaticRouteModePatchModel = new VPNGatewayConnectionPatchVPNGatewayConnectionStaticRouteModePatch.Builder()
+      .adminStateUp(true)
+      .deadPeerDetection(vpnGatewayConnectionDpdPrototypeModel)
+      .ikePolicy(ikePolicyIdentityModel)
+      .ipsecPolicy(iPsecPolicyIdentityModel)
+      .name("my-vpn-connection")
+      .peerAddress("169.21.50.5")
+      .psk("lkj14b1oi0alcniejkso")
+      .routingProtocol("none")
+      .build();
+
+    Map<String, Object> mergePatch = vpnGatewayConnectionPatchVpnGatewayConnectionStaticRouteModePatchModel.asPatch();
+
+    assertTrue(mergePatch.containsKey("admin_state_up"));
+    assertTrue(mergePatch.containsKey("dead_peer_detection"));
+    assertTrue(mergePatch.containsKey("ike_policy"));
+    assertTrue(mergePatch.containsKey("ipsec_policy"));
+    assertEquals(mergePatch.get("name"), "my-vpn-connection");
+    assertEquals(mergePatch.get("peer_address"), "169.21.50.5");
+    assertEquals(mergePatch.get("psk"), "lkj14b1oi0alcniejkso");
+    assertEquals(mergePatch.get("routing_protocol"), "none");
+  }
+
 }

@@ -23,11 +23,28 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class Route extends GenericModel {
 
   /**
+   * The action to perform with a packet matching the route:
+   * - `delegate`: delegate to the system's built-in routes
+   * - `delegate_vpc`: delegate to the system's built-in routes, ignoring Internet-bound
+   *   routes
+   * - `deliver`: deliver the packet to the specified `next_hop`
+   * - `drop`: drop the packet.
+   */
+  public interface Action {
+    /** delegate. */
+    String DELEGATE = "delegate";
+    /** delegate_vpc. */
+    String DELEGATE_VPC = "delegate_vpc";
+    /** deliver. */
+    String DELIVER = "deliver";
+    /** drop. */
+    String DROP = "drop";
+  }
+
+  /**
    * The lifecycle state of the route.
    */
   public interface LifecycleState {
-    /** deleted. */
-    String DELETED = "deleted";
     /** deleting. */
     String DELETING = "deleting";
     /** failed. */
@@ -44,6 +61,7 @@ public class Route extends GenericModel {
     String SUSPENDED = "suspended";
   }
 
+  protected String action;
   @SerializedName("created_at")
   protected Date createdAt;
   protected String destination;
@@ -55,6 +73,22 @@ public class Route extends GenericModel {
   @SerializedName("next_hop")
   protected RouteNextHop nextHop;
   protected ZoneReference zone;
+
+  /**
+   * Gets the action.
+   *
+   * The action to perform with a packet matching the route:
+   * - `delegate`: delegate to the system's built-in routes
+   * - `delegate_vpc`: delegate to the system's built-in routes, ignoring Internet-bound
+   *   routes
+   * - `deliver`: deliver the packet to the specified `next_hop`
+   * - `drop`: drop the packet.
+   *
+   * @return the action
+   */
+  public String getAction() {
+    return action;
+  }
 
   /**
    * Gets the createdAt.

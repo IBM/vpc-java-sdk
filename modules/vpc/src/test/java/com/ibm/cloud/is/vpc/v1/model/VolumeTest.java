@@ -14,9 +14,14 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.EncryptionKeyReference;
+import com.ibm.cloud.is.vpc.v1.model.ImageReference;
+import com.ibm.cloud.is.vpc.v1.model.ImageReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.InstanceReference;
 import com.ibm.cloud.is.vpc.v1.model.InstanceReferenceDeleted;
+import com.ibm.cloud.is.vpc.v1.model.OperatingSystemReference;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;
+import com.ibm.cloud.is.vpc.v1.model.SnapshotReference;
+import com.ibm.cloud.is.vpc.v1.model.SnapshotReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.Volume;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentDevice;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentReferenceVolumeContext;
@@ -42,6 +47,9 @@ public class VolumeTest {
   @Test
   public void testVolume() throws Throwable {
     Volume volumeModel = new Volume();
+    assertNull(volumeModel.isActive());
+    assertNull(volumeModel.getBandwidth());
+    assertNull(volumeModel.isBusy());
     assertNull(volumeModel.getCapacity());
     assertNull(volumeModel.getCreatedAt());
     assertNull(volumeModel.getCrn());
@@ -51,8 +59,11 @@ public class VolumeTest {
     assertNull(volumeModel.getId());
     assertNull(volumeModel.getIops());
     assertNull(volumeModel.getName());
+    assertNull(volumeModel.getOperatingSystem());
     assertNull(volumeModel.getProfile());
     assertNull(volumeModel.getResourceGroup());
+    assertNull(volumeModel.getSourceImage());
+    assertNull(volumeModel.getSourceSnapshot());
     assertNull(volumeModel.getStatus());
     assertNull(volumeModel.getStatusReasons());
     assertNull(volumeModel.getVolumeAttachments());

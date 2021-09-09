@@ -27,8 +27,6 @@ public class RoutingTable extends GenericModel {
    * The lifecycle state of the routing table.
    */
   public interface LifecycleState {
-    /** deleted. */
-    String DELETED = "deleted";
     /** deleting. */
     String DELETING = "deleting";
     /** failed. */

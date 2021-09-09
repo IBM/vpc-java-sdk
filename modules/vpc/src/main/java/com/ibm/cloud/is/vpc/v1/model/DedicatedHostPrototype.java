@@ -30,7 +30,7 @@ public class DedicatedHostPrototype extends GenericModel {
   protected DedicatedHostProfileIdentity profile;
   @SerializedName("resource_group")
   protected ResourceGroupIdentity resourceGroup;
-  protected DedicatedHostGroupIdentity group;
+  protected DedicatedHostPrototypeWrapper group;
   protected ZoneIdentity zone;
 
   protected DedicatedHostPrototype() {
@@ -89,7 +89,7 @@ public class DedicatedHostPrototype extends GenericModel {
    *
    * @return the group
    */
-  public DedicatedHostGroupIdentity group() {
+  public DedicatedHostPrototypeWrapper group() {
     return group;
   }
 

@@ -26,6 +26,12 @@ public class ListInstancesOptions extends GenericModel {
   protected String vpcId;
   protected String vpcCrn;
   protected String vpcName;
+  protected String dedicatedHostId;
+  protected String dedicatedHostCrn;
+  protected String dedicatedHostName;
+  protected String placementGroupId;
+  protected String placementGroupCrn;
+  protected String placementGroupName;
 
   /**
    * Builder.
@@ -38,6 +44,12 @@ public class ListInstancesOptions extends GenericModel {
     private String vpcId;
     private String vpcCrn;
     private String vpcName;
+    private String dedicatedHostId;
+    private String dedicatedHostCrn;
+    private String dedicatedHostName;
+    private String placementGroupId;
+    private String placementGroupCrn;
+    private String placementGroupName;
 
     private Builder(ListInstancesOptions listInstancesOptions) {
       this.start = listInstancesOptions.start;
@@ -47,6 +59,12 @@ public class ListInstancesOptions extends GenericModel {
       this.vpcId = listInstancesOptions.vpcId;
       this.vpcCrn = listInstancesOptions.vpcCrn;
       this.vpcName = listInstancesOptions.vpcName;
+      this.dedicatedHostId = listInstancesOptions.dedicatedHostId;
+      this.dedicatedHostCrn = listInstancesOptions.dedicatedHostCrn;
+      this.dedicatedHostName = listInstancesOptions.dedicatedHostName;
+      this.placementGroupId = listInstancesOptions.placementGroupId;
+      this.placementGroupCrn = listInstancesOptions.placementGroupCrn;
+      this.placementGroupName = listInstancesOptions.placementGroupName;
     }
 
     /**
@@ -140,6 +158,72 @@ public class ListInstancesOptions extends GenericModel {
       this.vpcName = vpcName;
       return this;
     }
+
+    /**
+     * Set the dedicatedHostId.
+     *
+     * @param dedicatedHostId the dedicatedHostId
+     * @return the ListInstancesOptions builder
+     */
+    public Builder dedicatedHostId(String dedicatedHostId) {
+      this.dedicatedHostId = dedicatedHostId;
+      return this;
+    }
+
+    /**
+     * Set the dedicatedHostCrn.
+     *
+     * @param dedicatedHostCrn the dedicatedHostCrn
+     * @return the ListInstancesOptions builder
+     */
+    public Builder dedicatedHostCrn(String dedicatedHostCrn) {
+      this.dedicatedHostCrn = dedicatedHostCrn;
+      return this;
+    }
+
+    /**
+     * Set the dedicatedHostName.
+     *
+     * @param dedicatedHostName the dedicatedHostName
+     * @return the ListInstancesOptions builder
+     */
+    public Builder dedicatedHostName(String dedicatedHostName) {
+      this.dedicatedHostName = dedicatedHostName;
+      return this;
+    }
+
+    /**
+     * Set the placementGroupId.
+     *
+     * @param placementGroupId the placementGroupId
+     * @return the ListInstancesOptions builder
+     */
+    public Builder placementGroupId(String placementGroupId) {
+      this.placementGroupId = placementGroupId;
+      return this;
+    }
+
+    /**
+     * Set the placementGroupCrn.
+     *
+     * @param placementGroupCrn the placementGroupCrn
+     * @return the ListInstancesOptions builder
+     */
+    public Builder placementGroupCrn(String placementGroupCrn) {
+      this.placementGroupCrn = placementGroupCrn;
+      return this;
+    }
+
+    /**
+     * Set the placementGroupName.
+     *
+     * @param placementGroupName the placementGroupName
+     * @return the ListInstancesOptions builder
+     */
+    public Builder placementGroupName(String placementGroupName) {
+      this.placementGroupName = placementGroupName;
+      return this;
+    }
   }
 
   protected ListInstancesOptions(Builder builder) {
@@ -150,6 +234,12 @@ public class ListInstancesOptions extends GenericModel {
     vpcId = builder.vpcId;
     vpcCrn = builder.vpcCrn;
     vpcName = builder.vpcName;
+    dedicatedHostId = builder.dedicatedHostId;
+    dedicatedHostCrn = builder.dedicatedHostCrn;
+    dedicatedHostName = builder.dedicatedHostName;
+    placementGroupId = builder.placementGroupId;
+    placementGroupCrn = builder.placementGroupCrn;
+    placementGroupName = builder.placementGroupName;
   }
 
   /**
@@ -237,6 +327,72 @@ public class ListInstancesOptions extends GenericModel {
    */
   public String vpcName() {
     return vpcName;
+  }
+
+  /**
+   * Gets the dedicatedHostId.
+   *
+   * Filters the collection to instances on the dedicated host with the specified identifier.
+   *
+   * @return the dedicatedHostId
+   */
+  public String dedicatedHostId() {
+    return dedicatedHostId;
+  }
+
+  /**
+   * Gets the dedicatedHostCrn.
+   *
+   * Filters the collection to instances on the dedicated host with the specified CRN.
+   *
+   * @return the dedicatedHostCrn
+   */
+  public String dedicatedHostCrn() {
+    return dedicatedHostCrn;
+  }
+
+  /**
+   * Gets the dedicatedHostName.
+   *
+   * Filters the collection to instances on the dedicated host with the specified name.
+   *
+   * @return the dedicatedHostName
+   */
+  public String dedicatedHostName() {
+    return dedicatedHostName;
+  }
+
+  /**
+   * Gets the placementGroupId.
+   *
+   * Filters the collection to instances in the placement group with the specified identifier.
+   *
+   * @return the placementGroupId
+   */
+  public String placementGroupId() {
+    return placementGroupId;
+  }
+
+  /**
+   * Gets the placementGroupCrn.
+   *
+   * Filters the collection to instances in the placement group with the specified CRN.
+   *
+   * @return the placementGroupCrn
+   */
+  public String placementGroupCrn() {
+    return placementGroupCrn;
+  }
+
+  /**
+   * Gets the placementGroupName.
+   *
+   * Filters the collection to instances in the placement group with the specified name.
+   *
+   * @return the placementGroupName
+   */
+  public String placementGroupName() {
+    return placementGroupName;
   }
 }
 

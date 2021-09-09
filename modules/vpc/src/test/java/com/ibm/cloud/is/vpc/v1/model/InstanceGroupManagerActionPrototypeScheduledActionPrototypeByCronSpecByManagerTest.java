@@ -14,7 +14,7 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSpecByManager;
-import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerScheduledActionByManagerManagerAutoScalePrototypeInstanceGroupManagerScheduledActionManagerAutoScalePrototypeInstanceGroupManagerIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerScheduledActionManagerPrototypeAutoScalePrototypeById;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -32,23 +32,23 @@ public class InstanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSp
 
   @Test
   public void testInstanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSpecByManager() throws Throwable {
-    InstanceGroupManagerScheduledActionByManagerManagerAutoScalePrototypeInstanceGroupManagerScheduledActionManagerAutoScalePrototypeInstanceGroupManagerIdentityById instanceGroupManagerScheduledActionByManagerManagerModel = new InstanceGroupManagerScheduledActionByManagerManagerAutoScalePrototypeInstanceGroupManagerScheduledActionManagerAutoScalePrototypeInstanceGroupManagerIdentityById.Builder()
+    InstanceGroupManagerScheduledActionManagerPrototypeAutoScalePrototypeById instanceGroupManagerScheduledActionManagerPrototypeModel = new InstanceGroupManagerScheduledActionManagerPrototypeAutoScalePrototypeById.Builder()
       .maxMembershipCount(Long.valueOf("10"))
       .minMembershipCount(Long.valueOf("10"))
       .id("1e09281b-f177-46fb-baf1-bc152b2e391a")
       .build();
-    assertEquals(instanceGroupManagerScheduledActionByManagerManagerModel.maxMembershipCount(), Long.valueOf("10"));
-    assertEquals(instanceGroupManagerScheduledActionByManagerManagerModel.minMembershipCount(), Long.valueOf("10"));
-    assertEquals(instanceGroupManagerScheduledActionByManagerManagerModel.id(), "1e09281b-f177-46fb-baf1-bc152b2e391a");
+    assertEquals(instanceGroupManagerScheduledActionManagerPrototypeModel.maxMembershipCount(), Long.valueOf("10"));
+    assertEquals(instanceGroupManagerScheduledActionManagerPrototypeModel.minMembershipCount(), Long.valueOf("10"));
+    assertEquals(instanceGroupManagerScheduledActionManagerPrototypeModel.id(), "1e09281b-f177-46fb-baf1-bc152b2e391a");
 
     InstanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSpecByManager instanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSpecByManagerModel = new InstanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSpecByManager.Builder()
       .name("my-instance-group-manager-action")
       .cronSpec("*/5 1,2,3 * * *")
-      .manager(instanceGroupManagerScheduledActionByManagerManagerModel)
+      .manager(instanceGroupManagerScheduledActionManagerPrototypeModel)
       .build();
     assertEquals(instanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSpecByManagerModel.name(), "my-instance-group-manager-action");
     assertEquals(instanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSpecByManagerModel.cronSpec(), "*/5 1,2,3 * * *");
-    assertEquals(instanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSpecByManagerModel.manager(), instanceGroupManagerScheduledActionByManagerManagerModel);
+    assertEquals(instanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSpecByManagerModel.manager(), instanceGroupManagerScheduledActionManagerPrototypeModel);
 
     String json = TestUtilities.serialize(instanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSpecByManagerModel);
 
@@ -56,7 +56,7 @@ public class InstanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSp
     assertTrue(instanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSpecByManagerModelNew instanceof InstanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSpecByManager);
     assertEquals(instanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSpecByManagerModelNew.name(), "my-instance-group-manager-action");
     assertEquals(instanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSpecByManagerModelNew.cronSpec(), "*/5 1,2,3 * * *");
-    assertEquals(instanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSpecByManagerModelNew.manager().toString(), instanceGroupManagerScheduledActionByManagerManagerModel.toString());
+    assertEquals(instanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSpecByManagerModelNew.manager().toString(), instanceGroupManagerScheduledActionManagerPrototypeModel.toString());
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

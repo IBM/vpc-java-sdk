@@ -60,6 +60,7 @@ public class InstanceTemplateInstanceByImageTest {
     assertNull(instanceTemplateInstanceByImageModel.getPlacementTarget());
     assertNull(instanceTemplateInstanceByImageModel.getProfile());
     assertNull(instanceTemplateInstanceByImageModel.getResourceGroup());
+    assertNull(instanceTemplateInstanceByImageModel.getTotalVolumeBandwidth());
     assertNull(instanceTemplateInstanceByImageModel.getUserData());
     assertNull(instanceTemplateInstanceByImageModel.getVolumeAttachments());
     assertNull(instanceTemplateInstanceByImageModel.getVpc());

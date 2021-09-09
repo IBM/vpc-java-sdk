@@ -47,14 +47,14 @@ public class CreateVpcRouteOptionsTest {
       .vpcId("testString")
       .destination("192.168.3.0/24")
       .zone(zoneIdentityModel)
-      .action("delegate")
+      .action("deliver")
       .name("my-route-2")
       .nextHop(routeNextHopPrototypeModel)
       .build();
     assertEquals(createVpcRouteOptionsModel.vpcId(), "testString");
     assertEquals(createVpcRouteOptionsModel.destination(), "192.168.3.0/24");
     assertEquals(createVpcRouteOptionsModel.zone(), zoneIdentityModel);
-    assertEquals(createVpcRouteOptionsModel.action(), "delegate");
+    assertEquals(createVpcRouteOptionsModel.action(), "deliver");
     assertEquals(createVpcRouteOptionsModel.name(), "my-route-2");
     assertEquals(createVpcRouteOptionsModel.nextHop(), routeNextHopPrototypeModel);
   }

@@ -2,6 +2,7 @@
 .DS_Store
 .idea
 .project
+.vscode/
 
 # Compiled class file
 *.class
@@ -43,7 +44,11 @@ hs_err_pid*
 *.env
 
 package-lock.json
-node_modules
 
 # Examples depedency file
 /**/dependency-reduced-pom.xml
+.idea/
+ *.iml
+ *.iws
+modules/vpc/vpc.iml
+*.iml

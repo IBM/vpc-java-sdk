@@ -24,7 +24,7 @@ public class InstanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSp
   public static class Builder {
     private String name;
     private String cronSpec;
-    private InstanceGroupManagerScheduledActionByManagerManager manager;
+    private InstanceGroupManagerScheduledActionManagerPrototype manager;
 
     public Builder(InstanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSpec instanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSpecByManager) {
       this.name = instanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSpecByManager.name;
@@ -43,7 +43,7 @@ public class InstanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSp
      *
      * @param manager the manager
      */
-    public Builder(InstanceGroupManagerScheduledActionByManagerManager manager) {
+    public Builder(InstanceGroupManagerScheduledActionManagerPrototype manager) {
       this.manager = manager;
     }
 
@@ -84,7 +84,7 @@ public class InstanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSp
      * @param manager the manager
      * @return the InstanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSpecByManager builder
      */
-    public Builder manager(InstanceGroupManagerScheduledActionByManagerManager manager) {
+    public Builder manager(InstanceGroupManagerScheduledActionManagerPrototype manager) {
       this.manager = manager;
       return this;
     }

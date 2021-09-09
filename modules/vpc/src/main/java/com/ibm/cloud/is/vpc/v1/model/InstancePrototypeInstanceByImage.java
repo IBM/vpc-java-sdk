@@ -31,6 +31,7 @@ public class InstancePrototypeInstanceByImage extends InstancePrototype {
     private InstancePlacementTargetPrototype placementTarget;
     private InstanceProfileIdentity profile;
     private ResourceGroupIdentity resourceGroup;
+    private Long totalVolumeBandwidth;
     private String userData;
     private List<VolumeAttachmentPrototypeInstanceContext> volumeAttachments;
     private VPCIdentity vpc;
@@ -46,10 +47,11 @@ public class InstancePrototypeInstanceByImage extends InstancePrototype {
       this.placementTarget = instancePrototypeInstanceByImage.placementTarget;
       this.profile = instancePrototypeInstanceByImage.profile;
       this.resourceGroup = instancePrototypeInstanceByImage.resourceGroup;
+      this.totalVolumeBandwidth = instancePrototypeInstanceByImage.totalVolumeBandwidth;
       this.userData = instancePrototypeInstanceByImage.userData;
       this.volumeAttachments = instancePrototypeInstanceByImage.volumeAttachments;
       this.vpc = instancePrototypeInstanceByImage.vpc;
-      this.bootVolumeAttachment = instancePrototypeInstanceByImage.bootVolumeAttachment;
+      this.bootVolumeAttachment = (VolumeAttachmentPrototypeInstanceByImageContext) instancePrototypeInstanceByImage.bootVolumeAttachment;
       this.image = instancePrototypeInstanceByImage.image;
       this.primaryNetworkInterface = instancePrototypeInstanceByImage.primaryNetworkInterface;
       this.zone = instancePrototypeInstanceByImage.zone;
@@ -200,6 +202,17 @@ public class InstancePrototypeInstanceByImage extends InstancePrototype {
     }
 
     /**
+     * Set the totalVolumeBandwidth.
+     *
+     * @param totalVolumeBandwidth the totalVolumeBandwidth
+     * @return the InstancePrototypeInstanceByImage builder
+     */
+    public Builder totalVolumeBandwidth(long totalVolumeBandwidth) {
+      this.totalVolumeBandwidth = totalVolumeBandwidth;
+      return this;
+    }
+
+    /**
      * Set the userData.
      *
      * @param userData the userData
@@ -291,6 +304,7 @@ public class InstancePrototypeInstanceByImage extends InstancePrototype {
     placementTarget = builder.placementTarget;
     profile = builder.profile;
     resourceGroup = builder.resourceGroup;
+    totalVolumeBandwidth = builder.totalVolumeBandwidth;
     userData = builder.userData;
     volumeAttachments = builder.volumeAttachments;
     vpc = builder.vpc;

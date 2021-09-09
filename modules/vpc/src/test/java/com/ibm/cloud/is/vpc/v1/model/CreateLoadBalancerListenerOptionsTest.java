@@ -15,6 +15,8 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.CertificateInstanceIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.CreateLoadBalancerListenerOptions;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerHTTPSRedirectPrototype;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyPrototype;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyRulePrototype;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetPrototypeLoadBalancerPoolIdentityLoadBalancerPoolIdentityById;
@@ -47,6 +49,20 @@ public class CreateLoadBalancerListenerOptionsTest {
       .id("70294e14-4e61-11e8-bcf4-0242ac110004")
       .build();
     assertEquals(loadBalancerPoolIdentityModel.id(), "70294e14-4e61-11e8-bcf4-0242ac110004");
+
+    LoadBalancerListenerIdentityById loadBalancerListenerIdentityModel = new LoadBalancerListenerIdentityById.Builder()
+      .id("70294e14-4e61-11e8-bcf4-0242ac110004")
+      .build();
+    assertEquals(loadBalancerListenerIdentityModel.id(), "70294e14-4e61-11e8-bcf4-0242ac110004");
+
+    LoadBalancerListenerHTTPSRedirectPrototype loadBalancerListenerHttpsRedirectPrototypeModel = new LoadBalancerListenerHTTPSRedirectPrototype.Builder()
+      .httpStatusCode(Long.valueOf("301"))
+      .listener(loadBalancerListenerIdentityModel)
+      .uri("/example?doc=get")
+      .build();
+    assertEquals(loadBalancerListenerHttpsRedirectPrototypeModel.httpStatusCode(), Long.valueOf("301"));
+    assertEquals(loadBalancerListenerHttpsRedirectPrototypeModel.listener(), loadBalancerListenerIdentityModel);
+    assertEquals(loadBalancerListenerHttpsRedirectPrototypeModel.uri(), "/example?doc=get");
 
     LoadBalancerListenerPolicyRulePrototype loadBalancerListenerPolicyRulePrototypeModel = new LoadBalancerListenerPolicyRulePrototype.Builder()
       .condition("contains")
@@ -85,6 +101,7 @@ public class CreateLoadBalancerListenerOptionsTest {
       .certificateInstance(certificateInstanceIdentityModel)
       .connectionLimit(Long.valueOf("2000"))
       .defaultPool(loadBalancerPoolIdentityModel)
+      .httpsRedirect(loadBalancerListenerHttpsRedirectPrototypeModel)
       .policies(new java.util.ArrayList<LoadBalancerListenerPolicyPrototype>(java.util.Arrays.asList(loadBalancerListenerPolicyPrototypeModel)))
       .build();
     assertEquals(createLoadBalancerListenerOptionsModel.loadBalancerId(), "testString");
@@ -94,6 +111,7 @@ public class CreateLoadBalancerListenerOptionsTest {
     assertEquals(createLoadBalancerListenerOptionsModel.certificateInstance(), certificateInstanceIdentityModel);
     assertEquals(createLoadBalancerListenerOptionsModel.connectionLimit(), Long.valueOf("2000"));
     assertEquals(createLoadBalancerListenerOptionsModel.defaultPool(), loadBalancerPoolIdentityModel);
+    assertEquals(createLoadBalancerListenerOptionsModel.httpsRedirect(), loadBalancerListenerHttpsRedirectPrototypeModel);
     assertEquals(createLoadBalancerListenerOptionsModel.policies(), new java.util.ArrayList<LoadBalancerListenerPolicyPrototype>(java.util.Arrays.asList(loadBalancerListenerPolicyPrototypeModel)));
   }
 

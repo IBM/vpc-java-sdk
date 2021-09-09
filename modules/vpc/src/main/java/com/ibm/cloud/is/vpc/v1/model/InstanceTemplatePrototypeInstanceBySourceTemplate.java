@@ -31,6 +31,7 @@ public class InstanceTemplatePrototypeInstanceBySourceTemplate extends InstanceT
     private InstancePlacementTargetPrototype placementTarget;
     private InstanceProfileIdentity profile;
     private ResourceGroupIdentity resourceGroup;
+    private Long totalVolumeBandwidth;
     private String userData;
     private List<VolumeAttachmentPrototypeInstanceContext> volumeAttachments;
     private VPCIdentity vpc;
@@ -47,10 +48,11 @@ public class InstanceTemplatePrototypeInstanceBySourceTemplate extends InstanceT
       this.placementTarget = instanceTemplatePrototypeInstanceBySourceTemplate.placementTarget;
       this.profile = instanceTemplatePrototypeInstanceBySourceTemplate.profile;
       this.resourceGroup = instanceTemplatePrototypeInstanceBySourceTemplate.resourceGroup;
+      this.totalVolumeBandwidth = instanceTemplatePrototypeInstanceBySourceTemplate.totalVolumeBandwidth;
       this.userData = instanceTemplatePrototypeInstanceBySourceTemplate.userData;
       this.volumeAttachments = instanceTemplatePrototypeInstanceBySourceTemplate.volumeAttachments;
       this.vpc = instanceTemplatePrototypeInstanceBySourceTemplate.vpc;
-      this.bootVolumeAttachment = instanceTemplatePrototypeInstanceBySourceTemplate.bootVolumeAttachment;
+      this.bootVolumeAttachment = (VolumeAttachmentPrototypeInstanceByImageContext) instanceTemplatePrototypeInstanceBySourceTemplate.bootVolumeAttachment;
       this.image = instanceTemplatePrototypeInstanceBySourceTemplate.image;
       this.primaryNetworkInterface = instanceTemplatePrototypeInstanceBySourceTemplate.primaryNetworkInterface;
       this.sourceTemplate = instanceTemplatePrototypeInstanceBySourceTemplate.sourceTemplate;
@@ -198,6 +200,17 @@ public class InstanceTemplatePrototypeInstanceBySourceTemplate extends InstanceT
     }
 
     /**
+     * Set the totalVolumeBandwidth.
+     *
+     * @param totalVolumeBandwidth the totalVolumeBandwidth
+     * @return the InstanceTemplatePrototypeInstanceBySourceTemplate builder
+     */
+    public Builder totalVolumeBandwidth(long totalVolumeBandwidth) {
+      this.totalVolumeBandwidth = totalVolumeBandwidth;
+      return this;
+    }
+
+    /**
      * Set the userData.
      *
      * @param userData the userData
@@ -296,6 +309,7 @@ public class InstanceTemplatePrototypeInstanceBySourceTemplate extends InstanceT
     placementTarget = builder.placementTarget;
     profile = builder.profile;
     resourceGroup = builder.resourceGroup;
+    totalVolumeBandwidth = builder.totalVolumeBandwidth;
     userData = builder.userData;
     volumeAttachments = builder.volumeAttachments;
     vpc = builder.vpc;

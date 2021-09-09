@@ -19,6 +19,20 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class VolumeProfile extends GenericModel {
 
+  /**
+   * The product family this volume profile belongs to.
+   *
+   * The enumerated values for this property will expand in the future. When processing this property, check for and log
+   * unknown values. Optionally halt processing and surface the error, or bypass the volume profile on which the
+   * unexpected property value was encountered.
+   */
+  public interface Family {
+    /** tiered. */
+    String TIERED = "tiered";
+    /** custom. */
+    String CUSTOM = "custom";
+  }
+
   protected String family;
   protected String href;
   protected String name;
@@ -27,6 +41,10 @@ public class VolumeProfile extends GenericModel {
    * Gets the family.
    *
    * The product family this volume profile belongs to.
+   *
+   * The enumerated values for this property will expand in the future. When processing this property, check for and log
+   * unknown values. Optionally halt processing and surface the error, or bypass the volume profile on which the
+   * unexpected property value was encountered.
    *
    * @return the family
    */

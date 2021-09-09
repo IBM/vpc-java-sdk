@@ -14,6 +14,7 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.VolumePatch;
+import com.ibm.cloud.is.vpc.v1.model.VolumeProfileIdentityByName;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -32,26 +33,50 @@ public class VolumePatchTest {
 
   @Test
   public void testVolumePatch() throws Throwable {
-    VolumePatch volumePatchModel = new VolumePatch.Builder()
-      .name("my-volume")
+    VolumeProfileIdentityByName volumeProfileIdentityModel = new VolumeProfileIdentityByName.Builder()
+      .name("general-purpose")
       .build();
+    assertEquals(volumeProfileIdentityModel.name(), "general-purpose");
+
+    VolumePatch volumePatchModel = new VolumePatch.Builder()
+      .capacity(Long.valueOf("100"))
+      .iops(Long.valueOf("10000"))
+      .name("my-volume")
+      .profile(volumeProfileIdentityModel)
+      .build();
+    assertEquals(volumePatchModel.capacity(), Long.valueOf("100"));
+    assertEquals(volumePatchModel.iops(), Long.valueOf("10000"));
     assertEquals(volumePatchModel.name(), "my-volume");
+    assertEquals(volumePatchModel.profile(), volumeProfileIdentityModel);
 
     String json = TestUtilities.serialize(volumePatchModel);
 
     VolumePatch volumePatchModelNew = TestUtilities.deserialize(json, VolumePatch.class);
     assertTrue(volumePatchModelNew instanceof VolumePatch);
+    assertEquals(volumePatchModelNew.capacity(), Long.valueOf("100"));
+    assertEquals(volumePatchModelNew.iops(), Long.valueOf("10000"));
     assertEquals(volumePatchModelNew.name(), "my-volume");
+    assertEquals(volumePatchModelNew.profile().toString(), volumeProfileIdentityModel.toString());
   }
   @Test
   public void testVolumePatchAsPatch() throws Throwable {
+    VolumeProfileIdentityByName volumeProfileIdentityModel = new VolumeProfileIdentityByName.Builder()
+      .name("general-purpose")
+      .build();
+
     VolumePatch volumePatchModel = new VolumePatch.Builder()
+      .capacity(Long.valueOf("100"))
+      .iops(Long.valueOf("10000"))
       .name("my-volume")
+      .profile(volumeProfileIdentityModel)
       .build();
 
     Map<String, Object> mergePatch = volumePatchModel.asPatch();
 
+    assertTrue(mergePatch.containsKey("capacity"));
+    assertTrue(mergePatch.containsKey("iops"));
     assertEquals(mergePatch.get("name"), "my-volume");
+    assertTrue(mergePatch.containsKey("profile"));
   }
 
 }

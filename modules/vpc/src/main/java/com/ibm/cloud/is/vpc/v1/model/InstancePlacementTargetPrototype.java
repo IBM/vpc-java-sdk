@@ -20,6 +20,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  * Classes which extend this class:
  * - InstancePlacementTargetPrototypeDedicatedHostIdentity
  * - InstancePlacementTargetPrototypeDedicatedHostGroupIdentity
+ * - InstancePlacementTargetPrototypePlacementGroupIdentity
  */
 public class InstancePlacementTargetPrototype extends GenericModel {
 

@@ -16,13 +16,15 @@ import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * When `action` is `forward`, `LoadBalancerPoolIdentity` specifies which pool the load balancer forwards the traffic
- * to. When `action` is `redirect`,
- * `LoadBalancerListenerPolicyRedirectURLPatch` specifies the url and http status code used in the redirect response.
+ * - If `action` is `forward`, specify a `LoadBalancerPoolIdentity`.
+ * - If `action` is `redirect`, specify a `LoadBalancerListenerPolicyRedirectURLPatch`.
+ * - If `action` is `https_redirect`, specify a
+ *   `LoadBalancerListenerPolicyHTTPSRedirectPatch`.
  *
  * Classes which extend this class:
  * - LoadBalancerListenerPolicyTargetPatchLoadBalancerPoolIdentity
  * - LoadBalancerListenerPolicyTargetPatchLoadBalancerListenerPolicyRedirectURLPatch
+ * - LoadBalancerListenerPolicyTargetPatchLoadBalancerListenerHTTPSRedirectPatch
  */
 public class LoadBalancerListenerPolicyTargetPatch extends GenericModel {
 
@@ -31,6 +33,8 @@ public class LoadBalancerListenerPolicyTargetPatch extends GenericModel {
   @SerializedName("http_status_code")
   protected Long httpStatusCode;
   protected String url;
+  protected LoadBalancerListenerIdentity listener;
+  protected String uri;
 
   protected LoadBalancerListenerPolicyTargetPatch() {
   }
@@ -60,7 +64,7 @@ public class LoadBalancerListenerPolicyTargetPatch extends GenericModel {
   /**
    * Gets the httpStatusCode.
    *
-   * The http status code in the redirect response.
+   * The HTTP status code for this redirect.
    *
    * @return the httpStatusCode
    */
@@ -77,6 +81,28 @@ public class LoadBalancerListenerPolicyTargetPatch extends GenericModel {
    */
   public String url() {
     return url;
+  }
+
+  /**
+   * Gets the listener.
+   *
+   * Identifies a load balancer listener by a unique property.
+   *
+   * @return the listener
+   */
+  public LoadBalancerListenerIdentity listener() {
+    return listener;
+  }
+
+  /**
+   * Gets the uri.
+   *
+   * The redirect relative target URI.
+   *
+   * @return the uri
+   */
+  public String uri() {
+    return uri;
   }
 }
 

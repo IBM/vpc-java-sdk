@@ -85,7 +85,7 @@ public class PublicGateway extends GenericModel {
   /**
    * Gets the floatingIp.
    *
-   * Reference to the floating IP which is bound to this public gateway.
+   * The floating IP bound to this public gateway.
    *
    * @return the floatingIp
    */

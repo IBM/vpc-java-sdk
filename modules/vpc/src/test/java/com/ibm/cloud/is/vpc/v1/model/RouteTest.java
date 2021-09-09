@@ -34,6 +34,7 @@ public class RouteTest {
   @Test
   public void testRoute() throws Throwable {
     Route routeModel = new Route();
+    assertNull(routeModel.getAction());
     assertNull(routeModel.getCreatedAt());
     assertNull(routeModel.getDestination());
     assertNull(routeModel.getHref());

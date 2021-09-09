@@ -14,7 +14,7 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerActionPrototypeScheduledActionPrototypeByRunAtByManager;
-import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerScheduledActionByManagerManagerAutoScalePrototypeInstanceGroupManagerScheduledActionManagerAutoScalePrototypeInstanceGroupManagerIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerScheduledActionManagerPrototypeAutoScalePrototypeById;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import com.ibm.cloud.sdk.core.util.DateUtils;
@@ -33,23 +33,23 @@ public class InstanceGroupManagerActionPrototypeScheduledActionPrototypeByRunAtB
 
   @Test
   public void testInstanceGroupManagerActionPrototypeScheduledActionPrototypeByRunAtByManager() throws Throwable {
-    InstanceGroupManagerScheduledActionByManagerManagerAutoScalePrototypeInstanceGroupManagerScheduledActionManagerAutoScalePrototypeInstanceGroupManagerIdentityById instanceGroupManagerScheduledActionByManagerManagerModel = new InstanceGroupManagerScheduledActionByManagerManagerAutoScalePrototypeInstanceGroupManagerScheduledActionManagerAutoScalePrototypeInstanceGroupManagerIdentityById.Builder()
+    InstanceGroupManagerScheduledActionManagerPrototypeAutoScalePrototypeById instanceGroupManagerScheduledActionManagerPrototypeModel = new InstanceGroupManagerScheduledActionManagerPrototypeAutoScalePrototypeById.Builder()
       .maxMembershipCount(Long.valueOf("10"))
       .minMembershipCount(Long.valueOf("10"))
       .id("1e09281b-f177-46fb-baf1-bc152b2e391a")
       .build();
-    assertEquals(instanceGroupManagerScheduledActionByManagerManagerModel.maxMembershipCount(), Long.valueOf("10"));
-    assertEquals(instanceGroupManagerScheduledActionByManagerManagerModel.minMembershipCount(), Long.valueOf("10"));
-    assertEquals(instanceGroupManagerScheduledActionByManagerManagerModel.id(), "1e09281b-f177-46fb-baf1-bc152b2e391a");
+    assertEquals(instanceGroupManagerScheduledActionManagerPrototypeModel.maxMembershipCount(), Long.valueOf("10"));
+    assertEquals(instanceGroupManagerScheduledActionManagerPrototypeModel.minMembershipCount(), Long.valueOf("10"));
+    assertEquals(instanceGroupManagerScheduledActionManagerPrototypeModel.id(), "1e09281b-f177-46fb-baf1-bc152b2e391a");
 
     InstanceGroupManagerActionPrototypeScheduledActionPrototypeByRunAtByManager instanceGroupManagerActionPrototypeScheduledActionPrototypeByRunAtByManagerModel = new InstanceGroupManagerActionPrototypeScheduledActionPrototypeByRunAtByManager.Builder()
       .name("my-instance-group-manager-action")
       .runAt(DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"))
-      .manager(instanceGroupManagerScheduledActionByManagerManagerModel)
+      .manager(instanceGroupManagerScheduledActionManagerPrototypeModel)
       .build();
     assertEquals(instanceGroupManagerActionPrototypeScheduledActionPrototypeByRunAtByManagerModel.name(), "my-instance-group-manager-action");
     assertEquals(instanceGroupManagerActionPrototypeScheduledActionPrototypeByRunAtByManagerModel.runAt(), DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"));
-    assertEquals(instanceGroupManagerActionPrototypeScheduledActionPrototypeByRunAtByManagerModel.manager(), instanceGroupManagerScheduledActionByManagerManagerModel);
+    assertEquals(instanceGroupManagerActionPrototypeScheduledActionPrototypeByRunAtByManagerModel.manager(), instanceGroupManagerScheduledActionManagerPrototypeModel);
 
     String json = TestUtilities.serialize(instanceGroupManagerActionPrototypeScheduledActionPrototypeByRunAtByManagerModel);
 
@@ -57,7 +57,7 @@ public class InstanceGroupManagerActionPrototypeScheduledActionPrototypeByRunAtB
     assertTrue(instanceGroupManagerActionPrototypeScheduledActionPrototypeByRunAtByManagerModelNew instanceof InstanceGroupManagerActionPrototypeScheduledActionPrototypeByRunAtByManager);
     assertEquals(instanceGroupManagerActionPrototypeScheduledActionPrototypeByRunAtByManagerModelNew.name(), "my-instance-group-manager-action");
     assertEquals(instanceGroupManagerActionPrototypeScheduledActionPrototypeByRunAtByManagerModelNew.runAt(), DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"));
-    assertEquals(instanceGroupManagerActionPrototypeScheduledActionPrototypeByRunAtByManagerModelNew.manager().toString(), instanceGroupManagerScheduledActionByManagerManagerModel.toString());
+    assertEquals(instanceGroupManagerActionPrototypeScheduledActionPrototypeByRunAtByManagerModelNew.manager().toString(), instanceGroupManagerScheduledActionManagerPrototypeModel.toString());
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

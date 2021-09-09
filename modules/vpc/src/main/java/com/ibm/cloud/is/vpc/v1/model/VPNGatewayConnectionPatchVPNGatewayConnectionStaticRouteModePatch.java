@@ -12,6 +12,10 @@
  */
 package com.ibm.cloud.is.vpc.v1.model;
 
+import java.util.Map;
+
+import com.ibm.cloud.sdk.core.util.GsonSingleton;
+
 /**
  * VPNGatewayConnectionPatchVPNGatewayConnectionStaticRouteModePatch.
  */
@@ -173,5 +177,18 @@ public class VPNGatewayConnectionPatchVPNGatewayConnectionStaticRouteModePatch e
   public Builder newBuilder() {
     return new Builder(this);
   }
+
+  /**
+   * Construct a JSON merge-patch from the VPNGatewayConnectionPatchVPNGatewayConnectionStaticRouteModePatch.
+   *
+   * Note that properties of the VPNGatewayConnectionPatchVPNGatewayConnectionStaticRouteModePatch with null values are not represented in the constructed
+   * JSON merge-patch object, but can be explicitly set afterward to signify a property delete.
+   *
+   * @return a JSON merge-patch for the VPNGatewayConnectionPatchVPNGatewayConnectionStaticRouteModePatch
+   */
+  public Map<String, Object> asPatch() {
+    return GsonSingleton.getGson().fromJson(this.toString(), Map.class);
+  }
+
 }
 

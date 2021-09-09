@@ -12,17 +12,11 @@
  */
 package com.ibm.cloud.is.vpc.v1.model;
 
-import com.google.gson.annotations.SerializedName;
-import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
  * DedicatedHostGroupPrototypeDedicatedHostByZoneContext.
  */
-public class DedicatedHostGroupPrototypeDedicatedHostByZoneContext extends GenericModel {
-
-  protected String name;
-  @SerializedName("resource_group")
-  protected ResourceGroupIdentity resourceGroup;
+public class DedicatedHostGroupPrototypeDedicatedHostByZoneContext extends DedicatedHostPrototypeWrapper {
 
   /**
    * Builder.

@@ -19,5 +19,93 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class ListLoadBalancersOptions extends GenericModel {
 
+  protected String start;
+  protected Long limit;
+
+  /**
+   * Builder.
+   */
+  public static class Builder {
+    private String start;
+    private Long limit;
+
+    private Builder(ListLoadBalancersOptions listLoadBalancersOptions) {
+      this.start = listLoadBalancersOptions.start;
+      this.limit = listLoadBalancersOptions.limit;
+    }
+
+    /**
+     * Instantiates a new builder.
+     */
+    public Builder() {
+    }
+
+    /**
+     * Builds a ListLoadBalancersOptions.
+     *
+     * @return the new ListLoadBalancersOptions instance
+     */
+    public ListLoadBalancersOptions build() {
+      return new ListLoadBalancersOptions(this);
+    }
+
+    /**
+     * Set the start.
+     *
+     * @param start the start
+     * @return the ListLoadBalancersOptions builder
+     */
+    public Builder start(String start) {
+      this.start = start;
+      return this;
+    }
+
+    /**
+     * Set the limit.
+     *
+     * @param limit the limit
+     * @return the ListLoadBalancersOptions builder
+     */
+    public Builder limit(long limit) {
+      this.limit = limit;
+      return this;
+    }
+  }
+
+  protected ListLoadBalancersOptions(Builder builder) {
+    start = builder.start;
+    limit = builder.limit;
+  }
+
+  /**
+   * New builder.
+   *
+   * @return a ListLoadBalancersOptions builder
+   */
+  public Builder newBuilder() {
+    return new Builder(this);
+  }
+
+  /**
+   * Gets the start.
+   *
+   * A server-supplied token determining what resource to start the page on.
+   *
+   * @return the start
+   */
+  public String start() {
+    return start;
+  }
+
+  /**
+   * Gets the limit.
+   *
+   * The number of resources to return on a page.
+   *
+   * @return the limit
+   */
+  public Long limit() {
+    return limit;
+  }
 }
 

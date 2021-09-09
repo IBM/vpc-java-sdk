@@ -23,9 +23,11 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class CreateLoadBalancerListenerOptions extends GenericModel {
 
   /**
-   * The listener protocol. Load balancers in the `network` family support `tcp`. Load balancers in the `application`
-   * family support `tcp`, `http`, and `https`. Each listener in the load balancer must have a unique `port` and
-   * `protocol` combination.
+   * The listener protocol. Each listener in the load balancer must have a unique `port` and `protocol` combination.
+   * Additional restrictions:
+   * - If this load balancer is in the `network` family, the protocol must be `tcp`.
+   * - If this listener has `https_redirect` specified, the protocol must be `http`.
+   * - If this listener is a listener's `https_redirect` target, the protocol must be `https`.
    */
   public interface Protocol {
     /** http. */
@@ -43,6 +45,7 @@ public class CreateLoadBalancerListenerOptions extends GenericModel {
   protected CertificateInstanceIdentity certificateInstance;
   protected Long connectionLimit;
   protected LoadBalancerPoolIdentity defaultPool;
+  protected LoadBalancerListenerHTTPSRedirectPrototype httpsRedirect;
   protected List<LoadBalancerListenerPolicyPrototype> policies;
 
   /**
@@ -56,6 +59,7 @@ public class CreateLoadBalancerListenerOptions extends GenericModel {
     private CertificateInstanceIdentity certificateInstance;
     private Long connectionLimit;
     private LoadBalancerPoolIdentity defaultPool;
+    private LoadBalancerListenerHTTPSRedirectPrototype httpsRedirect;
     private List<LoadBalancerListenerPolicyPrototype> policies;
 
     private Builder(CreateLoadBalancerListenerOptions createLoadBalancerListenerOptions) {
@@ -66,6 +70,7 @@ public class CreateLoadBalancerListenerOptions extends GenericModel {
       this.certificateInstance = createLoadBalancerListenerOptions.certificateInstance;
       this.connectionLimit = createLoadBalancerListenerOptions.connectionLimit;
       this.defaultPool = createLoadBalancerListenerOptions.defaultPool;
+      this.httpsRedirect = createLoadBalancerListenerOptions.httpsRedirect;
       this.policies = createLoadBalancerListenerOptions.policies;
     }
 
@@ -191,6 +196,17 @@ public class CreateLoadBalancerListenerOptions extends GenericModel {
     }
 
     /**
+     * Set the httpsRedirect.
+     *
+     * @param httpsRedirect the httpsRedirect
+     * @return the CreateLoadBalancerListenerOptions builder
+     */
+    public Builder httpsRedirect(LoadBalancerListenerHTTPSRedirectPrototype httpsRedirect) {
+      this.httpsRedirect = httpsRedirect;
+      return this;
+    }
+
+    /**
      * Set the policies.
      * Existing policies will be replaced.
      *
@@ -217,6 +233,7 @@ public class CreateLoadBalancerListenerOptions extends GenericModel {
     certificateInstance = builder.certificateInstance;
     connectionLimit = builder.connectionLimit;
     defaultPool = builder.defaultPool;
+    httpsRedirect = builder.httpsRedirect;
     policies = builder.policies;
   }
 
@@ -243,8 +260,8 @@ public class CreateLoadBalancerListenerOptions extends GenericModel {
   /**
    * Gets the port.
    *
-   * The listener port number, or the inclusive lower bound of the port range. Each listener in the load balancer must
-   * have a unique `port` and `protocol` combination.
+   * The listener port number. Each listener in the load balancer must have a unique
+   * `port` and `protocol` combination.
    *
    * @return the port
    */
@@ -255,9 +272,11 @@ public class CreateLoadBalancerListenerOptions extends GenericModel {
   /**
    * Gets the protocol.
    *
-   * The listener protocol. Load balancers in the `network` family support `tcp`. Load balancers in the `application`
-   * family support `tcp`, `http`, and `https`. Each listener in the load balancer must have a unique `port` and
-   * `protocol` combination.
+   * The listener protocol. Each listener in the load balancer must have a unique `port` and `protocol` combination.
+   * Additional restrictions:
+   * - If this load balancer is in the `network` family, the protocol must be `tcp`.
+   * - If this listener has `https_redirect` specified, the protocol must be `http`.
+   * - If this listener is a listener's `https_redirect` target, the protocol must be `https`.
    *
    * @return the protocol
    */
@@ -269,7 +288,11 @@ public class CreateLoadBalancerListenerOptions extends GenericModel {
    * Gets the acceptProxyProtocol.
    *
    * If set to `true`, this listener will accept and forward PROXY protocol information. Supported by load balancers in
-   * the `application` family (otherwise always `false`).
+   * the `application` family (otherwise always `false`). Additional restrictions:
+   * - If this listener has `https_redirect` specified, its `accept_proxy_protocol` value must
+   *   match the `accept_proxy_protocol` value of the `https_redirect` listener.
+   * - If this listener is the target of another listener's `https_redirect`, its
+   *   `accept_proxy_protocol` value must match that listener's `accept_proxy_protocol` value.
    *
    * @return the acceptProxyProtocol
    */
@@ -316,9 +339,21 @@ public class CreateLoadBalancerListenerOptions extends GenericModel {
   }
 
   /**
+   * Gets the httpsRedirect.
+   *
+   * The target listener that requests will be redirected to. This listener must have a
+   * `protocol` of `http`, and the target listener must have a `protocol` of `https`.
+   *
+   * @return the httpsRedirect
+   */
+  public LoadBalancerListenerHTTPSRedirectPrototype httpsRedirect() {
+    return httpsRedirect;
+  }
+
+  /**
    * Gets the policies.
    *
-   * An array of policies for this listener.
+   * The policy prototype objects for this listener.
    *
    * @return the policies
    */

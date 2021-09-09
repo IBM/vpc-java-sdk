@@ -32,8 +32,12 @@ public class ListKeysOptionsTest {
   @Test
   public void testListKeysOptions() throws Throwable {
     ListKeysOptions listKeysOptionsModel = new ListKeysOptions.Builder()
+      .start("testString")
+      .limit(Long.valueOf("1"))
       .resourceGroupId("testString")
       .build();
+    assertEquals(listKeysOptionsModel.start(), "testString");
+    assertEquals(listKeysOptionsModel.limit(), Long.valueOf("1"));
     assertEquals(listKeysOptionsModel.resourceGroupId(), "testString");
   }
 }

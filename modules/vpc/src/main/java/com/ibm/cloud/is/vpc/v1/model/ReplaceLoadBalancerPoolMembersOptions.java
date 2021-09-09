@@ -165,7 +165,7 @@ public class ReplaceLoadBalancerPoolMembersOptions extends GenericModel {
   /**
    * Gets the members.
    *
-   * Array of pool member prototype objects.
+   * The member prototype objects for this pool.
    *
    * @return the members
    */

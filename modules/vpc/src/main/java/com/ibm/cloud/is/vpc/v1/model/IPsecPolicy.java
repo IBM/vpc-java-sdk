@@ -125,7 +125,7 @@ public class IPsecPolicy extends GenericModel {
   /**
    * Gets the connections.
    *
-   * Collection of references to VPN gateway connections that use this IPsec policy.
+   * The VPN gateway connections that use this IPsec policy.
    *
    * @return the connections
    */

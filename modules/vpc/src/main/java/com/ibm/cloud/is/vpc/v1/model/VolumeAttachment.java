@@ -46,6 +46,7 @@ public class VolumeAttachment extends GenericModel {
     String DATA = "data";
   }
 
+  protected Long bandwidth;
   @SerializedName("created_at")
   protected Date createdAt;
   @SerializedName("delete_volume_on_instance_delete")
@@ -57,6 +58,18 @@ public class VolumeAttachment extends GenericModel {
   protected String status;
   protected String type;
   protected VolumeReference volume;
+
+  /**
+   * Gets the bandwidth.
+   *
+   * The maximum bandwidth (in megabits per second) for the volume when attached to this instance. This may be lower
+   * than the volume bandwidth depending on the configuration of the instance.
+   *
+   * @return the bandwidth
+   */
+  public Long getBandwidth() {
+    return bandwidth;
+  }
 
   /**
    * Gets the createdAt.

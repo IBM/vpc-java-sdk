@@ -12,30 +12,40 @@
  */
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * LoadBalancerPoolSessionPersistencePatch.
+ * The session persistence configuration. Specify `null` to remove any existing session persistence configuration.
  */
 public class LoadBalancerPoolSessionPersistencePatch extends GenericModel {
 
   /**
-   * The session persistence type.
+   * The session persistence type. The `http_cookie` and `app_cookie` types are applicable only to the `http` and
+   * `https` protocols.
    */
   public interface Type {
     /** source_ip. */
     String SOURCE_IP = "source_ip";
+    /** app_cookie. */
+    String APP_COOKIE = "app_cookie";
+    /** http_cookie. */
+    String HTTP_COOKIE = "http_cookie";
   }
 
+  @SerializedName("cookie_name")
+  protected String cookieName;
   protected String type;
 
   /**
    * Builder.
    */
   public static class Builder {
+    private String cookieName;
     private String type;
 
     private Builder(LoadBalancerPoolSessionPersistencePatch loadBalancerPoolSessionPersistencePatch) {
+      this.cookieName = loadBalancerPoolSessionPersistencePatch.cookieName;
       this.type = loadBalancerPoolSessionPersistencePatch.type;
     }
 
@@ -46,21 +56,23 @@ public class LoadBalancerPoolSessionPersistencePatch extends GenericModel {
     }
 
     /**
-     * Instantiates a new builder with required properties.
-     *
-     * @param type the type
-     */
-    public Builder(String type) {
-      this.type = type;
-    }
-
-    /**
      * Builds a LoadBalancerPoolSessionPersistencePatch.
      *
      * @return the new LoadBalancerPoolSessionPersistencePatch instance
      */
     public LoadBalancerPoolSessionPersistencePatch build() {
       return new LoadBalancerPoolSessionPersistencePatch(this);
+    }
+
+    /**
+     * Set the cookieName.
+     *
+     * @param cookieName the cookieName
+     * @return the LoadBalancerPoolSessionPersistencePatch builder
+     */
+    public Builder cookieName(String cookieName) {
+      this.cookieName = cookieName;
+      return this;
     }
 
     /**
@@ -76,8 +88,7 @@ public class LoadBalancerPoolSessionPersistencePatch extends GenericModel {
   }
 
   protected LoadBalancerPoolSessionPersistencePatch(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.type,
-      "type cannot be null");
+    cookieName = builder.cookieName;
     type = builder.type;
   }
 
@@ -91,9 +102,22 @@ public class LoadBalancerPoolSessionPersistencePatch extends GenericModel {
   }
 
   /**
+   * Gets the cookieName.
+   *
+   * The session persistence cookie name. Applicable only for type `app_cookie`. Names starting with `IBM` are not
+   * allowed.
+   *
+   * @return the cookieName
+   */
+  public String cookieName() {
+    return cookieName;
+  }
+
+  /**
    * Gets the type.
    *
-   * The session persistence type.
+   * The session persistence type. The `http_cookie` and `app_cookie` types are applicable only to the `http` and
+   * `https` protocols.
    *
    * @return the type
    */

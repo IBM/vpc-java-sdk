@@ -16,9 +16,9 @@ import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * A reserved IP to bind to the endpoint gateway. This can be an existing reserved IP, or a prototype used to allocate a
- * reserved IP. The reserved IP will be bound to the endpoint gateway to function as a virtual private endpoint for the
- * service.
+ * A reserved IP to bind to the endpoint gateway. This can be specified using an existing reserved IP, or a prototype
+ * object for a new reserved IP. The reserved IP will be bound to the endpoint gateway to function as a virtual private
+ * endpoint for the service.
  *
  * Classes which extend this class:
  * - EndpointGatewayReservedIPReservedIPIdentity

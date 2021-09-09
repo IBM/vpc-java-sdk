@@ -20,7 +20,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class CreateInstanceVolumeAttachmentOptions extends GenericModel {
 
   protected String instanceId;
-  protected VolumeIdentity volume;
+  protected VolumeAttachmentPrototypeVolume volume;
   protected Boolean deleteVolumeOnInstanceDelete;
   protected String name;
 
@@ -29,7 +29,7 @@ public class CreateInstanceVolumeAttachmentOptions extends GenericModel {
    */
   public static class Builder {
     private String instanceId;
-    private VolumeIdentity volume;
+    private VolumeAttachmentPrototypeVolume volume;
     private Boolean deleteVolumeOnInstanceDelete;
     private String name;
 
@@ -52,7 +52,7 @@ public class CreateInstanceVolumeAttachmentOptions extends GenericModel {
      * @param instanceId the instanceId
      * @param volume the volume
      */
-    public Builder(String instanceId, VolumeIdentity volume) {
+    public Builder(String instanceId, VolumeAttachmentPrototypeVolume volume) {
       this.instanceId = instanceId;
       this.volume = volume;
     }
@@ -83,7 +83,7 @@ public class CreateInstanceVolumeAttachmentOptions extends GenericModel {
      * @param volume the volume
      * @return the CreateInstanceVolumeAttachmentOptions builder
      */
-    public Builder volume(VolumeIdentity volume) {
+    public Builder volume(VolumeAttachmentPrototypeVolume volume) {
       this.volume = volume;
       return this;
     }
@@ -145,11 +145,11 @@ public class CreateInstanceVolumeAttachmentOptions extends GenericModel {
   /**
    * Gets the volume.
    *
-   * The identity of the volume to attach to the instance.
+   * An existing volume to attach to the instance, or a prototype object for a new volume.
    *
    * @return the volume
    */
-  public VolumeIdentity volume() {
+  public VolumeAttachmentPrototypeVolume volume() {
     return volume;
   }
 

@@ -44,13 +44,13 @@ public class RoutePrototypeTest {
     assertEquals(zoneIdentityModel.name(), "us-south-1");
 
     RoutePrototype routePrototypeModel = new RoutePrototype.Builder()
-      .action("delegate")
+      .action("deliver")
       .destination("192.168.3.0/24")
       .name("my-route-2")
       .nextHop(routeNextHopPrototypeModel)
       .zone(zoneIdentityModel)
       .build();
-    assertEquals(routePrototypeModel.action(), "delegate");
+    assertEquals(routePrototypeModel.action(), "deliver");
     assertEquals(routePrototypeModel.destination(), "192.168.3.0/24");
     assertEquals(routePrototypeModel.name(), "my-route-2");
     assertEquals(routePrototypeModel.nextHop(), routeNextHopPrototypeModel);
@@ -60,7 +60,7 @@ public class RoutePrototypeTest {
 
     RoutePrototype routePrototypeModelNew = TestUtilities.deserialize(json, RoutePrototype.class);
     assertTrue(routePrototypeModelNew instanceof RoutePrototype);
-    assertEquals(routePrototypeModelNew.action(), "delegate");
+    assertEquals(routePrototypeModelNew.action(), "deliver");
     assertEquals(routePrototypeModelNew.destination(), "192.168.3.0/24");
     assertEquals(routePrototypeModelNew.name(), "my-route-2");
     assertEquals(routePrototypeModelNew.nextHop().toString(), routeNextHopPrototypeModel.toString());

@@ -32,6 +32,8 @@ public class InstanceProfile extends GenericModel {
   protected InstanceProfileOSArchitecture osArchitecture;
   @SerializedName("port_speed")
   protected InstanceProfilePortSpeed portSpeed;
+  @SerializedName("total_volume_bandwidth")
+  protected InstanceProfileVolumeBandwidth totalVolumeBandwidth;
   @SerializedName("vcpu_architecture")
   protected InstanceProfileVCPUArchitecture vcpuArchitecture;
   @SerializedName("vcpu_count")
@@ -115,6 +117,15 @@ public class InstanceProfile extends GenericModel {
    */
   public InstanceProfilePortSpeed getPortSpeed() {
     return portSpeed;
+  }
+
+  /**
+   * Gets the totalVolumeBandwidth.
+   *
+   * @return the totalVolumeBandwidth
+   */
+  public InstanceProfileVolumeBandwidth getTotalVolumeBandwidth() {
+    return totalVolumeBandwidth;
   }
 
   /**

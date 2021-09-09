@@ -67,8 +67,10 @@ public class LoadBalancerPoolPrototypeTest {
     assertEquals(loadBalancerPoolMemberPrototypeModel.weight(), Long.valueOf("50"));
 
     LoadBalancerPoolSessionPersistencePrototype loadBalancerPoolSessionPersistencePrototypeModel = new LoadBalancerPoolSessionPersistencePrototype.Builder()
+      .cookieName("my-cookie-name")
       .type("source_ip")
       .build();
+    assertEquals(loadBalancerPoolSessionPersistencePrototypeModel.cookieName(), "my-cookie-name");
     assertEquals(loadBalancerPoolSessionPersistencePrototypeModel.type(), "source_ip");
 
     LoadBalancerPoolPrototype loadBalancerPoolPrototypeModel = new LoadBalancerPoolPrototype.Builder()

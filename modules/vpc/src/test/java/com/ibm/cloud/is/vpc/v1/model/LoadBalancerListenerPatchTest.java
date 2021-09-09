@@ -14,6 +14,8 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.CertificateInstanceIdentityByCRN;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerHTTPSRedirectPatch;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPatch;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolIdentityById;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
@@ -44,11 +46,26 @@ public class LoadBalancerListenerPatchTest {
       .build();
     assertEquals(loadBalancerPoolIdentityModel.id(), "70294e14-4e61-11e8-bcf4-0242ac110004");
 
+    LoadBalancerListenerIdentityById loadBalancerListenerIdentityModel = new LoadBalancerListenerIdentityById.Builder()
+      .id("70294e14-4e61-11e8-bcf4-0242ac110004")
+      .build();
+    assertEquals(loadBalancerListenerIdentityModel.id(), "70294e14-4e61-11e8-bcf4-0242ac110004");
+
+    LoadBalancerListenerHTTPSRedirectPatch loadBalancerListenerHttpsRedirectPatchModel = new LoadBalancerListenerHTTPSRedirectPatch.Builder()
+      .httpStatusCode(Long.valueOf("301"))
+      .listener(loadBalancerListenerIdentityModel)
+      .uri("/example?doc=get")
+      .build();
+    assertEquals(loadBalancerListenerHttpsRedirectPatchModel.httpStatusCode(), Long.valueOf("301"));
+    assertEquals(loadBalancerListenerHttpsRedirectPatchModel.listener(), loadBalancerListenerIdentityModel);
+    assertEquals(loadBalancerListenerHttpsRedirectPatchModel.uri(), "/example?doc=get");
+
     LoadBalancerListenerPatch loadBalancerListenerPatchModel = new LoadBalancerListenerPatch.Builder()
       .acceptProxyProtocol(true)
       .certificateInstance(certificateInstanceIdentityModel)
       .connectionLimit(Long.valueOf("2000"))
       .defaultPool(loadBalancerPoolIdentityModel)
+      .httpsRedirect(loadBalancerListenerHttpsRedirectPatchModel)
       .port(Long.valueOf("443"))
       .protocol("http")
       .build();
@@ -56,6 +73,7 @@ public class LoadBalancerListenerPatchTest {
     assertEquals(loadBalancerListenerPatchModel.certificateInstance(), certificateInstanceIdentityModel);
     assertEquals(loadBalancerListenerPatchModel.connectionLimit(), Long.valueOf("2000"));
     assertEquals(loadBalancerListenerPatchModel.defaultPool(), loadBalancerPoolIdentityModel);
+    assertEquals(loadBalancerListenerPatchModel.httpsRedirect(), loadBalancerListenerHttpsRedirectPatchModel);
     assertEquals(loadBalancerListenerPatchModel.port(), Long.valueOf("443"));
     assertEquals(loadBalancerListenerPatchModel.protocol(), "http");
 
@@ -67,6 +85,7 @@ public class LoadBalancerListenerPatchTest {
     assertEquals(loadBalancerListenerPatchModelNew.certificateInstance().toString(), certificateInstanceIdentityModel.toString());
     assertEquals(loadBalancerListenerPatchModelNew.connectionLimit(), Long.valueOf("2000"));
     assertEquals(loadBalancerListenerPatchModelNew.defaultPool().toString(), loadBalancerPoolIdentityModel.toString());
+    assertEquals(loadBalancerListenerPatchModelNew.httpsRedirect().toString(), loadBalancerListenerHttpsRedirectPatchModel.toString());
     assertEquals(loadBalancerListenerPatchModelNew.port(), Long.valueOf("443"));
     assertEquals(loadBalancerListenerPatchModelNew.protocol(), "http");
   }
@@ -80,11 +99,22 @@ public class LoadBalancerListenerPatchTest {
       .id("70294e14-4e61-11e8-bcf4-0242ac110004")
       .build();
 
+    LoadBalancerListenerIdentityById loadBalancerListenerIdentityModel = new LoadBalancerListenerIdentityById.Builder()
+      .id("70294e14-4e61-11e8-bcf4-0242ac110004")
+      .build();
+
+    LoadBalancerListenerHTTPSRedirectPatch loadBalancerListenerHttpsRedirectPatchModel = new LoadBalancerListenerHTTPSRedirectPatch.Builder()
+      .httpStatusCode(Long.valueOf("301"))
+      .listener(loadBalancerListenerIdentityModel)
+      .uri("/example?doc=get")
+      .build();
+
     LoadBalancerListenerPatch loadBalancerListenerPatchModel = new LoadBalancerListenerPatch.Builder()
       .acceptProxyProtocol(true)
       .certificateInstance(certificateInstanceIdentityModel)
       .connectionLimit(Long.valueOf("2000"))
       .defaultPool(loadBalancerPoolIdentityModel)
+      .httpsRedirect(loadBalancerListenerHttpsRedirectPatchModel)
       .port(Long.valueOf("443"))
       .protocol("http")
       .build();
@@ -95,6 +125,7 @@ public class LoadBalancerListenerPatchTest {
     assertTrue(mergePatch.containsKey("certificate_instance"));
     assertTrue(mergePatch.containsKey("connection_limit"));
     assertTrue(mergePatch.containsKey("default_pool"));
+    assertTrue(mergePatch.containsKey("https_redirect"));
     assertTrue(mergePatch.containsKey("port"));
     assertEquals(mergePatch.get("protocol"), "http");
   }

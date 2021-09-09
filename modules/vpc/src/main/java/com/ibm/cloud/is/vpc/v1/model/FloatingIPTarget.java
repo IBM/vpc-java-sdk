@@ -95,6 +95,8 @@ public class FloatingIPTarget extends GenericModel {
    *
    * The primary IPv4 address.
    *
+   * If the address has not yet been selected, the value will be `0.0.0.0`.
+   *
    * @return the primaryIpv4Address
    */
   public String getPrimaryIpv4Address() {

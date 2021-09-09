@@ -12,18 +12,11 @@
  */
 package com.ibm.cloud.is.vpc.v1.model;
 
-import com.google.gson.annotations.SerializedName;
-import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
  * VolumeAttachmentPrototypeInstanceByImageContext.
  */
-public class VolumeAttachmentPrototypeInstanceByImageContext extends GenericModel {
-
-  @SerializedName("delete_volume_on_instance_delete")
-  protected Boolean deleteVolumeOnInstanceDelete;
-  protected String name;
-  protected VolumePrototypeInstanceByImageContext volume;
+public class VolumeAttachmentPrototypeInstanceByImageContext extends InstancePrototypeBootVolumeAttachmentWrapper {
 
   /**
    * Builder.
@@ -36,7 +29,7 @@ public class VolumeAttachmentPrototypeInstanceByImageContext extends GenericMode
     private Builder(VolumeAttachmentPrototypeInstanceByImageContext volumeAttachmentPrototypeInstanceByImageContext) {
       this.deleteVolumeOnInstanceDelete = volumeAttachmentPrototypeInstanceByImageContext.deleteVolumeOnInstanceDelete;
       this.name = volumeAttachmentPrototypeInstanceByImageContext.name;
-      this.volume = volumeAttachmentPrototypeInstanceByImageContext.volume;
+      this.volume = (VolumePrototypeInstanceByImageContext) volumeAttachmentPrototypeInstanceByImageContext.volume;
     }
 
     /**
@@ -143,7 +136,7 @@ public class VolumeAttachmentPrototypeInstanceByImageContext extends GenericMode
    *
    * @return the volume
    */
-  public VolumePrototypeInstanceByImageContext volume() {
+  public VolumeAttachmentPrototypeInstanceWrapper volume() {
     return volume;
   }
 }

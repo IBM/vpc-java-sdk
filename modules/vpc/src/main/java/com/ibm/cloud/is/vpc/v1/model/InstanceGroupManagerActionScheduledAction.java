@@ -16,8 +16,8 @@ package com.ibm.cloud.is.vpc.v1.model;
  * InstanceGroupManagerActionScheduledAction.
  *
  * Classes which extend this class:
- * - InstanceGroupManagerActionScheduledActionGroup
- * - InstanceGroupManagerActionScheduledActionManager
+ * - InstanceGroupManagerActionScheduledActionGroupTarget
+ * - InstanceGroupManagerActionScheduledActionManagerTarget
  */
 public class InstanceGroupManagerActionScheduledAction extends InstanceGroupManagerAction {
 

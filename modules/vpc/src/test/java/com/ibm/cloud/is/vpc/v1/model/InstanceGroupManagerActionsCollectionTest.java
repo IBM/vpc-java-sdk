@@ -13,11 +13,11 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
-import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerActionScheduledActionGroup;
+import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerActionScheduledActionGroupTarget;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerActionsCollection;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerActionsCollectionFirst;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerActionsCollectionNext;
-import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerScheduledActionGroupGroup;
+import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerScheduledActionGroup;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import com.ibm.cloud.sdk.core.util.DateUtils;

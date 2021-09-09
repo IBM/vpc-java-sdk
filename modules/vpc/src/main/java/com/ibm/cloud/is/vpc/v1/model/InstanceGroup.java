@@ -148,7 +148,7 @@ public class InstanceGroup extends GenericModel {
   /**
    * Gets the managers.
    *
-   * Array of references to managers for the instance group.
+   * The managers for the instance group.
    *
    * @return the managers
    */
@@ -206,7 +206,7 @@ public class InstanceGroup extends GenericModel {
   /**
    * Gets the subnets.
    *
-   * Array of references to subnets to use when creating new instances.
+   * The subnets to use when creating new instances.
    *
    * @return the subnets
    */

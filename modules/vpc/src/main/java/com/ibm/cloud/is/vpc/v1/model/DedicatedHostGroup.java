@@ -176,7 +176,7 @@ public class DedicatedHostGroup extends GenericModel {
   /**
    * Gets the supportedInstanceProfiles.
    *
-   * Array of instance profiles that can be used by instances placed on this dedicated host group.
+   * The instance profiles usable by instances placed on this dedicated host group.
    *
    * @return the supportedInstanceProfiles
    */

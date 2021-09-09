@@ -13,8 +13,8 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 /**
- * The permitted total bandwidth values (in megabits per second) shared across the network interfaces of an instance
- * with this profile.
+ * The permitted total bandwidth values (in megabits per second) shared across the network interfaces and storage
+ * volumes of an instance with this profile.
  */
 public class InstanceProfileBandwidthEnum extends InstanceProfileBandwidth {
 

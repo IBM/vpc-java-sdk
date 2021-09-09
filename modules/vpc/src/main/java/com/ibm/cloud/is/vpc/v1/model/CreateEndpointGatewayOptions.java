@@ -191,7 +191,7 @@ public class CreateEndpointGatewayOptions extends GenericModel {
   /**
    * Gets the ips.
    *
-   * An array of reserved IPs to bind to this endpoint gateway. At most one reserved IP per zone is allowed.
+   * The reserved IPs to bind to this endpoint gateway. At most one reserved IP per zone is allowed.
    *
    * @return the ips
    */

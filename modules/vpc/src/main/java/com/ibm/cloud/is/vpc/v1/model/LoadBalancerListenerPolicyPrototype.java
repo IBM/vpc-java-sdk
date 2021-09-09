@@ -24,6 +24,10 @@ public class LoadBalancerListenerPolicyPrototype extends GenericModel {
 
   /**
    * The policy action.
+   *
+   * The enumerated values for this property are expected to expand in the future. When processing this property, check
+   * for and log unknown values. Optionally halt processing and surface the error, or bypass the policy on which the
+   * unexpected property value was encountered.
    */
   public interface Action {
     /** forward. */
@@ -32,6 +36,8 @@ public class LoadBalancerListenerPolicyPrototype extends GenericModel {
     String REDIRECT = "redirect";
     /** reject. */
     String REJECT = "reject";
+    /** https_redirect. */
+    String HTTPS_REDIRECT = "https_redirect";
   }
 
   protected String action;
@@ -183,6 +189,10 @@ public class LoadBalancerListenerPolicyPrototype extends GenericModel {
    *
    * The policy action.
    *
+   * The enumerated values for this property are expected to expand in the future. When processing this property, check
+   * for and log unknown values. Optionally halt processing and surface the error, or bypass the policy on which the
+   * unexpected property value was encountered.
+   *
    * @return the action
    */
   public String action() {
@@ -215,7 +225,7 @@ public class LoadBalancerListenerPolicyPrototype extends GenericModel {
   /**
    * Gets the rules.
    *
-   * An array of rules for this policy.
+   * The rule prototype objects for this policy.
    *
    * @return the rules
    */
@@ -226,10 +236,10 @@ public class LoadBalancerListenerPolicyPrototype extends GenericModel {
   /**
    * Gets the target.
    *
-   * When `action` is `forward`, `LoadBalancerPoolIdentity` is required to specify which
-   * pool the load balancer forwards the traffic to. When `action` is `redirect`,
-   * `LoadBalancerListenerPolicyRedirectURLPrototype` is required to specify the url and
-   * http status code used in the redirect response.
+   * - If `action` is `forward`, specify a `LoadBalancerPoolIdentity`.
+   * - If `action` is `redirect`, specify a `LoadBalancerListenerPolicyRedirectURLPrototype`.
+   * - If `action` is `https_redirect`, specify a
+   *   `LoadBalancerListenerPolicyHTTPSRedirectPrototype`.
    *
    * @return the target
    */

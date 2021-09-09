@@ -123,13 +123,13 @@ public class InstanceTemplatePrototypeInstanceBySourceTemplateTest {
     assertEquals(volumeProfileIdentityModel.name(), "general-purpose");
 
     VolumePrototypeInstanceByImageContext volumePrototypeInstanceByImageContextModel = new VolumePrototypeInstanceByImageContext.Builder()
-      .capacity(Long.valueOf("100"))
+      .capacity(Long.valueOf("26"))
       .encryptionKey(encryptionKeyIdentityModel)
       .iops(Long.valueOf("10000"))
       .name("my-volume")
       .profile(volumeProfileIdentityModel)
       .build();
-    assertEquals(volumePrototypeInstanceByImageContextModel.capacity(), Long.valueOf("100"));
+    assertEquals(volumePrototypeInstanceByImageContextModel.capacity(), Long.valueOf("26"));
     assertEquals(volumePrototypeInstanceByImageContextModel.encryptionKey(), encryptionKeyIdentityModel);
     assertEquals(volumePrototypeInstanceByImageContextModel.iops(), Long.valueOf("10000"));
     assertEquals(volumePrototypeInstanceByImageContextModel.name(), "my-volume");
@@ -166,6 +166,7 @@ public class InstanceTemplatePrototypeInstanceBySourceTemplateTest {
       .placementTarget(instancePlacementTargetPrototypeModel)
       .profile(instanceProfileIdentityModel)
       .resourceGroup(resourceGroupIdentityModel)
+      .totalVolumeBandwidth(Long.valueOf("500"))
       .userData("testString")
       .volumeAttachments(new java.util.ArrayList<VolumeAttachmentPrototypeInstanceContext>(java.util.Arrays.asList(volumeAttachmentPrototypeInstanceContextModel)))
       .vpc(vpcIdentityModel)
@@ -181,6 +182,7 @@ public class InstanceTemplatePrototypeInstanceBySourceTemplateTest {
     assertEquals(instanceTemplatePrototypeInstanceBySourceTemplateModel.placementTarget(), instancePlacementTargetPrototypeModel);
     assertEquals(instanceTemplatePrototypeInstanceBySourceTemplateModel.profile(), instanceProfileIdentityModel);
     assertEquals(instanceTemplatePrototypeInstanceBySourceTemplateModel.resourceGroup(), resourceGroupIdentityModel);
+    assertEquals(instanceTemplatePrototypeInstanceBySourceTemplateModel.totalVolumeBandwidth(), Long.valueOf("500"));
     assertEquals(instanceTemplatePrototypeInstanceBySourceTemplateModel.userData(), "testString");
     assertEquals(instanceTemplatePrototypeInstanceBySourceTemplateModel.volumeAttachments(), new java.util.ArrayList<VolumeAttachmentPrototypeInstanceContext>(java.util.Arrays.asList(volumeAttachmentPrototypeInstanceContextModel)));
     assertEquals(instanceTemplatePrototypeInstanceBySourceTemplateModel.vpc(), vpcIdentityModel);
@@ -198,6 +200,7 @@ public class InstanceTemplatePrototypeInstanceBySourceTemplateTest {
     assertEquals(instanceTemplatePrototypeInstanceBySourceTemplateModelNew.placementTarget().toString(), instancePlacementTargetPrototypeModel.toString());
     assertEquals(instanceTemplatePrototypeInstanceBySourceTemplateModelNew.profile().toString(), instanceProfileIdentityModel.toString());
     assertEquals(instanceTemplatePrototypeInstanceBySourceTemplateModelNew.resourceGroup().toString(), resourceGroupIdentityModel.toString());
+    assertEquals(instanceTemplatePrototypeInstanceBySourceTemplateModelNew.totalVolumeBandwidth(), Long.valueOf("500"));
     assertEquals(instanceTemplatePrototypeInstanceBySourceTemplateModelNew.userData(), "testString");
     assertEquals(instanceTemplatePrototypeInstanceBySourceTemplateModelNew.vpc().toString(), vpcIdentityModel.toString());
     assertEquals(instanceTemplatePrototypeInstanceBySourceTemplateModelNew.bootVolumeAttachment().toString(), volumeAttachmentPrototypeInstanceByImageContextModel.toString());

@@ -134,7 +134,7 @@ public class DedicatedHostProfile extends GenericModel {
   /**
    * Gets the supportedInstanceProfiles.
    *
-   * Array of instance profiles that can be used by instances placed on dedicated hosts with this profile.
+   * The instance profiles usable by instances placed on dedicated hosts with this profile.
    *
    * @return the supportedInstanceProfiles
    */

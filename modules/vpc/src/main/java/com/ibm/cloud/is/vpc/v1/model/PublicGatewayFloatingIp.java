@@ -15,7 +15,7 @@ package com.ibm.cloud.is.vpc.v1.model;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * Reference to the floating IP which is bound to this public gateway.
+ * The floating IP bound to this public gateway.
  */
 public class PublicGatewayFloatingIp extends GenericModel {
 

@@ -35,6 +35,7 @@ public class VolumeAttachmentTest {
   @Test
   public void testVolumeAttachment() throws Throwable {
     VolumeAttachment volumeAttachmentModel = new VolumeAttachment();
+    assertNull(volumeAttachmentModel.getBandwidth());
     assertNull(volumeAttachmentModel.getCreatedAt());
     assertNull(volumeAttachmentModel.isDeleteVolumeOnInstanceDelete());
     assertNull(volumeAttachmentModel.getDevice());

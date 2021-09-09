@@ -31,7 +31,11 @@ public class ListLoadBalancersOptionsTest {
 
   @Test
   public void testListLoadBalancersOptions() throws Throwable {
-    ListLoadBalancersOptions listLoadBalancersOptionsModel = new ListLoadBalancersOptions();
-    assertNotNull(listLoadBalancersOptionsModel);
+    ListLoadBalancersOptions listLoadBalancersOptionsModel = new ListLoadBalancersOptions.Builder()
+      .start("testString")
+      .limit(Long.valueOf("1"))
+      .build();
+    assertEquals(listLoadBalancersOptionsModel.start(), "testString");
+    assertEquals(listLoadBalancersOptionsModel.limit(), Long.valueOf("1"));
   }
 }

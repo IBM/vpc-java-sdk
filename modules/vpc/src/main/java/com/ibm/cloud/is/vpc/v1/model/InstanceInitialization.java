@@ -21,17 +21,17 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class InstanceInitialization extends GenericModel {
 
-  protected List<KeyReferenceInstanceInitializationContext> keys;
+  protected List<KeyReference> keys;
   protected InstanceInitializationPassword password;
 
   /**
    * Gets the keys.
    *
-   * Collection of references to public SSH keys used at instance initialization.
+   * The public SSH keys used at instance initialization.
    *
    * @return the keys
    */
-  public List<KeyReferenceInstanceInitializationContext> getKeys() {
+  public List<KeyReference> getKeys() {
     return keys;
   }
 

@@ -58,10 +58,12 @@ import com.ibm.cloud.is.vpc.v1.model.CreateLoadBalancerPoolMemberOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateLoadBalancerPoolOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateNetworkAclOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateNetworkAclRuleOptions;
+import com.ibm.cloud.is.vpc.v1.model.CreatePlacementGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreatePublicGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateSecurityGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateSecurityGroupRuleOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateSecurityGroupTargetBindingOptions;
+import com.ibm.cloud.is.vpc.v1.model.CreateSnapshotOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateSubnetOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateSubnetReservedIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateVolumeOptions;
@@ -123,6 +125,7 @@ import com.ibm.cloud.is.vpc.v1.model.DedicatedHostProfileVCPUFixed;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostProfileVCPURange;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostPrototype;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostPrototypeDedicatedHostByGroup;
+import com.ibm.cloud.is.vpc.v1.model.DedicatedHostPrototypeDedicatedHostByZone;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostReference;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.DefaultNetworkACL;
@@ -156,10 +159,13 @@ import com.ibm.cloud.is.vpc.v1.model.DeleteLoadBalancerPoolMemberOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteLoadBalancerPoolOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteNetworkAclOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteNetworkAclRuleOptions;
+import com.ibm.cloud.is.vpc.v1.model.DeletePlacementGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeletePublicGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteSecurityGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteSecurityGroupRuleOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteSecurityGroupTargetBindingOptions;
+import com.ibm.cloud.is.vpc.v1.model.DeleteSnapshotOptions;
+import com.ibm.cloud.is.vpc.v1.model.DeleteSnapshotsOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteSubnetOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteSubnetReservedIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteVolumeOptions;
@@ -274,6 +280,7 @@ import com.ibm.cloud.is.vpc.v1.model.GetLoadBalancerStatisticsOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetNetworkAclOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetNetworkAclRuleOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetOperatingSystemOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetPlacementGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetPublicGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetRegionOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetRegionZoneOptions;
@@ -281,6 +288,7 @@ import com.ibm.cloud.is.vpc.v1.model.GetSecurityGroupNetworkInterfaceOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetSecurityGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetSecurityGroupRuleOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetSecurityGroupTargetOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetSnapshotOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetSubnetNetworkAclOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetSubnetOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetSubnetPublicGatewayOptions;
@@ -333,6 +341,7 @@ import com.ibm.cloud.is.vpc.v1.model.ImageIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.ImagePatch;
 import com.ibm.cloud.is.vpc.v1.model.ImagePrototype;
 import com.ibm.cloud.is.vpc.v1.model.ImagePrototypeImageByFile;
+import com.ibm.cloud.is.vpc.v1.model.ImagePrototypeImageBySourceVolume;
 import com.ibm.cloud.is.vpc.v1.model.ImageReference;
 import com.ibm.cloud.is.vpc.v1.model.ImageReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.ImageStatusReason;
@@ -354,8 +363,9 @@ import com.ibm.cloud.is.vpc.v1.model.InstanceGroupCollectionFirst;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManager;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerAction;
+import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerActionGroupPatch;
+import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerActionManagerPatch;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerActionPatch;
-import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerActionPatchScheduledActionPatch;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerActionPrototype;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerActionPrototypeScheduledActionPrototype;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSpec;
@@ -367,8 +377,8 @@ import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerActionPrototypeSchedule
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerActionReference;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerActionReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerActionScheduledAction;
-import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerActionScheduledActionGroup;
-import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerActionScheduledActionManager;
+import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerActionScheduledActionGroupTarget;
+import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerActionScheduledActionManagerTarget;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerActionsCollection;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerActionsCollectionFirst;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerActionsCollectionNext;
@@ -393,17 +403,14 @@ import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerPrototypeInstanceGroupM
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerReference;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerScheduled;
-import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerScheduledActionByManagerManager;
-import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerScheduledActionByManagerManagerAutoScalePrototype;
-import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerScheduledActionByManagerManagerAutoScalePrototypeInstanceGroupManagerScheduledActionManagerAutoScalePrototypeInstanceGroupManagerIdentityByHref;
-import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerScheduledActionByManagerManagerAutoScalePrototypeInstanceGroupManagerScheduledActionManagerAutoScalePrototypeInstanceGroupManagerIdentityById;
-import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerScheduledActionByManagerPatchManager;
-import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerScheduledActionByManagerPatchManagerAutoScalePatch;
-import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerScheduledActionGroupGroup;
-import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerScheduledActionGroupPatch;
+import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerScheduledActionGroup;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerScheduledActionGroupPrototype;
-import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerScheduledActionManagerManager;
-import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerScheduledActionManagerManagerAutoScale;
+import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerScheduledActionManager;
+import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerScheduledActionManagerAutoScale;
+import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerScheduledActionManagerPrototype;
+import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerScheduledActionManagerPrototypeAutoScalePrototype;
+import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerScheduledActionManagerPrototypeAutoScalePrototypeByHref;
+import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerScheduledActionManagerPrototypeAutoScalePrototypeById;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupMembership;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupMembershipCollection;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupMembershipCollectionFirst;
@@ -418,6 +425,10 @@ import com.ibm.cloud.is.vpc.v1.model.InstancePatch;
 import com.ibm.cloud.is.vpc.v1.model.InstancePatchProfile;
 import com.ibm.cloud.is.vpc.v1.model.InstancePatchProfileInstanceProfileIdentityByHref;
 import com.ibm.cloud.is.vpc.v1.model.InstancePatchProfileInstanceProfileIdentityByName;
+import com.ibm.cloud.is.vpc.v1.model.InstancePlacementTarget;
+import com.ibm.cloud.is.vpc.v1.model.InstancePlacementTargetDedicatedHostGroupReference;
+import com.ibm.cloud.is.vpc.v1.model.InstancePlacementTargetDedicatedHostReference;
+import com.ibm.cloud.is.vpc.v1.model.InstancePlacementTargetPlacementGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.InstancePlacementTargetPrototype;
 import com.ibm.cloud.is.vpc.v1.model.InstancePlacementTargetPrototypeDedicatedHostGroupIdentity;
 import com.ibm.cloud.is.vpc.v1.model.InstancePlacementTargetPrototypeDedicatedHostGroupIdentityDedicatedHostGroupIdentityByCRN;
@@ -427,6 +438,10 @@ import com.ibm.cloud.is.vpc.v1.model.InstancePlacementTargetPrototypeDedicatedHo
 import com.ibm.cloud.is.vpc.v1.model.InstancePlacementTargetPrototypeDedicatedHostIdentityDedicatedHostIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.InstancePlacementTargetPrototypeDedicatedHostIdentityDedicatedHostIdentityByHref;
 import com.ibm.cloud.is.vpc.v1.model.InstancePlacementTargetPrototypeDedicatedHostIdentityDedicatedHostIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.InstancePlacementTargetPrototypePlacementGroupIdentity;
+import com.ibm.cloud.is.vpc.v1.model.InstancePlacementTargetPrototypePlacementGroupIdentityPlacementGroupIdentityByCRN;
+import com.ibm.cloud.is.vpc.v1.model.InstancePlacementTargetPrototypePlacementGroupIdentityPlacementGroupIdentityByHref;
+import com.ibm.cloud.is.vpc.v1.model.InstancePlacementTargetPrototypePlacementGroupIdentityPlacementGroupIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfile;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileBandwidth;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileBandwidthDependent;
@@ -465,9 +480,15 @@ import com.ibm.cloud.is.vpc.v1.model.InstanceProfileVCPUDependent;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileVCPUEnum;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileVCPUFixed;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileVCPURange;
+import com.ibm.cloud.is.vpc.v1.model.InstanceProfileVolumeBandwidth;
+import com.ibm.cloud.is.vpc.v1.model.InstanceProfileVolumeBandwidthDependent;
+import com.ibm.cloud.is.vpc.v1.model.InstanceProfileVolumeBandwidthEnum;
+import com.ibm.cloud.is.vpc.v1.model.InstanceProfileVolumeBandwidthFixed;
+import com.ibm.cloud.is.vpc.v1.model.InstanceProfileVolumeBandwidthRange;
 import com.ibm.cloud.is.vpc.v1.model.InstancePrototype;
 import com.ibm.cloud.is.vpc.v1.model.InstancePrototypeInstanceByImage;
 import com.ibm.cloud.is.vpc.v1.model.InstancePrototypeInstanceBySourceTemplate;
+import com.ibm.cloud.is.vpc.v1.model.InstancePrototypeInstanceByVolume;
 import com.ibm.cloud.is.vpc.v1.model.InstanceReference;
 import com.ibm.cloud.is.vpc.v1.model.InstanceReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.InstanceStatusReason;
@@ -480,26 +501,27 @@ import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateIdentityByHref;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateInstanceByImage;
-import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateInstanceBySourceTemplate;
+import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateInstanceByVolume;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplatePatch;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplatePrototype;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplatePrototypeInstanceByImage;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplatePrototypeInstanceBySourceTemplate;
+import com.ibm.cloud.is.vpc.v1.model.InstanceTemplatePrototypeInstanceByVolume;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateReference;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.InstanceVCPU;
 import com.ibm.cloud.is.vpc.v1.model.Key;
 import com.ibm.cloud.is.vpc.v1.model.KeyCollection;
+import com.ibm.cloud.is.vpc.v1.model.KeyCollectionFirst;
+import com.ibm.cloud.is.vpc.v1.model.KeyCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.KeyIdentity;
 import com.ibm.cloud.is.vpc.v1.model.KeyIdentityByCRN;
+import com.ibm.cloud.is.vpc.v1.model.KeyIdentityByFingerprint;
 import com.ibm.cloud.is.vpc.v1.model.KeyIdentityByHref;
 import com.ibm.cloud.is.vpc.v1.model.KeyIdentityById;
-import com.ibm.cloud.is.vpc.v1.model.KeyIdentityKeyIdentityByFingerprint;
 import com.ibm.cloud.is.vpc.v1.model.KeyPatch;
+import com.ibm.cloud.is.vpc.v1.model.KeyReference;
 import com.ibm.cloud.is.vpc.v1.model.KeyReferenceDeleted;
-import com.ibm.cloud.is.vpc.v1.model.KeyReferenceInstanceInitializationContext;
-import com.ibm.cloud.is.vpc.v1.model.KeyReferenceInstanceInitializationContextKeyIdentityByFingerprint;
-import com.ibm.cloud.is.vpc.v1.model.KeyReferenceInstanceInitializationContextKeyReference;
 import com.ibm.cloud.is.vpc.v1.model.ListDedicatedHostDisksOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListDedicatedHostGroupsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListDedicatedHostProfilesOptions;
@@ -536,6 +558,7 @@ import com.ibm.cloud.is.vpc.v1.model.ListLoadBalancersOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListNetworkAclRulesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListNetworkAclsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListOperatingSystemsOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListPlacementGroupsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListPublicGatewaysOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListRegionZonesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListRegionsOptions;
@@ -543,6 +566,7 @@ import com.ibm.cloud.is.vpc.v1.model.ListSecurityGroupNetworkInterfacesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListSecurityGroupRulesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListSecurityGroupTargetsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListSecurityGroupsOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListSnapshotsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListSubnetReservedIpsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListSubnetsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListVolumeProfilesOptions;
@@ -558,12 +582,20 @@ import com.ibm.cloud.is.vpc.v1.model.ListVpnGatewayConnectionsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListVpnGatewaysOptions;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancer;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerCollection;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerCollectionFirst;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerIdentity;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerIdentityByHref;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListener;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerCollection;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerHTTPSRedirect;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerHTTPSRedirectPatch;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerHTTPSRedirectPrototype;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerIdentity;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerIdentityByHref;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPatch;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicy;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyCollection;
@@ -578,14 +610,17 @@ import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyRulePrototype;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyRuleReference;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyRuleReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTarget;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetLoadBalancerListenerHTTPSRedirect;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetLoadBalancerListenerPolicyRedirectURL;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetLoadBalancerPoolReference;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetPatch;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetPatchLoadBalancerListenerHTTPSRedirectPatch;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetPatchLoadBalancerListenerPolicyRedirectURLPatch;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetPatchLoadBalancerPoolIdentity;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetPatchLoadBalancerPoolIdentityLoadBalancerPoolIdentityByHref;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetPatchLoadBalancerPoolIdentityLoadBalancerPoolIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetPrototype;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetPrototypeLoadBalancerListenerHTTPSRedirectPrototype;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetPrototypeLoadBalancerListenerPolicyRedirectURLPrototype;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetPrototypeLoadBalancerPoolIdentity;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetPrototypeLoadBalancerPoolIdentityLoadBalancerPoolIdentityByHref;
@@ -702,6 +737,13 @@ import com.ibm.cloud.is.vpc.v1.model.OperatingSystemCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.OperatingSystemIdentity;
 import com.ibm.cloud.is.vpc.v1.model.OperatingSystemIdentityByHref;
 import com.ibm.cloud.is.vpc.v1.model.OperatingSystemIdentityByName;
+import com.ibm.cloud.is.vpc.v1.model.OperatingSystemReference;
+import com.ibm.cloud.is.vpc.v1.model.PlacementGroup;
+import com.ibm.cloud.is.vpc.v1.model.PlacementGroupCollection;
+import com.ibm.cloud.is.vpc.v1.model.PlacementGroupCollectionFirst;
+import com.ibm.cloud.is.vpc.v1.model.PlacementGroupCollectionNext;
+import com.ibm.cloud.is.vpc.v1.model.PlacementGroupPatch;
+import com.ibm.cloud.is.vpc.v1.model.PlacementGroupReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.PublicGateway;
 import com.ibm.cloud.is.vpc.v1.model.PublicGatewayCollection;
 import com.ibm.cloud.is.vpc.v1.model.PublicGatewayCollectionFirst;
@@ -824,6 +866,17 @@ import com.ibm.cloud.is.vpc.v1.model.SecurityGroupTargetReference;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupTargetReferenceLoadBalancerReference;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupTargetReferenceNetworkInterfaceReferenceTargetContext;
 import com.ibm.cloud.is.vpc.v1.model.SetSubnetPublicGatewayOptions;
+import com.ibm.cloud.is.vpc.v1.model.Snapshot;
+import com.ibm.cloud.is.vpc.v1.model.SnapshotCollection;
+import com.ibm.cloud.is.vpc.v1.model.SnapshotCollectionFirst;
+import com.ibm.cloud.is.vpc.v1.model.SnapshotCollectionNext;
+import com.ibm.cloud.is.vpc.v1.model.SnapshotIdentity;
+import com.ibm.cloud.is.vpc.v1.model.SnapshotIdentityByCRN;
+import com.ibm.cloud.is.vpc.v1.model.SnapshotIdentityByHref;
+import com.ibm.cloud.is.vpc.v1.model.SnapshotIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.SnapshotPatch;
+import com.ibm.cloud.is.vpc.v1.model.SnapshotReference;
+import com.ibm.cloud.is.vpc.v1.model.SnapshotReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.Subnet;
 import com.ibm.cloud.is.vpc.v1.model.SubnetCollection;
 import com.ibm.cloud.is.vpc.v1.model.SubnetCollectionFirst;
@@ -867,9 +920,11 @@ import com.ibm.cloud.is.vpc.v1.model.UpdateLoadBalancerPoolMemberOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateLoadBalancerPoolOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateNetworkAclOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateNetworkAclRuleOptions;
+import com.ibm.cloud.is.vpc.v1.model.UpdatePlacementGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdatePublicGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateSecurityGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateSecurityGroupRuleOptions;
+import com.ibm.cloud.is.vpc.v1.model.UpdateSnapshotOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateSubnetOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateSubnetReservedIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateVolumeOptions;
@@ -926,11 +981,22 @@ import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentCollection;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentDevice;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPatch;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototypeInstanceByImageContext;
+import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototypeInstanceByVolumeContext;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototypeInstanceContext;
+import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototypeVolume;
+import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototypeVolumeVolumeIdentity;
+import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototypeVolumeVolumeIdentityVolumeIdentityByCRN;
+import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototypeVolumeVolumeIdentityVolumeIdentityByHref;
+import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototypeVolumeVolumeIdentityVolumeIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototypeVolumeVolumePrototypeInstanceContext;
+import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeByCapacity;
+import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeBySourceSnapshot;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentReferenceInstanceContext;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentReferenceInstanceContextDeleted;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentReferenceVolumeContext;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentReferenceVolumeContextDeleted;
+import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentVolumePrototypeInstanceByVolumeContext;
+import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentVolumePrototypeInstanceByVolumeContextVolumePrototypeInstanceByVolumeContext;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentVolumePrototypeInstanceContext;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentVolumePrototypeInstanceContextVolumeIdentity;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentVolumePrototypeInstanceContextVolumeIdentityVolumeIdentityByCRN;
@@ -938,6 +1004,7 @@ import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentVolumePrototypeInstanceCont
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentVolumePrototypeInstanceContextVolumeIdentityVolumeIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentVolumePrototypeInstanceContextVolumePrototypeInstanceContext;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeByCapacity;
+import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeBySourceSnapshot;
 import com.ibm.cloud.is.vpc.v1.model.VolumeCollection;
 import com.ibm.cloud.is.vpc.v1.model.VolumeCollectionFirst;
 import com.ibm.cloud.is.vpc.v1.model.VolumeCollectionNext;
@@ -1001,6 +1068,7 @@ public class VpcTest extends PowerMockTestCase {
 
   final HashMap<String, InputStream> mockStreamMap = TestUtilities.createMockStreamMap();
   final List<FileWithMetadata> mockListFileWithMetadata = TestUtilities.creatMockListFileWithMetadata();
+  final String version = "2021-09-07";
 
   protected MockWebServer server;
   protected Vpc vpcService;
@@ -1017,9 +1085,8 @@ public class VpcTest extends PowerMockTestCase {
     PowerMockito.when(EnvironmentUtils.getenv()).thenReturn(getTestProcessEnvironment());
     final String serviceName = "testService";
     // set mock values for global params
-    String version = "testString";
 
-    vpcService = Vpc.newInstance(version, serviceName);
+    vpcService = Vpc.newInstance(serviceName);
     String url = server.url("/").toString();
     vpcService.setServiceUrl(url);
   }
@@ -1031,16 +1098,15 @@ public class VpcTest extends PowerMockTestCase {
   public void testConstructorWithNullAuthenticator() throws Throwable {
     final String serviceName = "testService";
     // set mock values for global params
-    String version = "testString";
 
-    new Vpc(version, serviceName, null);
+    new Vpc(serviceName, null);
   }
 
 
   @Test
   public void testGetVersion() throws Throwable {
     constructClientService();
-    assertEquals(vpcService.getVersion(), "testString");
+    assertEquals(vpcService.getVersion(), version);
   }
 
   @Test
@@ -1079,7 +1145,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("1"));
@@ -1131,7 +1197,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -1171,7 +1237,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -1223,7 +1289,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -1282,7 +1348,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -1334,7 +1400,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -1386,7 +1452,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -1438,7 +1504,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -1492,7 +1558,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("1"));
@@ -1555,7 +1621,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -1608,7 +1674,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -1661,7 +1727,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -1722,7 +1788,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -1744,7 +1810,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testListVpcRoutesWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"first\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/982d72b7-db1b-4606-afb2-ed6bd4b0bed1/routing_tables/1a15dca5-7e33-45e1-b7c5-bc690e569531/routes?limit=20\"}, \"limit\": 20, \"next\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/982d72b7-db1b-4606-afb2-ed6bd4b0bed1/routing_tables/1a15dca5-7e33-45e1-b7c5-bc690e569531/routes?start=a5e812a2-62c0-4555-86a5-907106760c56&limit=20\"}, \"routes\": [{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"destination\": \"192.168.3.0/24\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/8e454ead-0db7-48ac-9a8b-2698d8c470a7/routes/1a15dca5-7e33-45e1-b7c5-bc690e569531\", \"id\": \"1a15dca5-7e33-45e1-b7c5-bc690e569531\", \"lifecycle_state\": \"stable\", \"name\": \"my-route-1\", \"next_hop\": {\"address\": \"192.168.3.4\"}, \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}], \"total_count\": 132}";
+    String mockResponseBody = "{\"first\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/982d72b7-db1b-4606-afb2-ed6bd4b0bed1/routing_tables/1a15dca5-7e33-45e1-b7c5-bc690e569531/routes?limit=20\"}, \"limit\": 20, \"next\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/982d72b7-db1b-4606-afb2-ed6bd4b0bed1/routing_tables/1a15dca5-7e33-45e1-b7c5-bc690e569531/routes?start=a5e812a2-62c0-4555-86a5-907106760c56&limit=20\"}, \"routes\": [{\"action\": \"delegate\", \"created_at\": \"2019-01-01T12:00:00.000Z\", \"destination\": \"192.168.3.0/24\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/8e454ead-0db7-48ac-9a8b-2698d8c470a7/routes/1a15dca5-7e33-45e1-b7c5-bc690e569531\", \"id\": \"1a15dca5-7e33-45e1-b7c5-bc690e569531\", \"lifecycle_state\": \"stable\", \"name\": \"my-route-1\", \"next_hop\": {\"address\": \"192.168.3.4\"}, \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}], \"total_count\": 132}";
     String listVpcRoutesPath = "/vpcs/testString/routes";
 
     server.enqueue(new MockResponse()
@@ -1777,7 +1843,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("zone.name"), "testString");
     assertEquals(query.get("start"), "testString");
@@ -1802,7 +1868,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testCreateVpcRouteWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"destination\": \"192.168.3.0/24\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/8e454ead-0db7-48ac-9a8b-2698d8c470a7/routes/1a15dca5-7e33-45e1-b7c5-bc690e569531\", \"id\": \"1a15dca5-7e33-45e1-b7c5-bc690e569531\", \"lifecycle_state\": \"stable\", \"name\": \"my-route-1\", \"next_hop\": {\"address\": \"192.168.3.4\"}, \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}";
+    String mockResponseBody = "{\"action\": \"delegate\", \"created_at\": \"2019-01-01T12:00:00.000Z\", \"destination\": \"192.168.3.0/24\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/8e454ead-0db7-48ac-9a8b-2698d8c470a7/routes/1a15dca5-7e33-45e1-b7c5-bc690e569531\", \"id\": \"1a15dca5-7e33-45e1-b7c5-bc690e569531\", \"lifecycle_state\": \"stable\", \"name\": \"my-route-1\", \"next_hop\": {\"address\": \"192.168.3.4\"}, \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}";
     String createVpcRoutePath = "/vpcs/testString/routes";
 
     server.enqueue(new MockResponse()
@@ -1827,7 +1893,7 @@ public class VpcTest extends PowerMockTestCase {
     .vpcId("testString")
     .destination("192.168.3.0/24")
     .zone(zoneIdentityModel)
-    .action("delegate")
+    .action("deliver")
     .name("my-route-2")
     .nextHop(routeNextHopPrototypeModel)
     .build();
@@ -1847,7 +1913,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -1900,7 +1966,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -1922,7 +1988,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testGetVpcRouteWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"destination\": \"192.168.3.0/24\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/8e454ead-0db7-48ac-9a8b-2698d8c470a7/routes/1a15dca5-7e33-45e1-b7c5-bc690e569531\", \"id\": \"1a15dca5-7e33-45e1-b7c5-bc690e569531\", \"lifecycle_state\": \"stable\", \"name\": \"my-route-1\", \"next_hop\": {\"address\": \"192.168.3.4\"}, \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}";
+    String mockResponseBody = "{\"action\": \"delegate\", \"created_at\": \"2019-01-01T12:00:00.000Z\", \"destination\": \"192.168.3.0/24\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/8e454ead-0db7-48ac-9a8b-2698d8c470a7/routes/1a15dca5-7e33-45e1-b7c5-bc690e569531\", \"id\": \"1a15dca5-7e33-45e1-b7c5-bc690e569531\", \"lifecycle_state\": \"stable\", \"name\": \"my-route-1\", \"next_hop\": {\"address\": \"192.168.3.4\"}, \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}";
     String getVpcRoutePath = "/vpcs/testString/routes/testString";
 
     server.enqueue(new MockResponse()
@@ -1953,7 +2019,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -1975,7 +2041,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testUpdateVpcRouteWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"destination\": \"192.168.3.0/24\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/8e454ead-0db7-48ac-9a8b-2698d8c470a7/routes/1a15dca5-7e33-45e1-b7c5-bc690e569531\", \"id\": \"1a15dca5-7e33-45e1-b7c5-bc690e569531\", \"lifecycle_state\": \"stable\", \"name\": \"my-route-1\", \"next_hop\": {\"address\": \"192.168.3.4\"}, \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}";
+    String mockResponseBody = "{\"action\": \"delegate\", \"created_at\": \"2019-01-01T12:00:00.000Z\", \"destination\": \"192.168.3.0/24\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/8e454ead-0db7-48ac-9a8b-2698d8c470a7/routes/1a15dca5-7e33-45e1-b7c5-bc690e569531\", \"id\": \"1a15dca5-7e33-45e1-b7c5-bc690e569531\", \"lifecycle_state\": \"stable\", \"name\": \"my-route-1\", \"next_hop\": {\"address\": \"192.168.3.4\"}, \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}";
     String updateVpcRoutePath = "/vpcs/testString/routes/testString";
 
     server.enqueue(new MockResponse()
@@ -2013,7 +2079,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -2068,7 +2134,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("1"));
@@ -2115,7 +2181,7 @@ public class VpcTest extends PowerMockTestCase {
 
     // Construct an instance of the RoutePrototype model
     RoutePrototype routePrototypeModel = new RoutePrototype.Builder()
-    .action("delegate")
+    .action("deliver")
     .destination("192.168.3.0/24")
     .name("my-route-2")
     .nextHop(routeNextHopPrototypeModel)
@@ -2126,9 +2192,9 @@ public class VpcTest extends PowerMockTestCase {
     CreateVpcRoutingTableOptions createVpcRoutingTableOptionsModel = new CreateVpcRoutingTableOptions.Builder()
     .vpcId("testString")
     .name("my-routing-table-2")
-    .routeDirectLinkIngress(true)
-    .routeTransitGatewayIngress(true)
-    .routeVpcZoneIngress(true)
+    .routeDirectLinkIngress(false)
+    .routeTransitGatewayIngress(false)
+    .routeVpcZoneIngress(false)
     .routes(new java.util.ArrayList<RoutePrototype>(java.util.Arrays.asList(routePrototypeModel)))
     .build();
 
@@ -2147,7 +2213,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -2200,7 +2266,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -2253,7 +2319,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -2316,7 +2382,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -2338,7 +2404,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testListVpcRoutingTableRoutesWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"first\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/982d72b7-db1b-4606-afb2-ed6bd4b0bed1/routing_tables/1a15dca5-7e33-45e1-b7c5-bc690e569531/routes?limit=20\"}, \"limit\": 20, \"next\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/982d72b7-db1b-4606-afb2-ed6bd4b0bed1/routing_tables/1a15dca5-7e33-45e1-b7c5-bc690e569531/routes?start=a5e812a2-62c0-4555-86a5-907106760c56&limit=20\"}, \"routes\": [{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"destination\": \"192.168.3.0/24\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/8e454ead-0db7-48ac-9a8b-2698d8c470a7/routes/1a15dca5-7e33-45e1-b7c5-bc690e569531\", \"id\": \"1a15dca5-7e33-45e1-b7c5-bc690e569531\", \"lifecycle_state\": \"stable\", \"name\": \"my-route-1\", \"next_hop\": {\"address\": \"192.168.3.4\"}, \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}], \"total_count\": 132}";
+    String mockResponseBody = "{\"first\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/982d72b7-db1b-4606-afb2-ed6bd4b0bed1/routing_tables/1a15dca5-7e33-45e1-b7c5-bc690e569531/routes?limit=20\"}, \"limit\": 20, \"next\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/982d72b7-db1b-4606-afb2-ed6bd4b0bed1/routing_tables/1a15dca5-7e33-45e1-b7c5-bc690e569531/routes?start=a5e812a2-62c0-4555-86a5-907106760c56&limit=20\"}, \"routes\": [{\"action\": \"delegate\", \"created_at\": \"2019-01-01T12:00:00.000Z\", \"destination\": \"192.168.3.0/24\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/8e454ead-0db7-48ac-9a8b-2698d8c470a7/routes/1a15dca5-7e33-45e1-b7c5-bc690e569531\", \"id\": \"1a15dca5-7e33-45e1-b7c5-bc690e569531\", \"lifecycle_state\": \"stable\", \"name\": \"my-route-1\", \"next_hop\": {\"address\": \"192.168.3.4\"}, \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}], \"total_count\": 132}";
     String listVpcRoutingTableRoutesPath = "/vpcs/testString/routing_tables/testString/routes";
 
     server.enqueue(new MockResponse()
@@ -2371,7 +2437,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("1"));
@@ -2395,7 +2461,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testCreateVpcRoutingTableRouteWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"destination\": \"192.168.3.0/24\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/8e454ead-0db7-48ac-9a8b-2698d8c470a7/routes/1a15dca5-7e33-45e1-b7c5-bc690e569531\", \"id\": \"1a15dca5-7e33-45e1-b7c5-bc690e569531\", \"lifecycle_state\": \"stable\", \"name\": \"my-route-1\", \"next_hop\": {\"address\": \"192.168.3.4\"}, \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}";
+    String mockResponseBody = "{\"action\": \"delegate\", \"created_at\": \"2019-01-01T12:00:00.000Z\", \"destination\": \"192.168.3.0/24\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/8e454ead-0db7-48ac-9a8b-2698d8c470a7/routes/1a15dca5-7e33-45e1-b7c5-bc690e569531\", \"id\": \"1a15dca5-7e33-45e1-b7c5-bc690e569531\", \"lifecycle_state\": \"stable\", \"name\": \"my-route-1\", \"next_hop\": {\"address\": \"192.168.3.4\"}, \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}";
     String createVpcRoutingTableRoutePath = "/vpcs/testString/routing_tables/testString/routes";
 
     server.enqueue(new MockResponse()
@@ -2421,7 +2487,7 @@ public class VpcTest extends PowerMockTestCase {
     .routingTableId("testString")
     .destination("192.168.3.0/24")
     .zone(zoneIdentityModel)
-    .action("delegate")
+    .action("deliver")
     .name("my-route-2")
     .nextHop(routeNextHopPrototypeModel)
     .build();
@@ -2441,7 +2507,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -2495,7 +2561,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -2517,7 +2583,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testGetVpcRoutingTableRouteWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"destination\": \"192.168.3.0/24\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/8e454ead-0db7-48ac-9a8b-2698d8c470a7/routes/1a15dca5-7e33-45e1-b7c5-bc690e569531\", \"id\": \"1a15dca5-7e33-45e1-b7c5-bc690e569531\", \"lifecycle_state\": \"stable\", \"name\": \"my-route-1\", \"next_hop\": {\"address\": \"192.168.3.4\"}, \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}";
+    String mockResponseBody = "{\"action\": \"delegate\", \"created_at\": \"2019-01-01T12:00:00.000Z\", \"destination\": \"192.168.3.0/24\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/8e454ead-0db7-48ac-9a8b-2698d8c470a7/routes/1a15dca5-7e33-45e1-b7c5-bc690e569531\", \"id\": \"1a15dca5-7e33-45e1-b7c5-bc690e569531\", \"lifecycle_state\": \"stable\", \"name\": \"my-route-1\", \"next_hop\": {\"address\": \"192.168.3.4\"}, \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}";
     String getVpcRoutingTableRoutePath = "/vpcs/testString/routing_tables/testString/routes/testString";
 
     server.enqueue(new MockResponse()
@@ -2549,7 +2615,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -2571,7 +2637,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testUpdateVpcRoutingTableRouteWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"destination\": \"192.168.3.0/24\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/8e454ead-0db7-48ac-9a8b-2698d8c470a7/routes/1a15dca5-7e33-45e1-b7c5-bc690e569531\", \"id\": \"1a15dca5-7e33-45e1-b7c5-bc690e569531\", \"lifecycle_state\": \"stable\", \"name\": \"my-route-1\", \"next_hop\": {\"address\": \"192.168.3.4\"}, \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}";
+    String mockResponseBody = "{\"action\": \"delegate\", \"created_at\": \"2019-01-01T12:00:00.000Z\", \"destination\": \"192.168.3.0/24\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/8e454ead-0db7-48ac-9a8b-2698d8c470a7/routes/1a15dca5-7e33-45e1-b7c5-bc690e569531\", \"id\": \"1a15dca5-7e33-45e1-b7c5-bc690e569531\", \"lifecycle_state\": \"stable\", \"name\": \"my-route-1\", \"next_hop\": {\"address\": \"192.168.3.4\"}, \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}";
     String updateVpcRoutingTableRoutePath = "/vpcs/testString/routing_tables/testString/routes/testString";
 
     server.enqueue(new MockResponse()
@@ -2610,7 +2676,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -2666,7 +2732,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("1"));
@@ -2754,7 +2820,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -2806,7 +2872,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -2858,7 +2924,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -2935,7 +3001,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -2987,7 +3053,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -3045,7 +3111,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -3097,7 +3163,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -3149,7 +3215,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -3207,7 +3273,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -3259,7 +3325,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -3317,7 +3383,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -3372,7 +3438,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("1"));
@@ -3435,7 +3501,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -3488,7 +3554,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -3541,7 +3607,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -3602,7 +3668,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -3624,7 +3690,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testListImagesWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"first\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images?limit=20\"}, \"images\": [{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"encryption\": \"user_managed\", \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"file\": {\"checksums\": {\"sha256\": \"e992a84f113d3a35d2145ca3e7aca4fc95fe6daf470a08d8af3422ee59c92e15\"}, \"size\": 1}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"minimum_provisioned_size\": 22, \"name\": \"my-image\", \"operating_system\": {\"architecture\": \"amd64\", \"dedicated_host_only\": false, \"display_name\": \"Ubuntu Server 16.04 LTS amd64\", \"family\": \"Ubuntu Server\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-16-amd64\", \"name\": \"ubuntu-16-amd64\", \"vendor\": \"Canonical\", \"version\": \"16.04 LTS\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"status\": \"available\", \"status_reasons\": [{\"code\": \"encryption_key_deleted\", \"message\": \"message\", \"more_info\": \"https://cloud.ibm.com/docs/key-protect?topic=key-protect-restore-keys\"}], \"visibility\": \"private\"}], \"limit\": 20, \"next\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images?start=9d5a91a3e2cbd233b5a5b33436855ed1&limit=20\"}}";
+    String mockResponseBody = "{\"first\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images?limit=20\"}, \"images\": [{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"encryption\": \"user_managed\", \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"file\": {\"checksums\": {\"sha256\": \"e992a84f113d3a35d2145ca3e7aca4fc95fe6daf470a08d8af3422ee59c92e15\"}, \"size\": 1}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"minimum_provisioned_size\": 22, \"name\": \"my-image\", \"operating_system\": {\"architecture\": \"amd64\", \"dedicated_host_only\": false, \"display_name\": \"Ubuntu Server 16.04 LTS amd64\", \"family\": \"Ubuntu Server\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-16-amd64\", \"name\": \"ubuntu-16-amd64\", \"vendor\": \"Canonical\", \"version\": \"16.04 LTS\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"source_volume\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}, \"status\": \"available\", \"status_reasons\": [{\"code\": \"encryption_key_deleted\", \"message\": \"message\", \"more_info\": \"https://cloud.ibm.com/docs/key-protect?topic=key-protect-restore-keys\"}], \"visibility\": \"private\"}], \"limit\": 20, \"next\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images?start=9d5a91a3e2cbd233b5a5b33436855ed1&limit=20\"}}";
     String listImagesPath = "/images";
 
     server.enqueue(new MockResponse()
@@ -3658,7 +3724,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("1"));
@@ -3673,7 +3739,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testCreateImageWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"encryption\": \"user_managed\", \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"file\": {\"checksums\": {\"sha256\": \"e992a84f113d3a35d2145ca3e7aca4fc95fe6daf470a08d8af3422ee59c92e15\"}, \"size\": 1}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"minimum_provisioned_size\": 22, \"name\": \"my-image\", \"operating_system\": {\"architecture\": \"amd64\", \"dedicated_host_only\": false, \"display_name\": \"Ubuntu Server 16.04 LTS amd64\", \"family\": \"Ubuntu Server\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-16-amd64\", \"name\": \"ubuntu-16-amd64\", \"vendor\": \"Canonical\", \"version\": \"16.04 LTS\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"status\": \"available\", \"status_reasons\": [{\"code\": \"encryption_key_deleted\", \"message\": \"message\", \"more_info\": \"https://cloud.ibm.com/docs/key-protect?topic=key-protect-restore-keys\"}], \"visibility\": \"private\"}";
+    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"encryption\": \"user_managed\", \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"file\": {\"checksums\": {\"sha256\": \"e992a84f113d3a35d2145ca3e7aca4fc95fe6daf470a08d8af3422ee59c92e15\"}, \"size\": 1}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"minimum_provisioned_size\": 22, \"name\": \"my-image\", \"operating_system\": {\"architecture\": \"amd64\", \"dedicated_host_only\": false, \"display_name\": \"Ubuntu Server 16.04 LTS amd64\", \"family\": \"Ubuntu Server\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-16-amd64\", \"name\": \"ubuntu-16-amd64\", \"vendor\": \"Canonical\", \"version\": \"16.04 LTS\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"source_volume\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}, \"status\": \"available\", \"status_reasons\": [{\"code\": \"encryption_key_deleted\", \"message\": \"message\", \"more_info\": \"https://cloud.ibm.com/docs/key-protect?topic=key-protect-restore-keys\"}], \"visibility\": \"private\"}";
     String createImagePath = "/images";
 
     server.enqueue(new MockResponse()
@@ -3733,7 +3799,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -3785,7 +3851,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -3807,7 +3873,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testGetImageWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"encryption\": \"user_managed\", \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"file\": {\"checksums\": {\"sha256\": \"e992a84f113d3a35d2145ca3e7aca4fc95fe6daf470a08d8af3422ee59c92e15\"}, \"size\": 1}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"minimum_provisioned_size\": 22, \"name\": \"my-image\", \"operating_system\": {\"architecture\": \"amd64\", \"dedicated_host_only\": false, \"display_name\": \"Ubuntu Server 16.04 LTS amd64\", \"family\": \"Ubuntu Server\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-16-amd64\", \"name\": \"ubuntu-16-amd64\", \"vendor\": \"Canonical\", \"version\": \"16.04 LTS\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"status\": \"available\", \"status_reasons\": [{\"code\": \"encryption_key_deleted\", \"message\": \"message\", \"more_info\": \"https://cloud.ibm.com/docs/key-protect?topic=key-protect-restore-keys\"}], \"visibility\": \"private\"}";
+    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"encryption\": \"user_managed\", \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"file\": {\"checksums\": {\"sha256\": \"e992a84f113d3a35d2145ca3e7aca4fc95fe6daf470a08d8af3422ee59c92e15\"}, \"size\": 1}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"minimum_provisioned_size\": 22, \"name\": \"my-image\", \"operating_system\": {\"architecture\": \"amd64\", \"dedicated_host_only\": false, \"display_name\": \"Ubuntu Server 16.04 LTS amd64\", \"family\": \"Ubuntu Server\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-16-amd64\", \"name\": \"ubuntu-16-amd64\", \"vendor\": \"Canonical\", \"version\": \"16.04 LTS\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"source_volume\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}, \"status\": \"available\", \"status_reasons\": [{\"code\": \"encryption_key_deleted\", \"message\": \"message\", \"more_info\": \"https://cloud.ibm.com/docs/key-protect?topic=key-protect-restore-keys\"}], \"visibility\": \"private\"}";
     String getImagePath = "/images/testString";
 
     server.enqueue(new MockResponse()
@@ -3837,7 +3903,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -3859,7 +3925,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testUpdateImageWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"encryption\": \"user_managed\", \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"file\": {\"checksums\": {\"sha256\": \"e992a84f113d3a35d2145ca3e7aca4fc95fe6daf470a08d8af3422ee59c92e15\"}, \"size\": 1}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"minimum_provisioned_size\": 22, \"name\": \"my-image\", \"operating_system\": {\"architecture\": \"amd64\", \"dedicated_host_only\": false, \"display_name\": \"Ubuntu Server 16.04 LTS amd64\", \"family\": \"Ubuntu Server\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-16-amd64\", \"name\": \"ubuntu-16-amd64\", \"vendor\": \"Canonical\", \"version\": \"16.04 LTS\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"status\": \"available\", \"status_reasons\": [{\"code\": \"encryption_key_deleted\", \"message\": \"message\", \"more_info\": \"https://cloud.ibm.com/docs/key-protect?topic=key-protect-restore-keys\"}], \"visibility\": \"private\"}";
+    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"encryption\": \"user_managed\", \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"file\": {\"checksums\": {\"sha256\": \"e992a84f113d3a35d2145ca3e7aca4fc95fe6daf470a08d8af3422ee59c92e15\"}, \"size\": 1}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"minimum_provisioned_size\": 22, \"name\": \"my-image\", \"operating_system\": {\"architecture\": \"amd64\", \"dedicated_host_only\": false, \"display_name\": \"Ubuntu Server 16.04 LTS amd64\", \"family\": \"Ubuntu Server\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-16-amd64\", \"name\": \"ubuntu-16-amd64\", \"vendor\": \"Canonical\", \"version\": \"16.04 LTS\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"source_volume\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}, \"status\": \"available\", \"status_reasons\": [{\"code\": \"encryption_key_deleted\", \"message\": \"message\", \"more_info\": \"https://cloud.ibm.com/docs/key-protect?topic=key-protect-restore-keys\"}], \"visibility\": \"private\"}";
     String updateImagePath = "/images/testString";
 
     server.enqueue(new MockResponse()
@@ -3896,7 +3962,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -3949,7 +4015,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("1"));
@@ -3991,7 +4057,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -4013,7 +4079,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testListKeysWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"keys\": [{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::key:a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"fingerprint\": \"SHA256:yxavE4CIOL2NlsqcurRO3xGjkP6m/0mp8ugojH5yxlY\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/keys/a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"id\": \"a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"length\": 2048, \"name\": \"my-key\", \"public_key\": \"AAAAB3NzaC1yc2EAAAADAQABAAABAQDDGe50Bxa5T5NDddrrtbx2Y4/VGbiCgXqnBsYToIUKoFSHTQl5IX3PasGnneKanhcLwWz5M5MoCRvhxTp66NKzIfAz7r+FX9rxgR+ZgcM253YAqOVeIpOU408simDZKriTlN8kYsXL7P34tsWuAJf4MgZtJAQxous/2byetpdCv8ddnT4X3ltOg9w+LqSCPYfNivqH00Eh7S1Ldz7I8aw5WOp5a+sQFP/RbwfpwHp+ny7DfeIOokcuI42tJkoBn7UsLTVpCSmXr2EDRlSWe/1M/iHNRBzaT3CK0+SwZWd2AEjePxSnWKNGIEUJDlUYp7hKhiQcgT5ZAnWU121oc5En\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"type\": \"rsa\"}]}";
+    String mockResponseBody = "{\"first\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/keys?limit=20\"}, \"keys\": [{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::key:a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"fingerprint\": \"SHA256:yxavE4CIOL2NlsqcurRO3xGjkP6m/0mp8ugojH5yxlY\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/keys/a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"id\": \"a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"length\": 2048, \"name\": \"my-key\", \"public_key\": \"AAAAB3NzaC1yc2EAAAADAQABAAABAQDDGe50Bxa5T5NDddrrtbx2Y4/VGbiCgXqnBsYToIUKoFSHTQl5IX3PasGnneKanhcLwWz5M5MoCRvhxTp66NKzIfAz7r+FX9rxgR+ZgcM253YAqOVeIpOU408simDZKriTlN8kYsXL7P34tsWuAJf4MgZtJAQxous/2byetpdCv8ddnT4X3ltOg9w+LqSCPYfNivqH00Eh7S1Ldz7I8aw5WOp5a+sQFP/RbwfpwHp+ny7DfeIOokcuI42tJkoBn7UsLTVpCSmXr2EDRlSWe/1M/iHNRBzaT3CK0+SwZWd2AEjePxSnWKNGIEUJDlUYp7hKhiQcgT5ZAnWU121oc5En\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"type\": \"rsa\"}], \"limit\": 20, \"next\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/keys?start=9d5a91a3e2cbd233b5a5b33436855ed1&limit=20\"}, \"total_count\": 132}";
     String listKeysPath = "/keys";
 
     server.enqueue(new MockResponse()
@@ -4025,6 +4091,8 @@ public class VpcTest extends PowerMockTestCase {
 
     // Construct an instance of the ListKeysOptions model
     ListKeysOptions listKeysOptionsModel = new ListKeysOptions.Builder()
+    .start("testString")
+    .limit(Long.valueOf("1"))
     .resourceGroupId("testString")
     .build();
 
@@ -4043,8 +4111,10 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
+    assertEquals(query.get("start"), "testString");
+    assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("1"));
     assertEquals(query.get("resource_group.id"), "testString");
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -4092,7 +4162,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -4144,7 +4214,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -4196,7 +4266,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -4255,7 +4325,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -4277,7 +4347,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testListInstanceProfilesWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"profiles\": [{\"bandwidth\": {\"type\": \"fixed\", \"value\": 20000}, \"disks\": [{\"quantity\": {\"type\": \"fixed\", \"value\": 4}, \"size\": {\"type\": \"fixed\", \"value\": 100}, \"supported_interface_types\": {\"default\": \"virtio_blk\", \"type\": \"enum\", \"values\": [\"virtio_blk\"]}}], \"family\": \"balanced\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/profiles/bc1-4x16\", \"memory\": {\"type\": \"fixed\", \"value\": 16}, \"name\": \"bc1-4x16\", \"os_architecture\": {\"default\": \"xDefault\", \"type\": \"enum\", \"values\": [\"amd64\"]}, \"port_speed\": {\"type\": \"fixed\", \"value\": 1000}, \"vcpu_architecture\": {\"default\": \"xDefault\", \"type\": \"fixed\", \"value\": \"amd64\"}, \"vcpu_count\": {\"type\": \"fixed\", \"value\": 16}}]}";
+    String mockResponseBody = "{\"profiles\": [{\"bandwidth\": {\"type\": \"fixed\", \"value\": 20000}, \"disks\": [{\"quantity\": {\"type\": \"fixed\", \"value\": 4}, \"size\": {\"type\": \"fixed\", \"value\": 100}, \"supported_interface_types\": {\"default\": \"virtio_blk\", \"type\": \"enum\", \"values\": [\"virtio_blk\"]}}], \"family\": \"balanced\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/profiles/bc1-4x16\", \"memory\": {\"type\": \"fixed\", \"value\": 16}, \"name\": \"bc1-4x16\", \"os_architecture\": {\"default\": \"xDefault\", \"type\": \"enum\", \"values\": [\"amd64\"]}, \"port_speed\": {\"type\": \"fixed\", \"value\": 1000}, \"total_volume_bandwidth\": {\"type\": \"fixed\", \"value\": 20000}, \"vcpu_architecture\": {\"default\": \"xDefault\", \"type\": \"fixed\", \"value\": \"amd64\"}, \"vcpu_count\": {\"type\": \"fixed\", \"value\": 16}}]}";
     String listInstanceProfilesPath = "/instance/profiles";
 
     server.enqueue(new MockResponse()
@@ -4305,7 +4375,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -4315,7 +4385,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testGetInstanceProfileWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"bandwidth\": {\"type\": \"fixed\", \"value\": 20000}, \"disks\": [{\"quantity\": {\"type\": \"fixed\", \"value\": 4}, \"size\": {\"type\": \"fixed\", \"value\": 100}, \"supported_interface_types\": {\"default\": \"virtio_blk\", \"type\": \"enum\", \"values\": [\"virtio_blk\"]}}], \"family\": \"balanced\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/profiles/bc1-4x16\", \"memory\": {\"type\": \"fixed\", \"value\": 16}, \"name\": \"bc1-4x16\", \"os_architecture\": {\"default\": \"xDefault\", \"type\": \"enum\", \"values\": [\"amd64\"]}, \"port_speed\": {\"type\": \"fixed\", \"value\": 1000}, \"vcpu_architecture\": {\"default\": \"xDefault\", \"type\": \"fixed\", \"value\": \"amd64\"}, \"vcpu_count\": {\"type\": \"fixed\", \"value\": 16}}";
+    String mockResponseBody = "{\"bandwidth\": {\"type\": \"fixed\", \"value\": 20000}, \"disks\": [{\"quantity\": {\"type\": \"fixed\", \"value\": 4}, \"size\": {\"type\": \"fixed\", \"value\": 100}, \"supported_interface_types\": {\"default\": \"virtio_blk\", \"type\": \"enum\", \"values\": [\"virtio_blk\"]}}], \"family\": \"balanced\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/profiles/bc1-4x16\", \"memory\": {\"type\": \"fixed\", \"value\": 16}, \"name\": \"bc1-4x16\", \"os_architecture\": {\"default\": \"xDefault\", \"type\": \"enum\", \"values\": [\"amd64\"]}, \"port_speed\": {\"type\": \"fixed\", \"value\": 1000}, \"total_volume_bandwidth\": {\"type\": \"fixed\", \"value\": 20000}, \"vcpu_architecture\": {\"default\": \"xDefault\", \"type\": \"fixed\", \"value\": \"amd64\"}, \"vcpu_count\": {\"type\": \"fixed\", \"value\": 16}}";
     String getInstanceProfilePath = "/instance/profiles/testString";
 
     server.enqueue(new MockResponse()
@@ -4345,7 +4415,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -4367,7 +4437,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testListInstanceTemplatesWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"first\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/templates?limit=20\"}, \"limit\": 20, \"next\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/templates?start=9d5a91a3e2cbd233b5a5b33436855ed1&limit=20\"}, \"templates\": [{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance-template:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/templates/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"keys\": [{\"id\": \"a6b1a881-2ce8-41a3-80fc-36316a73f803\"}], \"name\": \"my-instance-template\", \"network_interfaces\": [{\"allow_ip_spoofing\": true, \"name\": \"my-network-interface\", \"primary_ipv4_address\": \"10.0.0.5\", \"security_groups\": [{\"id\": \"be5df5ca-12a0-494b-907e-aa6ec2bfa271\"}], \"subnet\": {\"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\"}}], \"placement_target\": {\"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\"}, \"profile\": {\"name\": \"bc1-4x16\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"user_data\": \"userData\", \"volume_attachments\": [{\"delete_volume_on_instance_delete\": true, \"name\": \"my-volume-attachment\", \"volume\": {\"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\"}}], \"vpc\": {\"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\"}, \"boot_volume_attachment\": {\"delete_volume_on_instance_delete\": true, \"name\": \"my-volume-attachment\", \"volume\": {\"capacity\": 100, \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"iops\": 10000, \"name\": \"my-volume\", \"profile\": {\"name\": \"general-purpose\"}}}, \"image\": {\"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\"}, \"primary_network_interface\": {\"allow_ip_spoofing\": true, \"name\": \"my-network-interface\", \"primary_ipv4_address\": \"10.0.0.5\", \"security_groups\": [{\"id\": \"be5df5ca-12a0-494b-907e-aa6ec2bfa271\"}], \"subnet\": {\"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\"}}, \"zone\": {\"name\": \"us-south-1\"}}], \"total_count\": 132}";
+    String mockResponseBody = "{\"first\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/templates?limit=20\"}, \"limit\": 20, \"next\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/templates?start=9d5a91a3e2cbd233b5a5b33436855ed1&limit=20\"}, \"templates\": [{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance-template:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/templates/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"keys\": [{\"id\": \"a6b1a881-2ce8-41a3-80fc-36316a73f803\"}], \"name\": \"my-instance-template\", \"network_interfaces\": [{\"allow_ip_spoofing\": true, \"name\": \"my-network-interface\", \"primary_ipv4_address\": \"10.0.0.5\", \"security_groups\": [{\"id\": \"be5df5ca-12a0-494b-907e-aa6ec2bfa271\"}], \"subnet\": {\"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\"}}], \"placement_target\": {\"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\"}, \"profile\": {\"name\": \"bc1-4x16\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"total_volume_bandwidth\": 500, \"user_data\": \"userData\", \"volume_attachments\": [{\"delete_volume_on_instance_delete\": true, \"name\": \"my-volume-attachment\", \"volume\": {\"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\"}}], \"vpc\": {\"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\"}, \"boot_volume_attachment\": {\"delete_volume_on_instance_delete\": true, \"name\": \"my-volume-attachment\", \"volume\": {\"capacity\": 8, \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"iops\": 10000, \"name\": \"my-volume\", \"profile\": {\"name\": \"general-purpose\"}}}, \"image\": {\"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\"}, \"primary_network_interface\": {\"allow_ip_spoofing\": true, \"name\": \"my-network-interface\", \"primary_ipv4_address\": \"10.0.0.5\", \"security_groups\": [{\"id\": \"be5df5ca-12a0-494b-907e-aa6ec2bfa271\"}], \"subnet\": {\"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\"}}, \"zone\": {\"name\": \"us-south-1\"}}], \"total_count\": 132}";
     String listInstanceTemplatesPath = "/instance/templates";
 
     server.enqueue(new MockResponse()
@@ -4395,7 +4465,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -4405,7 +4475,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testCreateInstanceTemplateWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance-template:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/templates/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"keys\": [{\"id\": \"a6b1a881-2ce8-41a3-80fc-36316a73f803\"}], \"name\": \"my-instance-template\", \"network_interfaces\": [{\"allow_ip_spoofing\": true, \"name\": \"my-network-interface\", \"primary_ipv4_address\": \"10.0.0.5\", \"security_groups\": [{\"id\": \"be5df5ca-12a0-494b-907e-aa6ec2bfa271\"}], \"subnet\": {\"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\"}}], \"placement_target\": {\"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\"}, \"profile\": {\"name\": \"bc1-4x16\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"user_data\": \"userData\", \"volume_attachments\": [{\"delete_volume_on_instance_delete\": true, \"name\": \"my-volume-attachment\", \"volume\": {\"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\"}}], \"vpc\": {\"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\"}, \"boot_volume_attachment\": {\"delete_volume_on_instance_delete\": true, \"name\": \"my-volume-attachment\", \"volume\": {\"capacity\": 100, \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"iops\": 10000, \"name\": \"my-volume\", \"profile\": {\"name\": \"general-purpose\"}}}, \"image\": {\"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\"}, \"primary_network_interface\": {\"allow_ip_spoofing\": true, \"name\": \"my-network-interface\", \"primary_ipv4_address\": \"10.0.0.5\", \"security_groups\": [{\"id\": \"be5df5ca-12a0-494b-907e-aa6ec2bfa271\"}], \"subnet\": {\"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\"}}, \"zone\": {\"name\": \"us-south-1\"}}";
+    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance-template:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/templates/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"keys\": [{\"id\": \"a6b1a881-2ce8-41a3-80fc-36316a73f803\"}], \"name\": \"my-instance-template\", \"network_interfaces\": [{\"allow_ip_spoofing\": true, \"name\": \"my-network-interface\", \"primary_ipv4_address\": \"10.0.0.5\", \"security_groups\": [{\"id\": \"be5df5ca-12a0-494b-907e-aa6ec2bfa271\"}], \"subnet\": {\"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\"}}], \"placement_target\": {\"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\"}, \"profile\": {\"name\": \"bc1-4x16\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"total_volume_bandwidth\": 500, \"user_data\": \"userData\", \"volume_attachments\": [{\"delete_volume_on_instance_delete\": true, \"name\": \"my-volume-attachment\", \"volume\": {\"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\"}}], \"vpc\": {\"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\"}, \"boot_volume_attachment\": {\"delete_volume_on_instance_delete\": true, \"name\": \"my-volume-attachment\", \"volume\": {\"capacity\": 8, \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"iops\": 10000, \"name\": \"my-volume\", \"profile\": {\"name\": \"general-purpose\"}}}, \"image\": {\"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\"}, \"primary_network_interface\": {\"allow_ip_spoofing\": true, \"name\": \"my-network-interface\", \"primary_ipv4_address\": \"10.0.0.5\", \"security_groups\": [{\"id\": \"be5df5ca-12a0-494b-907e-aa6ec2bfa271\"}], \"subnet\": {\"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\"}}, \"zone\": {\"name\": \"us-south-1\"}}";
     String createInstanceTemplatePath = "/instance/templates";
 
     server.enqueue(new MockResponse()
@@ -4483,7 +4553,7 @@ public class VpcTest extends PowerMockTestCase {
 
     // Construct an instance of the VolumePrototypeInstanceByImageContext model
     VolumePrototypeInstanceByImageContext volumePrototypeInstanceByImageContextModel = new VolumePrototypeInstanceByImageContext.Builder()
-    .capacity(Long.valueOf("100"))
+    .capacity(Long.valueOf("26"))
     .encryptionKey(encryptionKeyIdentityModel)
     .iops(Long.valueOf("10000"))
     .name("my-volume")
@@ -4515,6 +4585,7 @@ public class VpcTest extends PowerMockTestCase {
     .placementTarget(instancePlacementTargetPrototypeModel)
     .profile(instanceProfileIdentityModel)
     .resourceGroup(resourceGroupIdentityModel)
+    .totalVolumeBandwidth(Long.valueOf("500"))
     .userData("testString")
     .volumeAttachments(new java.util.ArrayList<VolumeAttachmentPrototypeInstanceContext>(java.util.Arrays.asList(volumeAttachmentPrototypeInstanceContextModel)))
     .vpc(vpcIdentityModel)
@@ -4544,7 +4615,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -4596,7 +4667,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -4618,7 +4689,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testGetInstanceTemplateWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance-template:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/templates/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"keys\": [{\"id\": \"a6b1a881-2ce8-41a3-80fc-36316a73f803\"}], \"name\": \"my-instance-template\", \"network_interfaces\": [{\"allow_ip_spoofing\": true, \"name\": \"my-network-interface\", \"primary_ipv4_address\": \"10.0.0.5\", \"security_groups\": [{\"id\": \"be5df5ca-12a0-494b-907e-aa6ec2bfa271\"}], \"subnet\": {\"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\"}}], \"placement_target\": {\"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\"}, \"profile\": {\"name\": \"bc1-4x16\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"user_data\": \"userData\", \"volume_attachments\": [{\"delete_volume_on_instance_delete\": true, \"name\": \"my-volume-attachment\", \"volume\": {\"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\"}}], \"vpc\": {\"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\"}, \"boot_volume_attachment\": {\"delete_volume_on_instance_delete\": true, \"name\": \"my-volume-attachment\", \"volume\": {\"capacity\": 100, \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"iops\": 10000, \"name\": \"my-volume\", \"profile\": {\"name\": \"general-purpose\"}}}, \"image\": {\"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\"}, \"primary_network_interface\": {\"allow_ip_spoofing\": true, \"name\": \"my-network-interface\", \"primary_ipv4_address\": \"10.0.0.5\", \"security_groups\": [{\"id\": \"be5df5ca-12a0-494b-907e-aa6ec2bfa271\"}], \"subnet\": {\"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\"}}, \"zone\": {\"name\": \"us-south-1\"}}";
+    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance-template:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/templates/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"keys\": [{\"id\": \"a6b1a881-2ce8-41a3-80fc-36316a73f803\"}], \"name\": \"my-instance-template\", \"network_interfaces\": [{\"allow_ip_spoofing\": true, \"name\": \"my-network-interface\", \"primary_ipv4_address\": \"10.0.0.5\", \"security_groups\": [{\"id\": \"be5df5ca-12a0-494b-907e-aa6ec2bfa271\"}], \"subnet\": {\"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\"}}], \"placement_target\": {\"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\"}, \"profile\": {\"name\": \"bc1-4x16\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"total_volume_bandwidth\": 500, \"user_data\": \"userData\", \"volume_attachments\": [{\"delete_volume_on_instance_delete\": true, \"name\": \"my-volume-attachment\", \"volume\": {\"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\"}}], \"vpc\": {\"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\"}, \"boot_volume_attachment\": {\"delete_volume_on_instance_delete\": true, \"name\": \"my-volume-attachment\", \"volume\": {\"capacity\": 8, \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"iops\": 10000, \"name\": \"my-volume\", \"profile\": {\"name\": \"general-purpose\"}}}, \"image\": {\"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\"}, \"primary_network_interface\": {\"allow_ip_spoofing\": true, \"name\": \"my-network-interface\", \"primary_ipv4_address\": \"10.0.0.5\", \"security_groups\": [{\"id\": \"be5df5ca-12a0-494b-907e-aa6ec2bfa271\"}], \"subnet\": {\"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\"}}, \"zone\": {\"name\": \"us-south-1\"}}";
     String getInstanceTemplatePath = "/instance/templates/testString";
 
     server.enqueue(new MockResponse()
@@ -4648,7 +4719,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -4670,7 +4741,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testUpdateInstanceTemplateWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance-template:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/templates/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"keys\": [{\"id\": \"a6b1a881-2ce8-41a3-80fc-36316a73f803\"}], \"name\": \"my-instance-template\", \"network_interfaces\": [{\"allow_ip_spoofing\": true, \"name\": \"my-network-interface\", \"primary_ipv4_address\": \"10.0.0.5\", \"security_groups\": [{\"id\": \"be5df5ca-12a0-494b-907e-aa6ec2bfa271\"}], \"subnet\": {\"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\"}}], \"placement_target\": {\"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\"}, \"profile\": {\"name\": \"bc1-4x16\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"user_data\": \"userData\", \"volume_attachments\": [{\"delete_volume_on_instance_delete\": true, \"name\": \"my-volume-attachment\", \"volume\": {\"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\"}}], \"vpc\": {\"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\"}, \"boot_volume_attachment\": {\"delete_volume_on_instance_delete\": true, \"name\": \"my-volume-attachment\", \"volume\": {\"capacity\": 100, \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"iops\": 10000, \"name\": \"my-volume\", \"profile\": {\"name\": \"general-purpose\"}}}, \"image\": {\"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\"}, \"primary_network_interface\": {\"allow_ip_spoofing\": true, \"name\": \"my-network-interface\", \"primary_ipv4_address\": \"10.0.0.5\", \"security_groups\": [{\"id\": \"be5df5ca-12a0-494b-907e-aa6ec2bfa271\"}], \"subnet\": {\"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\"}}, \"zone\": {\"name\": \"us-south-1\"}}";
+    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance-template:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/templates/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"keys\": [{\"id\": \"a6b1a881-2ce8-41a3-80fc-36316a73f803\"}], \"name\": \"my-instance-template\", \"network_interfaces\": [{\"allow_ip_spoofing\": true, \"name\": \"my-network-interface\", \"primary_ipv4_address\": \"10.0.0.5\", \"security_groups\": [{\"id\": \"be5df5ca-12a0-494b-907e-aa6ec2bfa271\"}], \"subnet\": {\"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\"}}], \"placement_target\": {\"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\"}, \"profile\": {\"name\": \"bc1-4x16\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"total_volume_bandwidth\": 500, \"user_data\": \"userData\", \"volume_attachments\": [{\"delete_volume_on_instance_delete\": true, \"name\": \"my-volume-attachment\", \"volume\": {\"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\"}}], \"vpc\": {\"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\"}, \"boot_volume_attachment\": {\"delete_volume_on_instance_delete\": true, \"name\": \"my-volume-attachment\", \"volume\": {\"capacity\": 8, \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"iops\": 10000, \"name\": \"my-volume\", \"profile\": {\"name\": \"general-purpose\"}}}, \"image\": {\"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\"}, \"primary_network_interface\": {\"allow_ip_spoofing\": true, \"name\": \"my-network-interface\", \"primary_ipv4_address\": \"10.0.0.5\", \"security_groups\": [{\"id\": \"be5df5ca-12a0-494b-907e-aa6ec2bfa271\"}], \"subnet\": {\"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\"}}, \"zone\": {\"name\": \"us-south-1\"}}";
     String updateInstanceTemplatePath = "/instance/templates/testString";
 
     server.enqueue(new MockResponse()
@@ -4707,7 +4778,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -4729,7 +4800,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testListInstancesWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"first\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances?limit=20\"}, \"instances\": [{\"bandwidth\": 1000, \"boot_volume_attachment\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"name\": \"my-volume-attachment\", \"volume\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}}, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"disks\": [{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/disks/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"interface_type\": \"virtio_blk\", \"name\": \"my-instance-disk\", \"resource_type\": \"instance_disk\", \"size\": 100}], \"gpu\": {\"count\": 1, \"manufacturer\": \"nvidia\", \"memory\": 1, \"model\": \"Tesla V100\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"image\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"name\": \"my-image\"}, \"memory\": 8, \"name\": \"my-instance\", \"network_interfaces\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"name\": \"my-network-interface\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\", \"subnet\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}}], \"primary_network_interface\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"name\": \"my-network-interface\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\", \"subnet\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}}, \"profile\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/profiles/bc1-4x16\", \"name\": \"bc1-4x16\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"status\": \"deleting\", \"status_reasons\": [{\"code\": \"cannot_start_storage\", \"message\": \"The virtual server instance is unusable because the encryption key for the boot volume has been deleted\", \"more_info\": \"https://cloud.ibm.com/docs/key-protect?topic=key-protect-restore-keys\"}], \"vcpu\": {\"architecture\": \"amd64\", \"count\": 4}, \"volume_attachments\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"name\": \"my-volume-attachment\", \"volume\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}}], \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\"}, \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}], \"limit\": 20, \"next\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances?start=9d5a91a3e2cbd233b5a5b33436855ed1&limit=20\"}, \"total_count\": 132}";
+    String mockResponseBody = "{\"first\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances?limit=20\"}, \"instances\": [{\"bandwidth\": 1000, \"boot_volume_attachment\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"name\": \"my-volume-attachment\", \"volume\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}}, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"disks\": [{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/disks/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"interface_type\": \"virtio_blk\", \"name\": \"my-instance-disk\", \"resource_type\": \"instance_disk\", \"size\": 100}], \"gpu\": {\"count\": 1, \"manufacturer\": \"nvidia\", \"memory\": 1, \"model\": \"Tesla V100\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"image\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"name\": \"my-image\"}, \"memory\": 8, \"name\": \"my-instance\", \"network_interfaces\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"name\": \"my-network-interface\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\", \"subnet\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}}], \"placement_target\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::dedicated-host-group:bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/dedicated_host/groups/bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0\", \"id\": \"bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0\", \"name\": \"my-host-group\", \"resource_type\": \"dedicated_host_group\"}, \"primary_network_interface\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"name\": \"my-network-interface\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\", \"subnet\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}}, \"profile\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/profiles/bc1-4x16\", \"name\": \"bc1-4x16\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"startable\": false, \"status\": \"deleting\", \"status_reasons\": [{\"code\": \"cannot_start_storage\", \"message\": \"The virtual server instance is unusable because the encryption key for the boot volume\nhas been deleted\", \"more_info\": \"https://cloud.ibm.com/docs/key-protect?topic=key-protect-restore-keys\"}], \"total_network_bandwidth\": 500, \"total_volume_bandwidth\": 500, \"vcpu\": {\"architecture\": \"amd64\", \"count\": 4}, \"volume_attachments\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"name\": \"my-volume-attachment\", \"volume\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}}], \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\"}, \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}], \"limit\": 20, \"next\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances?start=9d5a91a3e2cbd233b5a5b33436855ed1&limit=20\"}, \"total_count\": 132}";
     String listInstancesPath = "/instances";
 
     server.enqueue(new MockResponse()
@@ -4748,6 +4819,12 @@ public class VpcTest extends PowerMockTestCase {
     .vpcId("testString")
     .vpcCrn("testString")
     .vpcName("testString")
+    .dedicatedHostId("testString")
+    .dedicatedHostCrn("testString")
+    .dedicatedHostName("testString")
+    .placementGroupId("testString")
+    .placementGroupCrn("testString")
+    .placementGroupName("testString")
     .build();
 
     // Invoke operation with valid options model (positive test)
@@ -4765,7 +4842,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("1"));
@@ -4774,6 +4851,12 @@ public class VpcTest extends PowerMockTestCase {
     assertEquals(query.get("vpc.id"), "testString");
     assertEquals(query.get("vpc.crn"), "testString");
     assertEquals(query.get("vpc.name"), "testString");
+    assertEquals(query.get("dedicated_host.id"), "testString");
+    assertEquals(query.get("dedicated_host.crn"), "testString");
+    assertEquals(query.get("dedicated_host.name"), "testString");
+    assertEquals(query.get("placement_group.id"), "testString");
+    assertEquals(query.get("placement_group.crn"), "testString");
+    assertEquals(query.get("placement_group.name"), "testString");
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, listInstancesPath);
@@ -4782,7 +4865,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testCreateInstanceWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"bandwidth\": 1000, \"boot_volume_attachment\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"name\": \"my-volume-attachment\", \"volume\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}}, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"disks\": [{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/disks/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"interface_type\": \"virtio_blk\", \"name\": \"my-instance-disk\", \"resource_type\": \"instance_disk\", \"size\": 100}], \"gpu\": {\"count\": 1, \"manufacturer\": \"nvidia\", \"memory\": 1, \"model\": \"Tesla V100\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"image\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"name\": \"my-image\"}, \"memory\": 8, \"name\": \"my-instance\", \"network_interfaces\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"name\": \"my-network-interface\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\", \"subnet\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}}], \"primary_network_interface\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"name\": \"my-network-interface\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\", \"subnet\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}}, \"profile\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/profiles/bc1-4x16\", \"name\": \"bc1-4x16\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"status\": \"deleting\", \"status_reasons\": [{\"code\": \"cannot_start_storage\", \"message\": \"The virtual server instance is unusable because the encryption key for the boot volume has been deleted\", \"more_info\": \"https://cloud.ibm.com/docs/key-protect?topic=key-protect-restore-keys\"}], \"vcpu\": {\"architecture\": \"amd64\", \"count\": 4}, \"volume_attachments\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"name\": \"my-volume-attachment\", \"volume\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}}], \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\"}, \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}";
+    String mockResponseBody = "{\"bandwidth\": 1000, \"boot_volume_attachment\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"name\": \"my-volume-attachment\", \"volume\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}}, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"disks\": [{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/disks/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"interface_type\": \"virtio_blk\", \"name\": \"my-instance-disk\", \"resource_type\": \"instance_disk\", \"size\": 100}], \"gpu\": {\"count\": 1, \"manufacturer\": \"nvidia\", \"memory\": 1, \"model\": \"Tesla V100\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"image\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"name\": \"my-image\"}, \"memory\": 8, \"name\": \"my-instance\", \"network_interfaces\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"name\": \"my-network-interface\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\", \"subnet\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}}], \"placement_target\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::dedicated-host-group:bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/dedicated_host/groups/bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0\", \"id\": \"bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0\", \"name\": \"my-host-group\", \"resource_type\": \"dedicated_host_group\"}, \"primary_network_interface\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"name\": \"my-network-interface\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\", \"subnet\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}}, \"profile\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/profiles/bc1-4x16\", \"name\": \"bc1-4x16\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"startable\": false, \"status\": \"deleting\", \"status_reasons\": [{\"code\": \"cannot_start_storage\", \"message\": \"The virtual server instance is unusable because the encryption key for the boot volume\nhas been deleted\", \"more_info\": \"https://cloud.ibm.com/docs/key-protect?topic=key-protect-restore-keys\"}], \"total_network_bandwidth\": 500, \"total_volume_bandwidth\": 500, \"vcpu\": {\"architecture\": \"amd64\", \"count\": 4}, \"volume_attachments\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"name\": \"my-volume-attachment\", \"volume\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}}], \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\"}, \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}";
     String createInstancePath = "/instances";
 
     server.enqueue(new MockResponse()
@@ -4864,7 +4947,7 @@ public class VpcTest extends PowerMockTestCase {
 
     // Construct an instance of the VolumePrototypeInstanceByImageContext model
     VolumePrototypeInstanceByImageContext volumePrototypeInstanceByImageContextModel = new VolumePrototypeInstanceByImageContext.Builder()
-    .capacity(Long.valueOf("100"))
+    .capacity(Long.valueOf("26"))
     .encryptionKey(encryptionKeyIdentityModel)
     .iops(Long.valueOf("10000"))
     .name("my-boot-volume")
@@ -4896,6 +4979,7 @@ public class VpcTest extends PowerMockTestCase {
     .placementTarget(instancePlacementTargetPrototypeModel)
     .profile(instanceProfileIdentityModel)
     .resourceGroup(resourceGroupIdentityModel)
+    .totalVolumeBandwidth(Long.valueOf("500"))
     .userData("testString")
     .volumeAttachments(new java.util.ArrayList<VolumeAttachmentPrototypeInstanceContext>(java.util.Arrays.asList(volumeAttachmentPrototypeInstanceContextModel)))
     .vpc(vpcIdentityModel)
@@ -4925,7 +5009,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -4977,7 +5061,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -4999,8 +5083,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testGetInstanceWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"bandwidth\": 1000, \"boot_volume_attachment\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"name\": \"my-volume-attachment\", \"volume\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}}, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"disks\": [{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/disks/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"interface_type\": \"virtio_blk\", \"name\": \"my-instance-disk\", \"resource_type\": \"instance_disk\", \"size\": 100}], \"gpu\": {\"count\": 1, \"manufacturer\": \"nvidia\", \"memory\": 1, \"model\": \"Tesla V100\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"image\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"name\": \"my-image\"}, \"memory\": 8, \"name\": \"my-instance\", \"network_interfaces\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"name\": \"my-network-interface\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\", \"subnet\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}}], \"primary_network_interface\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"name\": \"my-network-interface\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\", \"subnet\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}}, \"profile\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/profiles/bc1-4x16\", \"name\": \"bc1-4x16\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"status\": \"deleting\", \"status_reasons\": [{\"code\": \"cannot_start_storage\", \"message\": \"The virtual server instance is unusable because the encryption key for the boot volume has been deleted\", \"more_info\": \"https://cloud.ibm.com/docs/key-protect?topic=key-protect-restore-keys\"}], \"vcpu\": {\"architecture\": \"amd64\", \"count\": 4}, \"volume_attachments\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"name\": \"my-volume-attachment\", \"volume\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}}], \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\"}, \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}";
-
+    String mockResponseBody = "{\"bandwidth\": 1000, \"boot_volume_attachment\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"name\": \"my-volume-attachment\", \"volume\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}}, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"disks\": [{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/disks/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"interface_type\": \"virtio_blk\", \"name\": \"my-instance-disk\", \"resource_type\": \"instance_disk\", \"size\": 100}], \"gpu\": {\"count\": 1, \"manufacturer\": \"nvidia\", \"memory\": 1, \"model\": \"Tesla V100\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"image\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"name\": \"my-image\"}, \"memory\": 8, \"name\": \"my-instance\", \"network_interfaces\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"name\": \"my-network-interface\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\", \"subnet\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}}], \"placement_target\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::dedicated-host-group:bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/dedicated_host/groups/bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0\", \"id\": \"bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0\", \"name\": \"my-host-group\", \"resource_type\": \"dedicated_host_group\"}, \"primary_network_interface\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"name\": \"my-network-interface\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\", \"subnet\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}}, \"profile\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/profiles/bc1-4x16\", \"name\": \"bc1-4x16\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"startable\": false, \"status\": \"deleting\", \"status_reasons\": [{\"code\": \"cannot_start_storage\", \"message\": \"The virtual server instance is unusable because the encryption key for the boot volume\nhas been deleted\", \"more_info\": \"https://cloud.ibm.com/docs/key-protect?topic=key-protect-restore-keys\"}], \"total_network_bandwidth\": 500, \"total_volume_bandwidth\": 500, \"vcpu\": {\"architecture\": \"amd64\", \"count\": 4}, \"volume_attachments\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"name\": \"my-volume-attachment\", \"volume\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}}], \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\"}, \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}";
     String getInstancePath = "/instances/testString";
 
     server.enqueue(new MockResponse()
@@ -5030,7 +5113,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -5052,7 +5135,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testUpdateInstanceWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"bandwidth\": 1000, \"boot_volume_attachment\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"name\": \"my-volume-attachment\", \"volume\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}}, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"disks\": [{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/disks/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"interface_type\": \"virtio_blk\", \"name\": \"my-instance-disk\", \"resource_type\": \"instance_disk\", \"size\": 100}], \"gpu\": {\"count\": 1, \"manufacturer\": \"nvidia\", \"memory\": 1, \"model\": \"Tesla V100\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"image\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"name\": \"my-image\"}, \"memory\": 8, \"name\": \"my-instance\", \"network_interfaces\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"name\": \"my-network-interface\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\", \"subnet\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}}], \"primary_network_interface\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"name\": \"my-network-interface\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\", \"subnet\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}}, \"profile\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/profiles/bc1-4x16\", \"name\": \"bc1-4x16\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"status\": \"deleting\", \"status_reasons\": [{\"code\": \"cannot_start_storage\", \"message\": \"The virtual server instance is unusable because the encryption key for the boot volume has been deleted\", \"more_info\": \"https://cloud.ibm.com/docs/key-protect?topic=key-protect-restore-keys\"}], \"vcpu\": {\"architecture\": \"amd64\", \"count\": 4}, \"volume_attachments\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"name\": \"my-volume-attachment\", \"volume\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}}], \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\"}, \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}";
+    String mockResponseBody = "{\"bandwidth\": 1000, \"boot_volume_attachment\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"name\": \"my-volume-attachment\", \"volume\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}}, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"disks\": [{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/disks/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"interface_type\": \"virtio_blk\", \"name\": \"my-instance-disk\", \"resource_type\": \"instance_disk\", \"size\": 100}], \"gpu\": {\"count\": 1, \"manufacturer\": \"nvidia\", \"memory\": 1, \"model\": \"Tesla V100\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"image\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"name\": \"my-image\"}, \"memory\": 8, \"name\": \"my-instance\", \"network_interfaces\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"name\": \"my-network-interface\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\", \"subnet\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}}], \"placement_target\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::dedicated-host-group:bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/dedicated_host/groups/bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0\", \"id\": \"bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0\", \"name\": \"my-host-group\", \"resource_type\": \"dedicated_host_group\"}, \"primary_network_interface\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"name\": \"my-network-interface\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\", \"subnet\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}}, \"profile\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/profiles/bc1-4x16\", \"name\": \"bc1-4x16\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"startable\": false, \"status\": \"deleting\", \"status_reasons\": [{\"code\": \"cannot_start_storage\", \"message\": \"The virtual server instance is unusable because the encryption key for the boot volume\nhas been deleted\", \"more_info\": \"https://cloud.ibm.com/docs/key-protect?topic=key-protect-restore-keys\"}], \"total_network_bandwidth\": 500, \"total_volume_bandwidth\": 500, \"vcpu\": {\"architecture\": \"amd64\", \"count\": 4}, \"volume_attachments\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"name\": \"my-volume-attachment\", \"volume\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}}], \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\"}, \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}";
     String updateInstancePath = "/instances/testString";
 
     server.enqueue(new MockResponse()
@@ -5071,6 +5154,7 @@ public class VpcTest extends PowerMockTestCase {
     InstancePatch instancePatchModel = new InstancePatch.Builder()
     .name("my-instance")
     .profile(instancePatchProfileModel)
+    .totalVolumeBandwidth(Long.valueOf("500"))
     .build();
     Map<String, Object> instancePatchModelAsPatch = instancePatchModel.asPatch();
 
@@ -5095,7 +5179,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -5117,7 +5201,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testGetInstanceInitializationWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"keys\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::key:a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"fingerprint\": \"SHA256:yxavE4CIOL2NlsqcurRO3xGjkP6m/0mp8ugojH5yxlY\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/keys/a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"id\": \"a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"name\": \"my-key\"}], \"password\": {\"encrypted_password\": \"VGhpcyBpcyBhbiBlbmNvZGVkIGJ5dGUgYXJyYXku\", \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::key:a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"fingerprint\": \"SHA256:yxavE4CIOL2NlsqcurRO3xGjkP6m/0mp8ugojH5yxlY\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/keys/a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"id\": \"a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"name\": \"my-key\"}}}";
+    String mockResponseBody = "{\"keys\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::key:a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"fingerprint\": \"SHA256:yxavE4CIOL2NlsqcurRO3xGjkP6m/0mp8ugojH5yxlY\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/keys/a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"id\": \"a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"name\": \"my-key\"}], \"password\": {\"encrypted_password\": \"VGhpcyBpcyBhbiBlbmNvZGVkIGJ5dGUgYXJyYXku\", \"encryption_key\": {\"fingerprint\": \"SHA256:yxavE4CIOL2NlsqcurRO3xGjkP6m/0mp8ugojH5yxlY\"}}}";
     String getInstanceInitializationPath = "/instances/testString/initialization";
 
     server.enqueue(new MockResponse()
@@ -5147,7 +5231,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -5201,7 +5285,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -5255,7 +5339,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -5307,7 +5391,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -5360,7 +5444,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -5420,7 +5504,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -5472,7 +5556,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -5539,7 +5623,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -5592,7 +5676,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -5645,7 +5729,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -5706,7 +5790,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -5759,7 +5843,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -5813,7 +5897,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -5867,7 +5951,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -5921,7 +6005,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -5943,7 +6027,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testListInstanceVolumeAttachmentsWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"volume_attachments\": [{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"delete_volume_on_instance_delete\": true, \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"name\": \"my-volume-attachment\", \"status\": \"attached\", \"type\": \"boot\", \"volume\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}}]}";
+    String mockResponseBody = "{\"volume_attachments\": [{\"bandwidth\": 250, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"delete_volume_on_instance_delete\": true, \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"name\": \"my-volume-attachment\", \"status\": \"attached\", \"type\": \"boot\", \"volume\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}}]}";
     String listInstanceVolumeAttachmentsPath = "/instances/testString/volume_attachments";
 
     server.enqueue(new MockResponse()
@@ -5973,7 +6057,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -5995,7 +6079,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testCreateInstanceVolumeAttachmentWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"delete_volume_on_instance_delete\": true, \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"name\": \"my-volume-attachment\", \"status\": \"attached\", \"type\": \"boot\", \"volume\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}}";
+    String mockResponseBody = "{\"bandwidth\": 250, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"delete_volume_on_instance_delete\": true, \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"name\": \"my-volume-attachment\", \"status\": \"attached\", \"type\": \"boot\", \"volume\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}}";
     String createInstanceVolumeAttachmentPath = "/instances/testString/volume_attachments";
 
     server.enqueue(new MockResponse()
@@ -6005,16 +6089,16 @@ public class VpcTest extends PowerMockTestCase {
 
     constructClientService();
 
-    // Construct an instance of the VolumeIdentityById model
-    VolumeIdentityById volumeIdentityModel = new VolumeIdentityById.Builder()
+    // Construct an instance of the VolumeAttachmentPrototypeVolumeVolumeIdentityVolumeIdentityById model
+    VolumeAttachmentPrototypeVolumeVolumeIdentityVolumeIdentityById volumeAttachmentPrototypeVolumeModel = new VolumeAttachmentPrototypeVolumeVolumeIdentityVolumeIdentityById.Builder()
     .id("1a6b7274-678d-4dfb-8981-c71dd9d4daa5")
     .build();
 
     // Construct an instance of the CreateInstanceVolumeAttachmentOptions model
     CreateInstanceVolumeAttachmentOptions createInstanceVolumeAttachmentOptionsModel = new CreateInstanceVolumeAttachmentOptions.Builder()
     .instanceId("testString")
-    .volume(volumeIdentityModel)
-    .deleteVolumeOnInstanceDelete(true)
+    .volume(volumeAttachmentPrototypeVolumeModel)
+    .deleteVolumeOnInstanceDelete(false)
     .name("my-volume-attachment")
     .build();
 
@@ -6033,7 +6117,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -6086,7 +6170,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -6108,7 +6192,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testGetInstanceVolumeAttachmentWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"delete_volume_on_instance_delete\": true, \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"name\": \"my-volume-attachment\", \"status\": \"attached\", \"type\": \"boot\", \"volume\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}}";
+    String mockResponseBody = "{\"bandwidth\": 250, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"delete_volume_on_instance_delete\": true, \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"name\": \"my-volume-attachment\", \"status\": \"attached\", \"type\": \"boot\", \"volume\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}}";
     String getInstanceVolumeAttachmentPath = "/instances/testString/volume_attachments/testString";
 
     server.enqueue(new MockResponse()
@@ -6139,7 +6223,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -6161,7 +6245,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testUpdateInstanceVolumeAttachmentWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"delete_volume_on_instance_delete\": true, \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"name\": \"my-volume-attachment\", \"status\": \"attached\", \"type\": \"boot\", \"volume\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}}";
+    String mockResponseBody = "{\"bandwidth\": 250, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"delete_volume_on_instance_delete\": true, \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"name\": \"my-volume-attachment\", \"status\": \"attached\", \"type\": \"boot\", \"volume\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}}";
     String updateInstanceVolumeAttachmentPath = "/instances/testString/volume_attachments/testString";
 
     server.enqueue(new MockResponse()
@@ -6200,7 +6284,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -6253,7 +6337,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("1"));
@@ -6327,7 +6411,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -6379,7 +6463,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -6431,7 +6515,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -6516,7 +6600,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -6568,7 +6652,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -6590,7 +6674,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testListInstanceGroupManagersWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"first\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/managers?limit=20\"}, \"limit\": 20, \"managers\": [{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/1e09281b-f177-46fb-baf1-bc152b2e391a/managers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"management_enabled\": false, \"name\": \"my-instance-group-manager\", \"updated_at\": \"2019-01-01T12:00:00.000Z\", \"aggregation_window\": 120, \"cooldown\": 210, \"manager_type\": \"autoscale\", \"max_membership_count\": 10, \"min_membership_count\": 10, \"policies\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/managers/4c939b00-601f-11ea-bca2-000c29475bed/policies/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance-group-manager-policy\"}]}], \"next\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/managers?start=9d5a91a3e2cbd233b5a5b33436855ed1&limit=20\"}, \"total_count\": 132}";
+    String mockResponseBody = "{\"first\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/managers?limit=20\"}, \"limit\": 20, \"managers\": [{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/1e09281b-f177-46fb-baf1-bc152b2e391a/managers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"management_enabled\": true, \"name\": \"my-instance-group-manager\", \"updated_at\": \"2019-01-01T12:00:00.000Z\", \"aggregation_window\": 120, \"cooldown\": 210, \"manager_type\": \"autoscale\", \"max_membership_count\": 10, \"min_membership_count\": 10, \"policies\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/managers/4c939b00-601f-11ea-bca2-000c29475bed/policies/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance-group-manager-policy\"}]}], \"next\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/managers?start=9d5a91a3e2cbd233b5a5b33436855ed1&limit=20\"}, \"total_count\": 132}";
     String listInstanceGroupManagersPath = "/instance_groups/testString/managers";
 
     server.enqueue(new MockResponse()
@@ -6622,7 +6706,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("1"));
@@ -6646,7 +6730,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testCreateInstanceGroupManagerWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/1e09281b-f177-46fb-baf1-bc152b2e391a/managers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"management_enabled\": false, \"name\": \"my-instance-group-manager\", \"updated_at\": \"2019-01-01T12:00:00.000Z\", \"aggregation_window\": 120, \"cooldown\": 210, \"manager_type\": \"autoscale\", \"max_membership_count\": 10, \"min_membership_count\": 10, \"policies\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/managers/4c939b00-601f-11ea-bca2-000c29475bed/policies/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance-group-manager-policy\"}]}";
+    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/1e09281b-f177-46fb-baf1-bc152b2e391a/managers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"management_enabled\": true, \"name\": \"my-instance-group-manager\", \"updated_at\": \"2019-01-01T12:00:00.000Z\", \"aggregation_window\": 120, \"cooldown\": 210, \"manager_type\": \"autoscale\", \"max_membership_count\": 10, \"min_membership_count\": 10, \"policies\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/managers/4c939b00-601f-11ea-bca2-000c29475bed/policies/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance-group-manager-policy\"}]}";
     String createInstanceGroupManagerPath = "/instance_groups/testString/managers";
 
     server.enqueue(new MockResponse()
@@ -6688,7 +6772,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -6741,7 +6825,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -6763,7 +6847,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testGetInstanceGroupManagerWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/1e09281b-f177-46fb-baf1-bc152b2e391a/managers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"management_enabled\": false, \"name\": \"my-instance-group-manager\", \"updated_at\": \"2019-01-01T12:00:00.000Z\", \"aggregation_window\": 120, \"cooldown\": 210, \"manager_type\": \"autoscale\", \"max_membership_count\": 10, \"min_membership_count\": 10, \"policies\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/managers/4c939b00-601f-11ea-bca2-000c29475bed/policies/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance-group-manager-policy\"}]}";
+    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/1e09281b-f177-46fb-baf1-bc152b2e391a/managers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"management_enabled\": true, \"name\": \"my-instance-group-manager\", \"updated_at\": \"2019-01-01T12:00:00.000Z\", \"aggregation_window\": 120, \"cooldown\": 210, \"manager_type\": \"autoscale\", \"max_membership_count\": 10, \"min_membership_count\": 10, \"policies\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/managers/4c939b00-601f-11ea-bca2-000c29475bed/policies/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance-group-manager-policy\"}]}";
     String getInstanceGroupManagerPath = "/instance_groups/testString/managers/testString";
 
     server.enqueue(new MockResponse()
@@ -6794,7 +6878,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -6816,7 +6900,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testUpdateInstanceGroupManagerWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/1e09281b-f177-46fb-baf1-bc152b2e391a/managers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"management_enabled\": false, \"name\": \"my-instance-group-manager\", \"updated_at\": \"2019-01-01T12:00:00.000Z\", \"aggregation_window\": 120, \"cooldown\": 210, \"manager_type\": \"autoscale\", \"max_membership_count\": 10, \"min_membership_count\": 10, \"policies\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/managers/4c939b00-601f-11ea-bca2-000c29475bed/policies/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance-group-manager-policy\"}]}";
+    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/1e09281b-f177-46fb-baf1-bc152b2e391a/managers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"management_enabled\": true, \"name\": \"my-instance-group-manager\", \"updated_at\": \"2019-01-01T12:00:00.000Z\", \"aggregation_window\": 120, \"cooldown\": 210, \"manager_type\": \"autoscale\", \"max_membership_count\": 10, \"min_membership_count\": 10, \"policies\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/managers/4c939b00-601f-11ea-bca2-000c29475bed/policies/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance-group-manager-policy\"}]}";
     String updateInstanceGroupManagerPath = "/instance_groups/testString/managers/testString";
 
     server.enqueue(new MockResponse()
@@ -6859,7 +6943,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -6914,7 +6998,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("1"));
@@ -6982,7 +7066,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -7036,7 +7120,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -7090,7 +7174,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -7122,23 +7206,23 @@ public class VpcTest extends PowerMockTestCase {
 
     constructClientService();
 
-    // Construct an instance of the InstanceGroupManagerScheduledActionGroupPatch model
-    InstanceGroupManagerScheduledActionGroupPatch instanceGroupManagerScheduledActionGroupPatchModel = new InstanceGroupManagerScheduledActionGroupPatch.Builder()
+    // Construct an instance of the InstanceGroupManagerActionGroupPatch model
+    InstanceGroupManagerActionGroupPatch instanceGroupManagerActionGroupPatchModel = new InstanceGroupManagerActionGroupPatch.Builder()
     .membershipCount(Long.valueOf("10"))
     .build();
 
-    // Construct an instance of the InstanceGroupManagerScheduledActionByManagerPatchManagerAutoScalePatch model
-    InstanceGroupManagerScheduledActionByManagerPatchManagerAutoScalePatch instanceGroupManagerScheduledActionByManagerPatchManagerModel = new InstanceGroupManagerScheduledActionByManagerPatchManagerAutoScalePatch.Builder()
+    // Construct an instance of the InstanceGroupManagerActionManagerPatch model
+    InstanceGroupManagerActionManagerPatch instanceGroupManagerActionManagerPatchModel = new InstanceGroupManagerActionManagerPatch.Builder()
     .maxMembershipCount(Long.valueOf("10"))
     .minMembershipCount(Long.valueOf("10"))
     .build();
 
-    // Construct an instance of the InstanceGroupManagerActionPatchScheduledActionPatch model
-    InstanceGroupManagerActionPatchScheduledActionPatch instanceGroupManagerActionPatchModel = new InstanceGroupManagerActionPatchScheduledActionPatch.Builder()
-    .name("my-instance-group-manager-action")
+    // Construct an instance of the InstanceGroupManagerActionPatch model
+    InstanceGroupManagerActionPatch instanceGroupManagerActionPatchModel = new InstanceGroupManagerActionPatch.Builder()
     .cronSpec("*/5 1,2,3 * * *")
-    .group(instanceGroupManagerScheduledActionGroupPatchModel)
-    .manager(instanceGroupManagerScheduledActionByManagerPatchManagerModel)
+    .group(instanceGroupManagerActionGroupPatchModel)
+    .manager(instanceGroupManagerActionManagerPatchModel)
+    .name("my-instance-group-manager-action")
     .runAt(DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"))
     .build();
     Map<String, Object> instanceGroupManagerActionPatchModelAsPatch = instanceGroupManagerActionPatchModel.asPatch();
@@ -7166,7 +7250,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -7221,7 +7305,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("1"));
@@ -7285,7 +7369,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -7339,7 +7423,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -7393,7 +7477,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -7456,7 +7540,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -7508,7 +7592,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -7562,7 +7646,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("1"));
@@ -7617,7 +7701,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -7670,7 +7754,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -7730,7 +7814,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -7785,7 +7869,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("1"));
@@ -7843,7 +7927,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -7883,7 +7967,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -7935,7 +8019,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -7994,7 +8078,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -8047,7 +8131,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("1"));
@@ -8089,7 +8173,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -8145,7 +8229,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("dedicated_host_group.id"), "testString");
     assertEquals(query.get("start"), "testString");
@@ -8214,7 +8298,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -8266,7 +8350,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -8319,7 +8403,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -8379,7 +8463,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -8431,7 +8515,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -8483,7 +8567,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -8543,7 +8627,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -8560,6 +8644,271 @@ public class VpcTest extends PowerMockTestCase {
 
     // Invoke operation with null options model (negative test)
     vpcService.updateDedicatedHost(null).execute();
+  }
+
+  @Test
+  public void testListPlacementGroupsWOptions() throws Throwable {
+    // Schedule some responses.
+    String mockResponseBody = "{\"first\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/placement_groups?limit=20\"}, \"limit\": 20, \"next\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/placement_groups?start=9d5a91a3e2cbd233b5a5b33436855ed1&limit=20\"}, \"placement_groups\": [{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::placement-group:r018-418fe842-a3e9-47b9-a938-1aa5bd632871\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/placement_groups/r018-418fe842-a3e9-47b9-a938-1aa5bd632871\", \"id\": \"r018-418fe842-a3e9-47b9-a938-1aa5bd632871\", \"lifecycle_state\": \"stable\", \"name\": \"my-placement-group\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"placement_group\", \"strategy\": \"host_spread\"}], \"total_count\": 132}";
+    String listPlacementGroupsPath = "/placement_groups";
+
+    server.enqueue(new MockResponse()
+    .setHeader("Content-type", "application/json")
+    .setResponseCode(200)
+    .setBody(mockResponseBody));
+
+    constructClientService();
+
+    // Construct an instance of the ListPlacementGroupsOptions model
+    ListPlacementGroupsOptions listPlacementGroupsOptionsModel = new ListPlacementGroupsOptions.Builder()
+    .start("testString")
+    .limit(Long.valueOf("1"))
+    .build();
+
+    // Invoke operation with valid options model (positive test)
+    Response<PlacementGroupCollection> response = vpcService.listPlacementGroups(listPlacementGroupsOptionsModel).execute();
+    assertNotNull(response);
+    PlacementGroupCollection responseObj = response.getResult();
+    assertNotNull(responseObj);
+
+    // Verify the contents of the request
+    RecordedRequest request = server.takeRequest();
+    assertNotNull(request);
+    assertEquals(request.getMethod(), "GET");
+
+    // Check query
+    Map<String, String> query = TestUtilities.parseQueryString(request);
+    assertNotNull(query);
+    // Get query params
+    assertEquals(query.get("version"), version);
+    assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
+    assertEquals(query.get("start"), "testString");
+    assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("1"));
+    // Check request path
+    String parsedPath = TestUtilities.parseReqPath(request);
+    assertEquals(parsedPath, listPlacementGroupsPath);
+  }
+
+  @Test
+  public void testCreatePlacementGroupWOptions() throws Throwable {
+    // Schedule some responses.
+    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::placement-group:r018-418fe842-a3e9-47b9-a938-1aa5bd632871\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/placement_groups/r018-418fe842-a3e9-47b9-a938-1aa5bd632871\", \"id\": \"r018-418fe842-a3e9-47b9-a938-1aa5bd632871\", \"lifecycle_state\": \"stable\", \"name\": \"my-placement-group\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"placement_group\", \"strategy\": \"host_spread\"}";
+    String createPlacementGroupPath = "/placement_groups";
+
+    server.enqueue(new MockResponse()
+    .setHeader("Content-type", "application/json")
+    .setResponseCode(201)
+    .setBody(mockResponseBody));
+
+    constructClientService();
+
+    // Construct an instance of the ResourceGroupIdentityById model
+    ResourceGroupIdentityById resourceGroupIdentityModel = new ResourceGroupIdentityById.Builder()
+    .id("fee82deba12e4c0fb69c3b09d1f12345")
+    .build();
+
+    // Construct an instance of the CreatePlacementGroupOptions model
+    CreatePlacementGroupOptions createPlacementGroupOptionsModel = new CreatePlacementGroupOptions.Builder()
+    .strategy("host_spread")
+    .name("my-placement-group")
+    .resourceGroup(resourceGroupIdentityModel)
+    .build();
+
+    // Invoke operation with valid options model (positive test)
+    Response<PlacementGroup> response = vpcService.createPlacementGroup(createPlacementGroupOptionsModel).execute();
+    assertNotNull(response);
+    PlacementGroup responseObj = response.getResult();
+    assertNotNull(responseObj);
+
+    // Verify the contents of the request
+    RecordedRequest request = server.takeRequest();
+    assertNotNull(request);
+    assertEquals(request.getMethod(), "POST");
+
+    // Check query
+    Map<String, String> query = TestUtilities.parseQueryString(request);
+    assertNotNull(query);
+    // Get query params
+    assertEquals(query.get("version"), version);
+    assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
+    // Check request path
+    String parsedPath = TestUtilities.parseReqPath(request);
+    assertEquals(parsedPath, createPlacementGroupPath);
+  }
+
+  // Test the createPlacementGroup operation with null options model parameter
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testCreatePlacementGroupNoOptions() throws Throwable {
+    // construct the service
+    constructClientService();
+
+    server.enqueue(new MockResponse());
+
+    // Invoke operation with null options model (negative test)
+    vpcService.createPlacementGroup(null).execute();
+  }
+
+  @Test
+  public void testDeletePlacementGroupWOptions() throws Throwable {
+    // Schedule some responses.
+    String mockResponseBody = "";
+    String deletePlacementGroupPath = "/placement_groups/testString";
+
+    server.enqueue(new MockResponse()
+    .setResponseCode(202)
+    .setBody(mockResponseBody));
+
+    constructClientService();
+
+    // Construct an instance of the DeletePlacementGroupOptions model
+    DeletePlacementGroupOptions deletePlacementGroupOptionsModel = new DeletePlacementGroupOptions.Builder()
+    .id("testString")
+    .build();
+
+    // Invoke operation with valid options model (positive test)
+    Response<Void> response = vpcService.deletePlacementGroup(deletePlacementGroupOptionsModel).execute();
+    assertNotNull(response);
+    Void responseObj = response.getResult();
+    // Response does not have a return type. Check that the result is null.
+    assertNull(responseObj);
+
+    // Verify the contents of the request
+    RecordedRequest request = server.takeRequest();
+    assertNotNull(request);
+    assertEquals(request.getMethod(), "DELETE");
+
+    // Check query
+    Map<String, String> query = TestUtilities.parseQueryString(request);
+    assertNotNull(query);
+    // Get query params
+    assertEquals(query.get("version"), version);
+    assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
+    // Check request path
+    String parsedPath = TestUtilities.parseReqPath(request);
+    assertEquals(parsedPath, deletePlacementGroupPath);
+  }
+
+  // Test the deletePlacementGroup operation with null options model parameter
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testDeletePlacementGroupNoOptions() throws Throwable {
+    // construct the service
+    constructClientService();
+
+    server.enqueue(new MockResponse());
+
+    // Invoke operation with null options model (negative test)
+    vpcService.deletePlacementGroup(null).execute();
+  }
+
+  @Test
+  public void testGetPlacementGroupWOptions() throws Throwable {
+    // Schedule some responses.
+    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::placement-group:r018-418fe842-a3e9-47b9-a938-1aa5bd632871\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/placement_groups/r018-418fe842-a3e9-47b9-a938-1aa5bd632871\", \"id\": \"r018-418fe842-a3e9-47b9-a938-1aa5bd632871\", \"lifecycle_state\": \"stable\", \"name\": \"my-placement-group\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"placement_group\", \"strategy\": \"host_spread\"}";
+    String getPlacementGroupPath = "/placement_groups/testString";
+
+    server.enqueue(new MockResponse()
+    .setHeader("Content-type", "application/json")
+    .setResponseCode(200)
+    .setBody(mockResponseBody));
+
+    constructClientService();
+
+    // Construct an instance of the GetPlacementGroupOptions model
+    GetPlacementGroupOptions getPlacementGroupOptionsModel = new GetPlacementGroupOptions.Builder()
+    .id("testString")
+    .build();
+
+    // Invoke operation with valid options model (positive test)
+    Response<PlacementGroup> response = vpcService.getPlacementGroup(getPlacementGroupOptionsModel).execute();
+    assertNotNull(response);
+    PlacementGroup responseObj = response.getResult();
+    assertNotNull(responseObj);
+
+    // Verify the contents of the request
+    RecordedRequest request = server.takeRequest();
+    assertNotNull(request);
+    assertEquals(request.getMethod(), "GET");
+
+    // Check query
+    Map<String, String> query = TestUtilities.parseQueryString(request);
+    assertNotNull(query);
+    // Get query params
+    assertEquals(query.get("version"), version);
+    assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
+    // Check request path
+    String parsedPath = TestUtilities.parseReqPath(request);
+    assertEquals(parsedPath, getPlacementGroupPath);
+  }
+
+  // Test the getPlacementGroup operation with null options model parameter
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testGetPlacementGroupNoOptions() throws Throwable {
+    // construct the service
+    constructClientService();
+
+    server.enqueue(new MockResponse());
+
+    // Invoke operation with null options model (negative test)
+    vpcService.getPlacementGroup(null).execute();
+  }
+
+  @Test
+  public void testUpdatePlacementGroupWOptions() throws Throwable {
+    // Schedule some responses.
+    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::placement-group:r018-418fe842-a3e9-47b9-a938-1aa5bd632871\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/placement_groups/r018-418fe842-a3e9-47b9-a938-1aa5bd632871\", \"id\": \"r018-418fe842-a3e9-47b9-a938-1aa5bd632871\", \"lifecycle_state\": \"stable\", \"name\": \"my-placement-group\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"placement_group\", \"strategy\": \"host_spread\"}";
+    String updatePlacementGroupPath = "/placement_groups/testString";
+
+    server.enqueue(new MockResponse()
+    .setHeader("Content-type", "application/json")
+    .setResponseCode(200)
+    .setBody(mockResponseBody));
+
+    constructClientService();
+
+    // Construct an instance of the PlacementGroupPatch model
+    PlacementGroupPatch placementGroupPatchModel = new PlacementGroupPatch.Builder()
+    .name("my-placement-group")
+    .build();
+    Map<String, Object> placementGroupPatchModelAsPatch = placementGroupPatchModel.asPatch();
+
+    // Construct an instance of the UpdatePlacementGroupOptions model
+    UpdatePlacementGroupOptions updatePlacementGroupOptionsModel = new UpdatePlacementGroupOptions.Builder()
+    .id("testString")
+    .placementGroupPatch(placementGroupPatchModelAsPatch)
+    .build();
+
+    // Invoke operation with valid options model (positive test)
+    Response<PlacementGroup> response = vpcService.updatePlacementGroup(updatePlacementGroupOptionsModel).execute();
+    assertNotNull(response);
+    PlacementGroup responseObj = response.getResult();
+    assertNotNull(responseObj);
+
+    // Verify the contents of the request
+    RecordedRequest request = server.takeRequest();
+    assertNotNull(request);
+    assertEquals(request.getMethod(), "PATCH");
+
+    // Check query
+    Map<String, String> query = TestUtilities.parseQueryString(request);
+    assertNotNull(query);
+    // Get query params
+    assertEquals(query.get("version"), version);
+    assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
+    // Check request path
+    String parsedPath = TestUtilities.parseReqPath(request);
+    assertEquals(parsedPath, updatePlacementGroupPath);
+  }
+
+  // Test the updatePlacementGroup operation with null options model parameter
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testUpdatePlacementGroupNoOptions() throws Throwable {
+    // construct the service
+    constructClientService();
+
+    server.enqueue(new MockResponse());
+
+    // Invoke operation with null options model (negative test)
+    vpcService.updatePlacementGroup(null).execute();
   }
 
   @Test
@@ -8596,7 +8945,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("1"));
@@ -8638,7 +8987,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -8660,7 +9009,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testListVolumesWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"first\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes?limit=20\"}, \"limit\": 20, \"next\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes?start=9d5a91a3e2cbd233b5a5b33436855ed1&limit=20\"}, \"volumes\": [{\"capacity\": 100, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"encryption\": \"provider_managed\", \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"iops\": 10000, \"name\": \"my-volume\", \"profile\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volume/profiles/general-purpose\", \"name\": \"general-purpose\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"status\": \"available\", \"status_reasons\": [{\"code\": \"encryption_key_deleted\", \"message\": \"message\", \"more_info\": \"https://cloud.ibm.com/docs/key-protect?topic=key-protect-restore-keys\"}], \"volume_attachments\": [{\"delete_volume_on_instance_delete\": true, \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"instance\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance\"}, \"name\": \"my-volume-attachment\", \"type\": \"boot\"}], \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}]}";
+    String mockResponseBody = "{\"first\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes?limit=20\"}, \"limit\": 20, \"next\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes?start=9d5a91a3e2cbd233b5a5b33436855ed1&limit=20\"}, \"volumes\": [{\"active\": true, \"bandwidth\": 1000, \"busy\": true, \"capacity\": 1000, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"encryption\": \"provider_managed\", \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"iops\": 10000, \"name\": \"my-volume\", \"operating_system\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-16-amd64\", \"name\": \"ubuntu-16-amd64\"}, \"profile\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volume/profiles/general-purpose\", \"name\": \"general-purpose\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"source_image\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"name\": \"my-image\"}, \"source_snapshot\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::snapshot:r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"id\": \"r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"name\": \"my-snapshot\", \"resource_type\": \"snapshot\"}, \"status\": \"available\", \"status_reasons\": [{\"code\": \"encryption_key_deleted\", \"message\": \"message\", \"more_info\": \"https://cloud.ibm.com/docs/key-protect?topic=key-protect-restore-keys\"}], \"volume_attachments\": [{\"delete_volume_on_instance_delete\": true, \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"instance\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance\"}, \"name\": \"my-volume-attachment\", \"type\": \"boot\"}], \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}]}";
     String listVolumesPath = "/volumes";
 
     server.enqueue(new MockResponse()
@@ -8693,7 +9042,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("1"));
@@ -8707,7 +9056,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testCreateVolumeWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"capacity\": 100, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"encryption\": \"provider_managed\", \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"iops\": 10000, \"name\": \"my-volume\", \"profile\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volume/profiles/general-purpose\", \"name\": \"general-purpose\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"status\": \"available\", \"status_reasons\": [{\"code\": \"encryption_key_deleted\", \"message\": \"message\", \"more_info\": \"https://cloud.ibm.com/docs/key-protect?topic=key-protect-restore-keys\"}], \"volume_attachments\": [{\"delete_volume_on_instance_delete\": true, \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"instance\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance\"}, \"name\": \"my-volume-attachment\", \"type\": \"boot\"}], \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}";
+    String mockResponseBody = "{\"active\": true, \"bandwidth\": 1000, \"busy\": true, \"capacity\": 1000, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"encryption\": \"provider_managed\", \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"iops\": 10000, \"name\": \"my-volume\", \"operating_system\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-16-amd64\", \"name\": \"ubuntu-16-amd64\"}, \"profile\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volume/profiles/general-purpose\", \"name\": \"general-purpose\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"source_image\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"name\": \"my-image\"}, \"source_snapshot\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::snapshot:r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"id\": \"r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"name\": \"my-snapshot\", \"resource_type\": \"snapshot\"}, \"status\": \"available\", \"status_reasons\": [{\"code\": \"encryption_key_deleted\", \"message\": \"message\", \"more_info\": \"https://cloud.ibm.com/docs/key-protect?topic=key-protect-restore-keys\"}], \"volume_attachments\": [{\"delete_volume_on_instance_delete\": true, \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"instance\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance\"}, \"name\": \"my-volume-attachment\", \"type\": \"boot\"}], \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}";
     String createVolumePath = "/volumes";
 
     server.enqueue(new MockResponse()
@@ -8768,7 +9117,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -8820,7 +9169,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -8842,7 +9191,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testGetVolumeWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"capacity\": 100, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"encryption\": \"provider_managed\", \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"iops\": 10000, \"name\": \"my-volume\", \"profile\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volume/profiles/general-purpose\", \"name\": \"general-purpose\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"status\": \"available\", \"status_reasons\": [{\"code\": \"encryption_key_deleted\", \"message\": \"message\", \"more_info\": \"https://cloud.ibm.com/docs/key-protect?topic=key-protect-restore-keys\"}], \"volume_attachments\": [{\"delete_volume_on_instance_delete\": true, \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"instance\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance\"}, \"name\": \"my-volume-attachment\", \"type\": \"boot\"}], \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}";
+    String mockResponseBody = "{\"active\": true, \"bandwidth\": 1000, \"busy\": true, \"capacity\": 1000, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"encryption\": \"provider_managed\", \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"iops\": 10000, \"name\": \"my-volume\", \"operating_system\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-16-amd64\", \"name\": \"ubuntu-16-amd64\"}, \"profile\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volume/profiles/general-purpose\", \"name\": \"general-purpose\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"source_image\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"name\": \"my-image\"}, \"source_snapshot\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::snapshot:r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"id\": \"r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"name\": \"my-snapshot\", \"resource_type\": \"snapshot\"}, \"status\": \"available\", \"status_reasons\": [{\"code\": \"encryption_key_deleted\", \"message\": \"message\", \"more_info\": \"https://cloud.ibm.com/docs/key-protect?topic=key-protect-restore-keys\"}], \"volume_attachments\": [{\"delete_volume_on_instance_delete\": true, \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"instance\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance\"}, \"name\": \"my-volume-attachment\", \"type\": \"boot\"}], \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}";
     String getVolumePath = "/volumes/testString";
 
     server.enqueue(new MockResponse()
@@ -8872,7 +9221,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -8894,7 +9243,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testUpdateVolumeWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"capacity\": 100, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"encryption\": \"provider_managed\", \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"iops\": 10000, \"name\": \"my-volume\", \"profile\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volume/profiles/general-purpose\", \"name\": \"general-purpose\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"status\": \"available\", \"status_reasons\": [{\"code\": \"encryption_key_deleted\", \"message\": \"message\", \"more_info\": \"https://cloud.ibm.com/docs/key-protect?topic=key-protect-restore-keys\"}], \"volume_attachments\": [{\"delete_volume_on_instance_delete\": true, \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"instance\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance\"}, \"name\": \"my-volume-attachment\", \"type\": \"boot\"}], \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}";
+    String mockResponseBody = "{\"active\": true, \"bandwidth\": 1000, \"busy\": true, \"capacity\": 1000, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"encryption\": \"provider_managed\", \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"iops\": 10000, \"name\": \"my-volume\", \"operating_system\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-16-amd64\", \"name\": \"ubuntu-16-amd64\"}, \"profile\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volume/profiles/general-purpose\", \"name\": \"general-purpose\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"source_image\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"name\": \"my-image\"}, \"source_snapshot\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::snapshot:r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"id\": \"r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"name\": \"my-snapshot\", \"resource_type\": \"snapshot\"}, \"status\": \"available\", \"status_reasons\": [{\"code\": \"encryption_key_deleted\", \"message\": \"message\", \"more_info\": \"https://cloud.ibm.com/docs/key-protect?topic=key-protect-restore-keys\"}], \"volume_attachments\": [{\"delete_volume_on_instance_delete\": true, \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"instance\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance\"}, \"name\": \"my-volume-attachment\", \"type\": \"boot\"}], \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}";
     String updateVolumePath = "/volumes/testString";
 
     server.enqueue(new MockResponse()
@@ -8904,9 +9253,17 @@ public class VpcTest extends PowerMockTestCase {
 
     constructClientService();
 
+    // Construct an instance of the VolumeProfileIdentityByName model
+    VolumeProfileIdentityByName volumeProfileIdentityModel = new VolumeProfileIdentityByName.Builder()
+    .name("general-purpose")
+    .build();
+
     // Construct an instance of the VolumePatch model
     VolumePatch volumePatchModel = new VolumePatch.Builder()
+    .capacity(Long.valueOf("100"))
+    .iops(Long.valueOf("10000"))
     .name("my-volume")
+    .profile(volumeProfileIdentityModel)
     .build();
     Map<String, Object> volumePatchModelAsPatch = volumePatchModel.asPatch();
 
@@ -8931,7 +9288,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -8948,6 +9305,343 @@ public class VpcTest extends PowerMockTestCase {
 
     // Invoke operation with null options model (negative test)
     vpcService.updateVolume(null).execute();
+  }
+
+  @Test
+  public void testDeleteSnapshotsWOptions() throws Throwable {
+    // Schedule some responses.
+    String mockResponseBody = "";
+    String deleteSnapshotsPath = "/snapshots";
+
+    server.enqueue(new MockResponse()
+    .setResponseCode(204)
+    .setBody(mockResponseBody));
+
+    constructClientService();
+
+    // Construct an instance of the DeleteSnapshotsOptions model
+    DeleteSnapshotsOptions deleteSnapshotsOptionsModel = new DeleteSnapshotsOptions.Builder()
+    .sourceVolumeId("testString")
+    .build();
+
+    // Invoke operation with valid options model (positive test)
+    Response<Void> response = vpcService.deleteSnapshots(deleteSnapshotsOptionsModel).execute();
+    assertNotNull(response);
+    Void responseObj = response.getResult();
+    // Response does not have a return type. Check that the result is null.
+    assertNull(responseObj);
+
+    // Verify the contents of the request
+    RecordedRequest request = server.takeRequest();
+    assertNotNull(request);
+    assertEquals(request.getMethod(), "DELETE");
+
+    // Check query
+    Map<String, String> query = TestUtilities.parseQueryString(request);
+    assertNotNull(query);
+    // Get query params
+    assertEquals(query.get("version"), version);
+    assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
+    assertEquals(query.get("source_volume.id"), "testString");
+    // Check request path
+    String parsedPath = TestUtilities.parseReqPath(request);
+    assertEquals(parsedPath, deleteSnapshotsPath);
+  }
+
+  // Test the deleteSnapshots operation with null options model parameter
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testDeleteSnapshotsNoOptions() throws Throwable {
+    // construct the service
+    constructClientService();
+
+    server.enqueue(new MockResponse());
+
+    // Invoke operation with null options model (negative test)
+    vpcService.deleteSnapshots(null).execute();
+  }
+
+  @Test
+  public void testListSnapshotsWOptions() throws Throwable {
+    // Schedule some responses.
+    String mockResponseBody = "{\"first\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshots?limit=20\"}, \"limit\": 20, \"next\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshots?start=9d5a91a3e2cbd233b5a5b33436855ed1&limit=20\"}, \"snapshots\": [{\"bootable\": true, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::snapshot:r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"deletable\": false, \"encryption\": \"provider_managed\", \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"id\": \"r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"lifecycle_state\": \"stable\", \"minimum_capacity\": 1, \"name\": \"my-snapshot\", \"operating_system\": {\"architecture\": \"amd64\", \"dedicated_host_only\": false, \"display_name\": \"Ubuntu Server 16.04 LTS amd64\", \"family\": \"Ubuntu Server\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-16-amd64\", \"name\": \"ubuntu-16-amd64\", \"vendor\": \"Canonical\", \"version\": \"16.04 LTS\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"snapshot\", \"size\": 1, \"source_image\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"name\": \"my-image\"}, \"source_volume\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}}], \"total_count\": 132}";
+    String listSnapshotsPath = "/snapshots";
+
+    server.enqueue(new MockResponse()
+    .setHeader("Content-type", "application/json")
+    .setResponseCode(200)
+    .setBody(mockResponseBody));
+
+    constructClientService();
+
+    // Construct an instance of the ListSnapshotsOptions model
+    ListSnapshotsOptions listSnapshotsOptionsModel = new ListSnapshotsOptions.Builder()
+    .start("testString")
+    .limit(Long.valueOf("1"))
+    .resourceGroupId("testString")
+    .name("testString")
+    .sourceVolumeId("testString")
+    .sourceVolumeCrn("testString")
+    .sourceImageId("testString")
+    .sourceImageCrn("testString")
+    .sort("name")
+    .build();
+
+    // Invoke operation with valid options model (positive test)
+    Response<SnapshotCollection> response = vpcService.listSnapshots(listSnapshotsOptionsModel).execute();
+    assertNotNull(response);
+    SnapshotCollection responseObj = response.getResult();
+    assertNotNull(responseObj);
+
+    // Verify the contents of the request
+    RecordedRequest request = server.takeRequest();
+    assertNotNull(request);
+    assertEquals(request.getMethod(), "GET");
+
+    // Check query
+    Map<String, String> query = TestUtilities.parseQueryString(request);
+    assertNotNull(query);
+    // Get query params
+    assertEquals(query.get("version"), version);
+    assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
+    assertEquals(query.get("start"), "testString");
+    assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("1"));
+    assertEquals(query.get("resource_group.id"), "testString");
+    assertEquals(query.get("name"), "testString");
+    assertEquals(query.get("source_volume.id"), "testString");
+    assertEquals(query.get("source_volume.crn"), "testString");
+    assertEquals(query.get("source_image.id"), "testString");
+    assertEquals(query.get("source_image.crn"), "testString");
+    assertEquals(query.get("sort"), "name");
+    // Check request path
+    String parsedPath = TestUtilities.parseReqPath(request);
+    assertEquals(parsedPath, listSnapshotsPath);
+  }
+
+  @Test
+  public void testCreateSnapshotWOptions() throws Throwable {
+    // Schedule some responses.
+    String mockResponseBody = "{\"bootable\": true, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::snapshot:r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"deletable\": false, \"encryption\": \"provider_managed\", \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"id\": \"r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"lifecycle_state\": \"stable\", \"minimum_capacity\": 1, \"name\": \"my-snapshot\", \"operating_system\": {\"architecture\": \"amd64\", \"dedicated_host_only\": false, \"display_name\": \"Ubuntu Server 16.04 LTS amd64\", \"family\": \"Ubuntu Server\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-16-amd64\", \"name\": \"ubuntu-16-amd64\", \"vendor\": \"Canonical\", \"version\": \"16.04 LTS\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"snapshot\", \"size\": 1, \"source_image\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"name\": \"my-image\"}, \"source_volume\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}}";
+    String createSnapshotPath = "/snapshots";
+
+    server.enqueue(new MockResponse()
+    .setHeader("Content-type", "application/json")
+    .setResponseCode(201)
+    .setBody(mockResponseBody));
+
+    constructClientService();
+
+    // Construct an instance of the VolumeIdentityById model
+    VolumeIdentityById volumeIdentityModel = new VolumeIdentityById.Builder()
+    .id("1a6b7274-678d-4dfb-8981-c71dd9d4daa5")
+    .build();
+
+    // Construct an instance of the ResourceGroupIdentityById model
+    ResourceGroupIdentityById resourceGroupIdentityModel = new ResourceGroupIdentityById.Builder()
+    .id("fee82deba12e4c0fb69c3b09d1f12345")
+    .build();
+
+    // Construct an instance of the CreateSnapshotOptions model
+    CreateSnapshotOptions createSnapshotOptionsModel = new CreateSnapshotOptions.Builder()
+    .sourceVolume(volumeIdentityModel)
+    .name("my-snapshot")
+    .resourceGroup(resourceGroupIdentityModel)
+    .build();
+
+    // Invoke operation with valid options model (positive test)
+    Response<Snapshot> response = vpcService.createSnapshot(createSnapshotOptionsModel).execute();
+    assertNotNull(response);
+    Snapshot responseObj = response.getResult();
+    assertNotNull(responseObj);
+
+    // Verify the contents of the request
+    RecordedRequest request = server.takeRequest();
+    assertNotNull(request);
+    assertEquals(request.getMethod(), "POST");
+
+    // Check query
+    Map<String, String> query = TestUtilities.parseQueryString(request);
+    assertNotNull(query);
+    // Get query params
+    assertEquals(query.get("version"), version);
+    assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
+    // Check request path
+    String parsedPath = TestUtilities.parseReqPath(request);
+    assertEquals(parsedPath, createSnapshotPath);
+  }
+
+  // Test the createSnapshot operation with null options model parameter
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testCreateSnapshotNoOptions() throws Throwable {
+    // construct the service
+    constructClientService();
+
+    server.enqueue(new MockResponse());
+
+    // Invoke operation with null options model (negative test)
+    vpcService.createSnapshot(null).execute();
+  }
+
+  @Test
+  public void testDeleteSnapshotWOptions() throws Throwable {
+    // Schedule some responses.
+    String mockResponseBody = "";
+    String deleteSnapshotPath = "/snapshots/testString";
+
+    server.enqueue(new MockResponse()
+    .setResponseCode(204)
+    .setBody(mockResponseBody));
+
+    constructClientService();
+
+    // Construct an instance of the DeleteSnapshotOptions model
+    DeleteSnapshotOptions deleteSnapshotOptionsModel = new DeleteSnapshotOptions.Builder()
+    .id("testString")
+    .build();
+
+    // Invoke operation with valid options model (positive test)
+    Response<Void> response = vpcService.deleteSnapshot(deleteSnapshotOptionsModel).execute();
+    assertNotNull(response);
+    Void responseObj = response.getResult();
+    // Response does not have a return type. Check that the result is null.
+    assertNull(responseObj);
+
+    // Verify the contents of the request
+    RecordedRequest request = server.takeRequest();
+    assertNotNull(request);
+    assertEquals(request.getMethod(), "DELETE");
+
+    // Check query
+    Map<String, String> query = TestUtilities.parseQueryString(request);
+    assertNotNull(query);
+    // Get query params
+    assertEquals(query.get("version"), version);
+    assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
+    // Check request path
+    String parsedPath = TestUtilities.parseReqPath(request);
+    assertEquals(parsedPath, deleteSnapshotPath);
+  }
+
+  // Test the deleteSnapshot operation with null options model parameter
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testDeleteSnapshotNoOptions() throws Throwable {
+    // construct the service
+    constructClientService();
+
+    server.enqueue(new MockResponse());
+
+    // Invoke operation with null options model (negative test)
+    vpcService.deleteSnapshot(null).execute();
+  }
+
+  @Test
+  public void testGetSnapshotWOptions() throws Throwable {
+    // Schedule some responses.
+    String mockResponseBody = "{\"bootable\": true, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::snapshot:r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"deletable\": false, \"encryption\": \"provider_managed\", \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"id\": \"r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"lifecycle_state\": \"stable\", \"minimum_capacity\": 1, \"name\": \"my-snapshot\", \"operating_system\": {\"architecture\": \"amd64\", \"dedicated_host_only\": false, \"display_name\": \"Ubuntu Server 16.04 LTS amd64\", \"family\": \"Ubuntu Server\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-16-amd64\", \"name\": \"ubuntu-16-amd64\", \"vendor\": \"Canonical\", \"version\": \"16.04 LTS\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"snapshot\", \"size\": 1, \"source_image\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"name\": \"my-image\"}, \"source_volume\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}}";
+    String getSnapshotPath = "/snapshots/testString";
+
+    server.enqueue(new MockResponse()
+    .setHeader("Content-type", "application/json")
+    .setResponseCode(200)
+    .setBody(mockResponseBody));
+
+    constructClientService();
+
+    // Construct an instance of the GetSnapshotOptions model
+    GetSnapshotOptions getSnapshotOptionsModel = new GetSnapshotOptions.Builder()
+    .id("testString")
+    .build();
+
+    // Invoke operation with valid options model (positive test)
+    Response<Snapshot> response = vpcService.getSnapshot(getSnapshotOptionsModel).execute();
+    assertNotNull(response);
+    Snapshot responseObj = response.getResult();
+    assertNotNull(responseObj);
+
+    // Verify the contents of the request
+    RecordedRequest request = server.takeRequest();
+    assertNotNull(request);
+    assertEquals(request.getMethod(), "GET");
+
+    // Check query
+    Map<String, String> query = TestUtilities.parseQueryString(request);
+    assertNotNull(query);
+    // Get query params
+    assertEquals(query.get("version"), version);
+    assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
+    // Check request path
+    String parsedPath = TestUtilities.parseReqPath(request);
+    assertEquals(parsedPath, getSnapshotPath);
+  }
+
+  // Test the getSnapshot operation with null options model parameter
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testGetSnapshotNoOptions() throws Throwable {
+    // construct the service
+    constructClientService();
+
+    server.enqueue(new MockResponse());
+
+    // Invoke operation with null options model (negative test)
+    vpcService.getSnapshot(null).execute();
+  }
+
+  @Test
+  public void testUpdateSnapshotWOptions() throws Throwable {
+    // Schedule some responses.
+    String mockResponseBody = "{\"bootable\": true, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::snapshot:r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"deletable\": false, \"encryption\": \"provider_managed\", \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"id\": \"r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"lifecycle_state\": \"stable\", \"minimum_capacity\": 1, \"name\": \"my-snapshot\", \"operating_system\": {\"architecture\": \"amd64\", \"dedicated_host_only\": false, \"display_name\": \"Ubuntu Server 16.04 LTS amd64\", \"family\": \"Ubuntu Server\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-16-amd64\", \"name\": \"ubuntu-16-amd64\", \"vendor\": \"Canonical\", \"version\": \"16.04 LTS\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"snapshot\", \"size\": 1, \"source_image\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"name\": \"my-image\"}, \"source_volume\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}}";
+    String updateSnapshotPath = "/snapshots/testString";
+
+    server.enqueue(new MockResponse()
+    .setHeader("Content-type", "application/json")
+    .setResponseCode(200)
+    .setBody(mockResponseBody));
+
+    constructClientService();
+
+    // Construct an instance of the SnapshotPatch model
+    SnapshotPatch snapshotPatchModel = new SnapshotPatch.Builder()
+    .name("my-snapshot")
+    .build();
+    Map<String, Object> snapshotPatchModelAsPatch = snapshotPatchModel.asPatch();
+
+    // Construct an instance of the UpdateSnapshotOptions model
+    UpdateSnapshotOptions updateSnapshotOptionsModel = new UpdateSnapshotOptions.Builder()
+    .id("testString")
+    .snapshotPatch(snapshotPatchModelAsPatch)
+    .build();
+
+    // Invoke operation with valid options model (positive test)
+    Response<Snapshot> response = vpcService.updateSnapshot(updateSnapshotOptionsModel).execute();
+    assertNotNull(response);
+    Snapshot responseObj = response.getResult();
+    assertNotNull(responseObj);
+
+    // Verify the contents of the request
+    RecordedRequest request = server.takeRequest();
+    assertNotNull(request);
+    assertEquals(request.getMethod(), "PATCH");
+
+    // Check query
+    Map<String, String> query = TestUtilities.parseQueryString(request);
+    assertNotNull(query);
+    // Get query params
+    assertEquals(query.get("version"), version);
+    assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
+    // Check request path
+    String parsedPath = TestUtilities.parseReqPath(request);
+    assertEquals(parsedPath, updateSnapshotPath);
+  }
+
+  // Test the updateSnapshot operation with null options model parameter
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testUpdateSnapshotNoOptions() throws Throwable {
+    // construct the service
+    constructClientService();
+
+    server.enqueue(new MockResponse());
+
+    // Invoke operation with null options model (negative test)
+    vpcService.updateSnapshot(null).execute();
   }
 
   @Test
@@ -8981,7 +9675,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -9021,7 +9715,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -9073,7 +9767,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -9126,7 +9820,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -9180,7 +9874,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("1"));
@@ -9247,7 +9941,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -9299,7 +9993,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -9351,7 +10045,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -9410,7 +10104,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -9464,7 +10158,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("1"));
@@ -9524,7 +10218,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -9576,7 +10270,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -9628,7 +10322,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -9693,7 +10387,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -9747,7 +10441,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("1"));
@@ -9822,7 +10516,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -9862,7 +10556,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -9914,7 +10608,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -9973,7 +10667,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -10028,7 +10722,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("1"));
@@ -10102,7 +10796,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -10155,7 +10849,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -10208,7 +10902,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -10284,7 +10978,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -10341,7 +11035,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("1"));
@@ -10384,11 +11078,11 @@ public class VpcTest extends PowerMockTestCase {
 
     // Construct an instance of the SecurityGroupRulePrototypeSecurityGroupRuleProtocolICMP model
     SecurityGroupRulePrototypeSecurityGroupRuleProtocolICMP securityGroupRulePrototypeModel = new SecurityGroupRulePrototypeSecurityGroupRuleProtocolICMP.Builder()
+    .code(Long.valueOf("0"))
     .direction("inbound")
     .ipVersion("ipv4")
-    .remote(securityGroupRuleRemotePrototypeModel)
-    .code(Long.valueOf("0"))
     .protocol("icmp")
+    .remote(securityGroupRuleRemotePrototypeModel)
     .type(Long.valueOf("8"))
     .build();
 
@@ -10415,7 +11109,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -10467,7 +11161,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -10519,7 +11213,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -10578,7 +11272,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -10632,7 +11326,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("1"));
@@ -10687,7 +11381,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -10740,7 +11434,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -10793,7 +11487,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -10845,7 +11539,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -10884,11 +11578,11 @@ public class VpcTest extends PowerMockTestCase {
 
     // Construct an instance of the SecurityGroupRulePrototypeSecurityGroupRuleProtocolICMP model
     SecurityGroupRulePrototypeSecurityGroupRuleProtocolICMP securityGroupRulePrototypeModel = new SecurityGroupRulePrototypeSecurityGroupRuleProtocolICMP.Builder()
+    .code(Long.valueOf("0"))
     .direction("inbound")
     .ipVersion("ipv4")
-    .remote(securityGroupRuleRemotePrototypeModel)
-    .code(Long.valueOf("0"))
     .protocol("icmp")
+    .remote(securityGroupRuleRemotePrototypeModel)
     .type(Long.valueOf("8"))
     .build();
 
@@ -10913,7 +11607,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -10966,7 +11660,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -11019,7 +11713,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -11090,7 +11784,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -11144,7 +11838,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("1"));
@@ -11199,7 +11893,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -11252,7 +11946,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -11305,7 +11999,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -11358,7 +12052,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("1"));
@@ -11411,7 +12105,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -11463,7 +12157,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -11515,7 +12209,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -11579,7 +12273,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -11631,7 +12325,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -11684,7 +12378,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("1"));
@@ -11736,7 +12430,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -11788,7 +12482,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -11840,7 +12534,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -11903,7 +12597,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -11955,7 +12649,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -12010,7 +12704,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("1"));
@@ -12072,7 +12766,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -12124,7 +12818,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -12176,7 +12870,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -12235,7 +12929,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -12288,7 +12982,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("status"), "testString");
     // Check request path
@@ -12371,7 +13065,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -12424,7 +13118,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -12477,7 +13171,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -12561,7 +13255,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -12614,7 +13308,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -12669,7 +13363,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -12724,7 +13418,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -12779,7 +13473,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -12832,7 +13526,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -12887,7 +13581,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -12942,7 +13636,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -12997,7 +13691,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -13050,7 +13744,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("1"));
@@ -13092,7 +13786,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -13114,7 +13808,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testListLoadBalancersWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"load_balancers\": [{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::load-balancer:dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"hostname\": \"my-load-balancer-123456-us-south-1.lb.bluemix.net\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"id\": \"dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"is_public\": true, \"listeners\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\"}], \"logging\": {\"datapath\": {\"active\": true}}, \"name\": \"my-load-balancer\", \"operating_status\": \"offline\", \"pools\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"name\": \"my-load-balancer-pool\"}], \"private_ips\": [{\"address\": \"192.168.3.4\"}], \"profile\": {\"family\": \"network\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancer/profiles/network-fixed\", \"name\": \"network-fixed\"}, \"provisioning_status\": \"active\", \"public_ips\": [{\"address\": \"192.168.3.4\"}], \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"security_groups\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::security-group:be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"id\": \"be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"name\": \"my-security-group\"}], \"security_groups_supported\": false, \"subnets\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}]}]}";
+    String mockResponseBody = "{\"first\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers?limit=20\"}, \"limit\": 20, \"load_balancers\": [{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::load-balancer:dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"hostname\": \"my-load-balancer-123456-us-south-1.lb.bluemix.net\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"id\": \"dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"is_public\": true, \"listeners\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\"}], \"logging\": {\"datapath\": {\"active\": true}}, \"name\": \"my-load-balancer\", \"operating_status\": \"offline\", \"pools\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"name\": \"my-load-balancer-pool\"}], \"private_ips\": [{\"address\": \"192.168.3.4\"}], \"profile\": {\"family\": \"network\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancer/profiles/network-fixed\", \"name\": \"network-fixed\"}, \"provisioning_status\": \"active\", \"public_ips\": [{\"address\": \"192.168.3.4\"}], \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"security_groups\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::security-group:be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"id\": \"be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"name\": \"my-security-group\"}], \"security_groups_supported\": false, \"subnets\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}]}], \"next\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers?start=9d5a91a3e2cbd233b5a5b33436855ed&limit=20\"}, \"total_count\": 132}";
     String listLoadBalancersPath = "/load_balancers";
 
     server.enqueue(new MockResponse()
@@ -13125,7 +13819,10 @@ public class VpcTest extends PowerMockTestCase {
     constructClientService();
 
     // Construct an instance of the ListLoadBalancersOptions model
-    ListLoadBalancersOptions listLoadBalancersOptionsModel = new ListLoadBalancersOptions();
+    ListLoadBalancersOptions listLoadBalancersOptionsModel = new ListLoadBalancersOptions.Builder()
+    .start("testString")
+    .limit(Long.valueOf("1"))
+    .build();
 
     // Invoke operation with valid options model (positive test)
     Response<LoadBalancerCollection> response = vpcService.listLoadBalancers(listLoadBalancersOptionsModel).execute();
@@ -13142,8 +13839,10 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
+    assertEquals(query.get("start"), "testString");
+    assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("1"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, listLoadBalancersPath);
@@ -13215,6 +13914,7 @@ public class VpcTest extends PowerMockTestCase {
 
     // Construct an instance of the LoadBalancerPoolSessionPersistencePrototype model
     LoadBalancerPoolSessionPersistencePrototype loadBalancerPoolSessionPersistencePrototypeModel = new LoadBalancerPoolSessionPersistencePrototype.Builder()
+    .cookieName("my-cookie-name")
     .type("source_ip")
     .build();
 
@@ -13272,7 +13972,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -13324,7 +14024,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -13376,7 +14076,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -13446,7 +14146,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -13498,7 +14198,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -13520,7 +14220,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testListLoadBalancerListenersWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"listeners\": [{\"accept_proxy_protocol\": true, \"certificate_instance\": {\"crn\": \"crn:v1:bluemix:public:cloudcerts:us-south:a/123456:b8866ea4-b8df-467e-801a-da1db7e020bf:certificate:78ff9c4c97d013fb2a95b21dddde7758\"}, \"connection_limit\": 2000, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"default_pool\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"name\": \"my-load-balancer-pool\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"policies\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004/policies/f3187486-7b27-4c79-990c-47d33c0e2278\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\"}], \"port\": 443, \"protocol\": \"http\", \"provisioning_status\": \"active\"}]}";
+    String mockResponseBody = "{\"listeners\": [{\"accept_proxy_protocol\": true, \"certificate_instance\": {\"crn\": \"crn:v1:bluemix:public:cloudcerts:us-south:a/123456:b8866ea4-b8df-467e-801a-da1db7e020bf:certificate:78ff9c4c97d013fb2a95b21dddde7758\"}, \"connection_limit\": 2000, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"default_pool\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"name\": \"my-load-balancer-pool\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004\", \"https_redirect\": {\"http_status_code\": 301, \"listener\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\"}, \"uri\": \"/example?doc=get\"}, \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"policies\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004/policies/f3187486-7b27-4c79-990c-47d33c0e2278\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\"}], \"port\": 443, \"protocol\": \"http\", \"provisioning_status\": \"active\"}]}";
     String listLoadBalancerListenersPath = "/load_balancers/testString/listeners";
 
     server.enqueue(new MockResponse()
@@ -13550,7 +14250,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -13572,7 +14272,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testCreateLoadBalancerListenerWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"accept_proxy_protocol\": true, \"certificate_instance\": {\"crn\": \"crn:v1:bluemix:public:cloudcerts:us-south:a/123456:b8866ea4-b8df-467e-801a-da1db7e020bf:certificate:78ff9c4c97d013fb2a95b21dddde7758\"}, \"connection_limit\": 2000, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"default_pool\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"name\": \"my-load-balancer-pool\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"policies\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004/policies/f3187486-7b27-4c79-990c-47d33c0e2278\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\"}], \"port\": 443, \"protocol\": \"http\", \"provisioning_status\": \"active\"}";
+    String mockResponseBody = "{\"accept_proxy_protocol\": true, \"certificate_instance\": {\"crn\": \"crn:v1:bluemix:public:cloudcerts:us-south:a/123456:b8866ea4-b8df-467e-801a-da1db7e020bf:certificate:78ff9c4c97d013fb2a95b21dddde7758\"}, \"connection_limit\": 2000, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"default_pool\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"name\": \"my-load-balancer-pool\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004\", \"https_redirect\": {\"http_status_code\": 301, \"listener\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\"}, \"uri\": \"/example?doc=get\"}, \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"policies\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004/policies/f3187486-7b27-4c79-990c-47d33c0e2278\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\"}], \"port\": 443, \"protocol\": \"http\", \"provisioning_status\": \"active\"}";
     String createLoadBalancerListenerPath = "/load_balancers/testString/listeners";
 
     server.enqueue(new MockResponse()
@@ -13590,6 +14290,18 @@ public class VpcTest extends PowerMockTestCase {
     // Construct an instance of the LoadBalancerPoolIdentityById model
     LoadBalancerPoolIdentityById loadBalancerPoolIdentityModel = new LoadBalancerPoolIdentityById.Builder()
     .id("70294e14-4e61-11e8-bcf4-0242ac110004")
+    .build();
+
+    // Construct an instance of the LoadBalancerListenerIdentityById model
+    LoadBalancerListenerIdentityById loadBalancerListenerIdentityModel = new LoadBalancerListenerIdentityById.Builder()
+    .id("70294e14-4e61-11e8-bcf4-0242ac110004")
+    .build();
+
+    // Construct an instance of the LoadBalancerListenerHTTPSRedirectPrototype model
+    LoadBalancerListenerHTTPSRedirectPrototype loadBalancerListenerHttpsRedirectPrototypeModel = new LoadBalancerListenerHTTPSRedirectPrototype.Builder()
+    .httpStatusCode(Long.valueOf("301"))
+    .listener(loadBalancerListenerIdentityModel)
+    .uri("/example?doc=get")
     .build();
 
     // Construct an instance of the LoadBalancerListenerPolicyRulePrototype model
@@ -13623,6 +14335,7 @@ public class VpcTest extends PowerMockTestCase {
     .certificateInstance(certificateInstanceIdentityModel)
     .connectionLimit(Long.valueOf("2000"))
     .defaultPool(loadBalancerPoolIdentityModel)
+    .httpsRedirect(loadBalancerListenerHttpsRedirectPrototypeModel)
     .policies(new java.util.ArrayList<LoadBalancerListenerPolicyPrototype>(java.util.Arrays.asList(loadBalancerListenerPolicyPrototypeModel)))
     .build();
 
@@ -13641,7 +14354,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -13694,7 +14407,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -13716,7 +14429,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testGetLoadBalancerListenerWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"accept_proxy_protocol\": true, \"certificate_instance\": {\"crn\": \"crn:v1:bluemix:public:cloudcerts:us-south:a/123456:b8866ea4-b8df-467e-801a-da1db7e020bf:certificate:78ff9c4c97d013fb2a95b21dddde7758\"}, \"connection_limit\": 2000, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"default_pool\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"name\": \"my-load-balancer-pool\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"policies\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004/policies/f3187486-7b27-4c79-990c-47d33c0e2278\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\"}], \"port\": 443, \"protocol\": \"http\", \"provisioning_status\": \"active\"}";
+    String mockResponseBody = "{\"accept_proxy_protocol\": true, \"certificate_instance\": {\"crn\": \"crn:v1:bluemix:public:cloudcerts:us-south:a/123456:b8866ea4-b8df-467e-801a-da1db7e020bf:certificate:78ff9c4c97d013fb2a95b21dddde7758\"}, \"connection_limit\": 2000, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"default_pool\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"name\": \"my-load-balancer-pool\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004\", \"https_redirect\": {\"http_status_code\": 301, \"listener\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\"}, \"uri\": \"/example?doc=get\"}, \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"policies\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004/policies/f3187486-7b27-4c79-990c-47d33c0e2278\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\"}], \"port\": 443, \"protocol\": \"http\", \"provisioning_status\": \"active\"}";
     String getLoadBalancerListenerPath = "/load_balancers/testString/listeners/testString";
 
     server.enqueue(new MockResponse()
@@ -13747,7 +14460,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -13769,7 +14482,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testUpdateLoadBalancerListenerWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"accept_proxy_protocol\": true, \"certificate_instance\": {\"crn\": \"crn:v1:bluemix:public:cloudcerts:us-south:a/123456:b8866ea4-b8df-467e-801a-da1db7e020bf:certificate:78ff9c4c97d013fb2a95b21dddde7758\"}, \"connection_limit\": 2000, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"default_pool\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"name\": \"my-load-balancer-pool\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"policies\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004/policies/f3187486-7b27-4c79-990c-47d33c0e2278\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\"}], \"port\": 443, \"protocol\": \"http\", \"provisioning_status\": \"active\"}";
+    String mockResponseBody = "{\"accept_proxy_protocol\": true, \"certificate_instance\": {\"crn\": \"crn:v1:bluemix:public:cloudcerts:us-south:a/123456:b8866ea4-b8df-467e-801a-da1db7e020bf:certificate:78ff9c4c97d013fb2a95b21dddde7758\"}, \"connection_limit\": 2000, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"default_pool\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"name\": \"my-load-balancer-pool\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004\", \"https_redirect\": {\"http_status_code\": 301, \"listener\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\"}, \"uri\": \"/example?doc=get\"}, \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"policies\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004/policies/f3187486-7b27-4c79-990c-47d33c0e2278\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\"}], \"port\": 443, \"protocol\": \"http\", \"provisioning_status\": \"active\"}";
     String updateLoadBalancerListenerPath = "/load_balancers/testString/listeners/testString";
 
     server.enqueue(new MockResponse()
@@ -13789,12 +14502,25 @@ public class VpcTest extends PowerMockTestCase {
     .id("70294e14-4e61-11e8-bcf4-0242ac110004")
     .build();
 
+    // Construct an instance of the LoadBalancerListenerIdentityById model
+    LoadBalancerListenerIdentityById loadBalancerListenerIdentityModel = new LoadBalancerListenerIdentityById.Builder()
+    .id("70294e14-4e61-11e8-bcf4-0242ac110004")
+    .build();
+
+    // Construct an instance of the LoadBalancerListenerHTTPSRedirectPatch model
+    LoadBalancerListenerHTTPSRedirectPatch loadBalancerListenerHttpsRedirectPatchModel = new LoadBalancerListenerHTTPSRedirectPatch.Builder()
+    .httpStatusCode(Long.valueOf("301"))
+    .listener(loadBalancerListenerIdentityModel)
+    .uri("/example?doc=get")
+    .build();
+
     // Construct an instance of the LoadBalancerListenerPatch model
     LoadBalancerListenerPatch loadBalancerListenerPatchModel = new LoadBalancerListenerPatch.Builder()
     .acceptProxyProtocol(true)
     .certificateInstance(certificateInstanceIdentityModel)
     .connectionLimit(Long.valueOf("2000"))
     .defaultPool(loadBalancerPoolIdentityModel)
+    .httpsRedirect(loadBalancerListenerHttpsRedirectPatchModel)
     .port(Long.valueOf("443"))
     .protocol("http")
     .build();
@@ -13822,7 +14548,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -13875,7 +14601,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -13946,7 +14672,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -14000,7 +14726,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -14054,7 +14780,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -14122,7 +14848,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -14176,7 +14902,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -14234,7 +14960,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -14289,7 +15015,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -14344,7 +15070,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -14409,7 +15135,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -14431,7 +15157,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testListLoadBalancerPoolsWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"pools\": [{\"algorithm\": \"least_connections\", \"created_at\": \"2019-01-01T12:00:00.000Z\", \"health_monitor\": {\"delay\": 5, \"max_retries\": 2, \"port\": 22, \"timeout\": 2, \"type\": \"http\", \"url_path\": \"/\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"instance_group\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance-group:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance-group\"}, \"members\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004/members/80294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\"}], \"name\": \"my-load-balancer-pool\", \"protocol\": \"http\", \"provisioning_status\": \"active\", \"proxy_protocol\": \"disabled\", \"session_persistence\": {\"type\": \"source_ip\"}}]}";
+    String mockResponseBody = "{\"pools\": [{\"algorithm\": \"least_connections\", \"created_at\": \"2019-01-01T12:00:00.000Z\", \"health_monitor\": {\"delay\": 5, \"max_retries\": 2, \"port\": 22, \"timeout\": 2, \"type\": \"http\", \"url_path\": \"/\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"instance_group\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance-group:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance-group\"}, \"members\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004/members/80294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\"}], \"name\": \"my-load-balancer-pool\", \"protocol\": \"http\", \"provisioning_status\": \"active\", \"proxy_protocol\": \"disabled\", \"session_persistence\": {\"cookie_name\": \"my-cookie-name\", \"type\": \"source_ip\"}}]}";
     String listLoadBalancerPoolsPath = "/load_balancers/testString/pools";
 
     server.enqueue(new MockResponse()
@@ -14461,7 +15187,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -14483,7 +15209,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testCreateLoadBalancerPoolWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"algorithm\": \"least_connections\", \"created_at\": \"2019-01-01T12:00:00.000Z\", \"health_monitor\": {\"delay\": 5, \"max_retries\": 2, \"port\": 22, \"timeout\": 2, \"type\": \"http\", \"url_path\": \"/\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"instance_group\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance-group:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance-group\"}, \"members\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004/members/80294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\"}], \"name\": \"my-load-balancer-pool\", \"protocol\": \"http\", \"provisioning_status\": \"active\", \"proxy_protocol\": \"disabled\", \"session_persistence\": {\"type\": \"source_ip\"}}";
+    String mockResponseBody = "{\"algorithm\": \"least_connections\", \"created_at\": \"2019-01-01T12:00:00.000Z\", \"health_monitor\": {\"delay\": 5, \"max_retries\": 2, \"port\": 22, \"timeout\": 2, \"type\": \"http\", \"url_path\": \"/\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"instance_group\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance-group:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance-group\"}, \"members\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004/members/80294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\"}], \"name\": \"my-load-balancer-pool\", \"protocol\": \"http\", \"provisioning_status\": \"active\", \"proxy_protocol\": \"disabled\", \"session_persistence\": {\"cookie_name\": \"my-cookie-name\", \"type\": \"source_ip\"}}";
     String createLoadBalancerPoolPath = "/load_balancers/testString/pools";
 
     server.enqueue(new MockResponse()
@@ -14517,6 +15243,7 @@ public class VpcTest extends PowerMockTestCase {
 
     // Construct an instance of the LoadBalancerPoolSessionPersistencePrototype model
     LoadBalancerPoolSessionPersistencePrototype loadBalancerPoolSessionPersistencePrototypeModel = new LoadBalancerPoolSessionPersistencePrototype.Builder()
+    .cookieName("my-cookie-name")
     .type("source_ip")
     .build();
 
@@ -14547,7 +15274,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -14600,7 +15327,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -14622,7 +15349,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testGetLoadBalancerPoolWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"algorithm\": \"least_connections\", \"created_at\": \"2019-01-01T12:00:00.000Z\", \"health_monitor\": {\"delay\": 5, \"max_retries\": 2, \"port\": 22, \"timeout\": 2, \"type\": \"http\", \"url_path\": \"/\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"instance_group\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance-group:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance-group\"}, \"members\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004/members/80294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\"}], \"name\": \"my-load-balancer-pool\", \"protocol\": \"http\", \"provisioning_status\": \"active\", \"proxy_protocol\": \"disabled\", \"session_persistence\": {\"type\": \"source_ip\"}}";
+    String mockResponseBody = "{\"algorithm\": \"least_connections\", \"created_at\": \"2019-01-01T12:00:00.000Z\", \"health_monitor\": {\"delay\": 5, \"max_retries\": 2, \"port\": 22, \"timeout\": 2, \"type\": \"http\", \"url_path\": \"/\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"instance_group\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance-group:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance-group\"}, \"members\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004/members/80294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\"}], \"name\": \"my-load-balancer-pool\", \"protocol\": \"http\", \"provisioning_status\": \"active\", \"proxy_protocol\": \"disabled\", \"session_persistence\": {\"cookie_name\": \"my-cookie-name\", \"type\": \"source_ip\"}}";
     String getLoadBalancerPoolPath = "/load_balancers/testString/pools/testString";
 
     server.enqueue(new MockResponse()
@@ -14653,7 +15380,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -14675,7 +15402,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testUpdateLoadBalancerPoolWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"algorithm\": \"least_connections\", \"created_at\": \"2019-01-01T12:00:00.000Z\", \"health_monitor\": {\"delay\": 5, \"max_retries\": 2, \"port\": 22, \"timeout\": 2, \"type\": \"http\", \"url_path\": \"/\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"instance_group\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance-group:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance-group\"}, \"members\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004/members/80294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\"}], \"name\": \"my-load-balancer-pool\", \"protocol\": \"http\", \"provisioning_status\": \"active\", \"proxy_protocol\": \"disabled\", \"session_persistence\": {\"type\": \"source_ip\"}}";
+    String mockResponseBody = "{\"algorithm\": \"least_connections\", \"created_at\": \"2019-01-01T12:00:00.000Z\", \"health_monitor\": {\"delay\": 5, \"max_retries\": 2, \"port\": 22, \"timeout\": 2, \"type\": \"http\", \"url_path\": \"/\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"instance_group\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance-group:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-instance-group\"}, \"members\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004/members/80294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\"}], \"name\": \"my-load-balancer-pool\", \"protocol\": \"http\", \"provisioning_status\": \"active\", \"proxy_protocol\": \"disabled\", \"session_persistence\": {\"cookie_name\": \"my-cookie-name\", \"type\": \"source_ip\"}}";
     String updateLoadBalancerPoolPath = "/load_balancers/testString/pools/testString";
 
     server.enqueue(new MockResponse()
@@ -14697,6 +15424,7 @@ public class VpcTest extends PowerMockTestCase {
 
     // Construct an instance of the LoadBalancerPoolSessionPersistencePatch model
     LoadBalancerPoolSessionPersistencePatch loadBalancerPoolSessionPersistencePatchModel = new LoadBalancerPoolSessionPersistencePatch.Builder()
+    .cookieName("my-cookie-name")
     .type("source_ip")
     .build();
 
@@ -14733,7 +15461,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -14786,7 +15514,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -14847,7 +15575,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -14913,7 +15641,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -14967,7 +15695,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -15021,7 +15749,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -15089,7 +15817,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -15144,7 +15872,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("name"), "testString");
     assertEquals(query.get("start"), "testString");
@@ -15213,7 +15941,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -15268,7 +15996,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("1"));
@@ -15324,7 +16052,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -15377,7 +16105,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -15430,7 +16158,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -15482,7 +16210,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -15534,7 +16262,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -15593,7 +16321,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -15653,7 +16381,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("1"));
@@ -15721,7 +16449,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -15773,7 +16501,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -15825,7 +16553,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
@@ -15885,7 +16613,7 @@ public class VpcTest extends PowerMockTestCase {
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
     // Get query params
-    assertEquals(query.get("version"), "testString");
+    assertEquals(query.get("version"), version);
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);

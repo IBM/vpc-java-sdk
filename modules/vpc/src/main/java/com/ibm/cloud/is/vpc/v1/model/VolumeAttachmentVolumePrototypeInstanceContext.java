@@ -16,7 +16,7 @@ import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * The identity of the volume to attach to the instance, or a prototype object for a new volume.
+ * An existing volume to attach to the instance, or a prototype object for a new volume.
  *
  * Classes which extend this class:
  * - VolumeAttachmentVolumePrototypeInstanceContextVolumeIdentity
@@ -33,6 +33,8 @@ public class VolumeAttachmentVolumePrototypeInstanceContext extends GenericModel
   protected Long capacity;
   @SerializedName("encryption_key")
   protected EncryptionKeyIdentity encryptionKey;
+  @SerializedName("source_snapshot")
+  protected SnapshotIdentity sourceSnapshot;
 
   protected VolumeAttachmentVolumePrototypeInstanceContext() {
   }
@@ -73,7 +75,7 @@ public class VolumeAttachmentVolumePrototypeInstanceContext extends GenericModel
   /**
    * Gets the iops.
    *
-   * The bandwidth for the volume.
+   * The maximum I/O operations per second (IOPS) for the volume.
    *
    * @return the iops
    */
@@ -106,8 +108,8 @@ public class VolumeAttachmentVolumePrototypeInstanceContext extends GenericModel
   /**
    * Gets the capacity.
    *
-   * The capacity of the volume in gigabytes. The specified minimum and maximum capacity values for creating or updating
-   * volumes may expand in the future.
+   * The capacity to use for the volume (in gigabytes). The specified minimum and maximum capacity values for creating
+   * or updating volumes may expand in the future.
    *
    * @return the capacity
    */
@@ -118,7 +120,7 @@ public class VolumeAttachmentVolumePrototypeInstanceContext extends GenericModel
   /**
    * Gets the encryptionKey.
    *
-   * The identity of the root key to use to wrap the data encryption key for the volume.
+   * The root key to use to wrap the data encryption key for the volume.
    *
    * If this property is not provided, the `encryption` type for the volume will be
    * `provider_managed`.
@@ -127,6 +129,17 @@ public class VolumeAttachmentVolumePrototypeInstanceContext extends GenericModel
    */
   public EncryptionKeyIdentity encryptionKey() {
     return encryptionKey;
+  }
+
+  /**
+   * Gets the sourceSnapshot.
+   *
+   * The snapshot from which to clone the volume.
+   *
+   * @return the sourceSnapshot
+   */
+  public SnapshotIdentity sourceSnapshot() {
+    return sourceSnapshot;
   }
 }
 

@@ -17,9 +17,9 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 /**
  * The profile to use for this virtual server instance. For the profile to be changed, the instance `status` must be
  * `stopping` or `stopped`. In addition, the requested profile must:
- * - Match the current profile's instance disk support. (Note: If the current profile
- *   supports instance storage disks, the requested profile can have a different
- *   instance storage disk configuration.)
+ * - Have matching instance disk support. Any disks associated with the current profile
+ *   will be deleted, and any disks associated with the requested profile will be
+ *   created.
  * - Be compatible with any `placement_target` constraints. For example, if the
  *   instance is placed on a dedicated host, the requested profile `family` must be
  *   the same as the dedicated host `family`.

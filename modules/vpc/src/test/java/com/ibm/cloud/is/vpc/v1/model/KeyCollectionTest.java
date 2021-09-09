@@ -15,6 +15,8 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.Key;
 import com.ibm.cloud.is.vpc.v1.model.KeyCollection;
+import com.ibm.cloud.is.vpc.v1.model.KeyCollectionFirst;
+import com.ibm.cloud.is.vpc.v1.model.KeyCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
@@ -35,6 +37,10 @@ public class KeyCollectionTest {
   @Test
   public void testKeyCollection() throws Throwable {
     KeyCollection keyCollectionModel = new KeyCollection();
+    assertNull(keyCollectionModel.getFirst());
     assertNull(keyCollectionModel.getKeys());
+    assertNull(keyCollectionModel.getLimit());
+    assertNull(keyCollectionModel.getNext());
+    assertNull(keyCollectionModel.getTotalCount());
   }
 }

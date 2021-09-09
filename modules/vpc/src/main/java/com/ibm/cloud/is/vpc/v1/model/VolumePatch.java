@@ -22,16 +22,25 @@ import com.ibm.cloud.sdk.core.util.GsonSingleton;
  */
 public class VolumePatch extends GenericModel {
 
+  protected Long capacity;
+  protected Long iops;
   protected String name;
+  protected VolumeProfileIdentity profile;
 
   /**
    * Builder.
    */
   public static class Builder {
+    private Long capacity;
+    private Long iops;
     private String name;
+    private VolumeProfileIdentity profile;
 
     private Builder(VolumePatch volumePatch) {
+      this.capacity = volumePatch.capacity;
+      this.iops = volumePatch.iops;
       this.name = volumePatch.name;
+      this.profile = volumePatch.profile;
     }
 
     /**
@@ -50,6 +59,28 @@ public class VolumePatch extends GenericModel {
     }
 
     /**
+     * Set the capacity.
+     *
+     * @param capacity the capacity
+     * @return the VolumePatch builder
+     */
+    public Builder capacity(long capacity) {
+      this.capacity = capacity;
+      return this;
+    }
+
+    /**
+     * Set the iops.
+     *
+     * @param iops the iops
+     * @return the VolumePatch builder
+     */
+    public Builder iops(long iops) {
+      this.iops = iops;
+      return this;
+    }
+
+    /**
      * Set the name.
      *
      * @param name the name
@@ -59,10 +90,24 @@ public class VolumePatch extends GenericModel {
       this.name = name;
       return this;
     }
+
+    /**
+     * Set the profile.
+     *
+     * @param profile the profile
+     * @return the VolumePatch builder
+     */
+    public Builder profile(VolumeProfileIdentity profile) {
+      this.profile = profile;
+      return this;
+    }
   }
 
   protected VolumePatch(Builder builder) {
+    capacity = builder.capacity;
+    iops = builder.iops;
     name = builder.name;
+    profile = builder.profile;
   }
 
   /**
@@ -75,6 +120,32 @@ public class VolumePatch extends GenericModel {
   }
 
   /**
+   * Gets the capacity.
+   *
+   * The capacity to use for the volume (in gigabytes). The volume must be attached as a data volume to a virtual server
+   * instance, and the specified value must not be less than the current capacity.
+   *
+   * The minimum and maximum capacity limits for creating or updating volumes may expand in the future.
+   *
+   * @return the capacity
+   */
+  public Long capacity() {
+    return capacity;
+  }
+
+  /**
+   * Gets the iops.
+   *
+   * The maximum I/O operations per second (IOPS) to use for the volume. Applicable only to volumes using a profile
+   * `family` of `custom`. The volume must be attached as a data volume to a running virtual server instance.
+   *
+   * @return the iops
+   */
+  public Long iops() {
+    return iops;
+  }
+
+  /**
    * Gets the name.
    *
    * The unique user-defined name for this volume.
@@ -83,6 +154,19 @@ public class VolumePatch extends GenericModel {
    */
   public String name() {
     return name;
+  }
+
+  /**
+   * Gets the profile.
+   *
+   * The profile to use for this volume.  The requested profile must be in the same
+   * `family` as the current profile.  The volume must be attached as a data volume to a
+   *  running virtual server instance.
+   *
+   * @return the profile
+   */
+  public VolumeProfileIdentity profile() {
+    return profile;
   }
 
   /**

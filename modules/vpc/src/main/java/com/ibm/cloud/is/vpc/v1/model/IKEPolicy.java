@@ -102,7 +102,7 @@ public class IKEPolicy extends GenericModel {
   /**
    * Gets the connections.
    *
-   * Collection of references to VPN gateway connections that use this IKE policy.
+   * The VPN gateway connections that use this IKE policy.
    *
    * @return the connections
    */

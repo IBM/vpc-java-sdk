@@ -15,8 +15,11 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.CertificateInstanceReference;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListener;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerHTTPSRedirect;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyReference;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyReferenceDeleted;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerReference;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolReference;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
@@ -43,6 +46,7 @@ public class LoadBalancerListenerTest {
     assertNull(loadBalancerListenerModel.getCreatedAt());
     assertNull(loadBalancerListenerModel.getDefaultPool());
     assertNull(loadBalancerListenerModel.getHref());
+    assertNull(loadBalancerListenerModel.getHttpsRedirect());
     assertNull(loadBalancerListenerModel.getId());
     assertNull(loadBalancerListenerModel.getPolicies());
     assertNull(loadBalancerListenerModel.getPort());

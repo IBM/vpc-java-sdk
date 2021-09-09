@@ -66,7 +66,7 @@ public class SecurityGroupTargetCollection extends GenericModel {
   /**
    * Gets the targets.
    *
-   * Collection of security group target references.
+   * Collection of targets for this security group.
    *
    * @return the targets
    */

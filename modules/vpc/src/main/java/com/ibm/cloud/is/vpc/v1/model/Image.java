@@ -92,6 +92,8 @@ public class Image extends GenericModel {
   protected OperatingSystem operatingSystem;
   @SerializedName("resource_group")
   protected ResourceGroupReference resourceGroup;
+  @SerializedName("source_volume")
+  protected VolumeReference sourceVolume;
   protected String status;
   @SerializedName("status_reasons")
   protected List<ImageStatusReason> statusReasons;
@@ -225,6 +227,19 @@ public class Image extends GenericModel {
   }
 
   /**
+   * Gets the sourceVolume.
+   *
+   * The volume used to create this image (this may be
+   * [deleted](https://cloud.ibm.com/apidocs/vpc#deleted-resources)).
+   * If absent, this image was not created from a volume.
+   *
+   * @return the sourceVolume
+   */
+  public VolumeReference getSourceVolume() {
+    return sourceVolume;
+  }
+
+  /**
    * Gets the status.
    *
    * The status of this image
@@ -251,7 +266,7 @@ public class Image extends GenericModel {
   /**
    * Gets the statusReasons.
    *
-   * Array of reasons for the current status (if any).
+   * The reasons for the current status (if any).
    *
    * The enumerated reason code values for this property will expand in the future. When processing this property, check
    * for and log unknown values. Optionally halt processing and surface the error, or bypass the resource on which the

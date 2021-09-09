@@ -66,6 +66,8 @@ public class LoadBalancerListener extends GenericModel {
   @SerializedName("default_pool")
   protected LoadBalancerPoolReference defaultPool;
   protected String href;
+  @SerializedName("https_redirect")
+  protected LoadBalancerListenerHTTPSRedirect httpsRedirect;
   protected String id;
   protected List<LoadBalancerListenerPolicyReference> policies;
   protected Long port;
@@ -77,7 +79,11 @@ public class LoadBalancerListener extends GenericModel {
    * Gets the acceptProxyProtocol.
    *
    * If set to `true`, this listener will accept and forward PROXY protocol information. Supported by load balancers in
-   * the `application` family (otherwise always `false`).
+   * the `application` family (otherwise always `false`). Additional restrictions:
+   * - If this listener has `https_redirect` specified, its `accept_proxy_protocol` value must
+   *   match the `accept_proxy_protocol` value of the `https_redirect` listener.
+   * - If this listener is the target of another listener's `https_redirect`, its
+   *   `accept_proxy_protocol` value must match that listener's `accept_proxy_protocol` value.
    *
    * @return the acceptProxyProtocol
    */
@@ -142,6 +148,17 @@ public class LoadBalancerListener extends GenericModel {
   }
 
   /**
+   * Gets the httpsRedirect.
+   *
+   * If provided, the target listener that requests are redirected to.
+   *
+   * @return the httpsRedirect
+   */
+  public LoadBalancerListenerHTTPSRedirect getHttpsRedirect() {
+    return httpsRedirect;
+  }
+
+  /**
    * Gets the id.
    *
    * The unique identifier for this load balancer listener.
@@ -155,7 +172,7 @@ public class LoadBalancerListener extends GenericModel {
   /**
    * Gets the policies.
    *
-   * An array of policies for this listener.
+   * The policies for this listener.
    *
    * @return the policies
    */
@@ -166,8 +183,8 @@ public class LoadBalancerListener extends GenericModel {
   /**
    * Gets the port.
    *
-   * The listener port number, or the inclusive lower bound of the port range. Each listener in the load balancer must
-   * have a unique `port` and `protocol` combination.
+   * The listener port number. Each listener in the load balancer must have a unique
+   * `port` and `protocol` combination.
    *
    * @return the port
    */

@@ -13,6 +13,7 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.ibm.cloud.is.vpc.v1.model.DedicatedHostGroupReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.ImageReference;
 import com.ibm.cloud.is.vpc.v1.model.ImageReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.Instance;
@@ -21,6 +22,7 @@ import com.ibm.cloud.is.vpc.v1.model.InstanceCollectionFirst;
 import com.ibm.cloud.is.vpc.v1.model.InstanceCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.InstanceDisk;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGPU;
+import com.ibm.cloud.is.vpc.v1.model.InstancePlacementTargetDedicatedHostGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileReference;
 import com.ibm.cloud.is.vpc.v1.model.InstanceStatusReason;
 import com.ibm.cloud.is.vpc.v1.model.InstanceVCPU;

@@ -26,7 +26,7 @@ public class InstanceGroupManagerActionPrototypeScheduledActionPrototypeByRunAtB
   public static class Builder {
     private String name;
     private Date runAt;
-    private InstanceGroupManagerScheduledActionByManagerManager manager;
+    private InstanceGroupManagerScheduledActionManagerPrototype manager;
 
     public Builder(InstanceGroupManagerActionPrototypeScheduledActionPrototypeByRunAt instanceGroupManagerActionPrototypeScheduledActionPrototypeByRunAtByManager) {
       this.name = instanceGroupManagerActionPrototypeScheduledActionPrototypeByRunAtByManager.name;
@@ -45,7 +45,7 @@ public class InstanceGroupManagerActionPrototypeScheduledActionPrototypeByRunAtB
      *
      * @param manager the manager
      */
-    public Builder(InstanceGroupManagerScheduledActionByManagerManager manager) {
+    public Builder(InstanceGroupManagerScheduledActionManagerPrototype manager) {
       this.manager = manager;
     }
 
@@ -86,7 +86,7 @@ public class InstanceGroupManagerActionPrototypeScheduledActionPrototypeByRunAtB
      * @param manager the manager
      * @return the InstanceGroupManagerActionPrototypeScheduledActionPrototypeByRunAtByManager builder
      */
-    public Builder manager(InstanceGroupManagerScheduledActionByManagerManager manager) {
+    public Builder manager(InstanceGroupManagerScheduledActionManagerPrototype manager) {
       this.manager = manager;
       return this;
     }

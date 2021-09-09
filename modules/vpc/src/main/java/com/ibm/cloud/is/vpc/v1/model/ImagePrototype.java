@@ -20,6 +20,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  *
  * Classes which extend this class:
  * - ImagePrototypeImageByFile
+ * - ImagePrototypeImageBySourceVolume
  */
 public class ImagePrototype extends GenericModel {
 
@@ -33,6 +34,8 @@ public class ImagePrototype extends GenericModel {
   protected ImageFilePrototype file;
   @SerializedName("operating_system")
   protected OperatingSystemIdentity operatingSystem;
+  @SerializedName("source_volume")
+  protected VolumeIdentity sourceVolume;
 
   protected ImagePrototype() {
   }
@@ -40,7 +43,7 @@ public class ImagePrototype extends GenericModel {
   /**
    * Gets the name.
    *
-   * The unique user-defined name for this image. Names starting with "ibm-" are not allowed. If unspecified, the name
+   * The unique user-defined name for this image. Names starting with `ibm-` are not allowed. If unspecified, the name
    * will be a hyphenated list of randomly-selected words.
    *
    * @return the name
@@ -81,10 +84,10 @@ public class ImagePrototype extends GenericModel {
   /**
    * Gets the encryptionKey.
    *
-   * The identity of the root key that was used to wrap the data key (which is ultimately
-   * represented as `encrypted_data_key`). Additionally, the root key will be used to encrypt
-   * volumes created from this image (unless an alternate `encryption_key` is provided at
-   * volume creation).
+   * The root key that was used to wrap the data key (which is ultimately represented as
+   * `encrypted_data_key`). Additionally, the root key will be used to encrypt volumes
+   * created from this image (unless an alternate `encryption_key` is provided at volume
+   * creation).
    *
    * If this property is not provided, the imported image is treated as unencrypted.
    *
@@ -108,14 +111,30 @@ public class ImagePrototype extends GenericModel {
   /**
    * Gets the operatingSystem.
    *
-   * The identity of the [supported operating
-   * system](https://cloud.ibm.com/apidocs/vpc#list-operating-systems) included in
-   * this image.
+   * The [supported operating
+   * system](https://cloud.ibm.com/apidocs/vpc#list-operating-systems) included in this
+   * image.
    *
    * @return the operatingSystem
    */
   public OperatingSystemIdentity operatingSystem() {
     return operatingSystem;
+  }
+
+  /**
+   * Gets the sourceVolume.
+   *
+   * The volume from which to create the image. The specified volume must:
+   * - Originate from an image, which will be used to populate this image's
+   *   operating system information.
+   * - Not be `active` or `busy`.
+   *
+   * During image creation, the specified volume may briefly become `busy`.
+   *
+   * @return the sourceVolume
+   */
+  public VolumeIdentity sourceVolume() {
+    return sourceVolume;
   }
 }
 

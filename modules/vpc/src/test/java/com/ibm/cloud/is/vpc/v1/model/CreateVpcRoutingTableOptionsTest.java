@@ -47,13 +47,13 @@ public class CreateVpcRoutingTableOptionsTest {
     assertEquals(zoneIdentityModel.name(), "us-south-1");
 
     RoutePrototype routePrototypeModel = new RoutePrototype.Builder()
-      .action("delegate")
+      .action("deliver")
       .destination("192.168.3.0/24")
       .name("my-route-2")
       .nextHop(routeNextHopPrototypeModel)
       .zone(zoneIdentityModel)
       .build();
-    assertEquals(routePrototypeModel.action(), "delegate");
+    assertEquals(routePrototypeModel.action(), "deliver");
     assertEquals(routePrototypeModel.destination(), "192.168.3.0/24");
     assertEquals(routePrototypeModel.name(), "my-route-2");
     assertEquals(routePrototypeModel.nextHop(), routeNextHopPrototypeModel);
@@ -62,16 +62,16 @@ public class CreateVpcRoutingTableOptionsTest {
     CreateVpcRoutingTableOptions createVpcRoutingTableOptionsModel = new CreateVpcRoutingTableOptions.Builder()
       .vpcId("testString")
       .name("my-routing-table-2")
-      .routeDirectLinkIngress(true)
-      .routeTransitGatewayIngress(true)
-      .routeVpcZoneIngress(true)
+      .routeDirectLinkIngress(false)
+      .routeTransitGatewayIngress(false)
+      .routeVpcZoneIngress(false)
       .routes(new java.util.ArrayList<RoutePrototype>(java.util.Arrays.asList(routePrototypeModel)))
       .build();
     assertEquals(createVpcRoutingTableOptionsModel.vpcId(), "testString");
     assertEquals(createVpcRoutingTableOptionsModel.name(), "my-routing-table-2");
-    assertEquals(createVpcRoutingTableOptionsModel.routeDirectLinkIngress(), Boolean.valueOf(true));
-    assertEquals(createVpcRoutingTableOptionsModel.routeTransitGatewayIngress(), Boolean.valueOf(true));
-    assertEquals(createVpcRoutingTableOptionsModel.routeVpcZoneIngress(), Boolean.valueOf(true));
+    assertEquals(createVpcRoutingTableOptionsModel.routeDirectLinkIngress(), Boolean.valueOf(false));
+    assertEquals(createVpcRoutingTableOptionsModel.routeTransitGatewayIngress(), Boolean.valueOf(false));
+    assertEquals(createVpcRoutingTableOptionsModel.routeVpcZoneIngress(), Boolean.valueOf(false));
     assertEquals(createVpcRoutingTableOptionsModel.routes(), new java.util.ArrayList<RoutePrototype>(java.util.Arrays.asList(routePrototypeModel)));
   }
 

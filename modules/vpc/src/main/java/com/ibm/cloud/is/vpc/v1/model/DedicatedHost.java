@@ -24,11 +24,9 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class DedicatedHost extends GenericModel {
 
   /**
-   * The lifecycle state of the dedicated host resource.
+   * The lifecycle state of the dedicated host.
    */
   public interface LifecycleState {
-    /** deleted. */
-    String DELETED = "deleted";
     /** deleting. */
     String DELETING = "deleting";
     /** failed. */
@@ -205,7 +203,7 @@ public class DedicatedHost extends GenericModel {
   /**
    * Gets the instances.
    *
-   * Array of instances that are allocated to this dedicated host.
+   * The instances that are allocated to this dedicated host.
    *
    * @return the instances
    */
@@ -216,7 +214,7 @@ public class DedicatedHost extends GenericModel {
   /**
    * Gets the lifecycleState.
    *
-   * The lifecycle state of the dedicated host resource.
+   * The lifecycle state of the dedicated host.
    *
    * @return the lifecycleState
    */
@@ -320,7 +318,7 @@ public class DedicatedHost extends GenericModel {
   /**
    * Gets the supportedInstanceProfiles.
    *
-   * Array of instance profiles that can be used by instances placed on this dedicated host.
+   * The instance profiles usable by instances placed on this dedicated host.
    *
    * @return the supportedInstanceProfiles
    */

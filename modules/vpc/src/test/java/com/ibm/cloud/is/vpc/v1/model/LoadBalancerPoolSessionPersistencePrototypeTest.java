@@ -32,14 +32,17 @@ public class LoadBalancerPoolSessionPersistencePrototypeTest {
   @Test
   public void testLoadBalancerPoolSessionPersistencePrototype() throws Throwable {
     LoadBalancerPoolSessionPersistencePrototype loadBalancerPoolSessionPersistencePrototypeModel = new LoadBalancerPoolSessionPersistencePrototype.Builder()
+      .cookieName("my-cookie-name")
       .type("source_ip")
       .build();
+    assertEquals(loadBalancerPoolSessionPersistencePrototypeModel.cookieName(), "my-cookie-name");
     assertEquals(loadBalancerPoolSessionPersistencePrototypeModel.type(), "source_ip");
 
     String json = TestUtilities.serialize(loadBalancerPoolSessionPersistencePrototypeModel);
 
     LoadBalancerPoolSessionPersistencePrototype loadBalancerPoolSessionPersistencePrototypeModelNew = TestUtilities.deserialize(json, LoadBalancerPoolSessionPersistencePrototype.class);
     assertTrue(loadBalancerPoolSessionPersistencePrototypeModelNew instanceof LoadBalancerPoolSessionPersistencePrototype);
+    assertEquals(loadBalancerPoolSessionPersistencePrototypeModelNew.cookieName(), "my-cookie-name");
     assertEquals(loadBalancerPoolSessionPersistencePrototypeModelNew.type(), "source_ip");
   }
 

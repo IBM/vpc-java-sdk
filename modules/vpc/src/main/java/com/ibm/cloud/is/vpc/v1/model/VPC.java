@@ -95,8 +95,8 @@ public class VPC extends GenericModel {
   /**
    * Gets the cseSourceIps.
    *
-   * Array of CSE ([Cloud Service Endpoint](https://cloud.ibm.com/docs/resources?topic=resources-service-endpoints))
-   * source IP addresses for the VPC. The VPC will have one CSE source IP address per zone.
+   * The CSE ([Cloud Service Endpoint](https://cloud.ibm.com/docs/resources?topic=resources-service-endpoints)) source
+   * IP addresses for the VPC. The VPC will have one CSE source IP address per zone.
    *
    * @return the cseSourceIps
    */

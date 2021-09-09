@@ -23,7 +23,7 @@ public class InstanceInitializationPassword extends GenericModel {
   @SerializedName("encrypted_password")
   protected byte[] encryptedPassword;
   @SerializedName("encryption_key")
-  protected KeyReferenceInstanceInitializationContext encryptionKey;
+  protected KeyIdentityByFingerprint encryptionKey;
 
   /**
    * Gets the encryptedPassword.
@@ -39,11 +39,11 @@ public class InstanceInitializationPassword extends GenericModel {
   /**
    * Gets the encryptionKey.
    *
-   * The reference to the public SSH key used to encrypt the administrator password.
+   * The public SSH key used to encrypt the administrator password.
    *
    * @return the encryptionKey
    */
-  public KeyReferenceInstanceInitializationContext getEncryptionKey() {
+  public KeyIdentityByFingerprint getEncryptionKey() {
     return encryptionKey;
   }
 }

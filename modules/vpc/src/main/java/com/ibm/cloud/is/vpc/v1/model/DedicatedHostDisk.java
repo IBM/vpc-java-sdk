@@ -39,8 +39,6 @@ public class DedicatedHostDisk extends GenericModel {
    * The lifecycle state of this dedicated host disk.
    */
   public interface LifecycleState {
-    /** deleted. */
-    String DELETED = "deleted";
     /** deleting. */
     String DELETING = "deleting";
     /** failed. */

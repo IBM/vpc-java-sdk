@@ -14,7 +14,7 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.CreateInstanceVolumeAttachmentOptions;
-import com.ibm.cloud.is.vpc.v1.model.VolumeIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototypeVolumeVolumeIdentityVolumeIdentityById;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -32,20 +32,20 @@ public class CreateInstanceVolumeAttachmentOptionsTest {
 
   @Test
   public void testCreateInstanceVolumeAttachmentOptions() throws Throwable {
-    VolumeIdentityById volumeIdentityModel = new VolumeIdentityById.Builder()
+    VolumeAttachmentPrototypeVolumeVolumeIdentityVolumeIdentityById volumeAttachmentPrototypeVolumeModel = new VolumeAttachmentPrototypeVolumeVolumeIdentityVolumeIdentityById.Builder()
       .id("1a6b7274-678d-4dfb-8981-c71dd9d4daa5")
       .build();
-    assertEquals(volumeIdentityModel.id(), "1a6b7274-678d-4dfb-8981-c71dd9d4daa5");
+    assertEquals(volumeAttachmentPrototypeVolumeModel.id(), "1a6b7274-678d-4dfb-8981-c71dd9d4daa5");
 
     CreateInstanceVolumeAttachmentOptions createInstanceVolumeAttachmentOptionsModel = new CreateInstanceVolumeAttachmentOptions.Builder()
       .instanceId("testString")
-      .volume(volumeIdentityModel)
-      .deleteVolumeOnInstanceDelete(true)
+      .volume(volumeAttachmentPrototypeVolumeModel)
+      .deleteVolumeOnInstanceDelete(false)
       .name("my-volume-attachment")
       .build();
     assertEquals(createInstanceVolumeAttachmentOptionsModel.instanceId(), "testString");
-    assertEquals(createInstanceVolumeAttachmentOptionsModel.volume(), volumeIdentityModel);
-    assertEquals(createInstanceVolumeAttachmentOptionsModel.deleteVolumeOnInstanceDelete(), Boolean.valueOf(true));
+    assertEquals(createInstanceVolumeAttachmentOptionsModel.volume(), volumeAttachmentPrototypeVolumeModel);
+    assertEquals(createInstanceVolumeAttachmentOptionsModel.deleteVolumeOnInstanceDelete(), Boolean.valueOf(false));
     assertEquals(createInstanceVolumeAttachmentOptionsModel.name(), "my-volume-attachment");
   }
 

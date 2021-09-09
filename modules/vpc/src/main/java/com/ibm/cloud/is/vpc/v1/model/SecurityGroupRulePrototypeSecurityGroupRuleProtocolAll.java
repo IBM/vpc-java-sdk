@@ -29,9 +29,9 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolAll extends Secu
   }
 
   /**
-   * The IP version to enforce. The format of `remote.address` or `remote.cidr_block` must match this field, if they are
-   * used. Alternatively, if `remote` references a security group, then this rule only applies to IP addresses (network
-   * interfaces) in that group matching this IP version.
+   * The IP version to enforce. The format of `remote.address` or `remote.cidr_block` must match this property, if they
+   * are used. Alternatively, if `remote` references a security group, then this rule only applies to IP addresses
+   * (network interfaces) in that group matching this IP version.
    */
   public interface IpVersion {
     /** ipv4. */
@@ -53,14 +53,14 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolAll extends Secu
   public static class Builder {
     private String direction;
     private String ipVersion;
-    private SecurityGroupRuleRemotePrototype remote;
     private String protocol;
+    private SecurityGroupRuleRemotePrototype remote;
 
     public Builder(SecurityGroupRulePrototype securityGroupRulePrototypeSecurityGroupRuleProtocolAll) {
       this.direction = securityGroupRulePrototypeSecurityGroupRuleProtocolAll.direction;
       this.ipVersion = securityGroupRulePrototypeSecurityGroupRuleProtocolAll.ipVersion;
-      this.remote = securityGroupRulePrototypeSecurityGroupRuleProtocolAll.remote;
       this.protocol = securityGroupRulePrototypeSecurityGroupRuleProtocolAll.protocol;
+      this.remote = securityGroupRulePrototypeSecurityGroupRuleProtocolAll.remote;
     }
 
     /**
@@ -112,17 +112,6 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolAll extends Secu
     }
 
     /**
-     * Set the remote.
-     *
-     * @param remote the remote
-     * @return the SecurityGroupRulePrototypeSecurityGroupRuleProtocolAll builder
-     */
-    public Builder remote(SecurityGroupRuleRemotePrototype remote) {
-      this.remote = remote;
-      return this;
-    }
-
-    /**
      * Set the protocol.
      *
      * @param protocol the protocol
@@ -130,6 +119,17 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolAll extends Secu
      */
     public Builder protocol(String protocol) {
       this.protocol = protocol;
+      return this;
+    }
+
+    /**
+     * Set the remote.
+     *
+     * @param remote the remote
+     * @return the SecurityGroupRulePrototypeSecurityGroupRuleProtocolAll builder
+     */
+    public Builder remote(SecurityGroupRuleRemotePrototype remote) {
+      this.remote = remote;
       return this;
     }
   }
@@ -141,8 +141,8 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolAll extends Secu
       "protocol cannot be null");
     direction = builder.direction;
     ipVersion = builder.ipVersion;
-    remote = builder.remote;
     protocol = builder.protocol;
+    remote = builder.remote;
   }
 
   /**

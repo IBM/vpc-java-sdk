@@ -12,6 +12,7 @@
  */
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
@@ -20,19 +21,39 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class LoadBalancerPoolSessionPersistence extends GenericModel {
 
   /**
-   * The session persistence type.
+   * The session persistence type. The `http_cookie` and `app_cookie` types are applicable only to the `http` and
+   * `https` protocols.
    */
   public interface Type {
     /** source_ip. */
     String SOURCE_IP = "source_ip";
+    /** app_cookie. */
+    String APP_COOKIE = "app_cookie";
+    /** http_cookie. */
+    String HTTP_COOKIE = "http_cookie";
   }
 
+  @SerializedName("cookie_name")
+  protected String cookieName;
   protected String type;
+
+  /**
+   * Gets the cookieName.
+   *
+   * The session persistence cookie name. Applicable only for type `app_cookie`. Names starting with `IBM` are not
+   * allowed.
+   *
+   * @return the cookieName
+   */
+  public String getCookieName() {
+    return cookieName;
+  }
 
   /**
    * Gets the type.
    *
-   * The session persistence type.
+   * The session persistence type. The `http_cookie` and `app_cookie` types are applicable only to the `http` and
+   * `https` protocols.
    *
    * @return the type
    */

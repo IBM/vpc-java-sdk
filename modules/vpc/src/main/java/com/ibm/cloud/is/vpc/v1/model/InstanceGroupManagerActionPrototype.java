@@ -29,7 +29,7 @@ public class InstanceGroupManagerActionPrototype extends GenericModel {
   @SerializedName("run_at")
   protected Date runAt;
   protected InstanceGroupManagerScheduledActionGroupPrototype group;
-  protected InstanceGroupManagerScheduledActionByManagerManager manager;
+  protected InstanceGroupManagerScheduledActionManagerPrototype manager;
   @SerializedName("cron_spec")
   protected String cronSpec;
 
@@ -73,7 +73,7 @@ public class InstanceGroupManagerActionPrototype extends GenericModel {
    *
    * @return the manager
    */
-  public InstanceGroupManagerScheduledActionByManagerManager manager() {
+  public InstanceGroupManagerScheduledActionManagerPrototype manager() {
     return manager;
   }
 

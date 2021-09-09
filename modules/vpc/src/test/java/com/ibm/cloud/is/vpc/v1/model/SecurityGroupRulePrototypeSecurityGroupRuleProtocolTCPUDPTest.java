@@ -40,17 +40,17 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolTCPUDPTest {
     SecurityGroupRulePrototypeSecurityGroupRuleProtocolTCPUDP securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudpModel = new SecurityGroupRulePrototypeSecurityGroupRuleProtocolTCPUDP.Builder()
       .direction("inbound")
       .ipVersion("ipv4")
-      .remote(securityGroupRuleRemotePrototypeModel)
       .portMax(Long.valueOf("22"))
       .portMin(Long.valueOf("22"))
       .protocol("udp")
+      .remote(securityGroupRuleRemotePrototypeModel)
       .build();
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudpModel.direction(), "inbound");
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudpModel.ipVersion(), "ipv4");
-    assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudpModel.remote(), securityGroupRuleRemotePrototypeModel);
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudpModel.portMax(), Long.valueOf("22"));
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudpModel.portMin(), Long.valueOf("22"));
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudpModel.protocol(), "udp");
+    assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudpModel.remote(), securityGroupRuleRemotePrototypeModel);
 
     String json = TestUtilities.serialize(securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudpModel);
 
@@ -58,10 +58,10 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolTCPUDPTest {
     assertTrue(securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudpModelNew instanceof SecurityGroupRulePrototypeSecurityGroupRuleProtocolTCPUDP);
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudpModelNew.direction(), "inbound");
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudpModelNew.ipVersion(), "ipv4");
-    assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudpModelNew.remote().toString(), securityGroupRuleRemotePrototypeModel.toString());
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudpModelNew.portMax(), Long.valueOf("22"));
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudpModelNew.portMin(), Long.valueOf("22"));
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudpModelNew.protocol(), "udp");
+    assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudpModelNew.remote().toString(), securityGroupRuleRemotePrototypeModel.toString());
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

@@ -13,11 +13,13 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.ibm.cloud.is.vpc.v1.model.DedicatedHostGroupReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.ImageReference;
 import com.ibm.cloud.is.vpc.v1.model.ImageReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.Instance;
 import com.ibm.cloud.is.vpc.v1.model.InstanceDisk;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGPU;
+import com.ibm.cloud.is.vpc.v1.model.InstancePlacementTargetDedicatedHostGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileReference;
 import com.ibm.cloud.is.vpc.v1.model.InstanceStatusReason;
 import com.ibm.cloud.is.vpc.v1.model.InstanceVCPU;
@@ -65,11 +67,15 @@ public class InstanceTest {
     assertNull(instanceModel.getMemory());
     assertNull(instanceModel.getName());
     assertNull(instanceModel.getNetworkInterfaces());
+    assertNull(instanceModel.getPlacementTarget());
     assertNull(instanceModel.getPrimaryNetworkInterface());
     assertNull(instanceModel.getProfile());
     assertNull(instanceModel.getResourceGroup());
+    assertNull(instanceModel.isStartable());
     assertNull(instanceModel.getStatus());
     assertNull(instanceModel.getStatusReasons());
+    assertNull(instanceModel.getTotalNetworkBandwidth());
+    assertNull(instanceModel.getTotalVolumeBandwidth());
     assertNull(instanceModel.getVcpu());
     assertNull(instanceModel.getVolumeAttachments());
     assertNull(instanceModel.getVpc());

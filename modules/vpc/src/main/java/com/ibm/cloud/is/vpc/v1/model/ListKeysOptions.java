@@ -19,15 +19,21 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class ListKeysOptions extends GenericModel {
 
+  protected String start;
+  protected Long limit;
   protected String resourceGroupId;
 
   /**
    * Builder.
    */
   public static class Builder {
+    private String start;
+    private Long limit;
     private String resourceGroupId;
 
     private Builder(ListKeysOptions listKeysOptions) {
+      this.start = listKeysOptions.start;
+      this.limit = listKeysOptions.limit;
       this.resourceGroupId = listKeysOptions.resourceGroupId;
     }
 
@@ -47,6 +53,28 @@ public class ListKeysOptions extends GenericModel {
     }
 
     /**
+     * Set the start.
+     *
+     * @param start the start
+     * @return the ListKeysOptions builder
+     */
+    public Builder start(String start) {
+      this.start = start;
+      return this;
+    }
+
+    /**
+     * Set the limit.
+     *
+     * @param limit the limit
+     * @return the ListKeysOptions builder
+     */
+    public Builder limit(long limit) {
+      this.limit = limit;
+      return this;
+    }
+
+    /**
      * Set the resourceGroupId.
      *
      * @param resourceGroupId the resourceGroupId
@@ -59,6 +87,8 @@ public class ListKeysOptions extends GenericModel {
   }
 
   protected ListKeysOptions(Builder builder) {
+    start = builder.start;
+    limit = builder.limit;
     resourceGroupId = builder.resourceGroupId;
   }
 
@@ -69,6 +99,28 @@ public class ListKeysOptions extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
+  }
+
+  /**
+   * Gets the start.
+   *
+   * A server-supplied token determining what resource to start the page on.
+   *
+   * @return the start
+   */
+  public String start() {
+    return start;
+  }
+
+  /**
+   * Gets the limit.
+   *
+   * The number of resources to return on a page.
+   *
+   * @return the limit
+   */
+  public Long limit() {
+    return limit;
   }
 
   /**

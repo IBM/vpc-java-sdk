@@ -31,6 +31,7 @@ public class InstanceTemplatePrototypeInstanceByImage extends InstanceTemplatePr
     private InstancePlacementTargetPrototype placementTarget;
     private InstanceProfileIdentity profile;
     private ResourceGroupIdentity resourceGroup;
+    private Long totalVolumeBandwidth;
     private String userData;
     private List<VolumeAttachmentPrototypeInstanceContext> volumeAttachments;
     private VPCIdentity vpc;
@@ -46,10 +47,11 @@ public class InstanceTemplatePrototypeInstanceByImage extends InstanceTemplatePr
       this.placementTarget = instanceTemplatePrototypeInstanceByImage.placementTarget;
       this.profile = instanceTemplatePrototypeInstanceByImage.profile;
       this.resourceGroup = instanceTemplatePrototypeInstanceByImage.resourceGroup;
+      this.totalVolumeBandwidth = instanceTemplatePrototypeInstanceByImage.totalVolumeBandwidth;
       this.userData = instanceTemplatePrototypeInstanceByImage.userData;
       this.volumeAttachments = instanceTemplatePrototypeInstanceByImage.volumeAttachments;
       this.vpc = instanceTemplatePrototypeInstanceByImage.vpc;
-      this.bootVolumeAttachment = instanceTemplatePrototypeInstanceByImage.bootVolumeAttachment;
+      this.bootVolumeAttachment = (VolumeAttachmentPrototypeInstanceByImageContext) instanceTemplatePrototypeInstanceByImage.bootVolumeAttachment;
       this.image = instanceTemplatePrototypeInstanceByImage.image;
       this.primaryNetworkInterface = instanceTemplatePrototypeInstanceByImage.primaryNetworkInterface;
       this.zone = instanceTemplatePrototypeInstanceByImage.zone;
@@ -200,6 +202,17 @@ public class InstanceTemplatePrototypeInstanceByImage extends InstanceTemplatePr
     }
 
     /**
+     * Set the totalVolumeBandwidth.
+     *
+     * @param totalVolumeBandwidth the totalVolumeBandwidth
+     * @return the InstanceTemplatePrototypeInstanceByImage builder
+     */
+    public Builder totalVolumeBandwidth(long totalVolumeBandwidth) {
+      this.totalVolumeBandwidth = totalVolumeBandwidth;
+      return this;
+    }
+
+    /**
      * Set the userData.
      *
      * @param userData the userData
@@ -291,6 +304,7 @@ public class InstanceTemplatePrototypeInstanceByImage extends InstanceTemplatePr
     placementTarget = builder.placementTarget;
     profile = builder.profile;
     resourceGroup = builder.resourceGroup;
+    totalVolumeBandwidth = builder.totalVolumeBandwidth;
     userData = builder.userData;
     volumeAttachments = builder.volumeAttachments;
     vpc = builder.vpc;

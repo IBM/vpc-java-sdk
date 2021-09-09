@@ -20,10 +20,9 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class ListSubnetReservedIpsOptions extends GenericModel {
 
   /**
-   * Sorts the returned collection by the specified field name in ascending order. A `-` may be prepended to the field
-   * name to sort in descending order. For example, the value
-   * `-created_at` sorts the collection by the `created_at` field in descending order, and the value `name` sorts it by
-   * the `name` field in ascending order.
+   * Sorts the returned collection by the specified property name in ascending order. A `-` may be prepended to the name
+   * to sort in descending order. For example, the value `-created_at` sorts the collection by the `created_at` property
+   * in descending order, and the value `name` sorts it by the `name` property in ascending order.
    */
   public interface Sort {
     /** created_at. */
@@ -178,10 +177,9 @@ public class ListSubnetReservedIpsOptions extends GenericModel {
   /**
    * Gets the sort.
    *
-   * Sorts the returned collection by the specified field name in ascending order. A `-` may be prepended to the field
-   * name to sort in descending order. For example, the value
-   * `-created_at` sorts the collection by the `created_at` field in descending order, and the value `name` sorts it by
-   * the `name` field in ascending order.
+   * Sorts the returned collection by the specified property name in ascending order. A `-` may be prepended to the name
+   * to sort in descending order. For example, the value `-created_at` sorts the collection by the `created_at` property
+   * in descending order, and the value `name` sorts it by the `name` property in ascending order.
    *
    * @return the sort
    */

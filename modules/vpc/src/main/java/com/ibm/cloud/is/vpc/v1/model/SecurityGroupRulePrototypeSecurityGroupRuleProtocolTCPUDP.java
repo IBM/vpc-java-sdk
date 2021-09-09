@@ -30,9 +30,9 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolTCPUDP extends S
   }
 
   /**
-   * The IP version to enforce. The format of `remote.address` or `remote.cidr_block` must match this field, if they are
-   * used. Alternatively, if `remote` references a security group, then this rule only applies to IP addresses (network
-   * interfaces) in that group matching this IP version.
+   * The IP version to enforce. The format of `remote.address` or `remote.cidr_block` must match this property, if they
+   * are used. Alternatively, if `remote` references a security group, then this rule only applies to IP addresses
+   * (network interfaces) in that group matching this IP version.
    */
   public interface IpVersion {
     /** ipv4. */
@@ -56,18 +56,18 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolTCPUDP extends S
   public static class Builder {
     private String direction;
     private String ipVersion;
-    private SecurityGroupRuleRemotePrototype remote;
     private Long portMax;
     private Long portMin;
     private String protocol;
+    private SecurityGroupRuleRemotePrototype remote;
 
     public Builder(SecurityGroupRulePrototype securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudp) {
       this.direction = securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudp.direction;
       this.ipVersion = securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudp.ipVersion;
-      this.remote = securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudp.remote;
       this.portMax = securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudp.portMax;
       this.portMin = securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudp.portMin;
       this.protocol = securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudp.protocol;
+      this.remote = securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudp.remote;
     }
 
     /**
@@ -119,17 +119,6 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolTCPUDP extends S
     }
 
     /**
-     * Set the remote.
-     *
-     * @param remote the remote
-     * @return the SecurityGroupRulePrototypeSecurityGroupRuleProtocolTCPUDP builder
-     */
-    public Builder remote(SecurityGroupRuleRemotePrototype remote) {
-      this.remote = remote;
-      return this;
-    }
-
-    /**
      * Set the portMax.
      *
      * @param portMax the portMax
@@ -161,6 +150,17 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolTCPUDP extends S
       this.protocol = protocol;
       return this;
     }
+
+    /**
+     * Set the remote.
+     *
+     * @param remote the remote
+     * @return the SecurityGroupRulePrototypeSecurityGroupRuleProtocolTCPUDP builder
+     */
+    public Builder remote(SecurityGroupRuleRemotePrototype remote) {
+      this.remote = remote;
+      return this;
+    }
   }
 
   protected SecurityGroupRulePrototypeSecurityGroupRuleProtocolTCPUDP(Builder builder) {
@@ -170,10 +170,10 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolTCPUDP extends S
       "protocol cannot be null");
     direction = builder.direction;
     ipVersion = builder.ipVersion;
-    remote = builder.remote;
     portMax = builder.portMax;
     portMin = builder.portMin;
     protocol = builder.protocol;
+    remote = builder.remote;
   }
 
   /**

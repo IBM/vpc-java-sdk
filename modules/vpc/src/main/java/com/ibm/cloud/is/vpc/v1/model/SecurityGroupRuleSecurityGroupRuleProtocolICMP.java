@@ -13,10 +13,9 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 /**
- * When `protocol` is `icmp`, then the rule may also contain fields to specify an ICMP `type` and `code`. Field `code`
- * may only be specified if `type` is also specified. If type is not specified, then traffic is allowed for all types
- * and codes. If type is specified and code is not specified, then traffic is allowed with the specified type for all
- * codes.
+ * When `protocol` is `icmp`, the `type` property may optionally be specified. If specified, then ICMP traffic is
+ * allowed only for the specified ICMP type. Further, if `type` is specified, the `code` property may optionally be
+ * specified to allow traffic only for the specified ICMP code.
  */
 public class SecurityGroupRuleSecurityGroupRuleProtocolICMP extends SecurityGroupRule {
 
@@ -31,9 +30,9 @@ public class SecurityGroupRuleSecurityGroupRuleProtocolICMP extends SecurityGrou
   }
 
   /**
-   * The IP version to enforce. The format of `remote.address` or `remote.cidr_block` must match this field, if they are
-   * used. Alternatively, if `remote` references a security group, then this rule only applies to IP addresses (network
-   * interfaces) in that group matching this IP version.
+   * The IP version to enforce. The format of `remote.address` or `remote.cidr_block` must match this property, if they
+   * are used. Alternatively, if `remote` references a security group, then this rule only applies to IP addresses
+   * (network interfaces) in that group matching this IP version.
    */
   public interface IpVersion {
     /** ipv4. */

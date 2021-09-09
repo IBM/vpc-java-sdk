@@ -26,8 +26,6 @@ public class FlowLogCollector extends GenericModel {
    * The lifecycle state of the flow log collector.
    */
   public interface LifecycleState {
-    /** deleted. */
-    String DELETED = "deleted";
     /** deleting. */
     String DELETING = "deleting";
     /** failed. */

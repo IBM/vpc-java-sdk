@@ -153,9 +153,7 @@ public class ListVpcsOptions extends GenericModel {
   /**
    * Gets the classicAccess.
    *
-   * The `classic_access` parameter filters the returned collection by the supplied field. If the supplied field is
-   * `true`, only Classic Access VPCs will be returned. If the supplied field is `false`, only VPCs without Classic
-   * Access will be returned.
+   * Filters the collection to VPCs with the specified `classic_access` value.
    *
    * @return the classicAccess
    */

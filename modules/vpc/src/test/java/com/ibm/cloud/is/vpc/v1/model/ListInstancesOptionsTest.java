@@ -39,6 +39,12 @@ public class ListInstancesOptionsTest {
       .vpcId("testString")
       .vpcCrn("testString")
       .vpcName("testString")
+      .dedicatedHostId("testString")
+      .dedicatedHostCrn("testString")
+      .dedicatedHostName("testString")
+      .placementGroupId("testString")
+      .placementGroupCrn("testString")
+      .placementGroupName("testString")
       .build();
     assertEquals(listInstancesOptionsModel.start(), "testString");
     assertEquals(listInstancesOptionsModel.limit(), Long.valueOf("1"));
@@ -47,5 +53,11 @@ public class ListInstancesOptionsTest {
     assertEquals(listInstancesOptionsModel.vpcId(), "testString");
     assertEquals(listInstancesOptionsModel.vpcCrn(), "testString");
     assertEquals(listInstancesOptionsModel.vpcName(), "testString");
+    assertEquals(listInstancesOptionsModel.dedicatedHostId(), "testString");
+    assertEquals(listInstancesOptionsModel.dedicatedHostCrn(), "testString");
+    assertEquals(listInstancesOptionsModel.dedicatedHostName(), "testString");
+    assertEquals(listInstancesOptionsModel.placementGroupId(), "testString");
+    assertEquals(listInstancesOptionsModel.placementGroupCrn(), "testString");
+    assertEquals(listInstancesOptionsModel.placementGroupName(), "testString");
   }
 }

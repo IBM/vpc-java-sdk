@@ -130,10 +130,10 @@ public class LoadBalancerListenerPolicyPatch extends GenericModel {
   /**
    * Gets the target.
    *
-   * When `action` is `forward`, `LoadBalancerPoolIdentity` specifies which pool the load
-   * balancer forwards the traffic to. When `action` is `redirect`,
-   * `LoadBalancerListenerPolicyRedirectURLPatch` specifies the url and http
-   * status code used in the redirect response.
+   * - If `action` is `forward`, specify a `LoadBalancerPoolIdentity`.
+   * - If `action` is `redirect`, specify a `LoadBalancerListenerPolicyRedirectURLPatch`.
+   * - If `action` is `https_redirect`, specify a
+   *   `LoadBalancerListenerPolicyHTTPSRedirectPatch`.
    *
    * @return the target
    */

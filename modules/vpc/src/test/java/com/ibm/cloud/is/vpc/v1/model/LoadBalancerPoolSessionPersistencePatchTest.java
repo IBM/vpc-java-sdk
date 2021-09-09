@@ -32,20 +32,17 @@ public class LoadBalancerPoolSessionPersistencePatchTest {
   @Test
   public void testLoadBalancerPoolSessionPersistencePatch() throws Throwable {
     LoadBalancerPoolSessionPersistencePatch loadBalancerPoolSessionPersistencePatchModel = new LoadBalancerPoolSessionPersistencePatch.Builder()
+      .cookieName("my-cookie-name")
       .type("source_ip")
       .build();
+    assertEquals(loadBalancerPoolSessionPersistencePatchModel.cookieName(), "my-cookie-name");
     assertEquals(loadBalancerPoolSessionPersistencePatchModel.type(), "source_ip");
 
     String json = TestUtilities.serialize(loadBalancerPoolSessionPersistencePatchModel);
 
     LoadBalancerPoolSessionPersistencePatch loadBalancerPoolSessionPersistencePatchModelNew = TestUtilities.deserialize(json, LoadBalancerPoolSessionPersistencePatch.class);
     assertTrue(loadBalancerPoolSessionPersistencePatchModelNew instanceof LoadBalancerPoolSessionPersistencePatch);
+    assertEquals(loadBalancerPoolSessionPersistencePatchModelNew.cookieName(), "my-cookie-name");
     assertEquals(loadBalancerPoolSessionPersistencePatchModelNew.type(), "source_ip");
   }
-
-  @Test(expectedExceptions = IllegalArgumentException.class)
-  public void testLoadBalancerPoolSessionPersistencePatchError() throws Throwable {
-    new LoadBalancerPoolSessionPersistencePatch.Builder().build();
-  }
-
 }

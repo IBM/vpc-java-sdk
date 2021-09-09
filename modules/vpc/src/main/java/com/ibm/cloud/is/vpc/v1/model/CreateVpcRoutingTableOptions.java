@@ -260,8 +260,8 @@ public class CreateVpcRoutingTableOptions extends GenericModel {
   /**
    * Gets the routes.
    *
-   * Array of route prototype objects for routes to create for this routing table. If unspecified, the routing table
-   * will be created with no routes.
+   * The prototype objects for routes to create for this routing table. If unspecified, the routing table will be
+   * created with no routes.
    *
    * @return the routes
    */

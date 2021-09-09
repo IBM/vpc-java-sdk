@@ -12,7 +12,6 @@
  */
 package com.ibm.cloud.is.vpc.v1.model;
 
-import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
  * Identifies a dedicated host group by a unique property.
@@ -22,11 +21,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  * - DedicatedHostGroupIdentityByCRN
  * - DedicatedHostGroupIdentityByHref
  */
-public class DedicatedHostGroupIdentity extends GenericModel {
-
-  protected String id;
-  protected String crn;
-  protected String href;
+public class DedicatedHostGroupIdentity extends DedicatedHostPrototypeWrapper {
 
   protected DedicatedHostGroupIdentity() {
   }

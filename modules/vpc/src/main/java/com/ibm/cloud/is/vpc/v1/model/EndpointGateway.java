@@ -47,8 +47,6 @@ public class EndpointGateway extends GenericModel {
    * The lifecycle state of the endpoint gateway.
    */
   public interface LifecycleState {
-    /** deleted. */
-    String DELETED = "deleted";
     /** deleting. */
     String DELETING = "deleting";
     /** failed. */
@@ -159,7 +157,7 @@ public class EndpointGateway extends GenericModel {
   /**
    * Gets the ips.
    *
-   * Collection of reserved IPs bound to an endpoint gateway.
+   * The reserved IPs bound to this endpoint gateway.
    *
    * @return the ips
    */
@@ -225,7 +223,7 @@ public class EndpointGateway extends GenericModel {
   /**
    * Gets the serviceEndpoints.
    *
-   * Collection of fully qualified domain names for the target service.
+   * The fully qualified domain names for the target service.
    *
    * @return the serviceEndpoints
    */

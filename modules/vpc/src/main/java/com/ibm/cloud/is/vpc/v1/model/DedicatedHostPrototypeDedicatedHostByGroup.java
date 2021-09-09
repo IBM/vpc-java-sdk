@@ -33,7 +33,7 @@ public class DedicatedHostPrototypeDedicatedHostByGroup extends DedicatedHostPro
       this.name = dedicatedHostPrototypeDedicatedHostByGroup.name;
       this.profile = dedicatedHostPrototypeDedicatedHostByGroup.profile;
       this.resourceGroup = dedicatedHostPrototypeDedicatedHostByGroup.resourceGroup;
-      this.group = dedicatedHostPrototypeDedicatedHostByGroup.group;
+      this.group = (DedicatedHostGroupIdentity) dedicatedHostPrototypeDedicatedHostByGroup.group;
     }
 
     /**

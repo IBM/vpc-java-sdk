@@ -95,7 +95,7 @@ public class SecurityGroup extends GenericModel {
   /**
    * Gets the networkInterfaces.
    *
-   * Array of references to network interfaces.
+   * The network interfaces for this security group.
    *
    * @return the networkInterfaces
    */
@@ -117,7 +117,7 @@ public class SecurityGroup extends GenericModel {
   /**
    * Gets the rules.
    *
-   * Array of rules for this security group. If no rules exist, all traffic will be denied.
+   * The rules for this security group. If no rules exist, all traffic will be denied.
    *
    * @return the rules
    */
@@ -128,7 +128,7 @@ public class SecurityGroup extends GenericModel {
   /**
    * Gets the targets.
    *
-   * Array of references to targets.
+   * The targets for this security group.
    *
    * @return the targets
    */

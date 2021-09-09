@@ -41,9 +41,11 @@ public class InstancePatchTest {
     InstancePatch instancePatchModel = new InstancePatch.Builder()
       .name("my-instance")
       .profile(instancePatchProfileModel)
+      .totalVolumeBandwidth(Long.valueOf("500"))
       .build();
     assertEquals(instancePatchModel.name(), "my-instance");
     assertEquals(instancePatchModel.profile(), instancePatchProfileModel);
+    assertEquals(instancePatchModel.totalVolumeBandwidth(), Long.valueOf("500"));
 
     String json = TestUtilities.serialize(instancePatchModel);
 
@@ -51,6 +53,7 @@ public class InstancePatchTest {
     assertTrue(instancePatchModelNew instanceof InstancePatch);
     assertEquals(instancePatchModelNew.name(), "my-instance");
     assertEquals(instancePatchModelNew.profile().toString(), instancePatchProfileModel.toString());
+    assertEquals(instancePatchModelNew.totalVolumeBandwidth(), Long.valueOf("500"));
   }
   @Test
   public void testInstancePatchAsPatch() throws Throwable {
@@ -61,12 +64,14 @@ public class InstancePatchTest {
     InstancePatch instancePatchModel = new InstancePatch.Builder()
       .name("my-instance")
       .profile(instancePatchProfileModel)
+      .totalVolumeBandwidth(Long.valueOf("500"))
       .build();
 
     Map<String, Object> mergePatch = instancePatchModel.asPatch();
 
     assertEquals(mergePatch.get("name"), "my-instance");
     assertTrue(mergePatch.containsKey("profile"));
+    assertTrue(mergePatch.containsKey("total_volume_bandwidth"));
   }
 
 }

@@ -23,7 +23,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  *
  * Classes which extend this class:
  * - InstanceTemplateInstanceByImage
- * - InstanceTemplateInstanceBySourceTemplate
+ * - InstanceTemplateInstanceByVolume
  */
 public class InstanceTemplate extends GenericModel {
 
@@ -41,6 +41,8 @@ public class InstanceTemplate extends GenericModel {
   protected InstanceProfileIdentity profile;
   @SerializedName("resource_group")
   protected ResourceGroupReference resourceGroup;
+  @SerializedName("total_volume_bandwidth")
+  protected Long totalVolumeBandwidth;
   @SerializedName("user_data")
   protected String userData;
   @SerializedName("volume_attachments")
@@ -52,8 +54,6 @@ public class InstanceTemplate extends GenericModel {
   @SerializedName("primary_network_interface")
   protected NetworkInterfacePrototype primaryNetworkInterface;
   protected ZoneIdentity zone;
-  @SerializedName("source_template")
-  protected InstanceTemplateIdentity sourceTemplate;
 
   protected InstanceTemplate() {
   }
@@ -105,12 +105,14 @@ public class InstanceTemplate extends GenericModel {
   /**
    * Gets the keys.
    *
-   * The public SSH keys for the administrative user of the virtual server instance. Up to 10 keys may be provided; if
-   * no keys are provided the instance will be inaccessible unless the image used provides another means of access. For
-   * Windows instances, one of the keys will be used to encrypt the administrator password.
+   * The public SSH keys for the administrative user of the virtual server instance. Keys will be made available to the
+   * virtual server instance as cloud-init vendor data. For cloud-init enabled images, these keys will also be added as
+   * SSH authorized keys for the administrative user.
    *
-   * Keys will be made available to the virtual server instance as cloud-init vendor data. For cloud-init enabled
-   * images, these keys will also be added as SSH authorized keys for the administrative user.
+   * For Windows images, at least one key must be specified, and one will be chosen to encrypt [the administrator
+   * password](https://cloud.ibm.com/apidocs/vpc#get-instance-initialization). Keys are optional for other images, but
+   * if no keys are specified, the instance will be inaccessible unless the specified image provides another means of
+   * access.
    *
    * @return the keys
    */
@@ -132,7 +134,7 @@ public class InstanceTemplate extends GenericModel {
   /**
    * Gets the networkInterfaces.
    *
-   * Collection of additional network interfaces to create for the virtual server instance.
+   * The additional network interfaces to create for the virtual server instance.
    *
    * @return the networkInterfaces
    */
@@ -174,6 +176,19 @@ public class InstanceTemplate extends GenericModel {
   }
 
   /**
+   * Gets the totalVolumeBandwidth.
+   *
+   * The amount of bandwidth (in megabits per second) allocated exclusively to instance storage volumes. An increase in
+   * this value will result in a corresponding decrease to
+   * `total_network_bandwidth`.
+   *
+   * @return the totalVolumeBandwidth
+   */
+  public Long getTotalVolumeBandwidth() {
+    return totalVolumeBandwidth;
+  }
+
+  /**
    * Gets the userData.
    *
    * User data to be made available when setting up the virtual server instance.
@@ -187,7 +202,7 @@ public class InstanceTemplate extends GenericModel {
   /**
    * Gets the volumeAttachments.
    *
-   * Collection of volume attachments.
+   * The volume attachments for this virtual server instance.
    *
    * @return the volumeAttachments
    */
@@ -221,7 +236,7 @@ public class InstanceTemplate extends GenericModel {
   /**
    * Gets the image.
    *
-   * The identity of the image to use when provisioning the virtual server instance.
+   * The image to use when provisioning the virtual server instance.
    *
    * @return the image
    */
@@ -249,17 +264,6 @@ public class InstanceTemplate extends GenericModel {
    */
   public ZoneIdentity getZone() {
     return zone;
-  }
-
-  /**
-   * Gets the sourceTemplate.
-   *
-   * Identifies an instance template by a unique property.
-   *
-   * @return the sourceTemplate
-   */
-  public InstanceTemplateIdentity getSourceTemplate() {
-    return sourceTemplate;
   }
 }
 

@@ -66,14 +66,21 @@ public class Instance extends GenericModel {
   protected String name;
   @SerializedName("network_interfaces")
   protected List<NetworkInterfaceInstanceContextReference> networkInterfaces;
+  @SerializedName("placement_target")
+  protected InstancePlacementTarget placementTarget;
   @SerializedName("primary_network_interface")
   protected NetworkInterfaceInstanceContextReference primaryNetworkInterface;
   protected InstanceProfileReference profile;
   @SerializedName("resource_group")
   protected ResourceGroupReference resourceGroup;
+  protected Boolean startable;
   protected String status;
   @SerializedName("status_reasons")
   protected List<InstanceStatusReason> statusReasons;
+  @SerializedName("total_network_bandwidth")
+  protected Long totalNetworkBandwidth;
+  @SerializedName("total_volume_bandwidth")
+  protected Long totalVolumeBandwidth;
   protected InstanceVCPU vcpu;
   @SerializedName("volume_attachments")
   protected List<VolumeAttachmentReferenceInstanceContext> volumeAttachments;
@@ -83,7 +90,8 @@ public class Instance extends GenericModel {
   /**
    * Gets the bandwidth.
    *
-   * The total bandwidth (in megabits per second) shared across the virtual server instance's network interfaces.
+   * The total bandwidth (in megabits per second) shared across the virtual server instance's network interfaces and
+   * storage volumes.
    *
    * @return the bandwidth
    */
@@ -127,7 +135,7 @@ public class Instance extends GenericModel {
   /**
    * Gets the disks.
    *
-   * Collection of the instance's disks.
+   * The instance disks for this virtual server instance.
    *
    * @return the disks
    */
@@ -204,12 +212,23 @@ public class Instance extends GenericModel {
   /**
    * Gets the networkInterfaces.
    *
-   * Collection of the virtual server instance's network interfaces, including the primary network interface.
+   * The network interfaces for this virtual server instance, including the primary network interface.
    *
    * @return the networkInterfaces
    */
   public List<NetworkInterfaceInstanceContextReference> getNetworkInterfaces() {
     return networkInterfaces;
+  }
+
+  /**
+   * Gets the placementTarget.
+   *
+   * The placement restrictions for the virtual server instance.
+   *
+   * @return the placementTarget
+   */
+  public InstancePlacementTarget getPlacementTarget() {
+    return placementTarget;
   }
 
   /**
@@ -246,6 +265,17 @@ public class Instance extends GenericModel {
   }
 
   /**
+   * Gets the startable.
+   *
+   * Indicates whether the state of the virtual server instance permits a start request.
+   *
+   * @return the startable
+   */
+  public Boolean isStartable() {
+    return startable;
+  }
+
+  /**
    * Gets the status.
    *
    * The status of the virtual server instance.
@@ -259,7 +289,7 @@ public class Instance extends GenericModel {
   /**
    * Gets the statusReasons.
    *
-   * Array of reasons for the current status (if any).
+   * The reasons for the current status (if any).
    *
    * The enumerated reason code values for this property will expand in the future. When processing this property, check
    * for and log unknown values. Optionally halt processing and surface the error, or bypass the resource on which the
@@ -269,6 +299,30 @@ public class Instance extends GenericModel {
    */
   public List<InstanceStatusReason> getStatusReasons() {
     return statusReasons;
+  }
+
+  /**
+   * Gets the totalNetworkBandwidth.
+   *
+   * The amount of bandwidth (in megabits per second) allocated exclusively to instance network interfaces.
+   *
+   * @return the totalNetworkBandwidth
+   */
+  public Long getTotalNetworkBandwidth() {
+    return totalNetworkBandwidth;
+  }
+
+  /**
+   * Gets the totalVolumeBandwidth.
+   *
+   * The amount of bandwidth (in megabits per second) allocated exclusively to instance storage volumes. An increase in
+   * this value will result in a corresponding decrease to
+   * `total_network_bandwidth`.
+   *
+   * @return the totalVolumeBandwidth
+   */
+  public Long getTotalVolumeBandwidth() {
+    return totalVolumeBandwidth;
   }
 
   /**
@@ -285,7 +339,7 @@ public class Instance extends GenericModel {
   /**
    * Gets the volumeAttachments.
    *
-   * Collection of the virtual server instance's volume attachments, including the boot volume attachment.
+   * The volume attachments for this virtual server instance, including the boot volume attachment.
    *
    * @return the volumeAttachments
    */
