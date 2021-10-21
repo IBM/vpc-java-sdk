@@ -22,6 +22,9 @@ public class CreateVpcOptions extends GenericModel {
   /**
    * Indicates whether a default address prefix should be automatically created for each zone in this VPC. If `manual`,
    * this VPC will be created with no default address prefixes.
+   *
+   * This property's value is used only when creating the VPC. Since address prefixes are managed identically regardless
+   * of whether they were automatically created, the value is not preserved as a VPC property.
    */
   public interface AddressPrefixManagement {
     /** auto. */
@@ -132,6 +135,9 @@ public class CreateVpcOptions extends GenericModel {
    *
    * Indicates whether a default address prefix should be automatically created for each zone in this VPC. If `manual`,
    * this VPC will be created with no default address prefixes.
+   *
+   * This property's value is used only when creating the VPC. Since address prefixes are managed identically regardless
+   * of whether they were automatically created, the value is not preserved as a VPC property.
    *
    * @return the addressPrefixManagement
    */

@@ -14,6 +14,8 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostGroupReferenceDeleted;
+import com.ibm.cloud.is.vpc.v1.model.DedicatedHostReference;
+import com.ibm.cloud.is.vpc.v1.model.DedicatedHostReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.ImageReference;
 import com.ibm.cloud.is.vpc.v1.model.ImageReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.Instance;

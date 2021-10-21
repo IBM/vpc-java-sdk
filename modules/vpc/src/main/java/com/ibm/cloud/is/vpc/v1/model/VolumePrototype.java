@@ -40,7 +40,7 @@ public class VolumePrototype extends GenericModel {
    * Gets the iops.
    *
    * The maximum I/O operations per second (IOPS) to use for the volume. Applicable only to volumes using a profile
-   * `family` of `custom`. The volume must be attached as a data volume to a running virtual server instance.
+   * `family` of `custom`.
    *
    * @return the iops
    */

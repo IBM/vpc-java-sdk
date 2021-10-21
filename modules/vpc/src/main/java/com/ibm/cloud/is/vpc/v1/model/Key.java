@@ -126,7 +126,7 @@ public class Key extends GenericModel {
   /**
    * Gets the publicKey.
    *
-   * The public SSH key.
+   * The public SSH key, consisting of two space-separated fields: the algorithm name, and the base64-encoded key.
    *
    * @return the publicKey
    */

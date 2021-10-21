@@ -41,6 +41,10 @@ public class LoadBalancerListenerPrototypeLoadBalancerContext extends GenericMod
   @SerializedName("default_pool")
   protected LoadBalancerPoolIdentityByName defaultPool;
   protected Long port;
+  @SerializedName("port_max")
+  protected Long portMax;
+  @SerializedName("port_min")
+  protected Long portMin;
   protected String protocol;
 
   /**
@@ -51,6 +55,8 @@ public class LoadBalancerListenerPrototypeLoadBalancerContext extends GenericMod
     private Long connectionLimit;
     private LoadBalancerPoolIdentityByName defaultPool;
     private Long port;
+    private Long portMax;
+    private Long portMin;
     private String protocol;
 
     private Builder(LoadBalancerListenerPrototypeLoadBalancerContext loadBalancerListenerPrototypeLoadBalancerContext) {
@@ -58,6 +64,8 @@ public class LoadBalancerListenerPrototypeLoadBalancerContext extends GenericMod
       this.connectionLimit = loadBalancerListenerPrototypeLoadBalancerContext.connectionLimit;
       this.defaultPool = loadBalancerListenerPrototypeLoadBalancerContext.defaultPool;
       this.port = loadBalancerListenerPrototypeLoadBalancerContext.port;
+      this.portMax = loadBalancerListenerPrototypeLoadBalancerContext.portMax;
+      this.portMin = loadBalancerListenerPrototypeLoadBalancerContext.portMin;
       this.protocol = loadBalancerListenerPrototypeLoadBalancerContext.protocol;
     }
 
@@ -70,11 +78,9 @@ public class LoadBalancerListenerPrototypeLoadBalancerContext extends GenericMod
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param port the port
      * @param protocol the protocol
      */
-    public Builder(Long port, String protocol) {
-      this.port = port;
+    public Builder(String protocol) {
       this.protocol = protocol;
     }
 
@@ -132,6 +138,28 @@ public class LoadBalancerListenerPrototypeLoadBalancerContext extends GenericMod
     }
 
     /**
+     * Set the portMax.
+     *
+     * @param portMax the portMax
+     * @return the LoadBalancerListenerPrototypeLoadBalancerContext builder
+     */
+    public Builder portMax(long portMax) {
+      this.portMax = portMax;
+      return this;
+    }
+
+    /**
+     * Set the portMin.
+     *
+     * @param portMin the portMin
+     * @return the LoadBalancerListenerPrototypeLoadBalancerContext builder
+     */
+    public Builder portMin(long portMin) {
+      this.portMin = portMin;
+      return this;
+    }
+
+    /**
      * Set the protocol.
      *
      * @param protocol the protocol
@@ -144,14 +172,14 @@ public class LoadBalancerListenerPrototypeLoadBalancerContext extends GenericMod
   }
 
   protected LoadBalancerListenerPrototypeLoadBalancerContext(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.port,
-      "port cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.protocol,
       "protocol cannot be null");
     acceptProxyProtocol = builder.acceptProxyProtocol;
     connectionLimit = builder.connectionLimit;
     defaultPool = builder.defaultPool;
     port = builder.port;
+    portMax = builder.portMax;
+    portMin = builder.portMin;
     protocol = builder.protocol;
   }
 
@@ -205,13 +233,45 @@ public class LoadBalancerListenerPrototypeLoadBalancerContext extends GenericMod
   /**
    * Gets the port.
    *
-   * The listener port number. Each listener in the load balancer must have a unique
-   * `port` and `protocol` combination.
+   * The listener port number, or the inclusive lower bound of the port range. Each listener in the load balancer must
+   * have a unique `port` and `protocol` combination.
+   *
+   * Not supported for load balancers operating with route mode enabled.
    *
    * @return the port
    */
   public Long port() {
     return port;
+  }
+
+  /**
+   * Gets the portMax.
+   *
+   * The inclusive upper bound of the range of ports used by this listener. Must not be less than `port_min`.
+   *
+   * At present, only load balancers operating with route mode enabled support different values for `port_min` and
+   * `port_max`.  When route mode is enabled, only a value of
+   * `65535` is supported for `port_max`.
+   *
+   * @return the portMax
+   */
+  public Long portMax() {
+    return portMax;
+  }
+
+  /**
+   * Gets the portMin.
+   *
+   * The inclusive lower bound of the range of ports used by this listener. Must not be greater than `port_max`.
+   *
+   * At present, only load balancers operating with route mode enabled support different values for `port_min` and
+   * `port_max`.  When route mode is enabled, only a value of
+   * `1` is supported for `port_min`.
+   *
+   * @return the portMin
+   */
+  public Long portMin() {
+    return portMin;
   }
 
   /**

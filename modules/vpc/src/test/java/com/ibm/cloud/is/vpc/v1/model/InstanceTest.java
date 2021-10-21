@@ -14,6 +14,8 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostGroupReferenceDeleted;
+import com.ibm.cloud.is.vpc.v1.model.DedicatedHostReference;
+import com.ibm.cloud.is.vpc.v1.model.DedicatedHostReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.ImageReference;
 import com.ibm.cloud.is.vpc.v1.model.ImageReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.Instance;
@@ -59,6 +61,7 @@ public class InstanceTest {
     assertNull(instanceModel.getBootVolumeAttachment());
     assertNull(instanceModel.getCreatedAt());
     assertNull(instanceModel.getCrn());
+    assertNull(instanceModel.getDedicatedHost());
     assertNull(instanceModel.getDisks());
     assertNull(instanceModel.getGpu());
     assertNull(instanceModel.getHref());

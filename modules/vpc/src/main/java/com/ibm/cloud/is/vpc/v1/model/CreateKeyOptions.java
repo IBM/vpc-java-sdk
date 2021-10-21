@@ -138,8 +138,9 @@ public class CreateKeyOptions extends GenericModel {
   /**
    * Gets the publicKey.
    *
-   * A unique public SSH key to import, encoded in PEM format. The key (prior to encoding) must be either 2048 or 4096
-   * bits long.
+   * A unique public SSH key to import, in OpenSSH format (consisting of three space-separated fields: the algorithm
+   * name, base64-encoded key, and a comment). The algorithm and comment fields may be omitted, as only the key field is
+   * imported.
    *
    * @return the publicKey
    */

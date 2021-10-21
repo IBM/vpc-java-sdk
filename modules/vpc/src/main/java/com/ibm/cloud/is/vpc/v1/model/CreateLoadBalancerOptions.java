@@ -30,6 +30,7 @@ public class CreateLoadBalancerOptions extends GenericModel {
   protected List<LoadBalancerPoolPrototype> pools;
   protected LoadBalancerProfileIdentity profile;
   protected ResourceGroupIdentity resourceGroup;
+  protected Boolean routeMode;
   protected List<SecurityGroupIdentity> securityGroups;
 
   /**
@@ -44,6 +45,7 @@ public class CreateLoadBalancerOptions extends GenericModel {
     private List<LoadBalancerPoolPrototype> pools;
     private LoadBalancerProfileIdentity profile;
     private ResourceGroupIdentity resourceGroup;
+    private Boolean routeMode;
     private List<SecurityGroupIdentity> securityGroups;
 
     private Builder(CreateLoadBalancerOptions createLoadBalancerOptions) {
@@ -55,6 +57,7 @@ public class CreateLoadBalancerOptions extends GenericModel {
       this.pools = createLoadBalancerOptions.pools;
       this.profile = createLoadBalancerOptions.profile;
       this.resourceGroup = createLoadBalancerOptions.resourceGroup;
+      this.routeMode = createLoadBalancerOptions.routeMode;
       this.securityGroups = createLoadBalancerOptions.securityGroups;
     }
 
@@ -240,6 +243,17 @@ public class CreateLoadBalancerOptions extends GenericModel {
     }
 
     /**
+     * Set the routeMode.
+     *
+     * @param routeMode the routeMode
+     * @return the CreateLoadBalancerOptions builder
+     */
+    public Builder routeMode(Boolean routeMode) {
+      this.routeMode = routeMode;
+      return this;
+    }
+
+    /**
      * Set the securityGroups.
      * Existing securityGroups will be replaced.
      *
@@ -265,6 +279,7 @@ public class CreateLoadBalancerOptions extends GenericModel {
     pools = builder.pools;
     profile = builder.profile;
     resourceGroup = builder.resourceGroup;
+    routeMode = builder.routeMode;
     securityGroups = builder.securityGroups;
   }
 
@@ -281,6 +296,8 @@ public class CreateLoadBalancerOptions extends GenericModel {
    * Gets the isPublic.
    *
    * Indicates whether this load balancer is public or private.
+   *
+   * At present, if route mode is enabled, the load balancer must be private.
    *
    * @return the isPublic
    */
@@ -370,6 +387,19 @@ public class CreateLoadBalancerOptions extends GenericModel {
    */
   public ResourceGroupIdentity resourceGroup() {
     return resourceGroup;
+  }
+
+  /**
+   * Gets the routeMode.
+   *
+   * Indicates whether route mode is enabled for this load balancer.
+   *
+   * At present, public load balancers are not supported with route mode enabled.
+   *
+   * @return the routeMode
+   */
+  public Boolean routeMode() {
+    return routeMode;
   }
 
   /**

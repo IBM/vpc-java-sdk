@@ -12,7 +12,7 @@
  */
 
 /*
- * IBM OpenAPI SDK Code Generator Version: 3.38.0-07189efd-20210827-205025
+ * IBM OpenAPI SDK Code Generator Version: 3.39.0-748eb4ca-20210917-165907
  */
 
 package com.ibm.cloud.is.vpc.v1;
@@ -414,7 +414,7 @@ import java.util.Map.Entry;
  * The IBM Cloud Virtual Private Cloud (VPC) API can be used to programmatically provision and manage infrastructure
  * resources, including virtual server instances, subnets, volumes, and load balancers.
  *
- * API Version: 2021-09-07
+ * API Version: 2021-10-19
  */
 public class Vpc extends BaseService {
 
@@ -422,7 +422,7 @@ public class Vpc extends BaseService {
 
   public static final String DEFAULT_SERVICE_URL = "https://us-south.iaas.cloud.ibm.com/v1";
 
-  private String version = "2021-09-07";
+  private String version = "2021-10-19";
 
   private Long generation = Long.valueOf("2");
 
@@ -752,8 +752,9 @@ public class Vpc extends BaseService {
   /**
    * Retrieve a VPC's default security group.
    *
-   * This request retrieves the default security group for the VPC specified by the identifier in the URL. The default
-   * security group is applied to any new network interfaces in the VPC that do not specify a security group.
+   * This request retrieves the default security group for the VPC specified by the identifier in the URL. Resources
+   * that optionally allow a security group to be specified upon creation will be attached to this security group if a
+   * security group is not specified.
    *
    * @param getVpcDefaultSecurityGroupOptions the {@link GetVpcDefaultSecurityGroupOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link DefaultSecurityGroup}
@@ -6526,7 +6527,8 @@ public class Vpc extends BaseService {
   /**
    * Delete an IKE policy.
    *
-   * This request deletes an IKE policy. This operation cannot be reversed.
+   * This request deletes an IKE policy. This operation cannot be reversed. For this request to succeed, there must not
+   * be any VPN gateway connections using this policy.
    *
    * @param deleteIkePolicyOptions the {@link DeleteIkePolicyOptions} containing the options for the call
    * @return a {@link ServiceCall} with a void result
@@ -6709,7 +6711,8 @@ public class Vpc extends BaseService {
   /**
    * Delete an IPsec policy.
    *
-   * This request deletes an IPsec policy. This operation cannot be reversed.
+   * This request deletes an IPsec policy. This operation cannot be reversed. For this request to succeed, there must
+   * not be any VPN gateway connections using this policy.
    *
    * @param deleteIpsecPolicyOptions the {@link DeleteIpsecPolicyOptions} containing the options for the call
    * @return a {@link ServiceCall} with a void result
@@ -6885,8 +6888,9 @@ public class Vpc extends BaseService {
   /**
    * Delete a VPN gateway.
    *
-   * This request deletes a VPN gateway. A VPN gateway with a `status` of `pending` cannot be deleted. This operation
-   * deletes all VPN gateway connections associated with this VPN gateway.  This operation cannot be reversed.
+   * This request deletes a VPN gateway. This operation cannot be reversed. For this request to succeed, the VPN gateway
+   * must not have a `status` of `pending`, and there must not be any VPC routes using the VPN gateway's connections as
+   * a next hop.
    *
    * @param deleteVpnGatewayOptions the {@link DeleteVpnGatewayOptions} containing the options for the call
    * @return a {@link ServiceCall} with a void result
@@ -7019,7 +7023,8 @@ public class Vpc extends BaseService {
   /**
    * Delete a VPN gateway connection.
    *
-   * This request deletes a VPN gateway connection. This operation cannot be reversed.
+   * This request deletes a VPN gateway connection. This operation cannot be reversed. For this request to succeed,
+   * there must not be VPC routes using this VPN connection as a next hop.
    *
    * @param deleteVpnGatewayConnectionOptions the {@link DeleteVpnGatewayConnectionOptions} containing the options for the call
    * @return a {@link ServiceCall} with a void result
@@ -7466,6 +7471,9 @@ public class Vpc extends BaseService {
     if (createLoadBalancerOptions.resourceGroup() != null) {
       contentJson.add("resource_group", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createLoadBalancerOptions.resourceGroup()));
     }
+    if (createLoadBalancerOptions.routeMode() != null) {
+      contentJson.addProperty("route_mode", createLoadBalancerOptions.routeMode());
+    }
     if (createLoadBalancerOptions.securityGroups() != null) {
       contentJson.add("security_groups", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createLoadBalancerOptions.securityGroups()));
     }
@@ -7626,7 +7634,6 @@ public class Vpc extends BaseService {
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     final JsonObject contentJson = new JsonObject();
-    contentJson.addProperty("port", createLoadBalancerListenerOptions.port());
     contentJson.addProperty("protocol", createLoadBalancerListenerOptions.protocol());
     if (createLoadBalancerListenerOptions.acceptProxyProtocol() != null) {
       contentJson.addProperty("accept_proxy_protocol", createLoadBalancerListenerOptions.acceptProxyProtocol());
@@ -7645,6 +7652,15 @@ public class Vpc extends BaseService {
     }
     if (createLoadBalancerListenerOptions.policies() != null) {
       contentJson.add("policies", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createLoadBalancerListenerOptions.policies()));
+    }
+    if (createLoadBalancerListenerOptions.port() != null) {
+      contentJson.addProperty("port", createLoadBalancerListenerOptions.port());
+    }
+    if (createLoadBalancerListenerOptions.portMax() != null) {
+      contentJson.addProperty("port_max", createLoadBalancerListenerOptions.portMax());
+    }
+    if (createLoadBalancerListenerOptions.portMin() != null) {
+      contentJson.addProperty("port_min", createLoadBalancerListenerOptions.portMin());
     }
     builder.bodyJson(contentJson);
     ResponseConverter<LoadBalancerListener> responseConverter =
@@ -8752,8 +8768,9 @@ public class Vpc extends BaseService {
   /**
    * Delete a flow log collector.
    *
-   * This request stops and deletes a flow log collector. Collected flow logs remain available within the flow log
-   * collector's bucket.
+   * This request stops and deletes a flow log collector. This operation cannot be reversed.
+   *
+   * Collected flow logs remain available within the flow log collector's Cloud Object Storage bucket.
    *
    * @param deleteFlowLogCollectorOptions the {@link DeleteFlowLogCollectorOptions} containing the options for the call
    * @return a {@link ServiceCall} with a void result

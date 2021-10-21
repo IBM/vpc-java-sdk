@@ -74,6 +74,8 @@ public class LoadBalancer extends GenericModel {
   protected List<IP> publicIps;
   @SerializedName("resource_group")
   protected ResourceGroupReference resourceGroup;
+  @SerializedName("route_mode")
+  protected Boolean routeMode;
   @SerializedName("security_groups")
   protected List<SecurityGroupReference> securityGroups;
   @SerializedName("security_groups_supported")
@@ -256,6 +258,19 @@ public class LoadBalancer extends GenericModel {
    */
   public ResourceGroupReference getResourceGroup() {
     return resourceGroup;
+  }
+
+  /**
+   * Gets the routeMode.
+   *
+   * Indicates whether route mode is enabled for this load balancer.
+   *
+   * At present, public load balancers are not supported with route mode enabled.
+   *
+   * @return the routeMode
+   */
+  public Boolean isRouteMode() {
+    return routeMode;
   }
 
   /**

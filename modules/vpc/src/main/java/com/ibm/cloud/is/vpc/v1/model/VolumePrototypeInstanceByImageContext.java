@@ -167,7 +167,8 @@ public class VolumePrototypeInstanceByImageContext extends VolumeAttachmentProto
   /**
    * Gets the iops.
    *
-   * The maximum I/O operations per second (IOPS) for the volume.
+   * The maximum I/O operations per second (IOPS) to use for the volume. Applicable only to volumes using a profile
+   * `family` of `custom`.
    *
    * @return the iops
    */

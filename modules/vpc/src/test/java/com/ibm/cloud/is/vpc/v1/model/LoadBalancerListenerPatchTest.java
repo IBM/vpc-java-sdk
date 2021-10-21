@@ -67,6 +67,8 @@ public class LoadBalancerListenerPatchTest {
       .defaultPool(loadBalancerPoolIdentityModel)
       .httpsRedirect(loadBalancerListenerHttpsRedirectPatchModel)
       .port(Long.valueOf("443"))
+      .portMax(Long.valueOf("499"))
+      .portMin(Long.valueOf("443"))
       .protocol("http")
       .build();
     assertEquals(loadBalancerListenerPatchModel.acceptProxyProtocol(), Boolean.valueOf(true));
@@ -75,6 +77,8 @@ public class LoadBalancerListenerPatchTest {
     assertEquals(loadBalancerListenerPatchModel.defaultPool(), loadBalancerPoolIdentityModel);
     assertEquals(loadBalancerListenerPatchModel.httpsRedirect(), loadBalancerListenerHttpsRedirectPatchModel);
     assertEquals(loadBalancerListenerPatchModel.port(), Long.valueOf("443"));
+    assertEquals(loadBalancerListenerPatchModel.portMax(), Long.valueOf("499"));
+    assertEquals(loadBalancerListenerPatchModel.portMin(), Long.valueOf("443"));
     assertEquals(loadBalancerListenerPatchModel.protocol(), "http");
 
     String json = TestUtilities.serialize(loadBalancerListenerPatchModel);
@@ -87,6 +91,8 @@ public class LoadBalancerListenerPatchTest {
     assertEquals(loadBalancerListenerPatchModelNew.defaultPool().toString(), loadBalancerPoolIdentityModel.toString());
     assertEquals(loadBalancerListenerPatchModelNew.httpsRedirect().toString(), loadBalancerListenerHttpsRedirectPatchModel.toString());
     assertEquals(loadBalancerListenerPatchModelNew.port(), Long.valueOf("443"));
+    assertEquals(loadBalancerListenerPatchModelNew.portMax(), Long.valueOf("499"));
+    assertEquals(loadBalancerListenerPatchModelNew.portMin(), Long.valueOf("443"));
     assertEquals(loadBalancerListenerPatchModelNew.protocol(), "http");
   }
   @Test
@@ -116,6 +122,8 @@ public class LoadBalancerListenerPatchTest {
       .defaultPool(loadBalancerPoolIdentityModel)
       .httpsRedirect(loadBalancerListenerHttpsRedirectPatchModel)
       .port(Long.valueOf("443"))
+      .portMax(Long.valueOf("499"))
+      .portMin(Long.valueOf("443"))
       .protocol("http")
       .build();
 
@@ -127,6 +135,8 @@ public class LoadBalancerListenerPatchTest {
     assertTrue(mergePatch.containsKey("default_pool"));
     assertTrue(mergePatch.containsKey("https_redirect"));
     assertTrue(mergePatch.containsKey("port"));
+    assertTrue(mergePatch.containsKey("port_max"));
+    assertTrue(mergePatch.containsKey("port_min"));
     assertEquals(mergePatch.get("protocol"), "http");
   }
 

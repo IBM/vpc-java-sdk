@@ -229,6 +229,7 @@ import com.ibm.cloud.is.vpc.v1.model.InstanceGroupCollection;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManager;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerAction;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerActionPatch;
+import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSpecByGroup;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerActionsCollection;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerCollection;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerPatch;
@@ -483,8 +484,6 @@ import com.ibm.cloud.is.vpc.v1.model.VolumePrototypeVolumeByCapacity;
 import com.ibm.cloud.is.vpc.v1.model.Zone;
 import com.ibm.cloud.is.vpc.v1.model.ZoneCollection;
 import com.ibm.cloud.is.vpc.v1.model.ZoneIdentityByName;
-import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSpecByGroup;
-
 import com.ibm.cloud.sdk.core.http.Response;
 import com.ibm.cloud.sdk.core.service.exception.ServiceResponseException;
 import com.ibm.cloud.sdk.core.util.CredentialUtils;

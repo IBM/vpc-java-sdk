@@ -462,6 +462,18 @@ import com.ibm.cloud.is.vpc.v1.model.InstanceProfileDiskSizeEnum;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileDiskSizeFixed;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileDiskSizeRange;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileDiskSupportedInterfaces;
+import com.ibm.cloud.is.vpc.v1.model.InstanceProfileGPU;
+import com.ibm.cloud.is.vpc.v1.model.InstanceProfileGPUDependent;
+import com.ibm.cloud.is.vpc.v1.model.InstanceProfileGPUEnum;
+import com.ibm.cloud.is.vpc.v1.model.InstanceProfileGPUFixed;
+import com.ibm.cloud.is.vpc.v1.model.InstanceProfileGPUManufacturer;
+import com.ibm.cloud.is.vpc.v1.model.InstanceProfileGPUMemory;
+import com.ibm.cloud.is.vpc.v1.model.InstanceProfileGPUMemoryDependent;
+import com.ibm.cloud.is.vpc.v1.model.InstanceProfileGPUMemoryEnum;
+import com.ibm.cloud.is.vpc.v1.model.InstanceProfileGPUMemoryFixed;
+import com.ibm.cloud.is.vpc.v1.model.InstanceProfileGPUMemoryRange;
+import com.ibm.cloud.is.vpc.v1.model.InstanceProfileGPUModel;
+import com.ibm.cloud.is.vpc.v1.model.InstanceProfileGPURange;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileIdentity;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileIdentityByHref;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileIdentityByName;
@@ -672,6 +684,9 @@ import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileIdentityByHref;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileIdentityByName;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileLoggingSupported;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileReference;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileRouteModeSupported;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileRouteModeSupportedDependent;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileRouteModeSupportedFixed;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileSecurityGroupsSupported;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileSecurityGroupsSupportedDependent;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileSecurityGroupsSupportedFixed;
@@ -1085,6 +1100,8 @@ public class VpcIT extends SdkIntegrationTestBase {
     assertNotNull(config);
     assertFalse(config.isEmpty());
     assertEquals(service.getServiceUrl(), config.get("URL"));
+
+    service.enableRetries(4, 30);
 
     System.out.println("Setup complete.");
   }
@@ -2689,7 +2706,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       .build();
 
       CreateKeyOptions createKeyOptions = new CreateKeyOptions.Builder()
-      .publicKey("AAAAB3NzaC1yc2EAAAADAQABAAABAQDDGe50Bxa5T5NDddrrtbx2Y4/VGbiCgXqnBsYToIUKoFSHTQl5IX3PasGnneKanhcLwWz5M5MoCRvhxTp66NKzIfAz7r+FX9rxgR+ZgcM253YAqOVeIpOU408simDZKriTlN8kYsXL7P34tsWuAJf4MgZtJAQxous/2byetpdCv8ddnT4X3ltOg9w+LqSCPYfNivqH00Eh7S1Ldz7I8aw5WOp5a+sQFP/RbwfpwHp+ny7DfeIOokcuI42tJkoBn7UsLTVpCSmXr2EDRlSWe/1M/iHNRBzaT3CK0+SwZWd2AEjePxSnWKNGIEUJDlUYp7hKhiQcgT5ZAnWU121oc5En")
+      .publicKey("ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDDGe50Bxa5T5NDddrrtbx2Y4/VGbiCgXqnBsYToIUKoFSHTQl5IX3PasGnneKanhcLwWz5M5MoCRvhxTp66NKzIfAz7r+FX9rxgR+ZgcM253YAqOVeIpOU408simDZKriTlN8kYsXL7P34tsWuAJf4MgZtJAQxous/2byetpdCv8ddnT4X3ltOg9w+LqSCPYfNivqH00Eh7S1Ldz7I8aw5WOp5a+sQFP/RbwfpwHp+ny7DfeIOokcuI42tJkoBn7UsLTVpCSmXr2EDRlSWe/1M/iHNRBzaT3CK0+SwZWd2AEjePxSnWKNGIEUJDlUYp7hKhiQcgT5ZAnWU121oc5En")
       .name("my-key")
       .resourceGroup(resourceGroupIdentityModel)
       .type("rsa")
@@ -7710,6 +7727,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       .connectionLimit(Long.valueOf("2000"))
       .defaultPool(loadBalancerPoolIdentityByNameModel)
       .port(Long.valueOf("443"))
+      .portMax(Long.valueOf("499"))
+      .portMin(Long.valueOf("443"))
       .protocol("http")
       .build();
 
@@ -7776,6 +7795,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       .pools(new java.util.ArrayList<LoadBalancerPoolPrototype>(java.util.Arrays.asList(loadBalancerPoolPrototypeModel)))
       .profile(loadBalancerProfileIdentityModel)
       .resourceGroup(resourceGroupIdentityModel)
+      .routeMode(true)
       .securityGroups(new java.util.ArrayList<SecurityGroupIdentity>(java.util.Arrays.asList(securityGroupIdentityModel)))
       .build();
 
@@ -7977,7 +7997,6 @@ public class VpcIT extends SdkIntegrationTestBase {
 
       CreateLoadBalancerListenerOptions createLoadBalancerListenerOptions = new CreateLoadBalancerListenerOptions.Builder()
       .loadBalancerId("testString")
-      .port(Long.valueOf("443"))
       .protocol("http")
       .acceptProxyProtocol(true)
       .certificateInstance(certificateInstanceIdentityModel)
@@ -7985,6 +8004,9 @@ public class VpcIT extends SdkIntegrationTestBase {
       .defaultPool(loadBalancerPoolIdentityModel)
       .httpsRedirect(loadBalancerListenerHttpsRedirectPrototypeModel)
       .policies(new java.util.ArrayList<LoadBalancerListenerPolicyPrototype>(java.util.Arrays.asList(loadBalancerListenerPolicyPrototypeModel)))
+      .port(Long.valueOf("443"))
+      .portMax(Long.valueOf("499"))
+      .portMin(Long.valueOf("443"))
       .build();
 
       // Invoke operation
@@ -8071,6 +8093,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       .defaultPool(loadBalancerPoolIdentityModel)
       .httpsRedirect(loadBalancerListenerHttpsRedirectPatchModel)
       .port(Long.valueOf("443"))
+      .portMax(Long.valueOf("499"))
+      .portMin(Long.valueOf("443"))
       .protocol("http")
       .build();
       Map<String, Object> loadBalancerListenerPatchModelAsPatch = loadBalancerListenerPatchModel.asPatch();
@@ -9348,6 +9372,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       // Please provide integration tests for these too.
       //
       // 404
+      // 409
       //
       //
 

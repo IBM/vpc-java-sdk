@@ -15,6 +15,7 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfile;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileLoggingSupported;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileRouteModeSupportedFixed;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileSecurityGroupsSupportedFixed;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
@@ -40,6 +41,7 @@ public class LoadBalancerProfileTest {
     assertNull(loadBalancerProfileModel.getHref());
     assertNull(loadBalancerProfileModel.getLoggingSupported());
     assertNull(loadBalancerProfileModel.getName());
+    assertNull(loadBalancerProfileModel.getRouteModeSupported());
     assertNull(loadBalancerProfileModel.getSecurityGroupsSupported());
   }
 }

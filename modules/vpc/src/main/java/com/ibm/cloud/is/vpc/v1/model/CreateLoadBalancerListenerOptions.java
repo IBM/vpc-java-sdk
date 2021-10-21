@@ -39,7 +39,6 @@ public class CreateLoadBalancerListenerOptions extends GenericModel {
   }
 
   protected String loadBalancerId;
-  protected Long port;
   protected String protocol;
   protected Boolean acceptProxyProtocol;
   protected CertificateInstanceIdentity certificateInstance;
@@ -47,13 +46,15 @@ public class CreateLoadBalancerListenerOptions extends GenericModel {
   protected LoadBalancerPoolIdentity defaultPool;
   protected LoadBalancerListenerHTTPSRedirectPrototype httpsRedirect;
   protected List<LoadBalancerListenerPolicyPrototype> policies;
+  protected Long port;
+  protected Long portMax;
+  protected Long portMin;
 
   /**
    * Builder.
    */
   public static class Builder {
     private String loadBalancerId;
-    private Long port;
     private String protocol;
     private Boolean acceptProxyProtocol;
     private CertificateInstanceIdentity certificateInstance;
@@ -61,10 +62,12 @@ public class CreateLoadBalancerListenerOptions extends GenericModel {
     private LoadBalancerPoolIdentity defaultPool;
     private LoadBalancerListenerHTTPSRedirectPrototype httpsRedirect;
     private List<LoadBalancerListenerPolicyPrototype> policies;
+    private Long port;
+    private Long portMax;
+    private Long portMin;
 
     private Builder(CreateLoadBalancerListenerOptions createLoadBalancerListenerOptions) {
       this.loadBalancerId = createLoadBalancerListenerOptions.loadBalancerId;
-      this.port = createLoadBalancerListenerOptions.port;
       this.protocol = createLoadBalancerListenerOptions.protocol;
       this.acceptProxyProtocol = createLoadBalancerListenerOptions.acceptProxyProtocol;
       this.certificateInstance = createLoadBalancerListenerOptions.certificateInstance;
@@ -72,6 +75,9 @@ public class CreateLoadBalancerListenerOptions extends GenericModel {
       this.defaultPool = createLoadBalancerListenerOptions.defaultPool;
       this.httpsRedirect = createLoadBalancerListenerOptions.httpsRedirect;
       this.policies = createLoadBalancerListenerOptions.policies;
+      this.port = createLoadBalancerListenerOptions.port;
+      this.portMax = createLoadBalancerListenerOptions.portMax;
+      this.portMin = createLoadBalancerListenerOptions.portMin;
     }
 
     /**
@@ -84,12 +90,10 @@ public class CreateLoadBalancerListenerOptions extends GenericModel {
      * Instantiates a new builder with required properties.
      *
      * @param loadBalancerId the loadBalancerId
-     * @param port the port
      * @param protocol the protocol
      */
-    public Builder(String loadBalancerId, Long port, String protocol) {
+    public Builder(String loadBalancerId, String protocol) {
       this.loadBalancerId = loadBalancerId;
-      this.port = port;
       this.protocol = protocol;
     }
 
@@ -126,17 +130,6 @@ public class CreateLoadBalancerListenerOptions extends GenericModel {
      */
     public Builder loadBalancerId(String loadBalancerId) {
       this.loadBalancerId = loadBalancerId;
-      return this;
-    }
-
-    /**
-     * Set the port.
-     *
-     * @param port the port
-     * @return the CreateLoadBalancerListenerOptions builder
-     */
-    public Builder port(long port) {
-      this.port = port;
       return this;
     }
 
@@ -217,17 +210,47 @@ public class CreateLoadBalancerListenerOptions extends GenericModel {
       this.policies = policies;
       return this;
     }
+
+    /**
+     * Set the port.
+     *
+     * @param port the port
+     * @return the CreateLoadBalancerListenerOptions builder
+     */
+    public Builder port(long port) {
+      this.port = port;
+      return this;
+    }
+
+    /**
+     * Set the portMax.
+     *
+     * @param portMax the portMax
+     * @return the CreateLoadBalancerListenerOptions builder
+     */
+    public Builder portMax(long portMax) {
+      this.portMax = portMax;
+      return this;
+    }
+
+    /**
+     * Set the portMin.
+     *
+     * @param portMin the portMin
+     * @return the CreateLoadBalancerListenerOptions builder
+     */
+    public Builder portMin(long portMin) {
+      this.portMin = portMin;
+      return this;
+    }
   }
 
   protected CreateLoadBalancerListenerOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.loadBalancerId,
       "loadBalancerId cannot be empty");
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.port,
-      "port cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.protocol,
       "protocol cannot be null");
     loadBalancerId = builder.loadBalancerId;
-    port = builder.port;
     protocol = builder.protocol;
     acceptProxyProtocol = builder.acceptProxyProtocol;
     certificateInstance = builder.certificateInstance;
@@ -235,6 +258,9 @@ public class CreateLoadBalancerListenerOptions extends GenericModel {
     defaultPool = builder.defaultPool;
     httpsRedirect = builder.httpsRedirect;
     policies = builder.policies;
+    port = builder.port;
+    portMax = builder.portMax;
+    portMin = builder.portMin;
   }
 
   /**
@@ -255,18 +281,6 @@ public class CreateLoadBalancerListenerOptions extends GenericModel {
    */
   public String loadBalancerId() {
     return loadBalancerId;
-  }
-
-  /**
-   * Gets the port.
-   *
-   * The listener port number. Each listener in the load balancer must have a unique
-   * `port` and `protocol` combination.
-   *
-   * @return the port
-   */
-  public Long port() {
-    return port;
   }
 
   /**
@@ -359,6 +373,50 @@ public class CreateLoadBalancerListenerOptions extends GenericModel {
    */
   public List<LoadBalancerListenerPolicyPrototype> policies() {
     return policies;
+  }
+
+  /**
+   * Gets the port.
+   *
+   * The listener port number, or the inclusive lower bound of the port range. Each listener in the load balancer must
+   * have a unique `port` and `protocol` combination.
+   *
+   * Not supported for load balancers operating with route mode enabled.
+   *
+   * @return the port
+   */
+  public Long port() {
+    return port;
+  }
+
+  /**
+   * Gets the portMax.
+   *
+   * The inclusive upper bound of the range of ports used by this listener. Must not be less than `port_min`.
+   *
+   * At present, only load balancers operating with route mode enabled support different values for `port_min` and
+   * `port_max`.  When route mode is enabled, only a value of
+   * `65535` is supported for `port_max`.
+   *
+   * @return the portMax
+   */
+  public Long portMax() {
+    return portMax;
+  }
+
+  /**
+   * Gets the portMin.
+   *
+   * The inclusive lower bound of the range of ports used by this listener. Must not be greater than `port_max`.
+   *
+   * At present, only load balancers operating with route mode enabled support different values for `port_min` and
+   * `port_max`.  When route mode is enabled, only a value of
+   * `1` is supported for `port_min`.
+   *
+   * @return the portMin
+   */
+  public Long portMin() {
+    return portMin;
   }
 }
 

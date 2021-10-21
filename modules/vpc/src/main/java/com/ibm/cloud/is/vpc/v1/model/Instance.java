@@ -57,6 +57,8 @@ public class Instance extends GenericModel {
   @SerializedName("created_at")
   protected Date createdAt;
   protected String crn;
+  @SerializedName("dedicated_host")
+  protected DedicatedHostReference dedicatedHost;
   protected List<InstanceDisk> disks;
   protected InstanceGPU gpu;
   protected String href;
@@ -130,6 +132,17 @@ public class Instance extends GenericModel {
    */
   public String getCrn() {
     return crn;
+  }
+
+  /**
+   * Gets the dedicatedHost.
+   *
+   * If present, the dedicated host this virtual server instance has been placed on.
+   *
+   * @return the dedicatedHost
+   */
+  public DedicatedHostReference getDedicatedHost() {
+    return dedicatedHost;
   }
 
   /**

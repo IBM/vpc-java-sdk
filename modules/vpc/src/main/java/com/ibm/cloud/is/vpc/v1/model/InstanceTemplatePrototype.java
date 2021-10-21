@@ -67,6 +67,10 @@ public class InstanceTemplatePrototype extends GenericModel {
    * if no keys are specified, the instance will be inaccessible unless the specified image provides another means of
    * access.
    *
+   * This property's value is used when provisioning the virtual server instance, but not subsequently managed.
+   * Accordingly, it is reflected as an [instance
+   * initialization](https://cloud.ibm.com/apidocs/vpc#get-instance-initialization) property.
+   *
    * @return the keys
    */
   public List<KeyIdentity> keys() {

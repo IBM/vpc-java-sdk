@@ -461,6 +461,18 @@ import com.ibm.cloud.is.vpc.v1.model.InstanceProfileDiskSizeEnum;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileDiskSizeFixed;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileDiskSizeRange;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileDiskSupportedInterfaces;
+import com.ibm.cloud.is.vpc.v1.model.InstanceProfileGPU;
+import com.ibm.cloud.is.vpc.v1.model.InstanceProfileGPUDependent;
+import com.ibm.cloud.is.vpc.v1.model.InstanceProfileGPUEnum;
+import com.ibm.cloud.is.vpc.v1.model.InstanceProfileGPUFixed;
+import com.ibm.cloud.is.vpc.v1.model.InstanceProfileGPUManufacturer;
+import com.ibm.cloud.is.vpc.v1.model.InstanceProfileGPUMemory;
+import com.ibm.cloud.is.vpc.v1.model.InstanceProfileGPUMemoryDependent;
+import com.ibm.cloud.is.vpc.v1.model.InstanceProfileGPUMemoryEnum;
+import com.ibm.cloud.is.vpc.v1.model.InstanceProfileGPUMemoryFixed;
+import com.ibm.cloud.is.vpc.v1.model.InstanceProfileGPUMemoryRange;
+import com.ibm.cloud.is.vpc.v1.model.InstanceProfileGPUModel;
+import com.ibm.cloud.is.vpc.v1.model.InstanceProfileGPURange;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileIdentity;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileIdentityByHref;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileIdentityByName;
@@ -671,6 +683,9 @@ import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileIdentityByHref;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileIdentityByName;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileLoggingSupported;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileReference;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileRouteModeSupported;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileRouteModeSupportedDependent;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileRouteModeSupportedFixed;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileSecurityGroupsSupported;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileSecurityGroupsSupportedDependent;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileSecurityGroupsSupportedFixed;
@@ -1068,7 +1083,7 @@ public class VpcTest extends PowerMockTestCase {
 
   final HashMap<String, InputStream> mockStreamMap = TestUtilities.createMockStreamMap();
   final List<FileWithMetadata> mockListFileWithMetadata = TestUtilities.creatMockListFileWithMetadata();
-  final String version = "2021-09-07";
+  final String version = "2021-10-19";
 
   protected MockWebServer server;
   protected Vpc vpcService;
@@ -1155,6 +1170,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, listVpcsPath);
   }
+  
+  public void testListVpcsWOptionsWRetries() throws Throwable {
+    // Enable retries and run testListVpcsWOptions.
+    vpcService.enableRetries(4, 30);
+    testListVpcsWOptions();
+
+    // Disable retries and run testListVpcsWOptions.
+    vpcService.disableRetries();
+    testListVpcsWOptions();
+  }  
 
   @Test
   public void testCreateVpcWOptions() throws Throwable {
@@ -1203,6 +1228,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, createVpcPath);
   }
+  
+  public void testCreateVpcWOptionsWRetries() throws Throwable {
+    // Enable retries and run testCreateVpcWOptions.
+    vpcService.enableRetries(4, 30);
+    testCreateVpcWOptions();
+
+    // Disable retries and run testCreateVpcWOptions.
+    vpcService.disableRetries();
+    testCreateVpcWOptions();
+  }  
 
   @Test
   public void testDeleteVpcWOptions() throws Throwable {
@@ -1243,6 +1278,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, deleteVpcPath);
   }
+  
+  public void testDeleteVpcWOptionsWRetries() throws Throwable {
+    // Enable retries and run testDeleteVpcWOptions.
+    vpcService.enableRetries(4, 30);
+    testDeleteVpcWOptions();
+
+    // Disable retries and run testDeleteVpcWOptions.
+    vpcService.disableRetries();
+    testDeleteVpcWOptions();
+  }  
 
   // Test the deleteVpc operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -1295,6 +1340,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, getVpcPath);
   }
+  
+  public void testGetVpcWOptionsWRetries() throws Throwable {
+    // Enable retries and run testGetVpcWOptions.
+    vpcService.enableRetries(4, 30);
+    testGetVpcWOptions();
+
+    // Disable retries and run testGetVpcWOptions.
+    vpcService.disableRetries();
+    testGetVpcWOptions();
+  }  
 
   // Test the getVpc operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -1354,6 +1409,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, updateVpcPath);
   }
+  
+  public void testUpdateVpcWOptionsWRetries() throws Throwable {
+    // Enable retries and run testUpdateVpcWOptions.
+    vpcService.enableRetries(4, 30);
+    testUpdateVpcWOptions();
+
+    // Disable retries and run testUpdateVpcWOptions.
+    vpcService.disableRetries();
+    testUpdateVpcWOptions();
+  }  
 
   // Test the updateVpc operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -1406,6 +1471,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, getVpcDefaultNetworkAclPath);
   }
+  
+  public void testGetVpcDefaultNetworkAclWOptionsWRetries() throws Throwable {
+    // Enable retries and run testGetVpcDefaultNetworkAclWOptions.
+    vpcService.enableRetries(4, 30);
+    testGetVpcDefaultNetworkAclWOptions();
+
+    // Disable retries and run testGetVpcDefaultNetworkAclWOptions.
+    vpcService.disableRetries();
+    testGetVpcDefaultNetworkAclWOptions();
+  }  
 
   // Test the getVpcDefaultNetworkAcl operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -1458,6 +1533,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, getVpcDefaultRoutingTablePath);
   }
+  
+  public void testGetVpcDefaultRoutingTableWOptionsWRetries() throws Throwable {
+    // Enable retries and run testGetVpcDefaultRoutingTableWOptions.
+    vpcService.enableRetries(4, 30);
+    testGetVpcDefaultRoutingTableWOptions();
+
+    // Disable retries and run testGetVpcDefaultRoutingTableWOptions.
+    vpcService.disableRetries();
+    testGetVpcDefaultRoutingTableWOptions();
+  }  
 
   // Test the getVpcDefaultRoutingTable operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -1510,6 +1595,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, getVpcDefaultSecurityGroupPath);
   }
+  
+  public void testGetVpcDefaultSecurityGroupWOptionsWRetries() throws Throwable {
+    // Enable retries and run testGetVpcDefaultSecurityGroupWOptions.
+    vpcService.enableRetries(4, 30);
+    testGetVpcDefaultSecurityGroupWOptions();
+
+    // Disable retries and run testGetVpcDefaultSecurityGroupWOptions.
+    vpcService.disableRetries();
+    testGetVpcDefaultSecurityGroupWOptions();
+  }  
 
   // Test the getVpcDefaultSecurityGroup operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -1566,6 +1661,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, listVpcAddressPrefixesPath);
   }
+  
+  public void testListVpcAddressPrefixesWOptionsWRetries() throws Throwable {
+    // Enable retries and run testListVpcAddressPrefixesWOptions.
+    vpcService.enableRetries(4, 30);
+    testListVpcAddressPrefixesWOptions();
+
+    // Disable retries and run testListVpcAddressPrefixesWOptions.
+    vpcService.disableRetries();
+    testListVpcAddressPrefixesWOptions();
+  }  
 
   // Test the listVpcAddressPrefixes operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -1627,6 +1732,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, createVpcAddressPrefixPath);
   }
+  
+  public void testCreateVpcAddressPrefixWOptionsWRetries() throws Throwable {
+    // Enable retries and run testCreateVpcAddressPrefixWOptions.
+    vpcService.enableRetries(4, 30);
+    testCreateVpcAddressPrefixWOptions();
+
+    // Disable retries and run testCreateVpcAddressPrefixWOptions.
+    vpcService.disableRetries();
+    testCreateVpcAddressPrefixWOptions();
+  }  
 
   // Test the createVpcAddressPrefix operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -1680,6 +1795,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, deleteVpcAddressPrefixPath);
   }
+  
+  public void testDeleteVpcAddressPrefixWOptionsWRetries() throws Throwable {
+    // Enable retries and run testDeleteVpcAddressPrefixWOptions.
+    vpcService.enableRetries(4, 30);
+    testDeleteVpcAddressPrefixWOptions();
+
+    // Disable retries and run testDeleteVpcAddressPrefixWOptions.
+    vpcService.disableRetries();
+    testDeleteVpcAddressPrefixWOptions();
+  }  
 
   // Test the deleteVpcAddressPrefix operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -1733,6 +1858,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, getVpcAddressPrefixPath);
   }
+  
+  public void testGetVpcAddressPrefixWOptionsWRetries() throws Throwable {
+    // Enable retries and run testGetVpcAddressPrefixWOptions.
+    vpcService.enableRetries(4, 30);
+    testGetVpcAddressPrefixWOptions();
+
+    // Disable retries and run testGetVpcAddressPrefixWOptions.
+    vpcService.disableRetries();
+    testGetVpcAddressPrefixWOptions();
+  }  
 
   // Test the getVpcAddressPrefix operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -1794,6 +1929,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, updateVpcAddressPrefixPath);
   }
+  
+  public void testUpdateVpcAddressPrefixWOptionsWRetries() throws Throwable {
+    // Enable retries and run testUpdateVpcAddressPrefixWOptions.
+    vpcService.enableRetries(4, 30);
+    testUpdateVpcAddressPrefixWOptions();
+
+    // Disable retries and run testUpdateVpcAddressPrefixWOptions.
+    vpcService.disableRetries();
+    testUpdateVpcAddressPrefixWOptions();
+  }  
 
   // Test the updateVpcAddressPrefix operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -1852,6 +1997,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, listVpcRoutesPath);
   }
+  
+  public void testListVpcRoutesWOptionsWRetries() throws Throwable {
+    // Enable retries and run testListVpcRoutesWOptions.
+    vpcService.enableRetries(4, 30);
+    testListVpcRoutesWOptions();
+
+    // Disable retries and run testListVpcRoutesWOptions.
+    vpcService.disableRetries();
+    testListVpcRoutesWOptions();
+  }  
 
   // Test the listVpcRoutes operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -1919,6 +2074,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, createVpcRoutePath);
   }
+  
+  public void testCreateVpcRouteWOptionsWRetries() throws Throwable {
+    // Enable retries and run testCreateVpcRouteWOptions.
+    vpcService.enableRetries(4, 30);
+    testCreateVpcRouteWOptions();
+
+    // Disable retries and run testCreateVpcRouteWOptions.
+    vpcService.disableRetries();
+    testCreateVpcRouteWOptions();
+  }  
 
   // Test the createVpcRoute operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -1972,6 +2137,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, deleteVpcRoutePath);
   }
+  
+  public void testDeleteVpcRouteWOptionsWRetries() throws Throwable {
+    // Enable retries and run testDeleteVpcRouteWOptions.
+    vpcService.enableRetries(4, 30);
+    testDeleteVpcRouteWOptions();
+
+    // Disable retries and run testDeleteVpcRouteWOptions.
+    vpcService.disableRetries();
+    testDeleteVpcRouteWOptions();
+  }  
 
   // Test the deleteVpcRoute operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -2025,6 +2200,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, getVpcRoutePath);
   }
+  
+  public void testGetVpcRouteWOptionsWRetries() throws Throwable {
+    // Enable retries and run testGetVpcRouteWOptions.
+    vpcService.enableRetries(4, 30);
+    testGetVpcRouteWOptions();
+
+    // Disable retries and run testGetVpcRouteWOptions.
+    vpcService.disableRetries();
+    testGetVpcRouteWOptions();
+  }  
 
   // Test the getVpcRoute operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -2085,6 +2270,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, updateVpcRoutePath);
   }
+  
+  public void testUpdateVpcRouteWOptionsWRetries() throws Throwable {
+    // Enable retries and run testUpdateVpcRouteWOptions.
+    vpcService.enableRetries(4, 30);
+    testUpdateVpcRouteWOptions();
+
+    // Disable retries and run testUpdateVpcRouteWOptions.
+    vpcService.disableRetries();
+    testUpdateVpcRouteWOptions();
+  }  
 
   // Test the updateVpcRoute operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -2143,6 +2338,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, listVpcRoutingTablesPath);
   }
+  
+  public void testListVpcRoutingTablesWOptionsWRetries() throws Throwable {
+    // Enable retries and run testListVpcRoutingTablesWOptions.
+    vpcService.enableRetries(4, 30);
+    testListVpcRoutingTablesWOptions();
+
+    // Disable retries and run testListVpcRoutingTablesWOptions.
+    vpcService.disableRetries();
+    testListVpcRoutingTablesWOptions();
+  }  
 
   // Test the listVpcRoutingTables operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -2219,6 +2424,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, createVpcRoutingTablePath);
   }
+  
+  public void testCreateVpcRoutingTableWOptionsWRetries() throws Throwable {
+    // Enable retries and run testCreateVpcRoutingTableWOptions.
+    vpcService.enableRetries(4, 30);
+    testCreateVpcRoutingTableWOptions();
+
+    // Disable retries and run testCreateVpcRoutingTableWOptions.
+    vpcService.disableRetries();
+    testCreateVpcRoutingTableWOptions();
+  }  
 
   // Test the createVpcRoutingTable operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -2272,6 +2487,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, deleteVpcRoutingTablePath);
   }
+  
+  public void testDeleteVpcRoutingTableWOptionsWRetries() throws Throwable {
+    // Enable retries and run testDeleteVpcRoutingTableWOptions.
+    vpcService.enableRetries(4, 30);
+    testDeleteVpcRoutingTableWOptions();
+
+    // Disable retries and run testDeleteVpcRoutingTableWOptions.
+    vpcService.disableRetries();
+    testDeleteVpcRoutingTableWOptions();
+  }  
 
   // Test the deleteVpcRoutingTable operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -2325,6 +2550,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, getVpcRoutingTablePath);
   }
+  
+  public void testGetVpcRoutingTableWOptionsWRetries() throws Throwable {
+    // Enable retries and run testGetVpcRoutingTableWOptions.
+    vpcService.enableRetries(4, 30);
+    testGetVpcRoutingTableWOptions();
+
+    // Disable retries and run testGetVpcRoutingTableWOptions.
+    vpcService.disableRetries();
+    testGetVpcRoutingTableWOptions();
+  }  
 
   // Test the getVpcRoutingTable operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -2388,6 +2623,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, updateVpcRoutingTablePath);
   }
+  
+  public void testUpdateVpcRoutingTableWOptionsWRetries() throws Throwable {
+    // Enable retries and run testUpdateVpcRoutingTableWOptions.
+    vpcService.enableRetries(4, 30);
+    testUpdateVpcRoutingTableWOptions();
+
+    // Disable retries and run testUpdateVpcRoutingTableWOptions.
+    vpcService.disableRetries();
+    testUpdateVpcRoutingTableWOptions();
+  }  
 
   // Test the updateVpcRoutingTable operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -2445,6 +2690,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, listVpcRoutingTableRoutesPath);
   }
+  
+  public void testListVpcRoutingTableRoutesWOptionsWRetries() throws Throwable {
+    // Enable retries and run testListVpcRoutingTableRoutesWOptions.
+    vpcService.enableRetries(4, 30);
+    testListVpcRoutingTableRoutesWOptions();
+
+    // Disable retries and run testListVpcRoutingTableRoutesWOptions.
+    vpcService.disableRetries();
+    testListVpcRoutingTableRoutesWOptions();
+  }  
 
   // Test the listVpcRoutingTableRoutes operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -2513,6 +2768,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, createVpcRoutingTableRoutePath);
   }
+  
+  public void testCreateVpcRoutingTableRouteWOptionsWRetries() throws Throwable {
+    // Enable retries and run testCreateVpcRoutingTableRouteWOptions.
+    vpcService.enableRetries(4, 30);
+    testCreateVpcRoutingTableRouteWOptions();
+
+    // Disable retries and run testCreateVpcRoutingTableRouteWOptions.
+    vpcService.disableRetries();
+    testCreateVpcRoutingTableRouteWOptions();
+  }  
 
   // Test the createVpcRoutingTableRoute operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -2567,6 +2832,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, deleteVpcRoutingTableRoutePath);
   }
+  
+  public void testDeleteVpcRoutingTableRouteWOptionsWRetries() throws Throwable {
+    // Enable retries and run testDeleteVpcRoutingTableRouteWOptions.
+    vpcService.enableRetries(4, 30);
+    testDeleteVpcRoutingTableRouteWOptions();
+
+    // Disable retries and run testDeleteVpcRoutingTableRouteWOptions.
+    vpcService.disableRetries();
+    testDeleteVpcRoutingTableRouteWOptions();
+  }  
 
   // Test the deleteVpcRoutingTableRoute operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -2621,6 +2896,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, getVpcRoutingTableRoutePath);
   }
+  
+  public void testGetVpcRoutingTableRouteWOptionsWRetries() throws Throwable {
+    // Enable retries and run testGetVpcRoutingTableRouteWOptions.
+    vpcService.enableRetries(4, 30);
+    testGetVpcRoutingTableRouteWOptions();
+
+    // Disable retries and run testGetVpcRoutingTableRouteWOptions.
+    vpcService.disableRetries();
+    testGetVpcRoutingTableRouteWOptions();
+  }  
 
   // Test the getVpcRoutingTableRoute operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -2682,6 +2967,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, updateVpcRoutingTableRoutePath);
   }
+  
+  public void testUpdateVpcRoutingTableRouteWOptionsWRetries() throws Throwable {
+    // Enable retries and run testUpdateVpcRoutingTableRouteWOptions.
+    vpcService.enableRetries(4, 30);
+    testUpdateVpcRoutingTableRouteWOptions();
+
+    // Disable retries and run testUpdateVpcRoutingTableRouteWOptions.
+    vpcService.disableRetries();
+    testUpdateVpcRoutingTableRouteWOptions();
+  }  
 
   // Test the updateVpcRoutingTableRoute operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -2743,6 +3038,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, listSubnetsPath);
   }
+  
+  public void testListSubnetsWOptionsWRetries() throws Throwable {
+    // Enable retries and run testListSubnetsWOptions.
+    vpcService.enableRetries(4, 30);
+    testListSubnetsWOptions();
+
+    // Disable retries and run testListSubnetsWOptions.
+    vpcService.disableRetries();
+    testListSubnetsWOptions();
+  }  
 
   @Test
   public void testCreateSubnetWOptions() throws Throwable {
@@ -2826,6 +3131,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, createSubnetPath);
   }
+  
+  public void testCreateSubnetWOptionsWRetries() throws Throwable {
+    // Enable retries and run testCreateSubnetWOptions.
+    vpcService.enableRetries(4, 30);
+    testCreateSubnetWOptions();
+
+    // Disable retries and run testCreateSubnetWOptions.
+    vpcService.disableRetries();
+    testCreateSubnetWOptions();
+  }  
 
   // Test the createSubnet operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -2878,6 +3193,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, deleteSubnetPath);
   }
+  
+  public void testDeleteSubnetWOptionsWRetries() throws Throwable {
+    // Enable retries and run testDeleteSubnetWOptions.
+    vpcService.enableRetries(4, 30);
+    testDeleteSubnetWOptions();
+
+    // Disable retries and run testDeleteSubnetWOptions.
+    vpcService.disableRetries();
+    testDeleteSubnetWOptions();
+  }  
 
   // Test the deleteSubnet operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -2930,6 +3255,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, getSubnetPath);
   }
+  
+  public void testGetSubnetWOptionsWRetries() throws Throwable {
+    // Enable retries and run testGetSubnetWOptions.
+    vpcService.enableRetries(4, 30);
+    testGetSubnetWOptions();
+
+    // Disable retries and run testGetSubnetWOptions.
+    vpcService.disableRetries();
+    testGetSubnetWOptions();
+  }  
 
   // Test the getSubnet operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -3007,6 +3342,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, updateSubnetPath);
   }
+  
+  public void testUpdateSubnetWOptionsWRetries() throws Throwable {
+    // Enable retries and run testUpdateSubnetWOptions.
+    vpcService.enableRetries(4, 30);
+    testUpdateSubnetWOptions();
+
+    // Disable retries and run testUpdateSubnetWOptions.
+    vpcService.disableRetries();
+    testUpdateSubnetWOptions();
+  }  
 
   // Test the updateSubnet operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -3059,6 +3404,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, getSubnetNetworkAclPath);
   }
+  
+  public void testGetSubnetNetworkAclWOptionsWRetries() throws Throwable {
+    // Enable retries and run testGetSubnetNetworkAclWOptions.
+    vpcService.enableRetries(4, 30);
+    testGetSubnetNetworkAclWOptions();
+
+    // Disable retries and run testGetSubnetNetworkAclWOptions.
+    vpcService.disableRetries();
+    testGetSubnetNetworkAclWOptions();
+  }  
 
   // Test the getSubnetNetworkAcl operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -3117,6 +3472,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, replaceSubnetNetworkAclPath);
   }
+  
+  public void testReplaceSubnetNetworkAclWOptionsWRetries() throws Throwable {
+    // Enable retries and run testReplaceSubnetNetworkAclWOptions.
+    vpcService.enableRetries(4, 30);
+    testReplaceSubnetNetworkAclWOptions();
+
+    // Disable retries and run testReplaceSubnetNetworkAclWOptions.
+    vpcService.disableRetries();
+    testReplaceSubnetNetworkAclWOptions();
+  }  
 
   // Test the replaceSubnetNetworkAcl operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -3169,6 +3534,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, unsetSubnetPublicGatewayPath);
   }
+  
+  public void testUnsetSubnetPublicGatewayWOptionsWRetries() throws Throwable {
+    // Enable retries and run testUnsetSubnetPublicGatewayWOptions.
+    vpcService.enableRetries(4, 30);
+    testUnsetSubnetPublicGatewayWOptions();
+
+    // Disable retries and run testUnsetSubnetPublicGatewayWOptions.
+    vpcService.disableRetries();
+    testUnsetSubnetPublicGatewayWOptions();
+  }  
 
   // Test the unsetSubnetPublicGateway operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -3221,6 +3596,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, getSubnetPublicGatewayPath);
   }
+  
+  public void testGetSubnetPublicGatewayWOptionsWRetries() throws Throwable {
+    // Enable retries and run testGetSubnetPublicGatewayWOptions.
+    vpcService.enableRetries(4, 30);
+    testGetSubnetPublicGatewayWOptions();
+
+    // Disable retries and run testGetSubnetPublicGatewayWOptions.
+    vpcService.disableRetries();
+    testGetSubnetPublicGatewayWOptions();
+  }  
 
   // Test the getSubnetPublicGateway operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -3279,6 +3664,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, setSubnetPublicGatewayPath);
   }
+  
+  public void testSetSubnetPublicGatewayWOptionsWRetries() throws Throwable {
+    // Enable retries and run testSetSubnetPublicGatewayWOptions.
+    vpcService.enableRetries(4, 30);
+    testSetSubnetPublicGatewayWOptions();
+
+    // Disable retries and run testSetSubnetPublicGatewayWOptions.
+    vpcService.disableRetries();
+    testSetSubnetPublicGatewayWOptions();
+  }  
 
   // Test the setSubnetPublicGateway operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -3331,6 +3726,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, getSubnetRoutingTablePath);
   }
+  
+  public void testGetSubnetRoutingTableWOptionsWRetries() throws Throwable {
+    // Enable retries and run testGetSubnetRoutingTableWOptions.
+    vpcService.enableRetries(4, 30);
+    testGetSubnetRoutingTableWOptions();
+
+    // Disable retries and run testGetSubnetRoutingTableWOptions.
+    vpcService.disableRetries();
+    testGetSubnetRoutingTableWOptions();
+  }  
 
   // Test the getSubnetRoutingTable operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -3389,6 +3794,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, replaceSubnetRoutingTablePath);
   }
+  
+  public void testReplaceSubnetRoutingTableWOptionsWRetries() throws Throwable {
+    // Enable retries and run testReplaceSubnetRoutingTableWOptions.
+    vpcService.enableRetries(4, 30);
+    testReplaceSubnetRoutingTableWOptions();
+
+    // Disable retries and run testReplaceSubnetRoutingTableWOptions.
+    vpcService.disableRetries();
+    testReplaceSubnetRoutingTableWOptions();
+  }  
 
   // Test the replaceSubnetRoutingTable operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -3447,6 +3862,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, listSubnetReservedIpsPath);
   }
+  
+  public void testListSubnetReservedIpsWOptionsWRetries() throws Throwable {
+    // Enable retries and run testListSubnetReservedIpsWOptions.
+    vpcService.enableRetries(4, 30);
+    testListSubnetReservedIpsWOptions();
+
+    // Disable retries and run testListSubnetReservedIpsWOptions.
+    vpcService.disableRetries();
+    testListSubnetReservedIpsWOptions();
+  }  
 
   // Test the listSubnetReservedIps operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -3507,6 +3932,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, createSubnetReservedIpPath);
   }
+  
+  public void testCreateSubnetReservedIpWOptionsWRetries() throws Throwable {
+    // Enable retries and run testCreateSubnetReservedIpWOptions.
+    vpcService.enableRetries(4, 30);
+    testCreateSubnetReservedIpWOptions();
+
+    // Disable retries and run testCreateSubnetReservedIpWOptions.
+    vpcService.disableRetries();
+    testCreateSubnetReservedIpWOptions();
+  }  
 
   // Test the createSubnetReservedIp operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -3560,6 +3995,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, deleteSubnetReservedIpPath);
   }
+  
+  public void testDeleteSubnetReservedIpWOptionsWRetries() throws Throwable {
+    // Enable retries and run testDeleteSubnetReservedIpWOptions.
+    vpcService.enableRetries(4, 30);
+    testDeleteSubnetReservedIpWOptions();
+
+    // Disable retries and run testDeleteSubnetReservedIpWOptions.
+    vpcService.disableRetries();
+    testDeleteSubnetReservedIpWOptions();
+  }  
 
   // Test the deleteSubnetReservedIp operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -3613,6 +4058,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, getSubnetReservedIpPath);
   }
+  
+  public void testGetSubnetReservedIpWOptionsWRetries() throws Throwable {
+    // Enable retries and run testGetSubnetReservedIpWOptions.
+    vpcService.enableRetries(4, 30);
+    testGetSubnetReservedIpWOptions();
+
+    // Disable retries and run testGetSubnetReservedIpWOptions.
+    vpcService.disableRetries();
+    testGetSubnetReservedIpWOptions();
+  }  
 
   // Test the getSubnetReservedIp operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -3674,6 +4129,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, updateSubnetReservedIpPath);
   }
+  
+  public void testUpdateSubnetReservedIpWOptionsWRetries() throws Throwable {
+    // Enable retries and run testUpdateSubnetReservedIpWOptions.
+    vpcService.enableRetries(4, 30);
+    testUpdateSubnetReservedIpWOptions();
+
+    // Disable retries and run testUpdateSubnetReservedIpWOptions.
+    vpcService.disableRetries();
+    testUpdateSubnetReservedIpWOptions();
+  }  
 
   // Test the updateSubnetReservedIp operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -3735,6 +4200,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, listImagesPath);
   }
+  
+  public void testListImagesWOptionsWRetries() throws Throwable {
+    // Enable retries and run testListImagesWOptions.
+    vpcService.enableRetries(4, 30);
+    testListImagesWOptions();
+
+    // Disable retries and run testListImagesWOptions.
+    vpcService.disableRetries();
+    testListImagesWOptions();
+  }  
 
   @Test
   public void testCreateImageWOptions() throws Throwable {
@@ -3805,6 +4280,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, createImagePath);
   }
+  
+  public void testCreateImageWOptionsWRetries() throws Throwable {
+    // Enable retries and run testCreateImageWOptions.
+    vpcService.enableRetries(4, 30);
+    testCreateImageWOptions();
+
+    // Disable retries and run testCreateImageWOptions.
+    vpcService.disableRetries();
+    testCreateImageWOptions();
+  }  
 
   // Test the createImage operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -3857,6 +4342,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, deleteImagePath);
   }
+  
+  public void testDeleteImageWOptionsWRetries() throws Throwable {
+    // Enable retries and run testDeleteImageWOptions.
+    vpcService.enableRetries(4, 30);
+    testDeleteImageWOptions();
+
+    // Disable retries and run testDeleteImageWOptions.
+    vpcService.disableRetries();
+    testDeleteImageWOptions();
+  }  
 
   // Test the deleteImage operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -3909,6 +4404,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, getImagePath);
   }
+  
+  public void testGetImageWOptionsWRetries() throws Throwable {
+    // Enable retries and run testGetImageWOptions.
+    vpcService.enableRetries(4, 30);
+    testGetImageWOptions();
+
+    // Disable retries and run testGetImageWOptions.
+    vpcService.disableRetries();
+    testGetImageWOptions();
+  }  
 
   // Test the getImage operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -3968,6 +4473,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, updateImagePath);
   }
+  
+  public void testUpdateImageWOptionsWRetries() throws Throwable {
+    // Enable retries and run testUpdateImageWOptions.
+    vpcService.enableRetries(4, 30);
+    testUpdateImageWOptions();
+
+    // Disable retries and run testUpdateImageWOptions.
+    vpcService.disableRetries();
+    testUpdateImageWOptions();
+  }  
 
   // Test the updateImage operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -4023,6 +4538,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, listOperatingSystemsPath);
   }
+  
+  public void testListOperatingSystemsWOptionsWRetries() throws Throwable {
+    // Enable retries and run testListOperatingSystemsWOptions.
+    vpcService.enableRetries(4, 30);
+    testListOperatingSystemsWOptions();
+
+    // Disable retries and run testListOperatingSystemsWOptions.
+    vpcService.disableRetries();
+    testListOperatingSystemsWOptions();
+  }  
 
   @Test
   public void testGetOperatingSystemWOptions() throws Throwable {
@@ -4063,6 +4588,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, getOperatingSystemPath);
   }
+  
+  public void testGetOperatingSystemWOptionsWRetries() throws Throwable {
+    // Enable retries and run testGetOperatingSystemWOptions.
+    vpcService.enableRetries(4, 30);
+    testGetOperatingSystemWOptions();
+
+    // Disable retries and run testGetOperatingSystemWOptions.
+    vpcService.disableRetries();
+    testGetOperatingSystemWOptions();
+  }  
 
   // Test the getOperatingSystem operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -4079,7 +4614,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testListKeysWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"first\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/keys?limit=20\"}, \"keys\": [{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::key:a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"fingerprint\": \"SHA256:yxavE4CIOL2NlsqcurRO3xGjkP6m/0mp8ugojH5yxlY\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/keys/a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"id\": \"a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"length\": 2048, \"name\": \"my-key\", \"public_key\": \"AAAAB3NzaC1yc2EAAAADAQABAAABAQDDGe50Bxa5T5NDddrrtbx2Y4/VGbiCgXqnBsYToIUKoFSHTQl5IX3PasGnneKanhcLwWz5M5MoCRvhxTp66NKzIfAz7r+FX9rxgR+ZgcM253YAqOVeIpOU408simDZKriTlN8kYsXL7P34tsWuAJf4MgZtJAQxous/2byetpdCv8ddnT4X3ltOg9w+LqSCPYfNivqH00Eh7S1Ldz7I8aw5WOp5a+sQFP/RbwfpwHp+ny7DfeIOokcuI42tJkoBn7UsLTVpCSmXr2EDRlSWe/1M/iHNRBzaT3CK0+SwZWd2AEjePxSnWKNGIEUJDlUYp7hKhiQcgT5ZAnWU121oc5En\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"type\": \"rsa\"}], \"limit\": 20, \"next\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/keys?start=9d5a91a3e2cbd233b5a5b33436855ed1&limit=20\"}, \"total_count\": 132}";
+    String mockResponseBody = "{\"first\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/keys?limit=20\"}, \"keys\": [{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::key:a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"fingerprint\": \"SHA256:yxavE4CIOL2NlsqcurRO3xGjkP6m/0mp8ugojH5yxlY\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/keys/a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"id\": \"a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"length\": 2048, \"name\": \"my-key\", \"public_key\": \"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDDGe50Bxa5T5NDddrrtbx2Y4/VGbiCgXqnBsYToIUKoFSHTQl5IX3PasGnneKanhcLwWz5M5MoCRvhxTp66NKzIfAz7r+FX9rxgR+ZgcM253YAqOVeIpOU408simDZKriTlN8kYsXL7P34tsWuAJf4MgZtJAQxous/2byetpdCv8ddnT4X3ltOg9w+LqSCPYfNivqH00Eh7S1Ldz7I8aw5WOp5a+sQFP/RbwfpwHp+ny7DfeIOokcuI42tJkoBn7UsLTVpCSmXr2EDRlSWe/1M/iHNRBzaT3CK0+SwZWd2AEjePxSnWKNGIEUJDlUYp7hKhiQcgT5ZAnWU121oc5En\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"type\": \"rsa\"}], \"limit\": 20, \"next\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/keys?start=9d5a91a3e2cbd233b5a5b33436855ed1&limit=20\"}, \"total_count\": 132}";
     String listKeysPath = "/keys";
 
     server.enqueue(new MockResponse()
@@ -4120,11 +4655,21 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, listKeysPath);
   }
+  
+  public void testListKeysWOptionsWRetries() throws Throwable {
+    // Enable retries and run testListKeysWOptions.
+    vpcService.enableRetries(4, 30);
+    testListKeysWOptions();
+
+    // Disable retries and run testListKeysWOptions.
+    vpcService.disableRetries();
+    testListKeysWOptions();
+  }  
 
   @Test
   public void testCreateKeyWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::key:a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"fingerprint\": \"SHA256:yxavE4CIOL2NlsqcurRO3xGjkP6m/0mp8ugojH5yxlY\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/keys/a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"id\": \"a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"length\": 2048, \"name\": \"my-key\", \"public_key\": \"AAAAB3NzaC1yc2EAAAADAQABAAABAQDDGe50Bxa5T5NDddrrtbx2Y4/VGbiCgXqnBsYToIUKoFSHTQl5IX3PasGnneKanhcLwWz5M5MoCRvhxTp66NKzIfAz7r+FX9rxgR+ZgcM253YAqOVeIpOU408simDZKriTlN8kYsXL7P34tsWuAJf4MgZtJAQxous/2byetpdCv8ddnT4X3ltOg9w+LqSCPYfNivqH00Eh7S1Ldz7I8aw5WOp5a+sQFP/RbwfpwHp+ny7DfeIOokcuI42tJkoBn7UsLTVpCSmXr2EDRlSWe/1M/iHNRBzaT3CK0+SwZWd2AEjePxSnWKNGIEUJDlUYp7hKhiQcgT5ZAnWU121oc5En\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"type\": \"rsa\"}";
+    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::key:a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"fingerprint\": \"SHA256:yxavE4CIOL2NlsqcurRO3xGjkP6m/0mp8ugojH5yxlY\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/keys/a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"id\": \"a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"length\": 2048, \"name\": \"my-key\", \"public_key\": \"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDDGe50Bxa5T5NDddrrtbx2Y4/VGbiCgXqnBsYToIUKoFSHTQl5IX3PasGnneKanhcLwWz5M5MoCRvhxTp66NKzIfAz7r+FX9rxgR+ZgcM253YAqOVeIpOU408simDZKriTlN8kYsXL7P34tsWuAJf4MgZtJAQxous/2byetpdCv8ddnT4X3ltOg9w+LqSCPYfNivqH00Eh7S1Ldz7I8aw5WOp5a+sQFP/RbwfpwHp+ny7DfeIOokcuI42tJkoBn7UsLTVpCSmXr2EDRlSWe/1M/iHNRBzaT3CK0+SwZWd2AEjePxSnWKNGIEUJDlUYp7hKhiQcgT5ZAnWU121oc5En\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"type\": \"rsa\"}";
     String createKeyPath = "/keys";
 
     server.enqueue(new MockResponse()
@@ -4141,7 +4686,7 @@ public class VpcTest extends PowerMockTestCase {
 
     // Construct an instance of the CreateKeyOptions model
     CreateKeyOptions createKeyOptionsModel = new CreateKeyOptions.Builder()
-    .publicKey("AAAAB3NzaC1yc2EAAAADAQABAAABAQDDGe50Bxa5T5NDddrrtbx2Y4/VGbiCgXqnBsYToIUKoFSHTQl5IX3PasGnneKanhcLwWz5M5MoCRvhxTp66NKzIfAz7r+FX9rxgR+ZgcM253YAqOVeIpOU408simDZKriTlN8kYsXL7P34tsWuAJf4MgZtJAQxous/2byetpdCv8ddnT4X3ltOg9w+LqSCPYfNivqH00Eh7S1Ldz7I8aw5WOp5a+sQFP/RbwfpwHp+ny7DfeIOokcuI42tJkoBn7UsLTVpCSmXr2EDRlSWe/1M/iHNRBzaT3CK0+SwZWd2AEjePxSnWKNGIEUJDlUYp7hKhiQcgT5ZAnWU121oc5En")
+    .publicKey("ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDDGe50Bxa5T5NDddrrtbx2Y4/VGbiCgXqnBsYToIUKoFSHTQl5IX3PasGnneKanhcLwWz5M5MoCRvhxTp66NKzIfAz7r+FX9rxgR+ZgcM253YAqOVeIpOU408simDZKriTlN8kYsXL7P34tsWuAJf4MgZtJAQxous/2byetpdCv8ddnT4X3ltOg9w+LqSCPYfNivqH00Eh7S1Ldz7I8aw5WOp5a+sQFP/RbwfpwHp+ny7DfeIOokcuI42tJkoBn7UsLTVpCSmXr2EDRlSWe/1M/iHNRBzaT3CK0+SwZWd2AEjePxSnWKNGIEUJDlUYp7hKhiQcgT5ZAnWU121oc5En")
     .name("my-key")
     .resourceGroup(resourceGroupIdentityModel)
     .type("rsa")
@@ -4168,6 +4713,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, createKeyPath);
   }
+  
+  public void testCreateKeyWOptionsWRetries() throws Throwable {
+    // Enable retries and run testCreateKeyWOptions.
+    vpcService.enableRetries(4, 30);
+    testCreateKeyWOptions();
+
+    // Disable retries and run testCreateKeyWOptions.
+    vpcService.disableRetries();
+    testCreateKeyWOptions();
+  }  
 
   // Test the createKey operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -4220,6 +4775,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, deleteKeyPath);
   }
+  
+  public void testDeleteKeyWOptionsWRetries() throws Throwable {
+    // Enable retries and run testDeleteKeyWOptions.
+    vpcService.enableRetries(4, 30);
+    testDeleteKeyWOptions();
+
+    // Disable retries and run testDeleteKeyWOptions.
+    vpcService.disableRetries();
+    testDeleteKeyWOptions();
+  }  
 
   // Test the deleteKey operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -4236,7 +4801,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testGetKeyWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::key:a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"fingerprint\": \"SHA256:yxavE4CIOL2NlsqcurRO3xGjkP6m/0mp8ugojH5yxlY\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/keys/a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"id\": \"a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"length\": 2048, \"name\": \"my-key\", \"public_key\": \"AAAAB3NzaC1yc2EAAAADAQABAAABAQDDGe50Bxa5T5NDddrrtbx2Y4/VGbiCgXqnBsYToIUKoFSHTQl5IX3PasGnneKanhcLwWz5M5MoCRvhxTp66NKzIfAz7r+FX9rxgR+ZgcM253YAqOVeIpOU408simDZKriTlN8kYsXL7P34tsWuAJf4MgZtJAQxous/2byetpdCv8ddnT4X3ltOg9w+LqSCPYfNivqH00Eh7S1Ldz7I8aw5WOp5a+sQFP/RbwfpwHp+ny7DfeIOokcuI42tJkoBn7UsLTVpCSmXr2EDRlSWe/1M/iHNRBzaT3CK0+SwZWd2AEjePxSnWKNGIEUJDlUYp7hKhiQcgT5ZAnWU121oc5En\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"type\": \"rsa\"}";
+    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::key:a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"fingerprint\": \"SHA256:yxavE4CIOL2NlsqcurRO3xGjkP6m/0mp8ugojH5yxlY\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/keys/a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"id\": \"a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"length\": 2048, \"name\": \"my-key\", \"public_key\": \"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDDGe50Bxa5T5NDddrrtbx2Y4/VGbiCgXqnBsYToIUKoFSHTQl5IX3PasGnneKanhcLwWz5M5MoCRvhxTp66NKzIfAz7r+FX9rxgR+ZgcM253YAqOVeIpOU408simDZKriTlN8kYsXL7P34tsWuAJf4MgZtJAQxous/2byetpdCv8ddnT4X3ltOg9w+LqSCPYfNivqH00Eh7S1Ldz7I8aw5WOp5a+sQFP/RbwfpwHp+ny7DfeIOokcuI42tJkoBn7UsLTVpCSmXr2EDRlSWe/1M/iHNRBzaT3CK0+SwZWd2AEjePxSnWKNGIEUJDlUYp7hKhiQcgT5ZAnWU121oc5En\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"type\": \"rsa\"}";
     String getKeyPath = "/keys/testString";
 
     server.enqueue(new MockResponse()
@@ -4272,6 +4837,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, getKeyPath);
   }
+  
+  public void testGetKeyWOptionsWRetries() throws Throwable {
+    // Enable retries and run testGetKeyWOptions.
+    vpcService.enableRetries(4, 30);
+    testGetKeyWOptions();
+
+    // Disable retries and run testGetKeyWOptions.
+    vpcService.disableRetries();
+    testGetKeyWOptions();
+  }  
 
   // Test the getKey operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -4288,7 +4863,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testUpdateKeyWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::key:a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"fingerprint\": \"SHA256:yxavE4CIOL2NlsqcurRO3xGjkP6m/0mp8ugojH5yxlY\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/keys/a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"id\": \"a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"length\": 2048, \"name\": \"my-key\", \"public_key\": \"AAAAB3NzaC1yc2EAAAADAQABAAABAQDDGe50Bxa5T5NDddrrtbx2Y4/VGbiCgXqnBsYToIUKoFSHTQl5IX3PasGnneKanhcLwWz5M5MoCRvhxTp66NKzIfAz7r+FX9rxgR+ZgcM253YAqOVeIpOU408simDZKriTlN8kYsXL7P34tsWuAJf4MgZtJAQxous/2byetpdCv8ddnT4X3ltOg9w+LqSCPYfNivqH00Eh7S1Ldz7I8aw5WOp5a+sQFP/RbwfpwHp+ny7DfeIOokcuI42tJkoBn7UsLTVpCSmXr2EDRlSWe/1M/iHNRBzaT3CK0+SwZWd2AEjePxSnWKNGIEUJDlUYp7hKhiQcgT5ZAnWU121oc5En\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"type\": \"rsa\"}";
+    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::key:a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"fingerprint\": \"SHA256:yxavE4CIOL2NlsqcurRO3xGjkP6m/0mp8ugojH5yxlY\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/keys/a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"id\": \"a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"length\": 2048, \"name\": \"my-key\", \"public_key\": \"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDDGe50Bxa5T5NDddrrtbx2Y4/VGbiCgXqnBsYToIUKoFSHTQl5IX3PasGnneKanhcLwWz5M5MoCRvhxTp66NKzIfAz7r+FX9rxgR+ZgcM253YAqOVeIpOU408simDZKriTlN8kYsXL7P34tsWuAJf4MgZtJAQxous/2byetpdCv8ddnT4X3ltOg9w+LqSCPYfNivqH00Eh7S1Ldz7I8aw5WOp5a+sQFP/RbwfpwHp+ny7DfeIOokcuI42tJkoBn7UsLTVpCSmXr2EDRlSWe/1M/iHNRBzaT3CK0+SwZWd2AEjePxSnWKNGIEUJDlUYp7hKhiQcgT5ZAnWU121oc5En\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"type\": \"rsa\"}";
     String updateKeyPath = "/keys/testString";
 
     server.enqueue(new MockResponse()
@@ -4331,6 +4906,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, updateKeyPath);
   }
+  
+  public void testUpdateKeyWOptionsWRetries() throws Throwable {
+    // Enable retries and run testUpdateKeyWOptions.
+    vpcService.enableRetries(4, 30);
+    testUpdateKeyWOptions();
+
+    // Disable retries and run testUpdateKeyWOptions.
+    vpcService.disableRetries();
+    testUpdateKeyWOptions();
+  }  
 
   // Test the updateKey operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -4347,7 +4932,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testListInstanceProfilesWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"profiles\": [{\"bandwidth\": {\"type\": \"fixed\", \"value\": 20000}, \"disks\": [{\"quantity\": {\"type\": \"fixed\", \"value\": 4}, \"size\": {\"type\": \"fixed\", \"value\": 100}, \"supported_interface_types\": {\"default\": \"virtio_blk\", \"type\": \"enum\", \"values\": [\"virtio_blk\"]}}], \"family\": \"balanced\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/profiles/bc1-4x16\", \"memory\": {\"type\": \"fixed\", \"value\": 16}, \"name\": \"bc1-4x16\", \"os_architecture\": {\"default\": \"xDefault\", \"type\": \"enum\", \"values\": [\"amd64\"]}, \"port_speed\": {\"type\": \"fixed\", \"value\": 1000}, \"total_volume_bandwidth\": {\"type\": \"fixed\", \"value\": 20000}, \"vcpu_architecture\": {\"default\": \"xDefault\", \"type\": \"fixed\", \"value\": \"amd64\"}, \"vcpu_count\": {\"type\": \"fixed\", \"value\": 16}}]}";
+    String mockResponseBody = "{\"profiles\": [{\"bandwidth\": {\"type\": \"fixed\", \"value\": 20000}, \"disks\": [{\"quantity\": {\"type\": \"fixed\", \"value\": 4}, \"size\": {\"type\": \"fixed\", \"value\": 100}, \"supported_interface_types\": {\"default\": \"virtio_blk\", \"type\": \"enum\", \"values\": [\"virtio_blk\"]}}], \"family\": \"balanced\", \"gpu_count\": {\"type\": \"fixed\", \"value\": 2}, \"gpu_manufacturer\": {\"type\": \"enum\", \"values\": [\"nvidia\"]}, \"gpu_memory\": {\"type\": \"fixed\", \"value\": 16}, \"gpu_model\": {\"type\": \"enum\", \"values\": [\"Tesla V100\"]}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/profiles/bc1-4x16\", \"memory\": {\"type\": \"fixed\", \"value\": 16}, \"name\": \"bc1-4x16\", \"os_architecture\": {\"default\": \"xDefault\", \"type\": \"enum\", \"values\": [\"amd64\"]}, \"port_speed\": {\"type\": \"fixed\", \"value\": 1000}, \"total_volume_bandwidth\": {\"type\": \"fixed\", \"value\": 20000}, \"vcpu_architecture\": {\"default\": \"xDefault\", \"type\": \"fixed\", \"value\": \"amd64\"}, \"vcpu_count\": {\"type\": \"fixed\", \"value\": 16}}]}";
     String listInstanceProfilesPath = "/instance/profiles";
 
     server.enqueue(new MockResponse()
@@ -4381,11 +4966,21 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, listInstanceProfilesPath);
   }
+  
+  public void testListInstanceProfilesWOptionsWRetries() throws Throwable {
+    // Enable retries and run testListInstanceProfilesWOptions.
+    vpcService.enableRetries(4, 30);
+    testListInstanceProfilesWOptions();
+
+    // Disable retries and run testListInstanceProfilesWOptions.
+    vpcService.disableRetries();
+    testListInstanceProfilesWOptions();
+  }  
 
   @Test
   public void testGetInstanceProfileWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"bandwidth\": {\"type\": \"fixed\", \"value\": 20000}, \"disks\": [{\"quantity\": {\"type\": \"fixed\", \"value\": 4}, \"size\": {\"type\": \"fixed\", \"value\": 100}, \"supported_interface_types\": {\"default\": \"virtio_blk\", \"type\": \"enum\", \"values\": [\"virtio_blk\"]}}], \"family\": \"balanced\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/profiles/bc1-4x16\", \"memory\": {\"type\": \"fixed\", \"value\": 16}, \"name\": \"bc1-4x16\", \"os_architecture\": {\"default\": \"xDefault\", \"type\": \"enum\", \"values\": [\"amd64\"]}, \"port_speed\": {\"type\": \"fixed\", \"value\": 1000}, \"total_volume_bandwidth\": {\"type\": \"fixed\", \"value\": 20000}, \"vcpu_architecture\": {\"default\": \"xDefault\", \"type\": \"fixed\", \"value\": \"amd64\"}, \"vcpu_count\": {\"type\": \"fixed\", \"value\": 16}}";
+    String mockResponseBody = "{\"bandwidth\": {\"type\": \"fixed\", \"value\": 20000}, \"disks\": [{\"quantity\": {\"type\": \"fixed\", \"value\": 4}, \"size\": {\"type\": \"fixed\", \"value\": 100}, \"supported_interface_types\": {\"default\": \"virtio_blk\", \"type\": \"enum\", \"values\": [\"virtio_blk\"]}}], \"family\": \"balanced\", \"gpu_count\": {\"type\": \"fixed\", \"value\": 2}, \"gpu_manufacturer\": {\"type\": \"enum\", \"values\": [\"nvidia\"]}, \"gpu_memory\": {\"type\": \"fixed\", \"value\": 16}, \"gpu_model\": {\"type\": \"enum\", \"values\": [\"Tesla V100\"]}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/profiles/bc1-4x16\", \"memory\": {\"type\": \"fixed\", \"value\": 16}, \"name\": \"bc1-4x16\", \"os_architecture\": {\"default\": \"xDefault\", \"type\": \"enum\", \"values\": [\"amd64\"]}, \"port_speed\": {\"type\": \"fixed\", \"value\": 1000}, \"total_volume_bandwidth\": {\"type\": \"fixed\", \"value\": 20000}, \"vcpu_architecture\": {\"default\": \"xDefault\", \"type\": \"fixed\", \"value\": \"amd64\"}, \"vcpu_count\": {\"type\": \"fixed\", \"value\": 16}}";
     String getInstanceProfilePath = "/instance/profiles/testString";
 
     server.enqueue(new MockResponse()
@@ -4421,6 +5016,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, getInstanceProfilePath);
   }
+  
+  public void testGetInstanceProfileWOptionsWRetries() throws Throwable {
+    // Enable retries and run testGetInstanceProfileWOptions.
+    vpcService.enableRetries(4, 30);
+    testGetInstanceProfileWOptions();
+
+    // Disable retries and run testGetInstanceProfileWOptions.
+    vpcService.disableRetries();
+    testGetInstanceProfileWOptions();
+  }  
 
   // Test the getInstanceProfile operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -4471,6 +5076,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, listInstanceTemplatesPath);
   }
+  
+  public void testListInstanceTemplatesWOptionsWRetries() throws Throwable {
+    // Enable retries and run testListInstanceTemplatesWOptions.
+    vpcService.enableRetries(4, 30);
+    testListInstanceTemplatesWOptions();
+
+    // Disable retries and run testListInstanceTemplatesWOptions.
+    vpcService.disableRetries();
+    testListInstanceTemplatesWOptions();
+  }  
 
   @Test
   public void testCreateInstanceTemplateWOptions() throws Throwable {
@@ -4621,6 +5236,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, createInstanceTemplatePath);
   }
+  
+  public void testCreateInstanceTemplateWOptionsWRetries() throws Throwable {
+    // Enable retries and run testCreateInstanceTemplateWOptions.
+    vpcService.enableRetries(4, 30);
+    testCreateInstanceTemplateWOptions();
+
+    // Disable retries and run testCreateInstanceTemplateWOptions.
+    vpcService.disableRetries();
+    testCreateInstanceTemplateWOptions();
+  }  
 
   // Test the createInstanceTemplate operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -4673,6 +5298,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, deleteInstanceTemplatePath);
   }
+  
+  public void testDeleteInstanceTemplateWOptionsWRetries() throws Throwable {
+    // Enable retries and run testDeleteInstanceTemplateWOptions.
+    vpcService.enableRetries(4, 30);
+    testDeleteInstanceTemplateWOptions();
+
+    // Disable retries and run testDeleteInstanceTemplateWOptions.
+    vpcService.disableRetries();
+    testDeleteInstanceTemplateWOptions();
+  }  
 
   // Test the deleteInstanceTemplate operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -4725,6 +5360,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, getInstanceTemplatePath);
   }
+  
+  public void testGetInstanceTemplateWOptionsWRetries() throws Throwable {
+    // Enable retries and run testGetInstanceTemplateWOptions.
+    vpcService.enableRetries(4, 30);
+    testGetInstanceTemplateWOptions();
+
+    // Disable retries and run testGetInstanceTemplateWOptions.
+    vpcService.disableRetries();
+    testGetInstanceTemplateWOptions();
+  }  
 
   // Test the getInstanceTemplate operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -4784,6 +5429,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, updateInstanceTemplatePath);
   }
+  
+  public void testUpdateInstanceTemplateWOptionsWRetries() throws Throwable {
+    // Enable retries and run testUpdateInstanceTemplateWOptions.
+    vpcService.enableRetries(4, 30);
+    testUpdateInstanceTemplateWOptions();
+
+    // Disable retries and run testUpdateInstanceTemplateWOptions.
+    vpcService.disableRetries();
+    testUpdateInstanceTemplateWOptions();
+  }  
 
   // Test the updateInstanceTemplate operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -4800,7 +5455,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testListInstancesWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"first\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances?limit=20\"}, \"instances\": [{\"bandwidth\": 1000, \"boot_volume_attachment\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"name\": \"my-volume-attachment\", \"volume\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}}, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"disks\": [{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/disks/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"interface_type\": \"virtio_blk\", \"name\": \"my-instance-disk\", \"resource_type\": \"instance_disk\", \"size\": 100}], \"gpu\": {\"count\": 1, \"manufacturer\": \"nvidia\", \"memory\": 1, \"model\": \"Tesla V100\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"image\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"name\": \"my-image\"}, \"memory\": 8, \"name\": \"my-instance\", \"network_interfaces\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"name\": \"my-network-interface\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\", \"subnet\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}}], \"placement_target\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::dedicated-host-group:bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/dedicated_host/groups/bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0\", \"id\": \"bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0\", \"name\": \"my-host-group\", \"resource_type\": \"dedicated_host_group\"}, \"primary_network_interface\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"name\": \"my-network-interface\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\", \"subnet\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}}, \"profile\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/profiles/bc1-4x16\", \"name\": \"bc1-4x16\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"startable\": false, \"status\": \"deleting\", \"status_reasons\": [{\"code\": \"cannot_start_storage\", \"message\": \"The virtual server instance is unusable because the encryption key for the boot volume\nhas been deleted\", \"more_info\": \"https://cloud.ibm.com/docs/key-protect?topic=key-protect-restore-keys\"}], \"total_network_bandwidth\": 500, \"total_volume_bandwidth\": 500, \"vcpu\": {\"architecture\": \"amd64\", \"count\": 4}, \"volume_attachments\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"name\": \"my-volume-attachment\", \"volume\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}}], \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\"}, \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}], \"limit\": 20, \"next\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances?start=9d5a91a3e2cbd233b5a5b33436855ed1&limit=20\"}, \"total_count\": 132}";
+    String mockResponseBody = "{\"first\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances?limit=20\"}, \"instances\": [{\"bandwidth\": 1000, \"boot_volume_attachment\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"name\": \"my-volume-attachment\", \"volume\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}}, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"dedicated_host\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::dedicated-host:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/dedicated_hosts/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-host\", \"resource_type\": \"dedicated_host\"}, \"disks\": [{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/disks/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"interface_type\": \"virtio_blk\", \"name\": \"my-instance-disk\", \"resource_type\": \"instance_disk\", \"size\": 100}], \"gpu\": {\"count\": 1, \"manufacturer\": \"nvidia\", \"memory\": 1, \"model\": \"Tesla V100\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"image\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"name\": \"my-image\"}, \"memory\": 8, \"name\": \"my-instance\", \"network_interfaces\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"name\": \"my-network-interface\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\", \"subnet\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}}], \"placement_target\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::dedicated-host-group:bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/dedicated_host/groups/bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0\", \"id\": \"bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0\", \"name\": \"my-host-group\", \"resource_type\": \"dedicated_host_group\"}, \"primary_network_interface\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"name\": \"my-network-interface\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\", \"subnet\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}}, \"profile\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/profiles/bc1-4x16\", \"name\": \"bc1-4x16\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"startable\": false, \"status\": \"deleting\", \"status_reasons\": [{\"code\": \"cannot_start_storage\", \"message\": \"The virtual server instance is unusable because the encryption key for the boot volume\nhas been deleted\", \"more_info\": \"https://cloud.ibm.com/docs/key-protect?topic=key-protect-restore-keys\"}], \"total_network_bandwidth\": 500, \"total_volume_bandwidth\": 500, \"vcpu\": {\"architecture\": \"amd64\", \"count\": 4}, \"volume_attachments\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"name\": \"my-volume-attachment\", \"volume\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}}], \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\"}, \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}], \"limit\": 20, \"next\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances?start=9d5a91a3e2cbd233b5a5b33436855ed1&limit=20\"}, \"total_count\": 132}";
     String listInstancesPath = "/instances";
 
     server.enqueue(new MockResponse()
@@ -4861,11 +5516,21 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, listInstancesPath);
   }
+  
+  public void testListInstancesWOptionsWRetries() throws Throwable {
+    // Enable retries and run testListInstancesWOptions.
+    vpcService.enableRetries(4, 30);
+    testListInstancesWOptions();
+
+    // Disable retries and run testListInstancesWOptions.
+    vpcService.disableRetries();
+    testListInstancesWOptions();
+  }  
 
   @Test
   public void testCreateInstanceWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"bandwidth\": 1000, \"boot_volume_attachment\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"name\": \"my-volume-attachment\", \"volume\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}}, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"disks\": [{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/disks/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"interface_type\": \"virtio_blk\", \"name\": \"my-instance-disk\", \"resource_type\": \"instance_disk\", \"size\": 100}], \"gpu\": {\"count\": 1, \"manufacturer\": \"nvidia\", \"memory\": 1, \"model\": \"Tesla V100\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"image\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"name\": \"my-image\"}, \"memory\": 8, \"name\": \"my-instance\", \"network_interfaces\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"name\": \"my-network-interface\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\", \"subnet\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}}], \"placement_target\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::dedicated-host-group:bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/dedicated_host/groups/bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0\", \"id\": \"bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0\", \"name\": \"my-host-group\", \"resource_type\": \"dedicated_host_group\"}, \"primary_network_interface\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"name\": \"my-network-interface\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\", \"subnet\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}}, \"profile\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/profiles/bc1-4x16\", \"name\": \"bc1-4x16\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"startable\": false, \"status\": \"deleting\", \"status_reasons\": [{\"code\": \"cannot_start_storage\", \"message\": \"The virtual server instance is unusable because the encryption key for the boot volume\nhas been deleted\", \"more_info\": \"https://cloud.ibm.com/docs/key-protect?topic=key-protect-restore-keys\"}], \"total_network_bandwidth\": 500, \"total_volume_bandwidth\": 500, \"vcpu\": {\"architecture\": \"amd64\", \"count\": 4}, \"volume_attachments\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"name\": \"my-volume-attachment\", \"volume\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}}], \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\"}, \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}";
+    String mockResponseBody = "{\"bandwidth\": 1000, \"boot_volume_attachment\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"name\": \"my-volume-attachment\", \"volume\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}}, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"dedicated_host\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::dedicated-host:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/dedicated_hosts/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-host\", \"resource_type\": \"dedicated_host\"}, \"disks\": [{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/disks/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"interface_type\": \"virtio_blk\", \"name\": \"my-instance-disk\", \"resource_type\": \"instance_disk\", \"size\": 100}], \"gpu\": {\"count\": 1, \"manufacturer\": \"nvidia\", \"memory\": 1, \"model\": \"Tesla V100\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"image\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"name\": \"my-image\"}, \"memory\": 8, \"name\": \"my-instance\", \"network_interfaces\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"name\": \"my-network-interface\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\", \"subnet\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}}], \"placement_target\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::dedicated-host-group:bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/dedicated_host/groups/bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0\", \"id\": \"bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0\", \"name\": \"my-host-group\", \"resource_type\": \"dedicated_host_group\"}, \"primary_network_interface\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"name\": \"my-network-interface\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\", \"subnet\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}}, \"profile\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/profiles/bc1-4x16\", \"name\": \"bc1-4x16\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"startable\": false, \"status\": \"deleting\", \"status_reasons\": [{\"code\": \"cannot_start_storage\", \"message\": \"The virtual server instance is unusable because the encryption key for the boot volume\nhas been deleted\", \"more_info\": \"https://cloud.ibm.com/docs/key-protect?topic=key-protect-restore-keys\"}], \"total_network_bandwidth\": 500, \"total_volume_bandwidth\": 500, \"vcpu\": {\"architecture\": \"amd64\", \"count\": 4}, \"volume_attachments\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"name\": \"my-volume-attachment\", \"volume\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}}], \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\"}, \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}";
     String createInstancePath = "/instances";
 
     server.enqueue(new MockResponse()
@@ -5015,6 +5680,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, createInstancePath);
   }
+  
+  public void testCreateInstanceWOptionsWRetries() throws Throwable {
+    // Enable retries and run testCreateInstanceWOptions.
+    vpcService.enableRetries(4, 30);
+    testCreateInstanceWOptions();
+
+    // Disable retries and run testCreateInstanceWOptions.
+    vpcService.disableRetries();
+    testCreateInstanceWOptions();
+  }  
 
   // Test the createInstance operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -5067,6 +5742,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, deleteInstancePath);
   }
+  
+  public void testDeleteInstanceWOptionsWRetries() throws Throwable {
+    // Enable retries and run testDeleteInstanceWOptions.
+    vpcService.enableRetries(4, 30);
+    testDeleteInstanceWOptions();
+
+    // Disable retries and run testDeleteInstanceWOptions.
+    vpcService.disableRetries();
+    testDeleteInstanceWOptions();
+  }  
 
   // Test the deleteInstance operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -5083,7 +5768,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testGetInstanceWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"bandwidth\": 1000, \"boot_volume_attachment\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"name\": \"my-volume-attachment\", \"volume\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}}, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"disks\": [{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/disks/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"interface_type\": \"virtio_blk\", \"name\": \"my-instance-disk\", \"resource_type\": \"instance_disk\", \"size\": 100}], \"gpu\": {\"count\": 1, \"manufacturer\": \"nvidia\", \"memory\": 1, \"model\": \"Tesla V100\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"image\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"name\": \"my-image\"}, \"memory\": 8, \"name\": \"my-instance\", \"network_interfaces\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"name\": \"my-network-interface\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\", \"subnet\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}}], \"placement_target\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::dedicated-host-group:bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/dedicated_host/groups/bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0\", \"id\": \"bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0\", \"name\": \"my-host-group\", \"resource_type\": \"dedicated_host_group\"}, \"primary_network_interface\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"name\": \"my-network-interface\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\", \"subnet\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}}, \"profile\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/profiles/bc1-4x16\", \"name\": \"bc1-4x16\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"startable\": false, \"status\": \"deleting\", \"status_reasons\": [{\"code\": \"cannot_start_storage\", \"message\": \"The virtual server instance is unusable because the encryption key for the boot volume\nhas been deleted\", \"more_info\": \"https://cloud.ibm.com/docs/key-protect?topic=key-protect-restore-keys\"}], \"total_network_bandwidth\": 500, \"total_volume_bandwidth\": 500, \"vcpu\": {\"architecture\": \"amd64\", \"count\": 4}, \"volume_attachments\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"name\": \"my-volume-attachment\", \"volume\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}}], \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\"}, \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}";
+    String mockResponseBody = "{\"bandwidth\": 1000, \"boot_volume_attachment\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"name\": \"my-volume-attachment\", \"volume\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}}, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"dedicated_host\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::dedicated-host:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/dedicated_hosts/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-host\", \"resource_type\": \"dedicated_host\"}, \"disks\": [{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/disks/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"interface_type\": \"virtio_blk\", \"name\": \"my-instance-disk\", \"resource_type\": \"instance_disk\", \"size\": 100}], \"gpu\": {\"count\": 1, \"manufacturer\": \"nvidia\", \"memory\": 1, \"model\": \"Tesla V100\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"image\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"name\": \"my-image\"}, \"memory\": 8, \"name\": \"my-instance\", \"network_interfaces\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"name\": \"my-network-interface\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\", \"subnet\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}}], \"placement_target\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::dedicated-host-group:bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/dedicated_host/groups/bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0\", \"id\": \"bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0\", \"name\": \"my-host-group\", \"resource_type\": \"dedicated_host_group\"}, \"primary_network_interface\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"name\": \"my-network-interface\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\", \"subnet\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}}, \"profile\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/profiles/bc1-4x16\", \"name\": \"bc1-4x16\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"startable\": false, \"status\": \"deleting\", \"status_reasons\": [{\"code\": \"cannot_start_storage\", \"message\": \"The virtual server instance is unusable because the encryption key for the boot volume\nhas been deleted\", \"more_info\": \"https://cloud.ibm.com/docs/key-protect?topic=key-protect-restore-keys\"}], \"total_network_bandwidth\": 500, \"total_volume_bandwidth\": 500, \"vcpu\": {\"architecture\": \"amd64\", \"count\": 4}, \"volume_attachments\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"name\": \"my-volume-attachment\", \"volume\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}}], \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\"}, \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}";
     String getInstancePath = "/instances/testString";
 
     server.enqueue(new MockResponse()
@@ -5119,6 +5804,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, getInstancePath);
   }
+  
+  public void testGetInstanceWOptionsWRetries() throws Throwable {
+    // Enable retries and run testGetInstanceWOptions.
+    vpcService.enableRetries(4, 30);
+    testGetInstanceWOptions();
+
+    // Disable retries and run testGetInstanceWOptions.
+    vpcService.disableRetries();
+    testGetInstanceWOptions();
+  }  
 
   // Test the getInstance operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -5135,7 +5830,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testUpdateInstanceWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"bandwidth\": 1000, \"boot_volume_attachment\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"name\": \"my-volume-attachment\", \"volume\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}}, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"disks\": [{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/disks/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"interface_type\": \"virtio_blk\", \"name\": \"my-instance-disk\", \"resource_type\": \"instance_disk\", \"size\": 100}], \"gpu\": {\"count\": 1, \"manufacturer\": \"nvidia\", \"memory\": 1, \"model\": \"Tesla V100\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"image\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"name\": \"my-image\"}, \"memory\": 8, \"name\": \"my-instance\", \"network_interfaces\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"name\": \"my-network-interface\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\", \"subnet\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}}], \"placement_target\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::dedicated-host-group:bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/dedicated_host/groups/bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0\", \"id\": \"bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0\", \"name\": \"my-host-group\", \"resource_type\": \"dedicated_host_group\"}, \"primary_network_interface\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"name\": \"my-network-interface\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\", \"subnet\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}}, \"profile\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/profiles/bc1-4x16\", \"name\": \"bc1-4x16\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"startable\": false, \"status\": \"deleting\", \"status_reasons\": [{\"code\": \"cannot_start_storage\", \"message\": \"The virtual server instance is unusable because the encryption key for the boot volume\nhas been deleted\", \"more_info\": \"https://cloud.ibm.com/docs/key-protect?topic=key-protect-restore-keys\"}], \"total_network_bandwidth\": 500, \"total_volume_bandwidth\": 500, \"vcpu\": {\"architecture\": \"amd64\", \"count\": 4}, \"volume_attachments\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"name\": \"my-volume-attachment\", \"volume\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}}], \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\"}, \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}";
+    String mockResponseBody = "{\"bandwidth\": 1000, \"boot_volume_attachment\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"name\": \"my-volume-attachment\", \"volume\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}}, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::instance:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"dedicated_host\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::dedicated-host:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/dedicated_hosts/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"name\": \"my-host\", \"resource_type\": \"dedicated_host\"}, \"disks\": [{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/disks/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"interface_type\": \"virtio_blk\", \"name\": \"my-instance-disk\", \"resource_type\": \"instance_disk\", \"size\": 100}], \"gpu\": {\"count\": 1, \"manufacturer\": \"nvidia\", \"memory\": 1, \"model\": \"Tesla V100\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"image\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"name\": \"my-image\"}, \"memory\": 8, \"name\": \"my-instance\", \"network_interfaces\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"name\": \"my-network-interface\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\", \"subnet\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}}], \"placement_target\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::dedicated-host-group:bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/dedicated_host/groups/bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0\", \"id\": \"bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0\", \"name\": \"my-host-group\", \"resource_type\": \"dedicated_host_group\"}, \"primary_network_interface\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"name\": \"my-network-interface\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\", \"subnet\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}}, \"profile\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/profiles/bc1-4x16\", \"name\": \"bc1-4x16\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"startable\": false, \"status\": \"deleting\", \"status_reasons\": [{\"code\": \"cannot_start_storage\", \"message\": \"The virtual server instance is unusable because the encryption key for the boot volume\nhas been deleted\", \"more_info\": \"https://cloud.ibm.com/docs/key-protect?topic=key-protect-restore-keys\"}], \"total_network_bandwidth\": 500, \"total_volume_bandwidth\": 500, \"vcpu\": {\"architecture\": \"amd64\", \"count\": 4}, \"volume_attachments\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"device\": {\"id\": \"80b3e36e-41f4-40e9-bd56-beae81792a68\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/volume_attachments/82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"id\": \"82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"name\": \"my-volume-attachment\", \"volume\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}}], \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\"}, \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}";
     String updateInstancePath = "/instances/testString";
 
     server.enqueue(new MockResponse()
@@ -5185,6 +5880,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, updateInstancePath);
   }
+  
+  public void testUpdateInstanceWOptionsWRetries() throws Throwable {
+    // Enable retries and run testUpdateInstanceWOptions.
+    vpcService.enableRetries(4, 30);
+    testUpdateInstanceWOptions();
+
+    // Disable retries and run testUpdateInstanceWOptions.
+    vpcService.disableRetries();
+    testUpdateInstanceWOptions();
+  }  
 
   // Test the updateInstance operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -5237,6 +5942,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, getInstanceInitializationPath);
   }
+  
+  public void testGetInstanceInitializationWOptionsWRetries() throws Throwable {
+    // Enable retries and run testGetInstanceInitializationWOptions.
+    vpcService.enableRetries(4, 30);
+    testGetInstanceInitializationWOptions();
+
+    // Disable retries and run testGetInstanceInitializationWOptions.
+    vpcService.disableRetries();
+    testGetInstanceInitializationWOptions();
+  }  
 
   // Test the getInstanceInitialization operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -5291,6 +6006,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, createInstanceActionPath);
   }
+  
+  public void testCreateInstanceActionWOptionsWRetries() throws Throwable {
+    // Enable retries and run testCreateInstanceActionWOptions.
+    vpcService.enableRetries(4, 30);
+    testCreateInstanceActionWOptions();
+
+    // Disable retries and run testCreateInstanceActionWOptions.
+    vpcService.disableRetries();
+    testCreateInstanceActionWOptions();
+  }  
 
   // Test the createInstanceAction operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -5345,6 +6070,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, createInstanceConsoleAccessTokenPath);
   }
+  
+  public void testCreateInstanceConsoleAccessTokenWOptionsWRetries() throws Throwable {
+    // Enable retries and run testCreateInstanceConsoleAccessTokenWOptions.
+    vpcService.enableRetries(4, 30);
+    testCreateInstanceConsoleAccessTokenWOptions();
+
+    // Disable retries and run testCreateInstanceConsoleAccessTokenWOptions.
+    vpcService.disableRetries();
+    testCreateInstanceConsoleAccessTokenWOptions();
+  }  
 
   // Test the createInstanceConsoleAccessToken operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -5397,6 +6132,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, listInstanceDisksPath);
   }
+  
+  public void testListInstanceDisksWOptionsWRetries() throws Throwable {
+    // Enable retries and run testListInstanceDisksWOptions.
+    vpcService.enableRetries(4, 30);
+    testListInstanceDisksWOptions();
+
+    // Disable retries and run testListInstanceDisksWOptions.
+    vpcService.disableRetries();
+    testListInstanceDisksWOptions();
+  }  
 
   // Test the listInstanceDisks operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -5450,6 +6195,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, getInstanceDiskPath);
   }
+  
+  public void testGetInstanceDiskWOptionsWRetries() throws Throwable {
+    // Enable retries and run testGetInstanceDiskWOptions.
+    vpcService.enableRetries(4, 30);
+    testGetInstanceDiskWOptions();
+
+    // Disable retries and run testGetInstanceDiskWOptions.
+    vpcService.disableRetries();
+    testGetInstanceDiskWOptions();
+  }  
 
   // Test the getInstanceDisk operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -5510,6 +6265,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, updateInstanceDiskPath);
   }
+  
+  public void testUpdateInstanceDiskWOptionsWRetries() throws Throwable {
+    // Enable retries and run testUpdateInstanceDiskWOptions.
+    vpcService.enableRetries(4, 30);
+    testUpdateInstanceDiskWOptions();
+
+    // Disable retries and run testUpdateInstanceDiskWOptions.
+    vpcService.disableRetries();
+    testUpdateInstanceDiskWOptions();
+  }  
 
   // Test the updateInstanceDisk operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -5562,6 +6327,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, listInstanceNetworkInterfacesPath);
   }
+  
+  public void testListInstanceNetworkInterfacesWOptionsWRetries() throws Throwable {
+    // Enable retries and run testListInstanceNetworkInterfacesWOptions.
+    vpcService.enableRetries(4, 30);
+    testListInstanceNetworkInterfacesWOptions();
+
+    // Disable retries and run testListInstanceNetworkInterfacesWOptions.
+    vpcService.disableRetries();
+    testListInstanceNetworkInterfacesWOptions();
+  }  
 
   // Test the listInstanceNetworkInterfaces operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -5629,6 +6404,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, createInstanceNetworkInterfacePath);
   }
+  
+  public void testCreateInstanceNetworkInterfaceWOptionsWRetries() throws Throwable {
+    // Enable retries and run testCreateInstanceNetworkInterfaceWOptions.
+    vpcService.enableRetries(4, 30);
+    testCreateInstanceNetworkInterfaceWOptions();
+
+    // Disable retries and run testCreateInstanceNetworkInterfaceWOptions.
+    vpcService.disableRetries();
+    testCreateInstanceNetworkInterfaceWOptions();
+  }  
 
   // Test the createInstanceNetworkInterface operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -5682,6 +6467,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, deleteInstanceNetworkInterfacePath);
   }
+  
+  public void testDeleteInstanceNetworkInterfaceWOptionsWRetries() throws Throwable {
+    // Enable retries and run testDeleteInstanceNetworkInterfaceWOptions.
+    vpcService.enableRetries(4, 30);
+    testDeleteInstanceNetworkInterfaceWOptions();
+
+    // Disable retries and run testDeleteInstanceNetworkInterfaceWOptions.
+    vpcService.disableRetries();
+    testDeleteInstanceNetworkInterfaceWOptions();
+  }  
 
   // Test the deleteInstanceNetworkInterface operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -5735,6 +6530,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, getInstanceNetworkInterfacePath);
   }
+  
+  public void testGetInstanceNetworkInterfaceWOptionsWRetries() throws Throwable {
+    // Enable retries and run testGetInstanceNetworkInterfaceWOptions.
+    vpcService.enableRetries(4, 30);
+    testGetInstanceNetworkInterfaceWOptions();
+
+    // Disable retries and run testGetInstanceNetworkInterfaceWOptions.
+    vpcService.disableRetries();
+    testGetInstanceNetworkInterfaceWOptions();
+  }  
 
   // Test the getInstanceNetworkInterface operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -5796,6 +6601,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, updateInstanceNetworkInterfacePath);
   }
+  
+  public void testUpdateInstanceNetworkInterfaceWOptionsWRetries() throws Throwable {
+    // Enable retries and run testUpdateInstanceNetworkInterfaceWOptions.
+    vpcService.enableRetries(4, 30);
+    testUpdateInstanceNetworkInterfaceWOptions();
+
+    // Disable retries and run testUpdateInstanceNetworkInterfaceWOptions.
+    vpcService.disableRetries();
+    testUpdateInstanceNetworkInterfaceWOptions();
+  }  
 
   // Test the updateInstanceNetworkInterface operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -5849,6 +6664,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, listInstanceNetworkInterfaceFloatingIpsPath);
   }
+  
+  public void testListInstanceNetworkInterfaceFloatingIpsWOptionsWRetries() throws Throwable {
+    // Enable retries and run testListInstanceNetworkInterfaceFloatingIpsWOptions.
+    vpcService.enableRetries(4, 30);
+    testListInstanceNetworkInterfaceFloatingIpsWOptions();
+
+    // Disable retries and run testListInstanceNetworkInterfaceFloatingIpsWOptions.
+    vpcService.disableRetries();
+    testListInstanceNetworkInterfaceFloatingIpsWOptions();
+  }  
 
   // Test the listInstanceNetworkInterfaceFloatingIps operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -5903,6 +6728,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, removeInstanceNetworkInterfaceFloatingIpPath);
   }
+  
+  public void testRemoveInstanceNetworkInterfaceFloatingIpWOptionsWRetries() throws Throwable {
+    // Enable retries and run testRemoveInstanceNetworkInterfaceFloatingIpWOptions.
+    vpcService.enableRetries(4, 30);
+    testRemoveInstanceNetworkInterfaceFloatingIpWOptions();
+
+    // Disable retries and run testRemoveInstanceNetworkInterfaceFloatingIpWOptions.
+    vpcService.disableRetries();
+    testRemoveInstanceNetworkInterfaceFloatingIpWOptions();
+  }  
 
   // Test the removeInstanceNetworkInterfaceFloatingIp operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -5957,6 +6792,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, getInstanceNetworkInterfaceFloatingIpPath);
   }
+  
+  public void testGetInstanceNetworkInterfaceFloatingIpWOptionsWRetries() throws Throwable {
+    // Enable retries and run testGetInstanceNetworkInterfaceFloatingIpWOptions.
+    vpcService.enableRetries(4, 30);
+    testGetInstanceNetworkInterfaceFloatingIpWOptions();
+
+    // Disable retries and run testGetInstanceNetworkInterfaceFloatingIpWOptions.
+    vpcService.disableRetries();
+    testGetInstanceNetworkInterfaceFloatingIpWOptions();
+  }  
 
   // Test the getInstanceNetworkInterfaceFloatingIp operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -6011,6 +6856,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, addInstanceNetworkInterfaceFloatingIpPath);
   }
+  
+  public void testAddInstanceNetworkInterfaceFloatingIpWOptionsWRetries() throws Throwable {
+    // Enable retries and run testAddInstanceNetworkInterfaceFloatingIpWOptions.
+    vpcService.enableRetries(4, 30);
+    testAddInstanceNetworkInterfaceFloatingIpWOptions();
+
+    // Disable retries and run testAddInstanceNetworkInterfaceFloatingIpWOptions.
+    vpcService.disableRetries();
+    testAddInstanceNetworkInterfaceFloatingIpWOptions();
+  }  
 
   // Test the addInstanceNetworkInterfaceFloatingIp operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -6063,6 +6918,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, listInstanceVolumeAttachmentsPath);
   }
+  
+  public void testListInstanceVolumeAttachmentsWOptionsWRetries() throws Throwable {
+    // Enable retries and run testListInstanceVolumeAttachmentsWOptions.
+    vpcService.enableRetries(4, 30);
+    testListInstanceVolumeAttachmentsWOptions();
+
+    // Disable retries and run testListInstanceVolumeAttachmentsWOptions.
+    vpcService.disableRetries();
+    testListInstanceVolumeAttachmentsWOptions();
+  }  
 
   // Test the listInstanceVolumeAttachments operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -6123,6 +6988,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, createInstanceVolumeAttachmentPath);
   }
+  
+  public void testCreateInstanceVolumeAttachmentWOptionsWRetries() throws Throwable {
+    // Enable retries and run testCreateInstanceVolumeAttachmentWOptions.
+    vpcService.enableRetries(4, 30);
+    testCreateInstanceVolumeAttachmentWOptions();
+
+    // Disable retries and run testCreateInstanceVolumeAttachmentWOptions.
+    vpcService.disableRetries();
+    testCreateInstanceVolumeAttachmentWOptions();
+  }  
 
   // Test the createInstanceVolumeAttachment operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -6176,6 +7051,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, deleteInstanceVolumeAttachmentPath);
   }
+  
+  public void testDeleteInstanceVolumeAttachmentWOptionsWRetries() throws Throwable {
+    // Enable retries and run testDeleteInstanceVolumeAttachmentWOptions.
+    vpcService.enableRetries(4, 30);
+    testDeleteInstanceVolumeAttachmentWOptions();
+
+    // Disable retries and run testDeleteInstanceVolumeAttachmentWOptions.
+    vpcService.disableRetries();
+    testDeleteInstanceVolumeAttachmentWOptions();
+  }  
 
   // Test the deleteInstanceVolumeAttachment operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -6229,6 +7114,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, getInstanceVolumeAttachmentPath);
   }
+  
+  public void testGetInstanceVolumeAttachmentWOptionsWRetries() throws Throwable {
+    // Enable retries and run testGetInstanceVolumeAttachmentWOptions.
+    vpcService.enableRetries(4, 30);
+    testGetInstanceVolumeAttachmentWOptions();
+
+    // Disable retries and run testGetInstanceVolumeAttachmentWOptions.
+    vpcService.disableRetries();
+    testGetInstanceVolumeAttachmentWOptions();
+  }  
 
   // Test the getInstanceVolumeAttachment operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -6290,6 +7185,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, updateInstanceVolumeAttachmentPath);
   }
+  
+  public void testUpdateInstanceVolumeAttachmentWOptionsWRetries() throws Throwable {
+    // Enable retries and run testUpdateInstanceVolumeAttachmentWOptions.
+    vpcService.enableRetries(4, 30);
+    testUpdateInstanceVolumeAttachmentWOptions();
+
+    // Disable retries and run testUpdateInstanceVolumeAttachmentWOptions.
+    vpcService.disableRetries();
+    testUpdateInstanceVolumeAttachmentWOptions();
+  }  
 
   // Test the updateInstanceVolumeAttachment operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -6345,6 +7250,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, listInstanceGroupsPath);
   }
+  
+  public void testListInstanceGroupsWOptionsWRetries() throws Throwable {
+    // Enable retries and run testListInstanceGroupsWOptions.
+    vpcService.enableRetries(4, 30);
+    testListInstanceGroupsWOptions();
+
+    // Disable retries and run testListInstanceGroupsWOptions.
+    vpcService.disableRetries();
+    testListInstanceGroupsWOptions();
+  }  
 
   @Test
   public void testCreateInstanceGroupWOptions() throws Throwable {
@@ -6417,6 +7332,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, createInstanceGroupPath);
   }
+  
+  public void testCreateInstanceGroupWOptionsWRetries() throws Throwable {
+    // Enable retries and run testCreateInstanceGroupWOptions.
+    vpcService.enableRetries(4, 30);
+    testCreateInstanceGroupWOptions();
+
+    // Disable retries and run testCreateInstanceGroupWOptions.
+    vpcService.disableRetries();
+    testCreateInstanceGroupWOptions();
+  }  
 
   // Test the createInstanceGroup operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -6469,6 +7394,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, deleteInstanceGroupPath);
   }
+  
+  public void testDeleteInstanceGroupWOptionsWRetries() throws Throwable {
+    // Enable retries and run testDeleteInstanceGroupWOptions.
+    vpcService.enableRetries(4, 30);
+    testDeleteInstanceGroupWOptions();
+
+    // Disable retries and run testDeleteInstanceGroupWOptions.
+    vpcService.disableRetries();
+    testDeleteInstanceGroupWOptions();
+  }  
 
   // Test the deleteInstanceGroup operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -6521,6 +7456,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, getInstanceGroupPath);
   }
+  
+  public void testGetInstanceGroupWOptionsWRetries() throws Throwable {
+    // Enable retries and run testGetInstanceGroupWOptions.
+    vpcService.enableRetries(4, 30);
+    testGetInstanceGroupWOptions();
+
+    // Disable retries and run testGetInstanceGroupWOptions.
+    vpcService.disableRetries();
+    testGetInstanceGroupWOptions();
+  }  
 
   // Test the getInstanceGroup operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -6606,6 +7551,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, updateInstanceGroupPath);
   }
+  
+  public void testUpdateInstanceGroupWOptionsWRetries() throws Throwable {
+    // Enable retries and run testUpdateInstanceGroupWOptions.
+    vpcService.enableRetries(4, 30);
+    testUpdateInstanceGroupWOptions();
+
+    // Disable retries and run testUpdateInstanceGroupWOptions.
+    vpcService.disableRetries();
+    testUpdateInstanceGroupWOptions();
+  }  
 
   // Test the updateInstanceGroup operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -6658,6 +7613,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, deleteInstanceGroupLoadBalancerPath);
   }
+  
+  public void testDeleteInstanceGroupLoadBalancerWOptionsWRetries() throws Throwable {
+    // Enable retries and run testDeleteInstanceGroupLoadBalancerWOptions.
+    vpcService.enableRetries(4, 30);
+    testDeleteInstanceGroupLoadBalancerWOptions();
+
+    // Disable retries and run testDeleteInstanceGroupLoadBalancerWOptions.
+    vpcService.disableRetries();
+    testDeleteInstanceGroupLoadBalancerWOptions();
+  }  
 
   // Test the deleteInstanceGroupLoadBalancer operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -6714,6 +7679,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, listInstanceGroupManagersPath);
   }
+  
+  public void testListInstanceGroupManagersWOptionsWRetries() throws Throwable {
+    // Enable retries and run testListInstanceGroupManagersWOptions.
+    vpcService.enableRetries(4, 30);
+    testListInstanceGroupManagersWOptions();
+
+    // Disable retries and run testListInstanceGroupManagersWOptions.
+    vpcService.disableRetries();
+    testListInstanceGroupManagersWOptions();
+  }  
 
   // Test the listInstanceGroupManagers operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -6778,6 +7753,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, createInstanceGroupManagerPath);
   }
+  
+  public void testCreateInstanceGroupManagerWOptionsWRetries() throws Throwable {
+    // Enable retries and run testCreateInstanceGroupManagerWOptions.
+    vpcService.enableRetries(4, 30);
+    testCreateInstanceGroupManagerWOptions();
+
+    // Disable retries and run testCreateInstanceGroupManagerWOptions.
+    vpcService.disableRetries();
+    testCreateInstanceGroupManagerWOptions();
+  }  
 
   // Test the createInstanceGroupManager operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -6831,6 +7816,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, deleteInstanceGroupManagerPath);
   }
+  
+  public void testDeleteInstanceGroupManagerWOptionsWRetries() throws Throwable {
+    // Enable retries and run testDeleteInstanceGroupManagerWOptions.
+    vpcService.enableRetries(4, 30);
+    testDeleteInstanceGroupManagerWOptions();
+
+    // Disable retries and run testDeleteInstanceGroupManagerWOptions.
+    vpcService.disableRetries();
+    testDeleteInstanceGroupManagerWOptions();
+  }  
 
   // Test the deleteInstanceGroupManager operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -6884,6 +7879,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, getInstanceGroupManagerPath);
   }
+  
+  public void testGetInstanceGroupManagerWOptionsWRetries() throws Throwable {
+    // Enable retries and run testGetInstanceGroupManagerWOptions.
+    vpcService.enableRetries(4, 30);
+    testGetInstanceGroupManagerWOptions();
+
+    // Disable retries and run testGetInstanceGroupManagerWOptions.
+    vpcService.disableRetries();
+    testGetInstanceGroupManagerWOptions();
+  }  
 
   // Test the getInstanceGroupManager operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -6949,6 +7954,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, updateInstanceGroupManagerPath);
   }
+  
+  public void testUpdateInstanceGroupManagerWOptionsWRetries() throws Throwable {
+    // Enable retries and run testUpdateInstanceGroupManagerWOptions.
+    vpcService.enableRetries(4, 30);
+    testUpdateInstanceGroupManagerWOptions();
+
+    // Disable retries and run testUpdateInstanceGroupManagerWOptions.
+    vpcService.disableRetries();
+    testUpdateInstanceGroupManagerWOptions();
+  }  
 
   // Test the updateInstanceGroupManager operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -7006,6 +8021,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, listInstanceGroupManagerActionsPath);
   }
+  
+  public void testListInstanceGroupManagerActionsWOptionsWRetries() throws Throwable {
+    // Enable retries and run testListInstanceGroupManagerActionsWOptions.
+    vpcService.enableRetries(4, 30);
+    testListInstanceGroupManagerActionsWOptions();
+
+    // Disable retries and run testListInstanceGroupManagerActionsWOptions.
+    vpcService.disableRetries();
+    testListInstanceGroupManagerActionsWOptions();
+  }  
 
   // Test the listInstanceGroupManagerActions operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -7072,6 +8097,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, createInstanceGroupManagerActionPath);
   }
+  
+  public void testCreateInstanceGroupManagerActionWOptionsWRetries() throws Throwable {
+    // Enable retries and run testCreateInstanceGroupManagerActionWOptions.
+    vpcService.enableRetries(4, 30);
+    testCreateInstanceGroupManagerActionWOptions();
+
+    // Disable retries and run testCreateInstanceGroupManagerActionWOptions.
+    vpcService.disableRetries();
+    testCreateInstanceGroupManagerActionWOptions();
+  }  
 
   // Test the createInstanceGroupManagerAction operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -7126,6 +8161,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, deleteInstanceGroupManagerActionPath);
   }
+  
+  public void testDeleteInstanceGroupManagerActionWOptionsWRetries() throws Throwable {
+    // Enable retries and run testDeleteInstanceGroupManagerActionWOptions.
+    vpcService.enableRetries(4, 30);
+    testDeleteInstanceGroupManagerActionWOptions();
+
+    // Disable retries and run testDeleteInstanceGroupManagerActionWOptions.
+    vpcService.disableRetries();
+    testDeleteInstanceGroupManagerActionWOptions();
+  }  
 
   // Test the deleteInstanceGroupManagerAction operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -7180,6 +8225,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, getInstanceGroupManagerActionPath);
   }
+  
+  public void testGetInstanceGroupManagerActionWOptionsWRetries() throws Throwable {
+    // Enable retries and run testGetInstanceGroupManagerActionWOptions.
+    vpcService.enableRetries(4, 30);
+    testGetInstanceGroupManagerActionWOptions();
+
+    // Disable retries and run testGetInstanceGroupManagerActionWOptions.
+    vpcService.disableRetries();
+    testGetInstanceGroupManagerActionWOptions();
+  }  
 
   // Test the getInstanceGroupManagerAction operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -7256,6 +8311,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, updateInstanceGroupManagerActionPath);
   }
+  
+  public void testUpdateInstanceGroupManagerActionWOptionsWRetries() throws Throwable {
+    // Enable retries and run testUpdateInstanceGroupManagerActionWOptions.
+    vpcService.enableRetries(4, 30);
+    testUpdateInstanceGroupManagerActionWOptions();
+
+    // Disable retries and run testUpdateInstanceGroupManagerActionWOptions.
+    vpcService.disableRetries();
+    testUpdateInstanceGroupManagerActionWOptions();
+  }  
 
   // Test the updateInstanceGroupManagerAction operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -7313,6 +8378,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, listInstanceGroupManagerPoliciesPath);
   }
+  
+  public void testListInstanceGroupManagerPoliciesWOptionsWRetries() throws Throwable {
+    // Enable retries and run testListInstanceGroupManagerPoliciesWOptions.
+    vpcService.enableRetries(4, 30);
+    testListInstanceGroupManagerPoliciesWOptions();
+
+    // Disable retries and run testListInstanceGroupManagerPoliciesWOptions.
+    vpcService.disableRetries();
+    testListInstanceGroupManagerPoliciesWOptions();
+  }  
 
   // Test the listInstanceGroupManagerPolicies operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -7375,6 +8450,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, createInstanceGroupManagerPolicyPath);
   }
+  
+  public void testCreateInstanceGroupManagerPolicyWOptionsWRetries() throws Throwable {
+    // Enable retries and run testCreateInstanceGroupManagerPolicyWOptions.
+    vpcService.enableRetries(4, 30);
+    testCreateInstanceGroupManagerPolicyWOptions();
+
+    // Disable retries and run testCreateInstanceGroupManagerPolicyWOptions.
+    vpcService.disableRetries();
+    testCreateInstanceGroupManagerPolicyWOptions();
+  }  
 
   // Test the createInstanceGroupManagerPolicy operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -7429,6 +8514,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, deleteInstanceGroupManagerPolicyPath);
   }
+  
+  public void testDeleteInstanceGroupManagerPolicyWOptionsWRetries() throws Throwable {
+    // Enable retries and run testDeleteInstanceGroupManagerPolicyWOptions.
+    vpcService.enableRetries(4, 30);
+    testDeleteInstanceGroupManagerPolicyWOptions();
+
+    // Disable retries and run testDeleteInstanceGroupManagerPolicyWOptions.
+    vpcService.disableRetries();
+    testDeleteInstanceGroupManagerPolicyWOptions();
+  }  
 
   // Test the deleteInstanceGroupManagerPolicy operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -7483,6 +8578,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, getInstanceGroupManagerPolicyPath);
   }
+  
+  public void testGetInstanceGroupManagerPolicyWOptionsWRetries() throws Throwable {
+    // Enable retries and run testGetInstanceGroupManagerPolicyWOptions.
+    vpcService.enableRetries(4, 30);
+    testGetInstanceGroupManagerPolicyWOptions();
+
+    // Disable retries and run testGetInstanceGroupManagerPolicyWOptions.
+    vpcService.disableRetries();
+    testGetInstanceGroupManagerPolicyWOptions();
+  }  
 
   // Test the getInstanceGroupManagerPolicy operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -7546,6 +8651,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, updateInstanceGroupManagerPolicyPath);
   }
+  
+  public void testUpdateInstanceGroupManagerPolicyWOptionsWRetries() throws Throwable {
+    // Enable retries and run testUpdateInstanceGroupManagerPolicyWOptions.
+    vpcService.enableRetries(4, 30);
+    testUpdateInstanceGroupManagerPolicyWOptions();
+
+    // Disable retries and run testUpdateInstanceGroupManagerPolicyWOptions.
+    vpcService.disableRetries();
+    testUpdateInstanceGroupManagerPolicyWOptions();
+  }  
 
   // Test the updateInstanceGroupManagerPolicy operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -7598,6 +8713,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, deleteInstanceGroupMembershipsPath);
   }
+  
+  public void testDeleteInstanceGroupMembershipsWOptionsWRetries() throws Throwable {
+    // Enable retries and run testDeleteInstanceGroupMembershipsWOptions.
+    vpcService.enableRetries(4, 30);
+    testDeleteInstanceGroupMembershipsWOptions();
+
+    // Disable retries and run testDeleteInstanceGroupMembershipsWOptions.
+    vpcService.disableRetries();
+    testDeleteInstanceGroupMembershipsWOptions();
+  }  
 
   // Test the deleteInstanceGroupMemberships operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -7654,6 +8779,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, listInstanceGroupMembershipsPath);
   }
+  
+  public void testListInstanceGroupMembershipsWOptionsWRetries() throws Throwable {
+    // Enable retries and run testListInstanceGroupMembershipsWOptions.
+    vpcService.enableRetries(4, 30);
+    testListInstanceGroupMembershipsWOptions();
+
+    // Disable retries and run testListInstanceGroupMembershipsWOptions.
+    vpcService.disableRetries();
+    testListInstanceGroupMembershipsWOptions();
+  }  
 
   // Test the listInstanceGroupMemberships operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -7707,6 +8842,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, deleteInstanceGroupMembershipPath);
   }
+  
+  public void testDeleteInstanceGroupMembershipWOptionsWRetries() throws Throwable {
+    // Enable retries and run testDeleteInstanceGroupMembershipWOptions.
+    vpcService.enableRetries(4, 30);
+    testDeleteInstanceGroupMembershipWOptions();
+
+    // Disable retries and run testDeleteInstanceGroupMembershipWOptions.
+    vpcService.disableRetries();
+    testDeleteInstanceGroupMembershipWOptions();
+  }  
 
   // Test the deleteInstanceGroupMembership operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -7760,6 +8905,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, getInstanceGroupMembershipPath);
   }
+  
+  public void testGetInstanceGroupMembershipWOptionsWRetries() throws Throwable {
+    // Enable retries and run testGetInstanceGroupMembershipWOptions.
+    vpcService.enableRetries(4, 30);
+    testGetInstanceGroupMembershipWOptions();
+
+    // Disable retries and run testGetInstanceGroupMembershipWOptions.
+    vpcService.disableRetries();
+    testGetInstanceGroupMembershipWOptions();
+  }  
 
   // Test the getInstanceGroupMembership operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -7820,6 +8975,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, updateInstanceGroupMembershipPath);
   }
+  
+  public void testUpdateInstanceGroupMembershipWOptionsWRetries() throws Throwable {
+    // Enable retries and run testUpdateInstanceGroupMembershipWOptions.
+    vpcService.enableRetries(4, 30);
+    testUpdateInstanceGroupMembershipWOptions();
+
+    // Disable retries and run testUpdateInstanceGroupMembershipWOptions.
+    vpcService.disableRetries();
+    testUpdateInstanceGroupMembershipWOptions();
+  }  
 
   // Test the updateInstanceGroupMembership operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -7879,6 +9044,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, listDedicatedHostGroupsPath);
   }
+  
+  public void testListDedicatedHostGroupsWOptionsWRetries() throws Throwable {
+    // Enable retries and run testListDedicatedHostGroupsWOptions.
+    vpcService.enableRetries(4, 30);
+    testListDedicatedHostGroupsWOptions();
+
+    // Disable retries and run testListDedicatedHostGroupsWOptions.
+    vpcService.disableRetries();
+    testListDedicatedHostGroupsWOptions();
+  }  
 
   @Test
   public void testCreateDedicatedHostGroupWOptions() throws Throwable {
@@ -7933,6 +9108,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, createDedicatedHostGroupPath);
   }
+  
+  public void testCreateDedicatedHostGroupWOptionsWRetries() throws Throwable {
+    // Enable retries and run testCreateDedicatedHostGroupWOptions.
+    vpcService.enableRetries(4, 30);
+    testCreateDedicatedHostGroupWOptions();
+
+    // Disable retries and run testCreateDedicatedHostGroupWOptions.
+    vpcService.disableRetries();
+    testCreateDedicatedHostGroupWOptions();
+  }  
 
   @Test
   public void testDeleteDedicatedHostGroupWOptions() throws Throwable {
@@ -7973,6 +9158,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, deleteDedicatedHostGroupPath);
   }
+  
+  public void testDeleteDedicatedHostGroupWOptionsWRetries() throws Throwable {
+    // Enable retries and run testDeleteDedicatedHostGroupWOptions.
+    vpcService.enableRetries(4, 30);
+    testDeleteDedicatedHostGroupWOptions();
+
+    // Disable retries and run testDeleteDedicatedHostGroupWOptions.
+    vpcService.disableRetries();
+    testDeleteDedicatedHostGroupWOptions();
+  }  
 
   // Test the deleteDedicatedHostGroup operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -8025,6 +9220,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, getDedicatedHostGroupPath);
   }
+  
+  public void testGetDedicatedHostGroupWOptionsWRetries() throws Throwable {
+    // Enable retries and run testGetDedicatedHostGroupWOptions.
+    vpcService.enableRetries(4, 30);
+    testGetDedicatedHostGroupWOptions();
+
+    // Disable retries and run testGetDedicatedHostGroupWOptions.
+    vpcService.disableRetries();
+    testGetDedicatedHostGroupWOptions();
+  }  
 
   // Test the getDedicatedHostGroup operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -8084,6 +9289,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, updateDedicatedHostGroupPath);
   }
+  
+  public void testUpdateDedicatedHostGroupWOptionsWRetries() throws Throwable {
+    // Enable retries and run testUpdateDedicatedHostGroupWOptions.
+    vpcService.enableRetries(4, 30);
+    testUpdateDedicatedHostGroupWOptions();
+
+    // Disable retries and run testUpdateDedicatedHostGroupWOptions.
+    vpcService.disableRetries();
+    testUpdateDedicatedHostGroupWOptions();
+  }  
 
   // Test the updateDedicatedHostGroup operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -8139,6 +9354,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, listDedicatedHostProfilesPath);
   }
+  
+  public void testListDedicatedHostProfilesWOptionsWRetries() throws Throwable {
+    // Enable retries and run testListDedicatedHostProfilesWOptions.
+    vpcService.enableRetries(4, 30);
+    testListDedicatedHostProfilesWOptions();
+
+    // Disable retries and run testListDedicatedHostProfilesWOptions.
+    vpcService.disableRetries();
+    testListDedicatedHostProfilesWOptions();
+  }  
 
   @Test
   public void testGetDedicatedHostProfileWOptions() throws Throwable {
@@ -8179,6 +9404,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, getDedicatedHostProfilePath);
   }
+  
+  public void testGetDedicatedHostProfileWOptionsWRetries() throws Throwable {
+    // Enable retries and run testGetDedicatedHostProfileWOptions.
+    vpcService.enableRetries(4, 30);
+    testGetDedicatedHostProfileWOptions();
+
+    // Disable retries and run testGetDedicatedHostProfileWOptions.
+    vpcService.disableRetries();
+    testGetDedicatedHostProfileWOptions();
+  }  
 
   // Test the getDedicatedHostProfile operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -8240,6 +9475,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, listDedicatedHostsPath);
   }
+  
+  public void testListDedicatedHostsWOptionsWRetries() throws Throwable {
+    // Enable retries and run testListDedicatedHostsWOptions.
+    vpcService.enableRetries(4, 30);
+    testListDedicatedHostsWOptions();
+
+    // Disable retries and run testListDedicatedHostsWOptions.
+    vpcService.disableRetries();
+    testListDedicatedHostsWOptions();
+  }  
 
   @Test
   public void testCreateDedicatedHostWOptions() throws Throwable {
@@ -8304,6 +9549,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, createDedicatedHostPath);
   }
+  
+  public void testCreateDedicatedHostWOptionsWRetries() throws Throwable {
+    // Enable retries and run testCreateDedicatedHostWOptions.
+    vpcService.enableRetries(4, 30);
+    testCreateDedicatedHostWOptions();
+
+    // Disable retries and run testCreateDedicatedHostWOptions.
+    vpcService.disableRetries();
+    testCreateDedicatedHostWOptions();
+  }  
 
   // Test the createDedicatedHost operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -8356,6 +9611,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, listDedicatedHostDisksPath);
   }
+  
+  public void testListDedicatedHostDisksWOptionsWRetries() throws Throwable {
+    // Enable retries and run testListDedicatedHostDisksWOptions.
+    vpcService.enableRetries(4, 30);
+    testListDedicatedHostDisksWOptions();
+
+    // Disable retries and run testListDedicatedHostDisksWOptions.
+    vpcService.disableRetries();
+    testListDedicatedHostDisksWOptions();
+  }  
 
   // Test the listDedicatedHostDisks operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -8409,6 +9674,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, getDedicatedHostDiskPath);
   }
+  
+  public void testGetDedicatedHostDiskWOptionsWRetries() throws Throwable {
+    // Enable retries and run testGetDedicatedHostDiskWOptions.
+    vpcService.enableRetries(4, 30);
+    testGetDedicatedHostDiskWOptions();
+
+    // Disable retries and run testGetDedicatedHostDiskWOptions.
+    vpcService.disableRetries();
+    testGetDedicatedHostDiskWOptions();
+  }  
 
   // Test the getDedicatedHostDisk operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -8469,6 +9744,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, updateDedicatedHostDiskPath);
   }
+  
+  public void testUpdateDedicatedHostDiskWOptionsWRetries() throws Throwable {
+    // Enable retries and run testUpdateDedicatedHostDiskWOptions.
+    vpcService.enableRetries(4, 30);
+    testUpdateDedicatedHostDiskWOptions();
+
+    // Disable retries and run testUpdateDedicatedHostDiskWOptions.
+    vpcService.disableRetries();
+    testUpdateDedicatedHostDiskWOptions();
+  }  
 
   // Test the updateDedicatedHostDisk operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -8521,6 +9806,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, deleteDedicatedHostPath);
   }
+  
+  public void testDeleteDedicatedHostWOptionsWRetries() throws Throwable {
+    // Enable retries and run testDeleteDedicatedHostWOptions.
+    vpcService.enableRetries(4, 30);
+    testDeleteDedicatedHostWOptions();
+
+    // Disable retries and run testDeleteDedicatedHostWOptions.
+    vpcService.disableRetries();
+    testDeleteDedicatedHostWOptions();
+  }  
 
   // Test the deleteDedicatedHost operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -8573,6 +9868,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, getDedicatedHostPath);
   }
+  
+  public void testGetDedicatedHostWOptionsWRetries() throws Throwable {
+    // Enable retries and run testGetDedicatedHostWOptions.
+    vpcService.enableRetries(4, 30);
+    testGetDedicatedHostWOptions();
+
+    // Disable retries and run testGetDedicatedHostWOptions.
+    vpcService.disableRetries();
+    testGetDedicatedHostWOptions();
+  }  
 
   // Test the getDedicatedHost operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -8633,6 +9938,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, updateDedicatedHostPath);
   }
+  
+  public void testUpdateDedicatedHostWOptionsWRetries() throws Throwable {
+    // Enable retries and run testUpdateDedicatedHostWOptions.
+    vpcService.enableRetries(4, 30);
+    testUpdateDedicatedHostWOptions();
+
+    // Disable retries and run testUpdateDedicatedHostWOptions.
+    vpcService.disableRetries();
+    testUpdateDedicatedHostWOptions();
+  }  
 
   // Test the updateDedicatedHost operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -8688,6 +10003,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, listPlacementGroupsPath);
   }
+  
+  public void testListPlacementGroupsWOptionsWRetries() throws Throwable {
+    // Enable retries and run testListPlacementGroupsWOptions.
+    vpcService.enableRetries(4, 30);
+    testListPlacementGroupsWOptions();
+
+    // Disable retries and run testListPlacementGroupsWOptions.
+    vpcService.disableRetries();
+    testListPlacementGroupsWOptions();
+  }  
 
   @Test
   public void testCreatePlacementGroupWOptions() throws Throwable {
@@ -8735,6 +10060,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, createPlacementGroupPath);
   }
+  
+  public void testCreatePlacementGroupWOptionsWRetries() throws Throwable {
+    // Enable retries and run testCreatePlacementGroupWOptions.
+    vpcService.enableRetries(4, 30);
+    testCreatePlacementGroupWOptions();
+
+    // Disable retries and run testCreatePlacementGroupWOptions.
+    vpcService.disableRetries();
+    testCreatePlacementGroupWOptions();
+  }  
 
   // Test the createPlacementGroup operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -8787,6 +10122,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, deletePlacementGroupPath);
   }
+  
+  public void testDeletePlacementGroupWOptionsWRetries() throws Throwable {
+    // Enable retries and run testDeletePlacementGroupWOptions.
+    vpcService.enableRetries(4, 30);
+    testDeletePlacementGroupWOptions();
+
+    // Disable retries and run testDeletePlacementGroupWOptions.
+    vpcService.disableRetries();
+    testDeletePlacementGroupWOptions();
+  }  
 
   // Test the deletePlacementGroup operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -8839,6 +10184,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, getPlacementGroupPath);
   }
+  
+  public void testGetPlacementGroupWOptionsWRetries() throws Throwable {
+    // Enable retries and run testGetPlacementGroupWOptions.
+    vpcService.enableRetries(4, 30);
+    testGetPlacementGroupWOptions();
+
+    // Disable retries and run testGetPlacementGroupWOptions.
+    vpcService.disableRetries();
+    testGetPlacementGroupWOptions();
+  }  
 
   // Test the getPlacementGroup operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -8898,6 +10253,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, updatePlacementGroupPath);
   }
+  
+  public void testUpdatePlacementGroupWOptionsWRetries() throws Throwable {
+    // Enable retries and run testUpdatePlacementGroupWOptions.
+    vpcService.enableRetries(4, 30);
+    testUpdatePlacementGroupWOptions();
+
+    // Disable retries and run testUpdatePlacementGroupWOptions.
+    vpcService.disableRetries();
+    testUpdatePlacementGroupWOptions();
+  }  
 
   // Test the updatePlacementGroup operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -8953,6 +10318,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, listVolumeProfilesPath);
   }
+  
+  public void testListVolumeProfilesWOptionsWRetries() throws Throwable {
+    // Enable retries and run testListVolumeProfilesWOptions.
+    vpcService.enableRetries(4, 30);
+    testListVolumeProfilesWOptions();
+
+    // Disable retries and run testListVolumeProfilesWOptions.
+    vpcService.disableRetries();
+    testListVolumeProfilesWOptions();
+  }  
 
   @Test
   public void testGetVolumeProfileWOptions() throws Throwable {
@@ -8993,6 +10368,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, getVolumeProfilePath);
   }
+  
+  public void testGetVolumeProfileWOptionsWRetries() throws Throwable {
+    // Enable retries and run testGetVolumeProfileWOptions.
+    vpcService.enableRetries(4, 30);
+    testGetVolumeProfileWOptions();
+
+    // Disable retries and run testGetVolumeProfileWOptions.
+    vpcService.disableRetries();
+    testGetVolumeProfileWOptions();
+  }  
 
   // Test the getVolumeProfile operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -9052,6 +10437,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, listVolumesPath);
   }
+  
+  public void testListVolumesWOptionsWRetries() throws Throwable {
+    // Enable retries and run testListVolumesWOptions.
+    vpcService.enableRetries(4, 30);
+    testListVolumesWOptions();
+
+    // Disable retries and run testListVolumesWOptions.
+    vpcService.disableRetries();
+    testListVolumesWOptions();
+  }  
 
   @Test
   public void testCreateVolumeWOptions() throws Throwable {
@@ -9123,6 +10518,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, createVolumePath);
   }
+  
+  public void testCreateVolumeWOptionsWRetries() throws Throwable {
+    // Enable retries and run testCreateVolumeWOptions.
+    vpcService.enableRetries(4, 30);
+    testCreateVolumeWOptions();
+
+    // Disable retries and run testCreateVolumeWOptions.
+    vpcService.disableRetries();
+    testCreateVolumeWOptions();
+  }  
 
   // Test the createVolume operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -9175,6 +10580,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, deleteVolumePath);
   }
+  
+  public void testDeleteVolumeWOptionsWRetries() throws Throwable {
+    // Enable retries and run testDeleteVolumeWOptions.
+    vpcService.enableRetries(4, 30);
+    testDeleteVolumeWOptions();
+
+    // Disable retries and run testDeleteVolumeWOptions.
+    vpcService.disableRetries();
+    testDeleteVolumeWOptions();
+  }  
 
   // Test the deleteVolume operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -9227,6 +10642,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, getVolumePath);
   }
+  
+  public void testGetVolumeWOptionsWRetries() throws Throwable {
+    // Enable retries and run testGetVolumeWOptions.
+    vpcService.enableRetries(4, 30);
+    testGetVolumeWOptions();
+
+    // Disable retries and run testGetVolumeWOptions.
+    vpcService.disableRetries();
+    testGetVolumeWOptions();
+  }  
 
   // Test the getVolume operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -9294,6 +10719,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, updateVolumePath);
   }
+  
+  public void testUpdateVolumeWOptionsWRetries() throws Throwable {
+    // Enable retries and run testUpdateVolumeWOptions.
+    vpcService.enableRetries(4, 30);
+    testUpdateVolumeWOptions();
+
+    // Disable retries and run testUpdateVolumeWOptions.
+    vpcService.disableRetries();
+    testUpdateVolumeWOptions();
+  }  
 
   // Test the updateVolume operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -9347,6 +10782,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, deleteSnapshotsPath);
   }
+  
+  public void testDeleteSnapshotsWOptionsWRetries() throws Throwable {
+    // Enable retries and run testDeleteSnapshotsWOptions.
+    vpcService.enableRetries(4, 30);
+    testDeleteSnapshotsWOptions();
+
+    // Disable retries and run testDeleteSnapshotsWOptions.
+    vpcService.disableRetries();
+    testDeleteSnapshotsWOptions();
+  }  
 
   // Test the deleteSnapshots operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -9416,6 +10861,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, listSnapshotsPath);
   }
+  
+  public void testListSnapshotsWOptionsWRetries() throws Throwable {
+    // Enable retries and run testListSnapshotsWOptions.
+    vpcService.enableRetries(4, 30);
+    testListSnapshotsWOptions();
+
+    // Disable retries and run testListSnapshotsWOptions.
+    vpcService.disableRetries();
+    testListSnapshotsWOptions();
+  }  
 
   @Test
   public void testCreateSnapshotWOptions() throws Throwable {
@@ -9468,6 +10923,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, createSnapshotPath);
   }
+  
+  public void testCreateSnapshotWOptionsWRetries() throws Throwable {
+    // Enable retries and run testCreateSnapshotWOptions.
+    vpcService.enableRetries(4, 30);
+    testCreateSnapshotWOptions();
+
+    // Disable retries and run testCreateSnapshotWOptions.
+    vpcService.disableRetries();
+    testCreateSnapshotWOptions();
+  }  
 
   // Test the createSnapshot operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -9520,6 +10985,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, deleteSnapshotPath);
   }
+  
+  public void testDeleteSnapshotWOptionsWRetries() throws Throwable {
+    // Enable retries and run testDeleteSnapshotWOptions.
+    vpcService.enableRetries(4, 30);
+    testDeleteSnapshotWOptions();
+
+    // Disable retries and run testDeleteSnapshotWOptions.
+    vpcService.disableRetries();
+    testDeleteSnapshotWOptions();
+  }  
 
   // Test the deleteSnapshot operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -9572,6 +11047,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, getSnapshotPath);
   }
+  
+  public void testGetSnapshotWOptionsWRetries() throws Throwable {
+    // Enable retries and run testGetSnapshotWOptions.
+    vpcService.enableRetries(4, 30);
+    testGetSnapshotWOptions();
+
+    // Disable retries and run testGetSnapshotWOptions.
+    vpcService.disableRetries();
+    testGetSnapshotWOptions();
+  }  
 
   // Test the getSnapshot operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -9631,6 +11116,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, updateSnapshotPath);
   }
+  
+  public void testUpdateSnapshotWOptionsWRetries() throws Throwable {
+    // Enable retries and run testUpdateSnapshotWOptions.
+    vpcService.enableRetries(4, 30);
+    testUpdateSnapshotWOptions();
+
+    // Disable retries and run testUpdateSnapshotWOptions.
+    vpcService.disableRetries();
+    testUpdateSnapshotWOptions();
+  }  
 
   // Test the updateSnapshot operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -9681,6 +11176,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, listRegionsPath);
   }
+  
+  public void testListRegionsWOptionsWRetries() throws Throwable {
+    // Enable retries and run testListRegionsWOptions.
+    vpcService.enableRetries(4, 30);
+    testListRegionsWOptions();
+
+    // Disable retries and run testListRegionsWOptions.
+    vpcService.disableRetries();
+    testListRegionsWOptions();
+  }  
 
   @Test
   public void testGetRegionWOptions() throws Throwable {
@@ -9721,6 +11226,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, getRegionPath);
   }
+  
+  public void testGetRegionWOptionsWRetries() throws Throwable {
+    // Enable retries and run testGetRegionWOptions.
+    vpcService.enableRetries(4, 30);
+    testGetRegionWOptions();
+
+    // Disable retries and run testGetRegionWOptions.
+    vpcService.disableRetries();
+    testGetRegionWOptions();
+  }  
 
   // Test the getRegion operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -9773,6 +11288,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, listRegionZonesPath);
   }
+  
+  public void testListRegionZonesWOptionsWRetries() throws Throwable {
+    // Enable retries and run testListRegionZonesWOptions.
+    vpcService.enableRetries(4, 30);
+    testListRegionZonesWOptions();
+
+    // Disable retries and run testListRegionZonesWOptions.
+    vpcService.disableRetries();
+    testListRegionZonesWOptions();
+  }  
 
   // Test the listRegionZones operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -9826,6 +11351,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, getRegionZonePath);
   }
+  
+  public void testGetRegionZoneWOptionsWRetries() throws Throwable {
+    // Enable retries and run testGetRegionZoneWOptions.
+    vpcService.enableRetries(4, 30);
+    testGetRegionZoneWOptions();
+
+    // Disable retries and run testGetRegionZoneWOptions.
+    vpcService.disableRetries();
+    testGetRegionZoneWOptions();
+  }  
 
   // Test the getRegionZone operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -9883,6 +11418,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, listPublicGatewaysPath);
   }
+  
+  public void testListPublicGatewaysWOptionsWRetries() throws Throwable {
+    // Enable retries and run testListPublicGatewaysWOptions.
+    vpcService.enableRetries(4, 30);
+    testListPublicGatewaysWOptions();
+
+    // Disable retries and run testListPublicGatewaysWOptions.
+    vpcService.disableRetries();
+    testListPublicGatewaysWOptions();
+  }  
 
   @Test
   public void testCreatePublicGatewayWOptions() throws Throwable {
@@ -9947,6 +11492,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, createPublicGatewayPath);
   }
+  
+  public void testCreatePublicGatewayWOptionsWRetries() throws Throwable {
+    // Enable retries and run testCreatePublicGatewayWOptions.
+    vpcService.enableRetries(4, 30);
+    testCreatePublicGatewayWOptions();
+
+    // Disable retries and run testCreatePublicGatewayWOptions.
+    vpcService.disableRetries();
+    testCreatePublicGatewayWOptions();
+  }  
 
   // Test the createPublicGateway operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -9999,6 +11554,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, deletePublicGatewayPath);
   }
+  
+  public void testDeletePublicGatewayWOptionsWRetries() throws Throwable {
+    // Enable retries and run testDeletePublicGatewayWOptions.
+    vpcService.enableRetries(4, 30);
+    testDeletePublicGatewayWOptions();
+
+    // Disable retries and run testDeletePublicGatewayWOptions.
+    vpcService.disableRetries();
+    testDeletePublicGatewayWOptions();
+  }  
 
   // Test the deletePublicGateway operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -10051,6 +11616,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, getPublicGatewayPath);
   }
+  
+  public void testGetPublicGatewayWOptionsWRetries() throws Throwable {
+    // Enable retries and run testGetPublicGatewayWOptions.
+    vpcService.enableRetries(4, 30);
+    testGetPublicGatewayWOptions();
+
+    // Disable retries and run testGetPublicGatewayWOptions.
+    vpcService.disableRetries();
+    testGetPublicGatewayWOptions();
+  }  
 
   // Test the getPublicGateway operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -10110,6 +11685,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, updatePublicGatewayPath);
   }
+  
+  public void testUpdatePublicGatewayWOptionsWRetries() throws Throwable {
+    // Enable retries and run testUpdatePublicGatewayWOptions.
+    vpcService.enableRetries(4, 30);
+    testUpdatePublicGatewayWOptions();
+
+    // Disable retries and run testUpdatePublicGatewayWOptions.
+    vpcService.disableRetries();
+    testUpdatePublicGatewayWOptions();
+  }  
 
   // Test the updatePublicGateway operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -10167,6 +11752,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, listFloatingIpsPath);
   }
+  
+  public void testListFloatingIpsWOptionsWRetries() throws Throwable {
+    // Enable retries and run testListFloatingIpsWOptions.
+    vpcService.enableRetries(4, 30);
+    testListFloatingIpsWOptions();
+
+    // Disable retries and run testListFloatingIpsWOptions.
+    vpcService.disableRetries();
+    testListFloatingIpsWOptions();
+  }  
 
   @Test
   public void testCreateFloatingIpWOptions() throws Throwable {
@@ -10224,6 +11819,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, createFloatingIpPath);
   }
+  
+  public void testCreateFloatingIpWOptionsWRetries() throws Throwable {
+    // Enable retries and run testCreateFloatingIpWOptions.
+    vpcService.enableRetries(4, 30);
+    testCreateFloatingIpWOptions();
+
+    // Disable retries and run testCreateFloatingIpWOptions.
+    vpcService.disableRetries();
+    testCreateFloatingIpWOptions();
+  }  
 
   // Test the createFloatingIp operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -10276,6 +11881,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, deleteFloatingIpPath);
   }
+  
+  public void testDeleteFloatingIpWOptionsWRetries() throws Throwable {
+    // Enable retries and run testDeleteFloatingIpWOptions.
+    vpcService.enableRetries(4, 30);
+    testDeleteFloatingIpWOptions();
+
+    // Disable retries and run testDeleteFloatingIpWOptions.
+    vpcService.disableRetries();
+    testDeleteFloatingIpWOptions();
+  }  
 
   // Test the deleteFloatingIp operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -10328,6 +11943,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, getFloatingIpPath);
   }
+  
+  public void testGetFloatingIpWOptionsWRetries() throws Throwable {
+    // Enable retries and run testGetFloatingIpWOptions.
+    vpcService.enableRetries(4, 30);
+    testGetFloatingIpWOptions();
+
+    // Disable retries and run testGetFloatingIpWOptions.
+    vpcService.disableRetries();
+    testGetFloatingIpWOptions();
+  }  
 
   // Test the getFloatingIp operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -10393,6 +12018,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, updateFloatingIpPath);
   }
+  
+  public void testUpdateFloatingIpWOptionsWRetries() throws Throwable {
+    // Enable retries and run testUpdateFloatingIpWOptions.
+    vpcService.enableRetries(4, 30);
+    testUpdateFloatingIpWOptions();
+
+    // Disable retries and run testUpdateFloatingIpWOptions.
+    vpcService.disableRetries();
+    testUpdateFloatingIpWOptions();
+  }  
 
   // Test the updateFloatingIp operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -10450,6 +12085,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, listNetworkAclsPath);
   }
+  
+  public void testListNetworkAclsWOptionsWRetries() throws Throwable {
+    // Enable retries and run testListNetworkAclsWOptions.
+    vpcService.enableRetries(4, 30);
+    testListNetworkAclsWOptions();
+
+    // Disable retries and run testListNetworkAclsWOptions.
+    vpcService.disableRetries();
+    testListNetworkAclsWOptions();
+  }  
 
   @Test
   public void testCreateNetworkAclWOptions() throws Throwable {
@@ -10522,6 +12167,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, createNetworkAclPath);
   }
+  
+  public void testCreateNetworkAclWOptionsWRetries() throws Throwable {
+    // Enable retries and run testCreateNetworkAclWOptions.
+    vpcService.enableRetries(4, 30);
+    testCreateNetworkAclWOptions();
+
+    // Disable retries and run testCreateNetworkAclWOptions.
+    vpcService.disableRetries();
+    testCreateNetworkAclWOptions();
+  }  
 
   @Test
   public void testDeleteNetworkAclWOptions() throws Throwable {
@@ -10562,6 +12217,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, deleteNetworkAclPath);
   }
+  
+  public void testDeleteNetworkAclWOptionsWRetries() throws Throwable {
+    // Enable retries and run testDeleteNetworkAclWOptions.
+    vpcService.enableRetries(4, 30);
+    testDeleteNetworkAclWOptions();
+
+    // Disable retries and run testDeleteNetworkAclWOptions.
+    vpcService.disableRetries();
+    testDeleteNetworkAclWOptions();
+  }  
 
   // Test the deleteNetworkAcl operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -10614,6 +12279,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, getNetworkAclPath);
   }
+  
+  public void testGetNetworkAclWOptionsWRetries() throws Throwable {
+    // Enable retries and run testGetNetworkAclWOptions.
+    vpcService.enableRetries(4, 30);
+    testGetNetworkAclWOptions();
+
+    // Disable retries and run testGetNetworkAclWOptions.
+    vpcService.disableRetries();
+    testGetNetworkAclWOptions();
+  }  
 
   // Test the getNetworkAcl operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -10673,6 +12348,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, updateNetworkAclPath);
   }
+  
+  public void testUpdateNetworkAclWOptionsWRetries() throws Throwable {
+    // Enable retries and run testUpdateNetworkAclWOptions.
+    vpcService.enableRetries(4, 30);
+    testUpdateNetworkAclWOptions();
+
+    // Disable retries and run testUpdateNetworkAclWOptions.
+    vpcService.disableRetries();
+    testUpdateNetworkAclWOptions();
+  }  
 
   // Test the updateNetworkAcl operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -10731,6 +12416,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, listNetworkAclRulesPath);
   }
+  
+  public void testListNetworkAclRulesWOptionsWRetries() throws Throwable {
+    // Enable retries and run testListNetworkAclRulesWOptions.
+    vpcService.enableRetries(4, 30);
+    testListNetworkAclRulesWOptions();
+
+    // Disable retries and run testListNetworkAclRulesWOptions.
+    vpcService.disableRetries();
+    testListNetworkAclRulesWOptions();
+  }  
 
   // Test the listNetworkAclRules operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -10802,6 +12497,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, createNetworkAclRulePath);
   }
+  
+  public void testCreateNetworkAclRuleWOptionsWRetries() throws Throwable {
+    // Enable retries and run testCreateNetworkAclRuleWOptions.
+    vpcService.enableRetries(4, 30);
+    testCreateNetworkAclRuleWOptions();
+
+    // Disable retries and run testCreateNetworkAclRuleWOptions.
+    vpcService.disableRetries();
+    testCreateNetworkAclRuleWOptions();
+  }  
 
   // Test the createNetworkAclRule operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -10855,6 +12560,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, deleteNetworkAclRulePath);
   }
+  
+  public void testDeleteNetworkAclRuleWOptionsWRetries() throws Throwable {
+    // Enable retries and run testDeleteNetworkAclRuleWOptions.
+    vpcService.enableRetries(4, 30);
+    testDeleteNetworkAclRuleWOptions();
+
+    // Disable retries and run testDeleteNetworkAclRuleWOptions.
+    vpcService.disableRetries();
+    testDeleteNetworkAclRuleWOptions();
+  }  
 
   // Test the deleteNetworkAclRule operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -10908,6 +12623,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, getNetworkAclRulePath);
   }
+  
+  public void testGetNetworkAclRuleWOptionsWRetries() throws Throwable {
+    // Enable retries and run testGetNetworkAclRuleWOptions.
+    vpcService.enableRetries(4, 30);
+    testGetNetworkAclRuleWOptions();
+
+    // Disable retries and run testGetNetworkAclRuleWOptions.
+    vpcService.disableRetries();
+    testGetNetworkAclRuleWOptions();
+  }  
 
   // Test the getNetworkAclRule operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -10984,6 +12709,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, updateNetworkAclRulePath);
   }
+  
+  public void testUpdateNetworkAclRuleWOptionsWRetries() throws Throwable {
+    // Enable retries and run testUpdateNetworkAclRuleWOptions.
+    vpcService.enableRetries(4, 30);
+    testUpdateNetworkAclRuleWOptions();
+
+    // Disable retries and run testUpdateNetworkAclRuleWOptions.
+    vpcService.disableRetries();
+    testUpdateNetworkAclRuleWOptions();
+  }  
 
   // Test the updateNetworkAclRule operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -11047,6 +12782,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, listSecurityGroupsPath);
   }
+  
+  public void testListSecurityGroupsWOptionsWRetries() throws Throwable {
+    // Enable retries and run testListSecurityGroupsWOptions.
+    vpcService.enableRetries(4, 30);
+    testListSecurityGroupsWOptions();
+
+    // Disable retries and run testListSecurityGroupsWOptions.
+    vpcService.disableRetries();
+    testListSecurityGroupsWOptions();
+  }  
 
   @Test
   public void testCreateSecurityGroupWOptions() throws Throwable {
@@ -11115,6 +12860,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, createSecurityGroupPath);
   }
+  
+  public void testCreateSecurityGroupWOptionsWRetries() throws Throwable {
+    // Enable retries and run testCreateSecurityGroupWOptions.
+    vpcService.enableRetries(4, 30);
+    testCreateSecurityGroupWOptions();
+
+    // Disable retries and run testCreateSecurityGroupWOptions.
+    vpcService.disableRetries();
+    testCreateSecurityGroupWOptions();
+  }  
 
   // Test the createSecurityGroup operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -11167,6 +12922,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, deleteSecurityGroupPath);
   }
+  
+  public void testDeleteSecurityGroupWOptionsWRetries() throws Throwable {
+    // Enable retries and run testDeleteSecurityGroupWOptions.
+    vpcService.enableRetries(4, 30);
+    testDeleteSecurityGroupWOptions();
+
+    // Disable retries and run testDeleteSecurityGroupWOptions.
+    vpcService.disableRetries();
+    testDeleteSecurityGroupWOptions();
+  }  
 
   // Test the deleteSecurityGroup operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -11219,6 +12984,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, getSecurityGroupPath);
   }
+  
+  public void testGetSecurityGroupWOptionsWRetries() throws Throwable {
+    // Enable retries and run testGetSecurityGroupWOptions.
+    vpcService.enableRetries(4, 30);
+    testGetSecurityGroupWOptions();
+
+    // Disable retries and run testGetSecurityGroupWOptions.
+    vpcService.disableRetries();
+    testGetSecurityGroupWOptions();
+  }  
 
   // Test the getSecurityGroup operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -11278,6 +13053,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, updateSecurityGroupPath);
   }
+  
+  public void testUpdateSecurityGroupWOptionsWRetries() throws Throwable {
+    // Enable retries and run testUpdateSecurityGroupWOptions.
+    vpcService.enableRetries(4, 30);
+    testUpdateSecurityGroupWOptions();
+
+    // Disable retries and run testUpdateSecurityGroupWOptions.
+    vpcService.disableRetries();
+    testUpdateSecurityGroupWOptions();
+  }  
 
   // Test the updateSecurityGroup operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -11334,6 +13119,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, listSecurityGroupNetworkInterfacesPath);
   }
+  
+  public void testListSecurityGroupNetworkInterfacesWOptionsWRetries() throws Throwable {
+    // Enable retries and run testListSecurityGroupNetworkInterfacesWOptions.
+    vpcService.enableRetries(4, 30);
+    testListSecurityGroupNetworkInterfacesWOptions();
+
+    // Disable retries and run testListSecurityGroupNetworkInterfacesWOptions.
+    vpcService.disableRetries();
+    testListSecurityGroupNetworkInterfacesWOptions();
+  }  
 
   // Test the listSecurityGroupNetworkInterfaces operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -11387,6 +13182,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, removeSecurityGroupNetworkInterfacePath);
   }
+  
+  public void testRemoveSecurityGroupNetworkInterfaceWOptionsWRetries() throws Throwable {
+    // Enable retries and run testRemoveSecurityGroupNetworkInterfaceWOptions.
+    vpcService.enableRetries(4, 30);
+    testRemoveSecurityGroupNetworkInterfaceWOptions();
+
+    // Disable retries and run testRemoveSecurityGroupNetworkInterfaceWOptions.
+    vpcService.disableRetries();
+    testRemoveSecurityGroupNetworkInterfaceWOptions();
+  }  
 
   // Test the removeSecurityGroupNetworkInterface operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -11440,6 +13245,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, getSecurityGroupNetworkInterfacePath);
   }
+  
+  public void testGetSecurityGroupNetworkInterfaceWOptionsWRetries() throws Throwable {
+    // Enable retries and run testGetSecurityGroupNetworkInterfaceWOptions.
+    vpcService.enableRetries(4, 30);
+    testGetSecurityGroupNetworkInterfaceWOptions();
+
+    // Disable retries and run testGetSecurityGroupNetworkInterfaceWOptions.
+    vpcService.disableRetries();
+    testGetSecurityGroupNetworkInterfaceWOptions();
+  }  
 
   // Test the getSecurityGroupNetworkInterface operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -11493,6 +13308,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, addSecurityGroupNetworkInterfacePath);
   }
+  
+  public void testAddSecurityGroupNetworkInterfaceWOptionsWRetries() throws Throwable {
+    // Enable retries and run testAddSecurityGroupNetworkInterfaceWOptions.
+    vpcService.enableRetries(4, 30);
+    testAddSecurityGroupNetworkInterfaceWOptions();
+
+    // Disable retries and run testAddSecurityGroupNetworkInterfaceWOptions.
+    vpcService.disableRetries();
+    testAddSecurityGroupNetworkInterfaceWOptions();
+  }  
 
   // Test the addSecurityGroupNetworkInterface operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -11545,6 +13370,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, listSecurityGroupRulesPath);
   }
+  
+  public void testListSecurityGroupRulesWOptionsWRetries() throws Throwable {
+    // Enable retries and run testListSecurityGroupRulesWOptions.
+    vpcService.enableRetries(4, 30);
+    testListSecurityGroupRulesWOptions();
+
+    // Disable retries and run testListSecurityGroupRulesWOptions.
+    vpcService.disableRetries();
+    testListSecurityGroupRulesWOptions();
+  }  
 
   // Test the listSecurityGroupRules operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -11613,6 +13448,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, createSecurityGroupRulePath);
   }
+  
+  public void testCreateSecurityGroupRuleWOptionsWRetries() throws Throwable {
+    // Enable retries and run testCreateSecurityGroupRuleWOptions.
+    vpcService.enableRetries(4, 30);
+    testCreateSecurityGroupRuleWOptions();
+
+    // Disable retries and run testCreateSecurityGroupRuleWOptions.
+    vpcService.disableRetries();
+    testCreateSecurityGroupRuleWOptions();
+  }  
 
   // Test the createSecurityGroupRule operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -11666,6 +13511,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, deleteSecurityGroupRulePath);
   }
+  
+  public void testDeleteSecurityGroupRuleWOptionsWRetries() throws Throwable {
+    // Enable retries and run testDeleteSecurityGroupRuleWOptions.
+    vpcService.enableRetries(4, 30);
+    testDeleteSecurityGroupRuleWOptions();
+
+    // Disable retries and run testDeleteSecurityGroupRuleWOptions.
+    vpcService.disableRetries();
+    testDeleteSecurityGroupRuleWOptions();
+  }  
 
   // Test the deleteSecurityGroupRule operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -11719,6 +13574,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, getSecurityGroupRulePath);
   }
+  
+  public void testGetSecurityGroupRuleWOptionsWRetries() throws Throwable {
+    // Enable retries and run testGetSecurityGroupRuleWOptions.
+    vpcService.enableRetries(4, 30);
+    testGetSecurityGroupRuleWOptions();
+
+    // Disable retries and run testGetSecurityGroupRuleWOptions.
+    vpcService.disableRetries();
+    testGetSecurityGroupRuleWOptions();
+  }  
 
   // Test the getSecurityGroupRule operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -11790,6 +13655,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, updateSecurityGroupRulePath);
   }
+  
+  public void testUpdateSecurityGroupRuleWOptionsWRetries() throws Throwable {
+    // Enable retries and run testUpdateSecurityGroupRuleWOptions.
+    vpcService.enableRetries(4, 30);
+    testUpdateSecurityGroupRuleWOptions();
+
+    // Disable retries and run testUpdateSecurityGroupRuleWOptions.
+    vpcService.disableRetries();
+    testUpdateSecurityGroupRuleWOptions();
+  }  
 
   // Test the updateSecurityGroupRule operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -11846,6 +13721,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, listSecurityGroupTargetsPath);
   }
+  
+  public void testListSecurityGroupTargetsWOptionsWRetries() throws Throwable {
+    // Enable retries and run testListSecurityGroupTargetsWOptions.
+    vpcService.enableRetries(4, 30);
+    testListSecurityGroupTargetsWOptions();
+
+    // Disable retries and run testListSecurityGroupTargetsWOptions.
+    vpcService.disableRetries();
+    testListSecurityGroupTargetsWOptions();
+  }  
 
   // Test the listSecurityGroupTargets operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -11899,6 +13784,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, deleteSecurityGroupTargetBindingPath);
   }
+  
+  public void testDeleteSecurityGroupTargetBindingWOptionsWRetries() throws Throwable {
+    // Enable retries and run testDeleteSecurityGroupTargetBindingWOptions.
+    vpcService.enableRetries(4, 30);
+    testDeleteSecurityGroupTargetBindingWOptions();
+
+    // Disable retries and run testDeleteSecurityGroupTargetBindingWOptions.
+    vpcService.disableRetries();
+    testDeleteSecurityGroupTargetBindingWOptions();
+  }  
 
   // Test the deleteSecurityGroupTargetBinding operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -11952,6 +13847,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, getSecurityGroupTargetPath);
   }
+  
+  public void testGetSecurityGroupTargetWOptionsWRetries() throws Throwable {
+    // Enable retries and run testGetSecurityGroupTargetWOptions.
+    vpcService.enableRetries(4, 30);
+    testGetSecurityGroupTargetWOptions();
+
+    // Disable retries and run testGetSecurityGroupTargetWOptions.
+    vpcService.disableRetries();
+    testGetSecurityGroupTargetWOptions();
+  }  
 
   // Test the getSecurityGroupTarget operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -12005,6 +13910,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, createSecurityGroupTargetBindingPath);
   }
+  
+  public void testCreateSecurityGroupTargetBindingWOptionsWRetries() throws Throwable {
+    // Enable retries and run testCreateSecurityGroupTargetBindingWOptions.
+    vpcService.enableRetries(4, 30);
+    testCreateSecurityGroupTargetBindingWOptions();
+
+    // Disable retries and run testCreateSecurityGroupTargetBindingWOptions.
+    vpcService.disableRetries();
+    testCreateSecurityGroupTargetBindingWOptions();
+  }  
 
   // Test the createSecurityGroupTargetBinding operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -12060,6 +13975,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, listIkePoliciesPath);
   }
+  
+  public void testListIkePoliciesWOptionsWRetries() throws Throwable {
+    // Enable retries and run testListIkePoliciesWOptions.
+    vpcService.enableRetries(4, 30);
+    testListIkePoliciesWOptions();
+
+    // Disable retries and run testListIkePoliciesWOptions.
+    vpcService.disableRetries();
+    testListIkePoliciesWOptions();
+  }  
 
   @Test
   public void testCreateIkePolicyWOptions() throws Throwable {
@@ -12111,6 +14036,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, createIkePolicyPath);
   }
+  
+  public void testCreateIkePolicyWOptionsWRetries() throws Throwable {
+    // Enable retries and run testCreateIkePolicyWOptions.
+    vpcService.enableRetries(4, 30);
+    testCreateIkePolicyWOptions();
+
+    // Disable retries and run testCreateIkePolicyWOptions.
+    vpcService.disableRetries();
+    testCreateIkePolicyWOptions();
+  }  
 
   // Test the createIkePolicy operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -12163,6 +14098,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, deleteIkePolicyPath);
   }
+  
+  public void testDeleteIkePolicyWOptionsWRetries() throws Throwable {
+    // Enable retries and run testDeleteIkePolicyWOptions.
+    vpcService.enableRetries(4, 30);
+    testDeleteIkePolicyWOptions();
+
+    // Disable retries and run testDeleteIkePolicyWOptions.
+    vpcService.disableRetries();
+    testDeleteIkePolicyWOptions();
+  }  
 
   // Test the deleteIkePolicy operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -12215,6 +14160,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, getIkePolicyPath);
   }
+  
+  public void testGetIkePolicyWOptionsWRetries() throws Throwable {
+    // Enable retries and run testGetIkePolicyWOptions.
+    vpcService.enableRetries(4, 30);
+    testGetIkePolicyWOptions();
+
+    // Disable retries and run testGetIkePolicyWOptions.
+    vpcService.disableRetries();
+    testGetIkePolicyWOptions();
+  }  
 
   // Test the getIkePolicy operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -12279,6 +14234,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, updateIkePolicyPath);
   }
+  
+  public void testUpdateIkePolicyWOptionsWRetries() throws Throwable {
+    // Enable retries and run testUpdateIkePolicyWOptions.
+    vpcService.enableRetries(4, 30);
+    testUpdateIkePolicyWOptions();
+
+    // Disable retries and run testUpdateIkePolicyWOptions.
+    vpcService.disableRetries();
+    testUpdateIkePolicyWOptions();
+  }  
 
   // Test the updateIkePolicy operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -12331,6 +14296,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, listIkePolicyConnectionsPath);
   }
+  
+  public void testListIkePolicyConnectionsWOptionsWRetries() throws Throwable {
+    // Enable retries and run testListIkePolicyConnectionsWOptions.
+    vpcService.enableRetries(4, 30);
+    testListIkePolicyConnectionsWOptions();
+
+    // Disable retries and run testListIkePolicyConnectionsWOptions.
+    vpcService.disableRetries();
+    testListIkePolicyConnectionsWOptions();
+  }  
 
   // Test the listIkePolicyConnections operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -12386,6 +14361,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, listIpsecPoliciesPath);
   }
+  
+  public void testListIpsecPoliciesWOptionsWRetries() throws Throwable {
+    // Enable retries and run testListIpsecPoliciesWOptions.
+    vpcService.enableRetries(4, 30);
+    testListIpsecPoliciesWOptions();
+
+    // Disable retries and run testListIpsecPoliciesWOptions.
+    vpcService.disableRetries();
+    testListIpsecPoliciesWOptions();
+  }  
 
   @Test
   public void testCreateIpsecPolicyWOptions() throws Throwable {
@@ -12436,6 +14421,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, createIpsecPolicyPath);
   }
+  
+  public void testCreateIpsecPolicyWOptionsWRetries() throws Throwable {
+    // Enable retries and run testCreateIpsecPolicyWOptions.
+    vpcService.enableRetries(4, 30);
+    testCreateIpsecPolicyWOptions();
+
+    // Disable retries and run testCreateIpsecPolicyWOptions.
+    vpcService.disableRetries();
+    testCreateIpsecPolicyWOptions();
+  }  
 
   // Test the createIpsecPolicy operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -12488,6 +14483,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, deleteIpsecPolicyPath);
   }
+  
+  public void testDeleteIpsecPolicyWOptionsWRetries() throws Throwable {
+    // Enable retries and run testDeleteIpsecPolicyWOptions.
+    vpcService.enableRetries(4, 30);
+    testDeleteIpsecPolicyWOptions();
+
+    // Disable retries and run testDeleteIpsecPolicyWOptions.
+    vpcService.disableRetries();
+    testDeleteIpsecPolicyWOptions();
+  }  
 
   // Test the deleteIpsecPolicy operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -12540,6 +14545,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, getIpsecPolicyPath);
   }
+  
+  public void testGetIpsecPolicyWOptionsWRetries() throws Throwable {
+    // Enable retries and run testGetIpsecPolicyWOptions.
+    vpcService.enableRetries(4, 30);
+    testGetIpsecPolicyWOptions();
+
+    // Disable retries and run testGetIpsecPolicyWOptions.
+    vpcService.disableRetries();
+    testGetIpsecPolicyWOptions();
+  }  
 
   // Test the getIpsecPolicy operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -12603,6 +14618,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, updateIpsecPolicyPath);
   }
+  
+  public void testUpdateIpsecPolicyWOptionsWRetries() throws Throwable {
+    // Enable retries and run testUpdateIpsecPolicyWOptions.
+    vpcService.enableRetries(4, 30);
+    testUpdateIpsecPolicyWOptions();
+
+    // Disable retries and run testUpdateIpsecPolicyWOptions.
+    vpcService.disableRetries();
+    testUpdateIpsecPolicyWOptions();
+  }  
 
   // Test the updateIpsecPolicy operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -12655,6 +14680,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, listIpsecPolicyConnectionsPath);
   }
+  
+  public void testListIpsecPolicyConnectionsWOptionsWRetries() throws Throwable {
+    // Enable retries and run testListIpsecPolicyConnectionsWOptions.
+    vpcService.enableRetries(4, 30);
+    testListIpsecPolicyConnectionsWOptions();
+
+    // Disable retries and run testListIpsecPolicyConnectionsWOptions.
+    vpcService.disableRetries();
+    testListIpsecPolicyConnectionsWOptions();
+  }  
 
   // Test the listIpsecPolicyConnections operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -12714,6 +14749,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, listVpnGatewaysPath);
   }
+  
+  public void testListVpnGatewaysWOptionsWRetries() throws Throwable {
+    // Enable retries and run testListVpnGatewaysWOptions.
+    vpcService.enableRetries(4, 30);
+    testListVpnGatewaysWOptions();
+
+    // Disable retries and run testListVpnGatewaysWOptions.
+    vpcService.disableRetries();
+    testListVpnGatewaysWOptions();
+  }  
 
   @Test
   public void testCreateVpnGatewayWOptions() throws Throwable {
@@ -12772,6 +14817,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, createVpnGatewayPath);
   }
+  
+  public void testCreateVpnGatewayWOptionsWRetries() throws Throwable {
+    // Enable retries and run testCreateVpnGatewayWOptions.
+    vpcService.enableRetries(4, 30);
+    testCreateVpnGatewayWOptions();
+
+    // Disable retries and run testCreateVpnGatewayWOptions.
+    vpcService.disableRetries();
+    testCreateVpnGatewayWOptions();
+  }  
 
   // Test the createVpnGateway operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -12824,6 +14879,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, deleteVpnGatewayPath);
   }
+  
+  public void testDeleteVpnGatewayWOptionsWRetries() throws Throwable {
+    // Enable retries and run testDeleteVpnGatewayWOptions.
+    vpcService.enableRetries(4, 30);
+    testDeleteVpnGatewayWOptions();
+
+    // Disable retries and run testDeleteVpnGatewayWOptions.
+    vpcService.disableRetries();
+    testDeleteVpnGatewayWOptions();
+  }  
 
   // Test the deleteVpnGateway operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -12876,6 +14941,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, getVpnGatewayPath);
   }
+  
+  public void testGetVpnGatewayWOptionsWRetries() throws Throwable {
+    // Enable retries and run testGetVpnGatewayWOptions.
+    vpcService.enableRetries(4, 30);
+    testGetVpnGatewayWOptions();
+
+    // Disable retries and run testGetVpnGatewayWOptions.
+    vpcService.disableRetries();
+    testGetVpnGatewayWOptions();
+  }  
 
   // Test the getVpnGateway operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -12935,6 +15010,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, updateVpnGatewayPath);
   }
+  
+  public void testUpdateVpnGatewayWOptionsWRetries() throws Throwable {
+    // Enable retries and run testUpdateVpnGatewayWOptions.
+    vpcService.enableRetries(4, 30);
+    testUpdateVpnGatewayWOptions();
+
+    // Disable retries and run testUpdateVpnGatewayWOptions.
+    vpcService.disableRetries();
+    testUpdateVpnGatewayWOptions();
+  }  
 
   // Test the updateVpnGateway operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -12989,6 +15074,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, listVpnGatewayConnectionsPath);
   }
+  
+  public void testListVpnGatewayConnectionsWOptionsWRetries() throws Throwable {
+    // Enable retries and run testListVpnGatewayConnectionsWOptions.
+    vpcService.enableRetries(4, 30);
+    testListVpnGatewayConnectionsWOptions();
+
+    // Disable retries and run testListVpnGatewayConnectionsWOptions.
+    vpcService.disableRetries();
+    testListVpnGatewayConnectionsWOptions();
+  }  
 
   // Test the listVpnGatewayConnections operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -13071,6 +15166,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, createVpnGatewayConnectionPath);
   }
+  
+  public void testCreateVpnGatewayConnectionWOptionsWRetries() throws Throwable {
+    // Enable retries and run testCreateVpnGatewayConnectionWOptions.
+    vpcService.enableRetries(4, 30);
+    testCreateVpnGatewayConnectionWOptions();
+
+    // Disable retries and run testCreateVpnGatewayConnectionWOptions.
+    vpcService.disableRetries();
+    testCreateVpnGatewayConnectionWOptions();
+  }  
 
   // Test the createVpnGatewayConnection operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -13124,6 +15229,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, deleteVpnGatewayConnectionPath);
   }
+  
+  public void testDeleteVpnGatewayConnectionWOptionsWRetries() throws Throwable {
+    // Enable retries and run testDeleteVpnGatewayConnectionWOptions.
+    vpcService.enableRetries(4, 30);
+    testDeleteVpnGatewayConnectionWOptions();
+
+    // Disable retries and run testDeleteVpnGatewayConnectionWOptions.
+    vpcService.disableRetries();
+    testDeleteVpnGatewayConnectionWOptions();
+  }  
 
   // Test the deleteVpnGatewayConnection operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -13177,6 +15292,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, getVpnGatewayConnectionPath);
   }
+  
+  public void testGetVpnGatewayConnectionWOptionsWRetries() throws Throwable {
+    // Enable retries and run testGetVpnGatewayConnectionWOptions.
+    vpcService.enableRetries(4, 30);
+    testGetVpnGatewayConnectionWOptions();
+
+    // Disable retries and run testGetVpnGatewayConnectionWOptions.
+    vpcService.disableRetries();
+    testGetVpnGatewayConnectionWOptions();
+  }  
 
   // Test the getVpnGatewayConnection operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -13261,6 +15386,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, updateVpnGatewayConnectionPath);
   }
+  
+  public void testUpdateVpnGatewayConnectionWOptionsWRetries() throws Throwable {
+    // Enable retries and run testUpdateVpnGatewayConnectionWOptions.
+    vpcService.enableRetries(4, 30);
+    testUpdateVpnGatewayConnectionWOptions();
+
+    // Disable retries and run testUpdateVpnGatewayConnectionWOptions.
+    vpcService.disableRetries();
+    testUpdateVpnGatewayConnectionWOptions();
+  }  
 
   // Test the updateVpnGatewayConnection operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -13314,6 +15449,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, listVpnGatewayConnectionLocalCidrsPath);
   }
+  
+  public void testListVpnGatewayConnectionLocalCidrsWOptionsWRetries() throws Throwable {
+    // Enable retries and run testListVpnGatewayConnectionLocalCidrsWOptions.
+    vpcService.enableRetries(4, 30);
+    testListVpnGatewayConnectionLocalCidrsWOptions();
+
+    // Disable retries and run testListVpnGatewayConnectionLocalCidrsWOptions.
+    vpcService.disableRetries();
+    testListVpnGatewayConnectionLocalCidrsWOptions();
+  }  
 
   // Test the listVpnGatewayConnectionLocalCidrs operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -13369,6 +15514,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, removeVpnGatewayConnectionLocalCidrPath);
   }
+  
+  public void testRemoveVpnGatewayConnectionLocalCidrWOptionsWRetries() throws Throwable {
+    // Enable retries and run testRemoveVpnGatewayConnectionLocalCidrWOptions.
+    vpcService.enableRetries(4, 30);
+    testRemoveVpnGatewayConnectionLocalCidrWOptions();
+
+    // Disable retries and run testRemoveVpnGatewayConnectionLocalCidrWOptions.
+    vpcService.disableRetries();
+    testRemoveVpnGatewayConnectionLocalCidrWOptions();
+  }  
 
   // Test the removeVpnGatewayConnectionLocalCidr operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -13424,6 +15579,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, checkVpnGatewayConnectionLocalCidrPath);
   }
+  
+  public void testCheckVpnGatewayConnectionLocalCidrWOptionsWRetries() throws Throwable {
+    // Enable retries and run testCheckVpnGatewayConnectionLocalCidrWOptions.
+    vpcService.enableRetries(4, 30);
+    testCheckVpnGatewayConnectionLocalCidrWOptions();
+
+    // Disable retries and run testCheckVpnGatewayConnectionLocalCidrWOptions.
+    vpcService.disableRetries();
+    testCheckVpnGatewayConnectionLocalCidrWOptions();
+  }  
 
   // Test the checkVpnGatewayConnectionLocalCidr operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -13479,6 +15644,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, addVpnGatewayConnectionLocalCidrPath);
   }
+  
+  public void testAddVpnGatewayConnectionLocalCidrWOptionsWRetries() throws Throwable {
+    // Enable retries and run testAddVpnGatewayConnectionLocalCidrWOptions.
+    vpcService.enableRetries(4, 30);
+    testAddVpnGatewayConnectionLocalCidrWOptions();
+
+    // Disable retries and run testAddVpnGatewayConnectionLocalCidrWOptions.
+    vpcService.disableRetries();
+    testAddVpnGatewayConnectionLocalCidrWOptions();
+  }  
 
   // Test the addVpnGatewayConnectionLocalCidr operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -13532,6 +15707,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, listVpnGatewayConnectionPeerCidrsPath);
   }
+  
+  public void testListVpnGatewayConnectionPeerCidrsWOptionsWRetries() throws Throwable {
+    // Enable retries and run testListVpnGatewayConnectionPeerCidrsWOptions.
+    vpcService.enableRetries(4, 30);
+    testListVpnGatewayConnectionPeerCidrsWOptions();
+
+    // Disable retries and run testListVpnGatewayConnectionPeerCidrsWOptions.
+    vpcService.disableRetries();
+    testListVpnGatewayConnectionPeerCidrsWOptions();
+  }  
 
   // Test the listVpnGatewayConnectionPeerCidrs operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -13587,6 +15772,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, removeVpnGatewayConnectionPeerCidrPath);
   }
+  
+  public void testRemoveVpnGatewayConnectionPeerCidrWOptionsWRetries() throws Throwable {
+    // Enable retries and run testRemoveVpnGatewayConnectionPeerCidrWOptions.
+    vpcService.enableRetries(4, 30);
+    testRemoveVpnGatewayConnectionPeerCidrWOptions();
+
+    // Disable retries and run testRemoveVpnGatewayConnectionPeerCidrWOptions.
+    vpcService.disableRetries();
+    testRemoveVpnGatewayConnectionPeerCidrWOptions();
+  }  
 
   // Test the removeVpnGatewayConnectionPeerCidr operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -13642,6 +15837,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, checkVpnGatewayConnectionPeerCidrPath);
   }
+  
+  public void testCheckVpnGatewayConnectionPeerCidrWOptionsWRetries() throws Throwable {
+    // Enable retries and run testCheckVpnGatewayConnectionPeerCidrWOptions.
+    vpcService.enableRetries(4, 30);
+    testCheckVpnGatewayConnectionPeerCidrWOptions();
+
+    // Disable retries and run testCheckVpnGatewayConnectionPeerCidrWOptions.
+    vpcService.disableRetries();
+    testCheckVpnGatewayConnectionPeerCidrWOptions();
+  }  
 
   // Test the checkVpnGatewayConnectionPeerCidr operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -13697,6 +15902,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, addVpnGatewayConnectionPeerCidrPath);
   }
+  
+  public void testAddVpnGatewayConnectionPeerCidrWOptionsWRetries() throws Throwable {
+    // Enable retries and run testAddVpnGatewayConnectionPeerCidrWOptions.
+    vpcService.enableRetries(4, 30);
+    testAddVpnGatewayConnectionPeerCidrWOptions();
+
+    // Disable retries and run testAddVpnGatewayConnectionPeerCidrWOptions.
+    vpcService.disableRetries();
+    testAddVpnGatewayConnectionPeerCidrWOptions();
+  }  
 
   // Test the addVpnGatewayConnectionPeerCidr operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -13713,7 +15928,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testListLoadBalancerProfilesWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"first\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancer/profiles?limit=20\"}, \"limit\": 20, \"next\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancer/profiles?start=9d5a91a3e2cbd233b5a5b33436855ed1&limit=20\"}, \"profiles\": [{\"family\": \"network\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancer/profiles/network-fixed\", \"logging_supported\": {\"type\": \"fixed\", \"value\": [\"datapath\"]}, \"name\": \"network-fixed\", \"security_groups_supported\": {\"type\": \"fixed\", \"value\": true}}], \"total_count\": 132}";
+    String mockResponseBody = "{\"first\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancer/profiles?limit=20\"}, \"limit\": 20, \"next\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancer/profiles?start=9d5a91a3e2cbd233b5a5b33436855ed1&limit=20\"}, \"profiles\": [{\"family\": \"network\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancer/profiles/network-fixed\", \"logging_supported\": {\"type\": \"fixed\", \"value\": [\"datapath\"]}, \"name\": \"network-fixed\", \"route_mode_supported\": {\"type\": \"fixed\", \"value\": true}, \"security_groups_supported\": {\"type\": \"fixed\", \"value\": true}}], \"total_count\": 132}";
     String listLoadBalancerProfilesPath = "/load_balancer/profiles";
 
     server.enqueue(new MockResponse()
@@ -13752,11 +15967,21 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, listLoadBalancerProfilesPath);
   }
+  
+  public void testListLoadBalancerProfilesWOptionsWRetries() throws Throwable {
+    // Enable retries and run testListLoadBalancerProfilesWOptions.
+    vpcService.enableRetries(4, 30);
+    testListLoadBalancerProfilesWOptions();
+
+    // Disable retries and run testListLoadBalancerProfilesWOptions.
+    vpcService.disableRetries();
+    testListLoadBalancerProfilesWOptions();
+  }  
 
   @Test
   public void testGetLoadBalancerProfileWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"family\": \"network\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancer/profiles/network-fixed\", \"logging_supported\": {\"type\": \"fixed\", \"value\": [\"datapath\"]}, \"name\": \"network-fixed\", \"security_groups_supported\": {\"type\": \"fixed\", \"value\": true}}";
+    String mockResponseBody = "{\"family\": \"network\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancer/profiles/network-fixed\", \"logging_supported\": {\"type\": \"fixed\", \"value\": [\"datapath\"]}, \"name\": \"network-fixed\", \"route_mode_supported\": {\"type\": \"fixed\", \"value\": true}, \"security_groups_supported\": {\"type\": \"fixed\", \"value\": true}}";
     String getLoadBalancerProfilePath = "/load_balancer/profiles/testString";
 
     server.enqueue(new MockResponse()
@@ -13792,6 +16017,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, getLoadBalancerProfilePath);
   }
+  
+  public void testGetLoadBalancerProfileWOptionsWRetries() throws Throwable {
+    // Enable retries and run testGetLoadBalancerProfileWOptions.
+    vpcService.enableRetries(4, 30);
+    testGetLoadBalancerProfileWOptions();
+
+    // Disable retries and run testGetLoadBalancerProfileWOptions.
+    vpcService.disableRetries();
+    testGetLoadBalancerProfileWOptions();
+  }  
 
   // Test the getLoadBalancerProfile operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -13808,7 +16043,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testListLoadBalancersWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"first\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers?limit=20\"}, \"limit\": 20, \"load_balancers\": [{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::load-balancer:dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"hostname\": \"my-load-balancer-123456-us-south-1.lb.bluemix.net\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"id\": \"dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"is_public\": true, \"listeners\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\"}], \"logging\": {\"datapath\": {\"active\": true}}, \"name\": \"my-load-balancer\", \"operating_status\": \"offline\", \"pools\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"name\": \"my-load-balancer-pool\"}], \"private_ips\": [{\"address\": \"192.168.3.4\"}], \"profile\": {\"family\": \"network\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancer/profiles/network-fixed\", \"name\": \"network-fixed\"}, \"provisioning_status\": \"active\", \"public_ips\": [{\"address\": \"192.168.3.4\"}], \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"security_groups\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::security-group:be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"id\": \"be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"name\": \"my-security-group\"}], \"security_groups_supported\": false, \"subnets\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}]}], \"next\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers?start=9d5a91a3e2cbd233b5a5b33436855ed&limit=20\"}, \"total_count\": 132}";
+    String mockResponseBody = "{\"first\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers?limit=20\"}, \"limit\": 20, \"load_balancers\": [{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::load-balancer:dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"hostname\": \"my-load-balancer-123456-us-south-1.lb.bluemix.net\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"id\": \"dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"is_public\": true, \"listeners\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\"}], \"logging\": {\"datapath\": {\"active\": true}}, \"name\": \"my-load-balancer\", \"operating_status\": \"offline\", \"pools\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"name\": \"my-load-balancer-pool\"}], \"private_ips\": [{\"address\": \"192.168.3.4\"}], \"profile\": {\"family\": \"network\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancer/profiles/network-fixed\", \"name\": \"network-fixed\"}, \"provisioning_status\": \"active\", \"public_ips\": [{\"address\": \"192.168.3.4\"}], \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"route_mode\": true, \"security_groups\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::security-group:be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"id\": \"be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"name\": \"my-security-group\"}], \"security_groups_supported\": false, \"subnets\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}]}], \"next\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers?start=9d5a91a3e2cbd233b5a5b33436855ed&limit=20\"}, \"total_count\": 132}";
     String listLoadBalancersPath = "/load_balancers";
 
     server.enqueue(new MockResponse()
@@ -13847,11 +16082,21 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, listLoadBalancersPath);
   }
+  
+  public void testListLoadBalancersWOptionsWRetries() throws Throwable {
+    // Enable retries and run testListLoadBalancersWOptions.
+    vpcService.enableRetries(4, 30);
+    testListLoadBalancersWOptions();
+
+    // Disable retries and run testListLoadBalancersWOptions.
+    vpcService.disableRetries();
+    testListLoadBalancersWOptions();
+  }  
 
   @Test
   public void testCreateLoadBalancerWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::load-balancer:dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"hostname\": \"my-load-balancer-123456-us-south-1.lb.bluemix.net\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"id\": \"dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"is_public\": true, \"listeners\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\"}], \"logging\": {\"datapath\": {\"active\": true}}, \"name\": \"my-load-balancer\", \"operating_status\": \"offline\", \"pools\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"name\": \"my-load-balancer-pool\"}], \"private_ips\": [{\"address\": \"192.168.3.4\"}], \"profile\": {\"family\": \"network\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancer/profiles/network-fixed\", \"name\": \"network-fixed\"}, \"provisioning_status\": \"active\", \"public_ips\": [{\"address\": \"192.168.3.4\"}], \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"security_groups\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::security-group:be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"id\": \"be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"name\": \"my-security-group\"}], \"security_groups_supported\": false, \"subnets\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}]}";
+    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::load-balancer:dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"hostname\": \"my-load-balancer-123456-us-south-1.lb.bluemix.net\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"id\": \"dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"is_public\": true, \"listeners\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\"}], \"logging\": {\"datapath\": {\"active\": true}}, \"name\": \"my-load-balancer\", \"operating_status\": \"offline\", \"pools\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"name\": \"my-load-balancer-pool\"}], \"private_ips\": [{\"address\": \"192.168.3.4\"}], \"profile\": {\"family\": \"network\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancer/profiles/network-fixed\", \"name\": \"network-fixed\"}, \"provisioning_status\": \"active\", \"public_ips\": [{\"address\": \"192.168.3.4\"}], \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"route_mode\": true, \"security_groups\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::security-group:be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"id\": \"be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"name\": \"my-security-group\"}], \"security_groups_supported\": false, \"subnets\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}]}";
     String createLoadBalancerPath = "/load_balancers";
 
     server.enqueue(new MockResponse()
@@ -13877,6 +16122,8 @@ public class VpcTest extends PowerMockTestCase {
     .connectionLimit(Long.valueOf("2000"))
     .defaultPool(loadBalancerPoolIdentityByNameModel)
     .port(Long.valueOf("443"))
+    .portMax(Long.valueOf("499"))
+    .portMin(Long.valueOf("443"))
     .protocol("http")
     .build();
 
@@ -13954,6 +16201,7 @@ public class VpcTest extends PowerMockTestCase {
     .pools(new java.util.ArrayList<LoadBalancerPoolPrototype>(java.util.Arrays.asList(loadBalancerPoolPrototypeModel)))
     .profile(loadBalancerProfileIdentityModel)
     .resourceGroup(resourceGroupIdentityModel)
+    .routeMode(true)
     .securityGroups(new java.util.ArrayList<SecurityGroupIdentity>(java.util.Arrays.asList(securityGroupIdentityModel)))
     .build();
 
@@ -13978,6 +16226,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, createLoadBalancerPath);
   }
+  
+  public void testCreateLoadBalancerWOptionsWRetries() throws Throwable {
+    // Enable retries and run testCreateLoadBalancerWOptions.
+    vpcService.enableRetries(4, 30);
+    testCreateLoadBalancerWOptions();
+
+    // Disable retries and run testCreateLoadBalancerWOptions.
+    vpcService.disableRetries();
+    testCreateLoadBalancerWOptions();
+  }  
 
   // Test the createLoadBalancer operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -14030,6 +16288,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, deleteLoadBalancerPath);
   }
+  
+  public void testDeleteLoadBalancerWOptionsWRetries() throws Throwable {
+    // Enable retries and run testDeleteLoadBalancerWOptions.
+    vpcService.enableRetries(4, 30);
+    testDeleteLoadBalancerWOptions();
+
+    // Disable retries and run testDeleteLoadBalancerWOptions.
+    vpcService.disableRetries();
+    testDeleteLoadBalancerWOptions();
+  }  
 
   // Test the deleteLoadBalancer operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -14046,7 +16314,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testGetLoadBalancerWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::load-balancer:dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"hostname\": \"my-load-balancer-123456-us-south-1.lb.bluemix.net\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"id\": \"dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"is_public\": true, \"listeners\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\"}], \"logging\": {\"datapath\": {\"active\": true}}, \"name\": \"my-load-balancer\", \"operating_status\": \"offline\", \"pools\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"name\": \"my-load-balancer-pool\"}], \"private_ips\": [{\"address\": \"192.168.3.4\"}], \"profile\": {\"family\": \"network\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancer/profiles/network-fixed\", \"name\": \"network-fixed\"}, \"provisioning_status\": \"active\", \"public_ips\": [{\"address\": \"192.168.3.4\"}], \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"security_groups\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::security-group:be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"id\": \"be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"name\": \"my-security-group\"}], \"security_groups_supported\": false, \"subnets\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}]}";
+    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::load-balancer:dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"hostname\": \"my-load-balancer-123456-us-south-1.lb.bluemix.net\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"id\": \"dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"is_public\": true, \"listeners\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\"}], \"logging\": {\"datapath\": {\"active\": true}}, \"name\": \"my-load-balancer\", \"operating_status\": \"offline\", \"pools\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"name\": \"my-load-balancer-pool\"}], \"private_ips\": [{\"address\": \"192.168.3.4\"}], \"profile\": {\"family\": \"network\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancer/profiles/network-fixed\", \"name\": \"network-fixed\"}, \"provisioning_status\": \"active\", \"public_ips\": [{\"address\": \"192.168.3.4\"}], \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"route_mode\": true, \"security_groups\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::security-group:be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"id\": \"be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"name\": \"my-security-group\"}], \"security_groups_supported\": false, \"subnets\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}]}";
     String getLoadBalancerPath = "/load_balancers/testString";
 
     server.enqueue(new MockResponse()
@@ -14082,6 +16350,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, getLoadBalancerPath);
   }
+  
+  public void testGetLoadBalancerWOptionsWRetries() throws Throwable {
+    // Enable retries and run testGetLoadBalancerWOptions.
+    vpcService.enableRetries(4, 30);
+    testGetLoadBalancerWOptions();
+
+    // Disable retries and run testGetLoadBalancerWOptions.
+    vpcService.disableRetries();
+    testGetLoadBalancerWOptions();
+  }  
 
   // Test the getLoadBalancer operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -14098,7 +16376,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testUpdateLoadBalancerWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::load-balancer:dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"hostname\": \"my-load-balancer-123456-us-south-1.lb.bluemix.net\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"id\": \"dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"is_public\": true, \"listeners\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\"}], \"logging\": {\"datapath\": {\"active\": true}}, \"name\": \"my-load-balancer\", \"operating_status\": \"offline\", \"pools\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"name\": \"my-load-balancer-pool\"}], \"private_ips\": [{\"address\": \"192.168.3.4\"}], \"profile\": {\"family\": \"network\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancer/profiles/network-fixed\", \"name\": \"network-fixed\"}, \"provisioning_status\": \"active\", \"public_ips\": [{\"address\": \"192.168.3.4\"}], \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"security_groups\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::security-group:be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"id\": \"be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"name\": \"my-security-group\"}], \"security_groups_supported\": false, \"subnets\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}]}";
+    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::load-balancer:dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"hostname\": \"my-load-balancer-123456-us-south-1.lb.bluemix.net\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"id\": \"dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"is_public\": true, \"listeners\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\"}], \"logging\": {\"datapath\": {\"active\": true}}, \"name\": \"my-load-balancer\", \"operating_status\": \"offline\", \"pools\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"name\": \"my-load-balancer-pool\"}], \"private_ips\": [{\"address\": \"192.168.3.4\"}], \"profile\": {\"family\": \"network\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancer/profiles/network-fixed\", \"name\": \"network-fixed\"}, \"provisioning_status\": \"active\", \"public_ips\": [{\"address\": \"192.168.3.4\"}], \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"route_mode\": true, \"security_groups\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::security-group:be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"id\": \"be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"name\": \"my-security-group\"}], \"security_groups_supported\": false, \"subnets\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}]}";
     String updateLoadBalancerPath = "/load_balancers/testString";
 
     server.enqueue(new MockResponse()
@@ -14152,6 +16430,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, updateLoadBalancerPath);
   }
+  
+  public void testUpdateLoadBalancerWOptionsWRetries() throws Throwable {
+    // Enable retries and run testUpdateLoadBalancerWOptions.
+    vpcService.enableRetries(4, 30);
+    testUpdateLoadBalancerWOptions();
+
+    // Disable retries and run testUpdateLoadBalancerWOptions.
+    vpcService.disableRetries();
+    testUpdateLoadBalancerWOptions();
+  }  
 
   // Test the updateLoadBalancer operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -14204,6 +16492,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, getLoadBalancerStatisticsPath);
   }
+  
+  public void testGetLoadBalancerStatisticsWOptionsWRetries() throws Throwable {
+    // Enable retries and run testGetLoadBalancerStatisticsWOptions.
+    vpcService.enableRetries(4, 30);
+    testGetLoadBalancerStatisticsWOptions();
+
+    // Disable retries and run testGetLoadBalancerStatisticsWOptions.
+    vpcService.disableRetries();
+    testGetLoadBalancerStatisticsWOptions();
+  }  
 
   // Test the getLoadBalancerStatistics operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -14220,7 +16518,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testListLoadBalancerListenersWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"listeners\": [{\"accept_proxy_protocol\": true, \"certificate_instance\": {\"crn\": \"crn:v1:bluemix:public:cloudcerts:us-south:a/123456:b8866ea4-b8df-467e-801a-da1db7e020bf:certificate:78ff9c4c97d013fb2a95b21dddde7758\"}, \"connection_limit\": 2000, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"default_pool\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"name\": \"my-load-balancer-pool\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004\", \"https_redirect\": {\"http_status_code\": 301, \"listener\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\"}, \"uri\": \"/example?doc=get\"}, \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"policies\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004/policies/f3187486-7b27-4c79-990c-47d33c0e2278\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\"}], \"port\": 443, \"protocol\": \"http\", \"provisioning_status\": \"active\"}]}";
+    String mockResponseBody = "{\"listeners\": [{\"accept_proxy_protocol\": true, \"certificate_instance\": {\"crn\": \"crn:v1:bluemix:public:cloudcerts:us-south:a/123456:b8866ea4-b8df-467e-801a-da1db7e020bf:certificate:78ff9c4c97d013fb2a95b21dddde7758\"}, \"connection_limit\": 2000, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"default_pool\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"name\": \"my-load-balancer-pool\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004\", \"https_redirect\": {\"http_status_code\": 301, \"listener\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\"}, \"uri\": \"/example?doc=get\"}, \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"policies\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004/policies/f3187486-7b27-4c79-990c-47d33c0e2278\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\"}], \"port\": 443, \"port_max\": 499, \"port_min\": 443, \"protocol\": \"http\", \"provisioning_status\": \"active\"}]}";
     String listLoadBalancerListenersPath = "/load_balancers/testString/listeners";
 
     server.enqueue(new MockResponse()
@@ -14256,6 +16554,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, listLoadBalancerListenersPath);
   }
+  
+  public void testListLoadBalancerListenersWOptionsWRetries() throws Throwable {
+    // Enable retries and run testListLoadBalancerListenersWOptions.
+    vpcService.enableRetries(4, 30);
+    testListLoadBalancerListenersWOptions();
+
+    // Disable retries and run testListLoadBalancerListenersWOptions.
+    vpcService.disableRetries();
+    testListLoadBalancerListenersWOptions();
+  }  
 
   // Test the listLoadBalancerListeners operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -14272,7 +16580,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testCreateLoadBalancerListenerWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"accept_proxy_protocol\": true, \"certificate_instance\": {\"crn\": \"crn:v1:bluemix:public:cloudcerts:us-south:a/123456:b8866ea4-b8df-467e-801a-da1db7e020bf:certificate:78ff9c4c97d013fb2a95b21dddde7758\"}, \"connection_limit\": 2000, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"default_pool\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"name\": \"my-load-balancer-pool\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004\", \"https_redirect\": {\"http_status_code\": 301, \"listener\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\"}, \"uri\": \"/example?doc=get\"}, \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"policies\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004/policies/f3187486-7b27-4c79-990c-47d33c0e2278\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\"}], \"port\": 443, \"protocol\": \"http\", \"provisioning_status\": \"active\"}";
+    String mockResponseBody = "{\"accept_proxy_protocol\": true, \"certificate_instance\": {\"crn\": \"crn:v1:bluemix:public:cloudcerts:us-south:a/123456:b8866ea4-b8df-467e-801a-da1db7e020bf:certificate:78ff9c4c97d013fb2a95b21dddde7758\"}, \"connection_limit\": 2000, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"default_pool\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"name\": \"my-load-balancer-pool\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004\", \"https_redirect\": {\"http_status_code\": 301, \"listener\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\"}, \"uri\": \"/example?doc=get\"}, \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"policies\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004/policies/f3187486-7b27-4c79-990c-47d33c0e2278\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\"}], \"port\": 443, \"port_max\": 499, \"port_min\": 443, \"protocol\": \"http\", \"provisioning_status\": \"active\"}";
     String createLoadBalancerListenerPath = "/load_balancers/testString/listeners";
 
     server.enqueue(new MockResponse()
@@ -14329,7 +16637,6 @@ public class VpcTest extends PowerMockTestCase {
     // Construct an instance of the CreateLoadBalancerListenerOptions model
     CreateLoadBalancerListenerOptions createLoadBalancerListenerOptionsModel = new CreateLoadBalancerListenerOptions.Builder()
     .loadBalancerId("testString")
-    .port(Long.valueOf("443"))
     .protocol("http")
     .acceptProxyProtocol(true)
     .certificateInstance(certificateInstanceIdentityModel)
@@ -14337,6 +16644,9 @@ public class VpcTest extends PowerMockTestCase {
     .defaultPool(loadBalancerPoolIdentityModel)
     .httpsRedirect(loadBalancerListenerHttpsRedirectPrototypeModel)
     .policies(new java.util.ArrayList<LoadBalancerListenerPolicyPrototype>(java.util.Arrays.asList(loadBalancerListenerPolicyPrototypeModel)))
+    .port(Long.valueOf("443"))
+    .portMax(Long.valueOf("499"))
+    .portMin(Long.valueOf("443"))
     .build();
 
     // Invoke operation with valid options model (positive test)
@@ -14360,6 +16670,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, createLoadBalancerListenerPath);
   }
+  
+  public void testCreateLoadBalancerListenerWOptionsWRetries() throws Throwable {
+    // Enable retries and run testCreateLoadBalancerListenerWOptions.
+    vpcService.enableRetries(4, 30);
+    testCreateLoadBalancerListenerWOptions();
+
+    // Disable retries and run testCreateLoadBalancerListenerWOptions.
+    vpcService.disableRetries();
+    testCreateLoadBalancerListenerWOptions();
+  }  
 
   // Test the createLoadBalancerListener operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -14413,6 +16733,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, deleteLoadBalancerListenerPath);
   }
+  
+  public void testDeleteLoadBalancerListenerWOptionsWRetries() throws Throwable {
+    // Enable retries and run testDeleteLoadBalancerListenerWOptions.
+    vpcService.enableRetries(4, 30);
+    testDeleteLoadBalancerListenerWOptions();
+
+    // Disable retries and run testDeleteLoadBalancerListenerWOptions.
+    vpcService.disableRetries();
+    testDeleteLoadBalancerListenerWOptions();
+  }  
 
   // Test the deleteLoadBalancerListener operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -14429,7 +16759,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testGetLoadBalancerListenerWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"accept_proxy_protocol\": true, \"certificate_instance\": {\"crn\": \"crn:v1:bluemix:public:cloudcerts:us-south:a/123456:b8866ea4-b8df-467e-801a-da1db7e020bf:certificate:78ff9c4c97d013fb2a95b21dddde7758\"}, \"connection_limit\": 2000, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"default_pool\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"name\": \"my-load-balancer-pool\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004\", \"https_redirect\": {\"http_status_code\": 301, \"listener\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\"}, \"uri\": \"/example?doc=get\"}, \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"policies\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004/policies/f3187486-7b27-4c79-990c-47d33c0e2278\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\"}], \"port\": 443, \"protocol\": \"http\", \"provisioning_status\": \"active\"}";
+    String mockResponseBody = "{\"accept_proxy_protocol\": true, \"certificate_instance\": {\"crn\": \"crn:v1:bluemix:public:cloudcerts:us-south:a/123456:b8866ea4-b8df-467e-801a-da1db7e020bf:certificate:78ff9c4c97d013fb2a95b21dddde7758\"}, \"connection_limit\": 2000, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"default_pool\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"name\": \"my-load-balancer-pool\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004\", \"https_redirect\": {\"http_status_code\": 301, \"listener\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\"}, \"uri\": \"/example?doc=get\"}, \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"policies\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004/policies/f3187486-7b27-4c79-990c-47d33c0e2278\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\"}], \"port\": 443, \"port_max\": 499, \"port_min\": 443, \"protocol\": \"http\", \"provisioning_status\": \"active\"}";
     String getLoadBalancerListenerPath = "/load_balancers/testString/listeners/testString";
 
     server.enqueue(new MockResponse()
@@ -14466,6 +16796,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, getLoadBalancerListenerPath);
   }
+  
+  public void testGetLoadBalancerListenerWOptionsWRetries() throws Throwable {
+    // Enable retries and run testGetLoadBalancerListenerWOptions.
+    vpcService.enableRetries(4, 30);
+    testGetLoadBalancerListenerWOptions();
+
+    // Disable retries and run testGetLoadBalancerListenerWOptions.
+    vpcService.disableRetries();
+    testGetLoadBalancerListenerWOptions();
+  }  
 
   // Test the getLoadBalancerListener operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -14482,7 +16822,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testUpdateLoadBalancerListenerWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"accept_proxy_protocol\": true, \"certificate_instance\": {\"crn\": \"crn:v1:bluemix:public:cloudcerts:us-south:a/123456:b8866ea4-b8df-467e-801a-da1db7e020bf:certificate:78ff9c4c97d013fb2a95b21dddde7758\"}, \"connection_limit\": 2000, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"default_pool\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"name\": \"my-load-balancer-pool\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004\", \"https_redirect\": {\"http_status_code\": 301, \"listener\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\"}, \"uri\": \"/example?doc=get\"}, \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"policies\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004/policies/f3187486-7b27-4c79-990c-47d33c0e2278\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\"}], \"port\": 443, \"protocol\": \"http\", \"provisioning_status\": \"active\"}";
+    String mockResponseBody = "{\"accept_proxy_protocol\": true, \"certificate_instance\": {\"crn\": \"crn:v1:bluemix:public:cloudcerts:us-south:a/123456:b8866ea4-b8df-467e-801a-da1db7e020bf:certificate:78ff9c4c97d013fb2a95b21dddde7758\"}, \"connection_limit\": 2000, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"default_pool\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"name\": \"my-load-balancer-pool\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004\", \"https_redirect\": {\"http_status_code\": 301, \"listener\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\"}, \"uri\": \"/example?doc=get\"}, \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\", \"policies\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/70294e14-4e61-11e8-bcf4-0242ac110004/policies/f3187486-7b27-4c79-990c-47d33c0e2278\", \"id\": \"70294e14-4e61-11e8-bcf4-0242ac110004\"}], \"port\": 443, \"port_max\": 499, \"port_min\": 443, \"protocol\": \"http\", \"provisioning_status\": \"active\"}";
     String updateLoadBalancerListenerPath = "/load_balancers/testString/listeners/testString";
 
     server.enqueue(new MockResponse()
@@ -14522,6 +16862,8 @@ public class VpcTest extends PowerMockTestCase {
     .defaultPool(loadBalancerPoolIdentityModel)
     .httpsRedirect(loadBalancerListenerHttpsRedirectPatchModel)
     .port(Long.valueOf("443"))
+    .portMax(Long.valueOf("499"))
+    .portMin(Long.valueOf("443"))
     .protocol("http")
     .build();
     Map<String, Object> loadBalancerListenerPatchModelAsPatch = loadBalancerListenerPatchModel.asPatch();
@@ -14554,6 +16896,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, updateLoadBalancerListenerPath);
   }
+  
+  public void testUpdateLoadBalancerListenerWOptionsWRetries() throws Throwable {
+    // Enable retries and run testUpdateLoadBalancerListenerWOptions.
+    vpcService.enableRetries(4, 30);
+    testUpdateLoadBalancerListenerWOptions();
+
+    // Disable retries and run testUpdateLoadBalancerListenerWOptions.
+    vpcService.disableRetries();
+    testUpdateLoadBalancerListenerWOptions();
+  }  
 
   // Test the updateLoadBalancerListener operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -14607,6 +16959,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, listLoadBalancerListenerPoliciesPath);
   }
+  
+  public void testListLoadBalancerListenerPoliciesWOptionsWRetries() throws Throwable {
+    // Enable retries and run testListLoadBalancerListenerPoliciesWOptions.
+    vpcService.enableRetries(4, 30);
+    testListLoadBalancerListenerPoliciesWOptions();
+
+    // Disable retries and run testListLoadBalancerListenerPoliciesWOptions.
+    vpcService.disableRetries();
+    testListLoadBalancerListenerPoliciesWOptions();
+  }  
 
   // Test the listLoadBalancerListenerPolicies operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -14678,6 +17040,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, createLoadBalancerListenerPolicyPath);
   }
+  
+  public void testCreateLoadBalancerListenerPolicyWOptionsWRetries() throws Throwable {
+    // Enable retries and run testCreateLoadBalancerListenerPolicyWOptions.
+    vpcService.enableRetries(4, 30);
+    testCreateLoadBalancerListenerPolicyWOptions();
+
+    // Disable retries and run testCreateLoadBalancerListenerPolicyWOptions.
+    vpcService.disableRetries();
+    testCreateLoadBalancerListenerPolicyWOptions();
+  }  
 
   // Test the createLoadBalancerListenerPolicy operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -14732,6 +17104,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, deleteLoadBalancerListenerPolicyPath);
   }
+  
+  public void testDeleteLoadBalancerListenerPolicyWOptionsWRetries() throws Throwable {
+    // Enable retries and run testDeleteLoadBalancerListenerPolicyWOptions.
+    vpcService.enableRetries(4, 30);
+    testDeleteLoadBalancerListenerPolicyWOptions();
+
+    // Disable retries and run testDeleteLoadBalancerListenerPolicyWOptions.
+    vpcService.disableRetries();
+    testDeleteLoadBalancerListenerPolicyWOptions();
+  }  
 
   // Test the deleteLoadBalancerListenerPolicy operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -14786,6 +17168,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, getLoadBalancerListenerPolicyPath);
   }
+  
+  public void testGetLoadBalancerListenerPolicyWOptionsWRetries() throws Throwable {
+    // Enable retries and run testGetLoadBalancerListenerPolicyWOptions.
+    vpcService.enableRetries(4, 30);
+    testGetLoadBalancerListenerPolicyWOptions();
+
+    // Disable retries and run testGetLoadBalancerListenerPolicyWOptions.
+    vpcService.disableRetries();
+    testGetLoadBalancerListenerPolicyWOptions();
+  }  
 
   // Test the getLoadBalancerListenerPolicy operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -14854,6 +17246,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, updateLoadBalancerListenerPolicyPath);
   }
+  
+  public void testUpdateLoadBalancerListenerPolicyWOptionsWRetries() throws Throwable {
+    // Enable retries and run testUpdateLoadBalancerListenerPolicyWOptions.
+    vpcService.enableRetries(4, 30);
+    testUpdateLoadBalancerListenerPolicyWOptions();
+
+    // Disable retries and run testUpdateLoadBalancerListenerPolicyWOptions.
+    vpcService.disableRetries();
+    testUpdateLoadBalancerListenerPolicyWOptions();
+  }  
 
   // Test the updateLoadBalancerListenerPolicy operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -14908,6 +17310,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, listLoadBalancerListenerPolicyRulesPath);
   }
+  
+  public void testListLoadBalancerListenerPolicyRulesWOptionsWRetries() throws Throwable {
+    // Enable retries and run testListLoadBalancerListenerPolicyRulesWOptions.
+    vpcService.enableRetries(4, 30);
+    testListLoadBalancerListenerPolicyRulesWOptions();
+
+    // Disable retries and run testListLoadBalancerListenerPolicyRulesWOptions.
+    vpcService.disableRetries();
+    testListLoadBalancerListenerPolicyRulesWOptions();
+  }  
 
   // Test the listLoadBalancerListenerPolicyRules operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -14966,6 +17378,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, createLoadBalancerListenerPolicyRulePath);
   }
+  
+  public void testCreateLoadBalancerListenerPolicyRuleWOptionsWRetries() throws Throwable {
+    // Enable retries and run testCreateLoadBalancerListenerPolicyRuleWOptions.
+    vpcService.enableRetries(4, 30);
+    testCreateLoadBalancerListenerPolicyRuleWOptions();
+
+    // Disable retries and run testCreateLoadBalancerListenerPolicyRuleWOptions.
+    vpcService.disableRetries();
+    testCreateLoadBalancerListenerPolicyRuleWOptions();
+  }  
 
   // Test the createLoadBalancerListenerPolicyRule operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -15021,6 +17443,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, deleteLoadBalancerListenerPolicyRulePath);
   }
+  
+  public void testDeleteLoadBalancerListenerPolicyRuleWOptionsWRetries() throws Throwable {
+    // Enable retries and run testDeleteLoadBalancerListenerPolicyRuleWOptions.
+    vpcService.enableRetries(4, 30);
+    testDeleteLoadBalancerListenerPolicyRuleWOptions();
+
+    // Disable retries and run testDeleteLoadBalancerListenerPolicyRuleWOptions.
+    vpcService.disableRetries();
+    testDeleteLoadBalancerListenerPolicyRuleWOptions();
+  }  
 
   // Test the deleteLoadBalancerListenerPolicyRule operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -15076,6 +17508,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, getLoadBalancerListenerPolicyRulePath);
   }
+  
+  public void testGetLoadBalancerListenerPolicyRuleWOptionsWRetries() throws Throwable {
+    // Enable retries and run testGetLoadBalancerListenerPolicyRuleWOptions.
+    vpcService.enableRetries(4, 30);
+    testGetLoadBalancerListenerPolicyRuleWOptions();
+
+    // Disable retries and run testGetLoadBalancerListenerPolicyRuleWOptions.
+    vpcService.disableRetries();
+    testGetLoadBalancerListenerPolicyRuleWOptions();
+  }  
 
   // Test the getLoadBalancerListenerPolicyRule operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -15141,6 +17583,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, updateLoadBalancerListenerPolicyRulePath);
   }
+  
+  public void testUpdateLoadBalancerListenerPolicyRuleWOptionsWRetries() throws Throwable {
+    // Enable retries and run testUpdateLoadBalancerListenerPolicyRuleWOptions.
+    vpcService.enableRetries(4, 30);
+    testUpdateLoadBalancerListenerPolicyRuleWOptions();
+
+    // Disable retries and run testUpdateLoadBalancerListenerPolicyRuleWOptions.
+    vpcService.disableRetries();
+    testUpdateLoadBalancerListenerPolicyRuleWOptions();
+  }  
 
   // Test the updateLoadBalancerListenerPolicyRule operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -15193,6 +17645,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, listLoadBalancerPoolsPath);
   }
+  
+  public void testListLoadBalancerPoolsWOptionsWRetries() throws Throwable {
+    // Enable retries and run testListLoadBalancerPoolsWOptions.
+    vpcService.enableRetries(4, 30);
+    testListLoadBalancerPoolsWOptions();
+
+    // Disable retries and run testListLoadBalancerPoolsWOptions.
+    vpcService.disableRetries();
+    testListLoadBalancerPoolsWOptions();
+  }  
 
   // Test the listLoadBalancerPools operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -15280,6 +17742,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, createLoadBalancerPoolPath);
   }
+  
+  public void testCreateLoadBalancerPoolWOptionsWRetries() throws Throwable {
+    // Enable retries and run testCreateLoadBalancerPoolWOptions.
+    vpcService.enableRetries(4, 30);
+    testCreateLoadBalancerPoolWOptions();
+
+    // Disable retries and run testCreateLoadBalancerPoolWOptions.
+    vpcService.disableRetries();
+    testCreateLoadBalancerPoolWOptions();
+  }  
 
   // Test the createLoadBalancerPool operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -15333,6 +17805,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, deleteLoadBalancerPoolPath);
   }
+  
+  public void testDeleteLoadBalancerPoolWOptionsWRetries() throws Throwable {
+    // Enable retries and run testDeleteLoadBalancerPoolWOptions.
+    vpcService.enableRetries(4, 30);
+    testDeleteLoadBalancerPoolWOptions();
+
+    // Disable retries and run testDeleteLoadBalancerPoolWOptions.
+    vpcService.disableRetries();
+    testDeleteLoadBalancerPoolWOptions();
+  }  
 
   // Test the deleteLoadBalancerPool operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -15386,6 +17868,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, getLoadBalancerPoolPath);
   }
+  
+  public void testGetLoadBalancerPoolWOptionsWRetries() throws Throwable {
+    // Enable retries and run testGetLoadBalancerPoolWOptions.
+    vpcService.enableRetries(4, 30);
+    testGetLoadBalancerPoolWOptions();
+
+    // Disable retries and run testGetLoadBalancerPoolWOptions.
+    vpcService.disableRetries();
+    testGetLoadBalancerPoolWOptions();
+  }  
 
   // Test the getLoadBalancerPool operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -15467,6 +17959,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, updateLoadBalancerPoolPath);
   }
+  
+  public void testUpdateLoadBalancerPoolWOptionsWRetries() throws Throwable {
+    // Enable retries and run testUpdateLoadBalancerPoolWOptions.
+    vpcService.enableRetries(4, 30);
+    testUpdateLoadBalancerPoolWOptions();
+
+    // Disable retries and run testUpdateLoadBalancerPoolWOptions.
+    vpcService.disableRetries();
+    testUpdateLoadBalancerPoolWOptions();
+  }  
 
   // Test the updateLoadBalancerPool operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -15520,6 +18022,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, listLoadBalancerPoolMembersPath);
   }
+  
+  public void testListLoadBalancerPoolMembersWOptionsWRetries() throws Throwable {
+    // Enable retries and run testListLoadBalancerPoolMembersWOptions.
+    vpcService.enableRetries(4, 30);
+    testListLoadBalancerPoolMembersWOptions();
+
+    // Disable retries and run testListLoadBalancerPoolMembersWOptions.
+    vpcService.disableRetries();
+    testListLoadBalancerPoolMembersWOptions();
+  }  
 
   // Test the listLoadBalancerPoolMembers operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -15581,6 +18093,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, createLoadBalancerPoolMemberPath);
   }
+  
+  public void testCreateLoadBalancerPoolMemberWOptionsWRetries() throws Throwable {
+    // Enable retries and run testCreateLoadBalancerPoolMemberWOptions.
+    vpcService.enableRetries(4, 30);
+    testCreateLoadBalancerPoolMemberWOptions();
+
+    // Disable retries and run testCreateLoadBalancerPoolMemberWOptions.
+    vpcService.disableRetries();
+    testCreateLoadBalancerPoolMemberWOptions();
+  }  
 
   // Test the createLoadBalancerPoolMember operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -15647,6 +18169,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, replaceLoadBalancerPoolMembersPath);
   }
+  
+  public void testReplaceLoadBalancerPoolMembersWOptionsWRetries() throws Throwable {
+    // Enable retries and run testReplaceLoadBalancerPoolMembersWOptions.
+    vpcService.enableRetries(4, 30);
+    testReplaceLoadBalancerPoolMembersWOptions();
+
+    // Disable retries and run testReplaceLoadBalancerPoolMembersWOptions.
+    vpcService.disableRetries();
+    testReplaceLoadBalancerPoolMembersWOptions();
+  }  
 
   // Test the replaceLoadBalancerPoolMembers operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -15701,6 +18233,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, deleteLoadBalancerPoolMemberPath);
   }
+  
+  public void testDeleteLoadBalancerPoolMemberWOptionsWRetries() throws Throwable {
+    // Enable retries and run testDeleteLoadBalancerPoolMemberWOptions.
+    vpcService.enableRetries(4, 30);
+    testDeleteLoadBalancerPoolMemberWOptions();
+
+    // Disable retries and run testDeleteLoadBalancerPoolMemberWOptions.
+    vpcService.disableRetries();
+    testDeleteLoadBalancerPoolMemberWOptions();
+  }  
 
   // Test the deleteLoadBalancerPoolMember operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -15755,6 +18297,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, getLoadBalancerPoolMemberPath);
   }
+  
+  public void testGetLoadBalancerPoolMemberWOptionsWRetries() throws Throwable {
+    // Enable retries and run testGetLoadBalancerPoolMemberWOptions.
+    vpcService.enableRetries(4, 30);
+    testGetLoadBalancerPoolMemberWOptions();
+
+    // Disable retries and run testGetLoadBalancerPoolMemberWOptions.
+    vpcService.disableRetries();
+    testGetLoadBalancerPoolMemberWOptions();
+  }  
 
   // Test the getLoadBalancerPoolMember operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -15823,6 +18375,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, updateLoadBalancerPoolMemberPath);
   }
+  
+  public void testUpdateLoadBalancerPoolMemberWOptionsWRetries() throws Throwable {
+    // Enable retries and run testUpdateLoadBalancerPoolMemberWOptions.
+    vpcService.enableRetries(4, 30);
+    testUpdateLoadBalancerPoolMemberWOptions();
+
+    // Disable retries and run testUpdateLoadBalancerPoolMemberWOptions.
+    vpcService.disableRetries();
+    testUpdateLoadBalancerPoolMemberWOptions();
+  }  
 
   // Test the updateLoadBalancerPoolMember operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -15882,6 +18444,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, listEndpointGatewaysPath);
   }
+  
+  public void testListEndpointGatewaysWOptionsWRetries() throws Throwable {
+    // Enable retries and run testListEndpointGatewaysWOptions.
+    vpcService.enableRetries(4, 30);
+    testListEndpointGatewaysWOptions();
+
+    // Disable retries and run testListEndpointGatewaysWOptions.
+    vpcService.disableRetries();
+    testListEndpointGatewaysWOptions();
+  }  
 
   @Test
   public void testCreateEndpointGatewayWOptions() throws Throwable {
@@ -15947,6 +18519,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, createEndpointGatewayPath);
   }
+  
+  public void testCreateEndpointGatewayWOptionsWRetries() throws Throwable {
+    // Enable retries and run testCreateEndpointGatewayWOptions.
+    vpcService.enableRetries(4, 30);
+    testCreateEndpointGatewayWOptions();
+
+    // Disable retries and run testCreateEndpointGatewayWOptions.
+    vpcService.disableRetries();
+    testCreateEndpointGatewayWOptions();
+  }  
 
   // Test the createEndpointGateway operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -16005,6 +18587,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, listEndpointGatewayIpsPath);
   }
+  
+  public void testListEndpointGatewayIpsWOptionsWRetries() throws Throwable {
+    // Enable retries and run testListEndpointGatewayIpsWOptions.
+    vpcService.enableRetries(4, 30);
+    testListEndpointGatewayIpsWOptions();
+
+    // Disable retries and run testListEndpointGatewayIpsWOptions.
+    vpcService.disableRetries();
+    testListEndpointGatewayIpsWOptions();
+  }  
 
   // Test the listEndpointGatewayIps operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -16058,6 +18650,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, removeEndpointGatewayIpPath);
   }
+  
+  public void testRemoveEndpointGatewayIpWOptionsWRetries() throws Throwable {
+    // Enable retries and run testRemoveEndpointGatewayIpWOptions.
+    vpcService.enableRetries(4, 30);
+    testRemoveEndpointGatewayIpWOptions();
+
+    // Disable retries and run testRemoveEndpointGatewayIpWOptions.
+    vpcService.disableRetries();
+    testRemoveEndpointGatewayIpWOptions();
+  }  
 
   // Test the removeEndpointGatewayIp operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -16111,6 +18713,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, getEndpointGatewayIpPath);
   }
+  
+  public void testGetEndpointGatewayIpWOptionsWRetries() throws Throwable {
+    // Enable retries and run testGetEndpointGatewayIpWOptions.
+    vpcService.enableRetries(4, 30);
+    testGetEndpointGatewayIpWOptions();
+
+    // Disable retries and run testGetEndpointGatewayIpWOptions.
+    vpcService.disableRetries();
+    testGetEndpointGatewayIpWOptions();
+  }  
 
   // Test the getEndpointGatewayIp operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -16164,6 +18776,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, addEndpointGatewayIpPath);
   }
+  
+  public void testAddEndpointGatewayIpWOptionsWRetries() throws Throwable {
+    // Enable retries and run testAddEndpointGatewayIpWOptions.
+    vpcService.enableRetries(4, 30);
+    testAddEndpointGatewayIpWOptions();
+
+    // Disable retries and run testAddEndpointGatewayIpWOptions.
+    vpcService.disableRetries();
+    testAddEndpointGatewayIpWOptions();
+  }  
 
   // Test the addEndpointGatewayIp operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -16216,6 +18838,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, deleteEndpointGatewayPath);
   }
+  
+  public void testDeleteEndpointGatewayWOptionsWRetries() throws Throwable {
+    // Enable retries and run testDeleteEndpointGatewayWOptions.
+    vpcService.enableRetries(4, 30);
+    testDeleteEndpointGatewayWOptions();
+
+    // Disable retries and run testDeleteEndpointGatewayWOptions.
+    vpcService.disableRetries();
+    testDeleteEndpointGatewayWOptions();
+  }  
 
   // Test the deleteEndpointGateway operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -16268,6 +18900,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, getEndpointGatewayPath);
   }
+  
+  public void testGetEndpointGatewayWOptionsWRetries() throws Throwable {
+    // Enable retries and run testGetEndpointGatewayWOptions.
+    vpcService.enableRetries(4, 30);
+    testGetEndpointGatewayWOptions();
+
+    // Disable retries and run testGetEndpointGatewayWOptions.
+    vpcService.disableRetries();
+    testGetEndpointGatewayWOptions();
+  }  
 
   // Test the getEndpointGateway operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -16327,6 +18969,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, updateEndpointGatewayPath);
   }
+  
+  public void testUpdateEndpointGatewayWOptionsWRetries() throws Throwable {
+    // Enable retries and run testUpdateEndpointGatewayWOptions.
+    vpcService.enableRetries(4, 30);
+    testUpdateEndpointGatewayWOptions();
+
+    // Disable retries and run testUpdateEndpointGatewayWOptions.
+    vpcService.disableRetries();
+    testUpdateEndpointGatewayWOptions();
+  }  
 
   // Test the updateEndpointGateway operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -16396,6 +19048,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, listFlowLogCollectorsPath);
   }
+  
+  public void testListFlowLogCollectorsWOptionsWRetries() throws Throwable {
+    // Enable retries and run testListFlowLogCollectorsWOptions.
+    vpcService.enableRetries(4, 30);
+    testListFlowLogCollectorsWOptions();
+
+    // Disable retries and run testListFlowLogCollectorsWOptions.
+    vpcService.disableRetries();
+    testListFlowLogCollectorsWOptions();
+  }  
 
   @Test
   public void testCreateFlowLogCollectorWOptions() throws Throwable {
@@ -16455,6 +19117,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, createFlowLogCollectorPath);
   }
+  
+  public void testCreateFlowLogCollectorWOptionsWRetries() throws Throwable {
+    // Enable retries and run testCreateFlowLogCollectorWOptions.
+    vpcService.enableRetries(4, 30);
+    testCreateFlowLogCollectorWOptions();
+
+    // Disable retries and run testCreateFlowLogCollectorWOptions.
+    vpcService.disableRetries();
+    testCreateFlowLogCollectorWOptions();
+  }  
 
   // Test the createFlowLogCollector operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -16507,6 +19179,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, deleteFlowLogCollectorPath);
   }
+  
+  public void testDeleteFlowLogCollectorWOptionsWRetries() throws Throwable {
+    // Enable retries and run testDeleteFlowLogCollectorWOptions.
+    vpcService.enableRetries(4, 30);
+    testDeleteFlowLogCollectorWOptions();
+
+    // Disable retries and run testDeleteFlowLogCollectorWOptions.
+    vpcService.disableRetries();
+    testDeleteFlowLogCollectorWOptions();
+  }  
 
   // Test the deleteFlowLogCollector operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -16559,6 +19241,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, getFlowLogCollectorPath);
   }
+  
+  public void testGetFlowLogCollectorWOptionsWRetries() throws Throwable {
+    // Enable retries and run testGetFlowLogCollectorWOptions.
+    vpcService.enableRetries(4, 30);
+    testGetFlowLogCollectorWOptions();
+
+    // Disable retries and run testGetFlowLogCollectorWOptions.
+    vpcService.disableRetries();
+    testGetFlowLogCollectorWOptions();
+  }  
 
   // Test the getFlowLogCollector operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
@@ -16619,6 +19311,16 @@ public class VpcTest extends PowerMockTestCase {
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, updateFlowLogCollectorPath);
   }
+  
+  public void testUpdateFlowLogCollectorWOptionsWRetries() throws Throwable {
+    // Enable retries and run testUpdateFlowLogCollectorWOptions.
+    vpcService.enableRetries(4, 30);
+    testUpdateFlowLogCollectorWOptions();
+
+    // Disable retries and run testUpdateFlowLogCollectorWOptions.
+    vpcService.disableRetries();
+    testUpdateFlowLogCollectorWOptions();
+  }  
 
   // Test the updateFlowLogCollector operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)

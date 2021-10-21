@@ -61,6 +61,7 @@ public class LoadBalancerTest {
     assertNull(loadBalancerModel.getProvisioningStatus());
     assertNull(loadBalancerModel.getPublicIps());
     assertNull(loadBalancerModel.getResourceGroup());
+    assertNull(loadBalancerModel.isRouteMode());
     assertNull(loadBalancerModel.getSecurityGroups());
     assertNull(loadBalancerModel.isSecurityGroupsSupported());
     assertNull(loadBalancerModel.getSubnets());

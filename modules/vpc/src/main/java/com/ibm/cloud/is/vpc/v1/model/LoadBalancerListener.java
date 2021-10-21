@@ -71,6 +71,10 @@ public class LoadBalancerListener extends GenericModel {
   protected String id;
   protected List<LoadBalancerListenerPolicyReference> policies;
   protected Long port;
+  @SerializedName("port_max")
+  protected Long portMax;
+  @SerializedName("port_min")
+  protected Long portMin;
   protected String protocol;
   @SerializedName("provisioning_status")
   protected String provisioningStatus;
@@ -183,13 +187,39 @@ public class LoadBalancerListener extends GenericModel {
   /**
    * Gets the port.
    *
-   * The listener port number. Each listener in the load balancer must have a unique
-   * `port` and `protocol` combination.
+   * The listener port number, or the inclusive lower bound of the port range. Each listener in the load balancer must
+   * have a unique `port` and `protocol` combination.
    *
    * @return the port
    */
   public Long getPort() {
     return port;
+  }
+
+  /**
+   * Gets the portMax.
+   *
+   * The inclusive upper bound of the range of ports used by this listener.
+   *
+   * Only load balancers in the `network` family support more than one port per listener.
+   *
+   * @return the portMax
+   */
+  public Long getPortMax() {
+    return portMax;
+  }
+
+  /**
+   * Gets the portMin.
+   *
+   * The inclusive lower bound of the range of ports used by this listener.
+   *
+   * Only load balancers in the `network` family support more than one port per listener.
+   *
+   * @return the portMin
+   */
+  public Long getPortMin() {
+    return portMin;
   }
 
   /**

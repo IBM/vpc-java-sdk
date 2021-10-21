@@ -122,8 +122,8 @@ public class VolumePatch extends GenericModel {
   /**
    * Gets the capacity.
    *
-   * The capacity to use for the volume (in gigabytes). The volume must be attached as a data volume to a virtual server
-   * instance, and the specified value must not be less than the current capacity.
+   * The capacity to use for the volume (in gigabytes). The volume must be attached as a data volume to a running
+   * virtual server instance, and the specified value must not be less than the current capacity.
    *
    * The minimum and maximum capacity limits for creating or updating volumes may expand in the future.
    *

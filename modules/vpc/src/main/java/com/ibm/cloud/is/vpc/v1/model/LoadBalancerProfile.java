@@ -25,6 +25,8 @@ public class LoadBalancerProfile extends GenericModel {
   @SerializedName("logging_supported")
   protected LoadBalancerProfileLoggingSupported loggingSupported;
   protected String name;
+  @SerializedName("route_mode_supported")
+  protected LoadBalancerProfileRouteModeSupported routeModeSupported;
   @SerializedName("security_groups_supported")
   protected LoadBalancerProfileSecurityGroupsSupported securityGroupsSupported;
 
@@ -70,6 +72,15 @@ public class LoadBalancerProfile extends GenericModel {
    */
   public String getName() {
     return name;
+  }
+
+  /**
+   * Gets the routeModeSupported.
+   *
+   * @return the routeModeSupported
+   */
+  public LoadBalancerProfileRouteModeSupported getRouteModeSupported() {
+    return routeModeSupported;
   }
 
   /**

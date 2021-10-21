@@ -42,12 +42,16 @@ public class LoadBalancerListenerPrototypeLoadBalancerContextTest {
       .connectionLimit(Long.valueOf("2000"))
       .defaultPool(loadBalancerPoolIdentityByNameModel)
       .port(Long.valueOf("443"))
+      .portMax(Long.valueOf("499"))
+      .portMin(Long.valueOf("443"))
       .protocol("http")
       .build();
     assertEquals(loadBalancerListenerPrototypeLoadBalancerContextModel.acceptProxyProtocol(), Boolean.valueOf(true));
     assertEquals(loadBalancerListenerPrototypeLoadBalancerContextModel.connectionLimit(), Long.valueOf("2000"));
     assertEquals(loadBalancerListenerPrototypeLoadBalancerContextModel.defaultPool(), loadBalancerPoolIdentityByNameModel);
     assertEquals(loadBalancerListenerPrototypeLoadBalancerContextModel.port(), Long.valueOf("443"));
+    assertEquals(loadBalancerListenerPrototypeLoadBalancerContextModel.portMax(), Long.valueOf("499"));
+    assertEquals(loadBalancerListenerPrototypeLoadBalancerContextModel.portMin(), Long.valueOf("443"));
     assertEquals(loadBalancerListenerPrototypeLoadBalancerContextModel.protocol(), "http");
 
     String json = TestUtilities.serialize(loadBalancerListenerPrototypeLoadBalancerContextModel);
@@ -58,6 +62,8 @@ public class LoadBalancerListenerPrototypeLoadBalancerContextTest {
     assertEquals(loadBalancerListenerPrototypeLoadBalancerContextModelNew.connectionLimit(), Long.valueOf("2000"));
     assertEquals(loadBalancerListenerPrototypeLoadBalancerContextModelNew.defaultPool().toString(), loadBalancerPoolIdentityByNameModel.toString());
     assertEquals(loadBalancerListenerPrototypeLoadBalancerContextModelNew.port(), Long.valueOf("443"));
+    assertEquals(loadBalancerListenerPrototypeLoadBalancerContextModelNew.portMax(), Long.valueOf("499"));
+    assertEquals(loadBalancerListenerPrototypeLoadBalancerContextModelNew.portMin(), Long.valueOf("443"));
     assertEquals(loadBalancerListenerPrototypeLoadBalancerContextModelNew.protocol(), "http");
   }
 

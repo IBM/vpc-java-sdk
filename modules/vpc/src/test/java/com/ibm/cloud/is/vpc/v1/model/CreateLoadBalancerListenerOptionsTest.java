@@ -95,7 +95,6 @@ public class CreateLoadBalancerListenerOptionsTest {
 
     CreateLoadBalancerListenerOptions createLoadBalancerListenerOptionsModel = new CreateLoadBalancerListenerOptions.Builder()
       .loadBalancerId("testString")
-      .port(Long.valueOf("443"))
       .protocol("http")
       .acceptProxyProtocol(true)
       .certificateInstance(certificateInstanceIdentityModel)
@@ -103,9 +102,11 @@ public class CreateLoadBalancerListenerOptionsTest {
       .defaultPool(loadBalancerPoolIdentityModel)
       .httpsRedirect(loadBalancerListenerHttpsRedirectPrototypeModel)
       .policies(new java.util.ArrayList<LoadBalancerListenerPolicyPrototype>(java.util.Arrays.asList(loadBalancerListenerPolicyPrototypeModel)))
+      .port(Long.valueOf("443"))
+      .portMax(Long.valueOf("499"))
+      .portMin(Long.valueOf("443"))
       .build();
     assertEquals(createLoadBalancerListenerOptionsModel.loadBalancerId(), "testString");
-    assertEquals(createLoadBalancerListenerOptionsModel.port(), Long.valueOf("443"));
     assertEquals(createLoadBalancerListenerOptionsModel.protocol(), "http");
     assertEquals(createLoadBalancerListenerOptionsModel.acceptProxyProtocol(), Boolean.valueOf(true));
     assertEquals(createLoadBalancerListenerOptionsModel.certificateInstance(), certificateInstanceIdentityModel);
@@ -113,6 +114,9 @@ public class CreateLoadBalancerListenerOptionsTest {
     assertEquals(createLoadBalancerListenerOptionsModel.defaultPool(), loadBalancerPoolIdentityModel);
     assertEquals(createLoadBalancerListenerOptionsModel.httpsRedirect(), loadBalancerListenerHttpsRedirectPrototypeModel);
     assertEquals(createLoadBalancerListenerOptionsModel.policies(), new java.util.ArrayList<LoadBalancerListenerPolicyPrototype>(java.util.Arrays.asList(loadBalancerListenerPolicyPrototypeModel)));
+    assertEquals(createLoadBalancerListenerOptionsModel.port(), Long.valueOf("443"));
+    assertEquals(createLoadBalancerListenerOptionsModel.portMax(), Long.valueOf("499"));
+    assertEquals(createLoadBalancerListenerOptionsModel.portMin(), Long.valueOf("443"));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

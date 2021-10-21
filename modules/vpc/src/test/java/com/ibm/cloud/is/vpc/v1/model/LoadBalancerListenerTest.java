@@ -50,6 +50,8 @@ public class LoadBalancerListenerTest {
     assertNull(loadBalancerListenerModel.getId());
     assertNull(loadBalancerListenerModel.getPolicies());
     assertNull(loadBalancerListenerModel.getPort());
+    assertNull(loadBalancerListenerModel.getPortMax());
+    assertNull(loadBalancerListenerModel.getPortMin());
     assertNull(loadBalancerListenerModel.getProtocol());
     assertNull(loadBalancerListenerModel.getProvisioningStatus());
   }

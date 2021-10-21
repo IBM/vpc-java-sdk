@@ -25,6 +25,14 @@ public class InstanceProfile extends GenericModel {
   protected InstanceProfileBandwidth bandwidth;
   protected List<InstanceProfileDisk> disks;
   protected String family;
+  @SerializedName("gpu_count")
+  protected InstanceProfileGPU gpuCount;
+  @SerializedName("gpu_manufacturer")
+  protected InstanceProfileGPUManufacturer gpuManufacturer;
+  @SerializedName("gpu_memory")
+  protected InstanceProfileGPUMemory gpuMemory;
+  @SerializedName("gpu_model")
+  protected InstanceProfileGPUModel gpuModel;
   protected String href;
   protected InstanceProfileMemory memory;
   protected String name;
@@ -68,6 +76,42 @@ public class InstanceProfile extends GenericModel {
    */
   public String getFamily() {
     return family;
+  }
+
+  /**
+   * Gets the gpuCount.
+   *
+   * @return the gpuCount
+   */
+  public InstanceProfileGPU getGpuCount() {
+    return gpuCount;
+  }
+
+  /**
+   * Gets the gpuManufacturer.
+   *
+   * @return the gpuManufacturer
+   */
+  public InstanceProfileGPUManufacturer getGpuManufacturer() {
+    return gpuManufacturer;
+  }
+
+  /**
+   * Gets the gpuMemory.
+   *
+   * @return the gpuMemory
+   */
+  public InstanceProfileGPUMemory getGpuMemory() {
+    return gpuMemory;
+  }
+
+  /**
+   * Gets the gpuModel.
+   *
+   * @return the gpuModel
+   */
+  public InstanceProfileGPUModel getGpuModel() {
+    return gpuModel;
   }
 
   /**
