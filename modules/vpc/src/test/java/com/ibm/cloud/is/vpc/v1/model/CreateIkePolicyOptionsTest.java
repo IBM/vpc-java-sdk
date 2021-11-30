@@ -39,16 +39,16 @@ public class CreateIkePolicyOptionsTest {
 
     CreateIkePolicyOptions createIkePolicyOptionsModel = new CreateIkePolicyOptions.Builder()
       .authenticationAlgorithm("md5")
-      .dhGroup(Long.valueOf("2"))
-      .encryptionAlgorithm("triple_des")
+      .dhGroup(Long.valueOf("14"))
+      .encryptionAlgorithm("aes128")
       .ikeVersion(Long.valueOf("1"))
       .keyLifetime(Long.valueOf("28800"))
       .name("my-ike-policy")
       .resourceGroup(resourceGroupIdentityModel)
       .build();
     assertEquals(createIkePolicyOptionsModel.authenticationAlgorithm(), "md5");
-    assertEquals(createIkePolicyOptionsModel.dhGroup(), Long.valueOf("2"));
-    assertEquals(createIkePolicyOptionsModel.encryptionAlgorithm(), "triple_des");
+    assertEquals(createIkePolicyOptionsModel.dhGroup(), Long.valueOf("14"));
+    assertEquals(createIkePolicyOptionsModel.encryptionAlgorithm(), "aes128");
     assertEquals(createIkePolicyOptionsModel.ikeVersion(), Long.valueOf("1"));
     assertEquals(createIkePolicyOptionsModel.keyLifetime(), Long.valueOf("28800"));
     assertEquals(createIkePolicyOptionsModel.name(), "my-ike-policy");

@@ -37,6 +37,8 @@ public class CreateLoadBalancerListenerPolicyRuleOptions extends GenericModel {
    * Body rules are applied to form-encoded request bodies using the `UTF-8` character set.
    */
   public interface Type {
+    /** body. */
+    String BODY = "body";
     /** header. */
     String HEADER = "header";
     /** hostname. */
@@ -45,8 +47,6 @@ public class CreateLoadBalancerListenerPolicyRuleOptions extends GenericModel {
     String PATH = "path";
     /** query. */
     String QUERY = "query";
-    /** body. */
-    String BODY = "body";
   }
 
   protected String loadBalancerId;

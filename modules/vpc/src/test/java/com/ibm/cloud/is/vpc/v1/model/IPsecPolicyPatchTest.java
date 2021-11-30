@@ -34,13 +34,13 @@ public class IPsecPolicyPatchTest {
   public void testIPsecPolicyPatch() throws Throwable {
     IPsecPolicyPatch iPsecPolicyPatchModel = new IPsecPolicyPatch.Builder()
       .authenticationAlgorithm("md5")
-      .encryptionAlgorithm("triple_des")
+      .encryptionAlgorithm("aes128")
       .keyLifetime(Long.valueOf("3600"))
       .name("my-ipsec-policy")
       .pfs("disabled")
       .build();
     assertEquals(iPsecPolicyPatchModel.authenticationAlgorithm(), "md5");
-    assertEquals(iPsecPolicyPatchModel.encryptionAlgorithm(), "triple_des");
+    assertEquals(iPsecPolicyPatchModel.encryptionAlgorithm(), "aes128");
     assertEquals(iPsecPolicyPatchModel.keyLifetime(), Long.valueOf("3600"));
     assertEquals(iPsecPolicyPatchModel.name(), "my-ipsec-policy");
     assertEquals(iPsecPolicyPatchModel.pfs(), "disabled");
@@ -50,7 +50,7 @@ public class IPsecPolicyPatchTest {
     IPsecPolicyPatch iPsecPolicyPatchModelNew = TestUtilities.deserialize(json, IPsecPolicyPatch.class);
     assertTrue(iPsecPolicyPatchModelNew instanceof IPsecPolicyPatch);
     assertEquals(iPsecPolicyPatchModelNew.authenticationAlgorithm(), "md5");
-    assertEquals(iPsecPolicyPatchModelNew.encryptionAlgorithm(), "triple_des");
+    assertEquals(iPsecPolicyPatchModelNew.encryptionAlgorithm(), "aes128");
     assertEquals(iPsecPolicyPatchModelNew.keyLifetime(), Long.valueOf("3600"));
     assertEquals(iPsecPolicyPatchModelNew.name(), "my-ipsec-policy");
     assertEquals(iPsecPolicyPatchModelNew.pfs(), "disabled");
@@ -59,7 +59,7 @@ public class IPsecPolicyPatchTest {
   public void testIPsecPolicyPatchAsPatch() throws Throwable {
     IPsecPolicyPatch iPsecPolicyPatchModel = new IPsecPolicyPatch.Builder()
       .authenticationAlgorithm("md5")
-      .encryptionAlgorithm("triple_des")
+      .encryptionAlgorithm("aes128")
       .keyLifetime(Long.valueOf("3600"))
       .name("my-ipsec-policy")
       .pfs("disabled")
@@ -68,7 +68,7 @@ public class IPsecPolicyPatchTest {
     Map<String, Object> mergePatch = iPsecPolicyPatchModel.asPatch();
 
     assertEquals(mergePatch.get("authentication_algorithm"), "md5");
-    assertEquals(mergePatch.get("encryption_algorithm"), "triple_des");
+    assertEquals(mergePatch.get("encryption_algorithm"), "aes128");
     assertTrue(mergePatch.containsKey("key_lifetime"));
     assertEquals(mergePatch.get("name"), "my-ipsec-policy");
     assertEquals(mergePatch.get("pfs"), "disabled");

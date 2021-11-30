@@ -24,7 +24,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class ReservedIPTarget extends GenericModel {
 
   /**
-   * The type of resource referenced.
+   * The resource type.
    */
   public interface ResourceType {
     /** endpoint_gateway. */
@@ -101,7 +101,7 @@ public class ReservedIPTarget extends GenericModel {
   /**
    * Gets the resourceType.
    *
-   * The type of resource referenced.
+   * The resource type.
    *
    * @return the resourceType
    */

@@ -35,12 +35,12 @@ public class LoadBalancerListenerPolicyRulePatchTest {
     LoadBalancerListenerPolicyRulePatch loadBalancerListenerPolicyRulePatchModel = new LoadBalancerListenerPolicyRulePatch.Builder()
       .condition("contains")
       .field("MY-APP-HEADER")
-      .type("header")
+      .type("body")
       .value("testString")
       .build();
     assertEquals(loadBalancerListenerPolicyRulePatchModel.condition(), "contains");
     assertEquals(loadBalancerListenerPolicyRulePatchModel.field(), "MY-APP-HEADER");
-    assertEquals(loadBalancerListenerPolicyRulePatchModel.type(), "header");
+    assertEquals(loadBalancerListenerPolicyRulePatchModel.type(), "body");
     assertEquals(loadBalancerListenerPolicyRulePatchModel.value(), "testString");
 
     String json = TestUtilities.serialize(loadBalancerListenerPolicyRulePatchModel);
@@ -49,7 +49,7 @@ public class LoadBalancerListenerPolicyRulePatchTest {
     assertTrue(loadBalancerListenerPolicyRulePatchModelNew instanceof LoadBalancerListenerPolicyRulePatch);
     assertEquals(loadBalancerListenerPolicyRulePatchModelNew.condition(), "contains");
     assertEquals(loadBalancerListenerPolicyRulePatchModelNew.field(), "MY-APP-HEADER");
-    assertEquals(loadBalancerListenerPolicyRulePatchModelNew.type(), "header");
+    assertEquals(loadBalancerListenerPolicyRulePatchModelNew.type(), "body");
     assertEquals(loadBalancerListenerPolicyRulePatchModelNew.value(), "testString");
   }
   @Test
@@ -57,7 +57,7 @@ public class LoadBalancerListenerPolicyRulePatchTest {
     LoadBalancerListenerPolicyRulePatch loadBalancerListenerPolicyRulePatchModel = new LoadBalancerListenerPolicyRulePatch.Builder()
       .condition("contains")
       .field("MY-APP-HEADER")
-      .type("header")
+      .type("body")
       .value("testString")
       .build();
 
@@ -65,7 +65,7 @@ public class LoadBalancerListenerPolicyRulePatchTest {
 
     assertEquals(mergePatch.get("condition"), "contains");
     assertEquals(mergePatch.get("field"), "MY-APP-HEADER");
-    assertEquals(mergePatch.get("type"), "header");
+    assertEquals(mergePatch.get("type"), "body");
     assertEquals(mergePatch.get("value"), "testString");
   }
 

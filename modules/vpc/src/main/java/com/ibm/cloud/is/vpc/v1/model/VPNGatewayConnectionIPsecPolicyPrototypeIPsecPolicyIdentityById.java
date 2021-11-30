@@ -13,9 +13,9 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 /**
- * IPsecPolicyIdentityById.
+ * VPNGatewayConnectionIPsecPolicyPrototypeIPsecPolicyIdentityById.
  */
-public class IPsecPolicyIdentityById extends IPsecPolicyIdentity {
+public class VPNGatewayConnectionIPsecPolicyPrototypeIPsecPolicyIdentityById extends VPNGatewayConnectionIPsecPolicyPrototype {
 
 
   /**
@@ -24,8 +24,8 @@ public class IPsecPolicyIdentityById extends IPsecPolicyIdentity {
   public static class Builder {
     private String id;
 
-    public Builder(IPsecPolicyIdentity iPsecPolicyIdentityById) {
-      this.id = iPsecPolicyIdentityById.id;
+    public Builder(VPNGatewayConnectionIPsecPolicyPrototype vpnGatewayConnectionIPsecPolicyPrototypeIPsecPolicyIdentityById) {
+      this.id = vpnGatewayConnectionIPsecPolicyPrototypeIPsecPolicyIdentityById.id;
     }
 
     /**
@@ -44,19 +44,19 @@ public class IPsecPolicyIdentityById extends IPsecPolicyIdentity {
     }
 
     /**
-     * Builds a IPsecPolicyIdentityById.
+     * Builds a VPNGatewayConnectionIPsecPolicyPrototypeIPsecPolicyIdentityById.
      *
-     * @return the new IPsecPolicyIdentityById instance
+     * @return the new VPNGatewayConnectionIPsecPolicyPrototypeIPsecPolicyIdentityById instance
      */
-    public IPsecPolicyIdentityById build() {
-      return new IPsecPolicyIdentityById(this);
+    public VPNGatewayConnectionIPsecPolicyPrototypeIPsecPolicyIdentityById build() {
+      return new VPNGatewayConnectionIPsecPolicyPrototypeIPsecPolicyIdentityById(this);
     }
 
     /**
      * Set the id.
      *
      * @param id the id
-     * @return the IPsecPolicyIdentityById builder
+     * @return the VPNGatewayConnectionIPsecPolicyPrototypeIPsecPolicyIdentityById builder
      */
     public Builder id(String id) {
       this.id = id;
@@ -64,7 +64,7 @@ public class IPsecPolicyIdentityById extends IPsecPolicyIdentity {
     }
   }
 
-  protected IPsecPolicyIdentityById(Builder builder) {
+  protected VPNGatewayConnectionIPsecPolicyPrototypeIPsecPolicyIdentityById(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.id,
       "id cannot be null");
     id = builder.id;
@@ -73,7 +73,7 @@ public class IPsecPolicyIdentityById extends IPsecPolicyIdentity {
   /**
    * New builder.
    *
-   * @return a IPsecPolicyIdentityById builder
+   * @return a VPNGatewayConnectionIPsecPolicyPrototypeIPsecPolicyIdentityById builder
    */
   public Builder newBuilder() {
     return new Builder(this);

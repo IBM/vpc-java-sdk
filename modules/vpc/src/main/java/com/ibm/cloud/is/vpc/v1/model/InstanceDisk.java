@@ -30,10 +30,10 @@ public class InstanceDisk extends GenericModel {
    * unexpected property value was encountered.
    */
   public interface InterfaceType {
-    /** virtio_blk. */
-    String VIRTIO_BLK = "virtio_blk";
     /** nvme. */
     String NVME = "nvme";
+    /** virtio_blk. */
+    String VIRTIO_BLK = "virtio_blk";
   }
 
   /**

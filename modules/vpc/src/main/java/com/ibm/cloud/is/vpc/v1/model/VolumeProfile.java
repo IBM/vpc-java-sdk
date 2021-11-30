@@ -27,10 +27,10 @@ public class VolumeProfile extends GenericModel {
    * unexpected property value was encountered.
    */
   public interface Family {
-    /** tiered. */
-    String TIERED = "tiered";
     /** custom. */
     String CUSTOM = "custom";
+    /** tiered. */
+    String TIERED = "tiered";
   }
 
   protected String family;

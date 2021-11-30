@@ -154,9 +154,8 @@ public class VolumePrototypeInstanceByImageContext extends VolumeAttachmentProto
    *
    * The root key to use to wrap the data encryption key for the volume.
    *
-   * If this property is not provided but the image is encrypted, the image's
-   * `encryption_key` will be used. Otherwise, the `encryption` type for the
-   * volume will be `provider_managed`.
+   * If unspecified, and the image is encrypted, the image's `encryption_key` will be
+   * used. Otherwise, the `encryption` type for the volume will be `provider_managed`.
    *
    * @return the encryptionKey
    */

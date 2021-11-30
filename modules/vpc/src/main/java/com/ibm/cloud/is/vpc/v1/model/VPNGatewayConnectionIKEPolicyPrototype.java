@@ -15,24 +15,25 @@ package com.ibm.cloud.is.vpc.v1.model;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * Identifies an IPsec policy by a unique property.
+ * The IKE policy to use. If unspecified, [auto-negotiation will be
+ * used](https://cloud.ibm.com/docs/vpc?topic=vpc-using-vpn&amp;interface=ui#ike-auto-negotiation-phase-1).
  *
  * Classes which extend this class:
- * - IPsecPolicyIdentityById
- * - IPsecPolicyIdentityByHref
+ * - VPNGatewayConnectionIKEPolicyPrototypeIKEPolicyIdentityById
+ * - VPNGatewayConnectionIKEPolicyPrototypeIKEPolicyIdentityByHref
  */
-public class IPsecPolicyIdentity extends GenericModel {
+public class VPNGatewayConnectionIKEPolicyPrototype extends GenericModel {
 
   protected String id;
   protected String href;
 
-  protected IPsecPolicyIdentity() {
+  protected VPNGatewayConnectionIKEPolicyPrototype() {
   }
 
   /**
    * Gets the id.
    *
-   * The unique identifier for this IPsec policy.
+   * The unique identifier for this IKE policy.
    *
    * @return the id
    */
@@ -43,7 +44,7 @@ public class IPsecPolicyIdentity extends GenericModel {
   /**
    * Gets the href.
    *
-   * The IPsec policy's canonical URL.
+   * The IKE policy's canonical URL.
    *
    * @return the href
    */

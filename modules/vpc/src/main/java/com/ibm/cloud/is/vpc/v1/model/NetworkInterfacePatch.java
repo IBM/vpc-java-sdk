@@ -106,7 +106,8 @@ public class NetworkInterfacePatch extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this network interface.
+   * The user-defined name for network interface. Names must be unique within the instance the network interface resides
+   * in.
    *
    * @return the name
    */

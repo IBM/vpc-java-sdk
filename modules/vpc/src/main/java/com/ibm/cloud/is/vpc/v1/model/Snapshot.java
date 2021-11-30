@@ -44,12 +44,12 @@ public class Snapshot extends GenericModel {
     String PENDING = "pending";
     /** stable. */
     String STABLE = "stable";
+    /** suspended. */
+    String SUSPENDED = "suspended";
     /** updating. */
     String UPDATING = "updating";
     /** waiting. */
     String WAITING = "waiting";
-    /** suspended. */
-    String SUSPENDED = "suspended";
   }
 
   /**
@@ -123,7 +123,7 @@ public class Snapshot extends GenericModel {
   /**
    * Gets the deletable.
    *
-   * Indicates whether this snapshot can be deleted. This value will not be `true` if any other snapshots depend on it.
+   * Indicates whether this snapshot can be deleted. This value will always be `true`.
    *
    * @return the deletable
    */

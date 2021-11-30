@@ -13,7 +13,7 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
-import com.ibm.cloud.is.vpc.v1.model.IKEPolicyIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionIKEPolicyPrototype;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -23,29 +23,16 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
 /**
- * Unit test class for the IKEPolicyIdentityById model.
+ * Unit test class for the VPNGatewayConnectionIKEPolicyPrototype model.
  */
-public class IKEPolicyIdentityByIdTest {
+public class VPNGatewayConnectionIKEPolicyPrototypeTest {
   final HashMap<String, InputStream> mockStreamMap = TestUtilities.createMockStreamMap();
   final List<FileWithMetadata> mockListFileWithMetadata = TestUtilities.creatMockListFileWithMetadata();
 
+  // TODO: Add tests for models that are abstract
   @Test
-  public void testIKEPolicyIdentityById() throws Throwable {
-    IKEPolicyIdentityById ikePolicyIdentityByIdModel = new IKEPolicyIdentityById.Builder()
-      .id("ddf51bec-3424-11e8-b467-0ed5f89f718b")
-      .build();
-    assertEquals(ikePolicyIdentityByIdModel.id(), "ddf51bec-3424-11e8-b467-0ed5f89f718b");
-
-    String json = TestUtilities.serialize(ikePolicyIdentityByIdModel);
-
-    IKEPolicyIdentityById ikePolicyIdentityByIdModelNew = TestUtilities.deserialize(json, IKEPolicyIdentityById.class);
-    assertTrue(ikePolicyIdentityByIdModelNew instanceof IKEPolicyIdentityById);
-    assertEquals(ikePolicyIdentityByIdModelNew.id(), "ddf51bec-3424-11e8-b467-0ed5f89f718b");
+  public void testVPNGatewayConnectionIKEPolicyPrototype() throws Throwable {
+    VPNGatewayConnectionIKEPolicyPrototype vpnGatewayConnectionIkePolicyPrototypeModel = new VPNGatewayConnectionIKEPolicyPrototype();
+    assertNotNull(vpnGatewayConnectionIkePolicyPrototypeModel);
   }
-
-  @Test(expectedExceptions = IllegalArgumentException.class)
-  public void testIKEPolicyIdentityByIdError() throws Throwable {
-    new IKEPolicyIdentityById.Builder().build();
-  }
-
 }

@@ -93,8 +93,9 @@ public class InstanceGroupManagerAction extends GenericModel {
   /**
    * Gets the autoDelete.
    *
-   * If set to `true`, this scheduled action will be automatically deleted after it has finished and the
-   * `auto_delete_timeout` time has passed.
+   * Indicates whether this scheduled action will be automatically deleted after it has completed and
+   * `auto_delete_timeout` hours have passed. At present, this is always
+   * `true`, but may be modifiable in the future.
    *
    * @return the autoDelete
    */
@@ -105,8 +106,9 @@ public class InstanceGroupManagerAction extends GenericModel {
   /**
    * Gets the autoDeleteTimeout.
    *
-   * Amount of time in hours that are required to pass before the scheduled action will be automatically deleted once it
-   * has finished. If this value is 0, the action will be deleted on completion.
+   * If `auto_delete` is `true`, and this scheduled action has finished, the hours after which it will be automatically
+   * deleted. If the value is `0`, the action will be deleted once it has finished. This value may be modifiable in the
+   * future.
    *
    * @return the autoDeleteTimeout
    */
@@ -223,7 +225,7 @@ public class InstanceGroupManagerAction extends GenericModel {
   /**
    * Gets the lastAppliedAt.
    *
-   * The date and time the scheduled action was last applied. If empty the action has never been applied.
+   * The date and time the scheduled action was last applied. If absent, the action has never been applied.
    *
    * @return the lastAppliedAt
    */
@@ -234,7 +236,7 @@ public class InstanceGroupManagerAction extends GenericModel {
   /**
    * Gets the nextRunAt.
    *
-   * The date and time the scheduled action will next run. If empty the system is currently calculating the next run
+   * The date and time the scheduled action will next run. If absent, the system is currently calculating the next run
    * time.
    *
    * @return the nextRunAt

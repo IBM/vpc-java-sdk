@@ -23,14 +23,14 @@ public class ListFlowLogCollectorsOptions extends GenericModel {
    * Filters the collection to flow log collectors that target the specified resource type.
    */
   public interface TargetResourceType {
-    /** vpc. */
-    String VPC = "vpc";
-    /** subnet. */
-    String SUBNET = "subnet";
     /** instance. */
     String INSTANCE = "instance";
     /** network_interface. */
     String NETWORK_INTERFACE = "network_interface";
+    /** subnet. */
+    String SUBNET = "subnet";
+    /** vpc. */
+    String VPC = "vpc";
   }
 
   protected String start;
@@ -230,8 +230,7 @@ public class ListFlowLogCollectorsOptions extends GenericModel {
   /**
    * Gets the resourceGroupId.
    *
-   * Filters the collection to resources within one of the resource groups identified in a comma-separated list of
-   * resource group identifiers.
+   * Filters the collection to resources in the resource group with the specified identifier.
    *
    * @return the resourceGroupId
    */

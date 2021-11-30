@@ -13,9 +13,9 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 /**
- * IPsecPolicyIdentityByHref.
+ * VPNGatewayConnectionIKEPolicyPatchIKEPolicyIdentityByHref.
  */
-public class IPsecPolicyIdentityByHref extends IPsecPolicyIdentity {
+public class VPNGatewayConnectionIKEPolicyPatchIKEPolicyIdentityByHref extends VPNGatewayConnectionIKEPolicyPatch {
 
 
   /**
@@ -24,8 +24,8 @@ public class IPsecPolicyIdentityByHref extends IPsecPolicyIdentity {
   public static class Builder {
     private String href;
 
-    public Builder(IPsecPolicyIdentity iPsecPolicyIdentityByHref) {
-      this.href = iPsecPolicyIdentityByHref.href;
+    public Builder(VPNGatewayConnectionIKEPolicyPatch vpnGatewayConnectionIkePolicyPatchIkePolicyIdentityByHref) {
+      this.href = vpnGatewayConnectionIkePolicyPatchIkePolicyIdentityByHref.href;
     }
 
     /**
@@ -44,19 +44,19 @@ public class IPsecPolicyIdentityByHref extends IPsecPolicyIdentity {
     }
 
     /**
-     * Builds a IPsecPolicyIdentityByHref.
+     * Builds a VPNGatewayConnectionIKEPolicyPatchIKEPolicyIdentityByHref.
      *
-     * @return the new IPsecPolicyIdentityByHref instance
+     * @return the new VPNGatewayConnectionIKEPolicyPatchIKEPolicyIdentityByHref instance
      */
-    public IPsecPolicyIdentityByHref build() {
-      return new IPsecPolicyIdentityByHref(this);
+    public VPNGatewayConnectionIKEPolicyPatchIKEPolicyIdentityByHref build() {
+      return new VPNGatewayConnectionIKEPolicyPatchIKEPolicyIdentityByHref(this);
     }
 
     /**
      * Set the href.
      *
      * @param href the href
-     * @return the IPsecPolicyIdentityByHref builder
+     * @return the VPNGatewayConnectionIKEPolicyPatchIKEPolicyIdentityByHref builder
      */
     public Builder href(String href) {
       this.href = href;
@@ -64,7 +64,7 @@ public class IPsecPolicyIdentityByHref extends IPsecPolicyIdentity {
     }
   }
 
-  protected IPsecPolicyIdentityByHref(Builder builder) {
+  protected VPNGatewayConnectionIKEPolicyPatchIKEPolicyIdentityByHref(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.href,
       "href cannot be null");
     href = builder.href;
@@ -73,7 +73,7 @@ public class IPsecPolicyIdentityByHref extends IPsecPolicyIdentity {
   /**
    * New builder.
    *
-   * @return a IPsecPolicyIdentityByHref builder
+   * @return a VPNGatewayConnectionIKEPolicyPatchIKEPolicyIdentityByHref builder
    */
   public Builder newBuilder() {
     return new Builder(this);

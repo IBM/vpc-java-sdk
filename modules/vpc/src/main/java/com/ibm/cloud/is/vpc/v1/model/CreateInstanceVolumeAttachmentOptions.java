@@ -167,8 +167,8 @@ public class CreateInstanceVolumeAttachmentOptions extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this volume attachment. If unspecified, the name will be a hyphenated list of
-   * randomly-selected words.
+   * The user-defined name for this volume attachment. Names must be unique within the instance the volume attachment
+   * resides in. If unspecified, the name will be a hyphenated list of randomly-selected words.
    *
    * @return the name
    */

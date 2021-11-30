@@ -36,7 +36,7 @@ public class CreateLoadBalancerListenerPolicyRuleOptionsTest {
       .listenerId("testString")
       .policyId("testString")
       .condition("contains")
-      .type("header")
+      .type("body")
       .value("testString")
       .field("MY-APP-HEADER")
       .build();
@@ -44,7 +44,7 @@ public class CreateLoadBalancerListenerPolicyRuleOptionsTest {
     assertEquals(createLoadBalancerListenerPolicyRuleOptionsModel.listenerId(), "testString");
     assertEquals(createLoadBalancerListenerPolicyRuleOptionsModel.policyId(), "testString");
     assertEquals(createLoadBalancerListenerPolicyRuleOptionsModel.condition(), "contains");
-    assertEquals(createLoadBalancerListenerPolicyRuleOptionsModel.type(), "header");
+    assertEquals(createLoadBalancerListenerPolicyRuleOptionsModel.type(), "body");
     assertEquals(createLoadBalancerListenerPolicyRuleOptionsModel.value(), "testString");
     assertEquals(createLoadBalancerListenerPolicyRuleOptionsModel.field(), "MY-APP-HEADER");
   }

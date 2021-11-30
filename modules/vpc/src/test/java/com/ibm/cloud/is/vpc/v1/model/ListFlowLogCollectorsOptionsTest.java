@@ -40,7 +40,7 @@ public class ListFlowLogCollectorsOptionsTest {
       .vpcCrn("testString")
       .vpcName("testString")
       .targetId("testString")
-      .targetResourceType("vpc")
+      .targetResourceType("instance")
       .build();
     assertEquals(listFlowLogCollectorsOptionsModel.start(), "testString");
     assertEquals(listFlowLogCollectorsOptionsModel.limit(), Long.valueOf("1"));
@@ -50,6 +50,6 @@ public class ListFlowLogCollectorsOptionsTest {
     assertEquals(listFlowLogCollectorsOptionsModel.vpcCrn(), "testString");
     assertEquals(listFlowLogCollectorsOptionsModel.vpcName(), "testString");
     assertEquals(listFlowLogCollectorsOptionsModel.targetId(), "testString");
-    assertEquals(listFlowLogCollectorsOptionsModel.targetResourceType(), "vpc");
+    assertEquals(listFlowLogCollectorsOptionsModel.targetResourceType(), "instance");
   }
 }

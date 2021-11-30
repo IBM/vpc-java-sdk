@@ -26,10 +26,10 @@ public class LoadBalancerPoolHealthMonitorPatch extends GenericModel {
   public interface Type {
     /** http. */
     String HTTP = "http";
-    /** tcp. */
-    String TCP = "tcp";
     /** https. */
     String HTTPS = "https";
+    /** tcp. */
+    String TCP = "tcp";
   }
 
   protected Long delay;

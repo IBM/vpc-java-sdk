@@ -43,7 +43,7 @@ public class VolumeAttachmentVolumePrototypeInstanceByVolumeContext extends Volu
    *
    * The root key to use to wrap the data encryption key for the volume.
    *
-   * If this property is not provided, the snapshot's `encryption_key` will be used.
+   * If unspecified, the snapshot's `encryption_key` will be used.
    *
    * @return the encryptionKey
    */

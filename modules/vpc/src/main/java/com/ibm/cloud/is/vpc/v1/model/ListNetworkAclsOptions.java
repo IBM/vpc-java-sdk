@@ -126,8 +126,7 @@ public class ListNetworkAclsOptions extends GenericModel {
   /**
    * Gets the resourceGroupId.
    *
-   * Filters the collection to resources within one of the resource groups identified in a comma-separated list of
-   * resource group identifiers.
+   * Filters the collection to resources in the resource group with the specified identifier.
    *
    * @return the resourceGroupId
    */

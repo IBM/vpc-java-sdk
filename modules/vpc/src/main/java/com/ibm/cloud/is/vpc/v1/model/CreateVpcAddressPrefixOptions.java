@@ -194,9 +194,8 @@ public class CreateVpcAddressPrefixOptions extends GenericModel {
   /**
    * Gets the isDefault.
    *
-   * Indicates whether this is the default prefix for this zone in this VPC. If true, this prefix will become the
-   * default prefix for this zone in this VPC. This fails if the VPC currently has a default address prefix for this
-   * zone.
+   * Indicates whether this will be the default address prefix for this zone in this VPC. If `true`, the VPC must not
+   * have a default address prefix for this zone.
    *
    * @return the isDefault
    */

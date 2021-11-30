@@ -35,9 +35,9 @@ public class VPNGatewayConnectionPatchVPNGatewayConnectionStaticRouteModePatch e
    */
   public static class Builder {
     private Boolean adminStateUp;
-    private VPNGatewayConnectionDPDPrototype deadPeerDetection;
-    private IKEPolicyIdentity ikePolicy;
-    private IPsecPolicyIdentity ipsecPolicy;
+    private VPNGatewayConnectionDPDPatch deadPeerDetection;
+    private VPNGatewayConnectionIKEPolicyPatch ikePolicy;
+    private VPNGatewayConnectionIPsecPolicyPatch ipsecPolicy;
     private String name;
     private String peerAddress;
     private String psk;
@@ -86,7 +86,7 @@ public class VPNGatewayConnectionPatchVPNGatewayConnectionStaticRouteModePatch e
      * @param deadPeerDetection the deadPeerDetection
      * @return the VPNGatewayConnectionPatchVPNGatewayConnectionStaticRouteModePatch builder
      */
-    public Builder deadPeerDetection(VPNGatewayConnectionDPDPrototype deadPeerDetection) {
+    public Builder deadPeerDetection(VPNGatewayConnectionDPDPatch deadPeerDetection) {
       this.deadPeerDetection = deadPeerDetection;
       return this;
     }
@@ -97,7 +97,7 @@ public class VPNGatewayConnectionPatchVPNGatewayConnectionStaticRouteModePatch e
      * @param ikePolicy the ikePolicy
      * @return the VPNGatewayConnectionPatchVPNGatewayConnectionStaticRouteModePatch builder
      */
-    public Builder ikePolicy(IKEPolicyIdentity ikePolicy) {
+    public Builder ikePolicy(VPNGatewayConnectionIKEPolicyPatch ikePolicy) {
       this.ikePolicy = ikePolicy;
       return this;
     }
@@ -108,7 +108,7 @@ public class VPNGatewayConnectionPatchVPNGatewayConnectionStaticRouteModePatch e
      * @param ipsecPolicy the ipsecPolicy
      * @return the VPNGatewayConnectionPatchVPNGatewayConnectionStaticRouteModePatch builder
      */
-    public Builder ipsecPolicy(IPsecPolicyIdentity ipsecPolicy) {
+    public Builder ipsecPolicy(VPNGatewayConnectionIPsecPolicyPatch ipsecPolicy) {
       this.ipsecPolicy = ipsecPolicy;
       return this;
     }

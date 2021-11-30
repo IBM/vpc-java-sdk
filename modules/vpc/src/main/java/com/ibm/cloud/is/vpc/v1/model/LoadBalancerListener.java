@@ -154,7 +154,7 @@ public class LoadBalancerListener extends GenericModel {
   /**
    * Gets the httpsRedirect.
    *
-   * If provided, the target listener that requests are redirected to.
+   * If specified, the target listener that requests are redirected to.
    *
    * @return the httpsRedirect
    */

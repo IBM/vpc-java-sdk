@@ -37,11 +37,11 @@ public class VPNGatewayConnectionPatch extends GenericModel {
   @SerializedName("admin_state_up")
   protected Boolean adminStateUp;
   @SerializedName("dead_peer_detection")
-  protected VPNGatewayConnectionDPDPrototype deadPeerDetection;
+  protected VPNGatewayConnectionDPDPatch deadPeerDetection;
   @SerializedName("ike_policy")
-  protected IKEPolicyIdentity ikePolicy;
+  protected VPNGatewayConnectionIKEPolicyPatch ikePolicy;
   @SerializedName("ipsec_policy")
-  protected IPsecPolicyIdentity ipsecPolicy;
+  protected VPNGatewayConnectionIPsecPolicyPatch ipsecPolicy;
   protected String name;
   @SerializedName("peer_address")
   protected String peerAddress;
@@ -70,30 +70,31 @@ public class VPNGatewayConnectionPatch extends GenericModel {
    *
    * @return the deadPeerDetection
    */
-  public VPNGatewayConnectionDPDPrototype deadPeerDetection() {
+  public VPNGatewayConnectionDPDPatch deadPeerDetection() {
     return deadPeerDetection;
   }
 
   /**
    * Gets the ikePolicy.
    *
-   * Optional IKE policy configuration. The absence of a policy indicates autonegotiation.
+   * The IKE policy to use. Specify `null` to remove any existing policy, [resulting in
+   * auto-negotiation](https://cloud.ibm.com/docs/vpc?topic=vpc-using-vpn&amp;interface=ui#ike-auto-negotiation-phase-1).
    *
    * @return the ikePolicy
    */
-  public IKEPolicyIdentity ikePolicy() {
+  public VPNGatewayConnectionIKEPolicyPatch ikePolicy() {
     return ikePolicy;
   }
 
   /**
    * Gets the ipsecPolicy.
    *
-   * Optional IPsec policy configuration. The absence of a policy indicates
-   * autonegotiation.
+   * The IPsec policy to use. Specify `null` to remove any existing policy, [resulting in
+   * auto-negotiation](https://cloud.ibm.com/docs/vpc?topic=vpc-using-vpn&amp;interface=ui#ipsec-auto-negotiation-phase-2).
    *
    * @return the ipsecPolicy
    */
-  public IPsecPolicyIdentity ipsecPolicy() {
+  public VPNGatewayConnectionIPsecPolicyPatch ipsecPolicy() {
     return ipsecPolicy;
   }
 

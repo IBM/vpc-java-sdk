@@ -13,7 +13,7 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
-import com.ibm.cloud.is.vpc.v1.model.IPsecPolicyIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionIPsecPolicyPatch;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -23,29 +23,16 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
 /**
- * Unit test class for the IPsecPolicyIdentityById model.
+ * Unit test class for the VPNGatewayConnectionIPsecPolicyPatch model.
  */
-public class IPsecPolicyIdentityByIdTest {
+public class VPNGatewayConnectionIPsecPolicyPatchTest {
   final HashMap<String, InputStream> mockStreamMap = TestUtilities.createMockStreamMap();
   final List<FileWithMetadata> mockListFileWithMetadata = TestUtilities.creatMockListFileWithMetadata();
 
+  // TODO: Add tests for models that are abstract
   @Test
-  public void testIPsecPolicyIdentityById() throws Throwable {
-    IPsecPolicyIdentityById iPsecPolicyIdentityByIdModel = new IPsecPolicyIdentityById.Builder()
-      .id("ddf51bec-3424-11e8-b467-0ed5f89f718b")
-      .build();
-    assertEquals(iPsecPolicyIdentityByIdModel.id(), "ddf51bec-3424-11e8-b467-0ed5f89f718b");
-
-    String json = TestUtilities.serialize(iPsecPolicyIdentityByIdModel);
-
-    IPsecPolicyIdentityById iPsecPolicyIdentityByIdModelNew = TestUtilities.deserialize(json, IPsecPolicyIdentityById.class);
-    assertTrue(iPsecPolicyIdentityByIdModelNew instanceof IPsecPolicyIdentityById);
-    assertEquals(iPsecPolicyIdentityByIdModelNew.id(), "ddf51bec-3424-11e8-b467-0ed5f89f718b");
+  public void testVPNGatewayConnectionIPsecPolicyPatch() throws Throwable {
+    VPNGatewayConnectionIPsecPolicyPatch vpnGatewayConnectionIPsecPolicyPatchModel = new VPNGatewayConnectionIPsecPolicyPatch();
+    assertNotNull(vpnGatewayConnectionIPsecPolicyPatchModel);
   }
-
-  @Test(expectedExceptions = IllegalArgumentException.class)
-  public void testIPsecPolicyIdentityByIdError() throws Throwable {
-    new IPsecPolicyIdentityById.Builder().build();
-  }
-
 }

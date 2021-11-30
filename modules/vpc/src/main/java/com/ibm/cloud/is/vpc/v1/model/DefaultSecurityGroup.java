@@ -105,7 +105,7 @@ public class DefaultSecurityGroup extends GenericModel {
    * Gets the rules.
    *
    * The rules for the default security group for a VPC. Defaults to allowing all outbound traffic, and allowing all
-   * inbound traffic from other interfaces in the VPC's default security group. Rules in the default security group may
+   * inbound traffic from other interfaces in the VPC's default security group. Rules for the default security group may
    * be changed, added or removed.
    *
    * @return the rules

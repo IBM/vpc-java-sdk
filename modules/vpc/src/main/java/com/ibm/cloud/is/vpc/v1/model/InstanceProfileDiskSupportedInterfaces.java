@@ -30,10 +30,10 @@ public class InstanceProfileDiskSupportedInterfaces extends GenericModel {
    * unexpected property value was encountered.
    */
   public interface XDefault {
-    /** virtio_blk. */
-    String VIRTIO_BLK = "virtio_blk";
     /** nvme. */
     String NVME = "nvme";
+    /** virtio_blk. */
+    String VIRTIO_BLK = "virtio_blk";
   }
 
   /**
@@ -52,10 +52,10 @@ public class InstanceProfileDiskSupportedInterfaces extends GenericModel {
    * unexpected property value was encountered.
    */
   public interface Values {
-    /** virtio_blk. */
-    String VIRTIO_BLK = "virtio_blk";
     /** nvme. */
     String NVME = "nvme";
+    /** virtio_blk. */
+    String VIRTIO_BLK = "virtio_blk";
   }
 
   @SerializedName("default")

@@ -13,7 +13,7 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
-import com.ibm.cloud.is.vpc.v1.model.IKEPolicyIdentity;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionIPsecPolicyPrototype;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -23,16 +23,16 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
 /**
- * Unit test class for the IKEPolicyIdentity model.
+ * Unit test class for the VPNGatewayConnectionIPsecPolicyPrototype model.
  */
-public class IKEPolicyIdentityTest {
+public class VPNGatewayConnectionIPsecPolicyPrototypeTest {
   final HashMap<String, InputStream> mockStreamMap = TestUtilities.createMockStreamMap();
   final List<FileWithMetadata> mockListFileWithMetadata = TestUtilities.creatMockListFileWithMetadata();
 
   // TODO: Add tests for models that are abstract
   @Test
-  public void testIKEPolicyIdentity() throws Throwable {
-    IKEPolicyIdentity ikePolicyIdentityModel = new IKEPolicyIdentity();
-    assertNotNull(ikePolicyIdentityModel);
+  public void testVPNGatewayConnectionIPsecPolicyPrototype() throws Throwable {
+    VPNGatewayConnectionIPsecPolicyPrototype vpnGatewayConnectionIPsecPolicyPrototypeModel = new VPNGatewayConnectionIPsecPolicyPrototype();
+    assertNotNull(vpnGatewayConnectionIPsecPolicyPrototypeModel);
   }
 }

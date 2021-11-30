@@ -13,9 +13,9 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 /**
- * IKEPolicyIdentityById.
+ * VPNGatewayConnectionIPsecPolicyPatchIPsecPolicyIdentityById.
  */
-public class IKEPolicyIdentityById extends IKEPolicyIdentity {
+public class VPNGatewayConnectionIPsecPolicyPatchIPsecPolicyIdentityById extends VPNGatewayConnectionIPsecPolicyPatch {
 
 
   /**
@@ -24,8 +24,8 @@ public class IKEPolicyIdentityById extends IKEPolicyIdentity {
   public static class Builder {
     private String id;
 
-    public Builder(IKEPolicyIdentity ikePolicyIdentityById) {
-      this.id = ikePolicyIdentityById.id;
+    public Builder(VPNGatewayConnectionIPsecPolicyPatch vpnGatewayConnectionIPsecPolicyPatchIPsecPolicyIdentityById) {
+      this.id = vpnGatewayConnectionIPsecPolicyPatchIPsecPolicyIdentityById.id;
     }
 
     /**
@@ -44,19 +44,19 @@ public class IKEPolicyIdentityById extends IKEPolicyIdentity {
     }
 
     /**
-     * Builds a IKEPolicyIdentityById.
+     * Builds a VPNGatewayConnectionIPsecPolicyPatchIPsecPolicyIdentityById.
      *
-     * @return the new IKEPolicyIdentityById instance
+     * @return the new VPNGatewayConnectionIPsecPolicyPatchIPsecPolicyIdentityById instance
      */
-    public IKEPolicyIdentityById build() {
-      return new IKEPolicyIdentityById(this);
+    public VPNGatewayConnectionIPsecPolicyPatchIPsecPolicyIdentityById build() {
+      return new VPNGatewayConnectionIPsecPolicyPatchIPsecPolicyIdentityById(this);
     }
 
     /**
      * Set the id.
      *
      * @param id the id
-     * @return the IKEPolicyIdentityById builder
+     * @return the VPNGatewayConnectionIPsecPolicyPatchIPsecPolicyIdentityById builder
      */
     public Builder id(String id) {
       this.id = id;
@@ -64,7 +64,7 @@ public class IKEPolicyIdentityById extends IKEPolicyIdentity {
     }
   }
 
-  protected IKEPolicyIdentityById(Builder builder) {
+  protected VPNGatewayConnectionIPsecPolicyPatchIPsecPolicyIdentityById(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.id,
       "id cannot be null");
     id = builder.id;
@@ -73,7 +73,7 @@ public class IKEPolicyIdentityById extends IKEPolicyIdentity {
   /**
    * New builder.
    *
-   * @return a IKEPolicyIdentityById builder
+   * @return a VPNGatewayConnectionIPsecPolicyPatchIPsecPolicyIdentityById builder
    */
   public Builder newBuilder() {
     return new Builder(this);

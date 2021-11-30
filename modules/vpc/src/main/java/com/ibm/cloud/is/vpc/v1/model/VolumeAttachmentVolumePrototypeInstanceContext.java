@@ -123,8 +123,7 @@ public class VolumeAttachmentVolumePrototypeInstanceContext extends GenericModel
    *
    * The root key to use to wrap the data encryption key for the volume.
    *
-   * If this property is not provided, the `encryption` type for the volume will be
-   * `provider_managed`.
+   * If unspecified, the `encryption` type for the volume will be `provider_managed`.
    *
    * @return the encryptionKey
    */

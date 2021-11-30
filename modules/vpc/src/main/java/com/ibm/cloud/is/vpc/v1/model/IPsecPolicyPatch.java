@@ -41,12 +41,12 @@ public class IPsecPolicyPatch extends GenericModel {
    * The encryption algorithm.
    */
   public interface EncryptionAlgorithm {
-    /** triple_des. */
-    String TRIPLE_DES = "triple_des";
     /** aes128. */
     String AES128 = "aes128";
     /** aes256. */
     String AES256 = "aes256";
+    /** triple_des. */
+    String TRIPLE_DES = "triple_des";
   }
 
   /**

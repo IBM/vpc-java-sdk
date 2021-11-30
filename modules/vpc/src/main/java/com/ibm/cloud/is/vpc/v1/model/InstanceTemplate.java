@@ -217,8 +217,8 @@ public class InstanceTemplate extends GenericModel {
   /**
    * Gets the vpc.
    *
-   * The VPC the virtual server instance is to be a part of. If provided, must match the
-   * VPC tied to the subnets of the instance's network interfaces.
+   * The VPC the virtual server instance is to be a part of. If specified, it must match
+   * the VPC referenced by the subnets of the instance's network interfaces.
    *
    * @return the vpc
    */

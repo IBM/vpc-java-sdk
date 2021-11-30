@@ -35,16 +35,16 @@ public class DedicatedHost extends GenericModel {
     String PENDING = "pending";
     /** stable. */
     String STABLE = "stable";
+    /** suspended. */
+    String SUSPENDED = "suspended";
     /** updating. */
     String UPDATING = "updating";
     /** waiting. */
     String WAITING = "waiting";
-    /** suspended. */
-    String SUSPENDED = "suspended";
   }
 
   /**
-   * The type of resource referenced.
+   * The resource type.
    */
   public interface ResourceType {
     /** dedicated_host. */
@@ -236,8 +236,7 @@ public class DedicatedHost extends GenericModel {
   /**
    * Gets the name.
    *
-   * The unique user-defined name for this dedicated host. If unspecified, the name will be a hyphenated list of
-   * randomly-selected words.
+   * The unique user-defined name for this dedicated host.
    *
    * @return the name
    */
@@ -281,7 +280,7 @@ public class DedicatedHost extends GenericModel {
   /**
    * Gets the resourceType.
    *
-   * The type of resource referenced.
+   * The resource type.
    *
    * @return the resourceType
    */

@@ -25,12 +25,12 @@ public class LoadBalancerPoolSessionPersistencePatch extends GenericModel {
    * `https` protocols.
    */
   public interface Type {
-    /** source_ip. */
-    String SOURCE_IP = "source_ip";
     /** app_cookie. */
     String APP_COOKIE = "app_cookie";
     /** http_cookie. */
     String HTTP_COOKIE = "http_cookie";
+    /** source_ip. */
+    String SOURCE_IP = "source_ip";
   }
 
   @SerializedName("cookie_name")

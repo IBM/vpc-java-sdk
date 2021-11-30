@@ -173,7 +173,8 @@ public class VPNGatewayConnection extends GenericModel {
   /**
    * Gets the ikePolicy.
    *
-   * Optional IKE policy configuration. The absence of a policy indicates autonegotiation.
+   * The IKE policy. If absent, [auto-negotiation is
+   * used](https://cloud.ibm.com/docs/vpc?topic=vpc-using-vpn&amp;interface=ui#ike-auto-negotiation-phase-1).
    *
    * @return the ikePolicy
    */
@@ -184,8 +185,8 @@ public class VPNGatewayConnection extends GenericModel {
   /**
    * Gets the ipsecPolicy.
    *
-   * Optional IPsec policy configuration. The absence of a policy indicates
-   * autonegotiation.
+   * The IPsec policy. If absent, [auto-negotiation is
+   * used](https://cloud.ibm.com/docs/vpc?topic=vpc-using-vpn&amp;interface=ui#ipsec-auto-negotiation-phase-2).
    *
    * @return the ipsecPolicy
    */

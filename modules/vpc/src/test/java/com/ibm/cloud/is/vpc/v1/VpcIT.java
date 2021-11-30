@@ -311,9 +311,6 @@ import com.ibm.cloud.is.vpc.v1.model.IKEPolicy;
 import com.ibm.cloud.is.vpc.v1.model.IKEPolicyCollection;
 import com.ibm.cloud.is.vpc.v1.model.IKEPolicyCollectionFirst;
 import com.ibm.cloud.is.vpc.v1.model.IKEPolicyCollectionNext;
-import com.ibm.cloud.is.vpc.v1.model.IKEPolicyIdentity;
-import com.ibm.cloud.is.vpc.v1.model.IKEPolicyIdentityByHref;
-import com.ibm.cloud.is.vpc.v1.model.IKEPolicyIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.IKEPolicyPatch;
 import com.ibm.cloud.is.vpc.v1.model.IKEPolicyReference;
 import com.ibm.cloud.is.vpc.v1.model.IKEPolicyReferenceDeleted;
@@ -322,9 +319,6 @@ import com.ibm.cloud.is.vpc.v1.model.IPsecPolicy;
 import com.ibm.cloud.is.vpc.v1.model.IPsecPolicyCollection;
 import com.ibm.cloud.is.vpc.v1.model.IPsecPolicyCollectionFirst;
 import com.ibm.cloud.is.vpc.v1.model.IPsecPolicyCollectionNext;
-import com.ibm.cloud.is.vpc.v1.model.IPsecPolicyIdentity;
-import com.ibm.cloud.is.vpc.v1.model.IPsecPolicyIdentityByHref;
-import com.ibm.cloud.is.vpc.v1.model.IPsecPolicyIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.IPsecPolicyPatch;
 import com.ibm.cloud.is.vpc.v1.model.IPsecPolicyReference;
 import com.ibm.cloud.is.vpc.v1.model.IPsecPolicyReferenceDeleted;
@@ -971,7 +965,20 @@ import com.ibm.cloud.is.vpc.v1.model.VPNGatewayCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnection;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionCollection;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionDPD;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionDPDPatch;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionDPDPrototype;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionIKEPolicyPatch;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionIKEPolicyPatchIKEPolicyIdentityByHref;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionIKEPolicyPatchIKEPolicyIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionIKEPolicyPrototype;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionIKEPolicyPrototypeIKEPolicyIdentityByHref;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionIKEPolicyPrototypeIKEPolicyIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionIPsecPolicyPatch;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionIPsecPolicyPatchIPsecPolicyIdentityByHref;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionIPsecPolicyPatchIPsecPolicyIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionIPsecPolicyPrototype;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionIPsecPolicyPrototypeIPsecPolicyIdentityByHref;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionIPsecPolicyPrototypeIPsecPolicyIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionLocalCIDRs;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionPatch;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionPatchVPNGatewayConnectionStaticRouteModePatch;
@@ -2680,7 +2687,6 @@ public class VpcIT extends SdkIntegrationTestBase {
       ListKeysOptions listKeysOptions = new ListKeysOptions.Builder()
       .start("testString")
       .limit(Long.valueOf("1"))
-      .resourceGroupId("testString")
       .build();
 
       // Invoke operation
@@ -4646,6 +4652,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       .limit(Long.valueOf("1"))
       .resourceGroupId("testString")
       .zoneName("testString")
+      .name("testString")
       .build();
 
       // Invoke operation
@@ -4839,6 +4846,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       .limit(Long.valueOf("1"))
       .resourceGroupId("testString")
       .zoneName("testString")
+      .name("testString")
       .build();
 
       // Invoke operation
@@ -6823,8 +6831,8 @@ public class VpcIT extends SdkIntegrationTestBase {
 
       CreateIkePolicyOptions createIkePolicyOptions = new CreateIkePolicyOptions.Builder()
       .authenticationAlgorithm("md5")
-      .dhGroup(Long.valueOf("2"))
-      .encryptionAlgorithm("triple_des")
+      .dhGroup(Long.valueOf("14"))
+      .encryptionAlgorithm("aes128")
       .ikeVersion(Long.valueOf("1"))
       .keyLifetime(Long.valueOf("28800"))
       .name("my-ike-policy")
@@ -6891,8 +6899,8 @@ public class VpcIT extends SdkIntegrationTestBase {
     try {
       IKEPolicyPatch ikePolicyPatchModel = new IKEPolicyPatch.Builder()
       .authenticationAlgorithm("md5")
-      .dhGroup(Long.valueOf("2"))
-      .encryptionAlgorithm("triple_des")
+      .dhGroup(Long.valueOf("14"))
+      .encryptionAlgorithm("aes128")
       .ikeVersion(Long.valueOf("1"))
       .keyLifetime(Long.valueOf("28800"))
       .name("my-ike-policy")
@@ -6992,7 +7000,7 @@ public class VpcIT extends SdkIntegrationTestBase {
 
       CreateIpsecPolicyOptions createIpsecPolicyOptions = new CreateIpsecPolicyOptions.Builder()
       .authenticationAlgorithm("md5")
-      .encryptionAlgorithm("triple_des")
+      .encryptionAlgorithm("aes128")
       .pfs("disabled")
       .keyLifetime(Long.valueOf("3600"))
       .name("my-ipsec-policy")
@@ -7059,7 +7067,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     try {
       IPsecPolicyPatch iPsecPolicyPatchModel = new IPsecPolicyPatch.Builder()
       .authenticationAlgorithm("md5")
-      .encryptionAlgorithm("triple_des")
+      .encryptionAlgorithm("aes128")
       .keyLifetime(Long.valueOf("3600"))
       .name("my-ipsec-policy")
       .pfs("disabled")
@@ -7308,19 +7316,19 @@ public class VpcIT extends SdkIntegrationTestBase {
       .timeout(Long.valueOf("120"))
       .build();
 
-      IKEPolicyIdentityById ikePolicyIdentityModel = new IKEPolicyIdentityById.Builder()
+      VPNGatewayConnectionIKEPolicyPrototypeIKEPolicyIdentityById vpnGatewayConnectionIkePolicyPrototypeModel = new VPNGatewayConnectionIKEPolicyPrototypeIKEPolicyIdentityById.Builder()
       .id("ddf51bec-3424-11e8-b467-0ed5f89f718b")
       .build();
 
-      IPsecPolicyIdentityById iPsecPolicyIdentityModel = new IPsecPolicyIdentityById.Builder()
+      VPNGatewayConnectionIPsecPolicyPrototypeIPsecPolicyIdentityById vpnGatewayConnectionIPsecPolicyPrototypeModel = new VPNGatewayConnectionIPsecPolicyPrototypeIPsecPolicyIdentityById.Builder()
       .id("ddf51bec-3424-11e8-b467-0ed5f89f718b")
       .build();
 
       VPNGatewayConnectionPrototypeVPNGatewayConnectionStaticRouteModePrototype vpnGatewayConnectionPrototypeModel = new VPNGatewayConnectionPrototypeVPNGatewayConnectionStaticRouteModePrototype.Builder()
       .adminStateUp(true)
       .deadPeerDetection(vpnGatewayConnectionDpdPrototypeModel)
-      .ikePolicy(ikePolicyIdentityModel)
-      .ipsecPolicy(iPsecPolicyIdentityModel)
+      .ikePolicy(vpnGatewayConnectionIkePolicyPrototypeModel)
+      .ipsecPolicy(vpnGatewayConnectionIPsecPolicyPrototypeModel)
       .name("my-vpn-connection")
       .peerAddress("169.21.50.5")
       .psk("lkj14b1oi0alcniejkso")
@@ -7391,25 +7399,25 @@ public class VpcIT extends SdkIntegrationTestBase {
   @Test
   public void testUpdateVpnGatewayConnection() throws Exception {
     try {
-      VPNGatewayConnectionDPDPrototype vpnGatewayConnectionDpdPrototypeModel = new VPNGatewayConnectionDPDPrototype.Builder()
+      VPNGatewayConnectionDPDPatch vpnGatewayConnectionDpdPatchModel = new VPNGatewayConnectionDPDPatch.Builder()
       .action("restart")
       .interval(Long.valueOf("30"))
       .timeout(Long.valueOf("120"))
       .build();
 
-      IKEPolicyIdentityById ikePolicyIdentityModel = new IKEPolicyIdentityById.Builder()
+      VPNGatewayConnectionIKEPolicyPatchIKEPolicyIdentityById vpnGatewayConnectionIkePolicyPatchModel = new VPNGatewayConnectionIKEPolicyPatchIKEPolicyIdentityById.Builder()
       .id("ddf51bec-3424-11e8-b467-0ed5f89f718b")
       .build();
 
-      IPsecPolicyIdentityById iPsecPolicyIdentityModel = new IPsecPolicyIdentityById.Builder()
+      VPNGatewayConnectionIPsecPolicyPatchIPsecPolicyIdentityById vpnGatewayConnectionIPsecPolicyPatchModel = new VPNGatewayConnectionIPsecPolicyPatchIPsecPolicyIdentityById.Builder()
       .id("ddf51bec-3424-11e8-b467-0ed5f89f718b")
       .build();
 
       VPNGatewayConnectionPatchVPNGatewayConnectionStaticRouteModePatch vpnGatewayConnectionPatchModel = new VPNGatewayConnectionPatchVPNGatewayConnectionStaticRouteModePatch.Builder()
       .adminStateUp(true)
-      .deadPeerDetection(vpnGatewayConnectionDpdPrototypeModel)
-      .ikePolicy(ikePolicyIdentityModel)
-      .ipsecPolicy(iPsecPolicyIdentityModel)
+      .deadPeerDetection(vpnGatewayConnectionDpdPatchModel)
+      .ikePolicy(vpnGatewayConnectionIkePolicyPatchModel)
+      .ipsecPolicy(vpnGatewayConnectionIPsecPolicyPatchModel)
       .name("my-vpn-connection")
       .peerAddress("169.21.50.5")
       .psk("lkj14b1oi0alcniejkso")
@@ -7761,7 +7769,7 @@ public class VpcIT extends SdkIntegrationTestBase {
 
       LoadBalancerPoolSessionPersistencePrototype loadBalancerPoolSessionPersistencePrototypeModel = new LoadBalancerPoolSessionPersistencePrototype.Builder()
       .cookieName("my-cookie-name")
-      .type("source_ip")
+      .type("app_cookie")
       .build();
 
       LoadBalancerPoolPrototype loadBalancerPoolPrototypeModel = new LoadBalancerPoolPrototype.Builder()
@@ -7979,7 +7987,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       LoadBalancerListenerPolicyRulePrototype loadBalancerListenerPolicyRulePrototypeModel = new LoadBalancerListenerPolicyRulePrototype.Builder()
       .condition("contains")
       .field("MY-APP-HEADER")
-      .type("header")
+      .type("body")
       .value("testString")
       .build();
 
@@ -8159,7 +8167,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       LoadBalancerListenerPolicyRulePrototype loadBalancerListenerPolicyRulePrototypeModel = new LoadBalancerListenerPolicyRulePrototype.Builder()
       .condition("contains")
       .field("MY-APP-HEADER")
-      .type("header")
+      .type("body")
       .value("testString")
       .build();
 
@@ -8312,7 +8320,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       .listenerId("testString")
       .policyId("testString")
       .condition("contains")
-      .type("header")
+      .type("body")
       .value("testString")
       .field("MY-APP-HEADER")
       .build();
@@ -8381,7 +8389,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       LoadBalancerListenerPolicyRulePatch loadBalancerListenerPolicyRulePatchModel = new LoadBalancerListenerPolicyRulePatch.Builder()
       .condition("contains")
       .field("MY-APP-HEADER")
-      .type("header")
+      .type("body")
       .value("testString")
       .build();
       Map<String, Object> loadBalancerListenerPolicyRulePatchModelAsPatch = loadBalancerListenerPolicyRulePatchModel.asPatch();
@@ -8465,7 +8473,7 @@ public class VpcIT extends SdkIntegrationTestBase {
 
       LoadBalancerPoolSessionPersistencePrototype loadBalancerPoolSessionPersistencePrototypeModel = new LoadBalancerPoolSessionPersistencePrototype.Builder()
       .cookieName("my-cookie-name")
-      .type("source_ip")
+      .type("app_cookie")
       .build();
 
       CreateLoadBalancerPoolOptions createLoadBalancerPoolOptions = new CreateLoadBalancerPoolOptions.Builder()
@@ -8551,7 +8559,7 @@ public class VpcIT extends SdkIntegrationTestBase {
 
       LoadBalancerPoolSessionPersistencePatch loadBalancerPoolSessionPersistencePatchModel = new LoadBalancerPoolSessionPersistencePatch.Builder()
       .cookieName("my-cookie-name")
-      .type("source_ip")
+      .type("app_cookie")
       .build();
 
       LoadBalancerPoolPatch loadBalancerPoolPatchModel = new LoadBalancerPoolPatch.Builder()
@@ -9042,7 +9050,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       .vpcCrn("testString")
       .vpcName("testString")
       .targetId("testString")
-      .targetResourceType("vpc")
+      .targetResourceType("instance")
       .build();
 
       // Invoke operation
@@ -9601,8 +9609,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       // The following status codes aren't covered by tests.
       // Please provide integration tests for these too.
       //
+      // 403
       // 404
-      // 405
       // 409
       //
       //
@@ -9686,7 +9694,6 @@ public class VpcIT extends SdkIntegrationTestBase {
       // Please provide integration tests for these too.
       //
       // 404
-      // 409
       //
       //
 
@@ -10086,7 +10093,6 @@ public class VpcIT extends SdkIntegrationTestBase {
       // The following status codes aren't covered by tests.
       // Please provide integration tests for these too.
       //
-      // 400
       // 404
       //
       //

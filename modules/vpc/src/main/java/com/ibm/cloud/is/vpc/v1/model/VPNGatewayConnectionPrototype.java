@@ -39,9 +39,9 @@ public class VPNGatewayConnectionPrototype extends GenericModel {
   @SerializedName("dead_peer_detection")
   protected VPNGatewayConnectionDPDPrototype deadPeerDetection;
   @SerializedName("ike_policy")
-  protected IKEPolicyIdentity ikePolicy;
+  protected VPNGatewayConnectionIKEPolicyPrototype ikePolicy;
   @SerializedName("ipsec_policy")
-  protected IPsecPolicyIdentity ipsecPolicy;
+  protected VPNGatewayConnectionIPsecPolicyPrototype ipsecPolicy;
   protected String name;
   @SerializedName("peer_address")
   protected String peerAddress;
@@ -81,23 +81,24 @@ public class VPNGatewayConnectionPrototype extends GenericModel {
   /**
    * Gets the ikePolicy.
    *
-   * Optional IKE policy configuration. The absence of a policy indicates autonegotiation.
+   * The IKE policy to use. If unspecified, [auto-negotiation will be
+   * used](https://cloud.ibm.com/docs/vpc?topic=vpc-using-vpn&amp;interface=ui#ike-auto-negotiation-phase-1).
    *
    * @return the ikePolicy
    */
-  public IKEPolicyIdentity ikePolicy() {
+  public VPNGatewayConnectionIKEPolicyPrototype ikePolicy() {
     return ikePolicy;
   }
 
   /**
    * Gets the ipsecPolicy.
    *
-   * Optional IPsec policy configuration. The absence of a policy indicates
-   * autonegotiation.
+   * The IPsec policy to use. If unspecified, [auto-negotiation will be
+   * used](https://cloud.ibm.com/docs/vpc?topic=vpc-using-vpn&amp;interface=ui#ipsec-auto-negotiation-phase-2).
    *
    * @return the ipsecPolicy
    */
-  public IPsecPolicyIdentity ipsecPolicy() {
+  public VPNGatewayConnectionIPsecPolicyPrototype ipsecPolicy() {
     return ipsecPolicy;
   }
 

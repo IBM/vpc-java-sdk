@@ -73,8 +73,8 @@ public class ReservedIP extends GenericModel {
   /**
    * Gets the autoDelete.
    *
-   * If set to `true`, this reserved IP will be automatically deleted when the target is deleted or when the reserved IP
-   * is unbound.
+   * Indicates whether this reserved IP member will be automatically deleted when either
+   * `target` is deleted, or the reserved IP is unbound.
    *
    * @return the autoDelete
    */

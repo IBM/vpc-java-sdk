@@ -30,12 +30,12 @@ public class DedicatedHostProfile extends GenericModel {
    * unexpected property value was encountered.
    */
   public interface Family {
-    /** memory. */
-    String MEMORY = "memory";
     /** balanced. */
     String BALANCED = "balanced";
     /** compute. */
     String COMPUTE = "compute";
+    /** memory. */
+    String MEMORY = "memory";
   }
 
   @SerializedName("class")

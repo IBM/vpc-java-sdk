@@ -70,10 +70,10 @@ public class ImagePrototype extends GenericModel {
    * A base64-encoded, encrypted representation of the key that was used to encrypt the data for this image.
    *
    * That representation is created by wrapping the key's value with the `encryption_key` root key (which must also be
-   * provided), using either [Key Protect](https://cloud.ibm.com/docs/key-protect?topic=key-protect-wrap-keys) or the
+   * specified), using either [Key Protect](https://cloud.ibm.com/docs/key-protect?topic=key-protect-wrap-keys) or the
    * [Hyper Protect Crypto Service](https://cloud.ibm.com/docs/services/hs-crypto?topic=hs-crypto-wrap-keys).
    *
-   * If this property is not provided, the imported image is treated as unencrypted.
+   * If unspecified, the imported image is treated as unencrypted.
    *
    * @return the encryptedDataKey
    */
@@ -86,10 +86,10 @@ public class ImagePrototype extends GenericModel {
    *
    * The root key that was used to wrap the data key (which is ultimately represented as
    * `encrypted_data_key`). Additionally, the root key will be used to encrypt volumes
-   * created from this image (unless an alternate `encryption_key` is provided at volume
+   * created from this image (unless an alternate `encryption_key` is specified at volume
    * creation).
    *
-   * If this property is not provided, the imported image is treated as unencrypted.
+   * If unspecified, the imported image is treated as unencrypted.
    *
    * @return the encryptionKey
    */

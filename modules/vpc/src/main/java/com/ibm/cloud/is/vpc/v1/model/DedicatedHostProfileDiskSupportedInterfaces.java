@@ -37,10 +37,10 @@ public class DedicatedHostProfileDiskSupportedInterfaces extends GenericModel {
    * unexpected property value was encountered.
    */
   public interface Value {
-    /** virtio_blk. */
-    String VIRTIO_BLK = "virtio_blk";
     /** nvme. */
     String NVME = "nvme";
+    /** virtio_blk. */
+    String VIRTIO_BLK = "virtio_blk";
   }
 
   protected String type;

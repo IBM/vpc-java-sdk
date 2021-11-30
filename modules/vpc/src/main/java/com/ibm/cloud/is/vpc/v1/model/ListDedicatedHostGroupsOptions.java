@@ -23,6 +23,7 @@ public class ListDedicatedHostGroupsOptions extends GenericModel {
   protected Long limit;
   protected String resourceGroupId;
   protected String zoneName;
+  protected String name;
 
   /**
    * Builder.
@@ -32,12 +33,14 @@ public class ListDedicatedHostGroupsOptions extends GenericModel {
     private Long limit;
     private String resourceGroupId;
     private String zoneName;
+    private String name;
 
     private Builder(ListDedicatedHostGroupsOptions listDedicatedHostGroupsOptions) {
       this.start = listDedicatedHostGroupsOptions.start;
       this.limit = listDedicatedHostGroupsOptions.limit;
       this.resourceGroupId = listDedicatedHostGroupsOptions.resourceGroupId;
       this.zoneName = listDedicatedHostGroupsOptions.zoneName;
+      this.name = listDedicatedHostGroupsOptions.name;
     }
 
     /**
@@ -98,6 +101,17 @@ public class ListDedicatedHostGroupsOptions extends GenericModel {
       this.zoneName = zoneName;
       return this;
     }
+
+    /**
+     * Set the name.
+     *
+     * @param name the name
+     * @return the ListDedicatedHostGroupsOptions builder
+     */
+    public Builder name(String name) {
+      this.name = name;
+      return this;
+    }
   }
 
   protected ListDedicatedHostGroupsOptions(Builder builder) {
@@ -105,6 +119,7 @@ public class ListDedicatedHostGroupsOptions extends GenericModel {
     limit = builder.limit;
     resourceGroupId = builder.resourceGroupId;
     zoneName = builder.zoneName;
+    name = builder.name;
   }
 
   /**
@@ -141,8 +156,7 @@ public class ListDedicatedHostGroupsOptions extends GenericModel {
   /**
    * Gets the resourceGroupId.
    *
-   * Filters the collection to resources within one of the resource groups identified in a comma-separated list of
-   * resource group identifiers.
+   * Filters the collection to resources in the resource group with the specified identifier.
    *
    * @return the resourceGroupId
    */
@@ -159,6 +173,17 @@ public class ListDedicatedHostGroupsOptions extends GenericModel {
    */
   public String zoneName() {
     return zoneName;
+  }
+
+  /**
+   * Gets the name.
+   *
+   * Filters the collection to resources with the exact specified name.
+   *
+   * @return the name
+   */
+  public String name() {
+    return name;
   }
 }
 

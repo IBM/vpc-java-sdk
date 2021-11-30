@@ -25,12 +25,12 @@ public class ListSubnetReservedIpsOptions extends GenericModel {
    * in descending order, and the value `name` sorts it by the `name` property in ascending order.
    */
   public interface Sort {
+    /** address. */
+    String ADDRESS = "address";
     /** created_at. */
     String CREATED_AT = "created_at";
     /** name. */
     String NAME = "name";
-    /** address. */
-    String ADDRESS = "address";
   }
 
   protected String subnetId;

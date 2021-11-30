@@ -34,12 +34,12 @@ public class PlacementGroup extends GenericModel {
     String PENDING = "pending";
     /** stable. */
     String STABLE = "stable";
+    /** suspended. */
+    String SUSPENDED = "suspended";
     /** updating. */
     String UPDATING = "updating";
     /** waiting. */
     String WAITING = "waiting";
-    /** suspended. */
-    String SUSPENDED = "suspended";
   }
 
   /**

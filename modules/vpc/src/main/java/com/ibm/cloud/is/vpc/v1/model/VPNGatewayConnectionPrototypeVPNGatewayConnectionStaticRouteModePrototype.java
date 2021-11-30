@@ -32,8 +32,8 @@ public class VPNGatewayConnectionPrototypeVPNGatewayConnectionStaticRouteModePro
   public static class Builder {
     private Boolean adminStateUp;
     private VPNGatewayConnectionDPDPrototype deadPeerDetection;
-    private IKEPolicyIdentity ikePolicy;
-    private IPsecPolicyIdentity ipsecPolicy;
+    private VPNGatewayConnectionIKEPolicyPrototype ikePolicy;
+    private VPNGatewayConnectionIPsecPolicyPrototype ipsecPolicy;
     private String name;
     private String peerAddress;
     private String psk;
@@ -93,7 +93,7 @@ public class VPNGatewayConnectionPrototypeVPNGatewayConnectionStaticRouteModePro
      * @param ikePolicy the ikePolicy
      * @return the VPNGatewayConnectionPrototypeVPNGatewayConnectionStaticRouteModePrototype builder
      */
-    public Builder ikePolicy(IKEPolicyIdentity ikePolicy) {
+    public Builder ikePolicy(VPNGatewayConnectionIKEPolicyPrototype ikePolicy) {
       this.ikePolicy = ikePolicy;
       return this;
     }
@@ -104,7 +104,7 @@ public class VPNGatewayConnectionPrototypeVPNGatewayConnectionStaticRouteModePro
      * @param ipsecPolicy the ipsecPolicy
      * @return the VPNGatewayConnectionPrototypeVPNGatewayConnectionStaticRouteModePrototype builder
      */
-    public Builder ipsecPolicy(IPsecPolicyIdentity ipsecPolicy) {
+    public Builder ipsecPolicy(VPNGatewayConnectionIPsecPolicyPrototype ipsecPolicy) {
       this.ipsecPolicy = ipsecPolicy;
       return this;
     }

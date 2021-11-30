@@ -24,10 +24,10 @@ public class VPNGatewayConnectionStaticRouteModeTunnel extends GenericModel {
    * The status of the VPN Tunnel.
    */
   public interface Status {
-    /** up. */
-    String UP = "up";
     /** down. */
     String DOWN = "down";
+    /** up. */
+    String UP = "up";
   }
 
   @SerializedName("public_ip")

@@ -105,8 +105,7 @@ public class DedicatedHostPatch extends GenericModel {
   /**
    * Gets the name.
    *
-   * The unique user-defined name for this dedicated host. If unspecified, the name will be a hyphenated list of
-   * randomly-selected words.
+   * The unique user-defined name for this dedicated host.
    *
    * @return the name
    */

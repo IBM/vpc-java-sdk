@@ -179,7 +179,7 @@ public class InstanceGroupManagerPatch extends GenericModel {
   /**
    * Gets the managementEnabled.
    *
-   * If set to `true`, this manager will control the instance group.
+   * Indicates whether this manager will control the instance group.
    *
    * @return the managementEnabled
    */

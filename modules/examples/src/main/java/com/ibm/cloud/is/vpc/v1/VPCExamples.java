@@ -382,8 +382,8 @@ import com.ibm.cloud.is.vpc.v1.model.ReservedIPCollectionEndpointGatewayContext;
 import com.ibm.cloud.is.vpc.v1.model.ReservedIPPatch;
 import com.ibm.cloud.is.vpc.v1.model.Route;
 import com.ibm.cloud.is.vpc.v1.model.RouteCollection;
-import com.ibm.cloud.is.vpc.v1.model.RoutePatch;
 import com.ibm.cloud.is.vpc.v1.model.RouteNextHopPrototypeRouteNextHopIP;
+import com.ibm.cloud.is.vpc.v1.model.RoutePatch;
 import com.ibm.cloud.is.vpc.v1.model.RoutingTable;
 import com.ibm.cloud.is.vpc.v1.model.RoutingTableCollection;
 import com.ibm.cloud.is.vpc.v1.model.RoutingTableIdentityById;
@@ -487,9 +487,10 @@ import com.ibm.cloud.is.vpc.v1.model.ZoneIdentityByName;
 import com.ibm.cloud.sdk.core.http.Response;
 import com.ibm.cloud.sdk.core.service.exception.ServiceResponseException;
 import com.ibm.cloud.sdk.core.util.CredentialUtils;
-import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.Map;
 
 //
 // This file provides an example of how to use the vpc service.
@@ -506,9 +507,14 @@ import org.slf4j.LoggerFactory;
 //
 public class VPCExamples {
   private static final Logger logger = LoggerFactory.getLogger(VPCExamples.class);
+  static String crn = "crn:v1:bluemix:public:cloudant:us-south:a/123456:3527280b-9327-4411-8020-591092e60353::";
+  static String cosBucketName = "bucket-27200-lwx4cfvcue";
+  static String cosBucketUrl = "cos://us-south/my-bucket/my-image.qcow2";
   static String dedicatedHostId;
   static String dedicatedHostDiskId;
   static String dedicatedHostGroupId;
+  static String dedicatedHostProfileClassName = "mx2";
+  static String dedicatedHostProfileFamilyName = "balanced";
   static String dedicatedHostProfileName;
   static String floatingIpId;
   static String vpcId;
@@ -528,35 +534,39 @@ public class VPCExamples {
   static String iPsecPolicyId;
   static String instanceId;
   static String instanceDiskId;
-  static String instanceNicId;
-  static String instanceVolAttId;
+  static String instanceProfileName;
+  static String instanceNetworkInterfaceId;
+  static String instanceVolumeAttachmentId;
   static String instanceGroupId;
   static String instanceGroupManagerId;
   static String instanceGroupManagerPolicyId;
   static String instanceGroupManagerActionId;
   static String instanceGroupManagerMembershipId;
   static String instanceTemplateId;
-  static String lbProfileName;
-  static String lbListenerId;
-  static String lbPoolId;
-  static String lbPoolMemberId;
-  static String lbListenerPolicyId;
-  static String lbListenerPolicyRuleId;
+  static String loadBalancerProfileName;
+  static String loadBalancerListenerId;
+  static String loadBalancerPoolId;
+  static String loadBalancerPoolMemberId;
+  static String loadBalancerListenerPolicyId;
+  static String loadBalancerListenerPolicyRuleId;
   static String loadBalancerId;
   static String networkAclId;
   static String networkAclRuleId;
   static String placementGroupId;
   static String publicGatewayId;
+  static String volumeProfileName;
   static String vpcRouteId;
   static String vpnGatewayId;
   static String vpnGatewayConnectionId;
+  static String regionName = "us-east";
   static String securityGroupId;
-  static String securityGroupNicId;
+  static String securityGroupNetworkInterfaceId;
   static String securityGroupRuleId;
   static String securityGroupTargetId;
   static String snapshotId;
   static String sourceVolume;
   static String targetId;
+  static String zoneName = "us-east-1";
 
   protected VPCExamples() { }
 
@@ -572,6 +582,7 @@ public class VPCExamples {
       // begin-list_vpcs
       ListVpcsOptions listVpcsOptions = new ListVpcsOptions.Builder()
         .classicAccess(true)
+        .limit(Long.valueOf(10))
         .build();
 
       Response<VPCCollection> response = vpcService.listVpcs(listVpcsOptions).execute();
@@ -690,6 +701,7 @@ public class VPCExamples {
       // begin-list_vpc_address_prefixes
       ListVpcAddressPrefixesOptions listVpcAddressPrefixesOptions = new ListVpcAddressPrefixesOptions.Builder()
         .vpcId(vpcId)
+        .limit(Long.valueOf(10))
         .build();
 
       Response<AddressPrefixCollection> response = vpcService.listVpcAddressPrefixes(listVpcAddressPrefixesOptions).execute();
@@ -705,11 +717,12 @@ public class VPCExamples {
       System.out.println("createVpcAddressPrefix() result:");
       // begin-create_vpc_address_prefix
       ZoneIdentityByName zoneIdentityModel = new ZoneIdentityByName.Builder()
-        .name("us-east-1")
+        .name(zoneName)
         .build();
       CreateVpcAddressPrefixOptions createVpcAddressPrefixOptions = new CreateVpcAddressPrefixOptions.Builder()
         .vpcId(vpcId)
         .cidr("10.0.0.0/24")
+        .name("my-vpc-address-prefix")
         .zone(zoneIdentityModel)
         .build();
 
@@ -744,7 +757,7 @@ public class VPCExamples {
       System.out.println("updateVpcAddressPrefix() result:");
       // begin-update_vpc_address_prefix
       AddressPrefixPatch addressPrefixPatchModel = new AddressPrefixPatch.Builder()
-        .name("my-address-prefix-update")
+        .name("my-vpc-address-prefix-update")
         .build();
       Map<String, Object> addressPrefixPatchModelAsPatch = addressPrefixPatchModel.asPatch();
       UpdateVpcAddressPrefixOptions updateVpcAddressPrefixOptions = new UpdateVpcAddressPrefixOptions.Builder()
@@ -767,6 +780,7 @@ public class VPCExamples {
       // begin-list_vpc_routes
       ListVpcRoutesOptions listVpcRoutesOptions = new ListVpcRoutesOptions.Builder()
         .vpcId(vpcId)
+        .limit(Long.valueOf(10))
         .build();
 
       Response<RouteCollection> response = vpcService.listVpcRoutes(listVpcRoutesOptions).execute();
@@ -782,7 +796,7 @@ public class VPCExamples {
       System.out.println("createVpcRoute() result:");
       // begin-create_vpc_route
       ZoneIdentityByName zoneIdentityModel = new ZoneIdentityByName.Builder()
-        .name("us-east-1")
+        .name(zoneName)
         .build();
       RouteNextHopPrototypeRouteNextHopIP routeNextHopPrototypeRouteNextHopIP = new RouteNextHopPrototypeRouteNextHopIP.Builder()
         .address("192.168.3.4")
@@ -849,6 +863,7 @@ public class VPCExamples {
       // begin-list_vpc_routing_tables
       ListVpcRoutingTablesOptions listVpcRoutingTablesOptions = new ListVpcRoutingTablesOptions.Builder()
         .vpcId(vpcId)
+        .limit(Long.valueOf(10))
         .build();
 
       Response<RoutingTableCollection> response = vpcService.listVpcRoutingTables(listVpcRoutingTablesOptions).execute();
@@ -899,7 +914,7 @@ public class VPCExamples {
       System.out.println("updateVpcRoutingTable() result:");
       // begin-update_vpc_routing_table
       RoutingTablePatch routingTablePatchModel = new RoutingTablePatch.Builder()
-        .name("my-vpc-routingtable-update")
+        .name("my-vpc-routing-table-update")
         .build();
       Map<String, Object> routingTablePatchModelAsPatch = routingTablePatchModel.asPatch();
       UpdateVpcRoutingTableOptions updateVpcRoutingTableOptions = new UpdateVpcRoutingTableOptions.Builder()
@@ -923,6 +938,7 @@ public class VPCExamples {
       ListVpcRoutingTableRoutesOptions listVpcRoutingTableRoutesOptions = new ListVpcRoutingTableRoutesOptions.Builder()
         .vpcId(vpcId)
         .routingTableId(routingTableId)
+        .limit(Long.valueOf(10))
         .build();
 
       Response<RouteCollection> response = vpcService.listVpcRoutingTableRoutes(listVpcRoutingTableRoutesOptions).execute();
@@ -938,11 +954,11 @@ public class VPCExamples {
       System.out.println("createVpcRoutingTableRoute() result:");
       // begin-create_vpc_routing_table_route
       ZoneIdentityByName zoneIdentityModel = new ZoneIdentityByName.Builder()
-        .name("us-east-1")
+        .name(zoneName)
         .build();
       CreateVpcRoutingTableRouteOptions createVpcRoutingTableRouteOptions = new CreateVpcRoutingTableRouteOptions.Builder()
         .vpcId(vpcId)
-        .name("my-vpc-rt-route")
+        .name("my-vpc-routing-table-route")
         .routingTableId(routingTableId)
         .destination("192.168.3.0/24")
         .action("delegate_vpc")
@@ -981,7 +997,7 @@ public class VPCExamples {
       System.out.println("updateVpcRoutingTableRoute() result:");
       // begin-update_vpc_routing_table_route
       RoutePatch routePatchModel = new RoutePatch.Builder()
-        .name("my-routingtable-route-update")
+        .name("my-routing-table-route-update")
         .build();
       Map<String, Object> routePatchModelAsPatch = routePatchModel.asPatch();
       UpdateVpcRoutingTableRouteOptions updateVpcRoutingTableRouteOptions = new UpdateVpcRoutingTableRouteOptions.Builder()
@@ -1004,6 +1020,7 @@ public class VPCExamples {
       System.out.println("listSubnets() result:");
       // begin-list_subnets
       ListSubnetsOptions listSubnetsOptions = new ListSubnetsOptions.Builder()
+        .limit(Long.valueOf(10))
         .build();
 
       Response<SubnetCollection> response = vpcService.listSubnets(listSubnetsOptions).execute();
@@ -1022,7 +1039,7 @@ public class VPCExamples {
         .id(vpcId)
         .build();
       ZoneIdentityByName zoneIdentityModel = new ZoneIdentityByName.Builder()
-        .name("us-east-1")
+        .name(zoneName)
         .build();
       SubnetPrototypeSubnetByTotalCount subnetPrototypeModel = new SubnetPrototypeSubnetByTotalCount.Builder()
         .vpc(vpcIdentityModel)
@@ -1125,9 +1142,10 @@ public class VPCExamples {
               .id(vpcId)
               .build();
       ZoneIdentityByName zoneIdentityModel = new ZoneIdentityByName.Builder()
-              .name("us-east-1")
+              .name(zoneName)
               .build();
       CreatePublicGatewayOptions createPublicGatewayOptions = new CreatePublicGatewayOptions.Builder()
+              .name("my-public-gateway")
               .vpc(vpcIdentityModel)
               .zone(zoneIdentityModel)
               .build();
@@ -1162,7 +1180,7 @@ public class VPCExamples {
       System.out.println("updatePublicGateway() result:");
       // begin-update_public_gateway
       PublicGatewayPatch publicGatewayPatchModel = new PublicGatewayPatch.Builder()
-              .name("my-publicgateway-update")
+              .name("my-public-gateway-update")
               .build();
       Map<String, Object> publicGatewayPatchModelAsPatch = publicGatewayPatchModel.asPatch();
       UpdatePublicGatewayOptions updatePublicGatewayOptions = new UpdatePublicGatewayOptions.Builder()
@@ -1257,6 +1275,7 @@ public class VPCExamples {
       ListSubnetReservedIpsOptions listSubnetReservedIpsOptions = new ListSubnetReservedIpsOptions.Builder()
         .subnetId(subnetId)
         .sort("name")
+        .limit(Long.valueOf(10))
         .build();
 
       Response<ReservedIPCollection> response = vpcService.listSubnetReservedIps(listSubnetReservedIpsOptions).execute();
@@ -1272,6 +1291,7 @@ public class VPCExamples {
       System.out.println("createSubnetReservedIp() result:");
       // begin-create_subnet_reserved_ip
       CreateSubnetReservedIpOptions createSubnetReservedIpOptions = new CreateSubnetReservedIpOptions.Builder()
+        .name("my-reserved-ip")
         .subnetId(subnetId)
         .build();
 
@@ -1306,7 +1326,7 @@ public class VPCExamples {
       System.out.println("updateSubnetReservedIp() result:");
       // begin-update_subnet_reserved_ip
       ReservedIPPatch reservedIpPatchModel = new ReservedIPPatch.Builder()
-        .name("my-reservedip-update")
+        .name("my-reserved-ip-update")
         .build();
       Map<String, Object> reservedIpPatchModelAsPatch = reservedIpPatchModel.asPatch();
       UpdateSubnetReservedIpOptions updateSubnetReservedIpOptions = new UpdateSubnetReservedIpOptions.Builder()
@@ -1328,6 +1348,7 @@ public class VPCExamples {
       System.out.println("listImages() result:");
       // begin-list_images
       ListImagesOptions listImagesOptions = new ListImagesOptions.Builder()
+        .limit(Long.valueOf(10))
         .build();
 
       Response<ImageCollection> response = vpcService.listImages(listImagesOptions).execute();
@@ -1343,10 +1364,10 @@ public class VPCExamples {
       System.out.println("createImage() result:");
       // begin-create_image
       ImageFilePrototype imageFilePrototypeModel = new ImageFilePrototype.Builder()
-        .href("cos://us-south/my-bucket/my-image.qcow2")
+        .href(cosBucketUrl)
         .build();
       OperatingSystemIdentityByName operatingSystemIdentityModel = new OperatingSystemIdentityByName.Builder()
-        .name("debian-9-amd64")
+        .name(operatingSystemName)
         .build();
       ImagePrototypeImageByFile imagePrototypeModel = new ImagePrototypeImageByFile.Builder()
         .name("my-image")
@@ -1408,6 +1429,7 @@ public class VPCExamples {
       System.out.println("listOperatingSystems() result:");
       // begin-list_operating_systems
       ListOperatingSystemsOptions listOperatingSystemsOptions = new ListOperatingSystemsOptions.Builder()
+        .limit(Long.valueOf(10))
         .build();
 
       Response<OperatingSystemCollection> response = vpcService.listOperatingSystems(listOperatingSystemsOptions).execute();
@@ -1440,6 +1462,7 @@ public class VPCExamples {
       System.out.println("listKeys() result:");
       // begin-list_keys
       ListKeysOptions listKeysOptions = new ListKeysOptions.Builder()
+        .limit(Long.valueOf(10))
         .build();
 
       Response<KeyCollection> response = vpcService.listKeys(listKeysOptions).execute();
@@ -1515,6 +1538,7 @@ public class VPCExamples {
       InstanceProfileCollection instanceProfileCollection = response.getResult();
 
       // end-list_instance_profiles
+      instanceProfileName = instanceProfileCollection.getProfiles().get(0).getName();
     } catch (ServiceResponseException e) {
         logger.error(String.format("Service returned status code %s: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
@@ -1524,7 +1548,7 @@ public class VPCExamples {
       System.out.println("getInstanceProfile() result:");
       // begin-get_instance_profile
       GetInstanceProfileOptions getInstanceProfileOptions = new GetInstanceProfileOptions.Builder()
-        .name("bx2-2x8")
+        .name(instanceProfileName)
         .build();
 
       Response<InstanceProfile> response = vpcService.getInstanceProfile(getInstanceProfileOptions).execute();
@@ -1557,7 +1581,7 @@ public class VPCExamples {
         .id(keyId)
         .build();
       InstanceProfileIdentityByName instanceProfileIdentityModel = new InstanceProfileIdentityByName.Builder()
-        .name("bx2-2x8")
+        .name(instanceProfileName)
         .build();
       VPCIdentityById vpcIdentityModel = new VPCIdentityById.Builder()
         .id(vpcId)
@@ -1572,7 +1596,7 @@ public class VPCExamples {
         .subnet(subnetIdentityModel)
         .build();
       ZoneIdentityByName zoneIdentityModel = new ZoneIdentityByName.Builder()
-        .name("us-east-1")
+        .name(zoneName)
         .build();
       InstanceTemplatePrototypeInstanceByImage instanceTemplatePrototypeModel = new InstanceTemplatePrototypeInstanceByImage.Builder()
         .keys(new java.util.ArrayList<KeyIdentity>(java.util.Arrays.asList(keyIdentityModel)))
@@ -1638,6 +1662,7 @@ public class VPCExamples {
       System.out.println("listDedicatedHostGroups() result:");
       // begin-list_dedicated_host_groups
       ListDedicatedHostGroupsOptions listDedicatedHostGroupsOptions = new ListDedicatedHostGroupsOptions.Builder()
+              .limit(Long.valueOf(10))
               .build();
 
       Response<DedicatedHostGroupCollection> response = vpcService.listDedicatedHostGroups(listDedicatedHostGroupsOptions).execute();
@@ -1653,12 +1678,12 @@ public class VPCExamples {
       System.out.println("createDedicatedHostGroup() result:");
       // begin-create_dedicated_host_group
       ZoneIdentityByName zoneIdentityModel = new ZoneIdentityByName.Builder()
-              .name("us-east-1")
+              .name(zoneName)
               .build();
       CreateDedicatedHostGroupOptions createDedicatedHostGroupOptions = new CreateDedicatedHostGroupOptions.Builder()
-              .xClass("mx2")
+              .xClass(dedicatedHostProfileClassName)
               .name("my-dh-group")
-              .family("balanced")
+              .family(dedicatedHostProfileFamilyName)
               .zone(zoneIdentityModel)
               .build();
 
@@ -1713,6 +1738,7 @@ public class VPCExamples {
       System.out.println("listDedicatedHostProfiles() result:");
       // begin-list_dedicated_host_profiles
       ListDedicatedHostProfilesOptions listDedicatedHostProfilesOptions = new ListDedicatedHostProfilesOptions.Builder()
+              .limit(Long.valueOf(10))
               .build();
 
       Response<DedicatedHostProfileCollection> response = vpcService.listDedicatedHostProfiles(listDedicatedHostProfilesOptions).execute();
@@ -1745,6 +1771,7 @@ public class VPCExamples {
       System.out.println("listDedicatedHosts() result:");
       // begin-list_dedicated_hosts
       ListDedicatedHostsOptions listDedicatedHostsOptions = new ListDedicatedHostsOptions.Builder()
+              .limit(Long.valueOf(10))
               .build();
 
       Response<DedicatedHostCollection> response = vpcService.listDedicatedHosts(listDedicatedHostsOptions).execute();
@@ -1886,6 +1913,7 @@ public class VPCExamples {
       System.out.println("listFloatingIps() result:");
       // begin-list_floating_ips
       ListFloatingIpsOptions listFloatingIpsOptions = new ListFloatingIpsOptions.Builder()
+              .limit(Long.valueOf(10))
               .build();
 
       Response<FloatingIPCollection> response = vpcService.listFloatingIps(listFloatingIpsOptions).execute();
@@ -1901,9 +1929,10 @@ public class VPCExamples {
       System.out.println("createFloatingIp() result:");
       // begin-create_floating_ip
       ZoneIdentityByName zoneIdentityModel = new ZoneIdentityByName.Builder()
-              .name("us-east-1")
+              .name(zoneName)
               .build();
       FloatingIPPrototypeFloatingIPByZone floatingIpPrototypeModel = new FloatingIPPrototypeFloatingIPByZone.Builder()
+              .name("my-floating-ip")
               .zone(zoneIdentityModel)
               .build();
       CreateFloatingIpOptions createFloatingIpOptions = new CreateFloatingIpOptions.Builder()
@@ -1940,7 +1969,7 @@ public class VPCExamples {
       System.out.println("updateFloatingIp() result:");
       // begin-update_floating_ip
       FloatingIPPatch floatingIpPatchModel = new FloatingIPPatch.Builder()
-              .name("my-floatingip-update")
+              .name("my-floating-ip-update")
               .build();
       Map<String, Object> floatingIpPatchModelAsPatch = floatingIpPatchModel.asPatch();
       UpdateFloatingIpOptions updateFloatingIpOptions = new UpdateFloatingIpOptions.Builder()
@@ -1961,12 +1990,14 @@ public class VPCExamples {
       System.out.println("listVolumeProfiles() result:");
       // begin-list_volume_profiles
       ListVolumeProfilesOptions listVolumeProfilesOptions = new ListVolumeProfilesOptions.Builder()
+              .limit(Long.valueOf(10))
               .build();
 
       Response<VolumeProfileCollection> response = vpcService.listVolumeProfiles(listVolumeProfilesOptions).execute();
       VolumeProfileCollection volumeProfileCollection = response.getResult();
 
       // end-list_volume_profiles
+      volumeProfileName = volumeProfileCollection.getProfiles().get(0).getName();
     } catch (ServiceResponseException e) {
       logger.error(String.format("Service returned status code %s: %s%nError details: %s",
               e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
@@ -1976,7 +2007,7 @@ public class VPCExamples {
       System.out.println("getVolumeProfile() result:");
       // begin-get_volume_profile
       GetVolumeProfileOptions getVolumeProfileOptions = new GetVolumeProfileOptions.Builder()
-              .name("5iops-tier")
+              .name(volumeProfileName)
               .build();
 
       Response<VolumeProfile> response = vpcService.getVolumeProfile(getVolumeProfileOptions).execute();
@@ -1992,6 +2023,7 @@ public class VPCExamples {
       System.out.println("listVolumes() result:");
       // begin-list_volumes
       ListVolumesOptions listVolumesOptions = new ListVolumesOptions.Builder()
+              .limit(Long.valueOf(10))
               .build();
 
       Response<VolumeCollection> response = vpcService.listVolumes(listVolumesOptions).execute();
@@ -2007,10 +2039,10 @@ public class VPCExamples {
       System.out.println("createVolume() result:");
       // begin-create_volume
       VolumeProfileIdentityByName volumeProfileIdentityModel = new VolumeProfileIdentityByName.Builder()
-              .name("5iops-tier")
+              .name(volumeProfileName)
               .build();
       ZoneIdentityByName zoneIdentityModel = new ZoneIdentityByName.Builder()
-              .name("us-east-1")
+              .name(zoneName)
               .build();
       VolumePrototypeVolumeByCapacity volumePrototypeModel = new VolumePrototypeVolumeByCapacity.Builder()
               .name("my-volume")
@@ -2073,6 +2105,7 @@ public class VPCExamples {
       System.out.println("listInstances() result:");
       // begin-list_instances
       ListInstancesOptions listInstancesOptions = new ListInstancesOptions.Builder()
+        .limit(Long.valueOf(10))
         .build();
 
       Response<InstanceCollection> response = vpcService.listInstances(listInstancesOptions).execute();
@@ -2101,13 +2134,13 @@ public class VPCExamples {
         .id(dedicatedHostId)
         .build();
       InstanceProfileIdentityByName instanceProfileIdentityModel = new InstanceProfileIdentityByName.Builder()
-        .name("bx2-2x8")
+        .name(instanceProfileName)
         .build();
       VolumeProfileIdentityByName volumeProfileIdentityModel = new VolumeProfileIdentityByName.Builder()
-        .name("5iops-tier")
+        .name(volumeProfileName)
         .build();
       EncryptionKeyIdentityByCRN encryptionKeyIdentityModel = new EncryptionKeyIdentityByCRN.Builder()
-        .crn("crn:[...]")
+        .crn(crn)
         .build();
       VolumeAttachmentVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeByCapacity volumeAttachmentVolumePrototypeInstanceContextModel = new VolumeAttachmentVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeByCapacity.Builder()
         .name("my-data-volume")
@@ -2140,7 +2173,7 @@ public class VPCExamples {
         .subnet(subnetIdentityModel)
         .build();
       ZoneIdentityByName zoneIdentityModel = new ZoneIdentityByName.Builder()
-        .name("us-east-1")
+        .name(zoneName)
         .build();
       InstancePrototypeInstanceByImage instancePrototypeModel = new InstancePrototypeInstanceByImage.Builder()
         .keys(new java.util.ArrayList<KeyIdentity>(java.util.Arrays.asList(keyIdentityModel)))
@@ -2335,6 +2368,7 @@ public class VPCExamples {
         .build();
       CreateInstanceNetworkInterfaceOptions createInstanceNetworkInterfaceOptions = new CreateInstanceNetworkInterfaceOptions.Builder()
         .instanceId(instanceId)
+        .name("my-network-interface")
         .subnet(subnetIdentityModel)
         .build();
 
@@ -2342,7 +2376,7 @@ public class VPCExamples {
       NetworkInterface networkInterface = response.getResult();
 
       // end-create_instance_network_interface
-      instanceNicId = networkInterface.getId();
+      instanceNetworkInterfaceId = networkInterface.getId();
     } catch (ServiceResponseException e) {
         logger.error(String.format("Service returned status code %s: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
@@ -2353,7 +2387,7 @@ public class VPCExamples {
       // begin-get_instance_network_interface
       GetInstanceNetworkInterfaceOptions getInstanceNetworkInterfaceOptions = new GetInstanceNetworkInterfaceOptions.Builder()
         .instanceId(instanceId)
-        .id(instanceNicId)
+        .id(instanceNetworkInterfaceId)
         .build();
 
       Response<NetworkInterface> response = vpcService.getInstanceNetworkInterface(getInstanceNetworkInterfaceOptions).execute();
@@ -2374,7 +2408,7 @@ public class VPCExamples {
       Map<String, Object> networkInterfacePatchModelAsPatch = networkInterfacePatchModel.asPatch();
       UpdateInstanceNetworkInterfaceOptions updateInstanceNetworkInterfaceOptions = new UpdateInstanceNetworkInterfaceOptions.Builder()
         .instanceId(instanceId)
-        .id(instanceNicId)
+        .id(instanceNetworkInterfaceId)
         .networkInterfacePatch(networkInterfacePatchModelAsPatch)
         .build();
 
@@ -2392,7 +2426,7 @@ public class VPCExamples {
       // begin-list_instance_network_interface_floating_ips
       ListInstanceNetworkInterfaceFloatingIpsOptions listInstanceNetworkInterfaceFloatingIpsOptions = new ListInstanceNetworkInterfaceFloatingIpsOptions.Builder()
         .instanceId(instanceId)
-        .networkInterfaceId(instanceNicId)
+        .networkInterfaceId(instanceNetworkInterfaceId)
         .build();
 
       Response<FloatingIPUnpaginatedCollection> response = vpcService.listInstanceNetworkInterfaceFloatingIps(listInstanceNetworkInterfaceFloatingIpsOptions).execute();
@@ -2409,7 +2443,7 @@ public class VPCExamples {
       // begin-add_instance_network_interface_floating_ip
       AddInstanceNetworkInterfaceFloatingIpOptions addInstanceNetworkInterfaceFloatingIpOptions = new AddInstanceNetworkInterfaceFloatingIpOptions.Builder()
               .instanceId(instanceId)
-              .networkInterfaceId(instanceNicId)
+              .networkInterfaceId(instanceNetworkInterfaceId)
               .id(floatingIpId)
               .build();
 
@@ -2427,7 +2461,7 @@ public class VPCExamples {
       // begin-get_instance_network_interface_floating_ip
       GetInstanceNetworkInterfaceFloatingIpOptions getInstanceNetworkInterfaceFloatingIpOptions = new GetInstanceNetworkInterfaceFloatingIpOptions.Builder()
         .instanceId(instanceId)
-        .networkInterfaceId(instanceNicId)
+        .networkInterfaceId(instanceNetworkInterfaceId)
         .id(floatingIpId)
         .build();
 
@@ -2464,6 +2498,7 @@ public class VPCExamples {
         .build();
       CreateInstanceVolumeAttachmentOptions createInstanceVolumeAttachmentOptions = new CreateInstanceVolumeAttachmentOptions.Builder()
         .instanceId(instanceId)
+        .name("my-volume-attachment")
         .volume(volumeAttachmentPrototypeVolumeModel)
         .build();
 
@@ -2471,7 +2506,7 @@ public class VPCExamples {
       VolumeAttachment volumeAttachment = response.getResult();
 
       // end-create_instance_volume_attachment
-      instanceVolAttId = volumeAttachment.getId();
+      instanceVolumeAttachmentId = volumeAttachment.getId();
     } catch (ServiceResponseException e) {
         logger.error(String.format("Service returned status code %s: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
@@ -2482,7 +2517,7 @@ public class VPCExamples {
       // begin-get_instance_volume_attachment
       GetInstanceVolumeAttachmentOptions getInstanceVolumeAttachmentOptions = new GetInstanceVolumeAttachmentOptions.Builder()
         .instanceId(instanceId)
-        .id(instanceVolAttId)
+        .id(instanceVolumeAttachmentId)
         .build();
 
       Response<VolumeAttachment> response = vpcService.getInstanceVolumeAttachment(getInstanceVolumeAttachmentOptions).execute();
@@ -2498,12 +2533,12 @@ public class VPCExamples {
       System.out.println("updateInstanceVolumeAttachment() result:");
       // begin-update_instance_volume_attachment
       VolumeAttachmentPatch volumeAttachmentPatchModel = new VolumeAttachmentPatch.Builder()
-        .name("my-volattachment-update")
+        .name("my-volume-attachment-update")
         .build();
       Map<String, Object> volumeAttachmentPatchModelAsPatch = volumeAttachmentPatchModel.asPatch();
       UpdateInstanceVolumeAttachmentOptions updateInstanceVolumeAttachmentOptions = new UpdateInstanceVolumeAttachmentOptions.Builder()
         .instanceId(instanceId)
-        .id(instanceVolAttId)
+        .id(instanceVolumeAttachmentId)
         .volumeAttachmentPatch(volumeAttachmentPatchModelAsPatch)
         .build();
 
@@ -2520,6 +2555,7 @@ public class VPCExamples {
       System.out.println("listInstanceGroups() result:");
       // begin-list_instance_groups
       ListInstanceGroupsOptions listInstanceGroupsOptions = new ListInstanceGroupsOptions.Builder()
+        .limit(Long.valueOf(10))
         .build();
 
       Response<InstanceGroupCollection> response = vpcService.listInstanceGroups(listInstanceGroupsOptions).execute();
@@ -2598,6 +2634,7 @@ public class VPCExamples {
       // begin-list_instance_group_managers
       ListInstanceGroupManagersOptions listInstanceGroupManagersOptions = new ListInstanceGroupManagersOptions.Builder()
         .instanceGroupId(instanceGroupId)
+        .limit(Long.valueOf(10))
         .build();
 
       Response<InstanceGroupManagerCollection> response = vpcService.listInstanceGroupManagers(listInstanceGroupManagersOptions).execute();
@@ -2676,6 +2713,7 @@ public class VPCExamples {
       ListInstanceGroupManagerActionsOptions listInstanceGroupManagerActionsOptions = new ListInstanceGroupManagerActionsOptions.Builder()
         .instanceGroupId(instanceGroupId)
         .instanceGroupManagerId(instanceGroupManagerId)
+        .limit(Long.valueOf(10))
         .build();
 
       Response<InstanceGroupManagerActionsCollection> response = vpcService.listInstanceGroupManagerActions(listInstanceGroupManagerActionsOptions).execute();
@@ -2759,6 +2797,7 @@ public class VPCExamples {
       ListInstanceGroupManagerPoliciesOptions listInstanceGroupManagerPoliciesOptions = new ListInstanceGroupManagerPoliciesOptions.Builder()
         .instanceGroupId(instanceGroupId)
         .instanceGroupManagerId(instanceGroupManagerId)
+        .limit(Long.valueOf(10))
         .build();
 
       Response<InstanceGroupManagerPolicyCollection> response = vpcService.listInstanceGroupManagerPolicies(listInstanceGroupManagerPoliciesOptions).execute();
@@ -2840,6 +2879,7 @@ public class VPCExamples {
       // begin-list_instance_group_memberships
       ListInstanceGroupMembershipsOptions listInstanceGroupMembershipsOptions = new ListInstanceGroupMembershipsOptions.Builder()
         .instanceGroupId(instanceGroupId)
+        .limit(Long.valueOf(10))
         .build();
 
       Response<InstanceGroupMembershipCollection> response = vpcService.listInstanceGroupMemberships(listInstanceGroupMembershipsOptions).execute();
@@ -2895,6 +2935,7 @@ public class VPCExamples {
       System.out.println("listPlacementGroups() result:");
       // begin-list_placement_groups
       ListPlacementGroupsOptions listPlacementGroupsOptions = new ListPlacementGroupsOptions.Builder()
+        .limit(Long.valueOf(10))
         .build();
 
       Response<PlacementGroupCollection> response = vpcService.listPlacementGroups(listPlacementGroupsOptions).execute();
@@ -2966,6 +3007,7 @@ public class VPCExamples {
       // begin-list_snapshots
       ListSnapshotsOptions listSnapshotsOptions = new ListSnapshotsOptions.Builder()
         .sort("name")
+        .limit(Long.valueOf(10))
         .build();
 
       Response<SnapshotCollection> response = vpcService.listSnapshots(listSnapshotsOptions).execute();
@@ -3063,7 +3105,7 @@ public class VPCExamples {
       System.out.println("getRegion() result:");
       // begin-get_region
       GetRegionOptions getRegionOptions = new GetRegionOptions.Builder()
-        .name("us-south")
+        .name(regionName)
         .build();
 
       Response<Region> response = vpcService.getRegion(getRegionOptions).execute();
@@ -3079,7 +3121,7 @@ public class VPCExamples {
       System.out.println("listRegionZones() result:");
       // begin-list_region_zones
       ListRegionZonesOptions listRegionZonesOptions = new ListRegionZonesOptions.Builder()
-        .regionName("us-south")
+        .regionName(regionName)
         .build();
 
       Response<ZoneCollection> response = vpcService.listRegionZones(listRegionZonesOptions).execute();
@@ -3095,8 +3137,8 @@ public class VPCExamples {
       System.out.println("getRegionZone() result:");
       // begin-get_region_zone
       GetRegionZoneOptions getRegionZoneOptions = new GetRegionZoneOptions.Builder()
-        .regionName("us-east")
-        .name("us-east-1")
+        .regionName(regionName)
+        .name(zoneName)
         .build();
 
       Response<Zone> response = vpcService.getRegionZone(getRegionZoneOptions).execute();
@@ -3112,6 +3154,7 @@ public class VPCExamples {
       System.out.println("listPublicGateways() result:");
       // begin-list_public_gateways
       ListPublicGatewaysOptions listPublicGatewaysOptions = new ListPublicGatewaysOptions.Builder()
+        .limit(Long.valueOf(10))
         .build();
 
       Response<PublicGatewayCollection> response = vpcService.listPublicGateways(listPublicGatewaysOptions).execute();
@@ -3127,6 +3170,7 @@ public class VPCExamples {
       System.out.println("listNetworkAcls() result:");
       // begin-list_network_acls
       ListNetworkAclsOptions listNetworkAclsOptions = new ListNetworkAclsOptions.Builder()
+        .limit(Long.valueOf(10))
         .build();
 
       Response<NetworkACLCollection> response = vpcService.listNetworkAcls(listNetworkAclsOptions).execute();
@@ -3204,6 +3248,7 @@ public class VPCExamples {
       // begin-list_network_acl_rules
       ListNetworkAclRulesOptions listNetworkAclRulesOptions = new ListNetworkAclRulesOptions.Builder()
         .networkAclId(networkAclId)
+        .limit(Long.valueOf(10))
         .build();
 
       Response<NetworkACLRuleCollection> response = vpcService.listNetworkAclRules(listNetworkAclRulesOptions).execute();
@@ -3222,6 +3267,7 @@ public class VPCExamples {
         .action("allow")
         .destination("192.168.3.2/32")
         .direction("inbound")
+        .name("my-networkacl-rule")
         .source("192.168.3.2/32")
         .protocol("icmp")
         .build();
@@ -3261,7 +3307,7 @@ public class VPCExamples {
       System.out.println("updateNetworkAclRule() result:");
       // begin-update_network_acl_rule
       NetworkACLRulePatch networkAclRulePatchModel = new NetworkACLRulePatch.Builder()
-        .name("my-networkaclrule-update")
+        .name("my-networkacl-rule-update")
         .build();
       Map<String, Object> networkAclRulePatchModelAsPatch = networkAclRulePatchModel.asPatch();
       UpdateNetworkAclRuleOptions updateNetworkAclRuleOptions = new UpdateNetworkAclRuleOptions.Builder()
@@ -3283,6 +3329,7 @@ public class VPCExamples {
       System.out.println("listSecurityGroups() result:");
       // begin-list_security_groups
       ListSecurityGroupsOptions listSecurityGroupsOptions = new ListSecurityGroupsOptions.Builder()
+        .limit(Long.valueOf(10))
         .build();
 
       Response<SecurityGroupCollection> response = vpcService.listSecurityGroups(listSecurityGroupsOptions).execute();
@@ -3292,7 +3339,7 @@ public class VPCExamples {
       for (SecurityGroup sg : securityGroupCollection.getSecurityGroups()) {
         if (sg.getNetworkInterfaces() != null && sg.getNetworkInterfaces().size() > 0) {
           securityGroupId = sg.getId();
-          securityGroupNicId = sg.getNetworkInterfaces().get(0).getId();
+          securityGroupNetworkInterfaceId = sg.getNetworkInterfaces().get(0).getId();
           break;
         }
       }
@@ -3363,6 +3410,7 @@ public class VPCExamples {
       // begin-list_security_group_network_interfaces
       ListSecurityGroupNetworkInterfacesOptions listSecurityGroupNetworkInterfacesOptions = new ListSecurityGroupNetworkInterfacesOptions.Builder()
         .securityGroupId(securityGroupId)
+        .limit(Long.valueOf(10))
         .build();
 
       Response<NetworkInterfaceCollection> response = vpcService.listSecurityGroupNetworkInterfaces(listSecurityGroupNetworkInterfacesOptions).execute();
@@ -3380,7 +3428,7 @@ public class VPCExamples {
       // begin-get_security_group_network_interface
       GetSecurityGroupNetworkInterfaceOptions getSecurityGroupNetworkInterfaceOptions = new GetSecurityGroupNetworkInterfaceOptions.Builder()
         .securityGroupId(securityGroupId)
-        .id(securityGroupNicId)
+        .id(securityGroupNetworkInterfaceId)
         .build();
 
       Response<NetworkInterface> response = vpcService.getSecurityGroupNetworkInterface(getSecurityGroupNetworkInterfaceOptions).execute();
@@ -3397,7 +3445,7 @@ public class VPCExamples {
       // begin-add_security_group_network_interface
       AddSecurityGroupNetworkInterfaceOptions addSecurityGroupNetworkInterfaceOptions = new AddSecurityGroupNetworkInterfaceOptions.Builder()
         .securityGroupId(securityGroupId)
-        .id(securityGroupNicId)
+        .id(securityGroupNetworkInterfaceId)
         .build();
 
       Response<NetworkInterface> response = vpcService.addSecurityGroupNetworkInterface(addSecurityGroupNetworkInterfaceOptions).execute();
@@ -3491,6 +3539,7 @@ public class VPCExamples {
       // begin-list_security_group_targets
       ListSecurityGroupTargetsOptions listSecurityGroupTargetsOptions = new ListSecurityGroupTargetsOptions.Builder()
         .securityGroupId(securityGroupId)
+        .limit(Long.valueOf(10))
         .build();
 
       Response<SecurityGroupTargetCollection> response = vpcService.listSecurityGroupTargets(listSecurityGroupTargetsOptions).execute();
@@ -3525,7 +3574,7 @@ public class VPCExamples {
       // begin-create_security_group_target_binding
       CreateSecurityGroupTargetBindingOptions createSecurityGroupTargetBindingOptions = new CreateSecurityGroupTargetBindingOptions.Builder()
         .securityGroupId(securityGroupId)
-        .id(instanceNicId)
+        .id(instanceNetworkInterfaceId)
         .build();
 
       Response<SecurityGroupTargetReference> response = vpcService.createSecurityGroupTargetBinding(createSecurityGroupTargetBindingOptions).execute();
@@ -3542,6 +3591,7 @@ public class VPCExamples {
       System.out.println("listIkePolicies() result:");
       // begin-list_ike_policies
       ListIkePoliciesOptions listIkePoliciesOptions = new ListIkePoliciesOptions.Builder()
+        .limit(Long.valueOf(10))
         .build();
 
       Response<IKEPolicyCollection> response = vpcService.listIkePolicies(listIkePoliciesOptions).execute();
@@ -3631,6 +3681,7 @@ public class VPCExamples {
       System.out.println("listIpsecPolicies() result:");
       // begin-list_ipsec_policies
       ListIpsecPoliciesOptions listIpsecPoliciesOptions = new ListIpsecPoliciesOptions.Builder()
+        .limit(Long.valueOf(10))
         .build();
 
       Response<IPsecPolicyCollection> response = vpcService.listIpsecPolicies(listIpsecPoliciesOptions).execute();
@@ -3720,6 +3771,7 @@ public class VPCExamples {
       // begin-list_vpn_gateways
       ListVpnGatewaysOptions listVpnGatewaysOptions = new ListVpnGatewaysOptions.Builder()
         .mode("route")
+        .limit(Long.valueOf(10))
         .build();
 
       Response<VPNGatewayCollection> response = vpcService.listVpnGateways(listVpnGatewaysOptions).execute();
@@ -3974,13 +4026,14 @@ public class VPCExamples {
       System.out.println("listLoadBalancerProfiles() result:");
       // begin-list_load_balancer_profiles
       ListLoadBalancerProfilesOptions listLoadBalancerProfilesOptions = new ListLoadBalancerProfilesOptions.Builder()
+        .limit(Long.valueOf(10))
         .build();
 
       Response<LoadBalancerProfileCollection> response = vpcService.listLoadBalancerProfiles(listLoadBalancerProfilesOptions).execute();
       LoadBalancerProfileCollection loadBalancerProfileCollection = response.getResult();
 
       // end-list_load_balancer_profiles
-      lbProfileName = loadBalancerProfileCollection.getProfiles().get(0).getName();
+      loadBalancerProfileName = loadBalancerProfileCollection.getProfiles().get(0).getName();
     } catch (ServiceResponseException e) {
         logger.error(String.format("Service returned status code %s: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
@@ -3990,7 +4043,7 @@ public class VPCExamples {
       System.out.println("getLoadBalancerProfile() result:");
       // begin-get_load_balancer_profile
       GetLoadBalancerProfileOptions getLoadBalancerProfileOptions = new GetLoadBalancerProfileOptions.Builder()
-        .name(lbProfileName)
+        .name(loadBalancerProfileName)
         .build();
 
       Response<LoadBalancerProfile> response = vpcService.getLoadBalancerProfile(getLoadBalancerProfileOptions).execute();
@@ -4006,6 +4059,7 @@ public class VPCExamples {
       System.out.println("listLoadBalancers() result:");
       // begin-list_load_balancers
       ListLoadBalancersOptions listLoadBalancersOptions = new ListLoadBalancersOptions.Builder()
+        .limit(Long.valueOf(10))
         .build();
 
       Response<LoadBalancerCollection> response = vpcService.listLoadBalancers(listLoadBalancersOptions).execute();
@@ -4121,7 +4175,7 @@ public class VPCExamples {
       LoadBalancerListener loadBalancerListener = response.getResult();
 
       // end-create_load_balancer_listener
-      lbListenerId = loadBalancerListener.getId();
+      loadBalancerListenerId = loadBalancerListener.getId();
     } catch (ServiceResponseException e) {
         logger.error(String.format("Service returned status code %s: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
@@ -4132,7 +4186,7 @@ public class VPCExamples {
       // begin-get_load_balancer_listener
       GetLoadBalancerListenerOptions getLoadBalancerListenerOptions = new GetLoadBalancerListenerOptions.Builder()
         .loadBalancerId(loadBalancerId)
-        .id(lbListenerId)
+        .id(loadBalancerListenerId)
         .build();
 
       Response<LoadBalancerListener> response = vpcService.getLoadBalancerListener(getLoadBalancerListenerOptions).execute();
@@ -4153,7 +4207,7 @@ public class VPCExamples {
       Map<String, Object> loadBalancerListenerPatchModelAsPatch = loadBalancerListenerPatchModel.asPatch();
       UpdateLoadBalancerListenerOptions updateLoadBalancerListenerOptions = new UpdateLoadBalancerListenerOptions.Builder()
         .loadBalancerId(loadBalancerId)
-        .id(lbListenerId)
+        .id(loadBalancerListenerId)
         .loadBalancerListenerPatch(loadBalancerListenerPatchModelAsPatch)
         .build();
 
@@ -4171,7 +4225,7 @@ public class VPCExamples {
       // begin-list_load_balancer_listener_policies
       ListLoadBalancerListenerPoliciesOptions listLoadBalancerListenerPoliciesOptions = new ListLoadBalancerListenerPoliciesOptions.Builder()
         .loadBalancerId(loadBalancerId)
-        .listenerId(lbListenerId)
+        .listenerId(loadBalancerListenerId)
         .build();
 
       Response<LoadBalancerListenerPolicyCollection> response = vpcService.listLoadBalancerListenerPolicies(listLoadBalancerListenerPoliciesOptions).execute();
@@ -4188,7 +4242,7 @@ public class VPCExamples {
       // begin-create_load_balancer_listener_policy
       CreateLoadBalancerListenerPolicyOptions createLoadBalancerListenerPolicyOptions = new CreateLoadBalancerListenerPolicyOptions.Builder()
         .loadBalancerId(loadBalancerId)
-        .listenerId(lbListenerId)
+        .listenerId(loadBalancerListenerId)
         .action("forward")
         .priority(Long.valueOf("5"))
         .build();
@@ -4197,7 +4251,7 @@ public class VPCExamples {
       LoadBalancerListenerPolicy loadBalancerListenerPolicy = response.getResult();
 
       // end-create_load_balancer_listener_policy
-      lbListenerPolicyId = loadBalancerListenerPolicy.getId();
+      loadBalancerListenerPolicyId = loadBalancerListenerPolicy.getId();
     } catch (ServiceResponseException e) {
         logger.error(String.format("Service returned status code %s: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
@@ -4208,8 +4262,8 @@ public class VPCExamples {
       // begin-get_load_balancer_listener_policy
       GetLoadBalancerListenerPolicyOptions getLoadBalancerListenerPolicyOptions = new GetLoadBalancerListenerPolicyOptions.Builder()
         .loadBalancerId(loadBalancerId)
-        .listenerId(lbListenerId)
-        .id(lbListenerPolicyId)
+        .listenerId(loadBalancerListenerId)
+        .id(loadBalancerListenerPolicyId)
         .build();
 
       Response<LoadBalancerListenerPolicy> response = vpcService.getLoadBalancerListenerPolicy(getLoadBalancerListenerPolicyOptions).execute();
@@ -4231,8 +4285,8 @@ public class VPCExamples {
       Map<String, Object> loadBalancerListenerPolicyPatchModelAsPatch = loadBalancerListenerPolicyPatchModel.asPatch();
       UpdateLoadBalancerListenerPolicyOptions updateLoadBalancerListenerPolicyOptions = new UpdateLoadBalancerListenerPolicyOptions.Builder()
         .loadBalancerId(loadBalancerId)
-        .listenerId(lbListenerId)
-        .id(lbListenerPolicyId)
+        .listenerId(loadBalancerListenerId)
+        .id(loadBalancerListenerPolicyId)
         .loadBalancerListenerPolicyPatch(loadBalancerListenerPolicyPatchModelAsPatch)
         .build();
       Response<LoadBalancerListenerPolicy> response = vpcService.updateLoadBalancerListenerPolicy(updateLoadBalancerListenerPolicyOptions).execute();
@@ -4249,8 +4303,8 @@ public class VPCExamples {
       // begin-list_load_balancer_listener_policy_rules
       ListLoadBalancerListenerPolicyRulesOptions listLoadBalancerListenerPolicyRulesOptions = new ListLoadBalancerListenerPolicyRulesOptions.Builder()
         .loadBalancerId(loadBalancerId)
-        .listenerId(lbListenerId)
-        .policyId(lbListenerPolicyId)
+        .listenerId(loadBalancerListenerId)
+        .policyId(loadBalancerListenerPolicyId)
         .build();
 
       Response<LoadBalancerListenerPolicyRuleCollection> response = vpcService.listLoadBalancerListenerPolicyRules(listLoadBalancerListenerPolicyRulesOptions).execute();
@@ -4267,8 +4321,8 @@ public class VPCExamples {
       // begin-create_load_balancer_listener_policy_rule
       CreateLoadBalancerListenerPolicyRuleOptions createLoadBalancerListenerPolicyRuleOptions = new CreateLoadBalancerListenerPolicyRuleOptions.Builder()
         .loadBalancerId(loadBalancerId)
-        .listenerId(lbListenerId)
-        .policyId(lbListenerPolicyId)
+        .listenerId(loadBalancerListenerId)
+        .policyId(loadBalancerListenerPolicyId)
         .condition("contains")
         .type("header")
         .value("2")
@@ -4279,7 +4333,7 @@ public class VPCExamples {
       LoadBalancerListenerPolicyRule loadBalancerListenerPolicyRule = response.getResult();
 
       // end-create_load_balancer_listener_policy_rule
-      lbListenerPolicyRuleId = loadBalancerListenerPolicyRule.getId();
+      loadBalancerListenerPolicyRuleId = loadBalancerListenerPolicyRule.getId();
     } catch (ServiceResponseException e) {
         logger.error(String.format("Service returned status code %s: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
@@ -4290,9 +4344,9 @@ public class VPCExamples {
       // begin-get_load_balancer_listener_policy_rule
       GetLoadBalancerListenerPolicyRuleOptions getLoadBalancerListenerPolicyRuleOptions = new GetLoadBalancerListenerPolicyRuleOptions.Builder()
         .loadBalancerId(loadBalancerId)
-        .listenerId(lbListenerId)
-        .policyId(lbListenerPolicyId)
-        .id(lbListenerPolicyRuleId)
+        .listenerId(loadBalancerListenerId)
+        .policyId(loadBalancerListenerPolicyId)
+        .id(loadBalancerListenerPolicyRuleId)
         .build();
 
       Response<LoadBalancerListenerPolicyRule> response = vpcService.getLoadBalancerListenerPolicyRule(getLoadBalancerListenerPolicyRuleOptions).execute();
@@ -4316,9 +4370,9 @@ public class VPCExamples {
       Map<String, Object> loadBalancerListenerPolicyRulePatchModelAsPatch = loadBalancerListenerPolicyRulePatchModel.asPatch();
       UpdateLoadBalancerListenerPolicyRuleOptions updateLoadBalancerListenerPolicyRuleOptions = new UpdateLoadBalancerListenerPolicyRuleOptions.Builder()
         .loadBalancerId(loadBalancerId)
-        .listenerId(lbListenerId)
-        .policyId(lbListenerPolicyId)
-        .id(lbListenerPolicyRuleId)
+        .listenerId(loadBalancerListenerId)
+        .policyId(loadBalancerListenerPolicyId)
+        .id(loadBalancerListenerPolicyRuleId)
         .loadBalancerListenerPolicyRulePatch(loadBalancerListenerPolicyRulePatchModelAsPatch)
         .build();
 
@@ -4367,7 +4421,7 @@ public class VPCExamples {
       LoadBalancerPool loadBalancerPool = response.getResult();
 
       // end-create_load_balancer_pool
-      lbPoolId = loadBalancerPool.getId();
+      loadBalancerPoolId = loadBalancerPool.getId();
     } catch (ServiceResponseException e) {
         logger.error(String.format("Service returned status code %s: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
@@ -4378,7 +4432,7 @@ public class VPCExamples {
       // begin-get_load_balancer_pool
       GetLoadBalancerPoolOptions getLoadBalancerPoolOptions = new GetLoadBalancerPoolOptions.Builder()
         .loadBalancerId(loadBalancerId)
-        .id(lbPoolId)
+        .id(loadBalancerPoolId)
         .build();
 
       Response<LoadBalancerPool> response = vpcService.getLoadBalancerPool(getLoadBalancerPoolOptions).execute();
@@ -4399,7 +4453,7 @@ public class VPCExamples {
       Map<String, Object> loadBalancerPoolPatchModelAsPatch = loadBalancerPoolPatchModel.asPatch();
       UpdateLoadBalancerPoolOptions updateLoadBalancerPoolOptions = new UpdateLoadBalancerPoolOptions.Builder()
         .loadBalancerId(loadBalancerId)
-        .id(lbPoolId)
+        .id(loadBalancerPoolId)
         .loadBalancerPoolPatch(loadBalancerPoolPatchModelAsPatch)
         .build();
 
@@ -4417,7 +4471,7 @@ public class VPCExamples {
       // begin-list_load_balancer_pool_members
       ListLoadBalancerPoolMembersOptions listLoadBalancerPoolMembersOptions = new ListLoadBalancerPoolMembersOptions.Builder()
         .loadBalancerId(loadBalancerId)
-        .poolId(lbPoolId)
+        .poolId(loadBalancerPoolId)
         .build();
 
       Response<LoadBalancerPoolMemberCollection> response = vpcService.listLoadBalancerPoolMembers(listLoadBalancerPoolMembersOptions).execute();
@@ -4437,7 +4491,7 @@ public class VPCExamples {
         .build();
       CreateLoadBalancerPoolMemberOptions createLoadBalancerPoolMemberOptions = new CreateLoadBalancerPoolMemberOptions.Builder()
         .loadBalancerId(loadBalancerId)
-        .poolId(lbPoolId)
+        .poolId(loadBalancerPoolId)
         .port(Long.valueOf("80"))
         .target(loadBalancerPoolMemberTargetPrototypeModel)
         .build();
@@ -4446,7 +4500,7 @@ public class VPCExamples {
       LoadBalancerPoolMember loadBalancerPoolMember = response.getResult();
 
       // end-create_load_balancer_pool_member
-      lbPoolMemberId = loadBalancerPoolMember.getId();
+      loadBalancerPoolMemberId = loadBalancerPoolMember.getId();
     } catch (ServiceResponseException e) {
         logger.error(String.format("Service returned status code %s: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
@@ -4464,7 +4518,7 @@ public class VPCExamples {
         .build();
       ReplaceLoadBalancerPoolMembersOptions replaceLoadBalancerPoolMembersOptions = new ReplaceLoadBalancerPoolMembersOptions.Builder()
         .loadBalancerId(loadBalancerId)
-        .poolId(lbPoolId)
+        .poolId(loadBalancerPoolId)
         .members(new java.util.ArrayList<LoadBalancerPoolMemberPrototype>(java.util.Arrays.asList(loadBalancerPoolMemberPrototypeModel)))
         .build();
 
@@ -4472,7 +4526,7 @@ public class VPCExamples {
       LoadBalancerPoolMemberCollection loadBalancerPoolMemberCollection = response.getResult();
 
       // end-replace_load_balancer_pool_members
-      lbPoolMemberId = loadBalancerPoolMemberCollection.getMembers().get(0).getId();
+      loadBalancerPoolMemberId = loadBalancerPoolMemberCollection.getMembers().get(0).getId();
     } catch (ServiceResponseException e) {
         logger.error(String.format("Service returned status code %s: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
@@ -4483,8 +4537,8 @@ public class VPCExamples {
       // begin-get_load_balancer_pool_member
       GetLoadBalancerPoolMemberOptions getLoadBalancerPoolMemberOptions = new GetLoadBalancerPoolMemberOptions.Builder()
         .loadBalancerId(loadBalancerId)
-        .poolId(lbPoolId)
-        .id(lbPoolMemberId)
+        .poolId(loadBalancerPoolId)
+        .id(loadBalancerPoolMemberId)
         .build();
 
       Response<LoadBalancerPoolMember> response = vpcService.getLoadBalancerPoolMember(getLoadBalancerPoolMemberOptions).execute();
@@ -4505,8 +4559,8 @@ public class VPCExamples {
       Map<String, Object> loadBalancerPoolMemberPatchModelAsPatch = loadBalancerPoolMemberPatchModel.asPatch();
       UpdateLoadBalancerPoolMemberOptions updateLoadBalancerPoolMemberOptions = new UpdateLoadBalancerPoolMemberOptions.Builder()
         .loadBalancerId(loadBalancerId)
-        .poolId(lbPoolId)
-        .id(lbPoolMemberId)
+        .poolId(loadBalancerPoolId)
+        .id(loadBalancerPoolMemberId)
         .loadBalancerPoolMemberPatch(loadBalancerPoolMemberPatchModelAsPatch)
         .build();
 
@@ -4523,6 +4577,7 @@ public class VPCExamples {
       System.out.println("listEndpointGateways() result:");
       // begin-list_endpoint_gateways
       ListEndpointGatewaysOptions listEndpointGatewaysOptions = new ListEndpointGatewaysOptions.Builder()
+        .limit(Long.valueOf(10))
         .build();
 
       Response<EndpointGatewayCollection> response = vpcService.listEndpointGateways(listEndpointGatewaysOptions).execute();
@@ -4539,12 +4594,13 @@ public class VPCExamples {
       // begin-create_endpoint_gateway
       EndpointGatewayTargetPrototypeProviderCloudServiceIdentityProviderCloudServiceIdentityByCRN endpointGatewayTargetPrototypeModel = new EndpointGatewayTargetPrototypeProviderCloudServiceIdentityProviderCloudServiceIdentityByCRN.Builder()
         .resourceType("provider_infrastructure_service")
-        .crn("crn:v1:bluemix:public:cloudant:us-south:a/123456:3527280b-9327-4411-8020-591092e60353::")
+        .crn(crn)
         .build();
       VPCIdentityById vpcIdentityModel = new VPCIdentityById.Builder()
         .id(vpcId)
         .build();
       CreateEndpointGatewayOptions createEndpointGatewayOptions = new CreateEndpointGatewayOptions.Builder()
+        .name("my-endpoint-gateway")
         .target(endpointGatewayTargetPrototypeModel)
         .vpc(vpcIdentityModel)
         .build();
@@ -4565,6 +4621,7 @@ public class VPCExamples {
       ListEndpointGatewayIpsOptions listEndpointGatewayIpsOptions = new ListEndpointGatewayIpsOptions.Builder()
         .endpointGatewayId(endpointGatewayId)
         .sort("name")
+        .limit(Long.valueOf(10))
         .build();
 
       Response<ReservedIPCollectionEndpointGatewayContext> response = vpcService.listEndpointGatewayIps(listEndpointGatewayIpsOptions).execute();
@@ -4631,7 +4688,7 @@ public class VPCExamples {
       System.out.println("updateEndpointGateway() result:");
       // begin-update_endpoint_gateway
       EndpointGatewayPatch endpointGatewayPatchModel = new EndpointGatewayPatch.Builder()
-        .name("my-endpointgateway-update")
+        .name("my-endpoint-gateway-update")
         .build();
       Map<String, Object> endpointGatewayPatchModelAsPatch = endpointGatewayPatchModel.asPatch();
       UpdateEndpointGatewayOptions updateEndpointGatewayOptions = new UpdateEndpointGatewayOptions.Builder()
@@ -4652,6 +4709,7 @@ public class VPCExamples {
       System.out.println("listFlowLogCollectors() result:");
       // begin-list_flow_log_collectors
       ListFlowLogCollectorsOptions listFlowLogCollectorsOptions = new ListFlowLogCollectorsOptions.Builder()
+        .limit(Long.valueOf(10))
         .build();
 
       Response<FlowLogCollectorCollection> response = vpcService.listFlowLogCollectors(listFlowLogCollectorsOptions).execute();
@@ -4667,12 +4725,13 @@ public class VPCExamples {
       System.out.println("createFlowLogCollector() result:");
       // begin-create_flow_log_collector
       CloudObjectStorageBucketIdentityByName cloudObjectStorageBucketIdentityModel = new CloudObjectStorageBucketIdentityByName.Builder()
-        .name("bucket-27200-lwx4cfvcue")
+        .name(cosBucketName)
         .build();
       FlowLogCollectorTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceIdentityNetworkInterfaceIdentityById flowLogCollectorTargetPrototypeModel = new FlowLogCollectorTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceIdentityNetworkInterfaceIdentityById.Builder()
-        .id(instanceNicId)
+        .id(instanceNetworkInterfaceId)
         .build();
       CreateFlowLogCollectorOptions createFlowLogCollectorOptions = new CreateFlowLogCollectorOptions.Builder()
+        .name("my-flow-log-collector")
         .storageBucket(cloudObjectStorageBucketIdentityModel)
         .target(flowLogCollectorTargetPrototypeModel)
         .build();
@@ -4707,7 +4766,7 @@ public class VPCExamples {
       System.out.println("updateFlowLogCollector() result:");
       // begin-update_flow_log_collector
       FlowLogCollectorPatch flowLogCollectorPatchModel = new FlowLogCollectorPatch.Builder()
-        .name("my-flowlogcollector-update")
+        .name("my-flow-log-collector-update")
         .build();
       Map<String, Object> flowLogCollectorPatchModelAsPatch = flowLogCollectorPatchModel.asPatch();
       UpdateFlowLogCollectorOptions updateFlowLogCollectorOptions = new UpdateFlowLogCollectorOptions.Builder()
@@ -4776,7 +4835,7 @@ public class VPCExamples {
       // begin-remove_security_group_network_interface
       RemoveSecurityGroupNetworkInterfaceOptions removeSecurityGroupNetworkInterfaceOptions = new RemoveSecurityGroupNetworkInterfaceOptions.Builder()
         .securityGroupId(securityGroupId)
-        .id(securityGroupNicId)
+        .id(securityGroupNetworkInterfaceId)
         .build();
 
       Response<Void> response = vpcService.removeSecurityGroupNetworkInterface(removeSecurityGroupNetworkInterfaceOptions).execute();
@@ -4791,7 +4850,7 @@ public class VPCExamples {
       // begin-remove_instance_network_interface_floating_ip
       RemoveInstanceNetworkInterfaceFloatingIpOptions removeInstanceNetworkInterfaceFloatingIpOptions = new RemoveInstanceNetworkInterfaceFloatingIpOptions.Builder()
         .instanceId(instanceId)
-        .networkInterfaceId(instanceNicId)
+        .networkInterfaceId(instanceNetworkInterfaceId)
         .id(floatingIpId)
         .build();
 
@@ -5085,8 +5144,8 @@ public class VPCExamples {
       // begin-delete_load_balancer_pool_member
       DeleteLoadBalancerPoolMemberOptions deleteLoadBalancerPoolMemberOptions = new DeleteLoadBalancerPoolMemberOptions.Builder()
         .loadBalancerId(loadBalancerId)
-        .poolId(lbPoolId)
-        .id(lbPoolMemberId)
+        .poolId(loadBalancerPoolId)
+        .id(loadBalancerPoolMemberId)
         .build();
 
       Response<Void> response = vpcService.deleteLoadBalancerPoolMember(deleteLoadBalancerPoolMemberOptions).execute();
@@ -5101,7 +5160,7 @@ public class VPCExamples {
       // begin-delete_load_balancer_pool
       DeleteLoadBalancerPoolOptions deleteLoadBalancerPoolOptions = new DeleteLoadBalancerPoolOptions.Builder()
         .loadBalancerId(loadBalancerId)
-        .id(lbPoolId)
+        .id(loadBalancerPoolId)
         .build();
 
       Response<Void> response = vpcService.deleteLoadBalancerPool(deleteLoadBalancerPoolOptions).execute();
@@ -5116,9 +5175,9 @@ public class VPCExamples {
       // begin-delete_load_balancer_listener_policy_rule
       DeleteLoadBalancerListenerPolicyRuleOptions deleteLoadBalancerListenerPolicyRuleOptions = new DeleteLoadBalancerListenerPolicyRuleOptions.Builder()
         .loadBalancerId(loadBalancerId)
-        .listenerId(lbListenerId)
-        .policyId(lbListenerPolicyId)
-        .id(lbListenerPolicyRuleId)
+        .listenerId(loadBalancerListenerId)
+        .policyId(loadBalancerListenerPolicyId)
+        .id(loadBalancerListenerPolicyRuleId)
         .build();
 
       Response<Void> response = vpcService.deleteLoadBalancerListenerPolicyRule(deleteLoadBalancerListenerPolicyRuleOptions).execute();
@@ -5133,8 +5192,8 @@ public class VPCExamples {
       // begin-delete_load_balancer_listener_policy
       DeleteLoadBalancerListenerPolicyOptions deleteLoadBalancerListenerPolicyOptions = new DeleteLoadBalancerListenerPolicyOptions.Builder()
         .loadBalancerId(loadBalancerId)
-        .listenerId(lbListenerId)
-        .id(lbListenerPolicyId)
+        .listenerId(loadBalancerListenerId)
+        .id(loadBalancerListenerPolicyId)
         .build();
 
       Response<Void> response = vpcService.deleteLoadBalancerListenerPolicy(deleteLoadBalancerListenerPolicyOptions).execute();
@@ -5149,7 +5208,7 @@ public class VPCExamples {
       // begin-delete_load_balancer_listener
       DeleteLoadBalancerListenerOptions deleteLoadBalancerListenerOptions = new DeleteLoadBalancerListenerOptions.Builder()
         .loadBalancerId(loadBalancerId)
-        .id(lbListenerId)
+        .id(loadBalancerListenerId)
         .build();
 
       Response<Void> response = vpcService.deleteLoadBalancerListener(deleteLoadBalancerListenerOptions).execute();
@@ -5206,7 +5265,7 @@ public class VPCExamples {
       // begin-delete_instance_volume_attachment
       DeleteInstanceVolumeAttachmentOptions deleteInstanceVolumeAttachmentOptions = new DeleteInstanceVolumeAttachmentOptions.Builder()
         .instanceId(instanceId)
-        .id(instanceVolAttId)
+        .id(instanceVolumeAttachmentId)
         .build();
 
       Response<Void> response = vpcService.deleteInstanceVolumeAttachment(deleteInstanceVolumeAttachmentOptions).execute();
@@ -5249,7 +5308,7 @@ public class VPCExamples {
       // begin-delete_instance_network_interface
       DeleteInstanceNetworkInterfaceOptions deleteInstanceNetworkInterfaceOptions = new DeleteInstanceNetworkInterfaceOptions.Builder()
         .instanceId(instanceId)
-        .id(instanceNicId)
+        .id(instanceNetworkInterfaceId)
         .build();
 
       Response<Void> response = vpcService.deleteInstanceNetworkInterface(deleteInstanceNetworkInterfaceOptions).execute();

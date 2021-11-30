@@ -13,8 +13,8 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 /**
- * The auto scale manager to update and the property or properties to be updated. Exactly one of `id` or `href` must be
- * provided in addition to at least one of `min_membership_count` and
+ * The auto scale manager to update, and one or more properties to be updated. Either `id` or `href` must be specified,
+ * in addition to at least one of `min_membership_count` and
  * `max_membership_count`.
  *
  * Classes which extend this class:

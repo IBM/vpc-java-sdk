@@ -23,12 +23,12 @@ public class CreateDedicatedHostGroupOptions extends GenericModel {
    * The dedicated host profile family for hosts in this group.
    */
   public interface Family {
-    /** memory. */
-    String MEMORY = "memory";
     /** balanced. */
     String BALANCED = "balanced";
     /** compute. */
     String COMPUTE = "compute";
+    /** memory. */
+    String MEMORY = "memory";
   }
 
   protected String xClass;

@@ -28,10 +28,10 @@ public class ImageStatusReason extends GenericModel {
     String ENCRYPTION_KEY_DELETED = "encryption_key_deleted";
     /** encryption_key_disabled. */
     String ENCRYPTION_KEY_DISABLED = "encryption_key_disabled";
-    /** image_request_queued. */
-    String IMAGE_REQUEST_QUEUED = "image_request_queued";
     /** image_request_in_progress. */
     String IMAGE_REQUEST_IN_PROGRESS = "image_request_in_progress";
+    /** image_request_queued. */
+    String IMAGE_REQUEST_QUEUED = "image_request_queued";
   }
 
   protected String code;

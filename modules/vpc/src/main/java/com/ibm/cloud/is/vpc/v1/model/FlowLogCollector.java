@@ -34,12 +34,12 @@ public class FlowLogCollector extends GenericModel {
     String PENDING = "pending";
     /** stable. */
     String STABLE = "stable";
+    /** suspended. */
+    String SUSPENDED = "suspended";
     /** updating. */
     String UPDATING = "updating";
     /** waiting. */
     String WAITING = "waiting";
-    /** suspended. */
-    String SUSPENDED = "suspended";
   }
 
   protected Boolean active;
@@ -74,7 +74,8 @@ public class FlowLogCollector extends GenericModel {
   /**
    * Gets the autoDelete.
    *
-   * If set to `true`, this flow log collector will be automatically deleted when the target is deleted.
+   * Indicates whether this flow log collector will be automatically deleted when `target` is deleted. At present, this
+   * is always `true`, but may be modifiable in the future.
    *
    * @return the autoDelete
    */

@@ -33,14 +33,14 @@ public class EndpointGateway extends GenericModel {
    * have this state.
    */
   public interface HealthState {
-    /** ok. */
-    String OK = "ok";
     /** degraded. */
     String DEGRADED = "degraded";
     /** faulted. */
     String FAULTED = "faulted";
     /** inapplicable. */
     String INAPPLICABLE = "inapplicable";
+    /** ok. */
+    String OK = "ok";
   }
 
   /**
@@ -55,16 +55,16 @@ public class EndpointGateway extends GenericModel {
     String PENDING = "pending";
     /** stable. */
     String STABLE = "stable";
+    /** suspended. */
+    String SUSPENDED = "suspended";
     /** updating. */
     String UPDATING = "updating";
     /** waiting. */
     String WAITING = "waiting";
-    /** suspended. */
-    String SUSPENDED = "suspended";
   }
 
   /**
-   * The type of resource referenced.
+   * The resource type.
    */
   public interface ResourceType {
     /** endpoint_gateway. */
@@ -201,7 +201,7 @@ public class EndpointGateway extends GenericModel {
   /**
    * Gets the resourceType.
    *
-   * The type of resource referenced.
+   * The resource type.
    *
    * @return the resourceType
    */

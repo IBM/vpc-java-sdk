@@ -37,11 +37,13 @@ public class ListDedicatedHostsOptionsTest {
       .limit(Long.valueOf("1"))
       .resourceGroupId("testString")
       .zoneName("testString")
+      .name("testString")
       .build();
     assertEquals(listDedicatedHostsOptionsModel.dedicatedHostGroupId(), "testString");
     assertEquals(listDedicatedHostsOptionsModel.start(), "testString");
     assertEquals(listDedicatedHostsOptionsModel.limit(), Long.valueOf("1"));
     assertEquals(listDedicatedHostsOptionsModel.resourceGroupId(), "testString");
     assertEquals(listDedicatedHostsOptionsModel.zoneName(), "testString");
+    assertEquals(listDedicatedHostsOptionsModel.name(), "testString");
   }
 }

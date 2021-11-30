@@ -33,12 +33,12 @@ public class LoadBalancerListenerPolicy extends GenericModel {
   public interface Action {
     /** forward. */
     String FORWARD = "forward";
+    /** https_redirect. */
+    String HTTPS_REDIRECT = "https_redirect";
     /** redirect. */
     String REDIRECT = "redirect";
     /** reject. */
     String REJECT = "reject";
-    /** https_redirect. */
-    String HTTPS_REDIRECT = "https_redirect";
   }
 
   /**

@@ -39,14 +39,14 @@ public class CreateIpsecPolicyOptionsTest {
 
     CreateIpsecPolicyOptions createIpsecPolicyOptionsModel = new CreateIpsecPolicyOptions.Builder()
       .authenticationAlgorithm("md5")
-      .encryptionAlgorithm("triple_des")
+      .encryptionAlgorithm("aes128")
       .pfs("disabled")
       .keyLifetime(Long.valueOf("3600"))
       .name("my-ipsec-policy")
       .resourceGroup(resourceGroupIdentityModel)
       .build();
     assertEquals(createIpsecPolicyOptionsModel.authenticationAlgorithm(), "md5");
-    assertEquals(createIpsecPolicyOptionsModel.encryptionAlgorithm(), "triple_des");
+    assertEquals(createIpsecPolicyOptionsModel.encryptionAlgorithm(), "aes128");
     assertEquals(createIpsecPolicyOptionsModel.pfs(), "disabled");
     assertEquals(createIpsecPolicyOptionsModel.keyLifetime(), Long.valueOf("3600"));
     assertEquals(createIpsecPolicyOptionsModel.name(), "my-ipsec-policy");

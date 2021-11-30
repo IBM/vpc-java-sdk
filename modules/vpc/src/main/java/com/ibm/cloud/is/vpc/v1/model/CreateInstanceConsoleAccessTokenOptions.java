@@ -23,10 +23,10 @@ public class CreateInstanceConsoleAccessTokenOptions extends GenericModel {
    * The instance console type for which this token may be used.
    */
   public interface ConsoleType {
-    /** vnc. */
-    String VNC = "vnc";
     /** serial. */
     String SERIAL = "serial";
+    /** vnc. */
+    String VNC = "vnc";
   }
 
   protected String instanceId;

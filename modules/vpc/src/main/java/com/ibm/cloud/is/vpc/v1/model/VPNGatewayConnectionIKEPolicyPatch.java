@@ -15,18 +15,19 @@ package com.ibm.cloud.is.vpc.v1.model;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * Identifies an IKE policy by a unique property.
+ * The IKE policy to use. Specify `null` to remove any existing policy, [resulting in
+ * auto-negotiation](https://cloud.ibm.com/docs/vpc?topic=vpc-using-vpn&amp;interface=ui#ike-auto-negotiation-phase-1).
  *
  * Classes which extend this class:
- * - IKEPolicyIdentityById
- * - IKEPolicyIdentityByHref
+ * - VPNGatewayConnectionIKEPolicyPatchIKEPolicyIdentityById
+ * - VPNGatewayConnectionIKEPolicyPatchIKEPolicyIdentityByHref
  */
-public class IKEPolicyIdentity extends GenericModel {
+public class VPNGatewayConnectionIKEPolicyPatch extends GenericModel {
 
   protected String id;
   protected String href;
 
-  protected IKEPolicyIdentity() {
+  protected VPNGatewayConnectionIKEPolicyPatch() {
   }
 
   /**

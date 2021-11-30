@@ -36,12 +36,12 @@ public class VPNGatewayMember extends GenericModel {
   public interface Status {
     /** available. */
     String AVAILABLE = "available";
+    /** deleting. */
+    String DELETING = "deleting";
     /** failed. */
     String FAILED = "failed";
     /** pending. */
     String PENDING = "pending";
-    /** deleting. */
-    String DELETING = "deleting";
   }
 
   @SerializedName("private_ip")

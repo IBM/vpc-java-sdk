@@ -21,7 +21,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class DedicatedHostGroupReference extends GenericModel {
 
   /**
-   * The type of resource referenced.
+   * The resource type.
    */
   public interface ResourceType {
     /** dedicated_host_group. */
@@ -84,8 +84,7 @@ public class DedicatedHostGroupReference extends GenericModel {
   /**
    * Gets the name.
    *
-   * The unique user-defined name for this dedicated host group. If unspecified, the name will be a hyphenated list of
-   * randomly-selected words.
+   * The unique user-defined name for this dedicated host group.
    *
    * @return the name
    */
@@ -96,7 +95,7 @@ public class DedicatedHostGroupReference extends GenericModel {
   /**
    * Gets the resourceType.
    *
-   * The type of resource referenced.
+   * The resource type.
    *
    * @return the resourceType
    */

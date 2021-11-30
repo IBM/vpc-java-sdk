@@ -18,7 +18,7 @@ package com.ibm.cloud.is.vpc.v1.model;
 public class InstancePlacementTargetDedicatedHostGroupReference extends InstancePlacementTarget {
 
   /**
-   * The type of resource referenced.
+   * The resource type.
    */
   public interface ResourceType {
     /** dedicated_host_group. */

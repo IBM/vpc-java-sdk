@@ -61,8 +61,8 @@ public class EndpointGatewayReservedIP extends GenericModel {
   /**
    * Gets the autoDelete.
    *
-   * If set to `true`, this reserved IP will be automatically deleted when the target is deleted or when the reserved IP
-   * is unbound.
+   * Indicates whether this reserved IP member will be automatically deleted when either
+   * `target` is deleted, or the reserved IP is unbound.
    *
    * @return the autoDelete
    */
@@ -73,9 +73,9 @@ public class EndpointGatewayReservedIP extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this reserved IP. If not specified, the name will be a hyphenated list of
-   * randomly-selected words. Names must be unique within the subnet the reserved IP resides in. Names beginning with
-   * `ibm-` are reserved for provider-owned resources.
+   * The user-defined name for this reserved IP. If unspecified, the name will be a hyphenated list of randomly-selected
+   * words. Names must be unique within the subnet the reserved IP resides in. Names beginning with `ibm-` are reserved
+   * for provider-owned resources.
    *
    * @return the name
    */

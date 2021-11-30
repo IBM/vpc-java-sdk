@@ -68,10 +68,10 @@ public class CreateLoadBalancerPoolOptionsTest {
 
     LoadBalancerPoolSessionPersistencePrototype loadBalancerPoolSessionPersistencePrototypeModel = new LoadBalancerPoolSessionPersistencePrototype.Builder()
       .cookieName("my-cookie-name")
-      .type("source_ip")
+      .type("app_cookie")
       .build();
     assertEquals(loadBalancerPoolSessionPersistencePrototypeModel.cookieName(), "my-cookie-name");
-    assertEquals(loadBalancerPoolSessionPersistencePrototypeModel.type(), "source_ip");
+    assertEquals(loadBalancerPoolSessionPersistencePrototypeModel.type(), "app_cookie");
 
     CreateLoadBalancerPoolOptions createLoadBalancerPoolOptionsModel = new CreateLoadBalancerPoolOptions.Builder()
       .loadBalancerId("testString")

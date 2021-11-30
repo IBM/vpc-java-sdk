@@ -34,12 +34,12 @@ public class LoadBalancerListenerPolicyRulePrototypeTest {
     LoadBalancerListenerPolicyRulePrototype loadBalancerListenerPolicyRulePrototypeModel = new LoadBalancerListenerPolicyRulePrototype.Builder()
       .condition("contains")
       .field("MY-APP-HEADER")
-      .type("header")
+      .type("body")
       .value("testString")
       .build();
     assertEquals(loadBalancerListenerPolicyRulePrototypeModel.condition(), "contains");
     assertEquals(loadBalancerListenerPolicyRulePrototypeModel.field(), "MY-APP-HEADER");
-    assertEquals(loadBalancerListenerPolicyRulePrototypeModel.type(), "header");
+    assertEquals(loadBalancerListenerPolicyRulePrototypeModel.type(), "body");
     assertEquals(loadBalancerListenerPolicyRulePrototypeModel.value(), "testString");
 
     String json = TestUtilities.serialize(loadBalancerListenerPolicyRulePrototypeModel);
@@ -48,7 +48,7 @@ public class LoadBalancerListenerPolicyRulePrototypeTest {
     assertTrue(loadBalancerListenerPolicyRulePrototypeModelNew instanceof LoadBalancerListenerPolicyRulePrototype);
     assertEquals(loadBalancerListenerPolicyRulePrototypeModelNew.condition(), "contains");
     assertEquals(loadBalancerListenerPolicyRulePrototypeModelNew.field(), "MY-APP-HEADER");
-    assertEquals(loadBalancerListenerPolicyRulePrototypeModelNew.type(), "header");
+    assertEquals(loadBalancerListenerPolicyRulePrototypeModelNew.type(), "body");
     assertEquals(loadBalancerListenerPolicyRulePrototypeModelNew.value(), "testString");
   }
 

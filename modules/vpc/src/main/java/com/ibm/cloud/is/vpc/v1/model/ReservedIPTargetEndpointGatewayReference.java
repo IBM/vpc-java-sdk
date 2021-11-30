@@ -18,7 +18,7 @@ package com.ibm.cloud.is.vpc.v1.model;
 public class ReservedIPTargetEndpointGatewayReference extends ReservedIPTarget {
 
   /**
-   * The type of resource referenced.
+   * The resource type.
    */
   public interface ResourceType {
     /** endpoint_gateway. */

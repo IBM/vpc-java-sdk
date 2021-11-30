@@ -108,8 +108,8 @@ public class Volume extends GenericModel {
   /**
    * Gets the busy.
    *
-   * Indicates whether this volume is performing an operation that must be serialized. If an operation specifies that it
-   * requires serialization, the operation will fail unless this property is `false`.
+   * Indicates whether this volume is performing an operation that must be serialized. This must be `false` to perform
+   * an operation that is specified to require serialization.
    *
    * @return the busy
    */

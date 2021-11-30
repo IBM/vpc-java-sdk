@@ -85,7 +85,7 @@ public class LoadBalancerLoggingDatapath extends GenericModel {
   /**
    * Gets the active.
    *
-   * If set to `true`, datapath logging is active for this load balancer.
+   * Indicates whether datapath logging is active for this load balancer.
    *
    * @return the active
    */

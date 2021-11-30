@@ -47,16 +47,16 @@ public class DedicatedHostDisk extends GenericModel {
     String PENDING = "pending";
     /** stable. */
     String STABLE = "stable";
+    /** suspended. */
+    String SUSPENDED = "suspended";
     /** updating. */
     String UPDATING = "updating";
     /** waiting. */
     String WAITING = "waiting";
-    /** suspended. */
-    String SUSPENDED = "suspended";
   }
 
   /**
-   * The type of resource referenced.
+   * The resource type.
    */
   public interface ResourceType {
     /** dedicated_host_disk. */
@@ -71,10 +71,10 @@ public class DedicatedHostDisk extends GenericModel {
    * unexpected property value was encountered.
    */
   public interface SupportedInstanceInterfaceTypes {
-    /** virtio_blk. */
-    String VIRTIO_BLK = "virtio_blk";
     /** nvme. */
     String NVME = "nvme";
+    /** virtio_blk. */
+    String VIRTIO_BLK = "virtio_blk";
   }
 
   protected Long available;
@@ -202,7 +202,7 @@ public class DedicatedHostDisk extends GenericModel {
   /**
    * Gets the resourceType.
    *
-   * The type of resource referenced.
+   * The resource type.
    *
    * @return the resourceType
    */

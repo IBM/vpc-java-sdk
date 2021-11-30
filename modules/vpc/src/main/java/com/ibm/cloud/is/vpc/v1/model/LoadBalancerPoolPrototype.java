@@ -43,10 +43,10 @@ public class LoadBalancerPoolPrototype extends GenericModel {
   public interface Protocol {
     /** http. */
     String HTTP = "http";
-    /** tcp. */
-    String TCP = "tcp";
     /** https. */
     String HTTPS = "https";
+    /** tcp. */
+    String TCP = "tcp";
   }
 
   /**

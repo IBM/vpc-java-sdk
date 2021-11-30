@@ -12,7 +12,7 @@
  */
 
 /*
- * IBM OpenAPI SDK Code Generator Version: 3.39.0-748eb4ca-20210917-165907
+ * IBM OpenAPI SDK Code Generator Version: 3.42.0-8746aaa4-20211102-213344
  */
 
 package com.ibm.cloud.is.vpc.v1;
@@ -411,10 +411,10 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 /**
- * The IBM Cloud Virtual Private Cloud (VPC) API can be used to programmatically provision and manage infrastructure
- * resources, including virtual server instances, subnets, volumes, and load balancers.
+ * The IBM Cloud Virtual Private Cloud (VPC) API can be used to programmatically provision and manage virtual server
+ * instances, along with subnets, volumes, load balancers, and more.
  *
- * API Version: 2021-10-19
+ * API Version: 2021-11-23
  */
 public class Vpc extends BaseService {
 
@@ -422,7 +422,7 @@ public class Vpc extends BaseService {
 
   public static final String DEFAULT_SERVICE_URL = "https://us-south.iaas.cloud.ibm.com/v1";
 
-  private String version = "2021-10-19";
+  private String version = "2021-11-23";
 
   private Long generation = Long.valueOf("2");
 
@@ -466,8 +466,8 @@ public class Vpc extends BaseService {
   /**
    * Gets the version.
    *
-   * Requests the version of the API as of a date in the format `YYYY-MM-DD`. Any date up to the current date may be
-   * provided. Specify the current date to request the latest version.
+   * Requests the API version as of a date, in format `YYYY-MM-DD`. Any date between `2019-01-01` and the current date
+   * may be specified. Specify the current date to request the latest version.
    *
    * @return the version
    */
@@ -1092,7 +1092,7 @@ public class Vpc extends BaseService {
    *
    * This request lists all user-defined routing tables for a VPC.  Each subnet in a VPC is associated with a routing
    * table, which controls delivery of packets sent on that subnet according to the action of the most specific matching
-   * route in the table.  If multiple equally-specific routes exist, traffic will be distributed across them.  If no
+   * route in the table.  If multiple equally-specific routes exist, traffic will be distributed across them. If no
    * routes match, delivery will be controlled by the system's built-in routes.
    *
    * @param listVpcRoutingTablesOptions the {@link ListVpcRoutingTablesOptions} containing the options for the call
@@ -2178,9 +2178,6 @@ public class Vpc extends BaseService {
     }
     if (listKeysOptions.limit() != null) {
       builder.query("limit", String.valueOf(listKeysOptions.limit()));
-    }
-    if (listKeysOptions.resourceGroupId() != null) {
-      builder.query("resource_group.id", String.valueOf(listKeysOptions.resourceGroupId()));
     }
     ResponseConverter<KeyCollection> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<KeyCollection>() { }.getType());
@@ -4081,6 +4078,9 @@ public class Vpc extends BaseService {
     if (listDedicatedHostGroupsOptions.zoneName() != null) {
       builder.query("zone.name", String.valueOf(listDedicatedHostGroupsOptions.zoneName()));
     }
+    if (listDedicatedHostGroupsOptions.name() != null) {
+      builder.query("name", String.valueOf(listDedicatedHostGroupsOptions.name()));
+    }
     ResponseConverter<DedicatedHostGroupCollection> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<DedicatedHostGroupCollection>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -4338,6 +4338,9 @@ public class Vpc extends BaseService {
     }
     if (listDedicatedHostsOptions.zoneName() != null) {
       builder.query("zone.name", String.valueOf(listDedicatedHostsOptions.zoneName()));
+    }
+    if (listDedicatedHostsOptions.name() != null) {
+      builder.query("name", String.valueOf(listDedicatedHostsOptions.name()));
     }
     ResponseConverter<DedicatedHostCollection> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<DedicatedHostCollection>() { }.getType());

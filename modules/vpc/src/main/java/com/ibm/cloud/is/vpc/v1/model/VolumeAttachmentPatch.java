@@ -105,7 +105,8 @@ public class VolumeAttachmentPatch extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this volume attachment.
+   * The user-defined name for this volume attachment. Names must be unique within the instance the volume attachment
+   * resides in.
    *
    * @return the name
    */

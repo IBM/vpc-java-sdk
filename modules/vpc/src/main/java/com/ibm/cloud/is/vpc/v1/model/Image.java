@@ -58,12 +58,12 @@ public class Image extends GenericModel {
     String DEPRECATED = "deprecated";
     /** failed. */
     String FAILED = "failed";
-    /** unusable. */
-    String UNUSABLE = "unusable";
     /** pending. */
     String PENDING = "pending";
     /** tentative. */
     String TENTATIVE = "tentative";
+    /** unusable. */
+    String UNUSABLE = "unusable";
   }
 
   /**
@@ -136,7 +136,7 @@ public class Image extends GenericModel {
    * Gets the encryptionKey.
    *
    * The key that will be used to encrypt volumes created from this image (unless an
-   * alternate `encryption_key` is provided at volume creation).
+   * alternate `encryption_key` is specified at volume creation).
    *
    * This property will be present for images with an `encryption` type of `user_managed`.
    *

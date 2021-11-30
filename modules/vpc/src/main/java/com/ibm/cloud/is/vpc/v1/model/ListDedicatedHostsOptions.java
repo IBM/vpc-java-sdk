@@ -24,6 +24,7 @@ public class ListDedicatedHostsOptions extends GenericModel {
   protected Long limit;
   protected String resourceGroupId;
   protected String zoneName;
+  protected String name;
 
   /**
    * Builder.
@@ -34,6 +35,7 @@ public class ListDedicatedHostsOptions extends GenericModel {
     private Long limit;
     private String resourceGroupId;
     private String zoneName;
+    private String name;
 
     private Builder(ListDedicatedHostsOptions listDedicatedHostsOptions) {
       this.dedicatedHostGroupId = listDedicatedHostsOptions.dedicatedHostGroupId;
@@ -41,6 +43,7 @@ public class ListDedicatedHostsOptions extends GenericModel {
       this.limit = listDedicatedHostsOptions.limit;
       this.resourceGroupId = listDedicatedHostsOptions.resourceGroupId;
       this.zoneName = listDedicatedHostsOptions.zoneName;
+      this.name = listDedicatedHostsOptions.name;
     }
 
     /**
@@ -112,6 +115,17 @@ public class ListDedicatedHostsOptions extends GenericModel {
       this.zoneName = zoneName;
       return this;
     }
+
+    /**
+     * Set the name.
+     *
+     * @param name the name
+     * @return the ListDedicatedHostsOptions builder
+     */
+    public Builder name(String name) {
+      this.name = name;
+      return this;
+    }
   }
 
   protected ListDedicatedHostsOptions(Builder builder) {
@@ -120,6 +134,7 @@ public class ListDedicatedHostsOptions extends GenericModel {
     limit = builder.limit;
     resourceGroupId = builder.resourceGroupId;
     zoneName = builder.zoneName;
+    name = builder.name;
   }
 
   /**
@@ -167,8 +182,7 @@ public class ListDedicatedHostsOptions extends GenericModel {
   /**
    * Gets the resourceGroupId.
    *
-   * Filters the collection to resources within one of the resource groups identified in a comma-separated list of
-   * resource group identifiers.
+   * Filters the collection to resources in the resource group with the specified identifier.
    *
    * @return the resourceGroupId
    */
@@ -185,6 +199,17 @@ public class ListDedicatedHostsOptions extends GenericModel {
    */
   public String zoneName() {
     return zoneName;
+  }
+
+  /**
+   * Gets the name.
+   *
+   * Filters the collection to resources with the exact specified name.
+   *
+   * @return the name
+   */
+  public String name() {
+    return name;
   }
 }
 

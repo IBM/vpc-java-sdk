@@ -51,10 +51,10 @@ public class LoadBalancerPoolPatchTest {
 
     LoadBalancerPoolSessionPersistencePatch loadBalancerPoolSessionPersistencePatchModel = new LoadBalancerPoolSessionPersistencePatch.Builder()
       .cookieName("my-cookie-name")
-      .type("source_ip")
+      .type("app_cookie")
       .build();
     assertEquals(loadBalancerPoolSessionPersistencePatchModel.cookieName(), "my-cookie-name");
-    assertEquals(loadBalancerPoolSessionPersistencePatchModel.type(), "source_ip");
+    assertEquals(loadBalancerPoolSessionPersistencePatchModel.type(), "app_cookie");
 
     LoadBalancerPoolPatch loadBalancerPoolPatchModel = new LoadBalancerPoolPatch.Builder()
       .algorithm("least_connections")
@@ -95,7 +95,7 @@ public class LoadBalancerPoolPatchTest {
 
     LoadBalancerPoolSessionPersistencePatch loadBalancerPoolSessionPersistencePatchModel = new LoadBalancerPoolSessionPersistencePatch.Builder()
       .cookieName("my-cookie-name")
-      .type("source_ip")
+      .type("app_cookie")
       .build();
 
     LoadBalancerPoolPatch loadBalancerPoolPatchModel = new LoadBalancerPoolPatch.Builder()
