@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -23,14 +23,14 @@ import com.ibm.cloud.sdk.core.util.GsonSingleton;
 public class FloatingIPPatch extends GenericModel {
 
   protected String name;
-  protected FloatingIPPatchTargetNetworkInterfaceIdentity target;
+  protected FloatingIPTargetPatch target;
 
   /**
    * Builder.
    */
   public static class Builder {
     private String name;
-    private FloatingIPPatchTargetNetworkInterfaceIdentity target;
+    private FloatingIPTargetPatch target;
 
     private Builder(FloatingIPPatch floatingIpPatch) {
       this.name = floatingIpPatch.name;
@@ -69,7 +69,7 @@ public class FloatingIPPatch extends GenericModel {
      * @param target the target
      * @return the FloatingIPPatch builder
      */
-    public Builder target(FloatingIPPatchTargetNetworkInterfaceIdentity target) {
+    public Builder target(FloatingIPTargetPatch target) {
       this.target = target;
       return this;
     }
@@ -103,13 +103,13 @@ public class FloatingIPPatch extends GenericModel {
   /**
    * Gets the target.
    *
-   * A new network interface to bind this floating IP to, replacing any existing binding.
-   * For this request to succeed, the existing floating IP must not be required by another
-   * resource, such as a public gateway.
+   * The network interface to bind the floating IP to, replacing any existing binding. For
+   * this request to succeed, the floating IP must not be required by another resource, such
+   * as a public gateway.
    *
    * @return the target
    */
-  public FloatingIPPatchTargetNetworkInterfaceIdentity target() {
+  public FloatingIPTargetPatch target() {
     return target;
   }
 

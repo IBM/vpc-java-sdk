@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -27,7 +27,7 @@ public class SubnetPatch extends GenericModel {
   @SerializedName("network_acl")
   protected NetworkACLIdentity networkAcl;
   @SerializedName("public_gateway")
-  protected PublicGatewayIdentity publicGateway;
+  protected SubnetPublicGatewayPatch publicGateway;
   @SerializedName("routing_table")
   protected RoutingTableIdentity routingTable;
 
@@ -37,7 +37,7 @@ public class SubnetPatch extends GenericModel {
   public static class Builder {
     private String name;
     private NetworkACLIdentity networkAcl;
-    private PublicGatewayIdentity publicGateway;
+    private SubnetPublicGatewayPatch publicGateway;
     private RoutingTableIdentity routingTable;
 
     private Builder(SubnetPatch subnetPatch) {
@@ -90,7 +90,7 @@ public class SubnetPatch extends GenericModel {
      * @param publicGateway the publicGateway
      * @return the SubnetPatch builder
      */
-    public Builder publicGateway(PublicGatewayIdentity publicGateway) {
+    public Builder publicGateway(SubnetPublicGatewayPatch publicGateway) {
       this.publicGateway = publicGateway;
       return this;
     }
@@ -148,11 +148,11 @@ public class SubnetPatch extends GenericModel {
   /**
    * Gets the publicGateway.
    *
-   * The public gateway to handle internet bound traffic for this subnet.
+   * The public gateway to use for internet-bound traffic for this subnet.
    *
    * @return the publicGateway
    */
-  public PublicGatewayIdentity publicGateway() {
+  public SubnetPublicGatewayPatch publicGateway() {
     return publicGateway;
   }
 

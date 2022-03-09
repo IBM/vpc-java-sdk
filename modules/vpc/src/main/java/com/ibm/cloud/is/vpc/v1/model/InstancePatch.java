@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -24,6 +24,8 @@ import com.ibm.cloud.sdk.core.util.GsonSingleton;
 public class InstancePatch extends GenericModel {
 
   protected String name;
+  @SerializedName("placement_target")
+  protected InstancePlacementTargetPatch placementTarget;
   protected InstancePatchProfile profile;
   @SerializedName("total_volume_bandwidth")
   protected Long totalVolumeBandwidth;
@@ -33,11 +35,13 @@ public class InstancePatch extends GenericModel {
    */
   public static class Builder {
     private String name;
+    private InstancePlacementTargetPatch placementTarget;
     private InstancePatchProfile profile;
     private Long totalVolumeBandwidth;
 
     private Builder(InstancePatch instancePatch) {
       this.name = instancePatch.name;
+      this.placementTarget = instancePatch.placementTarget;
       this.profile = instancePatch.profile;
       this.totalVolumeBandwidth = instancePatch.totalVolumeBandwidth;
     }
@@ -69,6 +73,17 @@ public class InstancePatch extends GenericModel {
     }
 
     /**
+     * Set the placementTarget.
+     *
+     * @param placementTarget the placementTarget
+     * @return the InstancePatch builder
+     */
+    public Builder placementTarget(InstancePlacementTargetPatch placementTarget) {
+      this.placementTarget = placementTarget;
+      return this;
+    }
+
+    /**
      * Set the profile.
      *
      * @param profile the profile
@@ -93,6 +108,7 @@ public class InstancePatch extends GenericModel {
 
   protected InstancePatch(Builder builder) {
     name = builder.name;
+    placementTarget = builder.placementTarget;
     profile = builder.profile;
     totalVolumeBandwidth = builder.totalVolumeBandwidth;
   }
@@ -115,6 +131,18 @@ public class InstancePatch extends GenericModel {
    */
   public String name() {
     return name;
+  }
+
+  /**
+   * Gets the placementTarget.
+   *
+   * The placement restrictions to use for the virtual server instance. For the placement
+   * restrictions to be changed, the instance `status` must be `stopping` or `stopped`.
+   *
+   * @return the placementTarget
+   */
+  public InstancePlacementTargetPatch placementTarget() {
+    return placementTarget;
   }
 
   /**

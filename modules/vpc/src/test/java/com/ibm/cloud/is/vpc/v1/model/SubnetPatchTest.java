@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -14,9 +14,9 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLIdentityById;
-import com.ibm.cloud.is.vpc.v1.model.PublicGatewayIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.RoutingTableIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.SubnetPatch;
+import com.ibm.cloud.is.vpc.v1.model.SubnetPublicGatewayPatchPublicGatewayIdentityById;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -40,10 +40,10 @@ public class SubnetPatchTest {
       .build();
     assertEquals(networkAclIdentityModel.id(), "a4e28308-8ee7-46ab-8108-9f881f22bdbf");
 
-    PublicGatewayIdentityById publicGatewayIdentityModel = new PublicGatewayIdentityById.Builder()
+    SubnetPublicGatewayPatchPublicGatewayIdentityById subnetPublicGatewayPatchModel = new SubnetPublicGatewayPatchPublicGatewayIdentityById.Builder()
       .id("dc5431ef-1fc6-4861-adc9-a59d077d1241")
       .build();
-    assertEquals(publicGatewayIdentityModel.id(), "dc5431ef-1fc6-4861-adc9-a59d077d1241");
+    assertEquals(subnetPublicGatewayPatchModel.id(), "dc5431ef-1fc6-4861-adc9-a59d077d1241");
 
     RoutingTableIdentityById routingTableIdentityModel = new RoutingTableIdentityById.Builder()
       .id("6885e83f-03b2-4603-8a86-db2a0f55c840")
@@ -53,12 +53,12 @@ public class SubnetPatchTest {
     SubnetPatch subnetPatchModel = new SubnetPatch.Builder()
       .name("my-subnet")
       .networkAcl(networkAclIdentityModel)
-      .publicGateway(publicGatewayIdentityModel)
+      .publicGateway(subnetPublicGatewayPatchModel)
       .routingTable(routingTableIdentityModel)
       .build();
     assertEquals(subnetPatchModel.name(), "my-subnet");
     assertEquals(subnetPatchModel.networkAcl(), networkAclIdentityModel);
-    assertEquals(subnetPatchModel.publicGateway(), publicGatewayIdentityModel);
+    assertEquals(subnetPatchModel.publicGateway(), subnetPublicGatewayPatchModel);
     assertEquals(subnetPatchModel.routingTable(), routingTableIdentityModel);
 
     String json = TestUtilities.serialize(subnetPatchModel);
@@ -67,7 +67,7 @@ public class SubnetPatchTest {
     assertTrue(subnetPatchModelNew instanceof SubnetPatch);
     assertEquals(subnetPatchModelNew.name(), "my-subnet");
     assertEquals(subnetPatchModelNew.networkAcl().toString(), networkAclIdentityModel.toString());
-    assertEquals(subnetPatchModelNew.publicGateway().toString(), publicGatewayIdentityModel.toString());
+    assertEquals(subnetPatchModelNew.publicGateway().toString(), subnetPublicGatewayPatchModel.toString());
     assertEquals(subnetPatchModelNew.routingTable().toString(), routingTableIdentityModel.toString());
   }
   @Test
@@ -76,7 +76,7 @@ public class SubnetPatchTest {
       .id("a4e28308-8ee7-46ab-8108-9f881f22bdbf")
       .build();
 
-    PublicGatewayIdentityById publicGatewayIdentityModel = new PublicGatewayIdentityById.Builder()
+    SubnetPublicGatewayPatchPublicGatewayIdentityById subnetPublicGatewayPatchModel = new SubnetPublicGatewayPatchPublicGatewayIdentityById.Builder()
       .id("dc5431ef-1fc6-4861-adc9-a59d077d1241")
       .build();
 
@@ -87,7 +87,7 @@ public class SubnetPatchTest {
     SubnetPatch subnetPatchModel = new SubnetPatch.Builder()
       .name("my-subnet")
       .networkAcl(networkAclIdentityModel)
-      .publicGateway(publicGatewayIdentityModel)
+      .publicGateway(subnetPublicGatewayPatchModel)
       .routingTable(routingTableIdentityModel)
       .build();
 

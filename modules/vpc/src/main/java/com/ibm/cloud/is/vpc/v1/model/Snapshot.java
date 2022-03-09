@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -61,6 +61,8 @@ public class Snapshot extends GenericModel {
   }
 
   protected Boolean bootable;
+  @SerializedName("captured_at")
+  protected Date capturedAt;
   @SerializedName("created_at")
   protected Date createdAt;
   protected String crn;
@@ -96,6 +98,20 @@ public class Snapshot extends GenericModel {
    */
   public Boolean isBootable() {
     return bootable;
+  }
+
+  /**
+   * Gets the capturedAt.
+   *
+   * The date and time the data capture for this snapshot was completed.
+   *
+   * If absent, this snapshot's data has not yet been captured. Additionally, this property may be absent for snapshots
+   * created before 1 January 2022.
+   *
+   * @return the capturedAt
+   */
+  public Date getCapturedAt() {
+    return capturedAt;
   }
 
   /**

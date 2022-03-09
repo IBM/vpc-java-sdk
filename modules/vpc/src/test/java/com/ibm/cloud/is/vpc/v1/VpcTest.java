@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -13,6 +13,7 @@
 package com.ibm.cloud.is.vpc.v1;
 
 import com.ibm.cloud.is.vpc.v1.Vpc;
+import com.ibm.cloud.is.vpc.v1.model.AddBareMetalServerNetworkInterfaceFloatingIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.AddEndpointGatewayIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.AddInstanceNetworkInterfaceFloatingIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.AddSecurityGroupNetworkInterfaceOptions;
@@ -23,6 +24,79 @@ import com.ibm.cloud.is.vpc.v1.model.AddressPrefixCollection;
 import com.ibm.cloud.is.vpc.v1.model.AddressPrefixCollectionFirst;
 import com.ibm.cloud.is.vpc.v1.model.AddressPrefixCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.AddressPrefixPatch;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServer;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerBootTarget;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerBootTargetBareMetalServerDiskReference;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerCPU;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerCollection;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerCollectionFirst;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerCollectionNext;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerConsoleAccessToken;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerDisk;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerDiskCollection;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerDiskPatch;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerDiskReferenceDeleted;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerInitialization;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerInitializationPrototype;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerInitializationUserAccount;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerInitializationUserAccountBareMetalServerInitializationHostUserAccount;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkInterface;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkInterfaceByPCI;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkInterfaceByVLAN;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkInterfaceCollection;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkInterfaceCollectionFirst;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkInterfaceCollectionNext;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkInterfacePatch;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkInterfacePrototype;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByPCIPrototype;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVLANPrototype;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerPatch;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerPrimaryNetworkInterfacePrototype;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfile;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileBandwidth;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileBandwidthDependent;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileBandwidthEnum;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileBandwidthFixed;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileBandwidthRange;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileCPUArchitecture;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileCPUCoreCount;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileCPUCoreCountDependent;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileCPUCoreCountEnum;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileCPUCoreCountFixed;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileCPUCoreCountRange;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileCPUSocketCount;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileCPUSocketCountDependent;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileCPUSocketCountEnum;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileCPUSocketCountFixed;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileCPUSocketCountRange;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileCollection;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileCollectionFirst;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileCollectionNext;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileDisk;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileDiskQuantity;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileDiskQuantityDependent;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileDiskQuantityEnum;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileDiskQuantityFixed;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileDiskQuantityRange;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileDiskSize;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileDiskSizeDependent;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileDiskSizeEnum;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileDiskSizeFixed;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileDiskSizeRange;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileDiskSupportedInterfaces;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileIdentity;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileIdentityByHref;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileIdentityByName;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileMemory;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileMemoryDependent;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileMemoryEnum;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileMemoryFixed;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileMemoryRange;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileOSArchitecture;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileReference;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileSupportedTrustedPlatformModuleModes;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerStatusReason;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerTrustedPlatformModule;
 import com.ibm.cloud.is.vpc.v1.model.CertificateInstanceIdentity;
 import com.ibm.cloud.is.vpc.v1.model.CertificateInstanceIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.CertificateInstanceReference;
@@ -31,6 +105,9 @@ import com.ibm.cloud.is.vpc.v1.model.CheckVpnGatewayConnectionPeerCidrOptions;
 import com.ibm.cloud.is.vpc.v1.model.CloudObjectStorageBucketIdentity;
 import com.ibm.cloud.is.vpc.v1.model.CloudObjectStorageBucketIdentityByName;
 import com.ibm.cloud.is.vpc.v1.model.CloudObjectStorageBucketReference;
+import com.ibm.cloud.is.vpc.v1.model.CreateBareMetalServerConsoleAccessTokenOptions;
+import com.ibm.cloud.is.vpc.v1.model.CreateBareMetalServerNetworkInterfaceOptions;
+import com.ibm.cloud.is.vpc.v1.model.CreateBareMetalServerOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateDedicatedHostGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateDedicatedHostOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateEndpointGatewayOptions;
@@ -131,6 +208,8 @@ import com.ibm.cloud.is.vpc.v1.model.DedicatedHostReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.DefaultNetworkACL;
 import com.ibm.cloud.is.vpc.v1.model.DefaultRoutingTable;
 import com.ibm.cloud.is.vpc.v1.model.DefaultSecurityGroup;
+import com.ibm.cloud.is.vpc.v1.model.DeleteBareMetalServerNetworkInterfaceOptions;
+import com.ibm.cloud.is.vpc.v1.model.DeleteBareMetalServerOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteDedicatedHostGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteDedicatedHostOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteEndpointGatewayOptions;
@@ -206,9 +285,6 @@ import com.ibm.cloud.is.vpc.v1.model.FloatingIPCollection;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPCollectionFirst;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPPatch;
-import com.ibm.cloud.is.vpc.v1.model.FloatingIPPatchTargetNetworkInterfaceIdentity;
-import com.ibm.cloud.is.vpc.v1.model.FloatingIPPatchTargetNetworkInterfaceIdentityNetworkInterfaceIdentityByHref;
-import com.ibm.cloud.is.vpc.v1.model.FloatingIPPatchTargetNetworkInterfaceIdentityNetworkInterfaceIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPPrototype;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPPrototypeFloatingIPByTarget;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPPrototypeFloatingIPByZone;
@@ -216,6 +292,9 @@ import com.ibm.cloud.is.vpc.v1.model.FloatingIPReference;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPTarget;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPTargetNetworkInterfaceReference;
+import com.ibm.cloud.is.vpc.v1.model.FloatingIPTargetPatch;
+import com.ibm.cloud.is.vpc.v1.model.FloatingIPTargetPatchNetworkInterfaceIdentityByHref;
+import com.ibm.cloud.is.vpc.v1.model.FloatingIPTargetPatchNetworkInterfaceIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPTargetPublicGatewayReference;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPUnpaginatedCollection;
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollector;
@@ -244,6 +323,12 @@ import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorTargetPrototypeVPCIdentityV
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorTargetPrototypeVPCIdentityVPCIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorTargetSubnetReference;
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorTargetVPCReference;
+import com.ibm.cloud.is.vpc.v1.model.GetBareMetalServerDiskOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetBareMetalServerInitializationOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetBareMetalServerNetworkInterfaceFloatingIpOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetBareMetalServerNetworkInterfaceOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetBareMetalServerOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetBareMetalServerProfileOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetDedicatedHostDiskOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetDedicatedHostGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetDedicatedHostOptions;
@@ -422,6 +507,15 @@ import com.ibm.cloud.is.vpc.v1.model.InstancePatchProfileInstanceProfileIdentity
 import com.ibm.cloud.is.vpc.v1.model.InstancePlacementTarget;
 import com.ibm.cloud.is.vpc.v1.model.InstancePlacementTargetDedicatedHostGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.InstancePlacementTargetDedicatedHostReference;
+import com.ibm.cloud.is.vpc.v1.model.InstancePlacementTargetPatch;
+import com.ibm.cloud.is.vpc.v1.model.InstancePlacementTargetPatchDedicatedHostGroupIdentity;
+import com.ibm.cloud.is.vpc.v1.model.InstancePlacementTargetPatchDedicatedHostGroupIdentityDedicatedHostGroupIdentityByCRN;
+import com.ibm.cloud.is.vpc.v1.model.InstancePlacementTargetPatchDedicatedHostGroupIdentityDedicatedHostGroupIdentityByHref;
+import com.ibm.cloud.is.vpc.v1.model.InstancePlacementTargetPatchDedicatedHostGroupIdentityDedicatedHostGroupIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.InstancePlacementTargetPatchDedicatedHostIdentity;
+import com.ibm.cloud.is.vpc.v1.model.InstancePlacementTargetPatchDedicatedHostIdentityDedicatedHostIdentityByCRN;
+import com.ibm.cloud.is.vpc.v1.model.InstancePlacementTargetPatchDedicatedHostIdentityDedicatedHostIdentityByHref;
+import com.ibm.cloud.is.vpc.v1.model.InstancePlacementTargetPatchDedicatedHostIdentityDedicatedHostIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.InstancePlacementTargetPlacementGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.InstancePlacementTargetPrototype;
 import com.ibm.cloud.is.vpc.v1.model.InstancePlacementTargetPrototypeDedicatedHostGroupIdentity;
@@ -528,6 +622,11 @@ import com.ibm.cloud.is.vpc.v1.model.KeyIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.KeyPatch;
 import com.ibm.cloud.is.vpc.v1.model.KeyReference;
 import com.ibm.cloud.is.vpc.v1.model.KeyReferenceDeleted;
+import com.ibm.cloud.is.vpc.v1.model.ListBareMetalServerDisksOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListBareMetalServerNetworkInterfaceFloatingIpsOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListBareMetalServerNetworkInterfacesOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListBareMetalServerProfilesOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListBareMetalServersOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListDedicatedHostDisksOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListDedicatedHostGroupsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListDedicatedHostProfilesOptions;
@@ -728,6 +827,8 @@ import com.ibm.cloud.is.vpc.v1.model.NetworkACLRulePrototypeNetworkACLRuleProtoc
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLRuleReference;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLRuleReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.NetworkInterface;
+import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceBareMetalServerContextReference;
+import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceBareMetalServerContextReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceCollection;
 import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceCollectionFirst;
 import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceCollectionNext;
@@ -766,15 +867,16 @@ import com.ibm.cloud.is.vpc.v1.model.PublicGatewayFloatingIPPrototypeFloatingIPI
 import com.ibm.cloud.is.vpc.v1.model.PublicGatewayFloatingIPPrototypeFloatingIPPrototypeTargetContext;
 import com.ibm.cloud.is.vpc.v1.model.PublicGatewayFloatingIp;
 import com.ibm.cloud.is.vpc.v1.model.PublicGatewayIdentity;
-import com.ibm.cloud.is.vpc.v1.model.PublicGatewayIdentityByCRN;
-import com.ibm.cloud.is.vpc.v1.model.PublicGatewayIdentityByHref;
-import com.ibm.cloud.is.vpc.v1.model.PublicGatewayIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.PublicGatewayIdentityPublicGatewayIdentityByCRN;
+import com.ibm.cloud.is.vpc.v1.model.PublicGatewayIdentityPublicGatewayIdentityByHref;
+import com.ibm.cloud.is.vpc.v1.model.PublicGatewayIdentityPublicGatewayIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.PublicGatewayPatch;
 import com.ibm.cloud.is.vpc.v1.model.PublicGatewayReference;
 import com.ibm.cloud.is.vpc.v1.model.PublicGatewayReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.Region;
 import com.ibm.cloud.is.vpc.v1.model.RegionCollection;
 import com.ibm.cloud.is.vpc.v1.model.RegionReference;
+import com.ibm.cloud.is.vpc.v1.model.RemoveBareMetalServerNetworkInterfaceFloatingIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.RemoveEndpointGatewayIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.RemoveInstanceNetworkInterfaceFloatingIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.RemoveSecurityGroupNetworkInterfaceOptions;
@@ -803,6 +905,7 @@ import com.ibm.cloud.is.vpc.v1.model.ReservedIPTargetPrototypeEndpointGatewayIde
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupIdentity;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;
+import com.ibm.cloud.is.vpc.v1.model.RestartBareMetalServerOptions;
 import com.ibm.cloud.is.vpc.v1.model.Route;
 import com.ibm.cloud.is.vpc.v1.model.RouteCollection;
 import com.ibm.cloud.is.vpc.v1.model.RouteCollectionFirst;
@@ -872,6 +975,7 @@ import com.ibm.cloud.is.vpc.v1.model.SecurityGroupTargetCollection;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupTargetCollectionFirst;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupTargetCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupTargetReference;
+import com.ibm.cloud.is.vpc.v1.model.SecurityGroupTargetReferenceEndpointGatewayReference;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupTargetReferenceLoadBalancerReference;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupTargetReferenceNetworkInterfaceReferenceTargetContext;
 import com.ibm.cloud.is.vpc.v1.model.SetSubnetPublicGatewayOptions;
@@ -886,6 +990,8 @@ import com.ibm.cloud.is.vpc.v1.model.SnapshotIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotPatch;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotReference;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotReferenceDeleted;
+import com.ibm.cloud.is.vpc.v1.model.StartBareMetalServerOptions;
+import com.ibm.cloud.is.vpc.v1.model.StopBareMetalServerOptions;
 import com.ibm.cloud.is.vpc.v1.model.Subnet;
 import com.ibm.cloud.is.vpc.v1.model.SubnetCollection;
 import com.ibm.cloud.is.vpc.v1.model.SubnetCollectionFirst;
@@ -898,9 +1004,16 @@ import com.ibm.cloud.is.vpc.v1.model.SubnetPatch;
 import com.ibm.cloud.is.vpc.v1.model.SubnetPrototype;
 import com.ibm.cloud.is.vpc.v1.model.SubnetPrototypeSubnetByCIDR;
 import com.ibm.cloud.is.vpc.v1.model.SubnetPrototypeSubnetByTotalCount;
+import com.ibm.cloud.is.vpc.v1.model.SubnetPublicGatewayPatch;
+import com.ibm.cloud.is.vpc.v1.model.SubnetPublicGatewayPatchPublicGatewayIdentityByCRN;
+import com.ibm.cloud.is.vpc.v1.model.SubnetPublicGatewayPatchPublicGatewayIdentityByHref;
+import com.ibm.cloud.is.vpc.v1.model.SubnetPublicGatewayPatchPublicGatewayIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.SubnetReference;
 import com.ibm.cloud.is.vpc.v1.model.SubnetReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.UnsetSubnetPublicGatewayOptions;
+import com.ibm.cloud.is.vpc.v1.model.UpdateBareMetalServerDiskOptions;
+import com.ibm.cloud.is.vpc.v1.model.UpdateBareMetalServerNetworkInterfaceOptions;
+import com.ibm.cloud.is.vpc.v1.model.UpdateBareMetalServerOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateDedicatedHostDiskOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateDedicatedHostGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateDedicatedHostOptions;
@@ -1090,7 +1203,7 @@ public class VpcTest extends PowerMockTestCase {
 
   final HashMap<String, InputStream> mockStreamMap = TestUtilities.createMockStreamMap();
   final List<FileWithMetadata> mockListFileWithMetadata = TestUtilities.creatMockListFileWithMetadata();
-  final String version = "2021-11-23";
+  final String version = "2022-02-08";
 
   protected MockWebServer server;
   protected Vpc vpcService;
@@ -1119,7 +1232,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test(expectedExceptions = IllegalArgumentException.class)
   public void testConstructorWithNullAuthenticator() throws Throwable {
     final String serviceName = "testService";
-
+    // set mock values for global params
     new Vpc(serviceName, null);
   }
 
@@ -3073,8 +3186,8 @@ public class VpcTest extends PowerMockTestCase {
     .id("a4e28308-8ee7-46ab-8108-9f881f22bdbf")
     .build();
 
-    // Construct an instance of the PublicGatewayIdentityById model
-    PublicGatewayIdentityById publicGatewayIdentityModel = new PublicGatewayIdentityById.Builder()
+    // Construct an instance of the PublicGatewayIdentityPublicGatewayIdentityById model
+    PublicGatewayIdentityPublicGatewayIdentityById publicGatewayIdentityModel = new PublicGatewayIdentityPublicGatewayIdentityById.Builder()
     .id("dc5431ef-1fc6-4861-adc9-a59d077d1241")
     .build();
 
@@ -3302,8 +3415,8 @@ public class VpcTest extends PowerMockTestCase {
     .id("a4e28308-8ee7-46ab-8108-9f881f22bdbf")
     .build();
 
-    // Construct an instance of the PublicGatewayIdentityById model
-    PublicGatewayIdentityById publicGatewayIdentityModel = new PublicGatewayIdentityById.Builder()
+    // Construct an instance of the SubnetPublicGatewayPatchPublicGatewayIdentityById model
+    SubnetPublicGatewayPatchPublicGatewayIdentityById subnetPublicGatewayPatchModel = new SubnetPublicGatewayPatchPublicGatewayIdentityById.Builder()
     .id("dc5431ef-1fc6-4861-adc9-a59d077d1241")
     .build();
 
@@ -3316,7 +3429,7 @@ public class VpcTest extends PowerMockTestCase {
     SubnetPatch subnetPatchModel = new SubnetPatch.Builder()
     .name("my-subnet")
     .networkAcl(networkAclIdentityModel)
-    .publicGateway(publicGatewayIdentityModel)
+    .publicGateway(subnetPublicGatewayPatchModel)
     .routingTable(routingTableIdentityModel)
     .build();
     Map<String, Object> subnetPatchModelAsPatch = subnetPatchModel.asPatch();
@@ -3638,8 +3751,8 @@ public class VpcTest extends PowerMockTestCase {
 
     constructClientService();
 
-    // Construct an instance of the PublicGatewayIdentityById model
-    PublicGatewayIdentityById publicGatewayIdentityModel = new PublicGatewayIdentityById.Builder()
+    // Construct an instance of the PublicGatewayIdentityPublicGatewayIdentityById model
+    PublicGatewayIdentityPublicGatewayIdentityById publicGatewayIdentityModel = new PublicGatewayIdentityPublicGatewayIdentityById.Builder()
     .id("dc5431ef-1fc6-4861-adc9-a59d077d1241")
     .build();
 
@@ -5844,6 +5957,11 @@ public class VpcTest extends PowerMockTestCase {
 
     constructClientService();
 
+    // Construct an instance of the InstancePlacementTargetPatchDedicatedHostIdentityDedicatedHostIdentityById model
+    InstancePlacementTargetPatchDedicatedHostIdentityDedicatedHostIdentityById instancePlacementTargetPatchModel = new InstancePlacementTargetPatchDedicatedHostIdentityDedicatedHostIdentityById.Builder()
+    .id("1e09281b-f177-46fb-baf1-bc152b2e391a")
+    .build();
+
     // Construct an instance of the InstancePatchProfileInstanceProfileIdentityByName model
     InstancePatchProfileInstanceProfileIdentityByName instancePatchProfileModel = new InstancePatchProfileInstanceProfileIdentityByName.Builder()
     .name("bc1-4x16")
@@ -5852,6 +5970,7 @@ public class VpcTest extends PowerMockTestCase {
     // Construct an instance of the InstancePatch model
     InstancePatch instancePatchModel = new InstancePatch.Builder()
     .name("my-instance")
+    .placementTarget(instancePlacementTargetPatchModel)
     .profile(instancePatchProfileModel)
     .totalVolumeBandwidth(Long.valueOf("500"))
     .build();
@@ -10285,6 +10404,1640 @@ public class VpcTest extends PowerMockTestCase {
   }
 
   @Test
+  public void testListBareMetalServerProfilesWOptions() throws Throwable {
+    // Schedule some responses.
+    String mockResponseBody = "{\"first\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/bare_metal_servers/profiles?limit=20\"}, \"limit\": 20, \"next\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/bare_metal_servers/profiles?start=9d5a91a3e2cbd233b5a5b33436855ed1&limit=20\"}, \"profiles\": [{\"bandwidth\": {\"type\": \"fixed\", \"value\": 20000}, \"cpu_architecture\": {\"default\": \"amd64\", \"type\": \"fixed\", \"value\": \"amd64\"}, \"cpu_core_count\": {\"type\": \"fixed\", \"value\": 80}, \"cpu_socket_count\": {\"type\": \"fixed\", \"value\": 4}, \"disks\": [{\"quantity\": {\"type\": \"fixed\", \"value\": 4}, \"size\": {\"type\": \"fixed\", \"value\": 100}, \"supported_interface_types\": {\"default\": \"nvme\", \"type\": \"enum\", \"values\": [\"nvme\"]}}], \"family\": \"balanced\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/bare_metal_servers/profiles/bx2-metal-192x768\", \"memory\": {\"type\": \"fixed\", \"value\": 16}, \"name\": \"bx2-metal-192x768\", \"os_architecture\": {\"default\": \"amd64\", \"type\": \"enum\", \"values\": [\"amd64\"]}, \"resource_type\": \"bare_metal_server_profile\", \"supported_trusted_platform_module_modes\": {\"type\": \"enum\", \"values\": [\"tpm_2\"]}}], \"total_count\": 132}";
+    String listBareMetalServerProfilesPath = "/bare_metal_server/profiles";
+
+    server.enqueue(new MockResponse()
+    .setHeader("Content-type", "application/json")
+    .setResponseCode(200)
+    .setBody(mockResponseBody));
+
+    constructClientService();
+
+    // Construct an instance of the ListBareMetalServerProfilesOptions model
+    ListBareMetalServerProfilesOptions listBareMetalServerProfilesOptionsModel = new ListBareMetalServerProfilesOptions.Builder()
+    .start("testString")
+    .limit(Long.valueOf("1"))
+    .build();
+
+    // Invoke operation with valid options model (positive test)
+    Response<BareMetalServerProfileCollection> response = vpcService.listBareMetalServerProfiles(listBareMetalServerProfilesOptionsModel).execute();
+    assertNotNull(response);
+    BareMetalServerProfileCollection responseObj = response.getResult();
+    assertNotNull(responseObj);
+
+    // Verify the contents of the request
+    RecordedRequest request = server.takeRequest();
+    assertNotNull(request);
+    assertEquals(request.getMethod(), "GET");
+
+    // Check query
+    Map<String, String> query = TestUtilities.parseQueryString(request);
+    assertNotNull(query);
+    // Get query params
+    assertEquals(query.get("version"), version);
+    assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
+    assertEquals(query.get("start"), "testString");
+    assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("1"));
+    // Check request path
+    String parsedPath = TestUtilities.parseReqPath(request);
+    assertEquals(parsedPath, listBareMetalServerProfilesPath);
+  }
+  
+  public void testListBareMetalServerProfilesWOptionsWRetries() throws Throwable {
+    // Enable retries and run testListBareMetalServerProfilesWOptions.
+    vpcService.enableRetries(4, 30);
+    testListBareMetalServerProfilesWOptions();
+
+    // Disable retries and run testListBareMetalServerProfilesWOptions.
+    vpcService.disableRetries();
+    testListBareMetalServerProfilesWOptions();
+  }  
+
+  @Test
+  public void testGetBareMetalServerProfileWOptions() throws Throwable {
+    // Schedule some responses.
+    String mockResponseBody = "{\"bandwidth\": {\"type\": \"fixed\", \"value\": 20000}, \"cpu_architecture\": {\"default\": \"amd64\", \"type\": \"fixed\", \"value\": \"amd64\"}, \"cpu_core_count\": {\"type\": \"fixed\", \"value\": 80}, \"cpu_socket_count\": {\"type\": \"fixed\", \"value\": 4}, \"disks\": [{\"quantity\": {\"type\": \"fixed\", \"value\": 4}, \"size\": {\"type\": \"fixed\", \"value\": 100}, \"supported_interface_types\": {\"default\": \"nvme\", \"type\": \"enum\", \"values\": [\"nvme\"]}}], \"family\": \"balanced\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/bare_metal_servers/profiles/bx2-metal-192x768\", \"memory\": {\"type\": \"fixed\", \"value\": 16}, \"name\": \"bx2-metal-192x768\", \"os_architecture\": {\"default\": \"amd64\", \"type\": \"enum\", \"values\": [\"amd64\"]}, \"resource_type\": \"bare_metal_server_profile\", \"supported_trusted_platform_module_modes\": {\"type\": \"enum\", \"values\": [\"tpm_2\"]}}";
+    String getBareMetalServerProfilePath = "/bare_metal_server/profiles/testString";
+
+    server.enqueue(new MockResponse()
+    .setHeader("Content-type", "application/json")
+    .setResponseCode(200)
+    .setBody(mockResponseBody));
+
+    constructClientService();
+
+    // Construct an instance of the GetBareMetalServerProfileOptions model
+    GetBareMetalServerProfileOptions getBareMetalServerProfileOptionsModel = new GetBareMetalServerProfileOptions.Builder()
+    .name("testString")
+    .build();
+
+    // Invoke operation with valid options model (positive test)
+    Response<BareMetalServerProfile> response = vpcService.getBareMetalServerProfile(getBareMetalServerProfileOptionsModel).execute();
+    assertNotNull(response);
+    BareMetalServerProfile responseObj = response.getResult();
+    assertNotNull(responseObj);
+
+    // Verify the contents of the request
+    RecordedRequest request = server.takeRequest();
+    assertNotNull(request);
+    assertEquals(request.getMethod(), "GET");
+
+    // Check query
+    Map<String, String> query = TestUtilities.parseQueryString(request);
+    assertNotNull(query);
+    // Get query params
+    assertEquals(query.get("version"), version);
+    assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
+    // Check request path
+    String parsedPath = TestUtilities.parseReqPath(request);
+    assertEquals(parsedPath, getBareMetalServerProfilePath);
+  }
+  
+  public void testGetBareMetalServerProfileWOptionsWRetries() throws Throwable {
+    // Enable retries and run testGetBareMetalServerProfileWOptions.
+    vpcService.enableRetries(4, 30);
+    testGetBareMetalServerProfileWOptions();
+
+    // Disable retries and run testGetBareMetalServerProfileWOptions.
+    vpcService.disableRetries();
+    testGetBareMetalServerProfileWOptions();
+  }  
+
+  // Test the getBareMetalServerProfile operation with null options model parameter
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testGetBareMetalServerProfileNoOptions() throws Throwable {
+    // construct the service
+    constructClientService();
+
+    server.enqueue(new MockResponse());
+
+    // Invoke operation with null options model (negative test)
+    vpcService.getBareMetalServerProfile(null).execute();
+  }
+
+  @Test
+  public void testListBareMetalServersWOptions() throws Throwable {
+    // Schedule some responses.
+    String mockResponseBody = "{\"bare_metal_servers\": [{\"bandwidth\": 20000, \"boot_target\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/bare_metal_servers/1e09281b-f177-46fb-baf1-bc152b2e391a/disks/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"name\": \"my-bare-metal-disk\", \"resource_type\": \"bare_metal_server_disk\"}, \"cpu\": {\"architecture\": \"amd64\", \"core_count\": 80, \"socket_count\": 4, \"threads_per_core\": 2}, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::bare-metal-server:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"disks\": [{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/bare_metal_servers/1e09281b-f177-46fb-baf1-bc152b2e391a/disks/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"interface_type\": \"nvme\", \"name\": \"my-bare-metal-disk\", \"resource_type\": \"bare_metal_server_disk\", \"size\": 100}], \"enable_secure_boot\": false, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/bare_metal_servers/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"memory\": 1536, \"name\": \"my-bare-metal-server\", \"network_interfaces\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/bare_metal_servers/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"name\": \"my-network-interface\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\", \"subnet\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}}], \"primary_network_interface\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/bare_metal_servers/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"name\": \"my-network-interface\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\", \"subnet\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}}, \"profile\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/bare_metal_servers/profiles/bx2-metal-192x768\", \"name\": \"bx2-metal-192x768\", \"resource_type\": \"bare_metal_server_profile\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"bare_metal_server\", \"status\": \"failed\", \"status_reasons\": [{\"code\": \"cannot_start_capacity\", \"message\": \"The bare metal server cannot start as there is no more capacity in this\nzone for a bare metal server with the requested profile.\", \"more_info\": \"https://console.bluemix.net/docs/iaas/bare_metal_server.html\"}], \"trusted_platform_module\": {\"enabled\": true, \"mode\": \"tpm_2\"}, \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\"}, \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}], \"first\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/bare_metal_servers?limit=20\"}, \"limit\": 20, \"next\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/bare_metal_servers?start=9d5a91a3e2cbd233b5a5b33436855ed1&limit=20\"}, \"total_count\": 132}";
+    String listBareMetalServersPath = "/bare_metal_servers";
+
+    server.enqueue(new MockResponse()
+    .setHeader("Content-type", "application/json")
+    .setResponseCode(200)
+    .setBody(mockResponseBody));
+
+    constructClientService();
+
+    // Construct an instance of the ListBareMetalServersOptions model
+    ListBareMetalServersOptions listBareMetalServersOptionsModel = new ListBareMetalServersOptions.Builder()
+    .start("testString")
+    .limit(Long.valueOf("1"))
+    .resourceGroupId("testString")
+    .name("testString")
+    .vpcId("testString")
+    .vpcCrn("testString")
+    .vpcName("testString")
+    .networkInterfacesSubnetId("testString")
+    .networkInterfacesSubnetCrn("testString")
+    .networkInterfacesSubnetName("testString")
+    .sort("name")
+    .build();
+
+    // Invoke operation with valid options model (positive test)
+    Response<BareMetalServerCollection> response = vpcService.listBareMetalServers(listBareMetalServersOptionsModel).execute();
+    assertNotNull(response);
+    BareMetalServerCollection responseObj = response.getResult();
+    assertNotNull(responseObj);
+
+    // Verify the contents of the request
+    RecordedRequest request = server.takeRequest();
+    assertNotNull(request);
+    assertEquals(request.getMethod(), "GET");
+
+    // Check query
+    Map<String, String> query = TestUtilities.parseQueryString(request);
+    assertNotNull(query);
+    // Get query params
+    assertEquals(query.get("version"), version);
+    assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
+    assertEquals(query.get("start"), "testString");
+    assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("1"));
+    assertEquals(query.get("resource_group.id"), "testString");
+    assertEquals(query.get("name"), "testString");
+    assertEquals(query.get("vpc.id"), "testString");
+    assertEquals(query.get("vpc.crn"), "testString");
+    assertEquals(query.get("vpc.name"), "testString");
+    assertEquals(query.get("network_interfaces.subnet.id"), "testString");
+    assertEquals(query.get("network_interfaces.subnet.crn"), "testString");
+    assertEquals(query.get("network_interfaces.subnet.name"), "testString");
+    assertEquals(query.get("sort"), "name");
+    // Check request path
+    String parsedPath = TestUtilities.parseReqPath(request);
+    assertEquals(parsedPath, listBareMetalServersPath);
+  }
+  
+  public void testListBareMetalServersWOptionsWRetries() throws Throwable {
+    // Enable retries and run testListBareMetalServersWOptions.
+    vpcService.enableRetries(4, 30);
+    testListBareMetalServersWOptions();
+
+    // Disable retries and run testListBareMetalServersWOptions.
+    vpcService.disableRetries();
+    testListBareMetalServersWOptions();
+  }  
+
+  @Test
+  public void testCreateBareMetalServerWOptions() throws Throwable {
+    // Schedule some responses.
+    String mockResponseBody = "{\"bandwidth\": 20000, \"boot_target\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/bare_metal_servers/1e09281b-f177-46fb-baf1-bc152b2e391a/disks/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"name\": \"my-bare-metal-disk\", \"resource_type\": \"bare_metal_server_disk\"}, \"cpu\": {\"architecture\": \"amd64\", \"core_count\": 80, \"socket_count\": 4, \"threads_per_core\": 2}, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::bare-metal-server:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"disks\": [{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/bare_metal_servers/1e09281b-f177-46fb-baf1-bc152b2e391a/disks/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"interface_type\": \"nvme\", \"name\": \"my-bare-metal-disk\", \"resource_type\": \"bare_metal_server_disk\", \"size\": 100}], \"enable_secure_boot\": false, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/bare_metal_servers/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"memory\": 1536, \"name\": \"my-bare-metal-server\", \"network_interfaces\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/bare_metal_servers/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"name\": \"my-network-interface\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\", \"subnet\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}}], \"primary_network_interface\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/bare_metal_servers/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"name\": \"my-network-interface\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\", \"subnet\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}}, \"profile\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/bare_metal_servers/profiles/bx2-metal-192x768\", \"name\": \"bx2-metal-192x768\", \"resource_type\": \"bare_metal_server_profile\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"bare_metal_server\", \"status\": \"failed\", \"status_reasons\": [{\"code\": \"cannot_start_capacity\", \"message\": \"The bare metal server cannot start as there is no more capacity in this\nzone for a bare metal server with the requested profile.\", \"more_info\": \"https://console.bluemix.net/docs/iaas/bare_metal_server.html\"}], \"trusted_platform_module\": {\"enabled\": true, \"mode\": \"tpm_2\"}, \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\"}, \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}";
+    String createBareMetalServerPath = "/bare_metal_servers";
+
+    server.enqueue(new MockResponse()
+    .setHeader("Content-type", "application/json")
+    .setResponseCode(201)
+    .setBody(mockResponseBody));
+
+    constructClientService();
+
+    // Construct an instance of the ImageIdentityById model
+    ImageIdentityById imageIdentityModel = new ImageIdentityById.Builder()
+    .id("72b27b5c-f4b0-48bb-b954-5becc7c1dcb8")
+    .build();
+
+    // Construct an instance of the KeyIdentityById model
+    KeyIdentityById keyIdentityModel = new KeyIdentityById.Builder()
+    .id("a6b1a881-2ce8-41a3-80fc-36316a73f803")
+    .build();
+
+    // Construct an instance of the BareMetalServerInitializationPrototype model
+    BareMetalServerInitializationPrototype bareMetalServerInitializationPrototypeModel = new BareMetalServerInitializationPrototype.Builder()
+    .image(imageIdentityModel)
+    .keys(new java.util.ArrayList<KeyIdentity>(java.util.Arrays.asList(keyIdentityModel)))
+    .userData("testString")
+    .build();
+
+    // Construct an instance of the SecurityGroupIdentityById model
+    SecurityGroupIdentityById securityGroupIdentityModel = new SecurityGroupIdentityById.Builder()
+    .id("be5df5ca-12a0-494b-907e-aa6ec2bfa271")
+    .build();
+
+    // Construct an instance of the SubnetIdentityById model
+    SubnetIdentityById subnetIdentityModel = new SubnetIdentityById.Builder()
+    .id("7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
+    .build();
+
+    // Construct an instance of the BareMetalServerPrimaryNetworkInterfacePrototype model
+    BareMetalServerPrimaryNetworkInterfacePrototype bareMetalServerPrimaryNetworkInterfacePrototypeModel = new BareMetalServerPrimaryNetworkInterfacePrototype.Builder()
+    .allowIpSpoofing(true)
+    .allowedVlans(new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("4"))))
+    .enableInfrastructureNat(true)
+    .interfaceType("pci")
+    .name("my-network-interface")
+    .primaryIpv4Address("10.0.0.5")
+    .securityGroups(new java.util.ArrayList<SecurityGroupIdentity>(java.util.Arrays.asList(securityGroupIdentityModel)))
+    .subnet(subnetIdentityModel)
+    .build();
+
+    // Construct an instance of the BareMetalServerProfileIdentityByName model
+    BareMetalServerProfileIdentityByName bareMetalServerProfileIdentityModel = new BareMetalServerProfileIdentityByName.Builder()
+    .name("bx2-metal-192x768")
+    .build();
+
+    // Construct an instance of the ZoneIdentityByName model
+    ZoneIdentityByName zoneIdentityModel = new ZoneIdentityByName.Builder()
+    .name("us-south-1")
+    .build();
+
+    // Construct an instance of the BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVLANPrototype model
+    BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVLANPrototype bareMetalServerNetworkInterfacePrototypeModel = new BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVLANPrototype.Builder()
+    .allowIpSpoofing(true)
+    .enableInfrastructureNat(true)
+    .interfaceType("vlan")
+    .name("my-network-interface")
+    .primaryIpv4Address("10.0.0.5")
+    .securityGroups(new java.util.ArrayList<SecurityGroupIdentity>(java.util.Arrays.asList(securityGroupIdentityModel)))
+    .subnet(subnetIdentityModel)
+    .allowInterfaceToFloat(false)
+    .vlan(Long.valueOf("4"))
+    .build();
+
+    // Construct an instance of the ResourceGroupIdentityById model
+    ResourceGroupIdentityById resourceGroupIdentityModel = new ResourceGroupIdentityById.Builder()
+    .id("fee82deba12e4c0fb69c3b09d1f12345")
+    .build();
+
+    // Construct an instance of the VPCIdentityById model
+    VPCIdentityById vpcIdentityModel = new VPCIdentityById.Builder()
+    .id("4727d842-f94f-4a2d-824a-9bc9b02c523b")
+    .build();
+
+    // Construct an instance of the CreateBareMetalServerOptions model
+    CreateBareMetalServerOptions createBareMetalServerOptionsModel = new CreateBareMetalServerOptions.Builder()
+    .initialization(bareMetalServerInitializationPrototypeModel)
+    .primaryNetworkInterface(bareMetalServerPrimaryNetworkInterfacePrototypeModel)
+    .profile(bareMetalServerProfileIdentityModel)
+    .zone(zoneIdentityModel)
+    .name("my-bare-metal-server")
+    .networkInterfaces(new java.util.ArrayList<BareMetalServerNetworkInterfacePrototype>(java.util.Arrays.asList(bareMetalServerNetworkInterfacePrototypeModel)))
+    .resourceGroup(resourceGroupIdentityModel)
+    .vpc(vpcIdentityModel)
+    .build();
+
+    // Invoke operation with valid options model (positive test)
+    Response<BareMetalServer> response = vpcService.createBareMetalServer(createBareMetalServerOptionsModel).execute();
+    assertNotNull(response);
+    BareMetalServer responseObj = response.getResult();
+    assertNotNull(responseObj);
+
+    // Verify the contents of the request
+    RecordedRequest request = server.takeRequest();
+    assertNotNull(request);
+    assertEquals(request.getMethod(), "POST");
+
+    // Check query
+    Map<String, String> query = TestUtilities.parseQueryString(request);
+    assertNotNull(query);
+    // Get query params
+    assertEquals(query.get("version"), version);
+    assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
+    // Check request path
+    String parsedPath = TestUtilities.parseReqPath(request);
+    assertEquals(parsedPath, createBareMetalServerPath);
+  }
+  
+  public void testCreateBareMetalServerWOptionsWRetries() throws Throwable {
+    // Enable retries and run testCreateBareMetalServerWOptions.
+    vpcService.enableRetries(4, 30);
+    testCreateBareMetalServerWOptions();
+
+    // Disable retries and run testCreateBareMetalServerWOptions.
+    vpcService.disableRetries();
+    testCreateBareMetalServerWOptions();
+  }  
+
+  // Test the createBareMetalServer operation with null options model parameter
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testCreateBareMetalServerNoOptions() throws Throwable {
+    // construct the service
+    constructClientService();
+
+    server.enqueue(new MockResponse());
+
+    // Invoke operation with null options model (negative test)
+    vpcService.createBareMetalServer(null).execute();
+  }
+
+  @Test
+  public void testCreateBareMetalServerConsoleAccessTokenWOptions() throws Throwable {
+    // Schedule some responses.
+    String mockResponseBody = "{\"access_token\": \"VGhpcyBJcyBhIHRva2Vu\", \"console_type\": \"serial\", \"created_at\": \"2020-07-27T21:50:14.000Z\", \"expires_at\": \"2020-07-27T21:51:14.000Z\", \"force\": false, \"href\": \"wss://us-south.iaas.cloud.ibm.com/v1/bare_metal_servers/1e09281b-f177-46fb-baf1-bc152b2e391a/console?access_token=VGhpcyBJcyBhIHRva2Vu\"}";
+    String createBareMetalServerConsoleAccessTokenPath = "/bare_metal_servers/testString/console_access_token";
+
+    server.enqueue(new MockResponse()
+    .setHeader("Content-type", "application/json")
+    .setResponseCode(200)
+    .setBody(mockResponseBody));
+
+    constructClientService();
+
+    // Construct an instance of the CreateBareMetalServerConsoleAccessTokenOptions model
+    CreateBareMetalServerConsoleAccessTokenOptions createBareMetalServerConsoleAccessTokenOptionsModel = new CreateBareMetalServerConsoleAccessTokenOptions.Builder()
+    .bareMetalServerId("testString")
+    .consoleType("serial")
+    .force(false)
+    .build();
+
+    // Invoke operation with valid options model (positive test)
+    Response<BareMetalServerConsoleAccessToken> response = vpcService.createBareMetalServerConsoleAccessToken(createBareMetalServerConsoleAccessTokenOptionsModel).execute();
+    assertNotNull(response);
+    BareMetalServerConsoleAccessToken responseObj = response.getResult();
+    assertNotNull(responseObj);
+
+    // Verify the contents of the request
+    RecordedRequest request = server.takeRequest();
+    assertNotNull(request);
+    assertEquals(request.getMethod(), "POST");
+
+    // Check query
+    Map<String, String> query = TestUtilities.parseQueryString(request);
+    assertNotNull(query);
+    // Get query params
+    assertEquals(query.get("version"), version);
+    assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
+    // Check request path
+    String parsedPath = TestUtilities.parseReqPath(request);
+    assertEquals(parsedPath, createBareMetalServerConsoleAccessTokenPath);
+  }
+  
+  public void testCreateBareMetalServerConsoleAccessTokenWOptionsWRetries() throws Throwable {
+    // Enable retries and run testCreateBareMetalServerConsoleAccessTokenWOptions.
+    vpcService.enableRetries(4, 30);
+    testCreateBareMetalServerConsoleAccessTokenWOptions();
+
+    // Disable retries and run testCreateBareMetalServerConsoleAccessTokenWOptions.
+    vpcService.disableRetries();
+    testCreateBareMetalServerConsoleAccessTokenWOptions();
+  }  
+
+  // Test the createBareMetalServerConsoleAccessToken operation with null options model parameter
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testCreateBareMetalServerConsoleAccessTokenNoOptions() throws Throwable {
+    // construct the service
+    constructClientService();
+
+    server.enqueue(new MockResponse());
+
+    // Invoke operation with null options model (negative test)
+    vpcService.createBareMetalServerConsoleAccessToken(null).execute();
+  }
+
+  @Test
+  public void testListBareMetalServerDisksWOptions() throws Throwable {
+    // Schedule some responses.
+    String mockResponseBody = "{\"disks\": [{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/bare_metal_servers/1e09281b-f177-46fb-baf1-bc152b2e391a/disks/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"interface_type\": \"nvme\", \"name\": \"my-bare-metal-disk\", \"resource_type\": \"bare_metal_server_disk\", \"size\": 100}]}";
+    String listBareMetalServerDisksPath = "/bare_metal_servers/testString/disks";
+
+    server.enqueue(new MockResponse()
+    .setHeader("Content-type", "application/json")
+    .setResponseCode(200)
+    .setBody(mockResponseBody));
+
+    constructClientService();
+
+    // Construct an instance of the ListBareMetalServerDisksOptions model
+    ListBareMetalServerDisksOptions listBareMetalServerDisksOptionsModel = new ListBareMetalServerDisksOptions.Builder()
+    .bareMetalServerId("testString")
+    .build();
+
+    // Invoke operation with valid options model (positive test)
+    Response<BareMetalServerDiskCollection> response = vpcService.listBareMetalServerDisks(listBareMetalServerDisksOptionsModel).execute();
+    assertNotNull(response);
+    BareMetalServerDiskCollection responseObj = response.getResult();
+    assertNotNull(responseObj);
+
+    // Verify the contents of the request
+    RecordedRequest request = server.takeRequest();
+    assertNotNull(request);
+    assertEquals(request.getMethod(), "GET");
+
+    // Check query
+    Map<String, String> query = TestUtilities.parseQueryString(request);
+    assertNotNull(query);
+    // Get query params
+    assertEquals(query.get("version"), version);
+    assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
+    // Check request path
+    String parsedPath = TestUtilities.parseReqPath(request);
+    assertEquals(parsedPath, listBareMetalServerDisksPath);
+  }
+  
+  public void testListBareMetalServerDisksWOptionsWRetries() throws Throwable {
+    // Enable retries and run testListBareMetalServerDisksWOptions.
+    vpcService.enableRetries(4, 30);
+    testListBareMetalServerDisksWOptions();
+
+    // Disable retries and run testListBareMetalServerDisksWOptions.
+    vpcService.disableRetries();
+    testListBareMetalServerDisksWOptions();
+  }  
+
+  // Test the listBareMetalServerDisks operation with null options model parameter
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testListBareMetalServerDisksNoOptions() throws Throwable {
+    // construct the service
+    constructClientService();
+
+    server.enqueue(new MockResponse());
+
+    // Invoke operation with null options model (negative test)
+    vpcService.listBareMetalServerDisks(null).execute();
+  }
+
+  @Test
+  public void testGetBareMetalServerDiskWOptions() throws Throwable {
+    // Schedule some responses.
+    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/bare_metal_servers/1e09281b-f177-46fb-baf1-bc152b2e391a/disks/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"interface_type\": \"nvme\", \"name\": \"my-bare-metal-disk\", \"resource_type\": \"bare_metal_server_disk\", \"size\": 100}";
+    String getBareMetalServerDiskPath = "/bare_metal_servers/testString/disks/testString";
+
+    server.enqueue(new MockResponse()
+    .setHeader("Content-type", "application/json")
+    .setResponseCode(200)
+    .setBody(mockResponseBody));
+
+    constructClientService();
+
+    // Construct an instance of the GetBareMetalServerDiskOptions model
+    GetBareMetalServerDiskOptions getBareMetalServerDiskOptionsModel = new GetBareMetalServerDiskOptions.Builder()
+    .bareMetalServerId("testString")
+    .id("testString")
+    .build();
+
+    // Invoke operation with valid options model (positive test)
+    Response<BareMetalServerDisk> response = vpcService.getBareMetalServerDisk(getBareMetalServerDiskOptionsModel).execute();
+    assertNotNull(response);
+    BareMetalServerDisk responseObj = response.getResult();
+    assertNotNull(responseObj);
+
+    // Verify the contents of the request
+    RecordedRequest request = server.takeRequest();
+    assertNotNull(request);
+    assertEquals(request.getMethod(), "GET");
+
+    // Check query
+    Map<String, String> query = TestUtilities.parseQueryString(request);
+    assertNotNull(query);
+    // Get query params
+    assertEquals(query.get("version"), version);
+    assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
+    // Check request path
+    String parsedPath = TestUtilities.parseReqPath(request);
+    assertEquals(parsedPath, getBareMetalServerDiskPath);
+  }
+  
+  public void testGetBareMetalServerDiskWOptionsWRetries() throws Throwable {
+    // Enable retries and run testGetBareMetalServerDiskWOptions.
+    vpcService.enableRetries(4, 30);
+    testGetBareMetalServerDiskWOptions();
+
+    // Disable retries and run testGetBareMetalServerDiskWOptions.
+    vpcService.disableRetries();
+    testGetBareMetalServerDiskWOptions();
+  }  
+
+  // Test the getBareMetalServerDisk operation with null options model parameter
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testGetBareMetalServerDiskNoOptions() throws Throwable {
+    // construct the service
+    constructClientService();
+
+    server.enqueue(new MockResponse());
+
+    // Invoke operation with null options model (negative test)
+    vpcService.getBareMetalServerDisk(null).execute();
+  }
+
+  @Test
+  public void testUpdateBareMetalServerDiskWOptions() throws Throwable {
+    // Schedule some responses.
+    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/bare_metal_servers/1e09281b-f177-46fb-baf1-bc152b2e391a/disks/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"interface_type\": \"nvme\", \"name\": \"my-bare-metal-disk\", \"resource_type\": \"bare_metal_server_disk\", \"size\": 100}";
+    String updateBareMetalServerDiskPath = "/bare_metal_servers/testString/disks/testString";
+
+    server.enqueue(new MockResponse()
+    .setHeader("Content-type", "application/json")
+    .setResponseCode(200)
+    .setBody(mockResponseBody));
+
+    constructClientService();
+
+    // Construct an instance of the BareMetalServerDiskPatch model
+    BareMetalServerDiskPatch bareMetalServerDiskPatchModel = new BareMetalServerDiskPatch.Builder()
+    .name("my-bare-metal-server-disk-updated")
+    .build();
+    Map<String, Object> bareMetalServerDiskPatchModelAsPatch = bareMetalServerDiskPatchModel.asPatch();
+
+    // Construct an instance of the UpdateBareMetalServerDiskOptions model
+    UpdateBareMetalServerDiskOptions updateBareMetalServerDiskOptionsModel = new UpdateBareMetalServerDiskOptions.Builder()
+    .bareMetalServerId("testString")
+    .id("testString")
+    .bareMetalServerDiskPatch(bareMetalServerDiskPatchModelAsPatch)
+    .build();
+
+    // Invoke operation with valid options model (positive test)
+    Response<BareMetalServerDisk> response = vpcService.updateBareMetalServerDisk(updateBareMetalServerDiskOptionsModel).execute();
+    assertNotNull(response);
+    BareMetalServerDisk responseObj = response.getResult();
+    assertNotNull(responseObj);
+
+    // Verify the contents of the request
+    RecordedRequest request = server.takeRequest();
+    assertNotNull(request);
+    assertEquals(request.getMethod(), "PATCH");
+
+    // Check query
+    Map<String, String> query = TestUtilities.parseQueryString(request);
+    assertNotNull(query);
+    // Get query params
+    assertEquals(query.get("version"), version);
+    assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
+    // Check request path
+    String parsedPath = TestUtilities.parseReqPath(request);
+    assertEquals(parsedPath, updateBareMetalServerDiskPath);
+  }
+  
+  public void testUpdateBareMetalServerDiskWOptionsWRetries() throws Throwable {
+    // Enable retries and run testUpdateBareMetalServerDiskWOptions.
+    vpcService.enableRetries(4, 30);
+    testUpdateBareMetalServerDiskWOptions();
+
+    // Disable retries and run testUpdateBareMetalServerDiskWOptions.
+    vpcService.disableRetries();
+    testUpdateBareMetalServerDiskWOptions();
+  }  
+
+  // Test the updateBareMetalServerDisk operation with null options model parameter
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testUpdateBareMetalServerDiskNoOptions() throws Throwable {
+    // construct the service
+    constructClientService();
+
+    server.enqueue(new MockResponse());
+
+    // Invoke operation with null options model (negative test)
+    vpcService.updateBareMetalServerDisk(null).execute();
+  }
+
+  @Test
+  public void testListBareMetalServerNetworkInterfacesWOptions() throws Throwable {
+    // Schedule some responses.
+    String mockResponseBody = "{\"first\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/bare_metal_servers/3b2669a2-4c2b-4003-bc91-1b81f1326267/network_interfaces?limit=20\"}, \"limit\": 20, \"network_interfaces\": [{\"allow_ip_spoofing\": true, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"enable_infrastructure_nat\": true, \"floating_ips\": [{\"address\": \"203.0.113.1\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::floating-ip:39300233-9995-4806-89a5-3c1b6eb88689\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/floating_ips/39300233-9995-4806-89a5-3c1b6eb88689\", \"id\": \"39300233-9995-4806-89a5-3c1b6eb88689\", \"name\": \"my-floating-ip\"}], \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/bare_metal_servers/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"interface_type\": \"pci\", \"mac_address\": \"02:00:0a:00:23:94\", \"name\": \"my-network-interface\", \"port_speed\": 1000, \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\", \"security_groups\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::security-group:be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"id\": \"be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"name\": \"my-security-group\"}], \"status\": \"available\", \"subnet\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}, \"type\": \"primary\", \"allowed_vlans\": [4]}], \"next\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/bare_metal_servers/3b2669a2-4c2b-4003-bc91-1b81f1326267/network_interfaces?start=d3e721fd-c988-4670-9927-dbd5e7b07fc6&limit=20\"}, \"total_count\": 132}";
+    String listBareMetalServerNetworkInterfacesPath = "/bare_metal_servers/testString/network_interfaces";
+
+    server.enqueue(new MockResponse()
+    .setHeader("Content-type", "application/json")
+    .setResponseCode(200)
+    .setBody(mockResponseBody));
+
+    constructClientService();
+
+    // Construct an instance of the ListBareMetalServerNetworkInterfacesOptions model
+    ListBareMetalServerNetworkInterfacesOptions listBareMetalServerNetworkInterfacesOptionsModel = new ListBareMetalServerNetworkInterfacesOptions.Builder()
+    .bareMetalServerId("testString")
+    .start("testString")
+    .limit(Long.valueOf("1"))
+    .build();
+
+    // Invoke operation with valid options model (positive test)
+    Response<BareMetalServerNetworkInterfaceCollection> response = vpcService.listBareMetalServerNetworkInterfaces(listBareMetalServerNetworkInterfacesOptionsModel).execute();
+    assertNotNull(response);
+    BareMetalServerNetworkInterfaceCollection responseObj = response.getResult();
+    assertNotNull(responseObj);
+
+    // Verify the contents of the request
+    RecordedRequest request = server.takeRequest();
+    assertNotNull(request);
+    assertEquals(request.getMethod(), "GET");
+
+    // Check query
+    Map<String, String> query = TestUtilities.parseQueryString(request);
+    assertNotNull(query);
+    // Get query params
+    assertEquals(query.get("version"), version);
+    assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
+    assertEquals(query.get("start"), "testString");
+    assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("1"));
+    // Check request path
+    String parsedPath = TestUtilities.parseReqPath(request);
+    assertEquals(parsedPath, listBareMetalServerNetworkInterfacesPath);
+  }
+  
+  public void testListBareMetalServerNetworkInterfacesWOptionsWRetries() throws Throwable {
+    // Enable retries and run testListBareMetalServerNetworkInterfacesWOptions.
+    vpcService.enableRetries(4, 30);
+    testListBareMetalServerNetworkInterfacesWOptions();
+
+    // Disable retries and run testListBareMetalServerNetworkInterfacesWOptions.
+    vpcService.disableRetries();
+    testListBareMetalServerNetworkInterfacesWOptions();
+  }  
+
+  // Test the listBareMetalServerNetworkInterfaces operation with null options model parameter
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testListBareMetalServerNetworkInterfacesNoOptions() throws Throwable {
+    // construct the service
+    constructClientService();
+
+    server.enqueue(new MockResponse());
+
+    // Invoke operation with null options model (negative test)
+    vpcService.listBareMetalServerNetworkInterfaces(null).execute();
+  }
+
+  @Test
+  public void testCreateBareMetalServerNetworkInterfaceWOptions() throws Throwable {
+    // Schedule some responses.
+    String mockResponseBody = "{\"allow_ip_spoofing\": true, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"enable_infrastructure_nat\": true, \"floating_ips\": [{\"address\": \"203.0.113.1\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::floating-ip:39300233-9995-4806-89a5-3c1b6eb88689\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/floating_ips/39300233-9995-4806-89a5-3c1b6eb88689\", \"id\": \"39300233-9995-4806-89a5-3c1b6eb88689\", \"name\": \"my-floating-ip\"}], \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/bare_metal_servers/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"interface_type\": \"pci\", \"mac_address\": \"02:00:0a:00:23:94\", \"name\": \"my-network-interface\", \"port_speed\": 1000, \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\", \"security_groups\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::security-group:be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"id\": \"be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"name\": \"my-security-group\"}], \"status\": \"available\", \"subnet\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}, \"type\": \"primary\", \"allowed_vlans\": [4]}";
+    String createBareMetalServerNetworkInterfacePath = "/bare_metal_servers/testString/network_interfaces";
+
+    server.enqueue(new MockResponse()
+    .setHeader("Content-type", "application/json")
+    .setResponseCode(201)
+    .setBody(mockResponseBody));
+
+    constructClientService();
+
+    // Construct an instance of the SecurityGroupIdentityById model
+    SecurityGroupIdentityById securityGroupIdentityModel = new SecurityGroupIdentityById.Builder()
+    .id("be5df5ca-12a0-494b-907e-aa6ec2bfa271")
+    .build();
+
+    // Construct an instance of the SubnetIdentityById model
+    SubnetIdentityById subnetIdentityModel = new SubnetIdentityById.Builder()
+    .id("7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
+    .build();
+
+    // Construct an instance of the BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVLANPrototype model
+    BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVLANPrototype bareMetalServerNetworkInterfacePrototypeModel = new BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVLANPrototype.Builder()
+    .allowIpSpoofing(true)
+    .enableInfrastructureNat(true)
+    .interfaceType("vlan")
+    .name("my-network-interface")
+    .primaryIpv4Address("10.0.0.5")
+    .securityGroups(new java.util.ArrayList<SecurityGroupIdentity>(java.util.Arrays.asList(securityGroupIdentityModel)))
+    .subnet(subnetIdentityModel)
+    .allowInterfaceToFloat(false)
+    .vlan(Long.valueOf("4"))
+    .build();
+
+    // Construct an instance of the CreateBareMetalServerNetworkInterfaceOptions model
+    CreateBareMetalServerNetworkInterfaceOptions createBareMetalServerNetworkInterfaceOptionsModel = new CreateBareMetalServerNetworkInterfaceOptions.Builder()
+    .bareMetalServerId("testString")
+    .bareMetalServerNetworkInterfacePrototype(bareMetalServerNetworkInterfacePrototypeModel)
+    .build();
+
+    // Invoke operation with valid options model (positive test)
+    Response<BareMetalServerNetworkInterface> response = vpcService.createBareMetalServerNetworkInterface(createBareMetalServerNetworkInterfaceOptionsModel).execute();
+    assertNotNull(response);
+    BareMetalServerNetworkInterface responseObj = response.getResult();
+    assertNotNull(responseObj);
+
+    // Verify the contents of the request
+    RecordedRequest request = server.takeRequest();
+    assertNotNull(request);
+    assertEquals(request.getMethod(), "POST");
+
+    // Check query
+    Map<String, String> query = TestUtilities.parseQueryString(request);
+    assertNotNull(query);
+    // Get query params
+    assertEquals(query.get("version"), version);
+    assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
+    // Check request path
+    String parsedPath = TestUtilities.parseReqPath(request);
+    assertEquals(parsedPath, createBareMetalServerNetworkInterfacePath);
+  }
+  
+  public void testCreateBareMetalServerNetworkInterfaceWOptionsWRetries() throws Throwable {
+    // Enable retries and run testCreateBareMetalServerNetworkInterfaceWOptions.
+    vpcService.enableRetries(4, 30);
+    testCreateBareMetalServerNetworkInterfaceWOptions();
+
+    // Disable retries and run testCreateBareMetalServerNetworkInterfaceWOptions.
+    vpcService.disableRetries();
+    testCreateBareMetalServerNetworkInterfaceWOptions();
+  }  
+
+  // Test the createBareMetalServerNetworkInterface operation with null options model parameter
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testCreateBareMetalServerNetworkInterfaceNoOptions() throws Throwable {
+    // construct the service
+    constructClientService();
+
+    server.enqueue(new MockResponse());
+
+    // Invoke operation with null options model (negative test)
+    vpcService.createBareMetalServerNetworkInterface(null).execute();
+  }
+
+  @Test
+  public void testDeleteBareMetalServerNetworkInterfaceWOptions() throws Throwable {
+    // Schedule some responses.
+    String mockResponseBody = "";
+    String deleteBareMetalServerNetworkInterfacePath = "/bare_metal_servers/testString/network_interfaces/testString";
+
+    server.enqueue(new MockResponse()
+    .setResponseCode(204)
+    .setBody(mockResponseBody));
+
+    constructClientService();
+
+    // Construct an instance of the DeleteBareMetalServerNetworkInterfaceOptions model
+    DeleteBareMetalServerNetworkInterfaceOptions deleteBareMetalServerNetworkInterfaceOptionsModel = new DeleteBareMetalServerNetworkInterfaceOptions.Builder()
+    .bareMetalServerId("testString")
+    .id("testString")
+    .build();
+
+    // Invoke operation with valid options model (positive test)
+    Response<Void> response = vpcService.deleteBareMetalServerNetworkInterface(deleteBareMetalServerNetworkInterfaceOptionsModel).execute();
+    assertNotNull(response);
+    Void responseObj = response.getResult();
+    // Response does not have a return type. Check that the result is null.
+    assertNull(responseObj);
+
+    // Verify the contents of the request
+    RecordedRequest request = server.takeRequest();
+    assertNotNull(request);
+    assertEquals(request.getMethod(), "DELETE");
+
+    // Check query
+    Map<String, String> query = TestUtilities.parseQueryString(request);
+    assertNotNull(query);
+    // Get query params
+    assertEquals(query.get("version"), version);
+    assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
+    // Check request path
+    String parsedPath = TestUtilities.parseReqPath(request);
+    assertEquals(parsedPath, deleteBareMetalServerNetworkInterfacePath);
+  }
+  
+  public void testDeleteBareMetalServerNetworkInterfaceWOptionsWRetries() throws Throwable {
+    // Enable retries and run testDeleteBareMetalServerNetworkInterfaceWOptions.
+    vpcService.enableRetries(4, 30);
+    testDeleteBareMetalServerNetworkInterfaceWOptions();
+
+    // Disable retries and run testDeleteBareMetalServerNetworkInterfaceWOptions.
+    vpcService.disableRetries();
+    testDeleteBareMetalServerNetworkInterfaceWOptions();
+  }  
+
+  // Test the deleteBareMetalServerNetworkInterface operation with null options model parameter
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testDeleteBareMetalServerNetworkInterfaceNoOptions() throws Throwable {
+    // construct the service
+    constructClientService();
+
+    server.enqueue(new MockResponse());
+
+    // Invoke operation with null options model (negative test)
+    vpcService.deleteBareMetalServerNetworkInterface(null).execute();
+  }
+
+  @Test
+  public void testGetBareMetalServerNetworkInterfaceWOptions() throws Throwable {
+    // Schedule some responses.
+    String mockResponseBody = "{\"allow_ip_spoofing\": true, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"enable_infrastructure_nat\": true, \"floating_ips\": [{\"address\": \"203.0.113.1\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::floating-ip:39300233-9995-4806-89a5-3c1b6eb88689\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/floating_ips/39300233-9995-4806-89a5-3c1b6eb88689\", \"id\": \"39300233-9995-4806-89a5-3c1b6eb88689\", \"name\": \"my-floating-ip\"}], \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/bare_metal_servers/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"interface_type\": \"pci\", \"mac_address\": \"02:00:0a:00:23:94\", \"name\": \"my-network-interface\", \"port_speed\": 1000, \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\", \"security_groups\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::security-group:be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"id\": \"be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"name\": \"my-security-group\"}], \"status\": \"available\", \"subnet\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}, \"type\": \"primary\", \"allowed_vlans\": [4]}";
+    String getBareMetalServerNetworkInterfacePath = "/bare_metal_servers/testString/network_interfaces/testString";
+
+    server.enqueue(new MockResponse()
+    .setHeader("Content-type", "application/json")
+    .setResponseCode(200)
+    .setBody(mockResponseBody));
+
+    constructClientService();
+
+    // Construct an instance of the GetBareMetalServerNetworkInterfaceOptions model
+    GetBareMetalServerNetworkInterfaceOptions getBareMetalServerNetworkInterfaceOptionsModel = new GetBareMetalServerNetworkInterfaceOptions.Builder()
+    .bareMetalServerId("testString")
+    .id("testString")
+    .build();
+
+    // Invoke operation with valid options model (positive test)
+    Response<BareMetalServerNetworkInterface> response = vpcService.getBareMetalServerNetworkInterface(getBareMetalServerNetworkInterfaceOptionsModel).execute();
+    assertNotNull(response);
+    BareMetalServerNetworkInterface responseObj = response.getResult();
+    assertNotNull(responseObj);
+
+    // Verify the contents of the request
+    RecordedRequest request = server.takeRequest();
+    assertNotNull(request);
+    assertEquals(request.getMethod(), "GET");
+
+    // Check query
+    Map<String, String> query = TestUtilities.parseQueryString(request);
+    assertNotNull(query);
+    // Get query params
+    assertEquals(query.get("version"), version);
+    assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
+    // Check request path
+    String parsedPath = TestUtilities.parseReqPath(request);
+    assertEquals(parsedPath, getBareMetalServerNetworkInterfacePath);
+  }
+  
+  public void testGetBareMetalServerNetworkInterfaceWOptionsWRetries() throws Throwable {
+    // Enable retries and run testGetBareMetalServerNetworkInterfaceWOptions.
+    vpcService.enableRetries(4, 30);
+    testGetBareMetalServerNetworkInterfaceWOptions();
+
+    // Disable retries and run testGetBareMetalServerNetworkInterfaceWOptions.
+    vpcService.disableRetries();
+    testGetBareMetalServerNetworkInterfaceWOptions();
+  }  
+
+  // Test the getBareMetalServerNetworkInterface operation with null options model parameter
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testGetBareMetalServerNetworkInterfaceNoOptions() throws Throwable {
+    // construct the service
+    constructClientService();
+
+    server.enqueue(new MockResponse());
+
+    // Invoke operation with null options model (negative test)
+    vpcService.getBareMetalServerNetworkInterface(null).execute();
+  }
+
+  @Test
+  public void testUpdateBareMetalServerNetworkInterfaceWOptions() throws Throwable {
+    // Schedule some responses.
+    String mockResponseBody = "{\"allow_ip_spoofing\": true, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"enable_infrastructure_nat\": true, \"floating_ips\": [{\"address\": \"203.0.113.1\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::floating-ip:39300233-9995-4806-89a5-3c1b6eb88689\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/floating_ips/39300233-9995-4806-89a5-3c1b6eb88689\", \"id\": \"39300233-9995-4806-89a5-3c1b6eb88689\", \"name\": \"my-floating-ip\"}], \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/bare_metal_servers/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"interface_type\": \"pci\", \"mac_address\": \"02:00:0a:00:23:94\", \"name\": \"my-network-interface\", \"port_speed\": 1000, \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\", \"security_groups\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::security-group:be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"id\": \"be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"name\": \"my-security-group\"}], \"status\": \"available\", \"subnet\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}, \"type\": \"primary\", \"allowed_vlans\": [4]}";
+    String updateBareMetalServerNetworkInterfacePath = "/bare_metal_servers/testString/network_interfaces/testString";
+
+    server.enqueue(new MockResponse()
+    .setHeader("Content-type", "application/json")
+    .setResponseCode(200)
+    .setBody(mockResponseBody));
+
+    constructClientService();
+
+    // Construct an instance of the BareMetalServerNetworkInterfacePatch model
+    BareMetalServerNetworkInterfacePatch bareMetalServerNetworkInterfacePatchModel = new BareMetalServerNetworkInterfacePatch.Builder()
+    .allowIpSpoofing(true)
+    .allowedVlans(new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("4"))))
+    .enableInfrastructureNat(true)
+    .name("my-network-interface")
+    .build();
+    Map<String, Object> bareMetalServerNetworkInterfacePatchModelAsPatch = bareMetalServerNetworkInterfacePatchModel.asPatch();
+
+    // Construct an instance of the UpdateBareMetalServerNetworkInterfaceOptions model
+    UpdateBareMetalServerNetworkInterfaceOptions updateBareMetalServerNetworkInterfaceOptionsModel = new UpdateBareMetalServerNetworkInterfaceOptions.Builder()
+    .bareMetalServerId("testString")
+    .id("testString")
+    .bareMetalServerNetworkInterfacePatch(bareMetalServerNetworkInterfacePatchModelAsPatch)
+    .build();
+
+    // Invoke operation with valid options model (positive test)
+    Response<BareMetalServerNetworkInterface> response = vpcService.updateBareMetalServerNetworkInterface(updateBareMetalServerNetworkInterfaceOptionsModel).execute();
+    assertNotNull(response);
+    BareMetalServerNetworkInterface responseObj = response.getResult();
+    assertNotNull(responseObj);
+
+    // Verify the contents of the request
+    RecordedRequest request = server.takeRequest();
+    assertNotNull(request);
+    assertEquals(request.getMethod(), "PATCH");
+
+    // Check query
+    Map<String, String> query = TestUtilities.parseQueryString(request);
+    assertNotNull(query);
+    // Get query params
+    assertEquals(query.get("version"), version);
+    assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
+    // Check request path
+    String parsedPath = TestUtilities.parseReqPath(request);
+    assertEquals(parsedPath, updateBareMetalServerNetworkInterfacePath);
+  }
+  
+  public void testUpdateBareMetalServerNetworkInterfaceWOptionsWRetries() throws Throwable {
+    // Enable retries and run testUpdateBareMetalServerNetworkInterfaceWOptions.
+    vpcService.enableRetries(4, 30);
+    testUpdateBareMetalServerNetworkInterfaceWOptions();
+
+    // Disable retries and run testUpdateBareMetalServerNetworkInterfaceWOptions.
+    vpcService.disableRetries();
+    testUpdateBareMetalServerNetworkInterfaceWOptions();
+  }  
+
+  // Test the updateBareMetalServerNetworkInterface operation with null options model parameter
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testUpdateBareMetalServerNetworkInterfaceNoOptions() throws Throwable {
+    // construct the service
+    constructClientService();
+
+    server.enqueue(new MockResponse());
+
+    // Invoke operation with null options model (negative test)
+    vpcService.updateBareMetalServerNetworkInterface(null).execute();
+  }
+
+  @Test
+  public void testListBareMetalServerNetworkInterfaceFloatingIpsWOptions() throws Throwable {
+    // Schedule some responses.
+    String mockResponseBody = "{\"floating_ips\": [{\"address\": \"203.0.113.1\", \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::floating-ip:39300233-9995-4806-89a5-3c1b6eb88689\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/floating_ips/39300233-9995-4806-89a5-3c1b6eb88689\", \"id\": \"39300233-9995-4806-89a5-3c1b6eb88689\", \"name\": \"my-floating-ip\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"status\": \"available\", \"target\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"name\": \"my-network-interface\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\"}, \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}]}";
+    String listBareMetalServerNetworkInterfaceFloatingIpsPath = "/bare_metal_servers/testString/network_interfaces/testString/floating_ips";
+
+    server.enqueue(new MockResponse()
+    .setHeader("Content-type", "application/json")
+    .setResponseCode(200)
+    .setBody(mockResponseBody));
+
+    constructClientService();
+
+    // Construct an instance of the ListBareMetalServerNetworkInterfaceFloatingIpsOptions model
+    ListBareMetalServerNetworkInterfaceFloatingIpsOptions listBareMetalServerNetworkInterfaceFloatingIpsOptionsModel = new ListBareMetalServerNetworkInterfaceFloatingIpsOptions.Builder()
+    .bareMetalServerId("testString")
+    .networkInterfaceId("testString")
+    .build();
+
+    // Invoke operation with valid options model (positive test)
+    Response<FloatingIPUnpaginatedCollection> response = vpcService.listBareMetalServerNetworkInterfaceFloatingIps(listBareMetalServerNetworkInterfaceFloatingIpsOptionsModel).execute();
+    assertNotNull(response);
+    FloatingIPUnpaginatedCollection responseObj = response.getResult();
+    assertNotNull(responseObj);
+
+    // Verify the contents of the request
+    RecordedRequest request = server.takeRequest();
+    assertNotNull(request);
+    assertEquals(request.getMethod(), "GET");
+
+    // Check query
+    Map<String, String> query = TestUtilities.parseQueryString(request);
+    assertNotNull(query);
+    // Get query params
+    assertEquals(query.get("version"), version);
+    assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
+    // Check request path
+    String parsedPath = TestUtilities.parseReqPath(request);
+    assertEquals(parsedPath, listBareMetalServerNetworkInterfaceFloatingIpsPath);
+  }
+  
+  public void testListBareMetalServerNetworkInterfaceFloatingIpsWOptionsWRetries() throws Throwable {
+    // Enable retries and run testListBareMetalServerNetworkInterfaceFloatingIpsWOptions.
+    vpcService.enableRetries(4, 30);
+    testListBareMetalServerNetworkInterfaceFloatingIpsWOptions();
+
+    // Disable retries and run testListBareMetalServerNetworkInterfaceFloatingIpsWOptions.
+    vpcService.disableRetries();
+    testListBareMetalServerNetworkInterfaceFloatingIpsWOptions();
+  }  
+
+  // Test the listBareMetalServerNetworkInterfaceFloatingIps operation with null options model parameter
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testListBareMetalServerNetworkInterfaceFloatingIpsNoOptions() throws Throwable {
+    // construct the service
+    constructClientService();
+
+    server.enqueue(new MockResponse());
+
+    // Invoke operation with null options model (negative test)
+    vpcService.listBareMetalServerNetworkInterfaceFloatingIps(null).execute();
+  }
+
+  @Test
+  public void testRemoveBareMetalServerNetworkInterfaceFloatingIpWOptions() throws Throwable {
+    // Schedule some responses.
+    String mockResponseBody = "";
+    String removeBareMetalServerNetworkInterfaceFloatingIpPath = "/bare_metal_servers/testString/network_interfaces/testString/floating_ips/testString";
+
+    server.enqueue(new MockResponse()
+    .setResponseCode(204)
+    .setBody(mockResponseBody));
+
+    constructClientService();
+
+    // Construct an instance of the RemoveBareMetalServerNetworkInterfaceFloatingIpOptions model
+    RemoveBareMetalServerNetworkInterfaceFloatingIpOptions removeBareMetalServerNetworkInterfaceFloatingIpOptionsModel = new RemoveBareMetalServerNetworkInterfaceFloatingIpOptions.Builder()
+    .bareMetalServerId("testString")
+    .networkInterfaceId("testString")
+    .id("testString")
+    .build();
+
+    // Invoke operation with valid options model (positive test)
+    Response<Void> response = vpcService.removeBareMetalServerNetworkInterfaceFloatingIp(removeBareMetalServerNetworkInterfaceFloatingIpOptionsModel).execute();
+    assertNotNull(response);
+    Void responseObj = response.getResult();
+    // Response does not have a return type. Check that the result is null.
+    assertNull(responseObj);
+
+    // Verify the contents of the request
+    RecordedRequest request = server.takeRequest();
+    assertNotNull(request);
+    assertEquals(request.getMethod(), "DELETE");
+
+    // Check query
+    Map<String, String> query = TestUtilities.parseQueryString(request);
+    assertNotNull(query);
+    // Get query params
+    assertEquals(query.get("version"), version);
+    assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
+    // Check request path
+    String parsedPath = TestUtilities.parseReqPath(request);
+    assertEquals(parsedPath, removeBareMetalServerNetworkInterfaceFloatingIpPath);
+  }
+  
+  public void testRemoveBareMetalServerNetworkInterfaceFloatingIpWOptionsWRetries() throws Throwable {
+    // Enable retries and run testRemoveBareMetalServerNetworkInterfaceFloatingIpWOptions.
+    vpcService.enableRetries(4, 30);
+    testRemoveBareMetalServerNetworkInterfaceFloatingIpWOptions();
+
+    // Disable retries and run testRemoveBareMetalServerNetworkInterfaceFloatingIpWOptions.
+    vpcService.disableRetries();
+    testRemoveBareMetalServerNetworkInterfaceFloatingIpWOptions();
+  }  
+
+  // Test the removeBareMetalServerNetworkInterfaceFloatingIp operation with null options model parameter
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testRemoveBareMetalServerNetworkInterfaceFloatingIpNoOptions() throws Throwable {
+    // construct the service
+    constructClientService();
+
+    server.enqueue(new MockResponse());
+
+    // Invoke operation with null options model (negative test)
+    vpcService.removeBareMetalServerNetworkInterfaceFloatingIp(null).execute();
+  }
+
+  @Test
+  public void testGetBareMetalServerNetworkInterfaceFloatingIpWOptions() throws Throwable {
+    // Schedule some responses.
+    String mockResponseBody = "{\"address\": \"203.0.113.1\", \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::floating-ip:39300233-9995-4806-89a5-3c1b6eb88689\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/floating_ips/39300233-9995-4806-89a5-3c1b6eb88689\", \"id\": \"39300233-9995-4806-89a5-3c1b6eb88689\", \"name\": \"my-floating-ip\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"status\": \"available\", \"target\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"name\": \"my-network-interface\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\"}, \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}";
+    String getBareMetalServerNetworkInterfaceFloatingIpPath = "/bare_metal_servers/testString/network_interfaces/testString/floating_ips/testString";
+
+    server.enqueue(new MockResponse()
+    .setHeader("Content-type", "application/json")
+    .setResponseCode(200)
+    .setBody(mockResponseBody));
+
+    constructClientService();
+
+    // Construct an instance of the GetBareMetalServerNetworkInterfaceFloatingIpOptions model
+    GetBareMetalServerNetworkInterfaceFloatingIpOptions getBareMetalServerNetworkInterfaceFloatingIpOptionsModel = new GetBareMetalServerNetworkInterfaceFloatingIpOptions.Builder()
+    .bareMetalServerId("testString")
+    .networkInterfaceId("testString")
+    .id("testString")
+    .build();
+
+    // Invoke operation with valid options model (positive test)
+    Response<FloatingIP> response = vpcService.getBareMetalServerNetworkInterfaceFloatingIp(getBareMetalServerNetworkInterfaceFloatingIpOptionsModel).execute();
+    assertNotNull(response);
+    FloatingIP responseObj = response.getResult();
+    assertNotNull(responseObj);
+
+    // Verify the contents of the request
+    RecordedRequest request = server.takeRequest();
+    assertNotNull(request);
+    assertEquals(request.getMethod(), "GET");
+
+    // Check query
+    Map<String, String> query = TestUtilities.parseQueryString(request);
+    assertNotNull(query);
+    // Get query params
+    assertEquals(query.get("version"), version);
+    assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
+    // Check request path
+    String parsedPath = TestUtilities.parseReqPath(request);
+    assertEquals(parsedPath, getBareMetalServerNetworkInterfaceFloatingIpPath);
+  }
+  
+  public void testGetBareMetalServerNetworkInterfaceFloatingIpWOptionsWRetries() throws Throwable {
+    // Enable retries and run testGetBareMetalServerNetworkInterfaceFloatingIpWOptions.
+    vpcService.enableRetries(4, 30);
+    testGetBareMetalServerNetworkInterfaceFloatingIpWOptions();
+
+    // Disable retries and run testGetBareMetalServerNetworkInterfaceFloatingIpWOptions.
+    vpcService.disableRetries();
+    testGetBareMetalServerNetworkInterfaceFloatingIpWOptions();
+  }  
+
+  // Test the getBareMetalServerNetworkInterfaceFloatingIp operation with null options model parameter
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testGetBareMetalServerNetworkInterfaceFloatingIpNoOptions() throws Throwable {
+    // construct the service
+    constructClientService();
+
+    server.enqueue(new MockResponse());
+
+    // Invoke operation with null options model (negative test)
+    vpcService.getBareMetalServerNetworkInterfaceFloatingIp(null).execute();
+  }
+
+  @Test
+  public void testAddBareMetalServerNetworkInterfaceFloatingIpWOptions() throws Throwable {
+    // Schedule some responses.
+    String mockResponseBody = "{\"address\": \"203.0.113.1\", \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::floating-ip:39300233-9995-4806-89a5-3c1b6eb88689\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/floating_ips/39300233-9995-4806-89a5-3c1b6eb88689\", \"id\": \"39300233-9995-4806-89a5-3c1b6eb88689\", \"name\": \"my-floating-ip\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"status\": \"available\", \"target\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"name\": \"my-network-interface\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\"}, \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}";
+    String addBareMetalServerNetworkInterfaceFloatingIpPath = "/bare_metal_servers/testString/network_interfaces/testString/floating_ips/testString";
+
+    server.enqueue(new MockResponse()
+    .setHeader("Content-type", "application/json")
+    .setResponseCode(201)
+    .setBody(mockResponseBody));
+
+    constructClientService();
+
+    // Construct an instance of the AddBareMetalServerNetworkInterfaceFloatingIpOptions model
+    AddBareMetalServerNetworkInterfaceFloatingIpOptions addBareMetalServerNetworkInterfaceFloatingIpOptionsModel = new AddBareMetalServerNetworkInterfaceFloatingIpOptions.Builder()
+    .bareMetalServerId("testString")
+    .networkInterfaceId("testString")
+    .id("testString")
+    .build();
+
+    // Invoke operation with valid options model (positive test)
+    Response<FloatingIP> response = vpcService.addBareMetalServerNetworkInterfaceFloatingIp(addBareMetalServerNetworkInterfaceFloatingIpOptionsModel).execute();
+    assertNotNull(response);
+    FloatingIP responseObj = response.getResult();
+    assertNotNull(responseObj);
+
+    // Verify the contents of the request
+    RecordedRequest request = server.takeRequest();
+    assertNotNull(request);
+    assertEquals(request.getMethod(), "PUT");
+
+    // Check query
+    Map<String, String> query = TestUtilities.parseQueryString(request);
+    assertNotNull(query);
+    // Get query params
+    assertEquals(query.get("version"), version);
+    assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
+    // Check request path
+    String parsedPath = TestUtilities.parseReqPath(request);
+    assertEquals(parsedPath, addBareMetalServerNetworkInterfaceFloatingIpPath);
+  }
+  
+  public void testAddBareMetalServerNetworkInterfaceFloatingIpWOptionsWRetries() throws Throwable {
+    // Enable retries and run testAddBareMetalServerNetworkInterfaceFloatingIpWOptions.
+    vpcService.enableRetries(4, 30);
+    testAddBareMetalServerNetworkInterfaceFloatingIpWOptions();
+
+    // Disable retries and run testAddBareMetalServerNetworkInterfaceFloatingIpWOptions.
+    vpcService.disableRetries();
+    testAddBareMetalServerNetworkInterfaceFloatingIpWOptions();
+  }  
+
+  // Test the addBareMetalServerNetworkInterfaceFloatingIp operation with null options model parameter
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testAddBareMetalServerNetworkInterfaceFloatingIpNoOptions() throws Throwable {
+    // construct the service
+    constructClientService();
+
+    server.enqueue(new MockResponse());
+
+    // Invoke operation with null options model (negative test)
+    vpcService.addBareMetalServerNetworkInterfaceFloatingIp(null).execute();
+  }
+
+  @Test
+  public void testDeleteBareMetalServerWOptions() throws Throwable {
+    // Schedule some responses.
+    String mockResponseBody = "";
+    String deleteBareMetalServerPath = "/bare_metal_servers/testString";
+
+    server.enqueue(new MockResponse()
+    .setResponseCode(204)
+    .setBody(mockResponseBody));
+
+    constructClientService();
+
+    // Construct an instance of the DeleteBareMetalServerOptions model
+    DeleteBareMetalServerOptions deleteBareMetalServerOptionsModel = new DeleteBareMetalServerOptions.Builder()
+    .id("testString")
+    .build();
+
+    // Invoke operation with valid options model (positive test)
+    Response<Void> response = vpcService.deleteBareMetalServer(deleteBareMetalServerOptionsModel).execute();
+    assertNotNull(response);
+    Void responseObj = response.getResult();
+    // Response does not have a return type. Check that the result is null.
+    assertNull(responseObj);
+
+    // Verify the contents of the request
+    RecordedRequest request = server.takeRequest();
+    assertNotNull(request);
+    assertEquals(request.getMethod(), "DELETE");
+
+    // Check query
+    Map<String, String> query = TestUtilities.parseQueryString(request);
+    assertNotNull(query);
+    // Get query params
+    assertEquals(query.get("version"), version);
+    assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
+    // Check request path
+    String parsedPath = TestUtilities.parseReqPath(request);
+    assertEquals(parsedPath, deleteBareMetalServerPath);
+  }
+  
+  public void testDeleteBareMetalServerWOptionsWRetries() throws Throwable {
+    // Enable retries and run testDeleteBareMetalServerWOptions.
+    vpcService.enableRetries(4, 30);
+    testDeleteBareMetalServerWOptions();
+
+    // Disable retries and run testDeleteBareMetalServerWOptions.
+    vpcService.disableRetries();
+    testDeleteBareMetalServerWOptions();
+  }  
+
+  // Test the deleteBareMetalServer operation with null options model parameter
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testDeleteBareMetalServerNoOptions() throws Throwable {
+    // construct the service
+    constructClientService();
+
+    server.enqueue(new MockResponse());
+
+    // Invoke operation with null options model (negative test)
+    vpcService.deleteBareMetalServer(null).execute();
+  }
+
+  @Test
+  public void testGetBareMetalServerWOptions() throws Throwable {
+    // Schedule some responses.
+    String mockResponseBody = "{\"bandwidth\": 20000, \"boot_target\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/bare_metal_servers/1e09281b-f177-46fb-baf1-bc152b2e391a/disks/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"name\": \"my-bare-metal-disk\", \"resource_type\": \"bare_metal_server_disk\"}, \"cpu\": {\"architecture\": \"amd64\", \"core_count\": 80, \"socket_count\": 4, \"threads_per_core\": 2}, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::bare-metal-server:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"disks\": [{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/bare_metal_servers/1e09281b-f177-46fb-baf1-bc152b2e391a/disks/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"interface_type\": \"nvme\", \"name\": \"my-bare-metal-disk\", \"resource_type\": \"bare_metal_server_disk\", \"size\": 100}], \"enable_secure_boot\": false, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/bare_metal_servers/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"memory\": 1536, \"name\": \"my-bare-metal-server\", \"network_interfaces\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/bare_metal_servers/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"name\": \"my-network-interface\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\", \"subnet\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}}], \"primary_network_interface\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/bare_metal_servers/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"name\": \"my-network-interface\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\", \"subnet\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}}, \"profile\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/bare_metal_servers/profiles/bx2-metal-192x768\", \"name\": \"bx2-metal-192x768\", \"resource_type\": \"bare_metal_server_profile\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"bare_metal_server\", \"status\": \"failed\", \"status_reasons\": [{\"code\": \"cannot_start_capacity\", \"message\": \"The bare metal server cannot start as there is no more capacity in this\nzone for a bare metal server with the requested profile.\", \"more_info\": \"https://console.bluemix.net/docs/iaas/bare_metal_server.html\"}], \"trusted_platform_module\": {\"enabled\": true, \"mode\": \"tpm_2\"}, \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\"}, \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}";
+    String getBareMetalServerPath = "/bare_metal_servers/testString";
+
+    server.enqueue(new MockResponse()
+    .setHeader("Content-type", "application/json")
+    .setResponseCode(200)
+    .setBody(mockResponseBody));
+
+    constructClientService();
+
+    // Construct an instance of the GetBareMetalServerOptions model
+    GetBareMetalServerOptions getBareMetalServerOptionsModel = new GetBareMetalServerOptions.Builder()
+    .id("testString")
+    .build();
+
+    // Invoke operation with valid options model (positive test)
+    Response<BareMetalServer> response = vpcService.getBareMetalServer(getBareMetalServerOptionsModel).execute();
+    assertNotNull(response);
+    BareMetalServer responseObj = response.getResult();
+    assertNotNull(responseObj);
+
+    // Verify the contents of the request
+    RecordedRequest request = server.takeRequest();
+    assertNotNull(request);
+    assertEquals(request.getMethod(), "GET");
+
+    // Check query
+    Map<String, String> query = TestUtilities.parseQueryString(request);
+    assertNotNull(query);
+    // Get query params
+    assertEquals(query.get("version"), version);
+    assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
+    // Check request path
+    String parsedPath = TestUtilities.parseReqPath(request);
+    assertEquals(parsedPath, getBareMetalServerPath);
+  }
+  
+  public void testGetBareMetalServerWOptionsWRetries() throws Throwable {
+    // Enable retries and run testGetBareMetalServerWOptions.
+    vpcService.enableRetries(4, 30);
+    testGetBareMetalServerWOptions();
+
+    // Disable retries and run testGetBareMetalServerWOptions.
+    vpcService.disableRetries();
+    testGetBareMetalServerWOptions();
+  }  
+
+  // Test the getBareMetalServer operation with null options model parameter
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testGetBareMetalServerNoOptions() throws Throwable {
+    // construct the service
+    constructClientService();
+
+    server.enqueue(new MockResponse());
+
+    // Invoke operation with null options model (negative test)
+    vpcService.getBareMetalServer(null).execute();
+  }
+
+  @Test
+  public void testUpdateBareMetalServerWOptions() throws Throwable {
+    // Schedule some responses.
+    String mockResponseBody = "{\"bandwidth\": 20000, \"boot_target\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/bare_metal_servers/1e09281b-f177-46fb-baf1-bc152b2e391a/disks/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"name\": \"my-bare-metal-disk\", \"resource_type\": \"bare_metal_server_disk\"}, \"cpu\": {\"architecture\": \"amd64\", \"core_count\": 80, \"socket_count\": 4, \"threads_per_core\": 2}, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::bare-metal-server:1e09281b-f177-46fb-baf1-bc152b2e391a\", \"disks\": [{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/bare_metal_servers/1e09281b-f177-46fb-baf1-bc152b2e391a/disks/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"interface_type\": \"nvme\", \"name\": \"my-bare-metal-disk\", \"resource_type\": \"bare_metal_server_disk\", \"size\": 100}], \"enable_secure_boot\": false, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/bare_metal_servers/1e09281b-f177-46fb-baf1-bc152b2e391a\", \"id\": \"1e09281b-f177-46fb-baf1-bc152b2e391a\", \"memory\": 1536, \"name\": \"my-bare-metal-server\", \"network_interfaces\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/bare_metal_servers/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"name\": \"my-network-interface\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\", \"subnet\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}}], \"primary_network_interface\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/bare_metal_servers/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e\", \"id\": \"10c02d81-0ecb-4dc5-897d-28392913b81e\", \"name\": \"my-network-interface\", \"primary_ipv4_address\": \"192.168.3.4\", \"resource_type\": \"network_interface\", \"subnet\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\"}}, \"profile\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/bare_metal_servers/profiles/bx2-metal-192x768\", \"name\": \"bx2-metal-192x768\", \"resource_type\": \"bare_metal_server_profile\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"bare_metal_server\", \"status\": \"failed\", \"status_reasons\": [{\"code\": \"cannot_start_capacity\", \"message\": \"The bare metal server cannot start as there is no more capacity in this\nzone for a bare metal server with the requested profile.\", \"more_info\": \"https://console.bluemix.net/docs/iaas/bare_metal_server.html\"}], \"trusted_platform_module\": {\"enabled\": true, \"mode\": \"tpm_2\"}, \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\"}, \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}";
+    String updateBareMetalServerPath = "/bare_metal_servers/testString";
+
+    server.enqueue(new MockResponse()
+    .setHeader("Content-type", "application/json")
+    .setResponseCode(200)
+    .setBody(mockResponseBody));
+
+    constructClientService();
+
+    // Construct an instance of the BareMetalServerPatch model
+    BareMetalServerPatch bareMetalServerPatchModel = new BareMetalServerPatch.Builder()
+    .name("my-bare-metal-server")
+    .build();
+    Map<String, Object> bareMetalServerPatchModelAsPatch = bareMetalServerPatchModel.asPatch();
+
+    // Construct an instance of the UpdateBareMetalServerOptions model
+    UpdateBareMetalServerOptions updateBareMetalServerOptionsModel = new UpdateBareMetalServerOptions.Builder()
+    .id("testString")
+    .bareMetalServerPatch(bareMetalServerPatchModelAsPatch)
+    .build();
+
+    // Invoke operation with valid options model (positive test)
+    Response<BareMetalServer> response = vpcService.updateBareMetalServer(updateBareMetalServerOptionsModel).execute();
+    assertNotNull(response);
+    BareMetalServer responseObj = response.getResult();
+    assertNotNull(responseObj);
+
+    // Verify the contents of the request
+    RecordedRequest request = server.takeRequest();
+    assertNotNull(request);
+    assertEquals(request.getMethod(), "PATCH");
+
+    // Check query
+    Map<String, String> query = TestUtilities.parseQueryString(request);
+    assertNotNull(query);
+    // Get query params
+    assertEquals(query.get("version"), version);
+    assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
+    // Check request path
+    String parsedPath = TestUtilities.parseReqPath(request);
+    assertEquals(parsedPath, updateBareMetalServerPath);
+  }
+  
+  public void testUpdateBareMetalServerWOptionsWRetries() throws Throwable {
+    // Enable retries and run testUpdateBareMetalServerWOptions.
+    vpcService.enableRetries(4, 30);
+    testUpdateBareMetalServerWOptions();
+
+    // Disable retries and run testUpdateBareMetalServerWOptions.
+    vpcService.disableRetries();
+    testUpdateBareMetalServerWOptions();
+  }  
+
+  // Test the updateBareMetalServer operation with null options model parameter
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testUpdateBareMetalServerNoOptions() throws Throwable {
+    // construct the service
+    constructClientService();
+
+    server.enqueue(new MockResponse());
+
+    // Invoke operation with null options model (negative test)
+    vpcService.updateBareMetalServer(null).execute();
+  }
+
+  @Test
+  public void testGetBareMetalServerInitializationWOptions() throws Throwable {
+    // Schedule some responses.
+    String mockResponseBody = "{\"image\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"name\": \"my-image\"}, \"keys\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::key:a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"fingerprint\": \"SHA256:yxavE4CIOL2NlsqcurRO3xGjkP6m/0mp8ugojH5yxlY\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/keys/a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"id\": \"a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"name\": \"my-key\"}], \"user_accounts\": [{\"encrypted_password\": \"VGhpcyBpcyBhbiBlbmNvZGVkIGJ5dGUgYXJyYXku\", \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::key:a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"fingerprint\": \"SHA256:yxavE4CIOL2NlsqcurRO3xGjkP6m/0mp8ugojH5yxlY\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/keys/a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"id\": \"a6b1a881-2ce8-41a3-80fc-36316a73f803\", \"name\": \"my-key\"}, \"resource_type\": \"host_user_account\", \"username\": \"Administrator\"}]}";
+    String getBareMetalServerInitializationPath = "/bare_metal_servers/testString/initialization";
+
+    server.enqueue(new MockResponse()
+    .setHeader("Content-type", "application/json")
+    .setResponseCode(200)
+    .setBody(mockResponseBody));
+
+    constructClientService();
+
+    // Construct an instance of the GetBareMetalServerInitializationOptions model
+    GetBareMetalServerInitializationOptions getBareMetalServerInitializationOptionsModel = new GetBareMetalServerInitializationOptions.Builder()
+    .id("testString")
+    .build();
+
+    // Invoke operation with valid options model (positive test)
+    Response<BareMetalServerInitialization> response = vpcService.getBareMetalServerInitialization(getBareMetalServerInitializationOptionsModel).execute();
+    assertNotNull(response);
+    BareMetalServerInitialization responseObj = response.getResult();
+    assertNotNull(responseObj);
+
+    // Verify the contents of the request
+    RecordedRequest request = server.takeRequest();
+    assertNotNull(request);
+    assertEquals(request.getMethod(), "GET");
+
+    // Check query
+    Map<String, String> query = TestUtilities.parseQueryString(request);
+    assertNotNull(query);
+    // Get query params
+    assertEquals(query.get("version"), version);
+    assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
+    // Check request path
+    String parsedPath = TestUtilities.parseReqPath(request);
+    assertEquals(parsedPath, getBareMetalServerInitializationPath);
+  }
+  
+  public void testGetBareMetalServerInitializationWOptionsWRetries() throws Throwable {
+    // Enable retries and run testGetBareMetalServerInitializationWOptions.
+    vpcService.enableRetries(4, 30);
+    testGetBareMetalServerInitializationWOptions();
+
+    // Disable retries and run testGetBareMetalServerInitializationWOptions.
+    vpcService.disableRetries();
+    testGetBareMetalServerInitializationWOptions();
+  }  
+
+  // Test the getBareMetalServerInitialization operation with null options model parameter
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testGetBareMetalServerInitializationNoOptions() throws Throwable {
+    // construct the service
+    constructClientService();
+
+    server.enqueue(new MockResponse());
+
+    // Invoke operation with null options model (negative test)
+    vpcService.getBareMetalServerInitialization(null).execute();
+  }
+
+  @Test
+  public void testRestartBareMetalServerWOptions() throws Throwable {
+    // Schedule some responses.
+    String mockResponseBody = "";
+    String restartBareMetalServerPath = "/bare_metal_servers/testString/restart";
+
+    server.enqueue(new MockResponse()
+    .setResponseCode(204)
+    .setBody(mockResponseBody));
+
+    constructClientService();
+
+    // Construct an instance of the RestartBareMetalServerOptions model
+    RestartBareMetalServerOptions restartBareMetalServerOptionsModel = new RestartBareMetalServerOptions.Builder()
+    .id("testString")
+    .build();
+
+    // Invoke operation with valid options model (positive test)
+    Response<Void> response = vpcService.restartBareMetalServer(restartBareMetalServerOptionsModel).execute();
+    assertNotNull(response);
+    Void responseObj = response.getResult();
+    // Response does not have a return type. Check that the result is null.
+    assertNull(responseObj);
+
+    // Verify the contents of the request
+    RecordedRequest request = server.takeRequest();
+    assertNotNull(request);
+    assertEquals(request.getMethod(), "POST");
+
+    // Check query
+    Map<String, String> query = TestUtilities.parseQueryString(request);
+    assertNotNull(query);
+    // Get query params
+    assertEquals(query.get("version"), version);
+    assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
+    // Check request path
+    String parsedPath = TestUtilities.parseReqPath(request);
+    assertEquals(parsedPath, restartBareMetalServerPath);
+  }
+  
+  public void testRestartBareMetalServerWOptionsWRetries() throws Throwable {
+    // Enable retries and run testRestartBareMetalServerWOptions.
+    vpcService.enableRetries(4, 30);
+    testRestartBareMetalServerWOptions();
+
+    // Disable retries and run testRestartBareMetalServerWOptions.
+    vpcService.disableRetries();
+    testRestartBareMetalServerWOptions();
+  }  
+
+  // Test the restartBareMetalServer operation with null options model parameter
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testRestartBareMetalServerNoOptions() throws Throwable {
+    // construct the service
+    constructClientService();
+
+    server.enqueue(new MockResponse());
+
+    // Invoke operation with null options model (negative test)
+    vpcService.restartBareMetalServer(null).execute();
+  }
+
+  @Test
+  public void testStartBareMetalServerWOptions() throws Throwable {
+    // Schedule some responses.
+    String mockResponseBody = "";
+    String startBareMetalServerPath = "/bare_metal_servers/testString/start";
+
+    server.enqueue(new MockResponse()
+    .setResponseCode(204)
+    .setBody(mockResponseBody));
+
+    constructClientService();
+
+    // Construct an instance of the StartBareMetalServerOptions model
+    StartBareMetalServerOptions startBareMetalServerOptionsModel = new StartBareMetalServerOptions.Builder()
+    .id("testString")
+    .build();
+
+    // Invoke operation with valid options model (positive test)
+    Response<Void> response = vpcService.startBareMetalServer(startBareMetalServerOptionsModel).execute();
+    assertNotNull(response);
+    Void responseObj = response.getResult();
+    // Response does not have a return type. Check that the result is null.
+    assertNull(responseObj);
+
+    // Verify the contents of the request
+    RecordedRequest request = server.takeRequest();
+    assertNotNull(request);
+    assertEquals(request.getMethod(), "POST");
+
+    // Check query
+    Map<String, String> query = TestUtilities.parseQueryString(request);
+    assertNotNull(query);
+    // Get query params
+    assertEquals(query.get("version"), version);
+    assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
+    // Check request path
+    String parsedPath = TestUtilities.parseReqPath(request);
+    assertEquals(parsedPath, startBareMetalServerPath);
+  }
+  
+  public void testStartBareMetalServerWOptionsWRetries() throws Throwable {
+    // Enable retries and run testStartBareMetalServerWOptions.
+    vpcService.enableRetries(4, 30);
+    testStartBareMetalServerWOptions();
+
+    // Disable retries and run testStartBareMetalServerWOptions.
+    vpcService.disableRetries();
+    testStartBareMetalServerWOptions();
+  }  
+
+  // Test the startBareMetalServer operation with null options model parameter
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testStartBareMetalServerNoOptions() throws Throwable {
+    // construct the service
+    constructClientService();
+
+    server.enqueue(new MockResponse());
+
+    // Invoke operation with null options model (negative test)
+    vpcService.startBareMetalServer(null).execute();
+  }
+
+  @Test
+  public void testStopBareMetalServerWOptions() throws Throwable {
+    // Schedule some responses.
+    String mockResponseBody = "";
+    String stopBareMetalServerPath = "/bare_metal_servers/testString/stop";
+
+    server.enqueue(new MockResponse()
+    .setResponseCode(204)
+    .setBody(mockResponseBody));
+
+    constructClientService();
+
+    // Construct an instance of the StopBareMetalServerOptions model
+    StopBareMetalServerOptions stopBareMetalServerOptionsModel = new StopBareMetalServerOptions.Builder()
+    .id("testString")
+    .type("hard")
+    .build();
+
+    // Invoke operation with valid options model (positive test)
+    Response<Void> response = vpcService.stopBareMetalServer(stopBareMetalServerOptionsModel).execute();
+    assertNotNull(response);
+    Void responseObj = response.getResult();
+    // Response does not have a return type. Check that the result is null.
+    assertNull(responseObj);
+
+    // Verify the contents of the request
+    RecordedRequest request = server.takeRequest();
+    assertNotNull(request);
+    assertEquals(request.getMethod(), "POST");
+
+    // Check query
+    Map<String, String> query = TestUtilities.parseQueryString(request);
+    assertNotNull(query);
+    // Get query params
+    assertEquals(query.get("version"), version);
+    assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
+    // Check request path
+    String parsedPath = TestUtilities.parseReqPath(request);
+    assertEquals(parsedPath, stopBareMetalServerPath);
+  }
+  
+  public void testStopBareMetalServerWOptionsWRetries() throws Throwable {
+    // Enable retries and run testStopBareMetalServerWOptions.
+    vpcService.enableRetries(4, 30);
+    testStopBareMetalServerWOptions();
+
+    // Disable retries and run testStopBareMetalServerWOptions.
+    vpcService.disableRetries();
+    testStopBareMetalServerWOptions();
+  }  
+
+  // Test the stopBareMetalServer operation with null options model parameter
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testStopBareMetalServerNoOptions() throws Throwable {
+    // construct the service
+    constructClientService();
+
+    server.enqueue(new MockResponse());
+
+    // Invoke operation with null options model (negative test)
+    vpcService.stopBareMetalServer(null).execute();
+  }
+
+  @Test
   public void testListVolumeProfilesWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"first\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volume/profiles?limit=20\"}, \"limit\": 20, \"next\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volume/profiles?start=9d5a91a3e2cbd233b5a5b33436855ed1&limit=20\"}, \"profiles\": [{\"family\": \"tiered\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volume/profiles/general-purpose\", \"name\": \"general-purpose\"}], \"total_count\": 132}";
@@ -10816,7 +12569,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testListSnapshotsWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"first\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshots?limit=20\"}, \"limit\": 20, \"next\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshots?start=9d5a91a3e2cbd233b5a5b33436855ed1&limit=20\"}, \"snapshots\": [{\"bootable\": true, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::snapshot:r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"deletable\": false, \"encryption\": \"provider_managed\", \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"id\": \"r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"lifecycle_state\": \"stable\", \"minimum_capacity\": 1, \"name\": \"my-snapshot\", \"operating_system\": {\"architecture\": \"amd64\", \"dedicated_host_only\": false, \"display_name\": \"Ubuntu Server 16.04 LTS amd64\", \"family\": \"Ubuntu Server\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-16-amd64\", \"name\": \"ubuntu-16-amd64\", \"vendor\": \"Canonical\", \"version\": \"16.04 LTS\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"snapshot\", \"size\": 1, \"source_image\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"name\": \"my-image\"}, \"source_volume\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}}], \"total_count\": 132}";
+    String mockResponseBody = "{\"first\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshots?limit=20\"}, \"limit\": 20, \"next\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshots?start=9d5a91a3e2cbd233b5a5b33436855ed1&limit=20\"}, \"snapshots\": [{\"bootable\": true, \"captured_at\": \"2019-01-01T12:00:00.000Z\", \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::snapshot:r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"deletable\": false, \"encryption\": \"provider_managed\", \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"id\": \"r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"lifecycle_state\": \"stable\", \"minimum_capacity\": 1, \"name\": \"my-snapshot\", \"operating_system\": {\"architecture\": \"amd64\", \"dedicated_host_only\": false, \"display_name\": \"Ubuntu Server 16.04 LTS amd64\", \"family\": \"Ubuntu Server\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-16-amd64\", \"name\": \"ubuntu-16-amd64\", \"vendor\": \"Canonical\", \"version\": \"16.04 LTS\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"snapshot\", \"size\": 1, \"source_image\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"name\": \"my-image\"}, \"source_volume\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}}], \"total_count\": 132}";
     String listSnapshotsPath = "/snapshots";
 
     server.enqueue(new MockResponse()
@@ -10883,7 +12636,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testCreateSnapshotWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"bootable\": true, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::snapshot:r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"deletable\": false, \"encryption\": \"provider_managed\", \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"id\": \"r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"lifecycle_state\": \"stable\", \"minimum_capacity\": 1, \"name\": \"my-snapshot\", \"operating_system\": {\"architecture\": \"amd64\", \"dedicated_host_only\": false, \"display_name\": \"Ubuntu Server 16.04 LTS amd64\", \"family\": \"Ubuntu Server\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-16-amd64\", \"name\": \"ubuntu-16-amd64\", \"vendor\": \"Canonical\", \"version\": \"16.04 LTS\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"snapshot\", \"size\": 1, \"source_image\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"name\": \"my-image\"}, \"source_volume\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}}";
+    String mockResponseBody = "{\"bootable\": true, \"captured_at\": \"2019-01-01T12:00:00.000Z\", \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::snapshot:r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"deletable\": false, \"encryption\": \"provider_managed\", \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"id\": \"r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"lifecycle_state\": \"stable\", \"minimum_capacity\": 1, \"name\": \"my-snapshot\", \"operating_system\": {\"architecture\": \"amd64\", \"dedicated_host_only\": false, \"display_name\": \"Ubuntu Server 16.04 LTS amd64\", \"family\": \"Ubuntu Server\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-16-amd64\", \"name\": \"ubuntu-16-amd64\", \"vendor\": \"Canonical\", \"version\": \"16.04 LTS\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"snapshot\", \"size\": 1, \"source_image\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"name\": \"my-image\"}, \"source_volume\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}}";
     String createSnapshotPath = "/snapshots";
 
     server.enqueue(new MockResponse()
@@ -11019,7 +12772,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testGetSnapshotWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"bootable\": true, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::snapshot:r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"deletable\": false, \"encryption\": \"provider_managed\", \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"id\": \"r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"lifecycle_state\": \"stable\", \"minimum_capacity\": 1, \"name\": \"my-snapshot\", \"operating_system\": {\"architecture\": \"amd64\", \"dedicated_host_only\": false, \"display_name\": \"Ubuntu Server 16.04 LTS amd64\", \"family\": \"Ubuntu Server\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-16-amd64\", \"name\": \"ubuntu-16-amd64\", \"vendor\": \"Canonical\", \"version\": \"16.04 LTS\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"snapshot\", \"size\": 1, \"source_image\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"name\": \"my-image\"}, \"source_volume\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}}";
+    String mockResponseBody = "{\"bootable\": true, \"captured_at\": \"2019-01-01T12:00:00.000Z\", \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::snapshot:r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"deletable\": false, \"encryption\": \"provider_managed\", \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"id\": \"r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"lifecycle_state\": \"stable\", \"minimum_capacity\": 1, \"name\": \"my-snapshot\", \"operating_system\": {\"architecture\": \"amd64\", \"dedicated_host_only\": false, \"display_name\": \"Ubuntu Server 16.04 LTS amd64\", \"family\": \"Ubuntu Server\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-16-amd64\", \"name\": \"ubuntu-16-amd64\", \"vendor\": \"Canonical\", \"version\": \"16.04 LTS\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"snapshot\", \"size\": 1, \"source_image\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"name\": \"my-image\"}, \"source_volume\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}}";
     String getSnapshotPath = "/snapshots/testString";
 
     server.enqueue(new MockResponse()
@@ -11081,7 +12834,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testUpdateSnapshotWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"bootable\": true, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::snapshot:r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"deletable\": false, \"encryption\": \"provider_managed\", \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"id\": \"r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"lifecycle_state\": \"stable\", \"minimum_capacity\": 1, \"name\": \"my-snapshot\", \"operating_system\": {\"architecture\": \"amd64\", \"dedicated_host_only\": false, \"display_name\": \"Ubuntu Server 16.04 LTS amd64\", \"family\": \"Ubuntu Server\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-16-amd64\", \"name\": \"ubuntu-16-amd64\", \"vendor\": \"Canonical\", \"version\": \"16.04 LTS\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"snapshot\", \"size\": 1, \"source_image\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"name\": \"my-image\"}, \"source_volume\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}}";
+    String mockResponseBody = "{\"bootable\": true, \"captured_at\": \"2019-01-01T12:00:00.000Z\", \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::snapshot:r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"deletable\": false, \"encryption\": \"provider_managed\", \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"id\": \"r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"lifecycle_state\": \"stable\", \"minimum_capacity\": 1, \"name\": \"my-snapshot\", \"operating_system\": {\"architecture\": \"amd64\", \"dedicated_host_only\": false, \"display_name\": \"Ubuntu Server 16.04 LTS amd64\", \"family\": \"Ubuntu Server\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-16-amd64\", \"name\": \"ubuntu-16-amd64\", \"vendor\": \"Canonical\", \"version\": \"16.04 LTS\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"snapshot\", \"size\": 1, \"source_image\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"id\": \"72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"name\": \"my-image\"}, \"source_volume\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\"}}";
     String updateSnapshotPath = "/snapshots/testString";
 
     server.enqueue(new MockResponse()
@@ -11987,15 +13740,15 @@ public class VpcTest extends PowerMockTestCase {
 
     constructClientService();
 
-    // Construct an instance of the FloatingIPPatchTargetNetworkInterfaceIdentityNetworkInterfaceIdentityById model
-    FloatingIPPatchTargetNetworkInterfaceIdentityNetworkInterfaceIdentityById floatingIpPatchTargetNetworkInterfaceIdentityModel = new FloatingIPPatchTargetNetworkInterfaceIdentityNetworkInterfaceIdentityById.Builder()
-    .id("69e55145-cc7d-4d8e-9e1f-cc3fb60b1793")
+    // Construct an instance of the FloatingIPTargetPatchNetworkInterfaceIdentityById model
+    FloatingIPTargetPatchNetworkInterfaceIdentityById floatingIpTargetPatchModel = new FloatingIPTargetPatchNetworkInterfaceIdentityById.Builder()
+    .id("10c02d81-0ecb-4dc5-897d-28392913b81e")
     .build();
 
     // Construct an instance of the FloatingIPPatch model
     FloatingIPPatch floatingIpPatchModel = new FloatingIPPatch.Builder()
     .name("my-floating-ip")
-    .target(floatingIpPatchTargetNetworkInterfaceIdentityModel)
+    .target(floatingIpTargetPatchModel)
     .build();
     Map<String, Object> floatingIpPatchModelAsPatch = floatingIpPatchModel.asPatch();
 
@@ -13886,7 +15639,7 @@ public class VpcTest extends PowerMockTestCase {
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
-    .setResponseCode(201)
+    .setResponseCode(200)
     .setBody(mockResponseBody));
 
     constructClientService();
@@ -18409,7 +20162,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testListEndpointGatewaysWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"endpoint_gateways\": [{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::endpoint-gateway:d7cc5196-9864-48c4-82d8-3f30da41fcc5\", \"health_state\": \"ok\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/endpoint_gateways/d7cc5196-9864-48c4-82d8-3f30da41fcc5\", \"id\": \"d7cc5196-9864-48c4-82d8-3f30da41fcc5\", \"ips\": [{\"address\": \"192.168.3.4\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e/reserved_ips/6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"id\": \"6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"name\": \"my-reserved-ip\", \"resource_type\": \"subnet_reserved_ip\"}], \"lifecycle_state\": \"stable\", \"name\": \"my-endpoint-gateway\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"endpoint_gateway\", \"service_endpoint\": \"my-cloudant-instance.appdomain.cloud\", \"service_endpoints\": [\"my-cloudant-instance.appdomain.cloud\"], \"target\": {\"crn\": \"crn:v1:bluemix:public:cloudant:us-south:a/123456:3527280b-9327-4411-8020-591092e60353::\", \"resource_type\": \"provider_cloud_service\"}, \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\"}}], \"first\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/endpoint_gateways?limit=20\"}, \"limit\": 20, \"next\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/endpoint_gateways?start=ffd653466e284937896724b2dd044c9c&limit=20\"}, \"total_count\": 132}";
+    String mockResponseBody = "{\"endpoint_gateways\": [{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::endpoint-gateway:d7cc5196-9864-48c4-82d8-3f30da41fcc5\", \"health_state\": \"ok\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/endpoint_gateways/d7cc5196-9864-48c4-82d8-3f30da41fcc5\", \"id\": \"d7cc5196-9864-48c4-82d8-3f30da41fcc5\", \"ips\": [{\"address\": \"192.168.3.4\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e/reserved_ips/6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"id\": \"6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"name\": \"my-reserved-ip\", \"resource_type\": \"subnet_reserved_ip\"}], \"lifecycle_state\": \"stable\", \"name\": \"my-endpoint-gateway\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"endpoint_gateway\", \"security_groups\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::security-group:be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"id\": \"be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"name\": \"my-security-group\"}], \"service_endpoint\": \"my-cloudant-instance.appdomain.cloud\", \"service_endpoints\": [\"my-cloudant-instance.appdomain.cloud\"], \"target\": {\"crn\": \"crn:v1:bluemix:public:cloudant:us-south:a/123456:3527280b-9327-4411-8020-591092e60353::\", \"resource_type\": \"provider_cloud_service\"}, \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\"}}], \"first\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/endpoint_gateways?limit=20\"}, \"limit\": 20, \"next\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/endpoint_gateways?start=ffd653466e284937896724b2dd044c9c&limit=20\"}, \"total_count\": 132}";
     String listEndpointGatewaysPath = "/endpoint_gateways";
 
     server.enqueue(new MockResponse()
@@ -18466,7 +20219,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testCreateEndpointGatewayWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::endpoint-gateway:d7cc5196-9864-48c4-82d8-3f30da41fcc5\", \"health_state\": \"ok\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/endpoint_gateways/d7cc5196-9864-48c4-82d8-3f30da41fcc5\", \"id\": \"d7cc5196-9864-48c4-82d8-3f30da41fcc5\", \"ips\": [{\"address\": \"192.168.3.4\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e/reserved_ips/6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"id\": \"6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"name\": \"my-reserved-ip\", \"resource_type\": \"subnet_reserved_ip\"}], \"lifecycle_state\": \"stable\", \"name\": \"my-endpoint-gateway\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"endpoint_gateway\", \"service_endpoint\": \"my-cloudant-instance.appdomain.cloud\", \"service_endpoints\": [\"my-cloudant-instance.appdomain.cloud\"], \"target\": {\"crn\": \"crn:v1:bluemix:public:cloudant:us-south:a/123456:3527280b-9327-4411-8020-591092e60353::\", \"resource_type\": \"provider_cloud_service\"}, \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\"}}";
+    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::endpoint-gateway:d7cc5196-9864-48c4-82d8-3f30da41fcc5\", \"health_state\": \"ok\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/endpoint_gateways/d7cc5196-9864-48c4-82d8-3f30da41fcc5\", \"id\": \"d7cc5196-9864-48c4-82d8-3f30da41fcc5\", \"ips\": [{\"address\": \"192.168.3.4\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e/reserved_ips/6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"id\": \"6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"name\": \"my-reserved-ip\", \"resource_type\": \"subnet_reserved_ip\"}], \"lifecycle_state\": \"stable\", \"name\": \"my-endpoint-gateway\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"endpoint_gateway\", \"security_groups\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::security-group:be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"id\": \"be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"name\": \"my-security-group\"}], \"service_endpoint\": \"my-cloudant-instance.appdomain.cloud\", \"service_endpoints\": [\"my-cloudant-instance.appdomain.cloud\"], \"target\": {\"crn\": \"crn:v1:bluemix:public:cloudant:us-south:a/123456:3527280b-9327-4411-8020-591092e60353::\", \"resource_type\": \"provider_cloud_service\"}, \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\"}}";
     String createEndpointGatewayPath = "/endpoint_gateways";
 
     server.enqueue(new MockResponse()
@@ -18497,6 +20250,11 @@ public class VpcTest extends PowerMockTestCase {
     .id("fee82deba12e4c0fb69c3b09d1f12345")
     .build();
 
+    // Construct an instance of the SecurityGroupIdentityById model
+    SecurityGroupIdentityById securityGroupIdentityModel = new SecurityGroupIdentityById.Builder()
+    .id("be5df5ca-12a0-494b-907e-aa6ec2bfa271")
+    .build();
+
     // Construct an instance of the CreateEndpointGatewayOptions model
     CreateEndpointGatewayOptions createEndpointGatewayOptionsModel = new CreateEndpointGatewayOptions.Builder()
     .target(endpointGatewayTargetPrototypeModel)
@@ -18504,6 +20262,7 @@ public class VpcTest extends PowerMockTestCase {
     .ips(new java.util.ArrayList<EndpointGatewayReservedIP>(java.util.Arrays.asList(endpointGatewayReservedIpModel)))
     .name("testString")
     .resourceGroup(resourceGroupIdentityModel)
+    .securityGroups(new java.util.ArrayList<SecurityGroupIdentity>(java.util.Arrays.asList(securityGroupIdentityModel)))
     .build();
 
     // Invoke operation with valid options model (positive test)
@@ -18872,7 +20631,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testGetEndpointGatewayWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::endpoint-gateway:d7cc5196-9864-48c4-82d8-3f30da41fcc5\", \"health_state\": \"ok\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/endpoint_gateways/d7cc5196-9864-48c4-82d8-3f30da41fcc5\", \"id\": \"d7cc5196-9864-48c4-82d8-3f30da41fcc5\", \"ips\": [{\"address\": \"192.168.3.4\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e/reserved_ips/6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"id\": \"6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"name\": \"my-reserved-ip\", \"resource_type\": \"subnet_reserved_ip\"}], \"lifecycle_state\": \"stable\", \"name\": \"my-endpoint-gateway\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"endpoint_gateway\", \"service_endpoint\": \"my-cloudant-instance.appdomain.cloud\", \"service_endpoints\": [\"my-cloudant-instance.appdomain.cloud\"], \"target\": {\"crn\": \"crn:v1:bluemix:public:cloudant:us-south:a/123456:3527280b-9327-4411-8020-591092e60353::\", \"resource_type\": \"provider_cloud_service\"}, \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\"}}";
+    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::endpoint-gateway:d7cc5196-9864-48c4-82d8-3f30da41fcc5\", \"health_state\": \"ok\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/endpoint_gateways/d7cc5196-9864-48c4-82d8-3f30da41fcc5\", \"id\": \"d7cc5196-9864-48c4-82d8-3f30da41fcc5\", \"ips\": [{\"address\": \"192.168.3.4\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e/reserved_ips/6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"id\": \"6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"name\": \"my-reserved-ip\", \"resource_type\": \"subnet_reserved_ip\"}], \"lifecycle_state\": \"stable\", \"name\": \"my-endpoint-gateway\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"endpoint_gateway\", \"security_groups\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::security-group:be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"id\": \"be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"name\": \"my-security-group\"}], \"service_endpoint\": \"my-cloudant-instance.appdomain.cloud\", \"service_endpoints\": [\"my-cloudant-instance.appdomain.cloud\"], \"target\": {\"crn\": \"crn:v1:bluemix:public:cloudant:us-south:a/123456:3527280b-9327-4411-8020-591092e60353::\", \"resource_type\": \"provider_cloud_service\"}, \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\"}}";
     String getEndpointGatewayPath = "/endpoint_gateways/testString";
 
     server.enqueue(new MockResponse()
@@ -18934,7 +20693,7 @@ public class VpcTest extends PowerMockTestCase {
   @Test
   public void testUpdateEndpointGatewayWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::endpoint-gateway:d7cc5196-9864-48c4-82d8-3f30da41fcc5\", \"health_state\": \"ok\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/endpoint_gateways/d7cc5196-9864-48c4-82d8-3f30da41fcc5\", \"id\": \"d7cc5196-9864-48c4-82d8-3f30da41fcc5\", \"ips\": [{\"address\": \"192.168.3.4\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e/reserved_ips/6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"id\": \"6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"name\": \"my-reserved-ip\", \"resource_type\": \"subnet_reserved_ip\"}], \"lifecycle_state\": \"stable\", \"name\": \"my-endpoint-gateway\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"endpoint_gateway\", \"service_endpoint\": \"my-cloudant-instance.appdomain.cloud\", \"service_endpoints\": [\"my-cloudant-instance.appdomain.cloud\"], \"target\": {\"crn\": \"crn:v1:bluemix:public:cloudant:us-south:a/123456:3527280b-9327-4411-8020-591092e60353::\", \"resource_type\": \"provider_cloud_service\"}, \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\"}}";
+    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::endpoint-gateway:d7cc5196-9864-48c4-82d8-3f30da41fcc5\", \"health_state\": \"ok\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/endpoint_gateways/d7cc5196-9864-48c4-82d8-3f30da41fcc5\", \"id\": \"d7cc5196-9864-48c4-82d8-3f30da41fcc5\", \"ips\": [{\"address\": \"192.168.3.4\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e/reserved_ips/6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"id\": \"6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"name\": \"my-reserved-ip\", \"resource_type\": \"subnet_reserved_ip\"}], \"lifecycle_state\": \"stable\", \"name\": \"my-endpoint-gateway\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"endpoint_gateway\", \"security_groups\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::security-group:be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"id\": \"be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"name\": \"my-security-group\"}], \"service_endpoint\": \"my-cloudant-instance.appdomain.cloud\", \"service_endpoints\": [\"my-cloudant-instance.appdomain.cloud\"], \"target\": {\"crn\": \"crn:v1:bluemix:public:cloudant:us-south:a/123456:3527280b-9327-4411-8020-591092e60353::\", \"resource_type\": \"provider_cloud_service\"}, \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\"}}";
     String updateEndpointGatewayPath = "/endpoint_gateways/testString";
 
     server.enqueue(new MockResponse()

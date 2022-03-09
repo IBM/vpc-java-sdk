@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -222,7 +222,8 @@ public class LoadBalancerListenerPrototypeLoadBalancerContext extends GenericMod
   /**
    * Gets the defaultPool.
    *
-   * The default pool associated with the listener.
+   * The default pool for this listener. If unspecified, this listener will be created
+   * with no default pool, but one may be subsequently set.
    *
    * @return the defaultPool
    */
@@ -249,9 +250,12 @@ public class LoadBalancerListenerPrototypeLoadBalancerContext extends GenericMod
    *
    * The inclusive upper bound of the range of ports used by this listener. Must not be less than `port_min`.
    *
-   * At present, only load balancers operating with route mode enabled support different values for `port_min` and
-   * `port_max`.  When route mode is enabled, only a value of
-   * `65535` is supported for `port_max`.
+   * At present, only load balancers operating with route mode enabled, and public load balancers in the `network`
+   * family support different values for `port_min` and
+   * `port_max`. When route mode is enabled, the value `65535` must be specified.
+   *
+   * The specified port range must not overlap with port ranges used by other listeners for this load balancer using the
+   * same protocol.
    *
    * @return the portMax
    */
@@ -264,9 +268,12 @@ public class LoadBalancerListenerPrototypeLoadBalancerContext extends GenericMod
    *
    * The inclusive lower bound of the range of ports used by this listener. Must not be greater than `port_max`.
    *
-   * At present, only load balancers operating with route mode enabled support different values for `port_min` and
-   * `port_max`.  When route mode is enabled, only a value of
-   * `1` is supported for `port_min`.
+   * At present, only load balancers operating with route mode enabled, and public load balancers in the `network`
+   * family support different values for `port_min` and
+   * `port_max`. When route mode is enabled, the value `1` must be specified.
+   *
+   * The specified port range must not overlap with port ranges used by other listeners for this load balancer using the
+   * same protocol.
    *
    * @return the portMin
    */

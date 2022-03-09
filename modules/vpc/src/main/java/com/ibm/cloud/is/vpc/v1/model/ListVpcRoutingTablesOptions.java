@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -141,7 +141,7 @@ public class ListVpcRoutingTablesOptions extends GenericModel {
   /**
    * Gets the start.
    *
-   * A server-supplied token determining what resource to start the page on.
+   * A server-provided token determining what resource to start the page on.
    *
    * @return the start
    */
@@ -163,8 +163,7 @@ public class ListVpcRoutingTablesOptions extends GenericModel {
   /**
    * Gets the isDefault.
    *
-   * If the supplied value is `true`, filters the routing table collection to only the default routing table. If the
-   * supplied value is `false`, filters the routing table collection to exclude the default routing table.
+   * Filters the collection to routing tables with the specified `is_default` value.
    *
    * @return the isDefault
    */
