@@ -13,6 +13,7 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.google.gson.JsonParser;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostGroupPrototypeDedicatedHostByZoneContext;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostProfileIdentityByName;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostPrototypeDedicatedHostByZone;
@@ -80,7 +81,7 @@ public class DedicatedHostPrototypeDedicatedHostByZoneTest {
     assertEquals(dedicatedHostPrototypeDedicatedHostByZoneModelNew.name(), "my-host");
     assertEquals(dedicatedHostPrototypeDedicatedHostByZoneModelNew.profile().toString(), dedicatedHostProfileIdentityModel.toString());
     assertEquals(dedicatedHostPrototypeDedicatedHostByZoneModelNew.resourceGroup().toString(), resourceGroupIdentityModel.toString());
-    assertEquals(dedicatedHostPrototypeDedicatedHostByZoneModelNew.group().toString(), dedicatedHostGroupPrototypeDedicatedHostByZoneContextModel.toString());
+    assertEquals(JsonParser.parseString(dedicatedHostPrototypeDedicatedHostByZoneModelNew.group().toString()), JsonParser.parseString(dedicatedHostGroupPrototypeDedicatedHostByZoneContextModel.toString()));
     assertEquals(dedicatedHostPrototypeDedicatedHostByZoneModelNew.zone().toString(), zoneIdentityModel.toString());
   }
 

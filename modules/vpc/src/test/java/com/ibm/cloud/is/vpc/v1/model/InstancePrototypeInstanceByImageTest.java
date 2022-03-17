@@ -13,6 +13,7 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.google.gson.JsonParser;
 import com.ibm.cloud.is.vpc.v1.model.EncryptionKeyIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.ImageIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.InstancePlacementTargetPrototypeDedicatedHostIdentityDedicatedHostIdentityById;
@@ -195,7 +196,7 @@ public class InstancePrototypeInstanceByImageTest {
     assertEquals(instancePrototypeInstanceByImageModelNew.totalVolumeBandwidth(), Long.valueOf("500"));
     assertEquals(instancePrototypeInstanceByImageModelNew.userData(), "testString");
     assertEquals(instancePrototypeInstanceByImageModelNew.vpc().toString(), vpcIdentityModel.toString());
-    assertEquals(instancePrototypeInstanceByImageModelNew.bootVolumeAttachment().toString(), volumeAttachmentPrototypeInstanceByImageContextModel.toString());
+    assertEquals(JsonParser.parseString(instancePrototypeInstanceByImageModelNew.bootVolumeAttachment().toString()), JsonParser.parseString(volumeAttachmentPrototypeInstanceByImageContextModel.toString()));
     assertEquals(instancePrototypeInstanceByImageModelNew.image().toString(), imageIdentityModel.toString());
     assertEquals(instancePrototypeInstanceByImageModelNew.primaryNetworkInterface().toString(), networkInterfacePrototypeModel.toString());
     assertEquals(instancePrototypeInstanceByImageModelNew.zone().toString(), zoneIdentityModel.toString());

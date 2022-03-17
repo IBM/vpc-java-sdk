@@ -13,6 +13,7 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.google.gson.JsonParser;
 import com.ibm.cloud.is.vpc.v1.model.EncryptionKeyIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.ImageIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.InstancePlacementTargetPrototypeDedicatedHostIdentityDedicatedHostIdentityById;
@@ -203,7 +204,7 @@ public class InstancePrototypeInstanceBySourceTemplateTest {
     assertEquals(instancePrototypeInstanceBySourceTemplateModelNew.totalVolumeBandwidth(), Long.valueOf("500"));
     assertEquals(instancePrototypeInstanceBySourceTemplateModelNew.userData(), "testString");
     assertEquals(instancePrototypeInstanceBySourceTemplateModelNew.vpc().toString(), vpcIdentityModel.toString());
-    assertEquals(instancePrototypeInstanceBySourceTemplateModelNew.bootVolumeAttachment().toString(), volumeAttachmentPrototypeInstanceByImageContextModel.toString());
+    assertEquals(JsonParser.parseString(instancePrototypeInstanceBySourceTemplateModelNew.bootVolumeAttachment().toString()), JsonParser.parseString(volumeAttachmentPrototypeInstanceByImageContextModel.toString()));
     assertEquals(instancePrototypeInstanceBySourceTemplateModelNew.image().toString(), imageIdentityModel.toString());
     assertEquals(instancePrototypeInstanceBySourceTemplateModelNew.primaryNetworkInterface().toString(), networkInterfacePrototypeModel.toString());
     assertEquals(instancePrototypeInstanceBySourceTemplateModelNew.sourceTemplate().toString(), instanceTemplateIdentityModel.toString());

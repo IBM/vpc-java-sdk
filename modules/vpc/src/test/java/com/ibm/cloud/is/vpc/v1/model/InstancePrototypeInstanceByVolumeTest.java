@@ -13,6 +13,7 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.google.gson.JsonParser;
 import com.ibm.cloud.is.vpc.v1.model.EncryptionKeyIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.InstancePlacementTargetPrototypeDedicatedHostIdentityDedicatedHostIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileIdentityByName;
@@ -195,7 +196,7 @@ public class InstancePrototypeInstanceByVolumeTest {
     assertEquals(instancePrototypeInstanceByVolumeModelNew.totalVolumeBandwidth(), Long.valueOf("500"));
     assertEquals(instancePrototypeInstanceByVolumeModelNew.userData(), "testString");
     assertEquals(instancePrototypeInstanceByVolumeModelNew.vpc().toString(), vpcIdentityModel.toString());
-    assertEquals(instancePrototypeInstanceByVolumeModelNew.bootVolumeAttachment().toString(), volumeAttachmentPrototypeInstanceByVolumeContextModel.toString());
+    assertEquals(JsonParser.parseString(instancePrototypeInstanceByVolumeModelNew.bootVolumeAttachment().toString()), JsonParser.parseString(volumeAttachmentPrototypeInstanceByVolumeContextModel.toString()));
     assertEquals(instancePrototypeInstanceByVolumeModelNew.primaryNetworkInterface().toString(), networkInterfacePrototypeModel.toString());
     assertEquals(instancePrototypeInstanceByVolumeModelNew.zone().toString(), zoneIdentityModel.toString());
   }
