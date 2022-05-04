@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -24,9 +24,13 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class LoadBalancerListener extends GenericModel {
 
   /**
-   * The listener protocol. Load balancers in the `network` family support `tcp`. Load balancers in the `application`
-   * family support `tcp`, `http`, and `https`. Each listener in the load balancer must have a unique `port` and
-   * `protocol` combination.
+   * The listener protocol. Load balancers in the `network` family support `tcp` and
+   * `udp` (if `udp_supported` is `true`). Load balancers in the `application` family support `tcp`, `http`, and
+   * `https`. Each listener in the load balancer must have a unique `port` and `protocol` combination.
+   *
+   * The enumerated values for this property are expected to expand in the future. When processing this property, check
+   * for and log unknown values. Optionally halt processing and surface the error, or bypass the listener on which the
+   * unexpected property value was encountered.
    */
   public interface Protocol {
     /** http. */
@@ -35,6 +39,8 @@ public class LoadBalancerListener extends GenericModel {
     String HTTPS = "https";
     /** tcp. */
     String TCP = "tcp";
+    /** udp. */
+    String UDP = "udp";
   }
 
   /**
@@ -132,7 +138,7 @@ public class LoadBalancerListener extends GenericModel {
   /**
    * Gets the defaultPool.
    *
-   * The default pool associated with the listener.
+   * The default pool for this listener. If absent, this listener has no default pool.
    *
    * @return the defaultPool
    */
@@ -187,8 +193,7 @@ public class LoadBalancerListener extends GenericModel {
   /**
    * Gets the port.
    *
-   * The listener port number, or the inclusive lower bound of the port range. Each listener in the load balancer must
-   * have a unique `port` and `protocol` combination.
+   * The listener port number, or the inclusive lower bound of the port range.
    *
    * @return the port
    */
@@ -201,7 +206,7 @@ public class LoadBalancerListener extends GenericModel {
    *
    * The inclusive upper bound of the range of ports used by this listener.
    *
-   * Only load balancers in the `network` family support more than one port per listener.
+   * At present, only load balancers in the `network` family support more than one port per listener.
    *
    * @return the portMax
    */
@@ -214,7 +219,7 @@ public class LoadBalancerListener extends GenericModel {
    *
    * The inclusive lower bound of the range of ports used by this listener.
    *
-   * Only load balancers in the `network` family support more than one port per listener.
+   * At present, only load balancers in the `network` family support more than one port per listener.
    *
    * @return the portMin
    */
@@ -225,9 +230,13 @@ public class LoadBalancerListener extends GenericModel {
   /**
    * Gets the protocol.
    *
-   * The listener protocol. Load balancers in the `network` family support `tcp`. Load balancers in the `application`
-   * family support `tcp`, `http`, and `https`. Each listener in the load balancer must have a unique `port` and
-   * `protocol` combination.
+   * The listener protocol. Load balancers in the `network` family support `tcp` and
+   * `udp` (if `udp_supported` is `true`). Load balancers in the `application` family support `tcp`, `http`, and
+   * `https`. Each listener in the load balancer must have a unique `port` and `protocol` combination.
+   *
+   * The enumerated values for this property are expected to expand in the future. When processing this property, check
+   * for and log unknown values. Optionally halt processing and surface the error, or bypass the listener on which the
+   * unexpected property value was encountered.
    *
    * @return the protocol
    */

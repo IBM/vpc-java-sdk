@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -54,9 +54,9 @@ public class VPNGatewayMember extends GenericModel {
   /**
    * Gets the privateIp.
    *
-   * The private IP address assigned to the VPN gateway member. This
-   * property will be present only when the VPN gateway status is
-   * `available`.
+   * The private IP address assigned to the VPN gateway member.
+   *
+   * This property will be present only when the VPN gateway status is `available`.
    *
    * @return the privateIp
    */

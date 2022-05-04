@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -90,7 +90,8 @@ public class SubnetPrototype extends GenericModel {
   /**
    * Gets the publicGateway.
    *
-   * The public gateway to handle internet bound traffic for this subnet.
+   * The public gateway to use for internet-bound traffic for this subnet. If
+   * unspecified, the subnet will not be attached to a public gateway.
    *
    * @return the publicGateway
    */
@@ -162,8 +163,9 @@ public class SubnetPrototype extends GenericModel {
    *
    * The IPv4 range of the subnet, expressed in CIDR format. The prefix length of the subnet's CIDR must be between `/9`
    * (8,388,608 addresses) and `/29` (8 addresses). The IPv4 range of the subnet's CIDR must fall within an existing
-   * address prefix in the VPC. The subnet will be created in the zone of the address prefix that contains the IPv4
-   * CIDR. If zone is specified, it must match the zone of the address prefix that contains the subnet's IPv4 CIDR.
+   * address prefix in the VPC and must not overlap with any existing subnet. The subnet will be created in the zone of
+   * the address prefix that contains the IPv4 CIDR. If zone is specified, it must match the zone of the address prefix
+   * that contains the subnet's IPv4 CIDR.
    *
    * @return the ipv4CidrBlock
    */

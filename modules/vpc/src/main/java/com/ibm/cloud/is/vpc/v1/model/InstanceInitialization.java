@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -14,6 +14,7 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 import java.util.List;
 
+import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
@@ -21,8 +22,22 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class InstanceInitialization extends GenericModel {
 
+  @SerializedName("default_trusted_profile")
+  protected InstanceInitializationDefaultTrustedProfile defaultTrustedProfile;
   protected List<KeyReference> keys;
   protected InstanceInitializationPassword password;
+
+  /**
+   * Gets the defaultTrustedProfile.
+   *
+   * The default trusted profile configuration specified at virtual server instance
+   * creation. If absent, no default trusted profile was specified.
+   *
+   * @return the defaultTrustedProfile
+   */
+  public InstanceInitializationDefaultTrustedProfile getDefaultTrustedProfile() {
+    return defaultTrustedProfile;
+  }
 
   /**
    * Gets the keys.

@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -11,6 +11,8 @@
  * specific language governing permissions and limitations under the License.
  */
 package com.ibm.cloud.is.vpc.v1.model;
+
+import java.util.List;
 
 import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
@@ -28,6 +30,8 @@ public class VolumePrototype extends GenericModel {
   protected VolumeProfileIdentity profile;
   @SerializedName("resource_group")
   protected ResourceGroupIdentity resourceGroup;
+  @SerializedName("user_tags")
+  protected List<String> userTags;
   protected ZoneIdentity zone;
   protected Long capacity;
   @SerializedName("encryption_key")
@@ -80,6 +84,17 @@ public class VolumePrototype extends GenericModel {
    */
   public ResourceGroupIdentity resourceGroup() {
     return resourceGroup;
+  }
+
+  /**
+   * Gets the userTags.
+   *
+   * Tags for this resource.
+   *
+   * @return the userTags
+   */
+  public List<String> userTags() {
+    return userTags;
   }
 
   /**

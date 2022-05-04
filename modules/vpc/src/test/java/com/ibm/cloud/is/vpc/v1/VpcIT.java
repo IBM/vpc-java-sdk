@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -14,9 +14,9 @@
 package com.ibm.cloud.is.vpc.v1;
 
 import com.ibm.cloud.is.test.SdkIntegrationTestBase;
+import com.ibm.cloud.is.vpc.v1.model.AddBareMetalServerNetworkInterfaceFloatingIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.AddEndpointGatewayIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.AddInstanceNetworkInterfaceFloatingIpOptions;
-import com.ibm.cloud.is.vpc.v1.model.AddSecurityGroupNetworkInterfaceOptions;
 import com.ibm.cloud.is.vpc.v1.model.AddVpnGatewayConnectionLocalCidrOptions;
 import com.ibm.cloud.is.vpc.v1.model.AddVpnGatewayConnectionPeerCidrOptions;
 import com.ibm.cloud.is.vpc.v1.model.AddressPrefix;
@@ -24,14 +24,87 @@ import com.ibm.cloud.is.vpc.v1.model.AddressPrefixCollection;
 import com.ibm.cloud.is.vpc.v1.model.AddressPrefixCollectionFirst;
 import com.ibm.cloud.is.vpc.v1.model.AddressPrefixCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.AddressPrefixPatch;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServer;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerBootTarget;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerBootTargetBareMetalServerDiskReference;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerCPU;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerCollection;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerCollectionFirst;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerCollectionNext;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerConsoleAccessToken;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerDisk;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerDiskCollection;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerDiskPatch;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerDiskReferenceDeleted;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerInitialization;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerInitializationPrototype;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerInitializationUserAccount;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerInitializationUserAccountBareMetalServerInitializationHostUserAccount;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkInterface;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkInterfaceByPCI;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkInterfaceByVLAN;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkInterfaceCollection;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkInterfaceCollectionFirst;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkInterfaceCollectionNext;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkInterfacePatch;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkInterfacePrototype;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByPCIPrototype;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVLANPrototype;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerPatch;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerPrimaryNetworkInterfacePrototype;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfile;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileBandwidth;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileBandwidthDependent;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileBandwidthEnum;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileBandwidthFixed;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileBandwidthRange;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileCPUArchitecture;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileCPUCoreCount;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileCPUCoreCountDependent;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileCPUCoreCountEnum;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileCPUCoreCountFixed;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileCPUCoreCountRange;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileCPUSocketCount;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileCPUSocketCountDependent;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileCPUSocketCountEnum;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileCPUSocketCountFixed;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileCPUSocketCountRange;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileCollection;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileCollectionFirst;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileCollectionNext;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileDisk;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileDiskQuantity;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileDiskQuantityDependent;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileDiskQuantityEnum;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileDiskQuantityFixed;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileDiskQuantityRange;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileDiskSize;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileDiskSizeDependent;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileDiskSizeEnum;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileDiskSizeFixed;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileDiskSizeRange;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileDiskSupportedInterfaces;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileIdentity;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileIdentityByHref;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileIdentityByName;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileMemory;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileMemoryDependent;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileMemoryEnum;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileMemoryFixed;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileMemoryRange;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileOSArchitecture;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileReference;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileSupportedTrustedPlatformModuleModes;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerStatusReason;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerTrustedPlatformModule;
 import com.ibm.cloud.is.vpc.v1.model.CertificateInstanceIdentity;
 import com.ibm.cloud.is.vpc.v1.model.CertificateInstanceIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.CertificateInstanceReference;
 import com.ibm.cloud.is.vpc.v1.model.CheckVpnGatewayConnectionLocalCidrOptions;
 import com.ibm.cloud.is.vpc.v1.model.CheckVpnGatewayConnectionPeerCidrOptions;
-import com.ibm.cloud.is.vpc.v1.model.CloudObjectStorageBucketIdentity;
-import com.ibm.cloud.is.vpc.v1.model.CloudObjectStorageBucketIdentityByName;
-import com.ibm.cloud.is.vpc.v1.model.CloudObjectStorageBucketReference;
+import com.ibm.cloud.is.vpc.v1.model.CreateBareMetalServerConsoleAccessTokenOptions;
+import com.ibm.cloud.is.vpc.v1.model.CreateBareMetalServerNetworkInterfaceOptions;
+import com.ibm.cloud.is.vpc.v1.model.CreateBareMetalServerOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateDedicatedHostGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateDedicatedHostOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateEndpointGatewayOptions;
@@ -132,6 +205,8 @@ import com.ibm.cloud.is.vpc.v1.model.DedicatedHostReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.DefaultNetworkACL;
 import com.ibm.cloud.is.vpc.v1.model.DefaultRoutingTable;
 import com.ibm.cloud.is.vpc.v1.model.DefaultSecurityGroup;
+import com.ibm.cloud.is.vpc.v1.model.DeleteBareMetalServerNetworkInterfaceOptions;
+import com.ibm.cloud.is.vpc.v1.model.DeleteBareMetalServerOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteDedicatedHostGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteDedicatedHostOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteEndpointGatewayOptions;
@@ -207,9 +282,6 @@ import com.ibm.cloud.is.vpc.v1.model.FloatingIPCollection;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPCollectionFirst;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPPatch;
-import com.ibm.cloud.is.vpc.v1.model.FloatingIPPatchTargetNetworkInterfaceIdentity;
-import com.ibm.cloud.is.vpc.v1.model.FloatingIPPatchTargetNetworkInterfaceIdentityNetworkInterfaceIdentityByHref;
-import com.ibm.cloud.is.vpc.v1.model.FloatingIPPatchTargetNetworkInterfaceIdentityNetworkInterfaceIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPPrototype;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPPrototypeFloatingIPByTarget;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPPrototypeFloatingIPByZone;
@@ -217,6 +289,9 @@ import com.ibm.cloud.is.vpc.v1.model.FloatingIPReference;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPTarget;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPTargetNetworkInterfaceReference;
+import com.ibm.cloud.is.vpc.v1.model.FloatingIPTargetPatch;
+import com.ibm.cloud.is.vpc.v1.model.FloatingIPTargetPatchNetworkInterfaceIdentityByHref;
+import com.ibm.cloud.is.vpc.v1.model.FloatingIPTargetPatchNetworkInterfaceIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPTargetPublicGatewayReference;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPUnpaginatedCollection;
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollector;
@@ -245,6 +320,14 @@ import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorTargetPrototypeVPCIdentityV
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorTargetPrototypeVPCIdentityVPCIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorTargetSubnetReference;
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorTargetVPCReference;
+import com.ibm.cloud.is.vpc.v1.model.GenericResourceReferenceDeleted;
+import com.ibm.cloud.is.vpc.v1.model.GetBareMetalServerDiskOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetBareMetalServerInitializationOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetBareMetalServerNetworkInterfaceFloatingIpOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetBareMetalServerNetworkInterfaceIpOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetBareMetalServerNetworkInterfaceOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetBareMetalServerOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetBareMetalServerProfileOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetDedicatedHostDiskOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetDedicatedHostGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetDedicatedHostOptions;
@@ -263,6 +346,7 @@ import com.ibm.cloud.is.vpc.v1.model.GetInstanceGroupMembershipOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetInstanceGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetInstanceInitializationOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetInstanceNetworkInterfaceFloatingIpOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetInstanceNetworkInterfaceIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetInstanceNetworkInterfaceOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetInstanceOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetInstanceProfileOptions;
@@ -285,7 +369,6 @@ import com.ibm.cloud.is.vpc.v1.model.GetPlacementGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetPublicGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetRegionOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetRegionZoneOptions;
-import com.ibm.cloud.is.vpc.v1.model.GetSecurityGroupNetworkInterfaceOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetSecurityGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetSecurityGroupRuleOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetSecurityGroupTargetOptions;
@@ -342,10 +425,14 @@ import com.ibm.cloud.is.vpc.v1.model.ImageReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.ImageStatusReason;
 import com.ibm.cloud.is.vpc.v1.model.Instance;
 import com.ibm.cloud.is.vpc.v1.model.InstanceAction;
+import com.ibm.cloud.is.vpc.v1.model.InstanceAvailabilityPolicy;
+import com.ibm.cloud.is.vpc.v1.model.InstanceAvailabilityPolicyPatch;
+import com.ibm.cloud.is.vpc.v1.model.InstanceAvailabilityPrototype;
 import com.ibm.cloud.is.vpc.v1.model.InstanceCollection;
 import com.ibm.cloud.is.vpc.v1.model.InstanceCollectionFirst;
 import com.ibm.cloud.is.vpc.v1.model.InstanceCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.InstanceConsoleAccessToken;
+import com.ibm.cloud.is.vpc.v1.model.InstanceDefaultTrustedProfilePrototype;
 import com.ibm.cloud.is.vpc.v1.model.InstanceDisk;
 import com.ibm.cloud.is.vpc.v1.model.InstanceDiskCollection;
 import com.ibm.cloud.is.vpc.v1.model.InstanceDiskPatch;
@@ -415,7 +502,11 @@ import com.ibm.cloud.is.vpc.v1.model.InstanceGroupPatch;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.InstanceInitialization;
+import com.ibm.cloud.is.vpc.v1.model.InstanceInitializationDefaultTrustedProfile;
 import com.ibm.cloud.is.vpc.v1.model.InstanceInitializationPassword;
+import com.ibm.cloud.is.vpc.v1.model.InstanceMetadataService;
+import com.ibm.cloud.is.vpc.v1.model.InstanceMetadataServicePatch;
+import com.ibm.cloud.is.vpc.v1.model.InstanceMetadataServicePrototype;
 import com.ibm.cloud.is.vpc.v1.model.InstancePatch;
 import com.ibm.cloud.is.vpc.v1.model.InstancePatchProfile;
 import com.ibm.cloud.is.vpc.v1.model.InstancePatchProfileInstanceProfileIdentityByHref;
@@ -423,6 +514,15 @@ import com.ibm.cloud.is.vpc.v1.model.InstancePatchProfileInstanceProfileIdentity
 import com.ibm.cloud.is.vpc.v1.model.InstancePlacementTarget;
 import com.ibm.cloud.is.vpc.v1.model.InstancePlacementTargetDedicatedHostGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.InstancePlacementTargetDedicatedHostReference;
+import com.ibm.cloud.is.vpc.v1.model.InstancePlacementTargetPatch;
+import com.ibm.cloud.is.vpc.v1.model.InstancePlacementTargetPatchDedicatedHostGroupIdentity;
+import com.ibm.cloud.is.vpc.v1.model.InstancePlacementTargetPatchDedicatedHostGroupIdentityDedicatedHostGroupIdentityByCRN;
+import com.ibm.cloud.is.vpc.v1.model.InstancePlacementTargetPatchDedicatedHostGroupIdentityDedicatedHostGroupIdentityByHref;
+import com.ibm.cloud.is.vpc.v1.model.InstancePlacementTargetPatchDedicatedHostGroupIdentityDedicatedHostGroupIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.InstancePlacementTargetPatchDedicatedHostIdentity;
+import com.ibm.cloud.is.vpc.v1.model.InstancePlacementTargetPatchDedicatedHostIdentityDedicatedHostIdentityByCRN;
+import com.ibm.cloud.is.vpc.v1.model.InstancePlacementTargetPatchDedicatedHostIdentityDedicatedHostIdentityByHref;
+import com.ibm.cloud.is.vpc.v1.model.InstancePlacementTargetPatchDedicatedHostIdentityDedicatedHostIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.InstancePlacementTargetPlacementGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.InstancePlacementTargetPrototype;
 import com.ibm.cloud.is.vpc.v1.model.InstancePlacementTargetPrototypeDedicatedHostGroupIdentity;
@@ -494,8 +594,8 @@ import com.ibm.cloud.is.vpc.v1.model.InstanceProfileVolumeBandwidthFixed;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileVolumeBandwidthRange;
 import com.ibm.cloud.is.vpc.v1.model.InstancePrototype;
 import com.ibm.cloud.is.vpc.v1.model.InstancePrototypeInstanceByImage;
+import com.ibm.cloud.is.vpc.v1.model.InstancePrototypeInstanceBySourceSnapshot;
 import com.ibm.cloud.is.vpc.v1.model.InstancePrototypeInstanceBySourceTemplate;
-import com.ibm.cloud.is.vpc.v1.model.InstancePrototypeInstanceByVolume;
 import com.ibm.cloud.is.vpc.v1.model.InstanceReference;
 import com.ibm.cloud.is.vpc.v1.model.InstanceReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.InstanceStatusReason;
@@ -508,12 +608,10 @@ import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateIdentityByHref;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateInstanceByImage;
-import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateInstanceByVolume;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplatePatch;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplatePrototype;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplatePrototypeInstanceByImage;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplatePrototypeInstanceBySourceTemplate;
-import com.ibm.cloud.is.vpc.v1.model.InstanceTemplatePrototypeInstanceByVolume;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateReference;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.InstanceVCPU;
@@ -529,6 +627,15 @@ import com.ibm.cloud.is.vpc.v1.model.KeyIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.KeyPatch;
 import com.ibm.cloud.is.vpc.v1.model.KeyReference;
 import com.ibm.cloud.is.vpc.v1.model.KeyReferenceDeleted;
+import com.ibm.cloud.is.vpc.v1.model.LegacyCloudObjectStorageBucketIdentity;
+import com.ibm.cloud.is.vpc.v1.model.LegacyCloudObjectStorageBucketIdentityCloudObjectStorageBucketIdentityByName;
+import com.ibm.cloud.is.vpc.v1.model.LegacyCloudObjectStorageBucketReference;
+import com.ibm.cloud.is.vpc.v1.model.ListBareMetalServerDisksOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListBareMetalServerNetworkInterfaceFloatingIpsOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListBareMetalServerNetworkInterfaceIpsOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListBareMetalServerNetworkInterfacesOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListBareMetalServerProfilesOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListBareMetalServersOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListDedicatedHostDisksOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListDedicatedHostGroupsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListDedicatedHostProfilesOptions;
@@ -547,6 +654,7 @@ import com.ibm.cloud.is.vpc.v1.model.ListInstanceGroupManagersOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListInstanceGroupMembershipsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListInstanceGroupsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListInstanceNetworkInterfaceFloatingIpsOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListInstanceNetworkInterfaceIpsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListInstanceNetworkInterfacesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListInstanceProfilesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListInstanceTemplatesOptions;
@@ -569,7 +677,6 @@ import com.ibm.cloud.is.vpc.v1.model.ListPlacementGroupsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListPublicGatewaysOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListRegionZonesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListRegionsOptions;
-import com.ibm.cloud.is.vpc.v1.model.ListSecurityGroupNetworkInterfacesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListSecurityGroupRulesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListSecurityGroupTargetsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListSecurityGroupsOptions;
@@ -669,6 +776,7 @@ import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolSessionPersistence;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolSessionPersistencePatch;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolSessionPersistencePrototype;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPrivateIpsItem;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfile;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileCollection;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileCollectionFirst;
@@ -684,6 +792,9 @@ import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileRouteModeSupportedFixed;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileSecurityGroupsSupported;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileSecurityGroupsSupportedDependent;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileSecurityGroupsSupportedFixed;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileUDPSupported;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileUDPSupportedDependent;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileUDPSupportedFixed;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerStatistics;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACL;
@@ -729,14 +840,17 @@ import com.ibm.cloud.is.vpc.v1.model.NetworkACLRulePrototypeNetworkACLRuleProtoc
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLRuleReference;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLRuleReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.NetworkInterface;
-import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceCollection;
-import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceCollectionNext;
+import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceBareMetalServerContextReference;
+import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceBareMetalServerContextReferenceDeleted;
+import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceIPPrototype;
+import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceIPPrototypeReservedIPIdentity;
+import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceIPPrototypeReservedIPIdentityReservedIPIdentityByHref;
+import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceIPPrototypeReservedIPIdentityReservedIPIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceIPPrototypeReservedIPPrototypeNetworkInterfaceContext;
 import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceInstanceContextReference;
 import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceInstanceContextReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.NetworkInterfacePatch;
 import com.ibm.cloud.is.vpc.v1.model.NetworkInterfacePrototype;
-import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceReference;
 import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceReferenceTargetContextDeleted;
 import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceUnpaginatedCollection;
@@ -767,18 +881,18 @@ import com.ibm.cloud.is.vpc.v1.model.PublicGatewayFloatingIPPrototypeFloatingIPI
 import com.ibm.cloud.is.vpc.v1.model.PublicGatewayFloatingIPPrototypeFloatingIPPrototypeTargetContext;
 import com.ibm.cloud.is.vpc.v1.model.PublicGatewayFloatingIp;
 import com.ibm.cloud.is.vpc.v1.model.PublicGatewayIdentity;
-import com.ibm.cloud.is.vpc.v1.model.PublicGatewayIdentityByCRN;
-import com.ibm.cloud.is.vpc.v1.model.PublicGatewayIdentityByHref;
-import com.ibm.cloud.is.vpc.v1.model.PublicGatewayIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.PublicGatewayIdentityPublicGatewayIdentityByCRN;
+import com.ibm.cloud.is.vpc.v1.model.PublicGatewayIdentityPublicGatewayIdentityByHref;
+import com.ibm.cloud.is.vpc.v1.model.PublicGatewayIdentityPublicGatewayIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.PublicGatewayPatch;
 import com.ibm.cloud.is.vpc.v1.model.PublicGatewayReference;
 import com.ibm.cloud.is.vpc.v1.model.PublicGatewayReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.Region;
 import com.ibm.cloud.is.vpc.v1.model.RegionCollection;
 import com.ibm.cloud.is.vpc.v1.model.RegionReference;
+import com.ibm.cloud.is.vpc.v1.model.RemoveBareMetalServerNetworkInterfaceFloatingIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.RemoveEndpointGatewayIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.RemoveInstanceNetworkInterfaceFloatingIpOptions;
-import com.ibm.cloud.is.vpc.v1.model.RemoveSecurityGroupNetworkInterfaceOptions;
 import com.ibm.cloud.is.vpc.v1.model.RemoveVpnGatewayConnectionLocalCidrOptions;
 import com.ibm.cloud.is.vpc.v1.model.RemoveVpnGatewayConnectionPeerCidrOptions;
 import com.ibm.cloud.is.vpc.v1.model.ReplaceLoadBalancerPoolMembersOptions;
@@ -790,20 +904,28 @@ import com.ibm.cloud.is.vpc.v1.model.ReservedIPCollectionEndpointGatewayContext;
 import com.ibm.cloud.is.vpc.v1.model.ReservedIPCollectionEndpointGatewayContextFirst;
 import com.ibm.cloud.is.vpc.v1.model.ReservedIPCollectionEndpointGatewayContextNext;
 import com.ibm.cloud.is.vpc.v1.model.ReservedIPCollectionFirst;
+import com.ibm.cloud.is.vpc.v1.model.ReservedIPCollectionNetworkInterfaceContext;
+import com.ibm.cloud.is.vpc.v1.model.ReservedIPCollectionNetworkInterfaceContextFirst;
+import com.ibm.cloud.is.vpc.v1.model.ReservedIPCollectionNetworkInterfaceContextNext;
 import com.ibm.cloud.is.vpc.v1.model.ReservedIPCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.ReservedIPPatch;
 import com.ibm.cloud.is.vpc.v1.model.ReservedIPReference;
 import com.ibm.cloud.is.vpc.v1.model.ReservedIPReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.ReservedIPTarget;
 import com.ibm.cloud.is.vpc.v1.model.ReservedIPTargetEndpointGatewayReference;
+import com.ibm.cloud.is.vpc.v1.model.ReservedIPTargetGenericResourceReference;
+import com.ibm.cloud.is.vpc.v1.model.ReservedIPTargetLoadBalancerReference;
+import com.ibm.cloud.is.vpc.v1.model.ReservedIPTargetNetworkInterfaceReferenceTargetContext;
 import com.ibm.cloud.is.vpc.v1.model.ReservedIPTargetPrototype;
 import com.ibm.cloud.is.vpc.v1.model.ReservedIPTargetPrototypeEndpointGatewayIdentity;
 import com.ibm.cloud.is.vpc.v1.model.ReservedIPTargetPrototypeEndpointGatewayIdentityEndpointGatewayIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.ReservedIPTargetPrototypeEndpointGatewayIdentityEndpointGatewayIdentityByHref;
 import com.ibm.cloud.is.vpc.v1.model.ReservedIPTargetPrototypeEndpointGatewayIdentityEndpointGatewayIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.ReservedIPTargetVPNGatewayReference;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupIdentity;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;
+import com.ibm.cloud.is.vpc.v1.model.RestartBareMetalServerOptions;
 import com.ibm.cloud.is.vpc.v1.model.Route;
 import com.ibm.cloud.is.vpc.v1.model.RouteCollection;
 import com.ibm.cloud.is.vpc.v1.model.RouteCollectionFirst;
@@ -873,6 +995,7 @@ import com.ibm.cloud.is.vpc.v1.model.SecurityGroupTargetCollection;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupTargetCollectionFirst;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupTargetCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupTargetReference;
+import com.ibm.cloud.is.vpc.v1.model.SecurityGroupTargetReferenceEndpointGatewayReference;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupTargetReferenceLoadBalancerReference;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupTargetReferenceNetworkInterfaceReferenceTargetContext;
 import com.ibm.cloud.is.vpc.v1.model.SetSubnetPublicGatewayOptions;
@@ -885,8 +1008,12 @@ import com.ibm.cloud.is.vpc.v1.model.SnapshotIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotIdentityByHref;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotPatch;
+import com.ibm.cloud.is.vpc.v1.model.SnapshotPrototype;
+import com.ibm.cloud.is.vpc.v1.model.SnapshotPrototypeSnapshotBySourceVolume;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotReference;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotReferenceDeleted;
+import com.ibm.cloud.is.vpc.v1.model.StartBareMetalServerOptions;
+import com.ibm.cloud.is.vpc.v1.model.StopBareMetalServerOptions;
 import com.ibm.cloud.is.vpc.v1.model.Subnet;
 import com.ibm.cloud.is.vpc.v1.model.SubnetCollection;
 import com.ibm.cloud.is.vpc.v1.model.SubnetCollectionFirst;
@@ -899,9 +1026,20 @@ import com.ibm.cloud.is.vpc.v1.model.SubnetPatch;
 import com.ibm.cloud.is.vpc.v1.model.SubnetPrototype;
 import com.ibm.cloud.is.vpc.v1.model.SubnetPrototypeSubnetByCIDR;
 import com.ibm.cloud.is.vpc.v1.model.SubnetPrototypeSubnetByTotalCount;
+import com.ibm.cloud.is.vpc.v1.model.SubnetPublicGatewayPatch;
+import com.ibm.cloud.is.vpc.v1.model.SubnetPublicGatewayPatchPublicGatewayIdentityByCRN;
+import com.ibm.cloud.is.vpc.v1.model.SubnetPublicGatewayPatchPublicGatewayIdentityByHref;
+import com.ibm.cloud.is.vpc.v1.model.SubnetPublicGatewayPatchPublicGatewayIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.SubnetReference;
 import com.ibm.cloud.is.vpc.v1.model.SubnetReferenceDeleted;
+import com.ibm.cloud.is.vpc.v1.model.TrustedProfileIdentity;
+import com.ibm.cloud.is.vpc.v1.model.TrustedProfileIdentityTrustedProfileByCRN;
+import com.ibm.cloud.is.vpc.v1.model.TrustedProfileIdentityTrustedProfileById;
+import com.ibm.cloud.is.vpc.v1.model.TrustedProfileReference;
 import com.ibm.cloud.is.vpc.v1.model.UnsetSubnetPublicGatewayOptions;
+import com.ibm.cloud.is.vpc.v1.model.UpdateBareMetalServerDiskOptions;
+import com.ibm.cloud.is.vpc.v1.model.UpdateBareMetalServerNetworkInterfaceOptions;
+import com.ibm.cloud.is.vpc.v1.model.UpdateBareMetalServerOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateDedicatedHostDiskOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateDedicatedHostGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateDedicatedHostOptions;
@@ -997,6 +1135,7 @@ import com.ibm.cloud.is.vpc.v1.model.VPNGatewayPolicyMode;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayPrototype;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayPrototypeVPNGatewayPolicyModePrototype;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayPrototypeVPNGatewayRouteModePrototype;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayRouteMode;
 import com.ibm.cloud.is.vpc.v1.model.Volume;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachment;
@@ -1004,7 +1143,7 @@ import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentCollection;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentDevice;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPatch;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototypeInstanceByImageContext;
-import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototypeInstanceByVolumeContext;
+import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototypeInstanceBySourceSnapshotContext;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototypeInstanceContext;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototypeVolume;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototypeVolumeVolumeIdentity;
@@ -1018,8 +1157,6 @@ import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentReferenceInstanceContext;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentReferenceInstanceContextDeleted;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentReferenceVolumeContext;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentReferenceVolumeContextDeleted;
-import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentVolumePrototypeInstanceByVolumeContext;
-import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentVolumePrototypeInstanceByVolumeContextVolumePrototypeInstanceByVolumeContext;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentVolumePrototypeInstanceContext;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentVolumePrototypeInstanceContextVolumeIdentity;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentVolumePrototypeInstanceContextVolumeIdentityVolumeIdentityByCRN;
@@ -1046,6 +1183,7 @@ import com.ibm.cloud.is.vpc.v1.model.VolumeProfileIdentityByName;
 import com.ibm.cloud.is.vpc.v1.model.VolumeProfileReference;
 import com.ibm.cloud.is.vpc.v1.model.VolumePrototype;
 import com.ibm.cloud.is.vpc.v1.model.VolumePrototypeInstanceByImageContext;
+import com.ibm.cloud.is.vpc.v1.model.VolumePrototypeInstanceBySourceSnapshotContext;
 import com.ibm.cloud.is.vpc.v1.model.VolumePrototypeVolumeByCapacity;
 import com.ibm.cloud.is.vpc.v1.model.VolumeReference;
 import com.ibm.cloud.is.vpc.v1.model.VolumeReferenceDeleted;
@@ -1986,7 +2124,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       .id("a4e28308-8ee7-46ab-8108-9f881f22bdbf")
       .build();
 
-      PublicGatewayIdentityById publicGatewayIdentityModel = new PublicGatewayIdentityById.Builder()
+      PublicGatewayIdentityPublicGatewayIdentityById publicGatewayIdentityModel = new PublicGatewayIdentityPublicGatewayIdentityById.Builder()
       .id("dc5431ef-1fc6-4861-adc9-a59d077d1241")
       .build();
 
@@ -2085,7 +2223,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       .id("a4e28308-8ee7-46ab-8108-9f881f22bdbf")
       .build();
 
-      PublicGatewayIdentityById publicGatewayIdentityModel = new PublicGatewayIdentityById.Builder()
+      SubnetPublicGatewayPatchPublicGatewayIdentityById subnetPublicGatewayPatchModel = new SubnetPublicGatewayPatchPublicGatewayIdentityById.Builder()
       .id("dc5431ef-1fc6-4861-adc9-a59d077d1241")
       .build();
 
@@ -2096,7 +2234,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       SubnetPatch subnetPatchModel = new SubnetPatch.Builder()
       .name("my-subnet")
       .networkAcl(networkAclIdentityModel)
-      .publicGateway(publicGatewayIdentityModel)
+      .publicGateway(subnetPublicGatewayPatchModel)
       .routingTable(routingTableIdentityModel)
       .build();
       Map<String, Object> subnetPatchModelAsPatch = subnetPatchModel.asPatch();
@@ -2233,7 +2371,7 @@ public class VpcIT extends SdkIntegrationTestBase {
   @Test
   public void testSetSubnetPublicGateway() throws Exception {
     try {
-      PublicGatewayIdentityById publicGatewayIdentityModel = new PublicGatewayIdentityById.Builder()
+      PublicGatewayIdentityPublicGatewayIdentityById publicGatewayIdentityModel = new PublicGatewayIdentityPublicGatewayIdentityById.Builder()
       .id("dc5431ef-1fc6-4861-adc9-a59d077d1241")
       .build();
 
@@ -2369,6 +2507,7 @@ public class VpcIT extends SdkIntegrationTestBase {
 
       CreateSubnetReservedIpOptions createSubnetReservedIpOptions = new CreateSubnetReservedIpOptions.Builder()
       .subnetId("testString")
+      .address("192.168.3.4")
       .autoDelete(false)
       .name("my-reserved-ip")
       .target(reservedIpTargetPrototypeModel)
@@ -2885,8 +3024,31 @@ public class VpcIT extends SdkIntegrationTestBase {
   @Test
   public void testCreateInstanceTemplate() throws Exception {
     try {
+      InstanceAvailabilityPrototype instanceAvailabilityPrototypeModel = new InstanceAvailabilityPrototype.Builder()
+      .hostFailure("restart")
+      .build();
+
+      TrustedProfileIdentityTrustedProfileById trustedProfileIdentityModel = new TrustedProfileIdentityTrustedProfileById.Builder()
+      .id("Profile-9fd84246-7df4-4667-94e4-8ecde51d5ac5")
+      .build();
+
+      InstanceDefaultTrustedProfilePrototype instanceDefaultTrustedProfilePrototypeModel = new InstanceDefaultTrustedProfilePrototype.Builder()
+      .autoLink(false)
+      .target(trustedProfileIdentityModel)
+      .build();
+
       KeyIdentityById keyIdentityModel = new KeyIdentityById.Builder()
       .id("363f6d70-0000-0001-0000-00000013b96c")
+      .build();
+
+      InstanceMetadataServicePrototype instanceMetadataServicePrototypeModel = new InstanceMetadataServicePrototype.Builder()
+      .enabled(true)
+      .build();
+
+      NetworkInterfaceIPPrototypeReservedIPPrototypeNetworkInterfaceContext networkInterfaceIpPrototypeModel = new NetworkInterfaceIPPrototypeReservedIPPrototypeNetworkInterfaceContext.Builder()
+      .address("10.0.0.5")
+      .autoDelete(false)
+      .name("my-reserved-ip")
       .build();
 
       SecurityGroupIdentityById securityGroupIdentityModel = new SecurityGroupIdentityById.Builder()
@@ -2900,7 +3062,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       NetworkInterfacePrototype networkInterfacePrototypeModel = new NetworkInterfacePrototype.Builder()
       .allowIpSpoofing(true)
       .name("my-network-interface")
-      .primaryIpv4Address("10.0.0.5")
+      .primaryIp(networkInterfaceIpPrototypeModel)
       .securityGroups(new java.util.ArrayList<SecurityGroupIdentity>(java.util.Arrays.asList(securityGroupIdentityModel)))
       .subnet(subnetIdentityModel)
       .build();
@@ -2940,7 +3102,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       .build();
 
       VolumePrototypeInstanceByImageContext volumePrototypeInstanceByImageContextModel = new VolumePrototypeInstanceByImageContext.Builder()
-      .capacity(Long.valueOf("26"))
+      .capacity(Long.valueOf("250"))
       .encryptionKey(encryptionKeyIdentityModel)
       .iops(Long.valueOf("10000"))
       .name("my-volume")
@@ -2962,7 +3124,10 @@ public class VpcIT extends SdkIntegrationTestBase {
       .build();
 
       InstanceTemplatePrototypeInstanceByImage instanceTemplatePrototypeModel = new InstanceTemplatePrototypeInstanceByImage.Builder()
+      .availabilityPolicy(instanceAvailabilityPrototypeModel)
+      .defaultTrustedProfile(instanceDefaultTrustedProfilePrototypeModel)
       .keys(new java.util.ArrayList<KeyIdentity>(java.util.Arrays.asList(keyIdentityModel)))
+      .metadataService(instanceMetadataServicePrototypeModel)
       .name("my-instance-template")
       .networkInterfaces(new java.util.ArrayList<NetworkInterfacePrototype>(java.util.Arrays.asList(networkInterfacePrototypeModel)))
       .placementTarget(instancePlacementTargetPrototypeModel)
@@ -3112,8 +3277,31 @@ public class VpcIT extends SdkIntegrationTestBase {
   @Test
   public void testCreateInstance() throws Exception {
     try {
+      InstanceAvailabilityPrototype instanceAvailabilityPrototypeModel = new InstanceAvailabilityPrototype.Builder()
+      .hostFailure("restart")
+      .build();
+
+      TrustedProfileIdentityTrustedProfileById trustedProfileIdentityModel = new TrustedProfileIdentityTrustedProfileById.Builder()
+      .id("Profile-9fd84246-7df4-4667-94e4-8ecde51d5ac5")
+      .build();
+
+      InstanceDefaultTrustedProfilePrototype instanceDefaultTrustedProfilePrototypeModel = new InstanceDefaultTrustedProfilePrototype.Builder()
+      .autoLink(false)
+      .target(trustedProfileIdentityModel)
+      .build();
+
       KeyIdentityById keyIdentityModel = new KeyIdentityById.Builder()
       .id("363f6d70-0000-0001-0000-00000013b96c")
+      .build();
+
+      InstanceMetadataServicePrototype instanceMetadataServicePrototypeModel = new InstanceMetadataServicePrototype.Builder()
+      .enabled(true)
+      .build();
+
+      NetworkInterfaceIPPrototypeReservedIPPrototypeNetworkInterfaceContext networkInterfaceIpPrototypeModel = new NetworkInterfaceIPPrototypeReservedIPPrototypeNetworkInterfaceContext.Builder()
+      .address("10.0.0.5")
+      .autoDelete(false)
+      .name("my-reserved-ip")
       .build();
 
       SecurityGroupIdentityById securityGroupIdentityModel = new SecurityGroupIdentityById.Builder()
@@ -3127,7 +3315,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       NetworkInterfacePrototype networkInterfacePrototypeModel = new NetworkInterfacePrototype.Builder()
       .allowIpSpoofing(true)
       .name("my-network-interface")
-      .primaryIpv4Address("10.0.0.5")
+      .primaryIp(networkInterfaceIpPrototypeModel)
       .securityGroups(new java.util.ArrayList<SecurityGroupIdentity>(java.util.Arrays.asList(securityGroupIdentityModel)))
       .subnet(subnetIdentityModel)
       .build();
@@ -3171,7 +3359,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       .build();
 
       VolumePrototypeInstanceByImageContext volumePrototypeInstanceByImageContextModel = new VolumePrototypeInstanceByImageContext.Builder()
-      .capacity(Long.valueOf("26"))
+      .capacity(Long.valueOf("250"))
       .encryptionKey(encryptionKeyIdentityModel)
       .iops(Long.valueOf("10000"))
       .name("my-boot-volume")
@@ -3193,7 +3381,10 @@ public class VpcIT extends SdkIntegrationTestBase {
       .build();
 
       InstancePrototypeInstanceByImage instancePrototypeModel = new InstancePrototypeInstanceByImage.Builder()
+      .availabilityPolicy(instanceAvailabilityPrototypeModel)
+      .defaultTrustedProfile(instanceDefaultTrustedProfilePrototypeModel)
       .keys(new java.util.ArrayList<KeyIdentity>(java.util.Arrays.asList(keyIdentityModel)))
+      .metadataService(instanceMetadataServicePrototypeModel)
       .name("my-instance")
       .networkInterfaces(new java.util.ArrayList<NetworkInterfacePrototype>(java.util.Arrays.asList(networkInterfacePrototypeModel)))
       .placementTarget(instancePlacementTargetPrototypeModel)
@@ -3272,12 +3463,27 @@ public class VpcIT extends SdkIntegrationTestBase {
   @Test
   public void testUpdateInstance() throws Exception {
     try {
+      InstanceAvailabilityPolicyPatch instanceAvailabilityPolicyPatchModel = new InstanceAvailabilityPolicyPatch.Builder()
+      .hostFailure("restart")
+      .build();
+
+      InstanceMetadataServicePatch instanceMetadataServicePatchModel = new InstanceMetadataServicePatch.Builder()
+      .enabled(true)
+      .build();
+
+      InstancePlacementTargetPatchDedicatedHostIdentityDedicatedHostIdentityById instancePlacementTargetPatchModel = new InstancePlacementTargetPatchDedicatedHostIdentityDedicatedHostIdentityById.Builder()
+      .id("1e09281b-f177-46fb-baf1-bc152b2e391a")
+      .build();
+
       InstancePatchProfileInstanceProfileIdentityByName instancePatchProfileModel = new InstancePatchProfileInstanceProfileIdentityByName.Builder()
-      .name("bc1-4x16")
+      .name("bx2-4x16")
       .build();
 
       InstancePatch instancePatchModel = new InstancePatch.Builder()
+      .availabilityPolicy(instanceAvailabilityPolicyPatchModel)
+      .metadataService(instanceMetadataServicePatchModel)
       .name("my-instance")
+      .placementTarget(instancePlacementTargetPatchModel)
       .profile(instancePatchProfileModel)
       .totalVolumeBandwidth(Long.valueOf("500"))
       .build();
@@ -3553,6 +3759,12 @@ public class VpcIT extends SdkIntegrationTestBase {
       .id("7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
       .build();
 
+      NetworkInterfaceIPPrototypeReservedIPPrototypeNetworkInterfaceContext networkInterfaceIpPrototypeModel = new NetworkInterfaceIPPrototypeReservedIPPrototypeNetworkInterfaceContext.Builder()
+      .address("10.0.0.5")
+      .autoDelete(false)
+      .name("my-reserved-ip")
+      .build();
+
       SecurityGroupIdentityById securityGroupIdentityModel = new SecurityGroupIdentityById.Builder()
       .id("be5df5ca-12a0-494b-907e-aa6ec2bfa271")
       .build();
@@ -3562,7 +3774,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       .subnet(subnetIdentityModel)
       .allowIpSpoofing(true)
       .name("my-network-interface")
-      .primaryIpv4Address("10.0.0.5")
+      .primaryIp(networkInterfaceIpPrototypeModel)
       .securityGroups(new java.util.ArrayList<SecurityGroupIdentity>(java.util.Arrays.asList(securityGroupIdentityModel)))
       .build();
 
@@ -3752,6 +3964,73 @@ public class VpcIT extends SdkIntegrationTestBase {
       // Please provide integration tests for these too.
       //
       // 400
+      // 404
+      //
+      //
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test
+  public void testListInstanceNetworkInterfaceIps() throws Exception {
+    try {
+      ListInstanceNetworkInterfaceIpsOptions listInstanceNetworkInterfaceIpsOptions = new ListInstanceNetworkInterfaceIpsOptions.Builder()
+      .instanceId("testString")
+      .networkInterfaceId("testString")
+      .start("testString")
+      .limit(Long.valueOf("1"))
+      .build();
+
+      // Invoke operation
+      Response<ReservedIPCollectionNetworkInterfaceContext> response = service.listInstanceNetworkInterfaceIps(listInstanceNetworkInterfaceIpsOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      ReservedIPCollectionNetworkInterfaceContext reservedIpCollectionNetworkInterfaceContextResult = response.getResult();
+
+      assertNotNull(reservedIpCollectionNetworkInterfaceContextResult);
+
+      //
+      // The following status codes aren't covered by tests.
+      // Please provide integration tests for these too.
+      //
+      // 404
+      //
+      //
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test
+  public void testGetInstanceNetworkInterfaceIp() throws Exception {
+    try {
+      GetInstanceNetworkInterfaceIpOptions getInstanceNetworkInterfaceIpOptions = new GetInstanceNetworkInterfaceIpOptions.Builder()
+      .instanceId("testString")
+      .networkInterfaceId("testString")
+      .id("testString")
+      .build();
+
+      // Invoke operation
+      Response<ReservedIP> response = service.getInstanceNetworkInterfaceIp(getInstanceNetworkInterfaceIpOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      ReservedIP reservedIpResult = response.getResult();
+
+      assertNotNull(reservedIpResult);
+
+      //
+      // The following status codes aren't covered by tests.
+      // Please provide integration tests for these too.
+      //
       // 404
       //
       //
@@ -5218,6 +5497,852 @@ public class VpcIT extends SdkIntegrationTestBase {
   }
 
   @Test
+  public void testListBareMetalServerProfiles() throws Exception {
+    try {
+      ListBareMetalServerProfilesOptions listBareMetalServerProfilesOptions = new ListBareMetalServerProfilesOptions.Builder()
+      .start("testString")
+      .limit(Long.valueOf("1"))
+      .build();
+
+      // Invoke operation
+      Response<BareMetalServerProfileCollection> response = service.listBareMetalServerProfiles(listBareMetalServerProfilesOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      BareMetalServerProfileCollection bareMetalServerProfileCollectionResult = response.getResult();
+
+      assertNotNull(bareMetalServerProfileCollectionResult);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test
+  public void testGetBareMetalServerProfile() throws Exception {
+    try {
+      GetBareMetalServerProfileOptions getBareMetalServerProfileOptions = new GetBareMetalServerProfileOptions.Builder()
+      .name("testString")
+      .build();
+
+      // Invoke operation
+      Response<BareMetalServerProfile> response = service.getBareMetalServerProfile(getBareMetalServerProfileOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      BareMetalServerProfile bareMetalServerProfileResult = response.getResult();
+
+      assertNotNull(bareMetalServerProfileResult);
+
+      //
+      // The following status codes aren't covered by tests.
+      // Please provide integration tests for these too.
+      //
+      // 404
+      //
+      //
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test
+  public void testListBareMetalServers() throws Exception {
+    try {
+      ListBareMetalServersOptions listBareMetalServersOptions = new ListBareMetalServersOptions.Builder()
+      .start("testString")
+      .limit(Long.valueOf("1"))
+      .resourceGroupId("testString")
+      .name("testString")
+      .vpcId("testString")
+      .vpcCrn("testString")
+      .vpcName("testString")
+      .networkInterfacesSubnetId("testString")
+      .networkInterfacesSubnetCrn("testString")
+      .networkInterfacesSubnetName("testString")
+      .sort("name")
+      .build();
+
+      // Invoke operation
+      Response<BareMetalServerCollection> response = service.listBareMetalServers(listBareMetalServersOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      BareMetalServerCollection bareMetalServerCollectionResult = response.getResult();
+
+      assertNotNull(bareMetalServerCollectionResult);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test
+  public void testCreateBareMetalServer() throws Exception {
+    try {
+      ImageIdentityById imageIdentityModel = new ImageIdentityById.Builder()
+      .id("72b27b5c-f4b0-48bb-b954-5becc7c1dcb8")
+      .build();
+
+      KeyIdentityById keyIdentityModel = new KeyIdentityById.Builder()
+      .id("a6b1a881-2ce8-41a3-80fc-36316a73f803")
+      .build();
+
+      BareMetalServerInitializationPrototype bareMetalServerInitializationPrototypeModel = new BareMetalServerInitializationPrototype.Builder()
+      .image(imageIdentityModel)
+      .keys(new java.util.ArrayList<KeyIdentity>(java.util.Arrays.asList(keyIdentityModel)))
+      .userData("testString")
+      .build();
+
+      NetworkInterfaceIPPrototypeReservedIPPrototypeNetworkInterfaceContext networkInterfaceIpPrototypeModel = new NetworkInterfaceIPPrototypeReservedIPPrototypeNetworkInterfaceContext.Builder()
+      .address("10.0.0.5")
+      .autoDelete(false)
+      .name("my-reserved-ip")
+      .build();
+
+      SecurityGroupIdentityById securityGroupIdentityModel = new SecurityGroupIdentityById.Builder()
+      .id("be5df5ca-12a0-494b-907e-aa6ec2bfa271")
+      .build();
+
+      SubnetIdentityById subnetIdentityModel = new SubnetIdentityById.Builder()
+      .id("7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
+      .build();
+
+      BareMetalServerPrimaryNetworkInterfacePrototype bareMetalServerPrimaryNetworkInterfacePrototypeModel = new BareMetalServerPrimaryNetworkInterfacePrototype.Builder()
+      .allowIpSpoofing(true)
+      .allowedVlans(new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("4"))))
+      .enableInfrastructureNat(true)
+      .interfaceType("pci")
+      .name("my-network-interface")
+      .primaryIp(networkInterfaceIpPrototypeModel)
+      .securityGroups(new java.util.ArrayList<SecurityGroupIdentity>(java.util.Arrays.asList(securityGroupIdentityModel)))
+      .subnet(subnetIdentityModel)
+      .build();
+
+      BareMetalServerProfileIdentityByName bareMetalServerProfileIdentityModel = new BareMetalServerProfileIdentityByName.Builder()
+      .name("bx2-metal-192x768")
+      .build();
+
+      ZoneIdentityByName zoneIdentityModel = new ZoneIdentityByName.Builder()
+      .name("us-south-1")
+      .build();
+
+      BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVLANPrototype bareMetalServerNetworkInterfacePrototypeModel = new BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVLANPrototype.Builder()
+      .allowIpSpoofing(true)
+      .enableInfrastructureNat(true)
+      .interfaceType("vlan")
+      .name("my-network-interface")
+      .primaryIp(networkInterfaceIpPrototypeModel)
+      .securityGroups(new java.util.ArrayList<SecurityGroupIdentity>(java.util.Arrays.asList(securityGroupIdentityModel)))
+      .subnet(subnetIdentityModel)
+      .allowInterfaceToFloat(false)
+      .vlan(Long.valueOf("4"))
+      .build();
+
+      ResourceGroupIdentityById resourceGroupIdentityModel = new ResourceGroupIdentityById.Builder()
+      .id("fee82deba12e4c0fb69c3b09d1f12345")
+      .build();
+
+      VPCIdentityById vpcIdentityModel = new VPCIdentityById.Builder()
+      .id("4727d842-f94f-4a2d-824a-9bc9b02c523b")
+      .build();
+
+      CreateBareMetalServerOptions createBareMetalServerOptions = new CreateBareMetalServerOptions.Builder()
+      .initialization(bareMetalServerInitializationPrototypeModel)
+      .primaryNetworkInterface(bareMetalServerPrimaryNetworkInterfacePrototypeModel)
+      .profile(bareMetalServerProfileIdentityModel)
+      .zone(zoneIdentityModel)
+      .name("my-bare-metal-server")
+      .networkInterfaces(new java.util.ArrayList<BareMetalServerNetworkInterfacePrototype>(java.util.Arrays.asList(bareMetalServerNetworkInterfacePrototypeModel)))
+      .resourceGroup(resourceGroupIdentityModel)
+      .vpc(vpcIdentityModel)
+      .build();
+
+      // Invoke operation
+      Response<BareMetalServer> response = service.createBareMetalServer(createBareMetalServerOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 201);
+
+      BareMetalServer bareMetalServerResult = response.getResult();
+
+      assertNotNull(bareMetalServerResult);
+
+      //
+      // The following status codes aren't covered by tests.
+      // Please provide integration tests for these too.
+      //
+      // 400
+      //
+      //
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test
+  public void testCreateBareMetalServerConsoleAccessToken() throws Exception {
+    try {
+      CreateBareMetalServerConsoleAccessTokenOptions createBareMetalServerConsoleAccessTokenOptions = new CreateBareMetalServerConsoleAccessTokenOptions.Builder()
+      .bareMetalServerId("testString")
+      .consoleType("serial")
+      .force(false)
+      .build();
+
+      // Invoke operation
+      Response<BareMetalServerConsoleAccessToken> response = service.createBareMetalServerConsoleAccessToken(createBareMetalServerConsoleAccessTokenOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      BareMetalServerConsoleAccessToken bareMetalServerConsoleAccessTokenResult = response.getResult();
+
+      assertNotNull(bareMetalServerConsoleAccessTokenResult);
+
+      //
+      // The following status codes aren't covered by tests.
+      // Please provide integration tests for these too.
+      //
+      // 400
+      // 404
+      //
+      //
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test
+  public void testListBareMetalServerDisks() throws Exception {
+    try {
+      ListBareMetalServerDisksOptions listBareMetalServerDisksOptions = new ListBareMetalServerDisksOptions.Builder()
+      .bareMetalServerId("testString")
+      .build();
+
+      // Invoke operation
+      Response<BareMetalServerDiskCollection> response = service.listBareMetalServerDisks(listBareMetalServerDisksOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      BareMetalServerDiskCollection bareMetalServerDiskCollectionResult = response.getResult();
+
+      assertNotNull(bareMetalServerDiskCollectionResult);
+
+      //
+      // The following status codes aren't covered by tests.
+      // Please provide integration tests for these too.
+      //
+      // 404
+      //
+      //
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test
+  public void testGetBareMetalServerDisk() throws Exception {
+    try {
+      GetBareMetalServerDiskOptions getBareMetalServerDiskOptions = new GetBareMetalServerDiskOptions.Builder()
+      .bareMetalServerId("testString")
+      .id("testString")
+      .build();
+
+      // Invoke operation
+      Response<BareMetalServerDisk> response = service.getBareMetalServerDisk(getBareMetalServerDiskOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      BareMetalServerDisk bareMetalServerDiskResult = response.getResult();
+
+      assertNotNull(bareMetalServerDiskResult);
+
+      //
+      // The following status codes aren't covered by tests.
+      // Please provide integration tests for these too.
+      //
+      // 404
+      //
+      //
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test
+  public void testUpdateBareMetalServerDisk() throws Exception {
+    try {
+      BareMetalServerDiskPatch bareMetalServerDiskPatchModel = new BareMetalServerDiskPatch.Builder()
+      .name("my-bare-metal-server-disk-updated")
+      .build();
+      Map<String, Object> bareMetalServerDiskPatchModelAsPatch = bareMetalServerDiskPatchModel.asPatch();
+
+      UpdateBareMetalServerDiskOptions updateBareMetalServerDiskOptions = new UpdateBareMetalServerDiskOptions.Builder()
+      .bareMetalServerId("testString")
+      .id("testString")
+      .bareMetalServerDiskPatch(bareMetalServerDiskPatchModelAsPatch)
+      .build();
+
+      // Invoke operation
+      Response<BareMetalServerDisk> response = service.updateBareMetalServerDisk(updateBareMetalServerDiskOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      BareMetalServerDisk bareMetalServerDiskResult = response.getResult();
+
+      assertNotNull(bareMetalServerDiskResult);
+
+      //
+      // The following status codes aren't covered by tests.
+      // Please provide integration tests for these too.
+      //
+      // 400
+      // 404
+      //
+      //
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test
+  public void testListBareMetalServerNetworkInterfaces() throws Exception {
+    try {
+      ListBareMetalServerNetworkInterfacesOptions listBareMetalServerNetworkInterfacesOptions = new ListBareMetalServerNetworkInterfacesOptions.Builder()
+      .bareMetalServerId("testString")
+      .start("testString")
+      .limit(Long.valueOf("1"))
+      .build();
+
+      // Invoke operation
+      Response<BareMetalServerNetworkInterfaceCollection> response = service.listBareMetalServerNetworkInterfaces(listBareMetalServerNetworkInterfacesOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      BareMetalServerNetworkInterfaceCollection bareMetalServerNetworkInterfaceCollectionResult = response.getResult();
+
+      assertNotNull(bareMetalServerNetworkInterfaceCollectionResult);
+
+      //
+      // The following status codes aren't covered by tests.
+      // Please provide integration tests for these too.
+      //
+      // 404
+      //
+      //
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test
+  public void testCreateBareMetalServerNetworkInterface() throws Exception {
+    try {
+      NetworkInterfaceIPPrototypeReservedIPPrototypeNetworkInterfaceContext networkInterfaceIpPrototypeModel = new NetworkInterfaceIPPrototypeReservedIPPrototypeNetworkInterfaceContext.Builder()
+      .address("10.0.0.5")
+      .autoDelete(false)
+      .name("my-reserved-ip")
+      .build();
+
+      SecurityGroupIdentityById securityGroupIdentityModel = new SecurityGroupIdentityById.Builder()
+      .id("be5df5ca-12a0-494b-907e-aa6ec2bfa271")
+      .build();
+
+      SubnetIdentityById subnetIdentityModel = new SubnetIdentityById.Builder()
+      .id("7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
+      .build();
+
+      BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVLANPrototype bareMetalServerNetworkInterfacePrototypeModel = new BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVLANPrototype.Builder()
+      .allowIpSpoofing(true)
+      .enableInfrastructureNat(true)
+      .interfaceType("vlan")
+      .name("my-network-interface")
+      .primaryIp(networkInterfaceIpPrototypeModel)
+      .securityGroups(new java.util.ArrayList<SecurityGroupIdentity>(java.util.Arrays.asList(securityGroupIdentityModel)))
+      .subnet(subnetIdentityModel)
+      .allowInterfaceToFloat(false)
+      .vlan(Long.valueOf("4"))
+      .build();
+
+      CreateBareMetalServerNetworkInterfaceOptions createBareMetalServerNetworkInterfaceOptions = new CreateBareMetalServerNetworkInterfaceOptions.Builder()
+      .bareMetalServerId("testString")
+      .bareMetalServerNetworkInterfacePrototype(bareMetalServerNetworkInterfacePrototypeModel)
+      .build();
+
+      // Invoke operation
+      Response<BareMetalServerNetworkInterface> response = service.createBareMetalServerNetworkInterface(createBareMetalServerNetworkInterfaceOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 201);
+
+      BareMetalServerNetworkInterface bareMetalServerNetworkInterfaceResult = response.getResult();
+
+      assertNotNull(bareMetalServerNetworkInterfaceResult);
+
+      //
+      // The following status codes aren't covered by tests.
+      // Please provide integration tests for these too.
+      //
+      // 400
+      // 404
+      //
+      //
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test
+  public void testGetBareMetalServerNetworkInterface() throws Exception {
+    try {
+      GetBareMetalServerNetworkInterfaceOptions getBareMetalServerNetworkInterfaceOptions = new GetBareMetalServerNetworkInterfaceOptions.Builder()
+      .bareMetalServerId("testString")
+      .id("testString")
+      .build();
+
+      // Invoke operation
+      Response<BareMetalServerNetworkInterface> response = service.getBareMetalServerNetworkInterface(getBareMetalServerNetworkInterfaceOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      BareMetalServerNetworkInterface bareMetalServerNetworkInterfaceResult = response.getResult();
+
+      assertNotNull(bareMetalServerNetworkInterfaceResult);
+
+      //
+      // The following status codes aren't covered by tests.
+      // Please provide integration tests for these too.
+      //
+      // 404
+      //
+      //
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test
+  public void testUpdateBareMetalServerNetworkInterface() throws Exception {
+    try {
+      BareMetalServerNetworkInterfacePatch bareMetalServerNetworkInterfacePatchModel = new BareMetalServerNetworkInterfacePatch.Builder()
+      .allowIpSpoofing(true)
+      .allowedVlans(new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("4"))))
+      .enableInfrastructureNat(true)
+      .name("my-network-interface")
+      .build();
+      Map<String, Object> bareMetalServerNetworkInterfacePatchModelAsPatch = bareMetalServerNetworkInterfacePatchModel.asPatch();
+
+      UpdateBareMetalServerNetworkInterfaceOptions updateBareMetalServerNetworkInterfaceOptions = new UpdateBareMetalServerNetworkInterfaceOptions.Builder()
+      .bareMetalServerId("testString")
+      .id("testString")
+      .bareMetalServerNetworkInterfacePatch(bareMetalServerNetworkInterfacePatchModelAsPatch)
+      .build();
+
+      // Invoke operation
+      Response<BareMetalServerNetworkInterface> response = service.updateBareMetalServerNetworkInterface(updateBareMetalServerNetworkInterfaceOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      BareMetalServerNetworkInterface bareMetalServerNetworkInterfaceResult = response.getResult();
+
+      assertNotNull(bareMetalServerNetworkInterfaceResult);
+
+      //
+      // The following status codes aren't covered by tests.
+      // Please provide integration tests for these too.
+      //
+      // 400
+      // 404
+      //
+      //
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test
+  public void testListBareMetalServerNetworkInterfaceFloatingIps() throws Exception {
+    try {
+      ListBareMetalServerNetworkInterfaceFloatingIpsOptions listBareMetalServerNetworkInterfaceFloatingIpsOptions = new ListBareMetalServerNetworkInterfaceFloatingIpsOptions.Builder()
+      .bareMetalServerId("testString")
+      .networkInterfaceId("testString")
+      .build();
+
+      // Invoke operation
+      Response<FloatingIPUnpaginatedCollection> response = service.listBareMetalServerNetworkInterfaceFloatingIps(listBareMetalServerNetworkInterfaceFloatingIpsOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      FloatingIPUnpaginatedCollection floatingIpUnpaginatedCollectionResult = response.getResult();
+
+      assertNotNull(floatingIpUnpaginatedCollectionResult);
+
+      //
+      // The following status codes aren't covered by tests.
+      // Please provide integration tests for these too.
+      //
+      // 404
+      //
+      //
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test
+  public void testGetBareMetalServerNetworkInterfaceFloatingIp() throws Exception {
+    try {
+      GetBareMetalServerNetworkInterfaceFloatingIpOptions getBareMetalServerNetworkInterfaceFloatingIpOptions = new GetBareMetalServerNetworkInterfaceFloatingIpOptions.Builder()
+      .bareMetalServerId("testString")
+      .networkInterfaceId("testString")
+      .id("testString")
+      .build();
+
+      // Invoke operation
+      Response<FloatingIP> response = service.getBareMetalServerNetworkInterfaceFloatingIp(getBareMetalServerNetworkInterfaceFloatingIpOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      FloatingIP floatingIpResult = response.getResult();
+
+      assertNotNull(floatingIpResult);
+
+      //
+      // The following status codes aren't covered by tests.
+      // Please provide integration tests for these too.
+      //
+      // 404
+      //
+      //
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test
+  public void testAddBareMetalServerNetworkInterfaceFloatingIp() throws Exception {
+    try {
+      AddBareMetalServerNetworkInterfaceFloatingIpOptions addBareMetalServerNetworkInterfaceFloatingIpOptions = new AddBareMetalServerNetworkInterfaceFloatingIpOptions.Builder()
+      .bareMetalServerId("testString")
+      .networkInterfaceId("testString")
+      .id("testString")
+      .build();
+
+      // Invoke operation
+      Response<FloatingIP> response = service.addBareMetalServerNetworkInterfaceFloatingIp(addBareMetalServerNetworkInterfaceFloatingIpOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 201);
+
+      FloatingIP floatingIpResult = response.getResult();
+
+      assertNotNull(floatingIpResult);
+
+      //
+      // The following status codes aren't covered by tests.
+      // Please provide integration tests for these too.
+      //
+      // 400
+      // 404
+      //
+      //
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test
+  public void testListBareMetalServerNetworkInterfaceIps() throws Exception {
+    try {
+      ListBareMetalServerNetworkInterfaceIpsOptions listBareMetalServerNetworkInterfaceIpsOptions = new ListBareMetalServerNetworkInterfaceIpsOptions.Builder()
+      .bareMetalServerId("testString")
+      .networkInterfaceId("testString")
+      .build();
+
+      // Invoke operation
+      Response<ReservedIPCollectionNetworkInterfaceContext> response = service.listBareMetalServerNetworkInterfaceIps(listBareMetalServerNetworkInterfaceIpsOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      ReservedIPCollectionNetworkInterfaceContext reservedIpCollectionNetworkInterfaceContextResult = response.getResult();
+
+      assertNotNull(reservedIpCollectionNetworkInterfaceContextResult);
+
+      //
+      // The following status codes aren't covered by tests.
+      // Please provide integration tests for these too.
+      //
+      // 404
+      //
+      //
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test
+  public void testGetBareMetalServerNetworkInterfaceIp() throws Exception {
+    try {
+      GetBareMetalServerNetworkInterfaceIpOptions getBareMetalServerNetworkInterfaceIpOptions = new GetBareMetalServerNetworkInterfaceIpOptions.Builder()
+      .bareMetalServerId("testString")
+      .networkInterfaceId("testString")
+      .id("testString")
+      .build();
+
+      // Invoke operation
+      Response<ReservedIP> response = service.getBareMetalServerNetworkInterfaceIp(getBareMetalServerNetworkInterfaceIpOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      ReservedIP reservedIpResult = response.getResult();
+
+      assertNotNull(reservedIpResult);
+
+      //
+      // The following status codes aren't covered by tests.
+      // Please provide integration tests for these too.
+      //
+      // 404
+      //
+      //
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test
+  public void testGetBareMetalServer() throws Exception {
+    try {
+      GetBareMetalServerOptions getBareMetalServerOptions = new GetBareMetalServerOptions.Builder()
+      .id("testString")
+      .build();
+
+      // Invoke operation
+      Response<BareMetalServer> response = service.getBareMetalServer(getBareMetalServerOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      BareMetalServer bareMetalServerResult = response.getResult();
+
+      assertNotNull(bareMetalServerResult);
+
+      //
+      // The following status codes aren't covered by tests.
+      // Please provide integration tests for these too.
+      //
+      // 404
+      //
+      //
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test
+  public void testUpdateBareMetalServer() throws Exception {
+    try {
+      BareMetalServerPatch bareMetalServerPatchModel = new BareMetalServerPatch.Builder()
+      .name("my-bare-metal-server")
+      .build();
+      Map<String, Object> bareMetalServerPatchModelAsPatch = bareMetalServerPatchModel.asPatch();
+
+      UpdateBareMetalServerOptions updateBareMetalServerOptions = new UpdateBareMetalServerOptions.Builder()
+      .id("testString")
+      .bareMetalServerPatch(bareMetalServerPatchModelAsPatch)
+      .build();
+
+      // Invoke operation
+      Response<BareMetalServer> response = service.updateBareMetalServer(updateBareMetalServerOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      BareMetalServer bareMetalServerResult = response.getResult();
+
+      assertNotNull(bareMetalServerResult);
+
+      //
+      // The following status codes aren't covered by tests.
+      // Please provide integration tests for these too.
+      //
+      // 400
+      // 404
+      // 409
+      //
+      //
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test
+  public void testGetBareMetalServerInitialization() throws Exception {
+    try {
+      GetBareMetalServerInitializationOptions getBareMetalServerInitializationOptions = new GetBareMetalServerInitializationOptions.Builder()
+      .id("testString")
+      .build();
+
+      // Invoke operation
+      Response<BareMetalServerInitialization> response = service.getBareMetalServerInitialization(getBareMetalServerInitializationOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      BareMetalServerInitialization bareMetalServerInitializationResult = response.getResult();
+
+      assertNotNull(bareMetalServerInitializationResult);
+
+      //
+      // The following status codes aren't covered by tests.
+      // Please provide integration tests for these too.
+      //
+      // 404
+      //
+      //
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test
+  public void testRestartBareMetalServer() throws Exception {
+    try {
+      RestartBareMetalServerOptions restartBareMetalServerOptions = new RestartBareMetalServerOptions.Builder()
+      .id("testString")
+      .build();
+
+      // Invoke operation
+      Response<Void> response = service.restartBareMetalServer(restartBareMetalServerOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 204);
+
+      //
+      // The following status codes aren't covered by tests.
+      // Please provide integration tests for these too.
+      //
+      // 400
+      // 404
+      // 409
+      //
+      //
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test
+  public void testStartBareMetalServer() throws Exception {
+    try {
+      StartBareMetalServerOptions startBareMetalServerOptions = new StartBareMetalServerOptions.Builder()
+      .id("testString")
+      .build();
+
+      // Invoke operation
+      Response<Void> response = service.startBareMetalServer(startBareMetalServerOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 204);
+
+      //
+      // The following status codes aren't covered by tests.
+      // Please provide integration tests for these too.
+      //
+      // 400
+      // 404
+      // 409
+      //
+      //
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test
+  public void testStopBareMetalServer() throws Exception {
+    try {
+      StopBareMetalServerOptions stopBareMetalServerOptions = new StopBareMetalServerOptions.Builder()
+      .id("testString")
+      .type("hard")
+      .build();
+
+      // Invoke operation
+      Response<Void> response = service.stopBareMetalServer(stopBareMetalServerOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 204);
+
+      //
+      // The following status codes aren't covered by tests.
+      // Please provide integration tests for these too.
+      //
+      // 400
+      // 404
+      // 409
+      //
+      //
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test
   public void testListVolumeProfiles() throws Exception {
     try {
       ListVolumeProfilesOptions listVolumeProfilesOptions = new ListVolumeProfilesOptions.Builder()
@@ -5320,6 +6445,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       .name("my-volume")
       .profile(volumeProfileIdentityModel)
       .resourceGroup(resourceGroupIdentityModel)
+      .userTags(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .zone(zoneIdentityModel)
       .capacity(Long.valueOf("100"))
       .encryptionKey(encryptionKeyIdentityModel)
@@ -5396,12 +6522,14 @@ public class VpcIT extends SdkIntegrationTestBase {
       .iops(Long.valueOf("10000"))
       .name("my-volume")
       .profile(volumeProfileIdentityModel)
+      .userTags(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .build();
       Map<String, Object> volumePatchModelAsPatch = volumePatchModel.asPatch();
 
       UpdateVolumeOptions updateVolumeOptions = new UpdateVolumeOptions.Builder()
       .id("testString")
       .volumePatch(volumePatchModelAsPatch)
+      .ifMatch("96d225c4-56bd-43d9-98fc-d7148e5c5028")
       .build();
 
       // Invoke operation
@@ -5420,6 +6548,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       //
       // 400
       // 404
+      // 412
       //
       //
 
@@ -5462,18 +6591,23 @@ public class VpcIT extends SdkIntegrationTestBase {
   @Test
   public void testCreateSnapshot() throws Exception {
     try {
-      VolumeIdentityById volumeIdentityModel = new VolumeIdentityById.Builder()
-      .id("1a6b7274-678d-4dfb-8981-c71dd9d4daa5")
-      .build();
-
       ResourceGroupIdentityById resourceGroupIdentityModel = new ResourceGroupIdentityById.Builder()
       .id("fee82deba12e4c0fb69c3b09d1f12345")
       .build();
 
-      CreateSnapshotOptions createSnapshotOptions = new CreateSnapshotOptions.Builder()
-      .sourceVolume(volumeIdentityModel)
+      VolumeIdentityById volumeIdentityModel = new VolumeIdentityById.Builder()
+      .id("1a6b7274-678d-4dfb-8981-c71dd9d4daa5")
+      .build();
+
+      SnapshotPrototypeSnapshotBySourceVolume snapshotPrototypeModel = new SnapshotPrototypeSnapshotBySourceVolume.Builder()
       .name("my-snapshot")
       .resourceGroup(resourceGroupIdentityModel)
+      .userTags(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
+      .sourceVolume(volumeIdentityModel)
+      .build();
+
+      CreateSnapshotOptions createSnapshotOptions = new CreateSnapshotOptions.Builder()
+      .snapshotPrototype(snapshotPrototypeModel)
       .build();
 
       // Invoke operation
@@ -5536,12 +6670,14 @@ public class VpcIT extends SdkIntegrationTestBase {
     try {
       SnapshotPatch snapshotPatchModel = new SnapshotPatch.Builder()
       .name("my-snapshot")
+      .userTags(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .build();
       Map<String, Object> snapshotPatchModelAsPatch = snapshotPatchModel.asPatch();
 
       UpdateSnapshotOptions updateSnapshotOptions = new UpdateSnapshotOptions.Builder()
       .id("testString")
       .snapshotPatch(snapshotPatchModelAsPatch)
+      .ifMatch("96d225c4-56bd-43d9-98fc-d7148e5c5028")
       .build();
 
       // Invoke operation
@@ -5560,6 +6696,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       //
       // 400
       // 404
+      // 412
       //
       //
 
@@ -5834,6 +6971,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       .start("testString")
       .limit(Long.valueOf("1"))
       .resourceGroupId("testString")
+      .sort("name")
       .build();
 
       // Invoke operation
@@ -5931,13 +7069,13 @@ public class VpcIT extends SdkIntegrationTestBase {
   @Test
   public void testUpdateFloatingIp() throws Exception {
     try {
-      FloatingIPPatchTargetNetworkInterfaceIdentityNetworkInterfaceIdentityById floatingIpPatchTargetNetworkInterfaceIdentityModel = new FloatingIPPatchTargetNetworkInterfaceIdentityNetworkInterfaceIdentityById.Builder()
-      .id("69e55145-cc7d-4d8e-9e1f-cc3fb60b1793")
+      FloatingIPTargetPatchNetworkInterfaceIdentityById floatingIpTargetPatchModel = new FloatingIPTargetPatchNetworkInterfaceIdentityById.Builder()
+      .id("10c02d81-0ecb-4dc5-897d-28392913b81e")
       .build();
 
       FloatingIPPatch floatingIpPatchModel = new FloatingIPPatch.Builder()
       .name("my-floating-ip")
-      .target(floatingIpPatchTargetNetworkInterfaceIdentityModel)
+      .target(floatingIpTargetPatchModel)
       .build();
       Map<String, Object> floatingIpPatchModelAsPatch = floatingIpPatchModel.asPatch();
 
@@ -6445,104 +7583,6 @@ public class VpcIT extends SdkIntegrationTestBase {
   }
 
   @Test
-  public void testListSecurityGroupNetworkInterfaces() throws Exception {
-    try {
-      ListSecurityGroupNetworkInterfacesOptions listSecurityGroupNetworkInterfacesOptions = new ListSecurityGroupNetworkInterfacesOptions.Builder()
-      .securityGroupId("testString")
-      .start("testString")
-      .limit(Long.valueOf("1"))
-      .build();
-
-      // Invoke operation
-      Response<NetworkInterfaceCollection> response = service.listSecurityGroupNetworkInterfaces(listSecurityGroupNetworkInterfacesOptions).execute();
-      // Validate response
-      assertNotNull(response);
-      assertEquals(response.getStatusCode(), 200);
-
-      NetworkInterfaceCollection networkInterfaceCollectionResult = response.getResult();
-
-      assertNotNull(networkInterfaceCollectionResult);
-
-      //
-      // The following status codes aren't covered by tests.
-      // Please provide integration tests for these too.
-      //
-      // 404
-      //
-      //
-
-    } catch (ServiceResponseException e) {
-        fail(String.format("Service returned status code %d: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
-    }
-  }
-
-  @Test
-  public void testGetSecurityGroupNetworkInterface() throws Exception {
-    try {
-      GetSecurityGroupNetworkInterfaceOptions getSecurityGroupNetworkInterfaceOptions = new GetSecurityGroupNetworkInterfaceOptions.Builder()
-      .securityGroupId("testString")
-      .id("testString")
-      .build();
-
-      // Invoke operation
-      Response<NetworkInterface> response = service.getSecurityGroupNetworkInterface(getSecurityGroupNetworkInterfaceOptions).execute();
-      // Validate response
-      assertNotNull(response);
-      assertEquals(response.getStatusCode(), 200);
-
-      NetworkInterface networkInterfaceResult = response.getResult();
-
-      assertNotNull(networkInterfaceResult);
-
-      //
-      // The following status codes aren't covered by tests.
-      // Please provide integration tests for these too.
-      //
-      // 404
-      //
-      //
-
-    } catch (ServiceResponseException e) {
-        fail(String.format("Service returned status code %d: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
-    }
-  }
-
-  @Test
-  public void testAddSecurityGroupNetworkInterface() throws Exception {
-    try {
-      AddSecurityGroupNetworkInterfaceOptions addSecurityGroupNetworkInterfaceOptions = new AddSecurityGroupNetworkInterfaceOptions.Builder()
-      .securityGroupId("testString")
-      .id("testString")
-      .build();
-
-      // Invoke operation
-      Response<NetworkInterface> response = service.addSecurityGroupNetworkInterface(addSecurityGroupNetworkInterfaceOptions).execute();
-      // Validate response
-      assertNotNull(response);
-      assertEquals(response.getStatusCode(), 201);
-
-      NetworkInterface networkInterfaceResult = response.getResult();
-
-      assertNotNull(networkInterfaceResult);
-
-      //
-      // The following status codes aren't covered by tests.
-      // Please provide integration tests for these too.
-      //
-      // 400
-      // 404
-      //
-      //
-
-    } catch (ServiceResponseException e) {
-        fail(String.format("Service returned status code %d: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
-    }
-  }
-
-  @Test
   public void testListSecurityGroupRules() throws Exception {
     try {
       ListSecurityGroupRulesOptions listSecurityGroupRulesOptions = new ListSecurityGroupRulesOptions.Builder()
@@ -6777,7 +7817,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       Response<SecurityGroupTargetReference> response = service.createSecurityGroupTargetBinding(createSecurityGroupTargetBindingOptions).execute();
       // Validate response
       assertNotNull(response);
-      assertEquals(response.getStatusCode(), 201);
+      assertEquals(response.getStatusCode(), 200);
 
       SecurityGroupTargetReference securityGroupTargetReferenceResult = response.getResult();
 
@@ -7967,7 +9007,7 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testCreateLoadBalancerListener() throws Exception {
     try {
       CertificateInstanceIdentityByCRN certificateInstanceIdentityModel = new CertificateInstanceIdentityByCRN.Builder()
-      .crn("crn:v1:bluemix:public:cloudcerts:us-south:a/123456:b8866ea4-b8df-467e-801a-da1db7e020bf:certificate:78ff9c4c97d013fb2a95b21dddde7758")
+      .crn("crn:v1:bluemix:public:secrets-manager:us-south:a/123456:36fa422d-080d-4d83-8d2d-86851b4001df:secret:2e786aab-42fa-63ed-14f8-d66d552f4dd5")
       .build();
 
       LoadBalancerPoolIdentityById loadBalancerPoolIdentityModel = new LoadBalancerPoolIdentityById.Builder()
@@ -8077,7 +9117,7 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testUpdateLoadBalancerListener() throws Exception {
     try {
       CertificateInstanceIdentityByCRN certificateInstanceIdentityModel = new CertificateInstanceIdentityByCRN.Builder()
-      .crn("crn:v1:bluemix:public:cloudcerts:us-south:a/123456:b8866ea4-b8df-467e-801a-da1db7e020bf:certificate:78ff9c4c97d013fb2a95b21dddde7758")
+      .crn("crn:v1:bluemix:public:secrets-manager:us-south:a/123456:36fa422d-080d-4d83-8d2d-86851b4001df:secret:2e786aab-42fa-63ed-14f8-d66d552f4dd5")
       .build();
 
       LoadBalancerPoolIdentityById loadBalancerPoolIdentityModel = new LoadBalancerPoolIdentityById.Builder()
@@ -8837,12 +9877,17 @@ public class VpcIT extends SdkIntegrationTestBase {
       .id("fee82deba12e4c0fb69c3b09d1f12345")
       .build();
 
+      SecurityGroupIdentityById securityGroupIdentityModel = new SecurityGroupIdentityById.Builder()
+      .id("be5df5ca-12a0-494b-907e-aa6ec2bfa271")
+      .build();
+
       CreateEndpointGatewayOptions createEndpointGatewayOptions = new CreateEndpointGatewayOptions.Builder()
       .target(endpointGatewayTargetPrototypeModel)
       .vpc(vpcIdentityModel)
       .ips(new java.util.ArrayList<EndpointGatewayReservedIP>(java.util.Arrays.asList(endpointGatewayReservedIpModel)))
       .name("testString")
       .resourceGroup(resourceGroupIdentityModel)
+      .securityGroups(new java.util.ArrayList<SecurityGroupIdentity>(java.util.Arrays.asList(securityGroupIdentityModel)))
       .build();
 
       // Invoke operation
@@ -9071,7 +10116,7 @@ public class VpcIT extends SdkIntegrationTestBase {
   @Test
   public void testCreateFlowLogCollector() throws Exception {
     try {
-      CloudObjectStorageBucketIdentityByName cloudObjectStorageBucketIdentityModel = new CloudObjectStorageBucketIdentityByName.Builder()
+      LegacyCloudObjectStorageBucketIdentityCloudObjectStorageBucketIdentityByName legacyCloudObjectStorageBucketIdentityModel = new LegacyCloudObjectStorageBucketIdentityCloudObjectStorageBucketIdentityByName.Builder()
       .name("bucket-27200-lwx4cfvcue")
       .build();
 
@@ -9084,7 +10129,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       .build();
 
       CreateFlowLogCollectorOptions createFlowLogCollectorOptions = new CreateFlowLogCollectorOptions.Builder()
-      .storageBucket(cloudObjectStorageBucketIdentityModel)
+      .storageBucket(legacyCloudObjectStorageBucketIdentityModel)
       .target(flowLogCollectorTargetPrototypeModel)
       .active(false)
       .name("my-flow-log-collector")
@@ -9274,35 +10319,6 @@ public class VpcIT extends SdkIntegrationTestBase {
   }
 
   @Test
-  public void testRemoveSecurityGroupNetworkInterface() throws Exception {
-    try {
-      RemoveSecurityGroupNetworkInterfaceOptions removeSecurityGroupNetworkInterfaceOptions = new RemoveSecurityGroupNetworkInterfaceOptions.Builder()
-      .securityGroupId("testString")
-      .id("testString")
-      .build();
-
-      // Invoke operation
-      Response<Void> response = service.removeSecurityGroupNetworkInterface(removeSecurityGroupNetworkInterfaceOptions).execute();
-      // Validate response
-      assertNotNull(response);
-      assertEquals(response.getStatusCode(), 204);
-
-      //
-      // The following status codes aren't covered by tests.
-      // Please provide integration tests for these too.
-      //
-      // 404
-      // 409
-      //
-      //
-
-    } catch (ServiceResponseException e) {
-        fail(String.format("Service returned status code %d: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
-    }
-  }
-
-  @Test
   public void testRemoveInstanceNetworkInterfaceFloatingIp() throws Exception {
     try {
       RemoveInstanceNetworkInterfaceFloatingIpOptions removeInstanceNetworkInterfaceFloatingIpOptions = new RemoveInstanceNetworkInterfaceFloatingIpOptions.Builder()
@@ -9342,6 +10358,36 @@ public class VpcIT extends SdkIntegrationTestBase {
 
       // Invoke operation
       Response<Void> response = service.removeEndpointGatewayIp(removeEndpointGatewayIpOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 204);
+
+      //
+      // The following status codes aren't covered by tests.
+      // Please provide integration tests for these too.
+      //
+      // 400
+      // 404
+      //
+      //
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test
+  public void testRemoveBareMetalServerNetworkInterfaceFloatingIp() throws Exception {
+    try {
+      RemoveBareMetalServerNetworkInterfaceFloatingIpOptions removeBareMetalServerNetworkInterfaceFloatingIpOptions = new RemoveBareMetalServerNetworkInterfaceFloatingIpOptions.Builder()
+      .bareMetalServerId("testString")
+      .networkInterfaceId("testString")
+      .id("testString")
+      .build();
+
+      // Invoke operation
+      Response<Void> response = service.removeBareMetalServerNetworkInterfaceFloatingIp(removeBareMetalServerNetworkInterfaceFloatingIpOptions).execute();
       // Validate response
       assertNotNull(response);
       assertEquals(response.getStatusCode(), 204);
@@ -9568,6 +10614,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     try {
       DeleteVolumeOptions deleteVolumeOptions = new DeleteVolumeOptions.Builder()
       .id("testString")
+      .ifMatch("96d225c4-56bd-43d9-98fc-d7148e5c5028")
       .build();
 
       // Invoke operation
@@ -9582,6 +10629,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       //
       // 404
       // 409
+      // 412
       //
       //
 
@@ -9667,6 +10715,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       // Please provide integration tests for these too.
       //
       // 400
+      // 412
       //
       //
 
@@ -9681,6 +10730,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     try {
       DeleteSnapshotOptions deleteSnapshotOptions = new DeleteSnapshotOptions.Builder()
       .id("testString")
+      .ifMatch("96d225c4-56bd-43d9-98fc-d7148e5c5028")
       .build();
 
       // Invoke operation
@@ -9694,6 +10744,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       // Please provide integration tests for these too.
       //
       // 404
+      // 412
       //
       //
 
@@ -10067,6 +11118,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       // Please provide integration tests for these too.
       //
       // 404
+      // 409
       //
       //
 
@@ -10149,6 +11201,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       // The following status codes aren't covered by tests.
       // Please provide integration tests for these too.
       //
+      // 400
       // 403
       // 404
       //
@@ -10615,6 +11668,62 @@ public class VpcIT extends SdkIntegrationTestBase {
 
       // Invoke operation
       Response<Void> response = service.deleteDedicatedHost(deleteDedicatedHostOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 204);
+
+      //
+      // The following status codes aren't covered by tests.
+      // Please provide integration tests for these too.
+      //
+      // 404
+      //
+      //
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test
+  public void testDeleteBareMetalServerNetworkInterface() throws Exception {
+    try {
+      DeleteBareMetalServerNetworkInterfaceOptions deleteBareMetalServerNetworkInterfaceOptions = new DeleteBareMetalServerNetworkInterfaceOptions.Builder()
+      .bareMetalServerId("testString")
+      .id("testString")
+      .build();
+
+      // Invoke operation
+      Response<Void> response = service.deleteBareMetalServerNetworkInterface(deleteBareMetalServerNetworkInterfaceOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 204);
+
+      //
+      // The following status codes aren't covered by tests.
+      // Please provide integration tests for these too.
+      //
+      // 403
+      // 404
+      //
+      //
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test
+  public void testDeleteBareMetalServer() throws Exception {
+    try {
+      DeleteBareMetalServerOptions deleteBareMetalServerOptions = new DeleteBareMetalServerOptions.Builder()
+      .id("testString")
+      .build();
+
+      // Invoke operation
+      Response<Void> response = service.deleteBareMetalServer(deleteBareMetalServerOptions).execute();
       // Validate response
       assertNotNull(response);
       assertEquals(response.getStatusCode(), 204);

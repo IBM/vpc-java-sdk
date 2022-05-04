@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -51,6 +51,14 @@ public class LoadBalancer extends GenericModel {
     String UPDATE_PENDING = "update_pending";
   }
 
+  /**
+   * The resource type.
+   */
+  public interface ResourceType {
+    /** load_balancer. */
+    String LOAD_BALANCER = "load_balancer";
+  }
+
   @SerializedName("created_at")
   protected Date createdAt;
   protected String crn;
@@ -66,7 +74,7 @@ public class LoadBalancer extends GenericModel {
   protected String operatingStatus;
   protected List<LoadBalancerPoolReference> pools;
   @SerializedName("private_ips")
-  protected List<IP> privateIps;
+  protected List<LoadBalancerPrivateIpsItem> privateIps;
   protected LoadBalancerProfileReference profile;
   @SerializedName("provisioning_status")
   protected String provisioningStatus;
@@ -74,6 +82,8 @@ public class LoadBalancer extends GenericModel {
   protected List<IP> publicIps;
   @SerializedName("resource_group")
   protected ResourceGroupReference resourceGroup;
+  @SerializedName("resource_type")
+  protected String resourceType;
   @SerializedName("route_mode")
   protected Boolean routeMode;
   @SerializedName("security_groups")
@@ -81,6 +91,8 @@ public class LoadBalancer extends GenericModel {
   @SerializedName("security_groups_supported")
   protected Boolean securityGroupsSupported;
   protected List<SubnetReference> subnets;
+  @SerializedName("udp_supported")
+  protected Boolean udpSupported;
 
   /**
    * Gets the createdAt.
@@ -210,7 +222,7 @@ public class LoadBalancer extends GenericModel {
    *
    * @return the privateIps
    */
-  public List<IP> getPrivateIps() {
+  public List<LoadBalancerPrivateIpsItem> getPrivateIps() {
     return privateIps;
   }
 
@@ -261,6 +273,17 @@ public class LoadBalancer extends GenericModel {
   }
 
   /**
+   * Gets the resourceType.
+   *
+   * The resource type.
+   *
+   * @return the resourceType
+   */
+  public String getResourceType() {
+    return resourceType;
+  }
+
+  /**
    * Gets the routeMode.
    *
    * Indicates whether route mode is enabled for this load balancer.
@@ -306,6 +329,17 @@ public class LoadBalancer extends GenericModel {
    */
   public List<SubnetReference> getSubnets() {
     return subnets;
+  }
+
+  /**
+   * Gets the udpSupported.
+   *
+   * Indicates whether this load balancer supports UDP.
+   *
+   * @return the udpSupported
+   */
+  public Boolean isUdpSupported() {
+    return udpSupported;
   }
 }
 

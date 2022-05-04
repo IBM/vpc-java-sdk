@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -138,8 +138,8 @@ public class VolumePrototypeInstanceByImageContext extends VolumeAttachmentProto
   /**
    * Gets the capacity.
    *
-   * The capacity to use for the volume (in gigabytes). The only allowed value is the image's
-   * `minimum_provisioned_size`, but the allowed values are expected to expand in the future.
+   * The capacity to use for the volume (in gigabytes). Must be at least the image's
+   * `minimum_provisioned_size`. The maximum value may increase in the future.
    *
    * If unspecified, the capacity will be the image's `minimum_provisioned_size`.
    *

@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -36,11 +36,11 @@ public class LoadBalancerPoolPatch extends GenericModel {
   }
 
   /**
-   * The protocol used for this load balancer pool.
+   * The protocol to use for this load balancer pool. Load balancers in the `network` family support `tcp` and `udp` (if
+   * `udp_supported` is `true`). Load balancers in the `application` family support `tcp`, `http` and `https`.
    *
-   * The enumerated values for this property are expected to expand in the future. When processing this property, check
-   * for and log unknown values. Optionally halt processing and surface the error, or bypass the pool on which the
-   * unexpected property value was encountered.
+   * If this pool is associated with a load balancer listener, the specified protocol must be compatible with the
+   * listener's protocol. At present, the compatible protocols are `http` and `https`.
    */
   public interface Protocol {
     /** http. */
@@ -49,6 +49,8 @@ public class LoadBalancerPoolPatch extends GenericModel {
     String HTTPS = "https";
     /** tcp. */
     String TCP = "tcp";
+    /** udp. */
+    String UDP = "udp";
   }
 
   /**
@@ -234,11 +236,11 @@ public class LoadBalancerPoolPatch extends GenericModel {
   /**
    * Gets the protocol.
    *
-   * The protocol used for this load balancer pool.
+   * The protocol to use for this load balancer pool. Load balancers in the `network` family support `tcp` and `udp` (if
+   * `udp_supported` is `true`). Load balancers in the `application` family support `tcp`, `http` and `https`.
    *
-   * The enumerated values for this property are expected to expand in the future. When processing this property, check
-   * for and log unknown values. Optionally halt processing and surface the error, or bypass the pool on which the
-   * unexpected property value was encountered.
+   * If this pool is associated with a load balancer listener, the specified protocol must be compatible with the
+   * listener's protocol. At present, the compatible protocols are `http` and `https`.
    *
    * @return the protocol
    */

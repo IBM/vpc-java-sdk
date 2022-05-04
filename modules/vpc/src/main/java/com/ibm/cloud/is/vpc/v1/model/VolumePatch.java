@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -12,8 +12,11 @@
  */
 package com.ibm.cloud.is.vpc.v1.model;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
+import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 import com.ibm.cloud.sdk.core.util.GsonSingleton;
 
@@ -26,6 +29,8 @@ public class VolumePatch extends GenericModel {
   protected Long iops;
   protected String name;
   protected VolumeProfileIdentity profile;
+  @SerializedName("user_tags")
+  protected List<String> userTags;
 
   /**
    * Builder.
@@ -35,12 +40,14 @@ public class VolumePatch extends GenericModel {
     private Long iops;
     private String name;
     private VolumeProfileIdentity profile;
+    private List<String> userTags;
 
     private Builder(VolumePatch volumePatch) {
       this.capacity = volumePatch.capacity;
       this.iops = volumePatch.iops;
       this.name = volumePatch.name;
       this.profile = volumePatch.profile;
+      this.userTags = volumePatch.userTags;
     }
 
     /**
@@ -56,6 +63,22 @@ public class VolumePatch extends GenericModel {
      */
     public VolumePatch build() {
       return new VolumePatch(this);
+    }
+
+    /**
+     * Adds an userTags to userTags.
+     *
+     * @param userTags the new userTags
+     * @return the VolumePatch builder
+     */
+    public Builder addUserTags(String userTags) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(userTags,
+        "userTags cannot be null");
+      if (this.userTags == null) {
+        this.userTags = new ArrayList<String>();
+      }
+      this.userTags.add(userTags);
+      return this;
     }
 
     /**
@@ -101,6 +124,18 @@ public class VolumePatch extends GenericModel {
       this.profile = profile;
       return this;
     }
+
+    /**
+     * Set the userTags.
+     * Existing userTags will be replaced.
+     *
+     * @param userTags the userTags
+     * @return the VolumePatch builder
+     */
+    public Builder userTags(List<String> userTags) {
+      this.userTags = userTags;
+      return this;
+    }
   }
 
   protected VolumePatch(Builder builder) {
@@ -108,6 +143,7 @@ public class VolumePatch extends GenericModel {
     iops = builder.iops;
     name = builder.name;
     profile = builder.profile;
+    userTags = builder.userTags;
   }
 
   /**
@@ -122,8 +158,9 @@ public class VolumePatch extends GenericModel {
   /**
    * Gets the capacity.
    *
-   * The capacity to use for the volume (in gigabytes). The volume must be attached as a data volume to a running
-   * virtual server instance, and the specified value must not be less than the current capacity.
+   * The capacity to use for the volume (in gigabytes). The volume must be attached to a running virtual server
+   * instance, and the specified value must not be less than the current capacity. Additionally, if the volume is
+   * attached as a boot volume, the maximum value is 250 gigabytes.
    *
    * The minimum and maximum capacity limits for creating or updating volumes may expand in the future.
    *
@@ -159,14 +196,26 @@ public class VolumePatch extends GenericModel {
   /**
    * Gets the profile.
    *
-   * The profile to use for this volume.  The requested profile must be in the same
-   * `family` as the current profile.  The volume must be attached as a data volume to a
-   *  running virtual server instance.
+   * The profile to use for this volume. The requested profile must be in the same
+   * `family` as the current profile. The volume must be attached as a data volume to a
+   * running virtual server instance, and must have a `capacity` within the range
+   * supported by the specified profile.
    *
    * @return the profile
    */
   public VolumeProfileIdentity profile() {
     return profile;
+  }
+
+  /**
+   * Gets the userTags.
+   *
+   * Tags for this resource.
+   *
+   * @return the userTags
+   */
+  public List<String> userTags() {
+    return userTags;
   }
 
   /**

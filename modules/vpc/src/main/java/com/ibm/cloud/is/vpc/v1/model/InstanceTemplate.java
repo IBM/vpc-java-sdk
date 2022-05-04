@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -23,16 +23,21 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  *
  * Classes which extend this class:
  * - InstanceTemplateInstanceByImage
- * - InstanceTemplateInstanceByVolume
  */
 public class InstanceTemplate extends GenericModel {
 
+  @SerializedName("availability_policy")
+  protected InstanceAvailabilityPrototype availabilityPolicy;
   @SerializedName("created_at")
   protected Date createdAt;
   protected String crn;
+  @SerializedName("default_trusted_profile")
+  protected InstanceDefaultTrustedProfilePrototype defaultTrustedProfile;
   protected String href;
   protected String id;
   protected List<KeyIdentity> keys;
+  @SerializedName("metadata_service")
+  protected InstanceMetadataServicePrototype metadataService;
   protected String name;
   @SerializedName("network_interfaces")
   protected List<NetworkInterfacePrototype> networkInterfaces;
@@ -59,6 +64,17 @@ public class InstanceTemplate extends GenericModel {
   }
 
   /**
+   * Gets the availabilityPolicy.
+   *
+   * The availability policy to use for this virtual server instance.
+   *
+   * @return the availabilityPolicy
+   */
+  public InstanceAvailabilityPrototype getAvailabilityPolicy() {
+    return availabilityPolicy;
+  }
+
+  /**
    * Gets the createdAt.
    *
    * The date and time that the instance template was created.
@@ -78,6 +94,22 @@ public class InstanceTemplate extends GenericModel {
    */
   public String getCrn() {
     return crn;
+  }
+
+  /**
+   * Gets the defaultTrustedProfile.
+   *
+   * The default trusted profile configuration to use for this virtual server instance
+   *
+   * This property's value is used when provisioning the virtual server instance, but not
+   * subsequently managed. Accordingly, it is reflected as an [instance
+   * initialization](https://cloud.ibm.com/apidocs/vpc#get-instance-initialization)
+   * property.
+   *
+   * @return the defaultTrustedProfile
+   */
+  public InstanceDefaultTrustedProfilePrototype getDefaultTrustedProfile() {
+    return defaultTrustedProfile;
   }
 
   /**
@@ -125,6 +157,17 @@ public class InstanceTemplate extends GenericModel {
   }
 
   /**
+   * Gets the metadataService.
+   *
+   * Configuration options for the instance metadata service.
+   *
+   * @return the metadataService
+   */
+  public InstanceMetadataServicePrototype getMetadataService() {
+    return metadataService;
+  }
+
+  /**
    * Gets the name.
    *
    * The unique user-defined name for this instance template.
@@ -160,7 +203,8 @@ public class InstanceTemplate extends GenericModel {
   /**
    * Gets the profile.
    *
-   * The profile to use for this virtual server instance.
+   * The profile to use for this virtual server instance. If unspecified, `bx2-2x8` will
+   * be used, but this default value is expected to change in the future.
    *
    * @return the profile
    */

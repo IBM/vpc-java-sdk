@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -15,10 +15,13 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.CreateSnapshotOptions;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.SnapshotPrototypeSnapshotBySourceVolume;
 import com.ibm.cloud.is.vpc.v1.model.VolumeIdentityById;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import org.testng.annotations.Test;
@@ -33,24 +36,31 @@ public class CreateSnapshotOptionsTest {
 
   @Test
   public void testCreateSnapshotOptions() throws Throwable {
-    VolumeIdentityById volumeIdentityModel = new VolumeIdentityById.Builder()
-      .id("1a6b7274-678d-4dfb-8981-c71dd9d4daa5")
-      .build();
-    assertEquals(volumeIdentityModel.id(), "1a6b7274-678d-4dfb-8981-c71dd9d4daa5");
-
     ResourceGroupIdentityById resourceGroupIdentityModel = new ResourceGroupIdentityById.Builder()
       .id("fee82deba12e4c0fb69c3b09d1f12345")
       .build();
     assertEquals(resourceGroupIdentityModel.id(), "fee82deba12e4c0fb69c3b09d1f12345");
 
-    CreateSnapshotOptions createSnapshotOptionsModel = new CreateSnapshotOptions.Builder()
-      .sourceVolume(volumeIdentityModel)
+    VolumeIdentityById volumeIdentityModel = new VolumeIdentityById.Builder()
+      .id("1a6b7274-678d-4dfb-8981-c71dd9d4daa5")
+      .build();
+    assertEquals(volumeIdentityModel.id(), "1a6b7274-678d-4dfb-8981-c71dd9d4daa5");
+
+    SnapshotPrototypeSnapshotBySourceVolume snapshotPrototypeModel = new SnapshotPrototypeSnapshotBySourceVolume.Builder()
       .name("my-snapshot")
       .resourceGroup(resourceGroupIdentityModel)
+      .userTags(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
+      .sourceVolume(volumeIdentityModel)
       .build();
-    assertEquals(createSnapshotOptionsModel.sourceVolume(), volumeIdentityModel);
-    assertEquals(createSnapshotOptionsModel.name(), "my-snapshot");
-    assertEquals(createSnapshotOptionsModel.resourceGroup(), resourceGroupIdentityModel);
+    assertEquals(snapshotPrototypeModel.name(), "my-snapshot");
+    assertEquals(snapshotPrototypeModel.resourceGroup(), resourceGroupIdentityModel);
+    assertEquals(snapshotPrototypeModel.userTags(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
+    assertEquals(snapshotPrototypeModel.sourceVolume(), volumeIdentityModel);
+
+    CreateSnapshotOptions createSnapshotOptionsModel = new CreateSnapshotOptions.Builder()
+      .snapshotPrototype(snapshotPrototypeModel)
+      .build();
+    assertEquals(createSnapshotOptionsModel.snapshotPrototype(), snapshotPrototypeModel);
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

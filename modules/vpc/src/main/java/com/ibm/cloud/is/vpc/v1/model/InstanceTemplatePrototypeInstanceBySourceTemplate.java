@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -25,7 +25,10 @@ public class InstanceTemplatePrototypeInstanceBySourceTemplate extends InstanceT
    * Builder.
    */
   public static class Builder {
+    private InstanceAvailabilityPrototype availabilityPolicy;
+    private InstanceDefaultTrustedProfilePrototype defaultTrustedProfile;
     private List<KeyIdentity> keys;
+    private InstanceMetadataServicePrototype metadataService;
     private String name;
     private List<NetworkInterfacePrototype> networkInterfaces;
     private InstancePlacementTargetPrototype placementTarget;
@@ -42,7 +45,10 @@ public class InstanceTemplatePrototypeInstanceBySourceTemplate extends InstanceT
     private ZoneIdentity zone;
 
     public Builder(InstanceTemplatePrototype instanceTemplatePrototypeInstanceBySourceTemplate) {
+      this.availabilityPolicy = instanceTemplatePrototypeInstanceBySourceTemplate.availabilityPolicy;
+      this.defaultTrustedProfile = instanceTemplatePrototypeInstanceBySourceTemplate.defaultTrustedProfile;
       this.keys = instanceTemplatePrototypeInstanceBySourceTemplate.keys;
+      this.metadataService = instanceTemplatePrototypeInstanceBySourceTemplate.metadataService;
       this.name = instanceTemplatePrototypeInstanceBySourceTemplate.name;
       this.networkInterfaces = instanceTemplatePrototypeInstanceBySourceTemplate.networkInterfaces;
       this.placementTarget = instanceTemplatePrototypeInstanceBySourceTemplate.placementTarget;
@@ -132,6 +138,28 @@ public class InstanceTemplatePrototypeInstanceBySourceTemplate extends InstanceT
     }
 
     /**
+     * Set the availabilityPolicy.
+     *
+     * @param availabilityPolicy the availabilityPolicy
+     * @return the InstanceTemplatePrototypeInstanceBySourceTemplate builder
+     */
+    public Builder availabilityPolicy(InstanceAvailabilityPrototype availabilityPolicy) {
+      this.availabilityPolicy = availabilityPolicy;
+      return this;
+    }
+
+    /**
+     * Set the defaultTrustedProfile.
+     *
+     * @param defaultTrustedProfile the defaultTrustedProfile
+     * @return the InstanceTemplatePrototypeInstanceBySourceTemplate builder
+     */
+    public Builder defaultTrustedProfile(InstanceDefaultTrustedProfilePrototype defaultTrustedProfile) {
+      this.defaultTrustedProfile = defaultTrustedProfile;
+      return this;
+    }
+
+    /**
      * Set the keys.
      * Existing keys will be replaced.
      *
@@ -140,6 +168,17 @@ public class InstanceTemplatePrototypeInstanceBySourceTemplate extends InstanceT
      */
     public Builder keys(List<KeyIdentity> keys) {
       this.keys = keys;
+      return this;
+    }
+
+    /**
+     * Set the metadataService.
+     *
+     * @param metadataService the metadataService
+     * @return the InstanceTemplatePrototypeInstanceBySourceTemplate builder
+     */
+    public Builder metadataService(InstanceMetadataServicePrototype metadataService) {
+      this.metadataService = metadataService;
       return this;
     }
 
@@ -303,7 +342,10 @@ public class InstanceTemplatePrototypeInstanceBySourceTemplate extends InstanceT
   protected InstanceTemplatePrototypeInstanceBySourceTemplate(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.sourceTemplate,
       "sourceTemplate cannot be null");
+    availabilityPolicy = builder.availabilityPolicy;
+    defaultTrustedProfile = builder.defaultTrustedProfile;
     keys = builder.keys;
+    metadataService = builder.metadataService;
     name = builder.name;
     networkInterfaces = builder.networkInterfaces;
     placementTarget = builder.placementTarget;

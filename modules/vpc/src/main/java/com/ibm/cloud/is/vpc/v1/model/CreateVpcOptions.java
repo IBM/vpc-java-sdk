@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -20,11 +20,11 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class CreateVpcOptions extends GenericModel {
 
   /**
-   * Indicates whether a default address prefix should be automatically created for each zone in this VPC. If `manual`,
+   * Indicates whether a default address prefix will be automatically created for each zone in this VPC. If `manual`,
    * this VPC will be created with no default address prefixes.
    *
-   * This property's value is used only when creating the VPC. Since address prefixes are managed identically regardless
-   * of whether they were automatically created, the value is not preserved as a VPC property.
+   * Since address prefixes are managed identically regardless of whether they were automatically created, the value is
+   * not preserved as a VPC property.
    */
   public interface AddressPrefixManagement {
     /** auto. */
@@ -133,11 +133,11 @@ public class CreateVpcOptions extends GenericModel {
   /**
    * Gets the addressPrefixManagement.
    *
-   * Indicates whether a default address prefix should be automatically created for each zone in this VPC. If `manual`,
+   * Indicates whether a default address prefix will be automatically created for each zone in this VPC. If `manual`,
    * this VPC will be created with no default address prefixes.
    *
-   * This property's value is used only when creating the VPC. Since address prefixes are managed identically regardless
-   * of whether they were automatically created, the value is not preserved as a VPC property.
+   * Since address prefixes are managed identically regardless of whether they were automatically created, the value is
+   * not preserved as a VPC property.
    *
    * @return the addressPrefixManagement
    */
@@ -148,7 +148,7 @@ public class CreateVpcOptions extends GenericModel {
   /**
    * Gets the classicAccess.
    *
-   * Indicates whether this VPC should be connected to Classic Infrastructure. If true, this VPC's resources will have
+   * Indicates whether this VPC will be connected to Classic Infrastructure. If true, this VPC's resources will have
    * private network connectivity to the account's Classic Infrastructure resources. Only one VPC, per region, may be
    * connected in this way. This value is set at creation and subsequently immutable.
    *

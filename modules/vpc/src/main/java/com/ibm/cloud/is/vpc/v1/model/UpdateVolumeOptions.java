@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -23,6 +23,7 @@ public class UpdateVolumeOptions extends GenericModel {
 
   protected String id;
   protected Map<String, Object> volumePatch;
+  protected String ifMatch;
 
   /**
    * Builder.
@@ -30,10 +31,12 @@ public class UpdateVolumeOptions extends GenericModel {
   public static class Builder {
     private String id;
     private Map<String, Object> volumePatch;
+    private String ifMatch;
 
     private Builder(UpdateVolumeOptions updateVolumeOptions) {
       this.id = updateVolumeOptions.id;
       this.volumePatch = updateVolumeOptions.volumePatch;
+      this.ifMatch = updateVolumeOptions.ifMatch;
     }
 
     /**
@@ -83,6 +86,17 @@ public class UpdateVolumeOptions extends GenericModel {
       this.volumePatch = volumePatch;
       return this;
     }
+
+    /**
+     * Set the ifMatch.
+     *
+     * @param ifMatch the ifMatch
+     * @return the UpdateVolumeOptions builder
+     */
+    public Builder ifMatch(String ifMatch) {
+      this.ifMatch = ifMatch;
+      return this;
+    }
   }
 
   protected UpdateVolumeOptions(Builder builder) {
@@ -92,6 +106,7 @@ public class UpdateVolumeOptions extends GenericModel {
       "volumePatch cannot be null");
     id = builder.id;
     volumePatch = builder.volumePatch;
+    ifMatch = builder.ifMatch;
   }
 
   /**
@@ -123,6 +138,18 @@ public class UpdateVolumeOptions extends GenericModel {
    */
   public Map<String, Object> volumePatch() {
     return volumePatch;
+  }
+
+  /**
+   * Gets the ifMatch.
+   *
+   * If present, the request will fail if the specified ETag value does not match the resource's current ETag value.
+   * Required if the request body includes an array.
+   *
+   * @return the ifMatch
+   */
+  public String ifMatch() {
+    return ifMatch;
   }
 }
 

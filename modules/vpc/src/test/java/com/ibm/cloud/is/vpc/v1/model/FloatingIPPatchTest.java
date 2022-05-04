@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -14,7 +14,7 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPPatch;
-import com.ibm.cloud.is.vpc.v1.model.FloatingIPPatchTargetNetworkInterfaceIdentityNetworkInterfaceIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.FloatingIPTargetPatchNetworkInterfaceIdentityById;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -33,34 +33,34 @@ public class FloatingIPPatchTest {
 
   @Test
   public void testFloatingIPPatch() throws Throwable {
-    FloatingIPPatchTargetNetworkInterfaceIdentityNetworkInterfaceIdentityById floatingIpPatchTargetNetworkInterfaceIdentityModel = new FloatingIPPatchTargetNetworkInterfaceIdentityNetworkInterfaceIdentityById.Builder()
-      .id("69e55145-cc7d-4d8e-9e1f-cc3fb60b1793")
+    FloatingIPTargetPatchNetworkInterfaceIdentityById floatingIpTargetPatchModel = new FloatingIPTargetPatchNetworkInterfaceIdentityById.Builder()
+      .id("10c02d81-0ecb-4dc5-897d-28392913b81e")
       .build();
-    assertEquals(floatingIpPatchTargetNetworkInterfaceIdentityModel.id(), "69e55145-cc7d-4d8e-9e1f-cc3fb60b1793");
+    assertEquals(floatingIpTargetPatchModel.id(), "10c02d81-0ecb-4dc5-897d-28392913b81e");
 
     FloatingIPPatch floatingIpPatchModel = new FloatingIPPatch.Builder()
       .name("my-floating-ip")
-      .target(floatingIpPatchTargetNetworkInterfaceIdentityModel)
+      .target(floatingIpTargetPatchModel)
       .build();
     assertEquals(floatingIpPatchModel.name(), "my-floating-ip");
-    assertEquals(floatingIpPatchModel.target(), floatingIpPatchTargetNetworkInterfaceIdentityModel);
+    assertEquals(floatingIpPatchModel.target(), floatingIpTargetPatchModel);
 
     String json = TestUtilities.serialize(floatingIpPatchModel);
 
     FloatingIPPatch floatingIpPatchModelNew = TestUtilities.deserialize(json, FloatingIPPatch.class);
     assertTrue(floatingIpPatchModelNew instanceof FloatingIPPatch);
     assertEquals(floatingIpPatchModelNew.name(), "my-floating-ip");
-    assertEquals(floatingIpPatchModelNew.target().toString(), floatingIpPatchTargetNetworkInterfaceIdentityModel.toString());
+    assertEquals(floatingIpPatchModelNew.target().toString(), floatingIpTargetPatchModel.toString());
   }
   @Test
   public void testFloatingIPPatchAsPatch() throws Throwable {
-    FloatingIPPatchTargetNetworkInterfaceIdentityNetworkInterfaceIdentityById floatingIpPatchTargetNetworkInterfaceIdentityModel = new FloatingIPPatchTargetNetworkInterfaceIdentityNetworkInterfaceIdentityById.Builder()
-      .id("69e55145-cc7d-4d8e-9e1f-cc3fb60b1793")
+    FloatingIPTargetPatchNetworkInterfaceIdentityById floatingIpTargetPatchModel = new FloatingIPTargetPatchNetworkInterfaceIdentityById.Builder()
+      .id("10c02d81-0ecb-4dc5-897d-28392913b81e")
       .build();
 
     FloatingIPPatch floatingIpPatchModel = new FloatingIPPatch.Builder()
       .name("my-floating-ip")
-      .target(floatingIpPatchTargetNetworkInterfaceIdentityModel)
+      .target(floatingIpTargetPatchModel)
       .build();
 
     Map<String, Object> mergePatch = floatingIpPatchModel.asPatch();

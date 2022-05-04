@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -26,9 +26,12 @@ public class LoadBalancerListenerPatch extends GenericModel {
   /**
    * The listener protocol. Each listener in the load balancer must have a unique `port` and `protocol` combination.
    * Additional restrictions:
-   * - If this load balancer is in the `network` family, the protocol must be `tcp`.
-   * - If this listener has `https_redirect` specified, the protocol must be `http`.
-   * - If this listener is a listener's `https_redirect` target, the protocol must be `https`.
+   * - If this load balancer is in the `network` family, the protocol must be `tcp`
+   *   or `udp` (if `udp_supported` is `true`) , and it cannot be changed while
+   *   `default_pool` is set.
+   * - If `https_redirect` is set, the protocol must be `http`.
+   * - If this listener is a listener's `https_redirect` target, the protocol must be
+   *   `https`.
    */
   public interface Protocol {
     /** http. */
@@ -37,6 +40,8 @@ public class LoadBalancerListenerPatch extends GenericModel {
     String HTTPS = "https";
     /** tcp. */
     String TCP = "tcp";
+    /** udp. */
+    String UDP = "udp";
   }
 
   @SerializedName("accept_proxy_protocol")
@@ -260,11 +265,14 @@ public class LoadBalancerListenerPatch extends GenericModel {
   /**
    * Gets the defaultPool.
    *
-   * The default pool associated with the listener. The specified pool must:
+   * The default pool for this listener. The specified pool must:
    *
    * - Belong to this load balancer
-   * - Have the same `protocol` as this listener
-   * - Not already be the default pool for another listener.
+   * - Have the same `protocol` as this listener, or have a compatible protocol.
+   *   At present, the compatible protocols are `http` and `https`.
+   * - Not already be the `default_pool` for another listener
+   *
+   * Specify `null` to remove an existing default pool.
    *
    * @return the defaultPool
    */
@@ -277,6 +285,7 @@ public class LoadBalancerListenerPatch extends GenericModel {
    *
    * The target listener that requests will be redirected to. This listener must have a
    * `protocol` of `http`, and the target listener must have a `protocol` of `https`.
+   *
    * Specify `null` to remove any existing https redirect.
    *
    * @return the httpsRedirect
@@ -304,9 +313,12 @@ public class LoadBalancerListenerPatch extends GenericModel {
    *
    * The inclusive upper bound of the range of ports used by this listener. Must not be less than `port_min`.
    *
-   * At present, only load balancers operating with route mode enabled support different values for `port_min` and
-   * `port_max`.  When route mode is enabled, only a value of
-   * `65535` is supported for `port_max`.
+   * At present, only load balancers operating with route mode enabled, and public load balancers in the `network`
+   * family support different values for `port_min` and
+   * `port_max`. When route mode is enabled, the value `65535` must be specified.
+   *
+   * The specified port range must not overlap with port ranges used by other listeners for this load balancer using the
+   * same protocol.
    *
    * @return the portMax
    */
@@ -319,9 +331,12 @@ public class LoadBalancerListenerPatch extends GenericModel {
    *
    * The inclusive lower bound of the range of ports used by this listener. Must not be greater than `port_max`.
    *
-   * At present, only load balancers operating with route mode enabled support different values for `port_min` and
-   * `port_max`.  When route mode is enabled, only a value of
-   * `1` is supported for `port_min`.
+   * At present, only load balancers operating with route mode enabled, and public load balancers in the `network`
+   * family support different values for `port_min` and
+   * `port_max`. When route mode is enabled, the value `1` must be specified.
+   *
+   * The specified port range must not overlap with port ranges used by other listeners for this load balancer using the
+   * same protocol.
    *
    * @return the portMin
    */
@@ -334,9 +349,12 @@ public class LoadBalancerListenerPatch extends GenericModel {
    *
    * The listener protocol. Each listener in the load balancer must have a unique `port` and `protocol` combination.
    * Additional restrictions:
-   * - If this load balancer is in the `network` family, the protocol must be `tcp`.
-   * - If this listener has `https_redirect` specified, the protocol must be `http`.
-   * - If this listener is a listener's `https_redirect` target, the protocol must be `https`.
+   * - If this load balancer is in the `network` family, the protocol must be `tcp`
+   *   or `udp` (if `udp_supported` is `true`) , and it cannot be changed while
+   *   `default_pool` is set.
+   * - If `https_redirect` is set, the protocol must be `http`.
+   * - If this listener is a listener's `https_redirect` target, the protocol must be
+   *   `https`.
    *
    * @return the protocol
    */

@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -13,9 +13,9 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
-import com.ibm.cloud.is.vpc.v1.model.CloudObjectStorageBucketIdentityByName;
 import com.ibm.cloud.is.vpc.v1.model.CreateFlowLogCollectorOptions;
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceIdentityNetworkInterfaceIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.LegacyCloudObjectStorageBucketIdentityCloudObjectStorageBucketIdentityByName;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupIdentityById;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
@@ -34,10 +34,10 @@ public class CreateFlowLogCollectorOptionsTest {
 
   @Test
   public void testCreateFlowLogCollectorOptions() throws Throwable {
-    CloudObjectStorageBucketIdentityByName cloudObjectStorageBucketIdentityModel = new CloudObjectStorageBucketIdentityByName.Builder()
+    LegacyCloudObjectStorageBucketIdentityCloudObjectStorageBucketIdentityByName legacyCloudObjectStorageBucketIdentityModel = new LegacyCloudObjectStorageBucketIdentityCloudObjectStorageBucketIdentityByName.Builder()
       .name("bucket-27200-lwx4cfvcue")
       .build();
-    assertEquals(cloudObjectStorageBucketIdentityModel.name(), "bucket-27200-lwx4cfvcue");
+    assertEquals(legacyCloudObjectStorageBucketIdentityModel.name(), "bucket-27200-lwx4cfvcue");
 
     FlowLogCollectorTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceIdentityNetworkInterfaceIdentityById flowLogCollectorTargetPrototypeModel = new FlowLogCollectorTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceIdentityNetworkInterfaceIdentityById.Builder()
       .id("10c02d81-0ecb-4dc5-897d-28392913b81e")
@@ -50,13 +50,13 @@ public class CreateFlowLogCollectorOptionsTest {
     assertEquals(resourceGroupIdentityModel.id(), "fee82deba12e4c0fb69c3b09d1f12345");
 
     CreateFlowLogCollectorOptions createFlowLogCollectorOptionsModel = new CreateFlowLogCollectorOptions.Builder()
-      .storageBucket(cloudObjectStorageBucketIdentityModel)
+      .storageBucket(legacyCloudObjectStorageBucketIdentityModel)
       .target(flowLogCollectorTargetPrototypeModel)
       .active(false)
       .name("my-flow-log-collector")
       .resourceGroup(resourceGroupIdentityModel)
       .build();
-    assertEquals(createFlowLogCollectorOptionsModel.storageBucket(), cloudObjectStorageBucketIdentityModel);
+    assertEquals(createFlowLogCollectorOptionsModel.storageBucket(), legacyCloudObjectStorageBucketIdentityModel);
     assertEquals(createFlowLogCollectorOptionsModel.target(), flowLogCollectorTargetPrototypeModel);
     assertEquals(createFlowLogCollectorOptionsModel.active(), Boolean.valueOf(false));
     assertEquals(createFlowLogCollectorOptionsModel.name(), "my-flow-log-collector");

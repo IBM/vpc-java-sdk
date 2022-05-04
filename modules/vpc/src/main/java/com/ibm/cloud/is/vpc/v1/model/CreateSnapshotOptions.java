@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -19,22 +19,16 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class CreateSnapshotOptions extends GenericModel {
 
-  protected VolumeIdentity sourceVolume;
-  protected String name;
-  protected ResourceGroupIdentity resourceGroup;
+  protected SnapshotPrototype snapshotPrototype;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private VolumeIdentity sourceVolume;
-    private String name;
-    private ResourceGroupIdentity resourceGroup;
+    private SnapshotPrototype snapshotPrototype;
 
     private Builder(CreateSnapshotOptions createSnapshotOptions) {
-      this.sourceVolume = createSnapshotOptions.sourceVolume;
-      this.name = createSnapshotOptions.name;
-      this.resourceGroup = createSnapshotOptions.resourceGroup;
+      this.snapshotPrototype = createSnapshotOptions.snapshotPrototype;
     }
 
     /**
@@ -46,10 +40,10 @@ public class CreateSnapshotOptions extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param sourceVolume the sourceVolume
+     * @param snapshotPrototype the snapshotPrototype
      */
-    public Builder(VolumeIdentity sourceVolume) {
-      this.sourceVolume = sourceVolume;
+    public Builder(SnapshotPrototype snapshotPrototype) {
+      this.snapshotPrototype = snapshotPrototype;
     }
 
     /**
@@ -62,45 +56,21 @@ public class CreateSnapshotOptions extends GenericModel {
     }
 
     /**
-     * Set the sourceVolume.
+     * Set the snapshotPrototype.
      *
-     * @param sourceVolume the sourceVolume
+     * @param snapshotPrototype the snapshotPrototype
      * @return the CreateSnapshotOptions builder
      */
-    public Builder sourceVolume(VolumeIdentity sourceVolume) {
-      this.sourceVolume = sourceVolume;
-      return this;
-    }
-
-    /**
-     * Set the name.
-     *
-     * @param name the name
-     * @return the CreateSnapshotOptions builder
-     */
-    public Builder name(String name) {
-      this.name = name;
-      return this;
-    }
-
-    /**
-     * Set the resourceGroup.
-     *
-     * @param resourceGroup the resourceGroup
-     * @return the CreateSnapshotOptions builder
-     */
-    public Builder resourceGroup(ResourceGroupIdentity resourceGroup) {
-      this.resourceGroup = resourceGroup;
+    public Builder snapshotPrototype(SnapshotPrototype snapshotPrototype) {
+      this.snapshotPrototype = snapshotPrototype;
       return this;
     }
   }
 
   protected CreateSnapshotOptions(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.sourceVolume,
-      "sourceVolume cannot be null");
-    sourceVolume = builder.sourceVolume;
-    name = builder.name;
-    resourceGroup = builder.resourceGroup;
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.snapshotPrototype,
+      "snapshotPrototype cannot be null");
+    snapshotPrototype = builder.snapshotPrototype;
   }
 
   /**
@@ -113,38 +83,14 @@ public class CreateSnapshotOptions extends GenericModel {
   }
 
   /**
-   * Gets the sourceVolume.
+   * Gets the snapshotPrototype.
    *
-   * The volume to snapshot.
+   * The snapshot prototype object.
    *
-   * @return the sourceVolume
+   * @return the snapshotPrototype
    */
-  public VolumeIdentity sourceVolume() {
-    return sourceVolume;
-  }
-
-  /**
-   * Gets the name.
-   *
-   * The unique user-defined name for this snapshot. If unspecified, the name will be a hyphenated list of
-   * randomly-selected words.
-   *
-   * @return the name
-   */
-  public String name() {
-    return name;
-  }
-
-  /**
-   * Gets the resourceGroup.
-   *
-   * The resource group to use. If unspecified, the account's [default resource
-   * group](https://cloud.ibm.com/apidocs/resource-manager#introduction) is used.
-   *
-   * @return the resourceGroup
-   */
-  public ResourceGroupIdentity resourceGroup() {
-    return resourceGroup;
+  public SnapshotPrototype snapshotPrototype() {
+    return snapshotPrototype;
   }
 }
 

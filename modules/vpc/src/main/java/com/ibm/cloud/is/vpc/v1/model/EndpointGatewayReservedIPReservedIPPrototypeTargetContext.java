@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -22,11 +22,13 @@ public class EndpointGatewayReservedIPReservedIPPrototypeTargetContext extends E
    * Builder.
    */
   public static class Builder {
+    private String address;
     private Boolean autoDelete;
     private String name;
     private SubnetIdentity subnet;
 
     public Builder(EndpointGatewayReservedIP endpointGatewayReservedIpReservedIpPrototypeTargetContext) {
+      this.address = endpointGatewayReservedIpReservedIpPrototypeTargetContext.address;
       this.autoDelete = endpointGatewayReservedIpReservedIpPrototypeTargetContext.autoDelete;
       this.name = endpointGatewayReservedIpReservedIpPrototypeTargetContext.name;
       this.subnet = endpointGatewayReservedIpReservedIpPrototypeTargetContext.subnet;
@@ -54,6 +56,17 @@ public class EndpointGatewayReservedIPReservedIPPrototypeTargetContext extends E
      */
     public EndpointGatewayReservedIPReservedIPPrototypeTargetContext build() {
       return new EndpointGatewayReservedIPReservedIPPrototypeTargetContext(this);
+    }
+
+    /**
+     * Set the address.
+     *
+     * @param address the address
+     * @return the EndpointGatewayReservedIPReservedIPPrototypeTargetContext builder
+     */
+    public Builder address(String address) {
+      this.address = address;
+      return this;
     }
 
     /**
@@ -93,6 +106,7 @@ public class EndpointGatewayReservedIPReservedIPPrototypeTargetContext extends E
   protected EndpointGatewayReservedIPReservedIPPrototypeTargetContext(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.subnet,
       "subnet cannot be null");
+    address = builder.address;
     autoDelete = builder.autoDelete;
     name = builder.name;
     subnet = builder.subnet;

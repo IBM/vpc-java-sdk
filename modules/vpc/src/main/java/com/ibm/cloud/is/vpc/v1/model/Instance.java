@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -51,6 +51,8 @@ public class Instance extends GenericModel {
     String STOPPING = "stopping";
   }
 
+  @SerializedName("availability_policy")
+  protected InstanceAvailabilityPolicy availabilityPolicy;
   protected Long bandwidth;
   @SerializedName("boot_volume_attachment")
   protected VolumeAttachmentReferenceInstanceContext bootVolumeAttachment;
@@ -65,6 +67,8 @@ public class Instance extends GenericModel {
   protected String id;
   protected ImageReference image;
   protected Long memory;
+  @SerializedName("metadata_service")
+  protected InstanceMetadataService metadataService;
   protected String name;
   @SerializedName("network_interfaces")
   protected List<NetworkInterfaceInstanceContextReference> networkInterfaces;
@@ -88,6 +92,17 @@ public class Instance extends GenericModel {
   protected List<VolumeAttachmentReferenceInstanceContext> volumeAttachments;
   protected VPCReference vpc;
   protected ZoneReference zone;
+
+  /**
+   * Gets the availabilityPolicy.
+   *
+   * The availability policy for this virtual server instance.
+   *
+   * @return the availabilityPolicy
+   */
+  public InstanceAvailabilityPolicy getAvailabilityPolicy() {
+    return availabilityPolicy;
+  }
 
   /**
    * Gets the bandwidth.
@@ -209,6 +224,17 @@ public class Instance extends GenericModel {
    */
   public Long getMemory() {
     return memory;
+  }
+
+  /**
+   * Gets the metadataService.
+   *
+   * The metadata service configuration.
+   *
+   * @return the metadataService
+   */
+  public InstanceMetadataService getMetadataService() {
+    return metadataService;
   }
 
   /**

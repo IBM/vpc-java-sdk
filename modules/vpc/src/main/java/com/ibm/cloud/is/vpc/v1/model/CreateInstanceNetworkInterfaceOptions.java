@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -26,7 +26,7 @@ public class CreateInstanceNetworkInterfaceOptions extends GenericModel {
   protected SubnetIdentity subnet;
   protected Boolean allowIpSpoofing;
   protected String name;
-  protected String primaryIpv4Address;
+  protected NetworkInterfaceIPPrototype primaryIp;
   protected List<SecurityGroupIdentity> securityGroups;
 
   /**
@@ -37,7 +37,7 @@ public class CreateInstanceNetworkInterfaceOptions extends GenericModel {
     private SubnetIdentity subnet;
     private Boolean allowIpSpoofing;
     private String name;
-    private String primaryIpv4Address;
+    private NetworkInterfaceIPPrototype primaryIp;
     private List<SecurityGroupIdentity> securityGroups;
 
     private Builder(CreateInstanceNetworkInterfaceOptions createInstanceNetworkInterfaceOptions) {
@@ -45,7 +45,7 @@ public class CreateInstanceNetworkInterfaceOptions extends GenericModel {
       this.subnet = createInstanceNetworkInterfaceOptions.subnet;
       this.allowIpSpoofing = createInstanceNetworkInterfaceOptions.allowIpSpoofing;
       this.name = createInstanceNetworkInterfaceOptions.name;
-      this.primaryIpv4Address = createInstanceNetworkInterfaceOptions.primaryIpv4Address;
+      this.primaryIp = createInstanceNetworkInterfaceOptions.primaryIp;
       this.securityGroups = createInstanceNetworkInterfaceOptions.securityGroups;
     }
 
@@ -136,13 +136,13 @@ public class CreateInstanceNetworkInterfaceOptions extends GenericModel {
     }
 
     /**
-     * Set the primaryIpv4Address.
+     * Set the primaryIp.
      *
-     * @param primaryIpv4Address the primaryIpv4Address
+     * @param primaryIp the primaryIp
      * @return the CreateInstanceNetworkInterfaceOptions builder
      */
-    public Builder primaryIpv4Address(String primaryIpv4Address) {
-      this.primaryIpv4Address = primaryIpv4Address;
+    public Builder primaryIp(NetworkInterfaceIPPrototype primaryIp) {
+      this.primaryIp = primaryIp;
       return this;
     }
 
@@ -168,7 +168,7 @@ public class CreateInstanceNetworkInterfaceOptions extends GenericModel {
       this.subnet = networkInterfacePrototype.subnet();
       this.allowIpSpoofing = networkInterfacePrototype.allowIpSpoofing();
       this.name = networkInterfacePrototype.name();
-      this.primaryIpv4Address = networkInterfacePrototype.primaryIpv4Address();
+      this.primaryIp = networkInterfacePrototype.primaryIp();
       this.securityGroups = networkInterfacePrototype.securityGroups();
       return this;
     }
@@ -183,7 +183,7 @@ public class CreateInstanceNetworkInterfaceOptions extends GenericModel {
     subnet = builder.subnet;
     allowIpSpoofing = builder.allowIpSpoofing;
     name = builder.name;
-    primaryIpv4Address = builder.primaryIpv4Address;
+    primaryIp = builder.primaryIp;
     securityGroups = builder.securityGroups;
   }
 
@@ -243,21 +243,25 @@ public class CreateInstanceNetworkInterfaceOptions extends GenericModel {
   }
 
   /**
-   * Gets the primaryIpv4Address.
+   * Gets the primaryIp.
    *
-   * The primary IPv4 address. If specified, it must be an available address on the network interface's subnet. If
-   * unspecified, an available address on the subnet will be automatically selected.
+   * The primary IP address to bind to the network interface. This can be specified using
+   * an existing reserved IP, or a prototype object for a new reserved IP.
    *
-   * @return the primaryIpv4Address
+   * If an existing reserved IP or a prototype object with an address is specified, it must
+   * be available on the network interface's subnet. Otherwise, an available address on the
+   * subnet will be automatically selected and reserved.
+   *
+   * @return the primaryIp
    */
-  public String primaryIpv4Address() {
-    return primaryIpv4Address;
+  public NetworkInterfaceIPPrototype primaryIp() {
+    return primaryIp;
   }
 
   /**
    * Gets the securityGroups.
    *
-   * Collection of security groups.
+   * The security groups to use for this network interface. If unspecified, the VPC's default security group is used.
    *
    * @return the securityGroups
    */

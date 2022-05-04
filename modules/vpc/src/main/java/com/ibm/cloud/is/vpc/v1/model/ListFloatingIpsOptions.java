@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -19,9 +19,22 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class ListFloatingIpsOptions extends GenericModel {
 
+  /**
+   * Sorts the returned collection by the specified property name in ascending order. A `-` may be prepended to the name
+   * to sort in descending order. For example, the value `-created_at` sorts the collection by the `created_at` property
+   * in descending order, and the value `name` sorts it by the `name` property in ascending order.
+   */
+  public interface Sort {
+    /** created_at. */
+    String CREATED_AT = "created_at";
+    /** name. */
+    String NAME = "name";
+  }
+
   protected String start;
   protected Long limit;
   protected String resourceGroupId;
+  protected String sort;
 
   /**
    * Builder.
@@ -30,11 +43,13 @@ public class ListFloatingIpsOptions extends GenericModel {
     private String start;
     private Long limit;
     private String resourceGroupId;
+    private String sort;
 
     private Builder(ListFloatingIpsOptions listFloatingIpsOptions) {
       this.start = listFloatingIpsOptions.start;
       this.limit = listFloatingIpsOptions.limit;
       this.resourceGroupId = listFloatingIpsOptions.resourceGroupId;
+      this.sort = listFloatingIpsOptions.sort;
     }
 
     /**
@@ -84,12 +99,24 @@ public class ListFloatingIpsOptions extends GenericModel {
       this.resourceGroupId = resourceGroupId;
       return this;
     }
+
+    /**
+     * Set the sort.
+     *
+     * @param sort the sort
+     * @return the ListFloatingIpsOptions builder
+     */
+    public Builder sort(String sort) {
+      this.sort = sort;
+      return this;
+    }
   }
 
   protected ListFloatingIpsOptions(Builder builder) {
     start = builder.start;
     limit = builder.limit;
     resourceGroupId = builder.resourceGroupId;
+    sort = builder.sort;
   }
 
   /**
@@ -104,7 +131,7 @@ public class ListFloatingIpsOptions extends GenericModel {
   /**
    * Gets the start.
    *
-   * A server-supplied token determining what resource to start the page on.
+   * A server-provided token determining what resource to start the page on.
    *
    * @return the start
    */
@@ -132,6 +159,19 @@ public class ListFloatingIpsOptions extends GenericModel {
    */
   public String resourceGroupId() {
     return resourceGroupId;
+  }
+
+  /**
+   * Gets the sort.
+   *
+   * Sorts the returned collection by the specified property name in ascending order. A `-` may be prepended to the name
+   * to sort in descending order. For example, the value `-created_at` sorts the collection by the `created_at` property
+   * in descending order, and the value `name` sorts it by the `name` property in ascending order.
+   *
+   * @return the sort
+   */
+  public String sort() {
+    return sort;
   }
 }
 

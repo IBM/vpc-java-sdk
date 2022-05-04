@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -79,6 +79,8 @@ public class Volume extends GenericModel {
   protected String status;
   @SerializedName("status_reasons")
   protected List<VolumeStatusReason> statusReasons;
+  @SerializedName("user_tags")
+  protected List<String> userTags;
   @SerializedName("volume_attachments")
   protected List<VolumeAttachmentReferenceVolumeContext> volumeAttachments;
   protected ZoneReference zone;
@@ -307,6 +309,17 @@ public class Volume extends GenericModel {
    */
   public List<VolumeStatusReason> getStatusReasons() {
     return statusReasons;
+  }
+
+  /**
+   * Gets the userTags.
+   *
+   * Tags for this resource.
+   *
+   * @return the userTags
+   */
+  public List<String> getUserTags() {
+    return userTags;
   }
 
   /**

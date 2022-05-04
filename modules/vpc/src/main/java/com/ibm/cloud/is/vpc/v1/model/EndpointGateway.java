@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -25,8 +25,8 @@ public class EndpointGateway extends GenericModel {
 
   /**
    * The health of this resource.
-   * - `ok`: Healthy
-   * - `degraded`: Suffering from compromised performance, capacity, or connectivity
+   * - `ok`: No abnormal behavior detected
+   * - `degraded`: Experiencing compromised performance, capacity, or connectivity
    * - `faulted`: Completely unreachable, inoperative, or otherwise entirely incapacitated
    * - `inapplicable`: The health state does not apply because of the current lifecycle state. A resource with a
    * lifecycle state of `failed` or `deleting` will have a health state of `inapplicable`. A `pending` resource may also
@@ -86,6 +86,8 @@ public class EndpointGateway extends GenericModel {
   protected ResourceGroupReference resourceGroup;
   @SerializedName("resource_type")
   protected String resourceType;
+  @SerializedName("security_groups")
+  protected List<SecurityGroupReference> securityGroups;
   @SerializedName("service_endpoint")
   protected String serviceEndpoint;
   @SerializedName("service_endpoints")
@@ -119,8 +121,8 @@ public class EndpointGateway extends GenericModel {
    * Gets the healthState.
    *
    * The health of this resource.
-   * - `ok`: Healthy
-   * - `degraded`: Suffering from compromised performance, capacity, or connectivity
+   * - `ok`: No abnormal behavior detected
+   * - `degraded`: Experiencing compromised performance, capacity, or connectivity
    * - `faulted`: Completely unreachable, inoperative, or otherwise entirely incapacitated
    * - `inapplicable`: The health state does not apply because of the current lifecycle state. A resource with a
    * lifecycle state of `failed` or `deleting` will have a health state of `inapplicable`. A `pending` resource may also
@@ -207,6 +209,17 @@ public class EndpointGateway extends GenericModel {
    */
   public String getResourceType() {
     return resourceType;
+  }
+
+  /**
+   * Gets the securityGroups.
+   *
+   * The security groups targeting this endpoint gateway.
+   *
+   * @return the securityGroups
+   */
+  public List<SecurityGroupReference> getSecurityGroups() {
+    return securityGroups;
   }
 
   /**

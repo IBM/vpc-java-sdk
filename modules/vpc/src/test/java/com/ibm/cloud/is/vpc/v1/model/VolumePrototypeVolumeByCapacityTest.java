@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -21,6 +21,8 @@ import com.ibm.cloud.is.vpc.v1.model.ZoneIdentityByName;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import org.testng.annotations.Test;
@@ -60,6 +62,7 @@ public class VolumePrototypeVolumeByCapacityTest {
       .name("my-volume")
       .profile(volumeProfileIdentityModel)
       .resourceGroup(resourceGroupIdentityModel)
+      .userTags(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
       .zone(zoneIdentityModel)
       .capacity(Long.valueOf("100"))
       .encryptionKey(encryptionKeyIdentityModel)
@@ -68,6 +71,7 @@ public class VolumePrototypeVolumeByCapacityTest {
     assertEquals(volumePrototypeVolumeByCapacityModel.name(), "my-volume");
     assertEquals(volumePrototypeVolumeByCapacityModel.profile(), volumeProfileIdentityModel);
     assertEquals(volumePrototypeVolumeByCapacityModel.resourceGroup(), resourceGroupIdentityModel);
+    assertEquals(volumePrototypeVolumeByCapacityModel.userTags(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
     assertEquals(volumePrototypeVolumeByCapacityModel.zone(), zoneIdentityModel);
     assertEquals(volumePrototypeVolumeByCapacityModel.capacity(), Long.valueOf("100"));
     assertEquals(volumePrototypeVolumeByCapacityModel.encryptionKey(), encryptionKeyIdentityModel);

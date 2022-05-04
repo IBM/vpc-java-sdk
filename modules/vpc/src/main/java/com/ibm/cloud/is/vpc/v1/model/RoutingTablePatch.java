@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -143,9 +143,9 @@ public class RoutingTablePatch extends GenericModel {
    * routing table. Updating to `false` deselects this routing table.
    *
    * Incoming traffic will be routed according to the routing table with one exception: routes with an `action` of
-   * `deliver` are treated as `drop` unless the `next_hop` is an IP address within the VPC's address prefix ranges.
-   * Therefore, if an incoming packet matches a route with a `next_hop` of an internet-bound IP address or a VPN gateway
-   * connection, the packet will be dropped.
+   * `deliver` are treated as `drop` unless the `next_hop` is an IP address bound to a network interface on a subnet in
+   * the route's `zone`. Therefore, if an incoming packet matches a route with a `next_hop` of an internet-bound IP
+   * address or a VPN gateway connection, the packet will be dropped.
    *
    * @return the routeDirectLinkIngress
    */
@@ -162,9 +162,9 @@ public class RoutingTablePatch extends GenericModel {
    * `true`, and no subnets are attached to this routing table. Updating to `false` deselects this routing table.
    *
    * Incoming traffic will be routed according to the routing table with one exception: routes with an `action` of
-   * `deliver` are treated as `drop` unless the `next_hop` is an IP address within the VPC's address prefix ranges.
-   * Therefore, if an incoming packet matches a route with a `next_hop` of an internet-bound IP address or a VPN gateway
-   * connection, the packet will be dropped.
+   * `deliver` are treated as `drop` unless the `next_hop` is an IP address bound to a network interface on a subnet in
+   * the route's `zone`. Therefore, if an incoming packet matches a route with a `next_hop` of an internet-bound IP
+   * address or a VPN gateway connection, the packet will be dropped.
    *
    * If [Classic Access](https://cloud.ibm.com/docs/vpc?topic=vpc-setting-up-access-to-classic-infrastructure) is
    * enabled for this VPC, and this property is set to `true`, its incoming traffic will also be routed according to
@@ -185,9 +185,9 @@ public class RoutingTablePatch extends GenericModel {
    * routing table.
    *
    * Incoming traffic will be routed according to the routing table with one exception: routes with an `action` of
-   * `deliver` are treated as `drop` unless the `next_hop` is an IP address within the VPC's address prefix ranges.
-   * Therefore, if an incoming packet matches a route with a `next_hop` of an internet-bound IP address or a VPN gateway
-   * connection, the packet will be dropped.
+   * `deliver` are treated as `drop` unless the `next_hop` is an IP address bound to a network interface on a subnet in
+   * the route's `zone`. Therefore, if an incoming packet matches a route with a `next_hop` of an internet-bound IP
+   * address or a VPN gateway connection, the packet will be dropped.
    *
    * @return the routeVpcZoneIngress
    */

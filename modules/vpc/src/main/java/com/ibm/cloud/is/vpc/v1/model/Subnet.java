@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -173,7 +173,7 @@ public class Subnet extends GenericModel {
   /**
    * Gets the publicGateway.
    *
-   * The public gateway to handle internet bound traffic for this subnet.
+   * The public gateway to use for internet-bound traffic for this subnet.
    *
    * @return the publicGateway
    */
@@ -219,8 +219,8 @@ public class Subnet extends GenericModel {
    *
    * The total number of IPv4 addresses in this subnet.
    *
-   * Note: This is calculated as 2&lt;sup&gt;(32 − prefix length)&lt;/sup&gt;. For example, the prefix length `/24`
-   * gives:&lt;br&gt; 2&lt;sup&gt;(32 − 24)&lt;/sup&gt; = 2&lt;sup&gt;8&lt;/sup&gt; = 256 addresses.
+   * Note: This is calculated as 2&lt;sup&gt;(32 - prefix length)&lt;/sup&gt;. For example, the prefix length `/24`
+   * gives:&lt;br&gt; 2&lt;sup&gt;(32 - 24)&lt;/sup&gt; = 2&lt;sup&gt;8&lt;/sup&gt; = 256 addresses.
    *
    * @return the totalIpv4AddressCount
    */

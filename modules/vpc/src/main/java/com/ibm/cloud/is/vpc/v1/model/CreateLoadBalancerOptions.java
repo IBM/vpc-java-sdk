@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -405,7 +405,7 @@ public class CreateLoadBalancerOptions extends GenericModel {
   /**
    * Gets the securityGroups.
    *
-   * The security groups to use for this load balancer.
+   * The security groups to use for this load balancer. If unspecified, the VPC's default security group is used.
    *
    * The load balancer profile must support security groups.
    *

@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -19,7 +19,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class CreateFlowLogCollectorOptions extends GenericModel {
 
-  protected CloudObjectStorageBucketIdentity storageBucket;
+  protected LegacyCloudObjectStorageBucketIdentity storageBucket;
   protected FlowLogCollectorTargetPrototype target;
   protected Boolean active;
   protected String name;
@@ -29,7 +29,7 @@ public class CreateFlowLogCollectorOptions extends GenericModel {
    * Builder.
    */
   public static class Builder {
-    private CloudObjectStorageBucketIdentity storageBucket;
+    private LegacyCloudObjectStorageBucketIdentity storageBucket;
     private FlowLogCollectorTargetPrototype target;
     private Boolean active;
     private String name;
@@ -55,7 +55,7 @@ public class CreateFlowLogCollectorOptions extends GenericModel {
      * @param storageBucket the storageBucket
      * @param target the target
      */
-    public Builder(CloudObjectStorageBucketIdentity storageBucket, FlowLogCollectorTargetPrototype target) {
+    public Builder(LegacyCloudObjectStorageBucketIdentity storageBucket, FlowLogCollectorTargetPrototype target) {
       this.storageBucket = storageBucket;
       this.target = target;
     }
@@ -75,7 +75,7 @@ public class CreateFlowLogCollectorOptions extends GenericModel {
      * @param storageBucket the storageBucket
      * @return the CreateFlowLogCollectorOptions builder
      */
-    public Builder storageBucket(CloudObjectStorageBucketIdentity storageBucket) {
+    public Builder storageBucket(LegacyCloudObjectStorageBucketIdentity storageBucket) {
       this.storageBucket = storageBucket;
       return this;
     }
@@ -156,7 +156,7 @@ public class CreateFlowLogCollectorOptions extends GenericModel {
    *
    * @return the storageBucket
    */
-  public CloudObjectStorageBucketIdentity storageBucket() {
+  public LegacyCloudObjectStorageBucketIdentity storageBucket() {
     return storageBucket;
   }
 

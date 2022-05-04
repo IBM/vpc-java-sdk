@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -27,6 +27,7 @@ public class CreateEndpointGatewayOptions extends GenericModel {
   protected List<EndpointGatewayReservedIP> ips;
   protected String name;
   protected ResourceGroupIdentity resourceGroup;
+  protected List<SecurityGroupIdentity> securityGroups;
 
   /**
    * Builder.
@@ -37,6 +38,7 @@ public class CreateEndpointGatewayOptions extends GenericModel {
     private List<EndpointGatewayReservedIP> ips;
     private String name;
     private ResourceGroupIdentity resourceGroup;
+    private List<SecurityGroupIdentity> securityGroups;
 
     private Builder(CreateEndpointGatewayOptions createEndpointGatewayOptions) {
       this.target = createEndpointGatewayOptions.target;
@@ -44,6 +46,7 @@ public class CreateEndpointGatewayOptions extends GenericModel {
       this.ips = createEndpointGatewayOptions.ips;
       this.name = createEndpointGatewayOptions.name;
       this.resourceGroup = createEndpointGatewayOptions.resourceGroup;
+      this.securityGroups = createEndpointGatewayOptions.securityGroups;
     }
 
     /**
@@ -85,6 +88,22 @@ public class CreateEndpointGatewayOptions extends GenericModel {
         this.ips = new ArrayList<EndpointGatewayReservedIP>();
       }
       this.ips.add(ips);
+      return this;
+    }
+
+    /**
+     * Adds an securityGroups to securityGroups.
+     *
+     * @param securityGroups the new securityGroups
+     * @return the CreateEndpointGatewayOptions builder
+     */
+    public Builder addSecurityGroups(SecurityGroupIdentity securityGroups) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(securityGroups,
+        "securityGroups cannot be null");
+      if (this.securityGroups == null) {
+        this.securityGroups = new ArrayList<SecurityGroupIdentity>();
+      }
+      this.securityGroups.add(securityGroups);
       return this;
     }
 
@@ -143,6 +162,18 @@ public class CreateEndpointGatewayOptions extends GenericModel {
       this.resourceGroup = resourceGroup;
       return this;
     }
+
+    /**
+     * Set the securityGroups.
+     * Existing securityGroups will be replaced.
+     *
+     * @param securityGroups the securityGroups
+     * @return the CreateEndpointGatewayOptions builder
+     */
+    public Builder securityGroups(List<SecurityGroupIdentity> securityGroups) {
+      this.securityGroups = securityGroups;
+      return this;
+    }
   }
 
   protected CreateEndpointGatewayOptions(Builder builder) {
@@ -155,6 +186,7 @@ public class CreateEndpointGatewayOptions extends GenericModel {
     ips = builder.ips;
     name = builder.name;
     resourceGroup = builder.resourceGroup;
+    securityGroups = builder.securityGroups;
   }
 
   /**
@@ -221,6 +253,17 @@ public class CreateEndpointGatewayOptions extends GenericModel {
    */
   public ResourceGroupIdentity resourceGroup() {
     return resourceGroup;
+  }
+
+  /**
+   * Gets the securityGroups.
+   *
+   * The security groups to use for this endpoint gateway. If unspecified, the VPC's default security group is used.
+   *
+   * @return the securityGroups
+   */
+  public List<SecurityGroupIdentity> securityGroups() {
+    return securityGroups;
   }
 }
 

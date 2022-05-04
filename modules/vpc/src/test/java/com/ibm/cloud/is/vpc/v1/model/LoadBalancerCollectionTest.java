@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -24,7 +24,9 @@ import com.ibm.cloud.is.vpc.v1.model.LoadBalancerLogging;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerLoggingDatapath;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolReference;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolReferenceDeleted;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPrivateIpsItem;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileReference;
+import com.ibm.cloud.is.vpc.v1.model.ReservedIPReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupReferenceDeleted;

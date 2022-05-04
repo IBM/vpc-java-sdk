@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -32,15 +32,15 @@ public class InstancePatchProfileInstanceProfileIdentityByNameTest {
   @Test
   public void testInstancePatchProfileInstanceProfileIdentityByName() throws Throwable {
     InstancePatchProfileInstanceProfileIdentityByName instancePatchProfileInstanceProfileIdentityByNameModel = new InstancePatchProfileInstanceProfileIdentityByName.Builder()
-      .name("bc1-4x16")
+      .name("bx2-4x16")
       .build();
-    assertEquals(instancePatchProfileInstanceProfileIdentityByNameModel.name(), "bc1-4x16");
+    assertEquals(instancePatchProfileInstanceProfileIdentityByNameModel.name(), "bx2-4x16");
 
     String json = TestUtilities.serialize(instancePatchProfileInstanceProfileIdentityByNameModel);
 
     InstancePatchProfileInstanceProfileIdentityByName instancePatchProfileInstanceProfileIdentityByNameModelNew = TestUtilities.deserialize(json, InstancePatchProfileInstanceProfileIdentityByName.class);
     assertTrue(instancePatchProfileInstanceProfileIdentityByNameModelNew instanceof InstancePatchProfileInstanceProfileIdentityByName);
-    assertEquals(instancePatchProfileInstanceProfileIdentityByNameModelNew.name(), "bc1-4x16");
+    assertEquals(instancePatchProfileInstanceProfileIdentityByNameModelNew.name(), "bx2-4x16");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

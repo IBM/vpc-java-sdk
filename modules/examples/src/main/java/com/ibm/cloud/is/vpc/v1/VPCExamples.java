@@ -13,17 +13,36 @@
 
 package com.ibm.cloud.is.vpc.v1;
 
+import com.ibm.cloud.is.vpc.v1.model.AddBareMetalServerNetworkInterfaceFloatingIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.AddEndpointGatewayIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.AddInstanceNetworkInterfaceFloatingIpOptions;
-import com.ibm.cloud.is.vpc.v1.model.AddSecurityGroupNetworkInterfaceOptions;
 import com.ibm.cloud.is.vpc.v1.model.AddVpnGatewayConnectionLocalCidrOptions;
 import com.ibm.cloud.is.vpc.v1.model.AddVpnGatewayConnectionPeerCidrOptions;
 import com.ibm.cloud.is.vpc.v1.model.AddressPrefix;
 import com.ibm.cloud.is.vpc.v1.model.AddressPrefixCollection;
 import com.ibm.cloud.is.vpc.v1.model.AddressPrefixPatch;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServer;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerCollection;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerConsoleAccessToken;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerDisk;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerDiskCollection;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerDiskPatch;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerInitialization;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerInitializationPrototype;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkInterface;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkInterfaceCollection;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkInterfacePatch;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVLANPrototype;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerPatch;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerPrimaryNetworkInterfacePrototype;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfile;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileCollection;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileIdentityByName;
 import com.ibm.cloud.is.vpc.v1.model.CheckVpnGatewayConnectionLocalCidrOptions;
 import com.ibm.cloud.is.vpc.v1.model.CheckVpnGatewayConnectionPeerCidrOptions;
-import com.ibm.cloud.is.vpc.v1.model.CloudObjectStorageBucketIdentityByName;
+import com.ibm.cloud.is.vpc.v1.model.CreateBareMetalServerConsoleAccessTokenOptions;
+import com.ibm.cloud.is.vpc.v1.model.CreateBareMetalServerNetworkInterfaceOptions;
+import com.ibm.cloud.is.vpc.v1.model.CreateBareMetalServerOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateDedicatedHostGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateDedicatedHostOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateEndpointGatewayOptions;
@@ -84,6 +103,8 @@ import com.ibm.cloud.is.vpc.v1.model.DedicatedHostPrototypeDedicatedHostByGroup;
 import com.ibm.cloud.is.vpc.v1.model.DefaultNetworkACL;
 import com.ibm.cloud.is.vpc.v1.model.DefaultRoutingTable;
 import com.ibm.cloud.is.vpc.v1.model.DefaultSecurityGroup;
+import com.ibm.cloud.is.vpc.v1.model.DeleteBareMetalServerNetworkInterfaceOptions;
+import com.ibm.cloud.is.vpc.v1.model.DeleteBareMetalServerOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteDedicatedHostGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteDedicatedHostOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteEndpointGatewayOptions;
@@ -143,6 +164,13 @@ import com.ibm.cloud.is.vpc.v1.model.FlowLogCollector;
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorCollection;
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorPatch;
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceIdentityNetworkInterfaceIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.GetBareMetalServerDiskOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetBareMetalServerInitializationOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetBareMetalServerNetworkInterfaceFloatingIpOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetBareMetalServerNetworkInterfaceIpOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetBareMetalServerNetworkInterfaceOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetBareMetalServerOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetBareMetalServerProfileOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetDedicatedHostDiskOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetDedicatedHostGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetDedicatedHostOptions;
@@ -161,6 +189,7 @@ import com.ibm.cloud.is.vpc.v1.model.GetInstanceGroupMembershipOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetInstanceGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetInstanceInitializationOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetInstanceNetworkInterfaceFloatingIpOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetInstanceNetworkInterfaceIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetInstanceNetworkInterfaceOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetInstanceOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetInstanceProfileOptions;
@@ -183,7 +212,6 @@ import com.ibm.cloud.is.vpc.v1.model.GetPlacementGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetPublicGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetRegionOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetRegionZoneOptions;
-import com.ibm.cloud.is.vpc.v1.model.GetSecurityGroupNetworkInterfaceOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetSecurityGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetSecurityGroupRuleOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetSecurityGroupTargetOptions;
@@ -260,6 +288,13 @@ import com.ibm.cloud.is.vpc.v1.model.KeyCollection;
 import com.ibm.cloud.is.vpc.v1.model.KeyIdentity;
 import com.ibm.cloud.is.vpc.v1.model.KeyIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.KeyPatch;
+import com.ibm.cloud.is.vpc.v1.model.LegacyCloudObjectStorageBucketIdentityCloudObjectStorageBucketIdentityByName;
+import com.ibm.cloud.is.vpc.v1.model.ListBareMetalServerDisksOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListBareMetalServerNetworkInterfaceFloatingIpsOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListBareMetalServerNetworkInterfaceIpsOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListBareMetalServerNetworkInterfacesOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListBareMetalServerProfilesOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListBareMetalServersOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListDedicatedHostDisksOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListDedicatedHostGroupsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListDedicatedHostProfilesOptions;
@@ -278,6 +313,7 @@ import com.ibm.cloud.is.vpc.v1.model.ListInstanceGroupManagersOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListInstanceGroupMembershipsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListInstanceGroupsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListInstanceNetworkInterfaceFloatingIpsOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListInstanceNetworkInterfaceIpsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListInstanceNetworkInterfacesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListInstanceProfilesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListInstanceTemplatesOptions;
@@ -300,7 +336,6 @@ import com.ibm.cloud.is.vpc.v1.model.ListPlacementGroupsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListPublicGatewaysOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListRegionZonesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListRegionsOptions;
-import com.ibm.cloud.is.vpc.v1.model.ListSecurityGroupNetworkInterfacesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListSecurityGroupRulesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListSecurityGroupTargetsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListSecurityGroupsOptions;
@@ -352,7 +387,6 @@ import com.ibm.cloud.is.vpc.v1.model.NetworkACLRuleCollection;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLRulePatch;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLRulePrototypeNetworkACLRuleProtocolICMP;
 import com.ibm.cloud.is.vpc.v1.model.NetworkInterface;
-import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceCollection;
 import com.ibm.cloud.is.vpc.v1.model.NetworkInterfacePatch;
 import com.ibm.cloud.is.vpc.v1.model.NetworkInterfacePrototype;
 import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceUnpaginatedCollection;
@@ -364,13 +398,13 @@ import com.ibm.cloud.is.vpc.v1.model.PlacementGroupCollection;
 import com.ibm.cloud.is.vpc.v1.model.PlacementGroupPatch;
 import com.ibm.cloud.is.vpc.v1.model.PublicGateway;
 import com.ibm.cloud.is.vpc.v1.model.PublicGatewayCollection;
-import com.ibm.cloud.is.vpc.v1.model.PublicGatewayIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.PublicGatewayIdentityPublicGatewayIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.PublicGatewayPatch;
 import com.ibm.cloud.is.vpc.v1.model.Region;
 import com.ibm.cloud.is.vpc.v1.model.RegionCollection;
+import com.ibm.cloud.is.vpc.v1.model.RemoveBareMetalServerNetworkInterfaceFloatingIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.RemoveEndpointGatewayIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.RemoveInstanceNetworkInterfaceFloatingIpOptions;
-import com.ibm.cloud.is.vpc.v1.model.RemoveSecurityGroupNetworkInterfaceOptions;
 import com.ibm.cloud.is.vpc.v1.model.RemoveVpnGatewayConnectionLocalCidrOptions;
 import com.ibm.cloud.is.vpc.v1.model.RemoveVpnGatewayConnectionPeerCidrOptions;
 import com.ibm.cloud.is.vpc.v1.model.ReplaceLoadBalancerPoolMembersOptions;
@@ -379,7 +413,9 @@ import com.ibm.cloud.is.vpc.v1.model.ReplaceSubnetRoutingTableOptions;
 import com.ibm.cloud.is.vpc.v1.model.ReservedIP;
 import com.ibm.cloud.is.vpc.v1.model.ReservedIPCollection;
 import com.ibm.cloud.is.vpc.v1.model.ReservedIPCollectionEndpointGatewayContext;
+import com.ibm.cloud.is.vpc.v1.model.ReservedIPCollectionNetworkInterfaceContext;
 import com.ibm.cloud.is.vpc.v1.model.ReservedIPPatch;
+import com.ibm.cloud.is.vpc.v1.model.RestartBareMetalServerOptions;
 import com.ibm.cloud.is.vpc.v1.model.Route;
 import com.ibm.cloud.is.vpc.v1.model.RouteCollection;
 import com.ibm.cloud.is.vpc.v1.model.RouteNextHopPrototypeRouteNextHopIP;
@@ -401,6 +437,9 @@ import com.ibm.cloud.is.vpc.v1.model.SetSubnetPublicGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.Snapshot;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotCollection;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotPatch;
+import com.ibm.cloud.is.vpc.v1.model.SnapshotPrototypeSnapshotBySourceVolume;
+import com.ibm.cloud.is.vpc.v1.model.StartBareMetalServerOptions;
+import com.ibm.cloud.is.vpc.v1.model.StopBareMetalServerOptions;
 import com.ibm.cloud.is.vpc.v1.model.Subnet;
 import com.ibm.cloud.is.vpc.v1.model.SubnetCollection;
 import com.ibm.cloud.is.vpc.v1.model.SubnetIdentity;
@@ -408,6 +447,9 @@ import com.ibm.cloud.is.vpc.v1.model.SubnetIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.SubnetPatch;
 import com.ibm.cloud.is.vpc.v1.model.SubnetPrototypeSubnetByTotalCount;
 import com.ibm.cloud.is.vpc.v1.model.UnsetSubnetPublicGatewayOptions;
+import com.ibm.cloud.is.vpc.v1.model.UpdateBareMetalServerDiskOptions;
+import com.ibm.cloud.is.vpc.v1.model.UpdateBareMetalServerNetworkInterfaceOptions;
+import com.ibm.cloud.is.vpc.v1.model.UpdateBareMetalServerOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateDedicatedHostDiskOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateDedicatedHostGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateDedicatedHostOptions;
@@ -487,10 +529,10 @@ import com.ibm.cloud.is.vpc.v1.model.ZoneIdentityByName;
 import com.ibm.cloud.sdk.core.http.Response;
 import com.ibm.cloud.sdk.core.service.exception.ServiceResponseException;
 import com.ibm.cloud.sdk.core.util.CredentialUtils;
+import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.Map;
 
 //
 // This file provides an example of how to use the vpc service.
@@ -536,6 +578,7 @@ public class VPCExamples {
   static String instanceDiskId;
   static String instanceProfileName;
   static String instanceNetworkInterfaceId;
+  static String instanceNetworkInterfaceReservedIp;
   static String instanceVolumeAttachmentId;
   static String instanceGroupId;
   static String instanceGroupManagerId;
@@ -560,13 +603,17 @@ public class VPCExamples {
   static String vpnGatewayConnectionId;
   static String regionName = "us-east";
   static String securityGroupId;
-  static String securityGroupNetworkInterfaceId;
   static String securityGroupRuleId;
   static String securityGroupTargetId;
   static String snapshotId;
   static String sourceVolume;
   static String targetId;
   static String zoneName = "us-east-1";
+  static String bareMetalServerProfileName;
+  static String bareMetalServerId;
+  static String bareMetalServerDiskId;
+  static String bareMetalServerNetworkInterfaceId;
+  static String bareMetalServerNetworkInterfaceReservedIp;
 
   protected VPCExamples() { }
 
@@ -1200,7 +1247,7 @@ public class VPCExamples {
     try {
       System.out.println("setSubnetPublicGateway() result:");
       // begin-set_subnet_public_gateway
-      PublicGatewayIdentityById publicGatewayIdentityModel = new PublicGatewayIdentityById.Builder()
+      PublicGatewayIdentityPublicGatewayIdentityById publicGatewayIdentityModel = new PublicGatewayIdentityPublicGatewayIdentityById.Builder()
         .id(publicGatewayId)
         .build();
       SetSubnetPublicGatewayOptions setSubnetPublicGatewayOptions = new SetSubnetPublicGatewayOptions.Builder()
@@ -1355,6 +1402,7 @@ public class VPCExamples {
       ImageCollection imageCollection = response.getResult();
 
       // end-list_images
+      operatingSystemName = imageCollection.getImages().get(0).getOperatingSystem().getName();
     } catch (ServiceResponseException e) {
         logger.error(String.format("Service returned status code %s: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
@@ -2377,6 +2425,7 @@ public class VPCExamples {
 
       // end-create_instance_network_interface
       instanceNetworkInterfaceId = networkInterface.getId();
+      instanceNetworkInterfaceReservedIp = networkInterface.getPrimaryIp().getId();
     } catch (ServiceResponseException e) {
         logger.error(String.format("Service returned status code %s: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
@@ -2469,6 +2518,41 @@ public class VPCExamples {
       FloatingIP floatingIp = response.getResult();
 
       // end-get_instance_network_interface_floating_ip
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("listInstanceNetworkInterfaceIps() result:");
+      // begin-list_instance_network_interface_ips
+      ListInstanceNetworkInterfaceIpsOptions listInstanceNetworkInterfaceIpsOptions = new ListInstanceNetworkInterfaceIpsOptions.Builder()
+        .instanceId(instanceId)
+        .networkInterfaceId(instanceNetworkInterfaceId)
+        .build();
+
+      Response<ReservedIPCollectionNetworkInterfaceContext> response = vpcService.listInstanceNetworkInterfaceIps(listInstanceNetworkInterfaceIpsOptions).execute();
+      ReservedIPCollectionNetworkInterfaceContext reservedIpCollectionNetworkInterfaceContext = response.getResult();
+
+      // end-list_instance_network_interface_ips
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("getInstanceNetworkInterfaceIp() result:");
+      // begin-get_instance_network_interface_ip
+      GetInstanceNetworkInterfaceIpOptions getInstanceNetworkInterfaceIpOptions = new GetInstanceNetworkInterfaceIpOptions.Builder()
+        .instanceId(instanceId)
+        .networkInterfaceId(instanceNetworkInterfaceId)
+        .id(instanceNetworkInterfaceReservedIp)
+        .build();
+
+      Response<ReservedIP> response = vpcService.getInstanceNetworkInterfaceIp(getInstanceNetworkInterfaceIpOptions).execute();
+      ReservedIP reservedIp = response.getResult();
+
+      // end-get_instance_network_interface_ip
     } catch (ServiceResponseException e) {
         logger.error(String.format("Service returned status code %s: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
@@ -3003,6 +3087,446 @@ public class VPCExamples {
     }
 
     try {
+      System.out.println("listBareMetalServerProfiles() result:");
+      // begin-list_bare_metal_server_profiles
+      ListBareMetalServerProfilesOptions listBareMetalServerProfilesOptions = new ListBareMetalServerProfilesOptions.Builder()
+              .build();
+
+      Response<BareMetalServerProfileCollection> response = vpcService.listBareMetalServerProfiles(listBareMetalServerProfilesOptions).execute();
+      BareMetalServerProfileCollection bareMetalServerProfileCollection = response.getResult();
+
+      // end-list_bare_metal_server_profiles
+      bareMetalServerProfileName = bareMetalServerProfileCollection.getProfiles().get(0).getName();
+    } catch (ServiceResponseException e) {
+      logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+              e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("getBareMetalServerProfile() result:");
+      // begin-get_bare_metal_server_profile
+      GetBareMetalServerProfileOptions getBareMetalServerProfileOptions = new GetBareMetalServerProfileOptions.Builder()
+              .name(bareMetalServerProfileName)
+              .build();
+
+      Response<BareMetalServerProfile> response = vpcService.getBareMetalServerProfile(getBareMetalServerProfileOptions).execute();
+      BareMetalServerProfile bareMetalServerProfile = response.getResult();
+
+      // end-get_bare_metal_server_profile
+    } catch (ServiceResponseException e) {
+      logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+              e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("listBareMetalServers() result:");
+      // begin-list_bare_metal_servers
+      ListBareMetalServersOptions listBareMetalServersOptions = new ListBareMetalServersOptions.Builder()
+              .sort("name")
+              .build();
+
+      Response<BareMetalServerCollection> response = vpcService.listBareMetalServers(listBareMetalServersOptions).execute();
+      BareMetalServerCollection bareMetalServerCollection = response.getResult();
+
+      // end-list_bare_metal_servers
+    } catch (ServiceResponseException e) {
+      logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+              e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("createBareMetalServer() result:");
+      // begin-create_bare_metal_server
+      ImageIdentityById imageIdentityModel = new ImageIdentityById.Builder()
+              .id(imageId)
+              .build();
+      KeyIdentityById keyIdentityModel = new KeyIdentityById.Builder()
+              .id(keyId)
+              .build();
+      BareMetalServerInitializationPrototype bareMetalServerInitializationPrototypeModel = new BareMetalServerInitializationPrototype.Builder()
+              .image(imageIdentityModel)
+              .keys(new java.util.ArrayList<KeyIdentity>(java.util.Arrays.asList(keyIdentityModel)))
+              .build();
+      SubnetIdentityById subnetIdentityModel = new SubnetIdentityById.Builder()
+              .id(subnetId)
+              .build();
+      Long[] allowedValns = {4L};
+      BareMetalServerPrimaryNetworkInterfacePrototype bareMetalServerPrimaryNetworkInterfacePrototypeModel = new BareMetalServerPrimaryNetworkInterfacePrototype.Builder()
+              .interfaceType("pci")
+              .allowedVlans(new java.util.ArrayList<Long>(java.util.Arrays.asList(allowedValns)))
+              .enableInfrastructureNat(true)
+              .name("my-bare-metal-server-network-interface")
+              .subnet(subnetIdentityModel)
+              .build();
+      BareMetalServerProfileIdentityByName bareMetalServerProfileIdentityModel = new BareMetalServerProfileIdentityByName.Builder()
+              .name(bareMetalServerProfileName)
+              .build();
+      VPCIdentityById vpcIdentityModel = new VPCIdentityById.Builder()
+              .id(vpcId)
+              .build();
+      ZoneIdentityByName zoneIdentityModel = new ZoneIdentityByName.Builder()
+              .name(zoneName)
+              .build();
+      CreateBareMetalServerOptions createBareMetalServerOptions = new CreateBareMetalServerOptions.Builder()
+              .initialization(bareMetalServerInitializationPrototypeModel)
+              .primaryNetworkInterface(bareMetalServerPrimaryNetworkInterfacePrototypeModel)
+              .profile(bareMetalServerProfileIdentityModel)
+              .name("my-bare-metal-server")
+              .vpc(vpcIdentityModel)
+              .zone(zoneIdentityModel)
+              .build();
+
+      Response<BareMetalServer> response = vpcService.createBareMetalServer(createBareMetalServerOptions).execute();
+      BareMetalServer bareMetalServer = response.getResult();
+
+      // end-create_bare_metal_server
+      bareMetalServerId = bareMetalServer.getId();
+      bareMetalServerDiskId = bareMetalServer.getDisks().get(0).getId();
+    } catch (ServiceResponseException e) {
+      logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+              e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+   try {
+     System.out.println("createBareMetalServerConsoleAccessToken() result:");
+     // begin-create_bare_metal_server_console_access_token
+     CreateBareMetalServerConsoleAccessTokenOptions createBareMetalServerConsoleAccessTokenOptions = new CreateBareMetalServerConsoleAccessTokenOptions.Builder()
+             .bareMetalServerId(bareMetalServerId)
+             .consoleType("serial")
+             .build();
+
+     Response<BareMetalServerConsoleAccessToken> response = vpcService.createBareMetalServerConsoleAccessToken(createBareMetalServerConsoleAccessTokenOptions).execute();
+     BareMetalServerConsoleAccessToken bareMetalServerConsoleAccessToken = response.getResult();
+
+     // end-create_bare_metal_server_console_access_token
+   } catch (ServiceResponseException e) {
+     logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+             e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+   }
+
+    try {
+      System.out.println("listBareMetalServerDisks() result:");
+      // begin-list_bare_metal_server_disks
+      ListBareMetalServerDisksOptions listBareMetalServerDisksOptions = new ListBareMetalServerDisksOptions.Builder()
+              .bareMetalServerId(bareMetalServerId)
+              .build();
+
+      Response<BareMetalServerDiskCollection> response = vpcService.listBareMetalServerDisks(listBareMetalServerDisksOptions).execute();
+      BareMetalServerDiskCollection bareMetalServerDiskCollection = response.getResult();
+
+      // end-list_bare_metal_server_disks
+    } catch (ServiceResponseException e) {
+      logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+              e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("getBareMetalServerDisk() result:");
+      // begin-get_bare_metal_server_disk
+      GetBareMetalServerDiskOptions getBareMetalServerDiskOptions = new GetBareMetalServerDiskOptions.Builder()
+              .bareMetalServerId(bareMetalServerId)
+              .id(bareMetalServerDiskId)
+              .build();
+
+      Response<BareMetalServerDisk> response = vpcService.getBareMetalServerDisk(getBareMetalServerDiskOptions).execute();
+      BareMetalServerDisk bareMetalServerDisk = response.getResult();
+
+      // end-get_bare_metal_server_disk
+    } catch (ServiceResponseException e) {
+      logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+              e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("updateBareMetalServerDisk() result:");
+      // begin-update_bare_metal_server_disk
+      BareMetalServerDiskPatch bareMetalServerDiskPatchModel = new BareMetalServerDiskPatch.Builder()
+              .name("my-bare-metal-server-disk-update")
+              .build();
+      Map<String, Object> bareMetalServerDiskPatchModelAsPatch = bareMetalServerDiskPatchModel.asPatch();
+      UpdateBareMetalServerDiskOptions updateBareMetalServerDiskOptions = new UpdateBareMetalServerDiskOptions.Builder()
+              .bareMetalServerId(bareMetalServerId)
+              .id(bareMetalServerDiskId)
+              .bareMetalServerDiskPatch(bareMetalServerDiskPatchModelAsPatch)
+              .build();
+
+      Response<BareMetalServerDisk> response = vpcService.updateBareMetalServerDisk(updateBareMetalServerDiskOptions).execute();
+      BareMetalServerDisk bareMetalServerDisk = response.getResult();
+
+      // end-update_bare_metal_server_disk
+    } catch (ServiceResponseException e) {
+      logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+              e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("listBareMetalServerNetworkInterfaces() result:");
+      // begin-list_bare_metal_server_network_interfaces
+      ListBareMetalServerNetworkInterfacesOptions listBareMetalServerNetworkInterfacesOptions = new ListBareMetalServerNetworkInterfacesOptions.Builder()
+              .bareMetalServerId(bareMetalServerId)
+              .build();
+
+      Response<BareMetalServerNetworkInterfaceCollection> response = vpcService.listBareMetalServerNetworkInterfaces(listBareMetalServerNetworkInterfacesOptions).execute();
+      BareMetalServerNetworkInterfaceCollection bareMetalServerNetworkInterfaceCollection = response.getResult();
+
+      // end-list_bare_metal_server_network_interfaces
+    } catch (ServiceResponseException e) {
+      logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+              e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("createBareMetalServerNetworkInterface() result:");
+      // begin-create_bare_metal_server_network_interface
+      SubnetIdentityById subnetIdentityModel = new SubnetIdentityById.Builder()
+              .id(subnetId)
+              .build();
+      BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVLANPrototype bareMetalServerNetworkInterfacePrototypeModel = new BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVLANPrototype.Builder()
+              .interfaceType("vlan")
+              .name("my-bare-metal-server-network-interface")
+              .enableInfrastructureNat(true)
+              .subnet(subnetIdentityModel)
+              .vlan(Long.valueOf("4"))
+              .build();
+      CreateBareMetalServerNetworkInterfaceOptions createBareMetalServerNetworkInterfaceOptions = new CreateBareMetalServerNetworkInterfaceOptions.Builder()
+              .bareMetalServerId(bareMetalServerId)
+              .bareMetalServerNetworkInterfacePrototype(bareMetalServerNetworkInterfacePrototypeModel)
+              .build();
+
+      Response<BareMetalServerNetworkInterface> response = vpcService.createBareMetalServerNetworkInterface(createBareMetalServerNetworkInterfaceOptions).execute();
+      BareMetalServerNetworkInterface bareMetalServerNetworkInterface = response.getResult();
+
+      // end-create_bare_metal_server_network_interface
+      bareMetalServerNetworkInterfaceId = bareMetalServerNetworkInterface.getId();
+      bareMetalServerNetworkInterfaceReservedIp = bareMetalServerNetworkInterface.getPrimaryIp().getId();
+    } catch (ServiceResponseException e) {
+      logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+              e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("getBareMetalServerNetworkInterface() result:");
+      // begin-get_bare_metal_server_network_interface
+      GetBareMetalServerNetworkInterfaceOptions getBareMetalServerNetworkInterfaceOptions = new GetBareMetalServerNetworkInterfaceOptions.Builder()
+              .bareMetalServerId(bareMetalServerId)
+              .id(bareMetalServerNetworkInterfaceId)
+              .build();
+
+      Response<BareMetalServerNetworkInterface> response = vpcService.getBareMetalServerNetworkInterface(getBareMetalServerNetworkInterfaceOptions).execute();
+      BareMetalServerNetworkInterface bareMetalServerNetworkInterface = response.getResult();
+
+      // end-get_bare_metal_server_network_interface
+    } catch (ServiceResponseException e) {
+      logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+              e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("updateBareMetalServerNetworkInterface() result:");
+      // begin-update_bare_metal_server_network_interface
+      BareMetalServerNetworkInterfacePatch bareMetalServerNetworkInterfacePatchModel = new BareMetalServerNetworkInterfacePatch.Builder()
+              .name("my-bare-metal-server-network-interface-update")
+              .build();
+      Map<String, Object> bareMetalServerNetworkInterfacePatchModelAsPatch = bareMetalServerNetworkInterfacePatchModel.asPatch();
+      UpdateBareMetalServerNetworkInterfaceOptions updateBareMetalServerNetworkInterfaceOptions = new UpdateBareMetalServerNetworkInterfaceOptions.Builder()
+              .bareMetalServerId(bareMetalServerId)
+              .id(bareMetalServerNetworkInterfaceId)
+              .bareMetalServerNetworkInterfacePatch(bareMetalServerNetworkInterfacePatchModelAsPatch)
+              .build();
+
+      Response<BareMetalServerNetworkInterface> response = vpcService.updateBareMetalServerNetworkInterface(updateBareMetalServerNetworkInterfaceOptions).execute();
+      BareMetalServerNetworkInterface bareMetalServerNetworkInterface = response.getResult();
+
+      // end-update_bare_metal_server_network_interface
+    } catch (ServiceResponseException e) {
+      logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+              e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("addBareMetalServerNetworkInterfaceFloatingIp() result:");
+      // begin-add_bare_metal_server_network_interface_floating_ip
+      AddBareMetalServerNetworkInterfaceFloatingIpOptions addBareMetalServerNetworkInterfaceFloatingIpOptions = new AddBareMetalServerNetworkInterfaceFloatingIpOptions.Builder()
+              .bareMetalServerId(bareMetalServerId)
+              .networkInterfaceId(bareMetalServerNetworkInterfaceId)
+              .id(floatingIpId)
+              .build();
+
+      Response<FloatingIP> response = vpcService.addBareMetalServerNetworkInterfaceFloatingIp(addBareMetalServerNetworkInterfaceFloatingIpOptions).execute();
+      FloatingIP floatingIp = response.getResult();
+
+      // end-add_bare_metal_server_network_interface_floating_ip
+    } catch (ServiceResponseException e) {
+      logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+              e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("listBareMetalServerNetworkInterfaceFloatingIps() result:");
+      // begin-list_bare_metal_server_network_interface_floating_ips
+      ListBareMetalServerNetworkInterfaceFloatingIpsOptions listBareMetalServerNetworkInterfaceFloatingIpsOptions = new ListBareMetalServerNetworkInterfaceFloatingIpsOptions.Builder()
+              .bareMetalServerId(bareMetalServerId)
+              .networkInterfaceId(bareMetalServerNetworkInterfaceId)
+              .build();
+
+      Response<FloatingIPUnpaginatedCollection> response = vpcService.listBareMetalServerNetworkInterfaceFloatingIps(listBareMetalServerNetworkInterfaceFloatingIpsOptions).execute();
+      FloatingIPUnpaginatedCollection floatingIpUnpaginatedCollection = response.getResult();
+
+      // end-list_bare_metal_server_network_interface_floating_ips
+    } catch (ServiceResponseException e) {
+      logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+              e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("getBareMetalServerNetworkInterfaceFloatingIp() result:");
+      // begin-get_bare_metal_server_network_interface_floating_ip
+      GetBareMetalServerNetworkInterfaceFloatingIpOptions getBareMetalServerNetworkInterfaceFloatingIpOptions = new GetBareMetalServerNetworkInterfaceFloatingIpOptions.Builder()
+              .bareMetalServerId(bareMetalServerId)
+              .networkInterfaceId(bareMetalServerNetworkInterfaceId)
+              .id(floatingIpId)
+              .build();
+
+      Response<FloatingIP> response = vpcService.getBareMetalServerNetworkInterfaceFloatingIp(getBareMetalServerNetworkInterfaceFloatingIpOptions).execute();
+      FloatingIP floatingIp = response.getResult();
+
+      // end-get_bare_metal_server_network_interface_floating_ip
+    } catch (ServiceResponseException e) {
+      logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+              e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("listBareMetalServerNetworkInterfaceIps() result:");
+      // begin-list_bare_metal_server_network_interface_ips
+      ListBareMetalServerNetworkInterfaceIpsOptions listBareMetalServerNetworkInterfaceIpsOptions = new ListBareMetalServerNetworkInterfaceIpsOptions.Builder()
+            .bareMetalServerId(bareMetalServerId)
+            .networkInterfaceId(bareMetalServerNetworkInterfaceId)
+            .build();
+
+      Response<ReservedIPCollectionNetworkInterfaceContext> response = vpcService.listBareMetalServerNetworkInterfaceIps(listBareMetalServerNetworkInterfaceIpsOptions).execute();
+      ReservedIPCollectionNetworkInterfaceContext reservedIpCollectionNetworkInterfaceContext = response.getResult();
+
+      // end-list_bare_metal_server_network_interface_ips
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("getBareMetalServerNetworkInterfaceIp() result:");
+      // begin-get_bare_metal_server_network_interface_ip
+      GetBareMetalServerNetworkInterfaceIpOptions getBareMetalServerNetworkInterfaceIpOptions = new GetBareMetalServerNetworkInterfaceIpOptions.Builder()
+            .bareMetalServerId(bareMetalServerId)
+            .networkInterfaceId(bareMetalServerNetworkInterfaceId)
+            .id(bareMetalServerNetworkInterfaceReservedIp)
+            .build();
+
+      Response<ReservedIP> response = vpcService.getBareMetalServerNetworkInterfaceIp(getBareMetalServerNetworkInterfaceIpOptions).execute();
+      ReservedIP reservedIp = response.getResult();
+
+      // end-get_bare_metal_server_network_interface_ip
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("getBareMetalServer() result:");
+      // begin-get_bare_metal_server
+      GetBareMetalServerOptions getBareMetalServerOptions = new GetBareMetalServerOptions.Builder()
+              .id(bareMetalServerId)
+              .build();
+
+      Response<BareMetalServer> response = vpcService.getBareMetalServer(getBareMetalServerOptions).execute();
+      BareMetalServer bareMetalServer = response.getResult();
+
+      // end-get_bare_metal_server
+    } catch (ServiceResponseException e) {
+      logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+              e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("updateBareMetalServer() result:");
+      // begin-update_bare_metal_server
+      BareMetalServerPatch bareMetalServerPatchModel = new BareMetalServerPatch.Builder()
+              .build();
+      Map<String, Object> bareMetalServerPatchModelAsPatch = bareMetalServerPatchModel.asPatch();
+      UpdateBareMetalServerOptions updateBareMetalServerOptions = new UpdateBareMetalServerOptions.Builder()
+              .id(bareMetalServerId)
+              .bareMetalServerPatch(bareMetalServerPatchModelAsPatch)
+              .build();
+
+      Response<BareMetalServer> response = vpcService.updateBareMetalServer(updateBareMetalServerOptions).execute();
+      BareMetalServer bareMetalServer = response.getResult();
+
+      // end-update_bare_metal_server
+    } catch (ServiceResponseException e) {
+      logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+              e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("getBareMetalServerInitialization() result:");
+      // begin-get_bare_metal_server_initialization
+      GetBareMetalServerInitializationOptions getBareMetalServerInitializationOptions = new GetBareMetalServerInitializationOptions.Builder()
+              .id(bareMetalServerId)
+              .build();
+
+      Response<BareMetalServerInitialization> response = vpcService.getBareMetalServerInitialization(getBareMetalServerInitializationOptions).execute();
+      BareMetalServerInitialization bareMetalServerInitialization = response.getResult();
+
+      // end-get_bare_metal_server_initialization
+    } catch (ServiceResponseException e) {
+      logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+              e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      // begin-restart_bare_metal_server
+      RestartBareMetalServerOptions restartBareMetalServerOptions = new RestartBareMetalServerOptions.Builder()
+              .id(bareMetalServerId)
+              .build();
+
+      Response<Void> response = vpcService.restartBareMetalServer(restartBareMetalServerOptions).execute();
+      // end-restart_bare_metal_server
+      System.out.printf("restartBareMetalServer() response status code: %d%n", response.getStatusCode());
+    } catch (ServiceResponseException e) {
+      logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+              e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      // begin-stop_bare_metal_server
+      StopBareMetalServerOptions stopBareMetalServerOptions = new StopBareMetalServerOptions.Builder()
+              .id(bareMetalServerId)
+              .type("soft")
+              .build();
+
+      Response<Void> response = vpcService.stopBareMetalServer(stopBareMetalServerOptions).execute();
+      // end-stop_bare_metal_server
+      System.out.printf("stopBareMetalServer() response status code: %d%n", response.getStatusCode());
+    } catch (ServiceResponseException e) {
+      logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+              e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      // begin-start_bare_metal_server
+      StartBareMetalServerOptions startBareMetalServerOptions = new StartBareMetalServerOptions.Builder()
+              .id(bareMetalServerId)
+              .build();
+
+      Response<Void> response = vpcService.startBareMetalServer(startBareMetalServerOptions).execute();
+      // end-start_bare_metal_server
+      System.out.printf("startBareMetalServer() response status code: %d%n", response.getStatusCode());
+    } catch (ServiceResponseException e) {
+      logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+              e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
       System.out.println("listSnapshots() result:");
       // begin-list_snapshots
       ListSnapshotsOptions listSnapshotsOptions = new ListSnapshotsOptions.Builder()
@@ -3024,9 +3548,12 @@ public class VPCExamples {
       VolumeIdentityById volumeIdentityModel1 = new VolumeIdentityById.Builder()
               .id(sourceVolume)
               .build();
-      CreateSnapshotOptions createSnapshotOptions1 = new CreateSnapshotOptions.Builder()
-              .name("my-snapshot-1")
+      SnapshotPrototypeSnapshotBySourceVolume snapshotPrototypeModel = new SnapshotPrototypeSnapshotBySourceVolume.Builder()
               .sourceVolume(volumeIdentityModel1)
+              .name("my-snapshot-1")
+              .build();
+      CreateSnapshotOptions createSnapshotOptions1 = new CreateSnapshotOptions.Builder()
+              .snapshotPrototype(snapshotPrototypeModel)
               .build();
 
       Response<Snapshot> response1 = vpcService.createSnapshot(createSnapshotOptions1).execute();
@@ -3035,9 +3562,12 @@ public class VPCExamples {
       VolumeIdentityById volumeIdentityModel = new VolumeIdentityById.Builder()
         .id(sourceVolume)
         .build();
-      CreateSnapshotOptions createSnapshotOptions = new CreateSnapshotOptions.Builder()
-        .name("my-snapshot")
+      SnapshotPrototypeSnapshotBySourceVolume snapshotPrototypeModel1 = new SnapshotPrototypeSnapshotBySourceVolume.Builder()
         .sourceVolume(volumeIdentityModel)
+        .name("my-snapshot")
+        .build();
+      CreateSnapshotOptions createSnapshotOptions = new CreateSnapshotOptions.Builder()
+        .snapshotPrototype(snapshotPrototypeModel1)
         .build();
 
       Response<Snapshot> response = vpcService.createSnapshot(createSnapshotOptions).execute();
@@ -3336,13 +3866,6 @@ public class VPCExamples {
       SecurityGroupCollection securityGroupCollection = response.getResult();
 
       // end-list_security_groups
-      for (SecurityGroup sg : securityGroupCollection.getSecurityGroups()) {
-        if (sg.getNetworkInterfaces() != null && sg.getNetworkInterfaces().size() > 0) {
-          securityGroupId = sg.getId();
-          securityGroupNetworkInterfaceId = sg.getNetworkInterfaces().get(0).getId();
-          break;
-        }
-      }
     } catch (ServiceResponseException e) {
         logger.error(String.format("Service returned status code %s: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
@@ -3363,6 +3886,7 @@ public class VPCExamples {
       SecurityGroup securityGroup = response.getResult();
 
       // end-create_security_group
+      securityGroupId = securityGroup.getId();
     } catch (ServiceResponseException e) {
         logger.error(String.format("Service returned status code %s: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
@@ -3400,58 +3924,6 @@ public class VPCExamples {
       SecurityGroup securityGroup = response.getResult();
 
       // end-update_security_group
-    } catch (ServiceResponseException e) {
-        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
-    }
-
-    try {
-      System.out.println("listSecurityGroupNetworkInterfaces() result:");
-      // begin-list_security_group_network_interfaces
-      ListSecurityGroupNetworkInterfacesOptions listSecurityGroupNetworkInterfacesOptions = new ListSecurityGroupNetworkInterfacesOptions.Builder()
-        .securityGroupId(securityGroupId)
-        .limit(Long.valueOf(10))
-        .build();
-
-      Response<NetworkInterfaceCollection> response = vpcService.listSecurityGroupNetworkInterfaces(listSecurityGroupNetworkInterfacesOptions).execute();
-      NetworkInterfaceCollection networkInterfaceCollection = response.getResult();
-
-      // end-list_security_group_network_interfaces
-
-    } catch (ServiceResponseException e) {
-        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
-    }
-
-    try {
-      System.out.println("getSecurityGroupNetworkInterface() result:");
-      // begin-get_security_group_network_interface
-      GetSecurityGroupNetworkInterfaceOptions getSecurityGroupNetworkInterfaceOptions = new GetSecurityGroupNetworkInterfaceOptions.Builder()
-        .securityGroupId(securityGroupId)
-        .id(securityGroupNetworkInterfaceId)
-        .build();
-
-      Response<NetworkInterface> response = vpcService.getSecurityGroupNetworkInterface(getSecurityGroupNetworkInterfaceOptions).execute();
-      NetworkInterface networkInterface = response.getResult();
-
-      // end-get_security_group_network_interface
-    } catch (ServiceResponseException e) {
-        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
-    }
-
-    try {
-      System.out.println("addSecurityGroupNetworkInterface() result:");
-      // begin-add_security_group_network_interface
-      AddSecurityGroupNetworkInterfaceOptions addSecurityGroupNetworkInterfaceOptions = new AddSecurityGroupNetworkInterfaceOptions.Builder()
-        .securityGroupId(securityGroupId)
-        .id(securityGroupNetworkInterfaceId)
-        .build();
-
-      Response<NetworkInterface> response = vpcService.addSecurityGroupNetworkInterface(addSecurityGroupNetworkInterfaceOptions).execute();
-      NetworkInterface networkInterface = response.getResult();
-
-      // end-add_security_group_network_interface
     } catch (ServiceResponseException e) {
         logger.error(String.format("Service returned status code %s: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
@@ -3535,6 +4007,24 @@ public class VPCExamples {
     }
 
     try {
+      System.out.println("createSecurityGroupTargetBinding() result:");
+      // begin-create_security_group_target_binding
+      CreateSecurityGroupTargetBindingOptions createSecurityGroupTargetBindingOptions = new CreateSecurityGroupTargetBindingOptions.Builder()
+        .securityGroupId(securityGroupId)
+        .id(instanceNetworkInterfaceId)
+        .build();
+
+      Response<SecurityGroupTargetReference> response = vpcService.createSecurityGroupTargetBinding(createSecurityGroupTargetBindingOptions).execute();
+      SecurityGroupTargetReference securityGroupTargetReference = response.getResult();
+      targetId = securityGroupTargetReference.getId();
+
+      // end-create_security_group_target_binding
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
       System.out.println("listSecurityGroupTargets() result:");
       // begin-list_security_group_targets
       ListSecurityGroupTargetsOptions listSecurityGroupTargetsOptions = new ListSecurityGroupTargetsOptions.Builder()
@@ -3564,24 +4054,6 @@ public class VPCExamples {
       SecurityGroupTargetReference securityGroupTargetReference = response.getResult();
 
       // end-get_security_group_target
-    } catch (ServiceResponseException e) {
-        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
-    }
-
-    try {
-      System.out.println("createSecurityGroupTargetBinding() result:");
-      // begin-create_security_group_target_binding
-      CreateSecurityGroupTargetBindingOptions createSecurityGroupTargetBindingOptions = new CreateSecurityGroupTargetBindingOptions.Builder()
-        .securityGroupId(securityGroupId)
-        .id(instanceNetworkInterfaceId)
-        .build();
-
-      Response<SecurityGroupTargetReference> response = vpcService.createSecurityGroupTargetBinding(createSecurityGroupTargetBindingOptions).execute();
-      SecurityGroupTargetReference securityGroupTargetReference = response.getResult();
-      targetId = securityGroupTargetReference.getId();
-
-      // end-create_security_group_target_binding
     } catch (ServiceResponseException e) {
         logger.error(String.format("Service returned status code %s: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
@@ -4724,7 +5196,7 @@ public class VPCExamples {
     try {
       System.out.println("createFlowLogCollector() result:");
       // begin-create_flow_log_collector
-      CloudObjectStorageBucketIdentityByName cloudObjectStorageBucketIdentityModel = new CloudObjectStorageBucketIdentityByName.Builder()
+      LegacyCloudObjectStorageBucketIdentityCloudObjectStorageBucketIdentityByName legacyCloudObjectStorageBucketIdentityModel = new LegacyCloudObjectStorageBucketIdentityCloudObjectStorageBucketIdentityByName.Builder()
         .name(cosBucketName)
         .build();
       FlowLogCollectorTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceIdentityNetworkInterfaceIdentityById flowLogCollectorTargetPrototypeModel = new FlowLogCollectorTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceIdentityNetworkInterfaceIdentityById.Builder()
@@ -4732,7 +5204,7 @@ public class VPCExamples {
         .build();
       CreateFlowLogCollectorOptions createFlowLogCollectorOptions = new CreateFlowLogCollectorOptions.Builder()
         .name("my-flow-log-collector")
-        .storageBucket(cloudObjectStorageBucketIdentityModel)
+        .storageBucket(legacyCloudObjectStorageBucketIdentityModel)
         .target(flowLogCollectorTargetPrototypeModel)
         .build();
 
@@ -4832,21 +5304,6 @@ public class VPCExamples {
     }
 
     try {
-      // begin-remove_security_group_network_interface
-      RemoveSecurityGroupNetworkInterfaceOptions removeSecurityGroupNetworkInterfaceOptions = new RemoveSecurityGroupNetworkInterfaceOptions.Builder()
-        .securityGroupId(securityGroupId)
-        .id(securityGroupNetworkInterfaceId)
-        .build();
-
-      Response<Void> response = vpcService.removeSecurityGroupNetworkInterface(removeSecurityGroupNetworkInterfaceOptions).execute();
-      // end-remove_security_group_network_interface
-      System.out.printf("removeSecurityGroupNetworkInterface() response status code: %d%n", response.getStatusCode());
-    } catch (ServiceResponseException e) {
-        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
-    }
-
-    try {
       // begin-remove_instance_network_interface_floating_ip
       RemoveInstanceNetworkInterfaceFloatingIpOptions removeInstanceNetworkInterfaceFloatingIpOptions = new RemoveInstanceNetworkInterfaceFloatingIpOptions.Builder()
         .instanceId(instanceId)
@@ -4872,6 +5329,54 @@ public class VPCExamples {
       Response<Void> response = vpcService.deleteSecurityGroupTargetBinding(deleteSecurityGroupTargetBindingOptions).execute();
       // end-delete_security_group_target_binding
       System.out.printf("deleteSecurityGroupTargetBinding() response status code: %d%n", response.getStatusCode());
+    } catch (ServiceResponseException e) {
+      logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+              e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      // begin-remove_bare_metal_server_network_interface_floating_ip
+      RemoveBareMetalServerNetworkInterfaceFloatingIpOptions removeBareMetalServerNetworkInterfaceFloatingIpOptions = new RemoveBareMetalServerNetworkInterfaceFloatingIpOptions.Builder()
+              .bareMetalServerId(bareMetalServerId)
+              .networkInterfaceId(bareMetalServerNetworkInterfaceId)
+              .id(floatingIpId)
+              .build();
+
+      Response<Void> response = vpcService.removeBareMetalServerNetworkInterfaceFloatingIp(removeBareMetalServerNetworkInterfaceFloatingIpOptions).execute();
+      // end-remove_bare_metal_server_network_interface_floating_ip
+      System.out.printf("removeBareMetalServerNetworkInterfaceFloatingIp() response status code: %d%n", response.getStatusCode());
+
+    } catch (ServiceResponseException e) {
+      logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+              e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      // begin-delete_bare_metal_server_network_interface
+      DeleteBareMetalServerNetworkInterfaceOptions deleteBareMetalServerNetworkInterfaceOptions = new DeleteBareMetalServerNetworkInterfaceOptions.Builder()
+              .bareMetalServerId(bareMetalServerId)
+              .id(bareMetalServerNetworkInterfaceId)
+              .build();
+
+      Response<Void> response = vpcService.deleteBareMetalServerNetworkInterface(deleteBareMetalServerNetworkInterfaceOptions).execute();
+      // end-delete_bare_metal_server_network_interface
+      System.out.printf("deleteBareMetalServerNetworkInterface() response status code: %d%n", response.getStatusCode());
+
+    } catch (ServiceResponseException e) {
+      logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+              e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      // begin-delete_bare_metal_server
+      DeleteBareMetalServerOptions deleteBareMetalServerOptions = new DeleteBareMetalServerOptions.Builder()
+              .id(bareMetalServerId)
+              .build();
+
+      Response<Void> response = vpcService.deleteBareMetalServer(deleteBareMetalServerOptions).execute();
+      // end-delete_bare_metal_server
+      System.out.printf("deleteBareMetalServer() response status code: %d%n", response.getStatusCode());
+
     } catch (ServiceResponseException e) {
       logger.error(String.format("Service returned status code %s: %s%nError details: %s",
               e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);

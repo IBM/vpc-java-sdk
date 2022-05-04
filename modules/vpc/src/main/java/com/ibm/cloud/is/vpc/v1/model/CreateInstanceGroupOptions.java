@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -214,7 +214,10 @@ public class CreateInstanceGroupOptions extends GenericModel {
   /**
    * Gets the instanceTemplate.
    *
-   * Identifies an instance template by a unique property.
+   * Instance template to use when creating new instances.
+   *
+   * Instance groups are not compatible with instance templates that specify `true` for
+   * `default_trusted_profile.auto_link`.
    *
    * @return the instanceTemplate
    */
@@ -249,7 +252,7 @@ public class CreateInstanceGroupOptions extends GenericModel {
    * Gets the loadBalancer.
    *
    * The load balancer that the load balancer pool used by this group
-   * is in. Must be supplied when using a load balancer pool.
+   * is in. Required when using a load balancer pool.
    *
    * @return the loadBalancer
    */
@@ -260,7 +263,7 @@ public class CreateInstanceGroupOptions extends GenericModel {
   /**
    * Gets the loadBalancerPool.
    *
-   * When specified, the load balancer pool will be managed by this
+   * If specified, the load balancer pool will be managed by this
    * group. Instances created by this group will have a new load
    * balancer pool member in that pool created. Must be used with
    * `application_port`.
@@ -285,7 +288,8 @@ public class CreateInstanceGroupOptions extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this instance group.
+   * The unique user-defined name for this instance group. If unspecified, the name will be a hyphenated list of
+   * randomly-selected words.
    *
    * @return the name
    */

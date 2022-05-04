@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -20,15 +20,18 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class DeleteSnapshotOptions extends GenericModel {
 
   protected String id;
+  protected String ifMatch;
 
   /**
    * Builder.
    */
   public static class Builder {
     private String id;
+    private String ifMatch;
 
     private Builder(DeleteSnapshotOptions deleteSnapshotOptions) {
       this.id = deleteSnapshotOptions.id;
+      this.ifMatch = deleteSnapshotOptions.ifMatch;
     }
 
     /**
@@ -65,12 +68,24 @@ public class DeleteSnapshotOptions extends GenericModel {
       this.id = id;
       return this;
     }
+
+    /**
+     * Set the ifMatch.
+     *
+     * @param ifMatch the ifMatch
+     * @return the DeleteSnapshotOptions builder
+     */
+    public Builder ifMatch(String ifMatch) {
+      this.ifMatch = ifMatch;
+      return this;
+    }
   }
 
   protected DeleteSnapshotOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,
       "id cannot be empty");
     id = builder.id;
+    ifMatch = builder.ifMatch;
   }
 
   /**
@@ -91,6 +106,17 @@ public class DeleteSnapshotOptions extends GenericModel {
    */
   public String id() {
     return id;
+  }
+
+  /**
+   * Gets the ifMatch.
+   *
+   * If present, the request will fail if the specified ETag value does not match the resource's current ETag value.
+   *
+   * @return the ifMatch
+   */
+  public String ifMatch() {
+    return ifMatch;
   }
 }
 

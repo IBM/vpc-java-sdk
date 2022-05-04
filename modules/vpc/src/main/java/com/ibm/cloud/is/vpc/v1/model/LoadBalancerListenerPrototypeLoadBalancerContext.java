@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -21,9 +21,13 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class LoadBalancerListenerPrototypeLoadBalancerContext extends GenericModel {
 
   /**
-   * The listener protocol. Load balancers in the `network` family support `tcp`. Load balancers in the `application`
-   * family support `tcp`, `http`, and `https`. Each listener in the load balancer must have a unique `port` and
-   * `protocol` combination.
+   * The listener protocol. Load balancers in the `network` family support `tcp` and
+   * `udp` (if `udp_supported` is `true`). Load balancers in the `application` family support `tcp`, `http`, and
+   * `https`. Each listener in the load balancer must have a unique `port` and `protocol` combination.
+   *
+   * The enumerated values for this property are expected to expand in the future. When processing this property, check
+   * for and log unknown values. Optionally halt processing and surface the error, or bypass the listener on which the
+   * unexpected property value was encountered.
    */
   public interface Protocol {
     /** http. */
@@ -32,6 +36,8 @@ public class LoadBalancerListenerPrototypeLoadBalancerContext extends GenericMod
     String HTTPS = "https";
     /** tcp. */
     String TCP = "tcp";
+    /** udp. */
+    String UDP = "udp";
   }
 
   @SerializedName("accept_proxy_protocol")
@@ -222,7 +228,12 @@ public class LoadBalancerListenerPrototypeLoadBalancerContext extends GenericMod
   /**
    * Gets the defaultPool.
    *
-   * The default pool associated with the listener.
+   * The default pool for this listener. If specified, the pool's protocol must match the
+   * listener's protocol, or the protocols must be compatible. At present, the compatible
+   * protocols are `http` and `https`.
+   *
+   * If unspecified, this listener will be created with no default pool, but one may be
+   * subsequently set.
    *
    * @return the defaultPool
    */
@@ -249,9 +260,12 @@ public class LoadBalancerListenerPrototypeLoadBalancerContext extends GenericMod
    *
    * The inclusive upper bound of the range of ports used by this listener. Must not be less than `port_min`.
    *
-   * At present, only load balancers operating with route mode enabled support different values for `port_min` and
-   * `port_max`.  When route mode is enabled, only a value of
-   * `65535` is supported for `port_max`.
+   * At present, only load balancers operating with route mode enabled, and public load balancers in the `network`
+   * family support different values for `port_min` and
+   * `port_max`. When route mode is enabled, the value `65535` must be specified.
+   *
+   * The specified port range must not overlap with port ranges used by other listeners for this load balancer using the
+   * same protocol.
    *
    * @return the portMax
    */
@@ -264,9 +278,12 @@ public class LoadBalancerListenerPrototypeLoadBalancerContext extends GenericMod
    *
    * The inclusive lower bound of the range of ports used by this listener. Must not be greater than `port_max`.
    *
-   * At present, only load balancers operating with route mode enabled support different values for `port_min` and
-   * `port_max`.  When route mode is enabled, only a value of
-   * `1` is supported for `port_min`.
+   * At present, only load balancers operating with route mode enabled, and public load balancers in the `network`
+   * family support different values for `port_min` and
+   * `port_max`. When route mode is enabled, the value `1` must be specified.
+   *
+   * The specified port range must not overlap with port ranges used by other listeners for this load balancer using the
+   * same protocol.
    *
    * @return the portMin
    */
@@ -277,9 +294,13 @@ public class LoadBalancerListenerPrototypeLoadBalancerContext extends GenericMod
   /**
    * Gets the protocol.
    *
-   * The listener protocol. Load balancers in the `network` family support `tcp`. Load balancers in the `application`
-   * family support `tcp`, `http`, and `https`. Each listener in the load balancer must have a unique `port` and
-   * `protocol` combination.
+   * The listener protocol. Load balancers in the `network` family support `tcp` and
+   * `udp` (if `udp_supported` is `true`). Load balancers in the `application` family support `tcp`, `http`, and
+   * `https`. Each listener in the load balancer must have a unique `port` and `protocol` combination.
+   *
+   * The enumerated values for this property are expected to expand in the future. When processing this property, check
+   * for and log unknown values. Optionally halt processing and surface the error, or bypass the listener on which the
+   * unexpected property value was encountered.
    *
    * @return the protocol
    */

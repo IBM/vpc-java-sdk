@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -13,6 +13,7 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.google.gson.JsonParser;
 import com.ibm.cloud.is.vpc.v1.model.EncryptionKeyIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototypeInstanceByImageContext;
 import com.ibm.cloud.is.vpc.v1.model.VolumeProfileIdentityByName;
@@ -45,13 +46,13 @@ public class VolumeAttachmentPrototypeInstanceByImageContextTest {
     assertEquals(volumeProfileIdentityModel.name(), "general-purpose");
 
     VolumePrototypeInstanceByImageContext volumePrototypeInstanceByImageContextModel = new VolumePrototypeInstanceByImageContext.Builder()
-      .capacity(Long.valueOf("26"))
+      .capacity(Long.valueOf("250"))
       .encryptionKey(encryptionKeyIdentityModel)
       .iops(Long.valueOf("10000"))
       .name("my-volume")
       .profile(volumeProfileIdentityModel)
       .build();
-    assertEquals(volumePrototypeInstanceByImageContextModel.capacity(), Long.valueOf("26"));
+    assertEquals(volumePrototypeInstanceByImageContextModel.capacity(), Long.valueOf("250"));
     assertEquals(volumePrototypeInstanceByImageContextModel.encryptionKey(), encryptionKeyIdentityModel);
     assertEquals(volumePrototypeInstanceByImageContextModel.iops(), Long.valueOf("10000"));
     assertEquals(volumePrototypeInstanceByImageContextModel.name(), "my-volume");
@@ -72,7 +73,7 @@ public class VolumeAttachmentPrototypeInstanceByImageContextTest {
     assertTrue(volumeAttachmentPrototypeInstanceByImageContextModelNew instanceof VolumeAttachmentPrototypeInstanceByImageContext);
     assertEquals(volumeAttachmentPrototypeInstanceByImageContextModelNew.deleteVolumeOnInstanceDelete(), Boolean.valueOf(true));
     assertEquals(volumeAttachmentPrototypeInstanceByImageContextModelNew.name(), "my-volume-attachment");
-    assertEquals(volumeAttachmentPrototypeInstanceByImageContextModelNew.volume().toString(), volumePrototypeInstanceByImageContextModel.toString());
+    assertEquals(JsonParser.parseString(volumeAttachmentPrototypeInstanceByImageContextModelNew.volume().toString()), JsonParser.parseString(volumePrototypeInstanceByImageContextModel.toString()));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

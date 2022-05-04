@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -13,6 +13,7 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.google.gson.JsonParser;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostGroupPrototypeDedicatedHostByZoneContext;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostProfileIdentityByName;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostPrototypeDedicatedHostByZone;
@@ -80,7 +81,7 @@ public class DedicatedHostPrototypeDedicatedHostByZoneTest {
     assertEquals(dedicatedHostPrototypeDedicatedHostByZoneModelNew.name(), "my-host");
     assertEquals(dedicatedHostPrototypeDedicatedHostByZoneModelNew.profile().toString(), dedicatedHostProfileIdentityModel.toString());
     assertEquals(dedicatedHostPrototypeDedicatedHostByZoneModelNew.resourceGroup().toString(), resourceGroupIdentityModel.toString());
-    assertEquals(dedicatedHostPrototypeDedicatedHostByZoneModelNew.group().toString(), dedicatedHostGroupPrototypeDedicatedHostByZoneContextModel.toString());
+    assertEquals(JsonParser.parseString(dedicatedHostPrototypeDedicatedHostByZoneModelNew.group().toString()), JsonParser.parseString(dedicatedHostGroupPrototypeDedicatedHostByZoneContextModel.toString()));
     assertEquals(dedicatedHostPrototypeDedicatedHostByZoneModelNew.zone().toString(), zoneIdentityModel.toString());
   }
 

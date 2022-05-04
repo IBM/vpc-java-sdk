@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -85,7 +85,7 @@ public class ImageFilePrototype extends GenericModel {
   /**
    * Gets the href.
    *
-   * The Cloud Object Store (COS) location of the image file.
+   * The Cloud Object Storage location of the image file.
    *
    * @return the href
    */

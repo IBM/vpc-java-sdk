@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -36,9 +36,9 @@ public class LoadBalancerPoolPrototype extends GenericModel {
   }
 
   /**
-   * The protocol used for this load balancer pool. Load balancers in the `network` family support `tcp`. Load balancers
-   * in the `application` family support `tcp`, `http`, and
-   * `https`.
+   * The protocol used for this load balancer pool. Load balancers in the `network` family support `tcp` and `udp` (if
+   * `udp_supported` is `true`). Load balancers in the
+   * `application` family support `tcp`, `http`, and `https`.
    */
   public interface Protocol {
     /** http. */
@@ -47,6 +47,8 @@ public class LoadBalancerPoolPrototype extends GenericModel {
     String HTTPS = "https";
     /** tcp. */
     String TCP = "tcp";
+    /** udp. */
+    String UDP = "udp";
   }
 
   /**
@@ -296,9 +298,9 @@ public class LoadBalancerPoolPrototype extends GenericModel {
   /**
    * Gets the protocol.
    *
-   * The protocol used for this load balancer pool. Load balancers in the `network` family support `tcp`. Load balancers
-   * in the `application` family support `tcp`, `http`, and
-   * `https`.
+   * The protocol used for this load balancer pool. Load balancers in the `network` family support `tcp` and `udp` (if
+   * `udp_supported` is `true`). Load balancers in the
+   * `application` family support `tcp`, `http`, and `https`.
    *
    * @return the protocol
    */
