@@ -22,6 +22,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  *
  * Classes which extend this class:
  * - VolumePrototypeVolumeByCapacity
+ * - VolumePrototypeVolumeBySourceSnapshot
  */
 public class VolumePrototype extends GenericModel {
 
@@ -36,6 +37,8 @@ public class VolumePrototype extends GenericModel {
   protected Long capacity;
   @SerializedName("encryption_key")
   protected EncryptionKeyIdentity encryptionKey;
+  @SerializedName("source_snapshot")
+  protected SnapshotIdentity sourceSnapshot;
 
   protected VolumePrototype() {
   }
@@ -89,7 +92,7 @@ public class VolumePrototype extends GenericModel {
   /**
    * Gets the userTags.
    *
-   * Tags for this resource.
+   * The [user tags](https://cloud.ibm.com/apidocs/tagging#types-of-tags) associated with this volume.
    *
    * @return the userTags
    */
@@ -131,6 +134,17 @@ public class VolumePrototype extends GenericModel {
    */
   public EncryptionKeyIdentity encryptionKey() {
     return encryptionKey;
+  }
+
+  /**
+   * Gets the sourceSnapshot.
+   *
+   * The snapshot from which to clone the volume.
+   *
+   * @return the sourceSnapshot
+   */
+  public SnapshotIdentity sourceSnapshot() {
+    return sourceSnapshot;
   }
 }
 

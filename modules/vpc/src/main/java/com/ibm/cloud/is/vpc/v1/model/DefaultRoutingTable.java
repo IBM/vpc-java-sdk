@@ -51,6 +51,8 @@ public class DefaultRoutingTable extends GenericModel {
     String ROUTING_TABLE = "routing_table";
   }
 
+  @SerializedName("accept_routes_from")
+  protected List<ResourceFilter> acceptRoutesFrom;
   @SerializedName("created_at")
   protected Date createdAt;
   protected String href;
@@ -70,6 +72,20 @@ public class DefaultRoutingTable extends GenericModel {
   protected Boolean routeVpcZoneIngress;
   protected List<RouteReference> routes;
   protected List<SubnetReference> subnets;
+
+  /**
+   * Gets the acceptRoutesFrom.
+   *
+   * The filters specifying the resources that may create routes in this routing table.
+   *
+   * At present, only the `resource_type` filter is permitted, and only the `vpn_server` value is supported, but filter
+   * support is expected to expand in the future.
+   *
+   * @return the acceptRoutesFrom
+   */
+  public List<ResourceFilter> getAcceptRoutesFrom() {
+    return acceptRoutesFrom;
+  }
 
   /**
    * Gets the createdAt.

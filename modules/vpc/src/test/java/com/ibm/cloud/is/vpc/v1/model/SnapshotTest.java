@@ -13,6 +13,8 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanReference;
+import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.EncryptionKeyReference;
 import com.ibm.cloud.is.vpc.v1.model.ImageReference;
 import com.ibm.cloud.is.vpc.v1.model.ImageReferenceDeleted;
@@ -39,6 +41,7 @@ public class SnapshotTest {
   @Test
   public void testSnapshot() throws Throwable {
     Snapshot snapshotModel = new Snapshot();
+    assertNull(snapshotModel.getBackupPolicyPlan());
     assertNull(snapshotModel.isBootable());
     assertNull(snapshotModel.getCapturedAt());
     assertNull(snapshotModel.getCreatedAt());

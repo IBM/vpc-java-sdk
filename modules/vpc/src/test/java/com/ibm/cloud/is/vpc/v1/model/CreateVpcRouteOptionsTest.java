@@ -14,7 +14,7 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.CreateVpcRouteOptions;
-import com.ibm.cloud.is.vpc.v1.model.RouteNextHopPrototypeRouteNextHopIP;
+import com.ibm.cloud.is.vpc.v1.model.RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIP;
 import com.ibm.cloud.is.vpc.v1.model.ZoneIdentityByName;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
@@ -38,25 +38,25 @@ public class CreateVpcRouteOptionsTest {
       .build();
     assertEquals(zoneIdentityModel.name(), "us-south-1");
 
-    RouteNextHopPrototypeRouteNextHopIP routeNextHopPrototypeModel = new RouteNextHopPrototypeRouteNextHopIP.Builder()
+    RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIP routePrototypeNextHopModel = new RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIP.Builder()
       .address("192.168.3.4")
       .build();
-    assertEquals(routeNextHopPrototypeModel.address(), "192.168.3.4");
+    assertEquals(routePrototypeNextHopModel.address(), "192.168.3.4");
 
     CreateVpcRouteOptions createVpcRouteOptionsModel = new CreateVpcRouteOptions.Builder()
       .vpcId("testString")
       .destination("192.168.3.0/24")
       .zone(zoneIdentityModel)
       .action("deliver")
-      .name("my-route-2")
-      .nextHop(routeNextHopPrototypeModel)
+      .name("my-route-1")
+      .nextHop(routePrototypeNextHopModel)
       .build();
     assertEquals(createVpcRouteOptionsModel.vpcId(), "testString");
     assertEquals(createVpcRouteOptionsModel.destination(), "192.168.3.0/24");
     assertEquals(createVpcRouteOptionsModel.zone(), zoneIdentityModel);
     assertEquals(createVpcRouteOptionsModel.action(), "deliver");
-    assertEquals(createVpcRouteOptionsModel.name(), "my-route-2");
-    assertEquals(createVpcRouteOptionsModel.nextHop(), routeNextHopPrototypeModel);
+    assertEquals(createVpcRouteOptionsModel.name(), "my-route-1");
+    assertEquals(createVpcRouteOptionsModel.nextHop(), routePrototypeNextHopModel);
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

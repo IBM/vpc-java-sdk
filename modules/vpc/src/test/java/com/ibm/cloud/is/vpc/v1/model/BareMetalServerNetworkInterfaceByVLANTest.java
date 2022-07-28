@@ -46,7 +46,6 @@ public class BareMetalServerNetworkInterfaceByVLANTest {
     assertNull(bareMetalServerNetworkInterfaceByVlanModel.getFloatingIps());
     assertNull(bareMetalServerNetworkInterfaceByVlanModel.getHref());
     assertNull(bareMetalServerNetworkInterfaceByVlanModel.getId());
-    assertNull(bareMetalServerNetworkInterfaceByVlanModel.getInterfaceType());
     assertNull(bareMetalServerNetworkInterfaceByVlanModel.getMacAddress());
     assertNull(bareMetalServerNetworkInterfaceByVlanModel.getName());
     assertNull(bareMetalServerNetworkInterfaceByVlanModel.getPortSpeed());
@@ -57,6 +56,7 @@ public class BareMetalServerNetworkInterfaceByVLANTest {
     assertNull(bareMetalServerNetworkInterfaceByVlanModel.getSubnet());
     assertNull(bareMetalServerNetworkInterfaceByVlanModel.getType());
     assertNull(bareMetalServerNetworkInterfaceByVlanModel.isAllowInterfaceToFloat());
+    assertNull(bareMetalServerNetworkInterfaceByVlanModel.getInterfaceType());
     assertNull(bareMetalServerNetworkInterfaceByVlanModel.getVlan());
   }
 }

@@ -87,6 +87,9 @@ public class ImageFilePrototype extends GenericModel {
    *
    * The Cloud Object Storage location of the image file.
    *
+   * The image file format is specified by the file's extension, which must be either
+   * `qcow2` or `vhd`.
+   *
    * @return the href
    */
   public String href() {

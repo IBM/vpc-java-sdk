@@ -23,6 +23,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class CreateVpcRoutingTableOptions extends GenericModel {
 
   protected String vpcId;
+  protected List<ResourceFilter> acceptRoutesFrom;
   protected String name;
   protected Boolean routeDirectLinkIngress;
   protected Boolean routeTransitGatewayIngress;
@@ -34,6 +35,7 @@ public class CreateVpcRoutingTableOptions extends GenericModel {
    */
   public static class Builder {
     private String vpcId;
+    private List<ResourceFilter> acceptRoutesFrom;
     private String name;
     private Boolean routeDirectLinkIngress;
     private Boolean routeTransitGatewayIngress;
@@ -42,6 +44,7 @@ public class CreateVpcRoutingTableOptions extends GenericModel {
 
     private Builder(CreateVpcRoutingTableOptions createVpcRoutingTableOptions) {
       this.vpcId = createVpcRoutingTableOptions.vpcId;
+      this.acceptRoutesFrom = createVpcRoutingTableOptions.acceptRoutesFrom;
       this.name = createVpcRoutingTableOptions.name;
       this.routeDirectLinkIngress = createVpcRoutingTableOptions.routeDirectLinkIngress;
       this.routeTransitGatewayIngress = createVpcRoutingTableOptions.routeTransitGatewayIngress;
@@ -74,6 +77,22 @@ public class CreateVpcRoutingTableOptions extends GenericModel {
     }
 
     /**
+     * Adds an acceptRoutesFrom to acceptRoutesFrom.
+     *
+     * @param acceptRoutesFrom the new acceptRoutesFrom
+     * @return the CreateVpcRoutingTableOptions builder
+     */
+    public Builder addAcceptRoutesFrom(ResourceFilter acceptRoutesFrom) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(acceptRoutesFrom,
+        "acceptRoutesFrom cannot be null");
+      if (this.acceptRoutesFrom == null) {
+        this.acceptRoutesFrom = new ArrayList<ResourceFilter>();
+      }
+      this.acceptRoutesFrom.add(acceptRoutesFrom);
+      return this;
+    }
+
+    /**
      * Adds an routes to routes.
      *
      * @param routes the new routes
@@ -97,6 +116,18 @@ public class CreateVpcRoutingTableOptions extends GenericModel {
      */
     public Builder vpcId(String vpcId) {
       this.vpcId = vpcId;
+      return this;
+    }
+
+    /**
+     * Set the acceptRoutesFrom.
+     * Existing acceptRoutesFrom will be replaced.
+     *
+     * @param acceptRoutesFrom the acceptRoutesFrom
+     * @return the CreateVpcRoutingTableOptions builder
+     */
+    public Builder acceptRoutesFrom(List<ResourceFilter> acceptRoutesFrom) {
+      this.acceptRoutesFrom = acceptRoutesFrom;
       return this;
     }
 
@@ -161,6 +192,7 @@ public class CreateVpcRoutingTableOptions extends GenericModel {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.vpcId,
       "vpcId cannot be empty");
     vpcId = builder.vpcId;
+    acceptRoutesFrom = builder.acceptRoutesFrom;
     name = builder.name;
     routeDirectLinkIngress = builder.routeDirectLinkIngress;
     routeTransitGatewayIngress = builder.routeTransitGatewayIngress;
@@ -186,6 +218,20 @@ public class CreateVpcRoutingTableOptions extends GenericModel {
    */
   public String vpcId() {
     return vpcId;
+  }
+
+  /**
+   * Gets the acceptRoutesFrom.
+   *
+   * The filters specifying the resources that may create routes in this routing table.
+   *
+   * At present, only the `resource_type` filter is permitted, and only the `vpn_server` value is supported, but filter
+   * support is expected to expand in the future.
+   *
+   * @return the acceptRoutesFrom
+   */
+  public List<ResourceFilter> acceptRoutesFrom() {
+    return acceptRoutesFrom;
   }
 
   /**

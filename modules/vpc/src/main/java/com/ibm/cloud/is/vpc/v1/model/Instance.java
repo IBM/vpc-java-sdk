@@ -24,6 +24,14 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class Instance extends GenericModel {
 
   /**
+   * The resource type.
+   */
+  public interface ResourceType {
+    /** instance. */
+    String INSTANCE = "instance";
+  }
+
+  /**
    * The status of the virtual server instance.
    */
   public interface Status {
@@ -79,6 +87,8 @@ public class Instance extends GenericModel {
   protected InstanceProfileReference profile;
   @SerializedName("resource_group")
   protected ResourceGroupReference resourceGroup;
+  @SerializedName("resource_type")
+  protected String resourceType;
   protected Boolean startable;
   protected String status;
   @SerializedName("status_reasons")
@@ -301,6 +311,17 @@ public class Instance extends GenericModel {
    */
   public ResourceGroupReference getResourceGroup() {
     return resourceGroup;
+  }
+
+  /**
+   * Gets the resourceType.
+   *
+   * The resource type.
+   *
+   * @return the resourceType
+   */
+  public String getResourceType() {
+    return resourceType;
   }
 
   /**

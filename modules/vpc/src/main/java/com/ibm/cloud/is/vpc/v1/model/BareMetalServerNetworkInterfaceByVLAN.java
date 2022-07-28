@@ -18,26 +18,6 @@ package com.ibm.cloud.is.vpc.v1.model;
 public class BareMetalServerNetworkInterfaceByVLAN extends BareMetalServerNetworkInterface {
 
   /**
-   * The network interface type:
-   * - `pci`: a physical PCI device which can only be created or deleted when the bare metal
-   *   server is stopped
-   *   - Has an `allowed_vlans` property which controls the VLANs that will be permitted
-   *     to use the pci interface
-   *   - Cannot directly use an IEEE 802.1q VLAN tag.
-   * - `vlan`: a virtual device, used through a `pci` device that has the `vlan` in its array
-   *    of `allowed_vlans`.
-   *   - Must use an IEEE 802.1q tag.
-   *   - Has its own security groups and does not inherit those of the PCI device through
-   *     which traffic flows.
-   */
-  public interface InterfaceType {
-    /** pci. */
-    String PCI = "pci";
-    /** vlan. */
-    String VLAN = "vlan";
-  }
-
-  /**
    * The resource type.
    */
   public interface ResourceType {
@@ -67,6 +47,18 @@ public class BareMetalServerNetworkInterfaceByVLAN extends BareMetalServerNetwor
     String PRIMARY = "primary";
     /** secondary. */
     String SECONDARY = "secondary";
+  }
+
+  /**
+   * - `vlan`: a virtual device, used through a `pci` device that has the `vlan` in its array
+   *    of `allowed_vlans`.
+   *   - Must use an IEEE 802.1q tag.
+   *   - Has its own security groups and does not inherit those of the PCI device through
+   *     which traffic flows.
+   */
+  public interface InterfaceType {
+    /** vlan. */
+    String VLAN = "vlan";
   }
 
 }

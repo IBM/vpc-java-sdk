@@ -14,6 +14,7 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.DefaultRoutingTable;
+import com.ibm.cloud.is.vpc.v1.model.ResourceFilter;
 import com.ibm.cloud.is.vpc.v1.model.RouteReference;
 import com.ibm.cloud.is.vpc.v1.model.RouteReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.SubnetReference;
@@ -36,6 +37,7 @@ public class DefaultRoutingTableTest {
   @Test
   public void testDefaultRoutingTable() throws Throwable {
     DefaultRoutingTable defaultRoutingTableModel = new DefaultRoutingTable();
+    assertNull(defaultRoutingTableModel.getAcceptRoutesFrom());
     assertNull(defaultRoutingTableModel.getCreatedAt());
     assertNull(defaultRoutingTableModel.getHref());
     assertNull(defaultRoutingTableModel.getId());

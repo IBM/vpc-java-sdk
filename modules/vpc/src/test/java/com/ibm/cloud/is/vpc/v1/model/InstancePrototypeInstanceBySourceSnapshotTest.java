@@ -13,7 +13,6 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
-import com.google.gson.JsonParser;
 import com.ibm.cloud.is.vpc.v1.model.EncryptionKeyIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.InstanceAvailabilityPrototype;
 import com.ibm.cloud.is.vpc.v1.model.InstanceDefaultTrustedProfilePrototype;
@@ -78,9 +77,9 @@ public class InstancePrototypeInstanceBySourceSnapshotTest {
     assertEquals(keyIdentityModel.id(), "a6b1a881-2ce8-41a3-80fc-36316a73f803");
 
     InstanceMetadataServicePrototype instanceMetadataServicePrototypeModel = new InstanceMetadataServicePrototype.Builder()
-      .enabled(true)
+      .enabled(false)
       .build();
-    assertEquals(instanceMetadataServicePrototypeModel.enabled(), Boolean.valueOf(true));
+    assertEquals(instanceMetadataServicePrototypeModel.enabled(), Boolean.valueOf(false));
 
     NetworkInterfaceIPPrototypeReservedIPPrototypeNetworkInterfaceContext networkInterfaceIpPrototypeModel = new NetworkInterfaceIPPrototypeReservedIPPrototypeNetworkInterfaceContext.Builder()
       .address("10.0.0.5")
@@ -241,7 +240,7 @@ public class InstancePrototypeInstanceBySourceSnapshotTest {
     assertEquals(instancePrototypeInstanceBySourceSnapshotModelNew.totalVolumeBandwidth(), Long.valueOf("500"));
     assertEquals(instancePrototypeInstanceBySourceSnapshotModelNew.userData(), "testString");
     assertEquals(instancePrototypeInstanceBySourceSnapshotModelNew.vpc().toString(), vpcIdentityModel.toString());
-    assertEquals(JsonParser.parseString(instancePrototypeInstanceBySourceSnapshotModelNew.bootVolumeAttachment().toString()), JsonParser.parseString(volumeAttachmentPrototypeInstanceBySourceSnapshotContextModel.toString()));
+    assertEquals(instancePrototypeInstanceBySourceSnapshotModelNew.bootVolumeAttachment().toString(), volumeAttachmentPrototypeInstanceBySourceSnapshotContextModel.toString());
     assertEquals(instancePrototypeInstanceBySourceSnapshotModelNew.primaryNetworkInterface().toString(), networkInterfacePrototypeModel.toString());
     assertEquals(instancePrototypeInstanceBySourceSnapshotModelNew.zone().toString(), zoneIdentityModel.toString());
   }

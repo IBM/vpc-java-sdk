@@ -32,6 +32,7 @@ public class DefaultSecurityGroup extends GenericModel {
   @SerializedName("resource_group")
   protected ResourceGroupReference resourceGroup;
   protected List<SecurityGroupRule> rules;
+  protected List<SecurityGroupTargetReference> targets;
   protected VPCReference vpc;
 
   /**
@@ -112,6 +113,17 @@ public class DefaultSecurityGroup extends GenericModel {
    */
   public List<SecurityGroupRule> getRules() {
     return rules;
+  }
+
+  /**
+   * Gets the targets.
+   *
+   * The targets for this security group.
+   *
+   * @return the targets
+   */
+  public List<SecurityGroupTargetReference> getTargets() {
+    return targets;
   }
 
   /**

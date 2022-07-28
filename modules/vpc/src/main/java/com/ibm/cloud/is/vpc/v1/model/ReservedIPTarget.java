@@ -25,6 +25,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  * - ReservedIPTargetNetworkInterfaceReferenceTargetContext
  * - ReservedIPTargetLoadBalancerReference
  * - ReservedIPTargetVPNGatewayReference
+ * - ReservedIPTargetVPNServerReference
  * - ReservedIPTargetGenericResourceReference
  */
 public class ReservedIPTarget extends GenericModel {

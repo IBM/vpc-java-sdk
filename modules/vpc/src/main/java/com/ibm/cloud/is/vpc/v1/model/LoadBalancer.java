@@ -229,7 +229,7 @@ public class LoadBalancer extends GenericModel {
   /**
    * Gets the profile.
    *
-   * The profile to use for this load balancer.
+   * The profile for this load balancer.
    *
    * @return the profile
    */

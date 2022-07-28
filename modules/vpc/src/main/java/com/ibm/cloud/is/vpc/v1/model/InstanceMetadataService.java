@@ -15,7 +15,7 @@ package com.ibm.cloud.is.vpc.v1.model;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * InstanceMetadataService.
+ * The metadata service configuration.
  */
 public class InstanceMetadataService extends GenericModel {
 

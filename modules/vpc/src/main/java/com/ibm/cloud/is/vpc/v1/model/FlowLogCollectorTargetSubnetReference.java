@@ -17,5 +17,13 @@ package com.ibm.cloud.is.vpc.v1.model;
  */
 public class FlowLogCollectorTargetSubnetReference extends FlowLogCollectorTarget {
 
+  /**
+   * The resource type.
+   */
+  public interface ResourceType {
+    /** subnet. */
+    String SUBNET = "subnet";
+  }
+
 }
 

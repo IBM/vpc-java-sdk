@@ -15,7 +15,7 @@ package com.ibm.cloud.is.vpc.v1.model;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * InstanceMetadataServicePrototype.
+ * The metadata service configuration.
  */
 public class InstanceMetadataServicePrototype extends GenericModel {
 
@@ -74,7 +74,7 @@ public class InstanceMetadataServicePrototype extends GenericModel {
   /**
    * Gets the enabled.
    *
-   * Indicates whether the metadata service endpoint is available to the virtual server instance.
+   * Indicates whether the metadata service endpoint will be available to the virtual server instance.
    *
    * @return the enabled
    */

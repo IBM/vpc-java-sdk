@@ -33,6 +33,7 @@ public class ListSnapshotsOptions extends GenericModel {
 
   protected String start;
   protected Long limit;
+  protected String tag;
   protected String resourceGroupId;
   protected String name;
   protected String sourceVolumeId;
@@ -40,6 +41,7 @@ public class ListSnapshotsOptions extends GenericModel {
   protected String sourceImageId;
   protected String sourceImageCrn;
   protected String sort;
+  protected String backupPolicyPlanId;
 
   /**
    * Builder.
@@ -47,6 +49,7 @@ public class ListSnapshotsOptions extends GenericModel {
   public static class Builder {
     private String start;
     private Long limit;
+    private String tag;
     private String resourceGroupId;
     private String name;
     private String sourceVolumeId;
@@ -54,10 +57,12 @@ public class ListSnapshotsOptions extends GenericModel {
     private String sourceImageId;
     private String sourceImageCrn;
     private String sort;
+    private String backupPolicyPlanId;
 
     private Builder(ListSnapshotsOptions listSnapshotsOptions) {
       this.start = listSnapshotsOptions.start;
       this.limit = listSnapshotsOptions.limit;
+      this.tag = listSnapshotsOptions.tag;
       this.resourceGroupId = listSnapshotsOptions.resourceGroupId;
       this.name = listSnapshotsOptions.name;
       this.sourceVolumeId = listSnapshotsOptions.sourceVolumeId;
@@ -65,6 +70,7 @@ public class ListSnapshotsOptions extends GenericModel {
       this.sourceImageId = listSnapshotsOptions.sourceImageId;
       this.sourceImageCrn = listSnapshotsOptions.sourceImageCrn;
       this.sort = listSnapshotsOptions.sort;
+      this.backupPolicyPlanId = listSnapshotsOptions.backupPolicyPlanId;
     }
 
     /**
@@ -101,6 +107,17 @@ public class ListSnapshotsOptions extends GenericModel {
      */
     public Builder limit(long limit) {
       this.limit = limit;
+      return this;
+    }
+
+    /**
+     * Set the tag.
+     *
+     * @param tag the tag
+     * @return the ListSnapshotsOptions builder
+     */
+    public Builder tag(String tag) {
+      this.tag = tag;
       return this;
     }
 
@@ -180,11 +197,23 @@ public class ListSnapshotsOptions extends GenericModel {
       this.sort = sort;
       return this;
     }
+
+    /**
+     * Set the backupPolicyPlanId.
+     *
+     * @param backupPolicyPlanId the backupPolicyPlanId
+     * @return the ListSnapshotsOptions builder
+     */
+    public Builder backupPolicyPlanId(String backupPolicyPlanId) {
+      this.backupPolicyPlanId = backupPolicyPlanId;
+      return this;
+    }
   }
 
   protected ListSnapshotsOptions(Builder builder) {
     start = builder.start;
     limit = builder.limit;
+    tag = builder.tag;
     resourceGroupId = builder.resourceGroupId;
     name = builder.name;
     sourceVolumeId = builder.sourceVolumeId;
@@ -192,6 +221,7 @@ public class ListSnapshotsOptions extends GenericModel {
     sourceImageId = builder.sourceImageId;
     sourceImageCrn = builder.sourceImageCrn;
     sort = builder.sort;
+    backupPolicyPlanId = builder.backupPolicyPlanId;
   }
 
   /**
@@ -223,6 +253,17 @@ public class ListSnapshotsOptions extends GenericModel {
    */
   public Long limit() {
     return limit;
+  }
+
+  /**
+   * Gets the tag.
+   *
+   * Filters the collection to resources with the exact tag value.
+   *
+   * @return the tag
+   */
+  public String tag() {
+    return tag;
   }
 
   /**
@@ -308,6 +349,17 @@ public class ListSnapshotsOptions extends GenericModel {
    */
   public String sort() {
     return sort;
+  }
+
+  /**
+   * Gets the backupPolicyPlanId.
+   *
+   * Filters the collection to backup policy jobs with the backup plan with the specified identifier.
+   *
+   * @return the backupPolicyPlanId
+   */
+  public String backupPolicyPlanId() {
+    return backupPolicyPlanId;
   }
 }
 

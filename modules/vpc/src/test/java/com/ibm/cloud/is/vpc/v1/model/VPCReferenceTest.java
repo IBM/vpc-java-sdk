@@ -38,5 +38,6 @@ public class VPCReferenceTest {
     assertNull(vpcReferenceModel.getHref());
     assertNull(vpcReferenceModel.getId());
     assertNull(vpcReferenceModel.getName());
+    assertNull(vpcReferenceModel.getResourceType());
   }
 }

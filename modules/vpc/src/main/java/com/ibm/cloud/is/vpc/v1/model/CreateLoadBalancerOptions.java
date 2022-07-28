@@ -308,7 +308,10 @@ public class CreateLoadBalancerOptions extends GenericModel {
   /**
    * Gets the subnets.
    *
-   * The subnets to provision this load balancer.
+   * The subnets to provision this load balancer in.  The load balancer's availability will depend on the availability
+   * of the zones the specified subnets reside in.
+   *
+   * Load balancers in the `network` family allow only one subnet to be specified.
    *
    * @return the subnets
    */
@@ -369,7 +372,9 @@ public class CreateLoadBalancerOptions extends GenericModel {
   /**
    * Gets the profile.
    *
-   * The profile to use for this load balancer.
+   * The profile to use for this load balancer
+   *
+   * If unspecified, `application` will be used.
    *
    * @return the profile
    */

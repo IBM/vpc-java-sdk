@@ -24,6 +24,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  * - SecurityGroupTargetReferenceNetworkInterfaceReferenceTargetContext
  * - SecurityGroupTargetReferenceLoadBalancerReference
  * - SecurityGroupTargetReferenceEndpointGatewayReference
+ * - SecurityGroupTargetReferenceVPNServerReference
  */
 public class SecurityGroupTargetReference extends GenericModel {
 

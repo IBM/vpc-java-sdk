@@ -71,7 +71,7 @@ public class ImagePrototype extends GenericModel {
    *
    * That representation is created by wrapping the key's value with the `encryption_key` root key (which must also be
    * specified), using either [Key Protect](https://cloud.ibm.com/docs/key-protect?topic=key-protect-wrap-keys) or the
-   * [Hyper Protect Crypto Service](https://cloud.ibm.com/docs/services/hs-crypto?topic=hs-crypto-wrap-keys).
+   * [Hyper Protect Crypto Services](https://cloud.ibm.com/docs/services/hs-crypto?topic=hs-crypto-wrap-keys).
    *
    * If unspecified, the imported image is treated as unencrypted.
    *

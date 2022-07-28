@@ -12,6 +12,8 @@
  */
 package com.ibm.cloud.is.vpc.v1.model;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import com.google.gson.annotations.SerializedName;
@@ -23,6 +25,8 @@ import com.ibm.cloud.sdk.core.util.GsonSingleton;
  */
 public class RoutingTablePatch extends GenericModel {
 
+  @SerializedName("accept_routes_from")
+  protected List<ResourceFilter> acceptRoutesFrom;
   protected String name;
   @SerializedName("route_direct_link_ingress")
   protected Boolean routeDirectLinkIngress;
@@ -35,12 +39,14 @@ public class RoutingTablePatch extends GenericModel {
    * Builder.
    */
   public static class Builder {
+    private List<ResourceFilter> acceptRoutesFrom;
     private String name;
     private Boolean routeDirectLinkIngress;
     private Boolean routeTransitGatewayIngress;
     private Boolean routeVpcZoneIngress;
 
     private Builder(RoutingTablePatch routingTablePatch) {
+      this.acceptRoutesFrom = routingTablePatch.acceptRoutesFrom;
       this.name = routingTablePatch.name;
       this.routeDirectLinkIngress = routingTablePatch.routeDirectLinkIngress;
       this.routeTransitGatewayIngress = routingTablePatch.routeTransitGatewayIngress;
@@ -60,6 +66,34 @@ public class RoutingTablePatch extends GenericModel {
      */
     public RoutingTablePatch build() {
       return new RoutingTablePatch(this);
+    }
+
+    /**
+     * Adds an acceptRoutesFrom to acceptRoutesFrom.
+     *
+     * @param acceptRoutesFrom the new acceptRoutesFrom
+     * @return the RoutingTablePatch builder
+     */
+    public Builder addAcceptRoutesFrom(ResourceFilter acceptRoutesFrom) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(acceptRoutesFrom,
+        "acceptRoutesFrom cannot be null");
+      if (this.acceptRoutesFrom == null) {
+        this.acceptRoutesFrom = new ArrayList<ResourceFilter>();
+      }
+      this.acceptRoutesFrom.add(acceptRoutesFrom);
+      return this;
+    }
+
+    /**
+     * Set the acceptRoutesFrom.
+     * Existing acceptRoutesFrom will be replaced.
+     *
+     * @param acceptRoutesFrom the acceptRoutesFrom
+     * @return the RoutingTablePatch builder
+     */
+    public Builder acceptRoutesFrom(List<ResourceFilter> acceptRoutesFrom) {
+      this.acceptRoutesFrom = acceptRoutesFrom;
+      return this;
     }
 
     /**
@@ -108,6 +142,7 @@ public class RoutingTablePatch extends GenericModel {
   }
 
   protected RoutingTablePatch(Builder builder) {
+    acceptRoutesFrom = builder.acceptRoutesFrom;
     name = builder.name;
     routeDirectLinkIngress = builder.routeDirectLinkIngress;
     routeTransitGatewayIngress = builder.routeTransitGatewayIngress;
@@ -121,6 +156,23 @@ public class RoutingTablePatch extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
+  }
+
+  /**
+   * Gets the acceptRoutesFrom.
+   *
+   * The filters specifying the resources that may create routes in this routing table
+   * (replacing any existing filters). All routes learned from resources that match a given filter will be removed when
+   * an existing filter is removed. Therefore, if an empty array is specified, all filters will be removed, resulting in
+   * all learned routes being removed.
+   *
+   * At present, only the `resource_type` filter is permitted, and only the `vpn_server` value is supported, but filter
+   * support is expected to expand in the future.
+   *
+   * @return the acceptRoutesFrom
+   */
+  public List<ResourceFilter> acceptRoutesFrom() {
+    return acceptRoutesFrom;
   }
 
   /**

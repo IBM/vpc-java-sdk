@@ -14,9 +14,11 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.DefaultSecurityGroup;
+import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceReferenceTargetContextDeleted;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleRemoteIP;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleSecurityGroupRuleProtocolAll;
+import com.ibm.cloud.is.vpc.v1.model.SecurityGroupTargetReferenceNetworkInterfaceReferenceTargetContext;
 import com.ibm.cloud.is.vpc.v1.model.VPCReference;
 import com.ibm.cloud.is.vpc.v1.model.VPCReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
@@ -44,6 +46,7 @@ public class DefaultSecurityGroupTest {
     assertNull(defaultSecurityGroupModel.getName());
     assertNull(defaultSecurityGroupModel.getResourceGroup());
     assertNull(defaultSecurityGroupModel.getRules());
+    assertNull(defaultSecurityGroupModel.getTargets());
     assertNull(defaultSecurityGroupModel.getVpc());
   }
 }

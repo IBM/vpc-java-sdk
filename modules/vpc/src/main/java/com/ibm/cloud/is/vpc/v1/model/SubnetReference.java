@@ -12,6 +12,7 @@
  */
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
@@ -19,11 +20,21 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class SubnetReference extends GenericModel {
 
+  /**
+   * The resource type.
+   */
+  public interface ResourceType {
+    /** subnet. */
+    String SUBNET = "subnet";
+  }
+
   protected String crn;
   protected SubnetReferenceDeleted deleted;
   protected String href;
   protected String id;
   protected String name;
+  @SerializedName("resource_type")
+  protected String resourceType;
 
   /**
    * Gets the crn.
@@ -79,6 +90,17 @@ public class SubnetReference extends GenericModel {
    */
   public String getName() {
     return name;
+  }
+
+  /**
+   * Gets the resourceType.
+   *
+   * The resource type.
+   *
+   * @return the resourceType
+   */
+  public String getResourceType() {
+    return resourceType;
   }
 }
 

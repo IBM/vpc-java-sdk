@@ -31,6 +31,14 @@ public class Subnet extends GenericModel {
   }
 
   /**
+   * The resource type.
+   */
+  public interface ResourceType {
+    /** subnet. */
+    String SUBNET = "subnet";
+  }
+
+  /**
    * The status of the subnet.
    */
   public interface Status {
@@ -62,6 +70,8 @@ public class Subnet extends GenericModel {
   protected PublicGatewayReference publicGateway;
   @SerializedName("resource_group")
   protected ResourceGroupReference resourceGroup;
+  @SerializedName("resource_type")
+  protected String resourceType;
   @SerializedName("routing_table")
   protected RoutingTableReference routingTable;
   protected String status;
@@ -190,6 +200,17 @@ public class Subnet extends GenericModel {
    */
   public ResourceGroupReference getResourceGroup() {
     return resourceGroup;
+  }
+
+  /**
+   * Gets the resourceType.
+   *
+   * The resource type.
+   *
+   * @return the resourceType
+   */
+  public String getResourceType() {
+    return resourceType;
   }
 
   /**

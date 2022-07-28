@@ -51,6 +51,8 @@ public class Volume extends GenericModel {
     String PENDING_DELETION = "pending_deletion";
     /** unusable. */
     String UNUSABLE = "unusable";
+    /** updating. */
+    String UPDATING = "updating";
   }
 
   protected Boolean active;
@@ -314,7 +316,7 @@ public class Volume extends GenericModel {
   /**
    * Gets the userTags.
    *
-   * Tags for this resource.
+   * The [user tags](https://cloud.ibm.com/apidocs/tagging#types-of-tags) associated with this volume.
    *
    * @return the userTags
    */

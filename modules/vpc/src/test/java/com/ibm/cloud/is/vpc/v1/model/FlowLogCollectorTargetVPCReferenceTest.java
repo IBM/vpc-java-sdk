@@ -38,5 +38,6 @@ public class FlowLogCollectorTargetVPCReferenceTest {
     assertNull(flowLogCollectorTargetVpcReferenceModel.getHref());
     assertNull(flowLogCollectorTargetVpcReferenceModel.getId());
     assertNull(flowLogCollectorTargetVpcReferenceModel.getName());
+    assertNull(flowLogCollectorTargetVpcReferenceModel.getResourceType());
   }
 }

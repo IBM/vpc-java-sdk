@@ -19,18 +19,6 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class ListBareMetalServersOptions extends GenericModel {
 
-  /**
-   * Sorts the returned collection by the specified property name in ascending order. A `-` may be prepended to the name
-   * to sort in descending order. For example, the value `-created_at` sorts the collection by the `created_at` property
-   * in descending order, and the value `name` sorts it by the `name` property in ascending order.
-   */
-  public interface Sort {
-    /** created_at. */
-    String CREATED_AT = "created_at";
-    /** name. */
-    String NAME = "name";
-  }
-
   protected String start;
   protected Long limit;
   protected String resourceGroupId;
@@ -41,7 +29,6 @@ public class ListBareMetalServersOptions extends GenericModel {
   protected String networkInterfacesSubnetId;
   protected String networkInterfacesSubnetCrn;
   protected String networkInterfacesSubnetName;
-  protected String sort;
 
   /**
    * Builder.
@@ -57,7 +44,6 @@ public class ListBareMetalServersOptions extends GenericModel {
     private String networkInterfacesSubnetId;
     private String networkInterfacesSubnetCrn;
     private String networkInterfacesSubnetName;
-    private String sort;
 
     private Builder(ListBareMetalServersOptions listBareMetalServersOptions) {
       this.start = listBareMetalServersOptions.start;
@@ -70,7 +56,6 @@ public class ListBareMetalServersOptions extends GenericModel {
       this.networkInterfacesSubnetId = listBareMetalServersOptions.networkInterfacesSubnetId;
       this.networkInterfacesSubnetCrn = listBareMetalServersOptions.networkInterfacesSubnetCrn;
       this.networkInterfacesSubnetName = listBareMetalServersOptions.networkInterfacesSubnetName;
-      this.sort = listBareMetalServersOptions.sort;
     }
 
     /**
@@ -197,17 +182,6 @@ public class ListBareMetalServersOptions extends GenericModel {
       this.networkInterfacesSubnetName = networkInterfacesSubnetName;
       return this;
     }
-
-    /**
-     * Set the sort.
-     *
-     * @param sort the sort
-     * @return the ListBareMetalServersOptions builder
-     */
-    public Builder sort(String sort) {
-      this.sort = sort;
-      return this;
-    }
   }
 
   protected ListBareMetalServersOptions(Builder builder) {
@@ -221,7 +195,6 @@ public class ListBareMetalServersOptions extends GenericModel {
     networkInterfacesSubnetId = builder.networkInterfacesSubnetId;
     networkInterfacesSubnetCrn = builder.networkInterfacesSubnetCrn;
     networkInterfacesSubnetName = builder.networkInterfacesSubnetName;
-    sort = builder.sort;
   }
 
   /**
@@ -341,19 +314,6 @@ public class ListBareMetalServersOptions extends GenericModel {
    */
   public String networkInterfacesSubnetName() {
     return networkInterfacesSubnetName;
-  }
-
-  /**
-   * Gets the sort.
-   *
-   * Sorts the returned collection by the specified property name in ascending order. A `-` may be prepended to the name
-   * to sort in descending order. For example, the value `-created_at` sorts the collection by the `created_at` property
-   * in descending order, and the value `name` sorts it by the `name` property in ascending order.
-   *
-   * @return the sort
-   */
-  public String sort() {
-    return sort;
   }
 }
 

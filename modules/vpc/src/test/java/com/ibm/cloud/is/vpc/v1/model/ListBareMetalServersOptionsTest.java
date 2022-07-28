@@ -42,7 +42,6 @@ public class ListBareMetalServersOptionsTest {
       .networkInterfacesSubnetId("testString")
       .networkInterfacesSubnetCrn("testString")
       .networkInterfacesSubnetName("testString")
-      .sort("name")
       .build();
     assertEquals(listBareMetalServersOptionsModel.start(), "testString");
     assertEquals(listBareMetalServersOptionsModel.limit(), Long.valueOf("1"));
@@ -54,6 +53,5 @@ public class ListBareMetalServersOptionsTest {
     assertEquals(listBareMetalServersOptionsModel.networkInterfacesSubnetId(), "testString");
     assertEquals(listBareMetalServersOptionsModel.networkInterfacesSubnetCrn(), "testString");
     assertEquals(listBareMetalServersOptionsModel.networkInterfacesSubnetName(), "testString");
-    assertEquals(listBareMetalServersOptionsModel.sort(), "name");
   }
 }

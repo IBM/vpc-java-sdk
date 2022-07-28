@@ -58,21 +58,21 @@ public class BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInter
     BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByPCIPrototype bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByPciPrototypeModel = new BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByPCIPrototype.Builder()
       .allowIpSpoofing(true)
       .enableInfrastructureNat(true)
-      .interfaceType("pci")
       .name("my-network-interface")
       .primaryIp(networkInterfaceIpPrototypeModel)
       .securityGroups(new java.util.ArrayList<SecurityGroupIdentity>(java.util.Arrays.asList(securityGroupIdentityModel)))
       .subnet(subnetIdentityModel)
       .allowedVlans(new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("4"))))
+      .interfaceType("pci")
       .build();
     assertEquals(bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByPciPrototypeModel.allowIpSpoofing(), Boolean.valueOf(true));
     assertEquals(bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByPciPrototypeModel.enableInfrastructureNat(), Boolean.valueOf(true));
-    assertEquals(bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByPciPrototypeModel.interfaceType(), "pci");
     assertEquals(bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByPciPrototypeModel.name(), "my-network-interface");
     assertEquals(bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByPciPrototypeModel.primaryIp(), networkInterfaceIpPrototypeModel);
     assertEquals(bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByPciPrototypeModel.securityGroups(), new java.util.ArrayList<SecurityGroupIdentity>(java.util.Arrays.asList(securityGroupIdentityModel)));
     assertEquals(bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByPciPrototypeModel.subnet(), subnetIdentityModel);
     assertEquals(bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByPciPrototypeModel.allowedVlans(), new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("4"))));
+    assertEquals(bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByPciPrototypeModel.interfaceType(), "pci");
 
     String json = TestUtilities.serialize(bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByPciPrototypeModel);
 
@@ -80,10 +80,10 @@ public class BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInter
     assertTrue(bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByPciPrototypeModelNew instanceof BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByPCIPrototype);
     assertEquals(bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByPciPrototypeModelNew.allowIpSpoofing(), Boolean.valueOf(true));
     assertEquals(bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByPciPrototypeModelNew.enableInfrastructureNat(), Boolean.valueOf(true));
-    assertEquals(bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByPciPrototypeModelNew.interfaceType(), "pci");
     assertEquals(bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByPciPrototypeModelNew.name(), "my-network-interface");
     assertEquals(bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByPciPrototypeModelNew.primaryIp().toString(), networkInterfaceIpPrototypeModel.toString());
     assertEquals(bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByPciPrototypeModelNew.subnet().toString(), subnetIdentityModel.toString());
+    assertEquals(bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByPciPrototypeModelNew.interfaceType(), "pci");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

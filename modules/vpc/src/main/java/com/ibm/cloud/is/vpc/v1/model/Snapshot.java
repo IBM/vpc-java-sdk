@@ -61,6 +61,8 @@ public class Snapshot extends GenericModel {
     String SNAPSHOT = "snapshot";
   }
 
+  @SerializedName("backup_policy_plan")
+  protected BackupPolicyPlanReference backupPolicyPlan;
   protected Boolean bootable;
   @SerializedName("captured_at")
   protected Date capturedAt;
@@ -93,6 +95,17 @@ public class Snapshot extends GenericModel {
   protected VolumeReference sourceVolume;
   @SerializedName("user_tags")
   protected List<String> userTags;
+
+  /**
+   * Gets the backupPolicyPlan.
+   *
+   * If present, the backup policy plan which created this snapshot.
+   *
+   * @return the backupPolicyPlan
+   */
+  public BackupPolicyPlanReference getBackupPolicyPlan() {
+    return backupPolicyPlan;
+  }
 
   /**
    * Gets the bootable.
@@ -269,7 +282,8 @@ public class Snapshot extends GenericModel {
   /**
    * Gets the serviceTags.
    *
-   * The service tags prefixed with `is.snapshot:` associated with this snapshot.
+   * The [service tags](https://cloud.ibm.com/apidocs/tagging#types-of-tags) prefixed with `is.snapshot:` associated
+   * with this snapshot.
    *
    * @return the serviceTags
    */
@@ -315,7 +329,7 @@ public class Snapshot extends GenericModel {
   /**
    * Gets the userTags.
    *
-   * The user tags associated with this snapshot.
+   * The [user tags](https://cloud.ibm.com/apidocs/tagging#types-of-tags) associated with this snapshot.
    *
    * @return the userTags
    */

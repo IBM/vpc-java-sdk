@@ -17,5 +17,13 @@ package com.ibm.cloud.is.vpc.v1.model;
  */
 public class FlowLogCollectorTargetVPCReference extends FlowLogCollectorTarget {
 
+  /**
+   * The resource type.
+   */
+  public interface ResourceType {
+    /** vpc. */
+    String VPC = "vpc";
+  }
+
 }
 

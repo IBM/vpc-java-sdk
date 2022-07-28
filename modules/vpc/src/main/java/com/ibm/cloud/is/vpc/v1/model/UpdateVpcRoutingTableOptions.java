@@ -24,6 +24,7 @@ public class UpdateVpcRoutingTableOptions extends GenericModel {
   protected String vpcId;
   protected String id;
   protected Map<String, Object> routingTablePatch;
+  protected String ifMatch;
 
   /**
    * Builder.
@@ -32,11 +33,13 @@ public class UpdateVpcRoutingTableOptions extends GenericModel {
     private String vpcId;
     private String id;
     private Map<String, Object> routingTablePatch;
+    private String ifMatch;
 
     private Builder(UpdateVpcRoutingTableOptions updateVpcRoutingTableOptions) {
       this.vpcId = updateVpcRoutingTableOptions.vpcId;
       this.id = updateVpcRoutingTableOptions.id;
       this.routingTablePatch = updateVpcRoutingTableOptions.routingTablePatch;
+      this.ifMatch = updateVpcRoutingTableOptions.ifMatch;
     }
 
     /**
@@ -99,6 +102,17 @@ public class UpdateVpcRoutingTableOptions extends GenericModel {
       this.routingTablePatch = routingTablePatch;
       return this;
     }
+
+    /**
+     * Set the ifMatch.
+     *
+     * @param ifMatch the ifMatch
+     * @return the UpdateVpcRoutingTableOptions builder
+     */
+    public Builder ifMatch(String ifMatch) {
+      this.ifMatch = ifMatch;
+      return this;
+    }
   }
 
   protected UpdateVpcRoutingTableOptions(Builder builder) {
@@ -111,6 +125,7 @@ public class UpdateVpcRoutingTableOptions extends GenericModel {
     vpcId = builder.vpcId;
     id = builder.id;
     routingTablePatch = builder.routingTablePatch;
+    ifMatch = builder.ifMatch;
   }
 
   /**
@@ -153,6 +168,18 @@ public class UpdateVpcRoutingTableOptions extends GenericModel {
    */
   public Map<String, Object> routingTablePatch() {
     return routingTablePatch;
+  }
+
+  /**
+   * Gets the ifMatch.
+   *
+   * If present, the request will fail if the specified ETag value does not match the resource's current ETag value.
+   * Required if the request body includes an array.
+   *
+   * @return the ifMatch
+   */
+  public String ifMatch() {
+    return ifMatch;
   }
 }
 

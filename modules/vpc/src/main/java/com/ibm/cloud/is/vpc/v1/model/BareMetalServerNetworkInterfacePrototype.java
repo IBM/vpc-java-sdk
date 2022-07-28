@@ -39,10 +39,10 @@ public class BareMetalServerNetworkInterfacePrototype extends GenericModel {
    * - `pci`: a physical PCI device which can only be created or deleted when the bare metal
    *   server is stopped
    *   - Has an `allowed_vlans` property which controls the VLANs that will be permitted
-   *     to use the pci interface
+   *     to use the PCI interface
    *   - Cannot directly use an IEEE 802.1q VLAN tag.
-   * - `vlan`: a virtual device, used through a `pci` device that has the `vlan` in its array
-   *    of `allowed_vlans`.
+   * - `vlan`: a virtual device, used through a `pci` device that has the `vlan` in its
+   *   array of `allowed_vlans`.
    *   - Must use an IEEE 802.1q tag.
    *   - Has its own security groups and does not inherit those of the PCI device through
    *     which traffic flows.
@@ -91,14 +91,14 @@ public class BareMetalServerNetworkInterfacePrototype extends GenericModel {
    * Gets the enableInfrastructureNat.
    *
    * If `true`:
-   *    - The VPC infrastructure performs any needed NAT operations.
-   *    - A single floating IP can be assigned to the network interface.
+   *   - The VPC infrastructure performs any needed NAT operations.
+   *   - A single floating IP can be assigned to the network interface.
    *
    * If `false`:
-   *    - The packet is passed unmodified to/from the network interface,
-   *      allowing the workload to perform any needed NAT operations.
-   *    - Multiple floating IPs can be assigned to the network interface.
-   *    - `allow_ip_spoofing` must be set to `false`.
+   *   - Packets are passed unmodified to/from the network interface,
+   *     allowing the workload to perform any needed NAT operations.
+   *   - Multiple floating IPs can be assigned to the network interface.
+   *   - `allow_ip_spoofing` must be set to `false`.
    *
    * @return the enableInfrastructureNat
    */
@@ -113,10 +113,10 @@ public class BareMetalServerNetworkInterfacePrototype extends GenericModel {
    * - `pci`: a physical PCI device which can only be created or deleted when the bare metal
    *   server is stopped
    *   - Has an `allowed_vlans` property which controls the VLANs that will be permitted
-   *     to use the pci interface
+   *     to use the PCI interface
    *   - Cannot directly use an IEEE 802.1q VLAN tag.
-   * - `vlan`: a virtual device, used through a `pci` device that has the `vlan` in its array
-   *    of `allowed_vlans`.
+   * - `vlan`: a virtual device, used through a `pci` device that has the `vlan` in its
+   *   array of `allowed_vlans`.
    *   - Must use an IEEE 802.1q tag.
    *   - Has its own security groups and does not inherit those of the PCI device through
    *     which traffic flows.
@@ -180,7 +180,7 @@ public class BareMetalServerNetworkInterfacePrototype extends GenericModel {
   /**
    * Gets the allowedVlans.
    *
-   * Indicates what VLAN IDs (for VLAN type only) can use this physical (PCI type) interface. A given VLAN can only be
+   * Indicates what VLAN IDs (for VLAN type only) can use this physical (PCI type) interface.  A given VLAN can only be
    * in the `allowed_vlans` array for one PCI type adapter per bare metal server.
    *
    * @return the allowedVlans

@@ -12,7 +12,6 @@
  */
 package com.ibm.cloud.is.vpc.v1.model;
 
-
 /**
  * VolumePrototypeInstanceBySourceSnapshotContext.
  */
@@ -172,7 +171,7 @@ public class VolumePrototypeInstanceBySourceSnapshotContext extends VolumeAttach
    *
    * The root key to use to wrap the data encryption key for the volume.
    *
-   * If unspecified, the snapshot's `encryption_key` will be used.
+   * If unspecified, the `encryption` type for the volume will be `provider_managed`.
    *
    * @return the encryptionKey
    */

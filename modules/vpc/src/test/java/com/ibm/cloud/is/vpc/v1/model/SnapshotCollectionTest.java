@@ -13,6 +13,8 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanReference;
+import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.EncryptionKeyReference;
 import com.ibm.cloud.is.vpc.v1.model.ImageReference;
 import com.ibm.cloud.is.vpc.v1.model.ImageReferenceDeleted;

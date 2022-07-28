@@ -43,7 +43,7 @@ public class CreateVpcRouteOptions extends GenericModel {
   protected ZoneIdentity zone;
   protected String action;
   protected String name;
-  protected RouteNextHopPrototype nextHop;
+  protected RoutePrototypeNextHop nextHop;
 
   /**
    * Builder.
@@ -54,7 +54,7 @@ public class CreateVpcRouteOptions extends GenericModel {
     private ZoneIdentity zone;
     private String action;
     private String name;
-    private RouteNextHopPrototype nextHop;
+    private RoutePrototypeNextHop nextHop;
 
     private Builder(CreateVpcRouteOptions createVpcRouteOptions) {
       this.vpcId = createVpcRouteOptions.vpcId;
@@ -154,7 +154,7 @@ public class CreateVpcRouteOptions extends GenericModel {
      * @param nextHop the nextHop
      * @return the CreateVpcRouteOptions builder
      */
-    public Builder nextHop(RouteNextHopPrototype nextHop) {
+    public Builder nextHop(RoutePrototypeNextHop nextHop) {
       this.nextHop = nextHop;
       return this;
     }
@@ -251,12 +251,12 @@ public class CreateVpcRouteOptions extends GenericModel {
   /**
    * Gets the nextHop.
    *
-   * If `action` is `deliver`, the next hop that packets will be delivered to.  For
-   * other `action` values, it must be omitted or specified as `0.0.0.0`.
+   * If `action` is `deliver`, the next hop that packets will be delivered to. For other `action`
+   * values, it must be omitted or specified as `0.0.0.0`.
    *
    * @return the nextHop
    */
-  public RouteNextHopPrototype nextHop() {
+  public RoutePrototypeNextHop nextHop() {
     return nextHop;
   }
 }

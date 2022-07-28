@@ -210,7 +210,7 @@ public class VolumePatch extends GenericModel {
   /**
    * Gets the userTags.
    *
-   * Tags for this resource.
+   * The [user tags](https://cloud.ibm.com/apidocs/tagging#types-of-tags) associated with this volume.
    *
    * @return the userTags
    */

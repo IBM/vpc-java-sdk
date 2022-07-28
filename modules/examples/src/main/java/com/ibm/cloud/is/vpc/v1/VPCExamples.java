@@ -21,6 +21,12 @@ import com.ibm.cloud.is.vpc.v1.model.AddVpnGatewayConnectionPeerCidrOptions;
 import com.ibm.cloud.is.vpc.v1.model.AddressPrefix;
 import com.ibm.cloud.is.vpc.v1.model.AddressPrefixCollection;
 import com.ibm.cloud.is.vpc.v1.model.AddressPrefixPatch;
+import com.ibm.cloud.is.vpc.v1.model.BackupPolicy;
+import com.ibm.cloud.is.vpc.v1.model.BackupPolicyCollection;
+import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPatch;
+import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlan;
+import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanCollection;
+import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanPatch;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServer;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerCollection;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerConsoleAccessToken;
@@ -38,8 +44,11 @@ import com.ibm.cloud.is.vpc.v1.model.BareMetalServerPrimaryNetworkInterfaceProto
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfile;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileCollection;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileIdentityByName;
+import com.ibm.cloud.is.vpc.v1.model.CertificateInstanceIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.CheckVpnGatewayConnectionLocalCidrOptions;
 import com.ibm.cloud.is.vpc.v1.model.CheckVpnGatewayConnectionPeerCidrOptions;
+import com.ibm.cloud.is.vpc.v1.model.CreateBackupPolicyOptions;
+import com.ibm.cloud.is.vpc.v1.model.CreateBackupPolicyPlanOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateBareMetalServerConsoleAccessTokenOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateBareMetalServerNetworkInterfaceOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateBareMetalServerOptions;
@@ -86,6 +95,8 @@ import com.ibm.cloud.is.vpc.v1.model.CreateVpcRoutingTableOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateVpcRoutingTableRouteOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateVpnGatewayConnectionOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateVpnGatewayOptions;
+import com.ibm.cloud.is.vpc.v1.model.CreateVpnServerOptions;
+import com.ibm.cloud.is.vpc.v1.model.CreateVpnServerRouteOptions;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHost;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostCollection;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostDisk;
@@ -103,6 +114,8 @@ import com.ibm.cloud.is.vpc.v1.model.DedicatedHostPrototypeDedicatedHostByGroup;
 import com.ibm.cloud.is.vpc.v1.model.DefaultNetworkACL;
 import com.ibm.cloud.is.vpc.v1.model.DefaultRoutingTable;
 import com.ibm.cloud.is.vpc.v1.model.DefaultSecurityGroup;
+import com.ibm.cloud.is.vpc.v1.model.DeleteBackupPolicyOptions;
+import com.ibm.cloud.is.vpc.v1.model.DeleteBackupPolicyPlanOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteBareMetalServerNetworkInterfaceOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteBareMetalServerOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteDedicatedHostGroupOptions;
@@ -150,10 +163,17 @@ import com.ibm.cloud.is.vpc.v1.model.DeleteVpcRoutingTableOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteVpcRoutingTableRouteOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteVpnGatewayConnectionOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteVpnGatewayOptions;
+import com.ibm.cloud.is.vpc.v1.model.DeleteVpnServerClientOptions;
+import com.ibm.cloud.is.vpc.v1.model.DeleteVpnServerOptions;
+import com.ibm.cloud.is.vpc.v1.model.DeleteVpnServerRouteOptions;
+import com.ibm.cloud.is.vpc.v1.model.DisconnectVpnClientOptions;
 import com.ibm.cloud.is.vpc.v1.model.EncryptionKeyIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.EndpointGateway;
 import com.ibm.cloud.is.vpc.v1.model.EndpointGatewayCollection;
 import com.ibm.cloud.is.vpc.v1.model.EndpointGatewayPatch;
+import com.ibm.cloud.is.vpc.v1.model.EndpointGatewayReservedIP;
+import com.ibm.cloud.is.vpc.v1.model.EndpointGatewayReservedIPReservedIPIdentity;
+import com.ibm.cloud.is.vpc.v1.model.EndpointGatewayReservedIPReservedIPIdentityReservedIPIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.EndpointGatewayTargetPrototypeProviderCloudServiceIdentityProviderCloudServiceIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIP;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPCollection;
@@ -164,10 +184,11 @@ import com.ibm.cloud.is.vpc.v1.model.FlowLogCollector;
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorCollection;
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorPatch;
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceIdentityNetworkInterfaceIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.GetBackupPolicyOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetBackupPolicyPlanOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetBareMetalServerDiskOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetBareMetalServerInitializationOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetBareMetalServerNetworkInterfaceFloatingIpOptions;
-import com.ibm.cloud.is.vpc.v1.model.GetBareMetalServerNetworkInterfaceIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetBareMetalServerNetworkInterfaceOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetBareMetalServerOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetBareMetalServerProfileOptions;
@@ -233,6 +254,10 @@ import com.ibm.cloud.is.vpc.v1.model.GetVpcRoutingTableOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetVpcRoutingTableRouteOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetVpnGatewayConnectionOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetVpnGatewayOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetVpnServerClientConfigurationOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetVpnServerClientOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetVpnServerOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetVpnServerRouteOptions;
 import com.ibm.cloud.is.vpc.v1.model.IKEPolicy;
 import com.ibm.cloud.is.vpc.v1.model.IKEPolicyCollection;
 import com.ibm.cloud.is.vpc.v1.model.IKEPolicyPatch;
@@ -289,9 +314,10 @@ import com.ibm.cloud.is.vpc.v1.model.KeyIdentity;
 import com.ibm.cloud.is.vpc.v1.model.KeyIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.KeyPatch;
 import com.ibm.cloud.is.vpc.v1.model.LegacyCloudObjectStorageBucketIdentityCloudObjectStorageBucketIdentityByName;
+import com.ibm.cloud.is.vpc.v1.model.ListBackupPoliciesOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListBackupPolicyPlansOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListBareMetalServerDisksOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListBareMetalServerNetworkInterfaceFloatingIpsOptions;
-import com.ibm.cloud.is.vpc.v1.model.ListBareMetalServerNetworkInterfaceIpsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListBareMetalServerNetworkInterfacesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListBareMetalServerProfilesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListBareMetalServersOptions;
@@ -377,6 +403,9 @@ import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolPatch;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfile;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileCollection;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerStatistics;
+import com.ibm.cloud.is.vpc.v1.model.ListVpnServerClientsOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListVpnServerRoutesOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListVpnServersOptions;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACL;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLCollection;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLIdentityById;
@@ -418,7 +447,7 @@ import com.ibm.cloud.is.vpc.v1.model.ReservedIPPatch;
 import com.ibm.cloud.is.vpc.v1.model.RestartBareMetalServerOptions;
 import com.ibm.cloud.is.vpc.v1.model.Route;
 import com.ibm.cloud.is.vpc.v1.model.RouteCollection;
-import com.ibm.cloud.is.vpc.v1.model.RouteNextHopPrototypeRouteNextHopIP;
+import com.ibm.cloud.is.vpc.v1.model.RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIP;
 import com.ibm.cloud.is.vpc.v1.model.RoutePatch;
 import com.ibm.cloud.is.vpc.v1.model.RoutingTable;
 import com.ibm.cloud.is.vpc.v1.model.RoutingTableCollection;
@@ -447,6 +476,8 @@ import com.ibm.cloud.is.vpc.v1.model.SubnetIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.SubnetPatch;
 import com.ibm.cloud.is.vpc.v1.model.SubnetPrototypeSubnetByTotalCount;
 import com.ibm.cloud.is.vpc.v1.model.UnsetSubnetPublicGatewayOptions;
+import com.ibm.cloud.is.vpc.v1.model.UpdateBackupPolicyOptions;
+import com.ibm.cloud.is.vpc.v1.model.UpdateBackupPolicyPlanOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateBareMetalServerDiskOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateBareMetalServerNetworkInterfaceOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateBareMetalServerOptions;
@@ -493,6 +524,8 @@ import com.ibm.cloud.is.vpc.v1.model.UpdateVpcRoutingTableOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateVpcRoutingTableRouteOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateVpnGatewayConnectionOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateVpnGatewayOptions;
+import com.ibm.cloud.is.vpc.v1.model.UpdateVpnServerOptions;
+import com.ibm.cloud.is.vpc.v1.model.UpdateVpnServerRouteOptions;
 import com.ibm.cloud.is.vpc.v1.model.VPC;
 import com.ibm.cloud.is.vpc.v1.model.VPCCollection;
 import com.ibm.cloud.is.vpc.v1.model.VPCIdentityById;
@@ -507,6 +540,17 @@ import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionPeerCIDRs;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionPrototypeVPNGatewayConnectionStaticRouteModePrototype;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayPatch;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayPrototypeVPNGatewayRouteModePrototype;
+import com.ibm.cloud.is.vpc.v1.model.VPNServer;
+import com.ibm.cloud.is.vpc.v1.model.VPNServerAuthenticationByUsernameIdProviderByIAM;
+import com.ibm.cloud.is.vpc.v1.model.VPNServerAuthenticationPrototype;
+import com.ibm.cloud.is.vpc.v1.model.VPNServerAuthenticationPrototypeVPNServerAuthenticationByUsernamePrototype;
+import com.ibm.cloud.is.vpc.v1.model.VPNServerClient;
+import com.ibm.cloud.is.vpc.v1.model.VPNServerClientCollection;
+import com.ibm.cloud.is.vpc.v1.model.VPNServerCollection;
+import com.ibm.cloud.is.vpc.v1.model.VPNServerPatch;
+import com.ibm.cloud.is.vpc.v1.model.VPNServerRoute;
+import com.ibm.cloud.is.vpc.v1.model.VPNServerRouteCollection;
+import com.ibm.cloud.is.vpc.v1.model.VPNServerRoutePatch;
 import com.ibm.cloud.is.vpc.v1.model.Volume;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachment;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentCollection;
@@ -550,6 +594,7 @@ import org.slf4j.LoggerFactory;
 public class VPCExamples {
   private static final Logger logger = LoggerFactory.getLogger(VPCExamples.class);
   static String crn = "crn:v1:bluemix:public:cloudant:us-south:a/123456:3527280b-9327-4411-8020-591092e60353::";
+  static String certificateCrn = "crn:v1:bluemix:public:secrets-manager:us-south:a/123456:36fa422d-080d-4d83-8d2d-86851b4001df:secret:2e786aab-42fa-63ed-14f8-d66d552f4dd5";
   static String cosBucketName = "bucket-27200-lwx4cfvcue";
   static String cosBucketUrl = "cos://us-south/my-bucket/my-image.qcow2";
   static String dedicatedHostId;
@@ -614,6 +659,14 @@ public class VPCExamples {
   static String bareMetalServerDiskId;
   static String bareMetalServerNetworkInterfaceId;
   static String bareMetalServerNetworkInterfaceReservedIp;
+  static String backupPolicyId;
+  static String backupPolicyPlanId;
+  static String ifMatchBackupPolicy;
+  static String ifMatchBackupPolicyPlan;
+  static String ifMatchVpnServer;
+  static String vpnServerId;
+  static String vpnServerClientId;
+  static String vpnServerRouteId;
 
   protected VPCExamples() { }
 
@@ -845,7 +898,7 @@ public class VPCExamples {
       ZoneIdentityByName zoneIdentityModel = new ZoneIdentityByName.Builder()
         .name(zoneName)
         .build();
-      RouteNextHopPrototypeRouteNextHopIP routeNextHopPrototypeRouteNextHopIP = new RouteNextHopPrototypeRouteNextHopIP.Builder()
+        RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIP routePrototypeNextHopRouteNextHopPrototypeRouteNextHopIP = new RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIP.Builder()
         .address("192.168.3.4")
         .build();
       CreateVpcRouteOptions createVpcRouteOptions = new CreateVpcRouteOptions.Builder()
@@ -853,7 +906,7 @@ public class VPCExamples {
         .name("my-vpc-route")
         .action("delegate_vpc")
         .destination("192.168.3.0/24")
-        .nextHop(routeNextHopPrototypeRouteNextHopIP)
+        .nextHop(routePrototypeNextHopRouteNextHopPrototypeRouteNextHopIP)
         .zone(zoneIdentityModel)
         .build();
       Response<Route> response = vpcService.createVpcRoute(createVpcRouteOptions).execute();
@@ -1781,6 +1834,156 @@ public class VPCExamples {
       logger.error(String.format("Service returned status code %s: %s%nError details: %s",
               e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
     }
+
+
+    try {
+      System.out.println("listBackupPolicies() result:");
+      // begin-list_backup_policies
+      ListBackupPoliciesOptions listBackupPoliciesOptions = new ListBackupPoliciesOptions.Builder()
+        .build();
+
+      Response<BackupPolicyCollection> response = vpcService.listBackupPolicies(listBackupPoliciesOptions).execute();
+      BackupPolicyCollection backupPolicyCollection = response.getResult();
+
+      // end-list_backup_policies
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("createBackupPolicy() result:");
+      // begin-create_backup_policy
+      CreateBackupPolicyOptions createBackupPolicyOptions = new CreateBackupPolicyOptions.Builder()
+        .name("my-backup-policy")
+        .build();
+
+      Response<BackupPolicy> response = vpcService.createBackupPolicy(createBackupPolicyOptions).execute();
+      BackupPolicy backupPolicy = response.getResult();
+
+      // end-create_backup_policy
+      backupPolicyId = backupPolicy.getId();
+      ifMatchBackupPolicy = response.getHeaders().values("etag").get(0);
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("listBackupPolicyPlans() result:");
+      // begin-list_backup_policy_plans
+      ListBackupPolicyPlansOptions listBackupPolicyPlansOptions = new ListBackupPolicyPlansOptions.Builder()
+        .backupPolicyId(backupPolicyId)
+        .build();
+
+      Response<BackupPolicyPlanCollection> response = vpcService.listBackupPolicyPlans(listBackupPolicyPlansOptions).execute();
+      BackupPolicyPlanCollection backupPolicyPlanCollection = response.getResult();
+
+      // end-list_backup_policy_plans
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("createBackupPolicyPlan() result:");
+      // begin-create_backup_policy_plan
+      CreateBackupPolicyPlanOptions createBackupPolicyPlanOptions = new CreateBackupPolicyPlanOptions.Builder()
+        .backupPolicyId(backupPolicyId)
+        .name("my-backup-policy-plan")
+        .cronSpec("*/5 1,2,3 * * *")
+        .build();
+
+      Response<BackupPolicyPlan> response = vpcService.createBackupPolicyPlan(createBackupPolicyPlanOptions).execute();
+      BackupPolicyPlan backupPolicyPlan = response.getResult();
+
+      // end-create_backup_policy_plan
+      backupPolicyPlanId = backupPolicyPlan.getId();
+      ifMatchBackupPolicyPlan = response.getHeaders().values("etag").get(0);
+
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("getBackupPolicyPlan() result:");
+      // begin-get_backup_policy_plan
+      GetBackupPolicyPlanOptions getBackupPolicyPlanOptions = new GetBackupPolicyPlanOptions.Builder()
+        .backupPolicyId(backupPolicyId)
+        .id(backupPolicyPlanId)
+        .build();
+
+      Response<BackupPolicyPlan> response = vpcService.getBackupPolicyPlan(getBackupPolicyPlanOptions).execute();
+      BackupPolicyPlan backupPolicyPlan = response.getResult();
+
+      // end-get_backup_policy_plan
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("updateBackupPolicyPlan() result:");
+      // begin-update_backup_policy_plan
+      BackupPolicyPlanPatch backupPolicyPlanPatchModel = new BackupPolicyPlanPatch.Builder()
+        .name("my-backup-policy-plan-update")
+        .build();
+      Map<String, Object> backupPolicyPlanPatchModelAsPatch = backupPolicyPlanPatchModel.asPatch();
+      UpdateBackupPolicyPlanOptions updateBackupPolicyPlanOptions = new UpdateBackupPolicyPlanOptions.Builder()
+        .backupPolicyId(backupPolicyId)
+        .id(backupPolicyPlanId)
+        .backupPolicyPlanPatch(backupPolicyPlanPatchModelAsPatch)
+        .ifMatch(ifMatchBackupPolicyPlan)
+        .build();
+
+      Response<BackupPolicyPlan> response = vpcService.updateBackupPolicyPlan(updateBackupPolicyPlanOptions).execute();
+      BackupPolicyPlan backupPolicyPlan = response.getResult();
+
+      // end-update_backup_policy_plan
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("getBackupPolicy() result:");
+      // begin-get_backup_policy
+      GetBackupPolicyOptions getBackupPolicyOptions = new GetBackupPolicyOptions.Builder()
+        .id(backupPolicyId)
+        .build();
+
+      Response<BackupPolicy> response = vpcService.getBackupPolicy(getBackupPolicyOptions).execute();
+      BackupPolicy backupPolicy = response.getResult();
+
+      // end-get_backup_policy
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("updateBackupPolicy() result:");
+      // begin-update_backup_policy
+      BackupPolicyPatch backupPolicyPatchModel = new BackupPolicyPatch.Builder()
+        .name("my-backup-policy-update")
+        .build();
+      Map<String, Object> backupPolicyPatchModelAsPatch = backupPolicyPatchModel.asPatch();
+      UpdateBackupPolicyOptions updateBackupPolicyOptions = new UpdateBackupPolicyOptions.Builder()
+        .id(backupPolicyId)
+        .backupPolicyPatch(backupPolicyPatchModelAsPatch)
+        .ifMatch(ifMatchBackupPolicy)
+        .build();
+
+      Response<BackupPolicy> response = vpcService.updateBackupPolicy(updateBackupPolicyOptions).execute();
+      BackupPolicy backupPolicy = response.getResult();
+
+      // end-update_backup_policy
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
 
     try {
       System.out.println("listDedicatedHostProfiles() result:");
@@ -3122,7 +3325,6 @@ public class VPCExamples {
       System.out.println("listBareMetalServers() result:");
       // begin-list_bare_metal_servers
       ListBareMetalServersOptions listBareMetalServersOptions = new ListBareMetalServersOptions.Builder()
-              .sort("name")
               .build();
 
       Response<BareMetalServerCollection> response = vpcService.listBareMetalServers(listBareMetalServersOptions).execute();
@@ -3394,41 +3596,6 @@ public class VPCExamples {
     } catch (ServiceResponseException e) {
       logger.error(String.format("Service returned status code %s: %s%nError details: %s",
               e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
-    }
-
-    try {
-      System.out.println("listBareMetalServerNetworkInterfaceIps() result:");
-      // begin-list_bare_metal_server_network_interface_ips
-      ListBareMetalServerNetworkInterfaceIpsOptions listBareMetalServerNetworkInterfaceIpsOptions = new ListBareMetalServerNetworkInterfaceIpsOptions.Builder()
-            .bareMetalServerId(bareMetalServerId)
-            .networkInterfaceId(bareMetalServerNetworkInterfaceId)
-            .build();
-
-      Response<ReservedIPCollectionNetworkInterfaceContext> response = vpcService.listBareMetalServerNetworkInterfaceIps(listBareMetalServerNetworkInterfaceIpsOptions).execute();
-      ReservedIPCollectionNetworkInterfaceContext reservedIpCollectionNetworkInterfaceContext = response.getResult();
-
-      // end-list_bare_metal_server_network_interface_ips
-    } catch (ServiceResponseException e) {
-        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
-    }
-
-    try {
-      System.out.println("getBareMetalServerNetworkInterfaceIp() result:");
-      // begin-get_bare_metal_server_network_interface_ip
-      GetBareMetalServerNetworkInterfaceIpOptions getBareMetalServerNetworkInterfaceIpOptions = new GetBareMetalServerNetworkInterfaceIpOptions.Builder()
-            .bareMetalServerId(bareMetalServerId)
-            .networkInterfaceId(bareMetalServerNetworkInterfaceId)
-            .id(bareMetalServerNetworkInterfaceReservedIp)
-            .build();
-
-      Response<ReservedIP> response = vpcService.getBareMetalServerNetworkInterfaceIp(getBareMetalServerNetworkInterfaceIpOptions).execute();
-      ReservedIP reservedIp = response.getResult();
-
-      // end-get_bare_metal_server_network_interface_ip
-    } catch (ServiceResponseException e) {
-        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
     }
 
     try {
@@ -4494,6 +4661,237 @@ public class VPCExamples {
               e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
     }
 
+
+    try {
+      System.out.println("listVpnServers() result:");
+      // begin-list_vpn_servers
+      ListVpnServersOptions listVpnServersOptions = new ListVpnServersOptions.Builder()
+        .sort("name")
+        .build();
+
+      Response<VPNServerCollection> response = vpcService.listVpnServers(listVpnServersOptions).execute();
+      VPNServerCollection vpnServerCollection = response.getResult();
+
+      // end-list_vpn_servers
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("createVpnServer() result:");
+      // begin-create_vpn_server
+      CertificateInstanceIdentityByCRN certificateInstanceIdentityModel = new CertificateInstanceIdentityByCRN.Builder()
+        .crn(certificateCrn)
+        .build();
+      VPNServerAuthenticationByUsernameIdProviderByIAM vpnServerAuthenticationByUsernameIdProviderModel = new VPNServerAuthenticationByUsernameIdProviderByIAM.Builder()
+        .providerType("iam")
+        .build();
+      VPNServerAuthenticationPrototypeVPNServerAuthenticationByUsernamePrototype vpnServerAuthenticationPrototypeModel = new VPNServerAuthenticationPrototypeVPNServerAuthenticationByUsernamePrototype.Builder()
+        .method("certificate")
+        .identityProvider(vpnServerAuthenticationByUsernameIdProviderModel)
+        .build();
+      SubnetIdentityById subnetIdentityModel = new SubnetIdentityById.Builder()
+        .id(subnetId)
+        .build();
+      CreateVpnServerOptions createVpnServerOptions = new CreateVpnServerOptions.Builder()
+        .certificate(certificateInstanceIdentityModel)
+        .name("my-vpn-server")
+        .clientAuthentication(new java.util.ArrayList<VPNServerAuthenticationPrototype>(java.util.Arrays.asList(vpnServerAuthenticationPrototypeModel)))
+        .clientIpPool("172.16.0.0/16")
+        .subnets(new java.util.ArrayList<SubnetIdentity>(java.util.Arrays.asList(subnetIdentityModel)))
+        .build();
+
+      Response<VPNServer> response = vpcService.createVpnServer(createVpnServerOptions).execute();
+      VPNServer vpnServer = response.getResult();
+
+      // end-create_vpn_server
+      vpnServerId = vpnServer.getId();
+      ifMatchVpnServer = response.getHeaders().values("etag").get(0);
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("getVpnServer() result:");
+      // begin-get_vpn_server
+      GetVpnServerOptions getVpnServerOptions = new GetVpnServerOptions.Builder()
+        .id(vpnServerId)
+        .build();
+
+      Response<VPNServer> response = vpcService.getVpnServer(getVpnServerOptions).execute();
+      VPNServer vpnServer = response.getResult();
+
+      // end-get_vpn_server
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("updateVpnServer() result:");
+      // begin-update_vpn_server
+      VPNServerPatch vpnServerPatchModel = new VPNServerPatch.Builder()
+        .name("my-vpn-server-update")
+        .build();
+      Map<String, Object> vpnServerPatchModelAsPatch = vpnServerPatchModel.asPatch();
+      UpdateVpnServerOptions updateVpnServerOptions = new UpdateVpnServerOptions.Builder()
+        .id(vpnServerId)
+        .vpnServerPatch(vpnServerPatchModelAsPatch)
+        .ifMatch(ifMatchVpnServer)
+        .build();
+
+      Response<VPNServer> response = vpcService.updateVpnServer(updateVpnServerOptions).execute();
+      VPNServer vpnServer = response.getResult();
+
+      // end-update_vpn_server
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("getVpnServerClientConfiguration() result:");
+      // begin-get_vpn_server_client_configuration
+      GetVpnServerClientConfigurationOptions getVpnServerClientConfigurationOptions = new GetVpnServerClientConfigurationOptions.Builder()
+        .id(vpnServerId)
+        .build();
+
+      Response<String> response = vpcService.getVpnServerClientConfiguration(getVpnServerClientConfigurationOptions).execute();
+      String vpnServerClientConfiguration = response.getResult();
+
+      // end-get_vpn_server_client_configuration
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("listVpnServerClients() result:");
+      // begin-list_vpn_server_clients
+      ListVpnServerClientsOptions listVpnServerClientsOptions = new ListVpnServerClientsOptions.Builder()
+        .vpnServerId(vpnServerId)
+        .sort("created_at")
+        .build();
+
+      Response<VPNServerClientCollection> response = vpcService.listVpnServerClients(listVpnServerClientsOptions).execute();
+      VPNServerClientCollection vpnServerClientCollection = response.getResult();
+
+      // end-list_vpn_server_clients
+      vpnServerClientId = vpnServerClientCollection.getClients().get(0).getId();
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("getVpnServerClient() result:");
+      // begin-get_vpn_server_client
+      GetVpnServerClientOptions getVpnServerClientOptions = new GetVpnServerClientOptions.Builder()
+        .vpnServerId(vpnServerId)
+        .id(vpnServerClientId)
+        .build();
+
+      Response<VPNServerClient> response = vpcService.getVpnServerClient(getVpnServerClientOptions).execute();
+      VPNServerClient vpnServerClient = response.getResult();
+
+      // end-get_vpn_server_client
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      // begin-disconnect_vpn_client
+      DisconnectVpnClientOptions disconnectVpnClientOptions = new DisconnectVpnClientOptions.Builder()
+        .vpnServerId(vpnServerId)
+        .id(vpnServerClientId)
+        .build();
+
+      Response<Void> response = vpcService.disconnectVpnClient(disconnectVpnClientOptions).execute();
+      // end-disconnect_vpn_client
+      System.out.printf("disconnectVpnClient() response status code: %d%n", response.getStatusCode());
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("listVpnServerRoutes() result:");
+      // begin-list_vpn_server_routes
+      ListVpnServerRoutesOptions listVpnServerRoutesOptions = new ListVpnServerRoutesOptions.Builder()
+        .vpnServerId(vpnServerId)
+        .sort("name")
+        .build();
+
+      Response<VPNServerRouteCollection> response = vpcService.listVpnServerRoutes(listVpnServerRoutesOptions).execute();
+      VPNServerRouteCollection vpnServerRouteCollection = response.getResult();
+
+      // end-list_vpn_server_routes
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("createVpnServerRoute() result:");
+      // begin-create_vpn_server_route
+      CreateVpnServerRouteOptions createVpnServerRouteOptions = new CreateVpnServerRouteOptions.Builder()
+        .vpnServerId(vpnServerId)
+        .name("my-vpn-server-route")
+        .destination("172.16.0.0/16")
+        .build();
+
+      Response<VPNServerRoute> response = vpcService.createVpnServerRoute(createVpnServerRouteOptions).execute();
+      VPNServerRoute vpnServerRoute = response.getResult();
+
+      // end-create_vpn_server_route
+      vpnServerRouteId = vpnServerRoute.getId();
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("getVpnServerRoute() result:");
+      // begin-get_vpn_server_route
+      GetVpnServerRouteOptions getVpnServerRouteOptions = new GetVpnServerRouteOptions.Builder()
+        .vpnServerId(vpnServerId)
+        .id(vpnServerRouteId)
+        .build();
+
+      Response<VPNServerRoute> response = vpcService.getVpnServerRoute(getVpnServerRouteOptions).execute();
+      VPNServerRoute vpnServerRoute = response.getResult();
+
+      // end-get_vpn_server_route
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("updateVpnServerRoute() result:");
+      // begin-update_vpn_server_route
+      VPNServerRoutePatch vpnServerRoutePatchModel = new VPNServerRoutePatch.Builder()
+        .build();
+      Map<String, Object> vpnServerRoutePatchModelAsPatch = vpnServerRoutePatchModel.asPatch();
+      UpdateVpnServerRouteOptions updateVpnServerRouteOptions = new UpdateVpnServerRouteOptions.Builder()
+        .vpnServerId(vpnServerId)
+        .id(vpnServerRouteId)
+        .vpnServerRoutePatch(vpnServerRoutePatchModelAsPatch)
+        .build();
+
+      Response<VPNServerRoute> response = vpcService.updateVpnServerRoute(updateVpnServerRouteOptions).execute();
+      VPNServerRoute vpnServerRoute = response.getResult();
+
+      // end-update_vpn_server_route
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+
     try {
       System.out.println("listLoadBalancerProfiles() result:");
       // begin-list_load_balancer_profiles
@@ -5064,6 +5462,9 @@ public class VPCExamples {
     try {
       System.out.println("createEndpointGateway() result:");
       // begin-create_endpoint_gateway
+      EndpointGatewayReservedIPReservedIPIdentity endpointGatewayReservedIPReservedIPIdentity = new EndpointGatewayReservedIPReservedIPIdentityReservedIPIdentityById.Builder()
+        .id(reservedIpId)
+        .build();
       EndpointGatewayTargetPrototypeProviderCloudServiceIdentityProviderCloudServiceIdentityByCRN endpointGatewayTargetPrototypeModel = new EndpointGatewayTargetPrototypeProviderCloudServiceIdentityProviderCloudServiceIdentityByCRN.Builder()
         .resourceType("provider_infrastructure_service")
         .crn(crn)
@@ -5073,6 +5474,7 @@ public class VPCExamples {
         .build();
       CreateEndpointGatewayOptions createEndpointGatewayOptions = new CreateEndpointGatewayOptions.Builder()
         .name("my-endpoint-gateway")
+        .ips(new java.util.ArrayList<EndpointGatewayReservedIP>(java.util.Arrays.asList(endpointGatewayReservedIPReservedIPIdentity)))
         .target(endpointGatewayTargetPrototypeModel)
         .vpc(vpcIdentityModel)
         .build();
@@ -5392,6 +5794,52 @@ public class VPCExamples {
       Response<Void> response = vpcService.removeEndpointGatewayIp(removeEndpointGatewayIpOptions).execute();
       // end-remove_endpoint_gateway_ip
       System.out.printf("removeEndpointGatewayIp() response status code: %d%n", response.getStatusCode());
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+
+    try {
+      // begin-delete_vpn_server_route
+      DeleteVpnServerRouteOptions deleteVpnServerRouteOptions = new DeleteVpnServerRouteOptions.Builder()
+        .vpnServerId(vpnServerId)
+        .id(vpnServerRouteId)
+        .build();
+
+      Response<Void> response = vpcService.deleteVpnServerRoute(deleteVpnServerRouteOptions).execute();
+      // end-delete_vpn_server_route
+      System.out.printf("deleteVpnServerRoute() response status code: %d%n", response.getStatusCode());
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      // begin-delete_vpn_server_client
+      DeleteVpnServerClientOptions deleteVpnServerClientOptions = new DeleteVpnServerClientOptions.Builder()
+        .vpnServerId(vpnServerId)
+        .id(vpnServerClientId)
+        .build();
+
+      Response<Void> response = vpcService.deleteVpnServerClient(deleteVpnServerClientOptions).execute();
+      // end-delete_vpn_server_client
+      System.out.printf("deleteVpnServerClient() response status code: %d%n", response.getStatusCode());
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      // begin-delete_vpn_server
+      DeleteVpnServerOptions deleteVpnServerOptions = new DeleteVpnServerOptions.Builder()
+        .id(vpnServerId)
+        .ifMatch(ifMatchVpnServer)
+        .build();
+
+      Response<Void> response = vpcService.deleteVpnServer(deleteVpnServerOptions).execute();
+      // end-delete_vpn_server
+      System.out.printf("deleteVpnServer() response status code: %d%n", response.getStatusCode());
     } catch (ServiceResponseException e) {
         logger.error(String.format("Service returned status code %s: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
@@ -6035,6 +6483,45 @@ public class VPCExamples {
       Response<Void> response = vpcService.deleteDedicatedHost(deleteDedicatedHostOptions).execute();
       // end-delete_dedicated_host
       System.out.printf("deleteDedicatedHost() response status code: %d%n", response.getStatusCode());
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("deleteBackupPolicyPlan() result:");
+      // begin-delete_backup_policy_plan
+      DeleteBackupPolicyPlanOptions deleteBackupPolicyPlanOptions = new DeleteBackupPolicyPlanOptions.Builder()
+        .backupPolicyId(backupPolicyId)
+        .id(backupPolicyPlanId)
+        .ifMatch(ifMatchBackupPolicyPlan)
+        .build();
+
+      Response<BackupPolicyPlan> response = vpcService.deleteBackupPolicyPlan(deleteBackupPolicyPlanOptions).execute();
+      BackupPolicyPlan backupPolicyPlan = response.getResult();
+
+      // end-delete_backup_policy_plan
+      System.out.printf("deleteBackupPolicyPlan() response status code: %d%n", response.getStatusCode());
+
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("deleteBackupPolicy() result:");
+      // begin-delete_backup_policy
+      DeleteBackupPolicyOptions deleteBackupPolicyOptions = new DeleteBackupPolicyOptions.Builder()
+        .id(backupPolicyId)
+        .ifMatch(ifMatchBackupPolicy)
+        .build();
+
+      Response<BackupPolicy> response = vpcService.deleteBackupPolicy(deleteBackupPolicyOptions).execute();
+      BackupPolicy backupPolicy = response.getResult();
+
+      // end-delete_backup_policy
+      System.out.printf("deleteBackupPolicy() response status code: %d%n", response.getStatusCode());
+
     } catch (ServiceResponseException e) {
         logger.error(String.format("Service returned status code %s: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);

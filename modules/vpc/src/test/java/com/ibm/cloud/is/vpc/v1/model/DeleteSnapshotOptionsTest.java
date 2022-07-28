@@ -33,10 +33,10 @@ public class DeleteSnapshotOptionsTest {
   public void testDeleteSnapshotOptions() throws Throwable {
     DeleteSnapshotOptions deleteSnapshotOptionsModel = new DeleteSnapshotOptions.Builder()
       .id("testString")
-      .ifMatch("96d225c4-56bd-43d9-98fc-d7148e5c5028")
+      .ifMatch("W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"")
       .build();
     assertEquals(deleteSnapshotOptionsModel.id(), "testString");
-    assertEquals(deleteSnapshotOptionsModel.ifMatch(), "96d225c4-56bd-43d9-98fc-d7148e5c5028");
+    assertEquals(deleteSnapshotOptionsModel.ifMatch(), "W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

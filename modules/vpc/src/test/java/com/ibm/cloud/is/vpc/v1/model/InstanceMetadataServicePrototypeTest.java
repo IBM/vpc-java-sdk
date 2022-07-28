@@ -32,14 +32,14 @@ public class InstanceMetadataServicePrototypeTest {
   @Test
   public void testInstanceMetadataServicePrototype() throws Throwable {
     InstanceMetadataServicePrototype instanceMetadataServicePrototypeModel = new InstanceMetadataServicePrototype.Builder()
-      .enabled(true)
+      .enabled(false)
       .build();
-    assertEquals(instanceMetadataServicePrototypeModel.enabled(), Boolean.valueOf(true));
+    assertEquals(instanceMetadataServicePrototypeModel.enabled(), Boolean.valueOf(false));
 
     String json = TestUtilities.serialize(instanceMetadataServicePrototypeModel);
 
     InstanceMetadataServicePrototype instanceMetadataServicePrototypeModelNew = TestUtilities.deserialize(json, InstanceMetadataServicePrototype.class);
     assertTrue(instanceMetadataServicePrototypeModelNew instanceof InstanceMetadataServicePrototype);
-    assertEquals(instanceMetadataServicePrototypeModelNew.enabled(), Boolean.valueOf(true));
+    assertEquals(instanceMetadataServicePrototypeModelNew.enabled(), Boolean.valueOf(false));
   }
 }

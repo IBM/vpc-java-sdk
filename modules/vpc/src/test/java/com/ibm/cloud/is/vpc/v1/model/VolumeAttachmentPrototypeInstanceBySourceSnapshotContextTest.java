@@ -13,7 +13,6 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
-import com.google.gson.JsonParser;
 import com.ibm.cloud.is.vpc.v1.model.EncryptionKeyIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototypeInstanceBySourceSnapshotContext;
@@ -81,7 +80,7 @@ public class VolumeAttachmentPrototypeInstanceBySourceSnapshotContextTest {
     assertTrue(volumeAttachmentPrototypeInstanceBySourceSnapshotContextModelNew instanceof VolumeAttachmentPrototypeInstanceBySourceSnapshotContext);
     assertEquals(volumeAttachmentPrototypeInstanceBySourceSnapshotContextModelNew.deleteVolumeOnInstanceDelete(), Boolean.valueOf(true));
     assertEquals(volumeAttachmentPrototypeInstanceBySourceSnapshotContextModelNew.name(), "my-volume-attachment");
-    assertEquals(JsonParser.parseString(volumeAttachmentPrototypeInstanceBySourceSnapshotContextModelNew.volume().toString()), JsonParser.parseString(volumePrototypeInstanceBySourceSnapshotContextModel.toString()));
+    assertEquals(volumeAttachmentPrototypeInstanceBySourceSnapshotContextModelNew.volume().toString(), volumePrototypeInstanceBySourceSnapshotContextModel.toString());
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

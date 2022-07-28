@@ -34,11 +34,11 @@ public class UpdateVolumeOptionsTest {
     UpdateVolumeOptions updateVolumeOptionsModel = new UpdateVolumeOptions.Builder()
       .id("testString")
       .volumePatch(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
-      .ifMatch("96d225c4-56bd-43d9-98fc-d7148e5c5028")
+      .ifMatch("W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"")
       .build();
     assertEquals(updateVolumeOptionsModel.id(), "testString");
     assertEquals(updateVolumeOptionsModel.volumePatch(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
-    assertEquals(updateVolumeOptionsModel.ifMatch(), "96d225c4-56bd-43d9-98fc-d7148e5c5028");
+    assertEquals(updateVolumeOptionsModel.ifMatch(), "W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

@@ -14,8 +14,9 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.CreateVpcRoutingTableOptions;
-import com.ibm.cloud.is.vpc.v1.model.RouteNextHopPrototypeRouteNextHopIP;
+import com.ibm.cloud.is.vpc.v1.model.ResourceFilter;
 import com.ibm.cloud.is.vpc.v1.model.RoutePrototype;
+import com.ibm.cloud.is.vpc.v1.model.RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIP;
 import com.ibm.cloud.is.vpc.v1.model.ZoneIdentityByName;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
@@ -36,10 +37,15 @@ public class CreateVpcRoutingTableOptionsTest {
 
   @Test
   public void testCreateVpcRoutingTableOptions() throws Throwable {
-    RouteNextHopPrototypeRouteNextHopIP routeNextHopPrototypeModel = new RouteNextHopPrototypeRouteNextHopIP.Builder()
+    ResourceFilter resourceFilterModel = new ResourceFilter.Builder()
+      .resourceType("vpn_server")
+      .build();
+    assertEquals(resourceFilterModel.resourceType(), "vpn_server");
+
+    RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIP routePrototypeNextHopModel = new RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIP.Builder()
       .address("192.168.3.4")
       .build();
-    assertEquals(routeNextHopPrototypeModel.address(), "192.168.3.4");
+    assertEquals(routePrototypeNextHopModel.address(), "192.168.3.4");
 
     ZoneIdentityByName zoneIdentityModel = new ZoneIdentityByName.Builder()
       .name("us-south-1")
@@ -49,18 +55,19 @@ public class CreateVpcRoutingTableOptionsTest {
     RoutePrototype routePrototypeModel = new RoutePrototype.Builder()
       .action("deliver")
       .destination("192.168.3.0/24")
-      .name("my-route-2")
-      .nextHop(routeNextHopPrototypeModel)
+      .name("my-route-1")
+      .nextHop(routePrototypeNextHopModel)
       .zone(zoneIdentityModel)
       .build();
     assertEquals(routePrototypeModel.action(), "deliver");
     assertEquals(routePrototypeModel.destination(), "192.168.3.0/24");
-    assertEquals(routePrototypeModel.name(), "my-route-2");
-    assertEquals(routePrototypeModel.nextHop(), routeNextHopPrototypeModel);
+    assertEquals(routePrototypeModel.name(), "my-route-1");
+    assertEquals(routePrototypeModel.nextHop(), routePrototypeNextHopModel);
     assertEquals(routePrototypeModel.zone(), zoneIdentityModel);
 
     CreateVpcRoutingTableOptions createVpcRoutingTableOptionsModel = new CreateVpcRoutingTableOptions.Builder()
       .vpcId("testString")
+      .acceptRoutesFrom(new java.util.ArrayList<ResourceFilter>(java.util.Arrays.asList(resourceFilterModel)))
       .name("my-routing-table-2")
       .routeDirectLinkIngress(false)
       .routeTransitGatewayIngress(false)
@@ -68,6 +75,7 @@ public class CreateVpcRoutingTableOptionsTest {
       .routes(new java.util.ArrayList<RoutePrototype>(java.util.Arrays.asList(routePrototypeModel)))
       .build();
     assertEquals(createVpcRoutingTableOptionsModel.vpcId(), "testString");
+    assertEquals(createVpcRoutingTableOptionsModel.acceptRoutesFrom(), new java.util.ArrayList<ResourceFilter>(java.util.Arrays.asList(resourceFilterModel)));
     assertEquals(createVpcRoutingTableOptionsModel.name(), "my-routing-table-2");
     assertEquals(createVpcRoutingTableOptionsModel.routeDirectLinkIngress(), Boolean.valueOf(false));
     assertEquals(createVpcRoutingTableOptionsModel.routeTransitGatewayIngress(), Boolean.valueOf(false));

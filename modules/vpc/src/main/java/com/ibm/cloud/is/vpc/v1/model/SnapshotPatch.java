@@ -124,7 +124,7 @@ public class SnapshotPatch extends GenericModel {
   /**
    * Gets the userTags.
    *
-   * The user tags associated with this snapshot.
+   * The [user tags](https://cloud.ibm.com/apidocs/tagging#types-of-tags) associated with this snapshot.
    *
    * @return the userTags
    */

@@ -21,12 +21,6 @@ import java.util.List;
 public class BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVLANPrototype extends BareMetalServerNetworkInterfacePrototype {
 
   /**
-   * The network interface type:
-   * - `pci`: a physical PCI device which can only be created or deleted when the bare metal
-   *   server is stopped
-   *   - Has an `allowed_vlans` property which controls the VLANs that will be permitted
-   *     to use the pci interface
-   *   - Cannot directly use an IEEE 802.1q VLAN tag.
    * - `vlan`: a virtual device, used through a `pci` device that has the `vlan` in its array
    *    of `allowed_vlans`.
    *   - Must use an IEEE 802.1q tag.
@@ -34,8 +28,6 @@ public class BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInter
    *     which traffic flows.
    */
   public interface InterfaceType {
-    /** pci. */
-    String PCI = "pci";
     /** vlan. */
     String VLAN = "vlan";
   }
@@ -47,23 +39,23 @@ public class BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInter
   public static class Builder {
     private Boolean allowIpSpoofing;
     private Boolean enableInfrastructureNat;
-    private String interfaceType;
     private String name;
     private NetworkInterfaceIPPrototype primaryIp;
     private List<SecurityGroupIdentity> securityGroups;
     private SubnetIdentity subnet;
     private Boolean allowInterfaceToFloat;
+    private String interfaceType;
     private Long vlan;
 
     public Builder(BareMetalServerNetworkInterfacePrototype bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVlanPrototype) {
       this.allowIpSpoofing = bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVlanPrototype.allowIpSpoofing;
       this.enableInfrastructureNat = bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVlanPrototype.enableInfrastructureNat;
-      this.interfaceType = bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVlanPrototype.interfaceType;
       this.name = bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVlanPrototype.name;
       this.primaryIp = bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVlanPrototype.primaryIp;
       this.securityGroups = bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVlanPrototype.securityGroups;
       this.subnet = bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVlanPrototype.subnet;
       this.allowInterfaceToFloat = bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVlanPrototype.allowInterfaceToFloat;
+      this.interfaceType = bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVlanPrototype.interfaceType;
       this.vlan = bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVlanPrototype.vlan;
     }
 
@@ -76,13 +68,13 @@ public class BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInter
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param interfaceType the interfaceType
      * @param subnet the subnet
+     * @param interfaceType the interfaceType
      * @param vlan the vlan
      */
-    public Builder(String interfaceType, SubnetIdentity subnet, Long vlan) {
-      this.interfaceType = interfaceType;
+    public Builder(SubnetIdentity subnet, String interfaceType, Long vlan) {
       this.subnet = subnet;
+      this.interfaceType = interfaceType;
       this.vlan = vlan;
     }
 
@@ -130,17 +122,6 @@ public class BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInter
      */
     public Builder enableInfrastructureNat(Boolean enableInfrastructureNat) {
       this.enableInfrastructureNat = enableInfrastructureNat;
-      return this;
-    }
-
-    /**
-     * Set the interfaceType.
-     *
-     * @param interfaceType the interfaceType
-     * @return the BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVLANPrototype builder
-     */
-    public Builder interfaceType(String interfaceType) {
-      this.interfaceType = interfaceType;
       return this;
     }
 
@@ -201,6 +182,17 @@ public class BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInter
     }
 
     /**
+     * Set the interfaceType.
+     *
+     * @param interfaceType the interfaceType
+     * @return the BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVLANPrototype builder
+     */
+    public Builder interfaceType(String interfaceType) {
+      this.interfaceType = interfaceType;
+      return this;
+    }
+
+    /**
      * Set the vlan.
      *
      * @param vlan the vlan
@@ -213,20 +205,20 @@ public class BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInter
   }
 
   protected BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVLANPrototype(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.interfaceType,
-      "interfaceType cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.subnet,
       "subnet cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.interfaceType,
+      "interfaceType cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.vlan,
       "vlan cannot be null");
     allowIpSpoofing = builder.allowIpSpoofing;
     enableInfrastructureNat = builder.enableInfrastructureNat;
-    interfaceType = builder.interfaceType;
     name = builder.name;
     primaryIp = builder.primaryIp;
     securityGroups = builder.securityGroups;
     subnet = builder.subnet;
     allowInterfaceToFloat = builder.allowInterfaceToFloat;
+    interfaceType = builder.interfaceType;
     vlan = builder.vlan;
   }
 

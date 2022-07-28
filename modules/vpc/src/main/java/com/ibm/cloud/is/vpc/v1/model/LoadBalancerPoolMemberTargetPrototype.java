@@ -16,7 +16,8 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
  * The pool member target. Load balancers in the `network` family support virtual server instances. Load balancers in
- * the `application` family support IP addresses.
+ * the `application` family support IP addresses. If the load balancer has route mode enabled, the member must be in a
+ * zone the load balancer has a subnet in.
  *
  * Classes which extend this class:
  * - LoadBalancerPoolMemberTargetPrototypeInstanceIdentity

@@ -13,6 +13,7 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.ibm.cloud.is.vpc.v1.model.ResourceFilter;
 import com.ibm.cloud.is.vpc.v1.model.RouteReference;
 import com.ibm.cloud.is.vpc.v1.model.RouteReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.RoutingTable;

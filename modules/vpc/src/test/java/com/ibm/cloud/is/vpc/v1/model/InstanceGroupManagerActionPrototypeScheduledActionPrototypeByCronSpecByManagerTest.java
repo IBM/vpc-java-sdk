@@ -13,7 +13,6 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
-import com.google.gson.JsonParser;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSpecByManager;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerScheduledActionManagerPrototypeAutoScalePrototypeById;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
@@ -57,7 +56,7 @@ public class InstanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSp
     assertTrue(instanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSpecByManagerModelNew instanceof InstanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSpecByManager);
     assertEquals(instanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSpecByManagerModelNew.name(), "my-instance-group-manager-action");
     assertEquals(instanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSpecByManagerModelNew.cronSpec(), "*/5 1,2,3 * * *");
-    assertEquals(JsonParser.parseString(instanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSpecByManagerModelNew.manager().toString()), JsonParser.parseString(instanceGroupManagerScheduledActionManagerPrototypeModel.toString()));
+    assertEquals(instanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSpecByManagerModelNew.manager().toString(), instanceGroupManagerScheduledActionManagerPrototypeModel.toString());
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

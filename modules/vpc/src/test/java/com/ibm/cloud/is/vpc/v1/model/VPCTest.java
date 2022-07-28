@@ -53,6 +53,7 @@ public class VPCTest {
     assertNull(vpcModel.getId());
     assertNull(vpcModel.getName());
     assertNull(vpcModel.getResourceGroup());
+    assertNull(vpcModel.getResourceType());
     assertNull(vpcModel.getStatus());
   }
 }

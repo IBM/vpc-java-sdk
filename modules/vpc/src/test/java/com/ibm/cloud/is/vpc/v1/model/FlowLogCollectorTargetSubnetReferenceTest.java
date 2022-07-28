@@ -38,5 +38,6 @@ public class FlowLogCollectorTargetSubnetReferenceTest {
     assertNull(flowLogCollectorTargetSubnetReferenceModel.getHref());
     assertNull(flowLogCollectorTargetSubnetReferenceModel.getId());
     assertNull(flowLogCollectorTargetSubnetReferenceModel.getName());
+    assertNull(flowLogCollectorTargetSubnetReferenceModel.getResourceType());
   }
 }

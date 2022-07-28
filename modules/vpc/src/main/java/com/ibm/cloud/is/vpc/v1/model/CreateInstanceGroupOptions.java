@@ -251,8 +251,10 @@ public class CreateInstanceGroupOptions extends GenericModel {
   /**
    * Gets the loadBalancer.
    *
-   * The load balancer that the load balancer pool used by this group
-   * is in. Required when using a load balancer pool.
+   * The load balancer associated with the specified load balancer pool.
+   * Required if `load_balancer_pool` is specified.
+   *
+   * At present, only load balancers in the `application` family are supported.
    *
    * @return the loadBalancer
    */

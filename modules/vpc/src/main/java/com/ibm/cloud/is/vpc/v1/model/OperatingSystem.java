@@ -67,7 +67,7 @@ public class OperatingSystem extends GenericModel {
   /**
    * Gets the family.
    *
-   * The name of the software family this operating system belongs to.
+   * The software family for this operating system.
    *
    * @return the family
    */

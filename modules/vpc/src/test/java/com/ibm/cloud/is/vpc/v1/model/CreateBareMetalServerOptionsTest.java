@@ -115,22 +115,22 @@ public class CreateBareMetalServerOptionsTest {
     BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVLANPrototype bareMetalServerNetworkInterfacePrototypeModel = new BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVLANPrototype.Builder()
       .allowIpSpoofing(true)
       .enableInfrastructureNat(true)
-      .interfaceType("vlan")
       .name("my-network-interface")
       .primaryIp(networkInterfaceIpPrototypeModel)
       .securityGroups(new java.util.ArrayList<SecurityGroupIdentity>(java.util.Arrays.asList(securityGroupIdentityModel)))
       .subnet(subnetIdentityModel)
       .allowInterfaceToFloat(false)
+      .interfaceType("vlan")
       .vlan(Long.valueOf("4"))
       .build();
     assertEquals(bareMetalServerNetworkInterfacePrototypeModel.allowIpSpoofing(), Boolean.valueOf(true));
     assertEquals(bareMetalServerNetworkInterfacePrototypeModel.enableInfrastructureNat(), Boolean.valueOf(true));
-    assertEquals(bareMetalServerNetworkInterfacePrototypeModel.interfaceType(), "vlan");
     assertEquals(bareMetalServerNetworkInterfacePrototypeModel.name(), "my-network-interface");
     assertEquals(bareMetalServerNetworkInterfacePrototypeModel.primaryIp(), networkInterfaceIpPrototypeModel);
     assertEquals(bareMetalServerNetworkInterfacePrototypeModel.securityGroups(), new java.util.ArrayList<SecurityGroupIdentity>(java.util.Arrays.asList(securityGroupIdentityModel)));
     assertEquals(bareMetalServerNetworkInterfacePrototypeModel.subnet(), subnetIdentityModel);
     assertEquals(bareMetalServerNetworkInterfacePrototypeModel.allowInterfaceToFloat(), Boolean.valueOf(false));
+    assertEquals(bareMetalServerNetworkInterfacePrototypeModel.interfaceType(), "vlan");
     assertEquals(bareMetalServerNetworkInterfacePrototypeModel.vlan(), Long.valueOf("4"));
 
     ResourceGroupIdentityById resourceGroupIdentityModel = new ResourceGroupIdentityById.Builder()

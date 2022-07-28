@@ -78,9 +78,9 @@ public class CreateInstanceTemplateOptionsTest {
     assertEquals(keyIdentityModel.id(), "a6b1a881-2ce8-41a3-80fc-36316a73f803");
 
     InstanceMetadataServicePrototype instanceMetadataServicePrototypeModel = new InstanceMetadataServicePrototype.Builder()
-      .enabled(true)
+      .enabled(false)
       .build();
-    assertEquals(instanceMetadataServicePrototypeModel.enabled(), Boolean.valueOf(true));
+    assertEquals(instanceMetadataServicePrototypeModel.enabled(), Boolean.valueOf(false));
 
     NetworkInterfaceIPPrototypeReservedIPPrototypeNetworkInterfaceContext networkInterfaceIpPrototypeModel = new NetworkInterfaceIPPrototypeReservedIPPrototypeNetworkInterfaceContext.Builder()
       .address("10.0.0.5")

@@ -24,6 +24,20 @@ import com.ibm.cloud.is.vpc.v1.model.AddressPrefixCollection;
 import com.ibm.cloud.is.vpc.v1.model.AddressPrefixCollectionFirst;
 import com.ibm.cloud.is.vpc.v1.model.AddressPrefixCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.AddressPrefixPatch;
+import com.ibm.cloud.is.vpc.v1.model.BackupPolicy;
+import com.ibm.cloud.is.vpc.v1.model.BackupPolicyCollection;
+import com.ibm.cloud.is.vpc.v1.model.BackupPolicyCollectionFirst;
+import com.ibm.cloud.is.vpc.v1.model.BackupPolicyCollectionNext;
+import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPatch;
+import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlan;
+import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanCollection;
+import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanDeletionTrigger;
+import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanDeletionTriggerPatch;
+import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanDeletionTriggerPrototype;
+import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanPatch;
+import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanPrototype;
+import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanReference;
+import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServer;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerBootTarget;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerBootTargetBareMetalServerDiskReference;
@@ -102,6 +116,8 @@ import com.ibm.cloud.is.vpc.v1.model.CertificateInstanceIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.CertificateInstanceReference;
 import com.ibm.cloud.is.vpc.v1.model.CheckVpnGatewayConnectionLocalCidrOptions;
 import com.ibm.cloud.is.vpc.v1.model.CheckVpnGatewayConnectionPeerCidrOptions;
+import com.ibm.cloud.is.vpc.v1.model.CreateBackupPolicyOptions;
+import com.ibm.cloud.is.vpc.v1.model.CreateBackupPolicyPlanOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateBareMetalServerConsoleAccessTokenOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateBareMetalServerNetworkInterfaceOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateBareMetalServerOptions;
@@ -148,6 +164,8 @@ import com.ibm.cloud.is.vpc.v1.model.CreateVpcRoutingTableOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateVpcRoutingTableRouteOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateVpnGatewayConnectionOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateVpnGatewayOptions;
+import com.ibm.cloud.is.vpc.v1.model.CreateVpnServerOptions;
+import com.ibm.cloud.is.vpc.v1.model.CreateVpnServerRouteOptions;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHost;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostCollection;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostCollectionFirst;
@@ -205,6 +223,8 @@ import com.ibm.cloud.is.vpc.v1.model.DedicatedHostReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.DefaultNetworkACL;
 import com.ibm.cloud.is.vpc.v1.model.DefaultRoutingTable;
 import com.ibm.cloud.is.vpc.v1.model.DefaultSecurityGroup;
+import com.ibm.cloud.is.vpc.v1.model.DeleteBackupPolicyOptions;
+import com.ibm.cloud.is.vpc.v1.model.DeleteBackupPolicyPlanOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteBareMetalServerNetworkInterfaceOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteBareMetalServerOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteDedicatedHostGroupOptions;
@@ -252,6 +272,10 @@ import com.ibm.cloud.is.vpc.v1.model.DeleteVpcRoutingTableOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteVpcRoutingTableRouteOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteVpnGatewayConnectionOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteVpnGatewayOptions;
+import com.ibm.cloud.is.vpc.v1.model.DeleteVpnServerClientOptions;
+import com.ibm.cloud.is.vpc.v1.model.DeleteVpnServerOptions;
+import com.ibm.cloud.is.vpc.v1.model.DeleteVpnServerRouteOptions;
+import com.ibm.cloud.is.vpc.v1.model.DisconnectVpnClientOptions;
 import com.ibm.cloud.is.vpc.v1.model.EncryptionKeyIdentity;
 import com.ibm.cloud.is.vpc.v1.model.EncryptionKeyIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.EncryptionKeyReference;
@@ -321,10 +345,11 @@ import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorTargetPrototypeVPCIdentityV
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorTargetSubnetReference;
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorTargetVPCReference;
 import com.ibm.cloud.is.vpc.v1.model.GenericResourceReferenceDeleted;
+import com.ibm.cloud.is.vpc.v1.model.GetBackupPolicyOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetBackupPolicyPlanOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetBareMetalServerDiskOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetBareMetalServerInitializationOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetBareMetalServerNetworkInterfaceFloatingIpOptions;
-import com.ibm.cloud.is.vpc.v1.model.GetBareMetalServerNetworkInterfaceIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetBareMetalServerNetworkInterfaceOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetBareMetalServerOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetBareMetalServerProfileOptions;
@@ -390,6 +415,10 @@ import com.ibm.cloud.is.vpc.v1.model.GetVpcRoutingTableOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetVpcRoutingTableRouteOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetVpnGatewayConnectionOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetVpnGatewayOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetVpnServerClientConfigurationOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetVpnServerClientOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetVpnServerOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetVpnServerRouteOptions;
 import com.ibm.cloud.is.vpc.v1.model.IKEPolicy;
 import com.ibm.cloud.is.vpc.v1.model.IKEPolicyCollection;
 import com.ibm.cloud.is.vpc.v1.model.IKEPolicyCollectionFirst;
@@ -608,6 +637,7 @@ import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateIdentityByHref;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateInstanceByImage;
+import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateInstanceBySourceSnapshot;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplatePatch;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplatePrototype;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplatePrototypeInstanceByImage;
@@ -630,9 +660,10 @@ import com.ibm.cloud.is.vpc.v1.model.KeyReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.LegacyCloudObjectStorageBucketIdentity;
 import com.ibm.cloud.is.vpc.v1.model.LegacyCloudObjectStorageBucketIdentityCloudObjectStorageBucketIdentityByName;
 import com.ibm.cloud.is.vpc.v1.model.LegacyCloudObjectStorageBucketReference;
+import com.ibm.cloud.is.vpc.v1.model.ListBackupPoliciesOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListBackupPolicyPlansOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListBareMetalServerDisksOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListBareMetalServerNetworkInterfaceFloatingIpsOptions;
-import com.ibm.cloud.is.vpc.v1.model.ListBareMetalServerNetworkInterfaceIpsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListBareMetalServerNetworkInterfacesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListBareMetalServerProfilesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListBareMetalServersOptions;
@@ -694,6 +725,9 @@ import com.ibm.cloud.is.vpc.v1.model.ListVpnGatewayConnectionLocalCidrsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListVpnGatewayConnectionPeerCidrsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListVpnGatewayConnectionsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListVpnGatewaysOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListVpnServerClientsOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListVpnServerRoutesOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListVpnServersOptions;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancer;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerCollection;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerCollectionFirst;
@@ -922,6 +956,8 @@ import com.ibm.cloud.is.vpc.v1.model.ReservedIPTargetPrototypeEndpointGatewayIde
 import com.ibm.cloud.is.vpc.v1.model.ReservedIPTargetPrototypeEndpointGatewayIdentityEndpointGatewayIdentityByHref;
 import com.ibm.cloud.is.vpc.v1.model.ReservedIPTargetPrototypeEndpointGatewayIdentityEndpointGatewayIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.ReservedIPTargetVPNGatewayReference;
+import com.ibm.cloud.is.vpc.v1.model.ReservedIPTargetVPNServerReference;
+import com.ibm.cloud.is.vpc.v1.model.ResourceFilter;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupIdentity;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;
@@ -930,16 +966,19 @@ import com.ibm.cloud.is.vpc.v1.model.Route;
 import com.ibm.cloud.is.vpc.v1.model.RouteCollection;
 import com.ibm.cloud.is.vpc.v1.model.RouteCollectionFirst;
 import com.ibm.cloud.is.vpc.v1.model.RouteCollectionNext;
+import com.ibm.cloud.is.vpc.v1.model.RouteCreator;
+import com.ibm.cloud.is.vpc.v1.model.RouteCreatorVPNGatewayReference;
+import com.ibm.cloud.is.vpc.v1.model.RouteCreatorVPNServerReference;
 import com.ibm.cloud.is.vpc.v1.model.RouteNextHop;
 import com.ibm.cloud.is.vpc.v1.model.RouteNextHopIP;
-import com.ibm.cloud.is.vpc.v1.model.RouteNextHopPrototype;
-import com.ibm.cloud.is.vpc.v1.model.RouteNextHopPrototypeRouteNextHopIP;
-import com.ibm.cloud.is.vpc.v1.model.RouteNextHopPrototypeVPNGatewayConnectionIdentity;
-import com.ibm.cloud.is.vpc.v1.model.RouteNextHopPrototypeVPNGatewayConnectionIdentityVPNGatewayConnectionIdentityByHref;
-import com.ibm.cloud.is.vpc.v1.model.RouteNextHopPrototypeVPNGatewayConnectionIdentityVPNGatewayConnectionIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.RouteNextHopVPNGatewayConnectionReference;
 import com.ibm.cloud.is.vpc.v1.model.RoutePatch;
 import com.ibm.cloud.is.vpc.v1.model.RoutePrototype;
+import com.ibm.cloud.is.vpc.v1.model.RoutePrototypeNextHop;
+import com.ibm.cloud.is.vpc.v1.model.RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIP;
+import com.ibm.cloud.is.vpc.v1.model.RoutePrototypeNextHopRouteNextHopPrototypeVPNGatewayConnectionIdentity;
+import com.ibm.cloud.is.vpc.v1.model.RoutePrototypeNextHopRouteNextHopPrototypeVPNGatewayConnectionIdentityRouteNextHopPrototypeVPNGatewayConnectionIdentityVPNGatewayConnectionIdentityByHref;
+import com.ibm.cloud.is.vpc.v1.model.RoutePrototypeNextHopRouteNextHopPrototypeVPNGatewayConnectionIdentityRouteNextHopPrototypeVPNGatewayConnectionIdentityVPNGatewayConnectionIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.RouteReference;
 import com.ibm.cloud.is.vpc.v1.model.RouteReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.RoutingTable;
@@ -998,6 +1037,7 @@ import com.ibm.cloud.is.vpc.v1.model.SecurityGroupTargetReference;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupTargetReferenceEndpointGatewayReference;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupTargetReferenceLoadBalancerReference;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupTargetReferenceNetworkInterfaceReferenceTargetContext;
+import com.ibm.cloud.is.vpc.v1.model.SecurityGroupTargetReferenceVPNServerReference;
 import com.ibm.cloud.is.vpc.v1.model.SetSubnetPublicGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.Snapshot;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotCollection;
@@ -1037,6 +1077,8 @@ import com.ibm.cloud.is.vpc.v1.model.TrustedProfileIdentityTrustedProfileByCRN;
 import com.ibm.cloud.is.vpc.v1.model.TrustedProfileIdentityTrustedProfileById;
 import com.ibm.cloud.is.vpc.v1.model.TrustedProfileReference;
 import com.ibm.cloud.is.vpc.v1.model.UnsetSubnetPublicGatewayOptions;
+import com.ibm.cloud.is.vpc.v1.model.UpdateBackupPolicyOptions;
+import com.ibm.cloud.is.vpc.v1.model.UpdateBackupPolicyPlanOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateBareMetalServerDiskOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateBareMetalServerNetworkInterfaceOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateBareMetalServerOptions;
@@ -1083,6 +1125,8 @@ import com.ibm.cloud.is.vpc.v1.model.UpdateVpcRoutingTableOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateVpcRoutingTableRouteOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateVpnGatewayConnectionOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateVpnGatewayOptions;
+import com.ibm.cloud.is.vpc.v1.model.UpdateVpnServerOptions;
+import com.ibm.cloud.is.vpc.v1.model.UpdateVpnServerRouteOptions;
 import com.ibm.cloud.is.vpc.v1.model.VCPU;
 import com.ibm.cloud.is.vpc.v1.model.VPC;
 import com.ibm.cloud.is.vpc.v1.model.VPCCSESourceIP;
@@ -1137,6 +1181,29 @@ import com.ibm.cloud.is.vpc.v1.model.VPNGatewayPrototypeVPNGatewayPolicyModeProt
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayPrototypeVPNGatewayRouteModePrototype;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayRouteMode;
+import com.ibm.cloud.is.vpc.v1.model.VPNServer;
+import com.ibm.cloud.is.vpc.v1.model.VPNServerAuthentication;
+import com.ibm.cloud.is.vpc.v1.model.VPNServerAuthenticationByCertificate;
+import com.ibm.cloud.is.vpc.v1.model.VPNServerAuthenticationByUsername;
+import com.ibm.cloud.is.vpc.v1.model.VPNServerAuthenticationByUsernameIdProvider;
+import com.ibm.cloud.is.vpc.v1.model.VPNServerAuthenticationByUsernameIdProviderByIAM;
+import com.ibm.cloud.is.vpc.v1.model.VPNServerAuthenticationPrototype;
+import com.ibm.cloud.is.vpc.v1.model.VPNServerAuthenticationPrototypeVPNServerAuthenticationByCertificatePrototype;
+import com.ibm.cloud.is.vpc.v1.model.VPNServerAuthenticationPrototypeVPNServerAuthenticationByUsernamePrototype;
+import com.ibm.cloud.is.vpc.v1.model.VPNServerClient;
+import com.ibm.cloud.is.vpc.v1.model.VPNServerClientCollection;
+import com.ibm.cloud.is.vpc.v1.model.VPNServerClientCollectionFirst;
+import com.ibm.cloud.is.vpc.v1.model.VPNServerClientCollectionNext;
+import com.ibm.cloud.is.vpc.v1.model.VPNServerCollection;
+import com.ibm.cloud.is.vpc.v1.model.VPNServerCollectionFirst;
+import com.ibm.cloud.is.vpc.v1.model.VPNServerCollectionNext;
+import com.ibm.cloud.is.vpc.v1.model.VPNServerPatch;
+import com.ibm.cloud.is.vpc.v1.model.VPNServerReferenceDeleted;
+import com.ibm.cloud.is.vpc.v1.model.VPNServerRoute;
+import com.ibm.cloud.is.vpc.v1.model.VPNServerRouteCollection;
+import com.ibm.cloud.is.vpc.v1.model.VPNServerRouteCollectionFirst;
+import com.ibm.cloud.is.vpc.v1.model.VPNServerRouteCollectionNext;
+import com.ibm.cloud.is.vpc.v1.model.VPNServerRoutePatch;
 import com.ibm.cloud.is.vpc.v1.model.Volume;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachment;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentCollection;
@@ -1185,6 +1252,7 @@ import com.ibm.cloud.is.vpc.v1.model.VolumePrototype;
 import com.ibm.cloud.is.vpc.v1.model.VolumePrototypeInstanceByImageContext;
 import com.ibm.cloud.is.vpc.v1.model.VolumePrototypeInstanceBySourceSnapshotContext;
 import com.ibm.cloud.is.vpc.v1.model.VolumePrototypeVolumeByCapacity;
+import com.ibm.cloud.is.vpc.v1.model.VolumePrototypeVolumeBySourceSnapshot;
 import com.ibm.cloud.is.vpc.v1.model.VolumeReference;
 import com.ibm.cloud.is.vpc.v1.model.VolumeReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.VolumeStatusReason;
@@ -1664,7 +1732,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       .name("us-south-1")
       .build();
 
-      RouteNextHopPrototypeRouteNextHopIP routeNextHopPrototypeModel = new RouteNextHopPrototypeRouteNextHopIP.Builder()
+      RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIP routePrototypeNextHopModel = new RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIP.Builder()
       .address("192.168.3.4")
       .build();
 
@@ -1673,8 +1741,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       .destination("192.168.3.0/24")
       .zone(zoneIdentityModel)
       .action("deliver")
-      .name("my-route-2")
-      .nextHop(routeNextHopPrototypeModel)
+      .name("my-route-1")
+      .nextHop(routePrototypeNextHopModel)
       .build();
 
       // Invoke operation
@@ -1812,7 +1880,11 @@ public class VpcIT extends SdkIntegrationTestBase {
   @Test
   public void testCreateVpcRoutingTable() throws Exception {
     try {
-      RouteNextHopPrototypeRouteNextHopIP routeNextHopPrototypeModel = new RouteNextHopPrototypeRouteNextHopIP.Builder()
+      ResourceFilter resourceFilterModel = new ResourceFilter.Builder()
+      .resourceType("vpn_server")
+      .build();
+
+      RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIP routePrototypeNextHopModel = new RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIP.Builder()
       .address("192.168.3.4")
       .build();
 
@@ -1823,13 +1895,14 @@ public class VpcIT extends SdkIntegrationTestBase {
       RoutePrototype routePrototypeModel = new RoutePrototype.Builder()
       .action("deliver")
       .destination("192.168.3.0/24")
-      .name("my-route-2")
-      .nextHop(routeNextHopPrototypeModel)
+      .name("my-route-1")
+      .nextHop(routePrototypeNextHopModel)
       .zone(zoneIdentityModel)
       .build();
 
       CreateVpcRoutingTableOptions createVpcRoutingTableOptions = new CreateVpcRoutingTableOptions.Builder()
       .vpcId("testString")
+      .acceptRoutesFrom(new java.util.ArrayList<ResourceFilter>(java.util.Arrays.asList(resourceFilterModel)))
       .name("my-routing-table-2")
       .routeDirectLinkIngress(false)
       .routeTransitGatewayIngress(false)
@@ -1897,7 +1970,12 @@ public class VpcIT extends SdkIntegrationTestBase {
   @Test
   public void testUpdateVpcRoutingTable() throws Exception {
     try {
+      ResourceFilter resourceFilterModel = new ResourceFilter.Builder()
+      .resourceType("vpn_server")
+      .build();
+
       RoutingTablePatch routingTablePatchModel = new RoutingTablePatch.Builder()
+      .acceptRoutesFrom(new java.util.ArrayList<ResourceFilter>(java.util.Arrays.asList(resourceFilterModel)))
       .name("my-routing-table-2")
       .routeDirectLinkIngress(true)
       .routeTransitGatewayIngress(true)
@@ -1909,6 +1987,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       .vpcId("testString")
       .id("testString")
       .routingTablePatch(routingTablePatchModelAsPatch)
+      .ifMatch("W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"")
       .build();
 
       // Invoke operation
@@ -1928,6 +2007,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       // 400
       // 404
       // 409
+      // 412
       //
       //
 
@@ -1978,7 +2058,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       .name("us-south-1")
       .build();
 
-      RouteNextHopPrototypeRouteNextHopIP routeNextHopPrototypeModel = new RouteNextHopPrototypeRouteNextHopIP.Builder()
+      RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIP routePrototypeNextHopModel = new RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIP.Builder()
       .address("192.168.3.4")
       .build();
 
@@ -1988,8 +2068,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       .destination("192.168.3.0/24")
       .zone(zoneIdentityModel)
       .action("deliver")
-      .name("my-route-2")
-      .nextHop(routeNextHopPrototypeModel)
+      .name("my-route-1")
+      .nextHop(routePrototypeNextHopModel)
       .build();
 
       // Invoke operation
@@ -3042,7 +3122,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       .build();
 
       InstanceMetadataServicePrototype instanceMetadataServicePrototypeModel = new InstanceMetadataServicePrototype.Builder()
-      .enabled(true)
+      .enabled(false)
       .build();
 
       NetworkInterfaceIPPrototypeReservedIPPrototypeNetworkInterfaceContext networkInterfaceIpPrototypeModel = new NetworkInterfaceIPPrototypeReservedIPPrototypeNetworkInterfaceContext.Builder()
@@ -3295,7 +3375,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       .build();
 
       InstanceMetadataServicePrototype instanceMetadataServicePrototypeModel = new InstanceMetadataServicePrototype.Builder()
-      .enabled(true)
+      .enabled(false)
       .build();
 
       NetworkInterfaceIPPrototypeReservedIPPrototypeNetworkInterfaceContext networkInterfaceIpPrototypeModel = new NetworkInterfaceIPPrototypeReservedIPPrototypeNetworkInterfaceContext.Builder()
@@ -5368,6 +5448,315 @@ public class VpcIT extends SdkIntegrationTestBase {
   }
 
   @Test
+  public void testListBackupPolicies() throws Exception {
+    try {
+      ListBackupPoliciesOptions listBackupPoliciesOptions = new ListBackupPoliciesOptions.Builder()
+      .start("testString")
+      .limit(Long.valueOf("1"))
+      .resourceGroupId("testString")
+      .name("testString")
+      .tag("testString")
+      .build();
+
+      // Invoke operation
+      Response<BackupPolicyCollection> response = service.listBackupPolicies(listBackupPoliciesOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      BackupPolicyCollection backupPolicyCollectionResult = response.getResult();
+
+      assertNotNull(backupPolicyCollectionResult);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test
+  public void testCreateBackupPolicy() throws Exception {
+    try {
+      BackupPolicyPlanDeletionTriggerPrototype backupPolicyPlanDeletionTriggerPrototypeModel = new BackupPolicyPlanDeletionTriggerPrototype.Builder()
+      .deleteAfter(Long.valueOf("20"))
+      .deleteOverCount(Long.valueOf("20"))
+      .build();
+
+      BackupPolicyPlanPrototype backupPolicyPlanPrototypeModel = new BackupPolicyPlanPrototype.Builder()
+      .active(true)
+      .attachUserTags(new java.util.ArrayList<String>(java.util.Arrays.asList("my-daily-backup-plan")))
+      .copyUserTags(true)
+      .cronSpec("*/5 1,2,3 * * *")
+      .deletionTrigger(backupPolicyPlanDeletionTriggerPrototypeModel)
+      .name("my-policy-plan")
+      .build();
+
+      ResourceGroupIdentityById resourceGroupIdentityModel = new ResourceGroupIdentityById.Builder()
+      .id("fee82deba12e4c0fb69c3b09d1f12345")
+      .build();
+
+      CreateBackupPolicyOptions createBackupPolicyOptions = new CreateBackupPolicyOptions.Builder()
+      .matchResourceTypes(new java.util.ArrayList<String>(java.util.Arrays.asList("volume")))
+      .matchUserTags(new java.util.ArrayList<String>(java.util.Arrays.asList("my-daily-backup-policy")))
+      .name("my-backup-policy")
+      .plans(new java.util.ArrayList<BackupPolicyPlanPrototype>(java.util.Arrays.asList(backupPolicyPlanPrototypeModel)))
+      .resourceGroup(resourceGroupIdentityModel)
+      .build();
+
+      // Invoke operation
+      Response<BackupPolicy> response = service.createBackupPolicy(createBackupPolicyOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 201);
+
+      BackupPolicy backupPolicyResult = response.getResult();
+
+      assertNotNull(backupPolicyResult);
+
+      //
+      // The following status codes aren't covered by tests.
+      // Please provide integration tests for these too.
+      //
+      // 400
+      //
+      //
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test
+  public void testListBackupPolicyPlans() throws Exception {
+    try {
+      ListBackupPolicyPlansOptions listBackupPolicyPlansOptions = new ListBackupPolicyPlansOptions.Builder()
+      .backupPolicyId("testString")
+      .name("testString")
+      .build();
+
+      // Invoke operation
+      Response<BackupPolicyPlanCollection> response = service.listBackupPolicyPlans(listBackupPolicyPlansOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      BackupPolicyPlanCollection backupPolicyPlanCollectionResult = response.getResult();
+
+      assertNotNull(backupPolicyPlanCollectionResult);
+
+      //
+      // The following status codes aren't covered by tests.
+      // Please provide integration tests for these too.
+      //
+      // 404
+      //
+      //
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test
+  public void testCreateBackupPolicyPlan() throws Exception {
+    try {
+      BackupPolicyPlanDeletionTriggerPrototype backupPolicyPlanDeletionTriggerPrototypeModel = new BackupPolicyPlanDeletionTriggerPrototype.Builder()
+      .deleteAfter(Long.valueOf("20"))
+      .deleteOverCount(Long.valueOf("20"))
+      .build();
+
+      CreateBackupPolicyPlanOptions createBackupPolicyPlanOptions = new CreateBackupPolicyPlanOptions.Builder()
+      .backupPolicyId("testString")
+      .cronSpec("*/5 1,2,3 * * *")
+      .active(true)
+      .attachUserTags(new java.util.ArrayList<String>(java.util.Arrays.asList("my-daily-backup-plan")))
+      .copyUserTags(true)
+      .deletionTrigger(backupPolicyPlanDeletionTriggerPrototypeModel)
+      .name("my-policy-plan")
+      .build();
+
+      // Invoke operation
+      Response<BackupPolicyPlan> response = service.createBackupPolicyPlan(createBackupPolicyPlanOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 201);
+
+      BackupPolicyPlan backupPolicyPlanResult = response.getResult();
+
+      assertNotNull(backupPolicyPlanResult);
+
+      //
+      // The following status codes aren't covered by tests.
+      // Please provide integration tests for these too.
+      //
+      // 400
+      // 404
+      //
+      //
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test
+  public void testGetBackupPolicyPlan() throws Exception {
+    try {
+      GetBackupPolicyPlanOptions getBackupPolicyPlanOptions = new GetBackupPolicyPlanOptions.Builder()
+      .backupPolicyId("testString")
+      .id("testString")
+      .build();
+
+      // Invoke operation
+      Response<BackupPolicyPlan> response = service.getBackupPolicyPlan(getBackupPolicyPlanOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      BackupPolicyPlan backupPolicyPlanResult = response.getResult();
+
+      assertNotNull(backupPolicyPlanResult);
+
+      //
+      // The following status codes aren't covered by tests.
+      // Please provide integration tests for these too.
+      //
+      // 404
+      //
+      //
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test
+  public void testUpdateBackupPolicyPlan() throws Exception {
+    try {
+      BackupPolicyPlanDeletionTriggerPatch backupPolicyPlanDeletionTriggerPatchModel = new BackupPolicyPlanDeletionTriggerPatch.Builder()
+      .deleteAfter(Long.valueOf("20"))
+      .deleteOverCount(Long.valueOf("26"))
+      .build();
+
+      BackupPolicyPlanPatch backupPolicyPlanPatchModel = new BackupPolicyPlanPatch.Builder()
+      .active(true)
+      .attachUserTags(new java.util.ArrayList<String>(java.util.Arrays.asList("my-daily-backup-plan")))
+      .copyUserTags(true)
+      .cronSpec("*/5 1,2,3 * * *")
+      .deletionTrigger(backupPolicyPlanDeletionTriggerPatchModel)
+      .name("my-policy-plan")
+      .build();
+      Map<String, Object> backupPolicyPlanPatchModelAsPatch = backupPolicyPlanPatchModel.asPatch();
+
+      UpdateBackupPolicyPlanOptions updateBackupPolicyPlanOptions = new UpdateBackupPolicyPlanOptions.Builder()
+      .backupPolicyId("testString")
+      .id("testString")
+      .backupPolicyPlanPatch(backupPolicyPlanPatchModelAsPatch)
+      .ifMatch("W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"")
+      .build();
+
+      // Invoke operation
+      Response<BackupPolicyPlan> response = service.updateBackupPolicyPlan(updateBackupPolicyPlanOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      BackupPolicyPlan backupPolicyPlanResult = response.getResult();
+
+      assertNotNull(backupPolicyPlanResult);
+
+      //
+      // The following status codes aren't covered by tests.
+      // Please provide integration tests for these too.
+      //
+      // 400
+      // 404
+      // 412
+      //
+      //
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test
+  public void testGetBackupPolicy() throws Exception {
+    try {
+      GetBackupPolicyOptions getBackupPolicyOptions = new GetBackupPolicyOptions.Builder()
+      .id("testString")
+      .build();
+
+      // Invoke operation
+      Response<BackupPolicy> response = service.getBackupPolicy(getBackupPolicyOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      BackupPolicy backupPolicyResult = response.getResult();
+
+      assertNotNull(backupPolicyResult);
+
+      //
+      // The following status codes aren't covered by tests.
+      // Please provide integration tests for these too.
+      //
+      // 404
+      //
+      //
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test
+  public void testUpdateBackupPolicy() throws Exception {
+    try {
+      BackupPolicyPatch backupPolicyPatchModel = new BackupPolicyPatch.Builder()
+      .matchUserTags(new java.util.ArrayList<String>(java.util.Arrays.asList("my-daily-backup-policy")))
+      .name("my-backup-policy")
+      .build();
+      Map<String, Object> backupPolicyPatchModelAsPatch = backupPolicyPatchModel.asPatch();
+
+      UpdateBackupPolicyOptions updateBackupPolicyOptions = new UpdateBackupPolicyOptions.Builder()
+      .id("testString")
+      .backupPolicyPatch(backupPolicyPatchModelAsPatch)
+      .ifMatch("W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"")
+      .build();
+
+      // Invoke operation
+      Response<BackupPolicy> response = service.updateBackupPolicy(updateBackupPolicyOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      BackupPolicy backupPolicyResult = response.getResult();
+
+      assertNotNull(backupPolicyResult);
+
+      //
+      // The following status codes aren't covered by tests.
+      // Please provide integration tests for these too.
+      //
+      // 400
+      // 404
+      // 412
+      //
+      //
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test
   public void testListPlacementGroups() throws Exception {
     try {
       ListPlacementGroupsOptions listPlacementGroupsOptions = new ListPlacementGroupsOptions.Builder()
@@ -5564,7 +5953,6 @@ public class VpcIT extends SdkIntegrationTestBase {
       .networkInterfacesSubnetId("testString")
       .networkInterfacesSubnetCrn("testString")
       .networkInterfacesSubnetName("testString")
-      .sort("name")
       .build();
 
       // Invoke operation
@@ -5635,12 +6023,12 @@ public class VpcIT extends SdkIntegrationTestBase {
       BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVLANPrototype bareMetalServerNetworkInterfacePrototypeModel = new BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVLANPrototype.Builder()
       .allowIpSpoofing(true)
       .enableInfrastructureNat(true)
-      .interfaceType("vlan")
       .name("my-network-interface")
       .primaryIp(networkInterfaceIpPrototypeModel)
       .securityGroups(new java.util.ArrayList<SecurityGroupIdentity>(java.util.Arrays.asList(securityGroupIdentityModel)))
       .subnet(subnetIdentityModel)
       .allowInterfaceToFloat(false)
+      .interfaceType("vlan")
       .vlan(Long.valueOf("4"))
       .build();
 
@@ -5876,12 +6264,12 @@ public class VpcIT extends SdkIntegrationTestBase {
       BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVLANPrototype bareMetalServerNetworkInterfacePrototypeModel = new BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVLANPrototype.Builder()
       .allowIpSpoofing(true)
       .enableInfrastructureNat(true)
-      .interfaceType("vlan")
       .name("my-network-interface")
       .primaryIp(networkInterfaceIpPrototypeModel)
       .securityGroups(new java.util.ArrayList<SecurityGroupIdentity>(java.util.Arrays.asList(securityGroupIdentityModel)))
       .subnet(subnetIdentityModel)
       .allowInterfaceToFloat(false)
+      .interfaceType("vlan")
       .vlan(Long.valueOf("4"))
       .build();
 
@@ -6078,71 +6466,6 @@ public class VpcIT extends SdkIntegrationTestBase {
       // Please provide integration tests for these too.
       //
       // 400
-      // 404
-      //
-      //
-
-    } catch (ServiceResponseException e) {
-        fail(String.format("Service returned status code %d: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
-    }
-  }
-
-  @Test
-  public void testListBareMetalServerNetworkInterfaceIps() throws Exception {
-    try {
-      ListBareMetalServerNetworkInterfaceIpsOptions listBareMetalServerNetworkInterfaceIpsOptions = new ListBareMetalServerNetworkInterfaceIpsOptions.Builder()
-      .bareMetalServerId("testString")
-      .networkInterfaceId("testString")
-      .build();
-
-      // Invoke operation
-      Response<ReservedIPCollectionNetworkInterfaceContext> response = service.listBareMetalServerNetworkInterfaceIps(listBareMetalServerNetworkInterfaceIpsOptions).execute();
-      // Validate response
-      assertNotNull(response);
-      assertEquals(response.getStatusCode(), 200);
-
-      ReservedIPCollectionNetworkInterfaceContext reservedIpCollectionNetworkInterfaceContextResult = response.getResult();
-
-      assertNotNull(reservedIpCollectionNetworkInterfaceContextResult);
-
-      //
-      // The following status codes aren't covered by tests.
-      // Please provide integration tests for these too.
-      //
-      // 404
-      //
-      //
-
-    } catch (ServiceResponseException e) {
-        fail(String.format("Service returned status code %d: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
-    }
-  }
-
-  @Test
-  public void testGetBareMetalServerNetworkInterfaceIp() throws Exception {
-    try {
-      GetBareMetalServerNetworkInterfaceIpOptions getBareMetalServerNetworkInterfaceIpOptions = new GetBareMetalServerNetworkInterfaceIpOptions.Builder()
-      .bareMetalServerId("testString")
-      .networkInterfaceId("testString")
-      .id("testString")
-      .build();
-
-      // Invoke operation
-      Response<ReservedIP> response = service.getBareMetalServerNetworkInterfaceIp(getBareMetalServerNetworkInterfaceIpOptions).execute();
-      // Validate response
-      assertNotNull(response);
-      assertEquals(response.getStatusCode(), 200);
-
-      ReservedIP reservedIpResult = response.getResult();
-
-      assertNotNull(reservedIpResult);
-
-      //
-      // The following status codes aren't covered by tests.
-      // Please provide integration tests for these too.
-      //
       // 404
       //
       //
@@ -6529,7 +6852,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       UpdateVolumeOptions updateVolumeOptions = new UpdateVolumeOptions.Builder()
       .id("testString")
       .volumePatch(volumePatchModelAsPatch)
-      .ifMatch("96d225c4-56bd-43d9-98fc-d7148e5c5028")
+      .ifMatch("W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"")
       .build();
 
       // Invoke operation
@@ -6564,6 +6887,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       ListSnapshotsOptions listSnapshotsOptions = new ListSnapshotsOptions.Builder()
       .start("testString")
       .limit(Long.valueOf("1"))
+      .tag("testString")
       .resourceGroupId("testString")
       .name("testString")
       .sourceVolumeId("testString")
@@ -6571,6 +6895,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       .sourceImageId("testString")
       .sourceImageCrn("testString")
       .sort("name")
+      .backupPolicyPlanId("testString")
       .build();
 
       // Invoke operation
@@ -6677,7 +7002,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       UpdateSnapshotOptions updateSnapshotOptions = new UpdateSnapshotOptions.Builder()
       .id("testString")
       .snapshotPatch(snapshotPatchModelAsPatch)
-      .ifMatch("96d225c4-56bd-43d9-98fc-d7148e5c5028")
+      .ifMatch("W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"")
       .build();
 
       // Invoke operation
@@ -8683,6 +9008,474 @@ public class VpcIT extends SdkIntegrationTestBase {
   }
 
   @Test
+  public void testListVpnServers() throws Exception {
+    try {
+      ListVpnServersOptions listVpnServersOptions = new ListVpnServersOptions.Builder()
+      .name("testString")
+      .start("testString")
+      .limit(Long.valueOf("1"))
+      .resourceGroupId("testString")
+      .sort("name")
+      .build();
+
+      // Invoke operation
+      Response<VPNServerCollection> response = service.listVpnServers(listVpnServersOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      VPNServerCollection vpnServerCollectionResult = response.getResult();
+
+      assertNotNull(vpnServerCollectionResult);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test
+  public void testCreateVpnServer() throws Exception {
+    try {
+      CertificateInstanceIdentityByCRN certificateInstanceIdentityModel = new CertificateInstanceIdentityByCRN.Builder()
+      .crn("crn:v1:bluemix:public:secrets-manager:us-south:a/123456:36fa422d-080d-4d83-8d2d-86851b4001df:secret:2e786aab-42fa-63ed-14f8-d66d552f4dd5")
+      .build();
+
+      VPNServerAuthenticationByUsernameIdProviderByIAM vpnServerAuthenticationByUsernameIdProviderModel = new VPNServerAuthenticationByUsernameIdProviderByIAM.Builder()
+      .providerType("iam")
+      .build();
+
+      VPNServerAuthenticationPrototypeVPNServerAuthenticationByUsernamePrototype vpnServerAuthenticationPrototypeModel = new VPNServerAuthenticationPrototypeVPNServerAuthenticationByUsernamePrototype.Builder()
+      .method("certificate")
+      .identityProvider(vpnServerAuthenticationByUsernameIdProviderModel)
+      .build();
+
+      SubnetIdentityById subnetIdentityModel = new SubnetIdentityById.Builder()
+      .id("7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
+      .build();
+
+      IP ipModel = new IP.Builder()
+      .address("192.168.3.4")
+      .build();
+
+      ResourceGroupIdentityById resourceGroupIdentityModel = new ResourceGroupIdentityById.Builder()
+      .id("fee82deba12e4c0fb69c3b09d1f12345")
+      .build();
+
+      SecurityGroupIdentityById securityGroupIdentityModel = new SecurityGroupIdentityById.Builder()
+      .id("be5df5ca-12a0-494b-907e-aa6ec2bfa271")
+      .build();
+
+      CreateVpnServerOptions createVpnServerOptions = new CreateVpnServerOptions.Builder()
+      .certificate(certificateInstanceIdentityModel)
+      .clientAuthentication(new java.util.ArrayList<VPNServerAuthenticationPrototype>(java.util.Arrays.asList(vpnServerAuthenticationPrototypeModel)))
+      .clientIpPool("172.16.0.0/16")
+      .subnets(new java.util.ArrayList<SubnetIdentity>(java.util.Arrays.asList(subnetIdentityModel)))
+      .clientDnsServerIps(new java.util.ArrayList<IP>(java.util.Arrays.asList(ipModel)))
+      .clientIdleTimeout(Long.valueOf("600"))
+      .enableSplitTunneling(false)
+      .name("my-vpn-server")
+      .port(Long.valueOf("443"))
+      .protocol("udp")
+      .resourceGroup(resourceGroupIdentityModel)
+      .securityGroups(new java.util.ArrayList<SecurityGroupIdentity>(java.util.Arrays.asList(securityGroupIdentityModel)))
+      .build();
+
+      // Invoke operation
+      Response<VPNServer> response = service.createVpnServer(createVpnServerOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 201);
+
+      VPNServer vpnServerResult = response.getResult();
+
+      assertNotNull(vpnServerResult);
+
+      //
+      // The following status codes aren't covered by tests.
+      // Please provide integration tests for these too.
+      //
+      // 400
+      // 409
+      //
+      //
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test
+  public void testGetVpnServer() throws Exception {
+    try {
+      GetVpnServerOptions getVpnServerOptions = new GetVpnServerOptions.Builder()
+      .id("testString")
+      .build();
+
+      // Invoke operation
+      Response<VPNServer> response = service.getVpnServer(getVpnServerOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      VPNServer vpnServerResult = response.getResult();
+
+      assertNotNull(vpnServerResult);
+
+      //
+      // The following status codes aren't covered by tests.
+      // Please provide integration tests for these too.
+      //
+      // 404
+      //
+      //
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test
+  public void testUpdateVpnServer() throws Exception {
+    try {
+      CertificateInstanceIdentityByCRN certificateInstanceIdentityModel = new CertificateInstanceIdentityByCRN.Builder()
+      .crn("crn:v1:bluemix:public:secrets-manager:us-south:a/123456:36fa422d-080d-4d83-8d2d-86851b4001df:secret:2e786aab-42fa-63ed-14f8-d66d552f4dd5")
+      .build();
+
+      VPNServerAuthenticationByUsernameIdProviderByIAM vpnServerAuthenticationByUsernameIdProviderModel = new VPNServerAuthenticationByUsernameIdProviderByIAM.Builder()
+      .providerType("iam")
+      .build();
+
+      VPNServerAuthenticationPrototypeVPNServerAuthenticationByUsernamePrototype vpnServerAuthenticationPrototypeModel = new VPNServerAuthenticationPrototypeVPNServerAuthenticationByUsernamePrototype.Builder()
+      .method("certificate")
+      .identityProvider(vpnServerAuthenticationByUsernameIdProviderModel)
+      .build();
+
+      IP ipModel = new IP.Builder()
+      .address("192.168.3.4")
+      .build();
+
+      SubnetIdentityById subnetIdentityModel = new SubnetIdentityById.Builder()
+      .id("7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
+      .build();
+
+      VPNServerPatch vpnServerPatchModel = new VPNServerPatch.Builder()
+      .certificate(certificateInstanceIdentityModel)
+      .clientAuthentication(new java.util.ArrayList<VPNServerAuthenticationPrototype>(java.util.Arrays.asList(vpnServerAuthenticationPrototypeModel)))
+      .clientDnsServerIps(new java.util.ArrayList<IP>(java.util.Arrays.asList(ipModel)))
+      .clientIdleTimeout(Long.valueOf("600"))
+      .clientIpPool("172.16.0.0/16")
+      .enableSplitTunneling(true)
+      .name("my-vpn-server")
+      .port(Long.valueOf("443"))
+      .protocol("udp")
+      .subnets(new java.util.ArrayList<SubnetIdentity>(java.util.Arrays.asList(subnetIdentityModel)))
+      .build();
+      Map<String, Object> vpnServerPatchModelAsPatch = vpnServerPatchModel.asPatch();
+
+      UpdateVpnServerOptions updateVpnServerOptions = new UpdateVpnServerOptions.Builder()
+      .id("testString")
+      .vpnServerPatch(vpnServerPatchModelAsPatch)
+      .ifMatch("W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"")
+      .build();
+
+      // Invoke operation
+      Response<VPNServer> response = service.updateVpnServer(updateVpnServerOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      VPNServer vpnServerResult = response.getResult();
+
+      assertNotNull(vpnServerResult);
+
+      //
+      // The following status codes aren't covered by tests.
+      // Please provide integration tests for these too.
+      //
+      // 400
+      // 404
+      // 409
+      // 412
+      //
+      //
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test
+  public void testGetVpnServerClientConfiguration() throws Exception {
+    try {
+      GetVpnServerClientConfigurationOptions getVpnServerClientConfigurationOptions = new GetVpnServerClientConfigurationOptions.Builder()
+      .id("testString")
+      .build();
+
+      // Invoke operation
+      Response<String> response = service.getVpnServerClientConfiguration(getVpnServerClientConfigurationOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      String resultResult = response.getResult();
+
+      assertNotNull(resultResult);
+
+      //
+      // The following status codes aren't covered by tests.
+      // Please provide integration tests for these too.
+      //
+      // 404
+      // 406
+      //
+      //
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test
+  public void testListVpnServerClients() throws Exception {
+    try {
+      ListVpnServerClientsOptions listVpnServerClientsOptions = new ListVpnServerClientsOptions.Builder()
+      .vpnServerId("testString")
+      .start("testString")
+      .limit(Long.valueOf("1"))
+      .sort("created_at")
+      .build();
+
+      // Invoke operation
+      Response<VPNServerClientCollection> response = service.listVpnServerClients(listVpnServerClientsOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      VPNServerClientCollection vpnServerClientCollectionResult = response.getResult();
+
+      assertNotNull(vpnServerClientCollectionResult);
+
+      //
+      // The following status codes aren't covered by tests.
+      // Please provide integration tests for these too.
+      //
+      // 404
+      //
+      //
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test
+  public void testGetVpnServerClient() throws Exception {
+    try {
+      GetVpnServerClientOptions getVpnServerClientOptions = new GetVpnServerClientOptions.Builder()
+      .vpnServerId("testString")
+      .id("testString")
+      .build();
+
+      // Invoke operation
+      Response<VPNServerClient> response = service.getVpnServerClient(getVpnServerClientOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      VPNServerClient vpnServerClientResult = response.getResult();
+
+      assertNotNull(vpnServerClientResult);
+
+      //
+      // The following status codes aren't covered by tests.
+      // Please provide integration tests for these too.
+      //
+      // 404
+      //
+      //
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test
+  public void testDisconnectVpnClient() throws Exception {
+    try {
+      DisconnectVpnClientOptions disconnectVpnClientOptions = new DisconnectVpnClientOptions.Builder()
+      .vpnServerId("testString")
+      .id("testString")
+      .build();
+
+      // Invoke operation
+      Response<Void> response = service.disconnectVpnClient(disconnectVpnClientOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 202);
+
+      //
+      // The following status codes aren't covered by tests.
+      // Please provide integration tests for these too.
+      //
+      // 404
+      //
+      //
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test
+  public void testListVpnServerRoutes() throws Exception {
+    try {
+      ListVpnServerRoutesOptions listVpnServerRoutesOptions = new ListVpnServerRoutesOptions.Builder()
+      .vpnServerId("testString")
+      .start("testString")
+      .limit(Long.valueOf("1"))
+      .sort("name")
+      .build();
+
+      // Invoke operation
+      Response<VPNServerRouteCollection> response = service.listVpnServerRoutes(listVpnServerRoutesOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      VPNServerRouteCollection vpnServerRouteCollectionResult = response.getResult();
+
+      assertNotNull(vpnServerRouteCollectionResult);
+
+      //
+      // The following status codes aren't covered by tests.
+      // Please provide integration tests for these too.
+      //
+      // 404
+      //
+      //
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test
+  public void testCreateVpnServerRoute() throws Exception {
+    try {
+      CreateVpnServerRouteOptions createVpnServerRouteOptions = new CreateVpnServerRouteOptions.Builder()
+      .vpnServerId("testString")
+      .destination("172.16.0.0/16")
+      .action("deliver")
+      .name("my-vpn-route-2")
+      .build();
+
+      // Invoke operation
+      Response<VPNServerRoute> response = service.createVpnServerRoute(createVpnServerRouteOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 201);
+
+      VPNServerRoute vpnServerRouteResult = response.getResult();
+
+      assertNotNull(vpnServerRouteResult);
+
+      //
+      // The following status codes aren't covered by tests.
+      // Please provide integration tests for these too.
+      //
+      // 400
+      // 404
+      // 409
+      //
+      //
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test
+  public void testGetVpnServerRoute() throws Exception {
+    try {
+      GetVpnServerRouteOptions getVpnServerRouteOptions = new GetVpnServerRouteOptions.Builder()
+      .vpnServerId("testString")
+      .id("testString")
+      .build();
+
+      // Invoke operation
+      Response<VPNServerRoute> response = service.getVpnServerRoute(getVpnServerRouteOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      VPNServerRoute vpnServerRouteResult = response.getResult();
+
+      assertNotNull(vpnServerRouteResult);
+
+      //
+      // The following status codes aren't covered by tests.
+      // Please provide integration tests for these too.
+      //
+      // 404
+      //
+      //
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test
+  public void testUpdateVpnServerRoute() throws Exception {
+    try {
+      VPNServerRoutePatch vpnServerRoutePatchModel = new VPNServerRoutePatch.Builder()
+      .name("my-vpn-route-2")
+      .build();
+      Map<String, Object> vpnServerRoutePatchModelAsPatch = vpnServerRoutePatchModel.asPatch();
+
+      UpdateVpnServerRouteOptions updateVpnServerRouteOptions = new UpdateVpnServerRouteOptions.Builder()
+      .vpnServerId("testString")
+      .id("testString")
+      .vpnServerRoutePatch(vpnServerRoutePatchModelAsPatch)
+      .build();
+
+      // Invoke operation
+      Response<VPNServerRoute> response = service.updateVpnServerRoute(updateVpnServerRouteOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      VPNServerRoute vpnServerRouteResult = response.getResult();
+
+      assertNotNull(vpnServerRouteResult);
+
+      //
+      // The following status codes aren't covered by tests.
+      // Please provide integration tests for these too.
+      //
+      // 400
+      // 404
+      // 409
+      //
+      //
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test
   public void testListLoadBalancerProfiles() throws Exception {
     try {
       ListLoadBalancerProfilesOptions listLoadBalancerProfilesOptions = new ListLoadBalancerProfilesOptions.Builder()
@@ -10337,7 +11130,6 @@ public class VpcIT extends SdkIntegrationTestBase {
       // The following status codes aren't covered by tests.
       // Please provide integration tests for these too.
       //
-      // 400
       // 404
       //
       //
@@ -10398,6 +11190,91 @@ public class VpcIT extends SdkIntegrationTestBase {
       //
       // 400
       // 404
+      //
+      //
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test
+  public void testDeleteVpnServerRoute() throws Exception {
+    try {
+      DeleteVpnServerRouteOptions deleteVpnServerRouteOptions = new DeleteVpnServerRouteOptions.Builder()
+      .vpnServerId("testString")
+      .id("testString")
+      .build();
+
+      // Invoke operation
+      Response<Void> response = service.deleteVpnServerRoute(deleteVpnServerRouteOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 202);
+
+      //
+      // The following status codes aren't covered by tests.
+      // Please provide integration tests for these too.
+      //
+      // 404
+      //
+      //
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test
+  public void testDeleteVpnServerClient() throws Exception {
+    try {
+      DeleteVpnServerClientOptions deleteVpnServerClientOptions = new DeleteVpnServerClientOptions.Builder()
+      .vpnServerId("testString")
+      .id("testString")
+      .build();
+
+      // Invoke operation
+      Response<Void> response = service.deleteVpnServerClient(deleteVpnServerClientOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 202);
+
+      //
+      // The following status codes aren't covered by tests.
+      // Please provide integration tests for these too.
+      //
+      // 404
+      //
+      //
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test
+  public void testDeleteVpnServer() throws Exception {
+    try {
+      DeleteVpnServerOptions deleteVpnServerOptions = new DeleteVpnServerOptions.Builder()
+      .id("testString")
+      .ifMatch("W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"")
+      .build();
+
+      // Invoke operation
+      Response<Void> response = service.deleteVpnServer(deleteVpnServerOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 202);
+
+      //
+      // The following status codes aren't covered by tests.
+      // Please provide integration tests for these too.
+      //
+      // 404
+      // 412
       //
       //
 
@@ -10499,6 +11376,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       DeleteVpcRoutingTableOptions deleteVpcRoutingTableOptions = new DeleteVpcRoutingTableOptions.Builder()
       .vpcId("testString")
       .id("testString")
+      .ifMatch("W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"")
       .build();
 
       // Invoke operation
@@ -10514,6 +11392,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       // 403
       // 404
       // 409
+      // 412
       //
       //
 
@@ -10597,7 +11476,6 @@ public class VpcIT extends SdkIntegrationTestBase {
       // The following status codes aren't covered by tests.
       // Please provide integration tests for these too.
       //
-      // 400
       // 404
       // 409
       //
@@ -10614,7 +11492,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     try {
       DeleteVolumeOptions deleteVolumeOptions = new DeleteVolumeOptions.Builder()
       .id("testString")
-      .ifMatch("96d225c4-56bd-43d9-98fc-d7148e5c5028")
+      .ifMatch("W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"")
       .build();
 
       // Invoke operation
@@ -10730,7 +11608,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     try {
       DeleteSnapshotOptions deleteSnapshotOptions = new DeleteSnapshotOptions.Builder()
       .id("testString")
-      .ifMatch("96d225c4-56bd-43d9-98fc-d7148e5c5028")
+      .ifMatch("W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"")
       .build();
 
       // Invoke operation
@@ -11733,6 +12611,73 @@ public class VpcIT extends SdkIntegrationTestBase {
       // Please provide integration tests for these too.
       //
       // 404
+      //
+      //
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test
+  public void testDeleteBackupPolicyPlan() throws Exception {
+    try {
+      DeleteBackupPolicyPlanOptions deleteBackupPolicyPlanOptions = new DeleteBackupPolicyPlanOptions.Builder()
+      .backupPolicyId("testString")
+      .id("testString")
+      .ifMatch("W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"")
+      .build();
+
+      // Invoke operation
+      Response<BackupPolicyPlan> response = service.deleteBackupPolicyPlan(deleteBackupPolicyPlanOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 202);
+
+      BackupPolicyPlan backupPolicyPlanResult = response.getResult();
+
+      assertNotNull(backupPolicyPlanResult);
+
+      //
+      // The following status codes aren't covered by tests.
+      // Please provide integration tests for these too.
+      //
+      // 404
+      // 412
+      //
+      //
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test
+  public void testDeleteBackupPolicy() throws Exception {
+    try {
+      DeleteBackupPolicyOptions deleteBackupPolicyOptions = new DeleteBackupPolicyOptions.Builder()
+      .id("testString")
+      .ifMatch("W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"")
+      .build();
+
+      // Invoke operation
+      Response<BackupPolicy> response = service.deleteBackupPolicy(deleteBackupPolicyOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 202);
+
+      BackupPolicy backupPolicyResult = response.getResult();
+
+      assertNotNull(backupPolicyResult);
+
+      //
+      // The following status codes aren't covered by tests.
+      // Please provide integration tests for these too.
+      //
+      // 404
+      // 412
       //
       //
 

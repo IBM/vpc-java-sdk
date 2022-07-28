@@ -38,5 +38,6 @@ public class SubnetReferenceTest {
     assertNull(subnetReferenceModel.getHref());
     assertNull(subnetReferenceModel.getId());
     assertNull(subnetReferenceModel.getName());
+    assertNull(subnetReferenceModel.getResourceType());
   }
 }

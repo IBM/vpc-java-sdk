@@ -80,6 +80,7 @@ public class InstanceTest {
     assertNull(instanceModel.getPrimaryNetworkInterface());
     assertNull(instanceModel.getProfile());
     assertNull(instanceModel.getResourceGroup());
+    assertNull(instanceModel.getResourceType());
     assertNull(instanceModel.isStartable());
     assertNull(instanceModel.getStatus());
     assertNull(instanceModel.getStatusReasons());

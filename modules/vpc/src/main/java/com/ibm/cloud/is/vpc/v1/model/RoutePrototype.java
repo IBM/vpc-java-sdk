@@ -43,7 +43,7 @@ public class RoutePrototype extends GenericModel {
   protected String destination;
   protected String name;
   @SerializedName("next_hop")
-  protected RouteNextHopPrototype nextHop;
+  protected RoutePrototypeNextHop nextHop;
   protected ZoneIdentity zone;
 
   /**
@@ -53,7 +53,7 @@ public class RoutePrototype extends GenericModel {
     private String action;
     private String destination;
     private String name;
-    private RouteNextHopPrototype nextHop;
+    private RoutePrototypeNextHop nextHop;
     private ZoneIdentity zone;
 
     private Builder(RoutePrototype routePrototype) {
@@ -129,7 +129,7 @@ public class RoutePrototype extends GenericModel {
      * @param nextHop the nextHop
      * @return the RoutePrototype builder
      */
-    public Builder nextHop(RouteNextHopPrototype nextHop) {
+    public Builder nextHop(RoutePrototypeNextHop nextHop) {
       this.nextHop = nextHop;
       return this;
     }
@@ -211,12 +211,12 @@ public class RoutePrototype extends GenericModel {
   /**
    * Gets the nextHop.
    *
-   * If `action` is `deliver`, the next hop that packets will be delivered to.  For
-   * other `action` values, it must be omitted or specified as `0.0.0.0`.
+   * If `action` is `deliver`, the next hop that packets will be delivered to. For other `action`
+   * values, it must be omitted or specified as `0.0.0.0`.
    *
    * @return the nextHop
    */
-  public RouteNextHopPrototype nextHop() {
+  public RoutePrototypeNextHop nextHop() {
     return nextHop;
   }
 

@@ -13,6 +13,7 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.ibm.cloud.is.vpc.v1.model.ResourceFilter;
 import com.ibm.cloud.is.vpc.v1.model.RouteReference;
 import com.ibm.cloud.is.vpc.v1.model.RouteReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.RoutingTable;
@@ -36,6 +37,7 @@ public class RoutingTableTest {
   @Test
   public void testRoutingTable() throws Throwable {
     RoutingTable routingTableModel = new RoutingTable();
+    assertNull(routingTableModel.getAcceptRoutesFrom());
     assertNull(routingTableModel.getCreatedAt());
     assertNull(routingTableModel.getHref());
     assertNull(routingTableModel.getId());

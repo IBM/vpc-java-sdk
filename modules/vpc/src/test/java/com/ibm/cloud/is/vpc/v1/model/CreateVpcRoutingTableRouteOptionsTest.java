@@ -14,7 +14,7 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.CreateVpcRoutingTableRouteOptions;
-import com.ibm.cloud.is.vpc.v1.model.RouteNextHopPrototypeRouteNextHopIP;
+import com.ibm.cloud.is.vpc.v1.model.RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIP;
 import com.ibm.cloud.is.vpc.v1.model.ZoneIdentityByName;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
@@ -38,10 +38,10 @@ public class CreateVpcRoutingTableRouteOptionsTest {
       .build();
     assertEquals(zoneIdentityModel.name(), "us-south-1");
 
-    RouteNextHopPrototypeRouteNextHopIP routeNextHopPrototypeModel = new RouteNextHopPrototypeRouteNextHopIP.Builder()
+    RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIP routePrototypeNextHopModel = new RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIP.Builder()
       .address("192.168.3.4")
       .build();
-    assertEquals(routeNextHopPrototypeModel.address(), "192.168.3.4");
+    assertEquals(routePrototypeNextHopModel.address(), "192.168.3.4");
 
     CreateVpcRoutingTableRouteOptions createVpcRoutingTableRouteOptionsModel = new CreateVpcRoutingTableRouteOptions.Builder()
       .vpcId("testString")
@@ -49,16 +49,16 @@ public class CreateVpcRoutingTableRouteOptionsTest {
       .destination("192.168.3.0/24")
       .zone(zoneIdentityModel)
       .action("deliver")
-      .name("my-route-2")
-      .nextHop(routeNextHopPrototypeModel)
+      .name("my-route-1")
+      .nextHop(routePrototypeNextHopModel)
       .build();
     assertEquals(createVpcRoutingTableRouteOptionsModel.vpcId(), "testString");
     assertEquals(createVpcRoutingTableRouteOptionsModel.routingTableId(), "testString");
     assertEquals(createVpcRoutingTableRouteOptionsModel.destination(), "192.168.3.0/24");
     assertEquals(createVpcRoutingTableRouteOptionsModel.zone(), zoneIdentityModel);
     assertEquals(createVpcRoutingTableRouteOptionsModel.action(), "deliver");
-    assertEquals(createVpcRoutingTableRouteOptionsModel.name(), "my-route-2");
-    assertEquals(createVpcRoutingTableRouteOptionsModel.nextHop(), routeNextHopPrototypeModel);
+    assertEquals(createVpcRoutingTableRouteOptionsModel.name(), "my-route-1");
+    assertEquals(createVpcRoutingTableRouteOptionsModel.nextHop(), routePrototypeNextHopModel);
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

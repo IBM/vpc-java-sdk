@@ -61,9 +61,26 @@ public class Route extends GenericModel {
     String WAITING = "waiting";
   }
 
+  /**
+   * The origin of this route:
+   * - `service`: route was directly created by a service
+   * - `user`: route was directly created by a user
+   *
+   * The enumerated values for this property are expected to expand in the future. When processing this property, check
+   * for and log unknown values. Optionally halt processing and surface the error, or bypass the route on which the
+   * unexpected property value was encountered.
+   */
+  public interface Origin {
+    /** service. */
+    String SERVICE = "service";
+    /** user. */
+    String USER = "user";
+  }
+
   protected String action;
   @SerializedName("created_at")
   protected Date createdAt;
+  protected RouteCreator creator;
   protected String destination;
   protected String href;
   protected String id;
@@ -72,6 +89,7 @@ public class Route extends GenericModel {
   protected String name;
   @SerializedName("next_hop")
   protected RouteNextHop nextHop;
+  protected String origin;
   protected ZoneReference zone;
 
   /**
@@ -99,6 +117,19 @@ public class Route extends GenericModel {
    */
   public Date getCreatedAt() {
     return createdAt;
+  }
+
+  /**
+   * Gets the creator.
+   *
+   * If present, the resource that created the route. Routes with this property present cannot be
+   * directly deleted. All routes with an `origin` of `learned` or `service` will have this
+   * property set, and future `origin` values may also have this property set.
+   *
+   * @return the creator
+   */
+  public RouteCreator getCreator() {
+    return creator;
   }
 
   /**
@@ -166,6 +197,23 @@ public class Route extends GenericModel {
    */
   public RouteNextHop getNextHop() {
     return nextHop;
+  }
+
+  /**
+   * Gets the origin.
+   *
+   * The origin of this route:
+   * - `service`: route was directly created by a service
+   * - `user`: route was directly created by a user
+   *
+   * The enumerated values for this property are expected to expand in the future. When processing this property, check
+   * for and log unknown values. Optionally halt processing and surface the error, or bypass the route on which the
+   * unexpected property value was encountered.
+   *
+   * @return the origin
+   */
+  public String getOrigin() {
+    return origin;
   }
 
   /**

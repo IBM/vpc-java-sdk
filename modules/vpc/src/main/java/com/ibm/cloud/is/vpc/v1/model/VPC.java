@@ -24,6 +24,14 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class VPC extends GenericModel {
 
   /**
+   * The resource type.
+   */
+  public interface ResourceType {
+    /** vpc. */
+    String VPC = "vpc";
+  }
+
+  /**
    * The status of this VPC.
    */
   public interface Status {
@@ -55,6 +63,8 @@ public class VPC extends GenericModel {
   protected String name;
   @SerializedName("resource_group")
   protected ResourceGroupReference resourceGroup;
+  @SerializedName("resource_type")
+  protected String resourceType;
   protected String status;
 
   /**
@@ -179,6 +189,17 @@ public class VPC extends GenericModel {
    */
   public ResourceGroupReference getResourceGroup() {
     return resourceGroup;
+  }
+
+  /**
+   * Gets the resourceType.
+   *
+   * The resource type.
+   *
+   * @return the resourceType
+   */
+  public String getResourceType() {
+    return resourceType;
   }
 
   /**

@@ -14,7 +14,7 @@
 
   <module name="NewlineAtEndOfFile"/>
   <module name="FileLength">
-    <property name="max" value="10000"/>
+    <property name="max" value="100000"/>
   </module>
   <module name="FileTabCharacter"/>
 

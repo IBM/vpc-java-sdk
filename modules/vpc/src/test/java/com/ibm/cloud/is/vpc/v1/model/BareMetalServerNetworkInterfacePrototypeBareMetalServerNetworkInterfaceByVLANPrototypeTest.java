@@ -58,22 +58,22 @@ public class BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInter
     BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVLANPrototype bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVlanPrototypeModel = new BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVLANPrototype.Builder()
       .allowIpSpoofing(true)
       .enableInfrastructureNat(true)
-      .interfaceType("vlan")
       .name("my-network-interface")
       .primaryIp(networkInterfaceIpPrototypeModel)
       .securityGroups(new java.util.ArrayList<SecurityGroupIdentity>(java.util.Arrays.asList(securityGroupIdentityModel)))
       .subnet(subnetIdentityModel)
       .allowInterfaceToFloat(false)
+      .interfaceType("vlan")
       .vlan(Long.valueOf("4"))
       .build();
     assertEquals(bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVlanPrototypeModel.allowIpSpoofing(), Boolean.valueOf(true));
     assertEquals(bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVlanPrototypeModel.enableInfrastructureNat(), Boolean.valueOf(true));
-    assertEquals(bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVlanPrototypeModel.interfaceType(), "vlan");
     assertEquals(bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVlanPrototypeModel.name(), "my-network-interface");
     assertEquals(bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVlanPrototypeModel.primaryIp(), networkInterfaceIpPrototypeModel);
     assertEquals(bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVlanPrototypeModel.securityGroups(), new java.util.ArrayList<SecurityGroupIdentity>(java.util.Arrays.asList(securityGroupIdentityModel)));
     assertEquals(bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVlanPrototypeModel.subnet(), subnetIdentityModel);
     assertEquals(bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVlanPrototypeModel.allowInterfaceToFloat(), Boolean.valueOf(false));
+    assertEquals(bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVlanPrototypeModel.interfaceType(), "vlan");
     assertEquals(bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVlanPrototypeModel.vlan(), Long.valueOf("4"));
 
     String json = TestUtilities.serialize(bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVlanPrototypeModel);
@@ -82,11 +82,11 @@ public class BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInter
     assertTrue(bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVlanPrototypeModelNew instanceof BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVLANPrototype);
     assertEquals(bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVlanPrototypeModelNew.allowIpSpoofing(), Boolean.valueOf(true));
     assertEquals(bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVlanPrototypeModelNew.enableInfrastructureNat(), Boolean.valueOf(true));
-    assertEquals(bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVlanPrototypeModelNew.interfaceType(), "vlan");
     assertEquals(bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVlanPrototypeModelNew.name(), "my-network-interface");
     assertEquals(bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVlanPrototypeModelNew.primaryIp().toString(), networkInterfaceIpPrototypeModel.toString());
     assertEquals(bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVlanPrototypeModelNew.subnet().toString(), subnetIdentityModel.toString());
     assertEquals(bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVlanPrototypeModelNew.allowInterfaceToFloat(), Boolean.valueOf(false));
+    assertEquals(bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVlanPrototypeModelNew.interfaceType(), "vlan");
     assertEquals(bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVlanPrototypeModelNew.vlan(), Long.valueOf("4"));
   }
 

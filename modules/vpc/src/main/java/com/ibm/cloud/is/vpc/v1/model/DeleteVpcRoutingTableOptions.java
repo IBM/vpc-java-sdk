@@ -21,6 +21,7 @@ public class DeleteVpcRoutingTableOptions extends GenericModel {
 
   protected String vpcId;
   protected String id;
+  protected String ifMatch;
 
   /**
    * Builder.
@@ -28,10 +29,12 @@ public class DeleteVpcRoutingTableOptions extends GenericModel {
   public static class Builder {
     private String vpcId;
     private String id;
+    private String ifMatch;
 
     private Builder(DeleteVpcRoutingTableOptions deleteVpcRoutingTableOptions) {
       this.vpcId = deleteVpcRoutingTableOptions.vpcId;
       this.id = deleteVpcRoutingTableOptions.id;
+      this.ifMatch = deleteVpcRoutingTableOptions.ifMatch;
     }
 
     /**
@@ -81,6 +84,17 @@ public class DeleteVpcRoutingTableOptions extends GenericModel {
       this.id = id;
       return this;
     }
+
+    /**
+     * Set the ifMatch.
+     *
+     * @param ifMatch the ifMatch
+     * @return the DeleteVpcRoutingTableOptions builder
+     */
+    public Builder ifMatch(String ifMatch) {
+      this.ifMatch = ifMatch;
+      return this;
+    }
   }
 
   protected DeleteVpcRoutingTableOptions(Builder builder) {
@@ -90,6 +104,7 @@ public class DeleteVpcRoutingTableOptions extends GenericModel {
       "id cannot be empty");
     vpcId = builder.vpcId;
     id = builder.id;
+    ifMatch = builder.ifMatch;
   }
 
   /**
@@ -121,6 +136,17 @@ public class DeleteVpcRoutingTableOptions extends GenericModel {
    */
   public String id() {
     return id;
+  }
+
+  /**
+   * Gets the ifMatch.
+   *
+   * If present, the request will fail if the specified ETag value does not match the resource's current ETag value.
+   *
+   * @return the ifMatch
+   */
+  public String ifMatch() {
+    return ifMatch;
   }
 }
 

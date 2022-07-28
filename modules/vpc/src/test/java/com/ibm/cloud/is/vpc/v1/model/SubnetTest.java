@@ -53,6 +53,7 @@ public class SubnetTest {
     assertNull(subnetModel.getNetworkAcl());
     assertNull(subnetModel.getPublicGateway());
     assertNull(subnetModel.getResourceGroup());
+    assertNull(subnetModel.getResourceType());
     assertNull(subnetModel.getRoutingTable());
     assertNull(subnetModel.getStatus());
     assertNull(subnetModel.getTotalIpv4AddressCount());

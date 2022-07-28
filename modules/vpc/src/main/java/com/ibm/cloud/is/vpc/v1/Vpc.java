@@ -12,7 +12,7 @@
  */
 
 /*
- * IBM OpenAPI SDK Code Generator Version: 3.46.0-a4e29da0-20220224-210428
+ * IBM OpenAPI SDK Code Generator Version: 3.48.1-52130155-20220425-145431
  */
 
 package com.ibm.cloud.is.vpc.v1;
@@ -26,6 +26,10 @@ import com.ibm.cloud.is.vpc.v1.model.AddVpnGatewayConnectionLocalCidrOptions;
 import com.ibm.cloud.is.vpc.v1.model.AddVpnGatewayConnectionPeerCidrOptions;
 import com.ibm.cloud.is.vpc.v1.model.AddressPrefix;
 import com.ibm.cloud.is.vpc.v1.model.AddressPrefixCollection;
+import com.ibm.cloud.is.vpc.v1.model.BackupPolicy;
+import com.ibm.cloud.is.vpc.v1.model.BackupPolicyCollection;
+import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlan;
+import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanCollection;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServer;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerCollection;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerConsoleAccessToken;
@@ -38,6 +42,8 @@ import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfile;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileCollection;
 import com.ibm.cloud.is.vpc.v1.model.CheckVpnGatewayConnectionLocalCidrOptions;
 import com.ibm.cloud.is.vpc.v1.model.CheckVpnGatewayConnectionPeerCidrOptions;
+import com.ibm.cloud.is.vpc.v1.model.CreateBackupPolicyOptions;
+import com.ibm.cloud.is.vpc.v1.model.CreateBackupPolicyPlanOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateBareMetalServerConsoleAccessTokenOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateBareMetalServerNetworkInterfaceOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateBareMetalServerOptions;
@@ -84,6 +90,8 @@ import com.ibm.cloud.is.vpc.v1.model.CreateVpcRoutingTableOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateVpcRoutingTableRouteOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateVpnGatewayConnectionOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateVpnGatewayOptions;
+import com.ibm.cloud.is.vpc.v1.model.CreateVpnServerOptions;
+import com.ibm.cloud.is.vpc.v1.model.CreateVpnServerRouteOptions;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHost;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostCollection;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostDisk;
@@ -95,6 +103,8 @@ import com.ibm.cloud.is.vpc.v1.model.DedicatedHostProfileCollection;
 import com.ibm.cloud.is.vpc.v1.model.DefaultNetworkACL;
 import com.ibm.cloud.is.vpc.v1.model.DefaultRoutingTable;
 import com.ibm.cloud.is.vpc.v1.model.DefaultSecurityGroup;
+import com.ibm.cloud.is.vpc.v1.model.DeleteBackupPolicyOptions;
+import com.ibm.cloud.is.vpc.v1.model.DeleteBackupPolicyPlanOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteBareMetalServerNetworkInterfaceOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteBareMetalServerOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteDedicatedHostGroupOptions;
@@ -142,6 +152,10 @@ import com.ibm.cloud.is.vpc.v1.model.DeleteVpcRoutingTableOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteVpcRoutingTableRouteOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteVpnGatewayConnectionOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteVpnGatewayOptions;
+import com.ibm.cloud.is.vpc.v1.model.DeleteVpnServerClientOptions;
+import com.ibm.cloud.is.vpc.v1.model.DeleteVpnServerOptions;
+import com.ibm.cloud.is.vpc.v1.model.DeleteVpnServerRouteOptions;
+import com.ibm.cloud.is.vpc.v1.model.DisconnectVpnClientOptions;
 import com.ibm.cloud.is.vpc.v1.model.EndpointGateway;
 import com.ibm.cloud.is.vpc.v1.model.EndpointGatewayCollection;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIP;
@@ -149,10 +163,11 @@ import com.ibm.cloud.is.vpc.v1.model.FloatingIPCollection;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPUnpaginatedCollection;
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollector;
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorCollection;
+import com.ibm.cloud.is.vpc.v1.model.GetBackupPolicyOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetBackupPolicyPlanOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetBareMetalServerDiskOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetBareMetalServerInitializationOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetBareMetalServerNetworkInterfaceFloatingIpOptions;
-import com.ibm.cloud.is.vpc.v1.model.GetBareMetalServerNetworkInterfaceIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetBareMetalServerNetworkInterfaceOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetBareMetalServerOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetBareMetalServerProfileOptions;
@@ -218,6 +233,10 @@ import com.ibm.cloud.is.vpc.v1.model.GetVpcRoutingTableOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetVpcRoutingTableRouteOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetVpnGatewayConnectionOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetVpnGatewayOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetVpnServerClientConfigurationOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetVpnServerClientOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetVpnServerOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetVpnServerRouteOptions;
 import com.ibm.cloud.is.vpc.v1.model.IKEPolicy;
 import com.ibm.cloud.is.vpc.v1.model.IKEPolicyCollection;
 import com.ibm.cloud.is.vpc.v1.model.IPsecPolicy;
@@ -247,9 +266,10 @@ import com.ibm.cloud.is.vpc.v1.model.InstanceTemplate;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateCollection;
 import com.ibm.cloud.is.vpc.v1.model.Key;
 import com.ibm.cloud.is.vpc.v1.model.KeyCollection;
+import com.ibm.cloud.is.vpc.v1.model.ListBackupPoliciesOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListBackupPolicyPlansOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListBareMetalServerDisksOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListBareMetalServerNetworkInterfaceFloatingIpsOptions;
-import com.ibm.cloud.is.vpc.v1.model.ListBareMetalServerNetworkInterfaceIpsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListBareMetalServerNetworkInterfacesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListBareMetalServerProfilesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListBareMetalServersOptions;
@@ -311,6 +331,9 @@ import com.ibm.cloud.is.vpc.v1.model.ListVpnGatewayConnectionLocalCidrsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListVpnGatewayConnectionPeerCidrsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListVpnGatewayConnectionsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListVpnGatewaysOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListVpnServerClientsOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListVpnServerRoutesOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListVpnServersOptions;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancer;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerCollection;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListener;
@@ -371,6 +394,8 @@ import com.ibm.cloud.is.vpc.v1.model.StopBareMetalServerOptions;
 import com.ibm.cloud.is.vpc.v1.model.Subnet;
 import com.ibm.cloud.is.vpc.v1.model.SubnetCollection;
 import com.ibm.cloud.is.vpc.v1.model.UnsetSubnetPublicGatewayOptions;
+import com.ibm.cloud.is.vpc.v1.model.UpdateBackupPolicyOptions;
+import com.ibm.cloud.is.vpc.v1.model.UpdateBackupPolicyPlanOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateBareMetalServerDiskOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateBareMetalServerNetworkInterfaceOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateBareMetalServerOptions;
@@ -417,6 +442,8 @@ import com.ibm.cloud.is.vpc.v1.model.UpdateVpcRoutingTableOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateVpcRoutingTableRouteOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateVpnGatewayConnectionOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateVpnGatewayOptions;
+import com.ibm.cloud.is.vpc.v1.model.UpdateVpnServerOptions;
+import com.ibm.cloud.is.vpc.v1.model.UpdateVpnServerRouteOptions;
 import com.ibm.cloud.is.vpc.v1.model.VPC;
 import com.ibm.cloud.is.vpc.v1.model.VPCCollection;
 import com.ibm.cloud.is.vpc.v1.model.VPNGateway;
@@ -425,6 +452,12 @@ import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnection;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionCollection;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionLocalCIDRs;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionPeerCIDRs;
+import com.ibm.cloud.is.vpc.v1.model.VPNServer;
+import com.ibm.cloud.is.vpc.v1.model.VPNServerClient;
+import com.ibm.cloud.is.vpc.v1.model.VPNServerClientCollection;
+import com.ibm.cloud.is.vpc.v1.model.VPNServerCollection;
+import com.ibm.cloud.is.vpc.v1.model.VPNServerRoute;
+import com.ibm.cloud.is.vpc.v1.model.VPNServerRouteCollection;
 import com.ibm.cloud.is.vpc.v1.model.Volume;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachment;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentCollection;
@@ -448,7 +481,7 @@ import java.util.Map.Entry;
  * The IBM Cloud Virtual Private Cloud (VPC) API can be used to programmatically provision and manage virtual server
  * instances, along with subnets, volumes, load balancers, and more.
  *
- * API Version: 2022-04-20
+ * API Version: 2022-03-29
  */
 public class Vpc extends BaseService {
 
@@ -456,7 +489,7 @@ public class Vpc extends BaseService {
 
   public static final String DEFAULT_SERVICE_URL = "https://us-south.iaas.cloud.ibm.com/v1";
 
-  private String version = "2022-04-20";
+  private String version = "2022-03-29";
 
   private Long generation = Long.valueOf("2");
 
@@ -1183,6 +1216,9 @@ public class Vpc extends BaseService {
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     final JsonObject contentJson = new JsonObject();
+    if (createVpcRoutingTableOptions.acceptRoutesFrom() != null) {
+      contentJson.add("accept_routes_from", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createVpcRoutingTableOptions.acceptRoutesFrom()));
+    }
     if (createVpcRoutingTableOptions.name() != null) {
       contentJson.addProperty("name", createVpcRoutingTableOptions.name());
     }
@@ -1223,6 +1259,9 @@ public class Vpc extends BaseService {
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "deleteVpcRoutingTable");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
+    }
+    if (deleteVpcRoutingTableOptions.ifMatch() != null) {
+      builder.header("If-Match", deleteVpcRoutingTableOptions.ifMatch());
     }
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
@@ -1278,6 +1317,9 @@ public class Vpc extends BaseService {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
+    if (updateVpcRoutingTableOptions.ifMatch() != null) {
+      builder.header("If-Match", updateVpcRoutingTableOptions.ifMatch());
+    }
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateVpcRoutingTableOptions.routingTablePatch()), "application/merge-patch+json");
@@ -1875,7 +1917,7 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * Release a reserved IP.
+   * Delete a reserved IP.
    *
    * This request releases a reserved IP. This operation cannot be reversed.
    *
@@ -4650,6 +4692,385 @@ public class Vpc extends BaseService {
   }
 
   /**
+   * List all backup policies.
+   *
+   * This request lists all backup policies in the region. Backup policies control which sources are selected for backup
+   * and include a set of backup policy plans that provide the backup schedules and deletion triggers.
+   *
+   * @param listBackupPoliciesOptions the {@link ListBackupPoliciesOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link BackupPolicyCollection}
+   */
+  public ServiceCall<BackupPolicyCollection> listBackupPolicies(ListBackupPoliciesOptions listBackupPoliciesOptions) {
+    if (listBackupPoliciesOptions == null) {
+      listBackupPoliciesOptions = new ListBackupPoliciesOptions.Builder().build();
+    }
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/backup_policies"));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listBackupPolicies");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    if (listBackupPoliciesOptions.start() != null) {
+      builder.query("start", String.valueOf(listBackupPoliciesOptions.start()));
+    }
+    if (listBackupPoliciesOptions.limit() != null) {
+      builder.query("limit", String.valueOf(listBackupPoliciesOptions.limit()));
+    }
+    if (listBackupPoliciesOptions.resourceGroupId() != null) {
+      builder.query("resource_group.id", String.valueOf(listBackupPoliciesOptions.resourceGroupId()));
+    }
+    if (listBackupPoliciesOptions.name() != null) {
+      builder.query("name", String.valueOf(listBackupPoliciesOptions.name()));
+    }
+    if (listBackupPoliciesOptions.tag() != null) {
+      builder.query("tag", String.valueOf(listBackupPoliciesOptions.tag()));
+    }
+    ResponseConverter<BackupPolicyCollection> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<BackupPolicyCollection>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * List all backup policies.
+   *
+   * This request lists all backup policies in the region. Backup policies control which sources are selected for backup
+   * and include a set of backup policy plans that provide the backup schedules and deletion triggers.
+   *
+   * @return a {@link ServiceCall} with a result of type {@link BackupPolicyCollection}
+   */
+  public ServiceCall<BackupPolicyCollection> listBackupPolicies() {
+    return listBackupPolicies(null);
+  }
+
+  /**
+   * Create a backup policy.
+   *
+   * This request creates a new backup policy from a backup policy prototype object. The prototype object is structured
+   * in the same way as a retrieved backup policy, and contains the information necessary to create the new backup
+   * policy.
+   *
+   * @param createBackupPolicyOptions the {@link CreateBackupPolicyOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link BackupPolicy}
+   */
+  public ServiceCall<BackupPolicy> createBackupPolicy(CreateBackupPolicyOptions createBackupPolicyOptions) {
+    boolean skipBody = false;
+    if (createBackupPolicyOptions == null) {
+      createBackupPolicyOptions = new CreateBackupPolicyOptions.Builder().build();
+      skipBody = true;
+    }
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/backup_policies"));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "createBackupPolicy");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    if (!skipBody) {
+      final JsonObject contentJson = new JsonObject();
+      if (createBackupPolicyOptions.matchResourceTypes() != null) {
+        contentJson.add("match_resource_types", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createBackupPolicyOptions.matchResourceTypes()));
+      }
+      if (createBackupPolicyOptions.matchUserTags() != null) {
+        contentJson.add("match_user_tags", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createBackupPolicyOptions.matchUserTags()));
+      }
+      if (createBackupPolicyOptions.name() != null) {
+        contentJson.addProperty("name", createBackupPolicyOptions.name());
+      }
+      if (createBackupPolicyOptions.plans() != null) {
+        contentJson.add("plans", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createBackupPolicyOptions.plans()));
+      }
+      if (createBackupPolicyOptions.resourceGroup() != null) {
+        contentJson.add("resource_group", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createBackupPolicyOptions.resourceGroup()));
+      }
+      builder.bodyJson(contentJson);
+    }
+    ResponseConverter<BackupPolicy> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<BackupPolicy>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Create a backup policy.
+   *
+   * This request creates a new backup policy from a backup policy prototype object. The prototype object is structured
+   * in the same way as a retrieved backup policy, and contains the information necessary to create the new backup
+   * policy.
+   *
+   * @return a {@link ServiceCall} with a result of type {@link BackupPolicy}
+   */
+  public ServiceCall<BackupPolicy> createBackupPolicy() {
+    return createBackupPolicy(null);
+  }
+
+  /**
+   * List all plans for a backup policy.
+   *
+   * This request retrieves all plans for a backup policy. Backup plans provide the backup schedule and deletion
+   * triggers.
+   *
+   * @param listBackupPolicyPlansOptions the {@link ListBackupPolicyPlansOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link BackupPolicyPlanCollection}
+   */
+  public ServiceCall<BackupPolicyPlanCollection> listBackupPolicyPlans(ListBackupPolicyPlansOptions listBackupPolicyPlansOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(listBackupPolicyPlansOptions,
+      "listBackupPolicyPlansOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("backup_policy_id", listBackupPolicyPlansOptions.backupPolicyId());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/backup_policies/{backup_policy_id}/plans", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listBackupPolicyPlans");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    if (listBackupPolicyPlansOptions.name() != null) {
+      builder.query("name", String.valueOf(listBackupPolicyPlansOptions.name()));
+    }
+    ResponseConverter<BackupPolicyPlanCollection> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<BackupPolicyPlanCollection>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Create a plan for a backup policy.
+   *
+   * This request creates a new backup policy plan from a backup policy plan prototype object. The prototype object is
+   * structured in the same way as a retrieved backup policy plan, and contains the information necessary to create the
+   * new backup policy plan.
+   *
+   * Backups created by this plan will use the resource group of the source being backed up.
+   *
+   * Backups created by this plan will use the plan's name truncated to 46 characters, followed by a unique 16-character
+   * suffix.
+   *
+   * @param createBackupPolicyPlanOptions the {@link CreateBackupPolicyPlanOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link BackupPolicyPlan}
+   */
+  public ServiceCall<BackupPolicyPlan> createBackupPolicyPlan(CreateBackupPolicyPlanOptions createBackupPolicyPlanOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(createBackupPolicyPlanOptions,
+      "createBackupPolicyPlanOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("backup_policy_id", createBackupPolicyPlanOptions.backupPolicyId());
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/backup_policies/{backup_policy_id}/plans", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "createBackupPolicyPlan");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    final JsonObject contentJson = new JsonObject();
+    contentJson.addProperty("cron_spec", createBackupPolicyPlanOptions.cronSpec());
+    if (createBackupPolicyPlanOptions.active() != null) {
+      contentJson.addProperty("active", createBackupPolicyPlanOptions.active());
+    }
+    if (createBackupPolicyPlanOptions.attachUserTags() != null) {
+      contentJson.add("attach_user_tags", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createBackupPolicyPlanOptions.attachUserTags()));
+    }
+    if (createBackupPolicyPlanOptions.copyUserTags() != null) {
+      contentJson.addProperty("copy_user_tags", createBackupPolicyPlanOptions.copyUserTags());
+    }
+    if (createBackupPolicyPlanOptions.deletionTrigger() != null) {
+      contentJson.add("deletion_trigger", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createBackupPolicyPlanOptions.deletionTrigger()));
+    }
+    if (createBackupPolicyPlanOptions.name() != null) {
+      contentJson.addProperty("name", createBackupPolicyPlanOptions.name());
+    }
+    builder.bodyJson(contentJson);
+    ResponseConverter<BackupPolicyPlan> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<BackupPolicyPlan>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Delete a backup policy plan.
+   *
+   * This request deletes a backup policy plan. This operation cannot be reversed. Any backups that have been created by
+   * the plan will remain but will no longer be subject to the plan's deletion trigger. Any running jobs associated with
+   * the plan will run to completion before the plan is deleted.
+   *
+   * If the request is accepted, the backup policy plan `status` will be set to `deleting`. Once deletion processing
+   * completes, the backup policy plan will no longer be retrievable.
+   *
+   * @param deleteBackupPolicyPlanOptions the {@link DeleteBackupPolicyPlanOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link BackupPolicyPlan}
+   */
+  public ServiceCall<BackupPolicyPlan> deleteBackupPolicyPlan(DeleteBackupPolicyPlanOptions deleteBackupPolicyPlanOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(deleteBackupPolicyPlanOptions,
+      "deleteBackupPolicyPlanOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("backup_policy_id", deleteBackupPolicyPlanOptions.backupPolicyId());
+    pathParamsMap.put("id", deleteBackupPolicyPlanOptions.id());
+    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/backup_policies/{backup_policy_id}/plans/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "deleteBackupPolicyPlan");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    if (deleteBackupPolicyPlanOptions.ifMatch() != null) {
+      builder.header("If-Match", deleteBackupPolicyPlanOptions.ifMatch());
+    }
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<BackupPolicyPlan> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<BackupPolicyPlan>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Retrieve a backup policy plan.
+   *
+   * This request retrieves a single backup policy plan specified by the identifier in the URL.
+   *
+   * @param getBackupPolicyPlanOptions the {@link GetBackupPolicyPlanOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link BackupPolicyPlan}
+   */
+  public ServiceCall<BackupPolicyPlan> getBackupPolicyPlan(GetBackupPolicyPlanOptions getBackupPolicyPlanOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(getBackupPolicyPlanOptions,
+      "getBackupPolicyPlanOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("backup_policy_id", getBackupPolicyPlanOptions.backupPolicyId());
+    pathParamsMap.put("id", getBackupPolicyPlanOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/backup_policies/{backup_policy_id}/plans/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getBackupPolicyPlan");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<BackupPolicyPlan> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<BackupPolicyPlan>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Update a backup policy plan.
+   *
+   * This request updates a backup policy plan with the information in a provided plan patch. The plan patch object is
+   * structured in the same way as a retrieved backup policy plan and can contains only the information to be updated.
+   *
+   * @param updateBackupPolicyPlanOptions the {@link UpdateBackupPolicyPlanOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link BackupPolicyPlan}
+   */
+  public ServiceCall<BackupPolicyPlan> updateBackupPolicyPlan(UpdateBackupPolicyPlanOptions updateBackupPolicyPlanOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(updateBackupPolicyPlanOptions,
+      "updateBackupPolicyPlanOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("backup_policy_id", updateBackupPolicyPlanOptions.backupPolicyId());
+    pathParamsMap.put("id", updateBackupPolicyPlanOptions.id());
+    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/backup_policies/{backup_policy_id}/plans/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "updateBackupPolicyPlan");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    if (updateBackupPolicyPlanOptions.ifMatch() != null) {
+      builder.header("If-Match", updateBackupPolicyPlanOptions.ifMatch());
+    }
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateBackupPolicyPlanOptions.backupPolicyPlanPatch()), "application/merge-patch+json");
+    ResponseConverter<BackupPolicyPlan> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<BackupPolicyPlan>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Delete a backup policy.
+   *
+   * This request deletes a backup policy. This operation cannot be reversed.
+   *
+   * If the request is accepted, the backup policy `status` will be set to `deleting`. Once deletion processing
+   * completes, the backup policy will no longer be retrievable.
+   *
+   * @param deleteBackupPolicyOptions the {@link DeleteBackupPolicyOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link BackupPolicy}
+   */
+  public ServiceCall<BackupPolicy> deleteBackupPolicy(DeleteBackupPolicyOptions deleteBackupPolicyOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(deleteBackupPolicyOptions,
+      "deleteBackupPolicyOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", deleteBackupPolicyOptions.id());
+    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/backup_policies/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "deleteBackupPolicy");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    if (deleteBackupPolicyOptions.ifMatch() != null) {
+      builder.header("If-Match", deleteBackupPolicyOptions.ifMatch());
+    }
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<BackupPolicy> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<BackupPolicy>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Retrieve a backup policy.
+   *
+   * This request retrieves a single backup policy specified by the identifier in the URL.
+   *
+   * @param getBackupPolicyOptions the {@link GetBackupPolicyOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link BackupPolicy}
+   */
+  public ServiceCall<BackupPolicy> getBackupPolicy(GetBackupPolicyOptions getBackupPolicyOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(getBackupPolicyOptions,
+      "getBackupPolicyOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", getBackupPolicyOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/backup_policies/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getBackupPolicy");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<BackupPolicy> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<BackupPolicy>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Update a backup policy.
+   *
+   * This request updates a backup policy with the information in a provided backup policy patch. The backup policy
+   * patch object is structured in the same way as a retrieved backup policy and contains only the information to be
+   * updated.
+   *
+   * @param updateBackupPolicyOptions the {@link UpdateBackupPolicyOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link BackupPolicy}
+   */
+  public ServiceCall<BackupPolicy> updateBackupPolicy(UpdateBackupPolicyOptions updateBackupPolicyOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(updateBackupPolicyOptions,
+      "updateBackupPolicyOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", updateBackupPolicyOptions.id());
+    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/backup_policies/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "updateBackupPolicy");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    if (updateBackupPolicyOptions.ifMatch() != null) {
+      builder.header("If-Match", updateBackupPolicyOptions.ifMatch());
+    }
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateBackupPolicyOptions.backupPolicyPatch()), "application/merge-patch+json");
+    ResponseConverter<BackupPolicy> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<BackupPolicy>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
    * List all placement groups.
    *
    * This request lists all placement groups in the region.
@@ -4923,9 +5344,6 @@ public class Vpc extends BaseService {
     }
     if (listBareMetalServersOptions.networkInterfacesSubnetName() != null) {
       builder.query("network_interfaces.subnet.name", String.valueOf(listBareMetalServersOptions.networkInterfacesSubnetName()));
-    }
-    if (listBareMetalServersOptions.sort() != null) {
-      builder.query("sort", String.valueOf(listBareMetalServersOptions.sort()));
     }
     ResponseConverter<BareMetalServerCollection> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<BareMetalServerCollection>() { }.getType());
@@ -5364,62 +5782,6 @@ public class Vpc extends BaseService {
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<FloatingIP> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<FloatingIP>() { }.getType());
-    return createServiceCall(builder.build(), responseConverter);
-  }
-
-  /**
-   * List all reserved IPs bound to a network interface.
-   *
-   * This request lists all reserved IPs bound to a network interface.
-   *
-   * @param listBareMetalServerNetworkInterfaceIpsOptions the {@link ListBareMetalServerNetworkInterfaceIpsOptions} containing the options for the call
-   * @return a {@link ServiceCall} with a result of type {@link ReservedIPCollectionNetworkInterfaceContext}
-   */
-  public ServiceCall<ReservedIPCollectionNetworkInterfaceContext> listBareMetalServerNetworkInterfaceIps(ListBareMetalServerNetworkInterfaceIpsOptions listBareMetalServerNetworkInterfaceIpsOptions) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(listBareMetalServerNetworkInterfaceIpsOptions,
-      "listBareMetalServerNetworkInterfaceIpsOptions cannot be null");
-    Map<String, String> pathParamsMap = new HashMap<String, String>();
-    pathParamsMap.put("bare_metal_server_id", listBareMetalServerNetworkInterfaceIpsOptions.bareMetalServerId());
-    pathParamsMap.put("network_interface_id", listBareMetalServerNetworkInterfaceIpsOptions.networkInterfaceId());
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/bare_metal_servers/{bare_metal_server_id}/network_interfaces/{network_interface_id}/ips", pathParamsMap));
-    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listBareMetalServerNetworkInterfaceIps");
-    for (Entry<String, String> header : sdkHeaders.entrySet()) {
-      builder.header(header.getKey(), header.getValue());
-    }
-    builder.header("Accept", "application/json");
-    builder.query("version", String.valueOf(this.version));
-    builder.query("generation", String.valueOf(this.generation));
-    ResponseConverter<ReservedIPCollectionNetworkInterfaceContext> responseConverter =
-      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<ReservedIPCollectionNetworkInterfaceContext>() { }.getType());
-    return createServiceCall(builder.build(), responseConverter);
-  }
-
-  /**
-   * Retrieve bound reserved IP.
-   *
-   * This request a retrieves the specified reserved IP address if it is bound to the network interface and bare metal
-   * server specified in the URL.
-   *
-   * @param getBareMetalServerNetworkInterfaceIpOptions the {@link GetBareMetalServerNetworkInterfaceIpOptions} containing the options for the call
-   * @return a {@link ServiceCall} with a result of type {@link ReservedIP}
-   */
-  public ServiceCall<ReservedIP> getBareMetalServerNetworkInterfaceIp(GetBareMetalServerNetworkInterfaceIpOptions getBareMetalServerNetworkInterfaceIpOptions) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(getBareMetalServerNetworkInterfaceIpOptions,
-      "getBareMetalServerNetworkInterfaceIpOptions cannot be null");
-    Map<String, String> pathParamsMap = new HashMap<String, String>();
-    pathParamsMap.put("bare_metal_server_id", getBareMetalServerNetworkInterfaceIpOptions.bareMetalServerId());
-    pathParamsMap.put("network_interface_id", getBareMetalServerNetworkInterfaceIpOptions.networkInterfaceId());
-    pathParamsMap.put("id", getBareMetalServerNetworkInterfaceIpOptions.id());
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/bare_metal_servers/{bare_metal_server_id}/network_interfaces/{network_interface_id}/ips/{id}", pathParamsMap));
-    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getBareMetalServerNetworkInterfaceIp");
-    for (Entry<String, String> header : sdkHeaders.entrySet()) {
-      builder.header(header.getKey(), header.getValue());
-    }
-    builder.header("Accept", "application/json");
-    builder.query("version", String.valueOf(this.version));
-    builder.query("generation", String.valueOf(this.generation));
-    ResponseConverter<ReservedIP> responseConverter =
-      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<ReservedIP>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
   }
 
@@ -5888,6 +6250,9 @@ public class Vpc extends BaseService {
     if (listSnapshotsOptions.limit() != null) {
       builder.query("limit", String.valueOf(listSnapshotsOptions.limit()));
     }
+    if (listSnapshotsOptions.tag() != null) {
+      builder.query("tag", String.valueOf(listSnapshotsOptions.tag()));
+    }
     if (listSnapshotsOptions.resourceGroupId() != null) {
       builder.query("resource_group.id", String.valueOf(listSnapshotsOptions.resourceGroupId()));
     }
@@ -5908,6 +6273,9 @@ public class Vpc extends BaseService {
     }
     if (listSnapshotsOptions.sort() != null) {
       builder.query("sort", String.valueOf(listSnapshotsOptions.sort()));
+    }
+    if (listSnapshotsOptions.backupPolicyPlanId() != null) {
+      builder.query("backup_policy_plan.id", String.valueOf(listSnapshotsOptions.backupPolicyPlanId()));
     }
     ResponseConverter<SnapshotCollection> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<SnapshotCollection>() { }.getType());
@@ -6402,7 +6770,7 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * Release a floating IP.
+   * Delete a floating IP.
    *
    * This request disassociates (if associated) and releases a floating IP. This operation cannot be reversed. For this
    * request to succeed, the floating IP must not be required by another resource, such as a public gateway.
@@ -6895,9 +7263,9 @@ public class Vpc extends BaseService {
   /**
    * Delete a security group.
    *
-   * This request deletes a security group. A security group cannot be deleted if it is referenced by any network
-   * interfaces or other security group rules. Additionally, a VPC's default security group cannot be deleted. This
-   * operation cannot be reversed.
+   * This request deletes a security group. A security group cannot be deleted if it is referenced by any security group
+   * targets or rules. Additionally, a VPC's default security group cannot be deleted. This operation cannot be
+   * reversed.
    *
    * @param deleteSecurityGroupOptions the {@link DeleteSecurityGroupOptions} containing the options for the call
    * @return a {@link ServiceCall} with a void result
@@ -7156,6 +7524,7 @@ public class Vpc extends BaseService {
    * least one other security group.  The specified target identifier can be:
    *
    * - A network interface identifier
+   * - A VPN server identifier
    * - An application load balancer identifier
    * - An endpoint gateway identifier
    *
@@ -7216,6 +7585,7 @@ public class Vpc extends BaseService {
    * This request adds a resource to an existing security group. The specified target identifier can be:
    *
    * - A network interface identifier
+   * - A VPN server identifier
    * - An application load balancer identifier
    * - An endpoint gateway identifier
    *
@@ -7907,6 +8277,8 @@ public class Vpc extends BaseService {
    *
    * This request lists all local CIDRs for a VPN gateway connection.
    *
+   * This request is only supported for policy mode VPN gateways.
+   *
    * @param listVpnGatewayConnectionLocalCidrsOptions the {@link ListVpnGatewayConnectionLocalCidrsOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link VPNGatewayConnectionLocalCIDRs}
    */
@@ -7934,6 +8306,8 @@ public class Vpc extends BaseService {
    *
    * This request removes a CIDR from a VPN gateway connection.
    *
+   * This request is only supported for policy mode VPN gateways.
+   *
    * @param removeVpnGatewayConnectionLocalCidrOptions the {@link RemoveVpnGatewayConnectionLocalCidrOptions} containing the options for the call
    * @return a {@link ServiceCall} with a void result
    */
@@ -7959,7 +8333,9 @@ public class Vpc extends BaseService {
   /**
    * Check if the specified local CIDR exists on a VPN gateway connection.
    *
-   * This request succeeds if a CIDR exists on the specified VPN gateway connection and fails otherwise.
+   * This request succeeds if a CIDR exists on the specified VPN gateway connection, and fails otherwise.
+   *
+   * This request is only supported for policy mode VPN gateways.
    *
    * @param checkVpnGatewayConnectionLocalCidrOptions the {@link CheckVpnGatewayConnectionLocalCidrOptions} containing the options for the call
    * @return a {@link ServiceCall} with a void result
@@ -7986,8 +8362,10 @@ public class Vpc extends BaseService {
   /**
    * Set a local CIDR on a VPN gateway connection.
    *
-   * This request adds the specified CIDR to the specified VPN gateway connection. A request body is not required, and
-   * if provided, is ignored. This request succeeds if the CIDR already exists on the specified VPN gateway connection.
+   * This request adds the specified CIDR to the specified VPN gateway connection. This request succeeds if the
+   * specified CIDR already exists. A request body is not required, and if provided, is ignored.
+   *
+   * This request is only supported for policy mode VPN gateways.
    *
    * @param addVpnGatewayConnectionLocalCidrOptions the {@link AddVpnGatewayConnectionLocalCidrOptions} containing the options for the call
    * @return a {@link ServiceCall} with a void result
@@ -8016,6 +8394,8 @@ public class Vpc extends BaseService {
    *
    * This request lists all peer CIDRs for a VPN gateway connection.
    *
+   * This request is only supported for policy mode VPN gateways.
+   *
    * @param listVpnGatewayConnectionPeerCidrsOptions the {@link ListVpnGatewayConnectionPeerCidrsOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link VPNGatewayConnectionPeerCIDRs}
    */
@@ -8043,6 +8423,8 @@ public class Vpc extends BaseService {
    *
    * This request removes a CIDR from a VPN gateway connection.
    *
+   * This request is only supported for policy mode VPN gateways.
+   *
    * @param removeVpnGatewayConnectionPeerCidrOptions the {@link RemoveVpnGatewayConnectionPeerCidrOptions} containing the options for the call
    * @return a {@link ServiceCall} with a void result
    */
@@ -8068,7 +8450,9 @@ public class Vpc extends BaseService {
   /**
    * Check if the specified peer CIDR exists on a VPN gateway connection.
    *
-   * This request succeeds if a CIDR exists on the specified VPN gateway connection and fails otherwise.
+   * This request succeeds if a CIDR exists on the specified VPN gateway connection, and fails otherwise.
+   *
+   * This request is only supported for policy mode VPN gateways.
    *
    * @param checkVpnGatewayConnectionPeerCidrOptions the {@link CheckVpnGatewayConnectionPeerCidrOptions} containing the options for the call
    * @return a {@link ServiceCall} with a void result
@@ -8095,8 +8479,10 @@ public class Vpc extends BaseService {
   /**
    * Set a peer CIDR on a VPN gateway connection.
    *
-   * This request adds the specified CIDR to the specified VPN gateway connection. A request body is not required, and
-   * if provided, is ignored. This request succeeds if the CIDR already exists on the specified VPN gateway connection.
+   * This request adds the specified CIDR to the specified VPN gateway connection. This request succeeds if the
+   * specified CIDR already exists. A request body is not required, and if provided, is ignored.
+   *
+   * This request is only supported for policy mode VPN gateways.
    *
    * @param addVpnGatewayConnectionPeerCidrOptions the {@link AddVpnGatewayConnectionPeerCidrOptions} containing the options for the call
    * @return a {@link ServiceCall} with a void result
@@ -8117,6 +8503,494 @@ public class Vpc extends BaseService {
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * List all VPN servers.
+   *
+   * This request lists all VPN servers.
+   *
+   * @param listVpnServersOptions the {@link ListVpnServersOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link VPNServerCollection}
+   */
+  public ServiceCall<VPNServerCollection> listVpnServers(ListVpnServersOptions listVpnServersOptions) {
+    if (listVpnServersOptions == null) {
+      listVpnServersOptions = new ListVpnServersOptions.Builder().build();
+    }
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/vpn_servers"));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listVpnServers");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    if (listVpnServersOptions.name() != null) {
+      builder.query("name", String.valueOf(listVpnServersOptions.name()));
+    }
+    if (listVpnServersOptions.start() != null) {
+      builder.query("start", String.valueOf(listVpnServersOptions.start()));
+    }
+    if (listVpnServersOptions.limit() != null) {
+      builder.query("limit", String.valueOf(listVpnServersOptions.limit()));
+    }
+    if (listVpnServersOptions.resourceGroupId() != null) {
+      builder.query("resource_group.id", String.valueOf(listVpnServersOptions.resourceGroupId()));
+    }
+    if (listVpnServersOptions.sort() != null) {
+      builder.query("sort", String.valueOf(listVpnServersOptions.sort()));
+    }
+    ResponseConverter<VPNServerCollection> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<VPNServerCollection>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * List all VPN servers.
+   *
+   * This request lists all VPN servers.
+   *
+   * @return a {@link ServiceCall} with a result of type {@link VPNServerCollection}
+   */
+  public ServiceCall<VPNServerCollection> listVpnServers() {
+    return listVpnServers(null);
+  }
+
+  /**
+   * Create a VPN server.
+   *
+   * This request creates a new VPN server.
+   *
+   * @param createVpnServerOptions the {@link CreateVpnServerOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link VPNServer}
+   */
+  public ServiceCall<VPNServer> createVpnServer(CreateVpnServerOptions createVpnServerOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(createVpnServerOptions,
+      "createVpnServerOptions cannot be null");
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/vpn_servers"));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "createVpnServer");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    final JsonObject contentJson = new JsonObject();
+    contentJson.add("certificate", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createVpnServerOptions.certificate()));
+    contentJson.add("client_authentication", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createVpnServerOptions.clientAuthentication()));
+    contentJson.addProperty("client_ip_pool", createVpnServerOptions.clientIpPool());
+    contentJson.add("subnets", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createVpnServerOptions.subnets()));
+    if (createVpnServerOptions.clientDnsServerIps() != null) {
+      contentJson.add("client_dns_server_ips", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createVpnServerOptions.clientDnsServerIps()));
+    }
+    if (createVpnServerOptions.clientIdleTimeout() != null) {
+      contentJson.addProperty("client_idle_timeout", createVpnServerOptions.clientIdleTimeout());
+    }
+    if (createVpnServerOptions.enableSplitTunneling() != null) {
+      contentJson.addProperty("enable_split_tunneling", createVpnServerOptions.enableSplitTunneling());
+    }
+    if (createVpnServerOptions.name() != null) {
+      contentJson.addProperty("name", createVpnServerOptions.name());
+    }
+    if (createVpnServerOptions.port() != null) {
+      contentJson.addProperty("port", createVpnServerOptions.port());
+    }
+    if (createVpnServerOptions.protocol() != null) {
+      contentJson.addProperty("protocol", createVpnServerOptions.protocol());
+    }
+    if (createVpnServerOptions.resourceGroup() != null) {
+      contentJson.add("resource_group", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createVpnServerOptions.resourceGroup()));
+    }
+    if (createVpnServerOptions.securityGroups() != null) {
+      contentJson.add("security_groups", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createVpnServerOptions.securityGroups()));
+    }
+    builder.bodyJson(contentJson);
+    ResponseConverter<VPNServer> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<VPNServer>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Delete a VPN server.
+   *
+   * This request deletes a VPN server. This operation cannot be reversed.
+   *
+   * @param deleteVpnServerOptions the {@link DeleteVpnServerOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a void result
+   */
+  public ServiceCall<Void> deleteVpnServer(DeleteVpnServerOptions deleteVpnServerOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(deleteVpnServerOptions,
+      "deleteVpnServerOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", deleteVpnServerOptions.id());
+    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/vpn_servers/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "deleteVpnServer");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    if (deleteVpnServerOptions.ifMatch() != null) {
+      builder.header("If-Match", deleteVpnServerOptions.ifMatch());
+    }
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Retrieve a VPN server.
+   *
+   * This request retrieves a single VPN server specified by the identifier in the URL.
+   *
+   * @param getVpnServerOptions the {@link GetVpnServerOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link VPNServer}
+   */
+  public ServiceCall<VPNServer> getVpnServer(GetVpnServerOptions getVpnServerOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(getVpnServerOptions,
+      "getVpnServerOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", getVpnServerOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/vpn_servers/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getVpnServer");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<VPNServer> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<VPNServer>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Update a VPN server.
+   *
+   * This request updates the properties of an existing VPN server. Any property changes will cause all connected VPN
+   * clients are disconnected from this VPN server except for the name change.
+   *
+   * @param updateVpnServerOptions the {@link UpdateVpnServerOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link VPNServer}
+   */
+  public ServiceCall<VPNServer> updateVpnServer(UpdateVpnServerOptions updateVpnServerOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(updateVpnServerOptions,
+      "updateVpnServerOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", updateVpnServerOptions.id());
+    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/vpn_servers/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "updateVpnServer");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    if (updateVpnServerOptions.ifMatch() != null) {
+      builder.header("If-Match", updateVpnServerOptions.ifMatch());
+    }
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateVpnServerOptions.vpnServerPatch()), "application/merge-patch+json");
+    ResponseConverter<VPNServer> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<VPNServer>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Retrieve client configuration.
+   *
+   * This request retrieves OpenVPN client configuration on a single VPN server specified by the identifier in the URL.
+   * This configuration includes directives compatible with OpenVPN releases 2.4 and 2.5.
+   *
+   * @param getVpnServerClientConfigurationOptions the {@link GetVpnServerClientConfigurationOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link String}
+   */
+  public ServiceCall<String> getVpnServerClientConfiguration(GetVpnServerClientConfigurationOptions getVpnServerClientConfigurationOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(getVpnServerClientConfigurationOptions,
+      "getVpnServerClientConfigurationOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", getVpnServerClientConfigurationOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/vpn_servers/{id}/client_configuration", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getVpnServerClientConfiguration");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "text/plain");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<String> responseConverter = ResponseConverterUtils.getString();
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * List all VPN clients for a VPN server.
+   *
+   * This request retrieves all connected VPN clients, and any disconnected VPN clients that the VPN server has not yet
+   * deleted based on its auto-deletion policy.
+   *
+   * @param listVpnServerClientsOptions the {@link ListVpnServerClientsOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link VPNServerClientCollection}
+   */
+  public ServiceCall<VPNServerClientCollection> listVpnServerClients(ListVpnServerClientsOptions listVpnServerClientsOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(listVpnServerClientsOptions,
+      "listVpnServerClientsOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("vpn_server_id", listVpnServerClientsOptions.vpnServerId());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/vpn_servers/{vpn_server_id}/clients", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listVpnServerClients");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    if (listVpnServerClientsOptions.start() != null) {
+      builder.query("start", String.valueOf(listVpnServerClientsOptions.start()));
+    }
+    if (listVpnServerClientsOptions.limit() != null) {
+      builder.query("limit", String.valueOf(listVpnServerClientsOptions.limit()));
+    }
+    if (listVpnServerClientsOptions.sort() != null) {
+      builder.query("sort", String.valueOf(listVpnServerClientsOptions.sort()));
+    }
+    ResponseConverter<VPNServerClientCollection> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<VPNServerClientCollection>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Delete a VPN client.
+   *
+   * This request disconnects and deletes the VPN client from the VPN server. The VPN client may reconnect unless its
+   * authentication permissions for the configured authentication methods (such as its client certificate) have been
+   * revoked.
+   *
+   * @param deleteVpnServerClientOptions the {@link DeleteVpnServerClientOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a void result
+   */
+  public ServiceCall<Void> deleteVpnServerClient(DeleteVpnServerClientOptions deleteVpnServerClientOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(deleteVpnServerClientOptions,
+      "deleteVpnServerClientOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("vpn_server_id", deleteVpnServerClientOptions.vpnServerId());
+    pathParamsMap.put("id", deleteVpnServerClientOptions.id());
+    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/vpn_servers/{vpn_server_id}/clients/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "deleteVpnServerClient");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Retrieve a VPN client.
+   *
+   * This request retrieves a single VPN client specified by the identifier in the URL.
+   *
+   * @param getVpnServerClientOptions the {@link GetVpnServerClientOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link VPNServerClient}
+   */
+  public ServiceCall<VPNServerClient> getVpnServerClient(GetVpnServerClientOptions getVpnServerClientOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(getVpnServerClientOptions,
+      "getVpnServerClientOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("vpn_server_id", getVpnServerClientOptions.vpnServerId());
+    pathParamsMap.put("id", getVpnServerClientOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/vpn_servers/{vpn_server_id}/clients/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getVpnServerClient");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<VPNServerClient> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<VPNServerClient>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Disconnect a VPN client.
+   *
+   * This request disconnects the specified VPN client, and deletes the client according to the VPN server's
+   * auto-deletion policy. The VPN client may reconnect unless its authentication permissions for the configured
+   * authentication methods (such as its client certificate) have been revoked.
+   *
+   * @param disconnectVpnClientOptions the {@link DisconnectVpnClientOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a void result
+   */
+  public ServiceCall<Void> disconnectVpnClient(DisconnectVpnClientOptions disconnectVpnClientOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(disconnectVpnClientOptions,
+      "disconnectVpnClientOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("vpn_server_id", disconnectVpnClientOptions.vpnServerId());
+    pathParamsMap.put("id", disconnectVpnClientOptions.id());
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/vpn_servers/{vpn_server_id}/clients/{id}/disconnect", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "disconnectVpnClient");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * List all VPN routes for a VPN server.
+   *
+   * This request lists all VPN routes in a VPN server. All VPN routes are provided to the VPN client when the
+   * connection is established.  Packets received from the VPN client will be dropped by the VPN server if there is no
+   * VPN route matching their specified destinations. All VPN routes must be unique within the VPN server.
+   *
+   * @param listVpnServerRoutesOptions the {@link ListVpnServerRoutesOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link VPNServerRouteCollection}
+   */
+  public ServiceCall<VPNServerRouteCollection> listVpnServerRoutes(ListVpnServerRoutesOptions listVpnServerRoutesOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(listVpnServerRoutesOptions,
+      "listVpnServerRoutesOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("vpn_server_id", listVpnServerRoutesOptions.vpnServerId());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/vpn_servers/{vpn_server_id}/routes", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listVpnServerRoutes");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    if (listVpnServerRoutesOptions.start() != null) {
+      builder.query("start", String.valueOf(listVpnServerRoutesOptions.start()));
+    }
+    if (listVpnServerRoutesOptions.limit() != null) {
+      builder.query("limit", String.valueOf(listVpnServerRoutesOptions.limit()));
+    }
+    if (listVpnServerRoutesOptions.sort() != null) {
+      builder.query("sort", String.valueOf(listVpnServerRoutesOptions.sort()));
+    }
+    ResponseConverter<VPNServerRouteCollection> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<VPNServerRouteCollection>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Create a VPN route for a VPN server.
+   *
+   * This request creates a new VPN route in the VPN server. All VPN routes are provided to the VPN client when the
+   * connection is established. Packets received from the VPN client will be dropped by the VPN server if there is no
+   * VPN route matching their specified destinations. All VPN routes must be unique within the VPN server. destination
+   * of the packet.
+   *
+   * @param createVpnServerRouteOptions the {@link CreateVpnServerRouteOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link VPNServerRoute}
+   */
+  public ServiceCall<VPNServerRoute> createVpnServerRoute(CreateVpnServerRouteOptions createVpnServerRouteOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(createVpnServerRouteOptions,
+      "createVpnServerRouteOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("vpn_server_id", createVpnServerRouteOptions.vpnServerId());
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/vpn_servers/{vpn_server_id}/routes", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "createVpnServerRoute");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    final JsonObject contentJson = new JsonObject();
+    contentJson.addProperty("destination", createVpnServerRouteOptions.destination());
+    if (createVpnServerRouteOptions.action() != null) {
+      contentJson.addProperty("action", createVpnServerRouteOptions.action());
+    }
+    if (createVpnServerRouteOptions.name() != null) {
+      contentJson.addProperty("name", createVpnServerRouteOptions.name());
+    }
+    builder.bodyJson(contentJson);
+    ResponseConverter<VPNServerRoute> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<VPNServerRoute>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Delete a VPN route.
+   *
+   * This request deletes a VPN route. This operation cannot be reversed.
+   *
+   * @param deleteVpnServerRouteOptions the {@link DeleteVpnServerRouteOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a void result
+   */
+  public ServiceCall<Void> deleteVpnServerRoute(DeleteVpnServerRouteOptions deleteVpnServerRouteOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(deleteVpnServerRouteOptions,
+      "deleteVpnServerRouteOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("vpn_server_id", deleteVpnServerRouteOptions.vpnServerId());
+    pathParamsMap.put("id", deleteVpnServerRouteOptions.id());
+    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/vpn_servers/{vpn_server_id}/routes/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "deleteVpnServerRoute");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Retrieve a VPN route.
+   *
+   * This request retrieves a single VPN route specified by the identifier in the URL.
+   *
+   * @param getVpnServerRouteOptions the {@link GetVpnServerRouteOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link VPNServerRoute}
+   */
+  public ServiceCall<VPNServerRoute> getVpnServerRoute(GetVpnServerRouteOptions getVpnServerRouteOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(getVpnServerRouteOptions,
+      "getVpnServerRouteOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("vpn_server_id", getVpnServerRouteOptions.vpnServerId());
+    pathParamsMap.put("id", getVpnServerRouteOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/vpn_servers/{vpn_server_id}/routes/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getVpnServerRoute");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<VPNServerRoute> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<VPNServerRoute>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Update a VPN route.
+   *
+   * This request updates a VPN route with the information in a provided VPN route patch. The VPN route patch object is
+   * structured in the same way as a retrieved VPN route and contains only the information to be updated.
+   *
+   * @param updateVpnServerRouteOptions the {@link UpdateVpnServerRouteOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link VPNServerRoute}
+   */
+  public ServiceCall<VPNServerRoute> updateVpnServerRoute(UpdateVpnServerRouteOptions updateVpnServerRouteOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(updateVpnServerRouteOptions,
+      "updateVpnServerRouteOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("vpn_server_id", updateVpnServerRouteOptions.vpnServerId());
+    pathParamsMap.put("id", updateVpnServerRouteOptions.id());
+    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/vpn_servers/{vpn_server_id}/routes/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "updateVpnServerRoute");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateVpnServerRouteOptions.vpnServerRoutePatch()), "application/merge-patch+json");
+    ResponseConverter<VPNServerRoute> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<VPNServerRoute>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
   }
 

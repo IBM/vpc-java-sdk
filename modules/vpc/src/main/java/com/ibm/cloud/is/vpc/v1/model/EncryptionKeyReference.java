@@ -26,7 +26,7 @@ public class EncryptionKeyReference extends GenericModel {
    *
    * The CRN of the [Key Protect Root
    * Key](https://cloud.ibm.com/docs/key-protect?topic=key-protect-getting-started-tutorial) or [Hyper Protect Crypto
-   * Service Root Key](https://cloud.ibm.com/docs/hs-crypto?topic=hs-crypto-get-started) for this resource.
+   * Services Root Key](https://cloud.ibm.com/docs/hs-crypto?topic=hs-crypto-get-started) for this resource.
    *
    * @return the crn
    */

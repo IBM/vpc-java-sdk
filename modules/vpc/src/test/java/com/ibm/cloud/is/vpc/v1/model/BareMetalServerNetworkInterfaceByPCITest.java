@@ -46,7 +46,6 @@ public class BareMetalServerNetworkInterfaceByPCITest {
     assertNull(bareMetalServerNetworkInterfaceByPciModel.getFloatingIps());
     assertNull(bareMetalServerNetworkInterfaceByPciModel.getHref());
     assertNull(bareMetalServerNetworkInterfaceByPciModel.getId());
-    assertNull(bareMetalServerNetworkInterfaceByPciModel.getInterfaceType());
     assertNull(bareMetalServerNetworkInterfaceByPciModel.getMacAddress());
     assertNull(bareMetalServerNetworkInterfaceByPciModel.getName());
     assertNull(bareMetalServerNetworkInterfaceByPciModel.getPortSpeed());
@@ -57,5 +56,6 @@ public class BareMetalServerNetworkInterfaceByPCITest {
     assertNull(bareMetalServerNetworkInterfaceByPciModel.getSubnet());
     assertNull(bareMetalServerNetworkInterfaceByPciModel.getType());
     assertNull(bareMetalServerNetworkInterfaceByPciModel.getAllowedVlans());
+    assertNull(bareMetalServerNetworkInterfaceByPciModel.getInterfaceType());
   }
 }

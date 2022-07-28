@@ -33,10 +33,10 @@ public class DeleteVolumeOptionsTest {
   public void testDeleteVolumeOptions() throws Throwable {
     DeleteVolumeOptions deleteVolumeOptionsModel = new DeleteVolumeOptions.Builder()
       .id("testString")
-      .ifMatch("96d225c4-56bd-43d9-98fc-d7148e5c5028")
+      .ifMatch("W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"")
       .build();
     assertEquals(deleteVolumeOptionsModel.id(), "testString");
-    assertEquals(deleteVolumeOptionsModel.ifMatch(), "96d225c4-56bd-43d9-98fc-d7148e5c5028");
+    assertEquals(deleteVolumeOptionsModel.ifMatch(), "W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

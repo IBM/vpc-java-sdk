@@ -23,6 +23,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  *
  * Classes which extend this class:
  * - InstanceTemplateInstanceByImage
+ * - InstanceTemplateInstanceBySourceSnapshot
  */
 public class InstanceTemplate extends GenericModel {
 
@@ -159,7 +160,7 @@ public class InstanceTemplate extends GenericModel {
   /**
    * Gets the metadataService.
    *
-   * Configuration options for the instance metadata service.
+   * The metadata service configuration.
    *
    * @return the metadataService
    */
@@ -239,7 +240,8 @@ public class InstanceTemplate extends GenericModel {
   /**
    * Gets the userData.
    *
-   * User data to be made available when setting up the virtual server instance.
+   * [User data](https://cloud.ibm.com/docs/vpc?topic=vpc-user-data) to make available when setting up the virtual
+   * server instance.
    *
    * @return the userData
    */
@@ -250,7 +252,7 @@ public class InstanceTemplate extends GenericModel {
   /**
    * Gets the volumeAttachments.
    *
-   * The volume attachments for this virtual server instance.
+   * The additional volume attachments to create for the virtual server instance.
    *
    * @return the volumeAttachments
    */
