@@ -28,8 +28,7 @@ public class LoadBalancerIdentity extends GenericModel {
   protected String crn;
   protected String href;
 
-  protected LoadBalancerIdentity() {
-  }
+  protected LoadBalancerIdentity() { }
 
   /**
    * Gets the id.

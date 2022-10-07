@@ -34,6 +34,11 @@ public class ReservedIPPatch extends GenericModel {
     private Boolean autoDelete;
     private String name;
 
+    /**
+     * Instantiates a new Builder from an existing ReservedIPPatch instance.
+     *
+     * @param reservedIpPatch the instance to initialize the Builder with
+     */
     private Builder(ReservedIPPatch reservedIpPatch) {
       this.autoDelete = reservedIpPatch.autoDelete;
       this.name = reservedIpPatch.name;
@@ -76,6 +81,8 @@ public class ReservedIPPatch extends GenericModel {
       return this;
     }
   }
+
+  protected ReservedIPPatch() { }
 
   protected ReservedIPPatch(Builder builder) {
     autoDelete = builder.autoDelete;

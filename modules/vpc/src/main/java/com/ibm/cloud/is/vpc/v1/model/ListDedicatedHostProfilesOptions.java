@@ -29,6 +29,11 @@ public class ListDedicatedHostProfilesOptions extends GenericModel {
     private String start;
     private Long limit;
 
+    /**
+     * Instantiates a new Builder from an existing ListDedicatedHostProfilesOptions instance.
+     *
+     * @param listDedicatedHostProfilesOptions the instance to initialize the Builder with
+     */
     private Builder(ListDedicatedHostProfilesOptions listDedicatedHostProfilesOptions) {
       this.start = listDedicatedHostProfilesOptions.start;
       this.limit = listDedicatedHostProfilesOptions.limit;
@@ -71,6 +76,8 @@ public class ListDedicatedHostProfilesOptions extends GenericModel {
       return this;
     }
   }
+
+  protected ListDedicatedHostProfilesOptions() { }
 
   protected ListDedicatedHostProfilesOptions(Builder builder) {
     start = builder.start;

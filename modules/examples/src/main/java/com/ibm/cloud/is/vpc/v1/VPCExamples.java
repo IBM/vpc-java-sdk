@@ -1996,7 +1996,11 @@ public class VPCExamples {
       DedicatedHostProfileCollection dedicatedHostProfileCollection = response.getResult();
 
       // end-list_dedicated_host_profiles
-      dedicatedHostProfileName = dedicatedHostProfileCollection.getProfiles().get(0).getName();
+      for (DedicatedHostProfile profile : dedicatedHostProfileCollection.getProfiles()) {
+        if (profile.getFamily().equalsIgnoreCase("balanced-disk")) {
+          dedicatedHostProfileName = profile.getName();
+        }
+      }
     } catch (ServiceResponseException e) {
       logger.error(String.format("Service returned status code %s: %s%nError details: %s",
               e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);

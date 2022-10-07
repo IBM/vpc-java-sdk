@@ -21,6 +21,8 @@ public class InstanceGroupMembershipCollectionFirst extends GenericModel {
 
   protected String href;
 
+  protected InstanceGroupMembershipCollectionFirst() { }
+
   /**
    * Gets the href.
    *

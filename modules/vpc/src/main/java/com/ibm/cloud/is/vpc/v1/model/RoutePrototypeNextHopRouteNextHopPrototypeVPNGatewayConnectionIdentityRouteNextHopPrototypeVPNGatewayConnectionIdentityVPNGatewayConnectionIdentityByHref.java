@@ -24,6 +24,11 @@ public class RoutePrototypeNextHopRouteNextHopPrototypeVPNGatewayConnectionIdent
   public static class Builder {
     private String href;
 
+    /**
+     * Instantiates a new Builder from an existing RoutePrototypeNextHopRouteNextHopPrototypeVPNGatewayConnectionIdentityRouteNextHopPrototypeVPNGatewayConnectionIdentityVPNGatewayConnectionIdentityByHref instance.
+     *
+     * @param routePrototypeNextHopRouteNextHopPrototypeVpnGatewayConnectionIdentityRouteNextHopPrototypeVpnGatewayConnectionIdentityVpnGatewayConnectionIdentityByHref the instance to initialize the Builder with
+     */
     public Builder(RoutePrototypeNextHopRouteNextHopPrototypeVPNGatewayConnectionIdentity routePrototypeNextHopRouteNextHopPrototypeVpnGatewayConnectionIdentityRouteNextHopPrototypeVpnGatewayConnectionIdentityVpnGatewayConnectionIdentityByHref) {
       this.href = routePrototypeNextHopRouteNextHopPrototypeVpnGatewayConnectionIdentityRouteNextHopPrototypeVpnGatewayConnectionIdentityVpnGatewayConnectionIdentityByHref.href;
     }
@@ -63,6 +68,8 @@ public class RoutePrototypeNextHopRouteNextHopPrototypeVPNGatewayConnectionIdent
       return this;
     }
   }
+
+  protected RoutePrototypeNextHopRouteNextHopPrototypeVPNGatewayConnectionIdentityRouteNextHopPrototypeVPNGatewayConnectionIdentityVPNGatewayConnectionIdentityByHref() { }
 
   protected RoutePrototypeNextHopRouteNextHopPrototypeVPNGatewayConnectionIdentityRouteNextHopPrototypeVPNGatewayConnectionIdentityVPNGatewayConnectionIdentityByHref(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.href,

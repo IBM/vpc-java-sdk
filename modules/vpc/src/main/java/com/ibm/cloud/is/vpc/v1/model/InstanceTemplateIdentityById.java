@@ -24,6 +24,11 @@ public class InstanceTemplateIdentityById extends InstanceTemplateIdentity {
   public static class Builder {
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing InstanceTemplateIdentityById instance.
+     *
+     * @param instanceTemplateIdentityById the instance to initialize the Builder with
+     */
     public Builder(InstanceTemplateIdentity instanceTemplateIdentityById) {
       this.id = instanceTemplateIdentityById.id;
     }
@@ -63,6 +68,8 @@ public class InstanceTemplateIdentityById extends InstanceTemplateIdentity {
       return this;
     }
   }
+
+  protected InstanceTemplateIdentityById() { }
 
   protected InstanceTemplateIdentityById(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.id,

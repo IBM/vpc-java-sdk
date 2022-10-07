@@ -24,6 +24,11 @@ public class NetworkACLIdentityByCRN extends NetworkACLIdentity {
   public static class Builder {
     private String crn;
 
+    /**
+     * Instantiates a new Builder from an existing NetworkACLIdentityByCRN instance.
+     *
+     * @param networkAclIdentityByCrn the instance to initialize the Builder with
+     */
     public Builder(NetworkACLIdentity networkAclIdentityByCrn) {
       this.crn = networkAclIdentityByCrn.crn;
     }
@@ -63,6 +68,8 @@ public class NetworkACLIdentityByCRN extends NetworkACLIdentity {
       return this;
     }
   }
+
+  protected NetworkACLIdentityByCRN() { }
 
   protected NetworkACLIdentityByCRN(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.crn,

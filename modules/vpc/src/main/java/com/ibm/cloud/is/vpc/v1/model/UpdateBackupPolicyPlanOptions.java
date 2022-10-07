@@ -35,6 +35,11 @@ public class UpdateBackupPolicyPlanOptions extends GenericModel {
     private Map<String, Object> backupPolicyPlanPatch;
     private String ifMatch;
 
+    /**
+     * Instantiates a new Builder from an existing UpdateBackupPolicyPlanOptions instance.
+     *
+     * @param updateBackupPolicyPlanOptions the instance to initialize the Builder with
+     */
     private Builder(UpdateBackupPolicyPlanOptions updateBackupPolicyPlanOptions) {
       this.backupPolicyId = updateBackupPolicyPlanOptions.backupPolicyId;
       this.id = updateBackupPolicyPlanOptions.id;
@@ -114,6 +119,8 @@ public class UpdateBackupPolicyPlanOptions extends GenericModel {
       return this;
     }
   }
+
+  protected UpdateBackupPolicyPlanOptions() { }
 
   protected UpdateBackupPolicyPlanOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.backupPolicyId,

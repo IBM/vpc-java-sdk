@@ -25,5 +25,7 @@ public class DedicatedHostProfileSocketRange extends DedicatedHostProfileSocket 
     String RANGE = "range";
   }
 
+
+  protected DedicatedHostProfileSocketRange() { }
 }
 

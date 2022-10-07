@@ -30,8 +30,7 @@ public class FloatingIPPrototype extends GenericModel {
   protected ZoneIdentity zone;
   protected FloatingIPByTargetNetworkInterfaceIdentity target;
 
-  protected FloatingIPPrototype() {
-  }
+  protected FloatingIPPrototype() { }
 
   /**
    * Gets the name.

@@ -26,10 +26,12 @@ public class VolumeAttachmentReferenceInstanceContext extends GenericModel {
   protected String name;
   protected VolumeReference volume;
 
+  protected VolumeAttachmentReferenceInstanceContext() { }
+
   /**
    * Gets the deleted.
    *
-   * If present, this property indicates the referenced resource has been deleted and provides
+   * If present, this property indicates the referenced resource has been deleted, and provides
    * some supplementary information.
    *
    * @return the deleted
@@ -88,6 +90,8 @@ public class VolumeAttachmentReferenceInstanceContext extends GenericModel {
    * Gets the volume.
    *
    * The attached volume.
+   *
+   * This property will be absent if the volume has not yet been provisioned.
    *
    * @return the volume
    */

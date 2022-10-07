@@ -27,6 +27,11 @@ public class GetLoadBalancerStatisticsOptions extends GenericModel {
   public static class Builder {
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing GetLoadBalancerStatisticsOptions instance.
+     *
+     * @param getLoadBalancerStatisticsOptions the instance to initialize the Builder with
+     */
     private Builder(GetLoadBalancerStatisticsOptions getLoadBalancerStatisticsOptions) {
       this.id = getLoadBalancerStatisticsOptions.id;
     }
@@ -66,6 +71,8 @@ public class GetLoadBalancerStatisticsOptions extends GenericModel {
       return this;
     }
   }
+
+  protected GetLoadBalancerStatisticsOptions() { }
 
   protected GetLoadBalancerStatisticsOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,

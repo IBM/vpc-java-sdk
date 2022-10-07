@@ -25,6 +25,8 @@ public class VPNGatewayConnectionLocalCIDRs extends GenericModel {
   @SerializedName("local_cidrs")
   protected List<String> localCidrs;
 
+  protected VPNGatewayConnectionLocalCIDRs() { }
+
   /**
    * Gets the localCidrs.
    *

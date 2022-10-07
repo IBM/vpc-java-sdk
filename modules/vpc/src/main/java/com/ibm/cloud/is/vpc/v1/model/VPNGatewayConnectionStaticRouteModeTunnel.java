@@ -34,6 +34,8 @@ public class VPNGatewayConnectionStaticRouteModeTunnel extends GenericModel {
   protected IP publicIp;
   protected String status;
 
+  protected VPNGatewayConnectionStaticRouteModeTunnel() { }
+
   /**
    * Gets the publicIp.
    *

@@ -33,6 +33,8 @@ public class BareMetalServerProfileReference extends GenericModel {
   @SerializedName("resource_type")
   protected String resourceType;
 
+  protected BareMetalServerProfileReference() { }
+
   /**
    * Gets the href.
    *

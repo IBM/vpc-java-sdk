@@ -40,6 +40,11 @@ public class SubnetPrototypeSubnetByTotalCount extends SubnetPrototype {
     private Long totalIpv4AddressCount;
     private ZoneIdentity zone;
 
+    /**
+     * Instantiates a new Builder from an existing SubnetPrototypeSubnetByTotalCount instance.
+     *
+     * @param subnetPrototypeSubnetByTotalCount the instance to initialize the Builder with
+     */
     public Builder(SubnetPrototype subnetPrototypeSubnetByTotalCount) {
       this.ipVersion = subnetPrototypeSubnetByTotalCount.ipVersion;
       this.name = subnetPrototypeSubnetByTotalCount.name;
@@ -179,6 +184,8 @@ public class SubnetPrototypeSubnetByTotalCount extends SubnetPrototype {
       return this;
     }
   }
+
+  protected SubnetPrototypeSubnetByTotalCount() { }
 
   protected SubnetPrototypeSubnetByTotalCount(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.vpc,

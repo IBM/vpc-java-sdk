@@ -35,6 +35,11 @@ public class VolumePrototypeVolumeBySourceSnapshot extends VolumePrototype {
     private EncryptionKeyIdentity encryptionKey;
     private SnapshotIdentity sourceSnapshot;
 
+    /**
+     * Instantiates a new Builder from an existing VolumePrototypeVolumeBySourceSnapshot instance.
+     *
+     * @param volumePrototypeVolumeBySourceSnapshot the instance to initialize the Builder with
+     */
     public Builder(VolumePrototype volumePrototypeVolumeBySourceSnapshot) {
       this.iops = volumePrototypeVolumeBySourceSnapshot.iops;
       this.name = volumePrototypeVolumeBySourceSnapshot.name;
@@ -191,6 +196,8 @@ public class VolumePrototypeVolumeBySourceSnapshot extends VolumePrototype {
       return this;
     }
   }
+
+  protected VolumePrototypeVolumeBySourceSnapshot() { }
 
   protected VolumePrototypeVolumeBySourceSnapshot(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.profile,

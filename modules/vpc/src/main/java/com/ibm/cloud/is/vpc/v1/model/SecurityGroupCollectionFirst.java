@@ -21,6 +21,8 @@ public class SecurityGroupCollectionFirst extends GenericModel {
 
   protected String href;
 
+  protected SecurityGroupCollectionFirst() { }
+
   /**
    * Gets the href.
    *

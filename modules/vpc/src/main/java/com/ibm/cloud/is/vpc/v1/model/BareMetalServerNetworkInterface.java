@@ -22,6 +22,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  * BareMetalServerNetworkInterface.
  *
  * Classes which extend this class:
+ * - BareMetalServerNetworkInterfaceByHiperSocket
  * - BareMetalServerNetworkInterfaceByPCI
  * - BareMetalServerNetworkInterfaceByVLAN
  */
@@ -31,12 +32,15 @@ public class BareMetalServerNetworkInterface extends GenericModel {
   protected static java.util.Map<String, Class<?>> discriminatorMapping;
   static {
     discriminatorMapping = new java.util.HashMap<>();
+    discriminatorMapping.put("hipersocket", BareMetalServerNetworkInterfaceByHiperSocket.class);
     discriminatorMapping.put("pci", BareMetalServerNetworkInterfaceByPCI.class);
     discriminatorMapping.put("vlan", BareMetalServerNetworkInterfaceByVLAN.class);
   }
 
   /**
    * The network interface type:
+   * - `hipersocket`: a virtual network device that provides high-speed TCP/IP connectivity
+   *   within a `s390x` based system
    * - `pci`: a physical PCI device which can only be created or deleted when the bare metal
    *   server is stopped
    *   - Has an `allowed_vlans` property which controls the VLANs that will be permitted
@@ -47,8 +51,14 @@ public class BareMetalServerNetworkInterface extends GenericModel {
    *   - Must use an IEEE 802.1q tag.
    *   - Has its own security groups and does not inherit those of the PCI device through
    *     which traffic flows.
+   *
+   * The enumerated values for this property are expected to expand in the future. When processing this property, check
+   * for and log unknown values. Optionally halt processing and surface the error, or bypass the resource on which the
+   * unexpected property value was encountered.
    */
   public interface InterfaceType {
+    /** hipersocket. */
+    String HIPERSOCKET = "hipersocket";
     /** pci. */
     String PCI = "pci";
     /** vlan. */
@@ -119,8 +129,7 @@ public class BareMetalServerNetworkInterface extends GenericModel {
   protected Boolean allowInterfaceToFloat;
   protected Long vlan;
 
-  protected BareMetalServerNetworkInterface() {
-  }
+  protected BareMetalServerNetworkInterface() { }
 
   /**
    * Gets the allowIpSpoofing.
@@ -153,10 +162,12 @@ public class BareMetalServerNetworkInterface extends GenericModel {
    *   - A single floating IP can be assigned to the network interface.
    *
    * If `false`:
-   *   - Packets are passed unmodified to/from the network interface,
+   *   - Packets are passed unchanged to/from the network interface,
    *     allowing the workload to perform any needed NAT operations.
    *   - Multiple floating IPs can be assigned to the network interface.
    *   - `allow_ip_spoofing` must be set to `false`.
+   *
+   * This must be `true` when `interface_type` is `hipersocket`.
    *
    * @return the enableInfrastructureNat
    */
@@ -201,6 +212,8 @@ public class BareMetalServerNetworkInterface extends GenericModel {
    * Gets the interfaceType.
    *
    * The network interface type:
+   * - `hipersocket`: a virtual network device that provides high-speed TCP/IP connectivity
+   *   within a `s390x` based system
    * - `pci`: a physical PCI device which can only be created or deleted when the bare metal
    *   server is stopped
    *   - Has an `allowed_vlans` property which controls the VLANs that will be permitted
@@ -211,6 +224,10 @@ public class BareMetalServerNetworkInterface extends GenericModel {
    *   - Must use an IEEE 802.1q tag.
    *   - Has its own security groups and does not inherit those of the PCI device through
    *     which traffic flows.
+   *
+   * The enumerated values for this property are expected to expand in the future. When processing this property, check
+   * for and log unknown values. Optionally halt processing and surface the error, or bypass the resource on which the
+   * unexpected property value was encountered.
    *
    * @return the interfaceType
    */
@@ -318,8 +335,7 @@ public class BareMetalServerNetworkInterface extends GenericModel {
   /**
    * Gets the allowedVlans.
    *
-   * Indicates what VLAN IDs (for VLAN type only) can use this physical (PCI type) interface.  A given VLAN can only be
-   * in the `allowed_vlans` array for one PCI type adapter per bare metal server.
+   * Indicates what VLAN IDs (for VLAN type only) can use this physical (PCI type) interface.
    *
    * @return the allowedVlans
    */

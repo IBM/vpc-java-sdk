@@ -30,6 +30,11 @@ public class SecurityGroupPatch extends GenericModel {
   public static class Builder {
     private String name;
 
+    /**
+     * Instantiates a new Builder from an existing SecurityGroupPatch instance.
+     *
+     * @param securityGroupPatch the instance to initialize the Builder with
+     */
     private Builder(SecurityGroupPatch securityGroupPatch) {
       this.name = securityGroupPatch.name;
     }
@@ -60,6 +65,8 @@ public class SecurityGroupPatch extends GenericModel {
       return this;
     }
   }
+
+  protected SecurityGroupPatch() { }
 
   protected SecurityGroupPatch(Builder builder) {
     name = builder.name;

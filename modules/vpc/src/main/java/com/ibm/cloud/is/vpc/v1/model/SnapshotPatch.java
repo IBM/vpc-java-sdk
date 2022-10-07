@@ -36,6 +36,11 @@ public class SnapshotPatch extends GenericModel {
     private String name;
     private List<String> userTags;
 
+    /**
+     * Instantiates a new Builder from an existing SnapshotPatch instance.
+     *
+     * @param snapshotPatch the instance to initialize the Builder with
+     */
     private Builder(SnapshotPatch snapshotPatch) {
       this.name = snapshotPatch.name;
       this.userTags = snapshotPatch.userTags;
@@ -95,6 +100,8 @@ public class SnapshotPatch extends GenericModel {
       return this;
     }
   }
+
+  protected SnapshotPatch() { }
 
   protected SnapshotPatch(Builder builder) {
     name = builder.name;

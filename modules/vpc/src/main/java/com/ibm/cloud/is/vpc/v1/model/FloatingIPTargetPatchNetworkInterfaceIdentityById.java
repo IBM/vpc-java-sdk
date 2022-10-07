@@ -24,6 +24,11 @@ public class FloatingIPTargetPatchNetworkInterfaceIdentityById extends FloatingI
   public static class Builder {
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing FloatingIPTargetPatchNetworkInterfaceIdentityById instance.
+     *
+     * @param floatingIpTargetPatchNetworkInterfaceIdentityById the instance to initialize the Builder with
+     */
     public Builder(FloatingIPTargetPatch floatingIpTargetPatchNetworkInterfaceIdentityById) {
       this.id = floatingIpTargetPatchNetworkInterfaceIdentityById.id;
     }
@@ -63,6 +68,8 @@ public class FloatingIPTargetPatchNetworkInterfaceIdentityById extends FloatingI
       return this;
     }
   }
+
+  protected FloatingIPTargetPatchNetworkInterfaceIdentityById() { }
 
   protected FloatingIPTargetPatchNetworkInterfaceIdentityById(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.id,

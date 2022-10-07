@@ -34,8 +34,7 @@ public class NetworkACLPrototype extends GenericModel {
   @SerializedName("source_network_acl")
   protected NetworkACLIdentity sourceNetworkAcl;
 
-  protected NetworkACLPrototype() {
-  }
+  protected NetworkACLPrototype() { }
 
   /**
    * Gets the name.
@@ -64,7 +63,7 @@ public class NetworkACLPrototype extends GenericModel {
   /**
    * Gets the vpc.
    *
-   * The VPC this network ACL is to be a part of.
+   * The VPC this network ACL will reside in.
    *
    * @return the vpc
    */

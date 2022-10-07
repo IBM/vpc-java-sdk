@@ -30,6 +30,8 @@ public class FloatingIPCollection extends GenericModel {
   @SerializedName("total_count")
   protected Long totalCount;
 
+  protected FloatingIPCollection() { }
+
   /**
    * Gets the first.
    *

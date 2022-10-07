@@ -34,6 +34,11 @@ public class LoadBalancerPoolMemberPatch extends GenericModel {
     private LoadBalancerPoolMemberTargetPrototype target;
     private Long weight;
 
+    /**
+     * Instantiates a new Builder from an existing LoadBalancerPoolMemberPatch instance.
+     *
+     * @param loadBalancerPoolMemberPatch the instance to initialize the Builder with
+     */
     private Builder(LoadBalancerPoolMemberPatch loadBalancerPoolMemberPatch) {
       this.port = loadBalancerPoolMemberPatch.port;
       this.target = loadBalancerPoolMemberPatch.target;
@@ -88,6 +93,8 @@ public class LoadBalancerPoolMemberPatch extends GenericModel {
       return this;
     }
   }
+
+  protected LoadBalancerPoolMemberPatch() { }
 
   protected LoadBalancerPoolMemberPatch(Builder builder) {
     port = builder.port;

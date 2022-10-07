@@ -25,5 +25,7 @@ public class DedicatedHostProfileSocketEnum extends DedicatedHostProfileSocket {
     String X_ENUM = "enum";
   }
 
+
+  protected DedicatedHostProfileSocketEnum() { }
 }
 

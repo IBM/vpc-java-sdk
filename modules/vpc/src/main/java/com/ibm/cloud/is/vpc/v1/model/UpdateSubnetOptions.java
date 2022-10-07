@@ -31,6 +31,11 @@ public class UpdateSubnetOptions extends GenericModel {
     private String id;
     private Map<String, Object> subnetPatch;
 
+    /**
+     * Instantiates a new Builder from an existing UpdateSubnetOptions instance.
+     *
+     * @param updateSubnetOptions the instance to initialize the Builder with
+     */
     private Builder(UpdateSubnetOptions updateSubnetOptions) {
       this.id = updateSubnetOptions.id;
       this.subnetPatch = updateSubnetOptions.subnetPatch;
@@ -84,6 +89,8 @@ public class UpdateSubnetOptions extends GenericModel {
       return this;
     }
   }
+
+  protected UpdateSubnetOptions() { }
 
   protected UpdateSubnetOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,

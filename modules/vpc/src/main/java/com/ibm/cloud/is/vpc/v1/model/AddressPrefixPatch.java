@@ -34,6 +34,11 @@ public class AddressPrefixPatch extends GenericModel {
     private Boolean isDefault;
     private String name;
 
+    /**
+     * Instantiates a new Builder from an existing AddressPrefixPatch instance.
+     *
+     * @param addressPrefixPatch the instance to initialize the Builder with
+     */
     private Builder(AddressPrefixPatch addressPrefixPatch) {
       this.isDefault = addressPrefixPatch.isDefault;
       this.name = addressPrefixPatch.name;
@@ -76,6 +81,8 @@ public class AddressPrefixPatch extends GenericModel {
       return this;
     }
   }
+
+  protected AddressPrefixPatch() { }
 
   protected AddressPrefixPatch(Builder builder) {
     isDefault = builder.isDefault;

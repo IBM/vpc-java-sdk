@@ -29,6 +29,11 @@ public class DeleteSnapshotOptions extends GenericModel {
     private String id;
     private String ifMatch;
 
+    /**
+     * Instantiates a new Builder from an existing DeleteSnapshotOptions instance.
+     *
+     * @param deleteSnapshotOptions the instance to initialize the Builder with
+     */
     private Builder(DeleteSnapshotOptions deleteSnapshotOptions) {
       this.id = deleteSnapshotOptions.id;
       this.ifMatch = deleteSnapshotOptions.ifMatch;
@@ -80,6 +85,8 @@ public class DeleteSnapshotOptions extends GenericModel {
       return this;
     }
   }
+
+  protected DeleteSnapshotOptions() { }
 
   protected DeleteSnapshotOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,

@@ -51,6 +51,11 @@ public class ListInstancesOptions extends GenericModel {
     private String placementGroupCrn;
     private String placementGroupName;
 
+    /**
+     * Instantiates a new Builder from an existing ListInstancesOptions instance.
+     *
+     * @param listInstancesOptions the instance to initialize the Builder with
+     */
     private Builder(ListInstancesOptions listInstancesOptions) {
       this.start = listInstancesOptions.start;
       this.limit = listInstancesOptions.limit;
@@ -225,6 +230,8 @@ public class ListInstancesOptions extends GenericModel {
       return this;
     }
   }
+
+  protected ListInstancesOptions() { }
 
   protected ListInstancesOptions(Builder builder) {
     start = builder.start;

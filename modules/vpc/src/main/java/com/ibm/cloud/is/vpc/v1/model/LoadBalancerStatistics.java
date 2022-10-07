@@ -28,6 +28,8 @@ public class LoadBalancerStatistics extends GenericModel {
   protected Long dataProcessedThisMonth;
   protected Float throughput;
 
+  protected LoadBalancerStatistics() { }
+
   /**
    * Gets the activeConnections.
    *

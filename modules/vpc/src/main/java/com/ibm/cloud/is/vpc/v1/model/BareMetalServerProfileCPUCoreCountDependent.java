@@ -25,5 +25,7 @@ public class BareMetalServerProfileCPUCoreCountDependent extends BareMetalServer
     String DEPENDENT = "dependent";
   }
 
+
+  protected BareMetalServerProfileCPUCoreCountDependent() { }
 }
 

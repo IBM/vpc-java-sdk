@@ -25,5 +25,7 @@ public class InstanceProfileMemoryDependent extends InstanceProfileMemory {
     String DEPENDENT = "dependent";
   }
 
+
+  protected InstanceProfileMemoryDependent() { }
 }
 

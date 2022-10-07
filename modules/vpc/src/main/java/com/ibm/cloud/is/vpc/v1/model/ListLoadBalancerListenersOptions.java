@@ -27,6 +27,11 @@ public class ListLoadBalancerListenersOptions extends GenericModel {
   public static class Builder {
     private String loadBalancerId;
 
+    /**
+     * Instantiates a new Builder from an existing ListLoadBalancerListenersOptions instance.
+     *
+     * @param listLoadBalancerListenersOptions the instance to initialize the Builder with
+     */
     private Builder(ListLoadBalancerListenersOptions listLoadBalancerListenersOptions) {
       this.loadBalancerId = listLoadBalancerListenersOptions.loadBalancerId;
     }
@@ -66,6 +71,8 @@ public class ListLoadBalancerListenersOptions extends GenericModel {
       return this;
     }
   }
+
+  protected ListLoadBalancerListenersOptions() { }
 
   protected ListLoadBalancerListenersOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.loadBalancerId,

@@ -25,5 +25,7 @@ public class InstancePlacementTargetDedicatedHostGroupReference extends Instance
     String DEDICATED_HOST_GROUP = "dedicated_host_group";
   }
 
+
+  protected InstancePlacementTargetDedicatedHostGroupReference() { }
 }
 

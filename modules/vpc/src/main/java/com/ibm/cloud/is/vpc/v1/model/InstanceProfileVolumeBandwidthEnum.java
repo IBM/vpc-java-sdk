@@ -26,5 +26,7 @@ public class InstanceProfileVolumeBandwidthEnum extends InstanceProfileVolumeBan
     String X_ENUM = "enum";
   }
 
+
+  protected InstanceProfileVolumeBandwidthEnum() { }
 }
 

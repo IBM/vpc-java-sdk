@@ -27,6 +27,11 @@ public class GetPublicGatewayOptions extends GenericModel {
   public static class Builder {
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing GetPublicGatewayOptions instance.
+     *
+     * @param getPublicGatewayOptions the instance to initialize the Builder with
+     */
     private Builder(GetPublicGatewayOptions getPublicGatewayOptions) {
       this.id = getPublicGatewayOptions.id;
     }
@@ -66,6 +71,8 @@ public class GetPublicGatewayOptions extends GenericModel {
       return this;
     }
   }
+
+  protected GetPublicGatewayOptions() { }
 
   protected GetPublicGatewayOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,

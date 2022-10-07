@@ -25,11 +25,17 @@ public class BareMetalServerProfileDiskSupportedInterfaces extends GenericModel 
   /**
    * The disk interface used for attaching the disk.
    *
+   * - `fcp`: Attached using Fiber Channel Protocol
+   * - `sata`: Attached using Serial Advanced Technology Attachment
+   * - `nvme`: Attached using Non-Volatile Memory Express
+   *
    * The enumerated values for this property are expected to expand in the future. When processing this property, check
    * for and log unknown values. Optionally halt processing and surface the error, or bypass the resource on which the
    * unexpected property value was encountered.
    */
   public interface XDefault {
+    /** fcp. */
+    String FCP = "fcp";
     /** nvme. */
     String NVME = "nvme";
     /** sata. */
@@ -47,11 +53,17 @@ public class BareMetalServerProfileDiskSupportedInterfaces extends GenericModel 
   /**
    * The disk interface used for attaching the disk.
    *
+   * - `fcp`: Attached using Fiber Channel Protocol
+   * - `sata`: Attached using Serial Advanced Technology Attachment
+   * - `nvme`: Attached using Non-Volatile Memory Express
+   *
    * The enumerated values for this property are expected to expand in the future. When processing this property, check
    * for and log unknown values. Optionally halt processing and surface the error, or bypass the resource on which the
    * unexpected property value was encountered.
    */
   public interface Values {
+    /** fcp. */
+    String FCP = "fcp";
     /** nvme. */
     String NVME = "nvme";
     /** sata. */
@@ -63,10 +75,16 @@ public class BareMetalServerProfileDiskSupportedInterfaces extends GenericModel 
   protected String type;
   protected List<String> values;
 
+  protected BareMetalServerProfileDiskSupportedInterfaces() { }
+
   /**
    * Gets the xDefault.
    *
    * The disk interface used for attaching the disk.
+   *
+   * - `fcp`: Attached using Fiber Channel Protocol
+   * - `sata`: Attached using Serial Advanced Technology Attachment
+   * - `nvme`: Attached using Non-Volatile Memory Express
    *
    * The enumerated values for this property are expected to expand in the future. When processing this property, check
    * for and log unknown values. Optionally halt processing and surface the error, or bypass the resource on which the

@@ -29,6 +29,11 @@ public class DeleteBareMetalServerNetworkInterfaceOptions extends GenericModel {
     private String bareMetalServerId;
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing DeleteBareMetalServerNetworkInterfaceOptions instance.
+     *
+     * @param deleteBareMetalServerNetworkInterfaceOptions the instance to initialize the Builder with
+     */
     private Builder(DeleteBareMetalServerNetworkInterfaceOptions deleteBareMetalServerNetworkInterfaceOptions) {
       this.bareMetalServerId = deleteBareMetalServerNetworkInterfaceOptions.bareMetalServerId;
       this.id = deleteBareMetalServerNetworkInterfaceOptions.id;
@@ -82,6 +87,8 @@ public class DeleteBareMetalServerNetworkInterfaceOptions extends GenericModel {
       return this;
     }
   }
+
+  protected DeleteBareMetalServerNetworkInterfaceOptions() { }
 
   protected DeleteBareMetalServerNetworkInterfaceOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.bareMetalServerId,

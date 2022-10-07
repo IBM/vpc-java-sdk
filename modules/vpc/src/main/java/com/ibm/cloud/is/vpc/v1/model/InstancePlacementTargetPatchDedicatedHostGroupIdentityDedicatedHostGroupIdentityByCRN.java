@@ -24,6 +24,11 @@ public class InstancePlacementTargetPatchDedicatedHostGroupIdentityDedicatedHost
   public static class Builder {
     private String crn;
 
+    /**
+     * Instantiates a new Builder from an existing InstancePlacementTargetPatchDedicatedHostGroupIdentityDedicatedHostGroupIdentityByCRN instance.
+     *
+     * @param instancePlacementTargetPatchDedicatedHostGroupIdentityDedicatedHostGroupIdentityByCrn the instance to initialize the Builder with
+     */
     public Builder(InstancePlacementTargetPatchDedicatedHostGroupIdentity instancePlacementTargetPatchDedicatedHostGroupIdentityDedicatedHostGroupIdentityByCrn) {
       this.crn = instancePlacementTargetPatchDedicatedHostGroupIdentityDedicatedHostGroupIdentityByCrn.crn;
     }
@@ -63,6 +68,8 @@ public class InstancePlacementTargetPatchDedicatedHostGroupIdentityDedicatedHost
       return this;
     }
   }
+
+  protected InstancePlacementTargetPatchDedicatedHostGroupIdentityDedicatedHostGroupIdentityByCRN() { }
 
   protected InstancePlacementTargetPatchDedicatedHostGroupIdentityDedicatedHostGroupIdentityByCRN(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.crn,

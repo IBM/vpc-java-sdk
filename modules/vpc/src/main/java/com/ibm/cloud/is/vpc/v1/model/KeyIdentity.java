@@ -30,8 +30,7 @@ public class KeyIdentity extends GenericModel {
   protected String href;
   protected String fingerprint;
 
-  protected KeyIdentity() {
-  }
+  protected KeyIdentity() { }
 
   /**
    * Gets the id.

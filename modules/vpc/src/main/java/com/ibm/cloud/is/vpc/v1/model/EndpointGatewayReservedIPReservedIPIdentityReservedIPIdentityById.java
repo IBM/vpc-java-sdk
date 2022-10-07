@@ -24,6 +24,11 @@ public class EndpointGatewayReservedIPReservedIPIdentityReservedIPIdentityById e
   public static class Builder {
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing EndpointGatewayReservedIPReservedIPIdentityReservedIPIdentityById instance.
+     *
+     * @param endpointGatewayReservedIpReservedIpIdentityReservedIpIdentityById the instance to initialize the Builder with
+     */
     public Builder(EndpointGatewayReservedIPReservedIPIdentity endpointGatewayReservedIpReservedIpIdentityReservedIpIdentityById) {
       this.id = endpointGatewayReservedIpReservedIpIdentityReservedIpIdentityById.id;
     }
@@ -63,6 +68,8 @@ public class EndpointGatewayReservedIPReservedIPIdentityReservedIPIdentityById e
       return this;
     }
   }
+
+  protected EndpointGatewayReservedIPReservedIPIdentityReservedIPIdentityById() { }
 
   protected EndpointGatewayReservedIPReservedIPIdentityReservedIPIdentityById(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.id,

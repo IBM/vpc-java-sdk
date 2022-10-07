@@ -33,6 +33,11 @@ public class UpdateInstanceVolumeAttachmentOptions extends GenericModel {
     private String id;
     private Map<String, Object> volumeAttachmentPatch;
 
+    /**
+     * Instantiates a new Builder from an existing UpdateInstanceVolumeAttachmentOptions instance.
+     *
+     * @param updateInstanceVolumeAttachmentOptions the instance to initialize the Builder with
+     */
     private Builder(UpdateInstanceVolumeAttachmentOptions updateInstanceVolumeAttachmentOptions) {
       this.instanceId = updateInstanceVolumeAttachmentOptions.instanceId;
       this.id = updateInstanceVolumeAttachmentOptions.id;
@@ -100,6 +105,8 @@ public class UpdateInstanceVolumeAttachmentOptions extends GenericModel {
       return this;
     }
   }
+
+  protected UpdateInstanceVolumeAttachmentOptions() { }
 
   protected UpdateInstanceVolumeAttachmentOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.instanceId,

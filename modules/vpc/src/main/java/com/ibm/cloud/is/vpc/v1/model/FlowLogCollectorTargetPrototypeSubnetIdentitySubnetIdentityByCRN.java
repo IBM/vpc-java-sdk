@@ -24,6 +24,11 @@ public class FlowLogCollectorTargetPrototypeSubnetIdentitySubnetIdentityByCRN ex
   public static class Builder {
     private String crn;
 
+    /**
+     * Instantiates a new Builder from an existing FlowLogCollectorTargetPrototypeSubnetIdentitySubnetIdentityByCRN instance.
+     *
+     * @param flowLogCollectorTargetPrototypeSubnetIdentitySubnetIdentityByCrn the instance to initialize the Builder with
+     */
     public Builder(FlowLogCollectorTargetPrototypeSubnetIdentity flowLogCollectorTargetPrototypeSubnetIdentitySubnetIdentityByCrn) {
       this.crn = flowLogCollectorTargetPrototypeSubnetIdentitySubnetIdentityByCrn.crn;
     }
@@ -63,6 +68,8 @@ public class FlowLogCollectorTargetPrototypeSubnetIdentitySubnetIdentityByCRN ex
       return this;
     }
   }
+
+  protected FlowLogCollectorTargetPrototypeSubnetIdentitySubnetIdentityByCRN() { }
 
   protected FlowLogCollectorTargetPrototypeSubnetIdentitySubnetIdentityByCRN(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.crn,

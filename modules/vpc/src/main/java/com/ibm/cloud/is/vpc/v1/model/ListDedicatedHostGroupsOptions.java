@@ -35,6 +35,11 @@ public class ListDedicatedHostGroupsOptions extends GenericModel {
     private String zoneName;
     private String name;
 
+    /**
+     * Instantiates a new Builder from an existing ListDedicatedHostGroupsOptions instance.
+     *
+     * @param listDedicatedHostGroupsOptions the instance to initialize the Builder with
+     */
     private Builder(ListDedicatedHostGroupsOptions listDedicatedHostGroupsOptions) {
       this.start = listDedicatedHostGroupsOptions.start;
       this.limit = listDedicatedHostGroupsOptions.limit;
@@ -113,6 +118,8 @@ public class ListDedicatedHostGroupsOptions extends GenericModel {
       return this;
     }
   }
+
+  protected ListDedicatedHostGroupsOptions() { }
 
   protected ListDedicatedHostGroupsOptions(Builder builder) {
     start = builder.start;

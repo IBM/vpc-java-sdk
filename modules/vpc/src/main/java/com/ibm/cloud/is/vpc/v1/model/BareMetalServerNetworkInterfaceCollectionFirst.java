@@ -21,6 +21,8 @@ public class BareMetalServerNetworkInterfaceCollectionFirst extends GenericModel
 
   protected String href;
 
+  protected BareMetalServerNetworkInterfaceCollectionFirst() { }
+
   /**
    * Gets the href.
    *

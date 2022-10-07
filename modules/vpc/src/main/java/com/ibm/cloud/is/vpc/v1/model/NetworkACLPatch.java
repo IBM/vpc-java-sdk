@@ -30,6 +30,11 @@ public class NetworkACLPatch extends GenericModel {
   public static class Builder {
     private String name;
 
+    /**
+     * Instantiates a new Builder from an existing NetworkACLPatch instance.
+     *
+     * @param networkAclPatch the instance to initialize the Builder with
+     */
     private Builder(NetworkACLPatch networkAclPatch) {
       this.name = networkAclPatch.name;
     }
@@ -60,6 +65,8 @@ public class NetworkACLPatch extends GenericModel {
       return this;
     }
   }
+
+  protected NetworkACLPatch() { }
 
   protected NetworkACLPatch(Builder builder) {
     name = builder.name;

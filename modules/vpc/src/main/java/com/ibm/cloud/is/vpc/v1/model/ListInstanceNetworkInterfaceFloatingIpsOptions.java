@@ -29,6 +29,11 @@ public class ListInstanceNetworkInterfaceFloatingIpsOptions extends GenericModel
     private String instanceId;
     private String networkInterfaceId;
 
+    /**
+     * Instantiates a new Builder from an existing ListInstanceNetworkInterfaceFloatingIpsOptions instance.
+     *
+     * @param listInstanceNetworkInterfaceFloatingIpsOptions the instance to initialize the Builder with
+     */
     private Builder(ListInstanceNetworkInterfaceFloatingIpsOptions listInstanceNetworkInterfaceFloatingIpsOptions) {
       this.instanceId = listInstanceNetworkInterfaceFloatingIpsOptions.instanceId;
       this.networkInterfaceId = listInstanceNetworkInterfaceFloatingIpsOptions.networkInterfaceId;
@@ -82,6 +87,8 @@ public class ListInstanceNetworkInterfaceFloatingIpsOptions extends GenericModel
       return this;
     }
   }
+
+  protected ListInstanceNetworkInterfaceFloatingIpsOptions() { }
 
   protected ListInstanceNetworkInterfaceFloatingIpsOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.instanceId,

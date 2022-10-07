@@ -31,6 +31,11 @@ public class ListSecurityGroupTargetsOptions extends GenericModel {
     private String start;
     private Long limit;
 
+    /**
+     * Instantiates a new Builder from an existing ListSecurityGroupTargetsOptions instance.
+     *
+     * @param listSecurityGroupTargetsOptions the instance to initialize the Builder with
+     */
     private Builder(ListSecurityGroupTargetsOptions listSecurityGroupTargetsOptions) {
       this.securityGroupId = listSecurityGroupTargetsOptions.securityGroupId;
       this.start = listSecurityGroupTargetsOptions.start;
@@ -94,6 +99,8 @@ public class ListSecurityGroupTargetsOptions extends GenericModel {
       return this;
     }
   }
+
+  protected ListSecurityGroupTargetsOptions() { }
 
   protected ListSecurityGroupTargetsOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.securityGroupId,

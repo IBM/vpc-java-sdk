@@ -31,6 +31,11 @@ public class UpdateInstanceGroupOptions extends GenericModel {
     private String id;
     private Map<String, Object> instanceGroupPatch;
 
+    /**
+     * Instantiates a new Builder from an existing UpdateInstanceGroupOptions instance.
+     *
+     * @param updateInstanceGroupOptions the instance to initialize the Builder with
+     */
     private Builder(UpdateInstanceGroupOptions updateInstanceGroupOptions) {
       this.id = updateInstanceGroupOptions.id;
       this.instanceGroupPatch = updateInstanceGroupOptions.instanceGroupPatch;
@@ -84,6 +89,8 @@ public class UpdateInstanceGroupOptions extends GenericModel {
       return this;
     }
   }
+
+  protected UpdateInstanceGroupOptions() { }
 
   protected UpdateInstanceGroupOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,

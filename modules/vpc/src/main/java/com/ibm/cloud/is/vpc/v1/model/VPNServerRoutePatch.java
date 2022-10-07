@@ -30,6 +30,11 @@ public class VPNServerRoutePatch extends GenericModel {
   public static class Builder {
     private String name;
 
+    /**
+     * Instantiates a new Builder from an existing VPNServerRoutePatch instance.
+     *
+     * @param vpnServerRoutePatch the instance to initialize the Builder with
+     */
     private Builder(VPNServerRoutePatch vpnServerRoutePatch) {
       this.name = vpnServerRoutePatch.name;
     }
@@ -60,6 +65,8 @@ public class VPNServerRoutePatch extends GenericModel {
       return this;
     }
   }
+
+  protected VPNServerRoutePatch() { }
 
   protected VPNServerRoutePatch(Builder builder) {
     name = builder.name;

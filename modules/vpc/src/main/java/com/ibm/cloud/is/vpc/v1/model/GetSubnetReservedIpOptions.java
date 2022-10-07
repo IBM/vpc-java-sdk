@@ -29,6 +29,11 @@ public class GetSubnetReservedIpOptions extends GenericModel {
     private String subnetId;
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing GetSubnetReservedIpOptions instance.
+     *
+     * @param getSubnetReservedIpOptions the instance to initialize the Builder with
+     */
     private Builder(GetSubnetReservedIpOptions getSubnetReservedIpOptions) {
       this.subnetId = getSubnetReservedIpOptions.subnetId;
       this.id = getSubnetReservedIpOptions.id;
@@ -82,6 +87,8 @@ public class GetSubnetReservedIpOptions extends GenericModel {
       return this;
     }
   }
+
+  protected GetSubnetReservedIpOptions() { }
 
   protected GetSubnetReservedIpOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.subnetId,

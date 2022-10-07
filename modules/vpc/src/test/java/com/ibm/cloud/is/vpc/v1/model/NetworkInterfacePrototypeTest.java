@@ -20,8 +20,6 @@ import com.ibm.cloud.is.vpc.v1.model.SubnetIdentityById;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import org.testng.annotations.Test;
@@ -59,13 +57,13 @@ public class NetworkInterfacePrototypeTest {
       .allowIpSpoofing(true)
       .name("my-network-interface")
       .primaryIp(networkInterfaceIpPrototypeModel)
-      .securityGroups(new java.util.ArrayList<SecurityGroupIdentity>(java.util.Arrays.asList(securityGroupIdentityModel)))
+      .securityGroups(java.util.Arrays.asList(securityGroupIdentityModel))
       .subnet(subnetIdentityModel)
       .build();
     assertEquals(networkInterfacePrototypeModel.allowIpSpoofing(), Boolean.valueOf(true));
     assertEquals(networkInterfacePrototypeModel.name(), "my-network-interface");
     assertEquals(networkInterfacePrototypeModel.primaryIp(), networkInterfaceIpPrototypeModel);
-    assertEquals(networkInterfacePrototypeModel.securityGroups(), new java.util.ArrayList<SecurityGroupIdentity>(java.util.Arrays.asList(securityGroupIdentityModel)));
+    assertEquals(networkInterfacePrototypeModel.securityGroups(), java.util.Arrays.asList(securityGroupIdentityModel));
     assertEquals(networkInterfacePrototypeModel.subnet(), subnetIdentityModel);
 
     String json = TestUtilities.serialize(networkInterfacePrototypeModel);

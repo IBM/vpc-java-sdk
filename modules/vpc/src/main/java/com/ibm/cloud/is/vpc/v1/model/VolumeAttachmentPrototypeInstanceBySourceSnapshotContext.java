@@ -26,6 +26,11 @@ public class VolumeAttachmentPrototypeInstanceBySourceSnapshotContext extends In
     private String name;
     private VolumePrototypeInstanceBySourceSnapshotContext volume;
 
+    /**
+     * Instantiates a new Builder from an existing VolumeAttachmentPrototypeInstanceBySourceSnapshotContext instance.
+     *
+     * @param volumeAttachmentPrototypeInstanceBySourceSnapshotContext the instance to initialize the Builder with
+     */
     private Builder(VolumeAttachmentPrototypeInstanceBySourceSnapshotContext volumeAttachmentPrototypeInstanceBySourceSnapshotContext) {
       this.deleteVolumeOnInstanceDelete = volumeAttachmentPrototypeInstanceBySourceSnapshotContext.deleteVolumeOnInstanceDelete;
       this.name = volumeAttachmentPrototypeInstanceBySourceSnapshotContext.name;
@@ -89,6 +94,8 @@ public class VolumeAttachmentPrototypeInstanceBySourceSnapshotContext extends In
       return this;
     }
   }
+
+  protected VolumeAttachmentPrototypeInstanceBySourceSnapshotContext() { }
 
   protected VolumeAttachmentPrototypeInstanceBySourceSnapshotContext(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.volume,

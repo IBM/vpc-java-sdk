@@ -22,7 +22,6 @@ package com.ibm.cloud.is.vpc.v1.model;
 public class NetworkInterfaceIPPrototypeReservedIPIdentity extends NetworkInterfaceIPPrototype {
 
 
-  protected NetworkInterfaceIPPrototypeReservedIPIdentity() {
-  }
+  protected NetworkInterfaceIPPrototypeReservedIPIdentity() { }
 }
 

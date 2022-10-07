@@ -21,6 +21,8 @@ public class OperatingSystemCollectionNext extends GenericModel {
 
   protected String href;
 
+  protected OperatingSystemCollectionNext() { }
+
   /**
    * Gets the href.
    *

@@ -26,8 +26,7 @@ public class LoadBalancerProfileIdentity extends GenericModel {
   protected String name;
   protected String href;
 
-  protected LoadBalancerProfileIdentity() {
-  }
+  protected LoadBalancerProfileIdentity() { }
 
   /**
    * Gets the name.

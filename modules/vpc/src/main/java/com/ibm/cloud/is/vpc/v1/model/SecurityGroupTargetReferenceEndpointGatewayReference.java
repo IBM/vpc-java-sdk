@@ -25,5 +25,7 @@ public class SecurityGroupTargetReferenceEndpointGatewayReference extends Securi
     String ENDPOINT_GATEWAY = "endpoint_gateway";
   }
 
+
+  protected SecurityGroupTargetReferenceEndpointGatewayReference() { }
 }
 

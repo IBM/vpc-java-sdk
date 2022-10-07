@@ -23,6 +23,8 @@ public class InstanceGroupManagerScheduledActionGroup extends GenericModel {
   @SerializedName("membership_count")
   protected Long membershipCount;
 
+  protected InstanceGroupManagerScheduledActionGroup() { }
+
   /**
    * Gets the membershipCount.
    *

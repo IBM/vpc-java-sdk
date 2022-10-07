@@ -31,6 +31,11 @@ public class UpdateFlowLogCollectorOptions extends GenericModel {
     private String id;
     private Map<String, Object> flowLogCollectorPatch;
 
+    /**
+     * Instantiates a new Builder from an existing UpdateFlowLogCollectorOptions instance.
+     *
+     * @param updateFlowLogCollectorOptions the instance to initialize the Builder with
+     */
     private Builder(UpdateFlowLogCollectorOptions updateFlowLogCollectorOptions) {
       this.id = updateFlowLogCollectorOptions.id;
       this.flowLogCollectorPatch = updateFlowLogCollectorOptions.flowLogCollectorPatch;
@@ -84,6 +89,8 @@ public class UpdateFlowLogCollectorOptions extends GenericModel {
       return this;
     }
   }
+
+  protected UpdateFlowLogCollectorOptions() { }
 
   protected UpdateFlowLogCollectorOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,

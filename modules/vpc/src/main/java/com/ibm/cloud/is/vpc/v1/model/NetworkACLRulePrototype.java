@@ -19,9 +19,9 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  * NetworkACLRulePrototype.
  *
  * Classes which extend this class:
- * - NetworkACLRulePrototypeNetworkACLRuleProtocolTCPUDP
- * - NetworkACLRulePrototypeNetworkACLRuleProtocolICMP
- * - NetworkACLRulePrototypeNetworkACLRuleProtocolAll
+ * - NetworkACLRulePrototypeNetworkACLRuleProtocolTCPUDPPrototype
+ * - NetworkACLRulePrototypeNetworkACLRuleProtocolICMPPrototype
+ * - NetworkACLRulePrototypeNetworkACLRuleProtocolAllPrototype
  */
 public class NetworkACLRulePrototype extends GenericModel {
   @SuppressWarnings("unused")
@@ -29,14 +29,14 @@ public class NetworkACLRulePrototype extends GenericModel {
   protected static java.util.Map<String, Class<?>> discriminatorMapping;
   static {
     discriminatorMapping = new java.util.HashMap<>();
-    discriminatorMapping.put("all", NetworkACLRulePrototypeNetworkACLRuleProtocolAll.class);
-    discriminatorMapping.put("icmp", NetworkACLRulePrototypeNetworkACLRuleProtocolICMP.class);
-    discriminatorMapping.put("tcp", NetworkACLRulePrototypeNetworkACLRuleProtocolTCPUDP.class);
-    discriminatorMapping.put("udp", NetworkACLRulePrototypeNetworkACLRuleProtocolTCPUDP.class);
+    discriminatorMapping.put("all", NetworkACLRulePrototypeNetworkACLRuleProtocolAllPrototype.class);
+    discriminatorMapping.put("icmp", NetworkACLRulePrototypeNetworkACLRuleProtocolICMPPrototype.class);
+    discriminatorMapping.put("tcp", NetworkACLRulePrototypeNetworkACLRuleProtocolTCPUDPPrototype.class);
+    discriminatorMapping.put("udp", NetworkACLRulePrototypeNetworkACLRuleProtocolTCPUDPPrototype.class);
   }
 
   /**
-   * Whether to allow or deny matching traffic.
+   * The action to perform for a packet matching the rule.
    */
   public interface Action {
     /** allow. */
@@ -46,13 +46,27 @@ public class NetworkACLRulePrototype extends GenericModel {
   }
 
   /**
-   * Whether the traffic to be matched is `inbound` or `outbound`.
+   * The direction of traffic to match.
    */
   public interface Direction {
     /** inbound. */
     String INBOUND = "inbound";
     /** outbound. */
     String OUTBOUND = "outbound";
+  }
+
+  /**
+   * The protocol to enforce.
+   */
+  public interface Protocol {
+    /** all. */
+    String ALL = "all";
+    /** icmp. */
+    String ICMP = "icmp";
+    /** tcp. */
+    String TCP = "tcp";
+    /** udp. */
+    String UDP = "udp";
   }
 
   protected String action;
@@ -73,13 +87,12 @@ public class NetworkACLRulePrototype extends GenericModel {
   protected Long code;
   protected Long type;
 
-  protected NetworkACLRulePrototype() {
-  }
+  protected NetworkACLRulePrototype() { }
 
   /**
    * Gets the action.
    *
-   * Whether to allow or deny matching traffic.
+   * The action to perform for a packet matching the rule.
    *
    * @return the action
    */
@@ -90,8 +103,9 @@ public class NetworkACLRulePrototype extends GenericModel {
   /**
    * Gets the before.
    *
-   * The rule to insert this rule immediately before. If omitted, this rule will be
-   * inserted after all existing rules.
+   * The rule to insert this rule immediately before.
+   *
+   * If unspecified, this rule will be inserted after all existing rules.
    *
    * @return the before
    */
@@ -102,7 +116,7 @@ public class NetworkACLRulePrototype extends GenericModel {
   /**
    * Gets the destination.
    *
-   * The destination IP address or CIDR block. The CIDR block `0.0.0.0/0` applies to all addresses.
+   * The destination IP address or CIDR block to match. The CIDR block `0.0.0.0/0` matches all destination addresses.
    *
    * @return the destination
    */
@@ -113,7 +127,7 @@ public class NetworkACLRulePrototype extends GenericModel {
   /**
    * Gets the direction.
    *
-   * Whether the traffic to be matched is `inbound` or `outbound`.
+   * The direction of traffic to match.
    *
    * @return the direction
    */
@@ -147,7 +161,7 @@ public class NetworkACLRulePrototype extends GenericModel {
   /**
    * Gets the source.
    *
-   * The source IP address or CIDR block.  The CIDR block `0.0.0.0/0` applies to all addresses.
+   * The source IP address or CIDR block to match. The CIDR block `0.0.0.0/0` matches all source addresses.
    *
    * @return the source
    */
@@ -202,8 +216,9 @@ public class NetworkACLRulePrototype extends GenericModel {
   /**
    * Gets the code.
    *
-   * The ICMP traffic code to allow. If unspecified, all codes are allowed. This can only be specified if type is also
-   * specified.
+   * The ICMP traffic code to match.
+   *
+   * If specified, `type` must also be specified.  If unspecified, all codes are matched.
    *
    * @return the code
    */
@@ -214,7 +229,9 @@ public class NetworkACLRulePrototype extends GenericModel {
   /**
    * Gets the type.
    *
-   * The ICMP traffic type to allow. If unspecified, all types are allowed by this rule.
+   * The ICMP traffic type to match.
+   *
+   * If unspecified, all types are matched.
    *
    * @return the type
    */

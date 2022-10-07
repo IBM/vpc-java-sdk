@@ -17,8 +17,6 @@ import com.ibm.cloud.is.vpc.v1.model.SnapshotPatch;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -36,10 +34,10 @@ public class SnapshotPatchTest {
   public void testSnapshotPatch() throws Throwable {
     SnapshotPatch snapshotPatchModel = new SnapshotPatch.Builder()
       .name("my-snapshot")
-      .userTags(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
+      .userTags(java.util.Arrays.asList("testString"))
       .build();
     assertEquals(snapshotPatchModel.name(), "my-snapshot");
-    assertEquals(snapshotPatchModel.userTags(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
+    assertEquals(snapshotPatchModel.userTags(), java.util.Arrays.asList("testString"));
 
     String json = TestUtilities.serialize(snapshotPatchModel);
 
@@ -51,7 +49,7 @@ public class SnapshotPatchTest {
   public void testSnapshotPatchAsPatch() throws Throwable {
     SnapshotPatch snapshotPatchModel = new SnapshotPatch.Builder()
       .name("my-snapshot")
-      .userTags(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
+      .userTags(java.util.Arrays.asList("testString"))
       .build();
 
     Map<String, Object> mergePatch = snapshotPatchModel.asPatch();

@@ -29,6 +29,11 @@ public class ListLoadBalancersOptions extends GenericModel {
     private String start;
     private Long limit;
 
+    /**
+     * Instantiates a new Builder from an existing ListLoadBalancersOptions instance.
+     *
+     * @param listLoadBalancersOptions the instance to initialize the Builder with
+     */
     private Builder(ListLoadBalancersOptions listLoadBalancersOptions) {
       this.start = listLoadBalancersOptions.start;
       this.limit = listLoadBalancersOptions.limit;
@@ -71,6 +76,8 @@ public class ListLoadBalancersOptions extends GenericModel {
       return this;
     }
   }
+
+  protected ListLoadBalancersOptions() { }
 
   protected ListLoadBalancersOptions(Builder builder) {
     start = builder.start;

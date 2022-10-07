@@ -95,6 +95,8 @@ public class EndpointGateway extends GenericModel {
   protected EndpointGatewayTarget target;
   protected VPCReference vpc;
 
+  protected EndpointGateway() { }
+
   /**
    * Gets the createdAt.
    *
@@ -258,7 +260,7 @@ public class EndpointGateway extends GenericModel {
   /**
    * Gets the vpc.
    *
-   * The VPC this endpoint gateway is serving.
+   * The VPC this endpoint gateway resides in.
    *
    * @return the vpc
    */

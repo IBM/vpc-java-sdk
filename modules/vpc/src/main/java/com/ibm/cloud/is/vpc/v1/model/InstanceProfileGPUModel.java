@@ -32,6 +32,8 @@ public class InstanceProfileGPUModel extends GenericModel {
   protected String type;
   protected List<String> values;
 
+  protected InstanceProfileGPUModel() { }
+
   /**
    * Gets the type.
    *

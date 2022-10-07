@@ -25,5 +25,7 @@ public class BareMetalServerProfileDiskQuantityRange extends BareMetalServerProf
     String RANGE = "range";
   }
 
+
+  protected BareMetalServerProfileDiskQuantityRange() { }
 }
 

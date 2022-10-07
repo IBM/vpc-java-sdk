@@ -42,6 +42,11 @@ public class InstancePrototypeInstanceBySourceSnapshot extends InstancePrototype
     private NetworkInterfacePrototype primaryNetworkInterface;
     private ZoneIdentity zone;
 
+    /**
+     * Instantiates a new Builder from an existing InstancePrototypeInstanceBySourceSnapshot instance.
+     *
+     * @param instancePrototypeInstanceBySourceSnapshot the instance to initialize the Builder with
+     */
     public Builder(InstancePrototype instancePrototypeInstanceBySourceSnapshot) {
       this.availabilityPolicy = instancePrototypeInstanceBySourceSnapshot.availabilityPolicy;
       this.defaultTrustedProfile = instancePrototypeInstanceBySourceSnapshot.defaultTrustedProfile;
@@ -316,6 +321,8 @@ public class InstancePrototypeInstanceBySourceSnapshot extends InstancePrototype
       return this;
     }
   }
+
+  protected InstancePrototypeInstanceBySourceSnapshot() { }
 
   protected InstancePrototypeInstanceBySourceSnapshot(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.bootVolumeAttachment,

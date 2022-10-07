@@ -47,6 +47,11 @@ public class ListSubnetReservedIpsOptions extends GenericModel {
     private Long limit;
     private String sort;
 
+    /**
+     * Instantiates a new Builder from an existing ListSubnetReservedIpsOptions instance.
+     *
+     * @param listSubnetReservedIpsOptions the instance to initialize the Builder with
+     */
     private Builder(ListSubnetReservedIpsOptions listSubnetReservedIpsOptions) {
       this.subnetId = listSubnetReservedIpsOptions.subnetId;
       this.start = listSubnetReservedIpsOptions.start;
@@ -122,6 +127,8 @@ public class ListSubnetReservedIpsOptions extends GenericModel {
       return this;
     }
   }
+
+  protected ListSubnetReservedIpsOptions() { }
 
   protected ListSubnetReservedIpsOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.subnetId,

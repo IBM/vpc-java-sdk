@@ -26,8 +26,7 @@ public class ZoneIdentity extends GenericModel {
   protected String name;
   protected String href;
 
-  protected ZoneIdentity() {
-  }
+  protected ZoneIdentity() { }
 
   /**
    * Gets the name.

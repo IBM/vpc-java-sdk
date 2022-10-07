@@ -45,6 +45,11 @@ public class ListImagesOptions extends GenericModel {
     private String name;
     private String visibility;
 
+    /**
+     * Instantiates a new Builder from an existing ListImagesOptions instance.
+     *
+     * @param listImagesOptions the instance to initialize the Builder with
+     */
     private Builder(ListImagesOptions listImagesOptions) {
       this.start = listImagesOptions.start;
       this.limit = listImagesOptions.limit;
@@ -123,6 +128,8 @@ public class ListImagesOptions extends GenericModel {
       return this;
     }
   }
+
+  protected ListImagesOptions() { }
 
   protected ListImagesOptions(Builder builder) {
     start = builder.start;

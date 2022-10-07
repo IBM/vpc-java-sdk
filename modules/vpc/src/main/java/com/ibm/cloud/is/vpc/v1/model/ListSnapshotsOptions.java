@@ -59,6 +59,11 @@ public class ListSnapshotsOptions extends GenericModel {
     private String sort;
     private String backupPolicyPlanId;
 
+    /**
+     * Instantiates a new Builder from an existing ListSnapshotsOptions instance.
+     *
+     * @param listSnapshotsOptions the instance to initialize the Builder with
+     */
     private Builder(ListSnapshotsOptions listSnapshotsOptions) {
       this.start = listSnapshotsOptions.start;
       this.limit = listSnapshotsOptions.limit;
@@ -209,6 +214,8 @@ public class ListSnapshotsOptions extends GenericModel {
       return this;
     }
   }
+
+  protected ListSnapshotsOptions() { }
 
   protected ListSnapshotsOptions(Builder builder) {
     start = builder.start;

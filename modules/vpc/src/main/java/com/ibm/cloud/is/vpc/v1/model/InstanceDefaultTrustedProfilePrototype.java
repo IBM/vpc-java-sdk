@@ -31,6 +31,11 @@ public class InstanceDefaultTrustedProfilePrototype extends GenericModel {
     private Boolean autoLink;
     private TrustedProfileIdentity target;
 
+    /**
+     * Instantiates a new Builder from an existing InstanceDefaultTrustedProfilePrototype instance.
+     *
+     * @param instanceDefaultTrustedProfilePrototype the instance to initialize the Builder with
+     */
     private Builder(InstanceDefaultTrustedProfilePrototype instanceDefaultTrustedProfilePrototype) {
       this.autoLink = instanceDefaultTrustedProfilePrototype.autoLink;
       this.target = instanceDefaultTrustedProfilePrototype.target;
@@ -82,6 +87,8 @@ public class InstanceDefaultTrustedProfilePrototype extends GenericModel {
       return this;
     }
   }
+
+  protected InstanceDefaultTrustedProfilePrototype() { }
 
   protected InstanceDefaultTrustedProfilePrototype(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.target,

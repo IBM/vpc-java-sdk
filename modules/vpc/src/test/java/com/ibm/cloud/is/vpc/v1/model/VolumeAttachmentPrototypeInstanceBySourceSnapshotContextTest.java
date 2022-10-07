@@ -57,6 +57,7 @@ public class VolumeAttachmentPrototypeInstanceBySourceSnapshotContextTest {
       .name("my-volume")
       .profile(volumeProfileIdentityModel)
       .sourceSnapshot(snapshotIdentityModel)
+      .userTags(java.util.Arrays.asList("testString"))
       .build();
     assertEquals(volumePrototypeInstanceBySourceSnapshotContextModel.capacity(), Long.valueOf("100"));
     assertEquals(volumePrototypeInstanceBySourceSnapshotContextModel.encryptionKey(), encryptionKeyIdentityModel);
@@ -64,6 +65,7 @@ public class VolumeAttachmentPrototypeInstanceBySourceSnapshotContextTest {
     assertEquals(volumePrototypeInstanceBySourceSnapshotContextModel.name(), "my-volume");
     assertEquals(volumePrototypeInstanceBySourceSnapshotContextModel.profile(), volumeProfileIdentityModel);
     assertEquals(volumePrototypeInstanceBySourceSnapshotContextModel.sourceSnapshot(), snapshotIdentityModel);
+    assertEquals(volumePrototypeInstanceBySourceSnapshotContextModel.userTags(), java.util.Arrays.asList("testString"));
 
     VolumeAttachmentPrototypeInstanceBySourceSnapshotContext volumeAttachmentPrototypeInstanceBySourceSnapshotContextModel = new VolumeAttachmentPrototypeInstanceBySourceSnapshotContext.Builder()
       .deleteVolumeOnInstanceDelete(true)

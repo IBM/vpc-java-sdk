@@ -29,6 +29,11 @@ public class DeleteLoadBalancerListenerOptions extends GenericModel {
     private String loadBalancerId;
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing DeleteLoadBalancerListenerOptions instance.
+     *
+     * @param deleteLoadBalancerListenerOptions the instance to initialize the Builder with
+     */
     private Builder(DeleteLoadBalancerListenerOptions deleteLoadBalancerListenerOptions) {
       this.loadBalancerId = deleteLoadBalancerListenerOptions.loadBalancerId;
       this.id = deleteLoadBalancerListenerOptions.id;
@@ -82,6 +87,8 @@ public class DeleteLoadBalancerListenerOptions extends GenericModel {
       return this;
     }
   }
+
+  protected DeleteLoadBalancerListenerOptions() { }
 
   protected DeleteLoadBalancerListenerOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.loadBalancerId,

@@ -60,6 +60,8 @@ public class FlowLogCollector extends GenericModel {
   protected FlowLogCollectorTarget target;
   protected VPCReference vpc;
 
+  protected FlowLogCollector() { }
+
   /**
    * Gets the active.
    *
@@ -187,7 +189,7 @@ public class FlowLogCollector extends GenericModel {
   /**
    * Gets the vpc.
    *
-   * The VPC this flow log collector is associated with.
+   * The VPC this flow log collector resides in.
    *
    * @return the vpc
    */

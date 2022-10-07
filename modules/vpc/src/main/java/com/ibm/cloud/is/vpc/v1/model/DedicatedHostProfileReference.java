@@ -22,6 +22,8 @@ public class DedicatedHostProfileReference extends GenericModel {
   protected String href;
   protected String name;
 
+  protected DedicatedHostProfileReference() { }
+
   /**
    * Gets the href.
    *

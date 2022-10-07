@@ -25,5 +25,7 @@ public class BareMetalServerProfileCPUSocketCountRange extends BareMetalServerPr
     String RANGE = "range";
   }
 
+
+  protected BareMetalServerProfileCPUSocketCountRange() { }
 }
 

@@ -30,6 +30,8 @@ public class PublicGatewayCollection extends GenericModel {
   @SerializedName("total_count")
   protected Long totalCount;
 
+  protected PublicGatewayCollection() { }
+
   /**
    * Gets the first.
    *

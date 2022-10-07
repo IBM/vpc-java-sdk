@@ -29,6 +29,11 @@ public class ListPlacementGroupsOptions extends GenericModel {
     private String start;
     private Long limit;
 
+    /**
+     * Instantiates a new Builder from an existing ListPlacementGroupsOptions instance.
+     *
+     * @param listPlacementGroupsOptions the instance to initialize the Builder with
+     */
     private Builder(ListPlacementGroupsOptions listPlacementGroupsOptions) {
       this.start = listPlacementGroupsOptions.start;
       this.limit = listPlacementGroupsOptions.limit;
@@ -71,6 +76,8 @@ public class ListPlacementGroupsOptions extends GenericModel {
       return this;
     }
   }
+
+  protected ListPlacementGroupsOptions() { }
 
   protected ListPlacementGroupsOptions(Builder builder) {
     start = builder.start;

@@ -26,8 +26,7 @@ public class RoutingTableIdentity extends GenericModel {
   protected String id;
   protected String href;
 
-  protected RoutingTableIdentity() {
-  }
+  protected RoutingTableIdentity() { }
 
   /**
    * Gets the id.

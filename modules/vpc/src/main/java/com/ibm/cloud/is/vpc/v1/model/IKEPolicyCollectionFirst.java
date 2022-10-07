@@ -21,6 +21,8 @@ public class IKEPolicyCollectionFirst extends GenericModel {
 
   protected String href;
 
+  protected IKEPolicyCollectionFirst() { }
+
   /**
    * Gets the href.
    *

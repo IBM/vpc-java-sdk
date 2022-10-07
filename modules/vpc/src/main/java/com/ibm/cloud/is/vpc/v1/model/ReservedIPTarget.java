@@ -16,7 +16,7 @@ import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * The target of this reserved IP.
+ * The target this reserved IP is bound to.
  *
  * If absent, this reserved IP is provider-owned or unbound.
  *
@@ -46,8 +46,7 @@ public class ReservedIPTarget extends GenericModel {
   @SerializedName("resource_type")
   protected String resourceType;
 
-  protected ReservedIPTarget() {
-  }
+  protected ReservedIPTarget() { }
 
   /**
    * Gets the crn.
@@ -63,7 +62,7 @@ public class ReservedIPTarget extends GenericModel {
   /**
    * Gets the deleted.
    *
-   * If present, this property indicates the referenced resource has been deleted and provides
+   * If present, this property indicates the referenced resource has been deleted, and provides
    * some supplementary information.
    *
    * @return the deleted

@@ -35,6 +35,11 @@ public class VPNGatewayPrototypeVPNGatewayRouteModePrototype extends VPNGatewayP
     private SubnetIdentity subnet;
     private String mode;
 
+    /**
+     * Instantiates a new Builder from an existing VPNGatewayPrototypeVPNGatewayRouteModePrototype instance.
+     *
+     * @param vpnGatewayPrototypeVpnGatewayRouteModePrototype the instance to initialize the Builder with
+     */
     public Builder(VPNGatewayPrototype vpnGatewayPrototypeVpnGatewayRouteModePrototype) {
       this.name = vpnGatewayPrototypeVpnGatewayRouteModePrototype.name;
       this.resourceGroup = vpnGatewayPrototypeVpnGatewayRouteModePrototype.resourceGroup;
@@ -110,6 +115,8 @@ public class VPNGatewayPrototypeVPNGatewayRouteModePrototype extends VPNGatewayP
       return this;
     }
   }
+
+  protected VPNGatewayPrototypeVPNGatewayRouteModePrototype() { }
 
   protected VPNGatewayPrototypeVPNGatewayRouteModePrototype(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.subnet,

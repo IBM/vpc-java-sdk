@@ -49,6 +49,8 @@ public class BareMetalServerProfile extends GenericModel {
   @SerializedName("supported_trusted_platform_module_modes")
   protected BareMetalServerProfileSupportedTrustedPlatformModuleModes supportedTrustedPlatformModuleModes;
 
+  protected BareMetalServerProfile() { }
+
   /**
    * Gets the bandwidth.
    *

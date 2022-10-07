@@ -24,6 +24,11 @@ public class LoadBalancerListenerPolicyTargetPatchLoadBalancerPoolIdentityLoadBa
   public static class Builder {
     private String href;
 
+    /**
+     * Instantiates a new Builder from an existing LoadBalancerListenerPolicyTargetPatchLoadBalancerPoolIdentityLoadBalancerPoolIdentityByHref instance.
+     *
+     * @param loadBalancerListenerPolicyTargetPatchLoadBalancerPoolIdentityLoadBalancerPoolIdentityByHref the instance to initialize the Builder with
+     */
     public Builder(LoadBalancerListenerPolicyTargetPatchLoadBalancerPoolIdentity loadBalancerListenerPolicyTargetPatchLoadBalancerPoolIdentityLoadBalancerPoolIdentityByHref) {
       this.href = loadBalancerListenerPolicyTargetPatchLoadBalancerPoolIdentityLoadBalancerPoolIdentityByHref.href;
     }
@@ -63,6 +68,8 @@ public class LoadBalancerListenerPolicyTargetPatchLoadBalancerPoolIdentityLoadBa
       return this;
     }
   }
+
+  protected LoadBalancerListenerPolicyTargetPatchLoadBalancerPoolIdentityLoadBalancerPoolIdentityByHref() { }
 
   protected LoadBalancerListenerPolicyTargetPatchLoadBalancerPoolIdentityLoadBalancerPoolIdentityByHref(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.href,

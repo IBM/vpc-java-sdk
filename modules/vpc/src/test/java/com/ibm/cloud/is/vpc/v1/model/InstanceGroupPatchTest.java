@@ -21,8 +21,6 @@ import com.ibm.cloud.is.vpc.v1.model.SubnetIdentityById;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -65,7 +63,7 @@ public class InstanceGroupPatchTest {
       .loadBalancerPool(loadBalancerPoolIdentityModel)
       .membershipCount(Long.valueOf("10"))
       .name("my-instance-group")
-      .subnets(new java.util.ArrayList<SubnetIdentity>(java.util.Arrays.asList(subnetIdentityModel)))
+      .subnets(java.util.Arrays.asList(subnetIdentityModel))
       .build();
     assertEquals(instanceGroupPatchModel.applicationPort(), Long.valueOf("22"));
     assertEquals(instanceGroupPatchModel.instanceTemplate(), instanceTemplateIdentityModel);
@@ -73,7 +71,7 @@ public class InstanceGroupPatchTest {
     assertEquals(instanceGroupPatchModel.loadBalancerPool(), loadBalancerPoolIdentityModel);
     assertEquals(instanceGroupPatchModel.membershipCount(), Long.valueOf("10"));
     assertEquals(instanceGroupPatchModel.name(), "my-instance-group");
-    assertEquals(instanceGroupPatchModel.subnets(), new java.util.ArrayList<SubnetIdentity>(java.util.Arrays.asList(subnetIdentityModel)));
+    assertEquals(instanceGroupPatchModel.subnets(), java.util.Arrays.asList(subnetIdentityModel));
 
     String json = TestUtilities.serialize(instanceGroupPatchModel);
 
@@ -111,7 +109,7 @@ public class InstanceGroupPatchTest {
       .loadBalancerPool(loadBalancerPoolIdentityModel)
       .membershipCount(Long.valueOf("10"))
       .name("my-instance-group")
-      .subnets(new java.util.ArrayList<SubnetIdentity>(java.util.Arrays.asList(subnetIdentityModel)))
+      .subnets(java.util.Arrays.asList(subnetIdentityModel))
       .build();
 
     Map<String, Object> mergePatch = instanceGroupPatchModel.asPatch();

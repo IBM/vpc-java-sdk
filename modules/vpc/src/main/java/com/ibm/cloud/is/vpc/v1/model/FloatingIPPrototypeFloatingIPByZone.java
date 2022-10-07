@@ -26,6 +26,11 @@ public class FloatingIPPrototypeFloatingIPByZone extends FloatingIPPrototype {
     private ResourceGroupIdentity resourceGroup;
     private ZoneIdentity zone;
 
+    /**
+     * Instantiates a new Builder from an existing FloatingIPPrototypeFloatingIPByZone instance.
+     *
+     * @param floatingIpPrototypeFloatingIpByZone the instance to initialize the Builder with
+     */
     public Builder(FloatingIPPrototype floatingIpPrototypeFloatingIpByZone) {
       this.name = floatingIpPrototypeFloatingIpByZone.name;
       this.resourceGroup = floatingIpPrototypeFloatingIpByZone.resourceGroup;
@@ -89,6 +94,8 @@ public class FloatingIPPrototypeFloatingIPByZone extends FloatingIPPrototype {
       return this;
     }
   }
+
+  protected FloatingIPPrototypeFloatingIPByZone() { }
 
   protected FloatingIPPrototypeFloatingIPByZone(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.zone,

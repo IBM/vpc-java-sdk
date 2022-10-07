@@ -30,6 +30,8 @@ public class NetworkACLCollection extends GenericModel {
   @SerializedName("total_count")
   protected Long totalCount;
 
+  protected NetworkACLCollection() { }
+
   /**
    * Gets the first.
    *

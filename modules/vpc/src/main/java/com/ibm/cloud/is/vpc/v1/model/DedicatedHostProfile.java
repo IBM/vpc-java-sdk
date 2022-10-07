@@ -54,6 +54,8 @@ public class DedicatedHostProfile extends GenericModel {
   @SerializedName("vcpu_count")
   protected DedicatedHostProfileVCPU vcpuCount;
 
+  protected DedicatedHostProfile() { }
+
   /**
    * Gets the xClass.
    *

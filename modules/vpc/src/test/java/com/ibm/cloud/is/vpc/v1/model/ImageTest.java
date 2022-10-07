@@ -13,8 +13,10 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.ibm.cloud.is.vpc.v1.model.CatalogOfferingVersionReference;
 import com.ibm.cloud.is.vpc.v1.model.EncryptionKeyReference;
 import com.ibm.cloud.is.vpc.v1.model.Image;
+import com.ibm.cloud.is.vpc.v1.model.ImageCatalogOffering;
 import com.ibm.cloud.is.vpc.v1.model.ImageFile;
 import com.ibm.cloud.is.vpc.v1.model.ImageFileChecksums;
 import com.ibm.cloud.is.vpc.v1.model.ImageStatusReason;
@@ -40,6 +42,7 @@ public class ImageTest {
   @Test
   public void testImage() throws Throwable {
     Image imageModel = new Image();
+    assertNull(imageModel.getCatalogOffering());
     assertNull(imageModel.getCreatedAt());
     assertNull(imageModel.getCrn());
     assertNull(imageModel.getEncryption());

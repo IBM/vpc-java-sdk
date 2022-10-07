@@ -35,6 +35,11 @@ public class VPNGatewayConnectionPrototypeVPNGatewayConnectionPolicyModePrototyp
     private List<String> localCidrs;
     private List<String> peerCidrs;
 
+    /**
+     * Instantiates a new Builder from an existing VPNGatewayConnectionPrototypeVPNGatewayConnectionPolicyModePrototype instance.
+     *
+     * @param vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototype the instance to initialize the Builder with
+     */
     public Builder(VPNGatewayConnectionPrototype vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototype) {
       this.adminStateUp = vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototype.adminStateUp;
       this.deadPeerDetection = vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototype.deadPeerDetection;
@@ -210,6 +215,8 @@ public class VPNGatewayConnectionPrototypeVPNGatewayConnectionPolicyModePrototyp
       return this;
     }
   }
+
+  protected VPNGatewayConnectionPrototypeVPNGatewayConnectionPolicyModePrototype() { }
 
   protected VPNGatewayConnectionPrototypeVPNGatewayConnectionPolicyModePrototype(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.peerAddress,

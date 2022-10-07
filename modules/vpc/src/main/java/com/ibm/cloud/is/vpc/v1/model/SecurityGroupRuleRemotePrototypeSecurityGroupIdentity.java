@@ -23,7 +23,6 @@ package com.ibm.cloud.is.vpc.v1.model;
 public class SecurityGroupRuleRemotePrototypeSecurityGroupIdentity extends SecurityGroupRuleRemotePrototype {
 
 
-  protected SecurityGroupRuleRemotePrototypeSecurityGroupIdentity() {
-  }
+  protected SecurityGroupRuleRemotePrototypeSecurityGroupIdentity() { }
 }
 

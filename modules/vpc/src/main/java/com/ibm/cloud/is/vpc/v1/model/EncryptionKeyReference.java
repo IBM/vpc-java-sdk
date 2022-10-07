@@ -21,6 +21,8 @@ public class EncryptionKeyReference extends GenericModel {
 
   protected String crn;
 
+  protected EncryptionKeyReference() { }
+
   /**
    * Gets the crn.
    *

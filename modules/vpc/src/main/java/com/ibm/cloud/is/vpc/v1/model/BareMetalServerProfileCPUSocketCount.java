@@ -45,8 +45,7 @@ public class BareMetalServerProfileCPUSocketCount extends GenericModel {
   protected Long step;
   protected List<Long> values;
 
-  protected BareMetalServerProfileCPUSocketCount() {
-  }
+  protected BareMetalServerProfileCPUSocketCount() { }
 
   /**
    * Gets the type.

@@ -27,8 +27,7 @@ public class VPNGatewayConnectionIKEPolicyPatch extends GenericModel {
   protected String id;
   protected String href;
 
-  protected VPNGatewayConnectionIKEPolicyPatch() {
-  }
+  protected VPNGatewayConnectionIKEPolicyPatch() { }
 
   /**
    * Gets the id.

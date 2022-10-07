@@ -27,6 +27,11 @@ public class ListInstanceDisksOptions extends GenericModel {
   public static class Builder {
     private String instanceId;
 
+    /**
+     * Instantiates a new Builder from an existing ListInstanceDisksOptions instance.
+     *
+     * @param listInstanceDisksOptions the instance to initialize the Builder with
+     */
     private Builder(ListInstanceDisksOptions listInstanceDisksOptions) {
       this.instanceId = listInstanceDisksOptions.instanceId;
     }
@@ -66,6 +71,8 @@ public class ListInstanceDisksOptions extends GenericModel {
       return this;
     }
   }
+
+  protected ListInstanceDisksOptions() { }
 
   protected ListInstanceDisksOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.instanceId,

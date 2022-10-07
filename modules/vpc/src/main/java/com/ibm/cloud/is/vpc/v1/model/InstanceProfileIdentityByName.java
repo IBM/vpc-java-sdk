@@ -24,6 +24,11 @@ public class InstanceProfileIdentityByName extends InstanceProfileIdentity {
   public static class Builder {
     private String name;
 
+    /**
+     * Instantiates a new Builder from an existing InstanceProfileIdentityByName instance.
+     *
+     * @param instanceProfileIdentityByName the instance to initialize the Builder with
+     */
     public Builder(InstanceProfileIdentity instanceProfileIdentityByName) {
       this.name = instanceProfileIdentityByName.name;
     }
@@ -63,6 +68,8 @@ public class InstanceProfileIdentityByName extends InstanceProfileIdentity {
       return this;
     }
   }
+
+  protected InstanceProfileIdentityByName() { }
 
   protected InstanceProfileIdentityByName(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.name,

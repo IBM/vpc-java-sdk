@@ -39,8 +39,7 @@ public class BareMetalServerInitializationUserAccount extends GenericModel {
   protected String resourceType;
   protected String username;
 
-  protected BareMetalServerInitializationUserAccount() {
-  }
+  protected BareMetalServerInitializationUserAccount() { }
 
   /**
    * Gets the encryptedPassword.

@@ -46,6 +46,8 @@ public class BareMetalServerStatusReason extends GenericModel {
   @SerializedName("more_info")
   protected String moreInfo;
 
+  protected BareMetalServerStatusReason() { }
+
   /**
    * Gets the code.
    *

@@ -44,6 +44,11 @@ public class LoadBalancerPoolSessionPersistencePrototype extends GenericModel {
     private String cookieName;
     private String type;
 
+    /**
+     * Instantiates a new Builder from an existing LoadBalancerPoolSessionPersistencePrototype instance.
+     *
+     * @param loadBalancerPoolSessionPersistencePrototype the instance to initialize the Builder with
+     */
     private Builder(LoadBalancerPoolSessionPersistencePrototype loadBalancerPoolSessionPersistencePrototype) {
       this.cookieName = loadBalancerPoolSessionPersistencePrototype.cookieName;
       this.type = loadBalancerPoolSessionPersistencePrototype.type;
@@ -95,6 +100,8 @@ public class LoadBalancerPoolSessionPersistencePrototype extends GenericModel {
       return this;
     }
   }
+
+  protected LoadBalancerPoolSessionPersistencePrototype() { }
 
   protected LoadBalancerPoolSessionPersistencePrototype(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.type,

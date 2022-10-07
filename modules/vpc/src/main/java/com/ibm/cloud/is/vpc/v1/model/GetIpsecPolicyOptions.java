@@ -27,6 +27,11 @@ public class GetIpsecPolicyOptions extends GenericModel {
   public static class Builder {
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing GetIpsecPolicyOptions instance.
+     *
+     * @param getIpsecPolicyOptions the instance to initialize the Builder with
+     */
     private Builder(GetIpsecPolicyOptions getIpsecPolicyOptions) {
       this.id = getIpsecPolicyOptions.id;
     }
@@ -66,6 +71,8 @@ public class GetIpsecPolicyOptions extends GenericModel {
       return this;
     }
   }
+
+  protected GetIpsecPolicyOptions() { }
 
   protected GetIpsecPolicyOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,

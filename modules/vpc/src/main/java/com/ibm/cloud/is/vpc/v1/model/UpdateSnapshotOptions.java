@@ -33,6 +33,11 @@ public class UpdateSnapshotOptions extends GenericModel {
     private Map<String, Object> snapshotPatch;
     private String ifMatch;
 
+    /**
+     * Instantiates a new Builder from an existing UpdateSnapshotOptions instance.
+     *
+     * @param updateSnapshotOptions the instance to initialize the Builder with
+     */
     private Builder(UpdateSnapshotOptions updateSnapshotOptions) {
       this.id = updateSnapshotOptions.id;
       this.snapshotPatch = updateSnapshotOptions.snapshotPatch;
@@ -98,6 +103,8 @@ public class UpdateSnapshotOptions extends GenericModel {
       return this;
     }
   }
+
+  protected UpdateSnapshotOptions() { }
 
   protected UpdateSnapshotOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,

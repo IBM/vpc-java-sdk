@@ -25,11 +25,17 @@ public class BareMetalServerDisk extends GenericModel {
   /**
    * The disk interface used for attaching the disk.
    *
+   * - `fcp`: Attached using Fiber Channel Protocol
+   * - `sata`: Attached using Serial Advanced Technology Attachment
+   * - `nvme`: Attached using Non-Volatile Memory Express
+   *
    * The enumerated values for this property are expected to expand in the future. When processing this property, check
    * for and log unknown values. Optionally halt processing and surface the error, or bypass the resource on which the
    * unexpected property value was encountered.
    */
   public interface InterfaceType {
+    /** fcp. */
+    String FCP = "fcp";
     /** nvme. */
     String NVME = "nvme";
     /** sata. */
@@ -54,6 +60,8 @@ public class BareMetalServerDisk extends GenericModel {
   @SerializedName("resource_type")
   protected String resourceType;
   protected Long size;
+
+  protected BareMetalServerDisk() { }
 
   /**
    * Gets the createdAt.
@@ -92,6 +100,10 @@ public class BareMetalServerDisk extends GenericModel {
    * Gets the interfaceType.
    *
    * The disk interface used for attaching the disk.
+   *
+   * - `fcp`: Attached using Fiber Channel Protocol
+   * - `sata`: Attached using Serial Advanced Technology Attachment
+   * - `nvme`: Attached using Non-Volatile Memory Express
    *
    * The enumerated values for this property are expected to expand in the future. When processing this property, check
    * for and log unknown values. Optionally halt processing and surface the error, or bypass the resource on which the

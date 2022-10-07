@@ -25,6 +25,8 @@ public class VPNGatewayConnectionPeerCIDRs extends GenericModel {
   @SerializedName("peer_cidrs")
   protected List<String> peerCidrs;
 
+  protected VPNGatewayConnectionPeerCIDRs() { }
+
   /**
    * Gets the peerCidrs.
    *

@@ -24,6 +24,11 @@ public class KeyIdentityByFingerprint extends KeyIdentity {
   public static class Builder {
     private String fingerprint;
 
+    /**
+     * Instantiates a new Builder from an existing KeyIdentityByFingerprint instance.
+     *
+     * @param keyIdentityByFingerprint the instance to initialize the Builder with
+     */
     public Builder(KeyIdentity keyIdentityByFingerprint) {
       this.fingerprint = keyIdentityByFingerprint.fingerprint;
     }
@@ -63,6 +68,8 @@ public class KeyIdentityByFingerprint extends KeyIdentity {
       return this;
     }
   }
+
+  protected KeyIdentityByFingerprint() { }
 
   protected KeyIdentityByFingerprint(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.fingerprint,

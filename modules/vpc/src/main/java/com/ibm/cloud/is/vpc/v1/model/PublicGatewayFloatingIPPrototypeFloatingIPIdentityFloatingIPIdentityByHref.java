@@ -24,6 +24,11 @@ public class PublicGatewayFloatingIPPrototypeFloatingIPIdentityFloatingIPIdentit
   public static class Builder {
     private String href;
 
+    /**
+     * Instantiates a new Builder from an existing PublicGatewayFloatingIPPrototypeFloatingIPIdentityFloatingIPIdentityByHref instance.
+     *
+     * @param publicGatewayFloatingIpPrototypeFloatingIpIdentityFloatingIpIdentityByHref the instance to initialize the Builder with
+     */
     public Builder(PublicGatewayFloatingIPPrototypeFloatingIPIdentity publicGatewayFloatingIpPrototypeFloatingIpIdentityFloatingIpIdentityByHref) {
       this.href = publicGatewayFloatingIpPrototypeFloatingIpIdentityFloatingIpIdentityByHref.href;
     }
@@ -63,6 +68,8 @@ public class PublicGatewayFloatingIPPrototypeFloatingIPIdentityFloatingIPIdentit
       return this;
     }
   }
+
+  protected PublicGatewayFloatingIPPrototypeFloatingIPIdentityFloatingIPIdentityByHref() { }
 
   protected PublicGatewayFloatingIPPrototypeFloatingIPIdentityFloatingIPIdentityByHref(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.href,

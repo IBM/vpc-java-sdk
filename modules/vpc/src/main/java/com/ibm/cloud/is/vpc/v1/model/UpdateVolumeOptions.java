@@ -33,6 +33,11 @@ public class UpdateVolumeOptions extends GenericModel {
     private Map<String, Object> volumePatch;
     private String ifMatch;
 
+    /**
+     * Instantiates a new Builder from an existing UpdateVolumeOptions instance.
+     *
+     * @param updateVolumeOptions the instance to initialize the Builder with
+     */
     private Builder(UpdateVolumeOptions updateVolumeOptions) {
       this.id = updateVolumeOptions.id;
       this.volumePatch = updateVolumeOptions.volumePatch;
@@ -98,6 +103,8 @@ public class UpdateVolumeOptions extends GenericModel {
       return this;
     }
   }
+
+  protected UpdateVolumeOptions() { }
 
   protected UpdateVolumeOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,

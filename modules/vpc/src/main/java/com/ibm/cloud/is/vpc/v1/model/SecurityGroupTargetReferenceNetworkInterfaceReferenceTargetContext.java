@@ -25,5 +25,7 @@ public class SecurityGroupTargetReferenceNetworkInterfaceReferenceTargetContext 
     String NETWORK_INTERFACE = "network_interface";
   }
 
+
+  protected SecurityGroupTargetReferenceNetworkInterfaceReferenceTargetContext() { }
 }
 

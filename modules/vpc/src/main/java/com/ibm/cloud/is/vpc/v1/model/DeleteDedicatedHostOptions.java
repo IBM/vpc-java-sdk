@@ -27,6 +27,11 @@ public class DeleteDedicatedHostOptions extends GenericModel {
   public static class Builder {
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing DeleteDedicatedHostOptions instance.
+     *
+     * @param deleteDedicatedHostOptions the instance to initialize the Builder with
+     */
     private Builder(DeleteDedicatedHostOptions deleteDedicatedHostOptions) {
       this.id = deleteDedicatedHostOptions.id;
     }
@@ -66,6 +71,8 @@ public class DeleteDedicatedHostOptions extends GenericModel {
       return this;
     }
   }
+
+  protected DeleteDedicatedHostOptions() { }
 
   protected DeleteDedicatedHostOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,

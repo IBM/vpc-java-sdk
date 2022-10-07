@@ -24,6 +24,11 @@ public class RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIP extends Ro
   public static class Builder {
     private String address;
 
+    /**
+     * Instantiates a new Builder from an existing RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIP instance.
+     *
+     * @param routePrototypeNextHopRouteNextHopPrototypeRouteNextHopIp the instance to initialize the Builder with
+     */
     public Builder(RoutePrototypeNextHop routePrototypeNextHopRouteNextHopPrototypeRouteNextHopIp) {
       this.address = routePrototypeNextHopRouteNextHopPrototypeRouteNextHopIp.address;
     }
@@ -63,6 +68,8 @@ public class RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIP extends Ro
       return this;
     }
   }
+
+  protected RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIP() { }
 
   protected RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIP(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.address,

@@ -26,5 +26,7 @@ public class InstanceProfileVolumeBandwidthRange extends InstanceProfileVolumeBa
     String RANGE = "range";
   }
 
+
+  protected InstanceProfileVolumeBandwidthRange() { }
 }
 

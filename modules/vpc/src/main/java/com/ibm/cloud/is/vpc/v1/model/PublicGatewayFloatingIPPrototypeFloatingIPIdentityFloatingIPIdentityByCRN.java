@@ -24,6 +24,11 @@ public class PublicGatewayFloatingIPPrototypeFloatingIPIdentityFloatingIPIdentit
   public static class Builder {
     private String crn;
 
+    /**
+     * Instantiates a new Builder from an existing PublicGatewayFloatingIPPrototypeFloatingIPIdentityFloatingIPIdentityByCRN instance.
+     *
+     * @param publicGatewayFloatingIpPrototypeFloatingIpIdentityFloatingIpIdentityByCrn the instance to initialize the Builder with
+     */
     public Builder(PublicGatewayFloatingIPPrototypeFloatingIPIdentity publicGatewayFloatingIpPrototypeFloatingIpIdentityFloatingIpIdentityByCrn) {
       this.crn = publicGatewayFloatingIpPrototypeFloatingIpIdentityFloatingIpIdentityByCrn.crn;
     }
@@ -63,6 +68,8 @@ public class PublicGatewayFloatingIPPrototypeFloatingIPIdentityFloatingIPIdentit
       return this;
     }
   }
+
+  protected PublicGatewayFloatingIPPrototypeFloatingIPIdentityFloatingIPIdentityByCRN() { }
 
   protected PublicGatewayFloatingIPPrototypeFloatingIPIdentityFloatingIPIdentityByCRN(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.crn,

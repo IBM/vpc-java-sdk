@@ -21,6 +21,8 @@ public class PublicGatewayCollectionFirst extends GenericModel {
 
   protected String href;
 
+  protected PublicGatewayCollectionFirst() { }
+
   /**
    * Gets the href.
    *

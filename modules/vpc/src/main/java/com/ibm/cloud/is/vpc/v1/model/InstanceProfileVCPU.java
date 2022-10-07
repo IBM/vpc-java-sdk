@@ -45,8 +45,7 @@ public class InstanceProfileVCPU extends GenericModel {
   protected Long step;
   protected List<Long> values;
 
-  protected InstanceProfileVCPU() {
-  }
+  protected InstanceProfileVCPU() { }
 
   /**
    * Gets the type.

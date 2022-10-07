@@ -26,8 +26,7 @@ public class LoadBalancerListenerIdentity extends GenericModel {
   protected String id;
   protected String href;
 
-  protected LoadBalancerListenerIdentity() {
-  }
+  protected LoadBalancerListenerIdentity() { }
 
   /**
    * Gets the id.

@@ -39,11 +39,17 @@ public class InstancePrototypeInstanceBySourceTemplate extends InstancePrototype
     private List<VolumeAttachmentPrototypeInstanceContext> volumeAttachments;
     private VPCIdentity vpc;
     private VolumeAttachmentPrototypeInstanceByImageContext bootVolumeAttachment;
+    private InstanceCatalogOfferingPrototype catalogOffering;
     private ImageIdentity image;
     private NetworkInterfacePrototype primaryNetworkInterface;
     private InstanceTemplateIdentity sourceTemplate;
     private ZoneIdentity zone;
 
+    /**
+     * Instantiates a new Builder from an existing InstancePrototypeInstanceBySourceTemplate instance.
+     *
+     * @param instancePrototypeInstanceBySourceTemplate the instance to initialize the Builder with
+     */
     public Builder(InstancePrototype instancePrototypeInstanceBySourceTemplate) {
       this.availabilityPolicy = instancePrototypeInstanceBySourceTemplate.availabilityPolicy;
       this.defaultTrustedProfile = instancePrototypeInstanceBySourceTemplate.defaultTrustedProfile;
@@ -59,6 +65,7 @@ public class InstancePrototypeInstanceBySourceTemplate extends InstancePrototype
       this.volumeAttachments = instancePrototypeInstanceBySourceTemplate.volumeAttachments;
       this.vpc = instancePrototypeInstanceBySourceTemplate.vpc;
       this.bootVolumeAttachment = (VolumeAttachmentPrototypeInstanceByImageContext) instancePrototypeInstanceBySourceTemplate.bootVolumeAttachment;
+      this.catalogOffering = instancePrototypeInstanceBySourceTemplate.catalogOffering;
       this.image = instancePrototypeInstanceBySourceTemplate.image;
       this.primaryNetworkInterface = instancePrototypeInstanceBySourceTemplate.primaryNetworkInterface;
       this.sourceTemplate = instancePrototypeInstanceBySourceTemplate.sourceTemplate;
@@ -295,6 +302,17 @@ public class InstancePrototypeInstanceBySourceTemplate extends InstancePrototype
     }
 
     /**
+     * Set the catalogOffering.
+     *
+     * @param catalogOffering the catalogOffering
+     * @return the InstancePrototypeInstanceBySourceTemplate builder
+     */
+    public Builder catalogOffering(InstanceCatalogOfferingPrototype catalogOffering) {
+      this.catalogOffering = catalogOffering;
+      return this;
+    }
+
+    /**
      * Set the image.
      *
      * @param image the image
@@ -339,6 +357,8 @@ public class InstancePrototypeInstanceBySourceTemplate extends InstancePrototype
     }
   }
 
+  protected InstancePrototypeInstanceBySourceTemplate() { }
+
   protected InstancePrototypeInstanceBySourceTemplate(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.sourceTemplate,
       "sourceTemplate cannot be null");
@@ -356,6 +376,7 @@ public class InstancePrototypeInstanceBySourceTemplate extends InstancePrototype
     volumeAttachments = builder.volumeAttachments;
     vpc = builder.vpc;
     bootVolumeAttachment = builder.bootVolumeAttachment;
+    catalogOffering = builder.catalogOffering;
     image = builder.image;
     primaryNetworkInterface = builder.primaryNetworkInterface;
     sourceTemplate = builder.sourceTemplate;

@@ -25,5 +25,7 @@ public class InstanceProfileDiskSizeFixed extends InstanceProfileDiskSize {
     String FIXED = "fixed";
   }
 
+
+  protected InstanceProfileDiskSizeFixed() { }
 }
 

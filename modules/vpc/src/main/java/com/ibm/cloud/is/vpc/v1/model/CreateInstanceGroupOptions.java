@@ -44,6 +44,11 @@ public class CreateInstanceGroupOptions extends GenericModel {
     private String name;
     private ResourceGroupIdentity resourceGroup;
 
+    /**
+     * Instantiates a new Builder from an existing CreateInstanceGroupOptions instance.
+     *
+     * @param createInstanceGroupOptions the instance to initialize the Builder with
+     */
     private Builder(CreateInstanceGroupOptions createInstanceGroupOptions) {
       this.instanceTemplate = createInstanceGroupOptions.instanceTemplate;
       this.subnets = createInstanceGroupOptions.subnets;
@@ -187,6 +192,8 @@ public class CreateInstanceGroupOptions extends GenericModel {
     }
   }
 
+  protected CreateInstanceGroupOptions() { }
+
   protected CreateInstanceGroupOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.instanceTemplate,
       "instanceTemplate cannot be null");
@@ -239,8 +246,9 @@ public class CreateInstanceGroupOptions extends GenericModel {
   /**
    * Gets the applicationPort.
    *
-   * Required if specifying a load balancer pool only. Used by the instance group when scaling up instances to supply
-   * the port for the load balancer pool member.
+   * The port to use for new load balancer pool members created by this instance group.
+   *
+   * This property must be specified if and only if `load_balancer_pool` has been specified.
    *
    * @return the applicationPort
    */
@@ -251,8 +259,10 @@ public class CreateInstanceGroupOptions extends GenericModel {
   /**
    * Gets the loadBalancer.
    *
-   * The load balancer associated with the specified load balancer pool.
-   * Required if `load_balancer_pool` is specified.
+   * The load balancer associated with `load_balancer_pool`.
+   *
+   * This property must be specified if and only if `load_balancer_pool` has been
+   * specified.
    *
    * At present, only load balancers in the `application` family are supported.
    *
@@ -265,10 +275,10 @@ public class CreateInstanceGroupOptions extends GenericModel {
   /**
    * Gets the loadBalancerPool.
    *
-   * If specified, the load balancer pool will be managed by this
-   * group. Instances created by this group will have a new load
-   * balancer pool member in that pool created. Must be used with
-   * `application_port`.
+   * If specified, the load balancer pool this instance group will manage. A pool member
+   * will be created for each instance created by this group.
+   *
+   * If specified, `load_balancer` and `application_port` must also be specified.
    *
    * @return the loadBalancerPool
    */

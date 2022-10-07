@@ -27,6 +27,11 @@ public class NetworkACLPrototypeNetworkACLBySourceNetworkACL extends NetworkACLP
     private VPCIdentity vpc;
     private NetworkACLIdentity sourceNetworkAcl;
 
+    /**
+     * Instantiates a new Builder from an existing NetworkACLPrototypeNetworkACLBySourceNetworkACL instance.
+     *
+     * @param networkAclPrototypeNetworkAclBySourceNetworkAcl the instance to initialize the Builder with
+     */
     public Builder(NetworkACLPrototype networkAclPrototypeNetworkAclBySourceNetworkAcl) {
       this.name = networkAclPrototypeNetworkAclBySourceNetworkAcl.name;
       this.resourceGroup = networkAclPrototypeNetworkAclBySourceNetworkAcl.resourceGroup;
@@ -104,6 +109,8 @@ public class NetworkACLPrototypeNetworkACLBySourceNetworkACL extends NetworkACLP
       return this;
     }
   }
+
+  protected NetworkACLPrototypeNetworkACLBySourceNetworkACL() { }
 
   protected NetworkACLPrototypeNetworkACLBySourceNetworkACL(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.vpc,

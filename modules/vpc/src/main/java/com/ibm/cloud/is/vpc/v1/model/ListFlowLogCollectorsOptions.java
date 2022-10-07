@@ -57,6 +57,11 @@ public class ListFlowLogCollectorsOptions extends GenericModel {
     private String targetId;
     private String targetResourceType;
 
+    /**
+     * Instantiates a new Builder from an existing ListFlowLogCollectorsOptions instance.
+     *
+     * @param listFlowLogCollectorsOptions the instance to initialize the Builder with
+     */
     private Builder(ListFlowLogCollectorsOptions listFlowLogCollectorsOptions) {
       this.start = listFlowLogCollectorsOptions.start;
       this.limit = listFlowLogCollectorsOptions.limit;
@@ -183,6 +188,8 @@ public class ListFlowLogCollectorsOptions extends GenericModel {
       return this;
     }
   }
+
+  protected ListFlowLogCollectorsOptions() { }
 
   protected ListFlowLogCollectorsOptions(Builder builder) {
     start = builder.start;

@@ -27,6 +27,11 @@ public class DeleteFloatingIpOptions extends GenericModel {
   public static class Builder {
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing DeleteFloatingIpOptions instance.
+     *
+     * @param deleteFloatingIpOptions the instance to initialize the Builder with
+     */
     private Builder(DeleteFloatingIpOptions deleteFloatingIpOptions) {
       this.id = deleteFloatingIpOptions.id;
     }
@@ -66,6 +71,8 @@ public class DeleteFloatingIpOptions extends GenericModel {
       return this;
     }
   }
+
+  protected DeleteFloatingIpOptions() { }
 
   protected DeleteFloatingIpOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,

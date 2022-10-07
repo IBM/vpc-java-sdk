@@ -25,6 +25,8 @@ public class NetworkInterfaceUnpaginatedCollection extends GenericModel {
   @SerializedName("network_interfaces")
   protected List<NetworkInterface> networkInterfaces;
 
+  protected NetworkInterfaceUnpaginatedCollection() { }
+
   /**
    * Gets the networkInterfaces.
    *

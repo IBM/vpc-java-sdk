@@ -30,6 +30,11 @@ public class VPNGatewayPatch extends GenericModel {
   public static class Builder {
     private String name;
 
+    /**
+     * Instantiates a new Builder from an existing VPNGatewayPatch instance.
+     *
+     * @param vpnGatewayPatch the instance to initialize the Builder with
+     */
     private Builder(VPNGatewayPatch vpnGatewayPatch) {
       this.name = vpnGatewayPatch.name;
     }
@@ -60,6 +65,8 @@ public class VPNGatewayPatch extends GenericModel {
       return this;
     }
   }
+
+  protected VPNGatewayPatch() { }
 
   protected VPNGatewayPatch(Builder builder) {
     name = builder.name;

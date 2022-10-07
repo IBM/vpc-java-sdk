@@ -36,11 +36,14 @@ public class LoadBalancerPoolPatch extends GenericModel {
   }
 
   /**
-   * The protocol to use for this load balancer pool. Load balancers in the `network` family support `tcp` and `udp` (if
-   * `udp_supported` is `true`). Load balancers in the `application` family support `tcp`, `http` and `https`.
+   * The protocol for this load balancer pool.
    *
-   * If this pool is associated with a load balancer listener, the specified protocol must be compatible with the
-   * listener's protocol. At present, the compatible protocols are `http` and `https`.
+   * Load balancers in the `network` family support `tcp` and `udp` (if `udp_supported` is `true`). Load balancers in
+   * the `application` family support `tcp`, `http` and
+   * `https`.
+   *
+   * If this pool is associated with a load balancer listener, the specified protocol must match, or be compatible with
+   * the listener's protocol. At present, the compatible protocols are `http` and `https`.
    */
   public interface Protocol {
     /** http. */
@@ -91,6 +94,11 @@ public class LoadBalancerPoolPatch extends GenericModel {
     private String proxyProtocol;
     private LoadBalancerPoolSessionPersistencePatch sessionPersistence;
 
+    /**
+     * Instantiates a new Builder from an existing LoadBalancerPoolPatch instance.
+     *
+     * @param loadBalancerPoolPatch the instance to initialize the Builder with
+     */
     private Builder(LoadBalancerPoolPatch loadBalancerPoolPatch) {
       this.algorithm = loadBalancerPoolPatch.algorithm;
       this.healthMonitor = loadBalancerPoolPatch.healthMonitor;
@@ -182,6 +190,8 @@ public class LoadBalancerPoolPatch extends GenericModel {
     }
   }
 
+  protected LoadBalancerPoolPatch() { }
+
   protected LoadBalancerPoolPatch(Builder builder) {
     algorithm = builder.algorithm;
     healthMonitor = builder.healthMonitor;
@@ -236,11 +246,14 @@ public class LoadBalancerPoolPatch extends GenericModel {
   /**
    * Gets the protocol.
    *
-   * The protocol to use for this load balancer pool. Load balancers in the `network` family support `tcp` and `udp` (if
-   * `udp_supported` is `true`). Load balancers in the `application` family support `tcp`, `http` and `https`.
+   * The protocol for this load balancer pool.
    *
-   * If this pool is associated with a load balancer listener, the specified protocol must be compatible with the
-   * listener's protocol. At present, the compatible protocols are `http` and `https`.
+   * Load balancers in the `network` family support `tcp` and `udp` (if `udp_supported` is `true`). Load balancers in
+   * the `application` family support `tcp`, `http` and
+   * `https`.
+   *
+   * If this pool is associated with a load balancer listener, the specified protocol must match, or be compatible with
+   * the listener's protocol. At present, the compatible protocols are `http` and `https`.
    *
    * @return the protocol
    */

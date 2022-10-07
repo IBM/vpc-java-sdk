@@ -27,6 +27,11 @@ public class ImageFilePrototype extends GenericModel {
   public static class Builder {
     private String href;
 
+    /**
+     * Instantiates a new Builder from an existing ImageFilePrototype instance.
+     *
+     * @param imageFilePrototype the instance to initialize the Builder with
+     */
     private Builder(ImageFilePrototype imageFilePrototype) {
       this.href = imageFilePrototype.href;
     }
@@ -66,6 +71,8 @@ public class ImageFilePrototype extends GenericModel {
       return this;
     }
   }
+
+  protected ImageFilePrototype() { }
 
   protected ImageFilePrototype(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.href,

@@ -30,6 +30,11 @@ public class PlacementGroupPatch extends GenericModel {
   public static class Builder {
     private String name;
 
+    /**
+     * Instantiates a new Builder from an existing PlacementGroupPatch instance.
+     *
+     * @param placementGroupPatch the instance to initialize the Builder with
+     */
     private Builder(PlacementGroupPatch placementGroupPatch) {
       this.name = placementGroupPatch.name;
     }
@@ -60,6 +65,8 @@ public class PlacementGroupPatch extends GenericModel {
       return this;
     }
   }
+
+  protected PlacementGroupPatch() { }
 
   protected PlacementGroupPatch(Builder builder) {
     name = builder.name;

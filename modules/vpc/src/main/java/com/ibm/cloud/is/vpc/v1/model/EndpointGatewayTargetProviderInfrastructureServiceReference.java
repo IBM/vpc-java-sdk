@@ -25,5 +25,7 @@ public class EndpointGatewayTargetProviderInfrastructureServiceReference extends
     String PROVIDER_INFRASTRUCTURE_SERVICE = "provider_infrastructure_service";
   }
 
+
+  protected EndpointGatewayTargetProviderInfrastructureServiceReference() { }
 }
 

@@ -25,5 +25,7 @@ public class InstancePlacementTargetPlacementGroupReference extends InstancePlac
     String PLACEMENT_GROUP = "placement_group";
   }
 
+
+  protected InstancePlacementTargetPlacementGroupReference() { }
 }
 

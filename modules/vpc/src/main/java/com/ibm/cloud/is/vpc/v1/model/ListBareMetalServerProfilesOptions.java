@@ -29,6 +29,11 @@ public class ListBareMetalServerProfilesOptions extends GenericModel {
     private String start;
     private Long limit;
 
+    /**
+     * Instantiates a new Builder from an existing ListBareMetalServerProfilesOptions instance.
+     *
+     * @param listBareMetalServerProfilesOptions the instance to initialize the Builder with
+     */
     private Builder(ListBareMetalServerProfilesOptions listBareMetalServerProfilesOptions) {
       this.start = listBareMetalServerProfilesOptions.start;
       this.limit = listBareMetalServerProfilesOptions.limit;
@@ -71,6 +76,8 @@ public class ListBareMetalServerProfilesOptions extends GenericModel {
       return this;
     }
   }
+
+  protected ListBareMetalServerProfilesOptions() { }
 
   protected ListBareMetalServerProfilesOptions(Builder builder) {
     start = builder.start;

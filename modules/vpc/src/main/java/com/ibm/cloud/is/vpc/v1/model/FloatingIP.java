@@ -49,6 +49,8 @@ public class FloatingIP extends GenericModel {
   protected FloatingIPTarget target;
   protected ZoneReference zone;
 
+  protected FloatingIP() { }
+
   /**
    * Gets the address.
    *

@@ -24,8 +24,6 @@ import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolIdentityById;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import org.testng.annotations.Test;
@@ -84,13 +82,13 @@ public class CreateLoadBalancerListenerOptionsTest {
       .action("forward")
       .name("my-policy")
       .priority(Long.valueOf("5"))
-      .rules(new java.util.ArrayList<LoadBalancerListenerPolicyRulePrototype>(java.util.Arrays.asList(loadBalancerListenerPolicyRulePrototypeModel)))
+      .rules(java.util.Arrays.asList(loadBalancerListenerPolicyRulePrototypeModel))
       .target(loadBalancerListenerPolicyTargetPrototypeModel)
       .build();
     assertEquals(loadBalancerListenerPolicyPrototypeModel.action(), "forward");
     assertEquals(loadBalancerListenerPolicyPrototypeModel.name(), "my-policy");
     assertEquals(loadBalancerListenerPolicyPrototypeModel.priority(), Long.valueOf("5"));
-    assertEquals(loadBalancerListenerPolicyPrototypeModel.rules(), new java.util.ArrayList<LoadBalancerListenerPolicyRulePrototype>(java.util.Arrays.asList(loadBalancerListenerPolicyRulePrototypeModel)));
+    assertEquals(loadBalancerListenerPolicyPrototypeModel.rules(), java.util.Arrays.asList(loadBalancerListenerPolicyRulePrototypeModel));
     assertEquals(loadBalancerListenerPolicyPrototypeModel.target(), loadBalancerListenerPolicyTargetPrototypeModel);
 
     CreateLoadBalancerListenerOptions createLoadBalancerListenerOptionsModel = new CreateLoadBalancerListenerOptions.Builder()
@@ -101,7 +99,7 @@ public class CreateLoadBalancerListenerOptionsTest {
       .connectionLimit(Long.valueOf("2000"))
       .defaultPool(loadBalancerPoolIdentityModel)
       .httpsRedirect(loadBalancerListenerHttpsRedirectPrototypeModel)
-      .policies(new java.util.ArrayList<LoadBalancerListenerPolicyPrototype>(java.util.Arrays.asList(loadBalancerListenerPolicyPrototypeModel)))
+      .policies(java.util.Arrays.asList(loadBalancerListenerPolicyPrototypeModel))
       .port(Long.valueOf("443"))
       .portMax(Long.valueOf("499"))
       .portMin(Long.valueOf("443"))
@@ -113,7 +111,7 @@ public class CreateLoadBalancerListenerOptionsTest {
     assertEquals(createLoadBalancerListenerOptionsModel.connectionLimit(), Long.valueOf("2000"));
     assertEquals(createLoadBalancerListenerOptionsModel.defaultPool(), loadBalancerPoolIdentityModel);
     assertEquals(createLoadBalancerListenerOptionsModel.httpsRedirect(), loadBalancerListenerHttpsRedirectPrototypeModel);
-    assertEquals(createLoadBalancerListenerOptionsModel.policies(), new java.util.ArrayList<LoadBalancerListenerPolicyPrototype>(java.util.Arrays.asList(loadBalancerListenerPolicyPrototypeModel)));
+    assertEquals(createLoadBalancerListenerOptionsModel.policies(), java.util.Arrays.asList(loadBalancerListenerPolicyPrototypeModel));
     assertEquals(createLoadBalancerListenerOptionsModel.port(), Long.valueOf("443"));
     assertEquals(createLoadBalancerListenerOptionsModel.portMax(), Long.valueOf("499"));
     assertEquals(createLoadBalancerListenerOptionsModel.portMin(), Long.valueOf("443"));

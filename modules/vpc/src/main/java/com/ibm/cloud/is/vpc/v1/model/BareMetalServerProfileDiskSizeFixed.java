@@ -25,5 +25,7 @@ public class BareMetalServerProfileDiskSizeFixed extends BareMetalServerProfileD
     String FIXED = "fixed";
   }
 
+
+  protected BareMetalServerProfileDiskSizeFixed() { }
 }
 

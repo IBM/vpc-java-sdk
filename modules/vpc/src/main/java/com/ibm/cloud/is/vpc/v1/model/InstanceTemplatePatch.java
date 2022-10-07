@@ -30,6 +30,11 @@ public class InstanceTemplatePatch extends GenericModel {
   public static class Builder {
     private String name;
 
+    /**
+     * Instantiates a new Builder from an existing InstanceTemplatePatch instance.
+     *
+     * @param instanceTemplatePatch the instance to initialize the Builder with
+     */
     private Builder(InstanceTemplatePatch instanceTemplatePatch) {
       this.name = instanceTemplatePatch.name;
     }
@@ -60,6 +65,8 @@ public class InstanceTemplatePatch extends GenericModel {
       return this;
     }
   }
+
+  protected InstanceTemplatePatch() { }
 
   protected InstanceTemplatePatch(Builder builder) {
     name = builder.name;

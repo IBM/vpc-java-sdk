@@ -45,6 +45,11 @@ public class VPNGatewayConnectionDPDPatch extends GenericModel {
     private Long interval;
     private Long timeout;
 
+    /**
+     * Instantiates a new Builder from an existing VPNGatewayConnectionDPDPatch instance.
+     *
+     * @param vpnGatewayConnectionDpdPatch the instance to initialize the Builder with
+     */
     private Builder(VPNGatewayConnectionDPDPatch vpnGatewayConnectionDpdPatch) {
       this.action = vpnGatewayConnectionDpdPatch.action;
       this.interval = vpnGatewayConnectionDpdPatch.interval;
@@ -99,6 +104,8 @@ public class VPNGatewayConnectionDPDPatch extends GenericModel {
       return this;
     }
   }
+
+  protected VPNGatewayConnectionDPDPatch() { }
 
   protected VPNGatewayConnectionDPDPatch(Builder builder) {
     action = builder.action;

@@ -33,6 +33,11 @@ public class UpdateBareMetalServerNetworkInterfaceOptions extends GenericModel {
     private String id;
     private Map<String, Object> bareMetalServerNetworkInterfacePatch;
 
+    /**
+     * Instantiates a new Builder from an existing UpdateBareMetalServerNetworkInterfaceOptions instance.
+     *
+     * @param updateBareMetalServerNetworkInterfaceOptions the instance to initialize the Builder with
+     */
     private Builder(UpdateBareMetalServerNetworkInterfaceOptions updateBareMetalServerNetworkInterfaceOptions) {
       this.bareMetalServerId = updateBareMetalServerNetworkInterfaceOptions.bareMetalServerId;
       this.id = updateBareMetalServerNetworkInterfaceOptions.id;
@@ -100,6 +105,8 @@ public class UpdateBareMetalServerNetworkInterfaceOptions extends GenericModel {
       return this;
     }
   }
+
+  protected UpdateBareMetalServerNetworkInterfaceOptions() { }
 
   protected UpdateBareMetalServerNetworkInterfaceOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.bareMetalServerId,

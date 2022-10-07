@@ -21,6 +21,8 @@ public class VPNServerCollectionNext extends GenericModel {
 
   protected String href;
 
+  protected VPNServerCollectionNext() { }
+
   /**
    * Gets the href.
    *

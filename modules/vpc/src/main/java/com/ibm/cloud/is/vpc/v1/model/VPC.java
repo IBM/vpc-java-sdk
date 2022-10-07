@@ -67,6 +67,8 @@ public class VPC extends GenericModel {
   protected String resourceType;
   protected String status;
 
+  protected VPC() { }
+
   /**
    * Gets the classicAccess.
    *

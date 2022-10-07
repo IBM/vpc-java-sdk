@@ -33,6 +33,11 @@ public class UpdateSubnetReservedIpOptions extends GenericModel {
     private String id;
     private Map<String, Object> reservedIpPatch;
 
+    /**
+     * Instantiates a new Builder from an existing UpdateSubnetReservedIpOptions instance.
+     *
+     * @param updateSubnetReservedIpOptions the instance to initialize the Builder with
+     */
     private Builder(UpdateSubnetReservedIpOptions updateSubnetReservedIpOptions) {
       this.subnetId = updateSubnetReservedIpOptions.subnetId;
       this.id = updateSubnetReservedIpOptions.id;
@@ -100,6 +105,8 @@ public class UpdateSubnetReservedIpOptions extends GenericModel {
       return this;
     }
   }
+
+  protected UpdateSubnetReservedIpOptions() { }
 
   protected UpdateSubnetReservedIpOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.subnetId,

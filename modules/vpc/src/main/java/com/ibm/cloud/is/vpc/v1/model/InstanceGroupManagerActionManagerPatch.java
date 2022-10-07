@@ -32,6 +32,11 @@ public class InstanceGroupManagerActionManagerPatch extends GenericModel {
     private Long maxMembershipCount;
     private Long minMembershipCount;
 
+    /**
+     * Instantiates a new Builder from an existing InstanceGroupManagerActionManagerPatch instance.
+     *
+     * @param instanceGroupManagerActionManagerPatch the instance to initialize the Builder with
+     */
     private Builder(InstanceGroupManagerActionManagerPatch instanceGroupManagerActionManagerPatch) {
       this.maxMembershipCount = instanceGroupManagerActionManagerPatch.maxMembershipCount;
       this.minMembershipCount = instanceGroupManagerActionManagerPatch.minMembershipCount;
@@ -74,6 +79,8 @@ public class InstanceGroupManagerActionManagerPatch extends GenericModel {
       return this;
     }
   }
+
+  protected InstanceGroupManagerActionManagerPatch() { }
 
   protected InstanceGroupManagerActionManagerPatch(Builder builder) {
     maxMembershipCount = builder.maxMembershipCount;

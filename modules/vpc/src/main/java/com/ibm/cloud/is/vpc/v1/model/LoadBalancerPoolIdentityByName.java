@@ -27,6 +27,11 @@ public class LoadBalancerPoolIdentityByName extends GenericModel {
   public static class Builder {
     private String name;
 
+    /**
+     * Instantiates a new Builder from an existing LoadBalancerPoolIdentityByName instance.
+     *
+     * @param loadBalancerPoolIdentityByName the instance to initialize the Builder with
+     */
     private Builder(LoadBalancerPoolIdentityByName loadBalancerPoolIdentityByName) {
       this.name = loadBalancerPoolIdentityByName.name;
     }
@@ -66,6 +71,8 @@ public class LoadBalancerPoolIdentityByName extends GenericModel {
       return this;
     }
   }
+
+  protected LoadBalancerPoolIdentityByName() { }
 
   protected LoadBalancerPoolIdentityByName(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.name,

@@ -29,6 +29,11 @@ public class GetVpnServerClientOptions extends GenericModel {
     private String vpnServerId;
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing GetVpnServerClientOptions instance.
+     *
+     * @param getVpnServerClientOptions the instance to initialize the Builder with
+     */
     private Builder(GetVpnServerClientOptions getVpnServerClientOptions) {
       this.vpnServerId = getVpnServerClientOptions.vpnServerId;
       this.id = getVpnServerClientOptions.id;
@@ -82,6 +87,8 @@ public class GetVpnServerClientOptions extends GenericModel {
       return this;
     }
   }
+
+  protected GetVpnServerClientOptions() { }
 
   protected GetVpnServerClientOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.vpnServerId,

@@ -33,6 +33,11 @@ public class LoadBalancerListenerHTTPSRedirectPrototype extends GenericModel {
     private LoadBalancerListenerIdentity listener;
     private String uri;
 
+    /**
+     * Instantiates a new Builder from an existing LoadBalancerListenerHTTPSRedirectPrototype instance.
+     *
+     * @param loadBalancerListenerHttpsRedirectPrototype the instance to initialize the Builder with
+     */
     private Builder(LoadBalancerListenerHTTPSRedirectPrototype loadBalancerListenerHttpsRedirectPrototype) {
       this.httpStatusCode = loadBalancerListenerHttpsRedirectPrototype.httpStatusCode;
       this.listener = loadBalancerListenerHttpsRedirectPrototype.listener;
@@ -98,6 +103,8 @@ public class LoadBalancerListenerHTTPSRedirectPrototype extends GenericModel {
       return this;
     }
   }
+
+  protected LoadBalancerListenerHTTPSRedirectPrototype() { }
 
   protected LoadBalancerListenerHTTPSRedirectPrototype(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.httpStatusCode,

@@ -23,6 +23,8 @@ public class LoadBalancerListenerPolicyRuleCollection extends GenericModel {
 
   protected List<LoadBalancerListenerPolicyRule> rules;
 
+  protected LoadBalancerListenerPolicyRuleCollection() { }
+
   /**
    * Gets the rules.
    *

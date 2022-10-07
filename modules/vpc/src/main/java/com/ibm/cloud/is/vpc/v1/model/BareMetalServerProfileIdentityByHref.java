@@ -24,6 +24,11 @@ public class BareMetalServerProfileIdentityByHref extends BareMetalServerProfile
   public static class Builder {
     private String href;
 
+    /**
+     * Instantiates a new Builder from an existing BareMetalServerProfileIdentityByHref instance.
+     *
+     * @param bareMetalServerProfileIdentityByHref the instance to initialize the Builder with
+     */
     public Builder(BareMetalServerProfileIdentity bareMetalServerProfileIdentityByHref) {
       this.href = bareMetalServerProfileIdentityByHref.href;
     }
@@ -63,6 +68,8 @@ public class BareMetalServerProfileIdentityByHref extends BareMetalServerProfile
       return this;
     }
   }
+
+  protected BareMetalServerProfileIdentityByHref() { }
 
   protected BareMetalServerProfileIdentityByHref(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.href,

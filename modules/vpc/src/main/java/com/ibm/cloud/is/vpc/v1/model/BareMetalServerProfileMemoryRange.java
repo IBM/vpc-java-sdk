@@ -25,5 +25,7 @@ public class BareMetalServerProfileMemoryRange extends BareMetalServerProfileMem
     String RANGE = "range";
   }
 
+
+  protected BareMetalServerProfileMemoryRange() { }
 }
 

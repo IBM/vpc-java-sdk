@@ -35,6 +35,11 @@ public class CreateSubnetReservedIpOptions extends GenericModel {
     private String name;
     private ReservedIPTargetPrototype target;
 
+    /**
+     * Instantiates a new Builder from an existing CreateSubnetReservedIpOptions instance.
+     *
+     * @param createSubnetReservedIpOptions the instance to initialize the Builder with
+     */
     private Builder(CreateSubnetReservedIpOptions createSubnetReservedIpOptions) {
       this.subnetId = createSubnetReservedIpOptions.subnetId;
       this.address = createSubnetReservedIpOptions.address;
@@ -123,6 +128,8 @@ public class CreateSubnetReservedIpOptions extends GenericModel {
     }
   }
 
+  protected CreateSubnetReservedIpOptions() { }
+
   protected CreateSubnetReservedIpOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.subnetId,
       "subnetId cannot be empty");
@@ -194,8 +201,12 @@ public class CreateSubnetReservedIpOptions extends GenericModel {
   /**
    * Gets the target.
    *
-   * The target this reserved IP is to be bound to. The target must be an endpoint gateway not
-   * already bound to a reserved IP in the subnet's zone.
+   * The target to bind this reserved IP to.  The target must be in the same VPC.
+   *
+   * At present, only endpoint gateway targets are supported.  The endpoint gateway must
+   * not be already bound to a reserved IP in the subnet's zone.
+   *
+   * If unspecified, the reserved IP will be created unbound.
    *
    * @return the target
    */

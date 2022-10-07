@@ -29,6 +29,8 @@ public class LoadBalancerProfileCollection extends GenericModel {
   @SerializedName("total_count")
   protected Long totalCount;
 
+  protected LoadBalancerProfileCollection() { }
+
   /**
    * Gets the first.
    *

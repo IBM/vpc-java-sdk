@@ -53,6 +53,7 @@ public class VolumeAttachmentVolumePrototypeInstanceContextVolumePrototypeInstan
       .iops(Long.valueOf("10000"))
       .name("my-volume")
       .profile(volumeProfileIdentityModel)
+      .userTags(java.util.Arrays.asList("testString"))
       .capacity(Long.valueOf("100"))
       .encryptionKey(encryptionKeyIdentityModel)
       .sourceSnapshot(snapshotIdentityModel)
@@ -60,6 +61,7 @@ public class VolumeAttachmentVolumePrototypeInstanceContextVolumePrototypeInstan
     assertEquals(volumeAttachmentVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeBySourceSnapshotModel.iops(), Long.valueOf("10000"));
     assertEquals(volumeAttachmentVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeBySourceSnapshotModel.name(), "my-volume");
     assertEquals(volumeAttachmentVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeBySourceSnapshotModel.profile(), volumeProfileIdentityModel);
+    assertEquals(volumeAttachmentVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeBySourceSnapshotModel.userTags(), java.util.Arrays.asList("testString"));
     assertEquals(volumeAttachmentVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeBySourceSnapshotModel.capacity(), Long.valueOf("100"));
     assertEquals(volumeAttachmentVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeBySourceSnapshotModel.encryptionKey(), encryptionKeyIdentityModel);
     assertEquals(volumeAttachmentVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeBySourceSnapshotModel.sourceSnapshot(), snapshotIdentityModel);

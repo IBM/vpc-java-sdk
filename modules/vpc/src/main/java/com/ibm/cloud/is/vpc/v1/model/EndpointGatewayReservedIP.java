@@ -34,8 +34,7 @@ public class EndpointGatewayReservedIP extends GenericModel {
   protected String name;
   protected SubnetIdentity subnet;
 
-  protected EndpointGatewayReservedIP() {
-  }
+  protected EndpointGatewayReservedIP() { }
 
   /**
    * Gets the id.

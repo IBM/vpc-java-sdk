@@ -43,6 +43,8 @@ public class BareMetalServerConsoleAccessToken extends GenericModel {
   protected Boolean force;
   protected String href;
 
+  protected BareMetalServerConsoleAccessToken() { }
+
   /**
    * Gets the accessToken.
    *

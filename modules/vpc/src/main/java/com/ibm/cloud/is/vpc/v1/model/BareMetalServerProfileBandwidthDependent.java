@@ -26,5 +26,7 @@ public class BareMetalServerProfileBandwidthDependent extends BareMetalServerPro
     String DEPENDENT = "dependent";
   }
 
+
+  protected BareMetalServerProfileBandwidthDependent() { }
 }
 

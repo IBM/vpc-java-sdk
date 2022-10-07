@@ -31,6 +31,8 @@ public class OperatingSystem extends GenericModel {
   protected String vendor;
   protected String version;
 
+  protected OperatingSystem() { }
+
   /**
    * Gets the architecture.
    *

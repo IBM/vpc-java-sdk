@@ -21,6 +21,8 @@ public class VolumeCollectionFirst extends GenericModel {
 
   protected String href;
 
+  protected VolumeCollectionFirst() { }
+
   /**
    * Gets the href.
    *

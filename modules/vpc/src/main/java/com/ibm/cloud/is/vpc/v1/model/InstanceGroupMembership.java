@@ -59,6 +59,8 @@ public class InstanceGroupMembership extends GenericModel {
   @SerializedName("updated_at")
   protected Date updatedAt;
 
+  protected InstanceGroupMembership() { }
+
   /**
    * Gets the createdAt.
    *

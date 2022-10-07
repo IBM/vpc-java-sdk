@@ -56,8 +56,7 @@ public class InstanceGroupManager extends GenericModel {
   protected List<InstanceGroupManagerPolicyReference> policies;
   protected List<InstanceGroupManagerActionReference> actions;
 
-  protected InstanceGroupManager() {
-  }
+  protected InstanceGroupManager() { }
 
   /**
    * Gets the createdAt.

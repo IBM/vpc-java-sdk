@@ -53,8 +53,7 @@ public class InstanceGroupManagerPolicyPrototype extends GenericModel {
   @SerializedName("policy_type")
   protected String policyType;
 
-  protected InstanceGroupManagerPolicyPrototype() {
-  }
+  protected InstanceGroupManagerPolicyPrototype() { }
 
   /**
    * Gets the name.

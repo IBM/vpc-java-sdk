@@ -18,7 +18,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 /**
  * The IP addresses or security groups from which this rule will allow traffic (or to which, for outbound rules). Can be
  * specified as an IP address, a CIDR block, or a security group. A CIDR block of `0.0.0.0/0` will allow traffic from
- * any source (or to any source, for outbound rules).
+ * any source (or to any destination, for outbound rules).
  *
  * Classes which extend this class:
  * - SecurityGroupRuleRemotePatchIP
@@ -34,8 +34,7 @@ public class SecurityGroupRuleRemotePatch extends GenericModel {
   protected String crn;
   protected String href;
 
-  protected SecurityGroupRuleRemotePatch() {
-  }
+  protected SecurityGroupRuleRemotePatch() { }
 
   /**
    * Gets the address.

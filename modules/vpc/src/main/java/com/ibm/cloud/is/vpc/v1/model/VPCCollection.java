@@ -29,6 +29,8 @@ public class VPCCollection extends GenericModel {
   protected Long totalCount;
   protected List<VPC> vpcs;
 
+  protected VPCCollection() { }
+
   /**
    * Gets the first.
    *

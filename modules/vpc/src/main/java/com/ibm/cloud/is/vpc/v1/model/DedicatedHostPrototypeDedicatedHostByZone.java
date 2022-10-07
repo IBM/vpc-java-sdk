@@ -29,6 +29,11 @@ public class DedicatedHostPrototypeDedicatedHostByZone extends DedicatedHostProt
     private DedicatedHostGroupPrototypeDedicatedHostByZoneContext group;
     private ZoneIdentity zone;
 
+    /**
+     * Instantiates a new Builder from an existing DedicatedHostPrototypeDedicatedHostByZone instance.
+     *
+     * @param dedicatedHostPrototypeDedicatedHostByZone the instance to initialize the Builder with
+     */
     public Builder(DedicatedHostPrototype dedicatedHostPrototypeDedicatedHostByZone) {
       this.instancePlacementEnabled = dedicatedHostPrototypeDedicatedHostByZone.instancePlacementEnabled;
       this.name = dedicatedHostPrototypeDedicatedHostByZone.name;
@@ -130,6 +135,8 @@ public class DedicatedHostPrototypeDedicatedHostByZone extends DedicatedHostProt
       return this;
     }
   }
+
+  protected DedicatedHostPrototypeDedicatedHostByZone() { }
 
   protected DedicatedHostPrototypeDedicatedHostByZone(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.profile,

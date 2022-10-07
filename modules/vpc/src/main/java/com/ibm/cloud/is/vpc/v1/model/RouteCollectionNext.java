@@ -21,6 +21,8 @@ public class RouteCollectionNext extends GenericModel {
 
   protected String href;
 
+  protected RouteCollectionNext() { }
+
   /**
    * Gets the href.
    *

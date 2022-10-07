@@ -23,6 +23,7 @@ public class UpdateLoadBalancerOptions extends GenericModel {
 
   protected String id;
   protected Map<String, Object> loadBalancerPatch;
+  protected String ifMatch;
 
   /**
    * Builder.
@@ -30,10 +31,17 @@ public class UpdateLoadBalancerOptions extends GenericModel {
   public static class Builder {
     private String id;
     private Map<String, Object> loadBalancerPatch;
+    private String ifMatch;
 
+    /**
+     * Instantiates a new Builder from an existing UpdateLoadBalancerOptions instance.
+     *
+     * @param updateLoadBalancerOptions the instance to initialize the Builder with
+     */
     private Builder(UpdateLoadBalancerOptions updateLoadBalancerOptions) {
       this.id = updateLoadBalancerOptions.id;
       this.loadBalancerPatch = updateLoadBalancerOptions.loadBalancerPatch;
+      this.ifMatch = updateLoadBalancerOptions.ifMatch;
     }
 
     /**
@@ -83,7 +91,20 @@ public class UpdateLoadBalancerOptions extends GenericModel {
       this.loadBalancerPatch = loadBalancerPatch;
       return this;
     }
+
+    /**
+     * Set the ifMatch.
+     *
+     * @param ifMatch the ifMatch
+     * @return the UpdateLoadBalancerOptions builder
+     */
+    public Builder ifMatch(String ifMatch) {
+      this.ifMatch = ifMatch;
+      return this;
+    }
   }
+
+  protected UpdateLoadBalancerOptions() { }
 
   protected UpdateLoadBalancerOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,
@@ -92,6 +113,7 @@ public class UpdateLoadBalancerOptions extends GenericModel {
       "loadBalancerPatch cannot be null");
     id = builder.id;
     loadBalancerPatch = builder.loadBalancerPatch;
+    ifMatch = builder.ifMatch;
   }
 
   /**
@@ -123,6 +145,18 @@ public class UpdateLoadBalancerOptions extends GenericModel {
    */
   public Map<String, Object> loadBalancerPatch() {
     return loadBalancerPatch;
+  }
+
+  /**
+   * Gets the ifMatch.
+   *
+   * If present, the request will fail if the specified ETag value does not match the resource's current ETag value.
+   * Required if the request body includes an array.
+   *
+   * @return the ifMatch
+   */
+  public String ifMatch() {
+    return ifMatch;
   }
 }
 

@@ -55,6 +55,8 @@ public class InstanceDisk extends GenericModel {
   protected String resourceType;
   protected Long size;
 
+  protected InstanceDisk() { }
+
   /**
    * Gets the createdAt.
    *

@@ -40,6 +40,11 @@ public class CreateEndpointGatewayOptions extends GenericModel {
     private ResourceGroupIdentity resourceGroup;
     private List<SecurityGroupIdentity> securityGroups;
 
+    /**
+     * Instantiates a new Builder from an existing CreateEndpointGatewayOptions instance.
+     *
+     * @param createEndpointGatewayOptions the instance to initialize the Builder with
+     */
     private Builder(CreateEndpointGatewayOptions createEndpointGatewayOptions) {
       this.target = createEndpointGatewayOptions.target;
       this.vpc = createEndpointGatewayOptions.vpc;
@@ -176,6 +181,8 @@ public class CreateEndpointGatewayOptions extends GenericModel {
     }
   }
 
+  protected CreateEndpointGatewayOptions() { }
+
   protected CreateEndpointGatewayOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.target,
       "target cannot be null");
@@ -201,7 +208,8 @@ public class CreateEndpointGatewayOptions extends GenericModel {
   /**
    * Gets the target.
    *
-   * The target for this endpoint gateway.
+   * The target to use for this endpoint gateway. Must not already be the target of another
+   * endpoint gateway in the VPC.
    *
    * @return the target
    */
@@ -212,7 +220,7 @@ public class CreateEndpointGatewayOptions extends GenericModel {
   /**
    * Gets the vpc.
    *
-   * The VPC this endpoint gateway will serve.
+   * The VPC this endpoint gateway will reside in.
    *
    * @return the vpc
    */

@@ -24,6 +24,11 @@ public class VolumeAttachmentPrototypeVolumeVolumeIdentityVolumeIdentityByCRN ex
   public static class Builder {
     private String crn;
 
+    /**
+     * Instantiates a new Builder from an existing VolumeAttachmentPrototypeVolumeVolumeIdentityVolumeIdentityByCRN instance.
+     *
+     * @param volumeAttachmentPrototypeVolumeVolumeIdentityVolumeIdentityByCrn the instance to initialize the Builder with
+     */
     public Builder(VolumeAttachmentPrototypeVolumeVolumeIdentity volumeAttachmentPrototypeVolumeVolumeIdentityVolumeIdentityByCrn) {
       this.crn = volumeAttachmentPrototypeVolumeVolumeIdentityVolumeIdentityByCrn.crn;
     }
@@ -63,6 +68,8 @@ public class VolumeAttachmentPrototypeVolumeVolumeIdentityVolumeIdentityByCRN ex
       return this;
     }
   }
+
+  protected VolumeAttachmentPrototypeVolumeVolumeIdentityVolumeIdentityByCRN() { }
 
   protected VolumeAttachmentPrototypeVolumeVolumeIdentityVolumeIdentityByCRN(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.crn,

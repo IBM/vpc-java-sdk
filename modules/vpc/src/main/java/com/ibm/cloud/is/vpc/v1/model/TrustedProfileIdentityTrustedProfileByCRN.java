@@ -24,6 +24,11 @@ public class TrustedProfileIdentityTrustedProfileByCRN extends TrustedProfileIde
   public static class Builder {
     private String crn;
 
+    /**
+     * Instantiates a new Builder from an existing TrustedProfileIdentityTrustedProfileByCRN instance.
+     *
+     * @param trustedProfileIdentityTrustedProfileByCrn the instance to initialize the Builder with
+     */
     public Builder(TrustedProfileIdentity trustedProfileIdentityTrustedProfileByCrn) {
       this.crn = trustedProfileIdentityTrustedProfileByCrn.crn;
     }
@@ -63,6 +68,8 @@ public class TrustedProfileIdentityTrustedProfileByCRN extends TrustedProfileIde
       return this;
     }
   }
+
+  protected TrustedProfileIdentityTrustedProfileByCRN() { }
 
   protected TrustedProfileIdentityTrustedProfileByCRN(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.crn,

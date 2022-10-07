@@ -32,6 +32,11 @@ public class BackupPolicyPlanDeletionTriggerPatch extends GenericModel {
     private Long deleteAfter;
     private Long deleteOverCount;
 
+    /**
+     * Instantiates a new Builder from an existing BackupPolicyPlanDeletionTriggerPatch instance.
+     *
+     * @param backupPolicyPlanDeletionTriggerPatch the instance to initialize the Builder with
+     */
     private Builder(BackupPolicyPlanDeletionTriggerPatch backupPolicyPlanDeletionTriggerPatch) {
       this.deleteAfter = backupPolicyPlanDeletionTriggerPatch.deleteAfter;
       this.deleteOverCount = backupPolicyPlanDeletionTriggerPatch.deleteOverCount;
@@ -74,6 +79,8 @@ public class BackupPolicyPlanDeletionTriggerPatch extends GenericModel {
       return this;
     }
   }
+
+  protected BackupPolicyPlanDeletionTriggerPatch() { }
 
   protected BackupPolicyPlanDeletionTriggerPatch(Builder builder) {
     deleteAfter = builder.deleteAfter;

@@ -24,6 +24,11 @@ public class ImageIdentityById extends ImageIdentity {
   public static class Builder {
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing ImageIdentityById instance.
+     *
+     * @param imageIdentityById the instance to initialize the Builder with
+     */
     public Builder(ImageIdentity imageIdentityById) {
       this.id = imageIdentityById.id;
     }
@@ -63,6 +68,8 @@ public class ImageIdentityById extends ImageIdentity {
       return this;
     }
   }
+
+  protected ImageIdentityById() { }
 
   protected ImageIdentityById(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.id,

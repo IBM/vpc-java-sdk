@@ -80,6 +80,8 @@ public class Subnet extends GenericModel {
   protected VPCReference vpc;
   protected ZoneReference zone;
 
+  protected Subnet() { }
+
   /**
    * Gets the availableIpv4AddressCount.
    *
@@ -252,7 +254,7 @@ public class Subnet extends GenericModel {
   /**
    * Gets the vpc.
    *
-   * The VPC this subnet is a part of.
+   * The VPC this subnet resides in.
    *
    * @return the vpc
    */

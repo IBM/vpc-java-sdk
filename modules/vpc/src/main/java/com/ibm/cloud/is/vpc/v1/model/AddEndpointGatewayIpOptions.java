@@ -29,6 +29,11 @@ public class AddEndpointGatewayIpOptions extends GenericModel {
     private String endpointGatewayId;
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing AddEndpointGatewayIpOptions instance.
+     *
+     * @param addEndpointGatewayIpOptions the instance to initialize the Builder with
+     */
     private Builder(AddEndpointGatewayIpOptions addEndpointGatewayIpOptions) {
       this.endpointGatewayId = addEndpointGatewayIpOptions.endpointGatewayId;
       this.id = addEndpointGatewayIpOptions.id;
@@ -82,6 +87,8 @@ public class AddEndpointGatewayIpOptions extends GenericModel {
       return this;
     }
   }
+
+  protected AddEndpointGatewayIpOptions() { }
 
   protected AddEndpointGatewayIpOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.endpointGatewayId,

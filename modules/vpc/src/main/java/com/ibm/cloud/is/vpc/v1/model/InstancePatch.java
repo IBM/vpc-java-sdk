@@ -45,6 +45,11 @@ public class InstancePatch extends GenericModel {
     private InstancePatchProfile profile;
     private Long totalVolumeBandwidth;
 
+    /**
+     * Instantiates a new Builder from an existing InstancePatch instance.
+     *
+     * @param instancePatch the instance to initialize the Builder with
+     */
     private Builder(InstancePatch instancePatch) {
       this.availabilityPolicy = instancePatch.availabilityPolicy;
       this.metadataService = instancePatch.metadataService;
@@ -136,6 +141,8 @@ public class InstancePatch extends GenericModel {
     }
   }
 
+  protected InstancePatch() { }
+
   protected InstancePatch(Builder builder) {
     availabilityPolicy = builder.availabilityPolicy;
     metadataService = builder.metadataService;
@@ -211,6 +218,7 @@ public class InstancePatch extends GenericModel {
    * - Be compatible with any `placement_target` constraints. For example, if the
    *   instance is placed on a dedicated host, the requested profile `family` must be
    *   the same as the dedicated host `family`.
+   * - Have the same `vcpu.architecture`.
    *
    * @return the profile
    */

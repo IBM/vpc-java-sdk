@@ -33,6 +33,11 @@ public class ListVolumesOptions extends GenericModel {
     private String name;
     private String zoneName;
 
+    /**
+     * Instantiates a new Builder from an existing ListVolumesOptions instance.
+     *
+     * @param listVolumesOptions the instance to initialize the Builder with
+     */
     private Builder(ListVolumesOptions listVolumesOptions) {
       this.start = listVolumesOptions.start;
       this.limit = listVolumesOptions.limit;
@@ -99,6 +104,8 @@ public class ListVolumesOptions extends GenericModel {
       return this;
     }
   }
+
+  protected ListVolumesOptions() { }
 
   protected ListVolumesOptions(Builder builder) {
     start = builder.start;

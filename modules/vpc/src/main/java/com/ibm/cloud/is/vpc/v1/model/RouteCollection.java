@@ -29,6 +29,8 @@ public class RouteCollection extends GenericModel {
   @SerializedName("total_count")
   protected Long totalCount;
 
+  protected RouteCollection() { }
+
   /**
    * Gets the first.
    *

@@ -23,7 +23,6 @@ package com.ibm.cloud.is.vpc.v1.model;
 public class FlowLogCollectorTargetPrototypeInstanceIdentity extends FlowLogCollectorTargetPrototype {
 
 
-  protected FlowLogCollectorTargetPrototypeInstanceIdentity() {
-  }
+  protected FlowLogCollectorTargetPrototypeInstanceIdentity() { }
 }
 

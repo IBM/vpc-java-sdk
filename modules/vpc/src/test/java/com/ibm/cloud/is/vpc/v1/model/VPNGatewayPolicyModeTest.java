@@ -17,6 +17,8 @@ import com.ibm.cloud.is.vpc.v1.model.IP;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.SubnetReference;
 import com.ibm.cloud.is.vpc.v1.model.SubnetReferenceDeleted;
+import com.ibm.cloud.is.vpc.v1.model.VPCReference;
+import com.ibm.cloud.is.vpc.v1.model.VPCReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionReference;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayMember;
@@ -50,6 +52,7 @@ public class VPNGatewayPolicyModeTest {
     assertNull(vpnGatewayPolicyModeModel.getResourceType());
     assertNull(vpnGatewayPolicyModeModel.getStatus());
     assertNull(vpnGatewayPolicyModeModel.getSubnet());
+    assertNull(vpnGatewayPolicyModeModel.getVpc());
     assertNull(vpnGatewayPolicyModeModel.getMode());
   }
 }

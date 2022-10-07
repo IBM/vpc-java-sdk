@@ -20,8 +20,6 @@ import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionPrototypeVPNGatewayConn
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import org.testng.annotations.Test;
@@ -63,8 +61,8 @@ public class VPNGatewayConnectionPrototypeVPNGatewayConnectionPolicyModePrototyp
       .name("my-vpn-connection")
       .peerAddress("169.21.50.5")
       .psk("lkj14b1oi0alcniejkso")
-      .localCidrs(new java.util.ArrayList<String>(java.util.Arrays.asList("192.168.1.0/24")))
-      .peerCidrs(new java.util.ArrayList<String>(java.util.Arrays.asList("10.45.1.0/24")))
+      .localCidrs(java.util.Arrays.asList("192.168.1.0/24"))
+      .peerCidrs(java.util.Arrays.asList("10.45.1.0/24"))
       .build();
     assertEquals(vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototypeModel.adminStateUp(), Boolean.valueOf(true));
     assertEquals(vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototypeModel.deadPeerDetection(), vpnGatewayConnectionDpdPrototypeModel);
@@ -73,8 +71,8 @@ public class VPNGatewayConnectionPrototypeVPNGatewayConnectionPolicyModePrototyp
     assertEquals(vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototypeModel.name(), "my-vpn-connection");
     assertEquals(vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototypeModel.peerAddress(), "169.21.50.5");
     assertEquals(vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototypeModel.psk(), "lkj14b1oi0alcniejkso");
-    assertEquals(vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototypeModel.localCidrs(), new java.util.ArrayList<String>(java.util.Arrays.asList("192.168.1.0/24")));
-    assertEquals(vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototypeModel.peerCidrs(), new java.util.ArrayList<String>(java.util.Arrays.asList("10.45.1.0/24")));
+    assertEquals(vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototypeModel.localCidrs(), java.util.Arrays.asList("192.168.1.0/24"));
+    assertEquals(vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototypeModel.peerCidrs(), java.util.Arrays.asList("10.45.1.0/24"));
 
     String json = TestUtilities.serialize(vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototypeModel);
 

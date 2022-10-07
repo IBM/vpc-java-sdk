@@ -18,8 +18,6 @@ import com.ibm.cloud.is.vpc.v1.model.CreateBackupPolicyPlanOptions;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import org.testng.annotations.Test;
@@ -45,7 +43,7 @@ public class CreateBackupPolicyPlanOptionsTest {
       .backupPolicyId("testString")
       .cronSpec("*/5 1,2,3 * * *")
       .active(true)
-      .attachUserTags(new java.util.ArrayList<String>(java.util.Arrays.asList("my-daily-backup-plan")))
+      .attachUserTags(java.util.Arrays.asList("my-daily-backup-plan"))
       .copyUserTags(true)
       .deletionTrigger(backupPolicyPlanDeletionTriggerPrototypeModel)
       .name("my-policy-plan")
@@ -53,7 +51,7 @@ public class CreateBackupPolicyPlanOptionsTest {
     assertEquals(createBackupPolicyPlanOptionsModel.backupPolicyId(), "testString");
     assertEquals(createBackupPolicyPlanOptionsModel.cronSpec(), "*/5 1,2,3 * * *");
     assertEquals(createBackupPolicyPlanOptionsModel.active(), Boolean.valueOf(true));
-    assertEquals(createBackupPolicyPlanOptionsModel.attachUserTags(), new java.util.ArrayList<String>(java.util.Arrays.asList("my-daily-backup-plan")));
+    assertEquals(createBackupPolicyPlanOptionsModel.attachUserTags(), java.util.Arrays.asList("my-daily-backup-plan"));
     assertEquals(createBackupPolicyPlanOptionsModel.copyUserTags(), Boolean.valueOf(true));
     assertEquals(createBackupPolicyPlanOptionsModel.deletionTrigger(), backupPolicyPlanDeletionTriggerPrototypeModel);
     assertEquals(createBackupPolicyPlanOptionsModel.name(), "my-policy-plan");

@@ -75,6 +75,8 @@ public class ReservedIP extends GenericModel {
   protected String resourceType;
   protected ReservedIPTarget target;
 
+  protected ReservedIP() { }
+
   /**
    * Gets the address.
    *
@@ -184,7 +186,7 @@ public class ReservedIP extends GenericModel {
   /**
    * Gets the target.
    *
-   * The target of this reserved IP.
+   * The target this reserved IP is bound to.
    *
    * If absent, this reserved IP is provider-owned or unbound.
    *

@@ -30,6 +30,11 @@ public class BareMetalServerDiskPatch extends GenericModel {
   public static class Builder {
     private String name;
 
+    /**
+     * Instantiates a new Builder from an existing BareMetalServerDiskPatch instance.
+     *
+     * @param bareMetalServerDiskPatch the instance to initialize the Builder with
+     */
     private Builder(BareMetalServerDiskPatch bareMetalServerDiskPatch) {
       this.name = bareMetalServerDiskPatch.name;
     }
@@ -60,6 +65,8 @@ public class BareMetalServerDiskPatch extends GenericModel {
       return this;
     }
   }
+
+  protected BareMetalServerDiskPatch() { }
 
   protected BareMetalServerDiskPatch(Builder builder) {
     name = builder.name;

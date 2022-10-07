@@ -23,6 +23,8 @@ public class BackupPolicyPlanCollection extends GenericModel {
 
   protected List<BackupPolicyPlan> plans;
 
+  protected BackupPolicyPlanCollection() { }
+
   /**
    * Gets the plans.
    *

@@ -24,6 +24,11 @@ public class FloatingIPTargetPatchNetworkInterfaceIdentityByHref extends Floatin
   public static class Builder {
     private String href;
 
+    /**
+     * Instantiates a new Builder from an existing FloatingIPTargetPatchNetworkInterfaceIdentityByHref instance.
+     *
+     * @param floatingIpTargetPatchNetworkInterfaceIdentityByHref the instance to initialize the Builder with
+     */
     public Builder(FloatingIPTargetPatch floatingIpTargetPatchNetworkInterfaceIdentityByHref) {
       this.href = floatingIpTargetPatchNetworkInterfaceIdentityByHref.href;
     }
@@ -63,6 +68,8 @@ public class FloatingIPTargetPatchNetworkInterfaceIdentityByHref extends Floatin
       return this;
     }
   }
+
+  protected FloatingIPTargetPatchNetworkInterfaceIdentityByHref() { }
 
   protected FloatingIPTargetPatchNetworkInterfaceIdentityByHref(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.href,

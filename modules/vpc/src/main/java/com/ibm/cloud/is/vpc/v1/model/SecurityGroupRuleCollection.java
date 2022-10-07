@@ -23,6 +23,8 @@ public class SecurityGroupRuleCollection extends GenericModel {
 
   protected List<SecurityGroupRule> rules;
 
+  protected SecurityGroupRuleCollection() { }
+
   /**
    * Gets the rules.
    *

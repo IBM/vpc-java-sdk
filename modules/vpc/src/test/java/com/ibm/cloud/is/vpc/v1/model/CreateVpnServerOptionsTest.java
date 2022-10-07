@@ -24,8 +24,6 @@ import com.ibm.cloud.is.vpc.v1.model.VPNServerAuthenticationPrototypeVPNServerAu
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import org.testng.annotations.Test;
@@ -79,30 +77,30 @@ public class CreateVpnServerOptionsTest {
 
     CreateVpnServerOptions createVpnServerOptionsModel = new CreateVpnServerOptions.Builder()
       .certificate(certificateInstanceIdentityModel)
-      .clientAuthentication(new java.util.ArrayList<VPNServerAuthenticationPrototype>(java.util.Arrays.asList(vpnServerAuthenticationPrototypeModel)))
+      .clientAuthentication(java.util.Arrays.asList(vpnServerAuthenticationPrototypeModel))
       .clientIpPool("172.16.0.0/16")
-      .subnets(new java.util.ArrayList<SubnetIdentity>(java.util.Arrays.asList(subnetIdentityModel)))
-      .clientDnsServerIps(new java.util.ArrayList<IP>(java.util.Arrays.asList(ipModel)))
+      .subnets(java.util.Arrays.asList(subnetIdentityModel))
+      .clientDnsServerIps(java.util.Arrays.asList(ipModel))
       .clientIdleTimeout(Long.valueOf("600"))
       .enableSplitTunneling(false)
       .name("my-vpn-server")
       .port(Long.valueOf("443"))
       .protocol("udp")
       .resourceGroup(resourceGroupIdentityModel)
-      .securityGroups(new java.util.ArrayList<SecurityGroupIdentity>(java.util.Arrays.asList(securityGroupIdentityModel)))
+      .securityGroups(java.util.Arrays.asList(securityGroupIdentityModel))
       .build();
     assertEquals(createVpnServerOptionsModel.certificate(), certificateInstanceIdentityModel);
-    assertEquals(createVpnServerOptionsModel.clientAuthentication(), new java.util.ArrayList<VPNServerAuthenticationPrototype>(java.util.Arrays.asList(vpnServerAuthenticationPrototypeModel)));
+    assertEquals(createVpnServerOptionsModel.clientAuthentication(), java.util.Arrays.asList(vpnServerAuthenticationPrototypeModel));
     assertEquals(createVpnServerOptionsModel.clientIpPool(), "172.16.0.0/16");
-    assertEquals(createVpnServerOptionsModel.subnets(), new java.util.ArrayList<SubnetIdentity>(java.util.Arrays.asList(subnetIdentityModel)));
-    assertEquals(createVpnServerOptionsModel.clientDnsServerIps(), new java.util.ArrayList<IP>(java.util.Arrays.asList(ipModel)));
+    assertEquals(createVpnServerOptionsModel.subnets(), java.util.Arrays.asList(subnetIdentityModel));
+    assertEquals(createVpnServerOptionsModel.clientDnsServerIps(), java.util.Arrays.asList(ipModel));
     assertEquals(createVpnServerOptionsModel.clientIdleTimeout(), Long.valueOf("600"));
     assertEquals(createVpnServerOptionsModel.enableSplitTunneling(), Boolean.valueOf(false));
     assertEquals(createVpnServerOptionsModel.name(), "my-vpn-server");
     assertEquals(createVpnServerOptionsModel.port(), Long.valueOf("443"));
     assertEquals(createVpnServerOptionsModel.protocol(), "udp");
     assertEquals(createVpnServerOptionsModel.resourceGroup(), resourceGroupIdentityModel);
-    assertEquals(createVpnServerOptionsModel.securityGroups(), new java.util.ArrayList<SecurityGroupIdentity>(java.util.Arrays.asList(securityGroupIdentityModel)));
+    assertEquals(createVpnServerOptionsModel.securityGroups(), java.util.Arrays.asList(securityGroupIdentityModel));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

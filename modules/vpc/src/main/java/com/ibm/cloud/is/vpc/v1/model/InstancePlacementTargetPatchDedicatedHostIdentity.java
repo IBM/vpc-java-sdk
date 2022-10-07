@@ -23,7 +23,6 @@ package com.ibm.cloud.is.vpc.v1.model;
 public class InstancePlacementTargetPatchDedicatedHostIdentity extends InstancePlacementTargetPatch {
 
 
-  protected InstancePlacementTargetPatchDedicatedHostIdentity() {
-  }
+  protected InstancePlacementTargetPatchDedicatedHostIdentity() { }
 }
 

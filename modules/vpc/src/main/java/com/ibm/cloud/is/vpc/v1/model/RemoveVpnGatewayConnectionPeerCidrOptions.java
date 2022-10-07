@@ -33,6 +33,11 @@ public class RemoveVpnGatewayConnectionPeerCidrOptions extends GenericModel {
     private String cidrPrefix;
     private String prefixLength;
 
+    /**
+     * Instantiates a new Builder from an existing RemoveVpnGatewayConnectionPeerCidrOptions instance.
+     *
+     * @param removeVpnGatewayConnectionPeerCidrOptions the instance to initialize the Builder with
+     */
     private Builder(RemoveVpnGatewayConnectionPeerCidrOptions removeVpnGatewayConnectionPeerCidrOptions) {
       this.vpnGatewayId = removeVpnGatewayConnectionPeerCidrOptions.vpnGatewayId;
       this.id = removeVpnGatewayConnectionPeerCidrOptions.id;
@@ -114,6 +119,8 @@ public class RemoveVpnGatewayConnectionPeerCidrOptions extends GenericModel {
       return this;
     }
   }
+
+  protected RemoveVpnGatewayConnectionPeerCidrOptions() { }
 
   protected RemoveVpnGatewayConnectionPeerCidrOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.vpnGatewayId,

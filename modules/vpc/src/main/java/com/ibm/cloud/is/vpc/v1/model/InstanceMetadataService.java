@@ -21,6 +21,8 @@ public class InstanceMetadataService extends GenericModel {
 
   protected Boolean enabled;
 
+  protected InstanceMetadataService() { }
+
   /**
    * Gets the enabled.
    *

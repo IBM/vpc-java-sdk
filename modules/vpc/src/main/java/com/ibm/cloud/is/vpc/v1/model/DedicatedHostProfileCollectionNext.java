@@ -21,6 +21,8 @@ public class DedicatedHostProfileCollectionNext extends GenericModel {
 
   protected String href;
 
+  protected DedicatedHostProfileCollectionNext() { }
+
   /**
    * Gets the href.
    *

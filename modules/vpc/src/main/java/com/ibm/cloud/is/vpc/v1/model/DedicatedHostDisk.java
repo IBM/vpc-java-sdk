@@ -96,6 +96,8 @@ public class DedicatedHostDisk extends GenericModel {
   @SerializedName("supported_instance_interface_types")
   protected List<String> supportedInstanceInterfaceTypes;
 
+  protected DedicatedHostDisk() { }
+
   /**
    * Gets the available.
    *

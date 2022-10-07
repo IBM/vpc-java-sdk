@@ -27,6 +27,11 @@ public class GetVpcDefaultSecurityGroupOptions extends GenericModel {
   public static class Builder {
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing GetVpcDefaultSecurityGroupOptions instance.
+     *
+     * @param getVpcDefaultSecurityGroupOptions the instance to initialize the Builder with
+     */
     private Builder(GetVpcDefaultSecurityGroupOptions getVpcDefaultSecurityGroupOptions) {
       this.id = getVpcDefaultSecurityGroupOptions.id;
     }
@@ -66,6 +71,8 @@ public class GetVpcDefaultSecurityGroupOptions extends GenericModel {
       return this;
     }
   }
+
+  protected GetVpcDefaultSecurityGroupOptions() { }
 
   protected GetVpcDefaultSecurityGroupOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,

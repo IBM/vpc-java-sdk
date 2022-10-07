@@ -25,5 +25,7 @@ public class InstanceProfileVCPURange extends InstanceProfileVCPU {
     String RANGE = "range";
   }
 
+
+  protected InstanceProfileVCPURange() { }
 }
 

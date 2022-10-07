@@ -24,9 +24,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class LoadBalancerListener extends GenericModel {
 
   /**
-   * The listener protocol. Load balancers in the `network` family support `tcp` and
-   * `udp` (if `udp_supported` is `true`). Load balancers in the `application` family support `tcp`, `http`, and
-   * `https`. Each listener in the load balancer must have a unique `port` and `protocol` combination.
+   * The listener protocol.
    *
    * The enumerated values for this property are expected to expand in the future. When processing this property, check
    * for and log unknown values. Optionally halt processing and surface the error, or bypass the listener on which the
@@ -44,7 +42,11 @@ public class LoadBalancerListener extends GenericModel {
   }
 
   /**
-   * The provisioning status of this listener.
+   * The provisioning status of this listener
+   *
+   * The enumerated values for this property are expected to expand in the future. When processing this property, check
+   * for and log unknown values. Optionally halt processing and surface the error, or bypass the listener on which the
+   * unexpected property value was encountered.
    */
   public interface ProvisioningStatus {
     /** active. */
@@ -55,8 +57,6 @@ public class LoadBalancerListener extends GenericModel {
     String DELETE_PENDING = "delete_pending";
     /** failed. */
     String FAILED = "failed";
-    /** maintenance_pending. */
-    String MAINTENANCE_PENDING = "maintenance_pending";
     /** update_pending. */
     String UPDATE_PENDING = "update_pending";
   }
@@ -85,6 +85,8 @@ public class LoadBalancerListener extends GenericModel {
   @SerializedName("provisioning_status")
   protected String provisioningStatus;
 
+  protected LoadBalancerListener() { }
+
   /**
    * Gets the acceptProxyProtocol.
    *
@@ -104,8 +106,9 @@ public class LoadBalancerListener extends GenericModel {
   /**
    * Gets the certificateInstance.
    *
-   * The certificate instance used for SSL termination. It is applicable only to `https`
-   * protocol.
+   * The certificate instance used for SSL termination.
+   *
+   * If absent, this listener is not using a certificate instance.
    *
    * @return the certificateInstance
    */
@@ -160,7 +163,7 @@ public class LoadBalancerListener extends GenericModel {
   /**
    * Gets the httpsRedirect.
    *
-   * If specified, the target listener that requests are redirected to.
+   * If present, the target listener that requests are redirected to.
    *
    * @return the httpsRedirect
    */
@@ -230,9 +233,7 @@ public class LoadBalancerListener extends GenericModel {
   /**
    * Gets the protocol.
    *
-   * The listener protocol. Load balancers in the `network` family support `tcp` and
-   * `udp` (if `udp_supported` is `true`). Load balancers in the `application` family support `tcp`, `http`, and
-   * `https`. Each listener in the load balancer must have a unique `port` and `protocol` combination.
+   * The listener protocol.
    *
    * The enumerated values for this property are expected to expand in the future. When processing this property, check
    * for and log unknown values. Optionally halt processing and surface the error, or bypass the listener on which the
@@ -247,7 +248,11 @@ public class LoadBalancerListener extends GenericModel {
   /**
    * Gets the provisioningStatus.
    *
-   * The provisioning status of this listener.
+   * The provisioning status of this listener
+   *
+   * The enumerated values for this property are expected to expand in the future. When processing this property, check
+   * for and log unknown values. Optionally halt processing and surface the error, or bypass the listener on which the
+   * unexpected property value was encountered.
    *
    * @return the provisioningStatus
    */

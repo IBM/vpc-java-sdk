@@ -26,8 +26,7 @@ public class DedicatedHostProfileIdentity extends GenericModel {
   protected String name;
   protected String href;
 
-  protected DedicatedHostProfileIdentity() {
-  }
+  protected DedicatedHostProfileIdentity() { }
 
   /**
    * Gets the name.

@@ -25,5 +25,7 @@ public class DedicatedHostProfileSocketFixed extends DedicatedHostProfileSocket 
     String FIXED = "fixed";
   }
 
+
+  protected DedicatedHostProfileSocketFixed() { }
 }
 

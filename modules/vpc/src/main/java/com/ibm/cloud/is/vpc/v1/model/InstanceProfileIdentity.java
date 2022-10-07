@@ -26,8 +26,7 @@ public class InstanceProfileIdentity extends GenericModel {
   protected String name;
   protected String href;
 
-  protected InstanceProfileIdentity() {
-  }
+  protected InstanceProfileIdentity() { }
 
   /**
    * Gets the name.

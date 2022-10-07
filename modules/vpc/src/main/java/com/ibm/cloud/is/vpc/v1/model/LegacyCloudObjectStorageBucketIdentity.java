@@ -24,8 +24,7 @@ public class LegacyCloudObjectStorageBucketIdentity extends GenericModel {
 
   protected String name;
 
-  protected LegacyCloudObjectStorageBucketIdentity() {
-  }
+  protected LegacyCloudObjectStorageBucketIdentity() { }
 
   /**
    * Gets the name.

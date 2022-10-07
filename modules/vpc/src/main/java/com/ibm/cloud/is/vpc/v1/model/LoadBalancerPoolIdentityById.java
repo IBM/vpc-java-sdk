@@ -24,6 +24,11 @@ public class LoadBalancerPoolIdentityById extends LoadBalancerPoolIdentity {
   public static class Builder {
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing LoadBalancerPoolIdentityById instance.
+     *
+     * @param loadBalancerPoolIdentityById the instance to initialize the Builder with
+     */
     public Builder(LoadBalancerPoolIdentity loadBalancerPoolIdentityById) {
       this.id = loadBalancerPoolIdentityById.id;
     }
@@ -63,6 +68,8 @@ public class LoadBalancerPoolIdentityById extends LoadBalancerPoolIdentity {
       return this;
     }
   }
+
+  protected LoadBalancerPoolIdentityById() { }
 
   protected LoadBalancerPoolIdentityById(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.id,

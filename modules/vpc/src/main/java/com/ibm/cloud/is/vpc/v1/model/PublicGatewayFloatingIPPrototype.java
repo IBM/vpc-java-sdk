@@ -32,8 +32,7 @@ public class PublicGatewayFloatingIPPrototype extends GenericModel {
   @SerializedName("resource_group")
   protected ResourceGroupIdentity resourceGroup;
 
-  protected PublicGatewayFloatingIPPrototype() {
-  }
+  protected PublicGatewayFloatingIPPrototype() { }
 
   /**
    * Gets the id.

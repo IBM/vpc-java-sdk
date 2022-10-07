@@ -25,5 +25,7 @@ public class LoadBalancerProfileUDPSupportedFixed extends LoadBalancerProfileUDP
     String FIXED = "fixed";
   }
 
+
+  protected LoadBalancerProfileUDPSupportedFixed() { }
 }
 

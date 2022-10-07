@@ -38,9 +38,8 @@ public class Image extends GenericModel {
    * - available: image can be used (provisionable)
    * - deleting: image is being deleted, and can no longer be used to provision new
    *   resources
-   * - deprecated: image can be used, but is slated to become `obsolete` (provisionable)
+   * - deprecated: image is administratively slated to be deleted
    * - failed: image is corrupt or did not pass validation
-   * - obsolete: image can no longer be used to provision new resources
    * - pending: image is being imported and is not yet `available`
    * - tentative: image import has timed out (contact support)
    * - unusable: image cannot be used (see `status_reasons[]` for possible remediation)
@@ -76,6 +75,8 @@ public class Image extends GenericModel {
     String X_PUBLIC = "public";
   }
 
+  @SerializedName("catalog_offering")
+  protected ImageCatalogOffering catalogOffering;
   @SerializedName("created_at")
   protected Date createdAt;
   protected String crn;
@@ -98,6 +99,17 @@ public class Image extends GenericModel {
   @SerializedName("status_reasons")
   protected List<ImageStatusReason> statusReasons;
   protected String visibility;
+
+  protected Image() { }
+
+  /**
+   * Gets the catalogOffering.
+   *
+   * @return the catalogOffering
+   */
+  public ImageCatalogOffering getCatalogOffering() {
+    return catalogOffering;
+  }
 
   /**
    * Gets the createdAt.
@@ -246,9 +258,8 @@ public class Image extends GenericModel {
    * - available: image can be used (provisionable)
    * - deleting: image is being deleted, and can no longer be used to provision new
    *   resources
-   * - deprecated: image can be used, but is slated to become `obsolete` (provisionable)
+   * - deprecated: image is administratively slated to be deleted
    * - failed: image is corrupt or did not pass validation
-   * - obsolete: image can no longer be used to provision new resources
    * - pending: image is being imported and is not yet `available`
    * - tentative: image import has timed out (contact support)
    * - unusable: image cannot be used (see `status_reasons[]` for possible remediation)
@@ -266,7 +277,18 @@ public class Image extends GenericModel {
   /**
    * Gets the statusReasons.
    *
-   * The reasons for the current status (if any).
+   * The reasons for the current status (if any):
+   * - `encrypted_data_key_invalid`: image cannot be decrypted with the specified
+   *   `encryption_key`
+   * - `encryption_key_deleted`: image unusable because its `encryption_key` was deleted
+   * - `encryption_key_disabled`: image unusable until its `encryption_key` is re-enabled
+   * - `image_data_corrupted`: image data is corrupt, or is not in the specified format
+   * - `image_provisioned_size_unsupported`: image requires a boot volume size greater
+   *   than the maximum supported value
+   * - `image_request_in_progress`: image operation is in progress (such as an import from
+   *    Cloud Object Storage)
+   * - `image_request_queued`: image request has been accepted but the requested
+   *   operation has not started
    *
    * The enumerated reason code values for this property will expand in the future. When processing this property, check
    * for and log unknown values. Optionally halt processing and surface the error, or bypass the resource on which the

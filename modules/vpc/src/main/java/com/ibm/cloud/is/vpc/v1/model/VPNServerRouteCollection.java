@@ -29,6 +29,8 @@ public class VPNServerRouteCollection extends GenericModel {
   @SerializedName("total_count")
   protected Long totalCount;
 
+  protected VPNServerRouteCollection() { }
+
   /**
    * Gets the first.
    *

@@ -27,6 +27,11 @@ public class ListBareMetalServerDisksOptions extends GenericModel {
   public static class Builder {
     private String bareMetalServerId;
 
+    /**
+     * Instantiates a new Builder from an existing ListBareMetalServerDisksOptions instance.
+     *
+     * @param listBareMetalServerDisksOptions the instance to initialize the Builder with
+     */
     private Builder(ListBareMetalServerDisksOptions listBareMetalServerDisksOptions) {
       this.bareMetalServerId = listBareMetalServerDisksOptions.bareMetalServerId;
     }
@@ -66,6 +71,8 @@ public class ListBareMetalServerDisksOptions extends GenericModel {
       return this;
     }
   }
+
+  protected ListBareMetalServerDisksOptions() { }
 
   protected ListBareMetalServerDisksOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.bareMetalServerId,

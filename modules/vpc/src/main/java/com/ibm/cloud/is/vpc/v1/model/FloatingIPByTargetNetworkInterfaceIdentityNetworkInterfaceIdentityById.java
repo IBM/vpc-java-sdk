@@ -24,6 +24,11 @@ public class FloatingIPByTargetNetworkInterfaceIdentityNetworkInterfaceIdentityB
   public static class Builder {
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing FloatingIPByTargetNetworkInterfaceIdentityNetworkInterfaceIdentityById instance.
+     *
+     * @param floatingIpByTargetNetworkInterfaceIdentityNetworkInterfaceIdentityById the instance to initialize the Builder with
+     */
     public Builder(FloatingIPByTargetNetworkInterfaceIdentity floatingIpByTargetNetworkInterfaceIdentityNetworkInterfaceIdentityById) {
       this.id = floatingIpByTargetNetworkInterfaceIdentityNetworkInterfaceIdentityById.id;
     }
@@ -63,6 +68,8 @@ public class FloatingIPByTargetNetworkInterfaceIdentityNetworkInterfaceIdentityB
       return this;
     }
   }
+
+  protected FloatingIPByTargetNetworkInterfaceIdentityNetworkInterfaceIdentityById() { }
 
   protected FloatingIPByTargetNetworkInterfaceIdentityNetworkInterfaceIdentityById(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.id,

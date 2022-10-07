@@ -13,7 +13,10 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.ibm.cloud.is.vpc.v1.model.CertificateInstanceIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.CreateLoadBalancerOptions;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerHTTPSRedirectPrototype;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPrototypeLoadBalancerContext;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerLogging;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerLoggingDatapath;
@@ -30,8 +33,6 @@ import com.ibm.cloud.is.vpc.v1.model.SubnetIdentityById;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import org.testng.annotations.Test;
@@ -51,23 +52,46 @@ public class CreateLoadBalancerOptionsTest {
       .build();
     assertEquals(subnetIdentityModel.id(), "7ec86020-1c6e-4889-b3f0-a15f2e50f87e");
 
+    CertificateInstanceIdentityByCRN certificateInstanceIdentityModel = new CertificateInstanceIdentityByCRN.Builder()
+      .crn("crn:v1:bluemix:public:secrets-manager:us-south:a/123456:36fa422d-080d-4d83-8d2d-86851b4001df:secret:2e786aab-42fa-63ed-14f8-d66d552f4dd5")
+      .build();
+    assertEquals(certificateInstanceIdentityModel.crn(), "crn:v1:bluemix:public:secrets-manager:us-south:a/123456:36fa422d-080d-4d83-8d2d-86851b4001df:secret:2e786aab-42fa-63ed-14f8-d66d552f4dd5");
+
     LoadBalancerPoolIdentityByName loadBalancerPoolIdentityByNameModel = new LoadBalancerPoolIdentityByName.Builder()
       .name("my-load-balancer-pool")
       .build();
     assertEquals(loadBalancerPoolIdentityByNameModel.name(), "my-load-balancer-pool");
 
+    LoadBalancerListenerIdentityById loadBalancerListenerIdentityModel = new LoadBalancerListenerIdentityById.Builder()
+      .id("70294e14-4e61-11e8-bcf4-0242ac110004")
+      .build();
+    assertEquals(loadBalancerListenerIdentityModel.id(), "70294e14-4e61-11e8-bcf4-0242ac110004");
+
+    LoadBalancerListenerHTTPSRedirectPrototype loadBalancerListenerHttpsRedirectPrototypeModel = new LoadBalancerListenerHTTPSRedirectPrototype.Builder()
+      .httpStatusCode(Long.valueOf("301"))
+      .listener(loadBalancerListenerIdentityModel)
+      .uri("/example?doc=get")
+      .build();
+    assertEquals(loadBalancerListenerHttpsRedirectPrototypeModel.httpStatusCode(), Long.valueOf("301"));
+    assertEquals(loadBalancerListenerHttpsRedirectPrototypeModel.listener(), loadBalancerListenerIdentityModel);
+    assertEquals(loadBalancerListenerHttpsRedirectPrototypeModel.uri(), "/example?doc=get");
+
     LoadBalancerListenerPrototypeLoadBalancerContext loadBalancerListenerPrototypeLoadBalancerContextModel = new LoadBalancerListenerPrototypeLoadBalancerContext.Builder()
       .acceptProxyProtocol(true)
+      .certificateInstance(certificateInstanceIdentityModel)
       .connectionLimit(Long.valueOf("2000"))
       .defaultPool(loadBalancerPoolIdentityByNameModel)
+      .httpsRedirect(loadBalancerListenerHttpsRedirectPrototypeModel)
       .port(Long.valueOf("443"))
       .portMax(Long.valueOf("499"))
       .portMin(Long.valueOf("443"))
       .protocol("http")
       .build();
     assertEquals(loadBalancerListenerPrototypeLoadBalancerContextModel.acceptProxyProtocol(), Boolean.valueOf(true));
+    assertEquals(loadBalancerListenerPrototypeLoadBalancerContextModel.certificateInstance(), certificateInstanceIdentityModel);
     assertEquals(loadBalancerListenerPrototypeLoadBalancerContextModel.connectionLimit(), Long.valueOf("2000"));
     assertEquals(loadBalancerListenerPrototypeLoadBalancerContextModel.defaultPool(), loadBalancerPoolIdentityByNameModel);
+    assertEquals(loadBalancerListenerPrototypeLoadBalancerContextModel.httpsRedirect(), loadBalancerListenerHttpsRedirectPrototypeModel);
     assertEquals(loadBalancerListenerPrototypeLoadBalancerContextModel.port(), Long.valueOf("443"));
     assertEquals(loadBalancerListenerPrototypeLoadBalancerContextModel.portMax(), Long.valueOf("499"));
     assertEquals(loadBalancerListenerPrototypeLoadBalancerContextModel.portMin(), Long.valueOf("443"));
@@ -122,7 +146,7 @@ public class CreateLoadBalancerOptionsTest {
     LoadBalancerPoolPrototype loadBalancerPoolPrototypeModel = new LoadBalancerPoolPrototype.Builder()
       .algorithm("least_connections")
       .healthMonitor(loadBalancerPoolHealthMonitorPrototypeModel)
-      .members(new java.util.ArrayList<LoadBalancerPoolMemberPrototype>(java.util.Arrays.asList(loadBalancerPoolMemberPrototypeModel)))
+      .members(java.util.Arrays.asList(loadBalancerPoolMemberPrototypeModel))
       .name("my-load-balancer-pool")
       .protocol("http")
       .proxyProtocol("disabled")
@@ -130,7 +154,7 @@ public class CreateLoadBalancerOptionsTest {
       .build();
     assertEquals(loadBalancerPoolPrototypeModel.algorithm(), "least_connections");
     assertEquals(loadBalancerPoolPrototypeModel.healthMonitor(), loadBalancerPoolHealthMonitorPrototypeModel);
-    assertEquals(loadBalancerPoolPrototypeModel.members(), new java.util.ArrayList<LoadBalancerPoolMemberPrototype>(java.util.Arrays.asList(loadBalancerPoolMemberPrototypeModel)));
+    assertEquals(loadBalancerPoolPrototypeModel.members(), java.util.Arrays.asList(loadBalancerPoolMemberPrototypeModel));
     assertEquals(loadBalancerPoolPrototypeModel.name(), "my-load-balancer-pool");
     assertEquals(loadBalancerPoolPrototypeModel.protocol(), "http");
     assertEquals(loadBalancerPoolPrototypeModel.proxyProtocol(), "disabled");
@@ -153,26 +177,26 @@ public class CreateLoadBalancerOptionsTest {
 
     CreateLoadBalancerOptions createLoadBalancerOptionsModel = new CreateLoadBalancerOptions.Builder()
       .isPublic(true)
-      .subnets(new java.util.ArrayList<SubnetIdentity>(java.util.Arrays.asList(subnetIdentityModel)))
-      .listeners(new java.util.ArrayList<LoadBalancerListenerPrototypeLoadBalancerContext>(java.util.Arrays.asList(loadBalancerListenerPrototypeLoadBalancerContextModel)))
+      .subnets(java.util.Arrays.asList(subnetIdentityModel))
+      .listeners(java.util.Arrays.asList(loadBalancerListenerPrototypeLoadBalancerContextModel))
       .logging(loadBalancerLoggingModel)
       .name("my-load-balancer")
-      .pools(new java.util.ArrayList<LoadBalancerPoolPrototype>(java.util.Arrays.asList(loadBalancerPoolPrototypeModel)))
+      .pools(java.util.Arrays.asList(loadBalancerPoolPrototypeModel))
       .profile(loadBalancerProfileIdentityModel)
       .resourceGroup(resourceGroupIdentityModel)
       .routeMode(true)
-      .securityGroups(new java.util.ArrayList<SecurityGroupIdentity>(java.util.Arrays.asList(securityGroupIdentityModel)))
+      .securityGroups(java.util.Arrays.asList(securityGroupIdentityModel))
       .build();
     assertEquals(createLoadBalancerOptionsModel.isPublic(), Boolean.valueOf(true));
-    assertEquals(createLoadBalancerOptionsModel.subnets(), new java.util.ArrayList<SubnetIdentity>(java.util.Arrays.asList(subnetIdentityModel)));
-    assertEquals(createLoadBalancerOptionsModel.listeners(), new java.util.ArrayList<LoadBalancerListenerPrototypeLoadBalancerContext>(java.util.Arrays.asList(loadBalancerListenerPrototypeLoadBalancerContextModel)));
+    assertEquals(createLoadBalancerOptionsModel.subnets(), java.util.Arrays.asList(subnetIdentityModel));
+    assertEquals(createLoadBalancerOptionsModel.listeners(), java.util.Arrays.asList(loadBalancerListenerPrototypeLoadBalancerContextModel));
     assertEquals(createLoadBalancerOptionsModel.logging(), loadBalancerLoggingModel);
     assertEquals(createLoadBalancerOptionsModel.name(), "my-load-balancer");
-    assertEquals(createLoadBalancerOptionsModel.pools(), new java.util.ArrayList<LoadBalancerPoolPrototype>(java.util.Arrays.asList(loadBalancerPoolPrototypeModel)));
+    assertEquals(createLoadBalancerOptionsModel.pools(), java.util.Arrays.asList(loadBalancerPoolPrototypeModel));
     assertEquals(createLoadBalancerOptionsModel.profile(), loadBalancerProfileIdentityModel);
     assertEquals(createLoadBalancerOptionsModel.resourceGroup(), resourceGroupIdentityModel);
     assertEquals(createLoadBalancerOptionsModel.routeMode(), Boolean.valueOf(true));
-    assertEquals(createLoadBalancerOptionsModel.securityGroups(), new java.util.ArrayList<SecurityGroupIdentity>(java.util.Arrays.asList(securityGroupIdentityModel)));
+    assertEquals(createLoadBalancerOptionsModel.securityGroups(), java.util.Arrays.asList(securityGroupIdentityModel));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

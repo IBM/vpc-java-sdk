@@ -49,8 +49,7 @@ public class VPNServerAuthenticationPrototype extends GenericModel {
   protected CertificateInstanceIdentity clientCa;
   protected String crl;
 
-  protected VPNServerAuthenticationPrototype() {
-  }
+  protected VPNServerAuthenticationPrototype() { }
 
   /**
    * Gets the method.

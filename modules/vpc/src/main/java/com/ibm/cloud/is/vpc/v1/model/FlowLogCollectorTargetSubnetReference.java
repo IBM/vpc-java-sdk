@@ -25,5 +25,7 @@ public class FlowLogCollectorTargetSubnetReference extends FlowLogCollectorTarge
     String SUBNET = "subnet";
   }
 
+
+  protected FlowLogCollectorTargetSubnetReference() { }
 }
 

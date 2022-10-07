@@ -25,5 +25,7 @@ public class InstanceProfileDiskQuantityRange extends InstanceProfileDiskQuantit
     String RANGE = "range";
   }
 
+
+  protected InstanceProfileDiskQuantityRange() { }
 }
 

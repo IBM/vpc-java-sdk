@@ -66,6 +66,11 @@ public class VPNServerPatch extends GenericModel {
     private String protocol;
     private List<SubnetIdentity> subnets;
 
+    /**
+     * Instantiates a new Builder from an existing VPNServerPatch instance.
+     *
+     * @param vpnServerPatch the instance to initialize the Builder with
+     */
     private Builder(VPNServerPatch vpnServerPatch) {
       this.certificate = vpnServerPatch.certificate;
       this.clientAuthentication = vpnServerPatch.clientAuthentication;
@@ -255,6 +260,8 @@ public class VPNServerPatch extends GenericModel {
       return this;
     }
   }
+
+  protected VPNServerPatch() { }
 
   protected VPNServerPatch(Builder builder) {
     certificate = builder.certificate;

@@ -21,6 +21,8 @@ public class InstanceCollectionNext extends GenericModel {
 
   protected String href;
 
+  protected InstanceCollectionNext() { }
+
   /**
    * Gets the href.
    *

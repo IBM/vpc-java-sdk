@@ -13,13 +13,12 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 /**
- * When `protocol` is `all`, then it's invalid to specify `port_min`, `port_max`, `type` or
- * `code`.
+ * A rule allowing traffic for all supported protocols.
  */
 public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolAll extends SecurityGroupRulePrototype {
 
   /**
-   * The direction of traffic to enforce, either `inbound` or `outbound`.
+   * The direction of traffic to enforce.
    */
   public interface Direction {
     /** inbound. */
@@ -56,6 +55,11 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolAll extends Secu
     private String protocol;
     private SecurityGroupRuleRemotePrototype remote;
 
+    /**
+     * Instantiates a new Builder from an existing SecurityGroupRulePrototypeSecurityGroupRuleProtocolAll instance.
+     *
+     * @param securityGroupRulePrototypeSecurityGroupRuleProtocolAll the instance to initialize the Builder with
+     */
     public Builder(SecurityGroupRulePrototype securityGroupRulePrototypeSecurityGroupRuleProtocolAll) {
       this.direction = securityGroupRulePrototypeSecurityGroupRuleProtocolAll.direction;
       this.ipVersion = securityGroupRulePrototypeSecurityGroupRuleProtocolAll.ipVersion;
@@ -133,6 +137,8 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolAll extends Secu
       return this;
     }
   }
+
+  protected SecurityGroupRulePrototypeSecurityGroupRuleProtocolAll() { }
 
   protected SecurityGroupRulePrototypeSecurityGroupRuleProtocolAll(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.direction,

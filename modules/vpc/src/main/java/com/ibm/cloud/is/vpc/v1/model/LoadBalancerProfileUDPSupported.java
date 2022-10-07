@@ -34,8 +34,7 @@ public class LoadBalancerProfileUDPSupported extends GenericModel {
   protected String type;
   protected Boolean value;
 
-  protected LoadBalancerProfileUDPSupported() {
-  }
+  protected LoadBalancerProfileUDPSupported() { }
 
   /**
    * Gets the type.

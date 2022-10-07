@@ -25,5 +25,7 @@ public class BareMetalServerProfileCPUCoreCountEnum extends BareMetalServerProfi
     String X_ENUM = "enum";
   }
 
+
+  protected BareMetalServerProfileCPUCoreCountEnum() { }
 }
 

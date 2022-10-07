@@ -24,6 +24,11 @@ public class LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdenti
   public static class Builder {
     private String href;
 
+    /**
+     * Instantiates a new Builder from an existing LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityByHref instance.
+     *
+     * @param loadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityByHref the instance to initialize the Builder with
+     */
     public Builder(LoadBalancerPoolMemberTargetPrototypeInstanceIdentity loadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityByHref) {
       this.href = loadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityByHref.href;
     }
@@ -63,6 +68,8 @@ public class LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdenti
       return this;
     }
   }
+
+  protected LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityByHref() { }
 
   protected LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityByHref(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.href,

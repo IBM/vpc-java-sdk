@@ -27,6 +27,11 @@ public class GetIkePolicyOptions extends GenericModel {
   public static class Builder {
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing GetIkePolicyOptions instance.
+     *
+     * @param getIkePolicyOptions the instance to initialize the Builder with
+     */
     private Builder(GetIkePolicyOptions getIkePolicyOptions) {
       this.id = getIkePolicyOptions.id;
     }
@@ -66,6 +71,8 @@ public class GetIkePolicyOptions extends GenericModel {
       return this;
     }
   }
+
+  protected GetIkePolicyOptions() { }
 
   protected GetIkePolicyOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,

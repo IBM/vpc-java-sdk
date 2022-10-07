@@ -25,5 +25,7 @@ public class InstanceProfileMemoryFixed extends InstanceProfileMemory {
     String FIXED = "fixed";
   }
 
+
+  protected InstanceProfileMemoryFixed() { }
 }
 

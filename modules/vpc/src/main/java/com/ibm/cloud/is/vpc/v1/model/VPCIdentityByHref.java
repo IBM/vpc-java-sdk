@@ -24,6 +24,11 @@ public class VPCIdentityByHref extends VPCIdentity {
   public static class Builder {
     private String href;
 
+    /**
+     * Instantiates a new Builder from an existing VPCIdentityByHref instance.
+     *
+     * @param vpcIdentityByHref the instance to initialize the Builder with
+     */
     public Builder(VPCIdentity vpcIdentityByHref) {
       this.href = vpcIdentityByHref.href;
     }
@@ -63,6 +68,8 @@ public class VPCIdentityByHref extends VPCIdentity {
       return this;
     }
   }
+
+  protected VPCIdentityByHref() { }
 
   protected VPCIdentityByHref(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.href,

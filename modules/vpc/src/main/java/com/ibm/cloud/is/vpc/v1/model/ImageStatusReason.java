@@ -24,10 +24,16 @@ public class ImageStatusReason extends GenericModel {
    * A snake case string succinctly identifying the status reason.
    */
   public interface Code {
+    /** encrypted_data_key_invalid. */
+    String ENCRYPTED_DATA_KEY_INVALID = "encrypted_data_key_invalid";
     /** encryption_key_deleted. */
     String ENCRYPTION_KEY_DELETED = "encryption_key_deleted";
     /** encryption_key_disabled. */
     String ENCRYPTION_KEY_DISABLED = "encryption_key_disabled";
+    /** image_data_corrupted. */
+    String IMAGE_DATA_CORRUPTED = "image_data_corrupted";
+    /** image_provisioned_size_unsupported. */
+    String IMAGE_PROVISIONED_SIZE_UNSUPPORTED = "image_provisioned_size_unsupported";
     /** image_request_in_progress. */
     String IMAGE_REQUEST_IN_PROGRESS = "image_request_in_progress";
     /** image_request_queued. */
@@ -38,6 +44,8 @@ public class ImageStatusReason extends GenericModel {
   protected String message;
   @SerializedName("more_info")
   protected String moreInfo;
+
+  protected ImageStatusReason() { }
 
   /**
    * Gets the code.

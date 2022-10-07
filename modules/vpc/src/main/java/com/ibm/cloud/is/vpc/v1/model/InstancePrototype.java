@@ -22,6 +22,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  *
  * Classes which extend this class:
  * - InstancePrototypeInstanceByImage
+ * - InstancePrototypeInstanceByCatalogOffering
  * - InstancePrototypeInstanceBySourceSnapshot
  * - InstancePrototypeInstanceBySourceTemplate
  */
@@ -55,11 +56,12 @@ public class InstancePrototype extends GenericModel {
   @SerializedName("primary_network_interface")
   protected NetworkInterfacePrototype primaryNetworkInterface;
   protected ZoneIdentity zone;
+  @SerializedName("catalog_offering")
+  protected InstanceCatalogOfferingPrototype catalogOffering;
   @SerializedName("source_template")
   protected InstanceTemplateIdentity sourceTemplate;
 
-  protected InstancePrototype() {
-  }
+  protected InstancePrototype() { }
 
   /**
    * Gets the availabilityPolicy.
@@ -158,8 +160,11 @@ public class InstancePrototype extends GenericModel {
   /**
    * Gets the profile.
    *
-   * The profile to use for this virtual server instance. If unspecified, `bx2-2x8` will
-   * be used, but this default value is expected to change in the future.
+   * The [profile](https://cloud.ibm.com/docs/vpc?topic=vpc-profiles) to use for this
+   * virtual server instance.
+   *
+   * If unspecified, `bx2-2x8` will be used, but this default value is expected to change
+   * in the future.
    *
    * @return the profile
    */
@@ -218,8 +223,10 @@ public class InstancePrototype extends GenericModel {
   /**
    * Gets the vpc.
    *
-   * The VPC the virtual server instance is to be a part of. If specified, it must match
-   * the VPC referenced by the subnets of the instance's network interfaces.
+   * The VPC this virtual server instance will reside in.
+   *
+   * If specified, it must match the VPC for the subnets of the instance's network
+   * interfaces.
    *
    * @return the vpc
    */
@@ -269,6 +276,24 @@ public class InstancePrototype extends GenericModel {
    */
   public ZoneIdentity zone() {
     return zone;
+  }
+
+  /**
+   * Gets the catalogOffering.
+   *
+   * The [catalog](https://cloud.ibm.com/docs/account?topic=account-restrict-by-user) offering
+   * or offering version to use when provisioning this virtual server instance.
+   *
+   * If an offering is specified, the latest version of that offering will be used.
+   *
+   * The specified offering or offering version may be in a different account in the same
+   * [enterprise](https://cloud.ibm.com/docs/account?topic=account-what-is-enterprise), subject
+   * to IAM policies.
+   *
+   * @return the catalogOffering
+   */
+  public InstanceCatalogOfferingPrototype catalogOffering() {
+    return catalogOffering;
   }
 
   /**

@@ -29,6 +29,8 @@ public class SubnetCollection extends GenericModel {
   @SerializedName("total_count")
   protected Long totalCount;
 
+  protected SubnetCollection() { }
+
   /**
    * Gets the first.
    *

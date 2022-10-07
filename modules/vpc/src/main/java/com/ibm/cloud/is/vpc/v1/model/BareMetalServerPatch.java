@@ -30,6 +30,11 @@ public class BareMetalServerPatch extends GenericModel {
   public static class Builder {
     private String name;
 
+    /**
+     * Instantiates a new Builder from an existing BareMetalServerPatch instance.
+     *
+     * @param bareMetalServerPatch the instance to initialize the Builder with
+     */
     private Builder(BareMetalServerPatch bareMetalServerPatch) {
       this.name = bareMetalServerPatch.name;
     }
@@ -60,6 +65,8 @@ public class BareMetalServerPatch extends GenericModel {
       return this;
     }
   }
+
+  protected BareMetalServerPatch() { }
 
   protected BareMetalServerPatch(Builder builder) {
     name = builder.name;

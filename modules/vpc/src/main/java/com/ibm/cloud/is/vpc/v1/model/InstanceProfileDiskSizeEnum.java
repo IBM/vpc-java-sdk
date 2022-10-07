@@ -25,5 +25,7 @@ public class InstanceProfileDiskSizeEnum extends InstanceProfileDiskSize {
     String X_ENUM = "enum";
   }
 
+
+  protected InstanceProfileDiskSizeEnum() { }
 }
 

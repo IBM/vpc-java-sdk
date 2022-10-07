@@ -25,5 +25,7 @@ public class InstanceProfileVolumeBandwidthFixed extends InstanceProfileVolumeBa
     String FIXED = "fixed";
   }
 
+
+  protected InstanceProfileVolumeBandwidthFixed() { }
 }
 

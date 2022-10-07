@@ -25,5 +25,7 @@ public class BareMetalServerProfileCPUSocketCountDependent extends BareMetalServ
     String DEPENDENT = "dependent";
   }
 
+
+  protected BareMetalServerProfileCPUSocketCountDependent() { }
 }
 

@@ -21,6 +21,8 @@ public class ReservedIPCollectionEndpointGatewayContextFirst extends GenericMode
 
   protected String href;
 
+  protected ReservedIPCollectionEndpointGatewayContextFirst() { }
+
   /**
    * Gets the href.
    *

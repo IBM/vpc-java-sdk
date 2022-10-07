@@ -22,6 +22,8 @@ public class OperatingSystemReference extends GenericModel {
   protected String href;
   protected String name;
 
+  protected OperatingSystemReference() { }
+
   /**
    * Gets the href.
    *

@@ -25,8 +25,7 @@ public class ResourceGroupIdentity extends GenericModel {
 
   protected String id;
 
-  protected ResourceGroupIdentity() {
-  }
+  protected ResourceGroupIdentity() { }
 
   /**
    * Gets the id.

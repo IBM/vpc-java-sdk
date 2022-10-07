@@ -25,5 +25,7 @@ public class BareMetalServerProfileCPUSocketCountFixed extends BareMetalServerPr
     String FIXED = "fixed";
   }
 
+
+  protected BareMetalServerProfileCPUSocketCountFixed() { }
 }
 

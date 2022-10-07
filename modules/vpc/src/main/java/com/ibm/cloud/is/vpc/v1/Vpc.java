@@ -12,7 +12,7 @@
  */
 
 /*
- * IBM OpenAPI SDK Code Generator Version: 3.48.1-52130155-20220425-145431
+ * IBM OpenAPI SDK Code Generator Version: 3.55.1-b24c7487-20220831-201343
  */
 
 package com.ibm.cloud.is.vpc.v1;
@@ -168,6 +168,7 @@ import com.ibm.cloud.is.vpc.v1.model.GetBackupPolicyPlanOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetBareMetalServerDiskOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetBareMetalServerInitializationOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetBareMetalServerNetworkInterfaceFloatingIpOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetBareMetalServerNetworkInterfaceIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetBareMetalServerNetworkInterfaceOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetBareMetalServerOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetBareMetalServerProfileOptions;
@@ -270,6 +271,7 @@ import com.ibm.cloud.is.vpc.v1.model.ListBackupPoliciesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListBackupPolicyPlansOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListBareMetalServerDisksOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListBareMetalServerNetworkInterfaceFloatingIpsOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListBareMetalServerNetworkInterfaceIpsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListBareMetalServerNetworkInterfacesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListBareMetalServerProfilesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListBareMetalServersOptions;
@@ -481,15 +483,21 @@ import java.util.Map.Entry;
  * The IBM Cloud Virtual Private Cloud (VPC) API can be used to programmatically provision and manage virtual server
  * instances, along with subnets, volumes, load balancers, and more.
  *
- * API Version: 2022-03-29
+ * API Version: 2022-09-13
  */
 public class Vpc extends BaseService {
 
+  /**
+   * Default service name used when configuring the `Vpc` client.
+   */
   public static final String DEFAULT_SERVICE_NAME = "vpc";
 
+  /**
+   * Default service endpoint URL.
+   */
   public static final String DEFAULT_SERVICE_URL = "https://us-south.iaas.cloud.ibm.com/v1";
 
-  private String version = "2022-03-29";
+  private String version = "2022-09-13";
 
   private Long generation = Long.valueOf("2");
 
@@ -534,7 +542,7 @@ public class Vpc extends BaseService {
    * Gets the version.
    *
    * The API version, in format `YYYY-MM-DD`. For the API behavior documented here, specify any date between
-   * `2022-03-29` and today's date (UTC).
+   * `2022-09-13` and today's date (UTC).
    *
    * @return the version
    */
@@ -1408,7 +1416,8 @@ public class Vpc extends BaseService {
   /**
    * Delete a VPC routing table route.
    *
-   * This request deletes a VPC route. This operation cannot be reversed.
+   * This request deletes a VPC route. This operation cannot be reversed. Only VPC routes with an `origin` of `user` are
+   * allowed to be deleted.
    *
    * @param deleteVpcRoutingTableRouteOptions the {@link DeleteVpcRoutingTableRouteOptions} containing the options for the call
    * @return a {@link ServiceCall} with a void result
@@ -1463,7 +1472,8 @@ public class Vpc extends BaseService {
    * Update a VPC routing table route.
    *
    * This request updates a VPC route with the information provided in a route patch object. The patch object is
-   * structured in the same way as a retrieved VPC route and needs to contain only the information to be updated.
+   * structured in the same way as a retrieved VPC route and needs to contain only the information to be updated. Only
+   * VPC routes with an `origin` of `user` are allowed to be updated.
    *
    * @param updateVpcRoutingTableRouteOptions the {@link UpdateVpcRoutingTableRouteOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link Route}
@@ -1677,10 +1687,9 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * Attach a network ACL to a subnet.
+   * Replace the network ACL for a subnet.
    *
-   * This request attaches the network ACL, specified in the request body, to the subnet specified by the subnet
-   * identifier in the URL. This replaces the existing network ACL on the subnet.
+   * This request replaces the existing network ACL for a subnet with the network ACL specified in the request body.
    *
    * @param replaceSubnetNetworkAclOptions the {@link ReplaceSubnetNetworkAclOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link NetworkACL}
@@ -1809,10 +1818,9 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * Attach a routing table to a subnet.
+   * Replace the routing table for a subnet.
    *
-   * This request attaches the routing table, specified in the request body, to the subnet specified by the subnet
-   * identifier in the URL. This replaces the existing routing table on the subnet.
+   * This request replaces the existing routing table for a subnet with the routing table specified in the request body.
    *
    * For this request to succeed, the routing table `route_direct_link_ingress`,
    * `route_transit_gateway_ingress`, and `route_vpc_zone_ingress` properties must be `false`.
@@ -1921,6 +1929,9 @@ public class Vpc extends BaseService {
    *
    * This request releases a reserved IP. This operation cannot be reversed.
    *
+   * For this request to succeed, the reserved IP must not be required by another resource, such as a network interface
+   * for which it is the primary IP. A provider-owned reserved IP is not allowed to be deleted.
+   *
    * @param deleteSubnetReservedIpOptions the {@link DeleteSubnetReservedIpOptions} containing the options for the call
    * @return a {@link ServiceCall} with a void result
    */
@@ -1974,6 +1985,8 @@ public class Vpc extends BaseService {
    * This request updates a reserved IP with the information in a provided reserved IP patch. The reserved IP patch
    * object is structured in the same way as a retrieved reserved IP and contains only the information to be updated.
    *
+   * A provider-owned reserved IP is not allowed to be updated.
+   *
    * @param updateSubnetReservedIpOptions the {@link UpdateSubnetReservedIpOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link ReservedIP}
    */
@@ -2001,7 +2014,7 @@ public class Vpc extends BaseService {
    * List all images.
    *
    * This request lists all images available in the region. An image provides source data for a volume. Images are
-   * either system-provided, or created from another source, such as importing from object storage.
+   * either system-provided, or created from another source, such as importing from Cloud Object Storage.
    *
    * The images will be sorted by their `created_at` property values, with the newest first. Images with identical
    * `created_at` values will be secondarily sorted by ascending `id` property values.
@@ -2045,7 +2058,7 @@ public class Vpc extends BaseService {
    * List all images.
    *
    * This request lists all images available in the region. An image provides source data for a volume. Images are
-   * either system-provided, or created from another source, such as importing from object storage.
+   * either system-provided, or created from another source, such as importing from Cloud Object Storage.
    *
    * The images will be sorted by their `created_at` property values, with the newest first. Images with identical
    * `created_at` values will be secondarily sorted by ascending `id` property values.
@@ -2090,7 +2103,8 @@ public class Vpc extends BaseService {
    * This request deletes an image. This operation cannot be reversed. A system-provided image is not allowed to be
    * deleted. Additionally, an image cannot be deleted if it:
    * - has a `status` of `tentative` or `deleting`
-   * - has a `status` of `pending` with a `status_reasons` code of `image_request_in_progress`.
+   * - has a `status` of `pending` with a `status_reasons` code of `image_request_in_progress`
+   * - has `catalog_offering.managed` set to `true`.
    *
    * @param deleteImageOptions the {@link DeleteImageOptions} containing the options for the call
    * @return a {@link ServiceCall} with a void result
@@ -2396,8 +2410,8 @@ public class Vpc extends BaseService {
   /**
    * List all instance profiles.
    *
-   * This request lists provisionable instance profiles in the region. An instance profile specifies the performance
-   * characteristics and pricing model for an instance.
+   * This request lists provisionable [instance profiles](https://cloud.ibm.com/docs/vpc?topic=vpc-profiles) in the
+   * region. An instance profile specifies the performance characteristics and pricing model for an instance.
    *
    * @param listInstanceProfilesOptions the {@link ListInstanceProfilesOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link InstanceProfileCollection}
@@ -2419,8 +2433,8 @@ public class Vpc extends BaseService {
   /**
    * List all instance profiles.
    *
-   * This request lists provisionable instance profiles in the region. An instance profile specifies the performance
-   * characteristics and pricing model for an instance.
+   * This request lists provisionable [instance profiles](https://cloud.ibm.com/docs/vpc?topic=vpc-profiles) in the
+   * region. An instance profile specifies the performance characteristics and pricing model for an instance.
    *
    * @return a {@link ServiceCall} with a result of type {@link InstanceProfileCollection}
    */
@@ -4383,8 +4397,8 @@ public class Vpc extends BaseService {
   /**
    * List all dedicated host profiles.
    *
-   * This request lists all provisionable dedicated host profiles in the region. A dedicated host profile specifies the
-   * hardware characteristics for a dedicated host.
+   * This request lists provisionable [dedicated host profiles](https://cloud.ibm.com/docs/vpc?topic=vpc-dh-profiles) in
+   * the region. A dedicated host profile specifies the hardware characteristics for a dedicated host.
    *
    * @param listDedicatedHostProfilesOptions the {@link ListDedicatedHostProfilesOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link DedicatedHostProfileCollection}
@@ -4415,8 +4429,8 @@ public class Vpc extends BaseService {
   /**
    * List all dedicated host profiles.
    *
-   * This request lists all provisionable dedicated host profiles in the region. A dedicated host profile specifies the
-   * hardware characteristics for a dedicated host.
+   * This request lists provisionable [dedicated host profiles](https://cloud.ibm.com/docs/vpc?topic=vpc-dh-profiles) in
+   * the region. A dedicated host profile specifies the hardware characteristics for a dedicated host.
    *
    * @return a {@link ServiceCall} with a result of type {@link DedicatedHostProfileCollection}
    */
@@ -5228,8 +5242,9 @@ public class Vpc extends BaseService {
   /**
    * List all bare metal server profiles.
    *
-   * This request lists all bare metal server profiles available in the region. A bare metal server profile specifies
-   * the performance characteristics and pricing model for a bare metal server.
+   * This request lists all [bare metal server
+   * profiles](https://cloud.ibm.com/docs/vpc?topic=vpc-bare-metal-servers-profile) available in the region. A bare
+   * metal server profile specifies the performance characteristics and pricing model for a bare metal server.
    *
    * @param listBareMetalServerProfilesOptions the {@link ListBareMetalServerProfilesOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link BareMetalServerProfileCollection}
@@ -5260,8 +5275,9 @@ public class Vpc extends BaseService {
   /**
    * List all bare metal server profiles.
    *
-   * This request lists all bare metal server profiles available in the region. A bare metal server profile specifies
-   * the performance characteristics and pricing model for a bare metal server.
+   * This request lists all [bare metal server
+   * profiles](https://cloud.ibm.com/docs/vpc?topic=vpc-bare-metal-servers-profile) available in the region. A bare
+   * metal server profile specifies the performance characteristics and pricing model for a bare metal server.
    *
    * @return a {@link ServiceCall} with a result of type {@link BareMetalServerProfileCollection}
    */
@@ -5786,6 +5802,62 @@ public class Vpc extends BaseService {
   }
 
   /**
+   * List all reserved IPs bound to a network interface.
+   *
+   * This request lists all reserved IPs bound to a network interface.
+   *
+   * @param listBareMetalServerNetworkInterfaceIpsOptions the {@link ListBareMetalServerNetworkInterfaceIpsOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link ReservedIPCollectionNetworkInterfaceContext}
+   */
+  public ServiceCall<ReservedIPCollectionNetworkInterfaceContext> listBareMetalServerNetworkInterfaceIps(ListBareMetalServerNetworkInterfaceIpsOptions listBareMetalServerNetworkInterfaceIpsOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(listBareMetalServerNetworkInterfaceIpsOptions,
+      "listBareMetalServerNetworkInterfaceIpsOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("bare_metal_server_id", listBareMetalServerNetworkInterfaceIpsOptions.bareMetalServerId());
+    pathParamsMap.put("network_interface_id", listBareMetalServerNetworkInterfaceIpsOptions.networkInterfaceId());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/bare_metal_servers/{bare_metal_server_id}/network_interfaces/{network_interface_id}/ips", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listBareMetalServerNetworkInterfaceIps");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<ReservedIPCollectionNetworkInterfaceContext> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<ReservedIPCollectionNetworkInterfaceContext>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Retrieve bound reserved IP.
+   *
+   * This request a retrieves the specified reserved IP address if it is bound to the network interface and bare metal
+   * server specified in the URL.
+   *
+   * @param getBareMetalServerNetworkInterfaceIpOptions the {@link GetBareMetalServerNetworkInterfaceIpOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link ReservedIP}
+   */
+  public ServiceCall<ReservedIP> getBareMetalServerNetworkInterfaceIp(GetBareMetalServerNetworkInterfaceIpOptions getBareMetalServerNetworkInterfaceIpOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(getBareMetalServerNetworkInterfaceIpOptions,
+      "getBareMetalServerNetworkInterfaceIpOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("bare_metal_server_id", getBareMetalServerNetworkInterfaceIpOptions.bareMetalServerId());
+    pathParamsMap.put("network_interface_id", getBareMetalServerNetworkInterfaceIpOptions.networkInterfaceId());
+    pathParamsMap.put("id", getBareMetalServerNetworkInterfaceIpOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/bare_metal_servers/{bare_metal_server_id}/network_interfaces/{network_interface_id}/ips/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getBareMetalServerNetworkInterfaceIp");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<ReservedIP> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<ReservedIP>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
    * Delete a bare metal server.
    *
    * This request deletes a bare metal server. This operation cannot be reversed. Any floating IPs associated with the
@@ -5972,8 +6044,8 @@ public class Vpc extends BaseService {
   /**
    * List all volume profiles.
    *
-   * This request lists all volume profiles available in the region. A volume profile specifies the performance
-   * characteristics and pricing model for a volume.
+   * This request lists all [volume profiles](https://cloud.ibm.com/docs/vpc?topic=vpc-block-storage-profiles) available
+   * in the region. A volume profile specifies the performance characteristics and pricing model for a volume.
    *
    * @param listVolumeProfilesOptions the {@link ListVolumeProfilesOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link VolumeProfileCollection}
@@ -6004,8 +6076,8 @@ public class Vpc extends BaseService {
   /**
    * List all volume profiles.
    *
-   * This request lists all volume profiles available in the region. A volume profile specifies the performance
-   * characteristics and pricing model for a volume.
+   * This request lists all [volume profiles](https://cloud.ibm.com/docs/vpc?topic=vpc-block-storage-profiles) available
+   * in the region. A volume profile specifies the performance characteristics and pricing model for a volume.
    *
    * @return a {@link ServiceCall} with a result of type {@link VolumeProfileCollection}
    */
@@ -6899,8 +6971,9 @@ public class Vpc extends BaseService {
   /**
    * Create a network ACL.
    *
-   * This request creates a new network ACL from a network ACL prototype object. The prototype object is structured in
-   * the same way as a retrieved network ACL, and contains the information necessary to create the new network ACL.
+   * This request creates a new stateless network ACL from a network ACL prototype object. The prototype object is
+   * structured in the same way as a retrieved network ACL, and contains the information necessary to create the new
+   * network ACL.
    *
    * @param createNetworkAclOptions the {@link CreateNetworkAclOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link NetworkACL}
@@ -6928,8 +7001,9 @@ public class Vpc extends BaseService {
   /**
    * Create a network ACL.
    *
-   * This request creates a new network ACL from a network ACL prototype object. The prototype object is structured in
-   * the same way as a retrieved network ACL, and contains the information necessary to create the new network ACL.
+   * This request creates a new stateless network ACL from a network ACL prototype object. The prototype object is
+   * structured in the same way as a retrieved network ACL, and contains the information necessary to create the new
+   * network ACL.
    *
    * @return a {@link ServiceCall} with a result of type {@link NetworkACL}
    */
@@ -8011,6 +8085,9 @@ public class Vpc extends BaseService {
     }
     if (listVpnGatewaysOptions.resourceGroupId() != null) {
       builder.query("resource_group.id", String.valueOf(listVpnGatewaysOptions.resourceGroupId()));
+    }
+    if (listVpnGatewaysOptions.sort() != null) {
+      builder.query("sort", String.valueOf(listVpnGatewaysOptions.sort()));
     }
     if (listVpnGatewaysOptions.mode() != null) {
       builder.query("mode", String.valueOf(listVpnGatewaysOptions.mode()));
@@ -9177,6 +9254,9 @@ public class Vpc extends BaseService {
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
+    if (deleteLoadBalancerOptions.ifMatch() != null) {
+      builder.header("If-Match", deleteLoadBalancerOptions.ifMatch());
+    }
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
@@ -9212,7 +9292,9 @@ public class Vpc extends BaseService {
   /**
    * Update a load balancer.
    *
-   * This request updates a load balancer.
+   * This request updates a load balancer with the information in a provided load balancer patch. The load balancer
+   * patch object is structured in the same way as a retrieved load balancer and contains only the information to be
+   * updated. A load balancer can only be updated if its `provisioning_status` is `active`.
    *
    * @param updateLoadBalancerOptions the {@link UpdateLoadBalancerOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link LoadBalancer}
@@ -9228,6 +9310,9 @@ public class Vpc extends BaseService {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
+    if (updateLoadBalancerOptions.ifMatch() != null) {
+      builder.header("If-Match", updateLoadBalancerOptions.ifMatch());
+    }
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateLoadBalancerOptions.loadBalancerPatch()), "application/merge-patch+json");

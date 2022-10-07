@@ -31,6 +31,11 @@ public class UpdateIpsecPolicyOptions extends GenericModel {
     private String id;
     private Map<String, Object> iPsecPolicyPatch;
 
+    /**
+     * Instantiates a new Builder from an existing UpdateIpsecPolicyOptions instance.
+     *
+     * @param updateIpsecPolicyOptions the instance to initialize the Builder with
+     */
     private Builder(UpdateIpsecPolicyOptions updateIpsecPolicyOptions) {
       this.id = updateIpsecPolicyOptions.id;
       this.iPsecPolicyPatch = updateIpsecPolicyOptions.iPsecPolicyPatch;
@@ -84,6 +89,8 @@ public class UpdateIpsecPolicyOptions extends GenericModel {
       return this;
     }
   }
+
+  protected UpdateIpsecPolicyOptions() { }
 
   protected UpdateIpsecPolicyOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,

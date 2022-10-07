@@ -29,6 +29,11 @@ public class ResourceFilter extends GenericModel {
   public static class Builder {
     private String resourceType;
 
+    /**
+     * Instantiates a new Builder from an existing ResourceFilter instance.
+     *
+     * @param resourceFilter the instance to initialize the Builder with
+     */
     private Builder(ResourceFilter resourceFilter) {
       this.resourceType = resourceFilter.resourceType;
     }
@@ -59,6 +64,8 @@ public class ResourceFilter extends GenericModel {
       return this;
     }
   }
+
+  protected ResourceFilter() { }
 
   protected ResourceFilter(Builder builder) {
     resourceType = builder.resourceType;

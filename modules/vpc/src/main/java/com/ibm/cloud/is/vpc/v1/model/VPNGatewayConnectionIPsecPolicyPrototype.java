@@ -27,8 +27,7 @@ public class VPNGatewayConnectionIPsecPolicyPrototype extends GenericModel {
   protected String id;
   protected String href;
 
-  protected VPNGatewayConnectionIPsecPolicyPrototype() {
-  }
+  protected VPNGatewayConnectionIPsecPolicyPrototype() { }
 
   /**
    * Gets the id.

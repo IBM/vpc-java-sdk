@@ -25,5 +25,7 @@ public class DedicatedHostProfileVCPUDependent extends DedicatedHostProfileVCPU 
     String DEPENDENT = "dependent";
   }
 
+
+  protected DedicatedHostProfileVCPUDependent() { }
 }
 

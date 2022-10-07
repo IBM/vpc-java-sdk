@@ -23,6 +23,8 @@ public class BareMetalServerDiskCollection extends GenericModel {
 
   protected List<BareMetalServerDisk> disks;
 
+  protected BareMetalServerDiskCollection() { }
+
   /**
    * Gets the disks.
    *

@@ -36,7 +36,7 @@ public class SecurityGroupRule extends GenericModel {
   }
 
   /**
-   * The direction of traffic to enforce, either `inbound` or `outbound`.
+   * The direction of traffic to enforce.
    */
   public interface Direction {
     /** inbound. */
@@ -55,6 +55,20 @@ public class SecurityGroupRule extends GenericModel {
     String IPV4 = "ipv4";
   }
 
+  /**
+   * The protocol to enforce.
+   */
+  public interface Protocol {
+    /** all. */
+    String ALL = "all";
+    /** icmp. */
+    String ICMP = "icmp";
+    /** tcp. */
+    String TCP = "tcp";
+    /** udp. */
+    String UDP = "udp";
+  }
+
   protected String direction;
   protected String href;
   protected String id;
@@ -69,13 +83,12 @@ public class SecurityGroupRule extends GenericModel {
   @SerializedName("port_min")
   protected Long portMin;
 
-  protected SecurityGroupRule() {
-  }
+  protected SecurityGroupRule() { }
 
   /**
    * Gets the direction.
    *
-   * The direction of traffic to enforce, either `inbound` or `outbound`.
+   * The direction of traffic to enforce.
    *
    * @return the direction
    */
@@ -132,10 +145,10 @@ public class SecurityGroupRule extends GenericModel {
   /**
    * Gets the remote.
    *
-   * The IP addresses or security groups from which this rule allows traffic (or to which,
-   * for outbound rules). Can be specified as an IP address, a CIDR block, or a security
-   * group. A CIDR block of `0.0.0.0/0` allows traffic from any source (or to any source,
-   * for outbound rules).
+   * The IP addresses or security groups from which this rule allows traffic (or to which, for
+   * outbound rules). Can be specified as an IP address, a CIDR block, or a security group. A
+   * CIDR block of `0.0.0.0/0` allows traffic from any source (or to any destination, for
+   * outbound rules).
    *
    * @return the remote
    */
@@ -146,7 +159,7 @@ public class SecurityGroupRule extends GenericModel {
   /**
    * Gets the code.
    *
-   * The ICMP traffic code to allow.
+   * The ICMP traffic code to allow. If absent, all codes are allowed.
    *
    * @return the code
    */
@@ -157,7 +170,7 @@ public class SecurityGroupRule extends GenericModel {
   /**
    * Gets the type.
    *
-   * The ICMP traffic type to allow.
+   * The ICMP traffic type to allow. If absent, all types are allowed.
    *
    * @return the type
    */

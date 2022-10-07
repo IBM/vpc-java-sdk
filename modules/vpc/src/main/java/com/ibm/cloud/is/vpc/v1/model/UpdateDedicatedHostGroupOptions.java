@@ -31,6 +31,11 @@ public class UpdateDedicatedHostGroupOptions extends GenericModel {
     private String id;
     private Map<String, Object> dedicatedHostGroupPatch;
 
+    /**
+     * Instantiates a new Builder from an existing UpdateDedicatedHostGroupOptions instance.
+     *
+     * @param updateDedicatedHostGroupOptions the instance to initialize the Builder with
+     */
     private Builder(UpdateDedicatedHostGroupOptions updateDedicatedHostGroupOptions) {
       this.id = updateDedicatedHostGroupOptions.id;
       this.dedicatedHostGroupPatch = updateDedicatedHostGroupOptions.dedicatedHostGroupPatch;
@@ -84,6 +89,8 @@ public class UpdateDedicatedHostGroupOptions extends GenericModel {
       return this;
     }
   }
+
+  protected UpdateDedicatedHostGroupOptions() { }
 
   protected UpdateDedicatedHostGroupOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,

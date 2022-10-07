@@ -30,6 +30,8 @@ public class VPNGatewayCollection extends GenericModel {
   @SerializedName("vpn_gateways")
   protected List<VPNGateway> vpnGateways;
 
+  protected VPNGatewayCollection() { }
+
   /**
    * Gets the first.
    *

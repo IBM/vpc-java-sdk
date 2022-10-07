@@ -25,5 +25,7 @@ public class DedicatedHostProfileMemoryFixed extends DedicatedHostProfileMemory 
     String FIXED = "fixed";
   }
 
+
+  protected DedicatedHostProfileMemoryFixed() { }
 }
 

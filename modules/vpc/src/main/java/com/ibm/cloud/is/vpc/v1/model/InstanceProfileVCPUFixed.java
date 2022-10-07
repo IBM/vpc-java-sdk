@@ -25,5 +25,7 @@ public class InstanceProfileVCPUFixed extends InstanceProfileVCPU {
     String FIXED = "fixed";
   }
 
+
+  protected InstanceProfileVCPUFixed() { }
 }
 

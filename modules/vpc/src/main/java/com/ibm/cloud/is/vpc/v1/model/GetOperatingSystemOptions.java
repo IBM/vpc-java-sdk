@@ -27,6 +27,11 @@ public class GetOperatingSystemOptions extends GenericModel {
   public static class Builder {
     private String name;
 
+    /**
+     * Instantiates a new Builder from an existing GetOperatingSystemOptions instance.
+     *
+     * @param getOperatingSystemOptions the instance to initialize the Builder with
+     */
     private Builder(GetOperatingSystemOptions getOperatingSystemOptions) {
       this.name = getOperatingSystemOptions.name;
     }
@@ -66,6 +71,8 @@ public class GetOperatingSystemOptions extends GenericModel {
       return this;
     }
   }
+
+  protected GetOperatingSystemOptions() { }
 
   protected GetOperatingSystemOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.name,

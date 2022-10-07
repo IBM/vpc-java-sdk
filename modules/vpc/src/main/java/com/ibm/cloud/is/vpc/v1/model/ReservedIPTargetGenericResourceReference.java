@@ -25,5 +25,7 @@ public class ReservedIPTargetGenericResourceReference extends ReservedIPTarget {
     String CLOUD_RESOURCE = "cloud_resource";
   }
 
+
+  protected ReservedIPTargetGenericResourceReference() { }
 }
 

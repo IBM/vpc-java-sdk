@@ -21,6 +21,8 @@ public class PublicGatewayCollectionNext extends GenericModel {
 
   protected String href;
 
+  protected PublicGatewayCollectionNext() { }
+
   /**
    * Gets the href.
    *

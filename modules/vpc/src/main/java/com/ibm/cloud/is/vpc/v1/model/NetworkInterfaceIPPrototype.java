@@ -31,8 +31,7 @@ public class NetworkInterfaceIPPrototype extends GenericModel {
   protected Boolean autoDelete;
   protected String name;
 
-  protected NetworkInterfaceIPPrototype() {
-  }
+  protected NetworkInterfaceIPPrototype() { }
 
   /**
    * Gets the id.

@@ -38,7 +38,7 @@ public class NetworkACLRule extends GenericModel {
   }
 
   /**
-   * Whether to allow or deny matching traffic.
+   * The action to perform for a packet matching the rule.
    */
   public interface Action {
     /** allow. */
@@ -48,7 +48,7 @@ public class NetworkACLRule extends GenericModel {
   }
 
   /**
-   * Whether the traffic to be matched is `inbound` or `outbound`.
+   * The direction of traffic to match.
    */
   public interface Direction {
     /** inbound. */
@@ -63,8 +63,20 @@ public class NetworkACLRule extends GenericModel {
   public interface IpVersion {
     /** ipv4. */
     String IPV4 = "ipv4";
-    /** ipv6. */
-    String IPV6 = "ipv6";
+  }
+
+  /**
+   * The protocol to enforce.
+   */
+  public interface Protocol {
+    /** all. */
+    String ALL = "all";
+    /** icmp. */
+    String ICMP = "icmp";
+    /** tcp. */
+    String TCP = "tcp";
+    /** udp. */
+    String UDP = "udp";
   }
 
   protected String action;
@@ -91,13 +103,12 @@ public class NetworkACLRule extends GenericModel {
   protected Long code;
   protected Long type;
 
-  protected NetworkACLRule() {
-  }
+  protected NetworkACLRule() { }
 
   /**
    * Gets the action.
    *
-   * Whether to allow or deny matching traffic.
+   * The action to perform for a packet matching the rule.
    *
    * @return the action
    */
@@ -130,7 +141,7 @@ public class NetworkACLRule extends GenericModel {
   /**
    * Gets the destination.
    *
-   * The destination CIDR block. The CIDR block `0.0.0.0/0` applies to all addresses.
+   * The destination IP address or CIDR block to match. The CIDR block `0.0.0.0/0` matches all destination addresses.
    *
    * @return the destination
    */
@@ -141,7 +152,7 @@ public class NetworkACLRule extends GenericModel {
   /**
    * Gets the direction.
    *
-   * Whether the traffic to be matched is `inbound` or `outbound`.
+   * The direction of traffic to match.
    *
    * @return the direction
    */
@@ -185,8 +196,7 @@ public class NetworkACLRule extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this rule. Names must be unique within the network ACL the rule resides in. If
-   * unspecified, the name will be a hyphenated list of randomly-selected words.
+   * The user-defined name for this network ACL rule.
    *
    * @return the name
    */
@@ -208,7 +218,7 @@ public class NetworkACLRule extends GenericModel {
   /**
    * Gets the source.
    *
-   * The source CIDR block. The CIDR block `0.0.0.0/0` applies to all addresses.
+   * The source IP address or CIDR block to match. The CIDR block `0.0.0.0/0` matches all source addresses.
    *
    * @return the source
    */
@@ -263,8 +273,9 @@ public class NetworkACLRule extends GenericModel {
   /**
    * Gets the code.
    *
-   * The ICMP traffic code to allow. If unspecified, all codes are allowed. This can only be specified if type is also
-   * specified.
+   * The ICMP traffic code to match.
+   *
+   * If absent, all codes are matched.
    *
    * @return the code
    */
@@ -275,7 +286,9 @@ public class NetworkACLRule extends GenericModel {
   /**
    * Gets the type.
    *
-   * The ICMP traffic type to allow. If unspecified, all types are allowed by this rule.
+   * The ICMP traffic type to match.
+   *
+   * If absent, all types are matched.
    *
    * @return the type
    */

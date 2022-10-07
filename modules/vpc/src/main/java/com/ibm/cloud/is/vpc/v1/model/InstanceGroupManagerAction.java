@@ -87,8 +87,7 @@ public class InstanceGroupManagerAction extends GenericModel {
   protected InstanceGroupManagerScheduledActionGroup group;
   protected InstanceGroupManagerScheduledActionManager manager;
 
-  protected InstanceGroupManagerAction() {
-  }
+  protected InstanceGroupManagerAction() { }
 
   /**
    * Gets the autoDelete.
@@ -190,7 +189,7 @@ public class InstanceGroupManagerAction extends GenericModel {
   /**
    * Gets the updatedAt.
    *
-   * The date and time that the instance group manager action was modified.
+   * The date and time that the instance group manager action was updated.
    *
    * @return the updatedAt
    */

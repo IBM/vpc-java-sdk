@@ -28,8 +28,7 @@ public class VolumeIdentity extends GenericModel {
   protected String crn;
   protected String href;
 
-  protected VolumeIdentity() {
-  }
+  protected VolumeIdentity() { }
 
   /**
    * Gets the id.

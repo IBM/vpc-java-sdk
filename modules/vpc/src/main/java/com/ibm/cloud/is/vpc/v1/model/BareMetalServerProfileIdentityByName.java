@@ -24,6 +24,11 @@ public class BareMetalServerProfileIdentityByName extends BareMetalServerProfile
   public static class Builder {
     private String name;
 
+    /**
+     * Instantiates a new Builder from an existing BareMetalServerProfileIdentityByName instance.
+     *
+     * @param bareMetalServerProfileIdentityByName the instance to initialize the Builder with
+     */
     public Builder(BareMetalServerProfileIdentity bareMetalServerProfileIdentityByName) {
       this.name = bareMetalServerProfileIdentityByName.name;
     }
@@ -63,6 +68,8 @@ public class BareMetalServerProfileIdentityByName extends BareMetalServerProfile
       return this;
     }
   }
+
+  protected BareMetalServerProfileIdentityByName() { }
 
   protected BareMetalServerProfileIdentityByName(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.name,

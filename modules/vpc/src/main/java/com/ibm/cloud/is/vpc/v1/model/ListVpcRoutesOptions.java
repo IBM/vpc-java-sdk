@@ -33,6 +33,11 @@ public class ListVpcRoutesOptions extends GenericModel {
     private String start;
     private Long limit;
 
+    /**
+     * Instantiates a new Builder from an existing ListVpcRoutesOptions instance.
+     *
+     * @param listVpcRoutesOptions the instance to initialize the Builder with
+     */
     private Builder(ListVpcRoutesOptions listVpcRoutesOptions) {
       this.vpcId = listVpcRoutesOptions.vpcId;
       this.zoneName = listVpcRoutesOptions.zoneName;
@@ -108,6 +113,8 @@ public class ListVpcRoutesOptions extends GenericModel {
       return this;
     }
   }
+
+  protected ListVpcRoutesOptions() { }
 
   protected ListVpcRoutesOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.vpcId,

@@ -47,6 +47,11 @@ public class CreateVpcOptions extends GenericModel {
     private String name;
     private ResourceGroupIdentity resourceGroup;
 
+    /**
+     * Instantiates a new Builder from an existing CreateVpcOptions instance.
+     *
+     * @param createVpcOptions the instance to initialize the Builder with
+     */
     private Builder(CreateVpcOptions createVpcOptions) {
       this.addressPrefixManagement = createVpcOptions.addressPrefixManagement;
       this.classicAccess = createVpcOptions.classicAccess;
@@ -113,6 +118,8 @@ public class CreateVpcOptions extends GenericModel {
       return this;
     }
   }
+
+  protected CreateVpcOptions() { }
 
   protected CreateVpcOptions(Builder builder) {
     addressPrefixManagement = builder.addressPrefixManagement;

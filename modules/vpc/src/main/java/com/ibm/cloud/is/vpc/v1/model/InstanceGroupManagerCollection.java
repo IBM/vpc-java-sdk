@@ -29,6 +29,8 @@ public class InstanceGroupManagerCollection extends GenericModel {
   @SerializedName("total_count")
   protected Long totalCount;
 
+  protected InstanceGroupManagerCollection() { }
+
   /**
    * Gets the first.
    *

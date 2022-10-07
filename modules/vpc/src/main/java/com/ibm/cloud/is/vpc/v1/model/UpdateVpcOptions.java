@@ -31,6 +31,11 @@ public class UpdateVpcOptions extends GenericModel {
     private String id;
     private Map<String, Object> vpcPatch;
 
+    /**
+     * Instantiates a new Builder from an existing UpdateVpcOptions instance.
+     *
+     * @param updateVpcOptions the instance to initialize the Builder with
+     */
     private Builder(UpdateVpcOptions updateVpcOptions) {
       this.id = updateVpcOptions.id;
       this.vpcPatch = updateVpcOptions.vpcPatch;
@@ -84,6 +89,8 @@ public class UpdateVpcOptions extends GenericModel {
       return this;
     }
   }
+
+  protected UpdateVpcOptions() { }
 
   protected UpdateVpcOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,

@@ -30,6 +30,8 @@ public class EndpointGatewayCollection extends GenericModel {
   @SerializedName("total_count")
   protected Long totalCount;
 
+  protected EndpointGatewayCollection() { }
+
   /**
    * Gets the endpointGateways.
    *

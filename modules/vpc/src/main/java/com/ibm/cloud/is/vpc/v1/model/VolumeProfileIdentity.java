@@ -26,8 +26,7 @@ public class VolumeProfileIdentity extends GenericModel {
   protected String name;
   protected String href;
 
-  protected VolumeProfileIdentity() {
-  }
+  protected VolumeProfileIdentity() { }
 
   /**
    * Gets the name.

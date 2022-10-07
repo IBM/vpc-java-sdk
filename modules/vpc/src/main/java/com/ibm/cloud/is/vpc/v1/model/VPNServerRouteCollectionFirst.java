@@ -21,6 +21,8 @@ public class VPNServerRouteCollectionFirst extends GenericModel {
 
   protected String href;
 
+  protected VPNServerRouteCollectionFirst() { }
+
   /**
    * Gets the href.
    *

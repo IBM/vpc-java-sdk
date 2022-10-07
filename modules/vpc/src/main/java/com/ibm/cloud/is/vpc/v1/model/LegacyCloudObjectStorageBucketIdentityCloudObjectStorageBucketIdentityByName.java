@@ -24,6 +24,11 @@ public class LegacyCloudObjectStorageBucketIdentityCloudObjectStorageBucketIdent
   public static class Builder {
     private String name;
 
+    /**
+     * Instantiates a new Builder from an existing LegacyCloudObjectStorageBucketIdentityCloudObjectStorageBucketIdentityByName instance.
+     *
+     * @param legacyCloudObjectStorageBucketIdentityCloudObjectStorageBucketIdentityByName the instance to initialize the Builder with
+     */
     public Builder(LegacyCloudObjectStorageBucketIdentity legacyCloudObjectStorageBucketIdentityCloudObjectStorageBucketIdentityByName) {
       this.name = legacyCloudObjectStorageBucketIdentityCloudObjectStorageBucketIdentityByName.name;
     }
@@ -63,6 +68,8 @@ public class LegacyCloudObjectStorageBucketIdentityCloudObjectStorageBucketIdent
       return this;
     }
   }
+
+  protected LegacyCloudObjectStorageBucketIdentityCloudObjectStorageBucketIdentityByName() { }
 
   protected LegacyCloudObjectStorageBucketIdentityCloudObjectStorageBucketIdentityByName(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.name,

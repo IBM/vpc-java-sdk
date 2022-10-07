@@ -22,7 +22,6 @@ package com.ibm.cloud.is.vpc.v1.model;
 public class VolumeAttachmentVolumePrototypeInstanceContextVolumePrototypeInstanceContext extends VolumeAttachmentVolumePrototypeInstanceContext {
 
 
-  protected VolumeAttachmentVolumePrototypeInstanceContextVolumePrototypeInstanceContext() {
-  }
+  protected VolumeAttachmentVolumePrototypeInstanceContextVolumePrototypeInstanceContext() { }
 }
 

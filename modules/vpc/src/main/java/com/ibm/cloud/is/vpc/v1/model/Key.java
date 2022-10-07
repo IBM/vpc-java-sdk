@@ -44,6 +44,8 @@ public class Key extends GenericModel {
   protected ResourceGroupReference resourceGroup;
   protected String type;
 
+  protected Key() { }
+
   /**
    * Gets the createdAt.
    *

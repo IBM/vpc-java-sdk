@@ -19,8 +19,6 @@ import com.ibm.cloud.is.vpc.v1.model.VolumeIdentityById;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import org.testng.annotations.Test;
@@ -48,12 +46,12 @@ public class SnapshotPrototypeSnapshotBySourceVolumeTest {
     SnapshotPrototypeSnapshotBySourceVolume snapshotPrototypeSnapshotBySourceVolumeModel = new SnapshotPrototypeSnapshotBySourceVolume.Builder()
       .name("my-snapshot")
       .resourceGroup(resourceGroupIdentityModel)
-      .userTags(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
+      .userTags(java.util.Arrays.asList("testString"))
       .sourceVolume(volumeIdentityModel)
       .build();
     assertEquals(snapshotPrototypeSnapshotBySourceVolumeModel.name(), "my-snapshot");
     assertEquals(snapshotPrototypeSnapshotBySourceVolumeModel.resourceGroup(), resourceGroupIdentityModel);
-    assertEquals(snapshotPrototypeSnapshotBySourceVolumeModel.userTags(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
+    assertEquals(snapshotPrototypeSnapshotBySourceVolumeModel.userTags(), java.util.Arrays.asList("testString"));
     assertEquals(snapshotPrototypeSnapshotBySourceVolumeModel.sourceVolume(), volumeIdentityModel);
 
     String json = TestUtilities.serialize(snapshotPrototypeSnapshotBySourceVolumeModel);

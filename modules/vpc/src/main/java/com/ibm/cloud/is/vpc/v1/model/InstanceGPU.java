@@ -24,6 +24,8 @@ public class InstanceGPU extends GenericModel {
   protected Long memory;
   protected String model;
 
+  protected InstanceGPU() { }
+
   /**
    * Gets the count.
    *

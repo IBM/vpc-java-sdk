@@ -29,6 +29,8 @@ public class DedicatedHostGroupCollection extends GenericModel {
   @SerializedName("total_count")
   protected Long totalCount;
 
+  protected DedicatedHostGroupCollection() { }
+
   /**
    * Gets the first.
    *

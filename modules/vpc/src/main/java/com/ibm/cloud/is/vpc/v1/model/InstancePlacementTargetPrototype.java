@@ -28,8 +28,7 @@ public class InstancePlacementTargetPrototype extends GenericModel {
   protected String crn;
   protected String href;
 
-  protected InstancePlacementTargetPrototype() {
-  }
+  protected InstancePlacementTargetPrototype() { }
 
   /**
    * Gets the id.

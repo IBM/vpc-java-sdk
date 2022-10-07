@@ -42,6 +42,8 @@ public class DedicatedHostProfileDiskInterface extends GenericModel {
   protected String type;
   protected String value;
 
+  protected DedicatedHostProfileDiskInterface() { }
+
   /**
    * Gets the type.
    *

@@ -21,6 +21,8 @@ public class ReservedIPCollectionNetworkInterfaceContextNext extends GenericMode
 
   protected String href;
 
+  protected ReservedIPCollectionNetworkInterfaceContextNext() { }
+
   /**
    * Gets the href.
    *

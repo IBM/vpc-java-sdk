@@ -31,6 +31,11 @@ public class ListVpcAddressPrefixesOptions extends GenericModel {
     private String start;
     private Long limit;
 
+    /**
+     * Instantiates a new Builder from an existing ListVpcAddressPrefixesOptions instance.
+     *
+     * @param listVpcAddressPrefixesOptions the instance to initialize the Builder with
+     */
     private Builder(ListVpcAddressPrefixesOptions listVpcAddressPrefixesOptions) {
       this.vpcId = listVpcAddressPrefixesOptions.vpcId;
       this.start = listVpcAddressPrefixesOptions.start;
@@ -94,6 +99,8 @@ public class ListVpcAddressPrefixesOptions extends GenericModel {
       return this;
     }
   }
+
+  protected ListVpcAddressPrefixesOptions() { }
 
   protected ListVpcAddressPrefixesOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.vpcId,

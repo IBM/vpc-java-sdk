@@ -25,5 +25,7 @@ public class InstanceProfilePortSpeedFixed extends InstanceProfilePortSpeed {
     String FIXED = "fixed";
   }
 
+
+  protected InstanceProfilePortSpeedFixed() { }
 }
 

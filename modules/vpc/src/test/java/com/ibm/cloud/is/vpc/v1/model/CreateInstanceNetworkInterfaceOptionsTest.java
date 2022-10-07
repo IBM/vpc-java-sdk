@@ -20,8 +20,6 @@ import com.ibm.cloud.is.vpc.v1.model.SubnetIdentityById;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import org.testng.annotations.Test;
@@ -61,14 +59,14 @@ public class CreateInstanceNetworkInterfaceOptionsTest {
       .allowIpSpoofing(true)
       .name("my-network-interface")
       .primaryIp(networkInterfaceIpPrototypeModel)
-      .securityGroups(new java.util.ArrayList<SecurityGroupIdentity>(java.util.Arrays.asList(securityGroupIdentityModel)))
+      .securityGroups(java.util.Arrays.asList(securityGroupIdentityModel))
       .build();
     assertEquals(createInstanceNetworkInterfaceOptionsModel.instanceId(), "testString");
     assertEquals(createInstanceNetworkInterfaceOptionsModel.subnet(), subnetIdentityModel);
     assertEquals(createInstanceNetworkInterfaceOptionsModel.allowIpSpoofing(), Boolean.valueOf(true));
     assertEquals(createInstanceNetworkInterfaceOptionsModel.name(), "my-network-interface");
     assertEquals(createInstanceNetworkInterfaceOptionsModel.primaryIp(), networkInterfaceIpPrototypeModel);
-    assertEquals(createInstanceNetworkInterfaceOptionsModel.securityGroups(), new java.util.ArrayList<SecurityGroupIdentity>(java.util.Arrays.asList(securityGroupIdentityModel)));
+    assertEquals(createInstanceNetworkInterfaceOptionsModel.securityGroups(), java.util.Arrays.asList(securityGroupIdentityModel));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

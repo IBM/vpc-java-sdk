@@ -87,6 +87,8 @@ public class Volume extends GenericModel {
   protected List<VolumeAttachmentReferenceVolumeContext> volumeAttachments;
   protected ZoneReference zone;
 
+  protected Volume() { }
+
   /**
    * Gets the active.
    *
@@ -240,7 +242,8 @@ public class Volume extends GenericModel {
   /**
    * Gets the profile.
    *
-   * The profile this volume uses.
+   * The [profile](https://cloud.ibm.com/docs/vpc?topic=vpc-block-storage-profiles) for
+   * this volume.
    *
    * @return the profile
    */

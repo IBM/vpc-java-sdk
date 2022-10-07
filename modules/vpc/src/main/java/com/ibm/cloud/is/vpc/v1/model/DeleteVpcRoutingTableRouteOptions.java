@@ -31,6 +31,11 @@ public class DeleteVpcRoutingTableRouteOptions extends GenericModel {
     private String routingTableId;
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing DeleteVpcRoutingTableRouteOptions instance.
+     *
+     * @param deleteVpcRoutingTableRouteOptions the instance to initialize the Builder with
+     */
     private Builder(DeleteVpcRoutingTableRouteOptions deleteVpcRoutingTableRouteOptions) {
       this.vpcId = deleteVpcRoutingTableRouteOptions.vpcId;
       this.routingTableId = deleteVpcRoutingTableRouteOptions.routingTableId;
@@ -98,6 +103,8 @@ public class DeleteVpcRoutingTableRouteOptions extends GenericModel {
       return this;
     }
   }
+
+  protected DeleteVpcRoutingTableRouteOptions() { }
 
   protected DeleteVpcRoutingTableRouteOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.vpcId,

@@ -20,8 +20,6 @@ import com.ibm.cloud.is.vpc.v1.model.ResourceGroupIdentityById;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import org.testng.annotations.Test;
@@ -45,14 +43,14 @@ public class CreateBackupPolicyOptionsTest {
 
     BackupPolicyPlanPrototype backupPolicyPlanPrototypeModel = new BackupPolicyPlanPrototype.Builder()
       .active(true)
-      .attachUserTags(new java.util.ArrayList<String>(java.util.Arrays.asList("my-daily-backup-plan")))
+      .attachUserTags(java.util.Arrays.asList("my-daily-backup-plan"))
       .copyUserTags(true)
       .cronSpec("*/5 1,2,3 * * *")
       .deletionTrigger(backupPolicyPlanDeletionTriggerPrototypeModel)
       .name("my-policy-plan")
       .build();
     assertEquals(backupPolicyPlanPrototypeModel.active(), Boolean.valueOf(true));
-    assertEquals(backupPolicyPlanPrototypeModel.attachUserTags(), new java.util.ArrayList<String>(java.util.Arrays.asList("my-daily-backup-plan")));
+    assertEquals(backupPolicyPlanPrototypeModel.attachUserTags(), java.util.Arrays.asList("my-daily-backup-plan"));
     assertEquals(backupPolicyPlanPrototypeModel.copyUserTags(), Boolean.valueOf(true));
     assertEquals(backupPolicyPlanPrototypeModel.cronSpec(), "*/5 1,2,3 * * *");
     assertEquals(backupPolicyPlanPrototypeModel.deletionTrigger(), backupPolicyPlanDeletionTriggerPrototypeModel);
@@ -64,16 +62,16 @@ public class CreateBackupPolicyOptionsTest {
     assertEquals(resourceGroupIdentityModel.id(), "fee82deba12e4c0fb69c3b09d1f12345");
 
     CreateBackupPolicyOptions createBackupPolicyOptionsModel = new CreateBackupPolicyOptions.Builder()
-      .matchResourceTypes(new java.util.ArrayList<String>(java.util.Arrays.asList("volume")))
-      .matchUserTags(new java.util.ArrayList<String>(java.util.Arrays.asList("my-daily-backup-policy")))
+      .matchResourceTypes(java.util.Arrays.asList("volume"))
+      .matchUserTags(java.util.Arrays.asList("my-daily-backup-policy"))
       .name("my-backup-policy")
-      .plans(new java.util.ArrayList<BackupPolicyPlanPrototype>(java.util.Arrays.asList(backupPolicyPlanPrototypeModel)))
+      .plans(java.util.Arrays.asList(backupPolicyPlanPrototypeModel))
       .resourceGroup(resourceGroupIdentityModel)
       .build();
-    assertEquals(createBackupPolicyOptionsModel.matchResourceTypes(), new java.util.ArrayList<String>(java.util.Arrays.asList("volume")));
-    assertEquals(createBackupPolicyOptionsModel.matchUserTags(), new java.util.ArrayList<String>(java.util.Arrays.asList("my-daily-backup-policy")));
+    assertEquals(createBackupPolicyOptionsModel.matchResourceTypes(), java.util.Arrays.asList("volume"));
+    assertEquals(createBackupPolicyOptionsModel.matchUserTags(), java.util.Arrays.asList("my-daily-backup-policy"));
     assertEquals(createBackupPolicyOptionsModel.name(), "my-backup-policy");
-    assertEquals(createBackupPolicyOptionsModel.plans(), new java.util.ArrayList<BackupPolicyPlanPrototype>(java.util.Arrays.asList(backupPolicyPlanPrototypeModel)));
+    assertEquals(createBackupPolicyOptionsModel.plans(), java.util.Arrays.asList(backupPolicyPlanPrototypeModel));
     assertEquals(createBackupPolicyOptionsModel.resourceGroup(), resourceGroupIdentityModel);
   }
 }

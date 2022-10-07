@@ -21,6 +21,8 @@ public class SubnetCollectionFirst extends GenericModel {
 
   protected String href;
 
+  protected SubnetCollectionFirst() { }
+
   /**
    * Gets the href.
    *

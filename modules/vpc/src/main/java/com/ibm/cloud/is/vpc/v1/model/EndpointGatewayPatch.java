@@ -30,6 +30,11 @@ public class EndpointGatewayPatch extends GenericModel {
   public static class Builder {
     private String name;
 
+    /**
+     * Instantiates a new Builder from an existing EndpointGatewayPatch instance.
+     *
+     * @param endpointGatewayPatch the instance to initialize the Builder with
+     */
     private Builder(EndpointGatewayPatch endpointGatewayPatch) {
       this.name = endpointGatewayPatch.name;
     }
@@ -60,6 +65,8 @@ public class EndpointGatewayPatch extends GenericModel {
       return this;
     }
   }
+
+  protected EndpointGatewayPatch() { }
 
   protected EndpointGatewayPatch(Builder builder) {
     name = builder.name;

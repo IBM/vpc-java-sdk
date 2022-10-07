@@ -21,6 +21,8 @@ public class AddressPrefixCollectionFirst extends GenericModel {
 
   protected String href;
 
+  protected AddressPrefixCollectionFirst() { }
+
   /**
    * Gets the href.
    *

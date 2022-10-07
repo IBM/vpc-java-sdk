@@ -22,9 +22,8 @@ public class RoutePrototype extends GenericModel {
 
   /**
    * The action to perform with a packet matching the route:
-   * - `delegate`: delegate to the system's built-in routes
-   * - `delegate_vpc`: delegate to the system's built-in routes, ignoring Internet-bound
-   *   routes
+   * - `delegate`: delegate to system-provided routes
+   * - `delegate_vpc`: delegate to system-provided routes, ignoring Internet-bound routes
    * - `deliver`: deliver the packet to the specified `next_hop`
    * - `drop`: drop the packet.
    */
@@ -56,6 +55,11 @@ public class RoutePrototype extends GenericModel {
     private RoutePrototypeNextHop nextHop;
     private ZoneIdentity zone;
 
+    /**
+     * Instantiates a new Builder from an existing RoutePrototype instance.
+     *
+     * @param routePrototype the instance to initialize the Builder with
+     */
     private Builder(RoutePrototype routePrototype) {
       this.action = routePrototype.action;
       this.destination = routePrototype.destination;
@@ -146,6 +150,8 @@ public class RoutePrototype extends GenericModel {
     }
   }
 
+  protected RoutePrototype() { }
+
   protected RoutePrototype(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.destination,
       "destination cannot be null");
@@ -171,9 +177,8 @@ public class RoutePrototype extends GenericModel {
    * Gets the action.
    *
    * The action to perform with a packet matching the route:
-   * - `delegate`: delegate to the system's built-in routes
-   * - `delegate_vpc`: delegate to the system's built-in routes, ignoring Internet-bound
-   *   routes
+   * - `delegate`: delegate to system-provided routes
+   * - `delegate_vpc`: delegate to system-provided routes, ignoring Internet-bound routes
    * - `deliver`: deliver the packet to the specified `next_hop`
    * - `drop`: drop the packet.
    *
@@ -187,8 +192,7 @@ public class RoutePrototype extends GenericModel {
    * Gets the destination.
    *
    * The destination of the route. At most two routes per `zone` in a table can have the same destination, and only if
-   * both routes have an `action` of `deliver` and the
-   * `next_hop` is an IP address.
+   * both routes have an `action` of `deliver` and the `next_hop` is an IP address.
    *
    * @return the destination
    */

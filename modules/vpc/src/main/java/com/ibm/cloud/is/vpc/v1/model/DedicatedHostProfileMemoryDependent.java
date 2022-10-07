@@ -25,5 +25,7 @@ public class DedicatedHostProfileMemoryDependent extends DedicatedHostProfileMem
     String DEPENDENT = "dependent";
   }
 
+
+  protected DedicatedHostProfileMemoryDependent() { }
 }
 

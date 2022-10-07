@@ -27,6 +27,8 @@ public class SnapshotClone extends GenericModel {
   protected Date createdAt;
   protected ZoneReference zone;
 
+  protected SnapshotClone() { }
+
   /**
    * Gets the available.
    *

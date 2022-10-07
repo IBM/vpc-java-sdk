@@ -31,6 +31,11 @@ public class UpdateNetworkAclOptions extends GenericModel {
     private String id;
     private Map<String, Object> networkAclPatch;
 
+    /**
+     * Instantiates a new Builder from an existing UpdateNetworkAclOptions instance.
+     *
+     * @param updateNetworkAclOptions the instance to initialize the Builder with
+     */
     private Builder(UpdateNetworkAclOptions updateNetworkAclOptions) {
       this.id = updateNetworkAclOptions.id;
       this.networkAclPatch = updateNetworkAclOptions.networkAclPatch;
@@ -84,6 +89,8 @@ public class UpdateNetworkAclOptions extends GenericModel {
       return this;
     }
   }
+
+  protected UpdateNetworkAclOptions() { }
 
   protected UpdateNetworkAclOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,

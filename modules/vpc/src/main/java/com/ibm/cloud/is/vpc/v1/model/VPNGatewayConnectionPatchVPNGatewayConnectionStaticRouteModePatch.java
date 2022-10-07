@@ -43,6 +43,11 @@ public class VPNGatewayConnectionPatchVPNGatewayConnectionStaticRouteModePatch e
     private String psk;
     private String routingProtocol;
 
+    /**
+     * Instantiates a new Builder from an existing VPNGatewayConnectionPatchVPNGatewayConnectionStaticRouteModePatch instance.
+     *
+     * @param vpnGatewayConnectionPatchVpnGatewayConnectionStaticRouteModePatch the instance to initialize the Builder with
+     */
     public Builder(VPNGatewayConnectionPatch vpnGatewayConnectionPatchVpnGatewayConnectionStaticRouteModePatch) {
       this.adminStateUp = vpnGatewayConnectionPatchVpnGatewayConnectionStaticRouteModePatch.adminStateUp;
       this.deadPeerDetection = vpnGatewayConnectionPatchVpnGatewayConnectionStaticRouteModePatch.deadPeerDetection;
@@ -157,6 +162,8 @@ public class VPNGatewayConnectionPatchVPNGatewayConnectionStaticRouteModePatch e
       return this;
     }
   }
+
+  protected VPNGatewayConnectionPatchVPNGatewayConnectionStaticRouteModePatch() { }
 
   protected VPNGatewayConnectionPatchVPNGatewayConnectionStaticRouteModePatch(Builder builder) {
     adminStateUp = builder.adminStateUp;

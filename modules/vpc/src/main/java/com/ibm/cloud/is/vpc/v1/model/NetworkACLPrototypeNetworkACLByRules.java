@@ -30,6 +30,11 @@ public class NetworkACLPrototypeNetworkACLByRules extends NetworkACLPrototype {
     private VPCIdentity vpc;
     private List<NetworkACLRulePrototypeNetworkACLContext> rules;
 
+    /**
+     * Instantiates a new Builder from an existing NetworkACLPrototypeNetworkACLByRules instance.
+     *
+     * @param networkAclPrototypeNetworkAclByRules the instance to initialize the Builder with
+     */
     public Builder(NetworkACLPrototype networkAclPrototypeNetworkAclByRules) {
       this.name = networkAclPrototypeNetworkAclByRules.name;
       this.resourceGroup = networkAclPrototypeNetworkAclByRules.resourceGroup;
@@ -122,6 +127,8 @@ public class NetworkACLPrototypeNetworkACLByRules extends NetworkACLPrototype {
       return this;
     }
   }
+
+  protected NetworkACLPrototypeNetworkACLByRules() { }
 
   protected NetworkACLPrototypeNetworkACLByRules(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.vpc,

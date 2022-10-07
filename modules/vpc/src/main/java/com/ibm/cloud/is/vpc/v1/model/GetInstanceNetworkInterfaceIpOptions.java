@@ -31,6 +31,11 @@ public class GetInstanceNetworkInterfaceIpOptions extends GenericModel {
     private String networkInterfaceId;
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing GetInstanceNetworkInterfaceIpOptions instance.
+     *
+     * @param getInstanceNetworkInterfaceIpOptions the instance to initialize the Builder with
+     */
     private Builder(GetInstanceNetworkInterfaceIpOptions getInstanceNetworkInterfaceIpOptions) {
       this.instanceId = getInstanceNetworkInterfaceIpOptions.instanceId;
       this.networkInterfaceId = getInstanceNetworkInterfaceIpOptions.networkInterfaceId;
@@ -98,6 +103,8 @@ public class GetInstanceNetworkInterfaceIpOptions extends GenericModel {
       return this;
     }
   }
+
+  protected GetInstanceNetworkInterfaceIpOptions() { }
 
   protected GetInstanceNetworkInterfaceIpOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.instanceId,

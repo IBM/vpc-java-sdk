@@ -29,6 +29,11 @@ public class ListLoadBalancerProfilesOptions extends GenericModel {
     private String start;
     private Long limit;
 
+    /**
+     * Instantiates a new Builder from an existing ListLoadBalancerProfilesOptions instance.
+     *
+     * @param listLoadBalancerProfilesOptions the instance to initialize the Builder with
+     */
     private Builder(ListLoadBalancerProfilesOptions listLoadBalancerProfilesOptions) {
       this.start = listLoadBalancerProfilesOptions.start;
       this.limit = listLoadBalancerProfilesOptions.limit;
@@ -71,6 +76,8 @@ public class ListLoadBalancerProfilesOptions extends GenericModel {
       return this;
     }
   }
+
+  protected ListLoadBalancerProfilesOptions() { }
 
   protected ListLoadBalancerProfilesOptions(Builder builder) {
     start = builder.start;

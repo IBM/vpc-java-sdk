@@ -24,7 +24,6 @@ package com.ibm.cloud.is.vpc.v1.model;
 public class PublicGatewayFloatingIPPrototypeFloatingIPIdentity extends PublicGatewayFloatingIPPrototype {
 
 
-  protected PublicGatewayFloatingIPPrototypeFloatingIPIdentity() {
-  }
+  protected PublicGatewayFloatingIPPrototypeFloatingIPIdentity() { }
 }
 

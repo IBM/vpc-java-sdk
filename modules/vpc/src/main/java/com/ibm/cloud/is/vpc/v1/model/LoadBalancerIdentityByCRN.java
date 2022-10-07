@@ -24,6 +24,11 @@ public class LoadBalancerIdentityByCRN extends LoadBalancerIdentity {
   public static class Builder {
     private String crn;
 
+    /**
+     * Instantiates a new Builder from an existing LoadBalancerIdentityByCRN instance.
+     *
+     * @param loadBalancerIdentityByCrn the instance to initialize the Builder with
+     */
     public Builder(LoadBalancerIdentity loadBalancerIdentityByCrn) {
       this.crn = loadBalancerIdentityByCrn.crn;
     }
@@ -63,6 +68,8 @@ public class LoadBalancerIdentityByCRN extends LoadBalancerIdentity {
       return this;
     }
   }
+
+  protected LoadBalancerIdentityByCRN() { }
 
   protected LoadBalancerIdentityByCRN(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.crn,

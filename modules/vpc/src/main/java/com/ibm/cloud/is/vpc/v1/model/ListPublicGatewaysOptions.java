@@ -31,6 +31,11 @@ public class ListPublicGatewaysOptions extends GenericModel {
     private Long limit;
     private String resourceGroupId;
 
+    /**
+     * Instantiates a new Builder from an existing ListPublicGatewaysOptions instance.
+     *
+     * @param listPublicGatewaysOptions the instance to initialize the Builder with
+     */
     private Builder(ListPublicGatewaysOptions listPublicGatewaysOptions) {
       this.start = listPublicGatewaysOptions.start;
       this.limit = listPublicGatewaysOptions.limit;
@@ -85,6 +90,8 @@ public class ListPublicGatewaysOptions extends GenericModel {
       return this;
     }
   }
+
+  protected ListPublicGatewaysOptions() { }
 
   protected ListPublicGatewaysOptions(Builder builder) {
     start = builder.start;

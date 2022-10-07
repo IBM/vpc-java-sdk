@@ -20,8 +20,6 @@ import com.ibm.cloud.is.vpc.v1.model.SubnetIdentityById;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import org.testng.annotations.Test;
@@ -60,7 +58,7 @@ public class BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInter
       .enableInfrastructureNat(true)
       .name("my-network-interface")
       .primaryIp(networkInterfaceIpPrototypeModel)
-      .securityGroups(new java.util.ArrayList<SecurityGroupIdentity>(java.util.Arrays.asList(securityGroupIdentityModel)))
+      .securityGroups(java.util.Arrays.asList(securityGroupIdentityModel))
       .subnet(subnetIdentityModel)
       .allowInterfaceToFloat(false)
       .interfaceType("vlan")
@@ -70,7 +68,7 @@ public class BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInter
     assertEquals(bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVlanPrototypeModel.enableInfrastructureNat(), Boolean.valueOf(true));
     assertEquals(bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVlanPrototypeModel.name(), "my-network-interface");
     assertEquals(bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVlanPrototypeModel.primaryIp(), networkInterfaceIpPrototypeModel);
-    assertEquals(bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVlanPrototypeModel.securityGroups(), new java.util.ArrayList<SecurityGroupIdentity>(java.util.Arrays.asList(securityGroupIdentityModel)));
+    assertEquals(bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVlanPrototypeModel.securityGroups(), java.util.Arrays.asList(securityGroupIdentityModel));
     assertEquals(bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVlanPrototypeModel.subnet(), subnetIdentityModel);
     assertEquals(bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVlanPrototypeModel.allowInterfaceToFloat(), Boolean.valueOf(false));
     assertEquals(bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVlanPrototypeModel.interfaceType(), "vlan");

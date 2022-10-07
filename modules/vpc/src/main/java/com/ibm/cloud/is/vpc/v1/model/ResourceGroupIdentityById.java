@@ -24,6 +24,11 @@ public class ResourceGroupIdentityById extends ResourceGroupIdentity {
   public static class Builder {
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing ResourceGroupIdentityById instance.
+     *
+     * @param resourceGroupIdentityById the instance to initialize the Builder with
+     */
     public Builder(ResourceGroupIdentity resourceGroupIdentityById) {
       this.id = resourceGroupIdentityById.id;
     }
@@ -63,6 +68,8 @@ public class ResourceGroupIdentityById extends ResourceGroupIdentity {
       return this;
     }
   }
+
+  protected ResourceGroupIdentityById() { }
 
   protected ResourceGroupIdentityById(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.id,

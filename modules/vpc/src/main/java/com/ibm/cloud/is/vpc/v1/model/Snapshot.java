@@ -96,6 +96,8 @@ public class Snapshot extends GenericModel {
   @SerializedName("user_tags")
   protected List<String> userTags;
 
+  protected Snapshot() { }
+
   /**
    * Gets the backupPolicyPlan.
    *

@@ -24,6 +24,11 @@ public class KeyIdentityByHref extends KeyIdentity {
   public static class Builder {
     private String href;
 
+    /**
+     * Instantiates a new Builder from an existing KeyIdentityByHref instance.
+     *
+     * @param keyIdentityByHref the instance to initialize the Builder with
+     */
     public Builder(KeyIdentity keyIdentityByHref) {
       this.href = keyIdentityByHref.href;
     }
@@ -63,6 +68,8 @@ public class KeyIdentityByHref extends KeyIdentity {
       return this;
     }
   }
+
+  protected KeyIdentityByHref() { }
 
   protected KeyIdentityByHref(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.href,

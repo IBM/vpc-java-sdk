@@ -45,8 +45,7 @@ public class BareMetalServerProfileDiskSize extends GenericModel {
   protected Long step;
   protected List<Long> values;
 
-  protected BareMetalServerProfileDiskSize() {
-  }
+  protected BareMetalServerProfileDiskSize() { }
 
   /**
    * Gets the type.

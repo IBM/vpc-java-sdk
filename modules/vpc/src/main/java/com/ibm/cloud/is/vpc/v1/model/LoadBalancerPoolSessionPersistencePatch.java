@@ -44,6 +44,11 @@ public class LoadBalancerPoolSessionPersistencePatch extends GenericModel {
     private String cookieName;
     private String type;
 
+    /**
+     * Instantiates a new Builder from an existing LoadBalancerPoolSessionPersistencePatch instance.
+     *
+     * @param loadBalancerPoolSessionPersistencePatch the instance to initialize the Builder with
+     */
     private Builder(LoadBalancerPoolSessionPersistencePatch loadBalancerPoolSessionPersistencePatch) {
       this.cookieName = loadBalancerPoolSessionPersistencePatch.cookieName;
       this.type = loadBalancerPoolSessionPersistencePatch.type;
@@ -86,6 +91,8 @@ public class LoadBalancerPoolSessionPersistencePatch extends GenericModel {
       return this;
     }
   }
+
+  protected LoadBalancerPoolSessionPersistencePatch() { }
 
   protected LoadBalancerPoolSessionPersistencePatch(Builder builder) {
     cookieName = builder.cookieName;

@@ -40,6 +40,11 @@ public class SubnetPatch extends GenericModel {
     private SubnetPublicGatewayPatch publicGateway;
     private RoutingTableIdentity routingTable;
 
+    /**
+     * Instantiates a new Builder from an existing SubnetPatch instance.
+     *
+     * @param subnetPatch the instance to initialize the Builder with
+     */
     private Builder(SubnetPatch subnetPatch) {
       this.name = subnetPatch.name;
       this.networkAcl = subnetPatch.networkAcl;
@@ -106,6 +111,8 @@ public class SubnetPatch extends GenericModel {
       return this;
     }
   }
+
+  protected SubnetPatch() { }
 
   protected SubnetPatch(Builder builder) {
     name = builder.name;

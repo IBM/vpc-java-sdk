@@ -25,5 +25,7 @@ public class DedicatedHostProfileMemoryEnum extends DedicatedHostProfileMemory {
     String X_ENUM = "enum";
   }
 
+
+  protected DedicatedHostProfileMemoryEnum() { }
 }
 

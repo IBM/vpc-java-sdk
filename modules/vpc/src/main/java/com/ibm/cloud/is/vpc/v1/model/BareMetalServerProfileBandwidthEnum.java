@@ -26,5 +26,7 @@ public class BareMetalServerProfileBandwidthEnum extends BareMetalServerProfileB
     String X_ENUM = "enum";
   }
 
+
+  protected BareMetalServerProfileBandwidthEnum() { }
 }
 

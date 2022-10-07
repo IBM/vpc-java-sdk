@@ -28,8 +28,7 @@ public class RoutePrototypeNextHop extends GenericModel {
   protected String id;
   protected String href;
 
-  protected RoutePrototypeNextHop() {
-  }
+  protected RoutePrototypeNextHop() { }
 
   /**
    * Gets the address.

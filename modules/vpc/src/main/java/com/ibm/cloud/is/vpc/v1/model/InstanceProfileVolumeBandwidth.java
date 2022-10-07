@@ -45,8 +45,7 @@ public class InstanceProfileVolumeBandwidth extends GenericModel {
   protected Long step;
   protected List<Long> values;
 
-  protected InstanceProfileVolumeBandwidth() {
-  }
+  protected InstanceProfileVolumeBandwidth() { }
 
   /**
    * Gets the type.

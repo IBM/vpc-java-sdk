@@ -35,6 +35,11 @@ public class ListBackupPoliciesOptions extends GenericModel {
     private String name;
     private String tag;
 
+    /**
+     * Instantiates a new Builder from an existing ListBackupPoliciesOptions instance.
+     *
+     * @param listBackupPoliciesOptions the instance to initialize the Builder with
+     */
     private Builder(ListBackupPoliciesOptions listBackupPoliciesOptions) {
       this.start = listBackupPoliciesOptions.start;
       this.limit = listBackupPoliciesOptions.limit;
@@ -113,6 +118,8 @@ public class ListBackupPoliciesOptions extends GenericModel {
       return this;
     }
   }
+
+  protected ListBackupPoliciesOptions() { }
 
   protected ListBackupPoliciesOptions(Builder builder) {
     start = builder.start;

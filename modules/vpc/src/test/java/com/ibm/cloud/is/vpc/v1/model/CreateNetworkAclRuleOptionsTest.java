@@ -15,7 +15,7 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.CreateNetworkAclRuleOptions;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLRuleBeforePrototypeNetworkACLRuleIdentityById;
-import com.ibm.cloud.is.vpc.v1.model.NetworkACLRulePrototypeNetworkACLRuleProtocolICMP;
+import com.ibm.cloud.is.vpc.v1.model.NetworkACLRulePrototypeNetworkACLRuleProtocolTCPUDPPrototype;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -38,16 +38,18 @@ public class CreateNetworkAclRuleOptionsTest {
       .build();
     assertEquals(networkAclRuleBeforePrototypeModel.id(), "8daca77a-4980-4d33-8f3e-7038797be8f9");
 
-    NetworkACLRulePrototypeNetworkACLRuleProtocolICMP networkAclRulePrototypeModel = new NetworkACLRulePrototypeNetworkACLRuleProtocolICMP.Builder()
+    NetworkACLRulePrototypeNetworkACLRuleProtocolTCPUDPPrototype networkAclRulePrototypeModel = new NetworkACLRulePrototypeNetworkACLRuleProtocolTCPUDPPrototype.Builder()
       .action("allow")
       .before(networkAclRuleBeforePrototypeModel)
       .destination("192.168.3.2/32")
       .direction("inbound")
       .name("my-rule-2")
       .source("192.168.3.2/32")
-      .code(Long.valueOf("0"))
-      .protocol("icmp")
-      .type(Long.valueOf("8"))
+      .destinationPortMax(Long.valueOf("22"))
+      .destinationPortMin(Long.valueOf("22"))
+      .protocol("udp")
+      .sourcePortMax(Long.valueOf("65535"))
+      .sourcePortMin(Long.valueOf("49152"))
       .build();
     assertEquals(networkAclRulePrototypeModel.action(), "allow");
     assertEquals(networkAclRulePrototypeModel.before(), networkAclRuleBeforePrototypeModel);
@@ -55,9 +57,11 @@ public class CreateNetworkAclRuleOptionsTest {
     assertEquals(networkAclRulePrototypeModel.direction(), "inbound");
     assertEquals(networkAclRulePrototypeModel.name(), "my-rule-2");
     assertEquals(networkAclRulePrototypeModel.source(), "192.168.3.2/32");
-    assertEquals(networkAclRulePrototypeModel.code(), Long.valueOf("0"));
-    assertEquals(networkAclRulePrototypeModel.protocol(), "icmp");
-    assertEquals(networkAclRulePrototypeModel.type(), Long.valueOf("8"));
+    assertEquals(networkAclRulePrototypeModel.destinationPortMax(), Long.valueOf("22"));
+    assertEquals(networkAclRulePrototypeModel.destinationPortMin(), Long.valueOf("22"));
+    assertEquals(networkAclRulePrototypeModel.protocol(), "udp");
+    assertEquals(networkAclRulePrototypeModel.sourcePortMax(), Long.valueOf("65535"));
+    assertEquals(networkAclRulePrototypeModel.sourcePortMin(), Long.valueOf("49152"));
 
     CreateNetworkAclRuleOptions createNetworkAclRuleOptionsModel = new CreateNetworkAclRuleOptions.Builder()
       .networkAclId("testString")

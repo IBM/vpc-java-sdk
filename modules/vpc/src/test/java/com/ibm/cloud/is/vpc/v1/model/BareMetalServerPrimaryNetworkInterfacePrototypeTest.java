@@ -20,8 +20,6 @@ import com.ibm.cloud.is.vpc.v1.model.SubnetIdentityById;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import org.testng.annotations.Test;
@@ -57,21 +55,21 @@ public class BareMetalServerPrimaryNetworkInterfacePrototypeTest {
 
     BareMetalServerPrimaryNetworkInterfacePrototype bareMetalServerPrimaryNetworkInterfacePrototypeModel = new BareMetalServerPrimaryNetworkInterfacePrototype.Builder()
       .allowIpSpoofing(true)
-      .allowedVlans(new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("4"))))
+      .allowedVlans(java.util.Arrays.asList(Long.valueOf("4")))
       .enableInfrastructureNat(true)
       .interfaceType("pci")
       .name("my-network-interface")
       .primaryIp(networkInterfaceIpPrototypeModel)
-      .securityGroups(new java.util.ArrayList<SecurityGroupIdentity>(java.util.Arrays.asList(securityGroupIdentityModel)))
+      .securityGroups(java.util.Arrays.asList(securityGroupIdentityModel))
       .subnet(subnetIdentityModel)
       .build();
     assertEquals(bareMetalServerPrimaryNetworkInterfacePrototypeModel.allowIpSpoofing(), Boolean.valueOf(true));
-    assertEquals(bareMetalServerPrimaryNetworkInterfacePrototypeModel.allowedVlans(), new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("4"))));
+    assertEquals(bareMetalServerPrimaryNetworkInterfacePrototypeModel.allowedVlans(), java.util.Arrays.asList(Long.valueOf("4")));
     assertEquals(bareMetalServerPrimaryNetworkInterfacePrototypeModel.enableInfrastructureNat(), Boolean.valueOf(true));
     assertEquals(bareMetalServerPrimaryNetworkInterfacePrototypeModel.interfaceType(), "pci");
     assertEquals(bareMetalServerPrimaryNetworkInterfacePrototypeModel.name(), "my-network-interface");
     assertEquals(bareMetalServerPrimaryNetworkInterfacePrototypeModel.primaryIp(), networkInterfaceIpPrototypeModel);
-    assertEquals(bareMetalServerPrimaryNetworkInterfacePrototypeModel.securityGroups(), new java.util.ArrayList<SecurityGroupIdentity>(java.util.Arrays.asList(securityGroupIdentityModel)));
+    assertEquals(bareMetalServerPrimaryNetworkInterfacePrototypeModel.securityGroups(), java.util.Arrays.asList(securityGroupIdentityModel));
     assertEquals(bareMetalServerPrimaryNetworkInterfacePrototypeModel.subnet(), subnetIdentityModel);
 
     String json = TestUtilities.serialize(bareMetalServerPrimaryNetworkInterfacePrototypeModel);

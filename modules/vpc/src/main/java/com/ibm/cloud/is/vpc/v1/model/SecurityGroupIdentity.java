@@ -28,8 +28,7 @@ public class SecurityGroupIdentity extends GenericModel {
   protected String crn;
   protected String href;
 
-  protected SecurityGroupIdentity() {
-  }
+  protected SecurityGroupIdentity() { }
 
   /**
    * Gets the id.

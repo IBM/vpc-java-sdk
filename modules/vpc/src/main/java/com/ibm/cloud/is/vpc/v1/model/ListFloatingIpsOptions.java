@@ -45,6 +45,11 @@ public class ListFloatingIpsOptions extends GenericModel {
     private String resourceGroupId;
     private String sort;
 
+    /**
+     * Instantiates a new Builder from an existing ListFloatingIpsOptions instance.
+     *
+     * @param listFloatingIpsOptions the instance to initialize the Builder with
+     */
     private Builder(ListFloatingIpsOptions listFloatingIpsOptions) {
       this.start = listFloatingIpsOptions.start;
       this.limit = listFloatingIpsOptions.limit;
@@ -111,6 +116,8 @@ public class ListFloatingIpsOptions extends GenericModel {
       return this;
     }
   }
+
+  protected ListFloatingIpsOptions() { }
 
   protected ListFloatingIpsOptions(Builder builder) {
     start = builder.start;

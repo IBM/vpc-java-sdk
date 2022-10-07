@@ -34,6 +34,11 @@ public class VolumeAttachmentPatch extends GenericModel {
     private Boolean deleteVolumeOnInstanceDelete;
     private String name;
 
+    /**
+     * Instantiates a new Builder from an existing VolumeAttachmentPatch instance.
+     *
+     * @param volumeAttachmentPatch the instance to initialize the Builder with
+     */
     private Builder(VolumeAttachmentPatch volumeAttachmentPatch) {
       this.deleteVolumeOnInstanceDelete = volumeAttachmentPatch.deleteVolumeOnInstanceDelete;
       this.name = volumeAttachmentPatch.name;
@@ -76,6 +81,8 @@ public class VolumeAttachmentPatch extends GenericModel {
       return this;
     }
   }
+
+  protected VolumeAttachmentPatch() { }
 
   protected VolumeAttachmentPatch(Builder builder) {
     deleteVolumeOnInstanceDelete = builder.deleteVolumeOnInstanceDelete;

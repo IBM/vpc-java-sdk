@@ -25,13 +25,19 @@ public class BareMetalServerPrimaryNetworkInterfacePrototype extends GenericMode
 
   /**
    * The network interface type:
+   * - `hipersocket`: a virtual network device that provides high-speed TCP/IP connectivity
+   *   within a `s390x` based system.
+   *   - Not supported on bare metal servers with a `cpu.architecture` of `amd64`
    * - `pci`: a physical PCI device which can only be created or deleted when the bare metal
    *   server is stopped
    *   - Has an `allowed_vlans` property which controls the VLANs that will be permitted
    *     to use the PCI interface
    *   - Cannot directly use an IEEE 802.1q VLAN tag.
+   *   - Not supported on bare metal servers with a `cpu.architecture` of `s390x`.
    */
   public interface InterfaceType {
+    /** hipersocket. */
+    String HIPERSOCKET = "hipersocket";
     /** pci. */
     String PCI = "pci";
   }
@@ -64,6 +70,11 @@ public class BareMetalServerPrimaryNetworkInterfacePrototype extends GenericMode
     private List<SecurityGroupIdentity> securityGroups;
     private SubnetIdentity subnet;
 
+    /**
+     * Instantiates a new Builder from an existing BareMetalServerPrimaryNetworkInterfacePrototype instance.
+     *
+     * @param bareMetalServerPrimaryNetworkInterfacePrototype the instance to initialize the Builder with
+     */
     private Builder(BareMetalServerPrimaryNetworkInterfacePrototype bareMetalServerPrimaryNetworkInterfacePrototype) {
       this.allowIpSpoofing = bareMetalServerPrimaryNetworkInterfacePrototype.allowIpSpoofing;
       this.allowedVlans = bareMetalServerPrimaryNetworkInterfacePrototype.allowedVlans;
@@ -222,6 +233,8 @@ public class BareMetalServerPrimaryNetworkInterfacePrototype extends GenericMode
     }
   }
 
+  protected BareMetalServerPrimaryNetworkInterfacePrototype() { }
+
   protected BareMetalServerPrimaryNetworkInterfacePrototype(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.subnet,
       "subnet cannot be null");
@@ -259,8 +272,7 @@ public class BareMetalServerPrimaryNetworkInterfacePrototype extends GenericMode
   /**
    * Gets the allowedVlans.
    *
-   * Indicates what VLAN IDs (for VLAN type only) can use this physical (PCI type) interface.  A given VLAN can only be
-   * in the `allowed_vlans` array for one PCI type adapter per bare metal server.
+   * Indicates what VLAN IDs (for VLAN type only) can use this physical (PCI type) interface.
    *
    * @return the allowedVlans
    */
@@ -276,10 +288,12 @@ public class BareMetalServerPrimaryNetworkInterfacePrototype extends GenericMode
    *   - A single floating IP can be assigned to the network interface.
    *
    * If `false`:
-   *   - Packets are passed unmodified to/from the network interface,
+   *   - Packets are passed unchanged to/from the network interface,
    *     allowing the workload to perform any needed NAT operations.
    *   - Multiple floating IPs can be assigned to the network interface.
    *   - `allow_ip_spoofing` must be set to `false`.
+   *
+   * This must be `true` when `interface_type` is `hipersocket`.
    *
    * @return the enableInfrastructureNat
    */
@@ -291,11 +305,15 @@ public class BareMetalServerPrimaryNetworkInterfacePrototype extends GenericMode
    * Gets the interfaceType.
    *
    * The network interface type:
+   * - `hipersocket`: a virtual network device that provides high-speed TCP/IP connectivity
+   *   within a `s390x` based system.
+   *   - Not supported on bare metal servers with a `cpu.architecture` of `amd64`
    * - `pci`: a physical PCI device which can only be created or deleted when the bare metal
    *   server is stopped
    *   - Has an `allowed_vlans` property which controls the VLANs that will be permitted
    *     to use the PCI interface
    *   - Cannot directly use an IEEE 802.1q VLAN tag.
+   *   - Not supported on bare metal servers with a `cpu.architecture` of `s390x`.
    *
    * @return the interfaceType
    */

@@ -26,6 +26,11 @@ public class NetworkInterfaceIPPrototypeReservedIPPrototypeNetworkInterfaceConte
     private Boolean autoDelete;
     private String name;
 
+    /**
+     * Instantiates a new Builder from an existing NetworkInterfaceIPPrototypeReservedIPPrototypeNetworkInterfaceContext instance.
+     *
+     * @param networkInterfaceIpPrototypeReservedIpPrototypeNetworkInterfaceContext the instance to initialize the Builder with
+     */
     public Builder(NetworkInterfaceIPPrototype networkInterfaceIpPrototypeReservedIpPrototypeNetworkInterfaceContext) {
       this.address = networkInterfaceIpPrototypeReservedIpPrototypeNetworkInterfaceContext.address;
       this.autoDelete = networkInterfaceIpPrototypeReservedIpPrototypeNetworkInterfaceContext.autoDelete;
@@ -80,6 +85,8 @@ public class NetworkInterfaceIPPrototypeReservedIPPrototypeNetworkInterfaceConte
       return this;
     }
   }
+
+  protected NetworkInterfaceIPPrototypeReservedIPPrototypeNetworkInterfaceContext() { }
 
   protected NetworkInterfaceIPPrototypeReservedIPPrototypeNetworkInterfaceContext(Builder builder) {
     address = builder.address;

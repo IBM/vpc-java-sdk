@@ -22,6 +22,8 @@ public class VPCCSESourceIP extends GenericModel {
   protected IP ip;
   protected ZoneReference zone;
 
+  protected VPCCSESourceIP() { }
+
   /**
    * Gets the ip.
    *

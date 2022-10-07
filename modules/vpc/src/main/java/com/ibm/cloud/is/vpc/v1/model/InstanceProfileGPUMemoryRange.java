@@ -25,5 +25,7 @@ public class InstanceProfileGPUMemoryRange extends InstanceProfileGPUMemory {
     String RANGE = "range";
   }
 
+
+  protected InstanceProfileGPUMemoryRange() { }
 }
 

@@ -37,8 +37,7 @@ public class EndpointGatewayTarget extends GenericModel {
   protected String resourceType;
   protected String name;
 
-  protected EndpointGatewayTarget() {
-  }
+  protected EndpointGatewayTarget() { }
 
   /**
    * Gets the crn.

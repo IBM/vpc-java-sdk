@@ -45,6 +45,11 @@ public class InstanceAvailabilityPrototype extends GenericModel {
   public static class Builder {
     private String hostFailure;
 
+    /**
+     * Instantiates a new Builder from an existing InstanceAvailabilityPrototype instance.
+     *
+     * @param instanceAvailabilityPrototype the instance to initialize the Builder with
+     */
     private Builder(InstanceAvailabilityPrototype instanceAvailabilityPrototype) {
       this.hostFailure = instanceAvailabilityPrototype.hostFailure;
     }
@@ -75,6 +80,8 @@ public class InstanceAvailabilityPrototype extends GenericModel {
       return this;
     }
   }
+
+  protected InstanceAvailabilityPrototype() { }
 
   protected InstanceAvailabilityPrototype(Builder builder) {
     hostFailure = builder.hostFailure;

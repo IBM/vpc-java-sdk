@@ -25,6 +25,11 @@ public class DedicatedHostGroupPrototypeDedicatedHostByZoneContext extends Dedic
     private String name;
     private ResourceGroupIdentity resourceGroup;
 
+    /**
+     * Instantiates a new Builder from an existing DedicatedHostGroupPrototypeDedicatedHostByZoneContext instance.
+     *
+     * @param dedicatedHostGroupPrototypeDedicatedHostByZoneContext the instance to initialize the Builder with
+     */
     private Builder(DedicatedHostGroupPrototypeDedicatedHostByZoneContext dedicatedHostGroupPrototypeDedicatedHostByZoneContext) {
       this.name = dedicatedHostGroupPrototypeDedicatedHostByZoneContext.name;
       this.resourceGroup = dedicatedHostGroupPrototypeDedicatedHostByZoneContext.resourceGroup;
@@ -67,6 +72,8 @@ public class DedicatedHostGroupPrototypeDedicatedHostByZoneContext extends Dedic
       return this;
     }
   }
+
+  protected DedicatedHostGroupPrototypeDedicatedHostByZoneContext() { }
 
   protected DedicatedHostGroupPrototypeDedicatedHostByZoneContext(Builder builder) {
     name = builder.name;

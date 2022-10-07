@@ -38,8 +38,7 @@ public class VPNGatewayPrototype extends GenericModel {
   protected SubnetIdentity subnet;
   protected String mode;
 
-  protected VPNGatewayPrototype() {
-  }
+  protected VPNGatewayPrototype() { }
 
   /**
    * Gets the name.

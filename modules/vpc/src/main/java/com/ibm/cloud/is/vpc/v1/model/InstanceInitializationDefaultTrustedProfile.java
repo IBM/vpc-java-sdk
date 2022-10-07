@@ -24,6 +24,8 @@ public class InstanceInitializationDefaultTrustedProfile extends GenericModel {
   protected Boolean autoLink;
   protected TrustedProfileReference target;
 
+  protected InstanceInitializationDefaultTrustedProfile() { }
+
   /**
    * Gets the autoLink.
    *

@@ -51,6 +51,8 @@ public class InstanceStatusReason extends GenericModel {
   @SerializedName("more_info")
   protected String moreInfo;
 
+  protected InstanceStatusReason() { }
+
   /**
    * Gets the code.
    *

@@ -21,6 +21,8 @@ public class ReservedIPCollectionNext extends GenericModel {
 
   protected String href;
 
+  protected ReservedIPCollectionNext() { }
+
   /**
    * Gets the href.
    *

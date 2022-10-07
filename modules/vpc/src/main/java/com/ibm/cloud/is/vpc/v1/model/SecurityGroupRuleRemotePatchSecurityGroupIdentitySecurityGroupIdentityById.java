@@ -24,6 +24,11 @@ public class SecurityGroupRuleRemotePatchSecurityGroupIdentitySecurityGroupIdent
   public static class Builder {
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing SecurityGroupRuleRemotePatchSecurityGroupIdentitySecurityGroupIdentityById instance.
+     *
+     * @param securityGroupRuleRemotePatchSecurityGroupIdentitySecurityGroupIdentityById the instance to initialize the Builder with
+     */
     public Builder(SecurityGroupRuleRemotePatchSecurityGroupIdentity securityGroupRuleRemotePatchSecurityGroupIdentitySecurityGroupIdentityById) {
       this.id = securityGroupRuleRemotePatchSecurityGroupIdentitySecurityGroupIdentityById.id;
     }
@@ -63,6 +68,8 @@ public class SecurityGroupRuleRemotePatchSecurityGroupIdentitySecurityGroupIdent
       return this;
     }
   }
+
+  protected SecurityGroupRuleRemotePatchSecurityGroupIdentitySecurityGroupIdentityById() { }
 
   protected SecurityGroupRuleRemotePatchSecurityGroupIdentitySecurityGroupIdentityById(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.id,

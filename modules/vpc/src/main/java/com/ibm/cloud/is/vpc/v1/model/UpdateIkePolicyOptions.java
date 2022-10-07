@@ -31,6 +31,11 @@ public class UpdateIkePolicyOptions extends GenericModel {
     private String id;
     private Map<String, Object> ikePolicyPatch;
 
+    /**
+     * Instantiates a new Builder from an existing UpdateIkePolicyOptions instance.
+     *
+     * @param updateIkePolicyOptions the instance to initialize the Builder with
+     */
     private Builder(UpdateIkePolicyOptions updateIkePolicyOptions) {
       this.id = updateIkePolicyOptions.id;
       this.ikePolicyPatch = updateIkePolicyOptions.ikePolicyPatch;
@@ -84,6 +89,8 @@ public class UpdateIkePolicyOptions extends GenericModel {
       return this;
     }
   }
+
+  protected UpdateIkePolicyOptions() { }
 
   protected UpdateIkePolicyOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,

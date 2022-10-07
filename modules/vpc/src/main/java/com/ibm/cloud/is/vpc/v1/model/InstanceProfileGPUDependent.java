@@ -25,5 +25,7 @@ public class InstanceProfileGPUDependent extends InstanceProfileGPU {
     String DEPENDENT = "dependent";
   }
 
+
+  protected InstanceProfileGPUDependent() { }
 }
 

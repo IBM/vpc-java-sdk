@@ -42,6 +42,11 @@ public class CreateVpcRoutingTableOptions extends GenericModel {
     private Boolean routeVpcZoneIngress;
     private List<RoutePrototype> routes;
 
+    /**
+     * Instantiates a new Builder from an existing CreateVpcRoutingTableOptions instance.
+     *
+     * @param createVpcRoutingTableOptions the instance to initialize the Builder with
+     */
     private Builder(CreateVpcRoutingTableOptions createVpcRoutingTableOptions) {
       this.vpcId = createVpcRoutingTableOptions.vpcId;
       this.acceptRoutesFrom = createVpcRoutingTableOptions.acceptRoutesFrom;
@@ -187,6 +192,8 @@ public class CreateVpcRoutingTableOptions extends GenericModel {
       return this;
     }
   }
+
+  protected CreateVpcRoutingTableOptions() { }
 
   protected CreateVpcRoutingTableOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.vpcId,

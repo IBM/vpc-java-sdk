@@ -21,7 +21,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class LoadBalancerPoolHealthMonitor extends GenericModel {
 
   /**
-   * The protocol type of this load balancer pool health monitor.
+   * The protocol type to use for health checks.
    *
    * The enumerated values for this property are expected to expand in the future. When processing this property, check
    * for and log unknown values. Optionally halt processing and surface the error, or bypass the health monitor on which
@@ -45,10 +45,12 @@ public class LoadBalancerPoolHealthMonitor extends GenericModel {
   @SerializedName("url_path")
   protected String urlPath;
 
+  protected LoadBalancerPoolHealthMonitor() { }
+
   /**
    * Gets the delay.
    *
-   * The health check interval in seconds. Interval must be greater than timeout value.
+   * The seconds to wait between health checks.
    *
    * @return the delay
    */
@@ -70,7 +72,9 @@ public class LoadBalancerPoolHealthMonitor extends GenericModel {
   /**
    * Gets the port.
    *
-   * The health check port number. If specified, this overrides the ports specified in the server member resources.
+   * The health check port.
+   *
+   * If present, this overrides the pool member port values.
    *
    * @return the port
    */
@@ -81,7 +85,7 @@ public class LoadBalancerPoolHealthMonitor extends GenericModel {
   /**
    * Gets the timeout.
    *
-   * The health check timeout in seconds.
+   * The seconds to wait for a response to a health check.
    *
    * @return the timeout
    */
@@ -92,7 +96,7 @@ public class LoadBalancerPoolHealthMonitor extends GenericModel {
   /**
    * Gets the type.
    *
-   * The protocol type of this load balancer pool health monitor.
+   * The protocol type to use for health checks.
    *
    * The enumerated values for this property are expected to expand in the future. When processing this property, check
    * for and log unknown values. Optionally halt processing and surface the error, or bypass the health monitor on which
@@ -107,9 +111,9 @@ public class LoadBalancerPoolHealthMonitor extends GenericModel {
   /**
    * Gets the urlPath.
    *
-   * The health check URL path. Applicable only if the health monitor `type` is `http` or
-   * `https`. This value must be in the format of an [origin-form request
-   * target](https://tools.ietf.org/html/rfc7230#section-5.3.1).
+   * The health check URL path. Applicable when `type` is `http` or `https`.
+   *
+   * Must be in the format of an [origin-form request target](https://tools.ietf.org/html/rfc7230#section-5.3.1).
    *
    * @return the urlPath
    */

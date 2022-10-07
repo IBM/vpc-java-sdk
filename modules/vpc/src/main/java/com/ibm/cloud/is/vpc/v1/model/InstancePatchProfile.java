@@ -23,6 +23,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  * - Be compatible with any `placement_target` constraints. For example, if the
  *   instance is placed on a dedicated host, the requested profile `family` must be
  *   the same as the dedicated host `family`.
+ * - Have the same `vcpu.architecture`.
  *
  * Classes which extend this class:
  * - InstancePatchProfileInstanceProfileIdentityByName
@@ -33,8 +34,7 @@ public class InstancePatchProfile extends GenericModel {
   protected String name;
   protected String href;
 
-  protected InstancePatchProfile() {
-  }
+  protected InstancePatchProfile() { }
 
   /**
    * Gets the name.

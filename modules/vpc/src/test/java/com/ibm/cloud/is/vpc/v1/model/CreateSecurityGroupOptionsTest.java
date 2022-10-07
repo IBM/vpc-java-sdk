@@ -15,14 +15,12 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.CreateSecurityGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupIdentityById;
-import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRulePrototypeSecurityGroupRuleProtocolICMP;
+import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRulePrototypeSecurityGroupRuleProtocolAll;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleRemotePrototypeIP;
 import com.ibm.cloud.is.vpc.v1.model.VPCIdentityById;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import org.testng.annotations.Test;
@@ -52,31 +50,27 @@ public class CreateSecurityGroupOptionsTest {
       .build();
     assertEquals(securityGroupRuleRemotePrototypeModel.address(), "192.168.3.4");
 
-    SecurityGroupRulePrototypeSecurityGroupRuleProtocolICMP securityGroupRulePrototypeModel = new SecurityGroupRulePrototypeSecurityGroupRuleProtocolICMP.Builder()
-      .code(Long.valueOf("0"))
+    SecurityGroupRulePrototypeSecurityGroupRuleProtocolAll securityGroupRulePrototypeModel = new SecurityGroupRulePrototypeSecurityGroupRuleProtocolAll.Builder()
       .direction("inbound")
       .ipVersion("ipv4")
-      .protocol("icmp")
+      .protocol("all")
       .remote(securityGroupRuleRemotePrototypeModel)
-      .type(Long.valueOf("8"))
       .build();
-    assertEquals(securityGroupRulePrototypeModel.code(), Long.valueOf("0"));
     assertEquals(securityGroupRulePrototypeModel.direction(), "inbound");
     assertEquals(securityGroupRulePrototypeModel.ipVersion(), "ipv4");
-    assertEquals(securityGroupRulePrototypeModel.protocol(), "icmp");
+    assertEquals(securityGroupRulePrototypeModel.protocol(), "all");
     assertEquals(securityGroupRulePrototypeModel.remote(), securityGroupRuleRemotePrototypeModel);
-    assertEquals(securityGroupRulePrototypeModel.type(), Long.valueOf("8"));
 
     CreateSecurityGroupOptions createSecurityGroupOptionsModel = new CreateSecurityGroupOptions.Builder()
       .vpc(vpcIdentityModel)
       .name("my-security-group")
       .resourceGroup(resourceGroupIdentityModel)
-      .rules(new java.util.ArrayList<SecurityGroupRulePrototype>(java.util.Arrays.asList(securityGroupRulePrototypeModel)))
+      .rules(java.util.Arrays.asList(securityGroupRulePrototypeModel))
       .build();
     assertEquals(createSecurityGroupOptionsModel.vpc(), vpcIdentityModel);
     assertEquals(createSecurityGroupOptionsModel.name(), "my-security-group");
     assertEquals(createSecurityGroupOptionsModel.resourceGroup(), resourceGroupIdentityModel);
-    assertEquals(createSecurityGroupOptionsModel.rules(), new java.util.ArrayList<SecurityGroupRulePrototype>(java.util.Arrays.asList(securityGroupRulePrototypeModel)));
+    assertEquals(createSecurityGroupOptionsModel.rules(), java.util.Arrays.asList(securityGroupRulePrototypeModel));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

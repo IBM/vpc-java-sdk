@@ -25,6 +25,11 @@ public class LoadBalancerListenerPolicyTargetPrototypeLoadBalancerListenerPolicy
     private Long httpStatusCode;
     private String url;
 
+    /**
+     * Instantiates a new Builder from an existing LoadBalancerListenerPolicyTargetPrototypeLoadBalancerListenerPolicyRedirectURLPrototype instance.
+     *
+     * @param loadBalancerListenerPolicyTargetPrototypeLoadBalancerListenerPolicyRedirectUrlPrototype the instance to initialize the Builder with
+     */
     public Builder(LoadBalancerListenerPolicyTargetPrototype loadBalancerListenerPolicyTargetPrototypeLoadBalancerListenerPolicyRedirectUrlPrototype) {
       this.httpStatusCode = loadBalancerListenerPolicyTargetPrototypeLoadBalancerListenerPolicyRedirectUrlPrototype.httpStatusCode;
       this.url = loadBalancerListenerPolicyTargetPrototypeLoadBalancerListenerPolicyRedirectUrlPrototype.url;
@@ -78,6 +83,8 @@ public class LoadBalancerListenerPolicyTargetPrototypeLoadBalancerListenerPolicy
       return this;
     }
   }
+
+  protected LoadBalancerListenerPolicyTargetPrototypeLoadBalancerListenerPolicyRedirectURLPrototype() { }
 
   protected LoadBalancerListenerPolicyTargetPrototypeLoadBalancerListenerPolicyRedirectURLPrototype(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.httpStatusCode,

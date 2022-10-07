@@ -80,6 +80,8 @@ public class PlacementGroup extends GenericModel {
   protected String resourceType;
   protected String strategy;
 
+  protected PlacementGroup() { }
+
   /**
    * Gets the createdAt.
    *

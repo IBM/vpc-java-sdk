@@ -29,6 +29,11 @@ public class DeleteVolumeOptions extends GenericModel {
     private String id;
     private String ifMatch;
 
+    /**
+     * Instantiates a new Builder from an existing DeleteVolumeOptions instance.
+     *
+     * @param deleteVolumeOptions the instance to initialize the Builder with
+     */
     private Builder(DeleteVolumeOptions deleteVolumeOptions) {
       this.id = deleteVolumeOptions.id;
       this.ifMatch = deleteVolumeOptions.ifMatch;
@@ -80,6 +85,8 @@ public class DeleteVolumeOptions extends GenericModel {
       return this;
     }
   }
+
+  protected DeleteVolumeOptions() { }
 
   protected DeleteVolumeOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,

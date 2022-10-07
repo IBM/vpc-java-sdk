@@ -24,6 +24,11 @@ public class KeyIdentityByCRN extends KeyIdentity {
   public static class Builder {
     private String crn;
 
+    /**
+     * Instantiates a new Builder from an existing KeyIdentityByCRN instance.
+     *
+     * @param keyIdentityByCrn the instance to initialize the Builder with
+     */
     public Builder(KeyIdentity keyIdentityByCrn) {
       this.crn = keyIdentityByCrn.crn;
     }
@@ -63,6 +68,8 @@ public class KeyIdentityByCRN extends KeyIdentity {
       return this;
     }
   }
+
+  protected KeyIdentityByCRN() { }
 
   protected KeyIdentityByCRN(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.crn,

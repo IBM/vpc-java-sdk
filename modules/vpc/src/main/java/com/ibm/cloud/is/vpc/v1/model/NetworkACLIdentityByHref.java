@@ -24,6 +24,11 @@ public class NetworkACLIdentityByHref extends NetworkACLIdentity {
   public static class Builder {
     private String href;
 
+    /**
+     * Instantiates a new Builder from an existing NetworkACLIdentityByHref instance.
+     *
+     * @param networkAclIdentityByHref the instance to initialize the Builder with
+     */
     public Builder(NetworkACLIdentity networkAclIdentityByHref) {
       this.href = networkAclIdentityByHref.href;
     }
@@ -63,6 +68,8 @@ public class NetworkACLIdentityByHref extends NetworkACLIdentity {
       return this;
     }
   }
+
+  protected NetworkACLIdentityByHref() { }
 
   protected NetworkACLIdentityByHref(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.href,

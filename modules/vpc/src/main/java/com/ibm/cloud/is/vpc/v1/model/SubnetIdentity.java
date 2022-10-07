@@ -28,8 +28,7 @@ public class SubnetIdentity extends GenericModel {
   protected String crn;
   protected String href;
 
-  protected SubnetIdentity() {
-  }
+  protected SubnetIdentity() { }
 
   /**
    * Gets the id.

@@ -48,6 +48,8 @@ public class BareMetalServerProfileSupportedTrustedPlatformModuleModes extends G
   protected String type;
   protected List<String> values;
 
+  protected BareMetalServerProfileSupportedTrustedPlatformModuleModes() { }
+
   /**
    * Gets the type.
    *

@@ -25,5 +25,7 @@ public class LoadBalancerProfileSecurityGroupsSupportedDependent extends LoadBal
     String DEPENDENT = "dependent";
   }
 
+
+  protected LoadBalancerProfileSecurityGroupsSupportedDependent() { }
 }
 

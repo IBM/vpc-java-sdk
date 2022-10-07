@@ -26,8 +26,7 @@ public class FloatingIPByTargetNetworkInterfaceIdentity extends GenericModel {
   protected String id;
   protected String href;
 
-  protected FloatingIPByTargetNetworkInterfaceIdentity() {
-  }
+  protected FloatingIPByTargetNetworkInterfaceIdentity() { }
 
   /**
    * Gets the id.

@@ -35,6 +35,11 @@ public class VPNServerAuthenticationPrototypeVPNServerAuthenticationByUsernamePr
     private String method;
     private VPNServerAuthenticationByUsernameIdProvider identityProvider;
 
+    /**
+     * Instantiates a new Builder from an existing VPNServerAuthenticationPrototypeVPNServerAuthenticationByUsernamePrototype instance.
+     *
+     * @param vpnServerAuthenticationPrototypeVpnServerAuthenticationByUsernamePrototype the instance to initialize the Builder with
+     */
     public Builder(VPNServerAuthenticationPrototype vpnServerAuthenticationPrototypeVpnServerAuthenticationByUsernamePrototype) {
       this.method = vpnServerAuthenticationPrototypeVpnServerAuthenticationByUsernamePrototype.method;
       this.identityProvider = vpnServerAuthenticationPrototypeVpnServerAuthenticationByUsernamePrototype.identityProvider;
@@ -88,6 +93,8 @@ public class VPNServerAuthenticationPrototypeVPNServerAuthenticationByUsernamePr
       return this;
     }
   }
+
+  protected VPNServerAuthenticationPrototypeVPNServerAuthenticationByUsernamePrototype() { }
 
   protected VPNServerAuthenticationPrototypeVPNServerAuthenticationByUsernamePrototype(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.method,

@@ -28,8 +28,7 @@ public class NetworkACLIdentity extends GenericModel {
   protected String crn;
   protected String href;
 
-  protected NetworkACLIdentity() {
-  }
+  protected NetworkACLIdentity() { }
 
   /**
    * Gets the id.

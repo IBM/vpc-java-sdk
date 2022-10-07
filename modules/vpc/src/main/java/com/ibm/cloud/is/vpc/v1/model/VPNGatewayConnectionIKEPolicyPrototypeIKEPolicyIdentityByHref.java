@@ -24,6 +24,11 @@ public class VPNGatewayConnectionIKEPolicyPrototypeIKEPolicyIdentityByHref exten
   public static class Builder {
     private String href;
 
+    /**
+     * Instantiates a new Builder from an existing VPNGatewayConnectionIKEPolicyPrototypeIKEPolicyIdentityByHref instance.
+     *
+     * @param vpnGatewayConnectionIkePolicyPrototypeIkePolicyIdentityByHref the instance to initialize the Builder with
+     */
     public Builder(VPNGatewayConnectionIKEPolicyPrototype vpnGatewayConnectionIkePolicyPrototypeIkePolicyIdentityByHref) {
       this.href = vpnGatewayConnectionIkePolicyPrototypeIkePolicyIdentityByHref.href;
     }
@@ -63,6 +68,8 @@ public class VPNGatewayConnectionIKEPolicyPrototypeIKEPolicyIdentityByHref exten
       return this;
     }
   }
+
+  protected VPNGatewayConnectionIKEPolicyPrototypeIKEPolicyIdentityByHref() { }
 
   protected VPNGatewayConnectionIKEPolicyPrototypeIKEPolicyIdentityByHref(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.href,

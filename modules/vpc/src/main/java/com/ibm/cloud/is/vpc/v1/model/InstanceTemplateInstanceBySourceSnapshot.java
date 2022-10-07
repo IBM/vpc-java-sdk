@@ -17,5 +17,7 @@ package com.ibm.cloud.is.vpc.v1.model;
  */
 public class InstanceTemplateInstanceBySourceSnapshot extends InstanceTemplate {
 
+
+  protected InstanceTemplateInstanceBySourceSnapshot() { }
 }
 

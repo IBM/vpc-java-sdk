@@ -28,8 +28,7 @@ public class PublicGatewayIdentity extends GenericModel {
   protected String crn;
   protected String href;
 
-  protected PublicGatewayIdentity() {
-  }
+  protected PublicGatewayIdentity() { }
 
   /**
    * Gets the id.

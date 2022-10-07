@@ -33,6 +33,8 @@ public class InstanceProfileVCPUArchitecture extends GenericModel {
   protected String type;
   protected String value;
 
+  protected InstanceProfileVCPUArchitecture() { }
+
   /**
    * Gets the xDefault.
    *

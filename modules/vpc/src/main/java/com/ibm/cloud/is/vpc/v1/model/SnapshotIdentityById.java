@@ -24,6 +24,11 @@ public class SnapshotIdentityById extends SnapshotIdentity {
   public static class Builder {
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing SnapshotIdentityById instance.
+     *
+     * @param snapshotIdentityById the instance to initialize the Builder with
+     */
     public Builder(SnapshotIdentity snapshotIdentityById) {
       this.id = snapshotIdentityById.id;
     }
@@ -63,6 +68,8 @@ public class SnapshotIdentityById extends SnapshotIdentity {
       return this;
     }
   }
+
+  protected SnapshotIdentityById() { }
 
   protected SnapshotIdentityById(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.id,

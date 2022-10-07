@@ -27,6 +27,11 @@ public class ListInstanceVolumeAttachmentsOptions extends GenericModel {
   public static class Builder {
     private String instanceId;
 
+    /**
+     * Instantiates a new Builder from an existing ListInstanceVolumeAttachmentsOptions instance.
+     *
+     * @param listInstanceVolumeAttachmentsOptions the instance to initialize the Builder with
+     */
     private Builder(ListInstanceVolumeAttachmentsOptions listInstanceVolumeAttachmentsOptions) {
       this.instanceId = listInstanceVolumeAttachmentsOptions.instanceId;
     }
@@ -66,6 +71,8 @@ public class ListInstanceVolumeAttachmentsOptions extends GenericModel {
       return this;
     }
   }
+
+  protected ListInstanceVolumeAttachmentsOptions() { }
 
   protected ListInstanceVolumeAttachmentsOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.instanceId,

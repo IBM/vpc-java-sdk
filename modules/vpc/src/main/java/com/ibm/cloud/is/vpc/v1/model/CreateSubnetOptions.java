@@ -27,6 +27,11 @@ public class CreateSubnetOptions extends GenericModel {
   public static class Builder {
     private SubnetPrototype subnetPrototype;
 
+    /**
+     * Instantiates a new Builder from an existing CreateSubnetOptions instance.
+     *
+     * @param createSubnetOptions the instance to initialize the Builder with
+     */
     private Builder(CreateSubnetOptions createSubnetOptions) {
       this.subnetPrototype = createSubnetOptions.subnetPrototype;
     }
@@ -66,6 +71,8 @@ public class CreateSubnetOptions extends GenericModel {
       return this;
     }
   }
+
+  protected CreateSubnetOptions() { }
 
   protected CreateSubnetOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.subnetPrototype,

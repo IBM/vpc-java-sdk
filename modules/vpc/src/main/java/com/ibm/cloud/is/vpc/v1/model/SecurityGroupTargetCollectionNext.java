@@ -21,6 +21,8 @@ public class SecurityGroupTargetCollectionNext extends GenericModel {
 
   protected String href;
 
+  protected SecurityGroupTargetCollectionNext() { }
+
   /**
    * Gets the href.
    *

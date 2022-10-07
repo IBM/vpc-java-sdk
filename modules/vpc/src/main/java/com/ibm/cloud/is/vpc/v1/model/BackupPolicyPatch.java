@@ -36,6 +36,11 @@ public class BackupPolicyPatch extends GenericModel {
     private List<String> matchUserTags;
     private String name;
 
+    /**
+     * Instantiates a new Builder from an existing BackupPolicyPatch instance.
+     *
+     * @param backupPolicyPatch the instance to initialize the Builder with
+     */
     private Builder(BackupPolicyPatch backupPolicyPatch) {
       this.matchUserTags = backupPolicyPatch.matchUserTags;
       this.name = backupPolicyPatch.name;
@@ -95,6 +100,8 @@ public class BackupPolicyPatch extends GenericModel {
       return this;
     }
   }
+
+  protected BackupPolicyPatch() { }
 
   protected BackupPolicyPatch(Builder builder) {
     matchUserTags = builder.matchUserTags;

@@ -27,6 +27,11 @@ public class CreateInstanceOptions extends GenericModel {
   public static class Builder {
     private InstancePrototype instancePrototype;
 
+    /**
+     * Instantiates a new Builder from an existing CreateInstanceOptions instance.
+     *
+     * @param createInstanceOptions the instance to initialize the Builder with
+     */
     private Builder(CreateInstanceOptions createInstanceOptions) {
       this.instancePrototype = createInstanceOptions.instancePrototype;
     }
@@ -66,6 +71,8 @@ public class CreateInstanceOptions extends GenericModel {
       return this;
     }
   }
+
+  protected CreateInstanceOptions() { }
 
   protected CreateInstanceOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.instancePrototype,

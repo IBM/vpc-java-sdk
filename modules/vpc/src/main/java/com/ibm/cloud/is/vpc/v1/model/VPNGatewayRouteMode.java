@@ -47,5 +47,7 @@ public class VPNGatewayRouteMode extends VPNGateway {
     String ROUTE = "route";
   }
 
+
+  protected VPNGatewayRouteMode() { }
 }
 

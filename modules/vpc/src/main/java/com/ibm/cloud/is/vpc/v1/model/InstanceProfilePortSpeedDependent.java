@@ -25,5 +25,7 @@ public class InstanceProfilePortSpeedDependent extends InstanceProfilePortSpeed 
     String DEPENDENT = "dependent";
   }
 
+
+  protected InstanceProfilePortSpeedDependent() { }
 }
 

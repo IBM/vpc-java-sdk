@@ -28,8 +28,7 @@ public class VPCIdentity extends GenericModel {
   protected String crn;
   protected String href;
 
-  protected VPCIdentity() {
-  }
+  protected VPCIdentity() { }
 
   /**
    * Gets the id.

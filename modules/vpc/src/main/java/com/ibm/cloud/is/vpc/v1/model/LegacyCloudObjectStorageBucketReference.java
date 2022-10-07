@@ -21,6 +21,8 @@ public class LegacyCloudObjectStorageBucketReference extends GenericModel {
 
   protected String name;
 
+  protected LegacyCloudObjectStorageBucketReference() { }
+
   /**
    * Gets the name.
    *

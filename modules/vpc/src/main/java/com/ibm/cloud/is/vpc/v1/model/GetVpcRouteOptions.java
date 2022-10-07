@@ -29,6 +29,11 @@ public class GetVpcRouteOptions extends GenericModel {
     private String vpcId;
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing GetVpcRouteOptions instance.
+     *
+     * @param getVpcRouteOptions the instance to initialize the Builder with
+     */
     private Builder(GetVpcRouteOptions getVpcRouteOptions) {
       this.vpcId = getVpcRouteOptions.vpcId;
       this.id = getVpcRouteOptions.id;
@@ -82,6 +87,8 @@ public class GetVpcRouteOptions extends GenericModel {
       return this;
     }
   }
+
+  protected GetVpcRouteOptions() { }
 
   protected GetVpcRouteOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.vpcId,

@@ -27,6 +27,11 @@ public class ListIpsecPolicyConnectionsOptions extends GenericModel {
   public static class Builder {
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing ListIpsecPolicyConnectionsOptions instance.
+     *
+     * @param listIpsecPolicyConnectionsOptions the instance to initialize the Builder with
+     */
     private Builder(ListIpsecPolicyConnectionsOptions listIpsecPolicyConnectionsOptions) {
       this.id = listIpsecPolicyConnectionsOptions.id;
     }
@@ -66,6 +71,8 @@ public class ListIpsecPolicyConnectionsOptions extends GenericModel {
       return this;
     }
   }
+
+  protected ListIpsecPolicyConnectionsOptions() { }
 
   protected ListIpsecPolicyConnectionsOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,

@@ -25,5 +25,7 @@ public class InstanceGroupManagerScheduled extends InstanceGroupManager {
     String SCHEDULED = "scheduled";
   }
 
+
+  protected InstanceGroupManagerScheduled() { }
 }
 

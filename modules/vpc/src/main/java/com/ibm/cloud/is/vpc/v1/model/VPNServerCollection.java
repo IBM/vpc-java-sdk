@@ -30,6 +30,8 @@ public class VPNServerCollection extends GenericModel {
   @SerializedName("vpn_servers")
   protected List<VPNServer> vpnServers;
 
+  protected VPNServerCollection() { }
+
   /**
    * Gets the first.
    *

@@ -26,8 +26,7 @@ public class BareMetalServerProfileIdentity extends GenericModel {
   protected String name;
   protected String href;
 
-  protected BareMetalServerProfileIdentity() {
-  }
+  protected BareMetalServerProfileIdentity() { }
 
   /**
    * Gets the name.

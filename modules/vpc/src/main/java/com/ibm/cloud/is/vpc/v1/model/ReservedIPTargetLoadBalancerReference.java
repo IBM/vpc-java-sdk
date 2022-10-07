@@ -25,5 +25,7 @@ public class ReservedIPTargetLoadBalancerReference extends ReservedIPTarget {
     String LOAD_BALANCER = "load_balancer";
   }
 
+
+  protected ReservedIPTargetLoadBalancerReference() { }
 }
 

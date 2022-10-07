@@ -35,6 +35,11 @@ public class UpdateVpcRoutingTableOptions extends GenericModel {
     private Map<String, Object> routingTablePatch;
     private String ifMatch;
 
+    /**
+     * Instantiates a new Builder from an existing UpdateVpcRoutingTableOptions instance.
+     *
+     * @param updateVpcRoutingTableOptions the instance to initialize the Builder with
+     */
     private Builder(UpdateVpcRoutingTableOptions updateVpcRoutingTableOptions) {
       this.vpcId = updateVpcRoutingTableOptions.vpcId;
       this.id = updateVpcRoutingTableOptions.id;
@@ -114,6 +119,8 @@ public class UpdateVpcRoutingTableOptions extends GenericModel {
       return this;
     }
   }
+
+  protected UpdateVpcRoutingTableOptions() { }
 
   protected UpdateVpcRoutingTableOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.vpcId,

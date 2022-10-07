@@ -21,6 +21,8 @@ public class CertificateInstanceReference extends GenericModel {
 
   protected String crn;
 
+  protected CertificateInstanceReference() { }
+
   /**
    * Gets the crn.
    *

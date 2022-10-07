@@ -27,8 +27,7 @@ public class InstancePlacementTargetPatch extends GenericModel {
   protected String crn;
   protected String href;
 
-  protected InstancePlacementTargetPatch() {
-  }
+  protected InstancePlacementTargetPatch() { }
 
   /**
    * Gets the id.

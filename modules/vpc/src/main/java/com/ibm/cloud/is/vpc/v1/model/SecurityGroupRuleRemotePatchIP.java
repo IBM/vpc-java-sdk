@@ -24,6 +24,11 @@ public class SecurityGroupRuleRemotePatchIP extends SecurityGroupRuleRemotePatch
   public static class Builder {
     private String address;
 
+    /**
+     * Instantiates a new Builder from an existing SecurityGroupRuleRemotePatchIP instance.
+     *
+     * @param securityGroupRuleRemotePatchIp the instance to initialize the Builder with
+     */
     public Builder(SecurityGroupRuleRemotePatch securityGroupRuleRemotePatchIp) {
       this.address = securityGroupRuleRemotePatchIp.address;
     }
@@ -63,6 +68,8 @@ public class SecurityGroupRuleRemotePatchIP extends SecurityGroupRuleRemotePatch
       return this;
     }
   }
+
+  protected SecurityGroupRuleRemotePatchIP() { }
 
   protected SecurityGroupRuleRemotePatchIP(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.address,

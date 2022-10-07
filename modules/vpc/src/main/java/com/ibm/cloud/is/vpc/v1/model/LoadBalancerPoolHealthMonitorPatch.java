@@ -21,7 +21,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class LoadBalancerPoolHealthMonitorPatch extends GenericModel {
 
   /**
-   * The protocol type of this load balancer pool health monitor.
+   * The protocol type to use for health checks.
    */
   public interface Type {
     /** http. */
@@ -52,6 +52,11 @@ public class LoadBalancerPoolHealthMonitorPatch extends GenericModel {
     private String type;
     private String urlPath;
 
+    /**
+     * Instantiates a new Builder from an existing LoadBalancerPoolHealthMonitorPatch instance.
+     *
+     * @param loadBalancerPoolHealthMonitorPatch the instance to initialize the Builder with
+     */
     private Builder(LoadBalancerPoolHealthMonitorPatch loadBalancerPoolHealthMonitorPatch) {
       this.delay = loadBalancerPoolHealthMonitorPatch.delay;
       this.maxRetries = loadBalancerPoolHealthMonitorPatch.maxRetries;
@@ -158,6 +163,8 @@ public class LoadBalancerPoolHealthMonitorPatch extends GenericModel {
     }
   }
 
+  protected LoadBalancerPoolHealthMonitorPatch() { }
+
   protected LoadBalancerPoolHealthMonitorPatch(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.delay,
       "delay cannot be null");
@@ -187,7 +194,7 @@ public class LoadBalancerPoolHealthMonitorPatch extends GenericModel {
   /**
    * Gets the delay.
    *
-   * The health check interval in seconds. Interval must be greater than timeout value.
+   * The seconds to wait between health checks.  Must be greater than `timeout`.
    *
    * @return the delay
    */
@@ -209,8 +216,11 @@ public class LoadBalancerPoolHealthMonitorPatch extends GenericModel {
   /**
    * Gets the port.
    *
-   * The health check port number. If specified, this overrides the ports specified in the server member resources.
-   * Specify `null` to remove an existing port value.
+   * The health check port.
+   *
+   * If set, this overrides the pool member port values.
+   *
+   * Specify `null` to remove an existing health check port.
    *
    * @return the port
    */
@@ -221,7 +231,7 @@ public class LoadBalancerPoolHealthMonitorPatch extends GenericModel {
   /**
    * Gets the timeout.
    *
-   * The health check timeout in seconds.
+   * The seconds to wait for a response to a health check.  Must be less than `delay`.
    *
    * @return the timeout
    */
@@ -232,7 +242,7 @@ public class LoadBalancerPoolHealthMonitorPatch extends GenericModel {
   /**
    * Gets the type.
    *
-   * The protocol type of this load balancer pool health monitor.
+   * The protocol type to use for health checks.
    *
    * @return the type
    */
@@ -243,9 +253,9 @@ public class LoadBalancerPoolHealthMonitorPatch extends GenericModel {
   /**
    * Gets the urlPath.
    *
-   * The health check URL path. Applicable only if the health monitor `type` is `http` or
-   * `https`. This value must be in the format of an [origin-form request
-   * target](https://tools.ietf.org/html/rfc7230#section-5.3.1).
+   * The health check URL path. Applicable when `type` is `http` or `https`.
+   *
+   * Must be in the format of an [origin-form request target](https://tools.ietf.org/html/rfc7230#section-5.3.1).
    *
    * @return the urlPath
    */

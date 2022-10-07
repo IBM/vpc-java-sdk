@@ -31,6 +31,11 @@ public class UpdateInstanceTemplateOptions extends GenericModel {
     private String id;
     private Map<String, Object> instanceTemplatePatch;
 
+    /**
+     * Instantiates a new Builder from an existing UpdateInstanceTemplateOptions instance.
+     *
+     * @param updateInstanceTemplateOptions the instance to initialize the Builder with
+     */
     private Builder(UpdateInstanceTemplateOptions updateInstanceTemplateOptions) {
       this.id = updateInstanceTemplateOptions.id;
       this.instanceTemplatePatch = updateInstanceTemplateOptions.instanceTemplatePatch;
@@ -84,6 +89,8 @@ public class UpdateInstanceTemplateOptions extends GenericModel {
       return this;
     }
   }
+
+  protected UpdateInstanceTemplateOptions() { }
 
   protected UpdateInstanceTemplateOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,

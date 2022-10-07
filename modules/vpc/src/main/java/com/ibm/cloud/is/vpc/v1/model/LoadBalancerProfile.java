@@ -32,6 +32,8 @@ public class LoadBalancerProfile extends GenericModel {
   @SerializedName("udp_supported")
   protected LoadBalancerProfileUDPSupported udpSupported;
 
+  protected LoadBalancerProfile() { }
+
   /**
    * Gets the family.
    *

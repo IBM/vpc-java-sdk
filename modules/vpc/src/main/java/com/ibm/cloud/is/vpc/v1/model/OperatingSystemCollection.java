@@ -28,6 +28,8 @@ public class OperatingSystemCollection extends GenericModel {
   @SerializedName("operating_systems")
   protected List<OperatingSystem> operatingSystems;
 
+  protected OperatingSystemCollection() { }
+
   /**
    * Gets the first.
    *

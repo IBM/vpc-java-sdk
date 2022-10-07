@@ -19,8 +19,6 @@ import com.ibm.cloud.is.vpc.v1.model.KeyIdentityById;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import org.testng.annotations.Test;
@@ -47,11 +45,11 @@ public class BareMetalServerInitializationPrototypeTest {
 
     BareMetalServerInitializationPrototype bareMetalServerInitializationPrototypeModel = new BareMetalServerInitializationPrototype.Builder()
       .image(imageIdentityModel)
-      .keys(new java.util.ArrayList<KeyIdentity>(java.util.Arrays.asList(keyIdentityModel)))
+      .keys(java.util.Arrays.asList(keyIdentityModel))
       .userData("testString")
       .build();
     assertEquals(bareMetalServerInitializationPrototypeModel.image(), imageIdentityModel);
-    assertEquals(bareMetalServerInitializationPrototypeModel.keys(), new java.util.ArrayList<KeyIdentity>(java.util.Arrays.asList(keyIdentityModel)));
+    assertEquals(bareMetalServerInitializationPrototypeModel.keys(), java.util.Arrays.asList(keyIdentityModel));
     assertEquals(bareMetalServerInitializationPrototypeModel.userData(), "testString");
 
     String json = TestUtilities.serialize(bareMetalServerInitializationPrototypeModel);

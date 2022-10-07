@@ -56,6 +56,11 @@ public class LoadBalancerListenerPolicyPrototype extends GenericModel {
     private List<LoadBalancerListenerPolicyRulePrototype> rules;
     private LoadBalancerListenerPolicyTargetPrototype target;
 
+    /**
+     * Instantiates a new Builder from an existing LoadBalancerListenerPolicyPrototype instance.
+     *
+     * @param loadBalancerListenerPolicyPrototype the instance to initialize the Builder with
+     */
     private Builder(LoadBalancerListenerPolicyPrototype loadBalancerListenerPolicyPrototype) {
       this.action = loadBalancerListenerPolicyPrototype.action;
       this.name = loadBalancerListenerPolicyPrototype.name;
@@ -162,6 +167,8 @@ public class LoadBalancerListenerPolicyPrototype extends GenericModel {
       return this;
     }
   }
+
+  protected LoadBalancerListenerPolicyPrototype() { }
 
   protected LoadBalancerListenerPolicyPrototype(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.action,

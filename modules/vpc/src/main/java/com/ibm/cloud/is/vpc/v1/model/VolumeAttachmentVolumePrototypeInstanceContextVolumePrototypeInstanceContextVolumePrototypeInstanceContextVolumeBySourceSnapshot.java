@@ -12,6 +12,9 @@
  */
 package com.ibm.cloud.is.vpc.v1.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * VolumeAttachmentVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeBySourceSnapshot.
  */
@@ -25,14 +28,21 @@ public class VolumeAttachmentVolumePrototypeInstanceContextVolumePrototypeInstan
     private Long iops;
     private String name;
     private VolumeProfileIdentity profile;
+    private List<String> userTags;
     private Long capacity;
     private EncryptionKeyIdentity encryptionKey;
     private SnapshotIdentity sourceSnapshot;
 
+    /**
+     * Instantiates a new Builder from an existing VolumeAttachmentVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeBySourceSnapshot instance.
+     *
+     * @param volumeAttachmentVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeBySourceSnapshot the instance to initialize the Builder with
+     */
     public Builder(VolumeAttachmentVolumePrototypeInstanceContextVolumePrototypeInstanceContext volumeAttachmentVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeBySourceSnapshot) {
       this.iops = volumeAttachmentVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeBySourceSnapshot.iops;
       this.name = volumeAttachmentVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeBySourceSnapshot.name;
       this.profile = volumeAttachmentVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeBySourceSnapshot.profile;
+      this.userTags = volumeAttachmentVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeBySourceSnapshot.userTags;
       this.capacity = volumeAttachmentVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeBySourceSnapshot.capacity;
       this.encryptionKey = volumeAttachmentVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeBySourceSnapshot.encryptionKey;
       this.sourceSnapshot = volumeAttachmentVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeBySourceSnapshot.sourceSnapshot;
@@ -65,6 +75,22 @@ public class VolumeAttachmentVolumePrototypeInstanceContextVolumePrototypeInstan
     }
 
     /**
+     * Adds an userTags to userTags.
+     *
+     * @param userTags the new userTags
+     * @return the VolumeAttachmentVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeBySourceSnapshot builder
+     */
+    public Builder addUserTags(String userTags) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(userTags,
+        "userTags cannot be null");
+      if (this.userTags == null) {
+        this.userTags = new ArrayList<String>();
+      }
+      this.userTags.add(userTags);
+      return this;
+    }
+
+    /**
      * Set the iops.
      *
      * @param iops the iops
@@ -94,6 +120,18 @@ public class VolumeAttachmentVolumePrototypeInstanceContextVolumePrototypeInstan
      */
     public Builder profile(VolumeProfileIdentity profile) {
       this.profile = profile;
+      return this;
+    }
+
+    /**
+     * Set the userTags.
+     * Existing userTags will be replaced.
+     *
+     * @param userTags the userTags
+     * @return the VolumeAttachmentVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeBySourceSnapshot builder
+     */
+    public Builder userTags(List<String> userTags) {
+      this.userTags = userTags;
       return this;
     }
 
@@ -131,6 +169,8 @@ public class VolumeAttachmentVolumePrototypeInstanceContextVolumePrototypeInstan
     }
   }
 
+  protected VolumeAttachmentVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeBySourceSnapshot() { }
+
   protected VolumeAttachmentVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeBySourceSnapshot(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.profile,
       "profile cannot be null");
@@ -139,6 +179,7 @@ public class VolumeAttachmentVolumePrototypeInstanceContextVolumePrototypeInstan
     iops = builder.iops;
     name = builder.name;
     profile = builder.profile;
+    userTags = builder.userTags;
     capacity = builder.capacity;
     encryptionKey = builder.encryptionKey;
     sourceSnapshot = builder.sourceSnapshot;

@@ -17,8 +17,6 @@ import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPatch;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -35,10 +33,10 @@ public class BackupPolicyPatchTest {
   @Test
   public void testBackupPolicyPatch() throws Throwable {
     BackupPolicyPatch backupPolicyPatchModel = new BackupPolicyPatch.Builder()
-      .matchUserTags(new java.util.ArrayList<String>(java.util.Arrays.asList("my-daily-backup-policy")))
+      .matchUserTags(java.util.Arrays.asList("my-daily-backup-policy"))
       .name("my-backup-policy")
       .build();
-    assertEquals(backupPolicyPatchModel.matchUserTags(), new java.util.ArrayList<String>(java.util.Arrays.asList("my-daily-backup-policy")));
+    assertEquals(backupPolicyPatchModel.matchUserTags(), java.util.Arrays.asList("my-daily-backup-policy"));
     assertEquals(backupPolicyPatchModel.name(), "my-backup-policy");
 
     String json = TestUtilities.serialize(backupPolicyPatchModel);
@@ -50,7 +48,7 @@ public class BackupPolicyPatchTest {
   @Test
   public void testBackupPolicyPatchAsPatch() throws Throwable {
     BackupPolicyPatch backupPolicyPatchModel = new BackupPolicyPatch.Builder()
-      .matchUserTags(new java.util.ArrayList<String>(java.util.Arrays.asList("my-daily-backup-policy")))
+      .matchUserTags(java.util.Arrays.asList("my-daily-backup-policy"))
       .name("my-backup-policy")
       .build();
 

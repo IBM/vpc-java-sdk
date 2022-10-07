@@ -25,5 +25,7 @@ public class LoadBalancerProfileUDPSupportedDependent extends LoadBalancerProfil
     String DEPENDENT = "dependent";
   }
 
+
+  protected LoadBalancerProfileUDPSupportedDependent() { }
 }
 

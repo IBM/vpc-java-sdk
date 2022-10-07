@@ -30,6 +30,8 @@ public class DedicatedHostProfileDiskQuantity extends GenericModel {
   protected String type;
   protected Long value;
 
+  protected DedicatedHostProfileDiskQuantity() { }
+
   /**
    * Gets the type.
    *

@@ -26,5 +26,7 @@ public class BareMetalServerProfileDiskSizeRange extends BareMetalServerProfileD
     String RANGE = "range";
   }
 
+
+  protected BareMetalServerProfileDiskSizeRange() { }
 }
 

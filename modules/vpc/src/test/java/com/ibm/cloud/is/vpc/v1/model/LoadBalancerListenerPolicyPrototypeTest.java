@@ -19,8 +19,6 @@ import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetPrototypeLo
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import org.testng.annotations.Test;
@@ -55,13 +53,13 @@ public class LoadBalancerListenerPolicyPrototypeTest {
       .action("forward")
       .name("my-policy")
       .priority(Long.valueOf("5"))
-      .rules(new java.util.ArrayList<LoadBalancerListenerPolicyRulePrototype>(java.util.Arrays.asList(loadBalancerListenerPolicyRulePrototypeModel)))
+      .rules(java.util.Arrays.asList(loadBalancerListenerPolicyRulePrototypeModel))
       .target(loadBalancerListenerPolicyTargetPrototypeModel)
       .build();
     assertEquals(loadBalancerListenerPolicyPrototypeModel.action(), "forward");
     assertEquals(loadBalancerListenerPolicyPrototypeModel.name(), "my-policy");
     assertEquals(loadBalancerListenerPolicyPrototypeModel.priority(), Long.valueOf("5"));
-    assertEquals(loadBalancerListenerPolicyPrototypeModel.rules(), new java.util.ArrayList<LoadBalancerListenerPolicyRulePrototype>(java.util.Arrays.asList(loadBalancerListenerPolicyRulePrototypeModel)));
+    assertEquals(loadBalancerListenerPolicyPrototypeModel.rules(), java.util.Arrays.asList(loadBalancerListenerPolicyRulePrototypeModel));
     assertEquals(loadBalancerListenerPolicyPrototypeModel.target(), loadBalancerListenerPolicyTargetPrototypeModel);
 
     String json = TestUtilities.serialize(loadBalancerListenerPolicyPrototypeModel);

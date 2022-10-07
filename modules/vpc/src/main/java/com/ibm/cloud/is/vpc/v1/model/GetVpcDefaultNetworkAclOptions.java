@@ -27,6 +27,11 @@ public class GetVpcDefaultNetworkAclOptions extends GenericModel {
   public static class Builder {
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing GetVpcDefaultNetworkAclOptions instance.
+     *
+     * @param getVpcDefaultNetworkAclOptions the instance to initialize the Builder with
+     */
     private Builder(GetVpcDefaultNetworkAclOptions getVpcDefaultNetworkAclOptions) {
       this.id = getVpcDefaultNetworkAclOptions.id;
     }
@@ -66,6 +71,8 @@ public class GetVpcDefaultNetworkAclOptions extends GenericModel {
       return this;
     }
   }
+
+  protected GetVpcDefaultNetworkAclOptions() { }
 
   protected GetVpcDefaultNetworkAclOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,

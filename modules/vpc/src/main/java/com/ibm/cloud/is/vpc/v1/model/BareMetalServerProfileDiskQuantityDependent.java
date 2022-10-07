@@ -26,5 +26,7 @@ public class BareMetalServerProfileDiskQuantityDependent extends BareMetalServer
     String DEPENDENT = "dependent";
   }
 
+
+  protected BareMetalServerProfileDiskQuantityDependent() { }
 }
 

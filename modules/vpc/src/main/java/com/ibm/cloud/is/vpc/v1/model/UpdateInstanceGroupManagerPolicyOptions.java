@@ -35,6 +35,11 @@ public class UpdateInstanceGroupManagerPolicyOptions extends GenericModel {
     private String id;
     private Map<String, Object> instanceGroupManagerPolicyPatch;
 
+    /**
+     * Instantiates a new Builder from an existing UpdateInstanceGroupManagerPolicyOptions instance.
+     *
+     * @param updateInstanceGroupManagerPolicyOptions the instance to initialize the Builder with
+     */
     private Builder(UpdateInstanceGroupManagerPolicyOptions updateInstanceGroupManagerPolicyOptions) {
       this.instanceGroupId = updateInstanceGroupManagerPolicyOptions.instanceGroupId;
       this.instanceGroupManagerId = updateInstanceGroupManagerPolicyOptions.instanceGroupManagerId;
@@ -116,6 +121,8 @@ public class UpdateInstanceGroupManagerPolicyOptions extends GenericModel {
       return this;
     }
   }
+
+  protected UpdateInstanceGroupManagerPolicyOptions() { }
 
   protected UpdateInstanceGroupManagerPolicyOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.instanceGroupId,

@@ -27,6 +27,11 @@ public class GetDedicatedHostGroupOptions extends GenericModel {
   public static class Builder {
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing GetDedicatedHostGroupOptions instance.
+     *
+     * @param getDedicatedHostGroupOptions the instance to initialize the Builder with
+     */
     private Builder(GetDedicatedHostGroupOptions getDedicatedHostGroupOptions) {
       this.id = getDedicatedHostGroupOptions.id;
     }
@@ -66,6 +71,8 @@ public class GetDedicatedHostGroupOptions extends GenericModel {
       return this;
     }
   }
+
+  protected GetDedicatedHostGroupOptions() { }
 
   protected GetDedicatedHostGroupOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,

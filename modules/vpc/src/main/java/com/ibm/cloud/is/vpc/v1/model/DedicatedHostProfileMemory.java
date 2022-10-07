@@ -45,8 +45,7 @@ public class DedicatedHostProfileMemory extends GenericModel {
   protected Long step;
   protected List<Long> values;
 
-  protected DedicatedHostProfileMemory() {
-  }
+  protected DedicatedHostProfileMemory() { }
 
   /**
    * Gets the type.

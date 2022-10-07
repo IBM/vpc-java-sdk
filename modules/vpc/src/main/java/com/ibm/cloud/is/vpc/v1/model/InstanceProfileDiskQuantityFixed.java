@@ -25,5 +25,7 @@ public class InstanceProfileDiskQuantityFixed extends InstanceProfileDiskQuantit
     String FIXED = "fixed";
   }
 
+
+  protected InstanceProfileDiskQuantityFixed() { }
 }
 

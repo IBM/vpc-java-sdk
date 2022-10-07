@@ -27,6 +27,11 @@ public class DeleteInstanceGroupOptions extends GenericModel {
   public static class Builder {
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing DeleteInstanceGroupOptions instance.
+     *
+     * @param deleteInstanceGroupOptions the instance to initialize the Builder with
+     */
     private Builder(DeleteInstanceGroupOptions deleteInstanceGroupOptions) {
       this.id = deleteInstanceGroupOptions.id;
     }
@@ -66,6 +71,8 @@ public class DeleteInstanceGroupOptions extends GenericModel {
       return this;
     }
   }
+
+  protected DeleteInstanceGroupOptions() { }
 
   protected DeleteInstanceGroupOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,

@@ -25,5 +25,7 @@ public class BareMetalServerProfileDiskSizeEnum extends BareMetalServerProfileDi
     String X_ENUM = "enum";
   }
 
+
+  protected BareMetalServerProfileDiskSizeEnum() { }
 }
 

@@ -24,6 +24,11 @@ public class SubnetPublicGatewayPatchPublicGatewayIdentityByHref extends SubnetP
   public static class Builder {
     private String href;
 
+    /**
+     * Instantiates a new Builder from an existing SubnetPublicGatewayPatchPublicGatewayIdentityByHref instance.
+     *
+     * @param subnetPublicGatewayPatchPublicGatewayIdentityByHref the instance to initialize the Builder with
+     */
     public Builder(SubnetPublicGatewayPatch subnetPublicGatewayPatchPublicGatewayIdentityByHref) {
       this.href = subnetPublicGatewayPatchPublicGatewayIdentityByHref.href;
     }
@@ -63,6 +68,8 @@ public class SubnetPublicGatewayPatchPublicGatewayIdentityByHref extends SubnetP
       return this;
     }
   }
+
+  protected SubnetPublicGatewayPatchPublicGatewayIdentityByHref() { }
 
   protected SubnetPublicGatewayPatchPublicGatewayIdentityByHref(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.href,

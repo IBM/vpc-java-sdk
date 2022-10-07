@@ -42,6 +42,11 @@ public class VolumePatch extends GenericModel {
     private VolumeProfileIdentity profile;
     private List<String> userTags;
 
+    /**
+     * Instantiates a new Builder from an existing VolumePatch instance.
+     *
+     * @param volumePatch the instance to initialize the Builder with
+     */
     private Builder(VolumePatch volumePatch) {
       this.capacity = volumePatch.capacity;
       this.iops = volumePatch.iops;
@@ -137,6 +142,8 @@ public class VolumePatch extends GenericModel {
       return this;
     }
   }
+
+  protected VolumePatch() { }
 
   protected VolumePatch(Builder builder) {
     capacity = builder.capacity;

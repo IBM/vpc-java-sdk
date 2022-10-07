@@ -26,5 +26,7 @@ public class InstanceProfileBandwidthEnum extends InstanceProfileBandwidth {
     String X_ENUM = "enum";
   }
 
+
+  protected InstanceProfileBandwidthEnum() { }
 }
 

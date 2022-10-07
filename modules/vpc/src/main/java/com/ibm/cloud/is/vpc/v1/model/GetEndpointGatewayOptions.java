@@ -27,6 +27,11 @@ public class GetEndpointGatewayOptions extends GenericModel {
   public static class Builder {
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing GetEndpointGatewayOptions instance.
+     *
+     * @param getEndpointGatewayOptions the instance to initialize the Builder with
+     */
     private Builder(GetEndpointGatewayOptions getEndpointGatewayOptions) {
       this.id = getEndpointGatewayOptions.id;
     }
@@ -66,6 +71,8 @@ public class GetEndpointGatewayOptions extends GenericModel {
       return this;
     }
   }
+
+  protected GetEndpointGatewayOptions() { }
 
   protected GetEndpointGatewayOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,

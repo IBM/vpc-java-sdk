@@ -21,13 +21,17 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class LoadBalancerListenerPrototypeLoadBalancerContext extends GenericModel {
 
   /**
-   * The listener protocol. Load balancers in the `network` family support `tcp` and
-   * `udp` (if `udp_supported` is `true`). Load balancers in the `application` family support `tcp`, `http`, and
-   * `https`. Each listener in the load balancer must have a unique `port` and `protocol` combination.
+   * The listener protocol. Each listener in the load balancer must have a unique `port` and `protocol` combination.
    *
-   * The enumerated values for this property are expected to expand in the future. When processing this property, check
-   * for and log unknown values. Optionally halt processing and surface the error, or bypass the listener on which the
-   * unexpected property value was encountered.
+   * Load balancers in the `network` family support `tcp` and `udp` (if `udp_supported` is `true`). Load balancers in
+   * the `application` family support `tcp`, `http` and
+   * `https`.
+   *
+   * Additional restrictions:
+   * - If `default_pool` is set, the pool's protocol must match, or be compatible with
+   *   the listener's protocol. At present, the compatible protocols are `http` and
+   *   `https`.
+   * - If `https_redirect` is set, the protocol must be `http`.
    */
   public interface Protocol {
     /** http. */
@@ -42,10 +46,14 @@ public class LoadBalancerListenerPrototypeLoadBalancerContext extends GenericMod
 
   @SerializedName("accept_proxy_protocol")
   protected Boolean acceptProxyProtocol;
+  @SerializedName("certificate_instance")
+  protected CertificateInstanceIdentity certificateInstance;
   @SerializedName("connection_limit")
   protected Long connectionLimit;
   @SerializedName("default_pool")
   protected LoadBalancerPoolIdentityByName defaultPool;
+  @SerializedName("https_redirect")
+  protected LoadBalancerListenerHTTPSRedirectPrototype httpsRedirect;
   protected Long port;
   @SerializedName("port_max")
   protected Long portMax;
@@ -58,17 +66,26 @@ public class LoadBalancerListenerPrototypeLoadBalancerContext extends GenericMod
    */
   public static class Builder {
     private Boolean acceptProxyProtocol;
+    private CertificateInstanceIdentity certificateInstance;
     private Long connectionLimit;
     private LoadBalancerPoolIdentityByName defaultPool;
+    private LoadBalancerListenerHTTPSRedirectPrototype httpsRedirect;
     private Long port;
     private Long portMax;
     private Long portMin;
     private String protocol;
 
+    /**
+     * Instantiates a new Builder from an existing LoadBalancerListenerPrototypeLoadBalancerContext instance.
+     *
+     * @param loadBalancerListenerPrototypeLoadBalancerContext the instance to initialize the Builder with
+     */
     private Builder(LoadBalancerListenerPrototypeLoadBalancerContext loadBalancerListenerPrototypeLoadBalancerContext) {
       this.acceptProxyProtocol = loadBalancerListenerPrototypeLoadBalancerContext.acceptProxyProtocol;
+      this.certificateInstance = loadBalancerListenerPrototypeLoadBalancerContext.certificateInstance;
       this.connectionLimit = loadBalancerListenerPrototypeLoadBalancerContext.connectionLimit;
       this.defaultPool = loadBalancerListenerPrototypeLoadBalancerContext.defaultPool;
+      this.httpsRedirect = loadBalancerListenerPrototypeLoadBalancerContext.httpsRedirect;
       this.port = loadBalancerListenerPrototypeLoadBalancerContext.port;
       this.portMax = loadBalancerListenerPrototypeLoadBalancerContext.portMax;
       this.portMin = loadBalancerListenerPrototypeLoadBalancerContext.portMin;
@@ -111,6 +128,17 @@ public class LoadBalancerListenerPrototypeLoadBalancerContext extends GenericMod
     }
 
     /**
+     * Set the certificateInstance.
+     *
+     * @param certificateInstance the certificateInstance
+     * @return the LoadBalancerListenerPrototypeLoadBalancerContext builder
+     */
+    public Builder certificateInstance(CertificateInstanceIdentity certificateInstance) {
+      this.certificateInstance = certificateInstance;
+      return this;
+    }
+
+    /**
      * Set the connectionLimit.
      *
      * @param connectionLimit the connectionLimit
@@ -129,6 +157,17 @@ public class LoadBalancerListenerPrototypeLoadBalancerContext extends GenericMod
      */
     public Builder defaultPool(LoadBalancerPoolIdentityByName defaultPool) {
       this.defaultPool = defaultPool;
+      return this;
+    }
+
+    /**
+     * Set the httpsRedirect.
+     *
+     * @param httpsRedirect the httpsRedirect
+     * @return the LoadBalancerListenerPrototypeLoadBalancerContext builder
+     */
+    public Builder httpsRedirect(LoadBalancerListenerHTTPSRedirectPrototype httpsRedirect) {
+      this.httpsRedirect = httpsRedirect;
       return this;
     }
 
@@ -177,12 +216,16 @@ public class LoadBalancerListenerPrototypeLoadBalancerContext extends GenericMod
     }
   }
 
+  protected LoadBalancerListenerPrototypeLoadBalancerContext() { }
+
   protected LoadBalancerListenerPrototypeLoadBalancerContext(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.protocol,
       "protocol cannot be null");
     acceptProxyProtocol = builder.acceptProxyProtocol;
+    certificateInstance = builder.certificateInstance;
     connectionLimit = builder.connectionLimit;
     defaultPool = builder.defaultPool;
+    httpsRedirect = builder.httpsRedirect;
     port = builder.port;
     portMax = builder.portMax;
     portMin = builder.portMin;
@@ -215,6 +258,18 @@ public class LoadBalancerListenerPrototypeLoadBalancerContext extends GenericMod
   }
 
   /**
+   * Gets the certificateInstance.
+   *
+   * The certificate instance to use for SSL termination. The listener must have a
+   * `protocol` of `https`.
+   *
+   * @return the certificateInstance
+   */
+  public CertificateInstanceIdentity certificateInstance() {
+    return certificateInstance;
+  }
+
+  /**
    * Gets the connectionLimit.
    *
    * The connection limit of the listener.
@@ -228,9 +283,11 @@ public class LoadBalancerListenerPrototypeLoadBalancerContext extends GenericMod
   /**
    * Gets the defaultPool.
    *
-   * The default pool for this listener. If specified, the pool's protocol must match the
-   * listener's protocol, or the protocols must be compatible. At present, the compatible
-   * protocols are `http` and `https`.
+   * The default pool for this listener. If specified, the pool must:
+   *   - Belong to this load balancer.
+   *   - Have the same `protocol` as this listener, or have a compatible protocol.
+   *     At present, the compatible protocols are `http` and `https`.
+   *   - Not already be the `default_pool` for another listener.
    *
    * If unspecified, this listener will be created with no default pool, but one may be
    * subsequently set.
@@ -239,6 +296,18 @@ public class LoadBalancerListenerPrototypeLoadBalancerContext extends GenericMod
    */
   public LoadBalancerPoolIdentityByName defaultPool() {
     return defaultPool;
+  }
+
+  /**
+   * Gets the httpsRedirect.
+   *
+   * The target listener that requests will be redirected to. This listener must have a
+   * `protocol` of `http`, and the target listener must have a `protocol` of `https`.
+   *
+   * @return the httpsRedirect
+   */
+  public LoadBalancerListenerHTTPSRedirectPrototype httpsRedirect() {
+    return httpsRedirect;
   }
 
   /**
@@ -294,13 +363,17 @@ public class LoadBalancerListenerPrototypeLoadBalancerContext extends GenericMod
   /**
    * Gets the protocol.
    *
-   * The listener protocol. Load balancers in the `network` family support `tcp` and
-   * `udp` (if `udp_supported` is `true`). Load balancers in the `application` family support `tcp`, `http`, and
-   * `https`. Each listener in the load balancer must have a unique `port` and `protocol` combination.
+   * The listener protocol. Each listener in the load balancer must have a unique `port` and `protocol` combination.
    *
-   * The enumerated values for this property are expected to expand in the future. When processing this property, check
-   * for and log unknown values. Optionally halt processing and surface the error, or bypass the listener on which the
-   * unexpected property value was encountered.
+   * Load balancers in the `network` family support `tcp` and `udp` (if `udp_supported` is `true`). Load balancers in
+   * the `application` family support `tcp`, `http` and
+   * `https`.
+   *
+   * Additional restrictions:
+   * - If `default_pool` is set, the pool's protocol must match, or be compatible with
+   *   the listener's protocol. At present, the compatible protocols are `http` and
+   *   `https`.
+   * - If `https_redirect` is set, the protocol must be `http`.
    *
    * @return the protocol
    */

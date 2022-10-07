@@ -25,5 +25,7 @@ public class InstanceProfileGPUMemoryDependent extends InstanceProfileGPUMemory 
     String DEPENDENT = "dependent";
   }
 
+
+  protected InstanceProfileGPUMemoryDependent() { }
 }
 

@@ -33,8 +33,7 @@ public class SnapshotPrototype extends GenericModel {
   @SerializedName("source_volume")
   protected VolumeIdentity sourceVolume;
 
-  protected SnapshotPrototype() {
-  }
+  protected SnapshotPrototype() { }
 
   /**
    * Gets the name.

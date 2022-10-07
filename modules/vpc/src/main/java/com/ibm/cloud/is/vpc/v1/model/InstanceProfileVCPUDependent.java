@@ -25,5 +25,7 @@ public class InstanceProfileVCPUDependent extends InstanceProfileVCPU {
     String DEPENDENT = "dependent";
   }
 
+
+  protected InstanceProfileVCPUDependent() { }
 }
 

@@ -31,6 +31,11 @@ public class CreateInstanceGroupManagerActionOptions extends GenericModel {
     private String instanceGroupManagerId;
     private InstanceGroupManagerActionPrototype instanceGroupManagerActionPrototype;
 
+    /**
+     * Instantiates a new Builder from an existing CreateInstanceGroupManagerActionOptions instance.
+     *
+     * @param createInstanceGroupManagerActionOptions the instance to initialize the Builder with
+     */
     private Builder(CreateInstanceGroupManagerActionOptions createInstanceGroupManagerActionOptions) {
       this.instanceGroupId = createInstanceGroupManagerActionOptions.instanceGroupId;
       this.instanceGroupManagerId = createInstanceGroupManagerActionOptions.instanceGroupManagerId;
@@ -98,6 +103,8 @@ public class CreateInstanceGroupManagerActionOptions extends GenericModel {
       return this;
     }
   }
+
+  protected CreateInstanceGroupManagerActionOptions() { }
 
   protected CreateInstanceGroupManagerActionOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.instanceGroupId,

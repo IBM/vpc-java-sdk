@@ -25,5 +25,7 @@ public class LoadBalancerProfileRouteModeSupportedFixed extends LoadBalancerProf
     String FIXED = "fixed";
   }
 
+
+  protected LoadBalancerProfileRouteModeSupportedFixed() { }
 }
 

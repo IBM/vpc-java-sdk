@@ -19,5 +19,10 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class ListInstanceTemplatesOptions extends GenericModel {
 
+  /**
+   * Construct a new instance of ListInstanceTemplatesOptions.
+   */
+  public ListInstanceTemplatesOptions() {
+  }
 }
 

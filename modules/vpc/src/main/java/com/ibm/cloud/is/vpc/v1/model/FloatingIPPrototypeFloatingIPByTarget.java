@@ -26,6 +26,11 @@ public class FloatingIPPrototypeFloatingIPByTarget extends FloatingIPPrototype {
     private ResourceGroupIdentity resourceGroup;
     private FloatingIPByTargetNetworkInterfaceIdentity target;
 
+    /**
+     * Instantiates a new Builder from an existing FloatingIPPrototypeFloatingIPByTarget instance.
+     *
+     * @param floatingIpPrototypeFloatingIpByTarget the instance to initialize the Builder with
+     */
     public Builder(FloatingIPPrototype floatingIpPrototypeFloatingIpByTarget) {
       this.name = floatingIpPrototypeFloatingIpByTarget.name;
       this.resourceGroup = floatingIpPrototypeFloatingIpByTarget.resourceGroup;
@@ -89,6 +94,8 @@ public class FloatingIPPrototypeFloatingIPByTarget extends FloatingIPPrototype {
       return this;
     }
   }
+
+  protected FloatingIPPrototypeFloatingIPByTarget() { }
 
   protected FloatingIPPrototypeFloatingIPByTarget(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.target,

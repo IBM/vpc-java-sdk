@@ -21,6 +21,8 @@ public class KeyCollectionNext extends GenericModel {
 
   protected String href;
 
+  protected KeyCollectionNext() { }
+
   /**
    * Gets the href.
    *

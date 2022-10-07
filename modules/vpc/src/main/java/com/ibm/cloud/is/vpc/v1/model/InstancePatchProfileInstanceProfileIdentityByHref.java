@@ -24,6 +24,11 @@ public class InstancePatchProfileInstanceProfileIdentityByHref extends InstanceP
   public static class Builder {
     private String href;
 
+    /**
+     * Instantiates a new Builder from an existing InstancePatchProfileInstanceProfileIdentityByHref instance.
+     *
+     * @param instancePatchProfileInstanceProfileIdentityByHref the instance to initialize the Builder with
+     */
     public Builder(InstancePatchProfile instancePatchProfileInstanceProfileIdentityByHref) {
       this.href = instancePatchProfileInstanceProfileIdentityByHref.href;
     }
@@ -63,6 +68,8 @@ public class InstancePatchProfileInstanceProfileIdentityByHref extends InstanceP
       return this;
     }
   }
+
+  protected InstancePatchProfileInstanceProfileIdentityByHref() { }
 
   protected InstancePatchProfileInstanceProfileIdentityByHref(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.href,

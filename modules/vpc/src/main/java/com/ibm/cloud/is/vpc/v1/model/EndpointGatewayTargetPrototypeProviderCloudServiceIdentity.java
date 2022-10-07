@@ -31,7 +31,6 @@ public class EndpointGatewayTargetPrototypeProviderCloudServiceIdentity extends 
   }
 
 
-  protected EndpointGatewayTargetPrototypeProviderCloudServiceIdentity() {
-  }
+  protected EndpointGatewayTargetPrototypeProviderCloudServiceIdentity() { }
 }
 

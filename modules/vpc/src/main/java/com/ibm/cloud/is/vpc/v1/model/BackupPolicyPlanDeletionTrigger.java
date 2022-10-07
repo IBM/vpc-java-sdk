@@ -25,6 +25,8 @@ public class BackupPolicyPlanDeletionTrigger extends GenericModel {
   @SerializedName("delete_over_count")
   protected Long deleteOverCount;
 
+  protected BackupPolicyPlanDeletionTrigger() { }
+
   /**
    * Gets the deleteAfter.
    *

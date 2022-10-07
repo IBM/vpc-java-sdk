@@ -25,5 +25,7 @@ public class DedicatedHostProfileVCPUEnum extends DedicatedHostProfileVCPU {
     String X_ENUM = "enum";
   }
 
+
+  protected DedicatedHostProfileVCPUEnum() { }
 }
 

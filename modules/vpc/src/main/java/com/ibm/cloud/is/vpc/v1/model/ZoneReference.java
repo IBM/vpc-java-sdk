@@ -22,6 +22,8 @@ public class ZoneReference extends GenericModel {
   protected String href;
   protected String name;
 
+  protected ZoneReference() { }
+
   /**
    * Gets the href.
    *

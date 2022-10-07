@@ -30,6 +30,11 @@ public class VPCPatch extends GenericModel {
   public static class Builder {
     private String name;
 
+    /**
+     * Instantiates a new Builder from an existing VPCPatch instance.
+     *
+     * @param vpcPatch the instance to initialize the Builder with
+     */
     private Builder(VPCPatch vpcPatch) {
       this.name = vpcPatch.name;
     }
@@ -60,6 +65,8 @@ public class VPCPatch extends GenericModel {
       return this;
     }
   }
+
+  protected VPCPatch() { }
 
   protected VPCPatch(Builder builder) {
     name = builder.name;

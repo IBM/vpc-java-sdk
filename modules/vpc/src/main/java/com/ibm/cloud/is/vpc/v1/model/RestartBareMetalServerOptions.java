@@ -27,6 +27,11 @@ public class RestartBareMetalServerOptions extends GenericModel {
   public static class Builder {
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing RestartBareMetalServerOptions instance.
+     *
+     * @param restartBareMetalServerOptions the instance to initialize the Builder with
+     */
     private Builder(RestartBareMetalServerOptions restartBareMetalServerOptions) {
       this.id = restartBareMetalServerOptions.id;
     }
@@ -66,6 +71,8 @@ public class RestartBareMetalServerOptions extends GenericModel {
       return this;
     }
   }
+
+  protected RestartBareMetalServerOptions() { }
 
   protected RestartBareMetalServerOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,

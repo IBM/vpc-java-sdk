@@ -27,6 +27,11 @@ public class EndpointGatewayReservedIPReservedIPPrototypeTargetContext extends E
     private String name;
     private SubnetIdentity subnet;
 
+    /**
+     * Instantiates a new Builder from an existing EndpointGatewayReservedIPReservedIPPrototypeTargetContext instance.
+     *
+     * @param endpointGatewayReservedIpReservedIpPrototypeTargetContext the instance to initialize the Builder with
+     */
     public Builder(EndpointGatewayReservedIP endpointGatewayReservedIpReservedIpPrototypeTargetContext) {
       this.address = endpointGatewayReservedIpReservedIpPrototypeTargetContext.address;
       this.autoDelete = endpointGatewayReservedIpReservedIpPrototypeTargetContext.autoDelete;
@@ -102,6 +107,8 @@ public class EndpointGatewayReservedIPReservedIPPrototypeTargetContext extends E
       return this;
     }
   }
+
+  protected EndpointGatewayReservedIPReservedIPPrototypeTargetContext() { }
 
   protected EndpointGatewayReservedIPReservedIPPrototypeTargetContext(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.subnet,

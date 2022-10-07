@@ -27,6 +27,11 @@ public class DeleteBareMetalServerOptions extends GenericModel {
   public static class Builder {
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing DeleteBareMetalServerOptions instance.
+     *
+     * @param deleteBareMetalServerOptions the instance to initialize the Builder with
+     */
     private Builder(DeleteBareMetalServerOptions deleteBareMetalServerOptions) {
       this.id = deleteBareMetalServerOptions.id;
     }
@@ -66,6 +71,8 @@ public class DeleteBareMetalServerOptions extends GenericModel {
       return this;
     }
   }
+
+  protected DeleteBareMetalServerOptions() { }
 
   protected DeleteBareMetalServerOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,

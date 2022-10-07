@@ -76,6 +76,8 @@ public class NetworkInterface extends GenericModel {
   protected SubnetReference subnet;
   protected String type;
 
+  protected NetworkInterface() { }
+
   /**
    * Gets the allowIpSpoofing.
    *

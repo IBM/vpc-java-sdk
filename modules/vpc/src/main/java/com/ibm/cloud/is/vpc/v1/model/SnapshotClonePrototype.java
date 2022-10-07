@@ -27,6 +27,11 @@ public class SnapshotClonePrototype extends GenericModel {
   public static class Builder {
     private ZoneIdentity zone;
 
+    /**
+     * Instantiates a new Builder from an existing SnapshotClonePrototype instance.
+     *
+     * @param snapshotClonePrototype the instance to initialize the Builder with
+     */
     private Builder(SnapshotClonePrototype snapshotClonePrototype) {
       this.zone = snapshotClonePrototype.zone;
     }
@@ -66,6 +71,8 @@ public class SnapshotClonePrototype extends GenericModel {
       return this;
     }
   }
+
+  protected SnapshotClonePrototype() { }
 
   protected SnapshotClonePrototype(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.zone,

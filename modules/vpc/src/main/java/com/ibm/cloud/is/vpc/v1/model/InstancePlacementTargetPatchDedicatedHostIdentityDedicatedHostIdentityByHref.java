@@ -24,6 +24,11 @@ public class InstancePlacementTargetPatchDedicatedHostIdentityDedicatedHostIdent
   public static class Builder {
     private String href;
 
+    /**
+     * Instantiates a new Builder from an existing InstancePlacementTargetPatchDedicatedHostIdentityDedicatedHostIdentityByHref instance.
+     *
+     * @param instancePlacementTargetPatchDedicatedHostIdentityDedicatedHostIdentityByHref the instance to initialize the Builder with
+     */
     public Builder(InstancePlacementTargetPatchDedicatedHostIdentity instancePlacementTargetPatchDedicatedHostIdentityDedicatedHostIdentityByHref) {
       this.href = instancePlacementTargetPatchDedicatedHostIdentityDedicatedHostIdentityByHref.href;
     }
@@ -63,6 +68,8 @@ public class InstancePlacementTargetPatchDedicatedHostIdentityDedicatedHostIdent
       return this;
     }
   }
+
+  protected InstancePlacementTargetPatchDedicatedHostIdentityDedicatedHostIdentityByHref() { }
 
   protected InstancePlacementTargetPatchDedicatedHostIdentityDedicatedHostIdentityByHref(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.href,

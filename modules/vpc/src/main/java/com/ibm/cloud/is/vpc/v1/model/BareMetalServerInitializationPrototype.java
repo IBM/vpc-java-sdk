@@ -36,6 +36,11 @@ public class BareMetalServerInitializationPrototype extends GenericModel {
     private List<KeyIdentity> keys;
     private String userData;
 
+    /**
+     * Instantiates a new Builder from an existing BareMetalServerInitializationPrototype instance.
+     *
+     * @param bareMetalServerInitializationPrototype the instance to initialize the Builder with
+     */
     private Builder(BareMetalServerInitializationPrototype bareMetalServerInitializationPrototype) {
       this.image = bareMetalServerInitializationPrototype.image;
       this.keys = bareMetalServerInitializationPrototype.keys;
@@ -118,6 +123,8 @@ public class BareMetalServerInitializationPrototype extends GenericModel {
       return this;
     }
   }
+
+  protected BareMetalServerInitializationPrototype() { }
 
   protected BareMetalServerInitializationPrototype(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.image,

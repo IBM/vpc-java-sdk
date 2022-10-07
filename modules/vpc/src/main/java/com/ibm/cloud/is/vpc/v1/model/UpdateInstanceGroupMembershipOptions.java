@@ -33,6 +33,11 @@ public class UpdateInstanceGroupMembershipOptions extends GenericModel {
     private String id;
     private Map<String, Object> instanceGroupMembershipPatch;
 
+    /**
+     * Instantiates a new Builder from an existing UpdateInstanceGroupMembershipOptions instance.
+     *
+     * @param updateInstanceGroupMembershipOptions the instance to initialize the Builder with
+     */
     private Builder(UpdateInstanceGroupMembershipOptions updateInstanceGroupMembershipOptions) {
       this.instanceGroupId = updateInstanceGroupMembershipOptions.instanceGroupId;
       this.id = updateInstanceGroupMembershipOptions.id;
@@ -100,6 +105,8 @@ public class UpdateInstanceGroupMembershipOptions extends GenericModel {
       return this;
     }
   }
+
+  protected UpdateInstanceGroupMembershipOptions() { }
 
   protected UpdateInstanceGroupMembershipOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.instanceGroupId,

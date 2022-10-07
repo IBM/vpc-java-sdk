@@ -27,6 +27,11 @@ public class GetInstanceTemplateOptions extends GenericModel {
   public static class Builder {
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing GetInstanceTemplateOptions instance.
+     *
+     * @param getInstanceTemplateOptions the instance to initialize the Builder with
+     */
     private Builder(GetInstanceTemplateOptions getInstanceTemplateOptions) {
       this.id = getInstanceTemplateOptions.id;
     }
@@ -66,6 +71,8 @@ public class GetInstanceTemplateOptions extends GenericModel {
       return this;
     }
   }
+
+  protected GetInstanceTemplateOptions() { }
 
   protected GetInstanceTemplateOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,

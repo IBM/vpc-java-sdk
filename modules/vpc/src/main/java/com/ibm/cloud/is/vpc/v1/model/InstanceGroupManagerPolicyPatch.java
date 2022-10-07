@@ -51,6 +51,11 @@ public class InstanceGroupManagerPolicyPatch extends GenericModel {
     private Long metricValue;
     private String name;
 
+    /**
+     * Instantiates a new Builder from an existing InstanceGroupManagerPolicyPatch instance.
+     *
+     * @param instanceGroupManagerPolicyPatch the instance to initialize the Builder with
+     */
     private Builder(InstanceGroupManagerPolicyPatch instanceGroupManagerPolicyPatch) {
       this.metricType = instanceGroupManagerPolicyPatch.metricType;
       this.metricValue = instanceGroupManagerPolicyPatch.metricValue;
@@ -105,6 +110,8 @@ public class InstanceGroupManagerPolicyPatch extends GenericModel {
       return this;
     }
   }
+
+  protected InstanceGroupManagerPolicyPatch() { }
 
   protected InstanceGroupManagerPolicyPatch(Builder builder) {
     metricType = builder.metricType;

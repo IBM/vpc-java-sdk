@@ -33,6 +33,11 @@ public class UpdateVpcRouteOptions extends GenericModel {
     private String id;
     private Map<String, Object> routePatch;
 
+    /**
+     * Instantiates a new Builder from an existing UpdateVpcRouteOptions instance.
+     *
+     * @param updateVpcRouteOptions the instance to initialize the Builder with
+     */
     private Builder(UpdateVpcRouteOptions updateVpcRouteOptions) {
       this.vpcId = updateVpcRouteOptions.vpcId;
       this.id = updateVpcRouteOptions.id;
@@ -100,6 +105,8 @@ public class UpdateVpcRouteOptions extends GenericModel {
       return this;
     }
   }
+
+  protected UpdateVpcRouteOptions() { }
 
   protected UpdateVpcRouteOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.vpcId,

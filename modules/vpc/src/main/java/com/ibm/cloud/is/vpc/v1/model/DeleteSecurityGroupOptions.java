@@ -27,6 +27,11 @@ public class DeleteSecurityGroupOptions extends GenericModel {
   public static class Builder {
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing DeleteSecurityGroupOptions instance.
+     *
+     * @param deleteSecurityGroupOptions the instance to initialize the Builder with
+     */
     private Builder(DeleteSecurityGroupOptions deleteSecurityGroupOptions) {
       this.id = deleteSecurityGroupOptions.id;
     }
@@ -66,6 +71,8 @@ public class DeleteSecurityGroupOptions extends GenericModel {
       return this;
     }
   }
+
+  protected DeleteSecurityGroupOptions() { }
 
   protected DeleteSecurityGroupOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,

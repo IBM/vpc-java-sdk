@@ -23,6 +23,8 @@ public class RegionCollection extends GenericModel {
 
   protected List<Region> regions;
 
+  protected RegionCollection() { }
+
   /**
    * Gets the regions.
    *

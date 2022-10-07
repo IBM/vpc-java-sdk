@@ -25,5 +25,7 @@ public class DedicatedHostProfileMemoryRange extends DedicatedHostProfileMemory 
     String RANGE = "range";
   }
 
+
+  protected DedicatedHostProfileMemoryRange() { }
 }
 

@@ -24,6 +24,11 @@ public class SecurityGroupRuleRemotePatchCIDR extends SecurityGroupRuleRemotePat
   public static class Builder {
     private String cidrBlock;
 
+    /**
+     * Instantiates a new Builder from an existing SecurityGroupRuleRemotePatchCIDR instance.
+     *
+     * @param securityGroupRuleRemotePatchCidr the instance to initialize the Builder with
+     */
     public Builder(SecurityGroupRuleRemotePatch securityGroupRuleRemotePatchCidr) {
       this.cidrBlock = securityGroupRuleRemotePatchCidr.cidrBlock;
     }
@@ -63,6 +68,8 @@ public class SecurityGroupRuleRemotePatchCIDR extends SecurityGroupRuleRemotePat
       return this;
     }
   }
+
+  protected SecurityGroupRuleRemotePatchCIDR() { }
 
   protected SecurityGroupRuleRemotePatchCIDR(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.cidrBlock,

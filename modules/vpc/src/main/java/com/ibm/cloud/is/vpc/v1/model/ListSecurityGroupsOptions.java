@@ -37,6 +37,11 @@ public class ListSecurityGroupsOptions extends GenericModel {
     private String vpcCrn;
     private String vpcName;
 
+    /**
+     * Instantiates a new Builder from an existing ListSecurityGroupsOptions instance.
+     *
+     * @param listSecurityGroupsOptions the instance to initialize the Builder with
+     */
     private Builder(ListSecurityGroupsOptions listSecurityGroupsOptions) {
       this.start = listSecurityGroupsOptions.start;
       this.limit = listSecurityGroupsOptions.limit;
@@ -127,6 +132,8 @@ public class ListSecurityGroupsOptions extends GenericModel {
       return this;
     }
   }
+
+  protected ListSecurityGroupsOptions() { }
 
   protected ListSecurityGroupsOptions(Builder builder) {
     start = builder.start;

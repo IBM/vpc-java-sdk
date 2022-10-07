@@ -42,6 +42,11 @@ public class NetworkInterfacePrototype extends GenericModel {
     private List<SecurityGroupIdentity> securityGroups;
     private SubnetIdentity subnet;
 
+    /**
+     * Instantiates a new Builder from an existing NetworkInterfacePrototype instance.
+     *
+     * @param networkInterfacePrototype the instance to initialize the Builder with
+     */
     private Builder(NetworkInterfacePrototype networkInterfacePrototype) {
       this.allowIpSpoofing = networkInterfacePrototype.allowIpSpoofing;
       this.name = networkInterfacePrototype.name;
@@ -146,6 +151,8 @@ public class NetworkInterfacePrototype extends GenericModel {
       return this;
     }
   }
+
+  protected NetworkInterfacePrototype() { }
 
   protected NetworkInterfacePrototype(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.subnet,

@@ -46,6 +46,11 @@ public class CreateBackupPolicyOptions extends GenericModel {
     private List<BackupPolicyPlanPrototype> plans;
     private ResourceGroupIdentity resourceGroup;
 
+    /**
+     * Instantiates a new Builder from an existing CreateBackupPolicyOptions instance.
+     *
+     * @param createBackupPolicyOptions the instance to initialize the Builder with
+     */
     private Builder(CreateBackupPolicyOptions createBackupPolicyOptions) {
       this.matchResourceTypes = createBackupPolicyOptions.matchResourceTypes;
       this.matchUserTags = createBackupPolicyOptions.matchUserTags;
@@ -175,6 +180,8 @@ public class CreateBackupPolicyOptions extends GenericModel {
       return this;
     }
   }
+
+  protected CreateBackupPolicyOptions() { }
 
   protected CreateBackupPolicyOptions(Builder builder) {
     matchResourceTypes = builder.matchResourceTypes;

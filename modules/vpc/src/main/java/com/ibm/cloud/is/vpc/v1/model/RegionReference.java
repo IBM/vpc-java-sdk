@@ -22,6 +22,8 @@ public class RegionReference extends GenericModel {
   protected String href;
   protected String name;
 
+  protected RegionReference() { }
+
   /**
    * Gets the href.
    *

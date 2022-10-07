@@ -33,6 +33,8 @@ public class VolumeStatusReason extends GenericModel {
   @SerializedName("more_info")
   protected String moreInfo;
 
+  protected VolumeStatusReason() { }
+
   /**
    * Gets the code.
    *

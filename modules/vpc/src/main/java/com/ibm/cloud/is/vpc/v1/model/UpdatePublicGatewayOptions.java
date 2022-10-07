@@ -31,6 +31,11 @@ public class UpdatePublicGatewayOptions extends GenericModel {
     private String id;
     private Map<String, Object> publicGatewayPatch;
 
+    /**
+     * Instantiates a new Builder from an existing UpdatePublicGatewayOptions instance.
+     *
+     * @param updatePublicGatewayOptions the instance to initialize the Builder with
+     */
     private Builder(UpdatePublicGatewayOptions updatePublicGatewayOptions) {
       this.id = updatePublicGatewayOptions.id;
       this.publicGatewayPatch = updatePublicGatewayOptions.publicGatewayPatch;
@@ -84,6 +89,8 @@ public class UpdatePublicGatewayOptions extends GenericModel {
       return this;
     }
   }
+
+  protected UpdatePublicGatewayOptions() { }
 
   protected UpdatePublicGatewayOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,

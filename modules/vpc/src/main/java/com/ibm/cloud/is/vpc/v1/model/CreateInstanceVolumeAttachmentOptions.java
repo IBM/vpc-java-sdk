@@ -33,6 +33,11 @@ public class CreateInstanceVolumeAttachmentOptions extends GenericModel {
     private Boolean deleteVolumeOnInstanceDelete;
     private String name;
 
+    /**
+     * Instantiates a new Builder from an existing CreateInstanceVolumeAttachmentOptions instance.
+     *
+     * @param createInstanceVolumeAttachmentOptions the instance to initialize the Builder with
+     */
     private Builder(CreateInstanceVolumeAttachmentOptions createInstanceVolumeAttachmentOptions) {
       this.instanceId = createInstanceVolumeAttachmentOptions.instanceId;
       this.volume = createInstanceVolumeAttachmentOptions.volume;
@@ -110,6 +115,8 @@ public class CreateInstanceVolumeAttachmentOptions extends GenericModel {
       return this;
     }
   }
+
+  protected CreateInstanceVolumeAttachmentOptions() { }
 
   protected CreateInstanceVolumeAttachmentOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.instanceId,

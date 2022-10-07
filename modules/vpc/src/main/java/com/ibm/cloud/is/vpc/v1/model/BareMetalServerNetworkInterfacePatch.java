@@ -42,6 +42,11 @@ public class BareMetalServerNetworkInterfacePatch extends GenericModel {
     private Boolean enableInfrastructureNat;
     private String name;
 
+    /**
+     * Instantiates a new Builder from an existing BareMetalServerNetworkInterfacePatch instance.
+     *
+     * @param bareMetalServerNetworkInterfacePatch the instance to initialize the Builder with
+     */
     private Builder(BareMetalServerNetworkInterfacePatch bareMetalServerNetworkInterfacePatch) {
       this.allowIpSpoofing = bareMetalServerNetworkInterfacePatch.allowIpSpoofing;
       this.allowedVlans = bareMetalServerNetworkInterfacePatch.allowedVlans;
@@ -126,6 +131,8 @@ public class BareMetalServerNetworkInterfacePatch extends GenericModel {
     }
   }
 
+  protected BareMetalServerNetworkInterfacePatch() { }
+
   protected BareMetalServerNetworkInterfacePatch(Builder builder) {
     allowIpSpoofing = builder.allowIpSpoofing;
     allowedVlans = builder.allowedVlans;
@@ -157,8 +164,7 @@ public class BareMetalServerNetworkInterfacePatch extends GenericModel {
   /**
    * Gets the allowedVlans.
    *
-   * Indicates what VLAN IDs (for VLAN type only) can use this physical (PCI type) interface.  A given VLAN can only be
-   * in the `allowed_vlans` array for one PCI type adapter per bare metal server.
+   * Indicates what VLAN IDs (for VLAN type only) can use this physical (PCI type) interface.
    *
    * @return the allowedVlans
    */
@@ -174,10 +180,12 @@ public class BareMetalServerNetworkInterfacePatch extends GenericModel {
    *   - A single floating IP can be assigned to the network interface.
    *
    * If `false`:
-   *   - Packets are passed unmodified to/from the network interface,
+   *   - Packets are passed unchanged to/from the network interface,
    *     allowing the workload to perform any needed NAT operations.
    *   - Multiple floating IPs can be assigned to the network interface.
    *   - `allow_ip_spoofing` must be set to `false`.
+   *
+   * This must be `true` when `interface_type` is `hipersocket`.
    *
    * @return the enableInfrastructureNat
    */

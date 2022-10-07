@@ -27,6 +27,11 @@ public class CreateFloatingIpOptions extends GenericModel {
   public static class Builder {
     private FloatingIPPrototype floatingIpPrototype;
 
+    /**
+     * Instantiates a new Builder from an existing CreateFloatingIpOptions instance.
+     *
+     * @param createFloatingIpOptions the instance to initialize the Builder with
+     */
     private Builder(CreateFloatingIpOptions createFloatingIpOptions) {
       this.floatingIpPrototype = createFloatingIpOptions.floatingIpPrototype;
     }
@@ -66,6 +71,8 @@ public class CreateFloatingIpOptions extends GenericModel {
       return this;
     }
   }
+
+  protected CreateFloatingIpOptions() { }
 
   protected CreateFloatingIpOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.floatingIpPrototype,

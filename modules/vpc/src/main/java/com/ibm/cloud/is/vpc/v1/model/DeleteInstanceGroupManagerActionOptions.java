@@ -31,6 +31,11 @@ public class DeleteInstanceGroupManagerActionOptions extends GenericModel {
     private String instanceGroupManagerId;
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing DeleteInstanceGroupManagerActionOptions instance.
+     *
+     * @param deleteInstanceGroupManagerActionOptions the instance to initialize the Builder with
+     */
     private Builder(DeleteInstanceGroupManagerActionOptions deleteInstanceGroupManagerActionOptions) {
       this.instanceGroupId = deleteInstanceGroupManagerActionOptions.instanceGroupId;
       this.instanceGroupManagerId = deleteInstanceGroupManagerActionOptions.instanceGroupManagerId;
@@ -98,6 +103,8 @@ public class DeleteInstanceGroupManagerActionOptions extends GenericModel {
       return this;
     }
   }
+
+  protected DeleteInstanceGroupManagerActionOptions() { }
 
   protected DeleteInstanceGroupManagerActionOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.instanceGroupId,

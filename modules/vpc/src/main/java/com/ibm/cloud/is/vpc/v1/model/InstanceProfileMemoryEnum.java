@@ -25,5 +25,7 @@ public class InstanceProfileMemoryEnum extends InstanceProfileMemory {
     String X_ENUM = "enum";
   }
 
+
+  protected InstanceProfileMemoryEnum() { }
 }
 

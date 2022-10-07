@@ -33,8 +33,7 @@ public class InstanceGroupManagerActionPrototype extends GenericModel {
   @SerializedName("cron_spec")
   protected String cronSpec;
 
-  protected InstanceGroupManagerActionPrototype() {
-  }
+  protected InstanceGroupManagerActionPrototype() { }
 
   /**
    * Gets the name.

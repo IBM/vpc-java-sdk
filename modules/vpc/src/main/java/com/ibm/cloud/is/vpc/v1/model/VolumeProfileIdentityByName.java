@@ -24,6 +24,11 @@ public class VolumeProfileIdentityByName extends VolumeProfileIdentity {
   public static class Builder {
     private String name;
 
+    /**
+     * Instantiates a new Builder from an existing VolumeProfileIdentityByName instance.
+     *
+     * @param volumeProfileIdentityByName the instance to initialize the Builder with
+     */
     public Builder(VolumeProfileIdentity volumeProfileIdentityByName) {
       this.name = volumeProfileIdentityByName.name;
     }
@@ -63,6 +68,8 @@ public class VolumeProfileIdentityByName extends VolumeProfileIdentity {
       return this;
     }
   }
+
+  protected VolumeProfileIdentityByName() { }
 
   protected VolumeProfileIdentityByName(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.name,

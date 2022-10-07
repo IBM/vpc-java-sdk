@@ -29,6 +29,11 @@ public class GetInstanceGroupMembershipOptions extends GenericModel {
     private String instanceGroupId;
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing GetInstanceGroupMembershipOptions instance.
+     *
+     * @param getInstanceGroupMembershipOptions the instance to initialize the Builder with
+     */
     private Builder(GetInstanceGroupMembershipOptions getInstanceGroupMembershipOptions) {
       this.instanceGroupId = getInstanceGroupMembershipOptions.instanceGroupId;
       this.id = getInstanceGroupMembershipOptions.id;
@@ -82,6 +87,8 @@ public class GetInstanceGroupMembershipOptions extends GenericModel {
       return this;
     }
   }
+
+  protected GetInstanceGroupMembershipOptions() { }
 
   protected GetInstanceGroupMembershipOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.instanceGroupId,

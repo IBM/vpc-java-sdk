@@ -28,6 +28,8 @@ public class BareMetalServerCPU extends GenericModel {
   @SerializedName("threads_per_core")
   protected Long threadsPerCore;
 
+  protected BareMetalServerCPU() { }
+
   /**
    * Gets the architecture.
    *

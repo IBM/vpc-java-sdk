@@ -45,8 +45,7 @@ public class BareMetalServerProfileMemory extends GenericModel {
   protected Long step;
   protected List<Long> values;
 
-  protected BareMetalServerProfileMemory() {
-  }
+  protected BareMetalServerProfileMemory() { }
 
   /**
    * Gets the type.

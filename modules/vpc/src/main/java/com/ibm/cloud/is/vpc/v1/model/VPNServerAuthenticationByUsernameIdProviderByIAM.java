@@ -37,6 +37,11 @@ public class VPNServerAuthenticationByUsernameIdProviderByIAM extends VPNServerA
   public static class Builder {
     private String providerType;
 
+    /**
+     * Instantiates a new Builder from an existing VPNServerAuthenticationByUsernameIdProviderByIAM instance.
+     *
+     * @param vpnServerAuthenticationByUsernameIdProviderByIam the instance to initialize the Builder with
+     */
     public Builder(VPNServerAuthenticationByUsernameIdProvider vpnServerAuthenticationByUsernameIdProviderByIam) {
       this.providerType = vpnServerAuthenticationByUsernameIdProviderByIam.providerType;
     }
@@ -76,6 +81,8 @@ public class VPNServerAuthenticationByUsernameIdProviderByIAM extends VPNServerA
       return this;
     }
   }
+
+  protected VPNServerAuthenticationByUsernameIdProviderByIAM() { }
 
   protected VPNServerAuthenticationByUsernameIdProviderByIAM(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.providerType,

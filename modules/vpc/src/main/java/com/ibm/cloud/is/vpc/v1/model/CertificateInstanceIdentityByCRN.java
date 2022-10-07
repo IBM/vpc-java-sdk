@@ -24,6 +24,11 @@ public class CertificateInstanceIdentityByCRN extends CertificateInstanceIdentit
   public static class Builder {
     private String crn;
 
+    /**
+     * Instantiates a new Builder from an existing CertificateInstanceIdentityByCRN instance.
+     *
+     * @param certificateInstanceIdentityByCrn the instance to initialize the Builder with
+     */
     public Builder(CertificateInstanceIdentity certificateInstanceIdentityByCrn) {
       this.crn = certificateInstanceIdentityByCrn.crn;
     }
@@ -63,6 +68,8 @@ public class CertificateInstanceIdentityByCRN extends CertificateInstanceIdentit
       return this;
     }
   }
+
+  protected CertificateInstanceIdentityByCRN() { }
 
   protected CertificateInstanceIdentityByCRN(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.crn,

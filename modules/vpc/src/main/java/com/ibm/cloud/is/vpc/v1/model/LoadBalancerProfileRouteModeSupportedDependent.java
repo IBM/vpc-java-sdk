@@ -25,5 +25,7 @@ public class LoadBalancerProfileRouteModeSupportedDependent extends LoadBalancer
     String DEPENDENT = "dependent";
   }
 
+
+  protected LoadBalancerProfileRouteModeSupportedDependent() { }
 }
 

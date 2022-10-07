@@ -30,6 +30,11 @@ public class KeyPatch extends GenericModel {
   public static class Builder {
     private String name;
 
+    /**
+     * Instantiates a new Builder from an existing KeyPatch instance.
+     *
+     * @param keyPatch the instance to initialize the Builder with
+     */
     private Builder(KeyPatch keyPatch) {
       this.name = keyPatch.name;
     }
@@ -60,6 +65,8 @@ public class KeyPatch extends GenericModel {
       return this;
     }
   }
+
+  protected KeyPatch() { }
 
   protected KeyPatch(Builder builder) {
     name = builder.name;

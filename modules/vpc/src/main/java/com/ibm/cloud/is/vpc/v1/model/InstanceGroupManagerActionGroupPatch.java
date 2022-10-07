@@ -29,6 +29,11 @@ public class InstanceGroupManagerActionGroupPatch extends GenericModel {
   public static class Builder {
     private Long membershipCount;
 
+    /**
+     * Instantiates a new Builder from an existing InstanceGroupManagerActionGroupPatch instance.
+     *
+     * @param instanceGroupManagerActionGroupPatch the instance to initialize the Builder with
+     */
     private Builder(InstanceGroupManagerActionGroupPatch instanceGroupManagerActionGroupPatch) {
       this.membershipCount = instanceGroupManagerActionGroupPatch.membershipCount;
     }
@@ -59,6 +64,8 @@ public class InstanceGroupManagerActionGroupPatch extends GenericModel {
       return this;
     }
   }
+
+  protected InstanceGroupManagerActionGroupPatch() { }
 
   protected InstanceGroupManagerActionGroupPatch(Builder builder) {
     membershipCount = builder.membershipCount;

@@ -27,6 +27,11 @@ public class LoadBalancerLoggingDatapath extends GenericModel {
   public static class Builder {
     private Boolean active;
 
+    /**
+     * Instantiates a new Builder from an existing LoadBalancerLoggingDatapath instance.
+     *
+     * @param loadBalancerLoggingDatapath the instance to initialize the Builder with
+     */
     private Builder(LoadBalancerLoggingDatapath loadBalancerLoggingDatapath) {
       this.active = loadBalancerLoggingDatapath.active;
     }
@@ -66,6 +71,8 @@ public class LoadBalancerLoggingDatapath extends GenericModel {
       return this;
     }
   }
+
+  protected LoadBalancerLoggingDatapath() { }
 
   protected LoadBalancerLoggingDatapath(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.active,

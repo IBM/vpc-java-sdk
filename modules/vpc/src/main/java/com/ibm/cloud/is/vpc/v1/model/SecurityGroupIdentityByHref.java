@@ -24,6 +24,11 @@ public class SecurityGroupIdentityByHref extends SecurityGroupIdentity {
   public static class Builder {
     private String href;
 
+    /**
+     * Instantiates a new Builder from an existing SecurityGroupIdentityByHref instance.
+     *
+     * @param securityGroupIdentityByHref the instance to initialize the Builder with
+     */
     public Builder(SecurityGroupIdentity securityGroupIdentityByHref) {
       this.href = securityGroupIdentityByHref.href;
     }
@@ -63,6 +68,8 @@ public class SecurityGroupIdentityByHref extends SecurityGroupIdentity {
       return this;
     }
   }
+
+  protected SecurityGroupIdentityByHref() { }
 
   protected SecurityGroupIdentityByHref(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.href,

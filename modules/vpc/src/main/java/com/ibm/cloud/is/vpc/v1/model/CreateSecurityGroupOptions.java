@@ -36,6 +36,11 @@ public class CreateSecurityGroupOptions extends GenericModel {
     private ResourceGroupIdentity resourceGroup;
     private List<SecurityGroupRulePrototype> rules;
 
+    /**
+     * Instantiates a new Builder from an existing CreateSecurityGroupOptions instance.
+     *
+     * @param createSecurityGroupOptions the instance to initialize the Builder with
+     */
     private Builder(CreateSecurityGroupOptions createSecurityGroupOptions) {
       this.vpc = createSecurityGroupOptions.vpc;
       this.name = createSecurityGroupOptions.name;
@@ -129,6 +134,8 @@ public class CreateSecurityGroupOptions extends GenericModel {
     }
   }
 
+  protected CreateSecurityGroupOptions() { }
+
   protected CreateSecurityGroupOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.vpc,
       "vpc cannot be null");
@@ -150,7 +157,7 @@ public class CreateSecurityGroupOptions extends GenericModel {
   /**
    * Gets the vpc.
    *
-   * The VPC this security group is to be a part of.
+   * The VPC this security group will reside in.
    *
    * @return the vpc
    */

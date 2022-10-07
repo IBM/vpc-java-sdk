@@ -35,6 +35,8 @@ public class BareMetalServerProfileOSArchitecture extends GenericModel {
   protected String type;
   protected List<String> values;
 
+  protected BareMetalServerProfileOSArchitecture() { }
+
   /**
    * Gets the xDefault.
    *

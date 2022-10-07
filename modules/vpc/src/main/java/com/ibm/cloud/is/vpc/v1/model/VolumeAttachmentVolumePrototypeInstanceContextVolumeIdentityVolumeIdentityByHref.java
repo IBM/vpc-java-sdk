@@ -24,6 +24,11 @@ public class VolumeAttachmentVolumePrototypeInstanceContextVolumeIdentityVolumeI
   public static class Builder {
     private String href;
 
+    /**
+     * Instantiates a new Builder from an existing VolumeAttachmentVolumePrototypeInstanceContextVolumeIdentityVolumeIdentityByHref instance.
+     *
+     * @param volumeAttachmentVolumePrototypeInstanceContextVolumeIdentityVolumeIdentityByHref the instance to initialize the Builder with
+     */
     public Builder(VolumeAttachmentVolumePrototypeInstanceContextVolumeIdentity volumeAttachmentVolumePrototypeInstanceContextVolumeIdentityVolumeIdentityByHref) {
       this.href = volumeAttachmentVolumePrototypeInstanceContextVolumeIdentityVolumeIdentityByHref.href;
     }
@@ -63,6 +68,8 @@ public class VolumeAttachmentVolumePrototypeInstanceContextVolumeIdentityVolumeI
       return this;
     }
   }
+
+  protected VolumeAttachmentVolumePrototypeInstanceContextVolumeIdentityVolumeIdentityByHref() { }
 
   protected VolumeAttachmentVolumePrototypeInstanceContextVolumeIdentityVolumeIdentityByHref(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.href,

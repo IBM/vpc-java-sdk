@@ -41,8 +41,7 @@ public class InstancePlacementTarget extends GenericModel {
   @SerializedName("resource_type")
   protected String resourceType;
 
-  protected InstancePlacementTarget() {
-  }
+  protected InstancePlacementTarget() { }
 
   /**
    * Gets the crn.
@@ -58,7 +57,7 @@ public class InstancePlacementTarget extends GenericModel {
   /**
    * Gets the deleted.
    *
-   * If present, this property indicates the referenced resource has been deleted and provides
+   * If present, this property indicates the referenced resource has been deleted, and provides
    * some supplementary information.
    *
    * @return the deleted

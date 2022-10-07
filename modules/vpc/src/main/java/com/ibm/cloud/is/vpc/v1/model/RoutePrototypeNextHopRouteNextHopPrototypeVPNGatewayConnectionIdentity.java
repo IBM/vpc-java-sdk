@@ -22,7 +22,6 @@ package com.ibm.cloud.is.vpc.v1.model;
 public class RoutePrototypeNextHopRouteNextHopPrototypeVPNGatewayConnectionIdentity extends RoutePrototypeNextHop {
 
 
-  protected RoutePrototypeNextHopRouteNextHopPrototypeVPNGatewayConnectionIdentity() {
-  }
+  protected RoutePrototypeNextHopRouteNextHopPrototypeVPNGatewayConnectionIdentity() { }
 }
 

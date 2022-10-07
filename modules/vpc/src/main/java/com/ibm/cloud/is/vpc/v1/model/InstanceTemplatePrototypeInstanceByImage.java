@@ -43,6 +43,11 @@ public class InstanceTemplatePrototypeInstanceByImage extends InstanceTemplatePr
     private NetworkInterfacePrototype primaryNetworkInterface;
     private ZoneIdentity zone;
 
+    /**
+     * Instantiates a new Builder from an existing InstanceTemplatePrototypeInstanceByImage instance.
+     *
+     * @param instanceTemplatePrototypeInstanceByImage the instance to initialize the Builder with
+     */
     public Builder(InstanceTemplatePrototype instanceTemplatePrototypeInstanceByImage) {
       this.availabilityPolicy = instanceTemplatePrototypeInstanceByImage.availabilityPolicy;
       this.defaultTrustedProfile = instanceTemplatePrototypeInstanceByImage.defaultTrustedProfile;
@@ -329,6 +334,8 @@ public class InstanceTemplatePrototypeInstanceByImage extends InstanceTemplatePr
       return this;
     }
   }
+
+  protected InstanceTemplatePrototypeInstanceByImage() { }
 
   protected InstanceTemplatePrototypeInstanceByImage(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.image,

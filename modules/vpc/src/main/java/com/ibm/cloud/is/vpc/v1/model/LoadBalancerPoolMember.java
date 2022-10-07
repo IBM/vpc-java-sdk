@@ -35,7 +35,11 @@ public class LoadBalancerPoolMember extends GenericModel {
   }
 
   /**
-   * The provisioning status of this member.
+   * The provisioning status of this member
+   *
+   * The enumerated values for this property are expected to expand in the future. When processing this property, check
+   * for and log unknown values. Optionally halt processing and surface the error, or bypass the pool member on which
+   * the unexpected property value was encountered.
    */
   public interface ProvisioningStatus {
     /** active. */
@@ -46,8 +50,6 @@ public class LoadBalancerPoolMember extends GenericModel {
     String DELETE_PENDING = "delete_pending";
     /** failed. */
     String FAILED = "failed";
-    /** maintenance_pending. */
-    String MAINTENANCE_PENDING = "maintenance_pending";
     /** update_pending. */
     String UPDATE_PENDING = "update_pending";
   }
@@ -62,6 +64,8 @@ public class LoadBalancerPoolMember extends GenericModel {
   protected String provisioningStatus;
   protected LoadBalancerPoolMemberTarget target;
   protected Long weight;
+
+  protected LoadBalancerPoolMember() { }
 
   /**
    * Gets the createdAt.
@@ -126,7 +130,11 @@ public class LoadBalancerPoolMember extends GenericModel {
   /**
    * Gets the provisioningStatus.
    *
-   * The provisioning status of this member.
+   * The provisioning status of this member
+   *
+   * The enumerated values for this property are expected to expand in the future. When processing this property, check
+   * for and log unknown values. Optionally halt processing and surface the error, or bypass the pool member on which
+   * the unexpected property value was encountered.
    *
    * @return the provisioningStatus
    */

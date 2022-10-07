@@ -41,6 +41,11 @@ public class CreateKeyOptions extends GenericModel {
     private ResourceGroupIdentity resourceGroup;
     private String type;
 
+    /**
+     * Instantiates a new Builder from an existing CreateKeyOptions instance.
+     *
+     * @param createKeyOptions the instance to initialize the Builder with
+     */
     private Builder(CreateKeyOptions createKeyOptions) {
       this.publicKey = createKeyOptions.publicKey;
       this.name = createKeyOptions.name;
@@ -116,6 +121,8 @@ public class CreateKeyOptions extends GenericModel {
       return this;
     }
   }
+
+  protected CreateKeyOptions() { }
 
   protected CreateKeyOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.publicKey,

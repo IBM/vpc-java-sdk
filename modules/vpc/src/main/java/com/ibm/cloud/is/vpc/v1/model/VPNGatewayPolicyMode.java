@@ -47,5 +47,7 @@ public class VPNGatewayPolicyMode extends VPNGateway {
     String POLICY = "policy";
   }
 
+
+  protected VPNGatewayPolicyMode() { }
 }
 

@@ -29,6 +29,11 @@ public class DeleteLoadBalancerPoolOptions extends GenericModel {
     private String loadBalancerId;
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing DeleteLoadBalancerPoolOptions instance.
+     *
+     * @param deleteLoadBalancerPoolOptions the instance to initialize the Builder with
+     */
     private Builder(DeleteLoadBalancerPoolOptions deleteLoadBalancerPoolOptions) {
       this.loadBalancerId = deleteLoadBalancerPoolOptions.loadBalancerId;
       this.id = deleteLoadBalancerPoolOptions.id;
@@ -82,6 +87,8 @@ public class DeleteLoadBalancerPoolOptions extends GenericModel {
       return this;
     }
   }
+
+  protected DeleteLoadBalancerPoolOptions() { }
 
   protected DeleteLoadBalancerPoolOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.loadBalancerId,

@@ -21,6 +21,8 @@ public class ReservedIPCollectionEndpointGatewayContextNext extends GenericModel
 
   protected String href;
 
+  protected ReservedIPCollectionEndpointGatewayContextNext() { }
+
   /**
    * Gets the href.
    *

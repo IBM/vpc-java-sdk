@@ -39,6 +39,8 @@ public class InstanceAvailabilityPolicy extends GenericModel {
   @SerializedName("host_failure")
   protected String hostFailure;
 
+  protected InstanceAvailabilityPolicy() { }
+
   /**
    * Gets the hostFailure.
    *

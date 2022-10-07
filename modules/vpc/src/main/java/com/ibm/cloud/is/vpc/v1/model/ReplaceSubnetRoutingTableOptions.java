@@ -29,6 +29,11 @@ public class ReplaceSubnetRoutingTableOptions extends GenericModel {
     private String id;
     private RoutingTableIdentity routingTableIdentity;
 
+    /**
+     * Instantiates a new Builder from an existing ReplaceSubnetRoutingTableOptions instance.
+     *
+     * @param replaceSubnetRoutingTableOptions the instance to initialize the Builder with
+     */
     private Builder(ReplaceSubnetRoutingTableOptions replaceSubnetRoutingTableOptions) {
       this.id = replaceSubnetRoutingTableOptions.id;
       this.routingTableIdentity = replaceSubnetRoutingTableOptions.routingTableIdentity;
@@ -82,6 +87,8 @@ public class ReplaceSubnetRoutingTableOptions extends GenericModel {
       return this;
     }
   }
+
+  protected ReplaceSubnetRoutingTableOptions() { }
 
   protected ReplaceSubnetRoutingTableOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,

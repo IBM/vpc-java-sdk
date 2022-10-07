@@ -29,6 +29,8 @@ public class InstanceGroupManagerActionsCollection extends GenericModel {
   @SerializedName("total_count")
   protected Long totalCount;
 
+  protected InstanceGroupManagerActionsCollection() { }
+
   /**
    * Gets the actions.
    *

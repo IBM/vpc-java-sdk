@@ -27,6 +27,11 @@ public class GetBackupPolicyOptions extends GenericModel {
   public static class Builder {
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing GetBackupPolicyOptions instance.
+     *
+     * @param getBackupPolicyOptions the instance to initialize the Builder with
+     */
     private Builder(GetBackupPolicyOptions getBackupPolicyOptions) {
       this.id = getBackupPolicyOptions.id;
     }
@@ -66,6 +71,8 @@ public class GetBackupPolicyOptions extends GenericModel {
       return this;
     }
   }
+
+  protected GetBackupPolicyOptions() { }
 
   protected GetBackupPolicyOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,

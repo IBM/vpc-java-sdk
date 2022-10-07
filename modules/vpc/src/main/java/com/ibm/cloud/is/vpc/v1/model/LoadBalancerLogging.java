@@ -15,7 +15,7 @@ package com.ibm.cloud.is.vpc.v1.model;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * The logging configuration for this load balancer.
+ * LoadBalancerLogging.
  */
 public class LoadBalancerLogging extends GenericModel {
 
@@ -27,6 +27,11 @@ public class LoadBalancerLogging extends GenericModel {
   public static class Builder {
     private LoadBalancerLoggingDatapath datapath;
 
+    /**
+     * Instantiates a new Builder from an existing LoadBalancerLogging instance.
+     *
+     * @param loadBalancerLogging the instance to initialize the Builder with
+     */
     private Builder(LoadBalancerLogging loadBalancerLogging) {
       this.datapath = loadBalancerLogging.datapath;
     }
@@ -57,6 +62,8 @@ public class LoadBalancerLogging extends GenericModel {
       return this;
     }
   }
+
+  protected LoadBalancerLogging() { }
 
   protected LoadBalancerLogging(Builder builder) {
     datapath = builder.datapath;

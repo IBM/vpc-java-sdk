@@ -25,5 +25,7 @@ public class DedicatedHostProfileVCPUFixed extends DedicatedHostProfileVCPU {
     String FIXED = "fixed";
   }
 
+
+  protected DedicatedHostProfileVCPUFixed() { }
 }
 

@@ -29,6 +29,11 @@ public class ListBareMetalServerNetworkInterfaceFloatingIpsOptions extends Gener
     private String bareMetalServerId;
     private String networkInterfaceId;
 
+    /**
+     * Instantiates a new Builder from an existing ListBareMetalServerNetworkInterfaceFloatingIpsOptions instance.
+     *
+     * @param listBareMetalServerNetworkInterfaceFloatingIpsOptions the instance to initialize the Builder with
+     */
     private Builder(ListBareMetalServerNetworkInterfaceFloatingIpsOptions listBareMetalServerNetworkInterfaceFloatingIpsOptions) {
       this.bareMetalServerId = listBareMetalServerNetworkInterfaceFloatingIpsOptions.bareMetalServerId;
       this.networkInterfaceId = listBareMetalServerNetworkInterfaceFloatingIpsOptions.networkInterfaceId;
@@ -82,6 +87,8 @@ public class ListBareMetalServerNetworkInterfaceFloatingIpsOptions extends Gener
       return this;
     }
   }
+
+  protected ListBareMetalServerNetworkInterfaceFloatingIpsOptions() { }
 
   protected ListBareMetalServerNetworkInterfaceFloatingIpsOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.bareMetalServerId,

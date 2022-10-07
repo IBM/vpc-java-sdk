@@ -26,6 +26,8 @@ public class VolumeCollection extends GenericModel {
   protected VolumeCollectionNext next;
   protected List<Volume> volumes;
 
+  protected VolumeCollection() { }
+
   /**
    * Gets the first.
    *

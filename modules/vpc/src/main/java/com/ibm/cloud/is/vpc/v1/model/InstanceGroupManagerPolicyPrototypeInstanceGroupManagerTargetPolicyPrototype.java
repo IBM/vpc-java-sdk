@@ -49,6 +49,11 @@ public class InstanceGroupManagerPolicyPrototypeInstanceGroupManagerTargetPolicy
     private Long metricValue;
     private String policyType;
 
+    /**
+     * Instantiates a new Builder from an existing InstanceGroupManagerPolicyPrototypeInstanceGroupManagerTargetPolicyPrototype instance.
+     *
+     * @param instanceGroupManagerPolicyPrototypeInstanceGroupManagerTargetPolicyPrototype the instance to initialize the Builder with
+     */
     public Builder(InstanceGroupManagerPolicyPrototype instanceGroupManagerPolicyPrototypeInstanceGroupManagerTargetPolicyPrototype) {
       this.name = instanceGroupManagerPolicyPrototypeInstanceGroupManagerTargetPolicyPrototype.name;
       this.metricType = instanceGroupManagerPolicyPrototypeInstanceGroupManagerTargetPolicyPrototype.metricType;
@@ -128,6 +133,8 @@ public class InstanceGroupManagerPolicyPrototypeInstanceGroupManagerTargetPolicy
       return this;
     }
   }
+
+  protected InstanceGroupManagerPolicyPrototypeInstanceGroupManagerTargetPolicyPrototype() { }
 
   protected InstanceGroupManagerPolicyPrototypeInstanceGroupManagerTargetPolicyPrototype(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.metricType,

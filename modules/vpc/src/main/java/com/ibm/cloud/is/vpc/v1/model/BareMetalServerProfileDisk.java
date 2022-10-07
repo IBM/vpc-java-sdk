@@ -25,6 +25,8 @@ public class BareMetalServerProfileDisk extends GenericModel {
   @SerializedName("supported_interface_types")
   protected BareMetalServerProfileDiskSupportedInterfaces supportedInterfaceTypes;
 
+  protected BareMetalServerProfileDisk() { }
+
   /**
    * Gets the quantity.
    *

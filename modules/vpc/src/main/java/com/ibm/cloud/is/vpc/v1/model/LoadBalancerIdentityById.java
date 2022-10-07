@@ -24,6 +24,11 @@ public class LoadBalancerIdentityById extends LoadBalancerIdentity {
   public static class Builder {
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing LoadBalancerIdentityById instance.
+     *
+     * @param loadBalancerIdentityById the instance to initialize the Builder with
+     */
     public Builder(LoadBalancerIdentity loadBalancerIdentityById) {
       this.id = loadBalancerIdentityById.id;
     }
@@ -63,6 +68,8 @@ public class LoadBalancerIdentityById extends LoadBalancerIdentity {
       return this;
     }
   }
+
+  protected LoadBalancerIdentityById() { }
 
   protected LoadBalancerIdentityById(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.id,

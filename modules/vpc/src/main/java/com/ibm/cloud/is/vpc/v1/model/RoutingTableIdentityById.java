@@ -24,6 +24,11 @@ public class RoutingTableIdentityById extends RoutingTableIdentity {
   public static class Builder {
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing RoutingTableIdentityById instance.
+     *
+     * @param routingTableIdentityById the instance to initialize the Builder with
+     */
     public Builder(RoutingTableIdentity routingTableIdentityById) {
       this.id = routingTableIdentityById.id;
     }
@@ -63,6 +68,8 @@ public class RoutingTableIdentityById extends RoutingTableIdentity {
       return this;
     }
   }
+
+  protected RoutingTableIdentityById() { }
 
   protected RoutingTableIdentityById(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.id,

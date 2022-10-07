@@ -18,8 +18,6 @@ import com.ibm.cloud.is.vpc.v1.model.RoutingTablePatch;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -41,13 +39,13 @@ public class RoutingTablePatchTest {
     assertEquals(resourceFilterModel.resourceType(), "vpn_server");
 
     RoutingTablePatch routingTablePatchModel = new RoutingTablePatch.Builder()
-      .acceptRoutesFrom(new java.util.ArrayList<ResourceFilter>(java.util.Arrays.asList(resourceFilterModel)))
+      .acceptRoutesFrom(java.util.Arrays.asList(resourceFilterModel))
       .name("my-routing-table-2")
       .routeDirectLinkIngress(true)
       .routeTransitGatewayIngress(true)
       .routeVpcZoneIngress(true)
       .build();
-    assertEquals(routingTablePatchModel.acceptRoutesFrom(), new java.util.ArrayList<ResourceFilter>(java.util.Arrays.asList(resourceFilterModel)));
+    assertEquals(routingTablePatchModel.acceptRoutesFrom(), java.util.Arrays.asList(resourceFilterModel));
     assertEquals(routingTablePatchModel.name(), "my-routing-table-2");
     assertEquals(routingTablePatchModel.routeDirectLinkIngress(), Boolean.valueOf(true));
     assertEquals(routingTablePatchModel.routeTransitGatewayIngress(), Boolean.valueOf(true));
@@ -69,7 +67,7 @@ public class RoutingTablePatchTest {
       .build();
 
     RoutingTablePatch routingTablePatchModel = new RoutingTablePatch.Builder()
-      .acceptRoutesFrom(new java.util.ArrayList<ResourceFilter>(java.util.Arrays.asList(resourceFilterModel)))
+      .acceptRoutesFrom(java.util.Arrays.asList(resourceFilterModel))
       .name("my-routing-table-2")
       .routeDirectLinkIngress(true)
       .routeTransitGatewayIngress(true)

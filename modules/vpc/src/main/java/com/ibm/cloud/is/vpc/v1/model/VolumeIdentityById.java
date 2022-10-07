@@ -24,6 +24,11 @@ public class VolumeIdentityById extends VolumeIdentity {
   public static class Builder {
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing VolumeIdentityById instance.
+     *
+     * @param volumeIdentityById the instance to initialize the Builder with
+     */
     public Builder(VolumeIdentity volumeIdentityById) {
       this.id = volumeIdentityById.id;
     }
@@ -63,6 +68,8 @@ public class VolumeIdentityById extends VolumeIdentity {
       return this;
     }
   }
+
+  protected VolumeIdentityById() { }
 
   protected VolumeIdentityById(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.id,

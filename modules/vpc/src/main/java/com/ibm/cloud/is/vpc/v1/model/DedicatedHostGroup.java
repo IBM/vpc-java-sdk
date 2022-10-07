@@ -62,6 +62,8 @@ public class DedicatedHostGroup extends GenericModel {
   protected List<InstanceProfileReference> supportedInstanceProfiles;
   protected ZoneReference zone;
 
+  protected DedicatedHostGroup() { }
+
   /**
    * Gets the xClass.
    *

@@ -31,6 +31,11 @@ public class ListBareMetalServerNetworkInterfacesOptions extends GenericModel {
     private String start;
     private Long limit;
 
+    /**
+     * Instantiates a new Builder from an existing ListBareMetalServerNetworkInterfacesOptions instance.
+     *
+     * @param listBareMetalServerNetworkInterfacesOptions the instance to initialize the Builder with
+     */
     private Builder(ListBareMetalServerNetworkInterfacesOptions listBareMetalServerNetworkInterfacesOptions) {
       this.bareMetalServerId = listBareMetalServerNetworkInterfacesOptions.bareMetalServerId;
       this.start = listBareMetalServerNetworkInterfacesOptions.start;
@@ -94,6 +99,8 @@ public class ListBareMetalServerNetworkInterfacesOptions extends GenericModel {
       return this;
     }
   }
+
+  protected ListBareMetalServerNetworkInterfacesOptions() { }
 
   protected ListBareMetalServerNetworkInterfacesOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.bareMetalServerId,

@@ -45,6 +45,11 @@ public class ListBareMetalServersOptions extends GenericModel {
     private String networkInterfacesSubnetCrn;
     private String networkInterfacesSubnetName;
 
+    /**
+     * Instantiates a new Builder from an existing ListBareMetalServersOptions instance.
+     *
+     * @param listBareMetalServersOptions the instance to initialize the Builder with
+     */
     private Builder(ListBareMetalServersOptions listBareMetalServersOptions) {
       this.start = listBareMetalServersOptions.start;
       this.limit = listBareMetalServersOptions.limit;
@@ -183,6 +188,8 @@ public class ListBareMetalServersOptions extends GenericModel {
       return this;
     }
   }
+
+  protected ListBareMetalServersOptions() { }
 
   protected ListBareMetalServersOptions(Builder builder) {
     start = builder.start;

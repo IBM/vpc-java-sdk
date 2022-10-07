@@ -20,7 +20,9 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class CreateBareMetalServerConsoleAccessTokenOptions extends GenericModel {
 
   /**
-   * The bare metal server console type for which this token may be used.
+   * The bare metal server console type for which this token may be used
+   *
+   * Must be `serial` for bare metal servers with a `cpu.architecture` of `s390x`.
    */
   public interface ConsoleType {
     /** serial. */
@@ -41,6 +43,11 @@ public class CreateBareMetalServerConsoleAccessTokenOptions extends GenericModel
     private String consoleType;
     private Boolean force;
 
+    /**
+     * Instantiates a new Builder from an existing CreateBareMetalServerConsoleAccessTokenOptions instance.
+     *
+     * @param createBareMetalServerConsoleAccessTokenOptions the instance to initialize the Builder with
+     */
     private Builder(CreateBareMetalServerConsoleAccessTokenOptions createBareMetalServerConsoleAccessTokenOptions) {
       this.bareMetalServerId = createBareMetalServerConsoleAccessTokenOptions.bareMetalServerId;
       this.consoleType = createBareMetalServerConsoleAccessTokenOptions.consoleType;
@@ -107,6 +114,8 @@ public class CreateBareMetalServerConsoleAccessTokenOptions extends GenericModel
     }
   }
 
+  protected CreateBareMetalServerConsoleAccessTokenOptions() { }
+
   protected CreateBareMetalServerConsoleAccessTokenOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.bareMetalServerId,
       "bareMetalServerId cannot be empty");
@@ -140,7 +149,9 @@ public class CreateBareMetalServerConsoleAccessTokenOptions extends GenericModel
   /**
    * Gets the consoleType.
    *
-   * The bare metal server console type for which this token may be used.
+   * The bare metal server console type for which this token may be used
+   *
+   * Must be `serial` for bare metal servers with a `cpu.architecture` of `s390x`.
    *
    * @return the consoleType
    */

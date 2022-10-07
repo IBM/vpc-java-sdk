@@ -27,8 +27,7 @@ public class FloatingIPTargetPatch extends GenericModel {
   protected String id;
   protected String href;
 
-  protected FloatingIPTargetPatch() {
-  }
+  protected FloatingIPTargetPatch() { }
 
   /**
    * Gets the id.

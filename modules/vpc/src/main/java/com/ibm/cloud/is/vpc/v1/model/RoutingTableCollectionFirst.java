@@ -21,6 +21,8 @@ public class RoutingTableCollectionFirst extends GenericModel {
 
   protected String href;
 
+  protected RoutingTableCollectionFirst() { }
+
   /**
    * Gets the href.
    *

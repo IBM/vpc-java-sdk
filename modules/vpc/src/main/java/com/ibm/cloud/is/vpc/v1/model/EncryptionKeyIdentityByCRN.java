@@ -24,6 +24,11 @@ public class EncryptionKeyIdentityByCRN extends EncryptionKeyIdentity {
   public static class Builder {
     private String crn;
 
+    /**
+     * Instantiates a new Builder from an existing EncryptionKeyIdentityByCRN instance.
+     *
+     * @param encryptionKeyIdentityByCrn the instance to initialize the Builder with
+     */
     public Builder(EncryptionKeyIdentity encryptionKeyIdentityByCrn) {
       this.crn = encryptionKeyIdentityByCrn.crn;
     }
@@ -63,6 +68,8 @@ public class EncryptionKeyIdentityByCRN extends EncryptionKeyIdentity {
       return this;
     }
   }
+
+  protected EncryptionKeyIdentityByCRN() { }
 
   protected EncryptionKeyIdentityByCRN(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.crn,

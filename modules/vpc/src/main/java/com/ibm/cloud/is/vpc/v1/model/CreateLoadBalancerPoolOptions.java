@@ -89,6 +89,11 @@ public class CreateLoadBalancerPoolOptions extends GenericModel {
     private String proxyProtocol;
     private LoadBalancerPoolSessionPersistencePrototype sessionPersistence;
 
+    /**
+     * Instantiates a new Builder from an existing CreateLoadBalancerPoolOptions instance.
+     *
+     * @param createLoadBalancerPoolOptions the instance to initialize the Builder with
+     */
     private Builder(CreateLoadBalancerPoolOptions createLoadBalancerPoolOptions) {
       this.loadBalancerId = createLoadBalancerPoolOptions.loadBalancerId;
       this.algorithm = createLoadBalancerPoolOptions.algorithm;
@@ -235,6 +240,8 @@ public class CreateLoadBalancerPoolOptions extends GenericModel {
       return this;
     }
   }
+
+  protected CreateLoadBalancerPoolOptions() { }
 
   protected CreateLoadBalancerPoolOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.loadBalancerId,

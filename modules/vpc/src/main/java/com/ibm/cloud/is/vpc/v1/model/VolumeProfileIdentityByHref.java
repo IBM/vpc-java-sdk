@@ -24,6 +24,11 @@ public class VolumeProfileIdentityByHref extends VolumeProfileIdentity {
   public static class Builder {
     private String href;
 
+    /**
+     * Instantiates a new Builder from an existing VolumeProfileIdentityByHref instance.
+     *
+     * @param volumeProfileIdentityByHref the instance to initialize the Builder with
+     */
     public Builder(VolumeProfileIdentity volumeProfileIdentityByHref) {
       this.href = volumeProfileIdentityByHref.href;
     }
@@ -63,6 +68,8 @@ public class VolumeProfileIdentityByHref extends VolumeProfileIdentity {
       return this;
     }
   }
+
+  protected VolumeProfileIdentityByHref() { }
 
   protected VolumeProfileIdentityByHref(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.href,

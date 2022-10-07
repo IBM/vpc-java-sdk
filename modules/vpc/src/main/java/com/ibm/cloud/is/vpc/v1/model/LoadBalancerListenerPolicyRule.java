@@ -35,7 +35,11 @@ public class LoadBalancerListenerPolicyRule extends GenericModel {
   }
 
   /**
-   * The provisioning status of this rule.
+   * The provisioning status of this rule
+   *
+   * The enumerated values for this property are expected to expand in the future. When processing this property, check
+   * for and log unknown values. Optionally halt processing and surface the error, or bypass the rule on which the
+   * unexpected property value was encountered.
    */
   public interface ProvisioningStatus {
     /** active. */
@@ -46,8 +50,6 @@ public class LoadBalancerListenerPolicyRule extends GenericModel {
     String DELETE_PENDING = "delete_pending";
     /** failed. */
     String FAILED = "failed";
-    /** maintenance_pending. */
-    String MAINTENANCE_PENDING = "maintenance_pending";
     /** update_pending. */
     String UPDATE_PENDING = "update_pending";
   }
@@ -80,6 +82,8 @@ public class LoadBalancerListenerPolicyRule extends GenericModel {
   protected String provisioningStatus;
   protected String type;
   protected String value;
+
+  protected LoadBalancerListenerPolicyRule() { }
 
   /**
    * Gets the condition.
@@ -146,7 +150,11 @@ public class LoadBalancerListenerPolicyRule extends GenericModel {
   /**
    * Gets the provisioningStatus.
    *
-   * The provisioning status of this rule.
+   * The provisioning status of this rule
+   *
+   * The enumerated values for this property are expected to expand in the future. When processing this property, check
+   * for and log unknown values. Optionally halt processing and surface the error, or bypass the rule on which the
+   * unexpected property value was encountered.
    *
    * @return the provisioningStatus
    */

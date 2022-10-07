@@ -33,6 +33,11 @@ public class LoadBalancerListenerHTTPSRedirectPatch extends GenericModel {
     private LoadBalancerListenerIdentity listener;
     private String uri;
 
+    /**
+     * Instantiates a new Builder from an existing LoadBalancerListenerHTTPSRedirectPatch instance.
+     *
+     * @param loadBalancerListenerHttpsRedirectPatch the instance to initialize the Builder with
+     */
     private Builder(LoadBalancerListenerHTTPSRedirectPatch loadBalancerListenerHttpsRedirectPatch) {
       this.httpStatusCode = loadBalancerListenerHttpsRedirectPatch.httpStatusCode;
       this.listener = loadBalancerListenerHttpsRedirectPatch.listener;
@@ -87,6 +92,8 @@ public class LoadBalancerListenerHTTPSRedirectPatch extends GenericModel {
       return this;
     }
   }
+
+  protected LoadBalancerListenerHTTPSRedirectPatch() { }
 
   protected LoadBalancerListenerHTTPSRedirectPatch(Builder builder) {
     httpStatusCode = builder.httpStatusCode;

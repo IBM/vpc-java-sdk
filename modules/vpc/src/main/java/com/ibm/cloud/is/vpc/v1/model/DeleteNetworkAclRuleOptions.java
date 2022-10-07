@@ -29,6 +29,11 @@ public class DeleteNetworkAclRuleOptions extends GenericModel {
     private String networkAclId;
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing DeleteNetworkAclRuleOptions instance.
+     *
+     * @param deleteNetworkAclRuleOptions the instance to initialize the Builder with
+     */
     private Builder(DeleteNetworkAclRuleOptions deleteNetworkAclRuleOptions) {
       this.networkAclId = deleteNetworkAclRuleOptions.networkAclId;
       this.id = deleteNetworkAclRuleOptions.id;
@@ -82,6 +87,8 @@ public class DeleteNetworkAclRuleOptions extends GenericModel {
       return this;
     }
   }
+
+  protected DeleteNetworkAclRuleOptions() { }
 
   protected DeleteNetworkAclRuleOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.networkAclId,

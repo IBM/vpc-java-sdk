@@ -27,6 +27,11 @@ public class GetImageOptions extends GenericModel {
   public static class Builder {
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing GetImageOptions instance.
+     *
+     * @param getImageOptions the instance to initialize the Builder with
+     */
     private Builder(GetImageOptions getImageOptions) {
       this.id = getImageOptions.id;
     }
@@ -66,6 +71,8 @@ public class GetImageOptions extends GenericModel {
       return this;
     }
   }
+
+  protected GetImageOptions() { }
 
   protected GetImageOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,

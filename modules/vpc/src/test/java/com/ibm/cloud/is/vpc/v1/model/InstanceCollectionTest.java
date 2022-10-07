@@ -13,6 +13,7 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.ibm.cloud.is.vpc.v1.model.CatalogOfferingVersionReference;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostGroupReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostReference;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostReferenceDeleted;
@@ -20,6 +21,7 @@ import com.ibm.cloud.is.vpc.v1.model.ImageReference;
 import com.ibm.cloud.is.vpc.v1.model.ImageReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.Instance;
 import com.ibm.cloud.is.vpc.v1.model.InstanceAvailabilityPolicy;
+import com.ibm.cloud.is.vpc.v1.model.InstanceCatalogOffering;
 import com.ibm.cloud.is.vpc.v1.model.InstanceCollection;
 import com.ibm.cloud.is.vpc.v1.model.InstanceCollectionFirst;
 import com.ibm.cloud.is.vpc.v1.model.InstanceCollectionNext;
@@ -30,6 +32,7 @@ import com.ibm.cloud.is.vpc.v1.model.InstancePlacementTargetDedicatedHostGroupRe
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileReference;
 import com.ibm.cloud.is.vpc.v1.model.InstanceStatusReason;
 import com.ibm.cloud.is.vpc.v1.model.InstanceVCPU;
+import com.ibm.cloud.is.vpc.v1.model.LifecycleReason;
 import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceInstanceContextReference;
 import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceInstanceContextReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.ReservedIPReference;
@@ -49,8 +52,6 @@ import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import com.ibm.cloud.sdk.core.util.DateUtils;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import org.testng.annotations.Test;

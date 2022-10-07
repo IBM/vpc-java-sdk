@@ -34,8 +34,7 @@ public class InstanceProfilePortSpeed extends GenericModel {
   protected String type;
   protected Long value;
 
-  protected InstanceProfilePortSpeed() {
-  }
+  protected InstanceProfilePortSpeed() { }
 
   /**
    * Gets the type.

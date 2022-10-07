@@ -15,7 +15,9 @@ package com.ibm.cloud.is.vpc.v1.model;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * The rule to insert this rule immediately before. If omitted, this rule will be inserted after all existing rules.
+ * The rule to insert this rule immediately before.
+ *
+ * If unspecified, this rule will be inserted after all existing rules.
  *
  * Classes which extend this class:
  * - NetworkACLRuleBeforePrototypeNetworkACLRuleIdentityById
@@ -26,8 +28,7 @@ public class NetworkACLRuleBeforePrototype extends GenericModel {
   protected String id;
   protected String href;
 
-  protected NetworkACLRuleBeforePrototype() {
-  }
+  protected NetworkACLRuleBeforePrototype() { }
 
   /**
    * Gets the id.

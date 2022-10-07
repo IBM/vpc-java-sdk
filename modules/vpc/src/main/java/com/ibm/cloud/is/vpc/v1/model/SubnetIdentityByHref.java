@@ -24,6 +24,11 @@ public class SubnetIdentityByHref extends SubnetIdentity {
   public static class Builder {
     private String href;
 
+    /**
+     * Instantiates a new Builder from an existing SubnetIdentityByHref instance.
+     *
+     * @param subnetIdentityByHref the instance to initialize the Builder with
+     */
     public Builder(SubnetIdentity subnetIdentityByHref) {
       this.href = subnetIdentityByHref.href;
     }
@@ -63,6 +68,8 @@ public class SubnetIdentityByHref extends SubnetIdentity {
       return this;
     }
   }
+
+  protected SubnetIdentityByHref() { }
 
   protected SubnetIdentityByHref(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.href,

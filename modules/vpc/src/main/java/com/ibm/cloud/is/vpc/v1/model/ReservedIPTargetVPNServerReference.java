@@ -25,5 +25,7 @@ public class ReservedIPTargetVPNServerReference extends ReservedIPTarget {
     String VPN_SERVER = "vpn_server";
   }
 
+
+  protected ReservedIPTargetVPNServerReference() { }
 }
 

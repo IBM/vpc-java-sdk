@@ -30,6 +30,8 @@ public class DedicatedHostCollection extends GenericModel {
   @SerializedName("total_count")
   protected Long totalCount;
 
+  protected DedicatedHostCollection() { }
+
   /**
    * Gets the dedicatedHosts.
    *

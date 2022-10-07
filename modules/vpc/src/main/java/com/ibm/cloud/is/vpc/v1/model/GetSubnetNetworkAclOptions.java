@@ -27,6 +27,11 @@ public class GetSubnetNetworkAclOptions extends GenericModel {
   public static class Builder {
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing GetSubnetNetworkAclOptions instance.
+     *
+     * @param getSubnetNetworkAclOptions the instance to initialize the Builder with
+     */
     private Builder(GetSubnetNetworkAclOptions getSubnetNetworkAclOptions) {
       this.id = getSubnetNetworkAclOptions.id;
     }
@@ -66,6 +71,8 @@ public class GetSubnetNetworkAclOptions extends GenericModel {
       return this;
     }
   }
+
+  protected GetSubnetNetworkAclOptions() { }
 
   protected GetSubnetNetworkAclOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,

@@ -45,8 +45,7 @@ public class InstanceGroupManagerPrototype extends GenericModel {
   @SerializedName("min_membership_count")
   protected Long minMembershipCount;
 
-  protected InstanceGroupManagerPrototype() {
-  }
+  protected InstanceGroupManagerPrototype() { }
 
   /**
    * Gets the managementEnabled.

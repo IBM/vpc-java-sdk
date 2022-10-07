@@ -37,6 +37,8 @@ public class LoadBalancerPoolSessionPersistence extends GenericModel {
   protected String cookieName;
   protected String type;
 
+  protected LoadBalancerPoolSessionPersistence() { }
+
   /**
    * Gets the cookieName.
    *

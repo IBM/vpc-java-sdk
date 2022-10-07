@@ -32,6 +32,8 @@ public class LoadBalancerProfileLoggingSupported extends GenericModel {
   protected String type;
   protected List<String> value;
 
+  protected LoadBalancerProfileLoggingSupported() { }
+
   /**
    * Gets the type.
    *

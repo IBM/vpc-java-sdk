@@ -45,8 +45,7 @@ public class InstanceProfileGPUMemory extends GenericModel {
   protected Long step;
   protected List<Long> values;
 
-  protected InstanceProfileGPUMemory() {
-  }
+  protected InstanceProfileGPUMemory() { }
 
   /**
    * Gets the type.

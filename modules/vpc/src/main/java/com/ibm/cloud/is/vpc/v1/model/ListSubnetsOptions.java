@@ -35,6 +35,11 @@ public class ListSubnetsOptions extends GenericModel {
     private String routingTableId;
     private String routingTableName;
 
+    /**
+     * Instantiates a new Builder from an existing ListSubnetsOptions instance.
+     *
+     * @param listSubnetsOptions the instance to initialize the Builder with
+     */
     private Builder(ListSubnetsOptions listSubnetsOptions) {
       this.start = listSubnetsOptions.start;
       this.limit = listSubnetsOptions.limit;
@@ -113,6 +118,8 @@ public class ListSubnetsOptions extends GenericModel {
       return this;
     }
   }
+
+  protected ListSubnetsOptions() { }
 
   protected ListSubnetsOptions(Builder builder) {
     start = builder.start;

@@ -35,6 +35,8 @@ public class DefaultSecurityGroup extends GenericModel {
   protected List<SecurityGroupTargetReference> targets;
   protected VPCReference vpc;
 
+  protected DefaultSecurityGroup() { }
+
   /**
    * Gets the createdAt.
    *
@@ -129,7 +131,7 @@ public class DefaultSecurityGroup extends GenericModel {
   /**
    * Gets the vpc.
    *
-   * The VPC this security group is a part of.
+   * The VPC this security group resides in.
    *
    * @return the vpc
    */

@@ -33,6 +33,11 @@ public class ListVpcsOptions extends GenericModel {
     private String resourceGroupId;
     private Boolean classicAccess;
 
+    /**
+     * Instantiates a new Builder from an existing ListVpcsOptions instance.
+     *
+     * @param listVpcsOptions the instance to initialize the Builder with
+     */
     private Builder(ListVpcsOptions listVpcsOptions) {
       this.start = listVpcsOptions.start;
       this.limit = listVpcsOptions.limit;
@@ -99,6 +104,8 @@ public class ListVpcsOptions extends GenericModel {
       return this;
     }
   }
+
+  protected ListVpcsOptions() { }
 
   protected ListVpcsOptions(Builder builder) {
     start = builder.start;

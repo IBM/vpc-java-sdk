@@ -24,6 +24,11 @@ public class NetworkInterfaceIPPrototypeReservedIPIdentityReservedIPIdentityByHr
   public static class Builder {
     private String href;
 
+    /**
+     * Instantiates a new Builder from an existing NetworkInterfaceIPPrototypeReservedIPIdentityReservedIPIdentityByHref instance.
+     *
+     * @param networkInterfaceIpPrototypeReservedIpIdentityReservedIpIdentityByHref the instance to initialize the Builder with
+     */
     public Builder(NetworkInterfaceIPPrototypeReservedIPIdentity networkInterfaceIpPrototypeReservedIpIdentityReservedIpIdentityByHref) {
       this.href = networkInterfaceIpPrototypeReservedIpIdentityReservedIpIdentityByHref.href;
     }
@@ -63,6 +68,8 @@ public class NetworkInterfaceIPPrototypeReservedIPIdentityReservedIPIdentityByHr
       return this;
     }
   }
+
+  protected NetworkInterfaceIPPrototypeReservedIPIdentityReservedIPIdentityByHref() { }
 
   protected NetworkInterfaceIPPrototypeReservedIPIdentityReservedIPIdentityByHref(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.href,

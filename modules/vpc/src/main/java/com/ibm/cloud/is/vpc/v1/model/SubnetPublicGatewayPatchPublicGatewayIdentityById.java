@@ -24,6 +24,11 @@ public class SubnetPublicGatewayPatchPublicGatewayIdentityById extends SubnetPub
   public static class Builder {
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing SubnetPublicGatewayPatchPublicGatewayIdentityById instance.
+     *
+     * @param subnetPublicGatewayPatchPublicGatewayIdentityById the instance to initialize the Builder with
+     */
     public Builder(SubnetPublicGatewayPatch subnetPublicGatewayPatchPublicGatewayIdentityById) {
       this.id = subnetPublicGatewayPatchPublicGatewayIdentityById.id;
     }
@@ -63,6 +68,8 @@ public class SubnetPublicGatewayPatchPublicGatewayIdentityById extends SubnetPub
       return this;
     }
   }
+
+  protected SubnetPublicGatewayPatchPublicGatewayIdentityById() { }
 
   protected SubnetPublicGatewayPatchPublicGatewayIdentityById(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.id,

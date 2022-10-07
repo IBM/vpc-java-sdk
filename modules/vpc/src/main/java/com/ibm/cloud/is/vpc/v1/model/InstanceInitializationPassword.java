@@ -25,6 +25,8 @@ public class InstanceInitializationPassword extends GenericModel {
   @SerializedName("encryption_key")
   protected KeyIdentityByFingerprint encryptionKey;
 
+  protected InstanceInitializationPassword() { }
+
   /**
    * Gets the encryptedPassword.
    *

@@ -29,6 +29,11 @@ public class ImagePrototypeImageByFile extends ImagePrototype {
     private ImageFilePrototype file;
     private OperatingSystemIdentity operatingSystem;
 
+    /**
+     * Instantiates a new Builder from an existing ImagePrototypeImageByFile instance.
+     *
+     * @param imagePrototypeImageByFile the instance to initialize the Builder with
+     */
     public Builder(ImagePrototype imagePrototypeImageByFile) {
       this.name = imagePrototypeImageByFile.name;
       this.resourceGroup = imagePrototypeImageByFile.resourceGroup;
@@ -130,6 +135,8 @@ public class ImagePrototypeImageByFile extends ImagePrototype {
       return this;
     }
   }
+
+  protected ImagePrototypeImageByFile() { }
 
   protected ImagePrototypeImageByFile(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.file,

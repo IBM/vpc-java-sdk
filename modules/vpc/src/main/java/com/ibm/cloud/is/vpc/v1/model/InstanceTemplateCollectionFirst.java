@@ -21,6 +21,8 @@ public class InstanceTemplateCollectionFirst extends GenericModel {
 
   protected String href;
 
+  protected InstanceTemplateCollectionFirst() { }
+
   /**
    * Gets the href.
    *

@@ -41,8 +41,7 @@ public class VPNServerAuthentication extends GenericModel {
   protected CertificateInstanceReference clientCa;
   protected String crl;
 
-  protected VPNServerAuthentication() {
-  }
+  protected VPNServerAuthentication() { }
 
   /**
    * Gets the method.

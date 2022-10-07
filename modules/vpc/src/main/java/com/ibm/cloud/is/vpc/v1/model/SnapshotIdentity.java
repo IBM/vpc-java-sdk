@@ -28,8 +28,7 @@ public class SnapshotIdentity extends GenericModel {
   protected String crn;
   protected String href;
 
-  protected SnapshotIdentity() {
-  }
+  protected SnapshotIdentity() { }
 
   /**
    * Gets the id.

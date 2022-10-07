@@ -24,10 +24,15 @@ public class CreateLoadBalancerListenerOptions extends GenericModel {
 
   /**
    * The listener protocol. Each listener in the load balancer must have a unique `port` and `protocol` combination.
+   *
+   * Load balancers in the `network` family support `tcp` and `udp` (if `udp_supported` is `true`). Load balancers in
+   * the `application` family support `tcp`, `http` and
+   * `https`.
+   *
    * Additional restrictions:
-   * - If this load balancer is in the `network` family:
-   *   - The protocol must be `tcp` or `udp` (if `udp_supported` is `true`).
-   *   - If `default_pool` is set, the pool protocol must match.
+   * - If `default_pool` is set, the pool's protocol must match, or be compatible with
+   *   the listener's protocol. At present, the compatible protocols are `http` and
+   *   `https`.
    * - If `https_redirect` is set, the protocol must be `http`.
    */
   public interface Protocol {
@@ -69,6 +74,11 @@ public class CreateLoadBalancerListenerOptions extends GenericModel {
     private Long portMax;
     private Long portMin;
 
+    /**
+     * Instantiates a new Builder from an existing CreateLoadBalancerListenerOptions instance.
+     *
+     * @param createLoadBalancerListenerOptions the instance to initialize the Builder with
+     */
     private Builder(CreateLoadBalancerListenerOptions createLoadBalancerListenerOptions) {
       this.loadBalancerId = createLoadBalancerListenerOptions.loadBalancerId;
       this.protocol = createLoadBalancerListenerOptions.protocol;
@@ -248,6 +258,8 @@ public class CreateLoadBalancerListenerOptions extends GenericModel {
     }
   }
 
+  protected CreateLoadBalancerListenerOptions() { }
+
   protected CreateLoadBalancerListenerOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.loadBalancerId,
       "loadBalancerId cannot be empty");
@@ -290,10 +302,15 @@ public class CreateLoadBalancerListenerOptions extends GenericModel {
    * Gets the protocol.
    *
    * The listener protocol. Each listener in the load balancer must have a unique `port` and `protocol` combination.
+   *
+   * Load balancers in the `network` family support `tcp` and `udp` (if `udp_supported` is `true`). Load balancers in
+   * the `application` family support `tcp`, `http` and
+   * `https`.
+   *
    * Additional restrictions:
-   * - If this load balancer is in the `network` family:
-   *   - The protocol must be `tcp` or `udp` (if `udp_supported` is `true`).
-   *   - If `default_pool` is set, the pool protocol must match.
+   * - If `default_pool` is set, the pool's protocol must match, or be compatible with
+   *   the listener's protocol. At present, the compatible protocols are `http` and
+   *   `https`.
    * - If `https_redirect` is set, the protocol must be `http`.
    *
    * @return the protocol
@@ -321,8 +338,8 @@ public class CreateLoadBalancerListenerOptions extends GenericModel {
   /**
    * Gets the certificateInstance.
    *
-   * The certificate instance used for SSL termination. It is applicable only to `https`
-   * protocol.
+   * The certificate instance to use for SSL termination. The listener must have a
+   * `protocol` of `https`.
    *
    * @return the certificateInstance
    */
@@ -344,12 +361,14 @@ public class CreateLoadBalancerListenerOptions extends GenericModel {
   /**
    * Gets the defaultPool.
    *
-   * The default pool for this listener. The specified pool must:
-   *
-   * - Belong to this load balancer
+   * The default pool for this listener. If specified, the pool must:
+   * - Belong to this load balancer.
    * - Have the same `protocol` as this listener, or have a compatible protocol.
    *   At present, the compatible protocols are `http` and `https`.
    * - Not already be the `default_pool` for another listener.
+   *
+   * If unspecified, this listener will be created with no default pool, but one may be
+   * subsequently set.
    *
    * @return the defaultPool
    */

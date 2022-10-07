@@ -37,6 +37,8 @@ public class VolumeProfile extends GenericModel {
   protected String href;
   protected String name;
 
+  protected VolumeProfile() { }
+
   /**
    * Gets the family.
    *

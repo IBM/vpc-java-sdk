@@ -27,6 +27,11 @@ public class DeleteFlowLogCollectorOptions extends GenericModel {
   public static class Builder {
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing DeleteFlowLogCollectorOptions instance.
+     *
+     * @param deleteFlowLogCollectorOptions the instance to initialize the Builder with
+     */
     private Builder(DeleteFlowLogCollectorOptions deleteFlowLogCollectorOptions) {
       this.id = deleteFlowLogCollectorOptions.id;
     }
@@ -66,6 +71,8 @@ public class DeleteFlowLogCollectorOptions extends GenericModel {
       return this;
     }
   }
+
+  protected DeleteFlowLogCollectorOptions() { }
 
   protected DeleteFlowLogCollectorOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,

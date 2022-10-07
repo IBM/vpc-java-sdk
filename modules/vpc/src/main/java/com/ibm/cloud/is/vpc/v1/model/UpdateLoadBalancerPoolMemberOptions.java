@@ -35,6 +35,11 @@ public class UpdateLoadBalancerPoolMemberOptions extends GenericModel {
     private String id;
     private Map<String, Object> loadBalancerPoolMemberPatch;
 
+    /**
+     * Instantiates a new Builder from an existing UpdateLoadBalancerPoolMemberOptions instance.
+     *
+     * @param updateLoadBalancerPoolMemberOptions the instance to initialize the Builder with
+     */
     private Builder(UpdateLoadBalancerPoolMemberOptions updateLoadBalancerPoolMemberOptions) {
       this.loadBalancerId = updateLoadBalancerPoolMemberOptions.loadBalancerId;
       this.poolId = updateLoadBalancerPoolMemberOptions.poolId;
@@ -116,6 +121,8 @@ public class UpdateLoadBalancerPoolMemberOptions extends GenericModel {
       return this;
     }
   }
+
+  protected UpdateLoadBalancerPoolMemberOptions() { }
 
   protected UpdateLoadBalancerPoolMemberOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.loadBalancerId,

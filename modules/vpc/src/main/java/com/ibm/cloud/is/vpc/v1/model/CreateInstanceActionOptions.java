@@ -43,6 +43,11 @@ public class CreateInstanceActionOptions extends GenericModel {
     private String type;
     private Boolean force;
 
+    /**
+     * Instantiates a new Builder from an existing CreateInstanceActionOptions instance.
+     *
+     * @param createInstanceActionOptions the instance to initialize the Builder with
+     */
     private Builder(CreateInstanceActionOptions createInstanceActionOptions) {
       this.instanceId = createInstanceActionOptions.instanceId;
       this.type = createInstanceActionOptions.type;
@@ -108,6 +113,8 @@ public class CreateInstanceActionOptions extends GenericModel {
       return this;
     }
   }
+
+  protected CreateInstanceActionOptions() { }
 
   protected CreateInstanceActionOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.instanceId,

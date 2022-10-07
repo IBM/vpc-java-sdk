@@ -29,6 +29,11 @@ public class ListKeysOptions extends GenericModel {
     private String start;
     private Long limit;
 
+    /**
+     * Instantiates a new Builder from an existing ListKeysOptions instance.
+     *
+     * @param listKeysOptions the instance to initialize the Builder with
+     */
     private Builder(ListKeysOptions listKeysOptions) {
       this.start = listKeysOptions.start;
       this.limit = listKeysOptions.limit;
@@ -71,6 +76,8 @@ public class ListKeysOptions extends GenericModel {
       return this;
     }
   }
+
+  protected ListKeysOptions() { }
 
   protected ListKeysOptions(Builder builder) {
     start = builder.start;

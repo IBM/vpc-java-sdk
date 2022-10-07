@@ -33,6 +33,11 @@ public class UpdateVpnGatewayConnectionOptions extends GenericModel {
     private String id;
     private Map<String, Object> vpnGatewayConnectionPatch;
 
+    /**
+     * Instantiates a new Builder from an existing UpdateVpnGatewayConnectionOptions instance.
+     *
+     * @param updateVpnGatewayConnectionOptions the instance to initialize the Builder with
+     */
     private Builder(UpdateVpnGatewayConnectionOptions updateVpnGatewayConnectionOptions) {
       this.vpnGatewayId = updateVpnGatewayConnectionOptions.vpnGatewayId;
       this.id = updateVpnGatewayConnectionOptions.id;
@@ -100,6 +105,8 @@ public class UpdateVpnGatewayConnectionOptions extends GenericModel {
       return this;
     }
   }
+
+  protected UpdateVpnGatewayConnectionOptions() { }
 
   protected UpdateVpnGatewayConnectionOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.vpnGatewayId,

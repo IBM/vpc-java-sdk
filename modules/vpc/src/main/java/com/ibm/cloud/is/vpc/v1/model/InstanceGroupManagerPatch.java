@@ -45,6 +45,11 @@ public class InstanceGroupManagerPatch extends GenericModel {
     private Long minMembershipCount;
     private String name;
 
+    /**
+     * Instantiates a new Builder from an existing InstanceGroupManagerPatch instance.
+     *
+     * @param instanceGroupManagerPatch the instance to initialize the Builder with
+     */
     private Builder(InstanceGroupManagerPatch instanceGroupManagerPatch) {
       this.aggregationWindow = instanceGroupManagerPatch.aggregationWindow;
       this.cooldown = instanceGroupManagerPatch.cooldown;
@@ -135,6 +140,8 @@ public class InstanceGroupManagerPatch extends GenericModel {
       return this;
     }
   }
+
+  protected InstanceGroupManagerPatch() { }
 
   protected InstanceGroupManagerPatch(Builder builder) {
     aggregationWindow = builder.aggregationWindow;

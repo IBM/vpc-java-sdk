@@ -45,8 +45,7 @@ public class BareMetalServerProfileBandwidth extends GenericModel {
   protected Long step;
   protected List<Long> values;
 
-  protected BareMetalServerProfileBandwidth() {
-  }
+  protected BareMetalServerProfileBandwidth() { }
 
   /**
    * Gets the type.

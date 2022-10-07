@@ -24,6 +24,11 @@ public class VolumeIdentityByCRN extends VolumeIdentity {
   public static class Builder {
     private String crn;
 
+    /**
+     * Instantiates a new Builder from an existing VolumeIdentityByCRN instance.
+     *
+     * @param volumeIdentityByCrn the instance to initialize the Builder with
+     */
     public Builder(VolumeIdentity volumeIdentityByCrn) {
       this.crn = volumeIdentityByCrn.crn;
     }
@@ -63,6 +68,8 @@ public class VolumeIdentityByCRN extends VolumeIdentity {
       return this;
     }
   }
+
+  protected VolumeIdentityByCRN() { }
 
   protected VolumeIdentityByCRN(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.crn,

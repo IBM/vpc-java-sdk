@@ -25,5 +25,7 @@ public class InstanceProfileGPUEnum extends InstanceProfileGPU {
     String X_ENUM = "enum";
   }
 
+
+  protected InstanceProfileGPUEnum() { }
 }
 

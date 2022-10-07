@@ -30,6 +30,11 @@ public class PublicGatewayPatch extends GenericModel {
   public static class Builder {
     private String name;
 
+    /**
+     * Instantiates a new Builder from an existing PublicGatewayPatch instance.
+     *
+     * @param publicGatewayPatch the instance to initialize the Builder with
+     */
     private Builder(PublicGatewayPatch publicGatewayPatch) {
       this.name = publicGatewayPatch.name;
     }
@@ -60,6 +65,8 @@ public class PublicGatewayPatch extends GenericModel {
       return this;
     }
   }
+
+  protected PublicGatewayPatch() { }
 
   protected PublicGatewayPatch(Builder builder) {
     name = builder.name;

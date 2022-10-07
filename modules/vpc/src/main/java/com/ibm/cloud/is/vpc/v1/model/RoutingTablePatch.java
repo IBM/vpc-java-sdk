@@ -45,6 +45,11 @@ public class RoutingTablePatch extends GenericModel {
     private Boolean routeTransitGatewayIngress;
     private Boolean routeVpcZoneIngress;
 
+    /**
+     * Instantiates a new Builder from an existing RoutingTablePatch instance.
+     *
+     * @param routingTablePatch the instance to initialize the Builder with
+     */
     private Builder(RoutingTablePatch routingTablePatch) {
       this.acceptRoutesFrom = routingTablePatch.acceptRoutesFrom;
       this.name = routingTablePatch.name;
@@ -141,6 +146,8 @@ public class RoutingTablePatch extends GenericModel {
     }
   }
 
+  protected RoutingTablePatch() { }
+
   protected RoutingTablePatch(Builder builder) {
     acceptRoutesFrom = builder.acceptRoutesFrom;
     name = builder.name;
@@ -162,9 +169,9 @@ public class RoutingTablePatch extends GenericModel {
    * Gets the acceptRoutesFrom.
    *
    * The filters specifying the resources that may create routes in this routing table
-   * (replacing any existing filters). All routes learned from resources that match a given filter will be removed when
-   * an existing filter is removed. Therefore, if an empty array is specified, all filters will be removed, resulting in
-   * all learned routes being removed.
+   * (replacing any existing filters). All routes created by resources that match a given filter will be removed when an
+   * existing filter is removed. Therefore, if an empty array is specified, all filters will be removed, resulting in
+   * all routes not directly created by the user being removed.
    *
    * At present, only the `resource_type` filter is permitted, and only the `vpn_server` value is supported, but filter
    * support is expected to expand in the future.

@@ -30,6 +30,8 @@ public class PlacementGroupCollection extends GenericModel {
   @SerializedName("total_count")
   protected Long totalCount;
 
+  protected PlacementGroupCollection() { }
+
   /**
    * Gets the first.
    *

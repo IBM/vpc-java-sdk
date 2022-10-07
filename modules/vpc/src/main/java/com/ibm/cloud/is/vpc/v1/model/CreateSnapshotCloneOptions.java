@@ -29,6 +29,11 @@ public class CreateSnapshotCloneOptions extends GenericModel {
     private String id;
     private String zoneName;
 
+    /**
+     * Instantiates a new Builder from an existing CreateSnapshotCloneOptions instance.
+     *
+     * @param createSnapshotCloneOptions the instance to initialize the Builder with
+     */
     private Builder(CreateSnapshotCloneOptions createSnapshotCloneOptions) {
       this.id = createSnapshotCloneOptions.id;
       this.zoneName = createSnapshotCloneOptions.zoneName;
@@ -82,6 +87,8 @@ public class CreateSnapshotCloneOptions extends GenericModel {
       return this;
     }
   }
+
+  protected CreateSnapshotCloneOptions() { }
 
   protected CreateSnapshotCloneOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,

@@ -35,6 +35,11 @@ public class EndpointGatewayTargetPrototypeProviderInfrastructureServiceIdentity
     private String resourceType;
     private String name;
 
+    /**
+     * Instantiates a new Builder from an existing EndpointGatewayTargetPrototypeProviderInfrastructureServiceIdentityProviderInfrastructureServiceIdentityByName instance.
+     *
+     * @param endpointGatewayTargetPrototypeProviderInfrastructureServiceIdentityProviderInfrastructureServiceIdentityByName the instance to initialize the Builder with
+     */
     public Builder(EndpointGatewayTargetPrototypeProviderInfrastructureServiceIdentity endpointGatewayTargetPrototypeProviderInfrastructureServiceIdentityProviderInfrastructureServiceIdentityByName) {
       this.resourceType = endpointGatewayTargetPrototypeProviderInfrastructureServiceIdentityProviderInfrastructureServiceIdentityByName.resourceType;
       this.name = endpointGatewayTargetPrototypeProviderInfrastructureServiceIdentityProviderInfrastructureServiceIdentityByName.name;
@@ -88,6 +93,8 @@ public class EndpointGatewayTargetPrototypeProviderInfrastructureServiceIdentity
       return this;
     }
   }
+
+  protected EndpointGatewayTargetPrototypeProviderInfrastructureServiceIdentityProviderInfrastructureServiceIdentityByName() { }
 
   protected EndpointGatewayTargetPrototypeProviderInfrastructureServiceIdentityProviderInfrastructureServiceIdentityByName(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.resourceType,

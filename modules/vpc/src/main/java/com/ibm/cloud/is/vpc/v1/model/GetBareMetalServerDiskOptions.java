@@ -29,6 +29,11 @@ public class GetBareMetalServerDiskOptions extends GenericModel {
     private String bareMetalServerId;
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing GetBareMetalServerDiskOptions instance.
+     *
+     * @param getBareMetalServerDiskOptions the instance to initialize the Builder with
+     */
     private Builder(GetBareMetalServerDiskOptions getBareMetalServerDiskOptions) {
       this.bareMetalServerId = getBareMetalServerDiskOptions.bareMetalServerId;
       this.id = getBareMetalServerDiskOptions.id;
@@ -82,6 +87,8 @@ public class GetBareMetalServerDiskOptions extends GenericModel {
       return this;
     }
   }
+
+  protected GetBareMetalServerDiskOptions() { }
 
   protected GetBareMetalServerDiskOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.bareMetalServerId,

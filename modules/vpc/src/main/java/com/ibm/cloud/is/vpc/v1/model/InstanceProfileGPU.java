@@ -45,8 +45,7 @@ public class InstanceProfileGPU extends GenericModel {
   protected Long step;
   protected List<Long> values;
 
-  protected InstanceProfileGPU() {
-  }
+  protected InstanceProfileGPU() { }
 
   /**
    * Gets the type.

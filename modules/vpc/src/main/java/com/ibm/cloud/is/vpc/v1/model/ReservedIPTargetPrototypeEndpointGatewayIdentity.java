@@ -23,7 +23,6 @@ package com.ibm.cloud.is.vpc.v1.model;
 public class ReservedIPTargetPrototypeEndpointGatewayIdentity extends ReservedIPTargetPrototype {
 
 
-  protected ReservedIPTargetPrototypeEndpointGatewayIdentity() {
-  }
+  protected ReservedIPTargetPrototypeEndpointGatewayIdentity() { }
 }
 

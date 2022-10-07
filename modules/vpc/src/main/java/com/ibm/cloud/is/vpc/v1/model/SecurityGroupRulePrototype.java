@@ -36,7 +36,7 @@ public class SecurityGroupRulePrototype extends GenericModel {
   }
 
   /**
-   * The direction of traffic to enforce, either `inbound` or `outbound`.
+   * The direction of traffic to enforce.
    */
   public interface Direction {
     /** inbound. */
@@ -55,6 +55,20 @@ public class SecurityGroupRulePrototype extends GenericModel {
     String IPV4 = "ipv4";
   }
 
+  /**
+   * The protocol to enforce.
+   */
+  public interface Protocol {
+    /** all. */
+    String ALL = "all";
+    /** icmp. */
+    String ICMP = "icmp";
+    /** tcp. */
+    String TCP = "tcp";
+    /** udp. */
+    String UDP = "udp";
+  }
+
   protected String direction;
   @SerializedName("ip_version")
   protected String ipVersion;
@@ -67,13 +81,12 @@ public class SecurityGroupRulePrototype extends GenericModel {
   @SerializedName("port_min")
   protected Long portMin;
 
-  protected SecurityGroupRulePrototype() {
-  }
+  protected SecurityGroupRulePrototype() { }
 
   /**
    * Gets the direction.
    *
-   * The direction of traffic to enforce, either `inbound` or `outbound`.
+   * The direction of traffic to enforce.
    *
    * @return the direction
    */
@@ -108,10 +121,12 @@ public class SecurityGroupRulePrototype extends GenericModel {
   /**
    * Gets the remote.
    *
-   * The IP addresses or security groups from which this rule will allow traffic (or to
-   * which, for outbound rules). Can be specified as an IP address, a CIDR block, or a
-   * security group. If omitted, a CIDR block of `0.0.0.0/0` will be used to allow traffic
-   * from any source (or to any source, for outbound rules).
+   * The IP addresses or security groups from which this rule will allow traffic (or to which,
+   * for outbound rules). Can be specified as an IP address, a CIDR block, or a security group
+   * within the VPC.
+   *
+   * If unspecified, a CIDR block of `0.0.0.0/0` will be used to allow traffic from any source
+   * (or to any destination, for outbound rules).
    *
    * @return the remote
    */
@@ -124,6 +139,8 @@ public class SecurityGroupRulePrototype extends GenericModel {
    *
    * The ICMP traffic code to allow.
    *
+   * If specified, `type` must also be specified.  If unspecified, all codes are allowed.
+   *
    * @return the code
    */
   public Long code() {
@@ -134,6 +151,8 @@ public class SecurityGroupRulePrototype extends GenericModel {
    * Gets the type.
    *
    * The ICMP traffic type to allow.
+   *
+   * If unspecified, all types are allowed.
    *
    * @return the type
    */
@@ -146,6 +165,9 @@ public class SecurityGroupRulePrototype extends GenericModel {
    *
    * The inclusive upper bound of TCP/UDP port range.
    *
+   * If specified, `port_min` must also be specified, and must not be larger. If unspecified, `port_min` must also be
+   * unspecified, allowing traffic on all ports.
+   *
    * @return the portMax
    */
   public Long portMax() {
@@ -155,7 +177,10 @@ public class SecurityGroupRulePrototype extends GenericModel {
   /**
    * Gets the portMin.
    *
-   * The inclusive lower bound of TCP/UDP port range.
+   * The inclusive lower bound of TCP/UDP port range
+   *
+   * If specified, `port_max` must also be specified, and must not be smaller. If unspecified, `port_max` must also be
+   * unspecified, allowing traffic on all ports.
    *
    * @return the portMin
    */

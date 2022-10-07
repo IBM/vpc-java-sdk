@@ -81,6 +81,8 @@ public class VPNServerRoute extends GenericModel {
   @SerializedName("resource_type")
   protected String resourceType;
 
+  protected VPNServerRoute() { }
+
   /**
    * Gets the action.
    *

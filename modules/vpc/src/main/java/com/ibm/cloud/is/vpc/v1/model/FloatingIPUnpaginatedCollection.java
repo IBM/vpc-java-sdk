@@ -25,6 +25,8 @@ public class FloatingIPUnpaginatedCollection extends GenericModel {
   @SerializedName("floating_ips")
   protected List<FloatingIP> floatingIps;
 
+  protected FloatingIPUnpaginatedCollection() { }
+
   /**
    * Gets the floatingIps.
    *

@@ -32,6 +32,11 @@ public class FloatingIPPatch extends GenericModel {
     private String name;
     private FloatingIPTargetPatch target;
 
+    /**
+     * Instantiates a new Builder from an existing FloatingIPPatch instance.
+     *
+     * @param floatingIpPatch the instance to initialize the Builder with
+     */
     private Builder(FloatingIPPatch floatingIpPatch) {
       this.name = floatingIpPatch.name;
       this.target = floatingIpPatch.target;
@@ -74,6 +79,8 @@ public class FloatingIPPatch extends GenericModel {
       return this;
     }
   }
+
+  protected FloatingIPPatch() { }
 
   protected FloatingIPPatch(Builder builder) {
     name = builder.name;

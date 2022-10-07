@@ -23,6 +23,8 @@ public class LoadBalancerProfileReference extends GenericModel {
   protected String href;
   protected String name;
 
+  protected LoadBalancerProfileReference() { }
+
   /**
    * Gets the family.
    *

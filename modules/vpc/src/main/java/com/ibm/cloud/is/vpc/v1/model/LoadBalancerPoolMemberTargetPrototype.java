@@ -30,8 +30,7 @@ public class LoadBalancerPoolMemberTargetPrototype extends GenericModel {
   protected String href;
   protected String address;
 
-  protected LoadBalancerPoolMemberTargetPrototype() {
-  }
+  protected LoadBalancerPoolMemberTargetPrototype() { }
 
   /**
    * Gets the id.

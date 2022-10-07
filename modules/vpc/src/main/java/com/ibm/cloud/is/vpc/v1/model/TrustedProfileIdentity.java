@@ -26,8 +26,7 @@ public class TrustedProfileIdentity extends GenericModel {
   protected String id;
   protected String crn;
 
-  protected TrustedProfileIdentity() {
-  }
+  protected TrustedProfileIdentity() { }
 
   /**
    * Gets the id.

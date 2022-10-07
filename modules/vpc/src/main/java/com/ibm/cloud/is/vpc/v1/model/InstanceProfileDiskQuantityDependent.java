@@ -25,5 +25,7 @@ public class InstanceProfileDiskQuantityDependent extends InstanceProfileDiskQua
     String DEPENDENT = "dependent";
   }
 
+
+  protected InstanceProfileDiskQuantityDependent() { }
 }
 

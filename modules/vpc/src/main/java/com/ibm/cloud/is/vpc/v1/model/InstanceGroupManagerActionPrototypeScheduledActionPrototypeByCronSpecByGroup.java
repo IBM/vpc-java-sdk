@@ -26,6 +26,11 @@ public class InstanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSp
     private String cronSpec;
     private InstanceGroupManagerScheduledActionGroupPrototype group;
 
+    /**
+     * Instantiates a new Builder from an existing InstanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSpecByGroup instance.
+     *
+     * @param instanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSpecByGroup the instance to initialize the Builder with
+     */
     public Builder(InstanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSpec instanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSpecByGroup) {
       this.name = instanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSpecByGroup.name;
       this.cronSpec = instanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSpecByGroup.cronSpec;
@@ -89,6 +94,8 @@ public class InstanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSp
       return this;
     }
   }
+
+  protected InstanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSpecByGroup() { }
 
   protected InstanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSpecByGroup(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.group,

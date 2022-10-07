@@ -71,10 +71,10 @@ public class VPNGateway extends GenericModel {
   protected String resourceType;
   protected String status;
   protected SubnetReference subnet;
+  protected VPCReference vpc;
   protected String mode;
 
-  protected VPNGateway() {
-  }
+  protected VPNGateway() { }
 
   /**
    * Gets the connections.
@@ -193,6 +193,17 @@ public class VPNGateway extends GenericModel {
    */
   public SubnetReference getSubnet() {
     return subnet;
+  }
+
+  /**
+   * Gets the vpc.
+   *
+   * The VPC this VPN gateway resides in.
+   *
+   * @return the vpc
+   */
+  public VPCReference getVpc() {
+    return vpc;
   }
 
   /**

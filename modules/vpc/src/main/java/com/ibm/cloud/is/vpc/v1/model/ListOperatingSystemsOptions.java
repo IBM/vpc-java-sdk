@@ -29,6 +29,11 @@ public class ListOperatingSystemsOptions extends GenericModel {
     private String start;
     private Long limit;
 
+    /**
+     * Instantiates a new Builder from an existing ListOperatingSystemsOptions instance.
+     *
+     * @param listOperatingSystemsOptions the instance to initialize the Builder with
+     */
     private Builder(ListOperatingSystemsOptions listOperatingSystemsOptions) {
       this.start = listOperatingSystemsOptions.start;
       this.limit = listOperatingSystemsOptions.limit;
@@ -71,6 +76,8 @@ public class ListOperatingSystemsOptions extends GenericModel {
       return this;
     }
   }
+
+  protected ListOperatingSystemsOptions() { }
 
   protected ListOperatingSystemsOptions(Builder builder) {
     start = builder.start;

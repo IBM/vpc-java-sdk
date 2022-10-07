@@ -35,6 +35,11 @@ public class CreateVpcAddressPrefixOptions extends GenericModel {
     private Boolean isDefault;
     private String name;
 
+    /**
+     * Instantiates a new Builder from an existing CreateVpcAddressPrefixOptions instance.
+     *
+     * @param createVpcAddressPrefixOptions the instance to initialize the Builder with
+     */
     private Builder(CreateVpcAddressPrefixOptions createVpcAddressPrefixOptions) {
       this.vpcId = createVpcAddressPrefixOptions.vpcId;
       this.cidr = createVpcAddressPrefixOptions.cidr;
@@ -126,6 +131,8 @@ public class CreateVpcAddressPrefixOptions extends GenericModel {
       return this;
     }
   }
+
+  protected CreateVpcAddressPrefixOptions() { }
 
   protected CreateVpcAddressPrefixOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.vpcId,

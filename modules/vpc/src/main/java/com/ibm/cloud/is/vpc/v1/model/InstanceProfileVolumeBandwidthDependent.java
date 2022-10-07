@@ -26,5 +26,7 @@ public class InstanceProfileVolumeBandwidthDependent extends InstanceProfileVolu
     String DEPENDENT = "dependent";
   }
 
+
+  protected InstanceProfileVolumeBandwidthDependent() { }
 }
 

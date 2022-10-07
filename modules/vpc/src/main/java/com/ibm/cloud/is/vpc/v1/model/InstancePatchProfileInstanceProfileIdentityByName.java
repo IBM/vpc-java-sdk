@@ -24,6 +24,11 @@ public class InstancePatchProfileInstanceProfileIdentityByName extends InstanceP
   public static class Builder {
     private String name;
 
+    /**
+     * Instantiates a new Builder from an existing InstancePatchProfileInstanceProfileIdentityByName instance.
+     *
+     * @param instancePatchProfileInstanceProfileIdentityByName the instance to initialize the Builder with
+     */
     public Builder(InstancePatchProfile instancePatchProfileInstanceProfileIdentityByName) {
       this.name = instancePatchProfileInstanceProfileIdentityByName.name;
     }
@@ -63,6 +68,8 @@ public class InstancePatchProfileInstanceProfileIdentityByName extends InstanceP
       return this;
     }
   }
+
+  protected InstancePatchProfileInstanceProfileIdentityByName() { }
 
   protected InstancePatchProfileInstanceProfileIdentityByName(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.name,

@@ -25,5 +25,7 @@ public class BareMetalServerProfileMemoryEnum extends BareMetalServerProfileMemo
     String X_ENUM = "enum";
   }
 
+
+  protected BareMetalServerProfileMemoryEnum() { }
 }
 

@@ -30,6 +30,11 @@ public class ImagePatch extends GenericModel {
   public static class Builder {
     private String name;
 
+    /**
+     * Instantiates a new Builder from an existing ImagePatch instance.
+     *
+     * @param imagePatch the instance to initialize the Builder with
+     */
     private Builder(ImagePatch imagePatch) {
       this.name = imagePatch.name;
     }
@@ -60,6 +65,8 @@ public class ImagePatch extends GenericModel {
       return this;
     }
   }
+
+  protected ImagePatch() { }
 
   protected ImagePatch(Builder builder) {
     name = builder.name;

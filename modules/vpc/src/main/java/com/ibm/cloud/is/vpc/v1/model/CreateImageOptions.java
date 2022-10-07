@@ -27,6 +27,11 @@ public class CreateImageOptions extends GenericModel {
   public static class Builder {
     private ImagePrototype imagePrototype;
 
+    /**
+     * Instantiates a new Builder from an existing CreateImageOptions instance.
+     *
+     * @param createImageOptions the instance to initialize the Builder with
+     */
     private Builder(CreateImageOptions createImageOptions) {
       this.imagePrototype = createImageOptions.imagePrototype;
     }
@@ -66,6 +71,8 @@ public class CreateImageOptions extends GenericModel {
       return this;
     }
   }
+
+  protected CreateImageOptions() { }
 
   protected CreateImageOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.imagePrototype,

@@ -22,8 +22,6 @@ import com.ibm.cloud.is.vpc.v1.model.ZoneIdentityByName;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import org.testng.annotations.Test;
@@ -63,7 +61,7 @@ public class CreateVolumeOptionsTest {
       .name("my-volume")
       .profile(volumeProfileIdentityModel)
       .resourceGroup(resourceGroupIdentityModel)
-      .userTags(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
+      .userTags(java.util.Arrays.asList("testString"))
       .zone(zoneIdentityModel)
       .capacity(Long.valueOf("100"))
       .encryptionKey(encryptionKeyIdentityModel)
@@ -72,7 +70,7 @@ public class CreateVolumeOptionsTest {
     assertEquals(volumePrototypeModel.name(), "my-volume");
     assertEquals(volumePrototypeModel.profile(), volumeProfileIdentityModel);
     assertEquals(volumePrototypeModel.resourceGroup(), resourceGroupIdentityModel);
-    assertEquals(volumePrototypeModel.userTags(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
+    assertEquals(volumePrototypeModel.userTags(), java.util.Arrays.asList("testString"));
     assertEquals(volumePrototypeModel.zone(), zoneIdentityModel);
     assertEquals(volumePrototypeModel.capacity(), Long.valueOf("100"));
     assertEquals(volumePrototypeModel.encryptionKey(), encryptionKeyIdentityModel);

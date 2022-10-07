@@ -30,6 +30,11 @@ public class DedicatedHostDiskPatch extends GenericModel {
   public static class Builder {
     private String name;
 
+    /**
+     * Instantiates a new Builder from an existing DedicatedHostDiskPatch instance.
+     *
+     * @param dedicatedHostDiskPatch the instance to initialize the Builder with
+     */
     private Builder(DedicatedHostDiskPatch dedicatedHostDiskPatch) {
       this.name = dedicatedHostDiskPatch.name;
     }
@@ -60,6 +65,8 @@ public class DedicatedHostDiskPatch extends GenericModel {
       return this;
     }
   }
+
+  protected DedicatedHostDiskPatch() { }
 
   protected DedicatedHostDiskPatch(Builder builder) {
     name = builder.name;

@@ -24,6 +24,11 @@ public class DedicatedHostGroupIdentityById extends DedicatedHostGroupIdentity {
   public static class Builder {
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing DedicatedHostGroupIdentityById instance.
+     *
+     * @param dedicatedHostGroupIdentityById the instance to initialize the Builder with
+     */
     public Builder(DedicatedHostGroupIdentity dedicatedHostGroupIdentityById) {
       this.id = dedicatedHostGroupIdentityById.id;
     }
@@ -63,6 +68,8 @@ public class DedicatedHostGroupIdentityById extends DedicatedHostGroupIdentity {
       return this;
     }
   }
+
+  protected DedicatedHostGroupIdentityById() { }
 
   protected DedicatedHostGroupIdentityById(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.id,

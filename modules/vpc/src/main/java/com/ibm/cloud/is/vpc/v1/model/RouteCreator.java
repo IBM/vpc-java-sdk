@@ -17,8 +17,8 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
  * If present, the resource that created the route. Routes with this property present cannot be directly deleted. All
- * routes with an `origin` of `learned` or `service` will have this property set, and future `origin` values may also
- * have this property set.
+ * routes with an `origin` of `service` will have this property set, and future `origin` values may also have this
+ * property set.
  *
  * Classes which extend this class:
  * - RouteCreatorVPNGatewayReference
@@ -42,8 +42,7 @@ public class RouteCreator extends GenericModel {
   @SerializedName("resource_type")
   protected String resourceType;
 
-  protected RouteCreator() {
-  }
+  protected RouteCreator() { }
 
   /**
    * Gets the crn.
@@ -59,7 +58,7 @@ public class RouteCreator extends GenericModel {
   /**
    * Gets the deleted.
    *
-   * If present, this property indicates the referenced resource has been deleted and provides
+   * If present, this property indicates the referenced resource has been deleted, and provides
    * some supplementary information.
    *
    * @return the deleted

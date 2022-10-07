@@ -24,6 +24,11 @@ public class LoadBalancerPoolMemberTargetPrototypeIP extends LoadBalancerPoolMem
   public static class Builder {
     private String address;
 
+    /**
+     * Instantiates a new Builder from an existing LoadBalancerPoolMemberTargetPrototypeIP instance.
+     *
+     * @param loadBalancerPoolMemberTargetPrototypeIp the instance to initialize the Builder with
+     */
     public Builder(LoadBalancerPoolMemberTargetPrototype loadBalancerPoolMemberTargetPrototypeIp) {
       this.address = loadBalancerPoolMemberTargetPrototypeIp.address;
     }
@@ -63,6 +68,8 @@ public class LoadBalancerPoolMemberTargetPrototypeIP extends LoadBalancerPoolMem
       return this;
     }
   }
+
+  protected LoadBalancerPoolMemberTargetPrototypeIP() { }
 
   protected LoadBalancerPoolMemberTargetPrototypeIP(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.address,

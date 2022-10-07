@@ -30,8 +30,7 @@ public class InstanceGroupManagerScheduledActionManagerPrototype extends Generic
   protected String id;
   protected String href;
 
-  protected InstanceGroupManagerScheduledActionManagerPrototype() {
-  }
+  protected InstanceGroupManagerScheduledActionManagerPrototype() { }
 
   /**
    * Gets the maxMembershipCount.

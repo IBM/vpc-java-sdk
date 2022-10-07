@@ -25,6 +25,11 @@ public class PublicGatewayFloatingIPPrototypeFloatingIPPrototypeTargetContext ex
     private String name;
     private ResourceGroupIdentity resourceGroup;
 
+    /**
+     * Instantiates a new Builder from an existing PublicGatewayFloatingIPPrototypeFloatingIPPrototypeTargetContext instance.
+     *
+     * @param publicGatewayFloatingIpPrototypeFloatingIpPrototypeTargetContext the instance to initialize the Builder with
+     */
     public Builder(PublicGatewayFloatingIPPrototype publicGatewayFloatingIpPrototypeFloatingIpPrototypeTargetContext) {
       this.name = publicGatewayFloatingIpPrototypeFloatingIpPrototypeTargetContext.name;
       this.resourceGroup = publicGatewayFloatingIpPrototypeFloatingIpPrototypeTargetContext.resourceGroup;
@@ -67,6 +72,8 @@ public class PublicGatewayFloatingIPPrototypeFloatingIPPrototypeTargetContext ex
       return this;
     }
   }
+
+  protected PublicGatewayFloatingIPPrototypeFloatingIPPrototypeTargetContext() { }
 
   protected PublicGatewayFloatingIPPrototypeFloatingIPPrototypeTargetContext(Builder builder) {
     name = builder.name;

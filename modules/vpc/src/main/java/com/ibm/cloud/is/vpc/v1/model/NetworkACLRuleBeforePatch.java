@@ -15,7 +15,9 @@ package com.ibm.cloud.is.vpc.v1.model;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * The rule to move this rule immediately before. Specify `null` to move this rule after all existing rules.
+ * The rule to move this rule immediately before.
+ *
+ * Specify `null` to move this rule after all existing rules.
  *
  * Classes which extend this class:
  * - NetworkACLRuleBeforePatchNetworkACLRuleIdentityById
@@ -26,8 +28,7 @@ public class NetworkACLRuleBeforePatch extends GenericModel {
   protected String id;
   protected String href;
 
-  protected NetworkACLRuleBeforePatch() {
-  }
+  protected NetworkACLRuleBeforePatch() { }
 
   /**
    * Gets the id.

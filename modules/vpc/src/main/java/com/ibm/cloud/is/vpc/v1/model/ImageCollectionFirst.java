@@ -21,6 +21,8 @@ public class ImageCollectionFirst extends GenericModel {
 
   protected String href;
 
+  protected ImageCollectionFirst() { }
+
   /**
    * Gets the href.
    *

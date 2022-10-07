@@ -35,6 +35,11 @@ public class CreateFlowLogCollectorOptions extends GenericModel {
     private String name;
     private ResourceGroupIdentity resourceGroup;
 
+    /**
+     * Instantiates a new Builder from an existing CreateFlowLogCollectorOptions instance.
+     *
+     * @param createFlowLogCollectorOptions the instance to initialize the Builder with
+     */
     private Builder(CreateFlowLogCollectorOptions createFlowLogCollectorOptions) {
       this.storageBucket = createFlowLogCollectorOptions.storageBucket;
       this.target = createFlowLogCollectorOptions.target;
@@ -124,6 +129,8 @@ public class CreateFlowLogCollectorOptions extends GenericModel {
       return this;
     }
   }
+
+  protected CreateFlowLogCollectorOptions() { }
 
   protected CreateFlowLogCollectorOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.storageBucket,

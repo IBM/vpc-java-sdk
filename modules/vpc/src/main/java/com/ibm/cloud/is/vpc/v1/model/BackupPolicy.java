@@ -79,6 +79,8 @@ public class BackupPolicy extends GenericModel {
   @SerializedName("resource_type")
   protected String resourceType;
 
+  protected BackupPolicy() { }
+
   /**
    * Gets the createdAt.
    *

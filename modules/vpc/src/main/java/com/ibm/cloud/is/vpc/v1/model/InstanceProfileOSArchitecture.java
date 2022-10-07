@@ -35,6 +35,8 @@ public class InstanceProfileOSArchitecture extends GenericModel {
   protected String type;
   protected List<String> values;
 
+  protected InstanceProfileOSArchitecture() { }
+
   /**
    * Gets the xDefault.
    *

@@ -29,6 +29,11 @@ public class GetLoadBalancerPoolOptions extends GenericModel {
     private String loadBalancerId;
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing GetLoadBalancerPoolOptions instance.
+     *
+     * @param getLoadBalancerPoolOptions the instance to initialize the Builder with
+     */
     private Builder(GetLoadBalancerPoolOptions getLoadBalancerPoolOptions) {
       this.loadBalancerId = getLoadBalancerPoolOptions.loadBalancerId;
       this.id = getLoadBalancerPoolOptions.id;
@@ -82,6 +87,8 @@ public class GetLoadBalancerPoolOptions extends GenericModel {
       return this;
     }
   }
+
+  protected GetLoadBalancerPoolOptions() { }
 
   protected GetLoadBalancerPoolOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.loadBalancerId,

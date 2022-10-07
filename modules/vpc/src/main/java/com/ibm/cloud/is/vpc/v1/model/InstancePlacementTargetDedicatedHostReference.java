@@ -25,5 +25,7 @@ public class InstancePlacementTargetDedicatedHostReference extends InstancePlace
     String DEDICATED_HOST = "dedicated_host";
   }
 
+
+  protected InstancePlacementTargetDedicatedHostReference() { }
 }
 

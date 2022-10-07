@@ -25,6 +25,8 @@ public class VolumeAttachmentCollection extends GenericModel {
   @SerializedName("volume_attachments")
   protected List<VolumeAttachment> volumeAttachments;
 
+  protected VolumeAttachmentCollection() { }
+
   /**
    * Gets the volumeAttachments.
    *

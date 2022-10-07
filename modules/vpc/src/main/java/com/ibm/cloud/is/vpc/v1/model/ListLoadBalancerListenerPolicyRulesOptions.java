@@ -31,6 +31,11 @@ public class ListLoadBalancerListenerPolicyRulesOptions extends GenericModel {
     private String listenerId;
     private String policyId;
 
+    /**
+     * Instantiates a new Builder from an existing ListLoadBalancerListenerPolicyRulesOptions instance.
+     *
+     * @param listLoadBalancerListenerPolicyRulesOptions the instance to initialize the Builder with
+     */
     private Builder(ListLoadBalancerListenerPolicyRulesOptions listLoadBalancerListenerPolicyRulesOptions) {
       this.loadBalancerId = listLoadBalancerListenerPolicyRulesOptions.loadBalancerId;
       this.listenerId = listLoadBalancerListenerPolicyRulesOptions.listenerId;
@@ -98,6 +103,8 @@ public class ListLoadBalancerListenerPolicyRulesOptions extends GenericModel {
       return this;
     }
   }
+
+  protected ListLoadBalancerListenerPolicyRulesOptions() { }
 
   protected ListLoadBalancerListenerPolicyRulesOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.loadBalancerId,

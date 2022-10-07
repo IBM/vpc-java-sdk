@@ -28,8 +28,7 @@ public class SubnetPublicGatewayPatch extends GenericModel {
   protected String crn;
   protected String href;
 
-  protected SubnetPublicGatewayPatch() {
-  }
+  protected SubnetPublicGatewayPatch() { }
 
   /**
    * Gets the id.

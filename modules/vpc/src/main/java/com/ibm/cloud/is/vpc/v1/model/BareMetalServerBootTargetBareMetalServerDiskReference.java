@@ -25,5 +25,7 @@ public class BareMetalServerBootTargetBareMetalServerDiskReference extends BareM
     String BARE_METAL_SERVER_DISK = "bare_metal_server_disk";
   }
 
+
+  protected BareMetalServerBootTargetBareMetalServerDiskReference() { }
 }
 

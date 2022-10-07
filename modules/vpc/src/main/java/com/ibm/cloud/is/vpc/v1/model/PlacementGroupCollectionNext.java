@@ -21,6 +21,8 @@ public class PlacementGroupCollectionNext extends GenericModel {
 
   protected String href;
 
+  protected PlacementGroupCollectionNext() { }
+
   /**
    * Gets the href.
    *

@@ -25,5 +25,7 @@ public class FlowLogCollectorTargetVPCReference extends FlowLogCollectorTarget {
     String VPC = "vpc";
   }
 
+
+  protected FlowLogCollectorTargetVPCReference() { }
 }
 

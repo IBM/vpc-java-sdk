@@ -27,6 +27,11 @@ public class ListRegionZonesOptions extends GenericModel {
   public static class Builder {
     private String regionName;
 
+    /**
+     * Instantiates a new Builder from an existing ListRegionZonesOptions instance.
+     *
+     * @param listRegionZonesOptions the instance to initialize the Builder with
+     */
     private Builder(ListRegionZonesOptions listRegionZonesOptions) {
       this.regionName = listRegionZonesOptions.regionName;
     }
@@ -66,6 +71,8 @@ public class ListRegionZonesOptions extends GenericModel {
       return this;
     }
   }
+
+  protected ListRegionZonesOptions() { }
 
   protected ListRegionZonesOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.regionName,

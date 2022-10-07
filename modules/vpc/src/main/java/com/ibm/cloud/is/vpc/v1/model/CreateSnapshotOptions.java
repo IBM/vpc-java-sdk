@@ -27,6 +27,11 @@ public class CreateSnapshotOptions extends GenericModel {
   public static class Builder {
     private SnapshotPrototype snapshotPrototype;
 
+    /**
+     * Instantiates a new Builder from an existing CreateSnapshotOptions instance.
+     *
+     * @param createSnapshotOptions the instance to initialize the Builder with
+     */
     private Builder(CreateSnapshotOptions createSnapshotOptions) {
       this.snapshotPrototype = createSnapshotOptions.snapshotPrototype;
     }
@@ -66,6 +71,8 @@ public class CreateSnapshotOptions extends GenericModel {
       return this;
     }
   }
+
+  protected CreateSnapshotOptions() { }
 
   protected CreateSnapshotOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.snapshotPrototype,

@@ -26,6 +26,7 @@ public class BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInter
    *   - Must use an IEEE 802.1q tag.
    *   - Has its own security groups and does not inherit those of the PCI device through
    *     which traffic flows.
+   *   - Not supported on bare metal servers with a `cpu.architecture` of `s390x`.
    */
   public interface InterfaceType {
     /** vlan. */
@@ -47,6 +48,11 @@ public class BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInter
     private String interfaceType;
     private Long vlan;
 
+    /**
+     * Instantiates a new Builder from an existing BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVLANPrototype instance.
+     *
+     * @param bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVlanPrototype the instance to initialize the Builder with
+     */
     public Builder(BareMetalServerNetworkInterfacePrototype bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVlanPrototype) {
       this.allowIpSpoofing = bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVlanPrototype.allowIpSpoofing;
       this.enableInfrastructureNat = bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVlanPrototype.enableInfrastructureNat;
@@ -203,6 +209,8 @@ public class BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInter
       return this;
     }
   }
+
+  protected BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVLANPrototype() { }
 
   protected BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVLANPrototype(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.subnet,

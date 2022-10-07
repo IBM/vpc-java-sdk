@@ -22,8 +22,6 @@ import com.ibm.cloud.is.vpc.v1.model.VPNServerPatch;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -68,26 +66,26 @@ public class VPNServerPatchTest {
 
     VPNServerPatch vpnServerPatchModel = new VPNServerPatch.Builder()
       .certificate(certificateInstanceIdentityModel)
-      .clientAuthentication(new java.util.ArrayList<VPNServerAuthenticationPrototype>(java.util.Arrays.asList(vpnServerAuthenticationPrototypeModel)))
-      .clientDnsServerIps(new java.util.ArrayList<IP>(java.util.Arrays.asList(ipModel)))
+      .clientAuthentication(java.util.Arrays.asList(vpnServerAuthenticationPrototypeModel))
+      .clientDnsServerIps(java.util.Arrays.asList(ipModel))
       .clientIdleTimeout(Long.valueOf("600"))
       .clientIpPool("172.16.0.0/16")
       .enableSplitTunneling(true)
       .name("my-vpn-server")
       .port(Long.valueOf("443"))
       .protocol("udp")
-      .subnets(new java.util.ArrayList<SubnetIdentity>(java.util.Arrays.asList(subnetIdentityModel)))
+      .subnets(java.util.Arrays.asList(subnetIdentityModel))
       .build();
     assertEquals(vpnServerPatchModel.certificate(), certificateInstanceIdentityModel);
-    assertEquals(vpnServerPatchModel.clientAuthentication(), new java.util.ArrayList<VPNServerAuthenticationPrototype>(java.util.Arrays.asList(vpnServerAuthenticationPrototypeModel)));
-    assertEquals(vpnServerPatchModel.clientDnsServerIps(), new java.util.ArrayList<IP>(java.util.Arrays.asList(ipModel)));
+    assertEquals(vpnServerPatchModel.clientAuthentication(), java.util.Arrays.asList(vpnServerAuthenticationPrototypeModel));
+    assertEquals(vpnServerPatchModel.clientDnsServerIps(), java.util.Arrays.asList(ipModel));
     assertEquals(vpnServerPatchModel.clientIdleTimeout(), Long.valueOf("600"));
     assertEquals(vpnServerPatchModel.clientIpPool(), "172.16.0.0/16");
     assertEquals(vpnServerPatchModel.enableSplitTunneling(), Boolean.valueOf(true));
     assertEquals(vpnServerPatchModel.name(), "my-vpn-server");
     assertEquals(vpnServerPatchModel.port(), Long.valueOf("443"));
     assertEquals(vpnServerPatchModel.protocol(), "udp");
-    assertEquals(vpnServerPatchModel.subnets(), new java.util.ArrayList<SubnetIdentity>(java.util.Arrays.asList(subnetIdentityModel)));
+    assertEquals(vpnServerPatchModel.subnets(), java.util.Arrays.asList(subnetIdentityModel));
 
     String json = TestUtilities.serialize(vpnServerPatchModel);
 
@@ -126,15 +124,15 @@ public class VPNServerPatchTest {
 
     VPNServerPatch vpnServerPatchModel = new VPNServerPatch.Builder()
       .certificate(certificateInstanceIdentityModel)
-      .clientAuthentication(new java.util.ArrayList<VPNServerAuthenticationPrototype>(java.util.Arrays.asList(vpnServerAuthenticationPrototypeModel)))
-      .clientDnsServerIps(new java.util.ArrayList<IP>(java.util.Arrays.asList(ipModel)))
+      .clientAuthentication(java.util.Arrays.asList(vpnServerAuthenticationPrototypeModel))
+      .clientDnsServerIps(java.util.Arrays.asList(ipModel))
       .clientIdleTimeout(Long.valueOf("600"))
       .clientIpPool("172.16.0.0/16")
       .enableSplitTunneling(true)
       .name("my-vpn-server")
       .port(Long.valueOf("443"))
       .protocol("udp")
-      .subnets(new java.util.ArrayList<SubnetIdentity>(java.util.Arrays.asList(subnetIdentityModel)))
+      .subnets(java.util.Arrays.asList(subnetIdentityModel))
       .build();
 
     Map<String, Object> mergePatch = vpnServerPatchModel.asPatch();

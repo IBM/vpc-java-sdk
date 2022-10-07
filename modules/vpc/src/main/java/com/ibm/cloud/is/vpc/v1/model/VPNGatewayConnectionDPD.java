@@ -37,6 +37,8 @@ public class VPNGatewayConnectionDPD extends GenericModel {
   protected Long interval;
   protected Long timeout;
 
+  protected VPNGatewayConnectionDPD() { }
+
   /**
    * Gets the action.
    *

@@ -50,8 +50,7 @@ public class SubnetPrototype extends GenericModel {
   @SerializedName("ipv4_cidr_block")
   protected String ipv4CidrBlock;
 
-  protected SubnetPrototype() {
-  }
+  protected SubnetPrototype() { }
 
   /**
    * Gets the ipVersion.
@@ -127,7 +126,7 @@ public class SubnetPrototype extends GenericModel {
   /**
    * Gets the vpc.
    *
-   * The VPC the subnet is to be a part of.
+   * The VPC the subnet will reside in.
    *
    * @return the vpc
    */

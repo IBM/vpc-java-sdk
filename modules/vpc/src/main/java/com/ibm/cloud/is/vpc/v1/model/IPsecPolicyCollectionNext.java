@@ -21,6 +21,8 @@ public class IPsecPolicyCollectionNext extends GenericModel {
 
   protected String href;
 
+  protected IPsecPolicyCollectionNext() { }
+
   /**
    * Gets the href.
    *

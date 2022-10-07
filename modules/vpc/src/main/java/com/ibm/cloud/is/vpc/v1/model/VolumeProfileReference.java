@@ -22,6 +22,8 @@ public class VolumeProfileReference extends GenericModel {
   protected String href;
   protected String name;
 
+  protected VolumeProfileReference() { }
+
   /**
    * Gets the href.
    *

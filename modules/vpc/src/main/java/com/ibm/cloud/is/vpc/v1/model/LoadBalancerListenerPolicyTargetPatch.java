@@ -36,8 +36,7 @@ public class LoadBalancerListenerPolicyTargetPatch extends GenericModel {
   protected LoadBalancerListenerIdentity listener;
   protected String uri;
 
-  protected LoadBalancerListenerPolicyTargetPatch() {
-  }
+  protected LoadBalancerListenerPolicyTargetPatch() { }
 
   /**
    * Gets the id.

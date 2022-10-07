@@ -42,6 +42,11 @@ public class InstanceGroupManagerActionPatch extends GenericModel {
     private String name;
     private Date runAt;
 
+    /**
+     * Instantiates a new Builder from an existing InstanceGroupManagerActionPatch instance.
+     *
+     * @param instanceGroupManagerActionPatch the instance to initialize the Builder with
+     */
     private Builder(InstanceGroupManagerActionPatch instanceGroupManagerActionPatch) {
       this.cronSpec = instanceGroupManagerActionPatch.cronSpec;
       this.group = instanceGroupManagerActionPatch.group;
@@ -120,6 +125,8 @@ public class InstanceGroupManagerActionPatch extends GenericModel {
       return this;
     }
   }
+
+  protected InstanceGroupManagerActionPatch() { }
 
   protected InstanceGroupManagerActionPatch(Builder builder) {
     cronSpec = builder.cronSpec;

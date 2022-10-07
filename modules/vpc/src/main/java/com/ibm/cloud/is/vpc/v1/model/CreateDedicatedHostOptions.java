@@ -27,6 +27,11 @@ public class CreateDedicatedHostOptions extends GenericModel {
   public static class Builder {
     private DedicatedHostPrototype dedicatedHostPrototype;
 
+    /**
+     * Instantiates a new Builder from an existing CreateDedicatedHostOptions instance.
+     *
+     * @param createDedicatedHostOptions the instance to initialize the Builder with
+     */
     private Builder(CreateDedicatedHostOptions createDedicatedHostOptions) {
       this.dedicatedHostPrototype = createDedicatedHostOptions.dedicatedHostPrototype;
     }
@@ -66,6 +71,8 @@ public class CreateDedicatedHostOptions extends GenericModel {
       return this;
     }
   }
+
+  protected CreateDedicatedHostOptions() { }
 
   protected CreateDedicatedHostOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.dedicatedHostPrototype,

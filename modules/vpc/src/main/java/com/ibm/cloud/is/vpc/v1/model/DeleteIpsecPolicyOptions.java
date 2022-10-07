@@ -27,6 +27,11 @@ public class DeleteIpsecPolicyOptions extends GenericModel {
   public static class Builder {
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing DeleteIpsecPolicyOptions instance.
+     *
+     * @param deleteIpsecPolicyOptions the instance to initialize the Builder with
+     */
     private Builder(DeleteIpsecPolicyOptions deleteIpsecPolicyOptions) {
       this.id = deleteIpsecPolicyOptions.id;
     }
@@ -66,6 +71,8 @@ public class DeleteIpsecPolicyOptions extends GenericModel {
       return this;
     }
   }
+
+  protected DeleteIpsecPolicyOptions() { }
 
   protected DeleteIpsecPolicyOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,

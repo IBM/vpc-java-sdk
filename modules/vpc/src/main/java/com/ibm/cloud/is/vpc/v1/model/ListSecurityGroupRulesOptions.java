@@ -27,6 +27,11 @@ public class ListSecurityGroupRulesOptions extends GenericModel {
   public static class Builder {
     private String securityGroupId;
 
+    /**
+     * Instantiates a new Builder from an existing ListSecurityGroupRulesOptions instance.
+     *
+     * @param listSecurityGroupRulesOptions the instance to initialize the Builder with
+     */
     private Builder(ListSecurityGroupRulesOptions listSecurityGroupRulesOptions) {
       this.securityGroupId = listSecurityGroupRulesOptions.securityGroupId;
     }
@@ -66,6 +71,8 @@ public class ListSecurityGroupRulesOptions extends GenericModel {
       return this;
     }
   }
+
+  protected ListSecurityGroupRulesOptions() { }
 
   protected ListSecurityGroupRulesOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.securityGroupId,

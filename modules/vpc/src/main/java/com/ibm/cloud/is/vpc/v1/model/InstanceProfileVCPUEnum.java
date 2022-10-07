@@ -25,5 +25,7 @@ public class InstanceProfileVCPUEnum extends InstanceProfileVCPU {
     String X_ENUM = "enum";
   }
 
+
+  protected InstanceProfileVCPUEnum() { }
 }
 

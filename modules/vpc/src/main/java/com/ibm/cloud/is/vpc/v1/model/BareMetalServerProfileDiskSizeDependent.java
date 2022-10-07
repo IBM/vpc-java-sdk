@@ -26,5 +26,7 @@ public class BareMetalServerProfileDiskSizeDependent extends BareMetalServerProf
     String DEPENDENT = "dependent";
   }
 
+
+  protected BareMetalServerProfileDiskSizeDependent() { }
 }
 

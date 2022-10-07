@@ -24,6 +24,11 @@ public class FlowLogCollectorTargetPrototypeSubnetIdentitySubnetIdentityByHref e
   public static class Builder {
     private String href;
 
+    /**
+     * Instantiates a new Builder from an existing FlowLogCollectorTargetPrototypeSubnetIdentitySubnetIdentityByHref instance.
+     *
+     * @param flowLogCollectorTargetPrototypeSubnetIdentitySubnetIdentityByHref the instance to initialize the Builder with
+     */
     public Builder(FlowLogCollectorTargetPrototypeSubnetIdentity flowLogCollectorTargetPrototypeSubnetIdentitySubnetIdentityByHref) {
       this.href = flowLogCollectorTargetPrototypeSubnetIdentitySubnetIdentityByHref.href;
     }
@@ -63,6 +68,8 @@ public class FlowLogCollectorTargetPrototypeSubnetIdentitySubnetIdentityByHref e
       return this;
     }
   }
+
+  protected FlowLogCollectorTargetPrototypeSubnetIdentitySubnetIdentityByHref() { }
 
   protected FlowLogCollectorTargetPrototypeSubnetIdentitySubnetIdentityByHref(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.href,

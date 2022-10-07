@@ -27,6 +27,11 @@ public class GetFloatingIpOptions extends GenericModel {
   public static class Builder {
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing GetFloatingIpOptions instance.
+     *
+     * @param getFloatingIpOptions the instance to initialize the Builder with
+     */
     private Builder(GetFloatingIpOptions getFloatingIpOptions) {
       this.id = getFloatingIpOptions.id;
     }
@@ -66,6 +71,8 @@ public class GetFloatingIpOptions extends GenericModel {
       return this;
     }
   }
+
+  protected GetFloatingIpOptions() { }
 
   protected GetFloatingIpOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,

@@ -26,6 +26,11 @@ public class LoadBalancerListenerPolicyTargetPatchLoadBalancerListenerHTTPSRedir
     private LoadBalancerListenerIdentity listener;
     private String uri;
 
+    /**
+     * Instantiates a new Builder from an existing LoadBalancerListenerPolicyTargetPatchLoadBalancerListenerHTTPSRedirectPatch instance.
+     *
+     * @param loadBalancerListenerPolicyTargetPatchLoadBalancerListenerHttpsRedirectPatch the instance to initialize the Builder with
+     */
     public Builder(LoadBalancerListenerPolicyTargetPatch loadBalancerListenerPolicyTargetPatchLoadBalancerListenerHttpsRedirectPatch) {
       this.httpStatusCode = loadBalancerListenerPolicyTargetPatchLoadBalancerListenerHttpsRedirectPatch.httpStatusCode;
       this.listener = loadBalancerListenerPolicyTargetPatchLoadBalancerListenerHttpsRedirectPatch.listener;
@@ -80,6 +85,8 @@ public class LoadBalancerListenerPolicyTargetPatchLoadBalancerListenerHTTPSRedir
       return this;
     }
   }
+
+  protected LoadBalancerListenerPolicyTargetPatchLoadBalancerListenerHTTPSRedirectPatch() { }
 
   protected LoadBalancerListenerPolicyTargetPatchLoadBalancerListenerHTTPSRedirectPatch(Builder builder) {
     httpStatusCode = builder.httpStatusCode;

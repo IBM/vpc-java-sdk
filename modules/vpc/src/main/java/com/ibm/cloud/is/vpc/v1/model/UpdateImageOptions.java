@@ -31,6 +31,11 @@ public class UpdateImageOptions extends GenericModel {
     private String id;
     private Map<String, Object> imagePatch;
 
+    /**
+     * Instantiates a new Builder from an existing UpdateImageOptions instance.
+     *
+     * @param updateImageOptions the instance to initialize the Builder with
+     */
     private Builder(UpdateImageOptions updateImageOptions) {
       this.id = updateImageOptions.id;
       this.imagePatch = updateImageOptions.imagePatch;
@@ -84,6 +89,8 @@ public class UpdateImageOptions extends GenericModel {
       return this;
     }
   }
+
+  protected UpdateImageOptions() { }
 
   protected UpdateImageOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,

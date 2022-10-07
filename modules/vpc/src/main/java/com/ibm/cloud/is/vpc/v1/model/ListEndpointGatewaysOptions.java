@@ -33,6 +33,11 @@ public class ListEndpointGatewaysOptions extends GenericModel {
     private Long limit;
     private String resourceGroupId;
 
+    /**
+     * Instantiates a new Builder from an existing ListEndpointGatewaysOptions instance.
+     *
+     * @param listEndpointGatewaysOptions the instance to initialize the Builder with
+     */
     private Builder(ListEndpointGatewaysOptions listEndpointGatewaysOptions) {
       this.name = listEndpointGatewaysOptions.name;
       this.start = listEndpointGatewaysOptions.start;
@@ -99,6 +104,8 @@ public class ListEndpointGatewaysOptions extends GenericModel {
       return this;
     }
   }
+
+  protected ListEndpointGatewaysOptions() { }
 
   protected ListEndpointGatewaysOptions(Builder builder) {
     name = builder.name;

@@ -25,5 +25,7 @@ public class RouteNextHopVPNGatewayConnectionReference extends RouteNextHop {
     String VPN_GATEWAY_CONNECTION = "vpn_gateway_connection";
   }
 
+
+  protected RouteNextHopVPNGatewayConnectionReference() { }
 }
 

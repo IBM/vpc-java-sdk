@@ -62,6 +62,11 @@ public class CreateVpnServerOptions extends GenericModel {
     private ResourceGroupIdentity resourceGroup;
     private List<SecurityGroupIdentity> securityGroups;
 
+    /**
+     * Instantiates a new Builder from an existing CreateVpnServerOptions instance.
+     *
+     * @param createVpnServerOptions the instance to initialize the Builder with
+     */
     private Builder(CreateVpnServerOptions createVpnServerOptions) {
       this.certificate = createVpnServerOptions.certificate;
       this.clientAuthentication = createVpnServerOptions.clientAuthentication;
@@ -307,6 +312,8 @@ public class CreateVpnServerOptions extends GenericModel {
       return this;
     }
   }
+
+  protected CreateVpnServerOptions() { }
 
   protected CreateVpnServerOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.certificate,

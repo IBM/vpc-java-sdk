@@ -45,8 +45,7 @@ public class BareMetalServerProfileCPUCoreCount extends GenericModel {
   protected Long step;
   protected List<Long> values;
 
-  protected BareMetalServerProfileCPUCoreCount() {
-  }
+  protected BareMetalServerProfileCPUCoreCount() { }
 
   /**
    * Gets the type.

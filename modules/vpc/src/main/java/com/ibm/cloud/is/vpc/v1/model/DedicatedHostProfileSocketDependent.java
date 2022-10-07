@@ -25,5 +25,7 @@ public class DedicatedHostProfileSocketDependent extends DedicatedHostProfileSoc
     String DEPENDENT = "dependent";
   }
 
+
+  protected DedicatedHostProfileSocketDependent() { }
 }
 

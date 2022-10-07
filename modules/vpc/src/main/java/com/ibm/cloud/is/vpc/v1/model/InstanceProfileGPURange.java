@@ -25,5 +25,7 @@ public class InstanceProfileGPURange extends InstanceProfileGPU {
     String RANGE = "range";
   }
 
+
+  protected InstanceProfileGPURange() { }
 }
 

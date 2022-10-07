@@ -33,6 +33,11 @@ public class UpdateLoadBalancerListenerOptions extends GenericModel {
     private String id;
     private Map<String, Object> loadBalancerListenerPatch;
 
+    /**
+     * Instantiates a new Builder from an existing UpdateLoadBalancerListenerOptions instance.
+     *
+     * @param updateLoadBalancerListenerOptions the instance to initialize the Builder with
+     */
     private Builder(UpdateLoadBalancerListenerOptions updateLoadBalancerListenerOptions) {
       this.loadBalancerId = updateLoadBalancerListenerOptions.loadBalancerId;
       this.id = updateLoadBalancerListenerOptions.id;
@@ -100,6 +105,8 @@ public class UpdateLoadBalancerListenerOptions extends GenericModel {
       return this;
     }
   }
+
+  protected UpdateLoadBalancerListenerOptions() { }
 
   protected UpdateLoadBalancerListenerOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.loadBalancerId,

@@ -29,6 +29,11 @@ public class DeleteVpnServerRouteOptions extends GenericModel {
     private String vpnServerId;
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing DeleteVpnServerRouteOptions instance.
+     *
+     * @param deleteVpnServerRouteOptions the instance to initialize the Builder with
+     */
     private Builder(DeleteVpnServerRouteOptions deleteVpnServerRouteOptions) {
       this.vpnServerId = deleteVpnServerRouteOptions.vpnServerId;
       this.id = deleteVpnServerRouteOptions.id;
@@ -82,6 +87,8 @@ public class DeleteVpnServerRouteOptions extends GenericModel {
       return this;
     }
   }
+
+  protected DeleteVpnServerRouteOptions() { }
 
   protected DeleteVpnServerRouteOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.vpnServerId,

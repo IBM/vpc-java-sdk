@@ -29,6 +29,11 @@ public class DeleteSubnetReservedIpOptions extends GenericModel {
     private String subnetId;
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing DeleteSubnetReservedIpOptions instance.
+     *
+     * @param deleteSubnetReservedIpOptions the instance to initialize the Builder with
+     */
     private Builder(DeleteSubnetReservedIpOptions deleteSubnetReservedIpOptions) {
       this.subnetId = deleteSubnetReservedIpOptions.subnetId;
       this.id = deleteSubnetReservedIpOptions.id;
@@ -82,6 +87,8 @@ public class DeleteSubnetReservedIpOptions extends GenericModel {
       return this;
     }
   }
+
+  protected DeleteSubnetReservedIpOptions() { }
 
   protected DeleteSubnetReservedIpOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.subnetId,

@@ -29,6 +29,11 @@ public class DeleteSecurityGroupTargetBindingOptions extends GenericModel {
     private String securityGroupId;
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing DeleteSecurityGroupTargetBindingOptions instance.
+     *
+     * @param deleteSecurityGroupTargetBindingOptions the instance to initialize the Builder with
+     */
     private Builder(DeleteSecurityGroupTargetBindingOptions deleteSecurityGroupTargetBindingOptions) {
       this.securityGroupId = deleteSecurityGroupTargetBindingOptions.securityGroupId;
       this.id = deleteSecurityGroupTargetBindingOptions.id;
@@ -82,6 +87,8 @@ public class DeleteSecurityGroupTargetBindingOptions extends GenericModel {
       return this;
     }
   }
+
+  protected DeleteSecurityGroupTargetBindingOptions() { }
 
   protected DeleteSecurityGroupTargetBindingOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.securityGroupId,

@@ -59,7 +59,6 @@ public class InstanceGroupManagerActionScheduledAction extends InstanceGroupMana
   }
 
 
-  protected InstanceGroupManagerActionScheduledAction() {
-  }
+  protected InstanceGroupManagerActionScheduledAction() { }
 }
 

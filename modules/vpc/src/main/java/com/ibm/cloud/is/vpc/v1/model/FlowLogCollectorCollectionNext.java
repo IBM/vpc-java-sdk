@@ -21,6 +21,8 @@ public class FlowLogCollectorCollectionNext extends GenericModel {
 
   protected String href;
 
+  protected FlowLogCollectorCollectionNext() { }
+
   /**
    * Gets the href.
    *

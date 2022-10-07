@@ -31,6 +31,11 @@ public class GetVpcRoutingTableRouteOptions extends GenericModel {
     private String routingTableId;
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing GetVpcRoutingTableRouteOptions instance.
+     *
+     * @param getVpcRoutingTableRouteOptions the instance to initialize the Builder with
+     */
     private Builder(GetVpcRoutingTableRouteOptions getVpcRoutingTableRouteOptions) {
       this.vpcId = getVpcRoutingTableRouteOptions.vpcId;
       this.routingTableId = getVpcRoutingTableRouteOptions.routingTableId;
@@ -98,6 +103,8 @@ public class GetVpcRoutingTableRouteOptions extends GenericModel {
       return this;
     }
   }
+
+  protected GetVpcRoutingTableRouteOptions() { }
 
   protected GetVpcRoutingTableRouteOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.vpcId,

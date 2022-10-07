@@ -44,6 +44,11 @@ public class CreateBareMetalServerOptions extends GenericModel {
     private ResourceGroupIdentity resourceGroup;
     private VPCIdentity vpc;
 
+    /**
+     * Instantiates a new Builder from an existing CreateBareMetalServerOptions instance.
+     *
+     * @param createBareMetalServerOptions the instance to initialize the Builder with
+     */
     private Builder(CreateBareMetalServerOptions createBareMetalServerOptions) {
       this.initialization = createBareMetalServerOptions.initialization;
       this.primaryNetworkInterface = createBareMetalServerOptions.primaryNetworkInterface;
@@ -191,6 +196,8 @@ public class CreateBareMetalServerOptions extends GenericModel {
     }
   }
 
+  protected CreateBareMetalServerOptions() { }
+
   protected CreateBareMetalServerOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.initialization,
       "initialization cannot be null");
@@ -242,7 +249,8 @@ public class CreateBareMetalServerOptions extends GenericModel {
   /**
    * Gets the profile.
    *
-   * The profile to use for this bare metal server.
+   * The [profile](https://cloud.ibm.com/docs/vpc?topic=vpc-bare-metal-servers-profile)
+   * to use for this bare metal server.
    *
    * @return the profile
    */
@@ -299,8 +307,10 @@ public class CreateBareMetalServerOptions extends GenericModel {
   /**
    * Gets the vpc.
    *
-   * The VPC the bare metal server is to be a part of. If specified, it must match the
-   * VPC referenced by the subnets of the server's network interfaces.
+   * The VPC this bare metal server will reside in.
+   *
+   * If specified, it must match the VPC for the subnets of the server's network
+   * interfaces.
    *
    * @return the vpc
    */

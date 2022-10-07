@@ -25,5 +25,7 @@ public class LoadBalancerProfileSecurityGroupsSupportedFixed extends LoadBalance
     String FIXED = "fixed";
   }
 
+
+  protected LoadBalancerProfileSecurityGroupsSupportedFixed() { }
 }
 

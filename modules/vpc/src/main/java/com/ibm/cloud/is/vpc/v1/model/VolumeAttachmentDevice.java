@@ -21,6 +21,8 @@ public class VolumeAttachmentDevice extends GenericModel {
 
   protected String id;
 
+  protected VolumeAttachmentDevice() { }
+
   /**
    * Gets the id.
    *

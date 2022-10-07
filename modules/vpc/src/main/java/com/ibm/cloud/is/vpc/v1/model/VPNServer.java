@@ -120,6 +120,8 @@ public class VPNServer extends GenericModel {
   protected List<SubnetReference> subnets;
   protected VPCReference vpc;
 
+  protected VPNServer() { }
+
   /**
    * Gets the certificate.
    *

@@ -33,6 +33,11 @@ public class DeleteLoadBalancerListenerPolicyRuleOptions extends GenericModel {
     private String policyId;
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing DeleteLoadBalancerListenerPolicyRuleOptions instance.
+     *
+     * @param deleteLoadBalancerListenerPolicyRuleOptions the instance to initialize the Builder with
+     */
     private Builder(DeleteLoadBalancerListenerPolicyRuleOptions deleteLoadBalancerListenerPolicyRuleOptions) {
       this.loadBalancerId = deleteLoadBalancerListenerPolicyRuleOptions.loadBalancerId;
       this.listenerId = deleteLoadBalancerListenerPolicyRuleOptions.listenerId;
@@ -114,6 +119,8 @@ public class DeleteLoadBalancerListenerPolicyRuleOptions extends GenericModel {
       return this;
     }
   }
+
+  protected DeleteLoadBalancerListenerPolicyRuleOptions() { }
 
   protected DeleteLoadBalancerListenerPolicyRuleOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.loadBalancerId,

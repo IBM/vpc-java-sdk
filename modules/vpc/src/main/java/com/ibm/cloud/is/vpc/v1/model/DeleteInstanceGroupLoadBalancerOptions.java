@@ -27,6 +27,11 @@ public class DeleteInstanceGroupLoadBalancerOptions extends GenericModel {
   public static class Builder {
     private String instanceGroupId;
 
+    /**
+     * Instantiates a new Builder from an existing DeleteInstanceGroupLoadBalancerOptions instance.
+     *
+     * @param deleteInstanceGroupLoadBalancerOptions the instance to initialize the Builder with
+     */
     private Builder(DeleteInstanceGroupLoadBalancerOptions deleteInstanceGroupLoadBalancerOptions) {
       this.instanceGroupId = deleteInstanceGroupLoadBalancerOptions.instanceGroupId;
     }
@@ -66,6 +71,8 @@ public class DeleteInstanceGroupLoadBalancerOptions extends GenericModel {
       return this;
     }
   }
+
+  protected DeleteInstanceGroupLoadBalancerOptions() { }
 
   protected DeleteInstanceGroupLoadBalancerOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.instanceGroupId,

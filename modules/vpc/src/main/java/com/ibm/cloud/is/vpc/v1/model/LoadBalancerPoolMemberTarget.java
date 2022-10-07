@@ -32,8 +32,7 @@ public class LoadBalancerPoolMemberTarget extends GenericModel {
   protected String name;
   protected String address;
 
-  protected LoadBalancerPoolMemberTarget() {
-  }
+  protected LoadBalancerPoolMemberTarget() { }
 
   /**
    * Gets the crn.
@@ -49,7 +48,7 @@ public class LoadBalancerPoolMemberTarget extends GenericModel {
   /**
    * Gets the deleted.
    *
-   * If present, this property indicates the referenced resource has been deleted and provides
+   * If present, this property indicates the referenced resource has been deleted, and provides
    * some supplementary information.
    *
    * @return the deleted

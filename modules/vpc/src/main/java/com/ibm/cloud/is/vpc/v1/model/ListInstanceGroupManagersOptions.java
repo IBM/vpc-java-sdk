@@ -31,6 +31,11 @@ public class ListInstanceGroupManagersOptions extends GenericModel {
     private String start;
     private Long limit;
 
+    /**
+     * Instantiates a new Builder from an existing ListInstanceGroupManagersOptions instance.
+     *
+     * @param listInstanceGroupManagersOptions the instance to initialize the Builder with
+     */
     private Builder(ListInstanceGroupManagersOptions listInstanceGroupManagersOptions) {
       this.instanceGroupId = listInstanceGroupManagersOptions.instanceGroupId;
       this.start = listInstanceGroupManagersOptions.start;
@@ -94,6 +99,8 @@ public class ListInstanceGroupManagersOptions extends GenericModel {
       return this;
     }
   }
+
+  protected ListInstanceGroupManagersOptions() { }
 
   protected ListInstanceGroupManagersOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.instanceGroupId,

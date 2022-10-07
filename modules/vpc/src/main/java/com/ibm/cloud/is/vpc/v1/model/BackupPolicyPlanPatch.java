@@ -47,6 +47,11 @@ public class BackupPolicyPlanPatch extends GenericModel {
     private BackupPolicyPlanDeletionTriggerPatch deletionTrigger;
     private String name;
 
+    /**
+     * Instantiates a new Builder from an existing BackupPolicyPlanPatch instance.
+     *
+     * @param backupPolicyPlanPatch the instance to initialize the Builder with
+     */
     private Builder(BackupPolicyPlanPatch backupPolicyPlanPatch) {
       this.active = backupPolicyPlanPatch.active;
       this.attachUserTags = backupPolicyPlanPatch.attachUserTags;
@@ -154,6 +159,8 @@ public class BackupPolicyPlanPatch extends GenericModel {
       return this;
     }
   }
+
+  protected BackupPolicyPlanPatch() { }
 
   protected BackupPolicyPlanPatch(Builder builder) {
     active = builder.active;

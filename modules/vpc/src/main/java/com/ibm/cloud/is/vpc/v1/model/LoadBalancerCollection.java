@@ -30,6 +30,8 @@ public class LoadBalancerCollection extends GenericModel {
   @SerializedName("total_count")
   protected Long totalCount;
 
+  protected LoadBalancerCollection() { }
+
   /**
    * Gets the first.
    *

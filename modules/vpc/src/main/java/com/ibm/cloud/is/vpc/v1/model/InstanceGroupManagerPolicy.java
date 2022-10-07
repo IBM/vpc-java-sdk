@@ -61,8 +61,7 @@ public class InstanceGroupManagerPolicy extends GenericModel {
   @SerializedName("policy_type")
   protected String policyType;
 
-  protected InstanceGroupManagerPolicy() {
-  }
+  protected InstanceGroupManagerPolicy() { }
 
   /**
    * Gets the createdAt.

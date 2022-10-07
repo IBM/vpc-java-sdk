@@ -26,6 +26,8 @@ public class ImageCollection extends GenericModel {
   protected Long limit;
   protected ImageCollectionNext next;
 
+  protected ImageCollection() { }
+
   /**
    * Gets the first.
    *

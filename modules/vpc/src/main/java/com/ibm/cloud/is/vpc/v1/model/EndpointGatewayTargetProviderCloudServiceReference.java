@@ -25,5 +25,7 @@ public class EndpointGatewayTargetProviderCloudServiceReference extends Endpoint
     String PROVIDER_CLOUD_SERVICE = "provider_cloud_service";
   }
 
+
+  protected EndpointGatewayTargetProviderCloudServiceReference() { }
 }
 

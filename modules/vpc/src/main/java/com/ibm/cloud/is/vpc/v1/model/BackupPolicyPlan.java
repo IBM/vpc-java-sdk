@@ -70,6 +70,8 @@ public class BackupPolicyPlan extends GenericModel {
   @SerializedName("resource_type")
   protected String resourceType;
 
+  protected BackupPolicyPlan() { }
+
   /**
    * Gets the active.
    *

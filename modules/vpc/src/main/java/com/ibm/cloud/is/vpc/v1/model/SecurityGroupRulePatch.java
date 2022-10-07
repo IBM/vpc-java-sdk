@@ -24,7 +24,7 @@ import com.ibm.cloud.sdk.core.util.GsonSingleton;
 public class SecurityGroupRulePatch extends GenericModel {
 
   /**
-   * The direction of traffic to enforce, either `inbound` or `outbound`.
+   * The direction of traffic to enforce.
    */
   public interface Direction {
     /** inbound. */
@@ -66,6 +66,11 @@ public class SecurityGroupRulePatch extends GenericModel {
     private SecurityGroupRuleRemotePatch remote;
     private Long type;
 
+    /**
+     * Instantiates a new Builder from an existing SecurityGroupRulePatch instance.
+     *
+     * @param securityGroupRulePatch the instance to initialize the Builder with
+     */
     private Builder(SecurityGroupRulePatch securityGroupRulePatch) {
       this.code = securityGroupRulePatch.code;
       this.direction = securityGroupRulePatch.direction;
@@ -169,6 +174,8 @@ public class SecurityGroupRulePatch extends GenericModel {
     }
   }
 
+  protected SecurityGroupRulePatch() { }
+
   protected SecurityGroupRulePatch(Builder builder) {
     code = builder.code;
     direction = builder.direction;
@@ -191,7 +198,9 @@ public class SecurityGroupRulePatch extends GenericModel {
   /**
    * Gets the code.
    *
-   * The ICMP traffic code to allow. Specify `null` to remove an existing ICMP traffic code value.
+   * The ICMP traffic code to allow. If set, `type` must also be set.
+   *
+   * Specify `null` to remove an existing ICMP traffic code.
    *
    * @return the code
    */
@@ -202,7 +211,7 @@ public class SecurityGroupRulePatch extends GenericModel {
   /**
    * Gets the direction.
    *
-   * The direction of traffic to enforce, either `inbound` or `outbound`.
+   * The direction of traffic to enforce.
    *
    * @return the direction
    */
@@ -226,8 +235,9 @@ public class SecurityGroupRulePatch extends GenericModel {
   /**
    * Gets the portMax.
    *
-   * The inclusive upper bound of the protocol port range. Specify `null` to clear an existing upper bound. If a lower
-   * bound has been set, the upper bound must also be set, and must not be smaller.
+   * The inclusive upper bound of the protocol port range. If set, `port_min` must also be set, and must not be larger.
+   *
+   * Specify `null` to remove an existing upper bound.
    *
    * @return the portMax
    */
@@ -238,8 +248,9 @@ public class SecurityGroupRulePatch extends GenericModel {
   /**
    * Gets the portMin.
    *
-   * The inclusive lower bound of the protocol port range. Specify `null` to clear an existing lower bound. If an upper
-   * bound has been set, the lower bound must also be set, and must not be larger.
+   * The inclusive lower bound of the protocol port range. If set, `port_max` must also be set, and must not be smaller.
+   *
+   * Specify `null` to remove an existing lower bound.
    *
    * @return the portMin
    */
@@ -253,7 +264,7 @@ public class SecurityGroupRulePatch extends GenericModel {
    * The IP addresses or security groups from which this rule will allow traffic (or to
    * which, for outbound rules). Can be specified as an IP address, a CIDR block, or a
    * security group. A CIDR block of `0.0.0.0/0` will allow traffic from any source (or to
-   * any source, for outbound rules).
+   * any destination, for outbound rules).
    *
    * @return the remote
    */
@@ -264,7 +275,9 @@ public class SecurityGroupRulePatch extends GenericModel {
   /**
    * Gets the type.
    *
-   * The ICMP traffic type to allow. Specify `null` to remove an existing ICMP traffic type value.
+   * The ICMP traffic type to allow.
+   *
+   * Specify `null` to remove an existing ICMP traffic type value.
    *
    * @return the type
    */

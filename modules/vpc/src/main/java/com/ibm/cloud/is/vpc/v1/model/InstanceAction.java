@@ -60,6 +60,8 @@ public class InstanceAction extends GenericModel {
   protected String status;
   protected String type;
 
+  protected InstanceAction() { }
+
   /**
    * Gets the completedAt.
    *

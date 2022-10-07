@@ -31,8 +31,7 @@ public class FlowLogCollectorTargetPrototype extends GenericModel {
   protected String href;
   protected String crn;
 
-  protected FlowLogCollectorTargetPrototype() {
-  }
+  protected FlowLogCollectorTargetPrototype() { }
 
   /**
    * Gets the id.

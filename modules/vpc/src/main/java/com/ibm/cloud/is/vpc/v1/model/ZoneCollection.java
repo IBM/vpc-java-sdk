@@ -23,6 +23,8 @@ public class ZoneCollection extends GenericModel {
 
   protected List<Zone> zones;
 
+  protected ZoneCollection() { }
+
   /**
    * Gets the zones.
    *

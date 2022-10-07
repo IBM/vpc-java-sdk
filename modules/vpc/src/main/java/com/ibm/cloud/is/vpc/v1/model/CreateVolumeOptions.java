@@ -27,6 +27,11 @@ public class CreateVolumeOptions extends GenericModel {
   public static class Builder {
     private VolumePrototype volumePrototype;
 
+    /**
+     * Instantiates a new Builder from an existing CreateVolumeOptions instance.
+     *
+     * @param createVolumeOptions the instance to initialize the Builder with
+     */
     private Builder(CreateVolumeOptions createVolumeOptions) {
       this.volumePrototype = createVolumeOptions.volumePrototype;
     }
@@ -66,6 +71,8 @@ public class CreateVolumeOptions extends GenericModel {
       return this;
     }
   }
+
+  protected CreateVolumeOptions() { }
 
   protected CreateVolumeOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.volumePrototype,

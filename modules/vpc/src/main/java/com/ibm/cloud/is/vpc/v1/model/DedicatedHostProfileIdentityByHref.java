@@ -24,6 +24,11 @@ public class DedicatedHostProfileIdentityByHref extends DedicatedHostProfileIden
   public static class Builder {
     private String href;
 
+    /**
+     * Instantiates a new Builder from an existing DedicatedHostProfileIdentityByHref instance.
+     *
+     * @param dedicatedHostProfileIdentityByHref the instance to initialize the Builder with
+     */
     public Builder(DedicatedHostProfileIdentity dedicatedHostProfileIdentityByHref) {
       this.href = dedicatedHostProfileIdentityByHref.href;
     }
@@ -63,6 +68,8 @@ public class DedicatedHostProfileIdentityByHref extends DedicatedHostProfileIden
       return this;
     }
   }
+
+  protected DedicatedHostProfileIdentityByHref() { }
 
   protected DedicatedHostProfileIdentityByHref(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.href,

@@ -24,6 +24,11 @@ public class OperatingSystemIdentityByHref extends OperatingSystemIdentity {
   public static class Builder {
     private String href;
 
+    /**
+     * Instantiates a new Builder from an existing OperatingSystemIdentityByHref instance.
+     *
+     * @param operatingSystemIdentityByHref the instance to initialize the Builder with
+     */
     public Builder(OperatingSystemIdentity operatingSystemIdentityByHref) {
       this.href = operatingSystemIdentityByHref.href;
     }
@@ -63,6 +68,8 @@ public class OperatingSystemIdentityByHref extends OperatingSystemIdentity {
       return this;
     }
   }
+
+  protected OperatingSystemIdentityByHref() { }
 
   protected OperatingSystemIdentityByHref(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.href,

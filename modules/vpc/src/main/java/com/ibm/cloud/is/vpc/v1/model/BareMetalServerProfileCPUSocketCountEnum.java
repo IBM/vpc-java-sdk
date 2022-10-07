@@ -25,5 +25,7 @@ public class BareMetalServerProfileCPUSocketCountEnum extends BareMetalServerPro
     String X_ENUM = "enum";
   }
 
+
+  protected BareMetalServerProfileCPUSocketCountEnum() { }
 }
 

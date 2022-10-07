@@ -22,8 +22,6 @@ import com.ibm.cloud.is.vpc.v1.model.VPCIdentityById;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import org.testng.annotations.Test;
@@ -68,17 +66,17 @@ public class CreateEndpointGatewayOptionsTest {
     CreateEndpointGatewayOptions createEndpointGatewayOptionsModel = new CreateEndpointGatewayOptions.Builder()
       .target(endpointGatewayTargetPrototypeModel)
       .vpc(vpcIdentityModel)
-      .ips(new java.util.ArrayList<EndpointGatewayReservedIP>(java.util.Arrays.asList(endpointGatewayReservedIpModel)))
+      .ips(java.util.Arrays.asList(endpointGatewayReservedIpModel))
       .name("my-endpoint-gateway")
       .resourceGroup(resourceGroupIdentityModel)
-      .securityGroups(new java.util.ArrayList<SecurityGroupIdentity>(java.util.Arrays.asList(securityGroupIdentityModel)))
+      .securityGroups(java.util.Arrays.asList(securityGroupIdentityModel))
       .build();
     assertEquals(createEndpointGatewayOptionsModel.target(), endpointGatewayTargetPrototypeModel);
     assertEquals(createEndpointGatewayOptionsModel.vpc(), vpcIdentityModel);
-    assertEquals(createEndpointGatewayOptionsModel.ips(), new java.util.ArrayList<EndpointGatewayReservedIP>(java.util.Arrays.asList(endpointGatewayReservedIpModel)));
+    assertEquals(createEndpointGatewayOptionsModel.ips(), java.util.Arrays.asList(endpointGatewayReservedIpModel));
     assertEquals(createEndpointGatewayOptionsModel.name(), "my-endpoint-gateway");
     assertEquals(createEndpointGatewayOptionsModel.resourceGroup(), resourceGroupIdentityModel);
-    assertEquals(createEndpointGatewayOptionsModel.securityGroups(), new java.util.ArrayList<SecurityGroupIdentity>(java.util.Arrays.asList(securityGroupIdentityModel)));
+    assertEquals(createEndpointGatewayOptionsModel.securityGroups(), java.util.Arrays.asList(securityGroupIdentityModel));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

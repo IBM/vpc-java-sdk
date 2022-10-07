@@ -24,6 +24,11 @@ public class ZoneIdentityByHref extends ZoneIdentity {
   public static class Builder {
     private String href;
 
+    /**
+     * Instantiates a new Builder from an existing ZoneIdentityByHref instance.
+     *
+     * @param zoneIdentityByHref the instance to initialize the Builder with
+     */
     public Builder(ZoneIdentity zoneIdentityByHref) {
       this.href = zoneIdentityByHref.href;
     }
@@ -63,6 +68,8 @@ public class ZoneIdentityByHref extends ZoneIdentity {
       return this;
     }
   }
+
+  protected ZoneIdentityByHref() { }
 
   protected ZoneIdentityByHref(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.href,

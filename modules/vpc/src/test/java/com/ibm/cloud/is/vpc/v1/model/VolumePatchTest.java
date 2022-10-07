@@ -18,8 +18,6 @@ import com.ibm.cloud.is.vpc.v1.model.VolumeProfileIdentityByName;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -45,13 +43,13 @@ public class VolumePatchTest {
       .iops(Long.valueOf("10000"))
       .name("my-volume")
       .profile(volumeProfileIdentityModel)
-      .userTags(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
+      .userTags(java.util.Arrays.asList("testString"))
       .build();
     assertEquals(volumePatchModel.capacity(), Long.valueOf("100"));
     assertEquals(volumePatchModel.iops(), Long.valueOf("10000"));
     assertEquals(volumePatchModel.name(), "my-volume");
     assertEquals(volumePatchModel.profile(), volumeProfileIdentityModel);
-    assertEquals(volumePatchModel.userTags(), new java.util.ArrayList<String>(java.util.Arrays.asList("testString")));
+    assertEquals(volumePatchModel.userTags(), java.util.Arrays.asList("testString"));
 
     String json = TestUtilities.serialize(volumePatchModel);
 
@@ -73,7 +71,7 @@ public class VolumePatchTest {
       .iops(Long.valueOf("10000"))
       .name("my-volume")
       .profile(volumeProfileIdentityModel)
-      .userTags(new java.util.ArrayList<String>(java.util.Arrays.asList("testString")))
+      .userTags(java.util.Arrays.asList("testString"))
       .build();
 
     Map<String, Object> mergePatch = volumePatchModel.asPatch();

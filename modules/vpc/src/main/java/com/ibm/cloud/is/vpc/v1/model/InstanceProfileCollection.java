@@ -23,6 +23,8 @@ public class InstanceProfileCollection extends GenericModel {
 
   protected List<InstanceProfile> profiles;
 
+  protected InstanceProfileCollection() { }
+
   /**
    * Gets the profiles.
    *

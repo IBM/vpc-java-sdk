@@ -25,5 +25,7 @@ public class BareMetalServerProfileMemoryFixed extends BareMetalServerProfileMem
     String FIXED = "fixed";
   }
 
+
+  protected BareMetalServerProfileMemoryFixed() { }
 }
 

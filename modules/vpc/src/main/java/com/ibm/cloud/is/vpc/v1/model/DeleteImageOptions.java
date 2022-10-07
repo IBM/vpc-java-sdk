@@ -27,6 +27,11 @@ public class DeleteImageOptions extends GenericModel {
   public static class Builder {
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing DeleteImageOptions instance.
+     *
+     * @param deleteImageOptions the instance to initialize the Builder with
+     */
     private Builder(DeleteImageOptions deleteImageOptions) {
       this.id = deleteImageOptions.id;
     }
@@ -66,6 +71,8 @@ public class DeleteImageOptions extends GenericModel {
       return this;
     }
   }
+
+  protected DeleteImageOptions() { }
 
   protected DeleteImageOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,

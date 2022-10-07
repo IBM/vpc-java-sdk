@@ -27,6 +27,11 @@ public class DeleteNetworkAclOptions extends GenericModel {
   public static class Builder {
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing DeleteNetworkAclOptions instance.
+     *
+     * @param deleteNetworkAclOptions the instance to initialize the Builder with
+     */
     private Builder(DeleteNetworkAclOptions deleteNetworkAclOptions) {
       this.id = deleteNetworkAclOptions.id;
     }
@@ -66,6 +71,8 @@ public class DeleteNetworkAclOptions extends GenericModel {
       return this;
     }
   }
+
+  protected DeleteNetworkAclOptions() { }
 
   protected DeleteNetworkAclOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,

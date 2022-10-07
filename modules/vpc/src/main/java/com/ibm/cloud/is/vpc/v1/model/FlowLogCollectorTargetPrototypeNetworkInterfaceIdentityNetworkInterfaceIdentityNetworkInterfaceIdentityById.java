@@ -24,6 +24,11 @@ public class FlowLogCollectorTargetPrototypeNetworkInterfaceIdentityNetworkInter
   public static class Builder {
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing FlowLogCollectorTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceIdentityNetworkInterfaceIdentityById instance.
+     *
+     * @param flowLogCollectorTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceIdentityNetworkInterfaceIdentityById the instance to initialize the Builder with
+     */
     public Builder(FlowLogCollectorTargetPrototypeNetworkInterfaceIdentity flowLogCollectorTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceIdentityNetworkInterfaceIdentityById) {
       this.id = flowLogCollectorTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceIdentityNetworkInterfaceIdentityById.id;
     }
@@ -63,6 +68,8 @@ public class FlowLogCollectorTargetPrototypeNetworkInterfaceIdentityNetworkInter
       return this;
     }
   }
+
+  protected FlowLogCollectorTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceIdentityNetworkInterfaceIdentityById() { }
 
   protected FlowLogCollectorTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceIdentityNetworkInterfaceIdentityById(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.id,

@@ -27,6 +27,11 @@ public class GetVolumeProfileOptions extends GenericModel {
   public static class Builder {
     private String name;
 
+    /**
+     * Instantiates a new Builder from an existing GetVolumeProfileOptions instance.
+     *
+     * @param getVolumeProfileOptions the instance to initialize the Builder with
+     */
     private Builder(GetVolumeProfileOptions getVolumeProfileOptions) {
       this.name = getVolumeProfileOptions.name;
     }
@@ -66,6 +71,8 @@ public class GetVolumeProfileOptions extends GenericModel {
       return this;
     }
   }
+
+  protected GetVolumeProfileOptions() { }
 
   protected GetVolumeProfileOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.name,

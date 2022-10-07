@@ -27,6 +27,11 @@ public class GetSubnetPublicGatewayOptions extends GenericModel {
   public static class Builder {
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing GetSubnetPublicGatewayOptions instance.
+     *
+     * @param getSubnetPublicGatewayOptions the instance to initialize the Builder with
+     */
     private Builder(GetSubnetPublicGatewayOptions getSubnetPublicGatewayOptions) {
       this.id = getSubnetPublicGatewayOptions.id;
     }
@@ -66,6 +71,8 @@ public class GetSubnetPublicGatewayOptions extends GenericModel {
       return this;
     }
   }
+
+  protected GetSubnetPublicGatewayOptions() { }
 
   protected GetSubnetPublicGatewayOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,

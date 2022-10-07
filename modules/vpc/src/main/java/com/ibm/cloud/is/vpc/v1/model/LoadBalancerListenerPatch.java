@@ -25,12 +25,15 @@ public class LoadBalancerListenerPatch extends GenericModel {
 
   /**
    * The listener protocol. Each listener in the load balancer must have a unique `port` and `protocol` combination.
+   *
+   * Load balancers in the `network` family support `tcp` and `udp` (if `udp_supported` is `true`). Load balancers in
+   * the `application` family support `tcp`, `http` and
+   * `https`.
+   *
    * Additional restrictions:
-   * - If this load balancer is in the `network` family, the protocol must be `tcp`
-   *   or `udp` (if `udp_supported` is `true`) , and it cannot be changed while
-   *   `default_pool` is set.
+   * - If `default_pool` is set, the protocol cannot be changed.
    * - If `https_redirect` is set, the protocol must be `http`.
-   * - If this listener is a listener's `https_redirect` target, the protocol must be
+   * - If another listener's `https_redirect` targets this listener, the protocol must be
    *   `https`.
    */
   public interface Protocol {
@@ -75,6 +78,11 @@ public class LoadBalancerListenerPatch extends GenericModel {
     private Long portMin;
     private String protocol;
 
+    /**
+     * Instantiates a new Builder from an existing LoadBalancerListenerPatch instance.
+     *
+     * @param loadBalancerListenerPatch the instance to initialize the Builder with
+     */
     private Builder(LoadBalancerListenerPatch loadBalancerListenerPatch) {
       this.acceptProxyProtocol = loadBalancerListenerPatch.acceptProxyProtocol;
       this.certificateInstance = loadBalancerListenerPatch.certificateInstance;
@@ -202,6 +210,8 @@ public class LoadBalancerListenerPatch extends GenericModel {
     }
   }
 
+  protected LoadBalancerListenerPatch() { }
+
   protected LoadBalancerListenerPatch(Builder builder) {
     acceptProxyProtocol = builder.acceptProxyProtocol;
     certificateInstance = builder.certificateInstance;
@@ -242,8 +252,8 @@ public class LoadBalancerListenerPatch extends GenericModel {
   /**
    * Gets the certificateInstance.
    *
-   * The certificate instance used for SSL termination. It is applicable only to `https`
-   * protocol.
+   * The certificate instance to use for SSL termination. The listener must have a
+   * `protocol` of `https`.
    *
    * @return the certificateInstance
    */
@@ -348,12 +358,15 @@ public class LoadBalancerListenerPatch extends GenericModel {
    * Gets the protocol.
    *
    * The listener protocol. Each listener in the load balancer must have a unique `port` and `protocol` combination.
+   *
+   * Load balancers in the `network` family support `tcp` and `udp` (if `udp_supported` is `true`). Load balancers in
+   * the `application` family support `tcp`, `http` and
+   * `https`.
+   *
    * Additional restrictions:
-   * - If this load balancer is in the `network` family, the protocol must be `tcp`
-   *   or `udp` (if `udp_supported` is `true`) , and it cannot be changed while
-   *   `default_pool` is set.
+   * - If `default_pool` is set, the protocol cannot be changed.
    * - If `https_redirect` is set, the protocol must be `http`.
-   * - If this listener is a listener's `https_redirect` target, the protocol must be
+   * - If another listener's `https_redirect` targets this listener, the protocol must be
    *   `https`.
    *
    * @return the protocol

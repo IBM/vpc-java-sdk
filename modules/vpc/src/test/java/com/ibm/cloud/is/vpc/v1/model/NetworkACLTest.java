@@ -14,7 +14,7 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.NetworkACL;
-import com.ibm.cloud.is.vpc.v1.model.NetworkACLRuleItemNetworkACLRuleProtocolICMP;
+import com.ibm.cloud.is.vpc.v1.model.NetworkACLRuleItemNetworkACLRuleProtocolTCPUDP;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLRuleReference;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLRuleReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;

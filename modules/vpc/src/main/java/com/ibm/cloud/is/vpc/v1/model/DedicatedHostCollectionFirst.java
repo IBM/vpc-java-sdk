@@ -21,6 +21,8 @@ public class DedicatedHostCollectionFirst extends GenericModel {
 
   protected String href;
 
+  protected DedicatedHostCollectionFirst() { }
+
   /**
    * Gets the href.
    *

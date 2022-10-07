@@ -45,6 +45,11 @@ public class BackupPolicyPlanPrototype extends GenericModel {
     private BackupPolicyPlanDeletionTriggerPrototype deletionTrigger;
     private String name;
 
+    /**
+     * Instantiates a new Builder from an existing BackupPolicyPlanPrototype instance.
+     *
+     * @param backupPolicyPlanPrototype the instance to initialize the Builder with
+     */
     private Builder(BackupPolicyPlanPrototype backupPolicyPlanPrototype) {
       this.active = backupPolicyPlanPrototype.active;
       this.attachUserTags = backupPolicyPlanPrototype.attachUserTags;
@@ -161,6 +166,8 @@ public class BackupPolicyPlanPrototype extends GenericModel {
       return this;
     }
   }
+
+  protected BackupPolicyPlanPrototype() { }
 
   protected BackupPolicyPlanPrototype(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.cronSpec,

@@ -25,5 +25,7 @@ public class ReservedIPTargetNetworkInterfaceReferenceTargetContext extends Rese
     String NETWORK_INTERFACE = "network_interface";
   }
 
+
+  protected ReservedIPTargetNetworkInterfaceReferenceTargetContext() { }
 }
 

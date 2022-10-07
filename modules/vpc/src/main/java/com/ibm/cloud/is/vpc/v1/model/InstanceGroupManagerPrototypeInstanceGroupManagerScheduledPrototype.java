@@ -34,6 +34,11 @@ public class InstanceGroupManagerPrototypeInstanceGroupManagerScheduledPrototype
     private String name;
     private String managerType;
 
+    /**
+     * Instantiates a new Builder from an existing InstanceGroupManagerPrototypeInstanceGroupManagerScheduledPrototype instance.
+     *
+     * @param instanceGroupManagerPrototypeInstanceGroupManagerScheduledPrototype the instance to initialize the Builder with
+     */
     public Builder(InstanceGroupManagerPrototype instanceGroupManagerPrototypeInstanceGroupManagerScheduledPrototype) {
       this.managementEnabled = instanceGroupManagerPrototypeInstanceGroupManagerScheduledPrototype.managementEnabled;
       this.name = instanceGroupManagerPrototypeInstanceGroupManagerScheduledPrototype.name;
@@ -97,6 +102,8 @@ public class InstanceGroupManagerPrototypeInstanceGroupManagerScheduledPrototype
       return this;
     }
   }
+
+  protected InstanceGroupManagerPrototypeInstanceGroupManagerScheduledPrototype() { }
 
   protected InstanceGroupManagerPrototypeInstanceGroupManagerScheduledPrototype(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.managerType,

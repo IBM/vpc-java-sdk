@@ -49,8 +49,7 @@ public class VPNGatewayConnectionPatch extends GenericModel {
   @SerializedName("routing_protocol")
   protected String routingProtocol;
 
-  protected VPNGatewayConnectionPatch() {
-  }
+  protected VPNGatewayConnectionPatch() { }
 
   /**
    * Gets the adminStateUp.

@@ -20,6 +20,18 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class ListVpnGatewaysOptions extends GenericModel {
 
   /**
+   * Sorts the returned collection by the specified property name in ascending order. A `-` may be prepended to the name
+   * to sort in descending order. For example, the value `-created_at` sorts the collection by the `created_at` property
+   * in descending order, and the value `name` sorts it by the `name` property in ascending order.
+   */
+  public interface Sort {
+    /** created_at. */
+    String CREATED_AT = "created_at";
+    /** name. */
+    String NAME = "name";
+  }
+
+  /**
    * Filters the collection to VPN gateways with the specified mode.
    */
   public interface Mode {
@@ -32,6 +44,7 @@ public class ListVpnGatewaysOptions extends GenericModel {
   protected String start;
   protected Long limit;
   protected String resourceGroupId;
+  protected String sort;
   protected String mode;
 
   /**
@@ -41,12 +54,19 @@ public class ListVpnGatewaysOptions extends GenericModel {
     private String start;
     private Long limit;
     private String resourceGroupId;
+    private String sort;
     private String mode;
 
+    /**
+     * Instantiates a new Builder from an existing ListVpnGatewaysOptions instance.
+     *
+     * @param listVpnGatewaysOptions the instance to initialize the Builder with
+     */
     private Builder(ListVpnGatewaysOptions listVpnGatewaysOptions) {
       this.start = listVpnGatewaysOptions.start;
       this.limit = listVpnGatewaysOptions.limit;
       this.resourceGroupId = listVpnGatewaysOptions.resourceGroupId;
+      this.sort = listVpnGatewaysOptions.sort;
       this.mode = listVpnGatewaysOptions.mode;
     }
 
@@ -99,6 +119,17 @@ public class ListVpnGatewaysOptions extends GenericModel {
     }
 
     /**
+     * Set the sort.
+     *
+     * @param sort the sort
+     * @return the ListVpnGatewaysOptions builder
+     */
+    public Builder sort(String sort) {
+      this.sort = sort;
+      return this;
+    }
+
+    /**
      * Set the mode.
      *
      * @param mode the mode
@@ -110,10 +141,13 @@ public class ListVpnGatewaysOptions extends GenericModel {
     }
   }
 
+  protected ListVpnGatewaysOptions() { }
+
   protected ListVpnGatewaysOptions(Builder builder) {
     start = builder.start;
     limit = builder.limit;
     resourceGroupId = builder.resourceGroupId;
+    sort = builder.sort;
     mode = builder.mode;
   }
 
@@ -157,6 +191,19 @@ public class ListVpnGatewaysOptions extends GenericModel {
    */
   public String resourceGroupId() {
     return resourceGroupId;
+  }
+
+  /**
+   * Gets the sort.
+   *
+   * Sorts the returned collection by the specified property name in ascending order. A `-` may be prepended to the name
+   * to sort in descending order. For example, the value `-created_at` sorts the collection by the `created_at` property
+   * in descending order, and the value `name` sorts it by the `name` property in ascending order.
+   *
+   * @return the sort
+   */
+  public String sort() {
+    return sort;
   }
 
   /**

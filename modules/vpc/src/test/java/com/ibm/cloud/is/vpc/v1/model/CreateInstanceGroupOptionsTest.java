@@ -22,8 +22,6 @@ import com.ibm.cloud.is.vpc.v1.model.SubnetIdentityById;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import org.testng.annotations.Test;
@@ -65,7 +63,7 @@ public class CreateInstanceGroupOptionsTest {
 
     CreateInstanceGroupOptions createInstanceGroupOptionsModel = new CreateInstanceGroupOptions.Builder()
       .instanceTemplate(instanceTemplateIdentityModel)
-      .subnets(new java.util.ArrayList<SubnetIdentity>(java.util.Arrays.asList(subnetIdentityModel)))
+      .subnets(java.util.Arrays.asList(subnetIdentityModel))
       .applicationPort(Long.valueOf("22"))
       .loadBalancer(loadBalancerIdentityModel)
       .loadBalancerPool(loadBalancerPoolIdentityModel)
@@ -74,7 +72,7 @@ public class CreateInstanceGroupOptionsTest {
       .resourceGroup(resourceGroupIdentityModel)
       .build();
     assertEquals(createInstanceGroupOptionsModel.instanceTemplate(), instanceTemplateIdentityModel);
-    assertEquals(createInstanceGroupOptionsModel.subnets(), new java.util.ArrayList<SubnetIdentity>(java.util.Arrays.asList(subnetIdentityModel)));
+    assertEquals(createInstanceGroupOptionsModel.subnets(), java.util.Arrays.asList(subnetIdentityModel));
     assertEquals(createInstanceGroupOptionsModel.applicationPort(), Long.valueOf("22"));
     assertEquals(createInstanceGroupOptionsModel.loadBalancer(), loadBalancerIdentityModel);
     assertEquals(createInstanceGroupOptionsModel.loadBalancerPool(), loadBalancerPoolIdentityModel);

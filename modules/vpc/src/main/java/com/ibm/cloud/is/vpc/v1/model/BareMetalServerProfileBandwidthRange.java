@@ -26,5 +26,7 @@ public class BareMetalServerProfileBandwidthRange extends BareMetalServerProfile
     String RANGE = "range";
   }
 
+
+  protected BareMetalServerProfileBandwidthRange() { }
 }
 

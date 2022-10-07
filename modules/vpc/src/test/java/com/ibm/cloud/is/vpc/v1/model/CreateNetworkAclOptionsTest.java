@@ -15,14 +15,12 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.CreateNetworkAclOptions;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLPrototypeNetworkACLByRules;
-import com.ibm.cloud.is.vpc.v1.model.NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolTCPUDP;
+import com.ibm.cloud.is.vpc.v1.model.NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolTCPUDPPrototype;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.VPCIdentityById;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import org.testng.annotations.Test;
@@ -47,7 +45,7 @@ public class CreateNetworkAclOptionsTest {
       .build();
     assertEquals(vpcIdentityModel.id(), "cf7cd5a-2f30-4336-a495-6addc820cd61");
 
-    NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolTCPUDP networkAclRulePrototypeNetworkAclContextModel = new NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolTCPUDP.Builder()
+    NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolTCPUDPPrototype networkAclRulePrototypeNetworkAclContextModel = new NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolTCPUDPPrototype.Builder()
       .action("allow")
       .destination("192.168.3.2/32")
       .direction("inbound")
@@ -74,12 +72,12 @@ public class CreateNetworkAclOptionsTest {
       .name("my-network-acl")
       .resourceGroup(resourceGroupIdentityModel)
       .vpc(vpcIdentityModel)
-      .rules(new java.util.ArrayList<NetworkACLRulePrototypeNetworkACLContext>(java.util.Arrays.asList(networkAclRulePrototypeNetworkAclContextModel)))
+      .rules(java.util.Arrays.asList(networkAclRulePrototypeNetworkAclContextModel))
       .build();
     assertEquals(networkAclPrototypeModel.name(), "my-network-acl");
     assertEquals(networkAclPrototypeModel.resourceGroup(), resourceGroupIdentityModel);
     assertEquals(networkAclPrototypeModel.vpc(), vpcIdentityModel);
-    assertEquals(networkAclPrototypeModel.rules(), new java.util.ArrayList<NetworkACLRulePrototypeNetworkACLContext>(java.util.Arrays.asList(networkAclRulePrototypeNetworkAclContextModel)));
+    assertEquals(networkAclPrototypeModel.rules(), java.util.Arrays.asList(networkAclRulePrototypeNetworkAclContextModel));
 
     CreateNetworkAclOptions createNetworkAclOptionsModel = new CreateNetworkAclOptions.Builder()
       .networkAclPrototype(networkAclPrototypeModel)

@@ -24,6 +24,11 @@ public class NetworkACLRuleBeforePrototypeNetworkACLRuleIdentityByHref extends N
   public static class Builder {
     private String href;
 
+    /**
+     * Instantiates a new Builder from an existing NetworkACLRuleBeforePrototypeNetworkACLRuleIdentityByHref instance.
+     *
+     * @param networkAclRuleBeforePrototypeNetworkAclRuleIdentityByHref the instance to initialize the Builder with
+     */
     public Builder(NetworkACLRuleBeforePrototype networkAclRuleBeforePrototypeNetworkAclRuleIdentityByHref) {
       this.href = networkAclRuleBeforePrototypeNetworkAclRuleIdentityByHref.href;
     }
@@ -63,6 +68,8 @@ public class NetworkACLRuleBeforePrototypeNetworkACLRuleIdentityByHref extends N
       return this;
     }
   }
+
+  protected NetworkACLRuleBeforePrototypeNetworkACLRuleIdentityByHref() { }
 
   protected NetworkACLRuleBeforePrototypeNetworkACLRuleIdentityByHref(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.href,

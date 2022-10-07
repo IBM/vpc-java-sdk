@@ -24,6 +24,11 @@ public class SubnetPublicGatewayPatchPublicGatewayIdentityByCRN extends SubnetPu
   public static class Builder {
     private String crn;
 
+    /**
+     * Instantiates a new Builder from an existing SubnetPublicGatewayPatchPublicGatewayIdentityByCRN instance.
+     *
+     * @param subnetPublicGatewayPatchPublicGatewayIdentityByCrn the instance to initialize the Builder with
+     */
     public Builder(SubnetPublicGatewayPatch subnetPublicGatewayPatchPublicGatewayIdentityByCrn) {
       this.crn = subnetPublicGatewayPatchPublicGatewayIdentityByCrn.crn;
     }
@@ -63,6 +68,8 @@ public class SubnetPublicGatewayPatchPublicGatewayIdentityByCRN extends SubnetPu
       return this;
     }
   }
+
+  protected SubnetPublicGatewayPatchPublicGatewayIdentityByCRN() { }
 
   protected SubnetPublicGatewayPatchPublicGatewayIdentityByCRN(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.crn,

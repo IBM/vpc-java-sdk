@@ -45,8 +45,7 @@ public class InstanceProfileMemory extends GenericModel {
   protected Long step;
   protected List<Long> values;
 
-  protected InstanceProfileMemory() {
-  }
+  protected InstanceProfileMemory() { }
 
   /**
    * Gets the type.

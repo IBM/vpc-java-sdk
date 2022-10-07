@@ -29,6 +29,11 @@ public class DeleteVpcAddressPrefixOptions extends GenericModel {
     private String vpcId;
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing DeleteVpcAddressPrefixOptions instance.
+     *
+     * @param deleteVpcAddressPrefixOptions the instance to initialize the Builder with
+     */
     private Builder(DeleteVpcAddressPrefixOptions deleteVpcAddressPrefixOptions) {
       this.vpcId = deleteVpcAddressPrefixOptions.vpcId;
       this.id = deleteVpcAddressPrefixOptions.id;
@@ -82,6 +87,8 @@ public class DeleteVpcAddressPrefixOptions extends GenericModel {
       return this;
     }
   }
+
+  protected DeleteVpcAddressPrefixOptions() { }
 
   protected DeleteVpcAddressPrefixOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.vpcId,

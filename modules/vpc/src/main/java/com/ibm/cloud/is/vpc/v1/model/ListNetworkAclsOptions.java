@@ -31,6 +31,11 @@ public class ListNetworkAclsOptions extends GenericModel {
     private Long limit;
     private String resourceGroupId;
 
+    /**
+     * Instantiates a new Builder from an existing ListNetworkAclsOptions instance.
+     *
+     * @param listNetworkAclsOptions the instance to initialize the Builder with
+     */
     private Builder(ListNetworkAclsOptions listNetworkAclsOptions) {
       this.start = listNetworkAclsOptions.start;
       this.limit = listNetworkAclsOptions.limit;
@@ -85,6 +90,8 @@ public class ListNetworkAclsOptions extends GenericModel {
       return this;
     }
   }
+
+  protected ListNetworkAclsOptions() { }
 
   protected ListNetworkAclsOptions(Builder builder) {
     start = builder.start;

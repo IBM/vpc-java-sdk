@@ -25,5 +25,7 @@ public class InstanceProfileMemoryRange extends InstanceProfileMemory {
     String RANGE = "range";
   }
 
+
+  protected InstanceProfileMemoryRange() { }
 }
 

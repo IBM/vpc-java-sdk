@@ -46,7 +46,8 @@ public class NetworkACLRulePatchTest {
       .destinationPortMax(Long.valueOf("22"))
       .destinationPortMin(Long.valueOf("22"))
       .direction("inbound")
-      .name("my-rule-2")
+      .name("my-rule-1")
+      .protocol("tcp")
       .source("192.168.3.2/32")
       .sourcePortMax(Long.valueOf("65535"))
       .sourcePortMin(Long.valueOf("49152"))
@@ -59,7 +60,8 @@ public class NetworkACLRulePatchTest {
     assertEquals(networkAclRulePatchModel.destinationPortMax(), Long.valueOf("22"));
     assertEquals(networkAclRulePatchModel.destinationPortMin(), Long.valueOf("22"));
     assertEquals(networkAclRulePatchModel.direction(), "inbound");
-    assertEquals(networkAclRulePatchModel.name(), "my-rule-2");
+    assertEquals(networkAclRulePatchModel.name(), "my-rule-1");
+    assertEquals(networkAclRulePatchModel.protocol(), "tcp");
     assertEquals(networkAclRulePatchModel.source(), "192.168.3.2/32");
     assertEquals(networkAclRulePatchModel.sourcePortMax(), Long.valueOf("65535"));
     assertEquals(networkAclRulePatchModel.sourcePortMin(), Long.valueOf("49152"));
@@ -76,7 +78,8 @@ public class NetworkACLRulePatchTest {
     assertEquals(networkAclRulePatchModelNew.destinationPortMax(), Long.valueOf("22"));
     assertEquals(networkAclRulePatchModelNew.destinationPortMin(), Long.valueOf("22"));
     assertEquals(networkAclRulePatchModelNew.direction(), "inbound");
-    assertEquals(networkAclRulePatchModelNew.name(), "my-rule-2");
+    assertEquals(networkAclRulePatchModelNew.name(), "my-rule-1");
+    assertEquals(networkAclRulePatchModelNew.protocol(), "tcp");
     assertEquals(networkAclRulePatchModelNew.source(), "192.168.3.2/32");
     assertEquals(networkAclRulePatchModelNew.sourcePortMax(), Long.valueOf("65535"));
     assertEquals(networkAclRulePatchModelNew.sourcePortMin(), Long.valueOf("49152"));
@@ -96,7 +99,8 @@ public class NetworkACLRulePatchTest {
       .destinationPortMax(Long.valueOf("22"))
       .destinationPortMin(Long.valueOf("22"))
       .direction("inbound")
-      .name("my-rule-2")
+      .name("my-rule-1")
+      .protocol("tcp")
       .source("192.168.3.2/32")
       .sourcePortMax(Long.valueOf("65535"))
       .sourcePortMin(Long.valueOf("49152"))
@@ -112,7 +116,8 @@ public class NetworkACLRulePatchTest {
     assertTrue(mergePatch.containsKey("destination_port_max"));
     assertTrue(mergePatch.containsKey("destination_port_min"));
     assertEquals(mergePatch.get("direction"), "inbound");
-    assertEquals(mergePatch.get("name"), "my-rule-2");
+    assertEquals(mergePatch.get("name"), "my-rule-1");
+    assertEquals(mergePatch.get("protocol"), "tcp");
     assertEquals(mergePatch.get("source"), "192.168.3.2/32");
     assertTrue(mergePatch.containsKey("source_port_max"));
     assertTrue(mergePatch.containsKey("source_port_min"));

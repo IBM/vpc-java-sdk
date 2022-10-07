@@ -24,7 +24,7 @@ import com.ibm.cloud.sdk.core.util.GsonSingleton;
 public class NetworkACLRulePatch extends GenericModel {
 
   /**
-   * Whether to allow or deny matching traffic.
+   * The action to perform for a packet matching the rule.
    */
   public interface Action {
     /** allow. */
@@ -34,13 +34,27 @@ public class NetworkACLRulePatch extends GenericModel {
   }
 
   /**
-   * Whether the traffic to be matched is `inbound` or `outbound`.
+   * The direction of traffic to match.
    */
   public interface Direction {
     /** inbound. */
     String INBOUND = "inbound";
     /** outbound. */
     String OUTBOUND = "outbound";
+  }
+
+  /**
+   * The protocol to enforce.
+   */
+  public interface Protocol {
+    /** all. */
+    String ALL = "all";
+    /** icmp. */
+    String ICMP = "icmp";
+    /** tcp. */
+    String TCP = "tcp";
+    /** udp. */
+    String UDP = "udp";
   }
 
   protected String action;
@@ -53,6 +67,7 @@ public class NetworkACLRulePatch extends GenericModel {
   protected Long destinationPortMin;
   protected String direction;
   protected String name;
+  protected String protocol;
   protected String source;
   @SerializedName("source_port_max")
   protected Long sourcePortMax;
@@ -72,11 +87,17 @@ public class NetworkACLRulePatch extends GenericModel {
     private Long destinationPortMin;
     private String direction;
     private String name;
+    private String protocol;
     private String source;
     private Long sourcePortMax;
     private Long sourcePortMin;
     private Long type;
 
+    /**
+     * Instantiates a new Builder from an existing NetworkACLRulePatch instance.
+     *
+     * @param networkAclRulePatch the instance to initialize the Builder with
+     */
     private Builder(NetworkACLRulePatch networkAclRulePatch) {
       this.action = networkAclRulePatch.action;
       this.before = networkAclRulePatch.before;
@@ -86,6 +107,7 @@ public class NetworkACLRulePatch extends GenericModel {
       this.destinationPortMin = networkAclRulePatch.destinationPortMin;
       this.direction = networkAclRulePatch.direction;
       this.name = networkAclRulePatch.name;
+      this.protocol = networkAclRulePatch.protocol;
       this.source = networkAclRulePatch.source;
       this.sourcePortMax = networkAclRulePatch.sourcePortMax;
       this.sourcePortMin = networkAclRulePatch.sourcePortMin;
@@ -196,6 +218,17 @@ public class NetworkACLRulePatch extends GenericModel {
     }
 
     /**
+     * Set the protocol.
+     *
+     * @param protocol the protocol
+     * @return the NetworkACLRulePatch builder
+     */
+    public Builder protocol(String protocol) {
+      this.protocol = protocol;
+      return this;
+    }
+
+    /**
      * Set the source.
      *
      * @param source the source
@@ -240,6 +273,8 @@ public class NetworkACLRulePatch extends GenericModel {
     }
   }
 
+  protected NetworkACLRulePatch() { }
+
   protected NetworkACLRulePatch(Builder builder) {
     action = builder.action;
     before = builder.before;
@@ -249,6 +284,7 @@ public class NetworkACLRulePatch extends GenericModel {
     destinationPortMin = builder.destinationPortMin;
     direction = builder.direction;
     name = builder.name;
+    protocol = builder.protocol;
     source = builder.source;
     sourcePortMax = builder.sourcePortMax;
     sourcePortMin = builder.sourcePortMin;
@@ -267,7 +303,7 @@ public class NetworkACLRulePatch extends GenericModel {
   /**
    * Gets the action.
    *
-   * Whether to allow or deny matching traffic.
+   * The action to perform for a packet matching the rule.
    *
    * @return the action
    */
@@ -278,8 +314,9 @@ public class NetworkACLRulePatch extends GenericModel {
   /**
    * Gets the before.
    *
-   * The rule to move this rule immediately before. Specify `null` to move this rule after
-   * all existing rules.
+   * The rule to move this rule immediately before.
+   *
+   * Specify `null` to move this rule after all existing rules.
    *
    * @return the before
    */
@@ -290,7 +327,7 @@ public class NetworkACLRulePatch extends GenericModel {
   /**
    * Gets the code.
    *
-   * The ICMP traffic code to allow.
+   * The ICMP traffic code to match.
    *
    * @return the code
    */
@@ -301,7 +338,7 @@ public class NetworkACLRulePatch extends GenericModel {
   /**
    * Gets the destination.
    *
-   * The destination IP address or CIDR block. The CIDR block `0.0.0.0/0` applies to all addresses.
+   * The destination IP address or CIDR block to match. The CIDR block `0.0.0.0/0` matches all destination addresses.
    *
    * @return the destination
    */
@@ -334,7 +371,7 @@ public class NetworkACLRulePatch extends GenericModel {
   /**
    * Gets the direction.
    *
-   * Whether the traffic to be matched is `inbound` or `outbound`.
+   * The direction of traffic to match.
    *
    * @return the direction
    */
@@ -354,9 +391,20 @@ public class NetworkACLRulePatch extends GenericModel {
   }
 
   /**
+   * Gets the protocol.
+   *
+   * The protocol to enforce.
+   *
+   * @return the protocol
+   */
+  public String protocol() {
+    return protocol;
+  }
+
+  /**
    * Gets the source.
    *
-   * The source IP address or CIDR block.  The CIDR block `0.0.0.0/0` applies to all addresses.
+   * The source IP address or CIDR block to match. The CIDR block `0.0.0.0/0` matches all source addresses.
    *
    * @return the source
    */
@@ -389,7 +437,7 @@ public class NetworkACLRulePatch extends GenericModel {
   /**
    * Gets the type.
    *
-   * The ICMP traffic type to allow.
+   * The ICMP traffic type to match.
    *
    * @return the type
    */

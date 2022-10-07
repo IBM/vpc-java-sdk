@@ -34,6 +34,11 @@ public class LoadBalancerListenerPolicyPatch extends GenericModel {
     private Long priority;
     private LoadBalancerListenerPolicyTargetPatch target;
 
+    /**
+     * Instantiates a new Builder from an existing LoadBalancerListenerPolicyPatch instance.
+     *
+     * @param loadBalancerListenerPolicyPatch the instance to initialize the Builder with
+     */
     private Builder(LoadBalancerListenerPolicyPatch loadBalancerListenerPolicyPatch) {
       this.name = loadBalancerListenerPolicyPatch.name;
       this.priority = loadBalancerListenerPolicyPatch.priority;
@@ -88,6 +93,8 @@ public class LoadBalancerListenerPolicyPatch extends GenericModel {
       return this;
     }
   }
+
+  protected LoadBalancerListenerPolicyPatch() { }
 
   protected LoadBalancerListenerPolicyPatch(Builder builder) {
     name = builder.name;

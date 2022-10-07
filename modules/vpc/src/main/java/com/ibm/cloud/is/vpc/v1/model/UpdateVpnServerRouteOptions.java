@@ -33,6 +33,11 @@ public class UpdateVpnServerRouteOptions extends GenericModel {
     private String id;
     private Map<String, Object> vpnServerRoutePatch;
 
+    /**
+     * Instantiates a new Builder from an existing UpdateVpnServerRouteOptions instance.
+     *
+     * @param updateVpnServerRouteOptions the instance to initialize the Builder with
+     */
     private Builder(UpdateVpnServerRouteOptions updateVpnServerRouteOptions) {
       this.vpnServerId = updateVpnServerRouteOptions.vpnServerId;
       this.id = updateVpnServerRouteOptions.id;
@@ -100,6 +105,8 @@ public class UpdateVpnServerRouteOptions extends GenericModel {
       return this;
     }
   }
+
+  protected UpdateVpnServerRouteOptions() { }
 
   protected UpdateVpnServerRouteOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.vpnServerId,

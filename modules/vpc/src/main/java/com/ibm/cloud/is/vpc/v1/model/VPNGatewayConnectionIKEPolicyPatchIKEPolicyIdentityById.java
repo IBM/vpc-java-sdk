@@ -24,6 +24,11 @@ public class VPNGatewayConnectionIKEPolicyPatchIKEPolicyIdentityById extends VPN
   public static class Builder {
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing VPNGatewayConnectionIKEPolicyPatchIKEPolicyIdentityById instance.
+     *
+     * @param vpnGatewayConnectionIkePolicyPatchIkePolicyIdentityById the instance to initialize the Builder with
+     */
     public Builder(VPNGatewayConnectionIKEPolicyPatch vpnGatewayConnectionIkePolicyPatchIkePolicyIdentityById) {
       this.id = vpnGatewayConnectionIkePolicyPatchIkePolicyIdentityById.id;
     }
@@ -63,6 +68,8 @@ public class VPNGatewayConnectionIKEPolicyPatchIKEPolicyIdentityById extends VPN
       return this;
     }
   }
+
+  protected VPNGatewayConnectionIKEPolicyPatchIKEPolicyIdentityById() { }
 
   protected VPNGatewayConnectionIKEPolicyPatchIKEPolicyIdentityById(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.id,

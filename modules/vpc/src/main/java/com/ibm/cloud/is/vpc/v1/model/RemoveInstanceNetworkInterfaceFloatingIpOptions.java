@@ -31,6 +31,11 @@ public class RemoveInstanceNetworkInterfaceFloatingIpOptions extends GenericMode
     private String networkInterfaceId;
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing RemoveInstanceNetworkInterfaceFloatingIpOptions instance.
+     *
+     * @param removeInstanceNetworkInterfaceFloatingIpOptions the instance to initialize the Builder with
+     */
     private Builder(RemoveInstanceNetworkInterfaceFloatingIpOptions removeInstanceNetworkInterfaceFloatingIpOptions) {
       this.instanceId = removeInstanceNetworkInterfaceFloatingIpOptions.instanceId;
       this.networkInterfaceId = removeInstanceNetworkInterfaceFloatingIpOptions.networkInterfaceId;
@@ -98,6 +103,8 @@ public class RemoveInstanceNetworkInterfaceFloatingIpOptions extends GenericMode
       return this;
     }
   }
+
+  protected RemoveInstanceNetworkInterfaceFloatingIpOptions() { }
 
   protected RemoveInstanceNetworkInterfaceFloatingIpOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.instanceId,

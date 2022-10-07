@@ -28,6 +28,11 @@ public class InstanceGroupManagerActionPrototypeScheduledActionPrototypeByRunAtB
     private Date runAt;
     private InstanceGroupManagerScheduledActionManagerPrototype manager;
 
+    /**
+     * Instantiates a new Builder from an existing InstanceGroupManagerActionPrototypeScheduledActionPrototypeByRunAtByManager instance.
+     *
+     * @param instanceGroupManagerActionPrototypeScheduledActionPrototypeByRunAtByManager the instance to initialize the Builder with
+     */
     public Builder(InstanceGroupManagerActionPrototypeScheduledActionPrototypeByRunAt instanceGroupManagerActionPrototypeScheduledActionPrototypeByRunAtByManager) {
       this.name = instanceGroupManagerActionPrototypeScheduledActionPrototypeByRunAtByManager.name;
       this.runAt = instanceGroupManagerActionPrototypeScheduledActionPrototypeByRunAtByManager.runAt;
@@ -91,6 +96,8 @@ public class InstanceGroupManagerActionPrototypeScheduledActionPrototypeByRunAtB
       return this;
     }
   }
+
+  protected InstanceGroupManagerActionPrototypeScheduledActionPrototypeByRunAtByManager() { }
 
   protected InstanceGroupManagerActionPrototypeScheduledActionPrototypeByRunAtByManager(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.manager,

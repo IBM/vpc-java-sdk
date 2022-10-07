@@ -27,6 +27,8 @@ public class BareMetalServerInitialization extends GenericModel {
   @SerializedName("user_accounts")
   protected List<BareMetalServerInitializationUserAccount> userAccounts;
 
+  protected BareMetalServerInitialization() { }
+
   /**
    * Gets the image.
    *

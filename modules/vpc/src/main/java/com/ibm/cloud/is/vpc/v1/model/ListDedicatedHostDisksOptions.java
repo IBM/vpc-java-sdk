@@ -27,6 +27,11 @@ public class ListDedicatedHostDisksOptions extends GenericModel {
   public static class Builder {
     private String dedicatedHostId;
 
+    /**
+     * Instantiates a new Builder from an existing ListDedicatedHostDisksOptions instance.
+     *
+     * @param listDedicatedHostDisksOptions the instance to initialize the Builder with
+     */
     private Builder(ListDedicatedHostDisksOptions listDedicatedHostDisksOptions) {
       this.dedicatedHostId = listDedicatedHostDisksOptions.dedicatedHostId;
     }
@@ -66,6 +71,8 @@ public class ListDedicatedHostDisksOptions extends GenericModel {
       return this;
     }
   }
+
+  protected ListDedicatedHostDisksOptions() { }
 
   protected ListDedicatedHostDisksOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.dedicatedHostId,

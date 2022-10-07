@@ -29,6 +29,11 @@ public class ListIpsecPoliciesOptions extends GenericModel {
     private String start;
     private Long limit;
 
+    /**
+     * Instantiates a new Builder from an existing ListIpsecPoliciesOptions instance.
+     *
+     * @param listIpsecPoliciesOptions the instance to initialize the Builder with
+     */
     private Builder(ListIpsecPoliciesOptions listIpsecPoliciesOptions) {
       this.start = listIpsecPoliciesOptions.start;
       this.limit = listIpsecPoliciesOptions.limit;
@@ -71,6 +76,8 @@ public class ListIpsecPoliciesOptions extends GenericModel {
       return this;
     }
   }
+
+  protected ListIpsecPoliciesOptions() { }
 
   protected ListIpsecPoliciesOptions(Builder builder) {
     start = builder.start;

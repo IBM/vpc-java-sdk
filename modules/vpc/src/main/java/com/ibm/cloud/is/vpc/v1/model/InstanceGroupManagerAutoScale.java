@@ -25,5 +25,7 @@ public class InstanceGroupManagerAutoScale extends InstanceGroupManager {
     String AUTOSCALE = "autoscale";
   }
 
+
+  protected InstanceGroupManagerAutoScale() { }
 }
 

@@ -65,6 +65,8 @@ public class VPNServerClient extends GenericModel {
   protected String status;
   protected String username;
 
+  protected VPNServerClient() { }
+
   /**
    * Gets the clientIp.
    *

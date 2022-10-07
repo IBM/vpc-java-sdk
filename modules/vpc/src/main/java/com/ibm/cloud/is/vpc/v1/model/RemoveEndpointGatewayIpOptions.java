@@ -29,6 +29,11 @@ public class RemoveEndpointGatewayIpOptions extends GenericModel {
     private String endpointGatewayId;
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing RemoveEndpointGatewayIpOptions instance.
+     *
+     * @param removeEndpointGatewayIpOptions the instance to initialize the Builder with
+     */
     private Builder(RemoveEndpointGatewayIpOptions removeEndpointGatewayIpOptions) {
       this.endpointGatewayId = removeEndpointGatewayIpOptions.endpointGatewayId;
       this.id = removeEndpointGatewayIpOptions.id;
@@ -82,6 +87,8 @@ public class RemoveEndpointGatewayIpOptions extends GenericModel {
       return this;
     }
   }
+
+  protected RemoveEndpointGatewayIpOptions() { }
 
   protected RemoveEndpointGatewayIpOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.endpointGatewayId,

@@ -47,6 +47,11 @@ public class CreateDedicatedHostGroupOptions extends GenericModel {
     private ResourceGroupIdentity resourceGroup;
     private ZoneIdentity zone;
 
+    /**
+     * Instantiates a new Builder from an existing CreateDedicatedHostGroupOptions instance.
+     *
+     * @param createDedicatedHostGroupOptions the instance to initialize the Builder with
+     */
     private Builder(CreateDedicatedHostGroupOptions createDedicatedHostGroupOptions) {
       this.xClass = createDedicatedHostGroupOptions.xClass;
       this.family = createDedicatedHostGroupOptions.family;
@@ -125,6 +130,8 @@ public class CreateDedicatedHostGroupOptions extends GenericModel {
       return this;
     }
   }
+
+  protected CreateDedicatedHostGroupOptions() { }
 
   protected CreateDedicatedHostGroupOptions(Builder builder) {
     xClass = builder.xClass;

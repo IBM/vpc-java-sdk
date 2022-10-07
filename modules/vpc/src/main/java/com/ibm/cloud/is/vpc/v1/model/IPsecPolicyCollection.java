@@ -30,6 +30,8 @@ public class IPsecPolicyCollection extends GenericModel {
   @SerializedName("total_count")
   protected Long totalCount;
 
+  protected IPsecPolicyCollection() { }
+
   /**
    * Gets the first.
    *

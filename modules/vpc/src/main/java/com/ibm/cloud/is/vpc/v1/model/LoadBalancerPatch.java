@@ -12,6 +12,8 @@
  */
 package com.ibm.cloud.is.vpc.v1.model;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
@@ -24,6 +26,7 @@ public class LoadBalancerPatch extends GenericModel {
 
   protected LoadBalancerLogging logging;
   protected String name;
+  protected List<SubnetIdentity> subnets;
 
   /**
    * Builder.
@@ -31,10 +34,17 @@ public class LoadBalancerPatch extends GenericModel {
   public static class Builder {
     private LoadBalancerLogging logging;
     private String name;
+    private List<SubnetIdentity> subnets;
 
+    /**
+     * Instantiates a new Builder from an existing LoadBalancerPatch instance.
+     *
+     * @param loadBalancerPatch the instance to initialize the Builder with
+     */
     private Builder(LoadBalancerPatch loadBalancerPatch) {
       this.logging = loadBalancerPatch.logging;
       this.name = loadBalancerPatch.name;
+      this.subnets = loadBalancerPatch.subnets;
     }
 
     /**
@@ -50,6 +60,22 @@ public class LoadBalancerPatch extends GenericModel {
      */
     public LoadBalancerPatch build() {
       return new LoadBalancerPatch(this);
+    }
+
+    /**
+     * Adds an subnets to subnets.
+     *
+     * @param subnets the new subnets
+     * @return the LoadBalancerPatch builder
+     */
+    public Builder addSubnets(SubnetIdentity subnets) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(subnets,
+        "subnets cannot be null");
+      if (this.subnets == null) {
+        this.subnets = new ArrayList<SubnetIdentity>();
+      }
+      this.subnets.add(subnets);
+      return this;
     }
 
     /**
@@ -73,11 +99,26 @@ public class LoadBalancerPatch extends GenericModel {
       this.name = name;
       return this;
     }
+
+    /**
+     * Set the subnets.
+     * Existing subnets will be replaced.
+     *
+     * @param subnets the subnets
+     * @return the LoadBalancerPatch builder
+     */
+    public Builder subnets(List<SubnetIdentity> subnets) {
+      this.subnets = subnets;
+      return this;
+    }
   }
+
+  protected LoadBalancerPatch() { }
 
   protected LoadBalancerPatch(Builder builder) {
     logging = builder.logging;
     name = builder.name;
+    subnets = builder.subnets;
   }
 
   /**
@@ -111,6 +152,23 @@ public class LoadBalancerPatch extends GenericModel {
    */
   public String name() {
     return name;
+  }
+
+  /**
+   * Gets the subnets.
+   *
+   * The subnets to provision this load balancer in. The load balancer's availability will depend on the availability of
+   * the zones that the subnets reside in.
+   *
+   * The specified subnets must be in the same VPC as the existing subnets, and will completely replace the existing
+   * subnets.
+   *
+   * The load balancer must be in the `application` family.
+   *
+   * @return the subnets
+   */
+  public List<SubnetIdentity> subnets() {
+    return subnets;
   }
 
   /**

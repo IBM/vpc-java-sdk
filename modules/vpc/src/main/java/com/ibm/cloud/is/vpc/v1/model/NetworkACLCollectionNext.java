@@ -21,6 +21,8 @@ public class NetworkACLCollectionNext extends GenericModel {
 
   protected String href;
 
+  protected NetworkACLCollectionNext() { }
+
   /**
    * Gets the href.
    *

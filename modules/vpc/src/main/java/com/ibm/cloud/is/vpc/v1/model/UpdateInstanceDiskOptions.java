@@ -33,6 +33,11 @@ public class UpdateInstanceDiskOptions extends GenericModel {
     private String id;
     private Map<String, Object> instanceDiskPatch;
 
+    /**
+     * Instantiates a new Builder from an existing UpdateInstanceDiskOptions instance.
+     *
+     * @param updateInstanceDiskOptions the instance to initialize the Builder with
+     */
     private Builder(UpdateInstanceDiskOptions updateInstanceDiskOptions) {
       this.instanceId = updateInstanceDiskOptions.instanceId;
       this.id = updateInstanceDiskOptions.id;
@@ -100,6 +105,8 @@ public class UpdateInstanceDiskOptions extends GenericModel {
       return this;
     }
   }
+
+  protected UpdateInstanceDiskOptions() { }
 
   protected UpdateInstanceDiskOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.instanceId,

@@ -47,6 +47,8 @@ public class InstanceProfile extends GenericModel {
   @SerializedName("vcpu_count")
   protected InstanceProfileVCPU vcpuCount;
 
+  protected InstanceProfile() { }
+
   /**
    * Gets the bandwidth.
    *

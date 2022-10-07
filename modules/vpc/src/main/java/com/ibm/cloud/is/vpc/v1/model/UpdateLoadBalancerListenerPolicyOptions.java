@@ -35,6 +35,11 @@ public class UpdateLoadBalancerListenerPolicyOptions extends GenericModel {
     private String id;
     private Map<String, Object> loadBalancerListenerPolicyPatch;
 
+    /**
+     * Instantiates a new Builder from an existing UpdateLoadBalancerListenerPolicyOptions instance.
+     *
+     * @param updateLoadBalancerListenerPolicyOptions the instance to initialize the Builder with
+     */
     private Builder(UpdateLoadBalancerListenerPolicyOptions updateLoadBalancerListenerPolicyOptions) {
       this.loadBalancerId = updateLoadBalancerListenerPolicyOptions.loadBalancerId;
       this.listenerId = updateLoadBalancerListenerPolicyOptions.listenerId;
@@ -116,6 +121,8 @@ public class UpdateLoadBalancerListenerPolicyOptions extends GenericModel {
       return this;
     }
   }
+
+  protected UpdateLoadBalancerListenerPolicyOptions() { }
 
   protected UpdateLoadBalancerListenerPolicyOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.loadBalancerId,

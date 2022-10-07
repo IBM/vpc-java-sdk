@@ -30,6 +30,11 @@ public class InstanceDiskPatch extends GenericModel {
   public static class Builder {
     private String name;
 
+    /**
+     * Instantiates a new Builder from an existing InstanceDiskPatch instance.
+     *
+     * @param instanceDiskPatch the instance to initialize the Builder with
+     */
     private Builder(InstanceDiskPatch instanceDiskPatch) {
       this.name = instanceDiskPatch.name;
     }
@@ -60,6 +65,8 @@ public class InstanceDiskPatch extends GenericModel {
       return this;
     }
   }
+
+  protected InstanceDiskPatch() { }
 
   protected InstanceDiskPatch(Builder builder) {
     name = builder.name;

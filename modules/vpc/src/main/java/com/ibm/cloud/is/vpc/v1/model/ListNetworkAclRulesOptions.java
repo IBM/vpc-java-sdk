@@ -43,6 +43,11 @@ public class ListNetworkAclRulesOptions extends GenericModel {
     private Long limit;
     private String direction;
 
+    /**
+     * Instantiates a new Builder from an existing ListNetworkAclRulesOptions instance.
+     *
+     * @param listNetworkAclRulesOptions the instance to initialize the Builder with
+     */
     private Builder(ListNetworkAclRulesOptions listNetworkAclRulesOptions) {
       this.networkAclId = listNetworkAclRulesOptions.networkAclId;
       this.start = listNetworkAclRulesOptions.start;
@@ -118,6 +123,8 @@ public class ListNetworkAclRulesOptions extends GenericModel {
       return this;
     }
   }
+
+  protected ListNetworkAclRulesOptions() { }
 
   protected ListNetworkAclRulesOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.networkAclId,

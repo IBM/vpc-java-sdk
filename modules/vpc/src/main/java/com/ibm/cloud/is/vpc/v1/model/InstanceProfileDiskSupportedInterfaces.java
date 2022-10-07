@@ -63,6 +63,8 @@ public class InstanceProfileDiskSupportedInterfaces extends GenericModel {
   protected String type;
   protected List<String> values;
 
+  protected InstanceProfileDiskSupportedInterfaces() { }
+
   /**
    * Gets the xDefault.
    *

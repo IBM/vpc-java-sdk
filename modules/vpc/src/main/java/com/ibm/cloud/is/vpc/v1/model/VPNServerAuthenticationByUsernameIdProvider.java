@@ -39,8 +39,7 @@ public class VPNServerAuthenticationByUsernameIdProvider extends GenericModel {
   @SerializedName("provider_type")
   protected String providerType;
 
-  protected VPNServerAuthenticationByUsernameIdProvider() {
-  }
+  protected VPNServerAuthenticationByUsernameIdProvider() { }
 
   /**
    * Gets the providerType.

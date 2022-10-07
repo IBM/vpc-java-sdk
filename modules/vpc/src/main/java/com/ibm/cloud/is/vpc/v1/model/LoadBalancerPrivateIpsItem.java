@@ -36,6 +36,8 @@ public class LoadBalancerPrivateIpsItem extends GenericModel {
   @SerializedName("resource_type")
   protected String resourceType;
 
+  protected LoadBalancerPrivateIpsItem() { }
+
   /**
    * Gets the address.
    *
@@ -56,7 +58,7 @@ public class LoadBalancerPrivateIpsItem extends GenericModel {
   /**
    * Gets the deleted.
    *
-   * If present, this property indicates the referenced resource has been deleted and provides
+   * If present, this property indicates the referenced resource has been deleted, and provides
    * some supplementary information.
    *
    * @return the deleted

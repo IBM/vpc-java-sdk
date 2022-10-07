@@ -21,6 +21,8 @@ public class InstanceGroupMembershipCollectionNext extends GenericModel {
 
   protected String href;
 
+  protected InstanceGroupMembershipCollectionNext() { }
+
   /**
    * Gets the href.
    *

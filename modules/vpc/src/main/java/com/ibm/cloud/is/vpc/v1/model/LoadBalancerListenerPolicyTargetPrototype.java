@@ -36,8 +36,7 @@ public class LoadBalancerListenerPolicyTargetPrototype extends GenericModel {
   protected LoadBalancerListenerIdentity listener;
   protected String uri;
 
-  protected LoadBalancerListenerPolicyTargetPrototype() {
-  }
+  protected LoadBalancerListenerPolicyTargetPrototype() { }
 
   /**
    * Gets the id.

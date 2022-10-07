@@ -23,6 +23,8 @@ public class LoadBalancerListenerCollection extends GenericModel {
 
   protected List<LoadBalancerListener> listeners;
 
+  protected LoadBalancerListenerCollection() { }
+
   /**
    * Gets the listeners.
    *

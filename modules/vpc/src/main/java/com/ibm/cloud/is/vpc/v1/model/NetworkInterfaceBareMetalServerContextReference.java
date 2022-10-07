@@ -38,10 +38,12 @@ public class NetworkInterfaceBareMetalServerContextReference extends GenericMode
   protected String resourceType;
   protected SubnetReference subnet;
 
+  protected NetworkInterfaceBareMetalServerContextReference() { }
+
   /**
    * Gets the deleted.
    *
-   * If present, this property indicates the referenced resource has been deleted and provides
+   * If present, this property indicates the referenced resource has been deleted, and provides
    * some supplementary information.
    *
    * @return the deleted

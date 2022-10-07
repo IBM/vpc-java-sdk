@@ -25,5 +25,7 @@ public class ReservedIPTargetEndpointGatewayReference extends ReservedIPTarget {
     String ENDPOINT_GATEWAY = "endpoint_gateway";
   }
 
+
+  protected ReservedIPTargetEndpointGatewayReference() { }
 }
 

@@ -21,6 +21,8 @@ public class ImageFileChecksums extends GenericModel {
 
   protected String sha256;
 
+  protected ImageFileChecksums() { }
+
   /**
    * Gets the sha256.
    *

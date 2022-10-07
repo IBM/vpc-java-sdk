@@ -27,6 +27,11 @@ public class DeleteEndpointGatewayOptions extends GenericModel {
   public static class Builder {
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing DeleteEndpointGatewayOptions instance.
+     *
+     * @param deleteEndpointGatewayOptions the instance to initialize the Builder with
+     */
     private Builder(DeleteEndpointGatewayOptions deleteEndpointGatewayOptions) {
       this.id = deleteEndpointGatewayOptions.id;
     }
@@ -66,6 +71,8 @@ public class DeleteEndpointGatewayOptions extends GenericModel {
       return this;
     }
   }
+
+  protected DeleteEndpointGatewayOptions() { }
 
   protected DeleteEndpointGatewayOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,

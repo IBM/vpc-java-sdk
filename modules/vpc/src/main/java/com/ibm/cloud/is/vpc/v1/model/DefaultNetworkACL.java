@@ -35,6 +35,8 @@ public class DefaultNetworkACL extends GenericModel {
   protected List<SubnetReference> subnets;
   protected VPCReference vpc;
 
+  protected DefaultNetworkACL() { }
+
   /**
    * Gets the createdAt.
    *
@@ -129,7 +131,7 @@ public class DefaultNetworkACL extends GenericModel {
   /**
    * Gets the vpc.
    *
-   * The VPC this network ACL is a part of.
+   * The VPC this network ACL resides in.
    *
    * @return the vpc
    */

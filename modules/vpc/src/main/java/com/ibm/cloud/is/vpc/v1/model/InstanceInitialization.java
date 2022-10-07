@@ -27,6 +27,8 @@ public class InstanceInitialization extends GenericModel {
   protected List<KeyReference> keys;
   protected InstanceInitializationPassword password;
 
+  protected InstanceInitialization() { }
+
   /**
    * Gets the defaultTrustedProfile.
    *

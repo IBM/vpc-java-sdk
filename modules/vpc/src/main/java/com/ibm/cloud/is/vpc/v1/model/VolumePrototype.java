@@ -40,8 +40,7 @@ public class VolumePrototype extends GenericModel {
   @SerializedName("source_snapshot")
   protected SnapshotIdentity sourceSnapshot;
 
-  protected VolumePrototype() {
-  }
+  protected VolumePrototype() { }
 
   /**
    * Gets the iops.
@@ -69,7 +68,8 @@ public class VolumePrototype extends GenericModel {
   /**
    * Gets the profile.
    *
-   * The profile to use for this volume.
+   * The [profile](https://cloud.ibm.com/docs/vpc?topic=vpc-block-storage-profiles) to
+   * use for this volume.
    *
    * @return the profile
    */

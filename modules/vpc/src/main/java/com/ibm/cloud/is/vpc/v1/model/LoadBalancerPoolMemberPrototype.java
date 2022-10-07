@@ -31,6 +31,11 @@ public class LoadBalancerPoolMemberPrototype extends GenericModel {
     private LoadBalancerPoolMemberTargetPrototype target;
     private Long weight;
 
+    /**
+     * Instantiates a new Builder from an existing LoadBalancerPoolMemberPrototype instance.
+     *
+     * @param loadBalancerPoolMemberPrototype the instance to initialize the Builder with
+     */
     private Builder(LoadBalancerPoolMemberPrototype loadBalancerPoolMemberPrototype) {
       this.port = loadBalancerPoolMemberPrototype.port;
       this.target = loadBalancerPoolMemberPrototype.target;
@@ -96,6 +101,8 @@ public class LoadBalancerPoolMemberPrototype extends GenericModel {
       return this;
     }
   }
+
+  protected LoadBalancerPoolMemberPrototype() { }
 
   protected LoadBalancerPoolMemberPrototype(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.port,

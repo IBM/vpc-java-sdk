@@ -27,6 +27,11 @@ public class GetSubnetRoutingTableOptions extends GenericModel {
   public static class Builder {
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing GetSubnetRoutingTableOptions instance.
+     *
+     * @param getSubnetRoutingTableOptions the instance to initialize the Builder with
+     */
     private Builder(GetSubnetRoutingTableOptions getSubnetRoutingTableOptions) {
       this.id = getSubnetRoutingTableOptions.id;
     }
@@ -66,6 +71,8 @@ public class GetSubnetRoutingTableOptions extends GenericModel {
       return this;
     }
   }
+
+  protected GetSubnetRoutingTableOptions() { }
 
   protected GetSubnetRoutingTableOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,

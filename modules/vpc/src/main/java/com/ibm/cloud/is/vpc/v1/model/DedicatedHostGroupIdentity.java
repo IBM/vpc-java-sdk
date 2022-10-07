@@ -23,8 +23,7 @@ package com.ibm.cloud.is.vpc.v1.model;
  */
 public class DedicatedHostGroupIdentity extends DedicatedHostPrototypeWrapper {
 
-  protected DedicatedHostGroupIdentity() {
-  }
+  protected DedicatedHostGroupIdentity() { }
 
   /**
    * Gets the id.

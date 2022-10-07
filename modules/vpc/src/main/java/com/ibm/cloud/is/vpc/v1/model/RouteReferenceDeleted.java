@@ -16,13 +16,15 @@ import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * If present, this property indicates the referenced resource has been deleted and provides some supplementary
+ * If present, this property indicates the referenced resource has been deleted, and provides some supplementary
  * information.
  */
 public class RouteReferenceDeleted extends GenericModel {
 
   @SerializedName("more_info")
   protected String moreInfo;
+
+  protected RouteReferenceDeleted() { }
 
   /**
    * Gets the moreInfo.

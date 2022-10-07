@@ -33,6 +33,11 @@ public class AddVpnGatewayConnectionLocalCidrOptions extends GenericModel {
     private String cidrPrefix;
     private String prefixLength;
 
+    /**
+     * Instantiates a new Builder from an existing AddVpnGatewayConnectionLocalCidrOptions instance.
+     *
+     * @param addVpnGatewayConnectionLocalCidrOptions the instance to initialize the Builder with
+     */
     private Builder(AddVpnGatewayConnectionLocalCidrOptions addVpnGatewayConnectionLocalCidrOptions) {
       this.vpnGatewayId = addVpnGatewayConnectionLocalCidrOptions.vpnGatewayId;
       this.id = addVpnGatewayConnectionLocalCidrOptions.id;
@@ -114,6 +119,8 @@ public class AddVpnGatewayConnectionLocalCidrOptions extends GenericModel {
       return this;
     }
   }
+
+  protected AddVpnGatewayConnectionLocalCidrOptions() { }
 
   protected AddVpnGatewayConnectionLocalCidrOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.vpnGatewayId,

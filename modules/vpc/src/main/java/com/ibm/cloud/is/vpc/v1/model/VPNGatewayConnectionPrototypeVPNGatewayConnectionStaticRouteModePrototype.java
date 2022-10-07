@@ -39,6 +39,11 @@ public class VPNGatewayConnectionPrototypeVPNGatewayConnectionStaticRouteModePro
     private String psk;
     private String routingProtocol;
 
+    /**
+     * Instantiates a new Builder from an existing VPNGatewayConnectionPrototypeVPNGatewayConnectionStaticRouteModePrototype instance.
+     *
+     * @param vpnGatewayConnectionPrototypeVpnGatewayConnectionStaticRouteModePrototype the instance to initialize the Builder with
+     */
     public Builder(VPNGatewayConnectionPrototype vpnGatewayConnectionPrototypeVpnGatewayConnectionStaticRouteModePrototype) {
       this.adminStateUp = vpnGatewayConnectionPrototypeVpnGatewayConnectionStaticRouteModePrototype.adminStateUp;
       this.deadPeerDetection = vpnGatewayConnectionPrototypeVpnGatewayConnectionStaticRouteModePrototype.deadPeerDetection;
@@ -164,6 +169,8 @@ public class VPNGatewayConnectionPrototypeVPNGatewayConnectionStaticRouteModePro
       return this;
     }
   }
+
+  protected VPNGatewayConnectionPrototypeVPNGatewayConnectionStaticRouteModePrototype() { }
 
   protected VPNGatewayConnectionPrototypeVPNGatewayConnectionStaticRouteModePrototype(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.peerAddress,

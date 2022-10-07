@@ -24,6 +24,11 @@ public class ReservedIPTargetPrototypeEndpointGatewayIdentityEndpointGatewayIden
   public static class Builder {
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing ReservedIPTargetPrototypeEndpointGatewayIdentityEndpointGatewayIdentityById instance.
+     *
+     * @param reservedIpTargetPrototypeEndpointGatewayIdentityEndpointGatewayIdentityById the instance to initialize the Builder with
+     */
     public Builder(ReservedIPTargetPrototypeEndpointGatewayIdentity reservedIpTargetPrototypeEndpointGatewayIdentityEndpointGatewayIdentityById) {
       this.id = reservedIpTargetPrototypeEndpointGatewayIdentityEndpointGatewayIdentityById.id;
     }
@@ -63,6 +68,8 @@ public class ReservedIPTargetPrototypeEndpointGatewayIdentityEndpointGatewayIden
       return this;
     }
   }
+
+  protected ReservedIPTargetPrototypeEndpointGatewayIdentityEndpointGatewayIdentityById() { }
 
   protected ReservedIPTargetPrototypeEndpointGatewayIdentityEndpointGatewayIdentityById(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.id,

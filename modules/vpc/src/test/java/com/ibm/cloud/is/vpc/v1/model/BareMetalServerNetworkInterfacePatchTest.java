@@ -17,8 +17,6 @@ import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkInterfacePatch;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -36,12 +34,12 @@ public class BareMetalServerNetworkInterfacePatchTest {
   public void testBareMetalServerNetworkInterfacePatch() throws Throwable {
     BareMetalServerNetworkInterfacePatch bareMetalServerNetworkInterfacePatchModel = new BareMetalServerNetworkInterfacePatch.Builder()
       .allowIpSpoofing(true)
-      .allowedVlans(new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("4"))))
+      .allowedVlans(java.util.Arrays.asList(Long.valueOf("4")))
       .enableInfrastructureNat(true)
       .name("my-network-interface")
       .build();
     assertEquals(bareMetalServerNetworkInterfacePatchModel.allowIpSpoofing(), Boolean.valueOf(true));
-    assertEquals(bareMetalServerNetworkInterfacePatchModel.allowedVlans(), new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("4"))));
+    assertEquals(bareMetalServerNetworkInterfacePatchModel.allowedVlans(), java.util.Arrays.asList(Long.valueOf("4")));
     assertEquals(bareMetalServerNetworkInterfacePatchModel.enableInfrastructureNat(), Boolean.valueOf(true));
     assertEquals(bareMetalServerNetworkInterfacePatchModel.name(), "my-network-interface");
 
@@ -57,7 +55,7 @@ public class BareMetalServerNetworkInterfacePatchTest {
   public void testBareMetalServerNetworkInterfacePatchAsPatch() throws Throwable {
     BareMetalServerNetworkInterfacePatch bareMetalServerNetworkInterfacePatchModel = new BareMetalServerNetworkInterfacePatch.Builder()
       .allowIpSpoofing(true)
-      .allowedVlans(new java.util.ArrayList<Long>(java.util.Arrays.asList(Long.valueOf("4"))))
+      .allowedVlans(java.util.Arrays.asList(Long.valueOf("4")))
       .enableInfrastructureNat(true)
       .name("my-network-interface")
       .build();

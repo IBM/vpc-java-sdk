@@ -61,5 +61,7 @@ public class VPNGatewayConnectionStaticRouteMode extends VPNGatewayConnection {
     String NONE = "none";
   }
 
+
+  protected VPNGatewayConnectionStaticRouteMode() { }
 }
 

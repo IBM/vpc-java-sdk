@@ -25,5 +25,7 @@ public class FloatingIPTargetNetworkInterfaceReference extends FloatingIPTarget 
     String NETWORK_INTERFACE = "network_interface";
   }
 
+
+  protected FloatingIPTargetNetworkInterfaceReference() { }
 }
 

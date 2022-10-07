@@ -22,6 +22,8 @@ public class InstanceProfileReference extends GenericModel {
   protected String href;
   protected String name;
 
+  protected InstanceProfileReference() { }
+
   /**
    * Gets the href.
    *

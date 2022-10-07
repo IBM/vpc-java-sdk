@@ -29,6 +29,11 @@ public class DisconnectVpnClientOptions extends GenericModel {
     private String vpnServerId;
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing DisconnectVpnClientOptions instance.
+     *
+     * @param disconnectVpnClientOptions the instance to initialize the Builder with
+     */
     private Builder(DisconnectVpnClientOptions disconnectVpnClientOptions) {
       this.vpnServerId = disconnectVpnClientOptions.vpnServerId;
       this.id = disconnectVpnClientOptions.id;
@@ -82,6 +87,8 @@ public class DisconnectVpnClientOptions extends GenericModel {
       return this;
     }
   }
+
+  protected DisconnectVpnClientOptions() { }
 
   protected DisconnectVpnClientOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.vpnServerId,

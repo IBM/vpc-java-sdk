@@ -35,6 +35,11 @@ public class EndpointGatewayTargetPrototypeProviderCloudServiceIdentityProviderC
     private String resourceType;
     private String crn;
 
+    /**
+     * Instantiates a new Builder from an existing EndpointGatewayTargetPrototypeProviderCloudServiceIdentityProviderCloudServiceIdentityByCRN instance.
+     *
+     * @param endpointGatewayTargetPrototypeProviderCloudServiceIdentityProviderCloudServiceIdentityByCrn the instance to initialize the Builder with
+     */
     public Builder(EndpointGatewayTargetPrototypeProviderCloudServiceIdentity endpointGatewayTargetPrototypeProviderCloudServiceIdentityProviderCloudServiceIdentityByCrn) {
       this.resourceType = endpointGatewayTargetPrototypeProviderCloudServiceIdentityProviderCloudServiceIdentityByCrn.resourceType;
       this.crn = endpointGatewayTargetPrototypeProviderCloudServiceIdentityProviderCloudServiceIdentityByCrn.crn;
@@ -88,6 +93,8 @@ public class EndpointGatewayTargetPrototypeProviderCloudServiceIdentityProviderC
       return this;
     }
   }
+
+  protected EndpointGatewayTargetPrototypeProviderCloudServiceIdentityProviderCloudServiceIdentityByCRN() { }
 
   protected EndpointGatewayTargetPrototypeProviderCloudServiceIdentityProviderCloudServiceIdentityByCRN(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.resourceType,

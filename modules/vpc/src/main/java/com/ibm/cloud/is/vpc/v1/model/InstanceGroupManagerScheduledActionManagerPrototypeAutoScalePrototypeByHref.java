@@ -26,6 +26,11 @@ public class InstanceGroupManagerScheduledActionManagerPrototypeAutoScalePrototy
     private Long minMembershipCount;
     private String href;
 
+    /**
+     * Instantiates a new Builder from an existing InstanceGroupManagerScheduledActionManagerPrototypeAutoScalePrototypeByHref instance.
+     *
+     * @param instanceGroupManagerScheduledActionManagerPrototypeAutoScalePrototypeByHref the instance to initialize the Builder with
+     */
     public Builder(InstanceGroupManagerScheduledActionManagerPrototypeAutoScalePrototype instanceGroupManagerScheduledActionManagerPrototypeAutoScalePrototypeByHref) {
       this.maxMembershipCount = instanceGroupManagerScheduledActionManagerPrototypeAutoScalePrototypeByHref.maxMembershipCount;
       this.minMembershipCount = instanceGroupManagerScheduledActionManagerPrototypeAutoScalePrototypeByHref.minMembershipCount;
@@ -89,6 +94,8 @@ public class InstanceGroupManagerScheduledActionManagerPrototypeAutoScalePrototy
       return this;
     }
   }
+
+  protected InstanceGroupManagerScheduledActionManagerPrototypeAutoScalePrototypeByHref() { }
 
   protected InstanceGroupManagerScheduledActionManagerPrototypeAutoScalePrototypeByHref(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.href,

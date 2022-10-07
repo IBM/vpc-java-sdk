@@ -24,6 +24,11 @@ public class SecurityGroupRuleRemotePatchSecurityGroupIdentitySecurityGroupIdent
   public static class Builder {
     private String href;
 
+    /**
+     * Instantiates a new Builder from an existing SecurityGroupRuleRemotePatchSecurityGroupIdentitySecurityGroupIdentityByHref instance.
+     *
+     * @param securityGroupRuleRemotePatchSecurityGroupIdentitySecurityGroupIdentityByHref the instance to initialize the Builder with
+     */
     public Builder(SecurityGroupRuleRemotePatchSecurityGroupIdentity securityGroupRuleRemotePatchSecurityGroupIdentitySecurityGroupIdentityByHref) {
       this.href = securityGroupRuleRemotePatchSecurityGroupIdentitySecurityGroupIdentityByHref.href;
     }
@@ -63,6 +68,8 @@ public class SecurityGroupRuleRemotePatchSecurityGroupIdentitySecurityGroupIdent
       return this;
     }
   }
+
+  protected SecurityGroupRuleRemotePatchSecurityGroupIdentitySecurityGroupIdentityByHref() { }
 
   protected SecurityGroupRuleRemotePatchSecurityGroupIdentitySecurityGroupIdentityByHref(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.href,

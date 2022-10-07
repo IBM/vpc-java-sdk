@@ -24,6 +24,11 @@ public class DedicatedHostGroupIdentityByCRN extends DedicatedHostGroupIdentity 
   public static class Builder {
     private String crn;
 
+    /**
+     * Instantiates a new Builder from an existing DedicatedHostGroupIdentityByCRN instance.
+     *
+     * @param dedicatedHostGroupIdentityByCrn the instance to initialize the Builder with
+     */
     public Builder(DedicatedHostGroupIdentity dedicatedHostGroupIdentityByCrn) {
       this.crn = dedicatedHostGroupIdentityByCrn.crn;
     }
@@ -63,6 +68,8 @@ public class DedicatedHostGroupIdentityByCRN extends DedicatedHostGroupIdentity 
       return this;
     }
   }
+
+  protected DedicatedHostGroupIdentityByCRN() { }
 
   protected DedicatedHostGroupIdentityByCRN(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.crn,

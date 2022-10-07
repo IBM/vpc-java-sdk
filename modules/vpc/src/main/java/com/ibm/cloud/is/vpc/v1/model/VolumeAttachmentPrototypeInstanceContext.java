@@ -33,6 +33,11 @@ public class VolumeAttachmentPrototypeInstanceContext extends GenericModel {
     private String name;
     private VolumeAttachmentVolumePrototypeInstanceContext volume;
 
+    /**
+     * Instantiates a new Builder from an existing VolumeAttachmentPrototypeInstanceContext instance.
+     *
+     * @param volumeAttachmentPrototypeInstanceContext the instance to initialize the Builder with
+     */
     private Builder(VolumeAttachmentPrototypeInstanceContext volumeAttachmentPrototypeInstanceContext) {
       this.deleteVolumeOnInstanceDelete = volumeAttachmentPrototypeInstanceContext.deleteVolumeOnInstanceDelete;
       this.name = volumeAttachmentPrototypeInstanceContext.name;
@@ -96,6 +101,8 @@ public class VolumeAttachmentPrototypeInstanceContext extends GenericModel {
       return this;
     }
   }
+
+  protected VolumeAttachmentPrototypeInstanceContext() { }
 
   protected VolumeAttachmentPrototypeInstanceContext(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.volume,

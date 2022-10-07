@@ -25,5 +25,7 @@ public class BareMetalServerProfileCPUCoreCountFixed extends BareMetalServerProf
     String FIXED = "fixed";
   }
 
+
+  protected BareMetalServerProfileCPUCoreCountFixed() { }
 }
 

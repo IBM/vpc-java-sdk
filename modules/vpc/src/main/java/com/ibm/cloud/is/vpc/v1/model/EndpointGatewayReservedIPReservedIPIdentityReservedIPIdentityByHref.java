@@ -24,6 +24,11 @@ public class EndpointGatewayReservedIPReservedIPIdentityReservedIPIdentityByHref
   public static class Builder {
     private String href;
 
+    /**
+     * Instantiates a new Builder from an existing EndpointGatewayReservedIPReservedIPIdentityReservedIPIdentityByHref instance.
+     *
+     * @param endpointGatewayReservedIpReservedIpIdentityReservedIpIdentityByHref the instance to initialize the Builder with
+     */
     public Builder(EndpointGatewayReservedIPReservedIPIdentity endpointGatewayReservedIpReservedIpIdentityReservedIpIdentityByHref) {
       this.href = endpointGatewayReservedIpReservedIpIdentityReservedIpIdentityByHref.href;
     }
@@ -63,6 +68,8 @@ public class EndpointGatewayReservedIPReservedIPIdentityReservedIPIdentityByHref
       return this;
     }
   }
+
+  protected EndpointGatewayReservedIPReservedIPIdentityReservedIPIdentityByHref() { }
 
   protected EndpointGatewayReservedIPReservedIPIdentityReservedIPIdentityByHref(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.href,

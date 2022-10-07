@@ -34,7 +34,22 @@ public class LoadBalancer extends GenericModel {
   }
 
   /**
-   * The provisioning status of this load balancer.
+   * The provisioning status of this load balancer:
+   *
+   * - `active`: The load balancer is running.
+   * - `create_pending`: The load balancer is being created.
+   * - `delete_pending`: The load balancer is being deleted.
+   * - `maintenance_pending`: The load balancer is unavailable due to an internal
+   *                           error (contact IBM support).
+   * - `migrate_pending`: The load balancer is migrating to the requested configuration.
+   *                       Performance may be degraded.
+   * - `update_pending`: The load balancer is being updated
+   *     to the requested configuration.
+   *
+   *   The enumerated values for this property are expected to expand in the future. When
+   *   processing this property, check for and log unknown values. Optionally halt
+   *   processing and surface the error, or bypass the load balancer on which the
+   *   unexpected property value was encountered.
    */
   public interface ProvisioningStatus {
     /** active. */
@@ -47,6 +62,8 @@ public class LoadBalancer extends GenericModel {
     String FAILED = "failed";
     /** maintenance_pending. */
     String MAINTENANCE_PENDING = "maintenance_pending";
+    /** migrate_pending. */
+    String MIGRATE_PENDING = "migrate_pending";
     /** update_pending. */
     String UPDATE_PENDING = "update_pending";
   }
@@ -93,6 +110,8 @@ public class LoadBalancer extends GenericModel {
   protected List<SubnetReference> subnets;
   @SerializedName("udp_supported")
   protected Boolean udpSupported;
+
+  protected LoadBalancer() { }
 
   /**
    * Gets the createdAt.
@@ -240,7 +259,22 @@ public class LoadBalancer extends GenericModel {
   /**
    * Gets the provisioningStatus.
    *
-   * The provisioning status of this load balancer.
+   * The provisioning status of this load balancer:
+   *
+   * - `active`: The load balancer is running.
+   * - `create_pending`: The load balancer is being created.
+   * - `delete_pending`: The load balancer is being deleted.
+   * - `maintenance_pending`: The load balancer is unavailable due to an internal
+   *                           error (contact IBM support).
+   * - `migrate_pending`: The load balancer is migrating to the requested configuration.
+   *                       Performance may be degraded.
+   * - `update_pending`: The load balancer is being updated
+   *     to the requested configuration.
+   *
+   *   The enumerated values for this property are expected to expand in the future. When
+   *   processing this property, check for and log unknown values. Optionally halt
+   *   processing and surface the error, or bypass the load balancer on which the
+   *   unexpected property value was encountered.
    *
    * @return the provisioningStatus
    */
@@ -323,7 +357,10 @@ public class LoadBalancer extends GenericModel {
   /**
    * Gets the subnets.
    *
-   * The subnets this load balancer is part of.
+   * The subnets this load balancer is provisioned in.  The load balancer's availability depends on the availability of
+   * the zones that the subnets reside in.
+   *
+   * All subnets will be in the same VPC.
    *
    * @return the subnets
    */

@@ -47,6 +47,11 @@ public class ListEndpointGatewayIpsOptions extends GenericModel {
     private Long limit;
     private String sort;
 
+    /**
+     * Instantiates a new Builder from an existing ListEndpointGatewayIpsOptions instance.
+     *
+     * @param listEndpointGatewayIpsOptions the instance to initialize the Builder with
+     */
     private Builder(ListEndpointGatewayIpsOptions listEndpointGatewayIpsOptions) {
       this.endpointGatewayId = listEndpointGatewayIpsOptions.endpointGatewayId;
       this.start = listEndpointGatewayIpsOptions.start;
@@ -122,6 +127,8 @@ public class ListEndpointGatewayIpsOptions extends GenericModel {
       return this;
     }
   }
+
+  protected ListEndpointGatewayIpsOptions() { }
 
   protected ListEndpointGatewayIpsOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.endpointGatewayId,

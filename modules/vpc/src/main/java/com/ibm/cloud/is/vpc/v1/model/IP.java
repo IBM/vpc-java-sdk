@@ -27,6 +27,11 @@ public class IP extends GenericModel {
   public static class Builder {
     private String address;
 
+    /**
+     * Instantiates a new Builder from an existing IP instance.
+     *
+     * @param ip the instance to initialize the Builder with
+     */
     private Builder(IP ip) {
       this.address = ip.address;
     }
@@ -66,6 +71,8 @@ public class IP extends GenericModel {
       return this;
     }
   }
+
+  protected IP() { }
 
   protected IP(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.address,

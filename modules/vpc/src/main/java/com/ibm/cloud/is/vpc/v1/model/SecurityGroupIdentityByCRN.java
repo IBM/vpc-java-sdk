@@ -24,6 +24,11 @@ public class SecurityGroupIdentityByCRN extends SecurityGroupIdentity {
   public static class Builder {
     private String crn;
 
+    /**
+     * Instantiates a new Builder from an existing SecurityGroupIdentityByCRN instance.
+     *
+     * @param securityGroupIdentityByCrn the instance to initialize the Builder with
+     */
     public Builder(SecurityGroupIdentity securityGroupIdentityByCrn) {
       this.crn = securityGroupIdentityByCrn.crn;
     }
@@ -63,6 +68,8 @@ public class SecurityGroupIdentityByCRN extends SecurityGroupIdentity {
       return this;
     }
   }
+
+  protected SecurityGroupIdentityByCRN() { }
 
   protected SecurityGroupIdentityByCRN(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.crn,

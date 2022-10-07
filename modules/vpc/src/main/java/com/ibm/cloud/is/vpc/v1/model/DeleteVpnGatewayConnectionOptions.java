@@ -29,6 +29,11 @@ public class DeleteVpnGatewayConnectionOptions extends GenericModel {
     private String vpnGatewayId;
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing DeleteVpnGatewayConnectionOptions instance.
+     *
+     * @param deleteVpnGatewayConnectionOptions the instance to initialize the Builder with
+     */
     private Builder(DeleteVpnGatewayConnectionOptions deleteVpnGatewayConnectionOptions) {
       this.vpnGatewayId = deleteVpnGatewayConnectionOptions.vpnGatewayId;
       this.id = deleteVpnGatewayConnectionOptions.id;
@@ -82,6 +87,8 @@ public class DeleteVpnGatewayConnectionOptions extends GenericModel {
       return this;
     }
   }
+
+  protected DeleteVpnGatewayConnectionOptions() { }
 
   protected DeleteVpnGatewayConnectionOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.vpnGatewayId,

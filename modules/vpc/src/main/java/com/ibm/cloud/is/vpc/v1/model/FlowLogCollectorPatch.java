@@ -32,6 +32,11 @@ public class FlowLogCollectorPatch extends GenericModel {
     private Boolean active;
     private String name;
 
+    /**
+     * Instantiates a new Builder from an existing FlowLogCollectorPatch instance.
+     *
+     * @param flowLogCollectorPatch the instance to initialize the Builder with
+     */
     private Builder(FlowLogCollectorPatch flowLogCollectorPatch) {
       this.active = flowLogCollectorPatch.active;
       this.name = flowLogCollectorPatch.name;
@@ -74,6 +79,8 @@ public class FlowLogCollectorPatch extends GenericModel {
       return this;
     }
   }
+
+  protected FlowLogCollectorPatch() { }
 
   protected FlowLogCollectorPatch(Builder builder) {
     active = builder.active;

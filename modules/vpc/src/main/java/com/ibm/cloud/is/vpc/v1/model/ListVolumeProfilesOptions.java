@@ -29,6 +29,11 @@ public class ListVolumeProfilesOptions extends GenericModel {
     private String start;
     private Long limit;
 
+    /**
+     * Instantiates a new Builder from an existing ListVolumeProfilesOptions instance.
+     *
+     * @param listVolumeProfilesOptions the instance to initialize the Builder with
+     */
     private Builder(ListVolumeProfilesOptions listVolumeProfilesOptions) {
       this.start = listVolumeProfilesOptions.start;
       this.limit = listVolumeProfilesOptions.limit;
@@ -71,6 +76,8 @@ public class ListVolumeProfilesOptions extends GenericModel {
       return this;
     }
   }
+
+  protected ListVolumeProfilesOptions() { }
 
   protected ListVolumeProfilesOptions(Builder builder) {
     start = builder.start;

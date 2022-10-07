@@ -25,5 +25,7 @@ public class FlowLogCollectorTargetNetworkInterfaceReferenceTargetContext extend
     String NETWORK_INTERFACE = "network_interface";
   }
 
+
+  protected FlowLogCollectorTargetNetworkInterfaceReferenceTargetContext() { }
 }
 

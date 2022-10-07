@@ -31,6 +31,11 @@ public class RemoveBareMetalServerNetworkInterfaceFloatingIpOptions extends Gene
     private String networkInterfaceId;
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing RemoveBareMetalServerNetworkInterfaceFloatingIpOptions instance.
+     *
+     * @param removeBareMetalServerNetworkInterfaceFloatingIpOptions the instance to initialize the Builder with
+     */
     private Builder(RemoveBareMetalServerNetworkInterfaceFloatingIpOptions removeBareMetalServerNetworkInterfaceFloatingIpOptions) {
       this.bareMetalServerId = removeBareMetalServerNetworkInterfaceFloatingIpOptions.bareMetalServerId;
       this.networkInterfaceId = removeBareMetalServerNetworkInterfaceFloatingIpOptions.networkInterfaceId;
@@ -98,6 +103,8 @@ public class RemoveBareMetalServerNetworkInterfaceFloatingIpOptions extends Gene
       return this;
     }
   }
+
+  protected RemoveBareMetalServerNetworkInterfaceFloatingIpOptions() { }
 
   protected RemoveBareMetalServerNetworkInterfaceFloatingIpOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.bareMetalServerId,

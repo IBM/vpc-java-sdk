@@ -31,7 +31,7 @@ public class PublicGateway extends GenericModel {
   }
 
   /**
-   * The status of the volume.
+   * The status of this public gateway.
    */
   public interface Status {
     /** available. */
@@ -59,6 +59,8 @@ public class PublicGateway extends GenericModel {
   protected String status;
   protected VPCReference vpc;
   protected ZoneReference zone;
+
+  protected PublicGateway() { }
 
   /**
    * Gets the createdAt.
@@ -151,7 +153,7 @@ public class PublicGateway extends GenericModel {
   /**
    * Gets the status.
    *
-   * The status of the volume.
+   * The status of this public gateway.
    *
    * @return the status
    */
@@ -162,7 +164,7 @@ public class PublicGateway extends GenericModel {
   /**
    * Gets the vpc.
    *
-   * The VPC this public gateway serves.
+   * The VPC this public gateway resides in.
    *
    * @return the vpc
    */

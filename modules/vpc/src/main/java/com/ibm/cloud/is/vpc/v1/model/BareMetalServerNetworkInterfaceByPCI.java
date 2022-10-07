@@ -61,5 +61,7 @@ public class BareMetalServerNetworkInterfaceByPCI extends BareMetalServerNetwork
     String PCI = "pci";
   }
 
+
+  protected BareMetalServerNetworkInterfaceByPCI() { }
 }
 

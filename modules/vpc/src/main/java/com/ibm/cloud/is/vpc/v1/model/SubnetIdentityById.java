@@ -24,6 +24,11 @@ public class SubnetIdentityById extends SubnetIdentity {
   public static class Builder {
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing SubnetIdentityById instance.
+     *
+     * @param subnetIdentityById the instance to initialize the Builder with
+     */
     public Builder(SubnetIdentity subnetIdentityById) {
       this.id = subnetIdentityById.id;
     }
@@ -63,6 +68,8 @@ public class SubnetIdentityById extends SubnetIdentity {
       return this;
     }
   }
+
+  protected SubnetIdentityById() { }
 
   protected SubnetIdentityById(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.id,

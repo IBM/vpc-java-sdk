@@ -29,6 +29,11 @@ public class DeleteInstanceNetworkInterfaceOptions extends GenericModel {
     private String instanceId;
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing DeleteInstanceNetworkInterfaceOptions instance.
+     *
+     * @param deleteInstanceNetworkInterfaceOptions the instance to initialize the Builder with
+     */
     private Builder(DeleteInstanceNetworkInterfaceOptions deleteInstanceNetworkInterfaceOptions) {
       this.instanceId = deleteInstanceNetworkInterfaceOptions.instanceId;
       this.id = deleteInstanceNetworkInterfaceOptions.id;
@@ -82,6 +87,8 @@ public class DeleteInstanceNetworkInterfaceOptions extends GenericModel {
       return this;
     }
   }
+
+  protected DeleteInstanceNetworkInterfaceOptions() { }
 
   protected DeleteInstanceNetworkInterfaceOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.instanceId,

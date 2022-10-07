@@ -21,8 +21,6 @@ import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolSessionPersistencePrototype
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import org.testng.annotations.Test;
@@ -76,7 +74,7 @@ public class LoadBalancerPoolPrototypeTest {
     LoadBalancerPoolPrototype loadBalancerPoolPrototypeModel = new LoadBalancerPoolPrototype.Builder()
       .algorithm("least_connections")
       .healthMonitor(loadBalancerPoolHealthMonitorPrototypeModel)
-      .members(new java.util.ArrayList<LoadBalancerPoolMemberPrototype>(java.util.Arrays.asList(loadBalancerPoolMemberPrototypeModel)))
+      .members(java.util.Arrays.asList(loadBalancerPoolMemberPrototypeModel))
       .name("my-load-balancer-pool")
       .protocol("http")
       .proxyProtocol("disabled")
@@ -84,7 +82,7 @@ public class LoadBalancerPoolPrototypeTest {
       .build();
     assertEquals(loadBalancerPoolPrototypeModel.algorithm(), "least_connections");
     assertEquals(loadBalancerPoolPrototypeModel.healthMonitor(), loadBalancerPoolHealthMonitorPrototypeModel);
-    assertEquals(loadBalancerPoolPrototypeModel.members(), new java.util.ArrayList<LoadBalancerPoolMemberPrototype>(java.util.Arrays.asList(loadBalancerPoolMemberPrototypeModel)));
+    assertEquals(loadBalancerPoolPrototypeModel.members(), java.util.Arrays.asList(loadBalancerPoolMemberPrototypeModel));
     assertEquals(loadBalancerPoolPrototypeModel.name(), "my-load-balancer-pool");
     assertEquals(loadBalancerPoolPrototypeModel.protocol(), "http");
     assertEquals(loadBalancerPoolPrototypeModel.proxyProtocol(), "disabled");

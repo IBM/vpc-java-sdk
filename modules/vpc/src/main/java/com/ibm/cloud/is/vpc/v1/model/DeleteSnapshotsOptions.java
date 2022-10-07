@@ -27,6 +27,11 @@ public class DeleteSnapshotsOptions extends GenericModel {
   public static class Builder {
     private String sourceVolumeId;
 
+    /**
+     * Instantiates a new Builder from an existing DeleteSnapshotsOptions instance.
+     *
+     * @param deleteSnapshotsOptions the instance to initialize the Builder with
+     */
     private Builder(DeleteSnapshotsOptions deleteSnapshotsOptions) {
       this.sourceVolumeId = deleteSnapshotsOptions.sourceVolumeId;
     }
@@ -66,6 +71,8 @@ public class DeleteSnapshotsOptions extends GenericModel {
       return this;
     }
   }
+
+  protected DeleteSnapshotsOptions() { }
 
   protected DeleteSnapshotsOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.sourceVolumeId,

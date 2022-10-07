@@ -24,6 +24,11 @@ public class LoadBalancerListenerPolicyTargetPrototypeLoadBalancerPoolIdentityLo
   public static class Builder {
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing LoadBalancerListenerPolicyTargetPrototypeLoadBalancerPoolIdentityLoadBalancerPoolIdentityById instance.
+     *
+     * @param loadBalancerListenerPolicyTargetPrototypeLoadBalancerPoolIdentityLoadBalancerPoolIdentityById the instance to initialize the Builder with
+     */
     public Builder(LoadBalancerListenerPolicyTargetPrototypeLoadBalancerPoolIdentity loadBalancerListenerPolicyTargetPrototypeLoadBalancerPoolIdentityLoadBalancerPoolIdentityById) {
       this.id = loadBalancerListenerPolicyTargetPrototypeLoadBalancerPoolIdentityLoadBalancerPoolIdentityById.id;
     }
@@ -63,6 +68,8 @@ public class LoadBalancerListenerPolicyTargetPrototypeLoadBalancerPoolIdentityLo
       return this;
     }
   }
+
+  protected LoadBalancerListenerPolicyTargetPrototypeLoadBalancerPoolIdentityLoadBalancerPoolIdentityById() { }
 
   protected LoadBalancerListenerPolicyTargetPrototypeLoadBalancerPoolIdentityLoadBalancerPoolIdentityById(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.id,

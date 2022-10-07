@@ -26,5 +26,7 @@ public class InstanceProfileBandwidthDependent extends InstanceProfileBandwidth 
     String DEPENDENT = "dependent";
   }
 
+
+  protected InstanceProfileBandwidthDependent() { }
 }
 

@@ -33,6 +33,11 @@ public class UpdateDedicatedHostDiskOptions extends GenericModel {
     private String id;
     private Map<String, Object> dedicatedHostDiskPatch;
 
+    /**
+     * Instantiates a new Builder from an existing UpdateDedicatedHostDiskOptions instance.
+     *
+     * @param updateDedicatedHostDiskOptions the instance to initialize the Builder with
+     */
     private Builder(UpdateDedicatedHostDiskOptions updateDedicatedHostDiskOptions) {
       this.dedicatedHostId = updateDedicatedHostDiskOptions.dedicatedHostId;
       this.id = updateDedicatedHostDiskOptions.id;
@@ -100,6 +105,8 @@ public class UpdateDedicatedHostDiskOptions extends GenericModel {
       return this;
     }
   }
+
+  protected UpdateDedicatedHostDiskOptions() { }
 
   protected UpdateDedicatedHostDiskOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.dedicatedHostId,

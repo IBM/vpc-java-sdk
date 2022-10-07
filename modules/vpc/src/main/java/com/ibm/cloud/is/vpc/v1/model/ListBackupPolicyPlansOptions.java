@@ -29,6 +29,11 @@ public class ListBackupPolicyPlansOptions extends GenericModel {
     private String backupPolicyId;
     private String name;
 
+    /**
+     * Instantiates a new Builder from an existing ListBackupPolicyPlansOptions instance.
+     *
+     * @param listBackupPolicyPlansOptions the instance to initialize the Builder with
+     */
     private Builder(ListBackupPolicyPlansOptions listBackupPolicyPlansOptions) {
       this.backupPolicyId = listBackupPolicyPlansOptions.backupPolicyId;
       this.name = listBackupPolicyPlansOptions.name;
@@ -80,6 +85,8 @@ public class ListBackupPolicyPlansOptions extends GenericModel {
       return this;
     }
   }
+
+  protected ListBackupPolicyPlansOptions() { }
 
   protected ListBackupPolicyPlansOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.backupPolicyId,

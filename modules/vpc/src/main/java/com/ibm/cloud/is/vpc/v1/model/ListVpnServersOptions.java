@@ -47,6 +47,11 @@ public class ListVpnServersOptions extends GenericModel {
     private String resourceGroupId;
     private String sort;
 
+    /**
+     * Instantiates a new Builder from an existing ListVpnServersOptions instance.
+     *
+     * @param listVpnServersOptions the instance to initialize the Builder with
+     */
     private Builder(ListVpnServersOptions listVpnServersOptions) {
       this.name = listVpnServersOptions.name;
       this.start = listVpnServersOptions.start;
@@ -125,6 +130,8 @@ public class ListVpnServersOptions extends GenericModel {
       return this;
     }
   }
+
+  protected ListVpnServersOptions() { }
 
   protected ListVpnServersOptions(Builder builder) {
     name = builder.name;

@@ -29,6 +29,11 @@ public class ReplaceSubnetNetworkAclOptions extends GenericModel {
     private String id;
     private NetworkACLIdentity networkAclIdentity;
 
+    /**
+     * Instantiates a new Builder from an existing ReplaceSubnetNetworkAclOptions instance.
+     *
+     * @param replaceSubnetNetworkAclOptions the instance to initialize the Builder with
+     */
     private Builder(ReplaceSubnetNetworkAclOptions replaceSubnetNetworkAclOptions) {
       this.id = replaceSubnetNetworkAclOptions.id;
       this.networkAclIdentity = replaceSubnetNetworkAclOptions.networkAclIdentity;
@@ -82,6 +87,8 @@ public class ReplaceSubnetNetworkAclOptions extends GenericModel {
       return this;
     }
   }
+
+  protected ReplaceSubnetNetworkAclOptions() { }
 
   protected ReplaceSubnetNetworkAclOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,

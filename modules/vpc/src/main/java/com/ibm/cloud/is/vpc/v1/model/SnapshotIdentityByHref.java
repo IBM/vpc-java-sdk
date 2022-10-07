@@ -24,6 +24,11 @@ public class SnapshotIdentityByHref extends SnapshotIdentity {
   public static class Builder {
     private String href;
 
+    /**
+     * Instantiates a new Builder from an existing SnapshotIdentityByHref instance.
+     *
+     * @param snapshotIdentityByHref the instance to initialize the Builder with
+     */
     public Builder(SnapshotIdentity snapshotIdentityByHref) {
       this.href = snapshotIdentityByHref.href;
     }
@@ -63,6 +68,8 @@ public class SnapshotIdentityByHref extends SnapshotIdentity {
       return this;
     }
   }
+
+  protected SnapshotIdentityByHref() { }
 
   protected SnapshotIdentityByHref(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.href,

@@ -61,5 +61,7 @@ public class BareMetalServerNetworkInterfaceByVLAN extends BareMetalServerNetwor
     String VLAN = "vlan";
   }
 
+
+  protected BareMetalServerNetworkInterfaceByVLAN() { }
 }
 

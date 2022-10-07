@@ -27,6 +27,11 @@ public class DeleteKeyOptions extends GenericModel {
   public static class Builder {
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing DeleteKeyOptions instance.
+     *
+     * @param deleteKeyOptions the instance to initialize the Builder with
+     */
     private Builder(DeleteKeyOptions deleteKeyOptions) {
       this.id = deleteKeyOptions.id;
     }
@@ -66,6 +71,8 @@ public class DeleteKeyOptions extends GenericModel {
       return this;
     }
   }
+
+  protected DeleteKeyOptions() { }
 
   protected DeleteKeyOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,

@@ -24,6 +24,11 @@ public class FlowLogCollectorTargetPrototypeVPCIdentityVPCIdentityById extends F
   public static class Builder {
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing FlowLogCollectorTargetPrototypeVPCIdentityVPCIdentityById instance.
+     *
+     * @param flowLogCollectorTargetPrototypeVpcIdentityVpcIdentityById the instance to initialize the Builder with
+     */
     public Builder(FlowLogCollectorTargetPrototypeVPCIdentity flowLogCollectorTargetPrototypeVpcIdentityVpcIdentityById) {
       this.id = flowLogCollectorTargetPrototypeVpcIdentityVpcIdentityById.id;
     }
@@ -63,6 +68,8 @@ public class FlowLogCollectorTargetPrototypeVPCIdentityVPCIdentityById extends F
       return this;
     }
   }
+
+  protected FlowLogCollectorTargetPrototypeVPCIdentityVPCIdentityById() { }
 
   protected FlowLogCollectorTargetPrototypeVPCIdentityVPCIdentityById(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.id,

@@ -25,6 +25,8 @@ public class LoadBalancerListenerHTTPSRedirect extends GenericModel {
   protected LoadBalancerListenerReference listener;
   protected String uri;
 
+  protected LoadBalancerListenerHTTPSRedirect() { }
+
   /**
    * Gets the httpStatusCode.
    *

@@ -41,6 +41,11 @@ public class CreateInstanceConsoleAccessTokenOptions extends GenericModel {
     private String consoleType;
     private Boolean force;
 
+    /**
+     * Instantiates a new Builder from an existing CreateInstanceConsoleAccessTokenOptions instance.
+     *
+     * @param createInstanceConsoleAccessTokenOptions the instance to initialize the Builder with
+     */
     private Builder(CreateInstanceConsoleAccessTokenOptions createInstanceConsoleAccessTokenOptions) {
       this.instanceId = createInstanceConsoleAccessTokenOptions.instanceId;
       this.consoleType = createInstanceConsoleAccessTokenOptions.consoleType;
@@ -106,6 +111,8 @@ public class CreateInstanceConsoleAccessTokenOptions extends GenericModel {
       return this;
     }
   }
+
+  protected CreateInstanceConsoleAccessTokenOptions() { }
 
   protected CreateInstanceConsoleAccessTokenOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.instanceId,

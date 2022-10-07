@@ -34,8 +34,7 @@ public class LoadBalancerProfileRouteModeSupported extends GenericModel {
   protected String type;
   protected Boolean value;
 
-  protected LoadBalancerProfileRouteModeSupported() {
-  }
+  protected LoadBalancerProfileRouteModeSupported() { }
 
   /**
    * Gets the type.

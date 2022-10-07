@@ -29,6 +29,11 @@ public class InstanceGroupManagerScheduledActionGroupPrototype extends GenericMo
   public static class Builder {
     private Long membershipCount;
 
+    /**
+     * Instantiates a new Builder from an existing InstanceGroupManagerScheduledActionGroupPrototype instance.
+     *
+     * @param instanceGroupManagerScheduledActionGroupPrototype the instance to initialize the Builder with
+     */
     private Builder(InstanceGroupManagerScheduledActionGroupPrototype instanceGroupManagerScheduledActionGroupPrototype) {
       this.membershipCount = instanceGroupManagerScheduledActionGroupPrototype.membershipCount;
     }
@@ -68,6 +73,8 @@ public class InstanceGroupManagerScheduledActionGroupPrototype extends GenericMo
       return this;
     }
   }
+
+  protected InstanceGroupManagerScheduledActionGroupPrototype() { }
 
   protected InstanceGroupManagerScheduledActionGroupPrototype(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.membershipCount,

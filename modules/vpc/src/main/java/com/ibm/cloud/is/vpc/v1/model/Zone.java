@@ -36,6 +36,8 @@ public class Zone extends GenericModel {
   protected RegionReference region;
   protected String status;
 
+  protected Zone() { }
+
   /**
    * Gets the href.
    *

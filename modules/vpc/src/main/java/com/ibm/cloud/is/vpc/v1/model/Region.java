@@ -34,6 +34,8 @@ public class Region extends GenericModel {
   protected String name;
   protected String status;
 
+  protected Region() { }
+
   /**
    * Gets the endpoint.
    *

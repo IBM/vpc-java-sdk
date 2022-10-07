@@ -25,5 +25,7 @@ public class BareMetalServerInitializationUserAccountBareMetalServerInitializati
     String HOST_USER_ACCOUNT = "host_user_account";
   }
 
+
+  protected BareMetalServerInitializationUserAccountBareMetalServerInitializationHostUserAccount() { }
 }
 

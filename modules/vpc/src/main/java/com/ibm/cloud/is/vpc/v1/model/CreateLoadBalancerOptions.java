@@ -48,6 +48,11 @@ public class CreateLoadBalancerOptions extends GenericModel {
     private Boolean routeMode;
     private List<SecurityGroupIdentity> securityGroups;
 
+    /**
+     * Instantiates a new Builder from an existing CreateLoadBalancerOptions instance.
+     *
+     * @param createLoadBalancerOptions the instance to initialize the Builder with
+     */
     private Builder(CreateLoadBalancerOptions createLoadBalancerOptions) {
       this.isPublic = createLoadBalancerOptions.isPublic;
       this.subnets = createLoadBalancerOptions.subnets;
@@ -266,6 +271,8 @@ public class CreateLoadBalancerOptions extends GenericModel {
     }
   }
 
+  protected CreateLoadBalancerOptions() { }
+
   protected CreateLoadBalancerOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.isPublic,
       "isPublic cannot be null");
@@ -295,9 +302,9 @@ public class CreateLoadBalancerOptions extends GenericModel {
   /**
    * Gets the isPublic.
    *
-   * Indicates whether this load balancer is public or private.
+   * Indicates whether this load balancer is public.
    *
-   * At present, if route mode is enabled, the load balancer must be private.
+   * At present, if route mode is enabled, the load balancer must not be public.
    *
    * @return the isPublic
    */
@@ -308,8 +315,8 @@ public class CreateLoadBalancerOptions extends GenericModel {
   /**
    * Gets the subnets.
    *
-   * The subnets to provision this load balancer in.  The load balancer's availability will depend on the availability
-   * of the zones the specified subnets reside in.
+   * The subnets to provision this load balancer in. The subnets must be in the same VPC. The load balancer's
+   * availability will depend on the availability of the zones that the subnets reside in.
    *
    * Load balancers in the `network` family allow only one subnet to be specified.
    *
@@ -334,11 +341,10 @@ public class CreateLoadBalancerOptions extends GenericModel {
    * Gets the logging.
    *
    * The logging configuration to use for this load balancer. See [VPC Datapath
-   * Logging](https://cloud.ibm.com/docs/vpc?topic=vpc-datapath-logging)
-   * on the logging format, fields and permitted values.
+   * Logging](https://cloud.ibm.com/docs/vpc?topic=vpc-datapath-logging) on the logging
+   * format, fields and permitted values.
    *
-   * To activate logging, the load balancer profile must support the specified logging
-   * type.
+   * To activate logging, the load balancer profile must support the specified logging type.
    *
    * @return the logging
    */
@@ -372,7 +378,7 @@ public class CreateLoadBalancerOptions extends GenericModel {
   /**
    * Gets the profile.
    *
-   * The profile to use for this load balancer
+   * The profile to use for this load balancer.
    *
    * If unspecified, `application` will be used.
    *

@@ -23,10 +23,12 @@ public class LoadBalancerListenerPolicyRuleReference extends GenericModel {
   protected String href;
   protected String id;
 
+  protected LoadBalancerListenerPolicyRuleReference() { }
+
   /**
    * Gets the deleted.
    *
-   * If present, this property indicates the referenced resource has been deleted and provides
+   * If present, this property indicates the referenced resource has been deleted, and provides
    * some supplementary information.
    *
    * @return the deleted

@@ -23,7 +23,6 @@ package com.ibm.cloud.is.vpc.v1.model;
 public class LoadBalancerPoolMemberTargetPrototypeInstanceIdentity extends LoadBalancerPoolMemberTargetPrototype {
 
 
-  protected LoadBalancerPoolMemberTargetPrototypeInstanceIdentity() {
-  }
+  protected LoadBalancerPoolMemberTargetPrototypeInstanceIdentity() { }
 }
 

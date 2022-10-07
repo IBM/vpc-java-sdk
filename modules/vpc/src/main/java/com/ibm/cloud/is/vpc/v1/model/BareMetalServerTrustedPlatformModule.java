@@ -38,6 +38,8 @@ public class BareMetalServerTrustedPlatformModule extends GenericModel {
   protected Boolean enabled;
   protected String mode;
 
+  protected BareMetalServerTrustedPlatformModule() { }
+
   /**
    * Gets the enabled.
    *

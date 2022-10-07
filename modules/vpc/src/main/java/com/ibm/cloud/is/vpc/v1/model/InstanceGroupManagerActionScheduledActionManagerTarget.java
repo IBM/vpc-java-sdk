@@ -54,5 +54,7 @@ public class InstanceGroupManagerActionScheduledActionManagerTarget extends Inst
     String SCHEDULED = "scheduled";
   }
 
+
+  protected InstanceGroupManagerActionScheduledActionManagerTarget() { }
 }
 

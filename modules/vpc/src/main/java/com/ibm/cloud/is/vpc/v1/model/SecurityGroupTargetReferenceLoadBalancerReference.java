@@ -25,5 +25,7 @@ public class SecurityGroupTargetReferenceLoadBalancerReference extends SecurityG
     String LOAD_BALANCER = "load_balancer";
   }
 
+
+  protected SecurityGroupTargetReferenceLoadBalancerReference() { }
 }
 

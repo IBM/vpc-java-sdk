@@ -34,6 +34,11 @@ public class NetworkInterfacePatch extends GenericModel {
     private Boolean allowIpSpoofing;
     private String name;
 
+    /**
+     * Instantiates a new Builder from an existing NetworkInterfacePatch instance.
+     *
+     * @param networkInterfacePatch the instance to initialize the Builder with
+     */
     private Builder(NetworkInterfacePatch networkInterfacePatch) {
       this.allowIpSpoofing = networkInterfacePatch.allowIpSpoofing;
       this.name = networkInterfacePatch.name;
@@ -76,6 +81,8 @@ public class NetworkInterfacePatch extends GenericModel {
       return this;
     }
   }
+
+  protected NetworkInterfacePatch() { }
 
   protected NetworkInterfacePatch(Builder builder) {
     allowIpSpoofing = builder.allowIpSpoofing;

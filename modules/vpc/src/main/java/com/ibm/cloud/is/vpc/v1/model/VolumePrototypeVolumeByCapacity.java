@@ -34,6 +34,11 @@ public class VolumePrototypeVolumeByCapacity extends VolumePrototype {
     private Long capacity;
     private EncryptionKeyIdentity encryptionKey;
 
+    /**
+     * Instantiates a new Builder from an existing VolumePrototypeVolumeByCapacity instance.
+     *
+     * @param volumePrototypeVolumeByCapacity the instance to initialize the Builder with
+     */
     public Builder(VolumePrototype volumePrototypeVolumeByCapacity) {
       this.iops = volumePrototypeVolumeByCapacity.iops;
       this.name = volumePrototypeVolumeByCapacity.name;
@@ -178,6 +183,8 @@ public class VolumePrototypeVolumeByCapacity extends VolumePrototype {
       return this;
     }
   }
+
+  protected VolumePrototypeVolumeByCapacity() { }
 
   protected VolumePrototypeVolumeByCapacity(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.profile,

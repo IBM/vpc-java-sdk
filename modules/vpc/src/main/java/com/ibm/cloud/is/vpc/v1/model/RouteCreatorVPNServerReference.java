@@ -25,5 +25,7 @@ public class RouteCreatorVPNServerReference extends RouteCreator {
     String VPN_SERVER = "vpn_server";
   }
 
+
+  protected RouteCreatorVPNServerReference() { }
 }
 

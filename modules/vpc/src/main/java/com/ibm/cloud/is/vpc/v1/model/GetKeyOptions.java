@@ -27,6 +27,11 @@ public class GetKeyOptions extends GenericModel {
   public static class Builder {
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing GetKeyOptions instance.
+     *
+     * @param getKeyOptions the instance to initialize the Builder with
+     */
     private Builder(GetKeyOptions getKeyOptions) {
       this.id = getKeyOptions.id;
     }
@@ -66,6 +71,8 @@ public class GetKeyOptions extends GenericModel {
       return this;
     }
   }
+
+  protected GetKeyOptions() { }
 
   protected GetKeyOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,

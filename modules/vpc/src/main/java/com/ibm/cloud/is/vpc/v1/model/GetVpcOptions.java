@@ -27,6 +27,11 @@ public class GetVpcOptions extends GenericModel {
   public static class Builder {
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing GetVpcOptions instance.
+     *
+     * @param getVpcOptions the instance to initialize the Builder with
+     */
     private Builder(GetVpcOptions getVpcOptions) {
       this.id = getVpcOptions.id;
     }
@@ -66,6 +71,8 @@ public class GetVpcOptions extends GenericModel {
       return this;
     }
   }
+
+  protected GetVpcOptions() { }
 
   protected GetVpcOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,

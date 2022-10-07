@@ -26,5 +26,7 @@ public class BareMetalServerProfileBandwidthFixed extends BareMetalServerProfile
     String FIXED = "fixed";
   }
 
+
+  protected BareMetalServerProfileBandwidthFixed() { }
 }
 

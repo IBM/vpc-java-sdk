@@ -29,6 +29,11 @@ public class ListIkePoliciesOptions extends GenericModel {
     private String start;
     private Long limit;
 
+    /**
+     * Instantiates a new Builder from an existing ListIkePoliciesOptions instance.
+     *
+     * @param listIkePoliciesOptions the instance to initialize the Builder with
+     */
     private Builder(ListIkePoliciesOptions listIkePoliciesOptions) {
       this.start = listIkePoliciesOptions.start;
       this.limit = listIkePoliciesOptions.limit;
@@ -71,6 +76,8 @@ public class ListIkePoliciesOptions extends GenericModel {
       return this;
     }
   }
+
+  protected ListIkePoliciesOptions() { }
 
   protected ListIkePoliciesOptions(Builder builder) {
     start = builder.start;

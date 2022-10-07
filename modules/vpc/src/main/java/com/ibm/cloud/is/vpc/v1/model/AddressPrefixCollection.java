@@ -30,6 +30,8 @@ public class AddressPrefixCollection extends GenericModel {
   @SerializedName("total_count")
   protected Long totalCount;
 
+  protected AddressPrefixCollection() { }
+
   /**
    * Gets the addressPrefixes.
    *

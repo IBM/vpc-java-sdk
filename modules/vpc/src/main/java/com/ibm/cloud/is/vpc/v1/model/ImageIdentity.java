@@ -28,8 +28,7 @@ public class ImageIdentity extends GenericModel {
   protected String crn;
   protected String href;
 
-  protected ImageIdentity() {
-  }
+  protected ImageIdentity() { }
 
   /**
    * Gets the id.

@@ -24,6 +24,11 @@ public class VPCIdentityByCRN extends VPCIdentity {
   public static class Builder {
     private String crn;
 
+    /**
+     * Instantiates a new Builder from an existing VPCIdentityByCRN instance.
+     *
+     * @param vpcIdentityByCrn the instance to initialize the Builder with
+     */
     public Builder(VPCIdentity vpcIdentityByCrn) {
       this.crn = vpcIdentityByCrn.crn;
     }
@@ -63,6 +68,8 @@ public class VPCIdentityByCRN extends VPCIdentity {
       return this;
     }
   }
+
+  protected VPCIdentityByCRN() { }
 
   protected VPCIdentityByCRN(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.crn,

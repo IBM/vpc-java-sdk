@@ -30,6 +30,11 @@ public class SnapshotPrototypeSnapshotBySourceVolume extends SnapshotPrototype {
     private List<String> userTags;
     private VolumeIdentity sourceVolume;
 
+    /**
+     * Instantiates a new Builder from an existing SnapshotPrototypeSnapshotBySourceVolume instance.
+     *
+     * @param snapshotPrototypeSnapshotBySourceVolume the instance to initialize the Builder with
+     */
     public Builder(SnapshotPrototype snapshotPrototypeSnapshotBySourceVolume) {
       this.name = snapshotPrototypeSnapshotBySourceVolume.name;
       this.resourceGroup = snapshotPrototypeSnapshotBySourceVolume.resourceGroup;
@@ -122,6 +127,8 @@ public class SnapshotPrototypeSnapshotBySourceVolume extends SnapshotPrototype {
       return this;
     }
   }
+
+  protected SnapshotPrototypeSnapshotBySourceVolume() { }
 
   protected SnapshotPrototypeSnapshotBySourceVolume(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.sourceVolume,

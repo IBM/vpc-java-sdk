@@ -21,6 +21,8 @@ public class SnapshotCollectionFirst extends GenericModel {
 
   protected String href;
 
+  protected SnapshotCollectionFirst() { }
+
   /**
    * Gets the href.
    *

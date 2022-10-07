@@ -27,6 +27,8 @@ public class DedicatedHostProfileDisk extends GenericModel {
   @SerializedName("supported_instance_interface_types")
   protected DedicatedHostProfileDiskSupportedInterfaces supportedInstanceInterfaceTypes;
 
+  protected DedicatedHostProfileDisk() { }
+
   /**
    * Gets the interfaceType.
    *

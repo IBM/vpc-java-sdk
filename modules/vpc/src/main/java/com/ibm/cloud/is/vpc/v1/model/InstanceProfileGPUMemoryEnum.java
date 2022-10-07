@@ -25,5 +25,7 @@ public class InstanceProfileGPUMemoryEnum extends InstanceProfileGPUMemory {
     String X_ENUM = "enum";
   }
 
+
+  protected InstanceProfileGPUMemoryEnum() { }
 }
 

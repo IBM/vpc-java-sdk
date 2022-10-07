@@ -30,6 +30,8 @@ public class DedicatedHostProfileVCPUArchitecture extends GenericModel {
   protected String type;
   protected String value;
 
+  protected DedicatedHostProfileVCPUArchitecture() { }
+
   /**
    * Gets the type.
    *

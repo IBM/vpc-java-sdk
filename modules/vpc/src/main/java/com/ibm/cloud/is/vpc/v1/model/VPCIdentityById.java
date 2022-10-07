@@ -24,6 +24,11 @@ public class VPCIdentityById extends VPCIdentity {
   public static class Builder {
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing VPCIdentityById instance.
+     *
+     * @param vpcIdentityById the instance to initialize the Builder with
+     */
     public Builder(VPCIdentity vpcIdentityById) {
       this.id = vpcIdentityById.id;
     }
@@ -63,6 +68,8 @@ public class VPCIdentityById extends VPCIdentity {
       return this;
     }
   }
+
+  protected VPCIdentityById() { }
 
   protected VPCIdentityById(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.id,

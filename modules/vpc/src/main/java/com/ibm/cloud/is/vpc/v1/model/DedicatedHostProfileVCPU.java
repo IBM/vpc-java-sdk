@@ -45,8 +45,7 @@ public class DedicatedHostProfileVCPU extends GenericModel {
   protected Long step;
   protected List<Long> values;
 
-  protected DedicatedHostProfileVCPU() {
-  }
+  protected DedicatedHostProfileVCPU() { }
 
   /**
    * Gets the type.

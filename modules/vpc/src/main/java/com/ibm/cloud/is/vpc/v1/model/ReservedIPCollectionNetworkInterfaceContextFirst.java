@@ -21,6 +21,8 @@ public class ReservedIPCollectionNetworkInterfaceContextFirst extends GenericMod
 
   protected String href;
 
+  protected ReservedIPCollectionNetworkInterfaceContextFirst() { }
+
   /**
    * Gets the href.
    *

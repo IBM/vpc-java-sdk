@@ -21,6 +21,8 @@ public class LoadBalancerCollectionNext extends GenericModel {
 
   protected String href;
 
+  protected LoadBalancerCollectionNext() { }
+
   /**
    * Gets the href.
    *

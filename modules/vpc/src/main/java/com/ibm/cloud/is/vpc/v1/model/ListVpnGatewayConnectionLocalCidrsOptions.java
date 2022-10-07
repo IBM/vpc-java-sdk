@@ -29,6 +29,11 @@ public class ListVpnGatewayConnectionLocalCidrsOptions extends GenericModel {
     private String vpnGatewayId;
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing ListVpnGatewayConnectionLocalCidrsOptions instance.
+     *
+     * @param listVpnGatewayConnectionLocalCidrsOptions the instance to initialize the Builder with
+     */
     private Builder(ListVpnGatewayConnectionLocalCidrsOptions listVpnGatewayConnectionLocalCidrsOptions) {
       this.vpnGatewayId = listVpnGatewayConnectionLocalCidrsOptions.vpnGatewayId;
       this.id = listVpnGatewayConnectionLocalCidrsOptions.id;
@@ -82,6 +87,8 @@ public class ListVpnGatewayConnectionLocalCidrsOptions extends GenericModel {
       return this;
     }
   }
+
+  protected ListVpnGatewayConnectionLocalCidrsOptions() { }
 
   protected ListVpnGatewayConnectionLocalCidrsOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.vpnGatewayId,

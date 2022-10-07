@@ -25,6 +25,8 @@ public class InstanceReference extends GenericModel {
   protected String id;
   protected String name;
 
+  protected InstanceReference() { }
+
   /**
    * Gets the crn.
    *
@@ -39,7 +41,7 @@ public class InstanceReference extends GenericModel {
   /**
    * Gets the deleted.
    *
-   * If present, this property indicates the referenced resource has been deleted and provides
+   * If present, this property indicates the referenced resource has been deleted, and provides
    * some supplementary information.
    *
    * @return the deleted

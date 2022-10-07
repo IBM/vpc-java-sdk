@@ -40,6 +40,11 @@ public class SubnetPrototypeSubnetByCIDR extends SubnetPrototype {
     private String ipv4CidrBlock;
     private ZoneIdentity zone;
 
+    /**
+     * Instantiates a new Builder from an existing SubnetPrototypeSubnetByCIDR instance.
+     *
+     * @param subnetPrototypeSubnetByCidr the instance to initialize the Builder with
+     */
     public Builder(SubnetPrototype subnetPrototypeSubnetByCidr) {
       this.ipVersion = subnetPrototypeSubnetByCidr.ipVersion;
       this.name = subnetPrototypeSubnetByCidr.name;
@@ -177,6 +182,8 @@ public class SubnetPrototypeSubnetByCIDR extends SubnetPrototype {
       return this;
     }
   }
+
+  protected SubnetPrototypeSubnetByCIDR() { }
 
   protected SubnetPrototypeSubnetByCIDR(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.vpc,

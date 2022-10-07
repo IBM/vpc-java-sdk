@@ -45,8 +45,7 @@ public class InstanceProfileDiskSize extends GenericModel {
   protected Long step;
   protected List<Long> values;
 
-  protected InstanceProfileDiskSize() {
-  }
+  protected InstanceProfileDiskSize() { }
 
   /**
    * Gets the type.

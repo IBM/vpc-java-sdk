@@ -21,6 +21,8 @@ public class BackupPolicyCollectionFirst extends GenericModel {
 
   protected String href;
 
+  protected BackupPolicyCollectionFirst() { }
+
   /**
    * Gets the href.
    *

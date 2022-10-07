@@ -29,6 +29,8 @@ public class SecurityGroupTargetCollection extends GenericModel {
   @SerializedName("total_count")
   protected Long totalCount;
 
+  protected SecurityGroupTargetCollection() { }
+
   /**
    * Gets the first.
    *

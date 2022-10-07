@@ -24,6 +24,11 @@ public class NetworkACLRuleBeforePatchNetworkACLRuleIdentityByHref extends Netwo
   public static class Builder {
     private String href;
 
+    /**
+     * Instantiates a new Builder from an existing NetworkACLRuleBeforePatchNetworkACLRuleIdentityByHref instance.
+     *
+     * @param networkAclRuleBeforePatchNetworkAclRuleIdentityByHref the instance to initialize the Builder with
+     */
     public Builder(NetworkACLRuleBeforePatch networkAclRuleBeforePatchNetworkAclRuleIdentityByHref) {
       this.href = networkAclRuleBeforePatchNetworkAclRuleIdentityByHref.href;
     }
@@ -63,6 +68,8 @@ public class NetworkACLRuleBeforePatchNetworkACLRuleIdentityByHref extends Netwo
       return this;
     }
   }
+
+  protected NetworkACLRuleBeforePatchNetworkACLRuleIdentityByHref() { }
 
   protected NetworkACLRuleBeforePatchNetworkACLRuleIdentityByHref(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.href,

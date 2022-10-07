@@ -24,6 +24,11 @@ public class ImageIdentityByCRN extends ImageIdentity {
   public static class Builder {
     private String crn;
 
+    /**
+     * Instantiates a new Builder from an existing ImageIdentityByCRN instance.
+     *
+     * @param imageIdentityByCrn the instance to initialize the Builder with
+     */
     public Builder(ImageIdentity imageIdentityByCrn) {
       this.crn = imageIdentityByCrn.crn;
     }
@@ -63,6 +68,8 @@ public class ImageIdentityByCRN extends ImageIdentity {
       return this;
     }
   }
+
+  protected ImageIdentityByCRN() { }
 
   protected ImageIdentityByCRN(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.crn,

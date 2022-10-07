@@ -21,8 +21,6 @@ import com.ibm.cloud.is.vpc.v1.model.ZoneIdentityByName;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import org.testng.annotations.Test;
@@ -67,20 +65,20 @@ public class CreateVpcRoutingTableOptionsTest {
 
     CreateVpcRoutingTableOptions createVpcRoutingTableOptionsModel = new CreateVpcRoutingTableOptions.Builder()
       .vpcId("testString")
-      .acceptRoutesFrom(new java.util.ArrayList<ResourceFilter>(java.util.Arrays.asList(resourceFilterModel)))
+      .acceptRoutesFrom(java.util.Arrays.asList(resourceFilterModel))
       .name("my-routing-table-2")
       .routeDirectLinkIngress(false)
       .routeTransitGatewayIngress(false)
       .routeVpcZoneIngress(false)
-      .routes(new java.util.ArrayList<RoutePrototype>(java.util.Arrays.asList(routePrototypeModel)))
+      .routes(java.util.Arrays.asList(routePrototypeModel))
       .build();
     assertEquals(createVpcRoutingTableOptionsModel.vpcId(), "testString");
-    assertEquals(createVpcRoutingTableOptionsModel.acceptRoutesFrom(), new java.util.ArrayList<ResourceFilter>(java.util.Arrays.asList(resourceFilterModel)));
+    assertEquals(createVpcRoutingTableOptionsModel.acceptRoutesFrom(), java.util.Arrays.asList(resourceFilterModel));
     assertEquals(createVpcRoutingTableOptionsModel.name(), "my-routing-table-2");
     assertEquals(createVpcRoutingTableOptionsModel.routeDirectLinkIngress(), Boolean.valueOf(false));
     assertEquals(createVpcRoutingTableOptionsModel.routeTransitGatewayIngress(), Boolean.valueOf(false));
     assertEquals(createVpcRoutingTableOptionsModel.routeVpcZoneIngress(), Boolean.valueOf(false));
-    assertEquals(createVpcRoutingTableOptionsModel.routes(), new java.util.ArrayList<RoutePrototype>(java.util.Arrays.asList(routePrototypeModel)));
+    assertEquals(createVpcRoutingTableOptionsModel.routes(), java.util.Arrays.asList(routePrototypeModel));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

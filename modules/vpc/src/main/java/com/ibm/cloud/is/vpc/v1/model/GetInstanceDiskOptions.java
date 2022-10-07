@@ -29,6 +29,11 @@ public class GetInstanceDiskOptions extends GenericModel {
     private String instanceId;
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing GetInstanceDiskOptions instance.
+     *
+     * @param getInstanceDiskOptions the instance to initialize the Builder with
+     */
     private Builder(GetInstanceDiskOptions getInstanceDiskOptions) {
       this.instanceId = getInstanceDiskOptions.instanceId;
       this.id = getInstanceDiskOptions.id;
@@ -82,6 +87,8 @@ public class GetInstanceDiskOptions extends GenericModel {
       return this;
     }
   }
+
+  protected GetInstanceDiskOptions() { }
 
   protected GetInstanceDiskOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.instanceId,

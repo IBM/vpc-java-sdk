@@ -25,5 +25,7 @@ public class InstanceProfileGPUMemoryFixed extends InstanceProfileGPUMemory {
     String FIXED = "fixed";
   }
 
+
+  protected InstanceProfileGPUMemoryFixed() { }
 }
 

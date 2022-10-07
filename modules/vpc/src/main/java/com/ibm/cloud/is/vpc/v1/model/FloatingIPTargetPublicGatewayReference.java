@@ -25,5 +25,7 @@ public class FloatingIPTargetPublicGatewayReference extends FloatingIPTarget {
     String PUBLIC_GATEWAY = "public_gateway";
   }
 
+
+  protected FloatingIPTargetPublicGatewayReference() { }
 }
 

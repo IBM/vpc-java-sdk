@@ -21,6 +21,8 @@ public class InstanceGroupManagerCollectionFirst extends GenericModel {
 
   protected String href;
 
+  protected InstanceGroupManagerCollectionFirst() { }
+
   /**
    * Gets the href.
    *

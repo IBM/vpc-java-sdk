@@ -33,6 +33,11 @@ public class UpdateInstanceNetworkInterfaceOptions extends GenericModel {
     private String id;
     private Map<String, Object> networkInterfacePatch;
 
+    /**
+     * Instantiates a new Builder from an existing UpdateInstanceNetworkInterfaceOptions instance.
+     *
+     * @param updateInstanceNetworkInterfaceOptions the instance to initialize the Builder with
+     */
     private Builder(UpdateInstanceNetworkInterfaceOptions updateInstanceNetworkInterfaceOptions) {
       this.instanceId = updateInstanceNetworkInterfaceOptions.instanceId;
       this.id = updateInstanceNetworkInterfaceOptions.id;
@@ -100,6 +105,8 @@ public class UpdateInstanceNetworkInterfaceOptions extends GenericModel {
       return this;
     }
   }
+
+  protected UpdateInstanceNetworkInterfaceOptions() { }
 
   protected UpdateInstanceNetworkInterfaceOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.instanceId,

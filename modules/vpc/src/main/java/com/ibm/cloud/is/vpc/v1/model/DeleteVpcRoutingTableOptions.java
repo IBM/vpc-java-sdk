@@ -31,6 +31,11 @@ public class DeleteVpcRoutingTableOptions extends GenericModel {
     private String id;
     private String ifMatch;
 
+    /**
+     * Instantiates a new Builder from an existing DeleteVpcRoutingTableOptions instance.
+     *
+     * @param deleteVpcRoutingTableOptions the instance to initialize the Builder with
+     */
     private Builder(DeleteVpcRoutingTableOptions deleteVpcRoutingTableOptions) {
       this.vpcId = deleteVpcRoutingTableOptions.vpcId;
       this.id = deleteVpcRoutingTableOptions.id;
@@ -96,6 +101,8 @@ public class DeleteVpcRoutingTableOptions extends GenericModel {
       return this;
     }
   }
+
+  protected DeleteVpcRoutingTableOptions() { }
 
   protected DeleteVpcRoutingTableOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.vpcId,

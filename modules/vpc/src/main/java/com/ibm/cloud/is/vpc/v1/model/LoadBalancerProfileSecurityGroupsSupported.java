@@ -34,8 +34,7 @@ public class LoadBalancerProfileSecurityGroupsSupported extends GenericModel {
   protected String type;
   protected Boolean value;
 
-  protected LoadBalancerProfileSecurityGroupsSupported() {
-  }
+  protected LoadBalancerProfileSecurityGroupsSupported() { }
 
   /**
    * Gets the type.

@@ -27,6 +27,11 @@ public class InstanceMetadataServicePatch extends GenericModel {
   public static class Builder {
     private Boolean enabled;
 
+    /**
+     * Instantiates a new Builder from an existing InstanceMetadataServicePatch instance.
+     *
+     * @param instanceMetadataServicePatch the instance to initialize the Builder with
+     */
     private Builder(InstanceMetadataServicePatch instanceMetadataServicePatch) {
       this.enabled = instanceMetadataServicePatch.enabled;
     }
@@ -57,6 +62,8 @@ public class InstanceMetadataServicePatch extends GenericModel {
       return this;
     }
   }
+
+  protected InstanceMetadataServicePatch() { }
 
   protected InstanceMetadataServicePatch(Builder builder) {
     enabled = builder.enabled;

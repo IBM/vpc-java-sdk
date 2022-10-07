@@ -29,6 +29,8 @@ public class ReservedIPCollectionNetworkInterfaceContext extends GenericModel {
   @SerializedName("total_count")
   protected Long totalCount;
 
+  protected ReservedIPCollectionNetworkInterfaceContext() { }
+
   /**
    * Gets the first.
    *

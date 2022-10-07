@@ -26,5 +26,7 @@ public class InstanceProfileBandwidthFixed extends InstanceProfileBandwidth {
     String FIXED = "fixed";
   }
 
+
+  protected InstanceProfileBandwidthFixed() { }
 }
 

@@ -24,9 +24,8 @@ public class Route extends GenericModel {
 
   /**
    * The action to perform with a packet matching the route:
-   * - `delegate`: delegate to the system's built-in routes
-   * - `delegate_vpc`: delegate to the system's built-in routes, ignoring Internet-bound
-   *   routes
+   * - `delegate`: delegate to system-provided routes
+   * - `delegate_vpc`: delegate to system-provided routes, ignoring Internet-bound routes
    * - `deliver`: deliver the packet to the specified `next_hop`
    * - `drop`: drop the packet.
    */
@@ -92,13 +91,14 @@ public class Route extends GenericModel {
   protected String origin;
   protected ZoneReference zone;
 
+  protected Route() { }
+
   /**
    * Gets the action.
    *
    * The action to perform with a packet matching the route:
-   * - `delegate`: delegate to the system's built-in routes
-   * - `delegate_vpc`: delegate to the system's built-in routes, ignoring Internet-bound
-   *   routes
+   * - `delegate`: delegate to system-provided routes
+   * - `delegate_vpc`: delegate to system-provided routes, ignoring Internet-bound routes
    * - `deliver`: deliver the packet to the specified `next_hop`
    * - `drop`: drop the packet.
    *
@@ -122,9 +122,9 @@ public class Route extends GenericModel {
   /**
    * Gets the creator.
    *
-   * If present, the resource that created the route. Routes with this property present cannot be
-   * directly deleted. All routes with an `origin` of `learned` or `service` will have this
-   * property set, and future `origin` values may also have this property set.
+   * If present, the resource that created the route. Routes with this property present cannot
+   * be directly deleted. All routes with an `origin` of `service` will have this property set,
+   * and future `origin` values may also have this property set.
    *
    * @return the creator
    */

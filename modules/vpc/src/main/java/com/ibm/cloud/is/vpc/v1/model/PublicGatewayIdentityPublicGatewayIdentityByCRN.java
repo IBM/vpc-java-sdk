@@ -24,6 +24,11 @@ public class PublicGatewayIdentityPublicGatewayIdentityByCRN extends PublicGatew
   public static class Builder {
     private String crn;
 
+    /**
+     * Instantiates a new Builder from an existing PublicGatewayIdentityPublicGatewayIdentityByCRN instance.
+     *
+     * @param publicGatewayIdentityPublicGatewayIdentityByCrn the instance to initialize the Builder with
+     */
     public Builder(PublicGatewayIdentity publicGatewayIdentityPublicGatewayIdentityByCrn) {
       this.crn = publicGatewayIdentityPublicGatewayIdentityByCrn.crn;
     }
@@ -63,6 +68,8 @@ public class PublicGatewayIdentityPublicGatewayIdentityByCRN extends PublicGatew
       return this;
     }
   }
+
+  protected PublicGatewayIdentityPublicGatewayIdentityByCRN() { }
 
   protected PublicGatewayIdentityPublicGatewayIdentityByCRN(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.crn,

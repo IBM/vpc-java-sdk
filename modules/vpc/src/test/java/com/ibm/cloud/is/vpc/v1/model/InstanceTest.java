@@ -13,6 +13,7 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.ibm.cloud.is.vpc.v1.model.CatalogOfferingVersionReference;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostGroupReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostReference;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostReferenceDeleted;
@@ -20,6 +21,7 @@ import com.ibm.cloud.is.vpc.v1.model.ImageReference;
 import com.ibm.cloud.is.vpc.v1.model.ImageReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.Instance;
 import com.ibm.cloud.is.vpc.v1.model.InstanceAvailabilityPolicy;
+import com.ibm.cloud.is.vpc.v1.model.InstanceCatalogOffering;
 import com.ibm.cloud.is.vpc.v1.model.InstanceDisk;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGPU;
 import com.ibm.cloud.is.vpc.v1.model.InstanceMetadataService;
@@ -27,6 +29,7 @@ import com.ibm.cloud.is.vpc.v1.model.InstancePlacementTargetDedicatedHostGroupRe
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileReference;
 import com.ibm.cloud.is.vpc.v1.model.InstanceStatusReason;
 import com.ibm.cloud.is.vpc.v1.model.InstanceVCPU;
+import com.ibm.cloud.is.vpc.v1.model.LifecycleReason;
 import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceInstanceContextReference;
 import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceInstanceContextReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.ReservedIPReference;
@@ -64,6 +67,7 @@ public class InstanceTest {
     assertNull(instanceModel.getAvailabilityPolicy());
     assertNull(instanceModel.getBandwidth());
     assertNull(instanceModel.getBootVolumeAttachment());
+    assertNull(instanceModel.getCatalogOffering());
     assertNull(instanceModel.getCreatedAt());
     assertNull(instanceModel.getCrn());
     assertNull(instanceModel.getDedicatedHost());
@@ -72,6 +76,8 @@ public class InstanceTest {
     assertNull(instanceModel.getHref());
     assertNull(instanceModel.getId());
     assertNull(instanceModel.getImage());
+    assertNull(instanceModel.getLifecycleReasons());
+    assertNull(instanceModel.getLifecycleState());
     assertNull(instanceModel.getMemory());
     assertNull(instanceModel.getMetadataService());
     assertNull(instanceModel.getName());

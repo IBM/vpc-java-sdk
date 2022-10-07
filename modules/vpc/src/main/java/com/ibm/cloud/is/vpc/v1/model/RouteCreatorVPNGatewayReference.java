@@ -25,5 +25,7 @@ public class RouteCreatorVPNGatewayReference extends RouteCreator {
     String VPN_GATEWAY = "vpn_gateway";
   }
 
+
+  protected RouteCreatorVPNGatewayReference() { }
 }
 

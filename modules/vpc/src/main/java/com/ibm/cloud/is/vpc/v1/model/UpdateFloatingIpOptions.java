@@ -31,6 +31,11 @@ public class UpdateFloatingIpOptions extends GenericModel {
     private String id;
     private Map<String, Object> floatingIpPatch;
 
+    /**
+     * Instantiates a new Builder from an existing UpdateFloatingIpOptions instance.
+     *
+     * @param updateFloatingIpOptions the instance to initialize the Builder with
+     */
     private Builder(UpdateFloatingIpOptions updateFloatingIpOptions) {
       this.id = updateFloatingIpOptions.id;
       this.floatingIpPatch = updateFloatingIpOptions.floatingIpPatch;
@@ -84,6 +89,8 @@ public class UpdateFloatingIpOptions extends GenericModel {
       return this;
     }
   }
+
+  protected UpdateFloatingIpOptions() { }
 
   protected UpdateFloatingIpOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,

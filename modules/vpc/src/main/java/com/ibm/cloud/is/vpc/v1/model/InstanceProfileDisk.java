@@ -25,6 +25,8 @@ public class InstanceProfileDisk extends GenericModel {
   @SerializedName("supported_interface_types")
   protected InstanceProfileDiskSupportedInterfaces supportedInterfaceTypes;
 
+  protected InstanceProfileDisk() { }
+
   /**
    * Gets the quantity.
    *

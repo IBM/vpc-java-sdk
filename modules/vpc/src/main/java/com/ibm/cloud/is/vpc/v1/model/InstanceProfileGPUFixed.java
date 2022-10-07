@@ -25,5 +25,7 @@ public class InstanceProfileGPUFixed extends InstanceProfileGPU {
     String FIXED = "fixed";
   }
 
+
+  protected InstanceProfileGPUFixed() { }
 }
 

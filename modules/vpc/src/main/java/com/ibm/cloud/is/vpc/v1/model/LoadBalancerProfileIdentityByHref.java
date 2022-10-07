@@ -24,6 +24,11 @@ public class LoadBalancerProfileIdentityByHref extends LoadBalancerProfileIdenti
   public static class Builder {
     private String href;
 
+    /**
+     * Instantiates a new Builder from an existing LoadBalancerProfileIdentityByHref instance.
+     *
+     * @param loadBalancerProfileIdentityByHref the instance to initialize the Builder with
+     */
     public Builder(LoadBalancerProfileIdentity loadBalancerProfileIdentityByHref) {
       this.href = loadBalancerProfileIdentityByHref.href;
     }
@@ -63,6 +68,8 @@ public class LoadBalancerProfileIdentityByHref extends LoadBalancerProfileIdenti
       return this;
     }
   }
+
+  protected LoadBalancerProfileIdentityByHref() { }
 
   protected LoadBalancerProfileIdentityByHref(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.href,

@@ -24,8 +24,7 @@ public class EncryptionKeyIdentity extends GenericModel {
 
   protected String crn;
 
-  protected EncryptionKeyIdentity() {
-  }
+  protected EncryptionKeyIdentity() { }
 
   /**
    * Gets the crn.

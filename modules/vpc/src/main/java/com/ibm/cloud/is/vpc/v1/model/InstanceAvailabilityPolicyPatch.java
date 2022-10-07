@@ -45,6 +45,11 @@ public class InstanceAvailabilityPolicyPatch extends GenericModel {
   public static class Builder {
     private String hostFailure;
 
+    /**
+     * Instantiates a new Builder from an existing InstanceAvailabilityPolicyPatch instance.
+     *
+     * @param instanceAvailabilityPolicyPatch the instance to initialize the Builder with
+     */
     private Builder(InstanceAvailabilityPolicyPatch instanceAvailabilityPolicyPatch) {
       this.hostFailure = instanceAvailabilityPolicyPatch.hostFailure;
     }
@@ -75,6 +80,8 @@ public class InstanceAvailabilityPolicyPatch extends GenericModel {
       return this;
     }
   }
+
+  protected InstanceAvailabilityPolicyPatch() { }
 
   protected InstanceAvailabilityPolicyPatch(Builder builder) {
     hostFailure = builder.hostFailure;

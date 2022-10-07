@@ -33,6 +33,8 @@ public class TrustedProfileReference extends GenericModel {
   @SerializedName("resource_type")
   protected String resourceType;
 
+  protected TrustedProfileReference() { }
+
   /**
    * Gets the crn.
    *

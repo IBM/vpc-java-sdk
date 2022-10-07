@@ -51,6 +51,8 @@ public class VPNGatewayMember extends GenericModel {
   protected String role;
   protected String status;
 
+  protected VPNGatewayMember() { }
+
   /**
    * Gets the privateIp.
    *

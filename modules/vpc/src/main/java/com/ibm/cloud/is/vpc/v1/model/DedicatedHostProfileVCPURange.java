@@ -25,5 +25,7 @@ public class DedicatedHostProfileVCPURange extends DedicatedHostProfileVCPU {
     String RANGE = "range";
   }
 
+
+  protected DedicatedHostProfileVCPURange() { }
 }
 

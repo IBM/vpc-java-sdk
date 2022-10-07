@@ -32,6 +32,8 @@ public class InstanceProfileGPUManufacturer extends GenericModel {
   protected String type;
   protected List<String> values;
 
+  protected InstanceProfileGPUManufacturer() { }
+
   /**
    * Gets the type.
    *

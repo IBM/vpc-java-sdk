@@ -45,6 +45,11 @@ public class ListVpnServerRoutesOptions extends GenericModel {
     private Long limit;
     private String sort;
 
+    /**
+     * Instantiates a new Builder from an existing ListVpnServerRoutesOptions instance.
+     *
+     * @param listVpnServerRoutesOptions the instance to initialize the Builder with
+     */
     private Builder(ListVpnServerRoutesOptions listVpnServerRoutesOptions) {
       this.vpnServerId = listVpnServerRoutesOptions.vpnServerId;
       this.start = listVpnServerRoutesOptions.start;
@@ -120,6 +125,8 @@ public class ListVpnServerRoutesOptions extends GenericModel {
       return this;
     }
   }
+
+  protected ListVpnServerRoutesOptions() { }
 
   protected ListVpnServerRoutesOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.vpnServerId,

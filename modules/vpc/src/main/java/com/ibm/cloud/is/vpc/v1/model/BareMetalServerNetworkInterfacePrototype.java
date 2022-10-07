@@ -21,6 +21,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  * BareMetalServerNetworkInterfacePrototype.
  *
  * Classes which extend this class:
+ * - BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByHiperSocketPrototype
  * - BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByPCIPrototype
  * - BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVLANPrototype
  */
@@ -30,24 +31,32 @@ public class BareMetalServerNetworkInterfacePrototype extends GenericModel {
   protected static java.util.Map<String, Class<?>> discriminatorMapping;
   static {
     discriminatorMapping = new java.util.HashMap<>();
+    discriminatorMapping.put("hipersocket", BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByHiperSocketPrototype.class);
     discriminatorMapping.put("pci", BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByPCIPrototype.class);
     discriminatorMapping.put("vlan", BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVLANPrototype.class);
   }
 
   /**
    * The network interface type:
+   * - `hipersocket`: a virtual network device that provides high-speed TCP/IP connectivity
+   *   within a `s390x` based system
+   *   - Not supported on bare metal servers with a `cpu.architecture` of `amd64`
    * - `pci`: a physical PCI device which can only be created or deleted when the bare metal
    *   server is stopped
    *   - Has an `allowed_vlans` property which controls the VLANs that will be permitted
    *     to use the PCI interface
    *   - Cannot directly use an IEEE 802.1q VLAN tag.
+   *   - Not supported on bare metal servers with a `cpu.architecture` of `s390x`
    * - `vlan`: a virtual device, used through a `pci` device that has the `vlan` in its
    *   array of `allowed_vlans`.
    *   - Must use an IEEE 802.1q tag.
    *   - Has its own security groups and does not inherit those of the PCI device through
    *     which traffic flows.
+   *   - Not supported on bare metal servers with a `cpu.architecture` of `s390x`.
    */
   public interface InterfaceType {
+    /** hipersocket. */
+    String HIPERSOCKET = "hipersocket";
     /** pci. */
     String PCI = "pci";
     /** vlan. */
@@ -72,8 +81,7 @@ public class BareMetalServerNetworkInterfacePrototype extends GenericModel {
   protected Boolean allowInterfaceToFloat;
   protected Long vlan;
 
-  protected BareMetalServerNetworkInterfacePrototype() {
-  }
+  protected BareMetalServerNetworkInterfacePrototype() { }
 
   /**
    * Gets the allowIpSpoofing.
@@ -95,10 +103,12 @@ public class BareMetalServerNetworkInterfacePrototype extends GenericModel {
    *   - A single floating IP can be assigned to the network interface.
    *
    * If `false`:
-   *   - Packets are passed unmodified to/from the network interface,
+   *   - Packets are passed unchanged to/from the network interface,
    *     allowing the workload to perform any needed NAT operations.
    *   - Multiple floating IPs can be assigned to the network interface.
    *   - `allow_ip_spoofing` must be set to `false`.
+   *
+   * This must be `true` when `interface_type` is `hipersocket`.
    *
    * @return the enableInfrastructureNat
    */
@@ -110,16 +120,21 @@ public class BareMetalServerNetworkInterfacePrototype extends GenericModel {
    * Gets the interfaceType.
    *
    * The network interface type:
+   * - `hipersocket`: a virtual network device that provides high-speed TCP/IP connectivity
+   *   within a `s390x` based system
+   *   - Not supported on bare metal servers with a `cpu.architecture` of `amd64`
    * - `pci`: a physical PCI device which can only be created or deleted when the bare metal
    *   server is stopped
    *   - Has an `allowed_vlans` property which controls the VLANs that will be permitted
    *     to use the PCI interface
    *   - Cannot directly use an IEEE 802.1q VLAN tag.
+   *   - Not supported on bare metal servers with a `cpu.architecture` of `s390x`
    * - `vlan`: a virtual device, used through a `pci` device that has the `vlan` in its
    *   array of `allowed_vlans`.
    *   - Must use an IEEE 802.1q tag.
    *   - Has its own security groups and does not inherit those of the PCI device through
    *     which traffic flows.
+   *   - Not supported on bare metal servers with a `cpu.architecture` of `s390x`.
    *
    * @return the interfaceType
    */
@@ -180,8 +195,7 @@ public class BareMetalServerNetworkInterfacePrototype extends GenericModel {
   /**
    * Gets the allowedVlans.
    *
-   * Indicates what VLAN IDs (for VLAN type only) can use this physical (PCI type) interface.  A given VLAN can only be
-   * in the `allowed_vlans` array for one PCI type adapter per bare metal server.
+   * Indicates what VLAN IDs (for VLAN type only) can use this physical (PCI type) interface.
    *
    * @return the allowedVlans
    */

@@ -24,6 +24,11 @@ public class ImageIdentityByHref extends ImageIdentity {
   public static class Builder {
     private String href;
 
+    /**
+     * Instantiates a new Builder from an existing ImageIdentityByHref instance.
+     *
+     * @param imageIdentityByHref the instance to initialize the Builder with
+     */
     public Builder(ImageIdentity imageIdentityByHref) {
       this.href = imageIdentityByHref.href;
     }
@@ -63,6 +68,8 @@ public class ImageIdentityByHref extends ImageIdentity {
       return this;
     }
   }
+
+  protected ImageIdentityByHref() { }
 
   protected ImageIdentityByHref(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.href,

@@ -24,6 +24,11 @@ public class SnapshotIdentityByCRN extends SnapshotIdentity {
   public static class Builder {
     private String crn;
 
+    /**
+     * Instantiates a new Builder from an existing SnapshotIdentityByCRN instance.
+     *
+     * @param snapshotIdentityByCrn the instance to initialize the Builder with
+     */
     public Builder(SnapshotIdentity snapshotIdentityByCrn) {
       this.crn = snapshotIdentityByCrn.crn;
     }
@@ -63,6 +68,8 @@ public class SnapshotIdentityByCRN extends SnapshotIdentity {
       return this;
     }
   }
+
+  protected SnapshotIdentityByCRN() { }
 
   protected SnapshotIdentityByCRN(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.crn,

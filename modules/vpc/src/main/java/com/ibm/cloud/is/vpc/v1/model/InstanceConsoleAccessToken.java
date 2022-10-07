@@ -43,6 +43,8 @@ public class InstanceConsoleAccessToken extends GenericModel {
   protected Boolean force;
   protected String href;
 
+  protected InstanceConsoleAccessToken() { }
+
   /**
    * Gets the accessToken.
    *

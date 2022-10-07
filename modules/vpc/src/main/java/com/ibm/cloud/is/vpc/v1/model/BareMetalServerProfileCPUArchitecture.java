@@ -33,6 +33,8 @@ public class BareMetalServerProfileCPUArchitecture extends GenericModel {
   protected String type;
   protected String value;
 
+  protected BareMetalServerProfileCPUArchitecture() { }
+
   /**
    * Gets the xDefault.
    *

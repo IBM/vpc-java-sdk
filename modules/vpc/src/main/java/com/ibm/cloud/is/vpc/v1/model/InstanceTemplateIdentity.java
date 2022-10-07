@@ -28,8 +28,7 @@ public class InstanceTemplateIdentity extends GenericModel {
   protected String href;
   protected String crn;
 
-  protected InstanceTemplateIdentity() {
-  }
+  protected InstanceTemplateIdentity() { }
 
   /**
    * Gets the id.

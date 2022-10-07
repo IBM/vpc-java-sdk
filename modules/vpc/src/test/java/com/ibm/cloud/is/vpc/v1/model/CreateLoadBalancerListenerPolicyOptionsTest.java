@@ -19,8 +19,6 @@ import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetPrototypeLo
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import org.testng.annotations.Test;
@@ -57,7 +55,7 @@ public class CreateLoadBalancerListenerPolicyOptionsTest {
       .action("forward")
       .priority(Long.valueOf("5"))
       .name("my-policy")
-      .rules(new java.util.ArrayList<LoadBalancerListenerPolicyRulePrototype>(java.util.Arrays.asList(loadBalancerListenerPolicyRulePrototypeModel)))
+      .rules(java.util.Arrays.asList(loadBalancerListenerPolicyRulePrototypeModel))
       .target(loadBalancerListenerPolicyTargetPrototypeModel)
       .build();
     assertEquals(createLoadBalancerListenerPolicyOptionsModel.loadBalancerId(), "testString");
@@ -65,7 +63,7 @@ public class CreateLoadBalancerListenerPolicyOptionsTest {
     assertEquals(createLoadBalancerListenerPolicyOptionsModel.action(), "forward");
     assertEquals(createLoadBalancerListenerPolicyOptionsModel.priority(), Long.valueOf("5"));
     assertEquals(createLoadBalancerListenerPolicyOptionsModel.name(), "my-policy");
-    assertEquals(createLoadBalancerListenerPolicyOptionsModel.rules(), new java.util.ArrayList<LoadBalancerListenerPolicyRulePrototype>(java.util.Arrays.asList(loadBalancerListenerPolicyRulePrototypeModel)));
+    assertEquals(createLoadBalancerListenerPolicyOptionsModel.rules(), java.util.Arrays.asList(loadBalancerListenerPolicyRulePrototypeModel));
     assertEquals(createLoadBalancerListenerPolicyOptionsModel.target(), loadBalancerListenerPolicyTargetPrototypeModel);
   }
 

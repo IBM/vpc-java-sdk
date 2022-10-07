@@ -38,8 +38,6 @@ import com.ibm.cloud.is.vpc.v1.model.ZoneIdentityByName;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import org.testng.annotations.Test;
@@ -104,13 +102,13 @@ public class InstanceTemplatePrototypeInstanceByImageTest {
       .allowIpSpoofing(true)
       .name("my-network-interface")
       .primaryIp(networkInterfaceIpPrototypeModel)
-      .securityGroups(new java.util.ArrayList<SecurityGroupIdentity>(java.util.Arrays.asList(securityGroupIdentityModel)))
+      .securityGroups(java.util.Arrays.asList(securityGroupIdentityModel))
       .subnet(subnetIdentityModel)
       .build();
     assertEquals(networkInterfacePrototypeModel.allowIpSpoofing(), Boolean.valueOf(true));
     assertEquals(networkInterfacePrototypeModel.name(), "my-network-interface");
     assertEquals(networkInterfacePrototypeModel.primaryIp(), networkInterfaceIpPrototypeModel);
-    assertEquals(networkInterfacePrototypeModel.securityGroups(), new java.util.ArrayList<SecurityGroupIdentity>(java.util.Arrays.asList(securityGroupIdentityModel)));
+    assertEquals(networkInterfacePrototypeModel.securityGroups(), java.util.Arrays.asList(securityGroupIdentityModel));
     assertEquals(networkInterfacePrototypeModel.subnet(), subnetIdentityModel);
 
     InstancePlacementTargetPrototypeDedicatedHostIdentityDedicatedHostIdentityById instancePlacementTargetPrototypeModel = new InstancePlacementTargetPrototypeDedicatedHostIdentityDedicatedHostIdentityById.Builder()
@@ -163,12 +161,14 @@ public class InstanceTemplatePrototypeInstanceByImageTest {
       .iops(Long.valueOf("10000"))
       .name("my-volume")
       .profile(volumeProfileIdentityModel)
+      .userTags(java.util.Arrays.asList("testString"))
       .build();
     assertEquals(volumePrototypeInstanceByImageContextModel.capacity(), Long.valueOf("250"));
     assertEquals(volumePrototypeInstanceByImageContextModel.encryptionKey(), encryptionKeyIdentityModel);
     assertEquals(volumePrototypeInstanceByImageContextModel.iops(), Long.valueOf("10000"));
     assertEquals(volumePrototypeInstanceByImageContextModel.name(), "my-volume");
     assertEquals(volumePrototypeInstanceByImageContextModel.profile(), volumeProfileIdentityModel);
+    assertEquals(volumePrototypeInstanceByImageContextModel.userTags(), java.util.Arrays.asList("testString"));
 
     VolumeAttachmentPrototypeInstanceByImageContext volumeAttachmentPrototypeInstanceByImageContextModel = new VolumeAttachmentPrototypeInstanceByImageContext.Builder()
       .deleteVolumeOnInstanceDelete(true)
@@ -192,16 +192,16 @@ public class InstanceTemplatePrototypeInstanceByImageTest {
     InstanceTemplatePrototypeInstanceByImage instanceTemplatePrototypeInstanceByImageModel = new InstanceTemplatePrototypeInstanceByImage.Builder()
       .availabilityPolicy(instanceAvailabilityPrototypeModel)
       .defaultTrustedProfile(instanceDefaultTrustedProfilePrototypeModel)
-      .keys(new java.util.ArrayList<KeyIdentity>(java.util.Arrays.asList(keyIdentityModel)))
+      .keys(java.util.Arrays.asList(keyIdentityModel))
       .metadataService(instanceMetadataServicePrototypeModel)
       .name("my-instance")
-      .networkInterfaces(new java.util.ArrayList<NetworkInterfacePrototype>(java.util.Arrays.asList(networkInterfacePrototypeModel)))
+      .networkInterfaces(java.util.Arrays.asList(networkInterfacePrototypeModel))
       .placementTarget(instancePlacementTargetPrototypeModel)
       .profile(instanceProfileIdentityModel)
       .resourceGroup(resourceGroupIdentityModel)
       .totalVolumeBandwidth(Long.valueOf("500"))
       .userData("testString")
-      .volumeAttachments(new java.util.ArrayList<VolumeAttachmentPrototypeInstanceContext>(java.util.Arrays.asList(volumeAttachmentPrototypeInstanceContextModel)))
+      .volumeAttachments(java.util.Arrays.asList(volumeAttachmentPrototypeInstanceContextModel))
       .vpc(vpcIdentityModel)
       .bootVolumeAttachment(volumeAttachmentPrototypeInstanceByImageContextModel)
       .image(imageIdentityModel)
@@ -210,16 +210,16 @@ public class InstanceTemplatePrototypeInstanceByImageTest {
       .build();
     assertEquals(instanceTemplatePrototypeInstanceByImageModel.availabilityPolicy(), instanceAvailabilityPrototypeModel);
     assertEquals(instanceTemplatePrototypeInstanceByImageModel.defaultTrustedProfile(), instanceDefaultTrustedProfilePrototypeModel);
-    assertEquals(instanceTemplatePrototypeInstanceByImageModel.keys(), new java.util.ArrayList<KeyIdentity>(java.util.Arrays.asList(keyIdentityModel)));
+    assertEquals(instanceTemplatePrototypeInstanceByImageModel.keys(), java.util.Arrays.asList(keyIdentityModel));
     assertEquals(instanceTemplatePrototypeInstanceByImageModel.metadataService(), instanceMetadataServicePrototypeModel);
     assertEquals(instanceTemplatePrototypeInstanceByImageModel.name(), "my-instance");
-    assertEquals(instanceTemplatePrototypeInstanceByImageModel.networkInterfaces(), new java.util.ArrayList<NetworkInterfacePrototype>(java.util.Arrays.asList(networkInterfacePrototypeModel)));
+    assertEquals(instanceTemplatePrototypeInstanceByImageModel.networkInterfaces(), java.util.Arrays.asList(networkInterfacePrototypeModel));
     assertEquals(instanceTemplatePrototypeInstanceByImageModel.placementTarget(), instancePlacementTargetPrototypeModel);
     assertEquals(instanceTemplatePrototypeInstanceByImageModel.profile(), instanceProfileIdentityModel);
     assertEquals(instanceTemplatePrototypeInstanceByImageModel.resourceGroup(), resourceGroupIdentityModel);
     assertEquals(instanceTemplatePrototypeInstanceByImageModel.totalVolumeBandwidth(), Long.valueOf("500"));
     assertEquals(instanceTemplatePrototypeInstanceByImageModel.userData(), "testString");
-    assertEquals(instanceTemplatePrototypeInstanceByImageModel.volumeAttachments(), new java.util.ArrayList<VolumeAttachmentPrototypeInstanceContext>(java.util.Arrays.asList(volumeAttachmentPrototypeInstanceContextModel)));
+    assertEquals(instanceTemplatePrototypeInstanceByImageModel.volumeAttachments(), java.util.Arrays.asList(volumeAttachmentPrototypeInstanceContextModel));
     assertEquals(instanceTemplatePrototypeInstanceByImageModel.vpc(), vpcIdentityModel);
     assertEquals(instanceTemplatePrototypeInstanceByImageModel.bootVolumeAttachment(), volumeAttachmentPrototypeInstanceByImageContextModel);
     assertEquals(instanceTemplatePrototypeInstanceByImageModel.image(), imageIdentityModel);

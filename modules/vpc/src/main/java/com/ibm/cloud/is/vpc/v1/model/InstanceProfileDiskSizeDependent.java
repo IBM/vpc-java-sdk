@@ -26,5 +26,7 @@ public class InstanceProfileDiskSizeDependent extends InstanceProfileDiskSize {
     String DEPENDENT = "dependent";
   }
 
+
+  protected InstanceProfileDiskSizeDependent() { }
 }
 

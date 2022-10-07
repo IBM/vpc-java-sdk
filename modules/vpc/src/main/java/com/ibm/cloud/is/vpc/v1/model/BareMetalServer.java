@@ -84,6 +84,8 @@ public class BareMetalServer extends GenericModel {
   protected VPCReference vpc;
   protected ZoneReference zone;
 
+  protected BareMetalServer() { }
+
   /**
    * Gets the bandwidth.
    *
@@ -232,7 +234,8 @@ public class BareMetalServer extends GenericModel {
   /**
    * Gets the profile.
    *
-   * The profile this bare metal server uses.
+   * The [profile](https://cloud.ibm.com/docs/vpc?topic=vpc-bare-metal-servers-profile)
+   * for this bare metal server.
    *
    * @return the profile
    */

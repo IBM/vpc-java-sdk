@@ -13,14 +13,15 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 /**
- * If `protocol` is either `tcp` or `udp`, then the rule may also contain `port_min` and
- * `port_max`. Either both must be set, or neither. When neither is set then traffic is allowed on all ports. For a
- * single port, set both to the same value.
+ * A rule specifying the TCP or UDP traffic to allow.
+ *
+ * Either both `port_min` and `port_max` will be present, or neither. When neither is present, all ports are allowed for
+ * the protocol. When both have the same value, that single port is allowed.
  */
 public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolTCPUDP extends SecurityGroupRulePrototype {
 
   /**
-   * The direction of traffic to enforce, either `inbound` or `outbound`.
+   * The direction of traffic to enforce.
    */
   public interface Direction {
     /** inbound. */
@@ -61,6 +62,11 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolTCPUDP extends S
     private String protocol;
     private SecurityGroupRuleRemotePrototype remote;
 
+    /**
+     * Instantiates a new Builder from an existing SecurityGroupRulePrototypeSecurityGroupRuleProtocolTCPUDP instance.
+     *
+     * @param securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudp the instance to initialize the Builder with
+     */
     public Builder(SecurityGroupRulePrototype securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudp) {
       this.direction = securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudp.direction;
       this.ipVersion = securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudp.ipVersion;
@@ -162,6 +168,8 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolTCPUDP extends S
       return this;
     }
   }
+
+  protected SecurityGroupRulePrototypeSecurityGroupRuleProtocolTCPUDP() { }
 
   protected SecurityGroupRulePrototypeSecurityGroupRuleProtocolTCPUDP(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.direction,

@@ -27,6 +27,11 @@ public class ListSnapshotClonesOptions extends GenericModel {
   public static class Builder {
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing ListSnapshotClonesOptions instance.
+     *
+     * @param listSnapshotClonesOptions the instance to initialize the Builder with
+     */
     private Builder(ListSnapshotClonesOptions listSnapshotClonesOptions) {
       this.id = listSnapshotClonesOptions.id;
     }
@@ -66,6 +71,8 @@ public class ListSnapshotClonesOptions extends GenericModel {
       return this;
     }
   }
+
+  protected ListSnapshotClonesOptions() { }
 
   protected ListSnapshotClonesOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,

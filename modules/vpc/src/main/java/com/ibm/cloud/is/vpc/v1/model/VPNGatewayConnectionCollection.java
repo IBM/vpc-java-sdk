@@ -23,6 +23,8 @@ public class VPNGatewayConnectionCollection extends GenericModel {
 
   protected List<VPNGatewayConnection> connections;
 
+  protected VPNGatewayConnectionCollection() { }
+
   /**
    * Gets the connections.
    *

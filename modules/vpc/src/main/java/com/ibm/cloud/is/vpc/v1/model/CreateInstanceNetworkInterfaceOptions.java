@@ -40,6 +40,11 @@ public class CreateInstanceNetworkInterfaceOptions extends GenericModel {
     private NetworkInterfaceIPPrototype primaryIp;
     private List<SecurityGroupIdentity> securityGroups;
 
+    /**
+     * Instantiates a new Builder from an existing CreateInstanceNetworkInterfaceOptions instance.
+     *
+     * @param createInstanceNetworkInterfaceOptions the instance to initialize the Builder with
+     */
     private Builder(CreateInstanceNetworkInterfaceOptions createInstanceNetworkInterfaceOptions) {
       this.instanceId = createInstanceNetworkInterfaceOptions.instanceId;
       this.subnet = createInstanceNetworkInterfaceOptions.subnet;
@@ -173,6 +178,8 @@ public class CreateInstanceNetworkInterfaceOptions extends GenericModel {
       return this;
     }
   }
+
+  protected CreateInstanceNetworkInterfaceOptions() { }
 
   protected CreateInstanceNetworkInterfaceOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.instanceId,

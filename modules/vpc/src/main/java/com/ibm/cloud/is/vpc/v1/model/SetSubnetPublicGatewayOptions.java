@@ -29,6 +29,11 @@ public class SetSubnetPublicGatewayOptions extends GenericModel {
     private String id;
     private PublicGatewayIdentity publicGatewayIdentity;
 
+    /**
+     * Instantiates a new Builder from an existing SetSubnetPublicGatewayOptions instance.
+     *
+     * @param setSubnetPublicGatewayOptions the instance to initialize the Builder with
+     */
     private Builder(SetSubnetPublicGatewayOptions setSubnetPublicGatewayOptions) {
       this.id = setSubnetPublicGatewayOptions.id;
       this.publicGatewayIdentity = setSubnetPublicGatewayOptions.publicGatewayIdentity;
@@ -82,6 +87,8 @@ public class SetSubnetPublicGatewayOptions extends GenericModel {
       return this;
     }
   }
+
+  protected SetSubnetPublicGatewayOptions() { }
 
   protected SetSubnetPublicGatewayOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,

@@ -33,6 +33,11 @@ public class UpdateBareMetalServerDiskOptions extends GenericModel {
     private String id;
     private Map<String, Object> bareMetalServerDiskPatch;
 
+    /**
+     * Instantiates a new Builder from an existing UpdateBareMetalServerDiskOptions instance.
+     *
+     * @param updateBareMetalServerDiskOptions the instance to initialize the Builder with
+     */
     private Builder(UpdateBareMetalServerDiskOptions updateBareMetalServerDiskOptions) {
       this.bareMetalServerId = updateBareMetalServerDiskOptions.bareMetalServerId;
       this.id = updateBareMetalServerDiskOptions.id;
@@ -100,6 +105,8 @@ public class UpdateBareMetalServerDiskOptions extends GenericModel {
       return this;
     }
   }
+
+  protected UpdateBareMetalServerDiskOptions() { }
 
   protected UpdateBareMetalServerDiskOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.bareMetalServerId,

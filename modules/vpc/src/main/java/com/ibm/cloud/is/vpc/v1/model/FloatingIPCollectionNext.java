@@ -21,6 +21,8 @@ public class FloatingIPCollectionNext extends GenericModel {
 
   protected String href;
 
+  protected FloatingIPCollectionNext() { }
+
   /**
    * Gets the href.
    *

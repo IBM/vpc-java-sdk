@@ -27,6 +27,11 @@ public class GetInstanceGroupOptions extends GenericModel {
   public static class Builder {
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing GetInstanceGroupOptions instance.
+     *
+     * @param getInstanceGroupOptions the instance to initialize the Builder with
+     */
     private Builder(GetInstanceGroupOptions getInstanceGroupOptions) {
       this.id = getInstanceGroupOptions.id;
     }
@@ -66,6 +71,8 @@ public class GetInstanceGroupOptions extends GenericModel {
       return this;
     }
   }
+
+  protected GetInstanceGroupOptions() { }
 
   protected GetInstanceGroupOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,

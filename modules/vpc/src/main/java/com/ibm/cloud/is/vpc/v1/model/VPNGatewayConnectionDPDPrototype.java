@@ -45,6 +45,11 @@ public class VPNGatewayConnectionDPDPrototype extends GenericModel {
     private Long interval;
     private Long timeout;
 
+    /**
+     * Instantiates a new Builder from an existing VPNGatewayConnectionDPDPrototype instance.
+     *
+     * @param vpnGatewayConnectionDpdPrototype the instance to initialize the Builder with
+     */
     private Builder(VPNGatewayConnectionDPDPrototype vpnGatewayConnectionDpdPrototype) {
       this.action = vpnGatewayConnectionDpdPrototype.action;
       this.interval = vpnGatewayConnectionDpdPrototype.interval;
@@ -99,6 +104,8 @@ public class VPNGatewayConnectionDPDPrototype extends GenericModel {
       return this;
     }
   }
+
+  protected VPNGatewayConnectionDPDPrototype() { }
 
   protected VPNGatewayConnectionDPDPrototype(Builder builder) {
     action = builder.action;

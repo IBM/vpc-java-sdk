@@ -36,7 +36,7 @@ public class LoadBalancerPool extends GenericModel {
   }
 
   /**
-   * The protocol used for this load balancer pool.
+   * The protocol for this load balancer pool.
    *
    * The enumerated values for this property are expected to expand in the future. When processing this property, check
    * for and log unknown values. Optionally halt processing and surface the error, or bypass the pool on which the
@@ -54,7 +54,11 @@ public class LoadBalancerPool extends GenericModel {
   }
 
   /**
-   * The provisioning status of this pool.
+   * The provisioning status of this pool
+   *
+   * The enumerated values for this property are expected to expand in the future. When processing this property, check
+   * for and log unknown values. Optionally halt processing and surface the error, or bypass the pool on which the
+   * unexpected property value was encountered.
    */
   public interface ProvisioningStatus {
     /** active. */
@@ -65,8 +69,6 @@ public class LoadBalancerPool extends GenericModel {
     String DELETE_PENDING = "delete_pending";
     /** failed. */
     String FAILED = "failed";
-    /** maintenance_pending. */
-    String MAINTENANCE_PENDING = "maintenance_pending";
     /** update_pending. */
     String UPDATE_PENDING = "update_pending";
   }
@@ -106,6 +108,8 @@ public class LoadBalancerPool extends GenericModel {
   protected String proxyProtocol;
   @SerializedName("session_persistence")
   protected LoadBalancerPoolSessionPersistence sessionPersistence;
+
+  protected LoadBalancerPool() { }
 
   /**
    * Gets the algorithm.
@@ -198,7 +202,7 @@ public class LoadBalancerPool extends GenericModel {
   /**
    * Gets the protocol.
    *
-   * The protocol used for this load balancer pool.
+   * The protocol for this load balancer pool.
    *
    * The enumerated values for this property are expected to expand in the future. When processing this property, check
    * for and log unknown values. Optionally halt processing and surface the error, or bypass the pool on which the
@@ -213,7 +217,11 @@ public class LoadBalancerPool extends GenericModel {
   /**
    * Gets the provisioningStatus.
    *
-   * The provisioning status of this pool.
+   * The provisioning status of this pool
+   *
+   * The enumerated values for this property are expected to expand in the future. When processing this property, check
+   * for and log unknown values. Optionally halt processing and surface the error, or bypass the pool on which the
+   * unexpected property value was encountered.
    *
    * @return the provisioningStatus
    */

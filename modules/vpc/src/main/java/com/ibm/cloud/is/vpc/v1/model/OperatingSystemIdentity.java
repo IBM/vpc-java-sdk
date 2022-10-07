@@ -26,8 +26,7 @@ public class OperatingSystemIdentity extends GenericModel {
   protected String name;
   protected String href;
 
-  protected OperatingSystemIdentity() {
-  }
+  protected OperatingSystemIdentity() { }
 
   /**
    * Gets the name.

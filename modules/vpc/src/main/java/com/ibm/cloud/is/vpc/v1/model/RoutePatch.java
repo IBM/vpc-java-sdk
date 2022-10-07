@@ -30,6 +30,11 @@ public class RoutePatch extends GenericModel {
   public static class Builder {
     private String name;
 
+    /**
+     * Instantiates a new Builder from an existing RoutePatch instance.
+     *
+     * @param routePatch the instance to initialize the Builder with
+     */
     private Builder(RoutePatch routePatch) {
       this.name = routePatch.name;
     }
@@ -60,6 +65,8 @@ public class RoutePatch extends GenericModel {
       return this;
     }
   }
+
+  protected RoutePatch() { }
 
   protected RoutePatch(Builder builder) {
     name = builder.name;

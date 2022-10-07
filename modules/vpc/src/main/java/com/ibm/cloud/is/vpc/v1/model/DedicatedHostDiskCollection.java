@@ -23,6 +23,8 @@ public class DedicatedHostDiskCollection extends GenericModel {
 
   protected List<DedicatedHostDisk> disks;
 
+  protected DedicatedHostDiskCollection() { }
+
   /**
    * Gets the disks.
    *

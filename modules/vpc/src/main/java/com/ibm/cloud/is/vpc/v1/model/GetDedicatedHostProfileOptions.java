@@ -27,6 +27,11 @@ public class GetDedicatedHostProfileOptions extends GenericModel {
   public static class Builder {
     private String name;
 
+    /**
+     * Instantiates a new Builder from an existing GetDedicatedHostProfileOptions instance.
+     *
+     * @param getDedicatedHostProfileOptions the instance to initialize the Builder with
+     */
     private Builder(GetDedicatedHostProfileOptions getDedicatedHostProfileOptions) {
       this.name = getDedicatedHostProfileOptions.name;
     }
@@ -66,6 +71,8 @@ public class GetDedicatedHostProfileOptions extends GenericModel {
       return this;
     }
   }
+
+  protected GetDedicatedHostProfileOptions() { }
 
   protected GetDedicatedHostProfileOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.name,

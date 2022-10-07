@@ -30,6 +30,8 @@ public class BackupPolicyCollection extends GenericModel {
   @SerializedName("total_count")
   protected Long totalCount;
 
+  protected BackupPolicyCollection() { }
+
   /**
    * Gets the backupPolicies.
    *

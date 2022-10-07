@@ -59,6 +59,8 @@ public class VolumeAttachment extends GenericModel {
   protected String type;
   protected VolumeReference volume;
 
+  protected VolumeAttachment() { }
+
   /**
    * Gets the bandwidth.
    *
@@ -165,6 +167,8 @@ public class VolumeAttachment extends GenericModel {
    * Gets the volume.
    *
    * The attached volume.
+   *
+   * This property will be absent if the volume has not yet been provisioned.
    *
    * @return the volume
    */

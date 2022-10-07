@@ -22,6 +22,8 @@ public class InstanceVCPU extends GenericModel {
   protected String architecture;
   protected Long count;
 
+  protected InstanceVCPU() { }
+
   /**
    * Gets the architecture.
    *

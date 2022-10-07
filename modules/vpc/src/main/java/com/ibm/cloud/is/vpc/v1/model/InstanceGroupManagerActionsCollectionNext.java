@@ -21,6 +21,8 @@ public class InstanceGroupManagerActionsCollectionNext extends GenericModel {
 
   protected String href;
 
+  protected InstanceGroupManagerActionsCollectionNext() { }
+
   /**
    * Gets the href.
    *

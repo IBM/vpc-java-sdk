@@ -13,14 +13,12 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 /**
- * When `protocol` is `icmp`, the `type` property may optionally be specified. If specified, then ICMP traffic is
- * allowed only for the specified ICMP type. Further, if `type` is specified, the `code` property may optionally be
- * specified to allow traffic only for the specified ICMP code.
+ * A rule specifying the ICMP traffic to allow.
  */
 public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolICMP extends SecurityGroupRulePrototype {
 
   /**
-   * The direction of traffic to enforce, either `inbound` or `outbound`.
+   * The direction of traffic to enforce.
    */
   public interface Direction {
     /** inbound. */
@@ -59,6 +57,11 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolICMP extends Sec
     private SecurityGroupRuleRemotePrototype remote;
     private Long type;
 
+    /**
+     * Instantiates a new Builder from an existing SecurityGroupRulePrototypeSecurityGroupRuleProtocolICMP instance.
+     *
+     * @param securityGroupRulePrototypeSecurityGroupRuleProtocolIcmp the instance to initialize the Builder with
+     */
     public Builder(SecurityGroupRulePrototype securityGroupRulePrototypeSecurityGroupRuleProtocolIcmp) {
       this.code = securityGroupRulePrototypeSecurityGroupRuleProtocolIcmp.code;
       this.direction = securityGroupRulePrototypeSecurityGroupRuleProtocolIcmp.direction;
@@ -160,6 +163,8 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolICMP extends Sec
       return this;
     }
   }
+
+  protected SecurityGroupRulePrototypeSecurityGroupRuleProtocolICMP() { }
 
   protected SecurityGroupRulePrototypeSecurityGroupRuleProtocolICMP(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.direction,

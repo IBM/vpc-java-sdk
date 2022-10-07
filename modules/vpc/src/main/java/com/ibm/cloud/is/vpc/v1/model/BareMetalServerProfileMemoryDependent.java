@@ -25,5 +25,7 @@ public class BareMetalServerProfileMemoryDependent extends BareMetalServerProfil
     String DEPENDENT = "dependent";
   }
 
+
+  protected BareMetalServerProfileMemoryDependent() { }
 }
 

@@ -24,7 +24,9 @@ import com.ibm.cloud.sdk.core.util.GsonSingleton;
 public class IKEPolicyPatch extends GenericModel {
 
   /**
-   * The authentication algorithm.
+   * The authentication algorithm
+   *
+   * The `md5` and `sha1` algorithms have been deprecated.
    */
   public interface AuthenticationAlgorithm {
     /** md5. */
@@ -33,16 +35,22 @@ public class IKEPolicyPatch extends GenericModel {
     String SHA1 = "sha1";
     /** sha256. */
     String SHA256 = "sha256";
+    /** sha384. */
+    String SHA384 = "sha384";
     /** sha512. */
     String SHA512 = "sha512";
   }
 
   /**
-   * The encryption algorithm.
+   * The encryption algorithm
+   *
+   * The `triple_des` algorithm has been deprecated.
    */
   public interface EncryptionAlgorithm {
     /** aes128. */
     String AES128 = "aes128";
+    /** aes192. */
+    String AES192 = "aes192";
     /** aes256. */
     String AES256 = "aes256";
     /** triple_des. */
@@ -72,6 +80,11 @@ public class IKEPolicyPatch extends GenericModel {
     private Long keyLifetime;
     private String name;
 
+    /**
+     * Instantiates a new Builder from an existing IKEPolicyPatch instance.
+     *
+     * @param ikePolicyPatch the instance to initialize the Builder with
+     */
     private Builder(IKEPolicyPatch ikePolicyPatch) {
       this.authenticationAlgorithm = ikePolicyPatch.authenticationAlgorithm;
       this.dhGroup = ikePolicyPatch.dhGroup;
@@ -163,6 +176,8 @@ public class IKEPolicyPatch extends GenericModel {
     }
   }
 
+  protected IKEPolicyPatch() { }
+
   protected IKEPolicyPatch(Builder builder) {
     authenticationAlgorithm = builder.authenticationAlgorithm;
     dhGroup = builder.dhGroup;
@@ -184,7 +199,9 @@ public class IKEPolicyPatch extends GenericModel {
   /**
    * Gets the authenticationAlgorithm.
    *
-   * The authentication algorithm.
+   * The authentication algorithm
+   *
+   * The `md5` and `sha1` algorithms have been deprecated.
    *
    * @return the authenticationAlgorithm
    */
@@ -195,7 +212,9 @@ public class IKEPolicyPatch extends GenericModel {
   /**
    * Gets the dhGroup.
    *
-   * The Diffie-Hellman group.
+   * The Diffie-Hellman group
+   *
+   * Groups `2` and `5` have been deprecated.
    *
    * @return the dhGroup
    */
@@ -206,7 +225,9 @@ public class IKEPolicyPatch extends GenericModel {
   /**
    * Gets the encryptionAlgorithm.
    *
-   * The encryption algorithm.
+   * The encryption algorithm
+   *
+   * The `triple_des` algorithm has been deprecated.
    *
    * @return the encryptionAlgorithm
    */

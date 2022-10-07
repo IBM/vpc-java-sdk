@@ -25,5 +25,7 @@ public class BareMetalServerProfileCPUCoreCountRange extends BareMetalServerProf
     String RANGE = "range";
   }
 
+
+  protected BareMetalServerProfileCPUCoreCountRange() { }
 }
 

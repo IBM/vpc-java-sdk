@@ -29,6 +29,11 @@ public class CreateNetworkAclRuleOptions extends GenericModel {
     private String networkAclId;
     private NetworkACLRulePrototype networkAclRulePrototype;
 
+    /**
+     * Instantiates a new Builder from an existing CreateNetworkAclRuleOptions instance.
+     *
+     * @param createNetworkAclRuleOptions the instance to initialize the Builder with
+     */
     private Builder(CreateNetworkAclRuleOptions createNetworkAclRuleOptions) {
       this.networkAclId = createNetworkAclRuleOptions.networkAclId;
       this.networkAclRulePrototype = createNetworkAclRuleOptions.networkAclRulePrototype;
@@ -82,6 +87,8 @@ public class CreateNetworkAclRuleOptions extends GenericModel {
       return this;
     }
   }
+
+  protected CreateNetworkAclRuleOptions() { }
 
   protected CreateNetworkAclRuleOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.networkAclId,

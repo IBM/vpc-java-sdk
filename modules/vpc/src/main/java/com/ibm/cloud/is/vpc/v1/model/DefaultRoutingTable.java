@@ -73,6 +73,8 @@ public class DefaultRoutingTable extends GenericModel {
   protected List<RouteReference> routes;
   protected List<SubnetReference> subnets;
 
+  protected DefaultRoutingTable() { }
+
   /**
    * Gets the acceptRoutesFrom.
    *

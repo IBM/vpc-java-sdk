@@ -65,11 +65,14 @@ public class InstanceGroup extends GenericModel {
   protected Date updatedAt;
   protected VPCReference vpc;
 
+  protected InstanceGroup() { }
+
   /**
    * Gets the applicationPort.
    *
-   * Required if specifying a load balancer pool only. Used by the instance group when scaling up instances to supply
-   * the port for the load balancer pool member.
+   * The port used for new load balancer pool members created by this instance group.
+   *
+   * This property will be present if and only if `load_balancer_pool` is present.
    *
    * @return the applicationPort
    */
@@ -135,9 +138,8 @@ public class InstanceGroup extends GenericModel {
   /**
    * Gets the loadBalancerPool.
    *
-   * The load balancer pool managed by this group. Instances created
-   * by this group will have a new load balancer pool member in that
-   * pool created.
+   * If present, the load balancer pool this instance group manages. A pool member will
+   * be created for each instance created by this group.
    *
    * @return the loadBalancerPool
    */

@@ -19,5 +19,10 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class ListInstanceProfilesOptions extends GenericModel {
 
+  /**
+   * Construct a new instance of ListInstanceProfilesOptions.
+   */
+  public ListInstanceProfilesOptions() {
+  }
 }
 

@@ -18,7 +18,7 @@ package com.ibm.cloud.is.vpc.v1.model;
 public class NetworkACLRuleNetworkACLRuleProtocolTCPUDP extends NetworkACLRule {
 
   /**
-   * Whether to allow or deny matching traffic.
+   * The action to perform for a packet matching the rule.
    */
   public interface Action {
     /** allow. */
@@ -28,7 +28,7 @@ public class NetworkACLRuleNetworkACLRuleProtocolTCPUDP extends NetworkACLRule {
   }
 
   /**
-   * Whether the traffic to be matched is `inbound` or `outbound`.
+   * The direction of traffic to match.
    */
   public interface Direction {
     /** inbound. */
@@ -43,8 +43,6 @@ public class NetworkACLRuleNetworkACLRuleProtocolTCPUDP extends NetworkACLRule {
   public interface IpVersion {
     /** ipv4. */
     String IPV4 = "ipv4";
-    /** ipv6. */
-    String IPV6 = "ipv6";
   }
 
   /**
@@ -57,5 +55,7 @@ public class NetworkACLRuleNetworkACLRuleProtocolTCPUDP extends NetworkACLRule {
     String UDP = "udp";
   }
 
+
+  protected NetworkACLRuleNetworkACLRuleProtocolTCPUDP() { }
 }
 

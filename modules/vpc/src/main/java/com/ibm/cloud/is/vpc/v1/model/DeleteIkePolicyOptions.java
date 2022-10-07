@@ -27,6 +27,11 @@ public class DeleteIkePolicyOptions extends GenericModel {
   public static class Builder {
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing DeleteIkePolicyOptions instance.
+     *
+     * @param deleteIkePolicyOptions the instance to initialize the Builder with
+     */
     private Builder(DeleteIkePolicyOptions deleteIkePolicyOptions) {
       this.id = deleteIkePolicyOptions.id;
     }
@@ -66,6 +71,8 @@ public class DeleteIkePolicyOptions extends GenericModel {
       return this;
     }
   }
+
+  protected DeleteIkePolicyOptions() { }
 
   protected DeleteIkePolicyOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,

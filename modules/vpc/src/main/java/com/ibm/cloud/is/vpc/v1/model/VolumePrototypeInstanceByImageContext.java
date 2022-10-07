@@ -12,6 +12,8 @@
  */
 package com.ibm.cloud.is.vpc.v1.model;
 
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * VolumePrototypeInstanceByImageContext.
@@ -27,13 +29,20 @@ public class VolumePrototypeInstanceByImageContext extends VolumeAttachmentProto
     private Long iops;
     private String name;
     private VolumeProfileIdentity profile;
+    private List<String> userTags;
 
+    /**
+     * Instantiates a new Builder from an existing VolumePrototypeInstanceByImageContext instance.
+     *
+     * @param volumePrototypeInstanceByImageContext the instance to initialize the Builder with
+     */
     private Builder(VolumePrototypeInstanceByImageContext volumePrototypeInstanceByImageContext) {
       this.capacity = volumePrototypeInstanceByImageContext.capacity;
       this.encryptionKey = volumePrototypeInstanceByImageContext.encryptionKey;
       this.iops = volumePrototypeInstanceByImageContext.iops;
       this.name = volumePrototypeInstanceByImageContext.name;
       this.profile = volumePrototypeInstanceByImageContext.profile;
+      this.userTags = volumePrototypeInstanceByImageContext.userTags;
     }
 
     /**
@@ -58,6 +67,22 @@ public class VolumePrototypeInstanceByImageContext extends VolumeAttachmentProto
      */
     public VolumePrototypeInstanceByImageContext build() {
       return new VolumePrototypeInstanceByImageContext(this);
+    }
+
+    /**
+     * Adds an userTags to userTags.
+     *
+     * @param userTags the new userTags
+     * @return the VolumePrototypeInstanceByImageContext builder
+     */
+    public Builder addUserTags(String userTags) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(userTags,
+        "userTags cannot be null");
+      if (this.userTags == null) {
+        this.userTags = new ArrayList<String>();
+      }
+      this.userTags.add(userTags);
+      return this;
     }
 
     /**
@@ -114,7 +139,21 @@ public class VolumePrototypeInstanceByImageContext extends VolumeAttachmentProto
       this.profile = profile;
       return this;
     }
+
+    /**
+     * Set the userTags.
+     * Existing userTags will be replaced.
+     *
+     * @param userTags the userTags
+     * @return the VolumePrototypeInstanceByImageContext builder
+     */
+    public Builder userTags(List<String> userTags) {
+      this.userTags = userTags;
+      return this;
+    }
   }
+
+  protected VolumePrototypeInstanceByImageContext() { }
 
   protected VolumePrototypeInstanceByImageContext(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.profile,
@@ -124,6 +163,7 @@ public class VolumePrototypeInstanceByImageContext extends VolumeAttachmentProto
     iops = builder.iops;
     name = builder.name;
     profile = builder.profile;
+    userTags = builder.userTags;
   }
 
   /**
@@ -188,12 +228,24 @@ public class VolumePrototypeInstanceByImageContext extends VolumeAttachmentProto
   /**
    * Gets the profile.
    *
-   * The profile to use for this volume.
+   * The [profile](https://cloud.ibm.com/docs/vpc?topic=vpc-block-storage-profiles) to
+   * use for this volume.
    *
    * @return the profile
    */
   public VolumeProfileIdentity profile() {
     return profile;
+  }
+
+  /**
+   * Gets the userTags.
+   *
+   * The [user tags](https://cloud.ibm.com/apidocs/tagging#types-of-tags) associated with this volume.
+   *
+   * @return the userTags
+   */
+  public List<String> userTags() {
+    return userTags;
   }
 }
 

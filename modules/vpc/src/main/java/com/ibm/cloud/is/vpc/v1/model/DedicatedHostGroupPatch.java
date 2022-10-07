@@ -30,6 +30,11 @@ public class DedicatedHostGroupPatch extends GenericModel {
   public static class Builder {
     private String name;
 
+    /**
+     * Instantiates a new Builder from an existing DedicatedHostGroupPatch instance.
+     *
+     * @param dedicatedHostGroupPatch the instance to initialize the Builder with
+     */
     private Builder(DedicatedHostGroupPatch dedicatedHostGroupPatch) {
       this.name = dedicatedHostGroupPatch.name;
     }
@@ -60,6 +65,8 @@ public class DedicatedHostGroupPatch extends GenericModel {
       return this;
     }
   }
+
+  protected DedicatedHostGroupPatch() { }
 
   protected DedicatedHostGroupPatch(Builder builder) {
     name = builder.name;

@@ -101,8 +101,7 @@ public class VPNGatewayConnection extends GenericModel {
   @SerializedName("peer_cidrs")
   protected List<String> peerCidrs;
 
-  protected VPNGatewayConnection() {
-  }
+  protected VPNGatewayConnection() { }
 
   /**
    * Gets the adminStateUp.

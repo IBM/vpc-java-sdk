@@ -26,5 +26,7 @@ public class InstanceProfileBandwidthRange extends InstanceProfileBandwidth {
     String RANGE = "range";
   }
 
+
+  protected InstanceProfileBandwidthRange() { }
 }
 

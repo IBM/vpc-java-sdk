@@ -91,6 +91,11 @@ public class LoadBalancerPoolPrototype extends GenericModel {
     private String proxyProtocol;
     private LoadBalancerPoolSessionPersistencePrototype sessionPersistence;
 
+    /**
+     * Instantiates a new Builder from an existing LoadBalancerPoolPrototype instance.
+     *
+     * @param loadBalancerPoolPrototype the instance to initialize the Builder with
+     */
     private Builder(LoadBalancerPoolPrototype loadBalancerPoolPrototype) {
       this.algorithm = loadBalancerPoolPrototype.algorithm;
       this.healthMonitor = loadBalancerPoolPrototype.healthMonitor;
@@ -223,6 +228,8 @@ public class LoadBalancerPoolPrototype extends GenericModel {
       return this;
     }
   }
+
+  protected LoadBalancerPoolPrototype() { }
 
   protected LoadBalancerPoolPrototype(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.algorithm,

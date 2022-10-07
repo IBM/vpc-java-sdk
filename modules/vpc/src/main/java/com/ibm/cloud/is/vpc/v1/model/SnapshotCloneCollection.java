@@ -23,6 +23,8 @@ public class SnapshotCloneCollection extends GenericModel {
 
   protected List<SnapshotClone> clones;
 
+  protected SnapshotCloneCollection() { }
+
   /**
    * Gets the clones.
    *

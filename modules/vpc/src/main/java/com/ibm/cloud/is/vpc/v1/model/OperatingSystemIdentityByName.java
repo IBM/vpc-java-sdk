@@ -24,6 +24,11 @@ public class OperatingSystemIdentityByName extends OperatingSystemIdentity {
   public static class Builder {
     private String name;
 
+    /**
+     * Instantiates a new Builder from an existing OperatingSystemIdentityByName instance.
+     *
+     * @param operatingSystemIdentityByName the instance to initialize the Builder with
+     */
     public Builder(OperatingSystemIdentity operatingSystemIdentityByName) {
       this.name = operatingSystemIdentityByName.name;
     }
@@ -63,6 +68,8 @@ public class OperatingSystemIdentityByName extends OperatingSystemIdentity {
       return this;
     }
   }
+
+  protected OperatingSystemIdentityByName() { }
 
   protected OperatingSystemIdentityByName(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.name,

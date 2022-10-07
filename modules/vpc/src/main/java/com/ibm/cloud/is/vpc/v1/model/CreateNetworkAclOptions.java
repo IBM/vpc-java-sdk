@@ -27,6 +27,11 @@ public class CreateNetworkAclOptions extends GenericModel {
   public static class Builder {
     private NetworkACLPrototype networkAclPrototype;
 
+    /**
+     * Instantiates a new Builder from an existing CreateNetworkAclOptions instance.
+     *
+     * @param createNetworkAclOptions the instance to initialize the Builder with
+     */
     private Builder(CreateNetworkAclOptions createNetworkAclOptions) {
       this.networkAclPrototype = createNetworkAclOptions.networkAclPrototype;
     }
@@ -57,6 +62,8 @@ public class CreateNetworkAclOptions extends GenericModel {
       return this;
     }
   }
+
+  protected CreateNetworkAclOptions() { }
 
   protected CreateNetworkAclOptions(Builder builder) {
     networkAclPrototype = builder.networkAclPrototype;

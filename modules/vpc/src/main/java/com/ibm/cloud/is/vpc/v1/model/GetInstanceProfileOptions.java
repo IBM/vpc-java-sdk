@@ -27,6 +27,11 @@ public class GetInstanceProfileOptions extends GenericModel {
   public static class Builder {
     private String name;
 
+    /**
+     * Instantiates a new Builder from an existing GetInstanceProfileOptions instance.
+     *
+     * @param getInstanceProfileOptions the instance to initialize the Builder with
+     */
     private Builder(GetInstanceProfileOptions getInstanceProfileOptions) {
       this.name = getInstanceProfileOptions.name;
     }
@@ -66,6 +71,8 @@ public class GetInstanceProfileOptions extends GenericModel {
       return this;
     }
   }
+
+  protected GetInstanceProfileOptions() { }
 
   protected GetInstanceProfileOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.name,

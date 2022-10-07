@@ -29,6 +29,11 @@ public class CreateSecurityGroupTargetBindingOptions extends GenericModel {
     private String securityGroupId;
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing CreateSecurityGroupTargetBindingOptions instance.
+     *
+     * @param createSecurityGroupTargetBindingOptions the instance to initialize the Builder with
+     */
     private Builder(CreateSecurityGroupTargetBindingOptions createSecurityGroupTargetBindingOptions) {
       this.securityGroupId = createSecurityGroupTargetBindingOptions.securityGroupId;
       this.id = createSecurityGroupTargetBindingOptions.id;
@@ -82,6 +87,8 @@ public class CreateSecurityGroupTargetBindingOptions extends GenericModel {
       return this;
     }
   }
+
+  protected CreateSecurityGroupTargetBindingOptions() { }
 
   protected CreateSecurityGroupTargetBindingOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.securityGroupId,

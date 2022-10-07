@@ -23,6 +23,8 @@ public class LoadBalancerPoolMemberCollection extends GenericModel {
 
   protected List<LoadBalancerPoolMember> members;
 
+  protected LoadBalancerPoolMemberCollection() { }
+
   /**
    * Gets the members.
    *

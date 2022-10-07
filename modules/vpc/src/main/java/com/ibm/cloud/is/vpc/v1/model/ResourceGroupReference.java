@@ -23,6 +23,8 @@ public class ResourceGroupReference extends GenericModel {
   protected String id;
   protected String name;
 
+  protected ResourceGroupReference() { }
+
   /**
    * Gets the href.
    *

@@ -22,6 +22,8 @@ public class ImageFile extends GenericModel {
   protected ImageFileChecksums checksums;
   protected Long size;
 
+  protected ImageFile() { }
+
   /**
    * Gets the checksums.
    *

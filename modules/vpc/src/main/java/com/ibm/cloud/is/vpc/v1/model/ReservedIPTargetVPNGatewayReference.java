@@ -25,5 +25,7 @@ public class ReservedIPTargetVPNGatewayReference extends ReservedIPTarget {
     String VPN_GATEWAY = "vpn_gateway";
   }
 
+
+  protected ReservedIPTargetVPNGatewayReference() { }
 }
 

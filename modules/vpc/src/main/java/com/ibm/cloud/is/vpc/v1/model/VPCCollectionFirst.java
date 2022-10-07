@@ -21,6 +21,8 @@ public class VPCCollectionFirst extends GenericModel {
 
   protected String href;
 
+  protected VPCCollectionFirst() { }
+
   /**
    * Gets the href.
    *

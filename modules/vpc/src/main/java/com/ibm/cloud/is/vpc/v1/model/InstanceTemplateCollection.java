@@ -29,6 +29,8 @@ public class InstanceTemplateCollection extends GenericModel {
   @SerializedName("total_count")
   protected Long totalCount;
 
+  protected InstanceTemplateCollection() { }
+
   /**
    * Gets the first.
    *

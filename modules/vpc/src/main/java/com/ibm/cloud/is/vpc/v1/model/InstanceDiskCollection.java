@@ -23,6 +23,8 @@ public class InstanceDiskCollection extends GenericModel {
 
   protected List<InstanceDisk> disks;
 
+  protected InstanceDiskCollection() { }
+
   /**
    * Gets the disks.
    *

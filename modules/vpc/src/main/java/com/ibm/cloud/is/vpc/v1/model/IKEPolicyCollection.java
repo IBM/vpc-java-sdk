@@ -30,6 +30,8 @@ public class IKEPolicyCollection extends GenericModel {
   @SerializedName("total_count")
   protected Long totalCount;
 
+  protected IKEPolicyCollection() { }
+
   /**
    * Gets the first.
    *

@@ -34,6 +34,8 @@ public class AddressPrefix extends GenericModel {
   protected String name;
   protected ZoneReference zone;
 
+  protected AddressPrefix() { }
+
   /**
    * Gets the cidr.
    *

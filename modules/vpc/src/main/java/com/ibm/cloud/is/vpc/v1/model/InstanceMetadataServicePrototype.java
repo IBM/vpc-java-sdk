@@ -27,6 +27,11 @@ public class InstanceMetadataServicePrototype extends GenericModel {
   public static class Builder {
     private Boolean enabled;
 
+    /**
+     * Instantiates a new Builder from an existing InstanceMetadataServicePrototype instance.
+     *
+     * @param instanceMetadataServicePrototype the instance to initialize the Builder with
+     */
     private Builder(InstanceMetadataServicePrototype instanceMetadataServicePrototype) {
       this.enabled = instanceMetadataServicePrototype.enabled;
     }
@@ -57,6 +62,8 @@ public class InstanceMetadataServicePrototype extends GenericModel {
       return this;
     }
   }
+
+  protected InstanceMetadataServicePrototype() { }
 
   protected InstanceMetadataServicePrototype(Builder builder) {
     enabled = builder.enabled;

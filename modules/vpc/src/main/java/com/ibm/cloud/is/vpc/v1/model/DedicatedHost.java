@@ -101,6 +101,8 @@ public class DedicatedHost extends GenericModel {
   protected VCPU vcpu;
   protected ZoneReference zone;
 
+  protected DedicatedHost() { }
+
   /**
    * Gets the availableMemory.
    *
@@ -247,7 +249,8 @@ public class DedicatedHost extends GenericModel {
   /**
    * Gets the profile.
    *
-   * The profile this dedicated host uses.
+   * The [profile](https://cloud.ibm.com/docs/vpc?topic=vpc-dh-profiles) for this
+   * dedicated host.
    *
    * @return the profile
    */

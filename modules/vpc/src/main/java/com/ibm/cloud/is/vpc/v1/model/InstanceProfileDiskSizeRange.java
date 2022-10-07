@@ -25,5 +25,7 @@ public class InstanceProfileDiskSizeRange extends InstanceProfileDiskSize {
     String RANGE = "range";
   }
 
+
+  protected InstanceProfileDiskSizeRange() { }
 }
 

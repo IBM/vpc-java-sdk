@@ -42,13 +42,12 @@ public class FloatingIPTarget extends GenericModel {
   protected String resourceType;
   protected String crn;
 
-  protected FloatingIPTarget() {
-  }
+  protected FloatingIPTarget() { }
 
   /**
    * Gets the deleted.
    *
-   * If present, this property indicates the referenced resource has been deleted and provides
+   * If present, this property indicates the referenced resource has been deleted, and provides
    * some supplementary information.
    *
    * @return the deleted

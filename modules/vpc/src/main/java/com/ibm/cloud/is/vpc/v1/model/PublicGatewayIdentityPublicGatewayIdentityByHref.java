@@ -24,6 +24,11 @@ public class PublicGatewayIdentityPublicGatewayIdentityByHref extends PublicGate
   public static class Builder {
     private String href;
 
+    /**
+     * Instantiates a new Builder from an existing PublicGatewayIdentityPublicGatewayIdentityByHref instance.
+     *
+     * @param publicGatewayIdentityPublicGatewayIdentityByHref the instance to initialize the Builder with
+     */
     public Builder(PublicGatewayIdentity publicGatewayIdentityPublicGatewayIdentityByHref) {
       this.href = publicGatewayIdentityPublicGatewayIdentityByHref.href;
     }
@@ -63,6 +68,8 @@ public class PublicGatewayIdentityPublicGatewayIdentityByHref extends PublicGate
       return this;
     }
   }
+
+  protected PublicGatewayIdentityPublicGatewayIdentityByHref() { }
 
   protected PublicGatewayIdentityPublicGatewayIdentityByHref(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.href,

@@ -41,6 +41,11 @@ public class StopBareMetalServerOptions extends GenericModel {
     private String id;
     private String type;
 
+    /**
+     * Instantiates a new Builder from an existing StopBareMetalServerOptions instance.
+     *
+     * @param stopBareMetalServerOptions the instance to initialize the Builder with
+     */
     private Builder(StopBareMetalServerOptions stopBareMetalServerOptions) {
       this.id = stopBareMetalServerOptions.id;
       this.type = stopBareMetalServerOptions.type;
@@ -94,6 +99,8 @@ public class StopBareMetalServerOptions extends GenericModel {
       return this;
     }
   }
+
+  protected StopBareMetalServerOptions() { }
 
   protected StopBareMetalServerOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,

@@ -25,5 +25,7 @@ public class SecurityGroupTargetReferenceVPNServerReference extends SecurityGrou
     String VPN_SERVER = "vpn_server";
   }
 
+
+  protected SecurityGroupTargetReferenceVPNServerReference() { }
 }
 

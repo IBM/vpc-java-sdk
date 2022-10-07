@@ -66,6 +66,11 @@ public class LoadBalancerListenerPolicyRulePatch extends GenericModel {
     private String type;
     private String value;
 
+    /**
+     * Instantiates a new Builder from an existing LoadBalancerListenerPolicyRulePatch instance.
+     *
+     * @param loadBalancerListenerPolicyRulePatch the instance to initialize the Builder with
+     */
     private Builder(LoadBalancerListenerPolicyRulePatch loadBalancerListenerPolicyRulePatch) {
       this.condition = loadBalancerListenerPolicyRulePatch.condition;
       this.field = loadBalancerListenerPolicyRulePatch.field;
@@ -132,6 +137,8 @@ public class LoadBalancerListenerPolicyRulePatch extends GenericModel {
       return this;
     }
   }
+
+  protected LoadBalancerListenerPolicyRulePatch() { }
 
   protected LoadBalancerListenerPolicyRulePatch(Builder builder) {
     condition = builder.condition;

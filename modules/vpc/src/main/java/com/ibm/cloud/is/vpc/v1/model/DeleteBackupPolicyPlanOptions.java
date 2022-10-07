@@ -31,6 +31,11 @@ public class DeleteBackupPolicyPlanOptions extends GenericModel {
     private String id;
     private String ifMatch;
 
+    /**
+     * Instantiates a new Builder from an existing DeleteBackupPolicyPlanOptions instance.
+     *
+     * @param deleteBackupPolicyPlanOptions the instance to initialize the Builder with
+     */
     private Builder(DeleteBackupPolicyPlanOptions deleteBackupPolicyPlanOptions) {
       this.backupPolicyId = deleteBackupPolicyPlanOptions.backupPolicyId;
       this.id = deleteBackupPolicyPlanOptions.id;
@@ -96,6 +101,8 @@ public class DeleteBackupPolicyPlanOptions extends GenericModel {
       return this;
     }
   }
+
+  protected DeleteBackupPolicyPlanOptions() { }
 
   protected DeleteBackupPolicyPlanOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.backupPolicyId,

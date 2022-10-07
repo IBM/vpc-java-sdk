@@ -27,5 +27,7 @@ public class VPNServerAuthenticationByCertificate extends VPNServerAuthenticatio
     String USERNAME = "username";
   }
 
+
+  protected VPNServerAuthenticationByCertificate() { }
 }
 

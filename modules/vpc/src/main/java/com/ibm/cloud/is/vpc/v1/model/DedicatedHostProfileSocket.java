@@ -45,8 +45,7 @@ public class DedicatedHostProfileSocket extends GenericModel {
   protected Long step;
   protected List<Long> values;
 
-  protected DedicatedHostProfileSocket() {
-  }
+  protected DedicatedHostProfileSocket() { }
 
   /**
    * Gets the type.

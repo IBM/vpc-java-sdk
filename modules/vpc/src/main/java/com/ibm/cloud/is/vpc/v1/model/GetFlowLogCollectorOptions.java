@@ -27,6 +27,11 @@ public class GetFlowLogCollectorOptions extends GenericModel {
   public static class Builder {
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing GetFlowLogCollectorOptions instance.
+     *
+     * @param getFlowLogCollectorOptions the instance to initialize the Builder with
+     */
     private Builder(GetFlowLogCollectorOptions getFlowLogCollectorOptions) {
       this.id = getFlowLogCollectorOptions.id;
     }
@@ -66,6 +71,8 @@ public class GetFlowLogCollectorOptions extends GenericModel {
       return this;
     }
   }
+
+  protected GetFlowLogCollectorOptions() { }
 
   protected GetFlowLogCollectorOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,

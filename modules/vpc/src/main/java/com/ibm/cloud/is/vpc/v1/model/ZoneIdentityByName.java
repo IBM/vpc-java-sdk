@@ -24,6 +24,11 @@ public class ZoneIdentityByName extends ZoneIdentity {
   public static class Builder {
     private String name;
 
+    /**
+     * Instantiates a new Builder from an existing ZoneIdentityByName instance.
+     *
+     * @param zoneIdentityByName the instance to initialize the Builder with
+     */
     public Builder(ZoneIdentity zoneIdentityByName) {
       this.name = zoneIdentityByName.name;
     }
@@ -63,6 +68,8 @@ public class ZoneIdentityByName extends ZoneIdentity {
       return this;
     }
   }
+
+  protected ZoneIdentityByName() { }
 
   protected ZoneIdentityByName(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.name,
