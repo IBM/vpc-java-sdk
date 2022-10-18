@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -17,8 +17,10 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
  * The IP addresses or security groups from which this rule will allow traffic (or to which, for outbound rules). Can be
- * specified as an IP address, a CIDR block, or a security group. If omitted, a CIDR block of `0.0.0.0/0` will be used
- * to allow traffic from any source (or to any source, for outbound rules).
+ * specified as an IP address, a CIDR block, or a security group within the VPC.
+ *
+ * If unspecified, a CIDR block of `0.0.0.0/0` will be used to allow traffic from any source
+ * (or to any destination, for outbound rules).
  *
  * Classes which extend this class:
  * - SecurityGroupRuleRemotePrototypeIP
@@ -34,8 +36,7 @@ public class SecurityGroupRuleRemotePrototype extends GenericModel {
   protected String crn;
   protected String href;
 
-  protected SecurityGroupRuleRemotePrototype() {
-  }
+  protected SecurityGroupRuleRemotePrototype() { }
 
   /**
    * Gets the address.

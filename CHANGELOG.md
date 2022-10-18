@@ -1,3 +1,24 @@
+# [0.10.0](https://github.com/IBM/vpc-java-sdk/compare/0.9.0...0.10.0) (2022-08-01)
+
+
+### Features
+
+* **2022-07-13:** updated the sdk as per the api spec released on 2022-07-13 for backup and vpn servers ([#40](https://github.com/IBM/vpc-java-sdk/issues/40)) ([88939c6](https://github.com/IBM/vpc-java-sdk/commit/88939c63e5b0d92ea5025579721cfbb186232425))
+
+# [0.9.0](https://github.com/IBM/vpc-java-sdk/compare/0.8.1...0.9.0) (2022-05-05)
+
+
+### Features
+
+* **2022-04-20:** updated the sdk as per the 2022-04-20 api spec ([#39](https://github.com/IBM/vpc-java-sdk/issues/39)) ([63c397c](https://github.com/IBM/vpc-java-sdk/commit/63c397cdfeba087bd13e78d4ff51e0d8fef4b491))
+
+## [0.8.1](https://github.com/IBM/vpc-java-sdk/compare/0.8.0...0.8.1) (2021-12-01)
+
+
+### Bug Fixes
+
+* **travis:** fix to remove codecov from travis ([#35](https://github.com/IBM/vpc-java-sdk/issues/35)) ([f811b56](https://github.com/IBM/vpc-java-sdk/commit/f811b56be62c172b3b01b364511b2d73a43b8eab))
+
 # [0.8.0](https://github.com/IBM/vpc-java-sdk/compare/0.7.0...0.8.0) (2021-11-30)
 
 

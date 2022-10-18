@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -35,6 +35,11 @@ public class UpdateInstanceGroupManagerPolicyOptions extends GenericModel {
     private String id;
     private Map<String, Object> instanceGroupManagerPolicyPatch;
 
+    /**
+     * Instantiates a new Builder from an existing UpdateInstanceGroupManagerPolicyOptions instance.
+     *
+     * @param updateInstanceGroupManagerPolicyOptions the instance to initialize the Builder with
+     */
     private Builder(UpdateInstanceGroupManagerPolicyOptions updateInstanceGroupManagerPolicyOptions) {
       this.instanceGroupId = updateInstanceGroupManagerPolicyOptions.instanceGroupId;
       this.instanceGroupManagerId = updateInstanceGroupManagerPolicyOptions.instanceGroupManagerId;
@@ -116,6 +121,8 @@ public class UpdateInstanceGroupManagerPolicyOptions extends GenericModel {
       return this;
     }
   }
+
+  protected UpdateInstanceGroupManagerPolicyOptions() { }
 
   protected UpdateInstanceGroupManagerPolicyOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.instanceGroupId,

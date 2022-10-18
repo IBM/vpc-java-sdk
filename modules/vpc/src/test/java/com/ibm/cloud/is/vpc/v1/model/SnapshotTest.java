@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -13,6 +13,8 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanReference;
+import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.EncryptionKeyReference;
 import com.ibm.cloud.is.vpc.v1.model.ImageReference;
 import com.ibm.cloud.is.vpc.v1.model.ImageReferenceDeleted;
@@ -39,7 +41,9 @@ public class SnapshotTest {
   @Test
   public void testSnapshot() throws Throwable {
     Snapshot snapshotModel = new Snapshot();
+    assertNull(snapshotModel.getBackupPolicyPlan());
     assertNull(snapshotModel.isBootable());
+    assertNull(snapshotModel.getCapturedAt());
     assertNull(snapshotModel.getCreatedAt());
     assertNull(snapshotModel.getCrn());
     assertNull(snapshotModel.isDeletable());
@@ -53,8 +57,10 @@ public class SnapshotTest {
     assertNull(snapshotModel.getOperatingSystem());
     assertNull(snapshotModel.getResourceGroup());
     assertNull(snapshotModel.getResourceType());
+    assertNull(snapshotModel.getServiceTags());
     assertNull(snapshotModel.getSize());
     assertNull(snapshotModel.getSourceImage());
     assertNull(snapshotModel.getSourceVolume());
+    assertNull(snapshotModel.getUserTags());
   }
 }

@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -24,6 +24,11 @@ public class NetworkACLRuleBeforePrototypeNetworkACLRuleIdentityById extends Net
   public static class Builder {
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing NetworkACLRuleBeforePrototypeNetworkACLRuleIdentityById instance.
+     *
+     * @param networkAclRuleBeforePrototypeNetworkAclRuleIdentityById the instance to initialize the Builder with
+     */
     public Builder(NetworkACLRuleBeforePrototype networkAclRuleBeforePrototypeNetworkAclRuleIdentityById) {
       this.id = networkAclRuleBeforePrototypeNetworkAclRuleIdentityById.id;
     }
@@ -63,6 +68,8 @@ public class NetworkACLRuleBeforePrototypeNetworkACLRuleIdentityById extends Net
       return this;
     }
   }
+
+  protected NetworkACLRuleBeforePrototypeNetworkACLRuleIdentityById() { }
 
   protected NetworkACLRuleBeforePrototypeNetworkACLRuleIdentityById(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.id,

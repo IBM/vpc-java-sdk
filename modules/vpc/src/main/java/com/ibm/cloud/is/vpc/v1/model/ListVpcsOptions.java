@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -33,6 +33,11 @@ public class ListVpcsOptions extends GenericModel {
     private String resourceGroupId;
     private Boolean classicAccess;
 
+    /**
+     * Instantiates a new Builder from an existing ListVpcsOptions instance.
+     *
+     * @param listVpcsOptions the instance to initialize the Builder with
+     */
     private Builder(ListVpcsOptions listVpcsOptions) {
       this.start = listVpcsOptions.start;
       this.limit = listVpcsOptions.limit;
@@ -100,6 +105,8 @@ public class ListVpcsOptions extends GenericModel {
     }
   }
 
+  protected ListVpcsOptions() { }
+
   protected ListVpcsOptions(Builder builder) {
     start = builder.start;
     limit = builder.limit;
@@ -119,7 +126,7 @@ public class ListVpcsOptions extends GenericModel {
   /**
    * Gets the start.
    *
-   * A server-supplied token determining what resource to start the page on.
+   * A server-provided token determining what resource to start the page on.
    *
    * @return the start
    */

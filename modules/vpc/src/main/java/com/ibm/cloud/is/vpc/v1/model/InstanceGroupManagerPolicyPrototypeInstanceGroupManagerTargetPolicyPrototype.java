@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -49,6 +49,11 @@ public class InstanceGroupManagerPolicyPrototypeInstanceGroupManagerTargetPolicy
     private Long metricValue;
     private String policyType;
 
+    /**
+     * Instantiates a new Builder from an existing InstanceGroupManagerPolicyPrototypeInstanceGroupManagerTargetPolicyPrototype instance.
+     *
+     * @param instanceGroupManagerPolicyPrototypeInstanceGroupManagerTargetPolicyPrototype the instance to initialize the Builder with
+     */
     public Builder(InstanceGroupManagerPolicyPrototype instanceGroupManagerPolicyPrototypeInstanceGroupManagerTargetPolicyPrototype) {
       this.name = instanceGroupManagerPolicyPrototypeInstanceGroupManagerTargetPolicyPrototype.name;
       this.metricType = instanceGroupManagerPolicyPrototypeInstanceGroupManagerTargetPolicyPrototype.metricType;
@@ -128,6 +133,8 @@ public class InstanceGroupManagerPolicyPrototypeInstanceGroupManagerTargetPolicy
       return this;
     }
   }
+
+  protected InstanceGroupManagerPolicyPrototypeInstanceGroupManagerTargetPolicyPrototype() { }
 
   protected InstanceGroupManagerPolicyPrototypeInstanceGroupManagerTargetPolicyPrototype(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.metricType,

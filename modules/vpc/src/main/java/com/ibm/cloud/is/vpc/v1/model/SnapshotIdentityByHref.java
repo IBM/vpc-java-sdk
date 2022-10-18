@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -24,6 +24,11 @@ public class SnapshotIdentityByHref extends SnapshotIdentity {
   public static class Builder {
     private String href;
 
+    /**
+     * Instantiates a new Builder from an existing SnapshotIdentityByHref instance.
+     *
+     * @param snapshotIdentityByHref the instance to initialize the Builder with
+     */
     public Builder(SnapshotIdentity snapshotIdentityByHref) {
       this.href = snapshotIdentityByHref.href;
     }
@@ -63,6 +68,8 @@ public class SnapshotIdentityByHref extends SnapshotIdentity {
       return this;
     }
   }
+
+  protected SnapshotIdentityByHref() { }
 
   protected SnapshotIdentityByHref(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.href,

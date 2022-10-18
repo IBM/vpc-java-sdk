@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -35,6 +35,11 @@ public class ListSubnetsOptions extends GenericModel {
     private String routingTableId;
     private String routingTableName;
 
+    /**
+     * Instantiates a new Builder from an existing ListSubnetsOptions instance.
+     *
+     * @param listSubnetsOptions the instance to initialize the Builder with
+     */
     private Builder(ListSubnetsOptions listSubnetsOptions) {
       this.start = listSubnetsOptions.start;
       this.limit = listSubnetsOptions.limit;
@@ -114,6 +119,8 @@ public class ListSubnetsOptions extends GenericModel {
     }
   }
 
+  protected ListSubnetsOptions() { }
+
   protected ListSubnetsOptions(Builder builder) {
     start = builder.start;
     limit = builder.limit;
@@ -134,7 +141,7 @@ public class ListSubnetsOptions extends GenericModel {
   /**
    * Gets the start.
    *
-   * A server-supplied token determining what resource to start the page on.
+   * A server-provided token determining what resource to start the page on.
    *
    * @return the start
    */

@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -29,6 +29,11 @@ public class InstanceGroupManagerActionGroupPatch extends GenericModel {
   public static class Builder {
     private Long membershipCount;
 
+    /**
+     * Instantiates a new Builder from an existing InstanceGroupManagerActionGroupPatch instance.
+     *
+     * @param instanceGroupManagerActionGroupPatch the instance to initialize the Builder with
+     */
     private Builder(InstanceGroupManagerActionGroupPatch instanceGroupManagerActionGroupPatch) {
       this.membershipCount = instanceGroupManagerActionGroupPatch.membershipCount;
     }
@@ -60,6 +65,8 @@ public class InstanceGroupManagerActionGroupPatch extends GenericModel {
     }
   }
 
+  protected InstanceGroupManagerActionGroupPatch() { }
+
   protected InstanceGroupManagerActionGroupPatch(Builder builder) {
     membershipCount = builder.membershipCount;
   }
@@ -76,7 +83,7 @@ public class InstanceGroupManagerActionGroupPatch extends GenericModel {
   /**
    * Gets the membershipCount.
    *
-   * The number of members the instance group should have at the scheduled time.
+   * The desired number of instance group members at the scheduled time.
    *
    * @return the membershipCount
    */

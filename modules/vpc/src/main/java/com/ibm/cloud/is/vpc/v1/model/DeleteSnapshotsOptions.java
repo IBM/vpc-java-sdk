@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -27,6 +27,11 @@ public class DeleteSnapshotsOptions extends GenericModel {
   public static class Builder {
     private String sourceVolumeId;
 
+    /**
+     * Instantiates a new Builder from an existing DeleteSnapshotsOptions instance.
+     *
+     * @param deleteSnapshotsOptions the instance to initialize the Builder with
+     */
     private Builder(DeleteSnapshotsOptions deleteSnapshotsOptions) {
       this.sourceVolumeId = deleteSnapshotsOptions.sourceVolumeId;
     }
@@ -66,6 +71,8 @@ public class DeleteSnapshotsOptions extends GenericModel {
       return this;
     }
   }
+
+  protected DeleteSnapshotsOptions() { }
 
   protected DeleteSnapshotsOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.sourceVolumeId,

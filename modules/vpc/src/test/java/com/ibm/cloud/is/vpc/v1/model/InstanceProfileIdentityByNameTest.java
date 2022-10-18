@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -32,15 +32,15 @@ public class InstanceProfileIdentityByNameTest {
   @Test
   public void testInstanceProfileIdentityByName() throws Throwable {
     InstanceProfileIdentityByName instanceProfileIdentityByNameModel = new InstanceProfileIdentityByName.Builder()
-      .name("bc1-4x16")
+      .name("bx2-4x16")
       .build();
-    assertEquals(instanceProfileIdentityByNameModel.name(), "bc1-4x16");
+    assertEquals(instanceProfileIdentityByNameModel.name(), "bx2-4x16");
 
     String json = TestUtilities.serialize(instanceProfileIdentityByNameModel);
 
     InstanceProfileIdentityByName instanceProfileIdentityByNameModelNew = TestUtilities.deserialize(json, InstanceProfileIdentityByName.class);
     assertTrue(instanceProfileIdentityByNameModelNew instanceof InstanceProfileIdentityByName);
-    assertEquals(instanceProfileIdentityByNameModelNew.name(), "bc1-4x16");
+    assertEquals(instanceProfileIdentityByNameModelNew.name(), "bx2-4x16");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

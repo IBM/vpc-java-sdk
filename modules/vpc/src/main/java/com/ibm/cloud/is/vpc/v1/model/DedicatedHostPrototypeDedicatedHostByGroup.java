@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -28,6 +28,11 @@ public class DedicatedHostPrototypeDedicatedHostByGroup extends DedicatedHostPro
     private ResourceGroupIdentity resourceGroup;
     private DedicatedHostGroupIdentity group;
 
+    /**
+     * Instantiates a new Builder from an existing DedicatedHostPrototypeDedicatedHostByGroup instance.
+     *
+     * @param dedicatedHostPrototypeDedicatedHostByGroup the instance to initialize the Builder with
+     */
     public Builder(DedicatedHostPrototype dedicatedHostPrototypeDedicatedHostByGroup) {
       this.instancePlacementEnabled = dedicatedHostPrototypeDedicatedHostByGroup.instancePlacementEnabled;
       this.name = dedicatedHostPrototypeDedicatedHostByGroup.name;
@@ -117,6 +122,8 @@ public class DedicatedHostPrototypeDedicatedHostByGroup extends DedicatedHostPro
       return this;
     }
   }
+
+  protected DedicatedHostPrototypeDedicatedHostByGroup() { }
 
   protected DedicatedHostPrototypeDedicatedHostByGroup(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.profile,

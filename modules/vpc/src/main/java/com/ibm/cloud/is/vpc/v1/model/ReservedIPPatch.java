@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -34,6 +34,11 @@ public class ReservedIPPatch extends GenericModel {
     private Boolean autoDelete;
     private String name;
 
+    /**
+     * Instantiates a new Builder from an existing ReservedIPPatch instance.
+     *
+     * @param reservedIpPatch the instance to initialize the Builder with
+     */
     private Builder(ReservedIPPatch reservedIpPatch) {
       this.autoDelete = reservedIpPatch.autoDelete;
       this.name = reservedIpPatch.name;
@@ -76,6 +81,8 @@ public class ReservedIPPatch extends GenericModel {
       return this;
     }
   }
+
+  protected ReservedIPPatch() { }
 
   protected ReservedIPPatch(Builder builder) {
     autoDelete = builder.autoDelete;

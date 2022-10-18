@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -11,6 +11,8 @@
  * specific language governing permissions and limitations under the License.
  */
 package com.ibm.cloud.is.vpc.v1.model;
+
+import java.util.List;
 
 import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
@@ -30,14 +32,15 @@ public class VolumeAttachmentPrototypeVolume extends GenericModel {
   protected Long iops;
   protected String name;
   protected VolumeProfileIdentity profile;
+  @SerializedName("user_tags")
+  protected List<String> userTags;
   protected Long capacity;
   @SerializedName("encryption_key")
   protected EncryptionKeyIdentity encryptionKey;
   @SerializedName("source_snapshot")
   protected SnapshotIdentity sourceSnapshot;
 
-  protected VolumeAttachmentPrototypeVolume() {
-  }
+  protected VolumeAttachmentPrototypeVolume() { }
 
   /**
    * Gets the id.
@@ -98,12 +101,24 @@ public class VolumeAttachmentPrototypeVolume extends GenericModel {
   /**
    * Gets the profile.
    *
-   * The profile to use for this volume.
+   * The [profile](https://cloud.ibm.com/docs/vpc?topic=vpc-block-storage-profiles) to
+   * use for this volume.
    *
    * @return the profile
    */
   public VolumeProfileIdentity profile() {
     return profile;
+  }
+
+  /**
+   * Gets the userTags.
+   *
+   * The [user tags](https://cloud.ibm.com/apidocs/tagging#types-of-tags) associated with this volume.
+   *
+   * @return the userTags
+   */
+  public List<String> userTags() {
+    return userTags;
   }
 
   /**

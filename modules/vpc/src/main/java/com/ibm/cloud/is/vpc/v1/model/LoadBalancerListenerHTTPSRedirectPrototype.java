@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -33,6 +33,11 @@ public class LoadBalancerListenerHTTPSRedirectPrototype extends GenericModel {
     private LoadBalancerListenerIdentity listener;
     private String uri;
 
+    /**
+     * Instantiates a new Builder from an existing LoadBalancerListenerHTTPSRedirectPrototype instance.
+     *
+     * @param loadBalancerListenerHttpsRedirectPrototype the instance to initialize the Builder with
+     */
     private Builder(LoadBalancerListenerHTTPSRedirectPrototype loadBalancerListenerHttpsRedirectPrototype) {
       this.httpStatusCode = loadBalancerListenerHttpsRedirectPrototype.httpStatusCode;
       this.listener = loadBalancerListenerHttpsRedirectPrototype.listener;
@@ -98,6 +103,8 @@ public class LoadBalancerListenerHTTPSRedirectPrototype extends GenericModel {
       return this;
     }
   }
+
+  protected LoadBalancerListenerHTTPSRedirectPrototype() { }
 
   protected LoadBalancerListenerHTTPSRedirectPrototype(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.httpStatusCode,

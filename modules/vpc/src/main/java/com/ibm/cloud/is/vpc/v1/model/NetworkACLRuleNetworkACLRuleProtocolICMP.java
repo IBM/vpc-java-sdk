@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -18,7 +18,7 @@ package com.ibm.cloud.is.vpc.v1.model;
 public class NetworkACLRuleNetworkACLRuleProtocolICMP extends NetworkACLRule {
 
   /**
-   * Whether to allow or deny matching traffic.
+   * The action to perform for a packet matching the rule.
    */
   public interface Action {
     /** allow. */
@@ -28,7 +28,7 @@ public class NetworkACLRuleNetworkACLRuleProtocolICMP extends NetworkACLRule {
   }
 
   /**
-   * Whether the traffic to be matched is `inbound` or `outbound`.
+   * The direction of traffic to match.
    */
   public interface Direction {
     /** inbound. */
@@ -43,8 +43,6 @@ public class NetworkACLRuleNetworkACLRuleProtocolICMP extends NetworkACLRule {
   public interface IpVersion {
     /** ipv4. */
     String IPV4 = "ipv4";
-    /** ipv6. */
-    String IPV6 = "ipv6";
   }
 
   /**
@@ -55,5 +53,7 @@ public class NetworkACLRuleNetworkACLRuleProtocolICMP extends NetworkACLRule {
     String ICMP = "icmp";
   }
 
+
+  protected NetworkACLRuleNetworkACLRuleProtocolICMP() { }
 }
 

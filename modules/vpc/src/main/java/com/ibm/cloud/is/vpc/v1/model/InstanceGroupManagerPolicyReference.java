@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -24,10 +24,12 @@ public class InstanceGroupManagerPolicyReference extends GenericModel {
   protected String id;
   protected String name;
 
+  protected InstanceGroupManagerPolicyReference() { }
+
   /**
    * Gets the deleted.
    *
-   * If present, this property indicates the referenced resource has been deleted and provides
+   * If present, this property indicates the referenced resource has been deleted, and provides
    * some supplementary information.
    *
    * @return the deleted
@@ -61,8 +63,7 @@ public class InstanceGroupManagerPolicyReference extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this instance group manager policy. Names must be unique within the instance group
-   * manager.
+   * The user-defined name for this instance group manager policy.
    *
    * @return the name
    */

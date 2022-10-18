@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -12,6 +12,8 @@
  */
 package com.ibm.cloud.is.vpc.v1.model;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import com.google.gson.annotations.SerializedName;
@@ -23,6 +25,8 @@ import com.ibm.cloud.sdk.core.util.GsonSingleton;
  */
 public class RoutingTablePatch extends GenericModel {
 
+  @SerializedName("accept_routes_from")
+  protected List<ResourceFilter> acceptRoutesFrom;
   protected String name;
   @SerializedName("route_direct_link_ingress")
   protected Boolean routeDirectLinkIngress;
@@ -35,12 +39,19 @@ public class RoutingTablePatch extends GenericModel {
    * Builder.
    */
   public static class Builder {
+    private List<ResourceFilter> acceptRoutesFrom;
     private String name;
     private Boolean routeDirectLinkIngress;
     private Boolean routeTransitGatewayIngress;
     private Boolean routeVpcZoneIngress;
 
+    /**
+     * Instantiates a new Builder from an existing RoutingTablePatch instance.
+     *
+     * @param routingTablePatch the instance to initialize the Builder with
+     */
     private Builder(RoutingTablePatch routingTablePatch) {
+      this.acceptRoutesFrom = routingTablePatch.acceptRoutesFrom;
       this.name = routingTablePatch.name;
       this.routeDirectLinkIngress = routingTablePatch.routeDirectLinkIngress;
       this.routeTransitGatewayIngress = routingTablePatch.routeTransitGatewayIngress;
@@ -60,6 +71,34 @@ public class RoutingTablePatch extends GenericModel {
      */
     public RoutingTablePatch build() {
       return new RoutingTablePatch(this);
+    }
+
+    /**
+     * Adds an acceptRoutesFrom to acceptRoutesFrom.
+     *
+     * @param acceptRoutesFrom the new acceptRoutesFrom
+     * @return the RoutingTablePatch builder
+     */
+    public Builder addAcceptRoutesFrom(ResourceFilter acceptRoutesFrom) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(acceptRoutesFrom,
+        "acceptRoutesFrom cannot be null");
+      if (this.acceptRoutesFrom == null) {
+        this.acceptRoutesFrom = new ArrayList<ResourceFilter>();
+      }
+      this.acceptRoutesFrom.add(acceptRoutesFrom);
+      return this;
+    }
+
+    /**
+     * Set the acceptRoutesFrom.
+     * Existing acceptRoutesFrom will be replaced.
+     *
+     * @param acceptRoutesFrom the acceptRoutesFrom
+     * @return the RoutingTablePatch builder
+     */
+    public Builder acceptRoutesFrom(List<ResourceFilter> acceptRoutesFrom) {
+      this.acceptRoutesFrom = acceptRoutesFrom;
+      return this;
     }
 
     /**
@@ -107,7 +146,10 @@ public class RoutingTablePatch extends GenericModel {
     }
   }
 
+  protected RoutingTablePatch() { }
+
   protected RoutingTablePatch(Builder builder) {
+    acceptRoutesFrom = builder.acceptRoutesFrom;
     name = builder.name;
     routeDirectLinkIngress = builder.routeDirectLinkIngress;
     routeTransitGatewayIngress = builder.routeTransitGatewayIngress;
@@ -121,6 +163,23 @@ public class RoutingTablePatch extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
+  }
+
+  /**
+   * Gets the acceptRoutesFrom.
+   *
+   * The filters specifying the resources that may create routes in this routing table
+   * (replacing any existing filters). All routes created by resources that match a given filter will be removed when an
+   * existing filter is removed. Therefore, if an empty array is specified, all filters will be removed, resulting in
+   * all routes not directly created by the user being removed.
+   *
+   * At present, only the `resource_type` filter is permitted, and only the `vpn_server` value is supported, but filter
+   * support is expected to expand in the future.
+   *
+   * @return the acceptRoutesFrom
+   */
+  public List<ResourceFilter> acceptRoutesFrom() {
+    return acceptRoutesFrom;
   }
 
   /**
@@ -143,9 +202,9 @@ public class RoutingTablePatch extends GenericModel {
    * routing table. Updating to `false` deselects this routing table.
    *
    * Incoming traffic will be routed according to the routing table with one exception: routes with an `action` of
-   * `deliver` are treated as `drop` unless the `next_hop` is an IP address within the VPC's address prefix ranges.
-   * Therefore, if an incoming packet matches a route with a `next_hop` of an internet-bound IP address or a VPN gateway
-   * connection, the packet will be dropped.
+   * `deliver` are treated as `drop` unless the `next_hop` is an IP address bound to a network interface on a subnet in
+   * the route's `zone`. Therefore, if an incoming packet matches a route with a `next_hop` of an internet-bound IP
+   * address or a VPN gateway connection, the packet will be dropped.
    *
    * @return the routeDirectLinkIngress
    */
@@ -162,9 +221,9 @@ public class RoutingTablePatch extends GenericModel {
    * `true`, and no subnets are attached to this routing table. Updating to `false` deselects this routing table.
    *
    * Incoming traffic will be routed according to the routing table with one exception: routes with an `action` of
-   * `deliver` are treated as `drop` unless the `next_hop` is an IP address within the VPC's address prefix ranges.
-   * Therefore, if an incoming packet matches a route with a `next_hop` of an internet-bound IP address or a VPN gateway
-   * connection, the packet will be dropped.
+   * `deliver` are treated as `drop` unless the `next_hop` is an IP address bound to a network interface on a subnet in
+   * the route's `zone`. Therefore, if an incoming packet matches a route with a `next_hop` of an internet-bound IP
+   * address or a VPN gateway connection, the packet will be dropped.
    *
    * If [Classic Access](https://cloud.ibm.com/docs/vpc?topic=vpc-setting-up-access-to-classic-infrastructure) is
    * enabled for this VPC, and this property is set to `true`, its incoming traffic will also be routed according to
@@ -185,9 +244,9 @@ public class RoutingTablePatch extends GenericModel {
    * routing table.
    *
    * Incoming traffic will be routed according to the routing table with one exception: routes with an `action` of
-   * `deliver` are treated as `drop` unless the `next_hop` is an IP address within the VPC's address prefix ranges.
-   * Therefore, if an incoming packet matches a route with a `next_hop` of an internet-bound IP address or a VPN gateway
-   * connection, the packet will be dropped.
+   * `deliver` are treated as `drop` unless the `next_hop` is an IP address bound to a network interface on a subnet in
+   * the route's `zone`. Therefore, if an incoming packet matches a route with a `next_hop` of an internet-bound IP
+   * address or a VPN gateway connection, the packet will be dropped.
    *
    * @return the routeVpcZoneIngress
    */

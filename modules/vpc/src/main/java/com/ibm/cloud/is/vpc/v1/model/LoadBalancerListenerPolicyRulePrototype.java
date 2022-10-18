@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -63,6 +63,11 @@ public class LoadBalancerListenerPolicyRulePrototype extends GenericModel {
     private String type;
     private String value;
 
+    /**
+     * Instantiates a new Builder from an existing LoadBalancerListenerPolicyRulePrototype instance.
+     *
+     * @param loadBalancerListenerPolicyRulePrototype the instance to initialize the Builder with
+     */
     private Builder(LoadBalancerListenerPolicyRulePrototype loadBalancerListenerPolicyRulePrototype) {
       this.condition = loadBalancerListenerPolicyRulePrototype.condition;
       this.field = loadBalancerListenerPolicyRulePrototype.field;
@@ -142,6 +147,8 @@ public class LoadBalancerListenerPolicyRulePrototype extends GenericModel {
       return this;
     }
   }
+
+  protected LoadBalancerListenerPolicyRulePrototype() { }
 
   protected LoadBalancerListenerPolicyRulePrototype(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.condition,

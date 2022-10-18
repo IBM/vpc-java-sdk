@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -61,6 +61,7 @@ public class CreateVolumeOptionsTest {
       .name("my-volume")
       .profile(volumeProfileIdentityModel)
       .resourceGroup(resourceGroupIdentityModel)
+      .userTags(java.util.Arrays.asList("testString"))
       .zone(zoneIdentityModel)
       .capacity(Long.valueOf("100"))
       .encryptionKey(encryptionKeyIdentityModel)
@@ -69,6 +70,7 @@ public class CreateVolumeOptionsTest {
     assertEquals(volumePrototypeModel.name(), "my-volume");
     assertEquals(volumePrototypeModel.profile(), volumeProfileIdentityModel);
     assertEquals(volumePrototypeModel.resourceGroup(), resourceGroupIdentityModel);
+    assertEquals(volumePrototypeModel.userTags(), java.util.Arrays.asList("testString"));
     assertEquals(volumePrototypeModel.zone(), zoneIdentityModel);
     assertEquals(volumePrototypeModel.capacity(), Long.valueOf("100"));
     assertEquals(volumePrototypeModel.encryptionKey(), encryptionKeyIdentityModel);

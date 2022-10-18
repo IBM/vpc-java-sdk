@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -47,6 +47,11 @@ public class CreatePlacementGroupOptions extends GenericModel {
     private String name;
     private ResourceGroupIdentity resourceGroup;
 
+    /**
+     * Instantiates a new Builder from an existing CreatePlacementGroupOptions instance.
+     *
+     * @param createPlacementGroupOptions the instance to initialize the Builder with
+     */
     private Builder(CreatePlacementGroupOptions createPlacementGroupOptions) {
       this.strategy = createPlacementGroupOptions.strategy;
       this.name = createPlacementGroupOptions.name;
@@ -110,6 +115,8 @@ public class CreatePlacementGroupOptions extends GenericModel {
       return this;
     }
   }
+
+  protected CreatePlacementGroupOptions() { }
 
   protected CreatePlacementGroupOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.strategy,

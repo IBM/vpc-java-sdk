@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -51,6 +51,11 @@ public class InstanceGroupManagerPolicyPatch extends GenericModel {
     private Long metricValue;
     private String name;
 
+    /**
+     * Instantiates a new Builder from an existing InstanceGroupManagerPolicyPatch instance.
+     *
+     * @param instanceGroupManagerPolicyPatch the instance to initialize the Builder with
+     */
     private Builder(InstanceGroupManagerPolicyPatch instanceGroupManagerPolicyPatch) {
       this.metricType = instanceGroupManagerPolicyPatch.metricType;
       this.metricValue = instanceGroupManagerPolicyPatch.metricValue;
@@ -106,6 +111,8 @@ public class InstanceGroupManagerPolicyPatch extends GenericModel {
     }
   }
 
+  protected InstanceGroupManagerPolicyPatch() { }
+
   protected InstanceGroupManagerPolicyPatch(Builder builder) {
     metricType = builder.metricType;
     metricValue = builder.metricValue;
@@ -146,8 +153,7 @@ public class InstanceGroupManagerPolicyPatch extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this instance group manager policy. Names must be unique within the instance group
-   * manager.
+   * The user-defined name for this instance group manager policy.
    *
    * @return the name
    */

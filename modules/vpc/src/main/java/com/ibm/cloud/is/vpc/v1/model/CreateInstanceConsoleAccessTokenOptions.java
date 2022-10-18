@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -41,6 +41,11 @@ public class CreateInstanceConsoleAccessTokenOptions extends GenericModel {
     private String consoleType;
     private Boolean force;
 
+    /**
+     * Instantiates a new Builder from an existing CreateInstanceConsoleAccessTokenOptions instance.
+     *
+     * @param createInstanceConsoleAccessTokenOptions the instance to initialize the Builder with
+     */
     private Builder(CreateInstanceConsoleAccessTokenOptions createInstanceConsoleAccessTokenOptions) {
       this.instanceId = createInstanceConsoleAccessTokenOptions.instanceId;
       this.consoleType = createInstanceConsoleAccessTokenOptions.consoleType;
@@ -106,6 +111,8 @@ public class CreateInstanceConsoleAccessTokenOptions extends GenericModel {
       return this;
     }
   }
+
+  protected CreateInstanceConsoleAccessTokenOptions() { }
 
   protected CreateInstanceConsoleAccessTokenOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.instanceId,

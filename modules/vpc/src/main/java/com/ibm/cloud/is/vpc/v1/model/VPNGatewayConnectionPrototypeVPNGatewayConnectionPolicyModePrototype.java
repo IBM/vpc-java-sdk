@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -35,6 +35,11 @@ public class VPNGatewayConnectionPrototypeVPNGatewayConnectionPolicyModePrototyp
     private List<String> localCidrs;
     private List<String> peerCidrs;
 
+    /**
+     * Instantiates a new Builder from an existing VPNGatewayConnectionPrototypeVPNGatewayConnectionPolicyModePrototype instance.
+     *
+     * @param vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototype the instance to initialize the Builder with
+     */
     public Builder(VPNGatewayConnectionPrototype vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototype) {
       this.adminStateUp = vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototype.adminStateUp;
       this.deadPeerDetection = vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototype.deadPeerDetection;
@@ -210,6 +215,8 @@ public class VPNGatewayConnectionPrototypeVPNGatewayConnectionPolicyModePrototyp
       return this;
     }
   }
+
+  protected VPNGatewayConnectionPrototypeVPNGatewayConnectionPolicyModePrototype() { }
 
   protected VPNGatewayConnectionPrototypeVPNGatewayConnectionPolicyModePrototype(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.peerAddress,

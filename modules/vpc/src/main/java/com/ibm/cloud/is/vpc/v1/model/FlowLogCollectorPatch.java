@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -32,6 +32,11 @@ public class FlowLogCollectorPatch extends GenericModel {
     private Boolean active;
     private String name;
 
+    /**
+     * Instantiates a new Builder from an existing FlowLogCollectorPatch instance.
+     *
+     * @param flowLogCollectorPatch the instance to initialize the Builder with
+     */
     private Builder(FlowLogCollectorPatch flowLogCollectorPatch) {
       this.active = flowLogCollectorPatch.active;
       this.name = flowLogCollectorPatch.name;
@@ -74,6 +79,8 @@ public class FlowLogCollectorPatch extends GenericModel {
       return this;
     }
   }
+
+  protected FlowLogCollectorPatch() { }
 
   protected FlowLogCollectorPatch(Builder builder) {
     active = builder.active;

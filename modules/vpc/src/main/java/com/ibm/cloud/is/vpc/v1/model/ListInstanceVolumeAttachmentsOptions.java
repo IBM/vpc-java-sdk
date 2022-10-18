@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -27,6 +27,11 @@ public class ListInstanceVolumeAttachmentsOptions extends GenericModel {
   public static class Builder {
     private String instanceId;
 
+    /**
+     * Instantiates a new Builder from an existing ListInstanceVolumeAttachmentsOptions instance.
+     *
+     * @param listInstanceVolumeAttachmentsOptions the instance to initialize the Builder with
+     */
     private Builder(ListInstanceVolumeAttachmentsOptions listInstanceVolumeAttachmentsOptions) {
       this.instanceId = listInstanceVolumeAttachmentsOptions.instanceId;
     }
@@ -66,6 +71,8 @@ public class ListInstanceVolumeAttachmentsOptions extends GenericModel {
       return this;
     }
   }
+
+  protected ListInstanceVolumeAttachmentsOptions() { }
 
   protected ListInstanceVolumeAttachmentsOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.instanceId,

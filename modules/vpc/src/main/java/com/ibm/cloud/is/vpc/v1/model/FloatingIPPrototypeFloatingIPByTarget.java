@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -26,6 +26,11 @@ public class FloatingIPPrototypeFloatingIPByTarget extends FloatingIPPrototype {
     private ResourceGroupIdentity resourceGroup;
     private FloatingIPByTargetNetworkInterfaceIdentity target;
 
+    /**
+     * Instantiates a new Builder from an existing FloatingIPPrototypeFloatingIPByTarget instance.
+     *
+     * @param floatingIpPrototypeFloatingIpByTarget the instance to initialize the Builder with
+     */
     public Builder(FloatingIPPrototype floatingIpPrototypeFloatingIpByTarget) {
       this.name = floatingIpPrototypeFloatingIpByTarget.name;
       this.resourceGroup = floatingIpPrototypeFloatingIpByTarget.resourceGroup;
@@ -89,6 +94,8 @@ public class FloatingIPPrototypeFloatingIPByTarget extends FloatingIPPrototype {
       return this;
     }
   }
+
+  protected FloatingIPPrototypeFloatingIPByTarget() { }
 
   protected FloatingIPPrototypeFloatingIPByTarget(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.target,

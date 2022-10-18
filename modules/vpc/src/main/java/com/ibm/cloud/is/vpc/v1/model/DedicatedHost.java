@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -100,6 +100,8 @@ public class DedicatedHost extends GenericModel {
   protected List<InstanceProfileReference> supportedInstanceProfiles;
   protected VCPU vcpu;
   protected ZoneReference zone;
+
+  protected DedicatedHost() { }
 
   /**
    * Gets the availableMemory.
@@ -247,7 +249,8 @@ public class DedicatedHost extends GenericModel {
   /**
    * Gets the profile.
    *
-   * The profile this dedicated host uses.
+   * The [profile](https://cloud.ibm.com/docs/vpc?topic=vpc-dh-profiles) for this
+   * dedicated host.
    *
    * @return the profile
    */

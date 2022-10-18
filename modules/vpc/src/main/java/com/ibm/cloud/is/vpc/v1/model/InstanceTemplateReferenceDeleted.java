@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -16,13 +16,15 @@ import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * If present, this property indicates the referenced resource has been deleted and provides some supplementary
+ * If present, this property indicates the referenced resource has been deleted, and provides some supplementary
  * information.
  */
 public class InstanceTemplateReferenceDeleted extends GenericModel {
 
   @SerializedName("more_info")
   protected String moreInfo;
+
+  protected InstanceTemplateReferenceDeleted() { }
 
   /**
    * Gets the moreInfo.

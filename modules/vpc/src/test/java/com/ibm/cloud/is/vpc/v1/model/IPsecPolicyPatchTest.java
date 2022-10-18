@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -33,13 +33,13 @@ public class IPsecPolicyPatchTest {
   @Test
   public void testIPsecPolicyPatch() throws Throwable {
     IPsecPolicyPatch iPsecPolicyPatchModel = new IPsecPolicyPatch.Builder()
-      .authenticationAlgorithm("md5")
+      .authenticationAlgorithm("disabled")
       .encryptionAlgorithm("aes128")
       .keyLifetime(Long.valueOf("3600"))
       .name("my-ipsec-policy")
       .pfs("disabled")
       .build();
-    assertEquals(iPsecPolicyPatchModel.authenticationAlgorithm(), "md5");
+    assertEquals(iPsecPolicyPatchModel.authenticationAlgorithm(), "disabled");
     assertEquals(iPsecPolicyPatchModel.encryptionAlgorithm(), "aes128");
     assertEquals(iPsecPolicyPatchModel.keyLifetime(), Long.valueOf("3600"));
     assertEquals(iPsecPolicyPatchModel.name(), "my-ipsec-policy");
@@ -49,7 +49,7 @@ public class IPsecPolicyPatchTest {
 
     IPsecPolicyPatch iPsecPolicyPatchModelNew = TestUtilities.deserialize(json, IPsecPolicyPatch.class);
     assertTrue(iPsecPolicyPatchModelNew instanceof IPsecPolicyPatch);
-    assertEquals(iPsecPolicyPatchModelNew.authenticationAlgorithm(), "md5");
+    assertEquals(iPsecPolicyPatchModelNew.authenticationAlgorithm(), "disabled");
     assertEquals(iPsecPolicyPatchModelNew.encryptionAlgorithm(), "aes128");
     assertEquals(iPsecPolicyPatchModelNew.keyLifetime(), Long.valueOf("3600"));
     assertEquals(iPsecPolicyPatchModelNew.name(), "my-ipsec-policy");
@@ -58,7 +58,7 @@ public class IPsecPolicyPatchTest {
   @Test
   public void testIPsecPolicyPatchAsPatch() throws Throwable {
     IPsecPolicyPatch iPsecPolicyPatchModel = new IPsecPolicyPatch.Builder()
-      .authenticationAlgorithm("md5")
+      .authenticationAlgorithm("disabled")
       .encryptionAlgorithm("aes128")
       .keyLifetime(Long.valueOf("3600"))
       .name("my-ipsec-policy")
@@ -67,7 +67,7 @@ public class IPsecPolicyPatchTest {
 
     Map<String, Object> mergePatch = iPsecPolicyPatchModel.asPatch();
 
-    assertEquals(mergePatch.get("authentication_algorithm"), "md5");
+    assertEquals(mergePatch.get("authentication_algorithm"), "disabled");
     assertEquals(mergePatch.get("encryption_algorithm"), "aes128");
     assertTrue(mergePatch.containsKey("key_lifetime"));
     assertEquals(mergePatch.get("name"), "my-ipsec-policy");

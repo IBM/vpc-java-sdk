@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -29,6 +29,11 @@ public class CreateInstanceGroupManagerOptions extends GenericModel {
     private String instanceGroupId;
     private InstanceGroupManagerPrototype instanceGroupManagerPrototype;
 
+    /**
+     * Instantiates a new Builder from an existing CreateInstanceGroupManagerOptions instance.
+     *
+     * @param createInstanceGroupManagerOptions the instance to initialize the Builder with
+     */
     private Builder(CreateInstanceGroupManagerOptions createInstanceGroupManagerOptions) {
       this.instanceGroupId = createInstanceGroupManagerOptions.instanceGroupId;
       this.instanceGroupManagerPrototype = createInstanceGroupManagerOptions.instanceGroupManagerPrototype;
@@ -82,6 +87,8 @@ public class CreateInstanceGroupManagerOptions extends GenericModel {
       return this;
     }
   }
+
+  protected CreateInstanceGroupManagerOptions() { }
 
   protected CreateInstanceGroupManagerOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.instanceGroupId,

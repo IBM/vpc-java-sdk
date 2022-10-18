@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -29,6 +29,11 @@ public class ListVpnGatewayConnectionsOptions extends GenericModel {
     private String vpnGatewayId;
     private String status;
 
+    /**
+     * Instantiates a new Builder from an existing ListVpnGatewayConnectionsOptions instance.
+     *
+     * @param listVpnGatewayConnectionsOptions the instance to initialize the Builder with
+     */
     private Builder(ListVpnGatewayConnectionsOptions listVpnGatewayConnectionsOptions) {
       this.vpnGatewayId = listVpnGatewayConnectionsOptions.vpnGatewayId;
       this.status = listVpnGatewayConnectionsOptions.status;
@@ -80,6 +85,8 @@ public class ListVpnGatewayConnectionsOptions extends GenericModel {
       return this;
     }
   }
+
+  protected ListVpnGatewayConnectionsOptions() { }
 
   protected ListVpnGatewayConnectionsOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.vpnGatewayId,

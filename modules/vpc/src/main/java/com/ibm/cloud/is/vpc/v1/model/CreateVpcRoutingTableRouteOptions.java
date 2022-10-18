@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -21,9 +21,8 @@ public class CreateVpcRoutingTableRouteOptions extends GenericModel {
 
   /**
    * The action to perform with a packet matching the route:
-   * - `delegate`: delegate to the system's built-in routes
-   * - `delegate_vpc`: delegate to the system's built-in routes, ignoring Internet-bound
-   *   routes
+   * - `delegate`: delegate to system-provided routes
+   * - `delegate_vpc`: delegate to system-provided routes, ignoring Internet-bound routes
    * - `deliver`: deliver the packet to the specified `next_hop`
    * - `drop`: drop the packet.
    */
@@ -44,7 +43,7 @@ public class CreateVpcRoutingTableRouteOptions extends GenericModel {
   protected ZoneIdentity zone;
   protected String action;
   protected String name;
-  protected RouteNextHopPrototype nextHop;
+  protected RoutePrototypeNextHop nextHop;
 
   /**
    * Builder.
@@ -56,8 +55,13 @@ public class CreateVpcRoutingTableRouteOptions extends GenericModel {
     private ZoneIdentity zone;
     private String action;
     private String name;
-    private RouteNextHopPrototype nextHop;
+    private RoutePrototypeNextHop nextHop;
 
+    /**
+     * Instantiates a new Builder from an existing CreateVpcRoutingTableRouteOptions instance.
+     *
+     * @param createVpcRoutingTableRouteOptions the instance to initialize the Builder with
+     */
     private Builder(CreateVpcRoutingTableRouteOptions createVpcRoutingTableRouteOptions) {
       this.vpcId = createVpcRoutingTableRouteOptions.vpcId;
       this.routingTableId = createVpcRoutingTableRouteOptions.routingTableId;
@@ -170,11 +174,13 @@ public class CreateVpcRoutingTableRouteOptions extends GenericModel {
      * @param nextHop the nextHop
      * @return the CreateVpcRoutingTableRouteOptions builder
      */
-    public Builder nextHop(RouteNextHopPrototype nextHop) {
+    public Builder nextHop(RoutePrototypeNextHop nextHop) {
       this.nextHop = nextHop;
       return this;
     }
   }
+
+  protected CreateVpcRoutingTableRouteOptions() { }
 
   protected CreateVpcRoutingTableRouteOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.vpcId,
@@ -229,8 +235,7 @@ public class CreateVpcRoutingTableRouteOptions extends GenericModel {
    * Gets the destination.
    *
    * The destination of the route. At most two routes per `zone` in a table can have the same destination, and only if
-   * both routes have an `action` of `deliver` and the
-   * `next_hop` is an IP address.
+   * both routes have an `action` of `deliver` and the `next_hop` is an IP address.
    *
    * @return the destination
    */
@@ -254,9 +259,8 @@ public class CreateVpcRoutingTableRouteOptions extends GenericModel {
    * Gets the action.
    *
    * The action to perform with a packet matching the route:
-   * - `delegate`: delegate to the system's built-in routes
-   * - `delegate_vpc`: delegate to the system's built-in routes, ignoring Internet-bound
-   *   routes
+   * - `delegate`: delegate to system-provided routes
+   * - `delegate_vpc`: delegate to system-provided routes, ignoring Internet-bound routes
    * - `deliver`: deliver the packet to the specified `next_hop`
    * - `drop`: drop the packet.
    *
@@ -281,12 +285,12 @@ public class CreateVpcRoutingTableRouteOptions extends GenericModel {
   /**
    * Gets the nextHop.
    *
-   * If `action` is `deliver`, the next hop that packets will be delivered to.  For
-   * other `action` values, it must be omitted or specified as `0.0.0.0`.
+   * If `action` is `deliver`, the next hop that packets will be delivered to. For other `action`
+   * values, it must be omitted or specified as `0.0.0.0`.
    *
    * @return the nextHop
    */
-  public RouteNextHopPrototype nextHop() {
+  public RoutePrototypeNextHop nextHop() {
     return nextHop;
   }
 }

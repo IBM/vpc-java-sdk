@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -34,6 +34,11 @@ public class ReplaceLoadBalancerPoolMembersOptions extends GenericModel {
     private String poolId;
     private List<LoadBalancerPoolMemberPrototype> members;
 
+    /**
+     * Instantiates a new Builder from an existing ReplaceLoadBalancerPoolMembersOptions instance.
+     *
+     * @param replaceLoadBalancerPoolMembersOptions the instance to initialize the Builder with
+     */
     private Builder(ReplaceLoadBalancerPoolMembersOptions replaceLoadBalancerPoolMembersOptions) {
       this.loadBalancerId = replaceLoadBalancerPoolMembersOptions.loadBalancerId;
       this.poolId = replaceLoadBalancerPoolMembersOptions.poolId;
@@ -118,6 +123,8 @@ public class ReplaceLoadBalancerPoolMembersOptions extends GenericModel {
       return this;
     }
   }
+
+  protected ReplaceLoadBalancerPoolMembersOptions() { }
 
   protected ReplaceLoadBalancerPoolMembersOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.loadBalancerId,

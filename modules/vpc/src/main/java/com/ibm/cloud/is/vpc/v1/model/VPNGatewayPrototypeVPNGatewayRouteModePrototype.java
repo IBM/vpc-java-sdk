@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -35,6 +35,11 @@ public class VPNGatewayPrototypeVPNGatewayRouteModePrototype extends VPNGatewayP
     private SubnetIdentity subnet;
     private String mode;
 
+    /**
+     * Instantiates a new Builder from an existing VPNGatewayPrototypeVPNGatewayRouteModePrototype instance.
+     *
+     * @param vpnGatewayPrototypeVpnGatewayRouteModePrototype the instance to initialize the Builder with
+     */
     public Builder(VPNGatewayPrototype vpnGatewayPrototypeVpnGatewayRouteModePrototype) {
       this.name = vpnGatewayPrototypeVpnGatewayRouteModePrototype.name;
       this.resourceGroup = vpnGatewayPrototypeVpnGatewayRouteModePrototype.resourceGroup;
@@ -46,6 +51,15 @@ public class VPNGatewayPrototypeVPNGatewayRouteModePrototype extends VPNGatewayP
      * Instantiates a new builder.
      */
     public Builder() {
+    }
+
+    /**
+     * Instantiates a new builder with required properties.
+     *
+     * @param subnet the subnet
+     */
+    public Builder(SubnetIdentity subnet) {
+      this.subnet = subnet;
     }
 
     /**
@@ -101,6 +115,8 @@ public class VPNGatewayPrototypeVPNGatewayRouteModePrototype extends VPNGatewayP
       return this;
     }
   }
+
+  protected VPNGatewayPrototypeVPNGatewayRouteModePrototype() { }
 
   protected VPNGatewayPrototypeVPNGatewayRouteModePrototype(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.subnet,

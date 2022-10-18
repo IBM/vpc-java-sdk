@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -31,6 +31,11 @@ public class DeleteInstanceGroupManagerPolicyOptions extends GenericModel {
     private String instanceGroupManagerId;
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing DeleteInstanceGroupManagerPolicyOptions instance.
+     *
+     * @param deleteInstanceGroupManagerPolicyOptions the instance to initialize the Builder with
+     */
     private Builder(DeleteInstanceGroupManagerPolicyOptions deleteInstanceGroupManagerPolicyOptions) {
       this.instanceGroupId = deleteInstanceGroupManagerPolicyOptions.instanceGroupId;
       this.instanceGroupManagerId = deleteInstanceGroupManagerPolicyOptions.instanceGroupManagerId;
@@ -98,6 +103,8 @@ public class DeleteInstanceGroupManagerPolicyOptions extends GenericModel {
       return this;
     }
   }
+
+  protected DeleteInstanceGroupManagerPolicyOptions() { }
 
   protected DeleteInstanceGroupManagerPolicyOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.instanceGroupId,

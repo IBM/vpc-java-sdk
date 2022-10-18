@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -34,8 +34,10 @@ public class SnapshotPatchTest {
   public void testSnapshotPatch() throws Throwable {
     SnapshotPatch snapshotPatchModel = new SnapshotPatch.Builder()
       .name("my-snapshot")
+      .userTags(java.util.Arrays.asList("testString"))
       .build();
     assertEquals(snapshotPatchModel.name(), "my-snapshot");
+    assertEquals(snapshotPatchModel.userTags(), java.util.Arrays.asList("testString"));
 
     String json = TestUtilities.serialize(snapshotPatchModel);
 
@@ -47,11 +49,13 @@ public class SnapshotPatchTest {
   public void testSnapshotPatchAsPatch() throws Throwable {
     SnapshotPatch snapshotPatchModel = new SnapshotPatch.Builder()
       .name("my-snapshot")
+      .userTags(java.util.Arrays.asList("testString"))
       .build();
 
     Map<String, Object> mergePatch = snapshotPatchModel.asPatch();
 
     assertEquals(mergePatch.get("name"), "my-snapshot");
+    assertTrue(mergePatch.containsKey("user_tags"));
   }
 
 }

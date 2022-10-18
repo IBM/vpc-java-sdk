@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -33,6 +33,11 @@ public class AddVpnGatewayConnectionPeerCidrOptions extends GenericModel {
     private String cidrPrefix;
     private String prefixLength;
 
+    /**
+     * Instantiates a new Builder from an existing AddVpnGatewayConnectionPeerCidrOptions instance.
+     *
+     * @param addVpnGatewayConnectionPeerCidrOptions the instance to initialize the Builder with
+     */
     private Builder(AddVpnGatewayConnectionPeerCidrOptions addVpnGatewayConnectionPeerCidrOptions) {
       this.vpnGatewayId = addVpnGatewayConnectionPeerCidrOptions.vpnGatewayId;
       this.id = addVpnGatewayConnectionPeerCidrOptions.id;
@@ -114,6 +119,8 @@ public class AddVpnGatewayConnectionPeerCidrOptions extends GenericModel {
       return this;
     }
   }
+
+  protected AddVpnGatewayConnectionPeerCidrOptions() { }
 
   protected AddVpnGatewayConnectionPeerCidrOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.vpnGatewayId,

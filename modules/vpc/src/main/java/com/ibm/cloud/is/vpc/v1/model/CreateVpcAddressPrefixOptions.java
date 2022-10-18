@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -35,6 +35,11 @@ public class CreateVpcAddressPrefixOptions extends GenericModel {
     private Boolean isDefault;
     private String name;
 
+    /**
+     * Instantiates a new Builder from an existing CreateVpcAddressPrefixOptions instance.
+     *
+     * @param createVpcAddressPrefixOptions the instance to initialize the Builder with
+     */
     private Builder(CreateVpcAddressPrefixOptions createVpcAddressPrefixOptions) {
       this.vpcId = createVpcAddressPrefixOptions.vpcId;
       this.cidr = createVpcAddressPrefixOptions.cidr;
@@ -126,6 +131,8 @@ public class CreateVpcAddressPrefixOptions extends GenericModel {
       return this;
     }
   }
+
+  protected CreateVpcAddressPrefixOptions() { }
 
   protected CreateVpcAddressPrefixOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.vpcId,

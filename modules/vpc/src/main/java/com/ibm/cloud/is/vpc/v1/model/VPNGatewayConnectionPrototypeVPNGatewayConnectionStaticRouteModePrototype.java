@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -39,6 +39,11 @@ public class VPNGatewayConnectionPrototypeVPNGatewayConnectionStaticRouteModePro
     private String psk;
     private String routingProtocol;
 
+    /**
+     * Instantiates a new Builder from an existing VPNGatewayConnectionPrototypeVPNGatewayConnectionStaticRouteModePrototype instance.
+     *
+     * @param vpnGatewayConnectionPrototypeVpnGatewayConnectionStaticRouteModePrototype the instance to initialize the Builder with
+     */
     public Builder(VPNGatewayConnectionPrototype vpnGatewayConnectionPrototypeVpnGatewayConnectionStaticRouteModePrototype) {
       this.adminStateUp = vpnGatewayConnectionPrototypeVpnGatewayConnectionStaticRouteModePrototype.adminStateUp;
       this.deadPeerDetection = vpnGatewayConnectionPrototypeVpnGatewayConnectionStaticRouteModePrototype.deadPeerDetection;
@@ -54,6 +59,17 @@ public class VPNGatewayConnectionPrototypeVPNGatewayConnectionStaticRouteModePro
      * Instantiates a new builder.
      */
     public Builder() {
+    }
+
+    /**
+     * Instantiates a new builder with required properties.
+     *
+     * @param peerAddress the peerAddress
+     * @param psk the psk
+     */
+    public Builder(String peerAddress, String psk) {
+      this.peerAddress = peerAddress;
+      this.psk = psk;
     }
 
     /**
@@ -153,6 +169,8 @@ public class VPNGatewayConnectionPrototypeVPNGatewayConnectionStaticRouteModePro
       return this;
     }
   }
+
+  protected VPNGatewayConnectionPrototypeVPNGatewayConnectionStaticRouteModePrototype() { }
 
   protected VPNGatewayConnectionPrototypeVPNGatewayConnectionStaticRouteModePrototype(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.peerAddress,

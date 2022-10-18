@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -13,14 +13,12 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 /**
- * When `protocol` is `icmp`, the `type` property may optionally be specified. If specified, then ICMP traffic is
- * allowed only for the specified ICMP type. Further, if `type` is specified, the `code` property may optionally be
- * specified to allow traffic only for the specified ICMP code.
+ * A rule specifying the ICMP traffic to allow.
  */
 public class SecurityGroupRuleSecurityGroupRuleProtocolICMP extends SecurityGroupRule {
 
   /**
-   * The direction of traffic to enforce, either `inbound` or `outbound`.
+   * The direction of traffic to enforce.
    */
   public interface Direction {
     /** inbound. */
@@ -47,5 +45,7 @@ public class SecurityGroupRuleSecurityGroupRuleProtocolICMP extends SecurityGrou
     String ICMP = "icmp";
   }
 
+
+  protected SecurityGroupRuleSecurityGroupRuleProtocolICMP() { }
 }
 

@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -36,19 +36,18 @@ public class FloatingIPTarget extends GenericModel {
   protected String href;
   protected String id;
   protected String name;
-  @SerializedName("primary_ipv4_address")
-  protected String primaryIpv4Address;
+  @SerializedName("primary_ip")
+  protected ReservedIPReference primaryIp;
   @SerializedName("resource_type")
   protected String resourceType;
   protected String crn;
 
-  protected FloatingIPTarget() {
-  }
+  protected FloatingIPTarget() { }
 
   /**
    * Gets the deleted.
    *
-   * If present, this property indicates the referenced resource has been deleted and provides
+   * If present, this property indicates the referenced resource has been deleted, and provides
    * some supplementary information.
    *
    * @return the deleted
@@ -91,16 +90,12 @@ public class FloatingIPTarget extends GenericModel {
   }
 
   /**
-   * Gets the primaryIpv4Address.
+   * Gets the primaryIp.
    *
-   * The primary IPv4 address.
-   *
-   * If the address has not yet been selected, the value will be `0.0.0.0`.
-   *
-   * @return the primaryIpv4Address
+   * @return the primaryIp
    */
-  public String getPrimaryIpv4Address() {
-    return primaryIpv4Address;
+  public ReservedIPReference getPrimaryIp() {
+    return primaryIp;
   }
 
   /**

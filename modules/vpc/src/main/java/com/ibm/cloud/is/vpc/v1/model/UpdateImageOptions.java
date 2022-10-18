@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -31,6 +31,11 @@ public class UpdateImageOptions extends GenericModel {
     private String id;
     private Map<String, Object> imagePatch;
 
+    /**
+     * Instantiates a new Builder from an existing UpdateImageOptions instance.
+     *
+     * @param updateImageOptions the instance to initialize the Builder with
+     */
     private Builder(UpdateImageOptions updateImageOptions) {
       this.id = updateImageOptions.id;
       this.imagePatch = updateImageOptions.imagePatch;
@@ -84,6 +89,8 @@ public class UpdateImageOptions extends GenericModel {
       return this;
     }
   }
+
+  protected UpdateImageOptions() { }
 
   protected UpdateImageOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,

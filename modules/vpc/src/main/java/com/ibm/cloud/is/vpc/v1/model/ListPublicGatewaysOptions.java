@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -31,6 +31,11 @@ public class ListPublicGatewaysOptions extends GenericModel {
     private Long limit;
     private String resourceGroupId;
 
+    /**
+     * Instantiates a new Builder from an existing ListPublicGatewaysOptions instance.
+     *
+     * @param listPublicGatewaysOptions the instance to initialize the Builder with
+     */
     private Builder(ListPublicGatewaysOptions listPublicGatewaysOptions) {
       this.start = listPublicGatewaysOptions.start;
       this.limit = listPublicGatewaysOptions.limit;
@@ -86,6 +91,8 @@ public class ListPublicGatewaysOptions extends GenericModel {
     }
   }
 
+  protected ListPublicGatewaysOptions() { }
+
   protected ListPublicGatewaysOptions(Builder builder) {
     start = builder.start;
     limit = builder.limit;
@@ -104,7 +111,7 @@ public class ListPublicGatewaysOptions extends GenericModel {
   /**
    * Gets the start.
    *
-   * A server-supplied token determining what resource to start the page on.
+   * A server-provided token determining what resource to start the page on.
    *
    * @return the start
    */

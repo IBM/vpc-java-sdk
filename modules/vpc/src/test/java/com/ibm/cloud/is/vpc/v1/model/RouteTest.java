@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -14,7 +14,9 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.Route;
+import com.ibm.cloud.is.vpc.v1.model.RouteCreatorVPNGatewayReference;
 import com.ibm.cloud.is.vpc.v1.model.RouteNextHopIP;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.ZoneReference;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
@@ -36,6 +38,7 @@ public class RouteTest {
     Route routeModel = new Route();
     assertNull(routeModel.getAction());
     assertNull(routeModel.getCreatedAt());
+    assertNull(routeModel.getCreator());
     assertNull(routeModel.getDestination());
     assertNull(routeModel.getHref());
     assertNull(routeModel.getId());

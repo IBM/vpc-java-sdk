@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -35,6 +35,11 @@ public class UpdateVpcRoutingTableRouteOptions extends GenericModel {
     private String id;
     private Map<String, Object> routePatch;
 
+    /**
+     * Instantiates a new Builder from an existing UpdateVpcRoutingTableRouteOptions instance.
+     *
+     * @param updateVpcRoutingTableRouteOptions the instance to initialize the Builder with
+     */
     private Builder(UpdateVpcRoutingTableRouteOptions updateVpcRoutingTableRouteOptions) {
       this.vpcId = updateVpcRoutingTableRouteOptions.vpcId;
       this.routingTableId = updateVpcRoutingTableRouteOptions.routingTableId;
@@ -116,6 +121,8 @@ public class UpdateVpcRoutingTableRouteOptions extends GenericModel {
       return this;
     }
   }
+
+  protected UpdateVpcRoutingTableRouteOptions() { }
 
   protected UpdateVpcRoutingTableRouteOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.vpcId,

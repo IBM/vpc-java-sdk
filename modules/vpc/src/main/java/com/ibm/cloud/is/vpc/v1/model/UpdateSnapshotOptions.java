@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -23,6 +23,7 @@ public class UpdateSnapshotOptions extends GenericModel {
 
   protected String id;
   protected Map<String, Object> snapshotPatch;
+  protected String ifMatch;
 
   /**
    * Builder.
@@ -30,10 +31,17 @@ public class UpdateSnapshotOptions extends GenericModel {
   public static class Builder {
     private String id;
     private Map<String, Object> snapshotPatch;
+    private String ifMatch;
 
+    /**
+     * Instantiates a new Builder from an existing UpdateSnapshotOptions instance.
+     *
+     * @param updateSnapshotOptions the instance to initialize the Builder with
+     */
     private Builder(UpdateSnapshotOptions updateSnapshotOptions) {
       this.id = updateSnapshotOptions.id;
       this.snapshotPatch = updateSnapshotOptions.snapshotPatch;
+      this.ifMatch = updateSnapshotOptions.ifMatch;
     }
 
     /**
@@ -83,7 +91,20 @@ public class UpdateSnapshotOptions extends GenericModel {
       this.snapshotPatch = snapshotPatch;
       return this;
     }
+
+    /**
+     * Set the ifMatch.
+     *
+     * @param ifMatch the ifMatch
+     * @return the UpdateSnapshotOptions builder
+     */
+    public Builder ifMatch(String ifMatch) {
+      this.ifMatch = ifMatch;
+      return this;
+    }
   }
+
+  protected UpdateSnapshotOptions() { }
 
   protected UpdateSnapshotOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,
@@ -92,6 +113,7 @@ public class UpdateSnapshotOptions extends GenericModel {
       "snapshotPatch cannot be null");
     id = builder.id;
     snapshotPatch = builder.snapshotPatch;
+    ifMatch = builder.ifMatch;
   }
 
   /**
@@ -123,6 +145,18 @@ public class UpdateSnapshotOptions extends GenericModel {
    */
   public Map<String, Object> snapshotPatch() {
     return snapshotPatch;
+  }
+
+  /**
+   * Gets the ifMatch.
+   *
+   * If present, the request will fail if the specified ETag value does not match the resource's current ETag value.
+   * Required if the request body includes an array.
+   *
+   * @return the ifMatch
+   */
+  public String ifMatch() {
+    return ifMatch;
   }
 }
 

@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -37,8 +37,7 @@ public class ImagePrototype extends GenericModel {
   @SerializedName("source_volume")
   protected VolumeIdentity sourceVolume;
 
-  protected ImagePrototype() {
-  }
+  protected ImagePrototype() { }
 
   /**
    * Gets the name.
@@ -71,7 +70,7 @@ public class ImagePrototype extends GenericModel {
    *
    * That representation is created by wrapping the key's value with the `encryption_key` root key (which must also be
    * specified), using either [Key Protect](https://cloud.ibm.com/docs/key-protect?topic=key-protect-wrap-keys) or the
-   * [Hyper Protect Crypto Service](https://cloud.ibm.com/docs/services/hs-crypto?topic=hs-crypto-wrap-keys).
+   * [Hyper Protect Crypto Services](https://cloud.ibm.com/docs/services/hs-crypto?topic=hs-crypto-wrap-keys).
    *
    * If unspecified, the imported image is treated as unencrypted.
    *
@@ -125,7 +124,7 @@ public class ImagePrototype extends GenericModel {
    * Gets the sourceVolume.
    *
    * The volume from which to create the image. The specified volume must:
-   * - Originate from an image, which will be used to populate this image's
+   * - Have an `operating_system`, which will be used to populate this image's
    *   operating system information.
    * - Not be `active` or `busy`.
    *

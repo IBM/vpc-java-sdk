@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -14,7 +14,7 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.CreateSecurityGroupRuleOptions;
-import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRulePrototypeSecurityGroupRuleProtocolICMP;
+import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRulePrototypeSecurityGroupRuleProtocolAll;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleRemotePrototypeIP;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
@@ -38,20 +38,16 @@ public class CreateSecurityGroupRuleOptionsTest {
       .build();
     assertEquals(securityGroupRuleRemotePrototypeModel.address(), "192.168.3.4");
 
-    SecurityGroupRulePrototypeSecurityGroupRuleProtocolICMP securityGroupRulePrototypeModel = new SecurityGroupRulePrototypeSecurityGroupRuleProtocolICMP.Builder()
-      .code(Long.valueOf("0"))
+    SecurityGroupRulePrototypeSecurityGroupRuleProtocolAll securityGroupRulePrototypeModel = new SecurityGroupRulePrototypeSecurityGroupRuleProtocolAll.Builder()
       .direction("inbound")
       .ipVersion("ipv4")
-      .protocol("icmp")
+      .protocol("all")
       .remote(securityGroupRuleRemotePrototypeModel)
-      .type(Long.valueOf("8"))
       .build();
-    assertEquals(securityGroupRulePrototypeModel.code(), Long.valueOf("0"));
     assertEquals(securityGroupRulePrototypeModel.direction(), "inbound");
     assertEquals(securityGroupRulePrototypeModel.ipVersion(), "ipv4");
-    assertEquals(securityGroupRulePrototypeModel.protocol(), "icmp");
+    assertEquals(securityGroupRulePrototypeModel.protocol(), "all");
     assertEquals(securityGroupRulePrototypeModel.remote(), securityGroupRuleRemotePrototypeModel);
-    assertEquals(securityGroupRulePrototypeModel.type(), Long.valueOf("8"));
 
     CreateSecurityGroupRuleOptions createSecurityGroupRuleOptionsModel = new CreateSecurityGroupRuleOptions.Builder()
       .securityGroupId("testString")

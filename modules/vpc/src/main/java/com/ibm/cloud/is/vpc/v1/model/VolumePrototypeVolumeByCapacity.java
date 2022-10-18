@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -11,6 +11,9 @@
  * specific language governing permissions and limitations under the License.
  */
 package com.ibm.cloud.is.vpc.v1.model;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * VolumePrototypeVolumeByCapacity.
@@ -26,15 +29,22 @@ public class VolumePrototypeVolumeByCapacity extends VolumePrototype {
     private String name;
     private VolumeProfileIdentity profile;
     private ResourceGroupIdentity resourceGroup;
+    private List<String> userTags;
     private ZoneIdentity zone;
     private Long capacity;
     private EncryptionKeyIdentity encryptionKey;
 
+    /**
+     * Instantiates a new Builder from an existing VolumePrototypeVolumeByCapacity instance.
+     *
+     * @param volumePrototypeVolumeByCapacity the instance to initialize the Builder with
+     */
     public Builder(VolumePrototype volumePrototypeVolumeByCapacity) {
       this.iops = volumePrototypeVolumeByCapacity.iops;
       this.name = volumePrototypeVolumeByCapacity.name;
       this.profile = volumePrototypeVolumeByCapacity.profile;
       this.resourceGroup = volumePrototypeVolumeByCapacity.resourceGroup;
+      this.userTags = volumePrototypeVolumeByCapacity.userTags;
       this.zone = volumePrototypeVolumeByCapacity.zone;
       this.capacity = volumePrototypeVolumeByCapacity.capacity;
       this.encryptionKey = volumePrototypeVolumeByCapacity.encryptionKey;
@@ -66,6 +76,22 @@ public class VolumePrototypeVolumeByCapacity extends VolumePrototype {
      */
     public VolumePrototypeVolumeByCapacity build() {
       return new VolumePrototypeVolumeByCapacity(this);
+    }
+
+    /**
+     * Adds an userTags to userTags.
+     *
+     * @param userTags the new userTags
+     * @return the VolumePrototypeVolumeByCapacity builder
+     */
+    public Builder addUserTags(String userTags) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(userTags,
+        "userTags cannot be null");
+      if (this.userTags == null) {
+        this.userTags = new ArrayList<String>();
+      }
+      this.userTags.add(userTags);
+      return this;
     }
 
     /**
@@ -113,6 +139,18 @@ public class VolumePrototypeVolumeByCapacity extends VolumePrototype {
     }
 
     /**
+     * Set the userTags.
+     * Existing userTags will be replaced.
+     *
+     * @param userTags the userTags
+     * @return the VolumePrototypeVolumeByCapacity builder
+     */
+    public Builder userTags(List<String> userTags) {
+      this.userTags = userTags;
+      return this;
+    }
+
+    /**
      * Set the zone.
      *
      * @param zone the zone
@@ -146,6 +184,8 @@ public class VolumePrototypeVolumeByCapacity extends VolumePrototype {
     }
   }
 
+  protected VolumePrototypeVolumeByCapacity() { }
+
   protected VolumePrototypeVolumeByCapacity(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.profile,
       "profile cannot be null");
@@ -157,6 +197,7 @@ public class VolumePrototypeVolumeByCapacity extends VolumePrototype {
     name = builder.name;
     profile = builder.profile;
     resourceGroup = builder.resourceGroup;
+    userTags = builder.userTags;
     zone = builder.zone;
     capacity = builder.capacity;
     encryptionKey = builder.encryptionKey;

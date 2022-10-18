@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -16,7 +16,8 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
  * The pool member target. Load balancers in the `network` family support virtual server instances. Load balancers in
- * the `application` family support IP addresses.
+ * the `application` family support IP addresses. If the load balancer has route mode enabled, the member must be in a
+ * zone the load balancer has a subnet in.
  *
  * Classes which extend this class:
  * - LoadBalancerPoolMemberTargetInstanceReference
@@ -31,8 +32,7 @@ public class LoadBalancerPoolMemberTarget extends GenericModel {
   protected String name;
   protected String address;
 
-  protected LoadBalancerPoolMemberTarget() {
-  }
+  protected LoadBalancerPoolMemberTarget() { }
 
   /**
    * Gets the crn.
@@ -48,7 +48,7 @@ public class LoadBalancerPoolMemberTarget extends GenericModel {
   /**
    * Gets the deleted.
    *
-   * If present, this property indicates the referenced resource has been deleted and provides
+   * If present, this property indicates the referenced resource has been deleted, and provides
    * some supplementary information.
    *
    * @return the deleted

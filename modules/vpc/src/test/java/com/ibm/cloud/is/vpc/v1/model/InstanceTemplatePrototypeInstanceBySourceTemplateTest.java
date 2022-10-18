@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -13,17 +13,24 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.ibm.cloud.is.vpc.v1.model.CatalogOfferingIdentityCatalogOfferingByCRN;
 import com.ibm.cloud.is.vpc.v1.model.EncryptionKeyIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.ImageIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.InstanceAvailabilityPrototype;
+import com.ibm.cloud.is.vpc.v1.model.InstanceCatalogOfferingPrototypeCatalogOfferingByOffering;
+import com.ibm.cloud.is.vpc.v1.model.InstanceDefaultTrustedProfilePrototype;
+import com.ibm.cloud.is.vpc.v1.model.InstanceMetadataServicePrototype;
 import com.ibm.cloud.is.vpc.v1.model.InstancePlacementTargetPrototypeDedicatedHostIdentityDedicatedHostIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileIdentityByName;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplatePrototypeInstanceBySourceTemplate;
 import com.ibm.cloud.is.vpc.v1.model.KeyIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceIPPrototypeReservedIPPrototypeNetworkInterfaceContext;
 import com.ibm.cloud.is.vpc.v1.model.NetworkInterfacePrototype;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.SubnetIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.TrustedProfileIdentityTrustedProfileById;
 import com.ibm.cloud.is.vpc.v1.model.VPCIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototypeInstanceByImageContext;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototypeInstanceContext;
@@ -34,8 +41,6 @@ import com.ibm.cloud.is.vpc.v1.model.ZoneIdentityByName;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import org.testng.annotations.Test;
@@ -50,10 +55,41 @@ public class InstanceTemplatePrototypeInstanceBySourceTemplateTest {
 
   @Test
   public void testInstanceTemplatePrototypeInstanceBySourceTemplate() throws Throwable {
+    InstanceAvailabilityPrototype instanceAvailabilityPrototypeModel = new InstanceAvailabilityPrototype.Builder()
+      .hostFailure("restart")
+      .build();
+    assertEquals(instanceAvailabilityPrototypeModel.hostFailure(), "restart");
+
+    TrustedProfileIdentityTrustedProfileById trustedProfileIdentityModel = new TrustedProfileIdentityTrustedProfileById.Builder()
+      .id("Profile-9fd84246-7df4-4667-94e4-8ecde51d5ac5")
+      .build();
+    assertEquals(trustedProfileIdentityModel.id(), "Profile-9fd84246-7df4-4667-94e4-8ecde51d5ac5");
+
+    InstanceDefaultTrustedProfilePrototype instanceDefaultTrustedProfilePrototypeModel = new InstanceDefaultTrustedProfilePrototype.Builder()
+      .autoLink(false)
+      .target(trustedProfileIdentityModel)
+      .build();
+    assertEquals(instanceDefaultTrustedProfilePrototypeModel.autoLink(), Boolean.valueOf(false));
+    assertEquals(instanceDefaultTrustedProfilePrototypeModel.target(), trustedProfileIdentityModel);
+
     KeyIdentityById keyIdentityModel = new KeyIdentityById.Builder()
       .id("a6b1a881-2ce8-41a3-80fc-36316a73f803")
       .build();
     assertEquals(keyIdentityModel.id(), "a6b1a881-2ce8-41a3-80fc-36316a73f803");
+
+    InstanceMetadataServicePrototype instanceMetadataServicePrototypeModel = new InstanceMetadataServicePrototype.Builder()
+      .enabled(false)
+      .build();
+    assertEquals(instanceMetadataServicePrototypeModel.enabled(), Boolean.valueOf(false));
+
+    NetworkInterfaceIPPrototypeReservedIPPrototypeNetworkInterfaceContext networkInterfaceIpPrototypeModel = new NetworkInterfaceIPPrototypeReservedIPPrototypeNetworkInterfaceContext.Builder()
+      .address("10.0.0.5")
+      .autoDelete(false)
+      .name("my-reserved-ip")
+      .build();
+    assertEquals(networkInterfaceIpPrototypeModel.address(), "10.0.0.5");
+    assertEquals(networkInterfaceIpPrototypeModel.autoDelete(), Boolean.valueOf(false));
+    assertEquals(networkInterfaceIpPrototypeModel.name(), "my-reserved-ip");
 
     SecurityGroupIdentityById securityGroupIdentityModel = new SecurityGroupIdentityById.Builder()
       .id("be5df5ca-12a0-494b-907e-aa6ec2bfa271")
@@ -68,14 +104,14 @@ public class InstanceTemplatePrototypeInstanceBySourceTemplateTest {
     NetworkInterfacePrototype networkInterfacePrototypeModel = new NetworkInterfacePrototype.Builder()
       .allowIpSpoofing(true)
       .name("my-network-interface")
-      .primaryIpv4Address("10.0.0.5")
-      .securityGroups(new java.util.ArrayList<SecurityGroupIdentity>(java.util.Arrays.asList(securityGroupIdentityModel)))
+      .primaryIp(networkInterfaceIpPrototypeModel)
+      .securityGroups(java.util.Arrays.asList(securityGroupIdentityModel))
       .subnet(subnetIdentityModel)
       .build();
     assertEquals(networkInterfacePrototypeModel.allowIpSpoofing(), Boolean.valueOf(true));
     assertEquals(networkInterfacePrototypeModel.name(), "my-network-interface");
-    assertEquals(networkInterfacePrototypeModel.primaryIpv4Address(), "10.0.0.5");
-    assertEquals(networkInterfacePrototypeModel.securityGroups(), new java.util.ArrayList<SecurityGroupIdentity>(java.util.Arrays.asList(securityGroupIdentityModel)));
+    assertEquals(networkInterfacePrototypeModel.primaryIp(), networkInterfaceIpPrototypeModel);
+    assertEquals(networkInterfacePrototypeModel.securityGroups(), java.util.Arrays.asList(securityGroupIdentityModel));
     assertEquals(networkInterfacePrototypeModel.subnet(), subnetIdentityModel);
 
     InstancePlacementTargetPrototypeDedicatedHostIdentityDedicatedHostIdentityById instancePlacementTargetPrototypeModel = new InstancePlacementTargetPrototypeDedicatedHostIdentityDedicatedHostIdentityById.Builder()
@@ -84,9 +120,9 @@ public class InstanceTemplatePrototypeInstanceBySourceTemplateTest {
     assertEquals(instancePlacementTargetPrototypeModel.id(), "1e09281b-f177-46fb-baf1-bc152b2e391a");
 
     InstanceProfileIdentityByName instanceProfileIdentityModel = new InstanceProfileIdentityByName.Builder()
-      .name("cc1-16x32")
+      .name("cx2-16x32")
       .build();
-    assertEquals(instanceProfileIdentityModel.name(), "cc1-16x32");
+    assertEquals(instanceProfileIdentityModel.name(), "cx2-16x32");
 
     ResourceGroupIdentityById resourceGroupIdentityModel = new ResourceGroupIdentityById.Builder()
       .id("fee82deba12e4c0fb69c3b09d1f12345")
@@ -123,17 +159,19 @@ public class InstanceTemplatePrototypeInstanceBySourceTemplateTest {
     assertEquals(volumeProfileIdentityModel.name(), "general-purpose");
 
     VolumePrototypeInstanceByImageContext volumePrototypeInstanceByImageContextModel = new VolumePrototypeInstanceByImageContext.Builder()
-      .capacity(Long.valueOf("26"))
+      .capacity(Long.valueOf("250"))
       .encryptionKey(encryptionKeyIdentityModel)
       .iops(Long.valueOf("10000"))
       .name("my-volume")
       .profile(volumeProfileIdentityModel)
+      .userTags(java.util.Arrays.asList("testString"))
       .build();
-    assertEquals(volumePrototypeInstanceByImageContextModel.capacity(), Long.valueOf("26"));
+    assertEquals(volumePrototypeInstanceByImageContextModel.capacity(), Long.valueOf("250"));
     assertEquals(volumePrototypeInstanceByImageContextModel.encryptionKey(), encryptionKeyIdentityModel);
     assertEquals(volumePrototypeInstanceByImageContextModel.iops(), Long.valueOf("10000"));
     assertEquals(volumePrototypeInstanceByImageContextModel.name(), "my-volume");
     assertEquals(volumePrototypeInstanceByImageContextModel.profile(), volumeProfileIdentityModel);
+    assertEquals(volumePrototypeInstanceByImageContextModel.userTags(), java.util.Arrays.asList("testString"));
 
     VolumeAttachmentPrototypeInstanceByImageContext volumeAttachmentPrototypeInstanceByImageContextModel = new VolumeAttachmentPrototypeInstanceByImageContext.Builder()
       .deleteVolumeOnInstanceDelete(true)
@@ -143,6 +181,16 @@ public class InstanceTemplatePrototypeInstanceBySourceTemplateTest {
     assertEquals(volumeAttachmentPrototypeInstanceByImageContextModel.deleteVolumeOnInstanceDelete(), Boolean.valueOf(true));
     assertEquals(volumeAttachmentPrototypeInstanceByImageContextModel.name(), "my-volume-attachment");
     assertEquals(volumeAttachmentPrototypeInstanceByImageContextModel.volume(), volumePrototypeInstanceByImageContextModel);
+
+    CatalogOfferingIdentityCatalogOfferingByCRN catalogOfferingIdentityModel = new CatalogOfferingIdentityCatalogOfferingByCRN.Builder()
+      .crn("crn:v1:bluemix:public:globalcatalog-collection:global:a/123456:1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc:offering:00111601-0ec5-41ac-b142-96d1e64e6442")
+      .build();
+    assertEquals(catalogOfferingIdentityModel.crn(), "crn:v1:bluemix:public:globalcatalog-collection:global:a/123456:1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc:offering:00111601-0ec5-41ac-b142-96d1e64e6442");
+
+    InstanceCatalogOfferingPrototypeCatalogOfferingByOffering instanceCatalogOfferingPrototypeModel = new InstanceCatalogOfferingPrototypeCatalogOfferingByOffering.Builder()
+      .offering(catalogOfferingIdentityModel)
+      .build();
+    assertEquals(instanceCatalogOfferingPrototypeModel.offering(), catalogOfferingIdentityModel);
 
     ImageIdentityById imageIdentityModel = new ImageIdentityById.Builder()
       .id("72b27b5c-f4b0-48bb-b954-5becc7c1dcb8")
@@ -160,33 +208,41 @@ public class InstanceTemplatePrototypeInstanceBySourceTemplateTest {
     assertEquals(zoneIdentityModel.name(), "us-south-1");
 
     InstanceTemplatePrototypeInstanceBySourceTemplate instanceTemplatePrototypeInstanceBySourceTemplateModel = new InstanceTemplatePrototypeInstanceBySourceTemplate.Builder()
-      .keys(new java.util.ArrayList<KeyIdentity>(java.util.Arrays.asList(keyIdentityModel)))
+      .availabilityPolicy(instanceAvailabilityPrototypeModel)
+      .defaultTrustedProfile(instanceDefaultTrustedProfilePrototypeModel)
+      .keys(java.util.Arrays.asList(keyIdentityModel))
+      .metadataService(instanceMetadataServicePrototypeModel)
       .name("my-instance")
-      .networkInterfaces(new java.util.ArrayList<NetworkInterfacePrototype>(java.util.Arrays.asList(networkInterfacePrototypeModel)))
+      .networkInterfaces(java.util.Arrays.asList(networkInterfacePrototypeModel))
       .placementTarget(instancePlacementTargetPrototypeModel)
       .profile(instanceProfileIdentityModel)
       .resourceGroup(resourceGroupIdentityModel)
       .totalVolumeBandwidth(Long.valueOf("500"))
       .userData("testString")
-      .volumeAttachments(new java.util.ArrayList<VolumeAttachmentPrototypeInstanceContext>(java.util.Arrays.asList(volumeAttachmentPrototypeInstanceContextModel)))
+      .volumeAttachments(java.util.Arrays.asList(volumeAttachmentPrototypeInstanceContextModel))
       .vpc(vpcIdentityModel)
       .bootVolumeAttachment(volumeAttachmentPrototypeInstanceByImageContextModel)
+      .catalogOffering(instanceCatalogOfferingPrototypeModel)
       .image(imageIdentityModel)
       .primaryNetworkInterface(networkInterfacePrototypeModel)
       .sourceTemplate(instanceTemplateIdentityModel)
       .zone(zoneIdentityModel)
       .build();
-    assertEquals(instanceTemplatePrototypeInstanceBySourceTemplateModel.keys(), new java.util.ArrayList<KeyIdentity>(java.util.Arrays.asList(keyIdentityModel)));
+    assertEquals(instanceTemplatePrototypeInstanceBySourceTemplateModel.availabilityPolicy(), instanceAvailabilityPrototypeModel);
+    assertEquals(instanceTemplatePrototypeInstanceBySourceTemplateModel.defaultTrustedProfile(), instanceDefaultTrustedProfilePrototypeModel);
+    assertEquals(instanceTemplatePrototypeInstanceBySourceTemplateModel.keys(), java.util.Arrays.asList(keyIdentityModel));
+    assertEquals(instanceTemplatePrototypeInstanceBySourceTemplateModel.metadataService(), instanceMetadataServicePrototypeModel);
     assertEquals(instanceTemplatePrototypeInstanceBySourceTemplateModel.name(), "my-instance");
-    assertEquals(instanceTemplatePrototypeInstanceBySourceTemplateModel.networkInterfaces(), new java.util.ArrayList<NetworkInterfacePrototype>(java.util.Arrays.asList(networkInterfacePrototypeModel)));
+    assertEquals(instanceTemplatePrototypeInstanceBySourceTemplateModel.networkInterfaces(), java.util.Arrays.asList(networkInterfacePrototypeModel));
     assertEquals(instanceTemplatePrototypeInstanceBySourceTemplateModel.placementTarget(), instancePlacementTargetPrototypeModel);
     assertEquals(instanceTemplatePrototypeInstanceBySourceTemplateModel.profile(), instanceProfileIdentityModel);
     assertEquals(instanceTemplatePrototypeInstanceBySourceTemplateModel.resourceGroup(), resourceGroupIdentityModel);
     assertEquals(instanceTemplatePrototypeInstanceBySourceTemplateModel.totalVolumeBandwidth(), Long.valueOf("500"));
     assertEquals(instanceTemplatePrototypeInstanceBySourceTemplateModel.userData(), "testString");
-    assertEquals(instanceTemplatePrototypeInstanceBySourceTemplateModel.volumeAttachments(), new java.util.ArrayList<VolumeAttachmentPrototypeInstanceContext>(java.util.Arrays.asList(volumeAttachmentPrototypeInstanceContextModel)));
+    assertEquals(instanceTemplatePrototypeInstanceBySourceTemplateModel.volumeAttachments(), java.util.Arrays.asList(volumeAttachmentPrototypeInstanceContextModel));
     assertEquals(instanceTemplatePrototypeInstanceBySourceTemplateModel.vpc(), vpcIdentityModel);
     assertEquals(instanceTemplatePrototypeInstanceBySourceTemplateModel.bootVolumeAttachment(), volumeAttachmentPrototypeInstanceByImageContextModel);
+    assertEquals(instanceTemplatePrototypeInstanceBySourceTemplateModel.catalogOffering(), instanceCatalogOfferingPrototypeModel);
     assertEquals(instanceTemplatePrototypeInstanceBySourceTemplateModel.image(), imageIdentityModel);
     assertEquals(instanceTemplatePrototypeInstanceBySourceTemplateModel.primaryNetworkInterface(), networkInterfacePrototypeModel);
     assertEquals(instanceTemplatePrototypeInstanceBySourceTemplateModel.sourceTemplate(), instanceTemplateIdentityModel);
@@ -196,6 +252,9 @@ public class InstanceTemplatePrototypeInstanceBySourceTemplateTest {
 
     InstanceTemplatePrototypeInstanceBySourceTemplate instanceTemplatePrototypeInstanceBySourceTemplateModelNew = TestUtilities.deserialize(json, InstanceTemplatePrototypeInstanceBySourceTemplate.class);
     assertTrue(instanceTemplatePrototypeInstanceBySourceTemplateModelNew instanceof InstanceTemplatePrototypeInstanceBySourceTemplate);
+    assertEquals(instanceTemplatePrototypeInstanceBySourceTemplateModelNew.availabilityPolicy().toString(), instanceAvailabilityPrototypeModel.toString());
+    assertEquals(instanceTemplatePrototypeInstanceBySourceTemplateModelNew.defaultTrustedProfile().toString(), instanceDefaultTrustedProfilePrototypeModel.toString());
+    assertEquals(instanceTemplatePrototypeInstanceBySourceTemplateModelNew.metadataService().toString(), instanceMetadataServicePrototypeModel.toString());
     assertEquals(instanceTemplatePrototypeInstanceBySourceTemplateModelNew.name(), "my-instance");
     assertEquals(instanceTemplatePrototypeInstanceBySourceTemplateModelNew.placementTarget().toString(), instancePlacementTargetPrototypeModel.toString());
     assertEquals(instanceTemplatePrototypeInstanceBySourceTemplateModelNew.profile().toString(), instanceProfileIdentityModel.toString());
@@ -204,6 +263,7 @@ public class InstanceTemplatePrototypeInstanceBySourceTemplateTest {
     assertEquals(instanceTemplatePrototypeInstanceBySourceTemplateModelNew.userData(), "testString");
     assertEquals(instanceTemplatePrototypeInstanceBySourceTemplateModelNew.vpc().toString(), vpcIdentityModel.toString());
     assertEquals(instanceTemplatePrototypeInstanceBySourceTemplateModelNew.bootVolumeAttachment().toString(), volumeAttachmentPrototypeInstanceByImageContextModel.toString());
+    assertEquals(instanceTemplatePrototypeInstanceBySourceTemplateModelNew.catalogOffering().toString(), instanceCatalogOfferingPrototypeModel.toString());
     assertEquals(instanceTemplatePrototypeInstanceBySourceTemplateModelNew.image().toString(), imageIdentityModel.toString());
     assertEquals(instanceTemplatePrototypeInstanceBySourceTemplateModelNew.primaryNetworkInterface().toString(), networkInterfacePrototypeModel.toString());
     assertEquals(instanceTemplatePrototypeInstanceBySourceTemplateModelNew.sourceTemplate().toString(), instanceTemplateIdentityModel.toString());

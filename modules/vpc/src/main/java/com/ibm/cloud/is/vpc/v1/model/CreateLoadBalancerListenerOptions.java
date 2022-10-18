@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -24,10 +24,16 @@ public class CreateLoadBalancerListenerOptions extends GenericModel {
 
   /**
    * The listener protocol. Each listener in the load balancer must have a unique `port` and `protocol` combination.
+   *
+   * Load balancers in the `network` family support `tcp` and `udp` (if `udp_supported` is `true`). Load balancers in
+   * the `application` family support `tcp`, `http` and
+   * `https`.
+   *
    * Additional restrictions:
-   * - If this load balancer is in the `network` family, the protocol must be `tcp`.
-   * - If this listener has `https_redirect` specified, the protocol must be `http`.
-   * - If this listener is a listener's `https_redirect` target, the protocol must be `https`.
+   * - If `default_pool` is set, the pool's protocol must match, or be compatible with
+   *   the listener's protocol. At present, the compatible protocols are `http` and
+   *   `https`.
+   * - If `https_redirect` is set, the protocol must be `http`.
    */
   public interface Protocol {
     /** http. */
@@ -36,6 +42,8 @@ public class CreateLoadBalancerListenerOptions extends GenericModel {
     String HTTPS = "https";
     /** tcp. */
     String TCP = "tcp";
+    /** udp. */
+    String UDP = "udp";
   }
 
   protected String loadBalancerId;
@@ -66,6 +74,11 @@ public class CreateLoadBalancerListenerOptions extends GenericModel {
     private Long portMax;
     private Long portMin;
 
+    /**
+     * Instantiates a new Builder from an existing CreateLoadBalancerListenerOptions instance.
+     *
+     * @param createLoadBalancerListenerOptions the instance to initialize the Builder with
+     */
     private Builder(CreateLoadBalancerListenerOptions createLoadBalancerListenerOptions) {
       this.loadBalancerId = createLoadBalancerListenerOptions.loadBalancerId;
       this.protocol = createLoadBalancerListenerOptions.protocol;
@@ -245,6 +258,8 @@ public class CreateLoadBalancerListenerOptions extends GenericModel {
     }
   }
 
+  protected CreateLoadBalancerListenerOptions() { }
+
   protected CreateLoadBalancerListenerOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.loadBalancerId,
       "loadBalancerId cannot be empty");
@@ -287,10 +302,16 @@ public class CreateLoadBalancerListenerOptions extends GenericModel {
    * Gets the protocol.
    *
    * The listener protocol. Each listener in the load balancer must have a unique `port` and `protocol` combination.
+   *
+   * Load balancers in the `network` family support `tcp` and `udp` (if `udp_supported` is `true`). Load balancers in
+   * the `application` family support `tcp`, `http` and
+   * `https`.
+   *
    * Additional restrictions:
-   * - If this load balancer is in the `network` family, the protocol must be `tcp`.
-   * - If this listener has `https_redirect` specified, the protocol must be `http`.
-   * - If this listener is a listener's `https_redirect` target, the protocol must be `https`.
+   * - If `default_pool` is set, the pool's protocol must match, or be compatible with
+   *   the listener's protocol. At present, the compatible protocols are `http` and
+   *   `https`.
+   * - If `https_redirect` is set, the protocol must be `http`.
    *
    * @return the protocol
    */
@@ -317,8 +338,8 @@ public class CreateLoadBalancerListenerOptions extends GenericModel {
   /**
    * Gets the certificateInstance.
    *
-   * The certificate instance used for SSL termination. It is applicable only to `https`
-   * protocol.
+   * The certificate instance to use for SSL termination. The listener must have a
+   * `protocol` of `https`.
    *
    * @return the certificateInstance
    */
@@ -340,11 +361,14 @@ public class CreateLoadBalancerListenerOptions extends GenericModel {
   /**
    * Gets the defaultPool.
    *
-   * The default pool associated with the listener. The specified pool must:
+   * The default pool for this listener. If specified, the pool must:
+   * - Belong to this load balancer.
+   * - Have the same `protocol` as this listener, or have a compatible protocol.
+   *   At present, the compatible protocols are `http` and `https`.
+   * - Not already be the `default_pool` for another listener.
    *
-   * - Belong to this load balancer
-   * - Have the same `protocol` as this listener
-   * - Not already be the default pool for another listener.
+   * If unspecified, this listener will be created with no default pool, but one may be
+   * subsequently set.
    *
    * @return the defaultPool
    */
@@ -394,9 +418,12 @@ public class CreateLoadBalancerListenerOptions extends GenericModel {
    *
    * The inclusive upper bound of the range of ports used by this listener. Must not be less than `port_min`.
    *
-   * At present, only load balancers operating with route mode enabled support different values for `port_min` and
-   * `port_max`.  When route mode is enabled, only a value of
-   * `65535` is supported for `port_max`.
+   * At present, only load balancers operating with route mode enabled, and public load balancers in the `network`
+   * family support different values for `port_min` and
+   * `port_max`. When route mode is enabled, the value `65535` must be specified.
+   *
+   * The specified port range must not overlap with port ranges used by other listeners for this load balancer using the
+   * same protocol.
    *
    * @return the portMax
    */
@@ -409,9 +436,12 @@ public class CreateLoadBalancerListenerOptions extends GenericModel {
    *
    * The inclusive lower bound of the range of ports used by this listener. Must not be greater than `port_max`.
    *
-   * At present, only load balancers operating with route mode enabled support different values for `port_min` and
-   * `port_max`.  When route mode is enabled, only a value of
-   * `1` is supported for `port_min`.
+   * At present, only load balancers operating with route mode enabled, and public load balancers in the `network`
+   * family support different values for `port_min` and
+   * `port_max`. When route mode is enabled, the value `1` must be specified.
+   *
+   * The specified port range must not overlap with port ranges used by other listeners for this load balancer using the
+   * same protocol.
    *
    * @return the portMin
    */

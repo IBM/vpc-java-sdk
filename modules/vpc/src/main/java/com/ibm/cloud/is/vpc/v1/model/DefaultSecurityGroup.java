@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -32,7 +32,10 @@ public class DefaultSecurityGroup extends GenericModel {
   @SerializedName("resource_group")
   protected ResourceGroupReference resourceGroup;
   protected List<SecurityGroupRule> rules;
+  protected List<SecurityGroupTargetReference> targets;
   protected VPCReference vpc;
+
+  protected DefaultSecurityGroup() { }
 
   /**
    * Gets the createdAt.
@@ -115,9 +118,20 @@ public class DefaultSecurityGroup extends GenericModel {
   }
 
   /**
+   * Gets the targets.
+   *
+   * The targets for this security group.
+   *
+   * @return the targets
+   */
+  public List<SecurityGroupTargetReference> getTargets() {
+    return targets;
+  }
+
+  /**
    * Gets the vpc.
    *
-   * The VPC this security group is a part of.
+   * The VPC this security group resides in.
    *
    * @return the vpc
    */

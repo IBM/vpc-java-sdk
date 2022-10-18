@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -12,8 +12,11 @@
  */
 package com.ibm.cloud.is.vpc.v1.model;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
+import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 import com.ibm.cloud.sdk.core.util.GsonSingleton;
 
@@ -23,15 +26,24 @@ import com.ibm.cloud.sdk.core.util.GsonSingleton;
 public class SnapshotPatch extends GenericModel {
 
   protected String name;
+  @SerializedName("user_tags")
+  protected List<String> userTags;
 
   /**
    * Builder.
    */
   public static class Builder {
     private String name;
+    private List<String> userTags;
 
+    /**
+     * Instantiates a new Builder from an existing SnapshotPatch instance.
+     *
+     * @param snapshotPatch the instance to initialize the Builder with
+     */
     private Builder(SnapshotPatch snapshotPatch) {
       this.name = snapshotPatch.name;
+      this.userTags = snapshotPatch.userTags;
     }
 
     /**
@@ -50,6 +62,22 @@ public class SnapshotPatch extends GenericModel {
     }
 
     /**
+     * Adds an userTags to userTags.
+     *
+     * @param userTags the new userTags
+     * @return the SnapshotPatch builder
+     */
+    public Builder addUserTags(String userTags) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(userTags,
+        "userTags cannot be null");
+      if (this.userTags == null) {
+        this.userTags = new ArrayList<String>();
+      }
+      this.userTags.add(userTags);
+      return this;
+    }
+
+    /**
      * Set the name.
      *
      * @param name the name
@@ -59,10 +87,25 @@ public class SnapshotPatch extends GenericModel {
       this.name = name;
       return this;
     }
+
+    /**
+     * Set the userTags.
+     * Existing userTags will be replaced.
+     *
+     * @param userTags the userTags
+     * @return the SnapshotPatch builder
+     */
+    public Builder userTags(List<String> userTags) {
+      this.userTags = userTags;
+      return this;
+    }
   }
+
+  protected SnapshotPatch() { }
 
   protected SnapshotPatch(Builder builder) {
     name = builder.name;
+    userTags = builder.userTags;
   }
 
   /**
@@ -83,6 +126,17 @@ public class SnapshotPatch extends GenericModel {
    */
   public String name() {
     return name;
+  }
+
+  /**
+   * Gets the userTags.
+   *
+   * The [user tags](https://cloud.ibm.com/apidocs/tagging#types-of-tags) associated with this snapshot.
+   *
+   * @return the userTags
+   */
+  public List<String> userTags() {
+    return userTags;
   }
 
   /**

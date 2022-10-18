@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -31,6 +31,11 @@ public class AddInstanceNetworkInterfaceFloatingIpOptions extends GenericModel {
     private String networkInterfaceId;
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing AddInstanceNetworkInterfaceFloatingIpOptions instance.
+     *
+     * @param addInstanceNetworkInterfaceFloatingIpOptions the instance to initialize the Builder with
+     */
     private Builder(AddInstanceNetworkInterfaceFloatingIpOptions addInstanceNetworkInterfaceFloatingIpOptions) {
       this.instanceId = addInstanceNetworkInterfaceFloatingIpOptions.instanceId;
       this.networkInterfaceId = addInstanceNetworkInterfaceFloatingIpOptions.networkInterfaceId;
@@ -98,6 +103,8 @@ public class AddInstanceNetworkInterfaceFloatingIpOptions extends GenericModel {
       return this;
     }
   }
+
+  protected AddInstanceNetworkInterfaceFloatingIpOptions() { }
 
   protected AddInstanceNetworkInterfaceFloatingIpOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.instanceId,

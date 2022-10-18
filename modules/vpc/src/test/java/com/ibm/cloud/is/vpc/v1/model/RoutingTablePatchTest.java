@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -13,6 +13,7 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.ibm.cloud.is.vpc.v1.model.ResourceFilter;
 import com.ibm.cloud.is.vpc.v1.model.RoutingTablePatch;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
@@ -32,12 +33,19 @@ public class RoutingTablePatchTest {
 
   @Test
   public void testRoutingTablePatch() throws Throwable {
+    ResourceFilter resourceFilterModel = new ResourceFilter.Builder()
+      .resourceType("vpn_server")
+      .build();
+    assertEquals(resourceFilterModel.resourceType(), "vpn_server");
+
     RoutingTablePatch routingTablePatchModel = new RoutingTablePatch.Builder()
+      .acceptRoutesFrom(java.util.Arrays.asList(resourceFilterModel))
       .name("my-routing-table-2")
       .routeDirectLinkIngress(true)
       .routeTransitGatewayIngress(true)
       .routeVpcZoneIngress(true)
       .build();
+    assertEquals(routingTablePatchModel.acceptRoutesFrom(), java.util.Arrays.asList(resourceFilterModel));
     assertEquals(routingTablePatchModel.name(), "my-routing-table-2");
     assertEquals(routingTablePatchModel.routeDirectLinkIngress(), Boolean.valueOf(true));
     assertEquals(routingTablePatchModel.routeTransitGatewayIngress(), Boolean.valueOf(true));
@@ -54,7 +62,12 @@ public class RoutingTablePatchTest {
   }
   @Test
   public void testRoutingTablePatchAsPatch() throws Throwable {
+    ResourceFilter resourceFilterModel = new ResourceFilter.Builder()
+      .resourceType("vpn_server")
+      .build();
+
     RoutingTablePatch routingTablePatchModel = new RoutingTablePatch.Builder()
+      .acceptRoutesFrom(java.util.Arrays.asList(resourceFilterModel))
       .name("my-routing-table-2")
       .routeDirectLinkIngress(true)
       .routeTransitGatewayIngress(true)
@@ -63,6 +76,7 @@ public class RoutingTablePatchTest {
 
     Map<String, Object> mergePatch = routingTablePatchModel.asPatch();
 
+    assertTrue(mergePatch.containsKey("accept_routes_from"));
     assertEquals(mergePatch.get("name"), "my-routing-table-2");
     assertTrue(mergePatch.containsKey("route_direct_link_ingress"));
     assertTrue(mergePatch.containsKey("route_transit_gateway_ingress"));

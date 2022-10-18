@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -24,6 +24,11 @@ public class SecurityGroupRuleRemotePrototypeIP extends SecurityGroupRuleRemoteP
   public static class Builder {
     private String address;
 
+    /**
+     * Instantiates a new Builder from an existing SecurityGroupRuleRemotePrototypeIP instance.
+     *
+     * @param securityGroupRuleRemotePrototypeIp the instance to initialize the Builder with
+     */
     public Builder(SecurityGroupRuleRemotePrototype securityGroupRuleRemotePrototypeIp) {
       this.address = securityGroupRuleRemotePrototypeIp.address;
     }
@@ -63,6 +68,8 @@ public class SecurityGroupRuleRemotePrototypeIP extends SecurityGroupRuleRemoteP
       return this;
     }
   }
+
+  protected SecurityGroupRuleRemotePrototypeIP() { }
 
   protected SecurityGroupRuleRemotePrototypeIP(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.address,

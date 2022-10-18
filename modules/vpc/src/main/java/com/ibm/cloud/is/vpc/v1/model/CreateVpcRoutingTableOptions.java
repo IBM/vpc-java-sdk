@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -23,6 +23,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class CreateVpcRoutingTableOptions extends GenericModel {
 
   protected String vpcId;
+  protected List<ResourceFilter> acceptRoutesFrom;
   protected String name;
   protected Boolean routeDirectLinkIngress;
   protected Boolean routeTransitGatewayIngress;
@@ -34,14 +35,21 @@ public class CreateVpcRoutingTableOptions extends GenericModel {
    */
   public static class Builder {
     private String vpcId;
+    private List<ResourceFilter> acceptRoutesFrom;
     private String name;
     private Boolean routeDirectLinkIngress;
     private Boolean routeTransitGatewayIngress;
     private Boolean routeVpcZoneIngress;
     private List<RoutePrototype> routes;
 
+    /**
+     * Instantiates a new Builder from an existing CreateVpcRoutingTableOptions instance.
+     *
+     * @param createVpcRoutingTableOptions the instance to initialize the Builder with
+     */
     private Builder(CreateVpcRoutingTableOptions createVpcRoutingTableOptions) {
       this.vpcId = createVpcRoutingTableOptions.vpcId;
+      this.acceptRoutesFrom = createVpcRoutingTableOptions.acceptRoutesFrom;
       this.name = createVpcRoutingTableOptions.name;
       this.routeDirectLinkIngress = createVpcRoutingTableOptions.routeDirectLinkIngress;
       this.routeTransitGatewayIngress = createVpcRoutingTableOptions.routeTransitGatewayIngress;
@@ -74,6 +82,22 @@ public class CreateVpcRoutingTableOptions extends GenericModel {
     }
 
     /**
+     * Adds an acceptRoutesFrom to acceptRoutesFrom.
+     *
+     * @param acceptRoutesFrom the new acceptRoutesFrom
+     * @return the CreateVpcRoutingTableOptions builder
+     */
+    public Builder addAcceptRoutesFrom(ResourceFilter acceptRoutesFrom) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(acceptRoutesFrom,
+        "acceptRoutesFrom cannot be null");
+      if (this.acceptRoutesFrom == null) {
+        this.acceptRoutesFrom = new ArrayList<ResourceFilter>();
+      }
+      this.acceptRoutesFrom.add(acceptRoutesFrom);
+      return this;
+    }
+
+    /**
      * Adds an routes to routes.
      *
      * @param routes the new routes
@@ -97,6 +121,18 @@ public class CreateVpcRoutingTableOptions extends GenericModel {
      */
     public Builder vpcId(String vpcId) {
       this.vpcId = vpcId;
+      return this;
+    }
+
+    /**
+     * Set the acceptRoutesFrom.
+     * Existing acceptRoutesFrom will be replaced.
+     *
+     * @param acceptRoutesFrom the acceptRoutesFrom
+     * @return the CreateVpcRoutingTableOptions builder
+     */
+    public Builder acceptRoutesFrom(List<ResourceFilter> acceptRoutesFrom) {
+      this.acceptRoutesFrom = acceptRoutesFrom;
       return this;
     }
 
@@ -157,10 +193,13 @@ public class CreateVpcRoutingTableOptions extends GenericModel {
     }
   }
 
+  protected CreateVpcRoutingTableOptions() { }
+
   protected CreateVpcRoutingTableOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.vpcId,
       "vpcId cannot be empty");
     vpcId = builder.vpcId;
+    acceptRoutesFrom = builder.acceptRoutesFrom;
     name = builder.name;
     routeDirectLinkIngress = builder.routeDirectLinkIngress;
     routeTransitGatewayIngress = builder.routeTransitGatewayIngress;
@@ -189,6 +228,20 @@ public class CreateVpcRoutingTableOptions extends GenericModel {
   }
 
   /**
+   * Gets the acceptRoutesFrom.
+   *
+   * The filters specifying the resources that may create routes in this routing table.
+   *
+   * At present, only the `resource_type` filter is permitted, and only the `vpn_server` value is supported, but filter
+   * support is expected to expand in the future.
+   *
+   * @return the acceptRoutesFrom
+   */
+  public List<ResourceFilter> acceptRoutesFrom() {
+    return acceptRoutesFrom;
+  }
+
+  /**
    * Gets the name.
    *
    * The user-defined name for this routing table. Names must be unique within the VPC the routing table resides in. If
@@ -208,9 +261,9 @@ public class CreateVpcRoutingTableOptions extends GenericModel {
    * table with this property set to `true`.
    *
    * Incoming traffic will be routed according to the routing table with one exception: routes with an `action` of
-   * `deliver` are treated as `drop` unless the `next_hop` is an IP address within the VPC's address prefix ranges.
-   * Therefore, if an incoming packet matches a route with a `next_hop` of an internet-bound IP address or a VPN gateway
-   * connection, the packet will be dropped.
+   * `deliver` are treated as `drop` unless the `next_hop` is an IP address bound to a network interface on a subnet in
+   * the route's `zone`. Therefore, if an incoming packet matches a route with a `next_hop` of an internet-bound IP
+   * address or a VPN gateway connection, the packet will be dropped.
    *
    * @return the routeDirectLinkIngress
    */
@@ -226,9 +279,9 @@ public class CreateVpcRoutingTableOptions extends GenericModel {
    * have a routing table with this property set to `true`.
    *
    * Incoming traffic will be routed according to the routing table with one exception: routes with an `action` of
-   * `deliver` are treated as `drop` unless the `next_hop` is an IP address within the VPC's address prefix ranges.
-   * Therefore, if an incoming packet matches a route with a `next_hop` of an internet-bound IP address or a VPN gateway
-   * connection, the packet will be dropped.
+   * `deliver` are treated as `drop` unless the `next_hop` is an IP address bound to a network interface on a subnet in
+   * the route's `zone`. Therefore, if an incoming packet matches a route with a `next_hop` of an internet-bound IP
+   * address or a VPN gateway connection, the packet will be dropped.
    *
    * If [Classic Access](https://cloud.ibm.com/docs/vpc?topic=vpc-setting-up-access-to-classic-infrastructure) is
    * enabled for this VPC, and this property is set to `true`, its incoming traffic will also be routed according to

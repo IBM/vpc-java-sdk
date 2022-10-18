@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -25,6 +25,11 @@ public class LoadBalancerListenerPolicyTargetPrototypeLoadBalancerListenerPolicy
     private Long httpStatusCode;
     private String url;
 
+    /**
+     * Instantiates a new Builder from an existing LoadBalancerListenerPolicyTargetPrototypeLoadBalancerListenerPolicyRedirectURLPrototype instance.
+     *
+     * @param loadBalancerListenerPolicyTargetPrototypeLoadBalancerListenerPolicyRedirectUrlPrototype the instance to initialize the Builder with
+     */
     public Builder(LoadBalancerListenerPolicyTargetPrototype loadBalancerListenerPolicyTargetPrototypeLoadBalancerListenerPolicyRedirectUrlPrototype) {
       this.httpStatusCode = loadBalancerListenerPolicyTargetPrototypeLoadBalancerListenerPolicyRedirectUrlPrototype.httpStatusCode;
       this.url = loadBalancerListenerPolicyTargetPrototypeLoadBalancerListenerPolicyRedirectUrlPrototype.url;
@@ -78,6 +83,8 @@ public class LoadBalancerListenerPolicyTargetPrototypeLoadBalancerListenerPolicy
       return this;
     }
   }
+
+  protected LoadBalancerListenerPolicyTargetPrototypeLoadBalancerListenerPolicyRedirectURLPrototype() { }
 
   protected LoadBalancerListenerPolicyTargetPrototypeLoadBalancerListenerPolicyRedirectURLPrototype(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.httpStatusCode,

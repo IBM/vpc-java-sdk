@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -51,6 +51,11 @@ public class ListInstancesOptions extends GenericModel {
     private String placementGroupCrn;
     private String placementGroupName;
 
+    /**
+     * Instantiates a new Builder from an existing ListInstancesOptions instance.
+     *
+     * @param listInstancesOptions the instance to initialize the Builder with
+     */
     private Builder(ListInstancesOptions listInstancesOptions) {
       this.start = listInstancesOptions.start;
       this.limit = listInstancesOptions.limit;
@@ -226,6 +231,8 @@ public class ListInstancesOptions extends GenericModel {
     }
   }
 
+  protected ListInstancesOptions() { }
+
   protected ListInstancesOptions(Builder builder) {
     start = builder.start;
     limit = builder.limit;
@@ -254,7 +261,7 @@ public class ListInstancesOptions extends GenericModel {
   /**
    * Gets the start.
    *
-   * A server-supplied token determining what resource to start the page on.
+   * A server-provided token determining what resource to start the page on.
    *
    * @return the start
    */

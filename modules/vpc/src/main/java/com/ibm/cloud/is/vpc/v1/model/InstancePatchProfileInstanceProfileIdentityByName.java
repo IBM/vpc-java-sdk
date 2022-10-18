@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -24,6 +24,11 @@ public class InstancePatchProfileInstanceProfileIdentityByName extends InstanceP
   public static class Builder {
     private String name;
 
+    /**
+     * Instantiates a new Builder from an existing InstancePatchProfileInstanceProfileIdentityByName instance.
+     *
+     * @param instancePatchProfileInstanceProfileIdentityByName the instance to initialize the Builder with
+     */
     public Builder(InstancePatchProfile instancePatchProfileInstanceProfileIdentityByName) {
       this.name = instancePatchProfileInstanceProfileIdentityByName.name;
     }
@@ -63,6 +68,8 @@ public class InstancePatchProfileInstanceProfileIdentityByName extends InstanceP
       return this;
     }
   }
+
+  protected InstancePatchProfileInstanceProfileIdentityByName() { }
 
   protected InstancePatchProfileInstanceProfileIdentityByName(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.name,

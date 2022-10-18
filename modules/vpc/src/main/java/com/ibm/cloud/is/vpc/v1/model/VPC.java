@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -22,6 +22,14 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  * VPC.
  */
 public class VPC extends GenericModel {
+
+  /**
+   * The resource type.
+   */
+  public interface ResourceType {
+    /** vpc. */
+    String VPC = "vpc";
+  }
 
   /**
    * The status of this VPC.
@@ -55,7 +63,11 @@ public class VPC extends GenericModel {
   protected String name;
   @SerializedName("resource_group")
   protected ResourceGroupReference resourceGroup;
+  @SerializedName("resource_type")
+  protected String resourceType;
   protected String status;
+
+  protected VPC() { }
 
   /**
    * Gets the classicAccess.
@@ -179,6 +191,17 @@ public class VPC extends GenericModel {
    */
   public ResourceGroupReference getResourceGroup() {
     return resourceGroup;
+  }
+
+  /**
+   * Gets the resourceType.
+   *
+   * The resource type.
+   *
+   * @return the resourceType
+   */
+  public String getResourceType() {
+    return resourceType;
   }
 
   /**

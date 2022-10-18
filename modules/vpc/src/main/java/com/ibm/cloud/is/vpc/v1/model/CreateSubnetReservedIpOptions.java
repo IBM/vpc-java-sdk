@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -20,6 +20,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class CreateSubnetReservedIpOptions extends GenericModel {
 
   protected String subnetId;
+  protected String address;
   protected Boolean autoDelete;
   protected String name;
   protected ReservedIPTargetPrototype target;
@@ -29,12 +30,19 @@ public class CreateSubnetReservedIpOptions extends GenericModel {
    */
   public static class Builder {
     private String subnetId;
+    private String address;
     private Boolean autoDelete;
     private String name;
     private ReservedIPTargetPrototype target;
 
+    /**
+     * Instantiates a new Builder from an existing CreateSubnetReservedIpOptions instance.
+     *
+     * @param createSubnetReservedIpOptions the instance to initialize the Builder with
+     */
     private Builder(CreateSubnetReservedIpOptions createSubnetReservedIpOptions) {
       this.subnetId = createSubnetReservedIpOptions.subnetId;
+      this.address = createSubnetReservedIpOptions.address;
       this.autoDelete = createSubnetReservedIpOptions.autoDelete;
       this.name = createSubnetReservedIpOptions.name;
       this.target = createSubnetReservedIpOptions.target;
@@ -76,6 +84,17 @@ public class CreateSubnetReservedIpOptions extends GenericModel {
     }
 
     /**
+     * Set the address.
+     *
+     * @param address the address
+     * @return the CreateSubnetReservedIpOptions builder
+     */
+    public Builder address(String address) {
+      this.address = address;
+      return this;
+    }
+
+    /**
      * Set the autoDelete.
      *
      * @param autoDelete the autoDelete
@@ -109,10 +128,13 @@ public class CreateSubnetReservedIpOptions extends GenericModel {
     }
   }
 
+  protected CreateSubnetReservedIpOptions() { }
+
   protected CreateSubnetReservedIpOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.subnetId,
       "subnetId cannot be empty");
     subnetId = builder.subnetId;
+    address = builder.address;
     autoDelete = builder.autoDelete;
     name = builder.name;
     target = builder.target;
@@ -136,6 +158,19 @@ public class CreateSubnetReservedIpOptions extends GenericModel {
    */
   public String subnetId() {
     return subnetId;
+  }
+
+  /**
+   * Gets the address.
+   *
+   * The IP address to reserve, which must not already be reserved on the subnet.
+   *
+   * If unspecified, an available address on the subnet will automatically be selected.
+   *
+   * @return the address
+   */
+  public String address() {
+    return address;
   }
 
   /**
@@ -166,7 +201,12 @@ public class CreateSubnetReservedIpOptions extends GenericModel {
   /**
    * Gets the target.
    *
-   * The target this reserved IP is to be bound to.
+   * The target to bind this reserved IP to.  The target must be in the same VPC.
+   *
+   * At present, only endpoint gateway targets are supported.  The endpoint gateway must
+   * not be already bound to a reserved IP in the subnet's zone.
+   *
+   * If unspecified, the reserved IP will be created unbound.
    *
    * @return the target
    */

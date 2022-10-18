@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -24,6 +24,11 @@ public class SecurityGroupRuleRemotePrototypeCIDR extends SecurityGroupRuleRemot
   public static class Builder {
     private String cidrBlock;
 
+    /**
+     * Instantiates a new Builder from an existing SecurityGroupRuleRemotePrototypeCIDR instance.
+     *
+     * @param securityGroupRuleRemotePrototypeCidr the instance to initialize the Builder with
+     */
     public Builder(SecurityGroupRuleRemotePrototype securityGroupRuleRemotePrototypeCidr) {
       this.cidrBlock = securityGroupRuleRemotePrototypeCidr.cidrBlock;
     }
@@ -63,6 +68,8 @@ public class SecurityGroupRuleRemotePrototypeCIDR extends SecurityGroupRuleRemot
       return this;
     }
   }
+
+  protected SecurityGroupRuleRemotePrototypeCIDR() { }
 
   protected SecurityGroupRuleRemotePrototypeCIDR(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.cidrBlock,

@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -23,7 +23,27 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class ReservedIP extends GenericModel {
 
   /**
-   * The owner of a reserved IP, defining whether it is managed by the user or the provider.
+   * The lifecycle state of the reserved IP.
+   */
+  public interface LifecycleState {
+    /** deleting. */
+    String DELETING = "deleting";
+    /** failed. */
+    String FAILED = "failed";
+    /** pending. */
+    String PENDING = "pending";
+    /** stable. */
+    String STABLE = "stable";
+    /** suspended. */
+    String SUSPENDED = "suspended";
+    /** updating. */
+    String UPDATING = "updating";
+    /** waiting. */
+    String WAITING = "waiting";
+  }
+
+  /**
+   * The owner of the reserved IP.
    */
   public interface Owner {
     /** provider. */
@@ -47,11 +67,15 @@ public class ReservedIP extends GenericModel {
   protected Date createdAt;
   protected String href;
   protected String id;
+  @SerializedName("lifecycle_state")
+  protected String lifecycleState;
   protected String name;
   protected String owner;
   @SerializedName("resource_type")
   protected String resourceType;
   protected ReservedIPTarget target;
+
+  protected ReservedIP() { }
 
   /**
    * Gets the address.
@@ -116,6 +140,17 @@ public class ReservedIP extends GenericModel {
   }
 
   /**
+   * Gets the lifecycleState.
+   *
+   * The lifecycle state of the reserved IP.
+   *
+   * @return the lifecycleState
+   */
+  public String getLifecycleState() {
+    return lifecycleState;
+  }
+
+  /**
    * Gets the name.
    *
    * The user-defined or system-provided name for this reserved IP.
@@ -129,7 +164,7 @@ public class ReservedIP extends GenericModel {
   /**
    * Gets the owner.
    *
-   * The owner of a reserved IP, defining whether it is managed by the user or the provider.
+   * The owner of the reserved IP.
    *
    * @return the owner
    */
@@ -151,7 +186,9 @@ public class ReservedIP extends GenericModel {
   /**
    * Gets the target.
    *
-   * The target of this reserved IP.
+   * The target this reserved IP is bound to.
+   *
+   * If absent, this reserved IP is provider-owned or unbound.
    *
    * @return the target
    */

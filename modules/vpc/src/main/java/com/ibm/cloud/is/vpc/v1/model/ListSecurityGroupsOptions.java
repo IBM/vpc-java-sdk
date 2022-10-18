@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -37,6 +37,11 @@ public class ListSecurityGroupsOptions extends GenericModel {
     private String vpcCrn;
     private String vpcName;
 
+    /**
+     * Instantiates a new Builder from an existing ListSecurityGroupsOptions instance.
+     *
+     * @param listSecurityGroupsOptions the instance to initialize the Builder with
+     */
     private Builder(ListSecurityGroupsOptions listSecurityGroupsOptions) {
       this.start = listSecurityGroupsOptions.start;
       this.limit = listSecurityGroupsOptions.limit;
@@ -128,6 +133,8 @@ public class ListSecurityGroupsOptions extends GenericModel {
     }
   }
 
+  protected ListSecurityGroupsOptions() { }
+
   protected ListSecurityGroupsOptions(Builder builder) {
     start = builder.start;
     limit = builder.limit;
@@ -149,7 +156,7 @@ public class ListSecurityGroupsOptions extends GenericModel {
   /**
    * Gets the start.
    *
-   * A server-supplied token determining what resource to start the page on.
+   * A server-provided token determining what resource to start the page on.
    *
    * @return the start
    */

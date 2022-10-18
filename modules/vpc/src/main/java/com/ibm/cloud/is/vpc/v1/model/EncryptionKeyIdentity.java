@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -24,15 +24,14 @@ public class EncryptionKeyIdentity extends GenericModel {
 
   protected String crn;
 
-  protected EncryptionKeyIdentity() {
-  }
+  protected EncryptionKeyIdentity() { }
 
   /**
    * Gets the crn.
    *
    * The CRN of the [Key Protect Root
    * Key](https://cloud.ibm.com/docs/key-protect?topic=key-protect-getting-started-tutorial) or [Hyper Protect Crypto
-   * Service Root Key](https://cloud.ibm.com/docs/hs-crypto?topic=hs-crypto-get-started) for this resource.
+   * Services Root Key](https://cloud.ibm.com/docs/hs-crypto?topic=hs-crypto-get-started) for this resource.
    *
    * @return the crn
    */

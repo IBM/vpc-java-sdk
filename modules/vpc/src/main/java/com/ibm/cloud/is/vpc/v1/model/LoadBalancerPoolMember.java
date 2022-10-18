@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -35,7 +35,11 @@ public class LoadBalancerPoolMember extends GenericModel {
   }
 
   /**
-   * The provisioning status of this member.
+   * The provisioning status of this member
+   *
+   * The enumerated values for this property are expected to expand in the future. When processing this property, check
+   * for and log unknown values. Optionally halt processing and surface the error, or bypass the pool member on which
+   * the unexpected property value was encountered.
    */
   public interface ProvisioningStatus {
     /** active. */
@@ -46,8 +50,6 @@ public class LoadBalancerPoolMember extends GenericModel {
     String DELETE_PENDING = "delete_pending";
     /** failed. */
     String FAILED = "failed";
-    /** maintenance_pending. */
-    String MAINTENANCE_PENDING = "maintenance_pending";
     /** update_pending. */
     String UPDATE_PENDING = "update_pending";
   }
@@ -62,6 +64,8 @@ public class LoadBalancerPoolMember extends GenericModel {
   protected String provisioningStatus;
   protected LoadBalancerPoolMemberTarget target;
   protected Long weight;
+
+  protected LoadBalancerPoolMember() { }
 
   /**
    * Gets the createdAt.
@@ -110,7 +114,12 @@ public class LoadBalancerPoolMember extends GenericModel {
   /**
    * Gets the port.
    *
-   * The port number of the application running in the server member.
+   * The port the member will receive load balancer traffic on. Applies only to load balancer traffic received on a
+   * listener with a single port. (If the traffic is received on a listener with a port range, the member will receive
+   * the traffic on the same port the listener received it on.)
+   *
+   * This port will also be used for health checks unless the `port` property of
+   * `health_monitor` property is specified.
    *
    * @return the port
    */
@@ -121,7 +130,11 @@ public class LoadBalancerPoolMember extends GenericModel {
   /**
    * Gets the provisioningStatus.
    *
-   * The provisioning status of this member.
+   * The provisioning status of this member
+   *
+   * The enumerated values for this property are expected to expand in the future. When processing this property, check
+   * for and log unknown values. Optionally halt processing and surface the error, or bypass the pool member on which
+   * the unexpected property value was encountered.
    *
    * @return the provisioningStatus
    */
@@ -133,7 +146,9 @@ public class LoadBalancerPoolMember extends GenericModel {
    * Gets the target.
    *
    * The pool member target. Load balancers in the `network` family support virtual server
-   * instances. Load balancers in the `application` family support IP addresses.
+   * instances. Load balancers in the `application` family support IP addresses. If the load
+   * balancer has route mode enabled, the member must be in a zone the load balancer has a
+   * subnet in.
    *
    * @return the target
    */

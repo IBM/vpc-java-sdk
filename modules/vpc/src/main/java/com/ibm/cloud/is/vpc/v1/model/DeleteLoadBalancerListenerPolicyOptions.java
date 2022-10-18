@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -31,6 +31,11 @@ public class DeleteLoadBalancerListenerPolicyOptions extends GenericModel {
     private String listenerId;
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing DeleteLoadBalancerListenerPolicyOptions instance.
+     *
+     * @param deleteLoadBalancerListenerPolicyOptions the instance to initialize the Builder with
+     */
     private Builder(DeleteLoadBalancerListenerPolicyOptions deleteLoadBalancerListenerPolicyOptions) {
       this.loadBalancerId = deleteLoadBalancerListenerPolicyOptions.loadBalancerId;
       this.listenerId = deleteLoadBalancerListenerPolicyOptions.listenerId;
@@ -98,6 +103,8 @@ public class DeleteLoadBalancerListenerPolicyOptions extends GenericModel {
       return this;
     }
   }
+
+  protected DeleteLoadBalancerListenerPolicyOptions() { }
 
   protected DeleteLoadBalancerListenerPolicyOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.loadBalancerId,

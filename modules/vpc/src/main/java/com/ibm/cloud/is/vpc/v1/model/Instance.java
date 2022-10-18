@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -24,23 +24,49 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class Instance extends GenericModel {
 
   /**
+   * The lifecycle state of the virtual server instance.
+   */
+  public interface LifecycleState {
+    /** deleting. */
+    String DELETING = "deleting";
+    /** failed. */
+    String FAILED = "failed";
+    /** pending. */
+    String PENDING = "pending";
+    /** stable. */
+    String STABLE = "stable";
+    /** suspended. */
+    String SUSPENDED = "suspended";
+    /** updating. */
+    String UPDATING = "updating";
+    /** waiting. */
+    String WAITING = "waiting";
+  }
+
+  /**
+   * The resource type.
+   */
+  public interface ResourceType {
+    /** instance. */
+    String INSTANCE = "instance";
+  }
+
+  /**
    * The status of the virtual server instance.
+   *
+   * The enumerated values for this property will expand in the future. When processing this property, check for and log
+   * unknown values. Optionally halt processing and surface the error, or bypass the instance on which the unexpected
+   * property value was encountered.
    */
   public interface Status {
     /** deleting. */
     String DELETING = "deleting";
     /** failed. */
     String FAILED = "failed";
-    /** paused. */
-    String PAUSED = "paused";
-    /** pausing. */
-    String PAUSING = "pausing";
     /** pending. */
     String PENDING = "pending";
     /** restarting. */
     String RESTARTING = "restarting";
-    /** resuming. */
-    String RESUMING = "resuming";
     /** running. */
     String RUNNING = "running";
     /** starting. */
@@ -51,9 +77,13 @@ public class Instance extends GenericModel {
     String STOPPING = "stopping";
   }
 
+  @SerializedName("availability_policy")
+  protected InstanceAvailabilityPolicy availabilityPolicy;
   protected Long bandwidth;
   @SerializedName("boot_volume_attachment")
   protected VolumeAttachmentReferenceInstanceContext bootVolumeAttachment;
+  @SerializedName("catalog_offering")
+  protected InstanceCatalogOffering catalogOffering;
   @SerializedName("created_at")
   protected Date createdAt;
   protected String crn;
@@ -64,7 +94,13 @@ public class Instance extends GenericModel {
   protected String href;
   protected String id;
   protected ImageReference image;
+  @SerializedName("lifecycle_reasons")
+  protected List<LifecycleReason> lifecycleReasons;
+  @SerializedName("lifecycle_state")
+  protected String lifecycleState;
   protected Long memory;
+  @SerializedName("metadata_service")
+  protected InstanceMetadataService metadataService;
   protected String name;
   @SerializedName("network_interfaces")
   protected List<NetworkInterfaceInstanceContextReference> networkInterfaces;
@@ -75,6 +111,8 @@ public class Instance extends GenericModel {
   protected InstanceProfileReference profile;
   @SerializedName("resource_group")
   protected ResourceGroupReference resourceGroup;
+  @SerializedName("resource_type")
+  protected String resourceType;
   protected Boolean startable;
   protected String status;
   @SerializedName("status_reasons")
@@ -88,6 +126,19 @@ public class Instance extends GenericModel {
   protected List<VolumeAttachmentReferenceInstanceContext> volumeAttachments;
   protected VPCReference vpc;
   protected ZoneReference zone;
+
+  protected Instance() { }
+
+  /**
+   * Gets the availabilityPolicy.
+   *
+   * The availability policy for this virtual server instance.
+   *
+   * @return the availabilityPolicy
+   */
+  public InstanceAvailabilityPolicy getAvailabilityPolicy() {
+    return availabilityPolicy;
+  }
 
   /**
    * Gets the bandwidth.
@@ -110,6 +161,18 @@ public class Instance extends GenericModel {
    */
   public VolumeAttachmentReferenceInstanceContext getBootVolumeAttachment() {
     return bootVolumeAttachment;
+  }
+
+  /**
+   * Gets the catalogOffering.
+   *
+   * If present, this virtual server instance was provisioned from a
+   * [catalog](https://cloud.ibm.com/docs/account?topic=account-restrict-by-user).
+   *
+   * @return the catalogOffering
+   */
+  public InstanceCatalogOffering getCatalogOffering() {
+    return catalogOffering;
   }
 
   /**
@@ -201,6 +264,32 @@ public class Instance extends GenericModel {
   }
 
   /**
+   * Gets the lifecycleReasons.
+   *
+   * The reasons for the current `lifecycle_state` (if any).
+   *
+   * The enumerated reason code values for this property will expand in the future. When processing this property, check
+   * for and log unknown values. Optionally halt processing and surface the error, or bypass the resource on which the
+   * unexpected reason code was encountered.
+   *
+   * @return the lifecycleReasons
+   */
+  public List<LifecycleReason> getLifecycleReasons() {
+    return lifecycleReasons;
+  }
+
+  /**
+   * Gets the lifecycleState.
+   *
+   * The lifecycle state of the virtual server instance.
+   *
+   * @return the lifecycleState
+   */
+  public String getLifecycleState() {
+    return lifecycleState;
+  }
+
+  /**
    * Gets the memory.
    *
    * The amount of memory, truncated to whole gibibytes.
@@ -209,6 +298,17 @@ public class Instance extends GenericModel {
    */
   public Long getMemory() {
     return memory;
+  }
+
+  /**
+   * Gets the metadataService.
+   *
+   * The metadata service configuration.
+   *
+   * @return the metadataService
+   */
+  public InstanceMetadataService getMetadataService() {
+    return metadataService;
   }
 
   /**
@@ -258,7 +358,8 @@ public class Instance extends GenericModel {
   /**
    * Gets the profile.
    *
-   * The profile for this virtual server instance.
+   * The [profile](https://cloud.ibm.com/docs/vpc?topic=vpc-profiles) for this virtual
+   * server instance.
    *
    * @return the profile
    */
@@ -278,6 +379,17 @@ public class Instance extends GenericModel {
   }
 
   /**
+   * Gets the resourceType.
+   *
+   * The resource type.
+   *
+   * @return the resourceType
+   */
+  public String getResourceType() {
+    return resourceType;
+  }
+
+  /**
    * Gets the startable.
    *
    * Indicates whether the state of the virtual server instance permits a start request.
@@ -292,6 +404,10 @@ public class Instance extends GenericModel {
    * Gets the status.
    *
    * The status of the virtual server instance.
+   *
+   * The enumerated values for this property will expand in the future. When processing this property, check for and log
+   * unknown values. Optionally halt processing and surface the error, or bypass the instance on which the unexpected
+   * property value was encountered.
    *
    * @return the status
    */

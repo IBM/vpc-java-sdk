@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -16,7 +16,7 @@ import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * The target for this endpoint gateway.
+ * The target to use for this endpoint gateway. Must not already be the target of another endpoint gateway in the VPC.
  *
  * Classes which extend this class:
  * - EndpointGatewayTargetPrototypeProviderCloudServiceIdentity
@@ -47,8 +47,7 @@ public class EndpointGatewayTargetPrototype extends GenericModel {
   protected String crn;
   protected String name;
 
-  protected EndpointGatewayTargetPrototype() {
-  }
+  protected EndpointGatewayTargetPrototype() { }
 
   /**
    * Gets the resourceType.

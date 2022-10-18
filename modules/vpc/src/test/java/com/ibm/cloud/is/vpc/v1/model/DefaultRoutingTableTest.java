@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -14,6 +14,7 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.DefaultRoutingTable;
+import com.ibm.cloud.is.vpc.v1.model.ResourceFilter;
 import com.ibm.cloud.is.vpc.v1.model.RouteReference;
 import com.ibm.cloud.is.vpc.v1.model.RouteReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.SubnetReference;
@@ -36,6 +37,7 @@ public class DefaultRoutingTableTest {
   @Test
   public void testDefaultRoutingTable() throws Throwable {
     DefaultRoutingTable defaultRoutingTableModel = new DefaultRoutingTable();
+    assertNull(defaultRoutingTableModel.getAcceptRoutesFrom());
     assertNull(defaultRoutingTableModel.getCreatedAt());
     assertNull(defaultRoutingTableModel.getHref());
     assertNull(defaultRoutingTableModel.getId());

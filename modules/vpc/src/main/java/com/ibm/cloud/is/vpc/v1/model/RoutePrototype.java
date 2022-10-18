@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -22,9 +22,8 @@ public class RoutePrototype extends GenericModel {
 
   /**
    * The action to perform with a packet matching the route:
-   * - `delegate`: delegate to the system's built-in routes
-   * - `delegate_vpc`: delegate to the system's built-in routes, ignoring Internet-bound
-   *   routes
+   * - `delegate`: delegate to system-provided routes
+   * - `delegate_vpc`: delegate to system-provided routes, ignoring Internet-bound routes
    * - `deliver`: deliver the packet to the specified `next_hop`
    * - `drop`: drop the packet.
    */
@@ -43,7 +42,7 @@ public class RoutePrototype extends GenericModel {
   protected String destination;
   protected String name;
   @SerializedName("next_hop")
-  protected RouteNextHopPrototype nextHop;
+  protected RoutePrototypeNextHop nextHop;
   protected ZoneIdentity zone;
 
   /**
@@ -53,9 +52,14 @@ public class RoutePrototype extends GenericModel {
     private String action;
     private String destination;
     private String name;
-    private RouteNextHopPrototype nextHop;
+    private RoutePrototypeNextHop nextHop;
     private ZoneIdentity zone;
 
+    /**
+     * Instantiates a new Builder from an existing RoutePrototype instance.
+     *
+     * @param routePrototype the instance to initialize the Builder with
+     */
     private Builder(RoutePrototype routePrototype) {
       this.action = routePrototype.action;
       this.destination = routePrototype.destination;
@@ -129,7 +133,7 @@ public class RoutePrototype extends GenericModel {
      * @param nextHop the nextHop
      * @return the RoutePrototype builder
      */
-    public Builder nextHop(RouteNextHopPrototype nextHop) {
+    public Builder nextHop(RoutePrototypeNextHop nextHop) {
       this.nextHop = nextHop;
       return this;
     }
@@ -145,6 +149,8 @@ public class RoutePrototype extends GenericModel {
       return this;
     }
   }
+
+  protected RoutePrototype() { }
 
   protected RoutePrototype(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.destination,
@@ -171,9 +177,8 @@ public class RoutePrototype extends GenericModel {
    * Gets the action.
    *
    * The action to perform with a packet matching the route:
-   * - `delegate`: delegate to the system's built-in routes
-   * - `delegate_vpc`: delegate to the system's built-in routes, ignoring Internet-bound
-   *   routes
+   * - `delegate`: delegate to system-provided routes
+   * - `delegate_vpc`: delegate to system-provided routes, ignoring Internet-bound routes
    * - `deliver`: deliver the packet to the specified `next_hop`
    * - `drop`: drop the packet.
    *
@@ -187,8 +192,7 @@ public class RoutePrototype extends GenericModel {
    * Gets the destination.
    *
    * The destination of the route. At most two routes per `zone` in a table can have the same destination, and only if
-   * both routes have an `action` of `deliver` and the
-   * `next_hop` is an IP address.
+   * both routes have an `action` of `deliver` and the `next_hop` is an IP address.
    *
    * @return the destination
    */
@@ -211,12 +215,12 @@ public class RoutePrototype extends GenericModel {
   /**
    * Gets the nextHop.
    *
-   * If `action` is `deliver`, the next hop that packets will be delivered to.  For
-   * other `action` values, it must be omitted or specified as `0.0.0.0`.
+   * If `action` is `deliver`, the next hop that packets will be delivered to. For other `action`
+   * values, it must be omitted or specified as `0.0.0.0`.
    *
    * @return the nextHop
    */
-  public RouteNextHopPrototype nextHop() {
+  public RoutePrototypeNextHop nextHop() {
     return nextHop;
   }
 

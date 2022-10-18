@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -31,6 +31,11 @@ public class UpdatePlacementGroupOptions extends GenericModel {
     private String id;
     private Map<String, Object> placementGroupPatch;
 
+    /**
+     * Instantiates a new Builder from an existing UpdatePlacementGroupOptions instance.
+     *
+     * @param updatePlacementGroupOptions the instance to initialize the Builder with
+     */
     private Builder(UpdatePlacementGroupOptions updatePlacementGroupOptions) {
       this.id = updatePlacementGroupOptions.id;
       this.placementGroupPatch = updatePlacementGroupOptions.placementGroupPatch;
@@ -84,6 +89,8 @@ public class UpdatePlacementGroupOptions extends GenericModel {
       return this;
     }
   }
+
+  protected UpdatePlacementGroupOptions() { }
 
   protected UpdatePlacementGroupOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,

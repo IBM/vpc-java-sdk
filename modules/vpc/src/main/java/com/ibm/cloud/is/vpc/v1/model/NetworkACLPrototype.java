@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -34,8 +34,7 @@ public class NetworkACLPrototype extends GenericModel {
   @SerializedName("source_network_acl")
   protected NetworkACLIdentity sourceNetworkAcl;
 
-  protected NetworkACLPrototype() {
-  }
+  protected NetworkACLPrototype() { }
 
   /**
    * Gets the name.
@@ -64,7 +63,7 @@ public class NetworkACLPrototype extends GenericModel {
   /**
    * Gets the vpc.
    *
-   * The VPC this network ACL is to be a part of.
+   * The VPC this network ACL will reside in.
    *
    * @return the vpc
    */

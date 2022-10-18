@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -27,6 +27,11 @@ public class ImagePrototypeImageBySourceVolume extends ImagePrototype {
     private EncryptionKeyIdentity encryptionKey;
     private VolumeIdentity sourceVolume;
 
+    /**
+     * Instantiates a new Builder from an existing ImagePrototypeImageBySourceVolume instance.
+     *
+     * @param imagePrototypeImageBySourceVolume the instance to initialize the Builder with
+     */
     public Builder(ImagePrototype imagePrototypeImageBySourceVolume) {
       this.name = imagePrototypeImageBySourceVolume.name;
       this.resourceGroup = imagePrototypeImageBySourceVolume.resourceGroup;
@@ -102,6 +107,8 @@ public class ImagePrototypeImageBySourceVolume extends ImagePrototype {
       return this;
     }
   }
+
+  protected ImagePrototypeImageBySourceVolume() { }
 
   protected ImagePrototypeImageBySourceVolume(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.sourceVolume,

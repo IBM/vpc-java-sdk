@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -43,11 +43,13 @@ public class VolumePatchTest {
       .iops(Long.valueOf("10000"))
       .name("my-volume")
       .profile(volumeProfileIdentityModel)
+      .userTags(java.util.Arrays.asList("testString"))
       .build();
     assertEquals(volumePatchModel.capacity(), Long.valueOf("100"));
     assertEquals(volumePatchModel.iops(), Long.valueOf("10000"));
     assertEquals(volumePatchModel.name(), "my-volume");
     assertEquals(volumePatchModel.profile(), volumeProfileIdentityModel);
+    assertEquals(volumePatchModel.userTags(), java.util.Arrays.asList("testString"));
 
     String json = TestUtilities.serialize(volumePatchModel);
 
@@ -69,6 +71,7 @@ public class VolumePatchTest {
       .iops(Long.valueOf("10000"))
       .name("my-volume")
       .profile(volumeProfileIdentityModel)
+      .userTags(java.util.Arrays.asList("testString"))
       .build();
 
     Map<String, Object> mergePatch = volumePatchModel.asPatch();
@@ -77,6 +80,7 @@ public class VolumePatchTest {
     assertTrue(mergePatch.containsKey("iops"));
     assertEquals(mergePatch.get("name"), "my-volume");
     assertTrue(mergePatch.containsKey("profile"));
+    assertTrue(mergePatch.containsKey("user_tags"));
   }
 
 }

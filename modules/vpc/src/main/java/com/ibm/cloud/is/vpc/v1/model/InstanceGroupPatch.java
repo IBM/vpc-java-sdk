@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -50,6 +50,11 @@ public class InstanceGroupPatch extends GenericModel {
     private String name;
     private List<SubnetIdentity> subnets;
 
+    /**
+     * Instantiates a new Builder from an existing InstanceGroupPatch instance.
+     *
+     * @param instanceGroupPatch the instance to initialize the Builder with
+     */
     private Builder(InstanceGroupPatch instanceGroupPatch) {
       this.applicationPort = instanceGroupPatch.applicationPort;
       this.instanceTemplate = instanceGroupPatch.instanceTemplate;
@@ -170,6 +175,8 @@ public class InstanceGroupPatch extends GenericModel {
     }
   }
 
+  protected InstanceGroupPatch() { }
+
   protected InstanceGroupPatch(Builder builder) {
     applicationPort = builder.applicationPort;
     instanceTemplate = builder.instanceTemplate;
@@ -192,8 +199,9 @@ public class InstanceGroupPatch extends GenericModel {
   /**
    * Gets the applicationPort.
    *
-   * Required if specifying a load balancer pool only. Used by the instance group when scaling up instances to supply
-   * the port for the load balancer pool member.
+   * The port to use for new load balancer pool members created by this instance group.
+   *
+   * This property must be set if and only if `load_balancer_pool` has been set.
    *
    * @return the applicationPort
    */
@@ -204,7 +212,10 @@ public class InstanceGroupPatch extends GenericModel {
   /**
    * Gets the instanceTemplate.
    *
-   * Identifies an instance template by a unique property.
+   * Instance template to use when creating new instances.
+   *
+   * Instance groups are not compatible with instance templates that specify `true` for
+   * `default_trusted_profile.auto_link`.
    *
    * @return the instanceTemplate
    */
@@ -215,8 +226,12 @@ public class InstanceGroupPatch extends GenericModel {
   /**
    * Gets the loadBalancer.
    *
-   * The load balancer that the load balancer pool used by this group
-   * is in. Must be supplied when using a load balancer pool.
+   * The load balancer associated with `load_balancer_pool`.
+   *
+   * This property must be specified if and only if `load_balancer_pool` has been
+   * specified.
+   *
+   * At present, only load balancers in the `application` family are supported.
    *
    * @return the loadBalancer
    */
@@ -227,10 +242,10 @@ public class InstanceGroupPatch extends GenericModel {
   /**
    * Gets the loadBalancerPool.
    *
-   * When specified, the load balancer pool will be managed by this
-   * group. Instances created by this group will have a new load
-   * balancer pool member in that pool created. Must be used with
-   * `application_port`.
+   * If specified, the load balancer pool this instance group will manage. A pool member
+   * will be created for each instance created by this group.
+   *
+   * If specified, `load_balancer` and `application_port` must also be specified.
    *
    * @return the loadBalancerPool
    */

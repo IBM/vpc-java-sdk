@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -29,6 +29,11 @@ public class ImagePrototypeImageByFile extends ImagePrototype {
     private ImageFilePrototype file;
     private OperatingSystemIdentity operatingSystem;
 
+    /**
+     * Instantiates a new Builder from an existing ImagePrototypeImageByFile instance.
+     *
+     * @param imagePrototypeImageByFile the instance to initialize the Builder with
+     */
     public Builder(ImagePrototype imagePrototypeImageByFile) {
       this.name = imagePrototypeImageByFile.name;
       this.resourceGroup = imagePrototypeImageByFile.resourceGroup;
@@ -130,6 +135,8 @@ public class ImagePrototypeImageByFile extends ImagePrototype {
       return this;
     }
   }
+
+  protected ImagePrototypeImageByFile() { }
 
   protected ImagePrototypeImageByFile(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.file,

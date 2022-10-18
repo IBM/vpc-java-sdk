@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -33,6 +33,11 @@ public class UpdateVpcAddressPrefixOptions extends GenericModel {
     private String id;
     private Map<String, Object> addressPrefixPatch;
 
+    /**
+     * Instantiates a new Builder from an existing UpdateVpcAddressPrefixOptions instance.
+     *
+     * @param updateVpcAddressPrefixOptions the instance to initialize the Builder with
+     */
     private Builder(UpdateVpcAddressPrefixOptions updateVpcAddressPrefixOptions) {
       this.vpcId = updateVpcAddressPrefixOptions.vpcId;
       this.id = updateVpcAddressPrefixOptions.id;
@@ -100,6 +105,8 @@ public class UpdateVpcAddressPrefixOptions extends GenericModel {
       return this;
     }
   }
+
+  protected UpdateVpcAddressPrefixOptions() { }
 
   protected UpdateVpcAddressPrefixOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.vpcId,

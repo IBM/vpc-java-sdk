@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -27,6 +27,11 @@ public class DeleteInstanceOptions extends GenericModel {
   public static class Builder {
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing DeleteInstanceOptions instance.
+     *
+     * @param deleteInstanceOptions the instance to initialize the Builder with
+     */
     private Builder(DeleteInstanceOptions deleteInstanceOptions) {
       this.id = deleteInstanceOptions.id;
     }
@@ -66,6 +71,8 @@ public class DeleteInstanceOptions extends GenericModel {
       return this;
     }
   }
+
+  protected DeleteInstanceOptions() { }
 
   protected DeleteInstanceOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,

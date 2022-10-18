@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -57,6 +57,11 @@ public class ListFlowLogCollectorsOptions extends GenericModel {
     private String targetId;
     private String targetResourceType;
 
+    /**
+     * Instantiates a new Builder from an existing ListFlowLogCollectorsOptions instance.
+     *
+     * @param listFlowLogCollectorsOptions the instance to initialize the Builder with
+     */
     private Builder(ListFlowLogCollectorsOptions listFlowLogCollectorsOptions) {
       this.start = listFlowLogCollectorsOptions.start;
       this.limit = listFlowLogCollectorsOptions.limit;
@@ -184,6 +189,8 @@ public class ListFlowLogCollectorsOptions extends GenericModel {
     }
   }
 
+  protected ListFlowLogCollectorsOptions() { }
+
   protected ListFlowLogCollectorsOptions(Builder builder) {
     start = builder.start;
     limit = builder.limit;
@@ -208,7 +215,7 @@ public class ListFlowLogCollectorsOptions extends GenericModel {
   /**
    * Gets the start.
    *
-   * A server-supplied token determining what resource to start the page on.
+   * A server-provided token determining what resource to start the page on.
    *
    * @return the start
    */

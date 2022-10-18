@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -23,16 +23,23 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  *
  * Classes which extend this class:
  * - InstanceTemplateInstanceByImage
- * - InstanceTemplateInstanceByVolume
+ * - InstanceTemplateInstanceBySourceSnapshot
+ * - InstanceTemplateInstanceByCatalogOffering
  */
 public class InstanceTemplate extends GenericModel {
 
+  @SerializedName("availability_policy")
+  protected InstanceAvailabilityPrototype availabilityPolicy;
   @SerializedName("created_at")
   protected Date createdAt;
   protected String crn;
+  @SerializedName("default_trusted_profile")
+  protected InstanceDefaultTrustedProfilePrototype defaultTrustedProfile;
   protected String href;
   protected String id;
   protected List<KeyIdentity> keys;
+  @SerializedName("metadata_service")
+  protected InstanceMetadataServicePrototype metadataService;
   protected String name;
   @SerializedName("network_interfaces")
   protected List<NetworkInterfacePrototype> networkInterfaces;
@@ -54,8 +61,20 @@ public class InstanceTemplate extends GenericModel {
   @SerializedName("primary_network_interface")
   protected NetworkInterfacePrototype primaryNetworkInterface;
   protected ZoneIdentity zone;
+  @SerializedName("catalog_offering")
+  protected InstanceCatalogOfferingPrototype catalogOffering;
 
-  protected InstanceTemplate() {
+  protected InstanceTemplate() { }
+
+  /**
+   * Gets the availabilityPolicy.
+   *
+   * The availability policy to use for this virtual server instance.
+   *
+   * @return the availabilityPolicy
+   */
+  public InstanceAvailabilityPrototype getAvailabilityPolicy() {
+    return availabilityPolicy;
   }
 
   /**
@@ -78,6 +97,22 @@ public class InstanceTemplate extends GenericModel {
    */
   public String getCrn() {
     return crn;
+  }
+
+  /**
+   * Gets the defaultTrustedProfile.
+   *
+   * The default trusted profile configuration to use for this virtual server instance
+   *
+   * This property's value is used when provisioning the virtual server instance, but not
+   * subsequently managed. Accordingly, it is reflected as an [instance
+   * initialization](https://cloud.ibm.com/apidocs/vpc#get-instance-initialization)
+   * property.
+   *
+   * @return the defaultTrustedProfile
+   */
+  public InstanceDefaultTrustedProfilePrototype getDefaultTrustedProfile() {
+    return defaultTrustedProfile;
   }
 
   /**
@@ -125,6 +160,17 @@ public class InstanceTemplate extends GenericModel {
   }
 
   /**
+   * Gets the metadataService.
+   *
+   * The metadata service configuration.
+   *
+   * @return the metadataService
+   */
+  public InstanceMetadataServicePrototype getMetadataService() {
+    return metadataService;
+  }
+
+  /**
    * Gets the name.
    *
    * The unique user-defined name for this instance template.
@@ -160,7 +206,11 @@ public class InstanceTemplate extends GenericModel {
   /**
    * Gets the profile.
    *
-   * The profile to use for this virtual server instance.
+   * The [profile](https://cloud.ibm.com/docs/vpc?topic=vpc-profiles) to use for this
+   * virtual server instance.
+   *
+   * If unspecified, `bx2-2x8` will be used, but this default value is expected to change
+   * in the future.
    *
    * @return the profile
    */
@@ -195,7 +245,8 @@ public class InstanceTemplate extends GenericModel {
   /**
    * Gets the userData.
    *
-   * User data to be made available when setting up the virtual server instance.
+   * [User data](https://cloud.ibm.com/docs/vpc?topic=vpc-user-data) to make available when setting up the virtual
+   * server instance.
    *
    * @return the userData
    */
@@ -206,7 +257,7 @@ public class InstanceTemplate extends GenericModel {
   /**
    * Gets the volumeAttachments.
    *
-   * The volume attachments for this virtual server instance.
+   * The additional volume attachments to create for the virtual server instance.
    *
    * @return the volumeAttachments
    */
@@ -217,8 +268,10 @@ public class InstanceTemplate extends GenericModel {
   /**
    * Gets the vpc.
    *
-   * The VPC the virtual server instance is to be a part of. If specified, it must match
-   * the VPC referenced by the subnets of the instance's network interfaces.
+   * The VPC this virtual server instance will reside in.
+   *
+   * If specified, it must match the VPC for the subnets of the instance's network
+   * interfaces.
    *
    * @return the vpc
    */
@@ -268,6 +321,24 @@ public class InstanceTemplate extends GenericModel {
    */
   public ZoneIdentity getZone() {
     return zone;
+  }
+
+  /**
+   * Gets the catalogOffering.
+   *
+   * The [catalog](https://cloud.ibm.com/docs/account?topic=account-restrict-by-user) offering
+   * or offering version to use when provisioning this virtual server instance.
+   *
+   * If an offering is specified, the latest version of that offering will be used.
+   *
+   * The specified offering or offering version may be in a different account in the same
+   * [enterprise](https://cloud.ibm.com/docs/account?topic=account-what-is-enterprise), subject
+   * to IAM policies.
+   *
+   * @return the catalogOffering
+   */
+  public InstanceCatalogOfferingPrototype getCatalogOffering() {
+    return catalogOffering;
   }
 }
 

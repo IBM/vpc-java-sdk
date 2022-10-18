@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -15,7 +15,12 @@ package com.ibm.cloud.is.vpc.v1.model;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * The target this reserved IP is to be bound to.
+ * The target to bind this reserved IP to.  The target must be in the same VPC.
+ *
+ * At present, only endpoint gateway targets are supported.  The endpoint gateway must not be already bound to a
+ * reserved IP in the subnet's zone.
+ *
+ * If unspecified, the reserved IP will be created unbound.
  *
  * Classes which extend this class:
  * - ReservedIPTargetPrototypeEndpointGatewayIdentity
@@ -26,8 +31,7 @@ public class ReservedIPTargetPrototype extends GenericModel {
   protected String crn;
   protected String href;
 
-  protected ReservedIPTargetPrototype() {
-  }
+  protected ReservedIPTargetPrototype() { }
 
   /**
    * Gets the id.

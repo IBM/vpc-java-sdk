@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -13,6 +13,7 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import java.util.Date;
+import java.util.List;
 
 import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
@@ -60,7 +61,11 @@ public class Snapshot extends GenericModel {
     String SNAPSHOT = "snapshot";
   }
 
+  @SerializedName("backup_policy_plan")
+  protected BackupPolicyPlanReference backupPolicyPlan;
   protected Boolean bootable;
+  @SerializedName("captured_at")
+  protected Date capturedAt;
   @SerializedName("created_at")
   protected Date createdAt;
   protected String crn;
@@ -81,11 +86,28 @@ public class Snapshot extends GenericModel {
   protected ResourceGroupReference resourceGroup;
   @SerializedName("resource_type")
   protected String resourceType;
+  @SerializedName("service_tags")
+  protected List<String> serviceTags;
   protected Long size;
   @SerializedName("source_image")
   protected ImageReference sourceImage;
   @SerializedName("source_volume")
   protected VolumeReference sourceVolume;
+  @SerializedName("user_tags")
+  protected List<String> userTags;
+
+  protected Snapshot() { }
+
+  /**
+   * Gets the backupPolicyPlan.
+   *
+   * If present, the backup policy plan which created this snapshot.
+   *
+   * @return the backupPolicyPlan
+   */
+  public BackupPolicyPlanReference getBackupPolicyPlan() {
+    return backupPolicyPlan;
+  }
 
   /**
    * Gets the bootable.
@@ -96,6 +118,20 @@ public class Snapshot extends GenericModel {
    */
   public Boolean isBootable() {
     return bootable;
+  }
+
+  /**
+   * Gets the capturedAt.
+   *
+   * The date and time the data capture for this snapshot was completed.
+   *
+   * If absent, this snapshot's data has not yet been captured. Additionally, this property may be absent for snapshots
+   * created before 1 January 2022.
+   *
+   * @return the capturedAt
+   */
+  public Date getCapturedAt() {
+    return capturedAt;
   }
 
   /**
@@ -112,7 +148,7 @@ public class Snapshot extends GenericModel {
   /**
    * Gets the crn.
    *
-   * The CRN for this snapshot.
+   * The CRN of this snapshot.
    *
    * @return the crn
    */
@@ -246,6 +282,18 @@ public class Snapshot extends GenericModel {
   }
 
   /**
+   * Gets the serviceTags.
+   *
+   * The [service tags](https://cloud.ibm.com/apidocs/tagging#types-of-tags) prefixed with `is.snapshot:` associated
+   * with this snapshot.
+   *
+   * @return the serviceTags
+   */
+  public List<String> getServiceTags() {
+    return serviceTags;
+  }
+
+  /**
    * Gets the size.
    *
    * The size of this snapshot rounded up to the next gigabyte.
@@ -259,7 +307,7 @@ public class Snapshot extends GenericModel {
   /**
    * Gets the sourceImage.
    *
-   * If present, the image from which the data on this volume was most directly
+   * If present, the image from which the data on this snapshot was most directly
    * provisioned.
    *
    * @return the sourceImage
@@ -278,6 +326,17 @@ public class Snapshot extends GenericModel {
    */
   public VolumeReference getSourceVolume() {
     return sourceVolume;
+  }
+
+  /**
+   * Gets the userTags.
+   *
+   * The [user tags](https://cloud.ibm.com/apidocs/tagging#types-of-tags) associated with this snapshot.
+   *
+   * @return the userTags
+   */
+  public List<String> getUserTags() {
+    return userTags;
   }
 }
 

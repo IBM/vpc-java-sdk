@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -44,6 +44,11 @@ public class CreateInstanceGroupOptions extends GenericModel {
     private String name;
     private ResourceGroupIdentity resourceGroup;
 
+    /**
+     * Instantiates a new Builder from an existing CreateInstanceGroupOptions instance.
+     *
+     * @param createInstanceGroupOptions the instance to initialize the Builder with
+     */
     private Builder(CreateInstanceGroupOptions createInstanceGroupOptions) {
       this.instanceTemplate = createInstanceGroupOptions.instanceTemplate;
       this.subnets = createInstanceGroupOptions.subnets;
@@ -187,6 +192,8 @@ public class CreateInstanceGroupOptions extends GenericModel {
     }
   }
 
+  protected CreateInstanceGroupOptions() { }
+
   protected CreateInstanceGroupOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.instanceTemplate,
       "instanceTemplate cannot be null");
@@ -214,7 +221,10 @@ public class CreateInstanceGroupOptions extends GenericModel {
   /**
    * Gets the instanceTemplate.
    *
-   * Identifies an instance template by a unique property.
+   * Instance template to use when creating new instances.
+   *
+   * Instance groups are not compatible with instance templates that specify `true` for
+   * `default_trusted_profile.auto_link`.
    *
    * @return the instanceTemplate
    */
@@ -236,8 +246,9 @@ public class CreateInstanceGroupOptions extends GenericModel {
   /**
    * Gets the applicationPort.
    *
-   * Required if specifying a load balancer pool only. Used by the instance group when scaling up instances to supply
-   * the port for the load balancer pool member.
+   * The port to use for new load balancer pool members created by this instance group.
+   *
+   * This property must be specified if and only if `load_balancer_pool` has been specified.
    *
    * @return the applicationPort
    */
@@ -248,8 +259,12 @@ public class CreateInstanceGroupOptions extends GenericModel {
   /**
    * Gets the loadBalancer.
    *
-   * The load balancer that the load balancer pool used by this group
-   * is in. Must be supplied when using a load balancer pool.
+   * The load balancer associated with `load_balancer_pool`.
+   *
+   * This property must be specified if and only if `load_balancer_pool` has been
+   * specified.
+   *
+   * At present, only load balancers in the `application` family are supported.
    *
    * @return the loadBalancer
    */
@@ -260,10 +275,10 @@ public class CreateInstanceGroupOptions extends GenericModel {
   /**
    * Gets the loadBalancerPool.
    *
-   * When specified, the load balancer pool will be managed by this
-   * group. Instances created by this group will have a new load
-   * balancer pool member in that pool created. Must be used with
-   * `application_port`.
+   * If specified, the load balancer pool this instance group will manage. A pool member
+   * will be created for each instance created by this group.
+   *
+   * If specified, `load_balancer` and `application_port` must also be specified.
    *
    * @return the loadBalancerPool
    */
@@ -285,7 +300,8 @@ public class CreateInstanceGroupOptions extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this instance group.
+   * The unique user-defined name for this instance group. If unspecified, the name will be a hyphenated list of
+   * randomly-selected words.
    *
    * @return the name
    */

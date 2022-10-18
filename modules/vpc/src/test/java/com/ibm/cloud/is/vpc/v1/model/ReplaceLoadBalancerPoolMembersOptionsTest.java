@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -19,8 +19,6 @@ import com.ibm.cloud.is.vpc.v1.model.ReplaceLoadBalancerPoolMembersOptions;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import org.testng.annotations.Test;
@@ -52,11 +50,11 @@ public class ReplaceLoadBalancerPoolMembersOptionsTest {
     ReplaceLoadBalancerPoolMembersOptions replaceLoadBalancerPoolMembersOptionsModel = new ReplaceLoadBalancerPoolMembersOptions.Builder()
       .loadBalancerId("testString")
       .poolId("testString")
-      .members(new java.util.ArrayList<LoadBalancerPoolMemberPrototype>(java.util.Arrays.asList(loadBalancerPoolMemberPrototypeModel)))
+      .members(java.util.Arrays.asList(loadBalancerPoolMemberPrototypeModel))
       .build();
     assertEquals(replaceLoadBalancerPoolMembersOptionsModel.loadBalancerId(), "testString");
     assertEquals(replaceLoadBalancerPoolMembersOptionsModel.poolId(), "testString");
-    assertEquals(replaceLoadBalancerPoolMembersOptionsModel.members(), new java.util.ArrayList<LoadBalancerPoolMemberPrototype>(java.util.Arrays.asList(loadBalancerPoolMemberPrototypeModel)));
+    assertEquals(replaceLoadBalancerPoolMembersOptionsModel.members(), java.util.Arrays.asList(loadBalancerPoolMemberPrototypeModel));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

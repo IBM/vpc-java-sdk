@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -29,13 +29,13 @@ public class SecurityGroup extends GenericModel {
   protected String href;
   protected String id;
   protected String name;
-  @SerializedName("network_interfaces")
-  protected List<NetworkInterfaceReference> networkInterfaces;
   @SerializedName("resource_group")
   protected ResourceGroupReference resourceGroup;
   protected List<SecurityGroupRule> rules;
   protected List<SecurityGroupTargetReference> targets;
   protected VPCReference vpc;
+
+  protected SecurityGroup() { }
 
   /**
    * Gets the createdAt.
@@ -93,17 +93,6 @@ public class SecurityGroup extends GenericModel {
   }
 
   /**
-   * Gets the networkInterfaces.
-   *
-   * The network interfaces for this security group.
-   *
-   * @return the networkInterfaces
-   */
-  public List<NetworkInterfaceReference> getNetworkInterfaces() {
-    return networkInterfaces;
-  }
-
-  /**
    * Gets the resourceGroup.
    *
    * The resource group for this security group.
@@ -139,7 +128,7 @@ public class SecurityGroup extends GenericModel {
   /**
    * Gets the vpc.
    *
-   * The VPC this security group is a part of.
+   * The VPC this security group resides in.
    *
    * @return the vpc
    */

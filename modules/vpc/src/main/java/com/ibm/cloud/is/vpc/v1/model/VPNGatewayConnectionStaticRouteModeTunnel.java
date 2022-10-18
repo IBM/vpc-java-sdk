@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -33,6 +33,8 @@ public class VPNGatewayConnectionStaticRouteModeTunnel extends GenericModel {
   @SerializedName("public_ip")
   protected IP publicIp;
   protected String status;
+
+  protected VPNGatewayConnectionStaticRouteModeTunnel() { }
 
   /**
    * Gets the publicIp.

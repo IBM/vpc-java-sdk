@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -34,6 +34,11 @@ public class LoadBalancerPoolMemberPatch extends GenericModel {
     private LoadBalancerPoolMemberTargetPrototype target;
     private Long weight;
 
+    /**
+     * Instantiates a new Builder from an existing LoadBalancerPoolMemberPatch instance.
+     *
+     * @param loadBalancerPoolMemberPatch the instance to initialize the Builder with
+     */
     private Builder(LoadBalancerPoolMemberPatch loadBalancerPoolMemberPatch) {
       this.port = loadBalancerPoolMemberPatch.port;
       this.target = loadBalancerPoolMemberPatch.target;
@@ -89,6 +94,8 @@ public class LoadBalancerPoolMemberPatch extends GenericModel {
     }
   }
 
+  protected LoadBalancerPoolMemberPatch() { }
+
   protected LoadBalancerPoolMemberPatch(Builder builder) {
     port = builder.port;
     target = builder.target;
@@ -107,7 +114,14 @@ public class LoadBalancerPoolMemberPatch extends GenericModel {
   /**
    * Gets the port.
    *
-   * The port number of the application running in the server member.
+   * The port the member will receive load balancer traffic on. Applies only to load balancer traffic received on a
+   * listener with a single port. (If the traffic is received on a listener with a port range, the member will receive
+   * the traffic on the same port the listener received it on.)
+   *
+   * This port will also be used for health checks unless the `port` property of
+   * `health_monitor` property is specified.
+   *
+   * The port must be unique across all members for all pools associated with this pool's listener.
    *
    * @return the port
    */
@@ -119,7 +133,9 @@ public class LoadBalancerPoolMemberPatch extends GenericModel {
    * Gets the target.
    *
    * The pool member target. Load balancers in the `network` family support virtual server
-   * instances. Load balancers in the `application` family support IP addresses.
+   * instances. Load balancers in the `application` family support IP addresses. If the load
+   * balancer has route mode enabled, the member must be in a zone the load balancer has a
+   * subnet in.
    *
    * @return the target
    */

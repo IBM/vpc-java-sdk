@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -34,7 +34,22 @@ public class LoadBalancer extends GenericModel {
   }
 
   /**
-   * The provisioning status of this load balancer.
+   * The provisioning status of this load balancer:
+   *
+   * - `active`: The load balancer is running.
+   * - `create_pending`: The load balancer is being created.
+   * - `delete_pending`: The load balancer is being deleted.
+   * - `maintenance_pending`: The load balancer is unavailable due to an internal
+   *                           error (contact IBM support).
+   * - `migrate_pending`: The load balancer is migrating to the requested configuration.
+   *                       Performance may be degraded.
+   * - `update_pending`: The load balancer is being updated
+   *     to the requested configuration.
+   *
+   *   The enumerated values for this property are expected to expand in the future. When
+   *   processing this property, check for and log unknown values. Optionally halt
+   *   processing and surface the error, or bypass the load balancer on which the
+   *   unexpected property value was encountered.
    */
   public interface ProvisioningStatus {
     /** active. */
@@ -47,8 +62,18 @@ public class LoadBalancer extends GenericModel {
     String FAILED = "failed";
     /** maintenance_pending. */
     String MAINTENANCE_PENDING = "maintenance_pending";
+    /** migrate_pending. */
+    String MIGRATE_PENDING = "migrate_pending";
     /** update_pending. */
     String UPDATE_PENDING = "update_pending";
+  }
+
+  /**
+   * The resource type.
+   */
+  public interface ResourceType {
+    /** load_balancer. */
+    String LOAD_BALANCER = "load_balancer";
   }
 
   @SerializedName("created_at")
@@ -66,7 +91,7 @@ public class LoadBalancer extends GenericModel {
   protected String operatingStatus;
   protected List<LoadBalancerPoolReference> pools;
   @SerializedName("private_ips")
-  protected List<IP> privateIps;
+  protected List<LoadBalancerPrivateIpsItem> privateIps;
   protected LoadBalancerProfileReference profile;
   @SerializedName("provisioning_status")
   protected String provisioningStatus;
@@ -74,6 +99,8 @@ public class LoadBalancer extends GenericModel {
   protected List<IP> publicIps;
   @SerializedName("resource_group")
   protected ResourceGroupReference resourceGroup;
+  @SerializedName("resource_type")
+  protected String resourceType;
   @SerializedName("route_mode")
   protected Boolean routeMode;
   @SerializedName("security_groups")
@@ -81,6 +108,10 @@ public class LoadBalancer extends GenericModel {
   @SerializedName("security_groups_supported")
   protected Boolean securityGroupsSupported;
   protected List<SubnetReference> subnets;
+  @SerializedName("udp_supported")
+  protected Boolean udpSupported;
+
+  protected LoadBalancer() { }
 
   /**
    * Gets the createdAt.
@@ -210,14 +241,14 @@ public class LoadBalancer extends GenericModel {
    *
    * @return the privateIps
    */
-  public List<IP> getPrivateIps() {
+  public List<LoadBalancerPrivateIpsItem> getPrivateIps() {
     return privateIps;
   }
 
   /**
    * Gets the profile.
    *
-   * The profile to use for this load balancer.
+   * The profile for this load balancer.
    *
    * @return the profile
    */
@@ -228,7 +259,22 @@ public class LoadBalancer extends GenericModel {
   /**
    * Gets the provisioningStatus.
    *
-   * The provisioning status of this load balancer.
+   * The provisioning status of this load balancer:
+   *
+   * - `active`: The load balancer is running.
+   * - `create_pending`: The load balancer is being created.
+   * - `delete_pending`: The load balancer is being deleted.
+   * - `maintenance_pending`: The load balancer is unavailable due to an internal
+   *                           error (contact IBM support).
+   * - `migrate_pending`: The load balancer is migrating to the requested configuration.
+   *                       Performance may be degraded.
+   * - `update_pending`: The load balancer is being updated
+   *     to the requested configuration.
+   *
+   *   The enumerated values for this property are expected to expand in the future. When
+   *   processing this property, check for and log unknown values. Optionally halt
+   *   processing and surface the error, or bypass the load balancer on which the
+   *   unexpected property value was encountered.
    *
    * @return the provisioningStatus
    */
@@ -258,6 +304,17 @@ public class LoadBalancer extends GenericModel {
    */
   public ResourceGroupReference getResourceGroup() {
     return resourceGroup;
+  }
+
+  /**
+   * Gets the resourceType.
+   *
+   * The resource type.
+   *
+   * @return the resourceType
+   */
+  public String getResourceType() {
+    return resourceType;
   }
 
   /**
@@ -300,12 +357,26 @@ public class LoadBalancer extends GenericModel {
   /**
    * Gets the subnets.
    *
-   * The subnets this load balancer is part of.
+   * The subnets this load balancer is provisioned in.  The load balancer's availability depends on the availability of
+   * the zones that the subnets reside in.
+   *
+   * All subnets will be in the same VPC.
    *
    * @return the subnets
    */
   public List<SubnetReference> getSubnets() {
     return subnets;
+  }
+
+  /**
+   * Gets the udpSupported.
+   *
+   * Indicates whether this load balancer supports UDP.
+   *
+   * @return the udpSupported
+   */
+  public Boolean isUdpSupported() {
+    return udpSupported;
   }
 }
 

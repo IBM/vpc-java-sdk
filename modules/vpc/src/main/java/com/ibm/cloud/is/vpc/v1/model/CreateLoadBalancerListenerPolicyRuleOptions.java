@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -69,6 +69,11 @@ public class CreateLoadBalancerListenerPolicyRuleOptions extends GenericModel {
     private String value;
     private String field;
 
+    /**
+     * Instantiates a new Builder from an existing CreateLoadBalancerListenerPolicyRuleOptions instance.
+     *
+     * @param createLoadBalancerListenerPolicyRuleOptions the instance to initialize the Builder with
+     */
     private Builder(CreateLoadBalancerListenerPolicyRuleOptions createLoadBalancerListenerPolicyRuleOptions) {
       this.loadBalancerId = createLoadBalancerListenerPolicyRuleOptions.loadBalancerId;
       this.listenerId = createLoadBalancerListenerPolicyRuleOptions.listenerId;
@@ -190,6 +195,8 @@ public class CreateLoadBalancerListenerPolicyRuleOptions extends GenericModel {
       return this;
     }
   }
+
+  protected CreateLoadBalancerListenerPolicyRuleOptions() { }
 
   protected CreateLoadBalancerListenerPolicyRuleOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.loadBalancerId,

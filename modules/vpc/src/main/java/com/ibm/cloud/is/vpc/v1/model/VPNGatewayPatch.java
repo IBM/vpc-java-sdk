@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -30,6 +30,11 @@ public class VPNGatewayPatch extends GenericModel {
   public static class Builder {
     private String name;
 
+    /**
+     * Instantiates a new Builder from an existing VPNGatewayPatch instance.
+     *
+     * @param vpnGatewayPatch the instance to initialize the Builder with
+     */
     private Builder(VPNGatewayPatch vpnGatewayPatch) {
       this.name = vpnGatewayPatch.name;
     }
@@ -60,6 +65,8 @@ public class VPNGatewayPatch extends GenericModel {
       return this;
     }
   }
+
+  protected VPNGatewayPatch() { }
 
   protected VPNGatewayPatch(Builder builder) {
     name = builder.name;

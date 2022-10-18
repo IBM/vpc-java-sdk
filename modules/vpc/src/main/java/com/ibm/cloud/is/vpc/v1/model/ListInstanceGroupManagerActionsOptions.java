@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -33,6 +33,11 @@ public class ListInstanceGroupManagerActionsOptions extends GenericModel {
     private String start;
     private Long limit;
 
+    /**
+     * Instantiates a new Builder from an existing ListInstanceGroupManagerActionsOptions instance.
+     *
+     * @param listInstanceGroupManagerActionsOptions the instance to initialize the Builder with
+     */
     private Builder(ListInstanceGroupManagerActionsOptions listInstanceGroupManagerActionsOptions) {
       this.instanceGroupId = listInstanceGroupManagerActionsOptions.instanceGroupId;
       this.instanceGroupManagerId = listInstanceGroupManagerActionsOptions.instanceGroupManagerId;
@@ -111,6 +116,8 @@ public class ListInstanceGroupManagerActionsOptions extends GenericModel {
     }
   }
 
+  protected ListInstanceGroupManagerActionsOptions() { }
+
   protected ListInstanceGroupManagerActionsOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.instanceGroupId,
       "instanceGroupId cannot be empty");
@@ -156,7 +163,7 @@ public class ListInstanceGroupManagerActionsOptions extends GenericModel {
   /**
    * Gets the start.
    *
-   * A server-supplied token determining what resource to start the page on.
+   * A server-provided token determining what resource to start the page on.
    *
    * @return the start
    */

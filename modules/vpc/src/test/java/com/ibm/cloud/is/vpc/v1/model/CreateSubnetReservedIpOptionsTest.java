@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -39,11 +39,13 @@ public class CreateSubnetReservedIpOptionsTest {
 
     CreateSubnetReservedIpOptions createSubnetReservedIpOptionsModel = new CreateSubnetReservedIpOptions.Builder()
       .subnetId("testString")
+      .address("192.168.3.4")
       .autoDelete(false)
       .name("my-reserved-ip")
       .target(reservedIpTargetPrototypeModel)
       .build();
     assertEquals(createSubnetReservedIpOptionsModel.subnetId(), "testString");
+    assertEquals(createSubnetReservedIpOptionsModel.address(), "192.168.3.4");
     assertEquals(createSubnetReservedIpOptionsModel.autoDelete(), Boolean.valueOf(false));
     assertEquals(createSubnetReservedIpOptionsModel.name(), "my-reserved-ip");
     assertEquals(createSubnetReservedIpOptionsModel.target(), reservedIpTargetPrototypeModel);

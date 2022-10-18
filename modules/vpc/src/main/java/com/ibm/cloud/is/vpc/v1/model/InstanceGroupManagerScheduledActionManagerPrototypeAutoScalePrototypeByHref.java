@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -26,6 +26,11 @@ public class InstanceGroupManagerScheduledActionManagerPrototypeAutoScalePrototy
     private Long minMembershipCount;
     private String href;
 
+    /**
+     * Instantiates a new Builder from an existing InstanceGroupManagerScheduledActionManagerPrototypeAutoScalePrototypeByHref instance.
+     *
+     * @param instanceGroupManagerScheduledActionManagerPrototypeAutoScalePrototypeByHref the instance to initialize the Builder with
+     */
     public Builder(InstanceGroupManagerScheduledActionManagerPrototypeAutoScalePrototype instanceGroupManagerScheduledActionManagerPrototypeAutoScalePrototypeByHref) {
       this.maxMembershipCount = instanceGroupManagerScheduledActionManagerPrototypeAutoScalePrototypeByHref.maxMembershipCount;
       this.minMembershipCount = instanceGroupManagerScheduledActionManagerPrototypeAutoScalePrototypeByHref.minMembershipCount;
@@ -89,6 +94,8 @@ public class InstanceGroupManagerScheduledActionManagerPrototypeAutoScalePrototy
       return this;
     }
   }
+
+  protected InstanceGroupManagerScheduledActionManagerPrototypeAutoScalePrototypeByHref() { }
 
   protected InstanceGroupManagerScheduledActionManagerPrototypeAutoScalePrototypeByHref(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.href,

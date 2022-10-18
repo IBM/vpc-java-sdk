@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -15,7 +15,9 @@ package com.ibm.cloud.is.vpc.v1.model;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * The rule to move this rule immediately before. Specify `null` to move this rule after all existing rules.
+ * The rule to move this rule immediately before.
+ *
+ * Specify `null` to move this rule after all existing rules.
  *
  * Classes which extend this class:
  * - NetworkACLRuleBeforePatchNetworkACLRuleIdentityById
@@ -26,8 +28,7 @@ public class NetworkACLRuleBeforePatch extends GenericModel {
   protected String id;
   protected String href;
 
-  protected NetworkACLRuleBeforePatch() {
-  }
+  protected NetworkACLRuleBeforePatch() { }
 
   /**
    * Gets the id.

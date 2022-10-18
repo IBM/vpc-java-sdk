@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -38,10 +38,12 @@ public class EndpointGatewayReservedIPReservedIPPrototypeTargetContextTest {
     assertEquals(subnetIdentityModel.id(), "7ec86020-1c6e-4889-b3f0-a15f2e50f87e");
 
     EndpointGatewayReservedIPReservedIPPrototypeTargetContext endpointGatewayReservedIpReservedIpPrototypeTargetContextModel = new EndpointGatewayReservedIPReservedIPPrototypeTargetContext.Builder()
+      .address("192.168.3.4")
       .autoDelete(false)
       .name("my-reserved-ip")
       .subnet(subnetIdentityModel)
       .build();
+    assertEquals(endpointGatewayReservedIpReservedIpPrototypeTargetContextModel.address(), "192.168.3.4");
     assertEquals(endpointGatewayReservedIpReservedIpPrototypeTargetContextModel.autoDelete(), Boolean.valueOf(false));
     assertEquals(endpointGatewayReservedIpReservedIpPrototypeTargetContextModel.name(), "my-reserved-ip");
     assertEquals(endpointGatewayReservedIpReservedIpPrototypeTargetContextModel.subnet(), subnetIdentityModel);
@@ -50,6 +52,7 @@ public class EndpointGatewayReservedIPReservedIPPrototypeTargetContextTest {
 
     EndpointGatewayReservedIPReservedIPPrototypeTargetContext endpointGatewayReservedIpReservedIpPrototypeTargetContextModelNew = TestUtilities.deserialize(json, EndpointGatewayReservedIPReservedIPPrototypeTargetContext.class);
     assertTrue(endpointGatewayReservedIpReservedIpPrototypeTargetContextModelNew instanceof EndpointGatewayReservedIPReservedIPPrototypeTargetContext);
+    assertEquals(endpointGatewayReservedIpReservedIpPrototypeTargetContextModelNew.address(), "192.168.3.4");
     assertEquals(endpointGatewayReservedIpReservedIpPrototypeTargetContextModelNew.autoDelete(), Boolean.valueOf(false));
     assertEquals(endpointGatewayReservedIpReservedIpPrototypeTargetContextModelNew.name(), "my-reserved-ip");
     assertEquals(endpointGatewayReservedIpReservedIpPrototypeTargetContextModelNew.subnet().toString(), subnetIdentityModel.toString());

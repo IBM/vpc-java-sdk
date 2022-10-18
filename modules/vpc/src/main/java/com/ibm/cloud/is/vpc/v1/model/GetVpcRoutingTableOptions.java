@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -29,6 +29,11 @@ public class GetVpcRoutingTableOptions extends GenericModel {
     private String vpcId;
     private String id;
 
+    /**
+     * Instantiates a new Builder from an existing GetVpcRoutingTableOptions instance.
+     *
+     * @param getVpcRoutingTableOptions the instance to initialize the Builder with
+     */
     private Builder(GetVpcRoutingTableOptions getVpcRoutingTableOptions) {
       this.vpcId = getVpcRoutingTableOptions.vpcId;
       this.id = getVpcRoutingTableOptions.id;
@@ -82,6 +87,8 @@ public class GetVpcRoutingTableOptions extends GenericModel {
       return this;
     }
   }
+
+  protected GetVpcRoutingTableOptions() { }
 
   protected GetVpcRoutingTableOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.vpcId,

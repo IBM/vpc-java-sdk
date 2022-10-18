@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -29,6 +29,11 @@ public class ListIpsecPoliciesOptions extends GenericModel {
     private String start;
     private Long limit;
 
+    /**
+     * Instantiates a new Builder from an existing ListIpsecPoliciesOptions instance.
+     *
+     * @param listIpsecPoliciesOptions the instance to initialize the Builder with
+     */
     private Builder(ListIpsecPoliciesOptions listIpsecPoliciesOptions) {
       this.start = listIpsecPoliciesOptions.start;
       this.limit = listIpsecPoliciesOptions.limit;
@@ -72,6 +77,8 @@ public class ListIpsecPoliciesOptions extends GenericModel {
     }
   }
 
+  protected ListIpsecPoliciesOptions() { }
+
   protected ListIpsecPoliciesOptions(Builder builder) {
     start = builder.start;
     limit = builder.limit;
@@ -89,7 +96,7 @@ public class ListIpsecPoliciesOptions extends GenericModel {
   /**
    * Gets the start.
    *
-   * A server-supplied token determining what resource to start the page on.
+   * A server-provided token determining what resource to start the page on.
    *
    * @return the start
    */

@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -71,10 +71,10 @@ public class VPNGateway extends GenericModel {
   protected String resourceType;
   protected String status;
   protected SubnetReference subnet;
+  protected VPCReference vpc;
   protected String mode;
 
-  protected VPNGateway() {
-  }
+  protected VPNGateway() { }
 
   /**
    * Gets the connections.
@@ -193,6 +193,17 @@ public class VPNGateway extends GenericModel {
    */
   public SubnetReference getSubnet() {
     return subnet;
+  }
+
+  /**
+   * Gets the vpc.
+   *
+   * The VPC this VPN gateway resides in.
+   *
+   * @return the vpc
+   */
+  public VPCReference getVpc() {
+    return vpc;
   }
 
   /**

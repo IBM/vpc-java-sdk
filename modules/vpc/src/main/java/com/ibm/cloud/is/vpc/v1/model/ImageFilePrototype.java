@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -27,6 +27,11 @@ public class ImageFilePrototype extends GenericModel {
   public static class Builder {
     private String href;
 
+    /**
+     * Instantiates a new Builder from an existing ImageFilePrototype instance.
+     *
+     * @param imageFilePrototype the instance to initialize the Builder with
+     */
     private Builder(ImageFilePrototype imageFilePrototype) {
       this.href = imageFilePrototype.href;
     }
@@ -67,6 +72,8 @@ public class ImageFilePrototype extends GenericModel {
     }
   }
 
+  protected ImageFilePrototype() { }
+
   protected ImageFilePrototype(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.href,
       "href cannot be null");
@@ -85,7 +92,10 @@ public class ImageFilePrototype extends GenericModel {
   /**
    * Gets the href.
    *
-   * The Cloud Object Store (COS) location of the image file.
+   * The Cloud Object Storage location of the image file.
+   *
+   * The image file format is specified by the file's extension, which must be either
+   * `qcow2` or `vhd`.
    *
    * @return the href
    */

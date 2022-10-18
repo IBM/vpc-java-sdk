@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -36,11 +36,14 @@ public class LoadBalancerPoolPatch extends GenericModel {
   }
 
   /**
-   * The protocol used for this load balancer pool.
+   * The protocol for this load balancer pool.
    *
-   * The enumerated values for this property are expected to expand in the future. When processing this property, check
-   * for and log unknown values. Optionally halt processing and surface the error, or bypass the pool on which the
-   * unexpected property value was encountered.
+   * Load balancers in the `network` family support `tcp` and `udp` (if `udp_supported` is `true`). Load balancers in
+   * the `application` family support `tcp`, `http` and
+   * `https`.
+   *
+   * If this pool is associated with a load balancer listener, the specified protocol must match, or be compatible with
+   * the listener's protocol. At present, the compatible protocols are `http` and `https`.
    */
   public interface Protocol {
     /** http. */
@@ -49,6 +52,8 @@ public class LoadBalancerPoolPatch extends GenericModel {
     String HTTPS = "https";
     /** tcp. */
     String TCP = "tcp";
+    /** udp. */
+    String UDP = "udp";
   }
 
   /**
@@ -89,6 +94,11 @@ public class LoadBalancerPoolPatch extends GenericModel {
     private String proxyProtocol;
     private LoadBalancerPoolSessionPersistencePatch sessionPersistence;
 
+    /**
+     * Instantiates a new Builder from an existing LoadBalancerPoolPatch instance.
+     *
+     * @param loadBalancerPoolPatch the instance to initialize the Builder with
+     */
     private Builder(LoadBalancerPoolPatch loadBalancerPoolPatch) {
       this.algorithm = loadBalancerPoolPatch.algorithm;
       this.healthMonitor = loadBalancerPoolPatch.healthMonitor;
@@ -180,6 +190,8 @@ public class LoadBalancerPoolPatch extends GenericModel {
     }
   }
 
+  protected LoadBalancerPoolPatch() { }
+
   protected LoadBalancerPoolPatch(Builder builder) {
     algorithm = builder.algorithm;
     healthMonitor = builder.healthMonitor;
@@ -234,11 +246,14 @@ public class LoadBalancerPoolPatch extends GenericModel {
   /**
    * Gets the protocol.
    *
-   * The protocol used for this load balancer pool.
+   * The protocol for this load balancer pool.
    *
-   * The enumerated values for this property are expected to expand in the future. When processing this property, check
-   * for and log unknown values. Optionally halt processing and surface the error, or bypass the pool on which the
-   * unexpected property value was encountered.
+   * Load balancers in the `network` family support `tcp` and `udp` (if `udp_supported` is `true`). Load balancers in
+   * the `application` family support `tcp`, `http` and
+   * `https`.
+   *
+   * If this pool is associated with a load balancer listener, the specified protocol must match, or be compatible with
+   * the listener's protocol. At present, the compatible protocols are `http` and `https`.
    *
    * @return the protocol
    */

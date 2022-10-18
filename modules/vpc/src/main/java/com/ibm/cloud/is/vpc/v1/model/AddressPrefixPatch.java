@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -34,6 +34,11 @@ public class AddressPrefixPatch extends GenericModel {
     private Boolean isDefault;
     private String name;
 
+    /**
+     * Instantiates a new Builder from an existing AddressPrefixPatch instance.
+     *
+     * @param addressPrefixPatch the instance to initialize the Builder with
+     */
     private Builder(AddressPrefixPatch addressPrefixPatch) {
       this.isDefault = addressPrefixPatch.isDefault;
       this.name = addressPrefixPatch.name;
@@ -76,6 +81,8 @@ public class AddressPrefixPatch extends GenericModel {
       return this;
     }
   }
+
+  protected AddressPrefixPatch() { }
 
   protected AddressPrefixPatch(Builder builder) {
     isDefault = builder.isDefault;

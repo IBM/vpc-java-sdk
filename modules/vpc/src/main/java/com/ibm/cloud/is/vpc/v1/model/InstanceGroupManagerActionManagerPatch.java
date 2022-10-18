@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -32,6 +32,11 @@ public class InstanceGroupManagerActionManagerPatch extends GenericModel {
     private Long maxMembershipCount;
     private Long minMembershipCount;
 
+    /**
+     * Instantiates a new Builder from an existing InstanceGroupManagerActionManagerPatch instance.
+     *
+     * @param instanceGroupManagerActionManagerPatch the instance to initialize the Builder with
+     */
     private Builder(InstanceGroupManagerActionManagerPatch instanceGroupManagerActionManagerPatch) {
       this.maxMembershipCount = instanceGroupManagerActionManagerPatch.maxMembershipCount;
       this.minMembershipCount = instanceGroupManagerActionManagerPatch.minMembershipCount;
@@ -75,6 +80,8 @@ public class InstanceGroupManagerActionManagerPatch extends GenericModel {
     }
   }
 
+  protected InstanceGroupManagerActionManagerPatch() { }
+
   protected InstanceGroupManagerActionManagerPatch(Builder builder) {
     maxMembershipCount = builder.maxMembershipCount;
     minMembershipCount = builder.minMembershipCount;
@@ -92,7 +99,7 @@ public class InstanceGroupManagerActionManagerPatch extends GenericModel {
   /**
    * Gets the maxMembershipCount.
    *
-   * The maximum number of members the instance group should have at the scheduled time.
+   * The desired maximum number of instance group members at the scheduled time.
    *
    * @return the maxMembershipCount
    */
@@ -103,7 +110,7 @@ public class InstanceGroupManagerActionManagerPatch extends GenericModel {
   /**
    * Gets the minMembershipCount.
    *
-   * The minimum number of members the instance group should have at the scheduled time.
+   * The desired minimum number of instance group members at the scheduled time.
    *
    * @return the minMembershipCount
    */

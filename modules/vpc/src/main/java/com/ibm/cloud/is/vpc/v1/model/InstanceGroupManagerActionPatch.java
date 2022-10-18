@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -42,6 +42,11 @@ public class InstanceGroupManagerActionPatch extends GenericModel {
     private String name;
     private Date runAt;
 
+    /**
+     * Instantiates a new Builder from an existing InstanceGroupManagerActionPatch instance.
+     *
+     * @param instanceGroupManagerActionPatch the instance to initialize the Builder with
+     */
     private Builder(InstanceGroupManagerActionPatch instanceGroupManagerActionPatch) {
       this.cronSpec = instanceGroupManagerActionPatch.cronSpec;
       this.group = instanceGroupManagerActionPatch.group;
@@ -121,6 +126,8 @@ public class InstanceGroupManagerActionPatch extends GenericModel {
     }
   }
 
+  protected InstanceGroupManagerActionPatch() { }
+
   protected InstanceGroupManagerActionPatch(Builder builder) {
     cronSpec = builder.cronSpec;
     group = builder.group;
@@ -171,8 +178,7 @@ public class InstanceGroupManagerActionPatch extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this instance group manager action. Names must be unique within the instance group
-   * manager.
+   * The user-defined name for this instance group manager action.
    *
    * @return the name
    */

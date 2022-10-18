@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -53,6 +53,7 @@ public class SubnetTest {
     assertNull(subnetModel.getNetworkAcl());
     assertNull(subnetModel.getPublicGateway());
     assertNull(subnetModel.getResourceGroup());
+    assertNull(subnetModel.getResourceType());
     assertNull(subnetModel.getRoutingTable());
     assertNull(subnetModel.getStatus());
     assertNull(subnetModel.getTotalIpv4AddressCount());

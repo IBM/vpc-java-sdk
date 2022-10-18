@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -16,6 +16,8 @@ package com.ibm.cloud.is.vpc.v1.model;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPReference;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.NetworkInterface;
+import com.ibm.cloud.is.vpc.v1.model.ReservedIPReference;
+import com.ibm.cloud.is.vpc.v1.model.ReservedIPReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.SubnetReference;
@@ -45,7 +47,7 @@ public class NetworkInterfaceTest {
     assertNull(networkInterfaceModel.getId());
     assertNull(networkInterfaceModel.getName());
     assertNull(networkInterfaceModel.getPortSpeed());
-    assertNull(networkInterfaceModel.getPrimaryIpv4Address());
+    assertNull(networkInterfaceModel.getPrimaryIp());
     assertNull(networkInterfaceModel.getResourceType());
     assertNull(networkInterfaceModel.getSecurityGroups());
     assertNull(networkInterfaceModel.getStatus());

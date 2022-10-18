@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -17,6 +17,8 @@ import com.ibm.cloud.is.vpc.v1.model.IP;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.SubnetReference;
 import com.ibm.cloud.is.vpc.v1.model.SubnetReferenceDeleted;
+import com.ibm.cloud.is.vpc.v1.model.VPCReference;
+import com.ibm.cloud.is.vpc.v1.model.VPCReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionReference;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayMember;
@@ -50,6 +52,7 @@ public class VPNGatewayRouteModeTest {
     assertNull(vpnGatewayRouteModeModel.getResourceType());
     assertNull(vpnGatewayRouteModeModel.getStatus());
     assertNull(vpnGatewayRouteModeModel.getSubnet());
+    assertNull(vpnGatewayRouteModeModel.getVpc());
     assertNull(vpnGatewayRouteModeModel.getMode());
   }
 }

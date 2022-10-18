@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -31,7 +31,21 @@ public class IPTest {
 
   @Test
   public void testIP() throws Throwable {
-    IP ipModel = new IP();
-    assertNull(ipModel.getAddress());
+    IP ipModel = new IP.Builder()
+      .address("192.168.3.4")
+      .build();
+    assertEquals(ipModel.address(), "192.168.3.4");
+
+    String json = TestUtilities.serialize(ipModel);
+
+    IP ipModelNew = TestUtilities.deserialize(json, IP.class);
+    assertTrue(ipModelNew instanceof IP);
+    assertEquals(ipModelNew.address(), "192.168.3.4");
   }
+
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testIPError() throws Throwable {
+    new IP.Builder().build();
+  }
+
 }

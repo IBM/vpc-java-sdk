@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -29,6 +29,11 @@ public class InstanceGroupManagerScheduledActionGroupPrototype extends GenericMo
   public static class Builder {
     private Long membershipCount;
 
+    /**
+     * Instantiates a new Builder from an existing InstanceGroupManagerScheduledActionGroupPrototype instance.
+     *
+     * @param instanceGroupManagerScheduledActionGroupPrototype the instance to initialize the Builder with
+     */
     private Builder(InstanceGroupManagerScheduledActionGroupPrototype instanceGroupManagerScheduledActionGroupPrototype) {
       this.membershipCount = instanceGroupManagerScheduledActionGroupPrototype.membershipCount;
     }
@@ -69,6 +74,8 @@ public class InstanceGroupManagerScheduledActionGroupPrototype extends GenericMo
     }
   }
 
+  protected InstanceGroupManagerScheduledActionGroupPrototype() { }
+
   protected InstanceGroupManagerScheduledActionGroupPrototype(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.membershipCount,
       "membershipCount cannot be null");
@@ -87,7 +94,7 @@ public class InstanceGroupManagerScheduledActionGroupPrototype extends GenericMo
   /**
    * Gets the membershipCount.
    *
-   * The number of members the instance group should have at the scheduled time.
+   * The desired number of instance group members at the scheduled time.
    *
    * @return the membershipCount
    */

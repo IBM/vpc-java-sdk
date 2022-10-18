@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -16,6 +16,7 @@ package com.ibm.cloud.is.vpc.v1.model;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerLogging;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerLoggingDatapath;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPatch;
+import com.ibm.cloud.is.vpc.v1.model.SubnetIdentityById;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -44,12 +45,19 @@ public class LoadBalancerPatchTest {
       .build();
     assertEquals(loadBalancerLoggingModel.datapath(), loadBalancerLoggingDatapathModel);
 
+    SubnetIdentityById subnetIdentityModel = new SubnetIdentityById.Builder()
+      .id("7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
+      .build();
+    assertEquals(subnetIdentityModel.id(), "7ec86020-1c6e-4889-b3f0-a15f2e50f87e");
+
     LoadBalancerPatch loadBalancerPatchModel = new LoadBalancerPatch.Builder()
       .logging(loadBalancerLoggingModel)
       .name("my-load-balancer")
+      .subnets(java.util.Arrays.asList(subnetIdentityModel))
       .build();
     assertEquals(loadBalancerPatchModel.logging(), loadBalancerLoggingModel);
     assertEquals(loadBalancerPatchModel.name(), "my-load-balancer");
+    assertEquals(loadBalancerPatchModel.subnets(), java.util.Arrays.asList(subnetIdentityModel));
 
     String json = TestUtilities.serialize(loadBalancerPatchModel);
 
@@ -68,15 +76,21 @@ public class LoadBalancerPatchTest {
       .datapath(loadBalancerLoggingDatapathModel)
       .build();
 
+    SubnetIdentityById subnetIdentityModel = new SubnetIdentityById.Builder()
+      .id("7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
+      .build();
+
     LoadBalancerPatch loadBalancerPatchModel = new LoadBalancerPatch.Builder()
       .logging(loadBalancerLoggingModel)
       .name("my-load-balancer")
+      .subnets(java.util.Arrays.asList(subnetIdentityModel))
       .build();
 
     Map<String, Object> mergePatch = loadBalancerPatchModel.asPatch();
 
     assertTrue(mergePatch.containsKey("logging"));
     assertEquals(mergePatch.get("name"), "my-load-balancer");
+    assertTrue(mergePatch.containsKey("subnets"));
   }
 
 }

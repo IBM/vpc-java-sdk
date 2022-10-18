@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -23,7 +23,13 @@ import com.ibm.cloud.sdk.core.util.GsonSingleton;
  */
 public class InstancePatch extends GenericModel {
 
+  @SerializedName("availability_policy")
+  protected InstanceAvailabilityPolicyPatch availabilityPolicy;
+  @SerializedName("metadata_service")
+  protected InstanceMetadataServicePatch metadataService;
   protected String name;
+  @SerializedName("placement_target")
+  protected InstancePlacementTargetPatch placementTarget;
   protected InstancePatchProfile profile;
   @SerializedName("total_volume_bandwidth")
   protected Long totalVolumeBandwidth;
@@ -32,12 +38,23 @@ public class InstancePatch extends GenericModel {
    * Builder.
    */
   public static class Builder {
+    private InstanceAvailabilityPolicyPatch availabilityPolicy;
+    private InstanceMetadataServicePatch metadataService;
     private String name;
+    private InstancePlacementTargetPatch placementTarget;
     private InstancePatchProfile profile;
     private Long totalVolumeBandwidth;
 
+    /**
+     * Instantiates a new Builder from an existing InstancePatch instance.
+     *
+     * @param instancePatch the instance to initialize the Builder with
+     */
     private Builder(InstancePatch instancePatch) {
+      this.availabilityPolicy = instancePatch.availabilityPolicy;
+      this.metadataService = instancePatch.metadataService;
       this.name = instancePatch.name;
+      this.placementTarget = instancePatch.placementTarget;
       this.profile = instancePatch.profile;
       this.totalVolumeBandwidth = instancePatch.totalVolumeBandwidth;
     }
@@ -58,6 +75,28 @@ public class InstancePatch extends GenericModel {
     }
 
     /**
+     * Set the availabilityPolicy.
+     *
+     * @param availabilityPolicy the availabilityPolicy
+     * @return the InstancePatch builder
+     */
+    public Builder availabilityPolicy(InstanceAvailabilityPolicyPatch availabilityPolicy) {
+      this.availabilityPolicy = availabilityPolicy;
+      return this;
+    }
+
+    /**
+     * Set the metadataService.
+     *
+     * @param metadataService the metadataService
+     * @return the InstancePatch builder
+     */
+    public Builder metadataService(InstanceMetadataServicePatch metadataService) {
+      this.metadataService = metadataService;
+      return this;
+    }
+
+    /**
      * Set the name.
      *
      * @param name the name
@@ -65,6 +104,17 @@ public class InstancePatch extends GenericModel {
      */
     public Builder name(String name) {
       this.name = name;
+      return this;
+    }
+
+    /**
+     * Set the placementTarget.
+     *
+     * @param placementTarget the placementTarget
+     * @return the InstancePatch builder
+     */
+    public Builder placementTarget(InstancePlacementTargetPatch placementTarget) {
+      this.placementTarget = placementTarget;
       return this;
     }
 
@@ -91,8 +141,13 @@ public class InstancePatch extends GenericModel {
     }
   }
 
+  protected InstancePatch() { }
+
   protected InstancePatch(Builder builder) {
+    availabilityPolicy = builder.availabilityPolicy;
+    metadataService = builder.metadataService;
     name = builder.name;
+    placementTarget = builder.placementTarget;
     profile = builder.profile;
     totalVolumeBandwidth = builder.totalVolumeBandwidth;
   }
@@ -107,6 +162,28 @@ public class InstancePatch extends GenericModel {
   }
 
   /**
+   * Gets the availabilityPolicy.
+   *
+   * The availability policy for this virtual server instance.
+   *
+   * @return the availabilityPolicy
+   */
+  public InstanceAvailabilityPolicyPatch availabilityPolicy() {
+    return availabilityPolicy;
+  }
+
+  /**
+   * Gets the metadataService.
+   *
+   * The metadata service configuration.
+   *
+   * @return the metadataService
+   */
+  public InstanceMetadataServicePatch metadataService() {
+    return metadataService;
+  }
+
+  /**
    * Gets the name.
    *
    * The user-defined name for this virtual server instance (and default system hostname).
@@ -115,6 +192,18 @@ public class InstancePatch extends GenericModel {
    */
   public String name() {
     return name;
+  }
+
+  /**
+   * Gets the placementTarget.
+   *
+   * The placement restrictions to use for the virtual server instance. For the placement
+   * restrictions to be changed, the instance `status` must be `stopping` or `stopped`.
+   *
+   * @return the placementTarget
+   */
+  public InstancePlacementTargetPatch placementTarget() {
+    return placementTarget;
   }
 
   /**
@@ -129,6 +218,7 @@ public class InstancePatch extends GenericModel {
    * - Be compatible with any `placement_target` constraints. For example, if the
    *   instance is placed on a dedicated host, the requested profile `family` must be
    *   the same as the dedicated host `family`.
+   * - Have the same `vcpu.architecture`.
    *
    * @return the profile
    */

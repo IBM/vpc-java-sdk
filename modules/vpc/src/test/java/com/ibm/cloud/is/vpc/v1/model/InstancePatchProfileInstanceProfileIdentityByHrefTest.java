@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -32,15 +32,15 @@ public class InstancePatchProfileInstanceProfileIdentityByHrefTest {
   @Test
   public void testInstancePatchProfileInstanceProfileIdentityByHref() throws Throwable {
     InstancePatchProfileInstanceProfileIdentityByHref instancePatchProfileInstanceProfileIdentityByHrefModel = new InstancePatchProfileInstanceProfileIdentityByHref.Builder()
-      .href("https://us-south.iaas.cloud.ibm.com/v1/instance/profiles/bc1-4x16")
+      .href("https://us-south.iaas.cloud.ibm.com/v1/instance/profiles/bx2-4x16")
       .build();
-    assertEquals(instancePatchProfileInstanceProfileIdentityByHrefModel.href(), "https://us-south.iaas.cloud.ibm.com/v1/instance/profiles/bc1-4x16");
+    assertEquals(instancePatchProfileInstanceProfileIdentityByHrefModel.href(), "https://us-south.iaas.cloud.ibm.com/v1/instance/profiles/bx2-4x16");
 
     String json = TestUtilities.serialize(instancePatchProfileInstanceProfileIdentityByHrefModel);
 
     InstancePatchProfileInstanceProfileIdentityByHref instancePatchProfileInstanceProfileIdentityByHrefModelNew = TestUtilities.deserialize(json, InstancePatchProfileInstanceProfileIdentityByHref.class);
     assertTrue(instancePatchProfileInstanceProfileIdentityByHrefModelNew instanceof InstancePatchProfileInstanceProfileIdentityByHref);
-    assertEquals(instancePatchProfileInstanceProfileIdentityByHrefModelNew.href(), "https://us-south.iaas.cloud.ibm.com/v1/instance/profiles/bc1-4x16");
+    assertEquals(instancePatchProfileInstanceProfileIdentityByHrefModelNew.href(), "https://us-south.iaas.cloud.ibm.com/v1/instance/profiles/bx2-4x16");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -31,6 +31,11 @@ public class UpdateKeyOptions extends GenericModel {
     private String id;
     private Map<String, Object> keyPatch;
 
+    /**
+     * Instantiates a new Builder from an existing UpdateKeyOptions instance.
+     *
+     * @param updateKeyOptions the instance to initialize the Builder with
+     */
     private Builder(UpdateKeyOptions updateKeyOptions) {
       this.id = updateKeyOptions.id;
       this.keyPatch = updateKeyOptions.keyPatch;
@@ -84,6 +89,8 @@ public class UpdateKeyOptions extends GenericModel {
       return this;
     }
   }
+
+  protected UpdateKeyOptions() { }
 
   protected UpdateKeyOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,

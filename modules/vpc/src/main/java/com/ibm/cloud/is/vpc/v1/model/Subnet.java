@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -28,6 +28,14 @@ public class Subnet extends GenericModel {
   public interface IpVersion {
     /** ipv4. */
     String IPV4 = "ipv4";
+  }
+
+  /**
+   * The resource type.
+   */
+  public interface ResourceType {
+    /** subnet. */
+    String SUBNET = "subnet";
   }
 
   /**
@@ -62,6 +70,8 @@ public class Subnet extends GenericModel {
   protected PublicGatewayReference publicGateway;
   @SerializedName("resource_group")
   protected ResourceGroupReference resourceGroup;
+  @SerializedName("resource_type")
+  protected String resourceType;
   @SerializedName("routing_table")
   protected RoutingTableReference routingTable;
   protected String status;
@@ -69,6 +79,8 @@ public class Subnet extends GenericModel {
   protected Long totalIpv4AddressCount;
   protected VPCReference vpc;
   protected ZoneReference zone;
+
+  protected Subnet() { }
 
   /**
    * Gets the availableIpv4AddressCount.
@@ -173,7 +185,7 @@ public class Subnet extends GenericModel {
   /**
    * Gets the publicGateway.
    *
-   * The public gateway to handle internet bound traffic for this subnet.
+   * The public gateway to use for internet-bound traffic for this subnet.
    *
    * @return the publicGateway
    */
@@ -190,6 +202,17 @@ public class Subnet extends GenericModel {
    */
   public ResourceGroupReference getResourceGroup() {
     return resourceGroup;
+  }
+
+  /**
+   * Gets the resourceType.
+   *
+   * The resource type.
+   *
+   * @return the resourceType
+   */
+  public String getResourceType() {
+    return resourceType;
   }
 
   /**
@@ -219,8 +242,8 @@ public class Subnet extends GenericModel {
    *
    * The total number of IPv4 addresses in this subnet.
    *
-   * Note: This is calculated as 2&lt;sup&gt;(32 − prefix length)&lt;/sup&gt;. For example, the prefix length `/24`
-   * gives:&lt;br&gt; 2&lt;sup&gt;(32 − 24)&lt;/sup&gt; = 2&lt;sup&gt;8&lt;/sup&gt; = 256 addresses.
+   * Note: This is calculated as 2&lt;sup&gt;(32 - prefix length)&lt;/sup&gt;. For example, the prefix length `/24`
+   * gives:&lt;br&gt; 2&lt;sup&gt;(32 - 24)&lt;/sup&gt; = 2&lt;sup&gt;8&lt;/sup&gt; = 256 addresses.
    *
    * @return the totalIpv4AddressCount
    */
@@ -231,7 +254,7 @@ public class Subnet extends GenericModel {
   /**
    * Gets the vpc.
    *
-   * The VPC this subnet is a part of.
+   * The VPC this subnet resides in.
    *
    * @return the vpc
    */

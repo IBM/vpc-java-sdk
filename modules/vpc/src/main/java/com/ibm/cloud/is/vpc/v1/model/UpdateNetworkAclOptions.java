@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -31,6 +31,11 @@ public class UpdateNetworkAclOptions extends GenericModel {
     private String id;
     private Map<String, Object> networkAclPatch;
 
+    /**
+     * Instantiates a new Builder from an existing UpdateNetworkAclOptions instance.
+     *
+     * @param updateNetworkAclOptions the instance to initialize the Builder with
+     */
     private Builder(UpdateNetworkAclOptions updateNetworkAclOptions) {
       this.id = updateNetworkAclOptions.id;
       this.networkAclPatch = updateNetworkAclOptions.networkAclPatch;
@@ -84,6 +89,8 @@ public class UpdateNetworkAclOptions extends GenericModel {
       return this;
     }
   }
+
+  protected UpdateNetworkAclOptions() { }
 
   protected UpdateNetworkAclOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,

@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -25,6 +25,11 @@ public class LoadBalancerListenerPolicyTargetPatchLoadBalancerListenerPolicyRedi
     private Long httpStatusCode;
     private String url;
 
+    /**
+     * Instantiates a new Builder from an existing LoadBalancerListenerPolicyTargetPatchLoadBalancerListenerPolicyRedirectURLPatch instance.
+     *
+     * @param loadBalancerListenerPolicyTargetPatchLoadBalancerListenerPolicyRedirectUrlPatch the instance to initialize the Builder with
+     */
     public Builder(LoadBalancerListenerPolicyTargetPatch loadBalancerListenerPolicyTargetPatchLoadBalancerListenerPolicyRedirectUrlPatch) {
       this.httpStatusCode = loadBalancerListenerPolicyTargetPatchLoadBalancerListenerPolicyRedirectUrlPatch.httpStatusCode;
       this.url = loadBalancerListenerPolicyTargetPatchLoadBalancerListenerPolicyRedirectUrlPatch.url;
@@ -67,6 +72,8 @@ public class LoadBalancerListenerPolicyTargetPatchLoadBalancerListenerPolicyRedi
       return this;
     }
   }
+
+  protected LoadBalancerListenerPolicyTargetPatchLoadBalancerListenerPolicyRedirectURLPatch() { }
 
   protected LoadBalancerListenerPolicyTargetPatchLoadBalancerListenerPolicyRedirectURLPatch(Builder builder) {
     httpStatusCode = builder.httpStatusCode;

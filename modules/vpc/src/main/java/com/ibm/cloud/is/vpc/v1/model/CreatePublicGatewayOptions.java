@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2020, 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -35,6 +35,11 @@ public class CreatePublicGatewayOptions extends GenericModel {
     private String name;
     private ResourceGroupIdentity resourceGroup;
 
+    /**
+     * Instantiates a new Builder from an existing CreatePublicGatewayOptions instance.
+     *
+     * @param createPublicGatewayOptions the instance to initialize the Builder with
+     */
     private Builder(CreatePublicGatewayOptions createPublicGatewayOptions) {
       this.vpc = createPublicGatewayOptions.vpc;
       this.zone = createPublicGatewayOptions.zone;
@@ -125,6 +130,8 @@ public class CreatePublicGatewayOptions extends GenericModel {
     }
   }
 
+  protected CreatePublicGatewayOptions() { }
+
   protected CreatePublicGatewayOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.vpc,
       "vpc cannot be null");
@@ -149,7 +156,7 @@ public class CreatePublicGatewayOptions extends GenericModel {
   /**
    * Gets the vpc.
    *
-   * The VPC this public gateway will serve.
+   * The VPC this public gateway will reside in.
    *
    * @return the vpc
    */
