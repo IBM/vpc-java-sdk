@@ -61,7 +61,7 @@ public class InstanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSp
 
   @Test(expectedExceptions = IllegalArgumentException.class)
   public void testInstanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSpecByManagerError() throws Throwable {
-    new InstanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSpecByManager.Builder().build();
+    new InstanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSpecByManager.Builder().build(); 
   }
 
 }
