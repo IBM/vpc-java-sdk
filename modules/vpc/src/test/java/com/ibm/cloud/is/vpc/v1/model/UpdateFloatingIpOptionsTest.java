@@ -33,10 +33,10 @@ public class UpdateFloatingIpOptionsTest {
   public void testUpdateFloatingIpOptions() throws Throwable {
     UpdateFloatingIpOptions updateFloatingIpOptionsModel = new UpdateFloatingIpOptions.Builder()
       .id("testString")
-      .floatingIpPatch(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .floatingIpPatch(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .build();
     assertEquals(updateFloatingIpOptionsModel.id(), "testString");
-    assertEquals(updateFloatingIpOptionsModel.floatingIpPatch(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
+    assertEquals(updateFloatingIpOptionsModel.floatingIpPatch(), java.util.Collections.singletonMap("anyKey", "anyValue"));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

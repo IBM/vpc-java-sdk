@@ -33,11 +33,11 @@ public class UpdateLoadBalancerOptionsTest {
   public void testUpdateLoadBalancerOptions() throws Throwable {
     UpdateLoadBalancerOptions updateLoadBalancerOptionsModel = new UpdateLoadBalancerOptions.Builder()
       .id("testString")
-      .loadBalancerPatch(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .loadBalancerPatch(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .ifMatch("W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"")
       .build();
     assertEquals(updateLoadBalancerOptionsModel.id(), "testString");
-    assertEquals(updateLoadBalancerOptionsModel.loadBalancerPatch(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
+    assertEquals(updateLoadBalancerOptionsModel.loadBalancerPatch(), java.util.Collections.singletonMap("anyKey", "anyValue"));
     assertEquals(updateLoadBalancerOptionsModel.ifMatch(), "W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"");
   }
 

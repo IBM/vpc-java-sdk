@@ -1955,6 +1955,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .acceptRoutesFrom(java.util.Arrays.asList(resourceFilterModel))
         .name("my-routing-table-2")
         .routeDirectLinkIngress(false)
+        .routeInternetIngress(false)
         .routeTransitGatewayIngress(false)
         .routeVpcZoneIngress(false)
         .routes(java.util.Arrays.asList(routePrototypeModel))
@@ -2009,6 +2010,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .acceptRoutesFrom(java.util.Arrays.asList(resourceFilterModel))
         .name("my-routing-table-2")
         .routeDirectLinkIngress(true)
+        .routeInternetIngress(true)
         .routeTransitGatewayIngress(true)
         .routeVpcZoneIngress(true)
         .build();
@@ -4536,7 +4538,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       InstanceGroupManagerActionPatch instanceGroupManagerActionPatchModel = new InstanceGroupManagerActionPatch.Builder()
-        .cronSpec("*/5 1,2,3 * * *")
+        .cronSpec("30 */2 * * 1-5")
         .group(instanceGroupManagerActionGroupPatchModel)
         .manager(instanceGroupManagerActionManagerPatchModel)
         .name("my-instance-group-manager-action")
@@ -5340,7 +5342,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .active(true)
         .attachUserTags(java.util.Arrays.asList("my-daily-backup-plan"))
         .copyUserTags(true)
-        .cronSpec("*/5 1,2,3 * * *")
+        .cronSpec("30 */2 * * 1-5")
         .deletionTrigger(backupPolicyPlanDeletionTriggerPrototypeModel)
         .name("my-policy-plan")
         .build();
@@ -5405,7 +5407,7 @@ public class VpcIT extends SdkIntegrationTestBase {
 
       CreateBackupPolicyPlanOptions createBackupPolicyPlanOptions = new CreateBackupPolicyPlanOptions.Builder()
         .backupPolicyId("testString")
-        .cronSpec("*/5 1,2,3 * * *")
+        .cronSpec("30 */2 * * 1-5")
         .active(true)
         .attachUserTags(java.util.Arrays.asList("my-daily-backup-plan"))
         .copyUserTags(true)
@@ -5463,7 +5465,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .active(true)
         .attachUserTags(java.util.Arrays.asList("my-daily-backup-plan"))
         .copyUserTags(true)
-        .cronSpec("*/5 1,2,3 * * *")
+        .cronSpec("30 */2 * * 1-5")
         .deletionTrigger(backupPolicyPlanDeletionTriggerPatchModel)
         .name("my-policy-plan")
         .build();

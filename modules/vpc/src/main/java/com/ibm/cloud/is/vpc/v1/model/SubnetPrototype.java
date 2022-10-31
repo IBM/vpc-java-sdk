@@ -115,7 +115,8 @@ public class SubnetPrototype extends GenericModel {
    *
    * The routing table to use for this subnet. If unspecified, the default routing table
    * for the VPC is used. The routing table properties `route_direct_link_ingress`,
-   * `route_transit_gateway_ingress`, and `route_vpc_zone_ingress` must be `false`.
+   * `route_internet_ingress`, `route_transit_gateway_ingress`, and
+   * `route_vpc_zone_ingress` must be `false`.
    *
    * @return the routingTable
    */

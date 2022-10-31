@@ -171,8 +171,9 @@ public class CreateVpcAddressPrefixOptions extends GenericModel {
   /**
    * Gets the cidr.
    *
-   * The IPv4 range of the address prefix, expressed in CIDR format. The request must not overlap with any existing
+   * The IPv4 range of the address prefix, expressed in CIDR format. The range must not overlap with any existing
    * address prefixes in the VPC or any of the following reserved address ranges:
+   *
    *   - `127.0.0.0/8` (IPv4 loopback addresses)
    *   - `161.26.0.0/16` (IBM services)
    *   - `166.8.0.0/14` (Cloud Service Endpoints)

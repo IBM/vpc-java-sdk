@@ -35,12 +35,12 @@ public class UpdateInstanceGroupManagerActionOptionsTest {
       .instanceGroupId("testString")
       .instanceGroupManagerId("testString")
       .id("testString")
-      .instanceGroupManagerActionPatch(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .instanceGroupManagerActionPatch(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .build();
     assertEquals(updateInstanceGroupManagerActionOptionsModel.instanceGroupId(), "testString");
     assertEquals(updateInstanceGroupManagerActionOptionsModel.instanceGroupManagerId(), "testString");
     assertEquals(updateInstanceGroupManagerActionOptionsModel.id(), "testString");
-    assertEquals(updateInstanceGroupManagerActionOptionsModel.instanceGroupManagerActionPatch(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
+    assertEquals(updateInstanceGroupManagerActionOptionsModel.instanceGroupManagerActionPatch(), java.util.Collections.singletonMap("anyKey", "anyValue"));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

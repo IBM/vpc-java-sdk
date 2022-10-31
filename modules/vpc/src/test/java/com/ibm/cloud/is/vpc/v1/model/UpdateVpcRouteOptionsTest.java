@@ -34,11 +34,11 @@ public class UpdateVpcRouteOptionsTest {
     UpdateVpcRouteOptions updateVpcRouteOptionsModel = new UpdateVpcRouteOptions.Builder()
       .vpcId("testString")
       .id("testString")
-      .routePatch(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .routePatch(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .build();
     assertEquals(updateVpcRouteOptionsModel.vpcId(), "testString");
     assertEquals(updateVpcRouteOptionsModel.id(), "testString");
-    assertEquals(updateVpcRouteOptionsModel.routePatch(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
+    assertEquals(updateVpcRouteOptionsModel.routePatch(), java.util.Collections.singletonMap("anyKey", "anyValue"));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

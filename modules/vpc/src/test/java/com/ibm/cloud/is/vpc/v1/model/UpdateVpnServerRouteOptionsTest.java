@@ -34,11 +34,11 @@ public class UpdateVpnServerRouteOptionsTest {
     UpdateVpnServerRouteOptions updateVpnServerRouteOptionsModel = new UpdateVpnServerRouteOptions.Builder()
       .vpnServerId("testString")
       .id("testString")
-      .vpnServerRoutePatch(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .vpnServerRoutePatch(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .build();
     assertEquals(updateVpnServerRouteOptionsModel.vpnServerId(), "testString");
     assertEquals(updateVpnServerRouteOptionsModel.id(), "testString");
-    assertEquals(updateVpnServerRouteOptionsModel.vpnServerRoutePatch(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
+    assertEquals(updateVpnServerRouteOptionsModel.vpnServerRoutePatch(), java.util.Collections.singletonMap("anyKey", "anyValue"));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

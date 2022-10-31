@@ -84,7 +84,8 @@ public class RoutePatch extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this route. Names must be unique within the VPC routing table the route resides in.
+   * The user-defined name for this route. Names must be unique within the VPC routing table the route resides in. Names
+   * starting with `ibm-` are not allowed.
    *
    * @return the name
    */

@@ -33,10 +33,10 @@ public class UpdateInstanceTemplateOptionsTest {
   public void testUpdateInstanceTemplateOptions() throws Throwable {
     UpdateInstanceTemplateOptions updateInstanceTemplateOptionsModel = new UpdateInstanceTemplateOptions.Builder()
       .id("testString")
-      .instanceTemplatePatch(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .instanceTemplatePatch(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .build();
     assertEquals(updateInstanceTemplateOptionsModel.id(), "testString");
-    assertEquals(updateInstanceTemplateOptionsModel.instanceTemplatePatch(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
+    assertEquals(updateInstanceTemplateOptionsModel.instanceTemplatePatch(), java.util.Collections.singletonMap("anyKey", "anyValue"));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

@@ -243,8 +243,9 @@ public class CreateVpcRouteOptions extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this route. If unspecified, the name will be a hyphenated list of randomly-selected
-   * words. Names must be unique within the VPC routing table the route resides in.
+   * The user-defined name for this route. Names starting with `ibm-` are not allowed. If unspecified, the name will be
+   * a hyphenated list of randomly-selected words. Names must be unique within the VPC routing table the route resides
+   * in.
    *
    * @return the name
    */

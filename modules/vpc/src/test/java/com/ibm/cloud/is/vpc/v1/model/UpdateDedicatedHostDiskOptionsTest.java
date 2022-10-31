@@ -34,11 +34,11 @@ public class UpdateDedicatedHostDiskOptionsTest {
     UpdateDedicatedHostDiskOptions updateDedicatedHostDiskOptionsModel = new UpdateDedicatedHostDiskOptions.Builder()
       .dedicatedHostId("testString")
       .id("testString")
-      .dedicatedHostDiskPatch(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .dedicatedHostDiskPatch(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .build();
     assertEquals(updateDedicatedHostDiskOptionsModel.dedicatedHostId(), "testString");
     assertEquals(updateDedicatedHostDiskOptionsModel.id(), "testString");
-    assertEquals(updateDedicatedHostDiskOptionsModel.dedicatedHostDiskPatch(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
+    assertEquals(updateDedicatedHostDiskOptionsModel.dedicatedHostDiskPatch(), java.util.Collections.singletonMap("anyKey", "anyValue"));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

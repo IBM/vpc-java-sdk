@@ -33,10 +33,10 @@ public class UpdatePublicGatewayOptionsTest {
   public void testUpdatePublicGatewayOptions() throws Throwable {
     UpdatePublicGatewayOptions updatePublicGatewayOptionsModel = new UpdatePublicGatewayOptions.Builder()
       .id("testString")
-      .publicGatewayPatch(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .publicGatewayPatch(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .build();
     assertEquals(updatePublicGatewayOptionsModel.id(), "testString");
-    assertEquals(updatePublicGatewayOptionsModel.publicGatewayPatch(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
+    assertEquals(updatePublicGatewayOptionsModel.publicGatewayPatch(), java.util.Collections.singletonMap("anyKey", "anyValue"));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

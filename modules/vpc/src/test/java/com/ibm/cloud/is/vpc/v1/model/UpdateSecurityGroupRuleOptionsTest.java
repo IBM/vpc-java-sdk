@@ -34,11 +34,11 @@ public class UpdateSecurityGroupRuleOptionsTest {
     UpdateSecurityGroupRuleOptions updateSecurityGroupRuleOptionsModel = new UpdateSecurityGroupRuleOptions.Builder()
       .securityGroupId("testString")
       .id("testString")
-      .securityGroupRulePatch(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .securityGroupRulePatch(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .build();
     assertEquals(updateSecurityGroupRuleOptionsModel.securityGroupId(), "testString");
     assertEquals(updateSecurityGroupRuleOptionsModel.id(), "testString");
-    assertEquals(updateSecurityGroupRuleOptionsModel.securityGroupRulePatch(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
+    assertEquals(updateSecurityGroupRuleOptionsModel.securityGroupRulePatch(), java.util.Collections.singletonMap("anyKey", "anyValue"));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

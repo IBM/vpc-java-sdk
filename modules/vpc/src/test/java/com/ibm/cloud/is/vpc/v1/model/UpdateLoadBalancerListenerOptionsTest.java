@@ -34,11 +34,11 @@ public class UpdateLoadBalancerListenerOptionsTest {
     UpdateLoadBalancerListenerOptions updateLoadBalancerListenerOptionsModel = new UpdateLoadBalancerListenerOptions.Builder()
       .loadBalancerId("testString")
       .id("testString")
-      .loadBalancerListenerPatch(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .loadBalancerListenerPatch(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .build();
     assertEquals(updateLoadBalancerListenerOptionsModel.loadBalancerId(), "testString");
     assertEquals(updateLoadBalancerListenerOptionsModel.id(), "testString");
-    assertEquals(updateLoadBalancerListenerOptionsModel.loadBalancerListenerPatch(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
+    assertEquals(updateLoadBalancerListenerOptionsModel.loadBalancerListenerPatch(), java.util.Collections.singletonMap("anyKey", "anyValue"));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

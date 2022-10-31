@@ -167,8 +167,8 @@ public class SubnetPatch extends GenericModel {
    * Gets the routingTable.
    *
    * The routing table to use for this subnet.  The routing table properties
-   * `route_direct_link_ingress`, `route_transit_gateway_ingress`, and
-   * `route_vpc_zone_ingress` must be `false`.
+   * `route_direct_link_ingress`, `route_internet_ingress`,
+   * `route_transit_gateway_ingress`, and `route_vpc_zone_ingress` must be `false`.
    *
    * @return the routingTable
    */

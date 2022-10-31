@@ -34,11 +34,11 @@ public class UpdateVpnGatewayConnectionOptionsTest {
     UpdateVpnGatewayConnectionOptions updateVpnGatewayConnectionOptionsModel = new UpdateVpnGatewayConnectionOptions.Builder()
       .vpnGatewayId("testString")
       .id("testString")
-      .vpnGatewayConnectionPatch(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .vpnGatewayConnectionPatch(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .build();
     assertEquals(updateVpnGatewayConnectionOptionsModel.vpnGatewayId(), "testString");
     assertEquals(updateVpnGatewayConnectionOptionsModel.id(), "testString");
-    assertEquals(updateVpnGatewayConnectionOptionsModel.vpnGatewayConnectionPatch(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
+    assertEquals(updateVpnGatewayConnectionOptionsModel.vpnGatewayConnectionPatch(), java.util.Collections.singletonMap("anyKey", "anyValue"));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

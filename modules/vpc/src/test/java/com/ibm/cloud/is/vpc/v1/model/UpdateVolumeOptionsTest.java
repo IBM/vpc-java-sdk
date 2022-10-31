@@ -33,11 +33,11 @@ public class UpdateVolumeOptionsTest {
   public void testUpdateVolumeOptions() throws Throwable {
     UpdateVolumeOptions updateVolumeOptionsModel = new UpdateVolumeOptions.Builder()
       .id("testString")
-      .volumePatch(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .volumePatch(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .ifMatch("W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"")
       .build();
     assertEquals(updateVolumeOptionsModel.id(), "testString");
-    assertEquals(updateVolumeOptionsModel.volumePatch(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
+    assertEquals(updateVolumeOptionsModel.volumePatch(), java.util.Collections.singletonMap("anyKey", "anyValue"));
     assertEquals(updateVolumeOptionsModel.ifMatch(), "W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"");
   }
 

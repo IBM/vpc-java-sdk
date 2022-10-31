@@ -163,7 +163,7 @@ public class BareMetalServerProfile extends GenericModel {
   /**
    * Gets the supportedTrustedPlatformModuleModes.
    *
-   * The supported trusted platform module (TPM) modes for this bare metal server profile.
+   * The supported trusted platform module modes for this bare metal server profile.
    *
    * @return the supportedTrustedPlatformModuleModes
    */

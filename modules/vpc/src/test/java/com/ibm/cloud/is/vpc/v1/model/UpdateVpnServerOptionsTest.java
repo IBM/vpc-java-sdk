@@ -33,11 +33,11 @@ public class UpdateVpnServerOptionsTest {
   public void testUpdateVpnServerOptions() throws Throwable {
     UpdateVpnServerOptions updateVpnServerOptionsModel = new UpdateVpnServerOptions.Builder()
       .id("testString")
-      .vpnServerPatch(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .vpnServerPatch(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .ifMatch("W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"")
       .build();
     assertEquals(updateVpnServerOptionsModel.id(), "testString");
-    assertEquals(updateVpnServerOptionsModel.vpnServerPatch(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
+    assertEquals(updateVpnServerOptionsModel.vpnServerPatch(), java.util.Collections.singletonMap("anyKey", "anyValue"));
     assertEquals(updateVpnServerOptionsModel.ifMatch(), "W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"");
   }
 

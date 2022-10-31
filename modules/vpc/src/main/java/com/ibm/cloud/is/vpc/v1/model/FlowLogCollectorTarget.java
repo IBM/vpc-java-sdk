@@ -16,9 +16,17 @@ import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * The target this collector is collecting flow logs for. If the target is an instance, subnet, or VPC, flow logs will
- * not be collected for any network interfaces within the target that are themselves the target of a more specific flow
- * log collector.
+ * The target this collector is collecting flow logs for.
+ * - If the target is a network interface, flow logs will be collected
+ *   for that network interface.
+ * - If the target is a virtual server instance, flow logs will be collected
+ *   for all network interfaces attached to that instance.
+ * - If the target is a subnet, flow logs will be collected
+ *   for all network interfaces attached to that subnet.
+ * - If the target is a VPC, flow logs will be collected for network interfaces
+ *   attached to all subnets within that VPC. If the target is an instance, subnet, or VPC, flow logs will not be
+ * collected for any network interfaces within the target that are themselves the target of a more specific flow log
+ * collector.
  *
  * Classes which extend this class:
  * - FlowLogCollectorTargetNetworkInterfaceReferenceTargetContext

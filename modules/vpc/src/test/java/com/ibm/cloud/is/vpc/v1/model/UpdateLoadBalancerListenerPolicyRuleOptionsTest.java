@@ -36,13 +36,13 @@ public class UpdateLoadBalancerListenerPolicyRuleOptionsTest {
       .listenerId("testString")
       .policyId("testString")
       .id("testString")
-      .loadBalancerListenerPolicyRulePatch(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .loadBalancerListenerPolicyRulePatch(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .build();
     assertEquals(updateLoadBalancerListenerPolicyRuleOptionsModel.loadBalancerId(), "testString");
     assertEquals(updateLoadBalancerListenerPolicyRuleOptionsModel.listenerId(), "testString");
     assertEquals(updateLoadBalancerListenerPolicyRuleOptionsModel.policyId(), "testString");
     assertEquals(updateLoadBalancerListenerPolicyRuleOptionsModel.id(), "testString");
-    assertEquals(updateLoadBalancerListenerPolicyRuleOptionsModel.loadBalancerListenerPolicyRulePatch(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
+    assertEquals(updateLoadBalancerListenerPolicyRuleOptionsModel.loadBalancerListenerPolicyRulePatch(), java.util.Collections.singletonMap("anyKey", "anyValue"));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

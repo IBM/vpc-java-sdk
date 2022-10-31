@@ -45,14 +45,14 @@ public class CreateBackupPolicyOptionsTest {
       .active(true)
       .attachUserTags(java.util.Arrays.asList("my-daily-backup-plan"))
       .copyUserTags(true)
-      .cronSpec("*/5 1,2,3 * * *")
+      .cronSpec("30 */2 * * 1-5")
       .deletionTrigger(backupPolicyPlanDeletionTriggerPrototypeModel)
       .name("my-policy-plan")
       .build();
     assertEquals(backupPolicyPlanPrototypeModel.active(), Boolean.valueOf(true));
     assertEquals(backupPolicyPlanPrototypeModel.attachUserTags(), java.util.Arrays.asList("my-daily-backup-plan"));
     assertEquals(backupPolicyPlanPrototypeModel.copyUserTags(), Boolean.valueOf(true));
-    assertEquals(backupPolicyPlanPrototypeModel.cronSpec(), "*/5 1,2,3 * * *");
+    assertEquals(backupPolicyPlanPrototypeModel.cronSpec(), "30 */2 * * 1-5");
     assertEquals(backupPolicyPlanPrototypeModel.deletionTrigger(), backupPolicyPlanDeletionTriggerPrototypeModel);
     assertEquals(backupPolicyPlanPrototypeModel.name(), "my-policy-plan");
 

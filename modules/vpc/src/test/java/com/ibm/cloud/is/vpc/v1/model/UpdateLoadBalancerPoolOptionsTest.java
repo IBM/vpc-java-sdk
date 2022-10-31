@@ -34,11 +34,11 @@ public class UpdateLoadBalancerPoolOptionsTest {
     UpdateLoadBalancerPoolOptions updateLoadBalancerPoolOptionsModel = new UpdateLoadBalancerPoolOptions.Builder()
       .loadBalancerId("testString")
       .id("testString")
-      .loadBalancerPoolPatch(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .loadBalancerPoolPatch(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .build();
     assertEquals(updateLoadBalancerPoolOptionsModel.loadBalancerId(), "testString");
     assertEquals(updateLoadBalancerPoolOptionsModel.id(), "testString");
-    assertEquals(updateLoadBalancerPoolOptionsModel.loadBalancerPoolPatch(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
+    assertEquals(updateLoadBalancerPoolOptionsModel.loadBalancerPoolPatch(), java.util.Collections.singletonMap("anyKey", "anyValue"));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

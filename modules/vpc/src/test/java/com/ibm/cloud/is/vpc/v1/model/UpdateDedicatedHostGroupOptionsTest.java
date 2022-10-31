@@ -33,10 +33,10 @@ public class UpdateDedicatedHostGroupOptionsTest {
   public void testUpdateDedicatedHostGroupOptions() throws Throwable {
     UpdateDedicatedHostGroupOptions updateDedicatedHostGroupOptionsModel = new UpdateDedicatedHostGroupOptions.Builder()
       .id("testString")
-      .dedicatedHostGroupPatch(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .dedicatedHostGroupPatch(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .build();
     assertEquals(updateDedicatedHostGroupOptionsModel.id(), "testString");
-    assertEquals(updateDedicatedHostGroupOptionsModel.dedicatedHostGroupPatch(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
+    assertEquals(updateDedicatedHostGroupOptionsModel.dedicatedHostGroupPatch(), java.util.Collections.singletonMap("anyKey", "anyValue"));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

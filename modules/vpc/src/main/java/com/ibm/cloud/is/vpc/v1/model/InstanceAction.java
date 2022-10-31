@@ -68,7 +68,9 @@ public class InstanceAction extends GenericModel {
    * The date and time that the action was completed.
    *
    * @return the completedAt
+   * @deprecated this method is deprecated and may be removed in a future release
    */
+  @Deprecated
   public Date getCompletedAt() {
     return completedAt;
   }
@@ -102,7 +104,9 @@ public class InstanceAction extends GenericModel {
    * The URL for this instance action.
    *
    * @return the href
+   * @deprecated this method is deprecated and may be removed in a future release
    */
+  @Deprecated
   public String getHref() {
     return href;
   }
@@ -113,7 +117,9 @@ public class InstanceAction extends GenericModel {
    * The identifier for this instance action.
    *
    * @return the id
+   * @deprecated this method is deprecated and may be removed in a future release
    */
+  @Deprecated
   public String getId() {
     return id;
   }
@@ -124,7 +130,9 @@ public class InstanceAction extends GenericModel {
    * The date and time that the action was started.
    *
    * @return the startedAt
+   * @deprecated this method is deprecated and may be removed in a future release
    */
+  @Deprecated
   public Date getStartedAt() {
     return startedAt;
   }
@@ -135,7 +143,9 @@ public class InstanceAction extends GenericModel {
    * The current status of this action.
    *
    * @return the status
+   * @deprecated this method is deprecated and may be removed in a future release
    */
+  @Deprecated
   public String getStatus() {
     return status;
   }

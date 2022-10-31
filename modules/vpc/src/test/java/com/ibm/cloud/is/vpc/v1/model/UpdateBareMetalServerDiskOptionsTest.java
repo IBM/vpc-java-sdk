@@ -34,11 +34,11 @@ public class UpdateBareMetalServerDiskOptionsTest {
     UpdateBareMetalServerDiskOptions updateBareMetalServerDiskOptionsModel = new UpdateBareMetalServerDiskOptions.Builder()
       .bareMetalServerId("testString")
       .id("testString")
-      .bareMetalServerDiskPatch(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .bareMetalServerDiskPatch(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .build();
     assertEquals(updateBareMetalServerDiskOptionsModel.bareMetalServerId(), "testString");
     assertEquals(updateBareMetalServerDiskOptionsModel.id(), "testString");
-    assertEquals(updateBareMetalServerDiskOptionsModel.bareMetalServerDiskPatch(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
+    assertEquals(updateBareMetalServerDiskOptionsModel.bareMetalServerDiskPatch(), java.util.Collections.singletonMap("anyKey", "anyValue"));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

@@ -110,9 +110,8 @@ public class FloatingIPPatch extends GenericModel {
   /**
    * Gets the target.
    *
-   * The network interface to bind the floating IP to, replacing any existing binding. For
-   * this request to succeed, the floating IP must not be required by another resource, such
-   * as a public gateway.
+   * The network interface to bind the floating IP to, replacing any existing binding.
+   * The floating IP must not be required by another resource, such as a public gateway.
    *
    * @return the target
    */

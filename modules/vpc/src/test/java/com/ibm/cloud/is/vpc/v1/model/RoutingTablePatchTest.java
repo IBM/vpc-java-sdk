@@ -42,12 +42,14 @@ public class RoutingTablePatchTest {
       .acceptRoutesFrom(java.util.Arrays.asList(resourceFilterModel))
       .name("my-routing-table-2")
       .routeDirectLinkIngress(true)
+      .routeInternetIngress(true)
       .routeTransitGatewayIngress(true)
       .routeVpcZoneIngress(true)
       .build();
     assertEquals(routingTablePatchModel.acceptRoutesFrom(), java.util.Arrays.asList(resourceFilterModel));
     assertEquals(routingTablePatchModel.name(), "my-routing-table-2");
     assertEquals(routingTablePatchModel.routeDirectLinkIngress(), Boolean.valueOf(true));
+    assertEquals(routingTablePatchModel.routeInternetIngress(), Boolean.valueOf(true));
     assertEquals(routingTablePatchModel.routeTransitGatewayIngress(), Boolean.valueOf(true));
     assertEquals(routingTablePatchModel.routeVpcZoneIngress(), Boolean.valueOf(true));
 
@@ -57,6 +59,7 @@ public class RoutingTablePatchTest {
     assertTrue(routingTablePatchModelNew instanceof RoutingTablePatch);
     assertEquals(routingTablePatchModelNew.name(), "my-routing-table-2");
     assertEquals(routingTablePatchModelNew.routeDirectLinkIngress(), Boolean.valueOf(true));
+    assertEquals(routingTablePatchModelNew.routeInternetIngress(), Boolean.valueOf(true));
     assertEquals(routingTablePatchModelNew.routeTransitGatewayIngress(), Boolean.valueOf(true));
     assertEquals(routingTablePatchModelNew.routeVpcZoneIngress(), Boolean.valueOf(true));
   }
@@ -70,6 +73,7 @@ public class RoutingTablePatchTest {
       .acceptRoutesFrom(java.util.Arrays.asList(resourceFilterModel))
       .name("my-routing-table-2")
       .routeDirectLinkIngress(true)
+      .routeInternetIngress(true)
       .routeTransitGatewayIngress(true)
       .routeVpcZoneIngress(true)
       .build();
@@ -79,6 +83,7 @@ public class RoutingTablePatchTest {
     assertTrue(mergePatch.containsKey("accept_routes_from"));
     assertEquals(mergePatch.get("name"), "my-routing-table-2");
     assertTrue(mergePatch.containsKey("route_direct_link_ingress"));
+    assertTrue(mergePatch.containsKey("route_internet_ingress"));
     assertTrue(mergePatch.containsKey("route_transit_gateway_ingress"));
     assertTrue(mergePatch.containsKey("route_vpc_zone_ingress"));
   }
