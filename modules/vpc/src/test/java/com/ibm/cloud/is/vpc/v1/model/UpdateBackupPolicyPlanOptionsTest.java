@@ -34,12 +34,12 @@ public class UpdateBackupPolicyPlanOptionsTest {
     UpdateBackupPolicyPlanOptions updateBackupPolicyPlanOptionsModel = new UpdateBackupPolicyPlanOptions.Builder()
       .backupPolicyId("testString")
       .id("testString")
-      .backupPolicyPlanPatch(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .backupPolicyPlanPatch(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .ifMatch("W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"")
       .build();
     assertEquals(updateBackupPolicyPlanOptionsModel.backupPolicyId(), "testString");
     assertEquals(updateBackupPolicyPlanOptionsModel.id(), "testString");
-    assertEquals(updateBackupPolicyPlanOptionsModel.backupPolicyPlanPatch(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
+    assertEquals(updateBackupPolicyPlanOptionsModel.backupPolicyPlanPatch(), java.util.Collections.singletonMap("anyKey", "anyValue"));
     assertEquals(updateBackupPolicyPlanOptionsModel.ifMatch(), "W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"");
   }
 

@@ -44,14 +44,14 @@ public class BackupPolicyPlanPatchTest {
       .active(true)
       .attachUserTags(java.util.Arrays.asList("my-daily-backup-plan"))
       .copyUserTags(true)
-      .cronSpec("*/5 1,2,3 * * *")
+      .cronSpec("30 */2 * * 1-5")
       .deletionTrigger(backupPolicyPlanDeletionTriggerPatchModel)
       .name("my-policy-plan")
       .build();
     assertEquals(backupPolicyPlanPatchModel.active(), Boolean.valueOf(true));
     assertEquals(backupPolicyPlanPatchModel.attachUserTags(), java.util.Arrays.asList("my-daily-backup-plan"));
     assertEquals(backupPolicyPlanPatchModel.copyUserTags(), Boolean.valueOf(true));
-    assertEquals(backupPolicyPlanPatchModel.cronSpec(), "*/5 1,2,3 * * *");
+    assertEquals(backupPolicyPlanPatchModel.cronSpec(), "30 */2 * * 1-5");
     assertEquals(backupPolicyPlanPatchModel.deletionTrigger(), backupPolicyPlanDeletionTriggerPatchModel);
     assertEquals(backupPolicyPlanPatchModel.name(), "my-policy-plan");
 
@@ -61,7 +61,7 @@ public class BackupPolicyPlanPatchTest {
     assertTrue(backupPolicyPlanPatchModelNew instanceof BackupPolicyPlanPatch);
     assertEquals(backupPolicyPlanPatchModelNew.active(), Boolean.valueOf(true));
     assertEquals(backupPolicyPlanPatchModelNew.copyUserTags(), Boolean.valueOf(true));
-    assertEquals(backupPolicyPlanPatchModelNew.cronSpec(), "*/5 1,2,3 * * *");
+    assertEquals(backupPolicyPlanPatchModelNew.cronSpec(), "30 */2 * * 1-5");
     assertEquals(backupPolicyPlanPatchModelNew.deletionTrigger().toString(), backupPolicyPlanDeletionTriggerPatchModel.toString());
     assertEquals(backupPolicyPlanPatchModelNew.name(), "my-policy-plan");
   }
@@ -76,7 +76,7 @@ public class BackupPolicyPlanPatchTest {
       .active(true)
       .attachUserTags(java.util.Arrays.asList("my-daily-backup-plan"))
       .copyUserTags(true)
-      .cronSpec("*/5 1,2,3 * * *")
+      .cronSpec("30 */2 * * 1-5")
       .deletionTrigger(backupPolicyPlanDeletionTriggerPatchModel)
       .name("my-policy-plan")
       .build();
@@ -86,7 +86,7 @@ public class BackupPolicyPlanPatchTest {
     assertTrue(mergePatch.containsKey("active"));
     assertTrue(mergePatch.containsKey("attach_user_tags"));
     assertTrue(mergePatch.containsKey("copy_user_tags"));
-    assertEquals(mergePatch.get("cron_spec"), "*/5 1,2,3 * * *");
+    assertEquals(mergePatch.get("cron_spec"), "30 */2 * * 1-5");
     assertTrue(mergePatch.containsKey("deletion_trigger"));
     assertEquals(mergePatch.get("name"), "my-policy-plan");
   }

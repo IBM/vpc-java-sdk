@@ -48,13 +48,13 @@ public class InstanceGroupManagerActionPatchTest {
     assertEquals(instanceGroupManagerActionManagerPatchModel.minMembershipCount(), Long.valueOf("10"));
 
     InstanceGroupManagerActionPatch instanceGroupManagerActionPatchModel = new InstanceGroupManagerActionPatch.Builder()
-      .cronSpec("*/5 1,2,3 * * *")
+      .cronSpec("30 */2 * * 1-5")
       .group(instanceGroupManagerActionGroupPatchModel)
       .manager(instanceGroupManagerActionManagerPatchModel)
       .name("my-instance-group-manager-action")
       .runAt(DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"))
       .build();
-    assertEquals(instanceGroupManagerActionPatchModel.cronSpec(), "*/5 1,2,3 * * *");
+    assertEquals(instanceGroupManagerActionPatchModel.cronSpec(), "30 */2 * * 1-5");
     assertEquals(instanceGroupManagerActionPatchModel.group(), instanceGroupManagerActionGroupPatchModel);
     assertEquals(instanceGroupManagerActionPatchModel.manager(), instanceGroupManagerActionManagerPatchModel);
     assertEquals(instanceGroupManagerActionPatchModel.name(), "my-instance-group-manager-action");
@@ -64,7 +64,7 @@ public class InstanceGroupManagerActionPatchTest {
 
     InstanceGroupManagerActionPatch instanceGroupManagerActionPatchModelNew = TestUtilities.deserialize(json, InstanceGroupManagerActionPatch.class);
     assertTrue(instanceGroupManagerActionPatchModelNew instanceof InstanceGroupManagerActionPatch);
-    assertEquals(instanceGroupManagerActionPatchModelNew.cronSpec(), "*/5 1,2,3 * * *");
+    assertEquals(instanceGroupManagerActionPatchModelNew.cronSpec(), "30 */2 * * 1-5");
     assertEquals(instanceGroupManagerActionPatchModelNew.group().toString(), instanceGroupManagerActionGroupPatchModel.toString());
     assertEquals(instanceGroupManagerActionPatchModelNew.manager().toString(), instanceGroupManagerActionManagerPatchModel.toString());
     assertEquals(instanceGroupManagerActionPatchModelNew.name(), "my-instance-group-manager-action");
@@ -82,7 +82,7 @@ public class InstanceGroupManagerActionPatchTest {
       .build();
 
     InstanceGroupManagerActionPatch instanceGroupManagerActionPatchModel = new InstanceGroupManagerActionPatch.Builder()
-      .cronSpec("*/5 1,2,3 * * *")
+      .cronSpec("30 */2 * * 1-5")
       .group(instanceGroupManagerActionGroupPatchModel)
       .manager(instanceGroupManagerActionManagerPatchModel)
       .name("my-instance-group-manager-action")
@@ -91,7 +91,7 @@ public class InstanceGroupManagerActionPatchTest {
 
     Map<String, Object> mergePatch = instanceGroupManagerActionPatchModel.asPatch();
 
-    assertEquals(mergePatch.get("cron_spec"), "*/5 1,2,3 * * *");
+    assertEquals(mergePatch.get("cron_spec"), "30 */2 * * 1-5");
     assertTrue(mergePatch.containsKey("group"));
     assertTrue(mergePatch.containsKey("manager"));
     assertEquals(mergePatch.get("name"), "my-instance-group-manager-action");

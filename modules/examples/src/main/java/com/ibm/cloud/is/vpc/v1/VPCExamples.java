@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2021, 2022.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -19,16 +19,14 @@ import com.ibm.cloud.is.vpc.v1.model.AddInstanceNetworkInterfaceFloatingIpOption
 import com.ibm.cloud.is.vpc.v1.model.AddVpnGatewayConnectionLocalCidrOptions;
 import com.ibm.cloud.is.vpc.v1.model.AddVpnGatewayConnectionPeerCidrOptions;
 import com.ibm.cloud.is.vpc.v1.model.AddressPrefix;
-import com.ibm.cloud.is.vpc.v1.model.AddressPrefixCollection;
 import com.ibm.cloud.is.vpc.v1.model.AddressPrefixPatch;
+import com.ibm.cloud.is.vpc.v1.model.BackupPoliciesPager;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicy;
-import com.ibm.cloud.is.vpc.v1.model.BackupPolicyCollection;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPatch;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlan;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanCollection;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanPatch;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServer;
-import com.ibm.cloud.is.vpc.v1.model.BareMetalServerCollection;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerConsoleAccessToken;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerDisk;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerDiskCollection;
@@ -36,14 +34,15 @@ import com.ibm.cloud.is.vpc.v1.model.BareMetalServerDiskPatch;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerInitialization;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerInitializationPrototype;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkInterface;
-import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkInterfaceCollection;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkInterfacePatch;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkInterfacesPager;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVLANPrototype;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerPatch;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerPrimaryNetworkInterfacePrototype;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfile;
-import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileCollection;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileIdentityByName;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfilesPager;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServersPager;
 import com.ibm.cloud.is.vpc.v1.model.CertificateInstanceIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.CheckVpnGatewayConnectionLocalCidrOptions;
 import com.ibm.cloud.is.vpc.v1.model.CheckVpnGatewayConnectionPeerCidrOptions;
@@ -98,19 +97,19 @@ import com.ibm.cloud.is.vpc.v1.model.CreateVpnGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateVpnServerOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateVpnServerRouteOptions;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHost;
-import com.ibm.cloud.is.vpc.v1.model.DedicatedHostCollection;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostDisk;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostDiskCollection;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostDiskPatch;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostGroup;
-import com.ibm.cloud.is.vpc.v1.model.DedicatedHostGroupCollection;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostGroupIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostGroupPatch;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostPatch;
+import com.ibm.cloud.is.vpc.v1.model.DedicatedHostGroupsPager;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostProfile;
-import com.ibm.cloud.is.vpc.v1.model.DedicatedHostProfileCollection;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostProfileIdentityByName;
+import com.ibm.cloud.is.vpc.v1.model.DedicatedHostProfilesPager;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostPrototypeDedicatedHostByGroup;
+import com.ibm.cloud.is.vpc.v1.model.DedicatedHostsPager;
 import com.ibm.cloud.is.vpc.v1.model.DefaultNetworkACL;
 import com.ibm.cloud.is.vpc.v1.model.DefaultRoutingTable;
 import com.ibm.cloud.is.vpc.v1.model.DefaultSecurityGroup;
@@ -169,21 +168,22 @@ import com.ibm.cloud.is.vpc.v1.model.DeleteVpnServerRouteOptions;
 import com.ibm.cloud.is.vpc.v1.model.DisconnectVpnClientOptions;
 import com.ibm.cloud.is.vpc.v1.model.EncryptionKeyIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.EndpointGateway;
-import com.ibm.cloud.is.vpc.v1.model.EndpointGatewayCollection;
+import com.ibm.cloud.is.vpc.v1.model.EndpointGatewayIpsPager;
 import com.ibm.cloud.is.vpc.v1.model.EndpointGatewayPatch;
 import com.ibm.cloud.is.vpc.v1.model.EndpointGatewayReservedIP;
 import com.ibm.cloud.is.vpc.v1.model.EndpointGatewayReservedIPReservedIPIdentity;
 import com.ibm.cloud.is.vpc.v1.model.EndpointGatewayReservedIPReservedIPIdentityReservedIPIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.EndpointGatewayTargetPrototypeProviderCloudServiceIdentityProviderCloudServiceIdentityByCRN;
+import com.ibm.cloud.is.vpc.v1.model.EndpointGatewaysPager;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIP;
-import com.ibm.cloud.is.vpc.v1.model.FloatingIPCollection;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPPatch;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPPrototypeFloatingIPByZone;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPUnpaginatedCollection;
+import com.ibm.cloud.is.vpc.v1.model.FloatingIpsPager;
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollector;
-import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorCollection;
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorPatch;
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceIdentityNetworkInterfaceIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorsPager;
 import com.ibm.cloud.is.vpc.v1.model.GetBackupPolicyOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetBackupPolicyPlanOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetBareMetalServerDiskOptions;
@@ -259,44 +259,43 @@ import com.ibm.cloud.is.vpc.v1.model.GetVpnServerClientOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetVpnServerOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetVpnServerRouteOptions;
 import com.ibm.cloud.is.vpc.v1.model.IKEPolicy;
-import com.ibm.cloud.is.vpc.v1.model.IKEPolicyCollection;
 import com.ibm.cloud.is.vpc.v1.model.IKEPolicyPatch;
 import com.ibm.cloud.is.vpc.v1.model.IPsecPolicy;
-import com.ibm.cloud.is.vpc.v1.model.IPsecPolicyCollection;
 import com.ibm.cloud.is.vpc.v1.model.IPsecPolicyPatch;
+import com.ibm.cloud.is.vpc.v1.model.IkePoliciesPager;
 import com.ibm.cloud.is.vpc.v1.model.Image;
-import com.ibm.cloud.is.vpc.v1.model.ImageCollection;
 import com.ibm.cloud.is.vpc.v1.model.ImageFilePrototype;
 import com.ibm.cloud.is.vpc.v1.model.ImageIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.ImagePatch;
 import com.ibm.cloud.is.vpc.v1.model.ImagePrototypeImageByFile;
+import com.ibm.cloud.is.vpc.v1.model.ImagesPager;
 import com.ibm.cloud.is.vpc.v1.model.Instance;
 import com.ibm.cloud.is.vpc.v1.model.InstanceAction;
-import com.ibm.cloud.is.vpc.v1.model.InstanceCollection;
 import com.ibm.cloud.is.vpc.v1.model.InstanceConsoleAccessToken;
 import com.ibm.cloud.is.vpc.v1.model.InstanceDisk;
 import com.ibm.cloud.is.vpc.v1.model.InstanceDiskCollection;
 import com.ibm.cloud.is.vpc.v1.model.InstanceDiskPatch;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroup;
-import com.ibm.cloud.is.vpc.v1.model.InstanceGroupCollection;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManager;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerAction;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerActionPatch;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSpecByGroup;
-import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerActionsCollection;
-import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerCollection;
+import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerActionsPager;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerPatch;
+import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerPoliciesPager;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerPolicy;
-import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerPolicyCollection;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerPolicyPatch;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerPolicyPrototypeInstanceGroupManagerTargetPolicyPrototype;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerPrototypeInstanceGroupManagerAutoScalePrototype;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerScheduledActionGroupPrototype;
+import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagersPager;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupMembership;
-import com.ibm.cloud.is.vpc.v1.model.InstanceGroupMembershipCollection;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupMembershipPatch;
+import com.ibm.cloud.is.vpc.v1.model.InstanceGroupMembershipsPager;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupPatch;
+import com.ibm.cloud.is.vpc.v1.model.InstanceGroupsPager;
 import com.ibm.cloud.is.vpc.v1.model.InstanceInitialization;
+import com.ibm.cloud.is.vpc.v1.model.InstanceNetworkInterfaceIpsPager;
 import com.ibm.cloud.is.vpc.v1.model.InstancePatch;
 import com.ibm.cloud.is.vpc.v1.model.InstancePlacementTargetPrototypeDedicatedHostIdentityDedicatedHostIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfile;
@@ -308,11 +307,13 @@ import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateCollection;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplatePatch;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplatePrototypeInstanceByImage;
+import com.ibm.cloud.is.vpc.v1.model.InstancesPager;
+import com.ibm.cloud.is.vpc.v1.model.IpsecPoliciesPager;
 import com.ibm.cloud.is.vpc.v1.model.Key;
-import com.ibm.cloud.is.vpc.v1.model.KeyCollection;
 import com.ibm.cloud.is.vpc.v1.model.KeyIdentity;
 import com.ibm.cloud.is.vpc.v1.model.KeyIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.KeyPatch;
+import com.ibm.cloud.is.vpc.v1.model.KeysPager;
 import com.ibm.cloud.is.vpc.v1.model.LegacyCloudObjectStorageBucketIdentityCloudObjectStorageBucketIdentityByName;
 import com.ibm.cloud.is.vpc.v1.model.ListBackupPoliciesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListBackupPolicyPlansOptions;
@@ -380,7 +381,6 @@ import com.ibm.cloud.is.vpc.v1.model.ListVpnGatewayConnectionPeerCidrsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListVpnGatewayConnectionsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListVpnGatewaysOptions;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancer;
-import com.ibm.cloud.is.vpc.v1.model.LoadBalancerCollection;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListener;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerCollection;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPatch;
@@ -401,34 +401,36 @@ import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolMemberPrototype;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolPatch;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfile;
-import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileCollection;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfilesPager;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerStatistics;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancersPager;
 import com.ibm.cloud.is.vpc.v1.model.ListVpnServerClientsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListVpnServerRoutesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListVpnServersOptions;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACL;
-import com.ibm.cloud.is.vpc.v1.model.NetworkACLCollection;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLPatch;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLPrototypeNetworkACLByRules;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLRule;
-import com.ibm.cloud.is.vpc.v1.model.NetworkACLRuleCollection;
+import com.ibm.cloud.is.vpc.v1.model.NetworkACLRuleItem;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLRulePatch;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLRulePrototypeNetworkACLRuleProtocolICMP;
+import com.ibm.cloud.is.vpc.v1.model.NetworkAclRulesPager;
+import com.ibm.cloud.is.vpc.v1.model.NetworkAclsPager;
 import com.ibm.cloud.is.vpc.v1.model.NetworkInterface;
 import com.ibm.cloud.is.vpc.v1.model.NetworkInterfacePatch;
 import com.ibm.cloud.is.vpc.v1.model.NetworkInterfacePrototype;
 import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceUnpaginatedCollection;
 import com.ibm.cloud.is.vpc.v1.model.OperatingSystem;
-import com.ibm.cloud.is.vpc.v1.model.OperatingSystemCollection;
 import com.ibm.cloud.is.vpc.v1.model.OperatingSystemIdentityByName;
+import com.ibm.cloud.is.vpc.v1.model.OperatingSystemsPager;
 import com.ibm.cloud.is.vpc.v1.model.PlacementGroup;
-import com.ibm.cloud.is.vpc.v1.model.PlacementGroupCollection;
 import com.ibm.cloud.is.vpc.v1.model.PlacementGroupPatch;
+import com.ibm.cloud.is.vpc.v1.model.PlacementGroupsPager;
 import com.ibm.cloud.is.vpc.v1.model.PublicGateway;
-import com.ibm.cloud.is.vpc.v1.model.PublicGatewayCollection;
 import com.ibm.cloud.is.vpc.v1.model.PublicGatewayIdentityPublicGatewayIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.PublicGatewayPatch;
+import com.ibm.cloud.is.vpc.v1.model.PublicGatewaysPager;
 import com.ibm.cloud.is.vpc.v1.model.Region;
 import com.ibm.cloud.is.vpc.v1.model.RegionCollection;
 import com.ibm.cloud.is.vpc.v1.model.RemoveBareMetalServerNetworkInterfaceFloatingIpOptions;
@@ -440,41 +442,37 @@ import com.ibm.cloud.is.vpc.v1.model.ReplaceLoadBalancerPoolMembersOptions;
 import com.ibm.cloud.is.vpc.v1.model.ReplaceSubnetNetworkAclOptions;
 import com.ibm.cloud.is.vpc.v1.model.ReplaceSubnetRoutingTableOptions;
 import com.ibm.cloud.is.vpc.v1.model.ReservedIP;
-import com.ibm.cloud.is.vpc.v1.model.ReservedIPCollection;
-import com.ibm.cloud.is.vpc.v1.model.ReservedIPCollectionEndpointGatewayContext;
-import com.ibm.cloud.is.vpc.v1.model.ReservedIPCollectionNetworkInterfaceContext;
 import com.ibm.cloud.is.vpc.v1.model.ReservedIPPatch;
 import com.ibm.cloud.is.vpc.v1.model.RestartBareMetalServerOptions;
 import com.ibm.cloud.is.vpc.v1.model.Route;
-import com.ibm.cloud.is.vpc.v1.model.RouteCollection;
 import com.ibm.cloud.is.vpc.v1.model.RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIP;
 import com.ibm.cloud.is.vpc.v1.model.RoutePatch;
 import com.ibm.cloud.is.vpc.v1.model.RoutingTable;
-import com.ibm.cloud.is.vpc.v1.model.RoutingTableCollection;
 import com.ibm.cloud.is.vpc.v1.model.RoutingTableIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.RoutingTablePatch;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroup;
-import com.ibm.cloud.is.vpc.v1.model.SecurityGroupCollection;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupPatch;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRule;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleCollection;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRulePatch;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRulePrototypeSecurityGroupRuleProtocolICMP;
-import com.ibm.cloud.is.vpc.v1.model.SecurityGroupTargetCollection;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupTargetReference;
+import com.ibm.cloud.is.vpc.v1.model.SecurityGroupTargetsPager;
+import com.ibm.cloud.is.vpc.v1.model.SecurityGroupsPager;
 import com.ibm.cloud.is.vpc.v1.model.SetSubnetPublicGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.Snapshot;
-import com.ibm.cloud.is.vpc.v1.model.SnapshotCollection;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotPatch;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotPrototypeSnapshotBySourceVolume;
+import com.ibm.cloud.is.vpc.v1.model.SnapshotsPager;
 import com.ibm.cloud.is.vpc.v1.model.StartBareMetalServerOptions;
 import com.ibm.cloud.is.vpc.v1.model.StopBareMetalServerOptions;
 import com.ibm.cloud.is.vpc.v1.model.Subnet;
-import com.ibm.cloud.is.vpc.v1.model.SubnetCollection;
 import com.ibm.cloud.is.vpc.v1.model.SubnetIdentity;
 import com.ibm.cloud.is.vpc.v1.model.SubnetIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.SubnetPatch;
 import com.ibm.cloud.is.vpc.v1.model.SubnetPrototypeSubnetByTotalCount;
+import com.ibm.cloud.is.vpc.v1.model.SubnetReservedIpsPager;
+import com.ibm.cloud.is.vpc.v1.model.SubnetsPager;
 import com.ibm.cloud.is.vpc.v1.model.UnsetSubnetPublicGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateBackupPolicyOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateBackupPolicyPlanOptions;
@@ -527,11 +525,9 @@ import com.ibm.cloud.is.vpc.v1.model.UpdateVpnGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateVpnServerOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateVpnServerRouteOptions;
 import com.ibm.cloud.is.vpc.v1.model.VPC;
-import com.ibm.cloud.is.vpc.v1.model.VPCCollection;
 import com.ibm.cloud.is.vpc.v1.model.VPCIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.VPCPatch;
 import com.ibm.cloud.is.vpc.v1.model.VPNGateway;
-import com.ibm.cloud.is.vpc.v1.model.VPNGatewayCollection;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnection;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionCollection;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionLocalCIDRs;
@@ -545,11 +541,8 @@ import com.ibm.cloud.is.vpc.v1.model.VPNServerAuthenticationByUsernameIdProvider
 import com.ibm.cloud.is.vpc.v1.model.VPNServerAuthenticationPrototype;
 import com.ibm.cloud.is.vpc.v1.model.VPNServerAuthenticationPrototypeVPNServerAuthenticationByUsernamePrototype;
 import com.ibm.cloud.is.vpc.v1.model.VPNServerClient;
-import com.ibm.cloud.is.vpc.v1.model.VPNServerClientCollection;
-import com.ibm.cloud.is.vpc.v1.model.VPNServerCollection;
 import com.ibm.cloud.is.vpc.v1.model.VPNServerPatch;
 import com.ibm.cloud.is.vpc.v1.model.VPNServerRoute;
-import com.ibm.cloud.is.vpc.v1.model.VPNServerRouteCollection;
 import com.ibm.cloud.is.vpc.v1.model.VPNServerRoutePatch;
 import com.ibm.cloud.is.vpc.v1.model.Volume;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachment;
@@ -559,20 +552,32 @@ import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototypeInstanceByImageCon
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototypeInstanceContext;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototypeVolumeVolumeIdentityVolumeIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeByCapacity;
-import com.ibm.cloud.is.vpc.v1.model.VolumeCollection;
 import com.ibm.cloud.is.vpc.v1.model.VolumeIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.VolumePatch;
 import com.ibm.cloud.is.vpc.v1.model.VolumeProfile;
-import com.ibm.cloud.is.vpc.v1.model.VolumeProfileCollection;
 import com.ibm.cloud.is.vpc.v1.model.VolumeProfileIdentityByName;
+import com.ibm.cloud.is.vpc.v1.model.VolumeProfilesPager;
 import com.ibm.cloud.is.vpc.v1.model.VolumePrototypeInstanceByImageContext;
 import com.ibm.cloud.is.vpc.v1.model.VolumePrototypeVolumeByCapacity;
+import com.ibm.cloud.is.vpc.v1.model.VolumesPager;
+import com.ibm.cloud.is.vpc.v1.model.VpcAddressPrefixesPager;
+import com.ibm.cloud.is.vpc.v1.model.VpcRoutesPager;
+import com.ibm.cloud.is.vpc.v1.model.VpcRoutingTableRoutesPager;
+import com.ibm.cloud.is.vpc.v1.model.VpcRoutingTablesPager;
+import com.ibm.cloud.is.vpc.v1.model.VpcsPager;
+import com.ibm.cloud.is.vpc.v1.model.VpnGatewaysPager;
+import com.ibm.cloud.is.vpc.v1.model.VpnServerClientsPager;
+import com.ibm.cloud.is.vpc.v1.model.VpnServerRoutesPager;
+import com.ibm.cloud.is.vpc.v1.model.VpnServersPager;
 import com.ibm.cloud.is.vpc.v1.model.Zone;
 import com.ibm.cloud.is.vpc.v1.model.ZoneCollection;
 import com.ibm.cloud.is.vpc.v1.model.ZoneIdentityByName;
 import com.ibm.cloud.sdk.core.http.Response;
 import com.ibm.cloud.sdk.core.service.exception.ServiceResponseException;
 import com.ibm.cloud.sdk.core.util.CredentialUtils;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -685,8 +690,12 @@ public class VPCExamples {
         .limit(Long.valueOf(10))
         .build();
 
-      Response<VPCCollection> response = vpcService.listVpcs(listVpcsOptions).execute();
-      VPCCollection vpcCollection = response.getResult();
+      VpcsPager pager = new VpcsPager(vpcService, listVpcsOptions);
+      List<VPC> allResults = new ArrayList<>();
+      while (pager.hasNext()) {
+        List<VPC> nextPage = pager.getNext();
+        allResults.addAll(nextPage);
+      }
 
       // end-list_vpcs
     } catch (ServiceResponseException e) {
@@ -804,8 +813,12 @@ public class VPCExamples {
         .limit(Long.valueOf(10))
         .build();
 
-      Response<AddressPrefixCollection> response = vpcService.listVpcAddressPrefixes(listVpcAddressPrefixesOptions).execute();
-      AddressPrefixCollection addressPrefixCollection = response.getResult();
+      VpcAddressPrefixesPager pager = new VpcAddressPrefixesPager(vpcService, listVpcAddressPrefixesOptions);
+      List<AddressPrefix> allResults = new ArrayList<>();
+      while (pager.hasNext()) {
+        List<AddressPrefix> nextPage = pager.getNext();
+        allResults.addAll(nextPage);
+      }
 
       // end-list_vpc_address_prefixes
     } catch (ServiceResponseException e) {
@@ -883,8 +896,12 @@ public class VPCExamples {
         .limit(Long.valueOf(10))
         .build();
 
-      Response<RouteCollection> response = vpcService.listVpcRoutes(listVpcRoutesOptions).execute();
-      RouteCollection routeCollection = response.getResult();
+      VpcRoutesPager pager = new VpcRoutesPager(vpcService, listVpcRoutesOptions);
+      List<Route> allResults = new ArrayList<>();
+      while (pager.hasNext()) {
+        List<Route> nextPage = pager.getNext();
+        allResults.addAll(nextPage);
+      }
 
       // end-list_vpc_routes
     } catch (ServiceResponseException e) {
@@ -966,8 +983,12 @@ public class VPCExamples {
         .limit(Long.valueOf(10))
         .build();
 
-      Response<RoutingTableCollection> response = vpcService.listVpcRoutingTables(listVpcRoutingTablesOptions).execute();
-      RoutingTableCollection routingTableCollection = response.getResult();
+      VpcRoutingTablesPager pager = new VpcRoutingTablesPager(vpcService, listVpcRoutingTablesOptions);
+      List<RoutingTable> allResults = new ArrayList<>();
+      while (pager.hasNext()) {
+        List<RoutingTable> nextPage = pager.getNext();
+        allResults.addAll(nextPage);
+      }
 
       // end-list_vpc_routing_tables
     } catch (ServiceResponseException e) {
@@ -1041,8 +1062,12 @@ public class VPCExamples {
         .limit(Long.valueOf(10))
         .build();
 
-      Response<RouteCollection> response = vpcService.listVpcRoutingTableRoutes(listVpcRoutingTableRoutesOptions).execute();
-      RouteCollection routeCollection = response.getResult();
+      VpcRoutingTableRoutesPager pager = new VpcRoutingTableRoutesPager(vpcService, listVpcRoutingTableRoutesOptions);
+      List<Route> allResults = new ArrayList<>();
+      while (pager.hasNext()) {
+        List<Route> nextPage = pager.getNext();
+        allResults.addAll(nextPage);
+      }
 
       // end-list_vpc_routing_table_routes
     } catch (ServiceResponseException e) {
@@ -1123,8 +1148,12 @@ public class VPCExamples {
         .limit(Long.valueOf(10))
         .build();
 
-      Response<SubnetCollection> response = vpcService.listSubnets(listSubnetsOptions).execute();
-      SubnetCollection subnetCollection = response.getResult();
+      SubnetsPager pager = new SubnetsPager(vpcService, listSubnetsOptions);
+      List<Subnet> allResults = new ArrayList<>();
+      while (pager.hasNext()) {
+        List<Subnet> nextPage = pager.getNext();
+        allResults.addAll(nextPage);
+      }
 
       // end-list_subnets
     } catch (ServiceResponseException e) {
@@ -1378,8 +1407,12 @@ public class VPCExamples {
         .limit(Long.valueOf(10))
         .build();
 
-      Response<ReservedIPCollection> response = vpcService.listSubnetReservedIps(listSubnetReservedIpsOptions).execute();
-      ReservedIPCollection reservedIpCollection = response.getResult();
+      SubnetReservedIpsPager pager = new SubnetReservedIpsPager(vpcService, listSubnetReservedIpsOptions);
+      List<ReservedIP> allResults = new ArrayList<>();
+      while (pager.hasNext()) {
+        List<ReservedIP> nextPage = pager.getNext();
+        allResults.addAll(nextPage);
+      }
 
       // end-list_subnet_reserved_ips
     } catch (ServiceResponseException e) {
@@ -1451,11 +1484,15 @@ public class VPCExamples {
         .limit(Long.valueOf(10))
         .build();
 
-      Response<ImageCollection> response = vpcService.listImages(listImagesOptions).execute();
-      ImageCollection imageCollection = response.getResult();
+      ImagesPager pager = new ImagesPager(vpcService, listImagesOptions);
+      List<Image> allResults = new ArrayList<>();
+      while (pager.hasNext()) {
+        List<Image> nextPage = pager.getNext();
+        allResults.addAll(nextPage);
+      }
 
       // end-list_images
-      operatingSystemName = imageCollection.getImages().get(0).getOperatingSystem().getName();
+      operatingSystemName = allResults.get(0).getOperatingSystem().getName();
     } catch (ServiceResponseException e) {
         logger.error(String.format("Service returned status code %s: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
@@ -1533,11 +1570,15 @@ public class VPCExamples {
         .limit(Long.valueOf(10))
         .build();
 
-      Response<OperatingSystemCollection> response = vpcService.listOperatingSystems(listOperatingSystemsOptions).execute();
-      OperatingSystemCollection operatingSystemCollection = response.getResult();
+      OperatingSystemsPager pager = new OperatingSystemsPager(vpcService, listOperatingSystemsOptions);
+      List<OperatingSystem> allResults = new ArrayList<>();
+      while (pager.hasNext()) {
+        List<OperatingSystem> nextPage = pager.getNext();
+        allResults.addAll(nextPage);
+      }
 
       // end-list_operating_systems
-      operatingSystemName = operatingSystemCollection.getOperatingSystems().get(0).getName();
+      operatingSystemName = allResults.get(0).getName();
     } catch (ServiceResponseException e) {
         logger.error(String.format("Service returned status code %s: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
@@ -1566,8 +1607,12 @@ public class VPCExamples {
         .limit(Long.valueOf(10))
         .build();
 
-      Response<KeyCollection> response = vpcService.listKeys(listKeysOptions).execute();
-      KeyCollection keyCollection = response.getResult();
+      KeysPager pager = new KeysPager(vpcService, listKeysOptions);
+      List<Key> allResults = new ArrayList<>();
+      while (pager.hasNext()) {
+        List<Key> nextPage = pager.getNext();
+        allResults.addAll(nextPage);
+      }
 
       // end-list_keys
     } catch (ServiceResponseException e) {
@@ -1766,8 +1811,12 @@ public class VPCExamples {
               .limit(Long.valueOf(10))
               .build();
 
-      Response<DedicatedHostGroupCollection> response = vpcService.listDedicatedHostGroups(listDedicatedHostGroupsOptions).execute();
-      DedicatedHostGroupCollection dedicatedHostGroupCollection = response.getResult();
+      DedicatedHostGroupsPager pager = new DedicatedHostGroupsPager(vpcService, listDedicatedHostGroupsOptions);
+      List<DedicatedHostGroup> allResults = new ArrayList<>();
+      while (pager.hasNext()) {
+        List<DedicatedHostGroup> nextPage = pager.getNext();
+        allResults.addAll(nextPage);
+      }
 
       // end-list_dedicated_host_groups
     } catch (ServiceResponseException e) {
@@ -1842,8 +1891,12 @@ public class VPCExamples {
       ListBackupPoliciesOptions listBackupPoliciesOptions = new ListBackupPoliciesOptions.Builder()
         .build();
 
-      Response<BackupPolicyCollection> response = vpcService.listBackupPolicies(listBackupPoliciesOptions).execute();
-      BackupPolicyCollection backupPolicyCollection = response.getResult();
+      BackupPoliciesPager pager = new BackupPoliciesPager(vpcService, listBackupPoliciesOptions);
+      List<BackupPolicy> allResults = new ArrayList<>();
+      while (pager.hasNext()) {
+        List<BackupPolicy> nextPage = pager.getNext();
+        allResults.addAll(nextPage);
+      }
 
       // end-list_backup_policies
     } catch (ServiceResponseException e) {
@@ -1992,11 +2045,15 @@ public class VPCExamples {
               .limit(Long.valueOf(10))
               .build();
 
-      Response<DedicatedHostProfileCollection> response = vpcService.listDedicatedHostProfiles(listDedicatedHostProfilesOptions).execute();
-      DedicatedHostProfileCollection dedicatedHostProfileCollection = response.getResult();
+      DedicatedHostProfilesPager pager = new DedicatedHostProfilesPager(vpcService, listDedicatedHostProfilesOptions);
+      List<DedicatedHostProfile> allResults = new ArrayList<>();
+      while (pager.hasNext()) {
+        List<DedicatedHostProfile> nextPage = pager.getNext();
+        allResults.addAll(nextPage);
+      }
 
       // end-list_dedicated_host_profiles
-      for (DedicatedHostProfile profile : dedicatedHostProfileCollection.getProfiles()) {
+      for (DedicatedHostProfile profile : allResults) {
         if (profile.getFamily().equalsIgnoreCase("balanced-disk")) {
           dedicatedHostProfileName = profile.getName();
         }
@@ -2029,11 +2086,15 @@ public class VPCExamples {
               .limit(Long.valueOf(10))
               .build();
 
-      Response<DedicatedHostCollection> response = vpcService.listDedicatedHosts(listDedicatedHostsOptions).execute();
-      DedicatedHostCollection dedicatedHostCollection = response.getResult();
+      DedicatedHostsPager pager = new DedicatedHostsPager(vpcService, listDedicatedHostsOptions);
+      List<DedicatedHost> allResults = new ArrayList<>();
+      while (pager.hasNext()) {
+        List<DedicatedHost> nextPage = pager.getNext();
+        allResults.addAll(nextPage);
+      }
 
       // end-list_dedicated_hosts
-      for (DedicatedHost dedicatedHost : dedicatedHostCollection.getDedicatedHosts()) {
+      for (DedicatedHost dedicatedHost : allResults) {
         if (dedicatedHost.getDisks().size() > 0) {
           dedicatedHostDiskId = dedicatedHost.getDisks().get(0).getId();
           dedicatedHostId = dedicatedHost.getId();
@@ -2171,8 +2232,12 @@ public class VPCExamples {
               .limit(Long.valueOf(10))
               .build();
 
-      Response<FloatingIPCollection> response = vpcService.listFloatingIps(listFloatingIpsOptions).execute();
-      FloatingIPCollection floatingIpCollection = response.getResult();
+      FloatingIpsPager pager = new FloatingIpsPager(vpcService, listFloatingIpsOptions);
+      List<FloatingIP> allResults = new ArrayList<>();
+      while (pager.hasNext()) {
+        List<FloatingIP> nextPage = pager.getNext();
+        allResults.addAll(nextPage);
+      }
 
       // end-list_floating_ips
     } catch (ServiceResponseException e) {
@@ -2248,11 +2313,15 @@ public class VPCExamples {
               .limit(Long.valueOf(10))
               .build();
 
-      Response<VolumeProfileCollection> response = vpcService.listVolumeProfiles(listVolumeProfilesOptions).execute();
-      VolumeProfileCollection volumeProfileCollection = response.getResult();
+      VolumeProfilesPager pager = new VolumeProfilesPager(vpcService, listVolumeProfilesOptions);
+      List<VolumeProfile> allResults = new ArrayList<>();
+      while (pager.hasNext()) {
+        List<VolumeProfile> nextPage = pager.getNext();
+        allResults.addAll(nextPage);
+      }
 
       // end-list_volume_profiles
-      volumeProfileName = volumeProfileCollection.getProfiles().get(0).getName();
+      volumeProfileName = allResults.get(0).getName();
     } catch (ServiceResponseException e) {
       logger.error(String.format("Service returned status code %s: %s%nError details: %s",
               e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
@@ -2281,8 +2350,12 @@ public class VPCExamples {
               .limit(Long.valueOf(10))
               .build();
 
-      Response<VolumeCollection> response = vpcService.listVolumes(listVolumesOptions).execute();
-      VolumeCollection volumeCollection = response.getResult();
+      VolumesPager pager = new VolumesPager(vpcService, listVolumesOptions);
+      List<Volume> allResults = new ArrayList<>();
+      while (pager.hasNext()) {
+        List<Volume> nextPage = pager.getNext();
+        allResults.addAll(nextPage);
+      }
 
       // end-list_volumes
     } catch (ServiceResponseException e) {
@@ -2363,11 +2436,15 @@ public class VPCExamples {
         .limit(Long.valueOf(10))
         .build();
 
-      Response<InstanceCollection> response = vpcService.listInstances(listInstancesOptions).execute();
-      InstanceCollection instanceCollection = response.getResult();
+      InstancesPager pager = new InstancesPager(vpcService, listInstancesOptions);
+      List<Instance> allResults = new ArrayList<>();
+      while (pager.hasNext()) {
+        List<Instance> nextPage = pager.getNext();
+        allResults.addAll(nextPage);
+      }
 
       // end-list_instances
-      for (Instance instance : instanceCollection.getInstances()) {
+      for (Instance instance : allResults) {
         if (instance.getDisks().size() > 0) {
           instanceId = instance.getId();
           instanceDiskId = instance.getDisks().get(0).getId();
@@ -2738,8 +2815,12 @@ public class VPCExamples {
         .networkInterfaceId(instanceNetworkInterfaceId)
         .build();
 
-      Response<ReservedIPCollectionNetworkInterfaceContext> response = vpcService.listInstanceNetworkInterfaceIps(listInstanceNetworkInterfaceIpsOptions).execute();
-      ReservedIPCollectionNetworkInterfaceContext reservedIpCollectionNetworkInterfaceContext = response.getResult();
+      InstanceNetworkInterfaceIpsPager pager = new InstanceNetworkInterfaceIpsPager(vpcService, listInstanceNetworkInterfaceIpsOptions);
+      List<ReservedIP> allResults = new ArrayList<>();
+      while (pager.hasNext()) {
+        List<ReservedIP> nextPage = pager.getNext();
+        allResults.addAll(nextPage);
+      }
 
       // end-list_instance_network_interface_ips
     } catch (ServiceResponseException e) {
@@ -2849,8 +2930,12 @@ public class VPCExamples {
         .limit(Long.valueOf(10))
         .build();
 
-      Response<InstanceGroupCollection> response = vpcService.listInstanceGroups(listInstanceGroupsOptions).execute();
-      InstanceGroupCollection instanceGroupCollection = response.getResult();
+      InstanceGroupsPager pager = new InstanceGroupsPager(vpcService, listInstanceGroupsOptions);
+      List<InstanceGroup> allResults = new ArrayList<>();
+      while (pager.hasNext()) {
+        List<InstanceGroup> nextPage = pager.getNext();
+        allResults.addAll(nextPage);
+      }
 
       // end-list_instance_groups
     } catch (ServiceResponseException e) {
@@ -2928,8 +3013,12 @@ public class VPCExamples {
         .limit(Long.valueOf(10))
         .build();
 
-      Response<InstanceGroupManagerCollection> response = vpcService.listInstanceGroupManagers(listInstanceGroupManagersOptions).execute();
-      InstanceGroupManagerCollection instanceGroupManagerCollection = response.getResult();
+      InstanceGroupManagersPager pager = new InstanceGroupManagersPager(vpcService, listInstanceGroupManagersOptions);
+      List<InstanceGroupManager> allResults = new ArrayList<>();
+      while (pager.hasNext()) {
+        List<InstanceGroupManager> nextPage = pager.getNext();
+        allResults.addAll(nextPage);
+      }
 
       // end-list_instance_group_managers
     } catch (ServiceResponseException e) {
@@ -3007,8 +3096,12 @@ public class VPCExamples {
         .limit(Long.valueOf(10))
         .build();
 
-      Response<InstanceGroupManagerActionsCollection> response = vpcService.listInstanceGroupManagerActions(listInstanceGroupManagerActionsOptions).execute();
-      InstanceGroupManagerActionsCollection instanceGroupManagerActionsCollection = response.getResult();
+      InstanceGroupManagerActionsPager pager = new InstanceGroupManagerActionsPager(vpcService, listInstanceGroupManagerActionsOptions);
+      List<InstanceGroupManagerAction> allResults = new ArrayList<>();
+      while (pager.hasNext()) {
+        List<InstanceGroupManagerAction> nextPage = pager.getNext();
+        allResults.addAll(nextPage);
+      }
 
       // end-list_instance_group_manager_actions
     } catch (ServiceResponseException e) {
@@ -3091,8 +3184,12 @@ public class VPCExamples {
         .limit(Long.valueOf(10))
         .build();
 
-      Response<InstanceGroupManagerPolicyCollection> response = vpcService.listInstanceGroupManagerPolicies(listInstanceGroupManagerPoliciesOptions).execute();
-      InstanceGroupManagerPolicyCollection instanceGroupManagerPolicyCollection = response.getResult();
+      InstanceGroupManagerPoliciesPager pager = new InstanceGroupManagerPoliciesPager(vpcService, listInstanceGroupManagerPoliciesOptions);
+      List<InstanceGroupManagerPolicy> allResults = new ArrayList<>();
+      while (pager.hasNext()) {
+        List<InstanceGroupManagerPolicy> nextPage = pager.getNext();
+        allResults.addAll(nextPage);
+      }
 
       // end-list_instance_group_manager_policies
     } catch (ServiceResponseException e) {
@@ -3173,11 +3270,15 @@ public class VPCExamples {
         .limit(Long.valueOf(10))
         .build();
 
-      Response<InstanceGroupMembershipCollection> response = vpcService.listInstanceGroupMemberships(listInstanceGroupMembershipsOptions).execute();
-      InstanceGroupMembershipCollection instanceGroupMembershipCollection = response.getResult();
+      InstanceGroupMembershipsPager pager = new InstanceGroupMembershipsPager(vpcService, listInstanceGroupMembershipsOptions);
+      List<InstanceGroupMembership> allResults = new ArrayList<>();
+      while (pager.hasNext()) {
+        List<InstanceGroupMembership> nextPage = pager.getNext();
+        allResults.addAll(nextPage);
+      }
 
       // end-list_instance_group_memberships
-      instanceGroupManagerMembershipId = instanceGroupMembershipCollection.getMemberships().get(0).getId();
+      instanceGroupManagerMembershipId = allResults.get(0).getId();
     } catch (ServiceResponseException e) {
         logger.error(String.format("Service returned status code %s: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
@@ -3229,8 +3330,12 @@ public class VPCExamples {
         .limit(Long.valueOf(10))
         .build();
 
-      Response<PlacementGroupCollection> response = vpcService.listPlacementGroups(listPlacementGroupsOptions).execute();
-      PlacementGroupCollection placementGroupCollection = response.getResult();
+      PlacementGroupsPager pager = new PlacementGroupsPager(vpcService, listPlacementGroupsOptions);
+      List<PlacementGroup> allResults = new ArrayList<>();
+      while (pager.hasNext()) {
+        List<PlacementGroup> nextPage = pager.getNext();
+        allResults.addAll(nextPage);
+      }
 
       // end-list_placement_groups
     } catch (ServiceResponseException e) {
@@ -3299,11 +3404,15 @@ public class VPCExamples {
       ListBareMetalServerProfilesOptions listBareMetalServerProfilesOptions = new ListBareMetalServerProfilesOptions.Builder()
               .build();
 
-      Response<BareMetalServerProfileCollection> response = vpcService.listBareMetalServerProfiles(listBareMetalServerProfilesOptions).execute();
-      BareMetalServerProfileCollection bareMetalServerProfileCollection = response.getResult();
+      BareMetalServerProfilesPager pager = new BareMetalServerProfilesPager(vpcService, listBareMetalServerProfilesOptions);
+      List<BareMetalServerProfile> allResults = new ArrayList<>();
+      while (pager.hasNext()) {
+        List<BareMetalServerProfile> nextPage = pager.getNext();
+        allResults.addAll(nextPage);
+      }
 
       // end-list_bare_metal_server_profiles
-      bareMetalServerProfileName = bareMetalServerProfileCollection.getProfiles().get(0).getName();
+      bareMetalServerProfileName = allResults.get(0).getName();
     } catch (ServiceResponseException e) {
       logger.error(String.format("Service returned status code %s: %s%nError details: %s",
               e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
@@ -3331,8 +3440,12 @@ public class VPCExamples {
       ListBareMetalServersOptions listBareMetalServersOptions = new ListBareMetalServersOptions.Builder()
               .build();
 
-      Response<BareMetalServerCollection> response = vpcService.listBareMetalServers(listBareMetalServersOptions).execute();
-      BareMetalServerCollection bareMetalServerCollection = response.getResult();
+      BareMetalServersPager pager = new BareMetalServersPager(vpcService, listBareMetalServersOptions);
+      List<BareMetalServer> allResults = new ArrayList<>();
+      while (pager.hasNext()) {
+        List<BareMetalServer> nextPage = pager.getNext();
+        allResults.addAll(nextPage);
+      }
 
       // end-list_bare_metal_servers
     } catch (ServiceResponseException e) {
@@ -3472,8 +3585,12 @@ public class VPCExamples {
               .bareMetalServerId(bareMetalServerId)
               .build();
 
-      Response<BareMetalServerNetworkInterfaceCollection> response = vpcService.listBareMetalServerNetworkInterfaces(listBareMetalServerNetworkInterfacesOptions).execute();
-      BareMetalServerNetworkInterfaceCollection bareMetalServerNetworkInterfaceCollection = response.getResult();
+      BareMetalServerNetworkInterfacesPager pager = new BareMetalServerNetworkInterfacesPager(vpcService, listBareMetalServerNetworkInterfacesOptions);
+      List<BareMetalServerNetworkInterface> allResults = new ArrayList<>();
+      while (pager.hasNext()) {
+        List<BareMetalServerNetworkInterface> nextPage = pager.getNext();
+        allResults.addAll(nextPage);
+      }
 
       // end-list_bare_metal_server_network_interfaces
     } catch (ServiceResponseException e) {
@@ -3705,8 +3822,12 @@ public class VPCExamples {
         .limit(Long.valueOf(10))
         .build();
 
-      Response<SnapshotCollection> response = vpcService.listSnapshots(listSnapshotsOptions).execute();
-      SnapshotCollection snapshotCollection = response.getResult();
+      SnapshotsPager pager = new SnapshotsPager(vpcService, listSnapshotsOptions);
+      List<Snapshot> allResults = new ArrayList<>();
+      while (pager.hasNext()) {
+        List<Snapshot> nextPage = pager.getNext();
+        allResults.addAll(nextPage);
+      }
 
       // end-list_snapshots
     } catch (ServiceResponseException e) {
@@ -3858,8 +3979,12 @@ public class VPCExamples {
         .limit(Long.valueOf(10))
         .build();
 
-      Response<PublicGatewayCollection> response = vpcService.listPublicGateways(listPublicGatewaysOptions).execute();
-      PublicGatewayCollection publicGatewayCollection = response.getResult();
+      PublicGatewaysPager pager = new PublicGatewaysPager(vpcService, listPublicGatewaysOptions);
+      List<PublicGateway> allResults = new ArrayList<>();
+      while (pager.hasNext()) {
+        List<PublicGateway> nextPage = pager.getNext();
+        allResults.addAll(nextPage);
+      }
 
       // end-list_public_gateways
     } catch (ServiceResponseException e) {
@@ -3874,8 +3999,12 @@ public class VPCExamples {
         .limit(Long.valueOf(10))
         .build();
 
-      Response<NetworkACLCollection> response = vpcService.listNetworkAcls(listNetworkAclsOptions).execute();
-      NetworkACLCollection networkAclCollection = response.getResult();
+      NetworkAclsPager pager = new NetworkAclsPager(vpcService, listNetworkAclsOptions);
+      List<NetworkACL> allResults = new ArrayList<>();
+      while (pager.hasNext()) {
+        List<NetworkACL> nextPage = pager.getNext();
+        allResults.addAll(nextPage);
+      }
 
       // end-list_network_acls
     } catch (ServiceResponseException e) {
@@ -3952,8 +4081,12 @@ public class VPCExamples {
         .limit(Long.valueOf(10))
         .build();
 
-      Response<NetworkACLRuleCollection> response = vpcService.listNetworkAclRules(listNetworkAclRulesOptions).execute();
-      NetworkACLRuleCollection networkAclRuleCollection = response.getResult();
+      NetworkAclRulesPager pager = new NetworkAclRulesPager(vpcService, listNetworkAclRulesOptions);
+      List<NetworkACLRuleItem> allResults = new ArrayList<>();
+      while (pager.hasNext()) {
+        List<NetworkACLRuleItem> nextPage = pager.getNext();
+        allResults.addAll(nextPage);
+      }
 
       // end-list_network_acl_rules
     } catch (ServiceResponseException e) {
@@ -4033,8 +4166,12 @@ public class VPCExamples {
         .limit(Long.valueOf(10))
         .build();
 
-      Response<SecurityGroupCollection> response = vpcService.listSecurityGroups(listSecurityGroupsOptions).execute();
-      SecurityGroupCollection securityGroupCollection = response.getResult();
+      SecurityGroupsPager pager = new SecurityGroupsPager(vpcService, listSecurityGroupsOptions);
+      List<SecurityGroup> allResults = new ArrayList<>();
+      while (pager.hasNext()) {
+        List<SecurityGroup> nextPage = pager.getNext();
+        allResults.addAll(nextPage);
+      }
 
       // end-list_security_groups
     } catch (ServiceResponseException e) {
@@ -4203,11 +4340,15 @@ public class VPCExamples {
         .limit(Long.valueOf(10))
         .build();
 
-      Response<SecurityGroupTargetCollection> response = vpcService.listSecurityGroupTargets(listSecurityGroupTargetsOptions).execute();
-      SecurityGroupTargetCollection securityGroupTargetCollection = response.getResult();
+      SecurityGroupTargetsPager pager = new SecurityGroupTargetsPager(vpcService, listSecurityGroupTargetsOptions);
+      List<SecurityGroupTargetReference> allResults = new ArrayList<>();
+      while (pager.hasNext()) {
+        List<SecurityGroupTargetReference> nextPage = pager.getNext();
+        allResults.addAll(nextPage);
+      }
 
       // end-list_security_group_targets
-      securityGroupTargetId = securityGroupTargetCollection.getTargets().get(0).getId();
+      securityGroupTargetId = allResults.get(0).getId();
     } catch (ServiceResponseException e) {
         logger.error(String.format("Service returned status code %s: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
@@ -4237,8 +4378,12 @@ public class VPCExamples {
         .limit(Long.valueOf(10))
         .build();
 
-      Response<IKEPolicyCollection> response = vpcService.listIkePolicies(listIkePoliciesOptions).execute();
-      IKEPolicyCollection ikePolicyCollection = response.getResult();
+      IkePoliciesPager pager = new IkePoliciesPager(vpcService, listIkePoliciesOptions);
+      List<IKEPolicy> allResults = new ArrayList<>();
+      while (pager.hasNext()) {
+        List<IKEPolicy> nextPage = pager.getNext();
+        allResults.addAll(nextPage);
+      }
 
       // end-list_ike_policies
     } catch (ServiceResponseException e) {
@@ -4327,8 +4472,12 @@ public class VPCExamples {
         .limit(Long.valueOf(10))
         .build();
 
-      Response<IPsecPolicyCollection> response = vpcService.listIpsecPolicies(listIpsecPoliciesOptions).execute();
-      IPsecPolicyCollection iPsecPolicyCollection = response.getResult();
+      IpsecPoliciesPager pager = new IpsecPoliciesPager(vpcService, listIpsecPoliciesOptions);
+      List<IPsecPolicy> allResults = new ArrayList<>();
+      while (pager.hasNext()) {
+        List<IPsecPolicy> nextPage = pager.getNext();
+        allResults.addAll(nextPage);
+      }
 
       // end-list_ipsec_policies
     } catch (ServiceResponseException e) {
@@ -4417,8 +4566,12 @@ public class VPCExamples {
         .limit(Long.valueOf(10))
         .build();
 
-      Response<VPNGatewayCollection> response = vpcService.listVpnGateways(listVpnGatewaysOptions).execute();
-      VPNGatewayCollection vpnGatewayCollection = response.getResult();
+      VpnGatewaysPager pager = new VpnGatewaysPager(vpcService, listVpnGatewaysOptions);
+      List<VPNGateway> allResults = new ArrayList<>();
+      while (pager.hasNext()) {
+        List<VPNGateway> nextPage = pager.getNext();
+        allResults.addAll(nextPage);
+      }
 
       // end-list_vpn_gateways
     } catch (ServiceResponseException e) {
@@ -4673,8 +4826,12 @@ public class VPCExamples {
         .sort("name")
         .build();
 
-      Response<VPNServerCollection> response = vpcService.listVpnServers(listVpnServersOptions).execute();
-      VPNServerCollection vpnServerCollection = response.getResult();
+      VpnServersPager pager = new VpnServersPager(vpcService, listVpnServersOptions);
+      List<VPNServer> allResults = new ArrayList<>();
+      while (pager.hasNext()) {
+        List<VPNServer> nextPage = pager.getNext();
+        allResults.addAll(nextPage);
+      }
 
       // end-list_vpn_servers
     } catch (ServiceResponseException e) {
@@ -4779,11 +4936,15 @@ public class VPCExamples {
         .sort("created_at")
         .build();
 
-      Response<VPNServerClientCollection> response = vpcService.listVpnServerClients(listVpnServerClientsOptions).execute();
-      VPNServerClientCollection vpnServerClientCollection = response.getResult();
+      VpnServerClientsPager pager = new VpnServerClientsPager(vpcService, listVpnServerClientsOptions);
+      List<VPNServerClient> allResults = new ArrayList<>();
+      while (pager.hasNext()) {
+        List<VPNServerClient> nextPage = pager.getNext();
+        allResults.addAll(nextPage);
+      }
 
       // end-list_vpn_server_clients
-      vpnServerClientId = vpnServerClientCollection.getClients().get(0).getId();
+      vpnServerClientId = allResults.get(0).getId();
     } catch (ServiceResponseException e) {
         logger.error(String.format("Service returned status code %s: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
@@ -4829,8 +4990,12 @@ public class VPCExamples {
         .sort("name")
         .build();
 
-      Response<VPNServerRouteCollection> response = vpcService.listVpnServerRoutes(listVpnServerRoutesOptions).execute();
-      VPNServerRouteCollection vpnServerRouteCollection = response.getResult();
+      VpnServerRoutesPager pager = new VpnServerRoutesPager(vpcService, listVpnServerRoutesOptions);
+      List<VPNServerRoute> allResults = new ArrayList<>();
+      while (pager.hasNext()) {
+        List<VPNServerRoute> nextPage = pager.getNext();
+        allResults.addAll(nextPage);
+      }
 
       // end-list_vpn_server_routes
     } catch (ServiceResponseException e) {
@@ -4903,11 +5068,15 @@ public class VPCExamples {
         .limit(Long.valueOf(10))
         .build();
 
-      Response<LoadBalancerProfileCollection> response = vpcService.listLoadBalancerProfiles(listLoadBalancerProfilesOptions).execute();
-      LoadBalancerProfileCollection loadBalancerProfileCollection = response.getResult();
+      LoadBalancerProfilesPager pager = new LoadBalancerProfilesPager(vpcService, listLoadBalancerProfilesOptions);
+      List<LoadBalancerProfile> allResults = new ArrayList<>();
+      while (pager.hasNext()) {
+        List<LoadBalancerProfile> nextPage = pager.getNext();
+        allResults.addAll(nextPage);
+      }
 
       // end-list_load_balancer_profiles
-      loadBalancerProfileName = loadBalancerProfileCollection.getProfiles().get(0).getName();
+      loadBalancerProfileName = allResults.get(0).getName();
     } catch (ServiceResponseException e) {
         logger.error(String.format("Service returned status code %s: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
@@ -4936,8 +5105,12 @@ public class VPCExamples {
         .limit(Long.valueOf(10))
         .build();
 
-      Response<LoadBalancerCollection> response = vpcService.listLoadBalancers(listLoadBalancersOptions).execute();
-      LoadBalancerCollection loadBalancerCollection = response.getResult();
+      LoadBalancersPager pager = new LoadBalancersPager(vpcService, listLoadBalancersOptions);
+      List<LoadBalancer> allResults = new ArrayList<>();
+      while (pager.hasNext()) {
+        List<LoadBalancer> nextPage = pager.getNext();
+        allResults.addAll(nextPage);
+      }
 
       // end-list_load_balancers
     } catch (ServiceResponseException e) {
@@ -5454,8 +5627,12 @@ public class VPCExamples {
         .limit(Long.valueOf(10))
         .build();
 
-      Response<EndpointGatewayCollection> response = vpcService.listEndpointGateways(listEndpointGatewaysOptions).execute();
-      EndpointGatewayCollection endpointGatewayCollection = response.getResult();
+      EndpointGatewaysPager pager = new EndpointGatewaysPager(vpcService, listEndpointGatewaysOptions);
+      List<EndpointGateway> allResults = new ArrayList<>();
+      while (pager.hasNext()) {
+        List<EndpointGateway> nextPage = pager.getNext();
+        allResults.addAll(nextPage);
+      }
 
       // end-list_endpoint_gateways
     } catch (ServiceResponseException e) {
@@ -5502,11 +5679,15 @@ public class VPCExamples {
         .limit(Long.valueOf(10))
         .build();
 
-      Response<ReservedIPCollectionEndpointGatewayContext> response = vpcService.listEndpointGatewayIps(listEndpointGatewayIpsOptions).execute();
-      ReservedIPCollectionEndpointGatewayContext reservedIpCollectionEndpointGatewayContext = response.getResult();
+      EndpointGatewayIpsPager pager = new EndpointGatewayIpsPager(vpcService, listEndpointGatewayIpsOptions);
+      List<ReservedIP> allResults = new ArrayList<>();
+      while (pager.hasNext()) {
+        List<ReservedIP> nextPage = pager.getNext();
+        allResults.addAll(nextPage);
+      }
 
       // end-list_endpoint_gateway_ips
-      endpointGatewayIpId = reservedIpCollectionEndpointGatewayContext.getIps().get(0).getId();
+      endpointGatewayIpId = allResults.get(0).getId();
     } catch (ServiceResponseException e) {
         logger.error(String.format("Service returned status code %s: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
@@ -5590,8 +5771,12 @@ public class VPCExamples {
         .limit(Long.valueOf(10))
         .build();
 
-      Response<FlowLogCollectorCollection> response = vpcService.listFlowLogCollectors(listFlowLogCollectorsOptions).execute();
-      FlowLogCollectorCollection flowLogCollectorCollection = response.getResult();
+      FlowLogCollectorsPager pager = new FlowLogCollectorsPager(vpcService, listFlowLogCollectorsOptions);
+      List<FlowLogCollector> allResults = new ArrayList<>();
+      while (pager.hasNext()) {
+        List<FlowLogCollector> nextPage = pager.getNext();
+        allResults.addAll(nextPage);
+      }
 
       // end-list_flow_log_collectors
     } catch (ServiceResponseException e) {

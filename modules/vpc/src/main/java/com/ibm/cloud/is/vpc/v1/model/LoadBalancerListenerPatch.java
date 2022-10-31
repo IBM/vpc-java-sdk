@@ -34,7 +34,7 @@ public class LoadBalancerListenerPatch extends GenericModel {
    * - If `default_pool` is set, the protocol cannot be changed.
    * - If `https_redirect` is set, the protocol must be `http`.
    * - If another listener's `https_redirect` targets this listener, the protocol must be
-   *   `https`.
+   * `https`.
    */
   public interface Protocol {
     /** http. */
@@ -367,7 +367,7 @@ public class LoadBalancerListenerPatch extends GenericModel {
    * - If `default_pool` is set, the protocol cannot be changed.
    * - If `https_redirect` is set, the protocol must be `http`.
    * - If another listener's `https_redirect` targets this listener, the protocol must be
-   *   `https`.
+   * `https`.
    *
    * @return the protocol
    */

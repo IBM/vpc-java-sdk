@@ -33,10 +33,10 @@ public class UpdateInstanceGroupOptionsTest {
   public void testUpdateInstanceGroupOptions() throws Throwable {
     UpdateInstanceGroupOptions updateInstanceGroupOptionsModel = new UpdateInstanceGroupOptions.Builder()
       .id("testString")
-      .instanceGroupPatch(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .instanceGroupPatch(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .build();
     assertEquals(updateInstanceGroupOptionsModel.id(), "testString");
-    assertEquals(updateInstanceGroupOptionsModel.instanceGroupPatch(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
+    assertEquals(updateInstanceGroupOptionsModel.instanceGroupPatch(), java.util.Collections.singletonMap("anyKey", "anyValue"));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

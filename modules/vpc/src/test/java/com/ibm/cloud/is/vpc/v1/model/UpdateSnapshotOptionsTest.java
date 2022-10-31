@@ -33,11 +33,11 @@ public class UpdateSnapshotOptionsTest {
   public void testUpdateSnapshotOptions() throws Throwable {
     UpdateSnapshotOptions updateSnapshotOptionsModel = new UpdateSnapshotOptions.Builder()
       .id("testString")
-      .snapshotPatch(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .snapshotPatch(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .ifMatch("W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"")
       .build();
     assertEquals(updateSnapshotOptionsModel.id(), "testString");
-    assertEquals(updateSnapshotOptionsModel.snapshotPatch(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
+    assertEquals(updateSnapshotOptionsModel.snapshotPatch(), java.util.Collections.singletonMap("anyKey", "anyValue"));
     assertEquals(updateSnapshotOptionsModel.ifMatch(), "W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"");
   }
 

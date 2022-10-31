@@ -34,12 +34,12 @@ public class UpdateVpcRoutingTableOptionsTest {
     UpdateVpcRoutingTableOptions updateVpcRoutingTableOptionsModel = new UpdateVpcRoutingTableOptions.Builder()
       .vpcId("testString")
       .id("testString")
-      .routingTablePatch(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .routingTablePatch(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .ifMatch("W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"")
       .build();
     assertEquals(updateVpcRoutingTableOptionsModel.vpcId(), "testString");
     assertEquals(updateVpcRoutingTableOptionsModel.id(), "testString");
-    assertEquals(updateVpcRoutingTableOptionsModel.routingTablePatch(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
+    assertEquals(updateVpcRoutingTableOptionsModel.routingTablePatch(), java.util.Collections.singletonMap("anyKey", "anyValue"));
     assertEquals(updateVpcRoutingTableOptionsModel.ifMatch(), "W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"");
   }
 

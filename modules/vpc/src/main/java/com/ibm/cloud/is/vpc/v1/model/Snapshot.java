@@ -162,7 +162,9 @@ public class Snapshot extends GenericModel {
    * Indicates whether this snapshot can be deleted. This value will always be `true`.
    *
    * @return the deletable
+   * @deprecated this method is deprecated and may be removed in a future release
    */
+  @Deprecated
   public Boolean isDeletable() {
     return deletable;
   }

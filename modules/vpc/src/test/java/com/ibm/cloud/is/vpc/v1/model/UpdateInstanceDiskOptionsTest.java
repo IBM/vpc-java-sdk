@@ -34,11 +34,11 @@ public class UpdateInstanceDiskOptionsTest {
     UpdateInstanceDiskOptions updateInstanceDiskOptionsModel = new UpdateInstanceDiskOptions.Builder()
       .instanceId("testString")
       .id("testString")
-      .instanceDiskPatch(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .instanceDiskPatch(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .build();
     assertEquals(updateInstanceDiskOptionsModel.instanceId(), "testString");
     assertEquals(updateInstanceDiskOptionsModel.id(), "testString");
-    assertEquals(updateInstanceDiskOptionsModel.instanceDiskPatch(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
+    assertEquals(updateInstanceDiskOptionsModel.instanceDiskPatch(), java.util.Collections.singletonMap("anyKey", "anyValue"));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

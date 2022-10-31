@@ -26,6 +26,7 @@ public class CreateVpcRoutingTableOptions extends GenericModel {
   protected List<ResourceFilter> acceptRoutesFrom;
   protected String name;
   protected Boolean routeDirectLinkIngress;
+  protected Boolean routeInternetIngress;
   protected Boolean routeTransitGatewayIngress;
   protected Boolean routeVpcZoneIngress;
   protected List<RoutePrototype> routes;
@@ -38,6 +39,7 @@ public class CreateVpcRoutingTableOptions extends GenericModel {
     private List<ResourceFilter> acceptRoutesFrom;
     private String name;
     private Boolean routeDirectLinkIngress;
+    private Boolean routeInternetIngress;
     private Boolean routeTransitGatewayIngress;
     private Boolean routeVpcZoneIngress;
     private List<RoutePrototype> routes;
@@ -52,6 +54,7 @@ public class CreateVpcRoutingTableOptions extends GenericModel {
       this.acceptRoutesFrom = createVpcRoutingTableOptions.acceptRoutesFrom;
       this.name = createVpcRoutingTableOptions.name;
       this.routeDirectLinkIngress = createVpcRoutingTableOptions.routeDirectLinkIngress;
+      this.routeInternetIngress = createVpcRoutingTableOptions.routeInternetIngress;
       this.routeTransitGatewayIngress = createVpcRoutingTableOptions.routeTransitGatewayIngress;
       this.routeVpcZoneIngress = createVpcRoutingTableOptions.routeVpcZoneIngress;
       this.routes = createVpcRoutingTableOptions.routes;
@@ -159,6 +162,17 @@ public class CreateVpcRoutingTableOptions extends GenericModel {
     }
 
     /**
+     * Set the routeInternetIngress.
+     *
+     * @param routeInternetIngress the routeInternetIngress
+     * @return the CreateVpcRoutingTableOptions builder
+     */
+    public Builder routeInternetIngress(Boolean routeInternetIngress) {
+      this.routeInternetIngress = routeInternetIngress;
+      return this;
+    }
+
+    /**
      * Set the routeTransitGatewayIngress.
      *
      * @param routeTransitGatewayIngress the routeTransitGatewayIngress
@@ -202,6 +216,7 @@ public class CreateVpcRoutingTableOptions extends GenericModel {
     acceptRoutesFrom = builder.acceptRoutesFrom;
     name = builder.name;
     routeDirectLinkIngress = builder.routeDirectLinkIngress;
+    routeInternetIngress = builder.routeInternetIngress;
     routeTransitGatewayIngress = builder.routeTransitGatewayIngress;
     routeVpcZoneIngress = builder.routeVpcZoneIngress;
     routes = builder.routes;
@@ -257,26 +272,8 @@ public class CreateVpcRoutingTableOptions extends GenericModel {
    * Gets the routeDirectLinkIngress.
    *
    * If set to `true`, this routing table will be used to route traffic that originates from [Direct
-   * Link](https://cloud.ibm.com/docs/dl/) to this VPC. For this to succeed, the VPC must not already have a routing
-   * table with this property set to `true`.
-   *
-   * Incoming traffic will be routed according to the routing table with one exception: routes with an `action` of
-   * `deliver` are treated as `drop` unless the `next_hop` is an IP address bound to a network interface on a subnet in
-   * the route's `zone`. Therefore, if an incoming packet matches a route with a `next_hop` of an internet-bound IP
-   * address or a VPN gateway connection, the packet will be dropped.
-   *
-   * @return the routeDirectLinkIngress
-   */
-  public Boolean routeDirectLinkIngress() {
-    return routeDirectLinkIngress;
-  }
-
-  /**
-   * Gets the routeTransitGatewayIngress.
-   *
-   * If set to `true`, this routing table will be used to route traffic that originates from [Transit
-   * Gateway](https://cloud.ibm.com/cloud/transit-gateway/) to this VPC. For this to succeed, the VPC must not already
-   * have a routing table with this property set to `true`.
+   * Link](https://cloud.ibm.com/docs/dl) to this VPC. The VPC must not already have a routing table with this property
+   * set to `true`.
    *
    * Incoming traffic will be routed according to the routing table with one exception: routes with an `action` of
    * `deliver` are treated as `drop` unless the `next_hop` is an IP address bound to a network interface on a subnet in
@@ -286,6 +283,44 @@ public class CreateVpcRoutingTableOptions extends GenericModel {
    * If [Classic Access](https://cloud.ibm.com/docs/vpc?topic=vpc-setting-up-access-to-classic-infrastructure) is
    * enabled for this VPC, and this property is set to `true`, its incoming traffic will also be routed according to
    * this routing table.
+   *
+   * @return the routeDirectLinkIngress
+   */
+  public Boolean routeDirectLinkIngress() {
+    return routeDirectLinkIngress;
+  }
+
+  /**
+   * Gets the routeInternetIngress.
+   *
+   * If set to `true`, this routing table will be used to route traffic that originates from the internet. For this to
+   * succeed, the VPC must not already have a routing table with this property set to `true`.
+   *
+   * Incoming traffic will be routed according to the routing table with two exceptions:
+   * - Traffic destined for IP addresses associated with public gateways will not be
+   *   subject to routes in this routing table.
+   * - Routes with an action of deliver are treated as drop unless the `next_hop` is an
+   *   IP address bound to a network interface on a subnet in the route's `zone`.
+   *   Therefore, if an incoming packet matches a route with a `next_hop` of an
+   *   internet-bound IP address or a VPN gateway connection, the packet will be dropped.
+   *
+   * @return the routeInternetIngress
+   */
+  public Boolean routeInternetIngress() {
+    return routeInternetIngress;
+  }
+
+  /**
+   * Gets the routeTransitGatewayIngress.
+   *
+   * If set to `true`, this routing table will be used to route traffic that originates from [Transit
+   * Gateway](https://cloud.ibm.com/docs/transit-gateway) to this VPC. The VPC must not already have a routing table
+   * with this property set to `true`.
+   *
+   * Incoming traffic will be routed according to the routing table with one exception: routes with an `action` of
+   * `deliver` are treated as `drop` unless the `next_hop` is an IP address bound to a network interface on a subnet in
+   * the route's `zone`. Therefore, if an incoming packet matches a route with a `next_hop` of an internet-bound IP
+   * address or a VPN gateway connection, the packet will be dropped.
    *
    * @return the routeTransitGatewayIngress
    */
@@ -297,7 +332,7 @@ public class CreateVpcRoutingTableOptions extends GenericModel {
    * Gets the routeVpcZoneIngress.
    *
    * If set to `true`, this routing table will be used to route traffic that originates from subnets in other zones in
-   * this VPC. For this to succeed, the VPC must not already have a routing table with this property set to `true`.
+   * this VPC. The VPC must not already have a routing table with this property set to `true`.
    *
    * Incoming traffic will be routed according to the routing table with one exception: routes with an `action` of
    * `deliver` are treated as `drop` unless the `next_hop` is an IP address within the VPC's address prefix ranges.

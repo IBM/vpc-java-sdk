@@ -20,9 +20,8 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class BareMetalServerTrustedPlatformModule extends GenericModel {
 
   /**
-   * The mode for the trusted platform module (TPM):
-   * - `tpm_2`: Standard TPM 2 capabilities
-   * - `tpm_2_with_txt`: Standard TPM 2 with Intel Trusted Execution Technology (TXT)
+   * The trusted platform module (TPM) mode:
+   * - `tpm_2`: TPM 2.0
    *
    * The enumerated values for this property are expected to expand in the future. When processing this property, check
    * for and log unknown values. Optionally halt processing and surface the error, or bypass the resource on which the
@@ -31,8 +30,6 @@ public class BareMetalServerTrustedPlatformModule extends GenericModel {
   public interface Mode {
     /** tpm_2. */
     String TPM_2 = "tpm_2";
-    /** tpm_2_with_txt. */
-    String TPM_2_WITH_TXT = "tpm_2_with_txt";
   }
 
   protected Boolean enabled;
@@ -43,7 +40,7 @@ public class BareMetalServerTrustedPlatformModule extends GenericModel {
   /**
    * Gets the enabled.
    *
-   * Indicates whether the trusted platform module (TPM) is enabled. If enabled, `mode` will also be set.
+   * Indicates whether the trusted platform module is enabled.
    *
    * @return the enabled
    */
@@ -54,9 +51,8 @@ public class BareMetalServerTrustedPlatformModule extends GenericModel {
   /**
    * Gets the mode.
    *
-   * The mode for the trusted platform module (TPM):
-   * - `tpm_2`: Standard TPM 2 capabilities
-   * - `tpm_2_with_txt`: Standard TPM 2 with Intel Trusted Execution Technology (TXT)
+   * The trusted platform module (TPM) mode:
+   * - `tpm_2`: TPM 2.0
    *
    * The enumerated values for this property are expected to expand in the future. When processing this property, check
    * for and log unknown values. Optionally halt processing and surface the error, or bypass the resource on which the

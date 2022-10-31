@@ -12,7 +12,7 @@
  */
 
 /*
- * IBM OpenAPI SDK Code Generator Version: 3.55.1-b24c7487-20220831-201343
+ * IBM OpenAPI SDK Code Generator Version: 3.59.0-da92a51d-20221012-180509
  */
 
 package com.ibm.cloud.is.vpc.v1;
@@ -478,6 +478,7 @@ import com.ibm.cloud.sdk.core.util.ResponseConverterUtils;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.logging.Logger;
 
 /**
  * The IBM Cloud Virtual Private Cloud (VPC) API can be used to programmatically provision and manage virtual server
@@ -486,6 +487,7 @@ import java.util.Map.Entry;
  * API Version: 2022-09-13
  */
 public class Vpc extends BaseService {
+  private static final Logger LOGGER = Logger.getLogger(Vpc.class.getName());
 
   /**
    * Default service name used when configuring the `Vpc` client.
@@ -1012,8 +1014,11 @@ public class Vpc extends BaseService {
    *
    * @param listVpcRoutesOptions the {@link ListVpcRoutesOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link RouteCollection}
+   * @deprecated this method is deprecated and may be removed in a future release
    */
+   @Deprecated
   public ServiceCall<RouteCollection> listVpcRoutes(ListVpcRoutesOptions listVpcRoutesOptions) {
+    LOGGER.warning("A deprecated operation has been invoked: listVpcRoutes");
     com.ibm.cloud.sdk.core.util.Validator.notNull(listVpcRoutesOptions,
       "listVpcRoutesOptions cannot be null");
     Map<String, String> pathParamsMap = new HashMap<String, String>();
@@ -1049,8 +1054,11 @@ public class Vpc extends BaseService {
    *
    * @param createVpcRouteOptions the {@link CreateVpcRouteOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link Route}
+   * @deprecated this method is deprecated and may be removed in a future release
    */
+   @Deprecated
   public ServiceCall<Route> createVpcRoute(CreateVpcRouteOptions createVpcRouteOptions) {
+    LOGGER.warning("A deprecated operation has been invoked: createVpcRoute");
     com.ibm.cloud.sdk.core.util.Validator.notNull(createVpcRouteOptions,
       "createVpcRouteOptions cannot be null");
     Map<String, String> pathParamsMap = new HashMap<String, String>();
@@ -1088,8 +1096,11 @@ public class Vpc extends BaseService {
    *
    * @param deleteVpcRouteOptions the {@link DeleteVpcRouteOptions} containing the options for the call
    * @return a {@link ServiceCall} with a void result
+   * @deprecated this method is deprecated and may be removed in a future release
    */
+   @Deprecated
   public ServiceCall<Void> deleteVpcRoute(DeleteVpcRouteOptions deleteVpcRouteOptions) {
+    LOGGER.warning("A deprecated operation has been invoked: deleteVpcRoute");
     com.ibm.cloud.sdk.core.util.Validator.notNull(deleteVpcRouteOptions,
       "deleteVpcRouteOptions cannot be null");
     Map<String, String> pathParamsMap = new HashMap<String, String>();
@@ -1113,8 +1124,11 @@ public class Vpc extends BaseService {
    *
    * @param getVpcRouteOptions the {@link GetVpcRouteOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link Route}
+   * @deprecated this method is deprecated and may be removed in a future release
    */
+   @Deprecated
   public ServiceCall<Route> getVpcRoute(GetVpcRouteOptions getVpcRouteOptions) {
+    LOGGER.warning("A deprecated operation has been invoked: getVpcRoute");
     com.ibm.cloud.sdk.core.util.Validator.notNull(getVpcRouteOptions,
       "getVpcRouteOptions cannot be null");
     Map<String, String> pathParamsMap = new HashMap<String, String>();
@@ -1141,8 +1155,11 @@ public class Vpc extends BaseService {
    *
    * @param updateVpcRouteOptions the {@link UpdateVpcRouteOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link Route}
+   * @deprecated this method is deprecated and may be removed in a future release
    */
+   @Deprecated
   public ServiceCall<Route> updateVpcRoute(UpdateVpcRouteOptions updateVpcRouteOptions) {
+    LOGGER.warning("A deprecated operation has been invoked: updateVpcRoute");
     com.ibm.cloud.sdk.core.util.Validator.notNull(updateVpcRouteOptions,
       "updateVpcRouteOptions cannot be null");
     Map<String, String> pathParamsMap = new HashMap<String, String>();
@@ -1232,6 +1249,9 @@ public class Vpc extends BaseService {
     }
     if (createVpcRoutingTableOptions.routeDirectLinkIngress() != null) {
       contentJson.addProperty("route_direct_link_ingress", createVpcRoutingTableOptions.routeDirectLinkIngress());
+    }
+    if (createVpcRoutingTableOptions.routeInternetIngress() != null) {
+      contentJson.addProperty("route_internet_ingress", createVpcRoutingTableOptions.routeInternetIngress());
     }
     if (createVpcRoutingTableOptions.routeTransitGatewayIngress() != null) {
       contentJson.addProperty("route_transit_gateway_ingress", createVpcRoutingTableOptions.routeTransitGatewayIngress());
@@ -2102,7 +2122,7 @@ public class Vpc extends BaseService {
    *
    * This request deletes an image. This operation cannot be reversed. A system-provided image is not allowed to be
    * deleted. Additionally, an image cannot be deleted if it:
-   * - has a `status` of `tentative` or `deleting`
+   * - has a `status` of `deleting`
    * - has a `status` of `pending` with a `status_reasons` code of `image_request_in_progress`
    * - has `catalog_offering.managed` set to `true`.
    *

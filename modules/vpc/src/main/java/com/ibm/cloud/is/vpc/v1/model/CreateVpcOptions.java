@@ -20,8 +20,9 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class CreateVpcOptions extends GenericModel {
 
   /**
-   * Indicates whether a default address prefix will be automatically created for each zone in this VPC. If `manual`,
-   * this VPC will be created with no default address prefixes.
+   * Indicates whether a [default address prefix](https://cloud.ibm.com/docs/vpc?topic=vpc-configuring-address-prefixes)
+   * will be automatically created for each zone in this VPC. If `manual`, this VPC will be created with no default
+   * address prefixes.
    *
    * Since address prefixes are managed identically regardless of whether they were automatically created, the value is
    * not preserved as a VPC property.
@@ -140,8 +141,9 @@ public class CreateVpcOptions extends GenericModel {
   /**
    * Gets the addressPrefixManagement.
    *
-   * Indicates whether a default address prefix will be automatically created for each zone in this VPC. If `manual`,
-   * this VPC will be created with no default address prefixes.
+   * Indicates whether a [default address prefix](https://cloud.ibm.com/docs/vpc?topic=vpc-configuring-address-prefixes)
+   * will be automatically created for each zone in this VPC. If `manual`, this VPC will be created with no default
+   * address prefixes.
    *
    * Since address prefixes are managed identically regardless of whether they were automatically created, the value is
    * not preserved as a VPC property.

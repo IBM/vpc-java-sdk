@@ -41,7 +41,6 @@ public class Image extends GenericModel {
    * - deprecated: image is administratively slated to be deleted
    * - failed: image is corrupt or did not pass validation
    * - pending: image is being imported and is not yet `available`
-   * - tentative: image import has timed out (contact support)
    * - unusable: image cannot be used (see `status_reasons[]` for possible remediation)
    *
    * The enumerated values for this property are expected to expand in the future. When processing this property, check
@@ -59,8 +58,6 @@ public class Image extends GenericModel {
     String FAILED = "failed";
     /** pending. */
     String PENDING = "pending";
-    /** tentative. */
-    String TENTATIVE = "tentative";
     /** unusable. */
     String UNUSABLE = "unusable";
   }
@@ -196,8 +193,7 @@ public class Image extends GenericModel {
    *
    * The minimum size (in gigabytes) of a volume onto which this image may be provisioned.
    *
-   * This property may be absent if the image has a `status` of `pending`, `tentative`, or
-   * `failed`.
+   * This property may be absent if the image has a `status` of `pending` or `failed`.
    *
    * @return the minimumProvisionedSize
    */
@@ -261,7 +257,6 @@ public class Image extends GenericModel {
    * - deprecated: image is administratively slated to be deleted
    * - failed: image is corrupt or did not pass validation
    * - pending: image is being imported and is not yet `available`
-   * - tentative: image import has timed out (contact support)
    * - unusable: image cannot be used (see `status_reasons[]` for possible remediation)
    *
    * The enumerated values for this property are expected to expand in the future. When processing this property, check

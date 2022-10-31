@@ -17,7 +17,7 @@ import java.util.List;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * The supported trusted platform module (TPM) modes for this bare metal server profile.
+ * The supported trusted platform module modes for this bare metal server profile.
  */
 public class BareMetalServerProfileSupportedTrustedPlatformModuleModes extends GenericModel {
 
@@ -30,9 +30,8 @@ public class BareMetalServerProfileSupportedTrustedPlatformModuleModes extends G
   }
 
   /**
-   * The mode for the trusted platform module (TPM):
-   * - `tpm_2`: Standard TPM 2 capabilities
-   * - `tpm_2_with_txt`: Standard TPM 2 with Intel Trusted Execution Technology (TXT)
+   * The trusted platform module (TPM) mode:
+   * - `tpm_2`: TPM 2.0
    *
    * The enumerated values for this property are expected to expand in the future. When processing this property, check
    * for and log unknown values. Optionally halt processing and surface the error, or bypass the resource on which the
@@ -41,8 +40,6 @@ public class BareMetalServerProfileSupportedTrustedPlatformModuleModes extends G
   public interface Values {
     /** tpm_2. */
     String TPM_2 = "tpm_2";
-    /** tpm_2_with_txt. */
-    String TPM_2_WITH_TXT = "tpm_2_with_txt";
   }
 
   protected String type;
@@ -64,7 +61,7 @@ public class BareMetalServerProfileSupportedTrustedPlatformModuleModes extends G
   /**
    * Gets the values.
    *
-   * The supported trusted platform module (TPM) modes.
+   * The supported trusted platform module modes.
    *
    * @return the values
    */

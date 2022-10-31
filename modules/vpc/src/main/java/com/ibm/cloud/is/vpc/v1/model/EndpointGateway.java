@@ -230,7 +230,9 @@ public class EndpointGateway extends GenericModel {
    * The fully qualified domain name for the target service.
    *
    * @return the serviceEndpoint
+   * @deprecated this method is deprecated and may be removed in a future release
    */
+  @Deprecated
   public String getServiceEndpoint() {
     return serviceEndpoint;
   }

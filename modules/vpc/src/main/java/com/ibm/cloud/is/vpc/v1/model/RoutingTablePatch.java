@@ -30,6 +30,8 @@ public class RoutingTablePatch extends GenericModel {
   protected String name;
   @SerializedName("route_direct_link_ingress")
   protected Boolean routeDirectLinkIngress;
+  @SerializedName("route_internet_ingress")
+  protected Boolean routeInternetIngress;
   @SerializedName("route_transit_gateway_ingress")
   protected Boolean routeTransitGatewayIngress;
   @SerializedName("route_vpc_zone_ingress")
@@ -42,6 +44,7 @@ public class RoutingTablePatch extends GenericModel {
     private List<ResourceFilter> acceptRoutesFrom;
     private String name;
     private Boolean routeDirectLinkIngress;
+    private Boolean routeInternetIngress;
     private Boolean routeTransitGatewayIngress;
     private Boolean routeVpcZoneIngress;
 
@@ -54,6 +57,7 @@ public class RoutingTablePatch extends GenericModel {
       this.acceptRoutesFrom = routingTablePatch.acceptRoutesFrom;
       this.name = routingTablePatch.name;
       this.routeDirectLinkIngress = routingTablePatch.routeDirectLinkIngress;
+      this.routeInternetIngress = routingTablePatch.routeInternetIngress;
       this.routeTransitGatewayIngress = routingTablePatch.routeTransitGatewayIngress;
       this.routeVpcZoneIngress = routingTablePatch.routeVpcZoneIngress;
     }
@@ -124,6 +128,17 @@ public class RoutingTablePatch extends GenericModel {
     }
 
     /**
+     * Set the routeInternetIngress.
+     *
+     * @param routeInternetIngress the routeInternetIngress
+     * @return the RoutingTablePatch builder
+     */
+    public Builder routeInternetIngress(Boolean routeInternetIngress) {
+      this.routeInternetIngress = routeInternetIngress;
+      return this;
+    }
+
+    /**
      * Set the routeTransitGatewayIngress.
      *
      * @param routeTransitGatewayIngress the routeTransitGatewayIngress
@@ -152,6 +167,7 @@ public class RoutingTablePatch extends GenericModel {
     acceptRoutesFrom = builder.acceptRoutesFrom;
     name = builder.name;
     routeDirectLinkIngress = builder.routeDirectLinkIngress;
+    routeInternetIngress = builder.routeInternetIngress;
     routeTransitGatewayIngress = builder.routeTransitGatewayIngress;
     routeVpcZoneIngress = builder.routeVpcZoneIngress;
   }
@@ -213,10 +229,31 @@ public class RoutingTablePatch extends GenericModel {
   }
 
   /**
+   * Gets the routeInternetIngress.
+   *
+   * Indicates whether this routing table is used to route traffic that originates from the internet.  Updating to
+   * `true` selects this routing table, provided no other routing table in the VPC already has this property set to
+   * `true`.  Updating to `false` deselects this routing table.
+   *
+   * Incoming traffic will be routed according to the routing table with two exceptions:
+   * -  Traffic destined for IP addresses associated with public gateways will not be subject
+   *    to routes in this routing table.
+   * -  Routes with an `action` of `deliver` are treated as `drop` unless the `next_hop` is an
+   *    IP address bound to a network interface on a subnet in the route's `zone`. Therefore,
+   *    if an incoming packet matches a route with a `next_hop` of an internet-bound IP
+   *    address or a VPN gateway connection, the packet will be dropped.
+   *
+   * @return the routeInternetIngress
+   */
+  public Boolean routeInternetIngress() {
+    return routeInternetIngress;
+  }
+
+  /**
    * Gets the routeTransitGatewayIngress.
    *
    * Indicates whether this routing table is used to route traffic that originates from
-   * [Transit Gateway](https://cloud.ibm.com/cloud/transit-gateway/) to this VPC. Updating to
+   * [Transit Gateway](https://cloud.ibm.com/docs/transit-gateway) to this VPC. Updating to
    * `true` selects this routing table, provided no other routing table in the VPC already has this property set to
    * `true`, and no subnets are attached to this routing table. Updating to `false` deselects this routing table.
    *

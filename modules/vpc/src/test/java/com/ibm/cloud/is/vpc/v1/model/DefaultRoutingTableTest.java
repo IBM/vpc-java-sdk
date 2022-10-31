@@ -46,6 +46,7 @@ public class DefaultRoutingTableTest {
     assertNull(defaultRoutingTableModel.getName());
     assertNull(defaultRoutingTableModel.getResourceType());
     assertNull(defaultRoutingTableModel.isRouteDirectLinkIngress());
+    assertNull(defaultRoutingTableModel.isRouteInternetIngress());
     assertNull(defaultRoutingTableModel.isRouteTransitGatewayIngress());
     assertNull(defaultRoutingTableModel.isRouteVpcZoneIngress());
     assertNull(defaultRoutingTableModel.getRoutes());

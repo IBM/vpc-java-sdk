@@ -33,10 +33,10 @@ public class UpdateDedicatedHostOptionsTest {
   public void testUpdateDedicatedHostOptions() throws Throwable {
     UpdateDedicatedHostOptions updateDedicatedHostOptionsModel = new UpdateDedicatedHostOptions.Builder()
       .id("testString")
-      .dedicatedHostPatch(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .dedicatedHostPatch(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .build();
     assertEquals(updateDedicatedHostOptionsModel.id(), "testString");
-    assertEquals(updateDedicatedHostOptionsModel.dedicatedHostPatch(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
+    assertEquals(updateDedicatedHostOptionsModel.dedicatedHostPatch(), java.util.Collections.singletonMap("anyKey", "anyValue"));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

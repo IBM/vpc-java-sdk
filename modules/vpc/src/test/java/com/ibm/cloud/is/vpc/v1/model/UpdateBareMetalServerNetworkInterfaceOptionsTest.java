@@ -34,11 +34,11 @@ public class UpdateBareMetalServerNetworkInterfaceOptionsTest {
     UpdateBareMetalServerNetworkInterfaceOptions updateBareMetalServerNetworkInterfaceOptionsModel = new UpdateBareMetalServerNetworkInterfaceOptions.Builder()
       .bareMetalServerId("testString")
       .id("testString")
-      .bareMetalServerNetworkInterfacePatch(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .bareMetalServerNetworkInterfacePatch(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .build();
     assertEquals(updateBareMetalServerNetworkInterfaceOptionsModel.bareMetalServerId(), "testString");
     assertEquals(updateBareMetalServerNetworkInterfaceOptionsModel.id(), "testString");
-    assertEquals(updateBareMetalServerNetworkInterfaceOptionsModel.bareMetalServerNetworkInterfacePatch(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
+    assertEquals(updateBareMetalServerNetworkInterfaceOptionsModel.bareMetalServerNetworkInterfacePatch(), java.util.Collections.singletonMap("anyKey", "anyValue"));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

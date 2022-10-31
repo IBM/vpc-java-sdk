@@ -33,10 +33,10 @@ public class UpdateFlowLogCollectorOptionsTest {
   public void testUpdateFlowLogCollectorOptions() throws Throwable {
     UpdateFlowLogCollectorOptions updateFlowLogCollectorOptionsModel = new UpdateFlowLogCollectorOptions.Builder()
       .id("testString")
-      .flowLogCollectorPatch(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .flowLogCollectorPatch(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .build();
     assertEquals(updateFlowLogCollectorOptionsModel.id(), "testString");
-    assertEquals(updateFlowLogCollectorOptionsModel.flowLogCollectorPatch(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
+    assertEquals(updateFlowLogCollectorOptionsModel.flowLogCollectorPatch(), java.util.Collections.singletonMap("anyKey", "anyValue"));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

@@ -34,11 +34,11 @@ public class UpdateInstanceVolumeAttachmentOptionsTest {
     UpdateInstanceVolumeAttachmentOptions updateInstanceVolumeAttachmentOptionsModel = new UpdateInstanceVolumeAttachmentOptions.Builder()
       .instanceId("testString")
       .id("testString")
-      .volumeAttachmentPatch(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .volumeAttachmentPatch(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .build();
     assertEquals(updateInstanceVolumeAttachmentOptionsModel.instanceId(), "testString");
     assertEquals(updateInstanceVolumeAttachmentOptionsModel.id(), "testString");
-    assertEquals(updateInstanceVolumeAttachmentOptionsModel.volumeAttachmentPatch(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
+    assertEquals(updateInstanceVolumeAttachmentOptionsModel.volumeAttachmentPatch(), java.util.Collections.singletonMap("anyKey", "anyValue"));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

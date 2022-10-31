@@ -33,10 +33,10 @@ public class UpdateBareMetalServerOptionsTest {
   public void testUpdateBareMetalServerOptions() throws Throwable {
     UpdateBareMetalServerOptions updateBareMetalServerOptionsModel = new UpdateBareMetalServerOptions.Builder()
       .id("testString")
-      .bareMetalServerPatch(new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } })
+      .bareMetalServerPatch(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .build();
     assertEquals(updateBareMetalServerOptionsModel.id(), "testString");
-    assertEquals(updateBareMetalServerOptionsModel.bareMetalServerPatch(), new java.util.HashMap<String, Object>() { { put("foo", TestUtilities.createMockMap()); } });
+    assertEquals(updateBareMetalServerOptionsModel.bareMetalServerPatch(), java.util.Collections.singletonMap("anyKey", "anyValue"));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

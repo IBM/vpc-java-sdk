@@ -43,11 +43,11 @@ public class InstanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSp
 
     InstanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSpecByManager instanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSpecByManagerModel = new InstanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSpecByManager.Builder()
       .name("my-instance-group-manager-action")
-      .cronSpec("*/5 1,2,3 * * *")
+      .cronSpec("30 */2 * * 1-5")
       .manager(instanceGroupManagerScheduledActionManagerPrototypeModel)
       .build();
     assertEquals(instanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSpecByManagerModel.name(), "my-instance-group-manager-action");
-    assertEquals(instanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSpecByManagerModel.cronSpec(), "*/5 1,2,3 * * *");
+    assertEquals(instanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSpecByManagerModel.cronSpec(), "30 */2 * * 1-5");
     assertEquals(instanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSpecByManagerModel.manager(), instanceGroupManagerScheduledActionManagerPrototypeModel);
 
     String json = TestUtilities.serialize(instanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSpecByManagerModel);
@@ -55,7 +55,7 @@ public class InstanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSp
     InstanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSpecByManager instanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSpecByManagerModelNew = TestUtilities.deserialize(json, InstanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSpecByManager.class);
     assertTrue(instanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSpecByManagerModelNew instanceof InstanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSpecByManager);
     assertEquals(instanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSpecByManagerModelNew.name(), "my-instance-group-manager-action");
-    assertEquals(instanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSpecByManagerModelNew.cronSpec(), "*/5 1,2,3 * * *");
+    assertEquals(instanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSpecByManagerModelNew.cronSpec(), "30 */2 * * 1-5");
     assertEquals(instanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSpecByManagerModelNew.manager().toString(), instanceGroupManagerScheduledActionManagerPrototypeModel.toString());
   }
 
