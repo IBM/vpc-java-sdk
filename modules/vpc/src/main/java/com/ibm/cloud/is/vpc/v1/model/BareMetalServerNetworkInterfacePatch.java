@@ -196,8 +196,8 @@ public class BareMetalServerNetworkInterfacePatch extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for network interface. Names must be unique within the instance the network interface resides
-   * in.
+   * The name for this network interface. The name must not be used by another network interface on the bare metal
+   * server.
    *
    * @return the name
    */

@@ -94,7 +94,7 @@ public class RouteNextHop extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this VPN connection.
+   * The name for this VPN gateway connection. The name is unique across all connections for the VPN gateway.
    *
    * @return the name
    */

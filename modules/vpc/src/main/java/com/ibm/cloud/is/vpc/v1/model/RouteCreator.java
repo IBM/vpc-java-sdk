@@ -92,7 +92,7 @@ public class RouteCreator extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this VPN gateway.
+   * The name for this VPN gateway. The name is unique across all VPN gateways in the VPC.
    *
    * @return the name
    */

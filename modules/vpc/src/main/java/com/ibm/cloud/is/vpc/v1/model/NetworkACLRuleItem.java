@@ -197,7 +197,7 @@ public class NetworkACLRuleItem extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this network ACL rule.
+   * The name for this network ACL rule. The name is unique across all rules for the network ACL.
    *
    * @return the name
    */

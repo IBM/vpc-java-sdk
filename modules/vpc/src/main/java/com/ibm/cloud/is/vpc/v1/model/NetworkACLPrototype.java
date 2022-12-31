@@ -39,8 +39,8 @@ public class NetworkACLPrototype extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this network ACL. Names must be unique within the VPC the network ACL resides in. If
-   * unspecified, the name will be a hyphenated list of randomly-selected words.
+   * The name for this network ACL. The name must not be used by another network ACL for the VPC. If unspecified, the
+   * name will be a hyphenated list of randomly-selected words.
    *
    * @return the name
    */

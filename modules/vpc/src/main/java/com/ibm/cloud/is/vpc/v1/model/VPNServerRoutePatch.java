@@ -84,7 +84,7 @@ public class VPNServerRoutePatch extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this VPN route. Names must be unique within the VPN server the VPN route resides in.
+   * The name for this VPN server route. The name must not be used by another route for the VPN server.
    *
    * @return the name
    */

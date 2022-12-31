@@ -13,15 +13,11 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 /**
- * VolumeAttachmentVolumePrototypeInstanceContextVolumePrototypeInstanceContext.
- *
- * Classes which extend this class:
- * - VolumeAttachmentVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeByCapacity
- * - VolumeAttachmentVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeBySourceSnapshot
+ * BackupPolicyJobSourceVolumeReference.
  */
-public class VolumeAttachmentVolumePrototypeInstanceContextVolumePrototypeInstanceContext extends VolumeAttachmentVolumePrototypeInstanceContext {
+public class BackupPolicyJobSourceVolumeReference extends BackupPolicyJobSource {
 
 
-  protected VolumeAttachmentVolumePrototypeInstanceContextVolumePrototypeInstanceContext() { }
+  protected BackupPolicyJobSourceVolumeReference() { }
 }
 

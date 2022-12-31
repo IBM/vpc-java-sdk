@@ -201,7 +201,7 @@ public class BareMetalServer extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this bare metal server (and default system hostname).
+   * The name for this bare metal server. The name is unique across all bare metal servers in the region.
    *
    * @return the name
    */

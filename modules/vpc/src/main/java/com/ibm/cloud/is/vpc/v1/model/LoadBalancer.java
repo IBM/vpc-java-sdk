@@ -204,7 +204,7 @@ public class LoadBalancer extends GenericModel {
   /**
    * Gets the name.
    *
-   * The unique user-defined name for this load balancer.
+   * The name for this load balancer. The name is unique across all load balancers in the VPC.
    *
    * @return the name
    */

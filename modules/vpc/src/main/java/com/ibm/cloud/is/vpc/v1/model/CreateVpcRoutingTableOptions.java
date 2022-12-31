@@ -259,8 +259,8 @@ public class CreateVpcRoutingTableOptions extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this routing table. Names must be unique within the VPC the routing table resides in. If
-   * unspecified, the name will be a hyphenated list of randomly-selected words.
+   * The name for this routing table. The name must not be used by another routing table in the VPC. If unspecified, the
+   * name will be a hyphenated list of randomly-selected words.
    *
    * @return the name
    */

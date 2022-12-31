@@ -13,7 +13,8 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
-import com.ibm.cloud.is.vpc.v1.model.RemoveSecurityGroupTargetOptions;
+import com.ibm.cloud.is.vpc.v1.model.BackupPolicyJobSource;
+import com.ibm.cloud.is.vpc.v1.model.VolumeReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -23,25 +24,16 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
 /**
- * Unit test class for the RemoveSecurityGroupTargetOptions model.
+ * Unit test class for the BackupPolicyJobSource model.
  */
-public class RemoveSecurityGroupTargetOptionsTest {
+public class BackupPolicyJobSourceTest {
   final HashMap<String, InputStream> mockStreamMap = TestUtilities.createMockStreamMap();
   final List<FileWithMetadata> mockListFileWithMetadata = TestUtilities.creatMockListFileWithMetadata();
 
+  // TODO: Add tests for models that are abstract
   @Test
-  public void testRemoveSecurityGroupTargetOptions() throws Throwable {
-    RemoveSecurityGroupTargetOptions removeSecurityGroupTargetOptionsModel = new RemoveSecurityGroupTargetOptions.Builder()
-      .securityGroupId("testString")
-      .id("testString")
-      .build();
-    assertEquals(removeSecurityGroupTargetOptionsModel.securityGroupId(), "testString");
-    assertEquals(removeSecurityGroupTargetOptionsModel.id(), "testString");
+  public void testBackupPolicyJobSource() throws Throwable {
+    BackupPolicyJobSource backupPolicyJobSourceModel = new BackupPolicyJobSource();
+    assertNotNull(backupPolicyJobSourceModel);
   }
-
-  @Test(expectedExceptions = IllegalArgumentException.class)
-  public void testRemoveSecurityGroupTargetOptionsError() throws Throwable {
-    new RemoveSecurityGroupTargetOptions.Builder().build();
-  }
-
 }

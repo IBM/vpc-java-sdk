@@ -240,8 +240,8 @@ public class CreateInstanceNetworkInterfaceOptions extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for network interface. Names must be unique within the instance the network interface resides
-   * in. If unspecified, the name will be a hyphenated list of randomly-selected words.
+   * The name for network interface. The name must not be used by another network interface on the virtual server
+   * instance. If unspecified, the name will be a hyphenated list of randomly-selected words.
    *
    * @return the name
    */

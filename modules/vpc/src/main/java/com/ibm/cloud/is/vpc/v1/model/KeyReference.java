@@ -88,7 +88,7 @@ public class KeyReference extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this key.
+   * The name for this key. The name is unique across all keys in the region.
    *
    * @return the name
    */

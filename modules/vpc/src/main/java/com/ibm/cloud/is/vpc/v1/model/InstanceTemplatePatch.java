@@ -84,7 +84,7 @@ public class InstanceTemplatePatch extends GenericModel {
   /**
    * Gets the name.
    *
-   * The unique user-defined name for this instance template.
+   * The name for this instance template. The name must not be used by another instance template in the region.
    *
    * @return the name
    */

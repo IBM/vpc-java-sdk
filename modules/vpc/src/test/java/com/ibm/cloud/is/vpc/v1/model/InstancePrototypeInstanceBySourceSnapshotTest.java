@@ -29,9 +29,9 @@ import com.ibm.cloud.is.vpc.v1.model.SnapshotIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.SubnetIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.TrustedProfileIdentityTrustedProfileById;
 import com.ibm.cloud.is.vpc.v1.model.VPCIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototype;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototypeInstanceBySourceSnapshotContext;
-import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototypeInstanceContext;
-import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentVolumePrototypeInstanceContextVolumeIdentityVolumeIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototypeVolumeVolumeIdentityVolumeIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.VolumeProfileIdentityByName;
 import com.ibm.cloud.is.vpc.v1.model.VolumePrototypeInstanceBySourceSnapshotContext;
 import com.ibm.cloud.is.vpc.v1.model.ZoneIdentityByName;
@@ -126,19 +126,19 @@ public class InstancePrototypeInstanceBySourceSnapshotTest {
       .build();
     assertEquals(resourceGroupIdentityModel.id(), "fee82deba12e4c0fb69c3b09d1f12345");
 
-    VolumeAttachmentVolumePrototypeInstanceContextVolumeIdentityVolumeIdentityById volumeAttachmentVolumePrototypeInstanceContextModel = new VolumeAttachmentVolumePrototypeInstanceContextVolumeIdentityVolumeIdentityById.Builder()
+    VolumeAttachmentPrototypeVolumeVolumeIdentityVolumeIdentityById volumeAttachmentPrototypeVolumeModel = new VolumeAttachmentPrototypeVolumeVolumeIdentityVolumeIdentityById.Builder()
       .id("1a6b7274-678d-4dfb-8981-c71dd9d4daa5")
       .build();
-    assertEquals(volumeAttachmentVolumePrototypeInstanceContextModel.id(), "1a6b7274-678d-4dfb-8981-c71dd9d4daa5");
+    assertEquals(volumeAttachmentPrototypeVolumeModel.id(), "1a6b7274-678d-4dfb-8981-c71dd9d4daa5");
 
-    VolumeAttachmentPrototypeInstanceContext volumeAttachmentPrototypeInstanceContextModel = new VolumeAttachmentPrototypeInstanceContext.Builder()
-      .deleteVolumeOnInstanceDelete(true)
+    VolumeAttachmentPrototype volumeAttachmentPrototypeModel = new VolumeAttachmentPrototype.Builder()
+      .deleteVolumeOnInstanceDelete(false)
       .name("my-volume-attachment")
-      .volume(volumeAttachmentVolumePrototypeInstanceContextModel)
+      .volume(volumeAttachmentPrototypeVolumeModel)
       .build();
-    assertEquals(volumeAttachmentPrototypeInstanceContextModel.deleteVolumeOnInstanceDelete(), Boolean.valueOf(true));
-    assertEquals(volumeAttachmentPrototypeInstanceContextModel.name(), "my-volume-attachment");
-    assertEquals(volumeAttachmentPrototypeInstanceContextModel.volume(), volumeAttachmentVolumePrototypeInstanceContextModel);
+    assertEquals(volumeAttachmentPrototypeModel.deleteVolumeOnInstanceDelete(), Boolean.valueOf(false));
+    assertEquals(volumeAttachmentPrototypeModel.name(), "my-volume-attachment");
+    assertEquals(volumeAttachmentPrototypeModel.volume(), volumeAttachmentPrototypeVolumeModel);
 
     VPCIdentityById vpcIdentityModel = new VPCIdentityById.Builder()
       .id("4727d842-f94f-4a2d-824a-9bc9b02c523b")
@@ -203,7 +203,7 @@ public class InstancePrototypeInstanceBySourceSnapshotTest {
       .resourceGroup(resourceGroupIdentityModel)
       .totalVolumeBandwidth(Long.valueOf("500"))
       .userData("testString")
-      .volumeAttachments(java.util.Arrays.asList(volumeAttachmentPrototypeInstanceContextModel))
+      .volumeAttachments(java.util.Arrays.asList(volumeAttachmentPrototypeModel))
       .vpc(vpcIdentityModel)
       .bootVolumeAttachment(volumeAttachmentPrototypeInstanceBySourceSnapshotContextModel)
       .primaryNetworkInterface(networkInterfacePrototypeModel)
@@ -220,7 +220,7 @@ public class InstancePrototypeInstanceBySourceSnapshotTest {
     assertEquals(instancePrototypeInstanceBySourceSnapshotModel.resourceGroup(), resourceGroupIdentityModel);
     assertEquals(instancePrototypeInstanceBySourceSnapshotModel.totalVolumeBandwidth(), Long.valueOf("500"));
     assertEquals(instancePrototypeInstanceBySourceSnapshotModel.userData(), "testString");
-    assertEquals(instancePrototypeInstanceBySourceSnapshotModel.volumeAttachments(), java.util.Arrays.asList(volumeAttachmentPrototypeInstanceContextModel));
+    assertEquals(instancePrototypeInstanceBySourceSnapshotModel.volumeAttachments(), java.util.Arrays.asList(volumeAttachmentPrototypeModel));
     assertEquals(instancePrototypeInstanceBySourceSnapshotModel.vpc(), vpcIdentityModel);
     assertEquals(instancePrototypeInstanceBySourceSnapshotModel.bootVolumeAttachment(), volumeAttachmentPrototypeInstanceBySourceSnapshotContextModel);
     assertEquals(instancePrototypeInstanceBySourceSnapshotModel.primaryNetworkInterface(), networkInterfacePrototypeModel);

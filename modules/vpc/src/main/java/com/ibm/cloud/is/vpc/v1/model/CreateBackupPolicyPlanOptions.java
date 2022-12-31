@@ -274,8 +274,8 @@ public class CreateBackupPolicyPlanOptions extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this backup policy plan. Names must be unique within the backup policy this plan resides
-   * in. If unspecified, the name will be a hyphenated list of randomly-selected words.
+   * The name for this backup policy plan. The name must not be used by another plan for the backup policy. If
+   * unspecified, the name will be a hyphenated list of randomly-selected words.
    *
    * @return the name
    */

@@ -86,7 +86,7 @@ public class DedicatedHostReference extends GenericModel {
   /**
    * Gets the name.
    *
-   * The unique user-defined name for this dedicated host.
+   * The name for this dedicated host. The name is unique across all dedicated hosts in the region.
    *
    * @return the name
    */

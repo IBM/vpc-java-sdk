@@ -63,7 +63,7 @@ public class LoadBalancerPoolReference extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this load balancer pool.
+   * The name for this load balancer pool. The name is unique across all pools for the load balancer.
    *
    * @return the name
    */

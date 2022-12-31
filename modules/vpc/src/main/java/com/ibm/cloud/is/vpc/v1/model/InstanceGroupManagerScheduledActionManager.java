@@ -71,7 +71,7 @@ public class InstanceGroupManagerScheduledActionManager extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this instance group manager.
+   * The name for this instance group manager. The name is unique across all managers for the instance group.
    *
    * @return the name
    */

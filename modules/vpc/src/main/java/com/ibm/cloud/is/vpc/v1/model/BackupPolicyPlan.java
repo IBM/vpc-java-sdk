@@ -176,7 +176,7 @@ public class BackupPolicyPlan extends GenericModel {
   /**
    * Gets the name.
    *
-   * The unique user-defined name for this backup policy plan.
+   * The name for this backup policy plan. The name is unique across all plans in the backup policy.
    *
    * @return the name
    */

@@ -104,7 +104,8 @@ public class VPNGatewayConnectionPrototype extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this VPN gateway connection.
+   * The name for this VPN gateway connection. The name must not be used by another connection for the VPN gateway. If
+   * unspecified, the name will be a hyphenated list of randomly-selected words.
    *
    * @return the name
    */

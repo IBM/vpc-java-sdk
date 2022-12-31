@@ -241,8 +241,7 @@ public class BackupPolicyPlanPatch extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this backup policy plan. Names must be unique within the backup policy this plan resides
-   * in.
+   * The name for this backup policy plan. The name must not be used by another plan for the backup policy.
    *
    * @return the name
    */

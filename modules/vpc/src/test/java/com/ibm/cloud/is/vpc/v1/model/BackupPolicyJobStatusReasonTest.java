@@ -13,7 +13,7 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
-import com.ibm.cloud.is.vpc.v1.model.AddSecurityGroupTargetOptions;
+import com.ibm.cloud.is.vpc.v1.model.BackupPolicyJobStatusReason;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -23,25 +23,17 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
 /**
- * Unit test class for the AddSecurityGroupTargetOptions model.
+ * Unit test class for the BackupPolicyJobStatusReason model.
  */
-public class AddSecurityGroupTargetOptionsTest {
+public class BackupPolicyJobStatusReasonTest {
   final HashMap<String, InputStream> mockStreamMap = TestUtilities.createMockStreamMap();
   final List<FileWithMetadata> mockListFileWithMetadata = TestUtilities.creatMockListFileWithMetadata();
 
   @Test
-  public void testAddSecurityGroupTargetOptions() throws Throwable {
-    AddSecurityGroupTargetOptions addSecurityGroupTargetOptionsModel = new AddSecurityGroupTargetOptions.Builder()
-      .securityGroupId("testString")
-      .id("testString")
-      .build();
-    assertEquals(addSecurityGroupTargetOptionsModel.securityGroupId(), "testString");
-    assertEquals(addSecurityGroupTargetOptionsModel.id(), "testString");
+  public void testBackupPolicyJobStatusReason() throws Throwable {
+    BackupPolicyJobStatusReason backupPolicyJobStatusReasonModel = new BackupPolicyJobStatusReason();
+    assertNull(backupPolicyJobStatusReasonModel.getCode());
+    assertNull(backupPolicyJobStatusReasonModel.getMessage());
+    assertNull(backupPolicyJobStatusReasonModel.getMoreInfo());
   }
-
-  @Test(expectedExceptions = IllegalArgumentException.class)
-  public void testAddSecurityGroupTargetOptionsError() throws Throwable {
-    new AddSecurityGroupTargetOptions.Builder().build();
-  }
-
 }

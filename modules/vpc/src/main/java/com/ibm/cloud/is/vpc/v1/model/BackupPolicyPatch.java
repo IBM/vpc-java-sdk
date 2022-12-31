@@ -132,7 +132,7 @@ public class BackupPolicyPatch extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this backup policy. Names must be unique within the region this backup policy resides in.
+   * The name for this backup policy. The name must not be used by another backup policy in the region.
    *
    * @return the name
    */

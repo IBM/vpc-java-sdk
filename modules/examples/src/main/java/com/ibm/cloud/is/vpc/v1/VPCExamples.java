@@ -22,6 +22,8 @@ import com.ibm.cloud.is.vpc.v1.model.AddressPrefix;
 import com.ibm.cloud.is.vpc.v1.model.AddressPrefixPatch;
 import com.ibm.cloud.is.vpc.v1.model.BackupPoliciesPager;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicy;
+import com.ibm.cloud.is.vpc.v1.model.BackupPolicyJob;
+import com.ibm.cloud.is.vpc.v1.model.BackupPolicyJobsPager;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPatch;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlan;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanCollection;
@@ -184,6 +186,7 @@ import com.ibm.cloud.is.vpc.v1.model.FlowLogCollector;
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorPatch;
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceIdentityNetworkInterfaceIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorsPager;
+import com.ibm.cloud.is.vpc.v1.model.GetBackupPolicyJobOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetBackupPolicyOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetBackupPolicyPlanOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetBareMetalServerDiskOptions;
@@ -316,6 +319,7 @@ import com.ibm.cloud.is.vpc.v1.model.KeyPatch;
 import com.ibm.cloud.is.vpc.v1.model.KeysPager;
 import com.ibm.cloud.is.vpc.v1.model.LegacyCloudObjectStorageBucketIdentityCloudObjectStorageBucketIdentityByName;
 import com.ibm.cloud.is.vpc.v1.model.ListBackupPoliciesOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListBackupPolicyJobsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListBackupPolicyPlansOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListBareMetalServerDisksOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListBareMetalServerNetworkInterfaceFloatingIpsOptions;
@@ -414,7 +418,7 @@ import com.ibm.cloud.is.vpc.v1.model.NetworkACLPrototypeNetworkACLByRules;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLRule;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLRuleItem;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLRulePatch;
-import com.ibm.cloud.is.vpc.v1.model.NetworkACLRulePrototypeNetworkACLRuleProtocolICMP;
+import com.ibm.cloud.is.vpc.v1.model.NetworkACLRulePrototypeNetworkACLRuleProtocolICMPPrototype;
 import com.ibm.cloud.is.vpc.v1.model.NetworkAclRulesPager;
 import com.ibm.cloud.is.vpc.v1.model.NetworkAclsPager;
 import com.ibm.cloud.is.vpc.v1.model.NetworkInterface;
@@ -549,9 +553,9 @@ import com.ibm.cloud.is.vpc.v1.model.VolumeAttachment;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentCollection;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPatch;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototypeInstanceByImageContext;
-import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototypeInstanceContext;
+import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototype;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototypeVolumeVolumeIdentityVolumeIdentityById;
-import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeByCapacity;
+import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeByCapacity;
 import com.ibm.cloud.is.vpc.v1.model.VolumeIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.VolumePatch;
 import com.ibm.cloud.is.vpc.v1.model.VolumeProfile;
@@ -665,6 +669,7 @@ public class VPCExamples {
   static String bareMetalServerNetworkInterfaceId;
   static String bareMetalServerNetworkInterfaceReservedIp;
   static String backupPolicyId;
+  static String backupPolicyJobId;
   static String backupPolicyPlanId;
   static String ifMatchBackupPolicy;
   static String ifMatchBackupPolicyPlan;
@@ -1478,6 +1483,43 @@ public class VPCExamples {
     }
 
     try {
+      System.out.println("listOperatingSystems() result:");
+      // begin-list_operating_systems
+      ListOperatingSystemsOptions listOperatingSystemsOptions = new ListOperatingSystemsOptions.Builder()
+        .limit(Long.valueOf(10))
+        .build();
+
+      OperatingSystemsPager pager = new OperatingSystemsPager(vpcService, listOperatingSystemsOptions);
+      List<OperatingSystem> allResults = new ArrayList<>();
+      while (pager.hasNext()) {
+        List<OperatingSystem> nextPage = pager.getNext();
+        allResults.addAll(nextPage);
+      }
+
+      // end-list_operating_systems
+      operatingSystemName = allResults.get(0).getName();
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("getOperatingSystem() result:");
+      // begin-get_operating_system
+      GetOperatingSystemOptions getOperatingSystemOptions = new GetOperatingSystemOptions.Builder()
+        .name(operatingSystemName)
+        .build();
+
+      Response<OperatingSystem> response = vpcService.getOperatingSystem(getOperatingSystemOptions).execute();
+      OperatingSystem operatingSystem = response.getResult();
+
+      // end-get_operating_system
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
       System.out.println("listImages() result:");
       // begin-list_images
       ListImagesOptions listImagesOptions = new ListImagesOptions.Builder()
@@ -1492,7 +1534,6 @@ public class VPCExamples {
       }
 
       // end-list_images
-      operatingSystemName = allResults.get(0).getOperatingSystem().getName();
     } catch (ServiceResponseException e) {
         logger.error(String.format("Service returned status code %s: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
@@ -1558,43 +1599,6 @@ public class VPCExamples {
       Image image = response.getResult();
 
       // end-update_image
-    } catch (ServiceResponseException e) {
-        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
-    }
-
-    try {
-      System.out.println("listOperatingSystems() result:");
-      // begin-list_operating_systems
-      ListOperatingSystemsOptions listOperatingSystemsOptions = new ListOperatingSystemsOptions.Builder()
-        .limit(Long.valueOf(10))
-        .build();
-
-      OperatingSystemsPager pager = new OperatingSystemsPager(vpcService, listOperatingSystemsOptions);
-      List<OperatingSystem> allResults = new ArrayList<>();
-      while (pager.hasNext()) {
-        List<OperatingSystem> nextPage = pager.getNext();
-        allResults.addAll(nextPage);
-      }
-
-      // end-list_operating_systems
-      operatingSystemName = allResults.get(0).getName();
-    } catch (ServiceResponseException e) {
-        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
-    }
-
-    try {
-      System.out.println("getOperatingSystem() result:");
-      // begin-get_operating_system
-      GetOperatingSystemOptions getOperatingSystemOptions = new GetOperatingSystemOptions.Builder()
-        .name(operatingSystemName)
-        .build();
-
-      Response<OperatingSystem> response = vpcService.getOperatingSystem(getOperatingSystemOptions).execute();
-      OperatingSystem operatingSystem = response.getResult();
-
-      // end-get_operating_system
     } catch (ServiceResponseException e) {
         logger.error(String.format("Service returned status code %s: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
@@ -1917,6 +1921,45 @@ public class VPCExamples {
       // end-create_backup_policy
       backupPolicyId = backupPolicy.getId();
       ifMatchBackupPolicy = response.getHeaders().values("etag").get(0);
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+
+    try {
+      System.out.println("listBackupPolicyJobs() result:");
+      // begin-list_backup_policy_jobs
+      ListBackupPolicyJobsOptions listBackupPolicyJobsOptions = new ListBackupPolicyJobsOptions.Builder()
+        .backupPolicyId(backupPolicyId)
+        .build();
+
+      BackupPolicyJobsPager pager = new BackupPolicyJobsPager(vpcService, listBackupPolicyJobsOptions);
+      List<BackupPolicyJob> allResults = new ArrayList<>();
+      while (pager.hasNext()) {
+        List<BackupPolicyJob> nextPage = pager.getNext();
+        allResults.addAll(nextPage);
+      }
+
+      // end-list_backup_policy_jobs
+      backupPolicyJobId = allResults.get(0).getId();
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("getBackupPolicyJob() result:");
+      // begin-get_backup_policy_job
+      GetBackupPolicyJobOptions getBackupPolicyJobOptions = new GetBackupPolicyJobOptions.Builder()
+        .backupPolicyId(backupPolicyId)
+        .id(backupPolicyJobId)
+        .build();
+
+      Response<BackupPolicyJob> response = vpcService.getBackupPolicyJob(getBackupPolicyJobOptions).execute();
+      BackupPolicyJob backupPolicyJob = response.getResult();
+
+      // end-get_backup_policy_job
     } catch (ServiceResponseException e) {
         logger.error(String.format("Service returned status code %s: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
@@ -2474,14 +2517,14 @@ public class VPCExamples {
       EncryptionKeyIdentityByCRN encryptionKeyIdentityModel = new EncryptionKeyIdentityByCRN.Builder()
         .crn(crn)
         .build();
-      VolumeAttachmentVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeByCapacity volumeAttachmentVolumePrototypeInstanceContextModel = new VolumeAttachmentVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeByCapacity.Builder()
+      VolumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeByCapacity volumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeByCapacityModel = new VolumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeByCapacity.Builder()
         .name("my-data-volume")
         .profile(volumeProfileIdentityModel)
         .capacity(Long.valueOf("1000"))
         .encryptionKey(encryptionKeyIdentityModel)
         .build();
-      VolumeAttachmentPrototypeInstanceContext volumeAttachmentPrototypeInstanceContextModel = new VolumeAttachmentPrototypeInstanceContext.Builder()
-        .volume(volumeAttachmentVolumePrototypeInstanceContextModel)
+        VolumeAttachmentPrototype volumeAttachmentPrototypeModel = new VolumeAttachmentPrototype.Builder()
+        .volume(volumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeByCapacityModel)
         .build();
       VPCIdentityById vpcIdentityModel = new VPCIdentityById.Builder()
         .id(vpcId)
@@ -2512,7 +2555,7 @@ public class VPCExamples {
         .name("my-instance")
         .placementTarget(instancePlacementTargetPrototypeModel)
         .profile(instanceProfileIdentityModel)
-        .volumeAttachments(new java.util.ArrayList<VolumeAttachmentPrototypeInstanceContext>(java.util.Arrays.asList(volumeAttachmentPrototypeInstanceContextModel)))
+        .volumeAttachments(new java.util.ArrayList<VolumeAttachmentPrototype>(java.util.Arrays.asList(volumeAttachmentPrototypeModel)))
         .vpc(vpcIdentityModel)
         .bootVolumeAttachment(volumeAttachmentPrototypeInstanceByImageContextModel)
         .image(imageIdentityModel)
@@ -4097,7 +4140,7 @@ public class VPCExamples {
     try {
       System.out.println("createNetworkAclRule() result:");
       // begin-create_network_acl_rule
-      NetworkACLRulePrototypeNetworkACLRuleProtocolICMP networkAclRulePrototypeModel = new NetworkACLRulePrototypeNetworkACLRuleProtocolICMP.Builder()
+      NetworkACLRulePrototypeNetworkACLRuleProtocolICMPPrototype networkACLRulePrototypeNetworkACLRuleProtocolICMPPrototypeModel = new NetworkACLRulePrototypeNetworkACLRuleProtocolICMPPrototype.Builder()
         .action("allow")
         .destination("192.168.3.2/32")
         .direction("inbound")
@@ -4107,7 +4150,7 @@ public class VPCExamples {
         .build();
       CreateNetworkAclRuleOptions createNetworkAclRuleOptions = new CreateNetworkAclRuleOptions.Builder()
         .networkAclId(networkAclId)
-        .networkAclRulePrototype(networkAclRulePrototypeModel)
+        .networkAclRulePrototype(networkACLRulePrototypeNetworkACLRuleProtocolICMPPrototypeModel)
         .build();
 
       Response<NetworkACLRule> response = vpcService.createNetworkAclRule(createNetworkAclRuleOptions).execute();
@@ -4395,10 +4438,10 @@ public class VPCExamples {
       System.out.println("createIkePolicy() result:");
       // begin-create_ike_policy
       CreateIkePolicyOptions createIkePolicyOptions = new CreateIkePolicyOptions.Builder()
-        .authenticationAlgorithm("md5")
+        .authenticationAlgorithm("sha512")
         .name("my-ike-policy")
-        .dhGroup(Long.valueOf("2"))
-        .encryptionAlgorithm("triple_des")
+        .dhGroup(Long.valueOf("14"))
+        .encryptionAlgorithm("aes128")
         .ikeVersion(Long.valueOf("1"))
         .build();
 
@@ -4490,8 +4533,8 @@ public class VPCExamples {
       // begin-create_ipsec_policy
       CreateIpsecPolicyOptions createIpsecPolicyOptions = new CreateIpsecPolicyOptions.Builder()
         .name("my-ipsec-policy")
-        .authenticationAlgorithm("md5")
-        .encryptionAlgorithm("triple_des")
+        .authenticationAlgorithm("sha512")
+        .encryptionAlgorithm("aes128")
         .pfs("disabled")
         .build();
 

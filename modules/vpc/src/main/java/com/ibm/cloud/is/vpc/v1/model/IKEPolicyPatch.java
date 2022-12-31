@@ -260,7 +260,7 @@ public class IKEPolicyPatch extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this IKE policy.
+   * The name for this IKE policy. The name must not be used by another IKE policy in the region.
    *
    * @return the name
    */

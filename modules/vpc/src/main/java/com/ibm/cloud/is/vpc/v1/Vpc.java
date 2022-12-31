@@ -12,7 +12,7 @@
  */
 
 /*
- * IBM OpenAPI SDK Code Generator Version: 3.59.0-da92a51d-20221012-180509
+ * IBM OpenAPI SDK Code Generator Version: 3.60.2-95dc7721-20221102-203229
  */
 
 package com.ibm.cloud.is.vpc.v1;
@@ -28,6 +28,8 @@ import com.ibm.cloud.is.vpc.v1.model.AddressPrefix;
 import com.ibm.cloud.is.vpc.v1.model.AddressPrefixCollection;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicy;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyCollection;
+import com.ibm.cloud.is.vpc.v1.model.BackupPolicyJob;
+import com.ibm.cloud.is.vpc.v1.model.BackupPolicyJobCollection;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlan;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanCollection;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServer;
@@ -163,6 +165,7 @@ import com.ibm.cloud.is.vpc.v1.model.FloatingIPCollection;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPUnpaginatedCollection;
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollector;
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorCollection;
+import com.ibm.cloud.is.vpc.v1.model.GetBackupPolicyJobOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetBackupPolicyOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetBackupPolicyPlanOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetBareMetalServerDiskOptions;
@@ -268,6 +271,7 @@ import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateCollection;
 import com.ibm.cloud.is.vpc.v1.model.Key;
 import com.ibm.cloud.is.vpc.v1.model.KeyCollection;
 import com.ibm.cloud.is.vpc.v1.model.ListBackupPoliciesOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListBackupPolicyJobsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListBackupPolicyPlansOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListBareMetalServerDisksOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListBareMetalServerNetworkInterfaceFloatingIpsOptions;
@@ -484,7 +488,7 @@ import java.util.logging.Logger;
  * The IBM Cloud Virtual Private Cloud (VPC) API can be used to programmatically provision and manage virtual server
  * instances, along with subnets, volumes, load balancers, and more.
  *
- * API Version: 2022-09-13
+ * API Version: 2022-12-27
  */
 public class Vpc extends BaseService {
   private static final Logger LOGGER = Logger.getLogger(Vpc.class.getName());
@@ -802,8 +806,8 @@ public class Vpc extends BaseService {
    * Retrieve a VPC's default routing table.
    *
    * This request retrieves the default routing table for the VPC specified by the identifier in the URL. The default
-   * routing table is associated with any subnets in the VPC which have not been explicitly associated with a
-   * user-defined routing table.
+   * routing table is associated with any subnets in the VPC which have not been explicitly associated with another
+   * routing table.
    *
    * @param getVpcDefaultRoutingTableOptions the {@link GetVpcDefaultRoutingTableOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link DefaultRoutingTable}
@@ -1182,10 +1186,10 @@ public class Vpc extends BaseService {
   /**
    * List all routing tables for a VPC.
    *
-   * This request lists all user-defined routing tables for a VPC.  Each subnet in a VPC is associated with a routing
-   * table, which controls delivery of packets sent on that subnet according to the action of the most specific matching
-   * route in the table.  If multiple equally-specific routes exist, traffic will be distributed across them. If no
-   * routes match, delivery will be controlled by the system's built-in routes.
+   * This request lists all routing tables for a VPC. Each subnet in a VPC is associated with a routing table, which
+   * controls delivery of packets sent on that subnet according to the action of the most specific matching route in the
+   * table. If multiple equally-specific routes exist, traffic will be distributed across them. If no routes match,
+   * delivery will be controlled by the system's built-in routes.
    *
    * @param listVpcRoutingTablesOptions the {@link ListVpcRoutingTablesOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link RoutingTableCollection}
@@ -1220,9 +1224,8 @@ public class Vpc extends BaseService {
   /**
    * Create a routing table for a VPC.
    *
-   * This request creates a user-defined routing table from a routing table prototype object. The prototype object is
-   * structured in the same way as a retrieved routing table, and contains the information necessary to create the new
-   * routing table.
+   * This request creates a routing table from a routing table prototype object. The prototype object is structured in
+   * the same way as a retrieved routing table, and contains the information necessary to create the new routing table.
    *
    * @param createVpcRoutingTableOptions the {@link CreateVpcRoutingTableOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link RoutingTable}
@@ -4840,6 +4843,84 @@ public class Vpc extends BaseService {
   }
 
   /**
+   * List all jobs for a backup policy.
+   *
+   * This request retrieves all jobs for a backup policy. A backup job represents the execution of a backup policy plan
+   * for a resource matching the policy's criteria.
+   *
+   * @param listBackupPolicyJobsOptions the {@link ListBackupPolicyJobsOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link BackupPolicyJobCollection}
+   */
+  public ServiceCall<BackupPolicyJobCollection> listBackupPolicyJobs(ListBackupPolicyJobsOptions listBackupPolicyJobsOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(listBackupPolicyJobsOptions,
+      "listBackupPolicyJobsOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("backup_policy_id", listBackupPolicyJobsOptions.backupPolicyId());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/backup_policies/{backup_policy_id}/jobs", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listBackupPolicyJobs");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    if (listBackupPolicyJobsOptions.status() != null) {
+      builder.query("status", String.valueOf(listBackupPolicyJobsOptions.status()));
+    }
+    if (listBackupPolicyJobsOptions.backupPolicyPlanId() != null) {
+      builder.query("backup_policy_plan.id", String.valueOf(listBackupPolicyJobsOptions.backupPolicyPlanId()));
+    }
+    if (listBackupPolicyJobsOptions.start() != null) {
+      builder.query("start", String.valueOf(listBackupPolicyJobsOptions.start()));
+    }
+    if (listBackupPolicyJobsOptions.limit() != null) {
+      builder.query("limit", String.valueOf(listBackupPolicyJobsOptions.limit()));
+    }
+    if (listBackupPolicyJobsOptions.sort() != null) {
+      builder.query("sort", String.valueOf(listBackupPolicyJobsOptions.sort()));
+    }
+    if (listBackupPolicyJobsOptions.sourceId() != null) {
+      builder.query("source.id", String.valueOf(listBackupPolicyJobsOptions.sourceId()));
+    }
+    if (listBackupPolicyJobsOptions.targetSnapshotsId() != null) {
+      builder.query("target_snapshots[].id", String.valueOf(listBackupPolicyJobsOptions.targetSnapshotsId()));
+    }
+    if (listBackupPolicyJobsOptions.targetSnapshotsCrn() != null) {
+      builder.query("target_snapshots[].crn", String.valueOf(listBackupPolicyJobsOptions.targetSnapshotsCrn()));
+    }
+    ResponseConverter<BackupPolicyJobCollection> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<BackupPolicyJobCollection>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Retrieve a backup policy job.
+   *
+   * This request retrieves a single backup policy job specified by the identifier in the URL.
+   *
+   * @param getBackupPolicyJobOptions the {@link GetBackupPolicyJobOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link BackupPolicyJob}
+   */
+  public ServiceCall<BackupPolicyJob> getBackupPolicyJob(GetBackupPolicyJobOptions getBackupPolicyJobOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(getBackupPolicyJobOptions,
+      "getBackupPolicyJobOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("backup_policy_id", getBackupPolicyJobOptions.backupPolicyId());
+    pathParamsMap.put("id", getBackupPolicyJobOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/backup_policies/{backup_policy_id}/jobs/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getBackupPolicyJob");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<BackupPolicyJob> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<BackupPolicyJob>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
    * List all plans for a backup policy.
    *
    * This request retrieves all plans for a backup policy. Backup plans provide the backup schedule and deletion
@@ -7617,7 +7698,8 @@ public class Vpc extends BaseService {
    * This request removes a target from a security group. For this request to succeed, the target must be attached to at
    * least one other security group.  The specified target identifier can be:
    *
-   * - A network interface identifier
+   * - An instance network interface identifier
+   * - A bare metal server network interface identifier
    * - A VPN server identifier
    * - An application load balancer identifier
    * - An endpoint gateway identifier
@@ -7678,7 +7760,8 @@ public class Vpc extends BaseService {
    *
    * This request adds a resource to an existing security group. The specified target identifier can be:
    *
-   * - A network interface identifier
+   * - An instance network interface identifier
+   * - A bare metal server network interface identifier
    * - A VPN server identifier
    * - An application load balancer identifier
    * - An endpoint gateway identifier

@@ -314,7 +314,7 @@ public class Instance extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this virtual server instance (and default system hostname).
+   * The name for this virtual server instance. The name is unique across all virtual server instances in the region.
    *
    * @return the name
    */

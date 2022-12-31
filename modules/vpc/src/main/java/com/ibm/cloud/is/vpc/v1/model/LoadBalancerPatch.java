@@ -146,7 +146,7 @@ public class LoadBalancerPatch extends GenericModel {
   /**
    * Gets the name.
    *
-   * The unique user-defined name for this load balancer.
+   * The name for this load balancer. The name must not be used by another load balancer in the VPC.
    *
    * @return the name
    */

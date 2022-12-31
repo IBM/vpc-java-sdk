@@ -87,7 +87,7 @@ public class VolumeAttachment extends GenericModel {
   /**
    * Gets the deleteVolumeOnInstanceDelete.
    *
-   * If set to true, when deleting the instance the volume will also be deleted.
+   * Indicates whether deleting the instance will also delete the attached volume.
    *
    * @return the deleteVolumeOnInstanceDelete
    */
@@ -133,7 +133,7 @@ public class VolumeAttachment extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this volume attachment.
+   * The name for this volume attachment. The name is unique across all volume attachments on the instance.
    *
    * @return the name
    */

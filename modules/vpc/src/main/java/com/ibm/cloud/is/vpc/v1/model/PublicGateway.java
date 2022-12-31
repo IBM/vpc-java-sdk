@@ -120,7 +120,7 @@ public class PublicGateway extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this public gateway.
+   * The name for this public gateway. The name is unique across all public gateways in the VPC.
    *
    * @return the name
    */

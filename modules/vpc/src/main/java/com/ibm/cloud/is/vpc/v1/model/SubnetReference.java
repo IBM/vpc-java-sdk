@@ -86,7 +86,7 @@ public class SubnetReference extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this subnet.
+   * The name for this subnet. The name is unique across all subnets in the VPC.
    *
    * @return the name
    */

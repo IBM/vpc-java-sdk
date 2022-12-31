@@ -85,7 +85,7 @@ public class DefaultNetworkACL extends GenericModel {
    * Gets the name.
    *
    * The name of the default network ACL created for a VPC. The name will be a hyphenated list of randomly-selected
-   * words at creation, but may be user-specified with a subsequent request.
+   * words at creation, but may be changed.
    *
    * @return the name
    */

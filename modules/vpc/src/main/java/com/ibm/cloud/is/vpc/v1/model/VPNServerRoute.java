@@ -160,7 +160,7 @@ public class VPNServerRoute extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this VPN route.
+   * The name for this VPN route. The name is unique across all routes for a VPN server.
    *
    * @return the name
    */

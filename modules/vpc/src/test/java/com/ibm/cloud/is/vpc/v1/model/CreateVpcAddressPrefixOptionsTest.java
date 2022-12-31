@@ -42,13 +42,13 @@ public class CreateVpcAddressPrefixOptionsTest {
       .cidr("10.0.0.0/24")
       .zone(zoneIdentityModel)
       .isDefault(true)
-      .name("my-address-prefix-2")
+      .name("my-address-prefix-1")
       .build();
     assertEquals(createVpcAddressPrefixOptionsModel.vpcId(), "testString");
     assertEquals(createVpcAddressPrefixOptionsModel.cidr(), "10.0.0.0/24");
     assertEquals(createVpcAddressPrefixOptionsModel.zone(), zoneIdentityModel);
     assertEquals(createVpcAddressPrefixOptionsModel.isDefault(), Boolean.valueOf(true));
-    assertEquals(createVpcAddressPrefixOptionsModel.name(), "my-address-prefix-2");
+    assertEquals(createVpcAddressPrefixOptionsModel.name(), "my-address-prefix-1");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

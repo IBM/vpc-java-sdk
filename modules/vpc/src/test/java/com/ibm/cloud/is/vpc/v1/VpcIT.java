@@ -29,6 +29,14 @@ import com.ibm.cloud.is.vpc.v1.model.BackupPolicy;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyCollection;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyCollectionFirst;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyCollectionNext;
+import com.ibm.cloud.is.vpc.v1.model.BackupPolicyJob;
+import com.ibm.cloud.is.vpc.v1.model.BackupPolicyJobCollection;
+import com.ibm.cloud.is.vpc.v1.model.BackupPolicyJobCollectionFirst;
+import com.ibm.cloud.is.vpc.v1.model.BackupPolicyJobCollectionNext;
+import com.ibm.cloud.is.vpc.v1.model.BackupPolicyJobSource;
+import com.ibm.cloud.is.vpc.v1.model.BackupPolicyJobSourceVolumeReference;
+import com.ibm.cloud.is.vpc.v1.model.BackupPolicyJobStatusReason;
+import com.ibm.cloud.is.vpc.v1.model.BackupPolicyJobsPager;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPatch;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlan;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanCollection;
@@ -363,6 +371,7 @@ import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorTargetSubnetReference;
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorTargetVPCReference;
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorsPager;
 import com.ibm.cloud.is.vpc.v1.model.GenericResourceReferenceDeleted;
+import com.ibm.cloud.is.vpc.v1.model.GetBackupPolicyJobOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetBackupPolicyOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetBackupPolicyPlanOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetBareMetalServerDiskOptions;
@@ -701,6 +710,7 @@ import com.ibm.cloud.is.vpc.v1.model.LegacyCloudObjectStorageBucketIdentityCloud
 import com.ibm.cloud.is.vpc.v1.model.LegacyCloudObjectStorageBucketReference;
 import com.ibm.cloud.is.vpc.v1.model.LifecycleReason;
 import com.ibm.cloud.is.vpc.v1.model.ListBackupPoliciesOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListBackupPolicyJobsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListBackupPolicyPlansOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListBareMetalServerDisksOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListBareMetalServerNetworkInterfaceFloatingIpsOptions;
@@ -1262,9 +1272,9 @@ import com.ibm.cloud.is.vpc.v1.model.VolumeAttachment;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentCollection;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentDevice;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPatch;
+import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototype;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototypeInstanceByImageContext;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototypeInstanceBySourceSnapshotContext;
-import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototypeInstanceContext;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototypeVolume;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototypeVolumeVolumeIdentity;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototypeVolumeVolumeIdentityVolumeIdentityByCRN;
@@ -1277,17 +1287,10 @@ import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentReferenceInstanceContext;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentReferenceInstanceContextDeleted;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentReferenceVolumeContext;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentReferenceVolumeContextDeleted;
-import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentVolumePrototypeInstanceContext;
-import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentVolumePrototypeInstanceContextVolumeIdentity;
-import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentVolumePrototypeInstanceContextVolumeIdentityVolumeIdentityByCRN;
-import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentVolumePrototypeInstanceContextVolumeIdentityVolumeIdentityByHref;
-import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentVolumePrototypeInstanceContextVolumeIdentityVolumeIdentityById;
-import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentVolumePrototypeInstanceContextVolumePrototypeInstanceContext;
-import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeByCapacity;
-import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeBySourceSnapshot;
 import com.ibm.cloud.is.vpc.v1.model.VolumeCollection;
 import com.ibm.cloud.is.vpc.v1.model.VolumeCollectionFirst;
 import com.ibm.cloud.is.vpc.v1.model.VolumeCollectionNext;
+import com.ibm.cloud.is.vpc.v1.model.VolumeHealthReason;
 import com.ibm.cloud.is.vpc.v1.model.VolumeIdentity;
 import com.ibm.cloud.is.vpc.v1.model.VolumeIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.VolumeIdentityByHref;
@@ -1440,7 +1443,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testListVpcs" })
   public void testCreateVpc() throws Exception {
     try {
       ResourceGroupIdentityById resourceGroupIdentityModel = new ResourceGroupIdentityById.Builder()
@@ -1469,7 +1472,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testCreateVpc" })
   public void testGetVpc() throws Exception {
     try {
       GetVpcOptions getVpcOptions = new GetVpcOptions.Builder()
@@ -1491,7 +1494,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testGetVpc" })
   public void testUpdateVpc() throws Exception {
     try {
       VPCPatch vpcPatchModel = new VPCPatch.Builder()
@@ -1519,7 +1522,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testUpdateVpc" })
   public void testGetVpcDefaultNetworkAcl() throws Exception {
     try {
       GetVpcDefaultNetworkAclOptions getVpcDefaultNetworkAclOptions = new GetVpcDefaultNetworkAclOptions.Builder()
@@ -1541,7 +1544,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testGetVpcDefaultNetworkAcl" })
   public void testGetVpcDefaultRoutingTable() throws Exception {
     try {
       GetVpcDefaultRoutingTableOptions getVpcDefaultRoutingTableOptions = new GetVpcDefaultRoutingTableOptions.Builder()
@@ -1563,7 +1566,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testGetVpcDefaultRoutingTable" })
   public void testGetVpcDefaultSecurityGroup() throws Exception {
     try {
       GetVpcDefaultSecurityGroupOptions getVpcDefaultSecurityGroupOptions = new GetVpcDefaultSecurityGroupOptions.Builder()
@@ -1585,7 +1588,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testGetVpcDefaultSecurityGroup" })
   public void testListVpcAddressPrefixes() throws Exception {
     try {
       ListVpcAddressPrefixesOptions listVpcAddressPrefixesOptions = new ListVpcAddressPrefixesOptions.Builder()
@@ -1641,7 +1644,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testListVpcAddressPrefixes" })
   public void testCreateVpcAddressPrefix() throws Exception {
     try {
       ZoneIdentityByName zoneIdentityModel = new ZoneIdentityByName.Builder()
@@ -1653,7 +1656,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .cidr("10.0.0.0/24")
         .zone(zoneIdentityModel)
         .isDefault(true)
-        .name("my-address-prefix-2")
+        .name("my-address-prefix-1")
         .build();
 
       // Invoke operation
@@ -1671,7 +1674,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testCreateVpcAddressPrefix" })
   public void testGetVpcAddressPrefix() throws Exception {
     try {
       GetVpcAddressPrefixOptions getVpcAddressPrefixOptions = new GetVpcAddressPrefixOptions.Builder()
@@ -1694,12 +1697,12 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testGetVpcAddressPrefix" })
   public void testUpdateVpcAddressPrefix() throws Exception {
     try {
       AddressPrefixPatch addressPrefixPatchModel = new AddressPrefixPatch.Builder()
         .isDefault(false)
-        .name("my-address-prefix-2")
+        .name("my-address-prefix-1")
         .build();
       Map<String, Object> addressPrefixPatchModelAsPatch = addressPrefixPatchModel.asPatch();
 
@@ -1724,7 +1727,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testUpdateVpcAddressPrefix" })
   public void testListVpcRoutes() throws Exception {
     try {
       ListVpcRoutesOptions listVpcRoutesOptions = new ListVpcRoutesOptions.Builder()
@@ -1782,7 +1785,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testListVpcRoutes" })
   public void testCreateVpcRoute() throws Exception {
     try {
       ZoneIdentityByName zoneIdentityModel = new ZoneIdentityByName.Builder()
@@ -1817,7 +1820,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testCreateVpcRoute" })
   public void testGetVpcRoute() throws Exception {
     try {
       GetVpcRouteOptions getVpcRouteOptions = new GetVpcRouteOptions.Builder()
@@ -1840,7 +1843,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testGetVpcRoute" })
   public void testUpdateVpcRoute() throws Exception {
     try {
       RoutePatch routePatchModel = new RoutePatch.Builder()
@@ -1869,7 +1872,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testUpdateVpcRoute" })
   public void testListVpcRoutingTables() throws Exception {
     try {
       ListVpcRoutingTablesOptions listVpcRoutingTablesOptions = new ListVpcRoutingTablesOptions.Builder()
@@ -1927,7 +1930,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testListVpcRoutingTables" })
   public void testCreateVpcRoutingTable() throws Exception {
     try {
       ResourceFilter resourceFilterModel = new ResourceFilter.Builder()
@@ -1976,7 +1979,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testCreateVpcRoutingTable" })
   public void testGetVpcRoutingTable() throws Exception {
     try {
       GetVpcRoutingTableOptions getVpcRoutingTableOptions = new GetVpcRoutingTableOptions.Builder()
@@ -1999,7 +2002,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testGetVpcRoutingTable" })
   public void testUpdateVpcRoutingTable() throws Exception {
     try {
       ResourceFilter resourceFilterModel = new ResourceFilter.Builder()
@@ -2038,7 +2041,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testUpdateVpcRoutingTable" })
   public void testListVpcRoutingTableRoutes() throws Exception {
     try {
       ListVpcRoutingTableRoutesOptions listVpcRoutingTableRoutesOptions = new ListVpcRoutingTableRoutesOptions.Builder()
@@ -2096,7 +2099,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testListVpcRoutingTableRoutes" })
   public void testCreateVpcRoutingTableRoute() throws Exception {
     try {
       ZoneIdentityByName zoneIdentityModel = new ZoneIdentityByName.Builder()
@@ -2132,7 +2135,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testCreateVpcRoutingTableRoute" })
   public void testGetVpcRoutingTableRoute() throws Exception {
     try {
       GetVpcRoutingTableRouteOptions getVpcRoutingTableRouteOptions = new GetVpcRoutingTableRouteOptions.Builder()
@@ -2156,7 +2159,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testGetVpcRoutingTableRoute" })
   public void testUpdateVpcRoutingTableRoute() throws Exception {
     try {
       RoutePatch routePatchModel = new RoutePatch.Builder()
@@ -2186,7 +2189,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testUpdateVpcRoutingTableRoute" })
   public void testListSubnets() throws Exception {
     try {
       ListSubnetsOptions listSubnetsOptions = new ListSubnetsOptions.Builder()
@@ -2246,7 +2249,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testListSubnets" })
   public void testCreateSubnet() throws Exception {
     try {
       NetworkACLIdentityById networkAclIdentityModel = new NetworkACLIdentityById.Builder()
@@ -2304,7 +2307,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testCreateSubnet" })
   public void testGetSubnet() throws Exception {
     try {
       GetSubnetOptions getSubnetOptions = new GetSubnetOptions.Builder()
@@ -2326,7 +2329,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testGetSubnet" })
   public void testUpdateSubnet() throws Exception {
     try {
       NetworkACLIdentityById networkAclIdentityModel = new NetworkACLIdentityById.Builder()
@@ -2369,7 +2372,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testUpdateSubnet" })
   public void testGetSubnetNetworkAcl() throws Exception {
     try {
       GetSubnetNetworkAclOptions getSubnetNetworkAclOptions = new GetSubnetNetworkAclOptions.Builder()
@@ -2391,7 +2394,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testGetSubnetNetworkAcl" })
   public void testReplaceSubnetNetworkAcl() throws Exception {
     try {
       NetworkACLIdentityById networkAclIdentityModel = new NetworkACLIdentityById.Builder()
@@ -2418,7 +2421,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testReplaceSubnetNetworkAcl" })
   public void testGetSubnetPublicGateway() throws Exception {
     try {
       GetSubnetPublicGatewayOptions getSubnetPublicGatewayOptions = new GetSubnetPublicGatewayOptions.Builder()
@@ -2440,7 +2443,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testGetSubnetPublicGateway" })
   public void testSetSubnetPublicGateway() throws Exception {
     try {
       PublicGatewayIdentityPublicGatewayIdentityById publicGatewayIdentityModel = new PublicGatewayIdentityPublicGatewayIdentityById.Builder()
@@ -2467,7 +2470,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testSetSubnetPublicGateway" })
   public void testGetSubnetRoutingTable() throws Exception {
     try {
       GetSubnetRoutingTableOptions getSubnetRoutingTableOptions = new GetSubnetRoutingTableOptions.Builder()
@@ -2489,7 +2492,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testGetSubnetRoutingTable" })
   public void testReplaceSubnetRoutingTable() throws Exception {
     try {
       RoutingTableIdentityById routingTableIdentityModel = new RoutingTableIdentityById.Builder()
@@ -2516,7 +2519,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testReplaceSubnetRoutingTable" })
   public void testListSubnetReservedIps() throws Exception {
     try {
       ListSubnetReservedIpsOptions listSubnetReservedIpsOptions = new ListSubnetReservedIpsOptions.Builder()
@@ -2574,7 +2577,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testListSubnetReservedIps" })
   public void testCreateSubnetReservedIp() throws Exception {
     try {
       ReservedIPTargetPrototypeEndpointGatewayIdentityEndpointGatewayIdentityById reservedIpTargetPrototypeModel = new ReservedIPTargetPrototypeEndpointGatewayIdentityEndpointGatewayIdentityById.Builder()
@@ -2604,7 +2607,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testCreateSubnetReservedIp" })
   public void testGetSubnetReservedIp() throws Exception {
     try {
       GetSubnetReservedIpOptions getSubnetReservedIpOptions = new GetSubnetReservedIpOptions.Builder()
@@ -2627,7 +2630,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testGetSubnetReservedIp" })
   public void testUpdateSubnetReservedIp() throws Exception {
     try {
       ReservedIPPatch reservedIpPatchModel = new ReservedIPPatch.Builder()
@@ -2657,7 +2660,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testUpdateSubnetReservedIp" })
   public void testListImages() throws Exception {
     try {
       ListImagesOptions listImagesOptions = new ListImagesOptions.Builder()
@@ -2717,7 +2720,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testListImages" })
   public void testCreateImage() throws Exception {
     try {
       ResourceGroupIdentityById resourceGroupIdentityModel = new ResourceGroupIdentityById.Builder()
@@ -2764,7 +2767,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testCreateImage" })
   public void testGetImage() throws Exception {
     try {
       GetImageOptions getImageOptions = new GetImageOptions.Builder()
@@ -2786,7 +2789,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testGetImage" })
   public void testUpdateImage() throws Exception {
     try {
       ImagePatch imagePatchModel = new ImagePatch.Builder()
@@ -2814,7 +2817,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testUpdateImage" })
   public void testListOperatingSystems() throws Exception {
     try {
       ListOperatingSystemsOptions listOperatingSystemsOptions = new ListOperatingSystemsOptions.Builder()
@@ -2868,7 +2871,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testListOperatingSystems" })
   public void testGetOperatingSystem() throws Exception {
     try {
       GetOperatingSystemOptions getOperatingSystemOptions = new GetOperatingSystemOptions.Builder()
@@ -2890,7 +2893,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testGetOperatingSystem" })
   public void testListKeys() throws Exception {
     try {
       ListKeysOptions listKeysOptions = new ListKeysOptions.Builder()
@@ -2944,7 +2947,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testListKeys" })
   public void testCreateKey() throws Exception {
     try {
       ResourceGroupIdentityById resourceGroupIdentityModel = new ResourceGroupIdentityById.Builder()
@@ -2973,7 +2976,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testCreateKey" })
   public void testGetKey() throws Exception {
     try {
       GetKeyOptions getKeyOptions = new GetKeyOptions.Builder()
@@ -2995,7 +2998,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testGetKey" })
   public void testUpdateKey() throws Exception {
     try {
       KeyPatch keyPatchModel = new KeyPatch.Builder()
@@ -3023,7 +3026,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testUpdateKey" })
   public void testListInstanceProfiles() throws Exception {
     try {
       ListInstanceProfilesOptions listInstanceProfilesOptions = new ListInstanceProfilesOptions();
@@ -3043,7 +3046,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testListInstanceProfiles" })
   public void testGetInstanceProfile() throws Exception {
     try {
       GetInstanceProfileOptions getInstanceProfileOptions = new GetInstanceProfileOptions.Builder()
@@ -3065,7 +3068,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testGetInstanceProfile" })
   public void testListInstanceTemplates() throws Exception {
     try {
       ListInstanceTemplatesOptions listInstanceTemplatesOptions = new ListInstanceTemplatesOptions();
@@ -3085,7 +3088,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testListInstanceTemplates" })
   public void testCreateInstanceTemplate() throws Exception {
     try {
       InstanceAvailabilityPrototype instanceAvailabilityPrototypeModel = new InstanceAvailabilityPrototype.Builder()
@@ -3143,14 +3146,14 @@ public class VpcIT extends SdkIntegrationTestBase {
         .id("fee82deba12e4c0fb69c3b09d1f12345")
         .build();
 
-      VolumeAttachmentVolumePrototypeInstanceContextVolumeIdentityVolumeIdentityById volumeAttachmentVolumePrototypeInstanceContextModel = new VolumeAttachmentVolumePrototypeInstanceContextVolumeIdentityVolumeIdentityById.Builder()
+      VolumeAttachmentPrototypeVolumeVolumeIdentityVolumeIdentityById volumeAttachmentPrototypeVolumeModel = new VolumeAttachmentPrototypeVolumeVolumeIdentityVolumeIdentityById.Builder()
         .id("1a6b7274-678d-4dfb-8981-c71dd9d4daa5")
         .build();
 
-      VolumeAttachmentPrototypeInstanceContext volumeAttachmentPrototypeInstanceContextModel = new VolumeAttachmentPrototypeInstanceContext.Builder()
-        .deleteVolumeOnInstanceDelete(true)
+      VolumeAttachmentPrototype volumeAttachmentPrototypeModel = new VolumeAttachmentPrototype.Builder()
+        .deleteVolumeOnInstanceDelete(false)
         .name("my-volume-attachment")
-        .volume(volumeAttachmentVolumePrototypeInstanceContextModel)
+        .volume(volumeAttachmentPrototypeVolumeModel)
         .build();
 
       VPCIdentityById vpcIdentityModel = new VPCIdentityById.Builder()
@@ -3200,7 +3203,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .resourceGroup(resourceGroupIdentityModel)
         .totalVolumeBandwidth(Long.valueOf("500"))
         .userData("testString")
-        .volumeAttachments(java.util.Arrays.asList(volumeAttachmentPrototypeInstanceContextModel))
+        .volumeAttachments(java.util.Arrays.asList(volumeAttachmentPrototypeModel))
         .vpc(vpcIdentityModel)
         .bootVolumeAttachment(volumeAttachmentPrototypeInstanceByImageContextModel)
         .image(imageIdentityModel)
@@ -3227,7 +3230,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testCreateInstanceTemplate" })
   public void testGetInstanceTemplate() throws Exception {
     try {
       GetInstanceTemplateOptions getInstanceTemplateOptions = new GetInstanceTemplateOptions.Builder()
@@ -3249,7 +3252,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testGetInstanceTemplate" })
   public void testUpdateInstanceTemplate() throws Exception {
     try {
       InstanceTemplatePatch instanceTemplatePatchModel = new InstanceTemplatePatch.Builder()
@@ -3277,7 +3280,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testUpdateInstanceTemplate" })
   public void testListInstances() throws Exception {
     try {
       ListInstancesOptions listInstancesOptions = new ListInstancesOptions.Builder()
@@ -3353,7 +3356,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testListInstances" })
   public void testCreateInstance() throws Exception {
     try {
       InstanceAvailabilityPrototype instanceAvailabilityPrototypeModel = new InstanceAvailabilityPrototype.Builder()
@@ -3419,7 +3422,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .crn("crn:[...]")
         .build();
 
-      VolumeAttachmentVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeByCapacity volumeAttachmentVolumePrototypeInstanceContextModel = new VolumeAttachmentVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeByCapacity.Builder()
+      VolumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeByCapacity volumeAttachmentPrototypeVolumeModel = new VolumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeByCapacity.Builder()
         .iops(Long.valueOf("10000"))
         .name("my-data-volume")
         .profile(volumeProfileIdentityModel)
@@ -3428,10 +3431,10 @@ public class VpcIT extends SdkIntegrationTestBase {
         .encryptionKey(encryptionKeyIdentityModel)
         .build();
 
-      VolumeAttachmentPrototypeInstanceContext volumeAttachmentPrototypeInstanceContextModel = new VolumeAttachmentPrototypeInstanceContext.Builder()
-        .deleteVolumeOnInstanceDelete(true)
+      VolumeAttachmentPrototype volumeAttachmentPrototypeModel = new VolumeAttachmentPrototype.Builder()
+        .deleteVolumeOnInstanceDelete(false)
         .name("my-volume-attachment")
-        .volume(volumeAttachmentVolumePrototypeInstanceContextModel)
+        .volume(volumeAttachmentPrototypeVolumeModel)
         .build();
 
       VPCIdentityById vpcIdentityModel = new VPCIdentityById.Builder()
@@ -3473,7 +3476,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .resourceGroup(resourceGroupIdentityModel)
         .totalVolumeBandwidth(Long.valueOf("500"))
         .userData("testString")
-        .volumeAttachments(java.util.Arrays.asList(volumeAttachmentPrototypeInstanceContextModel))
+        .volumeAttachments(java.util.Arrays.asList(volumeAttachmentPrototypeModel))
         .vpc(vpcIdentityModel)
         .bootVolumeAttachment(volumeAttachmentPrototypeInstanceByImageContextModel)
         .image(imageIdentityModel)
@@ -3500,7 +3503,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testCreateInstance" })
   public void testGetInstance() throws Exception {
     try {
       GetInstanceOptions getInstanceOptions = new GetInstanceOptions.Builder()
@@ -3522,7 +3525,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testGetInstance" })
   public void testUpdateInstance() throws Exception {
     try {
       InstanceAvailabilityPolicyPatch instanceAvailabilityPolicyPatchModel = new InstanceAvailabilityPolicyPatch.Builder()
@@ -3571,7 +3574,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testUpdateInstance" })
   public void testGetInstanceInitialization() throws Exception {
     try {
       GetInstanceInitializationOptions getInstanceInitializationOptions = new GetInstanceInitializationOptions.Builder()
@@ -3593,7 +3596,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testGetInstanceInitialization" })
   public void testCreateInstanceAction() throws Exception {
     try {
       CreateInstanceActionOptions createInstanceActionOptions = new CreateInstanceActionOptions.Builder()
@@ -3617,7 +3620,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testCreateInstanceAction" })
   public void testCreateInstanceConsoleAccessToken() throws Exception {
     try {
       CreateInstanceConsoleAccessTokenOptions createInstanceConsoleAccessTokenOptions = new CreateInstanceConsoleAccessTokenOptions.Builder()
@@ -3641,7 +3644,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testCreateInstanceConsoleAccessToken" })
   public void testListInstanceDisks() throws Exception {
     try {
       ListInstanceDisksOptions listInstanceDisksOptions = new ListInstanceDisksOptions.Builder()
@@ -3663,7 +3666,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testListInstanceDisks" })
   public void testGetInstanceDisk() throws Exception {
     try {
       GetInstanceDiskOptions getInstanceDiskOptions = new GetInstanceDiskOptions.Builder()
@@ -3686,7 +3689,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testGetInstanceDisk" })
   public void testUpdateInstanceDisk() throws Exception {
     try {
       InstanceDiskPatch instanceDiskPatchModel = new InstanceDiskPatch.Builder()
@@ -3715,7 +3718,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testUpdateInstanceDisk" })
   public void testListInstanceNetworkInterfaces() throws Exception {
     try {
       ListInstanceNetworkInterfacesOptions listInstanceNetworkInterfacesOptions = new ListInstanceNetworkInterfacesOptions.Builder()
@@ -3737,7 +3740,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testListInstanceNetworkInterfaces" })
   public void testCreateInstanceNetworkInterface() throws Exception {
     try {
       SubnetIdentityById subnetIdentityModel = new SubnetIdentityById.Builder()
@@ -3778,7 +3781,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testCreateInstanceNetworkInterface" })
   public void testGetInstanceNetworkInterface() throws Exception {
     try {
       GetInstanceNetworkInterfaceOptions getInstanceNetworkInterfaceOptions = new GetInstanceNetworkInterfaceOptions.Builder()
@@ -3801,7 +3804,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testGetInstanceNetworkInterface" })
   public void testUpdateInstanceNetworkInterface() throws Exception {
     try {
       NetworkInterfacePatch networkInterfacePatchModel = new NetworkInterfacePatch.Builder()
@@ -3831,7 +3834,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testUpdateInstanceNetworkInterface" })
   public void testListInstanceNetworkInterfaceFloatingIps() throws Exception {
     try {
       ListInstanceNetworkInterfaceFloatingIpsOptions listInstanceNetworkInterfaceFloatingIpsOptions = new ListInstanceNetworkInterfaceFloatingIpsOptions.Builder()
@@ -3854,7 +3857,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testListInstanceNetworkInterfaceFloatingIps" })
   public void testGetInstanceNetworkInterfaceFloatingIp() throws Exception {
     try {
       GetInstanceNetworkInterfaceFloatingIpOptions getInstanceNetworkInterfaceFloatingIpOptions = new GetInstanceNetworkInterfaceFloatingIpOptions.Builder()
@@ -3878,7 +3881,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testGetInstanceNetworkInterfaceFloatingIp" })
   public void testAddInstanceNetworkInterfaceFloatingIp() throws Exception {
     try {
       AddInstanceNetworkInterfaceFloatingIpOptions addInstanceNetworkInterfaceFloatingIpOptions = new AddInstanceNetworkInterfaceFloatingIpOptions.Builder()
@@ -3902,7 +3905,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testAddInstanceNetworkInterfaceFloatingIp" })
   public void testListInstanceNetworkInterfaceIps() throws Exception {
     try {
       ListInstanceNetworkInterfaceIpsOptions listInstanceNetworkInterfaceIpsOptions = new ListInstanceNetworkInterfaceIpsOptions.Builder()
@@ -3960,7 +3963,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testListInstanceNetworkInterfaceIps" })
   public void testGetInstanceNetworkInterfaceIp() throws Exception {
     try {
       GetInstanceNetworkInterfaceIpOptions getInstanceNetworkInterfaceIpOptions = new GetInstanceNetworkInterfaceIpOptions.Builder()
@@ -3984,7 +3987,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testGetInstanceNetworkInterfaceIp" })
   public void testListInstanceVolumeAttachments() throws Exception {
     try {
       ListInstanceVolumeAttachmentsOptions listInstanceVolumeAttachmentsOptions = new ListInstanceVolumeAttachmentsOptions.Builder()
@@ -4006,7 +4009,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testListInstanceVolumeAttachments" })
   public void testCreateInstanceVolumeAttachment() throws Exception {
     try {
       VolumeAttachmentPrototypeVolumeVolumeIdentityVolumeIdentityById volumeAttachmentPrototypeVolumeModel = new VolumeAttachmentPrototypeVolumeVolumeIdentityVolumeIdentityById.Builder()
@@ -4035,7 +4038,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testCreateInstanceVolumeAttachment" })
   public void testGetInstanceVolumeAttachment() throws Exception {
     try {
       GetInstanceVolumeAttachmentOptions getInstanceVolumeAttachmentOptions = new GetInstanceVolumeAttachmentOptions.Builder()
@@ -4058,7 +4061,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testGetInstanceVolumeAttachment" })
   public void testUpdateInstanceVolumeAttachment() throws Exception {
     try {
       VolumeAttachmentPatch volumeAttachmentPatchModel = new VolumeAttachmentPatch.Builder()
@@ -4088,7 +4091,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testUpdateInstanceVolumeAttachment" })
   public void testListInstanceGroups() throws Exception {
     try {
       ListInstanceGroupsOptions listInstanceGroupsOptions = new ListInstanceGroupsOptions.Builder()
@@ -4142,7 +4145,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testListInstanceGroups" })
   public void testCreateInstanceGroup() throws Exception {
     try {
       InstanceTemplateIdentityById instanceTemplateIdentityModel = new InstanceTemplateIdentityById.Builder()
@@ -4191,7 +4194,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testCreateInstanceGroup" })
   public void testGetInstanceGroup() throws Exception {
     try {
       GetInstanceGroupOptions getInstanceGroupOptions = new GetInstanceGroupOptions.Builder()
@@ -4213,7 +4216,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testGetInstanceGroup" })
   public void testUpdateInstanceGroup() throws Exception {
     try {
       InstanceTemplateIdentityById instanceTemplateIdentityModel = new InstanceTemplateIdentityById.Builder()
@@ -4263,7 +4266,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testUpdateInstanceGroup" })
   public void testListInstanceGroupManagers() throws Exception {
     try {
       ListInstanceGroupManagersOptions listInstanceGroupManagersOptions = new ListInstanceGroupManagersOptions.Builder()
@@ -4319,7 +4322,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testListInstanceGroupManagers" })
   public void testCreateInstanceGroupManager() throws Exception {
     try {
       InstanceGroupManagerPrototypeInstanceGroupManagerAutoScalePrototype instanceGroupManagerPrototypeModel = new InstanceGroupManagerPrototypeInstanceGroupManagerAutoScalePrototype.Builder()
@@ -4352,7 +4355,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testCreateInstanceGroupManager" })
   public void testGetInstanceGroupManager() throws Exception {
     try {
       GetInstanceGroupManagerOptions getInstanceGroupManagerOptions = new GetInstanceGroupManagerOptions.Builder()
@@ -4375,7 +4378,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testGetInstanceGroupManager" })
   public void testUpdateInstanceGroupManager() throws Exception {
     try {
       InstanceGroupManagerPatch instanceGroupManagerPatchModel = new InstanceGroupManagerPatch.Builder()
@@ -4409,7 +4412,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testUpdateInstanceGroupManager" })
   public void testListInstanceGroupManagerActions() throws Exception {
     try {
       ListInstanceGroupManagerActionsOptions listInstanceGroupManagerActionsOptions = new ListInstanceGroupManagerActionsOptions.Builder()
@@ -4467,7 +4470,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testListInstanceGroupManagerActions" })
   public void testCreateInstanceGroupManagerAction() throws Exception {
     try {
       InstanceGroupManagerScheduledActionGroupPrototype instanceGroupManagerScheduledActionGroupPrototypeModel = new InstanceGroupManagerScheduledActionGroupPrototype.Builder()
@@ -4501,7 +4504,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testCreateInstanceGroupManagerAction" })
   public void testGetInstanceGroupManagerAction() throws Exception {
     try {
       GetInstanceGroupManagerActionOptions getInstanceGroupManagerActionOptions = new GetInstanceGroupManagerActionOptions.Builder()
@@ -4525,7 +4528,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testGetInstanceGroupManagerAction" })
   public void testUpdateInstanceGroupManagerAction() throws Exception {
     try {
       InstanceGroupManagerActionGroupPatch instanceGroupManagerActionGroupPatchModel = new InstanceGroupManagerActionGroupPatch.Builder()
@@ -4568,7 +4571,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testUpdateInstanceGroupManagerAction" })
   public void testListInstanceGroupManagerPolicies() throws Exception {
     try {
       ListInstanceGroupManagerPoliciesOptions listInstanceGroupManagerPoliciesOptions = new ListInstanceGroupManagerPoliciesOptions.Builder()
@@ -4626,7 +4629,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testListInstanceGroupManagerPolicies" })
   public void testCreateInstanceGroupManagerPolicy() throws Exception {
     try {
       InstanceGroupManagerPolicyPrototypeInstanceGroupManagerTargetPolicyPrototype instanceGroupManagerPolicyPrototypeModel = new InstanceGroupManagerPolicyPrototypeInstanceGroupManagerTargetPolicyPrototype.Builder()
@@ -4657,7 +4660,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testCreateInstanceGroupManagerPolicy" })
   public void testGetInstanceGroupManagerPolicy() throws Exception {
     try {
       GetInstanceGroupManagerPolicyOptions getInstanceGroupManagerPolicyOptions = new GetInstanceGroupManagerPolicyOptions.Builder()
@@ -4681,7 +4684,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testGetInstanceGroupManagerPolicy" })
   public void testUpdateInstanceGroupManagerPolicy() throws Exception {
     try {
       InstanceGroupManagerPolicyPatch instanceGroupManagerPolicyPatchModel = new InstanceGroupManagerPolicyPatch.Builder()
@@ -4713,7 +4716,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testUpdateInstanceGroupManagerPolicy" })
   public void testListInstanceGroupMemberships() throws Exception {
     try {
       ListInstanceGroupMembershipsOptions listInstanceGroupMembershipsOptions = new ListInstanceGroupMembershipsOptions.Builder()
@@ -4769,7 +4772,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testListInstanceGroupMemberships" })
   public void testGetInstanceGroupMembership() throws Exception {
     try {
       GetInstanceGroupMembershipOptions getInstanceGroupMembershipOptions = new GetInstanceGroupMembershipOptions.Builder()
@@ -4792,7 +4795,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testGetInstanceGroupMembership" })
   public void testUpdateInstanceGroupMembership() throws Exception {
     try {
       InstanceGroupMembershipPatch instanceGroupMembershipPatchModel = new InstanceGroupMembershipPatch.Builder()
@@ -4821,7 +4824,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testUpdateInstanceGroupMembership" })
   public void testListDedicatedHostGroups() throws Exception {
     try {
       ListDedicatedHostGroupsOptions listDedicatedHostGroupsOptions = new ListDedicatedHostGroupsOptions.Builder()
@@ -4881,7 +4884,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testListDedicatedHostGroups" })
   public void testCreateDedicatedHostGroup() throws Exception {
     try {
       ResourceGroupIdentityById resourceGroupIdentityModel = new ResourceGroupIdentityById.Builder()
@@ -4915,7 +4918,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testCreateDedicatedHostGroup" })
   public void testGetDedicatedHostGroup() throws Exception {
     try {
       GetDedicatedHostGroupOptions getDedicatedHostGroupOptions = new GetDedicatedHostGroupOptions.Builder()
@@ -4937,7 +4940,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testGetDedicatedHostGroup" })
   public void testUpdateDedicatedHostGroup() throws Exception {
     try {
       DedicatedHostGroupPatch dedicatedHostGroupPatchModel = new DedicatedHostGroupPatch.Builder()
@@ -4965,7 +4968,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testUpdateDedicatedHostGroup" })
   public void testListDedicatedHostProfiles() throws Exception {
     try {
       ListDedicatedHostProfilesOptions listDedicatedHostProfilesOptions = new ListDedicatedHostProfilesOptions.Builder()
@@ -5019,7 +5022,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testListDedicatedHostProfiles" })
   public void testGetDedicatedHostProfile() throws Exception {
     try {
       GetDedicatedHostProfileOptions getDedicatedHostProfileOptions = new GetDedicatedHostProfileOptions.Builder()
@@ -5041,7 +5044,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testGetDedicatedHostProfile" })
   public void testListDedicatedHosts() throws Exception {
     try {
       ListDedicatedHostsOptions listDedicatedHostsOptions = new ListDedicatedHostsOptions.Builder()
@@ -5103,7 +5106,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testListDedicatedHosts" })
   public void testCreateDedicatedHost() throws Exception {
     try {
       DedicatedHostProfileIdentityByName dedicatedHostProfileIdentityModel = new DedicatedHostProfileIdentityByName.Builder()
@@ -5145,7 +5148,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testCreateDedicatedHost" })
   public void testListDedicatedHostDisks() throws Exception {
     try {
       ListDedicatedHostDisksOptions listDedicatedHostDisksOptions = new ListDedicatedHostDisksOptions.Builder()
@@ -5167,7 +5170,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testListDedicatedHostDisks" })
   public void testGetDedicatedHostDisk() throws Exception {
     try {
       GetDedicatedHostDiskOptions getDedicatedHostDiskOptions = new GetDedicatedHostDiskOptions.Builder()
@@ -5190,7 +5193,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testGetDedicatedHostDisk" })
   public void testUpdateDedicatedHostDisk() throws Exception {
     try {
       DedicatedHostDiskPatch dedicatedHostDiskPatchModel = new DedicatedHostDiskPatch.Builder()
@@ -5219,7 +5222,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testUpdateDedicatedHostDisk" })
   public void testGetDedicatedHost() throws Exception {
     try {
       GetDedicatedHostOptions getDedicatedHostOptions = new GetDedicatedHostOptions.Builder()
@@ -5241,7 +5244,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testGetDedicatedHost" })
   public void testUpdateDedicatedHost() throws Exception {
     try {
       DedicatedHostPatch dedicatedHostPatchModel = new DedicatedHostPatch.Builder()
@@ -5270,7 +5273,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testUpdateDedicatedHost" })
   public void testListBackupPolicies() throws Exception {
     try {
       ListBackupPoliciesOptions listBackupPoliciesOptions = new ListBackupPoliciesOptions.Builder()
@@ -5330,7 +5333,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testListBackupPolicies" })
   public void testCreateBackupPolicy() throws Exception {
     try {
       BackupPolicyPlanDeletionTriggerPrototype backupPolicyPlanDeletionTriggerPrototypeModel = new BackupPolicyPlanDeletionTriggerPrototype.Builder()
@@ -5374,7 +5377,98 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testCreateBackupPolicy" })
+  public void testListBackupPolicyJobs() throws Exception {
+    try {
+      ListBackupPolicyJobsOptions listBackupPolicyJobsOptions = new ListBackupPolicyJobsOptions.Builder()
+        .backupPolicyId("testString")
+        .status("testString")
+        .backupPolicyPlanId("testString")
+        .start("testString")
+        .limit(Long.valueOf("10"))
+        .sort("name")
+        .sourceId("testString")
+        .targetSnapshotsId("testString")
+        .targetSnapshotsCrn("testString")
+        .build();
+
+      // Invoke operation
+      Response<BackupPolicyJobCollection> response = service.listBackupPolicyJobs(listBackupPolicyJobsOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      BackupPolicyJobCollection backupPolicyJobCollectionResult = response.getResult();
+
+      assertNotNull(backupPolicyJobCollectionResult);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testListBackupPolicyJobs" })
+  public void testListBackupPolicyJobsWithPager() throws Exception {
+    try {
+      ListBackupPolicyJobsOptions options = new ListBackupPolicyJobsOptions.Builder()
+        .backupPolicyId("testString")
+        .status("testString")
+        .backupPolicyPlanId("testString")
+        .limit(Long.valueOf("10"))
+        .sort("name")
+        .sourceId("testString")
+        .targetSnapshotsId("testString")
+        .targetSnapshotsCrn("testString")
+        .build();
+
+      // Test getNext().
+      List<BackupPolicyJob> allResults = new ArrayList<>();
+      BackupPolicyJobsPager pager = new BackupPolicyJobsPager(service, options);
+      while (pager.hasNext()) {
+        List<BackupPolicyJob> nextPage = pager.getNext();
+        assertNotNull(nextPage);
+        allResults.addAll(nextPage);
+      }
+      assertFalse(allResults.isEmpty());
+
+      // Test getAll();
+      pager = new BackupPolicyJobsPager(service, options);
+      List<BackupPolicyJob> allItems = pager.getAll();
+      assertNotNull(allItems);
+      assertFalse(allItems.isEmpty());
+
+      assertEquals(allItems.size(), allResults.size());
+      System.out.println(String.format("Retrieved a total of %d item(s) with pagination.", allResults.size()));
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testListBackupPolicyJobs" })
+  public void testGetBackupPolicyJob() throws Exception {
+    try {
+      GetBackupPolicyJobOptions getBackupPolicyJobOptions = new GetBackupPolicyJobOptions.Builder()
+        .backupPolicyId("testString")
+        .id("testString")
+        .build();
+
+      // Invoke operation
+      Response<BackupPolicyJob> response = service.getBackupPolicyJob(getBackupPolicyJobOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      BackupPolicyJob backupPolicyJobResult = response.getResult();
+
+      assertNotNull(backupPolicyJobResult);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testGetBackupPolicyJob" })
   public void testListBackupPolicyPlans() throws Exception {
     try {
       ListBackupPolicyPlansOptions listBackupPolicyPlansOptions = new ListBackupPolicyPlansOptions.Builder()
@@ -5397,7 +5491,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testListBackupPolicyPlans" })
   public void testCreateBackupPolicyPlan() throws Exception {
     try {
       BackupPolicyPlanDeletionTriggerPrototype backupPolicyPlanDeletionTriggerPrototypeModel = new BackupPolicyPlanDeletionTriggerPrototype.Builder()
@@ -5430,7 +5524,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testCreateBackupPolicyPlan" })
   public void testGetBackupPolicyPlan() throws Exception {
     try {
       GetBackupPolicyPlanOptions getBackupPolicyPlanOptions = new GetBackupPolicyPlanOptions.Builder()
@@ -5453,7 +5547,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testGetBackupPolicyPlan" })
   public void testUpdateBackupPolicyPlan() throws Exception {
     try {
       BackupPolicyPlanDeletionTriggerPatch backupPolicyPlanDeletionTriggerPatchModel = new BackupPolicyPlanDeletionTriggerPatch.Builder()
@@ -5493,7 +5587,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testUpdateBackupPolicyPlan" })
   public void testGetBackupPolicy() throws Exception {
     try {
       GetBackupPolicyOptions getBackupPolicyOptions = new GetBackupPolicyOptions.Builder()
@@ -5515,7 +5609,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testGetBackupPolicy" })
   public void testUpdateBackupPolicy() throws Exception {
     try {
       BackupPolicyPatch backupPolicyPatchModel = new BackupPolicyPatch.Builder()
@@ -5545,7 +5639,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testUpdateBackupPolicy" })
   public void testListPlacementGroups() throws Exception {
     try {
       ListPlacementGroupsOptions listPlacementGroupsOptions = new ListPlacementGroupsOptions.Builder()
@@ -5599,7 +5693,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testListPlacementGroups" })
   public void testCreatePlacementGroup() throws Exception {
     try {
       ResourceGroupIdentityById resourceGroupIdentityModel = new ResourceGroupIdentityById.Builder()
@@ -5627,7 +5721,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testCreatePlacementGroup" })
   public void testGetPlacementGroup() throws Exception {
     try {
       GetPlacementGroupOptions getPlacementGroupOptions = new GetPlacementGroupOptions.Builder()
@@ -5649,7 +5743,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testGetPlacementGroup" })
   public void testUpdatePlacementGroup() throws Exception {
     try {
       PlacementGroupPatch placementGroupPatchModel = new PlacementGroupPatch.Builder()
@@ -5677,7 +5771,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testUpdatePlacementGroup" })
   public void testListBareMetalServerProfiles() throws Exception {
     try {
       ListBareMetalServerProfilesOptions listBareMetalServerProfilesOptions = new ListBareMetalServerProfilesOptions.Builder()
@@ -5731,7 +5825,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testListBareMetalServerProfiles" })
   public void testGetBareMetalServerProfile() throws Exception {
     try {
       GetBareMetalServerProfileOptions getBareMetalServerProfileOptions = new GetBareMetalServerProfileOptions.Builder()
@@ -5753,7 +5847,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testGetBareMetalServerProfile" })
   public void testListBareMetalServers() throws Exception {
     try {
       ListBareMetalServersOptions listBareMetalServersOptions = new ListBareMetalServersOptions.Builder()
@@ -5823,7 +5917,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testListBareMetalServers" })
   public void testCreateBareMetalServer() throws Exception {
     try {
       ImageIdentityById imageIdentityModel = new ImageIdentityById.Builder()
@@ -5917,7 +6011,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testCreateBareMetalServer" })
   public void testCreateBareMetalServerConsoleAccessToken() throws Exception {
     try {
       CreateBareMetalServerConsoleAccessTokenOptions createBareMetalServerConsoleAccessTokenOptions = new CreateBareMetalServerConsoleAccessTokenOptions.Builder()
@@ -5941,7 +6035,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testCreateBareMetalServerConsoleAccessToken" })
   public void testListBareMetalServerDisks() throws Exception {
     try {
       ListBareMetalServerDisksOptions listBareMetalServerDisksOptions = new ListBareMetalServerDisksOptions.Builder()
@@ -5963,7 +6057,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testListBareMetalServerDisks" })
   public void testGetBareMetalServerDisk() throws Exception {
     try {
       GetBareMetalServerDiskOptions getBareMetalServerDiskOptions = new GetBareMetalServerDiskOptions.Builder()
@@ -5986,7 +6080,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testGetBareMetalServerDisk" })
   public void testUpdateBareMetalServerDisk() throws Exception {
     try {
       BareMetalServerDiskPatch bareMetalServerDiskPatchModel = new BareMetalServerDiskPatch.Builder()
@@ -6015,7 +6109,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testUpdateBareMetalServerDisk" })
   public void testListBareMetalServerNetworkInterfaces() throws Exception {
     try {
       ListBareMetalServerNetworkInterfacesOptions listBareMetalServerNetworkInterfacesOptions = new ListBareMetalServerNetworkInterfacesOptions.Builder()
@@ -6071,7 +6165,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testListBareMetalServerNetworkInterfaces" })
   public void testCreateBareMetalServerNetworkInterface() throws Exception {
     try {
       NetworkInterfaceIPPrototypeReservedIPPrototypeNetworkInterfaceContext networkInterfaceIpPrototypeModel = new NetworkInterfaceIPPrototypeReservedIPPrototypeNetworkInterfaceContext.Builder()
@@ -6118,7 +6212,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testCreateBareMetalServerNetworkInterface" })
   public void testGetBareMetalServerNetworkInterface() throws Exception {
     try {
       GetBareMetalServerNetworkInterfaceOptions getBareMetalServerNetworkInterfaceOptions = new GetBareMetalServerNetworkInterfaceOptions.Builder()
@@ -6141,7 +6235,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testGetBareMetalServerNetworkInterface" })
   public void testUpdateBareMetalServerNetworkInterface() throws Exception {
     try {
       BareMetalServerNetworkInterfacePatch bareMetalServerNetworkInterfacePatchModel = new BareMetalServerNetworkInterfacePatch.Builder()
@@ -6173,7 +6267,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testUpdateBareMetalServerNetworkInterface" })
   public void testListBareMetalServerNetworkInterfaceFloatingIps() throws Exception {
     try {
       ListBareMetalServerNetworkInterfaceFloatingIpsOptions listBareMetalServerNetworkInterfaceFloatingIpsOptions = new ListBareMetalServerNetworkInterfaceFloatingIpsOptions.Builder()
@@ -6196,7 +6290,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testListBareMetalServerNetworkInterfaceFloatingIps" })
   public void testGetBareMetalServerNetworkInterfaceFloatingIp() throws Exception {
     try {
       GetBareMetalServerNetworkInterfaceFloatingIpOptions getBareMetalServerNetworkInterfaceFloatingIpOptions = new GetBareMetalServerNetworkInterfaceFloatingIpOptions.Builder()
@@ -6220,7 +6314,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testGetBareMetalServerNetworkInterfaceFloatingIp" })
   public void testAddBareMetalServerNetworkInterfaceFloatingIp() throws Exception {
     try {
       AddBareMetalServerNetworkInterfaceFloatingIpOptions addBareMetalServerNetworkInterfaceFloatingIpOptions = new AddBareMetalServerNetworkInterfaceFloatingIpOptions.Builder()
@@ -6244,7 +6338,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testAddBareMetalServerNetworkInterfaceFloatingIp" })
   public void testListBareMetalServerNetworkInterfaceIps() throws Exception {
     try {
       ListBareMetalServerNetworkInterfaceIpsOptions listBareMetalServerNetworkInterfaceIpsOptions = new ListBareMetalServerNetworkInterfaceIpsOptions.Builder()
@@ -6267,7 +6361,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testListBareMetalServerNetworkInterfaceIps" })
   public void testGetBareMetalServerNetworkInterfaceIp() throws Exception {
     try {
       GetBareMetalServerNetworkInterfaceIpOptions getBareMetalServerNetworkInterfaceIpOptions = new GetBareMetalServerNetworkInterfaceIpOptions.Builder()
@@ -6291,7 +6385,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testGetBareMetalServerNetworkInterfaceIp" })
   public void testGetBareMetalServer() throws Exception {
     try {
       GetBareMetalServerOptions getBareMetalServerOptions = new GetBareMetalServerOptions.Builder()
@@ -6313,7 +6407,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testGetBareMetalServer" })
   public void testUpdateBareMetalServer() throws Exception {
     try {
       BareMetalServerPatch bareMetalServerPatchModel = new BareMetalServerPatch.Builder()
@@ -6341,7 +6435,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testUpdateBareMetalServer" })
   public void testGetBareMetalServerInitialization() throws Exception {
     try {
       GetBareMetalServerInitializationOptions getBareMetalServerInitializationOptions = new GetBareMetalServerInitializationOptions.Builder()
@@ -6363,7 +6457,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testGetBareMetalServerInitialization" })
   public void testRestartBareMetalServer() throws Exception {
     try {
       RestartBareMetalServerOptions restartBareMetalServerOptions = new RestartBareMetalServerOptions.Builder()
@@ -6381,7 +6475,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testRestartBareMetalServer" })
   public void testStartBareMetalServer() throws Exception {
     try {
       StartBareMetalServerOptions startBareMetalServerOptions = new StartBareMetalServerOptions.Builder()
@@ -6399,7 +6493,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testStartBareMetalServer" })
   public void testStopBareMetalServer() throws Exception {
     try {
       StopBareMetalServerOptions stopBareMetalServerOptions = new StopBareMetalServerOptions.Builder()
@@ -6418,7 +6512,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testStopBareMetalServer" })
   public void testListVolumeProfiles() throws Exception {
     try {
       ListVolumeProfilesOptions listVolumeProfilesOptions = new ListVolumeProfilesOptions.Builder()
@@ -6472,7 +6566,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testListVolumeProfiles" })
   public void testGetVolumeProfile() throws Exception {
     try {
       GetVolumeProfileOptions getVolumeProfileOptions = new GetVolumeProfileOptions.Builder()
@@ -6494,7 +6588,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testGetVolumeProfile" })
   public void testListVolumes() throws Exception {
     try {
       ListVolumesOptions listVolumesOptions = new ListVolumesOptions.Builder()
@@ -6552,7 +6646,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testListVolumes" })
   public void testCreateVolume() throws Exception {
     try {
       VolumeProfileIdentityByName volumeProfileIdentityModel = new VolumeProfileIdentityByName.Builder()
@@ -6601,7 +6695,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testCreateVolume" })
   public void testGetVolume() throws Exception {
     try {
       GetVolumeOptions getVolumeOptions = new GetVolumeOptions.Builder()
@@ -6623,7 +6717,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testGetVolume" })
   public void testUpdateVolume() throws Exception {
     try {
       VolumeProfileIdentityByName volumeProfileIdentityModel = new VolumeProfileIdentityByName.Builder()
@@ -6660,7 +6754,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testUpdateVolume" })
   public void testListSnapshots() throws Exception {
     try {
       ListSnapshotsOptions listSnapshotsOptions = new ListSnapshotsOptions.Builder()
@@ -6732,7 +6826,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testListSnapshots" })
   public void testCreateSnapshot() throws Exception {
     try {
       ResourceGroupIdentityById resourceGroupIdentityModel = new ResourceGroupIdentityById.Builder()
@@ -6769,7 +6863,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testCreateSnapshot" })
   public void testGetSnapshot() throws Exception {
     try {
       GetSnapshotOptions getSnapshotOptions = new GetSnapshotOptions.Builder()
@@ -6791,7 +6885,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testGetSnapshot" })
   public void testUpdateSnapshot() throws Exception {
     try {
       SnapshotPatch snapshotPatchModel = new SnapshotPatch.Builder()
@@ -6821,7 +6915,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testUpdateSnapshot" })
   public void testListRegions() throws Exception {
     try {
       ListRegionsOptions listRegionsOptions = new ListRegionsOptions();
@@ -6841,7 +6935,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testListRegions" })
   public void testGetRegion() throws Exception {
     try {
       GetRegionOptions getRegionOptions = new GetRegionOptions.Builder()
@@ -6863,7 +6957,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testGetRegion" })
   public void testListRegionZones() throws Exception {
     try {
       ListRegionZonesOptions listRegionZonesOptions = new ListRegionZonesOptions.Builder()
@@ -6885,7 +6979,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testListRegionZones" })
   public void testGetRegionZone() throws Exception {
     try {
       GetRegionZoneOptions getRegionZoneOptions = new GetRegionZoneOptions.Builder()
@@ -6908,7 +7002,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testGetRegionZone" })
   public void testListPublicGateways() throws Exception {
     try {
       ListPublicGatewaysOptions listPublicGatewaysOptions = new ListPublicGatewaysOptions.Builder()
@@ -6964,7 +7058,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testListPublicGateways" })
   public void testCreatePublicGateway() throws Exception {
     try {
       VPCIdentityById vpcIdentityModel = new VPCIdentityById.Builder()
@@ -7006,7 +7100,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testCreatePublicGateway" })
   public void testGetPublicGateway() throws Exception {
     try {
       GetPublicGatewayOptions getPublicGatewayOptions = new GetPublicGatewayOptions.Builder()
@@ -7028,7 +7122,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testGetPublicGateway" })
   public void testUpdatePublicGateway() throws Exception {
     try {
       PublicGatewayPatch publicGatewayPatchModel = new PublicGatewayPatch.Builder()
@@ -7056,7 +7150,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testUpdatePublicGateway" })
   public void testListFloatingIps() throws Exception {
     try {
       ListFloatingIpsOptions listFloatingIpsOptions = new ListFloatingIpsOptions.Builder()
@@ -7114,7 +7208,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testListFloatingIps" })
   public void testCreateFloatingIp() throws Exception {
     try {
       ResourceGroupIdentityById resourceGroupIdentityModel = new ResourceGroupIdentityById.Builder()
@@ -7150,7 +7244,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testCreateFloatingIp" })
   public void testGetFloatingIp() throws Exception {
     try {
       GetFloatingIpOptions getFloatingIpOptions = new GetFloatingIpOptions.Builder()
@@ -7172,7 +7266,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testGetFloatingIp" })
   public void testUpdateFloatingIp() throws Exception {
     try {
       FloatingIPTargetPatchNetworkInterfaceIdentityById floatingIpTargetPatchModel = new FloatingIPTargetPatchNetworkInterfaceIdentityById.Builder()
@@ -7205,7 +7299,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testUpdateFloatingIp" })
   public void testListNetworkAcls() throws Exception {
     try {
       ListNetworkAclsOptions listNetworkAclsOptions = new ListNetworkAclsOptions.Builder()
@@ -7261,7 +7355,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testListNetworkAcls" })
   public void testCreateNetworkAcl() throws Exception {
     try {
       ResourceGroupIdentityById resourceGroupIdentityModel = new ResourceGroupIdentityById.Builder()
@@ -7311,7 +7405,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testCreateNetworkAcl" })
   public void testGetNetworkAcl() throws Exception {
     try {
       GetNetworkAclOptions getNetworkAclOptions = new GetNetworkAclOptions.Builder()
@@ -7333,7 +7427,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testGetNetworkAcl" })
   public void testUpdateNetworkAcl() throws Exception {
     try {
       NetworkACLPatch networkAclPatchModel = new NetworkACLPatch.Builder()
@@ -7361,7 +7455,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testUpdateNetworkAcl" })
   public void testListNetworkAclRules() throws Exception {
     try {
       ListNetworkAclRulesOptions listNetworkAclRulesOptions = new ListNetworkAclRulesOptions.Builder()
@@ -7419,7 +7513,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testListNetworkAclRules" })
   public void testCreateNetworkAclRule() throws Exception {
     try {
       NetworkACLRuleBeforePrototypeNetworkACLRuleIdentityById networkAclRuleBeforePrototypeModel = new NetworkACLRuleBeforePrototypeNetworkACLRuleIdentityById.Builder()
@@ -7460,7 +7554,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testCreateNetworkAclRule" })
   public void testGetNetworkAclRule() throws Exception {
     try {
       GetNetworkAclRuleOptions getNetworkAclRuleOptions = new GetNetworkAclRuleOptions.Builder()
@@ -7483,7 +7577,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testGetNetworkAclRule" })
   public void testUpdateNetworkAclRule() throws Exception {
     try {
       NetworkACLRuleBeforePatchNetworkACLRuleIdentityById networkAclRuleBeforePatchModel = new NetworkACLRuleBeforePatchNetworkACLRuleIdentityById.Builder()
@@ -7528,7 +7622,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testUpdateNetworkAclRule" })
   public void testListSecurityGroups() throws Exception {
     try {
       ListSecurityGroupsOptions listSecurityGroupsOptions = new ListSecurityGroupsOptions.Builder()
@@ -7590,7 +7684,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testListSecurityGroups" })
   public void testCreateSecurityGroup() throws Exception {
     try {
       VPCIdentityById vpcIdentityModel = new VPCIdentityById.Builder()
@@ -7634,7 +7728,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testCreateSecurityGroup" })
   public void testGetSecurityGroup() throws Exception {
     try {
       GetSecurityGroupOptions getSecurityGroupOptions = new GetSecurityGroupOptions.Builder()
@@ -7656,7 +7750,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testGetSecurityGroup" })
   public void testUpdateSecurityGroup() throws Exception {
     try {
       SecurityGroupPatch securityGroupPatchModel = new SecurityGroupPatch.Builder()
@@ -7684,7 +7778,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testUpdateSecurityGroup" })
   public void testListSecurityGroupRules() throws Exception {
     try {
       ListSecurityGroupRulesOptions listSecurityGroupRulesOptions = new ListSecurityGroupRulesOptions.Builder()
@@ -7706,7 +7800,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testListSecurityGroupRules" })
   public void testCreateSecurityGroupRule() throws Exception {
     try {
       SecurityGroupRuleRemotePrototypeIP securityGroupRuleRemotePrototypeModel = new SecurityGroupRuleRemotePrototypeIP.Builder()
@@ -7740,7 +7834,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testCreateSecurityGroupRule" })
   public void testGetSecurityGroupRule() throws Exception {
     try {
       GetSecurityGroupRuleOptions getSecurityGroupRuleOptions = new GetSecurityGroupRuleOptions.Builder()
@@ -7763,7 +7857,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testGetSecurityGroupRule" })
   public void testUpdateSecurityGroupRule() throws Exception {
     try {
       SecurityGroupRuleRemotePatchIP securityGroupRuleRemotePatchModel = new SecurityGroupRuleRemotePatchIP.Builder()
@@ -7802,7 +7896,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testUpdateSecurityGroupRule" })
   public void testListSecurityGroupTargets() throws Exception {
     try {
       ListSecurityGroupTargetsOptions listSecurityGroupTargetsOptions = new ListSecurityGroupTargetsOptions.Builder()
@@ -7858,7 +7952,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testListSecurityGroupTargets" })
   public void testGetSecurityGroupTarget() throws Exception {
     try {
       GetSecurityGroupTargetOptions getSecurityGroupTargetOptions = new GetSecurityGroupTargetOptions.Builder()
@@ -7881,7 +7975,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testGetSecurityGroupTarget" })
   public void testCreateSecurityGroupTargetBinding() throws Exception {
     try {
       CreateSecurityGroupTargetBindingOptions createSecurityGroupTargetBindingOptions = new CreateSecurityGroupTargetBindingOptions.Builder()
@@ -7904,7 +7998,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testCreateSecurityGroupTargetBinding" })
   public void testListIkePolicies() throws Exception {
     try {
       ListIkePoliciesOptions listIkePoliciesOptions = new ListIkePoliciesOptions.Builder()
@@ -7958,7 +8052,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testListIkePolicies" })
   public void testCreateIkePolicy() throws Exception {
     try {
       ResourceGroupIdentityById resourceGroupIdentityModel = new ResourceGroupIdentityById.Builder()
@@ -7990,7 +8084,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testCreateIkePolicy" })
   public void testGetIkePolicy() throws Exception {
     try {
       GetIkePolicyOptions getIkePolicyOptions = new GetIkePolicyOptions.Builder()
@@ -8012,7 +8106,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testGetIkePolicy" })
   public void testUpdateIkePolicy() throws Exception {
     try {
       IKEPolicyPatch ikePolicyPatchModel = new IKEPolicyPatch.Builder()
@@ -8045,7 +8139,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testUpdateIkePolicy" })
   public void testListIkePolicyConnections() throws Exception {
     try {
       ListIkePolicyConnectionsOptions listIkePolicyConnectionsOptions = new ListIkePolicyConnectionsOptions.Builder()
@@ -8067,7 +8161,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testListIkePolicyConnections" })
   public void testListIpsecPolicies() throws Exception {
     try {
       ListIpsecPoliciesOptions listIpsecPoliciesOptions = new ListIpsecPoliciesOptions.Builder()
@@ -8121,7 +8215,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testListIpsecPolicies" })
   public void testCreateIpsecPolicy() throws Exception {
     try {
       ResourceGroupIdentityById resourceGroupIdentityModel = new ResourceGroupIdentityById.Builder()
@@ -8152,7 +8246,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testCreateIpsecPolicy" })
   public void testGetIpsecPolicy() throws Exception {
     try {
       GetIpsecPolicyOptions getIpsecPolicyOptions = new GetIpsecPolicyOptions.Builder()
@@ -8174,7 +8268,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testGetIpsecPolicy" })
   public void testUpdateIpsecPolicy() throws Exception {
     try {
       IPsecPolicyPatch iPsecPolicyPatchModel = new IPsecPolicyPatch.Builder()
@@ -8206,7 +8300,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testUpdateIpsecPolicy" })
   public void testListIpsecPolicyConnections() throws Exception {
     try {
       ListIpsecPolicyConnectionsOptions listIpsecPolicyConnectionsOptions = new ListIpsecPolicyConnectionsOptions.Builder()
@@ -8228,7 +8322,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testListIpsecPolicyConnections" })
   public void testListVpnGateways() throws Exception {
     try {
       ListVpnGatewaysOptions listVpnGatewaysOptions = new ListVpnGatewaysOptions.Builder()
@@ -8288,7 +8382,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testListVpnGateways" })
   public void testCreateVpnGateway() throws Exception {
     try {
       ResourceGroupIdentityById resourceGroupIdentityModel = new ResourceGroupIdentityById.Builder()
@@ -8325,7 +8419,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testCreateVpnGateway" })
   public void testGetVpnGateway() throws Exception {
     try {
       GetVpnGatewayOptions getVpnGatewayOptions = new GetVpnGatewayOptions.Builder()
@@ -8347,7 +8441,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testGetVpnGateway" })
   public void testUpdateVpnGateway() throws Exception {
     try {
       VPNGatewayPatch vpnGatewayPatchModel = new VPNGatewayPatch.Builder()
@@ -8375,7 +8469,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testUpdateVpnGateway" })
   public void testListVpnGatewayConnections() throws Exception {
     try {
       ListVpnGatewayConnectionsOptions listVpnGatewayConnectionsOptions = new ListVpnGatewayConnectionsOptions.Builder()
@@ -8398,7 +8492,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testListVpnGatewayConnections" })
   public void testCreateVpnGatewayConnection() throws Exception {
     try {
       VPNGatewayConnectionDPDPrototype vpnGatewayConnectionDpdPrototypeModel = new VPNGatewayConnectionDPDPrototype.Builder()
@@ -8446,7 +8540,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testCreateVpnGatewayConnection" })
   public void testGetVpnGatewayConnection() throws Exception {
     try {
       GetVpnGatewayConnectionOptions getVpnGatewayConnectionOptions = new GetVpnGatewayConnectionOptions.Builder()
@@ -8469,7 +8563,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testGetVpnGatewayConnection" })
   public void testUpdateVpnGatewayConnection() throws Exception {
     try {
       VPNGatewayConnectionDPDPatch vpnGatewayConnectionDpdPatchModel = new VPNGatewayConnectionDPDPatch.Builder()
@@ -8519,7 +8613,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testUpdateVpnGatewayConnection" })
   public void testListVpnGatewayConnectionLocalCidrs() throws Exception {
     try {
       ListVpnGatewayConnectionLocalCidrsOptions listVpnGatewayConnectionLocalCidrsOptions = new ListVpnGatewayConnectionLocalCidrsOptions.Builder()
@@ -8542,7 +8636,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testListVpnGatewayConnectionLocalCidrs" })
   public void testCheckVpnGatewayConnectionLocalCidr() throws Exception {
     try {
       CheckVpnGatewayConnectionLocalCidrOptions checkVpnGatewayConnectionLocalCidrOptions = new CheckVpnGatewayConnectionLocalCidrOptions.Builder()
@@ -8563,7 +8657,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testCheckVpnGatewayConnectionLocalCidr" })
   public void testAddVpnGatewayConnectionLocalCidr() throws Exception {
     try {
       AddVpnGatewayConnectionLocalCidrOptions addVpnGatewayConnectionLocalCidrOptions = new AddVpnGatewayConnectionLocalCidrOptions.Builder()
@@ -8584,7 +8678,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testAddVpnGatewayConnectionLocalCidr" })
   public void testListVpnGatewayConnectionPeerCidrs() throws Exception {
     try {
       ListVpnGatewayConnectionPeerCidrsOptions listVpnGatewayConnectionPeerCidrsOptions = new ListVpnGatewayConnectionPeerCidrsOptions.Builder()
@@ -8607,7 +8701,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testListVpnGatewayConnectionPeerCidrs" })
   public void testCheckVpnGatewayConnectionPeerCidr() throws Exception {
     try {
       CheckVpnGatewayConnectionPeerCidrOptions checkVpnGatewayConnectionPeerCidrOptions = new CheckVpnGatewayConnectionPeerCidrOptions.Builder()
@@ -8628,7 +8722,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testCheckVpnGatewayConnectionPeerCidr" })
   public void testAddVpnGatewayConnectionPeerCidr() throws Exception {
     try {
       AddVpnGatewayConnectionPeerCidrOptions addVpnGatewayConnectionPeerCidrOptions = new AddVpnGatewayConnectionPeerCidrOptions.Builder()
@@ -8649,7 +8743,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testAddVpnGatewayConnectionPeerCidr" })
   public void testListVpnServers() throws Exception {
     try {
       ListVpnServersOptions listVpnServersOptions = new ListVpnServersOptions.Builder()
@@ -8709,7 +8803,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testListVpnServers" })
   public void testCreateVpnServer() throws Exception {
     try {
       CertificateInstanceIdentityByCRN certificateInstanceIdentityModel = new CertificateInstanceIdentityByCRN.Builder()
@@ -8771,7 +8865,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testCreateVpnServer" })
   public void testGetVpnServer() throws Exception {
     try {
       GetVpnServerOptions getVpnServerOptions = new GetVpnServerOptions.Builder()
@@ -8793,7 +8887,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testGetVpnServer" })
   public void testUpdateVpnServer() throws Exception {
     try {
       CertificateInstanceIdentityByCRN certificateInstanceIdentityModel = new CertificateInstanceIdentityByCRN.Builder()
@@ -8852,7 +8946,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testUpdateVpnServer" })
   public void testGetVpnServerClientConfiguration() throws Exception {
     try {
       GetVpnServerClientConfigurationOptions getVpnServerClientConfigurationOptions = new GetVpnServerClientConfigurationOptions.Builder()
@@ -8874,7 +8968,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testGetVpnServerClientConfiguration" })
   public void testListVpnServerClients() throws Exception {
     try {
       ListVpnServerClientsOptions listVpnServerClientsOptions = new ListVpnServerClientsOptions.Builder()
@@ -8932,7 +9026,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testListVpnServerClients" })
   public void testGetVpnServerClient() throws Exception {
     try {
       GetVpnServerClientOptions getVpnServerClientOptions = new GetVpnServerClientOptions.Builder()
@@ -8955,7 +9049,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testGetVpnServerClient" })
   public void testDisconnectVpnClient() throws Exception {
     try {
       DisconnectVpnClientOptions disconnectVpnClientOptions = new DisconnectVpnClientOptions.Builder()
@@ -8974,7 +9068,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testDisconnectVpnClient" })
   public void testListVpnServerRoutes() throws Exception {
     try {
       ListVpnServerRoutesOptions listVpnServerRoutesOptions = new ListVpnServerRoutesOptions.Builder()
@@ -9032,7 +9126,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testListVpnServerRoutes" })
   public void testCreateVpnServerRoute() throws Exception {
     try {
       CreateVpnServerRouteOptions createVpnServerRouteOptions = new CreateVpnServerRouteOptions.Builder()
@@ -9057,7 +9151,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testCreateVpnServerRoute" })
   public void testGetVpnServerRoute() throws Exception {
     try {
       GetVpnServerRouteOptions getVpnServerRouteOptions = new GetVpnServerRouteOptions.Builder()
@@ -9080,7 +9174,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testGetVpnServerRoute" })
   public void testUpdateVpnServerRoute() throws Exception {
     try {
       VPNServerRoutePatch vpnServerRoutePatchModel = new VPNServerRoutePatch.Builder()
@@ -9109,7 +9203,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testUpdateVpnServerRoute" })
   public void testListLoadBalancerProfiles() throws Exception {
     try {
       ListLoadBalancerProfilesOptions listLoadBalancerProfilesOptions = new ListLoadBalancerProfilesOptions.Builder()
@@ -9163,7 +9257,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testListLoadBalancerProfiles" })
   public void testGetLoadBalancerProfile() throws Exception {
     try {
       GetLoadBalancerProfileOptions getLoadBalancerProfileOptions = new GetLoadBalancerProfileOptions.Builder()
@@ -9185,7 +9279,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testGetLoadBalancerProfile" })
   public void testListLoadBalancers() throws Exception {
     try {
       ListLoadBalancersOptions listLoadBalancersOptions = new ListLoadBalancersOptions.Builder()
@@ -9239,7 +9333,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testListLoadBalancers" })
   public void testCreateLoadBalancer() throws Exception {
     try {
       SubnetIdentityById subnetIdentityModel = new SubnetIdentityById.Builder()
@@ -9358,7 +9452,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testCreateLoadBalancer" })
   public void testGetLoadBalancer() throws Exception {
     try {
       GetLoadBalancerOptions getLoadBalancerOptions = new GetLoadBalancerOptions.Builder()
@@ -9380,7 +9474,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testGetLoadBalancer" })
   public void testUpdateLoadBalancer() throws Exception {
     try {
       LoadBalancerLoggingDatapath loadBalancerLoggingDatapathModel = new LoadBalancerLoggingDatapath.Builder()
@@ -9423,7 +9517,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testUpdateLoadBalancer" })
   public void testGetLoadBalancerStatistics() throws Exception {
     try {
       GetLoadBalancerStatisticsOptions getLoadBalancerStatisticsOptions = new GetLoadBalancerStatisticsOptions.Builder()
@@ -9445,7 +9539,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testGetLoadBalancerStatistics" })
   public void testListLoadBalancerListeners() throws Exception {
     try {
       ListLoadBalancerListenersOptions listLoadBalancerListenersOptions = new ListLoadBalancerListenersOptions.Builder()
@@ -9467,7 +9561,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testListLoadBalancerListeners" })
   public void testCreateLoadBalancerListener() throws Exception {
     try {
       CertificateInstanceIdentityByCRN certificateInstanceIdentityModel = new CertificateInstanceIdentityByCRN.Builder()
@@ -9536,7 +9630,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testCreateLoadBalancerListener" })
   public void testGetLoadBalancerListener() throws Exception {
     try {
       GetLoadBalancerListenerOptions getLoadBalancerListenerOptions = new GetLoadBalancerListenerOptions.Builder()
@@ -9559,7 +9653,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testGetLoadBalancerListener" })
   public void testUpdateLoadBalancerListener() throws Exception {
     try {
       CertificateInstanceIdentityByCRN certificateInstanceIdentityModel = new CertificateInstanceIdentityByCRN.Builder()
@@ -9614,7 +9708,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testUpdateLoadBalancerListener" })
   public void testListLoadBalancerListenerPolicies() throws Exception {
     try {
       ListLoadBalancerListenerPoliciesOptions listLoadBalancerListenerPoliciesOptions = new ListLoadBalancerListenerPoliciesOptions.Builder()
@@ -9637,7 +9731,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testListLoadBalancerListenerPolicies" })
   public void testCreateLoadBalancerListenerPolicy() throws Exception {
     try {
       LoadBalancerListenerPolicyRulePrototype loadBalancerListenerPolicyRulePrototypeModel = new LoadBalancerListenerPolicyRulePrototype.Builder()
@@ -9676,7 +9770,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testCreateLoadBalancerListenerPolicy" })
   public void testGetLoadBalancerListenerPolicy() throws Exception {
     try {
       GetLoadBalancerListenerPolicyOptions getLoadBalancerListenerPolicyOptions = new GetLoadBalancerListenerPolicyOptions.Builder()
@@ -9700,7 +9794,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testGetLoadBalancerListenerPolicy" })
   public void testUpdateLoadBalancerListenerPolicy() throws Exception {
     try {
       LoadBalancerListenerPolicyTargetPatchLoadBalancerPoolIdentityLoadBalancerPoolIdentityById loadBalancerListenerPolicyTargetPatchModel = new LoadBalancerListenerPolicyTargetPatchLoadBalancerPoolIdentityLoadBalancerPoolIdentityById.Builder()
@@ -9736,7 +9830,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testUpdateLoadBalancerListenerPolicy" })
   public void testListLoadBalancerListenerPolicyRules() throws Exception {
     try {
       ListLoadBalancerListenerPolicyRulesOptions listLoadBalancerListenerPolicyRulesOptions = new ListLoadBalancerListenerPolicyRulesOptions.Builder()
@@ -9760,7 +9854,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testListLoadBalancerListenerPolicyRules" })
   public void testCreateLoadBalancerListenerPolicyRule() throws Exception {
     try {
       CreateLoadBalancerListenerPolicyRuleOptions createLoadBalancerListenerPolicyRuleOptions = new CreateLoadBalancerListenerPolicyRuleOptions.Builder()
@@ -9788,7 +9882,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testCreateLoadBalancerListenerPolicyRule" })
   public void testGetLoadBalancerListenerPolicyRule() throws Exception {
     try {
       GetLoadBalancerListenerPolicyRuleOptions getLoadBalancerListenerPolicyRuleOptions = new GetLoadBalancerListenerPolicyRuleOptions.Builder()
@@ -9813,7 +9907,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testGetLoadBalancerListenerPolicyRule" })
   public void testUpdateLoadBalancerListenerPolicyRule() throws Exception {
     try {
       LoadBalancerListenerPolicyRulePatch loadBalancerListenerPolicyRulePatchModel = new LoadBalancerListenerPolicyRulePatch.Builder()
@@ -9847,7 +9941,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testUpdateLoadBalancerListenerPolicyRule" })
   public void testListLoadBalancerPools() throws Exception {
     try {
       ListLoadBalancerPoolsOptions listLoadBalancerPoolsOptions = new ListLoadBalancerPoolsOptions.Builder()
@@ -9869,7 +9963,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testListLoadBalancerPools" })
   public void testCreateLoadBalancerPool() throws Exception {
     try {
       LoadBalancerPoolHealthMonitorPrototype loadBalancerPoolHealthMonitorPrototypeModel = new LoadBalancerPoolHealthMonitorPrototype.Builder()
@@ -9922,7 +10016,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testCreateLoadBalancerPool" })
   public void testGetLoadBalancerPool() throws Exception {
     try {
       GetLoadBalancerPoolOptions getLoadBalancerPoolOptions = new GetLoadBalancerPoolOptions.Builder()
@@ -9945,7 +10039,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testGetLoadBalancerPool" })
   public void testUpdateLoadBalancerPool() throws Exception {
     try {
       LoadBalancerPoolHealthMonitorPatch loadBalancerPoolHealthMonitorPatchModel = new LoadBalancerPoolHealthMonitorPatch.Builder()
@@ -9993,7 +10087,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testUpdateLoadBalancerPool" })
   public void testListLoadBalancerPoolMembers() throws Exception {
     try {
       ListLoadBalancerPoolMembersOptions listLoadBalancerPoolMembersOptions = new ListLoadBalancerPoolMembersOptions.Builder()
@@ -10016,7 +10110,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testListLoadBalancerPoolMembers" })
   public void testCreateLoadBalancerPoolMember() throws Exception {
     try {
       LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityById loadBalancerPoolMemberTargetPrototypeModel = new LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityById.Builder()
@@ -10046,7 +10140,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testCreateLoadBalancerPoolMember" })
   public void testReplaceLoadBalancerPoolMembers() throws Exception {
     try {
       LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityById loadBalancerPoolMemberTargetPrototypeModel = new LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityById.Builder()
@@ -10080,7 +10174,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testReplaceLoadBalancerPoolMembers" })
   public void testGetLoadBalancerPoolMember() throws Exception {
     try {
       GetLoadBalancerPoolMemberOptions getLoadBalancerPoolMemberOptions = new GetLoadBalancerPoolMemberOptions.Builder()
@@ -10104,7 +10198,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testGetLoadBalancerPoolMember" })
   public void testUpdateLoadBalancerPoolMember() throws Exception {
     try {
       LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityById loadBalancerPoolMemberTargetPrototypeModel = new LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityById.Builder()
@@ -10140,7 +10234,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testUpdateLoadBalancerPoolMember" })
   public void testListEndpointGateways() throws Exception {
     try {
       ListEndpointGatewaysOptions listEndpointGatewaysOptions = new ListEndpointGatewaysOptions.Builder()
@@ -10198,7 +10292,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testListEndpointGateways" })
   public void testCreateEndpointGateway() throws Exception {
     try {
       EndpointGatewayTargetPrototypeProviderInfrastructureServiceIdentityProviderInfrastructureServiceIdentityByName endpointGatewayTargetPrototypeModel = new EndpointGatewayTargetPrototypeProviderInfrastructureServiceIdentityProviderInfrastructureServiceIdentityByName.Builder()
@@ -10246,7 +10340,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testCreateEndpointGateway" })
   public void testListEndpointGatewayIps() throws Exception {
     try {
       ListEndpointGatewayIpsOptions listEndpointGatewayIpsOptions = new ListEndpointGatewayIpsOptions.Builder()
@@ -10304,7 +10398,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testListEndpointGatewayIps" })
   public void testGetEndpointGatewayIp() throws Exception {
     try {
       GetEndpointGatewayIpOptions getEndpointGatewayIpOptions = new GetEndpointGatewayIpOptions.Builder()
@@ -10327,7 +10421,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testGetEndpointGatewayIp" })
   public void testAddEndpointGatewayIp() throws Exception {
     try {
       AddEndpointGatewayIpOptions addEndpointGatewayIpOptions = new AddEndpointGatewayIpOptions.Builder()
@@ -10350,7 +10444,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testAddEndpointGatewayIp" })
   public void testGetEndpointGateway() throws Exception {
     try {
       GetEndpointGatewayOptions getEndpointGatewayOptions = new GetEndpointGatewayOptions.Builder()
@@ -10372,7 +10466,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testGetEndpointGateway" })
   public void testUpdateEndpointGateway() throws Exception {
     try {
       EndpointGatewayPatch endpointGatewayPatchModel = new EndpointGatewayPatch.Builder()
@@ -10400,7 +10494,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testUpdateEndpointGateway" })
   public void testListFlowLogCollectors() throws Exception {
     try {
       ListFlowLogCollectorsOptions listFlowLogCollectorsOptions = new ListFlowLogCollectorsOptions.Builder()
@@ -10468,7 +10562,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testListFlowLogCollectors" })
   public void testCreateFlowLogCollector() throws Exception {
     try {
       LegacyCloudObjectStorageBucketIdentityCloudObjectStorageBucketIdentityByName legacyCloudObjectStorageBucketIdentityModel = new LegacyCloudObjectStorageBucketIdentityCloudObjectStorageBucketIdentityByName.Builder()
@@ -10506,7 +10600,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testCreateFlowLogCollector" })
   public void testGetFlowLogCollector() throws Exception {
     try {
       GetFlowLogCollectorOptions getFlowLogCollectorOptions = new GetFlowLogCollectorOptions.Builder()
@@ -10528,7 +10622,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testGetFlowLogCollector" })
   public void testUpdateFlowLogCollector() throws Exception {
     try {
       FlowLogCollectorPatch flowLogCollectorPatchModel = new FlowLogCollectorPatch.Builder()
@@ -10557,15 +10651,15 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
-  public void testUnsetSubnetPublicGateway() throws Exception {
+  @Test(dependsOnMethods = { "testUpdateFlowLogCollector" })
+  public void testDeleteVpc() throws Exception {
     try {
-      UnsetSubnetPublicGatewayOptions unsetSubnetPublicGatewayOptions = new UnsetSubnetPublicGatewayOptions.Builder()
+      DeleteVpcOptions deleteVpcOptions = new DeleteVpcOptions.Builder()
         .id("testString")
         .build();
 
       // Invoke operation
-      Response<Void> response = service.unsetSubnetPublicGateway(unsetSubnetPublicGatewayOptions).execute();
+      Response<Void> response = service.deleteVpc(deleteVpcOptions).execute();
       // Validate response
       assertNotNull(response);
       assertEquals(response.getStatusCode(), 204);
@@ -10575,212 +10669,16 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
-  public void testRemoveVpnGatewayConnectionPeerCidr() throws Exception {
+  @Test(dependsOnMethods = { "testDeleteVpc" })
+  public void testDeleteVpcAddressPrefix() throws Exception {
     try {
-      RemoveVpnGatewayConnectionPeerCidrOptions removeVpnGatewayConnectionPeerCidrOptions = new RemoveVpnGatewayConnectionPeerCidrOptions.Builder()
-        .vpnGatewayId("testString")
-        .id("testString")
-        .cidrPrefix("testString")
-        .prefixLength("testString")
-        .build();
-
-      // Invoke operation
-      Response<Void> response = service.removeVpnGatewayConnectionPeerCidr(removeVpnGatewayConnectionPeerCidrOptions).execute();
-      // Validate response
-      assertNotNull(response);
-      assertEquals(response.getStatusCode(), 204);
-    } catch (ServiceResponseException e) {
-        fail(String.format("Service returned status code %d: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
-    }
-  }
-
-  @Test
-  public void testRemoveVpnGatewayConnectionLocalCidr() throws Exception {
-    try {
-      RemoveVpnGatewayConnectionLocalCidrOptions removeVpnGatewayConnectionLocalCidrOptions = new RemoveVpnGatewayConnectionLocalCidrOptions.Builder()
-        .vpnGatewayId("testString")
-        .id("testString")
-        .cidrPrefix("testString")
-        .prefixLength("testString")
-        .build();
-
-      // Invoke operation
-      Response<Void> response = service.removeVpnGatewayConnectionLocalCidr(removeVpnGatewayConnectionLocalCidrOptions).execute();
-      // Validate response
-      assertNotNull(response);
-      assertEquals(response.getStatusCode(), 204);
-    } catch (ServiceResponseException e) {
-        fail(String.format("Service returned status code %d: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
-    }
-  }
-
-  @Test
-  public void testRemoveInstanceNetworkInterfaceFloatingIp() throws Exception {
-    try {
-      RemoveInstanceNetworkInterfaceFloatingIpOptions removeInstanceNetworkInterfaceFloatingIpOptions = new RemoveInstanceNetworkInterfaceFloatingIpOptions.Builder()
-        .instanceId("testString")
-        .networkInterfaceId("testString")
-        .id("testString")
-        .build();
-
-      // Invoke operation
-      Response<Void> response = service.removeInstanceNetworkInterfaceFloatingIp(removeInstanceNetworkInterfaceFloatingIpOptions).execute();
-      // Validate response
-      assertNotNull(response);
-      assertEquals(response.getStatusCode(), 204);
-    } catch (ServiceResponseException e) {
-        fail(String.format("Service returned status code %d: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
-    }
-  }
-
-  @Test
-  public void testRemoveEndpointGatewayIp() throws Exception {
-    try {
-      RemoveEndpointGatewayIpOptions removeEndpointGatewayIpOptions = new RemoveEndpointGatewayIpOptions.Builder()
-        .endpointGatewayId("testString")
-        .id("testString")
-        .build();
-
-      // Invoke operation
-      Response<Void> response = service.removeEndpointGatewayIp(removeEndpointGatewayIpOptions).execute();
-      // Validate response
-      assertNotNull(response);
-      assertEquals(response.getStatusCode(), 204);
-    } catch (ServiceResponseException e) {
-        fail(String.format("Service returned status code %d: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
-    }
-  }
-
-  @Test
-  public void testRemoveBareMetalServerNetworkInterfaceFloatingIp() throws Exception {
-    try {
-      RemoveBareMetalServerNetworkInterfaceFloatingIpOptions removeBareMetalServerNetworkInterfaceFloatingIpOptions = new RemoveBareMetalServerNetworkInterfaceFloatingIpOptions.Builder()
-        .bareMetalServerId("testString")
-        .networkInterfaceId("testString")
-        .id("testString")
-        .build();
-
-      // Invoke operation
-      Response<Void> response = service.removeBareMetalServerNetworkInterfaceFloatingIp(removeBareMetalServerNetworkInterfaceFloatingIpOptions).execute();
-      // Validate response
-      assertNotNull(response);
-      assertEquals(response.getStatusCode(), 204);
-    } catch (ServiceResponseException e) {
-        fail(String.format("Service returned status code %d: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
-    }
-  }
-
-  @Test
-  public void testDeleteVpnServerRoute() throws Exception {
-    try {
-      DeleteVpnServerRouteOptions deleteVpnServerRouteOptions = new DeleteVpnServerRouteOptions.Builder()
-        .vpnServerId("testString")
-        .id("testString")
-        .build();
-
-      // Invoke operation
-      Response<Void> response = service.deleteVpnServerRoute(deleteVpnServerRouteOptions).execute();
-      // Validate response
-      assertNotNull(response);
-      assertEquals(response.getStatusCode(), 202);
-    } catch (ServiceResponseException e) {
-        fail(String.format("Service returned status code %d: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
-    }
-  }
-
-  @Test
-  public void testDeleteVpnServerClient() throws Exception {
-    try {
-      DeleteVpnServerClientOptions deleteVpnServerClientOptions = new DeleteVpnServerClientOptions.Builder()
-        .vpnServerId("testString")
-        .id("testString")
-        .build();
-
-      // Invoke operation
-      Response<Void> response = service.deleteVpnServerClient(deleteVpnServerClientOptions).execute();
-      // Validate response
-      assertNotNull(response);
-      assertEquals(response.getStatusCode(), 202);
-    } catch (ServiceResponseException e) {
-        fail(String.format("Service returned status code %d: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
-    }
-  }
-
-  @Test
-  public void testDeleteVpnServer() throws Exception {
-    try {
-      DeleteVpnServerOptions deleteVpnServerOptions = new DeleteVpnServerOptions.Builder()
-        .id("testString")
-        .ifMatch("W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"")
-        .build();
-
-      // Invoke operation
-      Response<Void> response = service.deleteVpnServer(deleteVpnServerOptions).execute();
-      // Validate response
-      assertNotNull(response);
-      assertEquals(response.getStatusCode(), 202);
-    } catch (ServiceResponseException e) {
-        fail(String.format("Service returned status code %d: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
-    }
-  }
-
-  @Test
-  public void testDeleteVpnGatewayConnection() throws Exception {
-    try {
-      DeleteVpnGatewayConnectionOptions deleteVpnGatewayConnectionOptions = new DeleteVpnGatewayConnectionOptions.Builder()
-        .vpnGatewayId("testString")
-        .id("testString")
-        .build();
-
-      // Invoke operation
-      Response<Void> response = service.deleteVpnGatewayConnection(deleteVpnGatewayConnectionOptions).execute();
-      // Validate response
-      assertNotNull(response);
-      assertEquals(response.getStatusCode(), 202);
-    } catch (ServiceResponseException e) {
-        fail(String.format("Service returned status code %d: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
-    }
-  }
-
-  @Test
-  public void testDeleteVpnGateway() throws Exception {
-    try {
-      DeleteVpnGatewayOptions deleteVpnGatewayOptions = new DeleteVpnGatewayOptions.Builder()
-        .id("testString")
-        .build();
-
-      // Invoke operation
-      Response<Void> response = service.deleteVpnGateway(deleteVpnGatewayOptions).execute();
-      // Validate response
-      assertNotNull(response);
-      assertEquals(response.getStatusCode(), 202);
-    } catch (ServiceResponseException e) {
-        fail(String.format("Service returned status code %d: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
-    }
-  }
-
-  @Test
-  public void testDeleteVpcRoutingTableRoute() throws Exception {
-    try {
-      DeleteVpcRoutingTableRouteOptions deleteVpcRoutingTableRouteOptions = new DeleteVpcRoutingTableRouteOptions.Builder()
+      DeleteVpcAddressPrefixOptions deleteVpcAddressPrefixOptions = new DeleteVpcAddressPrefixOptions.Builder()
         .vpcId("testString")
-        .routingTableId("testString")
         .id("testString")
         .build();
 
       // Invoke operation
-      Response<Void> response = service.deleteVpcRoutingTableRoute(deleteVpcRoutingTableRouteOptions).execute();
+      Response<Void> response = service.deleteVpcAddressPrefix(deleteVpcAddressPrefixOptions).execute();
       // Validate response
       assertNotNull(response);
       assertEquals(response.getStatusCode(), 204);
@@ -10790,7 +10688,26 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testDeleteVpcAddressPrefix" })
+  public void testDeleteVpcRoute() throws Exception {
+    try {
+      DeleteVpcRouteOptions deleteVpcRouteOptions = new DeleteVpcRouteOptions.Builder()
+        .vpcId("testString")
+        .id("testString")
+        .build();
+
+      // Invoke operation
+      Response<Void> response = service.deleteVpcRoute(deleteVpcRouteOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 204);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testDeleteVpcRoute" })
   public void testDeleteVpcRoutingTable() throws Exception {
     try {
       DeleteVpcRoutingTableOptions deleteVpcRoutingTableOptions = new DeleteVpcRoutingTableOptions.Builder()
@@ -10810,16 +10727,17 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
-  public void testDeleteVpcRoute() throws Exception {
+  @Test(dependsOnMethods = { "testDeleteVpcRoutingTable" })
+  public void testDeleteVpcRoutingTableRoute() throws Exception {
     try {
-      DeleteVpcRouteOptions deleteVpcRouteOptions = new DeleteVpcRouteOptions.Builder()
+      DeleteVpcRoutingTableRouteOptions deleteVpcRoutingTableRouteOptions = new DeleteVpcRoutingTableRouteOptions.Builder()
         .vpcId("testString")
+        .routingTableId("testString")
         .id("testString")
         .build();
 
       // Invoke operation
-      Response<Void> response = service.deleteVpcRoute(deleteVpcRouteOptions).execute();
+      Response<Void> response = service.deleteVpcRoutingTableRoute(deleteVpcRoutingTableRouteOptions).execute();
       // Validate response
       assertNotNull(response);
       assertEquals(response.getStatusCode(), 204);
@@ -10829,16 +10747,15 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
-  public void testDeleteVpcAddressPrefix() throws Exception {
+  @Test(dependsOnMethods = { "testDeleteVpcRoutingTableRoute" })
+  public void testDeleteSubnet() throws Exception {
     try {
-      DeleteVpcAddressPrefixOptions deleteVpcAddressPrefixOptions = new DeleteVpcAddressPrefixOptions.Builder()
-        .vpcId("testString")
+      DeleteSubnetOptions deleteSubnetOptions = new DeleteSubnetOptions.Builder()
         .id("testString")
         .build();
 
       // Invoke operation
-      Response<Void> response = service.deleteVpcAddressPrefix(deleteVpcAddressPrefixOptions).execute();
+      Response<Void> response = service.deleteSubnet(deleteSubnetOptions).execute();
       // Validate response
       assertNotNull(response);
       assertEquals(response.getStatusCode(), 204);
@@ -10848,15 +10765,15 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
-  public void testDeleteVpc() throws Exception {
+  @Test(dependsOnMethods = { "testDeleteSubnet" })
+  public void testUnsetSubnetPublicGateway() throws Exception {
     try {
-      DeleteVpcOptions deleteVpcOptions = new DeleteVpcOptions.Builder()
+      UnsetSubnetPublicGatewayOptions unsetSubnetPublicGatewayOptions = new UnsetSubnetPublicGatewayOptions.Builder()
         .id("testString")
         .build();
 
       // Invoke operation
-      Response<Void> response = service.deleteVpc(deleteVpcOptions).execute();
+      Response<Void> response = service.unsetSubnetPublicGateway(unsetSubnetPublicGatewayOptions).execute();
       // Validate response
       assertNotNull(response);
       assertEquals(response.getStatusCode(), 204);
@@ -10866,26 +10783,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
-  public void testDeleteVolume() throws Exception {
-    try {
-      DeleteVolumeOptions deleteVolumeOptions = new DeleteVolumeOptions.Builder()
-        .id("testString")
-        .ifMatch("W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"")
-        .build();
-
-      // Invoke operation
-      Response<Void> response = service.deleteVolume(deleteVolumeOptions).execute();
-      // Validate response
-      assertNotNull(response);
-      assertEquals(response.getStatusCode(), 204);
-    } catch (ServiceResponseException e) {
-        fail(String.format("Service returned status code %d: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
-    }
-  }
-
-  @Test
+  @Test(dependsOnMethods = { "testUnsetSubnetPublicGateway" })
   public void testDeleteSubnetReservedIp() throws Exception {
     try {
       DeleteSubnetReservedIpOptions deleteSubnetReservedIpOptions = new DeleteSubnetReservedIpOptions.Builder()
@@ -10904,144 +10802,15 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
-  public void testDeleteSubnet() throws Exception {
+  @Test(dependsOnMethods = { "testDeleteSubnetReservedIp" })
+  public void testDeleteImage() throws Exception {
     try {
-      DeleteSubnetOptions deleteSubnetOptions = new DeleteSubnetOptions.Builder()
+      DeleteImageOptions deleteImageOptions = new DeleteImageOptions.Builder()
         .id("testString")
         .build();
 
       // Invoke operation
-      Response<Void> response = service.deleteSubnet(deleteSubnetOptions).execute();
-      // Validate response
-      assertNotNull(response);
-      assertEquals(response.getStatusCode(), 204);
-    } catch (ServiceResponseException e) {
-        fail(String.format("Service returned status code %d: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
-    }
-  }
-
-  @Test
-  public void testDeleteSnapshots() throws Exception {
-    try {
-      DeleteSnapshotsOptions deleteSnapshotsOptions = new DeleteSnapshotsOptions.Builder()
-        .sourceVolumeId("testString")
-        .build();
-
-      // Invoke operation
-      Response<Void> response = service.deleteSnapshots(deleteSnapshotsOptions).execute();
-      // Validate response
-      assertNotNull(response);
-      assertEquals(response.getStatusCode(), 204);
-    } catch (ServiceResponseException e) {
-        fail(String.format("Service returned status code %d: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
-    }
-  }
-
-  @Test
-  public void testDeleteSnapshot() throws Exception {
-    try {
-      DeleteSnapshotOptions deleteSnapshotOptions = new DeleteSnapshotOptions.Builder()
-        .id("testString")
-        .ifMatch("W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"")
-        .build();
-
-      // Invoke operation
-      Response<Void> response = service.deleteSnapshot(deleteSnapshotOptions).execute();
-      // Validate response
-      assertNotNull(response);
-      assertEquals(response.getStatusCode(), 204);
-    } catch (ServiceResponseException e) {
-        fail(String.format("Service returned status code %d: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
-    }
-  }
-
-  @Test
-  public void testDeleteSecurityGroupTargetBinding() throws Exception {
-    try {
-      DeleteSecurityGroupTargetBindingOptions deleteSecurityGroupTargetBindingOptions = new DeleteSecurityGroupTargetBindingOptions.Builder()
-        .securityGroupId("testString")
-        .id("testString")
-        .build();
-
-      // Invoke operation
-      Response<Void> response = service.deleteSecurityGroupTargetBinding(deleteSecurityGroupTargetBindingOptions).execute();
-      // Validate response
-      assertNotNull(response);
-      assertEquals(response.getStatusCode(), 204);
-    } catch (ServiceResponseException e) {
-        fail(String.format("Service returned status code %d: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
-    }
-  }
-
-  @Test
-  public void testDeleteSecurityGroupRule() throws Exception {
-    try {
-      DeleteSecurityGroupRuleOptions deleteSecurityGroupRuleOptions = new DeleteSecurityGroupRuleOptions.Builder()
-        .securityGroupId("testString")
-        .id("testString")
-        .build();
-
-      // Invoke operation
-      Response<Void> response = service.deleteSecurityGroupRule(deleteSecurityGroupRuleOptions).execute();
-      // Validate response
-      assertNotNull(response);
-      assertEquals(response.getStatusCode(), 204);
-    } catch (ServiceResponseException e) {
-        fail(String.format("Service returned status code %d: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
-    }
-  }
-
-  @Test
-  public void testDeleteSecurityGroup() throws Exception {
-    try {
-      DeleteSecurityGroupOptions deleteSecurityGroupOptions = new DeleteSecurityGroupOptions.Builder()
-        .id("testString")
-        .build();
-
-      // Invoke operation
-      Response<Void> response = service.deleteSecurityGroup(deleteSecurityGroupOptions).execute();
-      // Validate response
-      assertNotNull(response);
-      assertEquals(response.getStatusCode(), 204);
-    } catch (ServiceResponseException e) {
-        fail(String.format("Service returned status code %d: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
-    }
-  }
-
-  @Test
-  public void testDeletePublicGateway() throws Exception {
-    try {
-      DeletePublicGatewayOptions deletePublicGatewayOptions = new DeletePublicGatewayOptions.Builder()
-        .id("testString")
-        .build();
-
-      // Invoke operation
-      Response<Void> response = service.deletePublicGateway(deletePublicGatewayOptions).execute();
-      // Validate response
-      assertNotNull(response);
-      assertEquals(response.getStatusCode(), 204);
-    } catch (ServiceResponseException e) {
-        fail(String.format("Service returned status code %d: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
-    }
-  }
-
-  @Test
-  public void testDeletePlacementGroup() throws Exception {
-    try {
-      DeletePlacementGroupOptions deletePlacementGroupOptions = new DeletePlacementGroupOptions.Builder()
-        .id("testString")
-        .build();
-
-      // Invoke operation
-      Response<Void> response = service.deletePlacementGroup(deletePlacementGroupOptions).execute();
+      Response<Void> response = service.deleteImage(deleteImageOptions).execute();
       // Validate response
       assertNotNull(response);
       assertEquals(response.getStatusCode(), 202);
@@ -11051,162 +10820,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
-  public void testDeleteNetworkAclRule() throws Exception {
-    try {
-      DeleteNetworkAclRuleOptions deleteNetworkAclRuleOptions = new DeleteNetworkAclRuleOptions.Builder()
-        .networkAclId("testString")
-        .id("testString")
-        .build();
-
-      // Invoke operation
-      Response<Void> response = service.deleteNetworkAclRule(deleteNetworkAclRuleOptions).execute();
-      // Validate response
-      assertNotNull(response);
-      assertEquals(response.getStatusCode(), 204);
-    } catch (ServiceResponseException e) {
-        fail(String.format("Service returned status code %d: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
-    }
-  }
-
-  @Test
-  public void testDeleteNetworkAcl() throws Exception {
-    try {
-      DeleteNetworkAclOptions deleteNetworkAclOptions = new DeleteNetworkAclOptions.Builder()
-        .id("testString")
-        .build();
-
-      // Invoke operation
-      Response<Void> response = service.deleteNetworkAcl(deleteNetworkAclOptions).execute();
-      // Validate response
-      assertNotNull(response);
-      assertEquals(response.getStatusCode(), 204);
-    } catch (ServiceResponseException e) {
-        fail(String.format("Service returned status code %d: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
-    }
-  }
-
-  @Test
-  public void testDeleteLoadBalancerPoolMember() throws Exception {
-    try {
-      DeleteLoadBalancerPoolMemberOptions deleteLoadBalancerPoolMemberOptions = new DeleteLoadBalancerPoolMemberOptions.Builder()
-        .loadBalancerId("testString")
-        .poolId("testString")
-        .id("testString")
-        .build();
-
-      // Invoke operation
-      Response<Void> response = service.deleteLoadBalancerPoolMember(deleteLoadBalancerPoolMemberOptions).execute();
-      // Validate response
-      assertNotNull(response);
-      assertEquals(response.getStatusCode(), 202);
-    } catch (ServiceResponseException e) {
-        fail(String.format("Service returned status code %d: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
-    }
-  }
-
-  @Test
-  public void testDeleteLoadBalancerPool() throws Exception {
-    try {
-      DeleteLoadBalancerPoolOptions deleteLoadBalancerPoolOptions = new DeleteLoadBalancerPoolOptions.Builder()
-        .loadBalancerId("testString")
-        .id("testString")
-        .build();
-
-      // Invoke operation
-      Response<Void> response = service.deleteLoadBalancerPool(deleteLoadBalancerPoolOptions).execute();
-      // Validate response
-      assertNotNull(response);
-      assertEquals(response.getStatusCode(), 202);
-    } catch (ServiceResponseException e) {
-        fail(String.format("Service returned status code %d: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
-    }
-  }
-
-  @Test
-  public void testDeleteLoadBalancerListenerPolicyRule() throws Exception {
-    try {
-      DeleteLoadBalancerListenerPolicyRuleOptions deleteLoadBalancerListenerPolicyRuleOptions = new DeleteLoadBalancerListenerPolicyRuleOptions.Builder()
-        .loadBalancerId("testString")
-        .listenerId("testString")
-        .policyId("testString")
-        .id("testString")
-        .build();
-
-      // Invoke operation
-      Response<Void> response = service.deleteLoadBalancerListenerPolicyRule(deleteLoadBalancerListenerPolicyRuleOptions).execute();
-      // Validate response
-      assertNotNull(response);
-      assertEquals(response.getStatusCode(), 202);
-    } catch (ServiceResponseException e) {
-        fail(String.format("Service returned status code %d: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
-    }
-  }
-
-  @Test
-  public void testDeleteLoadBalancerListenerPolicy() throws Exception {
-    try {
-      DeleteLoadBalancerListenerPolicyOptions deleteLoadBalancerListenerPolicyOptions = new DeleteLoadBalancerListenerPolicyOptions.Builder()
-        .loadBalancerId("testString")
-        .listenerId("testString")
-        .id("testString")
-        .build();
-
-      // Invoke operation
-      Response<Void> response = service.deleteLoadBalancerListenerPolicy(deleteLoadBalancerListenerPolicyOptions).execute();
-      // Validate response
-      assertNotNull(response);
-      assertEquals(response.getStatusCode(), 202);
-    } catch (ServiceResponseException e) {
-        fail(String.format("Service returned status code %d: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
-    }
-  }
-
-  @Test
-  public void testDeleteLoadBalancerListener() throws Exception {
-    try {
-      DeleteLoadBalancerListenerOptions deleteLoadBalancerListenerOptions = new DeleteLoadBalancerListenerOptions.Builder()
-        .loadBalancerId("testString")
-        .id("testString")
-        .build();
-
-      // Invoke operation
-      Response<Void> response = service.deleteLoadBalancerListener(deleteLoadBalancerListenerOptions).execute();
-      // Validate response
-      assertNotNull(response);
-      assertEquals(response.getStatusCode(), 202);
-    } catch (ServiceResponseException e) {
-        fail(String.format("Service returned status code %d: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
-    }
-  }
-
-  @Test
-  public void testDeleteLoadBalancer() throws Exception {
-    try {
-      DeleteLoadBalancerOptions deleteLoadBalancerOptions = new DeleteLoadBalancerOptions.Builder()
-        .id("testString")
-        .ifMatch("W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"")
-        .build();
-
-      // Invoke operation
-      Response<Void> response = service.deleteLoadBalancer(deleteLoadBalancerOptions).execute();
-      // Validate response
-      assertNotNull(response);
-      assertEquals(response.getStatusCode(), 202);
-    } catch (ServiceResponseException e) {
-        fail(String.format("Service returned status code %d: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
-    }
-  }
-
-  @Test
+  @Test(dependsOnMethods = { "testDeleteImage" })
   public void testDeleteKey() throws Exception {
     try {
       DeleteKeyOptions deleteKeyOptions = new DeleteKeyOptions.Builder()
@@ -11224,44 +10838,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
-  public void testDeleteIpsecPolicy() throws Exception {
-    try {
-      DeleteIpsecPolicyOptions deleteIpsecPolicyOptions = new DeleteIpsecPolicyOptions.Builder()
-        .id("testString")
-        .build();
-
-      // Invoke operation
-      Response<Void> response = service.deleteIpsecPolicy(deleteIpsecPolicyOptions).execute();
-      // Validate response
-      assertNotNull(response);
-      assertEquals(response.getStatusCode(), 204);
-    } catch (ServiceResponseException e) {
-        fail(String.format("Service returned status code %d: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
-    }
-  }
-
-  @Test
-  public void testDeleteInstanceVolumeAttachment() throws Exception {
-    try {
-      DeleteInstanceVolumeAttachmentOptions deleteInstanceVolumeAttachmentOptions = new DeleteInstanceVolumeAttachmentOptions.Builder()
-        .instanceId("testString")
-        .id("testString")
-        .build();
-
-      // Invoke operation
-      Response<Void> response = service.deleteInstanceVolumeAttachment(deleteInstanceVolumeAttachmentOptions).execute();
-      // Validate response
-      assertNotNull(response);
-      assertEquals(response.getStatusCode(), 204);
-    } catch (ServiceResponseException e) {
-        fail(String.format("Service returned status code %d: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
-    }
-  }
-
-  @Test
+  @Test(dependsOnMethods = { "testDeleteKey" })
   public void testDeleteInstanceTemplate() throws Exception {
     try {
       DeleteInstanceTemplateOptions deleteInstanceTemplateOptions = new DeleteInstanceTemplateOptions.Builder()
@@ -11279,7 +10856,25 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testDeleteInstanceTemplate" })
+  public void testDeleteInstance() throws Exception {
+    try {
+      DeleteInstanceOptions deleteInstanceOptions = new DeleteInstanceOptions.Builder()
+        .id("testString")
+        .build();
+
+      // Invoke operation
+      Response<Void> response = service.deleteInstance(deleteInstanceOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 204);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testDeleteInstance" })
   public void testDeleteInstanceNetworkInterface() throws Exception {
     try {
       DeleteInstanceNetworkInterfaceOptions deleteInstanceNetworkInterfaceOptions = new DeleteInstanceNetworkInterfaceOptions.Builder()
@@ -11298,15 +10893,17 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
-  public void testDeleteInstanceGroupMemberships() throws Exception {
+  @Test(dependsOnMethods = { "testDeleteInstanceNetworkInterface" })
+  public void testRemoveInstanceNetworkInterfaceFloatingIp() throws Exception {
     try {
-      DeleteInstanceGroupMembershipsOptions deleteInstanceGroupMembershipsOptions = new DeleteInstanceGroupMembershipsOptions.Builder()
-        .instanceGroupId("testString")
+      RemoveInstanceNetworkInterfaceFloatingIpOptions removeInstanceNetworkInterfaceFloatingIpOptions = new RemoveInstanceNetworkInterfaceFloatingIpOptions.Builder()
+        .instanceId("testString")
+        .networkInterfaceId("testString")
+        .id("testString")
         .build();
 
       // Invoke operation
-      Response<Void> response = service.deleteInstanceGroupMemberships(deleteInstanceGroupMembershipsOptions).execute();
+      Response<Void> response = service.removeInstanceNetworkInterfaceFloatingIp(removeInstanceNetworkInterfaceFloatingIpOptions).execute();
       // Validate response
       assertNotNull(response);
       assertEquals(response.getStatusCode(), 204);
@@ -11316,16 +10913,71 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
-  public void testDeleteInstanceGroupMembership() throws Exception {
+  @Test(dependsOnMethods = { "testRemoveInstanceNetworkInterfaceFloatingIp" })
+  public void testDeleteInstanceVolumeAttachment() throws Exception {
     try {
-      DeleteInstanceGroupMembershipOptions deleteInstanceGroupMembershipOptions = new DeleteInstanceGroupMembershipOptions.Builder()
+      DeleteInstanceVolumeAttachmentOptions deleteInstanceVolumeAttachmentOptions = new DeleteInstanceVolumeAttachmentOptions.Builder()
+        .instanceId("testString")
+        .id("testString")
+        .build();
+
+      // Invoke operation
+      Response<Void> response = service.deleteInstanceVolumeAttachment(deleteInstanceVolumeAttachmentOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 204);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testDeleteInstanceVolumeAttachment" })
+  public void testDeleteInstanceGroup() throws Exception {
+    try {
+      DeleteInstanceGroupOptions deleteInstanceGroupOptions = new DeleteInstanceGroupOptions.Builder()
+        .id("testString")
+        .build();
+
+      // Invoke operation
+      Response<Void> response = service.deleteInstanceGroup(deleteInstanceGroupOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 204);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testDeleteInstanceGroup" })
+  public void testDeleteInstanceGroupLoadBalancer() throws Exception {
+    try {
+      DeleteInstanceGroupLoadBalancerOptions deleteInstanceGroupLoadBalancerOptions = new DeleteInstanceGroupLoadBalancerOptions.Builder()
+        .instanceGroupId("testString")
+        .build();
+
+      // Invoke operation
+      Response<Void> response = service.deleteInstanceGroupLoadBalancer(deleteInstanceGroupLoadBalancerOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 204);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testDeleteInstanceGroupLoadBalancer" })
+  public void testDeleteInstanceGroupManager() throws Exception {
+    try {
+      DeleteInstanceGroupManagerOptions deleteInstanceGroupManagerOptions = new DeleteInstanceGroupManagerOptions.Builder()
         .instanceGroupId("testString")
         .id("testString")
         .build();
 
       // Invoke operation
-      Response<Void> response = service.deleteInstanceGroupMembership(deleteInstanceGroupMembershipOptions).execute();
+      Response<Void> response = service.deleteInstanceGroupManager(deleteInstanceGroupManagerOptions).execute();
       // Validate response
       assertNotNull(response);
       assertEquals(response.getStatusCode(), 204);
@@ -11335,27 +10987,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
-  public void testDeleteInstanceGroupManagerPolicy() throws Exception {
-    try {
-      DeleteInstanceGroupManagerPolicyOptions deleteInstanceGroupManagerPolicyOptions = new DeleteInstanceGroupManagerPolicyOptions.Builder()
-        .instanceGroupId("testString")
-        .instanceGroupManagerId("testString")
-        .id("testString")
-        .build();
-
-      // Invoke operation
-      Response<Void> response = service.deleteInstanceGroupManagerPolicy(deleteInstanceGroupManagerPolicyOptions).execute();
-      // Validate response
-      assertNotNull(response);
-      assertEquals(response.getStatusCode(), 204);
-    } catch (ServiceResponseException e) {
-        fail(String.format("Service returned status code %d: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
-    }
-  }
-
-  @Test
+  @Test(dependsOnMethods = { "testDeleteInstanceGroupManager" })
   public void testDeleteInstanceGroupManagerAction() throws Exception {
     try {
       DeleteInstanceGroupManagerActionOptions deleteInstanceGroupManagerActionOptions = new DeleteInstanceGroupManagerActionOptions.Builder()
@@ -11375,16 +11007,54 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
-  public void testDeleteInstanceGroupManager() throws Exception {
+  @Test(dependsOnMethods = { "testDeleteInstanceGroupManagerAction" })
+  public void testDeleteInstanceGroupManagerPolicy() throws Exception {
     try {
-      DeleteInstanceGroupManagerOptions deleteInstanceGroupManagerOptions = new DeleteInstanceGroupManagerOptions.Builder()
+      DeleteInstanceGroupManagerPolicyOptions deleteInstanceGroupManagerPolicyOptions = new DeleteInstanceGroupManagerPolicyOptions.Builder()
+        .instanceGroupId("testString")
+        .instanceGroupManagerId("testString")
+        .id("testString")
+        .build();
+
+      // Invoke operation
+      Response<Void> response = service.deleteInstanceGroupManagerPolicy(deleteInstanceGroupManagerPolicyOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 204);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testDeleteInstanceGroupManagerPolicy" })
+  public void testDeleteInstanceGroupMemberships() throws Exception {
+    try {
+      DeleteInstanceGroupMembershipsOptions deleteInstanceGroupMembershipsOptions = new DeleteInstanceGroupMembershipsOptions.Builder()
+        .instanceGroupId("testString")
+        .build();
+
+      // Invoke operation
+      Response<Void> response = service.deleteInstanceGroupMemberships(deleteInstanceGroupMembershipsOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 204);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testDeleteInstanceGroupMemberships" })
+  public void testDeleteInstanceGroupMembership() throws Exception {
+    try {
+      DeleteInstanceGroupMembershipOptions deleteInstanceGroupMembershipOptions = new DeleteInstanceGroupMembershipOptions.Builder()
         .instanceGroupId("testString")
         .id("testString")
         .build();
 
       // Invoke operation
-      Response<Void> response = service.deleteInstanceGroupManager(deleteInstanceGroupManagerOptions).execute();
+      Response<Void> response = service.deleteInstanceGroupMembership(deleteInstanceGroupMembershipOptions).execute();
       // Validate response
       assertNotNull(response);
       assertEquals(response.getStatusCode(), 204);
@@ -11394,151 +11064,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
-  public void testDeleteInstanceGroupLoadBalancer() throws Exception {
-    try {
-      DeleteInstanceGroupLoadBalancerOptions deleteInstanceGroupLoadBalancerOptions = new DeleteInstanceGroupLoadBalancerOptions.Builder()
-        .instanceGroupId("testString")
-        .build();
-
-      // Invoke operation
-      Response<Void> response = service.deleteInstanceGroupLoadBalancer(deleteInstanceGroupLoadBalancerOptions).execute();
-      // Validate response
-      assertNotNull(response);
-      assertEquals(response.getStatusCode(), 204);
-    } catch (ServiceResponseException e) {
-        fail(String.format("Service returned status code %d: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
-    }
-  }
-
-  @Test
-  public void testDeleteInstanceGroup() throws Exception {
-    try {
-      DeleteInstanceGroupOptions deleteInstanceGroupOptions = new DeleteInstanceGroupOptions.Builder()
-        .id("testString")
-        .build();
-
-      // Invoke operation
-      Response<Void> response = service.deleteInstanceGroup(deleteInstanceGroupOptions).execute();
-      // Validate response
-      assertNotNull(response);
-      assertEquals(response.getStatusCode(), 204);
-    } catch (ServiceResponseException e) {
-        fail(String.format("Service returned status code %d: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
-    }
-  }
-
-  @Test
-  public void testDeleteInstance() throws Exception {
-    try {
-      DeleteInstanceOptions deleteInstanceOptions = new DeleteInstanceOptions.Builder()
-        .id("testString")
-        .build();
-
-      // Invoke operation
-      Response<Void> response = service.deleteInstance(deleteInstanceOptions).execute();
-      // Validate response
-      assertNotNull(response);
-      assertEquals(response.getStatusCode(), 204);
-    } catch (ServiceResponseException e) {
-        fail(String.format("Service returned status code %d: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
-    }
-  }
-
-  @Test
-  public void testDeleteImage() throws Exception {
-    try {
-      DeleteImageOptions deleteImageOptions = new DeleteImageOptions.Builder()
-        .id("testString")
-        .build();
-
-      // Invoke operation
-      Response<Void> response = service.deleteImage(deleteImageOptions).execute();
-      // Validate response
-      assertNotNull(response);
-      assertEquals(response.getStatusCode(), 202);
-    } catch (ServiceResponseException e) {
-        fail(String.format("Service returned status code %d: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
-    }
-  }
-
-  @Test
-  public void testDeleteIkePolicy() throws Exception {
-    try {
-      DeleteIkePolicyOptions deleteIkePolicyOptions = new DeleteIkePolicyOptions.Builder()
-        .id("testString")
-        .build();
-
-      // Invoke operation
-      Response<Void> response = service.deleteIkePolicy(deleteIkePolicyOptions).execute();
-      // Validate response
-      assertNotNull(response);
-      assertEquals(response.getStatusCode(), 204);
-    } catch (ServiceResponseException e) {
-        fail(String.format("Service returned status code %d: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
-    }
-  }
-
-  @Test
-  public void testDeleteFlowLogCollector() throws Exception {
-    try {
-      DeleteFlowLogCollectorOptions deleteFlowLogCollectorOptions = new DeleteFlowLogCollectorOptions.Builder()
-        .id("testString")
-        .build();
-
-      // Invoke operation
-      Response<Void> response = service.deleteFlowLogCollector(deleteFlowLogCollectorOptions).execute();
-      // Validate response
-      assertNotNull(response);
-      assertEquals(response.getStatusCode(), 204);
-    } catch (ServiceResponseException e) {
-        fail(String.format("Service returned status code %d: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
-    }
-  }
-
-  @Test
-  public void testDeleteFloatingIp() throws Exception {
-    try {
-      DeleteFloatingIpOptions deleteFloatingIpOptions = new DeleteFloatingIpOptions.Builder()
-        .id("testString")
-        .build();
-
-      // Invoke operation
-      Response<Void> response = service.deleteFloatingIp(deleteFloatingIpOptions).execute();
-      // Validate response
-      assertNotNull(response);
-      assertEquals(response.getStatusCode(), 204);
-    } catch (ServiceResponseException e) {
-        fail(String.format("Service returned status code %d: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
-    }
-  }
-
-  @Test
-  public void testDeleteEndpointGateway() throws Exception {
-    try {
-      DeleteEndpointGatewayOptions deleteEndpointGatewayOptions = new DeleteEndpointGatewayOptions.Builder()
-        .id("testString")
-        .build();
-
-      // Invoke operation
-      Response<Void> response = service.deleteEndpointGateway(deleteEndpointGatewayOptions).execute();
-      // Validate response
-      assertNotNull(response);
-      assertEquals(response.getStatusCode(), 204);
-    } catch (ServiceResponseException e) {
-        fail(String.format("Service returned status code %d: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
-    }
-  }
-
-  @Test
+  @Test(dependsOnMethods = { "testDeleteInstanceGroupMembership" })
   public void testDeleteDedicatedHostGroup() throws Exception {
     try {
       DeleteDedicatedHostGroupOptions deleteDedicatedHostGroupOptions = new DeleteDedicatedHostGroupOptions.Builder()
@@ -11556,7 +11082,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testDeleteDedicatedHostGroup" })
   public void testDeleteDedicatedHost() throws Exception {
     try {
       DeleteDedicatedHostOptions deleteDedicatedHostOptions = new DeleteDedicatedHostOptions.Builder()
@@ -11574,44 +11100,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
-  public void testDeleteBareMetalServerNetworkInterface() throws Exception {
-    try {
-      DeleteBareMetalServerNetworkInterfaceOptions deleteBareMetalServerNetworkInterfaceOptions = new DeleteBareMetalServerNetworkInterfaceOptions.Builder()
-        .bareMetalServerId("testString")
-        .id("testString")
-        .build();
-
-      // Invoke operation
-      Response<Void> response = service.deleteBareMetalServerNetworkInterface(deleteBareMetalServerNetworkInterfaceOptions).execute();
-      // Validate response
-      assertNotNull(response);
-      assertEquals(response.getStatusCode(), 204);
-    } catch (ServiceResponseException e) {
-        fail(String.format("Service returned status code %d: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
-    }
-  }
-
-  @Test
-  public void testDeleteBareMetalServer() throws Exception {
-    try {
-      DeleteBareMetalServerOptions deleteBareMetalServerOptions = new DeleteBareMetalServerOptions.Builder()
-        .id("testString")
-        .build();
-
-      // Invoke operation
-      Response<Void> response = service.deleteBareMetalServer(deleteBareMetalServerOptions).execute();
-      // Validate response
-      assertNotNull(response);
-      assertEquals(response.getStatusCode(), 204);
-    } catch (ServiceResponseException e) {
-        fail(String.format("Service returned status code %d: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
-    }
-  }
-
-  @Test
+  @Test(dependsOnMethods = { "testDeleteDedicatedHost" })
   public void testDeleteBackupPolicyPlan() throws Exception {
     try {
       DeleteBackupPolicyPlanOptions deleteBackupPolicyPlanOptions = new DeleteBackupPolicyPlanOptions.Builder()
@@ -11635,7 +11124,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test
+  @Test(dependsOnMethods = { "testDeleteBackupPolicyPlan" })
   public void testDeleteBackupPolicy() throws Exception {
     try {
       DeleteBackupPolicyOptions deleteBackupPolicyOptions = new DeleteBackupPolicyOptions.Builder()
@@ -11652,6 +11141,611 @@ public class VpcIT extends SdkIntegrationTestBase {
       BackupPolicy backupPolicyResult = response.getResult();
 
       assertNotNull(backupPolicyResult);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testDeleteBackupPolicy" })
+  public void testDeletePlacementGroup() throws Exception {
+    try {
+      DeletePlacementGroupOptions deletePlacementGroupOptions = new DeletePlacementGroupOptions.Builder()
+        .id("testString")
+        .build();
+
+      // Invoke operation
+      Response<Void> response = service.deletePlacementGroup(deletePlacementGroupOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 202);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testDeletePlacementGroup" })
+  public void testDeleteBareMetalServerNetworkInterface() throws Exception {
+    try {
+      DeleteBareMetalServerNetworkInterfaceOptions deleteBareMetalServerNetworkInterfaceOptions = new DeleteBareMetalServerNetworkInterfaceOptions.Builder()
+        .bareMetalServerId("testString")
+        .id("testString")
+        .build();
+
+      // Invoke operation
+      Response<Void> response = service.deleteBareMetalServerNetworkInterface(deleteBareMetalServerNetworkInterfaceOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 204);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testDeleteBareMetalServerNetworkInterface" })
+  public void testRemoveBareMetalServerNetworkInterfaceFloatingIp() throws Exception {
+    try {
+      RemoveBareMetalServerNetworkInterfaceFloatingIpOptions removeBareMetalServerNetworkInterfaceFloatingIpOptions = new RemoveBareMetalServerNetworkInterfaceFloatingIpOptions.Builder()
+        .bareMetalServerId("testString")
+        .networkInterfaceId("testString")
+        .id("testString")
+        .build();
+
+      // Invoke operation
+      Response<Void> response = service.removeBareMetalServerNetworkInterfaceFloatingIp(removeBareMetalServerNetworkInterfaceFloatingIpOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 204);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testRemoveBareMetalServerNetworkInterfaceFloatingIp" })
+  public void testDeleteBareMetalServer() throws Exception {
+    try {
+      DeleteBareMetalServerOptions deleteBareMetalServerOptions = new DeleteBareMetalServerOptions.Builder()
+        .id("testString")
+        .build();
+
+      // Invoke operation
+      Response<Void> response = service.deleteBareMetalServer(deleteBareMetalServerOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 204);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testDeleteBareMetalServer" })
+  public void testDeleteVolume() throws Exception {
+    try {
+      DeleteVolumeOptions deleteVolumeOptions = new DeleteVolumeOptions.Builder()
+        .id("testString")
+        .ifMatch("W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"")
+        .build();
+
+      // Invoke operation
+      Response<Void> response = service.deleteVolume(deleteVolumeOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 204);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testDeleteVolume" })
+  public void testDeleteSnapshots() throws Exception {
+    try {
+      DeleteSnapshotsOptions deleteSnapshotsOptions = new DeleteSnapshotsOptions.Builder()
+        .sourceVolumeId("testString")
+        .build();
+
+      // Invoke operation
+      Response<Void> response = service.deleteSnapshots(deleteSnapshotsOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 204);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testDeleteSnapshots" })
+  public void testDeleteSnapshot() throws Exception {
+    try {
+      DeleteSnapshotOptions deleteSnapshotOptions = new DeleteSnapshotOptions.Builder()
+        .id("testString")
+        .ifMatch("W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"")
+        .build();
+
+      // Invoke operation
+      Response<Void> response = service.deleteSnapshot(deleteSnapshotOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 204);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testDeleteSnapshot" })
+  public void testDeletePublicGateway() throws Exception {
+    try {
+      DeletePublicGatewayOptions deletePublicGatewayOptions = new DeletePublicGatewayOptions.Builder()
+        .id("testString")
+        .build();
+
+      // Invoke operation
+      Response<Void> response = service.deletePublicGateway(deletePublicGatewayOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 204);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testDeletePublicGateway" })
+  public void testDeleteFloatingIp() throws Exception {
+    try {
+      DeleteFloatingIpOptions deleteFloatingIpOptions = new DeleteFloatingIpOptions.Builder()
+        .id("testString")
+        .build();
+
+      // Invoke operation
+      Response<Void> response = service.deleteFloatingIp(deleteFloatingIpOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 204);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testDeleteFloatingIp" })
+  public void testDeleteNetworkAcl() throws Exception {
+    try {
+      DeleteNetworkAclOptions deleteNetworkAclOptions = new DeleteNetworkAclOptions.Builder()
+        .id("testString")
+        .build();
+
+      // Invoke operation
+      Response<Void> response = service.deleteNetworkAcl(deleteNetworkAclOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 204);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testDeleteNetworkAcl" })
+  public void testDeleteNetworkAclRule() throws Exception {
+    try {
+      DeleteNetworkAclRuleOptions deleteNetworkAclRuleOptions = new DeleteNetworkAclRuleOptions.Builder()
+        .networkAclId("testString")
+        .id("testString")
+        .build();
+
+      // Invoke operation
+      Response<Void> response = service.deleteNetworkAclRule(deleteNetworkAclRuleOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 204);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testDeleteNetworkAclRule" })
+  public void testDeleteSecurityGroup() throws Exception {
+    try {
+      DeleteSecurityGroupOptions deleteSecurityGroupOptions = new DeleteSecurityGroupOptions.Builder()
+        .id("testString")
+        .build();
+
+      // Invoke operation
+      Response<Void> response = service.deleteSecurityGroup(deleteSecurityGroupOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 204);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testDeleteSecurityGroup" })
+  public void testDeleteSecurityGroupRule() throws Exception {
+    try {
+      DeleteSecurityGroupRuleOptions deleteSecurityGroupRuleOptions = new DeleteSecurityGroupRuleOptions.Builder()
+        .securityGroupId("testString")
+        .id("testString")
+        .build();
+
+      // Invoke operation
+      Response<Void> response = service.deleteSecurityGroupRule(deleteSecurityGroupRuleOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 204);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testDeleteSecurityGroupRule" })
+  public void testDeleteSecurityGroupTargetBinding() throws Exception {
+    try {
+      DeleteSecurityGroupTargetBindingOptions deleteSecurityGroupTargetBindingOptions = new DeleteSecurityGroupTargetBindingOptions.Builder()
+        .securityGroupId("testString")
+        .id("testString")
+        .build();
+
+      // Invoke operation
+      Response<Void> response = service.deleteSecurityGroupTargetBinding(deleteSecurityGroupTargetBindingOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 204);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testDeleteSecurityGroupTargetBinding" })
+  public void testDeleteIkePolicy() throws Exception {
+    try {
+      DeleteIkePolicyOptions deleteIkePolicyOptions = new DeleteIkePolicyOptions.Builder()
+        .id("testString")
+        .build();
+
+      // Invoke operation
+      Response<Void> response = service.deleteIkePolicy(deleteIkePolicyOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 204);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testDeleteIkePolicy" })
+  public void testDeleteIpsecPolicy() throws Exception {
+    try {
+      DeleteIpsecPolicyOptions deleteIpsecPolicyOptions = new DeleteIpsecPolicyOptions.Builder()
+        .id("testString")
+        .build();
+
+      // Invoke operation
+      Response<Void> response = service.deleteIpsecPolicy(deleteIpsecPolicyOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 204);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testDeleteIpsecPolicy" })
+  public void testDeleteVpnGateway() throws Exception {
+    try {
+      DeleteVpnGatewayOptions deleteVpnGatewayOptions = new DeleteVpnGatewayOptions.Builder()
+        .id("testString")
+        .build();
+
+      // Invoke operation
+      Response<Void> response = service.deleteVpnGateway(deleteVpnGatewayOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 202);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testDeleteVpnGateway" })
+  public void testDeleteVpnGatewayConnection() throws Exception {
+    try {
+      DeleteVpnGatewayConnectionOptions deleteVpnGatewayConnectionOptions = new DeleteVpnGatewayConnectionOptions.Builder()
+        .vpnGatewayId("testString")
+        .id("testString")
+        .build();
+
+      // Invoke operation
+      Response<Void> response = service.deleteVpnGatewayConnection(deleteVpnGatewayConnectionOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 202);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testDeleteVpnGatewayConnection" })
+  public void testRemoveVpnGatewayConnectionLocalCidr() throws Exception {
+    try {
+      RemoveVpnGatewayConnectionLocalCidrOptions removeVpnGatewayConnectionLocalCidrOptions = new RemoveVpnGatewayConnectionLocalCidrOptions.Builder()
+        .vpnGatewayId("testString")
+        .id("testString")
+        .cidrPrefix("testString")
+        .prefixLength("testString")
+        .build();
+
+      // Invoke operation
+      Response<Void> response = service.removeVpnGatewayConnectionLocalCidr(removeVpnGatewayConnectionLocalCidrOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 204);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testRemoveVpnGatewayConnectionLocalCidr" })
+  public void testRemoveVpnGatewayConnectionPeerCidr() throws Exception {
+    try {
+      RemoveVpnGatewayConnectionPeerCidrOptions removeVpnGatewayConnectionPeerCidrOptions = new RemoveVpnGatewayConnectionPeerCidrOptions.Builder()
+        .vpnGatewayId("testString")
+        .id("testString")
+        .cidrPrefix("testString")
+        .prefixLength("testString")
+        .build();
+
+      // Invoke operation
+      Response<Void> response = service.removeVpnGatewayConnectionPeerCidr(removeVpnGatewayConnectionPeerCidrOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 204);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testRemoveVpnGatewayConnectionPeerCidr" })
+  public void testDeleteVpnServer() throws Exception {
+    try {
+      DeleteVpnServerOptions deleteVpnServerOptions = new DeleteVpnServerOptions.Builder()
+        .id("testString")
+        .ifMatch("W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"")
+        .build();
+
+      // Invoke operation
+      Response<Void> response = service.deleteVpnServer(deleteVpnServerOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 202);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testDeleteVpnServer" })
+  public void testDeleteVpnServerClient() throws Exception {
+    try {
+      DeleteVpnServerClientOptions deleteVpnServerClientOptions = new DeleteVpnServerClientOptions.Builder()
+        .vpnServerId("testString")
+        .id("testString")
+        .build();
+
+      // Invoke operation
+      Response<Void> response = service.deleteVpnServerClient(deleteVpnServerClientOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 202);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testDeleteVpnServerClient" })
+  public void testDeleteVpnServerRoute() throws Exception {
+    try {
+      DeleteVpnServerRouteOptions deleteVpnServerRouteOptions = new DeleteVpnServerRouteOptions.Builder()
+        .vpnServerId("testString")
+        .id("testString")
+        .build();
+
+      // Invoke operation
+      Response<Void> response = service.deleteVpnServerRoute(deleteVpnServerRouteOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 202);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testDeleteVpnServerRoute" })
+  public void testDeleteLoadBalancer() throws Exception {
+    try {
+      DeleteLoadBalancerOptions deleteLoadBalancerOptions = new DeleteLoadBalancerOptions.Builder()
+        .id("testString")
+        .ifMatch("W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"")
+        .build();
+
+      // Invoke operation
+      Response<Void> response = service.deleteLoadBalancer(deleteLoadBalancerOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 202);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testDeleteLoadBalancer" })
+  public void testDeleteLoadBalancerListener() throws Exception {
+    try {
+      DeleteLoadBalancerListenerOptions deleteLoadBalancerListenerOptions = new DeleteLoadBalancerListenerOptions.Builder()
+        .loadBalancerId("testString")
+        .id("testString")
+        .build();
+
+      // Invoke operation
+      Response<Void> response = service.deleteLoadBalancerListener(deleteLoadBalancerListenerOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 202);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testDeleteLoadBalancerListener" })
+  public void testDeleteLoadBalancerListenerPolicy() throws Exception {
+    try {
+      DeleteLoadBalancerListenerPolicyOptions deleteLoadBalancerListenerPolicyOptions = new DeleteLoadBalancerListenerPolicyOptions.Builder()
+        .loadBalancerId("testString")
+        .listenerId("testString")
+        .id("testString")
+        .build();
+
+      // Invoke operation
+      Response<Void> response = service.deleteLoadBalancerListenerPolicy(deleteLoadBalancerListenerPolicyOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 202);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testDeleteLoadBalancerListenerPolicy" })
+  public void testDeleteLoadBalancerListenerPolicyRule() throws Exception {
+    try {
+      DeleteLoadBalancerListenerPolicyRuleOptions deleteLoadBalancerListenerPolicyRuleOptions = new DeleteLoadBalancerListenerPolicyRuleOptions.Builder()
+        .loadBalancerId("testString")
+        .listenerId("testString")
+        .policyId("testString")
+        .id("testString")
+        .build();
+
+      // Invoke operation
+      Response<Void> response = service.deleteLoadBalancerListenerPolicyRule(deleteLoadBalancerListenerPolicyRuleOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 202);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testDeleteLoadBalancerListenerPolicyRule" })
+  public void testDeleteLoadBalancerPool() throws Exception {
+    try {
+      DeleteLoadBalancerPoolOptions deleteLoadBalancerPoolOptions = new DeleteLoadBalancerPoolOptions.Builder()
+        .loadBalancerId("testString")
+        .id("testString")
+        .build();
+
+      // Invoke operation
+      Response<Void> response = service.deleteLoadBalancerPool(deleteLoadBalancerPoolOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 202);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testDeleteLoadBalancerPool" })
+  public void testDeleteLoadBalancerPoolMember() throws Exception {
+    try {
+      DeleteLoadBalancerPoolMemberOptions deleteLoadBalancerPoolMemberOptions = new DeleteLoadBalancerPoolMemberOptions.Builder()
+        .loadBalancerId("testString")
+        .poolId("testString")
+        .id("testString")
+        .build();
+
+      // Invoke operation
+      Response<Void> response = service.deleteLoadBalancerPoolMember(deleteLoadBalancerPoolMemberOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 202);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testDeleteLoadBalancerPoolMember" })
+  public void testRemoveEndpointGatewayIp() throws Exception {
+    try {
+      RemoveEndpointGatewayIpOptions removeEndpointGatewayIpOptions = new RemoveEndpointGatewayIpOptions.Builder()
+        .endpointGatewayId("testString")
+        .id("testString")
+        .build();
+
+      // Invoke operation
+      Response<Void> response = service.removeEndpointGatewayIp(removeEndpointGatewayIpOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 204);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testRemoveEndpointGatewayIp" })
+  public void testDeleteEndpointGateway() throws Exception {
+    try {
+      DeleteEndpointGatewayOptions deleteEndpointGatewayOptions = new DeleteEndpointGatewayOptions.Builder()
+        .id("testString")
+        .build();
+
+      // Invoke operation
+      Response<Void> response = service.deleteEndpointGateway(deleteEndpointGatewayOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 204);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testDeleteEndpointGateway" })
+  public void testDeleteFlowLogCollector() throws Exception {
+    try {
+      DeleteFlowLogCollectorOptions deleteFlowLogCollectorOptions = new DeleteFlowLogCollectorOptions.Builder()
+        .id("testString")
+        .build();
+
+      // Invoke operation
+      Response<Void> response = service.deleteFlowLogCollector(deleteFlowLogCollectorOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 204);
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));

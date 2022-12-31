@@ -75,7 +75,7 @@ public class InstanceGroupReference extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this instance group.
+   * The name for this instance group. The name is unique across all instance groups in the region.
    *
    * @return the name
    */

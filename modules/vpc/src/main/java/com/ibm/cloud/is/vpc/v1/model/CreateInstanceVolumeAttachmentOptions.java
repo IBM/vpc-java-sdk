@@ -114,6 +114,19 @@ public class CreateInstanceVolumeAttachmentOptions extends GenericModel {
       this.name = name;
       return this;
     }
+
+    /**
+     * Set the volumeAttachmentPrototype.
+     *
+     * @param volumeAttachmentPrototype the volumeAttachmentPrototype
+     * @return the CreateInstanceVolumeAttachmentOptions builder
+     */
+    public Builder volumeAttachmentPrototype(VolumeAttachmentPrototype volumeAttachmentPrototype) {
+      this.volume = volumeAttachmentPrototype.volume();
+      this.deleteVolumeOnInstanceDelete = volumeAttachmentPrototype.deleteVolumeOnInstanceDelete();
+      this.name = volumeAttachmentPrototype.name();
+      return this;
+    }
   }
 
   protected CreateInstanceVolumeAttachmentOptions() { }
@@ -163,7 +176,7 @@ public class CreateInstanceVolumeAttachmentOptions extends GenericModel {
   /**
    * Gets the deleteVolumeOnInstanceDelete.
    *
-   * If set to true, when deleting the instance the volume will also be deleted.
+   * Indicates whether deleting the instance will also delete the attached volume.
    *
    * @return the deleteVolumeOnInstanceDelete
    */
@@ -174,8 +187,8 @@ public class CreateInstanceVolumeAttachmentOptions extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this volume attachment. Names must be unique within the instance the volume attachment
-   * resides in. If unspecified, the name will be a hyphenated list of randomly-selected words.
+   * The name for this volume attachment. The name must not be used by another volume attachment on the instance. If
+   * unspecified, the name will be a hyphenated list of randomly-selected words.
    *
    * @return the name
    */

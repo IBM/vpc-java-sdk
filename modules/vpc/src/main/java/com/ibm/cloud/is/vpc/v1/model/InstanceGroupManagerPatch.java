@@ -219,7 +219,7 @@ public class InstanceGroupManagerPatch extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this instance group manager.
+   * The name for this instance group manager. The name must not be used by another manager for the instance group.
    *
    * @return the name
    */

@@ -50,7 +50,7 @@ public class ResourceGroupReference extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this resource group.
+   * The name for this resource group.
    *
    * @return the name
    */

@@ -301,7 +301,7 @@ public class VPNServer extends GenericModel {
   /**
    * Gets the name.
    *
-   * The unique user-defined name for this VPN server.
+   * The name for this VPN server. The name is unique across all VPN servers in the VPC.
    *
    * @return the name
    */

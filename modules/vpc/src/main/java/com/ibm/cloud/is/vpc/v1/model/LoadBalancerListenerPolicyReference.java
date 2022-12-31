@@ -22,6 +22,7 @@ public class LoadBalancerListenerPolicyReference extends GenericModel {
   protected LoadBalancerListenerPolicyReferenceDeleted deleted;
   protected String href;
   protected String id;
+  protected Object name;
 
   protected LoadBalancerListenerPolicyReference() { }
 
@@ -57,6 +58,15 @@ public class LoadBalancerListenerPolicyReference extends GenericModel {
    */
   public String getId() {
     return id;
+  }
+
+  /**
+   * Gets the name.
+   *
+   * @return the name
+   */
+  public Object getName() {
+    return name;
   }
 }
 

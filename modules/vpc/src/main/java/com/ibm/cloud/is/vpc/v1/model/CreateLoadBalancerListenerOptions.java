@@ -391,7 +391,8 @@ public class CreateLoadBalancerListenerOptions extends GenericModel {
   /**
    * Gets the policies.
    *
-   * The policy prototype objects for this listener.
+   * The policy prototype objects for this listener. The load balancer must be in the
+   * `application` family.
    *
    * @return the policies
    */

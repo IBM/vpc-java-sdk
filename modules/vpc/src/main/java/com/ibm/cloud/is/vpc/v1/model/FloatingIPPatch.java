@@ -99,7 +99,7 @@ public class FloatingIPPatch extends GenericModel {
   /**
    * Gets the name.
    *
-   * The unique user-defined name for this floating IP.
+   * The name for this floating IP. The name must not be used by another floating IP in the region.
    *
    * @return the name
    */

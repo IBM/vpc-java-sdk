@@ -92,7 +92,7 @@ public class LoadBalancerPrivateIpsItem extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined or system-provided name for this reserved IP.
+   * The name for this reserved IP. The name is unique across all reserved IPs in a subnet.
    *
    * @return the name
    */

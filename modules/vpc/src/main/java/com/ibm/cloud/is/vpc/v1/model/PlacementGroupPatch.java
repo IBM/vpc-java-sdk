@@ -84,7 +84,7 @@ public class PlacementGroupPatch extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this placement group.
+   * The name for this placement group. The name must not be used by another placement group in the region.
    *
    * @return the name
    */

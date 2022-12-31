@@ -182,7 +182,7 @@ public class DedicatedHostDisk extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined or system-provided name for this disk.
+   * The name for this dedicated host disk. The name is unique across all disks on the dedicated host.
    *
    * @return the name
    */

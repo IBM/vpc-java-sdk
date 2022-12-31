@@ -186,7 +186,8 @@ public class InstancePatch extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this virtual server instance (and default system hostname).
+   * The name for this virtual server instance. The name must not be used by another virtual server instance in the
+   * region. Changing the name will not affect the system hostname.
    *
    * @return the name
    */

@@ -158,8 +158,8 @@ public class CreateKeyOptions extends GenericModel {
   /**
    * Gets the name.
    *
-   * The unique user-defined name for this key. If unspecified, the name will be a hyphenated list of randomly-selected
-   * words.
+   * The name for this key. The name must not be used by another key in the region. If unspecified, the name will be a
+   * hyphenated list of randomly-selected words.
    *
    * @return the name
    */

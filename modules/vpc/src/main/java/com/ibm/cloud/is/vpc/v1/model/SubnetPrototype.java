@@ -66,8 +66,8 @@ public class SubnetPrototype extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this subnet. Names must be unique within the VPC the subnet resides in. If unspecified,
-   * the name will be a hyphenated list of randomly-selected words.
+   * The name for this subnet. The name must not be used by another subnet in the VPC. If unspecified, the name will be
+   * a hyphenated list of randomly-selected words.
    *
    * @return the name
    */

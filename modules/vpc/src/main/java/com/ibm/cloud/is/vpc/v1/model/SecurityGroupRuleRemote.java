@@ -114,7 +114,7 @@ public class SecurityGroupRuleRemote extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this security group. Names must be unique within the VPC the security group resides in.
+   * The name for this security group. The name is unique across all security groups for the VPC.
    *
    * @return the name
    */

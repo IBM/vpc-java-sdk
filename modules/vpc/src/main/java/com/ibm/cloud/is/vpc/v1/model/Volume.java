@@ -34,6 +34,26 @@ public class Volume extends GenericModel {
   }
 
   /**
+   * The health of this resource.
+   * - `ok`: No abnormal behavior detected
+   * - `degraded`: Experiencing compromised performance, capacity, or connectivity
+   * - `faulted`: Completely unreachable, inoperative, or otherwise entirely incapacitated
+   * - `inapplicable`: The health state does not apply because of the current lifecycle state. A resource with a
+   * lifecycle state of `failed` or `deleting` will have a health state of `inapplicable`. A `pending` resource may also
+   * have this state.
+   */
+  public interface HealthState {
+    /** degraded. */
+    String DEGRADED = "degraded";
+    /** faulted. */
+    String FAULTED = "faulted";
+    /** inapplicable. */
+    String INAPPLICABLE = "inapplicable";
+    /** ok. */
+    String OK = "ok";
+  }
+
+  /**
    * The status of the volume.
    *
    * The enumerated values for this property will expand in the future. When processing this property, check for and log
@@ -65,6 +85,10 @@ public class Volume extends GenericModel {
   protected String encryption;
   @SerializedName("encryption_key")
   protected EncryptionKeyReference encryptionKey;
+  @SerializedName("health_reasons")
+  protected List<VolumeHealthReason> healthReasons;
+  @SerializedName("health_state")
+  protected String healthState;
   protected String href;
   protected String id;
   protected Long iops;
@@ -183,6 +207,38 @@ public class Volume extends GenericModel {
   }
 
   /**
+   * Gets the healthReasons.
+   *
+   * The reasons for the current `health_state` (if any).
+   *
+   * The enumerated reason code values for this property will expand in the future. When processing this property, check
+   * for and log unknown values. Optionally halt processing and surface the error, or bypass the resource on which the
+   * unexpected reason code was encountered.
+   *
+   * @return the healthReasons
+   */
+  public List<VolumeHealthReason> getHealthReasons() {
+    return healthReasons;
+  }
+
+  /**
+   * Gets the healthState.
+   *
+   * The health of this resource.
+   * - `ok`: No abnormal behavior detected
+   * - `degraded`: Experiencing compromised performance, capacity, or connectivity
+   * - `faulted`: Completely unreachable, inoperative, or otherwise entirely incapacitated
+   * - `inapplicable`: The health state does not apply because of the current lifecycle state. A resource with a
+   * lifecycle state of `failed` or `deleting` will have a health state of `inapplicable`. A `pending` resource may also
+   * have this state.
+   *
+   * @return the healthState
+   */
+  public String getHealthState() {
+    return healthState;
+  }
+
+  /**
    * Gets the href.
    *
    * The URL for this volume.
@@ -219,7 +275,7 @@ public class Volume extends GenericModel {
   /**
    * Gets the name.
    *
-   * The unique user-defined name for this volume.
+   * The name for this volume. The name is unique across all volumes in the region.
    *
    * @return the name
    */

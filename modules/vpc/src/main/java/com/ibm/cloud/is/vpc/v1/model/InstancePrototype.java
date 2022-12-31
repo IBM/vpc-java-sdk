@@ -48,7 +48,7 @@ public class InstancePrototype extends GenericModel {
   @SerializedName("user_data")
   protected String userData;
   @SerializedName("volume_attachments")
-  protected List<VolumeAttachmentPrototypeInstanceContext> volumeAttachments;
+  protected List<VolumeAttachmentPrototype> volumeAttachments;
   protected VPCIdentity vpc;
   @SerializedName("boot_volume_attachment")
   protected InstancePrototypeBootVolumeAttachmentWrapper bootVolumeAttachment;
@@ -126,8 +126,10 @@ public class InstancePrototype extends GenericModel {
   /**
    * Gets the name.
    *
-   * The unique user-defined name for this virtual server instance (and default system hostname). If unspecified, the
-   * name will be a hyphenated list of randomly-selected words.
+   * The name for this virtual server instance. The name must not be used by another virtual server instance in the
+   * region. If unspecified, the name will be a hyphenated list of randomly-selected words.
+   *
+   * The system hostname will be based on this name.
    *
    * @return the name
    */
@@ -216,7 +218,7 @@ public class InstancePrototype extends GenericModel {
    *
    * @return the volumeAttachments
    */
-  public List<VolumeAttachmentPrototypeInstanceContext> volumeAttachments() {
+  public List<VolumeAttachmentPrototype> volumeAttachments() {
     return volumeAttachments;
   }
 

@@ -96,7 +96,7 @@ public class ReservedIPTarget extends GenericModel {
   /**
    * Gets the name.
    *
-   * The unique user-defined name for this endpoint gateway.
+   * The name for this endpoint gateway. The name is unique across all endpoint gateways in the VPC.
    *
    * @return the name
    */

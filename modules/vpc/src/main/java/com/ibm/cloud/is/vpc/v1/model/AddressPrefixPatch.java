@@ -114,7 +114,7 @@ public class AddressPrefixPatch extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this address prefix. Names must be unique within the VPC the address prefix resides in.
+   * The name for this address prefix. The name must not be used by another address prefix for the VPC.
    *
    * @return the name
    */

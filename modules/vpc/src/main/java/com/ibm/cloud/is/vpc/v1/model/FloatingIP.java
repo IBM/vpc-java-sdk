@@ -109,7 +109,7 @@ public class FloatingIP extends GenericModel {
   /**
    * Gets the name.
    *
-   * The unique user-defined name for this floating IP.
+   * The name for this floating IP. The name is unique across all floating IPs in the region.
    *
    * @return the name
    */

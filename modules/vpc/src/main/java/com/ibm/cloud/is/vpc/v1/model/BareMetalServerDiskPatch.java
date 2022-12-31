@@ -84,7 +84,7 @@ public class BareMetalServerDiskPatch extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this disk.
+   * The name for this bare metal server disk. The name must not be used by another disk on the bare metal server.
    *
    * @return the name
    */

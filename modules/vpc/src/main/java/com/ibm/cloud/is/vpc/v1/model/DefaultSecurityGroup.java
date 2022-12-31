@@ -84,8 +84,8 @@ public class DefaultSecurityGroup extends GenericModel {
   /**
    * Gets the name.
    *
-   * The name of the default security group created for a VPC. The name will be a hyphenated list of randomly-selected
-   * words at creation, but may be user-specified with a subsequent request.
+   * The name for the default security group for a VPC. The name will be a hyphenated list of randomly-selected words at
+   * creation, but may changed.
    *
    * @return the name
    */

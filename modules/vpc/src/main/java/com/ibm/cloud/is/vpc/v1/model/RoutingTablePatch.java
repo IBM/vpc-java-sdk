@@ -201,7 +201,7 @@ public class RoutingTablePatch extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this routing table. Names must be unique within the VPC the routing table resides in.
+   * The name for this routing table. The name must not be used by another routing table in the VPC.
    *
    * @return the name
    */
