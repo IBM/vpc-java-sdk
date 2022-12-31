@@ -53,7 +53,7 @@ public class InstanceTemplate extends GenericModel {
   @SerializedName("user_data")
   protected String userData;
   @SerializedName("volume_attachments")
-  protected List<VolumeAttachmentPrototypeInstanceContext> volumeAttachments;
+  protected List<VolumeAttachmentPrototype> volumeAttachments;
   protected VPCIdentity vpc;
   @SerializedName("boot_volume_attachment")
   protected VolumeAttachmentPrototypeInstanceByImageContext bootVolumeAttachment;
@@ -173,7 +173,7 @@ public class InstanceTemplate extends GenericModel {
   /**
    * Gets the name.
    *
-   * The unique user-defined name for this instance template.
+   * The name for this instance template. The name is unique across all instance templates in the region.
    *
    * @return the name
    */
@@ -261,7 +261,7 @@ public class InstanceTemplate extends GenericModel {
    *
    * @return the volumeAttachments
    */
-  public List<VolumeAttachmentPrototypeInstanceContext> getVolumeAttachments() {
+  public List<VolumeAttachmentPrototype> getVolumeAttachments() {
     return volumeAttachments;
   }
 

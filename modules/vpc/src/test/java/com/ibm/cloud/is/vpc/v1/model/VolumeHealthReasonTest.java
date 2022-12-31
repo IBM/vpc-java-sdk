@@ -13,7 +13,7 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
-import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentVolumePrototypeInstanceContextVolumeIdentity;
+import com.ibm.cloud.is.vpc.v1.model.VolumeHealthReason;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -23,16 +23,17 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
 /**
- * Unit test class for the VolumeAttachmentVolumePrototypeInstanceContextVolumeIdentity model.
+ * Unit test class for the VolumeHealthReason model.
  */
-public class VolumeAttachmentVolumePrototypeInstanceContextVolumeIdentityTest {
+public class VolumeHealthReasonTest {
   final HashMap<String, InputStream> mockStreamMap = TestUtilities.createMockStreamMap();
   final List<FileWithMetadata> mockListFileWithMetadata = TestUtilities.creatMockListFileWithMetadata();
 
-  // TODO: Add tests for models that are abstract
   @Test
-  public void testVolumeAttachmentVolumePrototypeInstanceContextVolumeIdentity() throws Throwable {
-    VolumeAttachmentVolumePrototypeInstanceContextVolumeIdentity volumeAttachmentVolumePrototypeInstanceContextVolumeIdentityModel = new VolumeAttachmentVolumePrototypeInstanceContextVolumeIdentity();
-    assertNotNull(volumeAttachmentVolumePrototypeInstanceContextVolumeIdentityModel);
+  public void testVolumeHealthReason() throws Throwable {
+    VolumeHealthReason volumeHealthReasonModel = new VolumeHealthReason();
+    assertNull(volumeHealthReasonModel.getCode());
+    assertNull(volumeHealthReasonModel.getMessage());
+    assertNull(volumeHealthReasonModel.getMoreInfo());
   }
 }

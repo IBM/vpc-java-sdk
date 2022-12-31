@@ -84,7 +84,7 @@ public class DedicatedHostDiskPatch extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this disk.
+   * The name for this dedicated host disk. The name must not be used by another disk on the dedicated host.
    *
    * @return the name
    */

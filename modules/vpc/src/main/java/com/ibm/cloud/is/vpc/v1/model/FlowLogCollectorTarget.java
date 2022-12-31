@@ -91,7 +91,7 @@ public class FlowLogCollectorTarget extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this network interface.
+   * The name for this network interface.
    *
    * @return the name
    */

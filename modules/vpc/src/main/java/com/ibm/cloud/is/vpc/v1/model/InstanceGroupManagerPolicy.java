@@ -99,7 +99,8 @@ public class InstanceGroupManagerPolicy extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this instance group manager policy.
+   * The name for this instance group manager policy. The name is unique across all policies for the instance group
+   * manager.
    *
    * @return the name
    */

@@ -86,7 +86,7 @@ public class SnapshotReference extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this snapshot.
+   * The name for this snapshot. The name is unique across all snapshots in the region.
    *
    * @return the name
    */

@@ -174,7 +174,7 @@ public class VPC extends GenericModel {
   /**
    * Gets the name.
    *
-   * The unique user-defined name for this VPC.
+   * The name for this VPC. The name is unique across all VPCs in the region.
    *
    * @return the name
    */

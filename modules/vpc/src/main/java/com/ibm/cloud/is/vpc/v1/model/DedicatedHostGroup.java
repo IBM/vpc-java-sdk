@@ -144,7 +144,7 @@ public class DedicatedHostGroup extends GenericModel {
   /**
    * Gets the name.
    *
-   * The unique user-defined name for this dedicated host group.
+   * The name for this dedicated host group. The name is unique across all dedicated host groups in the region.
    *
    * @return the name
    */

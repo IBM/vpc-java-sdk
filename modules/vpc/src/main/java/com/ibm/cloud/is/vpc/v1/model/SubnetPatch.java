@@ -133,7 +133,7 @@ public class SubnetPatch extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this subnet. Names must be unique within the VPC the subnet resides in.
+   * The name for this subnet. The name must not be used by another subnet in the VPC.
    *
    * @return the name
    */

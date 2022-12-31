@@ -12,17 +12,26 @@
  */
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.ibm.cloud.sdk.core.service.model.GenericModel;
+
 /**
- * Identifies a volume by a unique property.
- *
- * Classes which extend this class:
- * - VolumeAttachmentVolumePrototypeInstanceContextVolumeIdentityVolumeIdentityById
- * - VolumeAttachmentVolumePrototypeInstanceContextVolumeIdentityVolumeIdentityByCRN
- * - VolumeAttachmentVolumePrototypeInstanceContextVolumeIdentityVolumeIdentityByHref
+ * A link to the first page of resources.
  */
-public class VolumeAttachmentVolumePrototypeInstanceContextVolumeIdentity extends VolumeAttachmentVolumePrototypeInstanceContext {
+public class BackupPolicyJobCollectionFirst extends GenericModel {
 
+  protected String href;
 
-  protected VolumeAttachmentVolumePrototypeInstanceContextVolumeIdentity() { }
+  protected BackupPolicyJobCollectionFirst() { }
+
+  /**
+   * Gets the href.
+   *
+   * The URL for a page of resources.
+   *
+   * @return the href
+   */
+  public String getHref() {
+    return href;
+  }
 }
 

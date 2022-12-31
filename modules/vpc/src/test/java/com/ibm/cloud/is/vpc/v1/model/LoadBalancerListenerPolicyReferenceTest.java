@@ -36,5 +36,6 @@ public class LoadBalancerListenerPolicyReferenceTest {
     assertNull(loadBalancerListenerPolicyReferenceModel.getDeleted());
     assertNull(loadBalancerListenerPolicyReferenceModel.getHref());
     assertNull(loadBalancerListenerPolicyReferenceModel.getId());
+    assertNull(loadBalancerListenerPolicyReferenceModel.getName());
   }
 }

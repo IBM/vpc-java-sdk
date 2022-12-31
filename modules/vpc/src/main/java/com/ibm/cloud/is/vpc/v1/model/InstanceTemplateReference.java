@@ -75,7 +75,7 @@ public class InstanceTemplateReference extends GenericModel {
   /**
    * Gets the name.
    *
-   * The unique user-defined name for this instance template.
+   * The name for this instance template. The name is unique across all instance templates in the region.
    *
    * @return the name
    */

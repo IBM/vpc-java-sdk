@@ -180,7 +180,7 @@ public class BackupPolicy extends GenericModel {
   /**
    * Gets the name.
    *
-   * The unique user-defined name for this backup policy.
+   * The name for this backup policy. The name is unique across all backup policies in the region.
    *
    * @return the name
    */

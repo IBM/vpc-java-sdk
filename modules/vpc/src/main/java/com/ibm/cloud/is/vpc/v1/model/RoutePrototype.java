@@ -203,9 +203,9 @@ public class RoutePrototype extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this route. Names starting with `ibm-` are not allowed. If unspecified, the name will be
-   * a hyphenated list of randomly-selected words. Names must be unique within the VPC routing table the route resides
-   * in.
+   * The name for this route. The name must not be used by another route in the routing table. Names starting with
+   * `ibm-` are reserved for system-provided routes, and are not allowed. If unspecified, the name will be a hyphenated
+   * list of randomly-selected words.
    *
    * @return the name
    */

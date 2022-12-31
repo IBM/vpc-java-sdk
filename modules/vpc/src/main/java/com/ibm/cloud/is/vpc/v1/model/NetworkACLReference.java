@@ -75,7 +75,7 @@ public class NetworkACLReference extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this network ACL.
+   * The name for this network ACL. The name is unique across all network ACLs for the VPC.
    *
    * @return the name
    */

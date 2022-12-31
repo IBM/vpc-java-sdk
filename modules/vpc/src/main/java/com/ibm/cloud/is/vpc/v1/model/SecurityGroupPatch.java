@@ -84,7 +84,7 @@ public class SecurityGroupPatch extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this security group. Names must be unique within the VPC the security group resides in.
+   * The name for this security group. The name must not be used by another security group for the VPC.
    *
    * @return the name
    */

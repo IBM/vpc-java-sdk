@@ -16,14 +16,14 @@ import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * VolumeAttachmentPrototypeInstanceContext.
+ * VolumeAttachmentPrototype.
  */
-public class VolumeAttachmentPrototypeInstanceContext extends GenericModel {
+public class VolumeAttachmentPrototype extends GenericModel {
 
   @SerializedName("delete_volume_on_instance_delete")
   protected Boolean deleteVolumeOnInstanceDelete;
   protected String name;
-  protected VolumeAttachmentVolumePrototypeInstanceContext volume;
+  protected VolumeAttachmentPrototypeVolume volume;
 
   /**
    * Builder.
@@ -31,17 +31,17 @@ public class VolumeAttachmentPrototypeInstanceContext extends GenericModel {
   public static class Builder {
     private Boolean deleteVolumeOnInstanceDelete;
     private String name;
-    private VolumeAttachmentVolumePrototypeInstanceContext volume;
+    private VolumeAttachmentPrototypeVolume volume;
 
     /**
-     * Instantiates a new Builder from an existing VolumeAttachmentPrototypeInstanceContext instance.
+     * Instantiates a new Builder from an existing VolumeAttachmentPrototype instance.
      *
-     * @param volumeAttachmentPrototypeInstanceContext the instance to initialize the Builder with
+     * @param volumeAttachmentPrototype the instance to initialize the Builder with
      */
-    private Builder(VolumeAttachmentPrototypeInstanceContext volumeAttachmentPrototypeInstanceContext) {
-      this.deleteVolumeOnInstanceDelete = volumeAttachmentPrototypeInstanceContext.deleteVolumeOnInstanceDelete;
-      this.name = volumeAttachmentPrototypeInstanceContext.name;
-      this.volume = volumeAttachmentPrototypeInstanceContext.volume;
+    private Builder(VolumeAttachmentPrototype volumeAttachmentPrototype) {
+      this.deleteVolumeOnInstanceDelete = volumeAttachmentPrototype.deleteVolumeOnInstanceDelete;
+      this.name = volumeAttachmentPrototype.name;
+      this.volume = volumeAttachmentPrototype.volume;
     }
 
     /**
@@ -55,24 +55,24 @@ public class VolumeAttachmentPrototypeInstanceContext extends GenericModel {
      *
      * @param volume the volume
      */
-    public Builder(VolumeAttachmentVolumePrototypeInstanceContext volume) {
+    public Builder(VolumeAttachmentPrototypeVolume volume) {
       this.volume = volume;
     }
 
     /**
-     * Builds a VolumeAttachmentPrototypeInstanceContext.
+     * Builds a VolumeAttachmentPrototype.
      *
-     * @return the new VolumeAttachmentPrototypeInstanceContext instance
+     * @return the new VolumeAttachmentPrototype instance
      */
-    public VolumeAttachmentPrototypeInstanceContext build() {
-      return new VolumeAttachmentPrototypeInstanceContext(this);
+    public VolumeAttachmentPrototype build() {
+      return new VolumeAttachmentPrototype(this);
     }
 
     /**
      * Set the deleteVolumeOnInstanceDelete.
      *
      * @param deleteVolumeOnInstanceDelete the deleteVolumeOnInstanceDelete
-     * @return the VolumeAttachmentPrototypeInstanceContext builder
+     * @return the VolumeAttachmentPrototype builder
      */
     public Builder deleteVolumeOnInstanceDelete(Boolean deleteVolumeOnInstanceDelete) {
       this.deleteVolumeOnInstanceDelete = deleteVolumeOnInstanceDelete;
@@ -83,7 +83,7 @@ public class VolumeAttachmentPrototypeInstanceContext extends GenericModel {
      * Set the name.
      *
      * @param name the name
-     * @return the VolumeAttachmentPrototypeInstanceContext builder
+     * @return the VolumeAttachmentPrototype builder
      */
     public Builder name(String name) {
       this.name = name;
@@ -94,17 +94,17 @@ public class VolumeAttachmentPrototypeInstanceContext extends GenericModel {
      * Set the volume.
      *
      * @param volume the volume
-     * @return the VolumeAttachmentPrototypeInstanceContext builder
+     * @return the VolumeAttachmentPrototype builder
      */
-    public Builder volume(VolumeAttachmentVolumePrototypeInstanceContext volume) {
+    public Builder volume(VolumeAttachmentPrototypeVolume volume) {
       this.volume = volume;
       return this;
     }
   }
 
-  protected VolumeAttachmentPrototypeInstanceContext() { }
+  protected VolumeAttachmentPrototype() { }
 
-  protected VolumeAttachmentPrototypeInstanceContext(Builder builder) {
+  protected VolumeAttachmentPrototype(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.volume,
       "volume cannot be null");
     deleteVolumeOnInstanceDelete = builder.deleteVolumeOnInstanceDelete;
@@ -115,7 +115,7 @@ public class VolumeAttachmentPrototypeInstanceContext extends GenericModel {
   /**
    * New builder.
    *
-   * @return a VolumeAttachmentPrototypeInstanceContext builder
+   * @return a VolumeAttachmentPrototype builder
    */
   public Builder newBuilder() {
     return new Builder(this);
@@ -124,7 +124,7 @@ public class VolumeAttachmentPrototypeInstanceContext extends GenericModel {
   /**
    * Gets the deleteVolumeOnInstanceDelete.
    *
-   * If set to true, when deleting the instance the volume will also be deleted.
+   * Indicates whether deleting the instance will also delete the attached volume.
    *
    * @return the deleteVolumeOnInstanceDelete
    */
@@ -135,8 +135,8 @@ public class VolumeAttachmentPrototypeInstanceContext extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this volume attachment. Names must be unique within the instance the volume attachment
-   * resides in.
+   * The name for this volume attachment. The name must not be used by another volume attachment on the instance. If
+   * unspecified, the name will be a hyphenated list of randomly-selected words.
    *
    * @return the name
    */
@@ -151,7 +151,7 @@ public class VolumeAttachmentPrototypeInstanceContext extends GenericModel {
    *
    * @return the volume
    */
-  public VolumeAttachmentVolumePrototypeInstanceContext volume() {
+  public VolumeAttachmentPrototypeVolume volume() {
     return volume;
   }
 }

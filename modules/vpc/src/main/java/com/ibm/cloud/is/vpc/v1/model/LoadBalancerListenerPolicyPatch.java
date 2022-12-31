@@ -114,8 +114,7 @@ public class LoadBalancerListenerPolicyPatch extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this policy. Names must be unique within the load balancer listener the policy resides
-   * in.
+   * The name for this policy. The name must not be used by another policy for the load balancer listener.
    *
    * @return the name
    */

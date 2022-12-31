@@ -58,7 +58,7 @@ public class InstanceGroupManagerPolicyPrototype extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this instance group manager policy. Names must be unique within the instance group
+   * The name for this instance group manager policy. The name must not be used by another policy for the instance group
    * manager. If unspecified, the name will be a hyphenated list of randomly-selected words.
    *
    * @return the name

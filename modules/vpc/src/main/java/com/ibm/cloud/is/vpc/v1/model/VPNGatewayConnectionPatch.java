@@ -100,7 +100,7 @@ public class VPNGatewayConnectionPatch extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this VPN gateway connection.
+   * The name for this VPN gateway connection. The name must not be used by another connection for the VPN gateway.
    *
    * @return the name
    */

@@ -78,7 +78,7 @@ public class VolumeAttachmentReferenceInstanceContext extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this volume attachment.
+   * The name for this volume attachment. The name is unique across all volume attachments on the instance.
    *
    * @return the name
    */

@@ -140,7 +140,7 @@ public class PlacementGroup extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this placement group.
+   * The name for this placement group. The name is unique across all placement groups in the region.
    *
    * @return the name
    */

@@ -367,7 +367,7 @@ public class VPNServerPatch extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this VPN server. Names must be unique within the VPC this VPN server is serving.
+   * The name for this VPN server. The name must not be used by another VPN server in the VPC.
    *
    * @return the name
    */

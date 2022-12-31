@@ -75,7 +75,7 @@ public class VolumeReference extends GenericModel {
   /**
    * Gets the name.
    *
-   * The unique user-defined name for this volume.
+   * The name for this volume. The name is unique across all volumes in the region.
    *
    * @return the name
    */

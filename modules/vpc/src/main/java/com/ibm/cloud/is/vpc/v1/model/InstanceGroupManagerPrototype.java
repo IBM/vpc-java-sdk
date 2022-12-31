@@ -61,7 +61,7 @@ public class InstanceGroupManagerPrototype extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this instance group manager. Names must be unique within the instance group. If
+   * The name for this instance group manager. The name must not be used by another manager for the instance group. If
    * unspecified, the name will be a hyphenated list of randomly-selected words.
    *
    * @return the name

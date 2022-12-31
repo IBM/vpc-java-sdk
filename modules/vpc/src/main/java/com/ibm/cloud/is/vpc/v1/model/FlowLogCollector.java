@@ -143,7 +143,7 @@ public class FlowLogCollector extends GenericModel {
   /**
    * Gets the name.
    *
-   * The unique user-defined name for this flow log collector.
+   * The name for this flow log collector. The name is unique across all flow log collectors in the region.
    *
    * @return the name
    */

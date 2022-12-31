@@ -439,8 +439,8 @@ public class CreateVpnServerOptions extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this VPN server. If unspecified, the name will be a hyphenated list of randomly-selected
-   * words. Names must be unique within the VPC this VPN server is serving.
+   * The name for this VPN server. The name must not be used by another VPN server in the VPC. If unspecified, the name
+   * will be a hyphenated list of randomly-selected words.
    *
    * @return the name
    */

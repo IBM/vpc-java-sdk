@@ -84,7 +84,7 @@ public class NetworkACLPatch extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this network ACL. Names must be unique within the VPC the network ACL resides in.
+   * The name for this network ACL. The name must not be used by another network ACL for the VPC.
    *
    * @return the name
    */

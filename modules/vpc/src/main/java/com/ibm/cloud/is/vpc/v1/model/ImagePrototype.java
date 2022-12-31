@@ -42,8 +42,9 @@ public class ImagePrototype extends GenericModel {
   /**
    * Gets the name.
    *
-   * The unique user-defined name for this image. Names starting with `ibm-` are not allowed. If unspecified, the name
-   * will be a hyphenated list of randomly-selected words.
+   * The name for this image. The name must not be used by another image in the region. Names starting with `ibm-` are
+   * reserved for system-provided images, and are not allowed. If unspecified, the name will be a hyphenated list of
+   * randomly-selected words.
    *
    * @return the name
    */

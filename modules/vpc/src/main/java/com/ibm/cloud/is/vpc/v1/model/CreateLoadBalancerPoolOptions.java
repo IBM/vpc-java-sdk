@@ -332,8 +332,8 @@ public class CreateLoadBalancerPoolOptions extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this load balancer pool. If unspecified, the name will be a hyphenated list of
-   * randomly-selected words.
+   * The name for this load balancer pool. The name must not be used by another pool for the load balancer. If
+   * unspecified, the name will be a hyphenated list of randomly-selected words.
    *
    * @return the name
    */

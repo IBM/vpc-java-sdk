@@ -209,8 +209,8 @@ public class LoadBalancerListenerPolicyPrototype extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this policy. Names must be unique within the load balancer listener the policy resides
-   * in.
+   * The name for this policy. The name must not be used by another policy for the load balancer listener. If
+   * unspecified, the name will be a hyphenated list of randomly-selected words.
    *
    * @return the name
    */

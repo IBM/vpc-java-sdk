@@ -188,9 +188,9 @@ public class CreateSubnetReservedIpOptions extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this reserved IP. If unspecified, the name will be a hyphenated list of randomly-selected
-   * words. Names must be unique within the subnet the reserved IP resides in. Names beginning with `ibm-` are reserved
-   * for provider-owned resources.
+   * The name for this reserved IP. The name must not be used by another reserved IP in the subnet. Names starting with
+   * `ibm-` are reserved for provider-owned resources, and are not allowed. If unspecified, the name will be a
+   * hyphenated list of randomly-selected words.
    *
    * @return the name
    */

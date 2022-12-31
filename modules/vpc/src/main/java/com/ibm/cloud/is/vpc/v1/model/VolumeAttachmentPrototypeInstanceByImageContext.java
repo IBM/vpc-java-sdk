@@ -117,7 +117,7 @@ public class VolumeAttachmentPrototypeInstanceByImageContext extends InstancePro
   /**
    * Gets the deleteVolumeOnInstanceDelete.
    *
-   * If set to true, when deleting the instance the volume will also be deleted.
+   * Indicates whether deleting the instance will also delete the attached volume.
    *
    * @return the deleteVolumeOnInstanceDelete
    */
@@ -128,8 +128,8 @@ public class VolumeAttachmentPrototypeInstanceByImageContext extends InstancePro
   /**
    * Gets the name.
    *
-   * The user-defined name for this volume attachment. Names must be unique within the instance the volume attachment
-   * resides in.
+   * The name for this volume attachment. The name must not be used by another volume attachment on the instance. If
+   * unspecified, the name will be a hyphenated list of randomly-selected words.
    *
    * @return the name
    */

@@ -84,7 +84,8 @@ public class BareMetalServerPatch extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this bare metal server (and default system hostname).
+   * The name for this bare metal server. The name must not be used by another bare metal server in the region. Changing
+   * the name will not affect the system hostname.
    *
    * @return the name
    */

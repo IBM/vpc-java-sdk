@@ -279,7 +279,7 @@ public class IPsecPolicyPatch extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this IPsec policy.
+   * The name for this IPsec policy. The name must not be used by another IPsec policy in the region.
    *
    * @return the name
    */

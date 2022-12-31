@@ -77,7 +77,7 @@ public class BareMetalServerBootTarget extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this disk.
+   * The name for this bare metal server disk. The name is unique across all disks on the bare metal server.
    *
    * @return the name
    */

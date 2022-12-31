@@ -153,7 +153,8 @@ public class InstanceGroupManagerPolicyPatch extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this instance group manager policy.
+   * The name for this instance group manager policy. The name must not be used by another policy for the instance group
+   * manager.
    *
    * @return the name
    */

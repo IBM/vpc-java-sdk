@@ -108,7 +108,7 @@ public class InstanceDisk extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this disk.
+   * The name for this instance disk. The name is unique across all disks on the instance.
    *
    * @return the name
    */

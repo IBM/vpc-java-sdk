@@ -272,8 +272,10 @@ public class CreateBareMetalServerOptions extends GenericModel {
   /**
    * Gets the name.
    *
-   * The unique user-defined name for this bare metal server (and default system hostname). If unspecified, the name
-   * will be a hyphenated list of randomly-selected words.
+   * The name for this bare metal server. The name must not be used by another bare metal server in the region. If
+   * unspecified, the name will be a hyphenated list of randomly-selected words.
+   *
+   * The system hostname will be based on this name.
    *
    * @return the name
    */

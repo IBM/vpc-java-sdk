@@ -259,10 +259,8 @@ public class CreateInstanceGroupOptions extends GenericModel {
   /**
    * Gets the loadBalancer.
    *
-   * The load balancer associated with `load_balancer_pool`.
-   *
-   * This property must be specified if and only if `load_balancer_pool` has been
-   * specified.
+   * The load balancer associated with the specified load balancer pool.
+   * Required if `load_balancer_pool` is specified.
    *
    * At present, only load balancers in the `application` family are supported.
    *
@@ -300,8 +298,8 @@ public class CreateInstanceGroupOptions extends GenericModel {
   /**
    * Gets the name.
    *
-   * The unique user-defined name for this instance group. If unspecified, the name will be a hyphenated list of
-   * randomly-selected words.
+   * The name for this instance group. The name must not be used by another instance group in the region. If
+   * unspecified, the name will be a hyphenated list of randomly-selected words.
    *
    * @return the name
    */

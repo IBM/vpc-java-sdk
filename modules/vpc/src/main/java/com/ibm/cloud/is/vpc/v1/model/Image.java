@@ -204,7 +204,7 @@ public class Image extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined or system-provided name for this image.
+   * The name for this image. The name is unique across all images in the region.
    *
    * @return the name
    */

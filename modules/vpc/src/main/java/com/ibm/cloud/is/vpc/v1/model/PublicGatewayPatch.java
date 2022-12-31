@@ -84,7 +84,7 @@ public class PublicGatewayPatch extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this public gateway. Names must be unique within the VPC the public gateway resides in.
+   * The name for this public gateway. The name must not be used by another public gateway in the VPC.
    *
    * @return the name
    */

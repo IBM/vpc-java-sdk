@@ -36,7 +36,7 @@ public class InstanceTemplatePrototypeInstanceByImage extends InstanceTemplatePr
     private ResourceGroupIdentity resourceGroup;
     private Long totalVolumeBandwidth;
     private String userData;
-    private List<VolumeAttachmentPrototypeInstanceContext> volumeAttachments;
+    private List<VolumeAttachmentPrototype> volumeAttachments;
     private VPCIdentity vpc;
     private VolumeAttachmentPrototypeInstanceByImageContext bootVolumeAttachment;
     private ImageIdentity image;
@@ -134,11 +134,11 @@ public class InstanceTemplatePrototypeInstanceByImage extends InstanceTemplatePr
      * @param volumeAttachments the new volumeAttachments
      * @return the InstanceTemplatePrototypeInstanceByImage builder
      */
-    public Builder addVolumeAttachments(VolumeAttachmentPrototypeInstanceContext volumeAttachments) {
+    public Builder addVolumeAttachments(VolumeAttachmentPrototype volumeAttachments) {
       com.ibm.cloud.sdk.core.util.Validator.notNull(volumeAttachments,
         "volumeAttachments cannot be null");
       if (this.volumeAttachments == null) {
-        this.volumeAttachments = new ArrayList<VolumeAttachmentPrototypeInstanceContext>();
+        this.volumeAttachments = new ArrayList<VolumeAttachmentPrototype>();
       }
       this.volumeAttachments.add(volumeAttachments);
       return this;
@@ -274,7 +274,7 @@ public class InstanceTemplatePrototypeInstanceByImage extends InstanceTemplatePr
      * @param volumeAttachments the volumeAttachments
      * @return the InstanceTemplatePrototypeInstanceByImage builder
      */
-    public Builder volumeAttachments(List<VolumeAttachmentPrototypeInstanceContext> volumeAttachments) {
+    public Builder volumeAttachments(List<VolumeAttachmentPrototype> volumeAttachments) {
       this.volumeAttachments = volumeAttachments;
       return this;
     }

@@ -74,7 +74,7 @@ public class IKEPolicyReference extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this IKE policy.
+   * The name for this IKE policy. The name is unique across all IKE policies in the region.
    *
    * @return the name
    */

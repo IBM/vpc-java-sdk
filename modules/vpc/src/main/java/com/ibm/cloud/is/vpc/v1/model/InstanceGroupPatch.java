@@ -226,10 +226,8 @@ public class InstanceGroupPatch extends GenericModel {
   /**
    * Gets the loadBalancer.
    *
-   * The load balancer associated with `load_balancer_pool`.
-   *
-   * This property must be specified if and only if `load_balancer_pool` has been
-   * specified.
+   * The load balancer associated with the specified load balancer pool.
+   * Required if `load_balancer_pool` is specified.
    *
    * At present, only load balancers in the `application` family are supported.
    *
@@ -267,7 +265,7 @@ public class InstanceGroupPatch extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this instance group.
+   * The name for this instance group. The name must not be used by another instance group in the region.
    *
    * @return the name
    */

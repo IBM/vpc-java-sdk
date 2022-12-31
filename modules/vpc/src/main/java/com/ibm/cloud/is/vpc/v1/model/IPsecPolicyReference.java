@@ -74,7 +74,7 @@ public class IPsecPolicyReference extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this IPsec policy.
+   * The name for this IPsec policy. The name is unique across all IPsec policies in the region.
    *
    * @return the name
    */

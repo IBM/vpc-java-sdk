@@ -179,7 +179,7 @@ public class Route extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this route.
+   * The name for this route. The name is unique across all routes in the routing table.
    *
    * @return the name
    */

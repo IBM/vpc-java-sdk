@@ -203,8 +203,8 @@ public class CreateVpnServerRouteOptions extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this VPN route. If unspecified, the name will be a hyphenated list of randomly-selected
-   * words. Names must be unique within the VPN server the VPN route resides in.
+   * The name for this VPN server route. The name must not be used by another route for the VPN server. If unspecified,
+   * the name will be a hyphenated list of randomly-selected words.
    *
    * @return the name
    */

@@ -38,7 +38,7 @@ public class InstanceGroupManagerActionPrototype extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this instance group manager action. Names must be unique within the instance group
+   * The name for this instance group manager action. The name must not be used by another action for the instance group
    * manager. If unspecified, the name will be a hyphenated list of randomly-selected words.
    *
    * @return the name

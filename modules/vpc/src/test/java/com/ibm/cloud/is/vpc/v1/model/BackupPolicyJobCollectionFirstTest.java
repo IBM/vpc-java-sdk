@@ -13,9 +13,7 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
-import com.ibm.cloud.is.vpc.v1.model.EncryptionKeyIdentityByCRN;
-import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentVolumePrototypeInstanceContextVolumePrototypeInstanceContext;
-import com.ibm.cloud.is.vpc.v1.model.VolumeProfileIdentityByName;
+import com.ibm.cloud.is.vpc.v1.model.BackupPolicyJobCollectionFirst;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -25,16 +23,15 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
 /**
- * Unit test class for the VolumeAttachmentVolumePrototypeInstanceContextVolumePrototypeInstanceContext model.
+ * Unit test class for the BackupPolicyJobCollectionFirst model.
  */
-public class VolumeAttachmentVolumePrototypeInstanceContextVolumePrototypeInstanceContextTest {
+public class BackupPolicyJobCollectionFirstTest {
   final HashMap<String, InputStream> mockStreamMap = TestUtilities.createMockStreamMap();
   final List<FileWithMetadata> mockListFileWithMetadata = TestUtilities.creatMockListFileWithMetadata();
 
-  // TODO: Add tests for models that are abstract
   @Test
-  public void testVolumeAttachmentVolumePrototypeInstanceContextVolumePrototypeInstanceContext() throws Throwable {
-    VolumeAttachmentVolumePrototypeInstanceContextVolumePrototypeInstanceContext volumeAttachmentVolumePrototypeInstanceContextVolumePrototypeInstanceContextModel = new VolumeAttachmentVolumePrototypeInstanceContextVolumePrototypeInstanceContext();
-    assertNotNull(volumeAttachmentVolumePrototypeInstanceContextVolumePrototypeInstanceContextModel);
+  public void testBackupPolicyJobCollectionFirst() throws Throwable {
+    BackupPolicyJobCollectionFirst backupPolicyJobCollectionFirstModel = new BackupPolicyJobCollectionFirst();
+    assertNull(backupPolicyJobCollectionFirstModel.getHref());
   }
 }

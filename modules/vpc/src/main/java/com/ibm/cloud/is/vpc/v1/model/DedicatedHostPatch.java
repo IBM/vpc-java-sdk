@@ -112,7 +112,7 @@ public class DedicatedHostPatch extends GenericModel {
   /**
    * Gets the name.
    *
-   * The unique user-defined name for this dedicated host.
+   * The name for this dedicated host. The name must not be used by another dedicated host in the region.
    *
    * @return the name
    */

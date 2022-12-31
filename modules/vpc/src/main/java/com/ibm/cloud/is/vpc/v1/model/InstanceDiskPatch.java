@@ -84,7 +84,7 @@ public class InstanceDiskPatch extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this disk.
+   * The name for this instance disk. The name must not be used by another disk on the instance.
    *
    * @return the name
    */

@@ -126,7 +126,7 @@ public class InstanceGroupMembership extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this instance group membership. Names must be unique within the instance group.
+   * The name for this instance group membership. The name is unique across all memberships for the instance group.
    *
    * @return the name
    */

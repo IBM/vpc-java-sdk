@@ -126,7 +126,8 @@ public class LoadBalancerListenerPolicy extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this policy.
+   * The name for this load balancer listener policy. The name is unique across all policies for the load balancer
+   * listener.
    *
    * @return the name
    */

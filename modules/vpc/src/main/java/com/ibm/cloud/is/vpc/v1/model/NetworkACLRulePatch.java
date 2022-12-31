@@ -382,7 +382,7 @@ public class NetworkACLRulePatch extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this rule. Names must be unique within the network ACL the rule resides in.
+   * The name for this network ACL rule. The name must not be used by another rule for the network ACL.
    *
    * @return the name
    */

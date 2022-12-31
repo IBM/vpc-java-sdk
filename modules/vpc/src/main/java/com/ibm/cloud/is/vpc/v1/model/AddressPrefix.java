@@ -96,7 +96,7 @@ public class AddressPrefix extends GenericModel {
    *
    * Indicates whether this is the default prefix for this zone in this VPC. If a default prefix was automatically
    * created when the VPC was created, the prefix is automatically named using a hyphenated list of randomly-selected
-   * words, but may be updated with a user-specified name.
+   * words, but may be changed.
    *
    * @return the isDefault
    */
@@ -107,7 +107,7 @@ public class AddressPrefix extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this address prefix. Names must be unique within the VPC the address prefix resides in.
+   * The name for this address prefix. The name must not be used by another address prefix for the VPC.
    *
    * @return the name
    */

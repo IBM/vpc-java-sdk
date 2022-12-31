@@ -170,8 +170,8 @@ public class CreateVpcOptions extends GenericModel {
   /**
    * Gets the name.
    *
-   * The unique user-defined name for this VPC. If unspecified, the name will be a hyphenated list of randomly-selected
-   * words.
+   * The name for this VPC. The name must not be used by another VPC in the region. If unspecified, the name will be a
+   * hyphenated list of randomly-selected words.
    *
    * @return the name
    */

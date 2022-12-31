@@ -149,7 +149,7 @@ public class RoutingTable extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this routing table.
+   * The name for this routing table. The name is unique across all routing tables for the VPC.
    *
    * @return the name
    */

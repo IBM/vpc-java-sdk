@@ -74,7 +74,8 @@ public class InstanceGroupManagerActionReference extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this instance group manager action.
+   * The name for this instance group manager action. The name is unique across all actions for the instance group
+   * manager.
    *
    * @return the name
    */

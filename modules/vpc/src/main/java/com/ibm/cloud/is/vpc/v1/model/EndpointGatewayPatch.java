@@ -84,8 +84,7 @@ public class EndpointGatewayPatch extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this endpoint gateway. Names must be unique within the VPC this endpoint gateway is
-   * serving.
+   * The name for this endpoint gateway. The name must not be used by another endpoint gateway in the VPC.
    *
    * @return the name
    */

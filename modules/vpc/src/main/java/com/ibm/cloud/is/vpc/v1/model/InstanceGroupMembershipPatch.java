@@ -84,7 +84,8 @@ public class InstanceGroupMembershipPatch extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this instance group membership. Names must be unique within the instance group.
+   * The name for this instance group membership. The name must not be used by another membership for the instance group
+   * manager.
    *
    * @return the name
    */

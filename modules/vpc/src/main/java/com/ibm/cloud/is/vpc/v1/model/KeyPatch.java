@@ -84,7 +84,7 @@ public class KeyPatch extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this key.
+   * The name for this key. The name must not be used by another key in the region.
    *
    * @return the name
    */

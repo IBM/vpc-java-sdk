@@ -120,7 +120,7 @@ public class SnapshotPatch extends GenericModel {
   /**
    * Gets the name.
    *
-   * The user-defined name for this snapshot.
+   * The name for this snapshot. The name must not be used by another snapshot in the region.
    *
    * @return the name
    */
