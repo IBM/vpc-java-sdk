@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2020, 2021, 2022.
+ * (C) Copyright IBM Corp. 2021, 2022, 2023.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -33,13 +33,19 @@ public class InstanceMetadataServicePrototypeTest {
   public void testInstanceMetadataServicePrototype() throws Throwable {
     InstanceMetadataServicePrototype instanceMetadataServicePrototypeModel = new InstanceMetadataServicePrototype.Builder()
       .enabled(false)
+      .protocol("https")
+      .responseHopLimit(Long.valueOf("2"))
       .build();
     assertEquals(instanceMetadataServicePrototypeModel.enabled(), Boolean.valueOf(false));
+    assertEquals(instanceMetadataServicePrototypeModel.protocol(), "https");
+    assertEquals(instanceMetadataServicePrototypeModel.responseHopLimit(), Long.valueOf("2"));
 
     String json = TestUtilities.serialize(instanceMetadataServicePrototypeModel);
 
     InstanceMetadataServicePrototype instanceMetadataServicePrototypeModelNew = TestUtilities.deserialize(json, InstanceMetadataServicePrototype.class);
     assertTrue(instanceMetadataServicePrototypeModelNew instanceof InstanceMetadataServicePrototype);
     assertEquals(instanceMetadataServicePrototypeModelNew.enabled(), Boolean.valueOf(false));
+    assertEquals(instanceMetadataServicePrototypeModelNew.protocol(), "https");
+    assertEquals(instanceMetadataServicePrototypeModelNew.responseHopLimit(), Long.valueOf("2"));
   }
 }

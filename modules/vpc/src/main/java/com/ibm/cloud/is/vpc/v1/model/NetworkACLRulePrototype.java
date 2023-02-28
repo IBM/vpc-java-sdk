@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2020, 2021, 2022.
+ * (C) Copyright IBM Corp. 2021, 2022, 2023.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -56,6 +56,14 @@ public class NetworkACLRulePrototype extends GenericModel {
   }
 
   /**
+   * The IP version for this rule.
+   */
+  public interface IpVersion {
+    /** ipv4. */
+    String IPV4 = "ipv4";
+  }
+
+  /**
    * The protocol to enforce.
    */
   public interface Protocol {
@@ -73,6 +81,8 @@ public class NetworkACLRulePrototype extends GenericModel {
   protected NetworkACLRuleBeforePrototype before;
   protected String destination;
   protected String direction;
+  @SerializedName("ip_version")
+  protected String ipVersion;
   protected String name;
   protected String protocol;
   protected String source;
@@ -133,6 +143,17 @@ public class NetworkACLRulePrototype extends GenericModel {
    */
   public String direction() {
     return direction;
+  }
+
+  /**
+   * Gets the ipVersion.
+   *
+   * The IP version for this rule.
+   *
+   * @return the ipVersion
+   */
+  public String ipVersion() {
+    return ipVersion;
   }
 
   /**

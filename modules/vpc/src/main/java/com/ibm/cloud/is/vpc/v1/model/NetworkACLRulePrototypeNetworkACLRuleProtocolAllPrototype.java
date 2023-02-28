@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2020, 2021, 2022.
+ * (C) Copyright IBM Corp. 2021, 2022, 2023.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -38,6 +38,14 @@ public class NetworkACLRulePrototypeNetworkACLRuleProtocolAllPrototype extends N
   }
 
   /**
+   * The IP version for this rule.
+   */
+  public interface IpVersion {
+    /** ipv4. */
+    String IPV4 = "ipv4";
+  }
+
+  /**
    * The protocol to enforce.
    */
   public interface Protocol {
@@ -54,6 +62,7 @@ public class NetworkACLRulePrototypeNetworkACLRuleProtocolAllPrototype extends N
     private NetworkACLRuleBeforePrototype before;
     private String destination;
     private String direction;
+    private String ipVersion;
     private String name;
     private String source;
     private String protocol;
@@ -68,6 +77,7 @@ public class NetworkACLRulePrototypeNetworkACLRuleProtocolAllPrototype extends N
       this.before = networkAclRulePrototypeNetworkAclRuleProtocolAllPrototype.before;
       this.destination = networkAclRulePrototypeNetworkAclRuleProtocolAllPrototype.destination;
       this.direction = networkAclRulePrototypeNetworkAclRuleProtocolAllPrototype.direction;
+      this.ipVersion = networkAclRulePrototypeNetworkAclRuleProtocolAllPrototype.ipVersion;
       this.name = networkAclRulePrototypeNetworkAclRuleProtocolAllPrototype.name;
       this.source = networkAclRulePrototypeNetworkAclRuleProtocolAllPrototype.source;
       this.protocol = networkAclRulePrototypeNetworkAclRuleProtocolAllPrototype.protocol;
@@ -150,6 +160,17 @@ public class NetworkACLRulePrototypeNetworkACLRuleProtocolAllPrototype extends N
     }
 
     /**
+     * Set the ipVersion.
+     *
+     * @param ipVersion the ipVersion
+     * @return the NetworkACLRulePrototypeNetworkACLRuleProtocolAllPrototype builder
+     */
+    public Builder ipVersion(String ipVersion) {
+      this.ipVersion = ipVersion;
+      return this;
+    }
+
+    /**
      * Set the name.
      *
      * @param name the name
@@ -200,6 +221,7 @@ public class NetworkACLRulePrototypeNetworkACLRuleProtocolAllPrototype extends N
     before = builder.before;
     destination = builder.destination;
     direction = builder.direction;
+    ipVersion = builder.ipVersion;
     name = builder.name;
     source = builder.source;
     protocol = builder.protocol;

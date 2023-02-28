@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2020, 2021, 2022.
+ * (C) Copyright IBM Corp. 2021, 2022, 2023.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -215,7 +215,8 @@ public class RoutingTablePatch extends GenericModel {
    * Indicates whether this routing table is used to route traffic that originates from
    * [Direct Link](https://cloud.ibm.com/docs/dl/) to this VPC. Updating to `true` selects this routing table, provided
    * no other routing table in the VPC already has this property set to `true`, and no subnets are attached to this
-   * routing table. Updating to `false` deselects this routing table.
+   * routing table. Updating to
+   * `false` deselects this routing table.
    *
    * Incoming traffic will be routed according to the routing table with one exception: routes with an `action` of
    * `deliver` are treated as `drop` unless the `next_hop` is an IP address bound to a network interface on a subnet in

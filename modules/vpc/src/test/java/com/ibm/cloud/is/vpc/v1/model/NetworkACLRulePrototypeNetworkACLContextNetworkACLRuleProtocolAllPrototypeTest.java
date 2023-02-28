@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2020, 2021, 2022.
+ * (C) Copyright IBM Corp. 2021, 2022, 2023.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -35,6 +35,7 @@ public class NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolAllPr
       .action("allow")
       .destination("192.168.3.2/32")
       .direction("inbound")
+      .ipVersion("ipv4")
       .name("my-rule-2")
       .source("192.168.3.2/32")
       .protocol("all")
@@ -42,6 +43,7 @@ public class NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolAllPr
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolAllPrototypeModel.action(), "allow");
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolAllPrototypeModel.destination(), "192.168.3.2/32");
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolAllPrototypeModel.direction(), "inbound");
+    assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolAllPrototypeModel.ipVersion(), "ipv4");
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolAllPrototypeModel.name(), "my-rule-2");
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolAllPrototypeModel.source(), "192.168.3.2/32");
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolAllPrototypeModel.protocol(), "all");
@@ -53,6 +55,7 @@ public class NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolAllPr
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolAllPrototypeModelNew.action(), "allow");
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolAllPrototypeModelNew.destination(), "192.168.3.2/32");
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolAllPrototypeModelNew.direction(), "inbound");
+    assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolAllPrototypeModelNew.ipVersion(), "ipv4");
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolAllPrototypeModelNew.name(), "my-rule-2");
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolAllPrototypeModelNew.source(), "192.168.3.2/32");
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolAllPrototypeModelNew.protocol(), "all");

@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2020, 2021, 2022.
+ * (C) Copyright IBM Corp. 2021, 2022, 2023.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -66,6 +66,7 @@ public class Snapshot extends GenericModel {
   protected Boolean bootable;
   @SerializedName("captured_at")
   protected Date capturedAt;
+  protected List<SnapshotClone> clones;
   @SerializedName("created_at")
   protected Date createdAt;
   protected String crn;
@@ -132,6 +133,17 @@ public class Snapshot extends GenericModel {
    */
   public Date getCapturedAt() {
     return capturedAt;
+  }
+
+  /**
+   * Gets the clones.
+   *
+   * Clones for this snapshot.
+   *
+   * @return the clones
+   */
+  public List<SnapshotClone> getClones() {
+    return clones;
   }
 
   /**

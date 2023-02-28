@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2020, 2021, 2022.
+ * (C) Copyright IBM Corp. 2021, 2022, 2023.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -23,11 +23,7 @@ public class InstanceAvailabilityPolicyPatch extends GenericModel {
   /**
    * The action to perform if the compute host experiences a failure.
    * - `restart`: Automatically restart the virtual server instance after host failure
-   * - `stop`: Leave the virtual server instance stopped after host failure
-   *
-   * The enumerated values for this property are expected to expand in the future. When processing this property, check
-   * for and log unknown values. Optionally halt processing and surface the error, or bypass the instance on which the
-   * unexpected property value was encountered.
+   * - `stop`: Leave the virtual server instance stopped after host failure.
    */
   public interface HostFailure {
     /** restart. */
@@ -101,11 +97,7 @@ public class InstanceAvailabilityPolicyPatch extends GenericModel {
    *
    * The action to perform if the compute host experiences a failure.
    * - `restart`: Automatically restart the virtual server instance after host failure
-   * - `stop`: Leave the virtual server instance stopped after host failure
-   *
-   * The enumerated values for this property are expected to expand in the future. When processing this property, check
-   * for and log unknown values. Optionally halt processing and surface the error, or bypass the instance on which the
-   * unexpected property value was encountered.
+   * - `stop`: Leave the virtual server instance stopped after host failure.
    *
    * @return the hostFailure
    */

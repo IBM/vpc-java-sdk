@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2020, 2021, 2022.
+ * (C) Copyright IBM Corp. 2021, 2022, 2023.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -32,20 +32,7 @@ public class LoadBalancerLoggingTest {
 
   @Test
   public void testLoadBalancerLogging() throws Throwable {
-    LoadBalancerLoggingDatapath loadBalancerLoggingDatapathModel = new LoadBalancerLoggingDatapath.Builder()
-      .active(true)
-      .build();
-    assertEquals(loadBalancerLoggingDatapathModel.active(), Boolean.valueOf(true));
-
-    LoadBalancerLogging loadBalancerLoggingModel = new LoadBalancerLogging.Builder()
-      .datapath(loadBalancerLoggingDatapathModel)
-      .build();
-    assertEquals(loadBalancerLoggingModel.datapath(), loadBalancerLoggingDatapathModel);
-
-    String json = TestUtilities.serialize(loadBalancerLoggingModel);
-
-    LoadBalancerLogging loadBalancerLoggingModelNew = TestUtilities.deserialize(json, LoadBalancerLogging.class);
-    assertTrue(loadBalancerLoggingModelNew instanceof LoadBalancerLogging);
-    assertEquals(loadBalancerLoggingModelNew.datapath().toString(), loadBalancerLoggingDatapathModel.toString());
+    LoadBalancerLogging loadBalancerLoggingModel = new LoadBalancerLogging();
+    assertNull(loadBalancerLoggingModel.getDatapath());
   }
 }

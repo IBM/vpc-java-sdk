@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2020, 2021, 2022.
+ * (C) Copyright IBM Corp. 2021, 2022, 2023.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -16,7 +16,7 @@ package com.ibm.cloud.is.vpc.v1.model;
 import com.ibm.cloud.is.vpc.v1.model.CatalogOfferingIdentityCatalogOfferingByCRN;
 import com.ibm.cloud.is.vpc.v1.model.EncryptionKeyIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.ImageIdentityById;
-import com.ibm.cloud.is.vpc.v1.model.InstanceAvailabilityPrototype;
+import com.ibm.cloud.is.vpc.v1.model.InstanceAvailabilityPolicyPrototype;
 import com.ibm.cloud.is.vpc.v1.model.InstanceCatalogOfferingPrototypeCatalogOfferingByOffering;
 import com.ibm.cloud.is.vpc.v1.model.InstanceDefaultTrustedProfilePrototype;
 import com.ibm.cloud.is.vpc.v1.model.InstanceMetadataServicePrototype;
@@ -55,10 +55,10 @@ public class InstanceTemplatePrototypeInstanceBySourceTemplateTest {
 
   @Test
   public void testInstanceTemplatePrototypeInstanceBySourceTemplate() throws Throwable {
-    InstanceAvailabilityPrototype instanceAvailabilityPrototypeModel = new InstanceAvailabilityPrototype.Builder()
+    InstanceAvailabilityPolicyPrototype instanceAvailabilityPolicyPrototypeModel = new InstanceAvailabilityPolicyPrototype.Builder()
       .hostFailure("restart")
       .build();
-    assertEquals(instanceAvailabilityPrototypeModel.hostFailure(), "restart");
+    assertEquals(instanceAvailabilityPolicyPrototypeModel.hostFailure(), "restart");
 
     TrustedProfileIdentityTrustedProfileById trustedProfileIdentityModel = new TrustedProfileIdentityTrustedProfileById.Builder()
       .id("Profile-9fd84246-7df4-4667-94e4-8ecde51d5ac5")
@@ -79,8 +79,12 @@ public class InstanceTemplatePrototypeInstanceBySourceTemplateTest {
 
     InstanceMetadataServicePrototype instanceMetadataServicePrototypeModel = new InstanceMetadataServicePrototype.Builder()
       .enabled(false)
+      .protocol("https")
+      .responseHopLimit(Long.valueOf("2"))
       .build();
     assertEquals(instanceMetadataServicePrototypeModel.enabled(), Boolean.valueOf(false));
+    assertEquals(instanceMetadataServicePrototypeModel.protocol(), "https");
+    assertEquals(instanceMetadataServicePrototypeModel.responseHopLimit(), Long.valueOf("2"));
 
     NetworkInterfaceIPPrototypeReservedIPPrototypeNetworkInterfaceContext networkInterfaceIpPrototypeModel = new NetworkInterfaceIPPrototypeReservedIPPrototypeNetworkInterfaceContext.Builder()
       .address("10.0.0.5")
@@ -208,7 +212,7 @@ public class InstanceTemplatePrototypeInstanceBySourceTemplateTest {
     assertEquals(zoneIdentityModel.name(), "us-south-1");
 
     InstanceTemplatePrototypeInstanceBySourceTemplate instanceTemplatePrototypeInstanceBySourceTemplateModel = new InstanceTemplatePrototypeInstanceBySourceTemplate.Builder()
-      .availabilityPolicy(instanceAvailabilityPrototypeModel)
+      .availabilityPolicy(instanceAvailabilityPolicyPrototypeModel)
       .defaultTrustedProfile(instanceDefaultTrustedProfilePrototypeModel)
       .keys(java.util.Arrays.asList(keyIdentityModel))
       .metadataService(instanceMetadataServicePrototypeModel)
@@ -228,7 +232,7 @@ public class InstanceTemplatePrototypeInstanceBySourceTemplateTest {
       .sourceTemplate(instanceTemplateIdentityModel)
       .zone(zoneIdentityModel)
       .build();
-    assertEquals(instanceTemplatePrototypeInstanceBySourceTemplateModel.availabilityPolicy(), instanceAvailabilityPrototypeModel);
+    assertEquals(instanceTemplatePrototypeInstanceBySourceTemplateModel.availabilityPolicy(), instanceAvailabilityPolicyPrototypeModel);
     assertEquals(instanceTemplatePrototypeInstanceBySourceTemplateModel.defaultTrustedProfile(), instanceDefaultTrustedProfilePrototypeModel);
     assertEquals(instanceTemplatePrototypeInstanceBySourceTemplateModel.keys(), java.util.Arrays.asList(keyIdentityModel));
     assertEquals(instanceTemplatePrototypeInstanceBySourceTemplateModel.metadataService(), instanceMetadataServicePrototypeModel);
@@ -252,7 +256,7 @@ public class InstanceTemplatePrototypeInstanceBySourceTemplateTest {
 
     InstanceTemplatePrototypeInstanceBySourceTemplate instanceTemplatePrototypeInstanceBySourceTemplateModelNew = TestUtilities.deserialize(json, InstanceTemplatePrototypeInstanceBySourceTemplate.class);
     assertTrue(instanceTemplatePrototypeInstanceBySourceTemplateModelNew instanceof InstanceTemplatePrototypeInstanceBySourceTemplate);
-    assertEquals(instanceTemplatePrototypeInstanceBySourceTemplateModelNew.availabilityPolicy().toString(), instanceAvailabilityPrototypeModel.toString());
+    assertEquals(instanceTemplatePrototypeInstanceBySourceTemplateModelNew.availabilityPolicy().toString(), instanceAvailabilityPolicyPrototypeModel.toString());
     assertEquals(instanceTemplatePrototypeInstanceBySourceTemplateModelNew.defaultTrustedProfile().toString(), instanceDefaultTrustedProfilePrototypeModel.toString());
     assertEquals(instanceTemplatePrototypeInstanceBySourceTemplateModelNew.metadataService().toString(), instanceMetadataServicePrototypeModel.toString());
     assertEquals(instanceTemplatePrototypeInstanceBySourceTemplateModelNew.name(), "my-instance");

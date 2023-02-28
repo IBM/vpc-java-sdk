@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2020, 2021, 2022.
+ * (C) Copyright IBM Corp. 2021, 2022, 2023.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -17,6 +17,7 @@ import com.ibm.cloud.is.vpc.v1.model.BareMetalServerInitializationPrototype;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByHiperSocketPrototype;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerPrimaryNetworkInterfacePrototype;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileIdentityByName;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerTrustedPlatformModulePrototype;
 import com.ibm.cloud.is.vpc.v1.model.CreateBareMetalServerOptions;
 import com.ibm.cloud.is.vpc.v1.model.ImageIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.KeyIdentityById;
@@ -132,6 +133,11 @@ public class CreateBareMetalServerOptionsTest {
       .build();
     assertEquals(resourceGroupIdentityModel.id(), "fee82deba12e4c0fb69c3b09d1f12345");
 
+    BareMetalServerTrustedPlatformModulePrototype bareMetalServerTrustedPlatformModulePrototypeModel = new BareMetalServerTrustedPlatformModulePrototype.Builder()
+      .mode("disabled")
+      .build();
+    assertEquals(bareMetalServerTrustedPlatformModulePrototypeModel.mode(), "disabled");
+
     VPCIdentityById vpcIdentityModel = new VPCIdentityById.Builder()
       .id("4727d842-f94f-4a2d-824a-9bc9b02c523b")
       .build();
@@ -142,18 +148,22 @@ public class CreateBareMetalServerOptionsTest {
       .primaryNetworkInterface(bareMetalServerPrimaryNetworkInterfacePrototypeModel)
       .profile(bareMetalServerProfileIdentityModel)
       .zone(zoneIdentityModel)
+      .enableSecureBoot(false)
       .name("my-bare-metal-server")
       .networkInterfaces(java.util.Arrays.asList(bareMetalServerNetworkInterfacePrototypeModel))
       .resourceGroup(resourceGroupIdentityModel)
+      .trustedPlatformModule(bareMetalServerTrustedPlatformModulePrototypeModel)
       .vpc(vpcIdentityModel)
       .build();
     assertEquals(createBareMetalServerOptionsModel.initialization(), bareMetalServerInitializationPrototypeModel);
     assertEquals(createBareMetalServerOptionsModel.primaryNetworkInterface(), bareMetalServerPrimaryNetworkInterfacePrototypeModel);
     assertEquals(createBareMetalServerOptionsModel.profile(), bareMetalServerProfileIdentityModel);
     assertEquals(createBareMetalServerOptionsModel.zone(), zoneIdentityModel);
+    assertEquals(createBareMetalServerOptionsModel.enableSecureBoot(), Boolean.valueOf(false));
     assertEquals(createBareMetalServerOptionsModel.name(), "my-bare-metal-server");
     assertEquals(createBareMetalServerOptionsModel.networkInterfaces(), java.util.Arrays.asList(bareMetalServerNetworkInterfacePrototypeModel));
     assertEquals(createBareMetalServerOptionsModel.resourceGroup(), resourceGroupIdentityModel);
+    assertEquals(createBareMetalServerOptionsModel.trustedPlatformModule(), bareMetalServerTrustedPlatformModulePrototypeModel);
     assertEquals(createBareMetalServerOptionsModel.vpc(), vpcIdentityModel);
   }
 

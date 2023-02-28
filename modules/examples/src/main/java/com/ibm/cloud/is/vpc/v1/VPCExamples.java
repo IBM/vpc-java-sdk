@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021, 2022.
+ * (C) Copyright IBM Corp. 2021, 2022, 2023.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -85,6 +85,7 @@ import com.ibm.cloud.is.vpc.v1.model.CreatePublicGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateSecurityGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateSecurityGroupRuleOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateSecurityGroupTargetBindingOptions;
+import com.ibm.cloud.is.vpc.v1.model.CreateSnapshotCloneOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateSnapshotOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateSubnetOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateSubnetReservedIpOptions;
@@ -152,6 +153,7 @@ import com.ibm.cloud.is.vpc.v1.model.DeletePublicGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteSecurityGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteSecurityGroupRuleOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteSecurityGroupTargetBindingOptions;
+import com.ibm.cloud.is.vpc.v1.model.DeleteSnapshotCloneOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteSnapshotOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteSnapshotsOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteSubnetOptions;
@@ -239,6 +241,7 @@ import com.ibm.cloud.is.vpc.v1.model.GetRegionZoneOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetSecurityGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetSecurityGroupRuleOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetSecurityGroupTargetOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetSnapshotCloneOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetSnapshotOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetSubnetNetworkAclOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetSubnetOptions;
@@ -370,6 +373,7 @@ import com.ibm.cloud.is.vpc.v1.model.ListRegionsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListSecurityGroupRulesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListSecurityGroupTargetsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListSecurityGroupsOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListSnapshotClonesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListSnapshotsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListSubnetReservedIpsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListSubnetsOptions;
@@ -464,6 +468,8 @@ import com.ibm.cloud.is.vpc.v1.model.SecurityGroupTargetReference;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupTargetsPager;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupsPager;
 import com.ibm.cloud.is.vpc.v1.model.SetSubnetPublicGatewayOptions;
+import com.ibm.cloud.is.vpc.v1.model.SnapshotClone;
+import com.ibm.cloud.is.vpc.v1.model.SnapshotCloneCollection;
 import com.ibm.cloud.is.vpc.v1.model.Snapshot;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotPatch;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotPrototypeSnapshotBySourceVolume;
@@ -3953,6 +3959,56 @@ public class VPCExamples {
     }
 
     try {
+      System.out.println("createSnapshotClone() result:");
+      // begin-create_snapshot_clone
+      CreateSnapshotCloneOptions createSnapshotCloneOptions = new CreateSnapshotCloneOptions.Builder()
+        .id(snapshotId)
+        .zoneName(zoneName)
+        .build();
+
+      Response<SnapshotClone> response = vpcService.createSnapshotClone(createSnapshotCloneOptions).execute();
+      SnapshotClone snapshotClone = response.getResult();
+
+      // end-create_snapshot_clone
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("listSnapshotClones() result:");
+      // begin-list_snapshot_clones
+      ListSnapshotClonesOptions listSnapshotClonesOptions = new ListSnapshotClonesOptions.Builder()
+        .id(snapshotId)
+        .build();
+
+      Response<SnapshotCloneCollection> response = vpcService.listSnapshotClones(listSnapshotClonesOptions).execute();
+      SnapshotCloneCollection snapshotCloneCollection = response.getResult();
+
+      // end-list_snapshot_clones
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("getSnapshotClone() result:");
+      // begin-get_snapshot_clone
+      GetSnapshotCloneOptions getSnapshotCloneOptions = new GetSnapshotCloneOptions.Builder()
+        .id(snapshotId)
+        .zoneName(zoneName)
+        .build();
+
+      Response<SnapshotClone> response = vpcService.getSnapshotClone(getSnapshotCloneOptions).execute();
+      SnapshotClone snapshotClone = response.getResult();
+
+      // end-get_snapshot_clone
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
       System.out.println("listRegions() result:");
       // begin-list_regions
       ListRegionsOptions listRegionsOptions = new ListRegionsOptions();
@@ -6206,6 +6262,21 @@ public class VPCExamples {
       Response<Void> response = vpcService.deleteVpc(deleteVpcOptions).execute();
       // end-delete_vpc
       System.out.printf("deleteVpc() response status code: %d%n", response.getStatusCode());
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      // begin-delete_snapshot_clone
+      DeleteSnapshotCloneOptions deleteSnapshotCloneOptions = new DeleteSnapshotCloneOptions.Builder()
+        .id(snapshotId)
+        .zoneName(zoneName)
+        .build();
+
+      Response<Void> response = vpcService.deleteSnapshotClone(deleteSnapshotCloneOptions).execute();
+      // end-delete_snapshot_clone
+      System.out.printf("deleteSnapshotClone() response status code: %d%n", response.getStatusCode());
     } catch (ServiceResponseException e) {
         logger.error(String.format("Service returned status code %s: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);

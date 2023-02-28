@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2020, 2021, 2022.
+ * (C) Copyright IBM Corp. 2021, 2022, 2023.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -39,6 +39,9 @@ import com.ibm.cloud.is.vpc.v1.model.BackupPolicyJobStatusReason;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyJobsPager;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPatch;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlan;
+import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanClonePolicy;
+import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanClonePolicyPatch;
+import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanClonePolicyPrototype;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanCollection;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanDeletionTrigger;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanDeletionTriggerPatch;
@@ -124,6 +127,8 @@ import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileSupportedTrustedPlatf
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfilesPager;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerStatusReason;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerTrustedPlatformModule;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerTrustedPlatformModulePatch;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerTrustedPlatformModulePrototype;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServersPager;
 import com.ibm.cloud.is.vpc.v1.model.CatalogOfferingIdentity;
 import com.ibm.cloud.is.vpc.v1.model.CatalogOfferingIdentityCatalogOfferingByCRN;
@@ -172,6 +177,7 @@ import com.ibm.cloud.is.vpc.v1.model.CreatePublicGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateSecurityGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateSecurityGroupRuleOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateSecurityGroupTargetBindingOptions;
+import com.ibm.cloud.is.vpc.v1.model.CreateSnapshotCloneOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateSnapshotOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateSubnetOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateSubnetReservedIpOptions;
@@ -282,6 +288,7 @@ import com.ibm.cloud.is.vpc.v1.model.DeletePublicGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteSecurityGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteSecurityGroupRuleOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteSecurityGroupTargetBindingOptions;
+import com.ibm.cloud.is.vpc.v1.model.DeleteSnapshotCloneOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteSnapshotOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteSnapshotsOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteSubnetOptions;
@@ -425,6 +432,7 @@ import com.ibm.cloud.is.vpc.v1.model.GetRegionZoneOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetSecurityGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetSecurityGroupRuleOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetSecurityGroupTargetOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetSnapshotCloneOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetSnapshotOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetSubnetNetworkAclOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetSubnetOptions;
@@ -487,7 +495,7 @@ import com.ibm.cloud.is.vpc.v1.model.Instance;
 import com.ibm.cloud.is.vpc.v1.model.InstanceAction;
 import com.ibm.cloud.is.vpc.v1.model.InstanceAvailabilityPolicy;
 import com.ibm.cloud.is.vpc.v1.model.InstanceAvailabilityPolicyPatch;
-import com.ibm.cloud.is.vpc.v1.model.InstanceAvailabilityPrototype;
+import com.ibm.cloud.is.vpc.v1.model.InstanceAvailabilityPolicyPrototype;
 import com.ibm.cloud.is.vpc.v1.model.InstanceCatalogOffering;
 import com.ibm.cloud.is.vpc.v1.model.InstanceCatalogOfferingPrototype;
 import com.ibm.cloud.is.vpc.v1.model.InstanceCatalogOfferingPrototypeCatalogOfferingByOffering;
@@ -762,6 +770,7 @@ import com.ibm.cloud.is.vpc.v1.model.ListRegionsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListSecurityGroupRulesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListSecurityGroupTargetsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListSecurityGroupsOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListSnapshotClonesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListSnapshotsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListSubnetReservedIpsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListSubnetsOptions;
@@ -829,6 +838,10 @@ import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerReference;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerLogging;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerLoggingDatapath;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerLoggingDatapathPatch;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerLoggingDatapathPrototype;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerLoggingPatch;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerLoggingPrototype;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPatch;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPool;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolCollection;
@@ -1100,6 +1113,9 @@ import com.ibm.cloud.is.vpc.v1.model.SecurityGroupTargetsPager;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupsPager;
 import com.ibm.cloud.is.vpc.v1.model.SetSubnetPublicGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.Snapshot;
+import com.ibm.cloud.is.vpc.v1.model.SnapshotClone;
+import com.ibm.cloud.is.vpc.v1.model.SnapshotCloneCollection;
+import com.ibm.cloud.is.vpc.v1.model.SnapshotClonePrototype;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotCollection;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotCollectionFirst;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotCollectionNext;
@@ -1354,7 +1370,7 @@ public class VpcIT extends SdkIntegrationTestBase {
   final HashMap<String, InputStream> mockStreamMap = TestUtilities.createMockStreamMap();
   final List<FileWithMetadata> mockListFileWithMetadata = TestUtilities.creatMockListFileWithMetadata();
 
-  String version = "testString";
+  String serviceName = "testService";
   /**
    * This method provides our config filename to the base class.
    */
@@ -1370,7 +1386,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       return;
     }
 
-    service = Vpc.newInstance(version);
+    service = Vpc.newInstance(serviceName);
     assertNotNull(service);
     assertNotNull(service.getServiceUrl());
 
@@ -1956,7 +1972,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       CreateVpcRoutingTableOptions createVpcRoutingTableOptions = new CreateVpcRoutingTableOptions.Builder()
         .vpcId("testString")
         .acceptRoutesFrom(java.util.Arrays.asList(resourceFilterModel))
-        .name("my-routing-table-2")
+        .name("my-routing-table-1")
         .routeDirectLinkIngress(false)
         .routeInternetIngress(false)
         .routeTransitGatewayIngress(false)
@@ -3091,7 +3107,7 @@ public class VpcIT extends SdkIntegrationTestBase {
   @Test(dependsOnMethods = { "testListInstanceTemplates" })
   public void testCreateInstanceTemplate() throws Exception {
     try {
-      InstanceAvailabilityPrototype instanceAvailabilityPrototypeModel = new InstanceAvailabilityPrototype.Builder()
+      InstanceAvailabilityPolicyPrototype instanceAvailabilityPolicyPrototypeModel = new InstanceAvailabilityPolicyPrototype.Builder()
         .hostFailure("restart")
         .build();
 
@@ -3110,6 +3126,8 @@ public class VpcIT extends SdkIntegrationTestBase {
 
       InstanceMetadataServicePrototype instanceMetadataServicePrototypeModel = new InstanceMetadataServicePrototype.Builder()
         .enabled(false)
+        .protocol("https")
+        .responseHopLimit(Long.valueOf("2"))
         .build();
 
       NetworkInterfaceIPPrototypeReservedIPPrototypeNetworkInterfaceContext networkInterfaceIpPrototypeModel = new NetworkInterfaceIPPrototypeReservedIPPrototypeNetworkInterfaceContext.Builder()
@@ -3192,7 +3210,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       InstanceTemplatePrototypeInstanceByImage instanceTemplatePrototypeModel = new InstanceTemplatePrototypeInstanceByImage.Builder()
-        .availabilityPolicy(instanceAvailabilityPrototypeModel)
+        .availabilityPolicy(instanceAvailabilityPolicyPrototypeModel)
         .defaultTrustedProfile(instanceDefaultTrustedProfilePrototypeModel)
         .keys(java.util.Arrays.asList(keyIdentityModel))
         .metadataService(instanceMetadataServicePrototypeModel)
@@ -3359,7 +3377,7 @@ public class VpcIT extends SdkIntegrationTestBase {
   @Test(dependsOnMethods = { "testListInstances" })
   public void testCreateInstance() throws Exception {
     try {
-      InstanceAvailabilityPrototype instanceAvailabilityPrototypeModel = new InstanceAvailabilityPrototype.Builder()
+      InstanceAvailabilityPolicyPrototype instanceAvailabilityPolicyPrototypeModel = new InstanceAvailabilityPolicyPrototype.Builder()
         .hostFailure("restart")
         .build();
 
@@ -3378,6 +3396,8 @@ public class VpcIT extends SdkIntegrationTestBase {
 
       InstanceMetadataServicePrototype instanceMetadataServicePrototypeModel = new InstanceMetadataServicePrototype.Builder()
         .enabled(false)
+        .protocol("https")
+        .responseHopLimit(Long.valueOf("2"))
         .build();
 
       NetworkInterfaceIPPrototypeReservedIPPrototypeNetworkInterfaceContext networkInterfaceIpPrototypeModel = new NetworkInterfaceIPPrototypeReservedIPPrototypeNetworkInterfaceContext.Builder()
@@ -3403,7 +3423,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       InstancePlacementTargetPrototypeDedicatedHostIdentityDedicatedHostIdentityById instancePlacementTargetPrototypeModel = new InstancePlacementTargetPrototypeDedicatedHostIdentityDedicatedHostIdentityById.Builder()
-        .id("0787-8c2a09be-ee18-4af2-8ef4-6a6060732221")
+        .id("0787-84e4793a-7cd8-4a7b-b253-818aa19d0512")
         .build();
 
       InstanceProfileIdentityByName instanceProfileIdentityModel = new InstanceProfileIdentityByName.Builder()
@@ -3465,7 +3485,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       InstancePrototypeInstanceByImage instancePrototypeModel = new InstancePrototypeInstanceByImage.Builder()
-        .availabilityPolicy(instanceAvailabilityPrototypeModel)
+        .availabilityPolicy(instanceAvailabilityPolicyPrototypeModel)
         .defaultTrustedProfile(instanceDefaultTrustedProfilePrototypeModel)
         .keys(java.util.Arrays.asList(keyIdentityModel))
         .metadataService(instanceMetadataServicePrototypeModel)
@@ -3534,6 +3554,8 @@ public class VpcIT extends SdkIntegrationTestBase {
 
       InstanceMetadataServicePatch instanceMetadataServicePatchModel = new InstanceMetadataServicePatch.Builder()
         .enabled(true)
+        .protocol("http")
+        .responseHopLimit(Long.valueOf("1"))
         .build();
 
       InstancePlacementTargetPatchDedicatedHostIdentityDedicatedHostIdentityById instancePlacementTargetPatchModel = new InstancePlacementTargetPatchDedicatedHostIdentityDedicatedHostIdentityById.Builder()
@@ -5336,6 +5358,15 @@ public class VpcIT extends SdkIntegrationTestBase {
   @Test(dependsOnMethods = { "testListBackupPolicies" })
   public void testCreateBackupPolicy() throws Exception {
     try {
+      ZoneIdentityByName zoneIdentityModel = new ZoneIdentityByName.Builder()
+        .name("us-south-1")
+        .build();
+
+      BackupPolicyPlanClonePolicyPrototype backupPolicyPlanClonePolicyPrototypeModel = new BackupPolicyPlanClonePolicyPrototype.Builder()
+        .maxSnapshots(Long.valueOf("26"))
+        .zones(java.util.Arrays.asList(zoneIdentityModel))
+        .build();
+
       BackupPolicyPlanDeletionTriggerPrototype backupPolicyPlanDeletionTriggerPrototypeModel = new BackupPolicyPlanDeletionTriggerPrototype.Builder()
         .deleteAfter(Long.valueOf("20"))
         .deleteOverCount(Long.valueOf("20"))
@@ -5344,6 +5375,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       BackupPolicyPlanPrototype backupPolicyPlanPrototypeModel = new BackupPolicyPlanPrototype.Builder()
         .active(true)
         .attachUserTags(java.util.Arrays.asList("my-daily-backup-plan"))
+        .clonePolicy(backupPolicyPlanClonePolicyPrototypeModel)
         .copyUserTags(true)
         .cronSpec("30 */2 * * 1-5")
         .deletionTrigger(backupPolicyPlanDeletionTriggerPrototypeModel)
@@ -5494,6 +5526,15 @@ public class VpcIT extends SdkIntegrationTestBase {
   @Test(dependsOnMethods = { "testListBackupPolicyPlans" })
   public void testCreateBackupPolicyPlan() throws Exception {
     try {
+      ZoneIdentityByName zoneIdentityModel = new ZoneIdentityByName.Builder()
+        .name("us-south-1")
+        .build();
+
+      BackupPolicyPlanClonePolicyPrototype backupPolicyPlanClonePolicyPrototypeModel = new BackupPolicyPlanClonePolicyPrototype.Builder()
+        .maxSnapshots(Long.valueOf("26"))
+        .zones(java.util.Arrays.asList(zoneIdentityModel))
+        .build();
+
       BackupPolicyPlanDeletionTriggerPrototype backupPolicyPlanDeletionTriggerPrototypeModel = new BackupPolicyPlanDeletionTriggerPrototype.Builder()
         .deleteAfter(Long.valueOf("20"))
         .deleteOverCount(Long.valueOf("20"))
@@ -5504,6 +5545,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .cronSpec("30 */2 * * 1-5")
         .active(true)
         .attachUserTags(java.util.Arrays.asList("my-daily-backup-plan"))
+        .clonePolicy(backupPolicyPlanClonePolicyPrototypeModel)
         .copyUserTags(true)
         .deletionTrigger(backupPolicyPlanDeletionTriggerPrototypeModel)
         .name("my-policy-plan")
@@ -5550,6 +5592,15 @@ public class VpcIT extends SdkIntegrationTestBase {
   @Test(dependsOnMethods = { "testGetBackupPolicyPlan" })
   public void testUpdateBackupPolicyPlan() throws Exception {
     try {
+      ZoneIdentityByName zoneIdentityModel = new ZoneIdentityByName.Builder()
+        .name("us-south-1")
+        .build();
+
+      BackupPolicyPlanClonePolicyPatch backupPolicyPlanClonePolicyPatchModel = new BackupPolicyPlanClonePolicyPatch.Builder()
+        .maxSnapshots(Long.valueOf("26"))
+        .zones(java.util.Arrays.asList(zoneIdentityModel))
+        .build();
+
       BackupPolicyPlanDeletionTriggerPatch backupPolicyPlanDeletionTriggerPatchModel = new BackupPolicyPlanDeletionTriggerPatch.Builder()
         .deleteAfter(Long.valueOf("20"))
         .deleteOverCount(Long.valueOf("26"))
@@ -5558,6 +5609,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       BackupPolicyPlanPatch backupPolicyPlanPatchModel = new BackupPolicyPlanPatch.Builder()
         .active(true)
         .attachUserTags(java.util.Arrays.asList("my-daily-backup-plan"))
+        .clonePolicy(backupPolicyPlanClonePolicyPatchModel)
         .copyUserTags(true)
         .cronSpec("30 */2 * * 1-5")
         .deletionTrigger(backupPolicyPlanDeletionTriggerPatchModel)
@@ -5981,6 +6033,10 @@ public class VpcIT extends SdkIntegrationTestBase {
         .id("fee82deba12e4c0fb69c3b09d1f12345")
         .build();
 
+      BareMetalServerTrustedPlatformModulePrototype bareMetalServerTrustedPlatformModulePrototypeModel = new BareMetalServerTrustedPlatformModulePrototype.Builder()
+        .mode("disabled")
+        .build();
+
       VPCIdentityById vpcIdentityModel = new VPCIdentityById.Builder()
         .id("4727d842-f94f-4a2d-824a-9bc9b02c523b")
         .build();
@@ -5990,9 +6046,11 @@ public class VpcIT extends SdkIntegrationTestBase {
         .primaryNetworkInterface(bareMetalServerPrimaryNetworkInterfacePrototypeModel)
         .profile(bareMetalServerProfileIdentityModel)
         .zone(zoneIdentityModel)
+        .enableSecureBoot(false)
         .name("my-bare-metal-server")
         .networkInterfaces(java.util.Arrays.asList(bareMetalServerNetworkInterfacePrototypeModel))
         .resourceGroup(resourceGroupIdentityModel)
+        .trustedPlatformModule(bareMetalServerTrustedPlatformModulePrototypeModel)
         .vpc(vpcIdentityModel)
         .build();
 
@@ -6410,8 +6468,14 @@ public class VpcIT extends SdkIntegrationTestBase {
   @Test(dependsOnMethods = { "testGetBareMetalServer" })
   public void testUpdateBareMetalServer() throws Exception {
     try {
+      BareMetalServerTrustedPlatformModulePatch bareMetalServerTrustedPlatformModulePatchModel = new BareMetalServerTrustedPlatformModulePatch.Builder()
+        .mode("disabled")
+        .build();
+
       BareMetalServerPatch bareMetalServerPatchModel = new BareMetalServerPatch.Builder()
+        .enableSecureBoot(false)
         .name("my-bare-metal-server")
+        .trustedPlatformModule(bareMetalServerTrustedPlatformModulePatchModel)
         .build();
       Map<String, Object> bareMetalServerPatchModelAsPatch = bareMetalServerPatchModel.asPatch();
 
@@ -6769,6 +6833,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .sourceImageCrn("testString")
         .sort("name")
         .backupPolicyPlanId("testString")
+        .clonesZoneName("testString")
         .build();
 
       // Invoke operation
@@ -6800,6 +6865,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .sourceImageCrn("testString")
         .sort("name")
         .backupPolicyPlanId("testString")
+        .clonesZoneName("testString")
         .build();
 
       // Test getNext().
@@ -6829,6 +6895,14 @@ public class VpcIT extends SdkIntegrationTestBase {
   @Test(dependsOnMethods = { "testListSnapshots" })
   public void testCreateSnapshot() throws Exception {
     try {
+      ZoneIdentityByName zoneIdentityModel = new ZoneIdentityByName.Builder()
+        .name("us-south-1")
+        .build();
+
+      SnapshotClonePrototype snapshotClonePrototypeModel = new SnapshotClonePrototype.Builder()
+        .zone(zoneIdentityModel)
+        .build();
+
       ResourceGroupIdentityById resourceGroupIdentityModel = new ResourceGroupIdentityById.Builder()
         .id("fee82deba12e4c0fb69c3b09d1f12345")
         .build();
@@ -6838,6 +6912,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       SnapshotPrototypeSnapshotBySourceVolume snapshotPrototypeModel = new SnapshotPrototypeSnapshotBySourceVolume.Builder()
+        .clones(java.util.Arrays.asList(snapshotClonePrototypeModel))
         .name("my-snapshot")
         .resourceGroup(resourceGroupIdentityModel)
         .userTags(java.util.Arrays.asList("testString"))
@@ -6916,6 +6991,74 @@ public class VpcIT extends SdkIntegrationTestBase {
   }
 
   @Test(dependsOnMethods = { "testUpdateSnapshot" })
+  public void testListSnapshotClones() throws Exception {
+    try {
+      ListSnapshotClonesOptions listSnapshotClonesOptions = new ListSnapshotClonesOptions.Builder()
+        .id("testString")
+        .build();
+
+      // Invoke operation
+      Response<SnapshotCloneCollection> response = service.listSnapshotClones(listSnapshotClonesOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      SnapshotCloneCollection snapshotCloneCollectionResult = response.getResult();
+
+      assertNotNull(snapshotCloneCollectionResult);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testListSnapshotClones" })
+  public void testGetSnapshotClone() throws Exception {
+    try {
+      GetSnapshotCloneOptions getSnapshotCloneOptions = new GetSnapshotCloneOptions.Builder()
+        .id("testString")
+        .zoneName("testString")
+        .build();
+
+      // Invoke operation
+      Response<SnapshotClone> response = service.getSnapshotClone(getSnapshotCloneOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      SnapshotClone snapshotCloneResult = response.getResult();
+
+      assertNotNull(snapshotCloneResult);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testGetSnapshotClone" })
+  public void testCreateSnapshotClone() throws Exception {
+    try {
+      CreateSnapshotCloneOptions createSnapshotCloneOptions = new CreateSnapshotCloneOptions.Builder()
+        .id("testString")
+        .zoneName("testString")
+        .build();
+
+      // Invoke operation
+      Response<SnapshotClone> response = service.createSnapshotClone(createSnapshotCloneOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      SnapshotClone snapshotCloneResult = response.getResult();
+
+      assertNotNull(snapshotCloneResult);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testCreateSnapshotClone" })
   public void testListRegions() throws Exception {
     try {
       ListRegionsOptions listRegionsOptions = new ListRegionsOptions();
@@ -7370,6 +7513,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .action("allow")
         .destination("192.168.3.2/32")
         .direction("inbound")
+        .ipVersion("ipv4")
         .name("my-rule-2")
         .source("192.168.3.2/32")
         .destinationPortMax(Long.valueOf("22"))
@@ -7525,6 +7669,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .before(networkAclRuleBeforePrototypeModel)
         .destination("192.168.3.2/32")
         .direction("inbound")
+        .ipVersion("ipv4")
         .name("my-rule-2")
         .source("192.168.3.2/32")
         .destinationPortMax(Long.valueOf("22"))
@@ -9340,6 +9485,10 @@ public class VpcIT extends SdkIntegrationTestBase {
         .id("7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
         .build();
 
+      LoadBalancerLoggingDatapathPrototype loadBalancerLoggingDatapathPrototypeModel = new LoadBalancerLoggingDatapathPrototype.Builder()
+        .active(true)
+        .build();
+
       CertificateInstanceIdentityByCRN certificateInstanceIdentityModel = new CertificateInstanceIdentityByCRN.Builder()
         .crn("crn:v1:bluemix:public:secrets-manager:us-south:a/123456:36fa422d-080d-4d83-8d2d-86851b4001df:secret:2e786aab-42fa-63ed-14f8-d66d552f4dd5")
         .build();
@@ -9370,12 +9519,8 @@ public class VpcIT extends SdkIntegrationTestBase {
         .protocol("http")
         .build();
 
-      LoadBalancerLoggingDatapath loadBalancerLoggingDatapathModel = new LoadBalancerLoggingDatapath.Builder()
-        .active(true)
-        .build();
-
-      LoadBalancerLogging loadBalancerLoggingModel = new LoadBalancerLogging.Builder()
-        .datapath(loadBalancerLoggingDatapathModel)
+      LoadBalancerLoggingPrototype loadBalancerLoggingPrototypeModel = new LoadBalancerLoggingPrototype.Builder()
+        .datapath(loadBalancerLoggingDatapathPrototypeModel)
         .build();
 
       LoadBalancerPoolHealthMonitorPrototype loadBalancerPoolHealthMonitorPrototypeModel = new LoadBalancerPoolHealthMonitorPrototype.Builder()
@@ -9427,8 +9572,9 @@ public class VpcIT extends SdkIntegrationTestBase {
       CreateLoadBalancerOptions createLoadBalancerOptions = new CreateLoadBalancerOptions.Builder()
         .isPublic(true)
         .subnets(java.util.Arrays.asList(subnetIdentityModel))
+        .datapath(loadBalancerLoggingDatapathPrototypeModel)
         .listeners(java.util.Arrays.asList(loadBalancerListenerPrototypeLoadBalancerContextModel))
-        .logging(loadBalancerLoggingModel)
+        .logging(loadBalancerLoggingPrototypeModel)
         .name("my-load-balancer")
         .pools(java.util.Arrays.asList(loadBalancerPoolPrototypeModel))
         .profile(loadBalancerProfileIdentityModel)
@@ -9477,12 +9623,12 @@ public class VpcIT extends SdkIntegrationTestBase {
   @Test(dependsOnMethods = { "testGetLoadBalancer" })
   public void testUpdateLoadBalancer() throws Exception {
     try {
-      LoadBalancerLoggingDatapath loadBalancerLoggingDatapathModel = new LoadBalancerLoggingDatapath.Builder()
+      LoadBalancerLoggingDatapathPatch loadBalancerLoggingDatapathPatchModel = new LoadBalancerLoggingDatapathPatch.Builder()
         .active(true)
         .build();
 
-      LoadBalancerLogging loadBalancerLoggingModel = new LoadBalancerLogging.Builder()
-        .datapath(loadBalancerLoggingDatapathModel)
+      LoadBalancerLoggingPatch loadBalancerLoggingPatchModel = new LoadBalancerLoggingPatch.Builder()
+        .datapath(loadBalancerLoggingDatapathPatchModel)
         .build();
 
       SubnetIdentityById subnetIdentityModel = new SubnetIdentityById.Builder()
@@ -9490,7 +9636,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       LoadBalancerPatch loadBalancerPatchModel = new LoadBalancerPatch.Builder()
-        .logging(loadBalancerLoggingModel)
+        .logging(loadBalancerLoggingPatchModel)
         .name("my-load-balancer")
         .subnets(java.util.Arrays.asList(subnetIdentityModel))
         .build();
@@ -11215,7 +11361,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       Response<Void> response = service.deleteBareMetalServer(deleteBareMetalServerOptions).execute();
       // Validate response
       assertNotNull(response);
-      assertEquals(response.getStatusCode(), 204);
+      assertEquals(response.getStatusCode(), 202);
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -11279,6 +11425,25 @@ public class VpcIT extends SdkIntegrationTestBase {
   }
 
   @Test(dependsOnMethods = { "testDeleteSnapshot" })
+  public void testDeleteSnapshotClone() throws Exception {
+    try {
+      DeleteSnapshotCloneOptions deleteSnapshotCloneOptions = new DeleteSnapshotCloneOptions.Builder()
+        .id("testString")
+        .zoneName("testString")
+        .build();
+
+      // Invoke operation
+      Response<Void> response = service.deleteSnapshotClone(deleteSnapshotCloneOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 202);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testDeleteSnapshotClone" })
   public void testDeletePublicGateway() throws Exception {
     try {
       DeletePublicGatewayOptions deletePublicGatewayOptions = new DeletePublicGatewayOptions.Builder()

@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2020, 2021, 2022.
+ * (C) Copyright IBM Corp. 2021, 2022, 2023.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -66,7 +66,7 @@ public class CreateVpcRoutingTableOptionsTest {
     CreateVpcRoutingTableOptions createVpcRoutingTableOptionsModel = new CreateVpcRoutingTableOptions.Builder()
       .vpcId("testString")
       .acceptRoutesFrom(java.util.Arrays.asList(resourceFilterModel))
-      .name("my-routing-table-2")
+      .name("my-routing-table-1")
       .routeDirectLinkIngress(false)
       .routeInternetIngress(false)
       .routeTransitGatewayIngress(false)
@@ -75,7 +75,7 @@ public class CreateVpcRoutingTableOptionsTest {
       .build();
     assertEquals(createVpcRoutingTableOptionsModel.vpcId(), "testString");
     assertEquals(createVpcRoutingTableOptionsModel.acceptRoutesFrom(), java.util.Arrays.asList(resourceFilterModel));
-    assertEquals(createVpcRoutingTableOptionsModel.name(), "my-routing-table-2");
+    assertEquals(createVpcRoutingTableOptionsModel.name(), "my-routing-table-1");
     assertEquals(createVpcRoutingTableOptionsModel.routeDirectLinkIngress(), Boolean.valueOf(false));
     assertEquals(createVpcRoutingTableOptionsModel.routeInternetIngress(), Boolean.valueOf(false));
     assertEquals(createVpcRoutingTableOptionsModel.routeTransitGatewayIngress(), Boolean.valueOf(false));

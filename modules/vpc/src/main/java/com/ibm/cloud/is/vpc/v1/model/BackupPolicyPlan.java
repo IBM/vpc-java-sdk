@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2020, 2021, 2022.
+ * (C) Copyright IBM Corp. 2021, 2022, 2023.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -54,6 +54,8 @@ public class BackupPolicyPlan extends GenericModel {
   protected Boolean active;
   @SerializedName("attach_user_tags")
   protected List<String> attachUserTags;
+  @SerializedName("clone_policy")
+  protected BackupPolicyPlanClonePolicy clonePolicy;
   @SerializedName("copy_user_tags")
   protected Boolean copyUserTags;
   @SerializedName("created_at")
@@ -92,6 +94,15 @@ public class BackupPolicyPlan extends GenericModel {
    */
   public List<String> getAttachUserTags() {
     return attachUserTags;
+  }
+
+  /**
+   * Gets the clonePolicy.
+   *
+   * @return the clonePolicy
+   */
+  public BackupPolicyPlanClonePolicy getClonePolicy() {
+    return clonePolicy;
   }
 
   /**

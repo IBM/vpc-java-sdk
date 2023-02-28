@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2020, 2021, 2022.
+ * (C) Copyright IBM Corp. 2021, 2022, 2023.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -14,6 +14,7 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 import java.util.Map;
 
+import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 import com.ibm.cloud.sdk.core.util.GsonSingleton;
 
@@ -22,13 +23,19 @@ import com.ibm.cloud.sdk.core.util.GsonSingleton;
  */
 public class BareMetalServerPatch extends GenericModel {
 
+  @SerializedName("enable_secure_boot")
+  protected Boolean enableSecureBoot;
   protected String name;
+  @SerializedName("trusted_platform_module")
+  protected BareMetalServerTrustedPlatformModulePatch trustedPlatformModule;
 
   /**
    * Builder.
    */
   public static class Builder {
+    private Boolean enableSecureBoot;
     private String name;
+    private BareMetalServerTrustedPlatformModulePatch trustedPlatformModule;
 
     /**
      * Instantiates a new Builder from an existing BareMetalServerPatch instance.
@@ -36,7 +43,9 @@ public class BareMetalServerPatch extends GenericModel {
      * @param bareMetalServerPatch the instance to initialize the Builder with
      */
     private Builder(BareMetalServerPatch bareMetalServerPatch) {
+      this.enableSecureBoot = bareMetalServerPatch.enableSecureBoot;
       this.name = bareMetalServerPatch.name;
+      this.trustedPlatformModule = bareMetalServerPatch.trustedPlatformModule;
     }
 
     /**
@@ -55,6 +64,17 @@ public class BareMetalServerPatch extends GenericModel {
     }
 
     /**
+     * Set the enableSecureBoot.
+     *
+     * @param enableSecureBoot the enableSecureBoot
+     * @return the BareMetalServerPatch builder
+     */
+    public Builder enableSecureBoot(Boolean enableSecureBoot) {
+      this.enableSecureBoot = enableSecureBoot;
+      return this;
+    }
+
+    /**
      * Set the name.
      *
      * @param name the name
@@ -64,12 +84,25 @@ public class BareMetalServerPatch extends GenericModel {
       this.name = name;
       return this;
     }
+
+    /**
+     * Set the trustedPlatformModule.
+     *
+     * @param trustedPlatformModule the trustedPlatformModule
+     * @return the BareMetalServerPatch builder
+     */
+    public Builder trustedPlatformModule(BareMetalServerTrustedPlatformModulePatch trustedPlatformModule) {
+      this.trustedPlatformModule = trustedPlatformModule;
+      return this;
+    }
   }
 
   protected BareMetalServerPatch() { }
 
   protected BareMetalServerPatch(Builder builder) {
+    enableSecureBoot = builder.enableSecureBoot;
     name = builder.name;
+    trustedPlatformModule = builder.trustedPlatformModule;
   }
 
   /**
@@ -82,6 +115,21 @@ public class BareMetalServerPatch extends GenericModel {
   }
 
   /**
+   * Gets the enableSecureBoot.
+   *
+   * Indicates whether secure boot is enabled. If enabled, the image must support secure boot or the bare metal server
+   * will fail to boot.
+   *
+   * For `enable_secure_boot` to be changed, the bare metal server `status` must be
+   * `stopped`.
+   *
+   * @return the enableSecureBoot
+   */
+  public Boolean enableSecureBoot() {
+    return enableSecureBoot;
+  }
+
+  /**
    * Gets the name.
    *
    * The name for this bare metal server. The name must not be used by another bare metal server in the region. Changing
@@ -91,6 +139,15 @@ public class BareMetalServerPatch extends GenericModel {
    */
   public String name() {
     return name;
+  }
+
+  /**
+   * Gets the trustedPlatformModule.
+   *
+   * @return the trustedPlatformModule
+   */
+  public BareMetalServerTrustedPlatformModulePatch trustedPlatformModule() {
+    return trustedPlatformModule;
   }
 
   /**

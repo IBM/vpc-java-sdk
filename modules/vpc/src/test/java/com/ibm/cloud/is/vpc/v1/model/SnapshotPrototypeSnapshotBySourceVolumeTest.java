@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2020, 2021, 2022.
+ * (C) Copyright IBM Corp. 2021, 2022, 2023.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -14,8 +14,10 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.SnapshotClonePrototype;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotPrototypeSnapshotBySourceVolume;
 import com.ibm.cloud.is.vpc.v1.model.VolumeIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.ZoneIdentityByName;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -33,6 +35,16 @@ public class SnapshotPrototypeSnapshotBySourceVolumeTest {
 
   @Test
   public void testSnapshotPrototypeSnapshotBySourceVolume() throws Throwable {
+    ZoneIdentityByName zoneIdentityModel = new ZoneIdentityByName.Builder()
+      .name("us-south-1")
+      .build();
+    assertEquals(zoneIdentityModel.name(), "us-south-1");
+
+    SnapshotClonePrototype snapshotClonePrototypeModel = new SnapshotClonePrototype.Builder()
+      .zone(zoneIdentityModel)
+      .build();
+    assertEquals(snapshotClonePrototypeModel.zone(), zoneIdentityModel);
+
     ResourceGroupIdentityById resourceGroupIdentityModel = new ResourceGroupIdentityById.Builder()
       .id("fee82deba12e4c0fb69c3b09d1f12345")
       .build();
@@ -44,11 +56,13 @@ public class SnapshotPrototypeSnapshotBySourceVolumeTest {
     assertEquals(volumeIdentityModel.id(), "1a6b7274-678d-4dfb-8981-c71dd9d4daa5");
 
     SnapshotPrototypeSnapshotBySourceVolume snapshotPrototypeSnapshotBySourceVolumeModel = new SnapshotPrototypeSnapshotBySourceVolume.Builder()
+      .clones(java.util.Arrays.asList(snapshotClonePrototypeModel))
       .name("my-snapshot")
       .resourceGroup(resourceGroupIdentityModel)
       .userTags(java.util.Arrays.asList("testString"))
       .sourceVolume(volumeIdentityModel)
       .build();
+    assertEquals(snapshotPrototypeSnapshotBySourceVolumeModel.clones(), java.util.Arrays.asList(snapshotClonePrototypeModel));
     assertEquals(snapshotPrototypeSnapshotBySourceVolumeModel.name(), "my-snapshot");
     assertEquals(snapshotPrototypeSnapshotBySourceVolumeModel.resourceGroup(), resourceGroupIdentityModel);
     assertEquals(snapshotPrototypeSnapshotBySourceVolumeModel.userTags(), java.util.Arrays.asList("testString"));

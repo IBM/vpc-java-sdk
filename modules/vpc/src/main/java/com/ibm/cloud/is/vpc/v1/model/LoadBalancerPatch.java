@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2020, 2021, 2022.
+ * (C) Copyright IBM Corp. 2021, 2022, 2023.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -24,7 +24,7 @@ import com.ibm.cloud.sdk.core.util.GsonSingleton;
  */
 public class LoadBalancerPatch extends GenericModel {
 
-  protected LoadBalancerLogging logging;
+  protected LoadBalancerLoggingPatch logging;
   protected String name;
   protected List<SubnetIdentity> subnets;
 
@@ -32,7 +32,7 @@ public class LoadBalancerPatch extends GenericModel {
    * Builder.
    */
   public static class Builder {
-    private LoadBalancerLogging logging;
+    private LoadBalancerLoggingPatch logging;
     private String name;
     private List<SubnetIdentity> subnets;
 
@@ -84,7 +84,7 @@ public class LoadBalancerPatch extends GenericModel {
      * @param logging the logging
      * @return the LoadBalancerPatch builder
      */
-    public Builder logging(LoadBalancerLogging logging) {
+    public Builder logging(LoadBalancerLoggingPatch logging) {
       this.logging = logging;
       return this;
     }
@@ -139,7 +139,7 @@ public class LoadBalancerPatch extends GenericModel {
    *
    * @return the logging
    */
-  public LoadBalancerLogging logging() {
+  public LoadBalancerLoggingPatch logging() {
     return logging;
   }
 

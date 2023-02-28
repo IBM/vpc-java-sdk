@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2020, 2021, 2022.
+ * (C) Copyright IBM Corp. 2021, 2022, 2023.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -18,8 +18,8 @@ import com.ibm.cloud.is.vpc.v1.model.CreateLoadBalancerOptions;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerHTTPSRedirectPrototype;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPrototypeLoadBalancerContext;
-import com.ibm.cloud.is.vpc.v1.model.LoadBalancerLogging;
-import com.ibm.cloud.is.vpc.v1.model.LoadBalancerLoggingDatapath;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerLoggingDatapathPrototype;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerLoggingPrototype;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolHealthMonitorPrototype;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolIdentityByName;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolMemberPrototype;
@@ -51,6 +51,11 @@ public class CreateLoadBalancerOptionsTest {
       .id("7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
       .build();
     assertEquals(subnetIdentityModel.id(), "7ec86020-1c6e-4889-b3f0-a15f2e50f87e");
+
+    LoadBalancerLoggingDatapathPrototype loadBalancerLoggingDatapathPrototypeModel = new LoadBalancerLoggingDatapathPrototype.Builder()
+      .active(true)
+      .build();
+    assertEquals(loadBalancerLoggingDatapathPrototypeModel.active(), Boolean.valueOf(true));
 
     CertificateInstanceIdentityByCRN certificateInstanceIdentityModel = new CertificateInstanceIdentityByCRN.Builder()
       .crn("crn:v1:bluemix:public:secrets-manager:us-south:a/123456:36fa422d-080d-4d83-8d2d-86851b4001df:secret:2e786aab-42fa-63ed-14f8-d66d552f4dd5")
@@ -97,15 +102,10 @@ public class CreateLoadBalancerOptionsTest {
     assertEquals(loadBalancerListenerPrototypeLoadBalancerContextModel.portMin(), Long.valueOf("443"));
     assertEquals(loadBalancerListenerPrototypeLoadBalancerContextModel.protocol(), "http");
 
-    LoadBalancerLoggingDatapath loadBalancerLoggingDatapathModel = new LoadBalancerLoggingDatapath.Builder()
-      .active(true)
+    LoadBalancerLoggingPrototype loadBalancerLoggingPrototypeModel = new LoadBalancerLoggingPrototype.Builder()
+      .datapath(loadBalancerLoggingDatapathPrototypeModel)
       .build();
-    assertEquals(loadBalancerLoggingDatapathModel.active(), Boolean.valueOf(true));
-
-    LoadBalancerLogging loadBalancerLoggingModel = new LoadBalancerLogging.Builder()
-      .datapath(loadBalancerLoggingDatapathModel)
-      .build();
-    assertEquals(loadBalancerLoggingModel.datapath(), loadBalancerLoggingDatapathModel);
+    assertEquals(loadBalancerLoggingPrototypeModel.datapath(), loadBalancerLoggingDatapathPrototypeModel);
 
     LoadBalancerPoolHealthMonitorPrototype loadBalancerPoolHealthMonitorPrototypeModel = new LoadBalancerPoolHealthMonitorPrototype.Builder()
       .delay(Long.valueOf("5"))
@@ -178,8 +178,9 @@ public class CreateLoadBalancerOptionsTest {
     CreateLoadBalancerOptions createLoadBalancerOptionsModel = new CreateLoadBalancerOptions.Builder()
       .isPublic(true)
       .subnets(java.util.Arrays.asList(subnetIdentityModel))
+      .datapath(loadBalancerLoggingDatapathPrototypeModel)
       .listeners(java.util.Arrays.asList(loadBalancerListenerPrototypeLoadBalancerContextModel))
-      .logging(loadBalancerLoggingModel)
+      .logging(loadBalancerLoggingPrototypeModel)
       .name("my-load-balancer")
       .pools(java.util.Arrays.asList(loadBalancerPoolPrototypeModel))
       .profile(loadBalancerProfileIdentityModel)
@@ -189,8 +190,9 @@ public class CreateLoadBalancerOptionsTest {
       .build();
     assertEquals(createLoadBalancerOptionsModel.isPublic(), Boolean.valueOf(true));
     assertEquals(createLoadBalancerOptionsModel.subnets(), java.util.Arrays.asList(subnetIdentityModel));
+    assertEquals(createLoadBalancerOptionsModel.datapath(), loadBalancerLoggingDatapathPrototypeModel);
     assertEquals(createLoadBalancerOptionsModel.listeners(), java.util.Arrays.asList(loadBalancerListenerPrototypeLoadBalancerContextModel));
-    assertEquals(createLoadBalancerOptionsModel.logging(), loadBalancerLoggingModel);
+    assertEquals(createLoadBalancerOptionsModel.logging(), loadBalancerLoggingPrototypeModel);
     assertEquals(createLoadBalancerOptionsModel.name(), "my-load-balancer");
     assertEquals(createLoadBalancerOptionsModel.pools(), java.util.Arrays.asList(loadBalancerPoolPrototypeModel));
     assertEquals(createLoadBalancerOptionsModel.profile(), loadBalancerProfileIdentityModel);

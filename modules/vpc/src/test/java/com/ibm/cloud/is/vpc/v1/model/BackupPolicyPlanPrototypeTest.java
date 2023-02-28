@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2020, 2021, 2022.
+ * (C) Copyright IBM Corp. 2021, 2022, 2023.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -13,8 +13,10 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanClonePolicyPrototype;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanDeletionTriggerPrototype;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanPrototype;
+import com.ibm.cloud.is.vpc.v1.model.ZoneIdentityByName;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -32,6 +34,18 @@ public class BackupPolicyPlanPrototypeTest {
 
   @Test
   public void testBackupPolicyPlanPrototype() throws Throwable {
+    ZoneIdentityByName zoneIdentityModel = new ZoneIdentityByName.Builder()
+      .name("us-south-1")
+      .build();
+    assertEquals(zoneIdentityModel.name(), "us-south-1");
+
+    BackupPolicyPlanClonePolicyPrototype backupPolicyPlanClonePolicyPrototypeModel = new BackupPolicyPlanClonePolicyPrototype.Builder()
+      .maxSnapshots(Long.valueOf("26"))
+      .zones(java.util.Arrays.asList(zoneIdentityModel))
+      .build();
+    assertEquals(backupPolicyPlanClonePolicyPrototypeModel.maxSnapshots(), Long.valueOf("26"));
+    assertEquals(backupPolicyPlanClonePolicyPrototypeModel.zones(), java.util.Arrays.asList(zoneIdentityModel));
+
     BackupPolicyPlanDeletionTriggerPrototype backupPolicyPlanDeletionTriggerPrototypeModel = new BackupPolicyPlanDeletionTriggerPrototype.Builder()
       .deleteAfter(Long.valueOf("20"))
       .deleteOverCount(Long.valueOf("20"))
@@ -42,6 +56,7 @@ public class BackupPolicyPlanPrototypeTest {
     BackupPolicyPlanPrototype backupPolicyPlanPrototypeModel = new BackupPolicyPlanPrototype.Builder()
       .active(true)
       .attachUserTags(java.util.Arrays.asList("my-daily-backup-plan"))
+      .clonePolicy(backupPolicyPlanClonePolicyPrototypeModel)
       .copyUserTags(true)
       .cronSpec("30 */2 * * 1-5")
       .deletionTrigger(backupPolicyPlanDeletionTriggerPrototypeModel)
@@ -49,6 +64,7 @@ public class BackupPolicyPlanPrototypeTest {
       .build();
     assertEquals(backupPolicyPlanPrototypeModel.active(), Boolean.valueOf(true));
     assertEquals(backupPolicyPlanPrototypeModel.attachUserTags(), java.util.Arrays.asList("my-daily-backup-plan"));
+    assertEquals(backupPolicyPlanPrototypeModel.clonePolicy(), backupPolicyPlanClonePolicyPrototypeModel);
     assertEquals(backupPolicyPlanPrototypeModel.copyUserTags(), Boolean.valueOf(true));
     assertEquals(backupPolicyPlanPrototypeModel.cronSpec(), "30 */2 * * 1-5");
     assertEquals(backupPolicyPlanPrototypeModel.deletionTrigger(), backupPolicyPlanDeletionTriggerPrototypeModel);
@@ -59,6 +75,7 @@ public class BackupPolicyPlanPrototypeTest {
     BackupPolicyPlanPrototype backupPolicyPlanPrototypeModelNew = TestUtilities.deserialize(json, BackupPolicyPlanPrototype.class);
     assertTrue(backupPolicyPlanPrototypeModelNew instanceof BackupPolicyPlanPrototype);
     assertEquals(backupPolicyPlanPrototypeModelNew.active(), Boolean.valueOf(true));
+    assertEquals(backupPolicyPlanPrototypeModelNew.clonePolicy().toString(), backupPolicyPlanClonePolicyPrototypeModel.toString());
     assertEquals(backupPolicyPlanPrototypeModelNew.copyUserTags(), Boolean.valueOf(true));
     assertEquals(backupPolicyPlanPrototypeModelNew.cronSpec(), "30 */2 * * 1-5");
     assertEquals(backupPolicyPlanPrototypeModelNew.deletionTrigger().toString(), backupPolicyPlanDeletionTriggerPrototypeModel.toString());

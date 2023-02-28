@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2020, 2021, 2022.
+ * (C) Copyright IBM Corp. 2021, 2022, 2023.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -35,6 +35,7 @@ public class NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolTCPUD
       .action("allow")
       .destination("192.168.3.2/32")
       .direction("inbound")
+      .ipVersion("ipv4")
       .name("my-rule-2")
       .source("192.168.3.2/32")
       .destinationPortMax(Long.valueOf("22"))
@@ -46,6 +47,7 @@ public class NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolTCPUD
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolTcpudpPrototypeModel.action(), "allow");
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolTcpudpPrototypeModel.destination(), "192.168.3.2/32");
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolTcpudpPrototypeModel.direction(), "inbound");
+    assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolTcpudpPrototypeModel.ipVersion(), "ipv4");
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolTcpudpPrototypeModel.name(), "my-rule-2");
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolTcpudpPrototypeModel.source(), "192.168.3.2/32");
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolTcpudpPrototypeModel.destinationPortMax(), Long.valueOf("22"));
@@ -61,6 +63,7 @@ public class NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolTCPUD
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolTcpudpPrototypeModelNew.action(), "allow");
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolTcpudpPrototypeModelNew.destination(), "192.168.3.2/32");
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolTcpudpPrototypeModelNew.direction(), "inbound");
+    assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolTcpudpPrototypeModelNew.ipVersion(), "ipv4");
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolTcpudpPrototypeModelNew.name(), "my-rule-2");
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolTcpudpPrototypeModelNew.source(), "192.168.3.2/32");
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolTcpudpPrototypeModelNew.destinationPortMax(), Long.valueOf("22"));

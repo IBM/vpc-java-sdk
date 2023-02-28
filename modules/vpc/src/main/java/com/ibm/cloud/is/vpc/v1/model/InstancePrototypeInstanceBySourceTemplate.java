@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2020, 2021, 2022.
+ * (C) Copyright IBM Corp. 2021, 2022, 2023.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -25,7 +25,7 @@ public class InstancePrototypeInstanceBySourceTemplate extends InstancePrototype
    * Builder.
    */
   public static class Builder {
-    private InstanceAvailabilityPrototype availabilityPolicy;
+    private InstanceAvailabilityPolicyPrototype availabilityPolicy;
     private InstanceDefaultTrustedProfilePrototype defaultTrustedProfile;
     private List<KeyIdentity> keys;
     private InstanceMetadataServicePrototype metadataService;
@@ -150,7 +150,7 @@ public class InstancePrototypeInstanceBySourceTemplate extends InstancePrototype
      * @param availabilityPolicy the availabilityPolicy
      * @return the InstancePrototypeInstanceBySourceTemplate builder
      */
-    public Builder availabilityPolicy(InstanceAvailabilityPrototype availabilityPolicy) {
+    public Builder availabilityPolicy(InstanceAvailabilityPolicyPrototype availabilityPolicy) {
       this.availabilityPolicy = availabilityPolicy;
       return this;
     }

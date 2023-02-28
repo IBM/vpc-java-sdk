@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2020, 2021, 2022.
+ * (C) Copyright IBM Corp. 2021, 2022, 2023.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -43,6 +43,7 @@ public class ListSnapshotsOptionsTest {
       .sourceImageCrn("testString")
       .sort("name")
       .backupPolicyPlanId("testString")
+      .clonesZoneName("testString")
       .build();
     assertEquals(listSnapshotsOptionsModel.start(), "testString");
     assertEquals(listSnapshotsOptionsModel.limit(), Long.valueOf("1"));
@@ -55,5 +56,6 @@ public class ListSnapshotsOptionsTest {
     assertEquals(listSnapshotsOptionsModel.sourceImageCrn(), "testString");
     assertEquals(listSnapshotsOptionsModel.sort(), "name");
     assertEquals(listSnapshotsOptionsModel.backupPolicyPlanId(), "testString");
+    assertEquals(listSnapshotsOptionsModel.clonesZoneName(), "testString");
   }
 }
