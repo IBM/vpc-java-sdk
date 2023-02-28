@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2020, 2021, 2022.
+ * (C) Copyright IBM Corp. 2021, 2022, 2023.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -42,6 +42,7 @@ public class ListSnapshotsOptions extends GenericModel {
   protected String sourceImageCrn;
   protected String sort;
   protected String backupPolicyPlanId;
+  protected String clonesZoneName;
 
   /**
    * Builder.
@@ -58,6 +59,7 @@ public class ListSnapshotsOptions extends GenericModel {
     private String sourceImageCrn;
     private String sort;
     private String backupPolicyPlanId;
+    private String clonesZoneName;
 
     /**
      * Instantiates a new Builder from an existing ListSnapshotsOptions instance.
@@ -76,6 +78,7 @@ public class ListSnapshotsOptions extends GenericModel {
       this.sourceImageCrn = listSnapshotsOptions.sourceImageCrn;
       this.sort = listSnapshotsOptions.sort;
       this.backupPolicyPlanId = listSnapshotsOptions.backupPolicyPlanId;
+      this.clonesZoneName = listSnapshotsOptions.clonesZoneName;
     }
 
     /**
@@ -213,6 +216,17 @@ public class ListSnapshotsOptions extends GenericModel {
       this.backupPolicyPlanId = backupPolicyPlanId;
       return this;
     }
+
+    /**
+     * Set the clonesZoneName.
+     *
+     * @param clonesZoneName the clonesZoneName
+     * @return the ListSnapshotsOptions builder
+     */
+    public Builder clonesZoneName(String clonesZoneName) {
+      this.clonesZoneName = clonesZoneName;
+      return this;
+    }
   }
 
   protected ListSnapshotsOptions() { }
@@ -229,6 +243,7 @@ public class ListSnapshotsOptions extends GenericModel {
     sourceImageCrn = builder.sourceImageCrn;
     sort = builder.sort;
     backupPolicyPlanId = builder.backupPolicyPlanId;
+    clonesZoneName = builder.clonesZoneName;
   }
 
   /**
@@ -367,6 +382,17 @@ public class ListSnapshotsOptions extends GenericModel {
    */
   public String backupPolicyPlanId() {
     return backupPolicyPlanId;
+  }
+
+  /**
+   * Gets the clonesZoneName.
+   *
+   * Filters the collection to resources with a clone in the specified zone.
+   *
+   * @return the clonesZoneName
+   */
+  public String clonesZoneName() {
+    return clonesZoneName;
   }
 }
 

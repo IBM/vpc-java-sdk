@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2020, 2021, 2022.
+ * (C) Copyright IBM Corp. 2021, 2022, 2023.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -14,6 +14,7 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerPatch;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerTrustedPlatformModulePatch;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -32,26 +33,45 @@ public class BareMetalServerPatchTest {
 
   @Test
   public void testBareMetalServerPatch() throws Throwable {
-    BareMetalServerPatch bareMetalServerPatchModel = new BareMetalServerPatch.Builder()
-      .name("my-bare-metal-server")
+    BareMetalServerTrustedPlatformModulePatch bareMetalServerTrustedPlatformModulePatchModel = new BareMetalServerTrustedPlatformModulePatch.Builder()
+      .mode("disabled")
       .build();
+    assertEquals(bareMetalServerTrustedPlatformModulePatchModel.mode(), "disabled");
+
+    BareMetalServerPatch bareMetalServerPatchModel = new BareMetalServerPatch.Builder()
+      .enableSecureBoot(false)
+      .name("my-bare-metal-server")
+      .trustedPlatformModule(bareMetalServerTrustedPlatformModulePatchModel)
+      .build();
+    assertEquals(bareMetalServerPatchModel.enableSecureBoot(), Boolean.valueOf(false));
     assertEquals(bareMetalServerPatchModel.name(), "my-bare-metal-server");
+    assertEquals(bareMetalServerPatchModel.trustedPlatformModule(), bareMetalServerTrustedPlatformModulePatchModel);
 
     String json = TestUtilities.serialize(bareMetalServerPatchModel);
 
     BareMetalServerPatch bareMetalServerPatchModelNew = TestUtilities.deserialize(json, BareMetalServerPatch.class);
     assertTrue(bareMetalServerPatchModelNew instanceof BareMetalServerPatch);
+    assertEquals(bareMetalServerPatchModelNew.enableSecureBoot(), Boolean.valueOf(false));
     assertEquals(bareMetalServerPatchModelNew.name(), "my-bare-metal-server");
+    assertEquals(bareMetalServerPatchModelNew.trustedPlatformModule().toString(), bareMetalServerTrustedPlatformModulePatchModel.toString());
   }
   @Test
   public void testBareMetalServerPatchAsPatch() throws Throwable {
+    BareMetalServerTrustedPlatformModulePatch bareMetalServerTrustedPlatformModulePatchModel = new BareMetalServerTrustedPlatformModulePatch.Builder()
+      .mode("disabled")
+      .build();
+
     BareMetalServerPatch bareMetalServerPatchModel = new BareMetalServerPatch.Builder()
+      .enableSecureBoot(false)
       .name("my-bare-metal-server")
+      .trustedPlatformModule(bareMetalServerTrustedPlatformModulePatchModel)
       .build();
 
     Map<String, Object> mergePatch = bareMetalServerPatchModel.asPatch();
 
+    assertTrue(mergePatch.containsKey("enable_secure_boot"));
     assertEquals(mergePatch.get("name"), "my-bare-metal-server");
+    assertTrue(mergePatch.containsKey("trusted_platform_module"));
   }
 
 }

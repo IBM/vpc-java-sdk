@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2020, 2021, 2022.
+ * (C) Copyright IBM Corp. 2021, 2022, 2023.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -21,73 +21,7 @@ public class LoadBalancerLoggingDatapath extends GenericModel {
 
   protected Boolean active;
 
-  /**
-   * Builder.
-   */
-  public static class Builder {
-    private Boolean active;
-
-    /**
-     * Instantiates a new Builder from an existing LoadBalancerLoggingDatapath instance.
-     *
-     * @param loadBalancerLoggingDatapath the instance to initialize the Builder with
-     */
-    private Builder(LoadBalancerLoggingDatapath loadBalancerLoggingDatapath) {
-      this.active = loadBalancerLoggingDatapath.active;
-    }
-
-    /**
-     * Instantiates a new builder.
-     */
-    public Builder() {
-    }
-
-    /**
-     * Instantiates a new builder with required properties.
-     *
-     * @param active the active
-     */
-    public Builder(Boolean active) {
-      this.active = active;
-    }
-
-    /**
-     * Builds a LoadBalancerLoggingDatapath.
-     *
-     * @return the new LoadBalancerLoggingDatapath instance
-     */
-    public LoadBalancerLoggingDatapath build() {
-      return new LoadBalancerLoggingDatapath(this);
-    }
-
-    /**
-     * Set the active.
-     *
-     * @param active the active
-     * @return the LoadBalancerLoggingDatapath builder
-     */
-    public Builder active(Boolean active) {
-      this.active = active;
-      return this;
-    }
-  }
-
   protected LoadBalancerLoggingDatapath() { }
-
-  protected LoadBalancerLoggingDatapath(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.active,
-      "active cannot be null");
-    active = builder.active;
-  }
-
-  /**
-   * New builder.
-   *
-   * @return a LoadBalancerLoggingDatapath builder
-   */
-  public Builder newBuilder() {
-    return new Builder(this);
-  }
 
   /**
    * Gets the active.
@@ -96,7 +30,7 @@ public class LoadBalancerLoggingDatapath extends GenericModel {
    *
    * @return the active
    */
-  public Boolean active() {
+  public Boolean isActive() {
     return active;
   }
 }

@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2020, 2021, 2022.
+ * (C) Copyright IBM Corp. 2021, 2022, 2023.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -28,6 +28,8 @@ public class BackupPolicyPlanPatch extends GenericModel {
   protected Boolean active;
   @SerializedName("attach_user_tags")
   protected List<String> attachUserTags;
+  @SerializedName("clone_policy")
+  protected BackupPolicyPlanClonePolicyPatch clonePolicy;
   @SerializedName("copy_user_tags")
   protected Boolean copyUserTags;
   @SerializedName("cron_spec")
@@ -42,6 +44,7 @@ public class BackupPolicyPlanPatch extends GenericModel {
   public static class Builder {
     private Boolean active;
     private List<String> attachUserTags;
+    private BackupPolicyPlanClonePolicyPatch clonePolicy;
     private Boolean copyUserTags;
     private String cronSpec;
     private BackupPolicyPlanDeletionTriggerPatch deletionTrigger;
@@ -55,6 +58,7 @@ public class BackupPolicyPlanPatch extends GenericModel {
     private Builder(BackupPolicyPlanPatch backupPolicyPlanPatch) {
       this.active = backupPolicyPlanPatch.active;
       this.attachUserTags = backupPolicyPlanPatch.attachUserTags;
+      this.clonePolicy = backupPolicyPlanPatch.clonePolicy;
       this.copyUserTags = backupPolicyPlanPatch.copyUserTags;
       this.cronSpec = backupPolicyPlanPatch.cronSpec;
       this.deletionTrigger = backupPolicyPlanPatch.deletionTrigger;
@@ -116,6 +120,17 @@ public class BackupPolicyPlanPatch extends GenericModel {
     }
 
     /**
+     * Set the clonePolicy.
+     *
+     * @param clonePolicy the clonePolicy
+     * @return the BackupPolicyPlanPatch builder
+     */
+    public Builder clonePolicy(BackupPolicyPlanClonePolicyPatch clonePolicy) {
+      this.clonePolicy = clonePolicy;
+      return this;
+    }
+
+    /**
      * Set the copyUserTags.
      *
      * @param copyUserTags the copyUserTags
@@ -165,6 +180,7 @@ public class BackupPolicyPlanPatch extends GenericModel {
   protected BackupPolicyPlanPatch(Builder builder) {
     active = builder.active;
     attachUserTags = builder.attachUserTags;
+    clonePolicy = builder.clonePolicy;
     copyUserTags = builder.copyUserTags;
     cronSpec = builder.cronSpec;
     deletionTrigger = builder.deletionTrigger;
@@ -201,6 +217,15 @@ public class BackupPolicyPlanPatch extends GenericModel {
    */
   public List<String> attachUserTags() {
     return attachUserTags;
+  }
+
+  /**
+   * Gets the clonePolicy.
+   *
+   * @return the clonePolicy
+   */
+  public BackupPolicyPlanClonePolicyPatch clonePolicy() {
+    return clonePolicy;
   }
 
   /**

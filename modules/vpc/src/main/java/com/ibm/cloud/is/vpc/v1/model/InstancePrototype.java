@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2020, 2021, 2022.
+ * (C) Copyright IBM Corp. 2021, 2022, 2023.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -29,7 +29,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class InstancePrototype extends GenericModel {
 
   @SerializedName("availability_policy")
-  protected InstanceAvailabilityPrototype availabilityPolicy;
+  protected InstanceAvailabilityPolicyPrototype availabilityPolicy;
   @SerializedName("default_trusted_profile")
   protected InstanceDefaultTrustedProfilePrototype defaultTrustedProfile;
   protected List<KeyIdentity> keys;
@@ -70,7 +70,7 @@ public class InstancePrototype extends GenericModel {
    *
    * @return the availabilityPolicy
    */
-  public InstanceAvailabilityPrototype availabilityPolicy() {
+  public InstanceAvailabilityPolicyPrototype availabilityPolicy() {
     return availabilityPolicy;
   }
 

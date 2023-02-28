@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2020, 2021, 2022.
+ * (C) Copyright IBM Corp. 2021, 2022, 2023.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -43,8 +43,12 @@ public class InstancePatchTest {
 
     InstanceMetadataServicePatch instanceMetadataServicePatchModel = new InstanceMetadataServicePatch.Builder()
       .enabled(true)
+      .protocol("http")
+      .responseHopLimit(Long.valueOf("1"))
       .build();
     assertEquals(instanceMetadataServicePatchModel.enabled(), Boolean.valueOf(true));
+    assertEquals(instanceMetadataServicePatchModel.protocol(), "http");
+    assertEquals(instanceMetadataServicePatchModel.responseHopLimit(), Long.valueOf("1"));
 
     InstancePlacementTargetPatchDedicatedHostIdentityDedicatedHostIdentityById instancePlacementTargetPatchModel = new InstancePlacementTargetPatchDedicatedHostIdentityDedicatedHostIdentityById.Builder()
       .id("1e09281b-f177-46fb-baf1-bc152b2e391a")
@@ -90,6 +94,8 @@ public class InstancePatchTest {
 
     InstanceMetadataServicePatch instanceMetadataServicePatchModel = new InstanceMetadataServicePatch.Builder()
       .enabled(true)
+      .protocol("http")
+      .responseHopLimit(Long.valueOf("1"))
       .build();
 
     InstancePlacementTargetPatchDedicatedHostIdentityDedicatedHostIdentityById instancePlacementTargetPatchModel = new InstancePlacementTargetPatchDedicatedHostIdentityDedicatedHostIdentityById.Builder()

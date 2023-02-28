@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2020, 2021, 2022.
+ * (C) Copyright IBM Corp. 2021, 2022, 2023.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -49,6 +49,7 @@ public class CreateNetworkAclOptionsTest {
       .action("allow")
       .destination("192.168.3.2/32")
       .direction("inbound")
+      .ipVersion("ipv4")
       .name("my-rule-2")
       .source("192.168.3.2/32")
       .destinationPortMax(Long.valueOf("22"))
@@ -60,6 +61,7 @@ public class CreateNetworkAclOptionsTest {
     assertEquals(networkAclRulePrototypeNetworkAclContextModel.action(), "allow");
     assertEquals(networkAclRulePrototypeNetworkAclContextModel.destination(), "192.168.3.2/32");
     assertEquals(networkAclRulePrototypeNetworkAclContextModel.direction(), "inbound");
+    assertEquals(networkAclRulePrototypeNetworkAclContextModel.ipVersion(), "ipv4");
     assertEquals(networkAclRulePrototypeNetworkAclContextModel.name(), "my-rule-2");
     assertEquals(networkAclRulePrototypeNetworkAclContextModel.source(), "192.168.3.2/32");
     assertEquals(networkAclRulePrototypeNetworkAclContextModel.destinationPortMax(), Long.valueOf("22"));

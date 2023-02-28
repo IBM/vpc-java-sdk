@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2020, 2021, 2022.
+ * (C) Copyright IBM Corp. 2021, 2022, 2023.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -327,7 +327,9 @@ public class NetworkACLRulePatch extends GenericModel {
   /**
    * Gets the code.
    *
-   * The ICMP traffic code to match.
+   * The ICMP traffic code to match. If set, `type` must also be set.
+   *
+   * Specify `null` to remove an existing ICMP traffic code.
    *
    * @return the code
    */
@@ -438,6 +440,8 @@ public class NetworkACLRulePatch extends GenericModel {
    * Gets the type.
    *
    * The ICMP traffic type to match.
+   *
+   * Specify `null` to remove an existing ICMP traffic type value.
    *
    * @return the type
    */

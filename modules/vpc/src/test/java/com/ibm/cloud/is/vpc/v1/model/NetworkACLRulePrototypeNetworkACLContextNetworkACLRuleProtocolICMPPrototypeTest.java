@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2020, 2021, 2022.
+ * (C) Copyright IBM Corp. 2021, 2022, 2023.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -35,6 +35,7 @@ public class NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolICMPP
       .action("allow")
       .destination("192.168.3.2/32")
       .direction("inbound")
+      .ipVersion("ipv4")
       .name("my-rule-2")
       .source("192.168.3.2/32")
       .code(Long.valueOf("0"))
@@ -44,6 +45,7 @@ public class NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolICMPP
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolIcmpPrototypeModel.action(), "allow");
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolIcmpPrototypeModel.destination(), "192.168.3.2/32");
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolIcmpPrototypeModel.direction(), "inbound");
+    assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolIcmpPrototypeModel.ipVersion(), "ipv4");
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolIcmpPrototypeModel.name(), "my-rule-2");
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolIcmpPrototypeModel.source(), "192.168.3.2/32");
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolIcmpPrototypeModel.code(), Long.valueOf("0"));
@@ -57,6 +59,7 @@ public class NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolICMPP
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolIcmpPrototypeModelNew.action(), "allow");
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolIcmpPrototypeModelNew.destination(), "192.168.3.2/32");
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolIcmpPrototypeModelNew.direction(), "inbound");
+    assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolIcmpPrototypeModelNew.ipVersion(), "ipv4");
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolIcmpPrototypeModelNew.name(), "my-rule-2");
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolIcmpPrototypeModelNew.source(), "192.168.3.2/32");
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolIcmpPrototypeModelNew.code(), Long.valueOf("0"));

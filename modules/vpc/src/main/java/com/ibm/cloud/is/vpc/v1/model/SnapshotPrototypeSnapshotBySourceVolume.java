@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2020, 2021, 2022.
+ * (C) Copyright IBM Corp. 2021, 2022, 2023.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -25,6 +25,7 @@ public class SnapshotPrototypeSnapshotBySourceVolume extends SnapshotPrototype {
    * Builder.
    */
   public static class Builder {
+    private List<SnapshotClonePrototype> clones;
     private String name;
     private ResourceGroupIdentity resourceGroup;
     private List<String> userTags;
@@ -36,6 +37,7 @@ public class SnapshotPrototypeSnapshotBySourceVolume extends SnapshotPrototype {
      * @param snapshotPrototypeSnapshotBySourceVolume the instance to initialize the Builder with
      */
     public Builder(SnapshotPrototype snapshotPrototypeSnapshotBySourceVolume) {
+      this.clones = snapshotPrototypeSnapshotBySourceVolume.clones;
       this.name = snapshotPrototypeSnapshotBySourceVolume.name;
       this.resourceGroup = snapshotPrototypeSnapshotBySourceVolume.resourceGroup;
       this.userTags = snapshotPrototypeSnapshotBySourceVolume.userTags;
@@ -67,6 +69,22 @@ public class SnapshotPrototypeSnapshotBySourceVolume extends SnapshotPrototype {
     }
 
     /**
+     * Adds an clones to clones.
+     *
+     * @param clones the new clones
+     * @return the SnapshotPrototypeSnapshotBySourceVolume builder
+     */
+    public Builder addClones(SnapshotClonePrototype clones) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(clones,
+        "clones cannot be null");
+      if (this.clones == null) {
+        this.clones = new ArrayList<SnapshotClonePrototype>();
+      }
+      this.clones.add(clones);
+      return this;
+    }
+
+    /**
      * Adds an userTags to userTags.
      *
      * @param userTags the new userTags
@@ -79,6 +97,18 @@ public class SnapshotPrototypeSnapshotBySourceVolume extends SnapshotPrototype {
         this.userTags = new ArrayList<String>();
       }
       this.userTags.add(userTags);
+      return this;
+    }
+
+    /**
+     * Set the clones.
+     * Existing clones will be replaced.
+     *
+     * @param clones the clones
+     * @return the SnapshotPrototypeSnapshotBySourceVolume builder
+     */
+    public Builder clones(List<SnapshotClonePrototype> clones) {
+      this.clones = clones;
       return this;
     }
 
@@ -133,6 +163,7 @@ public class SnapshotPrototypeSnapshotBySourceVolume extends SnapshotPrototype {
   protected SnapshotPrototypeSnapshotBySourceVolume(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.sourceVolume,
       "sourceVolume cannot be null");
+    clones = builder.clones;
     name = builder.name;
     resourceGroup = builder.resourceGroup;
     userTags = builder.userTags;

@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2020, 2021, 2022.
+ * (C) Copyright IBM Corp. 2021, 2022, 2023.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -180,7 +180,7 @@ public class VolumePatch extends GenericModel {
   /**
    * Gets the iops.
    *
-   * The maximum I/O operations per second (IOPS) to use for the volume. Applicable only to volumes using a profile
+   * The maximum I/O operations per second (IOPS) to use for this volume. Applicable only to volumes using a profile
    * `family` of `custom`. The volume must be attached as a data volume to a running virtual server instance.
    *
    * @return the iops

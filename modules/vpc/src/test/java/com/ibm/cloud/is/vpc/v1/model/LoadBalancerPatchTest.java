@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2020, 2021, 2022.
+ * (C) Copyright IBM Corp. 2021, 2022, 2023.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -13,8 +13,8 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
-import com.ibm.cloud.is.vpc.v1.model.LoadBalancerLogging;
-import com.ibm.cloud.is.vpc.v1.model.LoadBalancerLoggingDatapath;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerLoggingDatapathPatch;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerLoggingPatch;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPatch;
 import com.ibm.cloud.is.vpc.v1.model.SubnetIdentityById;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
@@ -35,15 +35,15 @@ public class LoadBalancerPatchTest {
 
   @Test
   public void testLoadBalancerPatch() throws Throwable {
-    LoadBalancerLoggingDatapath loadBalancerLoggingDatapathModel = new LoadBalancerLoggingDatapath.Builder()
+    LoadBalancerLoggingDatapathPatch loadBalancerLoggingDatapathPatchModel = new LoadBalancerLoggingDatapathPatch.Builder()
       .active(true)
       .build();
-    assertEquals(loadBalancerLoggingDatapathModel.active(), Boolean.valueOf(true));
+    assertEquals(loadBalancerLoggingDatapathPatchModel.active(), Boolean.valueOf(true));
 
-    LoadBalancerLogging loadBalancerLoggingModel = new LoadBalancerLogging.Builder()
-      .datapath(loadBalancerLoggingDatapathModel)
+    LoadBalancerLoggingPatch loadBalancerLoggingPatchModel = new LoadBalancerLoggingPatch.Builder()
+      .datapath(loadBalancerLoggingDatapathPatchModel)
       .build();
-    assertEquals(loadBalancerLoggingModel.datapath(), loadBalancerLoggingDatapathModel);
+    assertEquals(loadBalancerLoggingPatchModel.datapath(), loadBalancerLoggingDatapathPatchModel);
 
     SubnetIdentityById subnetIdentityModel = new SubnetIdentityById.Builder()
       .id("7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
@@ -51,11 +51,11 @@ public class LoadBalancerPatchTest {
     assertEquals(subnetIdentityModel.id(), "7ec86020-1c6e-4889-b3f0-a15f2e50f87e");
 
     LoadBalancerPatch loadBalancerPatchModel = new LoadBalancerPatch.Builder()
-      .logging(loadBalancerLoggingModel)
+      .logging(loadBalancerLoggingPatchModel)
       .name("my-load-balancer")
       .subnets(java.util.Arrays.asList(subnetIdentityModel))
       .build();
-    assertEquals(loadBalancerPatchModel.logging(), loadBalancerLoggingModel);
+    assertEquals(loadBalancerPatchModel.logging(), loadBalancerLoggingPatchModel);
     assertEquals(loadBalancerPatchModel.name(), "my-load-balancer");
     assertEquals(loadBalancerPatchModel.subnets(), java.util.Arrays.asList(subnetIdentityModel));
 
@@ -63,17 +63,17 @@ public class LoadBalancerPatchTest {
 
     LoadBalancerPatch loadBalancerPatchModelNew = TestUtilities.deserialize(json, LoadBalancerPatch.class);
     assertTrue(loadBalancerPatchModelNew instanceof LoadBalancerPatch);
-    assertEquals(loadBalancerPatchModelNew.logging().toString(), loadBalancerLoggingModel.toString());
+    assertEquals(loadBalancerPatchModelNew.logging().toString(), loadBalancerLoggingPatchModel.toString());
     assertEquals(loadBalancerPatchModelNew.name(), "my-load-balancer");
   }
   @Test
   public void testLoadBalancerPatchAsPatch() throws Throwable {
-    LoadBalancerLoggingDatapath loadBalancerLoggingDatapathModel = new LoadBalancerLoggingDatapath.Builder()
+    LoadBalancerLoggingDatapathPatch loadBalancerLoggingDatapathPatchModel = new LoadBalancerLoggingDatapathPatch.Builder()
       .active(true)
       .build();
 
-    LoadBalancerLogging loadBalancerLoggingModel = new LoadBalancerLogging.Builder()
-      .datapath(loadBalancerLoggingDatapathModel)
+    LoadBalancerLoggingPatch loadBalancerLoggingPatchModel = new LoadBalancerLoggingPatch.Builder()
+      .datapath(loadBalancerLoggingDatapathPatchModel)
       .build();
 
     SubnetIdentityById subnetIdentityModel = new SubnetIdentityById.Builder()
@@ -81,7 +81,7 @@ public class LoadBalancerPatchTest {
       .build();
 
     LoadBalancerPatch loadBalancerPatchModel = new LoadBalancerPatch.Builder()
-      .logging(loadBalancerLoggingModel)
+      .logging(loadBalancerLoggingPatchModel)
       .name("my-load-balancer")
       .subnets(java.util.Arrays.asList(subnetIdentityModel))
       .build();

@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2020, 2021, 2022.
+ * (C) Copyright IBM Corp. 2021, 2022, 2023.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -12,7 +12,7 @@
  */
 
 /*
- * IBM OpenAPI SDK Code Generator Version: 3.60.2-95dc7721-20221102-203229
+ * IBM OpenAPI SDK Code Generator Version: 3.62.2-e5d4c32b-20221214-193750
  */
 
 package com.ibm.cloud.is.vpc.v1;
@@ -81,6 +81,7 @@ import com.ibm.cloud.is.vpc.v1.model.CreatePublicGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateSecurityGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateSecurityGroupRuleOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateSecurityGroupTargetBindingOptions;
+import com.ibm.cloud.is.vpc.v1.model.CreateSnapshotCloneOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateSnapshotOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateSubnetOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateSubnetReservedIpOptions;
@@ -142,6 +143,7 @@ import com.ibm.cloud.is.vpc.v1.model.DeletePublicGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteSecurityGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteSecurityGroupRuleOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteSecurityGroupTargetBindingOptions;
+import com.ibm.cloud.is.vpc.v1.model.DeleteSnapshotCloneOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteSnapshotOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteSnapshotsOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteSubnetOptions;
@@ -219,6 +221,7 @@ import com.ibm.cloud.is.vpc.v1.model.GetRegionZoneOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetSecurityGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetSecurityGroupRuleOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetSecurityGroupTargetOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetSnapshotCloneOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetSnapshotOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetSubnetNetworkAclOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetSubnetOptions;
@@ -323,6 +326,7 @@ import com.ibm.cloud.is.vpc.v1.model.ListRegionsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListSecurityGroupRulesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListSecurityGroupTargetsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListSecurityGroupsOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListSnapshotClonesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListSnapshotsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListSubnetReservedIpsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListSubnetsOptions;
@@ -394,6 +398,8 @@ import com.ibm.cloud.is.vpc.v1.model.SecurityGroupTargetCollection;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupTargetReference;
 import com.ibm.cloud.is.vpc.v1.model.SetSubnetPublicGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.Snapshot;
+import com.ibm.cloud.is.vpc.v1.model.SnapshotClone;
+import com.ibm.cloud.is.vpc.v1.model.SnapshotCloneCollection;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotCollection;
 import com.ibm.cloud.is.vpc.v1.model.StartBareMetalServerOptions;
 import com.ibm.cloud.is.vpc.v1.model.StopBareMetalServerOptions;
@@ -488,7 +494,7 @@ import java.util.logging.Logger;
  * The IBM Cloud Virtual Private Cloud (VPC) API can be used to programmatically provision and manage virtual server
  * instances, along with subnets, volumes, load balancers, and more.
  *
- * API Version: 2022-12-27
+ * API Version: 2023-02-21
  */
 public class Vpc extends BaseService {
   private static final Logger LOGGER = Logger.getLogger(Vpc.class.getName());
@@ -699,9 +705,9 @@ public class Vpc extends BaseService {
    * Delete a VPC.
    *
    * This request deletes a VPC. This operation cannot be reversed. For this request to succeed, the VPC must not
-   * contain any instances, subnets, or public gateways. All security groups and network ACLs associated with the VPC
-   * are automatically deleted. All flow log collectors with `auto_delete` set to `true` targeting the VPC or any
-   * resource in the VPC are automatically deleted.
+   * contain any instances, subnets, public gateways, or endpoint gateways. All security groups and network ACLs
+   * associated with the VPC are automatically deleted. All flow log collectors with `auto_delete` set to `true`
+   * targeting the VPC or any resource in the VPC are automatically deleted.
    *
    * @param deleteVpcOptions the {@link DeleteVpcOptions} containing the options for the call
    * @return a {@link ServiceCall} with a void result
@@ -4986,6 +4992,9 @@ public class Vpc extends BaseService {
     if (createBackupPolicyPlanOptions.attachUserTags() != null) {
       contentJson.add("attach_user_tags", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createBackupPolicyPlanOptions.attachUserTags()));
     }
+    if (createBackupPolicyPlanOptions.clonePolicy() != null) {
+      contentJson.add("clone_policy", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createBackupPolicyPlanOptions.clonePolicy()));
+    }
     if (createBackupPolicyPlanOptions.copyUserTags() != null) {
       contentJson.addProperty("copy_user_tags", createBackupPolicyPlanOptions.copyUserTags());
     }
@@ -5504,6 +5513,9 @@ public class Vpc extends BaseService {
     contentJson.add("primary_network_interface", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createBareMetalServerOptions.primaryNetworkInterface()));
     contentJson.add("profile", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createBareMetalServerOptions.profile()));
     contentJson.add("zone", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createBareMetalServerOptions.zone()));
+    if (createBareMetalServerOptions.enableSecureBoot() != null) {
+      contentJson.addProperty("enable_secure_boot", createBareMetalServerOptions.enableSecureBoot());
+    }
     if (createBareMetalServerOptions.name() != null) {
       contentJson.addProperty("name", createBareMetalServerOptions.name());
     }
@@ -5512,6 +5524,9 @@ public class Vpc extends BaseService {
     }
     if (createBareMetalServerOptions.resourceGroup() != null) {
       contentJson.add("resource_group", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createBareMetalServerOptions.resourceGroup()));
+    }
+    if (createBareMetalServerOptions.trustedPlatformModule() != null) {
+      contentJson.add("trusted_platform_module", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createBareMetalServerOptions.trustedPlatformModule()));
     }
     if (createBareMetalServerOptions.vpc() != null) {
       contentJson.add("vpc", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createBareMetalServerOptions.vpc()));
@@ -6450,6 +6465,9 @@ public class Vpc extends BaseService {
     if (listSnapshotsOptions.backupPolicyPlanId() != null) {
       builder.query("backup_policy_plan.id", String.valueOf(listSnapshotsOptions.backupPolicyPlanId()));
     }
+    if (listSnapshotsOptions.clonesZoneName() != null) {
+      builder.query("clones[].zone.name", String.valueOf(listSnapshotsOptions.clonesZoneName()));
+    }
     ResponseConverter<SnapshotCollection> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<SnapshotCollection>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -6573,6 +6591,113 @@ public class Vpc extends BaseService {
     builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateSnapshotOptions.snapshotPatch()), "application/merge-patch+json");
     ResponseConverter<Snapshot> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<Snapshot>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * List all clones for a snapshot.
+   *
+   * This request lists all clones for a snapshot. Use a clone to quickly restore a snapshot within the clone's zone.
+   *
+   * @param listSnapshotClonesOptions the {@link ListSnapshotClonesOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link SnapshotCloneCollection}
+   */
+  public ServiceCall<SnapshotCloneCollection> listSnapshotClones(ListSnapshotClonesOptions listSnapshotClonesOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(listSnapshotClonesOptions,
+      "listSnapshotClonesOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", listSnapshotClonesOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/snapshots/{id}/clones", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listSnapshotClones");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<SnapshotCloneCollection> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<SnapshotCloneCollection>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Delete a snapshot clone.
+   *
+   * This request deletes a snapshot clone. This operation cannot be reversed, but an equivalent clone may be recreated
+   * from the snapshot.
+   *
+   * @param deleteSnapshotCloneOptions the {@link DeleteSnapshotCloneOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a void result
+   */
+  public ServiceCall<Void> deleteSnapshotClone(DeleteSnapshotCloneOptions deleteSnapshotCloneOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(deleteSnapshotCloneOptions,
+      "deleteSnapshotCloneOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", deleteSnapshotCloneOptions.id());
+    pathParamsMap.put("zone_name", deleteSnapshotCloneOptions.zoneName());
+    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/snapshots/{id}/clones/{zone_name}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "deleteSnapshotClone");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Retrieve a snapshot clone.
+   *
+   * This request retrieves a single clone specified by the snapshot identifier and zone name in the URL.
+   *
+   * @param getSnapshotCloneOptions the {@link GetSnapshotCloneOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link SnapshotClone}
+   */
+  public ServiceCall<SnapshotClone> getSnapshotClone(GetSnapshotCloneOptions getSnapshotCloneOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(getSnapshotCloneOptions,
+      "getSnapshotCloneOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", getSnapshotCloneOptions.id());
+    pathParamsMap.put("zone_name", getSnapshotCloneOptions.zoneName());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/snapshots/{id}/clones/{zone_name}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getSnapshotClone");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<SnapshotClone> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<SnapshotClone>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Create a clone for a snapshot.
+   *
+   * This request creates a new clone for a snapshot in the specified zone. A request body is not required, and if
+   * provided, is ignored. If the snapshot already has a clone in the zone, it is returned.
+   *
+   * @param createSnapshotCloneOptions the {@link CreateSnapshotCloneOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link SnapshotClone}
+   */
+  public ServiceCall<SnapshotClone> createSnapshotClone(CreateSnapshotCloneOptions createSnapshotCloneOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(createSnapshotCloneOptions,
+      "createSnapshotCloneOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", createSnapshotCloneOptions.id());
+    pathParamsMap.put("zone_name", createSnapshotCloneOptions.zoneName());
+    RequestBuilder builder = RequestBuilder.put(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/snapshots/{id}/clones/{zone_name}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "createSnapshotClone");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<SnapshotClone> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<SnapshotClone>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
   }
 
@@ -9308,6 +9433,9 @@ public class Vpc extends BaseService {
     final JsonObject contentJson = new JsonObject();
     contentJson.addProperty("is_public", createLoadBalancerOptions.isPublic());
     contentJson.add("subnets", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createLoadBalancerOptions.subnets()));
+    if (createLoadBalancerOptions.datapath() != null) {
+      contentJson.add("datapath", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createLoadBalancerOptions.datapath()));
+    }
     if (createLoadBalancerOptions.listeners() != null) {
       contentJson.add("listeners", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createLoadBalancerOptions.listeners()));
     }

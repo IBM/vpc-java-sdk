@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2020, 2021, 2022.
+ * (C) Copyright IBM Corp. 2021, 2022, 2023.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -26,6 +26,7 @@ public class CreateBackupPolicyPlanOptions extends GenericModel {
   protected String cronSpec;
   protected Boolean active;
   protected List<String> attachUserTags;
+  protected BackupPolicyPlanClonePolicyPrototype clonePolicy;
   protected Boolean copyUserTags;
   protected BackupPolicyPlanDeletionTriggerPrototype deletionTrigger;
   protected String name;
@@ -38,6 +39,7 @@ public class CreateBackupPolicyPlanOptions extends GenericModel {
     private String cronSpec;
     private Boolean active;
     private List<String> attachUserTags;
+    private BackupPolicyPlanClonePolicyPrototype clonePolicy;
     private Boolean copyUserTags;
     private BackupPolicyPlanDeletionTriggerPrototype deletionTrigger;
     private String name;
@@ -52,6 +54,7 @@ public class CreateBackupPolicyPlanOptions extends GenericModel {
       this.cronSpec = createBackupPolicyPlanOptions.cronSpec;
       this.active = createBackupPolicyPlanOptions.active;
       this.attachUserTags = createBackupPolicyPlanOptions.attachUserTags;
+      this.clonePolicy = createBackupPolicyPlanOptions.clonePolicy;
       this.copyUserTags = createBackupPolicyPlanOptions.copyUserTags;
       this.deletionTrigger = createBackupPolicyPlanOptions.deletionTrigger;
       this.name = createBackupPolicyPlanOptions.name;
@@ -145,6 +148,17 @@ public class CreateBackupPolicyPlanOptions extends GenericModel {
     }
 
     /**
+     * Set the clonePolicy.
+     *
+     * @param clonePolicy the clonePolicy
+     * @return the CreateBackupPolicyPlanOptions builder
+     */
+    public Builder clonePolicy(BackupPolicyPlanClonePolicyPrototype clonePolicy) {
+      this.clonePolicy = clonePolicy;
+      return this;
+    }
+
+    /**
      * Set the copyUserTags.
      *
      * @param copyUserTags the copyUserTags
@@ -189,6 +203,7 @@ public class CreateBackupPolicyPlanOptions extends GenericModel {
     cronSpec = builder.cronSpec;
     active = builder.active;
     attachUserTags = builder.attachUserTags;
+    clonePolicy = builder.clonePolicy;
     copyUserTags = builder.copyUserTags;
     deletionTrigger = builder.deletionTrigger;
     name = builder.name;
@@ -249,6 +264,15 @@ public class CreateBackupPolicyPlanOptions extends GenericModel {
    */
   public List<String> attachUserTags() {
     return attachUserTags;
+  }
+
+  /**
+   * Gets the clonePolicy.
+   *
+   * @return the clonePolicy
+   */
+  public BackupPolicyPlanClonePolicyPrototype clonePolicy() {
+    return clonePolicy;
   }
 
   /**

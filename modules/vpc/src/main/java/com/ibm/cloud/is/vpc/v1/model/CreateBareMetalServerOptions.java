@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2020, 2021, 2022.
+ * (C) Copyright IBM Corp. 2021, 2022, 2023.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -26,9 +26,11 @@ public class CreateBareMetalServerOptions extends GenericModel {
   protected BareMetalServerPrimaryNetworkInterfacePrototype primaryNetworkInterface;
   protected BareMetalServerProfileIdentity profile;
   protected ZoneIdentity zone;
+  protected Boolean enableSecureBoot;
   protected String name;
   protected List<BareMetalServerNetworkInterfacePrototype> networkInterfaces;
   protected ResourceGroupIdentity resourceGroup;
+  protected BareMetalServerTrustedPlatformModulePrototype trustedPlatformModule;
   protected VPCIdentity vpc;
 
   /**
@@ -39,9 +41,11 @@ public class CreateBareMetalServerOptions extends GenericModel {
     private BareMetalServerPrimaryNetworkInterfacePrototype primaryNetworkInterface;
     private BareMetalServerProfileIdentity profile;
     private ZoneIdentity zone;
+    private Boolean enableSecureBoot;
     private String name;
     private List<BareMetalServerNetworkInterfacePrototype> networkInterfaces;
     private ResourceGroupIdentity resourceGroup;
+    private BareMetalServerTrustedPlatformModulePrototype trustedPlatformModule;
     private VPCIdentity vpc;
 
     /**
@@ -54,9 +58,11 @@ public class CreateBareMetalServerOptions extends GenericModel {
       this.primaryNetworkInterface = createBareMetalServerOptions.primaryNetworkInterface;
       this.profile = createBareMetalServerOptions.profile;
       this.zone = createBareMetalServerOptions.zone;
+      this.enableSecureBoot = createBareMetalServerOptions.enableSecureBoot;
       this.name = createBareMetalServerOptions.name;
       this.networkInterfaces = createBareMetalServerOptions.networkInterfaces;
       this.resourceGroup = createBareMetalServerOptions.resourceGroup;
+      this.trustedPlatformModule = createBareMetalServerOptions.trustedPlatformModule;
       this.vpc = createBareMetalServerOptions.vpc;
     }
 
@@ -151,6 +157,17 @@ public class CreateBareMetalServerOptions extends GenericModel {
     }
 
     /**
+     * Set the enableSecureBoot.
+     *
+     * @param enableSecureBoot the enableSecureBoot
+     * @return the CreateBareMetalServerOptions builder
+     */
+    public Builder enableSecureBoot(Boolean enableSecureBoot) {
+      this.enableSecureBoot = enableSecureBoot;
+      return this;
+    }
+
+    /**
      * Set the name.
      *
      * @param name the name
@@ -185,6 +202,17 @@ public class CreateBareMetalServerOptions extends GenericModel {
     }
 
     /**
+     * Set the trustedPlatformModule.
+     *
+     * @param trustedPlatformModule the trustedPlatformModule
+     * @return the CreateBareMetalServerOptions builder
+     */
+    public Builder trustedPlatformModule(BareMetalServerTrustedPlatformModulePrototype trustedPlatformModule) {
+      this.trustedPlatformModule = trustedPlatformModule;
+      return this;
+    }
+
+    /**
      * Set the vpc.
      *
      * @param vpc the vpc
@@ -211,9 +239,11 @@ public class CreateBareMetalServerOptions extends GenericModel {
     primaryNetworkInterface = builder.primaryNetworkInterface;
     profile = builder.profile;
     zone = builder.zone;
+    enableSecureBoot = builder.enableSecureBoot;
     name = builder.name;
     networkInterfaces = builder.networkInterfaces;
     resourceGroup = builder.resourceGroup;
+    trustedPlatformModule = builder.trustedPlatformModule;
     vpc = builder.vpc;
   }
 
@@ -270,6 +300,18 @@ public class CreateBareMetalServerOptions extends GenericModel {
   }
 
   /**
+   * Gets the enableSecureBoot.
+   *
+   * Indicates whether secure boot is enabled. If enabled, the image must support secure boot or the server will fail to
+   * boot.
+   *
+   * @return the enableSecureBoot
+   */
+  public Boolean enableSecureBoot() {
+    return enableSecureBoot;
+  }
+
+  /**
    * Gets the name.
    *
    * The name for this bare metal server. The name must not be used by another bare metal server in the region. If
@@ -304,6 +346,15 @@ public class CreateBareMetalServerOptions extends GenericModel {
    */
   public ResourceGroupIdentity resourceGroup() {
     return resourceGroup;
+  }
+
+  /**
+   * Gets the trustedPlatformModule.
+   *
+   * @return the trustedPlatformModule
+   */
+  public BareMetalServerTrustedPlatformModulePrototype trustedPlatformModule() {
+    return trustedPlatformModule;
   }
 
   /**

@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2020, 2021, 2022.
+ * (C) Copyright IBM Corp. 2021, 2022, 2023.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -38,6 +38,14 @@ public class NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolICMPP
   }
 
   /**
+   * The IP version for this rule.
+   */
+  public interface IpVersion {
+    /** ipv4. */
+    String IPV4 = "ipv4";
+  }
+
+  /**
    * The protocol to enforce.
    */
   public interface Protocol {
@@ -53,6 +61,7 @@ public class NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolICMPP
     private String action;
     private String destination;
     private String direction;
+    private String ipVersion;
     private String name;
     private String source;
     private Long code;
@@ -68,6 +77,7 @@ public class NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolICMPP
       this.action = networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolIcmpPrototype.action;
       this.destination = networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolIcmpPrototype.destination;
       this.direction = networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolIcmpPrototype.direction;
+      this.ipVersion = networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolIcmpPrototype.ipVersion;
       this.name = networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolIcmpPrototype.name;
       this.source = networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolIcmpPrototype.source;
       this.code = networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolIcmpPrototype.code;
@@ -137,6 +147,17 @@ public class NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolICMPP
      */
     public Builder direction(String direction) {
       this.direction = direction;
+      return this;
+    }
+
+    /**
+     * Set the ipVersion.
+     *
+     * @param ipVersion the ipVersion
+     * @return the NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolICMPPrototype builder
+     */
+    public Builder ipVersion(String ipVersion) {
+      this.ipVersion = ipVersion;
       return this;
     }
 
@@ -212,6 +233,7 @@ public class NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolICMPP
     action = builder.action;
     destination = builder.destination;
     direction = builder.direction;
+    ipVersion = builder.ipVersion;
     name = builder.name;
     source = builder.source;
     code = builder.code;

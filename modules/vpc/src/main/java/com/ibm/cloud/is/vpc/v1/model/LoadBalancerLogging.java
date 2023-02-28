@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2020, 2021, 2022.
+ * (C) Copyright IBM Corp. 2021, 2022, 2023.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -21,62 +21,7 @@ public class LoadBalancerLogging extends GenericModel {
 
   protected LoadBalancerLoggingDatapath datapath;
 
-  /**
-   * Builder.
-   */
-  public static class Builder {
-    private LoadBalancerLoggingDatapath datapath;
-
-    /**
-     * Instantiates a new Builder from an existing LoadBalancerLogging instance.
-     *
-     * @param loadBalancerLogging the instance to initialize the Builder with
-     */
-    private Builder(LoadBalancerLogging loadBalancerLogging) {
-      this.datapath = loadBalancerLogging.datapath;
-    }
-
-    /**
-     * Instantiates a new builder.
-     */
-    public Builder() {
-    }
-
-    /**
-     * Builds a LoadBalancerLogging.
-     *
-     * @return the new LoadBalancerLogging instance
-     */
-    public LoadBalancerLogging build() {
-      return new LoadBalancerLogging(this);
-    }
-
-    /**
-     * Set the datapath.
-     *
-     * @param datapath the datapath
-     * @return the LoadBalancerLogging builder
-     */
-    public Builder datapath(LoadBalancerLoggingDatapath datapath) {
-      this.datapath = datapath;
-      return this;
-    }
-  }
-
   protected LoadBalancerLogging() { }
-
-  protected LoadBalancerLogging(Builder builder) {
-    datapath = builder.datapath;
-  }
-
-  /**
-   * New builder.
-   *
-   * @return a LoadBalancerLogging builder
-   */
-  public Builder newBuilder() {
-    return new Builder(this);
-  }
 
   /**
    * Gets the datapath.
@@ -85,7 +30,7 @@ public class LoadBalancerLogging extends GenericModel {
    *
    * @return the datapath
    */
-  public LoadBalancerLoggingDatapath datapath() {
+  public LoadBalancerLoggingDatapath getDatapath() {
     return datapath;
   }
 }

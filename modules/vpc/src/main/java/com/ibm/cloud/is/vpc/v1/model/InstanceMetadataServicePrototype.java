@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2020, 2021, 2022.
+ * (C) Copyright IBM Corp. 2021, 2022, 2023.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -12,6 +12,7 @@
  */
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
@@ -19,13 +20,31 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class InstanceMetadataServicePrototype extends GenericModel {
 
+  /**
+   * The communication protocol to use for the metadata service endpoint. Applies only when the metadata service is
+   * enabled.
+   * - `http`: HTTP protocol (unencrypted)
+   * - `https`: HTTP Secure protocol.
+   */
+  public interface Protocol {
+    /** http. */
+    String HTTP = "http";
+    /** https. */
+    String HTTPS = "https";
+  }
+
   protected Boolean enabled;
+  protected String protocol;
+  @SerializedName("response_hop_limit")
+  protected Long responseHopLimit;
 
   /**
    * Builder.
    */
   public static class Builder {
     private Boolean enabled;
+    private String protocol;
+    private Long responseHopLimit;
 
     /**
      * Instantiates a new Builder from an existing InstanceMetadataServicePrototype instance.
@@ -34,6 +53,8 @@ public class InstanceMetadataServicePrototype extends GenericModel {
      */
     private Builder(InstanceMetadataServicePrototype instanceMetadataServicePrototype) {
       this.enabled = instanceMetadataServicePrototype.enabled;
+      this.protocol = instanceMetadataServicePrototype.protocol;
+      this.responseHopLimit = instanceMetadataServicePrototype.responseHopLimit;
     }
 
     /**
@@ -61,12 +82,36 @@ public class InstanceMetadataServicePrototype extends GenericModel {
       this.enabled = enabled;
       return this;
     }
+
+    /**
+     * Set the protocol.
+     *
+     * @param protocol the protocol
+     * @return the InstanceMetadataServicePrototype builder
+     */
+    public Builder protocol(String protocol) {
+      this.protocol = protocol;
+      return this;
+    }
+
+    /**
+     * Set the responseHopLimit.
+     *
+     * @param responseHopLimit the responseHopLimit
+     * @return the InstanceMetadataServicePrototype builder
+     */
+    public Builder responseHopLimit(long responseHopLimit) {
+      this.responseHopLimit = responseHopLimit;
+      return this;
+    }
   }
 
   protected InstanceMetadataServicePrototype() { }
 
   protected InstanceMetadataServicePrototype(Builder builder) {
     enabled = builder.enabled;
+    protocol = builder.protocol;
+    responseHopLimit = builder.responseHopLimit;
   }
 
   /**
@@ -87,6 +132,32 @@ public class InstanceMetadataServicePrototype extends GenericModel {
    */
   public Boolean enabled() {
     return enabled;
+  }
+
+  /**
+   * Gets the protocol.
+   *
+   * The communication protocol to use for the metadata service endpoint. Applies only when the metadata service is
+   * enabled.
+   * - `http`: HTTP protocol (unencrypted)
+   * - `https`: HTTP Secure protocol.
+   *
+   * @return the protocol
+   */
+  public String protocol() {
+    return protocol;
+  }
+
+  /**
+   * Gets the responseHopLimit.
+   *
+   * The hop limit (IP time to live) for IP response packets from the metadata service. Applies only when the metadata
+   * service is enabled.
+   *
+   * @return the responseHopLimit
+   */
+  public Long responseHopLimit() {
+    return responseHopLimit;
   }
 }
 

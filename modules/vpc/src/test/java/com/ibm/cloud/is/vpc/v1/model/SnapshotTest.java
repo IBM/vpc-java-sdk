@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2020, 2021, 2022.
+ * (C) Copyright IBM Corp. 2021, 2022, 2023.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -21,10 +21,13 @@ import com.ibm.cloud.is.vpc.v1.model.ImageReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.OperatingSystem;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.Snapshot;
+import com.ibm.cloud.is.vpc.v1.model.SnapshotClone;
 import com.ibm.cloud.is.vpc.v1.model.VolumeReference;
 import com.ibm.cloud.is.vpc.v1.model.VolumeReferenceDeleted;
+import com.ibm.cloud.is.vpc.v1.model.ZoneReference;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
+import com.ibm.cloud.sdk.core.util.DateUtils;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.List;
@@ -44,6 +47,7 @@ public class SnapshotTest {
     assertNull(snapshotModel.getBackupPolicyPlan());
     assertNull(snapshotModel.isBootable());
     assertNull(snapshotModel.getCapturedAt());
+    assertNull(snapshotModel.getClones());
     assertNull(snapshotModel.getCreatedAt());
     assertNull(snapshotModel.getCrn());
     assertNull(snapshotModel.isDeletable());

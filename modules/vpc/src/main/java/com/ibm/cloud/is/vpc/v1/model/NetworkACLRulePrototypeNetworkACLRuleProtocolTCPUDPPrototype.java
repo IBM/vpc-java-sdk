@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2020, 2021, 2022.
+ * (C) Copyright IBM Corp. 2021, 2022, 2023.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -38,6 +38,14 @@ public class NetworkACLRulePrototypeNetworkACLRuleProtocolTCPUDPPrototype extend
   }
 
   /**
+   * The IP version for this rule.
+   */
+  public interface IpVersion {
+    /** ipv4. */
+    String IPV4 = "ipv4";
+  }
+
+  /**
    * The protocol to enforce.
    */
   public interface Protocol {
@@ -56,6 +64,7 @@ public class NetworkACLRulePrototypeNetworkACLRuleProtocolTCPUDPPrototype extend
     private NetworkACLRuleBeforePrototype before;
     private String destination;
     private String direction;
+    private String ipVersion;
     private String name;
     private String source;
     private Long destinationPortMax;
@@ -74,6 +83,7 @@ public class NetworkACLRulePrototypeNetworkACLRuleProtocolTCPUDPPrototype extend
       this.before = networkAclRulePrototypeNetworkAclRuleProtocolTcpudpPrototype.before;
       this.destination = networkAclRulePrototypeNetworkAclRuleProtocolTcpudpPrototype.destination;
       this.direction = networkAclRulePrototypeNetworkAclRuleProtocolTcpudpPrototype.direction;
+      this.ipVersion = networkAclRulePrototypeNetworkAclRuleProtocolTcpudpPrototype.ipVersion;
       this.name = networkAclRulePrototypeNetworkAclRuleProtocolTcpudpPrototype.name;
       this.source = networkAclRulePrototypeNetworkAclRuleProtocolTcpudpPrototype.source;
       this.destinationPortMax = networkAclRulePrototypeNetworkAclRuleProtocolTcpudpPrototype.destinationPortMax;
@@ -156,6 +166,17 @@ public class NetworkACLRulePrototypeNetworkACLRuleProtocolTCPUDPPrototype extend
      */
     public Builder direction(String direction) {
       this.direction = direction;
+      return this;
+    }
+
+    /**
+     * Set the ipVersion.
+     *
+     * @param ipVersion the ipVersion
+     * @return the NetworkACLRulePrototypeNetworkACLRuleProtocolTCPUDPPrototype builder
+     */
+    public Builder ipVersion(String ipVersion) {
+      this.ipVersion = ipVersion;
       return this;
     }
 
@@ -254,6 +275,7 @@ public class NetworkACLRulePrototypeNetworkACLRuleProtocolTCPUDPPrototype extend
     before = builder.before;
     destination = builder.destination;
     direction = builder.direction;
+    ipVersion = builder.ipVersion;
     name = builder.name;
     source = builder.source;
     destinationPortMax = builder.destinationPortMax;
