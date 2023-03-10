@@ -1,6 +1,6 @@
 ---
 language: java
-dist: xenial
+dist: focal
 
 jdk:
 - openjdk8
@@ -28,6 +28,7 @@ stages:
     if: tag IS present
 
 before_install:
+  - npm install npm@latest -g
   - sudo apt-get update
   - env | grep TRAVIS
 
@@ -45,9 +46,8 @@ jobs:
     - stage: Semantic-Release
       install:
         - sudo apt-get install python
-        - nvm install v14.17.0
-        - npm install -g npm@6.x
         - pip install --user bump2version
+        - nvm install --lts
         - npm install @semantic-release/changelog
         - npm install @semantic-release/exec
         - npm install @semantic-release/git
