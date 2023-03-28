@@ -1,3 +1,10 @@
+## [0.13.1](https://github.com/IBM/vpc-java-sdk/compare/0.13.0...0.13.1) (2023-03-28)
+
+
+### Bug Fixes
+
+* **build:** push to maven to update gpg ([#48](https://github.com/IBM/vpc-java-sdk/issues/48)) ([8e08460](https://github.com/IBM/vpc-java-sdk/commit/8e084603a18687c90199b78a397c1a158f351412))
+
 # [0.13.0](https://github.com/IBM/vpc-java-sdk/compare/0.12.0...0.13.0) (2023-03-10)
 
 
