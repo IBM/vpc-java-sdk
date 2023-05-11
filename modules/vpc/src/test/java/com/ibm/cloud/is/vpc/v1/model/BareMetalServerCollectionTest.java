@@ -21,6 +21,7 @@ import com.ibm.cloud.is.vpc.v1.model.BareMetalServerCollectionFirst;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerDisk;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerDiskReferenceDeleted;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerLifecycleReason;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileReference;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerStatusReason;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerTrustedPlatformModule;

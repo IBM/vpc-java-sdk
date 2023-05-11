@@ -111,7 +111,7 @@ public class FlowLogCollectorPatch extends GenericModel {
   /**
    * Gets the name.
    *
-   * The name for this flow log collector. The name must not be used by another flow log collector in the region.
+   * The name for this flow log collector. The name must not be used by another flow log collector in the VPC.
    *
    * @return the name
    */

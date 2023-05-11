@@ -95,7 +95,7 @@ public class Instance extends GenericModel {
   protected String id;
   protected ImageReference image;
   @SerializedName("lifecycle_reasons")
-  protected List<LifecycleReason> lifecycleReasons;
+  protected List<InstanceLifecycleReason> lifecycleReasons;
   @SerializedName("lifecycle_state")
   protected String lifecycleState;
   protected Long memory;
@@ -274,7 +274,7 @@ public class Instance extends GenericModel {
    *
    * @return the lifecycleReasons
    */
-  public List<LifecycleReason> getLifecycleReasons() {
+  public List<InstanceLifecycleReason> getLifecycleReasons() {
     return lifecycleReasons;
   }
 

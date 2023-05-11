@@ -40,10 +40,10 @@ public class CreateBackupPolicyPlanOptionsTest {
     assertEquals(zoneIdentityModel.name(), "us-south-1");
 
     BackupPolicyPlanClonePolicyPrototype backupPolicyPlanClonePolicyPrototypeModel = new BackupPolicyPlanClonePolicyPrototype.Builder()
-      .maxSnapshots(Long.valueOf("26"))
+      .maxSnapshots(Long.valueOf("1"))
       .zones(java.util.Arrays.asList(zoneIdentityModel))
       .build();
-    assertEquals(backupPolicyPlanClonePolicyPrototypeModel.maxSnapshots(), Long.valueOf("26"));
+    assertEquals(backupPolicyPlanClonePolicyPrototypeModel.maxSnapshots(), Long.valueOf("1"));
     assertEquals(backupPolicyPlanClonePolicyPrototypeModel.zones(), java.util.Arrays.asList(zoneIdentityModel));
 
     BackupPolicyPlanDeletionTriggerPrototype backupPolicyPlanDeletionTriggerPrototypeModel = new BackupPolicyPlanDeletionTriggerPrototype.Builder()

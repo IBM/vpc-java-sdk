@@ -53,6 +53,8 @@ public class DedicatedHostProfile extends GenericModel {
   protected DedicatedHostProfileVCPUArchitecture vcpuArchitecture;
   @SerializedName("vcpu_count")
   protected DedicatedHostProfileVCPU vcpuCount;
+  @SerializedName("vcpu_manufacturer")
+  protected DedicatedHostProfileVCPUManufacturer vcpuManufacturer;
 
   protected DedicatedHostProfile() { }
 
@@ -160,6 +162,15 @@ public class DedicatedHostProfile extends GenericModel {
    */
   public DedicatedHostProfileVCPU getVcpuCount() {
     return vcpuCount;
+  }
+
+  /**
+   * Gets the vcpuManufacturer.
+   *
+   * @return the vcpuManufacturer
+   */
+  public DedicatedHostProfileVCPUManufacturer getVcpuManufacturer() {
+    return vcpuManufacturer;
   }
 }
 

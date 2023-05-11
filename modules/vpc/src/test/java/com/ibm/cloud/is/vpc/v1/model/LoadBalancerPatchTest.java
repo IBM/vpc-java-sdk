@@ -13,6 +13,9 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.ibm.cloud.is.vpc.v1.model.DNSInstanceIdentityByCRN;
+import com.ibm.cloud.is.vpc.v1.model.DNSZoneIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerDNSPatch;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerLoggingDatapathPatch;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerLoggingPatch;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPatch;
@@ -35,6 +38,23 @@ public class LoadBalancerPatchTest {
 
   @Test
   public void testLoadBalancerPatch() throws Throwable {
+    DNSInstanceIdentityByCRN dnsInstanceIdentityModel = new DNSInstanceIdentityByCRN.Builder()
+      .crn("crn:v1:bluemix:public:dns-svcs:global:a/fff1cdf3dc1e4ec692a5f78bbb2584bc:6860c359-b2e2-46fa-a944-b38c28201c6e")
+      .build();
+    assertEquals(dnsInstanceIdentityModel.crn(), "crn:v1:bluemix:public:dns-svcs:global:a/fff1cdf3dc1e4ec692a5f78bbb2584bc:6860c359-b2e2-46fa-a944-b38c28201c6e");
+
+    DNSZoneIdentityById dnsZoneIdentityModel = new DNSZoneIdentityById.Builder()
+      .id("d66662cc-aa23-4fe1-9987-858487a61f45")
+      .build();
+    assertEquals(dnsZoneIdentityModel.id(), "d66662cc-aa23-4fe1-9987-858487a61f45");
+
+    LoadBalancerDNSPatch loadBalancerDnsPatchModel = new LoadBalancerDNSPatch.Builder()
+      .instance(dnsInstanceIdentityModel)
+      .zone(dnsZoneIdentityModel)
+      .build();
+    assertEquals(loadBalancerDnsPatchModel.instance(), dnsInstanceIdentityModel);
+    assertEquals(loadBalancerDnsPatchModel.zone(), dnsZoneIdentityModel);
+
     LoadBalancerLoggingDatapathPatch loadBalancerLoggingDatapathPatchModel = new LoadBalancerLoggingDatapathPatch.Builder()
       .active(true)
       .build();
@@ -51,10 +71,12 @@ public class LoadBalancerPatchTest {
     assertEquals(subnetIdentityModel.id(), "7ec86020-1c6e-4889-b3f0-a15f2e50f87e");
 
     LoadBalancerPatch loadBalancerPatchModel = new LoadBalancerPatch.Builder()
+      .dns(loadBalancerDnsPatchModel)
       .logging(loadBalancerLoggingPatchModel)
       .name("my-load-balancer")
       .subnets(java.util.Arrays.asList(subnetIdentityModel))
       .build();
+    assertEquals(loadBalancerPatchModel.dns(), loadBalancerDnsPatchModel);
     assertEquals(loadBalancerPatchModel.logging(), loadBalancerLoggingPatchModel);
     assertEquals(loadBalancerPatchModel.name(), "my-load-balancer");
     assertEquals(loadBalancerPatchModel.subnets(), java.util.Arrays.asList(subnetIdentityModel));
@@ -63,11 +85,25 @@ public class LoadBalancerPatchTest {
 
     LoadBalancerPatch loadBalancerPatchModelNew = TestUtilities.deserialize(json, LoadBalancerPatch.class);
     assertTrue(loadBalancerPatchModelNew instanceof LoadBalancerPatch);
+    assertEquals(loadBalancerPatchModelNew.dns().toString(), loadBalancerDnsPatchModel.toString());
     assertEquals(loadBalancerPatchModelNew.logging().toString(), loadBalancerLoggingPatchModel.toString());
     assertEquals(loadBalancerPatchModelNew.name(), "my-load-balancer");
   }
   @Test
   public void testLoadBalancerPatchAsPatch() throws Throwable {
+    DNSInstanceIdentityByCRN dnsInstanceIdentityModel = new DNSInstanceIdentityByCRN.Builder()
+      .crn("crn:v1:bluemix:public:dns-svcs:global:a/fff1cdf3dc1e4ec692a5f78bbb2584bc:6860c359-b2e2-46fa-a944-b38c28201c6e")
+      .build();
+
+    DNSZoneIdentityById dnsZoneIdentityModel = new DNSZoneIdentityById.Builder()
+      .id("d66662cc-aa23-4fe1-9987-858487a61f45")
+      .build();
+
+    LoadBalancerDNSPatch loadBalancerDnsPatchModel = new LoadBalancerDNSPatch.Builder()
+      .instance(dnsInstanceIdentityModel)
+      .zone(dnsZoneIdentityModel)
+      .build();
+
     LoadBalancerLoggingDatapathPatch loadBalancerLoggingDatapathPatchModel = new LoadBalancerLoggingDatapathPatch.Builder()
       .active(true)
       .build();
@@ -81,6 +117,7 @@ public class LoadBalancerPatchTest {
       .build();
 
     LoadBalancerPatch loadBalancerPatchModel = new LoadBalancerPatch.Builder()
+      .dns(loadBalancerDnsPatchModel)
       .logging(loadBalancerLoggingPatchModel)
       .name("my-load-balancer")
       .subnets(java.util.Arrays.asList(subnetIdentityModel))
@@ -88,6 +125,7 @@ public class LoadBalancerPatchTest {
 
     Map<String, Object> mergePatch = loadBalancerPatchModel.asPatch();
 
+    assertTrue(mergePatch.containsKey("dns"));
     assertTrue(mergePatch.containsKey("logging"));
     assertEquals(mergePatch.get("name"), "my-load-balancer");
     assertTrue(mergePatch.containsKey("subnets"));

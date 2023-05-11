@@ -21,6 +21,7 @@ public class InstanceVCPU extends GenericModel {
 
   protected String architecture;
   protected Long count;
+  protected String manufacturer;
 
   protected InstanceVCPU() { }
 
@@ -44,6 +45,17 @@ public class InstanceVCPU extends GenericModel {
    */
   public Long getCount() {
     return count;
+  }
+
+  /**
+   * Gets the manufacturer.
+   *
+   * The VCPU manufacturer.
+   *
+   * @return the manufacturer
+   */
+  public String getManufacturer() {
+    return manufacturer;
   }
 }
 

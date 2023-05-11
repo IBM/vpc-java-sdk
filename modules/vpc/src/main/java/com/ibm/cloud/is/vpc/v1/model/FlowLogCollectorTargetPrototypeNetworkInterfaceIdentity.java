@@ -16,8 +16,8 @@ package com.ibm.cloud.is.vpc.v1.model;
  * Identifies a network interface by a unique property.
  *
  * Classes which extend this class:
- * - FlowLogCollectorTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceIdentityNetworkInterfaceIdentityById
- * - FlowLogCollectorTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceIdentityNetworkInterfaceIdentityByHref
+ * - FlowLogCollectorTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceIdentityById
+ * - FlowLogCollectorTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceIdentityByHref
  */
 public class FlowLogCollectorTargetPrototypeNetworkInterfaceIdentity extends FlowLogCollectorTargetPrototype {
 

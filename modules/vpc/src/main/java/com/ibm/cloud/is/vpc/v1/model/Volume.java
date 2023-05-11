@@ -24,6 +24,21 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class Volume extends GenericModel {
 
   /**
+   * The attachment state of the volume
+   * - `unattached`: Not attached to any virtual server instances
+   * - `attached`: Attached to a virtual server instance (even if the instance is stopped)
+   * - `unusable`: Not able to be attached to any virtual server instances.
+   */
+  public interface AttachmentState {
+    /** attached. */
+    String ATTACHED = "attached";
+    /** unattached. */
+    String UNATTACHED = "unattached";
+    /** unusable. */
+    String UNUSABLE = "unusable";
+  }
+
+  /**
    * The type of encryption used on the volume.
    */
   public interface Encryption {
@@ -76,6 +91,8 @@ public class Volume extends GenericModel {
   }
 
   protected Boolean active;
+  @SerializedName("attachment_state")
+  protected String attachmentState;
   protected Long bandwidth;
   protected Boolean busy;
   protected Long capacity;
@@ -94,7 +111,7 @@ public class Volume extends GenericModel {
   protected Long iops;
   protected String name;
   @SerializedName("operating_system")
-  protected OperatingSystemReference operatingSystem;
+  protected OperatingSystem operatingSystem;
   protected VolumeProfileReference profile;
   @SerializedName("resource_group")
   protected ResourceGroupReference resourceGroup;
@@ -122,6 +139,20 @@ public class Volume extends GenericModel {
    */
   public Boolean isActive() {
     return active;
+  }
+
+  /**
+   * Gets the attachmentState.
+   *
+   * The attachment state of the volume
+   * - `unattached`: Not attached to any virtual server instances
+   * - `attached`: Attached to a virtual server instance (even if the instance is stopped)
+   * - `unusable`: Not able to be attached to any virtual server instances.
+   *
+   * @return the attachmentState
+   */
+  public String getAttachmentState() {
+    return attachmentState;
   }
 
   /**
@@ -290,7 +321,7 @@ public class Volume extends GenericModel {
    *
    * @return the operatingSystem
    */
-  public OperatingSystemReference getOperatingSystem() {
+  public OperatingSystem getOperatingSystem() {
     return operatingSystem;
   }
 

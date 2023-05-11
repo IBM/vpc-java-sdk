@@ -268,7 +268,7 @@ public class CreateBareMetalServerOptions extends GenericModel {
   /**
    * Gets the primaryNetworkInterface.
    *
-   * Primary network interface for the bare metal server.
+   * The primary network interface to create for the bare metal server.
    *
    * @return the primaryNetworkInterface
    */

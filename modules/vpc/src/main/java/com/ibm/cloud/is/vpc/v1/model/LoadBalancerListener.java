@@ -75,6 +75,8 @@ public class LoadBalancerListener extends GenericModel {
   @SerializedName("https_redirect")
   protected LoadBalancerListenerHTTPSRedirect httpsRedirect;
   protected String id;
+  @SerializedName("idle_connection_timeout")
+  protected Long idleConnectionTimeout;
   protected List<LoadBalancerListenerPolicyReference> policies;
   protected Long port;
   @SerializedName("port_max")
@@ -180,6 +182,18 @@ public class LoadBalancerListener extends GenericModel {
    */
   public String getId() {
     return id;
+  }
+
+  /**
+   * Gets the idleConnectionTimeout.
+   *
+   * The idle connection timeout of the listener in seconds. This property will be present for load balancers in the
+   * `application` family.
+   *
+   * @return the idleConnectionTimeout
+   */
+  public Long getIdleConnectionTimeout() {
+    return idleConnectionTimeout;
   }
 
   /**

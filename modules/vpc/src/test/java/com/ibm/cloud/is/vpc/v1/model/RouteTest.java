@@ -42,6 +42,7 @@ public class RouteTest {
     assertNull(routeModel.getLifecycleState());
     assertNull(routeModel.getName());
     assertNull(routeModel.getNextHop());
+    assertNull(routeModel.getPriority());
     assertNull(routeModel.getZone());
   }
 }

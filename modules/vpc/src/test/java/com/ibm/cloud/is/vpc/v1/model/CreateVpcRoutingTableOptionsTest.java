@@ -16,7 +16,7 @@ package com.ibm.cloud.is.vpc.v1.model;
 import com.ibm.cloud.is.vpc.v1.model.CreateVpcRoutingTableOptions;
 import com.ibm.cloud.is.vpc.v1.model.ResourceFilter;
 import com.ibm.cloud.is.vpc.v1.model.RoutePrototype;
-import com.ibm.cloud.is.vpc.v1.model.RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIP;
+import com.ibm.cloud.is.vpc.v1.model.RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIPRouteNextHopPrototypeRouteNextHopIPRouteNextHopIPSentinelIP;
 import com.ibm.cloud.is.vpc.v1.model.ZoneIdentityByName;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
@@ -40,10 +40,10 @@ public class CreateVpcRoutingTableOptionsTest {
       .build();
     assertEquals(resourceFilterModel.resourceType(), "vpn_server");
 
-    RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIP routePrototypeNextHopModel = new RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIP.Builder()
-      .address("192.168.3.4")
+    RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIPRouteNextHopPrototypeRouteNextHopIPRouteNextHopIPSentinelIP routePrototypeNextHopModel = new RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIPRouteNextHopPrototypeRouteNextHopIPRouteNextHopIPSentinelIP.Builder()
+      .address("0.0.0.0")
       .build();
-    assertEquals(routePrototypeNextHopModel.address(), "192.168.3.4");
+    assertEquals(routePrototypeNextHopModel.address(), "0.0.0.0");
 
     ZoneIdentityByName zoneIdentityModel = new ZoneIdentityByName.Builder()
       .name("us-south-1")
@@ -55,12 +55,14 @@ public class CreateVpcRoutingTableOptionsTest {
       .destination("192.168.3.0/24")
       .name("my-route-1")
       .nextHop(routePrototypeNextHopModel)
+      .priority(Long.valueOf("1"))
       .zone(zoneIdentityModel)
       .build();
     assertEquals(routePrototypeModel.action(), "deliver");
     assertEquals(routePrototypeModel.destination(), "192.168.3.0/24");
     assertEquals(routePrototypeModel.name(), "my-route-1");
     assertEquals(routePrototypeModel.nextHop(), routePrototypeNextHopModel);
+    assertEquals(routePrototypeModel.priority(), Long.valueOf("1"));
     assertEquals(routePrototypeModel.zone(), zoneIdentityModel);
 
     CreateVpcRoutingTableOptions createVpcRoutingTableOptionsModel = new CreateVpcRoutingTableOptions.Builder()

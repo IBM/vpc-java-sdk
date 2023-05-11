@@ -13,77 +13,15 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 /**
- * The IP address of the next hop to which to route packets.
+ * RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIP.
+ *
+ * Classes which extend this class:
+ * - RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIPRouteNextHopPrototypeRouteNextHopIPRouteNextHopIPSentinelIP
+ * - RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIPRouteNextHopPrototypeRouteNextHopIPRouteNextHopIPUnicastIP
  */
 public class RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIP extends RoutePrototypeNextHop {
 
 
-  /**
-   * Builder.
-   */
-  public static class Builder {
-    private String address;
-
-    /**
-     * Instantiates a new Builder from an existing RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIP instance.
-     *
-     * @param routePrototypeNextHopRouteNextHopPrototypeRouteNextHopIp the instance to initialize the Builder with
-     */
-    public Builder(RoutePrototypeNextHop routePrototypeNextHopRouteNextHopPrototypeRouteNextHopIp) {
-      this.address = routePrototypeNextHopRouteNextHopPrototypeRouteNextHopIp.address;
-    }
-
-    /**
-     * Instantiates a new builder.
-     */
-    public Builder() {
-    }
-
-    /**
-     * Instantiates a new builder with required properties.
-     *
-     * @param address the address
-     */
-    public Builder(String address) {
-      this.address = address;
-    }
-
-    /**
-     * Builds a RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIP.
-     *
-     * @return the new RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIP instance
-     */
-    public RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIP build() {
-      return new RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIP(this);
-    }
-
-    /**
-     * Set the address.
-     *
-     * @param address the address
-     * @return the RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIP builder
-     */
-    public Builder address(String address) {
-      this.address = address;
-      return this;
-    }
-  }
-
   protected RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIP() { }
-
-  protected RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIP(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.address,
-      "address cannot be null");
-    address = builder.address;
-  }
-
-  /**
-   * New builder.
-   *
-   * @return a RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIP builder
-   */
-  public Builder newBuilder() {
-    return new Builder(this);
-  }
 }
 

@@ -53,6 +53,7 @@ public class CreateLoadBalancerListenerOptions extends GenericModel {
   protected Long connectionLimit;
   protected LoadBalancerPoolIdentity defaultPool;
   protected LoadBalancerListenerHTTPSRedirectPrototype httpsRedirect;
+  protected Long idleConnectionTimeout;
   protected List<LoadBalancerListenerPolicyPrototype> policies;
   protected Long port;
   protected Long portMax;
@@ -69,6 +70,7 @@ public class CreateLoadBalancerListenerOptions extends GenericModel {
     private Long connectionLimit;
     private LoadBalancerPoolIdentity defaultPool;
     private LoadBalancerListenerHTTPSRedirectPrototype httpsRedirect;
+    private Long idleConnectionTimeout;
     private List<LoadBalancerListenerPolicyPrototype> policies;
     private Long port;
     private Long portMax;
@@ -87,6 +89,7 @@ public class CreateLoadBalancerListenerOptions extends GenericModel {
       this.connectionLimit = createLoadBalancerListenerOptions.connectionLimit;
       this.defaultPool = createLoadBalancerListenerOptions.defaultPool;
       this.httpsRedirect = createLoadBalancerListenerOptions.httpsRedirect;
+      this.idleConnectionTimeout = createLoadBalancerListenerOptions.idleConnectionTimeout;
       this.policies = createLoadBalancerListenerOptions.policies;
       this.port = createLoadBalancerListenerOptions.port;
       this.portMax = createLoadBalancerListenerOptions.portMax;
@@ -213,6 +216,17 @@ public class CreateLoadBalancerListenerOptions extends GenericModel {
     }
 
     /**
+     * Set the idleConnectionTimeout.
+     *
+     * @param idleConnectionTimeout the idleConnectionTimeout
+     * @return the CreateLoadBalancerListenerOptions builder
+     */
+    public Builder idleConnectionTimeout(long idleConnectionTimeout) {
+      this.idleConnectionTimeout = idleConnectionTimeout;
+      return this;
+    }
+
+    /**
      * Set the policies.
      * Existing policies will be replaced.
      *
@@ -272,6 +286,7 @@ public class CreateLoadBalancerListenerOptions extends GenericModel {
     connectionLimit = builder.connectionLimit;
     defaultPool = builder.defaultPool;
     httpsRedirect = builder.httpsRedirect;
+    idleConnectionTimeout = builder.idleConnectionTimeout;
     policies = builder.policies;
     port = builder.port;
     portMax = builder.portMax;
@@ -386,6 +401,17 @@ public class CreateLoadBalancerListenerOptions extends GenericModel {
    */
   public LoadBalancerListenerHTTPSRedirectPrototype httpsRedirect() {
     return httpsRedirect;
+  }
+
+  /**
+   * Gets the idleConnectionTimeout.
+   *
+   * The idle connection timeout of the listener in seconds. Supported for load balancers in the `application` family.
+   *
+   * @return the idleConnectionTimeout
+   */
+  public Long idleConnectionTimeout() {
+    return idleConnectionTimeout;
   }
 
   /**

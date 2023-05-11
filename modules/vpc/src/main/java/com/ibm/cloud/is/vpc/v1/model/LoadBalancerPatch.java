@@ -24,6 +24,7 @@ import com.ibm.cloud.sdk.core.util.GsonSingleton;
  */
 public class LoadBalancerPatch extends GenericModel {
 
+  protected LoadBalancerDNSPatch dns;
   protected LoadBalancerLoggingPatch logging;
   protected String name;
   protected List<SubnetIdentity> subnets;
@@ -32,6 +33,7 @@ public class LoadBalancerPatch extends GenericModel {
    * Builder.
    */
   public static class Builder {
+    private LoadBalancerDNSPatch dns;
     private LoadBalancerLoggingPatch logging;
     private String name;
     private List<SubnetIdentity> subnets;
@@ -42,6 +44,7 @@ public class LoadBalancerPatch extends GenericModel {
      * @param loadBalancerPatch the instance to initialize the Builder with
      */
     private Builder(LoadBalancerPatch loadBalancerPatch) {
+      this.dns = loadBalancerPatch.dns;
       this.logging = loadBalancerPatch.logging;
       this.name = loadBalancerPatch.name;
       this.subnets = loadBalancerPatch.subnets;
@@ -75,6 +78,17 @@ public class LoadBalancerPatch extends GenericModel {
         this.subnets = new ArrayList<SubnetIdentity>();
       }
       this.subnets.add(subnets);
+      return this;
+    }
+
+    /**
+     * Set the dns.
+     *
+     * @param dns the dns
+     * @return the LoadBalancerPatch builder
+     */
+    public Builder dns(LoadBalancerDNSPatch dns) {
+      this.dns = dns;
       return this;
     }
 
@@ -116,6 +130,7 @@ public class LoadBalancerPatch extends GenericModel {
   protected LoadBalancerPatch() { }
 
   protected LoadBalancerPatch(Builder builder) {
+    dns = builder.dns;
     logging = builder.logging;
     name = builder.name;
     subnets = builder.subnets;
@@ -128,6 +143,21 @@ public class LoadBalancerPatch extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
+  }
+
+  /**
+   * Gets the dns.
+   *
+   * The DNS configuration for this load balancer.
+   *
+   * Specify `null` to remove the existing DNS configuration, which will remove all DNS `A`
+   * records for this load balancer that had been added to `zone`, and add equivalent `A`
+   * records to the public DNS zone `lb.appdomain.cloud`.
+   *
+   * @return the dns
+   */
+  public LoadBalancerDNSPatch dns() {
+    return dns;
   }
 
   /**

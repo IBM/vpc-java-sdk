@@ -14,6 +14,7 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 import java.util.Map;
 
+import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 import com.ibm.cloud.sdk.core.util.GsonSingleton;
 
@@ -23,12 +24,17 @@ import com.ibm.cloud.sdk.core.util.GsonSingleton;
 public class RoutePatch extends GenericModel {
 
   protected String name;
+  @SerializedName("next_hop")
+  protected RouteNextHopPatch nextHop;
+  protected Long priority;
 
   /**
    * Builder.
    */
   public static class Builder {
     private String name;
+    private RouteNextHopPatch nextHop;
+    private Long priority;
 
     /**
      * Instantiates a new Builder from an existing RoutePatch instance.
@@ -37,6 +43,8 @@ public class RoutePatch extends GenericModel {
      */
     private Builder(RoutePatch routePatch) {
       this.name = routePatch.name;
+      this.nextHop = routePatch.nextHop;
+      this.priority = routePatch.priority;
     }
 
     /**
@@ -64,12 +72,36 @@ public class RoutePatch extends GenericModel {
       this.name = name;
       return this;
     }
+
+    /**
+     * Set the nextHop.
+     *
+     * @param nextHop the nextHop
+     * @return the RoutePatch builder
+     */
+    public Builder nextHop(RouteNextHopPatch nextHop) {
+      this.nextHop = nextHop;
+      return this;
+    }
+
+    /**
+     * Set the priority.
+     *
+     * @param priority the priority
+     * @return the RoutePatch builder
+     */
+    public Builder priority(long priority) {
+      this.priority = priority;
+      return this;
+    }
   }
 
   protected RoutePatch() { }
 
   protected RoutePatch(Builder builder) {
     name = builder.name;
+    nextHop = builder.nextHop;
+    priority = builder.priority;
   }
 
   /**
@@ -91,6 +123,36 @@ public class RoutePatch extends GenericModel {
    */
   public String name() {
     return name;
+  }
+
+  /**
+   * Gets the nextHop.
+   *
+   * If `action` is `deliver`, the next hop that packets will be delivered to. For other
+   * `action` values, specify `0.0.0.0` or remove it by specifying `null`.
+   *
+   * At most two routes per `zone` in a table can have the same `destination` and `priority`,
+   * and only when each route has an `action` of `deliver` and `next_hop` is an IP address.
+   *
+   * @return the nextHop
+   */
+  public RouteNextHopPatch nextHop() {
+    return nextHop;
+  }
+
+  /**
+   * Gets the priority.
+   *
+   * The priority of this route. Smaller values have higher priority.
+   *
+   * If a routing table contains multiple routes with the same `zone` and `destination`, the route with the highest
+   * priority (smallest value) is selected. If two routes have the same `destination` and `priority`, traffic is
+   * distributed between them.
+   *
+   * @return the priority
+   */
+  public Long priority() {
+    return priority;
   }
 
   /**

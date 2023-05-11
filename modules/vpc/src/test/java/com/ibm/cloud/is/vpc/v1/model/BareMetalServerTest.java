@@ -18,6 +18,7 @@ import com.ibm.cloud.is.vpc.v1.model.BareMetalServerBootTargetBareMetalServerDis
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerCPU;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerDisk;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerDiskReferenceDeleted;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerLifecycleReason;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileReference;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerStatusReason;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerTrustedPlatformModule;
@@ -59,6 +60,8 @@ public class BareMetalServerTest {
     assertNull(bareMetalServerModel.isEnableSecureBoot());
     assertNull(bareMetalServerModel.getHref());
     assertNull(bareMetalServerModel.getId());
+    assertNull(bareMetalServerModel.getLifecycleReasons());
+    assertNull(bareMetalServerModel.getLifecycleState());
     assertNull(bareMetalServerModel.getMemory());
     assertNull(bareMetalServerModel.getName());
     assertNull(bareMetalServerModel.getNetworkInterfaces());

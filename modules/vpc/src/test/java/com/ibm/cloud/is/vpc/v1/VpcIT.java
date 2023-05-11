@@ -66,6 +66,7 @@ import com.ibm.cloud.is.vpc.v1.model.BareMetalServerInitialization;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerInitializationPrototype;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerInitializationUserAccount;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerInitializationUserAccountBareMetalServerInitializationHostUserAccount;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerLifecycleReason;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkInterface;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkInterfaceByHiperSocket;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkInterfaceByPCI;
@@ -101,6 +102,7 @@ import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileCPUSocketCountRange;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileCollection;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileCollectionFirst;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileCollectionNext;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileConsoleTypes;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileDisk;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileDiskQuantity;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileDiskQuantityDependent;
@@ -121,6 +123,9 @@ import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileMemoryDependent;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileMemoryEnum;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileMemoryFixed;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileMemoryRange;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileNetworkInterfaceCount;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileNetworkInterfaceCountDependent;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileNetworkInterfaceCountRange;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileOSArchitecture;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileReference;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileSupportedTrustedPlatformModuleModes;
@@ -140,6 +145,11 @@ import com.ibm.cloud.is.vpc.v1.model.CertificateInstanceIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.CertificateInstanceReference;
 import com.ibm.cloud.is.vpc.v1.model.CheckVpnGatewayConnectionLocalCidrOptions;
 import com.ibm.cloud.is.vpc.v1.model.CheckVpnGatewayConnectionPeerCidrOptions;
+import com.ibm.cloud.is.vpc.v1.model.CloudObjectStorageBucketIdentity;
+import com.ibm.cloud.is.vpc.v1.model.CloudObjectStorageBucketIdentityByCRN;
+import com.ibm.cloud.is.vpc.v1.model.CloudObjectStorageBucketIdentityCloudObjectStorageBucketIdentityByName;
+import com.ibm.cloud.is.vpc.v1.model.CloudObjectStorageBucketReference;
+import com.ibm.cloud.is.vpc.v1.model.CloudObjectStorageObjectReference;
 import com.ibm.cloud.is.vpc.v1.model.CreateBackupPolicyOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateBackupPolicyPlanOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateBareMetalServerConsoleAccessTokenOptions;
@@ -151,6 +161,7 @@ import com.ibm.cloud.is.vpc.v1.model.CreateEndpointGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateFloatingIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateFlowLogCollectorOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateIkePolicyOptions;
+import com.ibm.cloud.is.vpc.v1.model.CreateImageExportJobOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateImageOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateInstanceActionOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateInstanceConsoleAccessTokenOptions;
@@ -191,6 +202,12 @@ import com.ibm.cloud.is.vpc.v1.model.CreateVpnGatewayConnectionOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateVpnGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateVpnServerOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateVpnServerRouteOptions;
+import com.ibm.cloud.is.vpc.v1.model.DNSInstanceIdentity;
+import com.ibm.cloud.is.vpc.v1.model.DNSInstanceIdentityByCRN;
+import com.ibm.cloud.is.vpc.v1.model.DNSInstanceReference;
+import com.ibm.cloud.is.vpc.v1.model.DNSZoneIdentity;
+import com.ibm.cloud.is.vpc.v1.model.DNSZoneIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.DNSZoneReference;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHost;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostCollection;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostCollectionFirst;
@@ -240,6 +257,7 @@ import com.ibm.cloud.is.vpc.v1.model.DedicatedHostProfileVCPUArchitecture;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostProfileVCPUDependent;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostProfileVCPUEnum;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostProfileVCPUFixed;
+import com.ibm.cloud.is.vpc.v1.model.DedicatedHostProfileVCPUManufacturer;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostProfileVCPURange;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostProfilesPager;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostPrototype;
@@ -261,6 +279,7 @@ import com.ibm.cloud.is.vpc.v1.model.DeleteEndpointGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteFloatingIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteFlowLogCollectorOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteIkePolicyOptions;
+import com.ibm.cloud.is.vpc.v1.model.DeleteImageExportJobOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteImageOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteInstanceGroupLoadBalancerOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteInstanceGroupManagerActionOptions;
@@ -330,9 +349,6 @@ import com.ibm.cloud.is.vpc.v1.model.EndpointGatewayTargetProviderCloudServiceRe
 import com.ibm.cloud.is.vpc.v1.model.EndpointGatewayTargetProviderInfrastructureServiceReference;
 import com.ibm.cloud.is.vpc.v1.model.EndpointGatewaysPager;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIP;
-import com.ibm.cloud.is.vpc.v1.model.FloatingIPByTargetNetworkInterfaceIdentity;
-import com.ibm.cloud.is.vpc.v1.model.FloatingIPByTargetNetworkInterfaceIdentityNetworkInterfaceIdentityByHref;
-import com.ibm.cloud.is.vpc.v1.model.FloatingIPByTargetNetworkInterfaceIdentityNetworkInterfaceIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPCollection;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPCollectionFirst;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPCollectionNext;
@@ -345,8 +361,13 @@ import com.ibm.cloud.is.vpc.v1.model.FloatingIPReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPTarget;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPTargetNetworkInterfaceReference;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPTargetPatch;
-import com.ibm.cloud.is.vpc.v1.model.FloatingIPTargetPatchNetworkInterfaceIdentityByHref;
-import com.ibm.cloud.is.vpc.v1.model.FloatingIPTargetPatchNetworkInterfaceIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.FloatingIPTargetPatchNetworkInterfaceIdentity;
+import com.ibm.cloud.is.vpc.v1.model.FloatingIPTargetPatchNetworkInterfaceIdentityNetworkInterfaceIdentityByHref;
+import com.ibm.cloud.is.vpc.v1.model.FloatingIPTargetPatchNetworkInterfaceIdentityNetworkInterfaceIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.FloatingIPTargetPrototype;
+import com.ibm.cloud.is.vpc.v1.model.FloatingIPTargetPrototypeNetworkInterfaceIdentity;
+import com.ibm.cloud.is.vpc.v1.model.FloatingIPTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceIdentityByHref;
+import com.ibm.cloud.is.vpc.v1.model.FloatingIPTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPTargetPublicGatewayReference;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPUnpaginatedCollection;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIpsPager;
@@ -364,8 +385,8 @@ import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorTargetPrototypeInstanceIden
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorTargetPrototypeInstanceIdentityInstanceIdentityByHref;
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorTargetPrototypeInstanceIdentityInstanceIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorTargetPrototypeNetworkInterfaceIdentity;
-import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceIdentityNetworkInterfaceIdentityByHref;
-import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceIdentityNetworkInterfaceIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceIdentityByHref;
+import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorTargetPrototypeSubnetIdentity;
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorTargetPrototypeSubnetIdentitySubnetIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorTargetPrototypeSubnetIdentitySubnetIdentityByHref;
@@ -397,6 +418,7 @@ import com.ibm.cloud.is.vpc.v1.model.GetEndpointGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetFloatingIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetFlowLogCollectorOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetIkePolicyOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetImageExportJobOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetImageOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetInstanceDiskOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetInstanceGroupManagerActionOptions;
@@ -476,6 +498,10 @@ import com.ibm.cloud.is.vpc.v1.model.ImageCatalogOffering;
 import com.ibm.cloud.is.vpc.v1.model.ImageCollection;
 import com.ibm.cloud.is.vpc.v1.model.ImageCollectionFirst;
 import com.ibm.cloud.is.vpc.v1.model.ImageCollectionNext;
+import com.ibm.cloud.is.vpc.v1.model.ImageExportJob;
+import com.ibm.cloud.is.vpc.v1.model.ImageExportJobPatch;
+import com.ibm.cloud.is.vpc.v1.model.ImageExportJobStatusReason;
+import com.ibm.cloud.is.vpc.v1.model.ImageExportJobUnpaginatedCollection;
 import com.ibm.cloud.is.vpc.v1.model.ImageFile;
 import com.ibm.cloud.is.vpc.v1.model.ImageFileChecksums;
 import com.ibm.cloud.is.vpc.v1.model.ImageFilePrototype;
@@ -581,6 +607,7 @@ import com.ibm.cloud.is.vpc.v1.model.InstanceGroupsPager;
 import com.ibm.cloud.is.vpc.v1.model.InstanceInitialization;
 import com.ibm.cloud.is.vpc.v1.model.InstanceInitializationDefaultTrustedProfile;
 import com.ibm.cloud.is.vpc.v1.model.InstanceInitializationPassword;
+import com.ibm.cloud.is.vpc.v1.model.InstanceLifecycleReason;
 import com.ibm.cloud.is.vpc.v1.model.InstanceMetadataService;
 import com.ibm.cloud.is.vpc.v1.model.InstanceMetadataServicePatch;
 import com.ibm.cloud.is.vpc.v1.model.InstanceMetadataServicePrototype;
@@ -654,6 +681,9 @@ import com.ibm.cloud.is.vpc.v1.model.InstanceProfileMemoryDependent;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileMemoryEnum;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileMemoryFixed;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileMemoryRange;
+import com.ibm.cloud.is.vpc.v1.model.InstanceProfileNetworkInterfaceCount;
+import com.ibm.cloud.is.vpc.v1.model.InstanceProfileNetworkInterfaceCountDependent;
+import com.ibm.cloud.is.vpc.v1.model.InstanceProfileNetworkInterfaceCountRange;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileOSArchitecture;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfilePortSpeed;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfilePortSpeedDependent;
@@ -664,6 +694,7 @@ import com.ibm.cloud.is.vpc.v1.model.InstanceProfileVCPUArchitecture;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileVCPUDependent;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileVCPUEnum;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileVCPUFixed;
+import com.ibm.cloud.is.vpc.v1.model.InstanceProfileVCPUManufacturer;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileVCPURange;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileVolumeBandwidth;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileVolumeBandwidthDependent;
@@ -675,6 +706,7 @@ import com.ibm.cloud.is.vpc.v1.model.InstancePrototypeInstanceByCatalogOffering;
 import com.ibm.cloud.is.vpc.v1.model.InstancePrototypeInstanceByImage;
 import com.ibm.cloud.is.vpc.v1.model.InstancePrototypeInstanceBySourceSnapshot;
 import com.ibm.cloud.is.vpc.v1.model.InstancePrototypeInstanceBySourceTemplate;
+import com.ibm.cloud.is.vpc.v1.model.InstancePrototypeInstanceByVolume;
 import com.ibm.cloud.is.vpc.v1.model.InstanceReference;
 import com.ibm.cloud.is.vpc.v1.model.InstanceReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.InstanceStatusReason;
@@ -686,14 +718,14 @@ import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateIdentity;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateIdentityByHref;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateIdentityById;
-import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateInstanceByCatalogOffering;
-import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateInstanceByImage;
-import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateInstanceBySourceSnapshot;
+import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateInstanceByCatalogOfferingInstanceTemplateContext;
+import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateInstanceByImageInstanceTemplateContext;
+import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateInstanceBySourceSnapshotInstanceTemplateContext;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplatePatch;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplatePrototype;
-import com.ibm.cloud.is.vpc.v1.model.InstanceTemplatePrototypeInstanceByCatalogOffering;
-import com.ibm.cloud.is.vpc.v1.model.InstanceTemplatePrototypeInstanceByImage;
-import com.ibm.cloud.is.vpc.v1.model.InstanceTemplatePrototypeInstanceBySourceSnapshot;
+import com.ibm.cloud.is.vpc.v1.model.InstanceTemplatePrototypeInstanceByCatalogOfferingInstanceTemplateContext;
+import com.ibm.cloud.is.vpc.v1.model.InstanceTemplatePrototypeInstanceByImageInstanceTemplateContext;
+import com.ibm.cloud.is.vpc.v1.model.InstanceTemplatePrototypeInstanceBySourceSnapshotInstanceTemplateContext;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplatePrototypeInstanceBySourceTemplate;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateReference;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateReferenceDeleted;
@@ -716,7 +748,6 @@ import com.ibm.cloud.is.vpc.v1.model.KeysPager;
 import com.ibm.cloud.is.vpc.v1.model.LegacyCloudObjectStorageBucketIdentity;
 import com.ibm.cloud.is.vpc.v1.model.LegacyCloudObjectStorageBucketIdentityCloudObjectStorageBucketIdentityByName;
 import com.ibm.cloud.is.vpc.v1.model.LegacyCloudObjectStorageBucketReference;
-import com.ibm.cloud.is.vpc.v1.model.LifecycleReason;
 import com.ibm.cloud.is.vpc.v1.model.ListBackupPoliciesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListBackupPolicyJobsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListBackupPolicyPlansOptions;
@@ -736,6 +767,7 @@ import com.ibm.cloud.is.vpc.v1.model.ListFloatingIpsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListFlowLogCollectorsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListIkePoliciesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListIkePolicyConnectionsOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListImageExportJobsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListImagesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListInstanceDisksOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListInstanceGroupManagerActionsOptions;
@@ -792,6 +824,9 @@ import com.ibm.cloud.is.vpc.v1.model.LoadBalancer;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerCollection;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerCollectionFirst;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerCollectionNext;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerDNS;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerDNSPatch;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerDNSPrototype;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerIdentity;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerIdentityByHref;
@@ -963,7 +998,6 @@ import com.ibm.cloud.is.vpc.v1.model.OperatingSystemCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.OperatingSystemIdentity;
 import com.ibm.cloud.is.vpc.v1.model.OperatingSystemIdentityByHref;
 import com.ibm.cloud.is.vpc.v1.model.OperatingSystemIdentityByName;
-import com.ibm.cloud.is.vpc.v1.model.OperatingSystemReference;
 import com.ibm.cloud.is.vpc.v1.model.OperatingSystemsPager;
 import com.ibm.cloud.is.vpc.v1.model.PlacementGroup;
 import com.ibm.cloud.is.vpc.v1.model.PlacementGroupCollection;
@@ -1042,11 +1076,20 @@ import com.ibm.cloud.is.vpc.v1.model.RouteCreatorVPNGatewayReference;
 import com.ibm.cloud.is.vpc.v1.model.RouteCreatorVPNServerReference;
 import com.ibm.cloud.is.vpc.v1.model.RouteNextHop;
 import com.ibm.cloud.is.vpc.v1.model.RouteNextHopIP;
+import com.ibm.cloud.is.vpc.v1.model.RouteNextHopPatch;
+import com.ibm.cloud.is.vpc.v1.model.RouteNextHopPatchRouteNextHopIP;
+import com.ibm.cloud.is.vpc.v1.model.RouteNextHopPatchRouteNextHopIPRouteNextHopIPSentinelIP;
+import com.ibm.cloud.is.vpc.v1.model.RouteNextHopPatchRouteNextHopIPRouteNextHopIPUnicastIP;
+import com.ibm.cloud.is.vpc.v1.model.RouteNextHopPatchVPNGatewayConnectionIdentity;
+import com.ibm.cloud.is.vpc.v1.model.RouteNextHopPatchVPNGatewayConnectionIdentityVPNGatewayConnectionIdentityByHref;
+import com.ibm.cloud.is.vpc.v1.model.RouteNextHopPatchVPNGatewayConnectionIdentityVPNGatewayConnectionIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.RouteNextHopVPNGatewayConnectionReference;
 import com.ibm.cloud.is.vpc.v1.model.RoutePatch;
 import com.ibm.cloud.is.vpc.v1.model.RoutePrototype;
 import com.ibm.cloud.is.vpc.v1.model.RoutePrototypeNextHop;
 import com.ibm.cloud.is.vpc.v1.model.RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIP;
+import com.ibm.cloud.is.vpc.v1.model.RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIPRouteNextHopPrototypeRouteNextHopIPRouteNextHopIPSentinelIP;
+import com.ibm.cloud.is.vpc.v1.model.RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIPRouteNextHopPrototypeRouteNextHopIPRouteNextHopIPUnicastIP;
 import com.ibm.cloud.is.vpc.v1.model.RoutePrototypeNextHopRouteNextHopPrototypeVPNGatewayConnectionIdentity;
 import com.ibm.cloud.is.vpc.v1.model.RoutePrototypeNextHopRouteNextHopPrototypeVPNGatewayConnectionIdentityRouteNextHopPrototypeVPNGatewayConnectionIdentityVPNGatewayConnectionIdentityByHref;
 import com.ibm.cloud.is.vpc.v1.model.RoutePrototypeNextHopRouteNextHopPrototypeVPNGatewayConnectionIdentityRouteNextHopPrototypeVPNGatewayConnectionIdentityVPNGatewayConnectionIdentityById;
@@ -1168,6 +1211,7 @@ import com.ibm.cloud.is.vpc.v1.model.UpdateEndpointGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateFloatingIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateFlowLogCollectorOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateIkePolicyOptions;
+import com.ibm.cloud.is.vpc.v1.model.UpdateImageExportJobOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateImageOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateInstanceDiskOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateInstanceGroupManagerActionOptions;
@@ -1291,6 +1335,7 @@ import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPatch;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototype;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototypeInstanceByImageContext;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototypeInstanceBySourceSnapshotContext;
+import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototypeInstanceByVolumeContext;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototypeVolume;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototypeVolumeVolumeIdentity;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototypeVolumeVolumeIdentityVolumeIdentityByCRN;
@@ -1328,6 +1373,8 @@ import com.ibm.cloud.is.vpc.v1.model.VolumePrototypeVolumeByCapacity;
 import com.ibm.cloud.is.vpc.v1.model.VolumePrototypeVolumeBySourceSnapshot;
 import com.ibm.cloud.is.vpc.v1.model.VolumeReference;
 import com.ibm.cloud.is.vpc.v1.model.VolumeReferenceDeleted;
+import com.ibm.cloud.is.vpc.v1.model.VolumeReferenceVolumeAttachmentContext;
+import com.ibm.cloud.is.vpc.v1.model.VolumeReferenceVolumeAttachmentContextDeleted;
 import com.ibm.cloud.is.vpc.v1.model.VolumeStatusReason;
 import com.ibm.cloud.is.vpc.v1.model.VolumesPager;
 import com.ibm.cloud.is.vpc.v1.model.VpcAddressPrefixesPager;
@@ -1370,7 +1417,6 @@ public class VpcIT extends SdkIntegrationTestBase {
   final HashMap<String, InputStream> mockStreamMap = TestUtilities.createMockStreamMap();
   final List<FileWithMetadata> mockListFileWithMetadata = TestUtilities.creatMockListFileWithMetadata();
 
-  String serviceName = "testService";
   /**
    * This method provides our config filename to the base class.
    */
@@ -1386,7 +1432,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       return;
     }
 
-    service = Vpc.newInstance(serviceName);
+    service = Vpc.newInstance();
     assertNotNull(service);
     assertNotNull(service.getServiceUrl());
 
@@ -1808,8 +1854,8 @@ public class VpcIT extends SdkIntegrationTestBase {
         .name("us-south-1")
         .build();
 
-      RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIP routePrototypeNextHopModel = new RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIP.Builder()
-        .address("192.168.3.4")
+      RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIPRouteNextHopPrototypeRouteNextHopIPRouteNextHopIPSentinelIP routePrototypeNextHopModel = new RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIPRouteNextHopPrototypeRouteNextHopIPRouteNextHopIPSentinelIP.Builder()
+        .address("0.0.0.0")
         .build();
 
       CreateVpcRouteOptions createVpcRouteOptions = new CreateVpcRouteOptions.Builder()
@@ -1819,6 +1865,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .action("deliver")
         .name("my-route-1")
         .nextHop(routePrototypeNextHopModel)
+        .priority(Long.valueOf("1"))
         .build();
 
       // Invoke operation
@@ -1862,8 +1909,14 @@ public class VpcIT extends SdkIntegrationTestBase {
   @Test(dependsOnMethods = { "testGetVpcRoute" })
   public void testUpdateVpcRoute() throws Exception {
     try {
+      RouteNextHopPatchRouteNextHopIPRouteNextHopIPSentinelIP routeNextHopPatchModel = new RouteNextHopPatchRouteNextHopIPRouteNextHopIPSentinelIP.Builder()
+        .address("0.0.0.0")
+        .build();
+
       RoutePatch routePatchModel = new RoutePatch.Builder()
         .name("my-route-2")
+        .nextHop(routeNextHopPatchModel)
+        .priority(Long.valueOf("1"))
         .build();
       Map<String, Object> routePatchModelAsPatch = routePatchModel.asPatch();
 
@@ -1953,8 +2006,8 @@ public class VpcIT extends SdkIntegrationTestBase {
         .resourceType("vpn_server")
         .build();
 
-      RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIP routePrototypeNextHopModel = new RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIP.Builder()
-        .address("192.168.3.4")
+      RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIPRouteNextHopPrototypeRouteNextHopIPRouteNextHopIPSentinelIP routePrototypeNextHopModel = new RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIPRouteNextHopPrototypeRouteNextHopIPRouteNextHopIPSentinelIP.Builder()
+        .address("0.0.0.0")
         .build();
 
       ZoneIdentityByName zoneIdentityModel = new ZoneIdentityByName.Builder()
@@ -1966,6 +2019,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .destination("192.168.3.0/24")
         .name("my-route-1")
         .nextHop(routePrototypeNextHopModel)
+        .priority(Long.valueOf("1"))
         .zone(zoneIdentityModel)
         .build();
 
@@ -2122,8 +2176,8 @@ public class VpcIT extends SdkIntegrationTestBase {
         .name("us-south-1")
         .build();
 
-      RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIP routePrototypeNextHopModel = new RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIP.Builder()
-        .address("192.168.3.4")
+      RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIPRouteNextHopPrototypeRouteNextHopIPRouteNextHopIPSentinelIP routePrototypeNextHopModel = new RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIPRouteNextHopPrototypeRouteNextHopIPRouteNextHopIPSentinelIP.Builder()
+        .address("0.0.0.0")
         .build();
 
       CreateVpcRoutingTableRouteOptions createVpcRoutingTableRouteOptions = new CreateVpcRoutingTableRouteOptions.Builder()
@@ -2134,6 +2188,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .action("deliver")
         .name("my-route-1")
         .nextHop(routePrototypeNextHopModel)
+        .priority(Long.valueOf("1"))
         .build();
 
       // Invoke operation
@@ -2178,8 +2233,14 @@ public class VpcIT extends SdkIntegrationTestBase {
   @Test(dependsOnMethods = { "testGetVpcRoutingTableRoute" })
   public void testUpdateVpcRoutingTableRoute() throws Exception {
     try {
+      RouteNextHopPatchRouteNextHopIPRouteNextHopIPSentinelIP routeNextHopPatchModel = new RouteNextHopPatchRouteNextHopIPRouteNextHopIPSentinelIP.Builder()
+        .address("0.0.0.0")
+        .build();
+
       RoutePatch routePatchModel = new RoutePatch.Builder()
         .name("my-route-2")
+        .nextHop(routeNextHopPatchModel)
+        .priority(Long.valueOf("1"))
         .build();
       Map<String, Object> routePatchModelAsPatch = routePatchModel.asPatch();
 
@@ -2597,7 +2658,7 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testCreateSubnetReservedIp() throws Exception {
     try {
       ReservedIPTargetPrototypeEndpointGatewayIdentityEndpointGatewayIdentityById reservedIpTargetPrototypeModel = new ReservedIPTargetPrototypeEndpointGatewayIdentityEndpointGatewayIdentityById.Builder()
-        .id("d7cc5196-9864-48c4-82d8-3f30da41fcc5")
+        .id("r134-d7cc5196-9864-48c4-82d8-3f30da41fcc5")
         .build();
 
       CreateSubnetReservedIpOptions createSubnetReservedIpOptions = new CreateSubnetReservedIpOptions.Builder()
@@ -2834,6 +2895,110 @@ public class VpcIT extends SdkIntegrationTestBase {
   }
 
   @Test(dependsOnMethods = { "testUpdateImage" })
+  public void testListImageExportJobs() throws Exception {
+    try {
+      ListImageExportJobsOptions listImageExportJobsOptions = new ListImageExportJobsOptions.Builder()
+        .imageId("testString")
+        .name("testString")
+        .build();
+
+      // Invoke operation
+      Response<ImageExportJobUnpaginatedCollection> response = service.listImageExportJobs(listImageExportJobsOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      ImageExportJobUnpaginatedCollection imageExportJobUnpaginatedCollectionResult = response.getResult();
+
+      assertNotNull(imageExportJobUnpaginatedCollectionResult);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testListImageExportJobs" })
+  public void testCreateImageExportJob() throws Exception {
+    try {
+      CloudObjectStorageBucketIdentityCloudObjectStorageBucketIdentityByName cloudObjectStorageBucketIdentityModel = new CloudObjectStorageBucketIdentityCloudObjectStorageBucketIdentityByName.Builder()
+        .name("bucket-27200-lwx4cfvcue")
+        .build();
+
+      CreateImageExportJobOptions createImageExportJobOptions = new CreateImageExportJobOptions.Builder()
+        .imageId("testString")
+        .storageBucket(cloudObjectStorageBucketIdentityModel)
+        .format("qcow2")
+        .name("my-image-export")
+        .build();
+
+      // Invoke operation
+      Response<ImageExportJob> response = service.createImageExportJob(createImageExportJobOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 201);
+
+      ImageExportJob imageExportJobResult = response.getResult();
+
+      assertNotNull(imageExportJobResult);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testCreateImageExportJob" })
+  public void testGetImageExportJob() throws Exception {
+    try {
+      GetImageExportJobOptions getImageExportJobOptions = new GetImageExportJobOptions.Builder()
+        .imageId("testString")
+        .id("testString")
+        .build();
+
+      // Invoke operation
+      Response<ImageExportJob> response = service.getImageExportJob(getImageExportJobOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      ImageExportJob imageExportJobResult = response.getResult();
+
+      assertNotNull(imageExportJobResult);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testGetImageExportJob" })
+  public void testUpdateImageExportJob() throws Exception {
+    try {
+      ImageExportJobPatch imageExportJobPatchModel = new ImageExportJobPatch.Builder()
+        .name("my-image-export")
+        .build();
+      Map<String, Object> imageExportJobPatchModelAsPatch = imageExportJobPatchModel.asPatch();
+
+      UpdateImageExportJobOptions updateImageExportJobOptions = new UpdateImageExportJobOptions.Builder()
+        .imageId("testString")
+        .id("testString")
+        .imageExportJobPatch(imageExportJobPatchModelAsPatch)
+        .build();
+
+      // Invoke operation
+      Response<ImageExportJob> response = service.updateImageExportJob(updateImageExportJobOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      ImageExportJob imageExportJobResult = response.getResult();
+
+      assertNotNull(imageExportJobResult);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testUpdateImageExportJob" })
   public void testListOperatingSystems() throws Exception {
     try {
       ListOperatingSystemsOptions listOperatingSystemsOptions = new ListOperatingSystemsOptions.Builder()
@@ -3130,28 +3295,6 @@ public class VpcIT extends SdkIntegrationTestBase {
         .responseHopLimit(Long.valueOf("2"))
         .build();
 
-      NetworkInterfaceIPPrototypeReservedIPPrototypeNetworkInterfaceContext networkInterfaceIpPrototypeModel = new NetworkInterfaceIPPrototypeReservedIPPrototypeNetworkInterfaceContext.Builder()
-        .address("10.0.0.5")
-        .autoDelete(false)
-        .name("my-reserved-ip")
-        .build();
-
-      SecurityGroupIdentityById securityGroupIdentityModel = new SecurityGroupIdentityById.Builder()
-        .id("be5df5ca-12a0-494b-907e-aa6ec2bfa271")
-        .build();
-
-      SubnetIdentityById subnetIdentityModel = new SubnetIdentityById.Builder()
-        .id("7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
-        .build();
-
-      NetworkInterfacePrototype networkInterfacePrototypeModel = new NetworkInterfacePrototype.Builder()
-        .allowIpSpoofing(true)
-        .name("my-network-interface")
-        .primaryIp(networkInterfaceIpPrototypeModel)
-        .securityGroups(java.util.Arrays.asList(securityGroupIdentityModel))
-        .subnet(subnetIdentityModel)
-        .build();
-
       InstancePlacementTargetPrototypeDedicatedHostIdentityDedicatedHostIdentityById instancePlacementTargetPrototypeModel = new InstancePlacementTargetPrototypeDedicatedHostIdentityDedicatedHostIdentityById.Builder()
         .id("1e09281b-f177-46fb-baf1-bc152b2e391a")
         .build();
@@ -3187,7 +3330,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       VolumePrototypeInstanceByImageContext volumePrototypeInstanceByImageContextModel = new VolumePrototypeInstanceByImageContext.Builder()
-        .capacity(Long.valueOf("250"))
+        .capacity(Long.valueOf("100"))
         .encryptionKey(encryptionKeyIdentityModel)
         .iops(Long.valueOf("10000"))
         .name("my-volume")
@@ -3205,17 +3348,38 @@ public class VpcIT extends SdkIntegrationTestBase {
         .id("3f9a2d96-830e-4100-9b4c-663225a3f872")
         .build();
 
+      NetworkInterfaceIPPrototypeReservedIPPrototypeNetworkInterfaceContext networkInterfaceIpPrototypeModel = new NetworkInterfaceIPPrototypeReservedIPPrototypeNetworkInterfaceContext.Builder()
+        .address("10.0.0.5")
+        .autoDelete(false)
+        .name("my-reserved-ip")
+        .build();
+
+      SecurityGroupIdentityById securityGroupIdentityModel = new SecurityGroupIdentityById.Builder()
+        .id("be5df5ca-12a0-494b-907e-aa6ec2bfa271")
+        .build();
+
+      SubnetIdentityById subnetIdentityModel = new SubnetIdentityById.Builder()
+        .id("7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
+        .build();
+
+      NetworkInterfacePrototype networkInterfacePrototypeModel = new NetworkInterfacePrototype.Builder()
+        .allowIpSpoofing(true)
+        .name("my-network-interface")
+        .primaryIp(networkInterfaceIpPrototypeModel)
+        .securityGroups(java.util.Arrays.asList(securityGroupIdentityModel))
+        .subnet(subnetIdentityModel)
+        .build();
+
       ZoneIdentityByName zoneIdentityModel = new ZoneIdentityByName.Builder()
         .name("us-south-1")
         .build();
 
-      InstanceTemplatePrototypeInstanceByImage instanceTemplatePrototypeModel = new InstanceTemplatePrototypeInstanceByImage.Builder()
+      InstanceTemplatePrototypeInstanceByImageInstanceTemplateContext instanceTemplatePrototypeModel = new InstanceTemplatePrototypeInstanceByImageInstanceTemplateContext.Builder()
         .availabilityPolicy(instanceAvailabilityPolicyPrototypeModel)
         .defaultTrustedProfile(instanceDefaultTrustedProfilePrototypeModel)
         .keys(java.util.Arrays.asList(keyIdentityModel))
         .metadataService(instanceMetadataServicePrototypeModel)
         .name("my-instance-template")
-        .networkInterfaces(java.util.Arrays.asList(networkInterfacePrototypeModel))
         .placementTarget(instancePlacementTargetPrototypeModel)
         .profile(instanceProfileIdentityModel)
         .resourceGroup(resourceGroupIdentityModel)
@@ -3225,6 +3389,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .vpc(vpcIdentityModel)
         .bootVolumeAttachment(volumeAttachmentPrototypeInstanceByImageContextModel)
         .image(imageIdentityModel)
+        .networkInterfaces(java.util.Arrays.asList(networkInterfacePrototypeModel))
         .primaryNetworkInterface(networkInterfacePrototypeModel)
         .zone(zoneIdentityModel)
         .build();
@@ -3400,28 +3565,6 @@ public class VpcIT extends SdkIntegrationTestBase {
         .responseHopLimit(Long.valueOf("2"))
         .build();
 
-      NetworkInterfaceIPPrototypeReservedIPPrototypeNetworkInterfaceContext networkInterfaceIpPrototypeModel = new NetworkInterfaceIPPrototypeReservedIPPrototypeNetworkInterfaceContext.Builder()
-        .address("10.0.0.5")
-        .autoDelete(false)
-        .name("my-reserved-ip")
-        .build();
-
-      SecurityGroupIdentityById securityGroupIdentityModel = new SecurityGroupIdentityById.Builder()
-        .id("be5df5ca-12a0-494b-907e-aa6ec2bfa271")
-        .build();
-
-      SubnetIdentityById subnetIdentityModel = new SubnetIdentityById.Builder()
-        .id("7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
-        .build();
-
-      NetworkInterfacePrototype networkInterfacePrototypeModel = new NetworkInterfacePrototype.Builder()
-        .allowIpSpoofing(true)
-        .name("my-network-interface")
-        .primaryIp(networkInterfaceIpPrototypeModel)
-        .securityGroups(java.util.Arrays.asList(securityGroupIdentityModel))
-        .subnet(subnetIdentityModel)
-        .build();
-
       InstancePlacementTargetPrototypeDedicatedHostIdentityDedicatedHostIdentityById instancePlacementTargetPrototypeModel = new InstancePlacementTargetPrototypeDedicatedHostIdentityDedicatedHostIdentityById.Builder()
         .id("0787-84e4793a-7cd8-4a7b-b253-818aa19d0512")
         .build();
@@ -3462,7 +3605,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       VolumePrototypeInstanceByImageContext volumePrototypeInstanceByImageContextModel = new VolumePrototypeInstanceByImageContext.Builder()
-        .capacity(Long.valueOf("250"))
+        .capacity(Long.valueOf("100"))
         .encryptionKey(encryptionKeyIdentityModel)
         .iops(Long.valueOf("10000"))
         .name("my-boot-volume")
@@ -3480,6 +3623,28 @@ public class VpcIT extends SdkIntegrationTestBase {
         .id("9aaf3bcb-dcd7-4de7-bb60-24e39ff9d366")
         .build();
 
+      NetworkInterfaceIPPrototypeReservedIPPrototypeNetworkInterfaceContext networkInterfaceIpPrototypeModel = new NetworkInterfaceIPPrototypeReservedIPPrototypeNetworkInterfaceContext.Builder()
+        .address("10.0.0.5")
+        .autoDelete(false)
+        .name("my-reserved-ip")
+        .build();
+
+      SecurityGroupIdentityById securityGroupIdentityModel = new SecurityGroupIdentityById.Builder()
+        .id("be5df5ca-12a0-494b-907e-aa6ec2bfa271")
+        .build();
+
+      SubnetIdentityById subnetIdentityModel = new SubnetIdentityById.Builder()
+        .id("7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
+        .build();
+
+      NetworkInterfacePrototype networkInterfacePrototypeModel = new NetworkInterfacePrototype.Builder()
+        .allowIpSpoofing(true)
+        .name("my-network-interface")
+        .primaryIp(networkInterfaceIpPrototypeModel)
+        .securityGroups(java.util.Arrays.asList(securityGroupIdentityModel))
+        .subnet(subnetIdentityModel)
+        .build();
+
       ZoneIdentityByName zoneIdentityModel = new ZoneIdentityByName.Builder()
         .name("us-south-1")
         .build();
@@ -3490,7 +3655,6 @@ public class VpcIT extends SdkIntegrationTestBase {
         .keys(java.util.Arrays.asList(keyIdentityModel))
         .metadataService(instanceMetadataServicePrototypeModel)
         .name("my-instance")
-        .networkInterfaces(java.util.Arrays.asList(networkInterfacePrototypeModel))
         .placementTarget(instancePlacementTargetPrototypeModel)
         .profile(instanceProfileIdentityModel)
         .resourceGroup(resourceGroupIdentityModel)
@@ -3500,6 +3664,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .vpc(vpcIdentityModel)
         .bootVolumeAttachment(volumeAttachmentPrototypeInstanceByImageContextModel)
         .image(imageIdentityModel)
+        .networkInterfaces(java.util.Arrays.asList(networkInterfacePrototypeModel))
         .primaryNetworkInterface(networkInterfacePrototypeModel)
         .zone(zoneIdentityModel)
         .build();
@@ -4909,20 +5074,20 @@ public class VpcIT extends SdkIntegrationTestBase {
   @Test(dependsOnMethods = { "testListDedicatedHostGroups" })
   public void testCreateDedicatedHostGroup() throws Exception {
     try {
-      ResourceGroupIdentityById resourceGroupIdentityModel = new ResourceGroupIdentityById.Builder()
-        .id("fee82deba12e4c0fb69c3b09d1f12345")
-        .build();
-
       ZoneIdentityByName zoneIdentityModel = new ZoneIdentityByName.Builder()
         .name("us-south-1")
+        .build();
+
+      ResourceGroupIdentityById resourceGroupIdentityModel = new ResourceGroupIdentityById.Builder()
+        .id("fee82deba12e4c0fb69c3b09d1f12345")
         .build();
 
       CreateDedicatedHostGroupOptions createDedicatedHostGroupOptions = new CreateDedicatedHostGroupOptions.Builder()
         .xClass("mx2")
         .family("balanced")
+        .zone(zoneIdentityModel)
         .name("testString")
         .resourceGroup(resourceGroupIdentityModel)
-        .zone(zoneIdentityModel)
         .build();
 
       // Invoke operation
@@ -5363,7 +5528,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       BackupPolicyPlanClonePolicyPrototype backupPolicyPlanClonePolicyPrototypeModel = new BackupPolicyPlanClonePolicyPrototype.Builder()
-        .maxSnapshots(Long.valueOf("26"))
+        .maxSnapshots(Long.valueOf("1"))
         .zones(java.util.Arrays.asList(zoneIdentityModel))
         .build();
 
@@ -5387,8 +5552,8 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       CreateBackupPolicyOptions createBackupPolicyOptions = new CreateBackupPolicyOptions.Builder()
-        .matchResourceTypes(java.util.Arrays.asList("volume"))
         .matchUserTags(java.util.Arrays.asList("my-daily-backup-policy"))
+        .matchResourceTypes(java.util.Arrays.asList("volume"))
         .name("my-backup-policy")
         .plans(java.util.Arrays.asList(backupPolicyPlanPrototypeModel))
         .resourceGroup(resourceGroupIdentityModel)
@@ -5531,7 +5696,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       BackupPolicyPlanClonePolicyPrototype backupPolicyPlanClonePolicyPrototypeModel = new BackupPolicyPlanClonePolicyPrototype.Builder()
-        .maxSnapshots(Long.valueOf("26"))
+        .maxSnapshots(Long.valueOf("1"))
         .zones(java.util.Arrays.asList(zoneIdentityModel))
         .build();
 
@@ -5597,13 +5762,13 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       BackupPolicyPlanClonePolicyPatch backupPolicyPlanClonePolicyPatchModel = new BackupPolicyPlanClonePolicyPatch.Builder()
-        .maxSnapshots(Long.valueOf("26"))
+        .maxSnapshots(Long.valueOf("1"))
         .zones(java.util.Arrays.asList(zoneIdentityModel))
         .build();
 
       BackupPolicyPlanDeletionTriggerPatch backupPolicyPlanDeletionTriggerPatchModel = new BackupPolicyPlanDeletionTriggerPatch.Builder()
         .deleteAfter(Long.valueOf("20"))
-        .deleteOverCount(Long.valueOf("26"))
+        .deleteOverCount(Long.valueOf("1"))
         .build();
 
       BackupPolicyPlanPatch backupPolicyPlanPatchModel = new BackupPolicyPlanPatch.Builder()
@@ -6659,6 +6824,10 @@ public class VpcIT extends SdkIntegrationTestBase {
         .start("testString")
         .limit(Long.valueOf("10"))
         .name("testString")
+        .attachmentState("attached")
+        .encryption("provider_managed")
+        .operatingSystemFamily("Ubuntu Server")
+        .operatingSystemArchitecture("amd64")
         .zoneName("testString")
         .build();
 
@@ -6683,6 +6852,10 @@ public class VpcIT extends SdkIntegrationTestBase {
       ListVolumesOptions options = new ListVolumesOptions.Builder()
         .limit(Long.valueOf("10"))
         .name("testString")
+        .attachmentState("attached")
+        .encryption("provider_managed")
+        .operatingSystemFamily("Ubuntu Server")
+        .operatingSystemArchitecture("amd64")
         .zoneName("testString")
         .build();
 
@@ -7412,7 +7585,7 @@ public class VpcIT extends SdkIntegrationTestBase {
   @Test(dependsOnMethods = { "testGetFloatingIp" })
   public void testUpdateFloatingIp() throws Exception {
     try {
-      FloatingIPTargetPatchNetworkInterfaceIdentityById floatingIpTargetPatchModel = new FloatingIPTargetPatchNetworkInterfaceIdentityById.Builder()
+      FloatingIPTargetPatchNetworkInterfaceIdentityNetworkInterfaceIdentityById floatingIpTargetPatchModel = new FloatingIPTargetPatchNetworkInterfaceIdentityNetworkInterfaceIdentityById.Builder()
         .id("10c02d81-0ecb-4dc5-897d-28392913b81e")
         .build();
 
@@ -9489,6 +9662,19 @@ public class VpcIT extends SdkIntegrationTestBase {
         .active(true)
         .build();
 
+      DNSInstanceIdentityByCRN dnsInstanceIdentityModel = new DNSInstanceIdentityByCRN.Builder()
+        .crn("crn:v1:bluemix:public:dns-svcs:global:a/fff1cdf3dc1e4ec692a5f78bbb2584bc:6860c359-b2e2-46fa-a944-b38c28201c6e")
+        .build();
+
+      DNSZoneIdentityById dnsZoneIdentityModel = new DNSZoneIdentityById.Builder()
+        .id("d66662cc-aa23-4fe1-9987-858487a61f45")
+        .build();
+
+      LoadBalancerDNSPrototype loadBalancerDnsPrototypeModel = new LoadBalancerDNSPrototype.Builder()
+        .instance(dnsInstanceIdentityModel)
+        .zone(dnsZoneIdentityModel)
+        .build();
+
       CertificateInstanceIdentityByCRN certificateInstanceIdentityModel = new CertificateInstanceIdentityByCRN.Builder()
         .crn("crn:v1:bluemix:public:secrets-manager:us-south:a/123456:36fa422d-080d-4d83-8d2d-86851b4001df:secret:2e786aab-42fa-63ed-14f8-d66d552f4dd5")
         .build();
@@ -9513,6 +9699,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .connectionLimit(Long.valueOf("2000"))
         .defaultPool(loadBalancerPoolIdentityByNameModel)
         .httpsRedirect(loadBalancerListenerHttpsRedirectPrototypeModel)
+        .idleConnectionTimeout(Long.valueOf("100"))
         .port(Long.valueOf("443"))
         .portMax(Long.valueOf("499"))
         .portMin(Long.valueOf("443"))
@@ -9573,6 +9760,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .isPublic(true)
         .subnets(java.util.Arrays.asList(subnetIdentityModel))
         .datapath(loadBalancerLoggingDatapathPrototypeModel)
+        .dns(loadBalancerDnsPrototypeModel)
         .listeners(java.util.Arrays.asList(loadBalancerListenerPrototypeLoadBalancerContextModel))
         .logging(loadBalancerLoggingPrototypeModel)
         .name("my-load-balancer")
@@ -9623,6 +9811,19 @@ public class VpcIT extends SdkIntegrationTestBase {
   @Test(dependsOnMethods = { "testGetLoadBalancer" })
   public void testUpdateLoadBalancer() throws Exception {
     try {
+      DNSInstanceIdentityByCRN dnsInstanceIdentityModel = new DNSInstanceIdentityByCRN.Builder()
+        .crn("crn:v1:bluemix:public:dns-svcs:global:a/fff1cdf3dc1e4ec692a5f78bbb2584bc:6860c359-b2e2-46fa-a944-b38c28201c6e")
+        .build();
+
+      DNSZoneIdentityById dnsZoneIdentityModel = new DNSZoneIdentityById.Builder()
+        .id("d66662cc-aa23-4fe1-9987-858487a61f45")
+        .build();
+
+      LoadBalancerDNSPatch loadBalancerDnsPatchModel = new LoadBalancerDNSPatch.Builder()
+        .instance(dnsInstanceIdentityModel)
+        .zone(dnsZoneIdentityModel)
+        .build();
+
       LoadBalancerLoggingDatapathPatch loadBalancerLoggingDatapathPatchModel = new LoadBalancerLoggingDatapathPatch.Builder()
         .active(true)
         .build();
@@ -9636,6 +9837,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       LoadBalancerPatch loadBalancerPatchModel = new LoadBalancerPatch.Builder()
+        .dns(loadBalancerDnsPatchModel)
         .logging(loadBalancerLoggingPatchModel)
         .name("my-load-balancer")
         .subnets(java.util.Arrays.asList(subnetIdentityModel))
@@ -9755,6 +9957,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .connectionLimit(Long.valueOf("2000"))
         .defaultPool(loadBalancerPoolIdentityModel)
         .httpsRedirect(loadBalancerListenerHttpsRedirectPrototypeModel)
+        .idleConnectionTimeout(Long.valueOf("100"))
         .policies(java.util.Arrays.asList(loadBalancerListenerPolicyPrototypeModel))
         .port(Long.valueOf("443"))
         .portMax(Long.valueOf("499"))
@@ -9826,6 +10029,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .connectionLimit(Long.valueOf("2000"))
         .defaultPool(loadBalancerPoolIdentityModel)
         .httpsRedirect(loadBalancerListenerHttpsRedirectPatchModel)
+        .idleConnectionTimeout(Long.valueOf("100"))
         .port(Long.valueOf("443"))
         .portMax(Long.valueOf("499"))
         .portMin(Long.valueOf("443"))
@@ -10715,7 +10919,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .name("bucket-27200-lwx4cfvcue")
         .build();
 
-      FlowLogCollectorTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceIdentityNetworkInterfaceIdentityById flowLogCollectorTargetPrototypeModel = new FlowLogCollectorTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceIdentityNetworkInterfaceIdentityById.Builder()
+      FlowLogCollectorTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceIdentityById flowLogCollectorTargetPrototypeModel = new FlowLogCollectorTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceIdentityById.Builder()
         .id("10c02d81-0ecb-4dc5-897d-28392913b81e")
         .build();
 
@@ -10967,6 +11171,25 @@ public class VpcIT extends SdkIntegrationTestBase {
   }
 
   @Test(dependsOnMethods = { "testDeleteImage" })
+  public void testDeleteImageExportJob() throws Exception {
+    try {
+      DeleteImageExportJobOptions deleteImageExportJobOptions = new DeleteImageExportJobOptions.Builder()
+        .imageId("testString")
+        .id("testString")
+        .build();
+
+      // Invoke operation
+      Response<Void> response = service.deleteImageExportJob(deleteImageExportJobOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 202);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testDeleteImageExportJob" })
   public void testDeleteKey() throws Exception {
     try {
       DeleteKeyOptions deleteKeyOptions = new DeleteKeyOptions.Builder()

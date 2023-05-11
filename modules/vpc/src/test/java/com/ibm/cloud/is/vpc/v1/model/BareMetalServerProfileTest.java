@@ -18,11 +18,13 @@ import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileBandwidthFixed;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileCPUArchitecture;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileCPUCoreCountFixed;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileCPUSocketCountFixed;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileConsoleTypes;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileDisk;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileDiskQuantityFixed;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileDiskSizeFixed;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileDiskSupportedInterfaces;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileMemoryFixed;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileNetworkInterfaceCountRange;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileOSArchitecture;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileSupportedTrustedPlatformModuleModes;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
@@ -44,6 +46,7 @@ public class BareMetalServerProfileTest {
   public void testBareMetalServerProfile() throws Throwable {
     BareMetalServerProfile bareMetalServerProfileModel = new BareMetalServerProfile();
     assertNull(bareMetalServerProfileModel.getBandwidth());
+    assertNull(bareMetalServerProfileModel.getConsoleTypes());
     assertNull(bareMetalServerProfileModel.getCpuArchitecture());
     assertNull(bareMetalServerProfileModel.getCpuCoreCount());
     assertNull(bareMetalServerProfileModel.getCpuSocketCount());
@@ -52,6 +55,7 @@ public class BareMetalServerProfileTest {
     assertNull(bareMetalServerProfileModel.getHref());
     assertNull(bareMetalServerProfileModel.getMemory());
     assertNull(bareMetalServerProfileModel.getName());
+    assertNull(bareMetalServerProfileModel.getNetworkInterfaceCount());
     assertNull(bareMetalServerProfileModel.getOsArchitecture());
     assertNull(bareMetalServerProfileModel.getResourceType());
     assertNull(bareMetalServerProfileModel.getSupportedTrustedPlatformModuleModes());

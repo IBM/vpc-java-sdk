@@ -86,38 +86,6 @@ public class InstancePrototypeInstanceBySourceTemplateTest {
     assertEquals(instanceMetadataServicePrototypeModel.protocol(), "https");
     assertEquals(instanceMetadataServicePrototypeModel.responseHopLimit(), Long.valueOf("2"));
 
-    NetworkInterfaceIPPrototypeReservedIPPrototypeNetworkInterfaceContext networkInterfaceIpPrototypeModel = new NetworkInterfaceIPPrototypeReservedIPPrototypeNetworkInterfaceContext.Builder()
-      .address("10.0.0.5")
-      .autoDelete(false)
-      .name("my-reserved-ip")
-      .build();
-    assertEquals(networkInterfaceIpPrototypeModel.address(), "10.0.0.5");
-    assertEquals(networkInterfaceIpPrototypeModel.autoDelete(), Boolean.valueOf(false));
-    assertEquals(networkInterfaceIpPrototypeModel.name(), "my-reserved-ip");
-
-    SecurityGroupIdentityById securityGroupIdentityModel = new SecurityGroupIdentityById.Builder()
-      .id("be5df5ca-12a0-494b-907e-aa6ec2bfa271")
-      .build();
-    assertEquals(securityGroupIdentityModel.id(), "be5df5ca-12a0-494b-907e-aa6ec2bfa271");
-
-    SubnetIdentityById subnetIdentityModel = new SubnetIdentityById.Builder()
-      .id("7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
-      .build();
-    assertEquals(subnetIdentityModel.id(), "7ec86020-1c6e-4889-b3f0-a15f2e50f87e");
-
-    NetworkInterfacePrototype networkInterfacePrototypeModel = new NetworkInterfacePrototype.Builder()
-      .allowIpSpoofing(true)
-      .name("my-network-interface")
-      .primaryIp(networkInterfaceIpPrototypeModel)
-      .securityGroups(java.util.Arrays.asList(securityGroupIdentityModel))
-      .subnet(subnetIdentityModel)
-      .build();
-    assertEquals(networkInterfacePrototypeModel.allowIpSpoofing(), Boolean.valueOf(true));
-    assertEquals(networkInterfacePrototypeModel.name(), "my-network-interface");
-    assertEquals(networkInterfacePrototypeModel.primaryIp(), networkInterfaceIpPrototypeModel);
-    assertEquals(networkInterfacePrototypeModel.securityGroups(), java.util.Arrays.asList(securityGroupIdentityModel));
-    assertEquals(networkInterfacePrototypeModel.subnet(), subnetIdentityModel);
-
     InstancePlacementTargetPrototypeDedicatedHostIdentityDedicatedHostIdentityById instancePlacementTargetPrototypeModel = new InstancePlacementTargetPrototypeDedicatedHostIdentityDedicatedHostIdentityById.Builder()
       .id("1e09281b-f177-46fb-baf1-bc152b2e391a")
       .build();
@@ -163,14 +131,14 @@ public class InstancePrototypeInstanceBySourceTemplateTest {
     assertEquals(volumeProfileIdentityModel.name(), "general-purpose");
 
     VolumePrototypeInstanceByImageContext volumePrototypeInstanceByImageContextModel = new VolumePrototypeInstanceByImageContext.Builder()
-      .capacity(Long.valueOf("250"))
+      .capacity(Long.valueOf("100"))
       .encryptionKey(encryptionKeyIdentityModel)
       .iops(Long.valueOf("10000"))
       .name("my-volume")
       .profile(volumeProfileIdentityModel)
       .userTags(java.util.Arrays.asList("testString"))
       .build();
-    assertEquals(volumePrototypeInstanceByImageContextModel.capacity(), Long.valueOf("250"));
+    assertEquals(volumePrototypeInstanceByImageContextModel.capacity(), Long.valueOf("100"));
     assertEquals(volumePrototypeInstanceByImageContextModel.encryptionKey(), encryptionKeyIdentityModel);
     assertEquals(volumePrototypeInstanceByImageContextModel.iops(), Long.valueOf("10000"));
     assertEquals(volumePrototypeInstanceByImageContextModel.name(), "my-volume");
@@ -197,9 +165,41 @@ public class InstancePrototypeInstanceBySourceTemplateTest {
     assertEquals(instanceCatalogOfferingPrototypeModel.offering(), catalogOfferingIdentityModel);
 
     ImageIdentityById imageIdentityModel = new ImageIdentityById.Builder()
-      .id("72b27b5c-f4b0-48bb-b954-5becc7c1dcb8")
+      .id("r006-02c73baf-9abb-493d-9e41-d0f1866f4051")
       .build();
-    assertEquals(imageIdentityModel.id(), "72b27b5c-f4b0-48bb-b954-5becc7c1dcb8");
+    assertEquals(imageIdentityModel.id(), "r006-02c73baf-9abb-493d-9e41-d0f1866f4051");
+
+    NetworkInterfaceIPPrototypeReservedIPPrototypeNetworkInterfaceContext networkInterfaceIpPrototypeModel = new NetworkInterfaceIPPrototypeReservedIPPrototypeNetworkInterfaceContext.Builder()
+      .address("10.0.0.5")
+      .autoDelete(false)
+      .name("my-reserved-ip")
+      .build();
+    assertEquals(networkInterfaceIpPrototypeModel.address(), "10.0.0.5");
+    assertEquals(networkInterfaceIpPrototypeModel.autoDelete(), Boolean.valueOf(false));
+    assertEquals(networkInterfaceIpPrototypeModel.name(), "my-reserved-ip");
+
+    SecurityGroupIdentityById securityGroupIdentityModel = new SecurityGroupIdentityById.Builder()
+      .id("be5df5ca-12a0-494b-907e-aa6ec2bfa271")
+      .build();
+    assertEquals(securityGroupIdentityModel.id(), "be5df5ca-12a0-494b-907e-aa6ec2bfa271");
+
+    SubnetIdentityById subnetIdentityModel = new SubnetIdentityById.Builder()
+      .id("7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
+      .build();
+    assertEquals(subnetIdentityModel.id(), "7ec86020-1c6e-4889-b3f0-a15f2e50f87e");
+
+    NetworkInterfacePrototype networkInterfacePrototypeModel = new NetworkInterfacePrototype.Builder()
+      .allowIpSpoofing(true)
+      .name("my-network-interface")
+      .primaryIp(networkInterfaceIpPrototypeModel)
+      .securityGroups(java.util.Arrays.asList(securityGroupIdentityModel))
+      .subnet(subnetIdentityModel)
+      .build();
+    assertEquals(networkInterfacePrototypeModel.allowIpSpoofing(), Boolean.valueOf(true));
+    assertEquals(networkInterfacePrototypeModel.name(), "my-network-interface");
+    assertEquals(networkInterfacePrototypeModel.primaryIp(), networkInterfaceIpPrototypeModel);
+    assertEquals(networkInterfacePrototypeModel.securityGroups(), java.util.Arrays.asList(securityGroupIdentityModel));
+    assertEquals(networkInterfacePrototypeModel.subnet(), subnetIdentityModel);
 
     InstanceTemplateIdentityById instanceTemplateIdentityModel = new InstanceTemplateIdentityById.Builder()
       .id("a6b1a881-2ce8-41a3-80fc-36316a73f803")
@@ -217,7 +217,6 @@ public class InstancePrototypeInstanceBySourceTemplateTest {
       .keys(java.util.Arrays.asList(keyIdentityModel))
       .metadataService(instanceMetadataServicePrototypeModel)
       .name("my-instance")
-      .networkInterfaces(java.util.Arrays.asList(networkInterfacePrototypeModel))
       .placementTarget(instancePlacementTargetPrototypeModel)
       .profile(instanceProfileIdentityModel)
       .resourceGroup(resourceGroupIdentityModel)
@@ -228,6 +227,7 @@ public class InstancePrototypeInstanceBySourceTemplateTest {
       .bootVolumeAttachment(volumeAttachmentPrototypeInstanceByImageContextModel)
       .catalogOffering(instanceCatalogOfferingPrototypeModel)
       .image(imageIdentityModel)
+      .networkInterfaces(java.util.Arrays.asList(networkInterfacePrototypeModel))
       .primaryNetworkInterface(networkInterfacePrototypeModel)
       .sourceTemplate(instanceTemplateIdentityModel)
       .zone(zoneIdentityModel)
@@ -237,7 +237,6 @@ public class InstancePrototypeInstanceBySourceTemplateTest {
     assertEquals(instancePrototypeInstanceBySourceTemplateModel.keys(), java.util.Arrays.asList(keyIdentityModel));
     assertEquals(instancePrototypeInstanceBySourceTemplateModel.metadataService(), instanceMetadataServicePrototypeModel);
     assertEquals(instancePrototypeInstanceBySourceTemplateModel.name(), "my-instance");
-    assertEquals(instancePrototypeInstanceBySourceTemplateModel.networkInterfaces(), java.util.Arrays.asList(networkInterfacePrototypeModel));
     assertEquals(instancePrototypeInstanceBySourceTemplateModel.placementTarget(), instancePlacementTargetPrototypeModel);
     assertEquals(instancePrototypeInstanceBySourceTemplateModel.profile(), instanceProfileIdentityModel);
     assertEquals(instancePrototypeInstanceBySourceTemplateModel.resourceGroup(), resourceGroupIdentityModel);
@@ -248,6 +247,7 @@ public class InstancePrototypeInstanceBySourceTemplateTest {
     assertEquals(instancePrototypeInstanceBySourceTemplateModel.bootVolumeAttachment(), volumeAttachmentPrototypeInstanceByImageContextModel);
     assertEquals(instancePrototypeInstanceBySourceTemplateModel.catalogOffering(), instanceCatalogOfferingPrototypeModel);
     assertEquals(instancePrototypeInstanceBySourceTemplateModel.image(), imageIdentityModel);
+    assertEquals(instancePrototypeInstanceBySourceTemplateModel.networkInterfaces(), java.util.Arrays.asList(networkInterfacePrototypeModel));
     assertEquals(instancePrototypeInstanceBySourceTemplateModel.primaryNetworkInterface(), networkInterfacePrototypeModel);
     assertEquals(instancePrototypeInstanceBySourceTemplateModel.sourceTemplate(), instanceTemplateIdentityModel);
     assertEquals(instancePrototypeInstanceBySourceTemplateModel.zone(), zoneIdentityModel);

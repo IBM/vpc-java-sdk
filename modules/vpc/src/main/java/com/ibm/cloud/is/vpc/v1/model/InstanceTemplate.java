@@ -22,9 +22,9 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  * InstanceTemplate.
  *
  * Classes which extend this class:
- * - InstanceTemplateInstanceByImage
- * - InstanceTemplateInstanceBySourceSnapshot
- * - InstanceTemplateInstanceByCatalogOffering
+ * - InstanceTemplateInstanceByImageInstanceTemplateContext
+ * - InstanceTemplateInstanceBySourceSnapshotInstanceTemplateContext
+ * - InstanceTemplateInstanceByCatalogOfferingInstanceTemplateContext
  */
 public class InstanceTemplate extends GenericModel {
 
@@ -41,8 +41,6 @@ public class InstanceTemplate extends GenericModel {
   @SerializedName("metadata_service")
   protected InstanceMetadataServicePrototype metadataService;
   protected String name;
-  @SerializedName("network_interfaces")
-  protected List<NetworkInterfacePrototype> networkInterfaces;
   @SerializedName("placement_target")
   protected InstancePlacementTargetPrototype placementTarget;
   protected InstanceProfileIdentity profile;
@@ -58,6 +56,8 @@ public class InstanceTemplate extends GenericModel {
   @SerializedName("boot_volume_attachment")
   protected VolumeAttachmentPrototypeInstanceByImageContext bootVolumeAttachment;
   protected ImageIdentity image;
+  @SerializedName("network_interfaces")
+  protected List<NetworkInterfacePrototype> networkInterfaces;
   @SerializedName("primary_network_interface")
   protected NetworkInterfacePrototype primaryNetworkInterface;
   protected ZoneIdentity zone;
@@ -182,17 +182,6 @@ public class InstanceTemplate extends GenericModel {
   }
 
   /**
-   * Gets the networkInterfaces.
-   *
-   * The additional network interfaces to create for the virtual server instance.
-   *
-   * @return the networkInterfaces
-   */
-  public List<NetworkInterfacePrototype> getNetworkInterfaces() {
-    return networkInterfaces;
-  }
-
-  /**
    * Gets the placementTarget.
    *
    * The placement restrictions to use for the virtual server instance.
@@ -282,7 +271,7 @@ public class InstanceTemplate extends GenericModel {
   /**
    * Gets the bootVolumeAttachment.
    *
-   * The boot volume attachment for the virtual server instance.
+   * The boot volume attachment to create for the virtual server instance.
    *
    * @return the bootVolumeAttachment
    */
@@ -302,9 +291,20 @@ public class InstanceTemplate extends GenericModel {
   }
 
   /**
+   * Gets the networkInterfaces.
+   *
+   * The additional network interfaces to create for the virtual server instance.
+   *
+   * @return the networkInterfaces
+   */
+  public List<NetworkInterfacePrototype> getNetworkInterfaces() {
+    return networkInterfaces;
+  }
+
+  /**
    * Gets the primaryNetworkInterface.
    *
-   * Primary network interface.
+   * The primary network interface to create for the virtual server instance.
    *
    * @return the primaryNetworkInterface
    */

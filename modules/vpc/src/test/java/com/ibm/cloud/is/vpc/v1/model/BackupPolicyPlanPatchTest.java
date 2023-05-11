@@ -41,18 +41,18 @@ public class BackupPolicyPlanPatchTest {
     assertEquals(zoneIdentityModel.name(), "us-south-1");
 
     BackupPolicyPlanClonePolicyPatch backupPolicyPlanClonePolicyPatchModel = new BackupPolicyPlanClonePolicyPatch.Builder()
-      .maxSnapshots(Long.valueOf("26"))
+      .maxSnapshots(Long.valueOf("1"))
       .zones(java.util.Arrays.asList(zoneIdentityModel))
       .build();
-    assertEquals(backupPolicyPlanClonePolicyPatchModel.maxSnapshots(), Long.valueOf("26"));
+    assertEquals(backupPolicyPlanClonePolicyPatchModel.maxSnapshots(), Long.valueOf("1"));
     assertEquals(backupPolicyPlanClonePolicyPatchModel.zones(), java.util.Arrays.asList(zoneIdentityModel));
 
     BackupPolicyPlanDeletionTriggerPatch backupPolicyPlanDeletionTriggerPatchModel = new BackupPolicyPlanDeletionTriggerPatch.Builder()
       .deleteAfter(Long.valueOf("20"))
-      .deleteOverCount(Long.valueOf("26"))
+      .deleteOverCount(Long.valueOf("1"))
       .build();
     assertEquals(backupPolicyPlanDeletionTriggerPatchModel.deleteAfter(), Long.valueOf("20"));
-    assertEquals(backupPolicyPlanDeletionTriggerPatchModel.deleteOverCount(), Long.valueOf("26"));
+    assertEquals(backupPolicyPlanDeletionTriggerPatchModel.deleteOverCount(), Long.valueOf("1"));
 
     BackupPolicyPlanPatch backupPolicyPlanPatchModel = new BackupPolicyPlanPatch.Builder()
       .active(true)
@@ -89,13 +89,13 @@ public class BackupPolicyPlanPatchTest {
       .build();
 
     BackupPolicyPlanClonePolicyPatch backupPolicyPlanClonePolicyPatchModel = new BackupPolicyPlanClonePolicyPatch.Builder()
-      .maxSnapshots(Long.valueOf("26"))
+      .maxSnapshots(Long.valueOf("1"))
       .zones(java.util.Arrays.asList(zoneIdentityModel))
       .build();
 
     BackupPolicyPlanDeletionTriggerPatch backupPolicyPlanDeletionTriggerPatchModel = new BackupPolicyPlanDeletionTriggerPatch.Builder()
       .deleteAfter(Long.valueOf("20"))
-      .deleteOverCount(Long.valueOf("26"))
+      .deleteOverCount(Long.valueOf("1"))
       .build();
 
     BackupPolicyPlanPatch backupPolicyPlanPatchModel = new BackupPolicyPlanPatch.Builder()

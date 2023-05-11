@@ -48,6 +48,7 @@ public class LoadBalancerListenerTest {
     assertNull(loadBalancerListenerModel.getHref());
     assertNull(loadBalancerListenerModel.getHttpsRedirect());
     assertNull(loadBalancerListenerModel.getId());
+    assertNull(loadBalancerListenerModel.getIdleConnectionTimeout());
     assertNull(loadBalancerListenerModel.getPolicies());
     assertNull(loadBalancerListenerModel.getPort());
     assertNull(loadBalancerListenerModel.getPortMax());

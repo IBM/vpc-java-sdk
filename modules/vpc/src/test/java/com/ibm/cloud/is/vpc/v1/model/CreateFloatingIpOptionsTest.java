@@ -14,8 +14,8 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.CreateFloatingIpOptions;
-import com.ibm.cloud.is.vpc.v1.model.FloatingIPByTargetNetworkInterfaceIdentityNetworkInterfaceIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPPrototypeFloatingIPByTarget;
+import com.ibm.cloud.is.vpc.v1.model.FloatingIPTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupIdentityById;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
@@ -39,19 +39,19 @@ public class CreateFloatingIpOptionsTest {
       .build();
     assertEquals(resourceGroupIdentityModel.id(), "fee82deba12e4c0fb69c3b09d1f12345");
 
-    FloatingIPByTargetNetworkInterfaceIdentityNetworkInterfaceIdentityById floatingIpByTargetNetworkInterfaceIdentityModel = new FloatingIPByTargetNetworkInterfaceIdentityNetworkInterfaceIdentityById.Builder()
+    FloatingIPTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceIdentityById floatingIpTargetPrototypeModel = new FloatingIPTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceIdentityById.Builder()
       .id("69e55145-cc7d-4d8e-9e1f-cc3fb60b1793")
       .build();
-    assertEquals(floatingIpByTargetNetworkInterfaceIdentityModel.id(), "69e55145-cc7d-4d8e-9e1f-cc3fb60b1793");
+    assertEquals(floatingIpTargetPrototypeModel.id(), "69e55145-cc7d-4d8e-9e1f-cc3fb60b1793");
 
     FloatingIPPrototypeFloatingIPByTarget floatingIpPrototypeModel = new FloatingIPPrototypeFloatingIPByTarget.Builder()
       .name("my-new-floating-ip")
       .resourceGroup(resourceGroupIdentityModel)
-      .target(floatingIpByTargetNetworkInterfaceIdentityModel)
+      .target(floatingIpTargetPrototypeModel)
       .build();
     assertEquals(floatingIpPrototypeModel.name(), "my-new-floating-ip");
     assertEquals(floatingIpPrototypeModel.resourceGroup(), resourceGroupIdentityModel);
-    assertEquals(floatingIpPrototypeModel.target(), floatingIpByTargetNetworkInterfaceIdentityModel);
+    assertEquals(floatingIpPrototypeModel.target(), floatingIpTargetPrototypeModel);
 
     CreateFloatingIpOptions createFloatingIpOptionsModel = new CreateFloatingIpOptions.Builder()
       .floatingIpPrototype(floatingIpPrototypeModel)

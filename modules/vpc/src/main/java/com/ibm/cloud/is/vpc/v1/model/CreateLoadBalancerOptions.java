@@ -25,6 +25,7 @@ public class CreateLoadBalancerOptions extends GenericModel {
   protected Boolean isPublic;
   protected List<SubnetIdentity> subnets;
   protected LoadBalancerLoggingDatapathPrototype datapath;
+  protected LoadBalancerDNSPrototype dns;
   protected List<LoadBalancerListenerPrototypeLoadBalancerContext> listeners;
   protected LoadBalancerLoggingPrototype logging;
   protected String name;
@@ -41,6 +42,7 @@ public class CreateLoadBalancerOptions extends GenericModel {
     private Boolean isPublic;
     private List<SubnetIdentity> subnets;
     private LoadBalancerLoggingDatapathPrototype datapath;
+    private LoadBalancerDNSPrototype dns;
     private List<LoadBalancerListenerPrototypeLoadBalancerContext> listeners;
     private LoadBalancerLoggingPrototype logging;
     private String name;
@@ -59,6 +61,7 @@ public class CreateLoadBalancerOptions extends GenericModel {
       this.isPublic = createLoadBalancerOptions.isPublic;
       this.subnets = createLoadBalancerOptions.subnets;
       this.datapath = createLoadBalancerOptions.datapath;
+      this.dns = createLoadBalancerOptions.dns;
       this.listeners = createLoadBalancerOptions.listeners;
       this.logging = createLoadBalancerOptions.logging;
       this.name = createLoadBalancerOptions.name;
@@ -194,6 +197,17 @@ public class CreateLoadBalancerOptions extends GenericModel {
     }
 
     /**
+     * Set the dns.
+     *
+     * @param dns the dns
+     * @return the CreateLoadBalancerOptions builder
+     */
+    public Builder dns(LoadBalancerDNSPrototype dns) {
+      this.dns = dns;
+      return this;
+    }
+
+    /**
      * Set the listeners.
      * Existing listeners will be replaced.
      *
@@ -295,6 +309,7 @@ public class CreateLoadBalancerOptions extends GenericModel {
     isPublic = builder.isPublic;
     subnets = builder.subnets;
     datapath = builder.datapath;
+    dns = builder.dns;
     listeners = builder.listeners;
     logging = builder.logging;
     name = builder.name;
@@ -350,6 +365,21 @@ public class CreateLoadBalancerOptions extends GenericModel {
    */
   public LoadBalancerLoggingDatapathPrototype datapath() {
     return datapath;
+  }
+
+  /**
+   * Gets the dns.
+   *
+   * The DNS configuration for this load balancer.
+   *
+   * If unspecified, DNS `A` records for this load balancer's `hostname` property will be added
+   * to the public DNS zone `lb.appdomain.cloud`. Otherwise, those DNS `A` records will be
+   * added to the specified `zone`.
+   *
+   * @return the dns
+   */
+  public LoadBalancerDNSPrototype dns() {
+    return dns;
   }
 
   /**

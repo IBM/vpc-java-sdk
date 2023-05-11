@@ -130,7 +130,7 @@ public class RemoveInstanceNetworkInterfaceFloatingIpOptions extends GenericMode
   /**
    * Gets the instanceId.
    *
-   * The instance identifier.
+   * The virtual server instance identifier.
    *
    * @return the instanceId
    */

@@ -42,10 +42,10 @@ public class CreateBackupPolicyOptionsTest {
     assertEquals(zoneIdentityModel.name(), "us-south-1");
 
     BackupPolicyPlanClonePolicyPrototype backupPolicyPlanClonePolicyPrototypeModel = new BackupPolicyPlanClonePolicyPrototype.Builder()
-      .maxSnapshots(Long.valueOf("26"))
+      .maxSnapshots(Long.valueOf("1"))
       .zones(java.util.Arrays.asList(zoneIdentityModel))
       .build();
-    assertEquals(backupPolicyPlanClonePolicyPrototypeModel.maxSnapshots(), Long.valueOf("26"));
+    assertEquals(backupPolicyPlanClonePolicyPrototypeModel.maxSnapshots(), Long.valueOf("1"));
     assertEquals(backupPolicyPlanClonePolicyPrototypeModel.zones(), java.util.Arrays.asList(zoneIdentityModel));
 
     BackupPolicyPlanDeletionTriggerPrototype backupPolicyPlanDeletionTriggerPrototypeModel = new BackupPolicyPlanDeletionTriggerPrototype.Builder()
@@ -78,16 +78,22 @@ public class CreateBackupPolicyOptionsTest {
     assertEquals(resourceGroupIdentityModel.id(), "fee82deba12e4c0fb69c3b09d1f12345");
 
     CreateBackupPolicyOptions createBackupPolicyOptionsModel = new CreateBackupPolicyOptions.Builder()
-      .matchResourceTypes(java.util.Arrays.asList("volume"))
       .matchUserTags(java.util.Arrays.asList("my-daily-backup-policy"))
+      .matchResourceTypes(java.util.Arrays.asList("volume"))
       .name("my-backup-policy")
       .plans(java.util.Arrays.asList(backupPolicyPlanPrototypeModel))
       .resourceGroup(resourceGroupIdentityModel)
       .build();
-    assertEquals(createBackupPolicyOptionsModel.matchResourceTypes(), java.util.Arrays.asList("volume"));
     assertEquals(createBackupPolicyOptionsModel.matchUserTags(), java.util.Arrays.asList("my-daily-backup-policy"));
+    assertEquals(createBackupPolicyOptionsModel.matchResourceTypes(), java.util.Arrays.asList("volume"));
     assertEquals(createBackupPolicyOptionsModel.name(), "my-backup-policy");
     assertEquals(createBackupPolicyOptionsModel.plans(), java.util.Arrays.asList(backupPolicyPlanPrototypeModel));
     assertEquals(createBackupPolicyOptionsModel.resourceGroup(), resourceGroupIdentityModel);
   }
+
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testCreateBackupPolicyOptionsError() throws Throwable {
+    new CreateBackupPolicyOptions.Builder().build();
+  }
+
 }

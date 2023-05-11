@@ -24,10 +24,12 @@ import com.ibm.cloud.is.vpc.v1.model.InstanceProfileGPUManufacturer;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileGPUMemoryFixed;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileGPUModel;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileMemoryFixed;
+import com.ibm.cloud.is.vpc.v1.model.InstanceProfileNetworkInterfaceCountRange;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileOSArchitecture;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfilePortSpeedFixed;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileVCPUArchitecture;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileVCPUFixed;
+import com.ibm.cloud.is.vpc.v1.model.InstanceProfileVCPUManufacturer;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileVolumeBandwidthFixed;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
@@ -57,10 +59,12 @@ public class InstanceProfileTest {
     assertNull(instanceProfileModel.getHref());
     assertNull(instanceProfileModel.getMemory());
     assertNull(instanceProfileModel.getName());
+    assertNull(instanceProfileModel.getNetworkInterfaceCount());
     assertNull(instanceProfileModel.getOsArchitecture());
     assertNull(instanceProfileModel.getPortSpeed());
     assertNull(instanceProfileModel.getTotalVolumeBandwidth());
     assertNull(instanceProfileModel.getVcpuArchitecture());
     assertNull(instanceProfileModel.getVcpuCount());
+    assertNull(instanceProfileModel.getVcpuManufacturer());
   }
 }

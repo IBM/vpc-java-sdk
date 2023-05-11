@@ -59,9 +59,9 @@ public class CreateEndpointGatewayOptionsTest {
     assertEquals(resourceGroupIdentityModel.id(), "fee82deba12e4c0fb69c3b09d1f12345");
 
     SecurityGroupIdentityById securityGroupIdentityModel = new SecurityGroupIdentityById.Builder()
-      .id("be5df5ca-12a0-494b-907e-aa6ec2bfa271")
+      .id("r134-be5df5ca-12a0-494b-907e-aa6ec2bfa271")
       .build();
-    assertEquals(securityGroupIdentityModel.id(), "be5df5ca-12a0-494b-907e-aa6ec2bfa271");
+    assertEquals(securityGroupIdentityModel.id(), "r134-be5df5ca-12a0-494b-907e-aa6ec2bfa271");
 
     CreateEndpointGatewayOptions createEndpointGatewayOptionsModel = new CreateEndpointGatewayOptions.Builder()
       .target(endpointGatewayTargetPrototypeModel)

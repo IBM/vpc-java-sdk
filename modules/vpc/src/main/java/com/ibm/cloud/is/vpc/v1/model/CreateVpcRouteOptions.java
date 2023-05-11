@@ -43,6 +43,7 @@ public class CreateVpcRouteOptions extends GenericModel {
   protected String action;
   protected String name;
   protected RoutePrototypeNextHop nextHop;
+  protected Long priority;
 
   /**
    * Builder.
@@ -54,6 +55,7 @@ public class CreateVpcRouteOptions extends GenericModel {
     private String action;
     private String name;
     private RoutePrototypeNextHop nextHop;
+    private Long priority;
 
     /**
      * Instantiates a new Builder from an existing CreateVpcRouteOptions instance.
@@ -67,6 +69,7 @@ public class CreateVpcRouteOptions extends GenericModel {
       this.action = createVpcRouteOptions.action;
       this.name = createVpcRouteOptions.name;
       this.nextHop = createVpcRouteOptions.nextHop;
+      this.priority = createVpcRouteOptions.priority;
     }
 
     /**
@@ -162,6 +165,17 @@ public class CreateVpcRouteOptions extends GenericModel {
       this.nextHop = nextHop;
       return this;
     }
+
+    /**
+     * Set the priority.
+     *
+     * @param priority the priority
+     * @return the CreateVpcRouteOptions builder
+     */
+    public Builder priority(long priority) {
+      this.priority = priority;
+      return this;
+    }
   }
 
   protected CreateVpcRouteOptions() { }
@@ -179,6 +193,7 @@ public class CreateVpcRouteOptions extends GenericModel {
     action = builder.action;
     name = builder.name;
     nextHop = builder.nextHop;
+    priority = builder.priority;
   }
 
   /**
@@ -204,8 +219,8 @@ public class CreateVpcRouteOptions extends GenericModel {
   /**
    * Gets the destination.
    *
-   * The destination of the route. At most two routes per `zone` in a table can have the same destination, and only if
-   * both routes have an `action` of `deliver` and the `next_hop` is an IP address.
+   * The destination of the route. At most two routes per `zone` in a table can have the same `destination` and
+   * `priority`, and only if both routes have an `action` of `deliver` and the `next_hop` is an IP address.
    *
    * @return the destination
    */
@@ -256,13 +271,31 @@ public class CreateVpcRouteOptions extends GenericModel {
   /**
    * Gets the nextHop.
    *
-   * If `action` is `deliver`, the next hop that packets will be delivered to. For other `action`
-   * values, it must be omitted or specified as `0.0.0.0`.
+   * If `action` is `deliver`, the next hop that packets will be delivered to. For other
+   * `action` values, it must be omitted or specified as `0.0.0.0`.
+   *
+   * At most two routes per `zone` in a table can have the same `destination` and `priority`,
+   * and only when each route has an `action` of `deliver` and `next_hop` is an IP address.
    *
    * @return the nextHop
    */
   public RoutePrototypeNextHop nextHop() {
     return nextHop;
+  }
+
+  /**
+   * Gets the priority.
+   *
+   * The priority of this route. Smaller values have higher priority.
+   *
+   * If a routing table contains multiple routes with the same `zone` and `destination`, the route with the highest
+   * priority (smallest value) is selected. If two routes have the same `destination` and `priority`, traffic is
+   * distributed between them.
+   *
+   * @return the priority
+   */
+  public Long priority() {
+    return priority;
   }
 }
 

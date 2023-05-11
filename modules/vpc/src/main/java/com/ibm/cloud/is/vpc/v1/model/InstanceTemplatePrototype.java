@@ -21,10 +21,10 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  * InstanceTemplatePrototype.
  *
  * Classes which extend this class:
- * - InstanceTemplatePrototypeInstanceByImage
+ * - InstanceTemplatePrototypeInstanceByImageInstanceTemplateContext
  * - InstanceTemplatePrototypeInstanceBySourceTemplate
- * - InstanceTemplatePrototypeInstanceBySourceSnapshot
- * - InstanceTemplatePrototypeInstanceByCatalogOffering
+ * - InstanceTemplatePrototypeInstanceBySourceSnapshotInstanceTemplateContext
+ * - InstanceTemplatePrototypeInstanceByCatalogOfferingInstanceTemplateContext
  */
 public class InstanceTemplatePrototype extends GenericModel {
 
@@ -36,8 +36,6 @@ public class InstanceTemplatePrototype extends GenericModel {
   @SerializedName("metadata_service")
   protected InstanceMetadataServicePrototype metadataService;
   protected String name;
-  @SerializedName("network_interfaces")
-  protected List<NetworkInterfacePrototype> networkInterfaces;
   @SerializedName("placement_target")
   protected InstancePlacementTargetPrototype placementTarget;
   protected InstanceProfileIdentity profile;
@@ -51,8 +49,10 @@ public class InstanceTemplatePrototype extends GenericModel {
   protected List<VolumeAttachmentPrototype> volumeAttachments;
   protected VPCIdentity vpc;
   @SerializedName("boot_volume_attachment")
-  protected  InstancePrototypeBootVolumeAttachmentWrapper bootVolumeAttachment;
+  protected InstancePrototypeBootVolumeAttachmentWrapper bootVolumeAttachment;
   protected ImageIdentity image;
+  @SerializedName("network_interfaces")
+  protected List<NetworkInterfacePrototype> networkInterfaces;
   @SerializedName("primary_network_interface")
   protected NetworkInterfacePrototype primaryNetworkInterface;
   protected ZoneIdentity zone;
@@ -133,17 +133,6 @@ public class InstanceTemplatePrototype extends GenericModel {
    */
   public String name() {
     return name;
-  }
-
-  /**
-   * Gets the networkInterfaces.
-   *
-   * The additional network interfaces to create for the virtual server instance.
-   *
-   * @return the networkInterfaces
-   */
-  public List<NetworkInterfacePrototype> networkInterfaces() {
-    return networkInterfaces;
   }
 
   /**
@@ -237,11 +226,11 @@ public class InstanceTemplatePrototype extends GenericModel {
   /**
    * Gets the bootVolumeAttachment.
    *
-   * The boot volume attachment for the virtual server instance.
+   * The boot volume attachment to create for the virtual server instance.
    *
    * @return the bootVolumeAttachment
    */
-  public GenericModel bootVolumeAttachment() {
+  public InstancePrototypeBootVolumeAttachmentWrapper bootVolumeAttachment() {
     return bootVolumeAttachment;
   }
 
@@ -257,9 +246,20 @@ public class InstanceTemplatePrototype extends GenericModel {
   }
 
   /**
+   * Gets the networkInterfaces.
+   *
+   * The additional network interfaces to create for the virtual server instance.
+   *
+   * @return the networkInterfaces
+   */
+  public List<NetworkInterfacePrototype> networkInterfaces() {
+    return networkInterfaces;
+  }
+
+  /**
    * Gets the primaryNetworkInterface.
    *
-   * Primary network interface.
+   * The primary network interface to create for the virtual server instance.
    *
    * @return the primaryNetworkInterface
    */

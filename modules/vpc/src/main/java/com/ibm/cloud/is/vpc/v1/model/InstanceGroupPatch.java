@@ -240,10 +240,10 @@ public class InstanceGroupPatch extends GenericModel {
   /**
    * Gets the loadBalancerPool.
    *
-   * If specified, the load balancer pool this instance group will manage. A pool member
-   * will be created for each instance created by this group.
+   * If set, the load balancer pool this instance group will manage. A pool member will
+   * be created for each instance created by this group.
    *
-   * If specified, `load_balancer` and `application_port` must also be specified.
+   * If set, `load_balancer` and `application_port` must also be set.
    *
    * @return the loadBalancerPool
    */

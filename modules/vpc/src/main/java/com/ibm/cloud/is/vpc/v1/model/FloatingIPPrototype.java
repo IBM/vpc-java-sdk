@@ -28,7 +28,7 @@ public class FloatingIPPrototype extends GenericModel {
   @SerializedName("resource_group")
   protected ResourceGroupIdentity resourceGroup;
   protected ZoneIdentity zone;
-  protected FloatingIPByTargetNetworkInterfaceIdentity target;
+  protected FloatingIPTargetPrototype target;
 
   protected FloatingIPPrototype() { }
 
@@ -70,11 +70,17 @@ public class FloatingIPPrototype extends GenericModel {
   /**
    * Gets the target.
    *
-   * The network interface this floating IP is to be bound to.
+   * The target resource to bind this floating IP to.
+   *
+   * The target resource must not already have a floating IP bound to it if the target
+   * resource is:
+   *
+   * - an instance network interface
+   * - a bare metal server network interface with `enable_infrastructure_nat` set to `true`.
    *
    * @return the target
    */
-  public FloatingIPByTargetNetworkInterfaceIdentity target() {
+  public FloatingIPTargetPrototype target() {
     return target;
   }
 }

@@ -12,7 +12,7 @@
  */
 
 /*
- * IBM OpenAPI SDK Code Generator Version: 3.62.2-e5d4c32b-20221214-193750
+ * IBM OpenAPI SDK Code Generator Version: 3.69.0-370d6400-20230329-174648
  */
 
 package com.ibm.cloud.is.vpc.v1;
@@ -55,6 +55,7 @@ import com.ibm.cloud.is.vpc.v1.model.CreateEndpointGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateFloatingIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateFlowLogCollectorOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateIkePolicyOptions;
+import com.ibm.cloud.is.vpc.v1.model.CreateImageExportJobOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateImageOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateInstanceActionOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateInstanceConsoleAccessTokenOptions;
@@ -116,6 +117,7 @@ import com.ibm.cloud.is.vpc.v1.model.DeleteEndpointGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteFloatingIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteFlowLogCollectorOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteIkePolicyOptions;
+import com.ibm.cloud.is.vpc.v1.model.DeleteImageExportJobOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteImageOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteInstanceGroupLoadBalancerOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteInstanceGroupManagerActionOptions;
@@ -186,6 +188,7 @@ import com.ibm.cloud.is.vpc.v1.model.GetEndpointGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetFloatingIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetFlowLogCollectorOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetIkePolicyOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetImageExportJobOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetImageOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetInstanceDiskOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetInstanceGroupManagerActionOptions;
@@ -250,6 +253,8 @@ import com.ibm.cloud.is.vpc.v1.model.IPsecPolicy;
 import com.ibm.cloud.is.vpc.v1.model.IPsecPolicyCollection;
 import com.ibm.cloud.is.vpc.v1.model.Image;
 import com.ibm.cloud.is.vpc.v1.model.ImageCollection;
+import com.ibm.cloud.is.vpc.v1.model.ImageExportJob;
+import com.ibm.cloud.is.vpc.v1.model.ImageExportJobUnpaginatedCollection;
 import com.ibm.cloud.is.vpc.v1.model.Instance;
 import com.ibm.cloud.is.vpc.v1.model.InstanceAction;
 import com.ibm.cloud.is.vpc.v1.model.InstanceCollection;
@@ -292,6 +297,7 @@ import com.ibm.cloud.is.vpc.v1.model.ListFloatingIpsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListFlowLogCollectorsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListIkePoliciesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListIkePolicyConnectionsOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListImageExportJobsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListImagesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListInstanceDisksOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListInstanceGroupManagerActionsOptions;
@@ -418,6 +424,7 @@ import com.ibm.cloud.is.vpc.v1.model.UpdateEndpointGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateFloatingIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateFlowLogCollectorOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateIkePolicyOptions;
+import com.ibm.cloud.is.vpc.v1.model.UpdateImageExportJobOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateImageOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateInstanceDiskOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateInstanceGroupManagerActionOptions;
@@ -494,7 +501,7 @@ import java.util.logging.Logger;
  * The IBM Cloud Virtual Private Cloud (VPC) API can be used to programmatically provision and manage virtual server
  * instances, along with subnets, volumes, load balancers, and more.
  *
- * API Version: 2023-02-21
+ * API Version: 2022-09-13
  */
 public class Vpc extends BaseService {
   private static final Logger LOGGER = Logger.getLogger(Vpc.class.getName());
@@ -509,9 +516,9 @@ public class Vpc extends BaseService {
    */
   public static final String DEFAULT_SERVICE_URL = "https://us-south.iaas.cloud.ibm.com/v1";
 
-  private String version = "2022-09-13";
-
   private Long generation = Long.valueOf("2");
+
+  private String version = "2022-09-13";
 
  /**
    * Class method which constructs an instance of the `Vpc` client.
@@ -551,6 +558,27 @@ public class Vpc extends BaseService {
   }
 
   /**
+   * Gets the generation.
+   *
+   * The infrastructure generation. For the API behavior documented here, specify
+   * `2`.
+   *
+   * @return the generation
+   */
+  public Long getGeneration() {
+    return this.generation;
+  }
+
+  /**
+   * Sets the generation.
+   *
+   * @param generation the new generation
+   */
+  public void setGeneration(final long generation) {
+    this.generation = generation;
+  }
+
+  /**
    * Gets the version.
    *
    * The API version, in format `YYYY-MM-DD`. For the API behavior documented here, specify any date between
@@ -570,27 +598,6 @@ public class Vpc extends BaseService {
   public void setVersion(final String version) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(version, "version cannot be empty.");
     this.version = version;
-  }
-
-  /**
-   * Gets the generation.
-   *
-   * The infrastructure generation. For the API behavior documented here, specify
-   * `2`.
-   *
-   * @return the generation
-   */
-  public Long getGeneration() {
-    return this.generation;
-  }
-
-  /**
-   * Sets the generation.
-   *
-   * @param generation the new generation
-   */
-  public void setGeneration(final long generation) {
-    this.generation = generation;
   }
 
   /**
@@ -840,8 +847,7 @@ public class Vpc extends BaseService {
    * Retrieve a VPC's default security group.
    *
    * This request retrieves the default security group for the VPC specified by the identifier in the URL. Resources
-   * that optionally allow a security group to be specified upon creation will be attached to this security group if a
-   * security group is not specified.
+   * created in this VPC that allow a security group to be optionally specified will use this security group by default.
    *
    * @param getVpcDefaultSecurityGroupOptions the {@link GetVpcDefaultSecurityGroupOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link DefaultSecurityGroup}
@@ -1092,6 +1098,9 @@ public class Vpc extends BaseService {
     }
     if (createVpcRouteOptions.nextHop() != null) {
       contentJson.add("next_hop", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createVpcRouteOptions.nextHop()));
+    }
+    if (createVpcRouteOptions.priority() != null) {
+      contentJson.addProperty("priority", createVpcRouteOptions.priority());
     }
     builder.bodyJson(contentJson);
     ResponseConverter<Route> responseConverter =
@@ -1370,8 +1379,9 @@ public class Vpc extends BaseService {
    *
    * This request lists all routes in a VPC routing table. If subnets are associated with this routing table, delivery
    * of packets sent on a subnet is performed according to the action of the most specific matching route in the table
-   * (provided the subnet and route are in the same zone). If multiple equally-specific routes exist, traffic will be
-   * distributed across them. If no routes match, delivery will be controlled by the system's built-in routes.
+   * (provided the subnet and route are in the same zone). If multiple equally-specific routes exist, the route with the
+   * highest priority will be used. If two matching routes have the same destination and priority, traffic will be
+   * distributed between them. If no routes match, delivery will be controlled by the system's built-in routes.
    *
    * @param listVpcRoutingTableRoutesOptions the {@link ListVpcRoutingTableRoutesOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link RouteCollection}
@@ -1435,6 +1445,9 @@ public class Vpc extends BaseService {
     }
     if (createVpcRoutingTableRouteOptions.nextHop() != null) {
       contentJson.add("next_hop", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createVpcRoutingTableRouteOptions.nextHop()));
+    }
+    if (createVpcRoutingTableRouteOptions.priority() != null) {
+      contentJson.addProperty("priority", createVpcRoutingTableRouteOptions.priority());
     }
     builder.bodyJson(contentJson);
     ResponseConverter<Route> responseConverter =
@@ -2129,8 +2142,8 @@ public class Vpc extends BaseService {
   /**
    * Delete an image.
    *
-   * This request deletes an image. This operation cannot be reversed. A system-provided image is not allowed to be
-   * deleted. Additionally, an image cannot be deleted if it:
+   * This request deletes an image. Any active image export jobs will be completed first. This operation cannot be
+   * reversed. A system-provided image is not allowed to be deleted. Additionally, an image cannot be deleted if it:
    * - has a `status` of `deleting`
    * - has a `status` of `pending` with a `status_reasons` code of `image_request_in_progress`
    * - has `catalog_offering.managed` set to `true`.
@@ -2206,6 +2219,162 @@ public class Vpc extends BaseService {
     builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateImageOptions.imagePatch()), "application/merge-patch+json");
     ResponseConverter<Image> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<Image>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * List all image export jobs.
+   *
+   * This request lists all export jobs for an image. Each job tracks the exporting of the image to another location,
+   * such as a bucket within cloud object storage.
+   *
+   * The jobs will be sorted by their `created_at` property values, with newest jobs first. Jobs with identical
+   * `created_at` property values will in turn be sorted by ascending
+   * `name` property values.
+   *
+   * @param listImageExportJobsOptions the {@link ListImageExportJobsOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link ImageExportJobUnpaginatedCollection}
+   */
+  public ServiceCall<ImageExportJobUnpaginatedCollection> listImageExportJobs(ListImageExportJobsOptions listImageExportJobsOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(listImageExportJobsOptions,
+      "listImageExportJobsOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("image_id", listImageExportJobsOptions.imageId());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/images/{image_id}/export_jobs", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listImageExportJobs");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    if (listImageExportJobsOptions.name() != null) {
+      builder.query("name", String.valueOf(listImageExportJobsOptions.name()));
+    }
+    ResponseConverter<ImageExportJobUnpaginatedCollection> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<ImageExportJobUnpaginatedCollection>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Create an image export job.
+   *
+   * This request creates and queues a new export job for the image specified in the URL using the image export job
+   * prototype object. The image must be owned by the account and be in the `available`, `deprecated`, `obsolete`, or
+   * `unusable` state. The prototype object is structured in the same way as a retrieved image export job, and contains
+   * the information necessary to create and queue the new image export job.
+   *
+   * @param createImageExportJobOptions the {@link CreateImageExportJobOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link ImageExportJob}
+   */
+  public ServiceCall<ImageExportJob> createImageExportJob(CreateImageExportJobOptions createImageExportJobOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(createImageExportJobOptions,
+      "createImageExportJobOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("image_id", createImageExportJobOptions.imageId());
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/images/{image_id}/export_jobs", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "createImageExportJob");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    final JsonObject contentJson = new JsonObject();
+    contentJson.add("storage_bucket", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createImageExportJobOptions.storageBucket()));
+    if (createImageExportJobOptions.format() != null) {
+      contentJson.addProperty("format", createImageExportJobOptions.format());
+    }
+    if (createImageExportJobOptions.name() != null) {
+      contentJson.addProperty("name", createImageExportJobOptions.name());
+    }
+    builder.bodyJson(contentJson);
+    ResponseConverter<ImageExportJob> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<ImageExportJob>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Delete an image export job.
+   *
+   * This request deletes an image export job. This operation cannot be reversed. If the job has not completed, the job
+   * will be canceled, and the incomplete exported image object deleted. If the job has completed, the exported image
+   * object will not be deleted.
+   *
+   * @param deleteImageExportJobOptions the {@link DeleteImageExportJobOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a void result
+   */
+  public ServiceCall<Void> deleteImageExportJob(DeleteImageExportJobOptions deleteImageExportJobOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(deleteImageExportJobOptions,
+      "deleteImageExportJobOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("image_id", deleteImageExportJobOptions.imageId());
+    pathParamsMap.put("id", deleteImageExportJobOptions.id());
+    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/images/{image_id}/export_jobs/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "deleteImageExportJob");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Retrieve an image export job.
+   *
+   * This request retrieves a single image export job specified by the identifier in the URL.
+   *
+   * @param getImageExportJobOptions the {@link GetImageExportJobOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link ImageExportJob}
+   */
+  public ServiceCall<ImageExportJob> getImageExportJob(GetImageExportJobOptions getImageExportJobOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(getImageExportJobOptions,
+      "getImageExportJobOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("image_id", getImageExportJobOptions.imageId());
+    pathParamsMap.put("id", getImageExportJobOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/images/{image_id}/export_jobs/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getImageExportJob");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<ImageExportJob> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<ImageExportJob>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Update an image export job.
+   *
+   * This request updates an image export job with the information in a provided image export job patch. The image
+   * export job patch object is structured in the same way as a retrieved image export job and contains only the
+   * information to be updated.
+   *
+   * @param updateImageExportJobOptions the {@link UpdateImageExportJobOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link ImageExportJob}
+   */
+  public ServiceCall<ImageExportJob> updateImageExportJob(UpdateImageExportJobOptions updateImageExportJobOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(updateImageExportJobOptions,
+      "updateImageExportJobOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("image_id", updateImageExportJobOptions.imageId());
+    pathParamsMap.put("id", updateImageExportJobOptions.id());
+    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/images/{image_id}/export_jobs/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "updateImageExportJob");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateImageExportJobOptions.imageExportJobPatch()), "application/merge-patch+json");
+    ResponseConverter<ImageExportJob> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<ImageExportJob>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
   }
 
@@ -3211,8 +3380,8 @@ public class Vpc extends BaseService {
   /**
    * Retrieve associated floating IP.
    *
-   * This request a retrieves a specified floating IP address if it is associated with the network interface and
-   * instance specified in the URL.
+   * This request retrieves a specified floating IP address if it is associated with the network interface and instance
+   * specified in the URL.
    *
    * @param getInstanceNetworkInterfaceFloatingIpOptions the {@link GetInstanceNetworkInterfaceFloatingIpOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link FloatingIP}
@@ -3303,7 +3472,7 @@ public class Vpc extends BaseService {
   /**
    * Retrieve bound reserved IP.
    *
-   * This request a retrieves the specified reserved IP address if it is bound to the network interface and instance
+   * This request retrieves the specified reserved IP address if it is bound to the network interface and instance
    * specified in the URL.
    *
    * @param getInstanceNetworkInterfaceIpOptions the {@link GetInstanceNetworkInterfaceIpOptions} containing the options for the call
@@ -4296,11 +4465,8 @@ public class Vpc extends BaseService {
    * @return a {@link ServiceCall} with a result of type {@link DedicatedHostGroup}
    */
   public ServiceCall<DedicatedHostGroup> createDedicatedHostGroup(CreateDedicatedHostGroupOptions createDedicatedHostGroupOptions) {
-    boolean skipBody = false;
-    if (createDedicatedHostGroupOptions == null) {
-      createDedicatedHostGroupOptions = new CreateDedicatedHostGroupOptions.Builder().build();
-      skipBody = true;
-    }
+    com.ibm.cloud.sdk.core.util.Validator.notNull(createDedicatedHostGroupOptions,
+      "createDedicatedHostGroupOptions cannot be null");
     RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/dedicated_host/groups"));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "createDedicatedHostGroup");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
@@ -4309,39 +4475,20 @@ public class Vpc extends BaseService {
     builder.header("Accept", "application/json");
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    if (!skipBody) {
-      final JsonObject contentJson = new JsonObject();
-      if (createDedicatedHostGroupOptions.xClass() != null) {
-        contentJson.addProperty("class", createDedicatedHostGroupOptions.xClass());
-      }
-      if (createDedicatedHostGroupOptions.family() != null) {
-        contentJson.addProperty("family", createDedicatedHostGroupOptions.family());
-      }
-      if (createDedicatedHostGroupOptions.name() != null) {
-        contentJson.addProperty("name", createDedicatedHostGroupOptions.name());
-      }
-      if (createDedicatedHostGroupOptions.resourceGroup() != null) {
-        contentJson.add("resource_group", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createDedicatedHostGroupOptions.resourceGroup()));
-      }
-      if (createDedicatedHostGroupOptions.zone() != null) {
-        contentJson.add("zone", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createDedicatedHostGroupOptions.zone()));
-      }
-      builder.bodyJson(contentJson);
+    final JsonObject contentJson = new JsonObject();
+    contentJson.addProperty("class", createDedicatedHostGroupOptions.xClass());
+    contentJson.addProperty("family", createDedicatedHostGroupOptions.family());
+    contentJson.add("zone", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createDedicatedHostGroupOptions.zone()));
+    if (createDedicatedHostGroupOptions.name() != null) {
+      contentJson.addProperty("name", createDedicatedHostGroupOptions.name());
     }
+    if (createDedicatedHostGroupOptions.resourceGroup() != null) {
+      contentJson.add("resource_group", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createDedicatedHostGroupOptions.resourceGroup()));
+    }
+    builder.bodyJson(contentJson);
     ResponseConverter<DedicatedHostGroup> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<DedicatedHostGroup>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
-  }
-
-  /**
-   * Create a dedicated host group.
-   *
-   * This request creates a new dedicated host group.
-   *
-   * @return a {@link ServiceCall} with a result of type {@link DedicatedHostGroup}
-   */
-  public ServiceCall<DedicatedHostGroup> createDedicatedHostGroup() {
-    return createDedicatedHostGroup(null);
   }
 
   /**
@@ -4798,11 +4945,8 @@ public class Vpc extends BaseService {
    * @return a {@link ServiceCall} with a result of type {@link BackupPolicy}
    */
   public ServiceCall<BackupPolicy> createBackupPolicy(CreateBackupPolicyOptions createBackupPolicyOptions) {
-    boolean skipBody = false;
-    if (createBackupPolicyOptions == null) {
-      createBackupPolicyOptions = new CreateBackupPolicyOptions.Builder().build();
-      skipBody = true;
-    }
+    com.ibm.cloud.sdk.core.util.Validator.notNull(createBackupPolicyOptions,
+      "createBackupPolicyOptions cannot be null");
     RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/backup_policies"));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "createBackupPolicy");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
@@ -4811,41 +4955,24 @@ public class Vpc extends BaseService {
     builder.header("Accept", "application/json");
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    if (!skipBody) {
-      final JsonObject contentJson = new JsonObject();
-      if (createBackupPolicyOptions.matchResourceTypes() != null) {
-        contentJson.add("match_resource_types", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createBackupPolicyOptions.matchResourceTypes()));
-      }
-      if (createBackupPolicyOptions.matchUserTags() != null) {
-        contentJson.add("match_user_tags", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createBackupPolicyOptions.matchUserTags()));
-      }
-      if (createBackupPolicyOptions.name() != null) {
-        contentJson.addProperty("name", createBackupPolicyOptions.name());
-      }
-      if (createBackupPolicyOptions.plans() != null) {
-        contentJson.add("plans", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createBackupPolicyOptions.plans()));
-      }
-      if (createBackupPolicyOptions.resourceGroup() != null) {
-        contentJson.add("resource_group", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createBackupPolicyOptions.resourceGroup()));
-      }
-      builder.bodyJson(contentJson);
+    final JsonObject contentJson = new JsonObject();
+    contentJson.add("match_user_tags", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createBackupPolicyOptions.matchUserTags()));
+    if (createBackupPolicyOptions.matchResourceTypes() != null) {
+      contentJson.add("match_resource_types", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createBackupPolicyOptions.matchResourceTypes()));
     }
+    if (createBackupPolicyOptions.name() != null) {
+      contentJson.addProperty("name", createBackupPolicyOptions.name());
+    }
+    if (createBackupPolicyOptions.plans() != null) {
+      contentJson.add("plans", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createBackupPolicyOptions.plans()));
+    }
+    if (createBackupPolicyOptions.resourceGroup() != null) {
+      contentJson.add("resource_group", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createBackupPolicyOptions.resourceGroup()));
+    }
+    builder.bodyJson(contentJson);
     ResponseConverter<BackupPolicy> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<BackupPolicy>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
-  }
-
-  /**
-   * Create a backup policy.
-   *
-   * This request creates a new backup policy from a backup policy prototype object. The prototype object is structured
-   * in the same way as a retrieved backup policy, and contains the information necessary to create the new backup
-   * policy.
-   *
-   * @return a {@link ServiceCall} with a result of type {@link BackupPolicy}
-   */
-  public ServiceCall<BackupPolicy> createBackupPolicy() {
-    return createBackupPolicy(null);
   }
 
   /**
@@ -5859,8 +5986,8 @@ public class Vpc extends BaseService {
   /**
    * Retrieve associated floating IP.
    *
-   * This request a retrieves a specified floating IP address if it is associated with the network interface and bare
-   * metal server specified in the URL.
+   * This request retrieves a specified floating IP if it is associated with the network interface and bare metal server
+   * specified in the URL.
    *
    * @param getBareMetalServerNetworkInterfaceFloatingIpOptions the {@link GetBareMetalServerNetworkInterfaceFloatingIpOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link FloatingIP}
@@ -5947,7 +6074,7 @@ public class Vpc extends BaseService {
   /**
    * Retrieve bound reserved IP.
    *
-   * This request a retrieves the specified reserved IP address if it is bound to the network interface and bare metal
+   * This request retrieves the specified reserved IP address if it is bound to the network interface and bare metal
    * server specified in the URL.
    *
    * @param getBareMetalServerNetworkInterfaceIpOptions the {@link GetBareMetalServerNetworkInterfaceIpOptions} containing the options for the call
@@ -6256,6 +6383,18 @@ public class Vpc extends BaseService {
     }
     if (listVolumesOptions.name() != null) {
       builder.query("name", String.valueOf(listVolumesOptions.name()));
+    }
+    if (listVolumesOptions.attachmentState() != null) {
+      builder.query("attachment_state", String.valueOf(listVolumesOptions.attachmentState()));
+    }
+    if (listVolumesOptions.encryption() != null) {
+      builder.query("encryption", String.valueOf(listVolumesOptions.encryption()));
+    }
+    if (listVolumesOptions.operatingSystemFamily() != null) {
+      builder.query("operating_system.family", String.valueOf(listVolumesOptions.operatingSystemFamily()));
+    }
+    if (listVolumesOptions.operatingSystemArchitecture() != null) {
+      builder.query("operating_system.architecture", String.valueOf(listVolumesOptions.operatingSystemArchitecture()));
     }
     if (listVolumesOptions.zoneName() != null) {
       builder.query("zone.name", String.valueOf(listVolumesOptions.zoneName()));
@@ -7205,9 +7344,8 @@ public class Vpc extends BaseService {
    * @return a {@link ServiceCall} with a result of type {@link NetworkACL}
    */
   public ServiceCall<NetworkACL> createNetworkAcl(CreateNetworkAclOptions createNetworkAclOptions) {
-    if (createNetworkAclOptions == null) {
-      createNetworkAclOptions = new CreateNetworkAclOptions.Builder().build();
-    }
+    com.ibm.cloud.sdk.core.util.Validator.notNull(createNetworkAclOptions,
+      "createNetworkAclOptions cannot be null");
     RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/network_acls"));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "createNetworkAcl");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
@@ -7216,25 +7354,10 @@ public class Vpc extends BaseService {
     builder.header("Accept", "application/json");
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    if (createNetworkAclOptions.networkAclPrototype() != null) {
-      builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(createNetworkAclOptions.networkAclPrototype()), "application/json");
-    }
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(createNetworkAclOptions.networkAclPrototype()), "application/json");
     ResponseConverter<NetworkACL> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<NetworkACL>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
-  }
-
-  /**
-   * Create a network ACL.
-   *
-   * This request creates a new stateless network ACL from a network ACL prototype object. The prototype object is
-   * structured in the same way as a retrieved network ACL, and contains the information necessary to create the new
-   * network ACL.
-   *
-   * @return a {@link ServiceCall} with a result of type {@link NetworkACL}
-   */
-  public ServiceCall<NetworkACL> createNetworkAcl() {
-    return createNetworkAcl(null);
   }
 
   /**
@@ -7823,11 +7946,11 @@ public class Vpc extends BaseService {
    * This request removes a target from a security group. For this request to succeed, the target must be attached to at
    * least one other security group.  The specified target identifier can be:
    *
-   * - An instance network interface identifier
    * - A bare metal server network interface identifier
    * - A VPN server identifier
    * - An application load balancer identifier
    * - An endpoint gateway identifier
+   * - An instance network interface identifier
    *
    * Security groups are stateful, so any changes to a target's security groups are applied to new connections. Existing
    * connections are not affected.
@@ -7885,11 +8008,11 @@ public class Vpc extends BaseService {
    *
    * This request adds a resource to an existing security group. The specified target identifier can be:
    *
-   * - An instance network interface identifier
    * - A bare metal server network interface identifier
    * - A VPN server identifier
    * - An application load balancer identifier
    * - An endpoint gateway identifier
+   * - An instance network interface identifier
    *
    * When a target is added to a security group, the security group rules are applied to the target. A request body is
    * not required, and if provided, is ignored.
@@ -9436,6 +9559,9 @@ public class Vpc extends BaseService {
     if (createLoadBalancerOptions.datapath() != null) {
       contentJson.add("datapath", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createLoadBalancerOptions.datapath()));
     }
+    if (createLoadBalancerOptions.dns() != null) {
+      contentJson.add("dns", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createLoadBalancerOptions.dns()));
+    }
     if (createLoadBalancerOptions.listeners() != null) {
       contentJson.add("listeners", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createLoadBalancerOptions.listeners()));
     }
@@ -9641,6 +9767,9 @@ public class Vpc extends BaseService {
     }
     if (createLoadBalancerListenerOptions.httpsRedirect() != null) {
       contentJson.add("https_redirect", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createLoadBalancerListenerOptions.httpsRedirect()));
+    }
+    if (createLoadBalancerListenerOptions.idleConnectionTimeout() != null) {
+      contentJson.addProperty("idle_connection_timeout", createLoadBalancerListenerOptions.idleConnectionTimeout());
     }
     if (createLoadBalancerListenerOptions.policies() != null) {
       contentJson.add("policies", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createLoadBalancerListenerOptions.policies()));
@@ -10521,7 +10650,7 @@ public class Vpc extends BaseService {
   /**
    * Retrieve a reserved IP bound to an endpoint gateway.
    *
-   * This request a retrieves the specified reserved IP address if it is bound to the endpoint gateway specified in the
+   * This request retrieves the specified reserved IP address if it is bound to the endpoint gateway specified in the
    * URL.
    *
    * @param getEndpointGatewayIpOptions the {@link GetEndpointGatewayIpOptions} containing the options for the call

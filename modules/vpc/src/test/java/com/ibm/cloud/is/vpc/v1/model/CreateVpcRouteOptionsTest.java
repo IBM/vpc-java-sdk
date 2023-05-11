@@ -14,7 +14,7 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.CreateVpcRouteOptions;
-import com.ibm.cloud.is.vpc.v1.model.RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIP;
+import com.ibm.cloud.is.vpc.v1.model.RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIPRouteNextHopPrototypeRouteNextHopIPRouteNextHopIPSentinelIP;
 import com.ibm.cloud.is.vpc.v1.model.ZoneIdentityByName;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
@@ -38,10 +38,10 @@ public class CreateVpcRouteOptionsTest {
       .build();
     assertEquals(zoneIdentityModel.name(), "us-south-1");
 
-    RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIP routePrototypeNextHopModel = new RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIP.Builder()
-      .address("192.168.3.4")
+    RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIPRouteNextHopPrototypeRouteNextHopIPRouteNextHopIPSentinelIP routePrototypeNextHopModel = new RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIPRouteNextHopPrototypeRouteNextHopIPRouteNextHopIPSentinelIP.Builder()
+      .address("0.0.0.0")
       .build();
-    assertEquals(routePrototypeNextHopModel.address(), "192.168.3.4");
+    assertEquals(routePrototypeNextHopModel.address(), "0.0.0.0");
 
     CreateVpcRouteOptions createVpcRouteOptionsModel = new CreateVpcRouteOptions.Builder()
       .vpcId("testString")
@@ -50,6 +50,7 @@ public class CreateVpcRouteOptionsTest {
       .action("deliver")
       .name("my-route-1")
       .nextHop(routePrototypeNextHopModel)
+      .priority(Long.valueOf("1"))
       .build();
     assertEquals(createVpcRouteOptionsModel.vpcId(), "testString");
     assertEquals(createVpcRouteOptionsModel.destination(), "192.168.3.0/24");
@@ -57,6 +58,7 @@ public class CreateVpcRouteOptionsTest {
     assertEquals(createVpcRouteOptionsModel.action(), "deliver");
     assertEquals(createVpcRouteOptionsModel.name(), "my-route-1");
     assertEquals(createVpcRouteOptionsModel.nextHop(), routePrototypeNextHopModel);
+    assertEquals(createVpcRouteOptionsModel.priority(), Long.valueOf("1"));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

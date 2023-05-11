@@ -204,8 +204,8 @@ public class VolumePatch extends GenericModel {
    * Gets the profile.
    *
    * The profile to use for this volume. The requested profile must be in the same
-   * `family` as the current profile. The volume must be attached as a data volume to a
-   * running virtual server instance, and must have a `capacity` within the range
+   * `family` as the current profile. The volume must be attached as a data volume to
+   * a running virtual server instance, and must have a `capacity` within the range
    * supported by the specified profile.
    *
    * @return the profile

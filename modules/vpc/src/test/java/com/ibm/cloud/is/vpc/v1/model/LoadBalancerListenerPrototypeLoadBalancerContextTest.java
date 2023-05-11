@@ -65,6 +65,7 @@ public class LoadBalancerListenerPrototypeLoadBalancerContextTest {
       .connectionLimit(Long.valueOf("2000"))
       .defaultPool(loadBalancerPoolIdentityByNameModel)
       .httpsRedirect(loadBalancerListenerHttpsRedirectPrototypeModel)
+      .idleConnectionTimeout(Long.valueOf("100"))
       .port(Long.valueOf("443"))
       .portMax(Long.valueOf("499"))
       .portMin(Long.valueOf("443"))
@@ -75,6 +76,7 @@ public class LoadBalancerListenerPrototypeLoadBalancerContextTest {
     assertEquals(loadBalancerListenerPrototypeLoadBalancerContextModel.connectionLimit(), Long.valueOf("2000"));
     assertEquals(loadBalancerListenerPrototypeLoadBalancerContextModel.defaultPool(), loadBalancerPoolIdentityByNameModel);
     assertEquals(loadBalancerListenerPrototypeLoadBalancerContextModel.httpsRedirect(), loadBalancerListenerHttpsRedirectPrototypeModel);
+    assertEquals(loadBalancerListenerPrototypeLoadBalancerContextModel.idleConnectionTimeout(), Long.valueOf("100"));
     assertEquals(loadBalancerListenerPrototypeLoadBalancerContextModel.port(), Long.valueOf("443"));
     assertEquals(loadBalancerListenerPrototypeLoadBalancerContextModel.portMax(), Long.valueOf("499"));
     assertEquals(loadBalancerListenerPrototypeLoadBalancerContextModel.portMin(), Long.valueOf("443"));
@@ -89,6 +91,7 @@ public class LoadBalancerListenerPrototypeLoadBalancerContextTest {
     assertEquals(loadBalancerListenerPrototypeLoadBalancerContextModelNew.connectionLimit(), Long.valueOf("2000"));
     assertEquals(loadBalancerListenerPrototypeLoadBalancerContextModelNew.defaultPool().toString(), loadBalancerPoolIdentityByNameModel.toString());
     assertEquals(loadBalancerListenerPrototypeLoadBalancerContextModelNew.httpsRedirect().toString(), loadBalancerListenerHttpsRedirectPrototypeModel.toString());
+    assertEquals(loadBalancerListenerPrototypeLoadBalancerContextModelNew.idleConnectionTimeout(), Long.valueOf("100"));
     assertEquals(loadBalancerListenerPrototypeLoadBalancerContextModelNew.port(), Long.valueOf("443"));
     assertEquals(loadBalancerListenerPrototypeLoadBalancerContextModelNew.portMax(), Long.valueOf("499"));
     assertEquals(loadBalancerListenerPrototypeLoadBalancerContextModelNew.portMin(), Long.valueOf("443"));

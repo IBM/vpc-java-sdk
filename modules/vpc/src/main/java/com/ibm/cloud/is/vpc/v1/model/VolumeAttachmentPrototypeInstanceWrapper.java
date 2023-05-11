@@ -16,5 +16,8 @@ public class VolumeAttachmentPrototypeInstanceWrapper extends GenericModel {
   protected SnapshotIdentity sourceSnapshot;
   @SerializedName("user_tags")
   protected List<String> userTags;
+  protected String id;
+  protected String crn;
+  protected String href;
 
 }

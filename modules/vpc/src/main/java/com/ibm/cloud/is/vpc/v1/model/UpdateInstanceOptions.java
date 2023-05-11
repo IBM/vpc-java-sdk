@@ -113,7 +113,7 @@ public class UpdateInstanceOptions extends GenericModel {
   /**
    * Gets the id.
    *
-   * The instance identifier.
+   * The virtual server instance identifier.
    *
    * @return the id
    */

@@ -19,9 +19,35 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class ListVolumesOptions extends GenericModel {
 
+  /**
+   * Filters the collection to volumes with the specified attachment state.
+   */
+  public interface AttachmentState {
+    /** attached. */
+    String ATTACHED = "attached";
+    /** unattached. */
+    String UNATTACHED = "unattached";
+    /** unusable. */
+    String UNUSABLE = "unusable";
+  }
+
+  /**
+   * Filters the collection to resources with the specified encryption type.
+   */
+  public interface Encryption {
+    /** provider_managed. */
+    String PROVIDER_MANAGED = "provider_managed";
+    /** user_managed. */
+    String USER_MANAGED = "user_managed";
+  }
+
   protected String start;
   protected Long limit;
   protected String name;
+  protected String attachmentState;
+  protected String encryption;
+  protected String operatingSystemFamily;
+  protected String operatingSystemArchitecture;
   protected String zoneName;
 
   /**
@@ -31,6 +57,10 @@ public class ListVolumesOptions extends GenericModel {
     private String start;
     private Long limit;
     private String name;
+    private String attachmentState;
+    private String encryption;
+    private String operatingSystemFamily;
+    private String operatingSystemArchitecture;
     private String zoneName;
 
     /**
@@ -42,6 +72,10 @@ public class ListVolumesOptions extends GenericModel {
       this.start = listVolumesOptions.start;
       this.limit = listVolumesOptions.limit;
       this.name = listVolumesOptions.name;
+      this.attachmentState = listVolumesOptions.attachmentState;
+      this.encryption = listVolumesOptions.encryption;
+      this.operatingSystemFamily = listVolumesOptions.operatingSystemFamily;
+      this.operatingSystemArchitecture = listVolumesOptions.operatingSystemArchitecture;
       this.zoneName = listVolumesOptions.zoneName;
     }
 
@@ -94,6 +128,50 @@ public class ListVolumesOptions extends GenericModel {
     }
 
     /**
+     * Set the attachmentState.
+     *
+     * @param attachmentState the attachmentState
+     * @return the ListVolumesOptions builder
+     */
+    public Builder attachmentState(String attachmentState) {
+      this.attachmentState = attachmentState;
+      return this;
+    }
+
+    /**
+     * Set the encryption.
+     *
+     * @param encryption the encryption
+     * @return the ListVolumesOptions builder
+     */
+    public Builder encryption(String encryption) {
+      this.encryption = encryption;
+      return this;
+    }
+
+    /**
+     * Set the operatingSystemFamily.
+     *
+     * @param operatingSystemFamily the operatingSystemFamily
+     * @return the ListVolumesOptions builder
+     */
+    public Builder operatingSystemFamily(String operatingSystemFamily) {
+      this.operatingSystemFamily = operatingSystemFamily;
+      return this;
+    }
+
+    /**
+     * Set the operatingSystemArchitecture.
+     *
+     * @param operatingSystemArchitecture the operatingSystemArchitecture
+     * @return the ListVolumesOptions builder
+     */
+    public Builder operatingSystemArchitecture(String operatingSystemArchitecture) {
+      this.operatingSystemArchitecture = operatingSystemArchitecture;
+      return this;
+    }
+
+    /**
      * Set the zoneName.
      *
      * @param zoneName the zoneName
@@ -111,6 +189,10 @@ public class ListVolumesOptions extends GenericModel {
     start = builder.start;
     limit = builder.limit;
     name = builder.name;
+    attachmentState = builder.attachmentState;
+    encryption = builder.encryption;
+    operatingSystemFamily = builder.operatingSystemFamily;
+    operatingSystemArchitecture = builder.operatingSystemArchitecture;
     zoneName = builder.zoneName;
   }
 
@@ -154,6 +236,56 @@ public class ListVolumesOptions extends GenericModel {
    */
   public String name() {
     return name;
+  }
+
+  /**
+   * Gets the attachmentState.
+   *
+   * Filters the collection to volumes with the specified attachment state.
+   *
+   * @return the attachmentState
+   */
+  public String attachmentState() {
+    return attachmentState;
+  }
+
+  /**
+   * Gets the encryption.
+   *
+   * Filters the collection to resources with the specified encryption type.
+   *
+   * @return the encryption
+   */
+  public String encryption() {
+    return encryption;
+  }
+
+  /**
+   * Gets the operatingSystemFamily.
+   *
+   * Filters the collection to resources with the exact specified operating system family.
+   *
+   * This parameter also supports the values `null` and `not:null` which filter the collection to resources which have
+   * no operating system or any operating system, respectively.
+   *
+   * @return the operatingSystemFamily
+   */
+  public String operatingSystemFamily() {
+    return operatingSystemFamily;
+  }
+
+  /**
+   * Gets the operatingSystemArchitecture.
+   *
+   * Filters the collection to resources with the exact specified operating system architecture.
+   *
+   * This parameter also supports the values `null` and `not:null` which filter the collection to resources which have
+   * no operating system or any operating system, respectively.
+   *
+   * @return the operatingSystemArchitecture
+   */
+  public String operatingSystemArchitecture() {
+    return operatingSystemArchitecture;
   }
 
   /**

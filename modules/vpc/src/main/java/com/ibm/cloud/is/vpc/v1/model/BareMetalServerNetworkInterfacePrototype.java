@@ -99,16 +99,14 @@ public class BareMetalServerNetworkInterfacePrototype extends GenericModel {
    * Gets the enableInfrastructureNat.
    *
    * If `true`:
-   *   - The VPC infrastructure performs any needed NAT operations.
-   *   - A single floating IP can be assigned to the network interface.
+   * - The VPC infrastructure performs any needed NAT operations.
+   * - `floating_ips` must not have more than one floating IP.
    *
    * If `false`:
-   *   - Packets are passed unchanged to/from the network interface,
-   *     allowing the workload to perform any needed NAT operations.
-   *   - Multiple floating IPs can be assigned to the network interface.
-   *   - `allow_ip_spoofing` must be set to `false`.
-   *
-   * This must be `true` when `interface_type` is `hipersocket`.
+   * - Packets are passed unchanged to/from the network interface,
+   *   allowing the workload to perform any needed NAT operations.
+   * - `allow_ip_spoofing` must be `false`.
+   * - `interface_type` must not be `hipersocket`.
    *
    * @return the enableInfrastructureNat
    */

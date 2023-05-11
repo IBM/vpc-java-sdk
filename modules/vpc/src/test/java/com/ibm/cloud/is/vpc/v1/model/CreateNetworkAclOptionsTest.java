@@ -86,4 +86,10 @@ public class CreateNetworkAclOptionsTest {
       .build();
     assertEquals(createNetworkAclOptionsModel.networkAclPrototype(), networkAclPrototypeModel);
   }
+
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testCreateNetworkAclOptionsError() throws Throwable {
+    new CreateNetworkAclOptions.Builder().build();
+  }
+
 }
