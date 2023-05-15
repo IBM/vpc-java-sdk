@@ -24,7 +24,7 @@ public class VolumeAttachmentReferenceInstanceContext extends GenericModel {
   protected String href;
   protected String id;
   protected String name;
-  protected VolumeReference volume;
+  protected VolumeReferenceVolumeAttachmentContext volume;
 
   protected VolumeAttachmentReferenceInstanceContext() { }
 
@@ -95,7 +95,7 @@ public class VolumeAttachmentReferenceInstanceContext extends GenericModel {
    *
    * @return the volume
    */
-  public VolumeReference getVolume() {
+  public VolumeReferenceVolumeAttachmentContext getVolume() {
     return volume;
   }
 }

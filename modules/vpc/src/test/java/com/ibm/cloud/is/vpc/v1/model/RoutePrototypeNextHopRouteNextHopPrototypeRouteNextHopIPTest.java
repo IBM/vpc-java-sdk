@@ -29,23 +29,10 @@ public class RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIPTest {
   final HashMap<String, InputStream> mockStreamMap = TestUtilities.createMockStreamMap();
   final List<FileWithMetadata> mockListFileWithMetadata = TestUtilities.creatMockListFileWithMetadata();
 
+  // TODO: Add tests for models that are abstract
   @Test
   public void testRoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIP() throws Throwable {
-    RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIP routePrototypeNextHopRouteNextHopPrototypeRouteNextHopIpModel = new RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIP.Builder()
-      .address("192.168.3.4")
-      .build();
-    assertEquals(routePrototypeNextHopRouteNextHopPrototypeRouteNextHopIpModel.address(), "192.168.3.4");
-
-    String json = TestUtilities.serialize(routePrototypeNextHopRouteNextHopPrototypeRouteNextHopIpModel);
-
-    RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIP routePrototypeNextHopRouteNextHopPrototypeRouteNextHopIpModelNew = TestUtilities.deserialize(json, RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIP.class);
-    assertTrue(routePrototypeNextHopRouteNextHopPrototypeRouteNextHopIpModelNew instanceof RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIP);
-    assertEquals(routePrototypeNextHopRouteNextHopPrototypeRouteNextHopIpModelNew.address(), "192.168.3.4");
+    RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIP routePrototypeNextHopRouteNextHopPrototypeRouteNextHopIpModel = new RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIP();
+    assertNotNull(routePrototypeNextHopRouteNextHopPrototypeRouteNextHopIpModel);
   }
-
-  @Test(expectedExceptions = IllegalArgumentException.class)
-  public void testRoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIPError() throws Throwable {
-    new RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIP.Builder().build();
-  }
-
 }

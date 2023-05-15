@@ -33,16 +33,16 @@ public class BackupPolicyPlanDeletionTriggerPatchTest {
   public void testBackupPolicyPlanDeletionTriggerPatch() throws Throwable {
     BackupPolicyPlanDeletionTriggerPatch backupPolicyPlanDeletionTriggerPatchModel = new BackupPolicyPlanDeletionTriggerPatch.Builder()
       .deleteAfter(Long.valueOf("20"))
-      .deleteOverCount(Long.valueOf("26"))
+      .deleteOverCount(Long.valueOf("1"))
       .build();
     assertEquals(backupPolicyPlanDeletionTriggerPatchModel.deleteAfter(), Long.valueOf("20"));
-    assertEquals(backupPolicyPlanDeletionTriggerPatchModel.deleteOverCount(), Long.valueOf("26"));
+    assertEquals(backupPolicyPlanDeletionTriggerPatchModel.deleteOverCount(), Long.valueOf("1"));
 
     String json = TestUtilities.serialize(backupPolicyPlanDeletionTriggerPatchModel);
 
     BackupPolicyPlanDeletionTriggerPatch backupPolicyPlanDeletionTriggerPatchModelNew = TestUtilities.deserialize(json, BackupPolicyPlanDeletionTriggerPatch.class);
     assertTrue(backupPolicyPlanDeletionTriggerPatchModelNew instanceof BackupPolicyPlanDeletionTriggerPatch);
     assertEquals(backupPolicyPlanDeletionTriggerPatchModelNew.deleteAfter(), Long.valueOf("20"));
-    assertEquals(backupPolicyPlanDeletionTriggerPatchModelNew.deleteOverCount(), Long.valueOf("26"));
+    assertEquals(backupPolicyPlanDeletionTriggerPatchModelNew.deleteOverCount(), Long.valueOf("1"));
   }
 }

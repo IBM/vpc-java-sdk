@@ -43,6 +43,7 @@ public class RoutePrototype extends GenericModel {
   protected String name;
   @SerializedName("next_hop")
   protected RoutePrototypeNextHop nextHop;
+  protected Long priority;
   protected ZoneIdentity zone;
 
   /**
@@ -53,6 +54,7 @@ public class RoutePrototype extends GenericModel {
     private String destination;
     private String name;
     private RoutePrototypeNextHop nextHop;
+    private Long priority;
     private ZoneIdentity zone;
 
     /**
@@ -65,6 +67,7 @@ public class RoutePrototype extends GenericModel {
       this.destination = routePrototype.destination;
       this.name = routePrototype.name;
       this.nextHop = routePrototype.nextHop;
+      this.priority = routePrototype.priority;
       this.zone = routePrototype.zone;
     }
 
@@ -139,6 +142,17 @@ public class RoutePrototype extends GenericModel {
     }
 
     /**
+     * Set the priority.
+     *
+     * @param priority the priority
+     * @return the RoutePrototype builder
+     */
+    public Builder priority(long priority) {
+      this.priority = priority;
+      return this;
+    }
+
+    /**
      * Set the zone.
      *
      * @param zone the zone
@@ -161,6 +175,7 @@ public class RoutePrototype extends GenericModel {
     destination = builder.destination;
     name = builder.name;
     nextHop = builder.nextHop;
+    priority = builder.priority;
     zone = builder.zone;
   }
 
@@ -191,8 +206,8 @@ public class RoutePrototype extends GenericModel {
   /**
    * Gets the destination.
    *
-   * The destination of the route. At most two routes per `zone` in a table can have the same destination, and only if
-   * both routes have an `action` of `deliver` and the `next_hop` is an IP address.
+   * The destination of the route. At most two routes per `zone` in a table can have the same `destination` and
+   * `priority`, and only if both routes have an `action` of `deliver` and the `next_hop` is an IP address.
    *
    * @return the destination
    */
@@ -216,13 +231,31 @@ public class RoutePrototype extends GenericModel {
   /**
    * Gets the nextHop.
    *
-   * If `action` is `deliver`, the next hop that packets will be delivered to. For other `action`
-   * values, it must be omitted or specified as `0.0.0.0`.
+   * If `action` is `deliver`, the next hop that packets will be delivered to. For other
+   * `action` values, it must be omitted or specified as `0.0.0.0`.
+   *
+   * At most two routes per `zone` in a table can have the same `destination` and `priority`,
+   * and only when each route has an `action` of `deliver` and `next_hop` is an IP address.
    *
    * @return the nextHop
    */
   public RoutePrototypeNextHop nextHop() {
     return nextHop;
+  }
+
+  /**
+   * Gets the priority.
+   *
+   * The priority of this route. Smaller values have higher priority.
+   *
+   * If a routing table contains multiple routes with the same `zone` and `destination`, the route with the highest
+   * priority (smallest value) is selected. If two routes have the same `destination` and `priority`, traffic is
+   * distributed between them.
+   *
+   * @return the priority
+   */
+  public Long priority() {
+    return priority;
   }
 
   /**

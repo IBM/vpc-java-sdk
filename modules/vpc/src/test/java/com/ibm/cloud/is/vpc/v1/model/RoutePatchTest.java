@@ -13,6 +13,7 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.ibm.cloud.is.vpc.v1.model.RouteNextHopPatchRouteNextHopIPRouteNextHopIPSentinelIP;
 import com.ibm.cloud.is.vpc.v1.model.RoutePatch;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
@@ -32,26 +33,45 @@ public class RoutePatchTest {
 
   @Test
   public void testRoutePatch() throws Throwable {
+    RouteNextHopPatchRouteNextHopIPRouteNextHopIPSentinelIP routeNextHopPatchModel = new RouteNextHopPatchRouteNextHopIPRouteNextHopIPSentinelIP.Builder()
+      .address("0.0.0.0")
+      .build();
+    assertEquals(routeNextHopPatchModel.address(), "0.0.0.0");
+
     RoutePatch routePatchModel = new RoutePatch.Builder()
       .name("my-route-2")
+      .nextHop(routeNextHopPatchModel)
+      .priority(Long.valueOf("1"))
       .build();
     assertEquals(routePatchModel.name(), "my-route-2");
+    assertEquals(routePatchModel.nextHop(), routeNextHopPatchModel);
+    assertEquals(routePatchModel.priority(), Long.valueOf("1"));
 
     String json = TestUtilities.serialize(routePatchModel);
 
     RoutePatch routePatchModelNew = TestUtilities.deserialize(json, RoutePatch.class);
     assertTrue(routePatchModelNew instanceof RoutePatch);
     assertEquals(routePatchModelNew.name(), "my-route-2");
+    assertEquals(routePatchModelNew.nextHop().toString(), routeNextHopPatchModel.toString());
+    assertEquals(routePatchModelNew.priority(), Long.valueOf("1"));
   }
   @Test
   public void testRoutePatchAsPatch() throws Throwable {
+    RouteNextHopPatchRouteNextHopIPRouteNextHopIPSentinelIP routeNextHopPatchModel = new RouteNextHopPatchRouteNextHopIPRouteNextHopIPSentinelIP.Builder()
+      .address("0.0.0.0")
+      .build();
+
     RoutePatch routePatchModel = new RoutePatch.Builder()
       .name("my-route-2")
+      .nextHop(routeNextHopPatchModel)
+      .priority(Long.valueOf("1"))
       .build();
 
     Map<String, Object> mergePatch = routePatchModel.asPatch();
 
     assertEquals(mergePatch.get("name"), "my-route-2");
+    assertTrue(mergePatch.containsKey("next_hop"));
+    assertTrue(mergePatch.containsKey("priority"));
   }
 
 }

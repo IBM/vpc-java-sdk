@@ -66,6 +66,7 @@ public class LoadBalancerListenerPatchTest {
       .connectionLimit(Long.valueOf("2000"))
       .defaultPool(loadBalancerPoolIdentityModel)
       .httpsRedirect(loadBalancerListenerHttpsRedirectPatchModel)
+      .idleConnectionTimeout(Long.valueOf("100"))
       .port(Long.valueOf("443"))
       .portMax(Long.valueOf("499"))
       .portMin(Long.valueOf("443"))
@@ -76,6 +77,7 @@ public class LoadBalancerListenerPatchTest {
     assertEquals(loadBalancerListenerPatchModel.connectionLimit(), Long.valueOf("2000"));
     assertEquals(loadBalancerListenerPatchModel.defaultPool(), loadBalancerPoolIdentityModel);
     assertEquals(loadBalancerListenerPatchModel.httpsRedirect(), loadBalancerListenerHttpsRedirectPatchModel);
+    assertEquals(loadBalancerListenerPatchModel.idleConnectionTimeout(), Long.valueOf("100"));
     assertEquals(loadBalancerListenerPatchModel.port(), Long.valueOf("443"));
     assertEquals(loadBalancerListenerPatchModel.portMax(), Long.valueOf("499"));
     assertEquals(loadBalancerListenerPatchModel.portMin(), Long.valueOf("443"));
@@ -90,6 +92,7 @@ public class LoadBalancerListenerPatchTest {
     assertEquals(loadBalancerListenerPatchModelNew.connectionLimit(), Long.valueOf("2000"));
     assertEquals(loadBalancerListenerPatchModelNew.defaultPool().toString(), loadBalancerPoolIdentityModel.toString());
     assertEquals(loadBalancerListenerPatchModelNew.httpsRedirect().toString(), loadBalancerListenerHttpsRedirectPatchModel.toString());
+    assertEquals(loadBalancerListenerPatchModelNew.idleConnectionTimeout(), Long.valueOf("100"));
     assertEquals(loadBalancerListenerPatchModelNew.port(), Long.valueOf("443"));
     assertEquals(loadBalancerListenerPatchModelNew.portMax(), Long.valueOf("499"));
     assertEquals(loadBalancerListenerPatchModelNew.portMin(), Long.valueOf("443"));
@@ -121,6 +124,7 @@ public class LoadBalancerListenerPatchTest {
       .connectionLimit(Long.valueOf("2000"))
       .defaultPool(loadBalancerPoolIdentityModel)
       .httpsRedirect(loadBalancerListenerHttpsRedirectPatchModel)
+      .idleConnectionTimeout(Long.valueOf("100"))
       .port(Long.valueOf("443"))
       .portMax(Long.valueOf("499"))
       .portMin(Long.valueOf("443"))
@@ -134,6 +138,7 @@ public class LoadBalancerListenerPatchTest {
     assertTrue(mergePatch.containsKey("connection_limit"));
     assertTrue(mergePatch.containsKey("default_pool"));
     assertTrue(mergePatch.containsKey("https_redirect"));
+    assertTrue(mergePatch.containsKey("idle_connection_timeout"));
     assertTrue(mergePatch.containsKey("port"));
     assertTrue(mergePatch.containsKey("port_max"));
     assertTrue(mergePatch.containsKey("port_min"));

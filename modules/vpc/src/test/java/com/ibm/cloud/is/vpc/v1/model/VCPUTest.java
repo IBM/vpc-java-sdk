@@ -34,5 +34,6 @@ public class VCPUTest {
     VCPU vcpuModel = new VCPU();
     assertNull(vcpuModel.getArchitecture());
     assertNull(vcpuModel.getCount());
+    assertNull(vcpuModel.getManufacturer());
   }
 }

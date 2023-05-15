@@ -30,7 +30,6 @@ public class InstancePrototypeInstanceBySourceTemplate extends InstancePrototype
     private List<KeyIdentity> keys;
     private InstanceMetadataServicePrototype metadataService;
     private String name;
-    private List<NetworkInterfacePrototype> networkInterfaces;
     private InstancePlacementTargetPrototype placementTarget;
     private InstanceProfileIdentity profile;
     private ResourceGroupIdentity resourceGroup;
@@ -41,6 +40,7 @@ public class InstancePrototypeInstanceBySourceTemplate extends InstancePrototype
     private VolumeAttachmentPrototypeInstanceByImageContext bootVolumeAttachment;
     private InstanceCatalogOfferingPrototype catalogOffering;
     private ImageIdentity image;
+    private List<NetworkInterfacePrototype> networkInterfaces;
     private NetworkInterfacePrototype primaryNetworkInterface;
     private InstanceTemplateIdentity sourceTemplate;
     private ZoneIdentity zone;
@@ -56,7 +56,6 @@ public class InstancePrototypeInstanceBySourceTemplate extends InstancePrototype
       this.keys = instancePrototypeInstanceBySourceTemplate.keys;
       this.metadataService = instancePrototypeInstanceBySourceTemplate.metadataService;
       this.name = instancePrototypeInstanceBySourceTemplate.name;
-      this.networkInterfaces = instancePrototypeInstanceBySourceTemplate.networkInterfaces;
       this.placementTarget = instancePrototypeInstanceBySourceTemplate.placementTarget;
       this.profile = instancePrototypeInstanceBySourceTemplate.profile;
       this.resourceGroup = instancePrototypeInstanceBySourceTemplate.resourceGroup;
@@ -67,6 +66,7 @@ public class InstancePrototypeInstanceBySourceTemplate extends InstancePrototype
       this.bootVolumeAttachment = (VolumeAttachmentPrototypeInstanceByImageContext) instancePrototypeInstanceBySourceTemplate.bootVolumeAttachment;
       this.catalogOffering = instancePrototypeInstanceBySourceTemplate.catalogOffering;
       this.image = instancePrototypeInstanceBySourceTemplate.image;
+      this.networkInterfaces = instancePrototypeInstanceBySourceTemplate.networkInterfaces;
       this.primaryNetworkInterface = instancePrototypeInstanceBySourceTemplate.primaryNetworkInterface;
       this.sourceTemplate = instancePrototypeInstanceBySourceTemplate.sourceTemplate;
       this.zone = instancePrototypeInstanceBySourceTemplate.zone;
@@ -113,22 +113,6 @@ public class InstancePrototypeInstanceBySourceTemplate extends InstancePrototype
     }
 
     /**
-     * Adds an networkInterfaces to networkInterfaces.
-     *
-     * @param networkInterfaces the new networkInterfaces
-     * @return the InstancePrototypeInstanceBySourceTemplate builder
-     */
-    public Builder addNetworkInterfaces(NetworkInterfacePrototype networkInterfaces) {
-      com.ibm.cloud.sdk.core.util.Validator.notNull(networkInterfaces,
-        "networkInterfaces cannot be null");
-      if (this.networkInterfaces == null) {
-        this.networkInterfaces = new ArrayList<NetworkInterfacePrototype>();
-      }
-      this.networkInterfaces.add(networkInterfaces);
-      return this;
-    }
-
-    /**
      * Adds an volumeAttachments to volumeAttachments.
      *
      * @param volumeAttachments the new volumeAttachments
@@ -141,6 +125,22 @@ public class InstancePrototypeInstanceBySourceTemplate extends InstancePrototype
         this.volumeAttachments = new ArrayList<VolumeAttachmentPrototype>();
       }
       this.volumeAttachments.add(volumeAttachments);
+      return this;
+    }
+
+    /**
+     * Adds an networkInterfaces to networkInterfaces.
+     *
+     * @param networkInterfaces the new networkInterfaces
+     * @return the InstancePrototypeInstanceBySourceTemplate builder
+     */
+    public Builder addNetworkInterfaces(NetworkInterfacePrototype networkInterfaces) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(networkInterfaces,
+        "networkInterfaces cannot be null");
+      if (this.networkInterfaces == null) {
+        this.networkInterfaces = new ArrayList<NetworkInterfacePrototype>();
+      }
+      this.networkInterfaces.add(networkInterfaces);
       return this;
     }
 
@@ -197,18 +197,6 @@ public class InstancePrototypeInstanceBySourceTemplate extends InstancePrototype
      */
     public Builder name(String name) {
       this.name = name;
-      return this;
-    }
-
-    /**
-     * Set the networkInterfaces.
-     * Existing networkInterfaces will be replaced.
-     *
-     * @param networkInterfaces the networkInterfaces
-     * @return the InstancePrototypeInstanceBySourceTemplate builder
-     */
-    public Builder networkInterfaces(List<NetworkInterfacePrototype> networkInterfaces) {
-      this.networkInterfaces = networkInterfaces;
       return this;
     }
 
@@ -324,6 +312,18 @@ public class InstancePrototypeInstanceBySourceTemplate extends InstancePrototype
     }
 
     /**
+     * Set the networkInterfaces.
+     * Existing networkInterfaces will be replaced.
+     *
+     * @param networkInterfaces the networkInterfaces
+     * @return the InstancePrototypeInstanceBySourceTemplate builder
+     */
+    public Builder networkInterfaces(List<NetworkInterfacePrototype> networkInterfaces) {
+      this.networkInterfaces = networkInterfaces;
+      return this;
+    }
+
+    /**
      * Set the primaryNetworkInterface.
      *
      * @param primaryNetworkInterface the primaryNetworkInterface
@@ -367,7 +367,6 @@ public class InstancePrototypeInstanceBySourceTemplate extends InstancePrototype
     keys = builder.keys;
     metadataService = builder.metadataService;
     name = builder.name;
-    networkInterfaces = builder.networkInterfaces;
     placementTarget = builder.placementTarget;
     profile = builder.profile;
     resourceGroup = builder.resourceGroup;
@@ -378,6 +377,7 @@ public class InstancePrototypeInstanceBySourceTemplate extends InstancePrototype
     bootVolumeAttachment = builder.bootVolumeAttachment;
     catalogOffering = builder.catalogOffering;
     image = builder.image;
+    networkInterfaces = builder.networkInterfaces;
     primaryNetworkInterface = builder.primaryNetworkInterface;
     sourceTemplate = builder.sourceTemplate;
     zone = builder.zone;

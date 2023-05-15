@@ -30,8 +30,8 @@ public class CreateBackupPolicyOptions extends GenericModel {
     String VOLUME = "volume";
   }
 
-  protected List<String> matchResourceTypes;
   protected List<String> matchUserTags;
+  protected List<String> matchResourceTypes;
   protected String name;
   protected List<BackupPolicyPlanPrototype> plans;
   protected ResourceGroupIdentity resourceGroup;
@@ -40,8 +40,8 @@ public class CreateBackupPolicyOptions extends GenericModel {
    * Builder.
    */
   public static class Builder {
-    private List<String> matchResourceTypes;
     private List<String> matchUserTags;
+    private List<String> matchResourceTypes;
     private String name;
     private List<BackupPolicyPlanPrototype> plans;
     private ResourceGroupIdentity resourceGroup;
@@ -52,8 +52,8 @@ public class CreateBackupPolicyOptions extends GenericModel {
      * @param createBackupPolicyOptions the instance to initialize the Builder with
      */
     private Builder(CreateBackupPolicyOptions createBackupPolicyOptions) {
-      this.matchResourceTypes = createBackupPolicyOptions.matchResourceTypes;
       this.matchUserTags = createBackupPolicyOptions.matchUserTags;
+      this.matchResourceTypes = createBackupPolicyOptions.matchResourceTypes;
       this.name = createBackupPolicyOptions.name;
       this.plans = createBackupPolicyOptions.plans;
       this.resourceGroup = createBackupPolicyOptions.resourceGroup;
@@ -66,28 +66,21 @@ public class CreateBackupPolicyOptions extends GenericModel {
     }
 
     /**
+     * Instantiates a new builder with required properties.
+     *
+     * @param matchUserTags the matchUserTags
+     */
+    public Builder(List<String> matchUserTags) {
+      this.matchUserTags = matchUserTags;
+    }
+
+    /**
      * Builds a CreateBackupPolicyOptions.
      *
      * @return the new CreateBackupPolicyOptions instance
      */
     public CreateBackupPolicyOptions build() {
       return new CreateBackupPolicyOptions(this);
-    }
-
-    /**
-     * Adds an matchResourceTypes to matchResourceTypes.
-     *
-     * @param matchResourceTypes the new matchResourceTypes
-     * @return the CreateBackupPolicyOptions builder
-     */
-    public Builder addMatchResourceTypes(String matchResourceTypes) {
-      com.ibm.cloud.sdk.core.util.Validator.notNull(matchResourceTypes,
-        "matchResourceTypes cannot be null");
-      if (this.matchResourceTypes == null) {
-        this.matchResourceTypes = new ArrayList<String>();
-      }
-      this.matchResourceTypes.add(matchResourceTypes);
-      return this;
     }
 
     /**
@@ -103,6 +96,22 @@ public class CreateBackupPolicyOptions extends GenericModel {
         this.matchUserTags = new ArrayList<String>();
       }
       this.matchUserTags.add(matchUserTags);
+      return this;
+    }
+
+    /**
+     * Adds an matchResourceTypes to matchResourceTypes.
+     *
+     * @param matchResourceTypes the new matchResourceTypes
+     * @return the CreateBackupPolicyOptions builder
+     */
+    public Builder addMatchResourceTypes(String matchResourceTypes) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(matchResourceTypes,
+        "matchResourceTypes cannot be null");
+      if (this.matchResourceTypes == null) {
+        this.matchResourceTypes = new ArrayList<String>();
+      }
+      this.matchResourceTypes.add(matchResourceTypes);
       return this;
     }
 
@@ -123,18 +132,6 @@ public class CreateBackupPolicyOptions extends GenericModel {
     }
 
     /**
-     * Set the matchResourceTypes.
-     * Existing matchResourceTypes will be replaced.
-     *
-     * @param matchResourceTypes the matchResourceTypes
-     * @return the CreateBackupPolicyOptions builder
-     */
-    public Builder matchResourceTypes(List<String> matchResourceTypes) {
-      this.matchResourceTypes = matchResourceTypes;
-      return this;
-    }
-
-    /**
      * Set the matchUserTags.
      * Existing matchUserTags will be replaced.
      *
@@ -143,6 +140,18 @@ public class CreateBackupPolicyOptions extends GenericModel {
      */
     public Builder matchUserTags(List<String> matchUserTags) {
       this.matchUserTags = matchUserTags;
+      return this;
+    }
+
+    /**
+     * Set the matchResourceTypes.
+     * Existing matchResourceTypes will be replaced.
+     *
+     * @param matchResourceTypes the matchResourceTypes
+     * @return the CreateBackupPolicyOptions builder
+     */
+    public Builder matchResourceTypes(List<String> matchResourceTypes) {
+      this.matchResourceTypes = matchResourceTypes;
       return this;
     }
 
@@ -184,8 +193,10 @@ public class CreateBackupPolicyOptions extends GenericModel {
   protected CreateBackupPolicyOptions() { }
 
   protected CreateBackupPolicyOptions(Builder builder) {
-    matchResourceTypes = builder.matchResourceTypes;
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.matchUserTags,
+      "matchUserTags cannot be null");
     matchUserTags = builder.matchUserTags;
+    matchResourceTypes = builder.matchResourceTypes;
     name = builder.name;
     plans = builder.plans;
     resourceGroup = builder.resourceGroup;
@@ -201,18 +212,6 @@ public class CreateBackupPolicyOptions extends GenericModel {
   }
 
   /**
-   * Gets the matchResourceTypes.
-   *
-   * A resource type this backup policy applies to. Resources that have both a matching type and a matching user tag
-   * will be subject to the backup policy.
-   *
-   * @return the matchResourceTypes
-   */
-  public List<String> matchResourceTypes() {
-    return matchResourceTypes;
-  }
-
-  /**
    * Gets the matchUserTags.
    *
    * The user tags this backup policy applies to. Resources that have both a matching user tag and a matching type will
@@ -222,6 +221,18 @@ public class CreateBackupPolicyOptions extends GenericModel {
    */
   public List<String> matchUserTags() {
     return matchUserTags;
+  }
+
+  /**
+   * Gets the matchResourceTypes.
+   *
+   * A resource type this backup policy applies to. Resources that have both a matching type and a matching user tag
+   * will be subject to the backup policy.
+   *
+   * @return the matchResourceTypes
+   */
+  public List<String> matchResourceTypes() {
+    return matchResourceTypes;
   }
 
   /**

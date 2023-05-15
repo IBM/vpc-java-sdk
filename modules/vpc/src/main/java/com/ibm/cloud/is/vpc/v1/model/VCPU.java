@@ -21,6 +21,7 @@ public class VCPU extends GenericModel {
 
   protected String architecture;
   protected Long count;
+  protected String manufacturer;
 
   protected VCPU() { }
 
@@ -44,6 +45,17 @@ public class VCPU extends GenericModel {
    */
   public Long getCount() {
     return count;
+  }
+
+  /**
+   * Gets the manufacturer.
+   *
+   * The VCPU manufacturer.
+   *
+   * @return the manufacturer
+   */
+  public String getManufacturer() {
+    return manufacturer;
   }
 }
 

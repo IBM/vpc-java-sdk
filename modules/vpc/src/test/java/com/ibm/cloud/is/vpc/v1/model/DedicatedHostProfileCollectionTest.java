@@ -26,6 +26,7 @@ import com.ibm.cloud.is.vpc.v1.model.DedicatedHostProfileMemoryFixed;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostProfileSocketFixed;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostProfileVCPUArchitecture;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostProfileVCPUFixed;
+import com.ibm.cloud.is.vpc.v1.model.DedicatedHostProfileVCPUManufacturer;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileReference;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;

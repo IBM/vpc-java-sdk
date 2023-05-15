@@ -18,7 +18,7 @@ import com.ibm.cloud.is.vpc.v1.model.ImageReference;
 import com.ibm.cloud.is.vpc.v1.model.ImageReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.InstanceReference;
 import com.ibm.cloud.is.vpc.v1.model.InstanceReferenceDeleted;
-import com.ibm.cloud.is.vpc.v1.model.OperatingSystemReference;
+import com.ibm.cloud.is.vpc.v1.model.OperatingSystem;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotReference;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotReferenceDeleted;

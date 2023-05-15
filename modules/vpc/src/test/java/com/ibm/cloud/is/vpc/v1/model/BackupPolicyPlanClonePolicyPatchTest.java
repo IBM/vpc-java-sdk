@@ -38,16 +38,16 @@ public class BackupPolicyPlanClonePolicyPatchTest {
     assertEquals(zoneIdentityModel.name(), "us-south-1");
 
     BackupPolicyPlanClonePolicyPatch backupPolicyPlanClonePolicyPatchModel = new BackupPolicyPlanClonePolicyPatch.Builder()
-      .maxSnapshots(Long.valueOf("26"))
+      .maxSnapshots(Long.valueOf("1"))
       .zones(java.util.Arrays.asList(zoneIdentityModel))
       .build();
-    assertEquals(backupPolicyPlanClonePolicyPatchModel.maxSnapshots(), Long.valueOf("26"));
+    assertEquals(backupPolicyPlanClonePolicyPatchModel.maxSnapshots(), Long.valueOf("1"));
     assertEquals(backupPolicyPlanClonePolicyPatchModel.zones(), java.util.Arrays.asList(zoneIdentityModel));
 
     String json = TestUtilities.serialize(backupPolicyPlanClonePolicyPatchModel);
 
     BackupPolicyPlanClonePolicyPatch backupPolicyPlanClonePolicyPatchModelNew = TestUtilities.deserialize(json, BackupPolicyPlanClonePolicyPatch.class);
     assertTrue(backupPolicyPlanClonePolicyPatchModelNew instanceof BackupPolicyPlanClonePolicyPatch);
-    assertEquals(backupPolicyPlanClonePolicyPatchModelNew.maxSnapshots(), Long.valueOf("26"));
+    assertEquals(backupPolicyPlanClonePolicyPatchModelNew.maxSnapshots(), Long.valueOf("1"));
   }
 }

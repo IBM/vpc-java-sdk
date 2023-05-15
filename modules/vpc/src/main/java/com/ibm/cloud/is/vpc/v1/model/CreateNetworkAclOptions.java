@@ -43,6 +43,15 @@ public class CreateNetworkAclOptions extends GenericModel {
     }
 
     /**
+     * Instantiates a new builder with required properties.
+     *
+     * @param networkAclPrototype the networkAclPrototype
+     */
+    public Builder(NetworkACLPrototype networkAclPrototype) {
+      this.networkAclPrototype = networkAclPrototype;
+    }
+
+    /**
      * Builds a CreateNetworkAclOptions.
      *
      * @return the new CreateNetworkAclOptions instance
@@ -66,6 +75,8 @@ public class CreateNetworkAclOptions extends GenericModel {
   protected CreateNetworkAclOptions() { }
 
   protected CreateNetworkAclOptions(Builder builder) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.networkAclPrototype,
+      "networkAclPrototype cannot be null");
     networkAclPrototype = builder.networkAclPrototype;
   }
 

@@ -33,9 +33,9 @@ public class CreateDedicatedHostGroupOptions extends GenericModel {
 
   protected String xClass;
   protected String family;
+  protected ZoneIdentity zone;
   protected String name;
   protected ResourceGroupIdentity resourceGroup;
-  protected ZoneIdentity zone;
 
   /**
    * Builder.
@@ -43,9 +43,9 @@ public class CreateDedicatedHostGroupOptions extends GenericModel {
   public static class Builder {
     private String xClass;
     private String family;
+    private ZoneIdentity zone;
     private String name;
     private ResourceGroupIdentity resourceGroup;
-    private ZoneIdentity zone;
 
     /**
      * Instantiates a new Builder from an existing CreateDedicatedHostGroupOptions instance.
@@ -55,15 +55,28 @@ public class CreateDedicatedHostGroupOptions extends GenericModel {
     private Builder(CreateDedicatedHostGroupOptions createDedicatedHostGroupOptions) {
       this.xClass = createDedicatedHostGroupOptions.xClass;
       this.family = createDedicatedHostGroupOptions.family;
+      this.zone = createDedicatedHostGroupOptions.zone;
       this.name = createDedicatedHostGroupOptions.name;
       this.resourceGroup = createDedicatedHostGroupOptions.resourceGroup;
-      this.zone = createDedicatedHostGroupOptions.zone;
     }
 
     /**
      * Instantiates a new builder.
      */
     public Builder() {
+    }
+
+    /**
+     * Instantiates a new builder with required properties.
+     *
+     * @param xClass the xClass
+     * @param family the family
+     * @param zone the zone
+     */
+    public Builder(String xClass, String family, ZoneIdentity zone) {
+      this.xClass = xClass;
+      this.family = family;
+      this.zone = zone;
     }
 
     /**
@@ -98,6 +111,17 @@ public class CreateDedicatedHostGroupOptions extends GenericModel {
     }
 
     /**
+     * Set the zone.
+     *
+     * @param zone the zone
+     * @return the CreateDedicatedHostGroupOptions builder
+     */
+    public Builder zone(ZoneIdentity zone) {
+      this.zone = zone;
+      return this;
+    }
+
+    /**
      * Set the name.
      *
      * @param name the name
@@ -118,27 +142,22 @@ public class CreateDedicatedHostGroupOptions extends GenericModel {
       this.resourceGroup = resourceGroup;
       return this;
     }
-
-    /**
-     * Set the zone.
-     *
-     * @param zone the zone
-     * @return the CreateDedicatedHostGroupOptions builder
-     */
-    public Builder zone(ZoneIdentity zone) {
-      this.zone = zone;
-      return this;
-    }
   }
 
   protected CreateDedicatedHostGroupOptions() { }
 
   protected CreateDedicatedHostGroupOptions(Builder builder) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.xClass,
+      "xClass cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.family,
+      "family cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.zone,
+      "zone cannot be null");
     xClass = builder.xClass;
     family = builder.family;
+    zone = builder.zone;
     name = builder.name;
     resourceGroup = builder.resourceGroup;
-    zone = builder.zone;
   }
 
   /**
@@ -173,6 +192,17 @@ public class CreateDedicatedHostGroupOptions extends GenericModel {
   }
 
   /**
+   * Gets the zone.
+   *
+   * The zone this dedicated host group will reside in.
+   *
+   * @return the zone
+   */
+  public ZoneIdentity zone() {
+    return zone;
+  }
+
+  /**
    * Gets the name.
    *
    * The name for this dedicated host group. The name must not be used by another dedicated host group in the region. If
@@ -194,17 +224,6 @@ public class CreateDedicatedHostGroupOptions extends GenericModel {
    */
   public ResourceGroupIdentity resourceGroup() {
     return resourceGroup;
-  }
-
-  /**
-   * Gets the zone.
-   *
-   * The zone this dedicated host group will reside in.
-   *
-   * @return the zone
-   */
-  public ZoneIdentity zone() {
-    return zone;
   }
 }
 

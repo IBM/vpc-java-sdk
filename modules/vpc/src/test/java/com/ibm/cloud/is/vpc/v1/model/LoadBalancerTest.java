@@ -13,8 +13,11 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.ibm.cloud.is.vpc.v1.model.DNSInstanceReference;
+import com.ibm.cloud.is.vpc.v1.model.DNSZoneReference;
 import com.ibm.cloud.is.vpc.v1.model.IP;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancer;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerDNS;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerReference;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerLogging;
@@ -49,6 +52,7 @@ public class LoadBalancerTest {
     LoadBalancer loadBalancerModel = new LoadBalancer();
     assertNull(loadBalancerModel.getCreatedAt());
     assertNull(loadBalancerModel.getCrn());
+    assertNull(loadBalancerModel.getDns());
     assertNull(loadBalancerModel.getHostname());
     assertNull(loadBalancerModel.getHref());
     assertNull(loadBalancerModel.getId());

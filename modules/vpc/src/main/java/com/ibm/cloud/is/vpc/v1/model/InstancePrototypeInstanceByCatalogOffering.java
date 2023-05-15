@@ -30,7 +30,6 @@ public class InstancePrototypeInstanceByCatalogOffering extends InstancePrototyp
     private List<KeyIdentity> keys;
     private InstanceMetadataServicePrototype metadataService;
     private String name;
-    private List<NetworkInterfacePrototype> networkInterfaces;
     private InstancePlacementTargetPrototype placementTarget;
     private InstanceProfileIdentity profile;
     private ResourceGroupIdentity resourceGroup;
@@ -40,6 +39,7 @@ public class InstancePrototypeInstanceByCatalogOffering extends InstancePrototyp
     private VPCIdentity vpc;
     private VolumeAttachmentPrototypeInstanceByImageContext bootVolumeAttachment;
     private InstanceCatalogOfferingPrototype catalogOffering;
+    private List<NetworkInterfacePrototype> networkInterfaces;
     private NetworkInterfacePrototype primaryNetworkInterface;
     private ZoneIdentity zone;
 
@@ -54,7 +54,6 @@ public class InstancePrototypeInstanceByCatalogOffering extends InstancePrototyp
       this.keys = instancePrototypeInstanceByCatalogOffering.keys;
       this.metadataService = instancePrototypeInstanceByCatalogOffering.metadataService;
       this.name = instancePrototypeInstanceByCatalogOffering.name;
-      this.networkInterfaces = instancePrototypeInstanceByCatalogOffering.networkInterfaces;
       this.placementTarget = instancePrototypeInstanceByCatalogOffering.placementTarget;
       this.profile = instancePrototypeInstanceByCatalogOffering.profile;
       this.resourceGroup = instancePrototypeInstanceByCatalogOffering.resourceGroup;
@@ -64,6 +63,7 @@ public class InstancePrototypeInstanceByCatalogOffering extends InstancePrototyp
       this.vpc = instancePrototypeInstanceByCatalogOffering.vpc;
       this.bootVolumeAttachment = (VolumeAttachmentPrototypeInstanceByImageContext) instancePrototypeInstanceByCatalogOffering.bootVolumeAttachment;
       this.catalogOffering = instancePrototypeInstanceByCatalogOffering.catalogOffering;
+      this.networkInterfaces = instancePrototypeInstanceByCatalogOffering.networkInterfaces;
       this.primaryNetworkInterface = instancePrototypeInstanceByCatalogOffering.primaryNetworkInterface;
       this.zone = instancePrototypeInstanceByCatalogOffering.zone;
     }
@@ -113,22 +113,6 @@ public class InstancePrototypeInstanceByCatalogOffering extends InstancePrototyp
     }
 
     /**
-     * Adds an networkInterfaces to networkInterfaces.
-     *
-     * @param networkInterfaces the new networkInterfaces
-     * @return the InstancePrototypeInstanceByCatalogOffering builder
-     */
-    public Builder addNetworkInterfaces(NetworkInterfacePrototype networkInterfaces) {
-      com.ibm.cloud.sdk.core.util.Validator.notNull(networkInterfaces,
-        "networkInterfaces cannot be null");
-      if (this.networkInterfaces == null) {
-        this.networkInterfaces = new ArrayList<NetworkInterfacePrototype>();
-      }
-      this.networkInterfaces.add(networkInterfaces);
-      return this;
-    }
-
-    /**
      * Adds an volumeAttachments to volumeAttachments.
      *
      * @param volumeAttachments the new volumeAttachments
@@ -141,6 +125,22 @@ public class InstancePrototypeInstanceByCatalogOffering extends InstancePrototyp
         this.volumeAttachments = new ArrayList<VolumeAttachmentPrototype>();
       }
       this.volumeAttachments.add(volumeAttachments);
+      return this;
+    }
+
+    /**
+     * Adds an networkInterfaces to networkInterfaces.
+     *
+     * @param networkInterfaces the new networkInterfaces
+     * @return the InstancePrototypeInstanceByCatalogOffering builder
+     */
+    public Builder addNetworkInterfaces(NetworkInterfacePrototype networkInterfaces) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(networkInterfaces,
+        "networkInterfaces cannot be null");
+      if (this.networkInterfaces == null) {
+        this.networkInterfaces = new ArrayList<NetworkInterfacePrototype>();
+      }
+      this.networkInterfaces.add(networkInterfaces);
       return this;
     }
 
@@ -197,18 +197,6 @@ public class InstancePrototypeInstanceByCatalogOffering extends InstancePrototyp
      */
     public Builder name(String name) {
       this.name = name;
-      return this;
-    }
-
-    /**
-     * Set the networkInterfaces.
-     * Existing networkInterfaces will be replaced.
-     *
-     * @param networkInterfaces the networkInterfaces
-     * @return the InstancePrototypeInstanceByCatalogOffering builder
-     */
-    public Builder networkInterfaces(List<NetworkInterfacePrototype> networkInterfaces) {
-      this.networkInterfaces = networkInterfaces;
       return this;
     }
 
@@ -313,6 +301,18 @@ public class InstancePrototypeInstanceByCatalogOffering extends InstancePrototyp
     }
 
     /**
+     * Set the networkInterfaces.
+     * Existing networkInterfaces will be replaced.
+     *
+     * @param networkInterfaces the networkInterfaces
+     * @return the InstancePrototypeInstanceByCatalogOffering builder
+     */
+    public Builder networkInterfaces(List<NetworkInterfacePrototype> networkInterfaces) {
+      this.networkInterfaces = networkInterfaces;
+      return this;
+    }
+
+    /**
      * Set the primaryNetworkInterface.
      *
      * @param primaryNetworkInterface the primaryNetworkInterface
@@ -349,7 +349,6 @@ public class InstancePrototypeInstanceByCatalogOffering extends InstancePrototyp
     keys = builder.keys;
     metadataService = builder.metadataService;
     name = builder.name;
-    networkInterfaces = builder.networkInterfaces;
     placementTarget = builder.placementTarget;
     profile = builder.profile;
     resourceGroup = builder.resourceGroup;
@@ -359,6 +358,7 @@ public class InstancePrototypeInstanceByCatalogOffering extends InstancePrototyp
     vpc = builder.vpc;
     bootVolumeAttachment = builder.bootVolumeAttachment;
     catalogOffering = builder.catalogOffering;
+    networkInterfaces = builder.networkInterfaces;
     primaryNetworkInterface = builder.primaryNetworkInterface;
     zone = builder.zone;
   }

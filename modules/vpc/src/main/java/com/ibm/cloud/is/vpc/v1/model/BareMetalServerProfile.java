@@ -31,6 +31,8 @@ public class BareMetalServerProfile extends GenericModel {
   }
 
   protected BareMetalServerProfileBandwidth bandwidth;
+  @SerializedName("console_types")
+  protected BareMetalServerProfileConsoleTypes consoleTypes;
   @SerializedName("cpu_architecture")
   protected BareMetalServerProfileCPUArchitecture cpuArchitecture;
   @SerializedName("cpu_core_count")
@@ -42,6 +44,8 @@ public class BareMetalServerProfile extends GenericModel {
   protected String href;
   protected BareMetalServerProfileMemory memory;
   protected String name;
+  @SerializedName("network_interface_count")
+  protected BareMetalServerProfileNetworkInterfaceCount networkInterfaceCount;
   @SerializedName("os_architecture")
   protected BareMetalServerProfileOSArchitecture osArchitecture;
   @SerializedName("resource_type")
@@ -58,6 +62,17 @@ public class BareMetalServerProfile extends GenericModel {
    */
   public BareMetalServerProfileBandwidth getBandwidth() {
     return bandwidth;
+  }
+
+  /**
+   * Gets the consoleTypes.
+   *
+   * The console type configuration for a bare metal server with this profile.
+   *
+   * @return the consoleTypes
+   */
+  public BareMetalServerProfileConsoleTypes getConsoleTypes() {
+    return consoleTypes;
   }
 
   /**
@@ -138,6 +153,15 @@ public class BareMetalServerProfile extends GenericModel {
    */
   public String getName() {
     return name;
+  }
+
+  /**
+   * Gets the networkInterfaceCount.
+   *
+   * @return the networkInterfaceCount
+   */
+  public BareMetalServerProfileNetworkInterfaceCount getNetworkInterfaceCount() {
+    return networkInterfaceCount;
   }
 
   /**

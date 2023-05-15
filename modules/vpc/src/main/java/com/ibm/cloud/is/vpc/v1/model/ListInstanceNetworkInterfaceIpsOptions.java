@@ -141,7 +141,7 @@ public class ListInstanceNetworkInterfaceIpsOptions extends GenericModel {
   /**
    * Gets the instanceId.
    *
-   * The instance identifier.
+   * The virtual server instance identifier.
    *
    * @return the instanceId
    */

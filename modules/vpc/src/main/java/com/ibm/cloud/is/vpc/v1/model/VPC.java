@@ -141,7 +141,9 @@ public class VPC extends GenericModel {
   /**
    * Gets the defaultSecurityGroup.
    *
-   * The default security group to use for network interfaces created in this VPC.
+   * The default security group for this VPC. Resources created in this VPC that allow
+   * a security group to be optionally specified will use this security group by
+   * default.
    *
    * @return the defaultSecurityGroup
    */

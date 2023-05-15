@@ -15,8 +15,11 @@ package com.ibm.cloud.is.vpc.v1.model;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * If `action` is `deliver`, the next hop that packets will be delivered to. For other `action` values, it must be
- * omitted or specified as `0.0.0.0`.
+ * If `action` is `deliver`, the next hop that packets will be delivered to. For other
+ * `action` values, it must be omitted or specified as `0.0.0.0`.
+ *
+ * At most two routes per `zone` in a table can have the same `destination` and `priority`, and only when each route has
+ * an `action` of `deliver` and `next_hop` is an IP address.
  *
  * Classes which extend this class:
  * - RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIP
@@ -33,7 +36,7 @@ public class RoutePrototypeNextHop extends GenericModel {
   /**
    * Gets the address.
    *
-   * The IP address.
+   * The sentinel IP address (`0.0.0.0`).
    *
    * This property may add support for IPv6 addresses in the future. When processing a value in this property, verify
    * that the address is in an expected format. If it is not, log an error. Optionally halt processing and surface the

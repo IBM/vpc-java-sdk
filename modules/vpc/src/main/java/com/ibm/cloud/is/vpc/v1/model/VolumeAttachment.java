@@ -57,7 +57,7 @@ public class VolumeAttachment extends GenericModel {
   protected String name;
   protected String status;
   protected String type;
-  protected VolumeReference volume;
+  protected VolumeReferenceVolumeAttachmentContext volume;
 
   protected VolumeAttachment() { }
 
@@ -172,7 +172,7 @@ public class VolumeAttachment extends GenericModel {
    *
    * @return the volume
    */
-  public VolumeReference getVolume() {
+  public VolumeReferenceVolumeAttachmentContext getVolume() {
     return volume;
   }
 }

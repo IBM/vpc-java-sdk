@@ -15,6 +15,9 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.CertificateInstanceIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.CreateLoadBalancerOptions;
+import com.ibm.cloud.is.vpc.v1.model.DNSInstanceIdentityByCRN;
+import com.ibm.cloud.is.vpc.v1.model.DNSZoneIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerDNSPrototype;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerHTTPSRedirectPrototype;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPrototypeLoadBalancerContext;
@@ -57,6 +60,23 @@ public class CreateLoadBalancerOptionsTest {
       .build();
     assertEquals(loadBalancerLoggingDatapathPrototypeModel.active(), Boolean.valueOf(true));
 
+    DNSInstanceIdentityByCRN dnsInstanceIdentityModel = new DNSInstanceIdentityByCRN.Builder()
+      .crn("crn:v1:bluemix:public:dns-svcs:global:a/fff1cdf3dc1e4ec692a5f78bbb2584bc:6860c359-b2e2-46fa-a944-b38c28201c6e")
+      .build();
+    assertEquals(dnsInstanceIdentityModel.crn(), "crn:v1:bluemix:public:dns-svcs:global:a/fff1cdf3dc1e4ec692a5f78bbb2584bc:6860c359-b2e2-46fa-a944-b38c28201c6e");
+
+    DNSZoneIdentityById dnsZoneIdentityModel = new DNSZoneIdentityById.Builder()
+      .id("d66662cc-aa23-4fe1-9987-858487a61f45")
+      .build();
+    assertEquals(dnsZoneIdentityModel.id(), "d66662cc-aa23-4fe1-9987-858487a61f45");
+
+    LoadBalancerDNSPrototype loadBalancerDnsPrototypeModel = new LoadBalancerDNSPrototype.Builder()
+      .instance(dnsInstanceIdentityModel)
+      .zone(dnsZoneIdentityModel)
+      .build();
+    assertEquals(loadBalancerDnsPrototypeModel.instance(), dnsInstanceIdentityModel);
+    assertEquals(loadBalancerDnsPrototypeModel.zone(), dnsZoneIdentityModel);
+
     CertificateInstanceIdentityByCRN certificateInstanceIdentityModel = new CertificateInstanceIdentityByCRN.Builder()
       .crn("crn:v1:bluemix:public:secrets-manager:us-south:a/123456:36fa422d-080d-4d83-8d2d-86851b4001df:secret:2e786aab-42fa-63ed-14f8-d66d552f4dd5")
       .build();
@@ -87,6 +107,7 @@ public class CreateLoadBalancerOptionsTest {
       .connectionLimit(Long.valueOf("2000"))
       .defaultPool(loadBalancerPoolIdentityByNameModel)
       .httpsRedirect(loadBalancerListenerHttpsRedirectPrototypeModel)
+      .idleConnectionTimeout(Long.valueOf("100"))
       .port(Long.valueOf("443"))
       .portMax(Long.valueOf("499"))
       .portMin(Long.valueOf("443"))
@@ -97,6 +118,7 @@ public class CreateLoadBalancerOptionsTest {
     assertEquals(loadBalancerListenerPrototypeLoadBalancerContextModel.connectionLimit(), Long.valueOf("2000"));
     assertEquals(loadBalancerListenerPrototypeLoadBalancerContextModel.defaultPool(), loadBalancerPoolIdentityByNameModel);
     assertEquals(loadBalancerListenerPrototypeLoadBalancerContextModel.httpsRedirect(), loadBalancerListenerHttpsRedirectPrototypeModel);
+    assertEquals(loadBalancerListenerPrototypeLoadBalancerContextModel.idleConnectionTimeout(), Long.valueOf("100"));
     assertEquals(loadBalancerListenerPrototypeLoadBalancerContextModel.port(), Long.valueOf("443"));
     assertEquals(loadBalancerListenerPrototypeLoadBalancerContextModel.portMax(), Long.valueOf("499"));
     assertEquals(loadBalancerListenerPrototypeLoadBalancerContextModel.portMin(), Long.valueOf("443"));
@@ -179,6 +201,7 @@ public class CreateLoadBalancerOptionsTest {
       .isPublic(true)
       .subnets(java.util.Arrays.asList(subnetIdentityModel))
       .datapath(loadBalancerLoggingDatapathPrototypeModel)
+      .dns(loadBalancerDnsPrototypeModel)
       .listeners(java.util.Arrays.asList(loadBalancerListenerPrototypeLoadBalancerContextModel))
       .logging(loadBalancerLoggingPrototypeModel)
       .name("my-load-balancer")
@@ -191,6 +214,7 @@ public class CreateLoadBalancerOptionsTest {
     assertEquals(createLoadBalancerOptionsModel.isPublic(), Boolean.valueOf(true));
     assertEquals(createLoadBalancerOptionsModel.subnets(), java.util.Arrays.asList(subnetIdentityModel));
     assertEquals(createLoadBalancerOptionsModel.datapath(), loadBalancerLoggingDatapathPrototypeModel);
+    assertEquals(createLoadBalancerOptionsModel.dns(), loadBalancerDnsPrototypeModel);
     assertEquals(createLoadBalancerOptionsModel.listeners(), java.util.Arrays.asList(loadBalancerListenerPrototypeLoadBalancerContextModel));
     assertEquals(createLoadBalancerOptionsModel.logging(), loadBalancerLoggingPrototypeModel);
     assertEquals(createLoadBalancerOptionsModel.name(), "my-load-balancer");

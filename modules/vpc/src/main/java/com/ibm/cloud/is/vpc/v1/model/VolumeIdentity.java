@@ -12,7 +12,6 @@
  */
 package com.ibm.cloud.is.vpc.v1.model;
 
-import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
  * Identifies a volume by a unique property.
@@ -22,11 +21,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  * - VolumeIdentityByCRN
  * - VolumeIdentityByHref
  */
-public class VolumeIdentity extends GenericModel {
-
-  protected String id;
-  protected String crn;
-  protected String href;
+public class VolumeIdentity extends VolumeAttachmentPrototypeInstanceWrapper {
 
   protected VolumeIdentity() { }
 

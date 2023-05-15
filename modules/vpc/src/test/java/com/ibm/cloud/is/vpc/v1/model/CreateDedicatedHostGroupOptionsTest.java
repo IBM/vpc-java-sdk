@@ -33,27 +33,33 @@ public class CreateDedicatedHostGroupOptionsTest {
 
   @Test
   public void testCreateDedicatedHostGroupOptions() throws Throwable {
-    ResourceGroupIdentityById resourceGroupIdentityModel = new ResourceGroupIdentityById.Builder()
-      .id("fee82deba12e4c0fb69c3b09d1f12345")
-      .build();
-    assertEquals(resourceGroupIdentityModel.id(), "fee82deba12e4c0fb69c3b09d1f12345");
-
     ZoneIdentityByName zoneIdentityModel = new ZoneIdentityByName.Builder()
       .name("us-south-1")
       .build();
     assertEquals(zoneIdentityModel.name(), "us-south-1");
 
+    ResourceGroupIdentityById resourceGroupIdentityModel = new ResourceGroupIdentityById.Builder()
+      .id("fee82deba12e4c0fb69c3b09d1f12345")
+      .build();
+    assertEquals(resourceGroupIdentityModel.id(), "fee82deba12e4c0fb69c3b09d1f12345");
+
     CreateDedicatedHostGroupOptions createDedicatedHostGroupOptionsModel = new CreateDedicatedHostGroupOptions.Builder()
       .xClass("mx2")
       .family("balanced")
+      .zone(zoneIdentityModel)
       .name("my-host-group")
       .resourceGroup(resourceGroupIdentityModel)
-      .zone(zoneIdentityModel)
       .build();
     assertEquals(createDedicatedHostGroupOptionsModel.xClass(), "mx2");
     assertEquals(createDedicatedHostGroupOptionsModel.family(), "balanced");
+    assertEquals(createDedicatedHostGroupOptionsModel.zone(), zoneIdentityModel);
     assertEquals(createDedicatedHostGroupOptionsModel.name(), "my-host-group");
     assertEquals(createDedicatedHostGroupOptionsModel.resourceGroup(), resourceGroupIdentityModel);
-    assertEquals(createDedicatedHostGroupOptionsModel.zone(), zoneIdentityModel);
   }
+
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testCreateDedicatedHostGroupOptionsError() throws Throwable {
+    new CreateDedicatedHostGroupOptions.Builder().build();
+  }
+
 }

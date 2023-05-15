@@ -14,7 +14,7 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.RoutePrototype;
-import com.ibm.cloud.is.vpc.v1.model.RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIP;
+import com.ibm.cloud.is.vpc.v1.model.RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIPRouteNextHopPrototypeRouteNextHopIPRouteNextHopIPSentinelIP;
 import com.ibm.cloud.is.vpc.v1.model.ZoneIdentityByName;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
@@ -33,10 +33,10 @@ public class RoutePrototypeTest {
 
   @Test
   public void testRoutePrototype() throws Throwable {
-    RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIP routePrototypeNextHopModel = new RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIP.Builder()
-      .address("192.168.3.4")
+    RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIPRouteNextHopPrototypeRouteNextHopIPRouteNextHopIPSentinelIP routePrototypeNextHopModel = new RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIPRouteNextHopPrototypeRouteNextHopIPRouteNextHopIPSentinelIP.Builder()
+      .address("0.0.0.0")
       .build();
-    assertEquals(routePrototypeNextHopModel.address(), "192.168.3.4");
+    assertEquals(routePrototypeNextHopModel.address(), "0.0.0.0");
 
     ZoneIdentityByName zoneIdentityModel = new ZoneIdentityByName.Builder()
       .name("us-south-1")
@@ -48,12 +48,14 @@ public class RoutePrototypeTest {
       .destination("192.168.3.0/24")
       .name("my-route-1")
       .nextHop(routePrototypeNextHopModel)
+      .priority(Long.valueOf("1"))
       .zone(zoneIdentityModel)
       .build();
     assertEquals(routePrototypeModel.action(), "deliver");
     assertEquals(routePrototypeModel.destination(), "192.168.3.0/24");
     assertEquals(routePrototypeModel.name(), "my-route-1");
     assertEquals(routePrototypeModel.nextHop(), routePrototypeNextHopModel);
+    assertEquals(routePrototypeModel.priority(), Long.valueOf("1"));
     assertEquals(routePrototypeModel.zone(), zoneIdentityModel);
 
     String json = TestUtilities.serialize(routePrototypeModel);
@@ -64,6 +66,7 @@ public class RoutePrototypeTest {
     assertEquals(routePrototypeModelNew.destination(), "192.168.3.0/24");
     assertEquals(routePrototypeModelNew.name(), "my-route-1");
     assertEquals(routePrototypeModelNew.nextHop().toString(), routePrototypeNextHopModel.toString());
+    assertEquals(routePrototypeModelNew.priority(), Long.valueOf("1"));
     assertEquals(routePrototypeModelNew.zone().toString(), zoneIdentityModel.toString());
   }
 

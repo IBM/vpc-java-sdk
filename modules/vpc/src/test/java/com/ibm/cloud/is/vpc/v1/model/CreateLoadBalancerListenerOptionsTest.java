@@ -99,6 +99,7 @@ public class CreateLoadBalancerListenerOptionsTest {
       .connectionLimit(Long.valueOf("2000"))
       .defaultPool(loadBalancerPoolIdentityModel)
       .httpsRedirect(loadBalancerListenerHttpsRedirectPrototypeModel)
+      .idleConnectionTimeout(Long.valueOf("100"))
       .policies(java.util.Arrays.asList(loadBalancerListenerPolicyPrototypeModel))
       .port(Long.valueOf("443"))
       .portMax(Long.valueOf("499"))
@@ -111,6 +112,7 @@ public class CreateLoadBalancerListenerOptionsTest {
     assertEquals(createLoadBalancerListenerOptionsModel.connectionLimit(), Long.valueOf("2000"));
     assertEquals(createLoadBalancerListenerOptionsModel.defaultPool(), loadBalancerPoolIdentityModel);
     assertEquals(createLoadBalancerListenerOptionsModel.httpsRedirect(), loadBalancerListenerHttpsRedirectPrototypeModel);
+    assertEquals(createLoadBalancerListenerOptionsModel.idleConnectionTimeout(), Long.valueOf("100"));
     assertEquals(createLoadBalancerListenerOptionsModel.policies(), java.util.Arrays.asList(loadBalancerListenerPolicyPrototypeModel));
     assertEquals(createLoadBalancerListenerOptionsModel.port(), Long.valueOf("443"));
     assertEquals(createLoadBalancerListenerOptionsModel.portMax(), Long.valueOf("499"));

@@ -12,7 +12,6 @@
  */
 package com.ibm.cloud.is.vpc.v1.model;
 
-
 /**
  * Identifies a dedicated host group by a unique property.
  *

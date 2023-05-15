@@ -30,7 +30,6 @@ public class InstancePrototypeInstanceBySourceSnapshot extends InstancePrototype
     private List<KeyIdentity> keys;
     private InstanceMetadataServicePrototype metadataService;
     private String name;
-    private List<NetworkInterfacePrototype> networkInterfaces;
     private InstancePlacementTargetPrototype placementTarget;
     private InstanceProfileIdentity profile;
     private ResourceGroupIdentity resourceGroup;
@@ -39,6 +38,7 @@ public class InstancePrototypeInstanceBySourceSnapshot extends InstancePrototype
     private List<VolumeAttachmentPrototype> volumeAttachments;
     private VPCIdentity vpc;
     private VolumeAttachmentPrototypeInstanceBySourceSnapshotContext bootVolumeAttachment;
+    private List<NetworkInterfacePrototype> networkInterfaces;
     private NetworkInterfacePrototype primaryNetworkInterface;
     private ZoneIdentity zone;
 
@@ -53,7 +53,6 @@ public class InstancePrototypeInstanceBySourceSnapshot extends InstancePrototype
       this.keys = instancePrototypeInstanceBySourceSnapshot.keys;
       this.metadataService = instancePrototypeInstanceBySourceSnapshot.metadataService;
       this.name = instancePrototypeInstanceBySourceSnapshot.name;
-      this.networkInterfaces = instancePrototypeInstanceBySourceSnapshot.networkInterfaces;
       this.placementTarget = instancePrototypeInstanceBySourceSnapshot.placementTarget;
       this.profile = instancePrototypeInstanceBySourceSnapshot.profile;
       this.resourceGroup = instancePrototypeInstanceBySourceSnapshot.resourceGroup;
@@ -62,6 +61,7 @@ public class InstancePrototypeInstanceBySourceSnapshot extends InstancePrototype
       this.volumeAttachments = instancePrototypeInstanceBySourceSnapshot.volumeAttachments;
       this.vpc = instancePrototypeInstanceBySourceSnapshot.vpc;
       this.bootVolumeAttachment = (VolumeAttachmentPrototypeInstanceBySourceSnapshotContext) instancePrototypeInstanceBySourceSnapshot.bootVolumeAttachment;
+      this.networkInterfaces = instancePrototypeInstanceBySourceSnapshot.networkInterfaces;
       this.primaryNetworkInterface = instancePrototypeInstanceBySourceSnapshot.primaryNetworkInterface;
       this.zone = instancePrototypeInstanceBySourceSnapshot.zone;
     }
@@ -111,22 +111,6 @@ public class InstancePrototypeInstanceBySourceSnapshot extends InstancePrototype
     }
 
     /**
-     * Adds an networkInterfaces to networkInterfaces.
-     *
-     * @param networkInterfaces the new networkInterfaces
-     * @return the InstancePrototypeInstanceBySourceSnapshot builder
-     */
-    public Builder addNetworkInterfaces(NetworkInterfacePrototype networkInterfaces) {
-      com.ibm.cloud.sdk.core.util.Validator.notNull(networkInterfaces,
-        "networkInterfaces cannot be null");
-      if (this.networkInterfaces == null) {
-        this.networkInterfaces = new ArrayList<NetworkInterfacePrototype>();
-      }
-      this.networkInterfaces.add(networkInterfaces);
-      return this;
-    }
-
-    /**
      * Adds an volumeAttachments to volumeAttachments.
      *
      * @param volumeAttachments the new volumeAttachments
@@ -139,6 +123,22 @@ public class InstancePrototypeInstanceBySourceSnapshot extends InstancePrototype
         this.volumeAttachments = new ArrayList<VolumeAttachmentPrototype>();
       }
       this.volumeAttachments.add(volumeAttachments);
+      return this;
+    }
+
+    /**
+     * Adds an networkInterfaces to networkInterfaces.
+     *
+     * @param networkInterfaces the new networkInterfaces
+     * @return the InstancePrototypeInstanceBySourceSnapshot builder
+     */
+    public Builder addNetworkInterfaces(NetworkInterfacePrototype networkInterfaces) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(networkInterfaces,
+        "networkInterfaces cannot be null");
+      if (this.networkInterfaces == null) {
+        this.networkInterfaces = new ArrayList<NetworkInterfacePrototype>();
+      }
+      this.networkInterfaces.add(networkInterfaces);
       return this;
     }
 
@@ -195,18 +195,6 @@ public class InstancePrototypeInstanceBySourceSnapshot extends InstancePrototype
      */
     public Builder name(String name) {
       this.name = name;
-      return this;
-    }
-
-    /**
-     * Set the networkInterfaces.
-     * Existing networkInterfaces will be replaced.
-     *
-     * @param networkInterfaces the networkInterfaces
-     * @return the InstancePrototypeInstanceBySourceSnapshot builder
-     */
-    public Builder networkInterfaces(List<NetworkInterfacePrototype> networkInterfaces) {
-      this.networkInterfaces = networkInterfaces;
       return this;
     }
 
@@ -300,6 +288,18 @@ public class InstancePrototypeInstanceBySourceSnapshot extends InstancePrototype
     }
 
     /**
+     * Set the networkInterfaces.
+     * Existing networkInterfaces will be replaced.
+     *
+     * @param networkInterfaces the networkInterfaces
+     * @return the InstancePrototypeInstanceBySourceSnapshot builder
+     */
+    public Builder networkInterfaces(List<NetworkInterfacePrototype> networkInterfaces) {
+      this.networkInterfaces = networkInterfaces;
+      return this;
+    }
+
+    /**
      * Set the primaryNetworkInterface.
      *
      * @param primaryNetworkInterface the primaryNetworkInterface
@@ -336,7 +336,6 @@ public class InstancePrototypeInstanceBySourceSnapshot extends InstancePrototype
     keys = builder.keys;
     metadataService = builder.metadataService;
     name = builder.name;
-    networkInterfaces = builder.networkInterfaces;
     placementTarget = builder.placementTarget;
     profile = builder.profile;
     resourceGroup = builder.resourceGroup;
@@ -345,6 +344,7 @@ public class InstancePrototypeInstanceBySourceSnapshot extends InstancePrototype
     volumeAttachments = builder.volumeAttachments;
     vpc = builder.vpc;
     bootVolumeAttachment = builder.bootVolumeAttachment;
+    networkInterfaces = builder.networkInterfaces;
     primaryNetworkInterface = builder.primaryNetworkInterface;
     zone = builder.zone;
   }

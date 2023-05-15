@@ -24,6 +24,26 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class BareMetalServer extends GenericModel {
 
   /**
+   * The lifecycle state of the bare metal server.
+   */
+  public interface LifecycleState {
+    /** deleting. */
+    String DELETING = "deleting";
+    /** failed. */
+    String FAILED = "failed";
+    /** pending. */
+    String PENDING = "pending";
+    /** stable. */
+    String STABLE = "stable";
+    /** suspended. */
+    String SUSPENDED = "suspended";
+    /** updating. */
+    String UPDATING = "updating";
+    /** waiting. */
+    String WAITING = "waiting";
+  }
+
+  /**
    * The resource type.
    */
   public interface ResourceType {
@@ -67,6 +87,10 @@ public class BareMetalServer extends GenericModel {
   protected Boolean enableSecureBoot;
   protected String href;
   protected String id;
+  @SerializedName("lifecycle_reasons")
+  protected List<BareMetalServerLifecycleReason> lifecycleReasons;
+  @SerializedName("lifecycle_state")
+  protected String lifecycleState;
   protected Long memory;
   protected String name;
   @SerializedName("network_interfaces")
@@ -187,6 +211,32 @@ public class BareMetalServer extends GenericModel {
    */
   public String getId() {
     return id;
+  }
+
+  /**
+   * Gets the lifecycleReasons.
+   *
+   * The reasons for the current `lifecycle_state` (if any).
+   *
+   * The enumerated reason code values for this property will expand in the future. When processing this property, check
+   * for and log unknown values. Optionally halt processing and surface the error, or bypass the resource on which the
+   * unexpected reason code was encountered.
+   *
+   * @return the lifecycleReasons
+   */
+  public List<BareMetalServerLifecycleReason> getLifecycleReasons() {
+    return lifecycleReasons;
+  }
+
+  /**
+   * Gets the lifecycleState.
+   *
+   * The lifecycle state of the bare metal server.
+   *
+   * @return the lifecycleState
+   */
+  public String getLifecycleState() {
+    return lifecycleState;
   }
 
   /**

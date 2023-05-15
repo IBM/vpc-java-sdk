@@ -14,7 +14,7 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPPatch;
-import com.ibm.cloud.is.vpc.v1.model.FloatingIPTargetPatchNetworkInterfaceIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.FloatingIPTargetPatchNetworkInterfaceIdentityNetworkInterfaceIdentityById;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -33,7 +33,7 @@ public class FloatingIPPatchTest {
 
   @Test
   public void testFloatingIPPatch() throws Throwable {
-    FloatingIPTargetPatchNetworkInterfaceIdentityById floatingIpTargetPatchModel = new FloatingIPTargetPatchNetworkInterfaceIdentityById.Builder()
+    FloatingIPTargetPatchNetworkInterfaceIdentityNetworkInterfaceIdentityById floatingIpTargetPatchModel = new FloatingIPTargetPatchNetworkInterfaceIdentityNetworkInterfaceIdentityById.Builder()
       .id("10c02d81-0ecb-4dc5-897d-28392913b81e")
       .build();
     assertEquals(floatingIpTargetPatchModel.id(), "10c02d81-0ecb-4dc5-897d-28392913b81e");
@@ -54,7 +54,7 @@ public class FloatingIPPatchTest {
   }
   @Test
   public void testFloatingIPPatchAsPatch() throws Throwable {
-    FloatingIPTargetPatchNetworkInterfaceIdentityById floatingIpTargetPatchModel = new FloatingIPTargetPatchNetworkInterfaceIdentityById.Builder()
+    FloatingIPTargetPatchNetworkInterfaceIdentityNetworkInterfaceIdentityById floatingIpTargetPatchModel = new FloatingIPTargetPatchNetworkInterfaceIdentityNetworkInterfaceIdentityById.Builder()
       .id("10c02d81-0ecb-4dc5-897d-28392913b81e")
       .build();
 

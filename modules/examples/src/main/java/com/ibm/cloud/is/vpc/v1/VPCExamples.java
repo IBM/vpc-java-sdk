@@ -48,6 +48,7 @@ import com.ibm.cloud.is.vpc.v1.model.BareMetalServersPager;
 import com.ibm.cloud.is.vpc.v1.model.CertificateInstanceIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.CheckVpnGatewayConnectionLocalCidrOptions;
 import com.ibm.cloud.is.vpc.v1.model.CheckVpnGatewayConnectionPeerCidrOptions;
+import com.ibm.cloud.is.vpc.v1.model.CloudObjectStorageBucketIdentityCloudObjectStorageBucketIdentityByName;
 import com.ibm.cloud.is.vpc.v1.model.CreateBackupPolicyOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateBackupPolicyPlanOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateBareMetalServerConsoleAccessTokenOptions;
@@ -59,6 +60,7 @@ import com.ibm.cloud.is.vpc.v1.model.CreateEndpointGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateFloatingIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateFlowLogCollectorOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateIkePolicyOptions;
+import com.ibm.cloud.is.vpc.v1.model.CreateImageExportJobOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateImageOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateInstanceActionOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateInstanceConsoleAccessTokenOptions;
@@ -126,6 +128,7 @@ import com.ibm.cloud.is.vpc.v1.model.DeleteEndpointGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteFloatingIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteFlowLogCollectorOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteIkePolicyOptions;
+import com.ibm.cloud.is.vpc.v1.model.DeleteImageExportJobOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteImageOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteInstanceGroupLoadBalancerOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteInstanceGroupManagerActionOptions;
@@ -186,7 +189,7 @@ import com.ibm.cloud.is.vpc.v1.model.FloatingIPUnpaginatedCollection;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIpsPager;
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollector;
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorPatch;
-import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceIdentityNetworkInterfaceIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorsPager;
 import com.ibm.cloud.is.vpc.v1.model.GetBackupPolicyJobOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetBackupPolicyOptions;
@@ -206,6 +209,7 @@ import com.ibm.cloud.is.vpc.v1.model.GetEndpointGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetFloatingIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetFlowLogCollectorOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetIkePolicyOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetImageExportJobOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetImageOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetInstanceDiskOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetInstanceGroupManagerActionOptions;
@@ -270,6 +274,9 @@ import com.ibm.cloud.is.vpc.v1.model.IPsecPolicy;
 import com.ibm.cloud.is.vpc.v1.model.IPsecPolicyPatch;
 import com.ibm.cloud.is.vpc.v1.model.IkePoliciesPager;
 import com.ibm.cloud.is.vpc.v1.model.Image;
+import com.ibm.cloud.is.vpc.v1.model.ImageExportJob;
+import com.ibm.cloud.is.vpc.v1.model.ImageExportJobPatch;
+import com.ibm.cloud.is.vpc.v1.model.ImageExportJobUnpaginatedCollection;
 import com.ibm.cloud.is.vpc.v1.model.ImageFilePrototype;
 import com.ibm.cloud.is.vpc.v1.model.ImageIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.ImagePatch;
@@ -312,7 +319,7 @@ import com.ibm.cloud.is.vpc.v1.model.InstanceTemplate;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateCollection;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplatePatch;
-import com.ibm.cloud.is.vpc.v1.model.InstanceTemplatePrototypeInstanceByImage;
+import com.ibm.cloud.is.vpc.v1.model.InstanceTemplatePrototypeInstanceByImageInstanceTemplateContext;
 import com.ibm.cloud.is.vpc.v1.model.InstancesPager;
 import com.ibm.cloud.is.vpc.v1.model.IpsecPoliciesPager;
 import com.ibm.cloud.is.vpc.v1.model.Key;
@@ -339,6 +346,7 @@ import com.ibm.cloud.is.vpc.v1.model.ListFloatingIpsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListFlowLogCollectorsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListIkePoliciesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListIkePolicyConnectionsOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListImageExportJobsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListImagesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListInstanceDisksOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListInstanceGroupManagerActionsOptions;
@@ -453,7 +461,7 @@ import com.ibm.cloud.is.vpc.v1.model.ReservedIP;
 import com.ibm.cloud.is.vpc.v1.model.ReservedIPPatch;
 import com.ibm.cloud.is.vpc.v1.model.RestartBareMetalServerOptions;
 import com.ibm.cloud.is.vpc.v1.model.Route;
-import com.ibm.cloud.is.vpc.v1.model.RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIP;
+import com.ibm.cloud.is.vpc.v1.model.RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIPRouteNextHopPrototypeRouteNextHopIPRouteNextHopIPUnicastIP;
 import com.ibm.cloud.is.vpc.v1.model.RoutePatch;
 import com.ibm.cloud.is.vpc.v1.model.RoutingTable;
 import com.ibm.cloud.is.vpc.v1.model.RoutingTableIdentityById;
@@ -496,6 +504,7 @@ import com.ibm.cloud.is.vpc.v1.model.UpdateEndpointGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateFloatingIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateFlowLogCollectorOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateIkePolicyOptions;
+import com.ibm.cloud.is.vpc.v1.model.UpdateImageExportJobOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateImageOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateInstanceDiskOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateInstanceGroupManagerActionOptions;
@@ -587,6 +596,7 @@ import com.ibm.cloud.sdk.core.service.exception.ServiceResponseException;
 import com.ibm.cloud.sdk.core.util.CredentialUtils;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import org.slf4j.Logger;
@@ -628,6 +638,7 @@ public class VPCExamples {
   static String keyId;
   static String addressPrefixId;
   static String imageId;
+  static String imageExportJobId;
   static String volumeId;
   static String endpointGatewayId;
   static String endpointGatewayIpId;
@@ -926,7 +937,7 @@ public class VPCExamples {
       ZoneIdentityByName zoneIdentityModel = new ZoneIdentityByName.Builder()
         .name(zoneName)
         .build();
-        RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIP routePrototypeNextHopRouteNextHopPrototypeRouteNextHopIP = new RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIP.Builder()
+        RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIPRouteNextHopPrototypeRouteNextHopIPRouteNextHopIPUnicastIP routePrototypeNextHopRouteNextHopPrototypeRouteNextHopIP = new RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIPRouteNextHopPrototypeRouteNextHopIPRouteNextHopIPUnicastIP.Builder()
         .address("192.168.3.4")
         .build();
       CreateVpcRouteOptions createVpcRouteOptions = new CreateVpcRouteOptions.Builder()
@@ -1611,6 +1622,84 @@ public class VPCExamples {
     }
 
     try {
+      System.out.println("listImageExportJobs() result:");
+      // begin-list_image_export_jobs
+      ListImageExportJobsOptions listImageExportJobsOptions = new ListImageExportJobsOptions.Builder()
+        .imageId("testString")
+        .build();
+
+      Response<ImageExportJobUnpaginatedCollection> response = vpcService.listImageExportJobs(listImageExportJobsOptions).execute();
+      ImageExportJobUnpaginatedCollection imageExportJobUnpaginatedCollection = response.getResult();
+
+      System.out.println(imageExportJobUnpaginatedCollection);
+      // end-list_image_export_jobs
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("createImageExportJob() result:");
+      // begin-create_image_export_job
+      CloudObjectStorageBucketIdentityCloudObjectStorageBucketIdentityByName cloudObjectStorageBucketIdentityModel = new CloudObjectStorageBucketIdentityCloudObjectStorageBucketIdentityByName.Builder()
+        .name(cosBucketName)
+        .build();
+      CreateImageExportJobOptions createImageExportJobOptions = new CreateImageExportJobOptions.Builder()
+        .imageId(imageId)
+        .storageBucket(cloudObjectStorageBucketIdentityModel)
+        .name("my-image-export")
+        .build();
+
+      Response<ImageExportJob> response = vpcService.createImageExportJob(createImageExportJobOptions).execute();
+      ImageExportJob imageExportJob = response.getResult();
+
+      // end-create_image_export_job
+      imageExportJobId = imageExportJob.getId();
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("getImageExportJob() result:");
+      // begin-get_image_export_job
+      GetImageExportJobOptions getImageExportJobOptions = new GetImageExportJobOptions.Builder()
+        .imageId(imageId)
+        .id(imageExportJobId)
+        .build();
+
+      Response<ImageExportJob> response = vpcService.getImageExportJob(getImageExportJobOptions).execute();
+      ImageExportJob imageExportJob = response.getResult();
+
+      // end-get_image_export_job
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("updateImageExportJob() result:");
+      // begin-update_image_export_job
+      ImageExportJobPatch imageExportJobPatchModel = new ImageExportJobPatch.Builder()
+        .name("my-image-export-update")
+        .build();
+      Map<String, Object> imageExportJobPatchModelAsPatch = imageExportJobPatchModel.asPatch();
+      UpdateImageExportJobOptions updateImageExportJobOptions = new UpdateImageExportJobOptions.Builder()
+        .imageId(imageId)
+        .id(imageExportJobId)
+        .imageExportJobPatch(imageExportJobPatchModelAsPatch)
+        .build();
+
+      Response<ImageExportJob> response = vpcService.updateImageExportJob(updateImageExportJobOptions).execute();
+      ImageExportJob imageExportJob = response.getResult();
+
+      // end-update_image_export_job
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
       System.out.println("listKeys() result:");
       // begin-list_keys
       ListKeysOptions listKeysOptions = new ListKeysOptions.Builder()
@@ -1754,7 +1843,7 @@ public class VPCExamples {
       ZoneIdentityByName zoneIdentityModel = new ZoneIdentityByName.Builder()
         .name(zoneName)
         .build();
-      InstanceTemplatePrototypeInstanceByImage instanceTemplatePrototypeModel = new InstanceTemplatePrototypeInstanceByImage.Builder()
+      InstanceTemplatePrototypeInstanceByImageInstanceTemplateContext instanceTemplatePrototypeModel = new InstanceTemplatePrototypeInstanceByImageInstanceTemplateContext.Builder()
         .keys(new java.util.ArrayList<KeyIdentity>(java.util.Arrays.asList(keyIdentityModel)))
         .name("my-instance-template")
         .profile(instanceProfileIdentityModel)
@@ -1916,9 +2005,11 @@ public class VPCExamples {
 
     try {
       System.out.println("createBackupPolicy() result:");
+      List<String> matchUserTags = Arrays.asList("tag1", "tag2");
       // begin-create_backup_policy
       CreateBackupPolicyOptions createBackupPolicyOptions = new CreateBackupPolicyOptions.Builder()
         .name("my-backup-policy")
+        .matchUserTags(matchUserTags)
         .build();
 
       Response<BackupPolicy> response = vpcService.createBackupPolicy(createBackupPolicyOptions).execute();
@@ -5889,7 +5980,7 @@ public class VPCExamples {
       LegacyCloudObjectStorageBucketIdentityCloudObjectStorageBucketIdentityByName legacyCloudObjectStorageBucketIdentityModel = new LegacyCloudObjectStorageBucketIdentityCloudObjectStorageBucketIdentityByName.Builder()
         .name(cosBucketName)
         .build();
-      FlowLogCollectorTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceIdentityNetworkInterfaceIdentityById flowLogCollectorTargetPrototypeModel = new FlowLogCollectorTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceIdentityNetworkInterfaceIdentityById.Builder()
+      FlowLogCollectorTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceIdentityById flowLogCollectorTargetPrototypeModel = new FlowLogCollectorTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceIdentityById.Builder()
         .id(instanceNetworkInterfaceId)
         .build();
       CreateFlowLogCollectorOptions createFlowLogCollectorOptions = new CreateFlowLogCollectorOptions.Builder()
@@ -6484,6 +6575,21 @@ public class VPCExamples {
       Response<Void> response = vpcService.deleteLoadBalancer(deleteLoadBalancerOptions).execute();
       // end-delete_load_balancer
       System.out.printf("deleteLoadBalancer() response status code: %d%n", response.getStatusCode());
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      // begin-delete_image_export_job
+      DeleteImageExportJobOptions deleteImageExportJobOptions = new DeleteImageExportJobOptions.Builder()
+        .imageId(imageId)
+        .id(imageExportJobId)
+        .build();
+
+      Response<Void> response = vpcService.deleteImageExportJob(deleteImageExportJobOptions).execute();
+      // end-delete_image_export_job
+      System.out.printf("deleteImageExportJob() response status code: %d%n", response.getStatusCode());
     } catch (ServiceResponseException e) {
         logger.error(String.format("Service returned status code %s: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);

@@ -89,6 +89,7 @@ public class Route extends GenericModel {
   @SerializedName("next_hop")
   protected RouteNextHop nextHop;
   protected String origin;
+  protected Long priority;
   protected ZoneReference zone;
 
   protected Route() { }
@@ -214,6 +215,21 @@ public class Route extends GenericModel {
    */
   public String getOrigin() {
     return origin;
+  }
+
+  /**
+   * Gets the priority.
+   *
+   * The priority of this route. Smaller values have higher priority.
+   *
+   * If a routing table contains multiple routes with the same `zone` and `destination`, the route with the highest
+   * priority (smallest value) is selected. If two routes have the same `destination` and `priority`, traffic is
+   * distributed between them.
+   *
+   * @return the priority
+   */
+  public Long getPriority() {
+    return priority;
   }
 
   /**

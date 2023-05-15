@@ -36,6 +36,8 @@ public class InstanceProfile extends GenericModel {
   protected String href;
   protected InstanceProfileMemory memory;
   protected String name;
+  @SerializedName("network_interface_count")
+  protected InstanceProfileNetworkInterfaceCount networkInterfaceCount;
   @SerializedName("os_architecture")
   protected InstanceProfileOSArchitecture osArchitecture;
   @SerializedName("port_speed")
@@ -46,6 +48,8 @@ public class InstanceProfile extends GenericModel {
   protected InstanceProfileVCPUArchitecture vcpuArchitecture;
   @SerializedName("vcpu_count")
   protected InstanceProfileVCPU vcpuCount;
+  @SerializedName("vcpu_manufacturer")
+  protected InstanceProfileVCPUManufacturer vcpuManufacturer;
 
   protected InstanceProfile() { }
 
@@ -148,6 +152,15 @@ public class InstanceProfile extends GenericModel {
   }
 
   /**
+   * Gets the networkInterfaceCount.
+   *
+   * @return the networkInterfaceCount
+   */
+  public InstanceProfileNetworkInterfaceCount getNetworkInterfaceCount() {
+    return networkInterfaceCount;
+  }
+
+  /**
    * Gets the osArchitecture.
    *
    * @return the osArchitecture
@@ -190,6 +203,15 @@ public class InstanceProfile extends GenericModel {
    */
   public InstanceProfileVCPU getVcpuCount() {
     return vcpuCount;
+  }
+
+  /**
+   * Gets the vcpuManufacturer.
+   *
+   * @return the vcpuManufacturer
+   */
+  public InstanceProfileVCPUManufacturer getVcpuManufacturer() {
+    return vcpuManufacturer;
   }
 }
 

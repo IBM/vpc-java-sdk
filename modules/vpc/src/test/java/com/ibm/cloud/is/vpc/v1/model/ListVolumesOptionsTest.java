@@ -35,11 +35,19 @@ public class ListVolumesOptionsTest {
       .start("testString")
       .limit(Long.valueOf("1"))
       .name("testString")
+      .attachmentState("attached")
+      .encryption("provider_managed")
+      .operatingSystemFamily("Ubuntu Server")
+      .operatingSystemArchitecture("amd64")
       .zoneName("testString")
       .build();
     assertEquals(listVolumesOptionsModel.start(), "testString");
     assertEquals(listVolumesOptionsModel.limit(), Long.valueOf("1"));
     assertEquals(listVolumesOptionsModel.name(), "testString");
+    assertEquals(listVolumesOptionsModel.attachmentState(), "attached");
+    assertEquals(listVolumesOptionsModel.encryption(), "provider_managed");
+    assertEquals(listVolumesOptionsModel.operatingSystemFamily(), "Ubuntu Server");
+    assertEquals(listVolumesOptionsModel.operatingSystemArchitecture(), "amd64");
     assertEquals(listVolumesOptionsModel.zoneName(), "testString");
   }
 }

@@ -79,6 +79,7 @@ public class LoadBalancer extends GenericModel {
   @SerializedName("created_at")
   protected Date createdAt;
   protected String crn;
+  protected LoadBalancerDNS dns;
   protected String hostname;
   protected String href;
   protected String id;
@@ -133,6 +134,20 @@ public class LoadBalancer extends GenericModel {
    */
   public String getCrn() {
     return crn;
+  }
+
+  /**
+   * Gets the dns.
+   *
+   * The DNS configuration for this load balancer.
+   *
+   * If absent, DNS `A` records for this load balancer's `hostname` property will be added to
+   * the public DNS zone `lb.appdomain.cloud`.
+   *
+   * @return the dns
+   */
+  public LoadBalancerDNS getDns() {
+    return dns;
   }
 
   /**
