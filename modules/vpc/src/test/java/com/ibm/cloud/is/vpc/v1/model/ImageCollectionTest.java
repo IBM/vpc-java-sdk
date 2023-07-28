@@ -24,9 +24,11 @@ import com.ibm.cloud.is.vpc.v1.model.ImageFile;
 import com.ibm.cloud.is.vpc.v1.model.ImageFileChecksums;
 import com.ibm.cloud.is.vpc.v1.model.ImageStatusReason;
 import com.ibm.cloud.is.vpc.v1.model.OperatingSystem;
+import com.ibm.cloud.is.vpc.v1.model.RegionReference;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.VolumeReference;
 import com.ibm.cloud.is.vpc.v1.model.VolumeReferenceDeleted;
+import com.ibm.cloud.is.vpc.v1.model.VolumeRemote;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import com.ibm.cloud.sdk.core.util.DateUtils;
@@ -50,5 +52,6 @@ public class ImageCollectionTest {
     assertNull(imageCollectionModel.getImages());
     assertNull(imageCollectionModel.getLimit());
     assertNull(imageCollectionModel.getNext());
+    assertNull(imageCollectionModel.getTotalCount());
   }
 }

@@ -28,6 +28,7 @@ public class VolumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolume
     private Long iops;
     private String name;
     private VolumeProfileIdentity profile;
+    private ResourceGroupIdentity resourceGroup;
     private List<String> userTags;
     private Long capacity;
     private EncryptionKeyIdentity encryptionKey;
@@ -41,6 +42,7 @@ public class VolumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolume
       this.iops = volumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeByCapacity.iops;
       this.name = volumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeByCapacity.name;
       this.profile = volumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeByCapacity.profile;
+      this.resourceGroup = volumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeByCapacity.resourceGroup;
       this.userTags = volumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeByCapacity.userTags;
       this.capacity = volumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeByCapacity.capacity;
       this.encryptionKey = volumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeByCapacity.encryptionKey;
@@ -122,6 +124,17 @@ public class VolumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolume
     }
 
     /**
+     * Set the resourceGroup.
+     *
+     * @param resourceGroup the resourceGroup
+     * @return the VolumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeByCapacity builder
+     */
+    public Builder resourceGroup(ResourceGroupIdentity resourceGroup) {
+      this.resourceGroup = resourceGroup;
+      return this;
+    }
+
+    /**
      * Set the userTags.
      * Existing userTags will be replaced.
      *
@@ -166,6 +179,7 @@ public class VolumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolume
     iops = builder.iops;
     name = builder.name;
     profile = builder.profile;
+    resourceGroup = builder.resourceGroup;
     userTags = builder.userTags;
     capacity = builder.capacity;
     encryptionKey = builder.encryptionKey;

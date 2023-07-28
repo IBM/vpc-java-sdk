@@ -45,7 +45,7 @@ public class VPNGatewayMember extends GenericModel {
   }
 
   @SerializedName("private_ip")
-  protected IP privateIp;
+  protected ReservedIPReference privateIp;
   @SerializedName("public_ip")
   protected IP publicIp;
   protected String role;
@@ -56,13 +56,13 @@ public class VPNGatewayMember extends GenericModel {
   /**
    * Gets the privateIp.
    *
-   * The private IP address assigned to the VPN gateway member.
+   * The reserved IP address assigned to the VPN gateway member.
    *
    * This property will be present only when the VPN gateway status is `available`.
    *
    * @return the privateIp
    */
-  public IP getPrivateIp() {
+  public ReservedIPReference getPrivateIp() {
     return privateIp;
   }
 

@@ -238,7 +238,7 @@ public class ListBareMetalServersOptions extends GenericModel {
   /**
    * Gets the resourceGroupId.
    *
-   * Filters the collection to resources in the resource group with the specified identifier.
+   * Filters the collection to resources with a `resource_group.id` property matching the specified identifier.
    *
    * @return the resourceGroupId
    */
@@ -249,7 +249,7 @@ public class ListBareMetalServersOptions extends GenericModel {
   /**
    * Gets the name.
    *
-   * Filters the collection to resources with the exact specified name.
+   * Filters the collection to resources with a `name` property matching the exact specified name.
    *
    * @return the name
    */
@@ -260,7 +260,7 @@ public class ListBareMetalServersOptions extends GenericModel {
   /**
    * Gets the vpcId.
    *
-   * Filters the collection to resources in the VPC with the specified identifier.
+   * Filters the collection to resources with a `vpc.id` property matching the specified identifier.
    *
    * @return the vpcId
    */
@@ -271,7 +271,7 @@ public class ListBareMetalServersOptions extends GenericModel {
   /**
    * Gets the vpcCrn.
    *
-   * Filters the collection to resources in the VPC with the specified CRN.
+   * Filters the collection to resources with a `vpc.crn` property matching the specified CRN.
    *
    * @return the vpcCrn
    */
@@ -282,7 +282,7 @@ public class ListBareMetalServersOptions extends GenericModel {
   /**
    * Gets the vpcName.
    *
-   * Filters the collection to resources in the VPC with the exact specified name.
+   * Filters the collection to resources with a `vpc.name` property matching the exact specified name.
    *
    * @return the vpcName
    */
@@ -293,7 +293,8 @@ public class ListBareMetalServersOptions extends GenericModel {
   /**
    * Gets the networkInterfacesSubnetId.
    *
-   * Filters the collection to bare metal servers on the subnet with the specified identifier.
+   * Filters the collection to bare metal servers with an item in the `network_interfaces` property with a `subnet.id`
+   * property matching the specified identifier.
    *
    * @return the networkInterfacesSubnetId
    */
@@ -304,7 +305,8 @@ public class ListBareMetalServersOptions extends GenericModel {
   /**
    * Gets the networkInterfacesSubnetCrn.
    *
-   * Filters the collection to bare metal servers on the subnet with the specified CRN.
+   * Filters the collection to bare metal servers with an item in the `network_interfaces` property with a `subnet.crn`
+   * property matching the specified CRN.
    *
    * @return the networkInterfacesSubnetCrn
    */
@@ -315,7 +317,8 @@ public class ListBareMetalServersOptions extends GenericModel {
   /**
    * Gets the networkInterfacesSubnetName.
    *
-   * Filters the collection to bare metal servers on the subnet with the specified name.
+   * Filters the collection to bare metal servers with an item in the `network_interfaces` property with a `subnet.name`
+   * property matching the exact specified name.
    *
    * @return the networkInterfacesSubnetName
    */

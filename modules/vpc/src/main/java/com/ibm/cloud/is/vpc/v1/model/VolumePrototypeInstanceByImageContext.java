@@ -29,6 +29,7 @@ public class VolumePrototypeInstanceByImageContext extends VolumeAttachmentProto
     private Long iops;
     private String name;
     private VolumeProfileIdentity profile;
+    private ResourceGroupIdentity resourceGroup;
     private List<String> userTags;
 
     /**
@@ -42,6 +43,7 @@ public class VolumePrototypeInstanceByImageContext extends VolumeAttachmentProto
       this.iops = volumePrototypeInstanceByImageContext.iops;
       this.name = volumePrototypeInstanceByImageContext.name;
       this.profile = volumePrototypeInstanceByImageContext.profile;
+      this.resourceGroup = volumePrototypeInstanceByImageContext.resourceGroup;
       this.userTags = volumePrototypeInstanceByImageContext.userTags;
     }
 
@@ -141,6 +143,17 @@ public class VolumePrototypeInstanceByImageContext extends VolumeAttachmentProto
     }
 
     /**
+     * Set the resourceGroup.
+     *
+     * @param resourceGroup the resourceGroup
+     * @return the VolumePrototypeInstanceByImageContext builder
+     */
+    public Builder resourceGroup(ResourceGroupIdentity resourceGroup) {
+      this.resourceGroup = resourceGroup;
+      return this;
+    }
+
+    /**
      * Set the userTags.
      * Existing userTags will be replaced.
      *
@@ -163,6 +176,7 @@ public class VolumePrototypeInstanceByImageContext extends VolumeAttachmentProto
     iops = builder.iops;
     name = builder.name;
     profile = builder.profile;
+    resourceGroup = builder.resourceGroup;
     userTags = builder.userTags;
   }
 
@@ -236,6 +250,18 @@ public class VolumePrototypeInstanceByImageContext extends VolumeAttachmentProto
    */
   public VolumeProfileIdentity profile() {
     return profile;
+  }
+
+  /**
+   * Gets the resourceGroup.
+   *
+   * The resource group to use for this volume. If unspecified, the instance's resource group
+   * will be used.
+   *
+   * @return the resourceGroup
+   */
+  public ResourceGroupIdentity resourceGroup() {
+    return resourceGroup;
   }
 
   /**

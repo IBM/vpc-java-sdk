@@ -92,7 +92,7 @@ public class DeleteSnapshotsOptions extends GenericModel {
   /**
    * Gets the sourceVolumeId.
    *
-   * Filters the collection to resources with the source volume with the specified identifier.
+   * Filters the collection to resources with a `source_volume.id` property matching the specified identifier.
    *
    * @return the sourceVolumeId
    */

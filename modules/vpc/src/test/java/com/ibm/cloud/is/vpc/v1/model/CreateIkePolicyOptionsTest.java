@@ -38,7 +38,7 @@ public class CreateIkePolicyOptionsTest {
     assertEquals(resourceGroupIdentityModel.id(), "fee82deba12e4c0fb69c3b09d1f12345");
 
     CreateIkePolicyOptions createIkePolicyOptionsModel = new CreateIkePolicyOptions.Builder()
-      .authenticationAlgorithm("md5")
+      .authenticationAlgorithm("sha256")
       .dhGroup(Long.valueOf("14"))
       .encryptionAlgorithm("aes128")
       .ikeVersion(Long.valueOf("1"))
@@ -46,7 +46,7 @@ public class CreateIkePolicyOptionsTest {
       .name("my-ike-policy")
       .resourceGroup(resourceGroupIdentityModel)
       .build();
-    assertEquals(createIkePolicyOptionsModel.authenticationAlgorithm(), "md5");
+    assertEquals(createIkePolicyOptionsModel.authenticationAlgorithm(), "sha256");
     assertEquals(createIkePolicyOptionsModel.dhGroup(), Long.valueOf("14"));
     assertEquals(createIkePolicyOptionsModel.encryptionAlgorithm(), "aes128");
     assertEquals(createIkePolicyOptionsModel.ikeVersion(), Long.valueOf("1"));

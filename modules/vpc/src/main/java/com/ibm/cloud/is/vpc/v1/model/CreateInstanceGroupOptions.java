@@ -246,7 +246,12 @@ public class CreateInstanceGroupOptions extends GenericModel {
   /**
    * Gets the applicationPort.
    *
-   * The port to use for new load balancer pool members created by this instance group.
+   * The port to use for new load balancer pool members created by this instance group. The load balancer pool member
+   * will receive load balancer traffic on this port, unless the load balancer listener is using a port range. (Traffic
+   * received on a listener using a port range will be sent to members using the same port the listener received it on.)
+   *
+   * This port will also be used for health checks unless the port property of
+   * `health_monitor` property is specified.
    *
    * This property must be specified if and only if `load_balancer_pool` has been specified.
    *
@@ -260,9 +265,8 @@ public class CreateInstanceGroupOptions extends GenericModel {
    * Gets the loadBalancer.
    *
    * The load balancer associated with the specified load balancer pool.
-   * Required if `load_balancer_pool` is specified.
-   *
-   * At present, only load balancers in the `application` family are supported.
+   * Required if `load_balancer_pool` is specified. The load balancer must have
+   * `instance_groups_supported` set to `true`.
    *
    * @return the loadBalancer
    */
@@ -273,8 +277,9 @@ public class CreateInstanceGroupOptions extends GenericModel {
   /**
    * Gets the loadBalancerPool.
    *
-   * If specified, the load balancer pool this instance group will manage. A pool member
-   * will be created for each instance created by this group.
+   * If specified, this instance group will manage the load balancer pool. A pool member
+   * will be created for each instance created by this group.  The specified load
+   * balancer pool must not be used by another instance group in the VPC.
    *
    * If specified, `load_balancer` and `application_port` must also be specified.
    *

@@ -12,6 +12,8 @@
  */
 package com.ibm.cloud.is.vpc.v1.model;
 
+import java.util.Date;
+
 /**
  * ImagePrototypeImageBySourceVolume.
  */
@@ -22,7 +24,9 @@ public class ImagePrototypeImageBySourceVolume extends ImagePrototype {
    * Builder.
    */
   public static class Builder {
+    private Date deprecationAt;
     private String name;
+    private Date obsolescenceAt;
     private ResourceGroupIdentity resourceGroup;
     private EncryptionKeyIdentity encryptionKey;
     private VolumeIdentity sourceVolume;
@@ -33,7 +37,9 @@ public class ImagePrototypeImageBySourceVolume extends ImagePrototype {
      * @param imagePrototypeImageBySourceVolume the instance to initialize the Builder with
      */
     public Builder(ImagePrototype imagePrototypeImageBySourceVolume) {
+      this.deprecationAt = imagePrototypeImageBySourceVolume.deprecationAt;
       this.name = imagePrototypeImageBySourceVolume.name;
+      this.obsolescenceAt = imagePrototypeImageBySourceVolume.obsolescenceAt;
       this.resourceGroup = imagePrototypeImageBySourceVolume.resourceGroup;
       this.encryptionKey = imagePrototypeImageBySourceVolume.encryptionKey;
       this.sourceVolume = imagePrototypeImageBySourceVolume.sourceVolume;
@@ -64,6 +70,17 @@ public class ImagePrototypeImageBySourceVolume extends ImagePrototype {
     }
 
     /**
+     * Set the deprecationAt.
+     *
+     * @param deprecationAt the deprecationAt
+     * @return the ImagePrototypeImageBySourceVolume builder
+     */
+    public Builder deprecationAt(Date deprecationAt) {
+      this.deprecationAt = deprecationAt;
+      return this;
+    }
+
+    /**
      * Set the name.
      *
      * @param name the name
@@ -71,6 +88,17 @@ public class ImagePrototypeImageBySourceVolume extends ImagePrototype {
      */
     public Builder name(String name) {
       this.name = name;
+      return this;
+    }
+
+    /**
+     * Set the obsolescenceAt.
+     *
+     * @param obsolescenceAt the obsolescenceAt
+     * @return the ImagePrototypeImageBySourceVolume builder
+     */
+    public Builder obsolescenceAt(Date obsolescenceAt) {
+      this.obsolescenceAt = obsolescenceAt;
       return this;
     }
 
@@ -113,7 +141,9 @@ public class ImagePrototypeImageBySourceVolume extends ImagePrototype {
   protected ImagePrototypeImageBySourceVolume(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.sourceVolume,
       "sourceVolume cannot be null");
+    deprecationAt = builder.deprecationAt;
     name = builder.name;
+    obsolescenceAt = builder.obsolescenceAt;
     resourceGroup = builder.resourceGroup;
     encryptionKey = builder.encryptionKey;
     sourceVolume = builder.sourceVolume;

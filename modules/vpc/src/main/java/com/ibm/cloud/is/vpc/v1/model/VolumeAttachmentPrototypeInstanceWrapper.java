@@ -12,6 +12,8 @@ public class VolumeAttachmentPrototypeInstanceWrapper extends GenericModel {
   protected Long iops;
   protected String name;
   protected VolumeProfileIdentity profile;
+  @SerializedName("resource_group")
+  protected ResourceGroupIdentity resourceGroup;
   @SerializedName("source_snapshot")
   protected SnapshotIdentity sourceSnapshot;
   @SerializedName("user_tags")

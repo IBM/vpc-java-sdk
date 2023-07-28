@@ -16,7 +16,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * InstancePrototypeInstanceBySourceTemplate.
+ * Create an instance by using an instance template.
+ *
+ * The `primary_network_interface` and `network_interfaces` properties may only be specified if
+ * `primary_network_interface` is specified in the source template.
  */
 public class InstancePrototypeInstanceBySourceTemplate extends InstancePrototype {
 

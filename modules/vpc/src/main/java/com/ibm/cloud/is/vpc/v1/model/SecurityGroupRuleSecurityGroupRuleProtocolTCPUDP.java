@@ -15,8 +15,8 @@ package com.ibm.cloud.is.vpc.v1.model;
 /**
  * A rule specifying the TCP or UDP traffic to allow.
  *
- * Either both `port_min` and `port_max` will be present, or neither. When neither is present, all ports are allowed for
- * the protocol. When both have the same value, that single port is allowed.
+ * Either both `port_min` and `port_max` will be present, or neither. When neither is present, all destination ports are
+ * allowed for the protocol. When both have the same value, that single destination port is allowed.
  */
 public class SecurityGroupRuleSecurityGroupRuleProtocolTCPUDP extends SecurityGroupRule {
 

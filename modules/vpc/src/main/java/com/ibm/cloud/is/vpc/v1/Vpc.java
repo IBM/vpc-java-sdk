@@ -12,7 +12,7 @@
  */
 
 /*
- * IBM OpenAPI SDK Code Generator Version: 3.69.0-370d6400-20230329-174648
+ * IBM OpenAPI SDK Code Generator Version: 3.70.0-7df966bf-20230419-195904
  */
 
 package com.ibm.cloud.is.vpc.v1;
@@ -161,6 +161,7 @@ import com.ibm.cloud.is.vpc.v1.model.DeleteVpnGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteVpnServerClientOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteVpnServerOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteVpnServerRouteOptions;
+import com.ibm.cloud.is.vpc.v1.model.DeprecateImageOptions;
 import com.ibm.cloud.is.vpc.v1.model.DisconnectVpnClientOptions;
 import com.ibm.cloud.is.vpc.v1.model.EndpointGateway;
 import com.ibm.cloud.is.vpc.v1.model.EndpointGatewayCollection;
@@ -371,6 +372,7 @@ import com.ibm.cloud.is.vpc.v1.model.NetworkACLRule;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLRuleCollection;
 import com.ibm.cloud.is.vpc.v1.model.NetworkInterface;
 import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceUnpaginatedCollection;
+import com.ibm.cloud.is.vpc.v1.model.ObsoleteImageOptions;
 import com.ibm.cloud.is.vpc.v1.model.OperatingSystem;
 import com.ibm.cloud.is.vpc.v1.model.OperatingSystemCollection;
 import com.ibm.cloud.is.vpc.v1.model.PlacementGroup;
@@ -394,6 +396,7 @@ import com.ibm.cloud.is.vpc.v1.model.ReservedIPCollectionNetworkInterfaceContext
 import com.ibm.cloud.is.vpc.v1.model.RestartBareMetalServerOptions;
 import com.ibm.cloud.is.vpc.v1.model.Route;
 import com.ibm.cloud.is.vpc.v1.model.RouteCollection;
+import com.ibm.cloud.is.vpc.v1.model.RouteCollectionVPCContext;
 import com.ibm.cloud.is.vpc.v1.model.RoutingTable;
 import com.ibm.cloud.is.vpc.v1.model.RoutingTableCollection;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroup;
@@ -491,6 +494,7 @@ import com.ibm.cloud.sdk.core.http.ServiceCall;
 import com.ibm.cloud.sdk.core.security.Authenticator;
 import com.ibm.cloud.sdk.core.security.ConfigBasedAuthenticatorFactory;
 import com.ibm.cloud.sdk.core.service.BaseService;
+import com.ibm.cloud.sdk.core.util.RequestUtils;
 import com.ibm.cloud.sdk.core.util.ResponseConverterUtils;
 import java.util.HashMap;
 import java.util.Map;
@@ -501,7 +505,7 @@ import java.util.logging.Logger;
  * The IBM Cloud Virtual Private Cloud (VPC) API can be used to programmatically provision and manage virtual server
  * instances, along with subnets, volumes, load balancers, and more.
  *
- * API Version: 2022-09-13
+ * API Version: `2023-07-11`
  */
 public class Vpc extends BaseService {
   private static final Logger LOGGER = Logger.getLogger(Vpc.class.getName());
@@ -518,7 +522,7 @@ public class Vpc extends BaseService {
 
   private Long generation = Long.valueOf("2");
 
-  private String version = "2022-09-13";
+  private String version = "2023-07-11";
 
  /**
    * Class method which constructs an instance of the `Vpc` client.
@@ -582,7 +586,7 @@ public class Vpc extends BaseService {
    * Gets the version.
    *
    * The API version, in format `YYYY-MM-DD`. For the API behavior documented here, specify any date between
-   * `2022-09-13` and today's date (UTC).
+   * `2022-09-13` and `2023-07-11`.
    *
    * @return the version
    */
@@ -764,7 +768,8 @@ public class Vpc extends BaseService {
   /**
    * Update a VPC.
    *
-   * This request updates a VPC's name.
+   * This request updates a VPC with the information provided in a VPC patch object. The patch object is structured in
+   * the same way as a retrieved VPC and needs to contain only the information to be updated.
    *
    * @param updateVpcOptions the {@link UpdateVpcOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link VPC}
@@ -1029,11 +1034,11 @@ public class Vpc extends BaseService {
    * destination will be used. If multiple equally-specific routes exist, traffic will be distributed across them.
    *
    * @param listVpcRoutesOptions the {@link ListVpcRoutesOptions} containing the options for the call
-   * @return a {@link ServiceCall} with a result of type {@link RouteCollection}
+   * @return a {@link ServiceCall} with a result of type {@link RouteCollectionVPCContext}
    * @deprecated this method is deprecated and may be removed in a future release
    */
    @Deprecated
-  public ServiceCall<RouteCollection> listVpcRoutes(ListVpcRoutesOptions listVpcRoutesOptions) {
+  public ServiceCall<RouteCollectionVPCContext> listVpcRoutes(ListVpcRoutesOptions listVpcRoutesOptions) {
     LOGGER.warning("A deprecated operation has been invoked: listVpcRoutes");
     com.ibm.cloud.sdk.core.util.Validator.notNull(listVpcRoutesOptions,
       "listVpcRoutesOptions cannot be null");
@@ -1056,8 +1061,8 @@ public class Vpc extends BaseService {
     if (listVpcRoutesOptions.limit() != null) {
       builder.query("limit", String.valueOf(listVpcRoutesOptions.limit()));
     }
-    ResponseConverter<RouteCollection> responseConverter =
-      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<RouteCollection>() { }.getType());
+    ResponseConverter<RouteCollectionVPCContext> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<RouteCollectionVPCContext>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
   }
 
@@ -2058,9 +2063,6 @@ public class Vpc extends BaseService {
    * This request lists all images available in the region. An image provides source data for a volume. Images are
    * either system-provided, or created from another source, such as importing from Cloud Object Storage.
    *
-   * The images will be sorted by their `created_at` property values, with the newest first. Images with identical
-   * `created_at` values will be secondarily sorted by ascending `id` property values.
-   *
    * @param listImagesOptions the {@link ListImagesOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link ImageCollection}
    */
@@ -2088,6 +2090,9 @@ public class Vpc extends BaseService {
     if (listImagesOptions.name() != null) {
       builder.query("name", String.valueOf(listImagesOptions.name()));
     }
+    if (listImagesOptions.status() != null) {
+      builder.query("status", RequestUtils.join(listImagesOptions.status(), ","));
+    }
     if (listImagesOptions.visibility() != null) {
       builder.query("visibility", String.valueOf(listImagesOptions.visibility()));
     }
@@ -2101,9 +2106,6 @@ public class Vpc extends BaseService {
    *
    * This request lists all images available in the region. An image provides source data for a volume. Images are
    * either system-provided, or created from another source, such as importing from Cloud Object Storage.
-   *
-   * The images will be sorted by their `created_at` property values, with the newest first. Images with identical
-   * `created_at` values will be secondarily sorted by ascending `id` property values.
    *
    * @return a {@link ServiceCall} with a result of type {@link ImageCollection}
    */
@@ -2219,6 +2221,74 @@ public class Vpc extends BaseService {
     builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateImageOptions.imagePatch()), "application/merge-patch+json");
     ResponseConverter<Image> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<Image>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Deprecate an image.
+   *
+   * This request deprecates an image, resulting in its `status` becoming `deprecated` and
+   * `deprecation_at` being set to the current date and time.
+   *
+   * The image must:
+   * - have a `status` of `available`
+   * - have `catalog_offering.managed` set to `false`
+   * - not have `deprecation_at` set
+   *
+   * The image must not have `deprecation_at` set, must have `catalog_offering.managed` set to
+   * `false`, and must have a `status` of `available`.
+   *
+   * A system-provided image is not allowed to be deprecated.
+   *
+   * @param deprecateImageOptions the {@link DeprecateImageOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a void result
+   */
+  public ServiceCall<Void> deprecateImage(DeprecateImageOptions deprecateImageOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(deprecateImageOptions,
+      "deprecateImageOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", deprecateImageOptions.id());
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/images/{id}/deprecate", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "deprecateImage");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Obsolete an image.
+   *
+   * This request obsoletes an image, resulting in its `status` becoming `obsolete` and
+   * `obsolescence_at` being set to the current date and time.
+   *
+   * The image must:
+   * - have a `status` of `available` or `deprecated`
+   * - have `catalog_offering.managed` set to `false`
+   * - not have `deprecation_at` set in the future
+   * - not have `obsolescence_at` set
+   *
+   * A system-provided image is not allowed to be obsoleted.
+   *
+   * @param obsoleteImageOptions the {@link ObsoleteImageOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a void result
+   */
+  public ServiceCall<Void> obsoleteImage(ObsoleteImageOptions obsoleteImageOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(obsoleteImageOptions,
+      "obsoleteImageOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", obsoleteImageOptions.id());
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/images/{id}/obsolete", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "obsoleteImage");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
     return createServiceCall(builder.build(), responseConverter);
   }
 
@@ -2992,8 +3062,8 @@ public class Vpc extends BaseService {
   /**
    * Retrieve initialization configuration for an instance.
    *
-   * This request retrieves configuration variables used to initialize the instance, such as SSH keys and the Windows
-   * administrator password.
+   * This request retrieves configuration used to initialize the instance, such as SSH keys and the Windows
+   * administrator password. These can subsequently be changed on the instance and therefore may not be current.
    *
    * @param getInstanceInitializationOptions the {@link GetInstanceInitializationOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link InstanceInitialization}
@@ -5131,6 +5201,9 @@ public class Vpc extends BaseService {
     if (createBackupPolicyPlanOptions.name() != null) {
       contentJson.addProperty("name", createBackupPolicyPlanOptions.name());
     }
+    if (createBackupPolicyPlanOptions.remoteRegionPolicies() != null) {
+      contentJson.add("remote_region_policies", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createBackupPolicyPlanOptions.remoteRegionPolicies()));
+    }
     builder.bodyJson(contentJson);
     ResponseConverter<BackupPolicyPlan> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<BackupPolicyPlan>() { }.getType());
@@ -6183,9 +6256,9 @@ public class Vpc extends BaseService {
   /**
    * Retrieve initialization configuration for a bare metal server.
    *
-   * This request retrieves configuration variables used to initialize the bare metal server, such as the image used,
-   * SSH keys, and any configured usernames and passwords.  These attributes can subsequently be changed manually by the
-   * user and so are not guaranteed to be current.
+   * This request retrieves configuration used to initialize the bare metal server, such as the image used, SSH keys,
+   * and any configured usernames and passwords. These can subsequently be changed on the server and therefore may not
+   * be current.
    *
    * @param getBareMetalServerInitializationOptions the {@link GetBareMetalServerInitializationOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link BareMetalServerInitialization}
@@ -6603,6 +6676,30 @@ public class Vpc extends BaseService {
     }
     if (listSnapshotsOptions.backupPolicyPlanId() != null) {
       builder.query("backup_policy_plan.id", String.valueOf(listSnapshotsOptions.backupPolicyPlanId()));
+    }
+    if (listSnapshotsOptions.copiesId() != null) {
+      builder.query("copies[].id", String.valueOf(listSnapshotsOptions.copiesId()));
+    }
+    if (listSnapshotsOptions.copiesName() != null) {
+      builder.query("copies[].name", String.valueOf(listSnapshotsOptions.copiesName()));
+    }
+    if (listSnapshotsOptions.copiesCrn() != null) {
+      builder.query("copies[].crn", String.valueOf(listSnapshotsOptions.copiesCrn()));
+    }
+    if (listSnapshotsOptions.copiesRemoteRegionName() != null) {
+      builder.query("copies[].remote.region.name", String.valueOf(listSnapshotsOptions.copiesRemoteRegionName()));
+    }
+    if (listSnapshotsOptions.sourceSnapshotId() != null) {
+      builder.query("source_snapshot.id", String.valueOf(listSnapshotsOptions.sourceSnapshotId()));
+    }
+    if (listSnapshotsOptions.sourceSnapshotRemoteRegionName() != null) {
+      builder.query("source_snapshot.remote.region.name", String.valueOf(listSnapshotsOptions.sourceSnapshotRemoteRegionName()));
+    }
+    if (listSnapshotsOptions.sourceVolumeRemoteRegionName() != null) {
+      builder.query("source_volume.remote.region.name", String.valueOf(listSnapshotsOptions.sourceVolumeRemoteRegionName()));
+    }
+    if (listSnapshotsOptions.sourceImageRemoteRegionName() != null) {
+      builder.query("source_image.remote.region.name", String.valueOf(listSnapshotsOptions.sourceImageRemoteRegionName()));
     }
     if (listSnapshotsOptions.clonesZoneName() != null) {
       builder.query("clones[].zone.name", String.valueOf(listSnapshotsOptions.clonesZoneName()));

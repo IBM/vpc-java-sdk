@@ -37,27 +37,27 @@ public class ListInstancesOptionsTest {
       .resourceGroupId("testString")
       .name("testString")
       .vpcId("testString")
-      .vpcCrn("testString")
-      .vpcName("testString")
+      .vpcCrn("crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b")
+      .vpcName("my-vpc")
       .dedicatedHostId("testString")
-      .dedicatedHostCrn("testString")
-      .dedicatedHostName("testString")
+      .dedicatedHostCrn("crn:v1:bluemix:public:is:us-south-1:a/123456::dedicated-host:1e09281b-f177-46fb-baf1-bc152b2e391a")
+      .dedicatedHostName("my-dedicated-host")
       .placementGroupId("testString")
-      .placementGroupCrn("testString")
-      .placementGroupName("testString")
+      .placementGroupCrn("crn:v1:bluemix:public:is:us-south:a/123456::placement-group:r018-418fe842-a3e9-47b9-a938-1aa5bd632871")
+      .placementGroupName("my-placement-group")
       .build();
     assertEquals(listInstancesOptionsModel.start(), "testString");
     assertEquals(listInstancesOptionsModel.limit(), Long.valueOf("1"));
     assertEquals(listInstancesOptionsModel.resourceGroupId(), "testString");
     assertEquals(listInstancesOptionsModel.name(), "testString");
     assertEquals(listInstancesOptionsModel.vpcId(), "testString");
-    assertEquals(listInstancesOptionsModel.vpcCrn(), "testString");
-    assertEquals(listInstancesOptionsModel.vpcName(), "testString");
+    assertEquals(listInstancesOptionsModel.vpcCrn(), "crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b");
+    assertEquals(listInstancesOptionsModel.vpcName(), "my-vpc");
     assertEquals(listInstancesOptionsModel.dedicatedHostId(), "testString");
-    assertEquals(listInstancesOptionsModel.dedicatedHostCrn(), "testString");
-    assertEquals(listInstancesOptionsModel.dedicatedHostName(), "testString");
+    assertEquals(listInstancesOptionsModel.dedicatedHostCrn(), "crn:v1:bluemix:public:is:us-south-1:a/123456::dedicated-host:1e09281b-f177-46fb-baf1-bc152b2e391a");
+    assertEquals(listInstancesOptionsModel.dedicatedHostName(), "my-dedicated-host");
     assertEquals(listInstancesOptionsModel.placementGroupId(), "testString");
-    assertEquals(listInstancesOptionsModel.placementGroupCrn(), "testString");
-    assertEquals(listInstancesOptionsModel.placementGroupName(), "testString");
+    assertEquals(listInstancesOptionsModel.placementGroupCrn(), "crn:v1:bluemix:public:is:us-south:a/123456::placement-group:r018-418fe842-a3e9-47b9-a938-1aa5bd632871");
+    assertEquals(listInstancesOptionsModel.placementGroupName(), "my-placement-group");
   }
 }

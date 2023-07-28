@@ -148,7 +148,7 @@ public class ListVpcsOptions extends GenericModel {
   /**
    * Gets the resourceGroupId.
    *
-   * Filters the collection to resources in the resource group with the specified identifier.
+   * Filters the collection to resources with a `resource_group.id` property matching the specified identifier.
    *
    * @return the resourceGroupId
    */
@@ -159,7 +159,7 @@ public class ListVpcsOptions extends GenericModel {
   /**
    * Gets the classicAccess.
    *
-   * Filters the collection to VPCs with the specified `classic_access` value.
+   * Filters the collection to VPCs with a `classic_access` property matching the specified value.
    *
    * @return the classicAccess
    */

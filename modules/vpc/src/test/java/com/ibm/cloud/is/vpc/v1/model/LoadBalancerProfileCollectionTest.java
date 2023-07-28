@@ -17,6 +17,7 @@ import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfile;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileCollection;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileCollectionFirst;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileCollectionNext;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileInstanceGroupsSupportedFixed;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileLoggingSupported;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileRouteModeSupportedFixed;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileSecurityGroupsSupportedFixed;

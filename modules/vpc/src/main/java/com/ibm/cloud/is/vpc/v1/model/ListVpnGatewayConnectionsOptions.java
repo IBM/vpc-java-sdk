@@ -19,6 +19,16 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class ListVpnGatewayConnectionsOptions extends GenericModel {
 
+  /**
+   * Filters the collection to VPN gateway connections with a `status` property matching the specified value.
+   */
+  public interface Status {
+    /** down. */
+    String DOWN = "down";
+    /** up. */
+    String UP = "up";
+  }
+
   protected String vpnGatewayId;
   protected String status;
 
@@ -118,7 +128,7 @@ public class ListVpnGatewayConnectionsOptions extends GenericModel {
   /**
    * Gets the status.
    *
-   * Filters the collection to VPN gateway connections with the specified status.
+   * Filters the collection to VPN gateway connections with a `status` property matching the specified value.
    *
    * @return the status
    */

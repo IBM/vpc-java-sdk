@@ -13,15 +13,19 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.ibm.cloud.is.vpc.v1.model.AccountReference;
 import com.ibm.cloud.is.vpc.v1.model.EncryptionKeyReference;
 import com.ibm.cloud.is.vpc.v1.model.ImageReference;
 import com.ibm.cloud.is.vpc.v1.model.ImageReferenceDeleted;
+import com.ibm.cloud.is.vpc.v1.model.ImageRemote;
 import com.ibm.cloud.is.vpc.v1.model.InstanceReference;
 import com.ibm.cloud.is.vpc.v1.model.InstanceReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.OperatingSystem;
+import com.ibm.cloud.is.vpc.v1.model.RegionReference;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotReference;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotReferenceDeleted;
+import com.ibm.cloud.is.vpc.v1.model.SnapshotRemote;
 import com.ibm.cloud.is.vpc.v1.model.Volume;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentDevice;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentReferenceVolumeContext;
@@ -66,6 +70,7 @@ public class VolumeTest {
     assertNull(volumeModel.getOperatingSystem());
     assertNull(volumeModel.getProfile());
     assertNull(volumeModel.getResourceGroup());
+    assertNull(volumeModel.getResourceType());
     assertNull(volumeModel.getSourceImage());
     assertNull(volumeModel.getSourceSnapshot());
     assertNull(volumeModel.getStatus());

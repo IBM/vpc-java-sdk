@@ -170,7 +170,7 @@ public class ListVpcRoutingTablesOptions extends GenericModel {
   /**
    * Gets the isDefault.
    *
-   * Filters the collection to routing tables with the specified `is_default` value.
+   * Filters the collection to routing tables with an `is_default` property matching the specified value.
    *
    * @return the isDefault
    */

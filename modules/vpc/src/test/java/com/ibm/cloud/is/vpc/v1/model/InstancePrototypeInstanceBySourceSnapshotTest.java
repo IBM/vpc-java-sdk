@@ -138,6 +138,7 @@ public class InstancePrototypeInstanceBySourceSnapshotTest {
       .iops(Long.valueOf("10000"))
       .name("my-volume")
       .profile(volumeProfileIdentityModel)
+      .resourceGroup(resourceGroupIdentityModel)
       .sourceSnapshot(snapshotIdentityModel)
       .userTags(java.util.Arrays.asList("testString"))
       .build();
@@ -146,6 +147,7 @@ public class InstancePrototypeInstanceBySourceSnapshotTest {
     assertEquals(volumePrototypeInstanceBySourceSnapshotContextModel.iops(), Long.valueOf("10000"));
     assertEquals(volumePrototypeInstanceBySourceSnapshotContextModel.name(), "my-volume");
     assertEquals(volumePrototypeInstanceBySourceSnapshotContextModel.profile(), volumeProfileIdentityModel);
+    assertEquals(volumePrototypeInstanceBySourceSnapshotContextModel.resourceGroup(), resourceGroupIdentityModel);
     assertEquals(volumePrototypeInstanceBySourceSnapshotContextModel.sourceSnapshot(), snapshotIdentityModel);
     assertEquals(volumePrototypeInstanceBySourceSnapshotContextModel.userTags(), java.util.Arrays.asList("testString"));
 

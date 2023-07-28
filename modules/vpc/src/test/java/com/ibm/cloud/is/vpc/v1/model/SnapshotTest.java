@@ -13,17 +13,26 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.ibm.cloud.is.vpc.v1.model.AccountReference;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanReference;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanReferenceDeleted;
+import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanRemote;
 import com.ibm.cloud.is.vpc.v1.model.EncryptionKeyReference;
 import com.ibm.cloud.is.vpc.v1.model.ImageReference;
 import com.ibm.cloud.is.vpc.v1.model.ImageReferenceDeleted;
+import com.ibm.cloud.is.vpc.v1.model.ImageRemote;
 import com.ibm.cloud.is.vpc.v1.model.OperatingSystem;
+import com.ibm.cloud.is.vpc.v1.model.RegionReference;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.Snapshot;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotClone;
+import com.ibm.cloud.is.vpc.v1.model.SnapshotCopiesItem;
+import com.ibm.cloud.is.vpc.v1.model.SnapshotReferenceDeleted;
+import com.ibm.cloud.is.vpc.v1.model.SnapshotRemote;
+import com.ibm.cloud.is.vpc.v1.model.SnapshotSourceSnapshot;
 import com.ibm.cloud.is.vpc.v1.model.VolumeReference;
 import com.ibm.cloud.is.vpc.v1.model.VolumeReferenceDeleted;
+import com.ibm.cloud.is.vpc.v1.model.VolumeRemote;
 import com.ibm.cloud.is.vpc.v1.model.ZoneReference;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
@@ -48,6 +57,7 @@ public class SnapshotTest {
     assertNull(snapshotModel.isBootable());
     assertNull(snapshotModel.getCapturedAt());
     assertNull(snapshotModel.getClones());
+    assertNull(snapshotModel.getCopies());
     assertNull(snapshotModel.getCreatedAt());
     assertNull(snapshotModel.getCrn());
     assertNull(snapshotModel.isDeletable());
@@ -64,6 +74,7 @@ public class SnapshotTest {
     assertNull(snapshotModel.getServiceTags());
     assertNull(snapshotModel.getSize());
     assertNull(snapshotModel.getSourceImage());
+    assertNull(snapshotModel.getSourceSnapshot());
     assertNull(snapshotModel.getSourceVolume());
     assertNull(snapshotModel.getUserTags());
   }

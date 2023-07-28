@@ -283,7 +283,7 @@ public class ListInstancesOptions extends GenericModel {
   /**
    * Gets the resourceGroupId.
    *
-   * Filters the collection to resources in the resource group with the specified identifier.
+   * Filters the collection to resources with a `resource_group.id` property matching the specified identifier.
    *
    * @return the resourceGroupId
    */
@@ -294,7 +294,7 @@ public class ListInstancesOptions extends GenericModel {
   /**
    * Gets the name.
    *
-   * Filters the collection to resources with the exact specified name.
+   * Filters the collection to resources with a `name` property matching the exact specified name.
    *
    * @return the name
    */
@@ -305,7 +305,7 @@ public class ListInstancesOptions extends GenericModel {
   /**
    * Gets the vpcId.
    *
-   * Filters the collection to resources in the VPC with the specified identifier.
+   * Filters the collection to resources with a `vpc.id` property matching the specified identifier.
    *
    * @return the vpcId
    */
@@ -316,7 +316,7 @@ public class ListInstancesOptions extends GenericModel {
   /**
    * Gets the vpcCrn.
    *
-   * Filters the collection to resources in the VPC with the specified CRN.
+   * Filters the collection to resources with a `vpc.crn` property matching the specified CRN.
    *
    * @return the vpcCrn
    */
@@ -327,7 +327,7 @@ public class ListInstancesOptions extends GenericModel {
   /**
    * Gets the vpcName.
    *
-   * Filters the collection to resources in the VPC with the exact specified name.
+   * Filters the collection to resources with a `vpc.name` property matching the exact specified name.
    *
    * @return the vpcName
    */
@@ -338,7 +338,7 @@ public class ListInstancesOptions extends GenericModel {
   /**
    * Gets the dedicatedHostId.
    *
-   * Filters the collection to instances on the dedicated host with the specified identifier.
+   * Filters the collection to instances with a `dedicated_host.id` property matching the specified identifier.
    *
    * @return the dedicatedHostId
    */
@@ -349,7 +349,7 @@ public class ListInstancesOptions extends GenericModel {
   /**
    * Gets the dedicatedHostCrn.
    *
-   * Filters the collection to instances on the dedicated host with the specified CRN.
+   * Filters the collection to instances with a `dedicated_host.crn` property matching the specified CRN.
    *
    * @return the dedicatedHostCrn
    */
@@ -360,7 +360,7 @@ public class ListInstancesOptions extends GenericModel {
   /**
    * Gets the dedicatedHostName.
    *
-   * Filters the collection to instances on the dedicated host with the specified name.
+   * Filters the collection to instances with a `dedicated_host.name` property matching the exact specified name.
    *
    * @return the dedicatedHostName
    */
@@ -371,7 +371,8 @@ public class ListInstancesOptions extends GenericModel {
   /**
    * Gets the placementGroupId.
    *
-   * Filters the collection to instances in the placement group with the specified identifier.
+   * Filters the collection to instances with a `placement_target.id` property matching the specified placement group
+   * identifier.
    *
    * @return the placementGroupId
    */
@@ -382,7 +383,8 @@ public class ListInstancesOptions extends GenericModel {
   /**
    * Gets the placementGroupCrn.
    *
-   * Filters the collection to instances in the placement group with the specified CRN.
+   * Filters the collection to instances with a `placement_target.crn` property matching the specified placement group
+   * CRN.
    *
    * @return the placementGroupCrn
    */
@@ -393,7 +395,8 @@ public class ListInstancesOptions extends GenericModel {
   /**
    * Gets the placementGroupName.
    *
-   * Filters the collection to instances in the placement group with the specified name.
+   * Filters the collection to instances with a `placement_target.name` property matching the exact specified placement
+   * group name.
    *
    * @return the placementGroupName
    */

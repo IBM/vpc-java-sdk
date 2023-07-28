@@ -42,6 +42,14 @@ public class ListSnapshotsOptions extends GenericModel {
   protected String sourceImageCrn;
   protected String sort;
   protected String backupPolicyPlanId;
+  protected String copiesId;
+  protected String copiesName;
+  protected String copiesCrn;
+  protected String copiesRemoteRegionName;
+  protected String sourceSnapshotId;
+  protected String sourceSnapshotRemoteRegionName;
+  protected String sourceVolumeRemoteRegionName;
+  protected String sourceImageRemoteRegionName;
   protected String clonesZoneName;
 
   /**
@@ -59,6 +67,14 @@ public class ListSnapshotsOptions extends GenericModel {
     private String sourceImageCrn;
     private String sort;
     private String backupPolicyPlanId;
+    private String copiesId;
+    private String copiesName;
+    private String copiesCrn;
+    private String copiesRemoteRegionName;
+    private String sourceSnapshotId;
+    private String sourceSnapshotRemoteRegionName;
+    private String sourceVolumeRemoteRegionName;
+    private String sourceImageRemoteRegionName;
     private String clonesZoneName;
 
     /**
@@ -78,6 +94,14 @@ public class ListSnapshotsOptions extends GenericModel {
       this.sourceImageCrn = listSnapshotsOptions.sourceImageCrn;
       this.sort = listSnapshotsOptions.sort;
       this.backupPolicyPlanId = listSnapshotsOptions.backupPolicyPlanId;
+      this.copiesId = listSnapshotsOptions.copiesId;
+      this.copiesName = listSnapshotsOptions.copiesName;
+      this.copiesCrn = listSnapshotsOptions.copiesCrn;
+      this.copiesRemoteRegionName = listSnapshotsOptions.copiesRemoteRegionName;
+      this.sourceSnapshotId = listSnapshotsOptions.sourceSnapshotId;
+      this.sourceSnapshotRemoteRegionName = listSnapshotsOptions.sourceSnapshotRemoteRegionName;
+      this.sourceVolumeRemoteRegionName = listSnapshotsOptions.sourceVolumeRemoteRegionName;
+      this.sourceImageRemoteRegionName = listSnapshotsOptions.sourceImageRemoteRegionName;
       this.clonesZoneName = listSnapshotsOptions.clonesZoneName;
     }
 
@@ -218,6 +242,94 @@ public class ListSnapshotsOptions extends GenericModel {
     }
 
     /**
+     * Set the copiesId.
+     *
+     * @param copiesId the copiesId
+     * @return the ListSnapshotsOptions builder
+     */
+    public Builder copiesId(String copiesId) {
+      this.copiesId = copiesId;
+      return this;
+    }
+
+    /**
+     * Set the copiesName.
+     *
+     * @param copiesName the copiesName
+     * @return the ListSnapshotsOptions builder
+     */
+    public Builder copiesName(String copiesName) {
+      this.copiesName = copiesName;
+      return this;
+    }
+
+    /**
+     * Set the copiesCrn.
+     *
+     * @param copiesCrn the copiesCrn
+     * @return the ListSnapshotsOptions builder
+     */
+    public Builder copiesCrn(String copiesCrn) {
+      this.copiesCrn = copiesCrn;
+      return this;
+    }
+
+    /**
+     * Set the copiesRemoteRegionName.
+     *
+     * @param copiesRemoteRegionName the copiesRemoteRegionName
+     * @return the ListSnapshotsOptions builder
+     */
+    public Builder copiesRemoteRegionName(String copiesRemoteRegionName) {
+      this.copiesRemoteRegionName = copiesRemoteRegionName;
+      return this;
+    }
+
+    /**
+     * Set the sourceSnapshotId.
+     *
+     * @param sourceSnapshotId the sourceSnapshotId
+     * @return the ListSnapshotsOptions builder
+     */
+    public Builder sourceSnapshotId(String sourceSnapshotId) {
+      this.sourceSnapshotId = sourceSnapshotId;
+      return this;
+    }
+
+    /**
+     * Set the sourceSnapshotRemoteRegionName.
+     *
+     * @param sourceSnapshotRemoteRegionName the sourceSnapshotRemoteRegionName
+     * @return the ListSnapshotsOptions builder
+     */
+    public Builder sourceSnapshotRemoteRegionName(String sourceSnapshotRemoteRegionName) {
+      this.sourceSnapshotRemoteRegionName = sourceSnapshotRemoteRegionName;
+      return this;
+    }
+
+    /**
+     * Set the sourceVolumeRemoteRegionName.
+     *
+     * @param sourceVolumeRemoteRegionName the sourceVolumeRemoteRegionName
+     * @return the ListSnapshotsOptions builder
+     */
+    public Builder sourceVolumeRemoteRegionName(String sourceVolumeRemoteRegionName) {
+      this.sourceVolumeRemoteRegionName = sourceVolumeRemoteRegionName;
+      return this;
+    }
+
+    /**
+     * Set the sourceImageRemoteRegionName.
+     *
+     * @param sourceImageRemoteRegionName the sourceImageRemoteRegionName
+     * @return the ListSnapshotsOptions builder
+     */
+    public Builder sourceImageRemoteRegionName(String sourceImageRemoteRegionName) {
+      this.sourceImageRemoteRegionName = sourceImageRemoteRegionName;
+      return this;
+    }
+
+    /**
      * Set the clonesZoneName.
      *
      * @param clonesZoneName the clonesZoneName
@@ -243,6 +355,14 @@ public class ListSnapshotsOptions extends GenericModel {
     sourceImageCrn = builder.sourceImageCrn;
     sort = builder.sort;
     backupPolicyPlanId = builder.backupPolicyPlanId;
+    copiesId = builder.copiesId;
+    copiesName = builder.copiesName;
+    copiesCrn = builder.copiesCrn;
+    copiesRemoteRegionName = builder.copiesRemoteRegionName;
+    sourceSnapshotId = builder.sourceSnapshotId;
+    sourceSnapshotRemoteRegionName = builder.sourceSnapshotRemoteRegionName;
+    sourceVolumeRemoteRegionName = builder.sourceVolumeRemoteRegionName;
+    sourceImageRemoteRegionName = builder.sourceImageRemoteRegionName;
     clonesZoneName = builder.clonesZoneName;
   }
 
@@ -280,7 +400,7 @@ public class ListSnapshotsOptions extends GenericModel {
   /**
    * Gets the tag.
    *
-   * Filters the collection to resources with the exact tag value.
+   * Filters the collection to resources with an item in the `tags` property matching the exact specified tag.
    *
    * @return the tag
    */
@@ -291,7 +411,7 @@ public class ListSnapshotsOptions extends GenericModel {
   /**
    * Gets the resourceGroupId.
    *
-   * Filters the collection to resources in the resource group with the specified identifier.
+   * Filters the collection to resources with a `resource_group.id` property matching the specified identifier.
    *
    * @return the resourceGroupId
    */
@@ -302,7 +422,7 @@ public class ListSnapshotsOptions extends GenericModel {
   /**
    * Gets the name.
    *
-   * Filters the collection to resources with the exact specified name.
+   * Filters the collection to resources with a `name` property matching the exact specified name.
    *
    * @return the name
    */
@@ -313,7 +433,7 @@ public class ListSnapshotsOptions extends GenericModel {
   /**
    * Gets the sourceVolumeId.
    *
-   * Filters the collection to resources with the source volume with the specified identifier.
+   * Filters the collection to resources with a `source_volume.id` property matching the specified identifier.
    *
    * @return the sourceVolumeId
    */
@@ -324,7 +444,7 @@ public class ListSnapshotsOptions extends GenericModel {
   /**
    * Gets the sourceVolumeCrn.
    *
-   * Filters the collection to resources with the source volume with the specified CRN.
+   * Filters the collection to resources with a `source_volume.crn` property matching the specified CRN.
    *
    * @return the sourceVolumeCrn
    */
@@ -335,7 +455,7 @@ public class ListSnapshotsOptions extends GenericModel {
   /**
    * Gets the sourceImageId.
    *
-   * Filters the collection to resources with the source image with the specified identifier.
+   * Filters the collection to resources with a `source_image.id` property matching the specified identifier.
    *
    * This parameter also supports the values `null` and `not:null` which filter the collection to resources which have
    * no source image or any existent source image, respectively.
@@ -349,7 +469,7 @@ public class ListSnapshotsOptions extends GenericModel {
   /**
    * Gets the sourceImageCrn.
    *
-   * Filters the collection to resources with the source volume with the specified CRN.
+   * Filters the collection to resources with a `source_image.crn` property matching the specified CRN.
    *
    * This parameter also supports the values `null` and `not:null` which filter the collection to resources which have
    * no source image or any existent source image, respectively.
@@ -376,7 +496,8 @@ public class ListSnapshotsOptions extends GenericModel {
   /**
    * Gets the backupPolicyPlanId.
    *
-   * Filters the collection to backup policy jobs with the backup plan with the specified identifier.
+   * Filters the collection to backup policy jobs with a `backup_policy_plan.id` property matching the specified
+   * identifier.
    *
    * @return the backupPolicyPlanId
    */
@@ -385,9 +506,105 @@ public class ListSnapshotsOptions extends GenericModel {
   }
 
   /**
+   * Gets the copiesId.
+   *
+   * Filters the collection to snapshots with an item in the `copies` property with an `id` property matching the
+   * specified identifier.
+   *
+   * @return the copiesId
+   */
+  public String copiesId() {
+    return copiesId;
+  }
+
+  /**
+   * Gets the copiesName.
+   *
+   * Filters the collection to snapshots with an item in the `copies` property with a `name` property matching the exact
+   * specified name.
+   *
+   * @return the copiesName
+   */
+  public String copiesName() {
+    return copiesName;
+  }
+
+  /**
+   * Gets the copiesCrn.
+   *
+   * Filters the collection to snapshots with an item in the `copies` property with an `id` property matching the
+   * specified CRN.
+   *
+   * @return the copiesCrn
+   */
+  public String copiesCrn() {
+    return copiesCrn;
+  }
+
+  /**
+   * Gets the copiesRemoteRegionName.
+   *
+   * Filters the collection to snapshots with an item in the `copies` property with a
+   * `remote.region.name` property matching the exact specified name.
+   *
+   * @return the copiesRemoteRegionName
+   */
+  public String copiesRemoteRegionName() {
+    return copiesRemoteRegionName;
+  }
+
+  /**
+   * Gets the sourceSnapshotId.
+   *
+   * Filters the collection to resources with a `source_snapshot.id` property matching the specified identifier.
+   *
+   * @return the sourceSnapshotId
+   */
+  public String sourceSnapshotId() {
+    return sourceSnapshotId;
+  }
+
+  /**
+   * Gets the sourceSnapshotRemoteRegionName.
+   *
+   * Filters the collection to resources with a `source_snapshot.remote.region.name` property matching the exact
+   * specified name.
+   *
+   * @return the sourceSnapshotRemoteRegionName
+   */
+  public String sourceSnapshotRemoteRegionName() {
+    return sourceSnapshotRemoteRegionName;
+  }
+
+  /**
+   * Gets the sourceVolumeRemoteRegionName.
+   *
+   * Filters the collection to resources with a `source_volume.remote.region.name` property matching the exact specified
+   * name.
+   *
+   * @return the sourceVolumeRemoteRegionName
+   */
+  public String sourceVolumeRemoteRegionName() {
+    return sourceVolumeRemoteRegionName;
+  }
+
+  /**
+   * Gets the sourceImageRemoteRegionName.
+   *
+   * Filters the collection to resources with a `source_image.remote.region.name` property matching the exact specified
+   * name.
+   *
+   * @return the sourceImageRemoteRegionName
+   */
+  public String sourceImageRemoteRegionName() {
+    return sourceImageRemoteRegionName;
+  }
+
+  /**
    * Gets the clonesZoneName.
    *
-   * Filters the collection to resources with a clone in the specified zone.
+   * Filters the collection to snapshots with an item in the `clones` property with a `zone.name` property matching the
+   * exact specified name.
    *
    * @return the clonesZoneName
    */

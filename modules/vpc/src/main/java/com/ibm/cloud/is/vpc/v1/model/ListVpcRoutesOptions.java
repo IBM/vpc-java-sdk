@@ -148,7 +148,7 @@ public class ListVpcRoutesOptions extends GenericModel {
   /**
    * Gets the zoneName.
    *
-   * Filters the collection to resources in the zone with the exact specified name.
+   * Filters the collection to resources with a `zone.name` property matching the exact specified name.
    *
    * @return the zoneName
    */

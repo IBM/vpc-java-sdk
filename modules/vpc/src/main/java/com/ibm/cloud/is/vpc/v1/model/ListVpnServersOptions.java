@@ -153,7 +153,7 @@ public class ListVpnServersOptions extends GenericModel {
   /**
    * Gets the name.
    *
-   * Filters the collection to resources with the exact specified name.
+   * Filters the collection to resources with a `name` property matching the exact specified name.
    *
    * @return the name
    */
@@ -186,7 +186,7 @@ public class ListVpnServersOptions extends GenericModel {
   /**
    * Gets the resourceGroupId.
    *
-   * Filters the collection to resources in the resource group with the specified identifier.
+   * Filters the collection to resources with a `resource_group.id` property matching the specified identifier.
    *
    * @return the resourceGroupId
    */

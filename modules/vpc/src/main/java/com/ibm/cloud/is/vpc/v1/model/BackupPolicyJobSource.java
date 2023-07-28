@@ -12,6 +12,7 @@
  */
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
@@ -23,11 +24,22 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class BackupPolicyJobSource extends GenericModel {
 
+  /**
+   * The resource type.
+   */
+  public interface ResourceType {
+    /** volume. */
+    String VOLUME = "volume";
+  }
+
   protected String crn;
   protected VolumeReferenceDeleted deleted;
   protected String href;
   protected String id;
   protected String name;
+  protected VolumeRemote remote;
+  @SerializedName("resource_type")
+  protected String resourceType;
 
   protected BackupPolicyJobSource() { }
 
@@ -85,6 +97,29 @@ public class BackupPolicyJobSource extends GenericModel {
    */
   public String getName() {
     return name;
+  }
+
+  /**
+   * Gets the remote.
+   *
+   * If present, this property indicates that the resource associated with this reference
+   * is remote and therefore may not be directly retrievable.
+   *
+   * @return the remote
+   */
+  public VolumeRemote getRemote() {
+    return remote;
+  }
+
+  /**
+   * Gets the resourceType.
+   *
+   * The resource type.
+   *
+   * @return the resourceType
+   */
+  public String getResourceType() {
+    return resourceType;
   }
 }
 

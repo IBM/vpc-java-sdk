@@ -36,14 +36,14 @@ public class ListSecurityGroupsOptionsTest {
       .limit(Long.valueOf("1"))
       .resourceGroupId("testString")
       .vpcId("testString")
-      .vpcCrn("testString")
-      .vpcName("testString")
+      .vpcCrn("crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b")
+      .vpcName("my-vpc")
       .build();
     assertEquals(listSecurityGroupsOptionsModel.start(), "testString");
     assertEquals(listSecurityGroupsOptionsModel.limit(), Long.valueOf("1"));
     assertEquals(listSecurityGroupsOptionsModel.resourceGroupId(), "testString");
     assertEquals(listSecurityGroupsOptionsModel.vpcId(), "testString");
-    assertEquals(listSecurityGroupsOptionsModel.vpcCrn(), "testString");
-    assertEquals(listSecurityGroupsOptionsModel.vpcName(), "testString");
+    assertEquals(listSecurityGroupsOptionsModel.vpcCrn(), "crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b");
+    assertEquals(listSecurityGroupsOptionsModel.vpcName(), "my-vpc");
   }
 }

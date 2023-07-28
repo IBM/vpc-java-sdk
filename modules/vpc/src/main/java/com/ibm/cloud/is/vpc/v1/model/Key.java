@@ -26,6 +26,8 @@ public class Key extends GenericModel {
    * The crypto-system used by this key.
    */
   public interface Type {
+    /** ed25519. */
+    String ED25519 = "ed25519";
     /** rsa. */
     String RSA = "rsa";
   }

@@ -20,6 +20,18 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class ListBackupPolicyJobsOptions extends GenericModel {
 
   /**
+   * Filters the collection to backup policy jobs with a `status` property matching the specified value.
+   */
+  public interface Status {
+    /** failed. */
+    String FAILED = "failed";
+    /** running. */
+    String RUNNING = "running";
+    /** succeeded. */
+    String SUCCEEDED = "succeeded";
+  }
+
+  /**
    * Sorts the returned collection by the specified property name in ascending order. A `-` may be prepended to the name
    * to sort in descending order. For example, the value `-created_at` sorts the collection by the `created_at` property
    * in descending order, and the value `name` sorts it by the `name` property in ascending order.
@@ -235,7 +247,7 @@ public class ListBackupPolicyJobsOptions extends GenericModel {
   /**
    * Gets the status.
    *
-   * Filters the collection to backup policy jobs with the specified status.
+   * Filters the collection to backup policy jobs with a `status` property matching the specified value.
    *
    * @return the status
    */
@@ -246,7 +258,8 @@ public class ListBackupPolicyJobsOptions extends GenericModel {
   /**
    * Gets the backupPolicyPlanId.
    *
-   * Filters the collection to backup policy jobs with the backup plan with the specified identifier.
+   * Filters the collection to backup policy jobs with a `backup_policy_plan.id` property matching the specified
+   * identifier.
    *
    * @return the backupPolicyPlanId
    */
@@ -292,7 +305,7 @@ public class ListBackupPolicyJobsOptions extends GenericModel {
   /**
    * Gets the sourceId.
    *
-   * Filters the collection to backup policy jobs with a source with the specified identifier.
+   * Filters the collection to backup policy jobs with a `source.id` property matching the specified identifier.
    *
    * @return the sourceId
    */
@@ -303,7 +316,8 @@ public class ListBackupPolicyJobsOptions extends GenericModel {
   /**
    * Gets the targetSnapshotsId.
    *
-   * Filters the collection to resources with the target snapshot with the specified identifier.
+   * Filters the collection to backup policy jobs with an item in the `target_snapshots` property with an `id` property
+   * matching the specified identifier.
    *
    * @return the targetSnapshotsId
    */
@@ -314,7 +328,8 @@ public class ListBackupPolicyJobsOptions extends GenericModel {
   /**
    * Gets the targetSnapshotsCrn.
    *
-   * Filters the collection to backup policy jobs with the target snapshot with the specified CRN.
+   * Filters the collection to backup policy jobs with an item in the `target_snapshots` property with a `crn` property
+   * matching the specified CRN.
    *
    * @return the targetSnapshotsCrn
    */

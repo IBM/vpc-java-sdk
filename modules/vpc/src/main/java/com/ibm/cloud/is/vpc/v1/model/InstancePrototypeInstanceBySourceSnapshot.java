@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * InstancePrototypeInstanceBySourceSnapshot.
+ * Create an instance by using a snapshot.
  */
 public class InstancePrototypeInstanceBySourceSnapshot extends InstancePrototype {
 

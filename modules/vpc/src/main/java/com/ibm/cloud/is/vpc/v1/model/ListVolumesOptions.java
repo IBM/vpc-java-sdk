@@ -20,7 +20,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class ListVolumesOptions extends GenericModel {
 
   /**
-   * Filters the collection to volumes with the specified attachment state.
+   * Filters the collection to volumes with an `attachment_state` property matching the specified value.
    */
   public interface AttachmentState {
     /** attached. */
@@ -32,7 +32,7 @@ public class ListVolumesOptions extends GenericModel {
   }
 
   /**
-   * Filters the collection to resources with the specified encryption type.
+   * Filters the collection to resources with an `encryption` property matching the specified value.
    */
   public interface Encryption {
     /** provider_managed. */
@@ -230,7 +230,7 @@ public class ListVolumesOptions extends GenericModel {
   /**
    * Gets the name.
    *
-   * Filters the collection to resources with the exact specified name.
+   * Filters the collection to resources with a `name` property matching the exact specified name.
    *
    * @return the name
    */
@@ -241,7 +241,7 @@ public class ListVolumesOptions extends GenericModel {
   /**
    * Gets the attachmentState.
    *
-   * Filters the collection to volumes with the specified attachment state.
+   * Filters the collection to volumes with an `attachment_state` property matching the specified value.
    *
    * @return the attachmentState
    */
@@ -252,7 +252,7 @@ public class ListVolumesOptions extends GenericModel {
   /**
    * Gets the encryption.
    *
-   * Filters the collection to resources with the specified encryption type.
+   * Filters the collection to resources with an `encryption` property matching the specified value.
    *
    * @return the encryption
    */
@@ -263,7 +263,8 @@ public class ListVolumesOptions extends GenericModel {
   /**
    * Gets the operatingSystemFamily.
    *
-   * Filters the collection to resources with the exact specified operating system family.
+   * Filters the collection to resources with an `operating_system.family` property matching the specified operating
+   * system family.
    *
    * This parameter also supports the values `null` and `not:null` which filter the collection to resources which have
    * no operating system or any operating system, respectively.
@@ -277,7 +278,8 @@ public class ListVolumesOptions extends GenericModel {
   /**
    * Gets the operatingSystemArchitecture.
    *
-   * Filters the collection to resources with the exact specified operating system architecture.
+   * Filters the collection to resources with an `operating_system.architecture` property matching the specified
+   * operating system architecture.
    *
    * This parameter also supports the values `null` and `not:null` which filter the collection to resources which have
    * no operating system or any operating system, respectively.
@@ -291,7 +293,7 @@ public class ListVolumesOptions extends GenericModel {
   /**
    * Gets the zoneName.
    *
-   * Filters the collection to resources in the zone with the exact specified name.
+   * Filters the collection to resources with a `zone.name` property matching the exact specified name.
    *
    * @return the zoneName
    */

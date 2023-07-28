@@ -14,6 +14,7 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.EncryptionKeyIdentityByCRN;
+import com.ibm.cloud.is.vpc.v1.model.ResourceGroupIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototypeVolumeVolumePrototypeInstanceContext;
 import com.ibm.cloud.is.vpc.v1.model.VolumeProfileIdentityByName;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;

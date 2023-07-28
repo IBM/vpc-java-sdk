@@ -24,6 +24,7 @@ import com.ibm.cloud.is.vpc.v1.model.InstanceTemplate;
 import com.ibm.cloud.is.vpc.v1.model.KeyIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceIPPrototypeReservedIPPrototypeNetworkInterfaceContext;
 import com.ibm.cloud.is.vpc.v1.model.NetworkInterfacePrototype;
+import com.ibm.cloud.is.vpc.v1.model.ResourceGroupIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.SubnetIdentityById;

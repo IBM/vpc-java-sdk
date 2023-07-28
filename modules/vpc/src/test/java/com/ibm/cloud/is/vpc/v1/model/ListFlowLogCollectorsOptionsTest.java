@@ -37,19 +37,19 @@ public class ListFlowLogCollectorsOptionsTest {
       .resourceGroupId("testString")
       .name("testString")
       .vpcId("testString")
-      .vpcCrn("testString")
-      .vpcName("testString")
+      .vpcCrn("crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b")
+      .vpcName("my-vpc")
       .targetId("testString")
-      .targetResourceType("instance")
+      .targetResourceType("testString")
       .build();
     assertEquals(listFlowLogCollectorsOptionsModel.start(), "testString");
     assertEquals(listFlowLogCollectorsOptionsModel.limit(), Long.valueOf("1"));
     assertEquals(listFlowLogCollectorsOptionsModel.resourceGroupId(), "testString");
     assertEquals(listFlowLogCollectorsOptionsModel.name(), "testString");
     assertEquals(listFlowLogCollectorsOptionsModel.vpcId(), "testString");
-    assertEquals(listFlowLogCollectorsOptionsModel.vpcCrn(), "testString");
-    assertEquals(listFlowLogCollectorsOptionsModel.vpcName(), "testString");
+    assertEquals(listFlowLogCollectorsOptionsModel.vpcCrn(), "crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b");
+    assertEquals(listFlowLogCollectorsOptionsModel.vpcName(), "my-vpc");
     assertEquals(listFlowLogCollectorsOptionsModel.targetId(), "testString");
-    assertEquals(listFlowLogCollectorsOptionsModel.targetResourceType(), "instance");
+    assertEquals(listFlowLogCollectorsOptionsModel.targetResourceType(), "testString");
   }
 }

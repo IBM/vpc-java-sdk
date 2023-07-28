@@ -13,11 +13,11 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 /**
- * InstanceTemplateInstanceBySourceSnapshotInstanceTemplateContext.
+ * Create an instance by using a snapshot.
  */
-public class InstanceTemplateInstanceBySourceSnapshotInstanceTemplateContext extends InstanceTemplate {
+public class InstanceTemplateInstanceBySourceSnapshot extends InstanceTemplate {
 
 
-  protected InstanceTemplateInstanceBySourceSnapshotInstanceTemplateContext() { }
+  protected InstanceTemplateInstanceBySourceSnapshot() { }
 }
 

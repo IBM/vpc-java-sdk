@@ -13,17 +13,19 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.ibm.cloud.is.vpc.v1.model.CatalogOfferingIdentityCatalogOfferingByCRN;
 import com.ibm.cloud.is.vpc.v1.model.EncryptionKeyIdentityByCRN;
-import com.ibm.cloud.is.vpc.v1.model.ImageIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.InstanceAvailabilityPolicyPrototype;
+import com.ibm.cloud.is.vpc.v1.model.InstanceCatalogOfferingPrototypeCatalogOfferingByOffering;
 import com.ibm.cloud.is.vpc.v1.model.InstanceDefaultTrustedProfilePrototype;
 import com.ibm.cloud.is.vpc.v1.model.InstanceMetadataServicePrototype;
 import com.ibm.cloud.is.vpc.v1.model.InstancePlacementTargetPrototypeDedicatedHostIdentityDedicatedHostIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileIdentityByName;
-import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateInstanceByImageInstanceTemplateContext;
+import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateInstanceByCatalogOffering;
 import com.ibm.cloud.is.vpc.v1.model.KeyIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceIPPrototypeReservedIPPrototypeNetworkInterfaceContext;
 import com.ibm.cloud.is.vpc.v1.model.NetworkInterfacePrototype;
+import com.ibm.cloud.is.vpc.v1.model.ResourceGroupIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.SubnetIdentityById;
@@ -44,35 +46,35 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
 /**
- * Unit test class for the InstanceTemplateInstanceByImageInstanceTemplateContext model.
+ * Unit test class for the InstanceTemplateInstanceByCatalogOffering model.
  */
-public class InstanceTemplateInstanceByImageInstanceTemplateContextTest {
+public class InstanceTemplateInstanceByCatalogOfferingTest {
   final HashMap<String, InputStream> mockStreamMap = TestUtilities.createMockStreamMap();
   final List<FileWithMetadata> mockListFileWithMetadata = TestUtilities.creatMockListFileWithMetadata();
 
   @Test
-  public void testInstanceTemplateInstanceByImageInstanceTemplateContext() throws Throwable {
-    InstanceTemplateInstanceByImageInstanceTemplateContext instanceTemplateInstanceByImageInstanceTemplateContextModel = new InstanceTemplateInstanceByImageInstanceTemplateContext();
-    assertNull(instanceTemplateInstanceByImageInstanceTemplateContextModel.getAvailabilityPolicy());
-    assertNull(instanceTemplateInstanceByImageInstanceTemplateContextModel.getCreatedAt());
-    assertNull(instanceTemplateInstanceByImageInstanceTemplateContextModel.getCrn());
-    assertNull(instanceTemplateInstanceByImageInstanceTemplateContextModel.getDefaultTrustedProfile());
-    assertNull(instanceTemplateInstanceByImageInstanceTemplateContextModel.getHref());
-    assertNull(instanceTemplateInstanceByImageInstanceTemplateContextModel.getId());
-    assertNull(instanceTemplateInstanceByImageInstanceTemplateContextModel.getKeys());
-    assertNull(instanceTemplateInstanceByImageInstanceTemplateContextModel.getMetadataService());
-    assertNull(instanceTemplateInstanceByImageInstanceTemplateContextModel.getName());
-    assertNull(instanceTemplateInstanceByImageInstanceTemplateContextModel.getPlacementTarget());
-    assertNull(instanceTemplateInstanceByImageInstanceTemplateContextModel.getProfile());
-    assertNull(instanceTemplateInstanceByImageInstanceTemplateContextModel.getResourceGroup());
-    assertNull(instanceTemplateInstanceByImageInstanceTemplateContextModel.getTotalVolumeBandwidth());
-    assertNull(instanceTemplateInstanceByImageInstanceTemplateContextModel.getUserData());
-    assertNull(instanceTemplateInstanceByImageInstanceTemplateContextModel.getVolumeAttachments());
-    assertNull(instanceTemplateInstanceByImageInstanceTemplateContextModel.getVpc());
-    assertNull(instanceTemplateInstanceByImageInstanceTemplateContextModel.getBootVolumeAttachment());
-    assertNull(instanceTemplateInstanceByImageInstanceTemplateContextModel.getImage());
-    assertNull(instanceTemplateInstanceByImageInstanceTemplateContextModel.getNetworkInterfaces());
-    assertNull(instanceTemplateInstanceByImageInstanceTemplateContextModel.getPrimaryNetworkInterface());
-    assertNull(instanceTemplateInstanceByImageInstanceTemplateContextModel.getZone());
+  public void testInstanceTemplateInstanceByCatalogOffering() throws Throwable {
+    InstanceTemplateInstanceByCatalogOffering instanceTemplateInstanceByCatalogOfferingModel = new InstanceTemplateInstanceByCatalogOffering();
+    assertNull(instanceTemplateInstanceByCatalogOfferingModel.getAvailabilityPolicy());
+    assertNull(instanceTemplateInstanceByCatalogOfferingModel.getCreatedAt());
+    assertNull(instanceTemplateInstanceByCatalogOfferingModel.getCrn());
+    assertNull(instanceTemplateInstanceByCatalogOfferingModel.getDefaultTrustedProfile());
+    assertNull(instanceTemplateInstanceByCatalogOfferingModel.getHref());
+    assertNull(instanceTemplateInstanceByCatalogOfferingModel.getId());
+    assertNull(instanceTemplateInstanceByCatalogOfferingModel.getKeys());
+    assertNull(instanceTemplateInstanceByCatalogOfferingModel.getMetadataService());
+    assertNull(instanceTemplateInstanceByCatalogOfferingModel.getName());
+    assertNull(instanceTemplateInstanceByCatalogOfferingModel.getPlacementTarget());
+    assertNull(instanceTemplateInstanceByCatalogOfferingModel.getProfile());
+    assertNull(instanceTemplateInstanceByCatalogOfferingModel.getResourceGroup());
+    assertNull(instanceTemplateInstanceByCatalogOfferingModel.getTotalVolumeBandwidth());
+    assertNull(instanceTemplateInstanceByCatalogOfferingModel.getUserData());
+    assertNull(instanceTemplateInstanceByCatalogOfferingModel.getVolumeAttachments());
+    assertNull(instanceTemplateInstanceByCatalogOfferingModel.getVpc());
+    assertNull(instanceTemplateInstanceByCatalogOfferingModel.getBootVolumeAttachment());
+    assertNull(instanceTemplateInstanceByCatalogOfferingModel.getCatalogOffering());
+    assertNull(instanceTemplateInstanceByCatalogOfferingModel.getNetworkInterfaces());
+    assertNull(instanceTemplateInstanceByCatalogOfferingModel.getPrimaryNetworkInterface());
+    assertNull(instanceTemplateInstanceByCatalogOfferingModel.getZone());
   }
 }

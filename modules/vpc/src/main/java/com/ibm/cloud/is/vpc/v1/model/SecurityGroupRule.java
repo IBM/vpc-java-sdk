@@ -181,7 +181,7 @@ public class SecurityGroupRule extends GenericModel {
   /**
    * Gets the portMax.
    *
-   * The inclusive upper bound of TCP/UDP port range.
+   * The inclusive upper bound of TCP/UDP destination port range.
    *
    * @return the portMax
    */
@@ -192,7 +192,7 @@ public class SecurityGroupRule extends GenericModel {
   /**
    * Gets the portMin.
    *
-   * The inclusive lower bound of TCP/UDP port range.
+   * The inclusive lower bound of TCP/UDP destination port range.
    *
    * @return the portMin
    */

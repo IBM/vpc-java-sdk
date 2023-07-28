@@ -13,8 +13,10 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.ibm.cloud.is.vpc.v1.model.RegionReference;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotReference;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotReferenceDeleted;
+import com.ibm.cloud.is.vpc.v1.model.SnapshotRemote;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -38,6 +40,7 @@ public class SnapshotReferenceTest {
     assertNull(snapshotReferenceModel.getHref());
     assertNull(snapshotReferenceModel.getId());
     assertNull(snapshotReferenceModel.getName());
+    assertNull(snapshotReferenceModel.getRemote());
     assertNull(snapshotReferenceModel.getResourceType());
   }
 }

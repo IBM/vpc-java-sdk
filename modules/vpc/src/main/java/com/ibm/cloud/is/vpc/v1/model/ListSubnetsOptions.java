@@ -163,7 +163,7 @@ public class ListSubnetsOptions extends GenericModel {
   /**
    * Gets the resourceGroupId.
    *
-   * Filters the collection to resources in the resource group with the specified identifier.
+   * Filters the collection to resources with a `resource_group.id` property matching the specified identifier.
    *
    * @return the resourceGroupId
    */
@@ -174,7 +174,7 @@ public class ListSubnetsOptions extends GenericModel {
   /**
    * Gets the routingTableId.
    *
-   * Filters the collection to subnets attached to the routing table with the specified identifier.
+   * Filters the collection to subnets with a `routing_table.id` property matching the specified identifier.
    *
    * @return the routingTableId
    */
@@ -185,7 +185,7 @@ public class ListSubnetsOptions extends GenericModel {
   /**
    * Gets the routingTableName.
    *
-   * Filters the collection to subnets attached to the routing table with the specified name.
+   * Filters the collection to subnets with a `routing_table.name` property matching the exact specified name.
    *
    * @return the routingTableName
    */

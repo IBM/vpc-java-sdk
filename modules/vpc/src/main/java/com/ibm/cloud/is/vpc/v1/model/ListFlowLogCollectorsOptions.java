@@ -19,20 +19,6 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class ListFlowLogCollectorsOptions extends GenericModel {
 
-  /**
-   * Filters the collection to flow log collectors that target the specified resource type.
-   */
-  public interface TargetResourceType {
-    /** instance. */
-    String INSTANCE = "instance";
-    /** network_interface. */
-    String NETWORK_INTERFACE = "network_interface";
-    /** subnet. */
-    String SUBNET = "subnet";
-    /** vpc. */
-    String VPC = "vpc";
-  }
-
   protected String start;
   protected Long limit;
   protected String resourceGroupId;
@@ -237,7 +223,7 @@ public class ListFlowLogCollectorsOptions extends GenericModel {
   /**
    * Gets the resourceGroupId.
    *
-   * Filters the collection to resources in the resource group with the specified identifier.
+   * Filters the collection to resources with a `resource_group.id` property matching the specified identifier.
    *
    * @return the resourceGroupId
    */
@@ -248,7 +234,7 @@ public class ListFlowLogCollectorsOptions extends GenericModel {
   /**
    * Gets the name.
    *
-   * Filters the collection to resources with the exact specified name.
+   * Filters the collection to resources with a `name` property matching the exact specified name.
    *
    * @return the name
    */
@@ -259,7 +245,7 @@ public class ListFlowLogCollectorsOptions extends GenericModel {
   /**
    * Gets the vpcId.
    *
-   * Filters the collection to resources in the VPC with the specified identifier.
+   * Filters the collection to resources with a `vpc.id` property matching the specified identifier.
    *
    * @return the vpcId
    */
@@ -270,7 +256,7 @@ public class ListFlowLogCollectorsOptions extends GenericModel {
   /**
    * Gets the vpcCrn.
    *
-   * Filters the collection to resources in the VPC with the specified CRN.
+   * Filters the collection to resources with a `vpc.crn` property matching the specified CRN.
    *
    * @return the vpcCrn
    */
@@ -281,7 +267,7 @@ public class ListFlowLogCollectorsOptions extends GenericModel {
   /**
    * Gets the vpcName.
    *
-   * Filters the collection to resources in the VPC with the exact specified name.
+   * Filters the collection to resources with a `vpc.name` property matching the exact specified name.
    *
    * @return the vpcName
    */
@@ -292,7 +278,7 @@ public class ListFlowLogCollectorsOptions extends GenericModel {
   /**
    * Gets the targetId.
    *
-   * Filters the collection to flow log collectors that target the specified resource.
+   * Filters the collection to resources with a `target.id` property matching the specified identifier.
    *
    * @return the targetId
    */
@@ -303,7 +289,7 @@ public class ListFlowLogCollectorsOptions extends GenericModel {
   /**
    * Gets the targetResourceType.
    *
-   * Filters the collection to flow log collectors that target the specified resource type.
+   * Filters the collection to resources with a `target.resource_type` property matching the specified value.
    *
    * @return the targetResourceType
    */

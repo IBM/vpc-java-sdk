@@ -28,6 +28,7 @@ import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPatch;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlan;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanCollection;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanPatch;
+import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanRemoteRegionPolicyPrototype;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServer;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerConsoleAccessToken;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerDisk;
@@ -172,6 +173,7 @@ import com.ibm.cloud.is.vpc.v1.model.DeleteVpnGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteVpnServerClientOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteVpnServerOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteVpnServerRouteOptions;
+import com.ibm.cloud.is.vpc.v1.model.DeprecateImageOptions;
 import com.ibm.cloud.is.vpc.v1.model.DisconnectVpnClientOptions;
 import com.ibm.cloud.is.vpc.v1.model.EncryptionKeyIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.EndpointGateway;
@@ -319,7 +321,7 @@ import com.ibm.cloud.is.vpc.v1.model.InstanceTemplate;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateCollection;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplatePatch;
-import com.ibm.cloud.is.vpc.v1.model.InstanceTemplatePrototypeInstanceByImageInstanceTemplateContext;
+import com.ibm.cloud.is.vpc.v1.model.InstanceTemplatePrototypeInstanceTemplateByImage;
 import com.ibm.cloud.is.vpc.v1.model.InstancesPager;
 import com.ibm.cloud.is.vpc.v1.model.IpsecPoliciesPager;
 import com.ibm.cloud.is.vpc.v1.model.Key;
@@ -437,6 +439,7 @@ import com.ibm.cloud.is.vpc.v1.model.NetworkInterface;
 import com.ibm.cloud.is.vpc.v1.model.NetworkInterfacePatch;
 import com.ibm.cloud.is.vpc.v1.model.NetworkInterfacePrototype;
 import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceUnpaginatedCollection;
+import com.ibm.cloud.is.vpc.v1.model.ObsoleteImageOptions;
 import com.ibm.cloud.is.vpc.v1.model.OperatingSystem;
 import com.ibm.cloud.is.vpc.v1.model.OperatingSystemIdentityByName;
 import com.ibm.cloud.is.vpc.v1.model.OperatingSystemsPager;
@@ -449,6 +452,7 @@ import com.ibm.cloud.is.vpc.v1.model.PublicGatewayPatch;
 import com.ibm.cloud.is.vpc.v1.model.PublicGatewaysPager;
 import com.ibm.cloud.is.vpc.v1.model.Region;
 import com.ibm.cloud.is.vpc.v1.model.RegionCollection;
+import com.ibm.cloud.is.vpc.v1.model.RegionIdentityByName;
 import com.ibm.cloud.is.vpc.v1.model.RemoveBareMetalServerNetworkInterfaceFloatingIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.RemoveEndpointGatewayIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.RemoveInstanceNetworkInterfaceFloatingIpOptions;
@@ -461,6 +465,7 @@ import com.ibm.cloud.is.vpc.v1.model.ReservedIP;
 import com.ibm.cloud.is.vpc.v1.model.ReservedIPPatch;
 import com.ibm.cloud.is.vpc.v1.model.RestartBareMetalServerOptions;
 import com.ibm.cloud.is.vpc.v1.model.Route;
+import com.ibm.cloud.is.vpc.v1.model.RouteCollectionVPCContextRoutesItem;
 import com.ibm.cloud.is.vpc.v1.model.RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIPRouteNextHopPrototypeRouteNextHopIPRouteNextHopIPUnicastIP;
 import com.ibm.cloud.is.vpc.v1.model.RoutePatch;
 import com.ibm.cloud.is.vpc.v1.model.RoutingTable;
@@ -479,7 +484,9 @@ import com.ibm.cloud.is.vpc.v1.model.SetSubnetPublicGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotClone;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotCloneCollection;
 import com.ibm.cloud.is.vpc.v1.model.Snapshot;
+import com.ibm.cloud.is.vpc.v1.model.SnapshotIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotPatch;
+import com.ibm.cloud.is.vpc.v1.model.SnapshotPrototypeSnapshotBySourceSnapshot;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotPrototypeSnapshotBySourceVolume;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotsPager;
 import com.ibm.cloud.is.vpc.v1.model.StartBareMetalServerOptions;
@@ -673,10 +680,13 @@ public class VPCExamples {
   static String vpnGatewayId;
   static String vpnGatewayConnectionId;
   static String regionName = "us-east";
+  static String crossRegionName = "us-south";
   static String securityGroupId;
   static String securityGroupRuleId;
   static String securityGroupTargetId;
   static String snapshotId;
+  static String snapshotCopyCRN;
+  static String snapshotCopyId;
   static String sourceVolume;
   static String targetId;
   static String zoneName = "us-east-1";
@@ -688,9 +698,13 @@ public class VPCExamples {
   static String backupPolicyId;
   static String backupPolicyJobId;
   static String backupPolicyPlanId;
+  static String backupPolicyRemoteCopyPlanId;
   static String ifMatchBackupPolicy;
   static String ifMatchBackupPolicyPlan;
+  static String ifMatchBackupPolicyRemoteCopyPlan;
   static String ifMatchVpnServer;
+  static String ifMatchSnapshot;
+  static String ifMatchSnapshotCopy;
   static String vpnServerId;
   static String vpnServerClientId;
   static String vpnServerRouteId;
@@ -919,9 +933,9 @@ public class VPCExamples {
         .build();
 
       VpcRoutesPager pager = new VpcRoutesPager(vpcService, listVpcRoutesOptions);
-      List<Route> allResults = new ArrayList<>();
+      List<RouteCollectionVPCContextRoutesItem> allResults = new ArrayList<>();
       while (pager.hasNext()) {
-        List<Route> nextPage = pager.getNext();
+        List<RouteCollectionVPCContextRoutesItem> nextPage = pager.getNext();
         allResults.addAll(nextPage);
       }
 
@@ -950,7 +964,6 @@ public class VPCExamples {
         .build();
       Response<Route> response = vpcService.createVpcRoute(createVpcRouteOptions).execute();
       Route route = response.getResult();
-
       // end-create_vpc_route
       vpcRouteId = route.getId();
     } catch (ServiceResponseException e) {
@@ -968,7 +981,6 @@ public class VPCExamples {
 
       Response<Route> response = vpcService.getVpcRoute(getVpcRouteOptions).execute();
       Route route = response.getResult();
-
       // end-get_vpc_route
     } catch (ServiceResponseException e) {
         logger.error(String.format("Service returned status code %s: %s%nError details: %s",
@@ -990,7 +1002,6 @@ public class VPCExamples {
 
       Response<Route> response = vpcService.updateVpcRoute(updateVpcRouteOptions).execute();
       Route route = response.getResult();
-
       // end-update_vpc_route
     } catch (ServiceResponseException e) {
         logger.error(String.format("Service returned status code %s: %s%nError details: %s",
@@ -1621,6 +1632,32 @@ public class VPCExamples {
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
     }
 
+
+    try {
+      // begin-deprecate_image
+      DeprecateImageOptions deprecateImageOptions = new DeprecateImageOptions.Builder()
+        .id(imageId)
+        .build();
+
+      Response<Void> response = vpcService.deprecateImage(deprecateImageOptions).execute();
+      // end-deprecate_image
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      // begin-obsolete_image
+      ObsoleteImageOptions obsoleteImageOptions = new ObsoleteImageOptions.Builder()
+        .id(imageId)
+        .build();
+
+      Response<Void> response = vpcService.obsoleteImage(obsoleteImageOptions).execute();
+      // end-obsolete_image
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
     try {
       System.out.println("listImageExportJobs() result:");
       // begin-list_image_export_jobs
@@ -1843,7 +1880,7 @@ public class VPCExamples {
       ZoneIdentityByName zoneIdentityModel = new ZoneIdentityByName.Builder()
         .name(zoneName)
         .build();
-      InstanceTemplatePrototypeInstanceByImageInstanceTemplateContext instanceTemplatePrototypeModel = new InstanceTemplatePrototypeInstanceByImageInstanceTemplateContext.Builder()
+      InstanceTemplatePrototypeInstanceTemplateByImage instanceTemplatePrototypeModel = new InstanceTemplatePrototypeInstanceTemplateByImage.Builder()
         .keys(new java.util.ArrayList<KeyIdentity>(java.util.Arrays.asList(keyIdentityModel)))
         .name("my-instance-template")
         .profile(instanceProfileIdentityModel)
@@ -2081,6 +2118,20 @@ public class VPCExamples {
     try {
       System.out.println("createBackupPolicyPlan() result:");
       // begin-create_backup_policy_plan
+      RegionIdentityByName regionIdentityByName = new RegionIdentityByName.Builder(crossRegionName).build();
+      BackupPolicyPlanRemoteRegionPolicyPrototype backupPolicyPlanRemoteRegionPolicyPrototype = new BackupPolicyPlanRemoteRegionPolicyPrototype.Builder()
+        .region(regionIdentityByName)
+        .build();
+      CreateBackupPolicyPlanOptions createBackupPolicyPlanRemoteCopyOptions = new CreateBackupPolicyPlanOptions.Builder()
+        .backupPolicyId(backupPolicyId)
+        .name("my-backup-policy-plan-remote-copy")
+        .cronSpec("*/5 1,2,3 * * *")
+        .remoteRegionPolicies(Arrays.asList(backupPolicyPlanRemoteRegionPolicyPrototype))
+        .build();
+
+      Response<BackupPolicyPlan> remoteCopyResponse = vpcService.createBackupPolicyPlan(createBackupPolicyPlanRemoteCopyOptions).execute();
+      BackupPolicyPlan backupPolicyRemoteCopyPlan = remoteCopyResponse.getResult();
+
       CreateBackupPolicyPlanOptions createBackupPolicyPlanOptions = new CreateBackupPolicyPlanOptions.Builder()
         .backupPolicyId(backupPolicyId)
         .name("my-backup-policy-plan")
@@ -2093,6 +2144,8 @@ public class VPCExamples {
       // end-create_backup_policy_plan
       backupPolicyPlanId = backupPolicyPlan.getId();
       ifMatchBackupPolicyPlan = response.getHeaders().values("etag").get(0);
+      backupPolicyRemoteCopyPlanId = backupPolicyRemoteCopyPlan.getId();
+      ifMatchBackupPolicyRemoteCopyPlan = remoteCopyResponse.getHeaders().values("etag").get(0);
 
     } catch (ServiceResponseException e) {
         logger.error(String.format("Service returned status code %s: %s%nError details: %s",
@@ -3990,7 +4043,25 @@ public class VPCExamples {
 
       Response<Snapshot> response1 = vpcService.createSnapshot(createSnapshotOptions1).execute();
       Snapshot snapshot1 = response1.getResult();
+
+      snapshotCopyCRN = snapshot1.getCrn();
       // begin-create_snapshot
+
+      SnapshotIdentityByCRN snapshotIdentityByCRN = new SnapshotIdentityByCRN.Builder()
+              .crn(snapshotCopyCRN)
+              .build();
+      SnapshotPrototypeSnapshotBySourceSnapshot snapshotPrototypeCopyModel = new SnapshotPrototypeSnapshotBySourceSnapshot.Builder()
+              .sourceSnapshot(snapshotIdentityByCRN)
+              .name("my-snapshot-copy")
+              .build();
+      CreateSnapshotOptions createSnapshotCopyOptions = new CreateSnapshotOptions.Builder()
+              .snapshotPrototype(snapshotPrototypeCopyModel)
+              .build();
+
+      Response<Snapshot> responsesnapshotcopy = vpcService.createSnapshot(createSnapshotCopyOptions).execute();
+      Snapshot snapshotcopy = responsesnapshotcopy.getResult();
+
+
       VolumeIdentityById volumeIdentityModel = new VolumeIdentityById.Builder()
         .id(sourceVolume)
         .build();
@@ -4006,6 +4077,8 @@ public class VPCExamples {
       Snapshot snapshot = response.getResult();
 
       // end-create_snapshot
+      snapshotCopyId = snapshotcopy.getId();
+      ifMatchSnapshotCopy = responsesnapshotcopy.getHeaders().values("etag").get(0);
       snapshotId = snapshot.getId();
     } catch (ServiceResponseException e) {
         logger.error(String.format("Service returned status code %s: %s%nError details: %s",
@@ -4023,6 +4096,7 @@ public class VPCExamples {
       Snapshot snapshot = response.getResult();
 
       // end-get_snapshot
+      ifMatchSnapshotCopy = response.getHeaders().values("etag").get(0);
     } catch (ServiceResponseException e) {
         logger.error(String.format("Service returned status code %s: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
@@ -6374,9 +6448,17 @@ public class VPCExamples {
     }
 
     try {
+      DeleteSnapshotOptions deleteSnapshotCopyOptions = new DeleteSnapshotOptions.Builder()
+        .id(snapshotCopyId)
+        .ifMatch(ifMatchSnapshotCopy)
+        .build();
+
+      Response<Void> responseCopy = vpcService.deleteSnapshot(deleteSnapshotCopyOptions).execute();
+      System.out.printf("deleteSnapshot() copy response status code: %d%n", responseCopy.getStatusCode());
       // begin-delete_snapshot
       DeleteSnapshotOptions deleteSnapshotOptions = new DeleteSnapshotOptions.Builder()
         .id(snapshotId)
+        .ifMatch(ifMatchSnapshotCopy)
         .build();
 
       Response<Void> response = vpcService.deleteSnapshot(deleteSnapshotOptions).execute();
@@ -6899,6 +6981,15 @@ public class VPCExamples {
 
     try {
       System.out.println("deleteBackupPolicyPlan() result:");
+      DeleteBackupPolicyPlanOptions deleteBackupPolicyRemoteCopyPlanOptions = new DeleteBackupPolicyPlanOptions.Builder()
+        .backupPolicyId(backupPolicyId)
+        .id(backupPolicyRemoteCopyPlanId)
+        .ifMatch(ifMatchBackupPolicyRemoteCopyPlan)
+        .build();
+
+      Response<BackupPolicyPlan> remoteCopyResponse = vpcService.deleteBackupPolicyPlan(deleteBackupPolicyRemoteCopyPlanOptions).execute();
+      BackupPolicyPlan backupPolicyRemoteCopyPlan = remoteCopyResponse.getResult();
+      System.out.printf("deleteBackupPolicyPlan() remote copy response status code: %d%n", remoteCopyResponse.getStatusCode());
       // begin-delete_backup_policy_plan
       DeleteBackupPolicyPlanOptions deleteBackupPolicyPlanOptions = new DeleteBackupPolicyPlanOptions.Builder()
         .backupPolicyId(backupPolicyId)

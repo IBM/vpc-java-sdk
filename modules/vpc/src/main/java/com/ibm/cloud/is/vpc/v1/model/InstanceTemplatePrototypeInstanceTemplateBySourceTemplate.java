@@ -16,9 +16,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * InstanceTemplatePrototypeInstanceByCatalogOfferingInstanceTemplateContext.
+ * Create an instance template from an existing instance template.
  */
-public class InstanceTemplatePrototypeInstanceByCatalogOfferingInstanceTemplateContext extends InstanceTemplatePrototype {
+public class InstanceTemplatePrototypeInstanceTemplateBySourceTemplate extends InstanceTemplatePrototype {
 
 
   /**
@@ -39,33 +39,37 @@ public class InstanceTemplatePrototypeInstanceByCatalogOfferingInstanceTemplateC
     private VPCIdentity vpc;
     private VolumeAttachmentPrototypeInstanceByImageContext bootVolumeAttachment;
     private InstanceCatalogOfferingPrototype catalogOffering;
+    private ImageIdentity image;
     private List<NetworkInterfacePrototype> networkInterfaces;
     private NetworkInterfacePrototype primaryNetworkInterface;
+    private InstanceTemplateIdentity sourceTemplate;
     private ZoneIdentity zone;
 
     /**
-     * Instantiates a new Builder from an existing InstanceTemplatePrototypeInstanceByCatalogOfferingInstanceTemplateContext instance.
+     * Instantiates a new Builder from an existing InstanceTemplatePrototypeInstanceTemplateBySourceTemplate instance.
      *
-     * @param instanceTemplatePrototypeInstanceByCatalogOfferingInstanceTemplateContext the instance to initialize the Builder with
+     * @param instanceTemplatePrototypeInstanceTemplateBySourceTemplate the instance to initialize the Builder with
      */
-    public Builder(InstanceTemplatePrototype instanceTemplatePrototypeInstanceByCatalogOfferingInstanceTemplateContext) {
-      this.availabilityPolicy = instanceTemplatePrototypeInstanceByCatalogOfferingInstanceTemplateContext.availabilityPolicy;
-      this.defaultTrustedProfile = instanceTemplatePrototypeInstanceByCatalogOfferingInstanceTemplateContext.defaultTrustedProfile;
-      this.keys = instanceTemplatePrototypeInstanceByCatalogOfferingInstanceTemplateContext.keys;
-      this.metadataService = instanceTemplatePrototypeInstanceByCatalogOfferingInstanceTemplateContext.metadataService;
-      this.name = instanceTemplatePrototypeInstanceByCatalogOfferingInstanceTemplateContext.name;
-      this.placementTarget = instanceTemplatePrototypeInstanceByCatalogOfferingInstanceTemplateContext.placementTarget;
-      this.profile = instanceTemplatePrototypeInstanceByCatalogOfferingInstanceTemplateContext.profile;
-      this.resourceGroup = instanceTemplatePrototypeInstanceByCatalogOfferingInstanceTemplateContext.resourceGroup;
-      this.totalVolumeBandwidth = instanceTemplatePrototypeInstanceByCatalogOfferingInstanceTemplateContext.totalVolumeBandwidth;
-      this.userData = instanceTemplatePrototypeInstanceByCatalogOfferingInstanceTemplateContext.userData;
-      this.volumeAttachments = instanceTemplatePrototypeInstanceByCatalogOfferingInstanceTemplateContext.volumeAttachments;
-      this.vpc = instanceTemplatePrototypeInstanceByCatalogOfferingInstanceTemplateContext.vpc;
-      this.bootVolumeAttachment = (VolumeAttachmentPrototypeInstanceByImageContext) instanceTemplatePrototypeInstanceByCatalogOfferingInstanceTemplateContext.bootVolumeAttachment;
-      this.catalogOffering = instanceTemplatePrototypeInstanceByCatalogOfferingInstanceTemplateContext.catalogOffering;
-      this.networkInterfaces = instanceTemplatePrototypeInstanceByCatalogOfferingInstanceTemplateContext.networkInterfaces;
-      this.primaryNetworkInterface = instanceTemplatePrototypeInstanceByCatalogOfferingInstanceTemplateContext.primaryNetworkInterface;
-      this.zone = instanceTemplatePrototypeInstanceByCatalogOfferingInstanceTemplateContext.zone;
+    public Builder(InstanceTemplatePrototype instanceTemplatePrototypeInstanceTemplateBySourceTemplate) {
+      this.availabilityPolicy = instanceTemplatePrototypeInstanceTemplateBySourceTemplate.availabilityPolicy;
+      this.defaultTrustedProfile = instanceTemplatePrototypeInstanceTemplateBySourceTemplate.defaultTrustedProfile;
+      this.keys = instanceTemplatePrototypeInstanceTemplateBySourceTemplate.keys;
+      this.metadataService = instanceTemplatePrototypeInstanceTemplateBySourceTemplate.metadataService;
+      this.name = instanceTemplatePrototypeInstanceTemplateBySourceTemplate.name;
+      this.placementTarget = instanceTemplatePrototypeInstanceTemplateBySourceTemplate.placementTarget;
+      this.profile = instanceTemplatePrototypeInstanceTemplateBySourceTemplate.profile;
+      this.resourceGroup = instanceTemplatePrototypeInstanceTemplateBySourceTemplate.resourceGroup;
+      this.totalVolumeBandwidth = instanceTemplatePrototypeInstanceTemplateBySourceTemplate.totalVolumeBandwidth;
+      this.userData = instanceTemplatePrototypeInstanceTemplateBySourceTemplate.userData;
+      this.volumeAttachments = instanceTemplatePrototypeInstanceTemplateBySourceTemplate.volumeAttachments;
+      this.vpc = instanceTemplatePrototypeInstanceTemplateBySourceTemplate.vpc;
+      this.bootVolumeAttachment = (VolumeAttachmentPrototypeInstanceByImageContext) instanceTemplatePrototypeInstanceTemplateBySourceTemplate.bootVolumeAttachment;
+      this.catalogOffering = instanceTemplatePrototypeInstanceTemplateBySourceTemplate.catalogOffering;
+      this.image = instanceTemplatePrototypeInstanceTemplateBySourceTemplate.image;
+      this.networkInterfaces = instanceTemplatePrototypeInstanceTemplateBySourceTemplate.networkInterfaces;
+      this.primaryNetworkInterface = instanceTemplatePrototypeInstanceTemplateBySourceTemplate.primaryNetworkInterface;
+      this.sourceTemplate = instanceTemplatePrototypeInstanceTemplateBySourceTemplate.sourceTemplate;
+      this.zone = instanceTemplatePrototypeInstanceTemplateBySourceTemplate.zone;
     }
 
     /**
@@ -77,28 +81,26 @@ public class InstanceTemplatePrototypeInstanceByCatalogOfferingInstanceTemplateC
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param catalogOffering the catalogOffering
-     * @param zone the zone
+     * @param sourceTemplate the sourceTemplate
      */
-    public Builder(InstanceCatalogOfferingPrototype catalogOffering, ZoneIdentity zone) {
-      this.catalogOffering = catalogOffering;
-      this.zone = zone;
+    public Builder(InstanceTemplateIdentity sourceTemplate) {
+      this.sourceTemplate = sourceTemplate;
     }
 
     /**
-     * Builds a InstanceTemplatePrototypeInstanceByCatalogOfferingInstanceTemplateContext.
+     * Builds a InstanceTemplatePrototypeInstanceTemplateBySourceTemplate.
      *
-     * @return the new InstanceTemplatePrototypeInstanceByCatalogOfferingInstanceTemplateContext instance
+     * @return the new InstanceTemplatePrototypeInstanceTemplateBySourceTemplate instance
      */
-    public InstanceTemplatePrototypeInstanceByCatalogOfferingInstanceTemplateContext build() {
-      return new InstanceTemplatePrototypeInstanceByCatalogOfferingInstanceTemplateContext(this);
+    public InstanceTemplatePrototypeInstanceTemplateBySourceTemplate build() {
+      return new InstanceTemplatePrototypeInstanceTemplateBySourceTemplate(this);
     }
 
     /**
      * Adds an keys to keys.
      *
      * @param keys the new keys
-     * @return the InstanceTemplatePrototypeInstanceByCatalogOfferingInstanceTemplateContext builder
+     * @return the InstanceTemplatePrototypeInstanceTemplateBySourceTemplate builder
      */
     public Builder addKeys(KeyIdentity keys) {
       com.ibm.cloud.sdk.core.util.Validator.notNull(keys,
@@ -114,7 +116,7 @@ public class InstanceTemplatePrototypeInstanceByCatalogOfferingInstanceTemplateC
      * Adds an volumeAttachments to volumeAttachments.
      *
      * @param volumeAttachments the new volumeAttachments
-     * @return the InstanceTemplatePrototypeInstanceByCatalogOfferingInstanceTemplateContext builder
+     * @return the InstanceTemplatePrototypeInstanceTemplateBySourceTemplate builder
      */
     public Builder addVolumeAttachments(VolumeAttachmentPrototype volumeAttachments) {
       com.ibm.cloud.sdk.core.util.Validator.notNull(volumeAttachments,
@@ -130,7 +132,7 @@ public class InstanceTemplatePrototypeInstanceByCatalogOfferingInstanceTemplateC
      * Adds an networkInterfaces to networkInterfaces.
      *
      * @param networkInterfaces the new networkInterfaces
-     * @return the InstanceTemplatePrototypeInstanceByCatalogOfferingInstanceTemplateContext builder
+     * @return the InstanceTemplatePrototypeInstanceTemplateBySourceTemplate builder
      */
     public Builder addNetworkInterfaces(NetworkInterfacePrototype networkInterfaces) {
       com.ibm.cloud.sdk.core.util.Validator.notNull(networkInterfaces,
@@ -146,7 +148,7 @@ public class InstanceTemplatePrototypeInstanceByCatalogOfferingInstanceTemplateC
      * Set the availabilityPolicy.
      *
      * @param availabilityPolicy the availabilityPolicy
-     * @return the InstanceTemplatePrototypeInstanceByCatalogOfferingInstanceTemplateContext builder
+     * @return the InstanceTemplatePrototypeInstanceTemplateBySourceTemplate builder
      */
     public Builder availabilityPolicy(InstanceAvailabilityPolicyPrototype availabilityPolicy) {
       this.availabilityPolicy = availabilityPolicy;
@@ -157,7 +159,7 @@ public class InstanceTemplatePrototypeInstanceByCatalogOfferingInstanceTemplateC
      * Set the defaultTrustedProfile.
      *
      * @param defaultTrustedProfile the defaultTrustedProfile
-     * @return the InstanceTemplatePrototypeInstanceByCatalogOfferingInstanceTemplateContext builder
+     * @return the InstanceTemplatePrototypeInstanceTemplateBySourceTemplate builder
      */
     public Builder defaultTrustedProfile(InstanceDefaultTrustedProfilePrototype defaultTrustedProfile) {
       this.defaultTrustedProfile = defaultTrustedProfile;
@@ -169,7 +171,7 @@ public class InstanceTemplatePrototypeInstanceByCatalogOfferingInstanceTemplateC
      * Existing keys will be replaced.
      *
      * @param keys the keys
-     * @return the InstanceTemplatePrototypeInstanceByCatalogOfferingInstanceTemplateContext builder
+     * @return the InstanceTemplatePrototypeInstanceTemplateBySourceTemplate builder
      */
     public Builder keys(List<KeyIdentity> keys) {
       this.keys = keys;
@@ -180,7 +182,7 @@ public class InstanceTemplatePrototypeInstanceByCatalogOfferingInstanceTemplateC
      * Set the metadataService.
      *
      * @param metadataService the metadataService
-     * @return the InstanceTemplatePrototypeInstanceByCatalogOfferingInstanceTemplateContext builder
+     * @return the InstanceTemplatePrototypeInstanceTemplateBySourceTemplate builder
      */
     public Builder metadataService(InstanceMetadataServicePrototype metadataService) {
       this.metadataService = metadataService;
@@ -191,7 +193,7 @@ public class InstanceTemplatePrototypeInstanceByCatalogOfferingInstanceTemplateC
      * Set the name.
      *
      * @param name the name
-     * @return the InstanceTemplatePrototypeInstanceByCatalogOfferingInstanceTemplateContext builder
+     * @return the InstanceTemplatePrototypeInstanceTemplateBySourceTemplate builder
      */
     public Builder name(String name) {
       this.name = name;
@@ -202,7 +204,7 @@ public class InstanceTemplatePrototypeInstanceByCatalogOfferingInstanceTemplateC
      * Set the placementTarget.
      *
      * @param placementTarget the placementTarget
-     * @return the InstanceTemplatePrototypeInstanceByCatalogOfferingInstanceTemplateContext builder
+     * @return the InstanceTemplatePrototypeInstanceTemplateBySourceTemplate builder
      */
     public Builder placementTarget(InstancePlacementTargetPrototype placementTarget) {
       this.placementTarget = placementTarget;
@@ -213,7 +215,7 @@ public class InstanceTemplatePrototypeInstanceByCatalogOfferingInstanceTemplateC
      * Set the profile.
      *
      * @param profile the profile
-     * @return the InstanceTemplatePrototypeInstanceByCatalogOfferingInstanceTemplateContext builder
+     * @return the InstanceTemplatePrototypeInstanceTemplateBySourceTemplate builder
      */
     public Builder profile(InstanceProfileIdentity profile) {
       this.profile = profile;
@@ -224,7 +226,7 @@ public class InstanceTemplatePrototypeInstanceByCatalogOfferingInstanceTemplateC
      * Set the resourceGroup.
      *
      * @param resourceGroup the resourceGroup
-     * @return the InstanceTemplatePrototypeInstanceByCatalogOfferingInstanceTemplateContext builder
+     * @return the InstanceTemplatePrototypeInstanceTemplateBySourceTemplate builder
      */
     public Builder resourceGroup(ResourceGroupIdentity resourceGroup) {
       this.resourceGroup = resourceGroup;
@@ -235,7 +237,7 @@ public class InstanceTemplatePrototypeInstanceByCatalogOfferingInstanceTemplateC
      * Set the totalVolumeBandwidth.
      *
      * @param totalVolumeBandwidth the totalVolumeBandwidth
-     * @return the InstanceTemplatePrototypeInstanceByCatalogOfferingInstanceTemplateContext builder
+     * @return the InstanceTemplatePrototypeInstanceTemplateBySourceTemplate builder
      */
     public Builder totalVolumeBandwidth(long totalVolumeBandwidth) {
       this.totalVolumeBandwidth = totalVolumeBandwidth;
@@ -246,7 +248,7 @@ public class InstanceTemplatePrototypeInstanceByCatalogOfferingInstanceTemplateC
      * Set the userData.
      *
      * @param userData the userData
-     * @return the InstanceTemplatePrototypeInstanceByCatalogOfferingInstanceTemplateContext builder
+     * @return the InstanceTemplatePrototypeInstanceTemplateBySourceTemplate builder
      */
     public Builder userData(String userData) {
       this.userData = userData;
@@ -258,7 +260,7 @@ public class InstanceTemplatePrototypeInstanceByCatalogOfferingInstanceTemplateC
      * Existing volumeAttachments will be replaced.
      *
      * @param volumeAttachments the volumeAttachments
-     * @return the InstanceTemplatePrototypeInstanceByCatalogOfferingInstanceTemplateContext builder
+     * @return the InstanceTemplatePrototypeInstanceTemplateBySourceTemplate builder
      */
     public Builder volumeAttachments(List<VolumeAttachmentPrototype> volumeAttachments) {
       this.volumeAttachments = volumeAttachments;
@@ -269,7 +271,7 @@ public class InstanceTemplatePrototypeInstanceByCatalogOfferingInstanceTemplateC
      * Set the vpc.
      *
      * @param vpc the vpc
-     * @return the InstanceTemplatePrototypeInstanceByCatalogOfferingInstanceTemplateContext builder
+     * @return the InstanceTemplatePrototypeInstanceTemplateBySourceTemplate builder
      */
     public Builder vpc(VPCIdentity vpc) {
       this.vpc = vpc;
@@ -280,7 +282,7 @@ public class InstanceTemplatePrototypeInstanceByCatalogOfferingInstanceTemplateC
      * Set the bootVolumeAttachment.
      *
      * @param bootVolumeAttachment the bootVolumeAttachment
-     * @return the InstanceTemplatePrototypeInstanceByCatalogOfferingInstanceTemplateContext builder
+     * @return the InstanceTemplatePrototypeInstanceTemplateBySourceTemplate builder
      */
     public Builder bootVolumeAttachment(VolumeAttachmentPrototypeInstanceByImageContext bootVolumeAttachment) {
       this.bootVolumeAttachment = bootVolumeAttachment;
@@ -291,10 +293,21 @@ public class InstanceTemplatePrototypeInstanceByCatalogOfferingInstanceTemplateC
      * Set the catalogOffering.
      *
      * @param catalogOffering the catalogOffering
-     * @return the InstanceTemplatePrototypeInstanceByCatalogOfferingInstanceTemplateContext builder
+     * @return the InstanceTemplatePrototypeInstanceTemplateBySourceTemplate builder
      */
     public Builder catalogOffering(InstanceCatalogOfferingPrototype catalogOffering) {
       this.catalogOffering = catalogOffering;
+      return this;
+    }
+
+    /**
+     * Set the image.
+     *
+     * @param image the image
+     * @return the InstanceTemplatePrototypeInstanceTemplateBySourceTemplate builder
+     */
+    public Builder image(ImageIdentity image) {
+      this.image = image;
       return this;
     }
 
@@ -303,7 +316,7 @@ public class InstanceTemplatePrototypeInstanceByCatalogOfferingInstanceTemplateC
      * Existing networkInterfaces will be replaced.
      *
      * @param networkInterfaces the networkInterfaces
-     * @return the InstanceTemplatePrototypeInstanceByCatalogOfferingInstanceTemplateContext builder
+     * @return the InstanceTemplatePrototypeInstanceTemplateBySourceTemplate builder
      */
     public Builder networkInterfaces(List<NetworkInterfacePrototype> networkInterfaces) {
       this.networkInterfaces = networkInterfaces;
@@ -314,7 +327,7 @@ public class InstanceTemplatePrototypeInstanceByCatalogOfferingInstanceTemplateC
      * Set the primaryNetworkInterface.
      *
      * @param primaryNetworkInterface the primaryNetworkInterface
-     * @return the InstanceTemplatePrototypeInstanceByCatalogOfferingInstanceTemplateContext builder
+     * @return the InstanceTemplatePrototypeInstanceTemplateBySourceTemplate builder
      */
     public Builder primaryNetworkInterface(NetworkInterfacePrototype primaryNetworkInterface) {
       this.primaryNetworkInterface = primaryNetworkInterface;
@@ -322,10 +335,21 @@ public class InstanceTemplatePrototypeInstanceByCatalogOfferingInstanceTemplateC
     }
 
     /**
+     * Set the sourceTemplate.
+     *
+     * @param sourceTemplate the sourceTemplate
+     * @return the InstanceTemplatePrototypeInstanceTemplateBySourceTemplate builder
+     */
+    public Builder sourceTemplate(InstanceTemplateIdentity sourceTemplate) {
+      this.sourceTemplate = sourceTemplate;
+      return this;
+    }
+
+    /**
      * Set the zone.
      *
      * @param zone the zone
-     * @return the InstanceTemplatePrototypeInstanceByCatalogOfferingInstanceTemplateContext builder
+     * @return the InstanceTemplatePrototypeInstanceTemplateBySourceTemplate builder
      */
     public Builder zone(ZoneIdentity zone) {
       this.zone = zone;
@@ -333,13 +357,11 @@ public class InstanceTemplatePrototypeInstanceByCatalogOfferingInstanceTemplateC
     }
   }
 
-  protected InstanceTemplatePrototypeInstanceByCatalogOfferingInstanceTemplateContext() { }
+  protected InstanceTemplatePrototypeInstanceTemplateBySourceTemplate() { }
 
-  protected InstanceTemplatePrototypeInstanceByCatalogOfferingInstanceTemplateContext(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.catalogOffering,
-      "catalogOffering cannot be null");
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.zone,
-      "zone cannot be null");
+  protected InstanceTemplatePrototypeInstanceTemplateBySourceTemplate(Builder builder) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.sourceTemplate,
+      "sourceTemplate cannot be null");
     availabilityPolicy = builder.availabilityPolicy;
     defaultTrustedProfile = builder.defaultTrustedProfile;
     keys = builder.keys;
@@ -354,15 +376,17 @@ public class InstanceTemplatePrototypeInstanceByCatalogOfferingInstanceTemplateC
     vpc = builder.vpc;
     bootVolumeAttachment = builder.bootVolumeAttachment;
     catalogOffering = builder.catalogOffering;
+    image = builder.image;
     networkInterfaces = builder.networkInterfaces;
     primaryNetworkInterface = builder.primaryNetworkInterface;
+    sourceTemplate = builder.sourceTemplate;
     zone = builder.zone;
   }
 
   /**
    * New builder.
    *
-   * @return a InstanceTemplatePrototypeInstanceByCatalogOfferingInstanceTemplateContext builder
+   * @return a InstanceTemplatePrototypeInstanceTemplateBySourceTemplate builder
    */
   public Builder newBuilder() {
     return new Builder(this);

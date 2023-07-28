@@ -20,7 +20,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class ListNetworkAclRulesOptions extends GenericModel {
 
   /**
-   * Filters the collection to rules with the specified direction.
+   * Filters the collection to rules with a `direction` property matching the specified value.
    */
   public interface Direction {
     /** inbound. */
@@ -180,7 +180,7 @@ public class ListNetworkAclRulesOptions extends GenericModel {
   /**
    * Gets the direction.
    *
-   * Filters the collection to rules with the specified direction.
+   * Filters the collection to rules with a `direction` property matching the specified value.
    *
    * @return the direction
    */

@@ -38,12 +38,20 @@ public class ListSnapshotsOptionsTest {
       .resourceGroupId("testString")
       .name("testString")
       .sourceVolumeId("testString")
-      .sourceVolumeCrn("testString")
+      .sourceVolumeCrn("crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5")
       .sourceImageId("testString")
-      .sourceImageCrn("testString")
+      .sourceImageCrn("crn:v1:bluemix:public:is:us-south:a/123456::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8")
       .sort("name")
       .backupPolicyPlanId("testString")
-      .clonesZoneName("testString")
+      .copiesId("testString")
+      .copiesName("my-snapshot-copy")
+      .copiesCrn("testString")
+      .copiesRemoteRegionName("us-south")
+      .sourceSnapshotId("testString")
+      .sourceSnapshotRemoteRegionName("us-south")
+      .sourceVolumeRemoteRegionName("us-south")
+      .sourceImageRemoteRegionName("us-south")
+      .clonesZoneName("us-south-1")
       .build();
     assertEquals(listSnapshotsOptionsModel.start(), "testString");
     assertEquals(listSnapshotsOptionsModel.limit(), Long.valueOf("1"));
@@ -51,11 +59,19 @@ public class ListSnapshotsOptionsTest {
     assertEquals(listSnapshotsOptionsModel.resourceGroupId(), "testString");
     assertEquals(listSnapshotsOptionsModel.name(), "testString");
     assertEquals(listSnapshotsOptionsModel.sourceVolumeId(), "testString");
-    assertEquals(listSnapshotsOptionsModel.sourceVolumeCrn(), "testString");
+    assertEquals(listSnapshotsOptionsModel.sourceVolumeCrn(), "crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5");
     assertEquals(listSnapshotsOptionsModel.sourceImageId(), "testString");
-    assertEquals(listSnapshotsOptionsModel.sourceImageCrn(), "testString");
+    assertEquals(listSnapshotsOptionsModel.sourceImageCrn(), "crn:v1:bluemix:public:is:us-south:a/123456::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8");
     assertEquals(listSnapshotsOptionsModel.sort(), "name");
     assertEquals(listSnapshotsOptionsModel.backupPolicyPlanId(), "testString");
-    assertEquals(listSnapshotsOptionsModel.clonesZoneName(), "testString");
+    assertEquals(listSnapshotsOptionsModel.copiesId(), "testString");
+    assertEquals(listSnapshotsOptionsModel.copiesName(), "my-snapshot-copy");
+    assertEquals(listSnapshotsOptionsModel.copiesCrn(), "testString");
+    assertEquals(listSnapshotsOptionsModel.copiesRemoteRegionName(), "us-south");
+    assertEquals(listSnapshotsOptionsModel.sourceSnapshotId(), "testString");
+    assertEquals(listSnapshotsOptionsModel.sourceSnapshotRemoteRegionName(), "us-south");
+    assertEquals(listSnapshotsOptionsModel.sourceVolumeRemoteRegionName(), "us-south");
+    assertEquals(listSnapshotsOptionsModel.sourceImageRemoteRegionName(), "us-south");
+    assertEquals(listSnapshotsOptionsModel.clonesZoneName(), "us-south-1");
   }
 }

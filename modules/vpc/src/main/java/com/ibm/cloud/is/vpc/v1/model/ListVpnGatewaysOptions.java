@@ -32,7 +32,7 @@ public class ListVpnGatewaysOptions extends GenericModel {
   }
 
   /**
-   * Filters the collection to VPN gateways with the specified mode.
+   * Filters the collection to VPN gateways with a `mode` property matching the specified value.
    */
   public interface Mode {
     /** policy. */
@@ -185,7 +185,7 @@ public class ListVpnGatewaysOptions extends GenericModel {
   /**
    * Gets the resourceGroupId.
    *
-   * Filters the collection to resources in the resource group with the specified identifier.
+   * Filters the collection to resources with a `resource_group.id` property matching the specified identifier.
    *
    * @return the resourceGroupId
    */
@@ -209,7 +209,7 @@ public class ListVpnGatewaysOptions extends GenericModel {
   /**
    * Gets the mode.
    *
-   * Filters the collection to VPN gateways with the specified mode.
+   * Filters the collection to VPN gateways with a `mode` property matching the specified value.
    *
    * @return the mode
    */

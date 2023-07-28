@@ -13,12 +13,14 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.ibm.cloud.is.vpc.v1.model.AccountReference;
 import com.ibm.cloud.is.vpc.v1.model.CatalogOfferingVersionReference;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostGroupReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostReference;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.ImageReference;
 import com.ibm.cloud.is.vpc.v1.model.ImageReferenceDeleted;
+import com.ibm.cloud.is.vpc.v1.model.ImageRemote;
 import com.ibm.cloud.is.vpc.v1.model.Instance;
 import com.ibm.cloud.is.vpc.v1.model.InstanceAvailabilityPolicy;
 import com.ibm.cloud.is.vpc.v1.model.InstanceCatalogOffering;
@@ -35,6 +37,7 @@ import com.ibm.cloud.is.vpc.v1.model.InstanceStatusReason;
 import com.ibm.cloud.is.vpc.v1.model.InstanceVCPU;
 import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceInstanceContextReference;
 import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceInstanceContextReferenceDeleted;
+import com.ibm.cloud.is.vpc.v1.model.RegionReference;
 import com.ibm.cloud.is.vpc.v1.model.ReservedIPReference;
 import com.ibm.cloud.is.vpc.v1.model.ReservedIPReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;

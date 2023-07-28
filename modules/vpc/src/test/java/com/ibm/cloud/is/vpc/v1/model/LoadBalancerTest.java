@@ -56,6 +56,7 @@ public class LoadBalancerTest {
     assertNull(loadBalancerModel.getHostname());
     assertNull(loadBalancerModel.getHref());
     assertNull(loadBalancerModel.getId());
+    assertNull(loadBalancerModel.isInstanceGroupsSupported());
     assertNull(loadBalancerModel.isIsPublic());
     assertNull(loadBalancerModel.getListeners());
     assertNull(loadBalancerModel.getLogging());

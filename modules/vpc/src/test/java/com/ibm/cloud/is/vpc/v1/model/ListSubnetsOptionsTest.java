@@ -36,12 +36,12 @@ public class ListSubnetsOptionsTest {
       .limit(Long.valueOf("1"))
       .resourceGroupId("testString")
       .routingTableId("testString")
-      .routingTableName("testString")
+      .routingTableName("my-routing-table")
       .build();
     assertEquals(listSubnetsOptionsModel.start(), "testString");
     assertEquals(listSubnetsOptionsModel.limit(), Long.valueOf("1"));
     assertEquals(listSubnetsOptionsModel.resourceGroupId(), "testString");
     assertEquals(listSubnetsOptionsModel.routingTableId(), "testString");
-    assertEquals(listSubnetsOptionsModel.routingTableName(), "testString");
+    assertEquals(listSubnetsOptionsModel.routingTableName(), "my-routing-table");
   }
 }

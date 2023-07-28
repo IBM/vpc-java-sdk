@@ -37,6 +37,8 @@ public class BackupPolicyPlanPatch extends GenericModel {
   @SerializedName("deletion_trigger")
   protected BackupPolicyPlanDeletionTriggerPatch deletionTrigger;
   protected String name;
+  @SerializedName("remote_region_policies")
+  protected List<BackupPolicyPlanRemoteRegionPolicyPrototype> remoteRegionPolicies;
 
   /**
    * Builder.
@@ -49,6 +51,7 @@ public class BackupPolicyPlanPatch extends GenericModel {
     private String cronSpec;
     private BackupPolicyPlanDeletionTriggerPatch deletionTrigger;
     private String name;
+    private List<BackupPolicyPlanRemoteRegionPolicyPrototype> remoteRegionPolicies;
 
     /**
      * Instantiates a new Builder from an existing BackupPolicyPlanPatch instance.
@@ -63,6 +66,7 @@ public class BackupPolicyPlanPatch extends GenericModel {
       this.cronSpec = backupPolicyPlanPatch.cronSpec;
       this.deletionTrigger = backupPolicyPlanPatch.deletionTrigger;
       this.name = backupPolicyPlanPatch.name;
+      this.remoteRegionPolicies = backupPolicyPlanPatch.remoteRegionPolicies;
     }
 
     /**
@@ -93,6 +97,22 @@ public class BackupPolicyPlanPatch extends GenericModel {
         this.attachUserTags = new ArrayList<String>();
       }
       this.attachUserTags.add(attachUserTags);
+      return this;
+    }
+
+    /**
+     * Adds an remoteRegionPolicies to remoteRegionPolicies.
+     *
+     * @param remoteRegionPolicies the new remoteRegionPolicies
+     * @return the BackupPolicyPlanPatch builder
+     */
+    public Builder addRemoteRegionPolicies(BackupPolicyPlanRemoteRegionPolicyPrototype remoteRegionPolicies) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(remoteRegionPolicies,
+        "remoteRegionPolicies cannot be null");
+      if (this.remoteRegionPolicies == null) {
+        this.remoteRegionPolicies = new ArrayList<BackupPolicyPlanRemoteRegionPolicyPrototype>();
+      }
+      this.remoteRegionPolicies.add(remoteRegionPolicies);
       return this;
     }
 
@@ -173,6 +193,18 @@ public class BackupPolicyPlanPatch extends GenericModel {
       this.name = name;
       return this;
     }
+
+    /**
+     * Set the remoteRegionPolicies.
+     * Existing remoteRegionPolicies will be replaced.
+     *
+     * @param remoteRegionPolicies the remoteRegionPolicies
+     * @return the BackupPolicyPlanPatch builder
+     */
+    public Builder remoteRegionPolicies(List<BackupPolicyPlanRemoteRegionPolicyPrototype> remoteRegionPolicies) {
+      this.remoteRegionPolicies = remoteRegionPolicies;
+      return this;
+    }
   }
 
   protected BackupPolicyPlanPatch() { }
@@ -185,6 +217,7 @@ public class BackupPolicyPlanPatch extends GenericModel {
     cronSpec = builder.cronSpec;
     deletionTrigger = builder.deletionTrigger;
     name = builder.name;
+    remoteRegionPolicies = builder.remoteRegionPolicies;
   }
 
   /**
@@ -272,6 +305,17 @@ public class BackupPolicyPlanPatch extends GenericModel {
    */
   public String name() {
     return name;
+  }
+
+  /**
+   * Gets the remoteRegionPolicies.
+   *
+   * The policies for additional backups in remote regions (replacing any existing policies).
+   *
+   * @return the remoteRegionPolicies
+   */
+  public List<BackupPolicyPlanRemoteRegionPolicyPrototype> remoteRegionPolicies() {
+    return remoteRegionPolicies;
   }
 
   /**

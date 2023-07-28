@@ -17,6 +17,14 @@ package com.ibm.cloud.is.vpc.v1.model;
  */
 public class BackupPolicyJobSourceVolumeReference extends BackupPolicyJobSource {
 
+  /**
+   * The resource type.
+   */
+  public interface ResourceType {
+    /** volume. */
+    String VOLUME = "volume";
+  }
+
 
   protected BackupPolicyJobSourceVolumeReference() { }
 }

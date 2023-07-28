@@ -32,6 +32,8 @@ public class VolumeAttachmentPrototypeVolume extends GenericModel {
   protected Long iops;
   protected String name;
   protected VolumeProfileIdentity profile;
+  @SerializedName("resource_group")
+  protected ResourceGroupIdentity resourceGroup;
   @SerializedName("user_tags")
   protected List<String> userTags;
   protected Long capacity;
@@ -109,6 +111,18 @@ public class VolumeAttachmentPrototypeVolume extends GenericModel {
    */
   public VolumeProfileIdentity profile() {
     return profile;
+  }
+
+  /**
+   * Gets the resourceGroup.
+   *
+   * The resource group to use for this volume. If unspecified, the instance's resource group
+   * will be used.
+   *
+   * @return the resourceGroup
+   */
+  public ResourceGroupIdentity resourceGroup() {
+    return resourceGroup;
   }
 
   /**

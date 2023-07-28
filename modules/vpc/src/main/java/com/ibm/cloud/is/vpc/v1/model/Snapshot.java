@@ -67,6 +67,7 @@ public class Snapshot extends GenericModel {
   @SerializedName("captured_at")
   protected Date capturedAt;
   protected List<SnapshotClone> clones;
+  protected List<SnapshotCopiesItem> copies;
   @SerializedName("created_at")
   protected Date createdAt;
   protected String crn;
@@ -92,6 +93,8 @@ public class Snapshot extends GenericModel {
   protected Long size;
   @SerializedName("source_image")
   protected ImageReference sourceImage;
+  @SerializedName("source_snapshot")
+  protected SnapshotSourceSnapshot sourceSnapshot;
   @SerializedName("source_volume")
   protected VolumeReference sourceVolume;
   @SerializedName("user_tags")
@@ -144,6 +147,17 @@ public class Snapshot extends GenericModel {
    */
   public List<SnapshotClone> getClones() {
     return clones;
+  }
+
+  /**
+   * Gets the copies.
+   *
+   * The copies of this snapshot.
+   *
+   * @return the copies
+   */
+  public List<SnapshotCopiesItem> getCopies() {
+    return copies;
   }
 
   /**
@@ -328,6 +342,17 @@ public class Snapshot extends GenericModel {
    */
   public ImageReference getSourceImage() {
     return sourceImage;
+  }
+
+  /**
+   * Gets the sourceSnapshot.
+   *
+   * If present, the source snapshot this snapshot was created from.
+   *
+   * @return the sourceSnapshot
+   */
+  public SnapshotSourceSnapshot getSourceSnapshot() {
+    return sourceSnapshot;
   }
 
   /**

@@ -12,6 +12,8 @@
  */
 package com.ibm.cloud.is.vpc.v1.model;
 
+import java.util.Date;
+
 import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
@@ -24,7 +26,11 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class ImagePrototype extends GenericModel {
 
+  @SerializedName("deprecation_at")
+  protected Date deprecationAt;
   protected String name;
+  @SerializedName("obsolescence_at")
+  protected Date obsolescenceAt;
   @SerializedName("resource_group")
   protected ResourceGroupIdentity resourceGroup;
   @SerializedName("encrypted_data_key")
@@ -40,6 +46,26 @@ public class ImagePrototype extends GenericModel {
   protected ImagePrototype() { }
 
   /**
+   * Gets the deprecationAt.
+   *
+   * The deprecation date and time to set for this image.
+   *
+   * The date and time must not be in the past, and must be earlier than `obsolescence_at`
+   * (if `obsolescence_at` is set).
+   *
+   * If unspecified, no deprecation date and time will be set.
+   *
+   * If the deprecation date and time is reached while the image has a status of `pending`, the image's status will
+   * transition to `deprecated` upon its successful creation (or
+   * `obsolete` if the obsolescence date and time was also reached).
+   *
+   * @return the deprecationAt
+   */
+  public Date deprecationAt() {
+    return deprecationAt;
+  }
+
+  /**
    * Gets the name.
    *
    * The name for this image. The name must not be used by another image in the region. Names starting with `ibm-` are
@@ -50,6 +76,25 @@ public class ImagePrototype extends GenericModel {
    */
   public String name() {
     return name;
+  }
+
+  /**
+   * Gets the obsolescenceAt.
+   *
+   * The obsolescence date and time to set for this image.
+   *
+   * The date and time must not be in the past, and must be later than `deprecation_at` (if
+   * `deprecation_at` is set).
+   *
+   * If unspecified, no obsolescence date and time will be set.
+   *
+   * If the obsolescence date and time is reached while the image has a status of
+   * `pending`, the image's status will transition to `obsolete` upon its successful creation.
+   *
+   * @return the obsolescenceAt
+   */
+  public Date obsolescenceAt() {
+    return obsolescenceAt;
   }
 
   /**

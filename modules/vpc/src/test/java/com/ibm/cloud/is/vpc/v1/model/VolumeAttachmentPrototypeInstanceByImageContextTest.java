@@ -14,6 +14,7 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.EncryptionKeyIdentityByCRN;
+import com.ibm.cloud.is.vpc.v1.model.ResourceGroupIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototypeInstanceByImageContext;
 import com.ibm.cloud.is.vpc.v1.model.VolumeProfileIdentityByName;
 import com.ibm.cloud.is.vpc.v1.model.VolumePrototypeInstanceByImageContext;
@@ -44,12 +45,18 @@ public class VolumeAttachmentPrototypeInstanceByImageContextTest {
       .build();
     assertEquals(volumeProfileIdentityModel.name(), "general-purpose");
 
+    ResourceGroupIdentityById resourceGroupIdentityModel = new ResourceGroupIdentityById.Builder()
+      .id("fee82deba12e4c0fb69c3b09d1f12345")
+      .build();
+    assertEquals(resourceGroupIdentityModel.id(), "fee82deba12e4c0fb69c3b09d1f12345");
+
     VolumePrototypeInstanceByImageContext volumePrototypeInstanceByImageContextModel = new VolumePrototypeInstanceByImageContext.Builder()
       .capacity(Long.valueOf("100"))
       .encryptionKey(encryptionKeyIdentityModel)
       .iops(Long.valueOf("10000"))
       .name("my-volume")
       .profile(volumeProfileIdentityModel)
+      .resourceGroup(resourceGroupIdentityModel)
       .userTags(java.util.Arrays.asList("testString"))
       .build();
     assertEquals(volumePrototypeInstanceByImageContextModel.capacity(), Long.valueOf("100"));
@@ -57,6 +64,7 @@ public class VolumeAttachmentPrototypeInstanceByImageContextTest {
     assertEquals(volumePrototypeInstanceByImageContextModel.iops(), Long.valueOf("10000"));
     assertEquals(volumePrototypeInstanceByImageContextModel.name(), "my-volume");
     assertEquals(volumePrototypeInstanceByImageContextModel.profile(), volumeProfileIdentityModel);
+    assertEquals(volumePrototypeInstanceByImageContextModel.resourceGroup(), resourceGroupIdentityModel);
     assertEquals(volumePrototypeInstanceByImageContextModel.userTags(), java.util.Arrays.asList("testString"));
 
     VolumeAttachmentPrototypeInstanceByImageContext volumeAttachmentPrototypeInstanceByImageContextModel = new VolumeAttachmentPrototypeInstanceByImageContext.Builder()

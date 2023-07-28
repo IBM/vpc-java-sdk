@@ -13,8 +13,11 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.ibm.cloud.is.vpc.v1.model.AccountReference;
 import com.ibm.cloud.is.vpc.v1.model.ImageReference;
 import com.ibm.cloud.is.vpc.v1.model.ImageReferenceDeleted;
+import com.ibm.cloud.is.vpc.v1.model.ImageRemote;
+import com.ibm.cloud.is.vpc.v1.model.RegionReference;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -38,5 +41,7 @@ public class ImageReferenceTest {
     assertNull(imageReferenceModel.getHref());
     assertNull(imageReferenceModel.getId());
     assertNull(imageReferenceModel.getName());
+    assertNull(imageReferenceModel.getRemote());
+    assertNull(imageReferenceModel.getResourceType());
   }
 }

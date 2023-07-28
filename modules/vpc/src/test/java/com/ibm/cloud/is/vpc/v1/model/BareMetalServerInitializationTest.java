@@ -13,12 +13,15 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.ibm.cloud.is.vpc.v1.model.AccountReference;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerInitialization;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerInitializationUserAccountBareMetalServerInitializationHostUserAccount;
 import com.ibm.cloud.is.vpc.v1.model.ImageReference;
 import com.ibm.cloud.is.vpc.v1.model.ImageReferenceDeleted;
+import com.ibm.cloud.is.vpc.v1.model.ImageRemote;
 import com.ibm.cloud.is.vpc.v1.model.KeyReference;
 import com.ibm.cloud.is.vpc.v1.model.KeyReferenceDeleted;
+import com.ibm.cloud.is.vpc.v1.model.RegionReference;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;

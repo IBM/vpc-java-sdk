@@ -14,6 +14,7 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.EncryptionKeyIdentityByCRN;
+import com.ibm.cloud.is.vpc.v1.model.ResourceGroupIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.VolumeProfileIdentityByName;
 import com.ibm.cloud.is.vpc.v1.model.VolumePrototypeInstanceByImageContext;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
@@ -43,12 +44,18 @@ public class VolumePrototypeInstanceByImageContextTest {
       .build();
     assertEquals(volumeProfileIdentityModel.name(), "general-purpose");
 
+    ResourceGroupIdentityById resourceGroupIdentityModel = new ResourceGroupIdentityById.Builder()
+      .id("fee82deba12e4c0fb69c3b09d1f12345")
+      .build();
+    assertEquals(resourceGroupIdentityModel.id(), "fee82deba12e4c0fb69c3b09d1f12345");
+
     VolumePrototypeInstanceByImageContext volumePrototypeInstanceByImageContextModel = new VolumePrototypeInstanceByImageContext.Builder()
       .capacity(Long.valueOf("100"))
       .encryptionKey(encryptionKeyIdentityModel)
       .iops(Long.valueOf("10000"))
       .name("my-volume")
       .profile(volumeProfileIdentityModel)
+      .resourceGroup(resourceGroupIdentityModel)
       .userTags(java.util.Arrays.asList("testString"))
       .build();
     assertEquals(volumePrototypeInstanceByImageContextModel.capacity(), Long.valueOf("100"));
@@ -56,6 +63,7 @@ public class VolumePrototypeInstanceByImageContextTest {
     assertEquals(volumePrototypeInstanceByImageContextModel.iops(), Long.valueOf("10000"));
     assertEquals(volumePrototypeInstanceByImageContextModel.name(), "my-volume");
     assertEquals(volumePrototypeInstanceByImageContextModel.profile(), volumeProfileIdentityModel);
+    assertEquals(volumePrototypeInstanceByImageContextModel.resourceGroup(), resourceGroupIdentityModel);
     assertEquals(volumePrototypeInstanceByImageContextModel.userTags(), java.util.Arrays.asList("testString"));
 
     String json = TestUtilities.serialize(volumePrototypeInstanceByImageContextModel);
@@ -67,6 +75,7 @@ public class VolumePrototypeInstanceByImageContextTest {
     assertEquals(volumePrototypeInstanceByImageContextModelNew.iops(), Long.valueOf("10000"));
     assertEquals(volumePrototypeInstanceByImageContextModelNew.name(), "my-volume");
     assertEquals(volumePrototypeInstanceByImageContextModelNew.profile().toString(), volumeProfileIdentityModel.toString());
+    assertEquals(volumePrototypeInstanceByImageContextModelNew.resourceGroup().toString(), resourceGroupIdentityModel.toString());
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)
