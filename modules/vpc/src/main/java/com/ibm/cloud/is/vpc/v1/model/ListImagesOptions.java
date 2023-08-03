@@ -12,6 +12,9 @@
  */
 package com.ibm.cloud.is.vpc.v1.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
@@ -19,8 +22,25 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class ListImagesOptions extends GenericModel {
 
+  public interface Status {
+    /** available. */
+    String AVAILABLE = "available";
+    /** deleting. */
+    String DELETING = "deleting";
+    /** deprecated. */
+    String DEPRECATED = "deprecated";
+    /** failed. */
+    String FAILED = "failed";
+    /** obsolete. */
+    String OBSOLETE = "obsolete";
+    /** pending. */
+    String PENDING = "pending";
+    /** unusable. */
+    String UNUSABLE = "unusable";
+  }
+
   /**
-   * Filters the collection to images with the specified `visibility`.
+   * Filters the collection to images with a `visibility` property matching the specified value.
    */
   public interface Visibility {
     /** private. */
@@ -33,6 +53,7 @@ public class ListImagesOptions extends GenericModel {
   protected Long limit;
   protected String resourceGroupId;
   protected String name;
+  protected List<String> status;
   protected String visibility;
 
   /**
@@ -43,6 +64,7 @@ public class ListImagesOptions extends GenericModel {
     private Long limit;
     private String resourceGroupId;
     private String name;
+    private List<String> status;
     private String visibility;
 
     /**
@@ -55,6 +77,7 @@ public class ListImagesOptions extends GenericModel {
       this.limit = listImagesOptions.limit;
       this.resourceGroupId = listImagesOptions.resourceGroupId;
       this.name = listImagesOptions.name;
+      this.status = listImagesOptions.status;
       this.visibility = listImagesOptions.visibility;
     }
 
@@ -71,6 +94,22 @@ public class ListImagesOptions extends GenericModel {
      */
     public ListImagesOptions build() {
       return new ListImagesOptions(this);
+    }
+
+    /**
+     * Adds an status to status.
+     *
+     * @param status the new status
+     * @return the ListImagesOptions builder
+     */
+    public Builder addStatus(String status) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(status,
+        "status cannot be null");
+      if (this.status == null) {
+        this.status = new ArrayList<String>();
+      }
+      this.status.add(status);
+      return this;
     }
 
     /**
@@ -118,6 +157,18 @@ public class ListImagesOptions extends GenericModel {
     }
 
     /**
+     * Set the status.
+     * Existing status will be replaced.
+     *
+     * @param status the status
+     * @return the ListImagesOptions builder
+     */
+    public Builder status(List<String> status) {
+      this.status = status;
+      return this;
+    }
+
+    /**
      * Set the visibility.
      *
      * @param visibility the visibility
@@ -136,6 +187,7 @@ public class ListImagesOptions extends GenericModel {
     limit = builder.limit;
     resourceGroupId = builder.resourceGroupId;
     name = builder.name;
+    status = builder.status;
     visibility = builder.visibility;
   }
 
@@ -173,7 +225,7 @@ public class ListImagesOptions extends GenericModel {
   /**
    * Gets the resourceGroupId.
    *
-   * Filters the collection to resources in the resource group with the specified identifier.
+   * Filters the collection to resources with a `resource_group.id` property matching the specified identifier.
    *
    * @return the resourceGroupId
    */
@@ -184,7 +236,7 @@ public class ListImagesOptions extends GenericModel {
   /**
    * Gets the name.
    *
-   * Filters the collection to resources with the exact specified name.
+   * Filters the collection to resources with a `name` property matching the exact specified name.
    *
    * @return the name
    */
@@ -193,9 +245,20 @@ public class ListImagesOptions extends GenericModel {
   }
 
   /**
+   * Gets the status.
+   *
+   * Filters the collection to images with a `status` property matching one of the specified comma-separated values.
+   *
+   * @return the status
+   */
+  public List<String> status() {
+    return status;
+  }
+
+  /**
    * Gets the visibility.
    *
-   * Filters the collection to images with the specified `visibility`.
+   * Filters the collection to images with a `visibility` property matching the specified value.
    *
    * @return the visibility
    */

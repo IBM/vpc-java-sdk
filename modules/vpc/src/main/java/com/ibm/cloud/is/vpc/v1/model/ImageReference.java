@@ -12,6 +12,7 @@
  */
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
@@ -19,11 +20,22 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class ImageReference extends GenericModel {
 
+  /**
+   * The resource type.
+   */
+  public interface ResourceType {
+    /** image. */
+    String IMAGE = "image";
+  }
+
   protected String crn;
   protected ImageReferenceDeleted deleted;
   protected String href;
   protected String id;
   protected String name;
+  protected ImageRemote remote;
+  @SerializedName("resource_type")
+  protected String resourceType;
 
   protected ImageReference() { }
 
@@ -81,6 +93,29 @@ public class ImageReference extends GenericModel {
    */
   public String getName() {
     return name;
+  }
+
+  /**
+   * Gets the remote.
+   *
+   * If present, this property indicates that the resource associated with this reference
+   * is remote and therefore may not be directly retrievable.
+   *
+   * @return the remote
+   */
+  public ImageRemote getRemote() {
+    return remote;
+  }
+
+  /**
+   * Gets the resourceType.
+   *
+   * The resource type.
+   *
+   * @return the resourceType
+   */
+  public String getResourceType() {
+    return resourceType;
   }
 }
 

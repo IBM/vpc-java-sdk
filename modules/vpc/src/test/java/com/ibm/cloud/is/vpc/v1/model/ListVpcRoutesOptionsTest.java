@@ -33,12 +33,12 @@ public class ListVpcRoutesOptionsTest {
   public void testListVpcRoutesOptions() throws Throwable {
     ListVpcRoutesOptions listVpcRoutesOptionsModel = new ListVpcRoutesOptions.Builder()
       .vpcId("testString")
-      .zoneName("testString")
+      .zoneName("us-south-1")
       .start("testString")
       .limit(Long.valueOf("1"))
       .build();
     assertEquals(listVpcRoutesOptionsModel.vpcId(), "testString");
-    assertEquals(listVpcRoutesOptionsModel.zoneName(), "testString");
+    assertEquals(listVpcRoutesOptionsModel.zoneName(), "us-south-1");
     assertEquals(listVpcRoutesOptionsModel.start(), "testString");
     assertEquals(listVpcRoutesOptionsModel.limit(), Long.valueOf("1"));
   }

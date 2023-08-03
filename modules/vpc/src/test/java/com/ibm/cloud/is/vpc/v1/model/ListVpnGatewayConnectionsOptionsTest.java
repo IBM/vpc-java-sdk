@@ -33,10 +33,10 @@ public class ListVpnGatewayConnectionsOptionsTest {
   public void testListVpnGatewayConnectionsOptions() throws Throwable {
     ListVpnGatewayConnectionsOptions listVpnGatewayConnectionsOptionsModel = new ListVpnGatewayConnectionsOptions.Builder()
       .vpnGatewayId("testString")
-      .status("testString")
+      .status("down")
       .build();
     assertEquals(listVpnGatewayConnectionsOptionsModel.vpnGatewayId(), "testString");
-    assertEquals(listVpnGatewayConnectionsOptionsModel.status(), "testString");
+    assertEquals(listVpnGatewayConnectionsOptionsModel.status(), "down");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

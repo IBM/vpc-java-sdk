@@ -14,6 +14,7 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 import java.util.List;
 
+import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
@@ -24,6 +25,8 @@ public class VolumeCollection extends GenericModel {
   protected VolumeCollectionFirst first;
   protected Long limit;
   protected VolumeCollectionNext next;
+  @SerializedName("total_count")
+  protected Long totalCount;
   protected List<Volume> volumes;
 
   protected VolumeCollection() { }
@@ -60,6 +63,17 @@ public class VolumeCollection extends GenericModel {
    */
   public VolumeCollectionNext getNext() {
     return next;
+  }
+
+  /**
+   * Gets the totalCount.
+   *
+   * The total number of resources across all pages.
+   *
+   * @return the totalCount
+   */
+  public Long getTotalCount() {
+    return totalCount;
   }
 
   /**

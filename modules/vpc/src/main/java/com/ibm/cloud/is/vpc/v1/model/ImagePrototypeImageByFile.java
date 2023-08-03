@@ -12,6 +12,8 @@
  */
 package com.ibm.cloud.is.vpc.v1.model;
 
+import java.util.Date;
+
 /**
  * ImagePrototypeImageByFile.
  */
@@ -22,7 +24,9 @@ public class ImagePrototypeImageByFile extends ImagePrototype {
    * Builder.
    */
   public static class Builder {
+    private Date deprecationAt;
     private String name;
+    private Date obsolescenceAt;
     private ResourceGroupIdentity resourceGroup;
     private String encryptedDataKey;
     private EncryptionKeyIdentity encryptionKey;
@@ -35,7 +39,9 @@ public class ImagePrototypeImageByFile extends ImagePrototype {
      * @param imagePrototypeImageByFile the instance to initialize the Builder with
      */
     public Builder(ImagePrototype imagePrototypeImageByFile) {
+      this.deprecationAt = imagePrototypeImageByFile.deprecationAt;
       this.name = imagePrototypeImageByFile.name;
+      this.obsolescenceAt = imagePrototypeImageByFile.obsolescenceAt;
       this.resourceGroup = imagePrototypeImageByFile.resourceGroup;
       this.encryptedDataKey = imagePrototypeImageByFile.encryptedDataKey;
       this.encryptionKey = imagePrototypeImageByFile.encryptionKey;
@@ -70,6 +76,17 @@ public class ImagePrototypeImageByFile extends ImagePrototype {
     }
 
     /**
+     * Set the deprecationAt.
+     *
+     * @param deprecationAt the deprecationAt
+     * @return the ImagePrototypeImageByFile builder
+     */
+    public Builder deprecationAt(Date deprecationAt) {
+      this.deprecationAt = deprecationAt;
+      return this;
+    }
+
+    /**
      * Set the name.
      *
      * @param name the name
@@ -77,6 +94,17 @@ public class ImagePrototypeImageByFile extends ImagePrototype {
      */
     public Builder name(String name) {
       this.name = name;
+      return this;
+    }
+
+    /**
+     * Set the obsolescenceAt.
+     *
+     * @param obsolescenceAt the obsolescenceAt
+     * @return the ImagePrototypeImageByFile builder
+     */
+    public Builder obsolescenceAt(Date obsolescenceAt) {
+      this.obsolescenceAt = obsolescenceAt;
       return this;
     }
 
@@ -143,7 +171,9 @@ public class ImagePrototypeImageByFile extends ImagePrototype {
       "file cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.operatingSystem,
       "operatingSystem cannot be null");
+    deprecationAt = builder.deprecationAt;
     name = builder.name;
+    obsolescenceAt = builder.obsolescenceAt;
     resourceGroup = builder.resourceGroup;
     encryptedDataKey = builder.encryptedDataKey;
     encryptionKey = builder.encryptionKey;

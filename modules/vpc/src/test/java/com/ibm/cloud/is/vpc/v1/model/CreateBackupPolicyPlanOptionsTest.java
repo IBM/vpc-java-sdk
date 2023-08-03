@@ -15,7 +15,10 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanClonePolicyPrototype;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanDeletionTriggerPrototype;
+import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanRemoteRegionPolicyPrototype;
 import com.ibm.cloud.is.vpc.v1.model.CreateBackupPolicyPlanOptions;
+import com.ibm.cloud.is.vpc.v1.model.EncryptionKeyIdentityByCRN;
+import com.ibm.cloud.is.vpc.v1.model.RegionIdentityByName;
 import com.ibm.cloud.is.vpc.v1.model.ZoneIdentityByName;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
@@ -53,6 +56,25 @@ public class CreateBackupPolicyPlanOptionsTest {
     assertEquals(backupPolicyPlanDeletionTriggerPrototypeModel.deleteAfter(), Long.valueOf("20"));
     assertEquals(backupPolicyPlanDeletionTriggerPrototypeModel.deleteOverCount(), Long.valueOf("20"));
 
+    EncryptionKeyIdentityByCRN encryptionKeyIdentityModel = new EncryptionKeyIdentityByCRN.Builder()
+      .crn("crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179")
+      .build();
+    assertEquals(encryptionKeyIdentityModel.crn(), "crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179");
+
+    RegionIdentityByName regionIdentityModel = new RegionIdentityByName.Builder()
+      .name("us-south")
+      .build();
+    assertEquals(regionIdentityModel.name(), "us-south");
+
+    BackupPolicyPlanRemoteRegionPolicyPrototype backupPolicyPlanRemoteRegionPolicyPrototypeModel = new BackupPolicyPlanRemoteRegionPolicyPrototype.Builder()
+      .deleteOverCount(Long.valueOf("1"))
+      .encryptionKey(encryptionKeyIdentityModel)
+      .region(regionIdentityModel)
+      .build();
+    assertEquals(backupPolicyPlanRemoteRegionPolicyPrototypeModel.deleteOverCount(), Long.valueOf("1"));
+    assertEquals(backupPolicyPlanRemoteRegionPolicyPrototypeModel.encryptionKey(), encryptionKeyIdentityModel);
+    assertEquals(backupPolicyPlanRemoteRegionPolicyPrototypeModel.region(), regionIdentityModel);
+
     CreateBackupPolicyPlanOptions createBackupPolicyPlanOptionsModel = new CreateBackupPolicyPlanOptions.Builder()
       .backupPolicyId("testString")
       .cronSpec("30 */2 * * 1-5")
@@ -62,6 +84,7 @@ public class CreateBackupPolicyPlanOptionsTest {
       .copyUserTags(true)
       .deletionTrigger(backupPolicyPlanDeletionTriggerPrototypeModel)
       .name("my-policy-plan")
+      .remoteRegionPolicies(java.util.Arrays.asList(backupPolicyPlanRemoteRegionPolicyPrototypeModel))
       .build();
     assertEquals(createBackupPolicyPlanOptionsModel.backupPolicyId(), "testString");
     assertEquals(createBackupPolicyPlanOptionsModel.cronSpec(), "30 */2 * * 1-5");
@@ -71,6 +94,7 @@ public class CreateBackupPolicyPlanOptionsTest {
     assertEquals(createBackupPolicyPlanOptionsModel.copyUserTags(), Boolean.valueOf(true));
     assertEquals(createBackupPolicyPlanOptionsModel.deletionTrigger(), backupPolicyPlanDeletionTriggerPrototypeModel);
     assertEquals(createBackupPolicyPlanOptionsModel.name(), "my-policy-plan");
+    assertEquals(createBackupPolicyPlanOptionsModel.remoteRegionPolicies(), java.util.Arrays.asList(backupPolicyPlanRemoteRegionPolicyPrototypeModel));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

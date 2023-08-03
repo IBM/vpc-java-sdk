@@ -12,12 +12,26 @@
  */
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.ibm.cloud.sdk.core.service.model.GenericModel;
+
 /**
- * InstanceTemplateInstanceByImageInstanceTemplateContext.
+ * A link to the first page of resources.
  */
-public class InstanceTemplateInstanceByImageInstanceTemplateContext extends InstanceTemplate {
+public class RouteCollectionVPCContextFirst extends GenericModel {
 
+  protected String href;
 
-  protected InstanceTemplateInstanceByImageInstanceTemplateContext() { }
+  protected RouteCollectionVPCContextFirst() { }
+
+  /**
+   * Gets the href.
+   *
+   * The URL for a page of resources.
+   *
+   * @return the href
+   */
+  public String getHref() {
+    return href;
+  }
 }
 

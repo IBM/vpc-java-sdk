@@ -19,6 +19,7 @@ import com.ibm.cloud.is.vpc.v1.model.ResourceGroupIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.VolumeIdentityById;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
+import com.ibm.cloud.sdk.core.util.DateUtils;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.List;
@@ -50,12 +51,16 @@ public class ImagePrototypeImageBySourceVolumeTest {
     assertEquals(volumeIdentityModel.id(), "1e09281b-f177-46fb-baf1-bc152b2e391a");
 
     ImagePrototypeImageBySourceVolume imagePrototypeImageBySourceVolumeModel = new ImagePrototypeImageBySourceVolume.Builder()
+      .deprecationAt(DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"))
       .name("my-image")
+      .obsolescenceAt(DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"))
       .resourceGroup(resourceGroupIdentityModel)
       .encryptionKey(encryptionKeyIdentityModel)
       .sourceVolume(volumeIdentityModel)
       .build();
+    assertEquals(imagePrototypeImageBySourceVolumeModel.deprecationAt(), DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"));
     assertEquals(imagePrototypeImageBySourceVolumeModel.name(), "my-image");
+    assertEquals(imagePrototypeImageBySourceVolumeModel.obsolescenceAt(), DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"));
     assertEquals(imagePrototypeImageBySourceVolumeModel.resourceGroup(), resourceGroupIdentityModel);
     assertEquals(imagePrototypeImageBySourceVolumeModel.encryptionKey(), encryptionKeyIdentityModel);
     assertEquals(imagePrototypeImageBySourceVolumeModel.sourceVolume(), volumeIdentityModel);
@@ -64,7 +69,9 @@ public class ImagePrototypeImageBySourceVolumeTest {
 
     ImagePrototypeImageBySourceVolume imagePrototypeImageBySourceVolumeModelNew = TestUtilities.deserialize(json, ImagePrototypeImageBySourceVolume.class);
     assertTrue(imagePrototypeImageBySourceVolumeModelNew instanceof ImagePrototypeImageBySourceVolume);
+    assertEquals(imagePrototypeImageBySourceVolumeModelNew.deprecationAt(), DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"));
     assertEquals(imagePrototypeImageBySourceVolumeModelNew.name(), "my-image");
+    assertEquals(imagePrototypeImageBySourceVolumeModelNew.obsolescenceAt(), DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"));
     assertEquals(imagePrototypeImageBySourceVolumeModelNew.resourceGroup().toString(), resourceGroupIdentityModel.toString());
     assertEquals(imagePrototypeImageBySourceVolumeModelNew.encryptionKey().toString(), encryptionKeyIdentityModel.toString());
     assertEquals(imagePrototypeImageBySourceVolumeModelNew.sourceVolume().toString(), volumeIdentityModel.toString());

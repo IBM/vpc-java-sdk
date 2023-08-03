@@ -69,6 +69,14 @@ public class Volume extends GenericModel {
   }
 
   /**
+   * The resource type.
+   */
+  public interface ResourceType {
+    /** volume. */
+    String VOLUME = "volume";
+  }
+
+  /**
    * The status of the volume.
    *
    * The enumerated values for this property will expand in the future. When processing this property, check for and log
@@ -115,6 +123,8 @@ public class Volume extends GenericModel {
   protected VolumeProfileReference profile;
   @SerializedName("resource_group")
   protected ResourceGroupReference resourceGroup;
+  @SerializedName("resource_type")
+  protected String resourceType;
   @SerializedName("source_image")
   protected ImageReference sourceImage;
   @SerializedName("source_snapshot")
@@ -346,6 +356,17 @@ public class Volume extends GenericModel {
    */
   public ResourceGroupReference getResourceGroup() {
     return resourceGroup;
+  }
+
+  /**
+   * Gets the resourceType.
+   *
+   * The resource type.
+   *
+   * @return the resourceType
+   */
+  public String getResourceType() {
+    return resourceType;
   }
 
   /**

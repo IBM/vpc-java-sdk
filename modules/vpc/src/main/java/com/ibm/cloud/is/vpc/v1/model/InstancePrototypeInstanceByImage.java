@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * InstancePrototypeInstanceByImage.
+ * Create an instance by using an image.
  */
 public class InstancePrototypeInstanceByImage extends InstancePrototype {
 

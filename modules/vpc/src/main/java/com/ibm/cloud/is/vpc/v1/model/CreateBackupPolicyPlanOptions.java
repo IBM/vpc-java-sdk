@@ -30,6 +30,7 @@ public class CreateBackupPolicyPlanOptions extends GenericModel {
   protected Boolean copyUserTags;
   protected BackupPolicyPlanDeletionTriggerPrototype deletionTrigger;
   protected String name;
+  protected List<BackupPolicyPlanRemoteRegionPolicyPrototype> remoteRegionPolicies;
 
   /**
    * Builder.
@@ -43,6 +44,7 @@ public class CreateBackupPolicyPlanOptions extends GenericModel {
     private Boolean copyUserTags;
     private BackupPolicyPlanDeletionTriggerPrototype deletionTrigger;
     private String name;
+    private List<BackupPolicyPlanRemoteRegionPolicyPrototype> remoteRegionPolicies;
 
     /**
      * Instantiates a new Builder from an existing CreateBackupPolicyPlanOptions instance.
@@ -58,6 +60,7 @@ public class CreateBackupPolicyPlanOptions extends GenericModel {
       this.copyUserTags = createBackupPolicyPlanOptions.copyUserTags;
       this.deletionTrigger = createBackupPolicyPlanOptions.deletionTrigger;
       this.name = createBackupPolicyPlanOptions.name;
+      this.remoteRegionPolicies = createBackupPolicyPlanOptions.remoteRegionPolicies;
     }
 
     /**
@@ -99,6 +102,22 @@ public class CreateBackupPolicyPlanOptions extends GenericModel {
         this.attachUserTags = new ArrayList<String>();
       }
       this.attachUserTags.add(attachUserTags);
+      return this;
+    }
+
+    /**
+     * Adds an remoteRegionPolicies to remoteRegionPolicies.
+     *
+     * @param remoteRegionPolicies the new remoteRegionPolicies
+     * @return the CreateBackupPolicyPlanOptions builder
+     */
+    public Builder addRemoteRegionPolicies(BackupPolicyPlanRemoteRegionPolicyPrototype remoteRegionPolicies) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(remoteRegionPolicies,
+        "remoteRegionPolicies cannot be null");
+      if (this.remoteRegionPolicies == null) {
+        this.remoteRegionPolicies = new ArrayList<BackupPolicyPlanRemoteRegionPolicyPrototype>();
+      }
+      this.remoteRegionPolicies.add(remoteRegionPolicies);
       return this;
     }
 
@@ -190,6 +209,18 @@ public class CreateBackupPolicyPlanOptions extends GenericModel {
       this.name = name;
       return this;
     }
+
+    /**
+     * Set the remoteRegionPolicies.
+     * Existing remoteRegionPolicies will be replaced.
+     *
+     * @param remoteRegionPolicies the remoteRegionPolicies
+     * @return the CreateBackupPolicyPlanOptions builder
+     */
+    public Builder remoteRegionPolicies(List<BackupPolicyPlanRemoteRegionPolicyPrototype> remoteRegionPolicies) {
+      this.remoteRegionPolicies = remoteRegionPolicies;
+      return this;
+    }
   }
 
   protected CreateBackupPolicyPlanOptions() { }
@@ -207,6 +238,7 @@ public class CreateBackupPolicyPlanOptions extends GenericModel {
     copyUserTags = builder.copyUserTags;
     deletionTrigger = builder.deletionTrigger;
     name = builder.name;
+    remoteRegionPolicies = builder.remoteRegionPolicies;
   }
 
   /**
@@ -305,6 +337,17 @@ public class CreateBackupPolicyPlanOptions extends GenericModel {
    */
   public String name() {
     return name;
+  }
+
+  /**
+   * Gets the remoteRegionPolicies.
+   *
+   * The policies for additional backups in remote regions.
+   *
+   * @return the remoteRegionPolicies
+   */
+  public List<BackupPolicyPlanRemoteRegionPolicyPrototype> remoteRegionPolicies() {
+    return remoteRegionPolicies;
   }
 }
 

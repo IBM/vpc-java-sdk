@@ -14,6 +14,7 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.EncryptionKeyIdentityByCRN;
+import com.ibm.cloud.is.vpc.v1.model.ResourceGroupIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.VolumeProfileIdentityByName;
 import com.ibm.cloud.is.vpc.v1.model.VolumePrototypeInstanceBySourceSnapshotContext;
@@ -44,6 +45,11 @@ public class VolumePrototypeInstanceBySourceSnapshotContextTest {
       .build();
     assertEquals(volumeProfileIdentityModel.name(), "general-purpose");
 
+    ResourceGroupIdentityById resourceGroupIdentityModel = new ResourceGroupIdentityById.Builder()
+      .id("fee82deba12e4c0fb69c3b09d1f12345")
+      .build();
+    assertEquals(resourceGroupIdentityModel.id(), "fee82deba12e4c0fb69c3b09d1f12345");
+
     SnapshotIdentityById snapshotIdentityModel = new SnapshotIdentityById.Builder()
       .id("349a61d8-7ab1-420f-a690-5fed76ef9d4f")
       .build();
@@ -55,6 +61,7 @@ public class VolumePrototypeInstanceBySourceSnapshotContextTest {
       .iops(Long.valueOf("10000"))
       .name("my-volume")
       .profile(volumeProfileIdentityModel)
+      .resourceGroup(resourceGroupIdentityModel)
       .sourceSnapshot(snapshotIdentityModel)
       .userTags(java.util.Arrays.asList("testString"))
       .build();
@@ -63,6 +70,7 @@ public class VolumePrototypeInstanceBySourceSnapshotContextTest {
     assertEquals(volumePrototypeInstanceBySourceSnapshotContextModel.iops(), Long.valueOf("10000"));
     assertEquals(volumePrototypeInstanceBySourceSnapshotContextModel.name(), "my-volume");
     assertEquals(volumePrototypeInstanceBySourceSnapshotContextModel.profile(), volumeProfileIdentityModel);
+    assertEquals(volumePrototypeInstanceBySourceSnapshotContextModel.resourceGroup(), resourceGroupIdentityModel);
     assertEquals(volumePrototypeInstanceBySourceSnapshotContextModel.sourceSnapshot(), snapshotIdentityModel);
     assertEquals(volumePrototypeInstanceBySourceSnapshotContextModel.userTags(), java.util.Arrays.asList("testString"));
 
@@ -75,6 +83,7 @@ public class VolumePrototypeInstanceBySourceSnapshotContextTest {
     assertEquals(volumePrototypeInstanceBySourceSnapshotContextModelNew.iops(), Long.valueOf("10000"));
     assertEquals(volumePrototypeInstanceBySourceSnapshotContextModelNew.name(), "my-volume");
     assertEquals(volumePrototypeInstanceBySourceSnapshotContextModelNew.profile().toString(), volumeProfileIdentityModel.toString());
+    assertEquals(volumePrototypeInstanceBySourceSnapshotContextModelNew.resourceGroup().toString(), resourceGroupIdentityModel.toString());
     assertEquals(volumePrototypeInstanceBySourceSnapshotContextModelNew.sourceSnapshot().toString(), snapshotIdentityModel.toString());
   }
 

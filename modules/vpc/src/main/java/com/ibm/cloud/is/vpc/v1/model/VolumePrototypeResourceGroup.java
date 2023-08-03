@@ -12,12 +12,30 @@
  */
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.ibm.cloud.sdk.core.service.model.GenericModel;
+
 /**
- * InstanceTemplateInstanceByCatalogOfferingInstanceTemplateContext.
+ * The resource group to use. If unspecified, the account's [default resource
+ * group](https://cloud.ibm.com/apidocs/resource-manager#introduction) is used.
+ *
+ * Classes which extend this class:
+ * - VolumePrototypeResourceGroupResourceGroupIdentityById
  */
-public class InstanceTemplateInstanceByCatalogOfferingInstanceTemplateContext extends InstanceTemplate {
+public class VolumePrototypeResourceGroup extends GenericModel {
 
+  protected String id;
 
-  protected InstanceTemplateInstanceByCatalogOfferingInstanceTemplateContext() { }
+  protected VolumePrototypeResourceGroup() { }
+
+  /**
+   * Gets the id.
+   *
+   * The unique identifier for this resource group.
+   *
+   * @return the id
+   */
+  public String id() {
+    return id;
+  }
 }
 

@@ -35,13 +35,13 @@ public class ListDedicatedHostGroupsOptionsTest {
       .start("testString")
       .limit(Long.valueOf("1"))
       .resourceGroupId("testString")
-      .zoneName("testString")
+      .zoneName("us-south-1")
       .name("testString")
       .build();
     assertEquals(listDedicatedHostGroupsOptionsModel.start(), "testString");
     assertEquals(listDedicatedHostGroupsOptionsModel.limit(), Long.valueOf("1"));
     assertEquals(listDedicatedHostGroupsOptionsModel.resourceGroupId(), "testString");
-    assertEquals(listDedicatedHostGroupsOptionsModel.zoneName(), "testString");
+    assertEquals(listDedicatedHostGroupsOptionsModel.zoneName(), "us-south-1");
     assertEquals(listDedicatedHostGroupsOptionsModel.name(), "testString");
   }
 }

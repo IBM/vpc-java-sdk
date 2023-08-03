@@ -20,15 +20,9 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class CreateIkePolicyOptions extends GenericModel {
 
   /**
-   * The authentication algorithm
-   *
-   * The `md5` and `sha1` algorithms have been deprecated.
+   * The authentication algorithm.
    */
   public interface AuthenticationAlgorithm {
-    /** md5. */
-    String MD5 = "md5";
-    /** sha1. */
-    String SHA1 = "sha1";
     /** sha256. */
     String SHA256 = "sha256";
     /** sha384. */
@@ -38,9 +32,7 @@ public class CreateIkePolicyOptions extends GenericModel {
   }
 
   /**
-   * The encryption algorithm
-   *
-   * The `triple_des` algorithm has been deprecated.
+   * The encryption algorithm.
    */
   public interface EncryptionAlgorithm {
     /** aes128. */
@@ -49,8 +41,6 @@ public class CreateIkePolicyOptions extends GenericModel {
     String AES192 = "aes192";
     /** aes256. */
     String AES256 = "aes256";
-    /** triple_des. */
-    String TRIPLE_DES = "triple_des";
   }
 
   protected String authenticationAlgorithm;
@@ -228,9 +218,7 @@ public class CreateIkePolicyOptions extends GenericModel {
   /**
    * Gets the authenticationAlgorithm.
    *
-   * The authentication algorithm
-   *
-   * The `md5` and `sha1` algorithms have been deprecated.
+   * The authentication algorithm.
    *
    * @return the authenticationAlgorithm
    */
@@ -241,9 +229,7 @@ public class CreateIkePolicyOptions extends GenericModel {
   /**
    * Gets the dhGroup.
    *
-   * The Diffie-Hellman group
-   *
-   * Groups `2` and `5` have been deprecated.
+   * The Diffie-Hellman group.
    *
    * @return the dhGroup
    */
@@ -254,9 +240,7 @@ public class CreateIkePolicyOptions extends GenericModel {
   /**
    * Gets the encryptionAlgorithm.
    *
-   * The encryption algorithm
-   *
-   * The `triple_des` algorithm has been deprecated.
+   * The encryption algorithm.
    *
    * @return the encryptionAlgorithm
    */

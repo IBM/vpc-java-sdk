@@ -38,5 +38,6 @@ public class VolumeReferenceVolumeAttachmentContextTest {
     assertNull(volumeReferenceVolumeAttachmentContextModel.getHref());
     assertNull(volumeReferenceVolumeAttachmentContextModel.getId());
     assertNull(volumeReferenceVolumeAttachmentContextModel.getName());
+    assertNull(volumeReferenceVolumeAttachmentContextModel.getResourceType());
   }
 }

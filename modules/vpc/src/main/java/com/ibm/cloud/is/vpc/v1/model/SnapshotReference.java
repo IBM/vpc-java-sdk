@@ -33,6 +33,7 @@ public class SnapshotReference extends GenericModel {
   protected String href;
   protected String id;
   protected String name;
+  protected SnapshotRemote remote;
   @SerializedName("resource_type")
   protected String resourceType;
 
@@ -92,6 +93,18 @@ public class SnapshotReference extends GenericModel {
    */
   public String getName() {
     return name;
+  }
+
+  /**
+   * Gets the remote.
+   *
+   * If present, this property indicates that the resource associated with this reference
+   * is remote and therefore may not be directly retrievable.
+   *
+   * @return the remote
+   */
+  public SnapshotRemote getRemote() {
+    return remote;
   }
 
   /**

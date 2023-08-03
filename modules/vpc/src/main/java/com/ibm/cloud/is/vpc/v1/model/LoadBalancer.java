@@ -83,6 +83,8 @@ public class LoadBalancer extends GenericModel {
   protected String hostname;
   protected String href;
   protected String id;
+  @SerializedName("instance_groups_supported")
+  protected Boolean instanceGroupsSupported;
   @SerializedName("is_public")
   protected Boolean isPublic;
   protected List<LoadBalancerListenerReference> listeners;
@@ -181,6 +183,17 @@ public class LoadBalancer extends GenericModel {
    */
   public String getId() {
     return id;
+  }
+
+  /**
+   * Gets the instanceGroupsSupported.
+   *
+   * Indicates whether this load balancer supports instance groups.
+   *
+   * @return the instanceGroupsSupported
+   */
+  public Boolean isInstanceGroupsSupported() {
+    return instanceGroupsSupported;
   }
 
   /**

@@ -14,6 +14,7 @@
 package com.ibm.cloud.is.vpc.v1;
 
 import com.ibm.cloud.is.test.SdkIntegrationTestBase;
+import com.ibm.cloud.is.vpc.v1.model.AccountReference;
 import com.ibm.cloud.is.vpc.v1.model.AddBareMetalServerNetworkInterfaceFloatingIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.AddEndpointGatewayIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.AddInstanceNetworkInterfaceFloatingIpOptions;
@@ -50,6 +51,9 @@ import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanPatch;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanPrototype;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanReference;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanReferenceDeleted;
+import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanRemote;
+import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanRemoteRegionPolicy;
+import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanRemoteRegionPolicyPrototype;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServer;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerBootTarget;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerBootTargetBareMetalServerDiskReference;
@@ -323,6 +327,7 @@ import com.ibm.cloud.is.vpc.v1.model.DeleteVpnGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteVpnServerClientOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteVpnServerOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteVpnServerRouteOptions;
+import com.ibm.cloud.is.vpc.v1.model.DeprecateImageOptions;
 import com.ibm.cloud.is.vpc.v1.model.DisconnectVpnClientOptions;
 import com.ibm.cloud.is.vpc.v1.model.EncryptionKeyIdentity;
 import com.ibm.cloud.is.vpc.v1.model.EncryptionKeyIdentityByCRN;
@@ -515,6 +520,7 @@ import com.ibm.cloud.is.vpc.v1.model.ImagePrototypeImageByFile;
 import com.ibm.cloud.is.vpc.v1.model.ImagePrototypeImageBySourceVolume;
 import com.ibm.cloud.is.vpc.v1.model.ImageReference;
 import com.ibm.cloud.is.vpc.v1.model.ImageReferenceDeleted;
+import com.ibm.cloud.is.vpc.v1.model.ImageRemote;
 import com.ibm.cloud.is.vpc.v1.model.ImageStatusReason;
 import com.ibm.cloud.is.vpc.v1.model.ImagesPager;
 import com.ibm.cloud.is.vpc.v1.model.Instance;
@@ -718,15 +724,15 @@ import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateIdentity;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateIdentityByHref;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateIdentityById;
-import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateInstanceByCatalogOfferingInstanceTemplateContext;
-import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateInstanceByImageInstanceTemplateContext;
-import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateInstanceBySourceSnapshotInstanceTemplateContext;
+import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateInstanceByCatalogOffering;
+import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateInstanceByImage;
+import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateInstanceBySourceSnapshot;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplatePatch;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplatePrototype;
-import com.ibm.cloud.is.vpc.v1.model.InstanceTemplatePrototypeInstanceByCatalogOfferingInstanceTemplateContext;
-import com.ibm.cloud.is.vpc.v1.model.InstanceTemplatePrototypeInstanceByImageInstanceTemplateContext;
-import com.ibm.cloud.is.vpc.v1.model.InstanceTemplatePrototypeInstanceBySourceSnapshotInstanceTemplateContext;
-import com.ibm.cloud.is.vpc.v1.model.InstanceTemplatePrototypeInstanceBySourceTemplate;
+import com.ibm.cloud.is.vpc.v1.model.InstanceTemplatePrototypeInstanceTemplateByCatalogOffering;
+import com.ibm.cloud.is.vpc.v1.model.InstanceTemplatePrototypeInstanceTemplateByImage;
+import com.ibm.cloud.is.vpc.v1.model.InstanceTemplatePrototypeInstanceTemplateBySourceSnapshot;
+import com.ibm.cloud.is.vpc.v1.model.InstanceTemplatePrototypeInstanceTemplateBySourceTemplate;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateReference;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.InstanceVCPU;
@@ -917,6 +923,9 @@ import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileIdentity;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileIdentityByHref;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileIdentityByName;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileInstanceGroupsSupported;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileInstanceGroupsSupportedDependent;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileInstanceGroupsSupportedFixed;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileLoggingSupported;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileReference;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileRouteModeSupported;
@@ -991,6 +1000,7 @@ import com.ibm.cloud.is.vpc.v1.model.NetworkInterfacePrototype;
 import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceReferenceTargetContextDeleted;
 import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceUnpaginatedCollection;
+import com.ibm.cloud.is.vpc.v1.model.ObsoleteImageOptions;
 import com.ibm.cloud.is.vpc.v1.model.OperatingSystem;
 import com.ibm.cloud.is.vpc.v1.model.OperatingSystemCollection;
 import com.ibm.cloud.is.vpc.v1.model.OperatingSystemCollectionFirst;
@@ -1028,6 +1038,9 @@ import com.ibm.cloud.is.vpc.v1.model.PublicGatewayReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.PublicGatewaysPager;
 import com.ibm.cloud.is.vpc.v1.model.Region;
 import com.ibm.cloud.is.vpc.v1.model.RegionCollection;
+import com.ibm.cloud.is.vpc.v1.model.RegionIdentity;
+import com.ibm.cloud.is.vpc.v1.model.RegionIdentityByHref;
+import com.ibm.cloud.is.vpc.v1.model.RegionIdentityByName;
 import com.ibm.cloud.is.vpc.v1.model.RegionReference;
 import com.ibm.cloud.is.vpc.v1.model.RemoveBareMetalServerNetworkInterfaceFloatingIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.RemoveEndpointGatewayIpOptions;
@@ -1071,6 +1084,10 @@ import com.ibm.cloud.is.vpc.v1.model.Route;
 import com.ibm.cloud.is.vpc.v1.model.RouteCollection;
 import com.ibm.cloud.is.vpc.v1.model.RouteCollectionFirst;
 import com.ibm.cloud.is.vpc.v1.model.RouteCollectionNext;
+import com.ibm.cloud.is.vpc.v1.model.RouteCollectionVPCContext;
+import com.ibm.cloud.is.vpc.v1.model.RouteCollectionVPCContextFirst;
+import com.ibm.cloud.is.vpc.v1.model.RouteCollectionVPCContextNext;
+import com.ibm.cloud.is.vpc.v1.model.RouteCollectionVPCContextRoutesItem;
 import com.ibm.cloud.is.vpc.v1.model.RouteCreator;
 import com.ibm.cloud.is.vpc.v1.model.RouteCreatorVPNGatewayReference;
 import com.ibm.cloud.is.vpc.v1.model.RouteCreatorVPNServerReference;
@@ -1162,15 +1179,19 @@ import com.ibm.cloud.is.vpc.v1.model.SnapshotClonePrototype;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotCollection;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotCollectionFirst;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotCollectionNext;
+import com.ibm.cloud.is.vpc.v1.model.SnapshotCopiesItem;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotIdentity;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotIdentityByHref;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotPatch;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotPrototype;
+import com.ibm.cloud.is.vpc.v1.model.SnapshotPrototypeSnapshotBySourceSnapshot;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotPrototypeSnapshotBySourceVolume;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotReference;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotReferenceDeleted;
+import com.ibm.cloud.is.vpc.v1.model.SnapshotRemote;
+import com.ibm.cloud.is.vpc.v1.model.SnapshotSourceSnapshot;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotsPager;
 import com.ibm.cloud.is.vpc.v1.model.StartBareMetalServerOptions;
 import com.ibm.cloud.is.vpc.v1.model.StopBareMetalServerOptions;
@@ -1375,6 +1396,7 @@ import com.ibm.cloud.is.vpc.v1.model.VolumeReference;
 import com.ibm.cloud.is.vpc.v1.model.VolumeReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.VolumeReferenceVolumeAttachmentContext;
 import com.ibm.cloud.is.vpc.v1.model.VolumeReferenceVolumeAttachmentContextDeleted;
+import com.ibm.cloud.is.vpc.v1.model.VolumeRemote;
 import com.ibm.cloud.is.vpc.v1.model.VolumeStatusReason;
 import com.ibm.cloud.is.vpc.v1.model.VolumesPager;
 import com.ibm.cloud.is.vpc.v1.model.VpcAddressPrefixesPager;
@@ -1794,20 +1816,20 @@ public class VpcIT extends SdkIntegrationTestBase {
     try {
       ListVpcRoutesOptions listVpcRoutesOptions = new ListVpcRoutesOptions.Builder()
         .vpcId("testString")
-        .zoneName("testString")
+        .zoneName("us-south-1")
         .start("testString")
         .limit(Long.valueOf("10"))
         .build();
 
       // Invoke operation
-      Response<RouteCollection> response = service.listVpcRoutes(listVpcRoutesOptions).execute();
+      Response<RouteCollectionVPCContext> response = service.listVpcRoutes(listVpcRoutesOptions).execute();
       // Validate response
       assertNotNull(response);
       assertEquals(response.getStatusCode(), 200);
 
-      RouteCollection routeCollectionResult = response.getResult();
+      RouteCollectionVPCContext routeCollectionVpcContextResult = response.getResult();
 
-      assertNotNull(routeCollectionResult);
+      assertNotNull(routeCollectionVpcContextResult);
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -1819,15 +1841,15 @@ public class VpcIT extends SdkIntegrationTestBase {
     try {
       ListVpcRoutesOptions options = new ListVpcRoutesOptions.Builder()
         .vpcId("testString")
-        .zoneName("testString")
+        .zoneName("us-south-1")
         .limit(Long.valueOf("10"))
         .build();
 
       // Test getNext().
-      List<Route> allResults = new ArrayList<>();
+      List<RouteCollectionVPCContextRoutesItem> allResults = new ArrayList<>();
       VpcRoutesPager pager = new VpcRoutesPager(service, options);
       while (pager.hasNext()) {
-        List<Route> nextPage = pager.getNext();
+        List<RouteCollectionVPCContextRoutesItem> nextPage = pager.getNext();
         assertNotNull(nextPage);
         allResults.addAll(nextPage);
       }
@@ -1835,7 +1857,7 @@ public class VpcIT extends SdkIntegrationTestBase {
 
       // Test getAll();
       pager = new VpcRoutesPager(service, options);
-      List<Route> allItems = pager.getAll();
+      List<RouteCollectionVPCContextRoutesItem> allItems = pager.getAll();
       assertNotNull(allItems);
       assertFalse(allItems.isEmpty());
 
@@ -2274,7 +2296,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .limit(Long.valueOf("10"))
         .resourceGroupId("testString")
         .routingTableId("testString")
-        .routingTableName("testString")
+        .routingTableName("my-routing-table")
         .build();
 
       // Invoke operation
@@ -2299,7 +2321,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .limit(Long.valueOf("10"))
         .resourceGroupId("testString")
         .routingTableId("testString")
-        .routingTableName("testString")
+        .routingTableName("my-routing-table")
         .build();
 
       // Test getNext().
@@ -2745,6 +2767,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .limit(Long.valueOf("10"))
         .resourceGroupId("testString")
         .name("testString")
+        .status(java.util.Arrays.asList("available"))
         .visibility("private")
         .build();
 
@@ -2770,6 +2793,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .limit(Long.valueOf("10"))
         .resourceGroupId("testString")
         .name("testString")
+        .status(java.util.Arrays.asList("available"))
         .visibility("private")
         .build();
 
@@ -2817,7 +2841,9 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       ImagePrototypeImageByFile imagePrototypeModel = new ImagePrototypeImageByFile.Builder()
+        .deprecationAt(DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"))
         .name("my-image")
+        .obsolescenceAt(DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"))
         .resourceGroup(resourceGroupIdentityModel)
         .encryptedDataKey("testString")
         .encryptionKey(encryptionKeyIdentityModel)
@@ -2870,7 +2896,9 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testUpdateImage() throws Exception {
     try {
       ImagePatch imagePatchModel = new ImagePatch.Builder()
+        .deprecationAt(DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"))
         .name("my-image")
+        .obsolescenceAt(DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"))
         .build();
       Map<String, Object> imagePatchModelAsPatch = imagePatchModel.asPatch();
 
@@ -2895,6 +2923,42 @@ public class VpcIT extends SdkIntegrationTestBase {
   }
 
   @Test(dependsOnMethods = { "testUpdateImage" })
+  public void testDeprecateImage() throws Exception {
+    try {
+      DeprecateImageOptions deprecateImageOptions = new DeprecateImageOptions.Builder()
+        .id("testString")
+        .build();
+
+      // Invoke operation
+      Response<Void> response = service.deprecateImage(deprecateImageOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 204);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testDeprecateImage" })
+  public void testObsoleteImage() throws Exception {
+    try {
+      ObsoleteImageOptions obsoleteImageOptions = new ObsoleteImageOptions.Builder()
+        .id("testString")
+        .build();
+
+      // Invoke operation
+      Response<Void> response = service.obsoleteImage(obsoleteImageOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 204);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testObsoleteImage" })
   public void testListImageExportJobs() throws Exception {
     try {
       ListImageExportJobsOptions listImageExportJobsOptions = new ListImageExportJobsOptions.Builder()
@@ -3335,6 +3399,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .iops(Long.valueOf("10000"))
         .name("my-volume")
         .profile(volumeProfileIdentityModel)
+        .resourceGroup(resourceGroupIdentityModel)
         .userTags(java.util.Arrays.asList("testString"))
         .build();
 
@@ -3374,7 +3439,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .name("us-south-1")
         .build();
 
-      InstanceTemplatePrototypeInstanceByImageInstanceTemplateContext instanceTemplatePrototypeModel = new InstanceTemplatePrototypeInstanceByImageInstanceTemplateContext.Builder()
+      InstanceTemplatePrototypeInstanceTemplateByImage instanceTemplatePrototypeModel = new InstanceTemplatePrototypeInstanceTemplateByImage.Builder()
         .availabilityPolicy(instanceAvailabilityPolicyPrototypeModel)
         .defaultTrustedProfile(instanceDefaultTrustedProfilePrototypeModel)
         .keys(java.util.Arrays.asList(keyIdentityModel))
@@ -3472,14 +3537,14 @@ public class VpcIT extends SdkIntegrationTestBase {
         .resourceGroupId("testString")
         .name("testString")
         .vpcId("testString")
-        .vpcCrn("testString")
-        .vpcName("testString")
+        .vpcCrn("crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b")
+        .vpcName("my-vpc")
         .dedicatedHostId("testString")
-        .dedicatedHostCrn("testString")
-        .dedicatedHostName("testString")
+        .dedicatedHostCrn("crn:v1:bluemix:public:is:us-south-1:a/123456::dedicated-host:1e09281b-f177-46fb-baf1-bc152b2e391a")
+        .dedicatedHostName("my-dedicated-host")
         .placementGroupId("testString")
-        .placementGroupCrn("testString")
-        .placementGroupName("testString")
+        .placementGroupCrn("crn:v1:bluemix:public:is:us-south:a/123456::placement-group:r018-418fe842-a3e9-47b9-a938-1aa5bd632871")
+        .placementGroupName("my-placement-group")
         .build();
 
       // Invoke operation
@@ -3505,14 +3570,14 @@ public class VpcIT extends SdkIntegrationTestBase {
         .resourceGroupId("testString")
         .name("testString")
         .vpcId("testString")
-        .vpcCrn("testString")
-        .vpcName("testString")
+        .vpcCrn("crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b")
+        .vpcName("my-vpc")
         .dedicatedHostId("testString")
-        .dedicatedHostCrn("testString")
-        .dedicatedHostName("testString")
+        .dedicatedHostCrn("crn:v1:bluemix:public:is:us-south-1:a/123456::dedicated-host:1e09281b-f177-46fb-baf1-bc152b2e391a")
+        .dedicatedHostName("my-dedicated-host")
         .placementGroupId("testString")
-        .placementGroupCrn("testString")
-        .placementGroupName("testString")
+        .placementGroupCrn("crn:v1:bluemix:public:is:us-south:a/123456::placement-group:r018-418fe842-a3e9-47b9-a938-1aa5bd632871")
+        .placementGroupName("my-placement-group")
         .build();
 
       // Test getNext().
@@ -3589,6 +3654,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .iops(Long.valueOf("10000"))
         .name("my-data-volume")
         .profile(volumeProfileIdentityModel)
+        .resourceGroup(resourceGroupIdentityModel)
         .userTags(java.util.Arrays.asList("testString"))
         .capacity(Long.valueOf("1000"))
         .encryptionKey(encryptionKeyIdentityModel)
@@ -3610,6 +3676,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .iops(Long.valueOf("10000"))
         .name("my-boot-volume")
         .profile(volumeProfileIdentityModel)
+        .resourceGroup(resourceGroupIdentityModel)
         .userTags(java.util.Arrays.asList("testString"))
         .build();
 
@@ -5018,7 +5085,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .start("testString")
         .limit(Long.valueOf("10"))
         .resourceGroupId("testString")
-        .zoneName("testString")
+        .zoneName("us-south-1")
         .name("testString")
         .build();
 
@@ -5043,7 +5110,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       ListDedicatedHostGroupsOptions options = new ListDedicatedHostGroupsOptions.Builder()
         .limit(Long.valueOf("10"))
         .resourceGroupId("testString")
-        .zoneName("testString")
+        .zoneName("us-south-1")
         .name("testString")
         .build();
 
@@ -5239,7 +5306,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .start("testString")
         .limit(Long.valueOf("10"))
         .resourceGroupId("testString")
-        .zoneName("testString")
+        .zoneName("us-south-1")
         .name("testString")
         .build();
 
@@ -5265,7 +5332,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .dedicatedHostGroupId("testString")
         .limit(Long.valueOf("10"))
         .resourceGroupId("testString")
-        .zoneName("testString")
+        .zoneName("us-south-1")
         .name("testString")
         .build();
 
@@ -5537,6 +5604,20 @@ public class VpcIT extends SdkIntegrationTestBase {
         .deleteOverCount(Long.valueOf("20"))
         .build();
 
+      EncryptionKeyIdentityByCRN encryptionKeyIdentityModel = new EncryptionKeyIdentityByCRN.Builder()
+        .crn("crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179")
+        .build();
+
+      RegionIdentityByName regionIdentityModel = new RegionIdentityByName.Builder()
+        .name("us-south")
+        .build();
+
+      BackupPolicyPlanRemoteRegionPolicyPrototype backupPolicyPlanRemoteRegionPolicyPrototypeModel = new BackupPolicyPlanRemoteRegionPolicyPrototype.Builder()
+        .deleteOverCount(Long.valueOf("1"))
+        .encryptionKey(encryptionKeyIdentityModel)
+        .region(regionIdentityModel)
+        .build();
+
       BackupPolicyPlanPrototype backupPolicyPlanPrototypeModel = new BackupPolicyPlanPrototype.Builder()
         .active(true)
         .attachUserTags(java.util.Arrays.asList("my-daily-backup-plan"))
@@ -5545,6 +5626,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .cronSpec("30 */2 * * 1-5")
         .deletionTrigger(backupPolicyPlanDeletionTriggerPrototypeModel)
         .name("my-policy-plan")
+        .remoteRegionPolicies(java.util.Arrays.asList(backupPolicyPlanRemoteRegionPolicyPrototypeModel))
         .build();
 
       ResourceGroupIdentityById resourceGroupIdentityModel = new ResourceGroupIdentityById.Builder()
@@ -5579,14 +5661,14 @@ public class VpcIT extends SdkIntegrationTestBase {
     try {
       ListBackupPolicyJobsOptions listBackupPolicyJobsOptions = new ListBackupPolicyJobsOptions.Builder()
         .backupPolicyId("testString")
-        .status("testString")
+        .status("failed")
         .backupPolicyPlanId("testString")
         .start("testString")
         .limit(Long.valueOf("10"))
         .sort("name")
         .sourceId("testString")
         .targetSnapshotsId("testString")
-        .targetSnapshotsCrn("testString")
+        .targetSnapshotsCrn("crn:v1:bluemix:public:is:us-south:a/123456::snapshot:r134-f6bfa329-0e36-433f-a3bb-0df632e79263")
         .build();
 
       // Invoke operation
@@ -5609,13 +5691,13 @@ public class VpcIT extends SdkIntegrationTestBase {
     try {
       ListBackupPolicyJobsOptions options = new ListBackupPolicyJobsOptions.Builder()
         .backupPolicyId("testString")
-        .status("testString")
+        .status("failed")
         .backupPolicyPlanId("testString")
         .limit(Long.valueOf("10"))
         .sort("name")
         .sourceId("testString")
         .targetSnapshotsId("testString")
-        .targetSnapshotsCrn("testString")
+        .targetSnapshotsCrn("crn:v1:bluemix:public:is:us-south:a/123456::snapshot:r134-f6bfa329-0e36-433f-a3bb-0df632e79263")
         .build();
 
       // Test getNext().
@@ -5705,6 +5787,20 @@ public class VpcIT extends SdkIntegrationTestBase {
         .deleteOverCount(Long.valueOf("20"))
         .build();
 
+      EncryptionKeyIdentityByCRN encryptionKeyIdentityModel = new EncryptionKeyIdentityByCRN.Builder()
+        .crn("crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179")
+        .build();
+
+      RegionIdentityByName regionIdentityModel = new RegionIdentityByName.Builder()
+        .name("us-south")
+        .build();
+
+      BackupPolicyPlanRemoteRegionPolicyPrototype backupPolicyPlanRemoteRegionPolicyPrototypeModel = new BackupPolicyPlanRemoteRegionPolicyPrototype.Builder()
+        .deleteOverCount(Long.valueOf("1"))
+        .encryptionKey(encryptionKeyIdentityModel)
+        .region(regionIdentityModel)
+        .build();
+
       CreateBackupPolicyPlanOptions createBackupPolicyPlanOptions = new CreateBackupPolicyPlanOptions.Builder()
         .backupPolicyId("testString")
         .cronSpec("30 */2 * * 1-5")
@@ -5714,6 +5810,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .copyUserTags(true)
         .deletionTrigger(backupPolicyPlanDeletionTriggerPrototypeModel)
         .name("my-policy-plan")
+        .remoteRegionPolicies(java.util.Arrays.asList(backupPolicyPlanRemoteRegionPolicyPrototypeModel))
         .build();
 
       // Invoke operation
@@ -5771,6 +5868,20 @@ public class VpcIT extends SdkIntegrationTestBase {
         .deleteOverCount(Long.valueOf("1"))
         .build();
 
+      EncryptionKeyIdentityByCRN encryptionKeyIdentityModel = new EncryptionKeyIdentityByCRN.Builder()
+        .crn("crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179")
+        .build();
+
+      RegionIdentityByName regionIdentityModel = new RegionIdentityByName.Builder()
+        .name("us-south")
+        .build();
+
+      BackupPolicyPlanRemoteRegionPolicyPrototype backupPolicyPlanRemoteRegionPolicyPrototypeModel = new BackupPolicyPlanRemoteRegionPolicyPrototype.Builder()
+        .deleteOverCount(Long.valueOf("1"))
+        .encryptionKey(encryptionKeyIdentityModel)
+        .region(regionIdentityModel)
+        .build();
+
       BackupPolicyPlanPatch backupPolicyPlanPatchModel = new BackupPolicyPlanPatch.Builder()
         .active(true)
         .attachUserTags(java.util.Arrays.asList("my-daily-backup-plan"))
@@ -5779,6 +5890,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .cronSpec("30 */2 * * 1-5")
         .deletionTrigger(backupPolicyPlanDeletionTriggerPatchModel)
         .name("my-policy-plan")
+        .remoteRegionPolicies(java.util.Arrays.asList(backupPolicyPlanRemoteRegionPolicyPrototypeModel))
         .build();
       Map<String, Object> backupPolicyPlanPatchModelAsPatch = backupPolicyPlanPatchModel.asPatch();
 
@@ -6073,11 +6185,11 @@ public class VpcIT extends SdkIntegrationTestBase {
         .resourceGroupId("testString")
         .name("testString")
         .vpcId("testString")
-        .vpcCrn("testString")
-        .vpcName("testString")
+        .vpcCrn("crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b")
+        .vpcName("my-vpc")
         .networkInterfacesSubnetId("testString")
-        .networkInterfacesSubnetCrn("testString")
-        .networkInterfacesSubnetName("testString")
+        .networkInterfacesSubnetCrn("crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
+        .networkInterfacesSubnetName("my-subnet")
         .build();
 
       // Invoke operation
@@ -6103,11 +6215,11 @@ public class VpcIT extends SdkIntegrationTestBase {
         .resourceGroupId("testString")
         .name("testString")
         .vpcId("testString")
-        .vpcCrn("testString")
-        .vpcName("testString")
+        .vpcCrn("crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b")
+        .vpcName("my-vpc")
         .networkInterfacesSubnetId("testString")
-        .networkInterfacesSubnetCrn("testString")
-        .networkInterfacesSubnetName("testString")
+        .networkInterfacesSubnetCrn("crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
+        .networkInterfacesSubnetName("my-subnet")
         .build();
 
       // Test getNext().
@@ -6828,7 +6940,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .encryption("provider_managed")
         .operatingSystemFamily("Ubuntu Server")
         .operatingSystemArchitecture("amd64")
-        .zoneName("testString")
+        .zoneName("us-south-1")
         .build();
 
       // Invoke operation
@@ -6856,7 +6968,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .encryption("provider_managed")
         .operatingSystemFamily("Ubuntu Server")
         .operatingSystemArchitecture("amd64")
-        .zoneName("testString")
+        .zoneName("us-south-1")
         .build();
 
       // Test getNext().
@@ -7001,12 +7113,20 @@ public class VpcIT extends SdkIntegrationTestBase {
         .resourceGroupId("testString")
         .name("testString")
         .sourceVolumeId("testString")
-        .sourceVolumeCrn("testString")
+        .sourceVolumeCrn("crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5")
         .sourceImageId("testString")
-        .sourceImageCrn("testString")
+        .sourceImageCrn("crn:v1:bluemix:public:is:us-south:a/123456::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8")
         .sort("name")
         .backupPolicyPlanId("testString")
-        .clonesZoneName("testString")
+        .copiesId("testString")
+        .copiesName("my-snapshot-copy")
+        .copiesCrn("testString")
+        .copiesRemoteRegionName("us-south")
+        .sourceSnapshotId("testString")
+        .sourceSnapshotRemoteRegionName("us-south")
+        .sourceVolumeRemoteRegionName("us-south")
+        .sourceImageRemoteRegionName("us-south")
+        .clonesZoneName("us-south-1")
         .build();
 
       // Invoke operation
@@ -7033,12 +7153,20 @@ public class VpcIT extends SdkIntegrationTestBase {
         .resourceGroupId("testString")
         .name("testString")
         .sourceVolumeId("testString")
-        .sourceVolumeCrn("testString")
+        .sourceVolumeCrn("crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5")
         .sourceImageId("testString")
-        .sourceImageCrn("testString")
+        .sourceImageCrn("crn:v1:bluemix:public:is:us-south:a/123456::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8")
         .sort("name")
         .backupPolicyPlanId("testString")
-        .clonesZoneName("testString")
+        .copiesId("testString")
+        .copiesName("my-snapshot-copy")
+        .copiesCrn("testString")
+        .copiesRemoteRegionName("us-south")
+        .sourceSnapshotId("testString")
+        .sourceSnapshotRemoteRegionName("us-south")
+        .sourceVolumeRemoteRegionName("us-south")
+        .sourceImageRemoteRegionName("us-south")
+        .clonesZoneName("us-south-1")
         .build();
 
       // Test getNext().
@@ -7948,8 +8076,8 @@ public class VpcIT extends SdkIntegrationTestBase {
         .limit(Long.valueOf("10"))
         .resourceGroupId("testString")
         .vpcId("testString")
-        .vpcCrn("testString")
-        .vpcName("testString")
+        .vpcCrn("crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b")
+        .vpcName("my-vpc")
         .build();
 
       // Invoke operation
@@ -7974,8 +8102,8 @@ public class VpcIT extends SdkIntegrationTestBase {
         .limit(Long.valueOf("10"))
         .resourceGroupId("testString")
         .vpcId("testString")
-        .vpcCrn("testString")
-        .vpcName("testString")
+        .vpcCrn("crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b")
+        .vpcName("my-vpc")
         .build();
 
       // Test getNext().
@@ -8378,7 +8506,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       CreateIkePolicyOptions createIkePolicyOptions = new CreateIkePolicyOptions.Builder()
-        .authenticationAlgorithm("md5")
+        .authenticationAlgorithm("sha256")
         .dhGroup(Long.valueOf("14"))
         .encryptionAlgorithm("aes128")
         .ikeVersion(Long.valueOf("1"))
@@ -8428,7 +8556,7 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testUpdateIkePolicy() throws Exception {
     try {
       IKEPolicyPatch ikePolicyPatchModel = new IKEPolicyPatch.Builder()
-        .authenticationAlgorithm("md5")
+        .authenticationAlgorithm("sha256")
         .dhGroup(Long.valueOf("14"))
         .encryptionAlgorithm("aes128")
         .ikeVersion(Long.valueOf("1"))
@@ -8792,7 +8920,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     try {
       ListVpnGatewayConnectionsOptions listVpnGatewayConnectionsOptions = new ListVpnGatewayConnectionsOptions.Builder()
         .vpnGatewayId("testString")
-        .status("testString")
+        .status("down")
         .build();
 
       // Invoke operation
@@ -10853,10 +10981,10 @@ public class VpcIT extends SdkIntegrationTestBase {
         .resourceGroupId("testString")
         .name("testString")
         .vpcId("testString")
-        .vpcCrn("testString")
-        .vpcName("testString")
+        .vpcCrn("crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b")
+        .vpcName("my-vpc")
         .targetId("testString")
-        .targetResourceType("instance")
+        .targetResourceType("testString")
         .build();
 
       // Invoke operation
@@ -10882,10 +11010,10 @@ public class VpcIT extends SdkIntegrationTestBase {
         .resourceGroupId("testString")
         .name("testString")
         .vpcId("testString")
-        .vpcCrn("testString")
-        .vpcName("testString")
+        .vpcCrn("crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b")
+        .vpcName("my-vpc")
         .targetId("testString")
-        .targetResourceType("instance")
+        .targetResourceType("testString")
         .build();
 
       // Test getNext().

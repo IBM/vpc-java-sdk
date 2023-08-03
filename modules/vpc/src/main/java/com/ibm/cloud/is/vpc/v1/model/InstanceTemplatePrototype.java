@@ -21,10 +21,10 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  * InstanceTemplatePrototype.
  *
  * Classes which extend this class:
- * - InstanceTemplatePrototypeInstanceByImageInstanceTemplateContext
- * - InstanceTemplatePrototypeInstanceBySourceTemplate
- * - InstanceTemplatePrototypeInstanceBySourceSnapshotInstanceTemplateContext
- * - InstanceTemplatePrototypeInstanceByCatalogOfferingInstanceTemplateContext
+ * - InstanceTemplatePrototypeInstanceTemplateByImage
+ * - InstanceTemplatePrototypeInstanceTemplateBySourceTemplate
+ * - InstanceTemplatePrototypeInstanceTemplateBySourceSnapshot
+ * - InstanceTemplatePrototypeInstanceTemplateByCatalogOffering
  */
 public class InstanceTemplatePrototype extends GenericModel {
 
@@ -97,7 +97,7 @@ public class InstanceTemplatePrototype extends GenericModel {
    * virtual server instance as cloud-init vendor data. For cloud-init enabled images, these keys will also be added as
    * SSH authorized keys for the administrative user.
    *
-   * For Windows images, at least one key must be specified, and one will be chosen to encrypt [the administrator
+   * For Windows images, the keys of type `rsa` must be specified, and one will be chosen to encrypt [the administrator
    * password](https://cloud.ibm.com/apidocs/vpc#get-instance-initialization). Keys are optional for other images, but
    * if no keys are specified, the instance will be inaccessible unless the specified image provides another means of
    * access.

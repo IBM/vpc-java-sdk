@@ -69,6 +69,8 @@ public class BackupPolicyPlan extends GenericModel {
   @SerializedName("lifecycle_state")
   protected String lifecycleState;
   protected String name;
+  @SerializedName("remote_region_policies")
+  protected List<BackupPolicyPlanRemoteRegionPolicy> remoteRegionPolicies;
   @SerializedName("resource_type")
   protected String resourceType;
 
@@ -193,6 +195,17 @@ public class BackupPolicyPlan extends GenericModel {
    */
   public String getName() {
     return name;
+  }
+
+  /**
+   * Gets the remoteRegionPolicies.
+   *
+   * The policies for additional backups in remote regions.
+   *
+   * @return the remoteRegionPolicies
+   */
+  public List<BackupPolicyPlanRemoteRegionPolicy> getRemoteRegionPolicies() {
+    return remoteRegionPolicies;
   }
 
   /**

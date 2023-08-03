@@ -34,12 +34,21 @@ public class Image extends GenericModel {
   }
 
   /**
+   * The resource type.
+   */
+  public interface ResourceType {
+    /** image. */
+    String IMAGE = "image";
+  }
+
+  /**
    * The status of this image
    * - available: image can be used (provisionable)
    * - deleting: image is being deleted, and can no longer be used to provision new
    *   resources
-   * - deprecated: image is administratively slated to be deleted
+   * - deprecated: image is administratively slated to become `obsolete`
    * - failed: image is corrupt or did not pass validation
+   * - obsolete: image administratively set to not be used for new resources
    * - pending: image is being imported and is not yet `available`
    * - unusable: image cannot be used (see `status_reasons[]` for possible remediation)
    *
@@ -56,6 +65,8 @@ public class Image extends GenericModel {
     String DEPRECATED = "deprecated";
     /** failed. */
     String FAILED = "failed";
+    /** obsolete. */
+    String OBSOLETE = "obsolete";
     /** pending. */
     String PENDING = "pending";
     /** unusable. */
@@ -63,7 +74,9 @@ public class Image extends GenericModel {
   }
 
   /**
-   * Whether the image is publicly visible or private to the account.
+   * The visibility of this image.
+   * - `private`: Visible only to this account
+   * - `public`: Visible to all accounts.
    */
   public interface Visibility {
     /** private. */
@@ -77,6 +90,8 @@ public class Image extends GenericModel {
   @SerializedName("created_at")
   protected Date createdAt;
   protected String crn;
+  @SerializedName("deprecation_at")
+  protected Date deprecationAt;
   protected String encryption;
   @SerializedName("encryption_key")
   protected EncryptionKeyReference encryptionKey;
@@ -86,10 +101,14 @@ public class Image extends GenericModel {
   @SerializedName("minimum_provisioned_size")
   protected Long minimumProvisionedSize;
   protected String name;
+  @SerializedName("obsolescence_at")
+  protected Date obsolescenceAt;
   @SerializedName("operating_system")
   protected OperatingSystem operatingSystem;
   @SerializedName("resource_group")
   protected ResourceGroupReference resourceGroup;
+  @SerializedName("resource_type")
+  protected String resourceType;
   @SerializedName("source_volume")
   protected VolumeReference sourceVolume;
   protected String status;
@@ -128,6 +147,19 @@ public class Image extends GenericModel {
    */
   public String getCrn() {
     return crn;
+  }
+
+  /**
+   * Gets the deprecationAt.
+   *
+   * The deprecation date and time (UTC) for this image.
+   *
+   * If absent, no deprecation date and time has been set.
+   *
+   * @return the deprecationAt
+   */
+  public Date getDeprecationAt() {
+    return deprecationAt;
   }
 
   /**
@@ -213,6 +245,19 @@ public class Image extends GenericModel {
   }
 
   /**
+   * Gets the obsolescenceAt.
+   *
+   * The obsolescence date and time (UTC) for this image.
+   *
+   * If absent, no obsolescence date and time has been set.
+   *
+   * @return the obsolescenceAt
+   */
+  public Date getObsolescenceAt() {
+    return obsolescenceAt;
+  }
+
+  /**
    * Gets the operatingSystem.
    *
    * The operating system included in this image.
@@ -235,6 +280,17 @@ public class Image extends GenericModel {
   }
 
   /**
+   * Gets the resourceType.
+   *
+   * The resource type.
+   *
+   * @return the resourceType
+   */
+  public String getResourceType() {
+    return resourceType;
+  }
+
+  /**
    * Gets the sourceVolume.
    *
    * The volume used to create this image (this may be
@@ -254,8 +310,9 @@ public class Image extends GenericModel {
    * - available: image can be used (provisionable)
    * - deleting: image is being deleted, and can no longer be used to provision new
    *   resources
-   * - deprecated: image is administratively slated to be deleted
+   * - deprecated: image is administratively slated to become `obsolete`
    * - failed: image is corrupt or did not pass validation
+   * - obsolete: image administratively set to not be used for new resources
    * - pending: image is being imported and is not yet `available`
    * - unusable: image cannot be used (see `status_reasons[]` for possible remediation)
    *
@@ -298,7 +355,9 @@ public class Image extends GenericModel {
   /**
    * Gets the visibility.
    *
-   * Whether the image is publicly visible or private to the account.
+   * The visibility of this image.
+   * - `private`: Visible only to this account
+   * - `public`: Visible to all accounts.
    *
    * @return the visibility
    */

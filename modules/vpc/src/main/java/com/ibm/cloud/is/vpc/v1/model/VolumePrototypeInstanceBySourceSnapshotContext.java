@@ -15,7 +15,6 @@ package com.ibm.cloud.is.vpc.v1.model;
 import java.util.ArrayList;
 import java.util.List;
 
-
 /**
  * VolumePrototypeInstanceBySourceSnapshotContext.
  */
@@ -30,6 +29,7 @@ public class VolumePrototypeInstanceBySourceSnapshotContext extends VolumeAttach
     private Long iops;
     private String name;
     private VolumeProfileIdentity profile;
+    private ResourceGroupIdentity resourceGroup;
     private SnapshotIdentity sourceSnapshot;
     private List<String> userTags;
 
@@ -44,6 +44,7 @@ public class VolumePrototypeInstanceBySourceSnapshotContext extends VolumeAttach
       this.iops = volumePrototypeInstanceBySourceSnapshotContext.iops;
       this.name = volumePrototypeInstanceBySourceSnapshotContext.name;
       this.profile = volumePrototypeInstanceBySourceSnapshotContext.profile;
+      this.resourceGroup = volumePrototypeInstanceBySourceSnapshotContext.resourceGroup;
       this.sourceSnapshot = volumePrototypeInstanceBySourceSnapshotContext.sourceSnapshot;
       this.userTags = volumePrototypeInstanceBySourceSnapshotContext.userTags;
     }
@@ -146,6 +147,17 @@ public class VolumePrototypeInstanceBySourceSnapshotContext extends VolumeAttach
     }
 
     /**
+     * Set the resourceGroup.
+     *
+     * @param resourceGroup the resourceGroup
+     * @return the VolumePrototypeInstanceBySourceSnapshotContext builder
+     */
+    public Builder resourceGroup(ResourceGroupIdentity resourceGroup) {
+      this.resourceGroup = resourceGroup;
+      return this;
+    }
+
+    /**
      * Set the sourceSnapshot.
      *
      * @param sourceSnapshot the sourceSnapshot
@@ -181,6 +193,7 @@ public class VolumePrototypeInstanceBySourceSnapshotContext extends VolumeAttach
     iops = builder.iops;
     name = builder.name;
     profile = builder.profile;
+    resourceGroup = builder.resourceGroup;
     sourceSnapshot = builder.sourceSnapshot;
     userTags = builder.userTags;
   }
@@ -255,6 +268,18 @@ public class VolumePrototypeInstanceBySourceSnapshotContext extends VolumeAttach
    */
   public VolumeProfileIdentity profile() {
     return profile;
+  }
+
+  /**
+   * Gets the resourceGroup.
+   *
+   * The resource group to use for this volume. If unspecified, the instance's resource group
+   * will be used.
+   *
+   * @return the resourceGroup
+   */
+  public ResourceGroupIdentity resourceGroup() {
+    return resourceGroup;
   }
 
   /**

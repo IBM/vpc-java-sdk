@@ -16,9 +16,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * InstanceTemplatePrototypeInstanceBySourceTemplate.
+ * Create an instance template that creates instances by using an image.
  */
-public class InstanceTemplatePrototypeInstanceBySourceTemplate extends InstanceTemplatePrototype {
+public class InstanceTemplatePrototypeInstanceTemplateByImage extends InstanceTemplatePrototype {
 
 
   /**
@@ -38,38 +38,34 @@ public class InstanceTemplatePrototypeInstanceBySourceTemplate extends InstanceT
     private List<VolumeAttachmentPrototype> volumeAttachments;
     private VPCIdentity vpc;
     private VolumeAttachmentPrototypeInstanceByImageContext bootVolumeAttachment;
-    private InstanceCatalogOfferingPrototype catalogOffering;
     private ImageIdentity image;
     private List<NetworkInterfacePrototype> networkInterfaces;
     private NetworkInterfacePrototype primaryNetworkInterface;
-    private InstanceTemplateIdentity sourceTemplate;
     private ZoneIdentity zone;
 
     /**
-     * Instantiates a new Builder from an existing InstanceTemplatePrototypeInstanceBySourceTemplate instance.
+     * Instantiates a new Builder from an existing InstanceTemplatePrototypeInstanceTemplateByImage instance.
      *
-     * @param instanceTemplatePrototypeInstanceBySourceTemplate the instance to initialize the Builder with
+     * @param instanceTemplatePrototypeInstanceTemplateByImage the instance to initialize the Builder with
      */
-    public Builder(InstanceTemplatePrototype instanceTemplatePrototypeInstanceBySourceTemplate) {
-      this.availabilityPolicy = instanceTemplatePrototypeInstanceBySourceTemplate.availabilityPolicy;
-      this.defaultTrustedProfile = instanceTemplatePrototypeInstanceBySourceTemplate.defaultTrustedProfile;
-      this.keys = instanceTemplatePrototypeInstanceBySourceTemplate.keys;
-      this.metadataService = instanceTemplatePrototypeInstanceBySourceTemplate.metadataService;
-      this.name = instanceTemplatePrototypeInstanceBySourceTemplate.name;
-      this.placementTarget = instanceTemplatePrototypeInstanceBySourceTemplate.placementTarget;
-      this.profile = instanceTemplatePrototypeInstanceBySourceTemplate.profile;
-      this.resourceGroup = instanceTemplatePrototypeInstanceBySourceTemplate.resourceGroup;
-      this.totalVolumeBandwidth = instanceTemplatePrototypeInstanceBySourceTemplate.totalVolumeBandwidth;
-      this.userData = instanceTemplatePrototypeInstanceBySourceTemplate.userData;
-      this.volumeAttachments = instanceTemplatePrototypeInstanceBySourceTemplate.volumeAttachments;
-      this.vpc = instanceTemplatePrototypeInstanceBySourceTemplate.vpc;
-      this.bootVolumeAttachment = (VolumeAttachmentPrototypeInstanceByImageContext) instanceTemplatePrototypeInstanceBySourceTemplate.bootVolumeAttachment;
-      this.catalogOffering = instanceTemplatePrototypeInstanceBySourceTemplate.catalogOffering;
-      this.image = instanceTemplatePrototypeInstanceBySourceTemplate.image;
-      this.networkInterfaces = instanceTemplatePrototypeInstanceBySourceTemplate.networkInterfaces;
-      this.primaryNetworkInterface = instanceTemplatePrototypeInstanceBySourceTemplate.primaryNetworkInterface;
-      this.sourceTemplate = instanceTemplatePrototypeInstanceBySourceTemplate.sourceTemplate;
-      this.zone = instanceTemplatePrototypeInstanceBySourceTemplate.zone;
+    public Builder(InstanceTemplatePrototype instanceTemplatePrototypeInstanceTemplateByImage) {
+      this.availabilityPolicy = instanceTemplatePrototypeInstanceTemplateByImage.availabilityPolicy;
+      this.defaultTrustedProfile = instanceTemplatePrototypeInstanceTemplateByImage.defaultTrustedProfile;
+      this.keys = instanceTemplatePrototypeInstanceTemplateByImage.keys;
+      this.metadataService = instanceTemplatePrototypeInstanceTemplateByImage.metadataService;
+      this.name = instanceTemplatePrototypeInstanceTemplateByImage.name;
+      this.placementTarget = instanceTemplatePrototypeInstanceTemplateByImage.placementTarget;
+      this.profile = instanceTemplatePrototypeInstanceTemplateByImage.profile;
+      this.resourceGroup = instanceTemplatePrototypeInstanceTemplateByImage.resourceGroup;
+      this.totalVolumeBandwidth = instanceTemplatePrototypeInstanceTemplateByImage.totalVolumeBandwidth;
+      this.userData = instanceTemplatePrototypeInstanceTemplateByImage.userData;
+      this.volumeAttachments = instanceTemplatePrototypeInstanceTemplateByImage.volumeAttachments;
+      this.vpc = instanceTemplatePrototypeInstanceTemplateByImage.vpc;
+      this.bootVolumeAttachment = (VolumeAttachmentPrototypeInstanceByImageContext) instanceTemplatePrototypeInstanceTemplateByImage.bootVolumeAttachment;
+      this.image = instanceTemplatePrototypeInstanceTemplateByImage.image;
+      this.networkInterfaces = instanceTemplatePrototypeInstanceTemplateByImage.networkInterfaces;
+      this.primaryNetworkInterface = instanceTemplatePrototypeInstanceTemplateByImage.primaryNetworkInterface;
+      this.zone = instanceTemplatePrototypeInstanceTemplateByImage.zone;
     }
 
     /**
@@ -81,26 +77,30 @@ public class InstanceTemplatePrototypeInstanceBySourceTemplate extends InstanceT
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param sourceTemplate the sourceTemplate
+     * @param image the image
+     * @param primaryNetworkInterface the primaryNetworkInterface
+     * @param zone the zone
      */
-    public Builder(InstanceTemplateIdentity sourceTemplate) {
-      this.sourceTemplate = sourceTemplate;
+    public Builder(ImageIdentity image, NetworkInterfacePrototype primaryNetworkInterface, ZoneIdentity zone) {
+      this.image = image;
+      this.primaryNetworkInterface = primaryNetworkInterface;
+      this.zone = zone;
     }
 
     /**
-     * Builds a InstanceTemplatePrototypeInstanceBySourceTemplate.
+     * Builds a InstanceTemplatePrototypeInstanceTemplateByImage.
      *
-     * @return the new InstanceTemplatePrototypeInstanceBySourceTemplate instance
+     * @return the new InstanceTemplatePrototypeInstanceTemplateByImage instance
      */
-    public InstanceTemplatePrototypeInstanceBySourceTemplate build() {
-      return new InstanceTemplatePrototypeInstanceBySourceTemplate(this);
+    public InstanceTemplatePrototypeInstanceTemplateByImage build() {
+      return new InstanceTemplatePrototypeInstanceTemplateByImage(this);
     }
 
     /**
      * Adds an keys to keys.
      *
      * @param keys the new keys
-     * @return the InstanceTemplatePrototypeInstanceBySourceTemplate builder
+     * @return the InstanceTemplatePrototypeInstanceTemplateByImage builder
      */
     public Builder addKeys(KeyIdentity keys) {
       com.ibm.cloud.sdk.core.util.Validator.notNull(keys,
@@ -116,7 +116,7 @@ public class InstanceTemplatePrototypeInstanceBySourceTemplate extends InstanceT
      * Adds an volumeAttachments to volumeAttachments.
      *
      * @param volumeAttachments the new volumeAttachments
-     * @return the InstanceTemplatePrototypeInstanceBySourceTemplate builder
+     * @return the InstanceTemplatePrototypeInstanceTemplateByImage builder
      */
     public Builder addVolumeAttachments(VolumeAttachmentPrototype volumeAttachments) {
       com.ibm.cloud.sdk.core.util.Validator.notNull(volumeAttachments,
@@ -132,7 +132,7 @@ public class InstanceTemplatePrototypeInstanceBySourceTemplate extends InstanceT
      * Adds an networkInterfaces to networkInterfaces.
      *
      * @param networkInterfaces the new networkInterfaces
-     * @return the InstanceTemplatePrototypeInstanceBySourceTemplate builder
+     * @return the InstanceTemplatePrototypeInstanceTemplateByImage builder
      */
     public Builder addNetworkInterfaces(NetworkInterfacePrototype networkInterfaces) {
       com.ibm.cloud.sdk.core.util.Validator.notNull(networkInterfaces,
@@ -148,7 +148,7 @@ public class InstanceTemplatePrototypeInstanceBySourceTemplate extends InstanceT
      * Set the availabilityPolicy.
      *
      * @param availabilityPolicy the availabilityPolicy
-     * @return the InstanceTemplatePrototypeInstanceBySourceTemplate builder
+     * @return the InstanceTemplatePrototypeInstanceTemplateByImage builder
      */
     public Builder availabilityPolicy(InstanceAvailabilityPolicyPrototype availabilityPolicy) {
       this.availabilityPolicy = availabilityPolicy;
@@ -159,7 +159,7 @@ public class InstanceTemplatePrototypeInstanceBySourceTemplate extends InstanceT
      * Set the defaultTrustedProfile.
      *
      * @param defaultTrustedProfile the defaultTrustedProfile
-     * @return the InstanceTemplatePrototypeInstanceBySourceTemplate builder
+     * @return the InstanceTemplatePrototypeInstanceTemplateByImage builder
      */
     public Builder defaultTrustedProfile(InstanceDefaultTrustedProfilePrototype defaultTrustedProfile) {
       this.defaultTrustedProfile = defaultTrustedProfile;
@@ -171,7 +171,7 @@ public class InstanceTemplatePrototypeInstanceBySourceTemplate extends InstanceT
      * Existing keys will be replaced.
      *
      * @param keys the keys
-     * @return the InstanceTemplatePrototypeInstanceBySourceTemplate builder
+     * @return the InstanceTemplatePrototypeInstanceTemplateByImage builder
      */
     public Builder keys(List<KeyIdentity> keys) {
       this.keys = keys;
@@ -182,7 +182,7 @@ public class InstanceTemplatePrototypeInstanceBySourceTemplate extends InstanceT
      * Set the metadataService.
      *
      * @param metadataService the metadataService
-     * @return the InstanceTemplatePrototypeInstanceBySourceTemplate builder
+     * @return the InstanceTemplatePrototypeInstanceTemplateByImage builder
      */
     public Builder metadataService(InstanceMetadataServicePrototype metadataService) {
       this.metadataService = metadataService;
@@ -193,7 +193,7 @@ public class InstanceTemplatePrototypeInstanceBySourceTemplate extends InstanceT
      * Set the name.
      *
      * @param name the name
-     * @return the InstanceTemplatePrototypeInstanceBySourceTemplate builder
+     * @return the InstanceTemplatePrototypeInstanceTemplateByImage builder
      */
     public Builder name(String name) {
       this.name = name;
@@ -204,7 +204,7 @@ public class InstanceTemplatePrototypeInstanceBySourceTemplate extends InstanceT
      * Set the placementTarget.
      *
      * @param placementTarget the placementTarget
-     * @return the InstanceTemplatePrototypeInstanceBySourceTemplate builder
+     * @return the InstanceTemplatePrototypeInstanceTemplateByImage builder
      */
     public Builder placementTarget(InstancePlacementTargetPrototype placementTarget) {
       this.placementTarget = placementTarget;
@@ -215,7 +215,7 @@ public class InstanceTemplatePrototypeInstanceBySourceTemplate extends InstanceT
      * Set the profile.
      *
      * @param profile the profile
-     * @return the InstanceTemplatePrototypeInstanceBySourceTemplate builder
+     * @return the InstanceTemplatePrototypeInstanceTemplateByImage builder
      */
     public Builder profile(InstanceProfileIdentity profile) {
       this.profile = profile;
@@ -226,7 +226,7 @@ public class InstanceTemplatePrototypeInstanceBySourceTemplate extends InstanceT
      * Set the resourceGroup.
      *
      * @param resourceGroup the resourceGroup
-     * @return the InstanceTemplatePrototypeInstanceBySourceTemplate builder
+     * @return the InstanceTemplatePrototypeInstanceTemplateByImage builder
      */
     public Builder resourceGroup(ResourceGroupIdentity resourceGroup) {
       this.resourceGroup = resourceGroup;
@@ -237,7 +237,7 @@ public class InstanceTemplatePrototypeInstanceBySourceTemplate extends InstanceT
      * Set the totalVolumeBandwidth.
      *
      * @param totalVolumeBandwidth the totalVolumeBandwidth
-     * @return the InstanceTemplatePrototypeInstanceBySourceTemplate builder
+     * @return the InstanceTemplatePrototypeInstanceTemplateByImage builder
      */
     public Builder totalVolumeBandwidth(long totalVolumeBandwidth) {
       this.totalVolumeBandwidth = totalVolumeBandwidth;
@@ -248,7 +248,7 @@ public class InstanceTemplatePrototypeInstanceBySourceTemplate extends InstanceT
      * Set the userData.
      *
      * @param userData the userData
-     * @return the InstanceTemplatePrototypeInstanceBySourceTemplate builder
+     * @return the InstanceTemplatePrototypeInstanceTemplateByImage builder
      */
     public Builder userData(String userData) {
       this.userData = userData;
@@ -260,7 +260,7 @@ public class InstanceTemplatePrototypeInstanceBySourceTemplate extends InstanceT
      * Existing volumeAttachments will be replaced.
      *
      * @param volumeAttachments the volumeAttachments
-     * @return the InstanceTemplatePrototypeInstanceBySourceTemplate builder
+     * @return the InstanceTemplatePrototypeInstanceTemplateByImage builder
      */
     public Builder volumeAttachments(List<VolumeAttachmentPrototype> volumeAttachments) {
       this.volumeAttachments = volumeAttachments;
@@ -271,7 +271,7 @@ public class InstanceTemplatePrototypeInstanceBySourceTemplate extends InstanceT
      * Set the vpc.
      *
      * @param vpc the vpc
-     * @return the InstanceTemplatePrototypeInstanceBySourceTemplate builder
+     * @return the InstanceTemplatePrototypeInstanceTemplateByImage builder
      */
     public Builder vpc(VPCIdentity vpc) {
       this.vpc = vpc;
@@ -282,7 +282,7 @@ public class InstanceTemplatePrototypeInstanceBySourceTemplate extends InstanceT
      * Set the bootVolumeAttachment.
      *
      * @param bootVolumeAttachment the bootVolumeAttachment
-     * @return the InstanceTemplatePrototypeInstanceBySourceTemplate builder
+     * @return the InstanceTemplatePrototypeInstanceTemplateByImage builder
      */
     public Builder bootVolumeAttachment(VolumeAttachmentPrototypeInstanceByImageContext bootVolumeAttachment) {
       this.bootVolumeAttachment = bootVolumeAttachment;
@@ -290,21 +290,10 @@ public class InstanceTemplatePrototypeInstanceBySourceTemplate extends InstanceT
     }
 
     /**
-     * Set the catalogOffering.
-     *
-     * @param catalogOffering the catalogOffering
-     * @return the InstanceTemplatePrototypeInstanceBySourceTemplate builder
-     */
-    public Builder catalogOffering(InstanceCatalogOfferingPrototype catalogOffering) {
-      this.catalogOffering = catalogOffering;
-      return this;
-    }
-
-    /**
      * Set the image.
      *
      * @param image the image
-     * @return the InstanceTemplatePrototypeInstanceBySourceTemplate builder
+     * @return the InstanceTemplatePrototypeInstanceTemplateByImage builder
      */
     public Builder image(ImageIdentity image) {
       this.image = image;
@@ -316,7 +305,7 @@ public class InstanceTemplatePrototypeInstanceBySourceTemplate extends InstanceT
      * Existing networkInterfaces will be replaced.
      *
      * @param networkInterfaces the networkInterfaces
-     * @return the InstanceTemplatePrototypeInstanceBySourceTemplate builder
+     * @return the InstanceTemplatePrototypeInstanceTemplateByImage builder
      */
     public Builder networkInterfaces(List<NetworkInterfacePrototype> networkInterfaces) {
       this.networkInterfaces = networkInterfaces;
@@ -327,7 +316,7 @@ public class InstanceTemplatePrototypeInstanceBySourceTemplate extends InstanceT
      * Set the primaryNetworkInterface.
      *
      * @param primaryNetworkInterface the primaryNetworkInterface
-     * @return the InstanceTemplatePrototypeInstanceBySourceTemplate builder
+     * @return the InstanceTemplatePrototypeInstanceTemplateByImage builder
      */
     public Builder primaryNetworkInterface(NetworkInterfacePrototype primaryNetworkInterface) {
       this.primaryNetworkInterface = primaryNetworkInterface;
@@ -335,21 +324,10 @@ public class InstanceTemplatePrototypeInstanceBySourceTemplate extends InstanceT
     }
 
     /**
-     * Set the sourceTemplate.
-     *
-     * @param sourceTemplate the sourceTemplate
-     * @return the InstanceTemplatePrototypeInstanceBySourceTemplate builder
-     */
-    public Builder sourceTemplate(InstanceTemplateIdentity sourceTemplate) {
-      this.sourceTemplate = sourceTemplate;
-      return this;
-    }
-
-    /**
      * Set the zone.
      *
      * @param zone the zone
-     * @return the InstanceTemplatePrototypeInstanceBySourceTemplate builder
+     * @return the InstanceTemplatePrototypeInstanceTemplateByImage builder
      */
     public Builder zone(ZoneIdentity zone) {
       this.zone = zone;
@@ -357,11 +335,15 @@ public class InstanceTemplatePrototypeInstanceBySourceTemplate extends InstanceT
     }
   }
 
-  protected InstanceTemplatePrototypeInstanceBySourceTemplate() { }
+  protected InstanceTemplatePrototypeInstanceTemplateByImage() { }
 
-  protected InstanceTemplatePrototypeInstanceBySourceTemplate(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.sourceTemplate,
-      "sourceTemplate cannot be null");
+  protected InstanceTemplatePrototypeInstanceTemplateByImage(Builder builder) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.image,
+      "image cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.primaryNetworkInterface,
+      "primaryNetworkInterface cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.zone,
+      "zone cannot be null");
     availabilityPolicy = builder.availabilityPolicy;
     defaultTrustedProfile = builder.defaultTrustedProfile;
     keys = builder.keys;
@@ -375,18 +357,16 @@ public class InstanceTemplatePrototypeInstanceBySourceTemplate extends InstanceT
     volumeAttachments = builder.volumeAttachments;
     vpc = builder.vpc;
     bootVolumeAttachment = builder.bootVolumeAttachment;
-    catalogOffering = builder.catalogOffering;
     image = builder.image;
     networkInterfaces = builder.networkInterfaces;
     primaryNetworkInterface = builder.primaryNetworkInterface;
-    sourceTemplate = builder.sourceTemplate;
     zone = builder.zone;
   }
 
   /**
    * New builder.
    *
-   * @return a InstanceTemplatePrototypeInstanceBySourceTemplate builder
+   * @return a InstanceTemplatePrototypeInstanceTemplateByImage builder
    */
   public Builder newBuilder() {
     return new Builder(this);

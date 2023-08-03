@@ -235,7 +235,8 @@ public class SecurityGroupRulePatch extends GenericModel {
   /**
    * Gets the portMax.
    *
-   * The inclusive upper bound of the protocol port range. If set, `port_min` must also be set, and must not be larger.
+   * The inclusive upper bound of the protocol destination port range. If set, `port_min` must also be set, and must not
+   * be larger.
    *
    * Specify `null` to remove an existing upper bound.
    *
@@ -248,7 +249,8 @@ public class SecurityGroupRulePatch extends GenericModel {
   /**
    * Gets the portMin.
    *
-   * The inclusive lower bound of the protocol port range. If set, `port_max` must also be set, and must not be smaller.
+   * The inclusive lower bound of the protocol destination port range. If set, `port_max` must also be set, and must not
+   * be smaller.
    *
    * Specify `null` to remove an existing lower bound.
    *

@@ -39,5 +39,6 @@ public class OperatingSystemCollectionTest {
     assertNull(operatingSystemCollectionModel.getLimit());
     assertNull(operatingSystemCollectionModel.getNext());
     assertNull(operatingSystemCollectionModel.getOperatingSystems());
+    assertNull(operatingSystemCollectionModel.getTotalCount());
   }
 }

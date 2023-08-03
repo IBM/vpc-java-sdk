@@ -21,6 +21,7 @@ import com.ibm.cloud.is.vpc.v1.model.OperatingSystemIdentityByName;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupIdentityById;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
+import com.ibm.cloud.sdk.core.util.DateUtils;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.List;
@@ -57,14 +58,18 @@ public class CreateImageOptionsTest {
     assertEquals(operatingSystemIdentityModel.name(), "ubuntu-16-amd64");
 
     ImagePrototypeImageByFile imagePrototypeModel = new ImagePrototypeImageByFile.Builder()
+      .deprecationAt(DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"))
       .name("my-image")
+      .obsolescenceAt(DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"))
       .resourceGroup(resourceGroupIdentityModel)
       .encryptedDataKey("testString")
       .encryptionKey(encryptionKeyIdentityModel)
       .file(imageFilePrototypeModel)
       .operatingSystem(operatingSystemIdentityModel)
       .build();
+    assertEquals(imagePrototypeModel.deprecationAt(), DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"));
     assertEquals(imagePrototypeModel.name(), "my-image");
+    assertEquals(imagePrototypeModel.obsolescenceAt(), DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"));
     assertEquals(imagePrototypeModel.resourceGroup(), resourceGroupIdentityModel);
     assertEquals(imagePrototypeModel.encryptedDataKey(), "testString");
     assertEquals(imagePrototypeModel.encryptionKey(), encryptionKeyIdentityModel);

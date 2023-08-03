@@ -16,6 +16,9 @@ package com.ibm.cloud.is.vpc.v1.model;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlan;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanClonePolicy;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanDeletionTrigger;
+import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanRemoteRegionPolicy;
+import com.ibm.cloud.is.vpc.v1.model.EncryptionKeyReference;
+import com.ibm.cloud.is.vpc.v1.model.RegionReference;
 import com.ibm.cloud.is.vpc.v1.model.ZoneReference;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
@@ -46,6 +49,7 @@ public class BackupPolicyPlanTest {
     assertNull(backupPolicyPlanModel.getId());
     assertNull(backupPolicyPlanModel.getLifecycleState());
     assertNull(backupPolicyPlanModel.getName());
+    assertNull(backupPolicyPlanModel.getRemoteRegionPolicies());
     assertNull(backupPolicyPlanModel.getResourceType());
   }
 }

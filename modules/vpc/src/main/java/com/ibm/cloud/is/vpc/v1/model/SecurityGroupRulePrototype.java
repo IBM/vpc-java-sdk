@@ -163,10 +163,10 @@ public class SecurityGroupRulePrototype extends GenericModel {
   /**
    * Gets the portMax.
    *
-   * The inclusive upper bound of TCP/UDP port range.
+   * The inclusive upper bound of TCP/UDP destination port range.
    *
-   * If specified, `port_min` must also be specified, and must not be larger. If unspecified, `port_min` must also be
-   * unspecified, allowing traffic on all ports.
+   * If specified, `port_min` must also be specified, and must not be larger. If unspecified,
+   * `port_min` must also be unspecified, allowing traffic on all destination ports.
    *
    * @return the portMax
    */
@@ -177,10 +177,10 @@ public class SecurityGroupRulePrototype extends GenericModel {
   /**
    * Gets the portMin.
    *
-   * The inclusive lower bound of TCP/UDP port range
+   * The inclusive lower bound of TCP/UDP destination port range
    *
    * If specified, `port_max` must also be specified, and must not be smaller. If unspecified, `port_max` must also be
-   * unspecified, allowing traffic on all ports.
+   * unspecified, allowing traffic on all destination ports.
    *
    * @return the portMin
    */

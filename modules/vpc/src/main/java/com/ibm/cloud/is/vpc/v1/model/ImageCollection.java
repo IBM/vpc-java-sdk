@@ -14,6 +14,7 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 import java.util.List;
 
+import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
@@ -25,6 +26,8 @@ public class ImageCollection extends GenericModel {
   protected List<Image> images;
   protected Long limit;
   protected ImageCollectionNext next;
+  @SerializedName("total_count")
+  protected Long totalCount;
 
   protected ImageCollection() { }
 
@@ -71,6 +74,17 @@ public class ImageCollection extends GenericModel {
    */
   public ImageCollectionNext getNext() {
     return next;
+  }
+
+  /**
+   * Gets the totalCount.
+   *
+   * The total number of resources across all pages.
+   *
+   * @return the totalCount
+   */
+  public Long getTotalCount() {
+    return totalCount;
   }
 }
 

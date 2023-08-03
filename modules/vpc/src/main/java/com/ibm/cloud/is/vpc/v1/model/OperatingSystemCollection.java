@@ -27,6 +27,8 @@ public class OperatingSystemCollection extends GenericModel {
   protected OperatingSystemCollectionNext next;
   @SerializedName("operating_systems")
   protected List<OperatingSystem> operatingSystems;
+  @SerializedName("total_count")
+  protected Long totalCount;
 
   protected OperatingSystemCollection() { }
 
@@ -73,6 +75,17 @@ public class OperatingSystemCollection extends GenericModel {
    */
   public List<OperatingSystem> getOperatingSystems() {
     return operatingSystems;
+  }
+
+  /**
+   * Gets the totalCount.
+   *
+   * The total number of resources across all pages.
+   *
+   * @return the totalCount
+   */
+  public Long getTotalCount() {
+    return totalCount;
   }
 }
 

@@ -22,6 +22,8 @@ public class LoadBalancerProfile extends GenericModel {
 
   protected String family;
   protected String href;
+  @SerializedName("instance_groups_supported")
+  protected LoadBalancerProfileInstanceGroupsSupported instanceGroupsSupported;
   @SerializedName("logging_supported")
   protected LoadBalancerProfileLoggingSupported loggingSupported;
   protected String name;
@@ -54,6 +56,15 @@ public class LoadBalancerProfile extends GenericModel {
    */
   public String getHref() {
     return href;
+  }
+
+  /**
+   * Gets the instanceGroupsSupported.
+   *
+   * @return the instanceGroupsSupported
+   */
+  public LoadBalancerProfileInstanceGroupsSupported getInstanceGroupsSupported() {
+    return instanceGroupsSupported;
   }
 
   /**

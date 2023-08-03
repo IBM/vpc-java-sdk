@@ -20,6 +20,7 @@ import com.ibm.cloud.is.vpc.v1.model.OperatingSystemIdentityByName;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupIdentityById;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
+import com.ibm.cloud.sdk.core.util.DateUtils;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.List;
@@ -56,14 +57,18 @@ public class ImagePrototypeImageByFileTest {
     assertEquals(operatingSystemIdentityModel.name(), "ubuntu-16-amd64");
 
     ImagePrototypeImageByFile imagePrototypeImageByFileModel = new ImagePrototypeImageByFile.Builder()
+      .deprecationAt(DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"))
       .name("my-image")
+      .obsolescenceAt(DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"))
       .resourceGroup(resourceGroupIdentityModel)
       .encryptedDataKey("testString")
       .encryptionKey(encryptionKeyIdentityModel)
       .file(imageFilePrototypeModel)
       .operatingSystem(operatingSystemIdentityModel)
       .build();
+    assertEquals(imagePrototypeImageByFileModel.deprecationAt(), DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"));
     assertEquals(imagePrototypeImageByFileModel.name(), "my-image");
+    assertEquals(imagePrototypeImageByFileModel.obsolescenceAt(), DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"));
     assertEquals(imagePrototypeImageByFileModel.resourceGroup(), resourceGroupIdentityModel);
     assertEquals(imagePrototypeImageByFileModel.encryptedDataKey(), "testString");
     assertEquals(imagePrototypeImageByFileModel.encryptionKey(), encryptionKeyIdentityModel);
@@ -74,7 +79,9 @@ public class ImagePrototypeImageByFileTest {
 
     ImagePrototypeImageByFile imagePrototypeImageByFileModelNew = TestUtilities.deserialize(json, ImagePrototypeImageByFile.class);
     assertTrue(imagePrototypeImageByFileModelNew instanceof ImagePrototypeImageByFile);
+    assertEquals(imagePrototypeImageByFileModelNew.deprecationAt(), DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"));
     assertEquals(imagePrototypeImageByFileModelNew.name(), "my-image");
+    assertEquals(imagePrototypeImageByFileModelNew.obsolescenceAt(), DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"));
     assertEquals(imagePrototypeImageByFileModelNew.resourceGroup().toString(), resourceGroupIdentityModel.toString());
     assertEquals(imagePrototypeImageByFileModelNew.encryptedDataKey(), "testString");
     assertEquals(imagePrototypeImageByFileModelNew.encryptionKey().toString(), encryptionKeyIdentityModel.toString());

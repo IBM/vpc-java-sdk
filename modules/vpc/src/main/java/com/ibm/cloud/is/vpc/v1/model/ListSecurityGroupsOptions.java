@@ -178,7 +178,7 @@ public class ListSecurityGroupsOptions extends GenericModel {
   /**
    * Gets the resourceGroupId.
    *
-   * Filters the collection to resources in the resource group with the specified identifier.
+   * Filters the collection to resources with a `resource_group.id` property matching the specified identifier.
    *
    * @return the resourceGroupId
    */
@@ -189,7 +189,7 @@ public class ListSecurityGroupsOptions extends GenericModel {
   /**
    * Gets the vpcId.
    *
-   * Filters the collection to resources in the VPC with the specified identifier.
+   * Filters the collection to resources with a `vpc.id` property matching the specified identifier.
    *
    * @return the vpcId
    */
@@ -200,7 +200,7 @@ public class ListSecurityGroupsOptions extends GenericModel {
   /**
    * Gets the vpcCrn.
    *
-   * Filters the collection to resources in the VPC with the specified CRN.
+   * Filters the collection to resources with a `vpc.crn` property matching the specified CRN.
    *
    * @return the vpcCrn
    */
@@ -211,7 +211,7 @@ public class ListSecurityGroupsOptions extends GenericModel {
   /**
    * Gets the vpcName.
    *
-   * Filters the collection to resources in the VPC with the exact specified name.
+   * Filters the collection to resources with a `vpc.name` property matching the exact specified name.
    *
    * @return the vpcName
    */

@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * InstancePrototypeInstanceByVolume.
+ * Create an instance by using a boot volume.
  */
 public class InstancePrototypeInstanceByVolume extends InstancePrototype {
 

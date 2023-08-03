@@ -23,6 +23,8 @@ public class CreateKeyOptions extends GenericModel {
    * The crypto-system used by this key.
    */
   public interface Type {
+    /** ed25519. */
+    String ED25519 = "ed25519";
     /** rsa. */
     String RSA = "rsa";
   }
@@ -148,6 +150,9 @@ public class CreateKeyOptions extends GenericModel {
    * A unique public SSH key to import, in OpenSSH format (consisting of three space-separated fields: the algorithm
    * name, base64-encoded key, and a comment). The algorithm and comment fields may be omitted, as only the key field is
    * imported.
+   *
+   * Keys of type `rsa` may be 2048 or 4096 bits in length, however 4096 is recommended. Keys of type `ed25519` are 256
+   * bits in length.
    *
    * @return the publicKey
    */

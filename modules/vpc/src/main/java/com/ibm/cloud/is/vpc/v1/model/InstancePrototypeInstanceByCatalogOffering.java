@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * InstancePrototypeInstanceByCatalogOffering.
+ * Create an instance by using a catalog offering.
  */
 public class InstancePrototypeInstanceByCatalogOffering extends InstancePrototype {
 

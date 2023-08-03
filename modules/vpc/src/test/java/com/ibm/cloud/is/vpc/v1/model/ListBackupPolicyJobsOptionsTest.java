@@ -33,24 +33,24 @@ public class ListBackupPolicyJobsOptionsTest {
   public void testListBackupPolicyJobsOptions() throws Throwable {
     ListBackupPolicyJobsOptions listBackupPolicyJobsOptionsModel = new ListBackupPolicyJobsOptions.Builder()
       .backupPolicyId("testString")
-      .status("testString")
+      .status("failed")
       .backupPolicyPlanId("testString")
       .start("testString")
       .limit(Long.valueOf("1"))
       .sort("name")
       .sourceId("testString")
       .targetSnapshotsId("testString")
-      .targetSnapshotsCrn("testString")
+      .targetSnapshotsCrn("crn:v1:bluemix:public:is:us-south:a/123456::snapshot:r134-f6bfa329-0e36-433f-a3bb-0df632e79263")
       .build();
     assertEquals(listBackupPolicyJobsOptionsModel.backupPolicyId(), "testString");
-    assertEquals(listBackupPolicyJobsOptionsModel.status(), "testString");
+    assertEquals(listBackupPolicyJobsOptionsModel.status(), "failed");
     assertEquals(listBackupPolicyJobsOptionsModel.backupPolicyPlanId(), "testString");
     assertEquals(listBackupPolicyJobsOptionsModel.start(), "testString");
     assertEquals(listBackupPolicyJobsOptionsModel.limit(), Long.valueOf("1"));
     assertEquals(listBackupPolicyJobsOptionsModel.sort(), "name");
     assertEquals(listBackupPolicyJobsOptionsModel.sourceId(), "testString");
     assertEquals(listBackupPolicyJobsOptionsModel.targetSnapshotsId(), "testString");
-    assertEquals(listBackupPolicyJobsOptionsModel.targetSnapshotsCrn(), "testString");
+    assertEquals(listBackupPolicyJobsOptionsModel.targetSnapshotsCrn(), "crn:v1:bluemix:public:is:us-south:a/123456::snapshot:r134-f6bfa329-0e36-433f-a3bb-0df632e79263");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

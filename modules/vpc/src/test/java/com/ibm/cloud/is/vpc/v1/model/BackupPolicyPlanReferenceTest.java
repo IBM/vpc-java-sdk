@@ -15,6 +15,8 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanReference;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanReferenceDeleted;
+import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanRemote;
+import com.ibm.cloud.is.vpc.v1.model.RegionReference;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -37,6 +39,7 @@ public class BackupPolicyPlanReferenceTest {
     assertNull(backupPolicyPlanReferenceModel.getHref());
     assertNull(backupPolicyPlanReferenceModel.getId());
     assertNull(backupPolicyPlanReferenceModel.getName());
+    assertNull(backupPolicyPlanReferenceModel.getRemote());
     assertNull(backupPolicyPlanReferenceModel.getResourceType());
   }
 }

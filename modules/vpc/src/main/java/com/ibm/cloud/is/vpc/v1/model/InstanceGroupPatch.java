@@ -226,10 +226,10 @@ public class InstanceGroupPatch extends GenericModel {
   /**
    * Gets the loadBalancer.
    *
-   * The load balancer associated with the specified load balancer pool.
-   * Required if `load_balancer_pool` is specified.
+   * The load balancer associated with `load_balancer_pool`.
+   * The load balancer must have `instance_groups_supported` set to `true`.
    *
-   * At present, only load balancers in the `application` family are supported.
+   * This property must be set if and only if `load_balancer_pool` has been set.
    *
    * @return the loadBalancer
    */
@@ -240,8 +240,9 @@ public class InstanceGroupPatch extends GenericModel {
   /**
    * Gets the loadBalancerPool.
    *
-   * If set, the load balancer pool this instance group will manage. A pool member will
-   * be created for each instance created by this group.
+   * If specified, this instance group will manage the load balancer pool. A pool member
+   * will be created for each instance created by this group.  The specified load
+   * balancer pool must not be used by another instance group in the VPC.
    *
    * If set, `load_balancer` and `application_port` must also be set.
    *

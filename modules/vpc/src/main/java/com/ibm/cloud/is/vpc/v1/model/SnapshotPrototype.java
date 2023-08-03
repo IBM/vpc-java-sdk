@@ -22,6 +22,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  *
  * Classes which extend this class:
  * - SnapshotPrototypeSnapshotBySourceVolume
+ * - SnapshotPrototypeSnapshotBySourceSnapshot
  */
 public class SnapshotPrototype extends GenericModel {
 
@@ -33,6 +34,10 @@ public class SnapshotPrototype extends GenericModel {
   protected List<String> userTags;
   @SerializedName("source_volume")
   protected VolumeIdentity sourceVolume;
+  @SerializedName("encryption_key")
+  protected EncryptionKeyIdentity encryptionKey;
+  @SerializedName("source_snapshot")
+  protected SnapshotIdentityByCRN sourceSnapshot;
 
   protected SnapshotPrototype() { }
 
@@ -91,6 +96,37 @@ public class SnapshotPrototype extends GenericModel {
    */
   public VolumeIdentity sourceVolume() {
     return sourceVolume;
+  }
+
+  /**
+   * Gets the encryptionKey.
+   *
+   * The root key to use to wrap the data encryption key for this snapshot.
+   *
+   * A key must be specified if and only if the source snapshot has an `encryption` type of
+   * `user_managed`. To maximize snapshot availability and sharing of snapshot data, specify
+   * a key in the same region as the new snapshot, and use the same encryption key for all
+   * snapshots using the same source volume.
+   *
+   * The specified key may be in a different account, subject to IAM policies.
+   *
+   * @return the encryptionKey
+   */
+  public EncryptionKeyIdentity encryptionKey() {
+    return encryptionKey;
+  }
+
+  /**
+   * Gets the sourceSnapshot.
+   *
+   * The source snapshot (in another region) to create this snapshot from.
+   * The specified snapshot must not already be the source of another snapshot in this
+   * region.
+   *
+   * @return the sourceSnapshot
+   */
+  public SnapshotIdentityByCRN sourceSnapshot() {
+    return sourceSnapshot;
   }
 }
 

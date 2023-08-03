@@ -33,14 +33,14 @@ public class IKEPolicyPatchTest {
   @Test
   public void testIKEPolicyPatch() throws Throwable {
     IKEPolicyPatch ikePolicyPatchModel = new IKEPolicyPatch.Builder()
-      .authenticationAlgorithm("md5")
+      .authenticationAlgorithm("sha256")
       .dhGroup(Long.valueOf("14"))
       .encryptionAlgorithm("aes128")
       .ikeVersion(Long.valueOf("1"))
       .keyLifetime(Long.valueOf("28800"))
       .name("my-ike-policy")
       .build();
-    assertEquals(ikePolicyPatchModel.authenticationAlgorithm(), "md5");
+    assertEquals(ikePolicyPatchModel.authenticationAlgorithm(), "sha256");
     assertEquals(ikePolicyPatchModel.dhGroup(), Long.valueOf("14"));
     assertEquals(ikePolicyPatchModel.encryptionAlgorithm(), "aes128");
     assertEquals(ikePolicyPatchModel.ikeVersion(), Long.valueOf("1"));
@@ -51,7 +51,7 @@ public class IKEPolicyPatchTest {
 
     IKEPolicyPatch ikePolicyPatchModelNew = TestUtilities.deserialize(json, IKEPolicyPatch.class);
     assertTrue(ikePolicyPatchModelNew instanceof IKEPolicyPatch);
-    assertEquals(ikePolicyPatchModelNew.authenticationAlgorithm(), "md5");
+    assertEquals(ikePolicyPatchModelNew.authenticationAlgorithm(), "sha256");
     assertEquals(ikePolicyPatchModelNew.dhGroup(), Long.valueOf("14"));
     assertEquals(ikePolicyPatchModelNew.encryptionAlgorithm(), "aes128");
     assertEquals(ikePolicyPatchModelNew.ikeVersion(), Long.valueOf("1"));
@@ -61,7 +61,7 @@ public class IKEPolicyPatchTest {
   @Test
   public void testIKEPolicyPatchAsPatch() throws Throwable {
     IKEPolicyPatch ikePolicyPatchModel = new IKEPolicyPatch.Builder()
-      .authenticationAlgorithm("md5")
+      .authenticationAlgorithm("sha256")
       .dhGroup(Long.valueOf("14"))
       .encryptionAlgorithm("aes128")
       .ikeVersion(Long.valueOf("1"))
@@ -71,7 +71,7 @@ public class IKEPolicyPatchTest {
 
     Map<String, Object> mergePatch = ikePolicyPatchModel.asPatch();
 
-    assertEquals(mergePatch.get("authentication_algorithm"), "md5");
+    assertEquals(mergePatch.get("authentication_algorithm"), "sha256");
     assertTrue(mergePatch.containsKey("dh_group"));
     assertEquals(mergePatch.get("encryption_algorithm"), "aes128");
     assertTrue(mergePatch.containsKey("ike_version"));

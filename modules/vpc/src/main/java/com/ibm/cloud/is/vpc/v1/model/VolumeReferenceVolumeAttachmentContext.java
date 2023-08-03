@@ -12,6 +12,7 @@
  */
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
@@ -19,11 +20,21 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class VolumeReferenceVolumeAttachmentContext extends GenericModel {
 
+  /**
+   * The resource type.
+   */
+  public interface ResourceType {
+    /** volume. */
+    String VOLUME = "volume";
+  }
+
   protected String crn;
   protected VolumeReferenceVolumeAttachmentContextDeleted deleted;
   protected String href;
   protected String id;
   protected String name;
+  @SerializedName("resource_type")
+  protected String resourceType;
 
   protected VolumeReferenceVolumeAttachmentContext() { }
 
@@ -81,6 +92,17 @@ public class VolumeReferenceVolumeAttachmentContext extends GenericModel {
    */
   public String getName() {
     return name;
+  }
+
+  /**
+   * Gets the resourceType.
+   *
+   * The resource type.
+   *
+   * @return the resourceType
+   */
+  public String getResourceType() {
+    return resourceType;
   }
 }
 

@@ -26,18 +26,12 @@ public class IPsecPolicyPatch extends GenericModel {
   /**
    * The authentication algorithm
    *
-   * The `md5` and `sha1` algorithms have been deprecated
-   *
    * Must be `disabled` if and only if the `encryption_algorithm` is
    * `aes128gcm16`, `aes192gcm16`, or `aes256gcm16`.
    */
   public interface AuthenticationAlgorithm {
     /** disabled. */
     String DISABLED = "disabled";
-    /** md5. */
-    String MD5 = "md5";
-    /** sha1. */
-    String SHA1 = "sha1";
     /** sha256. */
     String SHA256 = "sha256";
     /** sha384. */
@@ -48,8 +42,6 @@ public class IPsecPolicyPatch extends GenericModel {
 
   /**
    * The encryption algorithm
-   *
-   * The `triple_des` algorithm has been deprecated
    *
    * The `authentication_algorithm` must be `disabled` if and only if
    * `encryption_algorithm` is `aes128gcm16`, `aes192gcm16`, or
@@ -68,14 +60,10 @@ public class IPsecPolicyPatch extends GenericModel {
     String AES256 = "aes256";
     /** aes256gcm16. */
     String AES256GCM16 = "aes256gcm16";
-    /** triple_des. */
-    String TRIPLE_DES = "triple_des";
   }
 
   /**
-   * Perfect Forward Secrecy
-   *
-   * Groups `group_2` and `group_5` have been deprecated.
+   * Perfect Forward Secrecy.
    */
   public interface Pfs {
     /** disabled. */
@@ -92,8 +80,6 @@ public class IPsecPolicyPatch extends GenericModel {
     String GROUP_18 = "group_18";
     /** group_19. */
     String GROUP_19 = "group_19";
-    /** group_2. */
-    String GROUP_2 = "group_2";
     /** group_20. */
     String GROUP_20 = "group_20";
     /** group_21. */
@@ -106,8 +92,6 @@ public class IPsecPolicyPatch extends GenericModel {
     String GROUP_24 = "group_24";
     /** group_31. */
     String GROUP_31 = "group_31";
-    /** group_5. */
-    String GROUP_5 = "group_5";
   }
 
   @SerializedName("authentication_algorithm")
@@ -237,8 +221,6 @@ public class IPsecPolicyPatch extends GenericModel {
    *
    * The authentication algorithm
    *
-   * The `md5` and `sha1` algorithms have been deprecated
-   *
    * Must be `disabled` if and only if the `encryption_algorithm` is
    * `aes128gcm16`, `aes192gcm16`, or `aes256gcm16`.
    *
@@ -252,8 +234,6 @@ public class IPsecPolicyPatch extends GenericModel {
    * Gets the encryptionAlgorithm.
    *
    * The encryption algorithm
-   *
-   * The `triple_des` algorithm has been deprecated
    *
    * The `authentication_algorithm` must be `disabled` if and only if
    * `encryption_algorithm` is `aes128gcm16`, `aes192gcm16`, or
@@ -290,9 +270,7 @@ public class IPsecPolicyPatch extends GenericModel {
   /**
    * Gets the pfs.
    *
-   * Perfect Forward Secrecy
-   *
-   * Groups `group_2` and `group_5` have been deprecated.
+   * Perfect Forward Secrecy.
    *
    * @return the pfs
    */

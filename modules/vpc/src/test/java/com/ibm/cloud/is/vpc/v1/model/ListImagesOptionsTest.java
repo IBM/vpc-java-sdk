@@ -36,12 +36,14 @@ public class ListImagesOptionsTest {
       .limit(Long.valueOf("1"))
       .resourceGroupId("testString")
       .name("testString")
+      .status(java.util.Arrays.asList("available"))
       .visibility("private")
       .build();
     assertEquals(listImagesOptionsModel.start(), "testString");
     assertEquals(listImagesOptionsModel.limit(), Long.valueOf("1"));
     assertEquals(listImagesOptionsModel.resourceGroupId(), "testString");
     assertEquals(listImagesOptionsModel.name(), "testString");
+    assertEquals(listImagesOptionsModel.status(), java.util.Arrays.asList("available"));
     assertEquals(listImagesOptionsModel.visibility(), "private");
   }
 }
