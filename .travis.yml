@@ -28,7 +28,7 @@ stages:
     if: tag IS present
 
 before_install:
-  - npm install npm@latest -g
+  - npm install -g npm@latest || npm install -g npm@9
   - sudo apt-get update
   - env | grep TRAVIS
 
