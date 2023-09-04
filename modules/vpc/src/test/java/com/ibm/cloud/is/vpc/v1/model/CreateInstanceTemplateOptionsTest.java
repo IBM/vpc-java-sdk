@@ -180,13 +180,13 @@ public class CreateInstanceTemplateOptionsTest {
 
     NetworkInterfacePrototype networkInterfacePrototypeModel = new NetworkInterfacePrototype.Builder()
       .allowIpSpoofing(true)
-      .name("my-network-interface")
+      .name("my-instance-network-interface")
       .primaryIp(networkInterfaceIpPrototypeModel)
       .securityGroups(java.util.Arrays.asList(securityGroupIdentityModel))
       .subnet(subnetIdentityModel)
       .build();
     assertEquals(networkInterfacePrototypeModel.allowIpSpoofing(), Boolean.valueOf(true));
-    assertEquals(networkInterfacePrototypeModel.name(), "my-network-interface");
+    assertEquals(networkInterfacePrototypeModel.name(), "my-instance-network-interface");
     assertEquals(networkInterfacePrototypeModel.primaryIp(), networkInterfaceIpPrototypeModel);
     assertEquals(networkInterfacePrototypeModel.securityGroups(), java.util.Arrays.asList(securityGroupIdentityModel));
     assertEquals(networkInterfacePrototypeModel.subnet(), subnetIdentityModel);

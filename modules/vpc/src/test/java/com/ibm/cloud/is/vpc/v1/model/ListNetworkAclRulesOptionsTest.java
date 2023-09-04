@@ -34,12 +34,12 @@ public class ListNetworkAclRulesOptionsTest {
     ListNetworkAclRulesOptions listNetworkAclRulesOptionsModel = new ListNetworkAclRulesOptions.Builder()
       .networkAclId("testString")
       .start("testString")
-      .limit(Long.valueOf("1"))
+      .limit(Long.valueOf("50"))
       .direction("inbound")
       .build();
     assertEquals(listNetworkAclRulesOptionsModel.networkAclId(), "testString");
     assertEquals(listNetworkAclRulesOptionsModel.start(), "testString");
-    assertEquals(listNetworkAclRulesOptionsModel.limit(), Long.valueOf("1"));
+    assertEquals(listNetworkAclRulesOptionsModel.limit(), Long.valueOf("50"));
     assertEquals(listNetworkAclRulesOptionsModel.direction(), "inbound");
   }
 

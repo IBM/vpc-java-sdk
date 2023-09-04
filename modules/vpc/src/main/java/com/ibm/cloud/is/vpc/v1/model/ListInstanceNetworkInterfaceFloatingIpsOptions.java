@@ -122,7 +122,7 @@ public class ListInstanceNetworkInterfaceFloatingIpsOptions extends GenericModel
   /**
    * Gets the networkInterfaceId.
    *
-   * The network interface identifier.
+   * The instance network interface identifier.
    *
    * @return the networkInterfaceId
    */

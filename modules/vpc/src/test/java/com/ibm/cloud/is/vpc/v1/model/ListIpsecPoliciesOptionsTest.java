@@ -33,9 +33,9 @@ public class ListIpsecPoliciesOptionsTest {
   public void testListIpsecPoliciesOptions() throws Throwable {
     ListIpsecPoliciesOptions listIpsecPoliciesOptionsModel = new ListIpsecPoliciesOptions.Builder()
       .start("testString")
-      .limit(Long.valueOf("1"))
+      .limit(Long.valueOf("50"))
       .build();
     assertEquals(listIpsecPoliciesOptionsModel.start(), "testString");
-    assertEquals(listIpsecPoliciesOptionsModel.limit(), Long.valueOf("1"));
+    assertEquals(listIpsecPoliciesOptionsModel.limit(), Long.valueOf("50"));
   }
 }

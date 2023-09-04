@@ -101,8 +101,7 @@ public class NetworkInterfacePatch extends GenericModel {
   /**
    * Gets the allowIpSpoofing.
    *
-   * Indicates whether source IP spoofing is allowed on this interface. If false, source IP spoofing is prevented on
-   * this interface. If true, source IP spoofing is allowed on this interface.
+   * Indicates whether source IP spoofing is allowed on this instance interface.
    *
    * @return the allowIpSpoofing
    */
@@ -113,8 +112,8 @@ public class NetworkInterfacePatch extends GenericModel {
   /**
    * Gets the name.
    *
-   * The name for network interface. The name must not be used by another network interface on the virtual server
-   * instance.
+   * The name for the instance network interface. The name must not be used by another network interface on the virtual
+   * server instance.
    *
    * @return the name
    */

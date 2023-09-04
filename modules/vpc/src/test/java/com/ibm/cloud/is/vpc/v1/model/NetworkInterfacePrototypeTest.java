@@ -55,13 +55,13 @@ public class NetworkInterfacePrototypeTest {
 
     NetworkInterfacePrototype networkInterfacePrototypeModel = new NetworkInterfacePrototype.Builder()
       .allowIpSpoofing(true)
-      .name("my-network-interface")
+      .name("my-instance-network-interface")
       .primaryIp(networkInterfaceIpPrototypeModel)
       .securityGroups(java.util.Arrays.asList(securityGroupIdentityModel))
       .subnet(subnetIdentityModel)
       .build();
     assertEquals(networkInterfacePrototypeModel.allowIpSpoofing(), Boolean.valueOf(true));
-    assertEquals(networkInterfacePrototypeModel.name(), "my-network-interface");
+    assertEquals(networkInterfacePrototypeModel.name(), "my-instance-network-interface");
     assertEquals(networkInterfacePrototypeModel.primaryIp(), networkInterfaceIpPrototypeModel);
     assertEquals(networkInterfacePrototypeModel.securityGroups(), java.util.Arrays.asList(securityGroupIdentityModel));
     assertEquals(networkInterfacePrototypeModel.subnet(), subnetIdentityModel);
@@ -71,7 +71,7 @@ public class NetworkInterfacePrototypeTest {
     NetworkInterfacePrototype networkInterfacePrototypeModelNew = TestUtilities.deserialize(json, NetworkInterfacePrototype.class);
     assertTrue(networkInterfacePrototypeModelNew instanceof NetworkInterfacePrototype);
     assertEquals(networkInterfacePrototypeModelNew.allowIpSpoofing(), Boolean.valueOf(true));
-    assertEquals(networkInterfacePrototypeModelNew.name(), "my-network-interface");
+    assertEquals(networkInterfacePrototypeModelNew.name(), "my-instance-network-interface");
     assertEquals(networkInterfacePrototypeModelNew.primaryIp().toString(), networkInterfaceIpPrototypeModel.toString());
     assertEquals(networkInterfacePrototypeModelNew.subnet().toString(), subnetIdentityModel.toString());
   }

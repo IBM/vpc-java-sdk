@@ -143,8 +143,8 @@ public class Instance extends GenericModel {
   /**
    * Gets the bandwidth.
    *
-   * The total bandwidth (in megabits per second) shared across the virtual server instance's network interfaces and
-   * storage volumes.
+   * The total bandwidth (in megabits per second) shared across the instance network interfaces and storage volumes of
+   * virtual server instance.
    *
    * @return the bandwidth
    */
@@ -325,7 +325,7 @@ public class Instance extends GenericModel {
   /**
    * Gets the networkInterfaces.
    *
-   * The network interfaces for this virtual server instance, including the primary network interface.
+   * The instance network interfaces, including the primary instance network interface.
    *
    * @return the networkInterfaces
    */
@@ -347,7 +347,7 @@ public class Instance extends GenericModel {
   /**
    * Gets the primaryNetworkInterface.
    *
-   * Primary network interface.
+   * The primary instance network interface.
    *
    * @return the primaryNetworkInterface
    */

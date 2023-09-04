@@ -141,7 +141,7 @@ public class GetInstanceNetworkInterfaceFloatingIpOptions extends GenericModel {
   /**
    * Gets the networkInterfaceId.
    *
-   * The network interface identifier.
+   * The instance network interface identifier.
    *
    * @return the networkInterfaceId
    */

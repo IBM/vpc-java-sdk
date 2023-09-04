@@ -34,11 +34,11 @@ public class ListInstanceGroupManagersOptionsTest {
     ListInstanceGroupManagersOptions listInstanceGroupManagersOptionsModel = new ListInstanceGroupManagersOptions.Builder()
       .instanceGroupId("testString")
       .start("testString")
-      .limit(Long.valueOf("1"))
+      .limit(Long.valueOf("50"))
       .build();
     assertEquals(listInstanceGroupManagersOptionsModel.instanceGroupId(), "testString");
     assertEquals(listInstanceGroupManagersOptionsModel.start(), "testString");
-    assertEquals(listInstanceGroupManagersOptionsModel.limit(), Long.valueOf("1"));
+    assertEquals(listInstanceGroupManagersOptionsModel.limit(), Long.valueOf("50"));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

@@ -145,10 +145,9 @@ public class SecurityGroupRule extends GenericModel {
   /**
    * Gets the remote.
    *
-   * The IP addresses or security groups from which this rule allows traffic (or to which, for
-   * outbound rules). Can be specified as an IP address, a CIDR block, or a security group. A
-   * CIDR block of `0.0.0.0/0` allows traffic from any source (or to any destination, for
-   * outbound rules).
+   * The remote IP addresses or security groups from which this rule allows traffic (or to
+   * which, for outbound rules). A CIDR block of `0.0.0.0/0` allows traffic from any source
+   * (or to any destination, for outbound rules).
    *
    * @return the remote
    */

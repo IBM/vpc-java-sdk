@@ -143,7 +143,7 @@ public class UpdateBareMetalServerNetworkInterfaceOptions extends GenericModel {
   /**
    * Gets the id.
    *
-   * The network interface identifier.
+   * The bare metal server network interface identifier.
    *
    * @return the id
    */
@@ -154,7 +154,7 @@ public class UpdateBareMetalServerNetworkInterfaceOptions extends GenericModel {
   /**
    * Gets the bareMetalServerNetworkInterfacePatch.
    *
-   * The network interface patch.
+   * The bare metal server network interface patch.
    *
    * @return the bareMetalServerNetworkInterfacePatch
    */

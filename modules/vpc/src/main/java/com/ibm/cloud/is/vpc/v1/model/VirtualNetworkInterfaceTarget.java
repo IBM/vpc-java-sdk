@@ -1,0 +1,103 @@
+/*
+ * (C) Copyright IBM Corp. 2021, 2022, 2023.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ */
+package com.ibm.cloud.is.vpc.v1.model;
+
+import com.google.gson.annotations.SerializedName;
+import com.ibm.cloud.sdk.core.service.model.GenericModel;
+
+/**
+ * A virtual network interface target.
+ *
+ * The resource types that can be virtual network interface targets are expected to expand in the future. When iterating
+ * over virtual network interface targets, do not assume that every target resource will be from a known set of resource
+ * types. Optionally halt processing and surface an error, or bypass resources of unrecognized types.
+ *
+ * Classes which extend this class:
+ * - VirtualNetworkInterfaceTargetShareMountTargetReference
+ */
+public class VirtualNetworkInterfaceTarget extends GenericModel {
+
+  /**
+   * The resource type.
+   */
+  public interface ResourceType {
+    /** share_mount_target. */
+    String SHARE_MOUNT_TARGET = "share_mount_target";
+  }
+
+  protected ShareMountTargetReferenceDeleted deleted;
+  protected String href;
+  protected String id;
+  protected String name;
+  @SerializedName("resource_type")
+  protected String resourceType;
+
+  protected VirtualNetworkInterfaceTarget() { }
+
+  /**
+   * Gets the deleted.
+   *
+   * If present, this property indicates the referenced resource has been deleted, and provides
+   * some supplementary information.
+   *
+   * @return the deleted
+   */
+  public ShareMountTargetReferenceDeleted getDeleted() {
+    return deleted;
+  }
+
+  /**
+   * Gets the href.
+   *
+   * The URL for this share mount target.
+   *
+   * @return the href
+   */
+  public String getHref() {
+    return href;
+  }
+
+  /**
+   * Gets the id.
+   *
+   * The unique identifier for this share mount target.
+   *
+   * @return the id
+   */
+  public String getId() {
+    return id;
+  }
+
+  /**
+   * Gets the name.
+   *
+   * The name for this share mount target. The name is unique across all mount targets for the file share.
+   *
+   * @return the name
+   */
+  public String getName() {
+    return name;
+  }
+
+  /**
+   * Gets the resourceType.
+   *
+   * The resource type.
+   *
+   * @return the resourceType
+   */
+  public String getResourceType() {
+    return resourceType;
+  }
+}
+

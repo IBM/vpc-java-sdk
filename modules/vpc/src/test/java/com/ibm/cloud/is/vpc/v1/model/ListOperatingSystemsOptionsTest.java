@@ -33,9 +33,9 @@ public class ListOperatingSystemsOptionsTest {
   public void testListOperatingSystemsOptions() throws Throwable {
     ListOperatingSystemsOptions listOperatingSystemsOptionsModel = new ListOperatingSystemsOptions.Builder()
       .start("testString")
-      .limit(Long.valueOf("1"))
+      .limit(Long.valueOf("50"))
       .build();
     assertEquals(listOperatingSystemsOptionsModel.start(), "testString");
-    assertEquals(listOperatingSystemsOptionsModel.limit(), Long.valueOf("1"));
+    assertEquals(listOperatingSystemsOptionsModel.limit(), Long.valueOf("50"));
   }
 }

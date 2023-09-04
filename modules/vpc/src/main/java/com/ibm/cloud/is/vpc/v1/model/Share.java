@@ -1,0 +1,466 @@
+/*
+ * (C) Copyright IBM Corp. 2021, 2022, 2023.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ */
+package com.ibm.cloud.is.vpc.v1.model;
+
+import java.util.Date;
+import java.util.List;
+
+import com.google.gson.annotations.SerializedName;
+import com.ibm.cloud.sdk.core.service.model.GenericModel;
+
+/**
+ * Share.
+ */
+public class Share extends GenericModel {
+
+  /**
+   * The access control mode for the share:
+   *
+   * - `security_group`: The security groups on the virtual network interface for a mount
+   *   target control access to the mount target.
+   * - `vpc`: All clients in the VPC for a mount target have access to the mount target.
+   *
+   * The enumerated access control mode values for this property may expand in the future. When processing this
+   * property, check for and log unknown values. Optionally halt processing and surface the error, or bypass the
+   * resource on which the unexpected access control mode was encountered.
+   */
+  public interface AccessControlMode {
+    /** security_group. */
+    String SECURITY_GROUP = "security_group";
+    /** vpc. */
+    String VPC = "vpc";
+  }
+
+  /**
+   * The type of encryption used for this file share.
+   */
+  public interface Encryption {
+    /** provider_managed. */
+    String PROVIDER_MANAGED = "provider_managed";
+    /** user_managed. */
+    String USER_MANAGED = "user_managed";
+  }
+
+  /**
+   * The lifecycle state of the file share.
+   */
+  public interface LifecycleState {
+    /** deleting. */
+    String DELETING = "deleting";
+    /** failed. */
+    String FAILED = "failed";
+    /** pending. */
+    String PENDING = "pending";
+    /** stable. */
+    String STABLE = "stable";
+    /** suspended. */
+    String SUSPENDED = "suspended";
+    /** updating. */
+    String UPDATING = "updating";
+    /** waiting. */
+    String WAITING = "waiting";
+  }
+
+  /**
+   * The replication role of the file share.
+   *
+   * * `none`: This share is not participating in replication.
+   * * `replica`: This share is a replication target.
+   * * `source`: This share is a replication source.
+   */
+  public interface ReplicationRole {
+    /** none. */
+    String NONE = "none";
+    /** replica. */
+    String REPLICA = "replica";
+    /** source. */
+    String SOURCE = "source";
+  }
+
+  /**
+   * The replication status of the file share.
+   *
+   * * `active`: This share is actively participating in replication, and the replica's data is up-to-date with the
+   * replication schedule.
+   * * `failover_pending`: This share is performing a replication failover.
+   * * `initializing`: This share is initializing replication.
+   * * `none`: This share is not participating in replication.
+   * * `split_pending`: This share is performing a replication split.
+   */
+  public interface ReplicationStatus {
+    /** active. */
+    String ACTIVE = "active";
+    /** failover_pending. */
+    String FAILOVER_PENDING = "failover_pending";
+    /** initializing. */
+    String INITIALIZING = "initializing";
+    /** none. */
+    String NONE = "none";
+    /** split_pending. */
+    String SPLIT_PENDING = "split_pending";
+  }
+
+  /**
+   * The resource type.
+   */
+  public interface ResourceType {
+    /** share. */
+    String SHARE = "share";
+  }
+
+  @SerializedName("access_control_mode")
+  protected String accessControlMode;
+  @SerializedName("created_at")
+  protected Date createdAt;
+  protected String crn;
+  protected String encryption;
+  @SerializedName("encryption_key")
+  protected EncryptionKeyReference encryptionKey;
+  protected String href;
+  protected String id;
+  protected Long iops;
+  @SerializedName("latest_job")
+  protected ShareJob latestJob;
+  @SerializedName("lifecycle_state")
+  protected String lifecycleState;
+  @SerializedName("mount_targets")
+  protected List<ShareMountTargetReference> mountTargets;
+  protected String name;
+  protected ShareProfileReference profile;
+  @SerializedName("replica_share")
+  protected ShareReference replicaShare;
+  @SerializedName("replication_cron_spec")
+  protected String replicationCronSpec;
+  @SerializedName("replication_role")
+  protected String replicationRole;
+  @SerializedName("replication_status")
+  protected String replicationStatus;
+  @SerializedName("replication_status_reasons")
+  protected List<ShareReplicationStatusReason> replicationStatusReasons;
+  @SerializedName("resource_group")
+  protected ResourceGroupReference resourceGroup;
+  @SerializedName("resource_type")
+  protected String resourceType;
+  protected Long size;
+  @SerializedName("source_share")
+  protected ShareReference sourceShare;
+  @SerializedName("user_tags")
+  protected List<String> userTags;
+  protected ZoneReference zone;
+
+  protected Share() { }
+
+  /**
+   * Gets the accessControlMode.
+   *
+   * The access control mode for the share:
+   *
+   * - `security_group`: The security groups on the virtual network interface for a mount
+   *   target control access to the mount target.
+   * - `vpc`: All clients in the VPC for a mount target have access to the mount target.
+   *
+   * The enumerated access control mode values for this property may expand in the future. When processing this
+   * property, check for and log unknown values. Optionally halt processing and surface the error, or bypass the
+   * resource on which the unexpected access control mode was encountered.
+   *
+   * @return the accessControlMode
+   */
+  public String getAccessControlMode() {
+    return accessControlMode;
+  }
+
+  /**
+   * Gets the createdAt.
+   *
+   * The date and time that the file share is created.
+   *
+   * @return the createdAt
+   */
+  public Date getCreatedAt() {
+    return createdAt;
+  }
+
+  /**
+   * Gets the crn.
+   *
+   * The CRN for this file share.
+   *
+   * @return the crn
+   */
+  public String getCrn() {
+    return crn;
+  }
+
+  /**
+   * Gets the encryption.
+   *
+   * The type of encryption used for this file share.
+   *
+   * @return the encryption
+   */
+  public String getEncryption() {
+    return encryption;
+  }
+
+  /**
+   * Gets the encryptionKey.
+   *
+   * The key used to encrypt this file share.
+   *
+   * This property will be present if `encryption_type` is `user_managed`.
+   *
+   * @return the encryptionKey
+   */
+  public EncryptionKeyReference getEncryptionKey() {
+    return encryptionKey;
+  }
+
+  /**
+   * Gets the href.
+   *
+   * The URL for this file share.
+   *
+   * @return the href
+   */
+  public String getHref() {
+    return href;
+  }
+
+  /**
+   * Gets the id.
+   *
+   * The unique identifier for this file share.
+   *
+   * @return the id
+   */
+  public String getId() {
+    return id;
+  }
+
+  /**
+   * Gets the iops.
+   *
+   * The maximum input/output operations per second (IOPS) for the file share. In addition, each client accessing the
+   * share will be restricted to 48,000 IOPS.
+   *
+   * The maximum IOPS for a share may increase in the future.
+   *
+   * @return the iops
+   */
+  public Long getIops() {
+    return iops;
+  }
+
+  /**
+   * Gets the latestJob.
+   *
+   * The latest job associated with this file share.
+   *
+   * This property will be absent if no jobs have been created for this file share.
+   *
+   * @return the latestJob
+   */
+  public ShareJob getLatestJob() {
+    return latestJob;
+  }
+
+  /**
+   * Gets the lifecycleState.
+   *
+   * The lifecycle state of the file share.
+   *
+   * @return the lifecycleState
+   */
+  public String getLifecycleState() {
+    return lifecycleState;
+  }
+
+  /**
+   * Gets the mountTargets.
+   *
+   * The mount targets for the file share.
+   *
+   * @return the mountTargets
+   */
+  public List<ShareMountTargetReference> getMountTargets() {
+    return mountTargets;
+  }
+
+  /**
+   * Gets the name.
+   *
+   * The name for this share. The name is unique across all shares in the region.
+   *
+   * @return the name
+   */
+  public String getName() {
+    return name;
+  }
+
+  /**
+   * Gets the profile.
+   *
+   * The [profile](https://cloud.ibm.com/docs/vpc?topic=vpc-file-storage-profiles) for
+   * this file share.
+   *
+   * @return the profile
+   */
+  public ShareProfileReference getProfile() {
+    return profile;
+  }
+
+  /**
+   * Gets the replicaShare.
+   *
+   * The replica file share for this source file share.
+   *
+   * This property will be present when the `replication_role` is `source`.
+   *
+   * @return the replicaShare
+   */
+  public ShareReference getReplicaShare() {
+    return replicaShare;
+  }
+
+  /**
+   * Gets the replicationCronSpec.
+   *
+   * The cron specification for the file share replication schedule.
+   *
+   * This property will be present when the `replication_role` is `replica`.
+   *
+   * @return the replicationCronSpec
+   */
+  public String getReplicationCronSpec() {
+    return replicationCronSpec;
+  }
+
+  /**
+   * Gets the replicationRole.
+   *
+   * The replication role of the file share.
+   *
+   * * `none`: This share is not participating in replication.
+   * * `replica`: This share is a replication target.
+   * * `source`: This share is a replication source.
+   *
+   * @return the replicationRole
+   */
+  public String getReplicationRole() {
+    return replicationRole;
+  }
+
+  /**
+   * Gets the replicationStatus.
+   *
+   * The replication status of the file share.
+   *
+   * * `active`: This share is actively participating in replication, and the replica's data is up-to-date with the
+   * replication schedule.
+   * * `failover_pending`: This share is performing a replication failover.
+   * * `initializing`: This share is initializing replication.
+   * * `none`: This share is not participating in replication.
+   * * `split_pending`: This share is performing a replication split.
+   *
+   * @return the replicationStatus
+   */
+  public String getReplicationStatus() {
+    return replicationStatus;
+  }
+
+  /**
+   * Gets the replicationStatusReasons.
+   *
+   * The reasons for the current replication status (if any).
+   *
+   * The enumerated reason code values for this property will expand in the future. When processing this property, check
+   * for and log unknown values. Optionally halt processing and surface the error, or bypass the resource on which the
+   * unexpected reason code was encountered.
+   *
+   * @return the replicationStatusReasons
+   */
+  public List<ShareReplicationStatusReason> getReplicationStatusReasons() {
+    return replicationStatusReasons;
+  }
+
+  /**
+   * Gets the resourceGroup.
+   *
+   * The resource group for this file share.
+   *
+   * @return the resourceGroup
+   */
+  public ResourceGroupReference getResourceGroup() {
+    return resourceGroup;
+  }
+
+  /**
+   * Gets the resourceType.
+   *
+   * The resource type.
+   *
+   * @return the resourceType
+   */
+  public String getResourceType() {
+    return resourceType;
+  }
+
+  /**
+   * Gets the size.
+   *
+   * The size of the file share rounded up to the next gigabyte.
+   *
+   * The maximum size for a share may increase in the future.
+   *
+   * @return the size
+   */
+  public Long getSize() {
+    return size;
+  }
+
+  /**
+   * Gets the sourceShare.
+   *
+   * The source file share for this replica file share.
+   *
+   * This property will be present when the `replication_role` is `replica`.
+   *
+   * @return the sourceShare
+   */
+  public ShareReference getSourceShare() {
+    return sourceShare;
+  }
+
+  /**
+   * Gets the userTags.
+   *
+   * Tags for this resource.
+   *
+   * @return the userTags
+   */
+  public List<String> getUserTags() {
+    return userTags;
+  }
+
+  /**
+   * Gets the zone.
+   *
+   * The zone this file share will reside in.
+   *
+   * @return the zone
+   */
+  public ZoneReference getZone() {
+    return zone;
+  }
+}
+

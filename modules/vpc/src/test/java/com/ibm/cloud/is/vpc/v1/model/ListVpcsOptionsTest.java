@@ -33,12 +33,12 @@ public class ListVpcsOptionsTest {
   public void testListVpcsOptions() throws Throwable {
     ListVpcsOptions listVpcsOptionsModel = new ListVpcsOptions.Builder()
       .start("testString")
-      .limit(Long.valueOf("1"))
+      .limit(Long.valueOf("50"))
       .resourceGroupId("testString")
       .classicAccess(true)
       .build();
     assertEquals(listVpcsOptionsModel.start(), "testString");
-    assertEquals(listVpcsOptionsModel.limit(), Long.valueOf("1"));
+    assertEquals(listVpcsOptionsModel.limit(), Long.valueOf("50"));
     assertEquals(listVpcsOptionsModel.resourceGroupId(), "testString");
     assertEquals(listVpcsOptionsModel.classicAccess(), Boolean.valueOf(true));
   }

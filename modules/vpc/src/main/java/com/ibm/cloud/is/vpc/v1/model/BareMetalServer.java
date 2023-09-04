@@ -115,7 +115,7 @@ public class BareMetalServer extends GenericModel {
   /**
    * Gets the bandwidth.
    *
-   * The total bandwidth (in megabits per second) shared across the bare metal server's network interfaces.
+   * The total bandwidth (in megabits per second) shared across the bare metal server network interfaces.
    *
    * @return the bandwidth
    */
@@ -264,7 +264,7 @@ public class BareMetalServer extends GenericModel {
   /**
    * Gets the networkInterfaces.
    *
-   * The network interfaces for this bare metal server, including the primary network interface.
+   * The bare metal server network interfaces, including the primary interface.
    *
    * @return the networkInterfaces
    */
@@ -275,7 +275,7 @@ public class BareMetalServer extends GenericModel {
   /**
    * Gets the primaryNetworkInterface.
    *
-   * Primary network interface.
+   * The primary bare metal server network interface.
    *
    * @return the primaryNetworkInterface
    */

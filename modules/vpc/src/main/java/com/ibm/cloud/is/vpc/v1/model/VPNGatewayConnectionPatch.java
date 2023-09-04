@@ -122,7 +122,7 @@ public class VPNGatewayConnectionPatch extends GenericModel {
   /**
    * Gets the psk.
    *
-   * The preshared key.
+   * The pre-shared key.
    *
    * @return the psk
    */

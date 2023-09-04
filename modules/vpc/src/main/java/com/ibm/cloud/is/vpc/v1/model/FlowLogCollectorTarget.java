@@ -17,16 +17,16 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
  * The target this collector is collecting flow logs for.
- * - If the target is a network interface, flow logs will be collected
- *   for that network interface.
+ * - If the target is an instance network interface, flow logs will be collected
+ *   for that instance network interface.
  * - If the target is a virtual server instance, flow logs will be collected
- *   for all network interfaces attached to that instance.
+ *   for all network interfaces on that instance.
  * - If the target is a subnet, flow logs will be collected
- *   for all network interfaces attached to that subnet.
- * - If the target is a VPC, flow logs will be collected for network interfaces
+ *   for all instance network interfaces attached to that subnet.
+ * - If the target is a VPC, flow logs will be collected for instance network interfaces
  *   attached to all subnets within that VPC. If the target is an instance, subnet, or VPC, flow logs will not be
- * collected for any network interfaces within the target that are themselves the target of a more specific flow log
- * collector.
+ * collected for any instance network interfaces within the target that are themselves the target of a more specific
+ * flow log collector.
  *
  * Classes which extend this class:
  * - FlowLogCollectorTargetNetworkInterfaceReferenceTargetContext
@@ -69,7 +69,7 @@ public class FlowLogCollectorTarget extends GenericModel {
   /**
    * Gets the href.
    *
-   * The URL for this network interface.
+   * The URL for this instance network interface.
    *
    * @return the href
    */
@@ -80,7 +80,7 @@ public class FlowLogCollectorTarget extends GenericModel {
   /**
    * Gets the id.
    *
-   * The unique identifier for this network interface.
+   * The unique identifier for this instance network interface.
    *
    * @return the id
    */
@@ -91,7 +91,7 @@ public class FlowLogCollectorTarget extends GenericModel {
   /**
    * Gets the name.
    *
-   * The name for this network interface.
+   * The name for this instance network interface.
    *
    * @return the name
    */

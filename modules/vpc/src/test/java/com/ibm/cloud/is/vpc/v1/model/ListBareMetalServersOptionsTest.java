@@ -33,7 +33,7 @@ public class ListBareMetalServersOptionsTest {
   public void testListBareMetalServersOptions() throws Throwable {
     ListBareMetalServersOptions listBareMetalServersOptionsModel = new ListBareMetalServersOptions.Builder()
       .start("testString")
-      .limit(Long.valueOf("1"))
+      .limit(Long.valueOf("50"))
       .resourceGroupId("testString")
       .name("testString")
       .vpcId("testString")
@@ -44,7 +44,7 @@ public class ListBareMetalServersOptionsTest {
       .networkInterfacesSubnetName("my-subnet")
       .build();
     assertEquals(listBareMetalServersOptionsModel.start(), "testString");
-    assertEquals(listBareMetalServersOptionsModel.limit(), Long.valueOf("1"));
+    assertEquals(listBareMetalServersOptionsModel.limit(), Long.valueOf("50"));
     assertEquals(listBareMetalServersOptionsModel.resourceGroupId(), "testString");
     assertEquals(listBareMetalServersOptionsModel.name(), "testString");
     assertEquals(listBareMetalServersOptionsModel.vpcId(), "testString");

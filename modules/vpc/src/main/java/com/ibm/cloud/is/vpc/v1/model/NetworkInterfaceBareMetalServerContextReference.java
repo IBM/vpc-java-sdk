@@ -55,7 +55,7 @@ public class NetworkInterfaceBareMetalServerContextReference extends GenericMode
   /**
    * Gets the href.
    *
-   * The URL for this network interface.
+   * The URL for this bare metal server network interface.
    *
    * @return the href
    */
@@ -66,7 +66,7 @@ public class NetworkInterfaceBareMetalServerContextReference extends GenericMode
   /**
    * Gets the id.
    *
-   * The unique identifier for this network interface.
+   * The unique identifier for this bare metal server network interface.
    *
    * @return the id
    */
@@ -77,7 +77,7 @@ public class NetworkInterfaceBareMetalServerContextReference extends GenericMode
   /**
    * Gets the name.
    *
-   * The name for this network interface.
+   * The name for this bare metal server network interface.
    *
    * @return the name
    */

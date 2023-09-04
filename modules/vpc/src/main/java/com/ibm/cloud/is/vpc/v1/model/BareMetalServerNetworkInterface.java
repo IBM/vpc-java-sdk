@@ -38,8 +38,8 @@ public class BareMetalServerNetworkInterface extends GenericModel {
   }
 
   /**
-   * The network interface type:
-   * - `hipersocket`: a virtual network device that provides high-speed TCP/IP connectivity
+   * The interface type:
+   * - `hipersocket`: a virtual device that provides high-speed TCP/IP connectivity
    *   within a `s390x` based system
    * - `pci`: a physical PCI device which can only be created or deleted when the bare metal
    *   server is stopped
@@ -74,7 +74,7 @@ public class BareMetalServerNetworkInterface extends GenericModel {
   }
 
   /**
-   * The status of the network interface.
+   * The status of the bare metal server network interface.
    */
   public interface Status {
     /** available. */
@@ -134,8 +134,7 @@ public class BareMetalServerNetworkInterface extends GenericModel {
   /**
    * Gets the allowIpSpoofing.
    *
-   * Indicates whether source IP spoofing is allowed on this interface. If false, source IP spoofing is prevented on
-   * this interface. If true, source IP spoofing is allowed on this interface.
+   * Indicates whether source IP spoofing is allowed on this bare metal server network interface.
    *
    * @return the allowIpSpoofing
    */
@@ -146,7 +145,7 @@ public class BareMetalServerNetworkInterface extends GenericModel {
   /**
    * Gets the createdAt.
    *
-   * The date and time that the network interface was created.
+   * The date and time that the bare metal server network interface was created.
    *
    * @return the createdAt
    */
@@ -162,7 +161,7 @@ public class BareMetalServerNetworkInterface extends GenericModel {
    * - `floating_ips` must not have more than one floating IP.
    *
    * If `false`:
-   * - Packets are passed unchanged to/from the network interface,
+   * - Packets are passed unchanged to/from the bare metal server network interface,
    *   allowing the workload to perform any needed NAT operations.
    * - `allow_ip_spoofing` must be `false`.
    * - `interface_type` must not be `hipersocket`.
@@ -176,7 +175,7 @@ public class BareMetalServerNetworkInterface extends GenericModel {
   /**
    * Gets the floatingIps.
    *
-   * The floating IPs associated with this network interface.
+   * The floating IPs associated with this bare metal server network interface.
    *
    * @return the floatingIps
    */
@@ -187,7 +186,7 @@ public class BareMetalServerNetworkInterface extends GenericModel {
   /**
    * Gets the href.
    *
-   * The URL for this network interface.
+   * The URL for this bare metal server network interface.
    *
    * @return the href
    */
@@ -198,7 +197,7 @@ public class BareMetalServerNetworkInterface extends GenericModel {
   /**
    * Gets the id.
    *
-   * The unique identifier for this network interface.
+   * The unique identifier for this bare metal server network interface.
    *
    * @return the id
    */
@@ -209,8 +208,8 @@ public class BareMetalServerNetworkInterface extends GenericModel {
   /**
    * Gets the interfaceType.
    *
-   * The network interface type:
-   * - `hipersocket`: a virtual network device that provides high-speed TCP/IP connectivity
+   * The interface type:
+   * - `hipersocket`: a virtual device that provides high-speed TCP/IP connectivity
    *   within a `s390x` based system
    * - `pci`: a physical PCI device which can only be created or deleted when the bare metal
    *   server is stopped
@@ -236,7 +235,8 @@ public class BareMetalServerNetworkInterface extends GenericModel {
   /**
    * Gets the macAddress.
    *
-   * The MAC address of the interface.  If absent, the value is not known.
+   * The MAC address of this bare metal server network interface. If the MAC address has not yet been selected, the
+   * value will be an empty string.
    *
    * @return the macAddress
    */
@@ -247,7 +247,7 @@ public class BareMetalServerNetworkInterface extends GenericModel {
   /**
    * Gets the name.
    *
-   * The name for this network interface.
+   * The name for this bare metal server network interface.
    *
    * @return the name
    */
@@ -258,7 +258,7 @@ public class BareMetalServerNetworkInterface extends GenericModel {
   /**
    * Gets the portSpeed.
    *
-   * The network interface port speed in Mbps.
+   * The bare metal server network interface port speed in Mbps.
    *
    * @return the portSpeed
    */
@@ -289,7 +289,7 @@ public class BareMetalServerNetworkInterface extends GenericModel {
   /**
    * Gets the securityGroups.
    *
-   * The security groups targeting this network interface.
+   * The security groups targeting this bare metal server network interface.
    *
    * @return the securityGroups
    */
@@ -300,7 +300,7 @@ public class BareMetalServerNetworkInterface extends GenericModel {
   /**
    * Gets the status.
    *
-   * The status of the network interface.
+   * The status of the bare metal server network interface.
    *
    * @return the status
    */

@@ -68,11 +68,11 @@ public class BackupPolicyPlanPatchTest {
     assertEquals(regionIdentityModel.name(), "us-south");
 
     BackupPolicyPlanRemoteRegionPolicyPrototype backupPolicyPlanRemoteRegionPolicyPrototypeModel = new BackupPolicyPlanRemoteRegionPolicyPrototype.Builder()
-      .deleteOverCount(Long.valueOf("1"))
+      .deleteOverCount(Long.valueOf("5"))
       .encryptionKey(encryptionKeyIdentityModel)
       .region(regionIdentityModel)
       .build();
-    assertEquals(backupPolicyPlanRemoteRegionPolicyPrototypeModel.deleteOverCount(), Long.valueOf("1"));
+    assertEquals(backupPolicyPlanRemoteRegionPolicyPrototypeModel.deleteOverCount(), Long.valueOf("5"));
     assertEquals(backupPolicyPlanRemoteRegionPolicyPrototypeModel.encryptionKey(), encryptionKeyIdentityModel);
     assertEquals(backupPolicyPlanRemoteRegionPolicyPrototypeModel.region(), regionIdentityModel);
 
@@ -131,7 +131,7 @@ public class BackupPolicyPlanPatchTest {
       .build();
 
     BackupPolicyPlanRemoteRegionPolicyPrototype backupPolicyPlanRemoteRegionPolicyPrototypeModel = new BackupPolicyPlanRemoteRegionPolicyPrototype.Builder()
-      .deleteOverCount(Long.valueOf("1"))
+      .deleteOverCount(Long.valueOf("5"))
       .encryptionKey(encryptionKeyIdentityModel)
       .region(regionIdentityModel)
       .build();

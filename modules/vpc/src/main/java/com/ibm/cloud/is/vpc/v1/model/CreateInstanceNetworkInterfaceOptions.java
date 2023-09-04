@@ -228,8 +228,7 @@ public class CreateInstanceNetworkInterfaceOptions extends GenericModel {
   /**
    * Gets the allowIpSpoofing.
    *
-   * Indicates whether source IP spoofing is allowed on this interface. If false, source IP spoofing is prevented on
-   * this interface. If true, source IP spoofing is allowed on this interface.
+   * Indicates whether source IP spoofing is allowed on this instance interface.
    *
    * @return the allowIpSpoofing
    */
@@ -240,8 +239,8 @@ public class CreateInstanceNetworkInterfaceOptions extends GenericModel {
   /**
    * Gets the name.
    *
-   * The name for network interface. The name must not be used by another network interface on the virtual server
-   * instance. If unspecified, the name will be a hyphenated list of randomly-selected words.
+   * The name for the instance network interface. The name must not be used by another network interface on the virtual
+   * server instance. If unspecified, the name will be a hyphenated list of randomly-selected words.
    *
    * @return the name
    */
@@ -252,12 +251,12 @@ public class CreateInstanceNetworkInterfaceOptions extends GenericModel {
   /**
    * Gets the primaryIp.
    *
-   * The primary IP address to bind to the network interface. This can be specified using
-   * an existing reserved IP, or a prototype object for a new reserved IP.
+   * The primary IP address to bind to the instance network interface. This can be
+   * specified using an existing reserved IP, or a prototype object for a new reserved IP.
    *
    * If an existing reserved IP or a prototype object with an address is specified, it must
-   * be available on the network interface's subnet. Otherwise, an available address on the
-   * subnet will be automatically selected and reserved.
+   * be available on the instance network interface's subnet. Otherwise, an
+   * available address on the subnet will be automatically selected and reserved.
    *
    * @return the primaryIp
    */
@@ -268,7 +267,8 @@ public class CreateInstanceNetworkInterfaceOptions extends GenericModel {
   /**
    * Gets the securityGroups.
    *
-   * The security groups to use for this network interface. If unspecified, the VPC's default security group is used.
+   * The security groups to use for this instance network interface. If unspecified, the VPC's default security group is
+   * used.
    *
    * @return the securityGroups
    */

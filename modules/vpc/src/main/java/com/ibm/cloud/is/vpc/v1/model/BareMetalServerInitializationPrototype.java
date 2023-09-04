@@ -163,7 +163,7 @@ public class BareMetalServerInitializationPrototype extends GenericModel {
    * cloud-init vendor data. For cloud-init enabled images, these keys will also be added as SSH authorized keys for the
    * administrative user.
    *
-   * For Windows images, at least one key must be specified, and one will be chosen to encrypt the administrator
+   * For Windows images, at least one key must be specified, and one will be selected to encrypt the administrator
    * password. Keys are optional for other images, but if no keys are specified, the instance will be inaccessible
    * unless the specified image provides another means of access.
    *

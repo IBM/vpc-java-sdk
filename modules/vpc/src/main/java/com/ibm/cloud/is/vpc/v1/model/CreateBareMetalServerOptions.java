@@ -268,7 +268,7 @@ public class CreateBareMetalServerOptions extends GenericModel {
   /**
    * Gets the primaryNetworkInterface.
    *
-   * The primary network interface to create for the bare metal server.
+   * The primary bare metal server network interface to create.
    *
    * @return the primaryNetworkInterface
    */
@@ -328,7 +328,7 @@ public class CreateBareMetalServerOptions extends GenericModel {
   /**
    * Gets the networkInterfaces.
    *
-   * The additional network interfaces to create for the bare metal server.
+   * The additional bare metal server network interfaces to create.
    *
    * @return the networkInterfaces
    */
@@ -362,8 +362,8 @@ public class CreateBareMetalServerOptions extends GenericModel {
    *
    * The VPC this bare metal server will reside in.
    *
-   * If specified, it must match the VPC for the subnets of the server's network
-   * interfaces.
+   * If specified, it must match the VPC for the subnets that the network interfaces of
+   * the bare metal server are attached to.
    *
    * @return the vpc
    */

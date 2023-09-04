@@ -35,12 +35,12 @@ public class ListInstanceGroupManagerActionsOptionsTest {
       .instanceGroupId("testString")
       .instanceGroupManagerId("testString")
       .start("testString")
-      .limit(Long.valueOf("1"))
+      .limit(Long.valueOf("50"))
       .build();
     assertEquals(listInstanceGroupManagerActionsOptionsModel.instanceGroupId(), "testString");
     assertEquals(listInstanceGroupManagerActionsOptionsModel.instanceGroupManagerId(), "testString");
     assertEquals(listInstanceGroupManagerActionsOptionsModel.start(), "testString");
-    assertEquals(listInstanceGroupManagerActionsOptionsModel.limit(), Long.valueOf("1"));
+    assertEquals(listInstanceGroupManagerActionsOptionsModel.limit(), Long.valueOf("50"));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

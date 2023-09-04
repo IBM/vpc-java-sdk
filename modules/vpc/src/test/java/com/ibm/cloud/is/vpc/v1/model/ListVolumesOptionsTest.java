@@ -33,7 +33,7 @@ public class ListVolumesOptionsTest {
   public void testListVolumesOptions() throws Throwable {
     ListVolumesOptions listVolumesOptionsModel = new ListVolumesOptions.Builder()
       .start("testString")
-      .limit(Long.valueOf("1"))
+      .limit(Long.valueOf("50"))
       .name("testString")
       .attachmentState("attached")
       .encryption("provider_managed")
@@ -42,7 +42,7 @@ public class ListVolumesOptionsTest {
       .zoneName("us-south-1")
       .build();
     assertEquals(listVolumesOptionsModel.start(), "testString");
-    assertEquals(listVolumesOptionsModel.limit(), Long.valueOf("1"));
+    assertEquals(listVolumesOptionsModel.limit(), Long.valueOf("50"));
     assertEquals(listVolumesOptionsModel.name(), "testString");
     assertEquals(listVolumesOptionsModel.attachmentState(), "attached");
     assertEquals(listVolumesOptionsModel.encryption(), "provider_managed");

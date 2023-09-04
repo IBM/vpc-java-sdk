@@ -34,11 +34,11 @@ public class ListVpcAddressPrefixesOptionsTest {
     ListVpcAddressPrefixesOptions listVpcAddressPrefixesOptionsModel = new ListVpcAddressPrefixesOptions.Builder()
       .vpcId("testString")
       .start("testString")
-      .limit(Long.valueOf("1"))
+      .limit(Long.valueOf("50"))
       .build();
     assertEquals(listVpcAddressPrefixesOptionsModel.vpcId(), "testString");
     assertEquals(listVpcAddressPrefixesOptionsModel.start(), "testString");
-    assertEquals(listVpcAddressPrefixesOptionsModel.limit(), Long.valueOf("1"));
+    assertEquals(listVpcAddressPrefixesOptionsModel.limit(), Long.valueOf("50"));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

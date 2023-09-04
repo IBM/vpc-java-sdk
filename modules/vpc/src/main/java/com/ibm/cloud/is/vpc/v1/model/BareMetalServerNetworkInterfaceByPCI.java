@@ -26,7 +26,7 @@ public class BareMetalServerNetworkInterfaceByPCI extends BareMetalServerNetwork
   }
 
   /**
-   * The status of the network interface.
+   * The status of the bare metal server network interface.
    */
   public interface Status {
     /** available. */

@@ -56,7 +56,7 @@ public class BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInter
     BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVLANPrototype bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVlanPrototypeModel = new BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVLANPrototype.Builder()
       .allowIpSpoofing(true)
       .enableInfrastructureNat(true)
-      .name("my-network-interface")
+      .name("my-bare-metal-server-network-interface")
       .primaryIp(networkInterfaceIpPrototypeModel)
       .securityGroups(java.util.Arrays.asList(securityGroupIdentityModel))
       .subnet(subnetIdentityModel)
@@ -66,7 +66,7 @@ public class BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInter
       .build();
     assertEquals(bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVlanPrototypeModel.allowIpSpoofing(), Boolean.valueOf(true));
     assertEquals(bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVlanPrototypeModel.enableInfrastructureNat(), Boolean.valueOf(true));
-    assertEquals(bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVlanPrototypeModel.name(), "my-network-interface");
+    assertEquals(bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVlanPrototypeModel.name(), "my-bare-metal-server-network-interface");
     assertEquals(bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVlanPrototypeModel.primaryIp(), networkInterfaceIpPrototypeModel);
     assertEquals(bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVlanPrototypeModel.securityGroups(), java.util.Arrays.asList(securityGroupIdentityModel));
     assertEquals(bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVlanPrototypeModel.subnet(), subnetIdentityModel);
@@ -80,7 +80,7 @@ public class BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInter
     assertTrue(bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVlanPrototypeModelNew instanceof BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVLANPrototype);
     assertEquals(bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVlanPrototypeModelNew.allowIpSpoofing(), Boolean.valueOf(true));
     assertEquals(bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVlanPrototypeModelNew.enableInfrastructureNat(), Boolean.valueOf(true));
-    assertEquals(bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVlanPrototypeModelNew.name(), "my-network-interface");
+    assertEquals(bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVlanPrototypeModelNew.name(), "my-bare-metal-server-network-interface");
     assertEquals(bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVlanPrototypeModelNew.primaryIp().toString(), networkInterfaceIpPrototypeModel.toString());
     assertEquals(bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVlanPrototypeModelNew.subnet().toString(), subnetIdentityModel.toString());
     assertEquals(bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVlanPrototypeModelNew.allowInterfaceToFloat(), Boolean.valueOf(false));

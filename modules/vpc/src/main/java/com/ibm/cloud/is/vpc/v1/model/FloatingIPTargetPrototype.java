@@ -35,7 +35,7 @@ public class FloatingIPTargetPrototype extends GenericModel {
   /**
    * Gets the id.
    *
-   * The unique identifier for this network interface.
+   * The unique identifier for this instance network interface.
    *
    * @return the id
    */
@@ -46,7 +46,7 @@ public class FloatingIPTargetPrototype extends GenericModel {
   /**
    * Gets the href.
    *
-   * The URL for this network interface.
+   * The URL for this instance network interface.
    *
    * @return the href
    */

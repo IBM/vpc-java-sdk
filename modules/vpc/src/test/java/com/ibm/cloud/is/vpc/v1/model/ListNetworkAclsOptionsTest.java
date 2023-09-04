@@ -33,11 +33,11 @@ public class ListNetworkAclsOptionsTest {
   public void testListNetworkAclsOptions() throws Throwable {
     ListNetworkAclsOptions listNetworkAclsOptionsModel = new ListNetworkAclsOptions.Builder()
       .start("testString")
-      .limit(Long.valueOf("1"))
+      .limit(Long.valueOf("50"))
       .resourceGroupId("testString")
       .build();
     assertEquals(listNetworkAclsOptionsModel.start(), "testString");
-    assertEquals(listNetworkAclsOptionsModel.limit(), Long.valueOf("1"));
+    assertEquals(listNetworkAclsOptionsModel.limit(), Long.valueOf("50"));
     assertEquals(listNetworkAclsOptionsModel.resourceGroupId(), "testString");
   }
 }

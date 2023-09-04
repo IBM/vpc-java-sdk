@@ -33,9 +33,9 @@ public class ListDedicatedHostProfilesOptionsTest {
   public void testListDedicatedHostProfilesOptions() throws Throwable {
     ListDedicatedHostProfilesOptions listDedicatedHostProfilesOptionsModel = new ListDedicatedHostProfilesOptions.Builder()
       .start("testString")
-      .limit(Long.valueOf("1"))
+      .limit(Long.valueOf("50"))
       .build();
     assertEquals(listDedicatedHostProfilesOptionsModel.start(), "testString");
-    assertEquals(listDedicatedHostProfilesOptionsModel.limit(), Long.valueOf("1"));
+    assertEquals(listDedicatedHostProfilesOptionsModel.limit(), Long.valueOf("50"));
   }
 }

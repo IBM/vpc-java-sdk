@@ -22,9 +22,11 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  *
  * Classes which extend this class:
  * - SecurityGroupTargetReferenceNetworkInterfaceReferenceTargetContext
+ * - SecurityGroupTargetReferenceBareMetalServerNetworkInterfaceReferenceTargetContext
  * - SecurityGroupTargetReferenceLoadBalancerReference
  * - SecurityGroupTargetReferenceEndpointGatewayReference
  * - SecurityGroupTargetReferenceVPNServerReference
+ * - SecurityGroupTargetReferenceVirtualNetworkInterfaceReference
  */
 public class SecurityGroupTargetReference extends GenericModel {
 
@@ -43,6 +45,9 @@ public class SecurityGroupTargetReference extends GenericModel {
   @SerializedName("resource_type")
   protected String resourceType;
   protected String crn;
+  @SerializedName("primary_ip")
+  protected ReservedIPReference primaryIp;
+  protected SubnetReference subnet;
 
   protected SecurityGroupTargetReference() { }
 
@@ -61,7 +66,7 @@ public class SecurityGroupTargetReference extends GenericModel {
   /**
    * Gets the href.
    *
-   * The URL for this network interface.
+   * The URL for this instance network interface.
    *
    * @return the href
    */
@@ -72,7 +77,7 @@ public class SecurityGroupTargetReference extends GenericModel {
   /**
    * Gets the id.
    *
-   * The unique identifier for this network interface.
+   * The unique identifier for this instance network interface.
    *
    * @return the id
    */
@@ -83,7 +88,7 @@ public class SecurityGroupTargetReference extends GenericModel {
   /**
    * Gets the name.
    *
-   * The name for this network interface.
+   * The name for this instance network interface.
    *
    * @return the name
    */
@@ -111,6 +116,28 @@ public class SecurityGroupTargetReference extends GenericModel {
    */
   public String getCrn() {
     return crn;
+  }
+
+  /**
+   * Gets the primaryIp.
+   *
+   * The primary IP for this virtual network interface.
+   *
+   * @return the primaryIp
+   */
+  public ReservedIPReference getPrimaryIp() {
+    return primaryIp;
+  }
+
+  /**
+   * Gets the subnet.
+   *
+   * The associated subnet.
+   *
+   * @return the subnet
+   */
+  public SubnetReference getSubnet() {
+    return subnet;
   }
 }
 

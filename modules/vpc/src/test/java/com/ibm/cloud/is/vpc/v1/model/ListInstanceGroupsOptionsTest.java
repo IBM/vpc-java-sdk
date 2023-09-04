@@ -33,9 +33,9 @@ public class ListInstanceGroupsOptionsTest {
   public void testListInstanceGroupsOptions() throws Throwable {
     ListInstanceGroupsOptions listInstanceGroupsOptionsModel = new ListInstanceGroupsOptions.Builder()
       .start("testString")
-      .limit(Long.valueOf("1"))
+      .limit(Long.valueOf("50"))
       .build();
     assertEquals(listInstanceGroupsOptionsModel.start(), "testString");
-    assertEquals(listInstanceGroupsOptionsModel.limit(), Long.valueOf("1"));
+    assertEquals(listInstanceGroupsOptionsModel.limit(), Long.valueOf("50"));
   }
 }

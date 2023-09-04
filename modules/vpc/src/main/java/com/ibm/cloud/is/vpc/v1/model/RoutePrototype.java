@@ -206,7 +206,9 @@ public class RoutePrototype extends GenericModel {
   /**
    * Gets the destination.
    *
-   * The destination of the route. At most two routes per `zone` in a table can have the same `destination` and
+   * The destination CIDR of the route. The host identifier in the CIDR must be zero.
+   *
+   * At most two routes per `zone` in a table can have the same `destination` and
    * `priority`, and only if both routes have an `action` of `deliver` and the `next_hop` is an IP address.
    *
    * @return the destination

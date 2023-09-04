@@ -33,9 +33,9 @@ public class ListVolumeProfilesOptionsTest {
   public void testListVolumeProfilesOptions() throws Throwable {
     ListVolumeProfilesOptions listVolumeProfilesOptionsModel = new ListVolumeProfilesOptions.Builder()
       .start("testString")
-      .limit(Long.valueOf("1"))
+      .limit(Long.valueOf("50"))
       .build();
     assertEquals(listVolumeProfilesOptionsModel.start(), "testString");
-    assertEquals(listVolumeProfilesOptionsModel.limit(), Long.valueOf("1"));
+    assertEquals(listVolumeProfilesOptionsModel.limit(), Long.valueOf("50"));
   }
 }

@@ -34,11 +34,11 @@ public class ListSecurityGroupTargetsOptionsTest {
     ListSecurityGroupTargetsOptions listSecurityGroupTargetsOptionsModel = new ListSecurityGroupTargetsOptions.Builder()
       .securityGroupId("testString")
       .start("testString")
-      .limit(Long.valueOf("1"))
+      .limit(Long.valueOf("50"))
       .build();
     assertEquals(listSecurityGroupTargetsOptionsModel.securityGroupId(), "testString");
     assertEquals(listSecurityGroupTargetsOptionsModel.start(), "testString");
-    assertEquals(listSecurityGroupTargetsOptionsModel.limit(), Long.valueOf("1"));
+    assertEquals(listSecurityGroupTargetsOptionsModel.limit(), Long.valueOf("50"));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

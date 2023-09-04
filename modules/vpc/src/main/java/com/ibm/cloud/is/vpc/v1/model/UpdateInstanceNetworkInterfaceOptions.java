@@ -143,7 +143,7 @@ public class UpdateInstanceNetworkInterfaceOptions extends GenericModel {
   /**
    * Gets the id.
    *
-   * The network interface identifier.
+   * The instance network interface identifier.
    *
    * @return the id
    */
@@ -154,7 +154,7 @@ public class UpdateInstanceNetworkInterfaceOptions extends GenericModel {
   /**
    * Gets the networkInterfacePatch.
    *
-   * The network interface patch.
+   * The instance network interface patch.
    *
    * @return the networkInterfacePatch
    */

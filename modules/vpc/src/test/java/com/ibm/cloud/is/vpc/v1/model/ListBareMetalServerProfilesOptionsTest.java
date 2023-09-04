@@ -33,9 +33,9 @@ public class ListBareMetalServerProfilesOptionsTest {
   public void testListBareMetalServerProfilesOptions() throws Throwable {
     ListBareMetalServerProfilesOptions listBareMetalServerProfilesOptionsModel = new ListBareMetalServerProfilesOptions.Builder()
       .start("testString")
-      .limit(Long.valueOf("1"))
+      .limit(Long.valueOf("50"))
       .build();
     assertEquals(listBareMetalServerProfilesOptionsModel.start(), "testString");
-    assertEquals(listBareMetalServerProfilesOptionsModel.limit(), Long.valueOf("1"));
+    assertEquals(listBareMetalServerProfilesOptionsModel.limit(), Long.valueOf("50"));
   }
 }

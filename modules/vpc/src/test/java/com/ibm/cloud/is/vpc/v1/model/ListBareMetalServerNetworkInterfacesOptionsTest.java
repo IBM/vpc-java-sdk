@@ -34,11 +34,11 @@ public class ListBareMetalServerNetworkInterfacesOptionsTest {
     ListBareMetalServerNetworkInterfacesOptions listBareMetalServerNetworkInterfacesOptionsModel = new ListBareMetalServerNetworkInterfacesOptions.Builder()
       .bareMetalServerId("testString")
       .start("testString")
-      .limit(Long.valueOf("1"))
+      .limit(Long.valueOf("50"))
       .build();
     assertEquals(listBareMetalServerNetworkInterfacesOptionsModel.bareMetalServerId(), "testString");
     assertEquals(listBareMetalServerNetworkInterfacesOptionsModel.start(), "testString");
-    assertEquals(listBareMetalServerNetworkInterfacesOptionsModel.limit(), Long.valueOf("1"));
+    assertEquals(listBareMetalServerNetworkInterfacesOptionsModel.limit(), Long.valueOf("50"));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

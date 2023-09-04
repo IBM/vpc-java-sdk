@@ -116,8 +116,8 @@ public class VolumeAttachmentPrototypeVolume extends GenericModel {
   /**
    * Gets the resourceGroup.
    *
-   * The resource group to use for this volume. If unspecified, the instance's resource group
-   * will be used.
+   * The resource group to use for this volume. If unspecified, the instance's resource
+   * group will be used.
    *
    * @return the resourceGroup
    */

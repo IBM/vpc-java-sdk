@@ -35,12 +35,12 @@ public class ListVpcRoutingTableRoutesOptionsTest {
       .vpcId("testString")
       .routingTableId("testString")
       .start("testString")
-      .limit(Long.valueOf("1"))
+      .limit(Long.valueOf("50"))
       .build();
     assertEquals(listVpcRoutingTableRoutesOptionsModel.vpcId(), "testString");
     assertEquals(listVpcRoutingTableRoutesOptionsModel.routingTableId(), "testString");
     assertEquals(listVpcRoutingTableRoutesOptionsModel.start(), "testString");
-    assertEquals(listVpcRoutingTableRoutesOptionsModel.limit(), Long.valueOf("1"));
+    assertEquals(listVpcRoutingTableRoutesOptionsModel.limit(), Long.valueOf("50"));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

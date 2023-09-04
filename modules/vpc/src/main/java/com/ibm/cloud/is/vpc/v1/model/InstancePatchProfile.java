@@ -24,7 +24,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  *   instance is placed on a dedicated host, the requested profile `family` must be
  *   the same as the dedicated host `family`.
  * - Have the same `vcpu.architecture`.
- * - Support the number of network interfaces currently attached to the instance.
+ * - Support the number of network interfaces the instance currently has.
  *
  * Classes which extend this class:
  * - InstancePatchProfileInstanceProfileIdentityByName

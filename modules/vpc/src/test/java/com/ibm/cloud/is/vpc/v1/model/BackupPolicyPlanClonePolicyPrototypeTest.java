@@ -38,17 +38,17 @@ public class BackupPolicyPlanClonePolicyPrototypeTest {
     assertEquals(zoneIdentityModel.name(), "us-south-1");
 
     BackupPolicyPlanClonePolicyPrototype backupPolicyPlanClonePolicyPrototypeModel = new BackupPolicyPlanClonePolicyPrototype.Builder()
-      .maxSnapshots(Long.valueOf("1"))
+      .maxSnapshots(Long.valueOf("5"))
       .zones(java.util.Arrays.asList(zoneIdentityModel))
       .build();
-    assertEquals(backupPolicyPlanClonePolicyPrototypeModel.maxSnapshots(), Long.valueOf("1"));
+    assertEquals(backupPolicyPlanClonePolicyPrototypeModel.maxSnapshots(), Long.valueOf("5"));
     assertEquals(backupPolicyPlanClonePolicyPrototypeModel.zones(), java.util.Arrays.asList(zoneIdentityModel));
 
     String json = TestUtilities.serialize(backupPolicyPlanClonePolicyPrototypeModel);
 
     BackupPolicyPlanClonePolicyPrototype backupPolicyPlanClonePolicyPrototypeModelNew = TestUtilities.deserialize(json, BackupPolicyPlanClonePolicyPrototype.class);
     assertTrue(backupPolicyPlanClonePolicyPrototypeModelNew instanceof BackupPolicyPlanClonePolicyPrototype);
-    assertEquals(backupPolicyPlanClonePolicyPrototypeModelNew.maxSnapshots(), Long.valueOf("1"));
+    assertEquals(backupPolicyPlanClonePolicyPrototypeModelNew.maxSnapshots(), Long.valueOf("5"));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

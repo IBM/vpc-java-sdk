@@ -36,12 +36,12 @@ public class BareMetalServerNetworkInterfacePatchTest {
       .allowIpSpoofing(true)
       .allowedVlans(java.util.Arrays.asList(Long.valueOf("4")))
       .enableInfrastructureNat(true)
-      .name("my-network-interface")
+      .name("my-bare-metal-server-network-interface")
       .build();
     assertEquals(bareMetalServerNetworkInterfacePatchModel.allowIpSpoofing(), Boolean.valueOf(true));
     assertEquals(bareMetalServerNetworkInterfacePatchModel.allowedVlans(), java.util.Arrays.asList(Long.valueOf("4")));
     assertEquals(bareMetalServerNetworkInterfacePatchModel.enableInfrastructureNat(), Boolean.valueOf(true));
-    assertEquals(bareMetalServerNetworkInterfacePatchModel.name(), "my-network-interface");
+    assertEquals(bareMetalServerNetworkInterfacePatchModel.name(), "my-bare-metal-server-network-interface");
 
     String json = TestUtilities.serialize(bareMetalServerNetworkInterfacePatchModel);
 
@@ -49,7 +49,7 @@ public class BareMetalServerNetworkInterfacePatchTest {
     assertTrue(bareMetalServerNetworkInterfacePatchModelNew instanceof BareMetalServerNetworkInterfacePatch);
     assertEquals(bareMetalServerNetworkInterfacePatchModelNew.allowIpSpoofing(), Boolean.valueOf(true));
     assertEquals(bareMetalServerNetworkInterfacePatchModelNew.enableInfrastructureNat(), Boolean.valueOf(true));
-    assertEquals(bareMetalServerNetworkInterfacePatchModelNew.name(), "my-network-interface");
+    assertEquals(bareMetalServerNetworkInterfacePatchModelNew.name(), "my-bare-metal-server-network-interface");
   }
   @Test
   public void testBareMetalServerNetworkInterfacePatchAsPatch() throws Throwable {
@@ -57,7 +57,7 @@ public class BareMetalServerNetworkInterfacePatchTest {
       .allowIpSpoofing(true)
       .allowedVlans(java.util.Arrays.asList(Long.valueOf("4")))
       .enableInfrastructureNat(true)
-      .name("my-network-interface")
+      .name("my-bare-metal-server-network-interface")
       .build();
 
     Map<String, Object> mergePatch = bareMetalServerNetworkInterfacePatchModel.asPatch();
@@ -65,7 +65,7 @@ public class BareMetalServerNetworkInterfacePatchTest {
     assertTrue(mergePatch.containsKey("allow_ip_spoofing"));
     assertTrue(mergePatch.containsKey("allowed_vlans"));
     assertTrue(mergePatch.containsKey("enable_infrastructure_nat"));
-    assertEquals(mergePatch.get("name"), "my-network-interface");
+    assertEquals(mergePatch.get("name"), "my-bare-metal-server-network-interface");
   }
 
 }

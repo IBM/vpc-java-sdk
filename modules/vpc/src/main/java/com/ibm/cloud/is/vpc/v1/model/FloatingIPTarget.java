@@ -20,6 +20,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  *
  * Classes which extend this class:
  * - FloatingIPTargetNetworkInterfaceReference
+ * - FloatingIPTargetBareMetalServerNetworkInterfaceReference
  * - FloatingIPTargetPublicGatewayReference
  */
 public class FloatingIPTarget extends GenericModel {
@@ -59,7 +60,7 @@ public class FloatingIPTarget extends GenericModel {
   /**
    * Gets the href.
    *
-   * The URL for this network interface.
+   * The URL for this instance network interface.
    *
    * @return the href
    */
@@ -70,7 +71,7 @@ public class FloatingIPTarget extends GenericModel {
   /**
    * Gets the id.
    *
-   * The unique identifier for this network interface.
+   * The unique identifier for this instance network interface.
    *
    * @return the id
    */
@@ -81,7 +82,7 @@ public class FloatingIPTarget extends GenericModel {
   /**
    * Gets the name.
    *
-   * The name for this network interface.
+   * The name for this instance network interface.
    *
    * @return the name
    */
