@@ -33,7 +33,7 @@ public class ListInstancesOptionsTest {
   public void testListInstancesOptions() throws Throwable {
     ListInstancesOptions listInstancesOptionsModel = new ListInstancesOptions.Builder()
       .start("testString")
-      .limit(Long.valueOf("1"))
+      .limit(Long.valueOf("50"))
       .resourceGroupId("testString")
       .name("testString")
       .vpcId("testString")
@@ -47,7 +47,7 @@ public class ListInstancesOptionsTest {
       .placementGroupName("my-placement-group")
       .build();
     assertEquals(listInstancesOptionsModel.start(), "testString");
-    assertEquals(listInstancesOptionsModel.limit(), Long.valueOf("1"));
+    assertEquals(listInstancesOptionsModel.limit(), Long.valueOf("50"));
     assertEquals(listInstancesOptionsModel.resourceGroupId(), "testString");
     assertEquals(listInstancesOptionsModel.name(), "testString");
     assertEquals(listInstancesOptionsModel.vpcId(), "testString");

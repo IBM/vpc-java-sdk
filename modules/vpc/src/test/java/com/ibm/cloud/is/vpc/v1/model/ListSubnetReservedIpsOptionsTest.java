@@ -34,12 +34,12 @@ public class ListSubnetReservedIpsOptionsTest {
     ListSubnetReservedIpsOptions listSubnetReservedIpsOptionsModel = new ListSubnetReservedIpsOptions.Builder()
       .subnetId("testString")
       .start("testString")
-      .limit(Long.valueOf("1"))
+      .limit(Long.valueOf("50"))
       .sort("name")
       .build();
     assertEquals(listSubnetReservedIpsOptionsModel.subnetId(), "testString");
     assertEquals(listSubnetReservedIpsOptionsModel.start(), "testString");
-    assertEquals(listSubnetReservedIpsOptionsModel.limit(), Long.valueOf("1"));
+    assertEquals(listSubnetReservedIpsOptionsModel.limit(), Long.valueOf("50"));
     assertEquals(listSubnetReservedIpsOptionsModel.sort(), "name");
   }
 

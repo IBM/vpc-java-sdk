@@ -33,7 +33,7 @@ public class ListSnapshotsOptionsTest {
   public void testListSnapshotsOptions() throws Throwable {
     ListSnapshotsOptions listSnapshotsOptionsModel = new ListSnapshotsOptions.Builder()
       .start("testString")
-      .limit(Long.valueOf("1"))
+      .limit(Long.valueOf("50"))
       .tag("testString")
       .resourceGroupId("testString")
       .name("testString")
@@ -54,7 +54,7 @@ public class ListSnapshotsOptionsTest {
       .clonesZoneName("us-south-1")
       .build();
     assertEquals(listSnapshotsOptionsModel.start(), "testString");
-    assertEquals(listSnapshotsOptionsModel.limit(), Long.valueOf("1"));
+    assertEquals(listSnapshotsOptionsModel.limit(), Long.valueOf("50"));
     assertEquals(listSnapshotsOptionsModel.tag(), "testString");
     assertEquals(listSnapshotsOptionsModel.resourceGroupId(), "testString");
     assertEquals(listSnapshotsOptionsModel.name(), "testString");

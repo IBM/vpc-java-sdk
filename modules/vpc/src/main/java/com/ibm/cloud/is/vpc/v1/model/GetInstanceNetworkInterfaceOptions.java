@@ -122,7 +122,7 @@ public class GetInstanceNetworkInterfaceOptions extends GenericModel {
   /**
    * Gets the id.
    *
-   * The network interface identifier.
+   * The instance network interface identifier.
    *
    * @return the id
    */

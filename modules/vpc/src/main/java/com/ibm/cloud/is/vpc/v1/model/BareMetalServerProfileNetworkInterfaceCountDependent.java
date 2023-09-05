@@ -13,8 +13,8 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 /**
- * The number of network interfaces supported on a bare metal server with this profile is dependent on its
- * configuration.
+ * The number of bare metal server network interfaces supported on a bare metal server with this profile is dependent on
+ * its configuration.
  */
 public class BareMetalServerProfileNetworkInterfaceCountDependent extends BareMetalServerProfileNetworkInterfaceCount {
 

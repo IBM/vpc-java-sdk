@@ -34,14 +34,14 @@ public class ListDedicatedHostsOptionsTest {
     ListDedicatedHostsOptions listDedicatedHostsOptionsModel = new ListDedicatedHostsOptions.Builder()
       .dedicatedHostGroupId("testString")
       .start("testString")
-      .limit(Long.valueOf("1"))
+      .limit(Long.valueOf("50"))
       .resourceGroupId("testString")
       .zoneName("us-south-1")
       .name("testString")
       .build();
     assertEquals(listDedicatedHostsOptionsModel.dedicatedHostGroupId(), "testString");
     assertEquals(listDedicatedHostsOptionsModel.start(), "testString");
-    assertEquals(listDedicatedHostsOptionsModel.limit(), Long.valueOf("1"));
+    assertEquals(listDedicatedHostsOptionsModel.limit(), Long.valueOf("50"));
     assertEquals(listDedicatedHostsOptionsModel.resourceGroupId(), "testString");
     assertEquals(listDedicatedHostsOptionsModel.zoneName(), "us-south-1");
     assertEquals(listDedicatedHostsOptionsModel.name(), "testString");

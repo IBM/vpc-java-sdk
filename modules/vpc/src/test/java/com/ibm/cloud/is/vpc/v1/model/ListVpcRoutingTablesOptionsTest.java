@@ -34,12 +34,12 @@ public class ListVpcRoutingTablesOptionsTest {
     ListVpcRoutingTablesOptions listVpcRoutingTablesOptionsModel = new ListVpcRoutingTablesOptions.Builder()
       .vpcId("testString")
       .start("testString")
-      .limit(Long.valueOf("1"))
+      .limit(Long.valueOf("50"))
       .isDefault(true)
       .build();
     assertEquals(listVpcRoutingTablesOptionsModel.vpcId(), "testString");
     assertEquals(listVpcRoutingTablesOptionsModel.start(), "testString");
-    assertEquals(listVpcRoutingTablesOptionsModel.limit(), Long.valueOf("1"));
+    assertEquals(listVpcRoutingTablesOptionsModel.limit(), Long.valueOf("50"));
     assertEquals(listVpcRoutingTablesOptionsModel.isDefault(), Boolean.valueOf(true));
   }
 

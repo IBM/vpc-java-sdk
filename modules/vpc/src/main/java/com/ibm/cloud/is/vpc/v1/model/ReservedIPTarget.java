@@ -22,7 +22,9 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  *
  * Classes which extend this class:
  * - ReservedIPTargetEndpointGatewayReference
+ * - ReservedIPTargetVirtualNetworkInterfaceReferenceReservedIPTargetContext
  * - ReservedIPTargetNetworkInterfaceReferenceTargetContext
+ * - ReservedIPTargetBareMetalServerNetworkInterfaceReferenceTargetContext
  * - ReservedIPTargetLoadBalancerReference
  * - ReservedIPTargetVPNGatewayReference
  * - ReservedIPTargetVPNServerReference

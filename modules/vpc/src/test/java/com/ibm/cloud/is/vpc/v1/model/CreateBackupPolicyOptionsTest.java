@@ -45,10 +45,10 @@ public class CreateBackupPolicyOptionsTest {
     assertEquals(zoneIdentityModel.name(), "us-south-1");
 
     BackupPolicyPlanClonePolicyPrototype backupPolicyPlanClonePolicyPrototypeModel = new BackupPolicyPlanClonePolicyPrototype.Builder()
-      .maxSnapshots(Long.valueOf("1"))
+      .maxSnapshots(Long.valueOf("5"))
       .zones(java.util.Arrays.asList(zoneIdentityModel))
       .build();
-    assertEquals(backupPolicyPlanClonePolicyPrototypeModel.maxSnapshots(), Long.valueOf("1"));
+    assertEquals(backupPolicyPlanClonePolicyPrototypeModel.maxSnapshots(), Long.valueOf("5"));
     assertEquals(backupPolicyPlanClonePolicyPrototypeModel.zones(), java.util.Arrays.asList(zoneIdentityModel));
 
     BackupPolicyPlanDeletionTriggerPrototype backupPolicyPlanDeletionTriggerPrototypeModel = new BackupPolicyPlanDeletionTriggerPrototype.Builder()
@@ -69,11 +69,11 @@ public class CreateBackupPolicyOptionsTest {
     assertEquals(regionIdentityModel.name(), "us-south");
 
     BackupPolicyPlanRemoteRegionPolicyPrototype backupPolicyPlanRemoteRegionPolicyPrototypeModel = new BackupPolicyPlanRemoteRegionPolicyPrototype.Builder()
-      .deleteOverCount(Long.valueOf("1"))
+      .deleteOverCount(Long.valueOf("5"))
       .encryptionKey(encryptionKeyIdentityModel)
       .region(regionIdentityModel)
       .build();
-    assertEquals(backupPolicyPlanRemoteRegionPolicyPrototypeModel.deleteOverCount(), Long.valueOf("1"));
+    assertEquals(backupPolicyPlanRemoteRegionPolicyPrototypeModel.deleteOverCount(), Long.valueOf("5"));
     assertEquals(backupPolicyPlanRemoteRegionPolicyPrototypeModel.encryptionKey(), encryptionKeyIdentityModel);
     assertEquals(backupPolicyPlanRemoteRegionPolicyPrototypeModel.region(), regionIdentityModel);
 

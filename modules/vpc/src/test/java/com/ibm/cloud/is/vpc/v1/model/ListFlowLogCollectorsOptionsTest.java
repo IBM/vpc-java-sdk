@@ -33,7 +33,7 @@ public class ListFlowLogCollectorsOptionsTest {
   public void testListFlowLogCollectorsOptions() throws Throwable {
     ListFlowLogCollectorsOptions listFlowLogCollectorsOptionsModel = new ListFlowLogCollectorsOptions.Builder()
       .start("testString")
-      .limit(Long.valueOf("1"))
+      .limit(Long.valueOf("50"))
       .resourceGroupId("testString")
       .name("testString")
       .vpcId("testString")
@@ -43,7 +43,7 @@ public class ListFlowLogCollectorsOptionsTest {
       .targetResourceType("testString")
       .build();
     assertEquals(listFlowLogCollectorsOptionsModel.start(), "testString");
-    assertEquals(listFlowLogCollectorsOptionsModel.limit(), Long.valueOf("1"));
+    assertEquals(listFlowLogCollectorsOptionsModel.limit(), Long.valueOf("50"));
     assertEquals(listFlowLogCollectorsOptionsModel.resourceGroupId(), "testString");
     assertEquals(listFlowLogCollectorsOptionsModel.name(), "testString");
     assertEquals(listFlowLogCollectorsOptionsModel.vpcId(), "testString");

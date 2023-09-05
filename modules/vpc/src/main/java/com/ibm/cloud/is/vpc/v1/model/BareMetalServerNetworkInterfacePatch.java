@@ -152,8 +152,7 @@ public class BareMetalServerNetworkInterfacePatch extends GenericModel {
   /**
    * Gets the allowIpSpoofing.
    *
-   * Indicates whether source IP spoofing is allowed on this interface. If false, source IP spoofing is prevented on
-   * this interface. If true, source IP spoofing is allowed on this interface.
+   * Indicates whether source IP spoofing is allowed on this bare metal server network interface.
    *
    * @return the allowIpSpoofing
    */
@@ -180,7 +179,7 @@ public class BareMetalServerNetworkInterfacePatch extends GenericModel {
    * - `floating_ips` must not have more than one floating IP.
    *
    * If `false`:
-   * - Packets are passed unchanged to/from the network interface,
+   * - Packets are passed unchanged to/from the bare metal server network interface,
    *   allowing the workload to perform any needed NAT operations.
    * - `allow_ip_spoofing` must be `false`.
    * - `interface_type` must not be `hipersocket`.
@@ -194,8 +193,8 @@ public class BareMetalServerNetworkInterfacePatch extends GenericModel {
   /**
    * Gets the name.
    *
-   * The name for this network interface. The name must not be used by another network interface on the bare metal
-   * server.
+   * The name for this bare metal server network interface. The name must not be used by another network interface on
+   * the bare metal server.
    *
    * @return the name
    */

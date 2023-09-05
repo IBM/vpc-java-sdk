@@ -214,8 +214,8 @@ public class CreateBackupPolicyOptions extends GenericModel {
   /**
    * Gets the matchUserTags.
    *
-   * The user tags this backup policy applies to. Resources that have both a matching user tag and a matching type will
-   * be subject to the backup policy.
+   * The user tags this backup policy will apply to. Resources that have both a matching user tag and a matching type
+   * will be subject to the backup policy.
    *
    * @return the matchUserTags
    */
@@ -226,8 +226,8 @@ public class CreateBackupPolicyOptions extends GenericModel {
   /**
    * Gets the matchResourceTypes.
    *
-   * A resource type this backup policy applies to. Resources that have both a matching type and a matching user tag
-   * will be subject to the backup policy.
+   * The resource types this backup policy will apply to. Resources that have both a matching type and a matching user
+   * tag will be subject to the backup policy.
    *
    * @return the matchResourceTypes
    */

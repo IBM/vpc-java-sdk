@@ -33,11 +33,11 @@ public class ListPublicGatewaysOptionsTest {
   public void testListPublicGatewaysOptions() throws Throwable {
     ListPublicGatewaysOptions listPublicGatewaysOptionsModel = new ListPublicGatewaysOptions.Builder()
       .start("testString")
-      .limit(Long.valueOf("1"))
+      .limit(Long.valueOf("50"))
       .resourceGroupId("testString")
       .build();
     assertEquals(listPublicGatewaysOptionsModel.start(), "testString");
-    assertEquals(listPublicGatewaysOptionsModel.limit(), Long.valueOf("1"));
+    assertEquals(listPublicGatewaysOptionsModel.limit(), Long.valueOf("50"));
     assertEquals(listPublicGatewaysOptionsModel.resourceGroupId(), "testString");
   }
 }

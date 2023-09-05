@@ -16,8 +16,8 @@ package com.ibm.cloud.is.vpc.v1.model;
  * Identifies a reserved IP by a unique property.
  *
  * Classes which extend this class:
- * - EndpointGatewayReservedIPReservedIPIdentityReservedIPIdentityById
- * - EndpointGatewayReservedIPReservedIPIdentityReservedIPIdentityByHref
+ * - EndpointGatewayReservedIPReservedIPIdentityById
+ * - EndpointGatewayReservedIPReservedIPIdentityByHref
  */
 public class EndpointGatewayReservedIPReservedIPIdentity extends EndpointGatewayReservedIP {
 

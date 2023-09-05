@@ -35,12 +35,12 @@ public class ListVpcRoutesOptionsTest {
       .vpcId("testString")
       .zoneName("us-south-1")
       .start("testString")
-      .limit(Long.valueOf("1"))
+      .limit(Long.valueOf("50"))
       .build();
     assertEquals(listVpcRoutesOptionsModel.vpcId(), "testString");
     assertEquals(listVpcRoutesOptionsModel.zoneName(), "us-south-1");
     assertEquals(listVpcRoutesOptionsModel.start(), "testString");
-    assertEquals(listVpcRoutesOptionsModel.limit(), Long.valueOf("1"));
+    assertEquals(listVpcRoutesOptionsModel.limit(), Long.valueOf("50"));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

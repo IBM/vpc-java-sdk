@@ -122,7 +122,7 @@ public class GetBareMetalServerNetworkInterfaceOptions extends GenericModel {
   /**
    * Gets the id.
    *
-   * The network interface identifier.
+   * The bare metal server network interface identifier.
    *
    * @return the id
    */

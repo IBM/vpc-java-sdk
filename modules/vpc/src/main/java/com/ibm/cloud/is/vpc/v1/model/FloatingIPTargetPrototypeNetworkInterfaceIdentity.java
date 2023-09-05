@@ -13,7 +13,7 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 /**
- * Identifies a network interface by a unique property.
+ * Identifies an instance network interface by a unique property.
  *
  * Classes which extend this class:
  * - FloatingIPTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceIdentityById

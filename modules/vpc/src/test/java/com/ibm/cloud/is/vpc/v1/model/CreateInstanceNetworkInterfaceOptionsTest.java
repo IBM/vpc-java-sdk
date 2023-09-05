@@ -57,14 +57,14 @@ public class CreateInstanceNetworkInterfaceOptionsTest {
       .instanceId("testString")
       .subnet(subnetIdentityModel)
       .allowIpSpoofing(true)
-      .name("my-network-interface")
+      .name("my-instance-network-interface")
       .primaryIp(networkInterfaceIpPrototypeModel)
       .securityGroups(java.util.Arrays.asList(securityGroupIdentityModel))
       .build();
     assertEquals(createInstanceNetworkInterfaceOptionsModel.instanceId(), "testString");
     assertEquals(createInstanceNetworkInterfaceOptionsModel.subnet(), subnetIdentityModel);
     assertEquals(createInstanceNetworkInterfaceOptionsModel.allowIpSpoofing(), Boolean.valueOf(true));
-    assertEquals(createInstanceNetworkInterfaceOptionsModel.name(), "my-network-interface");
+    assertEquals(createInstanceNetworkInterfaceOptionsModel.name(), "my-instance-network-interface");
     assertEquals(createInstanceNetworkInterfaceOptionsModel.primaryIp(), networkInterfaceIpPrototypeModel);
     assertEquals(createInstanceNetworkInterfaceOptionsModel.securityGroups(), java.util.Arrays.asList(securityGroupIdentityModel));
   }

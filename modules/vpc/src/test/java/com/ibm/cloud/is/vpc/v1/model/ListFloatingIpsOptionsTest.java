@@ -33,12 +33,12 @@ public class ListFloatingIpsOptionsTest {
   public void testListFloatingIpsOptions() throws Throwable {
     ListFloatingIpsOptions listFloatingIpsOptionsModel = new ListFloatingIpsOptions.Builder()
       .start("testString")
-      .limit(Long.valueOf("1"))
+      .limit(Long.valueOf("50"))
       .resourceGroupId("testString")
       .sort("name")
       .build();
     assertEquals(listFloatingIpsOptionsModel.start(), "testString");
-    assertEquals(listFloatingIpsOptionsModel.limit(), Long.valueOf("1"));
+    assertEquals(listFloatingIpsOptionsModel.limit(), Long.valueOf("50"));
     assertEquals(listFloatingIpsOptionsModel.resourceGroupId(), "testString");
     assertEquals(listFloatingIpsOptionsModel.sort(), "name");
   }

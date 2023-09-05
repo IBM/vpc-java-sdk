@@ -141,7 +141,7 @@ public class GetBareMetalServerNetworkInterfaceFloatingIpOptions extends Generic
   /**
    * Gets the networkInterfaceId.
    *
-   * The network interface identifier.
+   * The bare metal server network interface identifier.
    *
    * @return the networkInterfaceId
    */

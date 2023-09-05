@@ -13,8 +13,8 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 /**
- * The permitted total bandwidth values (in megabits per second) shared across the network interfaces of a bare metal
- * server with this profile.
+ * The permitted total bandwidth values (in megabits per second) shared across the bare metal server network interfaces
+ * of a bare metal server with this profile.
  */
 public class BareMetalServerProfileBandwidthEnum extends BareMetalServerProfileBandwidth {
 

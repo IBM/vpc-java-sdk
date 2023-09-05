@@ -33,9 +33,9 @@ public class ListIkePoliciesOptionsTest {
   public void testListIkePoliciesOptions() throws Throwable {
     ListIkePoliciesOptions listIkePoliciesOptionsModel = new ListIkePoliciesOptions.Builder()
       .start("testString")
-      .limit(Long.valueOf("1"))
+      .limit(Long.valueOf("50"))
       .build();
     assertEquals(listIkePoliciesOptionsModel.start(), "testString");
-    assertEquals(listIkePoliciesOptionsModel.limit(), Long.valueOf("1"));
+    assertEquals(listIkePoliciesOptionsModel.limit(), Long.valueOf("50"));
   }
 }

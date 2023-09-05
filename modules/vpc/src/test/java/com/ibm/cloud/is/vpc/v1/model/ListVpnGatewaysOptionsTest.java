@@ -33,13 +33,13 @@ public class ListVpnGatewaysOptionsTest {
   public void testListVpnGatewaysOptions() throws Throwable {
     ListVpnGatewaysOptions listVpnGatewaysOptionsModel = new ListVpnGatewaysOptions.Builder()
       .start("testString")
-      .limit(Long.valueOf("1"))
+      .limit(Long.valueOf("50"))
       .resourceGroupId("testString")
       .sort("name")
       .mode("route")
       .build();
     assertEquals(listVpnGatewaysOptionsModel.start(), "testString");
-    assertEquals(listVpnGatewaysOptionsModel.limit(), Long.valueOf("1"));
+    assertEquals(listVpnGatewaysOptionsModel.limit(), Long.valueOf("50"));
     assertEquals(listVpnGatewaysOptionsModel.resourceGroupId(), "testString");
     assertEquals(listVpnGatewaysOptionsModel.sort(), "name");
     assertEquals(listVpnGatewaysOptionsModel.mode(), "route");

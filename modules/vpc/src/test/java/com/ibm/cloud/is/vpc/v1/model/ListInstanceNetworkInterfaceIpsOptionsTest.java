@@ -35,12 +35,12 @@ public class ListInstanceNetworkInterfaceIpsOptionsTest {
       .instanceId("testString")
       .networkInterfaceId("testString")
       .start("testString")
-      .limit(Long.valueOf("1"))
+      .limit(Long.valueOf("50"))
       .build();
     assertEquals(listInstanceNetworkInterfaceIpsOptionsModel.instanceId(), "testString");
     assertEquals(listInstanceNetworkInterfaceIpsOptionsModel.networkInterfaceId(), "testString");
     assertEquals(listInstanceNetworkInterfaceIpsOptionsModel.start(), "testString");
-    assertEquals(listInstanceNetworkInterfaceIpsOptionsModel.limit(), Long.valueOf("1"));
+    assertEquals(listInstanceNetworkInterfaceIpsOptionsModel.limit(), Long.valueOf("50"));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

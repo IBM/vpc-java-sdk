@@ -33,13 +33,13 @@ public class ListBackupPoliciesOptionsTest {
   public void testListBackupPoliciesOptions() throws Throwable {
     ListBackupPoliciesOptions listBackupPoliciesOptionsModel = new ListBackupPoliciesOptions.Builder()
       .start("testString")
-      .limit(Long.valueOf("1"))
+      .limit(Long.valueOf("50"))
       .resourceGroupId("testString")
       .name("testString")
       .tag("testString")
       .build();
     assertEquals(listBackupPoliciesOptionsModel.start(), "testString");
-    assertEquals(listBackupPoliciesOptionsModel.limit(), Long.valueOf("1"));
+    assertEquals(listBackupPoliciesOptionsModel.limit(), Long.valueOf("50"));
     assertEquals(listBackupPoliciesOptionsModel.resourceGroupId(), "testString");
     assertEquals(listBackupPoliciesOptionsModel.name(), "testString");
     assertEquals(listBackupPoliciesOptionsModel.tag(), "testString");

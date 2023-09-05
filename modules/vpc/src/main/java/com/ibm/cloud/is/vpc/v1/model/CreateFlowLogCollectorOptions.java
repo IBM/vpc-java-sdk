@@ -171,8 +171,8 @@ public class CreateFlowLogCollectorOptions extends GenericModel {
    * Gets the target.
    *
    * The target this collector will collect flow logs for. If the target is an instance,
-   * subnet, or VPC, flow logs will not be collected for any network interfaces within the
-   * target that are themselves the target of a more specific flow log collector.
+   * subnet, or VPC, flow logs will not be collected for any instance network interfaces within
+   * the target that are themselves the target of a more specific flow log collector.
    *
    * @return the target
    */

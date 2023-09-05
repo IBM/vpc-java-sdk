@@ -33,13 +33,13 @@ public class ListDedicatedHostGroupsOptionsTest {
   public void testListDedicatedHostGroupsOptions() throws Throwable {
     ListDedicatedHostGroupsOptions listDedicatedHostGroupsOptionsModel = new ListDedicatedHostGroupsOptions.Builder()
       .start("testString")
-      .limit(Long.valueOf("1"))
+      .limit(Long.valueOf("50"))
       .resourceGroupId("testString")
       .zoneName("us-south-1")
       .name("testString")
       .build();
     assertEquals(listDedicatedHostGroupsOptionsModel.start(), "testString");
-    assertEquals(listDedicatedHostGroupsOptionsModel.limit(), Long.valueOf("1"));
+    assertEquals(listDedicatedHostGroupsOptionsModel.limit(), Long.valueOf("50"));
     assertEquals(listDedicatedHostGroupsOptionsModel.resourceGroupId(), "testString");
     assertEquals(listDedicatedHostGroupsOptionsModel.zoneName(), "us-south-1");
     assertEquals(listDedicatedHostGroupsOptionsModel.name(), "testString");

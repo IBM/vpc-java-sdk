@@ -79,7 +79,7 @@ public class InstanceNetworkInterfaceIpsPager {
     }
     this.options = builder.build();
 
-    ReservedIPCollectionNetworkInterfaceContext result = client.listInstanceNetworkInterfaceIps(options).execute().getResult();
+    ReservedIPCollectionInstanceNetworkInterfaceContext result = client.listInstanceNetworkInterfaceIps(options).execute().getResult();
 
     String next = null;
     if (result.getNext() != null) {

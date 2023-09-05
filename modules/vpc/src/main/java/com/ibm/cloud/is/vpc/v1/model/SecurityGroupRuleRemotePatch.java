@@ -16,9 +16,9 @@ import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * The IP addresses or security groups from which this rule will allow traffic (or to which, for outbound rules). Can be
- * specified as an IP address, a CIDR block, or a security group. A CIDR block of `0.0.0.0/0` will allow traffic from
- * any source (or to any destination, for outbound rules).
+ * The remote IP addresses or security groups from which this rule will allow traffic (or to which, for outbound rules).
+ * Can be specified as an IP address, a CIDR block, or a security group. A CIDR block of `0.0.0.0/0` will allow traffic
+ * from any source (or to any destination, for outbound rules).
  *
  * Classes which extend this class:
  * - SecurityGroupRuleRemotePatchIP

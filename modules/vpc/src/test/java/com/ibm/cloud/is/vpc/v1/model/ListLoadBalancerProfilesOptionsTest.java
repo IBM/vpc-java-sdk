@@ -33,9 +33,9 @@ public class ListLoadBalancerProfilesOptionsTest {
   public void testListLoadBalancerProfilesOptions() throws Throwable {
     ListLoadBalancerProfilesOptions listLoadBalancerProfilesOptionsModel = new ListLoadBalancerProfilesOptions.Builder()
       .start("testString")
-      .limit(Long.valueOf("1"))
+      .limit(Long.valueOf("50"))
       .build();
     assertEquals(listLoadBalancerProfilesOptionsModel.start(), "testString");
-    assertEquals(listLoadBalancerProfilesOptionsModel.limit(), Long.valueOf("1"));
+    assertEquals(listLoadBalancerProfilesOptionsModel.limit(), Long.valueOf("50"));
   }
 }

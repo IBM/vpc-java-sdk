@@ -34,12 +34,12 @@ public class ListVpnServerRoutesOptionsTest {
     ListVpnServerRoutesOptions listVpnServerRoutesOptionsModel = new ListVpnServerRoutesOptions.Builder()
       .vpnServerId("testString")
       .start("testString")
-      .limit(Long.valueOf("1"))
+      .limit(Long.valueOf("50"))
       .sort("name")
       .build();
     assertEquals(listVpnServerRoutesOptionsModel.vpnServerId(), "testString");
     assertEquals(listVpnServerRoutesOptionsModel.start(), "testString");
-    assertEquals(listVpnServerRoutesOptionsModel.limit(), Long.valueOf("1"));
+    assertEquals(listVpnServerRoutesOptionsModel.limit(), Long.valueOf("50"));
     assertEquals(listVpnServerRoutesOptionsModel.sort(), "name");
   }
 

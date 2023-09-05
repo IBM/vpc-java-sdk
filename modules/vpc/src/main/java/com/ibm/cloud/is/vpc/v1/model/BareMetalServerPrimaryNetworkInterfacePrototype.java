@@ -24,8 +24,8 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class BareMetalServerPrimaryNetworkInterfacePrototype extends GenericModel {
 
   /**
-   * The network interface type:
-   * - `hipersocket`: a virtual network device that provides high-speed TCP/IP connectivity
+   * The interface type:
+   * - `hipersocket`: a virtual device that provides high-speed TCP/IP connectivity
    *   within a `s390x` based system.
    *   - Not supported on bare metal servers with a `cpu.architecture` of `amd64`
    * - `pci`: a physical PCI device which can only be created or deleted when the bare metal
@@ -260,8 +260,7 @@ public class BareMetalServerPrimaryNetworkInterfacePrototype extends GenericMode
   /**
    * Gets the allowIpSpoofing.
    *
-   * Indicates whether source IP spoofing is allowed on this interface. If false, source IP spoofing is prevented on
-   * this interface. If true, source IP spoofing is allowed on this interface.
+   * Indicates whether source IP spoofing is allowed on this bare metal server network interface.
    *
    * @return the allowIpSpoofing
    */
@@ -288,7 +287,7 @@ public class BareMetalServerPrimaryNetworkInterfacePrototype extends GenericMode
    * - `floating_ips` must not have more than one floating IP.
    *
    * If `false`:
-   * - Packets are passed unchanged to/from the network interface,
+   * - Packets are passed unchanged to/from the bare metal server network interface,
    *   allowing the workload to perform any needed NAT operations.
    * - `allow_ip_spoofing` must be `false`.
    * - `interface_type` must not be `hipersocket`.
@@ -302,8 +301,8 @@ public class BareMetalServerPrimaryNetworkInterfacePrototype extends GenericMode
   /**
    * Gets the interfaceType.
    *
-   * The network interface type:
-   * - `hipersocket`: a virtual network device that provides high-speed TCP/IP connectivity
+   * The interface type:
+   * - `hipersocket`: a virtual device that provides high-speed TCP/IP connectivity
    *   within a `s390x` based system.
    *   - Not supported on bare metal servers with a `cpu.architecture` of `amd64`
    * - `pci`: a physical PCI device which can only be created or deleted when the bare metal
@@ -322,8 +321,8 @@ public class BareMetalServerPrimaryNetworkInterfacePrototype extends GenericMode
   /**
    * Gets the name.
    *
-   * The name for this network interface. The name must not be used by another network interface on the bare metal
-   * server. If unspecified, the name will be a hyphenated list of randomly-selected words.
+   * The name for this bare metal server network interface. The name must not be used by another network interface on
+   * the bare metal server. If unspecified, the name will be a hyphenated list of randomly-selected words.
    *
    * @return the name
    */
@@ -334,12 +333,12 @@ public class BareMetalServerPrimaryNetworkInterfacePrototype extends GenericMode
   /**
    * Gets the primaryIp.
    *
-   * The primary IP address to bind to the network interface. This can be specified using
-   * an existing reserved IP, or a prototype object for a new reserved IP.
+   * The primary IP address to bind to the bare metal server network interface. This can be
+   * specified using an existing reserved IP, or a prototype object for a new reserved IP.
    *
    * If an existing reserved IP or a prototype object with an address is specified, it must
-   * be available on the network interface's subnet. Otherwise, an available address on the
-   * subnet will be automatically selected and reserved.
+   * be available on the bare metal server network interface's subnet. Otherwise, an
+   * available address on the subnet will be automatically selected and reserved.
    *
    * @return the primaryIp
    */
@@ -350,7 +349,8 @@ public class BareMetalServerPrimaryNetworkInterfacePrototype extends GenericMode
   /**
    * Gets the securityGroups.
    *
-   * The security groups to use for this network interface. If unspecified, the VPC's default security group is used.
+   * The security groups to use for this bare metal server network interface. If unspecified, the VPC's default security
+   * group is used.
    *
    * @return the securityGroups
    */

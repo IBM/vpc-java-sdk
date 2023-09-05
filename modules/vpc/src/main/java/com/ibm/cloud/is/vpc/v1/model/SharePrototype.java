@@ -1,0 +1,250 @@
+/*
+ * (C) Copyright IBM Corp. 2021, 2022, 2023.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ */
+package com.ibm.cloud.is.vpc.v1.model;
+
+import java.util.List;
+
+import com.google.gson.annotations.SerializedName;
+import com.ibm.cloud.sdk.core.service.model.GenericModel;
+
+/**
+ * SharePrototype.
+ *
+ * Classes which extend this class:
+ * - SharePrototypeShareBySize
+ * - SharePrototypeShareBySourceShare
+ */
+public class SharePrototype extends GenericModel {
+
+  /**
+   * The access control mode for the share:
+   *
+   * - `security_group`: The security groups on the virtual network interface for a
+   *   mount target control access to the mount target. Mount targets for this share
+   *   require a virtual network interface.
+   * - `vpc`: All clients in the VPC for a mount target have access to the mount target.
+   *   Mount targets for this share require a VPC.
+   */
+  public interface AccessControlMode {
+    /** security_group. */
+    String SECURITY_GROUP = "security_group";
+    /** vpc. */
+    String VPC = "vpc";
+  }
+
+  protected Long iops;
+  @SerializedName("mount_targets")
+  protected List<ShareMountTargetPrototype> mountTargets;
+  protected String name;
+  protected ShareProfileIdentity profile;
+  @SerializedName("replica_share")
+  protected SharePrototypeShareContext replicaShare;
+  @SerializedName("user_tags")
+  protected List<String> userTags;
+  protected ZoneIdentity zone;
+  @SerializedName("access_control_mode")
+  protected String accessControlMode;
+  @SerializedName("encryption_key")
+  protected EncryptionKeyIdentity encryptionKey;
+  @SerializedName("initial_owner")
+  protected ShareInitialOwner initialOwner;
+  @SerializedName("resource_group")
+  protected ResourceGroupIdentity resourceGroup;
+  protected Long size;
+  @SerializedName("replication_cron_spec")
+  protected String replicationCronSpec;
+  @SerializedName("source_share")
+  protected ShareIdentity sourceShare;
+
+  protected SharePrototype() { }
+
+  /**
+   * Gets the iops.
+   *
+   * The maximum input/output operations per second (IOPS) for the file share. The share must be in the
+   * `defined_performance` profile family, and the value must be in the range supported by the share's specified size.
+   *
+   * In addition, each client accessing the share will be restricted to 48,000 IOPS.
+   *
+   * @return the iops
+   */
+  public Long iops() {
+    return iops;
+  }
+
+  /**
+   * Gets the mountTargets.
+   *
+   * The mount targets for the file share. Each mount target must be in a unique VPC.
+   *
+   * @return the mountTargets
+   */
+  public List<ShareMountTargetPrototype> mountTargets() {
+    return mountTargets;
+  }
+
+  /**
+   * Gets the name.
+   *
+   * The name for this share. The name must not be used by another share in the region. If unspecified, the name will be
+   * a hyphenated list of randomly-selected words.
+   *
+   * @return the name
+   */
+  public String name() {
+    return name;
+  }
+
+  /**
+   * Gets the profile.
+   *
+   * The [profile](https://cloud.ibm.com/docs/vpc?topic=vpc-file-storage-profiles) to use
+   * for this file share. The profile must support the share's specified IOPS and size.
+   *
+   * @return the profile
+   */
+  public ShareProfileIdentity profile() {
+    return profile;
+  }
+
+  /**
+   * Gets the replicaShare.
+   *
+   * Configuration for a replica file share to create and associate with this file share. If
+   * unspecified, a replica may be subsequently added by creating a new file share with a
+   * `source_share` referencing this file share.
+   *
+   * @return the replicaShare
+   */
+  public SharePrototypeShareContext replicaShare() {
+    return replicaShare;
+  }
+
+  /**
+   * Gets the userTags.
+   *
+   * Tags for this resource.
+   *
+   * @return the userTags
+   */
+  public List<String> userTags() {
+    return userTags;
+  }
+
+  /**
+   * Gets the zone.
+   *
+   * The zone this file share will reside in.
+   * For a replica share, this must be a different zone in the same region as the source share.
+   *
+   * @return the zone
+   */
+  public ZoneIdentity zone() {
+    return zone;
+  }
+
+  /**
+   * Gets the accessControlMode.
+   *
+   * The access control mode for the share:
+   *
+   * - `security_group`: The security groups on the virtual network interface for a
+   *   mount target control access to the mount target. Mount targets for this share
+   *   require a virtual network interface.
+   * - `vpc`: All clients in the VPC for a mount target have access to the mount target.
+   *   Mount targets for this share require a VPC.
+   *
+   * @return the accessControlMode
+   */
+  public String accessControlMode() {
+    return accessControlMode;
+  }
+
+  /**
+   * Gets the encryptionKey.
+   *
+   * The root key to use to wrap the data encryption key for the share.
+   *
+   * If unspecified, the `encryption` type for the share will be `provider_managed`.
+   *
+   * The specified key may be in a different account, subject to IAM policies.
+   *
+   * @return the encryptionKey
+   */
+  public EncryptionKeyIdentity encryptionKey() {
+    return encryptionKey;
+  }
+
+  /**
+   * Gets the initialOwner.
+   *
+   * The owner assigned to the file share at creation. Subsequent changes to the owner
+   * must be performed by a client that has mounted the file share.
+   *
+   * @return the initialOwner
+   */
+  public ShareInitialOwner initialOwner() {
+    return initialOwner;
+  }
+
+  /**
+   * Gets the resourceGroup.
+   *
+   * The resource group to use. If unspecified, the account's [default resource
+   * group](https://cloud.ibm.com/apidocs/resource-manager#introduction) is used.
+   *
+   * @return the resourceGroup
+   */
+  public ResourceGroupIdentity resourceGroup() {
+    return resourceGroup;
+  }
+
+  /**
+   * Gets the size.
+   *
+   * The size of the file share rounded up to the next gigabyte.
+   *
+   * The maximum size for a share may increase in the future.
+   *
+   * @return the size
+   */
+  public Long size() {
+    return size;
+  }
+
+  /**
+   * Gets the replicationCronSpec.
+   *
+   * The cron specification for the file share replication schedule.
+   *
+   * Replication of a share can be scheduled to occur at most once per hour.
+   *
+   * @return the replicationCronSpec
+   */
+  public String replicationCronSpec() {
+    return replicationCronSpec;
+  }
+
+  /**
+   * Gets the sourceShare.
+   *
+   * The source file share for this replica file share. The specified file share must not
+   * already have a replica, and must not be a replica.
+   *
+   * @return the sourceShare
+   */
+  public ShareIdentity sourceShare() {
+    return sourceShare;
+  }
+}
+

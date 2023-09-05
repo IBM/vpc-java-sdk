@@ -13,8 +13,8 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 /**
- * The total bandwidth (in megabits per second) shared across the network interfaces of a bare metal server with this
- * profile.
+ * The total bandwidth (in megabits per second) shared across the bare metal server network interfaces of a bare metal
+ * server with this profile.
  */
 public class BareMetalServerProfileBandwidthFixed extends BareMetalServerProfileBandwidth {
 

@@ -122,7 +122,7 @@ public class CreateBareMetalServerNetworkInterfaceOptions extends GenericModel {
   /**
    * Gets the bareMetalServerNetworkInterfacePrototype.
    *
-   * The network interface prototype object.
+   * The bare metal server network interface prototype object.
    *
    * @return the bareMetalServerNetworkInterfacePrototype
    */

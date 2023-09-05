@@ -13,6 +13,7 @@
 
 package com.ibm.cloud.is.vpc.v1;
 
+
 import com.ibm.cloud.is.vpc.v1.model.AddBareMetalServerNetworkInterfaceFloatingIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.AddEndpointGatewayIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.AddInstanceNetworkInterfaceFloatingIpOptions;
@@ -88,6 +89,8 @@ import com.ibm.cloud.is.vpc.v1.model.CreatePublicGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateSecurityGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateSecurityGroupRuleOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateSecurityGroupTargetBindingOptions;
+import com.ibm.cloud.is.vpc.v1.model.CreateShareMountTargetOptions;
+import com.ibm.cloud.is.vpc.v1.model.CreateShareOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateSnapshotCloneOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateSnapshotOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateSubnetOptions;
@@ -157,6 +160,9 @@ import com.ibm.cloud.is.vpc.v1.model.DeletePublicGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteSecurityGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteSecurityGroupRuleOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteSecurityGroupTargetBindingOptions;
+import com.ibm.cloud.is.vpc.v1.model.DeleteShareMountTargetOptions;
+import com.ibm.cloud.is.vpc.v1.model.DeleteShareOptions;
+import com.ibm.cloud.is.vpc.v1.model.DeleteShareSourceOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteSnapshotCloneOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteSnapshotOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteSnapshotsOptions;
@@ -181,9 +187,10 @@ import com.ibm.cloud.is.vpc.v1.model.EndpointGatewayIpsPager;
 import com.ibm.cloud.is.vpc.v1.model.EndpointGatewayPatch;
 import com.ibm.cloud.is.vpc.v1.model.EndpointGatewayReservedIP;
 import com.ibm.cloud.is.vpc.v1.model.EndpointGatewayReservedIPReservedIPIdentity;
-import com.ibm.cloud.is.vpc.v1.model.EndpointGatewayReservedIPReservedIPIdentityReservedIPIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.EndpointGatewayReservedIPReservedIPIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.EndpointGatewayTargetPrototypeProviderCloudServiceIdentityProviderCloudServiceIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.EndpointGatewaysPager;
+import com.ibm.cloud.is.vpc.v1.model.FailoverShareOptions;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIP;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPPatch;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPPrototypeFloatingIPByZone;
@@ -247,6 +254,10 @@ import com.ibm.cloud.is.vpc.v1.model.GetRegionZoneOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetSecurityGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetSecurityGroupRuleOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetSecurityGroupTargetOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetShareMountTargetOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetShareOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetShareProfileOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetShareSourceOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetSnapshotCloneOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetSnapshotOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetSubnetNetworkAclOptions;
@@ -383,6 +394,9 @@ import com.ibm.cloud.is.vpc.v1.model.ListRegionsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListSecurityGroupRulesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListSecurityGroupTargetsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListSecurityGroupsOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListShareMountTargetsOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListShareProfilesOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListSharesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListSnapshotClonesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListSnapshotsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListSubnetReservedIpsOptions;
@@ -481,6 +495,21 @@ import com.ibm.cloud.is.vpc.v1.model.SecurityGroupTargetReference;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupTargetsPager;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupsPager;
 import com.ibm.cloud.is.vpc.v1.model.SetSubnetPublicGatewayOptions;
+import com.ibm.cloud.is.vpc.v1.model.Share;
+import com.ibm.cloud.is.vpc.v1.model.ShareIdentity;
+import com.ibm.cloud.is.vpc.v1.model.ShareIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.ShareMountTarget;
+import com.ibm.cloud.is.vpc.v1.model.ShareMountTargetPatch;
+import com.ibm.cloud.is.vpc.v1.model.ShareMountTargetPrototypeShareMountTargetByAccessControlModeSecurityGroup;
+import com.ibm.cloud.is.vpc.v1.model.ShareMountTargetVirtualNetworkInterfacePrototypeVirtualNetworkInterfacePrototypeShareMountTargetContext;
+import com.ibm.cloud.is.vpc.v1.model.ShareMountTargetsPager;
+import com.ibm.cloud.is.vpc.v1.model.SharePatch;
+import com.ibm.cloud.is.vpc.v1.model.ShareProfile;
+import com.ibm.cloud.is.vpc.v1.model.ShareProfileIdentityByName;
+import com.ibm.cloud.is.vpc.v1.model.ShareProfilesPager;
+import com.ibm.cloud.is.vpc.v1.model.SharePrototypeShareBySize;
+import com.ibm.cloud.is.vpc.v1.model.SharePrototypeShareBySourceShare;
+import com.ibm.cloud.is.vpc.v1.model.SharesPager;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotClone;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotCloneCollection;
 import com.ibm.cloud.is.vpc.v1.model.Snapshot;
@@ -537,6 +566,8 @@ import com.ibm.cloud.is.vpc.v1.model.UpdatePlacementGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdatePublicGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateSecurityGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateSecurityGroupRuleOptions;
+import com.ibm.cloud.is.vpc.v1.model.UpdateShareMountTargetOptions;
+import com.ibm.cloud.is.vpc.v1.model.UpdateShareOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateSnapshotOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateSubnetOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateSubnetReservedIpOptions;
@@ -688,6 +719,12 @@ public class VPCExamples {
   static String snapshotCopyCRN;
   static String snapshotCopyId;
   static String sourceVolume;
+  static String shareId;
+  static String shareProfileName;
+  static String shareReplicaId;
+  static String ifMatchShare;
+  static String ifMatchShareReplica;
+  static String shareMountTargetId;
   static String targetId;
   static String zoneName = "us-east-1";
   static String bareMetalServerProfileName;
@@ -4141,6 +4178,270 @@ public class VPCExamples {
     }
 
     try {
+      System.out.println("listShareProfiles() result:");
+      // begin-list_share_profiles
+      ListShareProfilesOptions listShareProfilesOptions = new ListShareProfilesOptions.Builder()
+        .limit(Long.valueOf("10"))
+        .sort("name")
+        .build();
+
+      ShareProfilesPager pager = new ShareProfilesPager(vpcService, listShareProfilesOptions);
+      List<ShareProfile> allResults = new ArrayList<>();
+      while (pager.hasNext()) {
+        List<ShareProfile> nextPage = pager.getNext();
+        allResults.addAll(nextPage);
+      }
+      // end-list_share_profiles
+      shareProfileName = allResults.get(0).getName();
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("getShareProfile() result:");
+      // begin-get_share_profile
+      GetShareProfileOptions getShareProfileOptions = new GetShareProfileOptions.Builder()
+        .name(shareProfileName)
+        .build();
+
+      Response<ShareProfile> response = vpcService.getShareProfile(getShareProfileOptions).execute();
+      ShareProfile shareProfile = response.getResult();
+
+      // end-get_share_profile
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("listShares() result:");
+      // begin-list_shares
+      ListSharesOptions listSharesOptions = new ListSharesOptions.Builder()
+        .limit(Long.valueOf("10"))
+        .sort("name")
+        .build();
+
+      SharesPager pager = new SharesPager(vpcService, listSharesOptions);
+      List<Share> allResults = new ArrayList<>();
+      while (pager.hasNext()) {
+        List<Share> nextPage = pager.getNext();
+        allResults.addAll(nextPage);
+      }
+
+      // end-list_shares
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("createShare() result:");
+      // begin-create_share
+      ShareProfileIdentityByName shareProfileIdentityModel = new ShareProfileIdentityByName.Builder()
+        .name(shareProfileName)
+        .build();
+      ZoneIdentityByName zoneIdentityModel = new ZoneIdentityByName.Builder()
+        .name(zoneName)
+        .build();
+      SharePrototypeShareBySize sharePrototypeModel = new SharePrototypeShareBySize.Builder()
+        .profile(shareProfileIdentityModel)
+        .zone(zoneIdentityModel)
+        .size(Long.valueOf("200"))
+        .name("my-share")
+        .build();
+      CreateShareOptions createShareOptions = new CreateShareOptions.Builder()
+        .sharePrototype(sharePrototypeModel)
+        .build();
+
+      Response<Share> response = vpcService.createShare(createShareOptions).execute();
+      Share share = response.getResult();
+
+      // share replica
+      ShareIdentity shareIdentity = new ShareIdentityById.Builder()
+        .id(share.getId())
+        .build();
+      SharePrototypeShareBySourceShare shareReplicaPrototypeModel = new SharePrototypeShareBySourceShare.Builder()
+        .profile(shareProfileIdentityModel)
+        .zone(zoneIdentityModel)
+        .name("my-share-replica")
+        .sourceShare(shareIdentity)
+        .build();
+      CreateShareOptions createReplicaShareOptions = new CreateShareOptions.Builder()
+        .sharePrototype(shareReplicaPrototypeModel)
+        .build();
+      Response<Share> responseReplica = vpcService.createShare(createReplicaShareOptions).execute();
+      Share shareReplica = response.getResult();
+      // end-create_share
+      shareId = share.getId();
+      shareReplicaId = shareReplica.getId();
+      ifMatchShareReplica = responseReplica.getHeaders().values("etag").get(0);
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("getShare() result:");
+      // begin-get_share
+      GetShareOptions getShareOptions = new GetShareOptions.Builder()
+        .id(shareId)
+        .build();
+
+      Response<Share> response = vpcService.getShare(getShareOptions).execute();
+      Share share = response.getResult();
+
+      // end-get_share
+      ifMatchShare = response.getHeaders().values("etag").get(0);
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("updateShare() result:");
+      // begin-update_share
+      SharePatch sharePatchModel = new SharePatch.Builder()
+        .name("my-share-update")
+        .build();
+      Map<String, Object> sharePatchModelAsPatch = sharePatchModel.asPatch();
+      UpdateShareOptions updateShareOptions = new UpdateShareOptions.Builder()
+        .id(shareId)
+        .sharePatch(sharePatchModelAsPatch)
+        .ifMatch(ifMatchShare)
+        .build();
+
+      Response<Share> response = vpcService.updateShare(updateShareOptions).execute();
+      Share share = response.getResult();
+
+      // end-update_share
+      ifMatchShare = response.getHeaders().values("etag").get(0);
+
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      // begin-failover_share
+      FailoverShareOptions failoverShareOptions = new FailoverShareOptions.Builder()
+        .shareId(shareReplicaId)
+        .build();
+
+      Response<Void> response = vpcService.failoverShare(failoverShareOptions).execute();
+      // end-failover_share
+      System.out.printf("failoverShare() response status code: %d%n", response.getStatusCode());
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("listShareMountTargets() result:");
+      // begin-list_share_mount_targets
+      ListShareMountTargetsOptions listShareMountTargetsOptions = new ListShareMountTargetsOptions.Builder()
+        .limit(Long.valueOf("10"))
+        .build();
+
+      ShareMountTargetsPager pager = new ShareMountTargetsPager(vpcService, listShareMountTargetsOptions);
+      List<ShareMountTarget> allResults = new ArrayList<>();
+      while (pager.hasNext()) {
+        List<ShareMountTarget> nextPage = pager.getNext();
+        allResults.addAll(nextPage);
+      }
+
+      // end-list_share_mount_targets
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("createShareMountTarget() result:");
+      // begin-create_share_mount_target
+      SubnetIdentityById subnetIdentityModel = new SubnetIdentityById.Builder()
+        .id(subnetId)
+        .build();
+      ShareMountTargetVirtualNetworkInterfacePrototypeVirtualNetworkInterfacePrototypeShareMountTargetContext shareMountTargetVirtualNetworkInterfacePrototypeModel = new ShareMountTargetVirtualNetworkInterfacePrototypeVirtualNetworkInterfacePrototypeShareMountTargetContext.Builder()
+        .name("my-share-vni")
+        .subnet(subnetIdentityModel)
+        .build();
+      ShareMountTargetPrototypeShareMountTargetByAccessControlModeSecurityGroup shareMountTargetPrototypeModel = new ShareMountTargetPrototypeShareMountTargetByAccessControlModeSecurityGroup.Builder()
+        .virtualNetworkInterface(shareMountTargetVirtualNetworkInterfacePrototypeModel)
+        .name("my-share-mount-target")
+        .build();
+      CreateShareMountTargetOptions createShareMountTargetOptions = new CreateShareMountTargetOptions.Builder()
+        .shareId(shareId)
+        .shareMountTargetPrototype(shareMountTargetPrototypeModel)
+        .build();
+
+      Response<ShareMountTarget> response = vpcService.createShareMountTarget(createShareMountTargetOptions).execute();
+      ShareMountTarget shareMountTarget = response.getResult();
+
+      // end-create_share_mount_target
+      shareMountTargetId = shareMountTarget.getId();
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("getShareMountTarget() result:");
+      // begin-get_share_mount_target
+      GetShareMountTargetOptions getShareMountTargetOptions = new GetShareMountTargetOptions.Builder()
+        .shareId(shareId)
+        .id(shareMountTargetId)
+        .build();
+
+      Response<ShareMountTarget> response = vpcService.getShareMountTarget(getShareMountTargetOptions).execute();
+      ShareMountTarget shareMountTarget = response.getResult();
+
+      // end-get_share_mount_target
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("updateShareMountTarget() result:");
+      // begin-update_share_mount_target
+      ShareMountTargetPatch shareMountTargetPatchModel = new ShareMountTargetPatch.Builder()
+        .name("my-share-mount-target-updated")
+        .build();
+      Map<String, Object> shareMountTargetPatchModelAsPatch = shareMountTargetPatchModel.asPatch();
+      UpdateShareMountTargetOptions updateShareMountTargetOptions = new UpdateShareMountTargetOptions.Builder()
+        .shareId(shareId)
+        .id(shareMountTargetId)
+        .shareMountTargetPatch(shareMountTargetPatchModelAsPatch)
+        .build();
+
+      Response<ShareMountTarget> response = vpcService.updateShareMountTarget(updateShareMountTargetOptions).execute();
+      ShareMountTarget shareMountTarget = response.getResult();
+
+      System.out.println(shareMountTarget);
+      // end-update_share_mount_target
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("getShareSource() result:");
+      // begin-get_share_source
+      GetShareSourceOptions getShareSourceOptions = new GetShareSourceOptions.Builder()
+        .shareId(shareId)
+        .build();
+
+      Response<Share> response = vpcService.getShareSource(getShareSourceOptions).execute();
+      Share share = response.getResult();
+
+      // end-get_share_source
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
       System.out.println("listSnapshotClones() result:");
       // begin-list_snapshot_clones
       ListSnapshotClonesOptions listSnapshotClonesOptions = new ListSnapshotClonesOptions.Builder()
@@ -5907,7 +6208,7 @@ public class VPCExamples {
     try {
       System.out.println("createEndpointGateway() result:");
       // begin-create_endpoint_gateway
-      EndpointGatewayReservedIPReservedIPIdentity endpointGatewayReservedIPReservedIPIdentity = new EndpointGatewayReservedIPReservedIPIdentityReservedIPIdentityById.Builder()
+      EndpointGatewayReservedIPReservedIPIdentity endpointGatewayReservedIPReservedIPIdentity = new EndpointGatewayReservedIPReservedIPIdentityById.Builder()
         .id(reservedIpId)
         .build();
       EndpointGatewayTargetPrototypeProviderCloudServiceIdentityProviderCloudServiceIdentityByCRN endpointGatewayTargetPrototypeModel = new EndpointGatewayTargetPrototypeProviderCloudServiceIdentityProviderCloudServiceIdentityByCRN.Builder()
@@ -6442,6 +6743,65 @@ public class VPCExamples {
       Response<Void> response = vpcService.deleteSnapshotClone(deleteSnapshotCloneOptions).execute();
       // end-delete_snapshot_clone
       System.out.printf("deleteSnapshotClone() response status code: %d%n", response.getStatusCode());
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      // begin-delete_share_source
+      DeleteShareSourceOptions deleteShareSourceOptions = new DeleteShareSourceOptions.Builder()
+        .shareId(shareId)
+        .build();
+
+      Response<Void> response = vpcService.deleteShareSource(deleteShareSourceOptions).execute();
+      // end-delete_share_source
+      System.out.printf("deleteShareSource() response status code: %d%n", response.getStatusCode());
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("deleteShareMountTarget() result:");
+      // begin-delete_share_mount_target
+      DeleteShareMountTargetOptions deleteShareMountTargetOptions = new DeleteShareMountTargetOptions.Builder()
+        .shareId(shareId)
+        .id(shareMountTargetId)
+        .build();
+
+      Response<ShareMountTarget> response = vpcService.deleteShareMountTarget(deleteShareMountTargetOptions).execute();
+      ShareMountTarget shareMountTarget = response.getResult();
+      System.out.printf("deleteShareMountTarget() response status code: %d%n", response.getStatusCode());
+
+      // end-delete_share_mount_target
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("deleteShare() result:");
+      // begin-delete_share
+      DeleteShareOptions deleteShareOptions = new DeleteShareOptions.Builder()
+        .id("testString")
+        .ifMatch(ifMatchShare)
+        .build();
+
+      Response<Share> response = vpcService.deleteShare(deleteShareOptions).execute();
+      Share share = response.getResult();
+
+      // delete share replica
+      DeleteShareOptions deleteShareReplicaOptions = new DeleteShareOptions.Builder()
+        .id(shareReplicaId)
+        .ifMatch(ifMatchShareReplica)
+        .build();
+
+      Response<Share> responseReplica = vpcService.deleteShare(deleteShareOptions).execute();
+      System.out.printf("deleteShare() response status code: %d%n", response.getStatusCode());
+      System.out.printf("deleteShare() response status code: %d%n", responseReplica.getStatusCode());
+
+      // end-delete_share
     } catch (ServiceResponseException e) {
         logger.error(String.format("Service returned status code %s: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);

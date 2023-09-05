@@ -97,10 +97,10 @@ public class InstanceTemplatePrototype extends GenericModel {
    * virtual server instance as cloud-init vendor data. For cloud-init enabled images, these keys will also be added as
    * SSH authorized keys for the administrative user.
    *
-   * For Windows images, the keys of type `rsa` must be specified, and one will be chosen to encrypt [the administrator
-   * password](https://cloud.ibm.com/apidocs/vpc#get-instance-initialization). Keys are optional for other images, but
-   * if no keys are specified, the instance will be inaccessible unless the specified image provides another means of
-   * access.
+   * For Windows images, the keys of type `rsa` must be specified, and one will be selected to encrypt [the
+   * administrator password](https://cloud.ibm.com/apidocs/vpc#get-instance-initialization). Keys are optional for other
+   * images, but if no keys are specified, the instance will be inaccessible unless the specified image provides another
+   * means of access.
    *
    * This property's value is used when provisioning the virtual server instance, but not subsequently managed.
    * Accordingly, it is reflected as an [instance
@@ -214,7 +214,7 @@ public class InstanceTemplatePrototype extends GenericModel {
    *
    * The VPC this virtual server instance will reside in.
    *
-   * If specified, it must match the VPC for the subnets of the instance's network
+   * If specified, it must match the VPC for the subnets of the instance network
    * interfaces.
    *
    * @return the vpc
@@ -248,7 +248,7 @@ public class InstanceTemplatePrototype extends GenericModel {
   /**
    * Gets the networkInterfaces.
    *
-   * The additional network interfaces to create for the virtual server instance.
+   * The additional instance network interfaces to create.
    *
    * @return the networkInterfaces
    */
@@ -259,7 +259,7 @@ public class InstanceTemplatePrototype extends GenericModel {
   /**
    * Gets the primaryNetworkInterface.
    *
-   * The primary network interface to create for the virtual server instance.
+   * The primary instance network interface to create.
    *
    * @return the primaryNetworkInterface
    */

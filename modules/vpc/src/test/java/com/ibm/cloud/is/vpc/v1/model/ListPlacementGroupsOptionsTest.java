@@ -33,9 +33,9 @@ public class ListPlacementGroupsOptionsTest {
   public void testListPlacementGroupsOptions() throws Throwable {
     ListPlacementGroupsOptions listPlacementGroupsOptionsModel = new ListPlacementGroupsOptions.Builder()
       .start("testString")
-      .limit(Long.valueOf("1"))
+      .limit(Long.valueOf("50"))
       .build();
     assertEquals(listPlacementGroupsOptionsModel.start(), "testString");
-    assertEquals(listPlacementGroupsOptionsModel.limit(), Long.valueOf("1"));
+    assertEquals(listPlacementGroupsOptionsModel.limit(), Long.valueOf("50"));
   }
 }

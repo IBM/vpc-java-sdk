@@ -136,7 +136,7 @@ public class RouteCollectionVPCContextRoutesItem extends GenericModel {
   /**
    * Gets the destination.
    *
-   * The destination of the route.
+   * The destination CIDR of the route.
    *
    * @return the destination
    */

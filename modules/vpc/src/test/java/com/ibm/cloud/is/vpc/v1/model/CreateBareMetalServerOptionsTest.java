@@ -87,7 +87,7 @@ public class CreateBareMetalServerOptionsTest {
       .allowedVlans(java.util.Arrays.asList(Long.valueOf("4")))
       .enableInfrastructureNat(true)
       .interfaceType("pci")
-      .name("my-network-interface")
+      .name("my-bare-metal-server-network-interface")
       .primaryIp(networkInterfaceIpPrototypeModel)
       .securityGroups(java.util.Arrays.asList(securityGroupIdentityModel))
       .subnet(subnetIdentityModel)
@@ -96,7 +96,7 @@ public class CreateBareMetalServerOptionsTest {
     assertEquals(bareMetalServerPrimaryNetworkInterfacePrototypeModel.allowedVlans(), java.util.Arrays.asList(Long.valueOf("4")));
     assertEquals(bareMetalServerPrimaryNetworkInterfacePrototypeModel.enableInfrastructureNat(), Boolean.valueOf(true));
     assertEquals(bareMetalServerPrimaryNetworkInterfacePrototypeModel.interfaceType(), "pci");
-    assertEquals(bareMetalServerPrimaryNetworkInterfacePrototypeModel.name(), "my-network-interface");
+    assertEquals(bareMetalServerPrimaryNetworkInterfacePrototypeModel.name(), "my-bare-metal-server-network-interface");
     assertEquals(bareMetalServerPrimaryNetworkInterfacePrototypeModel.primaryIp(), networkInterfaceIpPrototypeModel);
     assertEquals(bareMetalServerPrimaryNetworkInterfacePrototypeModel.securityGroups(), java.util.Arrays.asList(securityGroupIdentityModel));
     assertEquals(bareMetalServerPrimaryNetworkInterfacePrototypeModel.subnet(), subnetIdentityModel);
@@ -114,7 +114,7 @@ public class CreateBareMetalServerOptionsTest {
     BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByHiperSocketPrototype bareMetalServerNetworkInterfacePrototypeModel = new BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByHiperSocketPrototype.Builder()
       .allowIpSpoofing(true)
       .enableInfrastructureNat(true)
-      .name("my-network-interface")
+      .name("my-bare-metal-server-network-interface")
       .primaryIp(networkInterfaceIpPrototypeModel)
       .securityGroups(java.util.Arrays.asList(securityGroupIdentityModel))
       .subnet(subnetIdentityModel)
@@ -122,7 +122,7 @@ public class CreateBareMetalServerOptionsTest {
       .build();
     assertEquals(bareMetalServerNetworkInterfacePrototypeModel.allowIpSpoofing(), Boolean.valueOf(true));
     assertEquals(bareMetalServerNetworkInterfacePrototypeModel.enableInfrastructureNat(), Boolean.valueOf(true));
-    assertEquals(bareMetalServerNetworkInterfacePrototypeModel.name(), "my-network-interface");
+    assertEquals(bareMetalServerNetworkInterfacePrototypeModel.name(), "my-bare-metal-server-network-interface");
     assertEquals(bareMetalServerNetworkInterfacePrototypeModel.primaryIp(), networkInterfaceIpPrototypeModel);
     assertEquals(bareMetalServerNetworkInterfacePrototypeModel.securityGroups(), java.util.Arrays.asList(securityGroupIdentityModel));
     assertEquals(bareMetalServerNetworkInterfacePrototypeModel.subnet(), subnetIdentityModel);

@@ -34,12 +34,12 @@ public class ListEndpointGatewayIpsOptionsTest {
     ListEndpointGatewayIpsOptions listEndpointGatewayIpsOptionsModel = new ListEndpointGatewayIpsOptions.Builder()
       .endpointGatewayId("testString")
       .start("testString")
-      .limit(Long.valueOf("1"))
+      .limit(Long.valueOf("50"))
       .sort("name")
       .build();
     assertEquals(listEndpointGatewayIpsOptionsModel.endpointGatewayId(), "testString");
     assertEquals(listEndpointGatewayIpsOptionsModel.start(), "testString");
-    assertEquals(listEndpointGatewayIpsOptionsModel.limit(), Long.valueOf("1"));
+    assertEquals(listEndpointGatewayIpsOptionsModel.limit(), Long.valueOf("50"));
     assertEquals(listEndpointGatewayIpsOptionsModel.sort(), "name");
   }
 

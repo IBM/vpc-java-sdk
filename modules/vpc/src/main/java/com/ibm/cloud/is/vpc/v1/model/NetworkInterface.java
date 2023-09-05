@@ -32,7 +32,7 @@ public class NetworkInterface extends GenericModel {
   }
 
   /**
-   * The status of the network interface.
+   * The status of the instance network interface.
    */
   public interface Status {
     /** available. */
@@ -46,7 +46,7 @@ public class NetworkInterface extends GenericModel {
   }
 
   /**
-   * The type of this network interface as it relates to an instance.
+   * The type of this instance network interface as it relates to an instance.
    */
   public interface Type {
     /** primary. */
@@ -81,8 +81,7 @@ public class NetworkInterface extends GenericModel {
   /**
    * Gets the allowIpSpoofing.
    *
-   * Indicates whether source IP spoofing is allowed on this interface. If false, source IP spoofing is prevented on
-   * this interface. If true, source IP spoofing is allowed on this interface.
+   * Indicates whether source IP spoofing is allowed on this instance interface.
    *
    * @return the allowIpSpoofing
    */
@@ -93,7 +92,7 @@ public class NetworkInterface extends GenericModel {
   /**
    * Gets the createdAt.
    *
-   * The date and time that the network interface was created.
+   * The date and time that the instance network interface was created.
    *
    * @return the createdAt
    */
@@ -104,7 +103,7 @@ public class NetworkInterface extends GenericModel {
   /**
    * Gets the floatingIps.
    *
-   * The floating IPs associated with this network interface.
+   * The floating IPs associated with this instance network interface.
    *
    * @return the floatingIps
    */
@@ -115,7 +114,7 @@ public class NetworkInterface extends GenericModel {
   /**
    * Gets the href.
    *
-   * The URL for this network interface.
+   * The URL for this instance network interface.
    *
    * @return the href
    */
@@ -126,7 +125,7 @@ public class NetworkInterface extends GenericModel {
   /**
    * Gets the id.
    *
-   * The unique identifier for this network interface.
+   * The unique identifier for this instance network interface.
    *
    * @return the id
    */
@@ -137,7 +136,7 @@ public class NetworkInterface extends GenericModel {
   /**
    * Gets the name.
    *
-   * The name for this network interface.
+   * The name for this instance network interface.
    *
    * @return the name
    */
@@ -148,7 +147,7 @@ public class NetworkInterface extends GenericModel {
   /**
    * Gets the portSpeed.
    *
-   * The network interface port speed in Mbps.
+   * The instance network interface port speed in Mbps.
    *
    * @return the portSpeed
    */
@@ -179,7 +178,7 @@ public class NetworkInterface extends GenericModel {
   /**
    * Gets the securityGroups.
    *
-   * The security groups targeting this network interface.
+   * The security groups targeting this instance network interface.
    *
    * @return the securityGroups
    */
@@ -190,7 +189,7 @@ public class NetworkInterface extends GenericModel {
   /**
    * Gets the status.
    *
-   * The status of the network interface.
+   * The status of the instance network interface.
    *
    * @return the status
    */
@@ -212,7 +211,7 @@ public class NetworkInterface extends GenericModel {
   /**
    * Gets the type.
    *
-   * The type of this network interface as it relates to an instance.
+   * The type of this instance network interface as it relates to an instance.
    *
    * @return the type
    */

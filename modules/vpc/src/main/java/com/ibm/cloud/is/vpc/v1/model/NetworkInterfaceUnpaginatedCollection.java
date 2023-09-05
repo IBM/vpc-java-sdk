@@ -30,7 +30,7 @@ public class NetworkInterfaceUnpaginatedCollection extends GenericModel {
   /**
    * Gets the networkInterfaces.
    *
-   * Collection of network interfaces.
+   * Collection of instance network interfaces.
    *
    * @return the networkInterfaces
    */

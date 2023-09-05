@@ -23,7 +23,7 @@ import com.ibm.cloud.is.vpc.v1.model.InstanceProfileIdentityByName;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateCollection;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateCollectionFirst;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateCollectionNext;
-import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateInstanceByImage;
+import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateInstanceByImageInstanceTemplateContext;
 import com.ibm.cloud.is.vpc.v1.model.KeyIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceIPPrototypeReservedIPPrototypeNetworkInterfaceContext;
 import com.ibm.cloud.is.vpc.v1.model.NetworkInterfacePrototype;

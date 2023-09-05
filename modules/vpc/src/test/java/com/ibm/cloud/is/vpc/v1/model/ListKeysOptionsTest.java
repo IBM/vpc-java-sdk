@@ -33,9 +33,9 @@ public class ListKeysOptionsTest {
   public void testListKeysOptions() throws Throwable {
     ListKeysOptions listKeysOptionsModel = new ListKeysOptions.Builder()
       .start("testString")
-      .limit(Long.valueOf("1"))
+      .limit(Long.valueOf("50"))
       .build();
     assertEquals(listKeysOptionsModel.start(), "testString");
-    assertEquals(listKeysOptionsModel.limit(), Long.valueOf("1"));
+    assertEquals(listKeysOptionsModel.limit(), Long.valueOf("50"));
   }
 }

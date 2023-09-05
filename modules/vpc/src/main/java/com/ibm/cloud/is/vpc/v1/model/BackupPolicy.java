@@ -152,7 +152,7 @@ public class BackupPolicy extends GenericModel {
   /**
    * Gets the matchResourceTypes.
    *
-   * A resource type this backup policy applies to. Resources that have both a matching type and a matching user tag
+   * The resource types this backup policy applies to. Resources that have both a matching type and a matching user tag
    * will be subject to the backup policy.
    *
    * The enumerated values for this property will expand in the future. When processing this property, check for and log

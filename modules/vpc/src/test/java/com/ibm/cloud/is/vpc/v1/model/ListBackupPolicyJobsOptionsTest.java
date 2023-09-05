@@ -36,7 +36,7 @@ public class ListBackupPolicyJobsOptionsTest {
       .status("failed")
       .backupPolicyPlanId("testString")
       .start("testString")
-      .limit(Long.valueOf("1"))
+      .limit(Long.valueOf("50"))
       .sort("name")
       .sourceId("testString")
       .targetSnapshotsId("testString")
@@ -46,7 +46,7 @@ public class ListBackupPolicyJobsOptionsTest {
     assertEquals(listBackupPolicyJobsOptionsModel.status(), "failed");
     assertEquals(listBackupPolicyJobsOptionsModel.backupPolicyPlanId(), "testString");
     assertEquals(listBackupPolicyJobsOptionsModel.start(), "testString");
-    assertEquals(listBackupPolicyJobsOptionsModel.limit(), Long.valueOf("1"));
+    assertEquals(listBackupPolicyJobsOptionsModel.limit(), Long.valueOf("50"));
     assertEquals(listBackupPolicyJobsOptionsModel.sort(), "name");
     assertEquals(listBackupPolicyJobsOptionsModel.sourceId(), "testString");
     assertEquals(listBackupPolicyJobsOptionsModel.targetSnapshotsId(), "testString");

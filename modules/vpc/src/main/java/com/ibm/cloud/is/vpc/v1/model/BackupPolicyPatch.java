@@ -120,8 +120,8 @@ public class BackupPolicyPatch extends GenericModel {
   /**
    * Gets the matchUserTags.
    *
-   * The user tags this backup policy applies to (replacing any existing tags). Resources that have both a matching user
-   * tag and a matching type will be subject to the backup policy.
+   * The user tags this backup policy will apply to (replacing any existing tags). Resources that have both a matching
+   * user tag and a matching type will be subject to the backup policy.
    *
    * @return the matchUserTags
    */

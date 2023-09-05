@@ -33,13 +33,13 @@ public class ListSubnetsOptionsTest {
   public void testListSubnetsOptions() throws Throwable {
     ListSubnetsOptions listSubnetsOptionsModel = new ListSubnetsOptions.Builder()
       .start("testString")
-      .limit(Long.valueOf("1"))
+      .limit(Long.valueOf("50"))
       .resourceGroupId("testString")
       .routingTableId("testString")
       .routingTableName("my-routing-table")
       .build();
     assertEquals(listSubnetsOptionsModel.start(), "testString");
-    assertEquals(listSubnetsOptionsModel.limit(), Long.valueOf("1"));
+    assertEquals(listSubnetsOptionsModel.limit(), Long.valueOf("50"));
     assertEquals(listSubnetsOptionsModel.resourceGroupId(), "testString");
     assertEquals(listSubnetsOptionsModel.routingTableId(), "testString");
     assertEquals(listSubnetsOptionsModel.routingTableName(), "my-routing-table");

@@ -18,6 +18,7 @@ import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
+import java.util.UUID;
 
 import com.ibm.cloud.sdk.core.http.HttpHeaders;
 import com.ibm.cloud.sdk.core.util.RequestUtils;
@@ -32,9 +33,14 @@ public class SdkCommon {
      * SDK-specific "user agent" header value.
      */
     private static String userAgent;
+    private static String xCorrelationID;
+    private static String xRequestID;
 
     private static String projectName;
     private static String version;
+
+    private static final String X_CORRRELATION_ID = "X-Correlation-Id";
+    private static final String X_REQUEST_ID = "X-Request-Id";
 
     // >>> Replace "is" with the parent project's artifactId (e.g. platform-services)
     private static String parentArtifactId = "is";
@@ -82,6 +88,30 @@ public class SdkCommon {
     }
 
     /**
+     * This function uses lazy initialization to build the SDK's "xCorrelationID" value.
+     * This is a version 4 UUID
+     * @return the request-specific xCorrelationID value
+     */
+    private static synchronized String getXCorrelationID() {
+        if (xCorrelationID == null) {
+            xCorrelationID = UUID.randomUUID().toString();
+        }
+        return xCorrelationID;
+    }
+
+    /**
+     * This function uses lazy initialization to build the SDK's "xRequestID" value.
+     * This is a version 4 UUID
+     * @return the request-specific xRequestID value
+     */
+    private static synchronized String getXRequestID() {
+        if (xRequestID == null) {
+            xRequestID = UUID.randomUUID().toString();
+        }
+        return xRequestID;
+    }
+
+    /**
      * This function is invoked by generated service methods (i.e. methods which implement the REST API operations
      * defined within the API definition). The purpose of this function is to give the SDK implementor the opportunity
      * to provide SDK-specific HTTP headers that will be sent with an outgoing REST API request.
@@ -117,6 +147,8 @@ public class SdkCommon {
     public static Map<String, String> getSdkHeaders(String serviceName, String serviceVersion, String operationId) {
         Map<String, String> headers = new HashMap<>();
         headers.put(HttpHeaders.USER_AGENT, getUserAgent());
+        headers.put(X_CORRRELATION_ID, getXCorrelationID());
+        headers.put(X_REQUEST_ID, getXRequestID());
         return headers;
     }
 }
