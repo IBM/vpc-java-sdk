@@ -1,3 +1,10 @@
+## [0.16.1](https://github.com/IBM/vpc-java-sdk/compare/0.16.0...0.16.1) (2023-09-21)
+
+
+### Bug Fixes
+
+* **headers:** updated common headers for request id ([#52](https://github.com/IBM/vpc-java-sdk/issues/52)) ([1c6ff4a](https://github.com/IBM/vpc-java-sdk/commit/1c6ff4a3d513cd810b2a5a90e797bc637834bf8b))
+
 # [0.16.0](https://github.com/IBM/vpc-java-sdk/compare/0.15.0...0.16.0) (2023-09-05)
 
 
