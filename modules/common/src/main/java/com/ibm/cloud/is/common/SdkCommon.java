@@ -93,10 +93,7 @@ public class SdkCommon {
      * @return the request-specific xCorrelationID value
      */
     private static synchronized String getXCorrelationID() {
-        if (xCorrelationID == null) {
-            xCorrelationID = UUID.randomUUID().toString();
-        }
-        return xCorrelationID;
+        return UUID.randomUUID().toString();
     }
 
     /**
@@ -105,10 +102,7 @@ public class SdkCommon {
      * @return the request-specific xRequestID value
      */
     private static synchronized String getXRequestID() {
-        if (xRequestID == null) {
-            xRequestID = UUID.randomUUID().toString();
-        }
-        return xRequestID;
+        return UUID.randomUUID().toString();
     }
 
     /**
