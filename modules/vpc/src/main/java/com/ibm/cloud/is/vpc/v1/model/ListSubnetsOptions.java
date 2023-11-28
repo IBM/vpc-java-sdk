@@ -22,6 +22,10 @@ public class ListSubnetsOptions extends GenericModel {
   protected String start;
   protected Long limit;
   protected String resourceGroupId;
+  protected String zoneName;
+  protected String vpcId;
+  protected String vpcCrn;
+  protected String vpcName;
   protected String routingTableId;
   protected String routingTableName;
 
@@ -32,6 +36,10 @@ public class ListSubnetsOptions extends GenericModel {
     private String start;
     private Long limit;
     private String resourceGroupId;
+    private String zoneName;
+    private String vpcId;
+    private String vpcCrn;
+    private String vpcName;
     private String routingTableId;
     private String routingTableName;
 
@@ -44,6 +52,10 @@ public class ListSubnetsOptions extends GenericModel {
       this.start = listSubnetsOptions.start;
       this.limit = listSubnetsOptions.limit;
       this.resourceGroupId = listSubnetsOptions.resourceGroupId;
+      this.zoneName = listSubnetsOptions.zoneName;
+      this.vpcId = listSubnetsOptions.vpcId;
+      this.vpcCrn = listSubnetsOptions.vpcCrn;
+      this.vpcName = listSubnetsOptions.vpcName;
       this.routingTableId = listSubnetsOptions.routingTableId;
       this.routingTableName = listSubnetsOptions.routingTableName;
     }
@@ -97,6 +109,50 @@ public class ListSubnetsOptions extends GenericModel {
     }
 
     /**
+     * Set the zoneName.
+     *
+     * @param zoneName the zoneName
+     * @return the ListSubnetsOptions builder
+     */
+    public Builder zoneName(String zoneName) {
+      this.zoneName = zoneName;
+      return this;
+    }
+
+    /**
+     * Set the vpcId.
+     *
+     * @param vpcId the vpcId
+     * @return the ListSubnetsOptions builder
+     */
+    public Builder vpcId(String vpcId) {
+      this.vpcId = vpcId;
+      return this;
+    }
+
+    /**
+     * Set the vpcCrn.
+     *
+     * @param vpcCrn the vpcCrn
+     * @return the ListSubnetsOptions builder
+     */
+    public Builder vpcCrn(String vpcCrn) {
+      this.vpcCrn = vpcCrn;
+      return this;
+    }
+
+    /**
+     * Set the vpcName.
+     *
+     * @param vpcName the vpcName
+     * @return the ListSubnetsOptions builder
+     */
+    public Builder vpcName(String vpcName) {
+      this.vpcName = vpcName;
+      return this;
+    }
+
+    /**
      * Set the routingTableId.
      *
      * @param routingTableId the routingTableId
@@ -125,6 +181,10 @@ public class ListSubnetsOptions extends GenericModel {
     start = builder.start;
     limit = builder.limit;
     resourceGroupId = builder.resourceGroupId;
+    zoneName = builder.zoneName;
+    vpcId = builder.vpcId;
+    vpcCrn = builder.vpcCrn;
+    vpcName = builder.vpcName;
     routingTableId = builder.routingTableId;
     routingTableName = builder.routingTableName;
   }
@@ -169,6 +229,50 @@ public class ListSubnetsOptions extends GenericModel {
    */
   public String resourceGroupId() {
     return resourceGroupId;
+  }
+
+  /**
+   * Gets the zoneName.
+   *
+   * Filters the collection to resources with a `zone.name` property matching the exact specified name.
+   *
+   * @return the zoneName
+   */
+  public String zoneName() {
+    return zoneName;
+  }
+
+  /**
+   * Gets the vpcId.
+   *
+   * Filters the collection to resources with a `vpc.id` property matching the specified identifier.
+   *
+   * @return the vpcId
+   */
+  public String vpcId() {
+    return vpcId;
+  }
+
+  /**
+   * Gets the vpcCrn.
+   *
+   * Filters the collection to resources with a `vpc.crn` property matching the specified CRN.
+   *
+   * @return the vpcCrn
+   */
+  public String vpcCrn() {
+    return vpcCrn;
+  }
+
+  /**
+   * Gets the vpcName.
+   *
+   * Filters the collection to resources with a `vpc.name` property matching the exact specified name.
+   *
+   * @return the vpcName
+   */
+  public String vpcName() {
+    return vpcName;
   }
 
   /**

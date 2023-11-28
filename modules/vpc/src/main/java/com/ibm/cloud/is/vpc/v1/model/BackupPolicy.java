@@ -24,6 +24,26 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class BackupPolicy extends GenericModel {
 
   /**
+   * The health of this resource.
+   * - `ok`: No abnormal behavior detected
+   * - `degraded`: Experiencing compromised performance, capacity, or connectivity
+   * - `faulted`: Completely unreachable, inoperative, or otherwise entirely incapacitated
+   * - `inapplicable`: The health state does not apply because of the current lifecycle state. A resource with a
+   * lifecycle state of `failed` or `deleting` will have a health state of `inapplicable`. A `pending` resource may also
+   * have this state.
+   */
+  public interface HealthState {
+    /** degraded. */
+    String DEGRADED = "degraded";
+    /** faulted. */
+    String FAULTED = "faulted";
+    /** inapplicable. */
+    String INAPPLICABLE = "inapplicable";
+    /** ok. */
+    String OK = "ok";
+  }
+
+  /**
    * The lifecycle state of the backup policy.
    */
   public interface LifecycleState {
@@ -62,6 +82,10 @@ public class BackupPolicy extends GenericModel {
   @SerializedName("created_at")
   protected Date createdAt;
   protected String crn;
+  @SerializedName("health_reasons")
+  protected List<BackupPolicyHealthReason> healthReasons;
+  @SerializedName("health_state")
+  protected String healthState;
   protected String href;
   protected String id;
   @SerializedName("last_job_completed_at")
@@ -78,6 +102,7 @@ public class BackupPolicy extends GenericModel {
   protected ResourceGroupReference resourceGroup;
   @SerializedName("resource_type")
   protected String resourceType;
+  protected BackupPolicyScope scope;
 
   protected BackupPolicy() { }
 
@@ -101,6 +126,38 @@ public class BackupPolicy extends GenericModel {
    */
   public String getCrn() {
     return crn;
+  }
+
+  /**
+   * Gets the healthReasons.
+   *
+   * The reasons for the current `health_state` (if any).
+   *
+   * The enumerated reason code values for this property will expand in the future. When processing this property, check
+   * for and log unknown values. Optionally halt processing and surface the error, or bypass the resource on which the
+   * unexpected reason code was encountered.
+   *
+   * @return the healthReasons
+   */
+  public List<BackupPolicyHealthReason> getHealthReasons() {
+    return healthReasons;
+  }
+
+  /**
+   * Gets the healthState.
+   *
+   * The health of this resource.
+   * - `ok`: No abnormal behavior detected
+   * - `degraded`: Experiencing compromised performance, capacity, or connectivity
+   * - `faulted`: Completely unreachable, inoperative, or otherwise entirely incapacitated
+   * - `inapplicable`: The health state does not apply because of the current lifecycle state. A resource with a
+   * lifecycle state of `failed` or `deleting` will have a health state of `inapplicable`. A `pending` resource may also
+   * have this state.
+   *
+   * @return the healthState
+   */
+  public String getHealthState() {
+    return healthState;
   }
 
   /**
@@ -219,6 +276,17 @@ public class BackupPolicy extends GenericModel {
    */
   public String getResourceType() {
     return resourceType;
+  }
+
+  /**
+   * Gets the scope.
+   *
+   * The scope for this backup policy.
+   *
+   * @return the scope
+   */
+  public BackupPolicyScope getScope() {
+    return scope;
   }
 }
 

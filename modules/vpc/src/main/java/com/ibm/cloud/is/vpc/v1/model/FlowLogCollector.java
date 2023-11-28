@@ -165,7 +165,9 @@ public class FlowLogCollector extends GenericModel {
   /**
    * Gets the storageBucket.
    *
-   * The Cloud Object Storage bucket where the collected flows are logged.
+   * The Cloud Object Storage bucket where the collected flows are logged. For more
+   * information, see [Viewing flow log
+   * objects](https://cloud.ibm.com/docs/vpc?topic=vpc-fl-analyze).
    *
    * @return the storageBucket
    */

@@ -20,12 +20,14 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class DeleteVpcOptions extends GenericModel {
 
   protected String id;
+  protected String ifMatch;
 
   /**
    * Builder.
    */
   public static class Builder {
     private String id;
+    private String ifMatch;
 
     /**
      * Instantiates a new Builder from an existing DeleteVpcOptions instance.
@@ -34,6 +36,7 @@ public class DeleteVpcOptions extends GenericModel {
      */
     private Builder(DeleteVpcOptions deleteVpcOptions) {
       this.id = deleteVpcOptions.id;
+      this.ifMatch = deleteVpcOptions.ifMatch;
     }
 
     /**
@@ -70,6 +73,17 @@ public class DeleteVpcOptions extends GenericModel {
       this.id = id;
       return this;
     }
+
+    /**
+     * Set the ifMatch.
+     *
+     * @param ifMatch the ifMatch
+     * @return the DeleteVpcOptions builder
+     */
+    public Builder ifMatch(String ifMatch) {
+      this.ifMatch = ifMatch;
+      return this;
+    }
   }
 
   protected DeleteVpcOptions() { }
@@ -78,6 +92,7 @@ public class DeleteVpcOptions extends GenericModel {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,
       "id cannot be empty");
     id = builder.id;
+    ifMatch = builder.ifMatch;
   }
 
   /**
@@ -98,6 +113,17 @@ public class DeleteVpcOptions extends GenericModel {
    */
   public String id() {
     return id;
+  }
+
+  /**
+   * Gets the ifMatch.
+   *
+   * If present, the request will fail if the specified ETag value does not match the resource's current ETag value.
+   *
+   * @return the ifMatch
+   */
+  public String ifMatch() {
+    return ifMatch;
   }
 }
 

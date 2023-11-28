@@ -26,9 +26,6 @@ public class ListBareMetalServersOptions extends GenericModel {
   protected String vpcId;
   protected String vpcCrn;
   protected String vpcName;
-  protected String networkInterfacesSubnetId;
-  protected String networkInterfacesSubnetCrn;
-  protected String networkInterfacesSubnetName;
 
   /**
    * Builder.
@@ -41,9 +38,6 @@ public class ListBareMetalServersOptions extends GenericModel {
     private String vpcId;
     private String vpcCrn;
     private String vpcName;
-    private String networkInterfacesSubnetId;
-    private String networkInterfacesSubnetCrn;
-    private String networkInterfacesSubnetName;
 
     /**
      * Instantiates a new Builder from an existing ListBareMetalServersOptions instance.
@@ -58,9 +52,6 @@ public class ListBareMetalServersOptions extends GenericModel {
       this.vpcId = listBareMetalServersOptions.vpcId;
       this.vpcCrn = listBareMetalServersOptions.vpcCrn;
       this.vpcName = listBareMetalServersOptions.vpcName;
-      this.networkInterfacesSubnetId = listBareMetalServersOptions.networkInterfacesSubnetId;
-      this.networkInterfacesSubnetCrn = listBareMetalServersOptions.networkInterfacesSubnetCrn;
-      this.networkInterfacesSubnetName = listBareMetalServersOptions.networkInterfacesSubnetName;
     }
 
     /**
@@ -154,39 +145,6 @@ public class ListBareMetalServersOptions extends GenericModel {
       this.vpcName = vpcName;
       return this;
     }
-
-    /**
-     * Set the networkInterfacesSubnetId.
-     *
-     * @param networkInterfacesSubnetId the networkInterfacesSubnetId
-     * @return the ListBareMetalServersOptions builder
-     */
-    public Builder networkInterfacesSubnetId(String networkInterfacesSubnetId) {
-      this.networkInterfacesSubnetId = networkInterfacesSubnetId;
-      return this;
-    }
-
-    /**
-     * Set the networkInterfacesSubnetCrn.
-     *
-     * @param networkInterfacesSubnetCrn the networkInterfacesSubnetCrn
-     * @return the ListBareMetalServersOptions builder
-     */
-    public Builder networkInterfacesSubnetCrn(String networkInterfacesSubnetCrn) {
-      this.networkInterfacesSubnetCrn = networkInterfacesSubnetCrn;
-      return this;
-    }
-
-    /**
-     * Set the networkInterfacesSubnetName.
-     *
-     * @param networkInterfacesSubnetName the networkInterfacesSubnetName
-     * @return the ListBareMetalServersOptions builder
-     */
-    public Builder networkInterfacesSubnetName(String networkInterfacesSubnetName) {
-      this.networkInterfacesSubnetName = networkInterfacesSubnetName;
-      return this;
-    }
   }
 
   protected ListBareMetalServersOptions() { }
@@ -199,9 +157,6 @@ public class ListBareMetalServersOptions extends GenericModel {
     vpcId = builder.vpcId;
     vpcCrn = builder.vpcCrn;
     vpcName = builder.vpcName;
-    networkInterfacesSubnetId = builder.networkInterfacesSubnetId;
-    networkInterfacesSubnetCrn = builder.networkInterfacesSubnetCrn;
-    networkInterfacesSubnetName = builder.networkInterfacesSubnetName;
   }
 
   /**
@@ -288,42 +243,6 @@ public class ListBareMetalServersOptions extends GenericModel {
    */
   public String vpcName() {
     return vpcName;
-  }
-
-  /**
-   * Gets the networkInterfacesSubnetId.
-   *
-   * Filters the collection to bare metal servers with an item in the `network_interfaces` property with a `subnet.id`
-   * property matching the specified identifier.
-   *
-   * @return the networkInterfacesSubnetId
-   */
-  public String networkInterfacesSubnetId() {
-    return networkInterfacesSubnetId;
-  }
-
-  /**
-   * Gets the networkInterfacesSubnetCrn.
-   *
-   * Filters the collection to bare metal servers with an item in the `network_interfaces` property with a `subnet.crn`
-   * property matching the specified CRN.
-   *
-   * @return the networkInterfacesSubnetCrn
-   */
-  public String networkInterfacesSubnetCrn() {
-    return networkInterfacesSubnetCrn;
-  }
-
-  /**
-   * Gets the networkInterfacesSubnetName.
-   *
-   * Filters the collection to bare metal servers with an item in the `network_interfaces` property with a `subnet.name`
-   * property matching the exact specified name.
-   *
-   * @return the networkInterfacesSubnetName
-   */
-  public String networkInterfacesSubnetName() {
-    return networkInterfacesSubnetName;
   }
 }
 

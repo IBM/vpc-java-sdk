@@ -279,7 +279,7 @@ public class Snapshot extends GenericModel {
   /**
    * Gets the operatingSystem.
    *
-   * The operating system included in this image.
+   * The operating system included in this snapshot.
    *
    * @return the operatingSystem
    */

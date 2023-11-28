@@ -24,6 +24,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  * - a bare metal server network interface with `enable_infrastructure_nat` set to `true`.
  *
  * Classes which extend this class:
+ * - FloatingIPTargetPatchBareMetalServerNetworkInterfaceIdentity
  * - FloatingIPTargetPatchNetworkInterfaceIdentity
  */
 public class FloatingIPTargetPatch extends GenericModel {
@@ -36,7 +37,7 @@ public class FloatingIPTargetPatch extends GenericModel {
   /**
    * Gets the id.
    *
-   * The unique identifier for this instance network interface.
+   * The unique identifier for this bare metal server network interface.
    *
    * @return the id
    */
@@ -47,7 +48,7 @@ public class FloatingIPTargetPatch extends GenericModel {
   /**
    * Gets the href.
    *
-   * The URL for this instance network interface.
+   * The URL for this bare metal server network interface.
    *
    * @return the href
    */

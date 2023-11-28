@@ -14,6 +14,7 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.EndpointGateway;
+import com.ibm.cloud.is.vpc.v1.model.EndpointGatewayLifecycleReason;
 import com.ibm.cloud.is.vpc.v1.model.EndpointGatewayTargetProviderCloudServiceReference;
 import com.ibm.cloud.is.vpc.v1.model.ReservedIPReference;
 import com.ibm.cloud.is.vpc.v1.model.ReservedIPReferenceDeleted;
@@ -40,12 +41,14 @@ public class EndpointGatewayTest {
   @Test
   public void testEndpointGateway() throws Throwable {
     EndpointGateway endpointGatewayModel = new EndpointGateway();
+    assertNull(endpointGatewayModel.isAllowDnsResolutionBinding());
     assertNull(endpointGatewayModel.getCreatedAt());
     assertNull(endpointGatewayModel.getCrn());
     assertNull(endpointGatewayModel.getHealthState());
     assertNull(endpointGatewayModel.getHref());
     assertNull(endpointGatewayModel.getId());
     assertNull(endpointGatewayModel.getIps());
+    assertNull(endpointGatewayModel.getLifecycleReasons());
     assertNull(endpointGatewayModel.getLifecycleState());
     assertNull(endpointGatewayModel.getName());
     assertNull(endpointGatewayModel.getResourceGroup());

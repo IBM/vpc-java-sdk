@@ -29,7 +29,6 @@ public class VirtualNetworkInterfaceReferenceAttachmentContext extends GenericMo
   }
 
   protected String crn;
-  protected VirtualNetworkInterfaceReferenceAttachmentContextDeleted deleted;
   protected String href;
   protected String id;
   protected String name;
@@ -47,18 +46,6 @@ public class VirtualNetworkInterfaceReferenceAttachmentContext extends GenericMo
    */
   public String getCrn() {
     return crn;
-  }
-
-  /**
-   * Gets the deleted.
-   *
-   * If present, this property indicates the referenced resource has been deleted, and provides
-   * some supplementary information.
-   *
-   * @return the deleted
-   */
-  public VirtualNetworkInterfaceReferenceAttachmentContextDeleted getDeleted() {
-    return deleted;
   }
 
   /**

@@ -13,9 +13,12 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.ibm.cloud.is.vpc.v1.model.AccountReference;
+import com.ibm.cloud.is.vpc.v1.model.DNSServer;
 import com.ibm.cloud.is.vpc.v1.model.IP;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLReference;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLReferenceDeleted;
+import com.ibm.cloud.is.vpc.v1.model.RegionReference;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.RoutingTableReference;
 import com.ibm.cloud.is.vpc.v1.model.RoutingTableReferenceDeleted;
@@ -26,6 +29,12 @@ import com.ibm.cloud.is.vpc.v1.model.VPCCSESourceIP;
 import com.ibm.cloud.is.vpc.v1.model.VPCCollection;
 import com.ibm.cloud.is.vpc.v1.model.VPCCollectionFirst;
 import com.ibm.cloud.is.vpc.v1.model.VPCCollectionNext;
+import com.ibm.cloud.is.vpc.v1.model.VPCDNS;
+import com.ibm.cloud.is.vpc.v1.model.VPCDNSResolverTypeDelegated;
+import com.ibm.cloud.is.vpc.v1.model.VPCHealthReason;
+import com.ibm.cloud.is.vpc.v1.model.VPCReferenceDNSResolverContext;
+import com.ibm.cloud.is.vpc.v1.model.VPCReferenceDNSResolverContextDeleted;
+import com.ibm.cloud.is.vpc.v1.model.VPCRemote;
 import com.ibm.cloud.is.vpc.v1.model.ZoneReference;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;

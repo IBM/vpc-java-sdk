@@ -23,6 +23,7 @@ public class UpdateVpcOptions extends GenericModel {
 
   protected String id;
   protected Map<String, Object> vpcPatch;
+  protected String ifMatch;
 
   /**
    * Builder.
@@ -30,6 +31,7 @@ public class UpdateVpcOptions extends GenericModel {
   public static class Builder {
     private String id;
     private Map<String, Object> vpcPatch;
+    private String ifMatch;
 
     /**
      * Instantiates a new Builder from an existing UpdateVpcOptions instance.
@@ -39,6 +41,7 @@ public class UpdateVpcOptions extends GenericModel {
     private Builder(UpdateVpcOptions updateVpcOptions) {
       this.id = updateVpcOptions.id;
       this.vpcPatch = updateVpcOptions.vpcPatch;
+      this.ifMatch = updateVpcOptions.ifMatch;
     }
 
     /**
@@ -88,6 +91,17 @@ public class UpdateVpcOptions extends GenericModel {
       this.vpcPatch = vpcPatch;
       return this;
     }
+
+    /**
+     * Set the ifMatch.
+     *
+     * @param ifMatch the ifMatch
+     * @return the UpdateVpcOptions builder
+     */
+    public Builder ifMatch(String ifMatch) {
+      this.ifMatch = ifMatch;
+      return this;
+    }
   }
 
   protected UpdateVpcOptions() { }
@@ -99,6 +113,7 @@ public class UpdateVpcOptions extends GenericModel {
       "vpcPatch cannot be null");
     id = builder.id;
     vpcPatch = builder.vpcPatch;
+    ifMatch = builder.ifMatch;
   }
 
   /**
@@ -130,6 +145,18 @@ public class UpdateVpcOptions extends GenericModel {
    */
   public Map<String, Object> vpcPatch() {
     return vpcPatch;
+  }
+
+  /**
+   * Gets the ifMatch.
+   *
+   * If present, the request will fail if the specified ETag value does not match the resource's current ETag value.
+   * Required if the request body includes an array.
+   *
+   * @return the ifMatch
+   */
+  public String ifMatch() {
+    return ifMatch;
   }
 }
 

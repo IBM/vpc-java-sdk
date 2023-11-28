@@ -52,9 +52,9 @@ public class SnapshotPrototypeSnapshotBySourceSnapshotTest {
     assertEquals(resourceGroupIdentityModel.id(), "fee82deba12e4c0fb69c3b09d1f12345");
 
     EncryptionKeyIdentityByCRN encryptionKeyIdentityModel = new EncryptionKeyIdentityByCRN.Builder()
-      .crn("crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179")
+      .crn("crn:v1:bluemix:public:kms:us-south:a/123456:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179")
       .build();
-    assertEquals(encryptionKeyIdentityModel.crn(), "crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179");
+    assertEquals(encryptionKeyIdentityModel.crn(), "crn:v1:bluemix:public:kms:us-south:a/123456:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179");
 
     SnapshotIdentityByCRN snapshotIdentityByCrnModel = new SnapshotIdentityByCRN.Builder()
       .crn("crn:v1:bluemix:public:is:us-south:a/123456::snapshot:r134-f6bfa329-0e36-433f-a3bb-0df632e79263")
@@ -65,14 +65,14 @@ public class SnapshotPrototypeSnapshotBySourceSnapshotTest {
       .clones(java.util.Arrays.asList(snapshotClonePrototypeModel))
       .name("my-snapshot")
       .resourceGroup(resourceGroupIdentityModel)
-      .userTags(java.util.Arrays.asList("testString"))
+      .userTags(java.util.Arrays.asList())
       .encryptionKey(encryptionKeyIdentityModel)
       .sourceSnapshot(snapshotIdentityByCrnModel)
       .build();
     assertEquals(snapshotPrototypeSnapshotBySourceSnapshotModel.clones(), java.util.Arrays.asList(snapshotClonePrototypeModel));
     assertEquals(snapshotPrototypeSnapshotBySourceSnapshotModel.name(), "my-snapshot");
     assertEquals(snapshotPrototypeSnapshotBySourceSnapshotModel.resourceGroup(), resourceGroupIdentityModel);
-    assertEquals(snapshotPrototypeSnapshotBySourceSnapshotModel.userTags(), java.util.Arrays.asList("testString"));
+    assertEquals(snapshotPrototypeSnapshotBySourceSnapshotModel.userTags(), java.util.Arrays.asList());
     assertEquals(snapshotPrototypeSnapshotBySourceSnapshotModel.encryptionKey(), encryptionKeyIdentityModel);
     assertEquals(snapshotPrototypeSnapshotBySourceSnapshotModel.sourceSnapshot(), snapshotIdentityByCrnModel);
 

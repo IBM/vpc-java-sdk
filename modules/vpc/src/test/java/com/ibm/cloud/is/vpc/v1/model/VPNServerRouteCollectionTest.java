@@ -17,6 +17,8 @@ import com.ibm.cloud.is.vpc.v1.model.VPNServerRoute;
 import com.ibm.cloud.is.vpc.v1.model.VPNServerRouteCollection;
 import com.ibm.cloud.is.vpc.v1.model.VPNServerRouteCollectionFirst;
 import com.ibm.cloud.is.vpc.v1.model.VPNServerRouteCollectionNext;
+import com.ibm.cloud.is.vpc.v1.model.VPNServerRouteHealthReason;
+import com.ibm.cloud.is.vpc.v1.model.VPNServerRouteLifecycleReason;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import com.ibm.cloud.sdk.core.util.DateUtils;

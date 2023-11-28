@@ -17,6 +17,8 @@ import com.ibm.cloud.is.vpc.v1.model.DedicatedHost;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostDisk;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostGroupReferenceDeleted;
+import com.ibm.cloud.is.vpc.v1.model.DedicatedHostNUMA;
+import com.ibm.cloud.is.vpc.v1.model.DedicatedHostNUMANode;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostProfileReference;
 import com.ibm.cloud.is.vpc.v1.model.InstanceDiskReference;
 import com.ibm.cloud.is.vpc.v1.model.InstanceDiskReferenceDeleted;
@@ -58,6 +60,7 @@ public class DedicatedHostTest {
     assertNull(dedicatedHostModel.getLifecycleState());
     assertNull(dedicatedHostModel.getMemory());
     assertNull(dedicatedHostModel.getName());
+    assertNull(dedicatedHostModel.getNuma());
     assertNull(dedicatedHostModel.getProfile());
     assertNull(dedicatedHostModel.isProvisionable());
     assertNull(dedicatedHostModel.getResourceGroup());

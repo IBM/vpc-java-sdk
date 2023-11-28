@@ -22,6 +22,28 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class InstanceProfile extends GenericModel {
 
+  /**
+   * The status of the instance profile:
+   *   - `previous`:  This instance profile is an older revision, but remains provisionable and
+   *   usable.
+   *   - `current`:  This profile is the latest revision.
+   *
+   * Note that revisions are indicated by the generation of an instance profile.  Refer to the
+   * [profile naming conventions]
+   * (https://cloud.ibm.com/docs/vpc?topic=vpc-profiles&amp;interface=ui#profiles-naming-rule) for information on how
+   * generations are defined within an instance profile.
+   *
+   * The enumerated values for this property are expected to expand in the future. When processing this property, check
+   * for and log unknown values. Optionally halt processing and surface the error, or bypass the profile on which the
+   * unexpected property value was encountered.
+   */
+  public interface Status {
+    /** current. */
+    String CURRENT = "current";
+    /** previous. */
+    String PREVIOUS = "previous";
+  }
+
   protected InstanceProfileBandwidth bandwidth;
   protected List<InstanceProfileDisk> disks;
   protected String family;
@@ -38,10 +60,13 @@ public class InstanceProfile extends GenericModel {
   protected String name;
   @SerializedName("network_interface_count")
   protected InstanceProfileNetworkInterfaceCount networkInterfaceCount;
+  @SerializedName("numa_count")
+  protected InstanceProfileNUMACount numaCount;
   @SerializedName("os_architecture")
   protected InstanceProfileOSArchitecture osArchitecture;
   @SerializedName("port_speed")
   protected InstanceProfilePortSpeed portSpeed;
+  protected String status;
   @SerializedName("total_volume_bandwidth")
   protected InstanceProfileVolumeBandwidth totalVolumeBandwidth;
   @SerializedName("vcpu_architecture")
@@ -161,6 +186,15 @@ public class InstanceProfile extends GenericModel {
   }
 
   /**
+   * Gets the numaCount.
+   *
+   * @return the numaCount
+   */
+  public InstanceProfileNUMACount getNumaCount() {
+    return numaCount;
+  }
+
+  /**
    * Gets the osArchitecture.
    *
    * @return the osArchitecture
@@ -176,6 +210,29 @@ public class InstanceProfile extends GenericModel {
    */
   public InstanceProfilePortSpeed getPortSpeed() {
     return portSpeed;
+  }
+
+  /**
+   * Gets the status.
+   *
+   * The status of the instance profile:
+   *   - `previous`:  This instance profile is an older revision, but remains provisionable and
+   *   usable.
+   *   - `current`:  This profile is the latest revision.
+   *
+   * Note that revisions are indicated by the generation of an instance profile.  Refer to the
+   * [profile naming conventions]
+   * (https://cloud.ibm.com/docs/vpc?topic=vpc-profiles&amp;interface=ui#profiles-naming-rule) for information on how
+   * generations are defined within an instance profile.
+   *
+   * The enumerated values for this property are expected to expand in the future. When processing this property, check
+   * for and log unknown values. Optionally halt processing and surface the error, or bypass the profile on which the
+   * unexpected property value was encountered.
+   *
+   * @return the status
+   */
+  public String getStatus() {
+    return status;
   }
 
   /**

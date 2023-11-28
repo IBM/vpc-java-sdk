@@ -87,6 +87,7 @@ public class DedicatedHost extends GenericModel {
   protected String lifecycleState;
   protected Long memory;
   protected String name;
+  protected DedicatedHostNUMA numa;
   protected DedicatedHostProfileReference profile;
   protected Boolean provisionable;
   @SerializedName("resource_group")
@@ -244,6 +245,17 @@ public class DedicatedHost extends GenericModel {
    */
   public String getName() {
     return name;
+  }
+
+  /**
+   * Gets the numa.
+   *
+   * The dedicated host NUMA configuration.
+   *
+   * @return the numa
+   */
+  public DedicatedHostNUMA getNuma() {
+    return numa;
   }
 
   /**

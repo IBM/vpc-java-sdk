@@ -264,7 +264,7 @@ public class BareMetalServer extends GenericModel {
   /**
    * Gets the networkInterfaces.
    *
-   * The bare metal server network interfaces, including the primary interface.
+   * The network interfaces for this bare metal server, including the primary network interface.
    *
    * @return the networkInterfaces
    */
@@ -275,7 +275,7 @@ public class BareMetalServer extends GenericModel {
   /**
    * Gets the primaryNetworkInterface.
    *
-   * The primary bare metal server network interface.
+   * The primary network interface for this bare metal server.
    *
    * @return the primaryNetworkInterface
    */

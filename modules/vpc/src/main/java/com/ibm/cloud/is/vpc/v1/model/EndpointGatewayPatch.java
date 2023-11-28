@@ -14,6 +14,7 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 import java.util.Map;
 
+import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 import com.ibm.cloud.sdk.core.util.GsonSingleton;
 
@@ -22,12 +23,15 @@ import com.ibm.cloud.sdk.core.util.GsonSingleton;
  */
 public class EndpointGatewayPatch extends GenericModel {
 
+  @SerializedName("allow_dns_resolution_binding")
+  protected Boolean allowDnsResolutionBinding;
   protected String name;
 
   /**
    * Builder.
    */
   public static class Builder {
+    private Boolean allowDnsResolutionBinding;
     private String name;
 
     /**
@@ -36,6 +40,7 @@ public class EndpointGatewayPatch extends GenericModel {
      * @param endpointGatewayPatch the instance to initialize the Builder with
      */
     private Builder(EndpointGatewayPatch endpointGatewayPatch) {
+      this.allowDnsResolutionBinding = endpointGatewayPatch.allowDnsResolutionBinding;
       this.name = endpointGatewayPatch.name;
     }
 
@@ -55,6 +60,17 @@ public class EndpointGatewayPatch extends GenericModel {
     }
 
     /**
+     * Set the allowDnsResolutionBinding.
+     *
+     * @param allowDnsResolutionBinding the allowDnsResolutionBinding
+     * @return the EndpointGatewayPatch builder
+     */
+    public Builder allowDnsResolutionBinding(Boolean allowDnsResolutionBinding) {
+      this.allowDnsResolutionBinding = allowDnsResolutionBinding;
+      return this;
+    }
+
+    /**
      * Set the name.
      *
      * @param name the name
@@ -69,6 +85,7 @@ public class EndpointGatewayPatch extends GenericModel {
   protected EndpointGatewayPatch() { }
 
   protected EndpointGatewayPatch(Builder builder) {
+    allowDnsResolutionBinding = builder.allowDnsResolutionBinding;
     name = builder.name;
   }
 
@@ -79,6 +96,21 @@ public class EndpointGatewayPatch extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
+  }
+
+  /**
+   * Gets the allowDnsResolutionBinding.
+   *
+   * Indicates whether to allow DNS resolution for this endpoint gateway when the VPC this endpoint gateway resides in
+   * has a DNS resolution binding to a VPC with `dns.enable_hub` set to `true`.
+   *
+   * Must be `true` if the VPC this endpoint gateway resides in has `dns.enable_hub` set to
+   * `true`.
+   *
+   * @return the allowDnsResolutionBinding
+   */
+  public Boolean allowDnsResolutionBinding() {
+    return allowDnsResolutionBinding;
   }
 
   /**

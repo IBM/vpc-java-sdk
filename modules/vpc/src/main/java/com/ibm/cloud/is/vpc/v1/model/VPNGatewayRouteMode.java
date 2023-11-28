@@ -18,25 +18,51 @@ package com.ibm.cloud.is.vpc.v1.model;
 public class VPNGatewayRouteMode extends VPNGateway {
 
   /**
-   * The resource type.
+   * The health of this resource.
+   * - `ok`: No abnormal behavior detected
+   * - `degraded`: Experiencing compromised performance, capacity, or connectivity
+   * - `faulted`: Completely unreachable, inoperative, or otherwise entirely incapacitated
+   * - `inapplicable`: The health state does not apply because of the current lifecycle state. A resource with a
+   * lifecycle state of `failed` or `deleting` will have a health state of `inapplicable`. A `pending` resource may also
+   * have this state.
    */
-  public interface ResourceType {
-    /** vpn_gateway. */
-    String VPN_GATEWAY = "vpn_gateway";
+  public interface HealthState {
+    /** degraded. */
+    String DEGRADED = "degraded";
+    /** faulted. */
+    String FAULTED = "faulted";
+    /** inapplicable. */
+    String INAPPLICABLE = "inapplicable";
+    /** ok. */
+    String OK = "ok";
   }
 
   /**
-   * The status of the VPN gateway.
+   * The lifecycle state of the VPN gateway.
    */
-  public interface Status {
-    /** available. */
-    String AVAILABLE = "available";
+  public interface LifecycleState {
     /** deleting. */
     String DELETING = "deleting";
     /** failed. */
     String FAILED = "failed";
     /** pending. */
     String PENDING = "pending";
+    /** stable. */
+    String STABLE = "stable";
+    /** suspended. */
+    String SUSPENDED = "suspended";
+    /** updating. */
+    String UPDATING = "updating";
+    /** waiting. */
+    String WAITING = "waiting";
+  }
+
+  /**
+   * The resource type.
+   */
+  public interface ResourceType {
+    /** vpn_gateway. */
+    String VPN_GATEWAY = "vpn_gateway";
   }
 
   /**

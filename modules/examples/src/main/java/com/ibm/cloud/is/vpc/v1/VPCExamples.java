@@ -97,6 +97,7 @@ import com.ibm.cloud.is.vpc.v1.model.CreateSubnetOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateSubnetReservedIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateVolumeOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateVpcAddressPrefixOptions;
+import com.ibm.cloud.is.vpc.v1.model.CreateVpcDnsResolutionBindingOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateVpcOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateVpcRouteOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateVpcRoutingTableOptions;
@@ -170,6 +171,7 @@ import com.ibm.cloud.is.vpc.v1.model.DeleteSubnetOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteSubnetReservedIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteVolumeOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteVpcAddressPrefixOptions;
+import com.ibm.cloud.is.vpc.v1.model.DeleteVpcDnsResolutionBindingOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteVpcOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteVpcRouteOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteVpcRoutingTableOptions;
@@ -271,6 +273,7 @@ import com.ibm.cloud.is.vpc.v1.model.GetVpcAddressPrefixOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetVpcDefaultNetworkAclOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetVpcDefaultRoutingTableOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetVpcDefaultSecurityGroupOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetVpcDnsResolutionBindingOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetVpcOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetVpcRouteOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetVpcRoutingTableOptions;
@@ -436,6 +439,7 @@ import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfile;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfilesPager;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerStatistics;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancersPager;
+import com.ibm.cloud.is.vpc.v1.model.ListVpcDnsResolutionBindingsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListVpnServerClientsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListVpnServerRoutesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListVpnServersOptions;
@@ -509,6 +513,7 @@ import com.ibm.cloud.is.vpc.v1.model.ShareProfileIdentityByName;
 import com.ibm.cloud.is.vpc.v1.model.ShareProfilesPager;
 import com.ibm.cloud.is.vpc.v1.model.SharePrototypeShareBySize;
 import com.ibm.cloud.is.vpc.v1.model.SharePrototypeShareBySourceShare;
+import com.ibm.cloud.is.vpc.v1.model.ShareReference;
 import com.ibm.cloud.is.vpc.v1.model.SharesPager;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotClone;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotCloneCollection;
@@ -573,6 +578,7 @@ import com.ibm.cloud.is.vpc.v1.model.UpdateSubnetOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateSubnetReservedIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateVolumeOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateVpcAddressPrefixOptions;
+import com.ibm.cloud.is.vpc.v1.model.UpdateVpcDnsResolutionBindingOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateVpcOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateVpcRouteOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateVpcRoutingTableOptions;
@@ -618,6 +624,10 @@ import com.ibm.cloud.is.vpc.v1.model.VolumePrototypeInstanceByImageContext;
 import com.ibm.cloud.is.vpc.v1.model.VolumePrototypeVolumeByCapacity;
 import com.ibm.cloud.is.vpc.v1.model.VolumesPager;
 import com.ibm.cloud.is.vpc.v1.model.VpcAddressPrefixesPager;
+import com.ibm.cloud.is.vpc.v1.model.VPCDNSPrototype;
+import com.ibm.cloud.is.vpc.v1.model.VPCDNSResolutionBinding;
+import com.ibm.cloud.is.vpc.v1.model.VPCDNSResolutionBindingPatch;
+import com.ibm.cloud.is.vpc.v1.model.VpcDnsResolutionBindingsPager;
 import com.ibm.cloud.is.vpc.v1.model.VpcRoutesPager;
 import com.ibm.cloud.is.vpc.v1.model.VpcRoutingTableRoutesPager;
 import com.ibm.cloud.is.vpc.v1.model.VpcRoutingTablesPager;
@@ -668,6 +678,7 @@ public class VPCExamples {
   static String dedicatedHostProfileName;
   static String floatingIpId;
   static String vpcId;
+  static String secondVpcId;
   static String routingTableId;
   static String routingTableRouteId;
   static String subnetId;
@@ -708,6 +719,7 @@ public class VPCExamples {
   static String publicGatewayId;
   static String volumeProfileName;
   static String vpcRouteId;
+  static String vpcdnsResolutionBindingId;
   static String vpnGatewayId;
   static String vpnGatewayConnectionId;
   static String regionName = "us-east";
@@ -956,6 +968,98 @@ public class VPCExamples {
       AddressPrefix addressPrefix = response.getResult();
 
       // end-update_vpc_address_prefix
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("createVpcDnsResolutionBinding() result:");
+      VPCDNSPrototype vpcdnsPrototype = new VPCDNSPrototype.Builder()
+        .enableHub(true)
+        .build();
+      CreateVpcOptions createVpcOptions = new CreateVpcOptions.Builder()
+        .name("my-vpc-second")
+        .dns(vpcdnsPrototype)
+        .build();
+
+      Response<VPC> vpcresponse = vpcService.createVpc(createVpcOptions).execute();
+      VPC vpc = vpcresponse.getResult();
+      secondVpcId = vpc.getId();
+      // begin-create_vpc_dns_resolution_binding
+      VPCIdentityById vpcIdentityModel = new VPCIdentityById.Builder()
+        .id(secondVpcId)
+        .build();
+      CreateVpcDnsResolutionBindingOptions createVpcDnsResolutionBindingOptions = new CreateVpcDnsResolutionBindingOptions.Builder()
+        .vpcId(vpcId)
+        .name("vpc-dns-resolution-binding")
+        .vpc(vpcIdentityModel)
+        .build();
+
+      Response<VPCDNSResolutionBinding> response = vpcService.createVpcDnsResolutionBinding(createVpcDnsResolutionBindingOptions).execute();
+      VPCDNSResolutionBinding vpcdnsResolutionBinding = response.getResult();
+
+      // end-create_vpc_dns_resolution_binding
+      vpcdnsResolutionBindingId = vpcdnsResolutionBinding.getId();
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("listVpcDnsResolutionBindings() result:");
+      // begin-list_vpc_dns_resolution_bindings
+      ListVpcDnsResolutionBindingsOptions listVpcDnsResolutionBindingsOptions = new ListVpcDnsResolutionBindingsOptions.Builder()
+        .vpcId(secondVpcId)
+        .build();
+
+      VpcDnsResolutionBindingsPager pager = new VpcDnsResolutionBindingsPager(vpcService, listVpcDnsResolutionBindingsOptions);
+      List<VPCDNSResolutionBinding> allResults = new ArrayList<>();
+      while (pager.hasNext()) {
+        List<VPCDNSResolutionBinding> nextPage = pager.getNext();
+        allResults.addAll(nextPage);
+      }
+
+      // end-list_vpc_dns_resolution_bindings
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("getVpcDnsResolutionBinding() result:");
+      // begin-get_vpc_dns_resolution_binding
+      GetVpcDnsResolutionBindingOptions getVpcDnsResolutionBindingOptions = new GetVpcDnsResolutionBindingOptions.Builder()
+        .vpcId(vpcId)
+        .id(vpcdnsResolutionBindingId)
+        .build();
+
+      Response<VPCDNSResolutionBinding> response = vpcService.getVpcDnsResolutionBinding(getVpcDnsResolutionBindingOptions).execute();
+      VPCDNSResolutionBinding vpcdnsResolutionBinding = response.getResult();
+
+      // end-get_vpc_dns_resolution_binding
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("updateVpcDnsResolutionBinding() result:");
+      // begin-update_vpc_dns_resolution_binding
+      VPCDNSResolutionBindingPatch vpcdnsResolutionBindingPatchModel = new VPCDNSResolutionBindingPatch.Builder()
+        .name("vpc-dns-resolution-binding-updated")
+        .build();
+      Map<String, Object> vpcdnsResolutionBindingPatchModelAsPatch = vpcdnsResolutionBindingPatchModel.asPatch();
+      UpdateVpcDnsResolutionBindingOptions updateVpcDnsResolutionBindingOptions = new UpdateVpcDnsResolutionBindingOptions.Builder()
+        .vpcId(vpcId)
+        .id(vpcdnsResolutionBindingId)
+        .vpcdnsResolutionBindingPatch(vpcdnsResolutionBindingPatchModelAsPatch)
+        .build();
+
+      Response<VPCDNSResolutionBinding> response = vpcService.updateVpcDnsResolutionBinding(updateVpcDnsResolutionBindingOptions).execute();
+      VPCDNSResolutionBinding vpcdnsResolutionBinding = response.getResult();
+
+      // end-update_vpc_dns_resolution_binding
     } catch (ServiceResponseException e) {
         logger.error(String.format("Service returned status code %s: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
@@ -4432,8 +4536,8 @@ public class VPCExamples {
         .shareId(shareId)
         .build();
 
-      Response<Share> response = vpcService.getShareSource(getShareSourceOptions).execute();
-      Share share = response.getResult();
+      Response<ShareReference> response = vpcService.getShareSource(getShareSourceOptions).execute();
+      ShareReference share = response.getResult();
 
       // end-get_share_source
     } catch (ServiceResponseException e) {
@@ -6690,6 +6794,22 @@ public class VPCExamples {
     }
 
     try {
+
+      // begin-delete_vpc_dns_resolution_binding
+      DeleteVpcDnsResolutionBindingOptions deleteVpcDnsResolutionBindingOptions = new DeleteVpcDnsResolutionBindingOptions.Builder()
+        .vpcId(vpcId)
+        .id(vpcdnsResolutionBindingId)
+        .build();
+
+      Response<VPCDNSResolutionBinding> response = vpcService.deleteVpcDnsResolutionBinding(deleteVpcDnsResolutionBindingOptions).execute();
+      // end-delete_vpc_dns_resolution_binding
+      System.out.printf("deleteVpcDnsResolutionBinding() response status code: %d%n", response.getStatusCode());
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
       // begin-delete_vpc_route
       DeleteVpcRouteOptions deleteVpcRouteOptions = new DeleteVpcRouteOptions.Builder()
         .vpcId(vpcId)
@@ -6727,6 +6847,11 @@ public class VPCExamples {
 
       Response<Void> response = vpcService.deleteVpc(deleteVpcOptions).execute();
       // end-delete_vpc
+      System.out.printf("deleteVpc() response status code: %d%n", response.getStatusCode());
+      deleteVpcOptions = new DeleteVpcOptions.Builder()
+        .id(secondVpcId)
+        .build();
+      response = vpcService.deleteVpc(deleteVpcOptions).execute();
       System.out.printf("deleteVpc() response status code: %d%n", response.getStatusCode());
     } catch (ServiceResponseException e) {
         logger.error(String.format("Service returned status code %s: %s%nError details: %s",

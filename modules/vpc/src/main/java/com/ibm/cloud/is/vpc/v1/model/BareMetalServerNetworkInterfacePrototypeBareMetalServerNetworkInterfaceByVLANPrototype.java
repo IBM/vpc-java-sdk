@@ -23,7 +23,7 @@ public class BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInter
   /**
    * - `vlan`: a virtual device, used through a `pci` device that has the `vlan` in its array
    *    of `allowed_vlans`.
-   *   - Must use an IEEE 802.1q tag.
+   *   - Must use an IEEE 802.1Q tag.
    *   - Has its own security groups and does not inherit those of the PCI device through
    *     which traffic flows.
    *   - Not supported on bare metal servers with a `cpu.architecture` of `s390x`.

@@ -40,7 +40,7 @@ public class BareMetalServerNetworkInterfaceByPCI extends BareMetalServerNetwork
   }
 
   /**
-   * The type of this bare metal server network interface.
+   * The bare metal server network interface type.
    */
   public interface Type {
     /** primary. */
@@ -54,7 +54,7 @@ public class BareMetalServerNetworkInterfaceByPCI extends BareMetalServerNetwork
    *   server is stopped
    *   - Has an `allowed_vlans` property which controls the VLANs that will be permitted
    *     to use the PCI interface
-   *   - Cannot directly use an IEEE 802.1q VLAN tag.
+   *   - Cannot directly use an IEEE 802.1Q tag.
    */
   public interface InterfaceType {
     /** pci. */

@@ -36,10 +36,18 @@ public class ListEndpointGatewaysOptionsTest {
       .start("testString")
       .limit(Long.valueOf("50"))
       .resourceGroupId("testString")
+      .vpcId("testString")
+      .vpcCrn("crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b")
+      .vpcName("my-vpc")
+      .allowDnsResolutionBinding(true)
       .build();
     assertEquals(listEndpointGatewaysOptionsModel.name(), "testString");
     assertEquals(listEndpointGatewaysOptionsModel.start(), "testString");
     assertEquals(listEndpointGatewaysOptionsModel.limit(), Long.valueOf("50"));
     assertEquals(listEndpointGatewaysOptionsModel.resourceGroupId(), "testString");
+    assertEquals(listEndpointGatewaysOptionsModel.vpcId(), "testString");
+    assertEquals(listEndpointGatewaysOptionsModel.vpcCrn(), "crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b");
+    assertEquals(listEndpointGatewaysOptionsModel.vpcName(), "my-vpc");
+    assertEquals(listEndpointGatewaysOptionsModel.allowDnsResolutionBinding(), Boolean.valueOf(true));
   }
 }

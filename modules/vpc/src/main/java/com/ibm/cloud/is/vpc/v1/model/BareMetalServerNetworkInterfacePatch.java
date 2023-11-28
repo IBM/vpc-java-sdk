@@ -163,7 +163,8 @@ public class BareMetalServerNetworkInterfacePatch extends GenericModel {
   /**
    * Gets the allowedVlans.
    *
-   * Indicates what VLAN IDs (for VLAN type only) can use this physical (PCI type) interface.
+   * The VLAN IDs to allow for `vlan` interfaces using this PCI interface, replacing any existing VLAN IDs. The
+   * specified values must include IDs for all `vlan` interfaces currently using this PCI interface.
    *
    * @return the allowedVlans
    */

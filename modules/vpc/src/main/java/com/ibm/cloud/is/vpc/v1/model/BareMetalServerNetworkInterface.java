@@ -45,10 +45,10 @@ public class BareMetalServerNetworkInterface extends GenericModel {
    *   server is stopped
    *   - Has an `allowed_vlans` property which controls the VLANs that will be permitted
    *     to use the PCI interface
-   *   - Cannot directly use an IEEE 802.1q VLAN tag.
+   *   - Cannot directly use an IEEE 802.1Q tag.
    * - `vlan`: a virtual device, used through a `pci` device that has the `vlan` in its
    *   array of `allowed_vlans`.
-   *   - Must use an IEEE 802.1q tag.
+   *   - Must use an IEEE 802.1Q tag.
    *   - Has its own security groups and does not inherit those of the PCI device through
    *     which traffic flows.
    *
@@ -88,7 +88,7 @@ public class BareMetalServerNetworkInterface extends GenericModel {
   }
 
   /**
-   * The type of this bare metal server network interface.
+   * The bare metal server network interface type.
    */
   public interface Type {
     /** primary. */
@@ -215,10 +215,10 @@ public class BareMetalServerNetworkInterface extends GenericModel {
    *   server is stopped
    *   - Has an `allowed_vlans` property which controls the VLANs that will be permitted
    *     to use the PCI interface
-   *   - Cannot directly use an IEEE 802.1q VLAN tag.
+   *   - Cannot directly use an IEEE 802.1Q tag.
    * - `vlan`: a virtual device, used through a `pci` device that has the `vlan` in its
    *   array of `allowed_vlans`.
-   *   - Must use an IEEE 802.1q tag.
+   *   - Must use an IEEE 802.1Q tag.
    *   - Has its own security groups and does not inherit those of the PCI device through
    *     which traffic flows.
    *
@@ -322,7 +322,7 @@ public class BareMetalServerNetworkInterface extends GenericModel {
   /**
    * Gets the type.
    *
-   * The type of this bare metal server network interface.
+   * The bare metal server network interface type.
    *
    * @return the type
    */
@@ -333,7 +333,7 @@ public class BareMetalServerNetworkInterface extends GenericModel {
   /**
    * Gets the allowedVlans.
    *
-   * Indicates what VLAN IDs (for VLAN type only) can use this physical (PCI type) interface.
+   * The VLAN IDs allowed for `vlan` interfaces using this PCI interface.
    *
    * @return the allowedVlans
    */
@@ -344,9 +344,16 @@ public class BareMetalServerNetworkInterface extends GenericModel {
   /**
    * Gets the allowInterfaceToFloat.
    *
-   * Indicates if the interface can float to any other server within the same
-   * `resource_group`. The interface will float automatically if the network detects a GARP or RARP on another bare
-   * metal server in the resource group.  Applies only to `vlan` type interfaces.
+   * Indicates if the data path for the network interface can float to another bare metal server. Can only be `true` for
+   * network interfaces with an `interface_type` of `vlan`.
+   *
+   * If `true`, and the network detects traffic for this data path on another bare metal server in the resource group,
+   * the network interface will be automatically deleted from this bare metal server and a new network interface with
+   * the same `id`, `name` and `vlan` will be created on the other bare metal server.
+   *
+   * For the data path to float, the other bare metal server must be in the same
+   * `resource_group`, and must have a network interface with `interface_type` of `pci` with `allowed_vlans` including
+   * this network interface's `vlan`.
    *
    * @return the allowInterfaceToFloat
    */
@@ -357,7 +364,7 @@ public class BareMetalServerNetworkInterface extends GenericModel {
   /**
    * Gets the vlan.
    *
-   * Indicates the 802.1Q VLAN ID tag that must be used for all traffic on this interface.
+   * The VLAN ID used in the IEEE 802.1Q tag present in all traffic on this interface.
    *
    * @return the vlan
    */

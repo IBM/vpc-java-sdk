@@ -33,11 +33,11 @@ public class FailoverShareOptionsTest {
   public void testFailoverShareOptions() throws Throwable {
     FailoverShareOptions failoverShareOptionsModel = new FailoverShareOptions.Builder()
       .shareId("testString")
-      .fallbackPolicy("split")
+      .fallbackPolicy("fail")
       .timeout(Long.valueOf("600"))
       .build();
     assertEquals(failoverShareOptionsModel.shareId(), "testString");
-    assertEquals(failoverShareOptionsModel.fallbackPolicy(), "split");
+    assertEquals(failoverShareOptionsModel.fallbackPolicy(), "fail");
     assertEquals(failoverShareOptionsModel.timeout(), Long.valueOf("600"));
   }
 

@@ -46,7 +46,7 @@ public class NetworkInterface extends GenericModel {
   }
 
   /**
-   * The type of this instance network interface as it relates to an instance.
+   * The instance network interface type.
    */
   public interface Type {
     /** primary. */
@@ -81,7 +81,7 @@ public class NetworkInterface extends GenericModel {
   /**
    * Gets the allowIpSpoofing.
    *
-   * Indicates whether source IP spoofing is allowed on this instance interface.
+   * Indicates whether source IP spoofing is allowed on this instance network interface.
    *
    * @return the allowIpSpoofing
    */
@@ -211,7 +211,7 @@ public class NetworkInterface extends GenericModel {
   /**
    * Gets the type.
    *
-   * The type of this instance network interface as it relates to an instance.
+   * The instance network interface type.
    *
    * @return the type
    */

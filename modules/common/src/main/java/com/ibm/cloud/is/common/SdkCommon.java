@@ -33,13 +33,10 @@ public class SdkCommon {
      * SDK-specific "user agent" header value.
      */
     private static String userAgent;
-    private static String xCorrelationID;
-    private static String xRequestID;
 
     private static String projectName;
     private static String version;
 
-    private static final String X_CORRRELATION_ID = "X-Correlation-Id";
     private static final String X_REQUEST_ID = "X-Request-Id";
 
     // >>> Replace "is" with the parent project's artifactId (e.g. platform-services)
@@ -88,15 +85,6 @@ public class SdkCommon {
     }
 
     /**
-     * This function uses lazy initialization to build the SDK's "xCorrelationID" value.
-     * This is a version 4 UUID
-     * @return the request-specific xCorrelationID value
-     */
-    private static synchronized String getXCorrelationID() {
-        return UUID.randomUUID().toString();
-    }
-
-    /**
      * This function uses lazy initialization to build the SDK's "xRequestID" value.
      * This is a version 4 UUID
      * @return the request-specific xRequestID value
@@ -141,7 +129,6 @@ public class SdkCommon {
     public static Map<String, String> getSdkHeaders(String serviceName, String serviceVersion, String operationId) {
         Map<String, String> headers = new HashMap<>();
         headers.put(HttpHeaders.USER_AGENT, getUserAgent());
-        headers.put(X_CORRRELATION_ID, getXCorrelationID());
         headers.put(X_REQUEST_ID, getXRequestID());
         return headers;
     }

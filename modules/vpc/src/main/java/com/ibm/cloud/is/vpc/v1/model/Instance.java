@@ -104,6 +104,8 @@ public class Instance extends GenericModel {
   protected String name;
   @SerializedName("network_interfaces")
   protected List<NetworkInterfaceInstanceContextReference> networkInterfaces;
+  @SerializedName("numa_count")
+  protected Long numaCount;
   @SerializedName("placement_target")
   protected InstancePlacementTarget placementTarget;
   @SerializedName("primary_network_interface")
@@ -325,12 +327,25 @@ public class Instance extends GenericModel {
   /**
    * Gets the networkInterfaces.
    *
-   * The instance network interfaces, including the primary instance network interface.
+   * The network interfaces for this instance, including the primary network interface.
    *
    * @return the networkInterfaces
    */
   public List<NetworkInterfaceInstanceContextReference> getNetworkInterfaces() {
     return networkInterfaces;
+  }
+
+  /**
+   * Gets the numaCount.
+   *
+   * The number of NUMA nodes this virtual server instance is provisioned on.
+   *
+   * This property will be absent if the instance's `status` is not `running`.
+   *
+   * @return the numaCount
+   */
+  public Long getNumaCount() {
+    return numaCount;
   }
 
   /**
@@ -347,7 +362,7 @@ public class Instance extends GenericModel {
   /**
    * Gets the primaryNetworkInterface.
    *
-   * The primary instance network interface.
+   * The primary network interface for this virtual server instance.
    *
    * @return the primaryNetworkInterface
    */

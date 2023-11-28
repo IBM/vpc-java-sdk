@@ -22,12 +22,14 @@ import com.ibm.cloud.sdk.core.util.GsonSingleton;
  */
 public class VPCPatch extends GenericModel {
 
+  protected VPCDNSPatch dns;
   protected String name;
 
   /**
    * Builder.
    */
   public static class Builder {
+    private VPCDNSPatch dns;
     private String name;
 
     /**
@@ -36,6 +38,7 @@ public class VPCPatch extends GenericModel {
      * @param vpcPatch the instance to initialize the Builder with
      */
     private Builder(VPCPatch vpcPatch) {
+      this.dns = vpcPatch.dns;
       this.name = vpcPatch.name;
     }
 
@@ -55,6 +58,17 @@ public class VPCPatch extends GenericModel {
     }
 
     /**
+     * Set the dns.
+     *
+     * @param dns the dns
+     * @return the VPCPatch builder
+     */
+    public Builder dns(VPCDNSPatch dns) {
+      this.dns = dns;
+      return this;
+    }
+
+    /**
      * Set the name.
      *
      * @param name the name
@@ -69,6 +83,7 @@ public class VPCPatch extends GenericModel {
   protected VPCPatch() { }
 
   protected VPCPatch(Builder builder) {
+    dns = builder.dns;
     name = builder.name;
   }
 
@@ -79,6 +94,17 @@ public class VPCPatch extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
+  }
+
+  /**
+   * Gets the dns.
+   *
+   * The DNS configuration for this VPC.
+   *
+   * @return the dns
+   */
+  public VPCDNSPatch dns() {
+    return dns;
   }
 
   /**

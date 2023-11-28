@@ -34,9 +34,11 @@ public class UpdateVpcOptionsTest {
     UpdateVpcOptions updateVpcOptionsModel = new UpdateVpcOptions.Builder()
       .id("testString")
       .vpcPatch(java.util.Collections.singletonMap("anyKey", "anyValue"))
+      .ifMatch("W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"")
       .build();
     assertEquals(updateVpcOptionsModel.id(), "testString");
     assertEquals(updateVpcOptionsModel.vpcPatch(), java.util.Collections.singletonMap("anyKey", "anyValue"));
+    assertEquals(updateVpcOptionsModel.ifMatch(), "W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

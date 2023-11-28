@@ -33,24 +33,29 @@ public class EndpointGatewayPatchTest {
   @Test
   public void testEndpointGatewayPatch() throws Throwable {
     EndpointGatewayPatch endpointGatewayPatchModel = new EndpointGatewayPatch.Builder()
+      .allowDnsResolutionBinding(true)
       .name("my-endpoint-gateway")
       .build();
+    assertEquals(endpointGatewayPatchModel.allowDnsResolutionBinding(), Boolean.valueOf(true));
     assertEquals(endpointGatewayPatchModel.name(), "my-endpoint-gateway");
 
     String json = TestUtilities.serialize(endpointGatewayPatchModel);
 
     EndpointGatewayPatch endpointGatewayPatchModelNew = TestUtilities.deserialize(json, EndpointGatewayPatch.class);
     assertTrue(endpointGatewayPatchModelNew instanceof EndpointGatewayPatch);
+    assertEquals(endpointGatewayPatchModelNew.allowDnsResolutionBinding(), Boolean.valueOf(true));
     assertEquals(endpointGatewayPatchModelNew.name(), "my-endpoint-gateway");
   }
   @Test
   public void testEndpointGatewayPatchAsPatch() throws Throwable {
     EndpointGatewayPatch endpointGatewayPatchModel = new EndpointGatewayPatch.Builder()
+      .allowDnsResolutionBinding(true)
       .name("my-endpoint-gateway")
       .build();
 
     Map<String, Object> mergePatch = endpointGatewayPatchModel.asPatch();
 
+    assertTrue(mergePatch.containsKey("allow_dns_resolution_binding"));
     assertEquals(mergePatch.get("name"), "my-endpoint-gateway");
   }
 

@@ -12,7 +12,7 @@
  */
 
 /*
- * IBM OpenAPI SDK Code Generator Version: 3.76.0-ad3e6f96-20230724-172814
+ * IBM OpenAPI SDK Code Generator Version: 3.80.0-29334a73-20230925-151553
  */
 
 package com.ibm.cloud.is.vpc.v1;
@@ -90,6 +90,7 @@ import com.ibm.cloud.is.vpc.v1.model.CreateSubnetOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateSubnetReservedIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateVolumeOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateVpcAddressPrefixOptions;
+import com.ibm.cloud.is.vpc.v1.model.CreateVpcDnsResolutionBindingOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateVpcOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateVpcRouteOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateVpcRoutingTableOptions;
@@ -157,6 +158,7 @@ import com.ibm.cloud.is.vpc.v1.model.DeleteSubnetOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteSubnetReservedIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteVolumeOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteVpcAddressPrefixOptions;
+import com.ibm.cloud.is.vpc.v1.model.DeleteVpcDnsResolutionBindingOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteVpcOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteVpcRouteOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteVpcRoutingTableOptions;
@@ -249,6 +251,7 @@ import com.ibm.cloud.is.vpc.v1.model.GetVpcAddressPrefixOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetVpcDefaultNetworkAclOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetVpcDefaultRoutingTableOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetVpcDefaultSecurityGroupOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetVpcDnsResolutionBindingOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetVpcOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetVpcRouteOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetVpcRoutingTableOptions;
@@ -355,6 +358,7 @@ import com.ibm.cloud.is.vpc.v1.model.ListVirtualNetworkInterfacesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListVolumeProfilesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListVolumesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListVpcAddressPrefixesOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListVpcDnsResolutionBindingsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListVpcRoutesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListVpcRoutingTableRoutesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListVpcRoutingTablesOptions;
@@ -428,6 +432,7 @@ import com.ibm.cloud.is.vpc.v1.model.ShareMountTarget;
 import com.ibm.cloud.is.vpc.v1.model.ShareMountTargetCollection;
 import com.ibm.cloud.is.vpc.v1.model.ShareProfile;
 import com.ibm.cloud.is.vpc.v1.model.ShareProfileCollection;
+import com.ibm.cloud.is.vpc.v1.model.ShareReference;
 import com.ibm.cloud.is.vpc.v1.model.Snapshot;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotClone;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotCloneCollection;
@@ -483,6 +488,7 @@ import com.ibm.cloud.is.vpc.v1.model.UpdateSubnetReservedIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateVirtualNetworkInterfaceOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateVolumeOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateVpcAddressPrefixOptions;
+import com.ibm.cloud.is.vpc.v1.model.UpdateVpcDnsResolutionBindingOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateVpcOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateVpcRouteOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateVpcRoutingTableOptions;
@@ -493,6 +499,8 @@ import com.ibm.cloud.is.vpc.v1.model.UpdateVpnServerOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateVpnServerRouteOptions;
 import com.ibm.cloud.is.vpc.v1.model.VPC;
 import com.ibm.cloud.is.vpc.v1.model.VPCCollection;
+import com.ibm.cloud.is.vpc.v1.model.VPCDNSResolutionBinding;
+import com.ibm.cloud.is.vpc.v1.model.VPCDNSResolutionBindingCollection;
 import com.ibm.cloud.is.vpc.v1.model.VPNGateway;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayCollection;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnection;
@@ -532,7 +540,7 @@ import java.util.logging.Logger;
  * The IBM Cloud Virtual Private Cloud (VPC) API can be used to programmatically provision and manage virtual server
  * instances, along with subnets, volumes, load balancers, and more.
  *
- * API Version: `2023-08-24`
+ * API Version: `2023-11-22`
  */
 public class Vpc extends BaseService {
   private static final Logger LOGGER = Logger.getLogger(Vpc.class.getName());
@@ -549,7 +557,7 @@ public class Vpc extends BaseService {
 
   private Long generation = Long.valueOf("2");
 
-  private String version = "2023-08-08";
+  private String version = "2023-10-24";
 
  /**
    * Class method which constructs an instance of the `Vpc` client.
@@ -613,7 +621,7 @@ public class Vpc extends BaseService {
    * Gets the version.
    *
    * The API version, in format `YYYY-MM-DD`. For the API behavior documented here, specify any date between
-   * `2022-09-13` and `2023-08-24`.
+   * `2023-10-10` and `2023-11-22`.
    *
    * @return the version
    */
@@ -714,6 +722,9 @@ public class Vpc extends BaseService {
       if (createVpcOptions.classicAccess() != null) {
         contentJson.addProperty("classic_access", createVpcOptions.classicAccess());
       }
+      if (createVpcOptions.dns() != null) {
+        contentJson.add("dns", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createVpcOptions.dns()));
+      }
       if (createVpcOptions.name() != null) {
         contentJson.addProperty("name", createVpcOptions.name());
       }
@@ -742,10 +753,15 @@ public class Vpc extends BaseService {
   /**
    * Delete a VPC.
    *
-   * This request deletes a VPC. This operation cannot be reversed. For this request to succeed, the VPC must not
-   * contain any instances, subnets, public gateways, or endpoint gateways. All security groups and network ACLs
-   * associated with the VPC are automatically deleted. All flow log collectors with `auto_delete` set to `true`
-   * targeting the VPC or any resource in the VPC are automatically deleted.
+   * This request deletes a VPC. This operation cannot be reversed.
+   *
+   * For this request to succeed:
+   * - Instances, subnets, public gateways, and endpoint gateways must not reside in this VPC
+   * - The VPC must not be providing DNS resolution for any other VPCs
+   * - If `dns.enable_hub` is `true`, `dns.resolution_binding_count` must be zero
+   *
+   * All security groups and network ACLs associated with the VPC are automatically deleted. All flow log collectors
+   * with `auto_delete` set to `true` targeting the VPC or any resource in the VPC are automatically deleted.
    *
    * @param deleteVpcOptions the {@link DeleteVpcOptions} containing the options for the call
    * @return a {@link ServiceCall} with a void result
@@ -759,6 +775,9 @@ public class Vpc extends BaseService {
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "deleteVpc");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
+    }
+    if (deleteVpcOptions.ifMatch() != null) {
+      builder.header("If-Match", deleteVpcOptions.ifMatch());
     }
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
@@ -812,6 +831,9 @@ public class Vpc extends BaseService {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
+    if (updateVpcOptions.ifMatch() != null) {
+      builder.header("If-Match", updateVpcOptions.ifMatch());
+    }
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateVpcOptions.vpcPatch()), "application/merge-patch+json");
@@ -1050,6 +1072,194 @@ public class Vpc extends BaseService {
     builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateVpcAddressPrefixOptions.addressPrefixPatch()), "application/merge-patch+json");
     ResponseConverter<AddressPrefix> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<AddressPrefix>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * List all DNS resolution bindings for a VPC.
+   *
+   * This request lists all DNS resolution bindings for a VPC. A DNS resolution binding represents an association with
+   * another VPC for centralizing DNS name resolution.
+   *
+   * If the VPC specified by the identifier in the URL is a DNS hub VPC (has `dns.enable_hub` set to `true`) then there
+   * is one binding for each VPC bound to the hub VPC. The endpoint gateways in the bound VPCs can allow (using
+   * `allow_dns_resolution_binding`) the hub VPC to centralize resolution of their DNS names.
+   *
+   * If the VPC specified by the identifier in the URL is not a DNS hub VPC, then there is at most one binding (to a hub
+   * VPC). The endpoint gateways in the VPC specified by the identifier in the URL can allow (using
+   * `allow_dns_resolution_binding`) its hub VPC to centralize resolution of their DNS names.
+   *
+   * To make use of centralized DNS resolution, a VPC bound to a DNS hub VPC must delegate DNS resolution to its hub VPC
+   * by setting `dns.resolver.type` to `delegate`.
+   *
+   * The bindings will be sorted by their `created_at` property values, with newest bindings first. Bindings with
+   * identical `created_at` property values will in turn be sorted by ascending `name` property values.
+   *
+   * @param listVpcDnsResolutionBindingsOptions the {@link ListVpcDnsResolutionBindingsOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link VPCDNSResolutionBindingCollection}
+   */
+  public ServiceCall<VPCDNSResolutionBindingCollection> listVpcDnsResolutionBindings(ListVpcDnsResolutionBindingsOptions listVpcDnsResolutionBindingsOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(listVpcDnsResolutionBindingsOptions,
+      "listVpcDnsResolutionBindingsOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("vpc_id", listVpcDnsResolutionBindingsOptions.vpcId());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/vpcs/{vpc_id}/dns_resolution_bindings", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listVpcDnsResolutionBindings");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    if (listVpcDnsResolutionBindingsOptions.sort() != null) {
+      builder.query("sort", String.valueOf(listVpcDnsResolutionBindingsOptions.sort()));
+    }
+    if (listVpcDnsResolutionBindingsOptions.start() != null) {
+      builder.query("start", String.valueOf(listVpcDnsResolutionBindingsOptions.start()));
+    }
+    if (listVpcDnsResolutionBindingsOptions.limit() != null) {
+      builder.query("limit", String.valueOf(listVpcDnsResolutionBindingsOptions.limit()));
+    }
+    if (listVpcDnsResolutionBindingsOptions.name() != null) {
+      builder.query("name", String.valueOf(listVpcDnsResolutionBindingsOptions.name()));
+    }
+    if (listVpcDnsResolutionBindingsOptions.vpcCrn() != null) {
+      builder.query("vpc.crn", String.valueOf(listVpcDnsResolutionBindingsOptions.vpcCrn()));
+    }
+    if (listVpcDnsResolutionBindingsOptions.vpcName() != null) {
+      builder.query("vpc.name", String.valueOf(listVpcDnsResolutionBindingsOptions.vpcName()));
+    }
+    if (listVpcDnsResolutionBindingsOptions.accountId() != null) {
+      builder.query("account.id", String.valueOf(listVpcDnsResolutionBindingsOptions.accountId()));
+    }
+    ResponseConverter<VPCDNSResolutionBindingCollection> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<VPCDNSResolutionBindingCollection>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Create a DNS resolution binding.
+   *
+   * This request creates a new DNS resolution binding from a DNS resolution binding prototype object. The prototype
+   * object is structured in the same way as a retrieved DNS resolution binding, and contains the information necessary
+   * to create the new DNS resolution binding.
+   *
+   * For this request to succeed, `dns.enable_hub` must be `false` for the VPC specified by the identifier in the URL,
+   * and the VPC must not already have a DNS resolution binding.
+   *
+   * See [About DNS sharing for VPE gateways](/docs/vpc?topic=vpc-hub-spoke-model) for more information.
+   *
+   * @param createVpcDnsResolutionBindingOptions the {@link CreateVpcDnsResolutionBindingOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link VPCDNSResolutionBinding}
+   */
+  public ServiceCall<VPCDNSResolutionBinding> createVpcDnsResolutionBinding(CreateVpcDnsResolutionBindingOptions createVpcDnsResolutionBindingOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(createVpcDnsResolutionBindingOptions,
+      "createVpcDnsResolutionBindingOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("vpc_id", createVpcDnsResolutionBindingOptions.vpcId());
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/vpcs/{vpc_id}/dns_resolution_bindings", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "createVpcDnsResolutionBinding");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    final JsonObject contentJson = new JsonObject();
+    contentJson.add("vpc", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createVpcDnsResolutionBindingOptions.vpc()));
+    if (createVpcDnsResolutionBindingOptions.name() != null) {
+      contentJson.addProperty("name", createVpcDnsResolutionBindingOptions.name());
+    }
+    builder.bodyJson(contentJson);
+    ResponseConverter<VPCDNSResolutionBinding> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<VPCDNSResolutionBinding>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Delete a DNS resolution binding.
+   *
+   * This request deletes a DNS resolution binding. This operation cannot be reversed.
+   *
+   * For this request to succeed, the VPC specified by the identifier in the URL must not have
+   * `dns.resolver.type` set to `delegated`.
+   *
+   * @param deleteVpcDnsResolutionBindingOptions the {@link DeleteVpcDnsResolutionBindingOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link VPCDNSResolutionBinding}
+   */
+  public ServiceCall<VPCDNSResolutionBinding> deleteVpcDnsResolutionBinding(DeleteVpcDnsResolutionBindingOptions deleteVpcDnsResolutionBindingOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(deleteVpcDnsResolutionBindingOptions,
+      "deleteVpcDnsResolutionBindingOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("vpc_id", deleteVpcDnsResolutionBindingOptions.vpcId());
+    pathParamsMap.put("id", deleteVpcDnsResolutionBindingOptions.id());
+    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/vpcs/{vpc_id}/dns_resolution_bindings/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "deleteVpcDnsResolutionBinding");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<VPCDNSResolutionBinding> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<VPCDNSResolutionBinding>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Retrieve a DNS resolution binding.
+   *
+   * This request retrieves a single DNS resolution binding specified by the identifier in the URL.
+   *
+   * @param getVpcDnsResolutionBindingOptions the {@link GetVpcDnsResolutionBindingOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link VPCDNSResolutionBinding}
+   */
+  public ServiceCall<VPCDNSResolutionBinding> getVpcDnsResolutionBinding(GetVpcDnsResolutionBindingOptions getVpcDnsResolutionBindingOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(getVpcDnsResolutionBindingOptions,
+      "getVpcDnsResolutionBindingOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("vpc_id", getVpcDnsResolutionBindingOptions.vpcId());
+    pathParamsMap.put("id", getVpcDnsResolutionBindingOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/vpcs/{vpc_id}/dns_resolution_bindings/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getVpcDnsResolutionBinding");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<VPCDNSResolutionBinding> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<VPCDNSResolutionBinding>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Update a DNS resolution binding.
+   *
+   * This request updates a DNS resolution binding with the information in a provided DNS resolution binding patch. The
+   * DNS resolution binding patch object is structured in the same way as a retrieved DNS resolution binding and
+   * contains only the information to be updated.
+   *
+   * @param updateVpcDnsResolutionBindingOptions the {@link UpdateVpcDnsResolutionBindingOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link VPCDNSResolutionBinding}
+   */
+  public ServiceCall<VPCDNSResolutionBinding> updateVpcDnsResolutionBinding(UpdateVpcDnsResolutionBindingOptions updateVpcDnsResolutionBindingOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(updateVpcDnsResolutionBindingOptions,
+      "updateVpcDnsResolutionBindingOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("vpc_id", updateVpcDnsResolutionBindingOptions.vpcId());
+    pathParamsMap.put("id", updateVpcDnsResolutionBindingOptions.id());
+    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/vpcs/{vpc_id}/dns_resolution_bindings/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "updateVpcDnsResolutionBinding");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateVpcDnsResolutionBindingOptions.vpcdnsResolutionBindingPatch()), "application/merge-patch+json");
+    ResponseConverter<VPCDNSResolutionBinding> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<VPCDNSResolutionBinding>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
   }
 
@@ -1602,6 +1812,18 @@ public class Vpc extends BaseService {
     }
     if (listSubnetsOptions.resourceGroupId() != null) {
       builder.query("resource_group.id", String.valueOf(listSubnetsOptions.resourceGroupId()));
+    }
+    if (listSubnetsOptions.zoneName() != null) {
+      builder.query("zone.name", String.valueOf(listSubnetsOptions.zoneName()));
+    }
+    if (listSubnetsOptions.vpcId() != null) {
+      builder.query("vpc.id", String.valueOf(listSubnetsOptions.vpcId()));
+    }
+    if (listSubnetsOptions.vpcCrn() != null) {
+      builder.query("vpc.crn", String.valueOf(listSubnetsOptions.vpcCrn()));
+    }
+    if (listSubnetsOptions.vpcName() != null) {
+      builder.query("vpc.name", String.valueOf(listSubnetsOptions.vpcName()));
     }
     if (listSubnetsOptions.routingTableId() != null) {
       builder.query("routing_table.id", String.valueOf(listSubnetsOptions.routingTableId()));
@@ -3537,9 +3759,9 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all reserved IPs bound to an instance network interface.
+   * List the primary reserved IP for an instance network interface.
    *
-   * This request lists all reserved IPs bound to an instance network interface.
+   * This request lists the primary reserved IP for an instance network interface.
    *
    * @param listInstanceNetworkInterfaceIpsOptions the {@link ListInstanceNetworkInterfaceIpsOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link ReservedIPCollectionInstanceNetworkInterfaceContext}
@@ -3570,10 +3792,9 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * Retrieve bound reserved IP.
+   * Retrieve the primary reserved IP.
    *
-   * This request retrieves the specified reserved IP address if it is bound to the network interface and instance
-   * specified in the URL.
+   * This request retrieves the primary reserved IP for an instance network interface.
    *
    * @param getInstanceNetworkInterfaceIpOptions the {@link GetInstanceNetworkInterfaceIpOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link ReservedIP}
@@ -5069,6 +5290,9 @@ public class Vpc extends BaseService {
     if (createBackupPolicyOptions.resourceGroup() != null) {
       contentJson.add("resource_group", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createBackupPolicyOptions.resourceGroup()));
     }
+    if (createBackupPolicyOptions.scope() != null) {
+      contentJson.add("scope", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createBackupPolicyOptions.scope()));
+    }
     builder.bodyJson(contentJson);
     ResponseConverter<BackupPolicy> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<BackupPolicy>() { }.getType());
@@ -5692,15 +5916,6 @@ public class Vpc extends BaseService {
     if (listBareMetalServersOptions.vpcName() != null) {
       builder.query("vpc.name", String.valueOf(listBareMetalServersOptions.vpcName()));
     }
-    if (listBareMetalServersOptions.networkInterfacesSubnetId() != null) {
-      builder.query("network_interfaces.subnet.id", String.valueOf(listBareMetalServersOptions.networkInterfacesSubnetId()));
-    }
-    if (listBareMetalServersOptions.networkInterfacesSubnetCrn() != null) {
-      builder.query("network_interfaces.subnet.crn", String.valueOf(listBareMetalServersOptions.networkInterfacesSubnetCrn()));
-    }
-    if (listBareMetalServersOptions.networkInterfacesSubnetName() != null) {
-      builder.query("network_interfaces.subnet.name", String.valueOf(listBareMetalServersOptions.networkInterfacesSubnetName()));
-    }
     ResponseConverter<BareMetalServerCollection> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<BareMetalServerCollection>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -6150,9 +6365,9 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all reserved IPs bound to a bare metal server network interface.
+   * List the primary reserved IP for a bare metal server network interface.
    *
-   * This request lists all reserved IPs bound to a bare metal server network interface.
+   * This request lists the primary reserved IP for a bare metal server network interface.
    *
    * @param listBareMetalServerNetworkInterfaceIpsOptions the {@link ListBareMetalServerNetworkInterfaceIpsOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link ReservedIPCollectionBareMetalServerNetworkInterfaceContext}
@@ -6177,10 +6392,9 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * Retrieve bound reserved IP.
+   * Retrieve the primary reserved IP.
    *
-   * This request retrieves the specified reserved IP address if it is bound to the network interface for the bare metal
-   * server specified in the URL.
+   * This request retrieves the primary reserved IP for a bare metal server network interface.
    *
    * @param getBareMetalServerNetworkInterfaceIpOptions the {@link GetBareMetalServerNetworkInterfaceIpOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link ReservedIP}
@@ -7448,9 +7662,9 @@ public class Vpc extends BaseService {
    * the URL.
    *
    * @param getShareSourceOptions the {@link GetShareSourceOptions} containing the options for the call
-   * @return a {@link ServiceCall} with a result of type {@link Share}
+   * @return a {@link ServiceCall} with a result of type {@link ShareReference}
    */
-  public ServiceCall<Share> getShareSource(GetShareSourceOptions getShareSourceOptions) {
+  public ServiceCall<ShareReference> getShareSource(GetShareSourceOptions getShareSourceOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(getShareSourceOptions,
       "getShareSourceOptions cannot be null");
     Map<String, String> pathParamsMap = new HashMap<String, String>();
@@ -7463,8 +7677,8 @@ public class Vpc extends BaseService {
     builder.header("Accept", "application/json");
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    ResponseConverter<Share> responseConverter =
-      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<Share>() { }.getType());
+    ResponseConverter<ShareReference> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<ShareReference>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
   }
 
@@ -8687,7 +8901,7 @@ public class Vpc extends BaseService {
    * - A bare metal server network interface identifier
    * - A virtual network interface identifier
    * - A VPN server identifier
-   * - An application load balancer identifier
+   * - A load balancer identifier
    * - An endpoint gateway identifier
    * - An instance network interface identifier
    *
@@ -8750,7 +8964,7 @@ public class Vpc extends BaseService {
    * - A bare metal server network interface identifier
    * - A virtual network interface identifier
    * - A VPN server identifier
-   * - An application load balancer identifier
+   * - A load balancer identifier
    * - An endpoint gateway identifier
    * - An instance network interface identifier
    *
@@ -11268,6 +11482,18 @@ public class Vpc extends BaseService {
     if (listEndpointGatewaysOptions.resourceGroupId() != null) {
       builder.query("resource_group.id", String.valueOf(listEndpointGatewaysOptions.resourceGroupId()));
     }
+    if (listEndpointGatewaysOptions.vpcId() != null) {
+      builder.query("vpc.id", String.valueOf(listEndpointGatewaysOptions.vpcId()));
+    }
+    if (listEndpointGatewaysOptions.vpcCrn() != null) {
+      builder.query("vpc.crn", String.valueOf(listEndpointGatewaysOptions.vpcCrn()));
+    }
+    if (listEndpointGatewaysOptions.vpcName() != null) {
+      builder.query("vpc.name", String.valueOf(listEndpointGatewaysOptions.vpcName()));
+    }
+    if (listEndpointGatewaysOptions.allowDnsResolutionBinding() != null) {
+      builder.query("allow_dns_resolution_binding", String.valueOf(listEndpointGatewaysOptions.allowDnsResolutionBinding()));
+    }
     ResponseConverter<EndpointGatewayCollection> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<EndpointGatewayCollection>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -11308,6 +11534,9 @@ public class Vpc extends BaseService {
     final JsonObject contentJson = new JsonObject();
     contentJson.add("target", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createEndpointGatewayOptions.target()));
     contentJson.add("vpc", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createEndpointGatewayOptions.vpc()));
+    if (createEndpointGatewayOptions.allowDnsResolutionBinding() != null) {
+      contentJson.addProperty("allow_dns_resolution_binding", createEndpointGatewayOptions.allowDnsResolutionBinding());
+    }
     if (createEndpointGatewayOptions.ips() != null) {
       contentJson.add("ips", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createEndpointGatewayOptions.ips()));
     }

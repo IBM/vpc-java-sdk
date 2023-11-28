@@ -25,7 +25,7 @@ public class BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInter
    *   server is stopped
    *   - Has an `allowed_vlans` property which controls the VLANs that will be permitted
    *     to use the PCI interface
-   *   - Cannot directly use an IEEE 802.1q VLAN tag.
+   *   - Cannot directly use an IEEE 802.1Q tag.
    *   - Not supported on bare metal servers with a `cpu.architecture` of `s390x`.
    */
   public interface InterfaceType {

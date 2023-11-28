@@ -22,6 +22,8 @@ import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionCollection;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionDPD;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionStaticRouteMode;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionStaticRouteModeTunnel;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionStatusReason;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionTunnelStatusReason;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import com.ibm.cloud.sdk.core.util.DateUtils;

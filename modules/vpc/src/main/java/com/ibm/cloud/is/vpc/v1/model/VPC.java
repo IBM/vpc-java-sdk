@@ -24,6 +24,26 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class VPC extends GenericModel {
 
   /**
+   * The health of this resource.
+   * - `ok`: No abnormal behavior detected
+   * - `degraded`: Experiencing compromised performance, capacity, or connectivity
+   * - `faulted`: Completely unreachable, inoperative, or otherwise entirely incapacitated
+   * - `inapplicable`: The health state does not apply because of the current lifecycle state. A resource with a
+   * lifecycle state of `failed` or `deleting` will have a health state of `inapplicable`. A `pending` resource may also
+   * have this state.
+   */
+  public interface HealthState {
+    /** degraded. */
+    String DEGRADED = "degraded";
+    /** faulted. */
+    String FAULTED = "faulted";
+    /** inapplicable. */
+    String INAPPLICABLE = "inapplicable";
+    /** ok. */
+    String OK = "ok";
+  }
+
+  /**
    * The resource type.
    */
   public interface ResourceType {
@@ -58,6 +78,11 @@ public class VPC extends GenericModel {
   protected RoutingTableReference defaultRoutingTable;
   @SerializedName("default_security_group")
   protected SecurityGroupReference defaultSecurityGroup;
+  protected VPCDNS dns;
+  @SerializedName("health_reasons")
+  protected List<VPCHealthReason> healthReasons;
+  @SerializedName("health_state")
+  protected String healthState;
   protected String href;
   protected String id;
   protected String name;
@@ -149,6 +174,49 @@ public class VPC extends GenericModel {
    */
   public SecurityGroupReference getDefaultSecurityGroup() {
     return defaultSecurityGroup;
+  }
+
+  /**
+   * Gets the dns.
+   *
+   * The DNS configuration for this VPC.
+   *
+   * @return the dns
+   */
+  public VPCDNS getDns() {
+    return dns;
+  }
+
+  /**
+   * Gets the healthReasons.
+   *
+   * The reasons for the current `health_state` (if any).
+   *
+   * The enumerated reason code values for this property will expand in the future. When processing this property, check
+   * for and log unknown values. Optionally halt processing and surface the error, or bypass the resource on which the
+   * unexpected reason code was encountered.
+   *
+   * @return the healthReasons
+   */
+  public List<VPCHealthReason> getHealthReasons() {
+    return healthReasons;
+  }
+
+  /**
+   * Gets the healthState.
+   *
+   * The health of this resource.
+   * - `ok`: No abnormal behavior detected
+   * - `degraded`: Experiencing compromised performance, capacity, or connectivity
+   * - `faulted`: Completely unreachable, inoperative, or otherwise entirely incapacitated
+   * - `inapplicable`: The health state does not apply because of the current lifecycle state. A resource with a
+   * lifecycle state of `failed` or `deleting` will have a health state of `inapplicable`. A `pending` resource may also
+   * have this state.
+   *
+   * @return the healthState
+   */
+  public String getHealthState() {
+    return healthState;
   }
 
   /**

@@ -85,6 +85,7 @@ public class InstanceTest {
     assertNull(instanceModel.getMetadataService());
     assertNull(instanceModel.getName());
     assertNull(instanceModel.getNetworkInterfaces());
+    assertNull(instanceModel.getNumaCount());
     assertNull(instanceModel.getPlacementTarget());
     assertNull(instanceModel.getPrimaryNetworkInterface());
     assertNull(instanceModel.getProfile());

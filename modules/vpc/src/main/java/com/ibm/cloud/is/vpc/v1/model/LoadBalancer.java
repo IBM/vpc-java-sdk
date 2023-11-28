@@ -363,6 +363,8 @@ public class LoadBalancer extends GenericModel {
    *
    * The security groups targeting this load balancer.
    *
+   * If empty, all inbound and outbound traffic is allowed.
+   *
    * Applicable only for load balancers that support security groups.
    *
    * @return the securityGroups
