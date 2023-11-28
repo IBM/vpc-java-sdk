@@ -25,6 +25,7 @@ import com.ibm.cloud.is.vpc.v1.model.InstanceProfileGPUManufacturer;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileGPUMemoryFixed;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileGPUModel;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileMemoryFixed;
+import com.ibm.cloud.is.vpc.v1.model.InstanceProfileNUMACountFixed;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileNetworkInterfaceCountRange;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileOSArchitecture;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfilePortSpeedFixed;

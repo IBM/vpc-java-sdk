@@ -23,6 +23,10 @@ public class ListEndpointGatewaysOptions extends GenericModel {
   protected String start;
   protected Long limit;
   protected String resourceGroupId;
+  protected String vpcId;
+  protected String vpcCrn;
+  protected String vpcName;
+  protected Boolean allowDnsResolutionBinding;
 
   /**
    * Builder.
@@ -32,6 +36,10 @@ public class ListEndpointGatewaysOptions extends GenericModel {
     private String start;
     private Long limit;
     private String resourceGroupId;
+    private String vpcId;
+    private String vpcCrn;
+    private String vpcName;
+    private Boolean allowDnsResolutionBinding;
 
     /**
      * Instantiates a new Builder from an existing ListEndpointGatewaysOptions instance.
@@ -43,6 +51,10 @@ public class ListEndpointGatewaysOptions extends GenericModel {
       this.start = listEndpointGatewaysOptions.start;
       this.limit = listEndpointGatewaysOptions.limit;
       this.resourceGroupId = listEndpointGatewaysOptions.resourceGroupId;
+      this.vpcId = listEndpointGatewaysOptions.vpcId;
+      this.vpcCrn = listEndpointGatewaysOptions.vpcCrn;
+      this.vpcName = listEndpointGatewaysOptions.vpcName;
+      this.allowDnsResolutionBinding = listEndpointGatewaysOptions.allowDnsResolutionBinding;
     }
 
     /**
@@ -103,6 +115,50 @@ public class ListEndpointGatewaysOptions extends GenericModel {
       this.resourceGroupId = resourceGroupId;
       return this;
     }
+
+    /**
+     * Set the vpcId.
+     *
+     * @param vpcId the vpcId
+     * @return the ListEndpointGatewaysOptions builder
+     */
+    public Builder vpcId(String vpcId) {
+      this.vpcId = vpcId;
+      return this;
+    }
+
+    /**
+     * Set the vpcCrn.
+     *
+     * @param vpcCrn the vpcCrn
+     * @return the ListEndpointGatewaysOptions builder
+     */
+    public Builder vpcCrn(String vpcCrn) {
+      this.vpcCrn = vpcCrn;
+      return this;
+    }
+
+    /**
+     * Set the vpcName.
+     *
+     * @param vpcName the vpcName
+     * @return the ListEndpointGatewaysOptions builder
+     */
+    public Builder vpcName(String vpcName) {
+      this.vpcName = vpcName;
+      return this;
+    }
+
+    /**
+     * Set the allowDnsResolutionBinding.
+     *
+     * @param allowDnsResolutionBinding the allowDnsResolutionBinding
+     * @return the ListEndpointGatewaysOptions builder
+     */
+    public Builder allowDnsResolutionBinding(Boolean allowDnsResolutionBinding) {
+      this.allowDnsResolutionBinding = allowDnsResolutionBinding;
+      return this;
+    }
   }
 
   protected ListEndpointGatewaysOptions() { }
@@ -112,6 +168,10 @@ public class ListEndpointGatewaysOptions extends GenericModel {
     start = builder.start;
     limit = builder.limit;
     resourceGroupId = builder.resourceGroupId;
+    vpcId = builder.vpcId;
+    vpcCrn = builder.vpcCrn;
+    vpcName = builder.vpcName;
+    allowDnsResolutionBinding = builder.allowDnsResolutionBinding;
   }
 
   /**
@@ -165,6 +225,51 @@ public class ListEndpointGatewaysOptions extends GenericModel {
    */
   public String resourceGroupId() {
     return resourceGroupId;
+  }
+
+  /**
+   * Gets the vpcId.
+   *
+   * Filters the collection to resources with a `vpc.id` property matching the specified identifier.
+   *
+   * @return the vpcId
+   */
+  public String vpcId() {
+    return vpcId;
+  }
+
+  /**
+   * Gets the vpcCrn.
+   *
+   * Filters the collection to resources with a `vpc.crn` property matching the specified CRN.
+   *
+   * @return the vpcCrn
+   */
+  public String vpcCrn() {
+    return vpcCrn;
+  }
+
+  /**
+   * Gets the vpcName.
+   *
+   * Filters the collection to resources with a `vpc.name` property matching the exact specified name.
+   *
+   * @return the vpcName
+   */
+  public String vpcName() {
+    return vpcName;
+  }
+
+  /**
+   * Gets the allowDnsResolutionBinding.
+   *
+   * Filters the collection to endpoint gateways with an `allow_dns_resolution_binding` property matching the specified
+   * value.
+   *
+   * @return the allowDnsResolutionBinding
+   */
+  public Boolean allowDnsResolutionBinding() {
+    return allowDnsResolutionBinding;
   }
 }
 

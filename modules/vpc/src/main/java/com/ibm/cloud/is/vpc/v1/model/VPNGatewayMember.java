@@ -12,6 +12,8 @@
  */
 package com.ibm.cloud.is.vpc.v1.model;
 
+import java.util.List;
+
 import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
@@ -19,6 +21,46 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  * VPNGatewayMember.
  */
 public class VPNGatewayMember extends GenericModel {
+
+  /**
+   * The health of this resource.
+   * - `ok`: No abnormal behavior detected
+   * - `degraded`: Experiencing compromised performance, capacity, or connectivity
+   * - `faulted`: Completely unreachable, inoperative, or otherwise entirely incapacitated
+   * - `inapplicable`: The health state does not apply because of the current lifecycle state. A resource with a
+   * lifecycle state of `failed` or `deleting` will have a health state of `inapplicable`. A `pending` resource may also
+   * have this state.
+   */
+  public interface HealthState {
+    /** degraded. */
+    String DEGRADED = "degraded";
+    /** faulted. */
+    String FAULTED = "faulted";
+    /** inapplicable. */
+    String INAPPLICABLE = "inapplicable";
+    /** ok. */
+    String OK = "ok";
+  }
+
+  /**
+   * The lifecycle state of the VPN gateway member.
+   */
+  public interface LifecycleState {
+    /** deleting. */
+    String DELETING = "deleting";
+    /** failed. */
+    String FAILED = "failed";
+    /** pending. */
+    String PENDING = "pending";
+    /** stable. */
+    String STABLE = "stable";
+    /** suspended. */
+    String SUSPENDED = "suspended";
+    /** updating. */
+    String UPDATING = "updating";
+    /** waiting. */
+    String WAITING = "waiting";
+  }
 
   /**
    * The high availability role assigned to the VPN gateway member.
@@ -30,28 +72,84 @@ public class VPNGatewayMember extends GenericModel {
     String STANDBY = "standby";
   }
 
-  /**
-   * The status of the VPN gateway member.
-   */
-  public interface Status {
-    /** available. */
-    String AVAILABLE = "available";
-    /** deleting. */
-    String DELETING = "deleting";
-    /** failed. */
-    String FAILED = "failed";
-    /** pending. */
-    String PENDING = "pending";
-  }
-
+  @SerializedName("health_reasons")
+  protected List<VPNGatewayMemberHealthReason> healthReasons;
+  @SerializedName("health_state")
+  protected String healthState;
+  @SerializedName("lifecycle_reasons")
+  protected List<VPNGatewayMemberLifecycleReason> lifecycleReasons;
+  @SerializedName("lifecycle_state")
+  protected String lifecycleState;
   @SerializedName("private_ip")
   protected ReservedIPReference privateIp;
   @SerializedName("public_ip")
   protected IP publicIp;
   protected String role;
-  protected String status;
 
   protected VPNGatewayMember() { }
+
+  /**
+   * Gets the healthReasons.
+   *
+   * The reasons for the current VPN gateway member health_state (if any):
+   * - `cannot_reserve_ip_address`: IP address exhaustion (release addresses on the VPN's
+   *   subnet)
+   * - `internal_error`: Internal error (contact IBM support)
+   *
+   * The enumerated reason code values for this property will expand in the future. When processing this property, check
+   * for and log unknown values. Optionally halt processing and surface the error, or bypass the resource on which the
+   * unexpected reason code was encountered.
+   *
+   * @return the healthReasons
+   */
+  public List<VPNGatewayMemberHealthReason> getHealthReasons() {
+    return healthReasons;
+  }
+
+  /**
+   * Gets the healthState.
+   *
+   * The health of this resource.
+   * - `ok`: No abnormal behavior detected
+   * - `degraded`: Experiencing compromised performance, capacity, or connectivity
+   * - `faulted`: Completely unreachable, inoperative, or otherwise entirely incapacitated
+   * - `inapplicable`: The health state does not apply because of the current lifecycle state. A resource with a
+   * lifecycle state of `failed` or `deleting` will have a health state of `inapplicable`. A `pending` resource may also
+   * have this state.
+   *
+   * @return the healthState
+   */
+  public String getHealthState() {
+    return healthState;
+  }
+
+  /**
+   * Gets the lifecycleReasons.
+   *
+   * The reasons for the current VPN gateway member lifecycle_state (if any):
+   * - `resource_suspended_by_provider`: The resource has been suspended (contact IBM
+   *   support)
+   *
+   * The enumerated reason code values for this property will expand in the future. When processing this property, check
+   * for and log unknown values. Optionally halt processing and surface the error, or bypass the resource on which the
+   * unexpected reason code was encountered.
+   *
+   * @return the lifecycleReasons
+   */
+  public List<VPNGatewayMemberLifecycleReason> getLifecycleReasons() {
+    return lifecycleReasons;
+  }
+
+  /**
+   * Gets the lifecycleState.
+   *
+   * The lifecycle state of the VPN gateway member.
+   *
+   * @return the lifecycleState
+   */
+  public String getLifecycleState() {
+    return lifecycleState;
+  }
 
   /**
    * Gets the privateIp.
@@ -86,17 +184,6 @@ public class VPNGatewayMember extends GenericModel {
    */
   public String getRole() {
     return role;
-  }
-
-  /**
-   * Gets the status.
-   *
-   * The status of the VPN gateway member.
-   *
-   * @return the status
-   */
-  public String getStatus() {
-    return status;
   }
 }
 

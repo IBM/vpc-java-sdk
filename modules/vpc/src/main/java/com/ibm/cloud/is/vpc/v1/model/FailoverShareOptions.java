@@ -24,8 +24,8 @@ public class FailoverShareOptions extends GenericModel {
    * - `fail`: Fail the operation, resulting in the replication relationship being unchanged.
    * - `split`: Split the replica from its source, resulting in two individual read-write
    *     file shares. Because the final sync was not completed, the replica may be
-   *     out-of-date. This is useful in disaster recovery scenarios where the source is known
-   *     to be unreachable.
+   *     out-of-date. This occurs in disaster recovery scenarios where the source is known to
+   *     be unreachable.
    */
   public interface FallbackPolicy {
     /** fail. */
@@ -152,8 +152,8 @@ public class FailoverShareOptions extends GenericModel {
    * - `fail`: Fail the operation, resulting in the replication relationship being unchanged.
    * - `split`: Split the replica from its source, resulting in two individual read-write
    *     file shares. Because the final sync was not completed, the replica may be
-   *     out-of-date. This is useful in disaster recovery scenarios where the source is known
-   *     to be unreachable.
+   *     out-of-date. This occurs in disaster recovery scenarios where the source is known to
+   *     be unreachable.
    *
    * @return the fallbackPolicy
    */

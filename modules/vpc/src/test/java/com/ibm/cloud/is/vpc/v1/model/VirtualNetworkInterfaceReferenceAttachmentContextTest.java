@@ -14,7 +14,6 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.VirtualNetworkInterfaceReferenceAttachmentContext;
-import com.ibm.cloud.is.vpc.v1.model.VirtualNetworkInterfaceReferenceAttachmentContextDeleted;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -34,7 +33,6 @@ public class VirtualNetworkInterfaceReferenceAttachmentContextTest {
   public void testVirtualNetworkInterfaceReferenceAttachmentContext() throws Throwable {
     VirtualNetworkInterfaceReferenceAttachmentContext virtualNetworkInterfaceReferenceAttachmentContextModel = new VirtualNetworkInterfaceReferenceAttachmentContext();
     assertNull(virtualNetworkInterfaceReferenceAttachmentContextModel.getCrn());
-    assertNull(virtualNetworkInterfaceReferenceAttachmentContextModel.getDeleted());
     assertNull(virtualNetworkInterfaceReferenceAttachmentContextModel.getHref());
     assertNull(virtualNetworkInterfaceReferenceAttachmentContextModel.getId());
     assertNull(virtualNetworkInterfaceReferenceAttachmentContextModel.getName());

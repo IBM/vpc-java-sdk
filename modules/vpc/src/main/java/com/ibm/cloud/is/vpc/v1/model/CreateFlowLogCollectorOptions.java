@@ -159,7 +159,8 @@ public class CreateFlowLogCollectorOptions extends GenericModel {
    * The Cloud Object Storage bucket where the collected flows will be logged.
    * The bucket must exist and an IAM service authorization must grant
    * `IBM Cloud Flow Logs` resources of `VPC Infrastructure Services` writer
-   * access to the bucket.
+   * access to the bucket. For more information, see [Creating a flow log
+   * collector](https://cloud.ibm.com/docs/vpc?topic=vpc-ordering-flow-log-collector).
    *
    * @return the storageBucket
    */
@@ -207,7 +208,7 @@ public class CreateFlowLogCollectorOptions extends GenericModel {
    * Gets the resourceGroup.
    *
    * The resource group to use. If unspecified, the account's [default resource
-   * group](https://cloud.ibm.com/apidocs/resource-manager#introduction) is used.
+   * group](https://cloud.ibm.com/apidocs/resource-manager#introduction) will be used.
    *
    * @return the resourceGroup
    */

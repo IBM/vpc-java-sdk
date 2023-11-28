@@ -24,7 +24,6 @@ import com.ibm.cloud.is.vpc.v1.model.SubnetReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.VPCReference;
 import com.ibm.cloud.is.vpc.v1.model.VPCReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.VirtualNetworkInterfaceReferenceAttachmentContext;
-import com.ibm.cloud.is.vpc.v1.model.VirtualNetworkInterfaceReferenceAttachmentContextDeleted;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import com.ibm.cloud.sdk.core.util.DateUtils;

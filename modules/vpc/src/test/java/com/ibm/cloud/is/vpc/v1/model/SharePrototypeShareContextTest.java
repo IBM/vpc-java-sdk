@@ -102,7 +102,7 @@ public class SharePrototypeShareContextTest {
       .profile(shareProfileIdentityModel)
       .replicationCronSpec("0 */5 * * *")
       .resourceGroup(resourceGroupIdentityModel)
-      .userTags(java.util.Arrays.asList("testString"))
+      .userTags(java.util.Arrays.asList())
       .zone(zoneIdentityModel)
       .build();
     assertEquals(sharePrototypeShareContextModel.iops(), Long.valueOf("100"));
@@ -111,7 +111,7 @@ public class SharePrototypeShareContextTest {
     assertEquals(sharePrototypeShareContextModel.profile(), shareProfileIdentityModel);
     assertEquals(sharePrototypeShareContextModel.replicationCronSpec(), "0 */5 * * *");
     assertEquals(sharePrototypeShareContextModel.resourceGroup(), resourceGroupIdentityModel);
-    assertEquals(sharePrototypeShareContextModel.userTags(), java.util.Arrays.asList("testString"));
+    assertEquals(sharePrototypeShareContextModel.userTags(), java.util.Arrays.asList());
     assertEquals(sharePrototypeShareContextModel.zone(), zoneIdentityModel);
 
     String json = TestUtilities.serialize(sharePrototypeShareContextModel);

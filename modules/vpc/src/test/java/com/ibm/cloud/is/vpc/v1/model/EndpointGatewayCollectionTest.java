@@ -17,6 +17,7 @@ import com.ibm.cloud.is.vpc.v1.model.EndpointGateway;
 import com.ibm.cloud.is.vpc.v1.model.EndpointGatewayCollection;
 import com.ibm.cloud.is.vpc.v1.model.EndpointGatewayCollectionFirst;
 import com.ibm.cloud.is.vpc.v1.model.EndpointGatewayCollectionNext;
+import com.ibm.cloud.is.vpc.v1.model.EndpointGatewayLifecycleReason;
 import com.ibm.cloud.is.vpc.v1.model.EndpointGatewayTargetProviderCloudServiceReference;
 import com.ibm.cloud.is.vpc.v1.model.ReservedIPReference;
 import com.ibm.cloud.is.vpc.v1.model.ReservedIPReferenceDeleted;

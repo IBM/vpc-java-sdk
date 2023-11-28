@@ -14,6 +14,8 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.VPNServerRoute;
+import com.ibm.cloud.is.vpc.v1.model.VPNServerRouteHealthReason;
+import com.ibm.cloud.is.vpc.v1.model.VPNServerRouteLifecycleReason;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -35,8 +37,11 @@ public class VPNServerRouteTest {
     assertNull(vpnServerRouteModel.getAction());
     assertNull(vpnServerRouteModel.getCreatedAt());
     assertNull(vpnServerRouteModel.getDestination());
+    assertNull(vpnServerRouteModel.getHealthReasons());
+    assertNull(vpnServerRouteModel.getHealthState());
     assertNull(vpnServerRouteModel.getHref());
     assertNull(vpnServerRouteModel.getId());
+    assertNull(vpnServerRouteModel.getLifecycleReasons());
     assertNull(vpnServerRouteModel.getLifecycleState());
     assertNull(vpnServerRouteModel.getName());
     assertNull(vpnServerRouteModel.getResourceType());

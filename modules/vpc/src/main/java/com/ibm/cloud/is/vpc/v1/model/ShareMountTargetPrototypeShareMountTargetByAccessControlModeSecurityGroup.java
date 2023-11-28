@@ -13,7 +13,7 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 /**
- * The virtual network interface for this share mount target.  The virtual network interface's VPC must not be used by a
+ * The virtual network interface for this share mount target. The virtual network interface's VPC must not be used by a
  * virtual network interface for another mount target for this share.
  *
  * Required if the share's `access_control_mode` is `security_group`.

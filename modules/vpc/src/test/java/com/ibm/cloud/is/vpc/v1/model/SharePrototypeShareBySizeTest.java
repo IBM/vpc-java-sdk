@@ -105,7 +105,7 @@ public class SharePrototypeShareBySizeTest {
       .profile(shareProfileIdentityModel)
       .replicationCronSpec("0 */5 * * *")
       .resourceGroup(resourceGroupIdentityModel)
-      .userTags(java.util.Arrays.asList("testString"))
+      .userTags(java.util.Arrays.asList())
       .zone(zoneIdentityModel)
       .build();
     assertEquals(sharePrototypeShareContextModel.iops(), Long.valueOf("100"));
@@ -114,13 +114,13 @@ public class SharePrototypeShareBySizeTest {
     assertEquals(sharePrototypeShareContextModel.profile(), shareProfileIdentityModel);
     assertEquals(sharePrototypeShareContextModel.replicationCronSpec(), "0 */5 * * *");
     assertEquals(sharePrototypeShareContextModel.resourceGroup(), resourceGroupIdentityModel);
-    assertEquals(sharePrototypeShareContextModel.userTags(), java.util.Arrays.asList("testString"));
+    assertEquals(sharePrototypeShareContextModel.userTags(), java.util.Arrays.asList());
     assertEquals(sharePrototypeShareContextModel.zone(), zoneIdentityModel);
 
     EncryptionKeyIdentityByCRN encryptionKeyIdentityModel = new EncryptionKeyIdentityByCRN.Builder()
-      .crn("crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179")
+      .crn("crn:v1:bluemix:public:kms:us-south:a/123456:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179")
       .build();
-    assertEquals(encryptionKeyIdentityModel.crn(), "crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179");
+    assertEquals(encryptionKeyIdentityModel.crn(), "crn:v1:bluemix:public:kms:us-south:a/123456:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179");
 
     ShareInitialOwner shareInitialOwnerModel = new ShareInitialOwner.Builder()
       .gid(Long.valueOf("50"))
@@ -135,7 +135,7 @@ public class SharePrototypeShareBySizeTest {
       .name("my-share")
       .profile(shareProfileIdentityModel)
       .replicaShare(sharePrototypeShareContextModel)
-      .userTags(java.util.Arrays.asList("testString"))
+      .userTags(java.util.Arrays.asList())
       .zone(zoneIdentityModel)
       .accessControlMode("security_group")
       .encryptionKey(encryptionKeyIdentityModel)
@@ -148,7 +148,7 @@ public class SharePrototypeShareBySizeTest {
     assertEquals(sharePrototypeShareBySizeModel.name(), "my-share");
     assertEquals(sharePrototypeShareBySizeModel.profile(), shareProfileIdentityModel);
     assertEquals(sharePrototypeShareBySizeModel.replicaShare(), sharePrototypeShareContextModel);
-    assertEquals(sharePrototypeShareBySizeModel.userTags(), java.util.Arrays.asList("testString"));
+    assertEquals(sharePrototypeShareBySizeModel.userTags(), java.util.Arrays.asList());
     assertEquals(sharePrototypeShareBySizeModel.zone(), zoneIdentityModel);
     assertEquals(sharePrototypeShareBySizeModel.accessControlMode(), "security_group");
     assertEquals(sharePrototypeShareBySizeModel.encryptionKey(), encryptionKeyIdentityModel);

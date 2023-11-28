@@ -21,6 +21,8 @@ import com.ibm.cloud.is.vpc.v1.model.IPsecPolicyReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionDPD;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionStaticRouteMode;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionStaticRouteModeTunnel;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionStatusReason;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionTunnelStatusReason;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -53,6 +55,7 @@ public class VPNGatewayConnectionStaticRouteModeTest {
     assertNull(vpnGatewayConnectionStaticRouteModeModel.getPsk());
     assertNull(vpnGatewayConnectionStaticRouteModeModel.getResourceType());
     assertNull(vpnGatewayConnectionStaticRouteModeModel.getStatus());
+    assertNull(vpnGatewayConnectionStaticRouteModeModel.getStatusReasons());
     assertNull(vpnGatewayConnectionStaticRouteModeModel.getRoutingProtocol());
     assertNull(vpnGatewayConnectionStaticRouteModeModel.getTunnels());
   }

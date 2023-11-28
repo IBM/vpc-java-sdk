@@ -30,6 +30,8 @@ import com.ibm.cloud.is.vpc.v1.model.VPNServerAuthenticationByUsernameIdProvider
 import com.ibm.cloud.is.vpc.v1.model.VPNServerCollection;
 import com.ibm.cloud.is.vpc.v1.model.VPNServerCollectionFirst;
 import com.ibm.cloud.is.vpc.v1.model.VPNServerCollectionNext;
+import com.ibm.cloud.is.vpc.v1.model.VPNServerHealthReason;
+import com.ibm.cloud.is.vpc.v1.model.VPNServerLifecycleReason;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import com.ibm.cloud.sdk.core.util.DateUtils;

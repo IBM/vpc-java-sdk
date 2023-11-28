@@ -14,7 +14,6 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.ReservedIPTargetVirtualNetworkInterfaceReferenceReservedIPTargetContext;
-import com.ibm.cloud.is.vpc.v1.model.VirtualNetworkInterfaceReferenceReservedIPTargetContextDeleted;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -34,7 +33,6 @@ public class ReservedIPTargetVirtualNetworkInterfaceReferenceReservedIPTargetCon
   public void testReservedIPTargetVirtualNetworkInterfaceReferenceReservedIPTargetContext() throws Throwable {
     ReservedIPTargetVirtualNetworkInterfaceReferenceReservedIPTargetContext reservedIpTargetVirtualNetworkInterfaceReferenceReservedIpTargetContextModel = new ReservedIPTargetVirtualNetworkInterfaceReferenceReservedIPTargetContext();
     assertNull(reservedIpTargetVirtualNetworkInterfaceReferenceReservedIpTargetContextModel.getCrn());
-    assertNull(reservedIpTargetVirtualNetworkInterfaceReferenceReservedIpTargetContextModel.getDeleted());
     assertNull(reservedIpTargetVirtualNetworkInterfaceReferenceReservedIpTargetContextModel.getHref());
     assertNull(reservedIpTargetVirtualNetworkInterfaceReferenceReservedIpTargetContextModel.getId());
     assertNull(reservedIpTargetVirtualNetworkInterfaceReferenceReservedIpTargetContextModel.getName());

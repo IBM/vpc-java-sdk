@@ -40,7 +40,7 @@ public class BareMetalServerNetworkInterfaceByHiperSocket extends BareMetalServe
   }
 
   /**
-   * The type of this bare metal server network interface.
+   * The bare metal server network interface type.
    */
   public interface Type {
     /** primary. */

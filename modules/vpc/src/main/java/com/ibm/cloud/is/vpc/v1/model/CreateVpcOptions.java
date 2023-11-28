@@ -36,6 +36,7 @@ public class CreateVpcOptions extends GenericModel {
 
   protected String addressPrefixManagement;
   protected Boolean classicAccess;
+  protected VPCDNSPrototype dns;
   protected String name;
   protected ResourceGroupIdentity resourceGroup;
 
@@ -45,6 +46,7 @@ public class CreateVpcOptions extends GenericModel {
   public static class Builder {
     private String addressPrefixManagement;
     private Boolean classicAccess;
+    private VPCDNSPrototype dns;
     private String name;
     private ResourceGroupIdentity resourceGroup;
 
@@ -56,6 +58,7 @@ public class CreateVpcOptions extends GenericModel {
     private Builder(CreateVpcOptions createVpcOptions) {
       this.addressPrefixManagement = createVpcOptions.addressPrefixManagement;
       this.classicAccess = createVpcOptions.classicAccess;
+      this.dns = createVpcOptions.dns;
       this.name = createVpcOptions.name;
       this.resourceGroup = createVpcOptions.resourceGroup;
     }
@@ -98,6 +101,17 @@ public class CreateVpcOptions extends GenericModel {
     }
 
     /**
+     * Set the dns.
+     *
+     * @param dns the dns
+     * @return the CreateVpcOptions builder
+     */
+    public Builder dns(VPCDNSPrototype dns) {
+      this.dns = dns;
+      return this;
+    }
+
+    /**
      * Set the name.
      *
      * @param name the name
@@ -125,6 +139,7 @@ public class CreateVpcOptions extends GenericModel {
   protected CreateVpcOptions(Builder builder) {
     addressPrefixManagement = builder.addressPrefixManagement;
     classicAccess = builder.classicAccess;
+    dns = builder.dns;
     name = builder.name;
     resourceGroup = builder.resourceGroup;
   }
@@ -168,6 +183,20 @@ public class CreateVpcOptions extends GenericModel {
   }
 
   /**
+   * Gets the dns.
+   *
+   * The DNS configuration for this VPC.
+   *
+   * If unspecified, the system will assign DNS servers capable of resolving hosts and endpoint
+   * gateways within this VPC, and hosts on the internet.
+   *
+   * @return the dns
+   */
+  public VPCDNSPrototype dns() {
+    return dns;
+  }
+
+  /**
    * Gets the name.
    *
    * The name for this VPC. The name must not be used by another VPC in the region. If unspecified, the name will be a
@@ -183,7 +212,7 @@ public class CreateVpcOptions extends GenericModel {
    * Gets the resourceGroup.
    *
    * The resource group to use. If unspecified, the account's [default resource
-   * group](https://cloud.ibm.com/apidocs/resource-manager#introduction) is used.
+   * group](https://cloud.ibm.com/apidocs/resource-manager#introduction) will be used.
    *
    * @return the resourceGroup
    */

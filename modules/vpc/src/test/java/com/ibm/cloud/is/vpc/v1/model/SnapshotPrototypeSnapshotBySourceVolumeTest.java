@@ -59,13 +59,13 @@ public class SnapshotPrototypeSnapshotBySourceVolumeTest {
       .clones(java.util.Arrays.asList(snapshotClonePrototypeModel))
       .name("my-snapshot")
       .resourceGroup(resourceGroupIdentityModel)
-      .userTags(java.util.Arrays.asList("testString"))
+      .userTags(java.util.Arrays.asList())
       .sourceVolume(volumeIdentityModel)
       .build();
     assertEquals(snapshotPrototypeSnapshotBySourceVolumeModel.clones(), java.util.Arrays.asList(snapshotClonePrototypeModel));
     assertEquals(snapshotPrototypeSnapshotBySourceVolumeModel.name(), "my-snapshot");
     assertEquals(snapshotPrototypeSnapshotBySourceVolumeModel.resourceGroup(), resourceGroupIdentityModel);
-    assertEquals(snapshotPrototypeSnapshotBySourceVolumeModel.userTags(), java.util.Arrays.asList("testString"));
+    assertEquals(snapshotPrototypeSnapshotBySourceVolumeModel.userTags(), java.util.Arrays.asList());
     assertEquals(snapshotPrototypeSnapshotBySourceVolumeModel.sourceVolume(), volumeIdentityModel);
 
     String json = TestUtilities.serialize(snapshotPrototypeSnapshotBySourceVolumeModel);

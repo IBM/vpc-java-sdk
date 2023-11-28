@@ -15,7 +15,7 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.CreateFloatingIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPPrototypeFloatingIPByTarget;
-import com.ibm.cloud.is.vpc.v1.model.FloatingIPTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.FloatingIPTargetPrototypeBareMetalServerNetworkInterfaceIdentityBareMetalServerNetworkInterfaceIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupIdentityById;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
@@ -39,7 +39,7 @@ public class CreateFloatingIpOptionsTest {
       .build();
     assertEquals(resourceGroupIdentityModel.id(), "fee82deba12e4c0fb69c3b09d1f12345");
 
-    FloatingIPTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceIdentityById floatingIpTargetPrototypeModel = new FloatingIPTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceIdentityById.Builder()
+    FloatingIPTargetPrototypeBareMetalServerNetworkInterfaceIdentityBareMetalServerNetworkInterfaceIdentityById floatingIpTargetPrototypeModel = new FloatingIPTargetPrototypeBareMetalServerNetworkInterfaceIdentityBareMetalServerNetworkInterfaceIdentityById.Builder()
       .id("69e55145-cc7d-4d8e-9e1f-cc3fb60b1793")
       .build();
     assertEquals(floatingIpTargetPrototypeModel.id(), "69e55145-cc7d-4d8e-9e1f-cc3fb60b1793");

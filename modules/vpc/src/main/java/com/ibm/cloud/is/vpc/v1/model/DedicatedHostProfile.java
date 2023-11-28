@@ -38,6 +38,28 @@ public class DedicatedHostProfile extends GenericModel {
     String MEMORY = "memory";
   }
 
+  /**
+   * The status of the dedicated host profile:
+   *   - `previous`:  This dedicated host profile is an older revision, but remains provisionable
+   *   and usable.
+   *   - `current`:  This profile is the latest revision.
+   *
+   * Note that revisions are indicated by the generation of a dedicated host profile.  Refer to the [profile naming
+   * conventions]
+   * (https://cloud.ibm.com/docs/vpc?topic=vpc-dh-profiles&amp;interface=ui#profiles-naming-rule) for information on how
+   * generations are defined within a dedicated host profile.
+   *
+   * The enumerated values for this property are expected to expand in the future. When processing this property, check
+   * for and log unknown values. Optionally halt processing and surface the error, or bypass the profile on which the
+   * unexpected property value was encountered.
+   */
+  public interface Status {
+    /** current. */
+    String CURRENT = "current";
+    /** previous. */
+    String PREVIOUS = "previous";
+  }
+
   @SerializedName("class")
   protected String xClass;
   protected List<DedicatedHostProfileDisk> disks;
@@ -47,6 +69,7 @@ public class DedicatedHostProfile extends GenericModel {
   protected String name;
   @SerializedName("socket_count")
   protected DedicatedHostProfileSocket socketCount;
+  protected String status;
   @SerializedName("supported_instance_profiles")
   protected List<InstanceProfileReference> supportedInstanceProfiles;
   @SerializedName("vcpu_architecture")
@@ -133,6 +156,29 @@ public class DedicatedHostProfile extends GenericModel {
    */
   public DedicatedHostProfileSocket getSocketCount() {
     return socketCount;
+  }
+
+  /**
+   * Gets the status.
+   *
+   * The status of the dedicated host profile:
+   *   - `previous`:  This dedicated host profile is an older revision, but remains provisionable
+   *   and usable.
+   *   - `current`:  This profile is the latest revision.
+   *
+   * Note that revisions are indicated by the generation of a dedicated host profile.  Refer to the [profile naming
+   * conventions]
+   * (https://cloud.ibm.com/docs/vpc?topic=vpc-dh-profiles&amp;interface=ui#profiles-naming-rule) for information on how
+   * generations are defined within a dedicated host profile.
+   *
+   * The enumerated values for this property are expected to expand in the future. When processing this property, check
+   * for and log unknown values. Optionally halt processing and surface the error, or bypass the profile on which the
+   * unexpected property value was encountered.
+   *
+   * @return the status
+   */
+  public String getStatus() {
+    return status;
   }
 
   /**

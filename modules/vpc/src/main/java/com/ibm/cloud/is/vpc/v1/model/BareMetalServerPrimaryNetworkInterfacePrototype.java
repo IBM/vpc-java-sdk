@@ -32,7 +32,7 @@ public class BareMetalServerPrimaryNetworkInterfacePrototype extends GenericMode
    *   server is stopped
    *   - Has an `allowed_vlans` property which controls the VLANs that will be permitted
    *     to use the PCI interface
-   *   - Cannot directly use an IEEE 802.1q VLAN tag.
+   *   - Cannot directly use an IEEE 802.1Q tag.
    *   - Not supported on bare metal servers with a `cpu.architecture` of `s390x`.
    */
   public interface InterfaceType {
@@ -271,7 +271,7 @@ public class BareMetalServerPrimaryNetworkInterfacePrototype extends GenericMode
   /**
    * Gets the allowedVlans.
    *
-   * Indicates what VLAN IDs (for VLAN type only) can use this physical (PCI type) interface.
+   * The VLAN IDs allowed for `vlan` interfaces using this PCI interface.
    *
    * @return the allowedVlans
    */
@@ -309,7 +309,7 @@ public class BareMetalServerPrimaryNetworkInterfacePrototype extends GenericMode
    *   server is stopped
    *   - Has an `allowed_vlans` property which controls the VLANs that will be permitted
    *     to use the PCI interface
-   *   - Cannot directly use an IEEE 802.1q VLAN tag.
+   *   - Cannot directly use an IEEE 802.1Q tag.
    *   - Not supported on bare metal servers with a `cpu.architecture` of `s390x`.
    *
    * @return the interfaceType

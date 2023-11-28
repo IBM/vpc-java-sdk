@@ -24,6 +24,7 @@ public class CreateEndpointGatewayOptions extends GenericModel {
 
   protected EndpointGatewayTargetPrototype target;
   protected VPCIdentity vpc;
+  protected Boolean allowDnsResolutionBinding;
   protected List<EndpointGatewayReservedIP> ips;
   protected String name;
   protected ResourceGroupIdentity resourceGroup;
@@ -35,6 +36,7 @@ public class CreateEndpointGatewayOptions extends GenericModel {
   public static class Builder {
     private EndpointGatewayTargetPrototype target;
     private VPCIdentity vpc;
+    private Boolean allowDnsResolutionBinding;
     private List<EndpointGatewayReservedIP> ips;
     private String name;
     private ResourceGroupIdentity resourceGroup;
@@ -48,6 +50,7 @@ public class CreateEndpointGatewayOptions extends GenericModel {
     private Builder(CreateEndpointGatewayOptions createEndpointGatewayOptions) {
       this.target = createEndpointGatewayOptions.target;
       this.vpc = createEndpointGatewayOptions.vpc;
+      this.allowDnsResolutionBinding = createEndpointGatewayOptions.allowDnsResolutionBinding;
       this.ips = createEndpointGatewayOptions.ips;
       this.name = createEndpointGatewayOptions.name;
       this.resourceGroup = createEndpointGatewayOptions.resourceGroup;
@@ -135,6 +138,17 @@ public class CreateEndpointGatewayOptions extends GenericModel {
     }
 
     /**
+     * Set the allowDnsResolutionBinding.
+     *
+     * @param allowDnsResolutionBinding the allowDnsResolutionBinding
+     * @return the CreateEndpointGatewayOptions builder
+     */
+    public Builder allowDnsResolutionBinding(Boolean allowDnsResolutionBinding) {
+      this.allowDnsResolutionBinding = allowDnsResolutionBinding;
+      return this;
+    }
+
+    /**
      * Set the ips.
      * Existing ips will be replaced.
      *
@@ -190,6 +204,7 @@ public class CreateEndpointGatewayOptions extends GenericModel {
       "vpc cannot be null");
     target = builder.target;
     vpc = builder.vpc;
+    allowDnsResolutionBinding = builder.allowDnsResolutionBinding;
     ips = builder.ips;
     name = builder.name;
     resourceGroup = builder.resourceGroup;
@@ -229,6 +244,21 @@ public class CreateEndpointGatewayOptions extends GenericModel {
   }
 
   /**
+   * Gets the allowDnsResolutionBinding.
+   *
+   * Indicates whether to allow DNS resolution for this endpoint gateway when the VPC this endpoint gateway resides in
+   * has a DNS resolution binding to a VPC with `dns.enable_hub` set to `true`.
+   *
+   * Must be `true` if the VPC this endpoint gateway resides in has `dns.enable_hub` set to
+   * `true`.
+   *
+   * @return the allowDnsResolutionBinding
+   */
+  public Boolean allowDnsResolutionBinding() {
+    return allowDnsResolutionBinding;
+  }
+
+  /**
    * Gets the ips.
    *
    * The reserved IPs to bind to this endpoint gateway. At most one reserved IP per zone is allowed.
@@ -255,7 +285,7 @@ public class CreateEndpointGatewayOptions extends GenericModel {
    * Gets the resourceGroup.
    *
    * The resource group to use. If unspecified, the account's [default resource
-   * group](https://cloud.ibm.com/apidocs/resource-manager#introduction) is used.
+   * group](https://cloud.ibm.com/apidocs/resource-manager#introduction) will be used.
    *
    * @return the resourceGroup
    */

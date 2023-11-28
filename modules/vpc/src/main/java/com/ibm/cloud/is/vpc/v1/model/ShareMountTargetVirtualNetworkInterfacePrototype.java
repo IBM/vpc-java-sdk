@@ -71,8 +71,8 @@ public class ShareMountTargetVirtualNetworkInterfacePrototype extends GenericMod
   /**
    * Gets the resourceGroup.
    *
-   * The resource group to use. If unspecified, the account's [default resource
-   * group](https://cloud.ibm.com/apidocs/resource-manager#introduction) is used.
+   * The resource group to use for this virtual network interface. If unspecified, the
+   * share's resource group will be used.
    *
    * @return the resourceGroup
    */
@@ -95,8 +95,8 @@ public class ShareMountTargetVirtualNetworkInterfacePrototype extends GenericMod
   /**
    * Gets the subnet.
    *
-   * The associated subnet. Required if `primary_ip` does not specify a reserved IP and
-   * `primary_ip.address` is not specified.
+   * The associated subnet. Required if `primary_ip` does not specify a reserved IP
+   * identity.
    *
    * @return the subnet
    */

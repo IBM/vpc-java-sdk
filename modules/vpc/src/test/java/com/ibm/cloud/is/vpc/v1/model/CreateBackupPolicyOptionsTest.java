@@ -17,6 +17,7 @@ import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanClonePolicyPrototype;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanDeletionTriggerPrototype;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanPrototype;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanRemoteRegionPolicyPrototype;
+import com.ibm.cloud.is.vpc.v1.model.BackupPolicyScopePrototypeEnterpriseIdentityEnterpriseIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.CreateBackupPolicyOptions;
 import com.ibm.cloud.is.vpc.v1.model.EncryptionKeyIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.RegionIdentityByName;
@@ -59,9 +60,9 @@ public class CreateBackupPolicyOptionsTest {
     assertEquals(backupPolicyPlanDeletionTriggerPrototypeModel.deleteOverCount(), Long.valueOf("20"));
 
     EncryptionKeyIdentityByCRN encryptionKeyIdentityModel = new EncryptionKeyIdentityByCRN.Builder()
-      .crn("crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179")
+      .crn("crn:v1:bluemix:public:kms:us-south:a/123456:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179")
       .build();
-    assertEquals(encryptionKeyIdentityModel.crn(), "crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179");
+    assertEquals(encryptionKeyIdentityModel.crn(), "crn:v1:bluemix:public:kms:us-south:a/123456:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179");
 
     RegionIdentityByName regionIdentityModel = new RegionIdentityByName.Builder()
       .name("us-south")
@@ -101,18 +102,25 @@ public class CreateBackupPolicyOptionsTest {
       .build();
     assertEquals(resourceGroupIdentityModel.id(), "fee82deba12e4c0fb69c3b09d1f12345");
 
+    BackupPolicyScopePrototypeEnterpriseIdentityEnterpriseIdentityByCRN backupPolicyScopePrototypeModel = new BackupPolicyScopePrototypeEnterpriseIdentityEnterpriseIdentityByCRN.Builder()
+      .crn("crn:v1:bluemix:public:enterprise::a/123456::enterprise:ebc2b430240943458b9e91e1432cfcce")
+      .build();
+    assertEquals(backupPolicyScopePrototypeModel.crn(), "crn:v1:bluemix:public:enterprise::a/123456::enterprise:ebc2b430240943458b9e91e1432cfcce");
+
     CreateBackupPolicyOptions createBackupPolicyOptionsModel = new CreateBackupPolicyOptions.Builder()
       .matchUserTags(java.util.Arrays.asList("my-daily-backup-policy"))
       .matchResourceTypes(java.util.Arrays.asList("volume"))
       .name("my-backup-policy")
       .plans(java.util.Arrays.asList(backupPolicyPlanPrototypeModel))
       .resourceGroup(resourceGroupIdentityModel)
+      .scope(backupPolicyScopePrototypeModel)
       .build();
     assertEquals(createBackupPolicyOptionsModel.matchUserTags(), java.util.Arrays.asList("my-daily-backup-policy"));
     assertEquals(createBackupPolicyOptionsModel.matchResourceTypes(), java.util.Arrays.asList("volume"));
     assertEquals(createBackupPolicyOptionsModel.name(), "my-backup-policy");
     assertEquals(createBackupPolicyOptionsModel.plans(), java.util.Arrays.asList(backupPolicyPlanPrototypeModel));
     assertEquals(createBackupPolicyOptionsModel.resourceGroup(), resourceGroupIdentityModel);
+    assertEquals(createBackupPolicyOptionsModel.scope(), backupPolicyScopePrototypeModel);
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

@@ -19,6 +19,7 @@ import com.ibm.cloud.is.vpc.v1.model.IPsecPolicyReference;
 import com.ibm.cloud.is.vpc.v1.model.IPsecPolicyReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionDPD;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionPolicyMode;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionStatusReason;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -51,6 +52,7 @@ public class VPNGatewayConnectionPolicyModeTest {
     assertNull(vpnGatewayConnectionPolicyModeModel.getPsk());
     assertNull(vpnGatewayConnectionPolicyModeModel.getResourceType());
     assertNull(vpnGatewayConnectionPolicyModeModel.getStatus());
+    assertNull(vpnGatewayConnectionPolicyModeModel.getStatusReasons());
     assertNull(vpnGatewayConnectionPolicyModeModel.getLocalCidrs());
     assertNull(vpnGatewayConnectionPolicyModeModel.getPeerCidrs());
   }

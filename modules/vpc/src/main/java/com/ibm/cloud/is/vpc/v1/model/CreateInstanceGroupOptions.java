@@ -316,7 +316,7 @@ public class CreateInstanceGroupOptions extends GenericModel {
    * Gets the resourceGroup.
    *
    * The resource group to use. If unspecified, the account's [default resource
-   * group](https://cloud.ibm.com/apidocs/resource-manager#introduction) is used.
+   * group](https://cloud.ibm.com/apidocs/resource-manager#introduction) will be used.
    *
    * @return the resourceGroup
    */

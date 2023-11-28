@@ -46,9 +46,9 @@ public class VolumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolume
     assertEquals(resourceGroupIdentityModel.id(), "fee82deba12e4c0fb69c3b09d1f12345");
 
     EncryptionKeyIdentityByCRN encryptionKeyIdentityModel = new EncryptionKeyIdentityByCRN.Builder()
-      .crn("crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179")
+      .crn("crn:v1:bluemix:public:kms:us-south:a/123456:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179")
       .build();
-    assertEquals(encryptionKeyIdentityModel.crn(), "crn:v1:bluemix:public:kms:us-south:a/dffc98a0f1f0f95f6613b3b752286b87:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179");
+    assertEquals(encryptionKeyIdentityModel.crn(), "crn:v1:bluemix:public:kms:us-south:a/123456:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179");
 
     SnapshotIdentityById snapshotIdentityModel = new SnapshotIdentityById.Builder()
       .id("349a61d8-7ab1-420f-a690-5fed76ef9d4f")
@@ -60,7 +60,7 @@ public class VolumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolume
       .name("my-volume")
       .profile(volumeProfileIdentityModel)
       .resourceGroup(resourceGroupIdentityModel)
-      .userTags(java.util.Arrays.asList("testString"))
+      .userTags(java.util.Arrays.asList())
       .capacity(Long.valueOf("100"))
       .encryptionKey(encryptionKeyIdentityModel)
       .sourceSnapshot(snapshotIdentityModel)
@@ -69,7 +69,7 @@ public class VolumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolume
     assertEquals(volumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeBySourceSnapshotModel.name(), "my-volume");
     assertEquals(volumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeBySourceSnapshotModel.profile(), volumeProfileIdentityModel);
     assertEquals(volumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeBySourceSnapshotModel.resourceGroup(), resourceGroupIdentityModel);
-    assertEquals(volumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeBySourceSnapshotModel.userTags(), java.util.Arrays.asList("testString"));
+    assertEquals(volumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeBySourceSnapshotModel.userTags(), java.util.Arrays.asList());
     assertEquals(volumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeBySourceSnapshotModel.capacity(), Long.valueOf("100"));
     assertEquals(volumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeBySourceSnapshotModel.encryptionKey(), encryptionKeyIdentityModel);
     assertEquals(volumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeBySourceSnapshotModel.sourceSnapshot(), snapshotIdentityModel);

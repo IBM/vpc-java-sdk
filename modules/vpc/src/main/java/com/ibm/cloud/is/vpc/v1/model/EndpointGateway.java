@@ -71,6 +71,8 @@ public class EndpointGateway extends GenericModel {
     String ENDPOINT_GATEWAY = "endpoint_gateway";
   }
 
+  @SerializedName("allow_dns_resolution_binding")
+  protected Boolean allowDnsResolutionBinding;
   @SerializedName("created_at")
   protected Date createdAt;
   protected String crn;
@@ -79,6 +81,8 @@ public class EndpointGateway extends GenericModel {
   protected String href;
   protected String id;
   protected List<ReservedIPReference> ips;
+  @SerializedName("lifecycle_reasons")
+  protected List<EndpointGatewayLifecycleReason> lifecycleReasons;
   @SerializedName("lifecycle_state")
   protected String lifecycleState;
   protected String name;
@@ -96,6 +100,18 @@ public class EndpointGateway extends GenericModel {
   protected VPCReference vpc;
 
   protected EndpointGateway() { }
+
+  /**
+   * Gets the allowDnsResolutionBinding.
+   *
+   * Indicates whether to allow DNS resolution for this endpoint gateway when the VPC this endpoint gateway resides in
+   * has a DNS resolution binding to a VPC with `dns.enable_hub` set to `true`.
+   *
+   * @return the allowDnsResolutionBinding
+   */
+  public Boolean isAllowDnsResolutionBinding() {
+    return allowDnsResolutionBinding;
+  }
 
   /**
    * Gets the createdAt.
@@ -167,6 +183,18 @@ public class EndpointGateway extends GenericModel {
    */
   public List<ReservedIPReference> getIps() {
     return ips;
+  }
+
+  /**
+   * Gets the lifecycleReasons.
+   *
+   * The reasons for the current `lifecycle_state` (if any):
+   * - `dns_resolution_binding_pending`: the DNS resolution binding is being set up.
+   *
+   * @return the lifecycleReasons
+   */
+  public List<EndpointGatewayLifecycleReason> getLifecycleReasons() {
+    return lifecycleReasons;
   }
 
   /**

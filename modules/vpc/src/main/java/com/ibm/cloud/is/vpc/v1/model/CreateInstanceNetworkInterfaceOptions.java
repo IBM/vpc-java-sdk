@@ -228,7 +228,7 @@ public class CreateInstanceNetworkInterfaceOptions extends GenericModel {
   /**
    * Gets the allowIpSpoofing.
    *
-   * Indicates whether source IP spoofing is allowed on this instance interface.
+   * Indicates whether source IP spoofing is allowed on this instance network interface.
    *
    * @return the allowIpSpoofing
    */

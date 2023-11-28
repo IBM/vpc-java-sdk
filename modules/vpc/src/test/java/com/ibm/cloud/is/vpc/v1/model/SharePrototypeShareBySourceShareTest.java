@@ -104,7 +104,7 @@ public class SharePrototypeShareBySourceShareTest {
       .profile(shareProfileIdentityModel)
       .replicationCronSpec("0 */5 * * *")
       .resourceGroup(resourceGroupIdentityModel)
-      .userTags(java.util.Arrays.asList("testString"))
+      .userTags(java.util.Arrays.asList())
       .zone(zoneIdentityModel)
       .build();
     assertEquals(sharePrototypeShareContextModel.iops(), Long.valueOf("100"));
@@ -113,7 +113,7 @@ public class SharePrototypeShareBySourceShareTest {
     assertEquals(sharePrototypeShareContextModel.profile(), shareProfileIdentityModel);
     assertEquals(sharePrototypeShareContextModel.replicationCronSpec(), "0 */5 * * *");
     assertEquals(sharePrototypeShareContextModel.resourceGroup(), resourceGroupIdentityModel);
-    assertEquals(sharePrototypeShareContextModel.userTags(), java.util.Arrays.asList("testString"));
+    assertEquals(sharePrototypeShareContextModel.userTags(), java.util.Arrays.asList());
     assertEquals(sharePrototypeShareContextModel.zone(), zoneIdentityModel);
 
     ShareIdentityById shareIdentityModel = new ShareIdentityById.Builder()
@@ -127,7 +127,7 @@ public class SharePrototypeShareBySourceShareTest {
       .name("my-share")
       .profile(shareProfileIdentityModel)
       .replicaShare(sharePrototypeShareContextModel)
-      .userTags(java.util.Arrays.asList("testString"))
+      .userTags(java.util.Arrays.asList())
       .zone(zoneIdentityModel)
       .replicationCronSpec("0 */5 * * *")
       .resourceGroup(resourceGroupIdentityModel)
@@ -138,7 +138,7 @@ public class SharePrototypeShareBySourceShareTest {
     assertEquals(sharePrototypeShareBySourceShareModel.name(), "my-share");
     assertEquals(sharePrototypeShareBySourceShareModel.profile(), shareProfileIdentityModel);
     assertEquals(sharePrototypeShareBySourceShareModel.replicaShare(), sharePrototypeShareContextModel);
-    assertEquals(sharePrototypeShareBySourceShareModel.userTags(), java.util.Arrays.asList("testString"));
+    assertEquals(sharePrototypeShareBySourceShareModel.userTags(), java.util.Arrays.asList());
     assertEquals(sharePrototypeShareBySourceShareModel.zone(), zoneIdentityModel);
     assertEquals(sharePrototypeShareBySourceShareModel.replicationCronSpec(), "0 */5 * * *");
     assertEquals(sharePrototypeShareBySourceShareModel.resourceGroup(), resourceGroupIdentityModel);

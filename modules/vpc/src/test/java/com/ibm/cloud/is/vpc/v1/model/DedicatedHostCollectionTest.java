@@ -20,6 +20,8 @@ import com.ibm.cloud.is.vpc.v1.model.DedicatedHostCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostDisk;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostGroupReferenceDeleted;
+import com.ibm.cloud.is.vpc.v1.model.DedicatedHostNUMA;
+import com.ibm.cloud.is.vpc.v1.model.DedicatedHostNUMANode;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostProfileReference;
 import com.ibm.cloud.is.vpc.v1.model.InstanceDiskReference;
 import com.ibm.cloud.is.vpc.v1.model.InstanceDiskReferenceDeleted;

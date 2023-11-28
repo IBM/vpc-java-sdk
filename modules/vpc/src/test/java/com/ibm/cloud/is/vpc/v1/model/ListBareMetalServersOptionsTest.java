@@ -39,9 +39,6 @@ public class ListBareMetalServersOptionsTest {
       .vpcId("testString")
       .vpcCrn("crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b")
       .vpcName("my-vpc")
-      .networkInterfacesSubnetId("testString")
-      .networkInterfacesSubnetCrn("crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
-      .networkInterfacesSubnetName("my-subnet")
       .build();
     assertEquals(listBareMetalServersOptionsModel.start(), "testString");
     assertEquals(listBareMetalServersOptionsModel.limit(), Long.valueOf("50"));
@@ -50,8 +47,5 @@ public class ListBareMetalServersOptionsTest {
     assertEquals(listBareMetalServersOptionsModel.vpcId(), "testString");
     assertEquals(listBareMetalServersOptionsModel.vpcCrn(), "crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b");
     assertEquals(listBareMetalServersOptionsModel.vpcName(), "my-vpc");
-    assertEquals(listBareMetalServersOptionsModel.networkInterfacesSubnetId(), "testString");
-    assertEquals(listBareMetalServersOptionsModel.networkInterfacesSubnetCrn(), "crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e");
-    assertEquals(listBareMetalServersOptionsModel.networkInterfacesSubnetName(), "my-subnet");
   }
 }

@@ -50,6 +50,7 @@ public class DedicatedHostProfileTest {
     assertNull(dedicatedHostProfileModel.getMemory());
     assertNull(dedicatedHostProfileModel.getName());
     assertNull(dedicatedHostProfileModel.getSocketCount());
+    assertNull(dedicatedHostProfileModel.getStatus());
     assertNull(dedicatedHostProfileModel.getSupportedInstanceProfiles());
     assertNull(dedicatedHostProfileModel.getVcpuArchitecture());
     assertNull(dedicatedHostProfileModel.getVcpuCount());

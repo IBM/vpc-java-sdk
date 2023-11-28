@@ -33,8 +33,10 @@ public class DeleteVpcOptionsTest {
   public void testDeleteVpcOptions() throws Throwable {
     DeleteVpcOptions deleteVpcOptionsModel = new DeleteVpcOptions.Builder()
       .id("testString")
+      .ifMatch("W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"")
       .build();
     assertEquals(deleteVpcOptionsModel.id(), "testString");
+    assertEquals(deleteVpcOptionsModel.ifMatch(), "W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

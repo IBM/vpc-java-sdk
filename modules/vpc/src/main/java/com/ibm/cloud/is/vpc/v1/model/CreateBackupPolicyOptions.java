@@ -35,6 +35,7 @@ public class CreateBackupPolicyOptions extends GenericModel {
   protected String name;
   protected List<BackupPolicyPlanPrototype> plans;
   protected ResourceGroupIdentity resourceGroup;
+  protected BackupPolicyScopePrototype scope;
 
   /**
    * Builder.
@@ -45,6 +46,7 @@ public class CreateBackupPolicyOptions extends GenericModel {
     private String name;
     private List<BackupPolicyPlanPrototype> plans;
     private ResourceGroupIdentity resourceGroup;
+    private BackupPolicyScopePrototype scope;
 
     /**
      * Instantiates a new Builder from an existing CreateBackupPolicyOptions instance.
@@ -57,6 +59,7 @@ public class CreateBackupPolicyOptions extends GenericModel {
       this.name = createBackupPolicyOptions.name;
       this.plans = createBackupPolicyOptions.plans;
       this.resourceGroup = createBackupPolicyOptions.resourceGroup;
+      this.scope = createBackupPolicyOptions.scope;
     }
 
     /**
@@ -188,6 +191,17 @@ public class CreateBackupPolicyOptions extends GenericModel {
       this.resourceGroup = resourceGroup;
       return this;
     }
+
+    /**
+     * Set the scope.
+     *
+     * @param scope the scope
+     * @return the CreateBackupPolicyOptions builder
+     */
+    public Builder scope(BackupPolicyScopePrototype scope) {
+      this.scope = scope;
+      return this;
+    }
   }
 
   protected CreateBackupPolicyOptions() { }
@@ -200,6 +214,7 @@ public class CreateBackupPolicyOptions extends GenericModel {
     name = builder.name;
     plans = builder.plans;
     resourceGroup = builder.resourceGroup;
+    scope = builder.scope;
   }
 
   /**
@@ -262,12 +277,25 @@ public class CreateBackupPolicyOptions extends GenericModel {
    * Gets the resourceGroup.
    *
    * The resource group to use. If unspecified, the account's [default resource
-   * group](https://cloud.ibm.com/apidocs/resource-manager#introduction) is used.
+   * group](https://cloud.ibm.com/apidocs/resource-manager#introduction) will be used.
    *
    * @return the resourceGroup
    */
   public ResourceGroupIdentity resourceGroup() {
     return resourceGroup;
+  }
+
+  /**
+   * Gets the scope.
+   *
+   * The scope to use for this backup policy.
+   *
+   * If unspecified, the policy will be scoped to the account.
+   *
+   * @return the scope
+   */
+  public BackupPolicyScopePrototype scope() {
+    return scope;
   }
 }
 

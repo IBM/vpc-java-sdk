@@ -24,6 +24,7 @@ import com.ibm.cloud.is.vpc.v1.model.InstanceProfileGPUManufacturer;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileGPUMemoryFixed;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileGPUModel;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileMemoryFixed;
+import com.ibm.cloud.is.vpc.v1.model.InstanceProfileNUMACountFixed;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileNetworkInterfaceCountRange;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileOSArchitecture;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfilePortSpeedFixed;
@@ -60,8 +61,10 @@ public class InstanceProfileTest {
     assertNull(instanceProfileModel.getMemory());
     assertNull(instanceProfileModel.getName());
     assertNull(instanceProfileModel.getNetworkInterfaceCount());
+    assertNull(instanceProfileModel.getNumaCount());
     assertNull(instanceProfileModel.getOsArchitecture());
     assertNull(instanceProfileModel.getPortSpeed());
+    assertNull(instanceProfileModel.getStatus());
     assertNull(instanceProfileModel.getTotalVolumeBandwidth());
     assertNull(instanceProfileModel.getVcpuArchitecture());
     assertNull(instanceProfileModel.getVcpuCount());

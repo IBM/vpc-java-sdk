@@ -17,6 +17,8 @@ import com.ibm.cloud.is.vpc.v1.model.IP;
 import com.ibm.cloud.is.vpc.v1.model.ReservedIPReference;
 import com.ibm.cloud.is.vpc.v1.model.ReservedIPReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayMember;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayMemberHealthReason;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayMemberLifecycleReason;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -35,9 +37,12 @@ public class VPNGatewayMemberTest {
   @Test
   public void testVPNGatewayMember() throws Throwable {
     VPNGatewayMember vpnGatewayMemberModel = new VPNGatewayMember();
+    assertNull(vpnGatewayMemberModel.getHealthReasons());
+    assertNull(vpnGatewayMemberModel.getHealthState());
+    assertNull(vpnGatewayMemberModel.getLifecycleReasons());
+    assertNull(vpnGatewayMemberModel.getLifecycleState());
     assertNull(vpnGatewayMemberModel.getPrivateIp());
     assertNull(vpnGatewayMemberModel.getPublicIp());
     assertNull(vpnGatewayMemberModel.getRole());
-    assertNull(vpnGatewayMemberModel.getStatus());
   }
 }
