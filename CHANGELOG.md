@@ -1,3 +1,10 @@
+## [0.17.1](https://github.com/IBM/vpc-java-sdk/compare/0.17.0...0.17.1) (2023-12-06)
+
+
+### Bug Fixes
+
+* **keys:** fix gpg ([#54](https://github.com/IBM/vpc-java-sdk/issues/54)) ([13aedab](https://github.com/IBM/vpc-java-sdk/commit/13aedab8b822fab13c9819213fff929ea4a58903))
+
 # [0.17.0](https://github.com/IBM/vpc-java-sdk/compare/0.16.1...0.17.0) (2023-11-28)
 
 
