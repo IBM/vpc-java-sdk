@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021, 2022, 2023.
+ * (C) Copyright IBM Corp. 2022, 2023, 2024.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -39,6 +39,7 @@ public class RoutePrototype extends GenericModel {
   }
 
   protected String action;
+  protected Boolean advertise;
   protected String destination;
   protected String name;
   @SerializedName("next_hop")
@@ -51,6 +52,7 @@ public class RoutePrototype extends GenericModel {
    */
   public static class Builder {
     private String action;
+    private Boolean advertise;
     private String destination;
     private String name;
     private RoutePrototypeNextHop nextHop;
@@ -64,6 +66,7 @@ public class RoutePrototype extends GenericModel {
      */
     private Builder(RoutePrototype routePrototype) {
       this.action = routePrototype.action;
+      this.advertise = routePrototype.advertise;
       this.destination = routePrototype.destination;
       this.name = routePrototype.name;
       this.nextHop = routePrototype.nextHop;
@@ -105,6 +108,17 @@ public class RoutePrototype extends GenericModel {
      */
     public Builder action(String action) {
       this.action = action;
+      return this;
+    }
+
+    /**
+     * Set the advertise.
+     *
+     * @param advertise the advertise
+     * @return the RoutePrototype builder
+     */
+    public Builder advertise(Boolean advertise) {
+      this.advertise = advertise;
       return this;
     }
 
@@ -172,6 +186,7 @@ public class RoutePrototype extends GenericModel {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.zone,
       "zone cannot be null");
     action = builder.action;
+    advertise = builder.advertise;
     destination = builder.destination;
     name = builder.name;
     nextHop = builder.nextHop;
@@ -201,6 +216,21 @@ public class RoutePrototype extends GenericModel {
    */
   public String action() {
     return action;
+  }
+
+  /**
+   * Gets the advertise.
+   *
+   * Indicates whether this route will be advertised to the ingress sources specified by the `advertise_routes_to`
+   * routing table property.
+   *
+   * All routes in a routing table with the same `destination` and `zone` must have the same
+   * `advertise` value.
+   *
+   * @return the advertise
+   */
+  public Boolean advertise() {
+    return advertise;
   }
 
   /**
@@ -263,8 +293,13 @@ public class RoutePrototype extends GenericModel {
   /**
    * Gets the zone.
    *
-   * The zone to apply the route to. (Traffic from subnets in this zone will be
-   * subject to this route.).
+   * The zone to apply the route to.
+   *
+   * If subnets are attached to the route's routing table, egress traffic from those
+   * subnets in this zone will be subject to this route. If this route's routing table
+   * has any of `route_direct_link_ingress`, `route_internet_ingress`,
+   * `route_transit_gateway_ingress` or `route_vpc_zone_ingress`  set to`true`, traffic
+   * from those ingress sources arriving in this zone will be subject to this route.
    *
    * @return the zone
    */

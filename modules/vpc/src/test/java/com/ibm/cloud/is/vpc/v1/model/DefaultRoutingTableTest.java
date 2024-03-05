@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021, 2022, 2023.
+ * (C) Copyright IBM Corp. 2022, 2023, 2024.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -38,6 +38,7 @@ public class DefaultRoutingTableTest {
   public void testDefaultRoutingTable() throws Throwable {
     DefaultRoutingTable defaultRoutingTableModel = new DefaultRoutingTable();
     assertNull(defaultRoutingTableModel.getAcceptRoutesFrom());
+    assertNull(defaultRoutingTableModel.getAdvertiseRoutesTo());
     assertNull(defaultRoutingTableModel.getCreatedAt());
     assertNull(defaultRoutingTableModel.getHref());
     assertNull(defaultRoutingTableModel.getId());

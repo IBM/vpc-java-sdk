@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021, 2022, 2023.
+ * (C) Copyright IBM Corp. 2022, 2023, 2024.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -36,11 +36,19 @@ public class ListSubnetReservedIpsOptionsTest {
       .start("testString")
       .limit(Long.valueOf("50"))
       .sort("name")
+      .targetId("testString")
+      .targetCrn("crn:v1:bluemix:public:is:us-south:a/123456::load-balancer:dd754295-e9e0-4c9d-bf6c-58fbc59e5727")
+      .targetName("my-resource")
+      .targetResourceType("testString")
       .build();
     assertEquals(listSubnetReservedIpsOptionsModel.subnetId(), "testString");
     assertEquals(listSubnetReservedIpsOptionsModel.start(), "testString");
     assertEquals(listSubnetReservedIpsOptionsModel.limit(), Long.valueOf("50"));
     assertEquals(listSubnetReservedIpsOptionsModel.sort(), "name");
+    assertEquals(listSubnetReservedIpsOptionsModel.targetId(), "testString");
+    assertEquals(listSubnetReservedIpsOptionsModel.targetCrn(), "crn:v1:bluemix:public:is:us-south:a/123456::load-balancer:dd754295-e9e0-4c9d-bf6c-58fbc59e5727");
+    assertEquals(listSubnetReservedIpsOptionsModel.targetName(), "my-resource");
+    assertEquals(listSubnetReservedIpsOptionsModel.targetResourceType(), "testString");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

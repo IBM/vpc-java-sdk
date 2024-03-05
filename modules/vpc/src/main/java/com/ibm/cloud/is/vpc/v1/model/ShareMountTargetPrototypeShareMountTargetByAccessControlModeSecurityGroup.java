@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021, 2022, 2023.
+ * (C) Copyright IBM Corp. 2022, 2023, 2024.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -13,8 +13,15 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 /**
- * The virtual network interface for this share mount target. The virtual network interface's VPC must not be used by a
- * virtual network interface for another mount target for this share.
+ * The virtual network interface for this share mount target. The virtual network interface must:
+ *
+ * - have `allow_ip_spoofing` set to `false`
+ * - have `enable_infrastructure_nat` set to `true`
+ * - not be in the same VPC as an existing mount target for this share
+ * - not have `ips` other than the `primary_ip` address
+ *
+ * If an existing virtual network interface is specified, it must not have a floating IP bound to it, and it must not be
+ * the target of a flow log collector.
  *
  * Required if the share's `access_control_mode` is `security_group`.
  */

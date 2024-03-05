@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021, 2022, 2023.
+ * (C) Copyright IBM Corp. 2022, 2023, 2024.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -32,6 +32,9 @@ public class ListInstancesOptions extends GenericModel {
   protected String placementGroupId;
   protected String placementGroupCrn;
   protected String placementGroupName;
+  protected String reservationId;
+  protected String reservationCrn;
+  protected String reservationName;
 
   /**
    * Builder.
@@ -50,6 +53,9 @@ public class ListInstancesOptions extends GenericModel {
     private String placementGroupId;
     private String placementGroupCrn;
     private String placementGroupName;
+    private String reservationId;
+    private String reservationCrn;
+    private String reservationName;
 
     /**
      * Instantiates a new Builder from an existing ListInstancesOptions instance.
@@ -70,6 +76,9 @@ public class ListInstancesOptions extends GenericModel {
       this.placementGroupId = listInstancesOptions.placementGroupId;
       this.placementGroupCrn = listInstancesOptions.placementGroupCrn;
       this.placementGroupName = listInstancesOptions.placementGroupName;
+      this.reservationId = listInstancesOptions.reservationId;
+      this.reservationCrn = listInstancesOptions.reservationCrn;
+      this.reservationName = listInstancesOptions.reservationName;
     }
 
     /**
@@ -229,6 +238,39 @@ public class ListInstancesOptions extends GenericModel {
       this.placementGroupName = placementGroupName;
       return this;
     }
+
+    /**
+     * Set the reservationId.
+     *
+     * @param reservationId the reservationId
+     * @return the ListInstancesOptions builder
+     */
+    public Builder reservationId(String reservationId) {
+      this.reservationId = reservationId;
+      return this;
+    }
+
+    /**
+     * Set the reservationCrn.
+     *
+     * @param reservationCrn the reservationCrn
+     * @return the ListInstancesOptions builder
+     */
+    public Builder reservationCrn(String reservationCrn) {
+      this.reservationCrn = reservationCrn;
+      return this;
+    }
+
+    /**
+     * Set the reservationName.
+     *
+     * @param reservationName the reservationName
+     * @return the ListInstancesOptions builder
+     */
+    public Builder reservationName(String reservationName) {
+      this.reservationName = reservationName;
+      return this;
+    }
   }
 
   protected ListInstancesOptions() { }
@@ -247,6 +289,9 @@ public class ListInstancesOptions extends GenericModel {
     placementGroupId = builder.placementGroupId;
     placementGroupCrn = builder.placementGroupCrn;
     placementGroupName = builder.placementGroupName;
+    reservationId = builder.reservationId;
+    reservationCrn = builder.reservationCrn;
+    reservationName = builder.reservationName;
   }
 
   /**
@@ -402,6 +447,39 @@ public class ListInstancesOptions extends GenericModel {
    */
   public String placementGroupName() {
     return placementGroupName;
+  }
+
+  /**
+   * Gets the reservationId.
+   *
+   * Filters the collection to instances with a `reservation.id` property matching the specified identifier.
+   *
+   * @return the reservationId
+   */
+  public String reservationId() {
+    return reservationId;
+  }
+
+  /**
+   * Gets the reservationCrn.
+   *
+   * Filters the collection to instances with a `reservation.crn` property matching the specified CRN.
+   *
+   * @return the reservationCrn
+   */
+  public String reservationCrn() {
+    return reservationCrn;
+  }
+
+  /**
+   * Gets the reservationName.
+   *
+   * Filters the collection to resources with a `reservation.name` property matching the exact specified name.
+   *
+   * @return the reservationName
+   */
+  public String reservationName() {
+    return reservationName;
   }
 }
 

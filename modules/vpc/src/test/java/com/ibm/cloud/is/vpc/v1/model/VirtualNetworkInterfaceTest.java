@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021, 2022, 2023.
+ * (C) Copyright IBM Corp. 2022, 2023, 2024.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -44,12 +44,16 @@ public class VirtualNetworkInterfaceTest {
   @Test
   public void testVirtualNetworkInterface() throws Throwable {
     VirtualNetworkInterface virtualNetworkInterfaceModel = new VirtualNetworkInterface();
+    assertNull(virtualNetworkInterfaceModel.isAllowIpSpoofing());
     assertNull(virtualNetworkInterfaceModel.isAutoDelete());
     assertNull(virtualNetworkInterfaceModel.getCreatedAt());
     assertNull(virtualNetworkInterfaceModel.getCrn());
+    assertNull(virtualNetworkInterfaceModel.isEnableInfrastructureNat());
     assertNull(virtualNetworkInterfaceModel.getHref());
     assertNull(virtualNetworkInterfaceModel.getId());
+    assertNull(virtualNetworkInterfaceModel.getIps());
     assertNull(virtualNetworkInterfaceModel.getLifecycleState());
+    assertNull(virtualNetworkInterfaceModel.getMacAddress());
     assertNull(virtualNetworkInterfaceModel.getName());
     assertNull(virtualNetworkInterfaceModel.getPrimaryIp());
     assertNull(virtualNetworkInterfaceModel.getResourceGroup());

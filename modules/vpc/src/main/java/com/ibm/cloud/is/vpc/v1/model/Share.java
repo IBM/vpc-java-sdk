@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021, 2022, 2023.
+ * (C) Copyright IBM Corp. 2022, 2023, 2024.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -92,6 +92,8 @@ public class Share extends GenericModel {
    *
    * * `active`: This share is actively participating in replication, and the replica's data is up-to-date with the
    * replication schedule.
+   * * `degraded`: This is share is participating in replication, but the replica's data has fallen behind the
+   * replication schedule.
    * * `failover_pending`: This share is performing a replication failover.
    * * `initializing`: This share is initializing replication.
    * * `none`: This share is not participating in replication.
@@ -100,6 +102,8 @@ public class Share extends GenericModel {
   public interface ReplicationStatus {
     /** active. */
     String ACTIVE = "active";
+    /** degraded. */
+    String DEGRADED = "degraded";
     /** failover_pending. */
     String FAILOVER_PENDING = "failover_pending";
     /** initializing. */
@@ -131,6 +135,8 @@ public class Share extends GenericModel {
   protected Long iops;
   @SerializedName("latest_job")
   protected ShareJob latestJob;
+  @SerializedName("latest_sync")
+  protected ShareLatestSync latestSync;
   @SerializedName("lifecycle_state")
   protected String lifecycleState;
   @SerializedName("mount_targets")
@@ -275,6 +281,20 @@ public class Share extends GenericModel {
   }
 
   /**
+   * Gets the latestSync.
+   *
+   * Information about the latest synchronization for this file share.
+   *
+   * This property will be present when the `replication_role` is `replica` and at least
+   * one replication sync has been completed.
+   *
+   * @return the latestSync
+   */
+  public ShareLatestSync getLatestSync() {
+    return latestSync;
+  }
+
+  /**
    * Gets the lifecycleState.
    *
    * The lifecycle state of the file share.
@@ -366,6 +386,8 @@ public class Share extends GenericModel {
    * The replication status of the file share.
    *
    * * `active`: This share is actively participating in replication, and the replica's data is up-to-date with the
+   * replication schedule.
+   * * `degraded`: This is share is participating in replication, but the replica's data has fallen behind the
    * replication schedule.
    * * `failover_pending`: This share is performing a replication failover.
    * * `initializing`: This share is initializing replication.

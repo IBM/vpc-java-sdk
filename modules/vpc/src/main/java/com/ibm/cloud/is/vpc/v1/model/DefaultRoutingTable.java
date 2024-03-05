@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021, 2022, 2023.
+ * (C) Copyright IBM Corp. 2022, 2023, 2024.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -22,6 +22,19 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  * DefaultRoutingTable.
  */
 public class DefaultRoutingTable extends GenericModel {
+
+  /**
+   * An ingress source that routes can be advertised to:
+   *
+   * - `direct_link` (requires `route_direct_link_ingress` be set to `true`)
+   * - `transit_gateway` (requires `route_transit_gateway_ingress` be set to `true`).
+   */
+  public interface AdvertiseRoutesTo {
+    /** direct_link. */
+    String DIRECT_LINK = "direct_link";
+    /** transit_gateway. */
+    String TRANSIT_GATEWAY = "transit_gateway";
+  }
 
   /**
    * The lifecycle state of the routing table.
@@ -53,6 +66,8 @@ public class DefaultRoutingTable extends GenericModel {
 
   @SerializedName("accept_routes_from")
   protected List<ResourceFilter> acceptRoutesFrom;
+  @SerializedName("advertise_routes_to")
+  protected List<String> advertiseRoutesTo;
   @SerializedName("created_at")
   protected Date createdAt;
   protected String href;
@@ -89,6 +104,22 @@ public class DefaultRoutingTable extends GenericModel {
    */
   public List<ResourceFilter> getAcceptRoutesFrom() {
     return acceptRoutesFrom;
+  }
+
+  /**
+   * Gets the advertiseRoutesTo.
+   *
+   * The ingress sources to advertise routes to. Routes in the table with `advertise` enabled will be advertised to
+   * these sources.
+   *
+   * The enumerated values for this property are expected to expand in the future. When processing this property, check
+   * for and log unknown values. Optionally halt processing and surface the error, or bypass the resource on which the
+   * unexpected property value was encountered.
+   *
+   * @return the advertiseRoutesTo
+   */
+  public List<String> getAdvertiseRoutesTo() {
+    return advertiseRoutesTo;
   }
 
   /**

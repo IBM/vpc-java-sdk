@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021, 2022, 2023.
+ * (C) Copyright IBM Corp. 2022, 2023, 2024.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -35,6 +35,10 @@ public class ListFloatingIpsOptions extends GenericModel {
   protected Long limit;
   protected String resourceGroupId;
   protected String sort;
+  protected String targetId;
+  protected String targetCrn;
+  protected String targetName;
+  protected String targetResourceType;
 
   /**
    * Builder.
@@ -44,6 +48,10 @@ public class ListFloatingIpsOptions extends GenericModel {
     private Long limit;
     private String resourceGroupId;
     private String sort;
+    private String targetId;
+    private String targetCrn;
+    private String targetName;
+    private String targetResourceType;
 
     /**
      * Instantiates a new Builder from an existing ListFloatingIpsOptions instance.
@@ -55,6 +63,10 @@ public class ListFloatingIpsOptions extends GenericModel {
       this.limit = listFloatingIpsOptions.limit;
       this.resourceGroupId = listFloatingIpsOptions.resourceGroupId;
       this.sort = listFloatingIpsOptions.sort;
+      this.targetId = listFloatingIpsOptions.targetId;
+      this.targetCrn = listFloatingIpsOptions.targetCrn;
+      this.targetName = listFloatingIpsOptions.targetName;
+      this.targetResourceType = listFloatingIpsOptions.targetResourceType;
     }
 
     /**
@@ -115,6 +127,50 @@ public class ListFloatingIpsOptions extends GenericModel {
       this.sort = sort;
       return this;
     }
+
+    /**
+     * Set the targetId.
+     *
+     * @param targetId the targetId
+     * @return the ListFloatingIpsOptions builder
+     */
+    public Builder targetId(String targetId) {
+      this.targetId = targetId;
+      return this;
+    }
+
+    /**
+     * Set the targetCrn.
+     *
+     * @param targetCrn the targetCrn
+     * @return the ListFloatingIpsOptions builder
+     */
+    public Builder targetCrn(String targetCrn) {
+      this.targetCrn = targetCrn;
+      return this;
+    }
+
+    /**
+     * Set the targetName.
+     *
+     * @param targetName the targetName
+     * @return the ListFloatingIpsOptions builder
+     */
+    public Builder targetName(String targetName) {
+      this.targetName = targetName;
+      return this;
+    }
+
+    /**
+     * Set the targetResourceType.
+     *
+     * @param targetResourceType the targetResourceType
+     * @return the ListFloatingIpsOptions builder
+     */
+    public Builder targetResourceType(String targetResourceType) {
+      this.targetResourceType = targetResourceType;
+      return this;
+    }
   }
 
   protected ListFloatingIpsOptions() { }
@@ -124,6 +180,10 @@ public class ListFloatingIpsOptions extends GenericModel {
     limit = builder.limit;
     resourceGroupId = builder.resourceGroupId;
     sort = builder.sort;
+    targetId = builder.targetId;
+    targetCrn = builder.targetCrn;
+    targetName = builder.targetName;
+    targetResourceType = builder.targetResourceType;
   }
 
   /**
@@ -179,6 +239,50 @@ public class ListFloatingIpsOptions extends GenericModel {
    */
   public String sort() {
     return sort;
+  }
+
+  /**
+   * Gets the targetId.
+   *
+   * Filters the collection to resources with a `target.id` property matching the specified identifier.
+   *
+   * @return the targetId
+   */
+  public String targetId() {
+    return targetId;
+  }
+
+  /**
+   * Gets the targetCrn.
+   *
+   * Filters the collection to resources with a `target.crn` property matching the specified CRN.
+   *
+   * @return the targetCrn
+   */
+  public String targetCrn() {
+    return targetCrn;
+  }
+
+  /**
+   * Gets the targetName.
+   *
+   * Filters the collection to resources with a `target.name` property matching the exact specified name.
+   *
+   * @return the targetName
+   */
+  public String targetName() {
+    return targetName;
+  }
+
+  /**
+   * Gets the targetResourceType.
+   *
+   * Filters the collection to resources with a `target.resource_type` property matching the specified value.
+   *
+   * @return the targetResourceType
+   */
+  public String targetResourceType() {
+    return targetResourceType;
   }
 }
 

@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021, 2022, 2023.
+ * (C) Copyright IBM Corp. 2022, 2023, 2024.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -18,7 +18,7 @@ import java.util.List;
 /**
  * VolumePrototypeInstanceBySourceSnapshotContext.
  */
-public class VolumePrototypeInstanceBySourceSnapshotContext extends VolumeAttachmentPrototypeInstanceWrapper {
+public class VolumePrototypeInstanceBySourceSnapshotContext extends VolumePrototypeInstance {
 
   /**
    * Builder.
@@ -76,9 +76,9 @@ public class VolumePrototypeInstanceBySourceSnapshotContext extends VolumeAttach
     }
 
     /**
-     * Adds an userTags to userTags.
+     * Adds a new element to userTags.
      *
-     * @param userTags the new userTags
+     * @param userTags the new element to be added
      * @return the VolumePrototypeInstanceBySourceSnapshotContext builder
      */
     public Builder addUserTags(String userTags) {

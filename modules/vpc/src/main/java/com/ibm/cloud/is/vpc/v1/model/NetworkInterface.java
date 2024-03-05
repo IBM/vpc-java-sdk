@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021, 2022, 2023.
+ * (C) Copyright IBM Corp. 2022, 2023, 2024.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -33,6 +33,10 @@ public class NetworkInterface extends GenericModel {
 
   /**
    * The status of the instance network interface.
+   *
+   * If this instance has network attachments, this network interface is a read-only representation of its corresponding
+   * network attachment and its attached virtual network interface, and the status is [computed from
+   * them](https://cloud.ibm.com/docs/vpc?topic=vpc-vni-about#vni-old-api-clients).
    */
   public interface Status {
     /** available. */
@@ -47,6 +51,11 @@ public class NetworkInterface extends GenericModel {
 
   /**
    * The instance network interface type.
+   *
+   * If this instance has network attachments, this network interface is a
+   * [read-only representation](https://cloud.ibm.com/docs/vpc?topic=vpc-vni-about#vni-old-api-clients) of its
+   * corresponding network attachment and its attached virtual network interface, and the type is that of its
+   * corresponding network attachment.
    */
   public interface Type {
     /** primary. */
@@ -83,6 +92,11 @@ public class NetworkInterface extends GenericModel {
    *
    * Indicates whether source IP spoofing is allowed on this instance network interface.
    *
+   * If this instance has network attachments, this network interface is a
+   * [read-only representation](https://cloud.ibm.com/docs/vpc?topic=vpc-vni-about#vni-old-api-clients) of its
+   * corresponding network attachment and its attached virtual network interface, and source IP spoofing is managed on
+   * the attached virtual network interface.
+   *
    * @return the allowIpSpoofing
    */
   public Boolean isAllowIpSpoofing() {
@@ -93,6 +107,10 @@ public class NetworkInterface extends GenericModel {
    * Gets the createdAt.
    *
    * The date and time that the instance network interface was created.
+   *
+   * If this instance has network attachments, this network interface was created as a [read-only
+   * representation](https://cloud.ibm.com/docs/vpc?topic=vpc-vni-about#vni-old-api-clients) when its corresponding
+   * network attachment was created.
    *
    * @return the createdAt
    */
@@ -105,6 +123,11 @@ public class NetworkInterface extends GenericModel {
    *
    * The floating IPs associated with this instance network interface.
    *
+   * If this instance has network attachments, this network interface is a
+   * [read-only representation](https://cloud.ibm.com/docs/vpc?topic=vpc-vni-about#vni-old-api-clients) of its
+   * corresponding network attachment and its attached virtual network interface, and the floating IPs are associated
+   * with the attached virtual network interface.
+   *
    * @return the floatingIps
    */
   public List<FloatingIPReference> getFloatingIps() {
@@ -115,6 +138,10 @@ public class NetworkInterface extends GenericModel {
    * Gets the href.
    *
    * The URL for this instance network interface.
+   *
+   * If this instance has network attachments, this network interface is a
+   * [read-only representation](https://cloud.ibm.com/docs/vpc?topic=vpc-vni-about#vni-old-api-clients) of its
+   * corresponding network attachment.
    *
    * @return the href
    */
@@ -127,6 +154,11 @@ public class NetworkInterface extends GenericModel {
    *
    * The unique identifier for this instance network interface.
    *
+   * If this instance has network attachments, this network interface is a
+   * [read-only representation](https://cloud.ibm.com/docs/vpc?topic=vpc-vni-about#vni-old-api-clients) of its
+   * corresponding network attachment and its attached virtual network interface, and the identifier is that of the
+   * corresponding network attachment.
+   *
    * @return the id
    */
   public String getId() {
@@ -138,6 +170,11 @@ public class NetworkInterface extends GenericModel {
    *
    * The name for this instance network interface.
    *
+   * If this instance has network attachments, this network interface is a
+   * [read-only representation](https://cloud.ibm.com/docs/vpc?topic=vpc-vni-about#vni-old-api-clients) of its
+   * corresponding network attachment and its attached virtual network interface, and the name matches its corresponding
+   * network attachment.
+   *
    * @return the name
    */
   public String getName() {
@@ -148,6 +185,11 @@ public class NetworkInterface extends GenericModel {
    * Gets the portSpeed.
    *
    * The instance network interface port speed in Mbps.
+   *
+   * If this instance has network attachments, this network interface is a
+   * [read-only representation](https://cloud.ibm.com/docs/vpc?topic=vpc-vni-about#vni-old-api-clients) of its
+   * corresponding network attachment and its attached virtual network interface, and the port speed is that of its
+   * corresponding network attachment.
    *
    * @return the portSpeed
    */
@@ -180,6 +222,11 @@ public class NetworkInterface extends GenericModel {
    *
    * The security groups targeting this instance network interface.
    *
+   * If this instance has network attachments, this network interface is a
+   * [read-only representation](https://cloud.ibm.com/docs/vpc?topic=vpc-vni-about#vni-old-api-clients) of its
+   * corresponding network attachment and its attached virtual network interface, and the security groups are associated
+   * with the attached virtual network interface.
+   *
    * @return the securityGroups
    */
   public List<SecurityGroupReference> getSecurityGroups() {
@@ -190,6 +237,10 @@ public class NetworkInterface extends GenericModel {
    * Gets the status.
    *
    * The status of the instance network interface.
+   *
+   * If this instance has network attachments, this network interface is a read-only representation of its corresponding
+   * network attachment and its attached virtual network interface, and the status is [computed from
+   * them](https://cloud.ibm.com/docs/vpc?topic=vpc-vni-about#vni-old-api-clients).
    *
    * @return the status
    */
@@ -212,6 +263,11 @@ public class NetworkInterface extends GenericModel {
    * Gets the type.
    *
    * The instance network interface type.
+   *
+   * If this instance has network attachments, this network interface is a
+   * [read-only representation](https://cloud.ibm.com/docs/vpc?topic=vpc-vni-about#vni-old-api-clients) of its
+   * corresponding network attachment and its attached virtual network interface, and the type is that of its
+   * corresponding network attachment.
    *
    * @return the type
    */

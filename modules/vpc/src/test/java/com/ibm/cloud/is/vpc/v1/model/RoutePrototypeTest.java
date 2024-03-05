@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021, 2022, 2023.
+ * (C) Copyright IBM Corp. 2022, 2023, 2024.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -45,6 +45,7 @@ public class RoutePrototypeTest {
 
     RoutePrototype routePrototypeModel = new RoutePrototype.Builder()
       .action("deliver")
+      .advertise(false)
       .destination("192.168.3.0/24")
       .name("my-route-1")
       .nextHop(routePrototypeNextHopModel)
@@ -52,6 +53,7 @@ public class RoutePrototypeTest {
       .zone(zoneIdentityModel)
       .build();
     assertEquals(routePrototypeModel.action(), "deliver");
+    assertEquals(routePrototypeModel.advertise(), Boolean.valueOf(false));
     assertEquals(routePrototypeModel.destination(), "192.168.3.0/24");
     assertEquals(routePrototypeModel.name(), "my-route-1");
     assertEquals(routePrototypeModel.nextHop(), routePrototypeNextHopModel);
@@ -63,6 +65,7 @@ public class RoutePrototypeTest {
     RoutePrototype routePrototypeModelNew = TestUtilities.deserialize(json, RoutePrototype.class);
     assertTrue(routePrototypeModelNew instanceof RoutePrototype);
     assertEquals(routePrototypeModelNew.action(), "deliver");
+    assertEquals(routePrototypeModelNew.advertise(), Boolean.valueOf(false));
     assertEquals(routePrototypeModelNew.destination(), "192.168.3.0/24");
     assertEquals(routePrototypeModelNew.name(), "my-route-1");
     assertEquals(routePrototypeModelNew.nextHop().toString(), routePrototypeNextHopModel.toString());

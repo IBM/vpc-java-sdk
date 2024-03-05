@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021, 2022, 2023.
+ * (C) Copyright IBM Corp. 2022, 2023, 2024.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -34,9 +34,11 @@ public class UpdateInstanceOptionsTest {
     UpdateInstanceOptions updateInstanceOptionsModel = new UpdateInstanceOptions.Builder()
       .id("testString")
       .instancePatch(java.util.Collections.singletonMap("anyKey", "anyValue"))
+      .ifMatch("W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"")
       .build();
     assertEquals(updateInstanceOptionsModel.id(), "testString");
     assertEquals(updateInstanceOptionsModel.instancePatch(), java.util.Collections.singletonMap("anyKey", "anyValue"));
+    assertEquals(updateInstanceOptionsModel.ifMatch(), "W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

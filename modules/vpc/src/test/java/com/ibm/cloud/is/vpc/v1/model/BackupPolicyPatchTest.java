@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021, 2022, 2023.
+ * (C) Copyright IBM Corp. 2022, 2023, 2024.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -33,9 +33,11 @@ public class BackupPolicyPatchTest {
   @Test
   public void testBackupPolicyPatch() throws Throwable {
     BackupPolicyPatch backupPolicyPatchModel = new BackupPolicyPatch.Builder()
+      .includedContent(java.util.Arrays.asList("data_volumes"))
       .matchUserTags(java.util.Arrays.asList("my-daily-backup-policy"))
       .name("my-backup-policy")
       .build();
+    assertEquals(backupPolicyPatchModel.includedContent(), java.util.Arrays.asList("data_volumes"));
     assertEquals(backupPolicyPatchModel.matchUserTags(), java.util.Arrays.asList("my-daily-backup-policy"));
     assertEquals(backupPolicyPatchModel.name(), "my-backup-policy");
 
@@ -48,12 +50,14 @@ public class BackupPolicyPatchTest {
   @Test
   public void testBackupPolicyPatchAsPatch() throws Throwable {
     BackupPolicyPatch backupPolicyPatchModel = new BackupPolicyPatch.Builder()
+      .includedContent(java.util.Arrays.asList("data_volumes"))
       .matchUserTags(java.util.Arrays.asList("my-daily-backup-policy"))
       .name("my-backup-policy")
       .build();
 
     Map<String, Object> mergePatch = backupPolicyPatchModel.asPatch();
 
+    assertTrue(mergePatch.containsKey("included_content"));
     assertTrue(mergePatch.containsKey("match_user_tags"));
     assertEquals(mergePatch.get("name"), "my-backup-policy");
   }

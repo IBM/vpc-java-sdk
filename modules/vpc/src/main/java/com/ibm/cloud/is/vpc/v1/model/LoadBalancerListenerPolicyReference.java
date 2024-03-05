@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021, 2022, 2023.
+ * (C) Copyright IBM Corp. 2022, 2023, 2024.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -22,7 +22,7 @@ public class LoadBalancerListenerPolicyReference extends GenericModel {
   protected LoadBalancerListenerPolicyReferenceDeleted deleted;
   protected String href;
   protected String id;
-  protected Object name;
+  protected String name;
 
   protected LoadBalancerListenerPolicyReference() { }
 
@@ -63,9 +63,12 @@ public class LoadBalancerListenerPolicyReference extends GenericModel {
   /**
    * Gets the name.
    *
+   * The name for this load balancer listener policy. The name is unique across all policies for the load balancer
+   * listener.
+   *
    * @return the name
    */
-  public Object getName() {
+  public String getName() {
     return name;
   }
 }

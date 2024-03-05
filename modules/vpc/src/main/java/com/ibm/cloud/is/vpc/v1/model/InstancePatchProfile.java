@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021, 2022, 2023.
+ * (C) Copyright IBM Corp. 2022, 2023, 2024.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -24,7 +24,8 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  *   instance is placed on a dedicated host, the requested profile `family` must be
  *   the same as the dedicated host `family`.
  * - Have the same `vcpu.architecture`.
- * - Support the number of network interfaces the instance currently has.
+ * - Support the number of network attachments or network interfaces the instance
+ *   currently has.
  *
  * Classes which extend this class:
  * - InstancePatchProfileInstanceProfileIdentityByName

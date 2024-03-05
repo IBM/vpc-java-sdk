@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021, 2022, 2023.
+ * (C) Copyright IBM Corp. 2022, 2023, 2024.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -36,23 +36,10 @@ public class BackupPolicyTest {
   final HashMap<String, InputStream> mockStreamMap = TestUtilities.createMockStreamMap();
   final List<FileWithMetadata> mockListFileWithMetadata = TestUtilities.creatMockListFileWithMetadata();
 
+  // TODO: Add tests for models that are abstract
   @Test
   public void testBackupPolicy() throws Throwable {
     BackupPolicy backupPolicyModel = new BackupPolicy();
-    assertNull(backupPolicyModel.getCreatedAt());
-    assertNull(backupPolicyModel.getCrn());
-    assertNull(backupPolicyModel.getHealthReasons());
-    assertNull(backupPolicyModel.getHealthState());
-    assertNull(backupPolicyModel.getHref());
-    assertNull(backupPolicyModel.getId());
-    assertNull(backupPolicyModel.getLastJobCompletedAt());
-    assertNull(backupPolicyModel.getLifecycleState());
-    assertNull(backupPolicyModel.getMatchResourceTypes());
-    assertNull(backupPolicyModel.getMatchUserTags());
-    assertNull(backupPolicyModel.getName());
-    assertNull(backupPolicyModel.getPlans());
-    assertNull(backupPolicyModel.getResourceGroup());
-    assertNull(backupPolicyModel.getResourceType());
-    assertNull(backupPolicyModel.getScope());
+    assertNotNull(backupPolicyModel);
   }
 }

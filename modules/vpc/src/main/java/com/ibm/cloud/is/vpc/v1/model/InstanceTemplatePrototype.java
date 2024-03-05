@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021, 2022, 2023.
+ * (C) Copyright IBM Corp. 2022, 2023, 2024.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -39,6 +39,8 @@ public class InstanceTemplatePrototype extends GenericModel {
   @SerializedName("placement_target")
   protected InstancePlacementTargetPrototype placementTarget;
   protected InstanceProfileIdentity profile;
+  @SerializedName("reservation_affinity")
+  protected InstanceReservationAffinityPrototype reservationAffinity;
   @SerializedName("resource_group")
   protected ResourceGroupIdentity resourceGroup;
   @SerializedName("total_volume_bandwidth")
@@ -49,13 +51,17 @@ public class InstanceTemplatePrototype extends GenericModel {
   protected List<VolumeAttachmentPrototype> volumeAttachments;
   protected VPCIdentity vpc;
   @SerializedName("boot_volume_attachment")
-  protected InstancePrototypeBootVolumeAttachmentWrapper bootVolumeAttachment;
+  protected VolumeAttachmentPrototypeInstance bootVolumeAttachment;
   protected ImageIdentity image;
+  protected ZoneIdentity zone;
+  @SerializedName("network_attachments")
+  protected List<InstanceNetworkAttachmentPrototype> networkAttachments;
+  @SerializedName("primary_network_attachment")
+  protected InstanceNetworkAttachmentPrototype primaryNetworkAttachment;
   @SerializedName("network_interfaces")
   protected List<NetworkInterfacePrototype> networkInterfaces;
   @SerializedName("primary_network_interface")
   protected NetworkInterfacePrototype primaryNetworkInterface;
-  protected ZoneIdentity zone;
   @SerializedName("catalog_offering")
   protected InstanceCatalogOfferingPrototype catalogOffering;
   @SerializedName("source_template")
@@ -140,6 +146,8 @@ public class InstanceTemplatePrototype extends GenericModel {
    *
    * The placement restrictions to use for the virtual server instance.
    *
+   * If specified, `reservation_affinity.policy` must be `disabled`.
+   *
    * @return the placementTarget
    */
   public InstancePlacementTargetPrototype placementTarget() {
@@ -159,6 +167,15 @@ public class InstanceTemplatePrototype extends GenericModel {
    */
   public InstanceProfileIdentity profile() {
     return profile;
+  }
+
+  /**
+   * Gets the reservationAffinity.
+   *
+   * @return the reservationAffinity
+   */
+  public InstanceReservationAffinityPrototype reservationAffinity() {
+    return reservationAffinity;
   }
 
   /**
@@ -215,7 +232,7 @@ public class InstanceTemplatePrototype extends GenericModel {
    * The VPC this virtual server instance will reside in.
    *
    * If specified, it must match the VPC for the subnets of the instance network
-   * interfaces.
+   * attachments or instance network interfaces.
    *
    * @return the vpc
    */
@@ -230,7 +247,7 @@ public class InstanceTemplatePrototype extends GenericModel {
    *
    * @return the bootVolumeAttachment
    */
-  public InstancePrototypeBootVolumeAttachmentWrapper bootVolumeAttachment() {
+  public VolumeAttachmentPrototypeInstance bootVolumeAttachment() {
     return bootVolumeAttachment;
   }
 
@@ -243,6 +260,39 @@ public class InstanceTemplatePrototype extends GenericModel {
    */
   public ImageIdentity image() {
     return image;
+  }
+
+  /**
+   * Gets the zone.
+   *
+   * The zone this virtual server instance will reside in.
+   *
+   * @return the zone
+   */
+  public ZoneIdentity zone() {
+    return zone;
+  }
+
+  /**
+   * Gets the networkAttachments.
+   *
+   * The additional network attachments to create for the virtual server instance.
+   *
+   * @return the networkAttachments
+   */
+  public List<InstanceNetworkAttachmentPrototype> networkAttachments() {
+    return networkAttachments;
+  }
+
+  /**
+   * Gets the primaryNetworkAttachment.
+   *
+   * The primary network attachment to create for the virtual server instance.
+   *
+   * @return the primaryNetworkAttachment
+   */
+  public InstanceNetworkAttachmentPrototype primaryNetworkAttachment() {
+    return primaryNetworkAttachment;
   }
 
   /**
@@ -265,17 +315,6 @@ public class InstanceTemplatePrototype extends GenericModel {
    */
   public NetworkInterfacePrototype primaryNetworkInterface() {
     return primaryNetworkInterface;
-  }
-
-  /**
-   * Gets the zone.
-   *
-   * The zone this virtual server instance will reside in.
-   *
-   * @return the zone
-   */
-  public ZoneIdentity zone() {
-    return zone;
   }
 
   /**

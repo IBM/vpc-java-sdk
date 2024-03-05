@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021, 2022, 2023.
+ * (C) Copyright IBM Corp. 2022, 2023, 2024.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -81,9 +81,9 @@ public class CreateInstanceNetworkInterfaceOptions extends GenericModel {
     }
 
     /**
-     * Adds an securityGroups to securityGroups.
+     * Adds a new element to securityGroups.
      *
-     * @param securityGroups the new securityGroups
+     * @param securityGroups the new element to be added
      * @return the CreateInstanceNetworkInterfaceOptions builder
      */
     public Builder addSecurityGroups(SecurityGroupIdentity securityGroups) {
@@ -229,6 +229,11 @@ public class CreateInstanceNetworkInterfaceOptions extends GenericModel {
    * Gets the allowIpSpoofing.
    *
    * Indicates whether source IP spoofing is allowed on this instance network interface.
+   *
+   * If this instance has network attachments, this network interface is a
+   * [read-only representation](https://cloud.ibm.com/docs/vpc?topic=vpc-vni-about#vni-old-api-clients) of its
+   * corresponding network attachment and its attached virtual network interface, and source IP spoofing is managed on
+   * the attached virtual network interface.
    *
    * @return the allowIpSpoofing
    */

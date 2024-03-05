@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021, 2022, 2023.
+ * (C) Copyright IBM Corp. 2022, 2023, 2024.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -23,6 +23,7 @@ import com.ibm.cloud.sdk.core.util.GsonSingleton;
  */
 public class RoutePatch extends GenericModel {
 
+  protected Boolean advertise;
   protected String name;
   @SerializedName("next_hop")
   protected RouteNextHopPatch nextHop;
@@ -32,6 +33,7 @@ public class RoutePatch extends GenericModel {
    * Builder.
    */
   public static class Builder {
+    private Boolean advertise;
     private String name;
     private RouteNextHopPatch nextHop;
     private Long priority;
@@ -42,6 +44,7 @@ public class RoutePatch extends GenericModel {
      * @param routePatch the instance to initialize the Builder with
      */
     private Builder(RoutePatch routePatch) {
+      this.advertise = routePatch.advertise;
       this.name = routePatch.name;
       this.nextHop = routePatch.nextHop;
       this.priority = routePatch.priority;
@@ -60,6 +63,17 @@ public class RoutePatch extends GenericModel {
      */
     public RoutePatch build() {
       return new RoutePatch(this);
+    }
+
+    /**
+     * Set the advertise.
+     *
+     * @param advertise the advertise
+     * @return the RoutePatch builder
+     */
+    public Builder advertise(Boolean advertise) {
+      this.advertise = advertise;
+      return this;
     }
 
     /**
@@ -99,6 +113,7 @@ public class RoutePatch extends GenericModel {
   protected RoutePatch() { }
 
   protected RoutePatch(Builder builder) {
+    advertise = builder.advertise;
     name = builder.name;
     nextHop = builder.nextHop;
     priority = builder.priority;
@@ -111,6 +126,23 @@ public class RoutePatch extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
+  }
+
+  /**
+   * Gets the advertise.
+   *
+   * Indicates whether this route will be advertised to the ingress sources specified by the `advertise_routes_to`
+   * routing table property.
+   *
+   * Since all routes in a routing table with the same `destination` and `zone` must have the same `advertise` value,
+   * this property can only be changed for routes with a unique
+   * `destination` and `zone` in the routing table. For more information, see [Advertising
+   * routes](https://cloud.ibm.com/docs/vpc?topic=vpc-about-custom-routes#rt-advertising-routes).
+   *
+   * @return the advertise
+   */
+  public Boolean advertise() {
+    return advertise;
   }
 
   /**

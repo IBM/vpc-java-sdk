@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021, 2022, 2023.
+ * (C) Copyright IBM Corp. 2022, 2023, 2024.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -33,6 +33,7 @@ public class ShareReference extends GenericModel {
   protected String href;
   protected String id;
   protected String name;
+  protected ShareRemote remote;
   @SerializedName("resource_type")
   protected String resourceType;
 
@@ -92,6 +93,18 @@ public class ShareReference extends GenericModel {
    */
   public String getName() {
     return name;
+  }
+
+  /**
+   * Gets the remote.
+   *
+   * If present, this property indicates that the resource associated with this reference
+   * is remote and therefore may not be directly retrievable.
+   *
+   * @return the remote
+   */
+  public ShareRemote getRemote() {
+    return remote;
   }
 
   /**

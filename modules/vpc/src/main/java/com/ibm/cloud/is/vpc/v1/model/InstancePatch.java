@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021, 2022, 2023.
+ * (C) Copyright IBM Corp. 2022, 2023, 2024.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -31,6 +31,8 @@ public class InstancePatch extends GenericModel {
   @SerializedName("placement_target")
   protected InstancePlacementTargetPatch placementTarget;
   protected InstancePatchProfile profile;
+  @SerializedName("reservation_affinity")
+  protected InstanceReservationAffinityPatch reservationAffinity;
   @SerializedName("total_volume_bandwidth")
   protected Long totalVolumeBandwidth;
 
@@ -43,6 +45,7 @@ public class InstancePatch extends GenericModel {
     private String name;
     private InstancePlacementTargetPatch placementTarget;
     private InstancePatchProfile profile;
+    private InstanceReservationAffinityPatch reservationAffinity;
     private Long totalVolumeBandwidth;
 
     /**
@@ -56,6 +59,7 @@ public class InstancePatch extends GenericModel {
       this.name = instancePatch.name;
       this.placementTarget = instancePatch.placementTarget;
       this.profile = instancePatch.profile;
+      this.reservationAffinity = instancePatch.reservationAffinity;
       this.totalVolumeBandwidth = instancePatch.totalVolumeBandwidth;
     }
 
@@ -130,6 +134,17 @@ public class InstancePatch extends GenericModel {
     }
 
     /**
+     * Set the reservationAffinity.
+     *
+     * @param reservationAffinity the reservationAffinity
+     * @return the InstancePatch builder
+     */
+    public Builder reservationAffinity(InstanceReservationAffinityPatch reservationAffinity) {
+      this.reservationAffinity = reservationAffinity;
+      return this;
+    }
+
+    /**
      * Set the totalVolumeBandwidth.
      *
      * @param totalVolumeBandwidth the totalVolumeBandwidth
@@ -149,6 +164,7 @@ public class InstancePatch extends GenericModel {
     name = builder.name;
     placementTarget = builder.placementTarget;
     profile = builder.profile;
+    reservationAffinity = builder.reservationAffinity;
     totalVolumeBandwidth = builder.totalVolumeBandwidth;
   }
 
@@ -201,6 +217,8 @@ public class InstancePatch extends GenericModel {
    * The placement restrictions to use for the virtual server instance. For the placement
    * restrictions to be changed, the instance `status` must be `stopping` or `stopped`.
    *
+   * If set, `reservation_affinity.policy` must be `disabled`.
+   *
    * @return the placementTarget
    */
   public InstancePlacementTargetPatch placementTarget() {
@@ -220,12 +238,22 @@ public class InstancePatch extends GenericModel {
    *   instance is placed on a dedicated host, the requested profile `family` must be
    *   the same as the dedicated host `family`.
    * - Have the same `vcpu.architecture`.
-   * - Support the number of network interfaces the instance currently has.
+   * - Support the number of network attachments or network interfaces the instance
+   *   currently has.
    *
    * @return the profile
    */
   public InstancePatchProfile profile() {
     return profile;
+  }
+
+  /**
+   * Gets the reservationAffinity.
+   *
+   * @return the reservationAffinity
+   */
+  public InstanceReservationAffinityPatch reservationAffinity() {
+    return reservationAffinity;
   }
 
   /**

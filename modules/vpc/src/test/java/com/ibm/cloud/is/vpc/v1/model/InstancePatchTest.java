@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021, 2022, 2023.
+ * (C) Copyright IBM Corp. 2022, 2023, 2024.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -18,6 +18,8 @@ import com.ibm.cloud.is.vpc.v1.model.InstanceMetadataServicePatch;
 import com.ibm.cloud.is.vpc.v1.model.InstancePatch;
 import com.ibm.cloud.is.vpc.v1.model.InstancePatchProfileInstanceProfileIdentityByName;
 import com.ibm.cloud.is.vpc.v1.model.InstancePlacementTargetPatchDedicatedHostIdentityDedicatedHostIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.InstanceReservationAffinityPatch;
+import com.ibm.cloud.is.vpc.v1.model.ReservationIdentityById;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -60,12 +62,25 @@ public class InstancePatchTest {
       .build();
     assertEquals(instancePatchProfileModel.name(), "bx2-4x16");
 
+    ReservationIdentityById reservationIdentityModel = new ReservationIdentityById.Builder()
+      .id("7187-ba49df72-37b8-43ac-98da-f8e029de0e63")
+      .build();
+    assertEquals(reservationIdentityModel.id(), "7187-ba49df72-37b8-43ac-98da-f8e029de0e63");
+
+    InstanceReservationAffinityPatch instanceReservationAffinityPatchModel = new InstanceReservationAffinityPatch.Builder()
+      .policy("disabled")
+      .pool(java.util.Arrays.asList(reservationIdentityModel))
+      .build();
+    assertEquals(instanceReservationAffinityPatchModel.policy(), "disabled");
+    assertEquals(instanceReservationAffinityPatchModel.pool(), java.util.Arrays.asList(reservationIdentityModel));
+
     InstancePatch instancePatchModel = new InstancePatch.Builder()
       .availabilityPolicy(instanceAvailabilityPolicyPatchModel)
       .metadataService(instanceMetadataServicePatchModel)
       .name("my-instance")
       .placementTarget(instancePlacementTargetPatchModel)
       .profile(instancePatchProfileModel)
+      .reservationAffinity(instanceReservationAffinityPatchModel)
       .totalVolumeBandwidth(Long.valueOf("500"))
       .build();
     assertEquals(instancePatchModel.availabilityPolicy(), instanceAvailabilityPolicyPatchModel);
@@ -73,6 +88,7 @@ public class InstancePatchTest {
     assertEquals(instancePatchModel.name(), "my-instance");
     assertEquals(instancePatchModel.placementTarget(), instancePlacementTargetPatchModel);
     assertEquals(instancePatchModel.profile(), instancePatchProfileModel);
+    assertEquals(instancePatchModel.reservationAffinity(), instanceReservationAffinityPatchModel);
     assertEquals(instancePatchModel.totalVolumeBandwidth(), Long.valueOf("500"));
 
     String json = TestUtilities.serialize(instancePatchModel);
@@ -84,6 +100,7 @@ public class InstancePatchTest {
     assertEquals(instancePatchModelNew.name(), "my-instance");
     assertEquals(instancePatchModelNew.placementTarget().toString(), instancePlacementTargetPatchModel.toString());
     assertEquals(instancePatchModelNew.profile().toString(), instancePatchProfileModel.toString());
+    assertEquals(instancePatchModelNew.reservationAffinity().toString(), instanceReservationAffinityPatchModel.toString());
     assertEquals(instancePatchModelNew.totalVolumeBandwidth(), Long.valueOf("500"));
   }
   @Test
@@ -106,12 +123,22 @@ public class InstancePatchTest {
       .name("bx2-4x16")
       .build();
 
+    ReservationIdentityById reservationIdentityModel = new ReservationIdentityById.Builder()
+      .id("7187-ba49df72-37b8-43ac-98da-f8e029de0e63")
+      .build();
+
+    InstanceReservationAffinityPatch instanceReservationAffinityPatchModel = new InstanceReservationAffinityPatch.Builder()
+      .policy("disabled")
+      .pool(java.util.Arrays.asList(reservationIdentityModel))
+      .build();
+
     InstancePatch instancePatchModel = new InstancePatch.Builder()
       .availabilityPolicy(instanceAvailabilityPolicyPatchModel)
       .metadataService(instanceMetadataServicePatchModel)
       .name("my-instance")
       .placementTarget(instancePlacementTargetPatchModel)
       .profile(instancePatchProfileModel)
+      .reservationAffinity(instanceReservationAffinityPatchModel)
       .totalVolumeBandwidth(Long.valueOf("500"))
       .build();
 
@@ -122,6 +149,7 @@ public class InstancePatchTest {
     assertEquals(mergePatch.get("name"), "my-instance");
     assertTrue(mergePatch.containsKey("placement_target"));
     assertTrue(mergePatch.containsKey("profile"));
+    assertTrue(mergePatch.containsKey("reservation_affinity"));
     assertTrue(mergePatch.containsKey("total_volume_bandwidth"));
   }
 

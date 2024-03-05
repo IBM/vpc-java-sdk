@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021, 2022, 2023.
+ * (C) Copyright IBM Corp. 2022, 2023, 2024.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -36,10 +36,18 @@ public class ListFloatingIpsOptionsTest {
       .limit(Long.valueOf("50"))
       .resourceGroupId("testString")
       .sort("name")
+      .targetId("testString")
+      .targetCrn("crn:v1:bluemix:public:is:us-south:a/123456::load-balancer:dd754295-e9e0-4c9d-bf6c-58fbc59e5727")
+      .targetName("my-resource")
+      .targetResourceType("testString")
       .build();
     assertEquals(listFloatingIpsOptionsModel.start(), "testString");
     assertEquals(listFloatingIpsOptionsModel.limit(), Long.valueOf("50"));
     assertEquals(listFloatingIpsOptionsModel.resourceGroupId(), "testString");
     assertEquals(listFloatingIpsOptionsModel.sort(), "name");
+    assertEquals(listFloatingIpsOptionsModel.targetId(), "testString");
+    assertEquals(listFloatingIpsOptionsModel.targetCrn(), "crn:v1:bluemix:public:is:us-south:a/123456::load-balancer:dd754295-e9e0-4c9d-bf6c-58fbc59e5727");
+    assertEquals(listFloatingIpsOptionsModel.targetName(), "my-resource");
+    assertEquals(listFloatingIpsOptionsModel.targetResourceType(), "testString");
   }
 }

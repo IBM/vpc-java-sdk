@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021, 2022, 2023.
+ * (C) Copyright IBM Corp. 2022, 2023, 2024.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -22,9 +22,17 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  *
  * Classes which extend this class:
  * - ShareMountTargetVirtualNetworkInterfacePrototypeVirtualNetworkInterfacePrototypeShareMountTargetContext
+ * - ShareMountTargetVirtualNetworkInterfacePrototypeVirtualNetworkInterfaceIdentity
  */
 public class ShareMountTargetVirtualNetworkInterfacePrototype extends GenericModel {
 
+  @SerializedName("allow_ip_spoofing")
+  protected Boolean allowIpSpoofing;
+  @SerializedName("auto_delete")
+  protected Boolean autoDelete;
+  @SerializedName("enable_infrastructure_nat")
+  protected Boolean enableInfrastructureNat;
+  protected List<VirtualNetworkInterfaceIPPrototype> ips;
   protected String name;
   @SerializedName("primary_ip")
   protected VirtualNetworkInterfacePrimaryIPPrototype primaryIp;
@@ -33,8 +41,74 @@ public class ShareMountTargetVirtualNetworkInterfacePrototype extends GenericMod
   @SerializedName("security_groups")
   protected List<SecurityGroupIdentity> securityGroups;
   protected SubnetIdentity subnet;
+  protected String id;
+  protected String href;
+  protected String crn;
 
   protected ShareMountTargetVirtualNetworkInterfacePrototype() { }
+
+  /**
+   * Gets the allowIpSpoofing.
+   *
+   * Indicates whether source IP spoofing is allowed on this interface. If `false`, source IP spoofing is prevented on
+   * this interface. If `true`, source IP spoofing is allowed on this interface.
+   *
+   * @return the allowIpSpoofing
+   */
+  public Boolean allowIpSpoofing() {
+    return allowIpSpoofing;
+  }
+
+  /**
+   * Gets the autoDelete.
+   *
+   * Indicates whether this virtual network interface will be automatically deleted when
+   * `target` is deleted.
+   *
+   * @return the autoDelete
+   */
+  public Boolean autoDelete() {
+    return autoDelete;
+  }
+
+  /**
+   * Gets the enableInfrastructureNat.
+   *
+   * If `true`:
+   * - The VPC infrastructure performs any needed NAT operations.
+   * - `floating_ips` must not have more than one floating IP.
+   *
+   * If `false`:
+   * - Packets are passed unchanged to/from the virtual network interface,
+   *   allowing the workload to perform any needed NAT operations.
+   * - `allow_ip_spoofing` must be `false`.
+   * - Can only be attached to a `target` with a `resource_type` of
+   *   `bare_metal_server_network_attachment`.
+   *
+   * @return the enableInfrastructureNat
+   */
+  public Boolean enableInfrastructureNat() {
+    return enableInfrastructureNat;
+  }
+
+  /**
+   * Gets the ips.
+   *
+   * Additional IP addresses to bind to the virtual network interface. Each item may be either a reserved IP identity,
+   * or a reserved IP prototype object which will be used to create a new reserved IP. All IP addresses must be in the
+   * primary IP's subnet.
+   *
+   * If reserved IP identities are provided, the specified reserved IPs must be unbound.
+   *
+   * If reserved IP prototype objects with addresses are provided, the addresses must be available on the virtual
+   * network interface's subnet. For any prototype objects that do not specify an address, an available address on the
+   * subnet will be automatically selected and reserved.
+   *
+   * @return the ips
+   */
+  public List<VirtualNetworkInterfaceIPPrototype> ips() {
+    return ips;
+  }
 
   /**
    * Gets the name.
@@ -102,6 +176,39 @@ public class ShareMountTargetVirtualNetworkInterfacePrototype extends GenericMod
    */
   public SubnetIdentity subnet() {
     return subnet;
+  }
+
+  /**
+   * Gets the id.
+   *
+   * The unique identifier for this virtual network interface.
+   *
+   * @return the id
+   */
+  public String id() {
+    return id;
+  }
+
+  /**
+   * Gets the href.
+   *
+   * The URL for this virtual network interface.
+   *
+   * @return the href
+   */
+  public String href() {
+    return href;
+  }
+
+  /**
+   * Gets the crn.
+   *
+   * The CRN for this virtual network interface.
+   *
+   * @return the crn
+   */
+  public String crn() {
+    return crn;
   }
 }
 

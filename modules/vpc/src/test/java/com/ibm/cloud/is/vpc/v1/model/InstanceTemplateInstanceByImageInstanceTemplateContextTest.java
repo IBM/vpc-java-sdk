@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021, 2022, 2023.
+ * (C) Copyright IBM Corp. 2022, 2023, 2024.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -18,18 +18,22 @@ import com.ibm.cloud.is.vpc.v1.model.ImageIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.InstanceAvailabilityPolicyPrototype;
 import com.ibm.cloud.is.vpc.v1.model.InstanceDefaultTrustedProfilePrototype;
 import com.ibm.cloud.is.vpc.v1.model.InstanceMetadataServicePrototype;
+import com.ibm.cloud.is.vpc.v1.model.InstanceNetworkAttachmentPrototype;
+import com.ibm.cloud.is.vpc.v1.model.InstanceNetworkAttachmentPrototypeVirtualNetworkInterfaceVirtualNetworkInterfacePrototypeInstanceNetworkAttachmentContext;
 import com.ibm.cloud.is.vpc.v1.model.InstancePlacementTargetPrototypeDedicatedHostIdentityDedicatedHostIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileIdentityByName;
+import com.ibm.cloud.is.vpc.v1.model.InstanceReservationAffinityPrototype;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateInstanceByImageInstanceTemplateContext;
 import com.ibm.cloud.is.vpc.v1.model.KeyIdentityById;
-import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceIPPrototypeReservedIPPrototypeNetworkInterfaceContext;
-import com.ibm.cloud.is.vpc.v1.model.NetworkInterfacePrototype;
+import com.ibm.cloud.is.vpc.v1.model.ReservationIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.SubnetIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.TrustedProfileIdentityTrustedProfileById;
 import com.ibm.cloud.is.vpc.v1.model.VPCIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.VirtualNetworkInterfaceIPPrototypeReservedIPPrototypeVirtualNetworkInterfaceIPsContext;
+import com.ibm.cloud.is.vpc.v1.model.VirtualNetworkInterfacePrimaryIPPrototypeReservedIPPrototypeVirtualNetworkInterfacePrimaryIPContext;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototype;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototypeInstanceByImageContext;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototypeVolumeVolumeIdentityVolumeIdentityById;
@@ -51,29 +55,10 @@ public class InstanceTemplateInstanceByImageInstanceTemplateContextTest {
   final HashMap<String, InputStream> mockStreamMap = TestUtilities.createMockStreamMap();
   final List<FileWithMetadata> mockListFileWithMetadata = TestUtilities.creatMockListFileWithMetadata();
 
+  // TODO: Add tests for models that are abstract
   @Test
   public void testInstanceTemplateInstanceByImageInstanceTemplateContext() throws Throwable {
     InstanceTemplateInstanceByImageInstanceTemplateContext instanceTemplateInstanceByImageInstanceTemplateContextModel = new InstanceTemplateInstanceByImageInstanceTemplateContext();
-    assertNull(instanceTemplateInstanceByImageInstanceTemplateContextModel.getAvailabilityPolicy());
-    assertNull(instanceTemplateInstanceByImageInstanceTemplateContextModel.getCreatedAt());
-    assertNull(instanceTemplateInstanceByImageInstanceTemplateContextModel.getCrn());
-    assertNull(instanceTemplateInstanceByImageInstanceTemplateContextModel.getDefaultTrustedProfile());
-    assertNull(instanceTemplateInstanceByImageInstanceTemplateContextModel.getHref());
-    assertNull(instanceTemplateInstanceByImageInstanceTemplateContextModel.getId());
-    assertNull(instanceTemplateInstanceByImageInstanceTemplateContextModel.getKeys());
-    assertNull(instanceTemplateInstanceByImageInstanceTemplateContextModel.getMetadataService());
-    assertNull(instanceTemplateInstanceByImageInstanceTemplateContextModel.getName());
-    assertNull(instanceTemplateInstanceByImageInstanceTemplateContextModel.getPlacementTarget());
-    assertNull(instanceTemplateInstanceByImageInstanceTemplateContextModel.getProfile());
-    assertNull(instanceTemplateInstanceByImageInstanceTemplateContextModel.getResourceGroup());
-    assertNull(instanceTemplateInstanceByImageInstanceTemplateContextModel.getTotalVolumeBandwidth());
-    assertNull(instanceTemplateInstanceByImageInstanceTemplateContextModel.getUserData());
-    assertNull(instanceTemplateInstanceByImageInstanceTemplateContextModel.getVolumeAttachments());
-    assertNull(instanceTemplateInstanceByImageInstanceTemplateContextModel.getVpc());
-    assertNull(instanceTemplateInstanceByImageInstanceTemplateContextModel.getBootVolumeAttachment());
-    assertNull(instanceTemplateInstanceByImageInstanceTemplateContextModel.getImage());
-    assertNull(instanceTemplateInstanceByImageInstanceTemplateContextModel.getNetworkInterfaces());
-    assertNull(instanceTemplateInstanceByImageInstanceTemplateContextModel.getPrimaryNetworkInterface());
-    assertNull(instanceTemplateInstanceByImageInstanceTemplateContextModel.getZone());
+    assertNotNull(instanceTemplateInstanceByImageInstanceTemplateContextModel);
   }
 }

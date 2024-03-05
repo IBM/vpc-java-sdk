@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021, 2022, 2023.
+ * (C) Copyright IBM Corp. 2022, 2023, 2024.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -40,6 +40,7 @@ public class RoutingTablePatchTest {
 
     RoutingTablePatch routingTablePatchModel = new RoutingTablePatch.Builder()
       .acceptRoutesFrom(java.util.Arrays.asList(resourceFilterModel))
+      .advertiseRoutesTo(java.util.Arrays.asList("transit_gateway"))
       .name("my-routing-table-2")
       .routeDirectLinkIngress(true)
       .routeInternetIngress(true)
@@ -47,6 +48,7 @@ public class RoutingTablePatchTest {
       .routeVpcZoneIngress(true)
       .build();
     assertEquals(routingTablePatchModel.acceptRoutesFrom(), java.util.Arrays.asList(resourceFilterModel));
+    assertEquals(routingTablePatchModel.advertiseRoutesTo(), java.util.Arrays.asList("transit_gateway"));
     assertEquals(routingTablePatchModel.name(), "my-routing-table-2");
     assertEquals(routingTablePatchModel.routeDirectLinkIngress(), Boolean.valueOf(true));
     assertEquals(routingTablePatchModel.routeInternetIngress(), Boolean.valueOf(true));
@@ -71,6 +73,7 @@ public class RoutingTablePatchTest {
 
     RoutingTablePatch routingTablePatchModel = new RoutingTablePatch.Builder()
       .acceptRoutesFrom(java.util.Arrays.asList(resourceFilterModel))
+      .advertiseRoutesTo(java.util.Arrays.asList("transit_gateway"))
       .name("my-routing-table-2")
       .routeDirectLinkIngress(true)
       .routeInternetIngress(true)
@@ -81,6 +84,7 @@ public class RoutingTablePatchTest {
     Map<String, Object> mergePatch = routingTablePatchModel.asPatch();
 
     assertTrue(mergePatch.containsKey("accept_routes_from"));
+    assertTrue(mergePatch.containsKey("advertise_routes_to"));
     assertEquals(mergePatch.get("name"), "my-routing-table-2");
     assertTrue(mergePatch.containsKey("route_direct_link_ingress"));
     assertTrue(mergePatch.containsKey("route_internet_ingress"));

@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021, 2022, 2023.
+ * (C) Copyright IBM Corp. 2022, 2023, 2024.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -17,6 +17,7 @@ import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanClonePolicyPrototype;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanDeletionTriggerPrototype;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanPrototype;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanRemoteRegionPolicyPrototype;
+import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPrototypeBackupPolicyMatchResourceTypeVolumePrototype;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyScopePrototypeEnterpriseIdentityEnterpriseIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.CreateBackupPolicyOptions;
 import com.ibm.cloud.is.vpc.v1.model.EncryptionKeyIdentityByCRN;
@@ -107,20 +108,25 @@ public class CreateBackupPolicyOptionsTest {
       .build();
     assertEquals(backupPolicyScopePrototypeModel.crn(), "crn:v1:bluemix:public:enterprise::a/123456::enterprise:ebc2b430240943458b9e91e1432cfcce");
 
-    CreateBackupPolicyOptions createBackupPolicyOptionsModel = new CreateBackupPolicyOptions.Builder()
+    BackupPolicyPrototypeBackupPolicyMatchResourceTypeVolumePrototype backupPolicyPrototypeModel = new BackupPolicyPrototypeBackupPolicyMatchResourceTypeVolumePrototype.Builder()
       .matchUserTags(java.util.Arrays.asList("my-daily-backup-policy"))
-      .matchResourceTypes(java.util.Arrays.asList("volume"))
       .name("my-backup-policy")
       .plans(java.util.Arrays.asList(backupPolicyPlanPrototypeModel))
       .resourceGroup(resourceGroupIdentityModel)
       .scope(backupPolicyScopePrototypeModel)
+      .matchResourceType("volume")
       .build();
-    assertEquals(createBackupPolicyOptionsModel.matchUserTags(), java.util.Arrays.asList("my-daily-backup-policy"));
-    assertEquals(createBackupPolicyOptionsModel.matchResourceTypes(), java.util.Arrays.asList("volume"));
-    assertEquals(createBackupPolicyOptionsModel.name(), "my-backup-policy");
-    assertEquals(createBackupPolicyOptionsModel.plans(), java.util.Arrays.asList(backupPolicyPlanPrototypeModel));
-    assertEquals(createBackupPolicyOptionsModel.resourceGroup(), resourceGroupIdentityModel);
-    assertEquals(createBackupPolicyOptionsModel.scope(), backupPolicyScopePrototypeModel);
+    assertEquals(backupPolicyPrototypeModel.matchUserTags(), java.util.Arrays.asList("my-daily-backup-policy"));
+    assertEquals(backupPolicyPrototypeModel.name(), "my-backup-policy");
+    assertEquals(backupPolicyPrototypeModel.plans(), java.util.Arrays.asList(backupPolicyPlanPrototypeModel));
+    assertEquals(backupPolicyPrototypeModel.resourceGroup(), resourceGroupIdentityModel);
+    assertEquals(backupPolicyPrototypeModel.scope(), backupPolicyScopePrototypeModel);
+    assertEquals(backupPolicyPrototypeModel.matchResourceType(), "volume");
+
+    CreateBackupPolicyOptions createBackupPolicyOptionsModel = new CreateBackupPolicyOptions.Builder()
+      .backupPolicyPrototype(backupPolicyPrototypeModel)
+      .build();
+    assertEquals(createBackupPolicyOptionsModel.backupPolicyPrototype(), backupPolicyPrototypeModel);
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

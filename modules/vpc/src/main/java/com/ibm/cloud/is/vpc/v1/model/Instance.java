@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021, 2022, 2023.
+ * (C) Copyright IBM Corp. 2022, 2023, 2024.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -22,6 +22,26 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  * Instance.
  */
 public class Instance extends GenericModel {
+
+  /**
+   * The health of this resource.
+   * - `ok`: No abnormal behavior detected
+   * - `degraded`: Experiencing compromised performance, capacity, or connectivity
+   * - `faulted`: Completely unreachable, inoperative, or otherwise entirely incapacitated
+   * - `inapplicable`: The health state does not apply because of the current lifecycle state. A resource with a
+   * lifecycle state of `failed` or `deleting` will have a health state of `inapplicable`. A `pending` resource may also
+   * have this state.
+   */
+  public interface HealthState {
+    /** degraded. */
+    String DEGRADED = "degraded";
+    /** faulted. */
+    String FAULTED = "faulted";
+    /** inapplicable. */
+    String INAPPLICABLE = "inapplicable";
+    /** ok. */
+    String OK = "ok";
+  }
 
   /**
    * The lifecycle state of the virtual server instance.
@@ -91,6 +111,10 @@ public class Instance extends GenericModel {
   protected DedicatedHostReference dedicatedHost;
   protected List<InstanceDisk> disks;
   protected InstanceGPU gpu;
+  @SerializedName("health_reasons")
+  protected List<InstanceHealthReason> healthReasons;
+  @SerializedName("health_state")
+  protected String healthState;
   protected String href;
   protected String id;
   protected ImageReference image;
@@ -102,15 +126,22 @@ public class Instance extends GenericModel {
   @SerializedName("metadata_service")
   protected InstanceMetadataService metadataService;
   protected String name;
+  @SerializedName("network_attachments")
+  protected List<InstanceNetworkAttachmentReference> networkAttachments;
   @SerializedName("network_interfaces")
   protected List<NetworkInterfaceInstanceContextReference> networkInterfaces;
   @SerializedName("numa_count")
   protected Long numaCount;
   @SerializedName("placement_target")
   protected InstancePlacementTarget placementTarget;
+  @SerializedName("primary_network_attachment")
+  protected InstanceNetworkAttachmentReference primaryNetworkAttachment;
   @SerializedName("primary_network_interface")
   protected NetworkInterfaceInstanceContextReference primaryNetworkInterface;
   protected InstanceProfileReference profile;
+  protected ReservationReference reservation;
+  @SerializedName("reservation_affinity")
+  protected InstanceReservationAffinity reservationAffinity;
   @SerializedName("resource_group")
   protected ResourceGroupReference resourceGroup;
   @SerializedName("resource_type")
@@ -145,8 +176,8 @@ public class Instance extends GenericModel {
   /**
    * Gets the bandwidth.
    *
-   * The total bandwidth (in megabits per second) shared across the instance network interfaces and storage volumes of
-   * virtual server instance.
+   * The total bandwidth (in megabits per second) shared across the instance network attachments or instance network
+   * interfaces and storage volumes of the virtual server instance.
    *
    * @return the bandwidth
    */
@@ -230,6 +261,43 @@ public class Instance extends GenericModel {
    */
   public InstanceGPU getGpu() {
     return gpu;
+  }
+
+  /**
+   * Gets the healthReasons.
+   *
+   * The reasons for the current instance `health_state` (if any):
+   * - `reservation_capacity_unavailable`: The reservation affinity pool has no
+   *   available capacity.
+   * - `reservation_deleted`: The reservation affinity pool has a deleted reservation.
+   * - `reservation_expired`: The reservation affinity pool has an expired reservation.
+   * - `reservation_failed`: The reservation affinity pool has a failed reservation.
+   *
+   * The enumerated reason code values for this property will expand in the future. When processing this property, check
+   * for and log unknown values. Optionally halt processing and surface the error, or bypass the resource on which the
+   * unexpected reason code was encountered.
+   *
+   * @return the healthReasons
+   */
+  public List<InstanceHealthReason> getHealthReasons() {
+    return healthReasons;
+  }
+
+  /**
+   * Gets the healthState.
+   *
+   * The health of this resource.
+   * - `ok`: No abnormal behavior detected
+   * - `degraded`: Experiencing compromised performance, capacity, or connectivity
+   * - `faulted`: Completely unreachable, inoperative, or otherwise entirely incapacitated
+   * - `inapplicable`: The health state does not apply because of the current lifecycle state. A resource with a
+   * lifecycle state of `failed` or `deleting` will have a health state of `inapplicable`. A `pending` resource may also
+   * have this state.
+   *
+   * @return the healthState
+   */
+  public String getHealthState() {
+    return healthState;
   }
 
   /**
@@ -325,9 +393,24 @@ public class Instance extends GenericModel {
   }
 
   /**
+   * Gets the networkAttachments.
+   *
+   * The network attachments for this virtual server instance, including the primary network attachment.
+   *
+   * @return the networkAttachments
+   */
+  public List<InstanceNetworkAttachmentReference> getNetworkAttachments() {
+    return networkAttachments;
+  }
+
+  /**
    * Gets the networkInterfaces.
    *
    * The network interfaces for this instance, including the primary network interface.
+   *
+   * If this instance has network attachments, each network interface is a [read-only
+   * representation](https://cloud.ibm.com/docs/vpc?topic=vpc-vni-about#vni-old-api-clients) of its corresponding
+   * network attachment and its attached virtual network interface.
    *
    * @return the networkInterfaces
    */
@@ -360,9 +443,25 @@ public class Instance extends GenericModel {
   }
 
   /**
+   * Gets the primaryNetworkAttachment.
+   *
+   * The primary network attachment for this virtual server instance.
+   *
+   * @return the primaryNetworkAttachment
+   */
+  public InstanceNetworkAttachmentReference getPrimaryNetworkAttachment() {
+    return primaryNetworkAttachment;
+  }
+
+  /**
    * Gets the primaryNetworkInterface.
    *
    * The primary network interface for this virtual server instance.
+   *
+   * If this instance has network attachments, this primary network interface is a
+   * [read-only
+   * representation](https://cloud.ibm.com/docs/vpc?topic=vpc-vni-about#vni-old-api-clients)
+   * of the primary network attachment and its attached virtual network interface.
    *
    * @return the primaryNetworkInterface
    */
@@ -380,6 +479,28 @@ public class Instance extends GenericModel {
    */
   public InstanceProfileReference getProfile() {
     return profile;
+  }
+
+  /**
+   * Gets the reservation.
+   *
+   * The reservation used by this virtual server instance.
+   *
+   * If absent, no reservation is in use.
+   *
+   * @return the reservation
+   */
+  public ReservationReference getReservation() {
+    return reservation;
+  }
+
+  /**
+   * Gets the reservationAffinity.
+   *
+   * @return the reservationAffinity
+   */
+  public InstanceReservationAffinity getReservationAffinity() {
+    return reservationAffinity;
   }
 
   /**
@@ -448,7 +569,8 @@ public class Instance extends GenericModel {
   /**
    * Gets the totalNetworkBandwidth.
    *
-   * The amount of bandwidth (in megabits per second) allocated exclusively to instance network interfaces.
+   * The amount of bandwidth (in megabits per second) allocated exclusively to instance network attachments or instance
+   * network interfaces.
    *
    * @return the totalNetworkBandwidth
    */

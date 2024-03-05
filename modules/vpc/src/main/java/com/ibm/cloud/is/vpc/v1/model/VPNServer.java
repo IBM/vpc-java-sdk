@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021, 2022, 2023.
+ * (C) Copyright IBM Corp. 2022, 2023, 2024.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -246,11 +246,11 @@ public class VPNServer extends GenericModel {
    *
    * The reasons for the current VPN server health_state (if any):
    * - `cannot_access_client_certificate`: VPN server's client certificate is inaccessible
-   *   (verify certificate exists and that IAM policies grant `VPN server for VPC` access to
-   *   `Secrets Manager`)
+   *   (verify certificate exists and that IAM policies grant `VPN server for VPC` access
+   *   to `Secrets Manager`)
    * - `cannot_access_server_certificate`: VPN server's server certificate is inaccessible
-   *   (verify certificate exists and that IAM policies grant `VPN server for VPC` access to
-   *   `Secrets Manager`)
+   *   (verify certificate exists and that IAM policies grant `VPN server for VPC` access
+   *   to `Secrets Manager`)
    * - `cannot_create_vpc_route`: VPN cannot create route (check for conflict)
    * - `cannot_reserve_ip_address`: IP address exhaustion (release addresses on the VPN's
    *   subnet)

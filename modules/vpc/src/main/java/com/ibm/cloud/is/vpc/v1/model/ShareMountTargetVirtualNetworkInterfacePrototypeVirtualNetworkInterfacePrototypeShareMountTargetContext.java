@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021, 2022, 2023.
+ * (C) Copyright IBM Corp. 2022, 2023, 2024.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -25,6 +25,10 @@ public class ShareMountTargetVirtualNetworkInterfacePrototypeVirtualNetworkInter
    * Builder.
    */
   public static class Builder {
+    private Boolean allowIpSpoofing;
+    private Boolean autoDelete;
+    private Boolean enableInfrastructureNat;
+    private List<VirtualNetworkInterfaceIPPrototype> ips;
     private String name;
     private VirtualNetworkInterfacePrimaryIPPrototype primaryIp;
     private ResourceGroupIdentity resourceGroup;
@@ -37,6 +41,10 @@ public class ShareMountTargetVirtualNetworkInterfacePrototypeVirtualNetworkInter
      * @param shareMountTargetVirtualNetworkInterfacePrototypeVirtualNetworkInterfacePrototypeShareMountTargetContext the instance to initialize the Builder with
      */
     public Builder(ShareMountTargetVirtualNetworkInterfacePrototype shareMountTargetVirtualNetworkInterfacePrototypeVirtualNetworkInterfacePrototypeShareMountTargetContext) {
+      this.allowIpSpoofing = shareMountTargetVirtualNetworkInterfacePrototypeVirtualNetworkInterfacePrototypeShareMountTargetContext.allowIpSpoofing;
+      this.autoDelete = shareMountTargetVirtualNetworkInterfacePrototypeVirtualNetworkInterfacePrototypeShareMountTargetContext.autoDelete;
+      this.enableInfrastructureNat = shareMountTargetVirtualNetworkInterfacePrototypeVirtualNetworkInterfacePrototypeShareMountTargetContext.enableInfrastructureNat;
+      this.ips = shareMountTargetVirtualNetworkInterfacePrototypeVirtualNetworkInterfacePrototypeShareMountTargetContext.ips;
       this.name = shareMountTargetVirtualNetworkInterfacePrototypeVirtualNetworkInterfacePrototypeShareMountTargetContext.name;
       this.primaryIp = shareMountTargetVirtualNetworkInterfacePrototypeVirtualNetworkInterfacePrototypeShareMountTargetContext.primaryIp;
       this.resourceGroup = shareMountTargetVirtualNetworkInterfacePrototypeVirtualNetworkInterfacePrototypeShareMountTargetContext.resourceGroup;
@@ -60,9 +68,25 @@ public class ShareMountTargetVirtualNetworkInterfacePrototypeVirtualNetworkInter
     }
 
     /**
-     * Adds an securityGroups to securityGroups.
+     * Adds a new element to ips.
      *
-     * @param securityGroups the new securityGroups
+     * @param ips the new element to be added
+     * @return the ShareMountTargetVirtualNetworkInterfacePrototypeVirtualNetworkInterfacePrototypeShareMountTargetContext builder
+     */
+    public Builder addIps(VirtualNetworkInterfaceIPPrototype ips) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(ips,
+        "ips cannot be null");
+      if (this.ips == null) {
+        this.ips = new ArrayList<VirtualNetworkInterfaceIPPrototype>();
+      }
+      this.ips.add(ips);
+      return this;
+    }
+
+    /**
+     * Adds a new element to securityGroups.
+     *
+     * @param securityGroups the new element to be added
      * @return the ShareMountTargetVirtualNetworkInterfacePrototypeVirtualNetworkInterfacePrototypeShareMountTargetContext builder
      */
     public Builder addSecurityGroups(SecurityGroupIdentity securityGroups) {
@@ -72,6 +96,51 @@ public class ShareMountTargetVirtualNetworkInterfacePrototypeVirtualNetworkInter
         this.securityGroups = new ArrayList<SecurityGroupIdentity>();
       }
       this.securityGroups.add(securityGroups);
+      return this;
+    }
+
+    /**
+     * Set the allowIpSpoofing.
+     *
+     * @param allowIpSpoofing the allowIpSpoofing
+     * @return the ShareMountTargetVirtualNetworkInterfacePrototypeVirtualNetworkInterfacePrototypeShareMountTargetContext builder
+     */
+    public Builder allowIpSpoofing(Boolean allowIpSpoofing) {
+      this.allowIpSpoofing = allowIpSpoofing;
+      return this;
+    }
+
+    /**
+     * Set the autoDelete.
+     *
+     * @param autoDelete the autoDelete
+     * @return the ShareMountTargetVirtualNetworkInterfacePrototypeVirtualNetworkInterfacePrototypeShareMountTargetContext builder
+     */
+    public Builder autoDelete(Boolean autoDelete) {
+      this.autoDelete = autoDelete;
+      return this;
+    }
+
+    /**
+     * Set the enableInfrastructureNat.
+     *
+     * @param enableInfrastructureNat the enableInfrastructureNat
+     * @return the ShareMountTargetVirtualNetworkInterfacePrototypeVirtualNetworkInterfacePrototypeShareMountTargetContext builder
+     */
+    public Builder enableInfrastructureNat(Boolean enableInfrastructureNat) {
+      this.enableInfrastructureNat = enableInfrastructureNat;
+      return this;
+    }
+
+    /**
+     * Set the ips.
+     * Existing ips will be replaced.
+     *
+     * @param ips the ips
+     * @return the ShareMountTargetVirtualNetworkInterfacePrototypeVirtualNetworkInterfacePrototypeShareMountTargetContext builder
+     */
+    public Builder ips(List<VirtualNetworkInterfaceIPPrototype> ips) {
+      this.ips = ips;
       return this;
     }
 
@@ -135,6 +204,10 @@ public class ShareMountTargetVirtualNetworkInterfacePrototypeVirtualNetworkInter
   protected ShareMountTargetVirtualNetworkInterfacePrototypeVirtualNetworkInterfacePrototypeShareMountTargetContext() { }
 
   protected ShareMountTargetVirtualNetworkInterfacePrototypeVirtualNetworkInterfacePrototypeShareMountTargetContext(Builder builder) {
+    allowIpSpoofing = builder.allowIpSpoofing;
+    autoDelete = builder.autoDelete;
+    enableInfrastructureNat = builder.enableInfrastructureNat;
+    ips = builder.ips;
     name = builder.name;
     primaryIp = builder.primaryIp;
     resourceGroup = builder.resourceGroup;

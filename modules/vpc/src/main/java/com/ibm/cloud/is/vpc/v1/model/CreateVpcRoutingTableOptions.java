@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021, 2022, 2023.
+ * (C) Copyright IBM Corp. 2022, 2023, 2024.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -22,8 +22,22 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class CreateVpcRoutingTableOptions extends GenericModel {
 
+  /**
+   * An ingress source that routes can be advertised to:
+   *
+   * - `direct_link` (requires `route_direct_link_ingress` be set to `true`)
+   * - `transit_gateway` (requires `route_transit_gateway_ingress` be set to `true`).
+   */
+  public interface AdvertiseRoutesTo {
+    /** direct_link. */
+    String DIRECT_LINK = "direct_link";
+    /** transit_gateway. */
+    String TRANSIT_GATEWAY = "transit_gateway";
+  }
+
   protected String vpcId;
   protected List<ResourceFilter> acceptRoutesFrom;
+  protected List<String> advertiseRoutesTo;
   protected String name;
   protected Boolean routeDirectLinkIngress;
   protected Boolean routeInternetIngress;
@@ -37,6 +51,7 @@ public class CreateVpcRoutingTableOptions extends GenericModel {
   public static class Builder {
     private String vpcId;
     private List<ResourceFilter> acceptRoutesFrom;
+    private List<String> advertiseRoutesTo;
     private String name;
     private Boolean routeDirectLinkIngress;
     private Boolean routeInternetIngress;
@@ -52,6 +67,7 @@ public class CreateVpcRoutingTableOptions extends GenericModel {
     private Builder(CreateVpcRoutingTableOptions createVpcRoutingTableOptions) {
       this.vpcId = createVpcRoutingTableOptions.vpcId;
       this.acceptRoutesFrom = createVpcRoutingTableOptions.acceptRoutesFrom;
+      this.advertiseRoutesTo = createVpcRoutingTableOptions.advertiseRoutesTo;
       this.name = createVpcRoutingTableOptions.name;
       this.routeDirectLinkIngress = createVpcRoutingTableOptions.routeDirectLinkIngress;
       this.routeInternetIngress = createVpcRoutingTableOptions.routeInternetIngress;
@@ -85,9 +101,9 @@ public class CreateVpcRoutingTableOptions extends GenericModel {
     }
 
     /**
-     * Adds an acceptRoutesFrom to acceptRoutesFrom.
+     * Adds a new element to acceptRoutesFrom.
      *
-     * @param acceptRoutesFrom the new acceptRoutesFrom
+     * @param acceptRoutesFrom the new element to be added
      * @return the CreateVpcRoutingTableOptions builder
      */
     public Builder addAcceptRoutesFrom(ResourceFilter acceptRoutesFrom) {
@@ -101,9 +117,25 @@ public class CreateVpcRoutingTableOptions extends GenericModel {
     }
 
     /**
-     * Adds an routes to routes.
+     * Adds a new element to advertiseRoutesTo.
      *
-     * @param routes the new routes
+     * @param advertiseRoutesTo the new element to be added
+     * @return the CreateVpcRoutingTableOptions builder
+     */
+    public Builder addAdvertiseRoutesTo(String advertiseRoutesTo) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(advertiseRoutesTo,
+        "advertiseRoutesTo cannot be null");
+      if (this.advertiseRoutesTo == null) {
+        this.advertiseRoutesTo = new ArrayList<String>();
+      }
+      this.advertiseRoutesTo.add(advertiseRoutesTo);
+      return this;
+    }
+
+    /**
+     * Adds a new element to routes.
+     *
+     * @param routes the new element to be added
      * @return the CreateVpcRoutingTableOptions builder
      */
     public Builder addRoutes(RoutePrototype routes) {
@@ -136,6 +168,18 @@ public class CreateVpcRoutingTableOptions extends GenericModel {
      */
     public Builder acceptRoutesFrom(List<ResourceFilter> acceptRoutesFrom) {
       this.acceptRoutesFrom = acceptRoutesFrom;
+      return this;
+    }
+
+    /**
+     * Set the advertiseRoutesTo.
+     * Existing advertiseRoutesTo will be replaced.
+     *
+     * @param advertiseRoutesTo the advertiseRoutesTo
+     * @return the CreateVpcRoutingTableOptions builder
+     */
+    public Builder advertiseRoutesTo(List<String> advertiseRoutesTo) {
+      this.advertiseRoutesTo = advertiseRoutesTo;
       return this;
     }
 
@@ -214,6 +258,7 @@ public class CreateVpcRoutingTableOptions extends GenericModel {
       "vpcId cannot be empty");
     vpcId = builder.vpcId;
     acceptRoutesFrom = builder.acceptRoutesFrom;
+    advertiseRoutesTo = builder.advertiseRoutesTo;
     name = builder.name;
     routeDirectLinkIngress = builder.routeDirectLinkIngress;
     routeInternetIngress = builder.routeInternetIngress;
@@ -254,6 +299,18 @@ public class CreateVpcRoutingTableOptions extends GenericModel {
    */
   public List<ResourceFilter> acceptRoutesFrom() {
     return acceptRoutesFrom;
+  }
+
+  /**
+   * Gets the advertiseRoutesTo.
+   *
+   * The ingress sources to advertise routes to. Routes in the table with `advertise` enabled will be advertised to
+   * these sources.
+   *
+   * @return the advertiseRoutesTo
+   */
+  public List<String> advertiseRoutesTo() {
+    return advertiseRoutesTo;
   }
 
   /**

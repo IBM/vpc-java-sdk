@@ -1,0 +1,51 @@
+/*
+ * (C) Copyright IBM Corp. 2022, 2023, 2024.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ */
+
+package com.ibm.cloud.is.vpc.v1.model;
+
+import com.ibm.cloud.is.vpc.v1.model.VirtualNetworkInterfaceIPPrototypeReservedIPPrototypeVirtualNetworkInterfaceIPsContext;
+import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
+import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
+import java.io.InputStream;
+import java.util.HashMap;
+import java.util.List;
+import org.testng.annotations.Test;
+import static org.testng.Assert.*;
+
+/**
+ * Unit test class for the VirtualNetworkInterfaceIPPrototypeReservedIPPrototypeVirtualNetworkInterfaceIPsContext model.
+ */
+public class VirtualNetworkInterfaceIPPrototypeReservedIPPrototypeVirtualNetworkInterfaceIPsContextTest {
+  final HashMap<String, InputStream> mockStreamMap = TestUtilities.createMockStreamMap();
+  final List<FileWithMetadata> mockListFileWithMetadata = TestUtilities.creatMockListFileWithMetadata();
+
+  @Test
+  public void testVirtualNetworkInterfaceIPPrototypeReservedIPPrototypeVirtualNetworkInterfaceIPsContext() throws Throwable {
+    VirtualNetworkInterfaceIPPrototypeReservedIPPrototypeVirtualNetworkInterfaceIPsContext virtualNetworkInterfaceIpPrototypeReservedIpPrototypeVirtualNetworkInterfaceIPsContextModel = new VirtualNetworkInterfaceIPPrototypeReservedIPPrototypeVirtualNetworkInterfaceIPsContext.Builder()
+      .address("192.168.3.4")
+      .autoDelete(false)
+      .name("my-reserved-ip")
+      .build();
+    assertEquals(virtualNetworkInterfaceIpPrototypeReservedIpPrototypeVirtualNetworkInterfaceIPsContextModel.address(), "192.168.3.4");
+    assertEquals(virtualNetworkInterfaceIpPrototypeReservedIpPrototypeVirtualNetworkInterfaceIPsContextModel.autoDelete(), Boolean.valueOf(false));
+    assertEquals(virtualNetworkInterfaceIpPrototypeReservedIpPrototypeVirtualNetworkInterfaceIPsContextModel.name(), "my-reserved-ip");
+
+    String json = TestUtilities.serialize(virtualNetworkInterfaceIpPrototypeReservedIpPrototypeVirtualNetworkInterfaceIPsContextModel);
+
+    VirtualNetworkInterfaceIPPrototypeReservedIPPrototypeVirtualNetworkInterfaceIPsContext virtualNetworkInterfaceIpPrototypeReservedIpPrototypeVirtualNetworkInterfaceIPsContextModelNew = TestUtilities.deserialize(json, VirtualNetworkInterfaceIPPrototypeReservedIPPrototypeVirtualNetworkInterfaceIPsContext.class);
+    assertTrue(virtualNetworkInterfaceIpPrototypeReservedIpPrototypeVirtualNetworkInterfaceIPsContextModelNew instanceof VirtualNetworkInterfaceIPPrototypeReservedIPPrototypeVirtualNetworkInterfaceIPsContext);
+    assertEquals(virtualNetworkInterfaceIpPrototypeReservedIpPrototypeVirtualNetworkInterfaceIPsContextModelNew.address(), "192.168.3.4");
+    assertEquals(virtualNetworkInterfaceIpPrototypeReservedIpPrototypeVirtualNetworkInterfaceIPsContextModelNew.autoDelete(), Boolean.valueOf(false));
+    assertEquals(virtualNetworkInterfaceIpPrototypeReservedIpPrototypeVirtualNetworkInterfaceIPsContextModelNew.name(), "my-reserved-ip");
+  }
+}
