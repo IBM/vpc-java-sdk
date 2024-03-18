@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021, 2022, 2023.
+ * (C) Copyright IBM Corp. 2022, 2023, 2024.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -70,9 +70,9 @@ public class BareMetalServerNetworkInterfacePatch extends GenericModel {
     }
 
     /**
-     * Adds an allowedVlans to allowedVlans.
+     * Adds a new element to allowedVlans.
      *
-     * @param allowedVlans the new allowedVlans
+     * @param allowedVlans the new element to be added
      * @return the BareMetalServerNetworkInterfacePatch builder
      */
     public Builder addAllowedVlans(Long allowedVlans) {
@@ -154,6 +154,11 @@ public class BareMetalServerNetworkInterfacePatch extends GenericModel {
    *
    * Indicates whether source IP spoofing is allowed on this bare metal server network interface.
    *
+   * If this bare metal server has network attachments, this network interface is a
+   * [read-only representation](https://cloud.ibm.com/docs/vpc?topic=vpc-vni-about#vni-old-api-clients) of its
+   * corresponding network attachment and its attached virtual network interface, and source IP spoofing is managed on
+   * the attached virtual network interface.
+   *
    * @return the allowIpSpoofing
    */
   public Boolean allowIpSpoofing() {
@@ -184,6 +189,11 @@ public class BareMetalServerNetworkInterfacePatch extends GenericModel {
    *   allowing the workload to perform any needed NAT operations.
    * - `allow_ip_spoofing` must be `false`.
    * - `interface_type` must not be `hipersocket`.
+   *
+   * If this bare metal server has network attachments, this network interface is a
+   * [read-only representation](https://cloud.ibm.com/docs/vpc?topic=vpc-vni-about#vni-old-api-clients) of its
+   * corresponding network attachment and its attached virtual network interface, and infrastructure NAT is managed on
+   * the attached virtual network interface.
    *
    * @return the enableInfrastructureNat
    */

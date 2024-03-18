@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021, 2022, 2023.
+ * (C) Copyright IBM Corp. 2022, 2023, 2024.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -45,6 +45,9 @@ public class ListInstancesOptionsTest {
       .placementGroupId("testString")
       .placementGroupCrn("crn:v1:bluemix:public:is:us-south:a/123456::placement-group:r018-418fe842-a3e9-47b9-a938-1aa5bd632871")
       .placementGroupName("my-placement-group")
+      .reservationId("testString")
+      .reservationCrn("crn:v1:bluemix:public:is:us-south:a/123456::reservation:7187-ba49df72-37b8-43ac-98da-f8e029de0e63")
+      .reservationName("my-reservation")
       .build();
     assertEquals(listInstancesOptionsModel.start(), "testString");
     assertEquals(listInstancesOptionsModel.limit(), Long.valueOf("50"));
@@ -59,5 +62,8 @@ public class ListInstancesOptionsTest {
     assertEquals(listInstancesOptionsModel.placementGroupId(), "testString");
     assertEquals(listInstancesOptionsModel.placementGroupCrn(), "crn:v1:bluemix:public:is:us-south:a/123456::placement-group:r018-418fe842-a3e9-47b9-a938-1aa5bd632871");
     assertEquals(listInstancesOptionsModel.placementGroupName(), "my-placement-group");
+    assertEquals(listInstancesOptionsModel.reservationId(), "testString");
+    assertEquals(listInstancesOptionsModel.reservationCrn(), "crn:v1:bluemix:public:is:us-south:a/123456::reservation:7187-ba49df72-37b8-43ac-98da-f8e029de0e63");
+    assertEquals(listInstancesOptionsModel.reservationName(), "my-reservation");
   }
 }

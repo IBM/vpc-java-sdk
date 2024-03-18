@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021, 2022, 2023.
+ * (C) Copyright IBM Corp. 2022, 2023, 2024.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -12,7 +12,6 @@
  */
 package com.ibm.cloud.is.vpc.v1.model;
 
-
 /**
  * Identifies a volume by a unique property.
  *
@@ -21,7 +20,7 @@ package com.ibm.cloud.is.vpc.v1.model;
  * - VolumeIdentityByCRN
  * - VolumeIdentityByHref
  */
-public class VolumeIdentity extends VolumeAttachmentPrototypeInstanceWrapper {
+public class VolumeIdentity extends VolumePrototypeInstance {
 
   protected VolumeIdentity() { }
 

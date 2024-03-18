@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021, 2022, 2023.
+ * (C) Copyright IBM Corp. 2022, 2023, 2024.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -27,9 +27,11 @@ import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileDiskQuantityFixed;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileDiskSizeFixed;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileDiskSupportedInterfaces;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileMemoryFixed;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileNetworkAttachmentCountRange;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileNetworkInterfaceCountRange;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileOSArchitecture;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileSupportedTrustedPlatformModuleModes;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileVirtualNetworkInterfacesSupported;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;

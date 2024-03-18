@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021, 2022, 2023.
+ * (C) Copyright IBM Corp. 2022, 2023, 2024.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -14,6 +14,7 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 import java.util.Map;
 
+import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 import com.ibm.cloud.sdk.core.util.GsonSingleton;
 
@@ -22,12 +23,21 @@ import com.ibm.cloud.sdk.core.util.GsonSingleton;
  */
 public class VirtualNetworkInterfacePatch extends GenericModel {
 
+  @SerializedName("allow_ip_spoofing")
+  protected Boolean allowIpSpoofing;
+  @SerializedName("auto_delete")
+  protected Boolean autoDelete;
+  @SerializedName("enable_infrastructure_nat")
+  protected Boolean enableInfrastructureNat;
   protected String name;
 
   /**
    * Builder.
    */
   public static class Builder {
+    private Boolean allowIpSpoofing;
+    private Boolean autoDelete;
+    private Boolean enableInfrastructureNat;
     private String name;
 
     /**
@@ -36,6 +46,9 @@ public class VirtualNetworkInterfacePatch extends GenericModel {
      * @param virtualNetworkInterfacePatch the instance to initialize the Builder with
      */
     private Builder(VirtualNetworkInterfacePatch virtualNetworkInterfacePatch) {
+      this.allowIpSpoofing = virtualNetworkInterfacePatch.allowIpSpoofing;
+      this.autoDelete = virtualNetworkInterfacePatch.autoDelete;
+      this.enableInfrastructureNat = virtualNetworkInterfacePatch.enableInfrastructureNat;
       this.name = virtualNetworkInterfacePatch.name;
     }
 
@@ -55,6 +68,39 @@ public class VirtualNetworkInterfacePatch extends GenericModel {
     }
 
     /**
+     * Set the allowIpSpoofing.
+     *
+     * @param allowIpSpoofing the allowIpSpoofing
+     * @return the VirtualNetworkInterfacePatch builder
+     */
+    public Builder allowIpSpoofing(Boolean allowIpSpoofing) {
+      this.allowIpSpoofing = allowIpSpoofing;
+      return this;
+    }
+
+    /**
+     * Set the autoDelete.
+     *
+     * @param autoDelete the autoDelete
+     * @return the VirtualNetworkInterfacePatch builder
+     */
+    public Builder autoDelete(Boolean autoDelete) {
+      this.autoDelete = autoDelete;
+      return this;
+    }
+
+    /**
+     * Set the enableInfrastructureNat.
+     *
+     * @param enableInfrastructureNat the enableInfrastructureNat
+     * @return the VirtualNetworkInterfacePatch builder
+     */
+    public Builder enableInfrastructureNat(Boolean enableInfrastructureNat) {
+      this.enableInfrastructureNat = enableInfrastructureNat;
+      return this;
+    }
+
+    /**
      * Set the name.
      *
      * @param name the name
@@ -69,6 +115,9 @@ public class VirtualNetworkInterfacePatch extends GenericModel {
   protected VirtualNetworkInterfacePatch() { }
 
   protected VirtualNetworkInterfacePatch(Builder builder) {
+    allowIpSpoofing = builder.allowIpSpoofing;
+    autoDelete = builder.autoDelete;
+    enableInfrastructureNat = builder.enableInfrastructureNat;
     name = builder.name;
   }
 
@@ -82,9 +131,55 @@ public class VirtualNetworkInterfacePatch extends GenericModel {
   }
 
   /**
+   * Gets the allowIpSpoofing.
+   *
+   * Indicates whether source IP spoofing is allowed on this interface.
+   *
+   * Must be `false` if `target` is a file share mount target.
+   *
+   * @return the allowIpSpoofing
+   */
+  public Boolean allowIpSpoofing() {
+    return allowIpSpoofing;
+  }
+
+  /**
+   * Gets the autoDelete.
+   *
+   * Indicates whether this virtual network interface will be automatically deleted when
+   * `target` is deleted. Must be `false` if the virtual network interface is unbound.
+   *
+   * @return the autoDelete
+   */
+  public Boolean autoDelete() {
+    return autoDelete;
+  }
+
+  /**
+   * Gets the enableInfrastructureNat.
+   *
+   * If `true`:
+   * - The VPC infrastructure performs any needed NAT operations.
+   * - `floating_ips` must not have more than one floating IP.
+   *
+   * If `false`:
+   * - Packets are passed unchanged to/from the virtual network interface,
+   *   allowing the workload to perform any needed NAT operations.
+   * - `allow_ip_spoofing` must be `false`.
+   * - Can only be attached to a `target` with a `resource_type` of
+   *   `bare_metal_server_network_attachment`.
+   *
+   * @return the enableInfrastructureNat
+   */
+  public Boolean enableInfrastructureNat() {
+    return enableInfrastructureNat;
+  }
+
+  /**
    * Gets the name.
    *
-   * The name for this virtual network interface. The name is unique across all virtual network interfaces in the VPC.
+   * The name for this virtual network interface. The name must not be used by another virtual network interface in the
+   * region. Names beginning with `ibm-` are reserved for provider-owned resources, and are not allowed.
    *
    * @return the name
    */

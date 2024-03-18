@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021, 2022, 2023.
+ * (C) Copyright IBM Corp. 2022, 2023, 2024.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -14,18 +14,21 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerInitializationPrototype;
-import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByHiperSocketPrototype;
-import com.ibm.cloud.is.vpc.v1.model.BareMetalServerPrimaryNetworkInterfacePrototype;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkAttachmentPrototypeBareMetalServerNetworkAttachmentByPCIPrototype;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkAttachmentPrototypeVirtualNetworkInterfaceVirtualNetworkInterfacePrototypeBareMetalServerNetworkAttachmentContext;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerPrimaryNetworkAttachmentPrototypeBareMetalServerPrimaryNetworkAttachmentByPCIPrototype;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileIdentityByName;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerPrototypeBareMetalServerByNetworkAttachment;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerTrustedPlatformModulePrototype;
 import com.ibm.cloud.is.vpc.v1.model.CreateBareMetalServerOptions;
 import com.ibm.cloud.is.vpc.v1.model.ImageIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.KeyIdentityById;
-import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceIPPrototypeReservedIPPrototypeNetworkInterfaceContext;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.SubnetIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.VPCIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.VirtualNetworkInterfaceIPPrototypeReservedIPPrototypeVirtualNetworkInterfaceIPsContext;
+import com.ibm.cloud.is.vpc.v1.model.VirtualNetworkInterfacePrimaryIPPrototypeReservedIPPrototypeVirtualNetworkInterfacePrimaryIPContext;
 import com.ibm.cloud.is.vpc.v1.model.ZoneIdentityByName;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
@@ -63,70 +66,10 @@ public class CreateBareMetalServerOptionsTest {
     assertEquals(bareMetalServerInitializationPrototypeModel.keys(), java.util.Arrays.asList(keyIdentityModel));
     assertEquals(bareMetalServerInitializationPrototypeModel.userData(), "testString");
 
-    NetworkInterfaceIPPrototypeReservedIPPrototypeNetworkInterfaceContext networkInterfaceIpPrototypeModel = new NetworkInterfaceIPPrototypeReservedIPPrototypeNetworkInterfaceContext.Builder()
-      .address("10.0.0.5")
-      .autoDelete(false)
-      .name("my-reserved-ip")
-      .build();
-    assertEquals(networkInterfaceIpPrototypeModel.address(), "10.0.0.5");
-    assertEquals(networkInterfaceIpPrototypeModel.autoDelete(), Boolean.valueOf(false));
-    assertEquals(networkInterfaceIpPrototypeModel.name(), "my-reserved-ip");
-
-    SecurityGroupIdentityById securityGroupIdentityModel = new SecurityGroupIdentityById.Builder()
-      .id("be5df5ca-12a0-494b-907e-aa6ec2bfa271")
-      .build();
-    assertEquals(securityGroupIdentityModel.id(), "be5df5ca-12a0-494b-907e-aa6ec2bfa271");
-
-    SubnetIdentityById subnetIdentityModel = new SubnetIdentityById.Builder()
-      .id("7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
-      .build();
-    assertEquals(subnetIdentityModel.id(), "7ec86020-1c6e-4889-b3f0-a15f2e50f87e");
-
-    BareMetalServerPrimaryNetworkInterfacePrototype bareMetalServerPrimaryNetworkInterfacePrototypeModel = new BareMetalServerPrimaryNetworkInterfacePrototype.Builder()
-      .allowIpSpoofing(true)
-      .allowedVlans(java.util.Arrays.asList(Long.valueOf("4")))
-      .enableInfrastructureNat(true)
-      .interfaceType("pci")
-      .name("my-bare-metal-server-network-interface")
-      .primaryIp(networkInterfaceIpPrototypeModel)
-      .securityGroups(java.util.Arrays.asList(securityGroupIdentityModel))
-      .subnet(subnetIdentityModel)
-      .build();
-    assertEquals(bareMetalServerPrimaryNetworkInterfacePrototypeModel.allowIpSpoofing(), Boolean.valueOf(true));
-    assertEquals(bareMetalServerPrimaryNetworkInterfacePrototypeModel.allowedVlans(), java.util.Arrays.asList(Long.valueOf("4")));
-    assertEquals(bareMetalServerPrimaryNetworkInterfacePrototypeModel.enableInfrastructureNat(), Boolean.valueOf(true));
-    assertEquals(bareMetalServerPrimaryNetworkInterfacePrototypeModel.interfaceType(), "pci");
-    assertEquals(bareMetalServerPrimaryNetworkInterfacePrototypeModel.name(), "my-bare-metal-server-network-interface");
-    assertEquals(bareMetalServerPrimaryNetworkInterfacePrototypeModel.primaryIp(), networkInterfaceIpPrototypeModel);
-    assertEquals(bareMetalServerPrimaryNetworkInterfacePrototypeModel.securityGroups(), java.util.Arrays.asList(securityGroupIdentityModel));
-    assertEquals(bareMetalServerPrimaryNetworkInterfacePrototypeModel.subnet(), subnetIdentityModel);
-
     BareMetalServerProfileIdentityByName bareMetalServerProfileIdentityModel = new BareMetalServerProfileIdentityByName.Builder()
       .name("bx2-metal-192x768")
       .build();
     assertEquals(bareMetalServerProfileIdentityModel.name(), "bx2-metal-192x768");
-
-    ZoneIdentityByName zoneIdentityModel = new ZoneIdentityByName.Builder()
-      .name("us-south-1")
-      .build();
-    assertEquals(zoneIdentityModel.name(), "us-south-1");
-
-    BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByHiperSocketPrototype bareMetalServerNetworkInterfacePrototypeModel = new BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByHiperSocketPrototype.Builder()
-      .allowIpSpoofing(true)
-      .enableInfrastructureNat(true)
-      .name("my-bare-metal-server-network-interface")
-      .primaryIp(networkInterfaceIpPrototypeModel)
-      .securityGroups(java.util.Arrays.asList(securityGroupIdentityModel))
-      .subnet(subnetIdentityModel)
-      .interfaceType("hipersocket")
-      .build();
-    assertEquals(bareMetalServerNetworkInterfacePrototypeModel.allowIpSpoofing(), Boolean.valueOf(true));
-    assertEquals(bareMetalServerNetworkInterfacePrototypeModel.enableInfrastructureNat(), Boolean.valueOf(true));
-    assertEquals(bareMetalServerNetworkInterfacePrototypeModel.name(), "my-bare-metal-server-network-interface");
-    assertEquals(bareMetalServerNetworkInterfacePrototypeModel.primaryIp(), networkInterfaceIpPrototypeModel);
-    assertEquals(bareMetalServerNetworkInterfacePrototypeModel.securityGroups(), java.util.Arrays.asList(securityGroupIdentityModel));
-    assertEquals(bareMetalServerNetworkInterfacePrototypeModel.subnet(), subnetIdentityModel);
-    assertEquals(bareMetalServerNetworkInterfacePrototypeModel.interfaceType(), "hipersocket");
 
     ResourceGroupIdentityById resourceGroupIdentityModel = new ResourceGroupIdentityById.Builder()
       .id("fee82deba12e4c0fb69c3b09d1f12345")
@@ -143,28 +86,109 @@ public class CreateBareMetalServerOptionsTest {
       .build();
     assertEquals(vpcIdentityModel.id(), "4727d842-f94f-4a2d-824a-9bc9b02c523b");
 
-    CreateBareMetalServerOptions createBareMetalServerOptionsModel = new CreateBareMetalServerOptions.Builder()
-      .initialization(bareMetalServerInitializationPrototypeModel)
-      .primaryNetworkInterface(bareMetalServerPrimaryNetworkInterfacePrototypeModel)
-      .profile(bareMetalServerProfileIdentityModel)
-      .zone(zoneIdentityModel)
+    ZoneIdentityByName zoneIdentityModel = new ZoneIdentityByName.Builder()
+      .name("us-south-1")
+      .build();
+    assertEquals(zoneIdentityModel.name(), "us-south-1");
+
+    VirtualNetworkInterfaceIPPrototypeReservedIPPrototypeVirtualNetworkInterfaceIPsContext virtualNetworkInterfaceIpPrototypeModel = new VirtualNetworkInterfaceIPPrototypeReservedIPPrototypeVirtualNetworkInterfaceIPsContext.Builder()
+      .address("10.0.0.5")
+      .autoDelete(false)
+      .name("my-reserved-ip")
+      .build();
+    assertEquals(virtualNetworkInterfaceIpPrototypeModel.address(), "10.0.0.5");
+    assertEquals(virtualNetworkInterfaceIpPrototypeModel.autoDelete(), Boolean.valueOf(false));
+    assertEquals(virtualNetworkInterfaceIpPrototypeModel.name(), "my-reserved-ip");
+
+    VirtualNetworkInterfacePrimaryIPPrototypeReservedIPPrototypeVirtualNetworkInterfacePrimaryIPContext virtualNetworkInterfacePrimaryIpPrototypeModel = new VirtualNetworkInterfacePrimaryIPPrototypeReservedIPPrototypeVirtualNetworkInterfacePrimaryIPContext.Builder()
+      .address("10.0.0.5")
+      .autoDelete(false)
+      .name("my-reserved-ip")
+      .build();
+    assertEquals(virtualNetworkInterfacePrimaryIpPrototypeModel.address(), "10.0.0.5");
+    assertEquals(virtualNetworkInterfacePrimaryIpPrototypeModel.autoDelete(), Boolean.valueOf(false));
+    assertEquals(virtualNetworkInterfacePrimaryIpPrototypeModel.name(), "my-reserved-ip");
+
+    SecurityGroupIdentityById securityGroupIdentityModel = new SecurityGroupIdentityById.Builder()
+      .id("be5df5ca-12a0-494b-907e-aa6ec2bfa271")
+      .build();
+    assertEquals(securityGroupIdentityModel.id(), "be5df5ca-12a0-494b-907e-aa6ec2bfa271");
+
+    SubnetIdentityById subnetIdentityModel = new SubnetIdentityById.Builder()
+      .id("7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
+      .build();
+    assertEquals(subnetIdentityModel.id(), "7ec86020-1c6e-4889-b3f0-a15f2e50f87e");
+
+    BareMetalServerNetworkAttachmentPrototypeVirtualNetworkInterfaceVirtualNetworkInterfacePrototypeBareMetalServerNetworkAttachmentContext bareMetalServerNetworkAttachmentPrototypeVirtualNetworkInterfaceModel = new BareMetalServerNetworkAttachmentPrototypeVirtualNetworkInterfaceVirtualNetworkInterfacePrototypeBareMetalServerNetworkAttachmentContext.Builder()
+      .allowIpSpoofing(true)
+      .autoDelete(false)
+      .enableInfrastructureNat(true)
+      .ips(java.util.Arrays.asList(virtualNetworkInterfaceIpPrototypeModel))
+      .name("my-virtual-network-interface")
+      .primaryIp(virtualNetworkInterfacePrimaryIpPrototypeModel)
+      .resourceGroup(resourceGroupIdentityModel)
+      .securityGroups(java.util.Arrays.asList(securityGroupIdentityModel))
+      .subnet(subnetIdentityModel)
+      .build();
+    assertEquals(bareMetalServerNetworkAttachmentPrototypeVirtualNetworkInterfaceModel.allowIpSpoofing(), Boolean.valueOf(true));
+    assertEquals(bareMetalServerNetworkAttachmentPrototypeVirtualNetworkInterfaceModel.autoDelete(), Boolean.valueOf(false));
+    assertEquals(bareMetalServerNetworkAttachmentPrototypeVirtualNetworkInterfaceModel.enableInfrastructureNat(), Boolean.valueOf(true));
+    assertEquals(bareMetalServerNetworkAttachmentPrototypeVirtualNetworkInterfaceModel.ips(), java.util.Arrays.asList(virtualNetworkInterfaceIpPrototypeModel));
+    assertEquals(bareMetalServerNetworkAttachmentPrototypeVirtualNetworkInterfaceModel.name(), "my-virtual-network-interface");
+    assertEquals(bareMetalServerNetworkAttachmentPrototypeVirtualNetworkInterfaceModel.primaryIp(), virtualNetworkInterfacePrimaryIpPrototypeModel);
+    assertEquals(bareMetalServerNetworkAttachmentPrototypeVirtualNetworkInterfaceModel.resourceGroup(), resourceGroupIdentityModel);
+    assertEquals(bareMetalServerNetworkAttachmentPrototypeVirtualNetworkInterfaceModel.securityGroups(), java.util.Arrays.asList(securityGroupIdentityModel));
+    assertEquals(bareMetalServerNetworkAttachmentPrototypeVirtualNetworkInterfaceModel.subnet(), subnetIdentityModel);
+
+    BareMetalServerNetworkAttachmentPrototypeBareMetalServerNetworkAttachmentByPCIPrototype bareMetalServerNetworkAttachmentPrototypeModel = new BareMetalServerNetworkAttachmentPrototypeBareMetalServerNetworkAttachmentByPCIPrototype.Builder()
+      .name("my-bare-metal-server-network-attachment")
+      .virtualNetworkInterface(bareMetalServerNetworkAttachmentPrototypeVirtualNetworkInterfaceModel)
+      .allowedVlans(java.util.Arrays.asList(Long.valueOf("4")))
+      .interfaceType("pci")
+      .build();
+    assertEquals(bareMetalServerNetworkAttachmentPrototypeModel.name(), "my-bare-metal-server-network-attachment");
+    assertEquals(bareMetalServerNetworkAttachmentPrototypeModel.virtualNetworkInterface(), bareMetalServerNetworkAttachmentPrototypeVirtualNetworkInterfaceModel);
+    assertEquals(bareMetalServerNetworkAttachmentPrototypeModel.allowedVlans(), java.util.Arrays.asList(Long.valueOf("4")));
+    assertEquals(bareMetalServerNetworkAttachmentPrototypeModel.interfaceType(), "pci");
+
+    BareMetalServerPrimaryNetworkAttachmentPrototypeBareMetalServerPrimaryNetworkAttachmentByPCIPrototype bareMetalServerPrimaryNetworkAttachmentPrototypeModel = new BareMetalServerPrimaryNetworkAttachmentPrototypeBareMetalServerPrimaryNetworkAttachmentByPCIPrototype.Builder()
+      .name("my-bare-metal-server-network-attachment")
+      .virtualNetworkInterface(bareMetalServerNetworkAttachmentPrototypeVirtualNetworkInterfaceModel)
+      .allowedVlans(java.util.Arrays.asList(Long.valueOf("4")))
+      .interfaceType("pci")
+      .build();
+    assertEquals(bareMetalServerPrimaryNetworkAttachmentPrototypeModel.name(), "my-bare-metal-server-network-attachment");
+    assertEquals(bareMetalServerPrimaryNetworkAttachmentPrototypeModel.virtualNetworkInterface(), bareMetalServerNetworkAttachmentPrototypeVirtualNetworkInterfaceModel);
+    assertEquals(bareMetalServerPrimaryNetworkAttachmentPrototypeModel.allowedVlans(), java.util.Arrays.asList(Long.valueOf("4")));
+    assertEquals(bareMetalServerPrimaryNetworkAttachmentPrototypeModel.interfaceType(), "pci");
+
+    BareMetalServerPrototypeBareMetalServerByNetworkAttachment bareMetalServerPrototypeModel = new BareMetalServerPrototypeBareMetalServerByNetworkAttachment.Builder()
       .enableSecureBoot(false)
+      .initialization(bareMetalServerInitializationPrototypeModel)
       .name("my-bare-metal-server")
-      .networkInterfaces(java.util.Arrays.asList(bareMetalServerNetworkInterfacePrototypeModel))
+      .profile(bareMetalServerProfileIdentityModel)
       .resourceGroup(resourceGroupIdentityModel)
       .trustedPlatformModule(bareMetalServerTrustedPlatformModulePrototypeModel)
       .vpc(vpcIdentityModel)
+      .zone(zoneIdentityModel)
+      .networkAttachments(java.util.Arrays.asList(bareMetalServerNetworkAttachmentPrototypeModel))
+      .primaryNetworkAttachment(bareMetalServerPrimaryNetworkAttachmentPrototypeModel)
       .build();
-    assertEquals(createBareMetalServerOptionsModel.initialization(), bareMetalServerInitializationPrototypeModel);
-    assertEquals(createBareMetalServerOptionsModel.primaryNetworkInterface(), bareMetalServerPrimaryNetworkInterfacePrototypeModel);
-    assertEquals(createBareMetalServerOptionsModel.profile(), bareMetalServerProfileIdentityModel);
-    assertEquals(createBareMetalServerOptionsModel.zone(), zoneIdentityModel);
-    assertEquals(createBareMetalServerOptionsModel.enableSecureBoot(), Boolean.valueOf(false));
-    assertEquals(createBareMetalServerOptionsModel.name(), "my-bare-metal-server");
-    assertEquals(createBareMetalServerOptionsModel.networkInterfaces(), java.util.Arrays.asList(bareMetalServerNetworkInterfacePrototypeModel));
-    assertEquals(createBareMetalServerOptionsModel.resourceGroup(), resourceGroupIdentityModel);
-    assertEquals(createBareMetalServerOptionsModel.trustedPlatformModule(), bareMetalServerTrustedPlatformModulePrototypeModel);
-    assertEquals(createBareMetalServerOptionsModel.vpc(), vpcIdentityModel);
+    assertEquals(bareMetalServerPrototypeModel.enableSecureBoot(), Boolean.valueOf(false));
+    assertEquals(bareMetalServerPrototypeModel.initialization(), bareMetalServerInitializationPrototypeModel);
+    assertEquals(bareMetalServerPrototypeModel.name(), "my-bare-metal-server");
+    assertEquals(bareMetalServerPrototypeModel.profile(), bareMetalServerProfileIdentityModel);
+    assertEquals(bareMetalServerPrototypeModel.resourceGroup(), resourceGroupIdentityModel);
+    assertEquals(bareMetalServerPrototypeModel.trustedPlatformModule(), bareMetalServerTrustedPlatformModulePrototypeModel);
+    assertEquals(bareMetalServerPrototypeModel.vpc(), vpcIdentityModel);
+    assertEquals(bareMetalServerPrototypeModel.zone(), zoneIdentityModel);
+    assertEquals(bareMetalServerPrototypeModel.networkAttachments(), java.util.Arrays.asList(bareMetalServerNetworkAttachmentPrototypeModel));
+    assertEquals(bareMetalServerPrototypeModel.primaryNetworkAttachment(), bareMetalServerPrimaryNetworkAttachmentPrototypeModel);
+
+    CreateBareMetalServerOptions createBareMetalServerOptionsModel = new CreateBareMetalServerOptions.Builder()
+      .bareMetalServerPrototype(bareMetalServerPrototypeModel)
+      .build();
+    assertEquals(createBareMetalServerOptionsModel.bareMetalServerPrototype(), bareMetalServerPrototypeModel);
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

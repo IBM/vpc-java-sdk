@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021, 2022, 2023.
+ * (C) Copyright IBM Corp. 2022, 2023, 2024.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -39,10 +39,12 @@ public class RoutePatchTest {
     assertEquals(routeNextHopPatchModel.address(), "0.0.0.0");
 
     RoutePatch routePatchModel = new RoutePatch.Builder()
+      .advertise(true)
       .name("my-route-2")
       .nextHop(routeNextHopPatchModel)
       .priority(Long.valueOf("1"))
       .build();
+    assertEquals(routePatchModel.advertise(), Boolean.valueOf(true));
     assertEquals(routePatchModel.name(), "my-route-2");
     assertEquals(routePatchModel.nextHop(), routeNextHopPatchModel);
     assertEquals(routePatchModel.priority(), Long.valueOf("1"));
@@ -51,6 +53,7 @@ public class RoutePatchTest {
 
     RoutePatch routePatchModelNew = TestUtilities.deserialize(json, RoutePatch.class);
     assertTrue(routePatchModelNew instanceof RoutePatch);
+    assertEquals(routePatchModelNew.advertise(), Boolean.valueOf(true));
     assertEquals(routePatchModelNew.name(), "my-route-2");
     assertEquals(routePatchModelNew.nextHop().toString(), routeNextHopPatchModel.toString());
     assertEquals(routePatchModelNew.priority(), Long.valueOf("1"));
@@ -62,6 +65,7 @@ public class RoutePatchTest {
       .build();
 
     RoutePatch routePatchModel = new RoutePatch.Builder()
+      .advertise(true)
       .name("my-route-2")
       .nextHop(routeNextHopPatchModel)
       .priority(Long.valueOf("1"))
@@ -69,6 +73,7 @@ public class RoutePatchTest {
 
     Map<String, Object> mergePatch = routePatchModel.asPatch();
 
+    assertTrue(mergePatch.containsKey("advertise"));
     assertEquals(mergePatch.get("name"), "my-route-2");
     assertTrue(mergePatch.containsKey("next_hop"));
     assertTrue(mergePatch.containsKey("priority"));

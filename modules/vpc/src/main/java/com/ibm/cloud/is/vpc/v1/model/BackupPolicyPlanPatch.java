@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021, 2022, 2023.
+ * (C) Copyright IBM Corp. 2022, 2023, 2024.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -85,9 +85,9 @@ public class BackupPolicyPlanPatch extends GenericModel {
     }
 
     /**
-     * Adds an attachUserTags to attachUserTags.
+     * Adds a new element to attachUserTags.
      *
-     * @param attachUserTags the new attachUserTags
+     * @param attachUserTags the new element to be added
      * @return the BackupPolicyPlanPatch builder
      */
     public Builder addAttachUserTags(String attachUserTags) {
@@ -101,9 +101,9 @@ public class BackupPolicyPlanPatch extends GenericModel {
     }
 
     /**
-     * Adds an remoteRegionPolicies to remoteRegionPolicies.
+     * Adds a new element to remoteRegionPolicies.
      *
-     * @param remoteRegionPolicies the new remoteRegionPolicies
+     * @param remoteRegionPolicies the new element to be added
      * @return the BackupPolicyPlanPatch builder
      */
     public Builder addRemoteRegionPolicies(BackupPolicyPlanRemoteRegionPolicyPrototype remoteRegionPolicies) {

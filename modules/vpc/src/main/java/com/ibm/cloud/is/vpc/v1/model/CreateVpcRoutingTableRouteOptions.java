@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021, 2022, 2023.
+ * (C) Copyright IBM Corp. 2022, 2023, 2024.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -42,6 +42,7 @@ public class CreateVpcRoutingTableRouteOptions extends GenericModel {
   protected String destination;
   protected ZoneIdentity zone;
   protected String action;
+  protected Boolean advertise;
   protected String name;
   protected RoutePrototypeNextHop nextHop;
   protected Long priority;
@@ -55,6 +56,7 @@ public class CreateVpcRoutingTableRouteOptions extends GenericModel {
     private String destination;
     private ZoneIdentity zone;
     private String action;
+    private Boolean advertise;
     private String name;
     private RoutePrototypeNextHop nextHop;
     private Long priority;
@@ -70,6 +72,7 @@ public class CreateVpcRoutingTableRouteOptions extends GenericModel {
       this.destination = createVpcRoutingTableRouteOptions.destination;
       this.zone = createVpcRoutingTableRouteOptions.zone;
       this.action = createVpcRoutingTableRouteOptions.action;
+      this.advertise = createVpcRoutingTableRouteOptions.advertise;
       this.name = createVpcRoutingTableRouteOptions.name;
       this.nextHop = createVpcRoutingTableRouteOptions.nextHop;
       this.priority = createVpcRoutingTableRouteOptions.priority;
@@ -161,6 +164,17 @@ public class CreateVpcRoutingTableRouteOptions extends GenericModel {
     }
 
     /**
+     * Set the advertise.
+     *
+     * @param advertise the advertise
+     * @return the CreateVpcRoutingTableRouteOptions builder
+     */
+    public Builder advertise(Boolean advertise) {
+      this.advertise = advertise;
+      return this;
+    }
+
+    /**
      * Set the name.
      *
      * @param name the name
@@ -210,6 +224,7 @@ public class CreateVpcRoutingTableRouteOptions extends GenericModel {
     destination = builder.destination;
     zone = builder.zone;
     action = builder.action;
+    advertise = builder.advertise;
     name = builder.name;
     nextHop = builder.nextHop;
     priority = builder.priority;
@@ -263,8 +278,13 @@ public class CreateVpcRoutingTableRouteOptions extends GenericModel {
   /**
    * Gets the zone.
    *
-   * The zone to apply the route to. (Traffic from subnets in this zone will be
-   * subject to this route.).
+   * The zone to apply the route to.
+   *
+   * If subnets are attached to the route's routing table, egress traffic from those
+   * subnets in this zone will be subject to this route. If this route's routing table
+   * has any of `route_direct_link_ingress`, `route_internet_ingress`,
+   * `route_transit_gateway_ingress` or `route_vpc_zone_ingress`  set to`true`, traffic
+   * from those ingress sources arriving in this zone will be subject to this route.
    *
    * @return the zone
    */
@@ -285,6 +305,21 @@ public class CreateVpcRoutingTableRouteOptions extends GenericModel {
    */
   public String action() {
     return action;
+  }
+
+  /**
+   * Gets the advertise.
+   *
+   * Indicates whether this route will be advertised to the ingress sources specified by the `advertise_routes_to`
+   * routing table property.
+   *
+   * All routes in a routing table with the same `destination` and `zone` must have the same
+   * `advertise` value.
+   *
+   * @return the advertise
+   */
+  public Boolean advertise() {
+    return advertise;
   }
 
   /**

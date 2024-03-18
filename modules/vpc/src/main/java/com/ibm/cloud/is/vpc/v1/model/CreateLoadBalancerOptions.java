@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021, 2022, 2023.
+ * (C) Copyright IBM Corp. 2022, 2023, 2024.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -24,7 +24,6 @@ public class CreateLoadBalancerOptions extends GenericModel {
 
   protected Boolean isPublic;
   protected List<SubnetIdentity> subnets;
-  protected LoadBalancerLoggingDatapathPrototype datapath;
   protected LoadBalancerDNSPrototype dns;
   protected List<LoadBalancerListenerPrototypeLoadBalancerContext> listeners;
   protected LoadBalancerLoggingPrototype logging;
@@ -41,7 +40,6 @@ public class CreateLoadBalancerOptions extends GenericModel {
   public static class Builder {
     private Boolean isPublic;
     private List<SubnetIdentity> subnets;
-    private LoadBalancerLoggingDatapathPrototype datapath;
     private LoadBalancerDNSPrototype dns;
     private List<LoadBalancerListenerPrototypeLoadBalancerContext> listeners;
     private LoadBalancerLoggingPrototype logging;
@@ -60,7 +58,6 @@ public class CreateLoadBalancerOptions extends GenericModel {
     private Builder(CreateLoadBalancerOptions createLoadBalancerOptions) {
       this.isPublic = createLoadBalancerOptions.isPublic;
       this.subnets = createLoadBalancerOptions.subnets;
-      this.datapath = createLoadBalancerOptions.datapath;
       this.dns = createLoadBalancerOptions.dns;
       this.listeners = createLoadBalancerOptions.listeners;
       this.logging = createLoadBalancerOptions.logging;
@@ -99,9 +96,9 @@ public class CreateLoadBalancerOptions extends GenericModel {
     }
 
     /**
-     * Adds an subnets to subnets.
+     * Adds a new element to subnets.
      *
-     * @param subnets the new subnets
+     * @param subnets the new element to be added
      * @return the CreateLoadBalancerOptions builder
      */
     public Builder addSubnets(SubnetIdentity subnets) {
@@ -115,9 +112,9 @@ public class CreateLoadBalancerOptions extends GenericModel {
     }
 
     /**
-     * Adds an listeners to listeners.
+     * Adds a new element to listeners.
      *
-     * @param listeners the new listeners
+     * @param listeners the new element to be added
      * @return the CreateLoadBalancerOptions builder
      */
     public Builder addListeners(LoadBalancerListenerPrototypeLoadBalancerContext listeners) {
@@ -131,9 +128,9 @@ public class CreateLoadBalancerOptions extends GenericModel {
     }
 
     /**
-     * Adds an pools to pools.
+     * Adds a new element to pools.
      *
-     * @param pools the new pools
+     * @param pools the new element to be added
      * @return the CreateLoadBalancerOptions builder
      */
     public Builder addPools(LoadBalancerPoolPrototype pools) {
@@ -147,9 +144,9 @@ public class CreateLoadBalancerOptions extends GenericModel {
     }
 
     /**
-     * Adds an securityGroups to securityGroups.
+     * Adds a new element to securityGroups.
      *
-     * @param securityGroups the new securityGroups
+     * @param securityGroups the new element to be added
      * @return the CreateLoadBalancerOptions builder
      */
     public Builder addSecurityGroups(SecurityGroupIdentity securityGroups) {
@@ -182,17 +179,6 @@ public class CreateLoadBalancerOptions extends GenericModel {
      */
     public Builder subnets(List<SubnetIdentity> subnets) {
       this.subnets = subnets;
-      return this;
-    }
-
-    /**
-     * Set the datapath.
-     *
-     * @param datapath the datapath
-     * @return the CreateLoadBalancerOptions builder
-     */
-    public Builder datapath(LoadBalancerLoggingDatapathPrototype datapath) {
-      this.datapath = datapath;
       return this;
     }
 
@@ -308,7 +294,6 @@ public class CreateLoadBalancerOptions extends GenericModel {
       "subnets cannot be null");
     isPublic = builder.isPublic;
     subnets = builder.subnets;
-    datapath = builder.datapath;
     dns = builder.dns;
     listeners = builder.listeners;
     logging = builder.logging;
@@ -357,17 +342,6 @@ public class CreateLoadBalancerOptions extends GenericModel {
   }
 
   /**
-   * Gets the datapath.
-   *
-   * The datapath logging configuration for this load balancer.
-   *
-   * @return the datapath
-   */
-  public LoadBalancerLoggingDatapathPrototype datapath() {
-    return datapath;
-  }
-
-  /**
    * Gets the dns.
    *
    * The DNS configuration for this load balancer.
@@ -398,7 +372,7 @@ public class CreateLoadBalancerOptions extends GenericModel {
    *
    * The logging configuration to use for this load balancer. See [VPC Datapath
    * Logging](https://cloud.ibm.com/docs/vpc?topic=vpc-datapath-logging) on the logging
-   * format, fields and permitted values.
+   * format, fields and permitted values. If unspecified, `datapath.active` will be `false`.
    *
    * To activate logging, the load balancer profile must support the specified logging type.
    *

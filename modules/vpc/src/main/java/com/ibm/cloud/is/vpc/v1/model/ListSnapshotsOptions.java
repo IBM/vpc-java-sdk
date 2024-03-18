@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021, 2022, 2023.
+ * (C) Copyright IBM Corp. 2022, 2023, 2024.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -51,6 +51,8 @@ public class ListSnapshotsOptions extends GenericModel {
   protected String sourceVolumeRemoteRegionName;
   protected String sourceImageRemoteRegionName;
   protected String clonesZoneName;
+  protected String snapshotConsistencyGroupId;
+  protected String snapshotConsistencyGroupCrn;
 
   /**
    * Builder.
@@ -76,6 +78,8 @@ public class ListSnapshotsOptions extends GenericModel {
     private String sourceVolumeRemoteRegionName;
     private String sourceImageRemoteRegionName;
     private String clonesZoneName;
+    private String snapshotConsistencyGroupId;
+    private String snapshotConsistencyGroupCrn;
 
     /**
      * Instantiates a new Builder from an existing ListSnapshotsOptions instance.
@@ -103,6 +107,8 @@ public class ListSnapshotsOptions extends GenericModel {
       this.sourceVolumeRemoteRegionName = listSnapshotsOptions.sourceVolumeRemoteRegionName;
       this.sourceImageRemoteRegionName = listSnapshotsOptions.sourceImageRemoteRegionName;
       this.clonesZoneName = listSnapshotsOptions.clonesZoneName;
+      this.snapshotConsistencyGroupId = listSnapshotsOptions.snapshotConsistencyGroupId;
+      this.snapshotConsistencyGroupCrn = listSnapshotsOptions.snapshotConsistencyGroupCrn;
     }
 
     /**
@@ -339,6 +345,28 @@ public class ListSnapshotsOptions extends GenericModel {
       this.clonesZoneName = clonesZoneName;
       return this;
     }
+
+    /**
+     * Set the snapshotConsistencyGroupId.
+     *
+     * @param snapshotConsistencyGroupId the snapshotConsistencyGroupId
+     * @return the ListSnapshotsOptions builder
+     */
+    public Builder snapshotConsistencyGroupId(String snapshotConsistencyGroupId) {
+      this.snapshotConsistencyGroupId = snapshotConsistencyGroupId;
+      return this;
+    }
+
+    /**
+     * Set the snapshotConsistencyGroupCrn.
+     *
+     * @param snapshotConsistencyGroupCrn the snapshotConsistencyGroupCrn
+     * @return the ListSnapshotsOptions builder
+     */
+    public Builder snapshotConsistencyGroupCrn(String snapshotConsistencyGroupCrn) {
+      this.snapshotConsistencyGroupCrn = snapshotConsistencyGroupCrn;
+      return this;
+    }
   }
 
   protected ListSnapshotsOptions() { }
@@ -364,6 +392,8 @@ public class ListSnapshotsOptions extends GenericModel {
     sourceVolumeRemoteRegionName = builder.sourceVolumeRemoteRegionName;
     sourceImageRemoteRegionName = builder.sourceImageRemoteRegionName;
     clonesZoneName = builder.clonesZoneName;
+    snapshotConsistencyGroupId = builder.snapshotConsistencyGroupId;
+    snapshotConsistencyGroupCrn = builder.snapshotConsistencyGroupCrn;
   }
 
   /**
@@ -610,6 +640,30 @@ public class ListSnapshotsOptions extends GenericModel {
    */
   public String clonesZoneName() {
     return clonesZoneName;
+  }
+
+  /**
+   * Gets the snapshotConsistencyGroupId.
+   *
+   * Filters the collection to resources with a `snapshot_consistency_group.id` property matching the specified
+   * identifier.
+   *
+   * @return the snapshotConsistencyGroupId
+   */
+  public String snapshotConsistencyGroupId() {
+    return snapshotConsistencyGroupId;
+  }
+
+  /**
+   * Gets the snapshotConsistencyGroupCrn.
+   *
+   * Filters the collection to resources with a `snapshot_consistency_group.crn` property matching the specified
+   * identifier.
+   *
+   * @return the snapshotConsistencyGroupCrn
+   */
+  public String snapshotConsistencyGroupCrn() {
+    return snapshotConsistencyGroupCrn;
   }
 }
 

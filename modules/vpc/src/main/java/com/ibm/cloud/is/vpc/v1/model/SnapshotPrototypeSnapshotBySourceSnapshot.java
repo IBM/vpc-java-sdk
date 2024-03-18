@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021, 2022, 2023.
+ * (C) Copyright IBM Corp. 2022, 2023, 2024.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -71,9 +71,9 @@ public class SnapshotPrototypeSnapshotBySourceSnapshot extends SnapshotPrototype
     }
 
     /**
-     * Adds an clones to clones.
+     * Adds a new element to clones.
      *
-     * @param clones the new clones
+     * @param clones the new element to be added
      * @return the SnapshotPrototypeSnapshotBySourceSnapshot builder
      */
     public Builder addClones(SnapshotClonePrototype clones) {
@@ -87,9 +87,9 @@ public class SnapshotPrototypeSnapshotBySourceSnapshot extends SnapshotPrototype
     }
 
     /**
-     * Adds an userTags to userTags.
+     * Adds a new element to userTags.
      *
-     * @param userTags the new userTags
+     * @param userTags the new element to be added
      * @return the SnapshotPrototypeSnapshotBySourceSnapshot builder
      */
     public Builder addUserTags(String userTags) {

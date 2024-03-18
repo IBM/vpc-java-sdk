@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021, 2022, 2023.
+ * (C) Copyright IBM Corp. 2022, 2023, 2024.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -179,17 +179,25 @@ public class FlowLogCollector extends GenericModel {
    * Gets the target.
    *
    * The target this collector is collecting flow logs for.
+   *
+   * - If the target is an instance network attachment, flow logs will be collected
+   *   for that instance network attachment.
    * - If the target is an instance network interface, flow logs will be collected
    *   for that instance network interface.
+   * - If the target is a virtual network interface, flow logs will be collected for the
+   *   virtual network interface's `target` resource if the resource is an instance network
+   *   attachment, unless the target resource is itself the target of a flow log collector.
    * - If the target is a virtual server instance, flow logs will be collected
-   *   for all network interfaces on that instance.
+   *   for all network attachments or network interfaces on that instance.
    * - If the target is a subnet, flow logs will be collected
-   *   for all instance network interfaces attached to that subnet.
-   * - If the target is a VPC, flow logs will be collected for instance network interfaces
-   *   attached to all subnets within that VPC.
+   *   for all instance network interfaces and virtual network interfaces
+   *   attached to that subnet.
+   * - If the target is a VPC, flow logs will be collected for all instance network
+   *   interfaces and virtual network interfaces  attached to all subnets within that VPC.
+   *
    * If the target is an instance, subnet, or VPC, flow logs will not be collected
-   * for any instance network interfaces within the target that are themselves the target of
-   * a more specific flow log collector.
+   * for any instance network attachments or instance network interfaces within the target
+   * that are themselves the target of a more specific flow log collector.
    *
    * @return the target
    */

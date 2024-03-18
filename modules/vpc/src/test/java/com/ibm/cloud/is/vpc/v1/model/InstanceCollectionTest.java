@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021, 2022, 2023.
+ * (C) Copyright IBM Corp. 2022, 2023, 2024.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -29,15 +29,21 @@ import com.ibm.cloud.is.vpc.v1.model.InstanceCollectionFirst;
 import com.ibm.cloud.is.vpc.v1.model.InstanceCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.InstanceDisk;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGPU;
+import com.ibm.cloud.is.vpc.v1.model.InstanceHealthReason;
 import com.ibm.cloud.is.vpc.v1.model.InstanceLifecycleReason;
 import com.ibm.cloud.is.vpc.v1.model.InstanceMetadataService;
+import com.ibm.cloud.is.vpc.v1.model.InstanceNetworkAttachmentReference;
+import com.ibm.cloud.is.vpc.v1.model.InstanceNetworkAttachmentReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.InstancePlacementTargetDedicatedHostGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileReference;
+import com.ibm.cloud.is.vpc.v1.model.InstanceReservationAffinity;
 import com.ibm.cloud.is.vpc.v1.model.InstanceStatusReason;
 import com.ibm.cloud.is.vpc.v1.model.InstanceVCPU;
 import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceInstanceContextReference;
 import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceInstanceContextReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.RegionReference;
+import com.ibm.cloud.is.vpc.v1.model.ReservationReference;
+import com.ibm.cloud.is.vpc.v1.model.ReservationReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.ReservedIPReference;
 import com.ibm.cloud.is.vpc.v1.model.ReservedIPReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;

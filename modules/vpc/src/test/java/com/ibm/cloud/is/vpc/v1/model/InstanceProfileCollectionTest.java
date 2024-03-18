@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021, 2022, 2023.
+ * (C) Copyright IBM Corp. 2022, 2023, 2024.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -26,9 +26,11 @@ import com.ibm.cloud.is.vpc.v1.model.InstanceProfileGPUMemoryFixed;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileGPUModel;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileMemoryFixed;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileNUMACountFixed;
+import com.ibm.cloud.is.vpc.v1.model.InstanceProfileNetworkAttachmentCountRange;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileNetworkInterfaceCountRange;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileOSArchitecture;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfilePortSpeedFixed;
+import com.ibm.cloud.is.vpc.v1.model.InstanceProfileReservationTerms;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileVCPUArchitecture;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileVCPUFixed;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileVCPUManufacturer;

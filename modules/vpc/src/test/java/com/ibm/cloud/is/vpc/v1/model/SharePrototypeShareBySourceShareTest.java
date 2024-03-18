@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021, 2022, 2023.
+ * (C) Copyright IBM Corp. 2022, 2023, 2024.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -13,6 +13,7 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.ibm.cloud.is.vpc.v1.model.EncryptionKeyIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.ShareIdentityById;
@@ -22,6 +23,7 @@ import com.ibm.cloud.is.vpc.v1.model.ShareProfileIdentityByName;
 import com.ibm.cloud.is.vpc.v1.model.SharePrototypeShareBySourceShare;
 import com.ibm.cloud.is.vpc.v1.model.SharePrototypeShareContext;
 import com.ibm.cloud.is.vpc.v1.model.SubnetIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.VirtualNetworkInterfaceIPPrototypeReservedIPPrototypeVirtualNetworkInterfaceIPsContext;
 import com.ibm.cloud.is.vpc.v1.model.VirtualNetworkInterfacePrimaryIPPrototypeReservedIPPrototypeVirtualNetworkInterfacePrimaryIPContext;
 import com.ibm.cloud.is.vpc.v1.model.ZoneIdentityByName;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
@@ -41,6 +43,15 @@ public class SharePrototypeShareBySourceShareTest {
 
   @Test
   public void testSharePrototypeShareBySourceShare() throws Throwable {
+    VirtualNetworkInterfaceIPPrototypeReservedIPPrototypeVirtualNetworkInterfaceIPsContext virtualNetworkInterfaceIpPrototypeModel = new VirtualNetworkInterfaceIPPrototypeReservedIPPrototypeVirtualNetworkInterfaceIPsContext.Builder()
+      .address("10.0.0.5")
+      .autoDelete(false)
+      .name("my-reserved-ip")
+      .build();
+    assertEquals(virtualNetworkInterfaceIpPrototypeModel.address(), "10.0.0.5");
+    assertEquals(virtualNetworkInterfaceIpPrototypeModel.autoDelete(), Boolean.valueOf(false));
+    assertEquals(virtualNetworkInterfaceIpPrototypeModel.name(), "my-reserved-ip");
+
     VirtualNetworkInterfacePrimaryIPPrototypeReservedIPPrototypeVirtualNetworkInterfacePrimaryIPContext virtualNetworkInterfacePrimaryIpPrototypeModel = new VirtualNetworkInterfacePrimaryIPPrototypeReservedIPPrototypeVirtualNetworkInterfacePrimaryIPContext.Builder()
       .address("10.0.0.5")
       .autoDelete(false)
@@ -66,12 +77,20 @@ public class SharePrototypeShareBySourceShareTest {
     assertEquals(subnetIdentityModel.id(), "7ec86020-1c6e-4889-b3f0-a15f2e50f87e");
 
     ShareMountTargetVirtualNetworkInterfacePrototypeVirtualNetworkInterfacePrototypeShareMountTargetContext shareMountTargetVirtualNetworkInterfacePrototypeModel = new ShareMountTargetVirtualNetworkInterfacePrototypeVirtualNetworkInterfacePrototypeShareMountTargetContext.Builder()
+      .allowIpSpoofing(true)
+      .autoDelete(false)
+      .enableInfrastructureNat(true)
+      .ips(java.util.Arrays.asList(virtualNetworkInterfaceIpPrototypeModel))
       .name("my-virtual-network-interface")
       .primaryIp(virtualNetworkInterfacePrimaryIpPrototypeModel)
       .resourceGroup(resourceGroupIdentityModel)
       .securityGroups(java.util.Arrays.asList(securityGroupIdentityModel))
       .subnet(subnetIdentityModel)
       .build();
+    assertEquals(shareMountTargetVirtualNetworkInterfacePrototypeModel.allowIpSpoofing(), Boolean.valueOf(true));
+    assertEquals(shareMountTargetVirtualNetworkInterfacePrototypeModel.autoDelete(), Boolean.valueOf(false));
+    assertEquals(shareMountTargetVirtualNetworkInterfacePrototypeModel.enableInfrastructureNat(), Boolean.valueOf(true));
+    assertEquals(shareMountTargetVirtualNetworkInterfacePrototypeModel.ips(), java.util.Arrays.asList(virtualNetworkInterfaceIpPrototypeModel));
     assertEquals(shareMountTargetVirtualNetworkInterfacePrototypeModel.name(), "my-virtual-network-interface");
     assertEquals(shareMountTargetVirtualNetworkInterfacePrototypeModel.primaryIp(), virtualNetworkInterfacePrimaryIpPrototypeModel);
     assertEquals(shareMountTargetVirtualNetworkInterfacePrototypeModel.resourceGroup(), resourceGroupIdentityModel);
@@ -116,6 +135,11 @@ public class SharePrototypeShareBySourceShareTest {
     assertEquals(sharePrototypeShareContextModel.userTags(), java.util.Arrays.asList());
     assertEquals(sharePrototypeShareContextModel.zone(), zoneIdentityModel);
 
+    EncryptionKeyIdentityByCRN encryptionKeyIdentityModel = new EncryptionKeyIdentityByCRN.Builder()
+      .crn("crn:v1:bluemix:public:kms:us-south:a/123456:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179")
+      .build();
+    assertEquals(encryptionKeyIdentityModel.crn(), "crn:v1:bluemix:public:kms:us-south:a/123456:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179");
+
     ShareIdentityById shareIdentityModel = new ShareIdentityById.Builder()
       .id("0fe9e5d8-0a4d-4818-96ec-e99708644a58")
       .build();
@@ -129,6 +153,7 @@ public class SharePrototypeShareBySourceShareTest {
       .replicaShare(sharePrototypeShareContextModel)
       .userTags(java.util.Arrays.asList())
       .zone(zoneIdentityModel)
+      .encryptionKey(encryptionKeyIdentityModel)
       .replicationCronSpec("0 */5 * * *")
       .resourceGroup(resourceGroupIdentityModel)
       .sourceShare(shareIdentityModel)
@@ -140,6 +165,7 @@ public class SharePrototypeShareBySourceShareTest {
     assertEquals(sharePrototypeShareBySourceShareModel.replicaShare(), sharePrototypeShareContextModel);
     assertEquals(sharePrototypeShareBySourceShareModel.userTags(), java.util.Arrays.asList());
     assertEquals(sharePrototypeShareBySourceShareModel.zone(), zoneIdentityModel);
+    assertEquals(sharePrototypeShareBySourceShareModel.encryptionKey(), encryptionKeyIdentityModel);
     assertEquals(sharePrototypeShareBySourceShareModel.replicationCronSpec(), "0 */5 * * *");
     assertEquals(sharePrototypeShareBySourceShareModel.resourceGroup(), resourceGroupIdentityModel);
     assertEquals(sharePrototypeShareBySourceShareModel.sourceShare(), shareIdentityModel);
@@ -153,6 +179,7 @@ public class SharePrototypeShareBySourceShareTest {
     assertEquals(sharePrototypeShareBySourceShareModelNew.profile().toString(), shareProfileIdentityModel.toString());
     assertEquals(sharePrototypeShareBySourceShareModelNew.replicaShare().toString(), sharePrototypeShareContextModel.toString());
     assertEquals(sharePrototypeShareBySourceShareModelNew.zone().toString(), zoneIdentityModel.toString());
+    assertEquals(sharePrototypeShareBySourceShareModelNew.encryptionKey().toString(), encryptionKeyIdentityModel.toString());
     assertEquals(sharePrototypeShareBySourceShareModelNew.replicationCronSpec(), "0 */5 * * *");
     assertEquals(sharePrototypeShareBySourceShareModelNew.resourceGroup().toString(), resourceGroupIdentityModel.toString());
     assertEquals(sharePrototypeShareBySourceShareModelNew.sourceShare().toString(), shareIdentityModel.toString());

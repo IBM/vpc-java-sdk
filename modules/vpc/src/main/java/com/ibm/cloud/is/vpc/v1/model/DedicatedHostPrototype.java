@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021, 2022, 2023.
+ * (C) Copyright IBM Corp. 2022, 2023, 2024.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -30,7 +30,7 @@ public class DedicatedHostPrototype extends GenericModel {
   protected DedicatedHostProfileIdentity profile;
   @SerializedName("resource_group")
   protected ResourceGroupIdentity resourceGroup;
-  protected DedicatedHostPrototypeWrapper group;
+  protected DedicatedHostPrototypeGroup group;
   protected ZoneIdentity zone;
 
   protected DedicatedHostPrototype() { }
@@ -89,7 +89,7 @@ public class DedicatedHostPrototype extends GenericModel {
    *
    * @return the group
    */
-  public DedicatedHostPrototypeWrapper group() {
+  public DedicatedHostPrototypeGroup group() {
     return group;
   }
 

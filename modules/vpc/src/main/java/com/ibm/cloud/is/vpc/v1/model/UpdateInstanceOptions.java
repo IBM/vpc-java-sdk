@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021, 2022, 2023.
+ * (C) Copyright IBM Corp. 2022, 2023, 2024.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -23,6 +23,7 @@ public class UpdateInstanceOptions extends GenericModel {
 
   protected String id;
   protected Map<String, Object> instancePatch;
+  protected String ifMatch;
 
   /**
    * Builder.
@@ -30,6 +31,7 @@ public class UpdateInstanceOptions extends GenericModel {
   public static class Builder {
     private String id;
     private Map<String, Object> instancePatch;
+    private String ifMatch;
 
     /**
      * Instantiates a new Builder from an existing UpdateInstanceOptions instance.
@@ -39,6 +41,7 @@ public class UpdateInstanceOptions extends GenericModel {
     private Builder(UpdateInstanceOptions updateInstanceOptions) {
       this.id = updateInstanceOptions.id;
       this.instancePatch = updateInstanceOptions.instancePatch;
+      this.ifMatch = updateInstanceOptions.ifMatch;
     }
 
     /**
@@ -88,6 +91,17 @@ public class UpdateInstanceOptions extends GenericModel {
       this.instancePatch = instancePatch;
       return this;
     }
+
+    /**
+     * Set the ifMatch.
+     *
+     * @param ifMatch the ifMatch
+     * @return the UpdateInstanceOptions builder
+     */
+    public Builder ifMatch(String ifMatch) {
+      this.ifMatch = ifMatch;
+      return this;
+    }
   }
 
   protected UpdateInstanceOptions() { }
@@ -99,6 +113,7 @@ public class UpdateInstanceOptions extends GenericModel {
       "instancePatch cannot be null");
     id = builder.id;
     instancePatch = builder.instancePatch;
+    ifMatch = builder.ifMatch;
   }
 
   /**
@@ -130,6 +145,18 @@ public class UpdateInstanceOptions extends GenericModel {
    */
   public Map<String, Object> instancePatch() {
     return instancePatch;
+  }
+
+  /**
+   * Gets the ifMatch.
+   *
+   * If present, the request will fail if the specified ETag value does not match the resource's current ETag value.
+   * Required if the request body includes an array.
+   *
+   * @return the ifMatch
+   */
+  public String ifMatch() {
+    return ifMatch;
   }
 }
 

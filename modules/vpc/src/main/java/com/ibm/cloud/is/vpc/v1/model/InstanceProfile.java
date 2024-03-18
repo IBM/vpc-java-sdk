@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021, 2022, 2023.
+ * (C) Copyright IBM Corp. 2022, 2023, 2024.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -21,6 +21,14 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  * InstanceProfile.
  */
 public class InstanceProfile extends GenericModel {
+
+  /**
+   * The resource type.
+   */
+  public interface ResourceType {
+    /** instance_profile. */
+    String INSTANCE_PROFILE = "instance_profile";
+  }
 
   /**
    * The status of the instance profile:
@@ -58,6 +66,8 @@ public class InstanceProfile extends GenericModel {
   protected String href;
   protected InstanceProfileMemory memory;
   protected String name;
+  @SerializedName("network_attachment_count")
+  protected InstanceProfileNetworkAttachmentCount networkAttachmentCount;
   @SerializedName("network_interface_count")
   protected InstanceProfileNetworkInterfaceCount networkInterfaceCount;
   @SerializedName("numa_count")
@@ -66,6 +76,10 @@ public class InstanceProfile extends GenericModel {
   protected InstanceProfileOSArchitecture osArchitecture;
   @SerializedName("port_speed")
   protected InstanceProfilePortSpeed portSpeed;
+  @SerializedName("reservation_terms")
+  protected InstanceProfileReservationTerms reservationTerms;
+  @SerializedName("resource_type")
+  protected String resourceType;
   protected String status;
   @SerializedName("total_volume_bandwidth")
   protected InstanceProfileVolumeBandwidth totalVolumeBandwidth;
@@ -177,6 +191,15 @@ public class InstanceProfile extends GenericModel {
   }
 
   /**
+   * Gets the networkAttachmentCount.
+   *
+   * @return the networkAttachmentCount
+   */
+  public InstanceProfileNetworkAttachmentCount getNetworkAttachmentCount() {
+    return networkAttachmentCount;
+  }
+
+  /**
    * Gets the networkInterfaceCount.
    *
    * @return the networkInterfaceCount
@@ -210,6 +233,26 @@ public class InstanceProfile extends GenericModel {
    */
   public InstanceProfilePortSpeed getPortSpeed() {
     return portSpeed;
+  }
+
+  /**
+   * Gets the reservationTerms.
+   *
+   * @return the reservationTerms
+   */
+  public InstanceProfileReservationTerms getReservationTerms() {
+    return reservationTerms;
+  }
+
+  /**
+   * Gets the resourceType.
+   *
+   * The resource type.
+   *
+   * @return the resourceType
+   */
+  public String getResourceType() {
+    return resourceType;
   }
 
   /**

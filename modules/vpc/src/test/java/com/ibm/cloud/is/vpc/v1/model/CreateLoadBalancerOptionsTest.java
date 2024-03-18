@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021, 2022, 2023.
+ * (C) Copyright IBM Corp. 2022, 2023, 2024.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -54,11 +54,6 @@ public class CreateLoadBalancerOptionsTest {
       .id("7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
       .build();
     assertEquals(subnetIdentityModel.id(), "7ec86020-1c6e-4889-b3f0-a15f2e50f87e");
-
-    LoadBalancerLoggingDatapathPrototype loadBalancerLoggingDatapathPrototypeModel = new LoadBalancerLoggingDatapathPrototype.Builder()
-      .active(true)
-      .build();
-    assertEquals(loadBalancerLoggingDatapathPrototypeModel.active(), Boolean.valueOf(true));
 
     DNSInstanceIdentityByCRN dnsInstanceIdentityModel = new DNSInstanceIdentityByCRN.Builder()
       .crn("crn:v1:bluemix:public:dns-svcs:global:a/123456:6860c359-b2e2-46fa-a944-b38c28201c6e")
@@ -123,6 +118,11 @@ public class CreateLoadBalancerOptionsTest {
     assertEquals(loadBalancerListenerPrototypeLoadBalancerContextModel.portMax(), Long.valueOf("499"));
     assertEquals(loadBalancerListenerPrototypeLoadBalancerContextModel.portMin(), Long.valueOf("443"));
     assertEquals(loadBalancerListenerPrototypeLoadBalancerContextModel.protocol(), "http");
+
+    LoadBalancerLoggingDatapathPrototype loadBalancerLoggingDatapathPrototypeModel = new LoadBalancerLoggingDatapathPrototype.Builder()
+      .active(true)
+      .build();
+    assertEquals(loadBalancerLoggingDatapathPrototypeModel.active(), Boolean.valueOf(true));
 
     LoadBalancerLoggingPrototype loadBalancerLoggingPrototypeModel = new LoadBalancerLoggingPrototype.Builder()
       .datapath(loadBalancerLoggingDatapathPrototypeModel)
@@ -200,7 +200,6 @@ public class CreateLoadBalancerOptionsTest {
     CreateLoadBalancerOptions createLoadBalancerOptionsModel = new CreateLoadBalancerOptions.Builder()
       .isPublic(true)
       .subnets(java.util.Arrays.asList(subnetIdentityModel))
-      .datapath(loadBalancerLoggingDatapathPrototypeModel)
       .dns(loadBalancerDnsPrototypeModel)
       .listeners(java.util.Arrays.asList(loadBalancerListenerPrototypeLoadBalancerContextModel))
       .logging(loadBalancerLoggingPrototypeModel)
@@ -213,7 +212,6 @@ public class CreateLoadBalancerOptionsTest {
       .build();
     assertEquals(createLoadBalancerOptionsModel.isPublic(), Boolean.valueOf(true));
     assertEquals(createLoadBalancerOptionsModel.subnets(), java.util.Arrays.asList(subnetIdentityModel));
-    assertEquals(createLoadBalancerOptionsModel.datapath(), loadBalancerLoggingDatapathPrototypeModel);
     assertEquals(createLoadBalancerOptionsModel.dns(), loadBalancerDnsPrototypeModel);
     assertEquals(createLoadBalancerOptionsModel.listeners(), java.util.Arrays.asList(loadBalancerListenerPrototypeLoadBalancerContextModel));
     assertEquals(createLoadBalancerOptionsModel.logging(), loadBalancerLoggingPrototypeModel);

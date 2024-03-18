@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021, 2022, 2023.
+ * (C) Copyright IBM Corp. 2022, 2023, 2024.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -20,6 +20,10 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
  * BackupPolicy.
+ *
+ * Classes which extend this class:
+ * - BackupPolicyMatchResourceTypeInstance
+ * - BackupPolicyMatchResourceTypeVolume
  */
 public class BackupPolicy extends GenericModel {
 
@@ -64,9 +68,16 @@ public class BackupPolicy extends GenericModel {
   }
 
   /**
-   * The resource type.
+   * The resource type this backup policy applies to. Resources that have both a matching type and a matching user tag
+   * will be subject to the backup policy.
+   *
+   * The enumerated values for this property may expand in the future. When processing this property, check for and log
+   * unknown values. Optionally halt processing and surface the error, or bypass the backup policy on which the
+   * unexpected property value was encountered.
    */
-  public interface MatchResourceTypes {
+  public interface MatchResourceType {
+    /** instance. */
+    String INSTANCE = "instance";
     /** volume. */
     String VOLUME = "volume";
   }
@@ -77,6 +88,16 @@ public class BackupPolicy extends GenericModel {
   public interface ResourceType {
     /** backup_policy. */
     String BACKUP_POLICY = "backup_policy";
+  }
+
+  /**
+   * An item to include.
+   */
+  public interface IncludedContent {
+    /** boot_volume. */
+    String BOOT_VOLUME = "boot_volume";
+    /** data_volumes. */
+    String DATA_VOLUMES = "data_volumes";
   }
 
   @SerializedName("created_at")
@@ -92,8 +113,8 @@ public class BackupPolicy extends GenericModel {
   protected Date lastJobCompletedAt;
   @SerializedName("lifecycle_state")
   protected String lifecycleState;
-  @SerializedName("match_resource_types")
-  protected List<String> matchResourceTypes;
+  @SerializedName("match_resource_type")
+  protected String matchResourceType;
   @SerializedName("match_user_tags")
   protected List<String> matchUserTags;
   protected String name;
@@ -103,6 +124,8 @@ public class BackupPolicy extends GenericModel {
   @SerializedName("resource_type")
   protected String resourceType;
   protected BackupPolicyScope scope;
+  @SerializedName("included_content")
+  protected List<String> includedContent;
 
   protected BackupPolicy() { }
 
@@ -207,19 +230,19 @@ public class BackupPolicy extends GenericModel {
   }
 
   /**
-   * Gets the matchResourceTypes.
+   * Gets the matchResourceType.
    *
-   * The resource types this backup policy applies to. Resources that have both a matching type and a matching user tag
+   * The resource type this backup policy applies to. Resources that have both a matching type and a matching user tag
    * will be subject to the backup policy.
    *
-   * The enumerated values for this property will expand in the future. When processing this property, check for and log
+   * The enumerated values for this property may expand in the future. When processing this property, check for and log
    * unknown values. Optionally halt processing and surface the error, or bypass the backup policy on which the
    * unexpected property value was encountered.
    *
-   * @return the matchResourceTypes
+   * @return the matchResourceType
    */
-  public List<String> getMatchResourceTypes() {
-    return matchResourceTypes;
+  public String getMatchResourceType() {
+    return matchResourceType;
   }
 
   /**
@@ -287,6 +310,23 @@ public class BackupPolicy extends GenericModel {
    */
   public BackupPolicyScope getScope() {
     return scope;
+  }
+
+  /**
+   * Gets the includedContent.
+   *
+   * The included content for backups created using this policy:
+   * - `boot_volume`: Include the instance's boot volume.
+   * - `data_volumes`: Include the instance's data volumes.
+   *
+   * The enumerated values for this property may expand in the future. When processing this property, check for and log
+   * unknown values. Optionally halt processing and surface the error, or bypass the backup policy on which the
+   * unexpected property value was encountered.
+   *
+   * @return the includedContent
+   */
+  public List<String> getIncludedContent() {
+    return includedContent;
   }
 }
 

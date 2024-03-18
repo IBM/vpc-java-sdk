@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021, 2022, 2023.
+ * (C) Copyright IBM Corp. 2022, 2023, 2024.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -91,6 +91,8 @@ public class Snapshot extends GenericModel {
   @SerializedName("service_tags")
   protected List<String> serviceTags;
   protected Long size;
+  @SerializedName("snapshot_consistency_group")
+  protected SnapshotConsistencyGroupReference snapshotConsistencyGroup;
   @SerializedName("source_image")
   protected ImageReference sourceImage;
   @SerializedName("source_snapshot")
@@ -330,6 +332,17 @@ public class Snapshot extends GenericModel {
    */
   public Long getSize() {
     return size;
+  }
+
+  /**
+   * Gets the snapshotConsistencyGroup.
+   *
+   * If present, the snapshot consistency group which created this snapshot.
+   *
+   * @return the snapshotConsistencyGroup
+   */
+  public SnapshotConsistencyGroupReference getSnapshotConsistencyGroup() {
+    return snapshotConsistencyGroup;
   }
 
   /**

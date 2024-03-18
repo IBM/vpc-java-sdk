@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021, 2022, 2023.
+ * (C) Copyright IBM Corp. 2022, 2023, 2024.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -44,6 +44,8 @@ public class BareMetalServerProfile extends GenericModel {
   protected String href;
   protected BareMetalServerProfileMemory memory;
   protected String name;
+  @SerializedName("network_attachment_count")
+  protected BareMetalServerProfileNetworkAttachmentCount networkAttachmentCount;
   @SerializedName("network_interface_count")
   protected BareMetalServerProfileNetworkInterfaceCount networkInterfaceCount;
   @SerializedName("os_architecture")
@@ -52,6 +54,8 @@ public class BareMetalServerProfile extends GenericModel {
   protected String resourceType;
   @SerializedName("supported_trusted_platform_module_modes")
   protected BareMetalServerProfileSupportedTrustedPlatformModuleModes supportedTrustedPlatformModuleModes;
+  @SerializedName("virtual_network_interfaces_supported")
+  protected BareMetalServerProfileVirtualNetworkInterfacesSupported virtualNetworkInterfacesSupported;
 
   protected BareMetalServerProfile() { }
 
@@ -156,6 +160,15 @@ public class BareMetalServerProfile extends GenericModel {
   }
 
   /**
+   * Gets the networkAttachmentCount.
+   *
+   * @return the networkAttachmentCount
+   */
+  public BareMetalServerProfileNetworkAttachmentCount getNetworkAttachmentCount() {
+    return networkAttachmentCount;
+  }
+
+  /**
    * Gets the networkInterfaceCount.
    *
    * @return the networkInterfaceCount
@@ -193,6 +206,17 @@ public class BareMetalServerProfile extends GenericModel {
    */
   public BareMetalServerProfileSupportedTrustedPlatformModuleModes getSupportedTrustedPlatformModuleModes() {
     return supportedTrustedPlatformModuleModes;
+  }
+
+  /**
+   * Gets the virtualNetworkInterfacesSupported.
+   *
+   * Indicates whether this profile supports virtual network interfaces.
+   *
+   * @return the virtualNetworkInterfacesSupported
+   */
+  public BareMetalServerProfileVirtualNetworkInterfacesSupported getVirtualNetworkInterfacesSupported() {
+    return virtualNetworkInterfacesSupported;
   }
 }
 

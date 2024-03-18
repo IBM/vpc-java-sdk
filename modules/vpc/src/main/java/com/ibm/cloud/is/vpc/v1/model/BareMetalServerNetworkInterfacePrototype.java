@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021, 2022, 2023.
+ * (C) Copyright IBM Corp. 2022, 2023, 2024.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -88,6 +88,11 @@ public class BareMetalServerNetworkInterfacePrototype extends GenericModel {
    *
    * Indicates whether source IP spoofing is allowed on this bare metal server network interface.
    *
+   * If this bare metal server has network attachments, this network interface is a
+   * [read-only representation](https://cloud.ibm.com/docs/vpc?topic=vpc-vni-about#vni-old-api-clients) of its
+   * corresponding network attachment and its attached virtual network interface, and source IP spoofing is managed on
+   * the attached virtual network interface.
+   *
    * @return the allowIpSpoofing
    */
   public Boolean allowIpSpoofing() {
@@ -106,6 +111,11 @@ public class BareMetalServerNetworkInterfacePrototype extends GenericModel {
    *   allowing the workload to perform any needed NAT operations.
    * - `allow_ip_spoofing` must be `false`.
    * - `interface_type` must not be `hipersocket`.
+   *
+   * If this bare metal server has network attachments, this network interface is a
+   * [read-only representation](https://cloud.ibm.com/docs/vpc?topic=vpc-vni-about#vni-old-api-clients) of its
+   * corresponding network attachment and its attached virtual network interface, and infrastructure NAT is managed on
+   * the attached virtual network interface.
    *
    * @return the enableInfrastructureNat
    */
@@ -215,6 +225,11 @@ public class BareMetalServerNetworkInterfacePrototype extends GenericModel {
    * `resource_group`, and must have a network interface with `interface_type` of `pci` with `allowed_vlans` including
    * this network interface's `vlan`.
    *
+   * If this bare metal server has network attachments, this network interface is a
+   * [read-only representation](https://cloud.ibm.com/docs/vpc?topic=vpc-vni-about#vni-old-api-clients) of its
+   * corresponding network attachment and its attached virtual network interface, and the value of this property matches
+   * that of the `allow_to_float` property of the corresponding network attachment.
+   *
    * @return the allowInterfaceToFloat
    */
   public Boolean allowInterfaceToFloat() {
@@ -225,6 +240,11 @@ public class BareMetalServerNetworkInterfacePrototype extends GenericModel {
    * Gets the vlan.
    *
    * The VLAN ID used in the IEEE 802.1Q tag present in all traffic on this interface.
+   *
+   * If this bare metal server has network attachments, this network interface is a
+   * [read-only representation](https://cloud.ibm.com/docs/vpc?topic=vpc-vni-about#vni-old-api-clients) of its
+   * corresponding network attachment and its attached virtual network interface, and the VLAN ID matches the `vlan` of
+   * the corresponding network attachment.
    *
    * @return the vlan
    */

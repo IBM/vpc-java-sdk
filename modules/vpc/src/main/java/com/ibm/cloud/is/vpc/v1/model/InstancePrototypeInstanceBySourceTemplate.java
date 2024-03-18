@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021, 2022, 2023.
+ * (C) Copyright IBM Corp. 2022, 2023, 2024.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -18,6 +18,9 @@ import java.util.List;
 /**
  * Create an instance by using an instance template.
  *
+ * The `primary_network_attachment` and `network_attachments` properties may only be specified if
+ * `primary_network_attachment` is specified in the source template.
+ *
  * The `primary_network_interface` and `network_interfaces` properties may only be specified if
  * `primary_network_interface` is specified in the source template.
  */
@@ -35,6 +38,7 @@ public class InstancePrototypeInstanceBySourceTemplate extends InstancePrototype
     private String name;
     private InstancePlacementTargetPrototype placementTarget;
     private InstanceProfileIdentity profile;
+    private InstanceReservationAffinityPrototype reservationAffinity;
     private ResourceGroupIdentity resourceGroup;
     private Long totalVolumeBandwidth;
     private String userData;
@@ -43,7 +47,9 @@ public class InstancePrototypeInstanceBySourceTemplate extends InstancePrototype
     private VolumeAttachmentPrototypeInstanceByImageContext bootVolumeAttachment;
     private InstanceCatalogOfferingPrototype catalogOffering;
     private ImageIdentity image;
+    private List<InstanceNetworkAttachmentPrototype> networkAttachments;
     private List<NetworkInterfacePrototype> networkInterfaces;
+    private InstanceNetworkAttachmentPrototype primaryNetworkAttachment;
     private NetworkInterfacePrototype primaryNetworkInterface;
     private InstanceTemplateIdentity sourceTemplate;
     private ZoneIdentity zone;
@@ -61,6 +67,7 @@ public class InstancePrototypeInstanceBySourceTemplate extends InstancePrototype
       this.name = instancePrototypeInstanceBySourceTemplate.name;
       this.placementTarget = instancePrototypeInstanceBySourceTemplate.placementTarget;
       this.profile = instancePrototypeInstanceBySourceTemplate.profile;
+      this.reservationAffinity = instancePrototypeInstanceBySourceTemplate.reservationAffinity;
       this.resourceGroup = instancePrototypeInstanceBySourceTemplate.resourceGroup;
       this.totalVolumeBandwidth = instancePrototypeInstanceBySourceTemplate.totalVolumeBandwidth;
       this.userData = instancePrototypeInstanceBySourceTemplate.userData;
@@ -69,7 +76,9 @@ public class InstancePrototypeInstanceBySourceTemplate extends InstancePrototype
       this.bootVolumeAttachment = (VolumeAttachmentPrototypeInstanceByImageContext) instancePrototypeInstanceBySourceTemplate.bootVolumeAttachment;
       this.catalogOffering = instancePrototypeInstanceBySourceTemplate.catalogOffering;
       this.image = instancePrototypeInstanceBySourceTemplate.image;
+      this.networkAttachments = instancePrototypeInstanceBySourceTemplate.networkAttachments;
       this.networkInterfaces = instancePrototypeInstanceBySourceTemplate.networkInterfaces;
+      this.primaryNetworkAttachment = instancePrototypeInstanceBySourceTemplate.primaryNetworkAttachment;
       this.primaryNetworkInterface = instancePrototypeInstanceBySourceTemplate.primaryNetworkInterface;
       this.sourceTemplate = instancePrototypeInstanceBySourceTemplate.sourceTemplate;
       this.zone = instancePrototypeInstanceBySourceTemplate.zone;
@@ -100,9 +109,9 @@ public class InstancePrototypeInstanceBySourceTemplate extends InstancePrototype
     }
 
     /**
-     * Adds an keys to keys.
+     * Adds a new element to keys.
      *
-     * @param keys the new keys
+     * @param keys the new element to be added
      * @return the InstancePrototypeInstanceBySourceTemplate builder
      */
     public Builder addKeys(KeyIdentity keys) {
@@ -116,9 +125,9 @@ public class InstancePrototypeInstanceBySourceTemplate extends InstancePrototype
     }
 
     /**
-     * Adds an volumeAttachments to volumeAttachments.
+     * Adds a new element to volumeAttachments.
      *
-     * @param volumeAttachments the new volumeAttachments
+     * @param volumeAttachments the new element to be added
      * @return the InstancePrototypeInstanceBySourceTemplate builder
      */
     public Builder addVolumeAttachments(VolumeAttachmentPrototype volumeAttachments) {
@@ -132,9 +141,25 @@ public class InstancePrototypeInstanceBySourceTemplate extends InstancePrototype
     }
 
     /**
-     * Adds an networkInterfaces to networkInterfaces.
+     * Adds a new element to networkAttachments.
      *
-     * @param networkInterfaces the new networkInterfaces
+     * @param networkAttachments the new element to be added
+     * @return the InstancePrototypeInstanceBySourceTemplate builder
+     */
+    public Builder addNetworkAttachments(InstanceNetworkAttachmentPrototype networkAttachments) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(networkAttachments,
+        "networkAttachments cannot be null");
+      if (this.networkAttachments == null) {
+        this.networkAttachments = new ArrayList<InstanceNetworkAttachmentPrototype>();
+      }
+      this.networkAttachments.add(networkAttachments);
+      return this;
+    }
+
+    /**
+     * Adds a new element to networkInterfaces.
+     *
+     * @param networkInterfaces the new element to be added
      * @return the InstancePrototypeInstanceBySourceTemplate builder
      */
     public Builder addNetworkInterfaces(NetworkInterfacePrototype networkInterfaces) {
@@ -222,6 +247,17 @@ public class InstancePrototypeInstanceBySourceTemplate extends InstancePrototype
      */
     public Builder profile(InstanceProfileIdentity profile) {
       this.profile = profile;
+      return this;
+    }
+
+    /**
+     * Set the reservationAffinity.
+     *
+     * @param reservationAffinity the reservationAffinity
+     * @return the InstancePrototypeInstanceBySourceTemplate builder
+     */
+    public Builder reservationAffinity(InstanceReservationAffinityPrototype reservationAffinity) {
+      this.reservationAffinity = reservationAffinity;
       return this;
     }
 
@@ -315,6 +351,18 @@ public class InstancePrototypeInstanceBySourceTemplate extends InstancePrototype
     }
 
     /**
+     * Set the networkAttachments.
+     * Existing networkAttachments will be replaced.
+     *
+     * @param networkAttachments the networkAttachments
+     * @return the InstancePrototypeInstanceBySourceTemplate builder
+     */
+    public Builder networkAttachments(List<InstanceNetworkAttachmentPrototype> networkAttachments) {
+      this.networkAttachments = networkAttachments;
+      return this;
+    }
+
+    /**
      * Set the networkInterfaces.
      * Existing networkInterfaces will be replaced.
      *
@@ -323,6 +371,17 @@ public class InstancePrototypeInstanceBySourceTemplate extends InstancePrototype
      */
     public Builder networkInterfaces(List<NetworkInterfacePrototype> networkInterfaces) {
       this.networkInterfaces = networkInterfaces;
+      return this;
+    }
+
+    /**
+     * Set the primaryNetworkAttachment.
+     *
+     * @param primaryNetworkAttachment the primaryNetworkAttachment
+     * @return the InstancePrototypeInstanceBySourceTemplate builder
+     */
+    public Builder primaryNetworkAttachment(InstanceNetworkAttachmentPrototype primaryNetworkAttachment) {
+      this.primaryNetworkAttachment = primaryNetworkAttachment;
       return this;
     }
 
@@ -372,6 +431,7 @@ public class InstancePrototypeInstanceBySourceTemplate extends InstancePrototype
     name = builder.name;
     placementTarget = builder.placementTarget;
     profile = builder.profile;
+    reservationAffinity = builder.reservationAffinity;
     resourceGroup = builder.resourceGroup;
     totalVolumeBandwidth = builder.totalVolumeBandwidth;
     userData = builder.userData;
@@ -380,7 +440,9 @@ public class InstancePrototypeInstanceBySourceTemplate extends InstancePrototype
     bootVolumeAttachment = builder.bootVolumeAttachment;
     catalogOffering = builder.catalogOffering;
     image = builder.image;
+    networkAttachments = builder.networkAttachments;
     networkInterfaces = builder.networkInterfaces;
+    primaryNetworkAttachment = builder.primaryNetworkAttachment;
     primaryNetworkInterface = builder.primaryNetworkInterface;
     sourceTemplate = builder.sourceTemplate;
     zone = builder.zone;

@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021, 2022, 2023.
+ * (C) Copyright IBM Corp. 2022, 2023, 2024.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -36,6 +36,10 @@ public class InstanceStatusReason extends GenericModel {
     String CANNOT_START_NETWORK = "cannot_start_network";
     /** cannot_start_placement_group. */
     String CANNOT_START_PLACEMENT_GROUP = "cannot_start_placement_group";
+    /** cannot_start_reservation_capacity. */
+    String CANNOT_START_RESERVATION_CAPACITY = "cannot_start_reservation_capacity";
+    /** cannot_start_reservation_expired. */
+    String CANNOT_START_RESERVATION_EXPIRED = "cannot_start_reservation_expired";
     /** cannot_start_storage. */
     String CANNOT_START_STORAGE = "cannot_start_storage";
     /** encryption_key_deleted. */

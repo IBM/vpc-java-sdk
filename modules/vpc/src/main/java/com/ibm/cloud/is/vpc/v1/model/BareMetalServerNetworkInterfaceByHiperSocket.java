@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021, 2022, 2023.
+ * (C) Copyright IBM Corp. 2022, 2023, 2024.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -27,6 +27,10 @@ public class BareMetalServerNetworkInterfaceByHiperSocket extends BareMetalServe
 
   /**
    * The status of the bare metal server network interface.
+   *
+   * If this bare metal server has network attachments, this network interface is a read-only representation of its
+   * corresponding network attachment and its attached virtual network interface, and the status is [computed from
+   * them](https://cloud.ibm.com/docs/vpc?topic=vpc-vni-about#vni-old-api-clients).
    */
   public interface Status {
     /** available. */
@@ -41,6 +45,11 @@ public class BareMetalServerNetworkInterfaceByHiperSocket extends BareMetalServe
 
   /**
    * The bare metal server network interface type.
+   *
+   * If this bare metal server has network attachments, this network interface is a
+   * [read-only representation](https://cloud.ibm.com/docs/vpc?topic=vpc-vni-about#vni-old-api-clients) of its
+   * corresponding network attachment and its attached virtual network interface, and the type is that of its
+   * corresponding network attachment.
    */
   public interface Type {
     /** primary. */

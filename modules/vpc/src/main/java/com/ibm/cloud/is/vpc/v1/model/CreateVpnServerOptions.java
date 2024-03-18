@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021, 2022, 2023.
+ * (C) Copyright IBM Corp. 2022, 2023, 2024.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -113,9 +113,9 @@ public class CreateVpnServerOptions extends GenericModel {
     }
 
     /**
-     * Adds an clientAuthentication to clientAuthentication.
+     * Adds a new element to clientAuthentication.
      *
-     * @param clientAuthentication the new clientAuthentication
+     * @param clientAuthentication the new element to be added
      * @return the CreateVpnServerOptions builder
      */
     public Builder addClientAuthentication(VPNServerAuthenticationPrototype clientAuthentication) {
@@ -129,9 +129,9 @@ public class CreateVpnServerOptions extends GenericModel {
     }
 
     /**
-     * Adds an subnets to subnets.
+     * Adds a new element to subnets.
      *
-     * @param subnets the new subnets
+     * @param subnets the new element to be added
      * @return the CreateVpnServerOptions builder
      */
     public Builder addSubnets(SubnetIdentity subnets) {
@@ -145,9 +145,9 @@ public class CreateVpnServerOptions extends GenericModel {
     }
 
     /**
-     * Adds an clientDnsServerIps to clientDnsServerIps.
+     * Adds a new element to clientDnsServerIps.
      *
-     * @param clientDnsServerIps the new clientDnsServerIps
+     * @param clientDnsServerIps the new element to be added
      * @return the CreateVpnServerOptions builder
      */
     public Builder addClientDnsServerIps(IP clientDnsServerIps) {
@@ -161,9 +161,9 @@ public class CreateVpnServerOptions extends GenericModel {
     }
 
     /**
-     * Adds an securityGroups to securityGroups.
+     * Adds a new element to securityGroups.
      *
-     * @param securityGroups the new securityGroups
+     * @param securityGroups the new element to be added
      * @return the CreateVpnServerOptions builder
      */
     public Builder addSecurityGroups(SecurityGroupIdentity securityGroups) {

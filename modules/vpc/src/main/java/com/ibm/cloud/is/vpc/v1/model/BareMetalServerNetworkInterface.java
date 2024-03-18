@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021, 2022, 2023.
+ * (C) Copyright IBM Corp. 2022, 2023, 2024.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -52,6 +52,11 @@ public class BareMetalServerNetworkInterface extends GenericModel {
    *   - Has its own security groups and does not inherit those of the PCI device through
    *     which traffic flows.
    *
+   * If this bare metal server has network attachments, this network interface is a
+   * [read-only representation](https://cloud.ibm.com/docs/vpc?topic=vpc-vni-about#vni-old-api-clients) of its
+   * corresponding network attachment and its attached virtual network interface, and the interface type is that of the
+   * corresponding network attachment.
+   *
    * The enumerated values for this property are expected to expand in the future. When processing this property, check
    * for and log unknown values. Optionally halt processing and surface the error, or bypass the resource on which the
    * unexpected property value was encountered.
@@ -75,6 +80,10 @@ public class BareMetalServerNetworkInterface extends GenericModel {
 
   /**
    * The status of the bare metal server network interface.
+   *
+   * If this bare metal server has network attachments, this network interface is a read-only representation of its
+   * corresponding network attachment and its attached virtual network interface, and the status is [computed from
+   * them](https://cloud.ibm.com/docs/vpc?topic=vpc-vni-about#vni-old-api-clients).
    */
   public interface Status {
     /** available. */
@@ -89,6 +98,11 @@ public class BareMetalServerNetworkInterface extends GenericModel {
 
   /**
    * The bare metal server network interface type.
+   *
+   * If this bare metal server has network attachments, this network interface is a
+   * [read-only representation](https://cloud.ibm.com/docs/vpc?topic=vpc-vni-about#vni-old-api-clients) of its
+   * corresponding network attachment and its attached virtual network interface, and the type is that of its
+   * corresponding network attachment.
    */
   public interface Type {
     /** primary. */
@@ -136,6 +150,11 @@ public class BareMetalServerNetworkInterface extends GenericModel {
    *
    * Indicates whether source IP spoofing is allowed on this bare metal server network interface.
    *
+   * If this bare metal server has network attachments, this network interface is a
+   * [read-only representation](https://cloud.ibm.com/docs/vpc?topic=vpc-vni-about#vni-old-api-clients) of its
+   * corresponding network attachment and its attached virtual network interface, and source IP spoofing is managed on
+   * the attached virtual network interface.
+   *
    * @return the allowIpSpoofing
    */
   public Boolean isAllowIpSpoofing() {
@@ -146,6 +165,10 @@ public class BareMetalServerNetworkInterface extends GenericModel {
    * Gets the createdAt.
    *
    * The date and time that the bare metal server network interface was created.
+   *
+   * If this bare metal server has network attachments, this network interface was created as a [read-only
+   * representation](https://cloud.ibm.com/docs/vpc?topic=vpc-vni-about#vni-old-api-clients) when its corresponding
+   * network attachment was created.
    *
    * @return the createdAt
    */
@@ -166,6 +189,11 @@ public class BareMetalServerNetworkInterface extends GenericModel {
    * - `allow_ip_spoofing` must be `false`.
    * - `interface_type` must not be `hipersocket`.
    *
+   * If this bare metal server has network attachments, this network interface is a
+   * [read-only representation](https://cloud.ibm.com/docs/vpc?topic=vpc-vni-about#vni-old-api-clients) of its
+   * corresponding network attachment and its attached virtual network interface, and infrastructure NAT is managed on
+   * the attached virtual network interface.
+   *
    * @return the enableInfrastructureNat
    */
   public Boolean isEnableInfrastructureNat() {
@@ -176,6 +204,11 @@ public class BareMetalServerNetworkInterface extends GenericModel {
    * Gets the floatingIps.
    *
    * The floating IPs associated with this bare metal server network interface.
+   *
+   * If this bare metal server has network attachments, this network interface is a
+   * [read-only representation](https://cloud.ibm.com/docs/vpc?topic=vpc-vni-about#vni-old-api-clients) of its
+   * corresponding network attachment and its attached virtual network interface, and the floating IPs are associated
+   * with the attached virtual network interface.
    *
    * @return the floatingIps
    */
@@ -188,6 +221,10 @@ public class BareMetalServerNetworkInterface extends GenericModel {
    *
    * The URL for this bare metal server network interface.
    *
+   * If this bare metal server has network attachments, this network interface is a
+   * [read-only representation](https://cloud.ibm.com/docs/vpc?topic=vpc-vni-about#vni-old-api-clients) of its
+   * corresponding network attachment.
+   *
    * @return the href
    */
   public String getHref() {
@@ -198,6 +235,11 @@ public class BareMetalServerNetworkInterface extends GenericModel {
    * Gets the id.
    *
    * The unique identifier for this bare metal server network interface.
+   *
+   * If this bare metal server has network attachments, this network interface is a
+   * [read-only representation](https://cloud.ibm.com/docs/vpc?topic=vpc-vni-about#vni-old-api-clients) of its
+   * corresponding network attachment and its attached virtual network interface, and the identifier is that of the
+   * corresponding network attachment.
    *
    * @return the id
    */
@@ -222,6 +264,11 @@ public class BareMetalServerNetworkInterface extends GenericModel {
    *   - Has its own security groups and does not inherit those of the PCI device through
    *     which traffic flows.
    *
+   * If this bare metal server has network attachments, this network interface is a
+   * [read-only representation](https://cloud.ibm.com/docs/vpc?topic=vpc-vni-about#vni-old-api-clients) of its
+   * corresponding network attachment and its attached virtual network interface, and the interface type is that of the
+   * corresponding network attachment.
+   *
    * The enumerated values for this property are expected to expand in the future. When processing this property, check
    * for and log unknown values. Optionally halt processing and surface the error, or bypass the resource on which the
    * unexpected property value was encountered.
@@ -238,6 +285,11 @@ public class BareMetalServerNetworkInterface extends GenericModel {
    * The MAC address of this bare metal server network interface. If the MAC address has not yet been selected, the
    * value will be an empty string.
    *
+   * If this bare metal server has network attachments, this network interface is a
+   * [read-only representation](https://cloud.ibm.com/docs/vpc?topic=vpc-vni-about#vni-old-api-clients) of its
+   * corresponding network attachment and its attached virtual network interface, and the MAC address is that of the
+   * attached virtual network interface.
+   *
    * @return the macAddress
    */
   public String getMacAddress() {
@@ -249,6 +301,11 @@ public class BareMetalServerNetworkInterface extends GenericModel {
    *
    * The name for this bare metal server network interface.
    *
+   * If this bare metal server has network attachments, this network interface is a
+   * [read-only representation](https://cloud.ibm.com/docs/vpc?topic=vpc-vni-about#vni-old-api-clients) of its
+   * corresponding network attachment and its attached virtual network interface, and the name matches its corresponding
+   * network attachment.
+   *
    * @return the name
    */
   public String getName() {
@@ -259,6 +316,11 @@ public class BareMetalServerNetworkInterface extends GenericModel {
    * Gets the portSpeed.
    *
    * The bare metal server network interface port speed in Mbps.
+   *
+   * If this bare metal server has network attachments, this network interface is a
+   * [read-only representation](https://cloud.ibm.com/docs/vpc?topic=vpc-vni-about#vni-old-api-clients) of its
+   * corresponding network attachment and its attached virtual network interface, and the port speed is that of its
+   * corresponding network attachment.
    *
    * @return the portSpeed
    */
@@ -291,6 +353,11 @@ public class BareMetalServerNetworkInterface extends GenericModel {
    *
    * The security groups targeting this bare metal server network interface.
    *
+   * If this bare metal server has network attachments, this network interface is a
+   * [read-only representation](https://cloud.ibm.com/docs/vpc?topic=vpc-vni-about#vni-old-api-clients) of its
+   * corresponding network attachment and its attached virtual network interface, and the security groups are associated
+   * with the attached virtual network interface.
+   *
    * @return the securityGroups
    */
   public List<SecurityGroupReference> getSecurityGroups() {
@@ -301,6 +368,10 @@ public class BareMetalServerNetworkInterface extends GenericModel {
    * Gets the status.
    *
    * The status of the bare metal server network interface.
+   *
+   * If this bare metal server has network attachments, this network interface is a read-only representation of its
+   * corresponding network attachment and its attached virtual network interface, and the status is [computed from
+   * them](https://cloud.ibm.com/docs/vpc?topic=vpc-vni-about#vni-old-api-clients).
    *
    * @return the status
    */
@@ -324,6 +395,11 @@ public class BareMetalServerNetworkInterface extends GenericModel {
    *
    * The bare metal server network interface type.
    *
+   * If this bare metal server has network attachments, this network interface is a
+   * [read-only representation](https://cloud.ibm.com/docs/vpc?topic=vpc-vni-about#vni-old-api-clients) of its
+   * corresponding network attachment and its attached virtual network interface, and the type is that of its
+   * corresponding network attachment.
+   *
    * @return the type
    */
   public String getType() {
@@ -334,6 +410,11 @@ public class BareMetalServerNetworkInterface extends GenericModel {
    * Gets the allowedVlans.
    *
    * The VLAN IDs allowed for `vlan` interfaces using this PCI interface.
+   *
+   * If this bare metal server has network attachments, this network interface is a
+   * [read-only representation](https://cloud.ibm.com/docs/vpc?topic=vpc-vni-about#vni-old-api-clients) of its
+   * corresponding network attachment and its attached virtual network interface, and the VLAN IDs match the
+   * `allow_vlans` of the corresponding network attachment.
    *
    * @return the allowedVlans
    */
@@ -355,6 +436,11 @@ public class BareMetalServerNetworkInterface extends GenericModel {
    * `resource_group`, and must have a network interface with `interface_type` of `pci` with `allowed_vlans` including
    * this network interface's `vlan`.
    *
+   * If this bare metal server has network attachments, this network interface is a
+   * [read-only representation](https://cloud.ibm.com/docs/vpc?topic=vpc-vni-about#vni-old-api-clients) of its
+   * corresponding network attachment and its attached virtual network interface, and the value of this property matches
+   * that of the `allow_to_float` property of the corresponding network attachment.
+   *
    * @return the allowInterfaceToFloat
    */
   public Boolean isAllowInterfaceToFloat() {
@@ -365,6 +451,11 @@ public class BareMetalServerNetworkInterface extends GenericModel {
    * Gets the vlan.
    *
    * The VLAN ID used in the IEEE 802.1Q tag present in all traffic on this interface.
+   *
+   * If this bare metal server has network attachments, this network interface is a
+   * [read-only representation](https://cloud.ibm.com/docs/vpc?topic=vpc-vni-about#vni-old-api-clients) of its
+   * corresponding network attachment and its attached virtual network interface, and the VLAN ID matches the `vlan` of
+   * the corresponding network attachment.
    *
    * @return the vlan
    */

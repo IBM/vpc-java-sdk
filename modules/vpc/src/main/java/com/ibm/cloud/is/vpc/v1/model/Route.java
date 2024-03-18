@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021, 2022, 2023.
+ * (C) Copyright IBM Corp. 2022, 2023, 2024.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -77,6 +77,7 @@ public class Route extends GenericModel {
   }
 
   protected String action;
+  protected Boolean advertise;
   @SerializedName("created_at")
   protected Date createdAt;
   protected RouteCreator creator;
@@ -107,6 +108,18 @@ public class Route extends GenericModel {
    */
   public String getAction() {
     return action;
+  }
+
+  /**
+   * Gets the advertise.
+   *
+   * Indicates whether this route will be advertised to the ingress sources specified by the `advertise_routes_to`
+   * routing table property.
+   *
+   * @return the advertise
+   */
+  public Boolean isAdvertise() {
+    return advertise;
   }
 
   /**
@@ -235,8 +248,13 @@ public class Route extends GenericModel {
   /**
    * Gets the zone.
    *
-   * The zone the route applies to. (Traffic from subnets in this zone will be
-   * subject to this route.).
+   * The zone the route applies to.
+   *
+   * If subnets are attached to the route's routing table, egress traffic from those
+   * subnets in this zone will be subject to this route. If this route's routing table
+   * has any of `route_direct_link_ingress`, `route_internet_ingress`,
+   * `route_transit_gateway_ingress` or `route_vpc_zone_ingress`  set to`true`, traffic
+   * from those ingress sources arriving in this zone will be subject to this route.
    *
    * @return the zone
    */

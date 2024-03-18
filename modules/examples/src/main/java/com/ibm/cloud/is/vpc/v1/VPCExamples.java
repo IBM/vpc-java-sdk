@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021, 2022, 2023.
+ * (C) Copyright IBM Corp. 2022, 2023, 2024.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -13,7 +13,7 @@
 
 package com.ibm.cloud.is.vpc.v1;
 
-
+import com.ibm.cloud.is.vpc.v1.model.ActivateReservationOptions;
 import com.ibm.cloud.is.vpc.v1.model.AddBareMetalServerNetworkInterfaceFloatingIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.AddEndpointGatewayIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.AddInstanceNetworkInterfaceFloatingIpOptions;
@@ -30,6 +30,7 @@ import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlan;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanCollection;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanPatch;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanRemoteRegionPolicyPrototype;
+import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPrototypeBackupPolicyMatchResourceTypeInstancePrototype;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServer;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerConsoleAccessToken;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerDisk;
@@ -46,6 +47,7 @@ import com.ibm.cloud.is.vpc.v1.model.BareMetalServerPrimaryNetworkInterfaceProto
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfile;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileIdentityByName;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfilesPager;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerPrototypeBareMetalServerByNetworkInterface;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServersPager;
 import com.ibm.cloud.is.vpc.v1.model.CertificateInstanceIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.CheckVpnGatewayConnectionLocalCidrOptions;
@@ -86,6 +88,7 @@ import com.ibm.cloud.is.vpc.v1.model.CreateNetworkAclOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateNetworkAclRuleOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreatePlacementGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreatePublicGatewayOptions;
+import com.ibm.cloud.is.vpc.v1.model.CreateReservationOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateSecurityGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateSecurityGroupRuleOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateSecurityGroupTargetBindingOptions;
@@ -158,6 +161,7 @@ import com.ibm.cloud.is.vpc.v1.model.DeleteNetworkAclOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteNetworkAclRuleOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeletePlacementGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeletePublicGatewayOptions;
+import com.ibm.cloud.is.vpc.v1.model.DeleteReservationOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteSecurityGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteSecurityGroupRuleOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteSecurityGroupTargetBindingOptions;
@@ -253,6 +257,7 @@ import com.ibm.cloud.is.vpc.v1.model.GetPlacementGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetPublicGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetRegionOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetRegionZoneOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetReservationOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetSecurityGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetSecurityGroupRuleOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetSecurityGroupTargetOptions;
@@ -330,12 +335,12 @@ import com.ibm.cloud.is.vpc.v1.model.InstancePlacementTargetPrototypeDedicatedHo
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfile;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileCollection;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileIdentityByName;
-import com.ibm.cloud.is.vpc.v1.model.InstancePrototypeInstanceByImage;
+import com.ibm.cloud.is.vpc.v1.model.InstancePrototypeInstanceByImageInstanceByImageInstanceByNetworkInterface;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplate;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateCollection;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplatePatch;
-import com.ibm.cloud.is.vpc.v1.model.InstanceTemplatePrototypeInstanceTemplateByImage;
+import com.ibm.cloud.is.vpc.v1.model.InstanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByImageInstanceByNetworkInterface;
 import com.ibm.cloud.is.vpc.v1.model.InstancesPager;
 import com.ibm.cloud.is.vpc.v1.model.IpsecPoliciesPager;
 import com.ibm.cloud.is.vpc.v1.model.Key;
@@ -394,6 +399,7 @@ import com.ibm.cloud.is.vpc.v1.model.ListPlacementGroupsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListPublicGatewaysOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListRegionZonesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListRegionsOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListReservationsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListSecurityGroupRulesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListSecurityGroupTargetsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListSecurityGroupsOptions;
@@ -532,6 +538,12 @@ import com.ibm.cloud.is.vpc.v1.model.SubnetPatch;
 import com.ibm.cloud.is.vpc.v1.model.SubnetPrototypeSubnetByTotalCount;
 import com.ibm.cloud.is.vpc.v1.model.SubnetReservedIpsPager;
 import com.ibm.cloud.is.vpc.v1.model.SubnetsPager;
+import com.ibm.cloud.is.vpc.v1.model.Reservation;
+import com.ibm.cloud.is.vpc.v1.model.ReservationCapacityPrototype;
+import com.ibm.cloud.is.vpc.v1.model.ReservationCommittedUsePrototype;
+import com.ibm.cloud.is.vpc.v1.model.ReservationPatch;
+import com.ibm.cloud.is.vpc.v1.model.ReservationProfilePrototype;
+import com.ibm.cloud.is.vpc.v1.model.ReservationsPager;
 import com.ibm.cloud.is.vpc.v1.model.UnsetSubnetPublicGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateBackupPolicyOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateBackupPolicyPlanOptions;
@@ -569,6 +581,7 @@ import com.ibm.cloud.is.vpc.v1.model.UpdateNetworkAclOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateNetworkAclRuleOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdatePlacementGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdatePublicGatewayOptions;
+import com.ibm.cloud.is.vpc.v1.model.UpdateReservationOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateSecurityGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateSecurityGroupRuleOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateShareMountTargetOptions;
@@ -594,7 +607,7 @@ import com.ibm.cloud.is.vpc.v1.model.VPNGateway;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnection;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionCollection;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionLocalCIDRs;
-import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionPatchVPNGatewayConnectionStaticRouteModePatch;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionPatch;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionPeerCIDRs;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionPrototypeVPNGatewayConnectionStaticRouteModePrototype;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayPatch;
@@ -642,6 +655,7 @@ import com.ibm.cloud.is.vpc.v1.model.ZoneIdentityByName;
 import com.ibm.cloud.sdk.core.http.Response;
 import com.ibm.cloud.sdk.core.service.exception.ServiceResponseException;
 import com.ibm.cloud.sdk.core.util.CredentialUtils;
+import com.ibm.cloud.sdk.core.util.GsonSingleton;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -724,6 +738,7 @@ public class VPCExamples {
   static String vpnGatewayConnectionId;
   static String regionName = "us-east";
   static String crossRegionName = "us-south";
+  static String reservationId;
   static String securityGroupId;
   static String securityGroupRuleId;
   static String securityGroupTargetId;
@@ -1983,6 +1998,116 @@ public class VPCExamples {
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
     }
 
+
+    try {
+      System.out.println("listReservations() result:");
+      // begin-list_reservations
+      ListReservationsOptions listReservationsOptions = new ListReservationsOptions.Builder()
+          .limit(Long.valueOf("10"))
+          .name("testString")
+          .resourceGroupId("testString")
+          .zoneName("us-south-1")
+          .build();
+
+      ReservationsPager pager = new ReservationsPager(vpcService, listReservationsOptions);
+      List<Reservation> allResults = new ArrayList<>();
+      while (pager.hasNext()) {
+        List<Reservation> nextPage = pager.getNext();
+        allResults.addAll(nextPage);
+      }
+
+      System.out.println(GsonSingleton.getGson().toJson(allResults));
+      // end-list_reservations
+    } catch (ServiceResponseException e) {
+      logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("createReservation() result:");
+      // begin-create_reservation
+      ReservationCapacityPrototype reservationCapacityPrototypeModel = new ReservationCapacityPrototype.Builder()
+          .total(Long.valueOf("10"))
+          .build();
+      ReservationCommittedUsePrototype reservationCommittedUsePrototypeModel = new ReservationCommittedUsePrototype.Builder()
+          .term("one_year")
+          .build();
+      ReservationProfilePrototype reservationProfilePrototypeModel = new ReservationProfilePrototype.Builder()
+          .name(instanceProfileName)
+          .resourceType("instance_profile")
+          .build();
+      ZoneIdentityByName zoneIdentityModel = new ZoneIdentityByName.Builder()
+          .name("us-south-1")
+          .build();
+      CreateReservationOptions createReservationOptions = new CreateReservationOptions.Builder()
+          .capacity(reservationCapacityPrototypeModel)
+          .committedUse(reservationCommittedUsePrototypeModel)
+          .name("my-reservation")
+          .profile(reservationProfilePrototypeModel)
+          .zone(zoneIdentityModel)
+          .build();
+
+      Response<Reservation> response = vpcService.createReservation(createReservationOptions).execute();
+      Reservation reservation = response.getResult();
+
+      // end-create_reservation
+      reservationId = reservation.getId();
+    } catch (ServiceResponseException e) {
+      logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("getReservation() result:");
+      // begin-get_reservation
+      GetReservationOptions getReservationOptions = new GetReservationOptions.Builder()
+          .id(reservationId)
+          .build();
+
+      Response<Reservation> response = vpcService.getReservation(getReservationOptions).execute();
+      Reservation reservation = response.getResult();
+
+      // end-get_reservation
+    } catch (ServiceResponseException e) {
+      logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("updateReservation() result:");
+      // begin-update_reservation
+      ReservationPatch reservationPatchModel = new ReservationPatch.Builder()
+          .name("my-reservation-updated")
+          .build();
+      Map<String, Object> reservationPatchModelAsPatch = reservationPatchModel.asPatch();
+      UpdateReservationOptions updateReservationOptions = new UpdateReservationOptions.Builder()
+          .id(reservationId)
+          .reservationPatch(reservationPatchModelAsPatch)
+          .build();
+
+      Response<Reservation> response = vpcService.updateReservation(updateReservationOptions).execute();
+      Reservation reservation = response.getResult();
+
+      // end-update_reservation
+    } catch (ServiceResponseException e) {
+      logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      // begin-activate_reservation
+      ActivateReservationOptions activateReservationOptions = new ActivateReservationOptions.Builder()
+          .id(reservationId)
+          .build();
+
+      Response<Void> response = vpcService.activateReservation(activateReservationOptions).execute();
+      // end-activate_reservation
+      System.out.printf("activateReservation() response status code: %d%n", response.getStatusCode());
+    } catch (ServiceResponseException e) {
+      logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
     try {
       System.out.println("listInstanceTemplates() result:");
       // begin-list_instance_templates
@@ -2021,7 +2146,7 @@ public class VPCExamples {
       ZoneIdentityByName zoneIdentityModel = new ZoneIdentityByName.Builder()
         .name(zoneName)
         .build();
-      InstanceTemplatePrototypeInstanceTemplateByImage instanceTemplatePrototypeModel = new InstanceTemplatePrototypeInstanceTemplateByImage.Builder()
+      InstanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByImageInstanceByNetworkInterface instanceTemplatePrototypeModel = new InstanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByImageInstanceByNetworkInterface.Builder()
         .keys(new java.util.ArrayList<KeyIdentity>(java.util.Arrays.asList(keyIdentityModel)))
         .name("my-instance-template")
         .profile(instanceProfileIdentityModel)
@@ -2185,11 +2310,14 @@ public class VPCExamples {
       System.out.println("createBackupPolicy() result:");
       List<String> matchUserTags = Arrays.asList("tag1", "tag2");
       // begin-create_backup_policy
-      CreateBackupPolicyOptions createBackupPolicyOptions = new CreateBackupPolicyOptions.Builder()
-        .name("my-backup-policy")
-        .matchUserTags(matchUserTags)
-        .build();
+      BackupPolicyPrototypeBackupPolicyMatchResourceTypeInstancePrototype backupPolicyPrototype = new BackupPolicyPrototypeBackupPolicyMatchResourceTypeInstancePrototype.Builder()
+      .name("my-backup-policy")
+      .matchUserTags(matchUserTags)
+      .build();
 
+      CreateBackupPolicyOptions createBackupPolicyOptions = new CreateBackupPolicyOptions.Builder()
+        .backupPolicyPrototype(backupPolicyPrototype)
+        .build();
       Response<BackupPolicy> response = vpcService.createBackupPolicy(createBackupPolicyOptions).execute();
       BackupPolicy backupPolicy = response.getResult();
 
@@ -2841,7 +2969,7 @@ public class VPCExamples {
       ZoneIdentityByName zoneIdentityModel = new ZoneIdentityByName.Builder()
         .name(zoneName)
         .build();
-      InstancePrototypeInstanceByImage instancePrototypeModel = new InstancePrototypeInstanceByImage.Builder()
+      InstancePrototypeInstanceByImageInstanceByImageInstanceByNetworkInterface instancePrototypeModel = new InstancePrototypeInstanceByImageInstanceByImageInstanceByNetworkInterface.Builder()
         .keys(new java.util.ArrayList<KeyIdentity>(java.util.Arrays.asList(keyIdentityModel)))
         .name("my-instance")
         .placementTarget(instancePlacementTargetPrototypeModel)
@@ -3820,13 +3948,16 @@ public class VPCExamples {
       ZoneIdentityByName zoneIdentityModel = new ZoneIdentityByName.Builder()
               .name(zoneName)
               .build();
-      CreateBareMetalServerOptions createBareMetalServerOptions = new CreateBareMetalServerOptions.Builder()
+      BareMetalServerPrototypeBareMetalServerByNetworkInterface bareMetalServerPrototype = new BareMetalServerPrototypeBareMetalServerByNetworkInterface.Builder()
               .initialization(bareMetalServerInitializationPrototypeModel)
               .primaryNetworkInterface(bareMetalServerPrimaryNetworkInterfacePrototypeModel)
               .profile(bareMetalServerProfileIdentityModel)
               .name("my-bare-metal-server")
               .vpc(vpcIdentityModel)
               .zone(zoneIdentityModel)
+              .build();
+      CreateBareMetalServerOptions createBareMetalServerOptions = new CreateBareMetalServerOptions.Builder()
+              .bareMetalServerPrototype(bareMetalServerPrototype)
               .build();
 
       Response<BareMetalServer> response = vpcService.createBareMetalServer(createBareMetalServerOptions).execute();
@@ -5368,7 +5499,7 @@ public class VPCExamples {
     try {
       System.out.println("updateVpnGatewayConnection() result:");
       // begin-update_vpn_gateway_connection
-      VPNGatewayConnectionPatchVPNGatewayConnectionStaticRouteModePatch vpnGatewayConnectionPatchModel = new VPNGatewayConnectionPatchVPNGatewayConnectionStaticRouteModePatch.Builder()
+      VPNGatewayConnectionPatch vpnGatewayConnectionPatchModel = new VPNGatewayConnectionPatch.Builder()
         .name("my-vpngetwayconnection-update")
         .build();
       Map<String, Object> vpnGatewayConnectionPatchModelAsPatch = vpnGatewayConnectionPatchModel.asPatch();
@@ -7363,6 +7494,23 @@ public class VPCExamples {
       System.out.printf("deleteInstance() response status code: %d%n", response.getStatusCode());
     } catch (ServiceResponseException e) {
         logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("deleteReservation() result:");
+      // begin-delete_reservation
+      DeleteReservationOptions deleteReservationOptions = new DeleteReservationOptions.Builder()
+          .id(reservationId)
+          .build();
+
+      Response<Reservation> response = vpcService.deleteReservation(deleteReservationOptions).execute();
+      Reservation reservation = response.getResult();
+
+      System.out.println(reservation);
+      // end-delete_reservation
+    } catch (ServiceResponseException e) {
+      logger.error(String.format("Service returned status code %s: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
     }
 

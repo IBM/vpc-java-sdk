@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021, 2022, 2023.
+ * (C) Copyright IBM Corp. 2022, 2023, 2024.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -51,15 +51,22 @@ public class VirtualNetworkInterface extends GenericModel {
     String VIRTUAL_NETWORK_INTERFACE = "virtual_network_interface";
   }
 
+  @SerializedName("allow_ip_spoofing")
+  protected Boolean allowIpSpoofing;
   @SerializedName("auto_delete")
   protected Boolean autoDelete;
   @SerializedName("created_at")
   protected Date createdAt;
   protected String crn;
+  @SerializedName("enable_infrastructure_nat")
+  protected Boolean enableInfrastructureNat;
   protected String href;
   protected String id;
+  protected List<ReservedIPReference> ips;
   @SerializedName("lifecycle_state")
   protected String lifecycleState;
+  @SerializedName("mac_address")
+  protected String macAddress;
   protected String name;
   @SerializedName("primary_ip")
   protected ReservedIPReference primaryIp;
@@ -75,6 +82,18 @@ public class VirtualNetworkInterface extends GenericModel {
   protected ZoneReference zone;
 
   protected VirtualNetworkInterface() { }
+
+  /**
+   * Gets the allowIpSpoofing.
+   *
+   * Indicates whether source IP spoofing is allowed on this interface. If `false`, source IP spoofing is prevented on
+   * this interface. If `true`, source IP spoofing is allowed on this interface.
+   *
+   * @return the allowIpSpoofing
+   */
+  public Boolean isAllowIpSpoofing() {
+    return allowIpSpoofing;
+  }
 
   /**
    * Gets the autoDelete.
@@ -111,6 +130,26 @@ public class VirtualNetworkInterface extends GenericModel {
   }
 
   /**
+   * Gets the enableInfrastructureNat.
+   *
+   * If `true`:
+   * - The VPC infrastructure performs any needed NAT operations.
+   * - `floating_ips` must not have more than one floating IP.
+   *
+   * If `false`:
+   * - Packets are passed unchanged to/from the virtual network interface,
+   *   allowing the workload to perform any needed NAT operations.
+   * - `allow_ip_spoofing` must be `false`.
+   * - Can only be attached to a `target` with a `resource_type` of
+   *   `bare_metal_server_network_attachment`.
+   *
+   * @return the enableInfrastructureNat
+   */
+  public Boolean isEnableInfrastructureNat() {
+    return enableInfrastructureNat;
+  }
+
+  /**
    * Gets the href.
    *
    * The URL for this virtual network interface.
@@ -133,6 +172,19 @@ public class VirtualNetworkInterface extends GenericModel {
   }
 
   /**
+   * Gets the ips.
+   *
+   * The reserved IPs bound to this virtual network interface.
+   *
+   * May be empty when `lifecycle_state` is `pending`.
+   *
+   * @return the ips
+   */
+  public List<ReservedIPReference> getIps() {
+    return ips;
+  }
+
+  /**
    * Gets the lifecycleState.
    *
    * The lifecycle state of the virtual network interface.
@@ -141,6 +193,17 @@ public class VirtualNetworkInterface extends GenericModel {
    */
   public String getLifecycleState() {
     return lifecycleState;
+  }
+
+  /**
+   * Gets the macAddress.
+   *
+   * The MAC address of the virtual network interface. May be absent if `lifecycle_state` is `pending`.
+   *
+   * @return the macAddress
+   */
+  public String getMacAddress() {
+    return macAddress;
   }
 
   /**

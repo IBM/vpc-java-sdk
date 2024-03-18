@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021, 2022, 2023.
+ * (C) Copyright IBM Corp. 2022, 2023, 2024.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -90,9 +90,9 @@ public class BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInter
     }
 
     /**
-     * Adds an securityGroups to securityGroups.
+     * Adds a new element to securityGroups.
      *
-     * @param securityGroups the new securityGroups
+     * @param securityGroups the new element to be added
      * @return the BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByPCIPrototype builder
      */
     public Builder addSecurityGroups(SecurityGroupIdentity securityGroups) {
@@ -106,9 +106,9 @@ public class BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInter
     }
 
     /**
-     * Adds an allowedVlans to allowedVlans.
+     * Adds a new element to allowedVlans.
      *
-     * @param allowedVlans the new allowedVlans
+     * @param allowedVlans the new element to be added
      * @return the BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByPCIPrototype builder
      */
     public Builder addAllowedVlans(Long allowedVlans) {

@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021, 2022, 2023.
+ * (C) Copyright IBM Corp. 2022, 2023, 2024.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -52,6 +52,8 @@ public class ListSnapshotsOptionsTest {
       .sourceVolumeRemoteRegionName("us-south")
       .sourceImageRemoteRegionName("us-south")
       .clonesZoneName("us-south-1")
+      .snapshotConsistencyGroupId("testString")
+      .snapshotConsistencyGroupCrn("crn:v1:bluemix:public:is:us-south:a/123456::snapshot-consistency-group:r134-fa329f6b-0e36-433f-a3bb-0df632e79263")
       .build();
     assertEquals(listSnapshotsOptionsModel.start(), "testString");
     assertEquals(listSnapshotsOptionsModel.limit(), Long.valueOf("50"));
@@ -73,5 +75,7 @@ public class ListSnapshotsOptionsTest {
     assertEquals(listSnapshotsOptionsModel.sourceVolumeRemoteRegionName(), "us-south");
     assertEquals(listSnapshotsOptionsModel.sourceImageRemoteRegionName(), "us-south");
     assertEquals(listSnapshotsOptionsModel.clonesZoneName(), "us-south-1");
+    assertEquals(listSnapshotsOptionsModel.snapshotConsistencyGroupId(), "testString");
+    assertEquals(listSnapshotsOptionsModel.snapshotConsistencyGroupCrn(), "crn:v1:bluemix:public:is:us-south:a/123456::snapshot-consistency-group:r134-fa329f6b-0e36-433f-a3bb-0df632e79263");
   }
 }

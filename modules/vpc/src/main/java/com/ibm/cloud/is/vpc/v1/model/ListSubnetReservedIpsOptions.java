@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021, 2022, 2023.
+ * (C) Copyright IBM Corp. 2022, 2023, 2024.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -37,6 +37,10 @@ public class ListSubnetReservedIpsOptions extends GenericModel {
   protected String start;
   protected Long limit;
   protected String sort;
+  protected String targetId;
+  protected String targetCrn;
+  protected String targetName;
+  protected String targetResourceType;
 
   /**
    * Builder.
@@ -46,6 +50,10 @@ public class ListSubnetReservedIpsOptions extends GenericModel {
     private String start;
     private Long limit;
     private String sort;
+    private String targetId;
+    private String targetCrn;
+    private String targetName;
+    private String targetResourceType;
 
     /**
      * Instantiates a new Builder from an existing ListSubnetReservedIpsOptions instance.
@@ -57,6 +65,10 @@ public class ListSubnetReservedIpsOptions extends GenericModel {
       this.start = listSubnetReservedIpsOptions.start;
       this.limit = listSubnetReservedIpsOptions.limit;
       this.sort = listSubnetReservedIpsOptions.sort;
+      this.targetId = listSubnetReservedIpsOptions.targetId;
+      this.targetCrn = listSubnetReservedIpsOptions.targetCrn;
+      this.targetName = listSubnetReservedIpsOptions.targetName;
+      this.targetResourceType = listSubnetReservedIpsOptions.targetResourceType;
     }
 
     /**
@@ -126,6 +138,50 @@ public class ListSubnetReservedIpsOptions extends GenericModel {
       this.sort = sort;
       return this;
     }
+
+    /**
+     * Set the targetId.
+     *
+     * @param targetId the targetId
+     * @return the ListSubnetReservedIpsOptions builder
+     */
+    public Builder targetId(String targetId) {
+      this.targetId = targetId;
+      return this;
+    }
+
+    /**
+     * Set the targetCrn.
+     *
+     * @param targetCrn the targetCrn
+     * @return the ListSubnetReservedIpsOptions builder
+     */
+    public Builder targetCrn(String targetCrn) {
+      this.targetCrn = targetCrn;
+      return this;
+    }
+
+    /**
+     * Set the targetName.
+     *
+     * @param targetName the targetName
+     * @return the ListSubnetReservedIpsOptions builder
+     */
+    public Builder targetName(String targetName) {
+      this.targetName = targetName;
+      return this;
+    }
+
+    /**
+     * Set the targetResourceType.
+     *
+     * @param targetResourceType the targetResourceType
+     * @return the ListSubnetReservedIpsOptions builder
+     */
+    public Builder targetResourceType(String targetResourceType) {
+      this.targetResourceType = targetResourceType;
+      return this;
+    }
   }
 
   protected ListSubnetReservedIpsOptions() { }
@@ -137,6 +193,10 @@ public class ListSubnetReservedIpsOptions extends GenericModel {
     start = builder.start;
     limit = builder.limit;
     sort = builder.sort;
+    targetId = builder.targetId;
+    targetCrn = builder.targetCrn;
+    targetName = builder.targetName;
+    targetResourceType = builder.targetResourceType;
   }
 
   /**
@@ -192,6 +252,50 @@ public class ListSubnetReservedIpsOptions extends GenericModel {
    */
   public String sort() {
     return sort;
+  }
+
+  /**
+   * Gets the targetId.
+   *
+   * Filters the collection to resources with a `target.id` property matching the specified identifier.
+   *
+   * @return the targetId
+   */
+  public String targetId() {
+    return targetId;
+  }
+
+  /**
+   * Gets the targetCrn.
+   *
+   * Filters the collection to resources with a `target.crn` property matching the specified CRN.
+   *
+   * @return the targetCrn
+   */
+  public String targetCrn() {
+    return targetCrn;
+  }
+
+  /**
+   * Gets the targetName.
+   *
+   * Filters the collection to resources with a `target.name` property matching the exact specified name.
+   *
+   * @return the targetName
+   */
+  public String targetName() {
+    return targetName;
+  }
+
+  /**
+   * Gets the targetResourceType.
+   *
+   * Filters the collection to resources with a `target.resource_type` property matching the specified value.
+   *
+   * @return the targetResourceType
+   */
+  public String targetResourceType() {
+    return targetResourceType;
   }
 }
 

@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021, 2022, 2023.
+ * (C) Copyright IBM Corp. 2022, 2023, 2024.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -49,6 +49,7 @@ public class CreateVpcRoutingTableRouteOptionsTest {
       .destination("192.168.3.0/24")
       .zone(zoneIdentityModel)
       .action("deliver")
+      .advertise(false)
       .name("my-route-1")
       .nextHop(routePrototypeNextHopModel)
       .priority(Long.valueOf("1"))
@@ -58,6 +59,7 @@ public class CreateVpcRoutingTableRouteOptionsTest {
     assertEquals(createVpcRoutingTableRouteOptionsModel.destination(), "192.168.3.0/24");
     assertEquals(createVpcRoutingTableRouteOptionsModel.zone(), zoneIdentityModel);
     assertEquals(createVpcRoutingTableRouteOptionsModel.action(), "deliver");
+    assertEquals(createVpcRoutingTableRouteOptionsModel.advertise(), Boolean.valueOf(false));
     assertEquals(createVpcRoutingTableRouteOptionsModel.name(), "my-route-1");
     assertEquals(createVpcRoutingTableRouteOptionsModel.nextHop(), routePrototypeNextHopModel);
     assertEquals(createVpcRoutingTableRouteOptionsModel.priority(), Long.valueOf("1"));

@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021, 2022, 2023.
+ * (C) Copyright IBM Corp. 2022, 2023, 2024.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -16,8 +16,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Create a replica file share for an existing file share. The values for `access_control_mode`,
- * `encryption_key`, `initial_owner`, and `size` will be inherited from `source_share`.
+ * Create a replica file share for an existing file share. The values for `initial_owner`,
+ * `access_control_mode`, `encryption_key` and `size` will be inherited from `source_share`.
  */
 public class SharePrototypeShareBySourceShare extends SharePrototype {
 
@@ -33,6 +33,7 @@ public class SharePrototypeShareBySourceShare extends SharePrototype {
     private SharePrototypeShareContext replicaShare;
     private List<String> userTags;
     private ZoneIdentity zone;
+    private EncryptionKeyIdentity encryptionKey;
     private String replicationCronSpec;
     private ResourceGroupIdentity resourceGroup;
     private ShareIdentity sourceShare;
@@ -50,6 +51,7 @@ public class SharePrototypeShareBySourceShare extends SharePrototype {
       this.replicaShare = sharePrototypeShareBySourceShare.replicaShare;
       this.userTags = sharePrototypeShareBySourceShare.userTags;
       this.zone = sharePrototypeShareBySourceShare.zone;
+      this.encryptionKey = sharePrototypeShareBySourceShare.encryptionKey;
       this.replicationCronSpec = sharePrototypeShareBySourceShare.replicationCronSpec;
       this.resourceGroup = sharePrototypeShareBySourceShare.resourceGroup;
       this.sourceShare = sharePrototypeShareBySourceShare.sourceShare;
@@ -86,9 +88,9 @@ public class SharePrototypeShareBySourceShare extends SharePrototype {
     }
 
     /**
-     * Adds an mountTargets to mountTargets.
+     * Adds a new element to mountTargets.
      *
-     * @param mountTargets the new mountTargets
+     * @param mountTargets the new element to be added
      * @return the SharePrototypeShareBySourceShare builder
      */
     public Builder addMountTargets(ShareMountTargetPrototype mountTargets) {
@@ -102,9 +104,9 @@ public class SharePrototypeShareBySourceShare extends SharePrototype {
     }
 
     /**
-     * Adds an userTags to userTags.
+     * Adds a new element to userTags.
      *
-     * @param userTags the new userTags
+     * @param userTags the new element to be added
      * @return the SharePrototypeShareBySourceShare builder
      */
     public Builder addUserTags(String userTags) {
@@ -197,6 +199,17 @@ public class SharePrototypeShareBySourceShare extends SharePrototype {
     }
 
     /**
+     * Set the encryptionKey.
+     *
+     * @param encryptionKey the encryptionKey
+     * @return the SharePrototypeShareBySourceShare builder
+     */
+    public Builder encryptionKey(EncryptionKeyIdentity encryptionKey) {
+      this.encryptionKey = encryptionKey;
+      return this;
+    }
+
+    /**
      * Set the replicationCronSpec.
      *
      * @param replicationCronSpec the replicationCronSpec
@@ -248,6 +261,7 @@ public class SharePrototypeShareBySourceShare extends SharePrototype {
     replicaShare = builder.replicaShare;
     userTags = builder.userTags;
     zone = builder.zone;
+    encryptionKey = builder.encryptionKey;
     replicationCronSpec = builder.replicationCronSpec;
     resourceGroup = builder.resourceGroup;
     sourceShare = builder.sourceShare;

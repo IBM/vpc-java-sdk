@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2021, 2022, 2023.
+ * (C) Copyright IBM Corp. 2022, 2023, 2024.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -33,24 +33,39 @@ public class VirtualNetworkInterfacePatchTest {
   @Test
   public void testVirtualNetworkInterfacePatch() throws Throwable {
     VirtualNetworkInterfacePatch virtualNetworkInterfacePatchModel = new VirtualNetworkInterfacePatch.Builder()
+      .allowIpSpoofing(true)
+      .autoDelete(false)
+      .enableInfrastructureNat(true)
       .name("my-virtual-network-interface")
       .build();
+    assertEquals(virtualNetworkInterfacePatchModel.allowIpSpoofing(), Boolean.valueOf(true));
+    assertEquals(virtualNetworkInterfacePatchModel.autoDelete(), Boolean.valueOf(false));
+    assertEquals(virtualNetworkInterfacePatchModel.enableInfrastructureNat(), Boolean.valueOf(true));
     assertEquals(virtualNetworkInterfacePatchModel.name(), "my-virtual-network-interface");
 
     String json = TestUtilities.serialize(virtualNetworkInterfacePatchModel);
 
     VirtualNetworkInterfacePatch virtualNetworkInterfacePatchModelNew = TestUtilities.deserialize(json, VirtualNetworkInterfacePatch.class);
     assertTrue(virtualNetworkInterfacePatchModelNew instanceof VirtualNetworkInterfacePatch);
+    assertEquals(virtualNetworkInterfacePatchModelNew.allowIpSpoofing(), Boolean.valueOf(true));
+    assertEquals(virtualNetworkInterfacePatchModelNew.autoDelete(), Boolean.valueOf(false));
+    assertEquals(virtualNetworkInterfacePatchModelNew.enableInfrastructureNat(), Boolean.valueOf(true));
     assertEquals(virtualNetworkInterfacePatchModelNew.name(), "my-virtual-network-interface");
   }
   @Test
   public void testVirtualNetworkInterfacePatchAsPatch() throws Throwable {
     VirtualNetworkInterfacePatch virtualNetworkInterfacePatchModel = new VirtualNetworkInterfacePatch.Builder()
+      .allowIpSpoofing(true)
+      .autoDelete(false)
+      .enableInfrastructureNat(true)
       .name("my-virtual-network-interface")
       .build();
 
     Map<String, Object> mergePatch = virtualNetworkInterfacePatchModel.asPatch();
 
+    assertTrue(mergePatch.containsKey("allow_ip_spoofing"));
+    assertTrue(mergePatch.containsKey("auto_delete"));
+    assertTrue(mergePatch.containsKey("enable_infrastructure_nat"));
     assertEquals(mergePatch.get("name"), "my-virtual-network-interface");
   }
 
