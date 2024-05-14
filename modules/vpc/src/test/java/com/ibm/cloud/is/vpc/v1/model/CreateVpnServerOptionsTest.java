@@ -39,9 +39,9 @@ public class CreateVpnServerOptionsTest {
   @Test
   public void testCreateVpnServerOptions() throws Throwable {
     CertificateInstanceIdentityByCRN certificateInstanceIdentityModel = new CertificateInstanceIdentityByCRN.Builder()
-      .crn("crn:v1:bluemix:public:secrets-manager:us-south:a/123456:36fa422d-080d-4d83-8d2d-86851b4001df:secret:2e786aab-42fa-63ed-14f8-d66d552f4dd5")
+      .crn("crn:v1:bluemix:public:secrets-manager:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:36fa422d-080d-4d83-8d2d-86851b4001df:secret:2e786aab-42fa-63ed-14f8-d66d552f4dd5")
       .build();
-    assertEquals(certificateInstanceIdentityModel.crn(), "crn:v1:bluemix:public:secrets-manager:us-south:a/123456:36fa422d-080d-4d83-8d2d-86851b4001df:secret:2e786aab-42fa-63ed-14f8-d66d552f4dd5");
+    assertEquals(certificateInstanceIdentityModel.crn(), "crn:v1:bluemix:public:secrets-manager:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:36fa422d-080d-4d83-8d2d-86851b4001df:secret:2e786aab-42fa-63ed-14f8-d66d552f4dd5");
 
     VPNServerAuthenticationByUsernameIdProviderByIAM vpnServerAuthenticationByUsernameIdProviderModel = new VPNServerAuthenticationByUsernameIdProviderByIAM.Builder()
       .providerType("iam")
@@ -56,9 +56,9 @@ public class CreateVpnServerOptionsTest {
     assertEquals(vpnServerAuthenticationPrototypeModel.identityProvider(), vpnServerAuthenticationByUsernameIdProviderModel);
 
     SubnetIdentityById subnetIdentityModel = new SubnetIdentityById.Builder()
-      .id("7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
+      .id("0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
       .build();
-    assertEquals(subnetIdentityModel.id(), "7ec86020-1c6e-4889-b3f0-a15f2e50f87e");
+    assertEquals(subnetIdentityModel.id(), "0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e");
 
     IP ipModel = new IP.Builder()
       .address("192.168.3.4")

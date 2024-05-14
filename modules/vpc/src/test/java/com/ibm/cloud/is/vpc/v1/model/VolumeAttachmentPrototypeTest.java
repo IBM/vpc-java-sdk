@@ -33,9 +33,9 @@ public class VolumeAttachmentPrototypeTest {
   @Test
   public void testVolumeAttachmentPrototype() throws Throwable {
     VolumeAttachmentPrototypeVolumeVolumeIdentityVolumeIdentityById volumeAttachmentPrototypeVolumeModel = new VolumeAttachmentPrototypeVolumeVolumeIdentityVolumeIdentityById.Builder()
-      .id("1a6b7274-678d-4dfb-8981-c71dd9d4daa5")
+      .id("r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5")
       .build();
-    assertEquals(volumeAttachmentPrototypeVolumeModel.id(), "1a6b7274-678d-4dfb-8981-c71dd9d4daa5");
+    assertEquals(volumeAttachmentPrototypeVolumeModel.id(), "r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5");
 
     VolumeAttachmentPrototype volumeAttachmentPrototypeModel = new VolumeAttachmentPrototype.Builder()
       .deleteVolumeOnInstanceDelete(false)

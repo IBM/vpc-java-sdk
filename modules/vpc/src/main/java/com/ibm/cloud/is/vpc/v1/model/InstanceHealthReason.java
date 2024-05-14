@@ -21,7 +21,15 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class InstanceHealthReason extends GenericModel {
 
   /**
-   * A snake case string succinctly identifying the reason for this health state.
+   * A reason code for this health state:
+   * - `reservation_capacity_unavailable`: The reservation affinity pool has no
+   *   available capacity.
+   * - `reservation_deleted`: The reservation affinity pool has a deleted reservation.
+   * - `reservation_expired`: The reservation affinity pool has an expired reservation.
+   * - `reservation_failed`: The reservation affinity pool has a failed reservation.
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface Code {
     /** reservation_capacity_unavailable. */
@@ -44,7 +52,15 @@ public class InstanceHealthReason extends GenericModel {
   /**
    * Gets the code.
    *
-   * A snake case string succinctly identifying the reason for this health state.
+   * A reason code for this health state:
+   * - `reservation_capacity_unavailable`: The reservation affinity pool has no
+   *   available capacity.
+   * - `reservation_deleted`: The reservation affinity pool has a deleted reservation.
+   * - `reservation_expired`: The reservation affinity pool has an expired reservation.
+   * - `reservation_failed`: The reservation affinity pool has a failed reservation.
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the code
    */

@@ -18,13 +18,13 @@ package com.ibm.cloud.is.vpc.v1.model;
 public class BackupPolicyMatchResourceTypeInstance extends BackupPolicy {
 
   /**
-   * The health of this resource.
+   * The health of this resource:
    * - `ok`: No abnormal behavior detected
    * - `degraded`: Experiencing compromised performance, capacity, or connectivity
    * - `faulted`: Completely unreachable, inoperative, or otherwise entirely incapacitated
-   * - `inapplicable`: The health state does not apply because of the current lifecycle state. A resource with a
-   * lifecycle state of `failed` or `deleting` will have a health state of `inapplicable`. A `pending` resource may also
-   * have this state.
+   * - `inapplicable`: The health state does not apply because of the current lifecycle
+   *    state. A resource with a lifecycle state of `failed` or `deleting` will have a
+   *    health state of `inapplicable`. A `pending` resource may also have this state.
    */
   public interface HealthState {
     /** degraded. */
@@ -79,9 +79,8 @@ public class BackupPolicyMatchResourceTypeInstance extends BackupPolicy {
    * The resource type this backup policy applies to. Resources that have both a matching type and a matching user tag
    * will be subject to the backup policy.
    *
-   * The enumerated values for this property may expand in the future. When processing this property, check for and log
-   * unknown values. Optionally halt processing and surface the error, or bypass the backup policy on which the
-   * unexpected property value was encountered.
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface MatchResourceType {
     /** instance. */

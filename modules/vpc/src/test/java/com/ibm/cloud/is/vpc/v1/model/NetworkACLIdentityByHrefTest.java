@@ -32,15 +32,15 @@ public class NetworkACLIdentityByHrefTest {
   @Test
   public void testNetworkACLIdentityByHref() throws Throwable {
     NetworkACLIdentityByHref networkAclIdentityByHrefModel = new NetworkACLIdentityByHref.Builder()
-      .href("https://us-south.iaas.cloud.ibm.com/v1/network_acls/a4e28308-8ee7-46ab-8108-9f881f22bdbf")
+      .href("https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf")
       .build();
-    assertEquals(networkAclIdentityByHrefModel.href(), "https://us-south.iaas.cloud.ibm.com/v1/network_acls/a4e28308-8ee7-46ab-8108-9f881f22bdbf");
+    assertEquals(networkAclIdentityByHrefModel.href(), "https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf");
 
     String json = TestUtilities.serialize(networkAclIdentityByHrefModel);
 
     NetworkACLIdentityByHref networkAclIdentityByHrefModelNew = TestUtilities.deserialize(json, NetworkACLIdentityByHref.class);
     assertTrue(networkAclIdentityByHrefModelNew instanceof NetworkACLIdentityByHref);
-    assertEquals(networkAclIdentityByHrefModelNew.href(), "https://us-south.iaas.cloud.ibm.com/v1/network_acls/a4e28308-8ee7-46ab-8108-9f881f22bdbf");
+    assertEquals(networkAclIdentityByHrefModelNew.href(), "https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

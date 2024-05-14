@@ -24,13 +24,13 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class Instance extends GenericModel {
 
   /**
-   * The health of this resource.
+   * The health of this resource:
    * - `ok`: No abnormal behavior detected
    * - `degraded`: Experiencing compromised performance, capacity, or connectivity
    * - `faulted`: Completely unreachable, inoperative, or otherwise entirely incapacitated
-   * - `inapplicable`: The health state does not apply because of the current lifecycle state. A resource with a
-   * lifecycle state of `failed` or `deleting` will have a health state of `inapplicable`. A `pending` resource may also
-   * have this state.
+   * - `inapplicable`: The health state does not apply because of the current lifecycle
+   *    state. A resource with a lifecycle state of `failed` or `deleting` will have a
+   *    health state of `inapplicable`. A `pending` resource may also have this state.
    */
   public interface HealthState {
     /** degraded. */
@@ -74,9 +74,8 @@ public class Instance extends GenericModel {
   /**
    * The status of the virtual server instance.
    *
-   * The enumerated values for this property will expand in the future. When processing this property, check for and log
-   * unknown values. Optionally halt processing and surface the error, or bypass the instance on which the unexpected
-   * property value was encountered.
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface Status {
     /** deleting. */
@@ -266,16 +265,7 @@ public class Instance extends GenericModel {
   /**
    * Gets the healthReasons.
    *
-   * The reasons for the current instance `health_state` (if any):
-   * - `reservation_capacity_unavailable`: The reservation affinity pool has no
-   *   available capacity.
-   * - `reservation_deleted`: The reservation affinity pool has a deleted reservation.
-   * - `reservation_expired`: The reservation affinity pool has an expired reservation.
-   * - `reservation_failed`: The reservation affinity pool has a failed reservation.
-   *
-   * The enumerated reason code values for this property will expand in the future. When processing this property, check
-   * for and log unknown values. Optionally halt processing and surface the error, or bypass the resource on which the
-   * unexpected reason code was encountered.
+   * The reasons for the current `health_state` (if any).
    *
    * @return the healthReasons
    */
@@ -286,13 +276,13 @@ public class Instance extends GenericModel {
   /**
    * Gets the healthState.
    *
-   * The health of this resource.
+   * The health of this resource:
    * - `ok`: No abnormal behavior detected
    * - `degraded`: Experiencing compromised performance, capacity, or connectivity
    * - `faulted`: Completely unreachable, inoperative, or otherwise entirely incapacitated
-   * - `inapplicable`: The health state does not apply because of the current lifecycle state. A resource with a
-   * lifecycle state of `failed` or `deleting` will have a health state of `inapplicable`. A `pending` resource may also
-   * have this state.
+   * - `inapplicable`: The health state does not apply because of the current lifecycle
+   *    state. A resource with a lifecycle state of `failed` or `deleting` will have a
+   *    health state of `inapplicable`. A `pending` resource may also have this state.
    *
    * @return the healthState
    */
@@ -337,10 +327,6 @@ public class Instance extends GenericModel {
    * Gets the lifecycleReasons.
    *
    * The reasons for the current `lifecycle_state` (if any).
-   *
-   * The enumerated reason code values for this property will expand in the future. When processing this property, check
-   * for and log unknown values. Optionally halt processing and surface the error, or bypass the resource on which the
-   * unexpected reason code was encountered.
    *
    * @return the lifecycleReasons
    */
@@ -541,9 +527,8 @@ public class Instance extends GenericModel {
    *
    * The status of the virtual server instance.
    *
-   * The enumerated values for this property will expand in the future. When processing this property, check for and log
-   * unknown values. Optionally halt processing and surface the error, or bypass the instance on which the unexpected
-   * property value was encountered.
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the status
    */
@@ -555,10 +540,6 @@ public class Instance extends GenericModel {
    * Gets the statusReasons.
    *
    * The reasons for the current status (if any).
-   *
-   * The enumerated reason code values for this property will expand in the future. When processing this property, check
-   * for and log unknown values. Optionally halt processing and surface the error, or bypass the resource on which the
-   * unexpected reason code was encountered.
    *
    * @return the statusReasons
    */

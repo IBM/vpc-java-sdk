@@ -32,15 +32,15 @@ public class FlowLogCollectorTargetPrototypeInstanceNetworkAttachmentIdentityIns
   @Test
   public void testFlowLogCollectorTargetPrototypeInstanceNetworkAttachmentIdentityInstanceNetworkAttachmentIdentityById() throws Throwable {
     FlowLogCollectorTargetPrototypeInstanceNetworkAttachmentIdentityInstanceNetworkAttachmentIdentityById flowLogCollectorTargetPrototypeInstanceNetworkAttachmentIdentityInstanceNetworkAttachmentIdentityByIdModel = new FlowLogCollectorTargetPrototypeInstanceNetworkAttachmentIdentityInstanceNetworkAttachmentIdentityById.Builder()
-      .id("0767-d54eb633-98ea-459d-aa00-6a8e780175a7")
+      .id("0717-d54eb633-98ea-459d-aa00-6a8e780175a7")
       .build();
-    assertEquals(flowLogCollectorTargetPrototypeInstanceNetworkAttachmentIdentityInstanceNetworkAttachmentIdentityByIdModel.id(), "0767-d54eb633-98ea-459d-aa00-6a8e780175a7");
+    assertEquals(flowLogCollectorTargetPrototypeInstanceNetworkAttachmentIdentityInstanceNetworkAttachmentIdentityByIdModel.id(), "0717-d54eb633-98ea-459d-aa00-6a8e780175a7");
 
     String json = TestUtilities.serialize(flowLogCollectorTargetPrototypeInstanceNetworkAttachmentIdentityInstanceNetworkAttachmentIdentityByIdModel);
 
     FlowLogCollectorTargetPrototypeInstanceNetworkAttachmentIdentityInstanceNetworkAttachmentIdentityById flowLogCollectorTargetPrototypeInstanceNetworkAttachmentIdentityInstanceNetworkAttachmentIdentityByIdModelNew = TestUtilities.deserialize(json, FlowLogCollectorTargetPrototypeInstanceNetworkAttachmentIdentityInstanceNetworkAttachmentIdentityById.class);
     assertTrue(flowLogCollectorTargetPrototypeInstanceNetworkAttachmentIdentityInstanceNetworkAttachmentIdentityByIdModelNew instanceof FlowLogCollectorTargetPrototypeInstanceNetworkAttachmentIdentityInstanceNetworkAttachmentIdentityById);
-    assertEquals(flowLogCollectorTargetPrototypeInstanceNetworkAttachmentIdentityInstanceNetworkAttachmentIdentityByIdModelNew.id(), "0767-d54eb633-98ea-459d-aa00-6a8e780175a7");
+    assertEquals(flowLogCollectorTargetPrototypeInstanceNetworkAttachmentIdentityInstanceNetworkAttachmentIdentityByIdModelNew.id(), "0717-d54eb633-98ea-459d-aa00-6a8e780175a7");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

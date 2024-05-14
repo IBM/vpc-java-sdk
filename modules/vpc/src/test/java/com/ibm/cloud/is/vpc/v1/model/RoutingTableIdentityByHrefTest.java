@@ -32,15 +32,15 @@ public class RoutingTableIdentityByHrefTest {
   @Test
   public void testRoutingTableIdentityByHref() throws Throwable {
     RoutingTableIdentityByHref routingTableIdentityByHrefModel = new RoutingTableIdentityByHref.Builder()
-      .href("https://us-south.iaas.cloud.ibm.com/v1/vpcs/982d72b7-db1b-4606-afb2-ed6bd4b0bed1/routing_tables/6885e83f-03b2-4603-8a86-db2a0f55c840")
+      .href("https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b/routing_tables/r006-6885e83f-03b2-4603-8a86-db2a0f55c840")
       .build();
-    assertEquals(routingTableIdentityByHrefModel.href(), "https://us-south.iaas.cloud.ibm.com/v1/vpcs/982d72b7-db1b-4606-afb2-ed6bd4b0bed1/routing_tables/6885e83f-03b2-4603-8a86-db2a0f55c840");
+    assertEquals(routingTableIdentityByHrefModel.href(), "https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b/routing_tables/r006-6885e83f-03b2-4603-8a86-db2a0f55c840");
 
     String json = TestUtilities.serialize(routingTableIdentityByHrefModel);
 
     RoutingTableIdentityByHref routingTableIdentityByHrefModelNew = TestUtilities.deserialize(json, RoutingTableIdentityByHref.class);
     assertTrue(routingTableIdentityByHrefModelNew instanceof RoutingTableIdentityByHref);
-    assertEquals(routingTableIdentityByHrefModelNew.href(), "https://us-south.iaas.cloud.ibm.com/v1/vpcs/982d72b7-db1b-4606-afb2-ed6bd4b0bed1/routing_tables/6885e83f-03b2-4603-8a86-db2a0f55c840");
+    assertEquals(routingTableIdentityByHrefModelNew.href(), "https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b/routing_tables/r006-6885e83f-03b2-4603-8a86-db2a0f55c840");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

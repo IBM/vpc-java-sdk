@@ -32,15 +32,15 @@ public class CertificateInstanceIdentityByCRNTest {
   @Test
   public void testCertificateInstanceIdentityByCRN() throws Throwable {
     CertificateInstanceIdentityByCRN certificateInstanceIdentityByCrnModel = new CertificateInstanceIdentityByCRN.Builder()
-      .crn("crn:v1:bluemix:public:secrets-manager:us-south:a/123456:36fa422d-080d-4d83-8d2d-86851b4001df:secret:2e786aab-42fa-63ed-14f8-d66d552f4dd5")
+      .crn("crn:v1:bluemix:public:secrets-manager:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:36fa422d-080d-4d83-8d2d-86851b4001df:secret:2e786aab-42fa-63ed-14f8-d66d552f4dd5")
       .build();
-    assertEquals(certificateInstanceIdentityByCrnModel.crn(), "crn:v1:bluemix:public:secrets-manager:us-south:a/123456:36fa422d-080d-4d83-8d2d-86851b4001df:secret:2e786aab-42fa-63ed-14f8-d66d552f4dd5");
+    assertEquals(certificateInstanceIdentityByCrnModel.crn(), "crn:v1:bluemix:public:secrets-manager:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:36fa422d-080d-4d83-8d2d-86851b4001df:secret:2e786aab-42fa-63ed-14f8-d66d552f4dd5");
 
     String json = TestUtilities.serialize(certificateInstanceIdentityByCrnModel);
 
     CertificateInstanceIdentityByCRN certificateInstanceIdentityByCrnModelNew = TestUtilities.deserialize(json, CertificateInstanceIdentityByCRN.class);
     assertTrue(certificateInstanceIdentityByCrnModelNew instanceof CertificateInstanceIdentityByCRN);
-    assertEquals(certificateInstanceIdentityByCrnModelNew.crn(), "crn:v1:bluemix:public:secrets-manager:us-south:a/123456:36fa422d-080d-4d83-8d2d-86851b4001df:secret:2e786aab-42fa-63ed-14f8-d66d552f4dd5");
+    assertEquals(certificateInstanceIdentityByCrnModelNew.crn(), "crn:v1:bluemix:public:secrets-manager:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:36fa422d-080d-4d83-8d2d-86851b4001df:secret:2e786aab-42fa-63ed-14f8-d66d552f4dd5");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

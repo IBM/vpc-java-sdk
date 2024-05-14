@@ -32,15 +32,15 @@ public class SubnetPublicGatewayPatchPublicGatewayIdentityByCRNTest {
   @Test
   public void testSubnetPublicGatewayPatchPublicGatewayIdentityByCRN() throws Throwable {
     SubnetPublicGatewayPatchPublicGatewayIdentityByCRN subnetPublicGatewayPatchPublicGatewayIdentityByCrnModel = new SubnetPublicGatewayPatchPublicGatewayIdentityByCRN.Builder()
-      .crn("crn:v1:bluemix:public:is:us-south-1:a/123456::public-gateway:dc5431ef-1fc6-4861-adc9-a59d077d1241")
+      .crn("crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::public-gateway:dc5431ef-1fc6-4861-adc9-a59d077d1241")
       .build();
-    assertEquals(subnetPublicGatewayPatchPublicGatewayIdentityByCrnModel.crn(), "crn:v1:bluemix:public:is:us-south-1:a/123456::public-gateway:dc5431ef-1fc6-4861-adc9-a59d077d1241");
+    assertEquals(subnetPublicGatewayPatchPublicGatewayIdentityByCrnModel.crn(), "crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::public-gateway:dc5431ef-1fc6-4861-adc9-a59d077d1241");
 
     String json = TestUtilities.serialize(subnetPublicGatewayPatchPublicGatewayIdentityByCrnModel);
 
     SubnetPublicGatewayPatchPublicGatewayIdentityByCRN subnetPublicGatewayPatchPublicGatewayIdentityByCrnModelNew = TestUtilities.deserialize(json, SubnetPublicGatewayPatchPublicGatewayIdentityByCRN.class);
     assertTrue(subnetPublicGatewayPatchPublicGatewayIdentityByCrnModelNew instanceof SubnetPublicGatewayPatchPublicGatewayIdentityByCRN);
-    assertEquals(subnetPublicGatewayPatchPublicGatewayIdentityByCrnModelNew.crn(), "crn:v1:bluemix:public:is:us-south-1:a/123456::public-gateway:dc5431ef-1fc6-4861-adc9-a59d077d1241");
+    assertEquals(subnetPublicGatewayPatchPublicGatewayIdentityByCrnModelNew.crn(), "crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::public-gateway:dc5431ef-1fc6-4861-adc9-a59d077d1241");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

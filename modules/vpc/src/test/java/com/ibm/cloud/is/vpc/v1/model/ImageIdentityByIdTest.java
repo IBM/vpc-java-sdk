@@ -32,15 +32,15 @@ public class ImageIdentityByIdTest {
   @Test
   public void testImageIdentityById() throws Throwable {
     ImageIdentityById imageIdentityByIdModel = new ImageIdentityById.Builder()
-      .id("72b27b5c-f4b0-48bb-b954-5becc7c1dcb8")
+      .id("r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8")
       .build();
-    assertEquals(imageIdentityByIdModel.id(), "72b27b5c-f4b0-48bb-b954-5becc7c1dcb8");
+    assertEquals(imageIdentityByIdModel.id(), "r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8");
 
     String json = TestUtilities.serialize(imageIdentityByIdModel);
 
     ImageIdentityById imageIdentityByIdModelNew = TestUtilities.deserialize(json, ImageIdentityById.class);
     assertTrue(imageIdentityByIdModelNew instanceof ImageIdentityById);
-    assertEquals(imageIdentityByIdModelNew.id(), "72b27b5c-f4b0-48bb-b954-5becc7c1dcb8");
+    assertEquals(imageIdentityByIdModelNew.id(), "r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

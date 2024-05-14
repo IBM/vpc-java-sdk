@@ -32,15 +32,15 @@ public class NetworkInterfaceIPPrototypeReservedIPIdentityByIdTest {
   @Test
   public void testNetworkInterfaceIPPrototypeReservedIPIdentityById() throws Throwable {
     NetworkInterfaceIPPrototypeReservedIPIdentityById networkInterfaceIpPrototypeReservedIpIdentityByIdModel = new NetworkInterfaceIPPrototypeReservedIPIdentityById.Builder()
-      .id("6d353a0f-aeb1-4ae1-832e-1110d10981bb")
+      .id("0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb")
       .build();
-    assertEquals(networkInterfaceIpPrototypeReservedIpIdentityByIdModel.id(), "6d353a0f-aeb1-4ae1-832e-1110d10981bb");
+    assertEquals(networkInterfaceIpPrototypeReservedIpIdentityByIdModel.id(), "0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb");
 
     String json = TestUtilities.serialize(networkInterfaceIpPrototypeReservedIpIdentityByIdModel);
 
     NetworkInterfaceIPPrototypeReservedIPIdentityById networkInterfaceIpPrototypeReservedIpIdentityByIdModelNew = TestUtilities.deserialize(json, NetworkInterfaceIPPrototypeReservedIPIdentityById.class);
     assertTrue(networkInterfaceIpPrototypeReservedIpIdentityByIdModelNew instanceof NetworkInterfaceIPPrototypeReservedIPIdentityById);
-    assertEquals(networkInterfaceIpPrototypeReservedIpIdentityByIdModelNew.id(), "6d353a0f-aeb1-4ae1-832e-1110d10981bb");
+    assertEquals(networkInterfaceIpPrototypeReservedIpIdentityByIdModelNew.id(), "0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

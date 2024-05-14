@@ -33,16 +33,16 @@ public class LoadBalancerListenerPolicyTargetPatchLoadBalancerListenerPolicyRedi
   public void testLoadBalancerListenerPolicyTargetPatchLoadBalancerListenerPolicyRedirectURLPatch() throws Throwable {
     LoadBalancerListenerPolicyTargetPatchLoadBalancerListenerPolicyRedirectURLPatch loadBalancerListenerPolicyTargetPatchLoadBalancerListenerPolicyRedirectUrlPatchModel = new LoadBalancerListenerPolicyTargetPatchLoadBalancerListenerPolicyRedirectURLPatch.Builder()
       .httpStatusCode(Long.valueOf("301"))
-      .url("https://www.redirect.com")
+      .url("https://www.example.com")
       .build();
     assertEquals(loadBalancerListenerPolicyTargetPatchLoadBalancerListenerPolicyRedirectUrlPatchModel.httpStatusCode(), Long.valueOf("301"));
-    assertEquals(loadBalancerListenerPolicyTargetPatchLoadBalancerListenerPolicyRedirectUrlPatchModel.url(), "https://www.redirect.com");
+    assertEquals(loadBalancerListenerPolicyTargetPatchLoadBalancerListenerPolicyRedirectUrlPatchModel.url(), "https://www.example.com");
 
     String json = TestUtilities.serialize(loadBalancerListenerPolicyTargetPatchLoadBalancerListenerPolicyRedirectUrlPatchModel);
 
     LoadBalancerListenerPolicyTargetPatchLoadBalancerListenerPolicyRedirectURLPatch loadBalancerListenerPolicyTargetPatchLoadBalancerListenerPolicyRedirectUrlPatchModelNew = TestUtilities.deserialize(json, LoadBalancerListenerPolicyTargetPatchLoadBalancerListenerPolicyRedirectURLPatch.class);
     assertTrue(loadBalancerListenerPolicyTargetPatchLoadBalancerListenerPolicyRedirectUrlPatchModelNew instanceof LoadBalancerListenerPolicyTargetPatchLoadBalancerListenerPolicyRedirectURLPatch);
     assertEquals(loadBalancerListenerPolicyTargetPatchLoadBalancerListenerPolicyRedirectUrlPatchModelNew.httpStatusCode(), Long.valueOf("301"));
-    assertEquals(loadBalancerListenerPolicyTargetPatchLoadBalancerListenerPolicyRedirectUrlPatchModelNew.url(), "https://www.redirect.com");
+    assertEquals(loadBalancerListenerPolicyTargetPatchLoadBalancerListenerPolicyRedirectUrlPatchModelNew.url(), "https://www.example.com");
   }
 }

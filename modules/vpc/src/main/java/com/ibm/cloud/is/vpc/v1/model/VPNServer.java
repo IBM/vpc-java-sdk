@@ -24,13 +24,13 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class VPNServer extends GenericModel {
 
   /**
-   * The health of this resource.
+   * The health of this resource:
    * - `ok`: No abnormal behavior detected
    * - `degraded`: Experiencing compromised performance, capacity, or connectivity
    * - `faulted`: Completely unreachable, inoperative, or otherwise entirely incapacitated
-   * - `inapplicable`: The health state does not apply because of the current lifecycle state. A resource with a
-   * lifecycle state of `failed` or `deleting` will have a health state of `inapplicable`. A `pending` resource may also
-   * have this state.
+   * - `inapplicable`: The health state does not apply because of the current lifecycle
+   *    state. A resource with a lifecycle state of `failed` or `deleting` will have a
+   *    health state of `inapplicable`. A `pending` resource may also have this state.
    */
   public interface HealthState {
     /** degraded. */
@@ -244,21 +244,7 @@ public class VPNServer extends GenericModel {
   /**
    * Gets the healthReasons.
    *
-   * The reasons for the current VPN server health_state (if any):
-   * - `cannot_access_client_certificate`: VPN server's client certificate is inaccessible
-   *   (verify certificate exists and that IAM policies grant `VPN server for VPC` access
-   *   to `Secrets Manager`)
-   * - `cannot_access_server_certificate`: VPN server's server certificate is inaccessible
-   *   (verify certificate exists and that IAM policies grant `VPN server for VPC` access
-   *   to `Secrets Manager`)
-   * - `cannot_create_vpc_route`: VPN cannot create route (check for conflict)
-   * - `cannot_reserve_ip_address`: IP address exhaustion (release addresses on the VPN's
-   *   subnet)
-   * - `internal_error`: Internal error (contact IBM support)
-   *
-   * The enumerated reason code values for this property will expand in the future. When processing this property, check
-   * for and log unknown values. Optionally halt processing and surface the error, or bypass the resource on which the
-   * unexpected reason code was encountered.
+   * The reasons for the current `health_state` (if any).
    *
    * @return the healthReasons
    */
@@ -269,13 +255,13 @@ public class VPNServer extends GenericModel {
   /**
    * Gets the healthState.
    *
-   * The health of this resource.
+   * The health of this resource:
    * - `ok`: No abnormal behavior detected
    * - `degraded`: Experiencing compromised performance, capacity, or connectivity
    * - `faulted`: Completely unreachable, inoperative, or otherwise entirely incapacitated
-   * - `inapplicable`: The health state does not apply because of the current lifecycle state. A resource with a
-   * lifecycle state of `failed` or `deleting` will have a health state of `inapplicable`. A `pending` resource may also
-   * have this state.
+   * - `inapplicable`: The health state does not apply because of the current lifecycle
+   *    state. A resource with a lifecycle state of `failed` or `deleting` will have a
+   *    health state of `inapplicable`. A `pending` resource may also have this state.
    *
    * @return the healthState
    */
@@ -319,13 +305,7 @@ public class VPNServer extends GenericModel {
   /**
    * Gets the lifecycleReasons.
    *
-   * The reasons for the current VPN server lifecycle_state (if any):
-   * - `resource_suspended_by_provider`: The resource has been suspended (contact IBM
-   *   support)
-   *
-   * The enumerated reason code values for this property will expand in the future. When processing this property, check
-   * for and log unknown values. Optionally halt processing and surface the error, or bypass the resource on which the
-   * unexpected reason code was encountered.
+   * The reasons for the current `lifecycle_state` (if any).
    *
    * @return the lifecycleReasons
    */

@@ -33,17 +33,17 @@ public class EndpointGatewayTargetPrototypeProviderCloudServiceIdentityProviderC
   public void testEndpointGatewayTargetPrototypeProviderCloudServiceIdentityProviderCloudServiceIdentityByCRN() throws Throwable {
     EndpointGatewayTargetPrototypeProviderCloudServiceIdentityProviderCloudServiceIdentityByCRN endpointGatewayTargetPrototypeProviderCloudServiceIdentityProviderCloudServiceIdentityByCrnModel = new EndpointGatewayTargetPrototypeProviderCloudServiceIdentityProviderCloudServiceIdentityByCRN.Builder()
       .resourceType("provider_cloud_service")
-      .crn("crn:v1:bluemix:public:cloudant:us-south:a/123456:3527280b-9327-4411-8020-591092e60353::")
+      .crn("crn:v1:bluemix:public:cloudant:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:3527280b-9327-4411-8020-591092e60353::")
       .build();
     assertEquals(endpointGatewayTargetPrototypeProviderCloudServiceIdentityProviderCloudServiceIdentityByCrnModel.resourceType(), "provider_cloud_service");
-    assertEquals(endpointGatewayTargetPrototypeProviderCloudServiceIdentityProviderCloudServiceIdentityByCrnModel.crn(), "crn:v1:bluemix:public:cloudant:us-south:a/123456:3527280b-9327-4411-8020-591092e60353::");
+    assertEquals(endpointGatewayTargetPrototypeProviderCloudServiceIdentityProviderCloudServiceIdentityByCrnModel.crn(), "crn:v1:bluemix:public:cloudant:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:3527280b-9327-4411-8020-591092e60353::");
 
     String json = TestUtilities.serialize(endpointGatewayTargetPrototypeProviderCloudServiceIdentityProviderCloudServiceIdentityByCrnModel);
 
     EndpointGatewayTargetPrototypeProviderCloudServiceIdentityProviderCloudServiceIdentityByCRN endpointGatewayTargetPrototypeProviderCloudServiceIdentityProviderCloudServiceIdentityByCrnModelNew = TestUtilities.deserialize(json, EndpointGatewayTargetPrototypeProviderCloudServiceIdentityProviderCloudServiceIdentityByCRN.class);
     assertTrue(endpointGatewayTargetPrototypeProviderCloudServiceIdentityProviderCloudServiceIdentityByCrnModelNew instanceof EndpointGatewayTargetPrototypeProviderCloudServiceIdentityProviderCloudServiceIdentityByCRN);
     assertEquals(endpointGatewayTargetPrototypeProviderCloudServiceIdentityProviderCloudServiceIdentityByCrnModelNew.resourceType(), "provider_cloud_service");
-    assertEquals(endpointGatewayTargetPrototypeProviderCloudServiceIdentityProviderCloudServiceIdentityByCrnModelNew.crn(), "crn:v1:bluemix:public:cloudant:us-south:a/123456:3527280b-9327-4411-8020-591092e60353::");
+    assertEquals(endpointGatewayTargetPrototypeProviderCloudServiceIdentityProviderCloudServiceIdentityByCrnModelNew.crn(), "crn:v1:bluemix:public:cloudant:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:3527280b-9327-4411-8020-591092e60353::");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

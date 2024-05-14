@@ -16,9 +16,10 @@ import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * The resource types that can be security group targets are expected to expand in the future. When iterating over
- * security group targets, do not assume that every target resource will be from a known set of resource types.
- * Optionally halt processing and surface an error, or bypass resources of unrecognized types.
+ * A target of this security group.
+ *
+ * The resources supported by this property may
+ * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
  *
  * Classes which extend this class:
  * - SecurityGroupTargetReferenceNetworkInterfaceReferenceTargetContext

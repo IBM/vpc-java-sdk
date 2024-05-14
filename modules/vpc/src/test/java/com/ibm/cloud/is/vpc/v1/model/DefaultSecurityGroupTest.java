@@ -16,6 +16,7 @@ package com.ibm.cloud.is.vpc.v1.model;
 import com.ibm.cloud.is.vpc.v1.model.DefaultSecurityGroup;
 import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceReferenceTargetContextDeleted;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;
+import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleLocalIP;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleRemoteIP;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleSecurityGroupRuleProtocolAll;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupTargetReferenceNetworkInterfaceReferenceTargetContext;

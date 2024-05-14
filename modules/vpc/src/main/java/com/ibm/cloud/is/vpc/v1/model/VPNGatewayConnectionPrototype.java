@@ -12,8 +12,6 @@
  */
 package com.ibm.cloud.is.vpc.v1.model;
 
-import java.util.List;
-
 import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
@@ -27,6 +25,22 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class VPNGatewayConnectionPrototype extends GenericModel {
 
   /**
+   * The establish mode of the VPN gateway connection:
+   * - `bidirectional`: Either side of the VPN gateway can initiate IKE protocol
+   *    negotiations or rekeying processes.
+   * - `peer_only`: Only the peer can initiate IKE protocol negotiations for this VPN gateway
+   *    connection. Additionally, the peer is responsible for initiating the rekeying process
+   *    after the connection is established. If rekeying does not occur, the VPN gateway
+   *    connection will be brought down after its lifetime expires.
+   */
+  public interface EstablishMode {
+    /** bidirectional. */
+    String BIDIRECTIONAL = "bidirectional";
+    /** peer_only. */
+    String PEER_ONLY = "peer_only";
+  }
+
+  /**
    * Routing protocols are disabled for this VPN gateway connection.
    */
   public interface RoutingProtocol {
@@ -38,20 +52,18 @@ public class VPNGatewayConnectionPrototype extends GenericModel {
   protected Boolean adminStateUp;
   @SerializedName("dead_peer_detection")
   protected VPNGatewayConnectionDPDPrototype deadPeerDetection;
+  @SerializedName("establish_mode")
+  protected String establishMode;
   @SerializedName("ike_policy")
   protected VPNGatewayConnectionIKEPolicyPrototype ikePolicy;
   @SerializedName("ipsec_policy")
   protected VPNGatewayConnectionIPsecPolicyPrototype ipsecPolicy;
   protected String name;
-  @SerializedName("peer_address")
-  protected String peerAddress;
   protected String psk;
+  protected VPNGatewayConnectionLocalPrototype local;
+  protected VPNGatewayConnectionPeerPrototype peer;
   @SerializedName("routing_protocol")
   protected String routingProtocol;
-  @SerializedName("local_cidrs")
-  protected List<String> localCidrs;
-  @SerializedName("peer_cidrs")
-  protected List<String> peerCidrs;
 
   protected VPNGatewayConnectionPrototype() { }
 
@@ -75,6 +87,23 @@ public class VPNGatewayConnectionPrototype extends GenericModel {
    */
   public VPNGatewayConnectionDPDPrototype deadPeerDetection() {
     return deadPeerDetection;
+  }
+
+  /**
+   * Gets the establishMode.
+   *
+   * The establish mode of the VPN gateway connection:
+   * - `bidirectional`: Either side of the VPN gateway can initiate IKE protocol
+   *    negotiations or rekeying processes.
+   * - `peer_only`: Only the peer can initiate IKE protocol negotiations for this VPN gateway
+   *    connection. Additionally, the peer is responsible for initiating the rekeying process
+   *    after the connection is established. If rekeying does not occur, the VPN gateway
+   *    connection will be brought down after its lifetime expires.
+   *
+   * @return the establishMode
+   */
+  public String establishMode() {
+    return establishMode;
   }
 
   /**
@@ -114,17 +143,6 @@ public class VPNGatewayConnectionPrototype extends GenericModel {
   }
 
   /**
-   * Gets the peerAddress.
-   *
-   * The IP address of the peer VPN gateway.
-   *
-   * @return the peerAddress
-   */
-  public String peerAddress() {
-    return peerAddress;
-  }
-
-  /**
    * Gets the psk.
    *
    * The pre-shared key.
@@ -136,6 +154,24 @@ public class VPNGatewayConnectionPrototype extends GenericModel {
   }
 
   /**
+   * Gets the local.
+   *
+   * @return the local
+   */
+  public VPNGatewayConnectionLocalPrototype local() {
+    return local;
+  }
+
+  /**
+   * Gets the peer.
+   *
+   * @return the peer
+   */
+  public VPNGatewayConnectionPeerPrototype peer() {
+    return peer;
+  }
+
+  /**
    * Gets the routingProtocol.
    *
    * Routing protocols are disabled for this VPN gateway connection.
@@ -144,28 +180,6 @@ public class VPNGatewayConnectionPrototype extends GenericModel {
    */
   public String routingProtocol() {
     return routingProtocol;
-  }
-
-  /**
-   * Gets the localCidrs.
-   *
-   * The local CIDRs for this resource.
-   *
-   * @return the localCidrs
-   */
-  public List<String> localCidrs() {
-    return localCidrs;
-  }
-
-  /**
-   * Gets the peerCidrs.
-   *
-   * The peer CIDRs for this resource.
-   *
-   * @return the peerCidrs
-   */
-  public List<String> peerCidrs() {
-    return peerCidrs;
   }
 }
 

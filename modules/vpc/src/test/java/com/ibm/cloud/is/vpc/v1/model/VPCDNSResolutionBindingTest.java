@@ -18,6 +18,7 @@ import com.ibm.cloud.is.vpc.v1.model.EndpointGatewayReferenceRemote;
 import com.ibm.cloud.is.vpc.v1.model.EndpointGatewayRemote;
 import com.ibm.cloud.is.vpc.v1.model.RegionReference;
 import com.ibm.cloud.is.vpc.v1.model.VPCDNSResolutionBinding;
+import com.ibm.cloud.is.vpc.v1.model.VPCDNSResolutionBindingHealthReason;
 import com.ibm.cloud.is.vpc.v1.model.VPCReferenceRemote;
 import com.ibm.cloud.is.vpc.v1.model.VPCRemote;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
@@ -40,6 +41,8 @@ public class VPCDNSResolutionBindingTest {
     VPCDNSResolutionBinding vpcdnsResolutionBindingModel = new VPCDNSResolutionBinding();
     assertNull(vpcdnsResolutionBindingModel.getCreatedAt());
     assertNull(vpcdnsResolutionBindingModel.getEndpointGateways());
+    assertNull(vpcdnsResolutionBindingModel.getHealthReasons());
+    assertNull(vpcdnsResolutionBindingModel.getHealthState());
     assertNull(vpcdnsResolutionBindingModel.getHref());
     assertNull(vpcdnsResolutionBindingModel.getId());
     assertNull(vpcdnsResolutionBindingModel.getLifecycleState());

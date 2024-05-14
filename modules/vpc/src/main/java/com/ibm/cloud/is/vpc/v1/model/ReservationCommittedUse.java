@@ -28,9 +28,8 @@ public class ReservationCommittedUse extends GenericModel {
    * - `renew`: Renew for another term, provided the term remains listed in the
    *   `reservation_terms` for the profile. Otherwise, let the reservation expire.
    *
-   * The enumerated values for this property may expand in the future. When processing this property, check for and log
-   * unknown values. Optionally halt processing and surface the error, or bypass the resource on which the unexpected
-   * property value was encountered.
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface ExpirationPolicy {
     /** release. */
@@ -66,9 +65,8 @@ public class ReservationCommittedUse extends GenericModel {
    * - `renew`: Renew for another term, provided the term remains listed in the
    *   `reservation_terms` for the profile. Otherwise, let the reservation expire.
    *
-   * The enumerated values for this property may expand in the future. When processing this property, check for and log
-   * unknown values. Optionally halt processing and surface the error, or bypass the resource on which the unexpected
-   * property value was encountered.
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the expirationPolicy
    */
@@ -83,9 +81,8 @@ public class ReservationCommittedUse extends GenericModel {
    * - `one_year`: 1 year
    * - `three_year`: 3 years
    *
-   * The enumerated values for this property may expand in the future. When processing this property, check for and log
-   * unknown values. Optionally halt processing and surface the error, or bypass the resource on which the unexpected
-   * property value was encountered.
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the term
    */

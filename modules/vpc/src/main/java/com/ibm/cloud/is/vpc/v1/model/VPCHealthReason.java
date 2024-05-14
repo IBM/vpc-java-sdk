@@ -21,7 +21,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class VPCHealthReason extends GenericModel {
 
   /**
-   * A snake case string succinctly identifying the reason for this health state.
+   * A reason code for this health state.
    */
   public interface Code {
     /** dns_resolution_binding_failed. */
@@ -40,7 +40,7 @@ public class VPCHealthReason extends GenericModel {
   /**
    * Gets the code.
    *
-   * A snake case string succinctly identifying the reason for this health state.
+   * A reason code for this health state.
    *
    * @return the code
    */

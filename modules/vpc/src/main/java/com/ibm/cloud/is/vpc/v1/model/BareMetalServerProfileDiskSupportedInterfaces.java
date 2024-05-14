@@ -23,15 +23,13 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class BareMetalServerProfileDiskSupportedInterfaces extends GenericModel {
 
   /**
-   * The disk interface used for attaching the disk.
-   *
+   * The disk interface used for attaching the disk:
    * - `fcp`: Attached using Fiber Channel Protocol
    * - `sata`: Attached using Serial Advanced Technology Attachment
    * - `nvme`: Attached using Non-Volatile Memory Express
    *
-   * The enumerated values for this property are expected to expand in the future. When processing this property, check
-   * for and log unknown values. Optionally halt processing and surface the error, or bypass the resource on which the
-   * unexpected property value was encountered.
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface XDefault {
     /** fcp. */
@@ -51,15 +49,13 @@ public class BareMetalServerProfileDiskSupportedInterfaces extends GenericModel 
   }
 
   /**
-   * The disk interface used for attaching the disk.
-   *
+   * The disk interface used for attaching the disk:
    * - `fcp`: Attached using Fiber Channel Protocol
    * - `sata`: Attached using Serial Advanced Technology Attachment
    * - `nvme`: Attached using Non-Volatile Memory Express
    *
-   * The enumerated values for this property are expected to expand in the future. When processing this property, check
-   * for and log unknown values. Optionally halt processing and surface the error, or bypass the resource on which the
-   * unexpected property value was encountered.
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface Values {
     /** fcp. */
@@ -80,15 +76,13 @@ public class BareMetalServerProfileDiskSupportedInterfaces extends GenericModel 
   /**
    * Gets the xDefault.
    *
-   * The disk interface used for attaching the disk.
-   *
+   * The disk interface used for attaching the disk:
    * - `fcp`: Attached using Fiber Channel Protocol
    * - `sata`: Attached using Serial Advanced Technology Attachment
    * - `nvme`: Attached using Non-Volatile Memory Express
    *
-   * The enumerated values for this property are expected to expand in the future. When processing this property, check
-   * for and log unknown values. Optionally halt processing and surface the error, or bypass the resource on which the
-   * unexpected property value was encountered.
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the xDefault
    */

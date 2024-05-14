@@ -60,9 +60,9 @@ public class BackupPolicyPrototypeBackupPolicyMatchResourceTypeVolumePrototypeTe
     assertEquals(backupPolicyPlanDeletionTriggerPrototypeModel.deleteOverCount(), Long.valueOf("20"));
 
     EncryptionKeyIdentityByCRN encryptionKeyIdentityModel = new EncryptionKeyIdentityByCRN.Builder()
-      .crn("crn:v1:bluemix:public:kms:us-south:a/123456:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179")
+      .crn("crn:v1:bluemix:public:kms:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179")
       .build();
-    assertEquals(encryptionKeyIdentityModel.crn(), "crn:v1:bluemix:public:kms:us-south:a/123456:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179");
+    assertEquals(encryptionKeyIdentityModel.crn(), "crn:v1:bluemix:public:kms:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179");
 
     RegionIdentityByName regionIdentityModel = new RegionIdentityByName.Builder()
       .name("us-south")
@@ -103,9 +103,9 @@ public class BackupPolicyPrototypeBackupPolicyMatchResourceTypeVolumePrototypeTe
     assertEquals(resourceGroupIdentityModel.id(), "fee82deba12e4c0fb69c3b09d1f12345");
 
     BackupPolicyScopePrototypeEnterpriseIdentityEnterpriseIdentityByCRN backupPolicyScopePrototypeModel = new BackupPolicyScopePrototypeEnterpriseIdentityEnterpriseIdentityByCRN.Builder()
-      .crn("crn:v1:bluemix:public:enterprise::a/123456::enterprise:ebc2b430240943458b9e91e1432cfcce")
+      .crn("crn:v1:bluemix:public:enterprise::a/aa2432b1fa4d4ace891e9b80fc104e34::enterprise:ebc2b430240943458b9e91e1432cfcce")
       .build();
-    assertEquals(backupPolicyScopePrototypeModel.crn(), "crn:v1:bluemix:public:enterprise::a/123456::enterprise:ebc2b430240943458b9e91e1432cfcce");
+    assertEquals(backupPolicyScopePrototypeModel.crn(), "crn:v1:bluemix:public:enterprise::a/aa2432b1fa4d4ace891e9b80fc104e34::enterprise:ebc2b430240943458b9e91e1432cfcce");
 
     BackupPolicyPrototypeBackupPolicyMatchResourceTypeVolumePrototype backupPolicyPrototypeBackupPolicyMatchResourceTypeVolumePrototypeModel = new BackupPolicyPrototypeBackupPolicyMatchResourceTypeVolumePrototype.Builder()
       .matchUserTags(java.util.Arrays.asList("my-daily-backup-policy"))

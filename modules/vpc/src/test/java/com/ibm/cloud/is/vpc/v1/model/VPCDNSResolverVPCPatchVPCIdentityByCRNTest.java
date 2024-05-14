@@ -32,15 +32,15 @@ public class VPCDNSResolverVPCPatchVPCIdentityByCRNTest {
   @Test
   public void testVPCDNSResolverVPCPatchVPCIdentityByCRN() throws Throwable {
     VPCDNSResolverVPCPatchVPCIdentityByCRN vpcdnsResolverVpcPatchVpcIdentityByCrnModel = new VPCDNSResolverVPCPatchVPCIdentityByCRN.Builder()
-      .crn("crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b")
+      .crn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b")
       .build();
-    assertEquals(vpcdnsResolverVpcPatchVpcIdentityByCrnModel.crn(), "crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b");
+    assertEquals(vpcdnsResolverVpcPatchVpcIdentityByCrnModel.crn(), "crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b");
 
     String json = TestUtilities.serialize(vpcdnsResolverVpcPatchVpcIdentityByCrnModel);
 
     VPCDNSResolverVPCPatchVPCIdentityByCRN vpcdnsResolverVpcPatchVpcIdentityByCrnModelNew = TestUtilities.deserialize(json, VPCDNSResolverVPCPatchVPCIdentityByCRN.class);
     assertTrue(vpcdnsResolverVpcPatchVpcIdentityByCrnModelNew instanceof VPCDNSResolverVPCPatchVPCIdentityByCRN);
-    assertEquals(vpcdnsResolverVpcPatchVpcIdentityByCrnModelNew.crn(), "crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b");
+    assertEquals(vpcdnsResolverVpcPatchVpcIdentityByCrnModelNew.crn(), "crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

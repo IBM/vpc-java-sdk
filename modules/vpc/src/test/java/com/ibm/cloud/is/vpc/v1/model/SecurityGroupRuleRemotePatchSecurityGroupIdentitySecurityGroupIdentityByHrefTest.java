@@ -32,15 +32,15 @@ public class SecurityGroupRuleRemotePatchSecurityGroupIdentitySecurityGroupIdent
   @Test
   public void testSecurityGroupRuleRemotePatchSecurityGroupIdentitySecurityGroupIdentityByHref() throws Throwable {
     SecurityGroupRuleRemotePatchSecurityGroupIdentitySecurityGroupIdentityByHref securityGroupRuleRemotePatchSecurityGroupIdentitySecurityGroupIdentityByHrefModel = new SecurityGroupRuleRemotePatchSecurityGroupIdentitySecurityGroupIdentityByHref.Builder()
-      .href("https://us-south.iaas.cloud.ibm.com/v1/security_groups/be5df5ca-12a0-494b-907e-aa6ec2bfa271")
+      .href("https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271")
       .build();
-    assertEquals(securityGroupRuleRemotePatchSecurityGroupIdentitySecurityGroupIdentityByHrefModel.href(), "https://us-south.iaas.cloud.ibm.com/v1/security_groups/be5df5ca-12a0-494b-907e-aa6ec2bfa271");
+    assertEquals(securityGroupRuleRemotePatchSecurityGroupIdentitySecurityGroupIdentityByHrefModel.href(), "https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271");
 
     String json = TestUtilities.serialize(securityGroupRuleRemotePatchSecurityGroupIdentitySecurityGroupIdentityByHrefModel);
 
     SecurityGroupRuleRemotePatchSecurityGroupIdentitySecurityGroupIdentityByHref securityGroupRuleRemotePatchSecurityGroupIdentitySecurityGroupIdentityByHrefModelNew = TestUtilities.deserialize(json, SecurityGroupRuleRemotePatchSecurityGroupIdentitySecurityGroupIdentityByHref.class);
     assertTrue(securityGroupRuleRemotePatchSecurityGroupIdentitySecurityGroupIdentityByHrefModelNew instanceof SecurityGroupRuleRemotePatchSecurityGroupIdentitySecurityGroupIdentityByHref);
-    assertEquals(securityGroupRuleRemotePatchSecurityGroupIdentitySecurityGroupIdentityByHrefModelNew.href(), "https://us-south.iaas.cloud.ibm.com/v1/security_groups/be5df5ca-12a0-494b-907e-aa6ec2bfa271");
+    assertEquals(securityGroupRuleRemotePatchSecurityGroupIdentitySecurityGroupIdentityByHrefModelNew.href(), "https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

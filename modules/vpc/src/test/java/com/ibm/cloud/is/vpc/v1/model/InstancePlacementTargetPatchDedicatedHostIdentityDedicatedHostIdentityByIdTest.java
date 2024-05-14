@@ -32,15 +32,15 @@ public class InstancePlacementTargetPatchDedicatedHostIdentityDedicatedHostIdent
   @Test
   public void testInstancePlacementTargetPatchDedicatedHostIdentityDedicatedHostIdentityById() throws Throwable {
     InstancePlacementTargetPatchDedicatedHostIdentityDedicatedHostIdentityById instancePlacementTargetPatchDedicatedHostIdentityDedicatedHostIdentityByIdModel = new InstancePlacementTargetPatchDedicatedHostIdentityDedicatedHostIdentityById.Builder()
-      .id("1e09281b-f177-46fb-baf1-bc152b2e391a")
+      .id("0717-1e09281b-f177-46fb-baf1-bc152b2e391a")
       .build();
-    assertEquals(instancePlacementTargetPatchDedicatedHostIdentityDedicatedHostIdentityByIdModel.id(), "1e09281b-f177-46fb-baf1-bc152b2e391a");
+    assertEquals(instancePlacementTargetPatchDedicatedHostIdentityDedicatedHostIdentityByIdModel.id(), "0717-1e09281b-f177-46fb-baf1-bc152b2e391a");
 
     String json = TestUtilities.serialize(instancePlacementTargetPatchDedicatedHostIdentityDedicatedHostIdentityByIdModel);
 
     InstancePlacementTargetPatchDedicatedHostIdentityDedicatedHostIdentityById instancePlacementTargetPatchDedicatedHostIdentityDedicatedHostIdentityByIdModelNew = TestUtilities.deserialize(json, InstancePlacementTargetPatchDedicatedHostIdentityDedicatedHostIdentityById.class);
     assertTrue(instancePlacementTargetPatchDedicatedHostIdentityDedicatedHostIdentityByIdModelNew instanceof InstancePlacementTargetPatchDedicatedHostIdentityDedicatedHostIdentityById);
-    assertEquals(instancePlacementTargetPatchDedicatedHostIdentityDedicatedHostIdentityByIdModelNew.id(), "1e09281b-f177-46fb-baf1-bc152b2e391a");
+    assertEquals(instancePlacementTargetPatchDedicatedHostIdentityDedicatedHostIdentityByIdModelNew.id(), "0717-1e09281b-f177-46fb-baf1-bc152b2e391a");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

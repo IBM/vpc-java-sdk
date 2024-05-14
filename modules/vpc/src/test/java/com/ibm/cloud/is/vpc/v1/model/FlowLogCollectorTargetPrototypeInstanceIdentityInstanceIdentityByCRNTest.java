@@ -32,15 +32,15 @@ public class FlowLogCollectorTargetPrototypeInstanceIdentityInstanceIdentityByCR
   @Test
   public void testFlowLogCollectorTargetPrototypeInstanceIdentityInstanceIdentityByCRN() throws Throwable {
     FlowLogCollectorTargetPrototypeInstanceIdentityInstanceIdentityByCRN flowLogCollectorTargetPrototypeInstanceIdentityInstanceIdentityByCrnModel = new FlowLogCollectorTargetPrototypeInstanceIdentityInstanceIdentityByCRN.Builder()
-      .crn("crn:v1:bluemix:public:is:us-south-1:a/123456::instance:1e09281b-f177-46fb-baf1-bc152b2e391a")
+      .crn("crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::instance:0717_1e09281b-f177-46f2-b1f1-bc152b2e391a")
       .build();
-    assertEquals(flowLogCollectorTargetPrototypeInstanceIdentityInstanceIdentityByCrnModel.crn(), "crn:v1:bluemix:public:is:us-south-1:a/123456::instance:1e09281b-f177-46fb-baf1-bc152b2e391a");
+    assertEquals(flowLogCollectorTargetPrototypeInstanceIdentityInstanceIdentityByCrnModel.crn(), "crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::instance:0717_1e09281b-f177-46f2-b1f1-bc152b2e391a");
 
     String json = TestUtilities.serialize(flowLogCollectorTargetPrototypeInstanceIdentityInstanceIdentityByCrnModel);
 
     FlowLogCollectorTargetPrototypeInstanceIdentityInstanceIdentityByCRN flowLogCollectorTargetPrototypeInstanceIdentityInstanceIdentityByCrnModelNew = TestUtilities.deserialize(json, FlowLogCollectorTargetPrototypeInstanceIdentityInstanceIdentityByCRN.class);
     assertTrue(flowLogCollectorTargetPrototypeInstanceIdentityInstanceIdentityByCrnModelNew instanceof FlowLogCollectorTargetPrototypeInstanceIdentityInstanceIdentityByCRN);
-    assertEquals(flowLogCollectorTargetPrototypeInstanceIdentityInstanceIdentityByCrnModelNew.crn(), "crn:v1:bluemix:public:is:us-south-1:a/123456::instance:1e09281b-f177-46fb-baf1-bc152b2e391a");
+    assertEquals(flowLogCollectorTargetPrototypeInstanceIdentityInstanceIdentityByCrnModelNew.crn(), "crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::instance:0717_1e09281b-f177-46f2-b1f1-bc152b2e391a");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

@@ -32,18 +32,16 @@ public class InstanceProfile extends GenericModel {
 
   /**
    * The status of the instance profile:
-   *   - `previous`:  This instance profile is an older revision, but remains provisionable and
+   * - `previous`:  This instance profile is an older revision, but remains provisionable and
    *   usable.
-   *   - `current`:  This profile is the latest revision.
+   * - `current`:  This profile is the latest revision.
    *
-   * Note that revisions are indicated by the generation of an instance profile.  Refer to the
-   * [profile naming conventions]
+   * Revisions are indicated by the generation of an instance profile. Refer to the [profile naming conventions]
    * (https://cloud.ibm.com/docs/vpc?topic=vpc-profiles&amp;interface=ui#profiles-naming-rule) for information on how
    * generations are defined within an instance profile.
    *
-   * The enumerated values for this property are expected to expand in the future. When processing this property, check
-   * for and log unknown values. Optionally halt processing and surface the error, or bypass the profile on which the
-   * unexpected property value was encountered.
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface Status {
     /** current. */
@@ -259,18 +257,16 @@ public class InstanceProfile extends GenericModel {
    * Gets the status.
    *
    * The status of the instance profile:
-   *   - `previous`:  This instance profile is an older revision, but remains provisionable and
+   * - `previous`:  This instance profile is an older revision, but remains provisionable and
    *   usable.
-   *   - `current`:  This profile is the latest revision.
+   * - `current`:  This profile is the latest revision.
    *
-   * Note that revisions are indicated by the generation of an instance profile.  Refer to the
-   * [profile naming conventions]
+   * Revisions are indicated by the generation of an instance profile. Refer to the [profile naming conventions]
    * (https://cloud.ibm.com/docs/vpc?topic=vpc-profiles&amp;interface=ui#profiles-naming-rule) for information on how
    * generations are defined within an instance profile.
    *
-   * The enumerated values for this property are expected to expand in the future. When processing this property, check
-   * for and log unknown values. Optionally halt processing and surface the error, or bypass the profile on which the
-   * unexpected property value was encountered.
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the status
    */

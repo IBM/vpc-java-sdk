@@ -13,6 +13,7 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleLocalPrototypeIP;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRulePrototypeSecurityGroupRuleProtocolAll;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleRemotePrototypeIP;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
@@ -32,6 +33,11 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolAllTest {
 
   @Test
   public void testSecurityGroupRulePrototypeSecurityGroupRuleProtocolAll() throws Throwable {
+    SecurityGroupRuleLocalPrototypeIP securityGroupRuleLocalPrototypeModel = new SecurityGroupRuleLocalPrototypeIP.Builder()
+      .address("192.168.3.4")
+      .build();
+    assertEquals(securityGroupRuleLocalPrototypeModel.address(), "192.168.3.4");
+
     SecurityGroupRuleRemotePrototypeIP securityGroupRuleRemotePrototypeModel = new SecurityGroupRuleRemotePrototypeIP.Builder()
       .address("192.168.3.4")
       .build();
@@ -40,11 +46,13 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolAllTest {
     SecurityGroupRulePrototypeSecurityGroupRuleProtocolAll securityGroupRulePrototypeSecurityGroupRuleProtocolAllModel = new SecurityGroupRulePrototypeSecurityGroupRuleProtocolAll.Builder()
       .direction("inbound")
       .ipVersion("ipv4")
+      .local(securityGroupRuleLocalPrototypeModel)
       .protocol("all")
       .remote(securityGroupRuleRemotePrototypeModel)
       .build();
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolAllModel.direction(), "inbound");
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolAllModel.ipVersion(), "ipv4");
+    assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolAllModel.local(), securityGroupRuleLocalPrototypeModel);
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolAllModel.protocol(), "all");
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolAllModel.remote(), securityGroupRuleRemotePrototypeModel);
 
@@ -54,6 +62,7 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolAllTest {
     assertTrue(securityGroupRulePrototypeSecurityGroupRuleProtocolAllModelNew instanceof SecurityGroupRulePrototypeSecurityGroupRuleProtocolAll);
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolAllModelNew.direction(), "inbound");
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolAllModelNew.ipVersion(), "ipv4");
+    assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolAllModelNew.local().toString(), securityGroupRuleLocalPrototypeModel.toString());
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolAllModelNew.protocol(), "all");
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolAllModelNew.remote().toString(), securityGroupRuleRemotePrototypeModel.toString());
   }

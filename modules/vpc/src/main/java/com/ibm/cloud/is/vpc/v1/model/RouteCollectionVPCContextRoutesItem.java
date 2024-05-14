@@ -65,9 +65,8 @@ public class RouteCollectionVPCContextRoutesItem extends GenericModel {
    * - `service`: route was directly created by a service
    * - `user`: route was directly created by a user
    *
-   * The enumerated values for this property are expected to expand in the future. When processing this property, check
-   * for and log unknown values. Optionally halt processing and surface the error, or bypass the route on which the
-   * unexpected property value was encountered.
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface Origin {
     /** service. */
@@ -220,9 +219,8 @@ public class RouteCollectionVPCContextRoutesItem extends GenericModel {
    * - `service`: route was directly created by a service
    * - `user`: route was directly created by a user
    *
-   * The enumerated values for this property are expected to expand in the future. When processing this property, check
-   * for and log unknown values. Optionally halt processing and surface the error, or bypass the route on which the
-   * unexpected property value was encountered.
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the origin
    */

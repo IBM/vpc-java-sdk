@@ -32,15 +32,15 @@ public class CloudObjectStorageBucketIdentityByCRNTest {
   @Test
   public void testCloudObjectStorageBucketIdentityByCRN() throws Throwable {
     CloudObjectStorageBucketIdentityByCRN cloudObjectStorageBucketIdentityByCrnModel = new CloudObjectStorageBucketIdentityByCRN.Builder()
-      .crn("crn:v1:bluemix:public:cloud-object-storage:global:a/123456:1a0ec336-f391-4091-a6fb-5e084a4c56f4:bucket:my-bucket")
+      .crn("crn:v1:bluemix:public:cloud-object-storage:global:a/aa2432b1fa4d4ace891e9b80fc104e34:1a0ec336-f391-4091-a6fb-5e084a4c56f4:bucket:my-bucket")
       .build();
-    assertEquals(cloudObjectStorageBucketIdentityByCrnModel.crn(), "crn:v1:bluemix:public:cloud-object-storage:global:a/123456:1a0ec336-f391-4091-a6fb-5e084a4c56f4:bucket:my-bucket");
+    assertEquals(cloudObjectStorageBucketIdentityByCrnModel.crn(), "crn:v1:bluemix:public:cloud-object-storage:global:a/aa2432b1fa4d4ace891e9b80fc104e34:1a0ec336-f391-4091-a6fb-5e084a4c56f4:bucket:my-bucket");
 
     String json = TestUtilities.serialize(cloudObjectStorageBucketIdentityByCrnModel);
 
     CloudObjectStorageBucketIdentityByCRN cloudObjectStorageBucketIdentityByCrnModelNew = TestUtilities.deserialize(json, CloudObjectStorageBucketIdentityByCRN.class);
     assertTrue(cloudObjectStorageBucketIdentityByCrnModelNew instanceof CloudObjectStorageBucketIdentityByCRN);
-    assertEquals(cloudObjectStorageBucketIdentityByCrnModelNew.crn(), "crn:v1:bluemix:public:cloud-object-storage:global:a/123456:1a0ec336-f391-4091-a6fb-5e084a4c56f4:bucket:my-bucket");
+    assertEquals(cloudObjectStorageBucketIdentityByCrnModelNew.crn(), "crn:v1:bluemix:public:cloud-object-storage:global:a/aa2432b1fa4d4ace891e9b80fc104e34:1a0ec336-f391-4091-a6fb-5e084a4c56f4:bucket:my-bucket");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

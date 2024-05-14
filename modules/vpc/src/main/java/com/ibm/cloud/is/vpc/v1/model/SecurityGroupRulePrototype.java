@@ -46,8 +46,10 @@ public class SecurityGroupRulePrototype extends GenericModel {
   }
 
   /**
-   * The IP version to enforce. The format of `remote.address` or `remote.cidr_block` must match this property, if they
-   * are used. Alternatively, if `remote` references a security group, then this rule only applies to IP addresses
+   * The IP version to enforce. The format of `local.address`, `remote.address`,
+   * `local.cidr_block` or `remote.cidr_block` must match this property, if they are used.
+   *
+   * If `remote` references a security group, then this rule only applies to IP addresses
    * (network interfaces) in that group matching this IP version.
    */
   public interface IpVersion {
@@ -72,6 +74,7 @@ public class SecurityGroupRulePrototype extends GenericModel {
   protected String direction;
   @SerializedName("ip_version")
   protected String ipVersion;
+  protected SecurityGroupRuleLocalPrototype local;
   protected String protocol;
   protected SecurityGroupRuleRemotePrototype remote;
   protected Long code;
@@ -97,14 +100,31 @@ public class SecurityGroupRulePrototype extends GenericModel {
   /**
    * Gets the ipVersion.
    *
-   * The IP version to enforce. The format of `remote.address` or `remote.cidr_block` must match this property, if they
-   * are used. Alternatively, if `remote` references a security group, then this rule only applies to IP addresses
+   * The IP version to enforce. The format of `local.address`, `remote.address`,
+   * `local.cidr_block` or `remote.cidr_block` must match this property, if they are used.
+   *
+   * If `remote` references a security group, then this rule only applies to IP addresses
    * (network interfaces) in that group matching this IP version.
    *
    * @return the ipVersion
    */
   public String ipVersion() {
     return ipVersion;
+  }
+
+  /**
+   * Gets the local.
+   *
+   * The local IP address or range of local IP addresses to which this rule will allow inbound
+   * traffic (or from which, for outbound traffic)
+   *
+   * If unspecified, a CIDR block of `0.0.0.0/0` will be used to allow traffic to all local IP
+   * addresses (or from all local IP addresses, for outbound rules).
+   *
+   * @return the local
+   */
+  public SecurityGroupRuleLocalPrototype local() {
+    return local;
   }
 
   /**

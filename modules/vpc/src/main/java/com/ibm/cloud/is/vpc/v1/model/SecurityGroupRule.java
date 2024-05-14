@@ -46,8 +46,10 @@ public class SecurityGroupRule extends GenericModel {
   }
 
   /**
-   * The IP version to enforce. The format of `remote.address` or `remote.cidr_block` must match this property, if they
-   * are used. Alternatively, if `remote` references a security group, then this rule only applies to IP addresses
+   * The IP version to enforce. The format of `local.address`, `remote.address`,
+   * `local.cidr_block` or `remote.cidr_block` must match this property, if they are used.
+   *
+   * If `remote` references a security group, then this rule only applies to IP addresses
    * (network interfaces) in that group matching this IP version.
    */
   public interface IpVersion {
@@ -74,6 +76,7 @@ public class SecurityGroupRule extends GenericModel {
   protected String id;
   @SerializedName("ip_version")
   protected String ipVersion;
+  protected SecurityGroupRuleLocal local;
   protected String protocol;
   protected SecurityGroupRuleRemote remote;
   protected Long code;
@@ -121,14 +124,29 @@ public class SecurityGroupRule extends GenericModel {
   /**
    * Gets the ipVersion.
    *
-   * The IP version to enforce. The format of `remote.address` or `remote.cidr_block` must match this property, if they
-   * are used. Alternatively, if `remote` references a security group, then this rule only applies to IP addresses
+   * The IP version to enforce. The format of `local.address`, `remote.address`,
+   * `local.cidr_block` or `remote.cidr_block` must match this property, if they are used.
+   *
+   * If `remote` references a security group, then this rule only applies to IP addresses
    * (network interfaces) in that group matching this IP version.
    *
    * @return the ipVersion
    */
   public String getIpVersion() {
     return ipVersion;
+  }
+
+  /**
+   * Gets the local.
+   *
+   * The local IP address or range of local IP addresses to which this rule will allow inbound
+   * traffic (or from which, for outbound traffic). A CIDR block of `0.0.0.0/0` allows traffic
+   * to all local IP addresses (or from all local IP addresses, for outbound rules).
+   *
+   * @return the local
+   */
+  public SecurityGroupRuleLocal getLocal() {
+    return local;
   }
 
   /**

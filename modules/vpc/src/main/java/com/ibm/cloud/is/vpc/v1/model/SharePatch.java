@@ -235,7 +235,8 @@ public class SharePatch extends GenericModel {
    * The maximum input/output operations per second (IOPS) for the file share. The value must be in the range supported
    * by the share's size.
    *
-   * For this property to be changed, the share `lifecycle_state` must be `stable`.
+   * For this property to be changed, the share `lifecycle_state` must be `stable` and
+   * `replication_role` must not be `replica`.
    *
    * @return the iops
    */
@@ -288,7 +289,8 @@ public class SharePatch extends GenericModel {
    * The size of the file share rounded up to the next gigabyte. The value must not be less than the share's current
    * size, and must not exceed the maximum supported by the share's profile and IOPS.
    *
-   * For this property to be changed, the share `lifecycle_state` must be `stable`.
+   * For this property to be changed, the share `lifecycle_state` must be `stable` and
+   * `replication_role` must not be `replica`.
    *
    * @return the size
    */

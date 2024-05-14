@@ -125,7 +125,8 @@ public class LoadBalancerListenerPolicyPatch extends GenericModel {
   /**
    * Gets the priority.
    *
-   * Priority of the policy. Lower value indicates higher priority.
+   * Priority of the policy. The priority is unique across all policies for this load balancer listener. Lower value
+   * indicates higher priority.
    *
    * @return the priority
    */
@@ -137,9 +138,9 @@ public class LoadBalancerListenerPolicyPatch extends GenericModel {
    * Gets the target.
    *
    * - If `action` is `forward`, specify a `LoadBalancerPoolIdentity`.
-   * - If `action` is `redirect`, specify a `LoadBalancerListenerPolicyRedirectURLPatch`.
    * - If `action` is `https_redirect`, specify a
-   *   `LoadBalancerListenerPolicyHTTPSRedirectPatch`.
+   * `LoadBalancerListenerPolicyHTTPSRedirectPatch`.
+   * - If `action` is `redirect`, specify a `LoadBalancerListenerPolicyRedirectURLPatch`.
    *
    * @return the target
    */

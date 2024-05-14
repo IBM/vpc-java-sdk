@@ -32,15 +32,15 @@ public class VPCIdentityByHrefTest {
   @Test
   public void testVPCIdentityByHref() throws Throwable {
     VPCIdentityByHref vpcIdentityByHrefModel = new VPCIdentityByHref.Builder()
-      .href("https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b")
+      .href("https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b")
       .build();
-    assertEquals(vpcIdentityByHrefModel.href(), "https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b");
+    assertEquals(vpcIdentityByHrefModel.href(), "https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b");
 
     String json = TestUtilities.serialize(vpcIdentityByHrefModel);
 
     VPCIdentityByHref vpcIdentityByHrefModelNew = TestUtilities.deserialize(json, VPCIdentityByHref.class);
     assertTrue(vpcIdentityByHrefModelNew instanceof VPCIdentityByHref);
-    assertEquals(vpcIdentityByHrefModelNew.href(), "https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b");
+    assertEquals(vpcIdentityByHrefModelNew.href(), "https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

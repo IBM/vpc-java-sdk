@@ -47,9 +47,9 @@ public class BareMetalServerPrototypeBareMetalServerByNetworkAttachmentTest {
   @Test
   public void testBareMetalServerPrototypeBareMetalServerByNetworkAttachment() throws Throwable {
     ImageIdentityById imageIdentityModel = new ImageIdentityById.Builder()
-      .id("72b27b5c-f4b0-48bb-b954-5becc7c1dcb8")
+      .id("r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8")
       .build();
-    assertEquals(imageIdentityModel.id(), "72b27b5c-f4b0-48bb-b954-5becc7c1dcb8");
+    assertEquals(imageIdentityModel.id(), "r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8");
 
     KeyIdentityById keyIdentityModel = new KeyIdentityById.Builder()
       .id("a6b1a881-2ce8-41a3-80fc-36316a73f803")
@@ -81,9 +81,9 @@ public class BareMetalServerPrototypeBareMetalServerByNetworkAttachmentTest {
     assertEquals(bareMetalServerTrustedPlatformModulePrototypeModel.mode(), "disabled");
 
     VPCIdentityById vpcIdentityModel = new VPCIdentityById.Builder()
-      .id("4727d842-f94f-4a2d-824a-9bc9b02c523b")
+      .id("r006-4727d842-f94f-4a2d-824a-9bc9b02c523b")
       .build();
-    assertEquals(vpcIdentityModel.id(), "4727d842-f94f-4a2d-824a-9bc9b02c523b");
+    assertEquals(vpcIdentityModel.id(), "r006-4727d842-f94f-4a2d-824a-9bc9b02c523b");
 
     ZoneIdentityByName zoneIdentityModel = new ZoneIdentityByName.Builder()
       .name("us-south-1")
@@ -142,23 +142,23 @@ public class BareMetalServerPrototypeBareMetalServerByNetworkAttachmentTest {
     BareMetalServerNetworkAttachmentPrototypeBareMetalServerNetworkAttachmentByPCIPrototype bareMetalServerNetworkAttachmentPrototypeModel = new BareMetalServerNetworkAttachmentPrototypeBareMetalServerNetworkAttachmentByPCIPrototype.Builder()
       .name("my-bare-metal-server-network-attachment")
       .virtualNetworkInterface(bareMetalServerNetworkAttachmentPrototypeVirtualNetworkInterfaceModel)
-      .allowedVlans(java.util.Arrays.asList(Long.valueOf("4")))
+      .allowedVlans(java.util.Arrays.asList(Long.valueOf("100")))
       .interfaceType("pci")
       .build();
     assertEquals(bareMetalServerNetworkAttachmentPrototypeModel.name(), "my-bare-metal-server-network-attachment");
     assertEquals(bareMetalServerNetworkAttachmentPrototypeModel.virtualNetworkInterface(), bareMetalServerNetworkAttachmentPrototypeVirtualNetworkInterfaceModel);
-    assertEquals(bareMetalServerNetworkAttachmentPrototypeModel.allowedVlans(), java.util.Arrays.asList(Long.valueOf("4")));
+    assertEquals(bareMetalServerNetworkAttachmentPrototypeModel.allowedVlans(), java.util.Arrays.asList(Long.valueOf("100")));
     assertEquals(bareMetalServerNetworkAttachmentPrototypeModel.interfaceType(), "pci");
 
     BareMetalServerPrimaryNetworkAttachmentPrototypeBareMetalServerPrimaryNetworkAttachmentByPCIPrototype bareMetalServerPrimaryNetworkAttachmentPrototypeModel = new BareMetalServerPrimaryNetworkAttachmentPrototypeBareMetalServerPrimaryNetworkAttachmentByPCIPrototype.Builder()
       .name("my-bare-metal-server-network-attachment")
       .virtualNetworkInterface(bareMetalServerNetworkAttachmentPrototypeVirtualNetworkInterfaceModel)
-      .allowedVlans(java.util.Arrays.asList(Long.valueOf("4")))
+      .allowedVlans(java.util.Arrays.asList(Long.valueOf("100")))
       .interfaceType("pci")
       .build();
     assertEquals(bareMetalServerPrimaryNetworkAttachmentPrototypeModel.name(), "my-bare-metal-server-network-attachment");
     assertEquals(bareMetalServerPrimaryNetworkAttachmentPrototypeModel.virtualNetworkInterface(), bareMetalServerNetworkAttachmentPrototypeVirtualNetworkInterfaceModel);
-    assertEquals(bareMetalServerPrimaryNetworkAttachmentPrototypeModel.allowedVlans(), java.util.Arrays.asList(Long.valueOf("4")));
+    assertEquals(bareMetalServerPrimaryNetworkAttachmentPrototypeModel.allowedVlans(), java.util.Arrays.asList(Long.valueOf("100")));
     assertEquals(bareMetalServerPrimaryNetworkAttachmentPrototypeModel.interfaceType(), "pci");
 
     BareMetalServerPrototypeBareMetalServerByNetworkAttachment bareMetalServerPrototypeBareMetalServerByNetworkAttachmentModel = new BareMetalServerPrototypeBareMetalServerByNetworkAttachment.Builder()

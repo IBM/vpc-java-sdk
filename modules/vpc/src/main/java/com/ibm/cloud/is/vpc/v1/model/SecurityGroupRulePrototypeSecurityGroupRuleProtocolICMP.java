@@ -28,8 +28,10 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolICMP extends Sec
   }
 
   /**
-   * The IP version to enforce. The format of `remote.address` or `remote.cidr_block` must match this property, if they
-   * are used. Alternatively, if `remote` references a security group, then this rule only applies to IP addresses
+   * The IP version to enforce. The format of `local.address`, `remote.address`,
+   * `local.cidr_block` or `remote.cidr_block` must match this property, if they are used.
+   *
+   * If `remote` references a security group, then this rule only applies to IP addresses
    * (network interfaces) in that group matching this IP version.
    */
   public interface IpVersion {
@@ -53,6 +55,7 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolICMP extends Sec
     private Long code;
     private String direction;
     private String ipVersion;
+    private SecurityGroupRuleLocalPrototype local;
     private String protocol;
     private SecurityGroupRuleRemotePrototype remote;
     private Long type;
@@ -66,6 +69,7 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolICMP extends Sec
       this.code = securityGroupRulePrototypeSecurityGroupRuleProtocolIcmp.code;
       this.direction = securityGroupRulePrototypeSecurityGroupRuleProtocolIcmp.direction;
       this.ipVersion = securityGroupRulePrototypeSecurityGroupRuleProtocolIcmp.ipVersion;
+      this.local = securityGroupRulePrototypeSecurityGroupRuleProtocolIcmp.local;
       this.protocol = securityGroupRulePrototypeSecurityGroupRuleProtocolIcmp.protocol;
       this.remote = securityGroupRulePrototypeSecurityGroupRuleProtocolIcmp.remote;
       this.type = securityGroupRulePrototypeSecurityGroupRuleProtocolIcmp.type;
@@ -131,6 +135,17 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolICMP extends Sec
     }
 
     /**
+     * Set the local.
+     *
+     * @param local the local
+     * @return the SecurityGroupRulePrototypeSecurityGroupRuleProtocolICMP builder
+     */
+    public Builder local(SecurityGroupRuleLocalPrototype local) {
+      this.local = local;
+      return this;
+    }
+
+    /**
      * Set the protocol.
      *
      * @param protocol the protocol
@@ -174,6 +189,7 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolICMP extends Sec
     code = builder.code;
     direction = builder.direction;
     ipVersion = builder.ipVersion;
+    local = builder.local;
     protocol = builder.protocol;
     remote = builder.remote;
     type = builder.type;

@@ -30,9 +30,8 @@ public class ReservationCapacity extends GenericModel {
    *   See https://cloud.ibm.com/docs/vpc?topic=vpc-capacity-status for more information.
    * - `unallocated`: The capacity reservation is not allocated for use
    *
-   * The enumerated values for this property may expand in the future. When processing this property, check for and log
-   * unknown values. Optionally halt processing and surface the error, or bypass the resource on which the unexpected
-   * property value was encountered.
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface Status {
     /** allocated. */
@@ -86,9 +85,8 @@ public class ReservationCapacity extends GenericModel {
    *   See https://cloud.ibm.com/docs/vpc?topic=vpc-capacity-status for more information.
    * - `unallocated`: The capacity reservation is not allocated for use
    *
-   * The enumerated values for this property may expand in the future. When processing this property, check for and log
-   * unknown values. Optionally halt processing and surface the error, or bypass the resource on which the unexpected
-   * property value was encountered.
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the status
    */

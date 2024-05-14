@@ -17,6 +17,7 @@ import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionDPDPatch;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionIKEPolicyPatchIKEPolicyIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionIPsecPolicyPatchIPsecPolicyIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionPatch;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionPeerPatchVPNGatewayConnectionPolicyModePeerPatchVPNGatewayConnectionPolicyModePeerPatchVPNGatewayConnectionPeerAddressPatch;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -54,22 +55,29 @@ public class VPNGatewayConnectionPatchTest {
       .build();
     assertEquals(vpnGatewayConnectionIPsecPolicyPatchModel.id(), "ddf51bec-3424-11e8-b467-0ed5f89f718b");
 
+    VPNGatewayConnectionPeerPatchVPNGatewayConnectionPolicyModePeerPatchVPNGatewayConnectionPolicyModePeerPatchVPNGatewayConnectionPeerAddressPatch vpnGatewayConnectionPeerPatchModel = new VPNGatewayConnectionPeerPatchVPNGatewayConnectionPolicyModePeerPatchVPNGatewayConnectionPolicyModePeerPatchVPNGatewayConnectionPeerAddressPatch.Builder()
+      .address("169.21.50.5")
+      .build();
+    assertEquals(vpnGatewayConnectionPeerPatchModel.address(), "169.21.50.5");
+
     VPNGatewayConnectionPatch vpnGatewayConnectionPatchModel = new VPNGatewayConnectionPatch.Builder()
       .adminStateUp(true)
       .deadPeerDetection(vpnGatewayConnectionDpdPatchModel)
+      .establishMode("bidirectional")
       .ikePolicy(vpnGatewayConnectionIkePolicyPatchModel)
       .ipsecPolicy(vpnGatewayConnectionIPsecPolicyPatchModel)
       .name("my-vpn-connection")
-      .peerAddress("169.21.50.5")
+      .peer(vpnGatewayConnectionPeerPatchModel)
       .psk("lkj14b1oi0alcniejkso")
       .routingProtocol("none")
       .build();
     assertEquals(vpnGatewayConnectionPatchModel.adminStateUp(), Boolean.valueOf(true));
     assertEquals(vpnGatewayConnectionPatchModel.deadPeerDetection(), vpnGatewayConnectionDpdPatchModel);
+    assertEquals(vpnGatewayConnectionPatchModel.establishMode(), "bidirectional");
     assertEquals(vpnGatewayConnectionPatchModel.ikePolicy(), vpnGatewayConnectionIkePolicyPatchModel);
     assertEquals(vpnGatewayConnectionPatchModel.ipsecPolicy(), vpnGatewayConnectionIPsecPolicyPatchModel);
     assertEquals(vpnGatewayConnectionPatchModel.name(), "my-vpn-connection");
-    assertEquals(vpnGatewayConnectionPatchModel.peerAddress(), "169.21.50.5");
+    assertEquals(vpnGatewayConnectionPatchModel.peer(), vpnGatewayConnectionPeerPatchModel);
     assertEquals(vpnGatewayConnectionPatchModel.psk(), "lkj14b1oi0alcniejkso");
     assertEquals(vpnGatewayConnectionPatchModel.routingProtocol(), "none");
 
@@ -79,10 +87,11 @@ public class VPNGatewayConnectionPatchTest {
     assertTrue(vpnGatewayConnectionPatchModelNew instanceof VPNGatewayConnectionPatch);
     assertEquals(vpnGatewayConnectionPatchModelNew.adminStateUp(), Boolean.valueOf(true));
     assertEquals(vpnGatewayConnectionPatchModelNew.deadPeerDetection().toString(), vpnGatewayConnectionDpdPatchModel.toString());
+    assertEquals(vpnGatewayConnectionPatchModelNew.establishMode(), "bidirectional");
     assertEquals(vpnGatewayConnectionPatchModelNew.ikePolicy().toString(), vpnGatewayConnectionIkePolicyPatchModel.toString());
     assertEquals(vpnGatewayConnectionPatchModelNew.ipsecPolicy().toString(), vpnGatewayConnectionIPsecPolicyPatchModel.toString());
     assertEquals(vpnGatewayConnectionPatchModelNew.name(), "my-vpn-connection");
-    assertEquals(vpnGatewayConnectionPatchModelNew.peerAddress(), "169.21.50.5");
+    assertEquals(vpnGatewayConnectionPatchModelNew.peer().toString(), vpnGatewayConnectionPeerPatchModel.toString());
     assertEquals(vpnGatewayConnectionPatchModelNew.psk(), "lkj14b1oi0alcniejkso");
     assertEquals(vpnGatewayConnectionPatchModelNew.routingProtocol(), "none");
   }
@@ -102,13 +111,18 @@ public class VPNGatewayConnectionPatchTest {
       .id("ddf51bec-3424-11e8-b467-0ed5f89f718b")
       .build();
 
+    VPNGatewayConnectionPeerPatchVPNGatewayConnectionPolicyModePeerPatchVPNGatewayConnectionPolicyModePeerPatchVPNGatewayConnectionPeerAddressPatch vpnGatewayConnectionPeerPatchModel = new VPNGatewayConnectionPeerPatchVPNGatewayConnectionPolicyModePeerPatchVPNGatewayConnectionPolicyModePeerPatchVPNGatewayConnectionPeerAddressPatch.Builder()
+      .address("169.21.50.5")
+      .build();
+
     VPNGatewayConnectionPatch vpnGatewayConnectionPatchModel = new VPNGatewayConnectionPatch.Builder()
       .adminStateUp(true)
       .deadPeerDetection(vpnGatewayConnectionDpdPatchModel)
+      .establishMode("bidirectional")
       .ikePolicy(vpnGatewayConnectionIkePolicyPatchModel)
       .ipsecPolicy(vpnGatewayConnectionIPsecPolicyPatchModel)
       .name("my-vpn-connection")
-      .peerAddress("169.21.50.5")
+      .peer(vpnGatewayConnectionPeerPatchModel)
       .psk("lkj14b1oi0alcniejkso")
       .routingProtocol("none")
       .build();
@@ -117,10 +131,11 @@ public class VPNGatewayConnectionPatchTest {
 
     assertTrue(mergePatch.containsKey("admin_state_up"));
     assertTrue(mergePatch.containsKey("dead_peer_detection"));
+    assertEquals(mergePatch.get("establish_mode"), "bidirectional");
     assertTrue(mergePatch.containsKey("ike_policy"));
     assertTrue(mergePatch.containsKey("ipsec_policy"));
     assertEquals(mergePatch.get("name"), "my-vpn-connection");
-    assertEquals(mergePatch.get("peer_address"), "169.21.50.5");
+    assertTrue(mergePatch.containsKey("peer"));
     assertEquals(mergePatch.get("psk"), "lkj14b1oi0alcniejkso");
     assertEquals(mergePatch.get("routing_protocol"), "none");
   }

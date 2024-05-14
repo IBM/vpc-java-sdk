@@ -36,34 +36,34 @@ public class ListInstancesOptionsTest {
       .limit(Long.valueOf("50"))
       .resourceGroupId("testString")
       .name("testString")
-      .vpcId("testString")
-      .vpcCrn("crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b")
-      .vpcName("my-vpc")
       .dedicatedHostId("testString")
-      .dedicatedHostCrn("crn:v1:bluemix:public:is:us-south-1:a/123456::dedicated-host:1e09281b-f177-46fb-baf1-bc152b2e391a")
+      .dedicatedHostCrn("crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::dedicated-host:1e09281b-f177-46fb-baf1-bc152b2e391a")
       .dedicatedHostName("my-dedicated-host")
       .placementGroupId("testString")
-      .placementGroupCrn("crn:v1:bluemix:public:is:us-south:a/123456::placement-group:r018-418fe842-a3e9-47b9-a938-1aa5bd632871")
+      .placementGroupCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::placement-group:r018-418fe842-a3e9-47b9-a938-1aa5bd632871")
       .placementGroupName("my-placement-group")
       .reservationId("testString")
-      .reservationCrn("crn:v1:bluemix:public:is:us-south:a/123456::reservation:7187-ba49df72-37b8-43ac-98da-f8e029de0e63")
+      .reservationCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::reservation:7187-ba49df72-37b8-43ac-98da-f8e029de0e63")
       .reservationName("my-reservation")
+      .vpcId("testString")
+      .vpcCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b")
+      .vpcName("my-vpc")
       .build();
     assertEquals(listInstancesOptionsModel.start(), "testString");
     assertEquals(listInstancesOptionsModel.limit(), Long.valueOf("50"));
     assertEquals(listInstancesOptionsModel.resourceGroupId(), "testString");
     assertEquals(listInstancesOptionsModel.name(), "testString");
-    assertEquals(listInstancesOptionsModel.vpcId(), "testString");
-    assertEquals(listInstancesOptionsModel.vpcCrn(), "crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b");
-    assertEquals(listInstancesOptionsModel.vpcName(), "my-vpc");
     assertEquals(listInstancesOptionsModel.dedicatedHostId(), "testString");
-    assertEquals(listInstancesOptionsModel.dedicatedHostCrn(), "crn:v1:bluemix:public:is:us-south-1:a/123456::dedicated-host:1e09281b-f177-46fb-baf1-bc152b2e391a");
+    assertEquals(listInstancesOptionsModel.dedicatedHostCrn(), "crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::dedicated-host:1e09281b-f177-46fb-baf1-bc152b2e391a");
     assertEquals(listInstancesOptionsModel.dedicatedHostName(), "my-dedicated-host");
     assertEquals(listInstancesOptionsModel.placementGroupId(), "testString");
-    assertEquals(listInstancesOptionsModel.placementGroupCrn(), "crn:v1:bluemix:public:is:us-south:a/123456::placement-group:r018-418fe842-a3e9-47b9-a938-1aa5bd632871");
+    assertEquals(listInstancesOptionsModel.placementGroupCrn(), "crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::placement-group:r018-418fe842-a3e9-47b9-a938-1aa5bd632871");
     assertEquals(listInstancesOptionsModel.placementGroupName(), "my-placement-group");
     assertEquals(listInstancesOptionsModel.reservationId(), "testString");
-    assertEquals(listInstancesOptionsModel.reservationCrn(), "crn:v1:bluemix:public:is:us-south:a/123456::reservation:7187-ba49df72-37b8-43ac-98da-f8e029de0e63");
+    assertEquals(listInstancesOptionsModel.reservationCrn(), "crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::reservation:7187-ba49df72-37b8-43ac-98da-f8e029de0e63");
     assertEquals(listInstancesOptionsModel.reservationName(), "my-reservation");
+    assertEquals(listInstancesOptionsModel.vpcId(), "testString");
+    assertEquals(listInstancesOptionsModel.vpcCrn(), "crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b");
+    assertEquals(listInstancesOptionsModel.vpcName(), "my-vpc");
   }
 }

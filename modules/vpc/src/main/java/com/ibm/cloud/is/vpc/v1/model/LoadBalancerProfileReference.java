@@ -19,6 +19,19 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class LoadBalancerProfileReference extends GenericModel {
 
+  /**
+   * The product family this load balancer profile belongs to.
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
+   */
+  public interface Family {
+    /** application. */
+    String APPLICATION = "application";
+    /** network. */
+    String NETWORK = "network";
+  }
+
   protected String family;
   protected String href;
   protected String name;
@@ -29,6 +42,9 @@ public class LoadBalancerProfileReference extends GenericModel {
    * Gets the family.
    *
    * The product family this load balancer profile belongs to.
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the family
    */

@@ -32,15 +32,15 @@ public class ImageIdentityByHrefTest {
   @Test
   public void testImageIdentityByHref() throws Throwable {
     ImageIdentityByHref imageIdentityByHrefModel = new ImageIdentityByHref.Builder()
-      .href("https://us-south.iaas.cloud.ibm.com/v1/images/72b27b5c-f4b0-48bb-b954-5becc7c1dcb8")
+      .href("https://us-south.iaas.cloud.ibm.com/v1/images/r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8")
       .build();
-    assertEquals(imageIdentityByHrefModel.href(), "https://us-south.iaas.cloud.ibm.com/v1/images/72b27b5c-f4b0-48bb-b954-5becc7c1dcb8");
+    assertEquals(imageIdentityByHrefModel.href(), "https://us-south.iaas.cloud.ibm.com/v1/images/r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8");
 
     String json = TestUtilities.serialize(imageIdentityByHrefModel);
 
     ImageIdentityByHref imageIdentityByHrefModelNew = TestUtilities.deserialize(json, ImageIdentityByHref.class);
     assertTrue(imageIdentityByHrefModelNew instanceof ImageIdentityByHref);
-    assertEquals(imageIdentityByHrefModelNew.href(), "https://us-south.iaas.cloud.ibm.com/v1/images/72b27b5c-f4b0-48bb-b954-5becc7c1dcb8");
+    assertEquals(imageIdentityByHrefModelNew.href(), "https://us-south.iaas.cloud.ibm.com/v1/images/r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

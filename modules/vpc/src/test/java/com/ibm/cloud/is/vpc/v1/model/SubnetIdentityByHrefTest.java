@@ -32,15 +32,15 @@ public class SubnetIdentityByHrefTest {
   @Test
   public void testSubnetIdentityByHref() throws Throwable {
     SubnetIdentityByHref subnetIdentityByHrefModel = new SubnetIdentityByHref.Builder()
-      .href("https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
+      .href("https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
       .build();
-    assertEquals(subnetIdentityByHrefModel.href(), "https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e");
+    assertEquals(subnetIdentityByHrefModel.href(), "https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e");
 
     String json = TestUtilities.serialize(subnetIdentityByHrefModel);
 
     SubnetIdentityByHref subnetIdentityByHrefModelNew = TestUtilities.deserialize(json, SubnetIdentityByHref.class);
     assertTrue(subnetIdentityByHrefModelNew instanceof SubnetIdentityByHref);
-    assertEquals(subnetIdentityByHrefModelNew.href(), "https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e");
+    assertEquals(subnetIdentityByHrefModelNew.href(), "https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

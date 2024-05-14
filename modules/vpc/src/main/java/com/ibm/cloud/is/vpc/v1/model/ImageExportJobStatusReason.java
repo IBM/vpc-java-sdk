@@ -22,6 +22,9 @@ public class ImageExportJobStatusReason extends GenericModel {
 
   /**
    * A snake case string succinctly identifying the status reason.
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface Code {
     /** cannot_access_storage_bucket. */
@@ -41,6 +44,9 @@ public class ImageExportJobStatusReason extends GenericModel {
    * Gets the code.
    *
    * A snake case string succinctly identifying the status reason.
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the code
    */

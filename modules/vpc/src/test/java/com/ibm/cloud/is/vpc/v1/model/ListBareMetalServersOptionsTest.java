@@ -37,7 +37,7 @@ public class ListBareMetalServersOptionsTest {
       .resourceGroupId("testString")
       .name("testString")
       .vpcId("testString")
-      .vpcCrn("crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b")
+      .vpcCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b")
       .vpcName("my-vpc")
       .build();
     assertEquals(listBareMetalServersOptionsModel.start(), "testString");
@@ -45,7 +45,7 @@ public class ListBareMetalServersOptionsTest {
     assertEquals(listBareMetalServersOptionsModel.resourceGroupId(), "testString");
     assertEquals(listBareMetalServersOptionsModel.name(), "testString");
     assertEquals(listBareMetalServersOptionsModel.vpcId(), "testString");
-    assertEquals(listBareMetalServersOptionsModel.vpcCrn(), "crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b");
+    assertEquals(listBareMetalServersOptionsModel.vpcCrn(), "crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b");
     assertEquals(listBareMetalServersOptionsModel.vpcName(), "my-vpc");
   }
 }

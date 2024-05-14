@@ -27,9 +27,8 @@ public class Reservation extends GenericModel {
    * The affinity policy to use for this reservation:
    * - `restricted`: The reservation must be manually requested
    *
-   * The enumerated values for this property may expand in the future. When processing this property, check for and log
-   * unknown values. Optionally halt processing and surface the error, or bypass the resource on which the unexpected
-   * property value was encountered.
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface AffinityPolicy {
     /** restricted. */
@@ -67,9 +66,8 @@ public class Reservation extends GenericModel {
   /**
    * The status of the reservation.
    *
-   * The enumerated values for this property may expand in the future. When processing this property, check for and log
-   * unknown values. Optionally halt processing and surface the error, or bypass the resource on which the unexpected
-   * property value was encountered.
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface Status {
     /** activating. */
@@ -117,9 +115,8 @@ public class Reservation extends GenericModel {
    * The affinity policy to use for this reservation:
    * - `restricted`: The reservation must be manually requested
    *
-   * The enumerated values for this property may expand in the future. When processing this property, check for and log
-   * unknown values. Optionally halt processing and surface the error, or bypass the resource on which the unexpected
-   * property value was encountered.
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the affinityPolicy
    */
@@ -257,9 +254,8 @@ public class Reservation extends GenericModel {
    *
    * The status of the reservation.
    *
-   * The enumerated values for this property may expand in the future. When processing this property, check for and log
-   * unknown values. Optionally halt processing and surface the error, or bypass the resource on which the unexpected
-   * property value was encountered.
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the status
    */
@@ -271,10 +267,6 @@ public class Reservation extends GenericModel {
    * Gets the statusReasons.
    *
    * The reasons for the current status (if any).
-   *
-   * The enumerated reason code values for this property will expand in the future. When processing this property, check
-   * for and log unknown values. Optionally halt processing and surface the error, or bypass the resource on which the
-   * unexpected reason code was encountered.
    *
    * @return the statusReasons
    */

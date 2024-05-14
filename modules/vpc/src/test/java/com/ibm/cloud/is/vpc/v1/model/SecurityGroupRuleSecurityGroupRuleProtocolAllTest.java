@@ -13,6 +13,7 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleLocalIP;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleRemoteIP;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleSecurityGroupRuleProtocolAll;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
@@ -37,6 +38,7 @@ public class SecurityGroupRuleSecurityGroupRuleProtocolAllTest {
     assertNull(securityGroupRuleSecurityGroupRuleProtocolAllModel.getHref());
     assertNull(securityGroupRuleSecurityGroupRuleProtocolAllModel.getId());
     assertNull(securityGroupRuleSecurityGroupRuleProtocolAllModel.getIpVersion());
+    assertNull(securityGroupRuleSecurityGroupRuleProtocolAllModel.getLocal());
     assertNull(securityGroupRuleSecurityGroupRuleProtocolAllModel.getRemote());
     assertNull(securityGroupRuleSecurityGroupRuleProtocolAllModel.getProtocol());
   }

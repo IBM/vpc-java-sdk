@@ -32,15 +32,15 @@ public class CatalogOfferingVersionIdentityCatalogOfferingVersionByCRNTest {
   @Test
   public void testCatalogOfferingVersionIdentityCatalogOfferingVersionByCRN() throws Throwable {
     CatalogOfferingVersionIdentityCatalogOfferingVersionByCRN catalogOfferingVersionIdentityCatalogOfferingVersionByCrnModel = new CatalogOfferingVersionIdentityCatalogOfferingVersionByCRN.Builder()
-      .crn("crn:v1:bluemix:public:globalcatalog-collection:global:a/123456:1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc:version:00111601-0ec5-41ac-b142-96d1e64e6442/ec66bec2-6a33-42d6-9323-26dd4dc8875d")
+      .crn("crn:v1:bluemix:public:globalcatalog-collection:global:a/aa2432b1fa4d4ace891e9b80fc104e34:1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc:version:00111601-0ec5-41ac-b142-96d1e64e6442/ec66bec2-6a33-42d6-9323-26dd4dc8875d")
       .build();
-    assertEquals(catalogOfferingVersionIdentityCatalogOfferingVersionByCrnModel.crn(), "crn:v1:bluemix:public:globalcatalog-collection:global:a/123456:1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc:version:00111601-0ec5-41ac-b142-96d1e64e6442/ec66bec2-6a33-42d6-9323-26dd4dc8875d");
+    assertEquals(catalogOfferingVersionIdentityCatalogOfferingVersionByCrnModel.crn(), "crn:v1:bluemix:public:globalcatalog-collection:global:a/aa2432b1fa4d4ace891e9b80fc104e34:1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc:version:00111601-0ec5-41ac-b142-96d1e64e6442/ec66bec2-6a33-42d6-9323-26dd4dc8875d");
 
     String json = TestUtilities.serialize(catalogOfferingVersionIdentityCatalogOfferingVersionByCrnModel);
 
     CatalogOfferingVersionIdentityCatalogOfferingVersionByCRN catalogOfferingVersionIdentityCatalogOfferingVersionByCrnModelNew = TestUtilities.deserialize(json, CatalogOfferingVersionIdentityCatalogOfferingVersionByCRN.class);
     assertTrue(catalogOfferingVersionIdentityCatalogOfferingVersionByCrnModelNew instanceof CatalogOfferingVersionIdentityCatalogOfferingVersionByCRN);
-    assertEquals(catalogOfferingVersionIdentityCatalogOfferingVersionByCrnModelNew.crn(), "crn:v1:bluemix:public:globalcatalog-collection:global:a/123456:1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc:version:00111601-0ec5-41ac-b142-96d1e64e6442/ec66bec2-6a33-42d6-9323-26dd4dc8875d");
+    assertEquals(catalogOfferingVersionIdentityCatalogOfferingVersionByCrnModelNew.crn(), "crn:v1:bluemix:public:globalcatalog-collection:global:a/aa2432b1fa4d4ace891e9b80fc104e34:1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc:version:00111601-0ec5-41ac-b142-96d1e64e6442/ec66bec2-6a33-42d6-9323-26dd4dc8875d");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

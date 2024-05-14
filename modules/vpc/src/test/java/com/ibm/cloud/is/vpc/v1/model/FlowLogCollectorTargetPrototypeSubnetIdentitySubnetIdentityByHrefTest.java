@@ -32,15 +32,15 @@ public class FlowLogCollectorTargetPrototypeSubnetIdentitySubnetIdentityByHrefTe
   @Test
   public void testFlowLogCollectorTargetPrototypeSubnetIdentitySubnetIdentityByHref() throws Throwable {
     FlowLogCollectorTargetPrototypeSubnetIdentitySubnetIdentityByHref flowLogCollectorTargetPrototypeSubnetIdentitySubnetIdentityByHrefModel = new FlowLogCollectorTargetPrototypeSubnetIdentitySubnetIdentityByHref.Builder()
-      .href("https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
+      .href("https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
       .build();
-    assertEquals(flowLogCollectorTargetPrototypeSubnetIdentitySubnetIdentityByHrefModel.href(), "https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e");
+    assertEquals(flowLogCollectorTargetPrototypeSubnetIdentitySubnetIdentityByHrefModel.href(), "https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e");
 
     String json = TestUtilities.serialize(flowLogCollectorTargetPrototypeSubnetIdentitySubnetIdentityByHrefModel);
 
     FlowLogCollectorTargetPrototypeSubnetIdentitySubnetIdentityByHref flowLogCollectorTargetPrototypeSubnetIdentitySubnetIdentityByHrefModelNew = TestUtilities.deserialize(json, FlowLogCollectorTargetPrototypeSubnetIdentitySubnetIdentityByHref.class);
     assertTrue(flowLogCollectorTargetPrototypeSubnetIdentitySubnetIdentityByHrefModelNew instanceof FlowLogCollectorTargetPrototypeSubnetIdentitySubnetIdentityByHref);
-    assertEquals(flowLogCollectorTargetPrototypeSubnetIdentitySubnetIdentityByHrefModelNew.href(), "https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e");
+    assertEquals(flowLogCollectorTargetPrototypeSubnetIdentitySubnetIdentityByHrefModelNew.href(), "https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

@@ -21,8 +21,8 @@ import com.ibm.cloud.is.vpc.v1.model.AddEndpointGatewayIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.AddInstanceNetworkInterfaceFloatingIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.AddNetworkInterfaceFloatingIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.AddVirtualNetworkInterfaceIpOptions;
-import com.ibm.cloud.is.vpc.v1.model.AddVpnGatewayConnectionLocalCidrOptions;
-import com.ibm.cloud.is.vpc.v1.model.AddVpnGatewayConnectionPeerCidrOptions;
+import com.ibm.cloud.is.vpc.v1.model.AddVpnGatewayConnectionsLocalCidrOptions;
+import com.ibm.cloud.is.vpc.v1.model.AddVpnGatewayConnectionsPeerCidrOptions;
 import com.ibm.cloud.is.vpc.v1.model.AddressPrefix;
 import com.ibm.cloud.is.vpc.v1.model.AddressPrefixCollection;
 import com.ibm.cloud.is.vpc.v1.model.AddressPrefixCollectionFirst;
@@ -51,6 +51,8 @@ import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanClonePolicy;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanClonePolicyPatch;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanClonePolicyPrototype;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanCollection;
+import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanCollectionFirst;
+import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanDeletionTrigger;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanDeletionTriggerPatch;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanDeletionTriggerPrototype;
@@ -193,8 +195,8 @@ import com.ibm.cloud.is.vpc.v1.model.CatalogOfferingVersionReference;
 import com.ibm.cloud.is.vpc.v1.model.CertificateInstanceIdentity;
 import com.ibm.cloud.is.vpc.v1.model.CertificateInstanceIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.CertificateInstanceReference;
-import com.ibm.cloud.is.vpc.v1.model.CheckVpnGatewayConnectionLocalCidrOptions;
-import com.ibm.cloud.is.vpc.v1.model.CheckVpnGatewayConnectionPeerCidrOptions;
+import com.ibm.cloud.is.vpc.v1.model.CheckVpnGatewayConnectionsLocalCidrOptions;
+import com.ibm.cloud.is.vpc.v1.model.CheckVpnGatewayConnectionsPeerCidrOptions;
 import com.ibm.cloud.is.vpc.v1.model.CloudObjectStorageBucketIdentity;
 import com.ibm.cloud.is.vpc.v1.model.CloudObjectStorageBucketIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.CloudObjectStorageBucketIdentityCloudObjectStorageBucketIdentityByName;
@@ -658,6 +660,7 @@ import com.ibm.cloud.is.vpc.v1.model.InstanceGroup;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupCollection;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupCollectionFirst;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupCollectionNext;
+import com.ibm.cloud.is.vpc.v1.model.InstanceGroupLifecycleReason;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManager;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerAction;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerActionGroupPatch;
@@ -984,9 +987,9 @@ import com.ibm.cloud.is.vpc.v1.model.ListVpcRoutesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListVpcRoutingTableRoutesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListVpcRoutingTablesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListVpcsOptions;
-import com.ibm.cloud.is.vpc.v1.model.ListVpnGatewayConnectionLocalCidrsOptions;
-import com.ibm.cloud.is.vpc.v1.model.ListVpnGatewayConnectionPeerCidrsOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListVpnGatewayConnectionsLocalCidrsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListVpnGatewayConnectionsOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListVpnGatewayConnectionsPeerCidrsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListVpnGatewaysOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListVpnServerClientsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListVpnServerRoutesOptions;
@@ -1004,6 +1007,9 @@ import com.ibm.cloud.is.vpc.v1.model.LoadBalancerIdentityByHref;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListener;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerCollection;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerDefaultPoolPatch;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerDefaultPoolPatchLoadBalancerPoolIdentityByHref;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerDefaultPoolPatchLoadBalancerPoolIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerHTTPSRedirect;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerHTTPSRedirectPatch;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerHTTPSRedirectPrototype;
@@ -1024,21 +1030,21 @@ import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyRulePrototype;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyRuleReference;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyRuleReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTarget;
-import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetLoadBalancerListenerHTTPSRedirect;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetLoadBalancerListenerPolicyHTTPSRedirect;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetLoadBalancerListenerPolicyRedirectURL;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetLoadBalancerPoolReference;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetPatch;
-import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetPatchLoadBalancerListenerHTTPSRedirectPatch;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetPatchLoadBalancerListenerPolicyHTTPSRedirectPatch;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetPatchLoadBalancerListenerPolicyRedirectURLPatch;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetPatchLoadBalancerPoolIdentity;
-import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetPatchLoadBalancerPoolIdentityLoadBalancerPoolIdentityByHref;
-import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetPatchLoadBalancerPoolIdentityLoadBalancerPoolIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetPatchLoadBalancerPoolIdentityLoadBalancerPoolIdentityLoadBalancerPoolIdentityByHref;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetPatchLoadBalancerPoolIdentityLoadBalancerPoolIdentityLoadBalancerPoolIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetPrototype;
-import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetPrototypeLoadBalancerListenerHTTPSRedirectPrototype;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetPrototypeLoadBalancerListenerPolicyHTTPSRedirectPrototype;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetPrototypeLoadBalancerListenerPolicyRedirectURLPrototype;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetPrototypeLoadBalancerPoolIdentity;
-import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetPrototypeLoadBalancerPoolIdentityLoadBalancerPoolIdentityByHref;
-import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetPrototypeLoadBalancerPoolIdentityLoadBalancerPoolIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetPrototypeLoadBalancerPoolIdentityLoadBalancerPoolIdentityLoadBalancerPoolIdentityByHref;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetPrototypeLoadBalancerPoolIdentityLoadBalancerPoolIdentityLoadBalancerPoolIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPrototypeLoadBalancerContext;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerReference;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerReferenceDeleted;
@@ -1055,9 +1061,9 @@ import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolHealthMonitor;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolHealthMonitorPatch;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolHealthMonitorPrototype;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolIdentity;
-import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolIdentityByHref;
-import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolIdentityByName;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolIdentityLoadBalancerPoolIdentityByHref;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolIdentityLoadBalancerPoolIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolMember;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolMemberCollection;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolMemberPatch;
@@ -1213,8 +1219,8 @@ import com.ibm.cloud.is.vpc.v1.model.RemoveEndpointGatewayIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.RemoveInstanceNetworkInterfaceFloatingIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.RemoveNetworkInterfaceFloatingIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.RemoveVirtualNetworkInterfaceIpOptions;
-import com.ibm.cloud.is.vpc.v1.model.RemoveVpnGatewayConnectionLocalCidrOptions;
-import com.ibm.cloud.is.vpc.v1.model.RemoveVpnGatewayConnectionPeerCidrOptions;
+import com.ibm.cloud.is.vpc.v1.model.RemoveVpnGatewayConnectionsLocalCidrOptions;
+import com.ibm.cloud.is.vpc.v1.model.RemoveVpnGatewayConnectionsPeerCidrOptions;
 import com.ibm.cloud.is.vpc.v1.model.ReplaceLoadBalancerPoolMembersOptions;
 import com.ibm.cloud.is.vpc.v1.model.ReplaceSubnetNetworkAclOptions;
 import com.ibm.cloud.is.vpc.v1.model.ReplaceSubnetRoutingTableOptions;
@@ -1337,6 +1343,15 @@ import com.ibm.cloud.is.vpc.v1.model.SecurityGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRule;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleCollection;
+import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleLocal;
+import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleLocalCIDR;
+import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleLocalIP;
+import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleLocalPatch;
+import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleLocalPatchCIDR;
+import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleLocalPatchIP;
+import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleLocalPrototype;
+import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleLocalPrototypeCIDR;
+import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleLocalPrototypeIP;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRulePatch;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRulePrototype;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRulePrototypeSecurityGroupRuleProtocolAll;
@@ -1450,7 +1465,6 @@ import com.ibm.cloud.is.vpc.v1.model.SnapshotConsistencyGroupPrototype;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotConsistencyGroupPrototypeSnapshotConsistencyGroupBySnapshots;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotConsistencyGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotConsistencyGroupReferenceDeleted;
-import com.ibm.cloud.is.vpc.v1.model.SnapshotConsistencyGroupSnapshotsItem;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotConsistencyGroupsPager;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotCopiesItem;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotIdentity;
@@ -1566,6 +1580,7 @@ import com.ibm.cloud.is.vpc.v1.model.VPCDNSResolutionBinding;
 import com.ibm.cloud.is.vpc.v1.model.VPCDNSResolutionBindingCollection;
 import com.ibm.cloud.is.vpc.v1.model.VPCDNSResolutionBindingCollectionFirst;
 import com.ibm.cloud.is.vpc.v1.model.VPCDNSResolutionBindingCollectionNext;
+import com.ibm.cloud.is.vpc.v1.model.VPCDNSResolutionBindingHealthReason;
 import com.ibm.cloud.is.vpc.v1.model.VPCDNSResolutionBindingPatch;
 import com.ibm.cloud.is.vpc.v1.model.VPCDNSResolver;
 import com.ibm.cloud.is.vpc.v1.model.VPCDNSResolverPatch;
@@ -1596,10 +1611,21 @@ import com.ibm.cloud.is.vpc.v1.model.VPNGatewayCollection;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayCollectionFirst;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnection;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionCIDRs;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionCollection;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionDPD;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionDPDPatch;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionDPDPrototype;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionIKEIdentity;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionIKEIdentityPrototype;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionIKEIdentityPrototypeVPNGatewayConnectionIKEIdentityFQDN;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionIKEIdentityPrototypeVPNGatewayConnectionIKEIdentityHostname;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionIKEIdentityPrototypeVPNGatewayConnectionIKEIdentityIPv4;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionIKEIdentityPrototypeVPNGatewayConnectionIKEIdentityKeyID;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionIKEIdentityVPNGatewayConnectionIKEIdentityFQDN;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionIKEIdentityVPNGatewayConnectionIKEIdentityHostname;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionIKEIdentityVPNGatewayConnectionIKEIdentityIPv4;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionIKEIdentityVPNGatewayConnectionIKEIdentityKeyID;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionIKEPolicyPatch;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionIKEPolicyPatchIKEPolicyIdentityByHref;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionIKEPolicyPatchIKEPolicyIdentityById;
@@ -1612,16 +1638,38 @@ import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionIPsecPolicyPatchIPsecPo
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionIPsecPolicyPrototype;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionIPsecPolicyPrototypeIPsecPolicyIdentityByHref;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionIPsecPolicyPrototypeIPsecPolicyIdentityById;
-import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionLocalCIDRs;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionPatch;
-import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionPeerCIDRs;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionPeerPatch;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionPeerPatchVPNGatewayConnectionPolicyModePeerPatch;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionPeerPatchVPNGatewayConnectionPolicyModePeerPatchVPNGatewayConnectionPolicyModePeerPatchVPNGatewayConnectionPeerAddressPatch;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionPeerPatchVPNGatewayConnectionPolicyModePeerPatchVPNGatewayConnectionPolicyModePeerPatchVPNGatewayConnectionPeerFQDNPatch;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionPeerPatchVPNGatewayConnectionStaticRouteModePeerPatch;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionPeerPatchVPNGatewayConnectionStaticRouteModePeerPatchVPNGatewayConnectionStaticRouteModePeerPatchVPNGatewayConnectionPeerAddressPatch;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionPeerPatchVPNGatewayConnectionStaticRouteModePeerPatchVPNGatewayConnectionStaticRouteModePeerPatchVPNGatewayConnectionPeerFQDNPatch;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionPolicyMode;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionPolicyModeLocal;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionPolicyModeLocalPrototype;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionPolicyModePeer;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionPolicyModePeerPrototype;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionPolicyModePeerPrototypeVPNGatewayConnectionPeerByAddress;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionPolicyModePeerPrototypeVPNGatewayConnectionPeerByFQDN;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionPolicyModePeerVPNGatewayConnectionPeerByAddress;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionPolicyModePeerVPNGatewayConnectionPeerByFQDN;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionPrototype;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionPrototypeVPNGatewayConnectionPolicyModePrototype;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionPrototypeVPNGatewayConnectionStaticRouteModePrototype;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionReference;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionReferenceDeleted;
-import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionStaticRouteMode;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionRouteMode;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionRouteModeVPNGatewayConnectionStaticRouteMode;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionStaticRouteModeLocal;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionStaticRouteModeLocalPrototype;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionStaticRouteModePeer;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionStaticRouteModePeerPrototype;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionStaticRouteModePeerPrototypeVPNGatewayConnectionPeerByAddress;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionStaticRouteModePeerPrototypeVPNGatewayConnectionPeerByFQDN;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionStaticRouteModePeerVPNGatewayConnectionPeerByAddress;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionStaticRouteModePeerVPNGatewayConnectionPeerByFQDN;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionStaticRouteModeTunnel;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionStatusReason;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionTunnelStatusReason;
@@ -1951,7 +1999,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       VPCDNSResolverVPCPatchVPCIdentityById vpcdnsResolverVpcPatchModel = new VPCDNSResolverVPCPatchVPCIdentityById.Builder()
-        .id("4727d842-f94f-4a2d-824a-9bc9b02c523b")
+        .id("r006-4727d842-f94f-4a2d-824a-9bc9b02c523b")
         .build();
 
       VPCDNSResolverPatch vpcdnsResolverPatchModel = new VPCDNSResolverPatch.Builder()
@@ -2206,9 +2254,9 @@ public class VpcIT extends SdkIntegrationTestBase {
         .start("testString")
         .limit(Long.valueOf("10"))
         .name("testString")
-        .vpcCrn("crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b")
+        .vpcCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b")
         .vpcName("my-vpc")
-        .accountId("aa2432b1fa4d4ace891e9b80fc104e34")
+        .accountId("bb1b52262f7441a586f49068482f1e60")
         .build();
 
       // Invoke operation
@@ -2234,9 +2282,9 @@ public class VpcIT extends SdkIntegrationTestBase {
         .sort("name")
         .limit(Long.valueOf("10"))
         .name("testString")
-        .vpcCrn("crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b")
+        .vpcCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b")
         .vpcName("my-vpc")
-        .accountId("aa2432b1fa4d4ace891e9b80fc104e34")
+        .accountId("bb1b52262f7441a586f49068482f1e60")
         .build();
 
       // Test getNext().
@@ -2267,7 +2315,7 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testCreateVpcDnsResolutionBinding() throws Exception {
     try {
       VPCIdentityById vpcIdentityModel = new VPCIdentityById.Builder()
-        .id("4727d842-f94f-4a2d-824a-9bc9b02c523b")
+        .id("r006-4727d842-f94f-4a2d-824a-9bc9b02c523b")
         .build();
 
       CreateVpcDnsResolutionBindingOptions createVpcDnsResolutionBindingOptions = new CreateVpcDnsResolutionBindingOptions.Builder()
@@ -2836,7 +2884,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .resourceGroupId("testString")
         .zoneName("us-south-1")
         .vpcId("testString")
-        .vpcCrn("crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b")
+        .vpcCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b")
         .vpcName("my-vpc")
         .routingTableId("testString")
         .routingTableName("my-routing-table")
@@ -2865,7 +2913,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .resourceGroupId("testString")
         .zoneName("us-south-1")
         .vpcId("testString")
-        .vpcCrn("crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b")
+        .vpcCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b")
         .vpcName("my-vpc")
         .routingTableId("testString")
         .routingTableName("my-routing-table")
@@ -2915,7 +2963,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       VPCIdentityById vpcIdentityModel = new VPCIdentityById.Builder()
-        .id("4727d842-f94f-4a2d-824a-9bc9b02c523b")
+        .id("r006-4727d842-f94f-4a2d-824a-9bc9b02c523b")
         .build();
 
       ZoneIdentityByName zoneIdentityModel = new ZoneIdentityByName.Builder()
@@ -3044,7 +3092,7 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testReplaceSubnetNetworkAcl() throws Exception {
     try {
       NetworkACLIdentityById networkAclIdentityModel = new NetworkACLIdentityById.Builder()
-        .id("a4e28308-8ee7-46ab-8108-9f881f22bdbf")
+        .id("r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf")
         .build();
 
       ReplaceSubnetNetworkAclOptions replaceSubnetNetworkAclOptions = new ReplaceSubnetNetworkAclOptions.Builder()
@@ -3142,7 +3190,7 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testReplaceSubnetRoutingTable() throws Exception {
     try {
       RoutingTableIdentityById routingTableIdentityModel = new RoutingTableIdentityById.Builder()
-        .id("1a15dca5-7e33-45e1-b7c5-bc690e569531")
+        .id("r006-6885e83f-03b2-4603-8a86-db2a0f55c840")
         .build();
 
       ReplaceSubnetRoutingTableOptions replaceSubnetRoutingTableOptions = new ReplaceSubnetRoutingTableOptions.Builder()
@@ -3174,7 +3222,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .limit(Long.valueOf("10"))
         .sort("name")
         .targetId("testString")
-        .targetCrn("crn:v1:bluemix:public:is:us-south:a/123456::load-balancer:dd754295-e9e0-4c9d-bf6c-58fbc59e5727")
+        .targetCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::load-balancer:dd754295-e9e0-4c9d-bf6c-58fbc59e5727")
         .targetName("my-resource")
         .targetResourceType("testString")
         .build();
@@ -3202,7 +3250,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .limit(Long.valueOf("10"))
         .sort("name")
         .targetId("testString")
-        .targetCrn("crn:v1:bluemix:public:is:us-south:a/123456::load-balancer:dd754295-e9e0-4c9d-bf6c-58fbc59e5727")
+        .targetCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::load-balancer:dd754295-e9e0-4c9d-bf6c-58fbc59e5727")
         .targetName("my-resource")
         .targetResourceType("testString")
         .build();
@@ -3384,7 +3432,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       EncryptionKeyIdentityByCRN encryptionKeyIdentityModel = new EncryptionKeyIdentityByCRN.Builder()
-        .crn("crn:v1:bluemix:public:kms:us-south:a/123456:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179")
+        .crn("crn:v1:bluemix:public:kms:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179")
         .build();
 
       ImageFilePrototype imageFilePrototypeModel = new ImageFilePrototype.Builder()
@@ -3915,7 +3963,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       InstancePlacementTargetPrototypeDedicatedHostIdentityDedicatedHostIdentityById instancePlacementTargetPrototypeModel = new InstancePlacementTargetPrototypeDedicatedHostIdentityDedicatedHostIdentityById.Builder()
-        .id("1e09281b-f177-46fb-baf1-bc152b2e391a")
+        .id("0717-1e09281b-f177-46fb-baf1-bc152b2e391a")
         .build();
 
       InstanceProfileIdentityByName instanceProfileIdentityModel = new InstanceProfileIdentityByName.Builder()
@@ -3936,7 +3984,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       VolumeAttachmentPrototypeVolumeVolumeIdentityVolumeIdentityById volumeAttachmentPrototypeVolumeModel = new VolumeAttachmentPrototypeVolumeVolumeIdentityVolumeIdentityById.Builder()
-        .id("1a6b7274-678d-4dfb-8981-c71dd9d4daa5")
+        .id("r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5")
         .build();
 
       VolumeAttachmentPrototype volumeAttachmentPrototypeModel = new VolumeAttachmentPrototype.Builder()
@@ -3950,7 +3998,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       EncryptionKeyIdentityByCRN encryptionKeyIdentityModel = new EncryptionKeyIdentityByCRN.Builder()
-        .crn("crn:v1:bluemix:public:kms:us-south:a/123456:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179")
+        .crn("crn:v1:bluemix:public:kms:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179")
         .build();
 
       VolumeProfileIdentityByName volumeProfileIdentityModel = new VolumeProfileIdentityByName.Builder()
@@ -4101,18 +4149,18 @@ public class VpcIT extends SdkIntegrationTestBase {
         .limit(Long.valueOf("10"))
         .resourceGroupId("testString")
         .name("testString")
-        .vpcId("testString")
-        .vpcCrn("crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b")
-        .vpcName("my-vpc")
         .dedicatedHostId("testString")
-        .dedicatedHostCrn("crn:v1:bluemix:public:is:us-south-1:a/123456::dedicated-host:1e09281b-f177-46fb-baf1-bc152b2e391a")
+        .dedicatedHostCrn("crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::dedicated-host:1e09281b-f177-46fb-baf1-bc152b2e391a")
         .dedicatedHostName("my-dedicated-host")
         .placementGroupId("testString")
-        .placementGroupCrn("crn:v1:bluemix:public:is:us-south:a/123456::placement-group:r018-418fe842-a3e9-47b9-a938-1aa5bd632871")
+        .placementGroupCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::placement-group:r018-418fe842-a3e9-47b9-a938-1aa5bd632871")
         .placementGroupName("my-placement-group")
         .reservationId("testString")
-        .reservationCrn("crn:v1:bluemix:public:is:us-south:a/123456::reservation:7187-ba49df72-37b8-43ac-98da-f8e029de0e63")
+        .reservationCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::reservation:7187-ba49df72-37b8-43ac-98da-f8e029de0e63")
         .reservationName("my-reservation")
+        .vpcId("testString")
+        .vpcCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b")
+        .vpcName("my-vpc")
         .build();
 
       // Invoke operation
@@ -4137,18 +4185,18 @@ public class VpcIT extends SdkIntegrationTestBase {
         .limit(Long.valueOf("10"))
         .resourceGroupId("testString")
         .name("testString")
-        .vpcId("testString")
-        .vpcCrn("crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b")
-        .vpcName("my-vpc")
         .dedicatedHostId("testString")
-        .dedicatedHostCrn("crn:v1:bluemix:public:is:us-south-1:a/123456::dedicated-host:1e09281b-f177-46fb-baf1-bc152b2e391a")
+        .dedicatedHostCrn("crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::dedicated-host:1e09281b-f177-46fb-baf1-bc152b2e391a")
         .dedicatedHostName("my-dedicated-host")
         .placementGroupId("testString")
-        .placementGroupCrn("crn:v1:bluemix:public:is:us-south:a/123456::placement-group:r018-418fe842-a3e9-47b9-a938-1aa5bd632871")
+        .placementGroupCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::placement-group:r018-418fe842-a3e9-47b9-a938-1aa5bd632871")
         .placementGroupName("my-placement-group")
         .reservationId("testString")
-        .reservationCrn("crn:v1:bluemix:public:is:us-south:a/123456::reservation:7187-ba49df72-37b8-43ac-98da-f8e029de0e63")
+        .reservationCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::reservation:7187-ba49df72-37b8-43ac-98da-f8e029de0e63")
         .reservationName("my-reservation")
+        .vpcId("testString")
+        .vpcCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b")
+        .vpcName("my-vpc")
         .build();
 
       // Test getNext().
@@ -4372,7 +4420,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       InstancePlacementTargetPatchDedicatedHostIdentityDedicatedHostIdentityById instancePlacementTargetPatchModel = new InstancePlacementTargetPatchDedicatedHostIdentityDedicatedHostIdentityById.Builder()
-        .id("1e09281b-f177-46fb-baf1-bc152b2e391a")
+        .id("0717-1e09281b-f177-46fb-baf1-bc152b2e391a")
         .build();
 
       InstancePatchProfileInstanceProfileIdentityByName instancePatchProfileModel = new InstancePatchProfileInstanceProfileIdentityByName.Builder()
@@ -4993,7 +5041,7 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testCreateInstanceVolumeAttachment() throws Exception {
     try {
       VolumeAttachmentPrototypeVolumeVolumeIdentityVolumeIdentityById volumeAttachmentPrototypeVolumeModel = new VolumeAttachmentPrototypeVolumeVolumeIdentityVolumeIdentityById.Builder()
-        .id("1a6b7274-678d-4dfb-8981-c71dd9d4daa5")
+        .id("r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5")
         .build();
 
       CreateInstanceVolumeAttachmentOptions createInstanceVolumeAttachmentOptions = new CreateInstanceVolumeAttachmentOptions.Builder()
@@ -5133,14 +5181,14 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       SubnetIdentityById subnetIdentityModel = new SubnetIdentityById.Builder()
-        .id("7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
+        .id("0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
         .build();
 
       LoadBalancerIdentityById loadBalancerIdentityModel = new LoadBalancerIdentityById.Builder()
         .id("dd754295-e9e0-4c9d-bf6c-58fbc59e5727")
         .build();
 
-      LoadBalancerPoolIdentityById loadBalancerPoolIdentityModel = new LoadBalancerPoolIdentityById.Builder()
+      LoadBalancerPoolIdentityLoadBalancerPoolIdentityById loadBalancerPoolIdentityModel = new LoadBalancerPoolIdentityLoadBalancerPoolIdentityById.Builder()
         .id("70294e14-4e61-11e8-bcf4-0242ac110004")
         .build();
 
@@ -5207,12 +5255,12 @@ public class VpcIT extends SdkIntegrationTestBase {
         .id("dd754295-e9e0-4c9d-bf6c-58fbc59e5727")
         .build();
 
-      LoadBalancerPoolIdentityById loadBalancerPoolIdentityModel = new LoadBalancerPoolIdentityById.Builder()
+      LoadBalancerPoolIdentityLoadBalancerPoolIdentityById loadBalancerPoolIdentityModel = new LoadBalancerPoolIdentityLoadBalancerPoolIdentityById.Builder()
         .id("70294e14-4e61-11e8-bcf4-0242ac110004")
         .build();
 
       SubnetIdentityById subnetIdentityModel = new SubnetIdentityById.Builder()
-        .id("7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
+        .id("0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
         .build();
 
       InstanceGroupPatch instanceGroupPatchModel = new InstanceGroupPatch.Builder()
@@ -6449,457 +6497,6 @@ public class VpcIT extends SdkIntegrationTestBase {
   }
 
   @Test(dependsOnMethods = { "testUpdateDedicatedHost" })
-  public void testListBackupPolicies() throws Exception {
-    try {
-      ListBackupPoliciesOptions listBackupPoliciesOptions = new ListBackupPoliciesOptions.Builder()
-        .start("testString")
-        .limit(Long.valueOf("10"))
-        .resourceGroupId("testString")
-        .name("testString")
-        .tag("testString")
-        .build();
-
-      // Invoke operation
-      Response<BackupPolicyCollection> response = service.listBackupPolicies(listBackupPoliciesOptions).execute();
-      // Validate response
-      assertNotNull(response);
-      assertEquals(response.getStatusCode(), 200);
-
-      BackupPolicyCollection backupPolicyCollectionResult = response.getResult();
-
-      assertNotNull(backupPolicyCollectionResult);
-    } catch (ServiceResponseException e) {
-        fail(String.format("Service returned status code %d: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
-    }
-  }
-
-  @Test(dependsOnMethods = { "testListBackupPolicies" })
-  public void testListBackupPoliciesWithPager() throws Exception {
-    try {
-      ListBackupPoliciesOptions options = new ListBackupPoliciesOptions.Builder()
-        .limit(Long.valueOf("10"))
-        .resourceGroupId("testString")
-        .name("testString")
-        .tag("testString")
-        .build();
-
-      // Test getNext().
-      List<BackupPolicy> allResults = new ArrayList<>();
-      BackupPoliciesPager pager = new BackupPoliciesPager(service, options);
-      while (pager.hasNext()) {
-        List<BackupPolicy> nextPage = pager.getNext();
-        assertNotNull(nextPage);
-        allResults.addAll(nextPage);
-      }
-      assertFalse(allResults.isEmpty());
-
-      // Test getAll();
-      pager = new BackupPoliciesPager(service, options);
-      List<BackupPolicy> allItems = pager.getAll();
-      assertNotNull(allItems);
-      assertFalse(allItems.isEmpty());
-
-      assertEquals(allItems.size(), allResults.size());
-      System.out.println(String.format("Retrieved a total of %d item(s) with pagination.", allResults.size()));
-    } catch (ServiceResponseException e) {
-        fail(String.format("Service returned status code %d: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
-    }
-  }
-
-  @Test(dependsOnMethods = { "testListBackupPolicies" })
-  public void testCreateBackupPolicy() throws Exception {
-    try {
-      ZoneIdentityByName zoneIdentityModel = new ZoneIdentityByName.Builder()
-        .name("us-south-1")
-        .build();
-
-      BackupPolicyPlanClonePolicyPrototype backupPolicyPlanClonePolicyPrototypeModel = new BackupPolicyPlanClonePolicyPrototype.Builder()
-        .maxSnapshots(Long.valueOf("5"))
-        .zones(java.util.Arrays.asList(zoneIdentityModel))
-        .build();
-
-      BackupPolicyPlanDeletionTriggerPrototype backupPolicyPlanDeletionTriggerPrototypeModel = new BackupPolicyPlanDeletionTriggerPrototype.Builder()
-        .deleteAfter(Long.valueOf("20"))
-        .deleteOverCount(Long.valueOf("20"))
-        .build();
-
-      EncryptionKeyIdentityByCRN encryptionKeyIdentityModel = new EncryptionKeyIdentityByCRN.Builder()
-        .crn("crn:v1:bluemix:public:kms:us-south:a/123456:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179")
-        .build();
-
-      RegionIdentityByName regionIdentityModel = new RegionIdentityByName.Builder()
-        .name("us-south")
-        .build();
-
-      BackupPolicyPlanRemoteRegionPolicyPrototype backupPolicyPlanRemoteRegionPolicyPrototypeModel = new BackupPolicyPlanRemoteRegionPolicyPrototype.Builder()
-        .deleteOverCount(Long.valueOf("5"))
-        .encryptionKey(encryptionKeyIdentityModel)
-        .region(regionIdentityModel)
-        .build();
-
-      BackupPolicyPlanPrototype backupPolicyPlanPrototypeModel = new BackupPolicyPlanPrototype.Builder()
-        .active(true)
-        .attachUserTags(java.util.Arrays.asList("my-daily-backup-plan"))
-        .clonePolicy(backupPolicyPlanClonePolicyPrototypeModel)
-        .copyUserTags(true)
-        .cronSpec("30 */2 * * 1-5")
-        .deletionTrigger(backupPolicyPlanDeletionTriggerPrototypeModel)
-        .name("my-policy-plan")
-        .remoteRegionPolicies(java.util.Arrays.asList(backupPolicyPlanRemoteRegionPolicyPrototypeModel))
-        .build();
-
-      ResourceGroupIdentityById resourceGroupIdentityModel = new ResourceGroupIdentityById.Builder()
-        .id("fee82deba12e4c0fb69c3b09d1f12345")
-        .build();
-
-      BackupPolicyScopePrototypeEnterpriseIdentityEnterpriseIdentityByCRN backupPolicyScopePrototypeModel = new BackupPolicyScopePrototypeEnterpriseIdentityEnterpriseIdentityByCRN.Builder()
-        .crn("crn:v1:bluemix:public:enterprise::a/123456::enterprise:ebc2b430240943458b9e91e1432cfcce")
-        .build();
-
-      BackupPolicyPrototypeBackupPolicyMatchResourceTypeVolumePrototype backupPolicyPrototypeModel = new BackupPolicyPrototypeBackupPolicyMatchResourceTypeVolumePrototype.Builder()
-        .matchUserTags(java.util.Arrays.asList("my-daily-backup-policy"))
-        .name("my-backup-policy")
-        .plans(java.util.Arrays.asList(backupPolicyPlanPrototypeModel))
-        .resourceGroup(resourceGroupIdentityModel)
-        .scope(backupPolicyScopePrototypeModel)
-        .matchResourceType("volume")
-        .build();
-
-      CreateBackupPolicyOptions createBackupPolicyOptions = new CreateBackupPolicyOptions.Builder()
-        .backupPolicyPrototype(backupPolicyPrototypeModel)
-        .build();
-
-      // Invoke operation
-      Response<BackupPolicy> response = service.createBackupPolicy(createBackupPolicyOptions).execute();
-      // Validate response
-      assertNotNull(response);
-      assertEquals(response.getStatusCode(), 201);
-
-      BackupPolicy backupPolicyResult = response.getResult();
-
-      assertNotNull(backupPolicyResult);
-    } catch (ServiceResponseException e) {
-        fail(String.format("Service returned status code %d: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
-    }
-  }
-
-  @Test(dependsOnMethods = { "testCreateBackupPolicy" })
-  public void testListBackupPolicyJobs() throws Exception {
-    try {
-      ListBackupPolicyJobsOptions listBackupPolicyJobsOptions = new ListBackupPolicyJobsOptions.Builder()
-        .backupPolicyId("testString")
-        .status("failed")
-        .backupPolicyPlanId("testString")
-        .start("testString")
-        .limit(Long.valueOf("10"))
-        .sort("name")
-        .sourceId("testString")
-        .targetSnapshotsId("testString")
-        .targetSnapshotsCrn("crn:v1:bluemix:public:is:us-south:a/123456::snapshot:r134-f6bfa329-0e36-433f-a3bb-0df632e79263")
-        .build();
-
-      // Invoke operation
-      Response<BackupPolicyJobCollection> response = service.listBackupPolicyJobs(listBackupPolicyJobsOptions).execute();
-      // Validate response
-      assertNotNull(response);
-      assertEquals(response.getStatusCode(), 200);
-
-      BackupPolicyJobCollection backupPolicyJobCollectionResult = response.getResult();
-
-      assertNotNull(backupPolicyJobCollectionResult);
-    } catch (ServiceResponseException e) {
-        fail(String.format("Service returned status code %d: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
-    }
-  }
-
-  @Test(dependsOnMethods = { "testListBackupPolicyJobs" })
-  public void testListBackupPolicyJobsWithPager() throws Exception {
-    try {
-      ListBackupPolicyJobsOptions options = new ListBackupPolicyJobsOptions.Builder()
-        .backupPolicyId("testString")
-        .status("failed")
-        .backupPolicyPlanId("testString")
-        .limit(Long.valueOf("10"))
-        .sort("name")
-        .sourceId("testString")
-        .targetSnapshotsId("testString")
-        .targetSnapshotsCrn("crn:v1:bluemix:public:is:us-south:a/123456::snapshot:r134-f6bfa329-0e36-433f-a3bb-0df632e79263")
-        .build();
-
-      // Test getNext().
-      List<BackupPolicyJob> allResults = new ArrayList<>();
-      BackupPolicyJobsPager pager = new BackupPolicyJobsPager(service, options);
-      while (pager.hasNext()) {
-        List<BackupPolicyJob> nextPage = pager.getNext();
-        assertNotNull(nextPage);
-        allResults.addAll(nextPage);
-      }
-      assertFalse(allResults.isEmpty());
-
-      // Test getAll();
-      pager = new BackupPolicyJobsPager(service, options);
-      List<BackupPolicyJob> allItems = pager.getAll();
-      assertNotNull(allItems);
-      assertFalse(allItems.isEmpty());
-
-      assertEquals(allItems.size(), allResults.size());
-      System.out.println(String.format("Retrieved a total of %d item(s) with pagination.", allResults.size()));
-    } catch (ServiceResponseException e) {
-        fail(String.format("Service returned status code %d: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
-    }
-  }
-
-  @Test(dependsOnMethods = { "testListBackupPolicyJobs" })
-  public void testGetBackupPolicyJob() throws Exception {
-    try {
-      GetBackupPolicyJobOptions getBackupPolicyJobOptions = new GetBackupPolicyJobOptions.Builder()
-        .backupPolicyId("testString")
-        .id("testString")
-        .build();
-
-      // Invoke operation
-      Response<BackupPolicyJob> response = service.getBackupPolicyJob(getBackupPolicyJobOptions).execute();
-      // Validate response
-      assertNotNull(response);
-      assertEquals(response.getStatusCode(), 200);
-
-      BackupPolicyJob backupPolicyJobResult = response.getResult();
-
-      assertNotNull(backupPolicyJobResult);
-    } catch (ServiceResponseException e) {
-        fail(String.format("Service returned status code %d: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
-    }
-  }
-
-  @Test(dependsOnMethods = { "testGetBackupPolicyJob" })
-  public void testListBackupPolicyPlans() throws Exception {
-    try {
-      ListBackupPolicyPlansOptions listBackupPolicyPlansOptions = new ListBackupPolicyPlansOptions.Builder()
-        .backupPolicyId("testString")
-        .name("testString")
-        .build();
-
-      // Invoke operation
-      Response<BackupPolicyPlanCollection> response = service.listBackupPolicyPlans(listBackupPolicyPlansOptions).execute();
-      // Validate response
-      assertNotNull(response);
-      assertEquals(response.getStatusCode(), 200);
-
-      BackupPolicyPlanCollection backupPolicyPlanCollectionResult = response.getResult();
-
-      assertNotNull(backupPolicyPlanCollectionResult);
-    } catch (ServiceResponseException e) {
-        fail(String.format("Service returned status code %d: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
-    }
-  }
-
-  @Test(dependsOnMethods = { "testListBackupPolicyPlans" })
-  public void testCreateBackupPolicyPlan() throws Exception {
-    try {
-      ZoneIdentityByName zoneIdentityModel = new ZoneIdentityByName.Builder()
-        .name("us-south-1")
-        .build();
-
-      BackupPolicyPlanClonePolicyPrototype backupPolicyPlanClonePolicyPrototypeModel = new BackupPolicyPlanClonePolicyPrototype.Builder()
-        .maxSnapshots(Long.valueOf("5"))
-        .zones(java.util.Arrays.asList(zoneIdentityModel))
-        .build();
-
-      BackupPolicyPlanDeletionTriggerPrototype backupPolicyPlanDeletionTriggerPrototypeModel = new BackupPolicyPlanDeletionTriggerPrototype.Builder()
-        .deleteAfter(Long.valueOf("20"))
-        .deleteOverCount(Long.valueOf("20"))
-        .build();
-
-      EncryptionKeyIdentityByCRN encryptionKeyIdentityModel = new EncryptionKeyIdentityByCRN.Builder()
-        .crn("crn:v1:bluemix:public:kms:us-south:a/123456:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179")
-        .build();
-
-      RegionIdentityByName regionIdentityModel = new RegionIdentityByName.Builder()
-        .name("us-south")
-        .build();
-
-      BackupPolicyPlanRemoteRegionPolicyPrototype backupPolicyPlanRemoteRegionPolicyPrototypeModel = new BackupPolicyPlanRemoteRegionPolicyPrototype.Builder()
-        .deleteOverCount(Long.valueOf("5"))
-        .encryptionKey(encryptionKeyIdentityModel)
-        .region(regionIdentityModel)
-        .build();
-
-      CreateBackupPolicyPlanOptions createBackupPolicyPlanOptions = new CreateBackupPolicyPlanOptions.Builder()
-        .backupPolicyId("testString")
-        .cronSpec("30 */2 * * 1-5")
-        .active(true)
-        .attachUserTags(java.util.Arrays.asList("my-daily-backup-plan"))
-        .clonePolicy(backupPolicyPlanClonePolicyPrototypeModel)
-        .copyUserTags(true)
-        .deletionTrigger(backupPolicyPlanDeletionTriggerPrototypeModel)
-        .name("my-policy-plan")
-        .remoteRegionPolicies(java.util.Arrays.asList(backupPolicyPlanRemoteRegionPolicyPrototypeModel))
-        .build();
-
-      // Invoke operation
-      Response<BackupPolicyPlan> response = service.createBackupPolicyPlan(createBackupPolicyPlanOptions).execute();
-      // Validate response
-      assertNotNull(response);
-      assertEquals(response.getStatusCode(), 201);
-
-      BackupPolicyPlan backupPolicyPlanResult = response.getResult();
-
-      assertNotNull(backupPolicyPlanResult);
-    } catch (ServiceResponseException e) {
-        fail(String.format("Service returned status code %d: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
-    }
-  }
-
-  @Test(dependsOnMethods = { "testCreateBackupPolicyPlan" })
-  public void testGetBackupPolicyPlan() throws Exception {
-    try {
-      GetBackupPolicyPlanOptions getBackupPolicyPlanOptions = new GetBackupPolicyPlanOptions.Builder()
-        .backupPolicyId("testString")
-        .id("testString")
-        .build();
-
-      // Invoke operation
-      Response<BackupPolicyPlan> response = service.getBackupPolicyPlan(getBackupPolicyPlanOptions).execute();
-      // Validate response
-      assertNotNull(response);
-      assertEquals(response.getStatusCode(), 200);
-
-      BackupPolicyPlan backupPolicyPlanResult = response.getResult();
-
-      assertNotNull(backupPolicyPlanResult);
-    } catch (ServiceResponseException e) {
-        fail(String.format("Service returned status code %d: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
-    }
-  }
-
-  @Test(dependsOnMethods = { "testGetBackupPolicyPlan" })
-  public void testUpdateBackupPolicyPlan() throws Exception {
-    try {
-      ZoneIdentityByName zoneIdentityModel = new ZoneIdentityByName.Builder()
-        .name("us-south-1")
-        .build();
-
-      BackupPolicyPlanClonePolicyPatch backupPolicyPlanClonePolicyPatchModel = new BackupPolicyPlanClonePolicyPatch.Builder()
-        .maxSnapshots(Long.valueOf("1"))
-        .zones(java.util.Arrays.asList(zoneIdentityModel))
-        .build();
-
-      BackupPolicyPlanDeletionTriggerPatch backupPolicyPlanDeletionTriggerPatchModel = new BackupPolicyPlanDeletionTriggerPatch.Builder()
-        .deleteAfter(Long.valueOf("20"))
-        .deleteOverCount(Long.valueOf("1"))
-        .build();
-
-      EncryptionKeyIdentityByCRN encryptionKeyIdentityModel = new EncryptionKeyIdentityByCRN.Builder()
-        .crn("crn:v1:bluemix:public:kms:us-south:a/123456:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179")
-        .build();
-
-      RegionIdentityByName regionIdentityModel = new RegionIdentityByName.Builder()
-        .name("us-south")
-        .build();
-
-      BackupPolicyPlanRemoteRegionPolicyPrototype backupPolicyPlanRemoteRegionPolicyPrototypeModel = new BackupPolicyPlanRemoteRegionPolicyPrototype.Builder()
-        .deleteOverCount(Long.valueOf("5"))
-        .encryptionKey(encryptionKeyIdentityModel)
-        .region(regionIdentityModel)
-        .build();
-
-      BackupPolicyPlanPatch backupPolicyPlanPatchModel = new BackupPolicyPlanPatch.Builder()
-        .active(true)
-        .attachUserTags(java.util.Arrays.asList("my-daily-backup-plan"))
-        .clonePolicy(backupPolicyPlanClonePolicyPatchModel)
-        .copyUserTags(true)
-        .cronSpec("30 */2 * * 1-5")
-        .deletionTrigger(backupPolicyPlanDeletionTriggerPatchModel)
-        .name("my-policy-plan")
-        .remoteRegionPolicies(java.util.Arrays.asList(backupPolicyPlanRemoteRegionPolicyPrototypeModel))
-        .build();
-      Map<String, Object> backupPolicyPlanPatchModelAsPatch = backupPolicyPlanPatchModel.asPatch();
-
-      UpdateBackupPolicyPlanOptions updateBackupPolicyPlanOptions = new UpdateBackupPolicyPlanOptions.Builder()
-        .backupPolicyId("testString")
-        .id("testString")
-        .backupPolicyPlanPatch(backupPolicyPlanPatchModelAsPatch)
-        .ifMatch("W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"")
-        .build();
-
-      // Invoke operation
-      Response<BackupPolicyPlan> response = service.updateBackupPolicyPlan(updateBackupPolicyPlanOptions).execute();
-      // Validate response
-      assertNotNull(response);
-      assertEquals(response.getStatusCode(), 200);
-
-      BackupPolicyPlan backupPolicyPlanResult = response.getResult();
-
-      assertNotNull(backupPolicyPlanResult);
-    } catch (ServiceResponseException e) {
-        fail(String.format("Service returned status code %d: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
-    }
-  }
-
-  @Test(dependsOnMethods = { "testUpdateBackupPolicyPlan" })
-  public void testGetBackupPolicy() throws Exception {
-    try {
-      GetBackupPolicyOptions getBackupPolicyOptions = new GetBackupPolicyOptions.Builder()
-        .id("testString")
-        .build();
-
-      // Invoke operation
-      Response<BackupPolicy> response = service.getBackupPolicy(getBackupPolicyOptions).execute();
-      // Validate response
-      assertNotNull(response);
-      assertEquals(response.getStatusCode(), 200);
-
-      BackupPolicy backupPolicyResult = response.getResult();
-
-      assertNotNull(backupPolicyResult);
-    } catch (ServiceResponseException e) {
-        fail(String.format("Service returned status code %d: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
-    }
-  }
-
-  @Test(dependsOnMethods = { "testGetBackupPolicy" })
-  public void testUpdateBackupPolicy() throws Exception {
-    try {
-      BackupPolicyPatch backupPolicyPatchModel = new BackupPolicyPatch.Builder()
-        .includedContent(java.util.Arrays.asList("data_volumes"))
-        .matchUserTags(java.util.Arrays.asList("my-daily-backup-policy"))
-        .name("my-backup-policy")
-        .build();
-      Map<String, Object> backupPolicyPatchModelAsPatch = backupPolicyPatchModel.asPatch();
-
-      UpdateBackupPolicyOptions updateBackupPolicyOptions = new UpdateBackupPolicyOptions.Builder()
-        .id("testString")
-        .backupPolicyPatch(backupPolicyPatchModelAsPatch)
-        .ifMatch("W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"")
-        .build();
-
-      // Invoke operation
-      Response<BackupPolicy> response = service.updateBackupPolicy(updateBackupPolicyOptions).execute();
-      // Validate response
-      assertNotNull(response);
-      assertEquals(response.getStatusCode(), 200);
-
-      BackupPolicy backupPolicyResult = response.getResult();
-
-      assertNotNull(backupPolicyResult);
-    } catch (ServiceResponseException e) {
-        fail(String.format("Service returned status code %d: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
-    }
-  }
-
-  @Test(dependsOnMethods = { "testUpdateBackupPolicy" })
   public void testListPlacementGroups() throws Exception {
     try {
       ListPlacementGroupsOptions listPlacementGroupsOptions = new ListPlacementGroupsOptions.Builder()
@@ -7116,7 +6713,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .resourceGroupId("testString")
         .name("testString")
         .vpcId("testString")
-        .vpcCrn("crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b")
+        .vpcCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b")
         .vpcName("my-vpc")
         .build();
 
@@ -7143,7 +6740,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .resourceGroupId("testString")
         .name("testString")
         .vpcId("testString")
-        .vpcCrn("crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b")
+        .vpcCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b")
         .vpcName("my-vpc")
         .build();
 
@@ -7175,7 +6772,7 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testCreateBareMetalServer() throws Exception {
     try {
       ImageIdentityById imageIdentityModel = new ImageIdentityById.Builder()
-        .id("72b27b5c-f4b0-48bb-b954-5becc7c1dcb8")
+        .id("r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8")
         .build();
 
       KeyIdentityById keyIdentityModel = new KeyIdentityById.Builder()
@@ -7201,7 +6798,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       VPCIdentityById vpcIdentityModel = new VPCIdentityById.Builder()
-        .id("4727d842-f94f-4a2d-824a-9bc9b02c523b")
+        .id("r006-4727d842-f94f-4a2d-824a-9bc9b02c523b")
         .build();
 
       ZoneIdentityByName zoneIdentityModel = new ZoneIdentityByName.Builder()
@@ -7243,14 +6840,14 @@ public class VpcIT extends SdkIntegrationTestBase {
       BareMetalServerNetworkAttachmentPrototypeBareMetalServerNetworkAttachmentByPCIPrototype bareMetalServerNetworkAttachmentPrototypeModel = new BareMetalServerNetworkAttachmentPrototypeBareMetalServerNetworkAttachmentByPCIPrototype.Builder()
         .name("my-bare-metal-server-network-attachment")
         .virtualNetworkInterface(bareMetalServerNetworkAttachmentPrototypeVirtualNetworkInterfaceModel)
-        .allowedVlans(java.util.Arrays.asList(Long.valueOf("4")))
+        .allowedVlans(java.util.Arrays.asList(Long.valueOf("100")))
         .interfaceType("pci")
         .build();
 
       BareMetalServerPrimaryNetworkAttachmentPrototypeBareMetalServerPrimaryNetworkAttachmentByPCIPrototype bareMetalServerPrimaryNetworkAttachmentPrototypeModel = new BareMetalServerPrimaryNetworkAttachmentPrototypeBareMetalServerPrimaryNetworkAttachmentByPCIPrototype.Builder()
         .name("my-bare-metal-server-network-attachment")
         .virtualNetworkInterface(bareMetalServerNetworkAttachmentPrototypeVirtualNetworkInterfaceModel)
-        .allowedVlans(java.util.Arrays.asList(Long.valueOf("4")))
+        .allowedVlans(java.util.Arrays.asList(Long.valueOf("100")))
         .interfaceType("pci")
         .build();
 
@@ -7482,7 +7079,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       BareMetalServerNetworkAttachmentPrototypeBareMetalServerNetworkAttachmentByPCIPrototype bareMetalServerNetworkAttachmentPrototypeModel = new BareMetalServerNetworkAttachmentPrototypeBareMetalServerNetworkAttachmentByPCIPrototype.Builder()
         .name("my-bare-metal-server-network-attachment")
         .virtualNetworkInterface(bareMetalServerNetworkAttachmentPrototypeVirtualNetworkInterfaceModel)
-        .allowedVlans(java.util.Arrays.asList(Long.valueOf("4")))
+        .allowedVlans(java.util.Arrays.asList(Long.valueOf("100")))
         .interfaceType("pci")
         .build();
 
@@ -8056,6 +7653,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .operatingSystemFamily("Ubuntu Server")
         .operatingSystemArchitecture("amd64")
         .zoneName("us-south-1")
+        .tag("testString")
         .build();
 
       // Invoke operation
@@ -8084,6 +7682,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .operatingSystemFamily("Ubuntu Server")
         .operatingSystemArchitecture("amd64")
         .zoneName("us-south-1")
+        .tag("testString")
         .build();
 
       // Test getNext().
@@ -8126,7 +7725,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       EncryptionKeyIdentityByCRN encryptionKeyIdentityModel = new EncryptionKeyIdentityByCRN.Builder()
-        .crn("crn:v1:bluemix:public:kms:us-south:a/123456:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179")
+        .crn("crn:v1:bluemix:public:kms:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179")
         .build();
 
       VolumePrototypeVolumeByCapacity volumePrototypeModel = new VolumePrototypeVolumeByCapacity.Builder()
@@ -8288,7 +7887,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       VolumeIdentityById volumeIdentityModel = new VolumeIdentityById.Builder()
-        .id("1a6b7274-678d-4dfb-8981-c71dd9d4daa5")
+        .id("r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5")
         .build();
 
       SnapshotPrototypeSnapshotConsistencyGroupContext snapshotPrototypeSnapshotConsistencyGroupContextModel = new SnapshotPrototypeSnapshotConsistencyGroupContext.Builder()
@@ -8385,9 +7984,9 @@ public class VpcIT extends SdkIntegrationTestBase {
         .resourceGroupId("testString")
         .name("testString")
         .sourceVolumeId("testString")
-        .sourceVolumeCrn("crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5")
+        .sourceVolumeCrn("crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5")
         .sourceImageId("testString")
-        .sourceImageCrn("crn:v1:bluemix:public:is:us-south:a/123456::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8")
+        .sourceImageCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8")
         .sort("name")
         .backupPolicyPlanId("testString")
         .copiesId("testString")
@@ -8400,7 +7999,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .sourceImageRemoteRegionName("us-south")
         .clonesZoneName("us-south-1")
         .snapshotConsistencyGroupId("testString")
-        .snapshotConsistencyGroupCrn("crn:v1:bluemix:public:is:us-south:a/123456::snapshot-consistency-group:r134-fa329f6b-0e36-433f-a3bb-0df632e79263")
+        .snapshotConsistencyGroupCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot-consistency-group:r134-fa329f6b-0e36-433f-a3bb-0df632e79263")
         .build();
 
       // Invoke operation
@@ -8427,9 +8026,9 @@ public class VpcIT extends SdkIntegrationTestBase {
         .resourceGroupId("testString")
         .name("testString")
         .sourceVolumeId("testString")
-        .sourceVolumeCrn("crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5")
+        .sourceVolumeCrn("crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5")
         .sourceImageId("testString")
-        .sourceImageCrn("crn:v1:bluemix:public:is:us-south:a/123456::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8")
+        .sourceImageCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8")
         .sort("name")
         .backupPolicyPlanId("testString")
         .copiesId("testString")
@@ -8442,7 +8041,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .sourceImageRemoteRegionName("us-south")
         .clonesZoneName("us-south-1")
         .snapshotConsistencyGroupId("testString")
-        .snapshotConsistencyGroupCrn("crn:v1:bluemix:public:is:us-south:a/123456::snapshot-consistency-group:r134-fa329f6b-0e36-433f-a3bb-0df632e79263")
+        .snapshotConsistencyGroupCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot-consistency-group:r134-fa329f6b-0e36-433f-a3bb-0df632e79263")
         .build();
 
       // Test getNext().
@@ -8485,7 +8084,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       VolumeIdentityById volumeIdentityModel = new VolumeIdentityById.Builder()
-        .id("1a6b7274-678d-4dfb-8981-c71dd9d4daa5")
+        .id("r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5")
         .build();
 
       SnapshotPrototypeSnapshotBySourceVolume snapshotPrototypeModel = new SnapshotPrototypeSnapshotBySourceVolume.Builder()
@@ -8840,7 +8439,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       EncryptionKeyIdentityByCRN encryptionKeyIdentityModel = new EncryptionKeyIdentityByCRN.Builder()
-        .crn("crn:v1:bluemix:public:kms:us-south:a/123456:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179")
+        .crn("crn:v1:bluemix:public:kms:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179")
         .build();
 
       ShareInitialOwner shareInitialOwnerModel = new ShareInitialOwner.Builder()
@@ -9161,6 +8760,457 @@ public class VpcIT extends SdkIntegrationTestBase {
   }
 
   @Test(dependsOnMethods = { "testGetShareSource" })
+  public void testListBackupPolicies() throws Exception {
+    try {
+      ListBackupPoliciesOptions listBackupPoliciesOptions = new ListBackupPoliciesOptions.Builder()
+        .start("testString")
+        .limit(Long.valueOf("10"))
+        .resourceGroupId("testString")
+        .name("testString")
+        .tag("testString")
+        .build();
+
+      // Invoke operation
+      Response<BackupPolicyCollection> response = service.listBackupPolicies(listBackupPoliciesOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      BackupPolicyCollection backupPolicyCollectionResult = response.getResult();
+
+      assertNotNull(backupPolicyCollectionResult);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testListBackupPolicies" })
+  public void testListBackupPoliciesWithPager() throws Exception {
+    try {
+      ListBackupPoliciesOptions options = new ListBackupPoliciesOptions.Builder()
+        .limit(Long.valueOf("10"))
+        .resourceGroupId("testString")
+        .name("testString")
+        .tag("testString")
+        .build();
+
+      // Test getNext().
+      List<BackupPolicy> allResults = new ArrayList<>();
+      BackupPoliciesPager pager = new BackupPoliciesPager(service, options);
+      while (pager.hasNext()) {
+        List<BackupPolicy> nextPage = pager.getNext();
+        assertNotNull(nextPage);
+        allResults.addAll(nextPage);
+      }
+      assertFalse(allResults.isEmpty());
+
+      // Test getAll();
+      pager = new BackupPoliciesPager(service, options);
+      List<BackupPolicy> allItems = pager.getAll();
+      assertNotNull(allItems);
+      assertFalse(allItems.isEmpty());
+
+      assertEquals(allItems.size(), allResults.size());
+      System.out.println(String.format("Retrieved a total of %d item(s) with pagination.", allResults.size()));
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testListBackupPolicies" })
+  public void testCreateBackupPolicy() throws Exception {
+    try {
+      ZoneIdentityByName zoneIdentityModel = new ZoneIdentityByName.Builder()
+        .name("us-south-1")
+        .build();
+
+      BackupPolicyPlanClonePolicyPrototype backupPolicyPlanClonePolicyPrototypeModel = new BackupPolicyPlanClonePolicyPrototype.Builder()
+        .maxSnapshots(Long.valueOf("5"))
+        .zones(java.util.Arrays.asList(zoneIdentityModel))
+        .build();
+
+      BackupPolicyPlanDeletionTriggerPrototype backupPolicyPlanDeletionTriggerPrototypeModel = new BackupPolicyPlanDeletionTriggerPrototype.Builder()
+        .deleteAfter(Long.valueOf("20"))
+        .deleteOverCount(Long.valueOf("20"))
+        .build();
+
+      EncryptionKeyIdentityByCRN encryptionKeyIdentityModel = new EncryptionKeyIdentityByCRN.Builder()
+        .crn("crn:v1:bluemix:public:kms:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179")
+        .build();
+
+      RegionIdentityByName regionIdentityModel = new RegionIdentityByName.Builder()
+        .name("us-south")
+        .build();
+
+      BackupPolicyPlanRemoteRegionPolicyPrototype backupPolicyPlanRemoteRegionPolicyPrototypeModel = new BackupPolicyPlanRemoteRegionPolicyPrototype.Builder()
+        .deleteOverCount(Long.valueOf("5"))
+        .encryptionKey(encryptionKeyIdentityModel)
+        .region(regionIdentityModel)
+        .build();
+
+      BackupPolicyPlanPrototype backupPolicyPlanPrototypeModel = new BackupPolicyPlanPrototype.Builder()
+        .active(true)
+        .attachUserTags(java.util.Arrays.asList("my-daily-backup-plan"))
+        .clonePolicy(backupPolicyPlanClonePolicyPrototypeModel)
+        .copyUserTags(true)
+        .cronSpec("30 */2 * * 1-5")
+        .deletionTrigger(backupPolicyPlanDeletionTriggerPrototypeModel)
+        .name("my-policy-plan")
+        .remoteRegionPolicies(java.util.Arrays.asList(backupPolicyPlanRemoteRegionPolicyPrototypeModel))
+        .build();
+
+      ResourceGroupIdentityById resourceGroupIdentityModel = new ResourceGroupIdentityById.Builder()
+        .id("fee82deba12e4c0fb69c3b09d1f12345")
+        .build();
+
+      BackupPolicyScopePrototypeEnterpriseIdentityEnterpriseIdentityByCRN backupPolicyScopePrototypeModel = new BackupPolicyScopePrototypeEnterpriseIdentityEnterpriseIdentityByCRN.Builder()
+        .crn("crn:v1:bluemix:public:enterprise::a/aa2432b1fa4d4ace891e9b80fc104e34::enterprise:ebc2b430240943458b9e91e1432cfcce")
+        .build();
+
+      BackupPolicyPrototypeBackupPolicyMatchResourceTypeVolumePrototype backupPolicyPrototypeModel = new BackupPolicyPrototypeBackupPolicyMatchResourceTypeVolumePrototype.Builder()
+        .matchUserTags(java.util.Arrays.asList("my-daily-backup-policy"))
+        .name("my-backup-policy")
+        .plans(java.util.Arrays.asList(backupPolicyPlanPrototypeModel))
+        .resourceGroup(resourceGroupIdentityModel)
+        .scope(backupPolicyScopePrototypeModel)
+        .matchResourceType("volume")
+        .build();
+
+      CreateBackupPolicyOptions createBackupPolicyOptions = new CreateBackupPolicyOptions.Builder()
+        .backupPolicyPrototype(backupPolicyPrototypeModel)
+        .build();
+
+      // Invoke operation
+      Response<BackupPolicy> response = service.createBackupPolicy(createBackupPolicyOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 201);
+
+      BackupPolicy backupPolicyResult = response.getResult();
+
+      assertNotNull(backupPolicyResult);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testCreateBackupPolicy" })
+  public void testListBackupPolicyJobs() throws Exception {
+    try {
+      ListBackupPolicyJobsOptions listBackupPolicyJobsOptions = new ListBackupPolicyJobsOptions.Builder()
+        .backupPolicyId("testString")
+        .status("failed")
+        .backupPolicyPlanId("testString")
+        .start("testString")
+        .limit(Long.valueOf("10"))
+        .sort("name")
+        .sourceId("testString")
+        .targetSnapshotsId("testString")
+        .targetSnapshotsCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r134-f6bfa329-0e36-433f-a3bb-0df632e79263")
+        .build();
+
+      // Invoke operation
+      Response<BackupPolicyJobCollection> response = service.listBackupPolicyJobs(listBackupPolicyJobsOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      BackupPolicyJobCollection backupPolicyJobCollectionResult = response.getResult();
+
+      assertNotNull(backupPolicyJobCollectionResult);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testListBackupPolicyJobs" })
+  public void testListBackupPolicyJobsWithPager() throws Exception {
+    try {
+      ListBackupPolicyJobsOptions options = new ListBackupPolicyJobsOptions.Builder()
+        .backupPolicyId("testString")
+        .status("failed")
+        .backupPolicyPlanId("testString")
+        .limit(Long.valueOf("10"))
+        .sort("name")
+        .sourceId("testString")
+        .targetSnapshotsId("testString")
+        .targetSnapshotsCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r134-f6bfa329-0e36-433f-a3bb-0df632e79263")
+        .build();
+
+      // Test getNext().
+      List<BackupPolicyJob> allResults = new ArrayList<>();
+      BackupPolicyJobsPager pager = new BackupPolicyJobsPager(service, options);
+      while (pager.hasNext()) {
+        List<BackupPolicyJob> nextPage = pager.getNext();
+        assertNotNull(nextPage);
+        allResults.addAll(nextPage);
+      }
+      assertFalse(allResults.isEmpty());
+
+      // Test getAll();
+      pager = new BackupPolicyJobsPager(service, options);
+      List<BackupPolicyJob> allItems = pager.getAll();
+      assertNotNull(allItems);
+      assertFalse(allItems.isEmpty());
+
+      assertEquals(allItems.size(), allResults.size());
+      System.out.println(String.format("Retrieved a total of %d item(s) with pagination.", allResults.size()));
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testListBackupPolicyJobs" })
+  public void testGetBackupPolicyJob() throws Exception {
+    try {
+      GetBackupPolicyJobOptions getBackupPolicyJobOptions = new GetBackupPolicyJobOptions.Builder()
+        .backupPolicyId("testString")
+        .id("testString")
+        .build();
+
+      // Invoke operation
+      Response<BackupPolicyJob> response = service.getBackupPolicyJob(getBackupPolicyJobOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      BackupPolicyJob backupPolicyJobResult = response.getResult();
+
+      assertNotNull(backupPolicyJobResult);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testGetBackupPolicyJob" })
+  public void testListBackupPolicyPlans() throws Exception {
+    try {
+      ListBackupPolicyPlansOptions listBackupPolicyPlansOptions = new ListBackupPolicyPlansOptions.Builder()
+        .backupPolicyId("testString")
+        .name("testString")
+        .build();
+
+      // Invoke operation
+      Response<BackupPolicyPlanCollection> response = service.listBackupPolicyPlans(listBackupPolicyPlansOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      BackupPolicyPlanCollection backupPolicyPlanCollectionResult = response.getResult();
+
+      assertNotNull(backupPolicyPlanCollectionResult);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testListBackupPolicyPlans" })
+  public void testCreateBackupPolicyPlan() throws Exception {
+    try {
+      ZoneIdentityByName zoneIdentityModel = new ZoneIdentityByName.Builder()
+        .name("us-south-1")
+        .build();
+
+      BackupPolicyPlanClonePolicyPrototype backupPolicyPlanClonePolicyPrototypeModel = new BackupPolicyPlanClonePolicyPrototype.Builder()
+        .maxSnapshots(Long.valueOf("5"))
+        .zones(java.util.Arrays.asList(zoneIdentityModel))
+        .build();
+
+      BackupPolicyPlanDeletionTriggerPrototype backupPolicyPlanDeletionTriggerPrototypeModel = new BackupPolicyPlanDeletionTriggerPrototype.Builder()
+        .deleteAfter(Long.valueOf("20"))
+        .deleteOverCount(Long.valueOf("20"))
+        .build();
+
+      EncryptionKeyIdentityByCRN encryptionKeyIdentityModel = new EncryptionKeyIdentityByCRN.Builder()
+        .crn("crn:v1:bluemix:public:kms:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179")
+        .build();
+
+      RegionIdentityByName regionIdentityModel = new RegionIdentityByName.Builder()
+        .name("us-south")
+        .build();
+
+      BackupPolicyPlanRemoteRegionPolicyPrototype backupPolicyPlanRemoteRegionPolicyPrototypeModel = new BackupPolicyPlanRemoteRegionPolicyPrototype.Builder()
+        .deleteOverCount(Long.valueOf("5"))
+        .encryptionKey(encryptionKeyIdentityModel)
+        .region(regionIdentityModel)
+        .build();
+
+      CreateBackupPolicyPlanOptions createBackupPolicyPlanOptions = new CreateBackupPolicyPlanOptions.Builder()
+        .backupPolicyId("testString")
+        .cronSpec("30 */2 * * 1-5")
+        .active(true)
+        .attachUserTags(java.util.Arrays.asList("my-daily-backup-plan"))
+        .clonePolicy(backupPolicyPlanClonePolicyPrototypeModel)
+        .copyUserTags(true)
+        .deletionTrigger(backupPolicyPlanDeletionTriggerPrototypeModel)
+        .name("my-policy-plan")
+        .remoteRegionPolicies(java.util.Arrays.asList(backupPolicyPlanRemoteRegionPolicyPrototypeModel))
+        .build();
+
+      // Invoke operation
+      Response<BackupPolicyPlan> response = service.createBackupPolicyPlan(createBackupPolicyPlanOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 201);
+
+      BackupPolicyPlan backupPolicyPlanResult = response.getResult();
+
+      assertNotNull(backupPolicyPlanResult);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testCreateBackupPolicyPlan" })
+  public void testGetBackupPolicyPlan() throws Exception {
+    try {
+      GetBackupPolicyPlanOptions getBackupPolicyPlanOptions = new GetBackupPolicyPlanOptions.Builder()
+        .backupPolicyId("testString")
+        .id("testString")
+        .build();
+
+      // Invoke operation
+      Response<BackupPolicyPlan> response = service.getBackupPolicyPlan(getBackupPolicyPlanOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      BackupPolicyPlan backupPolicyPlanResult = response.getResult();
+
+      assertNotNull(backupPolicyPlanResult);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testGetBackupPolicyPlan" })
+  public void testUpdateBackupPolicyPlan() throws Exception {
+    try {
+      ZoneIdentityByName zoneIdentityModel = new ZoneIdentityByName.Builder()
+        .name("us-south-1")
+        .build();
+
+      BackupPolicyPlanClonePolicyPatch backupPolicyPlanClonePolicyPatchModel = new BackupPolicyPlanClonePolicyPatch.Builder()
+        .maxSnapshots(Long.valueOf("1"))
+        .zones(java.util.Arrays.asList(zoneIdentityModel))
+        .build();
+
+      BackupPolicyPlanDeletionTriggerPatch backupPolicyPlanDeletionTriggerPatchModel = new BackupPolicyPlanDeletionTriggerPatch.Builder()
+        .deleteAfter(Long.valueOf("20"))
+        .deleteOverCount(Long.valueOf("1"))
+        .build();
+
+      EncryptionKeyIdentityByCRN encryptionKeyIdentityModel = new EncryptionKeyIdentityByCRN.Builder()
+        .crn("crn:v1:bluemix:public:kms:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179")
+        .build();
+
+      RegionIdentityByName regionIdentityModel = new RegionIdentityByName.Builder()
+        .name("us-south")
+        .build();
+
+      BackupPolicyPlanRemoteRegionPolicyPrototype backupPolicyPlanRemoteRegionPolicyPrototypeModel = new BackupPolicyPlanRemoteRegionPolicyPrototype.Builder()
+        .deleteOverCount(Long.valueOf("5"))
+        .encryptionKey(encryptionKeyIdentityModel)
+        .region(regionIdentityModel)
+        .build();
+
+      BackupPolicyPlanPatch backupPolicyPlanPatchModel = new BackupPolicyPlanPatch.Builder()
+        .active(true)
+        .attachUserTags(java.util.Arrays.asList("my-daily-backup-plan"))
+        .clonePolicy(backupPolicyPlanClonePolicyPatchModel)
+        .copyUserTags(true)
+        .cronSpec("30 */2 * * 1-5")
+        .deletionTrigger(backupPolicyPlanDeletionTriggerPatchModel)
+        .name("my-policy-plan")
+        .remoteRegionPolicies(java.util.Arrays.asList(backupPolicyPlanRemoteRegionPolicyPrototypeModel))
+        .build();
+      Map<String, Object> backupPolicyPlanPatchModelAsPatch = backupPolicyPlanPatchModel.asPatch();
+
+      UpdateBackupPolicyPlanOptions updateBackupPolicyPlanOptions = new UpdateBackupPolicyPlanOptions.Builder()
+        .backupPolicyId("testString")
+        .id("testString")
+        .backupPolicyPlanPatch(backupPolicyPlanPatchModelAsPatch)
+        .ifMatch("W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"")
+        .build();
+
+      // Invoke operation
+      Response<BackupPolicyPlan> response = service.updateBackupPolicyPlan(updateBackupPolicyPlanOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      BackupPolicyPlan backupPolicyPlanResult = response.getResult();
+
+      assertNotNull(backupPolicyPlanResult);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testUpdateBackupPolicyPlan" })
+  public void testGetBackupPolicy() throws Exception {
+    try {
+      GetBackupPolicyOptions getBackupPolicyOptions = new GetBackupPolicyOptions.Builder()
+        .id("testString")
+        .build();
+
+      // Invoke operation
+      Response<BackupPolicy> response = service.getBackupPolicy(getBackupPolicyOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      BackupPolicy backupPolicyResult = response.getResult();
+
+      assertNotNull(backupPolicyResult);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testGetBackupPolicy" })
+  public void testUpdateBackupPolicy() throws Exception {
+    try {
+      BackupPolicyPatch backupPolicyPatchModel = new BackupPolicyPatch.Builder()
+        .includedContent(java.util.Arrays.asList("data_volumes"))
+        .matchUserTags(java.util.Arrays.asList("my-daily-backup-policy"))
+        .name("my-backup-policy")
+        .build();
+      Map<String, Object> backupPolicyPatchModelAsPatch = backupPolicyPatchModel.asPatch();
+
+      UpdateBackupPolicyOptions updateBackupPolicyOptions = new UpdateBackupPolicyOptions.Builder()
+        .id("testString")
+        .backupPolicyPatch(backupPolicyPatchModelAsPatch)
+        .ifMatch("W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"")
+        .build();
+
+      // Invoke operation
+      Response<BackupPolicy> response = service.updateBackupPolicy(updateBackupPolicyOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      BackupPolicy backupPolicyResult = response.getResult();
+
+      assertNotNull(backupPolicyResult);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testUpdateBackupPolicy" })
   public void testListRegions() throws Exception {
     try {
       ListRegionsOptions listRegionsOptions = new ListRegionsOptions();
@@ -9306,16 +9356,12 @@ public class VpcIT extends SdkIntegrationTestBase {
   @Test(dependsOnMethods = { "testListVirtualNetworkInterfaces" })
   public void testCreateVirtualNetworkInterface() throws Exception {
     try {
-      VirtualNetworkInterfaceIPPrototypeReservedIPPrototypeVirtualNetworkInterfaceIPsContext virtualNetworkInterfaceIpPrototypeModel = new VirtualNetworkInterfaceIPPrototypeReservedIPPrototypeVirtualNetworkInterfaceIPsContext.Builder()
-        .address("10.0.0.5")
-        .autoDelete(false)
-        .name("my-reserved-ip")
+      VirtualNetworkInterfaceIPPrototypeReservedIPIdentityVirtualNetworkInterfaceIPsContextById virtualNetworkInterfaceIpPrototypeModel = new VirtualNetworkInterfaceIPPrototypeReservedIPIdentityVirtualNetworkInterfaceIPsContextById.Builder()
+        .id("0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb")
         .build();
 
-      VirtualNetworkInterfacePrimaryIPPrototypeReservedIPPrototypeVirtualNetworkInterfacePrimaryIPContext virtualNetworkInterfacePrimaryIpPrototypeModel = new VirtualNetworkInterfacePrimaryIPPrototypeReservedIPPrototypeVirtualNetworkInterfacePrimaryIPContext.Builder()
-        .address("10.0.0.5")
-        .autoDelete(false)
-        .name("my-reserved-ip")
+      VirtualNetworkInterfacePrimaryIPPrototypeReservedIPIdentityVirtualNetworkInterfacePrimaryIPContextById virtualNetworkInterfacePrimaryIpPrototypeModel = new VirtualNetworkInterfacePrimaryIPPrototypeReservedIPIdentityVirtualNetworkInterfacePrimaryIPContextById.Builder()
+        .id("0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb")
         .build();
 
       ResourceGroupIdentityById resourceGroupIdentityModel = new ResourceGroupIdentityById.Builder()
@@ -9323,15 +9369,15 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       SecurityGroupIdentityById securityGroupIdentityModel = new SecurityGroupIdentityById.Builder()
-        .id("be5df5ca-12a0-494b-907e-aa6ec2bfa271")
+        .id("r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271")
         .build();
 
       SubnetIdentityById subnetIdentityModel = new SubnetIdentityById.Builder()
-        .id("7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
+        .id("69e55145-cc7d-4d8e-9e1f-cc3fb60b1793")
         .build();
 
       CreateVirtualNetworkInterfaceOptions createVirtualNetworkInterfaceOptions = new CreateVirtualNetworkInterfaceOptions.Builder()
-        .allowIpSpoofing(true)
+        .allowIpSpoofing(false)
         .autoDelete(false)
         .enableInfrastructureNat(true)
         .ips(java.util.Arrays.asList(virtualNetworkInterfaceIpPrototypeModel))
@@ -9678,7 +9724,7 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testCreatePublicGateway() throws Exception {
     try {
       VPCIdentityById vpcIdentityModel = new VPCIdentityById.Builder()
-        .id("4727d842-f94f-4a2d-824a-9bc9b02c523b")
+        .id("r006-4727d842-f94f-4a2d-824a-9bc9b02c523b")
         .build();
 
       ZoneIdentityByName zoneIdentityModel = new ZoneIdentityByName.Builder()
@@ -9775,7 +9821,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .resourceGroupId("testString")
         .sort("name")
         .targetId("testString")
-        .targetCrn("crn:v1:bluemix:public:is:us-south:a/123456::load-balancer:dd754295-e9e0-4c9d-bf6c-58fbc59e5727")
+        .targetCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::load-balancer:dd754295-e9e0-4c9d-bf6c-58fbc59e5727")
         .targetName("my-resource")
         .targetResourceType("testString")
         .build();
@@ -9803,7 +9849,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .resourceGroupId("testString")
         .sort("name")
         .targetId("testString")
-        .targetCrn("crn:v1:bluemix:public:is:us-south:a/123456::load-balancer:dd754295-e9e0-4c9d-bf6c-58fbc59e5727")
+        .targetCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::load-balancer:dd754295-e9e0-4c9d-bf6c-58fbc59e5727")
         .targetName("my-resource")
         .targetResourceType("testString")
         .build();
@@ -10256,7 +10302,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .limit(Long.valueOf("10"))
         .resourceGroupId("testString")
         .vpcId("testString")
-        .vpcCrn("crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b")
+        .vpcCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b")
         .vpcName("my-vpc")
         .build();
 
@@ -10282,7 +10328,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .limit(Long.valueOf("10"))
         .resourceGroupId("testString")
         .vpcId("testString")
-        .vpcCrn("crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b")
+        .vpcCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b")
         .vpcName("my-vpc")
         .build();
 
@@ -10314,11 +10360,15 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testCreateSecurityGroup() throws Exception {
     try {
       VPCIdentityById vpcIdentityModel = new VPCIdentityById.Builder()
-        .id("4727d842-f94f-4a2d-824a-9bc9b02c523b")
+        .id("r006-4727d842-f94f-4a2d-824a-9bc9b02c523b")
         .build();
 
       ResourceGroupIdentityById resourceGroupIdentityModel = new ResourceGroupIdentityById.Builder()
         .id("fee82deba12e4c0fb69c3b09d1f12345")
+        .build();
+
+      SecurityGroupRuleLocalPrototypeIP securityGroupRuleLocalPrototypeModel = new SecurityGroupRuleLocalPrototypeIP.Builder()
+        .address("192.168.3.4")
         .build();
 
       SecurityGroupRuleRemotePrototypeIP securityGroupRuleRemotePrototypeModel = new SecurityGroupRuleRemotePrototypeIP.Builder()
@@ -10328,6 +10378,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       SecurityGroupRulePrototypeSecurityGroupRuleProtocolAll securityGroupRulePrototypeModel = new SecurityGroupRulePrototypeSecurityGroupRuleProtocolAll.Builder()
         .direction("inbound")
         .ipVersion("ipv4")
+        .local(securityGroupRuleLocalPrototypeModel)
         .protocol("all")
         .remote(securityGroupRuleRemotePrototypeModel)
         .build();
@@ -10429,6 +10480,10 @@ public class VpcIT extends SdkIntegrationTestBase {
   @Test(dependsOnMethods = { "testListSecurityGroupRules" })
   public void testCreateSecurityGroupRule() throws Exception {
     try {
+      SecurityGroupRuleLocalPrototypeIP securityGroupRuleLocalPrototypeModel = new SecurityGroupRuleLocalPrototypeIP.Builder()
+        .address("192.168.3.4")
+        .build();
+
       SecurityGroupRuleRemotePrototypeIP securityGroupRuleRemotePrototypeModel = new SecurityGroupRuleRemotePrototypeIP.Builder()
         .address("192.168.3.4")
         .build();
@@ -10436,6 +10491,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       SecurityGroupRulePrototypeSecurityGroupRuleProtocolAll securityGroupRulePrototypeModel = new SecurityGroupRulePrototypeSecurityGroupRuleProtocolAll.Builder()
         .direction("inbound")
         .ipVersion("ipv4")
+        .local(securityGroupRuleLocalPrototypeModel)
         .protocol("all")
         .remote(securityGroupRuleRemotePrototypeModel)
         .build();
@@ -10486,6 +10542,10 @@ public class VpcIT extends SdkIntegrationTestBase {
   @Test(dependsOnMethods = { "testGetSecurityGroupRule" })
   public void testUpdateSecurityGroupRule() throws Exception {
     try {
+      SecurityGroupRuleLocalPatchIP securityGroupRuleLocalPatchModel = new SecurityGroupRuleLocalPatchIP.Builder()
+        .address("192.168.3.4")
+        .build();
+
       SecurityGroupRuleRemotePatchIP securityGroupRuleRemotePatchModel = new SecurityGroupRuleRemotePatchIP.Builder()
         .address("192.168.3.4")
         .build();
@@ -10494,6 +10554,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .code(Long.valueOf("0"))
         .direction("inbound")
         .ipVersion("ipv4")
+        .local(securityGroupRuleLocalPatchModel)
         .portMax(Long.valueOf("22"))
         .portMin(Long.valueOf("22"))
         .remote(securityGroupRuleRemotePatchModel)
@@ -11016,7 +11077,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       SubnetIdentityById subnetIdentityModel = new SubnetIdentityById.Builder()
-        .id("7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
+        .id("0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
         .build();
 
       VPNGatewayPrototypeVPNGatewayRouteModePrototype vpnGatewayPrototypeModel = new VPNGatewayPrototypeVPNGatewayRouteModePrototype.Builder()
@@ -11135,14 +11196,30 @@ public class VpcIT extends SdkIntegrationTestBase {
         .id("ddf51bec-3424-11e8-b467-0ed5f89f718b")
         .build();
 
+      VPNGatewayConnectionIKEIdentityPrototypeVPNGatewayConnectionIKEIdentityFQDN vpnGatewayConnectionIkeIdentityPrototypeModel = new VPNGatewayConnectionIKEIdentityPrototypeVPNGatewayConnectionIKEIdentityFQDN.Builder()
+        .type("fqdn")
+        .value("my-service.example.com")
+        .build();
+
+      VPNGatewayConnectionStaticRouteModeLocalPrototype vpnGatewayConnectionStaticRouteModeLocalPrototypeModel = new VPNGatewayConnectionStaticRouteModeLocalPrototype.Builder()
+        .ikeIdentities(java.util.Arrays.asList(vpnGatewayConnectionIkeIdentityPrototypeModel))
+        .build();
+
+      VPNGatewayConnectionStaticRouteModePeerPrototypeVPNGatewayConnectionPeerByAddress vpnGatewayConnectionStaticRouteModePeerPrototypeModel = new VPNGatewayConnectionStaticRouteModePeerPrototypeVPNGatewayConnectionPeerByAddress.Builder()
+        .ikeIdentity(vpnGatewayConnectionIkeIdentityPrototypeModel)
+        .address("169.21.50.5")
+        .build();
+
       VPNGatewayConnectionPrototypeVPNGatewayConnectionStaticRouteModePrototype vpnGatewayConnectionPrototypeModel = new VPNGatewayConnectionPrototypeVPNGatewayConnectionStaticRouteModePrototype.Builder()
         .adminStateUp(true)
         .deadPeerDetection(vpnGatewayConnectionDpdPrototypeModel)
+        .establishMode("bidirectional")
         .ikePolicy(vpnGatewayConnectionIkePolicyPrototypeModel)
         .ipsecPolicy(vpnGatewayConnectionIPsecPolicyPrototypeModel)
         .name("my-vpn-connection")
-        .peerAddress("169.21.50.5")
         .psk("lkj14b1oi0alcniejkso")
+        .local(vpnGatewayConnectionStaticRouteModeLocalPrototypeModel)
+        .peer(vpnGatewayConnectionStaticRouteModePeerPrototypeModel)
         .routingProtocol("none")
         .build();
 
@@ -11206,13 +11283,18 @@ public class VpcIT extends SdkIntegrationTestBase {
         .id("ddf51bec-3424-11e8-b467-0ed5f89f718b")
         .build();
 
+      VPNGatewayConnectionPeerPatchVPNGatewayConnectionPolicyModePeerPatchVPNGatewayConnectionPolicyModePeerPatchVPNGatewayConnectionPeerAddressPatch vpnGatewayConnectionPeerPatchModel = new VPNGatewayConnectionPeerPatchVPNGatewayConnectionPolicyModePeerPatchVPNGatewayConnectionPolicyModePeerPatchVPNGatewayConnectionPeerAddressPatch.Builder()
+        .address("169.21.50.5")
+        .build();
+
       VPNGatewayConnectionPatch vpnGatewayConnectionPatchModel = new VPNGatewayConnectionPatch.Builder()
         .adminStateUp(true)
         .deadPeerDetection(vpnGatewayConnectionDpdPatchModel)
+        .establishMode("bidirectional")
         .ikePolicy(vpnGatewayConnectionIkePolicyPatchModel)
         .ipsecPolicy(vpnGatewayConnectionIPsecPolicyPatchModel)
         .name("my-vpn-connection")
-        .peerAddress("169.21.50.5")
+        .peer(vpnGatewayConnectionPeerPatchModel)
         .psk("lkj14b1oi0alcniejkso")
         .routingProtocol("none")
         .build();
@@ -11240,40 +11322,39 @@ public class VpcIT extends SdkIntegrationTestBase {
   }
 
   @Test(dependsOnMethods = { "testUpdateVpnGatewayConnection" })
-  public void testListVpnGatewayConnectionLocalCidrs() throws Exception {
+  public void testListVpnGatewayConnectionsLocalCidrs() throws Exception {
     try {
-      ListVpnGatewayConnectionLocalCidrsOptions listVpnGatewayConnectionLocalCidrsOptions = new ListVpnGatewayConnectionLocalCidrsOptions.Builder()
+      ListVpnGatewayConnectionsLocalCidrsOptions listVpnGatewayConnectionsLocalCidrsOptions = new ListVpnGatewayConnectionsLocalCidrsOptions.Builder()
         .vpnGatewayId("testString")
         .id("testString")
         .build();
 
       // Invoke operation
-      Response<VPNGatewayConnectionLocalCIDRs> response = service.listVpnGatewayConnectionLocalCidrs(listVpnGatewayConnectionLocalCidrsOptions).execute();
+      Response<VPNGatewayConnectionCIDRs> response = service.listVpnGatewayConnectionsLocalCidrs(listVpnGatewayConnectionsLocalCidrsOptions).execute();
       // Validate response
       assertNotNull(response);
       assertEquals(response.getStatusCode(), 200);
 
-      VPNGatewayConnectionLocalCIDRs vpnGatewayConnectionLocalCidRsResult = response.getResult();
+      VPNGatewayConnectionCIDRs vpnGatewayConnectionCidRsResult = response.getResult();
 
-      assertNotNull(vpnGatewayConnectionLocalCidRsResult);
+      assertNotNull(vpnGatewayConnectionCidRsResult);
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
     }
   }
 
-  @Test(dependsOnMethods = { "testListVpnGatewayConnectionLocalCidrs" })
-  public void testCheckVpnGatewayConnectionLocalCidr() throws Exception {
+  @Test(dependsOnMethods = { "testListVpnGatewayConnectionsLocalCidrs" })
+  public void testCheckVpnGatewayConnectionsLocalCidr() throws Exception {
     try {
-      CheckVpnGatewayConnectionLocalCidrOptions checkVpnGatewayConnectionLocalCidrOptions = new CheckVpnGatewayConnectionLocalCidrOptions.Builder()
+      CheckVpnGatewayConnectionsLocalCidrOptions checkVpnGatewayConnectionsLocalCidrOptions = new CheckVpnGatewayConnectionsLocalCidrOptions.Builder()
         .vpnGatewayId("testString")
         .id("testString")
-        .cidrPrefix("testString")
-        .prefixLength("testString")
+        .cidr("192.168.1.0/24")
         .build();
 
       // Invoke operation
-      Response<Void> response = service.checkVpnGatewayConnectionLocalCidr(checkVpnGatewayConnectionLocalCidrOptions).execute();
+      Response<Void> response = service.checkVpnGatewayConnectionsLocalCidr(checkVpnGatewayConnectionsLocalCidrOptions).execute();
       // Validate response
       assertNotNull(response);
       assertEquals(response.getStatusCode(), 204);
@@ -11283,62 +11364,60 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test(dependsOnMethods = { "testCheckVpnGatewayConnectionLocalCidr" })
-  public void testAddVpnGatewayConnectionLocalCidr() throws Exception {
+  @Test(dependsOnMethods = { "testCheckVpnGatewayConnectionsLocalCidr" })
+  public void testAddVpnGatewayConnectionsLocalCidr() throws Exception {
     try {
-      AddVpnGatewayConnectionLocalCidrOptions addVpnGatewayConnectionLocalCidrOptions = new AddVpnGatewayConnectionLocalCidrOptions.Builder()
+      AddVpnGatewayConnectionsLocalCidrOptions addVpnGatewayConnectionsLocalCidrOptions = new AddVpnGatewayConnectionsLocalCidrOptions.Builder()
         .vpnGatewayId("testString")
         .id("testString")
-        .cidrPrefix("testString")
-        .prefixLength("testString")
+        .cidr("192.168.1.0/24")
         .build();
 
       // Invoke operation
-      Response<Void> response = service.addVpnGatewayConnectionLocalCidr(addVpnGatewayConnectionLocalCidrOptions).execute();
+      Response<Void> response = service.addVpnGatewayConnectionsLocalCidr(addVpnGatewayConnectionsLocalCidrOptions).execute();
       // Validate response
       assertNotNull(response);
-      assertEquals(response.getStatusCode(), 204);
+      assertEquals(response.getStatusCode(), 201);
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
     }
   }
 
-  @Test(dependsOnMethods = { "testAddVpnGatewayConnectionLocalCidr" })
-  public void testListVpnGatewayConnectionPeerCidrs() throws Exception {
+  @Test(dependsOnMethods = { "testAddVpnGatewayConnectionsLocalCidr" })
+  public void testListVpnGatewayConnectionsPeerCidrs() throws Exception {
     try {
-      ListVpnGatewayConnectionPeerCidrsOptions listVpnGatewayConnectionPeerCidrsOptions = new ListVpnGatewayConnectionPeerCidrsOptions.Builder()
+      ListVpnGatewayConnectionsPeerCidrsOptions listVpnGatewayConnectionsPeerCidrsOptions = new ListVpnGatewayConnectionsPeerCidrsOptions.Builder()
         .vpnGatewayId("testString")
         .id("testString")
         .build();
 
       // Invoke operation
-      Response<VPNGatewayConnectionPeerCIDRs> response = service.listVpnGatewayConnectionPeerCidrs(listVpnGatewayConnectionPeerCidrsOptions).execute();
+      Response<VPNGatewayConnectionCIDRs> response = service.listVpnGatewayConnectionsPeerCidrs(listVpnGatewayConnectionsPeerCidrsOptions).execute();
       // Validate response
       assertNotNull(response);
       assertEquals(response.getStatusCode(), 200);
 
-      VPNGatewayConnectionPeerCIDRs vpnGatewayConnectionPeerCidRsResult = response.getResult();
+      VPNGatewayConnectionCIDRs vpnGatewayConnectionCidRsResult = response.getResult();
 
-      assertNotNull(vpnGatewayConnectionPeerCidRsResult);
+      assertNotNull(vpnGatewayConnectionCidRsResult);
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
     }
   }
 
-  @Test(dependsOnMethods = { "testListVpnGatewayConnectionPeerCidrs" })
-  public void testCheckVpnGatewayConnectionPeerCidr() throws Exception {
+  @Test(dependsOnMethods = { "testListVpnGatewayConnectionsPeerCidrs" })
+  public void testCheckVpnGatewayConnectionsPeerCidr() throws Exception {
     try {
-      CheckVpnGatewayConnectionPeerCidrOptions checkVpnGatewayConnectionPeerCidrOptions = new CheckVpnGatewayConnectionPeerCidrOptions.Builder()
+      CheckVpnGatewayConnectionsPeerCidrOptions checkVpnGatewayConnectionsPeerCidrOptions = new CheckVpnGatewayConnectionsPeerCidrOptions.Builder()
         .vpnGatewayId("testString")
         .id("testString")
-        .cidrPrefix("testString")
-        .prefixLength("testString")
+        .cidr("192.168.1.0/24")
         .build();
 
       // Invoke operation
-      Response<Void> response = service.checkVpnGatewayConnectionPeerCidr(checkVpnGatewayConnectionPeerCidrOptions).execute();
+      Response<Void> response = service.checkVpnGatewayConnectionsPeerCidr(checkVpnGatewayConnectionsPeerCidrOptions).execute();
       // Validate response
       assertNotNull(response);
       assertEquals(response.getStatusCode(), 204);
@@ -11348,28 +11427,27 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test(dependsOnMethods = { "testCheckVpnGatewayConnectionPeerCidr" })
-  public void testAddVpnGatewayConnectionPeerCidr() throws Exception {
+  @Test(dependsOnMethods = { "testCheckVpnGatewayConnectionsPeerCidr" })
+  public void testAddVpnGatewayConnectionsPeerCidr() throws Exception {
     try {
-      AddVpnGatewayConnectionPeerCidrOptions addVpnGatewayConnectionPeerCidrOptions = new AddVpnGatewayConnectionPeerCidrOptions.Builder()
+      AddVpnGatewayConnectionsPeerCidrOptions addVpnGatewayConnectionsPeerCidrOptions = new AddVpnGatewayConnectionsPeerCidrOptions.Builder()
         .vpnGatewayId("testString")
         .id("testString")
-        .cidrPrefix("testString")
-        .prefixLength("testString")
+        .cidr("192.168.1.0/24")
         .build();
 
       // Invoke operation
-      Response<Void> response = service.addVpnGatewayConnectionPeerCidr(addVpnGatewayConnectionPeerCidrOptions).execute();
+      Response<Void> response = service.addVpnGatewayConnectionsPeerCidr(addVpnGatewayConnectionsPeerCidrOptions).execute();
       // Validate response
       assertNotNull(response);
-      assertEquals(response.getStatusCode(), 204);
+      assertEquals(response.getStatusCode(), 201);
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
     }
   }
 
-  @Test(dependsOnMethods = { "testAddVpnGatewayConnectionPeerCidr" })
+  @Test(dependsOnMethods = { "testAddVpnGatewayConnectionsPeerCidr" })
   public void testListVpnServers() throws Exception {
     try {
       ListVpnServersOptions listVpnServersOptions = new ListVpnServersOptions.Builder()
@@ -11433,7 +11511,7 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testCreateVpnServer() throws Exception {
     try {
       CertificateInstanceIdentityByCRN certificateInstanceIdentityModel = new CertificateInstanceIdentityByCRN.Builder()
-        .crn("crn:v1:bluemix:public:secrets-manager:us-south:a/123456:36fa422d-080d-4d83-8d2d-86851b4001df:secret:2e786aab-42fa-63ed-14f8-d66d552f4dd5")
+        .crn("crn:v1:bluemix:public:secrets-manager:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:36fa422d-080d-4d83-8d2d-86851b4001df:secret:2e786aab-42fa-63ed-14f8-d66d552f4dd5")
         .build();
 
       VPNServerAuthenticationByUsernameIdProviderByIAM vpnServerAuthenticationByUsernameIdProviderModel = new VPNServerAuthenticationByUsernameIdProviderByIAM.Builder()
@@ -11446,7 +11524,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       SubnetIdentityById subnetIdentityModel = new SubnetIdentityById.Builder()
-        .id("7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
+        .id("0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
         .build();
 
       IP ipModel = new IP.Builder()
@@ -11517,7 +11595,7 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testUpdateVpnServer() throws Exception {
     try {
       CertificateInstanceIdentityByCRN certificateInstanceIdentityModel = new CertificateInstanceIdentityByCRN.Builder()
-        .crn("crn:v1:bluemix:public:secrets-manager:us-south:a/123456:36fa422d-080d-4d83-8d2d-86851b4001df:secret:2e786aab-42fa-63ed-14f8-d66d552f4dd5")
+        .crn("crn:v1:bluemix:public:secrets-manager:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:36fa422d-080d-4d83-8d2d-86851b4001df:secret:2e786aab-42fa-63ed-14f8-d66d552f4dd5")
         .build();
 
       VPNServerAuthenticationByUsernameIdProviderByIAM vpnServerAuthenticationByUsernameIdProviderModel = new VPNServerAuthenticationByUsernameIdProviderByIAM.Builder()
@@ -11534,7 +11612,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       SubnetIdentityById subnetIdentityModel = new SubnetIdentityById.Builder()
-        .id("7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
+        .id("0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
         .build();
 
       VPNServerPatch vpnServerPatchModel = new VPNServerPatch.Builder()
@@ -11963,11 +12041,11 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testCreateLoadBalancer() throws Exception {
     try {
       SubnetIdentityById subnetIdentityModel = new SubnetIdentityById.Builder()
-        .id("7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
+        .id("0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
         .build();
 
       DNSInstanceIdentityByCRN dnsInstanceIdentityModel = new DNSInstanceIdentityByCRN.Builder()
-        .crn("crn:v1:bluemix:public:dns-svcs:global:a/123456:6860c359-b2e2-46fa-a944-b38c28201c6e")
+        .crn("crn:v1:bluemix:public:dns-svcs:global:a/aa2432b1fa4d4ace891e9b80fc104e34:6860c359-b2e2-46fa-a944-b38c28201c6e")
         .build();
 
       DNSZoneIdentityById dnsZoneIdentityModel = new DNSZoneIdentityById.Builder()
@@ -11980,7 +12058,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       CertificateInstanceIdentityByCRN certificateInstanceIdentityModel = new CertificateInstanceIdentityByCRN.Builder()
-        .crn("crn:v1:bluemix:public:secrets-manager:us-south:a/123456:36fa422d-080d-4d83-8d2d-86851b4001df:secret:2e786aab-42fa-63ed-14f8-d66d552f4dd5")
+        .crn("crn:v1:bluemix:public:secrets-manager:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:36fa422d-080d-4d83-8d2d-86851b4001df:secret:2e786aab-42fa-63ed-14f8-d66d552f4dd5")
         .build();
 
       LoadBalancerPoolIdentityByName loadBalancerPoolIdentityByNameModel = new LoadBalancerPoolIdentityByName.Builder()
@@ -12028,7 +12106,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityById loadBalancerPoolMemberTargetPrototypeModel = new LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityById.Builder()
-        .id("1e09281b-f177-46fb-baf1-bc152b2e391a")
+        .id("0717_1e09281b-f177-46f2-b1f1-bc152b2e391a")
         .build();
 
       LoadBalancerPoolMemberPrototype loadBalancerPoolMemberPrototypeModel = new LoadBalancerPoolMemberPrototype.Builder()
@@ -12119,7 +12197,7 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testUpdateLoadBalancer() throws Exception {
     try {
       DNSInstanceIdentityByCRN dnsInstanceIdentityModel = new DNSInstanceIdentityByCRN.Builder()
-        .crn("crn:v1:bluemix:public:dns-svcs:global:a/123456:6860c359-b2e2-46fa-a944-b38c28201c6e")
+        .crn("crn:v1:bluemix:public:dns-svcs:global:a/aa2432b1fa4d4ace891e9b80fc104e34:6860c359-b2e2-46fa-a944-b38c28201c6e")
         .build();
 
       DNSZoneIdentityById dnsZoneIdentityModel = new DNSZoneIdentityById.Builder()
@@ -12140,7 +12218,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       SubnetIdentityById subnetIdentityModel = new SubnetIdentityById.Builder()
-        .id("7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
+        .id("0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
         .build();
 
       LoadBalancerPatch loadBalancerPatchModel = new LoadBalancerPatch.Builder()
@@ -12220,10 +12298,10 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testCreateLoadBalancerListener() throws Exception {
     try {
       CertificateInstanceIdentityByCRN certificateInstanceIdentityModel = new CertificateInstanceIdentityByCRN.Builder()
-        .crn("crn:v1:bluemix:public:secrets-manager:us-south:a/123456:36fa422d-080d-4d83-8d2d-86851b4001df:secret:2e786aab-42fa-63ed-14f8-d66d552f4dd5")
+        .crn("crn:v1:bluemix:public:secrets-manager:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:36fa422d-080d-4d83-8d2d-86851b4001df:secret:2e786aab-42fa-63ed-14f8-d66d552f4dd5")
         .build();
 
-      LoadBalancerPoolIdentityById loadBalancerPoolIdentityModel = new LoadBalancerPoolIdentityById.Builder()
+      LoadBalancerPoolIdentityLoadBalancerPoolIdentityById loadBalancerPoolIdentityModel = new LoadBalancerPoolIdentityLoadBalancerPoolIdentityById.Builder()
         .id("70294e14-4e61-11e8-bcf4-0242ac110004")
         .build();
 
@@ -12244,7 +12322,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .value("testString")
         .build();
 
-      LoadBalancerListenerPolicyTargetPrototypeLoadBalancerPoolIdentityLoadBalancerPoolIdentityById loadBalancerListenerPolicyTargetPrototypeModel = new LoadBalancerListenerPolicyTargetPrototypeLoadBalancerPoolIdentityLoadBalancerPoolIdentityById.Builder()
+      LoadBalancerListenerPolicyTargetPrototypeLoadBalancerPoolIdentityLoadBalancerPoolIdentityLoadBalancerPoolIdentityById loadBalancerListenerPolicyTargetPrototypeModel = new LoadBalancerListenerPolicyTargetPrototypeLoadBalancerPoolIdentityLoadBalancerPoolIdentityLoadBalancerPoolIdentityById.Builder()
         .id("70294e14-4e61-11e8-bcf4-0242ac110004")
         .build();
 
@@ -12313,10 +12391,10 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testUpdateLoadBalancerListener() throws Exception {
     try {
       CertificateInstanceIdentityByCRN certificateInstanceIdentityModel = new CertificateInstanceIdentityByCRN.Builder()
-        .crn("crn:v1:bluemix:public:secrets-manager:us-south:a/123456:36fa422d-080d-4d83-8d2d-86851b4001df:secret:2e786aab-42fa-63ed-14f8-d66d552f4dd5")
+        .crn("crn:v1:bluemix:public:secrets-manager:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:36fa422d-080d-4d83-8d2d-86851b4001df:secret:2e786aab-42fa-63ed-14f8-d66d552f4dd5")
         .build();
 
-      LoadBalancerPoolIdentityById loadBalancerPoolIdentityModel = new LoadBalancerPoolIdentityById.Builder()
+      LoadBalancerListenerDefaultPoolPatchLoadBalancerPoolIdentityById loadBalancerListenerDefaultPoolPatchModel = new LoadBalancerListenerDefaultPoolPatchLoadBalancerPoolIdentityById.Builder()
         .id("70294e14-4e61-11e8-bcf4-0242ac110004")
         .build();
 
@@ -12334,7 +12412,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .acceptProxyProtocol(true)
         .certificateInstance(certificateInstanceIdentityModel)
         .connectionLimit(Long.valueOf("2000"))
-        .defaultPool(loadBalancerPoolIdentityModel)
+        .defaultPool(loadBalancerListenerDefaultPoolPatchModel)
         .httpsRedirect(loadBalancerListenerHttpsRedirectPatchModel)
         .idleConnectionTimeout(Long.valueOf("100"))
         .port(Long.valueOf("443"))
@@ -12398,7 +12476,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .value("testString")
         .build();
 
-      LoadBalancerListenerPolicyTargetPrototypeLoadBalancerPoolIdentityLoadBalancerPoolIdentityById loadBalancerListenerPolicyTargetPrototypeModel = new LoadBalancerListenerPolicyTargetPrototypeLoadBalancerPoolIdentityLoadBalancerPoolIdentityById.Builder()
+      LoadBalancerListenerPolicyTargetPrototypeLoadBalancerPoolIdentityLoadBalancerPoolIdentityLoadBalancerPoolIdentityById loadBalancerListenerPolicyTargetPrototypeModel = new LoadBalancerListenerPolicyTargetPrototypeLoadBalancerPoolIdentityLoadBalancerPoolIdentityLoadBalancerPoolIdentityById.Builder()
         .id("70294e14-4e61-11e8-bcf4-0242ac110004")
         .build();
 
@@ -12454,7 +12532,7 @@ public class VpcIT extends SdkIntegrationTestBase {
   @Test(dependsOnMethods = { "testGetLoadBalancerListenerPolicy" })
   public void testUpdateLoadBalancerListenerPolicy() throws Exception {
     try {
-      LoadBalancerListenerPolicyTargetPatchLoadBalancerPoolIdentityLoadBalancerPoolIdentityById loadBalancerListenerPolicyTargetPatchModel = new LoadBalancerListenerPolicyTargetPatchLoadBalancerPoolIdentityLoadBalancerPoolIdentityById.Builder()
+      LoadBalancerListenerPolicyTargetPatchLoadBalancerPoolIdentityLoadBalancerPoolIdentityLoadBalancerPoolIdentityById loadBalancerListenerPolicyTargetPatchModel = new LoadBalancerListenerPolicyTargetPatchLoadBalancerPoolIdentityLoadBalancerPoolIdentityLoadBalancerPoolIdentityById.Builder()
         .id("70294e14-4e61-11e8-bcf4-0242ac110004")
         .build();
 
@@ -12633,7 +12711,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityById loadBalancerPoolMemberTargetPrototypeModel = new LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityById.Builder()
-        .id("1e09281b-f177-46fb-baf1-bc152b2e391a")
+        .id("0717_1e09281b-f177-46f2-b1f1-bc152b2e391a")
         .build();
 
       LoadBalancerPoolMemberPrototype loadBalancerPoolMemberPrototypeModel = new LoadBalancerPoolMemberPrototype.Builder()
@@ -12771,7 +12849,7 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testCreateLoadBalancerPoolMember() throws Exception {
     try {
       LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityById loadBalancerPoolMemberTargetPrototypeModel = new LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityById.Builder()
-        .id("1e09281b-f177-46fb-baf1-bc152b2e391a")
+        .id("0717_1e09281b-f177-46f2-b1f1-bc152b2e391a")
         .build();
 
       CreateLoadBalancerPoolMemberOptions createLoadBalancerPoolMemberOptions = new CreateLoadBalancerPoolMemberOptions.Builder()
@@ -12801,7 +12879,7 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testReplaceLoadBalancerPoolMembers() throws Exception {
     try {
       LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityById loadBalancerPoolMemberTargetPrototypeModel = new LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityById.Builder()
-        .id("1e09281b-f177-46fb-baf1-bc152b2e391a")
+        .id("0717_1e09281b-f177-46f2-b1f1-bc152b2e391a")
         .build();
 
       LoadBalancerPoolMemberPrototype loadBalancerPoolMemberPrototypeModel = new LoadBalancerPoolMemberPrototype.Builder()
@@ -12859,7 +12937,7 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testUpdateLoadBalancerPoolMember() throws Exception {
     try {
       LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityById loadBalancerPoolMemberTargetPrototypeModel = new LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityById.Builder()
-        .id("1e09281b-f177-46fb-baf1-bc152b2e391a")
+        .id("0717_1e09281b-f177-46f2-b1f1-bc152b2e391a")
         .build();
 
       LoadBalancerPoolMemberPatch loadBalancerPoolMemberPatchModel = new LoadBalancerPoolMemberPatch.Builder()
@@ -12900,7 +12978,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .limit(Long.valueOf("10"))
         .resourceGroupId("testString")
         .vpcId("testString")
-        .vpcCrn("crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b")
+        .vpcCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b")
         .vpcName("my-vpc")
         .allowDnsResolutionBinding(true)
         .build();
@@ -12928,7 +13006,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .limit(Long.valueOf("10"))
         .resourceGroupId("testString")
         .vpcId("testString")
-        .vpcCrn("crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b")
+        .vpcCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b")
         .vpcName("my-vpc")
         .allowDnsResolutionBinding(true)
         .build();
@@ -12970,7 +13048,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       EndpointGatewayReservedIPReservedIPIdentityById endpointGatewayReservedIpModel = new EndpointGatewayReservedIPReservedIPIdentityById.Builder()
-        .id("6d353a0f-aeb1-4ae1-832e-1110d10981bb")
+        .id("0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb")
         .build();
 
       ResourceGroupIdentityById resourceGroupIdentityModel = new ResourceGroupIdentityById.Builder()
@@ -12978,7 +13056,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       SecurityGroupIdentityById securityGroupIdentityModel = new SecurityGroupIdentityById.Builder()
-        .id("be5df5ca-12a0-494b-907e-aa6ec2bfa271")
+        .id("r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271")
         .build();
 
       CreateEndpointGatewayOptions createEndpointGatewayOptions = new CreateEndpointGatewayOptions.Builder()
@@ -13170,7 +13248,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .resourceGroupId("testString")
         .name("testString")
         .vpcId("testString")
-        .vpcCrn("crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b")
+        .vpcCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b")
         .vpcName("my-vpc")
         .targetId("testString")
         .targetResourceType("testString")
@@ -13199,7 +13277,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .resourceGroupId("testString")
         .name("testString")
         .vpcId("testString")
-        .vpcCrn("crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b")
+        .vpcCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b")
         .vpcName("my-vpc")
         .targetId("testString")
         .targetResourceType("testString")
@@ -13237,7 +13315,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       FlowLogCollectorTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceIdentityById flowLogCollectorTargetPrototypeModel = new FlowLogCollectorTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceIdentityById.Builder()
-        .id("10c02d81-0ecb-4dc5-897d-28392913b81e")
+        .id("0717-10c02d81-0ecb-4dc5-897d-28392913b81e")
         .build();
 
       ResourceGroupIdentityById resourceGroupIdentityModel = new ResourceGroupIdentityById.Builder()
@@ -13853,53 +13931,6 @@ public class VpcIT extends SdkIntegrationTestBase {
   }
 
   @Test(dependsOnMethods = { "testDeleteDedicatedHost" })
-  public void testDeleteBackupPolicyPlan() throws Exception {
-    try {
-      DeleteBackupPolicyPlanOptions deleteBackupPolicyPlanOptions = new DeleteBackupPolicyPlanOptions.Builder()
-        .backupPolicyId("testString")
-        .id("testString")
-        .ifMatch("W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"")
-        .build();
-
-      // Invoke operation
-      Response<BackupPolicyPlan> response = service.deleteBackupPolicyPlan(deleteBackupPolicyPlanOptions).execute();
-      // Validate response
-      assertNotNull(response);
-      assertEquals(response.getStatusCode(), 202);
-
-      BackupPolicyPlan backupPolicyPlanResult = response.getResult();
-
-      assertNotNull(backupPolicyPlanResult);
-    } catch (ServiceResponseException e) {
-        fail(String.format("Service returned status code %d: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
-    }
-  }
-
-  @Test(dependsOnMethods = { "testDeleteBackupPolicyPlan" })
-  public void testDeleteBackupPolicy() throws Exception {
-    try {
-      DeleteBackupPolicyOptions deleteBackupPolicyOptions = new DeleteBackupPolicyOptions.Builder()
-        .id("testString")
-        .ifMatch("W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"")
-        .build();
-
-      // Invoke operation
-      Response<BackupPolicy> response = service.deleteBackupPolicy(deleteBackupPolicyOptions).execute();
-      // Validate response
-      assertNotNull(response);
-      assertEquals(response.getStatusCode(), 202);
-
-      BackupPolicy backupPolicyResult = response.getResult();
-
-      assertNotNull(backupPolicyResult);
-    } catch (ServiceResponseException e) {
-        fail(String.format("Service returned status code %d: %s%nError details: %s",
-          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
-    }
-  }
-
-  @Test(dependsOnMethods = { "testDeleteBackupPolicy" })
   public void testDeletePlacementGroup() throws Exception {
     try {
       DeletePlacementGroupOptions deletePlacementGroupOptions = new DeletePlacementGroupOptions.Builder()
@@ -14155,6 +14186,53 @@ public class VpcIT extends SdkIntegrationTestBase {
   }
 
   @Test(dependsOnMethods = { "testDeleteShareSource" })
+  public void testDeleteBackupPolicyPlan() throws Exception {
+    try {
+      DeleteBackupPolicyPlanOptions deleteBackupPolicyPlanOptions = new DeleteBackupPolicyPlanOptions.Builder()
+        .backupPolicyId("testString")
+        .id("testString")
+        .ifMatch("W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"")
+        .build();
+
+      // Invoke operation
+      Response<BackupPolicyPlan> response = service.deleteBackupPolicyPlan(deleteBackupPolicyPlanOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 202);
+
+      BackupPolicyPlan backupPolicyPlanResult = response.getResult();
+
+      assertNotNull(backupPolicyPlanResult);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testDeleteBackupPolicyPlan" })
+  public void testDeleteBackupPolicy() throws Exception {
+    try {
+      DeleteBackupPolicyOptions deleteBackupPolicyOptions = new DeleteBackupPolicyOptions.Builder()
+        .id("testString")
+        .ifMatch("W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"")
+        .build();
+
+      // Invoke operation
+      Response<BackupPolicy> response = service.deleteBackupPolicy(deleteBackupPolicyOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 202);
+
+      BackupPolicy backupPolicyResult = response.getResult();
+
+      assertNotNull(backupPolicyResult);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testDeleteBackupPolicy" })
   public void testDeleteVirtualNetworkInterfaces() throws Exception {
     try {
       DeleteVirtualNetworkInterfacesOptions deleteVirtualNetworkInterfacesOptions = new DeleteVirtualNetworkInterfacesOptions.Builder()
@@ -14413,17 +14491,16 @@ public class VpcIT extends SdkIntegrationTestBase {
   }
 
   @Test(dependsOnMethods = { "testDeleteVpnGatewayConnection" })
-  public void testRemoveVpnGatewayConnectionLocalCidr() throws Exception {
+  public void testRemoveVpnGatewayConnectionsLocalCidr() throws Exception {
     try {
-      RemoveVpnGatewayConnectionLocalCidrOptions removeVpnGatewayConnectionLocalCidrOptions = new RemoveVpnGatewayConnectionLocalCidrOptions.Builder()
+      RemoveVpnGatewayConnectionsLocalCidrOptions removeVpnGatewayConnectionsLocalCidrOptions = new RemoveVpnGatewayConnectionsLocalCidrOptions.Builder()
         .vpnGatewayId("testString")
         .id("testString")
-        .cidrPrefix("testString")
-        .prefixLength("testString")
+        .cidr("192.168.1.0/24")
         .build();
 
       // Invoke operation
-      Response<Void> response = service.removeVpnGatewayConnectionLocalCidr(removeVpnGatewayConnectionLocalCidrOptions).execute();
+      Response<Void> response = service.removeVpnGatewayConnectionsLocalCidr(removeVpnGatewayConnectionsLocalCidrOptions).execute();
       // Validate response
       assertNotNull(response);
       assertEquals(response.getStatusCode(), 204);
@@ -14433,18 +14510,17 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test(dependsOnMethods = { "testRemoveVpnGatewayConnectionLocalCidr" })
-  public void testRemoveVpnGatewayConnectionPeerCidr() throws Exception {
+  @Test(dependsOnMethods = { "testRemoveVpnGatewayConnectionsLocalCidr" })
+  public void testRemoveVpnGatewayConnectionsPeerCidr() throws Exception {
     try {
-      RemoveVpnGatewayConnectionPeerCidrOptions removeVpnGatewayConnectionPeerCidrOptions = new RemoveVpnGatewayConnectionPeerCidrOptions.Builder()
+      RemoveVpnGatewayConnectionsPeerCidrOptions removeVpnGatewayConnectionsPeerCidrOptions = new RemoveVpnGatewayConnectionsPeerCidrOptions.Builder()
         .vpnGatewayId("testString")
         .id("testString")
-        .cidrPrefix("testString")
-        .prefixLength("testString")
+        .cidr("192.168.1.0/24")
         .build();
 
       // Invoke operation
-      Response<Void> response = service.removeVpnGatewayConnectionPeerCidr(removeVpnGatewayConnectionPeerCidrOptions).execute();
+      Response<Void> response = service.removeVpnGatewayConnectionsPeerCidr(removeVpnGatewayConnectionsPeerCidrOptions).execute();
       // Validate response
       assertNotNull(response);
       assertEquals(response.getStatusCode(), 204);
@@ -14454,7 +14530,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     }
   }
 
-  @Test(dependsOnMethods = { "testRemoveVpnGatewayConnectionPeerCidr" })
+  @Test(dependsOnMethods = { "testRemoveVpnGatewayConnectionsPeerCidr" })
   public void testDeleteVpnServer() throws Exception {
     try {
       DeleteVpnServerOptions deleteVpnServerOptions = new DeleteVpnServerOptions.Builder()

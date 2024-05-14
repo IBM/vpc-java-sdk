@@ -34,9 +34,9 @@ public class BareMetalServerInitializationPrototypeTest {
   @Test
   public void testBareMetalServerInitializationPrototype() throws Throwable {
     ImageIdentityById imageIdentityModel = new ImageIdentityById.Builder()
-      .id("72b27b5c-f4b0-48bb-b954-5becc7c1dcb8")
+      .id("r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8")
       .build();
-    assertEquals(imageIdentityModel.id(), "72b27b5c-f4b0-48bb-b954-5becc7c1dcb8");
+    assertEquals(imageIdentityModel.id(), "r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8");
 
     KeyIdentityById keyIdentityModel = new KeyIdentityById.Builder()
       .id("a6b1a881-2ce8-41a3-80fc-36316a73f803")

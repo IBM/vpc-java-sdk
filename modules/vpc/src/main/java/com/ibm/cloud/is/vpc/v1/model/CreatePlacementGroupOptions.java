@@ -20,13 +20,12 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class CreatePlacementGroupOptions extends GenericModel {
 
   /**
-   * The strategy for this placement group
+   * The strategy for this placement group:
    * - `host_spread`: place on different compute hosts
    * - `power_spread`: place on compute hosts that use different power sources
    *
-   * The enumerated values for this property may expand in the future. When processing this property, check for and log
-   * unknown values. Optionally halt processing and surface the error, or bypass the placement group on which the
-   * unexpected strategy was encountered.
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface Strategy {
     /** host_spread. */
@@ -138,13 +137,12 @@ public class CreatePlacementGroupOptions extends GenericModel {
   /**
    * Gets the strategy.
    *
-   * The strategy for this placement group
+   * The strategy for this placement group:
    * - `host_spread`: place on different compute hosts
    * - `power_spread`: place on compute hosts that use different power sources
    *
-   * The enumerated values for this property may expand in the future. When processing this property, check for and log
-   * unknown values. Optionally halt processing and surface the error, or bypass the placement group on which the
-   * unexpected strategy was encountered.
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the strategy
    */

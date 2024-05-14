@@ -34,8 +34,10 @@ public class SecurityGroupRulePatch extends GenericModel {
   }
 
   /**
-   * The IP version to enforce. The format of `remote.address` or `remote.cidr_block` must match this property, if they
-   * are used. Alternatively, if `remote` references a security group, then this rule only applies to IP addresses
+   * The IP version to enforce. The format of `local.address`, `remote.address`,
+   * `local.cidr_block` or `remote.cidr_block` must match this property, if they are used.
+   *
+   * If `remote` references a security group, then this rule only applies to IP addresses
    * (network interfaces) in that group matching this IP version.
    */
   public interface IpVersion {
@@ -47,6 +49,7 @@ public class SecurityGroupRulePatch extends GenericModel {
   protected String direction;
   @SerializedName("ip_version")
   protected String ipVersion;
+  protected SecurityGroupRuleLocalPatch local;
   @SerializedName("port_max")
   protected Long portMax;
   @SerializedName("port_min")
@@ -61,6 +64,7 @@ public class SecurityGroupRulePatch extends GenericModel {
     private Long code;
     private String direction;
     private String ipVersion;
+    private SecurityGroupRuleLocalPatch local;
     private Long portMax;
     private Long portMin;
     private SecurityGroupRuleRemotePatch remote;
@@ -75,6 +79,7 @@ public class SecurityGroupRulePatch extends GenericModel {
       this.code = securityGroupRulePatch.code;
       this.direction = securityGroupRulePatch.direction;
       this.ipVersion = securityGroupRulePatch.ipVersion;
+      this.local = securityGroupRulePatch.local;
       this.portMax = securityGroupRulePatch.portMax;
       this.portMin = securityGroupRulePatch.portMin;
       this.remote = securityGroupRulePatch.remote;
@@ -130,6 +135,17 @@ public class SecurityGroupRulePatch extends GenericModel {
     }
 
     /**
+     * Set the local.
+     *
+     * @param local the local
+     * @return the SecurityGroupRulePatch builder
+     */
+    public Builder local(SecurityGroupRuleLocalPatch local) {
+      this.local = local;
+      return this;
+    }
+
+    /**
      * Set the portMax.
      *
      * @param portMax the portMax
@@ -180,6 +196,7 @@ public class SecurityGroupRulePatch extends GenericModel {
     code = builder.code;
     direction = builder.direction;
     ipVersion = builder.ipVersion;
+    local = builder.local;
     portMax = builder.portMax;
     portMin = builder.portMin;
     remote = builder.remote;
@@ -222,14 +239,32 @@ public class SecurityGroupRulePatch extends GenericModel {
   /**
    * Gets the ipVersion.
    *
-   * The IP version to enforce. The format of `remote.address` or `remote.cidr_block` must match this property, if they
-   * are used. Alternatively, if `remote` references a security group, then this rule only applies to IP addresses
+   * The IP version to enforce. The format of `local.address`, `remote.address`,
+   * `local.cidr_block` or `remote.cidr_block` must match this property, if they are used.
+   *
+   * If `remote` references a security group, then this rule only applies to IP addresses
    * (network interfaces) in that group matching this IP version.
    *
    * @return the ipVersion
    */
   public String ipVersion() {
     return ipVersion;
+  }
+
+  /**
+   * Gets the local.
+   *
+   * The local IP address or range of local IP addresses to which this rule will allow inbound
+   * traffic (or from which, for outbound traffic). Can be specified as an IP address or a CIDR
+   * block.
+   *
+   * Specify a CIDR block of `0.0.0.0/0` to allow traffic to all local IP addresses (or from all
+   * local IP addresses, for outbound rules).
+   *
+   * @return the local
+   */
+  public SecurityGroupRuleLocalPatch local() {
+    return local;
   }
 
   /**

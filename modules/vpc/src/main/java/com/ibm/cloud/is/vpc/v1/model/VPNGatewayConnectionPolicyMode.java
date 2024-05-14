@@ -26,6 +26,22 @@ public class VPNGatewayConnectionPolicyMode extends VPNGatewayConnection {
   }
 
   /**
+   * The establish mode of the VPN gateway connection:
+   * - `bidirectional`: Either side of the VPN gateway can initiate IKE protocol
+   *    negotiations or rekeying processes.
+   * - `peer_only`: Only the peer can initiate IKE protocol negotiations for this VPN gateway
+   *    connection. Additionally, the peer is responsible for initiating the rekeying process
+   *    after the connection is established. If rekeying does not occur, the VPN gateway
+   *    connection will be brought down after its lifetime expires.
+   */
+  public interface EstablishMode {
+    /** bidirectional. */
+    String BIDIRECTIONAL = "bidirectional";
+    /** peer_only. */
+    String PEER_ONLY = "peer_only";
+  }
+
+  /**
    * The mode of the VPN gateway.
    */
   public interface Mode {

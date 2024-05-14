@@ -14,6 +14,7 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroup;
+import com.ibm.cloud.is.vpc.v1.model.InstanceGroupLifecycleReason;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerReference;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateReference;
@@ -49,6 +50,8 @@ public class InstanceGroupTest {
     assertNull(instanceGroupModel.getHref());
     assertNull(instanceGroupModel.getId());
     assertNull(instanceGroupModel.getInstanceTemplate());
+    assertNull(instanceGroupModel.getLifecycleReasons());
+    assertNull(instanceGroupModel.getLifecycleState());
     assertNull(instanceGroupModel.getLoadBalancerPool());
     assertNull(instanceGroupModel.getManagers());
     assertNull(instanceGroupModel.getMembershipCount());

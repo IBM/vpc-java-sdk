@@ -14,6 +14,7 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 import java.util.List;
 
+import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
@@ -21,9 +22,48 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class BackupPolicyPlanCollection extends GenericModel {
 
+  protected BackupPolicyPlanCollectionFirst first;
+  protected Long limit;
+  protected BackupPolicyPlanCollectionNext next;
   protected List<BackupPolicyPlan> plans;
+  @SerializedName("total_count")
+  protected Long totalCount;
 
   protected BackupPolicyPlanCollection() { }
+
+  /**
+   * Gets the first.
+   *
+   * A link to the first page of resources.
+   *
+   * @return the first
+   */
+  public BackupPolicyPlanCollectionFirst getFirst() {
+    return first;
+  }
+
+  /**
+   * Gets the limit.
+   *
+   * The maximum number of resources that can be returned by the request.
+   *
+   * @return the limit
+   */
+  public Long getLimit() {
+    return limit;
+  }
+
+  /**
+   * Gets the next.
+   *
+   * A link to the next page of resources. This property is present for all pages
+   * except the last page.
+   *
+   * @return the next
+   */
+  public BackupPolicyPlanCollectionNext getNext() {
+    return next;
+  }
 
   /**
    * Gets the plans.
@@ -34,6 +74,17 @@ public class BackupPolicyPlanCollection extends GenericModel {
    */
   public List<BackupPolicyPlan> getPlans() {
     return plans;
+  }
+
+  /**
+   * Gets the totalCount.
+   *
+   * The total number of resources across all pages.
+   *
+   * @return the totalCount
+   */
+  public Long getTotalCount() {
+    return totalCount;
   }
 }
 

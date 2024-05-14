@@ -23,9 +23,6 @@ public class ListInstancesOptions extends GenericModel {
   protected Long limit;
   protected String resourceGroupId;
   protected String name;
-  protected String vpcId;
-  protected String vpcCrn;
-  protected String vpcName;
   protected String dedicatedHostId;
   protected String dedicatedHostCrn;
   protected String dedicatedHostName;
@@ -35,6 +32,9 @@ public class ListInstancesOptions extends GenericModel {
   protected String reservationId;
   protected String reservationCrn;
   protected String reservationName;
+  protected String vpcId;
+  protected String vpcCrn;
+  protected String vpcName;
 
   /**
    * Builder.
@@ -44,9 +44,6 @@ public class ListInstancesOptions extends GenericModel {
     private Long limit;
     private String resourceGroupId;
     private String name;
-    private String vpcId;
-    private String vpcCrn;
-    private String vpcName;
     private String dedicatedHostId;
     private String dedicatedHostCrn;
     private String dedicatedHostName;
@@ -56,6 +53,9 @@ public class ListInstancesOptions extends GenericModel {
     private String reservationId;
     private String reservationCrn;
     private String reservationName;
+    private String vpcId;
+    private String vpcCrn;
+    private String vpcName;
 
     /**
      * Instantiates a new Builder from an existing ListInstancesOptions instance.
@@ -67,9 +67,6 @@ public class ListInstancesOptions extends GenericModel {
       this.limit = listInstancesOptions.limit;
       this.resourceGroupId = listInstancesOptions.resourceGroupId;
       this.name = listInstancesOptions.name;
-      this.vpcId = listInstancesOptions.vpcId;
-      this.vpcCrn = listInstancesOptions.vpcCrn;
-      this.vpcName = listInstancesOptions.vpcName;
       this.dedicatedHostId = listInstancesOptions.dedicatedHostId;
       this.dedicatedHostCrn = listInstancesOptions.dedicatedHostCrn;
       this.dedicatedHostName = listInstancesOptions.dedicatedHostName;
@@ -79,6 +76,9 @@ public class ListInstancesOptions extends GenericModel {
       this.reservationId = listInstancesOptions.reservationId;
       this.reservationCrn = listInstancesOptions.reservationCrn;
       this.reservationName = listInstancesOptions.reservationName;
+      this.vpcId = listInstancesOptions.vpcId;
+      this.vpcCrn = listInstancesOptions.vpcCrn;
+      this.vpcName = listInstancesOptions.vpcName;
     }
 
     /**
@@ -137,39 +137,6 @@ public class ListInstancesOptions extends GenericModel {
      */
     public Builder name(String name) {
       this.name = name;
-      return this;
-    }
-
-    /**
-     * Set the vpcId.
-     *
-     * @param vpcId the vpcId
-     * @return the ListInstancesOptions builder
-     */
-    public Builder vpcId(String vpcId) {
-      this.vpcId = vpcId;
-      return this;
-    }
-
-    /**
-     * Set the vpcCrn.
-     *
-     * @param vpcCrn the vpcCrn
-     * @return the ListInstancesOptions builder
-     */
-    public Builder vpcCrn(String vpcCrn) {
-      this.vpcCrn = vpcCrn;
-      return this;
-    }
-
-    /**
-     * Set the vpcName.
-     *
-     * @param vpcName the vpcName
-     * @return the ListInstancesOptions builder
-     */
-    public Builder vpcName(String vpcName) {
-      this.vpcName = vpcName;
       return this;
     }
 
@@ -271,6 +238,39 @@ public class ListInstancesOptions extends GenericModel {
       this.reservationName = reservationName;
       return this;
     }
+
+    /**
+     * Set the vpcId.
+     *
+     * @param vpcId the vpcId
+     * @return the ListInstancesOptions builder
+     */
+    public Builder vpcId(String vpcId) {
+      this.vpcId = vpcId;
+      return this;
+    }
+
+    /**
+     * Set the vpcCrn.
+     *
+     * @param vpcCrn the vpcCrn
+     * @return the ListInstancesOptions builder
+     */
+    public Builder vpcCrn(String vpcCrn) {
+      this.vpcCrn = vpcCrn;
+      return this;
+    }
+
+    /**
+     * Set the vpcName.
+     *
+     * @param vpcName the vpcName
+     * @return the ListInstancesOptions builder
+     */
+    public Builder vpcName(String vpcName) {
+      this.vpcName = vpcName;
+      return this;
+    }
   }
 
   protected ListInstancesOptions() { }
@@ -280,9 +280,6 @@ public class ListInstancesOptions extends GenericModel {
     limit = builder.limit;
     resourceGroupId = builder.resourceGroupId;
     name = builder.name;
-    vpcId = builder.vpcId;
-    vpcCrn = builder.vpcCrn;
-    vpcName = builder.vpcName;
     dedicatedHostId = builder.dedicatedHostId;
     dedicatedHostCrn = builder.dedicatedHostCrn;
     dedicatedHostName = builder.dedicatedHostName;
@@ -292,6 +289,9 @@ public class ListInstancesOptions extends GenericModel {
     reservationId = builder.reservationId;
     reservationCrn = builder.reservationCrn;
     reservationName = builder.reservationName;
+    vpcId = builder.vpcId;
+    vpcCrn = builder.vpcCrn;
+    vpcName = builder.vpcName;
   }
 
   /**
@@ -348,6 +348,108 @@ public class ListInstancesOptions extends GenericModel {
   }
 
   /**
+   * Gets the dedicatedHostId.
+   *
+   * Filters the collection to resources with a `dedicated_host.id` property matching the specified identifier.
+   *
+   * @return the dedicatedHostId
+   */
+  public String dedicatedHostId() {
+    return dedicatedHostId;
+  }
+
+  /**
+   * Gets the dedicatedHostCrn.
+   *
+   * Filters the collection to resources with a `dedicated_host.crn` property matching the specified CRN.
+   *
+   * @return the dedicatedHostCrn
+   */
+  public String dedicatedHostCrn() {
+    return dedicatedHostCrn;
+  }
+
+  /**
+   * Gets the dedicatedHostName.
+   *
+   * Filters the collection to resources with a `dedicated_host.name` property matching the exact specified name.
+   *
+   * @return the dedicatedHostName
+   */
+  public String dedicatedHostName() {
+    return dedicatedHostName;
+  }
+
+  /**
+   * Gets the placementGroupId.
+   *
+   * Filters the collection to resources with a `placement_target.id` property matching the specified placement group
+   * identifier.
+   *
+   * @return the placementGroupId
+   */
+  public String placementGroupId() {
+    return placementGroupId;
+  }
+
+  /**
+   * Gets the placementGroupCrn.
+   *
+   * Filters the collection to resources with a `placement_target.crn` property matching the specified placement group
+   * CRN.
+   *
+   * @return the placementGroupCrn
+   */
+  public String placementGroupCrn() {
+    return placementGroupCrn;
+  }
+
+  /**
+   * Gets the placementGroupName.
+   *
+   * Filters the collection to resources with a `placement_target.name` property matching the exact specified placement
+   * group name.
+   *
+   * @return the placementGroupName
+   */
+  public String placementGroupName() {
+    return placementGroupName;
+  }
+
+  /**
+   * Gets the reservationId.
+   *
+   * Filters the collection to resources with a `reservation.id` property matching the specified identifier.
+   *
+   * @return the reservationId
+   */
+  public String reservationId() {
+    return reservationId;
+  }
+
+  /**
+   * Gets the reservationCrn.
+   *
+   * Filters the collection to resources with a `reservation.crn` property matching the specified CRN.
+   *
+   * @return the reservationCrn
+   */
+  public String reservationCrn() {
+    return reservationCrn;
+  }
+
+  /**
+   * Gets the reservationName.
+   *
+   * Filters the collection to resources with a `reservation.name` property matching the exact specified name.
+   *
+   * @return the reservationName
+   */
+  public String reservationName() {
+    return reservationName;
+  }
+
+  /**
    * Gets the vpcId.
    *
    * Filters the collection to resources with a `vpc.id` property matching the specified identifier.
@@ -378,108 +480,6 @@ public class ListInstancesOptions extends GenericModel {
    */
   public String vpcName() {
     return vpcName;
-  }
-
-  /**
-   * Gets the dedicatedHostId.
-   *
-   * Filters the collection to instances with a `dedicated_host.id` property matching the specified identifier.
-   *
-   * @return the dedicatedHostId
-   */
-  public String dedicatedHostId() {
-    return dedicatedHostId;
-  }
-
-  /**
-   * Gets the dedicatedHostCrn.
-   *
-   * Filters the collection to instances with a `dedicated_host.crn` property matching the specified CRN.
-   *
-   * @return the dedicatedHostCrn
-   */
-  public String dedicatedHostCrn() {
-    return dedicatedHostCrn;
-  }
-
-  /**
-   * Gets the dedicatedHostName.
-   *
-   * Filters the collection to instances with a `dedicated_host.name` property matching the exact specified name.
-   *
-   * @return the dedicatedHostName
-   */
-  public String dedicatedHostName() {
-    return dedicatedHostName;
-  }
-
-  /**
-   * Gets the placementGroupId.
-   *
-   * Filters the collection to instances with a `placement_target.id` property matching the specified placement group
-   * identifier.
-   *
-   * @return the placementGroupId
-   */
-  public String placementGroupId() {
-    return placementGroupId;
-  }
-
-  /**
-   * Gets the placementGroupCrn.
-   *
-   * Filters the collection to instances with a `placement_target.crn` property matching the specified placement group
-   * CRN.
-   *
-   * @return the placementGroupCrn
-   */
-  public String placementGroupCrn() {
-    return placementGroupCrn;
-  }
-
-  /**
-   * Gets the placementGroupName.
-   *
-   * Filters the collection to instances with a `placement_target.name` property matching the exact specified placement
-   * group name.
-   *
-   * @return the placementGroupName
-   */
-  public String placementGroupName() {
-    return placementGroupName;
-  }
-
-  /**
-   * Gets the reservationId.
-   *
-   * Filters the collection to instances with a `reservation.id` property matching the specified identifier.
-   *
-   * @return the reservationId
-   */
-  public String reservationId() {
-    return reservationId;
-  }
-
-  /**
-   * Gets the reservationCrn.
-   *
-   * Filters the collection to instances with a `reservation.crn` property matching the specified CRN.
-   *
-   * @return the reservationCrn
-   */
-  public String reservationCrn() {
-    return reservationCrn;
-  }
-
-  /**
-   * Gets the reservationName.
-   *
-   * Filters the collection to resources with a `reservation.name` property matching the exact specified name.
-   *
-   * @return the reservationName
-   */
-  public String reservationName() {
-    return reservationName;
   }
 }
 

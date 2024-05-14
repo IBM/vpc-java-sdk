@@ -35,9 +35,8 @@ public class VPNServerClient extends GenericModel {
    * - `connected`: the VPN client is `connected` to this VPN server.
    * - `disconnected`: the VPN client is `disconnected` from this VPN server.
    *
-   * The enumerated values for this property are expected to expand in the future. When processing this property, check
-   * for and log unknown values. Optionally halt processing and surface the error, or bypass the VPN client on which the
-   * unexpected property value was encountered.
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface Status {
     /** connected. */
@@ -178,9 +177,8 @@ public class VPNServerClient extends GenericModel {
    * - `connected`: the VPN client is `connected` to this VPN server.
    * - `disconnected`: the VPN client is `disconnected` from this VPN server.
    *
-   * The enumerated values for this property are expected to expand in the future. When processing this property, check
-   * for and log unknown values. Optionally halt processing and surface the error, or bypass the VPN client on which the
-   * unexpected property value was encountered.
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the status
    */

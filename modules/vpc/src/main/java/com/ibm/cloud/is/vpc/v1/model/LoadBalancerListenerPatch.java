@@ -54,7 +54,7 @@ public class LoadBalancerListenerPatch extends GenericModel {
   @SerializedName("connection_limit")
   protected Long connectionLimit;
   @SerializedName("default_pool")
-  protected LoadBalancerPoolIdentity defaultPool;
+  protected LoadBalancerListenerDefaultPoolPatch defaultPool;
   @SerializedName("https_redirect")
   protected LoadBalancerListenerHTTPSRedirectPatch httpsRedirect;
   @SerializedName("idle_connection_timeout")
@@ -73,7 +73,7 @@ public class LoadBalancerListenerPatch extends GenericModel {
     private Boolean acceptProxyProtocol;
     private CertificateInstanceIdentity certificateInstance;
     private Long connectionLimit;
-    private LoadBalancerPoolIdentity defaultPool;
+    private LoadBalancerListenerDefaultPoolPatch defaultPool;
     private LoadBalancerListenerHTTPSRedirectPatch httpsRedirect;
     private Long idleConnectionTimeout;
     private Long port;
@@ -153,7 +153,7 @@ public class LoadBalancerListenerPatch extends GenericModel {
      * @param defaultPool the defaultPool
      * @return the LoadBalancerListenerPatch builder
      */
-    public Builder defaultPool(LoadBalancerPoolIdentity defaultPool) {
+    public Builder defaultPool(LoadBalancerListenerDefaultPoolPatch defaultPool) {
       this.defaultPool = defaultPool;
       return this;
     }
@@ -291,7 +291,8 @@ public class LoadBalancerListenerPatch extends GenericModel {
   /**
    * Gets the defaultPool.
    *
-   * The default pool for this listener. The specified pool must:
+   * The default pool for this listener. If `https_redirect` is set, the default pool will not
+   * be used. The specified pool must:
    *
    * - Belong to this load balancer
    * - Have the same `protocol` as this listener, or have a compatible protocol.
@@ -302,15 +303,18 @@ public class LoadBalancerListenerPatch extends GenericModel {
    *
    * @return the defaultPool
    */
-  public LoadBalancerPoolIdentity defaultPool() {
+  public LoadBalancerListenerDefaultPoolPatch defaultPool() {
     return defaultPool;
   }
 
   /**
    * Gets the httpsRedirect.
    *
-   * The target listener that requests will be redirected to. This listener must have a
-   * `protocol` of `http`, and the target listener must have a `protocol` of `https`.
+   * The target listener that requests will be redirected to if none of the listener's
+   * `policies` match.
+   *
+   * If specified, this listener must have a `protocol` of `http`, and the target listener
+   * must have a `protocol` of `https`.
    *
    * Specify `null` to remove any existing https redirect.
    *

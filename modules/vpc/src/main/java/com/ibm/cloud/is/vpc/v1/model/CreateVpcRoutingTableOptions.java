@@ -292,9 +292,6 @@ public class CreateVpcRoutingTableOptions extends GenericModel {
    *
    * The filters specifying the resources that may create routes in this routing table.
    *
-   * At present, only the `resource_type` filter is permitted, and only the `vpn_server` value is supported, but filter
-   * support is expected to expand in the future.
-   *
    * @return the acceptRoutesFrom
    */
   public List<ResourceFilter> acceptRoutesFrom() {

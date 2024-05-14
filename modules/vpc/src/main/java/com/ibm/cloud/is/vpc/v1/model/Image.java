@@ -42,7 +42,7 @@ public class Image extends GenericModel {
   }
 
   /**
-   * The status of this image
+   * The status of this image:
    * - available: image can be used (provisionable)
    * - deleting: image is being deleted, and can no longer be used to provision new
    *   resources
@@ -52,9 +52,8 @@ public class Image extends GenericModel {
    * - pending: image is being imported and is not yet `available`
    * - unusable: image cannot be used (see `status_reasons[]` for possible remediation)
    *
-   * The enumerated values for this property are expected to expand in the future. When processing this property, check
-   * for and log unknown values. Optionally halt processing and surface the error, or bypass the image on which the
-   * unexpected property value was encountered.
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface Status {
     /** available. */
@@ -306,7 +305,7 @@ public class Image extends GenericModel {
   /**
    * Gets the status.
    *
-   * The status of this image
+   * The status of this image:
    * - available: image can be used (provisionable)
    * - deleting: image is being deleted, and can no longer be used to provision new
    *   resources
@@ -316,9 +315,8 @@ public class Image extends GenericModel {
    * - pending: image is being imported and is not yet `available`
    * - unusable: image cannot be used (see `status_reasons[]` for possible remediation)
    *
-   * The enumerated values for this property are expected to expand in the future. When processing this property, check
-   * for and log unknown values. Optionally halt processing and surface the error, or bypass the image on which the
-   * unexpected property value was encountered.
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the status
    */
@@ -328,23 +326,6 @@ public class Image extends GenericModel {
 
   /**
    * Gets the statusReasons.
-   *
-   * The reasons for the current status (if any):
-   * - `encrypted_data_key_invalid`: image cannot be decrypted with the specified
-   *   `encryption_key`
-   * - `encryption_key_deleted`: image unusable because its `encryption_key` was deleted
-   * - `encryption_key_disabled`: image unusable until its `encryption_key` is re-enabled
-   * - `image_data_corrupted`: image data is corrupt, or is not in the specified format
-   * - `image_provisioned_size_unsupported`: image requires a boot volume size greater
-   *   than the maximum supported value
-   * - `image_request_in_progress`: image operation is in progress (such as an import from
-   *    Cloud Object Storage)
-   * - `image_request_queued`: image request has been accepted but the requested
-   *   operation has not started
-   *
-   * The enumerated reason code values for this property will expand in the future. When processing this property, check
-   * for and log unknown values. Optionally halt processing and surface the error, or bypass the resource on which the
-   * unexpected reason code was encountered.
    *
    * @return the statusReasons
    */

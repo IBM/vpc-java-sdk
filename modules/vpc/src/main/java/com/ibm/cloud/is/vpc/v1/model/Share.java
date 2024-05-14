@@ -30,9 +30,8 @@ public class Share extends GenericModel {
    *   target control access to the mount target.
    * - `vpc`: All clients in the VPC for a mount target have access to the mount target.
    *
-   * The enumerated access control mode values for this property may expand in the future. When processing this
-   * property, check for and log unknown values. Optionally halt processing and surface the error, or bypass the
-   * resource on which the unexpected access control mode was encountered.
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface AccessControlMode {
     /** security_group. */
@@ -72,11 +71,13 @@ public class Share extends GenericModel {
   }
 
   /**
-   * The replication role of the file share.
+   * The replication role of the file share:
+   * - `none`: This share is not participating in replication.
+   * - `replica`: This share is a replication target.
+   * - `source`: This share is a replication source.
    *
-   * * `none`: This share is not participating in replication.
-   * * `replica`: This share is a replication target.
-   * * `source`: This share is a replication source.
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface ReplicationRole {
     /** none. */
@@ -88,16 +89,18 @@ public class Share extends GenericModel {
   }
 
   /**
-   * The replication status of the file share.
+   * The replication status of the file share:
+   * - `active`: This share is actively participating in replication, and the replica's data is up-to-date with the
+   * replication schedule.
+   * - `degraded`: This is share is participating in replication, but the replica's data has fallen behind the
+   * replication schedule.
+   * - `failover_pending`: This share is performing a replication failover.
+   * - `initializing`: This share is initializing replication.
+   * - `none`: This share is not participating in replication.
+   * - `split_pending`: This share is performing a replication split.
    *
-   * * `active`: This share is actively participating in replication, and the replica's data is up-to-date with the
-   * replication schedule.
-   * * `degraded`: This is share is participating in replication, but the replica's data has fallen behind the
-   * replication schedule.
-   * * `failover_pending`: This share is performing a replication failover.
-   * * `initializing`: This share is initializing replication.
-   * * `none`: This share is not participating in replication.
-   * * `split_pending`: This share is performing a replication split.
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface ReplicationStatus {
     /** active. */
@@ -175,9 +178,8 @@ public class Share extends GenericModel {
    *   target control access to the mount target.
    * - `vpc`: All clients in the VPC for a mount target have access to the mount target.
    *
-   * The enumerated access control mode values for this property may expand in the future. When processing this
-   * property, check for and log unknown values. Optionally halt processing and surface the error, or bypass the
-   * resource on which the unexpected access control mode was encountered.
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the accessControlMode
    */
@@ -223,7 +225,7 @@ public class Share extends GenericModel {
    *
    * The key used to encrypt this file share.
    *
-   * This property will be present if `encryption_type` is `user_managed`.
+   * This property will be present if `encryption` is `user_managed`.
    *
    * @return the encryptionKey
    */
@@ -368,11 +370,13 @@ public class Share extends GenericModel {
   /**
    * Gets the replicationRole.
    *
-   * The replication role of the file share.
+   * The replication role of the file share:
+   * - `none`: This share is not participating in replication.
+   * - `replica`: This share is a replication target.
+   * - `source`: This share is a replication source.
    *
-   * * `none`: This share is not participating in replication.
-   * * `replica`: This share is a replication target.
-   * * `source`: This share is a replication source.
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the replicationRole
    */
@@ -383,16 +387,18 @@ public class Share extends GenericModel {
   /**
    * Gets the replicationStatus.
    *
-   * The replication status of the file share.
+   * The replication status of the file share:
+   * - `active`: This share is actively participating in replication, and the replica's data is up-to-date with the
+   * replication schedule.
+   * - `degraded`: This is share is participating in replication, but the replica's data has fallen behind the
+   * replication schedule.
+   * - `failover_pending`: This share is performing a replication failover.
+   * - `initializing`: This share is initializing replication.
+   * - `none`: This share is not participating in replication.
+   * - `split_pending`: This share is performing a replication split.
    *
-   * * `active`: This share is actively participating in replication, and the replica's data is up-to-date with the
-   * replication schedule.
-   * * `degraded`: This is share is participating in replication, but the replica's data has fallen behind the
-   * replication schedule.
-   * * `failover_pending`: This share is performing a replication failover.
-   * * `initializing`: This share is initializing replication.
-   * * `none`: This share is not participating in replication.
-   * * `split_pending`: This share is performing a replication split.
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the replicationStatus
    */
@@ -404,10 +410,6 @@ public class Share extends GenericModel {
    * Gets the replicationStatusReasons.
    *
    * The reasons for the current replication status (if any).
-   *
-   * The enumerated reason code values for this property will expand in the future. When processing this property, check
-   * for and log unknown values. Optionally halt processing and surface the error, or bypass the resource on which the
-   * unexpected reason code was encountered.
    *
    * @return the replicationStatusReasons
    */

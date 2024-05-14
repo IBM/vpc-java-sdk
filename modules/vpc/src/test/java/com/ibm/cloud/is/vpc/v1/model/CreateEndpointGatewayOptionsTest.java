@@ -38,20 +38,20 @@ public class CreateEndpointGatewayOptionsTest {
   public void testCreateEndpointGatewayOptions() throws Throwable {
     EndpointGatewayTargetPrototypeProviderCloudServiceIdentityProviderCloudServiceIdentityByCRN endpointGatewayTargetPrototypeModel = new EndpointGatewayTargetPrototypeProviderCloudServiceIdentityProviderCloudServiceIdentityByCRN.Builder()
       .resourceType("provider_cloud_service")
-      .crn("crn:v1:bluemix:public:cloudant:us-south:a/123456:3527280b-9327-4411-8020-591092e60353::")
+      .crn("crn:v1:bluemix:public:cloudant:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:3527280b-9327-4411-8020-591092e60353::")
       .build();
     assertEquals(endpointGatewayTargetPrototypeModel.resourceType(), "provider_cloud_service");
-    assertEquals(endpointGatewayTargetPrototypeModel.crn(), "crn:v1:bluemix:public:cloudant:us-south:a/123456:3527280b-9327-4411-8020-591092e60353::");
+    assertEquals(endpointGatewayTargetPrototypeModel.crn(), "crn:v1:bluemix:public:cloudant:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:3527280b-9327-4411-8020-591092e60353::");
 
     VPCIdentityById vpcIdentityModel = new VPCIdentityById.Builder()
-      .id("4727d842-f94f-4a2d-824a-9bc9b02c523b")
+      .id("r006-4727d842-f94f-4a2d-824a-9bc9b02c523b")
       .build();
-    assertEquals(vpcIdentityModel.id(), "4727d842-f94f-4a2d-824a-9bc9b02c523b");
+    assertEquals(vpcIdentityModel.id(), "r006-4727d842-f94f-4a2d-824a-9bc9b02c523b");
 
     EndpointGatewayReservedIPReservedIPIdentityById endpointGatewayReservedIpModel = new EndpointGatewayReservedIPReservedIPIdentityById.Builder()
-      .id("6d353a0f-aeb1-4ae1-832e-1110d10981bb")
+      .id("0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb")
       .build();
-    assertEquals(endpointGatewayReservedIpModel.id(), "6d353a0f-aeb1-4ae1-832e-1110d10981bb");
+    assertEquals(endpointGatewayReservedIpModel.id(), "0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb");
 
     ResourceGroupIdentityById resourceGroupIdentityModel = new ResourceGroupIdentityById.Builder()
       .id("fee82deba12e4c0fb69c3b09d1f12345")

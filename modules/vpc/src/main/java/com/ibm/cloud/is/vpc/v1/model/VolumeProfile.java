@@ -22,9 +22,8 @@ public class VolumeProfile extends GenericModel {
   /**
    * The product family this volume profile belongs to.
    *
-   * The enumerated values for this property will expand in the future. When processing this property, check for and log
-   * unknown values. Optionally halt processing and surface the error, or bypass the volume profile on which the
-   * unexpected property value was encountered.
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface Family {
     /** custom. */
@@ -44,9 +43,8 @@ public class VolumeProfile extends GenericModel {
    *
    * The product family this volume profile belongs to.
    *
-   * The enumerated values for this property will expand in the future. When processing this property, check for and log
-   * unknown values. Optionally halt processing and surface the error, or bypass the volume profile on which the
-   * unexpected property value was encountered.
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the family
    */

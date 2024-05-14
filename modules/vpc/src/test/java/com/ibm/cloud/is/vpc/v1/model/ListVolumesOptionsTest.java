@@ -40,6 +40,7 @@ public class ListVolumesOptionsTest {
       .operatingSystemFamily("Ubuntu Server")
       .operatingSystemArchitecture("amd64")
       .zoneName("us-south-1")
+      .tag("testString")
       .build();
     assertEquals(listVolumesOptionsModel.start(), "testString");
     assertEquals(listVolumesOptionsModel.limit(), Long.valueOf("50"));
@@ -49,5 +50,6 @@ public class ListVolumesOptionsTest {
     assertEquals(listVolumesOptionsModel.operatingSystemFamily(), "Ubuntu Server");
     assertEquals(listVolumesOptionsModel.operatingSystemArchitecture(), "amd64");
     assertEquals(listVolumesOptionsModel.zoneName(), "us-south-1");
+    assertEquals(listVolumesOptionsModel.tag(), "testString");
   }
 }

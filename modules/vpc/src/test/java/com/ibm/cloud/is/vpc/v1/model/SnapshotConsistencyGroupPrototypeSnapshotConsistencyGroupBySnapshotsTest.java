@@ -40,9 +40,9 @@ public class SnapshotConsistencyGroupPrototypeSnapshotConsistencyGroupBySnapshot
     assertEquals(resourceGroupIdentityModel.id(), "fee82deba12e4c0fb69c3b09d1f12345");
 
     VolumeIdentityById volumeIdentityModel = new VolumeIdentityById.Builder()
-      .id("1a6b7274-678d-4dfb-8981-c71dd9d4daa5")
+      .id("r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5")
       .build();
-    assertEquals(volumeIdentityModel.id(), "1a6b7274-678d-4dfb-8981-c71dd9d4daa5");
+    assertEquals(volumeIdentityModel.id(), "r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5");
 
     SnapshotPrototypeSnapshotConsistencyGroupContext snapshotPrototypeSnapshotConsistencyGroupContextModel = new SnapshotPrototypeSnapshotConsistencyGroupContext.Builder()
       .name("my-snapshot")

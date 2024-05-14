@@ -22,7 +22,7 @@ import com.ibm.cloud.is.vpc.v1.model.SnapshotConsistencyGroup;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotConsistencyGroupCollection;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotConsistencyGroupCollectionFirst;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotConsistencyGroupCollectionNext;
-import com.ibm.cloud.is.vpc.v1.model.SnapshotConsistencyGroupSnapshotsItem;
+import com.ibm.cloud.is.vpc.v1.model.SnapshotReference;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotRemote;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;

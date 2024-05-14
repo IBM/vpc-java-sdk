@@ -32,15 +32,15 @@ public class SecurityGroupIdentityByHrefTest {
   @Test
   public void testSecurityGroupIdentityByHref() throws Throwable {
     SecurityGroupIdentityByHref securityGroupIdentityByHrefModel = new SecurityGroupIdentityByHref.Builder()
-      .href("https://us-south.iaas.cloud.ibm.com/v1/security_groups/be5df5ca-12a0-494b-907e-aa6ec2bfa271")
+      .href("https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271")
       .build();
-    assertEquals(securityGroupIdentityByHrefModel.href(), "https://us-south.iaas.cloud.ibm.com/v1/security_groups/be5df5ca-12a0-494b-907e-aa6ec2bfa271");
+    assertEquals(securityGroupIdentityByHrefModel.href(), "https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271");
 
     String json = TestUtilities.serialize(securityGroupIdentityByHrefModel);
 
     SecurityGroupIdentityByHref securityGroupIdentityByHrefModelNew = TestUtilities.deserialize(json, SecurityGroupIdentityByHref.class);
     assertTrue(securityGroupIdentityByHrefModelNew instanceof SecurityGroupIdentityByHref);
-    assertEquals(securityGroupIdentityByHrefModelNew.href(), "https://us-south.iaas.cloud.ibm.com/v1/security_groups/be5df5ca-12a0-494b-907e-aa6ec2bfa271");
+    assertEquals(securityGroupIdentityByHrefModelNew.href(), "https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

@@ -22,10 +22,18 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  * VPNGatewayConnection.
  *
  * Classes which extend this class:
- * - VPNGatewayConnectionStaticRouteMode
+ * - VPNGatewayConnectionRouteMode
  * - VPNGatewayConnectionPolicyMode
  */
 public class VPNGatewayConnection extends GenericModel {
+  @SuppressWarnings("unused")
+  protected static String discriminatorPropertyName = "mode";
+  protected static java.util.Map<String, Class<?>> discriminatorMapping;
+  static {
+    discriminatorMapping = new java.util.HashMap<>();
+    discriminatorMapping.put("policy", VPNGatewayConnectionPolicyMode.class);
+    discriminatorMapping.put("route", VPNGatewayConnectionRouteMode.class);
+  }
 
   /**
    * The authentication mode. Only `psk` is currently supported.
@@ -33,6 +41,22 @@ public class VPNGatewayConnection extends GenericModel {
   public interface AuthenticationMode {
     /** psk. */
     String PSK = "psk";
+  }
+
+  /**
+   * The establish mode of the VPN gateway connection:
+   * - `bidirectional`: Either side of the VPN gateway can initiate IKE protocol
+   *    negotiations or rekeying processes.
+   * - `peer_only`: Only the peer can initiate IKE protocol negotiations for this VPN gateway
+   *    connection. Additionally, the peer is responsible for initiating the rekeying process
+   *    after the connection is established. If rekeying does not occur, the VPN gateway
+   *    connection will be brought down after its lifetime expires.
+   */
+  public interface EstablishMode {
+    /** bidirectional. */
+    String BIDIRECTIONAL = "bidirectional";
+    /** peer_only. */
+    String PEER_ONLY = "peer_only";
   }
 
   /**
@@ -79,6 +103,8 @@ public class VPNGatewayConnection extends GenericModel {
   protected Date createdAt;
   @SerializedName("dead_peer_detection")
   protected VPNGatewayConnectionDPD deadPeerDetection;
+  @SerializedName("establish_mode")
+  protected String establishMode;
   protected String href;
   protected String id;
   @SerializedName("ike_policy")
@@ -87,21 +113,17 @@ public class VPNGatewayConnection extends GenericModel {
   protected IPsecPolicyReference ipsecPolicy;
   protected String mode;
   protected String name;
-  @SerializedName("peer_address")
-  protected String peerAddress;
   protected String psk;
   @SerializedName("resource_type")
   protected String resourceType;
   protected String status;
   @SerializedName("status_reasons")
   protected List<VPNGatewayConnectionStatusReason> statusReasons;
+  protected VPNGatewayConnectionStaticRouteModeLocal local;
+  protected VPNGatewayConnectionStaticRouteModePeer peer;
   @SerializedName("routing_protocol")
   protected String routingProtocol;
   protected List<VPNGatewayConnectionStaticRouteModeTunnel> tunnels;
-  @SerializedName("local_cidrs")
-  protected List<String> localCidrs;
-  @SerializedName("peer_cidrs")
-  protected List<String> peerCidrs;
 
   protected VPNGatewayConnection() { }
 
@@ -147,6 +169,23 @@ public class VPNGatewayConnection extends GenericModel {
    */
   public VPNGatewayConnectionDPD getDeadPeerDetection() {
     return deadPeerDetection;
+  }
+
+  /**
+   * Gets the establishMode.
+   *
+   * The establish mode of the VPN gateway connection:
+   * - `bidirectional`: Either side of the VPN gateway can initiate IKE protocol
+   *    negotiations or rekeying processes.
+   * - `peer_only`: Only the peer can initiate IKE protocol negotiations for this VPN gateway
+   *    connection. Additionally, the peer is responsible for initiating the rekeying process
+   *    after the connection is established. If rekeying does not occur, the VPN gateway
+   *    connection will be brought down after its lifetime expires.
+   *
+   * @return the establishMode
+   */
+  public String getEstablishMode() {
+    return establishMode;
   }
 
   /**
@@ -218,17 +257,6 @@ public class VPNGatewayConnection extends GenericModel {
   }
 
   /**
-   * Gets the peerAddress.
-   *
-   * The IP address of the peer VPN gateway.
-   *
-   * @return the peerAddress
-   */
-  public String getPeerAddress() {
-    return peerAddress;
-  }
-
-  /**
    * Gets the psk.
    *
    * The pre-shared key.
@@ -264,30 +292,30 @@ public class VPNGatewayConnection extends GenericModel {
   /**
    * Gets the statusReasons.
    *
-   * The reasons for the current VPN gateway connection status (if any):
-   * - `cannot_authenticate_connection`: Failed to authenticate a connection because of
-   *   mismatched IKE ID and PSK (check IKE ID and PSK in peer VPN configuration)
-   * - `internal_error`: Internal error (contact IBM support)
-   * - `ike_policy_mismatch`: None of the proposed IKE crypto suites was acceptable (check
-   *    the IKE policies on both sides of the VPN)
-   * - `ike_v1_id_local_remote_cidr_mismatch`: Invalid IKE ID or mismatched local CIDRs and
-   *   remote CIDRs in IKE V1 (check the IKE ID or the local CIDRs and remote CIDRs in IKE
-   *   V1 configuration)
-   * - `ike_v2_local_remote_cidr_mismatch`: Mismatched local CIDRs and remote CIDRs in IKE
-   *   V2 (check the local CIDRs and remote CIDRs in IKE V2 configuration)
-   * - `ipsec_policy_mismatch`: None of the proposed IPsec crypto suites was acceptable
-   *   (check the IPsec policies on both sides of the VPN)
-   * - `peer_not_responding`: No response from peer (check network ACL configuration, peer
-   *   availability, and on-premise firewall configuration)
-   *
-   * The enumerated reason code values for this property will expand in the future. When processing this property, check
-   * for and log unknown values. Optionally halt processing and surface the error, or bypass the resource on which the
-   * unexpected reason code was encountered.
+   * The reasons for the current VPN gateway connection status (if any).
    *
    * @return the statusReasons
    */
   public List<VPNGatewayConnectionStatusReason> getStatusReasons() {
     return statusReasons;
+  }
+
+  /**
+   * Gets the local.
+   *
+   * @return the local
+   */
+  public VPNGatewayConnectionStaticRouteModeLocal getLocal() {
+    return local;
+  }
+
+  /**
+   * Gets the peer.
+   *
+   * @return the peer
+   */
+  public VPNGatewayConnectionStaticRouteModePeer getPeer() {
+    return peer;
   }
 
   /**
@@ -310,28 +338,6 @@ public class VPNGatewayConnection extends GenericModel {
    */
   public List<VPNGatewayConnectionStaticRouteModeTunnel> getTunnels() {
     return tunnels;
-  }
-
-  /**
-   * Gets the localCidrs.
-   *
-   * The local CIDRs for this resource.
-   *
-   * @return the localCidrs
-   */
-  public List<String> getLocalCidrs() {
-    return localCidrs;
-  }
-
-  /**
-   * Gets the peerCidrs.
-   *
-   * The peer CIDRs for this resource.
-   *
-   * @return the peerCidrs
-   */
-  public List<String> getPeerCidrs() {
-    return peerCidrs;
   }
 }
 

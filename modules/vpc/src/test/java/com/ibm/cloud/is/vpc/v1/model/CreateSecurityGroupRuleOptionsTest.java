@@ -14,6 +14,7 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.CreateSecurityGroupRuleOptions;
+import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleLocalPrototypeIP;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRulePrototypeSecurityGroupRuleProtocolAll;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleRemotePrototypeIP;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
@@ -33,6 +34,11 @@ public class CreateSecurityGroupRuleOptionsTest {
 
   @Test
   public void testCreateSecurityGroupRuleOptions() throws Throwable {
+    SecurityGroupRuleLocalPrototypeIP securityGroupRuleLocalPrototypeModel = new SecurityGroupRuleLocalPrototypeIP.Builder()
+      .address("192.168.3.4")
+      .build();
+    assertEquals(securityGroupRuleLocalPrototypeModel.address(), "192.168.3.4");
+
     SecurityGroupRuleRemotePrototypeIP securityGroupRuleRemotePrototypeModel = new SecurityGroupRuleRemotePrototypeIP.Builder()
       .address("192.168.3.4")
       .build();
@@ -41,11 +47,13 @@ public class CreateSecurityGroupRuleOptionsTest {
     SecurityGroupRulePrototypeSecurityGroupRuleProtocolAll securityGroupRulePrototypeModel = new SecurityGroupRulePrototypeSecurityGroupRuleProtocolAll.Builder()
       .direction("inbound")
       .ipVersion("ipv4")
+      .local(securityGroupRuleLocalPrototypeModel)
       .protocol("all")
       .remote(securityGroupRuleRemotePrototypeModel)
       .build();
     assertEquals(securityGroupRulePrototypeModel.direction(), "inbound");
     assertEquals(securityGroupRulePrototypeModel.ipVersion(), "ipv4");
+    assertEquals(securityGroupRulePrototypeModel.local(), securityGroupRuleLocalPrototypeModel);
     assertEquals(securityGroupRulePrototypeModel.protocol(), "all");
     assertEquals(securityGroupRulePrototypeModel.remote(), securityGroupRuleRemotePrototypeModel);
 

@@ -13,6 +13,7 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleLocalPrototypeIP;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRulePrototypeSecurityGroupRuleProtocolICMP;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleRemotePrototypeIP;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
@@ -32,6 +33,11 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolICMPTest {
 
   @Test
   public void testSecurityGroupRulePrototypeSecurityGroupRuleProtocolICMP() throws Throwable {
+    SecurityGroupRuleLocalPrototypeIP securityGroupRuleLocalPrototypeModel = new SecurityGroupRuleLocalPrototypeIP.Builder()
+      .address("192.168.3.4")
+      .build();
+    assertEquals(securityGroupRuleLocalPrototypeModel.address(), "192.168.3.4");
+
     SecurityGroupRuleRemotePrototypeIP securityGroupRuleRemotePrototypeModel = new SecurityGroupRuleRemotePrototypeIP.Builder()
       .address("192.168.3.4")
       .build();
@@ -41,6 +47,7 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolICMPTest {
       .code(Long.valueOf("0"))
       .direction("inbound")
       .ipVersion("ipv4")
+      .local(securityGroupRuleLocalPrototypeModel)
       .protocol("icmp")
       .remote(securityGroupRuleRemotePrototypeModel)
       .type(Long.valueOf("8"))
@@ -48,6 +55,7 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolICMPTest {
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolIcmpModel.code(), Long.valueOf("0"));
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolIcmpModel.direction(), "inbound");
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolIcmpModel.ipVersion(), "ipv4");
+    assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolIcmpModel.local(), securityGroupRuleLocalPrototypeModel);
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolIcmpModel.protocol(), "icmp");
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolIcmpModel.remote(), securityGroupRuleRemotePrototypeModel);
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolIcmpModel.type(), Long.valueOf("8"));
@@ -59,6 +67,7 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolICMPTest {
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolIcmpModelNew.code(), Long.valueOf("0"));
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolIcmpModelNew.direction(), "inbound");
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolIcmpModelNew.ipVersion(), "ipv4");
+    assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolIcmpModelNew.local().toString(), securityGroupRuleLocalPrototypeModel.toString());
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolIcmpModelNew.protocol(), "icmp");
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolIcmpModelNew.remote().toString(), securityGroupRuleRemotePrototypeModel.toString());
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolIcmpModelNew.type(), Long.valueOf("8"));

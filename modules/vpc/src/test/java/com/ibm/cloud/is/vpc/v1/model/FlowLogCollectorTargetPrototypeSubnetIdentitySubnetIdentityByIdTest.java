@@ -32,15 +32,15 @@ public class FlowLogCollectorTargetPrototypeSubnetIdentitySubnetIdentityByIdTest
   @Test
   public void testFlowLogCollectorTargetPrototypeSubnetIdentitySubnetIdentityById() throws Throwable {
     FlowLogCollectorTargetPrototypeSubnetIdentitySubnetIdentityById flowLogCollectorTargetPrototypeSubnetIdentitySubnetIdentityByIdModel = new FlowLogCollectorTargetPrototypeSubnetIdentitySubnetIdentityById.Builder()
-      .id("7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
+      .id("0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
       .build();
-    assertEquals(flowLogCollectorTargetPrototypeSubnetIdentitySubnetIdentityByIdModel.id(), "7ec86020-1c6e-4889-b3f0-a15f2e50f87e");
+    assertEquals(flowLogCollectorTargetPrototypeSubnetIdentitySubnetIdentityByIdModel.id(), "0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e");
 
     String json = TestUtilities.serialize(flowLogCollectorTargetPrototypeSubnetIdentitySubnetIdentityByIdModel);
 
     FlowLogCollectorTargetPrototypeSubnetIdentitySubnetIdentityById flowLogCollectorTargetPrototypeSubnetIdentitySubnetIdentityByIdModelNew = TestUtilities.deserialize(json, FlowLogCollectorTargetPrototypeSubnetIdentitySubnetIdentityById.class);
     assertTrue(flowLogCollectorTargetPrototypeSubnetIdentitySubnetIdentityByIdModelNew instanceof FlowLogCollectorTargetPrototypeSubnetIdentitySubnetIdentityById);
-    assertEquals(flowLogCollectorTargetPrototypeSubnetIdentitySubnetIdentityByIdModelNew.id(), "7ec86020-1c6e-4889-b3f0-a15f2e50f87e");
+    assertEquals(flowLogCollectorTargetPrototypeSubnetIdentitySubnetIdentityByIdModelNew.id(), "0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

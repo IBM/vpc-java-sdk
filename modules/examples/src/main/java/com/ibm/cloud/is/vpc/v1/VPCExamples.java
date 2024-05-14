@@ -17,8 +17,8 @@ import com.ibm.cloud.is.vpc.v1.model.ActivateReservationOptions;
 import com.ibm.cloud.is.vpc.v1.model.AddBareMetalServerNetworkInterfaceFloatingIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.AddEndpointGatewayIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.AddInstanceNetworkInterfaceFloatingIpOptions;
-import com.ibm.cloud.is.vpc.v1.model.AddVpnGatewayConnectionLocalCidrOptions;
-import com.ibm.cloud.is.vpc.v1.model.AddVpnGatewayConnectionPeerCidrOptions;
+import com.ibm.cloud.is.vpc.v1.model.AddVpnGatewayConnectionsLocalCidrOptions;
+import com.ibm.cloud.is.vpc.v1.model.AddVpnGatewayConnectionsPeerCidrOptions;
 import com.ibm.cloud.is.vpc.v1.model.AddressPrefix;
 import com.ibm.cloud.is.vpc.v1.model.AddressPrefixPatch;
 import com.ibm.cloud.is.vpc.v1.model.BackupPoliciesPager;
@@ -50,8 +50,8 @@ import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfilesPager;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerPrototypeBareMetalServerByNetworkInterface;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServersPager;
 import com.ibm.cloud.is.vpc.v1.model.CertificateInstanceIdentityByCRN;
-import com.ibm.cloud.is.vpc.v1.model.CheckVpnGatewayConnectionLocalCidrOptions;
-import com.ibm.cloud.is.vpc.v1.model.CheckVpnGatewayConnectionPeerCidrOptions;
+import com.ibm.cloud.is.vpc.v1.model.CheckVpnGatewayConnectionsLocalCidrOptions;
+import com.ibm.cloud.is.vpc.v1.model.CheckVpnGatewayConnectionsPeerCidrOptions;
 import com.ibm.cloud.is.vpc.v1.model.CloudObjectStorageBucketIdentityCloudObjectStorageBucketIdentityByName;
 import com.ibm.cloud.is.vpc.v1.model.CreateBackupPolicyOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateBackupPolicyPlanOptions;
@@ -417,8 +417,8 @@ import com.ibm.cloud.is.vpc.v1.model.ListVpcRoutesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListVpcRoutingTableRoutesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListVpcRoutingTablesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListVpcsOptions;
-import com.ibm.cloud.is.vpc.v1.model.ListVpnGatewayConnectionLocalCidrsOptions;
-import com.ibm.cloud.is.vpc.v1.model.ListVpnGatewayConnectionPeerCidrsOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListVpnGatewayConnectionsLocalCidrsOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListVpnGatewayConnectionsPeerCidrsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListVpnGatewayConnectionsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListVpnGatewaysOptions;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancer;
@@ -480,8 +480,8 @@ import com.ibm.cloud.is.vpc.v1.model.RegionIdentityByName;
 import com.ibm.cloud.is.vpc.v1.model.RemoveBareMetalServerNetworkInterfaceFloatingIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.RemoveEndpointGatewayIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.RemoveInstanceNetworkInterfaceFloatingIpOptions;
-import com.ibm.cloud.is.vpc.v1.model.RemoveVpnGatewayConnectionLocalCidrOptions;
-import com.ibm.cloud.is.vpc.v1.model.RemoveVpnGatewayConnectionPeerCidrOptions;
+import com.ibm.cloud.is.vpc.v1.model.RemoveVpnGatewayConnectionsLocalCidrOptions;
+import com.ibm.cloud.is.vpc.v1.model.RemoveVpnGatewayConnectionsPeerCidrOptions;
 import com.ibm.cloud.is.vpc.v1.model.ReplaceLoadBalancerPoolMembersOptions;
 import com.ibm.cloud.is.vpc.v1.model.ReplaceSubnetNetworkAclOptions;
 import com.ibm.cloud.is.vpc.v1.model.ReplaceSubnetRoutingTableOptions;
@@ -606,9 +606,9 @@ import com.ibm.cloud.is.vpc.v1.model.VPCPatch;
 import com.ibm.cloud.is.vpc.v1.model.VPNGateway;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnection;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionCollection;
-import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionLocalCIDRs;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionCIDRs;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionPatch;
-import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionPeerCIDRs;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionStaticRouteModePeerPrototypeVPNGatewayConnectionPeerByAddress;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionPrototypeVPNGatewayConnectionStaticRouteModePrototype;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayPatch;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayPrototypeVPNGatewayRouteModePrototype;
@@ -5459,9 +5459,12 @@ public class VPCExamples {
     try {
       System.out.println("createVpnGatewayConnection() result:");
       // begin-create_vpn_gateway_connection
+      VPNGatewayConnectionStaticRouteModePeerPrototypeVPNGatewayConnectionPeerByAddress vpnGatewayConnectionStaticRouteModePeerPrototypeModel = new VPNGatewayConnectionStaticRouteModePeerPrototypeVPNGatewayConnectionPeerByAddress.Builder()
+        .address("169.21.50.5")
+        .build();
       VPNGatewayConnectionPrototypeVPNGatewayConnectionStaticRouteModePrototype vpnGatewayConnectionPrototypeModel = new VPNGatewayConnectionPrototypeVPNGatewayConnectionStaticRouteModePrototype.Builder()
         .name("my-vpn-gateway-connection")
-        .peerAddress("169.21.50.5")
+        .peer(vpnGatewayConnectionStaticRouteModePeerPrototypeModel)
         .psk("lkj14b1oi0alcniejkso")
         .build();
       CreateVpnGatewayConnectionOptions createVpnGatewayConnectionOptions = new CreateVpnGatewayConnectionOptions.Builder()
@@ -5519,105 +5522,102 @@ public class VPCExamples {
     }
 
     try {
-      System.out.println("listVpnGatewayConnectionLocalCidrs() result:");
-      // begin-list_vpn_gateway_connection_local_cidrs
-      ListVpnGatewayConnectionLocalCidrsOptions listVpnGatewayConnectionLocalCidrsOptions = new ListVpnGatewayConnectionLocalCidrsOptions.Builder()
+      System.out.println("listVpnGatewayConnectionsLocalCidrs() result:");
+      // begin-list_vpn_gateway_connections_local_cidrs
+      ListVpnGatewayConnectionsLocalCidrsOptions listVpnGatewayConnectionsLocalCidrsOptions = new ListVpnGatewayConnectionsLocalCidrsOptions.Builder()
         .vpnGatewayId(vpnGatewayId)
         .id(vpnGatewayConnectionId)
         .build();
 
-      Response<VPNGatewayConnectionLocalCIDRs> response = vpcService.listVpnGatewayConnectionLocalCidrs(listVpnGatewayConnectionLocalCidrsOptions).execute();
-      VPNGatewayConnectionLocalCIDRs vpnGatewayConnectionLocalCidRs = response.getResult();
+      Response<VPNGatewayConnectionCIDRs> response = vpcService.listVpnGatewayConnectionsLocalCidrs(listVpnGatewayConnectionsLocalCidrsOptions).execute();
+      VPNGatewayConnectionCIDRs vpnGatewayConnectionCidRs = response.getResult();
 
-      // end-list_vpn_gateway_connection_local_cidrs
+      // end-list_vpn_gateway_connections_local_cidrs
     } catch (ServiceResponseException e) {
         logger.error(String.format("Service returned status code %s: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
     }
 
     try {
-      // begin-add_vpn_gateway_connection_local_cidr
-      AddVpnGatewayConnectionLocalCidrOptions addVpnGatewayConnectionLocalCidrOptions = new AddVpnGatewayConnectionLocalCidrOptions.Builder()
+      // begin-check_vpn_gateway_connections_local_cidr
+      CheckVpnGatewayConnectionsLocalCidrOptions checkVpnGatewayConnectionsLocalCidrOptions = new CheckVpnGatewayConnectionsLocalCidrOptions.Builder()
         .vpnGatewayId(vpnGatewayId)
         .id(vpnGatewayConnectionId)
-        .cidrPrefix("192.134.0.0")
-        .prefixLength("28")
+        .cidr("192.134.0.0/28")
         .build();
 
-      Response<Void> response = vpcService.addVpnGatewayConnectionLocalCidr(addVpnGatewayConnectionLocalCidrOptions).execute();
-      // end-add_vpn_gateway_connection_local_cidr
-      System.out.printf("addVpnGatewayConnectionLocalCidr() response status code: %d%n", response.getStatusCode());
+      Response<Void> response = vpcService.checkVpnGatewayConnectionsLocalCidr(checkVpnGatewayConnectionsLocalCidrOptions).execute();
+      // end-check_vpn_gateway_connections_local_cidr
+      System.out.printf("checkVpnGatewayConnectionsLocalCidr() response status code: %d%n", response.getStatusCode());
     } catch (ServiceResponseException e) {
         logger.error(String.format("Service returned status code %s: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
     }
 
     try {
-      // begin-check_vpn_gateway_connection_local_cidr
-      CheckVpnGatewayConnectionLocalCidrOptions checkVpnGatewayConnectionLocalCidrOptions = new CheckVpnGatewayConnectionLocalCidrOptions.Builder()
-              .vpnGatewayId(vpnGatewayId)
-              .id(vpnGatewayConnectionId)
-              .cidrPrefix("192.134.0.0")
-              .prefixLength("28")
-              .build();
-      Response<Void> response = vpcService.checkVpnGatewayConnectionLocalCidr(checkVpnGatewayConnectionLocalCidrOptions).execute();
-      // end-check_vpn_gateway_connection_local_cidr
-      System.out.printf("checkVpnGatewayConnectionLocalCidr() response status code: %d%n", response.getStatusCode());
-    } catch (ServiceResponseException e) {
-      logger.error(String.format("Service returned status code %s: %s%nError details: %s",
-              e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
-    }
-
-    try {
-      System.out.println("listVpnGatewayConnectionPeerCidrs() result:");
-      // begin-list_vpn_gateway_connection_peer_cidrs
-      ListVpnGatewayConnectionPeerCidrsOptions listVpnGatewayConnectionPeerCidrsOptions = new ListVpnGatewayConnectionPeerCidrsOptions.Builder()
+      // begin-add_vpn_gateway_connections_local_cidr
+      AddVpnGatewayConnectionsLocalCidrOptions addVpnGatewayConnectionsLocalCidrOptions = new AddVpnGatewayConnectionsLocalCidrOptions.Builder()
         .vpnGatewayId(vpnGatewayId)
         .id(vpnGatewayConnectionId)
+        .cidr("192.134.0.0/28")
         .build();
 
-      Response<VPNGatewayConnectionPeerCIDRs> response = vpcService.listVpnGatewayConnectionPeerCidrs(listVpnGatewayConnectionPeerCidrsOptions).execute();
-      VPNGatewayConnectionPeerCIDRs vpnGatewayConnectionPeerCidRs = response.getResult();
-
-      // end-list_vpn_gateway_connection_peer_cidrs
+      Response<Void> response = vpcService.addVpnGatewayConnectionsLocalCidr(addVpnGatewayConnectionsLocalCidrOptions).execute();
+      // end-add_vpn_gateway_connections_local_cidr
+      System.out.printf("addVpnGatewayConnectionsLocalCidr() response status code: %d%n", response.getStatusCode());
     } catch (ServiceResponseException e) {
         logger.error(String.format("Service returned status code %s: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
     }
 
     try {
-      // begin-add_vpn_gateway_connection_peer_cidr
-      AddVpnGatewayConnectionPeerCidrOptions addVpnGatewayConnectionPeerCidrOptions = new AddVpnGatewayConnectionPeerCidrOptions.Builder()
+      System.out.println("listVpnGatewayConnectionsPeerCidrs() result:");
+      // begin-list_vpn_gateway_connections_peer_cidrs
+      ListVpnGatewayConnectionsPeerCidrsOptions listVpnGatewayConnectionsPeerCidrsOptions = new ListVpnGatewayConnectionsPeerCidrsOptions.Builder()
         .vpnGatewayId(vpnGatewayId)
         .id(vpnGatewayConnectionId)
-        .cidrPrefix("192.134.0.0")
-        .prefixLength("28")
         .build();
 
-      Response<Void> response = vpcService.addVpnGatewayConnectionPeerCidr(addVpnGatewayConnectionPeerCidrOptions).execute();
-      // end-add_vpn_gateway_connection_peer_cidr
-      System.out.printf("addVpnGatewayConnectionPeerCidr() response status code: %d%n", response.getStatusCode());
+      Response<VPNGatewayConnectionCIDRs> response = vpcService.listVpnGatewayConnectionsPeerCidrs(listVpnGatewayConnectionsPeerCidrsOptions).execute();
+      VPNGatewayConnectionCIDRs vpnGatewayConnectionCidRs = response.getResult();
+
+      // end-list_vpn_gateway_connections_peer_cidrs
     } catch (ServiceResponseException e) {
         logger.error(String.format("Service returned status code %s: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
     }
 
     try {
-      // begin-check_vpn_gateway_connection_peer_cidr
-      CheckVpnGatewayConnectionPeerCidrOptions checkVpnGatewayConnectionPeerCidrOptions = new CheckVpnGatewayConnectionPeerCidrOptions.Builder()
-              .vpnGatewayId(vpnGatewayId)
-              .id(vpnGatewayConnectionId)
-              .cidrPrefix("192.134.0.0")
-              .prefixLength("28")
-              .build();
-      Response<Void> response = vpcService.checkVpnGatewayConnectionPeerCidr(checkVpnGatewayConnectionPeerCidrOptions).execute();
-      // end-check_vpn_gateway_connection_peer_cidr
-      System.out.printf("checkVpnGatewayConnectionPeerCidr() response status code: %d%n", response.getStatusCode());
+      // begin-check_vpn_gateway_connections_peer_cidr
+      CheckVpnGatewayConnectionsPeerCidrOptions checkVpnGatewayConnectionsPeerCidrOptions = new CheckVpnGatewayConnectionsPeerCidrOptions.Builder()
+        .vpnGatewayId(vpnGatewayId)
+        .id(vpnGatewayConnectionId)
+        .cidr("192.134.0.0/28")
+        .build();
+
+      Response<Void> response = vpcService.checkVpnGatewayConnectionsPeerCidr(checkVpnGatewayConnectionsPeerCidrOptions).execute();
+      // end-check_vpn_gateway_connections_peer_cidr
+      System.out.printf("checkVpnGatewayConnectionsPeerCidr() response status code: %d%n", response.getStatusCode());
     } catch (ServiceResponseException e) {
-      logger.error(String.format("Service returned status code %s: %s%nError details: %s",
-              e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
     }
 
+    try {
+      // begin-add_vpn_gateway_connections_peer_cidr
+      AddVpnGatewayConnectionsPeerCidrOptions addVpnGatewayConnectionsPeerCidrOptions = new AddVpnGatewayConnectionsPeerCidrOptions.Builder()
+        .vpnGatewayId(vpnGatewayId)
+        .id(vpnGatewayConnectionId)
+        .cidr("192.134.0.0/28")
+        .build();
+
+      Response<Void> response = vpcService.addVpnGatewayConnectionsPeerCidr(addVpnGatewayConnectionsPeerCidrOptions).execute();
+      // end-add_vpn_gateway_connections_peer_cidr
+      System.out.printf("addVpnGatewayConnectionsPeerCidr() response status code: %d%n", response.getStatusCode());
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
 
     try {
       System.out.println("listVpnServers() result:");
@@ -6661,34 +6661,32 @@ public class VPCExamples {
     }
 
     try {
-      // begin-remove_vpn_gateway_connection_peer_cidr
-      RemoveVpnGatewayConnectionPeerCidrOptions removeVpnGatewayConnectionPeerCidrOptions = new RemoveVpnGatewayConnectionPeerCidrOptions.Builder()
+      // begin-remove_vpn_gateway_connections_local_cidr
+      RemoveVpnGatewayConnectionsLocalCidrOptions removeVpnGatewayConnectionsLocalCidrOptions = new RemoveVpnGatewayConnectionsLocalCidrOptions.Builder()
         .vpnGatewayId(vpnGatewayId)
         .id(vpnGatewayConnectionId)
-        .cidrPrefix("192.134.0.0")
-        .prefixLength("28")
+        .cidr("192.134.0.0/28")
         .build();
 
-      Response<Void> response = vpcService.removeVpnGatewayConnectionPeerCidr(removeVpnGatewayConnectionPeerCidrOptions).execute();
-      // end-remove_vpn_gateway_connection_peer_cidr
-      System.out.printf("removeVpnGatewayConnectionPeerCidr() response status code: %d%n", response.getStatusCode());
+      Response<Void> response = vpcService.removeVpnGatewayConnectionsLocalCidr(removeVpnGatewayConnectionsLocalCidrOptions).execute();
+      // end-remove_vpn_gateway_connections_local_cidr
+      System.out.printf("removeVpnGatewayConnectionsLocalCidr() response status code: %d%n", response.getStatusCode());
     } catch (ServiceResponseException e) {
         logger.error(String.format("Service returned status code %s: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
     }
 
     try {
-      // begin-remove_vpn_gateway_connection_local_cidr
-      RemoveVpnGatewayConnectionLocalCidrOptions removeVpnGatewayConnectionLocalCidrOptions = new RemoveVpnGatewayConnectionLocalCidrOptions.Builder()
+      // begin-remove_vpn_gateway_connections_peer_cidr
+      RemoveVpnGatewayConnectionsPeerCidrOptions removeVpnGatewayConnectionsPeerCidrOptions = new RemoveVpnGatewayConnectionsPeerCidrOptions.Builder()
         .vpnGatewayId(vpnGatewayId)
         .id(vpnGatewayConnectionId)
-        .cidrPrefix("192.134.0.0")
-        .prefixLength("28")
+        .cidr("192.134.0.0/28")
         .build();
 
-      Response<Void> response = vpcService.removeVpnGatewayConnectionLocalCidr(removeVpnGatewayConnectionLocalCidrOptions).execute();
-      // end-remove_vpn_gateway_connection_local_cidr
-      System.out.printf("removeVpnGatewayConnectionLocalCidr() response status code: %d%n", response.getStatusCode());
+      Response<Void> response = vpcService.removeVpnGatewayConnectionsPeerCidr(removeVpnGatewayConnectionsPeerCidrOptions).execute();
+      // end-remove_vpn_gateway_connections_peer_cidr
+      System.out.printf("removeVpnGatewayConnectionsPeerCidr() response status code: %d%n", response.getStatusCode());
     } catch (ServiceResponseException e) {
         logger.error(String.format("Service returned status code %s: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);

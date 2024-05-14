@@ -52,7 +52,18 @@ public class BareMetalServer extends GenericModel {
   }
 
   /**
-   * The status of the bare metal server.
+   * The status of this bare metal server:
+   * - `deleting`: server is undergoing deletion
+   * - `failed`: server is failed and not usable (see `status_reasons`)
+   * - `maintenance`: server is undergoing maintenance (not usable)
+   * - `pending`: server is being provisioned and not yet usable
+   * - `restarting`: server is restarting and not yet usable
+   * - `running`: server is powered on
+   * - `starting`: server is starting and not yet usable
+   * - `stopped`: server is powered off
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface Status {
     /** deleting. */
@@ -71,8 +82,6 @@ public class BareMetalServer extends GenericModel {
     String STARTING = "starting";
     /** stopped. */
     String STOPPED = "stopped";
-    /** stopping. */
-    String STOPPING = "stopping";
   }
 
   protected Long bandwidth;
@@ -131,7 +140,10 @@ public class BareMetalServer extends GenericModel {
   /**
    * Gets the bootTarget.
    *
-   * The possible resource types for this property are expected to expand in the future.
+   * The resource from which this bare metal server is booted.
+   *
+   * The resources supported by this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the bootTarget
    */
@@ -222,10 +234,6 @@ public class BareMetalServer extends GenericModel {
    * Gets the lifecycleReasons.
    *
    * The reasons for the current `lifecycle_state` (if any).
-   *
-   * The enumerated reason code values for this property will expand in the future. When processing this property, check
-   * for and log unknown values. Optionally halt processing and surface the error, or bypass the resource on which the
-   * unexpected reason code was encountered.
    *
    * @return the lifecycleReasons
    */
@@ -356,7 +364,18 @@ public class BareMetalServer extends GenericModel {
   /**
    * Gets the status.
    *
-   * The status of the bare metal server.
+   * The status of this bare metal server:
+   * - `deleting`: server is undergoing deletion
+   * - `failed`: server is failed and not usable (see `status_reasons`)
+   * - `maintenance`: server is undergoing maintenance (not usable)
+   * - `pending`: server is being provisioned and not yet usable
+   * - `restarting`: server is restarting and not yet usable
+   * - `running`: server is powered on
+   * - `starting`: server is starting and not yet usable
+   * - `stopped`: server is powered off
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the status
    */
@@ -368,10 +387,6 @@ public class BareMetalServer extends GenericModel {
    * Gets the statusReasons.
    *
    * The reasons for the current status (if any).
-   *
-   * The enumerated reason code values for this property will expand in the future. When processing this property, check
-   * for and log unknown values. Optionally halt processing and surface the error, or bypass the resource on which the
-   * unexpected reason code was encountered.
    *
    * @return the statusReasons
    */

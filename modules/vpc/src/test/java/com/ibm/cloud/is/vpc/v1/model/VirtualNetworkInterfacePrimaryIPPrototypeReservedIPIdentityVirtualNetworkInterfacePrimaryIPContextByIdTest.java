@@ -32,15 +32,15 @@ public class VirtualNetworkInterfacePrimaryIPPrototypeReservedIPIdentityVirtualN
   @Test
   public void testVirtualNetworkInterfacePrimaryIPPrototypeReservedIPIdentityVirtualNetworkInterfacePrimaryIPContextById() throws Throwable {
     VirtualNetworkInterfacePrimaryIPPrototypeReservedIPIdentityVirtualNetworkInterfacePrimaryIPContextById virtualNetworkInterfacePrimaryIpPrototypeReservedIpIdentityVirtualNetworkInterfacePrimaryIpContextByIdModel = new VirtualNetworkInterfacePrimaryIPPrototypeReservedIPIdentityVirtualNetworkInterfacePrimaryIPContextById.Builder()
-      .id("6d353a0f-aeb1-4ae1-832e-1110d10981bb")
+      .id("0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb")
       .build();
-    assertEquals(virtualNetworkInterfacePrimaryIpPrototypeReservedIpIdentityVirtualNetworkInterfacePrimaryIpContextByIdModel.id(), "6d353a0f-aeb1-4ae1-832e-1110d10981bb");
+    assertEquals(virtualNetworkInterfacePrimaryIpPrototypeReservedIpIdentityVirtualNetworkInterfacePrimaryIpContextByIdModel.id(), "0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb");
 
     String json = TestUtilities.serialize(virtualNetworkInterfacePrimaryIpPrototypeReservedIpIdentityVirtualNetworkInterfacePrimaryIpContextByIdModel);
 
     VirtualNetworkInterfacePrimaryIPPrototypeReservedIPIdentityVirtualNetworkInterfacePrimaryIPContextById virtualNetworkInterfacePrimaryIpPrototypeReservedIpIdentityVirtualNetworkInterfacePrimaryIpContextByIdModelNew = TestUtilities.deserialize(json, VirtualNetworkInterfacePrimaryIPPrototypeReservedIPIdentityVirtualNetworkInterfacePrimaryIPContextById.class);
     assertTrue(virtualNetworkInterfacePrimaryIpPrototypeReservedIpIdentityVirtualNetworkInterfacePrimaryIpContextByIdModelNew instanceof VirtualNetworkInterfacePrimaryIPPrototypeReservedIPIdentityVirtualNetworkInterfacePrimaryIPContextById);
-    assertEquals(virtualNetworkInterfacePrimaryIpPrototypeReservedIpIdentityVirtualNetworkInterfacePrimaryIpContextByIdModelNew.id(), "6d353a0f-aeb1-4ae1-832e-1110d10981bb");
+    assertEquals(virtualNetworkInterfacePrimaryIpPrototypeReservedIpIdentityVirtualNetworkInterfacePrimaryIpContextByIdModelNew.id(), "0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

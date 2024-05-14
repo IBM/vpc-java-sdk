@@ -21,11 +21,20 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class EndpointGatewayLifecycleReason extends GenericModel {
 
   /**
-   * A snake case string succinctly identifying the reason for this lifecycle state.
+   * A reason code for this lifecycle state:
+   * - `dns_resolution_binding_pending`: the DNS resolution binding is being set up
+   * - `internal_error`: internal error (contact IBM support)
+   * - `resource_suspended_by_provider`: The resource has been suspended (contact IBM
+   *   support)
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface Code {
     /** dns_resolution_binding_pending. */
     String DNS_RESOLUTION_BINDING_PENDING = "dns_resolution_binding_pending";
+    /** internal_error. */
+    String INTERNAL_ERROR = "internal_error";
     /** resource_suspended_by_provider. */
     String RESOURCE_SUSPENDED_BY_PROVIDER = "resource_suspended_by_provider";
   }
@@ -40,7 +49,14 @@ public class EndpointGatewayLifecycleReason extends GenericModel {
   /**
    * Gets the code.
    *
-   * A snake case string succinctly identifying the reason for this lifecycle state.
+   * A reason code for this lifecycle state:
+   * - `dns_resolution_binding_pending`: the DNS resolution binding is being set up
+   * - `internal_error`: internal error (contact IBM support)
+   * - `resource_suspended_by_provider`: The resource has been suspended (contact IBM
+   *   support)
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the code
    */

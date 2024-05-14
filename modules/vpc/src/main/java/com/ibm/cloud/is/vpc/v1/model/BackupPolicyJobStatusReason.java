@@ -21,11 +21,14 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class BackupPolicyJobStatusReason extends GenericModel {
 
   /**
-   * A snake case string succinctly identifying the status reason:
+   * A reason code for the status:
    * - `internal_error`: Internal error (contact IBM support)
    * - `snapshot_pending`: Cannot delete backup (snapshot) in the `pending` lifecycle state
    * - `snapshot_volume_limit`: The snapshot limit for the source volume has been reached
-   * - `source_volume_busy`: The source volume has `busy` set (after multiple retries).
+   * - `source_volume_busy`: The source volume has `busy` set (after multiple retries)
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface Code {
     /** internal_error. */
@@ -48,11 +51,14 @@ public class BackupPolicyJobStatusReason extends GenericModel {
   /**
    * Gets the code.
    *
-   * A snake case string succinctly identifying the status reason:
+   * A reason code for the status:
    * - `internal_error`: Internal error (contact IBM support)
    * - `snapshot_pending`: Cannot delete backup (snapshot) in the `pending` lifecycle state
    * - `snapshot_volume_limit`: The snapshot limit for the source volume has been reached
-   * - `source_volume_busy`: The source volume has `busy` set (after multiple retries).
+   * - `source_volume_busy`: The source volume has `busy` set (after multiple retries)
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the code
    */

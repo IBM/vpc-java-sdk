@@ -24,6 +24,26 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class InstanceGroup extends GenericModel {
 
   /**
+   * The lifecycle state of the instance group.
+   */
+  public interface LifecycleState {
+    /** deleting. */
+    String DELETING = "deleting";
+    /** failed. */
+    String FAILED = "failed";
+    /** pending. */
+    String PENDING = "pending";
+    /** stable. */
+    String STABLE = "stable";
+    /** suspended. */
+    String SUSPENDED = "suspended";
+    /** updating. */
+    String UPDATING = "updating";
+    /** waiting. */
+    String WAITING = "waiting";
+  }
+
+  /**
    * The status of the instance group
    * - `deleting`: Group is being deleted
    * - `healthy`: Group has `membership_count` instances
@@ -51,6 +71,10 @@ public class InstanceGroup extends GenericModel {
   protected String id;
   @SerializedName("instance_template")
   protected InstanceTemplateReference instanceTemplate;
+  @SerializedName("lifecycle_reasons")
+  protected List<InstanceGroupLifecycleReason> lifecycleReasons;
+  @SerializedName("lifecycle_state")
+  protected String lifecycleState;
   @SerializedName("load_balancer_pool")
   protected LoadBalancerPoolReference loadBalancerPool;
   protected List<InstanceGroupManagerReference> managers;
@@ -133,6 +157,28 @@ public class InstanceGroup extends GenericModel {
    */
   public InstanceTemplateReference getInstanceTemplate() {
     return instanceTemplate;
+  }
+
+  /**
+   * Gets the lifecycleReasons.
+   *
+   * The reasons for the current `lifecycle_state` (if any).
+   *
+   * @return the lifecycleReasons
+   */
+  public List<InstanceGroupLifecycleReason> getLifecycleReasons() {
+    return lifecycleReasons;
+  }
+
+  /**
+   * Gets the lifecycleState.
+   *
+   * The lifecycle state of the instance group.
+   *
+   * @return the lifecycleState
+   */
+  public String getLifecycleState() {
+    return lifecycleState;
   }
 
   /**

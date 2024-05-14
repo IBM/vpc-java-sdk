@@ -23,17 +23,15 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class ShareJob extends GenericModel {
 
   /**
-   * The status of the file share job.
+   * The status of the file share job:
+   * - `cancelled`: This job has been cancelled.
+   * - `failed`: This job has failed.
+   * - `queued`: This job is queued.
+   * - `running`: This job is running.
+   * - `succeeded`: This job completed successfully.
    *
-   * The enumerated values for this property will expand in the future. When processing this property, check for and log
-   * unknown values. Optionally halt processing and surface the error, or bypass the file share job on which the
-   * unexpected property value was encountered.
-   *
-   * * `cancelled`: This job has been cancelled.
-   * * `failed`: This job has failed.
-   * * `queued`: This job is queued.
-   * * `running`: This job is running.
-   * * `succeeded`: This job completed successfully.
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface Status {
     /** cancelled. */
@@ -49,15 +47,13 @@ public class ShareJob extends GenericModel {
   }
 
   /**
-   * The type of the file share job.
+   * The type of the file share job:
+   * - `replication_failover`: This is a share replication failover job.
+   * - `replication_init`: This is a share replication is initialization job.
+   * - `replication_split`: This is a share replication split job.
    *
-   * The enumerated values for this property will expand in the future. When processing this property, check for and log
-   * unknown values. Optionally halt processing and surface the error, or bypass the file share job on which the
-   * unexpected property value was encountered.
-   *
-   * * `replication_failover`: This is a share replication failover job.
-   * * `replication_init`: This is a share replication is initialization job.
-   * * `replication_split`: This is a share replication split job.
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface Type {
     /** replication_failover. */
@@ -78,17 +74,15 @@ public class ShareJob extends GenericModel {
   /**
    * Gets the status.
    *
-   * The status of the file share job.
+   * The status of the file share job:
+   * - `cancelled`: This job has been cancelled.
+   * - `failed`: This job has failed.
+   * - `queued`: This job is queued.
+   * - `running`: This job is running.
+   * - `succeeded`: This job completed successfully.
    *
-   * The enumerated values for this property will expand in the future. When processing this property, check for and log
-   * unknown values. Optionally halt processing and surface the error, or bypass the file share job on which the
-   * unexpected property value was encountered.
-   *
-   * * `cancelled`: This job has been cancelled.
-   * * `failed`: This job has failed.
-   * * `queued`: This job is queued.
-   * * `running`: This job is running.
-   * * `succeeded`: This job completed successfully.
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the status
    */
@@ -101,10 +95,6 @@ public class ShareJob extends GenericModel {
    *
    * The reasons for the file share job status (if any).
    *
-   * The enumerated reason code values for this property will expand in the future. When processing this property, check
-   * for and log unknown values. Optionally halt processing and surface the error, or bypass the resource on which the
-   * unexpected reason code was encountered.
-   *
    * @return the statusReasons
    */
   public List<ShareJobStatusReason> getStatusReasons() {
@@ -114,15 +104,13 @@ public class ShareJob extends GenericModel {
   /**
    * Gets the type.
    *
-   * The type of the file share job.
+   * The type of the file share job:
+   * - `replication_failover`: This is a share replication failover job.
+   * - `replication_init`: This is a share replication is initialization job.
+   * - `replication_split`: This is a share replication split job.
    *
-   * The enumerated values for this property will expand in the future. When processing this property, check for and log
-   * unknown values. Optionally halt processing and surface the error, or bypass the file share job on which the
-   * unexpected property value was encountered.
-   *
-   * * `replication_failover`: This is a share replication failover job.
-   * * `replication_init`: This is a share replication is initialization job.
-   * * `replication_split`: This is a share replication split job.
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the type
    */

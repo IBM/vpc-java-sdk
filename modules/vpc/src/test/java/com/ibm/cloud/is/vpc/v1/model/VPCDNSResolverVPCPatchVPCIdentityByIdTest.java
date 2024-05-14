@@ -32,15 +32,15 @@ public class VPCDNSResolverVPCPatchVPCIdentityByIdTest {
   @Test
   public void testVPCDNSResolverVPCPatchVPCIdentityById() throws Throwable {
     VPCDNSResolverVPCPatchVPCIdentityById vpcdnsResolverVpcPatchVpcIdentityByIdModel = new VPCDNSResolverVPCPatchVPCIdentityById.Builder()
-      .id("4727d842-f94f-4a2d-824a-9bc9b02c523b")
+      .id("r006-4727d842-f94f-4a2d-824a-9bc9b02c523b")
       .build();
-    assertEquals(vpcdnsResolverVpcPatchVpcIdentityByIdModel.id(), "4727d842-f94f-4a2d-824a-9bc9b02c523b");
+    assertEquals(vpcdnsResolverVpcPatchVpcIdentityByIdModel.id(), "r006-4727d842-f94f-4a2d-824a-9bc9b02c523b");
 
     String json = TestUtilities.serialize(vpcdnsResolverVpcPatchVpcIdentityByIdModel);
 
     VPCDNSResolverVPCPatchVPCIdentityById vpcdnsResolverVpcPatchVpcIdentityByIdModelNew = TestUtilities.deserialize(json, VPCDNSResolverVPCPatchVPCIdentityById.class);
     assertTrue(vpcdnsResolverVpcPatchVpcIdentityByIdModelNew instanceof VPCDNSResolverVPCPatchVPCIdentityById);
-    assertEquals(vpcdnsResolverVpcPatchVpcIdentityByIdModelNew.id(), "4727d842-f94f-4a2d-824a-9bc9b02c523b");
+    assertEquals(vpcdnsResolverVpcPatchVpcIdentityByIdModelNew.id(), "r006-4727d842-f94f-4a2d-824a-9bc9b02c523b");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

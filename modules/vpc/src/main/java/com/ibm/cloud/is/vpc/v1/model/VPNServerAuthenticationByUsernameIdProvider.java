@@ -24,12 +24,11 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class VPNServerAuthenticationByUsernameIdProvider extends GenericModel {
 
   /**
-   * The type of identity provider to be used by the VPN client.
+   * The type of identity provider to be used by the VPN client:
    * - `iam`: IBM identity and access management
    *
-   * The enumerated values for this property are expected to expand in the future. When processing this property, check
-   * for and log unknown values. Optionally halt processing and surface the error, or bypass the route on which the
-   * unexpected property value was encountered.
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface ProviderType {
     /** iam. */
@@ -44,12 +43,11 @@ public class VPNServerAuthenticationByUsernameIdProvider extends GenericModel {
   /**
    * Gets the providerType.
    *
-   * The type of identity provider to be used by the VPN client.
+   * The type of identity provider to be used by the VPN client:
    * - `iam`: IBM identity and access management
    *
-   * The enumerated values for this property are expected to expand in the future. When processing this property, check
-   * for and log unknown values. Optionally halt processing and surface the error, or bypass the route on which the
-   * unexpected property value was encountered.
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the providerType
    */

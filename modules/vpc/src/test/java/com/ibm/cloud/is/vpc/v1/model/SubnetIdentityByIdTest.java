@@ -32,15 +32,15 @@ public class SubnetIdentityByIdTest {
   @Test
   public void testSubnetIdentityById() throws Throwable {
     SubnetIdentityById subnetIdentityByIdModel = new SubnetIdentityById.Builder()
-      .id("7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
+      .id("0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
       .build();
-    assertEquals(subnetIdentityByIdModel.id(), "7ec86020-1c6e-4889-b3f0-a15f2e50f87e");
+    assertEquals(subnetIdentityByIdModel.id(), "0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e");
 
     String json = TestUtilities.serialize(subnetIdentityByIdModel);
 
     SubnetIdentityById subnetIdentityByIdModelNew = TestUtilities.deserialize(json, SubnetIdentityById.class);
     assertTrue(subnetIdentityByIdModelNew instanceof SubnetIdentityById);
-    assertEquals(subnetIdentityByIdModelNew.id(), "7ec86020-1c6e-4889-b3f0-a15f2e50f87e");
+    assertEquals(subnetIdentityByIdModelNew.id(), "0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

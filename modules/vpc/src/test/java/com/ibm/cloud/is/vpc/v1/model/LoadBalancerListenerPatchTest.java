@@ -14,10 +14,10 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.CertificateInstanceIdentityByCRN;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerDefaultPoolPatchLoadBalancerPoolIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerHTTPSRedirectPatch;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPatch;
-import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolIdentityById;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -37,14 +37,14 @@ public class LoadBalancerListenerPatchTest {
   @Test
   public void testLoadBalancerListenerPatch() throws Throwable {
     CertificateInstanceIdentityByCRN certificateInstanceIdentityModel = new CertificateInstanceIdentityByCRN.Builder()
-      .crn("crn:v1:bluemix:public:secrets-manager:us-south:a/123456:36fa422d-080d-4d83-8d2d-86851b4001df:secret:2e786aab-42fa-63ed-14f8-d66d552f4dd5")
+      .crn("crn:v1:bluemix:public:secrets-manager:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:36fa422d-080d-4d83-8d2d-86851b4001df:secret:2e786aab-42fa-63ed-14f8-d66d552f4dd5")
       .build();
-    assertEquals(certificateInstanceIdentityModel.crn(), "crn:v1:bluemix:public:secrets-manager:us-south:a/123456:36fa422d-080d-4d83-8d2d-86851b4001df:secret:2e786aab-42fa-63ed-14f8-d66d552f4dd5");
+    assertEquals(certificateInstanceIdentityModel.crn(), "crn:v1:bluemix:public:secrets-manager:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:36fa422d-080d-4d83-8d2d-86851b4001df:secret:2e786aab-42fa-63ed-14f8-d66d552f4dd5");
 
-    LoadBalancerPoolIdentityById loadBalancerPoolIdentityModel = new LoadBalancerPoolIdentityById.Builder()
+    LoadBalancerListenerDefaultPoolPatchLoadBalancerPoolIdentityById loadBalancerListenerDefaultPoolPatchModel = new LoadBalancerListenerDefaultPoolPatchLoadBalancerPoolIdentityById.Builder()
       .id("70294e14-4e61-11e8-bcf4-0242ac110004")
       .build();
-    assertEquals(loadBalancerPoolIdentityModel.id(), "70294e14-4e61-11e8-bcf4-0242ac110004");
+    assertEquals(loadBalancerListenerDefaultPoolPatchModel.id(), "70294e14-4e61-11e8-bcf4-0242ac110004");
 
     LoadBalancerListenerIdentityById loadBalancerListenerIdentityModel = new LoadBalancerListenerIdentityById.Builder()
       .id("70294e14-4e61-11e8-bcf4-0242ac110004")
@@ -64,7 +64,7 @@ public class LoadBalancerListenerPatchTest {
       .acceptProxyProtocol(true)
       .certificateInstance(certificateInstanceIdentityModel)
       .connectionLimit(Long.valueOf("2000"))
-      .defaultPool(loadBalancerPoolIdentityModel)
+      .defaultPool(loadBalancerListenerDefaultPoolPatchModel)
       .httpsRedirect(loadBalancerListenerHttpsRedirectPatchModel)
       .idleConnectionTimeout(Long.valueOf("100"))
       .port(Long.valueOf("443"))
@@ -75,7 +75,7 @@ public class LoadBalancerListenerPatchTest {
     assertEquals(loadBalancerListenerPatchModel.acceptProxyProtocol(), Boolean.valueOf(true));
     assertEquals(loadBalancerListenerPatchModel.certificateInstance(), certificateInstanceIdentityModel);
     assertEquals(loadBalancerListenerPatchModel.connectionLimit(), Long.valueOf("2000"));
-    assertEquals(loadBalancerListenerPatchModel.defaultPool(), loadBalancerPoolIdentityModel);
+    assertEquals(loadBalancerListenerPatchModel.defaultPool(), loadBalancerListenerDefaultPoolPatchModel);
     assertEquals(loadBalancerListenerPatchModel.httpsRedirect(), loadBalancerListenerHttpsRedirectPatchModel);
     assertEquals(loadBalancerListenerPatchModel.idleConnectionTimeout(), Long.valueOf("100"));
     assertEquals(loadBalancerListenerPatchModel.port(), Long.valueOf("443"));
@@ -90,7 +90,7 @@ public class LoadBalancerListenerPatchTest {
     assertEquals(loadBalancerListenerPatchModelNew.acceptProxyProtocol(), Boolean.valueOf(true));
     assertEquals(loadBalancerListenerPatchModelNew.certificateInstance().toString(), certificateInstanceIdentityModel.toString());
     assertEquals(loadBalancerListenerPatchModelNew.connectionLimit(), Long.valueOf("2000"));
-    assertEquals(loadBalancerListenerPatchModelNew.defaultPool().toString(), loadBalancerPoolIdentityModel.toString());
+    assertEquals(loadBalancerListenerPatchModelNew.defaultPool().toString(), loadBalancerListenerDefaultPoolPatchModel.toString());
     assertEquals(loadBalancerListenerPatchModelNew.httpsRedirect().toString(), loadBalancerListenerHttpsRedirectPatchModel.toString());
     assertEquals(loadBalancerListenerPatchModelNew.idleConnectionTimeout(), Long.valueOf("100"));
     assertEquals(loadBalancerListenerPatchModelNew.port(), Long.valueOf("443"));
@@ -101,10 +101,10 @@ public class LoadBalancerListenerPatchTest {
   @Test
   public void testLoadBalancerListenerPatchAsPatch() throws Throwable {
     CertificateInstanceIdentityByCRN certificateInstanceIdentityModel = new CertificateInstanceIdentityByCRN.Builder()
-      .crn("crn:v1:bluemix:public:secrets-manager:us-south:a/123456:36fa422d-080d-4d83-8d2d-86851b4001df:secret:2e786aab-42fa-63ed-14f8-d66d552f4dd5")
+      .crn("crn:v1:bluemix:public:secrets-manager:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:36fa422d-080d-4d83-8d2d-86851b4001df:secret:2e786aab-42fa-63ed-14f8-d66d552f4dd5")
       .build();
 
-    LoadBalancerPoolIdentityById loadBalancerPoolIdentityModel = new LoadBalancerPoolIdentityById.Builder()
+    LoadBalancerListenerDefaultPoolPatchLoadBalancerPoolIdentityById loadBalancerListenerDefaultPoolPatchModel = new LoadBalancerListenerDefaultPoolPatchLoadBalancerPoolIdentityById.Builder()
       .id("70294e14-4e61-11e8-bcf4-0242ac110004")
       .build();
 
@@ -122,7 +122,7 @@ public class LoadBalancerListenerPatchTest {
       .acceptProxyProtocol(true)
       .certificateInstance(certificateInstanceIdentityModel)
       .connectionLimit(Long.valueOf("2000"))
-      .defaultPool(loadBalancerPoolIdentityModel)
+      .defaultPool(loadBalancerListenerDefaultPoolPatchModel)
       .httpsRedirect(loadBalancerListenerHttpsRedirectPatchModel)
       .idleConnectionTimeout(Long.valueOf("100"))
       .port(Long.valueOf("443"))

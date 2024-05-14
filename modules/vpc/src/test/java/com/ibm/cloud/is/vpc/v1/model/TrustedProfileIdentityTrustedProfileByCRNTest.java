@@ -32,15 +32,15 @@ public class TrustedProfileIdentityTrustedProfileByCRNTest {
   @Test
   public void testTrustedProfileIdentityTrustedProfileByCRN() throws Throwable {
     TrustedProfileIdentityTrustedProfileByCRN trustedProfileIdentityTrustedProfileByCrnModel = new TrustedProfileIdentityTrustedProfileByCRN.Builder()
-      .crn("crn:v1:bluemix:public:iam-identity::a/123456::profile:Profile-9fd84246-7df4-4667-94e4-8ecde51d5ac5")
+      .crn("crn:v1:bluemix:public:iam-identity::a/aa2432b1fa4d4ace891e9b80fc104e34::profile:Profile-9fd84246-7df4-4667-94e4-8ecde51d5ac5")
       .build();
-    assertEquals(trustedProfileIdentityTrustedProfileByCrnModel.crn(), "crn:v1:bluemix:public:iam-identity::a/123456::profile:Profile-9fd84246-7df4-4667-94e4-8ecde51d5ac5");
+    assertEquals(trustedProfileIdentityTrustedProfileByCrnModel.crn(), "crn:v1:bluemix:public:iam-identity::a/aa2432b1fa4d4ace891e9b80fc104e34::profile:Profile-9fd84246-7df4-4667-94e4-8ecde51d5ac5");
 
     String json = TestUtilities.serialize(trustedProfileIdentityTrustedProfileByCrnModel);
 
     TrustedProfileIdentityTrustedProfileByCRN trustedProfileIdentityTrustedProfileByCrnModelNew = TestUtilities.deserialize(json, TrustedProfileIdentityTrustedProfileByCRN.class);
     assertTrue(trustedProfileIdentityTrustedProfileByCrnModelNew instanceof TrustedProfileIdentityTrustedProfileByCRN);
-    assertEquals(trustedProfileIdentityTrustedProfileByCrnModelNew.crn(), "crn:v1:bluemix:public:iam-identity::a/123456::profile:Profile-9fd84246-7df4-4667-94e4-8ecde51d5ac5");
+    assertEquals(trustedProfileIdentityTrustedProfileByCrnModelNew.crn(), "crn:v1:bluemix:public:iam-identity::a/aa2432b1fa4d4ace891e9b80fc104e34::profile:Profile-9fd84246-7df4-4667-94e4-8ecde51d5ac5");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

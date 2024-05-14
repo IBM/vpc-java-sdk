@@ -21,7 +21,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class VolumeHealthReason extends GenericModel {
 
   /**
-   * A snake case string succinctly identifying the reason for this health state.
+   * A reason code for this health state.
    */
   public interface Code {
     /** initializing_from_snapshot. */
@@ -38,7 +38,7 @@ public class VolumeHealthReason extends GenericModel {
   /**
    * Gets the code.
    *
-   * A snake case string succinctly identifying the reason for this health state.
+   * A reason code for this health state.
    *
    * @return the code
    */

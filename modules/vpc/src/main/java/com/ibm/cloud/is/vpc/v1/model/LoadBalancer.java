@@ -35,7 +35,6 @@ public class LoadBalancer extends GenericModel {
 
   /**
    * The provisioning status of this load balancer:
-   *
    * - `active`: The load balancer is running.
    * - `create_pending`: The load balancer is being created.
    * - `delete_pending`: The load balancer is being deleted.
@@ -46,10 +45,8 @@ public class LoadBalancer extends GenericModel {
    * - `update_pending`: The load balancer is being updated
    *     to the requested configuration.
    *
-   *   The enumerated values for this property are expected to expand in the future. When
-   *   processing this property, check for and log unknown values. Optionally halt
-   *   processing and surface the error, or bypass the load balancer on which the
-   *   unexpected property value was encountered.
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface ProvisioningStatus {
     /** active. */
@@ -288,7 +285,6 @@ public class LoadBalancer extends GenericModel {
    * Gets the provisioningStatus.
    *
    * The provisioning status of this load balancer:
-   *
    * - `active`: The load balancer is running.
    * - `create_pending`: The load balancer is being created.
    * - `delete_pending`: The load balancer is being deleted.
@@ -299,10 +295,8 @@ public class LoadBalancer extends GenericModel {
    * - `update_pending`: The load balancer is being updated
    *     to the requested configuration.
    *
-   *   The enumerated values for this property are expected to expand in the future. When
-   *   processing this property, check for and log unknown values. Optionally halt
-   *   processing and surface the error, or bypass the load balancer on which the
-   *   unexpected property value was encountered.
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the provisioningStatus
    */

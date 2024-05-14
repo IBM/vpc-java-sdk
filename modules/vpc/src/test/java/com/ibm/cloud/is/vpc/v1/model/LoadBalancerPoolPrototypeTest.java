@@ -51,9 +51,9 @@ public class LoadBalancerPoolPrototypeTest {
     assertEquals(loadBalancerPoolHealthMonitorPrototypeModel.urlPath(), "/");
 
     LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityById loadBalancerPoolMemberTargetPrototypeModel = new LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityById.Builder()
-      .id("1e09281b-f177-46fb-baf1-bc152b2e391a")
+      .id("0717_1e09281b-f177-46f2-b1f1-bc152b2e391a")
       .build();
-    assertEquals(loadBalancerPoolMemberTargetPrototypeModel.id(), "1e09281b-f177-46fb-baf1-bc152b2e391a");
+    assertEquals(loadBalancerPoolMemberTargetPrototypeModel.id(), "0717_1e09281b-f177-46f2-b1f1-bc152b2e391a");
 
     LoadBalancerPoolMemberPrototype loadBalancerPoolMemberPrototypeModel = new LoadBalancerPoolMemberPrototype.Builder()
       .port(Long.valueOf("80"))

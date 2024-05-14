@@ -58,9 +58,9 @@ public class SubnetPrototypeSubnetByTotalCountTest {
     assertEquals(routingTableIdentityModel.id(), "6885e83f-03b2-4603-8a86-db2a0f55c840");
 
     VPCIdentityById vpcIdentityModel = new VPCIdentityById.Builder()
-      .id("4727d842-f94f-4a2d-824a-9bc9b02c523b")
+      .id("r006-4727d842-f94f-4a2d-824a-9bc9b02c523b")
       .build();
-    assertEquals(vpcIdentityModel.id(), "4727d842-f94f-4a2d-824a-9bc9b02c523b");
+    assertEquals(vpcIdentityModel.id(), "r006-4727d842-f94f-4a2d-824a-9bc9b02c523b");
 
     ZoneIdentityByName zoneIdentityModel = new ZoneIdentityByName.Builder()
       .name("us-south-1")

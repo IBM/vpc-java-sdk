@@ -24,6 +24,26 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class VPCDNSResolutionBinding extends GenericModel {
 
   /**
+   * The health of this resource:
+   * - `ok`: No abnormal behavior detected
+   * - `degraded`: Experiencing compromised performance, capacity, or connectivity
+   * - `faulted`: Completely unreachable, inoperative, or otherwise entirely incapacitated
+   * - `inapplicable`: The health state does not apply because of the current lifecycle
+   *    state. A resource with a lifecycle state of `failed` or `deleting` will have a
+   *    health state of `inapplicable`. A `pending` resource may also have this state.
+   */
+  public interface HealthState {
+    /** degraded. */
+    String DEGRADED = "degraded";
+    /** faulted. */
+    String FAULTED = "faulted";
+    /** inapplicable. */
+    String INAPPLICABLE = "inapplicable";
+    /** ok. */
+    String OK = "ok";
+  }
+
+  /**
    * The lifecycle state of the DNS resolution binding.
    */
   public interface LifecycleState {
@@ -55,6 +75,10 @@ public class VPCDNSResolutionBinding extends GenericModel {
   protected Date createdAt;
   @SerializedName("endpoint_gateways")
   protected List<EndpointGatewayReferenceRemote> endpointGateways;
+  @SerializedName("health_reasons")
+  protected List<VPCDNSResolutionBindingHealthReason> healthReasons;
+  @SerializedName("health_state")
+  protected String healthState;
   protected String href;
   protected String id;
   @SerializedName("lifecycle_state")
@@ -89,6 +113,34 @@ public class VPCDNSResolutionBinding extends GenericModel {
    */
   public List<EndpointGatewayReferenceRemote> getEndpointGateways() {
     return endpointGateways;
+  }
+
+  /**
+   * Gets the healthReasons.
+   *
+   * The reasons for the current `health_state` (if any).
+   *
+   * @return the healthReasons
+   */
+  public List<VPCDNSResolutionBindingHealthReason> getHealthReasons() {
+    return healthReasons;
+  }
+
+  /**
+   * Gets the healthState.
+   *
+   * The health of this resource:
+   * - `ok`: No abnormal behavior detected
+   * - `degraded`: Experiencing compromised performance, capacity, or connectivity
+   * - `faulted`: Completely unreachable, inoperative, or otherwise entirely incapacitated
+   * - `inapplicable`: The health state does not apply because of the current lifecycle
+   *    state. A resource with a lifecycle state of `failed` or `deleting` will have a
+   *    health state of `inapplicable`. A `pending` resource may also have this state.
+   *
+   * @return the healthState
+   */
+  public String getHealthState() {
+    return healthState;
   }
 
   /**

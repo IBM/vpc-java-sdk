@@ -32,15 +32,15 @@ public class SecurityGroupRuleRemotePatchSecurityGroupIdentitySecurityGroupIdent
   @Test
   public void testSecurityGroupRuleRemotePatchSecurityGroupIdentitySecurityGroupIdentityById() throws Throwable {
     SecurityGroupRuleRemotePatchSecurityGroupIdentitySecurityGroupIdentityById securityGroupRuleRemotePatchSecurityGroupIdentitySecurityGroupIdentityByIdModel = new SecurityGroupRuleRemotePatchSecurityGroupIdentitySecurityGroupIdentityById.Builder()
-      .id("be5df5ca-12a0-494b-907e-aa6ec2bfa271")
+      .id("r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271")
       .build();
-    assertEquals(securityGroupRuleRemotePatchSecurityGroupIdentitySecurityGroupIdentityByIdModel.id(), "be5df5ca-12a0-494b-907e-aa6ec2bfa271");
+    assertEquals(securityGroupRuleRemotePatchSecurityGroupIdentitySecurityGroupIdentityByIdModel.id(), "r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271");
 
     String json = TestUtilities.serialize(securityGroupRuleRemotePatchSecurityGroupIdentitySecurityGroupIdentityByIdModel);
 
     SecurityGroupRuleRemotePatchSecurityGroupIdentitySecurityGroupIdentityById securityGroupRuleRemotePatchSecurityGroupIdentitySecurityGroupIdentityByIdModelNew = TestUtilities.deserialize(json, SecurityGroupRuleRemotePatchSecurityGroupIdentitySecurityGroupIdentityById.class);
     assertTrue(securityGroupRuleRemotePatchSecurityGroupIdentitySecurityGroupIdentityByIdModelNew instanceof SecurityGroupRuleRemotePatchSecurityGroupIdentitySecurityGroupIdentityById);
-    assertEquals(securityGroupRuleRemotePatchSecurityGroupIdentitySecurityGroupIdentityByIdModelNew.id(), "be5df5ca-12a0-494b-907e-aa6ec2bfa271");
+    assertEquals(securityGroupRuleRemotePatchSecurityGroupIdentitySecurityGroupIdentityByIdModelNew.id(), "r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

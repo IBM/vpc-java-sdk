@@ -13,6 +13,7 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleLocalIP;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleRemoteIP;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleSecurityGroupRuleProtocolICMP;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
@@ -37,6 +38,7 @@ public class SecurityGroupRuleSecurityGroupRuleProtocolICMPTest {
     assertNull(securityGroupRuleSecurityGroupRuleProtocolIcmpModel.getHref());
     assertNull(securityGroupRuleSecurityGroupRuleProtocolIcmpModel.getId());
     assertNull(securityGroupRuleSecurityGroupRuleProtocolIcmpModel.getIpVersion());
+    assertNull(securityGroupRuleSecurityGroupRuleProtocolIcmpModel.getLocal());
     assertNull(securityGroupRuleSecurityGroupRuleProtocolIcmpModel.getRemote());
     assertNull(securityGroupRuleSecurityGroupRuleProtocolIcmpModel.getCode());
     assertNull(securityGroupRuleSecurityGroupRuleProtocolIcmpModel.getProtocol());

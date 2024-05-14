@@ -21,13 +21,12 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class InstanceAvailabilityPolicy extends GenericModel {
 
   /**
-   * The action to perform if the compute host experiences a failure.
+   * The action to perform if the compute host experiences a failure:
    * - `restart`: Automatically restart the virtual server instance after host failure
    * - `stop`: Leave the virtual server instance stopped after host failure
    *
-   * The enumerated values for this property are expected to expand in the future. When processing this property, check
-   * for and log unknown values. Optionally halt processing and surface the error, or bypass the instance on which the
-   * unexpected property value was encountered.
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface HostFailure {
     /** restart. */
@@ -44,13 +43,12 @@ public class InstanceAvailabilityPolicy extends GenericModel {
   /**
    * Gets the hostFailure.
    *
-   * The action to perform if the compute host experiences a failure.
+   * The action to perform if the compute host experiences a failure:
    * - `restart`: Automatically restart the virtual server instance after host failure
    * - `stop`: Leave the virtual server instance stopped after host failure
    *
-   * The enumerated values for this property are expected to expand in the future. When processing this property, check
-   * for and log unknown values. Optionally halt processing and surface the error, or bypass the instance on which the
-   * unexpected property value was encountered.
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the hostFailure
    */

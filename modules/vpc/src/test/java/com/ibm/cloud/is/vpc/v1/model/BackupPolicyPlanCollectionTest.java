@@ -16,6 +16,8 @@ package com.ibm.cloud.is.vpc.v1.model;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlan;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanClonePolicy;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanCollection;
+import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanCollectionFirst;
+import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanDeletionTrigger;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanRemoteRegionPolicy;
 import com.ibm.cloud.is.vpc.v1.model.EncryptionKeyReference;
@@ -40,6 +42,10 @@ public class BackupPolicyPlanCollectionTest {
   @Test
   public void testBackupPolicyPlanCollection() throws Throwable {
     BackupPolicyPlanCollection backupPolicyPlanCollectionModel = new BackupPolicyPlanCollection();
+    assertNull(backupPolicyPlanCollectionModel.getFirst());
+    assertNull(backupPolicyPlanCollectionModel.getLimit());
+    assertNull(backupPolicyPlanCollectionModel.getNext());
     assertNull(backupPolicyPlanCollectionModel.getPlans());
+    assertNull(backupPolicyPlanCollectionModel.getTotalCount());
   }
 }

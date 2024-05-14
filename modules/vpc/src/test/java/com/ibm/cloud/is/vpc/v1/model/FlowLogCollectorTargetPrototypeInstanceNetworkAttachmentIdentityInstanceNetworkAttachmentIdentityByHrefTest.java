@@ -32,15 +32,15 @@ public class FlowLogCollectorTargetPrototypeInstanceNetworkAttachmentIdentityIns
   @Test
   public void testFlowLogCollectorTargetPrototypeInstanceNetworkAttachmentIdentityInstanceNetworkAttachmentIdentityByHref() throws Throwable {
     FlowLogCollectorTargetPrototypeInstanceNetworkAttachmentIdentityInstanceNetworkAttachmentIdentityByHref flowLogCollectorTargetPrototypeInstanceNetworkAttachmentIdentityInstanceNetworkAttachmentIdentityByHrefModel = new FlowLogCollectorTargetPrototypeInstanceNetworkAttachmentIdentityInstanceNetworkAttachmentIdentityByHref.Builder()
-      .href("https://us-south.iaas.cloud.ibm.com/v1/instances/5dd61d72-acaa-47c2-a336-3d849660d010/network_attachments/0767-d54eb633-98ea-459d-aa00-6a8e780175a7")
+      .href("https://us-south.iaas.cloud.ibm.com/v1/instances/5dd61d72-acaa-47c2-a336-3d849660d010/network_attachments/0717-d54eb633-98ea-459d-aa00-6a8e780175a7")
       .build();
-    assertEquals(flowLogCollectorTargetPrototypeInstanceNetworkAttachmentIdentityInstanceNetworkAttachmentIdentityByHrefModel.href(), "https://us-south.iaas.cloud.ibm.com/v1/instances/5dd61d72-acaa-47c2-a336-3d849660d010/network_attachments/0767-d54eb633-98ea-459d-aa00-6a8e780175a7");
+    assertEquals(flowLogCollectorTargetPrototypeInstanceNetworkAttachmentIdentityInstanceNetworkAttachmentIdentityByHrefModel.href(), "https://us-south.iaas.cloud.ibm.com/v1/instances/5dd61d72-acaa-47c2-a336-3d849660d010/network_attachments/0717-d54eb633-98ea-459d-aa00-6a8e780175a7");
 
     String json = TestUtilities.serialize(flowLogCollectorTargetPrototypeInstanceNetworkAttachmentIdentityInstanceNetworkAttachmentIdentityByHrefModel);
 
     FlowLogCollectorTargetPrototypeInstanceNetworkAttachmentIdentityInstanceNetworkAttachmentIdentityByHref flowLogCollectorTargetPrototypeInstanceNetworkAttachmentIdentityInstanceNetworkAttachmentIdentityByHrefModelNew = TestUtilities.deserialize(json, FlowLogCollectorTargetPrototypeInstanceNetworkAttachmentIdentityInstanceNetworkAttachmentIdentityByHref.class);
     assertTrue(flowLogCollectorTargetPrototypeInstanceNetworkAttachmentIdentityInstanceNetworkAttachmentIdentityByHrefModelNew instanceof FlowLogCollectorTargetPrototypeInstanceNetworkAttachmentIdentityInstanceNetworkAttachmentIdentityByHref);
-    assertEquals(flowLogCollectorTargetPrototypeInstanceNetworkAttachmentIdentityInstanceNetworkAttachmentIdentityByHrefModelNew.href(), "https://us-south.iaas.cloud.ibm.com/v1/instances/5dd61d72-acaa-47c2-a336-3d849660d010/network_attachments/0767-d54eb633-98ea-459d-aa00-6a8e780175a7");
+    assertEquals(flowLogCollectorTargetPrototypeInstanceNetworkAttachmentIdentityInstanceNetworkAttachmentIdentityByHrefModelNew.href(), "https://us-south.iaas.cloud.ibm.com/v1/instances/5dd61d72-acaa-47c2-a336-3d849660d010/network_attachments/0717-d54eb633-98ea-459d-aa00-6a8e780175a7");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

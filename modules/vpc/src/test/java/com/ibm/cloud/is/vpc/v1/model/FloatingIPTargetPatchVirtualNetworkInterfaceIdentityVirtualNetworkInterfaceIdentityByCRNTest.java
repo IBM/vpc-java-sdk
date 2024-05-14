@@ -32,15 +32,15 @@ public class FloatingIPTargetPatchVirtualNetworkInterfaceIdentityVirtualNetworkI
   @Test
   public void testFloatingIPTargetPatchVirtualNetworkInterfaceIdentityVirtualNetworkInterfaceIdentityByCRN() throws Throwable {
     FloatingIPTargetPatchVirtualNetworkInterfaceIdentityVirtualNetworkInterfaceIdentityByCRN floatingIpTargetPatchVirtualNetworkInterfaceIdentityVirtualNetworkInterfaceIdentityByCrnModel = new FloatingIPTargetPatchVirtualNetworkInterfaceIdentityVirtualNetworkInterfaceIdentityByCRN.Builder()
-      .crn("crn:v1:bluemix:public:is:us-south-1:a/123456::virtual-network-interface:0767-fa41aecb-4f21-423d-8082-630bfba1e1d9")
+      .crn("crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::virtual-network-interface:0767-fa41aecb-4f21-423d-8082-630bfba1e1d9")
       .build();
-    assertEquals(floatingIpTargetPatchVirtualNetworkInterfaceIdentityVirtualNetworkInterfaceIdentityByCrnModel.crn(), "crn:v1:bluemix:public:is:us-south-1:a/123456::virtual-network-interface:0767-fa41aecb-4f21-423d-8082-630bfba1e1d9");
+    assertEquals(floatingIpTargetPatchVirtualNetworkInterfaceIdentityVirtualNetworkInterfaceIdentityByCrnModel.crn(), "crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::virtual-network-interface:0767-fa41aecb-4f21-423d-8082-630bfba1e1d9");
 
     String json = TestUtilities.serialize(floatingIpTargetPatchVirtualNetworkInterfaceIdentityVirtualNetworkInterfaceIdentityByCrnModel);
 
     FloatingIPTargetPatchVirtualNetworkInterfaceIdentityVirtualNetworkInterfaceIdentityByCRN floatingIpTargetPatchVirtualNetworkInterfaceIdentityVirtualNetworkInterfaceIdentityByCrnModelNew = TestUtilities.deserialize(json, FloatingIPTargetPatchVirtualNetworkInterfaceIdentityVirtualNetworkInterfaceIdentityByCRN.class);
     assertTrue(floatingIpTargetPatchVirtualNetworkInterfaceIdentityVirtualNetworkInterfaceIdentityByCrnModelNew instanceof FloatingIPTargetPatchVirtualNetworkInterfaceIdentityVirtualNetworkInterfaceIdentityByCRN);
-    assertEquals(floatingIpTargetPatchVirtualNetworkInterfaceIdentityVirtualNetworkInterfaceIdentityByCrnModelNew.crn(), "crn:v1:bluemix:public:is:us-south-1:a/123456::virtual-network-interface:0767-fa41aecb-4f21-423d-8082-630bfba1e1d9");
+    assertEquals(floatingIpTargetPatchVirtualNetworkInterfaceIdentityVirtualNetworkInterfaceIdentityByCrnModelNew.crn(), "crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::virtual-network-interface:0767-fa41aecb-4f21-423d-8082-630bfba1e1d9");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

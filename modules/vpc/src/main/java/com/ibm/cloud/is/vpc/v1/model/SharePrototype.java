@@ -144,10 +144,8 @@ public class SharePrototype extends GenericModel {
   /**
    * Gets the zone.
    *
-   * The zone this file share will reside in.
-   *
-   * For a replica share, this must be a different zone in the same region as the
-   * source share.
+   * The zone this file share will reside in. For a replica share, this must be a different
+   * zone in the same region as the source share.
    *
    * @return the zone
    */

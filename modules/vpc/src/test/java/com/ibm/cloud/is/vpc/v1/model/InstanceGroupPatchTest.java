@@ -16,7 +16,7 @@ package com.ibm.cloud.is.vpc.v1.model;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupPatch;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerIdentityById;
-import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolIdentityLoadBalancerPoolIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.SubnetIdentityById;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
@@ -46,15 +46,15 @@ public class InstanceGroupPatchTest {
       .build();
     assertEquals(loadBalancerIdentityModel.id(), "dd754295-e9e0-4c9d-bf6c-58fbc59e5727");
 
-    LoadBalancerPoolIdentityById loadBalancerPoolIdentityModel = new LoadBalancerPoolIdentityById.Builder()
+    LoadBalancerPoolIdentityLoadBalancerPoolIdentityById loadBalancerPoolIdentityModel = new LoadBalancerPoolIdentityLoadBalancerPoolIdentityById.Builder()
       .id("70294e14-4e61-11e8-bcf4-0242ac110004")
       .build();
     assertEquals(loadBalancerPoolIdentityModel.id(), "70294e14-4e61-11e8-bcf4-0242ac110004");
 
     SubnetIdentityById subnetIdentityModel = new SubnetIdentityById.Builder()
-      .id("7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
+      .id("0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
       .build();
-    assertEquals(subnetIdentityModel.id(), "7ec86020-1c6e-4889-b3f0-a15f2e50f87e");
+    assertEquals(subnetIdentityModel.id(), "0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e");
 
     InstanceGroupPatch instanceGroupPatchModel = new InstanceGroupPatch.Builder()
       .applicationPort(Long.valueOf("22"))
@@ -94,12 +94,12 @@ public class InstanceGroupPatchTest {
       .id("dd754295-e9e0-4c9d-bf6c-58fbc59e5727")
       .build();
 
-    LoadBalancerPoolIdentityById loadBalancerPoolIdentityModel = new LoadBalancerPoolIdentityById.Builder()
+    LoadBalancerPoolIdentityLoadBalancerPoolIdentityById loadBalancerPoolIdentityModel = new LoadBalancerPoolIdentityLoadBalancerPoolIdentityById.Builder()
       .id("70294e14-4e61-11e8-bcf4-0242ac110004")
       .build();
 
     SubnetIdentityById subnetIdentityModel = new SubnetIdentityById.Builder()
-      .id("7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
+      .id("0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
       .build();
 
     InstanceGroupPatch instanceGroupPatchModel = new InstanceGroupPatch.Builder()

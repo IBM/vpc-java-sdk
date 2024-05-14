@@ -14,8 +14,11 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionDPDPrototype;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionIKEIdentityPrototypeVPNGatewayConnectionIKEIdentityFQDN;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionIKEPolicyPrototypeIKEPolicyIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionIPsecPolicyPrototypeIPsecPolicyIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionPolicyModeLocalPrototype;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionPolicyModePeerPrototypeVPNGatewayConnectionPeerByAddress;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionPrototypeVPNGatewayConnectionPolicyModePrototype;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
@@ -53,26 +56,49 @@ public class VPNGatewayConnectionPrototypeVPNGatewayConnectionPolicyModePrototyp
       .build();
     assertEquals(vpnGatewayConnectionIPsecPolicyPrototypeModel.id(), "ddf51bec-3424-11e8-b467-0ed5f89f718b");
 
+    VPNGatewayConnectionIKEIdentityPrototypeVPNGatewayConnectionIKEIdentityFQDN vpnGatewayConnectionIkeIdentityPrototypeModel = new VPNGatewayConnectionIKEIdentityPrototypeVPNGatewayConnectionIKEIdentityFQDN.Builder()
+      .type("fqdn")
+      .value("my-service.example.com")
+      .build();
+    assertEquals(vpnGatewayConnectionIkeIdentityPrototypeModel.type(), "fqdn");
+    assertEquals(vpnGatewayConnectionIkeIdentityPrototypeModel.value(), "my-service.example.com");
+
+    VPNGatewayConnectionPolicyModeLocalPrototype vpnGatewayConnectionPolicyModeLocalPrototypeModel = new VPNGatewayConnectionPolicyModeLocalPrototype.Builder()
+      .cidrs(java.util.Arrays.asList("192.168.1.0/24"))
+      .ikeIdentities(java.util.Arrays.asList(vpnGatewayConnectionIkeIdentityPrototypeModel))
+      .build();
+    assertEquals(vpnGatewayConnectionPolicyModeLocalPrototypeModel.cidrs(), java.util.Arrays.asList("192.168.1.0/24"));
+    assertEquals(vpnGatewayConnectionPolicyModeLocalPrototypeModel.ikeIdentities(), java.util.Arrays.asList(vpnGatewayConnectionIkeIdentityPrototypeModel));
+
+    VPNGatewayConnectionPolicyModePeerPrototypeVPNGatewayConnectionPeerByAddress vpnGatewayConnectionPolicyModePeerPrototypeModel = new VPNGatewayConnectionPolicyModePeerPrototypeVPNGatewayConnectionPeerByAddress.Builder()
+      .cidrs(java.util.Arrays.asList("10.45.1.0/24"))
+      .ikeIdentity(vpnGatewayConnectionIkeIdentityPrototypeModel)
+      .address("169.21.50.5")
+      .build();
+    assertEquals(vpnGatewayConnectionPolicyModePeerPrototypeModel.cidrs(), java.util.Arrays.asList("10.45.1.0/24"));
+    assertEquals(vpnGatewayConnectionPolicyModePeerPrototypeModel.ikeIdentity(), vpnGatewayConnectionIkeIdentityPrototypeModel);
+    assertEquals(vpnGatewayConnectionPolicyModePeerPrototypeModel.address(), "169.21.50.5");
+
     VPNGatewayConnectionPrototypeVPNGatewayConnectionPolicyModePrototype vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototypeModel = new VPNGatewayConnectionPrototypeVPNGatewayConnectionPolicyModePrototype.Builder()
       .adminStateUp(true)
       .deadPeerDetection(vpnGatewayConnectionDpdPrototypeModel)
+      .establishMode("bidirectional")
       .ikePolicy(vpnGatewayConnectionIkePolicyPrototypeModel)
       .ipsecPolicy(vpnGatewayConnectionIPsecPolicyPrototypeModel)
       .name("my-vpn-connection")
-      .peerAddress("169.21.50.5")
       .psk("lkj14b1oi0alcniejkso")
-      .localCidrs(java.util.Arrays.asList("192.168.1.0/24"))
-      .peerCidrs(java.util.Arrays.asList("10.45.1.0/24"))
+      .local(vpnGatewayConnectionPolicyModeLocalPrototypeModel)
+      .peer(vpnGatewayConnectionPolicyModePeerPrototypeModel)
       .build();
     assertEquals(vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototypeModel.adminStateUp(), Boolean.valueOf(true));
     assertEquals(vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototypeModel.deadPeerDetection(), vpnGatewayConnectionDpdPrototypeModel);
+    assertEquals(vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototypeModel.establishMode(), "bidirectional");
     assertEquals(vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototypeModel.ikePolicy(), vpnGatewayConnectionIkePolicyPrototypeModel);
     assertEquals(vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototypeModel.ipsecPolicy(), vpnGatewayConnectionIPsecPolicyPrototypeModel);
     assertEquals(vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototypeModel.name(), "my-vpn-connection");
-    assertEquals(vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototypeModel.peerAddress(), "169.21.50.5");
     assertEquals(vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototypeModel.psk(), "lkj14b1oi0alcniejkso");
-    assertEquals(vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototypeModel.localCidrs(), java.util.Arrays.asList("192.168.1.0/24"));
-    assertEquals(vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototypeModel.peerCidrs(), java.util.Arrays.asList("10.45.1.0/24"));
+    assertEquals(vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototypeModel.local(), vpnGatewayConnectionPolicyModeLocalPrototypeModel);
+    assertEquals(vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototypeModel.peer(), vpnGatewayConnectionPolicyModePeerPrototypeModel);
 
     String json = TestUtilities.serialize(vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototypeModel);
 
@@ -80,11 +106,13 @@ public class VPNGatewayConnectionPrototypeVPNGatewayConnectionPolicyModePrototyp
     assertTrue(vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototypeModelNew instanceof VPNGatewayConnectionPrototypeVPNGatewayConnectionPolicyModePrototype);
     assertEquals(vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototypeModelNew.adminStateUp(), Boolean.valueOf(true));
     assertEquals(vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototypeModelNew.deadPeerDetection().toString(), vpnGatewayConnectionDpdPrototypeModel.toString());
+    assertEquals(vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototypeModelNew.establishMode(), "bidirectional");
     assertEquals(vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototypeModelNew.ikePolicy().toString(), vpnGatewayConnectionIkePolicyPrototypeModel.toString());
     assertEquals(vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototypeModelNew.ipsecPolicy().toString(), vpnGatewayConnectionIPsecPolicyPrototypeModel.toString());
     assertEquals(vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototypeModelNew.name(), "my-vpn-connection");
-    assertEquals(vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototypeModelNew.peerAddress(), "169.21.50.5");
     assertEquals(vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototypeModelNew.psk(), "lkj14b1oi0alcniejkso");
+    assertEquals(vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototypeModelNew.local().toString(), vpnGatewayConnectionPolicyModeLocalPrototypeModel.toString());
+    assertEquals(vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototypeModelNew.peer().toString(), vpnGatewayConnectionPolicyModePeerPrototypeModel.toString());
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

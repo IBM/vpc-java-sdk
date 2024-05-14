@@ -48,9 +48,9 @@ public class VPCDNSPatchTest {
     assertEquals(dnsServerPrototypeModel.zoneAffinity(), zoneIdentityModel);
 
     VPCDNSResolverVPCPatchVPCIdentityById vpcdnsResolverVpcPatchModel = new VPCDNSResolverVPCPatchVPCIdentityById.Builder()
-      .id("4727d842-f94f-4a2d-824a-9bc9b02c523b")
+      .id("r006-4727d842-f94f-4a2d-824a-9bc9b02c523b")
       .build();
-    assertEquals(vpcdnsResolverVpcPatchModel.id(), "4727d842-f94f-4a2d-824a-9bc9b02c523b");
+    assertEquals(vpcdnsResolverVpcPatchModel.id(), "r006-4727d842-f94f-4a2d-824a-9bc9b02c523b");
 
     VPCDNSResolverPatch vpcdnsResolverPatchModel = new VPCDNSResolverPatch.Builder()
       .manualServers(java.util.Arrays.asList(dnsServerPrototypeModel))

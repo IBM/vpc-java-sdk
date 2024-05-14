@@ -83,9 +83,9 @@ public class InstancePrototypeInstanceByVolumeInstanceByVolumeInstanceByNetworkI
     assertEquals(instanceMetadataServicePrototypeModel.responseHopLimit(), Long.valueOf("2"));
 
     InstancePlacementTargetPrototypeDedicatedHostIdentityDedicatedHostIdentityById instancePlacementTargetPrototypeModel = new InstancePlacementTargetPrototypeDedicatedHostIdentityDedicatedHostIdentityById.Builder()
-      .id("1e09281b-f177-46fb-baf1-bc152b2e391a")
+      .id("0717-1e09281b-f177-46fb-baf1-bc152b2e391a")
       .build();
-    assertEquals(instancePlacementTargetPrototypeModel.id(), "1e09281b-f177-46fb-baf1-bc152b2e391a");
+    assertEquals(instancePlacementTargetPrototypeModel.id(), "0717-1e09281b-f177-46fb-baf1-bc152b2e391a");
 
     InstanceProfileIdentityByName instanceProfileIdentityModel = new InstanceProfileIdentityByName.Builder()
       .name("cx2-16x32")
@@ -110,9 +110,9 @@ public class InstancePrototypeInstanceByVolumeInstanceByVolumeInstanceByNetworkI
     assertEquals(resourceGroupIdentityModel.id(), "fee82deba12e4c0fb69c3b09d1f12345");
 
     VolumeAttachmentPrototypeVolumeVolumeIdentityVolumeIdentityById volumeAttachmentPrototypeVolumeModel = new VolumeAttachmentPrototypeVolumeVolumeIdentityVolumeIdentityById.Builder()
-      .id("1a6b7274-678d-4dfb-8981-c71dd9d4daa5")
+      .id("r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5")
       .build();
-    assertEquals(volumeAttachmentPrototypeVolumeModel.id(), "1a6b7274-678d-4dfb-8981-c71dd9d4daa5");
+    assertEquals(volumeAttachmentPrototypeVolumeModel.id(), "r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5");
 
     VolumeAttachmentPrototype volumeAttachmentPrototypeModel = new VolumeAttachmentPrototype.Builder()
       .deleteVolumeOnInstanceDelete(false)
@@ -124,14 +124,14 @@ public class InstancePrototypeInstanceByVolumeInstanceByVolumeInstanceByNetworkI
     assertEquals(volumeAttachmentPrototypeModel.volume(), volumeAttachmentPrototypeVolumeModel);
 
     VPCIdentityById vpcIdentityModel = new VPCIdentityById.Builder()
-      .id("4727d842-f94f-4a2d-824a-9bc9b02c523b")
+      .id("r006-4727d842-f94f-4a2d-824a-9bc9b02c523b")
       .build();
-    assertEquals(vpcIdentityModel.id(), "4727d842-f94f-4a2d-824a-9bc9b02c523b");
+    assertEquals(vpcIdentityModel.id(), "r006-4727d842-f94f-4a2d-824a-9bc9b02c523b");
 
     VolumeIdentityById volumeIdentityModel = new VolumeIdentityById.Builder()
-      .id("1a6b7274-678d-4dfb-8981-c71dd9d4daa5")
+      .id("r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5")
       .build();
-    assertEquals(volumeIdentityModel.id(), "1a6b7274-678d-4dfb-8981-c71dd9d4daa5");
+    assertEquals(volumeIdentityModel.id(), "r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5");
 
     VolumeAttachmentPrototypeInstanceByVolumeContext volumeAttachmentPrototypeInstanceByVolumeContextModel = new VolumeAttachmentPrototypeInstanceByVolumeContext.Builder()
       .deleteVolumeOnInstanceDelete(false)

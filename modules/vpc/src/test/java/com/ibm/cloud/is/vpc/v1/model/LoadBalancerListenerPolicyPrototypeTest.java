@@ -15,7 +15,7 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyPrototype;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyRulePrototype;
-import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetPrototypeLoadBalancerPoolIdentityLoadBalancerPoolIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetPrototypeLoadBalancerPoolIdentityLoadBalancerPoolIdentityLoadBalancerPoolIdentityById;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -44,7 +44,7 @@ public class LoadBalancerListenerPolicyPrototypeTest {
     assertEquals(loadBalancerListenerPolicyRulePrototypeModel.type(), "body");
     assertEquals(loadBalancerListenerPolicyRulePrototypeModel.value(), "testString");
 
-    LoadBalancerListenerPolicyTargetPrototypeLoadBalancerPoolIdentityLoadBalancerPoolIdentityById loadBalancerListenerPolicyTargetPrototypeModel = new LoadBalancerListenerPolicyTargetPrototypeLoadBalancerPoolIdentityLoadBalancerPoolIdentityById.Builder()
+    LoadBalancerListenerPolicyTargetPrototypeLoadBalancerPoolIdentityLoadBalancerPoolIdentityLoadBalancerPoolIdentityById loadBalancerListenerPolicyTargetPrototypeModel = new LoadBalancerListenerPolicyTargetPrototypeLoadBalancerPoolIdentityLoadBalancerPoolIdentityLoadBalancerPoolIdentityById.Builder()
       .id("70294e14-4e61-11e8-bcf4-0242ac110004")
       .build();
     assertEquals(loadBalancerListenerPolicyTargetPrototypeModel.id(), "70294e14-4e61-11e8-bcf4-0242ac110004");

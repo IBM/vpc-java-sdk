@@ -32,15 +32,15 @@ public class DNSInstanceIdentityByCRNTest {
   @Test
   public void testDNSInstanceIdentityByCRN() throws Throwable {
     DNSInstanceIdentityByCRN dnsInstanceIdentityByCrnModel = new DNSInstanceIdentityByCRN.Builder()
-      .crn("crn:v1:bluemix:public:dns-svcs:global:a/123456:6860c359-b2e2-46fa-a944-b38c28201c6e")
+      .crn("crn:v1:bluemix:public:dns-svcs:global:a/aa2432b1fa4d4ace891e9b80fc104e34:6860c359-b2e2-46fa-a944-b38c28201c6e")
       .build();
-    assertEquals(dnsInstanceIdentityByCrnModel.crn(), "crn:v1:bluemix:public:dns-svcs:global:a/123456:6860c359-b2e2-46fa-a944-b38c28201c6e");
+    assertEquals(dnsInstanceIdentityByCrnModel.crn(), "crn:v1:bluemix:public:dns-svcs:global:a/aa2432b1fa4d4ace891e9b80fc104e34:6860c359-b2e2-46fa-a944-b38c28201c6e");
 
     String json = TestUtilities.serialize(dnsInstanceIdentityByCrnModel);
 
     DNSInstanceIdentityByCRN dnsInstanceIdentityByCrnModelNew = TestUtilities.deserialize(json, DNSInstanceIdentityByCRN.class);
     assertTrue(dnsInstanceIdentityByCrnModelNew instanceof DNSInstanceIdentityByCRN);
-    assertEquals(dnsInstanceIdentityByCrnModelNew.crn(), "crn:v1:bluemix:public:dns-svcs:global:a/123456:6860c359-b2e2-46fa-a944-b38c28201c6e");
+    assertEquals(dnsInstanceIdentityByCrnModelNew.crn(), "crn:v1:bluemix:public:dns-svcs:global:a/aa2432b1fa4d4ace891e9b80fc104e34:6860c359-b2e2-46fa-a944-b38c28201c6e");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

@@ -39,9 +39,9 @@ public class VPNGatewayPrototypeVPNGatewayPolicyModePrototypeTest {
     assertEquals(resourceGroupIdentityModel.id(), "fee82deba12e4c0fb69c3b09d1f12345");
 
     SubnetIdentityById subnetIdentityModel = new SubnetIdentityById.Builder()
-      .id("7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
+      .id("0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
       .build();
-    assertEquals(subnetIdentityModel.id(), "7ec86020-1c6e-4889-b3f0-a15f2e50f87e");
+    assertEquals(subnetIdentityModel.id(), "0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e");
 
     VPNGatewayPrototypeVPNGatewayPolicyModePrototype vpnGatewayPrototypeVpnGatewayPolicyModePrototypeModel = new VPNGatewayPrototypeVPNGatewayPolicyModePrototype.Builder()
       .name("my-vpn-gateway")

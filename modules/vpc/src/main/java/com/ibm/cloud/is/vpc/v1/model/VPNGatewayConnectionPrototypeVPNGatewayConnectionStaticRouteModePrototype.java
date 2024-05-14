@@ -18,6 +18,22 @@ package com.ibm.cloud.is.vpc.v1.model;
 public class VPNGatewayConnectionPrototypeVPNGatewayConnectionStaticRouteModePrototype extends VPNGatewayConnectionPrototype {
 
   /**
+   * The establish mode of the VPN gateway connection:
+   * - `bidirectional`: Either side of the VPN gateway can initiate IKE protocol
+   *    negotiations or rekeying processes.
+   * - `peer_only`: Only the peer can initiate IKE protocol negotiations for this VPN gateway
+   *    connection. Additionally, the peer is responsible for initiating the rekeying process
+   *    after the connection is established. If rekeying does not occur, the VPN gateway
+   *    connection will be brought down after its lifetime expires.
+   */
+  public interface EstablishMode {
+    /** bidirectional. */
+    String BIDIRECTIONAL = "bidirectional";
+    /** peer_only. */
+    String PEER_ONLY = "peer_only";
+  }
+
+  /**
    * Routing protocols are disabled for this VPN gateway connection.
    */
   public interface RoutingProtocol {
@@ -32,11 +48,13 @@ public class VPNGatewayConnectionPrototypeVPNGatewayConnectionStaticRouteModePro
   public static class Builder {
     private Boolean adminStateUp;
     private VPNGatewayConnectionDPDPrototype deadPeerDetection;
+    private String establishMode;
     private VPNGatewayConnectionIKEPolicyPrototype ikePolicy;
     private VPNGatewayConnectionIPsecPolicyPrototype ipsecPolicy;
     private String name;
-    private String peerAddress;
     private String psk;
+    private VPNGatewayConnectionStaticRouteModeLocalPrototype local;
+    private VPNGatewayConnectionStaticRouteModePeerPrototype peer;
     private String routingProtocol;
 
     /**
@@ -47,11 +65,13 @@ public class VPNGatewayConnectionPrototypeVPNGatewayConnectionStaticRouteModePro
     public Builder(VPNGatewayConnectionPrototype vpnGatewayConnectionPrototypeVpnGatewayConnectionStaticRouteModePrototype) {
       this.adminStateUp = vpnGatewayConnectionPrototypeVpnGatewayConnectionStaticRouteModePrototype.adminStateUp;
       this.deadPeerDetection = vpnGatewayConnectionPrototypeVpnGatewayConnectionStaticRouteModePrototype.deadPeerDetection;
+      this.establishMode = vpnGatewayConnectionPrototypeVpnGatewayConnectionStaticRouteModePrototype.establishMode;
       this.ikePolicy = vpnGatewayConnectionPrototypeVpnGatewayConnectionStaticRouteModePrototype.ikePolicy;
       this.ipsecPolicy = vpnGatewayConnectionPrototypeVpnGatewayConnectionStaticRouteModePrototype.ipsecPolicy;
       this.name = vpnGatewayConnectionPrototypeVpnGatewayConnectionStaticRouteModePrototype.name;
-      this.peerAddress = vpnGatewayConnectionPrototypeVpnGatewayConnectionStaticRouteModePrototype.peerAddress;
       this.psk = vpnGatewayConnectionPrototypeVpnGatewayConnectionStaticRouteModePrototype.psk;
+      this.local = (VPNGatewayConnectionStaticRouteModeLocalPrototype) vpnGatewayConnectionPrototypeVpnGatewayConnectionStaticRouteModePrototype.local;
+      this.peer = (VPNGatewayConnectionStaticRouteModePeerPrototype) vpnGatewayConnectionPrototypeVpnGatewayConnectionStaticRouteModePrototype.peer;
       this.routingProtocol = vpnGatewayConnectionPrototypeVpnGatewayConnectionStaticRouteModePrototype.routingProtocol;
     }
 
@@ -64,12 +84,12 @@ public class VPNGatewayConnectionPrototypeVPNGatewayConnectionStaticRouteModePro
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param peerAddress the peerAddress
      * @param psk the psk
+     * @param peer the peer
      */
-    public Builder(String peerAddress, String psk) {
-      this.peerAddress = peerAddress;
+    public Builder(String psk, VPNGatewayConnectionStaticRouteModePeerPrototype peer) {
       this.psk = psk;
+      this.peer = peer;
     }
 
     /**
@@ -100,6 +120,17 @@ public class VPNGatewayConnectionPrototypeVPNGatewayConnectionStaticRouteModePro
      */
     public Builder deadPeerDetection(VPNGatewayConnectionDPDPrototype deadPeerDetection) {
       this.deadPeerDetection = deadPeerDetection;
+      return this;
+    }
+
+    /**
+     * Set the establishMode.
+     *
+     * @param establishMode the establishMode
+     * @return the VPNGatewayConnectionPrototypeVPNGatewayConnectionStaticRouteModePrototype builder
+     */
+    public Builder establishMode(String establishMode) {
+      this.establishMode = establishMode;
       return this;
     }
 
@@ -137,17 +168,6 @@ public class VPNGatewayConnectionPrototypeVPNGatewayConnectionStaticRouteModePro
     }
 
     /**
-     * Set the peerAddress.
-     *
-     * @param peerAddress the peerAddress
-     * @return the VPNGatewayConnectionPrototypeVPNGatewayConnectionStaticRouteModePrototype builder
-     */
-    public Builder peerAddress(String peerAddress) {
-      this.peerAddress = peerAddress;
-      return this;
-    }
-
-    /**
      * Set the psk.
      *
      * @param psk the psk
@@ -155,6 +175,28 @@ public class VPNGatewayConnectionPrototypeVPNGatewayConnectionStaticRouteModePro
      */
     public Builder psk(String psk) {
       this.psk = psk;
+      return this;
+    }
+
+    /**
+     * Set the local.
+     *
+     * @param local the local
+     * @return the VPNGatewayConnectionPrototypeVPNGatewayConnectionStaticRouteModePrototype builder
+     */
+    public Builder local(VPNGatewayConnectionStaticRouteModeLocalPrototype local) {
+      this.local = local;
+      return this;
+    }
+
+    /**
+     * Set the peer.
+     *
+     * @param peer the peer
+     * @return the VPNGatewayConnectionPrototypeVPNGatewayConnectionStaticRouteModePrototype builder
+     */
+    public Builder peer(VPNGatewayConnectionStaticRouteModePeerPrototype peer) {
+      this.peer = peer;
       return this;
     }
 
@@ -173,17 +215,19 @@ public class VPNGatewayConnectionPrototypeVPNGatewayConnectionStaticRouteModePro
   protected VPNGatewayConnectionPrototypeVPNGatewayConnectionStaticRouteModePrototype() { }
 
   protected VPNGatewayConnectionPrototypeVPNGatewayConnectionStaticRouteModePrototype(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.peerAddress,
-      "peerAddress cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.psk,
       "psk cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.peer,
+      "peer cannot be null");
     adminStateUp = builder.adminStateUp;
     deadPeerDetection = builder.deadPeerDetection;
+    establishMode = builder.establishMode;
     ikePolicy = builder.ikePolicy;
     ipsecPolicy = builder.ipsecPolicy;
     name = builder.name;
-    peerAddress = builder.peerAddress;
     psk = builder.psk;
+    local = builder.local;
+    peer = builder.peer;
     routingProtocol = builder.routingProtocol;
   }
 

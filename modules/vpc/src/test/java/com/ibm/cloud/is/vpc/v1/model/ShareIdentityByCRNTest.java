@@ -32,15 +32,15 @@ public class ShareIdentityByCRNTest {
   @Test
   public void testShareIdentityByCRN() throws Throwable {
     ShareIdentityByCRN shareIdentityByCrnModel = new ShareIdentityByCRN.Builder()
-      .crn("crn:v1:bluemix:public:is:us-south-1:a/123456::share:0fe9e5d8-0a4d-4818-96ec-e99708644a58")
+      .crn("crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:0fe9e5d8-0a4d-4818-96ec-e99708644a58")
       .build();
-    assertEquals(shareIdentityByCrnModel.crn(), "crn:v1:bluemix:public:is:us-south-1:a/123456::share:0fe9e5d8-0a4d-4818-96ec-e99708644a58");
+    assertEquals(shareIdentityByCrnModel.crn(), "crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:0fe9e5d8-0a4d-4818-96ec-e99708644a58");
 
     String json = TestUtilities.serialize(shareIdentityByCrnModel);
 
     ShareIdentityByCRN shareIdentityByCrnModelNew = TestUtilities.deserialize(json, ShareIdentityByCRN.class);
     assertTrue(shareIdentityByCrnModelNew instanceof ShareIdentityByCRN);
-    assertEquals(shareIdentityByCrnModelNew.crn(), "crn:v1:bluemix:public:is:us-south-1:a/123456::share:0fe9e5d8-0a4d-4818-96ec-e99708644a58");
+    assertEquals(shareIdentityByCrnModelNew.crn(), "crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:0fe9e5d8-0a4d-4818-96ec-e99708644a58");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

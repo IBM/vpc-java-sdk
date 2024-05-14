@@ -32,15 +32,15 @@ public class VolumeIdentityByHrefTest {
   @Test
   public void testVolumeIdentityByHref() throws Throwable {
     VolumeIdentityByHref volumeIdentityByHrefModel = new VolumeIdentityByHref.Builder()
-      .href("https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5")
+      .href("https://us-south.iaas.cloud.ibm.com/v1/volumes/r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5")
       .build();
-    assertEquals(volumeIdentityByHrefModel.href(), "https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5");
+    assertEquals(volumeIdentityByHrefModel.href(), "https://us-south.iaas.cloud.ibm.com/v1/volumes/r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5");
 
     String json = TestUtilities.serialize(volumeIdentityByHrefModel);
 
     VolumeIdentityByHref volumeIdentityByHrefModelNew = TestUtilities.deserialize(json, VolumeIdentityByHref.class);
     assertTrue(volumeIdentityByHrefModelNew instanceof VolumeIdentityByHref);
-    assertEquals(volumeIdentityByHrefModelNew.href(), "https://us-south.iaas.cloud.ibm.com/v1/volumes/1a6b7274-678d-4dfb-8981-c71dd9d4daa5");
+    assertEquals(volumeIdentityByHrefModelNew.href(), "https://us-south.iaas.cloud.ibm.com/v1/volumes/r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

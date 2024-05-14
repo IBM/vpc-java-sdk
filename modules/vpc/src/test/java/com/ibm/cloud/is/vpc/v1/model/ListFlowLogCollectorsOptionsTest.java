@@ -37,7 +37,7 @@ public class ListFlowLogCollectorsOptionsTest {
       .resourceGroupId("testString")
       .name("testString")
       .vpcId("testString")
-      .vpcCrn("crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b")
+      .vpcCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b")
       .vpcName("my-vpc")
       .targetId("testString")
       .targetResourceType("testString")
@@ -47,7 +47,7 @@ public class ListFlowLogCollectorsOptionsTest {
     assertEquals(listFlowLogCollectorsOptionsModel.resourceGroupId(), "testString");
     assertEquals(listFlowLogCollectorsOptionsModel.name(), "testString");
     assertEquals(listFlowLogCollectorsOptionsModel.vpcId(), "testString");
-    assertEquals(listFlowLogCollectorsOptionsModel.vpcCrn(), "crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b");
+    assertEquals(listFlowLogCollectorsOptionsModel.vpcCrn(), "crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b");
     assertEquals(listFlowLogCollectorsOptionsModel.vpcName(), "my-vpc");
     assertEquals(listFlowLogCollectorsOptionsModel.targetId(), "testString");
     assertEquals(listFlowLogCollectorsOptionsModel.targetResourceType(), "testString");

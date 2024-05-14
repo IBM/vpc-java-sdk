@@ -18,13 +18,13 @@ package com.ibm.cloud.is.vpc.v1.model;
 public class VPNGatewayRouteMode extends VPNGateway {
 
   /**
-   * The health of this resource.
+   * The health of this resource:
    * - `ok`: No abnormal behavior detected
    * - `degraded`: Experiencing compromised performance, capacity, or connectivity
    * - `faulted`: Completely unreachable, inoperative, or otherwise entirely incapacitated
-   * - `inapplicable`: The health state does not apply because of the current lifecycle state. A resource with a
-   * lifecycle state of `failed` or `deleting` will have a health state of `inapplicable`. A `pending` resource may also
-   * have this state.
+   * - `inapplicable`: The health state does not apply because of the current lifecycle
+   *    state. A resource with a lifecycle state of `failed` or `deleting` will have a
+   *    health state of `inapplicable`. A `pending` resource may also have this state.
    */
   public interface HealthState {
     /** degraded. */

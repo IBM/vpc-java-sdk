@@ -45,9 +45,8 @@ public class LoadBalancerPrivateIpsItem extends GenericModel {
    *
    * If the address has not yet been selected, the value will be `0.0.0.0`.
    *
-   * This property may add support for IPv6 addresses in the future. When processing a value in this property, verify
-   * that the address is in an expected format. If it is not, log an error. Optionally halt processing and surface the
-   * error, or bypass the resource on which the unexpected IP address format was encountered.
+   * This property may [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) to support IPv6 addresses in
+   * the future.
    *
    * @return the address
    */

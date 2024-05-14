@@ -32,15 +32,15 @@ public class FlowLogCollectorTargetPrototypeSubnetIdentitySubnetIdentityByCRNTes
   @Test
   public void testFlowLogCollectorTargetPrototypeSubnetIdentitySubnetIdentityByCRN() throws Throwable {
     FlowLogCollectorTargetPrototypeSubnetIdentitySubnetIdentityByCRN flowLogCollectorTargetPrototypeSubnetIdentitySubnetIdentityByCrnModel = new FlowLogCollectorTargetPrototypeSubnetIdentitySubnetIdentityByCRN.Builder()
-      .crn("crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
+      .crn("crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
       .build();
-    assertEquals(flowLogCollectorTargetPrototypeSubnetIdentitySubnetIdentityByCrnModel.crn(), "crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e");
+    assertEquals(flowLogCollectorTargetPrototypeSubnetIdentitySubnetIdentityByCrnModel.crn(), "crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e");
 
     String json = TestUtilities.serialize(flowLogCollectorTargetPrototypeSubnetIdentitySubnetIdentityByCrnModel);
 
     FlowLogCollectorTargetPrototypeSubnetIdentitySubnetIdentityByCRN flowLogCollectorTargetPrototypeSubnetIdentitySubnetIdentityByCrnModelNew = TestUtilities.deserialize(json, FlowLogCollectorTargetPrototypeSubnetIdentitySubnetIdentityByCRN.class);
     assertTrue(flowLogCollectorTargetPrototypeSubnetIdentitySubnetIdentityByCrnModelNew instanceof FlowLogCollectorTargetPrototypeSubnetIdentitySubnetIdentityByCRN);
-    assertEquals(flowLogCollectorTargetPrototypeSubnetIdentitySubnetIdentityByCrnModelNew.crn(), "crn:v1:bluemix:public:is:us-south-1:a/123456::subnet:7ec86020-1c6e-4889-b3f0-a15f2e50f87e");
+    assertEquals(flowLogCollectorTargetPrototypeSubnetIdentitySubnetIdentityByCrnModelNew.crn(), "crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

@@ -32,15 +32,15 @@ public class SecurityGroupRuleRemotePrototypeSecurityGroupIdentitySecurityGroupI
   @Test
   public void testSecurityGroupRuleRemotePrototypeSecurityGroupIdentitySecurityGroupIdentityByCRN() throws Throwable {
     SecurityGroupRuleRemotePrototypeSecurityGroupIdentitySecurityGroupIdentityByCRN securityGroupRuleRemotePrototypeSecurityGroupIdentitySecurityGroupIdentityByCrnModel = new SecurityGroupRuleRemotePrototypeSecurityGroupIdentitySecurityGroupIdentityByCRN.Builder()
-      .crn("crn:v1:bluemix:public:is:us-south:a/123456::security-group:be5df5ca-12a0-494b-907e-aa6ec2bfa271")
+      .crn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::security-group:r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271")
       .build();
-    assertEquals(securityGroupRuleRemotePrototypeSecurityGroupIdentitySecurityGroupIdentityByCrnModel.crn(), "crn:v1:bluemix:public:is:us-south:a/123456::security-group:be5df5ca-12a0-494b-907e-aa6ec2bfa271");
+    assertEquals(securityGroupRuleRemotePrototypeSecurityGroupIdentitySecurityGroupIdentityByCrnModel.crn(), "crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::security-group:r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271");
 
     String json = TestUtilities.serialize(securityGroupRuleRemotePrototypeSecurityGroupIdentitySecurityGroupIdentityByCrnModel);
 
     SecurityGroupRuleRemotePrototypeSecurityGroupIdentitySecurityGroupIdentityByCRN securityGroupRuleRemotePrototypeSecurityGroupIdentitySecurityGroupIdentityByCrnModelNew = TestUtilities.deserialize(json, SecurityGroupRuleRemotePrototypeSecurityGroupIdentitySecurityGroupIdentityByCRN.class);
     assertTrue(securityGroupRuleRemotePrototypeSecurityGroupIdentitySecurityGroupIdentityByCrnModelNew instanceof SecurityGroupRuleRemotePrototypeSecurityGroupIdentitySecurityGroupIdentityByCRN);
-    assertEquals(securityGroupRuleRemotePrototypeSecurityGroupIdentitySecurityGroupIdentityByCrnModelNew.crn(), "crn:v1:bluemix:public:is:us-south:a/123456::security-group:be5df5ca-12a0-494b-907e-aa6ec2bfa271");
+    assertEquals(securityGroupRuleRemotePrototypeSecurityGroupIdentitySecurityGroupIdentityByCrnModelNew.crn(), "crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::security-group:r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)
