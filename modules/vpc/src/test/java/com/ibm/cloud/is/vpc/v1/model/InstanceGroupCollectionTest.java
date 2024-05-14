@@ -17,6 +17,7 @@ import com.ibm.cloud.is.vpc.v1.model.InstanceGroup;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupCollection;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupCollectionFirst;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupCollectionNext;
+import com.ibm.cloud.is.vpc.v1.model.InstanceGroupLifecycleReason;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerReference;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateReference;

@@ -37,18 +37,18 @@ public class ListVpcDnsResolutionBindingsOptionsTest {
       .start("testString")
       .limit(Long.valueOf("50"))
       .name("testString")
-      .vpcCrn("crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b")
+      .vpcCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b")
       .vpcName("my-vpc")
-      .accountId("aa2432b1fa4d4ace891e9b80fc104e34")
+      .accountId("bb1b52262f7441a586f49068482f1e60")
       .build();
     assertEquals(listVpcDnsResolutionBindingsOptionsModel.vpcId(), "testString");
     assertEquals(listVpcDnsResolutionBindingsOptionsModel.sort(), "name");
     assertEquals(listVpcDnsResolutionBindingsOptionsModel.start(), "testString");
     assertEquals(listVpcDnsResolutionBindingsOptionsModel.limit(), Long.valueOf("50"));
     assertEquals(listVpcDnsResolutionBindingsOptionsModel.name(), "testString");
-    assertEquals(listVpcDnsResolutionBindingsOptionsModel.vpcCrn(), "crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b");
+    assertEquals(listVpcDnsResolutionBindingsOptionsModel.vpcCrn(), "crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b");
     assertEquals(listVpcDnsResolutionBindingsOptionsModel.vpcName(), "my-vpc");
-    assertEquals(listVpcDnsResolutionBindingsOptionsModel.accountId(), "aa2432b1fa4d4ace891e9b80fc104e34");
+    assertEquals(listVpcDnsResolutionBindingsOptionsModel.accountId(), "bb1b52262f7441a586f49068482f1e60");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

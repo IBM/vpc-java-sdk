@@ -32,15 +32,15 @@ public class BackupPolicyScopePrototypeEnterpriseIdentityEnterpriseIdentityByCRN
   @Test
   public void testBackupPolicyScopePrototypeEnterpriseIdentityEnterpriseIdentityByCRN() throws Throwable {
     BackupPolicyScopePrototypeEnterpriseIdentityEnterpriseIdentityByCRN backupPolicyScopePrototypeEnterpriseIdentityEnterpriseIdentityByCrnModel = new BackupPolicyScopePrototypeEnterpriseIdentityEnterpriseIdentityByCRN.Builder()
-      .crn("crn:v1:bluemix:public:enterprise::a/123456::enterprise:ebc2b430240943458b9e91e1432cfcce")
+      .crn("crn:v1:bluemix:public:enterprise::a/aa2432b1fa4d4ace891e9b80fc104e34::enterprise:ebc2b430240943458b9e91e1432cfcce")
       .build();
-    assertEquals(backupPolicyScopePrototypeEnterpriseIdentityEnterpriseIdentityByCrnModel.crn(), "crn:v1:bluemix:public:enterprise::a/123456::enterprise:ebc2b430240943458b9e91e1432cfcce");
+    assertEquals(backupPolicyScopePrototypeEnterpriseIdentityEnterpriseIdentityByCrnModel.crn(), "crn:v1:bluemix:public:enterprise::a/aa2432b1fa4d4ace891e9b80fc104e34::enterprise:ebc2b430240943458b9e91e1432cfcce");
 
     String json = TestUtilities.serialize(backupPolicyScopePrototypeEnterpriseIdentityEnterpriseIdentityByCrnModel);
 
     BackupPolicyScopePrototypeEnterpriseIdentityEnterpriseIdentityByCRN backupPolicyScopePrototypeEnterpriseIdentityEnterpriseIdentityByCrnModelNew = TestUtilities.deserialize(json, BackupPolicyScopePrototypeEnterpriseIdentityEnterpriseIdentityByCRN.class);
     assertTrue(backupPolicyScopePrototypeEnterpriseIdentityEnterpriseIdentityByCrnModelNew instanceof BackupPolicyScopePrototypeEnterpriseIdentityEnterpriseIdentityByCRN);
-    assertEquals(backupPolicyScopePrototypeEnterpriseIdentityEnterpriseIdentityByCrnModelNew.crn(), "crn:v1:bluemix:public:enterprise::a/123456::enterprise:ebc2b430240943458b9e91e1432cfcce");
+    assertEquals(backupPolicyScopePrototypeEnterpriseIdentityEnterpriseIdentityByCrnModelNew.crn(), "crn:v1:bluemix:public:enterprise::a/aa2432b1fa4d4ace891e9b80fc104e34::enterprise:ebc2b430240943458b9e91e1432cfcce");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

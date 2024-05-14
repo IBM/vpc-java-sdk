@@ -16,8 +16,8 @@ package com.ibm.cloud.is.vpc.v1.model;
  * Identifies a load balancer pool by a unique property.
  *
  * Classes which extend this class:
- * - LoadBalancerListenerPolicyTargetPrototypeLoadBalancerPoolIdentityLoadBalancerPoolIdentityById
- * - LoadBalancerListenerPolicyTargetPrototypeLoadBalancerPoolIdentityLoadBalancerPoolIdentityByHref
+ * - LoadBalancerListenerPolicyTargetPrototypeLoadBalancerPoolIdentityLoadBalancerPoolIdentityLoadBalancerPoolIdentityById
+ * - LoadBalancerListenerPolicyTargetPrototypeLoadBalancerPoolIdentityLoadBalancerPoolIdentityLoadBalancerPoolIdentityByHref
  */
 public class LoadBalancerListenerPolicyTargetPrototypeLoadBalancerPoolIdentity extends LoadBalancerListenerPolicyTargetPrototype {
 

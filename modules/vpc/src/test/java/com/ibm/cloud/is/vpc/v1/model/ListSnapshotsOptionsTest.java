@@ -38,9 +38,9 @@ public class ListSnapshotsOptionsTest {
       .resourceGroupId("testString")
       .name("testString")
       .sourceVolumeId("testString")
-      .sourceVolumeCrn("crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5")
+      .sourceVolumeCrn("crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5")
       .sourceImageId("testString")
-      .sourceImageCrn("crn:v1:bluemix:public:is:us-south:a/123456::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8")
+      .sourceImageCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8")
       .sort("name")
       .backupPolicyPlanId("testString")
       .copiesId("testString")
@@ -53,7 +53,7 @@ public class ListSnapshotsOptionsTest {
       .sourceImageRemoteRegionName("us-south")
       .clonesZoneName("us-south-1")
       .snapshotConsistencyGroupId("testString")
-      .snapshotConsistencyGroupCrn("crn:v1:bluemix:public:is:us-south:a/123456::snapshot-consistency-group:r134-fa329f6b-0e36-433f-a3bb-0df632e79263")
+      .snapshotConsistencyGroupCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot-consistency-group:r134-fa329f6b-0e36-433f-a3bb-0df632e79263")
       .build();
     assertEquals(listSnapshotsOptionsModel.start(), "testString");
     assertEquals(listSnapshotsOptionsModel.limit(), Long.valueOf("50"));
@@ -61,9 +61,9 @@ public class ListSnapshotsOptionsTest {
     assertEquals(listSnapshotsOptionsModel.resourceGroupId(), "testString");
     assertEquals(listSnapshotsOptionsModel.name(), "testString");
     assertEquals(listSnapshotsOptionsModel.sourceVolumeId(), "testString");
-    assertEquals(listSnapshotsOptionsModel.sourceVolumeCrn(), "crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5");
+    assertEquals(listSnapshotsOptionsModel.sourceVolumeCrn(), "crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5");
     assertEquals(listSnapshotsOptionsModel.sourceImageId(), "testString");
-    assertEquals(listSnapshotsOptionsModel.sourceImageCrn(), "crn:v1:bluemix:public:is:us-south:a/123456::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8");
+    assertEquals(listSnapshotsOptionsModel.sourceImageCrn(), "crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8");
     assertEquals(listSnapshotsOptionsModel.sort(), "name");
     assertEquals(listSnapshotsOptionsModel.backupPolicyPlanId(), "testString");
     assertEquals(listSnapshotsOptionsModel.copiesId(), "testString");
@@ -76,6 +76,6 @@ public class ListSnapshotsOptionsTest {
     assertEquals(listSnapshotsOptionsModel.sourceImageRemoteRegionName(), "us-south");
     assertEquals(listSnapshotsOptionsModel.clonesZoneName(), "us-south-1");
     assertEquals(listSnapshotsOptionsModel.snapshotConsistencyGroupId(), "testString");
-    assertEquals(listSnapshotsOptionsModel.snapshotConsistencyGroupCrn(), "crn:v1:bluemix:public:is:us-south:a/123456::snapshot-consistency-group:r134-fa329f6b-0e36-433f-a3bb-0df632e79263");
+    assertEquals(listSnapshotsOptionsModel.snapshotConsistencyGroupCrn(), "crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot-consistency-group:r134-fa329f6b-0e36-433f-a3bb-0df632e79263");
   }
 }

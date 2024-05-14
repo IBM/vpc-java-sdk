@@ -32,15 +32,15 @@ public class InstancePlacementTargetPrototypeDedicatedHostIdentityDedicatedHostI
   @Test
   public void testInstancePlacementTargetPrototypeDedicatedHostIdentityDedicatedHostIdentityByHref() throws Throwable {
     InstancePlacementTargetPrototypeDedicatedHostIdentityDedicatedHostIdentityByHref instancePlacementTargetPrototypeDedicatedHostIdentityDedicatedHostIdentityByHrefModel = new InstancePlacementTargetPrototypeDedicatedHostIdentityDedicatedHostIdentityByHref.Builder()
-      .href("https://us-south.iaas.cloud.ibm.com/v1/dedicated_hosts/1e09281b-f177-46fb-baf1-bc152b2e391a")
+      .href("https://us-south.iaas.cloud.ibm.com/v1/dedicated_hosts/0717-1e09281b-f177-46fb-baf1-bc152b2e391a")
       .build();
-    assertEquals(instancePlacementTargetPrototypeDedicatedHostIdentityDedicatedHostIdentityByHrefModel.href(), "https://us-south.iaas.cloud.ibm.com/v1/dedicated_hosts/1e09281b-f177-46fb-baf1-bc152b2e391a");
+    assertEquals(instancePlacementTargetPrototypeDedicatedHostIdentityDedicatedHostIdentityByHrefModel.href(), "https://us-south.iaas.cloud.ibm.com/v1/dedicated_hosts/0717-1e09281b-f177-46fb-baf1-bc152b2e391a");
 
     String json = TestUtilities.serialize(instancePlacementTargetPrototypeDedicatedHostIdentityDedicatedHostIdentityByHrefModel);
 
     InstancePlacementTargetPrototypeDedicatedHostIdentityDedicatedHostIdentityByHref instancePlacementTargetPrototypeDedicatedHostIdentityDedicatedHostIdentityByHrefModelNew = TestUtilities.deserialize(json, InstancePlacementTargetPrototypeDedicatedHostIdentityDedicatedHostIdentityByHref.class);
     assertTrue(instancePlacementTargetPrototypeDedicatedHostIdentityDedicatedHostIdentityByHrefModelNew instanceof InstancePlacementTargetPrototypeDedicatedHostIdentityDedicatedHostIdentityByHref);
-    assertEquals(instancePlacementTargetPrototypeDedicatedHostIdentityDedicatedHostIdentityByHrefModelNew.href(), "https://us-south.iaas.cloud.ibm.com/v1/dedicated_hosts/1e09281b-f177-46fb-baf1-bc152b2e391a");
+    assertEquals(instancePlacementTargetPrototypeDedicatedHostIdentityDedicatedHostIdentityByHrefModelNew.href(), "https://us-south.iaas.cloud.ibm.com/v1/dedicated_hosts/0717-1e09281b-f177-46fb-baf1-bc152b2e391a");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

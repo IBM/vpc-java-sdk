@@ -16,7 +16,10 @@ import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * The possible resource types for this property are expected to expand in the future.
+ * The resource from which this bare metal server is booted.
+ *
+ * The resources supported by this property may
+ * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
  *
  * Classes which extend this class:
  * - BareMetalServerBootTargetBareMetalServerDiskReference

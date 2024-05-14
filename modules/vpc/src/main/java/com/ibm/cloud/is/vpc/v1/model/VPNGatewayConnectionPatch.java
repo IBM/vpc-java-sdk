@@ -24,6 +24,22 @@ import com.ibm.cloud.sdk.core.util.GsonSingleton;
 public class VPNGatewayConnectionPatch extends GenericModel {
 
   /**
+   * The establish mode of the VPN gateway connection:
+   * - `bidirectional`: Either side of the VPN gateway can initiate IKE protocol
+   *    negotiations or rekeying processes.
+   * - `peer_only`: Only the peer can initiate IKE protocol negotiations for this VPN gateway
+   *    connection. Additionally, the peer is responsible for initiating the rekeying process
+   *    after the connection is established. If rekeying does not occur, the VPN gateway
+   *    connection will be brought down after its lifetime expires.
+   */
+  public interface EstablishMode {
+    /** bidirectional. */
+    String BIDIRECTIONAL = "bidirectional";
+    /** peer_only. */
+    String PEER_ONLY = "peer_only";
+  }
+
+  /**
    * Routing protocols are disabled for this VPN gateway connection.
    */
   public interface RoutingProtocol {
@@ -35,13 +51,14 @@ public class VPNGatewayConnectionPatch extends GenericModel {
   protected Boolean adminStateUp;
   @SerializedName("dead_peer_detection")
   protected VPNGatewayConnectionDPDPatch deadPeerDetection;
+  @SerializedName("establish_mode")
+  protected String establishMode;
   @SerializedName("ike_policy")
   protected VPNGatewayConnectionIKEPolicyPatch ikePolicy;
   @SerializedName("ipsec_policy")
   protected VPNGatewayConnectionIPsecPolicyPatch ipsecPolicy;
   protected String name;
-  @SerializedName("peer_address")
-  protected String peerAddress;
+  protected VPNGatewayConnectionPeerPatch peer;
   protected String psk;
   @SerializedName("routing_protocol")
   protected String routingProtocol;
@@ -52,10 +69,11 @@ public class VPNGatewayConnectionPatch extends GenericModel {
   public static class Builder {
     private Boolean adminStateUp;
     private VPNGatewayConnectionDPDPatch deadPeerDetection;
+    private String establishMode;
     private VPNGatewayConnectionIKEPolicyPatch ikePolicy;
     private VPNGatewayConnectionIPsecPolicyPatch ipsecPolicy;
     private String name;
-    private String peerAddress;
+    private VPNGatewayConnectionPeerPatch peer;
     private String psk;
     private String routingProtocol;
 
@@ -67,10 +85,11 @@ public class VPNGatewayConnectionPatch extends GenericModel {
     private Builder(VPNGatewayConnectionPatch vpnGatewayConnectionPatch) {
       this.adminStateUp = vpnGatewayConnectionPatch.adminStateUp;
       this.deadPeerDetection = vpnGatewayConnectionPatch.deadPeerDetection;
+      this.establishMode = vpnGatewayConnectionPatch.establishMode;
       this.ikePolicy = vpnGatewayConnectionPatch.ikePolicy;
       this.ipsecPolicy = vpnGatewayConnectionPatch.ipsecPolicy;
       this.name = vpnGatewayConnectionPatch.name;
-      this.peerAddress = vpnGatewayConnectionPatch.peerAddress;
+      this.peer = vpnGatewayConnectionPatch.peer;
       this.psk = vpnGatewayConnectionPatch.psk;
       this.routingProtocol = vpnGatewayConnectionPatch.routingProtocol;
     }
@@ -113,6 +132,17 @@ public class VPNGatewayConnectionPatch extends GenericModel {
     }
 
     /**
+     * Set the establishMode.
+     *
+     * @param establishMode the establishMode
+     * @return the VPNGatewayConnectionPatch builder
+     */
+    public Builder establishMode(String establishMode) {
+      this.establishMode = establishMode;
+      return this;
+    }
+
+    /**
      * Set the ikePolicy.
      *
      * @param ikePolicy the ikePolicy
@@ -146,13 +176,13 @@ public class VPNGatewayConnectionPatch extends GenericModel {
     }
 
     /**
-     * Set the peerAddress.
+     * Set the peer.
      *
-     * @param peerAddress the peerAddress
+     * @param peer the peer
      * @return the VPNGatewayConnectionPatch builder
      */
-    public Builder peerAddress(String peerAddress) {
-      this.peerAddress = peerAddress;
+    public Builder peer(VPNGatewayConnectionPeerPatch peer) {
+      this.peer = peer;
       return this;
     }
 
@@ -184,10 +214,11 @@ public class VPNGatewayConnectionPatch extends GenericModel {
   protected VPNGatewayConnectionPatch(Builder builder) {
     adminStateUp = builder.adminStateUp;
     deadPeerDetection = builder.deadPeerDetection;
+    establishMode = builder.establishMode;
     ikePolicy = builder.ikePolicy;
     ipsecPolicy = builder.ipsecPolicy;
     name = builder.name;
-    peerAddress = builder.peerAddress;
+    peer = builder.peer;
     psk = builder.psk;
     routingProtocol = builder.routingProtocol;
   }
@@ -221,6 +252,23 @@ public class VPNGatewayConnectionPatch extends GenericModel {
    */
   public VPNGatewayConnectionDPDPatch deadPeerDetection() {
     return deadPeerDetection;
+  }
+
+  /**
+   * Gets the establishMode.
+   *
+   * The establish mode of the VPN gateway connection:
+   * - `bidirectional`: Either side of the VPN gateway can initiate IKE protocol
+   *    negotiations or rekeying processes.
+   * - `peer_only`: Only the peer can initiate IKE protocol negotiations for this VPN gateway
+   *    connection. Additionally, the peer is responsible for initiating the rekeying process
+   *    after the connection is established. If rekeying does not occur, the VPN gateway
+   *    connection will be brought down after its lifetime expires.
+   *
+   * @return the establishMode
+   */
+  public String establishMode() {
+    return establishMode;
   }
 
   /**
@@ -259,14 +307,12 @@ public class VPNGatewayConnectionPatch extends GenericModel {
   }
 
   /**
-   * Gets the peerAddress.
+   * Gets the peer.
    *
-   * The IP address of the peer VPN gateway.
-   *
-   * @return the peerAddress
+   * @return the peer
    */
-  public String peerAddress() {
-    return peerAddress;
+  public VPNGatewayConnectionPeerPatch peer() {
+    return peer;
   }
 
   /**

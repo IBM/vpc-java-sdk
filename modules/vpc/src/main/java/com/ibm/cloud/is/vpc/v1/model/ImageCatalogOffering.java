@@ -29,9 +29,8 @@ public class ImageCatalogOffering extends GenericModel {
    *
    * Indicates whether this image is managed as part of a
    * [catalog](https://cloud.ibm.com/docs/account?topic=account-restrict-by-user) offering. If an image is managed,
-   * accounts in the same
-   * [enterprise](https://cloud.ibm.com/docs/account?topic=account-what-is-enterprise) with access to that catalog can
-   * specify the image's catalog offering version CRN to provision virtual server instances using the image.
+   * accounts with access to that catalog can specify the image's catalog offering version CRN to provision virtual
+   * server instances using the image.
    *
    * @return the managed
    */

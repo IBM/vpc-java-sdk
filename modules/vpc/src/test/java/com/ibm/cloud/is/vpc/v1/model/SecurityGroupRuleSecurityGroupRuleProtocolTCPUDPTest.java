@@ -13,6 +13,7 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleLocalIP;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleRemoteIP;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleSecurityGroupRuleProtocolTCPUDP;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
@@ -37,6 +38,7 @@ public class SecurityGroupRuleSecurityGroupRuleProtocolTCPUDPTest {
     assertNull(securityGroupRuleSecurityGroupRuleProtocolTcpudpModel.getHref());
     assertNull(securityGroupRuleSecurityGroupRuleProtocolTcpudpModel.getId());
     assertNull(securityGroupRuleSecurityGroupRuleProtocolTcpudpModel.getIpVersion());
+    assertNull(securityGroupRuleSecurityGroupRuleProtocolTcpudpModel.getLocal());
     assertNull(securityGroupRuleSecurityGroupRuleProtocolTcpudpModel.getRemote());
     assertNull(securityGroupRuleSecurityGroupRuleProtocolTcpudpModel.getPortMax());
     assertNull(securityGroupRuleSecurityGroupRuleProtocolTcpudpModel.getPortMin());

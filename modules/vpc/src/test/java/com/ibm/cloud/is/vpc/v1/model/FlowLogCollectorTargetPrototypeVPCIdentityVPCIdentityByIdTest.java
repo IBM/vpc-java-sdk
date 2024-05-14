@@ -32,15 +32,15 @@ public class FlowLogCollectorTargetPrototypeVPCIdentityVPCIdentityByIdTest {
   @Test
   public void testFlowLogCollectorTargetPrototypeVPCIdentityVPCIdentityById() throws Throwable {
     FlowLogCollectorTargetPrototypeVPCIdentityVPCIdentityById flowLogCollectorTargetPrototypeVpcIdentityVpcIdentityByIdModel = new FlowLogCollectorTargetPrototypeVPCIdentityVPCIdentityById.Builder()
-      .id("4727d842-f94f-4a2d-824a-9bc9b02c523b")
+      .id("r006-4727d842-f94f-4a2d-824a-9bc9b02c523b")
       .build();
-    assertEquals(flowLogCollectorTargetPrototypeVpcIdentityVpcIdentityByIdModel.id(), "4727d842-f94f-4a2d-824a-9bc9b02c523b");
+    assertEquals(flowLogCollectorTargetPrototypeVpcIdentityVpcIdentityByIdModel.id(), "r006-4727d842-f94f-4a2d-824a-9bc9b02c523b");
 
     String json = TestUtilities.serialize(flowLogCollectorTargetPrototypeVpcIdentityVpcIdentityByIdModel);
 
     FlowLogCollectorTargetPrototypeVPCIdentityVPCIdentityById flowLogCollectorTargetPrototypeVpcIdentityVpcIdentityByIdModelNew = TestUtilities.deserialize(json, FlowLogCollectorTargetPrototypeVPCIdentityVPCIdentityById.class);
     assertTrue(flowLogCollectorTargetPrototypeVpcIdentityVpcIdentityByIdModelNew instanceof FlowLogCollectorTargetPrototypeVPCIdentityVPCIdentityById);
-    assertEquals(flowLogCollectorTargetPrototypeVpcIdentityVpcIdentityByIdModelNew.id(), "4727d842-f94f-4a2d-824a-9bc9b02c523b");
+    assertEquals(flowLogCollectorTargetPrototypeVpcIdentityVpcIdentityByIdModelNew.id(), "r006-4727d842-f94f-4a2d-824a-9bc9b02c523b");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

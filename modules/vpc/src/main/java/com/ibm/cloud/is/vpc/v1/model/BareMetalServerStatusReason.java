@@ -26,7 +26,10 @@ public class BareMetalServerStatusReason extends GenericModel {
    * - `cannot_start_capacity`: Insufficient capacity within the selected zone
    * - `cannot_start_compute`: An error occurred while allocating compute resources
    * - `cannot_start_ip_address`: An error occurred while allocating an IP address
-   * - `cannot_start_network`: An error occurred while allocating network resources.
+   * - `cannot_start_network`: An error occurred while allocating network resources
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface Code {
     /** cannot_start. */
@@ -56,7 +59,10 @@ public class BareMetalServerStatusReason extends GenericModel {
    * - `cannot_start_capacity`: Insufficient capacity within the selected zone
    * - `cannot_start_compute`: An error occurred while allocating compute resources
    * - `cannot_start_ip_address`: An error occurred while allocating an IP address
-   * - `cannot_start_network`: An error occurred while allocating network resources.
+   * - `cannot_start_network`: An error occurred while allocating network resources
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the code
    */

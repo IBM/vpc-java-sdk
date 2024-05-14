@@ -21,7 +21,21 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class ImageStatusReason extends GenericModel {
 
   /**
-   * A snake case string succinctly identifying the status reason.
+   * A reason code for the status:
+   * - `encrypted_data_key_invalid`: image cannot be decrypted with the specified
+   *   `encryption_key`
+   * - `encryption_key_deleted`: image unusable because its `encryption_key` was deleted
+   * - `encryption_key_disabled`: image unusable until its `encryption_key` is re-enabled
+   * - `image_data_corrupted`: image data is corrupt, or is not in the specified format
+   * - `image_provisioned_size_unsupported`: image requires a boot volume size greater
+   *   than the maximum supported value
+   * - `image_request_in_progress`: image operation is in progress (such as an import from
+   *    Cloud Object Storage)
+   * - `image_request_queued`: image request has been accepted but the requested
+   *   operation has not started
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface Code {
     /** encrypted_data_key_invalid. */
@@ -50,7 +64,21 @@ public class ImageStatusReason extends GenericModel {
   /**
    * Gets the code.
    *
-   * A snake case string succinctly identifying the status reason.
+   * A reason code for the status:
+   * - `encrypted_data_key_invalid`: image cannot be decrypted with the specified
+   *   `encryption_key`
+   * - `encryption_key_deleted`: image unusable because its `encryption_key` was deleted
+   * - `encryption_key_disabled`: image unusable until its `encryption_key` is re-enabled
+   * - `image_data_corrupted`: image data is corrupt, or is not in the specified format
+   * - `image_provisioned_size_unsupported`: image requires a boot volume size greater
+   *   than the maximum supported value
+   * - `image_request_in_progress`: image operation is in progress (such as an import from
+   *    Cloud Object Storage)
+   * - `image_request_queued`: image request has been accepted but the requested
+   *   operation has not started
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the code
    */

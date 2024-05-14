@@ -32,15 +32,15 @@ public class ImageIdentityByCRNTest {
   @Test
   public void testImageIdentityByCRN() throws Throwable {
     ImageIdentityByCRN imageIdentityByCrnModel = new ImageIdentityByCRN.Builder()
-      .crn("crn:v1:bluemix:public:is:us-south:a/123456::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8")
+      .crn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::image:r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8")
       .build();
-    assertEquals(imageIdentityByCrnModel.crn(), "crn:v1:bluemix:public:is:us-south:a/123456::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8");
+    assertEquals(imageIdentityByCrnModel.crn(), "crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::image:r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8");
 
     String json = TestUtilities.serialize(imageIdentityByCrnModel);
 
     ImageIdentityByCRN imageIdentityByCrnModelNew = TestUtilities.deserialize(json, ImageIdentityByCRN.class);
     assertTrue(imageIdentityByCrnModelNew instanceof ImageIdentityByCRN);
-    assertEquals(imageIdentityByCrnModelNew.crn(), "crn:v1:bluemix:public:is:us-south:a/123456::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8");
+    assertEquals(imageIdentityByCrnModelNew.crn(), "crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::image:r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

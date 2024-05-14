@@ -32,15 +32,15 @@ public class VolumeAttachmentPrototypeVolumeVolumeIdentityVolumeIdentityByCRNTes
   @Test
   public void testVolumeAttachmentPrototypeVolumeVolumeIdentityVolumeIdentityByCRN() throws Throwable {
     VolumeAttachmentPrototypeVolumeVolumeIdentityVolumeIdentityByCRN volumeAttachmentPrototypeVolumeVolumeIdentityVolumeIdentityByCrnModel = new VolumeAttachmentPrototypeVolumeVolumeIdentityVolumeIdentityByCRN.Builder()
-      .crn("crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5")
+      .crn("crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::volume:r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5")
       .build();
-    assertEquals(volumeAttachmentPrototypeVolumeVolumeIdentityVolumeIdentityByCrnModel.crn(), "crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5");
+    assertEquals(volumeAttachmentPrototypeVolumeVolumeIdentityVolumeIdentityByCrnModel.crn(), "crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::volume:r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5");
 
     String json = TestUtilities.serialize(volumeAttachmentPrototypeVolumeVolumeIdentityVolumeIdentityByCrnModel);
 
     VolumeAttachmentPrototypeVolumeVolumeIdentityVolumeIdentityByCRN volumeAttachmentPrototypeVolumeVolumeIdentityVolumeIdentityByCrnModelNew = TestUtilities.deserialize(json, VolumeAttachmentPrototypeVolumeVolumeIdentityVolumeIdentityByCRN.class);
     assertTrue(volumeAttachmentPrototypeVolumeVolumeIdentityVolumeIdentityByCrnModelNew instanceof VolumeAttachmentPrototypeVolumeVolumeIdentityVolumeIdentityByCRN);
-    assertEquals(volumeAttachmentPrototypeVolumeVolumeIdentityVolumeIdentityByCrnModelNew.crn(), "crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5");
+    assertEquals(volumeAttachmentPrototypeVolumeVolumeIdentityVolumeIdentityByCrnModelNew.crn(), "crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::volume:r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

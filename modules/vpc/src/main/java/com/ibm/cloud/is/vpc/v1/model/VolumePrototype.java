@@ -115,8 +115,10 @@ public class VolumePrototype extends GenericModel {
   /**
    * Gets the capacity.
    *
-   * The capacity to use for the volume (in gigabytes). The specified minimum and maximum capacity values for creating
-   * or updating volumes may expand in the future.
+   * The capacity to use for the volume (in gigabytes).
+   *
+   * The minimum and maximum limits for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the capacity
    */

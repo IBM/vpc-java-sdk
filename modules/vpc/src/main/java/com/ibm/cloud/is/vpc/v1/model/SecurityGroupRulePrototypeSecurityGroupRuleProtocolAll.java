@@ -28,8 +28,10 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolAll extends Secu
   }
 
   /**
-   * The IP version to enforce. The format of `remote.address` or `remote.cidr_block` must match this property, if they
-   * are used. Alternatively, if `remote` references a security group, then this rule only applies to IP addresses
+   * The IP version to enforce. The format of `local.address`, `remote.address`,
+   * `local.cidr_block` or `remote.cidr_block` must match this property, if they are used.
+   *
+   * If `remote` references a security group, then this rule only applies to IP addresses
    * (network interfaces) in that group matching this IP version.
    */
   public interface IpVersion {
@@ -52,6 +54,7 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolAll extends Secu
   public static class Builder {
     private String direction;
     private String ipVersion;
+    private SecurityGroupRuleLocalPrototype local;
     private String protocol;
     private SecurityGroupRuleRemotePrototype remote;
 
@@ -63,6 +66,7 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolAll extends Secu
     public Builder(SecurityGroupRulePrototype securityGroupRulePrototypeSecurityGroupRuleProtocolAll) {
       this.direction = securityGroupRulePrototypeSecurityGroupRuleProtocolAll.direction;
       this.ipVersion = securityGroupRulePrototypeSecurityGroupRuleProtocolAll.ipVersion;
+      this.local = securityGroupRulePrototypeSecurityGroupRuleProtocolAll.local;
       this.protocol = securityGroupRulePrototypeSecurityGroupRuleProtocolAll.protocol;
       this.remote = securityGroupRulePrototypeSecurityGroupRuleProtocolAll.remote;
     }
@@ -116,6 +120,17 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolAll extends Secu
     }
 
     /**
+     * Set the local.
+     *
+     * @param local the local
+     * @return the SecurityGroupRulePrototypeSecurityGroupRuleProtocolAll builder
+     */
+    public Builder local(SecurityGroupRuleLocalPrototype local) {
+      this.local = local;
+      return this;
+    }
+
+    /**
      * Set the protocol.
      *
      * @param protocol the protocol
@@ -147,6 +162,7 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolAll extends Secu
       "protocol cannot be null");
     direction = builder.direction;
     ipVersion = builder.ipVersion;
+    local = builder.local;
     protocol = builder.protocol;
     remote = builder.remote;
   }

@@ -25,9 +25,8 @@ public class DedicatedHostProfile extends GenericModel {
   /**
    * The product family this dedicated host profile belongs to
    *
-   * The enumerated values for this property are expected to expand in the future. When processing this property, check
-   * for and log unknown values. Optionally halt processing and surface the error, or bypass the resource on which the
-   * unexpected property value was encountered.
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface Family {
     /** balanced. */
@@ -40,18 +39,16 @@ public class DedicatedHostProfile extends GenericModel {
 
   /**
    * The status of the dedicated host profile:
-   *   - `previous`:  This dedicated host profile is an older revision, but remains provisionable
+   * - `previous`: This dedicated host profile is an older revision, but remains provisionable
    *   and usable.
-   *   - `current`:  This profile is the latest revision.
+   * - `current`: This dedicated host profile is the latest revision.
    *
-   * Note that revisions are indicated by the generation of a dedicated host profile.  Refer to the [profile naming
-   * conventions]
+   * Revisions are indicated by the generation of a dedicated host profile. Refer to the [profile naming conventions]
    * (https://cloud.ibm.com/docs/vpc?topic=vpc-dh-profiles&amp;interface=ui#profiles-naming-rule) for information on how
    * generations are defined within a dedicated host profile.
    *
-   * The enumerated values for this property are expected to expand in the future. When processing this property, check
-   * for and log unknown values. Optionally halt processing and surface the error, or bypass the profile on which the
-   * unexpected property value was encountered.
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface Status {
     /** current. */
@@ -108,9 +105,8 @@ public class DedicatedHostProfile extends GenericModel {
    *
    * The product family this dedicated host profile belongs to
    *
-   * The enumerated values for this property are expected to expand in the future. When processing this property, check
-   * for and log unknown values. Optionally halt processing and surface the error, or bypass the resource on which the
-   * unexpected property value was encountered.
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the family
    */
@@ -162,18 +158,16 @@ public class DedicatedHostProfile extends GenericModel {
    * Gets the status.
    *
    * The status of the dedicated host profile:
-   *   - `previous`:  This dedicated host profile is an older revision, but remains provisionable
+   * - `previous`: This dedicated host profile is an older revision, but remains provisionable
    *   and usable.
-   *   - `current`:  This profile is the latest revision.
+   * - `current`: This dedicated host profile is the latest revision.
    *
-   * Note that revisions are indicated by the generation of a dedicated host profile.  Refer to the [profile naming
-   * conventions]
+   * Revisions are indicated by the generation of a dedicated host profile. Refer to the [profile naming conventions]
    * (https://cloud.ibm.com/docs/vpc?topic=vpc-dh-profiles&amp;interface=ui#profiles-naming-rule) for information on how
    * generations are defined within a dedicated host profile.
    *
-   * The enumerated values for this property are expected to expand in the future. When processing this property, check
-   * for and log unknown values. Optionally halt processing and surface the error, or bypass the profile on which the
-   * unexpected property value was encountered.
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the status
    */

@@ -21,7 +21,20 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class VPNServerHealthReason extends GenericModel {
 
   /**
-   * A snake case string succinctly identifying the reason for this health state.
+   * A reason code for this health state:
+   * - `cannot_access_client_certificate`: VPN server's client certificate is inaccessible
+   *   (verify certificate exists and that IAM policies grant `VPN server for VPC` access
+   *   to `Secrets Manager`)
+   * - `cannot_access_server_certificate`: VPN server's server certificate is inaccessible
+   *   (verify certificate exists and that IAM policies grant `VPN server for VPC` access
+   *   to `Secrets Manager`)
+   * - `cannot_create_vpc_route`: VPN cannot create route (check for conflict)
+   * - `cannot_reserve_ip_address`: IP address exhaustion (release addresses on the VPN's
+   *   subnet)
+   * - `internal_error`: Internal error (contact IBM support)
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface Code {
     /** cannot_access_client_certificate. */
@@ -46,7 +59,20 @@ public class VPNServerHealthReason extends GenericModel {
   /**
    * Gets the code.
    *
-   * A snake case string succinctly identifying the reason for this health state.
+   * A reason code for this health state:
+   * - `cannot_access_client_certificate`: VPN server's client certificate is inaccessible
+   *   (verify certificate exists and that IAM policies grant `VPN server for VPC` access
+   *   to `Secrets Manager`)
+   * - `cannot_access_server_certificate`: VPN server's server certificate is inaccessible
+   *   (verify certificate exists and that IAM policies grant `VPN server for VPC` access
+   *   to `Secrets Manager`)
+   * - `cannot_create_vpc_route`: VPN cannot create route (check for conflict)
+   * - `cannot_reserve_ip_address`: IP address exhaustion (release addresses on the VPN's
+   *   subnet)
+   * - `internal_error`: Internal error (contact IBM support)
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the code
    */

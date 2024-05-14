@@ -21,14 +21,10 @@ public class CreateVpnServerRouteOptions extends GenericModel {
 
   /**
    * The action to perform with a packet matching the VPN route:
-   * - `translate`: translate the source IP address to one of the private IP addresses of the VPN server, then deliver
-   * the packet to target.
+   * - `translate`: translate the source IP address to one of the private IP addresses of
+   *   the VPN server, then deliver the packet to target.
    * - `deliver`: deliver the packet to the target.
-   * - `drop`: drop the packet
-   *
-   * The enumerated values for this property are expected to expand in the future. When processing this property, check
-   * for and log unknown values. Optionally halt processing and surface the error, or bypass the VPN route on which the
-   * unexpected property value was encountered.
+   * - `drop`: drop the packet.
    */
   public interface Action {
     /** deliver. */
@@ -185,14 +181,10 @@ public class CreateVpnServerRouteOptions extends GenericModel {
    * Gets the action.
    *
    * The action to perform with a packet matching the VPN route:
-   * - `translate`: translate the source IP address to one of the private IP addresses of the VPN server, then deliver
-   * the packet to target.
+   * - `translate`: translate the source IP address to one of the private IP addresses of
+   *   the VPN server, then deliver the packet to target.
    * - `deliver`: deliver the packet to the target.
-   * - `drop`: drop the packet
-   *
-   * The enumerated values for this property are expected to expand in the future. When processing this property, check
-   * for and log unknown values. Optionally halt processing and surface the error, or bypass the VPN route on which the
-   * unexpected property value was encountered.
+   * - `drop`: drop the packet.
    *
    * @return the action
    */

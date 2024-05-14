@@ -24,13 +24,13 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class EndpointGateway extends GenericModel {
 
   /**
-   * The health of this resource.
+   * The health of this resource:
    * - `ok`: No abnormal behavior detected
    * - `degraded`: Experiencing compromised performance, capacity, or connectivity
    * - `faulted`: Completely unreachable, inoperative, or otherwise entirely incapacitated
-   * - `inapplicable`: The health state does not apply because of the current lifecycle state. A resource with a
-   * lifecycle state of `failed` or `deleting` will have a health state of `inapplicable`. A `pending` resource may also
-   * have this state.
+   * - `inapplicable`: The health state does not apply because of the current lifecycle
+   *    state. A resource with a lifecycle state of `failed` or `deleting` will have a
+   *    health state of `inapplicable`. A `pending` resource may also have this state.
    */
   public interface HealthState {
     /** degraded. */
@@ -138,13 +138,13 @@ public class EndpointGateway extends GenericModel {
   /**
    * Gets the healthState.
    *
-   * The health of this resource.
+   * The health of this resource:
    * - `ok`: No abnormal behavior detected
    * - `degraded`: Experiencing compromised performance, capacity, or connectivity
    * - `faulted`: Completely unreachable, inoperative, or otherwise entirely incapacitated
-   * - `inapplicable`: The health state does not apply because of the current lifecycle state. A resource with a
-   * lifecycle state of `failed` or `deleting` will have a health state of `inapplicable`. A `pending` resource may also
-   * have this state.
+   * - `inapplicable`: The health state does not apply because of the current lifecycle
+   *    state. A resource with a lifecycle state of `failed` or `deleting` will have a
+   *    health state of `inapplicable`. A `pending` resource may also have this state.
    *
    * @return the healthState
    */
@@ -188,8 +188,7 @@ public class EndpointGateway extends GenericModel {
   /**
    * Gets the lifecycleReasons.
    *
-   * The reasons for the current `lifecycle_state` (if any):
-   * - `dns_resolution_binding_pending`: the DNS resolution binding is being set up.
+   * The reasons for the current `lifecycle_state` (if any).
    *
    * @return the lifecycleReasons
    */

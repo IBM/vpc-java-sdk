@@ -21,7 +21,13 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class VPNGatewayMemberHealthReason extends GenericModel {
 
   /**
-   * A snake case string succinctly identifying the reason for this health state.
+   * A reason code for this health state:
+   * - `cannot_reserve_ip_address`: IP address exhaustion (release addresses on the VPN's
+   *   subnet)
+   * - `internal_error`: Internal error (contact IBM support)
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface Code {
     /** cannot_reserve_ip_address. */
@@ -40,7 +46,13 @@ public class VPNGatewayMemberHealthReason extends GenericModel {
   /**
    * Gets the code.
    *
-   * A snake case string succinctly identifying the reason for this health state.
+   * A reason code for this health state:
+   * - `cannot_reserve_ip_address`: IP address exhaustion (release addresses on the VPN's
+   *   subnet)
+   * - `internal_error`: Internal error (contact IBM support)
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the code
    */

@@ -32,15 +32,15 @@ public class NetworkInterfaceIPPrototypeReservedIPIdentityByHrefTest {
   @Test
   public void testNetworkInterfaceIPPrototypeReservedIPIdentityByHref() throws Throwable {
     NetworkInterfaceIPPrototypeReservedIPIdentityByHref networkInterfaceIpPrototypeReservedIpIdentityByHrefModel = new NetworkInterfaceIPPrototypeReservedIPIdentityByHref.Builder()
-      .href("https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e/reserved_ips/6d353a0f-aeb1-4ae1-832e-1110d10981bb")
+      .href("https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb")
       .build();
-    assertEquals(networkInterfaceIpPrototypeReservedIpIdentityByHrefModel.href(), "https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e/reserved_ips/6d353a0f-aeb1-4ae1-832e-1110d10981bb");
+    assertEquals(networkInterfaceIpPrototypeReservedIpIdentityByHrefModel.href(), "https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb");
 
     String json = TestUtilities.serialize(networkInterfaceIpPrototypeReservedIpIdentityByHrefModel);
 
     NetworkInterfaceIPPrototypeReservedIPIdentityByHref networkInterfaceIpPrototypeReservedIpIdentityByHrefModelNew = TestUtilities.deserialize(json, NetworkInterfaceIPPrototypeReservedIPIdentityByHref.class);
     assertTrue(networkInterfaceIpPrototypeReservedIpIdentityByHrefModelNew instanceof NetworkInterfaceIPPrototypeReservedIPIdentityByHref);
-    assertEquals(networkInterfaceIpPrototypeReservedIpIdentityByHrefModelNew.href(), "https://us-south.iaas.cloud.ibm.com/v1/subnets/7ec86020-1c6e-4889-b3f0-a15f2e50f87e/reserved_ips/6d353a0f-aeb1-4ae1-832e-1110d10981bb");
+    assertEquals(networkInterfaceIpPrototypeReservedIpIdentityByHrefModelNew.href(), "https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

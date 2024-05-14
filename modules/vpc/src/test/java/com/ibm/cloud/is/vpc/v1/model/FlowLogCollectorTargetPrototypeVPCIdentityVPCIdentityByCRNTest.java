@@ -32,15 +32,15 @@ public class FlowLogCollectorTargetPrototypeVPCIdentityVPCIdentityByCRNTest {
   @Test
   public void testFlowLogCollectorTargetPrototypeVPCIdentityVPCIdentityByCRN() throws Throwable {
     FlowLogCollectorTargetPrototypeVPCIdentityVPCIdentityByCRN flowLogCollectorTargetPrototypeVpcIdentityVpcIdentityByCrnModel = new FlowLogCollectorTargetPrototypeVPCIdentityVPCIdentityByCRN.Builder()
-      .crn("crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b")
+      .crn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b")
       .build();
-    assertEquals(flowLogCollectorTargetPrototypeVpcIdentityVpcIdentityByCrnModel.crn(), "crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b");
+    assertEquals(flowLogCollectorTargetPrototypeVpcIdentityVpcIdentityByCrnModel.crn(), "crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b");
 
     String json = TestUtilities.serialize(flowLogCollectorTargetPrototypeVpcIdentityVpcIdentityByCrnModel);
 
     FlowLogCollectorTargetPrototypeVPCIdentityVPCIdentityByCRN flowLogCollectorTargetPrototypeVpcIdentityVpcIdentityByCrnModelNew = TestUtilities.deserialize(json, FlowLogCollectorTargetPrototypeVPCIdentityVPCIdentityByCRN.class);
     assertTrue(flowLogCollectorTargetPrototypeVpcIdentityVpcIdentityByCrnModelNew instanceof FlowLogCollectorTargetPrototypeVPCIdentityVPCIdentityByCRN);
-    assertEquals(flowLogCollectorTargetPrototypeVpcIdentityVpcIdentityByCrnModelNew.crn(), "crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b");
+    assertEquals(flowLogCollectorTargetPrototypeVpcIdentityVpcIdentityByCrnModelNew.crn(), "crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

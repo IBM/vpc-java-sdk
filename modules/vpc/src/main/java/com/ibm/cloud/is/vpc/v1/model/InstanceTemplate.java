@@ -370,8 +370,7 @@ public class InstanceTemplate extends GenericModel {
    *
    * If an offering is specified, the latest version of that offering will be used.
    *
-   * The specified offering or offering version may be in a different account in the same
-   * [enterprise](https://cloud.ibm.com/docs/account?topic=account-what-is-enterprise), subject
+   * The specified offering or offering version may be in a different account, subject
    * to IAM policies.
    *
    * @return the catalogOffering

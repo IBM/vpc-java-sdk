@@ -334,7 +334,9 @@ public class LoadBalancerPoolPrototype extends GenericModel {
   /**
    * Gets the sessionPersistence.
    *
-   * The session persistence of this pool.
+   * The session persistence of this pool. If unspecified, session persistence will be
+   * disabled, and traffic will be distributed across backend server members of the
+   * pool.
    *
    * @return the sessionPersistence
    */

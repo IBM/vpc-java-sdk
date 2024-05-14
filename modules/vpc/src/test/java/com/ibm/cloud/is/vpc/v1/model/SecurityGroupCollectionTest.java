@@ -19,6 +19,7 @@ import com.ibm.cloud.is.vpc.v1.model.SecurityGroup;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupCollection;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupCollectionFirst;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupCollectionNext;
+import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleLocalIP;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleRemoteIP;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleSecurityGroupRuleProtocolAll;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupTargetReferenceNetworkInterfaceReferenceTargetContext;

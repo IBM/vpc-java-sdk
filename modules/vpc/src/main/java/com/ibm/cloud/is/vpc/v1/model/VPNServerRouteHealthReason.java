@@ -21,7 +21,11 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class VPNServerRouteHealthReason extends GenericModel {
 
   /**
-   * A snake case string succinctly identifying the reason for this health state.
+   * A reason code for this health state:
+   * - `internal_error`: Internal error (contact IBM support)
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface Code {
     /** internal_error. */
@@ -38,7 +42,11 @@ public class VPNServerRouteHealthReason extends GenericModel {
   /**
    * Gets the code.
    *
-   * A snake case string succinctly identifying the reason for this health state.
+   * A reason code for this health state:
+   * - `internal_error`: Internal error (contact IBM support)
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the code
    */

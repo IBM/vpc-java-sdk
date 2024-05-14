@@ -49,13 +49,13 @@ public class Volume extends GenericModel {
   }
 
   /**
-   * The health of this resource.
+   * The health of this resource:
    * - `ok`: No abnormal behavior detected
    * - `degraded`: Experiencing compromised performance, capacity, or connectivity
    * - `faulted`: Completely unreachable, inoperative, or otherwise entirely incapacitated
-   * - `inapplicable`: The health state does not apply because of the current lifecycle state. A resource with a
-   * lifecycle state of `failed` or `deleting` will have a health state of `inapplicable`. A `pending` resource may also
-   * have this state.
+   * - `inapplicable`: The health state does not apply because of the current lifecycle
+   *    state. A resource with a lifecycle state of `failed` or `deleting` will have a
+   *    health state of `inapplicable`. A `pending` resource may also have this state.
    */
   public interface HealthState {
     /** degraded. */
@@ -79,9 +79,8 @@ public class Volume extends GenericModel {
   /**
    * The status of the volume.
    *
-   * The enumerated values for this property will expand in the future. When processing this property, check for and log
-   * unknown values. Optionally halt processing and surface the error, or bypass the volume on which the unexpected
-   * property value was encountered.
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface Status {
     /** available. */
@@ -191,8 +190,10 @@ public class Volume extends GenericModel {
   /**
    * Gets the capacity.
    *
-   * The capacity to use for the volume (in gigabytes). The specified minimum and maximum capacity values for creating
-   * or updating volumes may expand in the future.
+   * The capacity to use for the volume (in gigabytes).
+   *
+   * The minimum and maximum limits for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the capacity
    */
@@ -252,10 +253,6 @@ public class Volume extends GenericModel {
    *
    * The reasons for the current `health_state` (if any).
    *
-   * The enumerated reason code values for this property will expand in the future. When processing this property, check
-   * for and log unknown values. Optionally halt processing and surface the error, or bypass the resource on which the
-   * unexpected reason code was encountered.
-   *
    * @return the healthReasons
    */
   public List<VolumeHealthReason> getHealthReasons() {
@@ -265,13 +262,13 @@ public class Volume extends GenericModel {
   /**
    * Gets the healthState.
    *
-   * The health of this resource.
+   * The health of this resource:
    * - `ok`: No abnormal behavior detected
    * - `degraded`: Experiencing compromised performance, capacity, or connectivity
    * - `faulted`: Completely unreachable, inoperative, or otherwise entirely incapacitated
-   * - `inapplicable`: The health state does not apply because of the current lifecycle state. A resource with a
-   * lifecycle state of `failed` or `deleting` will have a health state of `inapplicable`. A `pending` resource may also
-   * have this state.
+   * - `inapplicable`: The health state does not apply because of the current lifecycle
+   *    state. A resource with a lifecycle state of `failed` or `deleting` will have a
+   *    health state of `inapplicable`. A `pending` resource may also have this state.
    *
    * @return the healthState
    */
@@ -398,9 +395,8 @@ public class Volume extends GenericModel {
    *
    * The status of the volume.
    *
-   * The enumerated values for this property will expand in the future. When processing this property, check for and log
-   * unknown values. Optionally halt processing and surface the error, or bypass the volume on which the unexpected
-   * property value was encountered.
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the status
    */
@@ -412,10 +408,6 @@ public class Volume extends GenericModel {
    * Gets the statusReasons.
    *
    * The reasons for the current status (if any).
-   *
-   * The enumerated reason code values for this property will expand in the future. When processing this property, check
-   * for and log unknown values. Optionally halt processing and surface the error, or bypass the resource on which the
-   * unexpected reason code was encountered.
    *
    * @return the statusReasons
    */

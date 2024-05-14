@@ -25,9 +25,15 @@ public class CreateLoadBalancerListenerPolicyOptions extends GenericModel {
   /**
    * The policy action.
    *
-   * The enumerated values for this property are expected to expand in the future. When processing this property, check
-   * for and log unknown values. Optionally halt processing and surface the error, or bypass the policy on which the
-   * unexpected property value was encountered.
+   * - `forward`: Requests will be forwarded to the specified `target` pool
+   * - `https_redirect`: Requests will be redirected to the specified target listener. The
+   *   listener must have a `protocol` of `http`, and the target listener must have a
+   *   `protocol` of `https`
+   * - `redirect`: Requests will be redirected to the specified `target.url`
+   * - `reject`: Requests will be rejected with a `403` status code
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface Action {
     /** forward. */
@@ -256,9 +262,15 @@ public class CreateLoadBalancerListenerPolicyOptions extends GenericModel {
    *
    * The policy action.
    *
-   * The enumerated values for this property are expected to expand in the future. When processing this property, check
-   * for and log unknown values. Optionally halt processing and surface the error, or bypass the policy on which the
-   * unexpected property value was encountered.
+   * - `forward`: Requests will be forwarded to the specified `target` pool
+   * - `https_redirect`: Requests will be redirected to the specified target listener. The
+   *   listener must have a `protocol` of `http`, and the target listener must have a
+   *   `protocol` of `https`
+   * - `redirect`: Requests will be redirected to the specified `target.url`
+   * - `reject`: Requests will be rejected with a `403` status code
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the action
    */
@@ -269,7 +281,8 @@ public class CreateLoadBalancerListenerPolicyOptions extends GenericModel {
   /**
    * Gets the priority.
    *
-   * Priority of the policy. Lower value indicates higher priority.
+   * Priority of the policy. The priority is unique across all policies for this load balancer listener. Lower value
+   * indicates higher priority.
    *
    * @return the priority
    */
@@ -304,9 +317,9 @@ public class CreateLoadBalancerListenerPolicyOptions extends GenericModel {
    * Gets the target.
    *
    * - If `action` is `forward`, specify a `LoadBalancerPoolIdentity`.
-   * - If `action` is `redirect`, specify a `LoadBalancerListenerPolicyRedirectURLPrototype`.
    * - If `action` is `https_redirect`, specify a
-   *   `LoadBalancerListenerPolicyHTTPSRedirectPrototype`.
+   * `LoadBalancerListenerPolicyHTTPSRedirectPrototype`.
+   * - If `action` is `redirect`, specify a `LoadBalancerListenerPolicyRedirectURLPrototype`.
    *
    * @return the target
    */

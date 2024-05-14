@@ -29,9 +29,8 @@ public class ShareMountTarget extends GenericModel {
    *   target control access to the mount target.
    * - `vpc`: All clients in the VPC for a mount target have access to the mount target.
    *
-   * The enumerated access control mode values for this property may expand in the future. When processing this
-   * property, check for and log unknown values. Optionally halt processing and surface the error, or bypass the
-   * resource on which the unexpected access control mode was encountered.
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface AccessControlMode {
     /** security_group. */
@@ -73,9 +72,8 @@ public class ShareMountTarget extends GenericModel {
    * - `none`: Not encrypted in transit
    * - `user_managed`: Encrypted in transit using an instance identity certificate
    *
-   * The enumerated values for this property will expand in the future. When processing this property, check for and log
-   * unknown values. Optionally halt processing and surface the error, or bypass the resource on which the unexpected
-   * property value was encountered.
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface TransitEncryption {
     /** none. */
@@ -117,9 +115,8 @@ public class ShareMountTarget extends GenericModel {
    *   target control access to the mount target.
    * - `vpc`: All clients in the VPC for a mount target have access to the mount target.
    *
-   * The enumerated access control mode values for this property may expand in the future. When processing this
-   * property, check for and log unknown values. Optionally halt processing and surface the error, or bypass the
-   * resource on which the unexpected access control mode was encountered.
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the accessControlMode
    */
@@ -248,9 +245,8 @@ public class ShareMountTarget extends GenericModel {
    * - `none`: Not encrypted in transit
    * - `user_managed`: Encrypted in transit using an instance identity certificate
    *
-   * The enumerated values for this property will expand in the future. When processing this property, check for and log
-   * unknown values. Optionally halt processing and surface the error, or bypass the resource on which the unexpected
-   * property value was encountered.
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the transitEncryption
    */

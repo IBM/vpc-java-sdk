@@ -12,13 +12,26 @@
  */
 package com.ibm.cloud.is.vpc.v1.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * VPNGatewayConnectionPrototypeVPNGatewayConnectionPolicyModePrototype.
  */
 public class VPNGatewayConnectionPrototypeVPNGatewayConnectionPolicyModePrototype extends VPNGatewayConnectionPrototype {
+
+  /**
+   * The establish mode of the VPN gateway connection:
+   * - `bidirectional`: Either side of the VPN gateway can initiate IKE protocol
+   *    negotiations or rekeying processes.
+   * - `peer_only`: Only the peer can initiate IKE protocol negotiations for this VPN gateway
+   *    connection. Additionally, the peer is responsible for initiating the rekeying process
+   *    after the connection is established. If rekeying does not occur, the VPN gateway
+   *    connection will be brought down after its lifetime expires.
+   */
+  public interface EstablishMode {
+    /** bidirectional. */
+    String BIDIRECTIONAL = "bidirectional";
+    /** peer_only. */
+    String PEER_ONLY = "peer_only";
+  }
 
 
   /**
@@ -27,13 +40,13 @@ public class VPNGatewayConnectionPrototypeVPNGatewayConnectionPolicyModePrototyp
   public static class Builder {
     private Boolean adminStateUp;
     private VPNGatewayConnectionDPDPrototype deadPeerDetection;
+    private String establishMode;
     private VPNGatewayConnectionIKEPolicyPrototype ikePolicy;
     private VPNGatewayConnectionIPsecPolicyPrototype ipsecPolicy;
     private String name;
-    private String peerAddress;
     private String psk;
-    private List<String> localCidrs;
-    private List<String> peerCidrs;
+    private VPNGatewayConnectionPolicyModeLocalPrototype local;
+    private VPNGatewayConnectionPolicyModePeerPrototype peer;
 
     /**
      * Instantiates a new Builder from an existing VPNGatewayConnectionPrototypeVPNGatewayConnectionPolicyModePrototype instance.
@@ -43,13 +56,13 @@ public class VPNGatewayConnectionPrototypeVPNGatewayConnectionPolicyModePrototyp
     public Builder(VPNGatewayConnectionPrototype vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototype) {
       this.adminStateUp = vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototype.adminStateUp;
       this.deadPeerDetection = vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototype.deadPeerDetection;
+      this.establishMode = vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototype.establishMode;
       this.ikePolicy = vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototype.ikePolicy;
       this.ipsecPolicy = vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototype.ipsecPolicy;
       this.name = vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototype.name;
-      this.peerAddress = vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototype.peerAddress;
       this.psk = vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototype.psk;
-      this.localCidrs = vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototype.localCidrs;
-      this.peerCidrs = vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototype.peerCidrs;
+      this.local = (VPNGatewayConnectionPolicyModeLocalPrototype) vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototype.local;
+      this.peer = (VPNGatewayConnectionPolicyModePeerPrototype) vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototype.peer;
     }
 
     /**
@@ -61,16 +74,14 @@ public class VPNGatewayConnectionPrototypeVPNGatewayConnectionPolicyModePrototyp
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param peerAddress the peerAddress
      * @param psk the psk
-     * @param localCidrs the localCidrs
-     * @param peerCidrs the peerCidrs
+     * @param local the local
+     * @param peer the peer
      */
-    public Builder(String peerAddress, String psk, List<String> localCidrs, List<String> peerCidrs) {
-      this.peerAddress = peerAddress;
+    public Builder(String psk, VPNGatewayConnectionPolicyModeLocalPrototype local, VPNGatewayConnectionPolicyModePeerPrototype peer) {
       this.psk = psk;
-      this.localCidrs = localCidrs;
-      this.peerCidrs = peerCidrs;
+      this.local = local;
+      this.peer = peer;
     }
 
     /**
@@ -80,38 +91,6 @@ public class VPNGatewayConnectionPrototypeVPNGatewayConnectionPolicyModePrototyp
      */
     public VPNGatewayConnectionPrototypeVPNGatewayConnectionPolicyModePrototype build() {
       return new VPNGatewayConnectionPrototypeVPNGatewayConnectionPolicyModePrototype(this);
-    }
-
-    /**
-     * Adds a new element to localCidrs.
-     *
-     * @param localCidrs the new element to be added
-     * @return the VPNGatewayConnectionPrototypeVPNGatewayConnectionPolicyModePrototype builder
-     */
-    public Builder addLocalCidrs(String localCidrs) {
-      com.ibm.cloud.sdk.core.util.Validator.notNull(localCidrs,
-        "localCidrs cannot be null");
-      if (this.localCidrs == null) {
-        this.localCidrs = new ArrayList<String>();
-      }
-      this.localCidrs.add(localCidrs);
-      return this;
-    }
-
-    /**
-     * Adds a new element to peerCidrs.
-     *
-     * @param peerCidrs the new element to be added
-     * @return the VPNGatewayConnectionPrototypeVPNGatewayConnectionPolicyModePrototype builder
-     */
-    public Builder addPeerCidrs(String peerCidrs) {
-      com.ibm.cloud.sdk.core.util.Validator.notNull(peerCidrs,
-        "peerCidrs cannot be null");
-      if (this.peerCidrs == null) {
-        this.peerCidrs = new ArrayList<String>();
-      }
-      this.peerCidrs.add(peerCidrs);
-      return this;
     }
 
     /**
@@ -133,6 +112,17 @@ public class VPNGatewayConnectionPrototypeVPNGatewayConnectionPolicyModePrototyp
      */
     public Builder deadPeerDetection(VPNGatewayConnectionDPDPrototype deadPeerDetection) {
       this.deadPeerDetection = deadPeerDetection;
+      return this;
+    }
+
+    /**
+     * Set the establishMode.
+     *
+     * @param establishMode the establishMode
+     * @return the VPNGatewayConnectionPrototypeVPNGatewayConnectionPolicyModePrototype builder
+     */
+    public Builder establishMode(String establishMode) {
+      this.establishMode = establishMode;
       return this;
     }
 
@@ -170,17 +160,6 @@ public class VPNGatewayConnectionPrototypeVPNGatewayConnectionPolicyModePrototyp
     }
 
     /**
-     * Set the peerAddress.
-     *
-     * @param peerAddress the peerAddress
-     * @return the VPNGatewayConnectionPrototypeVPNGatewayConnectionPolicyModePrototype builder
-     */
-    public Builder peerAddress(String peerAddress) {
-      this.peerAddress = peerAddress;
-      return this;
-    }
-
-    /**
      * Set the psk.
      *
      * @param psk the psk
@@ -192,26 +171,24 @@ public class VPNGatewayConnectionPrototypeVPNGatewayConnectionPolicyModePrototyp
     }
 
     /**
-     * Set the localCidrs.
-     * Existing localCidrs will be replaced.
+     * Set the local.
      *
-     * @param localCidrs the localCidrs
+     * @param local the local
      * @return the VPNGatewayConnectionPrototypeVPNGatewayConnectionPolicyModePrototype builder
      */
-    public Builder localCidrs(List<String> localCidrs) {
-      this.localCidrs = localCidrs;
+    public Builder local(VPNGatewayConnectionPolicyModeLocalPrototype local) {
+      this.local = local;
       return this;
     }
 
     /**
-     * Set the peerCidrs.
-     * Existing peerCidrs will be replaced.
+     * Set the peer.
      *
-     * @param peerCidrs the peerCidrs
+     * @param peer the peer
      * @return the VPNGatewayConnectionPrototypeVPNGatewayConnectionPolicyModePrototype builder
      */
-    public Builder peerCidrs(List<String> peerCidrs) {
-      this.peerCidrs = peerCidrs;
+    public Builder peer(VPNGatewayConnectionPolicyModePeerPrototype peer) {
+      this.peer = peer;
       return this;
     }
   }
@@ -219,23 +196,21 @@ public class VPNGatewayConnectionPrototypeVPNGatewayConnectionPolicyModePrototyp
   protected VPNGatewayConnectionPrototypeVPNGatewayConnectionPolicyModePrototype() { }
 
   protected VPNGatewayConnectionPrototypeVPNGatewayConnectionPolicyModePrototype(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.peerAddress,
-      "peerAddress cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.psk,
       "psk cannot be null");
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.localCidrs,
-      "localCidrs cannot be null");
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.peerCidrs,
-      "peerCidrs cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.local,
+      "local cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.peer,
+      "peer cannot be null");
     adminStateUp = builder.adminStateUp;
     deadPeerDetection = builder.deadPeerDetection;
+    establishMode = builder.establishMode;
     ikePolicy = builder.ikePolicy;
     ipsecPolicy = builder.ipsecPolicy;
     name = builder.name;
-    peerAddress = builder.peerAddress;
     psk = builder.psk;
-    localCidrs = builder.localCidrs;
-    peerCidrs = builder.peerCidrs;
+    local = builder.local;
+    peer = builder.peer;
   }
 
   /**

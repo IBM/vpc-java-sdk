@@ -32,15 +32,15 @@ public class NetworkACLIdentityByCRNTest {
   @Test
   public void testNetworkACLIdentityByCRN() throws Throwable {
     NetworkACLIdentityByCRN networkAclIdentityByCrnModel = new NetworkACLIdentityByCRN.Builder()
-      .crn("crn:v1:bluemix:public:is:us-south:a/123456::network-acl:a4e28308-8ee7-46ab-8108-9f881f22bdbf")
+      .crn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::network-acl:r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf")
       .build();
-    assertEquals(networkAclIdentityByCrnModel.crn(), "crn:v1:bluemix:public:is:us-south:a/123456::network-acl:a4e28308-8ee7-46ab-8108-9f881f22bdbf");
+    assertEquals(networkAclIdentityByCrnModel.crn(), "crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::network-acl:r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf");
 
     String json = TestUtilities.serialize(networkAclIdentityByCrnModel);
 
     NetworkACLIdentityByCRN networkAclIdentityByCrnModelNew = TestUtilities.deserialize(json, NetworkACLIdentityByCRN.class);
     assertTrue(networkAclIdentityByCrnModelNew instanceof NetworkACLIdentityByCRN);
-    assertEquals(networkAclIdentityByCrnModelNew.crn(), "crn:v1:bluemix:public:is:us-south:a/123456::network-acl:a4e28308-8ee7-46ab-8108-9f881f22bdbf");
+    assertEquals(networkAclIdentityByCrnModelNew.crn(), "crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::network-acl:r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

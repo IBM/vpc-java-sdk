@@ -33,9 +33,9 @@ public class InstanceCatalogOfferingPrototypeCatalogOfferingByVersionTest {
   @Test
   public void testInstanceCatalogOfferingPrototypeCatalogOfferingByVersion() throws Throwable {
     CatalogOfferingVersionIdentityCatalogOfferingVersionByCRN catalogOfferingVersionIdentityModel = new CatalogOfferingVersionIdentityCatalogOfferingVersionByCRN.Builder()
-      .crn("crn:v1:bluemix:public:globalcatalog-collection:global:a/123456:1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc:version:00111601-0ec5-41ac-b142-96d1e64e6442/ec66bec2-6a33-42d6-9323-26dd4dc8875d")
+      .crn("crn:v1:bluemix:public:globalcatalog-collection:global:a/aa2432b1fa4d4ace891e9b80fc104e34:1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc:version:00111601-0ec5-41ac-b142-96d1e64e6442/ec66bec2-6a33-42d6-9323-26dd4dc8875d")
       .build();
-    assertEquals(catalogOfferingVersionIdentityModel.crn(), "crn:v1:bluemix:public:globalcatalog-collection:global:a/123456:1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc:version:00111601-0ec5-41ac-b142-96d1e64e6442/ec66bec2-6a33-42d6-9323-26dd4dc8875d");
+    assertEquals(catalogOfferingVersionIdentityModel.crn(), "crn:v1:bluemix:public:globalcatalog-collection:global:a/aa2432b1fa4d4ace891e9b80fc104e34:1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc:version:00111601-0ec5-41ac-b142-96d1e64e6442/ec66bec2-6a33-42d6-9323-26dd4dc8875d");
 
     InstanceCatalogOfferingPrototypeCatalogOfferingByVersion instanceCatalogOfferingPrototypeCatalogOfferingByVersionModel = new InstanceCatalogOfferingPrototypeCatalogOfferingByVersion.Builder()
       .version(catalogOfferingVersionIdentityModel)

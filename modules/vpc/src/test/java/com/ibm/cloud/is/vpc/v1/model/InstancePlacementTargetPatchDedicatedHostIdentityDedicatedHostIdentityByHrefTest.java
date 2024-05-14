@@ -32,15 +32,15 @@ public class InstancePlacementTargetPatchDedicatedHostIdentityDedicatedHostIdent
   @Test
   public void testInstancePlacementTargetPatchDedicatedHostIdentityDedicatedHostIdentityByHref() throws Throwable {
     InstancePlacementTargetPatchDedicatedHostIdentityDedicatedHostIdentityByHref instancePlacementTargetPatchDedicatedHostIdentityDedicatedHostIdentityByHrefModel = new InstancePlacementTargetPatchDedicatedHostIdentityDedicatedHostIdentityByHref.Builder()
-      .href("https://us-south.iaas.cloud.ibm.com/v1/dedicated_hosts/1e09281b-f177-46fb-baf1-bc152b2e391a")
+      .href("https://us-south.iaas.cloud.ibm.com/v1/dedicated_hosts/0717-1e09281b-f177-46fb-baf1-bc152b2e391a")
       .build();
-    assertEquals(instancePlacementTargetPatchDedicatedHostIdentityDedicatedHostIdentityByHrefModel.href(), "https://us-south.iaas.cloud.ibm.com/v1/dedicated_hosts/1e09281b-f177-46fb-baf1-bc152b2e391a");
+    assertEquals(instancePlacementTargetPatchDedicatedHostIdentityDedicatedHostIdentityByHrefModel.href(), "https://us-south.iaas.cloud.ibm.com/v1/dedicated_hosts/0717-1e09281b-f177-46fb-baf1-bc152b2e391a");
 
     String json = TestUtilities.serialize(instancePlacementTargetPatchDedicatedHostIdentityDedicatedHostIdentityByHrefModel);
 
     InstancePlacementTargetPatchDedicatedHostIdentityDedicatedHostIdentityByHref instancePlacementTargetPatchDedicatedHostIdentityDedicatedHostIdentityByHrefModelNew = TestUtilities.deserialize(json, InstancePlacementTargetPatchDedicatedHostIdentityDedicatedHostIdentityByHref.class);
     assertTrue(instancePlacementTargetPatchDedicatedHostIdentityDedicatedHostIdentityByHrefModelNew instanceof InstancePlacementTargetPatchDedicatedHostIdentityDedicatedHostIdentityByHref);
-    assertEquals(instancePlacementTargetPatchDedicatedHostIdentityDedicatedHostIdentityByHrefModelNew.href(), "https://us-south.iaas.cloud.ibm.com/v1/dedicated_hosts/1e09281b-f177-46fb-baf1-bc152b2e391a");
+    assertEquals(instancePlacementTargetPatchDedicatedHostIdentityDedicatedHostIdentityByHrefModelNew.href(), "https://us-south.iaas.cloud.ibm.com/v1/dedicated_hosts/0717-1e09281b-f177-46fb-baf1-bc152b2e391a");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

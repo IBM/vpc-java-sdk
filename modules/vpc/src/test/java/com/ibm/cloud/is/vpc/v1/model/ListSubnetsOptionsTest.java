@@ -37,7 +37,7 @@ public class ListSubnetsOptionsTest {
       .resourceGroupId("testString")
       .zoneName("us-south-1")
       .vpcId("testString")
-      .vpcCrn("crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b")
+      .vpcCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b")
       .vpcName("my-vpc")
       .routingTableId("testString")
       .routingTableName("my-routing-table")
@@ -47,7 +47,7 @@ public class ListSubnetsOptionsTest {
     assertEquals(listSubnetsOptionsModel.resourceGroupId(), "testString");
     assertEquals(listSubnetsOptionsModel.zoneName(), "us-south-1");
     assertEquals(listSubnetsOptionsModel.vpcId(), "testString");
-    assertEquals(listSubnetsOptionsModel.vpcCrn(), "crn:v1:bluemix:public:is:us-south:a/123456::vpc:4727d842-f94f-4a2d-824a-9bc9b02c523b");
+    assertEquals(listSubnetsOptionsModel.vpcCrn(), "crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b");
     assertEquals(listSubnetsOptionsModel.vpcName(), "my-vpc");
     assertEquals(listSubnetsOptionsModel.routingTableId(), "testString");
     assertEquals(listSubnetsOptionsModel.routingTableName(), "my-routing-table");

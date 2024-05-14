@@ -57,9 +57,8 @@ public class BareMetalServerNetworkInterface extends GenericModel {
    * corresponding network attachment and its attached virtual network interface, and the interface type is that of the
    * corresponding network attachment.
    *
-   * The enumerated values for this property are expected to expand in the future. When processing this property, check
-   * for and log unknown values. Optionally halt processing and surface the error, or bypass the resource on which the
-   * unexpected property value was encountered.
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface InterfaceType {
     /** hipersocket. */
@@ -269,9 +268,8 @@ public class BareMetalServerNetworkInterface extends GenericModel {
    * corresponding network attachment and its attached virtual network interface, and the interface type is that of the
    * corresponding network attachment.
    *
-   * The enumerated values for this property are expected to expand in the future. When processing this property, check
-   * for and log unknown values. Optionally halt processing and surface the error, or bypass the resource on which the
-   * unexpected property value was encountered.
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the interfaceType
    */

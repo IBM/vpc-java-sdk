@@ -33,9 +33,9 @@ public class CreateVpcDnsResolutionBindingOptionsTest {
   @Test
   public void testCreateVpcDnsResolutionBindingOptions() throws Throwable {
     VPCIdentityById vpcIdentityModel = new VPCIdentityById.Builder()
-      .id("4727d842-f94f-4a2d-824a-9bc9b02c523b")
+      .id("r006-4727d842-f94f-4a2d-824a-9bc9b02c523b")
       .build();
-    assertEquals(vpcIdentityModel.id(), "4727d842-f94f-4a2d-824a-9bc9b02c523b");
+    assertEquals(vpcIdentityModel.id(), "r006-4727d842-f94f-4a2d-824a-9bc9b02c523b");
 
     CreateVpcDnsResolutionBindingOptions createVpcDnsResolutionBindingOptionsModel = new CreateVpcDnsResolutionBindingOptions.Builder()
       .vpcId("testString")

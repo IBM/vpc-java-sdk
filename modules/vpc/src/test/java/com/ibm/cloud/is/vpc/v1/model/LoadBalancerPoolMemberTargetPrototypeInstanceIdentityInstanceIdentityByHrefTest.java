@@ -32,15 +32,15 @@ public class LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdenti
   @Test
   public void testLoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityByHref() throws Throwable {
     LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityByHref loadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityByHrefModel = new LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityByHref.Builder()
-      .href("https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a")
+      .href("https://us-south.iaas.cloud.ibm.com/v1/instances/0717_1e09281b-f177-46fb-b1f1-bc152b2e391a")
       .build();
-    assertEquals(loadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityByHrefModel.href(), "https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a");
+    assertEquals(loadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityByHrefModel.href(), "https://us-south.iaas.cloud.ibm.com/v1/instances/0717_1e09281b-f177-46fb-b1f1-bc152b2e391a");
 
     String json = TestUtilities.serialize(loadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityByHrefModel);
 
     LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityByHref loadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityByHrefModelNew = TestUtilities.deserialize(json, LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityByHref.class);
     assertTrue(loadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityByHrefModelNew instanceof LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityByHref);
-    assertEquals(loadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityByHrefModelNew.href(), "https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a");
+    assertEquals(loadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityByHrefModelNew.href(), "https://us-south.iaas.cloud.ibm.com/v1/instances/0717_1e09281b-f177-46fb-b1f1-bc152b2e391a");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

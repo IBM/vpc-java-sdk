@@ -32,15 +32,15 @@ public class RoutingTableIdentityByIdTest {
   @Test
   public void testRoutingTableIdentityById() throws Throwable {
     RoutingTableIdentityById routingTableIdentityByIdModel = new RoutingTableIdentityById.Builder()
-      .id("1a15dca5-7e33-45e1-b7c5-bc690e569531")
+      .id("r006-6885e83f-03b2-4603-8a86-db2a0f55c840")
       .build();
-    assertEquals(routingTableIdentityByIdModel.id(), "1a15dca5-7e33-45e1-b7c5-bc690e569531");
+    assertEquals(routingTableIdentityByIdModel.id(), "r006-6885e83f-03b2-4603-8a86-db2a0f55c840");
 
     String json = TestUtilities.serialize(routingTableIdentityByIdModel);
 
     RoutingTableIdentityById routingTableIdentityByIdModelNew = TestUtilities.deserialize(json, RoutingTableIdentityById.class);
     assertTrue(routingTableIdentityByIdModelNew instanceof RoutingTableIdentityById);
-    assertEquals(routingTableIdentityByIdModelNew.id(), "1a15dca5-7e33-45e1-b7c5-bc690e569531");
+    assertEquals(routingTableIdentityByIdModelNew.id(), "r006-6885e83f-03b2-4603-8a86-db2a0f55c840");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

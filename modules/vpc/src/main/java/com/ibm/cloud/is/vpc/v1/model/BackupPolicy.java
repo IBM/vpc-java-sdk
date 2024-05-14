@@ -28,13 +28,13 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class BackupPolicy extends GenericModel {
 
   /**
-   * The health of this resource.
+   * The health of this resource:
    * - `ok`: No abnormal behavior detected
    * - `degraded`: Experiencing compromised performance, capacity, or connectivity
    * - `faulted`: Completely unreachable, inoperative, or otherwise entirely incapacitated
-   * - `inapplicable`: The health state does not apply because of the current lifecycle state. A resource with a
-   * lifecycle state of `failed` or `deleting` will have a health state of `inapplicable`. A `pending` resource may also
-   * have this state.
+   * - `inapplicable`: The health state does not apply because of the current lifecycle
+   *    state. A resource with a lifecycle state of `failed` or `deleting` will have a
+   *    health state of `inapplicable`. A `pending` resource may also have this state.
    */
   public interface HealthState {
     /** degraded. */
@@ -71,9 +71,8 @@ public class BackupPolicy extends GenericModel {
    * The resource type this backup policy applies to. Resources that have both a matching type and a matching user tag
    * will be subject to the backup policy.
    *
-   * The enumerated values for this property may expand in the future. When processing this property, check for and log
-   * unknown values. Optionally halt processing and surface the error, or bypass the backup policy on which the
-   * unexpected property value was encountered.
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface MatchResourceType {
     /** instance. */
@@ -156,10 +155,6 @@ public class BackupPolicy extends GenericModel {
    *
    * The reasons for the current `health_state` (if any).
    *
-   * The enumerated reason code values for this property will expand in the future. When processing this property, check
-   * for and log unknown values. Optionally halt processing and surface the error, or bypass the resource on which the
-   * unexpected reason code was encountered.
-   *
    * @return the healthReasons
    */
   public List<BackupPolicyHealthReason> getHealthReasons() {
@@ -169,13 +164,13 @@ public class BackupPolicy extends GenericModel {
   /**
    * Gets the healthState.
    *
-   * The health of this resource.
+   * The health of this resource:
    * - `ok`: No abnormal behavior detected
    * - `degraded`: Experiencing compromised performance, capacity, or connectivity
    * - `faulted`: Completely unreachable, inoperative, or otherwise entirely incapacitated
-   * - `inapplicable`: The health state does not apply because of the current lifecycle state. A resource with a
-   * lifecycle state of `failed` or `deleting` will have a health state of `inapplicable`. A `pending` resource may also
-   * have this state.
+   * - `inapplicable`: The health state does not apply because of the current lifecycle
+   *    state. A resource with a lifecycle state of `failed` or `deleting` will have a
+   *    health state of `inapplicable`. A `pending` resource may also have this state.
    *
    * @return the healthState
    */
@@ -235,9 +230,8 @@ public class BackupPolicy extends GenericModel {
    * The resource type this backup policy applies to. Resources that have both a matching type and a matching user tag
    * will be subject to the backup policy.
    *
-   * The enumerated values for this property may expand in the future. When processing this property, check for and log
-   * unknown values. Optionally halt processing and surface the error, or bypass the backup policy on which the
-   * unexpected property value was encountered.
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the matchResourceType
    */
@@ -319,9 +313,8 @@ public class BackupPolicy extends GenericModel {
    * - `boot_volume`: Include the instance's boot volume.
    * - `data_volumes`: Include the instance's data volumes.
    *
-   * The enumerated values for this property may expand in the future. When processing this property, check for and log
-   * unknown values. Optionally halt processing and surface the error, or bypass the backup policy on which the
-   * unexpected property value was encountered.
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the includedContent
    */

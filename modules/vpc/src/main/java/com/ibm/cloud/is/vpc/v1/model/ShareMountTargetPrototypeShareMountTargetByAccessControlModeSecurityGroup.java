@@ -15,6 +15,7 @@ package com.ibm.cloud.is.vpc.v1.model;
 /**
  * The virtual network interface for this share mount target. The virtual network interface must:
  *
+ * - be in the same `zone` as the share
  * - have `allow_ip_spoofing` set to `false`
  * - have `enable_infrastructure_nat` set to `true`
  * - not be in the same VPC as an existing mount target for this share

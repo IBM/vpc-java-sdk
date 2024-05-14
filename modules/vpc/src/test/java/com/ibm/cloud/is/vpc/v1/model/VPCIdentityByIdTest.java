@@ -32,15 +32,15 @@ public class VPCIdentityByIdTest {
   @Test
   public void testVPCIdentityById() throws Throwable {
     VPCIdentityById vpcIdentityByIdModel = new VPCIdentityById.Builder()
-      .id("4727d842-f94f-4a2d-824a-9bc9b02c523b")
+      .id("r006-4727d842-f94f-4a2d-824a-9bc9b02c523b")
       .build();
-    assertEquals(vpcIdentityByIdModel.id(), "4727d842-f94f-4a2d-824a-9bc9b02c523b");
+    assertEquals(vpcIdentityByIdModel.id(), "r006-4727d842-f94f-4a2d-824a-9bc9b02c523b");
 
     String json = TestUtilities.serialize(vpcIdentityByIdModel);
 
     VPCIdentityById vpcIdentityByIdModelNew = TestUtilities.deserialize(json, VPCIdentityById.class);
     assertTrue(vpcIdentityByIdModelNew instanceof VPCIdentityById);
-    assertEquals(vpcIdentityByIdModelNew.id(), "4727d842-f94f-4a2d-824a-9bc9b02c523b");
+    assertEquals(vpcIdentityByIdModelNew.id(), "r006-4727d842-f94f-4a2d-824a-9bc9b02c523b");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

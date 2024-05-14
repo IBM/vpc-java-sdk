@@ -31,8 +31,10 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolTCPUDP extends S
   }
 
   /**
-   * The IP version to enforce. The format of `remote.address` or `remote.cidr_block` must match this property, if they
-   * are used. Alternatively, if `remote` references a security group, then this rule only applies to IP addresses
+   * The IP version to enforce. The format of `local.address`, `remote.address`,
+   * `local.cidr_block` or `remote.cidr_block` must match this property, if they are used.
+   *
+   * If `remote` references a security group, then this rule only applies to IP addresses
    * (network interfaces) in that group matching this IP version.
    */
   public interface IpVersion {
@@ -57,6 +59,7 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolTCPUDP extends S
   public static class Builder {
     private String direction;
     private String ipVersion;
+    private SecurityGroupRuleLocalPrototype local;
     private Long portMax;
     private Long portMin;
     private String protocol;
@@ -70,6 +73,7 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolTCPUDP extends S
     public Builder(SecurityGroupRulePrototype securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudp) {
       this.direction = securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudp.direction;
       this.ipVersion = securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudp.ipVersion;
+      this.local = securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudp.local;
       this.portMax = securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudp.portMax;
       this.portMin = securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudp.portMin;
       this.protocol = securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudp.protocol;
@@ -121,6 +125,17 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolTCPUDP extends S
      */
     public Builder ipVersion(String ipVersion) {
       this.ipVersion = ipVersion;
+      return this;
+    }
+
+    /**
+     * Set the local.
+     *
+     * @param local the local
+     * @return the SecurityGroupRulePrototypeSecurityGroupRuleProtocolTCPUDP builder
+     */
+    public Builder local(SecurityGroupRuleLocalPrototype local) {
+      this.local = local;
       return this;
     }
 
@@ -178,6 +193,7 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolTCPUDP extends S
       "protocol cannot be null");
     direction = builder.direction;
     ipVersion = builder.ipVersion;
+    local = builder.local;
     portMax = builder.portMax;
     portMin = builder.portMin;
     protocol = builder.protocol;

@@ -32,15 +32,15 @@ public class InstancePlacementTargetPatchDedicatedHostIdentityDedicatedHostIdent
   @Test
   public void testInstancePlacementTargetPatchDedicatedHostIdentityDedicatedHostIdentityByCRN() throws Throwable {
     InstancePlacementTargetPatchDedicatedHostIdentityDedicatedHostIdentityByCRN instancePlacementTargetPatchDedicatedHostIdentityDedicatedHostIdentityByCrnModel = new InstancePlacementTargetPatchDedicatedHostIdentityDedicatedHostIdentityByCRN.Builder()
-      .crn("crn:v1:bluemix:public:is:us-south-1:a/123456::dedicated-host:1e09281b-f177-46fb-baf1-bc152b2e391a")
+      .crn("crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::dedicated-host:0717-1e09281b-f177-46fb-baf1-bc152b2e391a")
       .build();
-    assertEquals(instancePlacementTargetPatchDedicatedHostIdentityDedicatedHostIdentityByCrnModel.crn(), "crn:v1:bluemix:public:is:us-south-1:a/123456::dedicated-host:1e09281b-f177-46fb-baf1-bc152b2e391a");
+    assertEquals(instancePlacementTargetPatchDedicatedHostIdentityDedicatedHostIdentityByCrnModel.crn(), "crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::dedicated-host:0717-1e09281b-f177-46fb-baf1-bc152b2e391a");
 
     String json = TestUtilities.serialize(instancePlacementTargetPatchDedicatedHostIdentityDedicatedHostIdentityByCrnModel);
 
     InstancePlacementTargetPatchDedicatedHostIdentityDedicatedHostIdentityByCRN instancePlacementTargetPatchDedicatedHostIdentityDedicatedHostIdentityByCrnModelNew = TestUtilities.deserialize(json, InstancePlacementTargetPatchDedicatedHostIdentityDedicatedHostIdentityByCRN.class);
     assertTrue(instancePlacementTargetPatchDedicatedHostIdentityDedicatedHostIdentityByCrnModelNew instanceof InstancePlacementTargetPatchDedicatedHostIdentityDedicatedHostIdentityByCRN);
-    assertEquals(instancePlacementTargetPatchDedicatedHostIdentityDedicatedHostIdentityByCrnModelNew.crn(), "crn:v1:bluemix:public:is:us-south-1:a/123456::dedicated-host:1e09281b-f177-46fb-baf1-bc152b2e391a");
+    assertEquals(instancePlacementTargetPatchDedicatedHostIdentityDedicatedHostIdentityByCrnModelNew.crn(), "crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::dedicated-host:0717-1e09281b-f177-46fb-baf1-bc152b2e391a");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

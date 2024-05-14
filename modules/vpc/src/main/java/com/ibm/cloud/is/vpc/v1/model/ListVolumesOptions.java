@@ -49,6 +49,7 @@ public class ListVolumesOptions extends GenericModel {
   protected String operatingSystemFamily;
   protected String operatingSystemArchitecture;
   protected String zoneName;
+  protected String tag;
 
   /**
    * Builder.
@@ -62,6 +63,7 @@ public class ListVolumesOptions extends GenericModel {
     private String operatingSystemFamily;
     private String operatingSystemArchitecture;
     private String zoneName;
+    private String tag;
 
     /**
      * Instantiates a new Builder from an existing ListVolumesOptions instance.
@@ -77,6 +79,7 @@ public class ListVolumesOptions extends GenericModel {
       this.operatingSystemFamily = listVolumesOptions.operatingSystemFamily;
       this.operatingSystemArchitecture = listVolumesOptions.operatingSystemArchitecture;
       this.zoneName = listVolumesOptions.zoneName;
+      this.tag = listVolumesOptions.tag;
     }
 
     /**
@@ -181,6 +184,17 @@ public class ListVolumesOptions extends GenericModel {
       this.zoneName = zoneName;
       return this;
     }
+
+    /**
+     * Set the tag.
+     *
+     * @param tag the tag
+     * @return the ListVolumesOptions builder
+     */
+    public Builder tag(String tag) {
+      this.tag = tag;
+      return this;
+    }
   }
 
   protected ListVolumesOptions() { }
@@ -194,6 +208,7 @@ public class ListVolumesOptions extends GenericModel {
     operatingSystemFamily = builder.operatingSystemFamily;
     operatingSystemArchitecture = builder.operatingSystemArchitecture;
     zoneName = builder.zoneName;
+    tag = builder.tag;
   }
 
   /**
@@ -299,6 +314,17 @@ public class ListVolumesOptions extends GenericModel {
    */
   public String zoneName() {
     return zoneName;
+  }
+
+  /**
+   * Gets the tag.
+   *
+   * Filters the collection to resources with an item in the `tags` property matching the exact specified tag.
+   *
+   * @return the tag
+   */
+  public String tag() {
+    return tag;
   }
 }
 

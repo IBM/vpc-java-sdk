@@ -97,8 +97,8 @@ public class RoutingTable extends GenericModel {
    *
    * The filters specifying the resources that may create routes in this routing table.
    *
-   * At present, only the `resource_type` filter is permitted, and only the `vpn_server` value is supported, but filter
-   * support is expected to expand in the future.
+   * At present, only the `resource_type` filter is permitted, and only the values
+   * `vpn_gateway` and `vpn_server` are supported, but filter support is expected to expand in the future.
    *
    * @return the acceptRoutesFrom
    */
@@ -112,9 +112,8 @@ public class RoutingTable extends GenericModel {
    * The ingress sources to advertise routes to. Routes in the table with `advertise` enabled will be advertised to
    * these sources.
    *
-   * The enumerated values for this property are expected to expand in the future. When processing this property, check
-   * for and log unknown values. Optionally halt processing and surface the error, or bypass the resource on which the
-   * unexpected property value was encountered.
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the advertiseRoutesTo
    */

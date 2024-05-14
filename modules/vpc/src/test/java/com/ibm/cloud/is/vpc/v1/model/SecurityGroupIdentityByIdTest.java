@@ -32,15 +32,15 @@ public class SecurityGroupIdentityByIdTest {
   @Test
   public void testSecurityGroupIdentityById() throws Throwable {
     SecurityGroupIdentityById securityGroupIdentityByIdModel = new SecurityGroupIdentityById.Builder()
-      .id("be5df5ca-12a0-494b-907e-aa6ec2bfa271")
+      .id("r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271")
       .build();
-    assertEquals(securityGroupIdentityByIdModel.id(), "be5df5ca-12a0-494b-907e-aa6ec2bfa271");
+    assertEquals(securityGroupIdentityByIdModel.id(), "r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271");
 
     String json = TestUtilities.serialize(securityGroupIdentityByIdModel);
 
     SecurityGroupIdentityById securityGroupIdentityByIdModelNew = TestUtilities.deserialize(json, SecurityGroupIdentityById.class);
     assertTrue(securityGroupIdentityByIdModelNew instanceof SecurityGroupIdentityById);
-    assertEquals(securityGroupIdentityByIdModelNew.id(), "be5df5ca-12a0-494b-907e-aa6ec2bfa271");
+    assertEquals(securityGroupIdentityByIdModelNew.id(), "r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

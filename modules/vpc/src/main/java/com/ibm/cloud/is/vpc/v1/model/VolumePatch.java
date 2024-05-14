@@ -169,7 +169,8 @@ public class VolumePatch extends GenericModel {
    * instance, and the specified value must not be less than the current capacity. Additionally, if the volume is
    * attached as a boot volume, the maximum value is 250 gigabytes.
    *
-   * The minimum and maximum capacity limits for creating or updating volumes may expand in the future.
+   * The minimum and maximum limits for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the capacity
    */

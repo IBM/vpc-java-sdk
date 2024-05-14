@@ -32,15 +32,15 @@ public class VolumeAttachmentPrototypeVolumeVolumeIdentityVolumeIdentityByIdTest
   @Test
   public void testVolumeAttachmentPrototypeVolumeVolumeIdentityVolumeIdentityById() throws Throwable {
     VolumeAttachmentPrototypeVolumeVolumeIdentityVolumeIdentityById volumeAttachmentPrototypeVolumeVolumeIdentityVolumeIdentityByIdModel = new VolumeAttachmentPrototypeVolumeVolumeIdentityVolumeIdentityById.Builder()
-      .id("1a6b7274-678d-4dfb-8981-c71dd9d4daa5")
+      .id("r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5")
       .build();
-    assertEquals(volumeAttachmentPrototypeVolumeVolumeIdentityVolumeIdentityByIdModel.id(), "1a6b7274-678d-4dfb-8981-c71dd9d4daa5");
+    assertEquals(volumeAttachmentPrototypeVolumeVolumeIdentityVolumeIdentityByIdModel.id(), "r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5");
 
     String json = TestUtilities.serialize(volumeAttachmentPrototypeVolumeVolumeIdentityVolumeIdentityByIdModel);
 
     VolumeAttachmentPrototypeVolumeVolumeIdentityVolumeIdentityById volumeAttachmentPrototypeVolumeVolumeIdentityVolumeIdentityByIdModelNew = TestUtilities.deserialize(json, VolumeAttachmentPrototypeVolumeVolumeIdentityVolumeIdentityById.class);
     assertTrue(volumeAttachmentPrototypeVolumeVolumeIdentityVolumeIdentityByIdModelNew instanceof VolumeAttachmentPrototypeVolumeVolumeIdentityVolumeIdentityById);
-    assertEquals(volumeAttachmentPrototypeVolumeVolumeIdentityVolumeIdentityByIdModelNew.id(), "1a6b7274-678d-4dfb-8981-c71dd9d4daa5");
+    assertEquals(volumeAttachmentPrototypeVolumeVolumeIdentityVolumeIdentityByIdModelNew.id(), "r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

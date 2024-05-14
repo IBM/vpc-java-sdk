@@ -20,8 +20,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  *
  * If an offering is specified, the latest version of that offering will be used.
  *
- * The specified offering or offering version may be in a different account in the same
- * [enterprise](https://cloud.ibm.com/docs/account?topic=account-what-is-enterprise), subject to IAM policies.
+ * The specified offering or offering version may be in a different account, subject to IAM policies.
  *
  * Classes which extend this class:
  * - InstanceCatalogOfferingPrototypeCatalogOfferingByOffering

@@ -32,15 +32,15 @@ public class VolumeIdentityByIdTest {
   @Test
   public void testVolumeIdentityById() throws Throwable {
     VolumeIdentityById volumeIdentityByIdModel = new VolumeIdentityById.Builder()
-      .id("1a6b7274-678d-4dfb-8981-c71dd9d4daa5")
+      .id("r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5")
       .build();
-    assertEquals(volumeIdentityByIdModel.id(), "1a6b7274-678d-4dfb-8981-c71dd9d4daa5");
+    assertEquals(volumeIdentityByIdModel.id(), "r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5");
 
     String json = TestUtilities.serialize(volumeIdentityByIdModel);
 
     VolumeIdentityById volumeIdentityByIdModelNew = TestUtilities.deserialize(json, VolumeIdentityById.class);
     assertTrue(volumeIdentityByIdModelNew instanceof VolumeIdentityById);
-    assertEquals(volumeIdentityByIdModelNew.id(), "1a6b7274-678d-4dfb-8981-c71dd9d4daa5");
+    assertEquals(volumeIdentityByIdModelNew.id(), "r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

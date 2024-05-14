@@ -32,15 +32,15 @@ public class NetworkACLIdentityByIdTest {
   @Test
   public void testNetworkACLIdentityById() throws Throwable {
     NetworkACLIdentityById networkAclIdentityByIdModel = new NetworkACLIdentityById.Builder()
-      .id("a4e28308-8ee7-46ab-8108-9f881f22bdbf")
+      .id("r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf")
       .build();
-    assertEquals(networkAclIdentityByIdModel.id(), "a4e28308-8ee7-46ab-8108-9f881f22bdbf");
+    assertEquals(networkAclIdentityByIdModel.id(), "r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf");
 
     String json = TestUtilities.serialize(networkAclIdentityByIdModel);
 
     NetworkACLIdentityById networkAclIdentityByIdModelNew = TestUtilities.deserialize(json, NetworkACLIdentityById.class);
     assertTrue(networkAclIdentityByIdModelNew instanceof NetworkACLIdentityById);
-    assertEquals(networkAclIdentityByIdModelNew.id(), "a4e28308-8ee7-46ab-8108-9f881f22bdbf");
+    assertEquals(networkAclIdentityByIdModelNew.id(), "r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

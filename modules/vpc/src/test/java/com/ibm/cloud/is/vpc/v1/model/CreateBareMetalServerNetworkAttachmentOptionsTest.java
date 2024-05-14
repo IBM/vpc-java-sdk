@@ -95,12 +95,12 @@ public class CreateBareMetalServerNetworkAttachmentOptionsTest {
     BareMetalServerNetworkAttachmentPrototypeBareMetalServerNetworkAttachmentByPCIPrototype bareMetalServerNetworkAttachmentPrototypeModel = new BareMetalServerNetworkAttachmentPrototypeBareMetalServerNetworkAttachmentByPCIPrototype.Builder()
       .name("my-bare-metal-server-network-attachment")
       .virtualNetworkInterface(bareMetalServerNetworkAttachmentPrototypeVirtualNetworkInterfaceModel)
-      .allowedVlans(java.util.Arrays.asList(Long.valueOf("4")))
+      .allowedVlans(java.util.Arrays.asList(Long.valueOf("100")))
       .interfaceType("pci")
       .build();
     assertEquals(bareMetalServerNetworkAttachmentPrototypeModel.name(), "my-bare-metal-server-network-attachment");
     assertEquals(bareMetalServerNetworkAttachmentPrototypeModel.virtualNetworkInterface(), bareMetalServerNetworkAttachmentPrototypeVirtualNetworkInterfaceModel);
-    assertEquals(bareMetalServerNetworkAttachmentPrototypeModel.allowedVlans(), java.util.Arrays.asList(Long.valueOf("4")));
+    assertEquals(bareMetalServerNetworkAttachmentPrototypeModel.allowedVlans(), java.util.Arrays.asList(Long.valueOf("100")));
     assertEquals(bareMetalServerNetworkAttachmentPrototypeModel.interfaceType(), "pci");
 
     CreateBareMetalServerNetworkAttachmentOptions createBareMetalServerNetworkAttachmentOptionsModel = new CreateBareMetalServerNetworkAttachmentOptions.Builder()

@@ -32,15 +32,15 @@ public class FlowLogCollectorTargetPrototypeVPCIdentityVPCIdentityByHrefTest {
   @Test
   public void testFlowLogCollectorTargetPrototypeVPCIdentityVPCIdentityByHref() throws Throwable {
     FlowLogCollectorTargetPrototypeVPCIdentityVPCIdentityByHref flowLogCollectorTargetPrototypeVpcIdentityVpcIdentityByHrefModel = new FlowLogCollectorTargetPrototypeVPCIdentityVPCIdentityByHref.Builder()
-      .href("https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b")
+      .href("https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b")
       .build();
-    assertEquals(flowLogCollectorTargetPrototypeVpcIdentityVpcIdentityByHrefModel.href(), "https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b");
+    assertEquals(flowLogCollectorTargetPrototypeVpcIdentityVpcIdentityByHrefModel.href(), "https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b");
 
     String json = TestUtilities.serialize(flowLogCollectorTargetPrototypeVpcIdentityVpcIdentityByHrefModel);
 
     FlowLogCollectorTargetPrototypeVPCIdentityVPCIdentityByHref flowLogCollectorTargetPrototypeVpcIdentityVpcIdentityByHrefModelNew = TestUtilities.deserialize(json, FlowLogCollectorTargetPrototypeVPCIdentityVPCIdentityByHref.class);
     assertTrue(flowLogCollectorTargetPrototypeVpcIdentityVpcIdentityByHrefModelNew instanceof FlowLogCollectorTargetPrototypeVPCIdentityVPCIdentityByHref);
-    assertEquals(flowLogCollectorTargetPrototypeVpcIdentityVpcIdentityByHrefModelNew.href(), "https://us-south.iaas.cloud.ibm.com/v1/vpcs/4727d842-f94f-4a2d-824a-9bc9b02c523b");
+    assertEquals(flowLogCollectorTargetPrototypeVpcIdentityVpcIdentityByHrefModelNew.href(), "https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

@@ -32,15 +32,15 @@ public class FloatingIPTargetPatchNetworkInterfaceIdentityNetworkInterfaceIdenti
   @Test
   public void testFloatingIPTargetPatchNetworkInterfaceIdentityNetworkInterfaceIdentityById() throws Throwable {
     FloatingIPTargetPatchNetworkInterfaceIdentityNetworkInterfaceIdentityById floatingIpTargetPatchNetworkInterfaceIdentityNetworkInterfaceIdentityByIdModel = new FloatingIPTargetPatchNetworkInterfaceIdentityNetworkInterfaceIdentityById.Builder()
-      .id("10c02d81-0ecb-4dc5-897d-28392913b81e")
+      .id("0717-10c02d81-0ecb-4dc5-897d-28392913b81e")
       .build();
-    assertEquals(floatingIpTargetPatchNetworkInterfaceIdentityNetworkInterfaceIdentityByIdModel.id(), "10c02d81-0ecb-4dc5-897d-28392913b81e");
+    assertEquals(floatingIpTargetPatchNetworkInterfaceIdentityNetworkInterfaceIdentityByIdModel.id(), "0717-10c02d81-0ecb-4dc5-897d-28392913b81e");
 
     String json = TestUtilities.serialize(floatingIpTargetPatchNetworkInterfaceIdentityNetworkInterfaceIdentityByIdModel);
 
     FloatingIPTargetPatchNetworkInterfaceIdentityNetworkInterfaceIdentityById floatingIpTargetPatchNetworkInterfaceIdentityNetworkInterfaceIdentityByIdModelNew = TestUtilities.deserialize(json, FloatingIPTargetPatchNetworkInterfaceIdentityNetworkInterfaceIdentityById.class);
     assertTrue(floatingIpTargetPatchNetworkInterfaceIdentityNetworkInterfaceIdentityByIdModelNew instanceof FloatingIPTargetPatchNetworkInterfaceIdentityNetworkInterfaceIdentityById);
-    assertEquals(floatingIpTargetPatchNetworkInterfaceIdentityNetworkInterfaceIdentityByIdModelNew.id(), "10c02d81-0ecb-4dc5-897d-28392913b81e");
+    assertEquals(floatingIpTargetPatchNetworkInterfaceIdentityNetworkInterfaceIdentityByIdModelNew.id(), "0717-10c02d81-0ecb-4dc5-897d-28392913b81e");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

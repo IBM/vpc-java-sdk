@@ -43,9 +43,8 @@ public class SecurityGroupRuleRemotePrototype extends GenericModel {
    *
    * The IP address.
    *
-   * This property may add support for IPv6 addresses in the future. When processing a value in this property, verify
-   * that the address is in an expected format. If it is not, log an error. Optionally halt processing and surface the
-   * error, or bypass the resource on which the unexpected IP address format was encountered.
+   * This property may [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) to support IPv6 addresses in
+   * the future.
    *
    * @return the address
    */
@@ -56,9 +55,10 @@ public class SecurityGroupRuleRemotePrototype extends GenericModel {
   /**
    * Gets the cidrBlock.
    *
-   * The CIDR block. This property may add support for IPv6 CIDR blocks in the future. When processing a value in this
-   * property, verify that the CIDR block is in an expected format. If it is not, log an error. Optionally halt
-   * processing and surface the error, or bypass the resource on which the unexpected CIDR block format was encountered.
+   * The CIDR block.
+   *
+   * This property may [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) to support IPv6 address
+   * blocks in the future.
    *
    * @return the cidrBlock
    */

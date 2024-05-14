@@ -32,15 +32,15 @@ public class VolumeIdentityByCRNTest {
   @Test
   public void testVolumeIdentityByCRN() throws Throwable {
     VolumeIdentityByCRN volumeIdentityByCrnModel = new VolumeIdentityByCRN.Builder()
-      .crn("crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5")
+      .crn("crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::volume:r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5")
       .build();
-    assertEquals(volumeIdentityByCrnModel.crn(), "crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5");
+    assertEquals(volumeIdentityByCrnModel.crn(), "crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::volume:r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5");
 
     String json = TestUtilities.serialize(volumeIdentityByCrnModel);
 
     VolumeIdentityByCRN volumeIdentityByCrnModelNew = TestUtilities.deserialize(json, VolumeIdentityByCRN.class);
     assertTrue(volumeIdentityByCrnModelNew instanceof VolumeIdentityByCRN);
-    assertEquals(volumeIdentityByCrnModelNew.crn(), "crn:v1:bluemix:public:is:us-south-1:a/123456::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5");
+    assertEquals(volumeIdentityByCrnModelNew.crn(), "crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::volume:r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

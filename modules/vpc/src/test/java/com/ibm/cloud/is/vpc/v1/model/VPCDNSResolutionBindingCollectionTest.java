@@ -21,6 +21,7 @@ import com.ibm.cloud.is.vpc.v1.model.VPCDNSResolutionBinding;
 import com.ibm.cloud.is.vpc.v1.model.VPCDNSResolutionBindingCollection;
 import com.ibm.cloud.is.vpc.v1.model.VPCDNSResolutionBindingCollectionFirst;
 import com.ibm.cloud.is.vpc.v1.model.VPCDNSResolutionBindingCollectionNext;
+import com.ibm.cloud.is.vpc.v1.model.VPCDNSResolutionBindingHealthReason;
 import com.ibm.cloud.is.vpc.v1.model.VPCReferenceRemote;
 import com.ibm.cloud.is.vpc.v1.model.VPCRemote;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;

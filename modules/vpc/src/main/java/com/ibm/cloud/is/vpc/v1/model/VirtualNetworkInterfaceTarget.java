@@ -18,9 +18,8 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 /**
  * A virtual network interface target.
  *
- * The resource types that can be virtual network interface targets are expected to expand in the future. When iterating
- * over virtual network interface targets, do not assume that every target resource will be from a known set of resource
- * types. Optionally halt processing and surface an error, or bypass resources of unrecognized types.
+ * The resources supported by this property may
+ * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
  *
  * Classes which extend this class:
  * - VirtualNetworkInterfaceTargetShareMountTargetReference

@@ -33,9 +33,9 @@ public class EndpointGatewayReservedIPReservedIPPrototypeTargetContextTest {
   @Test
   public void testEndpointGatewayReservedIPReservedIPPrototypeTargetContext() throws Throwable {
     SubnetIdentityById subnetIdentityModel = new SubnetIdentityById.Builder()
-      .id("7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
+      .id("0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
       .build();
-    assertEquals(subnetIdentityModel.id(), "7ec86020-1c6e-4889-b3f0-a15f2e50f87e");
+    assertEquals(subnetIdentityModel.id(), "0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e");
 
     EndpointGatewayReservedIPReservedIPPrototypeTargetContext endpointGatewayReservedIpReservedIpPrototypeTargetContextModel = new EndpointGatewayReservedIPReservedIPPrototypeTargetContext.Builder()
       .address("192.168.3.4")

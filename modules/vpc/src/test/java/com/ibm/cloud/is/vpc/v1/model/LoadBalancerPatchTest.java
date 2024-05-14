@@ -39,9 +39,9 @@ public class LoadBalancerPatchTest {
   @Test
   public void testLoadBalancerPatch() throws Throwable {
     DNSInstanceIdentityByCRN dnsInstanceIdentityModel = new DNSInstanceIdentityByCRN.Builder()
-      .crn("crn:v1:bluemix:public:dns-svcs:global:a/123456:6860c359-b2e2-46fa-a944-b38c28201c6e")
+      .crn("crn:v1:bluemix:public:dns-svcs:global:a/aa2432b1fa4d4ace891e9b80fc104e34:6860c359-b2e2-46fa-a944-b38c28201c6e")
       .build();
-    assertEquals(dnsInstanceIdentityModel.crn(), "crn:v1:bluemix:public:dns-svcs:global:a/123456:6860c359-b2e2-46fa-a944-b38c28201c6e");
+    assertEquals(dnsInstanceIdentityModel.crn(), "crn:v1:bluemix:public:dns-svcs:global:a/aa2432b1fa4d4ace891e9b80fc104e34:6860c359-b2e2-46fa-a944-b38c28201c6e");
 
     DNSZoneIdentityById dnsZoneIdentityModel = new DNSZoneIdentityById.Builder()
       .id("d66662cc-aa23-4fe1-9987-858487a61f45")
@@ -66,9 +66,9 @@ public class LoadBalancerPatchTest {
     assertEquals(loadBalancerLoggingPatchModel.datapath(), loadBalancerLoggingDatapathPatchModel);
 
     SubnetIdentityById subnetIdentityModel = new SubnetIdentityById.Builder()
-      .id("7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
+      .id("0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
       .build();
-    assertEquals(subnetIdentityModel.id(), "7ec86020-1c6e-4889-b3f0-a15f2e50f87e");
+    assertEquals(subnetIdentityModel.id(), "0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e");
 
     LoadBalancerPatch loadBalancerPatchModel = new LoadBalancerPatch.Builder()
       .dns(loadBalancerDnsPatchModel)
@@ -92,7 +92,7 @@ public class LoadBalancerPatchTest {
   @Test
   public void testLoadBalancerPatchAsPatch() throws Throwable {
     DNSInstanceIdentityByCRN dnsInstanceIdentityModel = new DNSInstanceIdentityByCRN.Builder()
-      .crn("crn:v1:bluemix:public:dns-svcs:global:a/123456:6860c359-b2e2-46fa-a944-b38c28201c6e")
+      .crn("crn:v1:bluemix:public:dns-svcs:global:a/aa2432b1fa4d4ace891e9b80fc104e34:6860c359-b2e2-46fa-a944-b38c28201c6e")
       .build();
 
     DNSZoneIdentityById dnsZoneIdentityModel = new DNSZoneIdentityById.Builder()
@@ -113,7 +113,7 @@ public class LoadBalancerPatchTest {
       .build();
 
     SubnetIdentityById subnetIdentityModel = new SubnetIdentityById.Builder()
-      .id("7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
+      .id("0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
       .build();
 
     LoadBalancerPatch loadBalancerPatchModel = new LoadBalancerPatch.Builder()

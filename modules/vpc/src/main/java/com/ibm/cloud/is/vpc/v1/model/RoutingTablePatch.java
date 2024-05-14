@@ -235,9 +235,6 @@ public class RoutingTablePatch extends GenericModel {
    * existing filter is removed. Therefore, if an empty array is specified, all filters will be removed, resulting in
    * all routes not directly created by the user being removed.
    *
-   * At present, only the `resource_type` filter is permitted, and only the `vpn_server` value is supported, but filter
-   * support is expected to expand in the future.
-   *
    * @return the acceptRoutesFrom
    */
   public List<ResourceFilter> acceptRoutesFrom() {

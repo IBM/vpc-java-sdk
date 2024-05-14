@@ -222,10 +222,6 @@ public class ImageExportJob extends GenericModel {
    *
    * The reasons for the current status (if any).
    *
-   * The enumerated reason code values for this property will expand in the future. When processing this property, check
-   * for and log unknown values. Optionally halt processing and surface the error, or bypass the resource on which the
-   * unexpected reason code was encountered.
-   *
    * @return the statusReasons
    */
   public List<ImageExportJobStatusReason> getStatusReasons() {

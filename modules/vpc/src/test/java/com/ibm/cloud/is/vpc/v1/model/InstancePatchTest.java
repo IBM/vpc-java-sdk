@@ -53,9 +53,9 @@ public class InstancePatchTest {
     assertEquals(instanceMetadataServicePatchModel.responseHopLimit(), Long.valueOf("1"));
 
     InstancePlacementTargetPatchDedicatedHostIdentityDedicatedHostIdentityById instancePlacementTargetPatchModel = new InstancePlacementTargetPatchDedicatedHostIdentityDedicatedHostIdentityById.Builder()
-      .id("1e09281b-f177-46fb-baf1-bc152b2e391a")
+      .id("0717-1e09281b-f177-46fb-baf1-bc152b2e391a")
       .build();
-    assertEquals(instancePlacementTargetPatchModel.id(), "1e09281b-f177-46fb-baf1-bc152b2e391a");
+    assertEquals(instancePlacementTargetPatchModel.id(), "0717-1e09281b-f177-46fb-baf1-bc152b2e391a");
 
     InstancePatchProfileInstanceProfileIdentityByName instancePatchProfileModel = new InstancePatchProfileInstanceProfileIdentityByName.Builder()
       .name("bx2-4x16")
@@ -116,7 +116,7 @@ public class InstancePatchTest {
       .build();
 
     InstancePlacementTargetPatchDedicatedHostIdentityDedicatedHostIdentityById instancePlacementTargetPatchModel = new InstancePlacementTargetPatchDedicatedHostIdentityDedicatedHostIdentityById.Builder()
-      .id("1e09281b-f177-46fb-baf1-bc152b2e391a")
+      .id("0717-1e09281b-f177-46fb-baf1-bc152b2e391a")
       .build();
 
     InstancePatchProfileInstanceProfileIdentityByName instancePatchProfileModel = new InstancePatchProfileInstanceProfileIdentityByName.Builder()

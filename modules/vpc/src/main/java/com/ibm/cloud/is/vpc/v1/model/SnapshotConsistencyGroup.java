@@ -69,7 +69,7 @@ public class SnapshotConsistencyGroup extends GenericModel {
   protected String resourceType;
   @SerializedName("service_tags")
   protected List<String> serviceTags;
-  protected List<SnapshotConsistencyGroupSnapshotsItem> snapshots;
+  protected List<SnapshotReference> snapshots;
 
   protected SnapshotConsistencyGroup() { }
 
@@ -205,7 +205,7 @@ public class SnapshotConsistencyGroup extends GenericModel {
    *
    * @return the snapshots
    */
-  public List<SnapshotConsistencyGroupSnapshotsItem> getSnapshots() {
+  public List<SnapshotReference> getSnapshots() {
     return snapshots;
   }
 }

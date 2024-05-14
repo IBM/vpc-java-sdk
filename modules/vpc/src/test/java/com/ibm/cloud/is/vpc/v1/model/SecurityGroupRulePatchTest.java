@@ -13,6 +13,7 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleLocalPatchIP;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRulePatch;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleRemotePatchCIDR;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
@@ -33,6 +34,11 @@ public class SecurityGroupRulePatchTest {
 
   @Test
   public void testSecurityGroupRulePatch() throws Throwable {
+    SecurityGroupRuleLocalPatchIP securityGroupRuleLocalPatchModel = new SecurityGroupRuleLocalPatchIP.Builder()
+      .address("10.10.1.5")
+      .build();
+    assertEquals(securityGroupRuleLocalPatchModel.address(), "10.10.1.5");
+
     SecurityGroupRuleRemotePatchCIDR securityGroupRuleRemotePatchModel = new SecurityGroupRuleRemotePatchCIDR.Builder()
       .cidrBlock("10.0.0.0/16")
       .build();
@@ -42,6 +48,7 @@ public class SecurityGroupRulePatchTest {
       .code(Long.valueOf("0"))
       .direction("inbound")
       .ipVersion("ipv4")
+      .local(securityGroupRuleLocalPatchModel)
       .portMax(Long.valueOf("22"))
       .portMin(Long.valueOf("22"))
       .remote(securityGroupRuleRemotePatchModel)
@@ -50,6 +57,7 @@ public class SecurityGroupRulePatchTest {
     assertEquals(securityGroupRulePatchModel.code(), Long.valueOf("0"));
     assertEquals(securityGroupRulePatchModel.direction(), "inbound");
     assertEquals(securityGroupRulePatchModel.ipVersion(), "ipv4");
+    assertEquals(securityGroupRulePatchModel.local(), securityGroupRuleLocalPatchModel);
     assertEquals(securityGroupRulePatchModel.portMax(), Long.valueOf("22"));
     assertEquals(securityGroupRulePatchModel.portMin(), Long.valueOf("22"));
     assertEquals(securityGroupRulePatchModel.remote(), securityGroupRuleRemotePatchModel);
@@ -62,6 +70,7 @@ public class SecurityGroupRulePatchTest {
     assertEquals(securityGroupRulePatchModelNew.code(), Long.valueOf("0"));
     assertEquals(securityGroupRulePatchModelNew.direction(), "inbound");
     assertEquals(securityGroupRulePatchModelNew.ipVersion(), "ipv4");
+    assertEquals(securityGroupRulePatchModelNew.local().toString(), securityGroupRuleLocalPatchModel.toString());
     assertEquals(securityGroupRulePatchModelNew.portMax(), Long.valueOf("22"));
     assertEquals(securityGroupRulePatchModelNew.portMin(), Long.valueOf("22"));
     assertEquals(securityGroupRulePatchModelNew.remote().toString(), securityGroupRuleRemotePatchModel.toString());
@@ -69,6 +78,10 @@ public class SecurityGroupRulePatchTest {
   }
   @Test
   public void testSecurityGroupRulePatchAsPatch() throws Throwable {
+    SecurityGroupRuleLocalPatchIP securityGroupRuleLocalPatchModel = new SecurityGroupRuleLocalPatchIP.Builder()
+      .address("10.10.1.5")
+      .build();
+
     SecurityGroupRuleRemotePatchCIDR securityGroupRuleRemotePatchModel = new SecurityGroupRuleRemotePatchCIDR.Builder()
       .cidrBlock("10.0.0.0/16")
       .build();
@@ -77,6 +90,7 @@ public class SecurityGroupRulePatchTest {
       .code(Long.valueOf("0"))
       .direction("inbound")
       .ipVersion("ipv4")
+      .local(securityGroupRuleLocalPatchModel)
       .portMax(Long.valueOf("22"))
       .portMin(Long.valueOf("22"))
       .remote(securityGroupRuleRemotePatchModel)
@@ -88,6 +102,7 @@ public class SecurityGroupRulePatchTest {
     assertTrue(mergePatch.containsKey("code"));
     assertEquals(mergePatch.get("direction"), "inbound");
     assertEquals(mergePatch.get("ip_version"), "ipv4");
+    assertTrue(mergePatch.containsKey("local"));
     assertTrue(mergePatch.containsKey("port_max"));
     assertTrue(mergePatch.containsKey("port_min"));
     assertTrue(mergePatch.containsKey("remote"));

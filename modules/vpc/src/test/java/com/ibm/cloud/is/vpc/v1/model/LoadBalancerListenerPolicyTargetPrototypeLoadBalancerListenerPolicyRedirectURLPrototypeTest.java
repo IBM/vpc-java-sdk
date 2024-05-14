@@ -33,17 +33,17 @@ public class LoadBalancerListenerPolicyTargetPrototypeLoadBalancerListenerPolicy
   public void testLoadBalancerListenerPolicyTargetPrototypeLoadBalancerListenerPolicyRedirectURLPrototype() throws Throwable {
     LoadBalancerListenerPolicyTargetPrototypeLoadBalancerListenerPolicyRedirectURLPrototype loadBalancerListenerPolicyTargetPrototypeLoadBalancerListenerPolicyRedirectUrlPrototypeModel = new LoadBalancerListenerPolicyTargetPrototypeLoadBalancerListenerPolicyRedirectURLPrototype.Builder()
       .httpStatusCode(Long.valueOf("301"))
-      .url("https://www.redirect.com")
+      .url("https://www.example.com")
       .build();
     assertEquals(loadBalancerListenerPolicyTargetPrototypeLoadBalancerListenerPolicyRedirectUrlPrototypeModel.httpStatusCode(), Long.valueOf("301"));
-    assertEquals(loadBalancerListenerPolicyTargetPrototypeLoadBalancerListenerPolicyRedirectUrlPrototypeModel.url(), "https://www.redirect.com");
+    assertEquals(loadBalancerListenerPolicyTargetPrototypeLoadBalancerListenerPolicyRedirectUrlPrototypeModel.url(), "https://www.example.com");
 
     String json = TestUtilities.serialize(loadBalancerListenerPolicyTargetPrototypeLoadBalancerListenerPolicyRedirectUrlPrototypeModel);
 
     LoadBalancerListenerPolicyTargetPrototypeLoadBalancerListenerPolicyRedirectURLPrototype loadBalancerListenerPolicyTargetPrototypeLoadBalancerListenerPolicyRedirectUrlPrototypeModelNew = TestUtilities.deserialize(json, LoadBalancerListenerPolicyTargetPrototypeLoadBalancerListenerPolicyRedirectURLPrototype.class);
     assertTrue(loadBalancerListenerPolicyTargetPrototypeLoadBalancerListenerPolicyRedirectUrlPrototypeModelNew instanceof LoadBalancerListenerPolicyTargetPrototypeLoadBalancerListenerPolicyRedirectURLPrototype);
     assertEquals(loadBalancerListenerPolicyTargetPrototypeLoadBalancerListenerPolicyRedirectUrlPrototypeModelNew.httpStatusCode(), Long.valueOf("301"));
-    assertEquals(loadBalancerListenerPolicyTargetPrototypeLoadBalancerListenerPolicyRedirectUrlPrototypeModelNew.url(), "https://www.redirect.com");
+    assertEquals(loadBalancerListenerPolicyTargetPrototypeLoadBalancerListenerPolicyRedirectUrlPrototypeModelNew.url(), "https://www.example.com");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

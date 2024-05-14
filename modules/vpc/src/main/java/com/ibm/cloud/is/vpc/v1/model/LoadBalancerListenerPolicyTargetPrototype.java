@@ -17,14 +17,14 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
  * - If `action` is `forward`, specify a `LoadBalancerPoolIdentity`.
- * - If `action` is `redirect`, specify a `LoadBalancerListenerPolicyRedirectURLPrototype`.
  * - If `action` is `https_redirect`, specify a
- *   `LoadBalancerListenerPolicyHTTPSRedirectPrototype`.
+ * `LoadBalancerListenerPolicyHTTPSRedirectPrototype`.
+ * - If `action` is `redirect`, specify a `LoadBalancerListenerPolicyRedirectURLPrototype`.
  *
  * Classes which extend this class:
  * - LoadBalancerListenerPolicyTargetPrototypeLoadBalancerPoolIdentity
+ * - LoadBalancerListenerPolicyTargetPrototypeLoadBalancerListenerPolicyHTTPSRedirectPrototype
  * - LoadBalancerListenerPolicyTargetPrototypeLoadBalancerListenerPolicyRedirectURLPrototype
- * - LoadBalancerListenerPolicyTargetPrototypeLoadBalancerListenerHTTPSRedirectPrototype
  */
 public class LoadBalancerListenerPolicyTargetPrototype extends GenericModel {
 
@@ -32,9 +32,9 @@ public class LoadBalancerListenerPolicyTargetPrototype extends GenericModel {
   protected String href;
   @SerializedName("http_status_code")
   protected Long httpStatusCode;
-  protected String url;
   protected LoadBalancerListenerIdentity listener;
   protected String uri;
+  protected String url;
 
   protected LoadBalancerListenerPolicyTargetPrototype() { }
 
@@ -72,17 +72,6 @@ public class LoadBalancerListenerPolicyTargetPrototype extends GenericModel {
   }
 
   /**
-   * Gets the url.
-   *
-   * The redirect target URL.
-   *
-   * @return the url
-   */
-  public String url() {
-    return url;
-  }
-
-  /**
    * Gets the listener.
    *
    * Identifies a load balancer listener by a unique property.
@@ -102,6 +91,17 @@ public class LoadBalancerListenerPolicyTargetPrototype extends GenericModel {
    */
   public String uri() {
     return uri;
+  }
+
+  /**
+   * Gets the url.
+   *
+   * The redirect target URL.
+   *
+   * @return the url
+   */
+  public String url() {
+    return url;
   }
 }
 

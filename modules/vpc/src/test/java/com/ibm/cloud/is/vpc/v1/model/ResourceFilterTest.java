@@ -32,14 +32,14 @@ public class ResourceFilterTest {
   @Test
   public void testResourceFilter() throws Throwable {
     ResourceFilter resourceFilterModel = new ResourceFilter.Builder()
-      .resourceType("vpn_gateway")
+      .resourceType("vpn_server")
       .build();
-    assertEquals(resourceFilterModel.resourceType(), "vpn_gateway");
+    assertEquals(resourceFilterModel.resourceType(), "vpn_server");
 
     String json = TestUtilities.serialize(resourceFilterModel);
 
     ResourceFilter resourceFilterModelNew = TestUtilities.deserialize(json, ResourceFilter.class);
     assertTrue(resourceFilterModelNew instanceof ResourceFilter);
-    assertEquals(resourceFilterModelNew.resourceType(), "vpn_gateway");
+    assertEquals(resourceFilterModelNew.resourceType(), "vpn_server");
   }
 }

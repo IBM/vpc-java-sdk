@@ -94,12 +94,12 @@ public class BareMetalServerPrimaryNetworkAttachmentPrototypeBareMetalServerPrim
     BareMetalServerPrimaryNetworkAttachmentPrototypeBareMetalServerPrimaryNetworkAttachmentByPCIPrototype bareMetalServerPrimaryNetworkAttachmentPrototypeBareMetalServerPrimaryNetworkAttachmentByPciPrototypeModel = new BareMetalServerPrimaryNetworkAttachmentPrototypeBareMetalServerPrimaryNetworkAttachmentByPCIPrototype.Builder()
       .name("my-bare-metal-server-network-attachment")
       .virtualNetworkInterface(bareMetalServerNetworkAttachmentPrototypeVirtualNetworkInterfaceModel)
-      .allowedVlans(java.util.Arrays.asList(Long.valueOf("4")))
+      .allowedVlans(java.util.Arrays.asList(Long.valueOf("100")))
       .interfaceType("pci")
       .build();
     assertEquals(bareMetalServerPrimaryNetworkAttachmentPrototypeBareMetalServerPrimaryNetworkAttachmentByPciPrototypeModel.name(), "my-bare-metal-server-network-attachment");
     assertEquals(bareMetalServerPrimaryNetworkAttachmentPrototypeBareMetalServerPrimaryNetworkAttachmentByPciPrototypeModel.virtualNetworkInterface(), bareMetalServerNetworkAttachmentPrototypeVirtualNetworkInterfaceModel);
-    assertEquals(bareMetalServerPrimaryNetworkAttachmentPrototypeBareMetalServerPrimaryNetworkAttachmentByPciPrototypeModel.allowedVlans(), java.util.Arrays.asList(Long.valueOf("4")));
+    assertEquals(bareMetalServerPrimaryNetworkAttachmentPrototypeBareMetalServerPrimaryNetworkAttachmentByPciPrototypeModel.allowedVlans(), java.util.Arrays.asList(Long.valueOf("100")));
     assertEquals(bareMetalServerPrimaryNetworkAttachmentPrototypeBareMetalServerPrimaryNetworkAttachmentByPciPrototypeModel.interfaceType(), "pci");
 
     String json = TestUtilities.serialize(bareMetalServerPrimaryNetworkAttachmentPrototypeBareMetalServerPrimaryNetworkAttachmentByPciPrototypeModel);

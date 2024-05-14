@@ -32,15 +32,15 @@ public class FloatingIPTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceId
   @Test
   public void testFloatingIPTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceIdentityByHref() throws Throwable {
     FloatingIPTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceIdentityByHref floatingIpTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceIdentityByHrefModel = new FloatingIPTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceIdentityByHref.Builder()
-      .href("https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e")
+      .href("https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/0717-10c02d81-0ecb-4dc5-897d-28392913b81e")
       .build();
-    assertEquals(floatingIpTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceIdentityByHrefModel.href(), "https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e");
+    assertEquals(floatingIpTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceIdentityByHrefModel.href(), "https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/0717-10c02d81-0ecb-4dc5-897d-28392913b81e");
 
     String json = TestUtilities.serialize(floatingIpTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceIdentityByHrefModel);
 
     FloatingIPTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceIdentityByHref floatingIpTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceIdentityByHrefModelNew = TestUtilities.deserialize(json, FloatingIPTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceIdentityByHref.class);
     assertTrue(floatingIpTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceIdentityByHrefModelNew instanceof FloatingIPTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceIdentityByHref);
-    assertEquals(floatingIpTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceIdentityByHrefModelNew.href(), "https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e");
+    assertEquals(floatingIpTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceIdentityByHrefModelNew.href(), "https://us-south.iaas.cloud.ibm.com/v1/instances/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/0717-10c02d81-0ecb-4dc5-897d-28392913b81e");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

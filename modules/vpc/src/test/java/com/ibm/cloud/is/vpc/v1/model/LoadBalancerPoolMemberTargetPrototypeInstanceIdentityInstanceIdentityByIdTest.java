@@ -32,15 +32,15 @@ public class LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdenti
   @Test
   public void testLoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityById() throws Throwable {
     LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityById loadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityByIdModel = new LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityById.Builder()
-      .id("1e09281b-f177-46fb-baf1-bc152b2e391a")
+      .id("0717_1e09281b-f177-46f2-b1f1-bc152b2e391a")
       .build();
-    assertEquals(loadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityByIdModel.id(), "1e09281b-f177-46fb-baf1-bc152b2e391a");
+    assertEquals(loadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityByIdModel.id(), "0717_1e09281b-f177-46f2-b1f1-bc152b2e391a");
 
     String json = TestUtilities.serialize(loadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityByIdModel);
 
     LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityById loadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityByIdModelNew = TestUtilities.deserialize(json, LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityById.class);
     assertTrue(loadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityByIdModelNew instanceof LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityById);
-    assertEquals(loadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityByIdModelNew.id(), "1e09281b-f177-46fb-baf1-bc152b2e391a");
+    assertEquals(loadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityByIdModelNew.id(), "0717_1e09281b-f177-46f2-b1f1-bc152b2e391a");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

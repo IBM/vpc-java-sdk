@@ -18,8 +18,8 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  * Identifies a load balancer pool by a unique property.
  *
  * Classes which extend this class:
- * - LoadBalancerPoolIdentityById
- * - LoadBalancerPoolIdentityByHref
+ * - LoadBalancerPoolIdentityLoadBalancerPoolIdentityById
+ * - LoadBalancerPoolIdentityLoadBalancerPoolIdentityByHref
  */
 public class LoadBalancerPoolIdentity extends GenericModel {
 
