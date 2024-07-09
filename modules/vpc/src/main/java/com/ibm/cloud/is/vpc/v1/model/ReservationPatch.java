@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.is.vpc.v1.model;
 
 import java.util.Map;
@@ -169,8 +170,6 @@ public class ReservationPatch extends GenericModel {
    * The [profile](https://cloud.ibm.com/docs/vpc?topic=vpc-profiles) to use for this
    * reservation.
    *
-   * The profile can only be changed for a reservation with a `status` of `inactive`.
-   *
    * @return the profile
    */
   public ReservationProfilePatch profile() {
@@ -188,6 +187,5 @@ public class ReservationPatch extends GenericModel {
   public Map<String, Object> asPatch() {
     return GsonSingleton.getGson().fromJson(this.toString(), Map.class);
   }
-
 }
 

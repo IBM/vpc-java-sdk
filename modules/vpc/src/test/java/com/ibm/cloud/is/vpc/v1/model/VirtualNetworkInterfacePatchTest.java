@@ -37,11 +37,13 @@ public class VirtualNetworkInterfacePatchTest {
       .autoDelete(false)
       .enableInfrastructureNat(true)
       .name("my-virtual-network-interface")
+      .protocolStateFilteringMode("auto")
       .build();
     assertEquals(virtualNetworkInterfacePatchModel.allowIpSpoofing(), Boolean.valueOf(true));
     assertEquals(virtualNetworkInterfacePatchModel.autoDelete(), Boolean.valueOf(false));
     assertEquals(virtualNetworkInterfacePatchModel.enableInfrastructureNat(), Boolean.valueOf(true));
     assertEquals(virtualNetworkInterfacePatchModel.name(), "my-virtual-network-interface");
+    assertEquals(virtualNetworkInterfacePatchModel.protocolStateFilteringMode(), "auto");
 
     String json = TestUtilities.serialize(virtualNetworkInterfacePatchModel);
 
@@ -51,6 +53,7 @@ public class VirtualNetworkInterfacePatchTest {
     assertEquals(virtualNetworkInterfacePatchModelNew.autoDelete(), Boolean.valueOf(false));
     assertEquals(virtualNetworkInterfacePatchModelNew.enableInfrastructureNat(), Boolean.valueOf(true));
     assertEquals(virtualNetworkInterfacePatchModelNew.name(), "my-virtual-network-interface");
+    assertEquals(virtualNetworkInterfacePatchModelNew.protocolStateFilteringMode(), "auto");
   }
   @Test
   public void testVirtualNetworkInterfacePatchAsPatch() throws Throwable {
@@ -59,6 +62,7 @@ public class VirtualNetworkInterfacePatchTest {
       .autoDelete(false)
       .enableInfrastructureNat(true)
       .name("my-virtual-network-interface")
+      .protocolStateFilteringMode("auto")
       .build();
 
     Map<String, Object> mergePatch = virtualNetworkInterfacePatchModel.asPatch();
@@ -67,6 +71,7 @@ public class VirtualNetworkInterfacePatchTest {
     assertTrue(mergePatch.containsKey("auto_delete"));
     assertTrue(mergePatch.containsKey("enable_infrastructure_nat"));
     assertEquals(mergePatch.get("name"), "my-virtual-network-interface");
+    assertEquals(mergePatch.get("protocol_state_filtering_mode"), "auto");
   }
 
 }

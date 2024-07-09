@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
@@ -22,7 +23,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class LoadBalancerDNS extends GenericModel {
 
-  protected DNSInstanceReference instance;
+  protected DNSInstanceReferenceLoadBalancerDNSContext instance;
   protected DNSZoneReference zone;
 
   protected LoadBalancerDNS() { }
@@ -34,7 +35,7 @@ public class LoadBalancerDNS extends GenericModel {
    *
    * @return the instance
    */
-  public DNSInstanceReference getInstance() {
+  public DNSInstanceReferenceLoadBalancerDNSContext getInstance() {
     return instance;
   }
 

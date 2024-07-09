@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.is.vpc.v1.model;
 
 import java.util.Date;
@@ -28,13 +29,29 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class InstanceTemplate extends GenericModel {
 
+  /**
+   * The confidential compute mode to use for this virtual server instance.
+   *
+   * If unspecified, the default confidential compute mode from the profile will be used.
+   */
+  public interface ConfidentialComputeMode {
+    /** disabled. */
+    String DISABLED = "disabled";
+    /** sgx. */
+    String SGX = "sgx";
+  }
+
   @SerializedName("availability_policy")
   protected InstanceAvailabilityPolicyPrototype availabilityPolicy;
+  @SerializedName("confidential_compute_mode")
+  protected String confidentialComputeMode;
   @SerializedName("created_at")
   protected Date createdAt;
   protected String crn;
   @SerializedName("default_trusted_profile")
   protected InstanceDefaultTrustedProfilePrototype defaultTrustedProfile;
+  @SerializedName("enable_secure_boot")
+  protected Boolean enableSecureBoot;
   protected String href;
   protected String id;
   protected List<KeyIdentity> keys;
@@ -84,6 +101,19 @@ public class InstanceTemplate extends GenericModel {
   }
 
   /**
+   * Gets the confidentialComputeMode.
+   *
+   * The confidential compute mode to use for this virtual server instance.
+   *
+   * If unspecified, the default confidential compute mode from the profile will be used.
+   *
+   * @return the confidentialComputeMode
+   */
+  public String getConfidentialComputeMode() {
+    return confidentialComputeMode;
+  }
+
+  /**
    * Gets the createdAt.
    *
    * The date and time that the instance template was created.
@@ -119,6 +149,19 @@ public class InstanceTemplate extends GenericModel {
    */
   public InstanceDefaultTrustedProfilePrototype getDefaultTrustedProfile() {
     return defaultTrustedProfile;
+  }
+
+  /**
+   * Gets the enableSecureBoot.
+   *
+   * Indicates whether secure boot is enabled for this virtual server instance.
+   *
+   * If unspecified, the default secure boot mode from the profile will be used.
+   *
+   * @return the enableSecureBoot
+   */
+  public Boolean isEnableSecureBoot() {
+    return enableSecureBoot;
   }
 
   /**

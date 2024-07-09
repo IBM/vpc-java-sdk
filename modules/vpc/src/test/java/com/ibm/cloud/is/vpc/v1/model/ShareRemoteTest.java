@@ -13,6 +13,7 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.ibm.cloud.is.vpc.v1.model.AccountReference;
 import com.ibm.cloud.is.vpc.v1.model.RegionReference;
 import com.ibm.cloud.is.vpc.v1.model.ShareRemote;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
@@ -33,6 +34,7 @@ public class ShareRemoteTest {
   @Test
   public void testShareRemote() throws Throwable {
     ShareRemote shareRemoteModel = new ShareRemote();
+    assertNull(shareRemoteModel.getAccount());
     assertNull(shareRemoteModel.getRegion());
   }
 }

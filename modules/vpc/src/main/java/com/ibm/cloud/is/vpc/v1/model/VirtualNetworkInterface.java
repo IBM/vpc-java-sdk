@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.is.vpc.v1.model;
 
 import java.util.Date;
@@ -44,6 +45,27 @@ public class VirtualNetworkInterface extends GenericModel {
   }
 
   /**
+   * The protocol state filtering mode used for this virtual network interface. If `auto`, protocol state packet
+   * filtering is enabled or disabled based on the virtual network interface's `target` resource type:
+   *
+   * - `bare_metal_server_network_attachment`: disabled
+   * - `instance_network_attachment`: enabled
+   * - `share_mount_target`: enabled
+   *
+   * Protocol state filtering monitors each network connection flowing over this virtual network interface, and drops
+   * any packets that are invalid based on the current connection state and protocol. See [Protocol state filtering
+   * mode](https://cloud.ibm.com/docs/vpc?topic=vpc-vni-about#protocol-state-filtering)) for more information.
+   */
+  public interface ProtocolStateFilteringMode {
+    /** auto. */
+    String AUTO = "auto";
+    /** disabled. */
+    String DISABLED = "disabled";
+    /** enabled. */
+    String ENABLED = "enabled";
+  }
+
+  /**
    * The resource type.
    */
   public interface ResourceType {
@@ -70,6 +92,8 @@ public class VirtualNetworkInterface extends GenericModel {
   protected String name;
   @SerializedName("primary_ip")
   protected ReservedIPReference primaryIp;
+  @SerializedName("protocol_state_filtering_mode")
+  protected String protocolStateFilteringMode;
   @SerializedName("resource_group")
   protected ResourceGroupReference resourceGroup;
   @SerializedName("resource_type")
@@ -226,6 +250,26 @@ public class VirtualNetworkInterface extends GenericModel {
    */
   public ReservedIPReference getPrimaryIp() {
     return primaryIp;
+  }
+
+  /**
+   * Gets the protocolStateFilteringMode.
+   *
+   * The protocol state filtering mode used for this virtual network interface. If `auto`, protocol state packet
+   * filtering is enabled or disabled based on the virtual network interface's `target` resource type:
+   *
+   * - `bare_metal_server_network_attachment`: disabled
+   * - `instance_network_attachment`: enabled
+   * - `share_mount_target`: enabled
+   *
+   * Protocol state filtering monitors each network connection flowing over this virtual network interface, and drops
+   * any packets that are invalid based on the current connection state and protocol. See [Protocol state filtering
+   * mode](https://cloud.ibm.com/docs/vpc?topic=vpc-vni-about#protocol-state-filtering)) for more information.
+   *
+   * @return the protocolStateFilteringMode
+   */
+  public String getProtocolStateFilteringMode() {
+    return protocolStateFilteringMode;
   }
 
   /**

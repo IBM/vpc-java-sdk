@@ -76,6 +76,8 @@ public class InstancePatchTest {
 
     InstancePatch instancePatchModel = new InstancePatch.Builder()
       .availabilityPolicy(instanceAvailabilityPolicyPatchModel)
+      .confidentialComputeMode("disabled")
+      .enableSecureBoot(true)
       .metadataService(instanceMetadataServicePatchModel)
       .name("my-instance")
       .placementTarget(instancePlacementTargetPatchModel)
@@ -84,6 +86,8 @@ public class InstancePatchTest {
       .totalVolumeBandwidth(Long.valueOf("500"))
       .build();
     assertEquals(instancePatchModel.availabilityPolicy(), instanceAvailabilityPolicyPatchModel);
+    assertEquals(instancePatchModel.confidentialComputeMode(), "disabled");
+    assertEquals(instancePatchModel.enableSecureBoot(), Boolean.valueOf(true));
     assertEquals(instancePatchModel.metadataService(), instanceMetadataServicePatchModel);
     assertEquals(instancePatchModel.name(), "my-instance");
     assertEquals(instancePatchModel.placementTarget(), instancePlacementTargetPatchModel);
@@ -96,6 +100,8 @@ public class InstancePatchTest {
     InstancePatch instancePatchModelNew = TestUtilities.deserialize(json, InstancePatch.class);
     assertTrue(instancePatchModelNew instanceof InstancePatch);
     assertEquals(instancePatchModelNew.availabilityPolicy().toString(), instanceAvailabilityPolicyPatchModel.toString());
+    assertEquals(instancePatchModelNew.confidentialComputeMode(), "disabled");
+    assertEquals(instancePatchModelNew.enableSecureBoot(), Boolean.valueOf(true));
     assertEquals(instancePatchModelNew.metadataService().toString(), instanceMetadataServicePatchModel.toString());
     assertEquals(instancePatchModelNew.name(), "my-instance");
     assertEquals(instancePatchModelNew.placementTarget().toString(), instancePlacementTargetPatchModel.toString());
@@ -134,6 +140,8 @@ public class InstancePatchTest {
 
     InstancePatch instancePatchModel = new InstancePatch.Builder()
       .availabilityPolicy(instanceAvailabilityPolicyPatchModel)
+      .confidentialComputeMode("disabled")
+      .enableSecureBoot(true)
       .metadataService(instanceMetadataServicePatchModel)
       .name("my-instance")
       .placementTarget(instancePlacementTargetPatchModel)
@@ -145,6 +153,8 @@ public class InstancePatchTest {
     Map<String, Object> mergePatch = instancePatchModel.asPatch();
 
     assertTrue(mergePatch.containsKey("availability_policy"));
+    assertEquals(mergePatch.get("confidential_compute_mode"), "disabled");
+    assertTrue(mergePatch.containsKey("enable_secure_boot"));
     assertTrue(mergePatch.containsKey("metadata_service"));
     assertEquals(mergePatch.get("name"), "my-instance");
     assertTrue(mergePatch.containsKey("placement_target"));

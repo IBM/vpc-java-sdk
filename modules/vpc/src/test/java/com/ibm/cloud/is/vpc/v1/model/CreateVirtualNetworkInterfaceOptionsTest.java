@@ -76,6 +76,7 @@ public class CreateVirtualNetworkInterfaceOptionsTest {
       .ips(java.util.Arrays.asList(virtualNetworkInterfaceIpPrototypeModel))
       .name("my-virtual-network-interface")
       .primaryIp(virtualNetworkInterfacePrimaryIpPrototypeModel)
+      .protocolStateFilteringMode("auto")
       .resourceGroup(resourceGroupIdentityModel)
       .securityGroups(java.util.Arrays.asList(securityGroupIdentityModel))
       .subnet(subnetIdentityModel)
@@ -86,6 +87,7 @@ public class CreateVirtualNetworkInterfaceOptionsTest {
     assertEquals(createVirtualNetworkInterfaceOptionsModel.ips(), java.util.Arrays.asList(virtualNetworkInterfaceIpPrototypeModel));
     assertEquals(createVirtualNetworkInterfaceOptionsModel.name(), "my-virtual-network-interface");
     assertEquals(createVirtualNetworkInterfaceOptionsModel.primaryIp(), virtualNetworkInterfacePrimaryIpPrototypeModel);
+    assertEquals(createVirtualNetworkInterfaceOptionsModel.protocolStateFilteringMode(), "auto");
     assertEquals(createVirtualNetworkInterfaceOptionsModel.resourceGroup(), resourceGroupIdentityModel);
     assertEquals(createVirtualNetworkInterfaceOptionsModel.securityGroups(), java.util.Arrays.asList(securityGroupIdentityModel));
     assertEquals(createVirtualNetworkInterfaceOptionsModel.subnet(), subnetIdentityModel);

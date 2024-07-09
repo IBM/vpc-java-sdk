@@ -33,8 +33,12 @@ public class ListIkePolicyConnectionsOptionsTest {
   public void testListIkePolicyConnectionsOptions() throws Throwable {
     ListIkePolicyConnectionsOptions listIkePolicyConnectionsOptionsModel = new ListIkePolicyConnectionsOptions.Builder()
       .id("testString")
+      .start("testString")
+      .limit(Long.valueOf("50"))
       .build();
     assertEquals(listIkePolicyConnectionsOptionsModel.id(), "testString");
+    assertEquals(listIkePolicyConnectionsOptionsModel.start(), "testString");
+    assertEquals(listIkePolicyConnectionsOptionsModel.limit(), Long.valueOf("50"));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

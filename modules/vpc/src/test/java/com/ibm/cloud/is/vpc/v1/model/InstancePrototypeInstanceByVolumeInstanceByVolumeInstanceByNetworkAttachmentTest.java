@@ -184,6 +184,7 @@ public class InstancePrototypeInstanceByVolumeInstanceByVolumeInstanceByNetworkA
       .ips(java.util.Arrays.asList(virtualNetworkInterfaceIpPrototypeModel))
       .name("my-virtual-network-interface")
       .primaryIp(virtualNetworkInterfacePrimaryIpPrototypeModel)
+      .protocolStateFilteringMode("auto")
       .resourceGroup(resourceGroupIdentityModel)
       .securityGroups(java.util.Arrays.asList(securityGroupIdentityModel))
       .subnet(subnetIdentityModel)
@@ -194,6 +195,7 @@ public class InstancePrototypeInstanceByVolumeInstanceByVolumeInstanceByNetworkA
     assertEquals(instanceNetworkAttachmentPrototypeVirtualNetworkInterfaceModel.ips(), java.util.Arrays.asList(virtualNetworkInterfaceIpPrototypeModel));
     assertEquals(instanceNetworkAttachmentPrototypeVirtualNetworkInterfaceModel.name(), "my-virtual-network-interface");
     assertEquals(instanceNetworkAttachmentPrototypeVirtualNetworkInterfaceModel.primaryIp(), virtualNetworkInterfacePrimaryIpPrototypeModel);
+    assertEquals(instanceNetworkAttachmentPrototypeVirtualNetworkInterfaceModel.protocolStateFilteringMode(), "auto");
     assertEquals(instanceNetworkAttachmentPrototypeVirtualNetworkInterfaceModel.resourceGroup(), resourceGroupIdentityModel);
     assertEquals(instanceNetworkAttachmentPrototypeVirtualNetworkInterfaceModel.securityGroups(), java.util.Arrays.asList(securityGroupIdentityModel));
     assertEquals(instanceNetworkAttachmentPrototypeVirtualNetworkInterfaceModel.subnet(), subnetIdentityModel);
@@ -207,7 +209,9 @@ public class InstancePrototypeInstanceByVolumeInstanceByVolumeInstanceByNetworkA
 
     InstancePrototypeInstanceByVolumeInstanceByVolumeInstanceByNetworkAttachment instancePrototypeInstanceByVolumeInstanceByVolumeInstanceByNetworkAttachmentModel = new InstancePrototypeInstanceByVolumeInstanceByVolumeInstanceByNetworkAttachment.Builder()
       .availabilityPolicy(instanceAvailabilityPolicyPrototypeModel)
+      .confidentialComputeMode("disabled")
       .defaultTrustedProfile(instanceDefaultTrustedProfilePrototypeModel)
+      .enableSecureBoot(true)
       .keys(java.util.Arrays.asList(keyIdentityModel))
       .metadataService(instanceMetadataServicePrototypeModel)
       .name("my-instance")
@@ -225,7 +229,9 @@ public class InstancePrototypeInstanceByVolumeInstanceByVolumeInstanceByNetworkA
       .primaryNetworkAttachment(instanceNetworkAttachmentPrototypeModel)
       .build();
     assertEquals(instancePrototypeInstanceByVolumeInstanceByVolumeInstanceByNetworkAttachmentModel.availabilityPolicy(), instanceAvailabilityPolicyPrototypeModel);
+    assertEquals(instancePrototypeInstanceByVolumeInstanceByVolumeInstanceByNetworkAttachmentModel.confidentialComputeMode(), "disabled");
     assertEquals(instancePrototypeInstanceByVolumeInstanceByVolumeInstanceByNetworkAttachmentModel.defaultTrustedProfile(), instanceDefaultTrustedProfilePrototypeModel);
+    assertEquals(instancePrototypeInstanceByVolumeInstanceByVolumeInstanceByNetworkAttachmentModel.enableSecureBoot(), Boolean.valueOf(true));
     assertEquals(instancePrototypeInstanceByVolumeInstanceByVolumeInstanceByNetworkAttachmentModel.keys(), java.util.Arrays.asList(keyIdentityModel));
     assertEquals(instancePrototypeInstanceByVolumeInstanceByVolumeInstanceByNetworkAttachmentModel.metadataService(), instanceMetadataServicePrototypeModel);
     assertEquals(instancePrototypeInstanceByVolumeInstanceByVolumeInstanceByNetworkAttachmentModel.name(), "my-instance");
@@ -247,7 +253,9 @@ public class InstancePrototypeInstanceByVolumeInstanceByVolumeInstanceByNetworkA
     InstancePrototypeInstanceByVolumeInstanceByVolumeInstanceByNetworkAttachment instancePrototypeInstanceByVolumeInstanceByVolumeInstanceByNetworkAttachmentModelNew = TestUtilities.deserialize(json, InstancePrototypeInstanceByVolumeInstanceByVolumeInstanceByNetworkAttachment.class);
     assertTrue(instancePrototypeInstanceByVolumeInstanceByVolumeInstanceByNetworkAttachmentModelNew instanceof InstancePrototypeInstanceByVolumeInstanceByVolumeInstanceByNetworkAttachment);
     assertEquals(instancePrototypeInstanceByVolumeInstanceByVolumeInstanceByNetworkAttachmentModelNew.availabilityPolicy().toString(), instanceAvailabilityPolicyPrototypeModel.toString());
+    assertEquals(instancePrototypeInstanceByVolumeInstanceByVolumeInstanceByNetworkAttachmentModelNew.confidentialComputeMode(), "disabled");
     assertEquals(instancePrototypeInstanceByVolumeInstanceByVolumeInstanceByNetworkAttachmentModelNew.defaultTrustedProfile().toString(), instanceDefaultTrustedProfilePrototypeModel.toString());
+    assertEquals(instancePrototypeInstanceByVolumeInstanceByVolumeInstanceByNetworkAttachmentModelNew.enableSecureBoot(), Boolean.valueOf(true));
     assertEquals(instancePrototypeInstanceByVolumeInstanceByVolumeInstanceByNetworkAttachmentModelNew.metadataService().toString(), instanceMetadataServicePrototypeModel.toString());
     assertEquals(instancePrototypeInstanceByVolumeInstanceByVolumeInstanceByNetworkAttachmentModelNew.name(), "my-instance");
     assertEquals(instancePrototypeInstanceByVolumeInstanceByVolumeInstanceByNetworkAttachmentModelNew.placementTarget().toString(), instancePlacementTargetPrototypeModel.toString());

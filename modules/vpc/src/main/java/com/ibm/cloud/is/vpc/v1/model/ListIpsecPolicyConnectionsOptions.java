@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
@@ -20,12 +21,16 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class ListIpsecPolicyConnectionsOptions extends GenericModel {
 
   protected String id;
+  protected String start;
+  protected Long limit;
 
   /**
    * Builder.
    */
   public static class Builder {
     private String id;
+    private String start;
+    private Long limit;
 
     /**
      * Instantiates a new Builder from an existing ListIpsecPolicyConnectionsOptions instance.
@@ -34,6 +39,8 @@ public class ListIpsecPolicyConnectionsOptions extends GenericModel {
      */
     private Builder(ListIpsecPolicyConnectionsOptions listIpsecPolicyConnectionsOptions) {
       this.id = listIpsecPolicyConnectionsOptions.id;
+      this.start = listIpsecPolicyConnectionsOptions.start;
+      this.limit = listIpsecPolicyConnectionsOptions.limit;
     }
 
     /**
@@ -70,6 +77,28 @@ public class ListIpsecPolicyConnectionsOptions extends GenericModel {
       this.id = id;
       return this;
     }
+
+    /**
+     * Set the start.
+     *
+     * @param start the start
+     * @return the ListIpsecPolicyConnectionsOptions builder
+     */
+    public Builder start(String start) {
+      this.start = start;
+      return this;
+    }
+
+    /**
+     * Set the limit.
+     *
+     * @param limit the limit
+     * @return the ListIpsecPolicyConnectionsOptions builder
+     */
+    public Builder limit(long limit) {
+      this.limit = limit;
+      return this;
+    }
   }
 
   protected ListIpsecPolicyConnectionsOptions() { }
@@ -78,6 +107,8 @@ public class ListIpsecPolicyConnectionsOptions extends GenericModel {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,
       "id cannot be empty");
     id = builder.id;
+    start = builder.start;
+    limit = builder.limit;
   }
 
   /**
@@ -98,6 +129,28 @@ public class ListIpsecPolicyConnectionsOptions extends GenericModel {
    */
   public String id() {
     return id;
+  }
+
+  /**
+   * Gets the start.
+   *
+   * A server-provided token determining what resource to start the page on.
+   *
+   * @return the start
+   */
+  public String start() {
+    return start;
+  }
+
+  /**
+   * Gets the limit.
+   *
+   * The number of resources to return on a page.
+   *
+   * @return the limit
+   */
+  public Long limit() {
+    return limit;
   }
 }
 

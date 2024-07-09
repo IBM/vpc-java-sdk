@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.is.vpc.v1.model;
 
 import java.util.ArrayList;
@@ -19,6 +20,28 @@ import java.util.List;
  * The virtual network interface for this target.
  */
 public class InstanceNetworkAttachmentPrototypeVirtualNetworkInterfaceVirtualNetworkInterfacePrototypeInstanceNetworkAttachmentContext extends InstanceNetworkAttachmentPrototypeVirtualNetworkInterface {
+
+  /**
+   * The protocol state filtering mode to use for this virtual network interface. If
+   * `auto`, protocol state packet filtering is enabled or disabled based on the virtual network interface's `target`
+   * resource type:
+   *
+   * - `bare_metal_server_network_attachment`: disabled
+   * - `instance_network_attachment`: enabled
+   * - `share_mount_target`: enabled
+   *
+   * Protocol state filtering monitors each network connection flowing over this virtual network interface, and drops
+   * any packets that are invalid based on the current connection state and protocol. See [Protocol state filtering
+   * mode](https://cloud.ibm.com/docs/vpc?topic=vpc-vni-about#protocol-state-filtering) for more information.
+   */
+  public interface ProtocolStateFilteringMode {
+    /** auto. */
+    String AUTO = "auto";
+    /** disabled. */
+    String DISABLED = "disabled";
+    /** enabled. */
+    String ENABLED = "enabled";
+  }
 
 
   /**
@@ -31,6 +54,7 @@ public class InstanceNetworkAttachmentPrototypeVirtualNetworkInterfaceVirtualNet
     private List<VirtualNetworkInterfaceIPPrototype> ips;
     private String name;
     private VirtualNetworkInterfacePrimaryIPPrototype primaryIp;
+    private String protocolStateFilteringMode;
     private ResourceGroupIdentity resourceGroup;
     private List<SecurityGroupIdentity> securityGroups;
     private SubnetIdentity subnet;
@@ -47,6 +71,7 @@ public class InstanceNetworkAttachmentPrototypeVirtualNetworkInterfaceVirtualNet
       this.ips = instanceNetworkAttachmentPrototypeVirtualNetworkInterfaceVirtualNetworkInterfacePrototypeInstanceNetworkAttachmentContext.ips;
       this.name = instanceNetworkAttachmentPrototypeVirtualNetworkInterfaceVirtualNetworkInterfacePrototypeInstanceNetworkAttachmentContext.name;
       this.primaryIp = instanceNetworkAttachmentPrototypeVirtualNetworkInterfaceVirtualNetworkInterfacePrototypeInstanceNetworkAttachmentContext.primaryIp;
+      this.protocolStateFilteringMode = instanceNetworkAttachmentPrototypeVirtualNetworkInterfaceVirtualNetworkInterfacePrototypeInstanceNetworkAttachmentContext.protocolStateFilteringMode;
       this.resourceGroup = instanceNetworkAttachmentPrototypeVirtualNetworkInterfaceVirtualNetworkInterfacePrototypeInstanceNetworkAttachmentContext.resourceGroup;
       this.securityGroups = instanceNetworkAttachmentPrototypeVirtualNetworkInterfaceVirtualNetworkInterfacePrototypeInstanceNetworkAttachmentContext.securityGroups;
       this.subnet = instanceNetworkAttachmentPrototypeVirtualNetworkInterfaceVirtualNetworkInterfacePrototypeInstanceNetworkAttachmentContext.subnet;
@@ -167,6 +192,17 @@ public class InstanceNetworkAttachmentPrototypeVirtualNetworkInterfaceVirtualNet
     }
 
     /**
+     * Set the protocolStateFilteringMode.
+     *
+     * @param protocolStateFilteringMode the protocolStateFilteringMode
+     * @return the InstanceNetworkAttachmentPrototypeVirtualNetworkInterfaceVirtualNetworkInterfacePrototypeInstanceNetworkAttachmentContext builder
+     */
+    public Builder protocolStateFilteringMode(String protocolStateFilteringMode) {
+      this.protocolStateFilteringMode = protocolStateFilteringMode;
+      return this;
+    }
+
+    /**
      * Set the resourceGroup.
      *
      * @param resourceGroup the resourceGroup
@@ -210,6 +246,7 @@ public class InstanceNetworkAttachmentPrototypeVirtualNetworkInterfaceVirtualNet
     ips = builder.ips;
     name = builder.name;
     primaryIp = builder.primaryIp;
+    protocolStateFilteringMode = builder.protocolStateFilteringMode;
     resourceGroup = builder.resourceGroup;
     securityGroups = builder.securityGroups;
     subnet = builder.subnet;

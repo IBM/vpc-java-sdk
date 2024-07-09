@@ -19,6 +19,8 @@ import com.ibm.cloud.is.vpc.v1.model.IP;
 import com.ibm.cloud.is.vpc.v1.model.IPsecPolicyReference;
 import com.ibm.cloud.is.vpc.v1.model.IPsecPolicyReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionCollection;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionCollectionFirst;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionDPD;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionIKEIdentityVPNGatewayConnectionIKEIdentityFQDN;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionRouteModeVPNGatewayConnectionStaticRouteMode;
@@ -47,5 +49,9 @@ public class VPNGatewayConnectionCollectionTest {
   public void testVPNGatewayConnectionCollection() throws Throwable {
     VPNGatewayConnectionCollection vpnGatewayConnectionCollectionModel = new VPNGatewayConnectionCollection();
     assertNull(vpnGatewayConnectionCollectionModel.getConnections());
+    assertNull(vpnGatewayConnectionCollectionModel.getFirst());
+    assertNull(vpnGatewayConnectionCollectionModel.getLimit());
+    assertNull(vpnGatewayConnectionCollectionModel.getNext());
+    assertNull(vpnGatewayConnectionCollectionModel.getTotalCount());
   }
 }

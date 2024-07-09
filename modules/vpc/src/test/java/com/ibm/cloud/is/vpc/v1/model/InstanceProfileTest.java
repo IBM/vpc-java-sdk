@@ -30,6 +30,8 @@ import com.ibm.cloud.is.vpc.v1.model.InstanceProfileNetworkInterfaceCountRange;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileOSArchitecture;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfilePortSpeedFixed;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileReservationTerms;
+import com.ibm.cloud.is.vpc.v1.model.InstanceProfileSupportedConfidentialComputeModes;
+import com.ibm.cloud.is.vpc.v1.model.InstanceProfileSupportedSecureBootModes;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileVCPUArchitecture;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileVCPUFixed;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileVCPUManufacturer;
@@ -53,6 +55,7 @@ public class InstanceProfileTest {
   public void testInstanceProfile() throws Throwable {
     InstanceProfile instanceProfileModel = new InstanceProfile();
     assertNull(instanceProfileModel.getBandwidth());
+    assertNull(instanceProfileModel.getConfidentialComputeModes());
     assertNull(instanceProfileModel.getDisks());
     assertNull(instanceProfileModel.getFamily());
     assertNull(instanceProfileModel.getGpuCount());
@@ -69,6 +72,7 @@ public class InstanceProfileTest {
     assertNull(instanceProfileModel.getPortSpeed());
     assertNull(instanceProfileModel.getReservationTerms());
     assertNull(instanceProfileModel.getResourceType());
+    assertNull(instanceProfileModel.getSecureBootModes());
     assertNull(instanceProfileModel.getStatus());
     assertNull(instanceProfileModel.getTotalVolumeBandwidth());
     assertNull(instanceProfileModel.getVcpuArchitecture());

@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.is.vpc.v1.model;
 
 import java.util.List;
@@ -26,6 +27,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class BareMetalServerPrototype extends GenericModel {
 
+  protected Long bandwidth;
   @SerializedName("enable_secure_boot")
   protected Boolean enableSecureBoot;
   protected BareMetalServerInitializationPrototype initialization;
@@ -47,6 +49,19 @@ public class BareMetalServerPrototype extends GenericModel {
   protected BareMetalServerPrimaryNetworkInterfacePrototype primaryNetworkInterface;
 
   protected BareMetalServerPrototype() { }
+
+  /**
+   * Gets the bandwidth.
+   *
+   * The total bandwidth (in megabits per second) shared across the bare metal server's network interfaces. The
+   * specified value must match one of the bandwidth values in the bare metal server's profile. If unspecified, the
+   * default value from the profile will be used.
+   *
+   * @return the bandwidth
+   */
+  public Long bandwidth() {
+    return bandwidth;
+  }
 
   /**
    * Gets the enableSecureBoot.

@@ -211,7 +211,9 @@ public class InstanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByI
 
     InstanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByImageInstanceByNetworkInterface instanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByImageInstanceByNetworkInterfaceModel = new InstanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByImageInstanceByNetworkInterface.Builder()
       .availabilityPolicy(instanceAvailabilityPolicyPrototypeModel)
+      .confidentialComputeMode("disabled")
       .defaultTrustedProfile(instanceDefaultTrustedProfilePrototypeModel)
+      .enableSecureBoot(true)
       .keys(java.util.Arrays.asList(keyIdentityModel))
       .metadataService(instanceMetadataServicePrototypeModel)
       .name("my-instance")
@@ -230,7 +232,9 @@ public class InstanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByI
       .primaryNetworkInterface(networkInterfacePrototypeModel)
       .build();
     assertEquals(instanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByImageInstanceByNetworkInterfaceModel.availabilityPolicy(), instanceAvailabilityPolicyPrototypeModel);
+    assertEquals(instanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByImageInstanceByNetworkInterfaceModel.confidentialComputeMode(), "disabled");
     assertEquals(instanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByImageInstanceByNetworkInterfaceModel.defaultTrustedProfile(), instanceDefaultTrustedProfilePrototypeModel);
+    assertEquals(instanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByImageInstanceByNetworkInterfaceModel.enableSecureBoot(), Boolean.valueOf(true));
     assertEquals(instanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByImageInstanceByNetworkInterfaceModel.keys(), java.util.Arrays.asList(keyIdentityModel));
     assertEquals(instanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByImageInstanceByNetworkInterfaceModel.metadataService(), instanceMetadataServicePrototypeModel);
     assertEquals(instanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByImageInstanceByNetworkInterfaceModel.name(), "my-instance");
@@ -253,7 +257,9 @@ public class InstanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByI
     InstanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByImageInstanceByNetworkInterface instanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByImageInstanceByNetworkInterfaceModelNew = TestUtilities.deserialize(json, InstanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByImageInstanceByNetworkInterface.class);
     assertTrue(instanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByImageInstanceByNetworkInterfaceModelNew instanceof InstanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByImageInstanceByNetworkInterface);
     assertEquals(instanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByImageInstanceByNetworkInterfaceModelNew.availabilityPolicy().toString(), instanceAvailabilityPolicyPrototypeModel.toString());
+    assertEquals(instanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByImageInstanceByNetworkInterfaceModelNew.confidentialComputeMode(), "disabled");
     assertEquals(instanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByImageInstanceByNetworkInterfaceModelNew.defaultTrustedProfile().toString(), instanceDefaultTrustedProfilePrototypeModel.toString());
+    assertEquals(instanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByImageInstanceByNetworkInterfaceModelNew.enableSecureBoot(), Boolean.valueOf(true));
     assertEquals(instanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByImageInstanceByNetworkInterfaceModelNew.metadataService().toString(), instanceMetadataServicePrototypeModel.toString());
     assertEquals(instanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByImageInstanceByNetworkInterfaceModelNew.name(), "my-instance");
     assertEquals(instanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByImageInstanceByNetworkInterfaceModelNew.placementTarget().toString(), instancePlacementTargetPrototypeModel.toString());

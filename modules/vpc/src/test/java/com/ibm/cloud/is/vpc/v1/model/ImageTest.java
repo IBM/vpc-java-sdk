@@ -62,6 +62,7 @@ public class ImageTest {
     assertNull(imageModel.getSourceVolume());
     assertNull(imageModel.getStatus());
     assertNull(imageModel.getStatusReasons());
+    assertNull(imageModel.getUserDataFormat());
     assertNull(imageModel.getVisibility());
   }
 }

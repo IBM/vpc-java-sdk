@@ -13,13 +13,16 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.ibm.cloud.is.vpc.v1.model.AccountReference;
 import com.ibm.cloud.is.vpc.v1.model.EncryptionKeyReference;
 import com.ibm.cloud.is.vpc.v1.model.RegionReference;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.Share;
+import com.ibm.cloud.is.vpc.v1.model.ShareAccessorBindingReference;
 import com.ibm.cloud.is.vpc.v1.model.ShareJob;
 import com.ibm.cloud.is.vpc.v1.model.ShareJobStatusReason;
 import com.ibm.cloud.is.vpc.v1.model.ShareLatestSync;
+import com.ibm.cloud.is.vpc.v1.model.ShareLifecycleReason;
 import com.ibm.cloud.is.vpc.v1.model.ShareMountTargetReference;
 import com.ibm.cloud.is.vpc.v1.model.ShareMountTargetReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.ShareProfileReference;
@@ -48,6 +51,9 @@ public class ShareTest {
   public void testShare() throws Throwable {
     Share shareModel = new Share();
     assertNull(shareModel.getAccessControlMode());
+    assertNull(shareModel.getAccessorBindingRole());
+    assertNull(shareModel.getAccessorBindings());
+    assertNull(shareModel.getAllowedTransitEncryptionModes());
     assertNull(shareModel.getCreatedAt());
     assertNull(shareModel.getCrn());
     assertNull(shareModel.getEncryption());
@@ -57,9 +63,11 @@ public class ShareTest {
     assertNull(shareModel.getIops());
     assertNull(shareModel.getLatestJob());
     assertNull(shareModel.getLatestSync());
+    assertNull(shareModel.getLifecycleReasons());
     assertNull(shareModel.getLifecycleState());
     assertNull(shareModel.getMountTargets());
     assertNull(shareModel.getName());
+    assertNull(shareModel.getOriginShare());
     assertNull(shareModel.getProfile());
     assertNull(shareModel.getReplicaShare());
     assertNull(shareModel.getReplicationCronSpec());

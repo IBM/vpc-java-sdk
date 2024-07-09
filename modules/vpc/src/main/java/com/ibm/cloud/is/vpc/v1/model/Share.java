@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.is.vpc.v1.model;
 
 import java.util.Date;
@@ -38,6 +39,38 @@ public class Share extends GenericModel {
     String SECURITY_GROUP = "security_group";
     /** vpc. */
     String VPC = "vpc";
+  }
+
+  /**
+   * The accessor binding role of this file share:
+   * - `none`: This file share is not participating in access with another file share
+   * - `origin`: This file share is the origin for one or more file shares
+   *   (which may be in other accounts)
+   * - `accessor`: This file share is providing access to another file share
+   *   (which may be in another account).
+   */
+  public interface AccessorBindingRole {
+    /** accessor. */
+    String ACCESSOR = "accessor";
+    /** none. */
+    String NONE = "none";
+    /** origin. */
+    String ORIGIN = "origin";
+  }
+
+  /**
+   * An allowed transit encryption mode for this share.
+   * - `none`: Not encrypted in transit.
+   * - `user_managed`: Encrypted in transit using an instance identity certificate.
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
+   */
+  public interface AllowedTransitEncryptionModes {
+    /** none. */
+    String NONE = "none";
+    /** user_managed. */
+    String USER_MANAGED = "user_managed";
   }
 
   /**
@@ -127,6 +160,12 @@ public class Share extends GenericModel {
 
   @SerializedName("access_control_mode")
   protected String accessControlMode;
+  @SerializedName("accessor_binding_role")
+  protected String accessorBindingRole;
+  @SerializedName("accessor_bindings")
+  protected List<ShareAccessorBindingReference> accessorBindings;
+  @SerializedName("allowed_transit_encryption_modes")
+  protected List<String> allowedTransitEncryptionModes;
   @SerializedName("created_at")
   protected Date createdAt;
   protected String crn;
@@ -140,11 +179,15 @@ public class Share extends GenericModel {
   protected ShareJob latestJob;
   @SerializedName("latest_sync")
   protected ShareLatestSync latestSync;
+  @SerializedName("lifecycle_reasons")
+  protected List<ShareLifecycleReason> lifecycleReasons;
   @SerializedName("lifecycle_state")
   protected String lifecycleState;
   @SerializedName("mount_targets")
   protected List<ShareMountTargetReference> mountTargets;
   protected String name;
+  @SerializedName("origin_share")
+  protected ShareReference originShare;
   protected ShareProfileReference profile;
   @SerializedName("replica_share")
   protected ShareReference replicaShare;
@@ -185,6 +228,45 @@ public class Share extends GenericModel {
    */
   public String getAccessControlMode() {
     return accessControlMode;
+  }
+
+  /**
+   * Gets the accessorBindingRole.
+   *
+   * The accessor binding role of this file share:
+   * - `none`: This file share is not participating in access with another file share
+   * - `origin`: This file share is the origin for one or more file shares
+   *   (which may be in other accounts)
+   * - `accessor`: This file share is providing access to another file share
+   *   (which may be in another account).
+   *
+   * @return the accessorBindingRole
+   */
+  public String getAccessorBindingRole() {
+    return accessorBindingRole;
+  }
+
+  /**
+   * Gets the accessorBindings.
+   *
+   * The accessor bindings for this file share. Each accessor binding identifies a resource (possibly in another
+   * account) with access to this file share's data.
+   *
+   * @return the accessorBindings
+   */
+  public List<ShareAccessorBindingReference> getAccessorBindings() {
+    return accessorBindings;
+  }
+
+  /**
+   * Gets the allowedTransitEncryptionModes.
+   *
+   * The transit encryption modes allowed for this share.
+   *
+   * @return the allowedTransitEncryptionModes
+   */
+  public List<String> getAllowedTransitEncryptionModes() {
+    return allowedTransitEncryptionModes;
   }
 
   /**
@@ -297,6 +379,17 @@ public class Share extends GenericModel {
   }
 
   /**
+   * Gets the lifecycleReasons.
+   *
+   * The reasons for the current `lifecycle_state` (if any).
+   *
+   * @return the lifecycleReasons
+   */
+  public List<ShareLifecycleReason> getLifecycleReasons() {
+    return lifecycleReasons;
+  }
+
+  /**
    * Gets the lifecycleState.
    *
    * The lifecycle state of the file share.
@@ -327,6 +420,19 @@ public class Share extends GenericModel {
    */
   public String getName() {
     return name;
+  }
+
+  /**
+   * Gets the originShare.
+   *
+   * The origin share this accessor share is referring to.
+   *
+   * This property will be present when the `accessor_binding_role` is `accessor`.
+   *
+   * @return the originShare
+   */
+  public ShareReference getOriginShare() {
+    return originShare;
   }
 
   /**

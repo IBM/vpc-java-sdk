@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.is.vpc.v1.model;
 
 import java.util.ArrayList;
@@ -20,13 +21,27 @@ import java.util.List;
  */
 public class InstancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotInstanceByNetworkAttachment extends InstancePrototypeInstanceBySourceSnapshot {
 
+  /**
+   * The confidential compute mode to use for this virtual server instance.
+   *
+   * If unspecified, the default confidential compute mode from the profile will be used.
+   */
+  public interface ConfidentialComputeMode {
+    /** disabled. */
+    String DISABLED = "disabled";
+    /** sgx. */
+    String SGX = "sgx";
+  }
+
 
   /**
    * Builder.
    */
   public static class Builder {
     private InstanceAvailabilityPolicyPrototype availabilityPolicy;
+    private String confidentialComputeMode;
     private InstanceDefaultTrustedProfilePrototype defaultTrustedProfile;
+    private Boolean enableSecureBoot;
     private List<KeyIdentity> keys;
     private InstanceMetadataServicePrototype metadataService;
     private String name;
@@ -50,7 +65,9 @@ public class InstancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotIn
      */
     public Builder(InstancePrototypeInstanceBySourceSnapshot instancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotInstanceByNetworkAttachment) {
       this.availabilityPolicy = instancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotInstanceByNetworkAttachment.availabilityPolicy;
+      this.confidentialComputeMode = instancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotInstanceByNetworkAttachment.confidentialComputeMode;
       this.defaultTrustedProfile = instancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotInstanceByNetworkAttachment.defaultTrustedProfile;
+      this.enableSecureBoot = instancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotInstanceByNetworkAttachment.enableSecureBoot;
       this.keys = instancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotInstanceByNetworkAttachment.keys;
       this.metadataService = instancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotInstanceByNetworkAttachment.metadataService;
       this.name = instancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotInstanceByNetworkAttachment.name;
@@ -156,6 +173,17 @@ public class InstancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotIn
     }
 
     /**
+     * Set the confidentialComputeMode.
+     *
+     * @param confidentialComputeMode the confidentialComputeMode
+     * @return the InstancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotInstanceByNetworkAttachment builder
+     */
+    public Builder confidentialComputeMode(String confidentialComputeMode) {
+      this.confidentialComputeMode = confidentialComputeMode;
+      return this;
+    }
+
+    /**
      * Set the defaultTrustedProfile.
      *
      * @param defaultTrustedProfile the defaultTrustedProfile
@@ -163,6 +191,17 @@ public class InstancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotIn
      */
     public Builder defaultTrustedProfile(InstanceDefaultTrustedProfilePrototype defaultTrustedProfile) {
       this.defaultTrustedProfile = defaultTrustedProfile;
+      return this;
+    }
+
+    /**
+     * Set the enableSecureBoot.
+     *
+     * @param enableSecureBoot the enableSecureBoot
+     * @return the InstancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotInstanceByNetworkAttachment builder
+     */
+    public Builder enableSecureBoot(Boolean enableSecureBoot) {
+      this.enableSecureBoot = enableSecureBoot;
       return this;
     }
 
@@ -345,7 +384,9 @@ public class InstancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotIn
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.primaryNetworkAttachment,
       "primaryNetworkAttachment cannot be null");
     availabilityPolicy = builder.availabilityPolicy;
+    confidentialComputeMode = builder.confidentialComputeMode;
     defaultTrustedProfile = builder.defaultTrustedProfile;
+    enableSecureBoot = builder.enableSecureBoot;
     keys = builder.keys;
     metadataService = builder.metadataService;
     name = builder.name;

@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.is.vpc.v1.model;
 
 import java.util.Date;
@@ -73,6 +74,24 @@ public class Image extends GenericModel {
   }
 
   /**
+   * The user data format for this image:
+   * - `cloud_init`: `user_data` will be interpreted according to the cloud-init standard
+   * - `esxi_kickstart`: `user_data` will be interpreted as a VMware ESXi installation script
+   * - `ipxe`: `user_data` will be interpreted as a single URL to an iPXE script or as the
+   *   text of an iPXE script
+   *
+   * The value for this property is inherited from `operating_system.user_data_format`.
+   */
+  public interface UserDataFormat {
+    /** cloud_init. */
+    String CLOUD_INIT = "cloud_init";
+    /** esxi_kickstart. */
+    String ESXI_KICKSTART = "esxi_kickstart";
+    /** ipxe. */
+    String IPXE = "ipxe";
+  }
+
+  /**
    * The visibility of this image.
    * - `private`: Visible only to this account
    * - `public`: Visible to all accounts.
@@ -113,6 +132,8 @@ public class Image extends GenericModel {
   protected String status;
   @SerializedName("status_reasons")
   protected List<ImageStatusReason> statusReasons;
+  @SerializedName("user_data_format")
+  protected String userDataFormat;
   protected String visibility;
 
   protected Image() { }
@@ -331,6 +352,23 @@ public class Image extends GenericModel {
    */
   public List<ImageStatusReason> getStatusReasons() {
     return statusReasons;
+  }
+
+  /**
+   * Gets the userDataFormat.
+   *
+   * The user data format for this image:
+   * - `cloud_init`: `user_data` will be interpreted according to the cloud-init standard
+   * - `esxi_kickstart`: `user_data` will be interpreted as a VMware ESXi installation script
+   * - `ipxe`: `user_data` will be interpreted as a single URL to an iPXE script or as the
+   *   text of an iPXE script
+   *
+   * The value for this property is inherited from `operating_system.user_data_format`.
+   *
+   * @return the userDataFormat
+   */
+  public String getUserDataFormat() {
+    return userDataFormat;
   }
 
   /**

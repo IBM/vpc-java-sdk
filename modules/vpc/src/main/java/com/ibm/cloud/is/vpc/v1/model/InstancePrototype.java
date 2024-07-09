@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.is.vpc.v1.model;
 
 import java.util.List;
@@ -29,10 +30,26 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class InstancePrototype extends GenericModel {
 
+  /**
+   * The confidential compute mode to use for this virtual server instance.
+   *
+   * If unspecified, the default confidential compute mode from the profile will be used.
+   */
+  public interface ConfidentialComputeMode {
+    /** disabled. */
+    String DISABLED = "disabled";
+    /** sgx. */
+    String SGX = "sgx";
+  }
+
   @SerializedName("availability_policy")
   protected InstanceAvailabilityPolicyPrototype availabilityPolicy;
+  @SerializedName("confidential_compute_mode")
+  protected String confidentialComputeMode;
   @SerializedName("default_trusted_profile")
   protected InstanceDefaultTrustedProfilePrototype defaultTrustedProfile;
+  @SerializedName("enable_secure_boot")
+  protected Boolean enableSecureBoot;
   protected List<KeyIdentity> keys;
   @SerializedName("metadata_service")
   protected InstanceMetadataServicePrototype metadataService;
@@ -82,6 +99,19 @@ public class InstancePrototype extends GenericModel {
   }
 
   /**
+   * Gets the confidentialComputeMode.
+   *
+   * The confidential compute mode to use for this virtual server instance.
+   *
+   * If unspecified, the default confidential compute mode from the profile will be used.
+   *
+   * @return the confidentialComputeMode
+   */
+  public String confidentialComputeMode() {
+    return confidentialComputeMode;
+  }
+
+  /**
    * Gets the defaultTrustedProfile.
    *
    * The default trusted profile configuration to use for this virtual server instance
@@ -95,6 +125,19 @@ public class InstancePrototype extends GenericModel {
    */
   public InstanceDefaultTrustedProfilePrototype defaultTrustedProfile() {
     return defaultTrustedProfile;
+  }
+
+  /**
+   * Gets the enableSecureBoot.
+   *
+   * Indicates whether secure boot is enabled for this virtual server instance.
+   *
+   * If unspecified, the default secure boot mode from the profile will be used.
+   *
+   * @return the enableSecureBoot
+   */
+  public Boolean enableSecureBoot() {
+    return enableSecureBoot;
   }
 
   /**
@@ -328,8 +371,7 @@ public class InstancePrototype extends GenericModel {
    *
    * If an offering is specified, the latest version of that offering will be used.
    *
-   * The specified offering or offering version may be in a different account in the same
-   * [enterprise](https://cloud.ibm.com/docs/account?topic=account-what-is-enterprise), subject
+   * The specified offering or offering version may be in a different account, subject
    * to IAM policies.
    *
    * @return the catalogOffering

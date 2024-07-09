@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.is.vpc.v1.model;
 
 import java.util.ArrayList;
@@ -19,6 +20,21 @@ import java.util.List;
  * Create a file share by size.
  */
 public class SharePrototypeShareBySize extends SharePrototype {
+
+  /**
+   * An allowed transit encryption mode for this share.
+   * - `none`: Not encrypted in transit.
+   * - `user_managed`: Encrypted in transit using an instance identity certificate.
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
+   */
+  public interface AllowedTransitEncryptionModes {
+    /** none. */
+    String NONE = "none";
+    /** user_managed. */
+    String USER_MANAGED = "user_managed";
+  }
 
   /**
    * The access control mode for the share:
@@ -41,18 +57,19 @@ public class SharePrototypeShareBySize extends SharePrototype {
    * Builder.
    */
   public static class Builder {
-    private Long iops;
+    private List<String> allowedTransitEncryptionModes;
     private List<ShareMountTargetPrototype> mountTargets;
     private String name;
-    private ShareProfileIdentity profile;
     private SharePrototypeShareContext replicaShare;
     private List<String> userTags;
-    private ZoneIdentity zone;
     private String accessControlMode;
     private EncryptionKeyIdentity encryptionKey;
     private ShareInitialOwner initialOwner;
+    private Long iops;
+    private ShareProfileIdentity profile;
     private ResourceGroupIdentity resourceGroup;
     private Long size;
+    private ZoneIdentity zone;
 
     /**
      * Instantiates a new Builder from an existing SharePrototypeShareBySize instance.
@@ -60,18 +77,19 @@ public class SharePrototypeShareBySize extends SharePrototype {
      * @param sharePrototypeShareBySize the instance to initialize the Builder with
      */
     public Builder(SharePrototype sharePrototypeShareBySize) {
-      this.iops = sharePrototypeShareBySize.iops;
+      this.allowedTransitEncryptionModes = sharePrototypeShareBySize.allowedTransitEncryptionModes;
       this.mountTargets = sharePrototypeShareBySize.mountTargets;
       this.name = sharePrototypeShareBySize.name;
-      this.profile = sharePrototypeShareBySize.profile;
       this.replicaShare = sharePrototypeShareBySize.replicaShare;
       this.userTags = sharePrototypeShareBySize.userTags;
-      this.zone = sharePrototypeShareBySize.zone;
       this.accessControlMode = sharePrototypeShareBySize.accessControlMode;
       this.encryptionKey = sharePrototypeShareBySize.encryptionKey;
       this.initialOwner = sharePrototypeShareBySize.initialOwner;
+      this.iops = sharePrototypeShareBySize.iops;
+      this.profile = sharePrototypeShareBySize.profile;
       this.resourceGroup = sharePrototypeShareBySize.resourceGroup;
       this.size = sharePrototypeShareBySize.size;
+      this.zone = sharePrototypeShareBySize.zone;
     }
 
     /**
@@ -84,13 +102,13 @@ public class SharePrototypeShareBySize extends SharePrototype {
      * Instantiates a new builder with required properties.
      *
      * @param profile the profile
-     * @param zone the zone
      * @param size the size
+     * @param zone the zone
      */
-    public Builder(ShareProfileIdentity profile, ZoneIdentity zone, Long size) {
+    public Builder(ShareProfileIdentity profile, Long size, ZoneIdentity zone) {
       this.profile = profile;
-      this.zone = zone;
       this.size = size;
+      this.zone = zone;
     }
 
     /**
@@ -100,6 +118,22 @@ public class SharePrototypeShareBySize extends SharePrototype {
      */
     public SharePrototypeShareBySize build() {
       return new SharePrototypeShareBySize(this);
+    }
+
+    /**
+     * Adds a new element to allowedTransitEncryptionModes.
+     *
+     * @param allowedTransitEncryptionModes the new element to be added
+     * @return the SharePrototypeShareBySize builder
+     */
+    public Builder addAllowedTransitEncryptionModes(String allowedTransitEncryptionModes) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(allowedTransitEncryptionModes,
+        "allowedTransitEncryptionModes cannot be null");
+      if (this.allowedTransitEncryptionModes == null) {
+        this.allowedTransitEncryptionModes = new ArrayList<String>();
+      }
+      this.allowedTransitEncryptionModes.add(allowedTransitEncryptionModes);
+      return this;
     }
 
     /**
@@ -135,13 +169,14 @@ public class SharePrototypeShareBySize extends SharePrototype {
     }
 
     /**
-     * Set the iops.
+     * Set the allowedTransitEncryptionModes.
+     * Existing allowedTransitEncryptionModes will be replaced.
      *
-     * @param iops the iops
+     * @param allowedTransitEncryptionModes the allowedTransitEncryptionModes
      * @return the SharePrototypeShareBySize builder
      */
-    public Builder iops(long iops) {
-      this.iops = iops;
+    public Builder allowedTransitEncryptionModes(List<String> allowedTransitEncryptionModes) {
+      this.allowedTransitEncryptionModes = allowedTransitEncryptionModes;
       return this;
     }
 
@@ -169,17 +204,6 @@ public class SharePrototypeShareBySize extends SharePrototype {
     }
 
     /**
-     * Set the profile.
-     *
-     * @param profile the profile
-     * @return the SharePrototypeShareBySize builder
-     */
-    public Builder profile(ShareProfileIdentity profile) {
-      this.profile = profile;
-      return this;
-    }
-
-    /**
      * Set the replicaShare.
      *
      * @param replicaShare the replicaShare
@@ -199,17 +223,6 @@ public class SharePrototypeShareBySize extends SharePrototype {
      */
     public Builder userTags(List<String> userTags) {
       this.userTags = userTags;
-      return this;
-    }
-
-    /**
-     * Set the zone.
-     *
-     * @param zone the zone
-     * @return the SharePrototypeShareBySize builder
-     */
-    public Builder zone(ZoneIdentity zone) {
-      this.zone = zone;
       return this;
     }
 
@@ -247,6 +260,28 @@ public class SharePrototypeShareBySize extends SharePrototype {
     }
 
     /**
+     * Set the iops.
+     *
+     * @param iops the iops
+     * @return the SharePrototypeShareBySize builder
+     */
+    public Builder iops(long iops) {
+      this.iops = iops;
+      return this;
+    }
+
+    /**
+     * Set the profile.
+     *
+     * @param profile the profile
+     * @return the SharePrototypeShareBySize builder
+     */
+    public Builder profile(ShareProfileIdentity profile) {
+      this.profile = profile;
+      return this;
+    }
+
+    /**
      * Set the resourceGroup.
      *
      * @param resourceGroup the resourceGroup
@@ -267,6 +302,17 @@ public class SharePrototypeShareBySize extends SharePrototype {
       this.size = size;
       return this;
     }
+
+    /**
+     * Set the zone.
+     *
+     * @param zone the zone
+     * @return the SharePrototypeShareBySize builder
+     */
+    public Builder zone(ZoneIdentity zone) {
+      this.zone = zone;
+      return this;
+    }
   }
 
   protected SharePrototypeShareBySize() { }
@@ -274,22 +320,23 @@ public class SharePrototypeShareBySize extends SharePrototype {
   protected SharePrototypeShareBySize(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.profile,
       "profile cannot be null");
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.zone,
-      "zone cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.size,
       "size cannot be null");
-    iops = builder.iops;
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.zone,
+      "zone cannot be null");
+    allowedTransitEncryptionModes = builder.allowedTransitEncryptionModes;
     mountTargets = builder.mountTargets;
     name = builder.name;
-    profile = builder.profile;
     replicaShare = builder.replicaShare;
     userTags = builder.userTags;
-    zone = builder.zone;
     accessControlMode = builder.accessControlMode;
     encryptionKey = builder.encryptionKey;
     initialOwner = builder.initialOwner;
+    iops = builder.iops;
+    profile = builder.profile;
     resourceGroup = builder.resourceGroup;
     size = builder.size;
+    zone = builder.zone;
   }
 
   /**

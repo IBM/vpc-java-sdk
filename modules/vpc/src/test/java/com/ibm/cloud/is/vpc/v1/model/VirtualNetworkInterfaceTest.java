@@ -56,6 +56,7 @@ public class VirtualNetworkInterfaceTest {
     assertNull(virtualNetworkInterfaceModel.getMacAddress());
     assertNull(virtualNetworkInterfaceModel.getName());
     assertNull(virtualNetworkInterfaceModel.getPrimaryIp());
+    assertNull(virtualNetworkInterfaceModel.getProtocolStateFilteringMode());
     assertNull(virtualNetworkInterfaceModel.getResourceGroup());
     assertNull(virtualNetworkInterfaceModel.getResourceType());
     assertNull(virtualNetworkInterfaceModel.getSecurityGroups());

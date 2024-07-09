@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.is.vpc.v1.model;
 
 import java.util.Map;
@@ -39,14 +40,6 @@ public class VPNGatewayConnectionPatch extends GenericModel {
     String PEER_ONLY = "peer_only";
   }
 
-  /**
-   * Routing protocols are disabled for this VPN gateway connection.
-   */
-  public interface RoutingProtocol {
-    /** none. */
-    String NONE = "none";
-  }
-
   @SerializedName("admin_state_up")
   protected Boolean adminStateUp;
   @SerializedName("dead_peer_detection")
@@ -60,8 +53,6 @@ public class VPNGatewayConnectionPatch extends GenericModel {
   protected String name;
   protected VPNGatewayConnectionPeerPatch peer;
   protected String psk;
-  @SerializedName("routing_protocol")
-  protected String routingProtocol;
 
   /**
    * Builder.
@@ -75,7 +66,6 @@ public class VPNGatewayConnectionPatch extends GenericModel {
     private String name;
     private VPNGatewayConnectionPeerPatch peer;
     private String psk;
-    private String routingProtocol;
 
     /**
      * Instantiates a new Builder from an existing VPNGatewayConnectionPatch instance.
@@ -91,7 +81,6 @@ public class VPNGatewayConnectionPatch extends GenericModel {
       this.name = vpnGatewayConnectionPatch.name;
       this.peer = vpnGatewayConnectionPatch.peer;
       this.psk = vpnGatewayConnectionPatch.psk;
-      this.routingProtocol = vpnGatewayConnectionPatch.routingProtocol;
     }
 
     /**
@@ -196,17 +185,6 @@ public class VPNGatewayConnectionPatch extends GenericModel {
       this.psk = psk;
       return this;
     }
-
-    /**
-     * Set the routingProtocol.
-     *
-     * @param routingProtocol the routingProtocol
-     * @return the VPNGatewayConnectionPatch builder
-     */
-    public Builder routingProtocol(String routingProtocol) {
-      this.routingProtocol = routingProtocol;
-      return this;
-    }
   }
 
   protected VPNGatewayConnectionPatch() { }
@@ -220,7 +198,6 @@ public class VPNGatewayConnectionPatch extends GenericModel {
     name = builder.name;
     peer = builder.peer;
     psk = builder.psk;
-    routingProtocol = builder.routingProtocol;
   }
 
   /**
@@ -327,17 +304,6 @@ public class VPNGatewayConnectionPatch extends GenericModel {
   }
 
   /**
-   * Gets the routingProtocol.
-   *
-   * Routing protocols are disabled for this VPN gateway connection.
-   *
-   * @return the routingProtocol
-   */
-  public String routingProtocol() {
-    return routingProtocol;
-  }
-
-  /**
    * Construct a JSON merge-patch from the VPNGatewayConnectionPatch.
    *
    * Note that properties of the VPNGatewayConnectionPatch with null values are not represented in the constructed
@@ -348,6 +314,5 @@ public class VPNGatewayConnectionPatch extends GenericModel {
   public Map<String, Object> asPatch() {
     return GsonSingleton.getGson().fromJson(this.toString(), Map.class);
   }
-
 }
 

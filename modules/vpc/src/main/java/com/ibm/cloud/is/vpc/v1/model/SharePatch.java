@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.is.vpc.v1.model;
 
 import java.util.ArrayList;
@@ -32,8 +33,8 @@ public class SharePatch extends GenericModel {
    *   mount target control access to the mount target.
    * - `vpc`: All clients in the VPC for a mount target have access to the mount target.
    *
-   * For this property to be changed, the share must have no mount targets and
-   * `replication_role` must be `none`.
+   * For this property to be changed, the share must have no mount targets,
+   * `replication_role` must be `none` and `accessor_binding_role` must not be `accessor`.
    */
   public interface AccessControlMode {
     /** security_group. */
@@ -42,8 +43,25 @@ public class SharePatch extends GenericModel {
     String VPC = "vpc";
   }
 
+  /**
+   * An allowed transit encryption mode for this share.
+   * - `none`: Not encrypted in transit.
+   * - `user_managed`: Encrypted in transit using an instance identity certificate.
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
+   */
+  public interface AllowedTransitEncryptionModes {
+    /** none. */
+    String NONE = "none";
+    /** user_managed. */
+    String USER_MANAGED = "user_managed";
+  }
+
   @SerializedName("access_control_mode")
   protected String accessControlMode;
+  @SerializedName("allowed_transit_encryption_modes")
+  protected List<String> allowedTransitEncryptionModes;
   protected Long iops;
   protected String name;
   protected ShareProfileIdentity profile;
@@ -58,6 +76,7 @@ public class SharePatch extends GenericModel {
    */
   public static class Builder {
     private String accessControlMode;
+    private List<String> allowedTransitEncryptionModes;
     private Long iops;
     private String name;
     private ShareProfileIdentity profile;
@@ -72,6 +91,7 @@ public class SharePatch extends GenericModel {
      */
     private Builder(SharePatch sharePatch) {
       this.accessControlMode = sharePatch.accessControlMode;
+      this.allowedTransitEncryptionModes = sharePatch.allowedTransitEncryptionModes;
       this.iops = sharePatch.iops;
       this.name = sharePatch.name;
       this.profile = sharePatch.profile;
@@ -93,6 +113,22 @@ public class SharePatch extends GenericModel {
      */
     public SharePatch build() {
       return new SharePatch(this);
+    }
+
+    /**
+     * Adds a new element to allowedTransitEncryptionModes.
+     *
+     * @param allowedTransitEncryptionModes the new element to be added
+     * @return the SharePatch builder
+     */
+    public Builder addAllowedTransitEncryptionModes(String allowedTransitEncryptionModes) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(allowedTransitEncryptionModes,
+        "allowedTransitEncryptionModes cannot be null");
+      if (this.allowedTransitEncryptionModes == null) {
+        this.allowedTransitEncryptionModes = new ArrayList<String>();
+      }
+      this.allowedTransitEncryptionModes.add(allowedTransitEncryptionModes);
+      return this;
     }
 
     /**
@@ -119,6 +155,18 @@ public class SharePatch extends GenericModel {
      */
     public Builder accessControlMode(String accessControlMode) {
       this.accessControlMode = accessControlMode;
+      return this;
+    }
+
+    /**
+     * Set the allowedTransitEncryptionModes.
+     * Existing allowedTransitEncryptionModes will be replaced.
+     *
+     * @param allowedTransitEncryptionModes the allowedTransitEncryptionModes
+     * @return the SharePatch builder
+     */
+    public Builder allowedTransitEncryptionModes(List<String> allowedTransitEncryptionModes) {
+      this.allowedTransitEncryptionModes = allowedTransitEncryptionModes;
       return this;
     }
 
@@ -194,6 +242,7 @@ public class SharePatch extends GenericModel {
 
   protected SharePatch(Builder builder) {
     accessControlMode = builder.accessControlMode;
+    allowedTransitEncryptionModes = builder.allowedTransitEncryptionModes;
     iops = builder.iops;
     name = builder.name;
     profile = builder.profile;
@@ -220,8 +269,8 @@ public class SharePatch extends GenericModel {
    *   mount target control access to the mount target.
    * - `vpc`: All clients in the VPC for a mount target have access to the mount target.
    *
-   * For this property to be changed, the share must have no mount targets and
-   * `replication_role` must be `none`.
+   * For this property to be changed, the share must have no mount targets,
+   * `replication_role` must be `none` and `accessor_binding_role` must not be `accessor`.
    *
    * @return the accessControlMode
    */
@@ -230,13 +279,26 @@ public class SharePatch extends GenericModel {
   }
 
   /**
+   * Gets the allowedTransitEncryptionModes.
+   *
+   * The transit encryption modes to allow for this share.
+   *
+   * For this property to be updated, the `accessor_binding_role` must be `none`.
+   *
+   * @return the allowedTransitEncryptionModes
+   */
+  public List<String> allowedTransitEncryptionModes() {
+    return allowedTransitEncryptionModes;
+  }
+
+  /**
    * Gets the iops.
    *
-   * The maximum input/output operations per second (IOPS) for the file share. The value must be in the range supported
-   * by the share's size.
+   * The maximum input/output operations per second (IOPS) for the file share. In addition, each client accessing the
+   * share will be restricted to 48,000 IOPS.
    *
-   * For this property to be changed, the share `lifecycle_state` must be `stable` and
-   * `replication_role` must not be `replica`.
+   * The maximum IOPS for a share may increase in the future. For this property to be changed, the share
+   * `accessor_binding_role` must not be `accessor`.
    *
    * @return the iops
    */
@@ -289,8 +351,10 @@ public class SharePatch extends GenericModel {
    * The size of the file share rounded up to the next gigabyte. The value must not be less than the share's current
    * size, and must not exceed the maximum supported by the share's profile and IOPS.
    *
-   * For this property to be changed, the share `lifecycle_state` must be `stable` and
-   * `replication_role` must not be `replica`.
+   * For this property to be changed:
+   * - The share `lifecycle_state` must be `stable`
+   * - The share `replication_role` must not be `replica`
+   * - The share `accessor_binding_role` must not be `accessor`.
    *
    * @return the size
    */
@@ -320,6 +384,5 @@ public class SharePatch extends GenericModel {
   public Map<String, Object> asPatch() {
     return GsonSingleton.getGson().fromJson(this.toString(), Map.class);
   }
-
 }
 

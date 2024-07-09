@@ -40,6 +40,7 @@ public class SharePatchTest {
 
     SharePatch sharePatchModel = new SharePatch.Builder()
       .accessControlMode("security_group")
+      .allowedTransitEncryptionModes(java.util.Arrays.asList("none"))
       .iops(Long.valueOf("100"))
       .name("my-share")
       .profile(shareProfileIdentityModel)
@@ -48,6 +49,7 @@ public class SharePatchTest {
       .userTags(java.util.Arrays.asList("testString"))
       .build();
     assertEquals(sharePatchModel.accessControlMode(), "security_group");
+    assertEquals(sharePatchModel.allowedTransitEncryptionModes(), java.util.Arrays.asList("none"));
     assertEquals(sharePatchModel.iops(), Long.valueOf("100"));
     assertEquals(sharePatchModel.name(), "my-share");
     assertEquals(sharePatchModel.profile(), shareProfileIdentityModel);
@@ -74,6 +76,7 @@ public class SharePatchTest {
 
     SharePatch sharePatchModel = new SharePatch.Builder()
       .accessControlMode("security_group")
+      .allowedTransitEncryptionModes(java.util.Arrays.asList("none"))
       .iops(Long.valueOf("100"))
       .name("my-share")
       .profile(shareProfileIdentityModel)
@@ -85,6 +88,7 @@ public class SharePatchTest {
     Map<String, Object> mergePatch = sharePatchModel.asPatch();
 
     assertEquals(mergePatch.get("access_control_mode"), "security_group");
+    assertTrue(mergePatch.containsKey("allowed_transit_encryption_modes"));
     assertTrue(mergePatch.containsKey("iops"));
     assertEquals(mergePatch.get("name"), "my-share");
     assertTrue(mergePatch.containsKey("profile"));

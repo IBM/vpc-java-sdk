@@ -144,6 +144,7 @@ public class BareMetalServerPrototypeBareMetalServerByNetworkInterfaceTest {
     assertEquals(bareMetalServerPrimaryNetworkInterfacePrototypeModel.subnet(), subnetIdentityModel);
 
     BareMetalServerPrototypeBareMetalServerByNetworkInterface bareMetalServerPrototypeBareMetalServerByNetworkInterfaceModel = new BareMetalServerPrototypeBareMetalServerByNetworkInterface.Builder()
+      .bandwidth(Long.valueOf("20000"))
       .enableSecureBoot(false)
       .initialization(bareMetalServerInitializationPrototypeModel)
       .name("my-bare-metal-server")
@@ -155,6 +156,7 @@ public class BareMetalServerPrototypeBareMetalServerByNetworkInterfaceTest {
       .networkInterfaces(java.util.Arrays.asList(bareMetalServerNetworkInterfacePrototypeModel))
       .primaryNetworkInterface(bareMetalServerPrimaryNetworkInterfacePrototypeModel)
       .build();
+    assertEquals(bareMetalServerPrototypeBareMetalServerByNetworkInterfaceModel.bandwidth(), Long.valueOf("20000"));
     assertEquals(bareMetalServerPrototypeBareMetalServerByNetworkInterfaceModel.enableSecureBoot(), Boolean.valueOf(false));
     assertEquals(bareMetalServerPrototypeBareMetalServerByNetworkInterfaceModel.initialization(), bareMetalServerInitializationPrototypeModel);
     assertEquals(bareMetalServerPrototypeBareMetalServerByNetworkInterfaceModel.name(), "my-bare-metal-server");
@@ -170,6 +172,7 @@ public class BareMetalServerPrototypeBareMetalServerByNetworkInterfaceTest {
 
     BareMetalServerPrototypeBareMetalServerByNetworkInterface bareMetalServerPrototypeBareMetalServerByNetworkInterfaceModelNew = TestUtilities.deserialize(json, BareMetalServerPrototypeBareMetalServerByNetworkInterface.class);
     assertTrue(bareMetalServerPrototypeBareMetalServerByNetworkInterfaceModelNew instanceof BareMetalServerPrototypeBareMetalServerByNetworkInterface);
+    assertEquals(bareMetalServerPrototypeBareMetalServerByNetworkInterfaceModelNew.bandwidth(), Long.valueOf("20000"));
     assertEquals(bareMetalServerPrototypeBareMetalServerByNetworkInterfaceModelNew.enableSecureBoot(), Boolean.valueOf(false));
     assertEquals(bareMetalServerPrototypeBareMetalServerByNetworkInterfaceModelNew.initialization().toString(), bareMetalServerInitializationPrototypeModel.toString());
     assertEquals(bareMetalServerPrototypeBareMetalServerByNetworkInterfaceModelNew.name(), "my-bare-metal-server");

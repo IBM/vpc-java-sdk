@@ -39,10 +39,12 @@ public class BareMetalServerPatchTest {
     assertEquals(bareMetalServerTrustedPlatformModulePatchModel.mode(), "disabled");
 
     BareMetalServerPatch bareMetalServerPatchModel = new BareMetalServerPatch.Builder()
+      .bandwidth(Long.valueOf("20000"))
       .enableSecureBoot(false)
       .name("my-bare-metal-server")
       .trustedPlatformModule(bareMetalServerTrustedPlatformModulePatchModel)
       .build();
+    assertEquals(bareMetalServerPatchModel.bandwidth(), Long.valueOf("20000"));
     assertEquals(bareMetalServerPatchModel.enableSecureBoot(), Boolean.valueOf(false));
     assertEquals(bareMetalServerPatchModel.name(), "my-bare-metal-server");
     assertEquals(bareMetalServerPatchModel.trustedPlatformModule(), bareMetalServerTrustedPlatformModulePatchModel);
@@ -51,6 +53,7 @@ public class BareMetalServerPatchTest {
 
     BareMetalServerPatch bareMetalServerPatchModelNew = TestUtilities.deserialize(json, BareMetalServerPatch.class);
     assertTrue(bareMetalServerPatchModelNew instanceof BareMetalServerPatch);
+    assertEquals(bareMetalServerPatchModelNew.bandwidth(), Long.valueOf("20000"));
     assertEquals(bareMetalServerPatchModelNew.enableSecureBoot(), Boolean.valueOf(false));
     assertEquals(bareMetalServerPatchModelNew.name(), "my-bare-metal-server");
     assertEquals(bareMetalServerPatchModelNew.trustedPlatformModule().toString(), bareMetalServerTrustedPlatformModulePatchModel.toString());
@@ -62,6 +65,7 @@ public class BareMetalServerPatchTest {
       .build();
 
     BareMetalServerPatch bareMetalServerPatchModel = new BareMetalServerPatch.Builder()
+      .bandwidth(Long.valueOf("20000"))
       .enableSecureBoot(false)
       .name("my-bare-metal-server")
       .trustedPlatformModule(bareMetalServerTrustedPlatformModulePatchModel)
@@ -69,6 +73,7 @@ public class BareMetalServerPatchTest {
 
     Map<String, Object> mergePatch = bareMetalServerPatchModel.asPatch();
 
+    assertTrue(mergePatch.containsKey("bandwidth"));
     assertTrue(mergePatch.containsKey("enable_secure_boot"));
     assertEquals(mergePatch.get("name"), "my-bare-metal-server");
     assertTrue(mergePatch.containsKey("trusted_platform_module"));

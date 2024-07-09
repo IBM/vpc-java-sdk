@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.is.vpc.v1.model;
 
 import java.util.Map;
@@ -23,6 +24,7 @@ import com.ibm.cloud.sdk.core.util.GsonSingleton;
  */
 public class BareMetalServerPatch extends GenericModel {
 
+  protected Long bandwidth;
   @SerializedName("enable_secure_boot")
   protected Boolean enableSecureBoot;
   protected String name;
@@ -33,6 +35,7 @@ public class BareMetalServerPatch extends GenericModel {
    * Builder.
    */
   public static class Builder {
+    private Long bandwidth;
     private Boolean enableSecureBoot;
     private String name;
     private BareMetalServerTrustedPlatformModulePatch trustedPlatformModule;
@@ -43,6 +46,7 @@ public class BareMetalServerPatch extends GenericModel {
      * @param bareMetalServerPatch the instance to initialize the Builder with
      */
     private Builder(BareMetalServerPatch bareMetalServerPatch) {
+      this.bandwidth = bareMetalServerPatch.bandwidth;
       this.enableSecureBoot = bareMetalServerPatch.enableSecureBoot;
       this.name = bareMetalServerPatch.name;
       this.trustedPlatformModule = bareMetalServerPatch.trustedPlatformModule;
@@ -61,6 +65,17 @@ public class BareMetalServerPatch extends GenericModel {
      */
     public BareMetalServerPatch build() {
       return new BareMetalServerPatch(this);
+    }
+
+    /**
+     * Set the bandwidth.
+     *
+     * @param bandwidth the bandwidth
+     * @return the BareMetalServerPatch builder
+     */
+    public Builder bandwidth(long bandwidth) {
+      this.bandwidth = bandwidth;
+      return this;
     }
 
     /**
@@ -100,6 +115,7 @@ public class BareMetalServerPatch extends GenericModel {
   protected BareMetalServerPatch() { }
 
   protected BareMetalServerPatch(Builder builder) {
+    bandwidth = builder.bandwidth;
     enableSecureBoot = builder.enableSecureBoot;
     name = builder.name;
     trustedPlatformModule = builder.trustedPlatformModule;
@@ -112,6 +128,18 @@ public class BareMetalServerPatch extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
+  }
+
+  /**
+   * Gets the bandwidth.
+   *
+   * The total bandwidth (in megabits per second) shared across the bare metal server's network interfaces. The
+   * specified value must match one of the bandwidth values in the bare metal server's profile.
+   *
+   * @return the bandwidth
+   */
+  public Long bandwidth() {
+    return bandwidth;
   }
 
   /**
@@ -161,6 +189,5 @@ public class BareMetalServerPatch extends GenericModel {
   public Map<String, Object> asPatch() {
     return GsonSingleton.getGson().fromJson(this.toString(), Map.class);
   }
-
 }
 

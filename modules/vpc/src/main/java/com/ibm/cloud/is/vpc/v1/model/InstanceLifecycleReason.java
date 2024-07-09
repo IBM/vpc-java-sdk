@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.google.gson.annotations.SerializedName;
@@ -22,7 +23,12 @@ public class InstanceLifecycleReason extends GenericModel {
 
   /**
    * A reason code for this lifecycle state:
+   * - `failed_registration`: the instance's registration to Resource Controller has
+   *   failed. Delete the instance and provision it again. If the problem persists,
+   *   contact IBM Support.
    * - `internal_error`: internal error (contact IBM support)
+   * - `pending_registration`: the instance's registration to Resource Controller is
+   *   being processed.
    * - `resource_suspended_by_provider`: The resource has been suspended (contact IBM
    *   support)
    *
@@ -30,8 +36,12 @@ public class InstanceLifecycleReason extends GenericModel {
    * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface Code {
+    /** failed_registration. */
+    String FAILED_REGISTRATION = "failed_registration";
     /** internal_error. */
     String INTERNAL_ERROR = "internal_error";
+    /** pending_registration. */
+    String PENDING_REGISTRATION = "pending_registration";
     /** resource_suspended_by_provider. */
     String RESOURCE_SUSPENDED_BY_PROVIDER = "resource_suspended_by_provider";
   }
@@ -47,7 +57,12 @@ public class InstanceLifecycleReason extends GenericModel {
    * Gets the code.
    *
    * A reason code for this lifecycle state:
+   * - `failed_registration`: the instance's registration to Resource Controller has
+   *   failed. Delete the instance and provision it again. If the problem persists,
+   *   contact IBM Support.
    * - `internal_error`: internal error (contact IBM support)
+   * - `pending_registration`: the instance's registration to Resource Controller is
+   *   being processed.
    * - `resource_suspended_by_provider`: The resource has been suspended (contact IBM
    *   support)
    *

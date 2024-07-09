@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.is.vpc.v1.model;
 
 import java.util.Date;
@@ -66,6 +67,8 @@ public class Snapshot extends GenericModel {
   protected Boolean bootable;
   @SerializedName("captured_at")
   protected Date capturedAt;
+  @SerializedName("catalog_offering")
+  protected SnapshotCatalogOffering catalogOffering;
   protected List<SnapshotClone> clones;
   protected List<SnapshotCopiesItem> copies;
   @SerializedName("created_at")
@@ -138,6 +141,22 @@ public class Snapshot extends GenericModel {
    */
   public Date getCapturedAt() {
     return capturedAt;
+  }
+
+  /**
+   * Gets the catalogOffering.
+   *
+   * The [catalog](https://cloud.ibm.com/docs/account?topic=account-restrict-by-user)
+   * offering inherited from the snapshot's source. If a virtual server instance is
+   * provisioned with a `source_snapshot` specifying this snapshot, the virtual server
+   * instance will use this snapshot's catalog offering, including its pricing plan.
+   *
+   * If absent, this snapshot is not associated with a catalog offering.
+   *
+   * @return the catalogOffering
+   */
+  public SnapshotCatalogOffering getCatalogOffering() {
+    return catalogOffering;
   }
 
   /**

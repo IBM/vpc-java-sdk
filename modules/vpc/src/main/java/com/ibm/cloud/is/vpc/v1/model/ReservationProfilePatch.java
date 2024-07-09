@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.google.gson.annotations.SerializedName;
@@ -17,8 +18,6 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
  * The [profile](https://cloud.ibm.com/docs/vpc?topic=vpc-profiles) to use for this reservation.
- *
- * The profile can only be changed for a reservation with a `status` of `inactive`.
  */
 public class ReservationProfilePatch extends GenericModel {
 

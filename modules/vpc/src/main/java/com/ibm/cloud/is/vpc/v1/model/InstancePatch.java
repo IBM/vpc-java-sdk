@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.is.vpc.v1.model;
 
 import java.util.Map;
@@ -23,8 +24,25 @@ import com.ibm.cloud.sdk.core.util.GsonSingleton;
  */
 public class InstancePatch extends GenericModel {
 
+  /**
+   * The confidential compute mode to use for this virtual server instance.
+   *
+   * For this property to be changed, the virtual server instance `status` must be
+   * `stopping` or `stopped`.
+   */
+  public interface ConfidentialComputeMode {
+    /** disabled. */
+    String DISABLED = "disabled";
+    /** sgx. */
+    String SGX = "sgx";
+  }
+
   @SerializedName("availability_policy")
   protected InstanceAvailabilityPolicyPatch availabilityPolicy;
+  @SerializedName("confidential_compute_mode")
+  protected String confidentialComputeMode;
+  @SerializedName("enable_secure_boot")
+  protected Boolean enableSecureBoot;
   @SerializedName("metadata_service")
   protected InstanceMetadataServicePatch metadataService;
   protected String name;
@@ -41,6 +59,8 @@ public class InstancePatch extends GenericModel {
    */
   public static class Builder {
     private InstanceAvailabilityPolicyPatch availabilityPolicy;
+    private String confidentialComputeMode;
+    private Boolean enableSecureBoot;
     private InstanceMetadataServicePatch metadataService;
     private String name;
     private InstancePlacementTargetPatch placementTarget;
@@ -55,6 +75,8 @@ public class InstancePatch extends GenericModel {
      */
     private Builder(InstancePatch instancePatch) {
       this.availabilityPolicy = instancePatch.availabilityPolicy;
+      this.confidentialComputeMode = instancePatch.confidentialComputeMode;
+      this.enableSecureBoot = instancePatch.enableSecureBoot;
       this.metadataService = instancePatch.metadataService;
       this.name = instancePatch.name;
       this.placementTarget = instancePatch.placementTarget;
@@ -86,6 +108,28 @@ public class InstancePatch extends GenericModel {
      */
     public Builder availabilityPolicy(InstanceAvailabilityPolicyPatch availabilityPolicy) {
       this.availabilityPolicy = availabilityPolicy;
+      return this;
+    }
+
+    /**
+     * Set the confidentialComputeMode.
+     *
+     * @param confidentialComputeMode the confidentialComputeMode
+     * @return the InstancePatch builder
+     */
+    public Builder confidentialComputeMode(String confidentialComputeMode) {
+      this.confidentialComputeMode = confidentialComputeMode;
+      return this;
+    }
+
+    /**
+     * Set the enableSecureBoot.
+     *
+     * @param enableSecureBoot the enableSecureBoot
+     * @return the InstancePatch builder
+     */
+    public Builder enableSecureBoot(Boolean enableSecureBoot) {
+      this.enableSecureBoot = enableSecureBoot;
       return this;
     }
 
@@ -160,6 +204,8 @@ public class InstancePatch extends GenericModel {
 
   protected InstancePatch(Builder builder) {
     availabilityPolicy = builder.availabilityPolicy;
+    confidentialComputeMode = builder.confidentialComputeMode;
+    enableSecureBoot = builder.enableSecureBoot;
     metadataService = builder.metadataService;
     name = builder.name;
     placementTarget = builder.placementTarget;
@@ -186,6 +232,34 @@ public class InstancePatch extends GenericModel {
    */
   public InstanceAvailabilityPolicyPatch availabilityPolicy() {
     return availabilityPolicy;
+  }
+
+  /**
+   * Gets the confidentialComputeMode.
+   *
+   * The confidential compute mode to use for this virtual server instance.
+   *
+   * For this property to be changed, the virtual server instance `status` must be
+   * `stopping` or `stopped`.
+   *
+   * @return the confidentialComputeMode
+   */
+  public String confidentialComputeMode() {
+    return confidentialComputeMode;
+  }
+
+  /**
+   * Gets the enableSecureBoot.
+   *
+   * Indicates whether secure boot is enabled for this virtual server instance.
+   *
+   * For this property to be changed, the virtual server instance `status` must be
+   * `stopping` or `stopped`.
+   *
+   * @return the enableSecureBoot
+   */
+  public Boolean enableSecureBoot() {
+    return enableSecureBoot;
   }
 
   /**
@@ -280,6 +354,5 @@ public class InstancePatch extends GenericModel {
   public Map<String, Object> asPatch() {
     return GsonSingleton.getGson().fromJson(this.toString(), Map.class);
   }
-
 }
 

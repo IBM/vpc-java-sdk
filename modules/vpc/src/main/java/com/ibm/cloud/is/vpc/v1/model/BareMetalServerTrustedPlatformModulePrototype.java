@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
@@ -22,6 +23,8 @@ public class BareMetalServerTrustedPlatformModulePrototype extends GenericModel 
   /**
    * The trusted platform module mode to use. The specified value must be listed in the bare metal server profile's
    * `supported_trusted_platform_module_modes`.
+   *
+   * If unspecified, the default trusted platform module mode from the profile will be used.
    */
   public interface Mode {
     /** disabled. */
@@ -94,6 +97,8 @@ public class BareMetalServerTrustedPlatformModulePrototype extends GenericModel 
    *
    * The trusted platform module mode to use. The specified value must be listed in the bare metal server profile's
    * `supported_trusted_platform_module_modes`.
+   *
+   * If unspecified, the default trusted platform module mode from the profile will be used.
    *
    * @return the mode
    */

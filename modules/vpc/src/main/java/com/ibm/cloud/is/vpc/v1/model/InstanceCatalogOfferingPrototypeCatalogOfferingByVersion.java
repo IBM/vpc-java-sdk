@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.is.vpc.v1.model;
 
 /**
@@ -22,6 +23,7 @@ public class InstanceCatalogOfferingPrototypeCatalogOfferingByVersion extends In
    * Builder.
    */
   public static class Builder {
+    private CatalogOfferingVersionPlanIdentity plan;
     private CatalogOfferingVersionIdentity version;
 
     /**
@@ -30,6 +32,7 @@ public class InstanceCatalogOfferingPrototypeCatalogOfferingByVersion extends In
      * @param instanceCatalogOfferingPrototypeCatalogOfferingByVersion the instance to initialize the Builder with
      */
     public Builder(InstanceCatalogOfferingPrototype instanceCatalogOfferingPrototypeCatalogOfferingByVersion) {
+      this.plan = instanceCatalogOfferingPrototypeCatalogOfferingByVersion.plan;
       this.version = instanceCatalogOfferingPrototypeCatalogOfferingByVersion.version;
     }
 
@@ -58,6 +61,17 @@ public class InstanceCatalogOfferingPrototypeCatalogOfferingByVersion extends In
     }
 
     /**
+     * Set the plan.
+     *
+     * @param plan the plan
+     * @return the InstanceCatalogOfferingPrototypeCatalogOfferingByVersion builder
+     */
+    public Builder plan(CatalogOfferingVersionPlanIdentity plan) {
+      this.plan = plan;
+      return this;
+    }
+
+    /**
      * Set the version.
      *
      * @param version the version
@@ -74,6 +88,7 @@ public class InstanceCatalogOfferingPrototypeCatalogOfferingByVersion extends In
   protected InstanceCatalogOfferingPrototypeCatalogOfferingByVersion(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.version,
       "version cannot be null");
+    plan = builder.plan;
     version = builder.version;
   }
 

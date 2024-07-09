@@ -83,6 +83,7 @@ public class SharePrototypeShareBySizeTest {
       .ips(java.util.Arrays.asList(virtualNetworkInterfaceIpPrototypeModel))
       .name("my-virtual-network-interface")
       .primaryIp(virtualNetworkInterfacePrimaryIpPrototypeModel)
+      .protocolStateFilteringMode("auto")
       .resourceGroup(resourceGroupIdentityModel)
       .securityGroups(java.util.Arrays.asList(securityGroupIdentityModel))
       .subnet(subnetIdentityModel)
@@ -93,6 +94,7 @@ public class SharePrototypeShareBySizeTest {
     assertEquals(shareMountTargetVirtualNetworkInterfacePrototypeModel.ips(), java.util.Arrays.asList(virtualNetworkInterfaceIpPrototypeModel));
     assertEquals(shareMountTargetVirtualNetworkInterfacePrototypeModel.name(), "my-virtual-network-interface");
     assertEquals(shareMountTargetVirtualNetworkInterfacePrototypeModel.primaryIp(), virtualNetworkInterfacePrimaryIpPrototypeModel);
+    assertEquals(shareMountTargetVirtualNetworkInterfacePrototypeModel.protocolStateFilteringMode(), "auto");
     assertEquals(shareMountTargetVirtualNetworkInterfacePrototypeModel.resourceGroup(), resourceGroupIdentityModel);
     assertEquals(shareMountTargetVirtualNetworkInterfacePrototypeModel.securityGroups(), java.util.Arrays.asList(securityGroupIdentityModel));
     assertEquals(shareMountTargetVirtualNetworkInterfacePrototypeModel.subnet(), subnetIdentityModel);
@@ -117,6 +119,7 @@ public class SharePrototypeShareBySizeTest {
     assertEquals(zoneIdentityModel.name(), "us-south-1");
 
     SharePrototypeShareContext sharePrototypeShareContextModel = new SharePrototypeShareContext.Builder()
+      .allowedTransitEncryptionModes(java.util.Arrays.asList("none"))
       .iops(Long.valueOf("100"))
       .mountTargets(java.util.Arrays.asList(shareMountTargetPrototypeModel))
       .name("my-share")
@@ -126,6 +129,7 @@ public class SharePrototypeShareBySizeTest {
       .userTags(java.util.Arrays.asList())
       .zone(zoneIdentityModel)
       .build();
+    assertEquals(sharePrototypeShareContextModel.allowedTransitEncryptionModes(), java.util.Arrays.asList("none"));
     assertEquals(sharePrototypeShareContextModel.iops(), Long.valueOf("100"));
     assertEquals(sharePrototypeShareContextModel.mountTargets(), java.util.Arrays.asList(shareMountTargetPrototypeModel));
     assertEquals(sharePrototypeShareContextModel.name(), "my-share");
@@ -148,46 +152,48 @@ public class SharePrototypeShareBySizeTest {
     assertEquals(shareInitialOwnerModel.uid(), Long.valueOf("50"));
 
     SharePrototypeShareBySize sharePrototypeShareBySizeModel = new SharePrototypeShareBySize.Builder()
-      .iops(Long.valueOf("100"))
+      .allowedTransitEncryptionModes(java.util.Arrays.asList("none"))
       .mountTargets(java.util.Arrays.asList(shareMountTargetPrototypeModel))
       .name("my-share")
-      .profile(shareProfileIdentityModel)
       .replicaShare(sharePrototypeShareContextModel)
       .userTags(java.util.Arrays.asList())
-      .zone(zoneIdentityModel)
       .accessControlMode("security_group")
       .encryptionKey(encryptionKeyIdentityModel)
       .initialOwner(shareInitialOwnerModel)
+      .iops(Long.valueOf("100"))
+      .profile(shareProfileIdentityModel)
       .resourceGroup(resourceGroupIdentityModel)
       .size(Long.valueOf("200"))
+      .zone(zoneIdentityModel)
       .build();
-    assertEquals(sharePrototypeShareBySizeModel.iops(), Long.valueOf("100"));
+    assertEquals(sharePrototypeShareBySizeModel.allowedTransitEncryptionModes(), java.util.Arrays.asList("none"));
     assertEquals(sharePrototypeShareBySizeModel.mountTargets(), java.util.Arrays.asList(shareMountTargetPrototypeModel));
     assertEquals(sharePrototypeShareBySizeModel.name(), "my-share");
-    assertEquals(sharePrototypeShareBySizeModel.profile(), shareProfileIdentityModel);
     assertEquals(sharePrototypeShareBySizeModel.replicaShare(), sharePrototypeShareContextModel);
     assertEquals(sharePrototypeShareBySizeModel.userTags(), java.util.Arrays.asList());
-    assertEquals(sharePrototypeShareBySizeModel.zone(), zoneIdentityModel);
     assertEquals(sharePrototypeShareBySizeModel.accessControlMode(), "security_group");
     assertEquals(sharePrototypeShareBySizeModel.encryptionKey(), encryptionKeyIdentityModel);
     assertEquals(sharePrototypeShareBySizeModel.initialOwner(), shareInitialOwnerModel);
+    assertEquals(sharePrototypeShareBySizeModel.iops(), Long.valueOf("100"));
+    assertEquals(sharePrototypeShareBySizeModel.profile(), shareProfileIdentityModel);
     assertEquals(sharePrototypeShareBySizeModel.resourceGroup(), resourceGroupIdentityModel);
     assertEquals(sharePrototypeShareBySizeModel.size(), Long.valueOf("200"));
+    assertEquals(sharePrototypeShareBySizeModel.zone(), zoneIdentityModel);
 
     String json = TestUtilities.serialize(sharePrototypeShareBySizeModel);
 
     SharePrototypeShareBySize sharePrototypeShareBySizeModelNew = TestUtilities.deserialize(json, SharePrototypeShareBySize.class);
     assertTrue(sharePrototypeShareBySizeModelNew instanceof SharePrototypeShareBySize);
-    assertEquals(sharePrototypeShareBySizeModelNew.iops(), Long.valueOf("100"));
     assertEquals(sharePrototypeShareBySizeModelNew.name(), "my-share");
-    assertEquals(sharePrototypeShareBySizeModelNew.profile().toString(), shareProfileIdentityModel.toString());
     assertEquals(sharePrototypeShareBySizeModelNew.replicaShare().toString(), sharePrototypeShareContextModel.toString());
-    assertEquals(sharePrototypeShareBySizeModelNew.zone().toString(), zoneIdentityModel.toString());
     assertEquals(sharePrototypeShareBySizeModelNew.accessControlMode(), "security_group");
     assertEquals(sharePrototypeShareBySizeModelNew.encryptionKey().toString(), encryptionKeyIdentityModel.toString());
     assertEquals(sharePrototypeShareBySizeModelNew.initialOwner().toString(), shareInitialOwnerModel.toString());
+    assertEquals(sharePrototypeShareBySizeModelNew.iops(), Long.valueOf("100"));
+    assertEquals(sharePrototypeShareBySizeModelNew.profile().toString(), shareProfileIdentityModel.toString());
     assertEquals(sharePrototypeShareBySizeModelNew.resourceGroup().toString(), resourceGroupIdentityModel.toString());
     assertEquals(sharePrototypeShareBySizeModelNew.size(), Long.valueOf("200"));
+    assertEquals(sharePrototypeShareBySizeModelNew.zone().toString(), zoneIdentityModel.toString());
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

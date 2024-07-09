@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.is.vpc.v1.model;
 
 /**
@@ -18,6 +19,7 @@ package com.ibm.cloud.is.vpc.v1.model;
  * - be in the same `zone` as the share
  * - have `allow_ip_spoofing` set to `false`
  * - have `enable_infrastructure_nat` set to `true`
+ * - have `protocol_state_filtering_mode` set to `auto` or `enabled`
  * - not be in the same VPC as an existing mount target for this share
  * - not have `ips` other than the `primary_ip` address
  *
@@ -33,6 +35,9 @@ public class ShareMountTargetPrototypeShareMountTargetByAccessControlModeSecurit
    * - `none`: Not encrypted in transit.
    * - `user_managed`: Encrypted in transit using an instance identity certificate.  The
    *                   `access_control_mode` for the share must be `security_group`.
+   *
+   * The specified value must be listed in the share's
+   * `allowed_transit_encryption_modes`.
    */
   public interface TransitEncryption {
     /** none. */

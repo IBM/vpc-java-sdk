@@ -13,7 +13,7 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
-import com.ibm.cloud.is.vpc.v1.model.DNSInstanceReference;
+import com.ibm.cloud.is.vpc.v1.model.DNSInstanceReferenceLoadBalancerDNSContext;
 import com.ibm.cloud.is.vpc.v1.model.DNSZoneReference;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerDNS;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;

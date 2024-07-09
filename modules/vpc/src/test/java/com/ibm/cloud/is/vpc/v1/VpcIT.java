@@ -191,6 +191,10 @@ import com.ibm.cloud.is.vpc.v1.model.CatalogOfferingIdentity;
 import com.ibm.cloud.is.vpc.v1.model.CatalogOfferingIdentityCatalogOfferingByCRN;
 import com.ibm.cloud.is.vpc.v1.model.CatalogOfferingVersionIdentity;
 import com.ibm.cloud.is.vpc.v1.model.CatalogOfferingVersionIdentityCatalogOfferingVersionByCRN;
+import com.ibm.cloud.is.vpc.v1.model.CatalogOfferingVersionPlanIdentity;
+import com.ibm.cloud.is.vpc.v1.model.CatalogOfferingVersionPlanIdentityCatalogOfferingVersionPlanByCRN;
+import com.ibm.cloud.is.vpc.v1.model.CatalogOfferingVersionPlanReference;
+import com.ibm.cloud.is.vpc.v1.model.CatalogOfferingVersionPlanReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.CatalogOfferingVersionReference;
 import com.ibm.cloud.is.vpc.v1.model.CertificateInstanceIdentity;
 import com.ibm.cloud.is.vpc.v1.model.CertificateInstanceIdentityByCRN;
@@ -264,7 +268,7 @@ import com.ibm.cloud.is.vpc.v1.model.CreateVpnServerOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateVpnServerRouteOptions;
 import com.ibm.cloud.is.vpc.v1.model.DNSInstanceIdentity;
 import com.ibm.cloud.is.vpc.v1.model.DNSInstanceIdentityByCRN;
-import com.ibm.cloud.is.vpc.v1.model.DNSInstanceReference;
+import com.ibm.cloud.is.vpc.v1.model.DNSInstanceReferenceLoadBalancerDNSContext;
 import com.ibm.cloud.is.vpc.v1.model.DNSServer;
 import com.ibm.cloud.is.vpc.v1.model.DNSServerPrototype;
 import com.ibm.cloud.is.vpc.v1.model.DNSZoneIdentity;
@@ -374,6 +378,7 @@ import com.ibm.cloud.is.vpc.v1.model.DeleteReservationOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteSecurityGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteSecurityGroupRuleOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteSecurityGroupTargetBindingOptions;
+import com.ibm.cloud.is.vpc.v1.model.DeleteShareAccessorBindingOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteShareMountTargetOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteShareOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteShareSourceOptions;
@@ -564,6 +569,7 @@ import com.ibm.cloud.is.vpc.v1.model.GetReservationOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetSecurityGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetSecurityGroupRuleOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetSecurityGroupTargetOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetShareAccessorBindingOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetShareMountTargetOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetShareOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetShareProfileOptions;
@@ -599,6 +605,9 @@ import com.ibm.cloud.is.vpc.v1.model.IKEPolicy;
 import com.ibm.cloud.is.vpc.v1.model.IKEPolicyCollection;
 import com.ibm.cloud.is.vpc.v1.model.IKEPolicyCollectionFirst;
 import com.ibm.cloud.is.vpc.v1.model.IKEPolicyCollectionNext;
+import com.ibm.cloud.is.vpc.v1.model.IKEPolicyConnectionCollection;
+import com.ibm.cloud.is.vpc.v1.model.IKEPolicyConnectionCollectionFirst;
+import com.ibm.cloud.is.vpc.v1.model.IKEPolicyConnectionCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.IKEPolicyPatch;
 import com.ibm.cloud.is.vpc.v1.model.IKEPolicyReference;
 import com.ibm.cloud.is.vpc.v1.model.IKEPolicyReferenceDeleted;
@@ -607,10 +616,14 @@ import com.ibm.cloud.is.vpc.v1.model.IPsecPolicy;
 import com.ibm.cloud.is.vpc.v1.model.IPsecPolicyCollection;
 import com.ibm.cloud.is.vpc.v1.model.IPsecPolicyCollectionFirst;
 import com.ibm.cloud.is.vpc.v1.model.IPsecPolicyCollectionNext;
+import com.ibm.cloud.is.vpc.v1.model.IPsecPolicyConnectionCollection;
+import com.ibm.cloud.is.vpc.v1.model.IPsecPolicyConnectionCollectionFirst;
+import com.ibm.cloud.is.vpc.v1.model.IPsecPolicyConnectionCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.IPsecPolicyPatch;
 import com.ibm.cloud.is.vpc.v1.model.IPsecPolicyReference;
 import com.ibm.cloud.is.vpc.v1.model.IPsecPolicyReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.IkePoliciesPager;
+import com.ibm.cloud.is.vpc.v1.model.IkePolicyConnectionsPager;
 import com.ibm.cloud.is.vpc.v1.model.Image;
 import com.ibm.cloud.is.vpc.v1.model.ImageCatalogOffering;
 import com.ibm.cloud.is.vpc.v1.model.ImageCollection;
@@ -829,6 +842,8 @@ import com.ibm.cloud.is.vpc.v1.model.InstanceProfilePortSpeedDependent;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfilePortSpeedFixed;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileReference;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileReservationTerms;
+import com.ibm.cloud.is.vpc.v1.model.InstanceProfileSupportedConfidentialComputeModes;
+import com.ibm.cloud.is.vpc.v1.model.InstanceProfileSupportedSecureBootModes;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileVCPU;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileVCPUArchitecture;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileVCPUDependent;
@@ -895,6 +910,7 @@ import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.InstanceVCPU;
 import com.ibm.cloud.is.vpc.v1.model.InstancesPager;
 import com.ibm.cloud.is.vpc.v1.model.IpsecPoliciesPager;
+import com.ibm.cloud.is.vpc.v1.model.IpsecPolicyConnectionsPager;
 import com.ibm.cloud.is.vpc.v1.model.Key;
 import com.ibm.cloud.is.vpc.v1.model.KeyCollection;
 import com.ibm.cloud.is.vpc.v1.model.KeyCollectionFirst;
@@ -969,6 +985,7 @@ import com.ibm.cloud.is.vpc.v1.model.ListReservationsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListSecurityGroupRulesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListSecurityGroupTargetsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListSecurityGroupsOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListShareAccessorBindingsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListShareMountTargetsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListShareProfilesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListSharesOptions;
@@ -1392,6 +1409,15 @@ import com.ibm.cloud.is.vpc.v1.model.SecurityGroupTargetsPager;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupsPager;
 import com.ibm.cloud.is.vpc.v1.model.SetSubnetPublicGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.Share;
+import com.ibm.cloud.is.vpc.v1.model.ShareAccessorBinding;
+import com.ibm.cloud.is.vpc.v1.model.ShareAccessorBindingAccessor;
+import com.ibm.cloud.is.vpc.v1.model.ShareAccessorBindingAccessorShareReference;
+import com.ibm.cloud.is.vpc.v1.model.ShareAccessorBindingAccessorWatsonxMachineLearningReference;
+import com.ibm.cloud.is.vpc.v1.model.ShareAccessorBindingCollection;
+import com.ibm.cloud.is.vpc.v1.model.ShareAccessorBindingCollectionFirst;
+import com.ibm.cloud.is.vpc.v1.model.ShareAccessorBindingCollectionNext;
+import com.ibm.cloud.is.vpc.v1.model.ShareAccessorBindingReference;
+import com.ibm.cloud.is.vpc.v1.model.ShareAccessorBindingsPager;
 import com.ibm.cloud.is.vpc.v1.model.ShareCollection;
 import com.ibm.cloud.is.vpc.v1.model.ShareCollectionFirst;
 import com.ibm.cloud.is.vpc.v1.model.ShareCollectionNext;
@@ -1403,6 +1429,7 @@ import com.ibm.cloud.is.vpc.v1.model.ShareInitialOwner;
 import com.ibm.cloud.is.vpc.v1.model.ShareJob;
 import com.ibm.cloud.is.vpc.v1.model.ShareJobStatusReason;
 import com.ibm.cloud.is.vpc.v1.model.ShareLatestSync;
+import com.ibm.cloud.is.vpc.v1.model.ShareLifecycleReason;
 import com.ibm.cloud.is.vpc.v1.model.ShareMountTarget;
 import com.ibm.cloud.is.vpc.v1.model.ShareMountTargetCollection;
 import com.ibm.cloud.is.vpc.v1.model.ShareMountTargetCollectionFirst;
@@ -1441,6 +1468,7 @@ import com.ibm.cloud.is.vpc.v1.model.ShareProfileIdentityByName;
 import com.ibm.cloud.is.vpc.v1.model.ShareProfileReference;
 import com.ibm.cloud.is.vpc.v1.model.ShareProfilesPager;
 import com.ibm.cloud.is.vpc.v1.model.SharePrototype;
+import com.ibm.cloud.is.vpc.v1.model.SharePrototypeShareByOriginShare;
 import com.ibm.cloud.is.vpc.v1.model.SharePrototypeShareBySize;
 import com.ibm.cloud.is.vpc.v1.model.SharePrototypeShareBySourceShare;
 import com.ibm.cloud.is.vpc.v1.model.SharePrototypeShareContext;
@@ -1450,6 +1478,7 @@ import com.ibm.cloud.is.vpc.v1.model.ShareRemote;
 import com.ibm.cloud.is.vpc.v1.model.ShareReplicationStatusReason;
 import com.ibm.cloud.is.vpc.v1.model.SharesPager;
 import com.ibm.cloud.is.vpc.v1.model.Snapshot;
+import com.ibm.cloud.is.vpc.v1.model.SnapshotCatalogOffering;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotClone;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotCloneCollection;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotClonePrototype;
@@ -1613,6 +1642,8 @@ import com.ibm.cloud.is.vpc.v1.model.VPNGatewayCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnection;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionCIDRs;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionCollection;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionCollectionFirst;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionDPD;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionDPDPatch;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionDPDPrototype;
@@ -1756,6 +1787,7 @@ import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentReferenceInstanceContext;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentReferenceInstanceContextDeleted;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentReferenceVolumeContext;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentReferenceVolumeContextDeleted;
+import com.ibm.cloud.is.vpc.v1.model.VolumeCatalogOffering;
 import com.ibm.cloud.is.vpc.v1.model.VolumeCollection;
 import com.ibm.cloud.is.vpc.v1.model.VolumeCollectionFirst;
 import com.ibm.cloud.is.vpc.v1.model.VolumeCollectionNext;
@@ -1792,6 +1824,7 @@ import com.ibm.cloud.is.vpc.v1.model.VpcRoutesPager;
 import com.ibm.cloud.is.vpc.v1.model.VpcRoutingTableRoutesPager;
 import com.ibm.cloud.is.vpc.v1.model.VpcRoutingTablesPager;
 import com.ibm.cloud.is.vpc.v1.model.VpcsPager;
+import com.ibm.cloud.is.vpc.v1.model.VpnGatewayConnectionsPager;
 import com.ibm.cloud.is.vpc.v1.model.VpnGatewaysPager;
 import com.ibm.cloud.is.vpc.v1.model.VpnServerClientsPager;
 import com.ibm.cloud.is.vpc.v1.model.VpnServerRoutesPager;
@@ -3372,6 +3405,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .name("testString")
         .status(java.util.Arrays.asList("available"))
         .visibility("private")
+        .userDataFormat(java.util.Arrays.asList("cloud_init"))
         .build();
 
       // Invoke operation
@@ -3398,6 +3432,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .name("testString")
         .status(java.util.Arrays.asList("available"))
         .visibility("private")
+        .userDataFormat(java.util.Arrays.asList("cloud_init"))
         .build();
 
       // Test getNext().
@@ -4053,7 +4088,9 @@ public class VpcIT extends SdkIntegrationTestBase {
 
       InstanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByImageInstanceByNetworkInterface instanceTemplatePrototypeModel = new InstanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByImageInstanceByNetworkInterface.Builder()
         .availabilityPolicy(instanceAvailabilityPolicyPrototypeModel)
+        .confidentialComputeMode("disabled")
         .defaultTrustedProfile(instanceDefaultTrustedProfilePrototypeModel)
+        .enableSecureBoot(true)
         .keys(java.util.Arrays.asList(keyIdentityModel))
         .metadataService(instanceMetadataServicePrototypeModel)
         .name("my-instance-template")
@@ -4346,7 +4383,9 @@ public class VpcIT extends SdkIntegrationTestBase {
 
       InstancePrototypeInstanceByImageInstanceByImageInstanceByNetworkInterface instancePrototypeModel = new InstancePrototypeInstanceByImageInstanceByImageInstanceByNetworkInterface.Builder()
         .availabilityPolicy(instanceAvailabilityPolicyPrototypeModel)
+        .confidentialComputeMode("disabled")
         .defaultTrustedProfile(instanceDefaultTrustedProfilePrototypeModel)
+        .enableSecureBoot(true)
         .keys(java.util.Arrays.asList(keyIdentityModel))
         .metadataService(instanceMetadataServicePrototypeModel)
         .name("my-instance")
@@ -4438,6 +4477,8 @@ public class VpcIT extends SdkIntegrationTestBase {
 
       InstancePatch instancePatchModel = new InstancePatch.Builder()
         .availabilityPolicy(instanceAvailabilityPolicyPatchModel)
+        .confidentialComputeMode("disabled")
+        .enableSecureBoot(true)
         .metadataService(instanceMetadataServicePatchModel)
         .name("my-instance")
         .placementTarget(instancePlacementTargetPatchModel)
@@ -4668,6 +4709,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .ips(java.util.Arrays.asList(virtualNetworkInterfaceIpPrototypeModel))
         .name("my-virtual-network-interface")
         .primaryIp(virtualNetworkInterfacePrimaryIpPrototypeModel)
+        .protocolStateFilteringMode("auto")
         .resourceGroup(resourceGroupIdentityModel)
         .securityGroups(java.util.Arrays.asList(securityGroupIdentityModel))
         .subnet(subnetIdentityModel)
@@ -6832,6 +6874,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .ips(java.util.Arrays.asList(virtualNetworkInterfaceIpPrototypeModel))
         .name("my-virtual-network-interface")
         .primaryIp(virtualNetworkInterfacePrimaryIpPrototypeModel)
+        .protocolStateFilteringMode("auto")
         .resourceGroup(resourceGroupIdentityModel)
         .securityGroups(java.util.Arrays.asList(securityGroupIdentityModel))
         .subnet(subnetIdentityModel)
@@ -6840,18 +6883,19 @@ public class VpcIT extends SdkIntegrationTestBase {
       BareMetalServerNetworkAttachmentPrototypeBareMetalServerNetworkAttachmentByPCIPrototype bareMetalServerNetworkAttachmentPrototypeModel = new BareMetalServerNetworkAttachmentPrototypeBareMetalServerNetworkAttachmentByPCIPrototype.Builder()
         .name("my-bare-metal-server-network-attachment")
         .virtualNetworkInterface(bareMetalServerNetworkAttachmentPrototypeVirtualNetworkInterfaceModel)
-        .allowedVlans(java.util.Arrays.asList(Long.valueOf("100")))
+        .allowedVlans(java.util.Arrays.asList(Long.valueOf("4")))
         .interfaceType("pci")
         .build();
 
       BareMetalServerPrimaryNetworkAttachmentPrototypeBareMetalServerPrimaryNetworkAttachmentByPCIPrototype bareMetalServerPrimaryNetworkAttachmentPrototypeModel = new BareMetalServerPrimaryNetworkAttachmentPrototypeBareMetalServerPrimaryNetworkAttachmentByPCIPrototype.Builder()
         .name("my-bare-metal-server-network-attachment")
         .virtualNetworkInterface(bareMetalServerNetworkAttachmentPrototypeVirtualNetworkInterfaceModel)
-        .allowedVlans(java.util.Arrays.asList(Long.valueOf("100")))
+        .allowedVlans(java.util.Arrays.asList(Long.valueOf("4")))
         .interfaceType("pci")
         .build();
 
       BareMetalServerPrototypeBareMetalServerByNetworkAttachment bareMetalServerPrototypeModel = new BareMetalServerPrototypeBareMetalServerByNetworkAttachment.Builder()
+        .bandwidth(Long.valueOf("20000"))
         .enableSecureBoot(false)
         .initialization(bareMetalServerInitializationPrototypeModel)
         .name("my-bare-metal-server")
@@ -7071,6 +7115,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .ips(java.util.Arrays.asList(virtualNetworkInterfaceIpPrototypeModel))
         .name("my-virtual-network-interface")
         .primaryIp(virtualNetworkInterfacePrimaryIpPrototypeModel)
+        .protocolStateFilteringMode("auto")
         .resourceGroup(resourceGroupIdentityModel)
         .securityGroups(java.util.Arrays.asList(securityGroupIdentityModel))
         .subnet(subnetIdentityModel)
@@ -7079,7 +7124,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       BareMetalServerNetworkAttachmentPrototypeBareMetalServerNetworkAttachmentByPCIPrototype bareMetalServerNetworkAttachmentPrototypeModel = new BareMetalServerNetworkAttachmentPrototypeBareMetalServerNetworkAttachmentByPCIPrototype.Builder()
         .name("my-bare-metal-server-network-attachment")
         .virtualNetworkInterface(bareMetalServerNetworkAttachmentPrototypeVirtualNetworkInterfaceModel)
-        .allowedVlans(java.util.Arrays.asList(Long.valueOf("100")))
+        .allowedVlans(java.util.Arrays.asList(Long.valueOf("4")))
         .interfaceType("pci")
         .build();
 
@@ -7462,6 +7507,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       BareMetalServerPatch bareMetalServerPatchModel = new BareMetalServerPatch.Builder()
+        .bandwidth(Long.valueOf("20000"))
         .enableSecureBoot(false)
         .name("my-bare-metal-server")
         .trustedPlatformModule(bareMetalServerTrustedPlatformModulePatchModel)
@@ -8408,6 +8454,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .ips(java.util.Arrays.asList(virtualNetworkInterfaceIpPrototypeModel))
         .name("my-virtual-network-interface")
         .primaryIp(virtualNetworkInterfacePrimaryIpPrototypeModel)
+        .protocolStateFilteringMode("auto")
         .resourceGroup(resourceGroupIdentityModel)
         .securityGroups(java.util.Arrays.asList(securityGroupIdentityModel))
         .subnet(subnetIdentityModel)
@@ -8428,6 +8475,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       SharePrototypeShareContext sharePrototypeShareContextModel = new SharePrototypeShareContext.Builder()
+        .allowedTransitEncryptionModes(java.util.Arrays.asList("none"))
         .iops(Long.valueOf("100"))
         .mountTargets(java.util.Arrays.asList(shareMountTargetPrototypeModel))
         .name("my-share")
@@ -8448,18 +8496,19 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       SharePrototypeShareBySize sharePrototypeModel = new SharePrototypeShareBySize.Builder()
-        .iops(Long.valueOf("100"))
+        .allowedTransitEncryptionModes(java.util.Arrays.asList("none"))
         .mountTargets(java.util.Arrays.asList(shareMountTargetPrototypeModel))
         .name("my-share")
-        .profile(shareProfileIdentityModel)
         .replicaShare(sharePrototypeShareContextModel)
         .userTags(java.util.Arrays.asList())
-        .zone(zoneIdentityModel)
         .accessControlMode("security_group")
         .encryptionKey(encryptionKeyIdentityModel)
         .initialOwner(shareInitialOwnerModel)
+        .iops(Long.valueOf("100"))
+        .profile(shareProfileIdentityModel)
         .resourceGroup(resourceGroupIdentityModel)
         .size(Long.valueOf("200"))
+        .zone(zoneIdentityModel)
         .build();
 
       CreateShareOptions createShareOptions = new CreateShareOptions.Builder()
@@ -8512,6 +8561,7 @@ public class VpcIT extends SdkIntegrationTestBase {
 
       SharePatch sharePatchModel = new SharePatch.Builder()
         .accessControlMode("security_group")
+        .allowedTransitEncryptionModes(java.util.Arrays.asList("none"))
         .iops(Long.valueOf("100"))
         .name("my-share")
         .profile(shareProfileIdentityModel)
@@ -8543,6 +8593,85 @@ public class VpcIT extends SdkIntegrationTestBase {
   }
 
   @Test(dependsOnMethods = { "testUpdateShare" })
+  public void testListShareAccessorBindings() throws Exception {
+    try {
+      ListShareAccessorBindingsOptions listShareAccessorBindingsOptions = new ListShareAccessorBindingsOptions.Builder()
+        .id("testString")
+        .start("testString")
+        .limit(Long.valueOf("10"))
+        .build();
+
+      // Invoke operation
+      Response<ShareAccessorBindingCollection> response = service.listShareAccessorBindings(listShareAccessorBindingsOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      ShareAccessorBindingCollection shareAccessorBindingCollectionResult = response.getResult();
+
+      assertNotNull(shareAccessorBindingCollectionResult);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testListShareAccessorBindings" })
+  public void testListShareAccessorBindingsWithPager() throws Exception {
+    try {
+      ListShareAccessorBindingsOptions options = new ListShareAccessorBindingsOptions.Builder()
+        .id("testString")
+        .limit(Long.valueOf("10"))
+        .build();
+
+      // Test getNext().
+      List<ShareAccessorBinding> allResults = new ArrayList<>();
+      ShareAccessorBindingsPager pager = new ShareAccessorBindingsPager(service, options);
+      while (pager.hasNext()) {
+        List<ShareAccessorBinding> nextPage = pager.getNext();
+        assertNotNull(nextPage);
+        allResults.addAll(nextPage);
+      }
+      assertFalse(allResults.isEmpty());
+
+      // Test getAll();
+      pager = new ShareAccessorBindingsPager(service, options);
+      List<ShareAccessorBinding> allItems = pager.getAll();
+      assertNotNull(allItems);
+      assertFalse(allItems.isEmpty());
+
+      assertEquals(allItems.size(), allResults.size());
+      System.out.println(String.format("Retrieved a total of %d item(s) with pagination.", allResults.size()));
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testListShareAccessorBindings" })
+  public void testGetShareAccessorBinding() throws Exception {
+    try {
+      GetShareAccessorBindingOptions getShareAccessorBindingOptions = new GetShareAccessorBindingOptions.Builder()
+        .shareId("testString")
+        .id("testString")
+        .build();
+
+      // Invoke operation
+      Response<ShareAccessorBinding> response = service.getShareAccessorBinding(getShareAccessorBindingOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      ShareAccessorBinding shareAccessorBindingResult = response.getResult();
+
+      assertNotNull(shareAccessorBindingResult);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testGetShareAccessorBinding" })
   public void testFailoverShare() throws Exception {
     try {
       FailoverShareOptions failoverShareOptions = new FailoverShareOptions.Builder()
@@ -8654,6 +8783,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .ips(java.util.Arrays.asList(virtualNetworkInterfaceIpPrototypeModel))
         .name("my-virtual-network-interface")
         .primaryIp(virtualNetworkInterfacePrimaryIpPrototypeModel)
+        .protocolStateFilteringMode("auto")
         .resourceGroup(resourceGroupIdentityModel)
         .securityGroups(java.util.Arrays.asList(securityGroupIdentityModel))
         .subnet(subnetIdentityModel)
@@ -9383,6 +9513,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .ips(java.util.Arrays.asList(virtualNetworkInterfaceIpPrototypeModel))
         .name("my-virtual-network-interface")
         .primaryIp(virtualNetworkInterfacePrimaryIpPrototypeModel)
+        .protocolStateFilteringMode("auto")
         .resourceGroup(resourceGroupIdentityModel)
         .securityGroups(java.util.Arrays.asList(securityGroupIdentityModel))
         .subnet(subnetIdentityModel)
@@ -9433,6 +9564,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .autoDelete(false)
         .enableInfrastructureNat(true)
         .name("my-virtual-network-interface")
+        .protocolStateFilteringMode("auto")
         .build();
       Map<String, Object> virtualNetworkInterfacePatchModelAsPatch = virtualNetworkInterfacePatchModel.asPatch();
 
@@ -10831,17 +10963,51 @@ public class VpcIT extends SdkIntegrationTestBase {
     try {
       ListIkePolicyConnectionsOptions listIkePolicyConnectionsOptions = new ListIkePolicyConnectionsOptions.Builder()
         .id("testString")
+        .start("testString")
+        .limit(Long.valueOf("10"))
         .build();
 
       // Invoke operation
-      Response<VPNGatewayConnectionCollection> response = service.listIkePolicyConnections(listIkePolicyConnectionsOptions).execute();
+      Response<IKEPolicyConnectionCollection> response = service.listIkePolicyConnections(listIkePolicyConnectionsOptions).execute();
       // Validate response
       assertNotNull(response);
       assertEquals(response.getStatusCode(), 200);
 
-      VPNGatewayConnectionCollection vpnGatewayConnectionCollectionResult = response.getResult();
+      IKEPolicyConnectionCollection ikePolicyConnectionCollectionResult = response.getResult();
 
-      assertNotNull(vpnGatewayConnectionCollectionResult);
+      assertNotNull(ikePolicyConnectionCollectionResult);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testListIkePolicyConnections" })
+  public void testListIkePolicyConnectionsWithPager() throws Exception {
+    try {
+      ListIkePolicyConnectionsOptions options = new ListIkePolicyConnectionsOptions.Builder()
+        .id("testString")
+        .limit(Long.valueOf("10"))
+        .build();
+
+      // Test getNext().
+      List<VPNGatewayConnection> allResults = new ArrayList<>();
+      IkePolicyConnectionsPager pager = new IkePolicyConnectionsPager(service, options);
+      while (pager.hasNext()) {
+        List<VPNGatewayConnection> nextPage = pager.getNext();
+        assertNotNull(nextPage);
+        allResults.addAll(nextPage);
+      }
+      assertFalse(allResults.isEmpty());
+
+      // Test getAll();
+      pager = new IkePolicyConnectionsPager(service, options);
+      List<VPNGatewayConnection> allItems = pager.getAll();
+      assertNotNull(allItems);
+      assertFalse(allItems.isEmpty());
+
+      assertEquals(allItems.size(), allResults.size());
+      System.out.println(String.format("Retrieved a total of %d item(s) with pagination.", allResults.size()));
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -10992,17 +11158,51 @@ public class VpcIT extends SdkIntegrationTestBase {
     try {
       ListIpsecPolicyConnectionsOptions listIpsecPolicyConnectionsOptions = new ListIpsecPolicyConnectionsOptions.Builder()
         .id("testString")
+        .start("testString")
+        .limit(Long.valueOf("10"))
         .build();
 
       // Invoke operation
-      Response<VPNGatewayConnectionCollection> response = service.listIpsecPolicyConnections(listIpsecPolicyConnectionsOptions).execute();
+      Response<IPsecPolicyConnectionCollection> response = service.listIpsecPolicyConnections(listIpsecPolicyConnectionsOptions).execute();
       // Validate response
       assertNotNull(response);
       assertEquals(response.getStatusCode(), 200);
 
-      VPNGatewayConnectionCollection vpnGatewayConnectionCollectionResult = response.getResult();
+      IPsecPolicyConnectionCollection iPsecPolicyConnectionCollectionResult = response.getResult();
 
-      assertNotNull(vpnGatewayConnectionCollectionResult);
+      assertNotNull(iPsecPolicyConnectionCollectionResult);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testListIpsecPolicyConnections" })
+  public void testListIpsecPolicyConnectionsWithPager() throws Exception {
+    try {
+      ListIpsecPolicyConnectionsOptions options = new ListIpsecPolicyConnectionsOptions.Builder()
+        .id("testString")
+        .limit(Long.valueOf("10"))
+        .build();
+
+      // Test getNext().
+      List<VPNGatewayConnection> allResults = new ArrayList<>();
+      IpsecPolicyConnectionsPager pager = new IpsecPolicyConnectionsPager(service, options);
+      while (pager.hasNext()) {
+        List<VPNGatewayConnection> nextPage = pager.getNext();
+        assertNotNull(nextPage);
+        allResults.addAll(nextPage);
+      }
+      assertFalse(allResults.isEmpty());
+
+      // Test getAll();
+      pager = new IpsecPolicyConnectionsPager(service, options);
+      List<VPNGatewayConnection> allItems = pager.getAll();
+      assertNotNull(allItems);
+      assertFalse(allItems.isEmpty());
+
+      assertEquals(allItems.size(), allResults.size());
+      System.out.println(String.format("Retrieved a total of %d item(s) with pagination.", allResults.size()));
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -11161,6 +11361,8 @@ public class VpcIT extends SdkIntegrationTestBase {
     try {
       ListVpnGatewayConnectionsOptions listVpnGatewayConnectionsOptions = new ListVpnGatewayConnectionsOptions.Builder()
         .vpnGatewayId("testString")
+        .start("testString")
+        .limit(Long.valueOf("10"))
         .status("down")
         .build();
 
@@ -11173,6 +11375,39 @@ public class VpcIT extends SdkIntegrationTestBase {
       VPNGatewayConnectionCollection vpnGatewayConnectionCollectionResult = response.getResult();
 
       assertNotNull(vpnGatewayConnectionCollectionResult);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testListVpnGatewayConnections" })
+  public void testListVpnGatewayConnectionsWithPager() throws Exception {
+    try {
+      ListVpnGatewayConnectionsOptions options = new ListVpnGatewayConnectionsOptions.Builder()
+        .vpnGatewayId("testString")
+        .limit(Long.valueOf("10"))
+        .status("down")
+        .build();
+
+      // Test getNext().
+      List<VPNGatewayConnection> allResults = new ArrayList<>();
+      VpnGatewayConnectionsPager pager = new VpnGatewayConnectionsPager(service, options);
+      while (pager.hasNext()) {
+        List<VPNGatewayConnection> nextPage = pager.getNext();
+        assertNotNull(nextPage);
+        allResults.addAll(nextPage);
+      }
+      assertFalse(allResults.isEmpty());
+
+      // Test getAll();
+      pager = new VpnGatewayConnectionsPager(service, options);
+      List<VPNGatewayConnection> allItems = pager.getAll();
+      assertNotNull(allItems);
+      assertFalse(allItems.isEmpty());
+
+      assertEquals(allItems.size(), allResults.size());
+      System.out.println(String.format("Retrieved a total of %d item(s) with pagination.", allResults.size()));
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -11296,7 +11531,6 @@ public class VpcIT extends SdkIntegrationTestBase {
         .name("my-vpn-connection")
         .peer(vpnGatewayConnectionPeerPatchModel)
         .psk("lkj14b1oi0alcniejkso")
-        .routingProtocol("none")
         .build();
       Map<String, Object> vpnGatewayConnectionPatchModelAsPatch = vpnGatewayConnectionPatchModel.asPatch();
 
@@ -12045,7 +12279,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       DNSInstanceIdentityByCRN dnsInstanceIdentityModel = new DNSInstanceIdentityByCRN.Builder()
-        .crn("crn:v1:bluemix:public:dns-svcs:global:a/aa2432b1fa4d4ace891e9b80fc104e34:6860c359-b2e2-46fa-a944-b38c28201c6e")
+        .crn("crn:v1:bluemix:public:dns-svcs:global:a/bb1b52262f7441a586f49068482f1e60:f761b566-030a-4696-8649-cc9d09889e88::")
         .build();
 
       DNSZoneIdentityById dnsZoneIdentityModel = new DNSZoneIdentityById.Builder()
@@ -12197,7 +12431,7 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testUpdateLoadBalancer() throws Exception {
     try {
       DNSInstanceIdentityByCRN dnsInstanceIdentityModel = new DNSInstanceIdentityByCRN.Builder()
-        .crn("crn:v1:bluemix:public:dns-svcs:global:a/aa2432b1fa4d4ace891e9b80fc104e34:6860c359-b2e2-46fa-a944-b38c28201c6e")
+        .crn("crn:v1:bluemix:public:dns-svcs:global:a/bb1b52262f7441a586f49068482f1e60:f761b566-030a-4696-8649-cc9d09889e88::")
         .build();
 
       DNSZoneIdentityById dnsZoneIdentityModel = new DNSZoneIdentityById.Builder()
@@ -14076,7 +14310,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       Response<Void> response = service.deleteSnapshots(deleteSnapshotsOptions).execute();
       // Validate response
       assertNotNull(response);
-      assertEquals(response.getStatusCode(), 204);
+      assertEquals(response.getStatusCode(), 202);
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -14095,7 +14329,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       Response<Void> response = service.deleteSnapshot(deleteSnapshotOptions).execute();
       // Validate response
       assertNotNull(response);
-      assertEquals(response.getStatusCode(), 204);
+      assertEquals(response.getStatusCode(), 202);
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -14145,6 +14379,25 @@ public class VpcIT extends SdkIntegrationTestBase {
   }
 
   @Test(dependsOnMethods = { "testDeleteShare" })
+  public void testDeleteShareAccessorBinding() throws Exception {
+    try {
+      DeleteShareAccessorBindingOptions deleteShareAccessorBindingOptions = new DeleteShareAccessorBindingOptions.Builder()
+        .shareId("testString")
+        .id("testString")
+        .build();
+
+      // Invoke operation
+      Response<Void> response = service.deleteShareAccessorBinding(deleteShareAccessorBindingOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 204);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testDeleteShareAccessorBinding" })
   public void testDeleteShareMountTarget() throws Exception {
     try {
       DeleteShareMountTargetOptions deleteShareMountTargetOptions = new DeleteShareMountTargetOptions.Builder()
