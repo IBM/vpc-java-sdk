@@ -14,6 +14,7 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.CatalogOfferingIdentityCatalogOfferingByCRN;
+import com.ibm.cloud.is.vpc.v1.model.CatalogOfferingVersionPlanIdentityCatalogOfferingVersionPlanByCRN;
 import com.ibm.cloud.is.vpc.v1.model.EncryptionKeyIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.InstanceAvailabilityPolicyPrototype;
 import com.ibm.cloud.is.vpc.v1.model.InstanceCatalogOfferingPrototypeCatalogOfferingByOffering;
@@ -168,14 +169,21 @@ public class InstanceTemplatePrototypeInstanceTemplateByCatalogOfferingInstanceT
     assertEquals(volumeAttachmentPrototypeInstanceByImageContextModel.name(), "my-volume-attachment");
     assertEquals(volumeAttachmentPrototypeInstanceByImageContextModel.volume(), volumePrototypeInstanceByImageContextModel);
 
+    CatalogOfferingVersionPlanIdentityCatalogOfferingVersionPlanByCRN catalogOfferingVersionPlanIdentityModel = new CatalogOfferingVersionPlanIdentityCatalogOfferingVersionPlanByCRN.Builder()
+      .crn("crn:v1:bluemix:public:globalcatalog-collection:global:a/aa2432b1fa4d4ace891e9b80fc104e34:51c9e0db-2911-45a6-adb0-ac5332d27cf2:plan:sw.51c9e0db-2911-45a6-adb0-ac5332d27cf2.772c0dbe-aa62-482e-adbe-a3fc20101e0e")
+      .build();
+    assertEquals(catalogOfferingVersionPlanIdentityModel.crn(), "crn:v1:bluemix:public:globalcatalog-collection:global:a/aa2432b1fa4d4ace891e9b80fc104e34:51c9e0db-2911-45a6-adb0-ac5332d27cf2:plan:sw.51c9e0db-2911-45a6-adb0-ac5332d27cf2.772c0dbe-aa62-482e-adbe-a3fc20101e0e");
+
     CatalogOfferingIdentityCatalogOfferingByCRN catalogOfferingIdentityModel = new CatalogOfferingIdentityCatalogOfferingByCRN.Builder()
       .crn("crn:v1:bluemix:public:globalcatalog-collection:global:a/aa2432b1fa4d4ace891e9b80fc104e34:1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc:offering:00111601-0ec5-41ac-b142-96d1e64e6442")
       .build();
     assertEquals(catalogOfferingIdentityModel.crn(), "crn:v1:bluemix:public:globalcatalog-collection:global:a/aa2432b1fa4d4ace891e9b80fc104e34:1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc:offering:00111601-0ec5-41ac-b142-96d1e64e6442");
 
     InstanceCatalogOfferingPrototypeCatalogOfferingByOffering instanceCatalogOfferingPrototypeModel = new InstanceCatalogOfferingPrototypeCatalogOfferingByOffering.Builder()
+      .plan(catalogOfferingVersionPlanIdentityModel)
       .offering(catalogOfferingIdentityModel)
       .build();
+    assertEquals(instanceCatalogOfferingPrototypeModel.plan(), catalogOfferingVersionPlanIdentityModel);
     assertEquals(instanceCatalogOfferingPrototypeModel.offering(), catalogOfferingIdentityModel);
 
     ZoneIdentityByName zoneIdentityModel = new ZoneIdentityByName.Builder()
@@ -217,7 +225,9 @@ public class InstanceTemplatePrototypeInstanceTemplateByCatalogOfferingInstanceT
 
     InstanceTemplatePrototypeInstanceTemplateByCatalogOfferingInstanceTemplateByCatalogOfferingInstanceByNetworkInterface instanceTemplatePrototypeInstanceTemplateByCatalogOfferingInstanceTemplateByCatalogOfferingInstanceByNetworkInterfaceModel = new InstanceTemplatePrototypeInstanceTemplateByCatalogOfferingInstanceTemplateByCatalogOfferingInstanceByNetworkInterface.Builder()
       .availabilityPolicy(instanceAvailabilityPolicyPrototypeModel)
+      .confidentialComputeMode("disabled")
       .defaultTrustedProfile(instanceDefaultTrustedProfilePrototypeModel)
+      .enableSecureBoot(true)
       .keys(java.util.Arrays.asList(keyIdentityModel))
       .metadataService(instanceMetadataServicePrototypeModel)
       .name("my-instance")
@@ -236,7 +246,9 @@ public class InstanceTemplatePrototypeInstanceTemplateByCatalogOfferingInstanceT
       .primaryNetworkInterface(networkInterfacePrototypeModel)
       .build();
     assertEquals(instanceTemplatePrototypeInstanceTemplateByCatalogOfferingInstanceTemplateByCatalogOfferingInstanceByNetworkInterfaceModel.availabilityPolicy(), instanceAvailabilityPolicyPrototypeModel);
+    assertEquals(instanceTemplatePrototypeInstanceTemplateByCatalogOfferingInstanceTemplateByCatalogOfferingInstanceByNetworkInterfaceModel.confidentialComputeMode(), "disabled");
     assertEquals(instanceTemplatePrototypeInstanceTemplateByCatalogOfferingInstanceTemplateByCatalogOfferingInstanceByNetworkInterfaceModel.defaultTrustedProfile(), instanceDefaultTrustedProfilePrototypeModel);
+    assertEquals(instanceTemplatePrototypeInstanceTemplateByCatalogOfferingInstanceTemplateByCatalogOfferingInstanceByNetworkInterfaceModel.enableSecureBoot(), Boolean.valueOf(true));
     assertEquals(instanceTemplatePrototypeInstanceTemplateByCatalogOfferingInstanceTemplateByCatalogOfferingInstanceByNetworkInterfaceModel.keys(), java.util.Arrays.asList(keyIdentityModel));
     assertEquals(instanceTemplatePrototypeInstanceTemplateByCatalogOfferingInstanceTemplateByCatalogOfferingInstanceByNetworkInterfaceModel.metadataService(), instanceMetadataServicePrototypeModel);
     assertEquals(instanceTemplatePrototypeInstanceTemplateByCatalogOfferingInstanceTemplateByCatalogOfferingInstanceByNetworkInterfaceModel.name(), "my-instance");
@@ -259,7 +271,9 @@ public class InstanceTemplatePrototypeInstanceTemplateByCatalogOfferingInstanceT
     InstanceTemplatePrototypeInstanceTemplateByCatalogOfferingInstanceTemplateByCatalogOfferingInstanceByNetworkInterface instanceTemplatePrototypeInstanceTemplateByCatalogOfferingInstanceTemplateByCatalogOfferingInstanceByNetworkInterfaceModelNew = TestUtilities.deserialize(json, InstanceTemplatePrototypeInstanceTemplateByCatalogOfferingInstanceTemplateByCatalogOfferingInstanceByNetworkInterface.class);
     assertTrue(instanceTemplatePrototypeInstanceTemplateByCatalogOfferingInstanceTemplateByCatalogOfferingInstanceByNetworkInterfaceModelNew instanceof InstanceTemplatePrototypeInstanceTemplateByCatalogOfferingInstanceTemplateByCatalogOfferingInstanceByNetworkInterface);
     assertEquals(instanceTemplatePrototypeInstanceTemplateByCatalogOfferingInstanceTemplateByCatalogOfferingInstanceByNetworkInterfaceModelNew.availabilityPolicy().toString(), instanceAvailabilityPolicyPrototypeModel.toString());
+    assertEquals(instanceTemplatePrototypeInstanceTemplateByCatalogOfferingInstanceTemplateByCatalogOfferingInstanceByNetworkInterfaceModelNew.confidentialComputeMode(), "disabled");
     assertEquals(instanceTemplatePrototypeInstanceTemplateByCatalogOfferingInstanceTemplateByCatalogOfferingInstanceByNetworkInterfaceModelNew.defaultTrustedProfile().toString(), instanceDefaultTrustedProfilePrototypeModel.toString());
+    assertEquals(instanceTemplatePrototypeInstanceTemplateByCatalogOfferingInstanceTemplateByCatalogOfferingInstanceByNetworkInterfaceModelNew.enableSecureBoot(), Boolean.valueOf(true));
     assertEquals(instanceTemplatePrototypeInstanceTemplateByCatalogOfferingInstanceTemplateByCatalogOfferingInstanceByNetworkInterfaceModelNew.metadataService().toString(), instanceMetadataServicePrototypeModel.toString());
     assertEquals(instanceTemplatePrototypeInstanceTemplateByCatalogOfferingInstanceTemplateByCatalogOfferingInstanceByNetworkInterfaceModelNew.name(), "my-instance");
     assertEquals(instanceTemplatePrototypeInstanceTemplateByCatalogOfferingInstanceTemplateByCatalogOfferingInstanceByNetworkInterfaceModelNew.placementTarget().toString(), instancePlacementTargetPrototypeModel.toString());

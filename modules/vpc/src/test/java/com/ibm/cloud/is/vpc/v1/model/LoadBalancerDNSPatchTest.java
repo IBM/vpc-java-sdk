@@ -34,9 +34,9 @@ public class LoadBalancerDNSPatchTest {
   @Test
   public void testLoadBalancerDNSPatch() throws Throwable {
     DNSInstanceIdentityByCRN dnsInstanceIdentityModel = new DNSInstanceIdentityByCRN.Builder()
-      .crn("crn:v1:bluemix:public:dns-svcs:global:a/aa2432b1fa4d4ace891e9b80fc104e34:6860c359-b2e2-46fa-a944-b38c28201c6e")
+      .crn("crn:v1:bluemix:public:dns-svcs:global:a/bb1b52262f7441a586f49068482f1e60:f761b566-030a-4696-8649-cc9d09889e88::")
       .build();
-    assertEquals(dnsInstanceIdentityModel.crn(), "crn:v1:bluemix:public:dns-svcs:global:a/aa2432b1fa4d4ace891e9b80fc104e34:6860c359-b2e2-46fa-a944-b38c28201c6e");
+    assertEquals(dnsInstanceIdentityModel.crn(), "crn:v1:bluemix:public:dns-svcs:global:a/bb1b52262f7441a586f49068482f1e60:f761b566-030a-4696-8649-cc9d09889e88::");
 
     DNSZoneIdentityById dnsZoneIdentityModel = new DNSZoneIdentityById.Builder()
       .id("d66662cc-aa23-4fe1-9987-858487a61f45")

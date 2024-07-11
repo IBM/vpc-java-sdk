@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
@@ -430,7 +431,7 @@ public class ListInstancesOptions extends GenericModel {
   /**
    * Gets the reservationCrn.
    *
-   * Filters the collection to resources with a `reservation.crn` property matching the specified CRN.
+   * Filters the collection to resources with a `reservation.crn` property matching the specified identifier.
    *
    * @return the reservationCrn
    */
@@ -441,7 +442,7 @@ public class ListInstancesOptions extends GenericModel {
   /**
    * Gets the reservationName.
    *
-   * Filters the collection to resources with a `reservation.name` property matching the exact specified name.
+   * Filters the collection to resources with a `reservation.name` property matching the specified identifier.
    *
    * @return the reservationName
    */

@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.is.vpc.v1.model;
 
 import java.util.Date;
@@ -245,6 +246,9 @@ public class LoadBalancerPool extends GenericModel {
    * Gets the sessionPersistence.
    *
    * The session persistence of this pool.
+   *
+   * If absent, session persistence will be disabled, and traffic will be distributed
+   * across backend server members of the pool.
    *
    * @return the sessionPersistence
    */

@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.is.vpc.v1.model;
 
 import java.util.ArrayList;
@@ -25,6 +26,23 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class SharePrototypeShareContext extends GenericModel {
 
+  /**
+   * An allowed transit encryption mode for this share.
+   * - `none`: Not encrypted in transit.
+   * - `user_managed`: Encrypted in transit using an instance identity certificate.
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
+   */
+  public interface AllowedTransitEncryptionModes {
+    /** none. */
+    String NONE = "none";
+    /** user_managed. */
+    String USER_MANAGED = "user_managed";
+  }
+
+  @SerializedName("allowed_transit_encryption_modes")
+  protected List<String> allowedTransitEncryptionModes;
   protected Long iops;
   @SerializedName("mount_targets")
   protected List<ShareMountTargetPrototype> mountTargets;
@@ -42,6 +60,7 @@ public class SharePrototypeShareContext extends GenericModel {
    * Builder.
    */
   public static class Builder {
+    private List<String> allowedTransitEncryptionModes;
     private Long iops;
     private List<ShareMountTargetPrototype> mountTargets;
     private String name;
@@ -57,6 +76,7 @@ public class SharePrototypeShareContext extends GenericModel {
      * @param sharePrototypeShareContext the instance to initialize the Builder with
      */
     private Builder(SharePrototypeShareContext sharePrototypeShareContext) {
+      this.allowedTransitEncryptionModes = sharePrototypeShareContext.allowedTransitEncryptionModes;
       this.iops = sharePrototypeShareContext.iops;
       this.mountTargets = sharePrototypeShareContext.mountTargets;
       this.name = sharePrototypeShareContext.name;
@@ -96,6 +116,22 @@ public class SharePrototypeShareContext extends GenericModel {
     }
 
     /**
+     * Adds a new element to allowedTransitEncryptionModes.
+     *
+     * @param allowedTransitEncryptionModes the new element to be added
+     * @return the SharePrototypeShareContext builder
+     */
+    public Builder addAllowedTransitEncryptionModes(String allowedTransitEncryptionModes) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(allowedTransitEncryptionModes,
+        "allowedTransitEncryptionModes cannot be null");
+      if (this.allowedTransitEncryptionModes == null) {
+        this.allowedTransitEncryptionModes = new ArrayList<String>();
+      }
+      this.allowedTransitEncryptionModes.add(allowedTransitEncryptionModes);
+      return this;
+    }
+
+    /**
      * Adds a new element to mountTargets.
      *
      * @param mountTargets the new element to be added
@@ -124,6 +160,18 @@ public class SharePrototypeShareContext extends GenericModel {
         this.userTags = new ArrayList<String>();
       }
       this.userTags.add(userTags);
+      return this;
+    }
+
+    /**
+     * Set the allowedTransitEncryptionModes.
+     * Existing allowedTransitEncryptionModes will be replaced.
+     *
+     * @param allowedTransitEncryptionModes the allowedTransitEncryptionModes
+     * @return the SharePrototypeShareContext builder
+     */
+    public Builder allowedTransitEncryptionModes(List<String> allowedTransitEncryptionModes) {
+      this.allowedTransitEncryptionModes = allowedTransitEncryptionModes;
       return this;
     }
 
@@ -227,6 +275,7 @@ public class SharePrototypeShareContext extends GenericModel {
       "replicationCronSpec cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.zone,
       "zone cannot be null");
+    allowedTransitEncryptionModes = builder.allowedTransitEncryptionModes;
     iops = builder.iops;
     mountTargets = builder.mountTargets;
     name = builder.name;
@@ -244,6 +293,20 @@ public class SharePrototypeShareContext extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
+  }
+
+  /**
+   * Gets the allowedTransitEncryptionModes.
+   *
+   * The transit encryption modes to allow for this share. If unspecified:
+   * - If share mount targets are specified, and those share mount targets all specify a
+   *   `transit_encryption` of `user_managed`, then only `user_managed` will be allowed.
+   * - Otherwise, all `transit_encryption` modes will be allowed.
+   *
+   * @return the allowedTransitEncryptionModes
+   */
+  public List<String> allowedTransitEncryptionModes() {
+    return allowedTransitEncryptionModes;
   }
 
   /**

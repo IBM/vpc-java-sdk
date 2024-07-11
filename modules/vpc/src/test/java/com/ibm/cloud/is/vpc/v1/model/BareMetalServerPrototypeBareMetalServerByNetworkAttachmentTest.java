@@ -125,6 +125,7 @@ public class BareMetalServerPrototypeBareMetalServerByNetworkAttachmentTest {
       .ips(java.util.Arrays.asList(virtualNetworkInterfaceIpPrototypeModel))
       .name("my-virtual-network-interface")
       .primaryIp(virtualNetworkInterfacePrimaryIpPrototypeModel)
+      .protocolStateFilteringMode("auto")
       .resourceGroup(resourceGroupIdentityModel)
       .securityGroups(java.util.Arrays.asList(securityGroupIdentityModel))
       .subnet(subnetIdentityModel)
@@ -135,6 +136,7 @@ public class BareMetalServerPrototypeBareMetalServerByNetworkAttachmentTest {
     assertEquals(bareMetalServerNetworkAttachmentPrototypeVirtualNetworkInterfaceModel.ips(), java.util.Arrays.asList(virtualNetworkInterfaceIpPrototypeModel));
     assertEquals(bareMetalServerNetworkAttachmentPrototypeVirtualNetworkInterfaceModel.name(), "my-virtual-network-interface");
     assertEquals(bareMetalServerNetworkAttachmentPrototypeVirtualNetworkInterfaceModel.primaryIp(), virtualNetworkInterfacePrimaryIpPrototypeModel);
+    assertEquals(bareMetalServerNetworkAttachmentPrototypeVirtualNetworkInterfaceModel.protocolStateFilteringMode(), "auto");
     assertEquals(bareMetalServerNetworkAttachmentPrototypeVirtualNetworkInterfaceModel.resourceGroup(), resourceGroupIdentityModel);
     assertEquals(bareMetalServerNetworkAttachmentPrototypeVirtualNetworkInterfaceModel.securityGroups(), java.util.Arrays.asList(securityGroupIdentityModel));
     assertEquals(bareMetalServerNetworkAttachmentPrototypeVirtualNetworkInterfaceModel.subnet(), subnetIdentityModel);
@@ -142,26 +144,27 @@ public class BareMetalServerPrototypeBareMetalServerByNetworkAttachmentTest {
     BareMetalServerNetworkAttachmentPrototypeBareMetalServerNetworkAttachmentByPCIPrototype bareMetalServerNetworkAttachmentPrototypeModel = new BareMetalServerNetworkAttachmentPrototypeBareMetalServerNetworkAttachmentByPCIPrototype.Builder()
       .name("my-bare-metal-server-network-attachment")
       .virtualNetworkInterface(bareMetalServerNetworkAttachmentPrototypeVirtualNetworkInterfaceModel)
-      .allowedVlans(java.util.Arrays.asList(Long.valueOf("100")))
+      .allowedVlans(java.util.Arrays.asList(Long.valueOf("4")))
       .interfaceType("pci")
       .build();
     assertEquals(bareMetalServerNetworkAttachmentPrototypeModel.name(), "my-bare-metal-server-network-attachment");
     assertEquals(bareMetalServerNetworkAttachmentPrototypeModel.virtualNetworkInterface(), bareMetalServerNetworkAttachmentPrototypeVirtualNetworkInterfaceModel);
-    assertEquals(bareMetalServerNetworkAttachmentPrototypeModel.allowedVlans(), java.util.Arrays.asList(Long.valueOf("100")));
+    assertEquals(bareMetalServerNetworkAttachmentPrototypeModel.allowedVlans(), java.util.Arrays.asList(Long.valueOf("4")));
     assertEquals(bareMetalServerNetworkAttachmentPrototypeModel.interfaceType(), "pci");
 
     BareMetalServerPrimaryNetworkAttachmentPrototypeBareMetalServerPrimaryNetworkAttachmentByPCIPrototype bareMetalServerPrimaryNetworkAttachmentPrototypeModel = new BareMetalServerPrimaryNetworkAttachmentPrototypeBareMetalServerPrimaryNetworkAttachmentByPCIPrototype.Builder()
       .name("my-bare-metal-server-network-attachment")
       .virtualNetworkInterface(bareMetalServerNetworkAttachmentPrototypeVirtualNetworkInterfaceModel)
-      .allowedVlans(java.util.Arrays.asList(Long.valueOf("100")))
+      .allowedVlans(java.util.Arrays.asList(Long.valueOf("4")))
       .interfaceType("pci")
       .build();
     assertEquals(bareMetalServerPrimaryNetworkAttachmentPrototypeModel.name(), "my-bare-metal-server-network-attachment");
     assertEquals(bareMetalServerPrimaryNetworkAttachmentPrototypeModel.virtualNetworkInterface(), bareMetalServerNetworkAttachmentPrototypeVirtualNetworkInterfaceModel);
-    assertEquals(bareMetalServerPrimaryNetworkAttachmentPrototypeModel.allowedVlans(), java.util.Arrays.asList(Long.valueOf("100")));
+    assertEquals(bareMetalServerPrimaryNetworkAttachmentPrototypeModel.allowedVlans(), java.util.Arrays.asList(Long.valueOf("4")));
     assertEquals(bareMetalServerPrimaryNetworkAttachmentPrototypeModel.interfaceType(), "pci");
 
     BareMetalServerPrototypeBareMetalServerByNetworkAttachment bareMetalServerPrototypeBareMetalServerByNetworkAttachmentModel = new BareMetalServerPrototypeBareMetalServerByNetworkAttachment.Builder()
+      .bandwidth(Long.valueOf("20000"))
       .enableSecureBoot(false)
       .initialization(bareMetalServerInitializationPrototypeModel)
       .name("my-bare-metal-server")
@@ -173,6 +176,7 @@ public class BareMetalServerPrototypeBareMetalServerByNetworkAttachmentTest {
       .networkAttachments(java.util.Arrays.asList(bareMetalServerNetworkAttachmentPrototypeModel))
       .primaryNetworkAttachment(bareMetalServerPrimaryNetworkAttachmentPrototypeModel)
       .build();
+    assertEquals(bareMetalServerPrototypeBareMetalServerByNetworkAttachmentModel.bandwidth(), Long.valueOf("20000"));
     assertEquals(bareMetalServerPrototypeBareMetalServerByNetworkAttachmentModel.enableSecureBoot(), Boolean.valueOf(false));
     assertEquals(bareMetalServerPrototypeBareMetalServerByNetworkAttachmentModel.initialization(), bareMetalServerInitializationPrototypeModel);
     assertEquals(bareMetalServerPrototypeBareMetalServerByNetworkAttachmentModel.name(), "my-bare-metal-server");
@@ -188,6 +192,7 @@ public class BareMetalServerPrototypeBareMetalServerByNetworkAttachmentTest {
 
     BareMetalServerPrototypeBareMetalServerByNetworkAttachment bareMetalServerPrototypeBareMetalServerByNetworkAttachmentModelNew = TestUtilities.deserialize(json, BareMetalServerPrototypeBareMetalServerByNetworkAttachment.class);
     assertTrue(bareMetalServerPrototypeBareMetalServerByNetworkAttachmentModelNew instanceof BareMetalServerPrototypeBareMetalServerByNetworkAttachment);
+    assertEquals(bareMetalServerPrototypeBareMetalServerByNetworkAttachmentModelNew.bandwidth(), Long.valueOf("20000"));
     assertEquals(bareMetalServerPrototypeBareMetalServerByNetworkAttachmentModelNew.enableSecureBoot(), Boolean.valueOf(false));
     assertEquals(bareMetalServerPrototypeBareMetalServerByNetworkAttachmentModelNew.initialization().toString(), bareMetalServerInitializationPrototypeModel.toString());
     assertEquals(bareMetalServerPrototypeBareMetalServerByNetworkAttachmentModelNew.name(), "my-bare-metal-server");

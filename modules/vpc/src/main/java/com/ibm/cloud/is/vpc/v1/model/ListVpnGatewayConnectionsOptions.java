@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
@@ -30,6 +31,8 @@ public class ListVpnGatewayConnectionsOptions extends GenericModel {
   }
 
   protected String vpnGatewayId;
+  protected String start;
+  protected Long limit;
   protected String status;
 
   /**
@@ -37,6 +40,8 @@ public class ListVpnGatewayConnectionsOptions extends GenericModel {
    */
   public static class Builder {
     private String vpnGatewayId;
+    private String start;
+    private Long limit;
     private String status;
 
     /**
@@ -46,6 +51,8 @@ public class ListVpnGatewayConnectionsOptions extends GenericModel {
      */
     private Builder(ListVpnGatewayConnectionsOptions listVpnGatewayConnectionsOptions) {
       this.vpnGatewayId = listVpnGatewayConnectionsOptions.vpnGatewayId;
+      this.start = listVpnGatewayConnectionsOptions.start;
+      this.limit = listVpnGatewayConnectionsOptions.limit;
       this.status = listVpnGatewayConnectionsOptions.status;
     }
 
@@ -85,6 +92,28 @@ public class ListVpnGatewayConnectionsOptions extends GenericModel {
     }
 
     /**
+     * Set the start.
+     *
+     * @param start the start
+     * @return the ListVpnGatewayConnectionsOptions builder
+     */
+    public Builder start(String start) {
+      this.start = start;
+      return this;
+    }
+
+    /**
+     * Set the limit.
+     *
+     * @param limit the limit
+     * @return the ListVpnGatewayConnectionsOptions builder
+     */
+    public Builder limit(long limit) {
+      this.limit = limit;
+      return this;
+    }
+
+    /**
      * Set the status.
      *
      * @param status the status
@@ -102,6 +131,8 @@ public class ListVpnGatewayConnectionsOptions extends GenericModel {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.vpnGatewayId,
       "vpnGatewayId cannot be empty");
     vpnGatewayId = builder.vpnGatewayId;
+    start = builder.start;
+    limit = builder.limit;
     status = builder.status;
   }
 
@@ -123,6 +154,28 @@ public class ListVpnGatewayConnectionsOptions extends GenericModel {
    */
   public String vpnGatewayId() {
     return vpnGatewayId;
+  }
+
+  /**
+   * Gets the start.
+   *
+   * A server-provided token determining what resource to start the page on.
+   *
+   * @return the start
+   */
+  public String start() {
+    return start;
+  }
+
+  /**
+   * Gets the limit.
+   *
+   * The number of resources to return on a page.
+   *
+   * @return the limit
+   */
+  public Long limit() {
+    return limit;
   }
 
   /**

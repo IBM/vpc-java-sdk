@@ -14,6 +14,9 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.AccountReference;
+import com.ibm.cloud.is.vpc.v1.model.CatalogOfferingVersionPlanReference;
+import com.ibm.cloud.is.vpc.v1.model.CatalogOfferingVersionPlanReferenceDeleted;
+import com.ibm.cloud.is.vpc.v1.model.CatalogOfferingVersionReference;
 import com.ibm.cloud.is.vpc.v1.model.EncryptionKeyReference;
 import com.ibm.cloud.is.vpc.v1.model.ImageReference;
 import com.ibm.cloud.is.vpc.v1.model.ImageReferenceDeleted;
@@ -30,6 +33,7 @@ import com.ibm.cloud.is.vpc.v1.model.Volume;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentDevice;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentReferenceVolumeContext;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentReferenceVolumeContextDeleted;
+import com.ibm.cloud.is.vpc.v1.model.VolumeCatalogOffering;
 import com.ibm.cloud.is.vpc.v1.model.VolumeCollection;
 import com.ibm.cloud.is.vpc.v1.model.VolumeCollectionFirst;
 import com.ibm.cloud.is.vpc.v1.model.VolumeCollectionNext;

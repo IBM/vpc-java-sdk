@@ -215,6 +215,7 @@ public class CreateInstanceTemplateOptionsTest {
       .ips(java.util.Arrays.asList(virtualNetworkInterfaceIpPrototypeModel))
       .name("my-virtual-network-interface")
       .primaryIp(virtualNetworkInterfacePrimaryIpPrototypeModel)
+      .protocolStateFilteringMode("auto")
       .resourceGroup(resourceGroupIdentityModel)
       .securityGroups(java.util.Arrays.asList(securityGroupIdentityModel))
       .subnet(subnetIdentityModel)
@@ -225,6 +226,7 @@ public class CreateInstanceTemplateOptionsTest {
     assertEquals(instanceNetworkAttachmentPrototypeVirtualNetworkInterfaceModel.ips(), java.util.Arrays.asList(virtualNetworkInterfaceIpPrototypeModel));
     assertEquals(instanceNetworkAttachmentPrototypeVirtualNetworkInterfaceModel.name(), "my-virtual-network-interface");
     assertEquals(instanceNetworkAttachmentPrototypeVirtualNetworkInterfaceModel.primaryIp(), virtualNetworkInterfacePrimaryIpPrototypeModel);
+    assertEquals(instanceNetworkAttachmentPrototypeVirtualNetworkInterfaceModel.protocolStateFilteringMode(), "auto");
     assertEquals(instanceNetworkAttachmentPrototypeVirtualNetworkInterfaceModel.resourceGroup(), resourceGroupIdentityModel);
     assertEquals(instanceNetworkAttachmentPrototypeVirtualNetworkInterfaceModel.securityGroups(), java.util.Arrays.asList(securityGroupIdentityModel));
     assertEquals(instanceNetworkAttachmentPrototypeVirtualNetworkInterfaceModel.subnet(), subnetIdentityModel);
@@ -238,7 +240,9 @@ public class CreateInstanceTemplateOptionsTest {
 
     InstanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByImageInstanceByNetworkAttachment instanceTemplatePrototypeModel = new InstanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByImageInstanceByNetworkAttachment.Builder()
       .availabilityPolicy(instanceAvailabilityPolicyPrototypeModel)
+      .confidentialComputeMode("disabled")
       .defaultTrustedProfile(instanceDefaultTrustedProfilePrototypeModel)
+      .enableSecureBoot(true)
       .keys(java.util.Arrays.asList(keyIdentityModel))
       .metadataService(instanceMetadataServicePrototypeModel)
       .name("my-instance")
@@ -257,7 +261,9 @@ public class CreateInstanceTemplateOptionsTest {
       .primaryNetworkAttachment(instanceNetworkAttachmentPrototypeModel)
       .build();
     assertEquals(instanceTemplatePrototypeModel.availabilityPolicy(), instanceAvailabilityPolicyPrototypeModel);
+    assertEquals(instanceTemplatePrototypeModel.confidentialComputeMode(), "disabled");
     assertEquals(instanceTemplatePrototypeModel.defaultTrustedProfile(), instanceDefaultTrustedProfilePrototypeModel);
+    assertEquals(instanceTemplatePrototypeModel.enableSecureBoot(), Boolean.valueOf(true));
     assertEquals(instanceTemplatePrototypeModel.keys(), java.util.Arrays.asList(keyIdentityModel));
     assertEquals(instanceTemplatePrototypeModel.metadataService(), instanceMetadataServicePrototypeModel);
     assertEquals(instanceTemplatePrototypeModel.name(), "my-instance");

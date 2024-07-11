@@ -216,6 +216,7 @@ public class InstancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotIn
       .ips(java.util.Arrays.asList(virtualNetworkInterfaceIpPrototypeModel))
       .name("my-virtual-network-interface")
       .primaryIp(virtualNetworkInterfacePrimaryIpPrototypeModel)
+      .protocolStateFilteringMode("auto")
       .resourceGroup(resourceGroupIdentityModel)
       .securityGroups(java.util.Arrays.asList(securityGroupIdentityModel))
       .subnet(subnetIdentityModel)
@@ -226,6 +227,7 @@ public class InstancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotIn
     assertEquals(instanceNetworkAttachmentPrototypeVirtualNetworkInterfaceModel.ips(), java.util.Arrays.asList(virtualNetworkInterfaceIpPrototypeModel));
     assertEquals(instanceNetworkAttachmentPrototypeVirtualNetworkInterfaceModel.name(), "my-virtual-network-interface");
     assertEquals(instanceNetworkAttachmentPrototypeVirtualNetworkInterfaceModel.primaryIp(), virtualNetworkInterfacePrimaryIpPrototypeModel);
+    assertEquals(instanceNetworkAttachmentPrototypeVirtualNetworkInterfaceModel.protocolStateFilteringMode(), "auto");
     assertEquals(instanceNetworkAttachmentPrototypeVirtualNetworkInterfaceModel.resourceGroup(), resourceGroupIdentityModel);
     assertEquals(instanceNetworkAttachmentPrototypeVirtualNetworkInterfaceModel.securityGroups(), java.util.Arrays.asList(securityGroupIdentityModel));
     assertEquals(instanceNetworkAttachmentPrototypeVirtualNetworkInterfaceModel.subnet(), subnetIdentityModel);
@@ -239,7 +241,9 @@ public class InstancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotIn
 
     InstancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotInstanceByNetworkAttachment instancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotInstanceByNetworkAttachmentModel = new InstancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotInstanceByNetworkAttachment.Builder()
       .availabilityPolicy(instanceAvailabilityPolicyPrototypeModel)
+      .confidentialComputeMode("disabled")
       .defaultTrustedProfile(instanceDefaultTrustedProfilePrototypeModel)
+      .enableSecureBoot(true)
       .keys(java.util.Arrays.asList(keyIdentityModel))
       .metadataService(instanceMetadataServicePrototypeModel)
       .name("my-instance")
@@ -257,7 +261,9 @@ public class InstancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotIn
       .primaryNetworkAttachment(instanceNetworkAttachmentPrototypeModel)
       .build();
     assertEquals(instancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotInstanceByNetworkAttachmentModel.availabilityPolicy(), instanceAvailabilityPolicyPrototypeModel);
+    assertEquals(instancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotInstanceByNetworkAttachmentModel.confidentialComputeMode(), "disabled");
     assertEquals(instancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotInstanceByNetworkAttachmentModel.defaultTrustedProfile(), instanceDefaultTrustedProfilePrototypeModel);
+    assertEquals(instancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotInstanceByNetworkAttachmentModel.enableSecureBoot(), Boolean.valueOf(true));
     assertEquals(instancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotInstanceByNetworkAttachmentModel.keys(), java.util.Arrays.asList(keyIdentityModel));
     assertEquals(instancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotInstanceByNetworkAttachmentModel.metadataService(), instanceMetadataServicePrototypeModel);
     assertEquals(instancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotInstanceByNetworkAttachmentModel.name(), "my-instance");
@@ -279,7 +285,9 @@ public class InstancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotIn
     InstancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotInstanceByNetworkAttachment instancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotInstanceByNetworkAttachmentModelNew = TestUtilities.deserialize(json, InstancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotInstanceByNetworkAttachment.class);
     assertTrue(instancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotInstanceByNetworkAttachmentModelNew instanceof InstancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotInstanceByNetworkAttachment);
     assertEquals(instancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotInstanceByNetworkAttachmentModelNew.availabilityPolicy().toString(), instanceAvailabilityPolicyPrototypeModel.toString());
+    assertEquals(instancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotInstanceByNetworkAttachmentModelNew.confidentialComputeMode(), "disabled");
     assertEquals(instancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotInstanceByNetworkAttachmentModelNew.defaultTrustedProfile().toString(), instanceDefaultTrustedProfilePrototypeModel.toString());
+    assertEquals(instancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotInstanceByNetworkAttachmentModelNew.enableSecureBoot(), Boolean.valueOf(true));
     assertEquals(instancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotInstanceByNetworkAttachmentModelNew.metadataService().toString(), instanceMetadataServicePrototypeModel.toString());
     assertEquals(instancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotInstanceByNetworkAttachmentModelNew.name(), "my-instance");
     assertEquals(instancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotInstanceByNetworkAttachmentModelNew.placementTarget().toString(), instancePlacementTargetPrototypeModel.toString());

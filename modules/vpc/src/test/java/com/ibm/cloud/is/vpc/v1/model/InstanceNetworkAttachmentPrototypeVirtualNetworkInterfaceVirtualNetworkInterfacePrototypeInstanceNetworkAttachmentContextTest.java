@@ -76,6 +76,7 @@ public class InstanceNetworkAttachmentPrototypeVirtualNetworkInterfaceVirtualNet
       .ips(java.util.Arrays.asList(virtualNetworkInterfaceIpPrototypeModel))
       .name("my-virtual-network-interface")
       .primaryIp(virtualNetworkInterfacePrimaryIpPrototypeModel)
+      .protocolStateFilteringMode("auto")
       .resourceGroup(resourceGroupIdentityModel)
       .securityGroups(java.util.Arrays.asList(securityGroupIdentityModel))
       .subnet(subnetIdentityModel)
@@ -86,6 +87,7 @@ public class InstanceNetworkAttachmentPrototypeVirtualNetworkInterfaceVirtualNet
     assertEquals(instanceNetworkAttachmentPrototypeVirtualNetworkInterfaceVirtualNetworkInterfacePrototypeInstanceNetworkAttachmentContextModel.ips(), java.util.Arrays.asList(virtualNetworkInterfaceIpPrototypeModel));
     assertEquals(instanceNetworkAttachmentPrototypeVirtualNetworkInterfaceVirtualNetworkInterfacePrototypeInstanceNetworkAttachmentContextModel.name(), "my-virtual-network-interface");
     assertEquals(instanceNetworkAttachmentPrototypeVirtualNetworkInterfaceVirtualNetworkInterfacePrototypeInstanceNetworkAttachmentContextModel.primaryIp(), virtualNetworkInterfacePrimaryIpPrototypeModel);
+    assertEquals(instanceNetworkAttachmentPrototypeVirtualNetworkInterfaceVirtualNetworkInterfacePrototypeInstanceNetworkAttachmentContextModel.protocolStateFilteringMode(), "auto");
     assertEquals(instanceNetworkAttachmentPrototypeVirtualNetworkInterfaceVirtualNetworkInterfacePrototypeInstanceNetworkAttachmentContextModel.resourceGroup(), resourceGroupIdentityModel);
     assertEquals(instanceNetworkAttachmentPrototypeVirtualNetworkInterfaceVirtualNetworkInterfacePrototypeInstanceNetworkAttachmentContextModel.securityGroups(), java.util.Arrays.asList(securityGroupIdentityModel));
     assertEquals(instanceNetworkAttachmentPrototypeVirtualNetworkInterfaceVirtualNetworkInterfacePrototypeInstanceNetworkAttachmentContextModel.subnet(), subnetIdentityModel);
@@ -99,6 +101,7 @@ public class InstanceNetworkAttachmentPrototypeVirtualNetworkInterfaceVirtualNet
     assertEquals(instanceNetworkAttachmentPrototypeVirtualNetworkInterfaceVirtualNetworkInterfacePrototypeInstanceNetworkAttachmentContextModelNew.enableInfrastructureNat(), Boolean.valueOf(true));
     assertEquals(instanceNetworkAttachmentPrototypeVirtualNetworkInterfaceVirtualNetworkInterfacePrototypeInstanceNetworkAttachmentContextModelNew.name(), "my-virtual-network-interface");
     assertEquals(instanceNetworkAttachmentPrototypeVirtualNetworkInterfaceVirtualNetworkInterfacePrototypeInstanceNetworkAttachmentContextModelNew.primaryIp().toString(), virtualNetworkInterfacePrimaryIpPrototypeModel.toString());
+    assertEquals(instanceNetworkAttachmentPrototypeVirtualNetworkInterfaceVirtualNetworkInterfacePrototypeInstanceNetworkAttachmentContextModelNew.protocolStateFilteringMode(), "auto");
     assertEquals(instanceNetworkAttachmentPrototypeVirtualNetworkInterfaceVirtualNetworkInterfacePrototypeInstanceNetworkAttachmentContextModelNew.resourceGroup().toString(), resourceGroupIdentityModel.toString());
     assertEquals(instanceNetworkAttachmentPrototypeVirtualNetworkInterfaceVirtualNetworkInterfacePrototypeInstanceNetworkAttachmentContextModelNew.subnet().toString(), subnetIdentityModel.toString());
   }

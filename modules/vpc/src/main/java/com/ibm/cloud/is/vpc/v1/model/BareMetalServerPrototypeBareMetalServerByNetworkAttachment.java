@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.is.vpc.v1.model;
 
 import java.util.ArrayList;
@@ -25,6 +26,7 @@ public class BareMetalServerPrototypeBareMetalServerByNetworkAttachment extends 
    * Builder.
    */
   public static class Builder {
+    private Long bandwidth;
     private Boolean enableSecureBoot;
     private BareMetalServerInitializationPrototype initialization;
     private String name;
@@ -42,6 +44,7 @@ public class BareMetalServerPrototypeBareMetalServerByNetworkAttachment extends 
      * @param bareMetalServerPrototypeBareMetalServerByNetworkAttachment the instance to initialize the Builder with
      */
     public Builder(BareMetalServerPrototype bareMetalServerPrototypeBareMetalServerByNetworkAttachment) {
+      this.bandwidth = bareMetalServerPrototypeBareMetalServerByNetworkAttachment.bandwidth;
       this.enableSecureBoot = bareMetalServerPrototypeBareMetalServerByNetworkAttachment.enableSecureBoot;
       this.initialization = bareMetalServerPrototypeBareMetalServerByNetworkAttachment.initialization;
       this.name = bareMetalServerPrototypeBareMetalServerByNetworkAttachment.name;
@@ -97,6 +100,17 @@ public class BareMetalServerPrototypeBareMetalServerByNetworkAttachment extends 
         this.networkAttachments = new ArrayList<BareMetalServerNetworkAttachmentPrototype>();
       }
       this.networkAttachments.add(networkAttachments);
+      return this;
+    }
+
+    /**
+     * Set the bandwidth.
+     *
+     * @param bandwidth the bandwidth
+     * @return the BareMetalServerPrototypeBareMetalServerByNetworkAttachment builder
+     */
+    public Builder bandwidth(long bandwidth) {
+      this.bandwidth = bandwidth;
       return this;
     }
 
@@ -223,6 +237,7 @@ public class BareMetalServerPrototypeBareMetalServerByNetworkAttachment extends 
       "zone cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.primaryNetworkAttachment,
       "primaryNetworkAttachment cannot be null");
+    bandwidth = builder.bandwidth;
     enableSecureBoot = builder.enableSecureBoot;
     initialization = builder.initialization;
     name = builder.name;

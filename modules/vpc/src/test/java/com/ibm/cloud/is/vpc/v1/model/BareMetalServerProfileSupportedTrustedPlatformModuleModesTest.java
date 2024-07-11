@@ -32,6 +32,7 @@ public class BareMetalServerProfileSupportedTrustedPlatformModuleModesTest {
   @Test
   public void testBareMetalServerProfileSupportedTrustedPlatformModuleModes() throws Throwable {
     BareMetalServerProfileSupportedTrustedPlatformModuleModes bareMetalServerProfileSupportedTrustedPlatformModuleModesModel = new BareMetalServerProfileSupportedTrustedPlatformModuleModes();
+    assertNull(bareMetalServerProfileSupportedTrustedPlatformModuleModesModel.getXDefault());
     assertNull(bareMetalServerProfileSupportedTrustedPlatformModuleModesModel.getType());
     assertNull(bareMetalServerProfileSupportedTrustedPlatformModuleModesModel.getValues());
   }

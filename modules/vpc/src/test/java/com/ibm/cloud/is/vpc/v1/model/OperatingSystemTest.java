@@ -32,12 +32,14 @@ public class OperatingSystemTest {
   @Test
   public void testOperatingSystem() throws Throwable {
     OperatingSystem operatingSystemModel = new OperatingSystem();
+    assertNull(operatingSystemModel.isAllowUserImageCreation());
     assertNull(operatingSystemModel.getArchitecture());
     assertNull(operatingSystemModel.isDedicatedHostOnly());
     assertNull(operatingSystemModel.getDisplayName());
     assertNull(operatingSystemModel.getFamily());
     assertNull(operatingSystemModel.getHref());
     assertNull(operatingSystemModel.getName());
+    assertNull(operatingSystemModel.getUserDataFormat());
     assertNull(operatingSystemModel.getVendor());
     assertNull(operatingSystemModel.getVersion());
   }

@@ -84,6 +84,7 @@ public class CreateShareOptionsTest {
       .ips(java.util.Arrays.asList(virtualNetworkInterfaceIpPrototypeModel))
       .name("my-virtual-network-interface")
       .primaryIp(virtualNetworkInterfacePrimaryIpPrototypeModel)
+      .protocolStateFilteringMode("auto")
       .resourceGroup(resourceGroupIdentityModel)
       .securityGroups(java.util.Arrays.asList(securityGroupIdentityModel))
       .subnet(subnetIdentityModel)
@@ -94,6 +95,7 @@ public class CreateShareOptionsTest {
     assertEquals(shareMountTargetVirtualNetworkInterfacePrototypeModel.ips(), java.util.Arrays.asList(virtualNetworkInterfaceIpPrototypeModel));
     assertEquals(shareMountTargetVirtualNetworkInterfacePrototypeModel.name(), "my-virtual-network-interface");
     assertEquals(shareMountTargetVirtualNetworkInterfacePrototypeModel.primaryIp(), virtualNetworkInterfacePrimaryIpPrototypeModel);
+    assertEquals(shareMountTargetVirtualNetworkInterfacePrototypeModel.protocolStateFilteringMode(), "auto");
     assertEquals(shareMountTargetVirtualNetworkInterfacePrototypeModel.resourceGroup(), resourceGroupIdentityModel);
     assertEquals(shareMountTargetVirtualNetworkInterfacePrototypeModel.securityGroups(), java.util.Arrays.asList(securityGroupIdentityModel));
     assertEquals(shareMountTargetVirtualNetworkInterfacePrototypeModel.subnet(), subnetIdentityModel);
@@ -118,6 +120,7 @@ public class CreateShareOptionsTest {
     assertEquals(zoneIdentityModel.name(), "us-south-1");
 
     SharePrototypeShareContext sharePrototypeShareContextModel = new SharePrototypeShareContext.Builder()
+      .allowedTransitEncryptionModes(java.util.Arrays.asList("none"))
       .iops(Long.valueOf("100"))
       .mountTargets(java.util.Arrays.asList(shareMountTargetPrototypeModel))
       .name("my-share")
@@ -127,6 +130,7 @@ public class CreateShareOptionsTest {
       .userTags(java.util.Arrays.asList())
       .zone(zoneIdentityModel)
       .build();
+    assertEquals(sharePrototypeShareContextModel.allowedTransitEncryptionModes(), java.util.Arrays.asList("none"));
     assertEquals(sharePrototypeShareContextModel.iops(), Long.valueOf("100"));
     assertEquals(sharePrototypeShareContextModel.mountTargets(), java.util.Arrays.asList(shareMountTargetPrototypeModel));
     assertEquals(sharePrototypeShareContextModel.name(), "my-share");
@@ -149,31 +153,33 @@ public class CreateShareOptionsTest {
     assertEquals(shareInitialOwnerModel.uid(), Long.valueOf("50"));
 
     SharePrototypeShareBySize sharePrototypeModel = new SharePrototypeShareBySize.Builder()
-      .iops(Long.valueOf("100"))
+      .allowedTransitEncryptionModes(java.util.Arrays.asList("none"))
       .mountTargets(java.util.Arrays.asList(shareMountTargetPrototypeModel))
       .name("my-share")
-      .profile(shareProfileIdentityModel)
       .replicaShare(sharePrototypeShareContextModel)
       .userTags(java.util.Arrays.asList())
-      .zone(zoneIdentityModel)
       .accessControlMode("security_group")
       .encryptionKey(encryptionKeyIdentityModel)
       .initialOwner(shareInitialOwnerModel)
+      .iops(Long.valueOf("100"))
+      .profile(shareProfileIdentityModel)
       .resourceGroup(resourceGroupIdentityModel)
       .size(Long.valueOf("200"))
+      .zone(zoneIdentityModel)
       .build();
-    assertEquals(sharePrototypeModel.iops(), Long.valueOf("100"));
+    assertEquals(sharePrototypeModel.allowedTransitEncryptionModes(), java.util.Arrays.asList("none"));
     assertEquals(sharePrototypeModel.mountTargets(), java.util.Arrays.asList(shareMountTargetPrototypeModel));
     assertEquals(sharePrototypeModel.name(), "my-share");
-    assertEquals(sharePrototypeModel.profile(), shareProfileIdentityModel);
     assertEquals(sharePrototypeModel.replicaShare(), sharePrototypeShareContextModel);
     assertEquals(sharePrototypeModel.userTags(), java.util.Arrays.asList());
-    assertEquals(sharePrototypeModel.zone(), zoneIdentityModel);
     assertEquals(sharePrototypeModel.accessControlMode(), "security_group");
     assertEquals(sharePrototypeModel.encryptionKey(), encryptionKeyIdentityModel);
     assertEquals(sharePrototypeModel.initialOwner(), shareInitialOwnerModel);
+    assertEquals(sharePrototypeModel.iops(), Long.valueOf("100"));
+    assertEquals(sharePrototypeModel.profile(), shareProfileIdentityModel);
     assertEquals(sharePrototypeModel.resourceGroup(), resourceGroupIdentityModel);
     assertEquals(sharePrototypeModel.size(), Long.valueOf("200"));
+    assertEquals(sharePrototypeModel.zone(), zoneIdentityModel);
 
     CreateShareOptions createShareOptionsModel = new CreateShareOptions.Builder()
       .sharePrototype(sharePrototypeModel)

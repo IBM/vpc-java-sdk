@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.is.vpc.v1.model;
 
 import java.util.ArrayList;
@@ -177,6 +178,8 @@ public class BareMetalServerInitializationPrototype extends GenericModel {
    * Gets the userData.
    *
    * User data to be made available when initializing the bare metal server.
+   *
+   * If unspecified, no user data will be made available.
    *
    * @return the userData
    */

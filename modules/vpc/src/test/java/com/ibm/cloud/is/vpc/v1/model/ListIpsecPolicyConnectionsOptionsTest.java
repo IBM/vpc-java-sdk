@@ -33,8 +33,12 @@ public class ListIpsecPolicyConnectionsOptionsTest {
   public void testListIpsecPolicyConnectionsOptions() throws Throwable {
     ListIpsecPolicyConnectionsOptions listIpsecPolicyConnectionsOptionsModel = new ListIpsecPolicyConnectionsOptions.Builder()
       .id("testString")
+      .start("testString")
+      .limit(Long.valueOf("50"))
       .build();
     assertEquals(listIpsecPolicyConnectionsOptionsModel.id(), "testString");
+    assertEquals(listIpsecPolicyConnectionsOptionsModel.start(), "testString");
+    assertEquals(listIpsecPolicyConnectionsOptionsModel.limit(), Long.valueOf("50"));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

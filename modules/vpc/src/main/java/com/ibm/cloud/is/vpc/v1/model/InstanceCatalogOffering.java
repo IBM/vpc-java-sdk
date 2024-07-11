@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
@@ -19,9 +20,23 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class InstanceCatalogOffering extends GenericModel {
 
+  protected CatalogOfferingVersionPlanReference plan;
   protected CatalogOfferingVersionReference version;
 
   protected InstanceCatalogOffering() { }
+
+  /**
+   * Gets the plan.
+   *
+   * The billing plan used for the catalog offering version.
+   *
+   * If absent, no billing plan is in use (free).
+   *
+   * @return the plan
+   */
+  public CatalogOfferingVersionPlanReference getPlan() {
+    return plan;
+  }
 
   /**
    * Gets the version.

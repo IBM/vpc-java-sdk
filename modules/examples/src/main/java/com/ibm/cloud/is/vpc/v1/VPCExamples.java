@@ -291,9 +291,11 @@ import com.ibm.cloud.is.vpc.v1.model.GetVpnServerOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetVpnServerRouteOptions;
 import com.ibm.cloud.is.vpc.v1.model.IKEPolicy;
 import com.ibm.cloud.is.vpc.v1.model.IKEPolicyPatch;
+import com.ibm.cloud.is.vpc.v1.model.IPsecPolicyConnectionCollection;
 import com.ibm.cloud.is.vpc.v1.model.IPsecPolicy;
 import com.ibm.cloud.is.vpc.v1.model.IPsecPolicyPatch;
 import com.ibm.cloud.is.vpc.v1.model.IkePoliciesPager;
+import com.ibm.cloud.is.vpc.v1.model.IKEPolicyConnectionCollection;
 import com.ibm.cloud.is.vpc.v1.model.Image;
 import com.ibm.cloud.is.vpc.v1.model.ImageExportJob;
 import com.ibm.cloud.is.vpc.v1.model.ImageExportJobPatch;
@@ -5256,8 +5258,8 @@ public class VPCExamples {
         .id(ikePolicyId)
         .build();
 
-      Response<VPNGatewayConnectionCollection> response = vpcService.listIkePolicyConnections(listIkePolicyConnectionsOptions).execute();
-      VPNGatewayConnectionCollection vpnGatewayConnectionCollection = response.getResult();
+      Response<IKEPolicyConnectionCollection> response = vpcService.listIkePolicyConnections(listIkePolicyConnectionsOptions).execute();
+      IKEPolicyConnectionCollection ikePolicyConnectionCollection = response.getResult();
 
       // end-list_ike_policy_connections
     } catch (ServiceResponseException e) {
@@ -5349,8 +5351,8 @@ public class VPCExamples {
         .id(iPsecPolicyId)
         .build();
 
-      Response<VPNGatewayConnectionCollection> response = vpcService.listIpsecPolicyConnections(listIpsecPolicyConnectionsOptions).execute();
-      VPNGatewayConnectionCollection vpnGatewayConnectionCollection = response.getResult();
+      Response<IPsecPolicyConnectionCollection> response = vpcService.listIpsecPolicyConnections(listIpsecPolicyConnectionsOptions).execute();
+      IPsecPolicyConnectionCollection ipsecPolicyConnectionCollection = response.getResult();
 
       // end-list_ipsec_policy_connections
     } catch (ServiceResponseException e) {

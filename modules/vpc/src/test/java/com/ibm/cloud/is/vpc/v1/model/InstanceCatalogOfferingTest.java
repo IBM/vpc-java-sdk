@@ -13,6 +13,8 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.ibm.cloud.is.vpc.v1.model.CatalogOfferingVersionPlanReference;
+import com.ibm.cloud.is.vpc.v1.model.CatalogOfferingVersionPlanReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.CatalogOfferingVersionReference;
 import com.ibm.cloud.is.vpc.v1.model.InstanceCatalogOffering;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
@@ -33,6 +35,7 @@ public class InstanceCatalogOfferingTest {
   @Test
   public void testInstanceCatalogOffering() throws Throwable {
     InstanceCatalogOffering instanceCatalogOfferingModel = new InstanceCatalogOffering();
+    assertNull(instanceCatalogOfferingModel.getPlan());
     assertNull(instanceCatalogOfferingModel.getVersion());
   }
 }

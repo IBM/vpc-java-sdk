@@ -69,7 +69,6 @@ public class VPNGatewayConnectionPatchTest {
       .name("my-vpn-connection")
       .peer(vpnGatewayConnectionPeerPatchModel)
       .psk("lkj14b1oi0alcniejkso")
-      .routingProtocol("none")
       .build();
     assertEquals(vpnGatewayConnectionPatchModel.adminStateUp(), Boolean.valueOf(true));
     assertEquals(vpnGatewayConnectionPatchModel.deadPeerDetection(), vpnGatewayConnectionDpdPatchModel);
@@ -79,7 +78,6 @@ public class VPNGatewayConnectionPatchTest {
     assertEquals(vpnGatewayConnectionPatchModel.name(), "my-vpn-connection");
     assertEquals(vpnGatewayConnectionPatchModel.peer(), vpnGatewayConnectionPeerPatchModel);
     assertEquals(vpnGatewayConnectionPatchModel.psk(), "lkj14b1oi0alcniejkso");
-    assertEquals(vpnGatewayConnectionPatchModel.routingProtocol(), "none");
 
     String json = TestUtilities.serialize(vpnGatewayConnectionPatchModel);
 
@@ -93,7 +91,6 @@ public class VPNGatewayConnectionPatchTest {
     assertEquals(vpnGatewayConnectionPatchModelNew.name(), "my-vpn-connection");
     assertEquals(vpnGatewayConnectionPatchModelNew.peer().toString(), vpnGatewayConnectionPeerPatchModel.toString());
     assertEquals(vpnGatewayConnectionPatchModelNew.psk(), "lkj14b1oi0alcniejkso");
-    assertEquals(vpnGatewayConnectionPatchModelNew.routingProtocol(), "none");
   }
   @Test
   public void testVPNGatewayConnectionPatchAsPatch() throws Throwable {
@@ -124,7 +121,6 @@ public class VPNGatewayConnectionPatchTest {
       .name("my-vpn-connection")
       .peer(vpnGatewayConnectionPeerPatchModel)
       .psk("lkj14b1oi0alcniejkso")
-      .routingProtocol("none")
       .build();
 
     Map<String, Object> mergePatch = vpnGatewayConnectionPatchModel.asPatch();
@@ -137,7 +133,6 @@ public class VPNGatewayConnectionPatchTest {
     assertEquals(mergePatch.get("name"), "my-vpn-connection");
     assertTrue(mergePatch.containsKey("peer"));
     assertEquals(mergePatch.get("psk"), "lkj14b1oi0alcniejkso");
-    assertEquals(mergePatch.get("routing_protocol"), "none");
   }
 
 }

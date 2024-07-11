@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.is.vpc.v1.model;
 
 import java.util.ArrayList;
@@ -49,12 +50,22 @@ public class ListImagesOptions extends GenericModel {
     String X_PUBLIC = "public";
   }
 
+  public interface UserDataFormat {
+    /** cloud_init. */
+    String CLOUD_INIT = "cloud_init";
+    /** esxi_kickstart. */
+    String ESXI_KICKSTART = "esxi_kickstart";
+    /** ipxe. */
+    String IPXE = "ipxe";
+  }
+
   protected String start;
   protected Long limit;
   protected String resourceGroupId;
   protected String name;
   protected List<String> status;
   protected String visibility;
+  protected List<String> userDataFormat;
 
   /**
    * Builder.
@@ -66,6 +77,7 @@ public class ListImagesOptions extends GenericModel {
     private String name;
     private List<String> status;
     private String visibility;
+    private List<String> userDataFormat;
 
     /**
      * Instantiates a new Builder from an existing ListImagesOptions instance.
@@ -79,6 +91,7 @@ public class ListImagesOptions extends GenericModel {
       this.name = listImagesOptions.name;
       this.status = listImagesOptions.status;
       this.visibility = listImagesOptions.visibility;
+      this.userDataFormat = listImagesOptions.userDataFormat;
     }
 
     /**
@@ -109,6 +122,22 @@ public class ListImagesOptions extends GenericModel {
         this.status = new ArrayList<String>();
       }
       this.status.add(status);
+      return this;
+    }
+
+    /**
+     * Adds a new element to userDataFormat.
+     *
+     * @param userDataFormat the new element to be added
+     * @return the ListImagesOptions builder
+     */
+    public Builder addUserDataFormat(String userDataFormat) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(userDataFormat,
+        "userDataFormat cannot be null");
+      if (this.userDataFormat == null) {
+        this.userDataFormat = new ArrayList<String>();
+      }
+      this.userDataFormat.add(userDataFormat);
       return this;
     }
 
@@ -178,6 +207,18 @@ public class ListImagesOptions extends GenericModel {
       this.visibility = visibility;
       return this;
     }
+
+    /**
+     * Set the userDataFormat.
+     * Existing userDataFormat will be replaced.
+     *
+     * @param userDataFormat the userDataFormat
+     * @return the ListImagesOptions builder
+     */
+    public Builder userDataFormat(List<String> userDataFormat) {
+      this.userDataFormat = userDataFormat;
+      return this;
+    }
   }
 
   protected ListImagesOptions() { }
@@ -189,6 +230,7 @@ public class ListImagesOptions extends GenericModel {
     name = builder.name;
     status = builder.status;
     visibility = builder.visibility;
+    userDataFormat = builder.userDataFormat;
   }
 
   /**
@@ -264,6 +306,18 @@ public class ListImagesOptions extends GenericModel {
    */
   public String visibility() {
     return visibility;
+  }
+
+  /**
+   * Gets the userDataFormat.
+   *
+   * Filters the collection to images with a `user_data_format` property matching one of the specified comma-separated
+   * values.
+   *
+   * @return the userDataFormat
+   */
+  public List<String> userDataFormat() {
+    return userDataFormat;
   }
 }
 

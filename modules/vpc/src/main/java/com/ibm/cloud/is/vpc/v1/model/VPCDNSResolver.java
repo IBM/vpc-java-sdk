@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.is.vpc.v1.model;
 
 import java.util.List;
@@ -34,6 +35,9 @@ public class VPCDNSResolver extends GenericModel {
    *                specified in `dns.resolver.vpc`.
    * - `manual`: DNS server addresses are specified in `dns.resolver.manual_servers`.
    * - `system`: DNS server addresses are provided by the system.
+   *
+   * The maximum number of DNS servers is expected to
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface Type {
     /** delegated. */
@@ -88,7 +92,10 @@ public class VPCDNSResolver extends GenericModel {
    *
    * - by the system when `dns.resolver.type` is `system`
    * - using the DNS servers in `dns.resolver.vpc` when `dns.resolver.type` is `delegated`
-   * - using `dns.resolver.manual_servers` when the `dns.resolver.type` is `manual`.
+   * - using `dns.resolver.manual_servers` when the `dns.resolver.type` is `manual`
+   *
+   * The maximum number of DNS servers is expected to
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the servers
    */
@@ -105,6 +112,9 @@ public class VPCDNSResolver extends GenericModel {
    *                specified in `dns.resolver.vpc`.
    * - `manual`: DNS server addresses are specified in `dns.resolver.manual_servers`.
    * - `system`: DNS server addresses are provided by the system.
+   *
+   * The maximum number of DNS servers is expected to
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the type
    */
@@ -137,6 +147,9 @@ public class VPCDNSResolver extends GenericModel {
    * If the DNS servers do not have `zone_affinity`, the DHCP [Domain Name Server
    * Option](https://datatracker.ietf.org/doc/html/rfc2132#section-3.8) for each zone will list all the manual DNS
    * servers in the order specified.
+   *
+   * The maximum number of manual DNS servers is expected to
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the manualServers
    */

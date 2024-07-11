@@ -76,6 +76,7 @@ public class ShareMountTargetVirtualNetworkInterfacePrototypeVirtualNetworkInter
       .ips(java.util.Arrays.asList(virtualNetworkInterfaceIpPrototypeModel))
       .name("my-virtual-network-interface")
       .primaryIp(virtualNetworkInterfacePrimaryIpPrototypeModel)
+      .protocolStateFilteringMode("auto")
       .resourceGroup(resourceGroupIdentityModel)
       .securityGroups(java.util.Arrays.asList(securityGroupIdentityModel))
       .subnet(subnetIdentityModel)
@@ -86,6 +87,7 @@ public class ShareMountTargetVirtualNetworkInterfacePrototypeVirtualNetworkInter
     assertEquals(shareMountTargetVirtualNetworkInterfacePrototypeVirtualNetworkInterfacePrototypeShareMountTargetContextModel.ips(), java.util.Arrays.asList(virtualNetworkInterfaceIpPrototypeModel));
     assertEquals(shareMountTargetVirtualNetworkInterfacePrototypeVirtualNetworkInterfacePrototypeShareMountTargetContextModel.name(), "my-virtual-network-interface");
     assertEquals(shareMountTargetVirtualNetworkInterfacePrototypeVirtualNetworkInterfacePrototypeShareMountTargetContextModel.primaryIp(), virtualNetworkInterfacePrimaryIpPrototypeModel);
+    assertEquals(shareMountTargetVirtualNetworkInterfacePrototypeVirtualNetworkInterfacePrototypeShareMountTargetContextModel.protocolStateFilteringMode(), "auto");
     assertEquals(shareMountTargetVirtualNetworkInterfacePrototypeVirtualNetworkInterfacePrototypeShareMountTargetContextModel.resourceGroup(), resourceGroupIdentityModel);
     assertEquals(shareMountTargetVirtualNetworkInterfacePrototypeVirtualNetworkInterfacePrototypeShareMountTargetContextModel.securityGroups(), java.util.Arrays.asList(securityGroupIdentityModel));
     assertEquals(shareMountTargetVirtualNetworkInterfacePrototypeVirtualNetworkInterfacePrototypeShareMountTargetContextModel.subnet(), subnetIdentityModel);
@@ -99,6 +101,7 @@ public class ShareMountTargetVirtualNetworkInterfacePrototypeVirtualNetworkInter
     assertEquals(shareMountTargetVirtualNetworkInterfacePrototypeVirtualNetworkInterfacePrototypeShareMountTargetContextModelNew.enableInfrastructureNat(), Boolean.valueOf(true));
     assertEquals(shareMountTargetVirtualNetworkInterfacePrototypeVirtualNetworkInterfacePrototypeShareMountTargetContextModelNew.name(), "my-virtual-network-interface");
     assertEquals(shareMountTargetVirtualNetworkInterfacePrototypeVirtualNetworkInterfacePrototypeShareMountTargetContextModelNew.primaryIp().toString(), virtualNetworkInterfacePrimaryIpPrototypeModel.toString());
+    assertEquals(shareMountTargetVirtualNetworkInterfacePrototypeVirtualNetworkInterfacePrototypeShareMountTargetContextModelNew.protocolStateFilteringMode(), "auto");
     assertEquals(shareMountTargetVirtualNetworkInterfacePrototypeVirtualNetworkInterfacePrototypeShareMountTargetContextModelNew.resourceGroup().toString(), resourceGroupIdentityModel.toString());
     assertEquals(shareMountTargetVirtualNetworkInterfacePrototypeVirtualNetworkInterfacePrototypeShareMountTargetContextModelNew.subnet().toString(), subnetIdentityModel.toString());
   }

@@ -33,9 +33,13 @@ public class ListVpnGatewayConnectionsOptionsTest {
   public void testListVpnGatewayConnectionsOptions() throws Throwable {
     ListVpnGatewayConnectionsOptions listVpnGatewayConnectionsOptionsModel = new ListVpnGatewayConnectionsOptions.Builder()
       .vpnGatewayId("testString")
+      .start("testString")
+      .limit(Long.valueOf("50"))
       .status("down")
       .build();
     assertEquals(listVpnGatewayConnectionsOptionsModel.vpnGatewayId(), "testString");
+    assertEquals(listVpnGatewayConnectionsOptionsModel.start(), "testString");
+    assertEquals(listVpnGatewayConnectionsOptionsModel.limit(), Long.valueOf("50"));
     assertEquals(listVpnGatewayConnectionsOptionsModel.status(), "down");
   }
 

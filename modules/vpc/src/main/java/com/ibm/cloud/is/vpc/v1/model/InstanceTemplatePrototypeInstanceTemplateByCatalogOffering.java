@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.is.vpc.v1.model;
 
 /**
@@ -20,6 +21,18 @@ package com.ibm.cloud.is.vpc.v1.model;
  * - InstanceTemplatePrototypeInstanceTemplateByCatalogOfferingInstanceTemplateByCatalogOfferingInstanceByNetworkInterface
  */
 public class InstanceTemplatePrototypeInstanceTemplateByCatalogOffering extends InstanceTemplatePrototype {
+
+  /**
+   * The confidential compute mode to use for this virtual server instance.
+   *
+   * If unspecified, the default confidential compute mode from the profile will be used.
+   */
+  public interface ConfidentialComputeMode {
+    /** disabled. */
+    String DISABLED = "disabled";
+    /** sgx. */
+    String SGX = "sgx";
+  }
 
 
   protected InstanceTemplatePrototypeInstanceTemplateByCatalogOffering() { }

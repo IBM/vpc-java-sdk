@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.is.vpc.v1.model;
 
 import java.util.List;
@@ -23,8 +24,24 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  * Classes which extend this class:
  * - SharePrototypeShareBySize
  * - SharePrototypeShareBySourceShare
+ * - SharePrototypeShareByOriginShare
  */
 public class SharePrototype extends GenericModel {
+
+  /**
+   * An allowed transit encryption mode for this share.
+   * - `none`: Not encrypted in transit.
+   * - `user_managed`: Encrypted in transit using an instance identity certificate.
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
+   */
+  public interface AllowedTransitEncryptionModes {
+    /** none. */
+    String NONE = "none";
+    /** user_managed. */
+    String USER_MANAGED = "user_managed";
+  }
 
   /**
    * The access control mode for the share:
@@ -42,44 +59,48 @@ public class SharePrototype extends GenericModel {
     String VPC = "vpc";
   }
 
-  protected Long iops;
+  @SerializedName("allowed_transit_encryption_modes")
+  protected List<String> allowedTransitEncryptionModes;
   @SerializedName("mount_targets")
   protected List<ShareMountTargetPrototype> mountTargets;
   protected String name;
-  protected ShareProfileIdentity profile;
   @SerializedName("replica_share")
   protected SharePrototypeShareContext replicaShare;
   @SerializedName("user_tags")
   protected List<String> userTags;
-  protected ZoneIdentity zone;
   @SerializedName("access_control_mode")
   protected String accessControlMode;
   @SerializedName("encryption_key")
   protected EncryptionKeyIdentity encryptionKey;
   @SerializedName("initial_owner")
   protected ShareInitialOwner initialOwner;
+  protected Long iops;
+  protected ShareProfileIdentity profile;
   @SerializedName("resource_group")
   protected ResourceGroupIdentity resourceGroup;
   protected Long size;
+  protected ZoneIdentity zone;
   @SerializedName("replication_cron_spec")
   protected String replicationCronSpec;
   @SerializedName("source_share")
   protected ShareIdentity sourceShare;
+  @SerializedName("origin_share")
+  protected ShareIdentity originShare;
 
   protected SharePrototype() { }
 
   /**
-   * Gets the iops.
+   * Gets the allowedTransitEncryptionModes.
    *
-   * The maximum input/output operations per second (IOPS) for the file share. The share must be in the
-   * `defined_performance` profile family, and the value must be in the range supported by the share's specified size.
+   * The transit encryption modes to allow for this share. If unspecified:
+   * - If share mount targets are specified, and those share mount targets all specify a
+   *   `transit_encryption` of `user_managed`, then only `user_managed` will be allowed.
+   * - Otherwise, all `transit_encryption` modes will be allowed.
    *
-   * In addition, each client accessing the share will be restricted to 48,000 IOPS.
-   *
-   * @return the iops
+   * @return the allowedTransitEncryptionModes
    */
-  public Long iops() {
-    return iops;
+  public List<String> allowedTransitEncryptionModes() {
+    return allowedTransitEncryptionModes;
   }
 
   /**
@@ -106,18 +127,6 @@ public class SharePrototype extends GenericModel {
   }
 
   /**
-   * Gets the profile.
-   *
-   * The [profile](https://cloud.ibm.com/docs/vpc?topic=vpc-file-storage-profiles) to use
-   * for this file share. The profile must support the share's specified IOPS and size.
-   *
-   * @return the profile
-   */
-  public ShareProfileIdentity profile() {
-    return profile;
-  }
-
-  /**
    * Gets the replicaShare.
    *
    * Configuration for a replica file share to create and associate with this file share. If
@@ -139,18 +148,6 @@ public class SharePrototype extends GenericModel {
    */
   public List<String> userTags() {
     return userTags;
-  }
-
-  /**
-   * Gets the zone.
-   *
-   * The zone this file share will reside in. For a replica share, this must be a different
-   * zone in the same region as the source share.
-   *
-   * @return the zone
-   */
-  public ZoneIdentity zone() {
-    return zone;
   }
 
   /**
@@ -198,6 +195,32 @@ public class SharePrototype extends GenericModel {
   }
 
   /**
+   * Gets the iops.
+   *
+   * The maximum input/output operations per second (IOPS) for the file share. The share must be in the
+   * `defined_performance` profile family, and the value must be in the range supported by the share's specified size.
+   *
+   * In addition, each client accessing the share will be restricted to 48,000 IOPS.
+   *
+   * @return the iops
+   */
+  public Long iops() {
+    return iops;
+  }
+
+  /**
+   * Gets the profile.
+   *
+   * The [profile](https://cloud.ibm.com/docs/vpc?topic=vpc-file-storage-profiles) to use
+   * for this file share. The profile must support the share's specified IOPS and size.
+   *
+   * @return the profile
+   */
+  public ShareProfileIdentity profile() {
+    return profile;
+  }
+
+  /**
    * Gets the resourceGroup.
    *
    * The resource group to use. If unspecified, the account's [default resource
@@ -220,6 +243,18 @@ public class SharePrototype extends GenericModel {
    */
   public Long size() {
     return size;
+  }
+
+  /**
+   * Gets the zone.
+   *
+   * The zone this file share will reside in. For a replica share, this must be a different
+   * zone in the same region as the source share.
+   *
+   * @return the zone
+   */
+  public ZoneIdentity zone() {
+    return zone;
   }
 
   /**
@@ -247,6 +282,21 @@ public class SharePrototype extends GenericModel {
    */
   public ShareIdentity sourceShare() {
     return sourceShare;
+  }
+
+  /**
+   * Gets the originShare.
+   *
+   * The origin share for the accessor share. The origin share must have an
+   * `access_control_mode` of `security_group`, and must not have an
+   * `accessor_binding_role` of `accessor`.
+   *
+   * The specified share may be in a different account, subject to IAM policies.
+   *
+   * @return the originShare
+   */
+  public ShareIdentity originShare() {
+    return originShare;
   }
 }
 

@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.is.vpc.v1.model;
 
 import java.util.ArrayList;
@@ -25,7 +26,9 @@ public class InstanceReservationAffinityPatch extends GenericModel {
   /**
    * The reservation affinity policy to use for this virtual server instance:
    * - `disabled`: Reservations will not be used
-   * - `manual`: Reservations in `pool` are available for use.
+   * - `manual`: Reservations in `pool` will be available for use
+   *
+   * The policy must be `disabled` if `placement_target` is set.
    */
   public interface Policy {
     /** disabled. */
@@ -130,7 +133,9 @@ public class InstanceReservationAffinityPatch extends GenericModel {
    *
    * The reservation affinity policy to use for this virtual server instance:
    * - `disabled`: Reservations will not be used
-   * - `manual`: Reservations in `pool` are available for use.
+   * - `manual`: Reservations in `pool` will be available for use
+   *
+   * The policy must be `disabled` if `placement_target` is set.
    *
    * @return the policy
    */
@@ -144,11 +149,10 @@ public class InstanceReservationAffinityPatch extends GenericModel {
    * The pool of reservations available for use by this virtual server instance, replacing the existing pool of
    * reservations.
    *
-   * Specified reservations must have a `status` of `active`, and have the same `profile` and
-   * `zone` as this virtual server instance.
+   * Specified reservations must have a `status` of `active`, and have the same
+   * `profile` and `zone` as this virtual server instance.
    *
-   * If `policy` is `manual`, a pool must be specified with at least one reservation. If
-   * `policy` is `disabled` and a pool is specified, it must be empty.
+   * If `policy` is `manual`, `pool` must have one reservation. If `policy` is `disabled`, `pool` must be empty.
    *
    * @return the pool
    */

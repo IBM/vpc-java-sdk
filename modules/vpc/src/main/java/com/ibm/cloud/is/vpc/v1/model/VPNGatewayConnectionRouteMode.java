@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.is.vpc.v1.model;
 
 /**
@@ -26,7 +27,6 @@ public class VPNGatewayConnectionRouteMode extends VPNGatewayConnection {
     discriminatorMapping = new java.util.HashMap<>();
     discriminatorMapping.put("none", VPNGatewayConnectionRouteModeVPNGatewayConnectionStaticRouteMode.class);
   }
-
   /**
    * The authentication mode. Only `psk` is currently supported.
    */

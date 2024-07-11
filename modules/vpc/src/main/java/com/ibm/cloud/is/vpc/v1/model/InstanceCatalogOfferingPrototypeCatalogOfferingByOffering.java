@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.is.vpc.v1.model;
 
 /**
@@ -22,6 +23,7 @@ public class InstanceCatalogOfferingPrototypeCatalogOfferingByOffering extends I
    * Builder.
    */
   public static class Builder {
+    private CatalogOfferingVersionPlanIdentity plan;
     private CatalogOfferingIdentity offering;
 
     /**
@@ -30,6 +32,7 @@ public class InstanceCatalogOfferingPrototypeCatalogOfferingByOffering extends I
      * @param instanceCatalogOfferingPrototypeCatalogOfferingByOffering the instance to initialize the Builder with
      */
     public Builder(InstanceCatalogOfferingPrototype instanceCatalogOfferingPrototypeCatalogOfferingByOffering) {
+      this.plan = instanceCatalogOfferingPrototypeCatalogOfferingByOffering.plan;
       this.offering = instanceCatalogOfferingPrototypeCatalogOfferingByOffering.offering;
     }
 
@@ -58,6 +61,17 @@ public class InstanceCatalogOfferingPrototypeCatalogOfferingByOffering extends I
     }
 
     /**
+     * Set the plan.
+     *
+     * @param plan the plan
+     * @return the InstanceCatalogOfferingPrototypeCatalogOfferingByOffering builder
+     */
+    public Builder plan(CatalogOfferingVersionPlanIdentity plan) {
+      this.plan = plan;
+      return this;
+    }
+
+    /**
      * Set the offering.
      *
      * @param offering the offering
@@ -74,6 +88,7 @@ public class InstanceCatalogOfferingPrototypeCatalogOfferingByOffering extends I
   protected InstanceCatalogOfferingPrototypeCatalogOfferingByOffering(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.offering,
       "offering cannot be null");
+    plan = builder.plan;
     offering = builder.offering;
   }
 

@@ -12,7 +12,7 @@
  */
 
 /*
- * IBM OpenAPI SDK Code Generator Version: 3.88.0-b0b4c159-20240402-205910
+ * IBM OpenAPI SDK Code Generator Version: 3.91.0-d9755c53-20240605-153412
  */
 
 package com.ibm.cloud.is.vpc.v1;
@@ -161,6 +161,7 @@ import com.ibm.cloud.is.vpc.v1.model.DeleteReservationOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteSecurityGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteSecurityGroupRuleOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteSecurityGroupTargetBindingOptions;
+import com.ibm.cloud.is.vpc.v1.model.DeleteShareAccessorBindingOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteShareMountTargetOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteShareOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteShareSourceOptions;
@@ -254,6 +255,7 @@ import com.ibm.cloud.is.vpc.v1.model.GetReservationOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetSecurityGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetSecurityGroupRuleOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetSecurityGroupTargetOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetShareAccessorBindingOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetShareMountTargetOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetShareOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetShareProfileOptions;
@@ -287,8 +289,10 @@ import com.ibm.cloud.is.vpc.v1.model.GetVpnServerOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetVpnServerRouteOptions;
 import com.ibm.cloud.is.vpc.v1.model.IKEPolicy;
 import com.ibm.cloud.is.vpc.v1.model.IKEPolicyCollection;
+import com.ibm.cloud.is.vpc.v1.model.IKEPolicyConnectionCollection;
 import com.ibm.cloud.is.vpc.v1.model.IPsecPolicy;
 import com.ibm.cloud.is.vpc.v1.model.IPsecPolicyCollection;
+import com.ibm.cloud.is.vpc.v1.model.IPsecPolicyConnectionCollection;
 import com.ibm.cloud.is.vpc.v1.model.Image;
 import com.ibm.cloud.is.vpc.v1.model.ImageCollection;
 import com.ibm.cloud.is.vpc.v1.model.ImageExportJob;
@@ -376,6 +380,7 @@ import com.ibm.cloud.is.vpc.v1.model.ListReservationsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListSecurityGroupRulesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListSecurityGroupTargetsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListSecurityGroupsOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListShareAccessorBindingsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListShareMountTargetsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListShareProfilesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListSharesOptions;
@@ -464,6 +469,8 @@ import com.ibm.cloud.is.vpc.v1.model.SecurityGroupTargetCollection;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupTargetReference;
 import com.ibm.cloud.is.vpc.v1.model.SetSubnetPublicGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.Share;
+import com.ibm.cloud.is.vpc.v1.model.ShareAccessorBinding;
+import com.ibm.cloud.is.vpc.v1.model.ShareAccessorBindingCollection;
 import com.ibm.cloud.is.vpc.v1.model.ShareCollection;
 import com.ibm.cloud.is.vpc.v1.model.ShareMountTarget;
 import com.ibm.cloud.is.vpc.v1.model.ShareMountTargetCollection;
@@ -582,7 +589,7 @@ import java.util.logging.Logger;
  * The IBM Cloud Virtual Private Cloud (VPC) API can be used to programmatically provision and manage virtual server
  * instances, along with subnets, volumes, load balancers, and more.
  *
- * API Version: 2024-05-07
+ * API Version: 2024-07-04
  */
 public class Vpc extends BaseService {
   private static final Logger LOGGER = Logger.getLogger(Vpc.class.getName());
@@ -599,7 +606,7 @@ public class Vpc extends BaseService {
 
   private Long generation = Long.valueOf("2");
 
-  private String version = "2024-04-30";
+  private String version = "2024-07-02";
 
  /**
    * Class method which constructs an instance of the `Vpc` client.
@@ -663,7 +670,7 @@ public class Vpc extends BaseService {
    * Gets the version.
    *
    * The API version, in format `YYYY-MM-DD`. For the API behavior documented here, specify any date between
-   * `2024-04-30` and `2024-05-02`.
+   * `2024-04-30` and `2024-07-03`.
    *
    * @return the version
    */
@@ -682,11 +689,11 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all VPCs.
+   * List VPCs.
    *
-   * This request lists all VPCs in the region. A VPC is a virtual network that belongs to an account and provides
-   * logical isolation from other networks. A VPC is made up of resources in one or more zones. VPCs are regional, and
-   * each VPC can contain resources in multiple zones in a region.
+   * This request lists VPCs in the region. A VPC is a virtual network that belongs to an account and provides logical
+   * isolation from other networks. A VPC is made up of resources in one or more zones. VPCs are regional, and each VPC
+   * can contain resources in multiple zones in a region.
    *
    * @param listVpcsOptions the {@link ListVpcsOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link VPCCollection}
@@ -721,11 +728,11 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all VPCs.
+   * List VPCs.
    *
-   * This request lists all VPCs in the region. A VPC is a virtual network that belongs to an account and provides
-   * logical isolation from other networks. A VPC is made up of resources in one or more zones. VPCs are regional, and
-   * each VPC can contain resources in multiple zones in a region.
+   * This request lists VPCs in the region. A VPC is a virtual network that belongs to an account and provides logical
+   * isolation from other networks. A VPC is made up of resources in one or more zones. VPCs are regional, and each VPC
+   * can contain resources in multiple zones in a region.
    *
    * @return a {@link ServiceCall} with a result of type {@link VPCCollection}
    */
@@ -967,9 +974,9 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all address prefixes for a VPC.
+   * List address prefixes for a VPC.
    *
-   * This request lists all address pool prefixes for a VPC.
+   * This request lists address pool prefixes for a VPC.
    *
    * @param listVpcAddressPrefixesOptions the {@link ListVpcAddressPrefixesOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link AddressPrefixCollection}
@@ -1118,9 +1125,9 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all DNS resolution bindings for a VPC.
+   * List DNS resolution bindings for a VPC.
    *
-   * This request lists all DNS resolution bindings for a VPC. A DNS resolution binding represents an association with
+   * This request lists DNS resolution bindings for a VPC. A DNS resolution binding represents an association with
    * another VPC for centralizing DNS name resolution.
    *
    * If the VPC specified by the identifier in the URL is a DNS hub VPC (has `dns.enable_hub` set to `true`) then there
@@ -1306,10 +1313,10 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all routes in a VPC's default routing table.
+   * List routes in a VPC's default routing table.
    *
-   * This request lists all routes in the VPC's default routing table. Each route is zone-specific and directs any
-   * packets matching its destination CIDR block to a `next_hop` IP address. The most specific route matching a packet's
+   * This request lists routes in the VPC's default routing table. Each route is zone-specific and directs any packets
+   * matching its destination CIDR block to a `next_hop` IP address. The most specific route matching a packet's
    * destination will be used. If multiple equally-specific routes exist, traffic will be distributed across them.
    *
    * @param listVpcRoutesOptions the {@link ListVpcRoutesOptions} containing the options for the call
@@ -1486,9 +1493,9 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all routing tables for a VPC.
+   * List routing tables for a VPC.
    *
-   * This request lists all routing tables for a VPC. Each subnet in a VPC is associated with a routing table, which
+   * This request lists routing tables for a VPC. Each subnet in a VPC is associated with a routing table, which
    * controls delivery of packets sent on that subnet according to the action of the most specific matching route in the
    * table. If multiple equally-specific routes exist, traffic will be distributed across them. If no routes match,
    * delivery will be controlled by the system's built-in routes.
@@ -1665,10 +1672,10 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all routes in a VPC routing table.
+   * List routes in a VPC routing table.
    *
-   * This request lists all routes in a VPC routing table. If subnets are associated with this routing table, delivery
-   * of packets sent on a subnet is performed according to the action of the most specific matching route in the table
+   * This request lists routes in a VPC routing table. If subnets are associated with this routing table, delivery of
+   * packets sent on a subnet is performed according to the action of the most specific matching route in the table
    * (provided the subnet and route are in the same zone). If multiple equally-specific routes exist, the route with the
    * highest priority will be used. If two matching routes have the same destination and priority, traffic will be
    * distributed between them. If no routes match, delivery will be controlled by the system's built-in routes.
@@ -1835,9 +1842,9 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all subnets.
+   * List subnets.
    *
-   * This request lists all subnets in the region. Subnets are contiguous ranges of IP addresses specified in CIDR block
+   * This request lists subnets in the region. Subnets are contiguous ranges of IP addresses specified in CIDR block
    * notation. Each subnet is within a particular zone and cannot span multiple zones or regions.
    *
    * @param listSubnetsOptions the {@link ListSubnetsOptions} containing the options for the call
@@ -1888,9 +1895,9 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all subnets.
+   * List subnets.
    *
-   * This request lists all subnets in the region. Subnets are contiguous ranges of IP addresses specified in CIDR block
+   * This request lists subnets in the region. Subnets are contiguous ranges of IP addresses specified in CIDR block
    * notation. Each subnet is within a particular zone and cannot span multiple zones or regions.
    *
    * @return a {@link ServiceCall} with a result of type {@link SubnetCollection}
@@ -2196,9 +2203,9 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all reserved IPs in a subnet.
+   * List reserved IPs in a subnet.
    *
-   * This request lists all reserved IPs in a subnet. A reserved IP resource will exist for every address in the subnet
+   * This request lists reserved IPs in a subnet. A reserved IP resource will exist for every address in the subnet
    * which is not available for use.
    *
    * @param listSubnetReservedIpsOptions the {@link ListSubnetReservedIpsOptions} containing the options for the call
@@ -2372,10 +2379,10 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all images.
+   * List images.
    *
-   * This request lists all images available in the region. An image provides source data for a volume. Images are
-   * either system-provided, or created from another source, such as importing from Cloud Object Storage.
+   * This request lists images available in the region. An image provides source data for a volume. Images are either
+   * system-provided, or created from another source, such as importing from Cloud Object Storage.
    *
    * @param listImagesOptions the {@link ListImagesOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link ImageCollection}
@@ -2410,16 +2417,19 @@ public class Vpc extends BaseService {
     if (listImagesOptions.visibility() != null) {
       builder.query("visibility", String.valueOf(listImagesOptions.visibility()));
     }
+    if (listImagesOptions.userDataFormat() != null) {
+      builder.query("user_data_format", RequestUtils.join(listImagesOptions.userDataFormat(), ","));
+    }
     ResponseConverter<ImageCollection> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<ImageCollection>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
   }
 
   /**
-   * List all images.
+   * List images.
    *
-   * This request lists all images available in the region. An image provides source data for a volume. Images are
-   * either system-provided, or created from another source, such as importing from Cloud Object Storage.
+   * This request lists images available in the region. An image provides source data for a volume. Images are either
+   * system-provided, or created from another source, such as importing from Cloud Object Storage.
    *
    * @return a {@link ServiceCall} with a result of type {@link ImageCollection}
    */
@@ -2607,10 +2617,10 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all image export jobs.
+   * List export jobs for an image.
    *
-   * This request lists all export jobs for an image. Each job tracks the exporting of the image to another location,
-   * such as a bucket within cloud object storage.
+   * This request lists export jobs for an image. Each job tracks the exporting of the image to another location, such
+   * as a bucket within cloud object storage.
    *
    * The jobs will be sorted by their `created_at` property values, with newest jobs first. Jobs with identical
    * `created_at` property values will in turn be sorted by ascending
@@ -2641,7 +2651,7 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * Create an image export job.
+   * Create an export job for an image.
    *
    * This request creates and queues a new export job for the image specified in the URL using the image export job
    * prototype object. The image must be owned by the account and be in the `available`, `deprecated`, `obsolete`, or
@@ -2763,9 +2773,9 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all operating systems.
+   * List operating systems.
    *
-   * This request lists all operating systems in the region.
+   * This request lists operating systems in the region.
    *
    * @param listOperatingSystemsOptions the {@link ListOperatingSystemsOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link OperatingSystemCollection}
@@ -2794,9 +2804,9 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all operating systems.
+   * List operating systems.
    *
-   * This request lists all operating systems in the region.
+   * This request lists operating systems in the region.
    *
    * @return a {@link ServiceCall} with a result of type {@link OperatingSystemCollection}
    */
@@ -2831,9 +2841,9 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all keys.
+   * List keys.
    *
-   * This request lists all keys in the region. A key contains a public SSH key which may be installed on instances when
+   * This request lists keys in the region. A key contains a public SSH key which may be installed on instances when
    * they are created. Private keys are not stored.
    *
    * @param listKeysOptions the {@link ListKeysOptions} containing the options for the call
@@ -2863,9 +2873,9 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all keys.
+   * List keys.
    *
-   * This request lists all keys in the region. A key contains a public SSH key which may be installed on instances when
+   * This request lists keys in the region. A key contains a public SSH key which may be installed on instances when
    * they are created. Private keys are not stored.
    *
    * @return a {@link ServiceCall} with a result of type {@link KeyCollection}
@@ -2990,7 +3000,7 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all instance profiles.
+   * List instance profiles.
    *
    * This request lists provisionable [instance profiles](https://cloud.ibm.com/docs/vpc?topic=vpc-profiles) in the
    * region. An instance profile specifies the performance characteristics and pricing model for an instance.
@@ -3013,7 +3023,7 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all instance profiles.
+   * List instance profiles.
    *
    * This request lists provisionable [instance profiles](https://cloud.ibm.com/docs/vpc?topic=vpc-profiles) in the
    * region. An instance profile specifies the performance characteristics and pricing model for an instance.
@@ -3051,9 +3061,9 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all instance templates.
+   * List instance templates.
    *
-   * This request lists all instance templates in the region.
+   * This request lists instance templates in the region.
    *
    * @param listInstanceTemplatesOptions the {@link ListInstanceTemplatesOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link InstanceTemplateCollection}
@@ -3073,9 +3083,9 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all instance templates.
+   * List instance templates.
    *
-   * This request lists all instance templates in the region.
+   * This request lists instance templates in the region.
    *
    * @return a {@link ServiceCall} with a result of type {@link InstanceTemplateCollection}
    */
@@ -3192,9 +3202,9 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all instances.
+   * List instances.
    *
-   * This request lists all instances in the region.
+   * This request lists instances in the region.
    *
    * @param listInstancesOptions the {@link ListInstancesOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link InstanceCollection}
@@ -3265,9 +3275,9 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all instances.
+   * List instances.
    *
-   * This request lists all instances in the region.
+   * This request lists instances in the region.
    *
    * @return a {@link ServiceCall} with a result of type {@link InstanceCollection}
    */
@@ -3486,9 +3496,9 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all disks on an instance.
+   * List disks on an instance.
    *
-   * This request lists all disks on an instance.  A disk is a block device that is locally attached to the instance's
+   * This request lists disks on an instance.  A disk is a block device that is locally attached to the instance's
    * physical host and is also referred to as instance storage. By default, the listed disks are sorted by their
    * `created_at` property values, with the newest disk first.
    *
@@ -3569,10 +3579,10 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all network attachments on an instance.
+   * List network attachments on an instance.
    *
-   * This request lists all network attachments on an instance. A network attachment represents a device on the instance
-   * to which a virtual network interface is attached.
+   * This request lists network attachments on an instance. A network attachment represents a device on the instance to
+   * which a virtual network interface is attached.
    *
    * The network attachments will be sorted by their `created_at` property values, with newest network attachments
    * first. Network attachments with identical `created_at` property values will in turn be sorted by ascending `name`
@@ -3719,12 +3729,12 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all network interfaces on an instance.
+   * List network interfaces on an instance.
    *
-   * This request lists all network interfaces on an instance. An instance network interface is an abstract
-   * representation of a network device and attaches an instance to a single subnet. Each network interface on an
-   * instance can attach to any subnet in the zone, including subnets that are already attached to the instance.
-   * Multiple network interfaces on the instance may also attach to the same subnet.
+   * This request lists network interfaces on an instance. An instance network interface is an abstract representation
+   * of a network device and attaches an instance to a single subnet. Each network interface on an instance can attach
+   * to any subnet in the zone, including subnets that are already attached to the instance. Multiple network interfaces
+   * on the instance may also attach to the same subnet.
    *
    * If this instance has network attachments, each returned network interface is a [read-only
    * representation](https://cloud.ibm.com/docs/vpc?topic=vpc-vni-about#vni-old-api-clients) of its corresponding
@@ -3898,9 +3908,9 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all floating IPs associated with an instance network interface.
+   * List floating IPs associated with an instance network interface.
    *
-   * This request lists all floating IPs associated with an instance network interface.
+   * This request lists floating IPs associated with an instance network interface.
    *
    * @param listInstanceNetworkInterfaceFloatingIpsOptions the {@link ListInstanceNetworkInterfaceFloatingIpsOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link FloatingIPUnpaginatedCollection}
@@ -4082,11 +4092,11 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all volumes attachments on an instance.
+   * List volumes attachments on an instance.
    *
-   * This request lists all volume attachments on an instance. A volume attachment connects a volume to an instance.
-   * Each instance may have many volume attachments but each volume attachment connects exactly one instance to exactly
-   * one volume.
+   * This request lists volume attachments on an instance. A volume attachment connects a volume to an instance. Each
+   * instance may have many volume attachments but each volume attachment connects exactly one instance to exactly one
+   * volume.
    *
    * @param listInstanceVolumeAttachmentsOptions the {@link ListInstanceVolumeAttachmentsOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link VolumeAttachmentCollection}
@@ -4231,9 +4241,9 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all instance groups.
+   * List instance groups.
    *
-   * This request lists all instance groups in the region.
+   * This request lists instance groups in the region.
    *
    * @param listInstanceGroupsOptions the {@link ListInstanceGroupsOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link InstanceGroupCollection}
@@ -4262,9 +4272,9 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all instance groups.
+   * List instance groups.
    *
-   * This request lists all instance groups in the region.
+   * This request lists instance groups in the region.
    *
    * @return a {@link ServiceCall} with a result of type {@link InstanceGroupCollection}
    */
@@ -4422,9 +4432,9 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all managers for an instance group.
+   * List managers for an instance group.
    *
-   * This request lists all managers for an instance group.
+   * This request lists managers for an instance group.
    *
    * @param listInstanceGroupManagersOptions the {@link ListInstanceGroupManagersOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link InstanceGroupManagerCollection}
@@ -4561,9 +4571,9 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all actions for an instance group manager.
+   * List actions for an instance group manager.
    *
-   * This request lists all instance group actions for an instance group manager.
+   * This request lists instance group actions for an instance group manager.
    *
    * @param listInstanceGroupManagerActionsOptions the {@link ListInstanceGroupManagerActionsOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link InstanceGroupManagerActionsCollection}
@@ -4705,9 +4715,9 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all policies for an instance group manager.
+   * List policies for an instance group manager.
    *
-   * This request lists all policies for an instance group manager.
+   * This request lists policies for an instance group manager.
    *
    * @param listInstanceGroupManagerPoliciesOptions the {@link ListInstanceGroupManagerPoliciesOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link InstanceGroupManagerPolicyCollection}
@@ -4849,10 +4859,10 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * Delete all memberships from an instance group.
+   * Delete memberships from an instance group.
    *
-   * This request deletes all memberships of an instance group. This operation cannot be reversed. reversed. Any
-   * memberships that have `delete_instance_on_membership_delete` set to `true` will also have their instances deleted.
+   * This request deletes memberships of an instance group. This operation cannot be reversed. Memberships that have
+   * `delete_instance_on_membership_delete` set to `true` will also have their instances deleted.
    *
    * @param deleteInstanceGroupMembershipsOptions the {@link DeleteInstanceGroupMembershipsOptions} containing the options for the call
    * @return a {@link ServiceCall} with a void result
@@ -4874,9 +4884,9 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all memberships for an instance group.
+   * List memberships for an instance group.
    *
-   * This request lists all instance group memberships for an instance group.
+   * This request lists instance group memberships for an instance group.
    *
    * @param listInstanceGroupMembershipsOptions the {@link ListInstanceGroupMembershipsOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link InstanceGroupMembershipCollection}
@@ -4987,10 +4997,10 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all reservations.
+   * List reservations.
    *
-   * This request lists all reservations in the region. A reservation provides reserved capacity for a specified profile
-   * in a specified zone. A reservation can also include a long-term committed use discount.
+   * This request lists reservations in the region. A reservation provides reserved capacity for a specified profile in
+   * a specified zone. A reservation can also include a long-term committed use discount.
    *
    * The reservations will be sorted by their `created_at` property values, with newest reservations first. Reservations
    * with identical `created_at` property values will in turn be sorted by ascending `name` property values.
@@ -5031,10 +5041,10 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all reservations.
+   * List reservations.
    *
-   * This request lists all reservations in the region. A reservation provides reserved capacity for a specified profile
-   * in a specified zone. A reservation can also include a long-term committed use discount.
+   * This request lists reservations in the region. A reservation provides reserved capacity for a specified profile in
+   * a specified zone. A reservation can also include a long-term committed use discount.
    *
    * The reservations will be sorted by their `created_at` property values, with newest reservations first. Reservations
    * with identical `created_at` property values will in turn be sorted by ascending `name` property values.
@@ -5191,9 +5201,9 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all dedicated host groups.
+   * List dedicated host groups.
    *
-   * This request lists all dedicated host groups in the region. Host groups are a collection of dedicated hosts for
+   * This request lists dedicated host groups in the region. Host groups are a collection of dedicated hosts for
    * placement of instances. Each dedicated host must belong to one and only one group. Host groups do not span zones.
    *
    * @param listDedicatedHostGroupsOptions the {@link ListDedicatedHostGroupsOptions} containing the options for the call
@@ -5232,9 +5242,9 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all dedicated host groups.
+   * List dedicated host groups.
    *
-   * This request lists all dedicated host groups in the region. Host groups are a collection of dedicated hosts for
+   * This request lists dedicated host groups in the region. Host groups are a collection of dedicated hosts for
    * placement of instances. Each dedicated host must belong to one and only one group. Host groups do not span zones.
    *
    * @return a {@link ServiceCall} with a result of type {@link DedicatedHostGroupCollection}
@@ -5358,7 +5368,7 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all dedicated host profiles.
+   * List dedicated host profiles.
    *
    * This request lists provisionable [dedicated host profiles](https://cloud.ibm.com/docs/vpc?topic=vpc-dh-profiles) in
    * the region. A dedicated host profile specifies the hardware characteristics for a dedicated host.
@@ -5390,7 +5400,7 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all dedicated host profiles.
+   * List dedicated host profiles.
    *
    * This request lists provisionable [dedicated host profiles](https://cloud.ibm.com/docs/vpc?topic=vpc-dh-profiles) in
    * the region. A dedicated host profile specifies the hardware characteristics for a dedicated host.
@@ -5428,9 +5438,9 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all dedicated hosts.
+   * List dedicated hosts.
    *
-   * This request lists all dedicated hosts in the region.
+   * This request lists dedicated hosts in the region.
    *
    * @param listDedicatedHostsOptions the {@link ListDedicatedHostsOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link DedicatedHostCollection}
@@ -5471,9 +5481,9 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all dedicated hosts.
+   * List dedicated hosts.
    *
-   * This request lists all dedicated hosts in the region.
+   * This request lists dedicated hosts in the region.
    *
    * @return a {@link ServiceCall} with a result of type {@link DedicatedHostCollection}
    */
@@ -5507,10 +5517,10 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all disks on a dedicated host.
+   * List disks on a dedicated host.
    *
-   * This request lists all disks on a dedicated host.  A disk is a physical device that is locally attached to the
-   * compute node. By default, the listed disks are sorted by their
+   * This request lists disks on a dedicated host.  A disk is a physical device that is locally attached to the compute
+   * node. By default, the listed disks are sorted by their
    * `created_at` property values, with the newest disk first.
    *
    * @param listDedicatedHostDisksOptions the {@link ListDedicatedHostDisksOptions} containing the options for the call
@@ -5669,9 +5679,9 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all placement groups.
+   * List placement groups.
    *
-   * This request lists all placement groups in the region.
+   * This request lists placement groups in the region.
    *
    * @param listPlacementGroupsOptions the {@link ListPlacementGroupsOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link PlacementGroupCollection}
@@ -5700,9 +5710,9 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all placement groups.
+   * List placement groups.
    *
-   * This request lists all placement groups in the region.
+   * This request lists placement groups in the region.
    *
    * @return a {@link ServiceCall} with a result of type {@link PlacementGroupCollection}
    */
@@ -5824,9 +5834,9 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all bare metal server profiles.
+   * List bare metal server profiles.
    *
-   * This request lists all [bare metal server
+   * This request lists [bare metal server
    * profiles](https://cloud.ibm.com/docs/vpc?topic=vpc-bare-metal-servers-profile) available in the region. A bare
    * metal server profile specifies the performance characteristics and pricing model for a bare metal server.
    *
@@ -5857,9 +5867,9 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all bare metal server profiles.
+   * List bare metal server profiles.
    *
-   * This request lists all [bare metal server
+   * This request lists [bare metal server
    * profiles](https://cloud.ibm.com/docs/vpc?topic=vpc-bare-metal-servers-profile) available in the region. A bare
    * metal server profile specifies the performance characteristics and pricing model for a bare metal server.
    *
@@ -5896,9 +5906,9 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all bare metal servers.
+   * List bare metal servers.
    *
-   * This request lists all bare metal servers in the region.
+   * This request lists bare metal servers in the region.
    *
    * @param listBareMetalServersOptions the {@link ListBareMetalServersOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link BareMetalServerCollection}
@@ -5942,9 +5952,9 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all bare metal servers.
+   * List bare metal servers.
    *
-   * This request lists all bare metal servers in the region.
+   * This request lists bare metal servers in the region.
    *
    * @return a {@link ServiceCall} with a result of type {@link BareMetalServerCollection}
    */
@@ -5985,7 +5995,8 @@ public class Vpc extends BaseService {
    * This request creates a new single-use console access token for a bare metal server. All console configuration is
    * provided at token create time, and the token is subsequently used in the `access_token` query parameter for the
    * WebSocket request.  The access token is only valid for a short period of time, and a maximum of one token is valid
-   * for a given bare metal server at a time.
+   * for a given bare metal server at a time.  For this request to succeed, the server must have a `status` of
+   * `stopped`, `starting`, or `running`.
    *
    * @param createBareMetalServerConsoleAccessTokenOptions the {@link CreateBareMetalServerConsoleAccessTokenOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link BareMetalServerConsoleAccessToken}
@@ -6015,9 +6026,9 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all disks on a bare metal server.
+   * List disks on a bare metal server.
    *
-   * This request lists all disks on a bare metal server.  A disk is a block device that is locally attached to the
+   * This request lists  disks on a bare metal server.  A disk is a block device that is locally attached to the
    * physical server.  By default, the listed disks are sorted by their `created_at` property values, with the newest
    * disk first.
    *
@@ -6098,9 +6109,9 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all network attachments on a bare metal server.
+   * List network attachments on a bare metal server.
    *
-   * This request lists all network attachments on a bare metal server. A bare metal server network attachment is an
+   * This request lists network attachments on a bare metal server. A bare metal server network attachment is an
    * abstract representation of a network device and attaches a bare metal server to a single subnet. Each network
    * interface on a bare metal server can attach to any subnet in the zone, including subnets that are already attached
    * to the bare metal server.
@@ -6251,12 +6262,12 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all network interfaces on a bare metal server.
+   * List network interfaces on a bare metal server.
    *
-   * This request lists all network interfaces on a bare metal server. A bare metal server network interface is an
-   * abstract representation of a network device and attaches a bare metal server to a single subnet. Each network
-   * interface on a bare metal server can attach to any subnet in the zone, including subnets that are already attached
-   * to the bare metal server.
+   * This request lists network interfaces on a bare metal server. A bare metal server network interface is an abstract
+   * representation of a network device and attaches a bare metal server to a single subnet. Each network interface on a
+   * bare metal server can attach to any subnet in the zone, including subnets that are already attached to the bare
+   * metal server.
    *
    * If this bare metal server has network attachments, each returned network interface is a [read-only
    * representation](https://cloud.ibm.com/docs/vpc?topic=vpc-vni-about#vni-old-api-clients) of its corresponding
@@ -6422,9 +6433,9 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all floating IPs associated with a bare metal server network interface.
+   * List floating IPs associated with a bare metal server network interface.
    *
-   * This request lists all floating IPs associated with a bare metal server network interface.
+   * This request lists floating IPs associated with a bare metal server network interface.
    *
    * @param listBareMetalServerNetworkInterfaceFloatingIpsOptions the {@link ListBareMetalServerNetworkInterfaceFloatingIpsOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link FloatingIPUnpaginatedCollection}
@@ -6711,7 +6722,8 @@ public class Vpc extends BaseService {
   /**
    * Restart a bare metal server.
    *
-   * This request restarts a bare metal server.  It will run immediately regardless of the state of the server.
+   * This request immediately restarts a bare metal server.  For this request to succeed, the server must have a
+   * `status` of `running`.
    *
    * @param restartBareMetalServerOptions the {@link RestartBareMetalServerOptions} containing the options for the call
    * @return a {@link ServiceCall} with a void result
@@ -6785,10 +6797,10 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all volume profiles.
+   * List volume profiles.
    *
-   * This request lists all [volume profiles](https://cloud.ibm.com/docs/vpc?topic=vpc-block-storage-profiles) available
-   * in the region. A volume profile specifies the performance characteristics and pricing model for a volume.
+   * This request lists [volume profiles](https://cloud.ibm.com/docs/vpc?topic=vpc-block-storage-profiles) available in
+   * the region. A volume profile specifies the performance characteristics and pricing model for a volume.
    *
    * @param listVolumeProfilesOptions the {@link ListVolumeProfilesOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link VolumeProfileCollection}
@@ -6817,10 +6829,10 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all volume profiles.
+   * List volume profiles.
    *
-   * This request lists all [volume profiles](https://cloud.ibm.com/docs/vpc?topic=vpc-block-storage-profiles) available
-   * in the region. A volume profile specifies the performance characteristics and pricing model for a volume.
+   * This request lists [volume profiles](https://cloud.ibm.com/docs/vpc?topic=vpc-block-storage-profiles) available in
+   * the region. A volume profile specifies the performance characteristics and pricing model for a volume.
    *
    * @return a {@link ServiceCall} with a result of type {@link VolumeProfileCollection}
    */
@@ -6855,10 +6867,10 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all volumes.
+   * List volumes.
    *
-   * This request lists all volumes in the region. Volumes are network-connected block storage devices that may be
-   * attached to one or more instances in the same region.
+   * This request lists volumes in the region. Volumes are network-connected block storage devices that may be attached
+   * to one or more instances in the same region.
    *
    * @param listVolumesOptions the {@link ListVolumesOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link VolumeCollection}
@@ -6908,10 +6920,10 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all volumes.
+   * List volumes.
    *
-   * This request lists all volumes in the region. Volumes are network-connected block storage devices that may be
-   * attached to one or more instances in the same region.
+   * This request lists volumes in the region. Volumes are network-connected block storage devices that may be attached
+   * to one or more instances in the same region.
    *
    * @return a {@link ServiceCall} with a result of type {@link VolumeCollection}
    */
@@ -7031,9 +7043,9 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all snapshot consistency groups.
+   * List snapshot consistency groups.
    *
-   * This request lists all snapshot consistency groups in the region. A snapshot consistency group is a collection of
+   * This request lists snapshot consistency groups in the region. A snapshot consistency group is a collection of
    * individual snapshots taken at the same time.
    *
    * @param listSnapshotConsistencyGroupsOptions the {@link ListSnapshotConsistencyGroupsOptions} containing the options for the call
@@ -7075,9 +7087,9 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all snapshot consistency groups.
+   * List snapshot consistency groups.
    *
-   * This request lists all snapshot consistency groups in the region. A snapshot consistency group is a collection of
+   * This request lists snapshot consistency groups in the region. A snapshot consistency group is a collection of
    * individual snapshots taken at the same time.
    *
    * @return a {@link ServiceCall} with a result of type {@link SnapshotConsistencyGroupCollection}
@@ -7201,7 +7213,7 @@ public class Vpc extends BaseService {
   /**
    * Delete a filtered collection of snapshots.
    *
-   * This request deletes all snapshots created from a specific source volume.
+   * This request deletes snapshots that match the specified filter. This operation cannot be reversed.
    *
    * @param deleteSnapshotsOptions the {@link DeleteSnapshotsOptions} containing the options for the call
    * @return a {@link ServiceCall} with a void result
@@ -7222,10 +7234,10 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all snapshots.
+   * List snapshots.
    *
-   * This request lists all snapshots in the region. A snapshot preserves the data of a volume at the time the snapshot
-   * is created.
+   * This request lists snapshots in the region. A snapshot preserves the data of a volume at the time the snapshot is
+   * created.
    *
    * @param listSnapshotsOptions the {@link ListSnapshotsOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link SnapshotCollection}
@@ -7314,10 +7326,10 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all snapshots.
+   * List snapshots.
    *
-   * This request lists all snapshots in the region. A snapshot preserves the data of a volume at the time the snapshot
-   * is created.
+   * This request lists snapshots in the region. A snapshot preserves the data of a volume at the time the snapshot is
+   * created.
    *
    * @return a {@link ServiceCall} with a result of type {@link SnapshotCollection}
    */
@@ -7436,9 +7448,9 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all clones for a snapshot.
+   * List clones for a snapshot.
    *
-   * This request lists all clones for a snapshot. Use a clone to quickly restore a snapshot within the clone's zone.
+   * This request lists clones for a snapshot. Use a clone to quickly restore a snapshot within the clone's zone.
    *
    * @param listSnapshotClonesOptions the {@link ListSnapshotClonesOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link SnapshotCloneCollection}
@@ -7543,11 +7555,10 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all file share profiles.
+   * List file share profiles.
    *
-   * This request lists all [file share profiles](https://cloud.ibm.com/docs/vpc?topic=vpc-file-storage-profiles)
-   * available in the region. A file share profile specifies the performance characteristics and pricing model for a
-   * file share.
+   * This request lists [file share profiles](https://cloud.ibm.com/docs/vpc?topic=vpc-file-storage-profiles) available
+   * in the region. A file share profile specifies the performance characteristics and pricing model for a file share.
    *
    * @param listShareProfilesOptions the {@link ListShareProfilesOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link ShareProfileCollection}
@@ -7579,11 +7590,10 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all file share profiles.
+   * List file share profiles.
    *
-   * This request lists all [file share profiles](https://cloud.ibm.com/docs/vpc?topic=vpc-file-storage-profiles)
-   * available in the region. A file share profile specifies the performance characteristics and pricing model for a
-   * file share.
+   * This request lists [file share profiles](https://cloud.ibm.com/docs/vpc?topic=vpc-file-storage-profiles) available
+   * in the region. A file share profile specifies the performance characteristics and pricing model for a file share.
    *
    * @return a {@link ServiceCall} with a result of type {@link ShareProfileCollection}
    */
@@ -7618,9 +7628,9 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all file shares.
+   * List file shares.
    *
-   * This request lists all file shares in the region.
+   * This request lists file shares in the region.
    *
    * @param listSharesOptions the {@link ListSharesOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link ShareCollection}
@@ -7661,9 +7671,9 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all file shares.
+   * List file shares.
    *
-   * This request lists all file shares in the region.
+   * This request lists file shares in the region.
    *
    * @return a {@link ServiceCall} with a result of type {@link ShareCollection}
    */
@@ -7793,6 +7803,93 @@ public class Vpc extends BaseService {
   }
 
   /**
+   * List accessor bindings for a share.
+   *
+   * This request lists accessor bindings for a share. Each accessor binding identifies a resource (possibly in another
+   * account) with access to this file share's data.
+   *
+   * The share accessor bindings will be sorted by their `created_at` property values, with newest bindings first.
+   *
+   * @param listShareAccessorBindingsOptions the {@link ListShareAccessorBindingsOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link ShareAccessorBindingCollection}
+   */
+  public ServiceCall<ShareAccessorBindingCollection> listShareAccessorBindings(ListShareAccessorBindingsOptions listShareAccessorBindingsOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(listShareAccessorBindingsOptions,
+      "listShareAccessorBindingsOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", listShareAccessorBindingsOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/shares/{id}/accessor_bindings", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listShareAccessorBindings");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    if (listShareAccessorBindingsOptions.start() != null) {
+      builder.query("start", String.valueOf(listShareAccessorBindingsOptions.start()));
+    }
+    if (listShareAccessorBindingsOptions.limit() != null) {
+      builder.query("limit", String.valueOf(listShareAccessorBindingsOptions.limit()));
+    }
+    ResponseConverter<ShareAccessorBindingCollection> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<ShareAccessorBindingCollection>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Delete a share accessor binding.
+   *
+   * This request deletes a share accessor binding. This operation cannot be reversed.
+   *
+   * @param deleteShareAccessorBindingOptions the {@link DeleteShareAccessorBindingOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a void result
+   */
+  public ServiceCall<Void> deleteShareAccessorBinding(DeleteShareAccessorBindingOptions deleteShareAccessorBindingOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(deleteShareAccessorBindingOptions,
+      "deleteShareAccessorBindingOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("share_id", deleteShareAccessorBindingOptions.shareId());
+    pathParamsMap.put("id", deleteShareAccessorBindingOptions.id());
+    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/shares/{share_id}/accessor_bindings/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "deleteShareAccessorBinding");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Retrieve a share accessor binding.
+   *
+   * This request retrieves a single accessor binding specified by the identifier in the URL.
+   *
+   * @param getShareAccessorBindingOptions the {@link GetShareAccessorBindingOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link ShareAccessorBinding}
+   */
+  public ServiceCall<ShareAccessorBinding> getShareAccessorBinding(GetShareAccessorBindingOptions getShareAccessorBindingOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(getShareAccessorBindingOptions,
+      "getShareAccessorBindingOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("share_id", getShareAccessorBindingOptions.shareId());
+    pathParamsMap.put("id", getShareAccessorBindingOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/shares/{share_id}/accessor_bindings/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getShareAccessorBinding");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<ShareAccessorBinding> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<ShareAccessorBinding>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
    * Failover to replica file share.
    *
    * This request triggers a failover to the replica file share specified by the identifier in the URL. The failover
@@ -7830,11 +7927,10 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all mount targets for a file share.
+   * List mount targets for a file share.
    *
-   * This request retrieves all share mount targets for a file share. A share mount target is a network endpoint at
-   * which a file share may be mounted. The file share can be mounted by clients in the same VPC and zone after creating
-   * share mount targets.
+   * This request lists mount targets for a file share. A mount target is a network endpoint at which a file share may
+   * be mounted. The file share can be mounted by clients in the same VPC and zone after creating share mount targets.
    *
    * The share mount targets will be sorted by their `created_at` property values, with newest targets first.
    *
@@ -8041,10 +8137,10 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all backup policies.
+   * List backup policies.
    *
-   * This request lists all backup policies in the region. Backup policies control which sources are selected for backup
-   * and include a set of backup policy plans that provide the backup schedules and deletion triggers.
+   * This request lists backup policies in the region. Backup policies control which sources are selected for backup and
+   * include a set of backup policy plans that provide the backup schedules and deletion triggers.
    *
    * @param listBackupPoliciesOptions the {@link ListBackupPoliciesOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link BackupPolicyCollection}
@@ -8082,10 +8178,10 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all backup policies.
+   * List backup policies.
    *
-   * This request lists all backup policies in the region. Backup policies control which sources are selected for backup
-   * and include a set of backup policy plans that provide the backup schedules and deletion triggers.
+   * This request lists backup policies in the region. Backup policies control which sources are selected for backup and
+   * include a set of backup policy plans that provide the backup schedules and deletion triggers.
    *
    * @return a {@link ServiceCall} with a result of type {@link BackupPolicyCollection}
    */
@@ -8121,10 +8217,10 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all jobs for a backup policy.
+   * List jobs for a backup policy.
    *
-   * This request retrieves all jobs for a backup policy. A backup job represents the execution of a backup policy plan
-   * for a resource matching the policy's criteria.
+   * This request retrieves jobs for a backup policy. A backup job represents the execution of a backup policy plan for
+   * a resource matching the policy's criteria.
    *
    * @param listBackupPolicyJobsOptions the {@link ListBackupPolicyJobsOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link BackupPolicyJobCollection}
@@ -8199,10 +8295,9 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all plans for a backup policy.
+   * List plans for a backup policy.
    *
-   * This request retrieves all plans for a backup policy. Backup plans provide the backup schedule and deletion
-   * triggers.
+   * This request retrieves plans for a backup policy. Backup plans provide the backup schedule and deletion triggers.
    *
    * @param listBackupPolicyPlansOptions the {@link ListBackupPolicyPlansOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link BackupPolicyPlanCollection}
@@ -8470,9 +8565,9 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all regions.
+   * List regions.
    *
-   * This request lists all regions. Each region is a separate geographic area that contains multiple isolated zones.
+   * This request lists regions. Each region is a separate geographic area that contains multiple isolated zones.
    * Resources can be provisioned into one or more zones in a region. Each zone is isolated, but connected to other
    * zones in the same region with low-latency and high-bandwidth links. Regions represent the top-level of fault
    * isolation available. Resources deployed within a single region also benefit from the low latency afforded by
@@ -8496,9 +8591,9 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all regions.
+   * List regions.
    *
-   * This request lists all regions. Each region is a separate geographic area that contains multiple isolated zones.
+   * This request lists regions. Each region is a separate geographic area that contains multiple isolated zones.
    * Resources can be provisioned into one or more zones in a region. Each zone is isolated, but connected to other
    * zones in the same region with low-latency and high-bandwidth links. Regions represent the top-level of fault
    * isolation available. Resources deployed within a single region also benefit from the low latency afforded by
@@ -8537,9 +8632,9 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all zones in a region.
+   * List zones in a region.
    *
-   * This request lists all zones in a region. Zones represent logically-isolated data centers with high-bandwidth and
+   * This request lists zones in a region. Zones represent logically-isolated data centers with high-bandwidth and
    * low-latency interconnects to other zones in the same region. Faults in a zone do not affect other zones.
    *
    * @param listRegionZonesOptions the {@link ListRegionZonesOptions} containing the options for the call
@@ -8591,10 +8686,10 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all virtual network interfaces.
+   * List virtual network interfaces.
    *
-   * This request lists all virtual network interfaces in the region. A virtual network interface is a logical
-   * abstraction of a virtual network interface in a subnet, and may be attached to a target resource.
+   * This request lists virtual network interfaces in the region. A virtual network interface is a logical abstraction
+   * of a virtual network interface in a subnet, and may be attached to a target resource.
    *
    * The virtual network interfaces will be sorted by their `created_at` property values, with newest virtual network
    * interfaces first. Virtual network interfaces with identical
@@ -8630,10 +8725,10 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all virtual network interfaces.
+   * List virtual network interfaces.
    *
-   * This request lists all virtual network interfaces in the region. A virtual network interface is a logical
-   * abstraction of a virtual network interface in a subnet, and may be attached to a target resource.
+   * This request lists virtual network interfaces in the region. A virtual network interface is a logical abstraction
+   * of a virtual network interface in a subnet, and may be attached to a target resource.
    *
    * The virtual network interfaces will be sorted by their `created_at` property values, with newest virtual network
    * interfaces first. Virtual network interfaces with identical
@@ -8684,6 +8779,9 @@ public class Vpc extends BaseService {
     }
     if (createVirtualNetworkInterfaceOptions.primaryIp() != null) {
       contentJson.add("primary_ip", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createVirtualNetworkInterfaceOptions.primaryIp()));
+    }
+    if (createVirtualNetworkInterfaceOptions.protocolStateFilteringMode() != null) {
+      contentJson.addProperty("protocol_state_filtering_mode", createVirtualNetworkInterfaceOptions.protocolStateFilteringMode());
     }
     if (createVirtualNetworkInterfaceOptions.resourceGroup() != null) {
       contentJson.add("resource_group", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createVirtualNetworkInterfaceOptions.resourceGroup()));
@@ -8795,9 +8893,9 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all floating IPs associated with a virtual network interface.
+   * List floating IPs associated with a virtual network interface.
    *
-   * This request lists all floating IPs associated with a virtual network interface.
+   * This request lists floating IPs associated with a virtual network interface.
    *
    * @param listNetworkInterfaceFloatingIpsOptions the {@link ListNetworkInterfaceFloatingIpsOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link FloatingIPCollectionVirtualNetworkInterfaceContext}
@@ -8925,9 +9023,9 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all reserved IPs bound to a virtual network interface.
+   * List reserved IPs bound to a virtual network interface.
    *
-   * This request lists all reserved IPs bound to a virtual network interface.
+   * This request lists reserved IPs bound to a virtual network interface.
    *
    * @param listVirtualNetworkInterfaceIpsOptions the {@link ListVirtualNetworkInterfaceIpsOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link ReservedIPCollectionVirtualNetworkInterfaceContext}
@@ -9046,11 +9144,11 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all public gateways.
+   * List public gateways.
    *
-   * This request lists all public gateways in the region. A public gateway is a virtual network device associated with
-   * a VPC, which allows access to the Internet. A public gateway resides in a zone and can be connected to subnets in
-   * the same zone only.
+   * This request lists public gateways in the region. A public gateway is a virtual network device associated with a
+   * VPC, which allows access to the Internet. A public gateway resides in a zone and can be connected to subnets in the
+   * same zone only.
    *
    * @param listPublicGatewaysOptions the {@link ListPublicGatewaysOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link PublicGatewayCollection}
@@ -9082,11 +9180,11 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all public gateways.
+   * List public gateways.
    *
-   * This request lists all public gateways in the region. A public gateway is a virtual network device associated with
-   * a VPC, which allows access to the Internet. A public gateway resides in a zone and can be connected to subnets in
-   * the same zone only.
+   * This request lists public gateways in the region. A public gateway is a virtual network device associated with a
+   * VPC, which allows access to the Internet. A public gateway resides in a zone and can be connected to subnets in the
+   * same zone only.
    *
    * @return a {@link ServiceCall} with a result of type {@link PublicGatewayCollection}
    */
@@ -9216,10 +9314,10 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all floating IPs.
+   * List floating IPs.
    *
-   * This request lists all floating IPs in the region. Floating IPs allow inbound and outbound traffic from the
-   * Internet to an instance.
+   * This request lists floating IPs in the region. Floating IPs allow inbound and outbound traffic from the Internet to
+   * an instance.
    *
    * @param listFloatingIpsOptions the {@link ListFloatingIpsOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link FloatingIPCollection}
@@ -9266,10 +9364,10 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all floating IPs.
+   * List floating IPs.
    *
-   * This request lists all floating IPs in the region. Floating IPs allow inbound and outbound traffic from the
-   * Internet to an instance.
+   * This request lists floating IPs in the region. Floating IPs allow inbound and outbound traffic from the Internet to
+   * an instance.
    *
    * @return a {@link ServiceCall} with a result of type {@link FloatingIPCollection}
    */
@@ -9381,10 +9479,10 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all network ACLs.
+   * List network ACLs.
    *
-   * This request lists all network ACLs in the region. A network ACL defines a set of packet filtering (5-tuple) rules
-   * for all traffic in and out of a subnet. Both allow and deny rules can be defined, and rules are stateless such that
+   * This request lists network ACLs in the region. A network ACL defines a set of packet filtering (5-tuple) rules for
+   * all traffic in and out of a subnet. Both allow and deny rules can be defined, and rules are stateless such that
    * reverse traffic in response to allowed traffic is not automatically permitted.
    *
    * @param listNetworkAclsOptions the {@link ListNetworkAclsOptions} containing the options for the call
@@ -9417,10 +9515,10 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all network ACLs.
+   * List network ACLs.
    *
-   * This request lists all network ACLs in the region. A network ACL defines a set of packet filtering (5-tuple) rules
-   * for all traffic in and out of a subnet. Both allow and deny rules can be defined, and rules are stateless such that
+   * This request lists network ACLs in the region. A network ACL defines a set of packet filtering (5-tuple) rules for
+   * all traffic in and out of a subnet. Both allow and deny rules can be defined, and rules are stateless such that
    * reverse traffic in response to allowed traffic is not automatically permitted.
    *
    * @return a {@link ServiceCall} with a result of type {@link NetworkACLCollection}
@@ -9535,10 +9633,10 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all rules for a network ACL.
+   * List rules for a network ACL.
    *
-   * This request lists all rules for a network ACL. These rules can allow or deny traffic between a source CIDR block
-   * and a destination CIDR block over a particular protocol and port range.
+   * This request lists rules for a network ACL. These rules can allow or deny traffic between a source CIDR block and a
+   * destination CIDR block over a particular protocol and port range.
    *
    * @param listNetworkAclRulesOptions the {@link ListNetworkAclRulesOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link NetworkACLRuleCollection}
@@ -9680,9 +9778,9 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all security groups.
+   * List security groups.
    *
-   * This request lists all security groups in the region. Security groups provide a way to apply IP filtering rules to
+   * This request lists security groups in the region. Security groups provide a way to apply IP filtering rules to
    * instances in the associated VPC. With security groups, all traffic is denied by default, and rules added to
    * security groups define which traffic the security group permits. Security group rules are stateful such that
    * reverse traffic in response to allowed traffic is automatically permitted.
@@ -9726,9 +9824,9 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all security groups.
+   * List security groups.
    *
-   * This request lists all security groups in the region. Security groups provide a way to apply IP filtering rules to
+   * This request lists security groups in the region. Security groups provide a way to apply IP filtering rules to
    * instances in the associated VPC. With security groups, all traffic is denied by default, and rules added to
    * security groups define which traffic the security group permits. Security group rules are stateful such that
    * reverse traffic in response to allowed traffic is automatically permitted.
@@ -9861,11 +9959,10 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all rules in a security group.
+   * List rules in a security group.
    *
-   * This request lists all rules in a security group. These rules define what traffic the security group permits.
-   * Security group rules are stateful, such that reverse traffic in response to allowed traffic is automatically
-   * permitted.
+   * This request lists rules in a security group. These rules define what traffic the security group permits. Security
+   * group rules are stateful, such that reverse traffic in response to allowed traffic is automatically permitted.
    *
    * @param listSecurityGroupRulesOptions the {@link ListSecurityGroupRulesOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link SecurityGroupRuleCollection}
@@ -10004,10 +10101,9 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all targets associated with a security group.
+   * List targets associated with a security group.
    *
-   * This request lists all targets associated with a security group, to which the rules in the security group are
-   * applied.
+   * This request lists targets associated with a security group, to which the rules in the security group are applied.
    *
    * @param listSecurityGroupTargetsOptions the {@link ListSecurityGroupTargetsOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link SecurityGroupTargetCollection}
@@ -10138,9 +10234,9 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all IKE policies.
+   * List IKE policies.
    *
-   * This request lists all IKE policies in the region.
+   * This request lists IKE policies in the region.
    *
    * @param listIkePoliciesOptions the {@link ListIkePoliciesOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link IKEPolicyCollection}
@@ -10169,9 +10265,9 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all IKE policies.
+   * List IKE policies.
    *
-   * This request lists all IKE policies in the region.
+   * This request lists IKE policies in the region.
    *
    * @return a {@link ServiceCall} with a result of type {@link IKEPolicyCollection}
    */
@@ -10297,14 +10393,14 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all VPN gateway connections that use a specified IKE policy.
+   * List VPN gateway connections that use a specified IKE policy.
    *
-   * This request lists all VPN gateway connections that use a policy.
+   * This request lists VPN gateway connections that use a IKE policy.
    *
    * @param listIkePolicyConnectionsOptions the {@link ListIkePolicyConnectionsOptions} containing the options for the call
-   * @return a {@link ServiceCall} with a result of type {@link VPNGatewayConnectionCollection}
+   * @return a {@link ServiceCall} with a result of type {@link IKEPolicyConnectionCollection}
    */
-  public ServiceCall<VPNGatewayConnectionCollection> listIkePolicyConnections(ListIkePolicyConnectionsOptions listIkePolicyConnectionsOptions) {
+  public ServiceCall<IKEPolicyConnectionCollection> listIkePolicyConnections(ListIkePolicyConnectionsOptions listIkePolicyConnectionsOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(listIkePolicyConnectionsOptions,
       "listIkePolicyConnectionsOptions cannot be null");
     Map<String, String> pathParamsMap = new HashMap<String, String>();
@@ -10317,15 +10413,21 @@ public class Vpc extends BaseService {
     builder.header("Accept", "application/json");
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    ResponseConverter<VPNGatewayConnectionCollection> responseConverter =
-      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<VPNGatewayConnectionCollection>() { }.getType());
+    if (listIkePolicyConnectionsOptions.start() != null) {
+      builder.query("start", String.valueOf(listIkePolicyConnectionsOptions.start()));
+    }
+    if (listIkePolicyConnectionsOptions.limit() != null) {
+      builder.query("limit", String.valueOf(listIkePolicyConnectionsOptions.limit()));
+    }
+    ResponseConverter<IKEPolicyConnectionCollection> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<IKEPolicyConnectionCollection>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
   }
 
   /**
-   * List all IPsec policies.
+   * List IPsec policies.
    *
-   * This request lists all IPsec policies in the region.
+   * This request lists IPsec policies in the region.
    *
    * @param listIpsecPoliciesOptions the {@link ListIpsecPoliciesOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link IPsecPolicyCollection}
@@ -10354,9 +10456,9 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all IPsec policies.
+   * List IPsec policies.
    *
-   * This request lists all IPsec policies in the region.
+   * This request lists IPsec policies in the region.
    *
    * @return a {@link ServiceCall} with a result of type {@link IPsecPolicyCollection}
    */
@@ -10481,14 +10583,14 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all VPN gateway connections that use a specified IPsec policy.
+   * List VPN gateway connections that use a specified IPsec policy.
    *
-   * This request lists all VPN gateway connections that use a policy.
+   * This request lists VPN gateway connections that use a IPsec policy.
    *
    * @param listIpsecPolicyConnectionsOptions the {@link ListIpsecPolicyConnectionsOptions} containing the options for the call
-   * @return a {@link ServiceCall} with a result of type {@link VPNGatewayConnectionCollection}
+   * @return a {@link ServiceCall} with a result of type {@link IPsecPolicyConnectionCollection}
    */
-  public ServiceCall<VPNGatewayConnectionCollection> listIpsecPolicyConnections(ListIpsecPolicyConnectionsOptions listIpsecPolicyConnectionsOptions) {
+  public ServiceCall<IPsecPolicyConnectionCollection> listIpsecPolicyConnections(ListIpsecPolicyConnectionsOptions listIpsecPolicyConnectionsOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(listIpsecPolicyConnectionsOptions,
       "listIpsecPolicyConnectionsOptions cannot be null");
     Map<String, String> pathParamsMap = new HashMap<String, String>();
@@ -10501,15 +10603,21 @@ public class Vpc extends BaseService {
     builder.header("Accept", "application/json");
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    ResponseConverter<VPNGatewayConnectionCollection> responseConverter =
-      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<VPNGatewayConnectionCollection>() { }.getType());
+    if (listIpsecPolicyConnectionsOptions.start() != null) {
+      builder.query("start", String.valueOf(listIpsecPolicyConnectionsOptions.start()));
+    }
+    if (listIpsecPolicyConnectionsOptions.limit() != null) {
+      builder.query("limit", String.valueOf(listIpsecPolicyConnectionsOptions.limit()));
+    }
+    ResponseConverter<IPsecPolicyConnectionCollection> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<IPsecPolicyConnectionCollection>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
   }
 
   /**
-   * List all VPN gateways.
+   * List VPN gateways.
    *
-   * This request lists all VPN gateways in the region.
+   * This request lists VPN gateways in the region.
    *
    * @param listVpnGatewaysOptions the {@link ListVpnGatewaysOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link VPNGatewayCollection}
@@ -10547,9 +10655,9 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all VPN gateways.
+   * List VPN gateways.
    *
-   * This request lists all VPN gateways in the region.
+   * This request lists VPN gateways in the region.
    *
    * @return a {@link ServiceCall} with a result of type {@link VPNGatewayCollection}
    */
@@ -10662,9 +10770,9 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all connections of a VPN gateway.
+   * List connections of a VPN gateway.
    *
-   * This request lists all connections of a VPN gateway.
+   * This request lists connections of a VPN gateway.
    *
    * @param listVpnGatewayConnectionsOptions the {@link ListVpnGatewayConnectionsOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link VPNGatewayConnectionCollection}
@@ -10682,6 +10790,12 @@ public class Vpc extends BaseService {
     builder.header("Accept", "application/json");
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
+    if (listVpnGatewayConnectionsOptions.start() != null) {
+      builder.query("start", String.valueOf(listVpnGatewayConnectionsOptions.start()));
+    }
+    if (listVpnGatewayConnectionsOptions.limit() != null) {
+      builder.query("limit", String.valueOf(listVpnGatewayConnectionsOptions.limit()));
+    }
     if (listVpnGatewayConnectionsOptions.status() != null) {
       builder.query("status", String.valueOf(listVpnGatewayConnectionsOptions.status()));
     }
@@ -10799,9 +10913,9 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all local CIDRs for a VPN gateway connection.
+   * List local CIDRs for a VPN gateway connection.
    *
-   * This request lists all local CIDRs for a VPN gateway connection.
+   * This request lists local CIDRs for a VPN gateway connection.
    *
    * This request is only supported for policy mode VPN gateways.
    *
@@ -10913,9 +11027,9 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all peer CIDRs for a VPN gateway connection.
+   * List peer CIDRs for a VPN gateway connection.
    *
-   * This request lists all peer CIDRs for a VPN gateway connection.
+   * This request lists peer CIDRs for a VPN gateway connection.
    *
    * This request is only supported for policy mode VPN gateways.
    *
@@ -11027,9 +11141,9 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all VPN servers.
+   * List VPN servers.
    *
-   * This request lists all VPN servers.
+   * This request lists VPN servers.
    *
    * @param listVpnServersOptions the {@link ListVpnServersOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link VPNServerCollection}
@@ -11067,9 +11181,9 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all VPN servers.
+   * List VPN servers.
    *
-   * This request lists all VPN servers.
+   * This request lists VPN servers.
    *
    * @return a {@link ServiceCall} with a result of type {@link VPNServerCollection}
    */
@@ -11187,8 +11301,8 @@ public class Vpc extends BaseService {
   /**
    * Update a VPN server.
    *
-   * This request updates the properties of an existing VPN server. Any property changes will cause all connected VPN
-   * clients are disconnected from this VPN server except for the name change.
+   * This request updates the properties of an existing VPN server. Any updates other than to `name` will cause all
+   * connected VPN clients to be disconnected.
    *
    * @param updateVpnServerOptions the {@link UpdateVpnServerOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link VPNServer}
@@ -11242,9 +11356,9 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all VPN clients for a VPN server.
+   * List VPN clients for a VPN server.
    *
-   * This request retrieves all connected VPN clients, and any disconnected VPN clients that the VPN server has not yet
+   * This request retrieves connected VPN clients, and any disconnected VPN clients that the VPN server has not yet
    * deleted based on its auto-deletion policy.
    *
    * @param listVpnServerClientsOptions the {@link ListVpnServerClientsOptions} containing the options for the call
@@ -11359,11 +11473,11 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all VPN routes for a VPN server.
+   * List VPN routes for a VPN server.
    *
-   * This request lists all VPN routes in a VPN server. All VPN routes are provided to the VPN client when the
-   * connection is established.  Packets received from the VPN client will be dropped by the VPN server if there is no
-   * VPN route matching their specified destinations. All VPN routes must be unique within the VPN server.
+   * This request lists VPN routes in a VPN server. All VPN routes are provided to the VPN client when the connection is
+   * established.  Packets received from the VPN client will be dropped by the VPN server if there is no VPN route
+   * matching their specified destinations. All VPN routes must be unique within the VPN server.
    *
    * @param listVpnServerRoutesOptions the {@link ListVpnServerRoutesOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link VPNServerRouteCollection}
@@ -11400,8 +11514,7 @@ public class Vpc extends BaseService {
    *
    * This request creates a new VPN route in the VPN server. All VPN routes are provided to the VPN client when the
    * connection is established. Packets received from the VPN client will be dropped by the VPN server if there is no
-   * VPN route matching their specified destinations. All VPN routes must be unique within the VPN server. destination
-   * of the packet.
+   * VPN route matching their specified destinations. All VPN routes must be unique within the VPN server.
    *
    * @param createVpnServerRouteOptions the {@link CreateVpnServerRouteOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link VPNServerRoute}
@@ -11515,9 +11628,9 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all load balancer profiles.
+   * List load balancer profiles.
    *
-   * This request lists all load balancer profiles available in the region. A load balancer profile specifies the
+   * This request lists load balancer profiles available in the region. A load balancer profile specifies the
    * performance characteristics and pricing model for a load balancer.
    *
    * @param listLoadBalancerProfilesOptions the {@link ListLoadBalancerProfilesOptions} containing the options for the call
@@ -11547,9 +11660,9 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all load balancer profiles.
+   * List load balancer profiles.
    *
-   * This request lists all load balancer profiles available in the region. A load balancer profile specifies the
+   * This request lists load balancer profiles available in the region. A load balancer profile specifies the
    * performance characteristics and pricing model for a load balancer.
    *
    * @return a {@link ServiceCall} with a result of type {@link LoadBalancerProfileCollection}
@@ -11585,9 +11698,9 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all load balancers.
+   * List load balancers.
    *
-   * This request lists all load balancers in the region.
+   * This request lists load balancers in the region.
    *
    * @param listLoadBalancersOptions the {@link ListLoadBalancersOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link LoadBalancerCollection}
@@ -11616,9 +11729,9 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all load balancers.
+   * List load balancers.
    *
-   * This request lists all load balancers in the region.
+   * This request lists load balancers in the region.
    *
    * @return a {@link ServiceCall} with a result of type {@link LoadBalancerCollection}
    */
@@ -11768,7 +11881,7 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all statistics of a load balancer.
+   * List statistics of a load balancer.
    *
    * This request lists statistics of a load balancer.
    *
@@ -11794,9 +11907,9 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all listeners for a load balancer.
+   * List listeners for a load balancer.
    *
-   * This request lists all listeners for a load balancer.
+   * This request lists listeners for a load balancer.
    *
    * @param listLoadBalancerListenersOptions the {@link ListLoadBalancerListenersOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link LoadBalancerListenerCollection}
@@ -11960,10 +12073,10 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all policies for a load balancer listener.
+   * List policies for a load balancer listener.
    *
-   * This request lists all policies for a load balancer listener. A policy consists of rules to match against each
-   * incoming request, and an action to apply to the request if a rule matches.
+   * This request lists policies for a load balancer listener. A policy consists of rules to match against each incoming
+   * request, and an action to apply to the request if a rule matches.
    *
    * @param listLoadBalancerListenerPoliciesOptions the {@link ListLoadBalancerListenerPoliciesOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link LoadBalancerListenerPolicyCollection}
@@ -12114,9 +12227,9 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all rules of a load balancer listener policy.
+   * List rules of a load balancer listener policy.
    *
-   * This request lists all rules of a load balancer listener policy.
+   * This request lists rules of a load balancer listener policy.
    *
    * @param listLoadBalancerListenerPolicyRulesOptions the {@link ListLoadBalancerListenerPolicyRulesOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link LoadBalancerListenerPolicyRuleCollection}
@@ -12264,9 +12377,9 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all pools of a load balancer.
+   * List pools of a load balancer.
    *
-   * This request lists all pools of a load balancer.
+   * This request lists pools of a load balancer.
    *
    * @param listLoadBalancerPoolsOptions the {@link ListLoadBalancerPoolsOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link LoadBalancerPoolCollection}
@@ -12414,9 +12527,9 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all members of a load balancer pool.
+   * List members of a load balancer pool.
    *
-   * This request lists all members of a load balancer pool.
+   * This request lists members of a load balancer pool.
    *
    * @param listLoadBalancerPoolMembersOptions the {@link ListLoadBalancerPoolMembersOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link LoadBalancerPoolMemberCollection}
@@ -12589,10 +12702,10 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all endpoint gateways.
+   * List endpoint gateways.
    *
-   * This request lists all endpoint gateways in the region. An endpoint gateway maps one or more reserved IPs in a VPC
-   * to a target outside the VPC.
+   * This request lists endpoint gateways in the region. An endpoint gateway maps one or more reserved IPs in a VPC to a
+   * target outside the VPC.
    *
    * @param listEndpointGatewaysOptions the {@link ListEndpointGatewaysOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link EndpointGatewayCollection}
@@ -12639,10 +12752,10 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all endpoint gateways.
+   * List endpoint gateways.
    *
-   * This request lists all endpoint gateways in the region. An endpoint gateway maps one or more reserved IPs in a VPC
-   * to a target outside the VPC.
+   * This request lists endpoint gateways in the region. An endpoint gateway maps one or more reserved IPs in a VPC to a
+   * target outside the VPC.
    *
    * @return a {@link ServiceCall} with a result of type {@link EndpointGatewayCollection}
    */
@@ -12695,9 +12808,9 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all reserved IPs bound to an endpoint gateway.
+   * List reserved IPs bound to an endpoint gateway.
    *
-   * This request lists all reserved IPs bound to an endpoint gateway.
+   * This request lists reserved IPs bound to an endpoint gateway.
    *
    * @param listEndpointGatewayIpsOptions the {@link ListEndpointGatewayIpsOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link ReservedIPCollectionEndpointGatewayContext}
@@ -12894,10 +13007,10 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all flow log collectors.
+   * List flow log collectors.
    *
-   * This request lists all flow log collectors in the region. A flow log collector summarizes data sent over the
-   * instance network interfaces and instance network attachments contained within its target.
+   * This request lists flow log collectors in the region. A flow log collector summarizes data sent over the instance
+   * network interfaces and instance network attachments contained within its target.
    *
    * @param listFlowLogCollectorsOptions the {@link ListFlowLogCollectorsOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link FlowLogCollectorCollection}
@@ -12947,10 +13060,10 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * List all flow log collectors.
+   * List flow log collectors.
    *
-   * This request lists all flow log collectors in the region. A flow log collector summarizes data sent over the
-   * instance network interfaces and instance network attachments contained within its target.
+   * This request lists flow log collectors in the region. A flow log collector summarizes data sent over the instance
+   * network interfaces and instance network attachments contained within its target.
    *
    * @return a {@link ServiceCall} with a result of type {@link FlowLogCollectorCollection}
    */

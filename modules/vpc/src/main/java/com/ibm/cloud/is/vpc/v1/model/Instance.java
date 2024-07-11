@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.is.vpc.v1.model;
 
 import java.util.Date;
@@ -22,6 +23,16 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  * Instance.
  */
 public class Instance extends GenericModel {
+
+  /**
+   * The confidential compute mode for this virtual server instance.
+   */
+  public interface ConfidentialComputeMode {
+    /** disabled. */
+    String DISABLED = "disabled";
+    /** sgx. */
+    String SGX = "sgx";
+  }
 
   /**
    * The health of this resource:
@@ -103,12 +114,16 @@ public class Instance extends GenericModel {
   protected VolumeAttachmentReferenceInstanceContext bootVolumeAttachment;
   @SerializedName("catalog_offering")
   protected InstanceCatalogOffering catalogOffering;
+  @SerializedName("confidential_compute_mode")
+  protected String confidentialComputeMode;
   @SerializedName("created_at")
   protected Date createdAt;
   protected String crn;
   @SerializedName("dedicated_host")
   protected DedicatedHostReference dedicatedHost;
   protected List<InstanceDisk> disks;
+  @SerializedName("enable_secure_boot")
+  protected Boolean enableSecureBoot;
   protected InstanceGPU gpu;
   @SerializedName("health_reasons")
   protected List<InstanceHealthReason> healthReasons;
@@ -208,6 +223,17 @@ public class Instance extends GenericModel {
   }
 
   /**
+   * Gets the confidentialComputeMode.
+   *
+   * The confidential compute mode for this virtual server instance.
+   *
+   * @return the confidentialComputeMode
+   */
+  public String getConfidentialComputeMode() {
+    return confidentialComputeMode;
+  }
+
+  /**
    * Gets the createdAt.
    *
    * The date and time that the virtual server instance was created.
@@ -249,6 +275,17 @@ public class Instance extends GenericModel {
    */
   public List<InstanceDisk> getDisks() {
     return disks;
+  }
+
+  /**
+   * Gets the enableSecureBoot.
+   *
+   * Indicates whether secure boot is enabled for this virtual server instance.
+   *
+   * @return the enableSecureBoot
+   */
+  public Boolean isEnableSecureBoot() {
+    return enableSecureBoot;
   }
 
   /**

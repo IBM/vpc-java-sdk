@@ -14,6 +14,8 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.AccountReference;
+import com.ibm.cloud.is.vpc.v1.model.CatalogOfferingVersionPlanReference;
+import com.ibm.cloud.is.vpc.v1.model.CatalogOfferingVersionPlanReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.CatalogOfferingVersionReference;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostGroupReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostReference;

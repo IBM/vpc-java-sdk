@@ -10,30 +10,82 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.is.vpc.v1.model;
 
 import java.util.List;
 
+import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * Collection of VPN gateway connections in a VPN gateway.
+ * VPNGatewayConnectionCollection.
  */
 public class VPNGatewayConnectionCollection extends GenericModel {
 
   protected List<VPNGatewayConnection> connections;
+  protected VPNGatewayConnectionCollectionFirst first;
+  protected Long limit;
+  protected VPNGatewayConnectionCollectionNext next;
+  @SerializedName("total_count")
+  protected Long totalCount;
 
   protected VPNGatewayConnectionCollection() { }
 
   /**
    * Gets the connections.
    *
-   * Array of VPN gateway connections.
+   * Collection of VPN gateway connections in a VPN gateway.
    *
    * @return the connections
    */
   public List<VPNGatewayConnection> getConnections() {
     return connections;
+  }
+
+  /**
+   * Gets the first.
+   *
+   * A link to the first page of resources.
+   *
+   * @return the first
+   */
+  public VPNGatewayConnectionCollectionFirst getFirst() {
+    return first;
+  }
+
+  /**
+   * Gets the limit.
+   *
+   * The maximum number of resources that can be returned by the request.
+   *
+   * @return the limit
+   */
+  public Long getLimit() {
+    return limit;
+  }
+
+  /**
+   * Gets the next.
+   *
+   * A link to the next page of resources. This property is present for all pages
+   * except the last page.
+   *
+   * @return the next
+   */
+  public VPNGatewayConnectionCollectionNext getNext() {
+    return next;
+  }
+
+  /**
+   * Gets the totalCount.
+   *
+   * The total number of resources across all pages.
+   *
+   * @return the totalCount
+   */
+  public Long getTotalCount() {
+    return totalCount;
   }
 }
 

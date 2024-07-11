@@ -60,7 +60,7 @@ public class BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInter
       .primaryIp(networkInterfaceIpPrototypeModel)
       .securityGroups(java.util.Arrays.asList(securityGroupIdentityModel))
       .subnet(subnetIdentityModel)
-      .allowedVlans(java.util.Arrays.asList(Long.valueOf("100")))
+      .allowedVlans(java.util.Arrays.asList(Long.valueOf("4")))
       .interfaceType("pci")
       .build();
     assertEquals(bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByPciPrototypeModel.allowIpSpoofing(), Boolean.valueOf(true));
@@ -69,7 +69,7 @@ public class BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInter
     assertEquals(bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByPciPrototypeModel.primaryIp(), networkInterfaceIpPrototypeModel);
     assertEquals(bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByPciPrototypeModel.securityGroups(), java.util.Arrays.asList(securityGroupIdentityModel));
     assertEquals(bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByPciPrototypeModel.subnet(), subnetIdentityModel);
-    assertEquals(bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByPciPrototypeModel.allowedVlans(), java.util.Arrays.asList(Long.valueOf("100")));
+    assertEquals(bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByPciPrototypeModel.allowedVlans(), java.util.Arrays.asList(Long.valueOf("4")));
     assertEquals(bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByPciPrototypeModel.interfaceType(), "pci");
 
     String json = TestUtilities.serialize(bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByPciPrototypeModel);

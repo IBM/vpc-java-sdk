@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.is.vpc.v1.model;
 
 import java.util.Date;
@@ -103,6 +104,8 @@ public class Volume extends GenericModel {
   protected Long bandwidth;
   protected Boolean busy;
   protected Long capacity;
+  @SerializedName("catalog_offering")
+  protected VolumeCatalogOffering catalogOffering;
   @SerializedName("created_at")
   protected Date createdAt;
   protected String crn;
@@ -199,6 +202,22 @@ public class Volume extends GenericModel {
    */
   public Long getCapacity() {
     return capacity;
+  }
+
+  /**
+   * Gets the catalogOffering.
+   *
+   * The [catalog](https://cloud.ibm.com/docs/account?topic=account-restrict-by-user)
+   * offering this volume was created from. If a virtual server instance is provisioned
+   * with a `boot_volume_attachment` specifying this volume, the virtual server instance
+   * will use this volume's catalog offering, including its pricing plan.
+   *
+   * If absent, this volume was not created from a catalog offering.
+   *
+   * @return the catalogOffering
+   */
+  public VolumeCatalogOffering getCatalogOffering() {
+    return catalogOffering;
   }
 
   /**

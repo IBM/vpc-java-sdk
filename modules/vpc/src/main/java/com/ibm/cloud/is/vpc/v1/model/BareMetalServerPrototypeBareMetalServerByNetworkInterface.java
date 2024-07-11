@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.is.vpc.v1.model;
 
 import java.util.ArrayList;
@@ -25,6 +26,7 @@ public class BareMetalServerPrototypeBareMetalServerByNetworkInterface extends B
    * Builder.
    */
   public static class Builder {
+    private Long bandwidth;
     private Boolean enableSecureBoot;
     private BareMetalServerInitializationPrototype initialization;
     private String name;
@@ -42,6 +44,7 @@ public class BareMetalServerPrototypeBareMetalServerByNetworkInterface extends B
      * @param bareMetalServerPrototypeBareMetalServerByNetworkInterface the instance to initialize the Builder with
      */
     public Builder(BareMetalServerPrototype bareMetalServerPrototypeBareMetalServerByNetworkInterface) {
+      this.bandwidth = bareMetalServerPrototypeBareMetalServerByNetworkInterface.bandwidth;
       this.enableSecureBoot = bareMetalServerPrototypeBareMetalServerByNetworkInterface.enableSecureBoot;
       this.initialization = bareMetalServerPrototypeBareMetalServerByNetworkInterface.initialization;
       this.name = bareMetalServerPrototypeBareMetalServerByNetworkInterface.name;
@@ -97,6 +100,17 @@ public class BareMetalServerPrototypeBareMetalServerByNetworkInterface extends B
         this.networkInterfaces = new ArrayList<BareMetalServerNetworkInterfacePrototype>();
       }
       this.networkInterfaces.add(networkInterfaces);
+      return this;
+    }
+
+    /**
+     * Set the bandwidth.
+     *
+     * @param bandwidth the bandwidth
+     * @return the BareMetalServerPrototypeBareMetalServerByNetworkInterface builder
+     */
+    public Builder bandwidth(long bandwidth) {
+      this.bandwidth = bandwidth;
       return this;
     }
 
@@ -223,6 +237,7 @@ public class BareMetalServerPrototypeBareMetalServerByNetworkInterface extends B
       "zone cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.primaryNetworkInterface,
       "primaryNetworkInterface cannot be null");
+    bandwidth = builder.bandwidth;
     enableSecureBoot = builder.enableSecureBoot;
     initialization = builder.initialization;
     name = builder.name;
