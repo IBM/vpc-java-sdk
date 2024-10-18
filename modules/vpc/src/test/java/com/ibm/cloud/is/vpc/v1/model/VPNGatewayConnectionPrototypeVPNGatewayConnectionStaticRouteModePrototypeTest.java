@@ -83,6 +83,7 @@ public class VPNGatewayConnectionPrototypeVPNGatewayConnectionStaticRouteModePro
       .ipsecPolicy(vpnGatewayConnectionIPsecPolicyPrototypeModel)
       .name("my-vpn-connection")
       .psk("lkj14b1oi0alcniejkso")
+      .distributeTraffic(false)
       .local(vpnGatewayConnectionStaticRouteModeLocalPrototypeModel)
       .peer(vpnGatewayConnectionStaticRouteModePeerPrototypeModel)
       .routingProtocol("none")
@@ -94,6 +95,7 @@ public class VPNGatewayConnectionPrototypeVPNGatewayConnectionStaticRouteModePro
     assertEquals(vpnGatewayConnectionPrototypeVpnGatewayConnectionStaticRouteModePrototypeModel.ipsecPolicy(), vpnGatewayConnectionIPsecPolicyPrototypeModel);
     assertEquals(vpnGatewayConnectionPrototypeVpnGatewayConnectionStaticRouteModePrototypeModel.name(), "my-vpn-connection");
     assertEquals(vpnGatewayConnectionPrototypeVpnGatewayConnectionStaticRouteModePrototypeModel.psk(), "lkj14b1oi0alcniejkso");
+    assertEquals(vpnGatewayConnectionPrototypeVpnGatewayConnectionStaticRouteModePrototypeModel.distributeTraffic(), Boolean.valueOf(false));
     assertEquals(vpnGatewayConnectionPrototypeVpnGatewayConnectionStaticRouteModePrototypeModel.local(), vpnGatewayConnectionStaticRouteModeLocalPrototypeModel);
     assertEquals(vpnGatewayConnectionPrototypeVpnGatewayConnectionStaticRouteModePrototypeModel.peer(), vpnGatewayConnectionStaticRouteModePeerPrototypeModel);
     assertEquals(vpnGatewayConnectionPrototypeVpnGatewayConnectionStaticRouteModePrototypeModel.routingProtocol(), "none");
@@ -109,6 +111,7 @@ public class VPNGatewayConnectionPrototypeVPNGatewayConnectionStaticRouteModePro
     assertEquals(vpnGatewayConnectionPrototypeVpnGatewayConnectionStaticRouteModePrototypeModelNew.ipsecPolicy().toString(), vpnGatewayConnectionIPsecPolicyPrototypeModel.toString());
     assertEquals(vpnGatewayConnectionPrototypeVpnGatewayConnectionStaticRouteModePrototypeModelNew.name(), "my-vpn-connection");
     assertEquals(vpnGatewayConnectionPrototypeVpnGatewayConnectionStaticRouteModePrototypeModelNew.psk(), "lkj14b1oi0alcniejkso");
+    assertEquals(vpnGatewayConnectionPrototypeVpnGatewayConnectionStaticRouteModePrototypeModelNew.distributeTraffic(), Boolean.valueOf(false));
     assertEquals(vpnGatewayConnectionPrototypeVpnGatewayConnectionStaticRouteModePrototypeModelNew.local().toString(), vpnGatewayConnectionStaticRouteModeLocalPrototypeModel.toString());
     assertEquals(vpnGatewayConnectionPrototypeVpnGatewayConnectionStaticRouteModePrototypeModelNew.peer().toString(), vpnGatewayConnectionStaticRouteModePeerPrototypeModel.toString());
     assertEquals(vpnGatewayConnectionPrototypeVpnGatewayConnectionStaticRouteModePrototypeModelNew.routingProtocol(), "none");

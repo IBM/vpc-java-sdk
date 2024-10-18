@@ -58,7 +58,7 @@ public class LoadBalancerCollection extends GenericModel {
   /**
    * Gets the loadBalancers.
    *
-   * Collection of load balancers.
+   * A page of load balancers.
    *
    * @return the loadBalancers
    */

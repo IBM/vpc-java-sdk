@@ -47,7 +47,7 @@ public class FlowLogCollectorCollection extends GenericModel {
   /**
    * Gets the flowLogCollectors.
    *
-   * Collection of flow log collectors.
+   * A page of flow log collectors.
    *
    * @return the flowLogCollectors
    */

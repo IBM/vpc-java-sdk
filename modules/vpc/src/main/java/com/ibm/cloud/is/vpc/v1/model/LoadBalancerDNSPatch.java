@@ -20,6 +20,8 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  *
  * Specify `null` to remove the existing DNS configuration, which will remove all DNS `A` records for this load balancer
  * that had been added to `zone`, and add equivalent `A` records to the public DNS zone `lb.appdomain.cloud`.
+ *
+ * Not supported by private path load balancers.
  */
 public class LoadBalancerDNSPatch extends GenericModel {
 

@@ -25,9 +25,12 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class IKEPolicy extends GenericModel {
 
   /**
-   * The authentication algorithm
+   * The authentication algorithm.
    *
    * The `md5` and `sha1` algorithms have been deprecated.
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface AuthenticationAlgorithm {
     /** md5. */
@@ -43,9 +46,12 @@ public class IKEPolicy extends GenericModel {
   }
 
   /**
-   * The encryption algorithm
+   * The encryption algorithm.
    *
    * The `triple_des` algorithm has been deprecated.
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface EncryptionAlgorithm {
     /** aes128. */
@@ -59,7 +65,10 @@ public class IKEPolicy extends GenericModel {
   }
 
   /**
-   * The IKE negotiation mode. Only `main` is supported.
+   * The IKE negotiation mode.
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface NegotiationMode {
     /** main. */
@@ -102,9 +111,12 @@ public class IKEPolicy extends GenericModel {
   /**
    * Gets the authenticationAlgorithm.
    *
-   * The authentication algorithm
+   * The authentication algorithm.
    *
    * The `md5` and `sha1` algorithms have been deprecated.
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the authenticationAlgorithm
    */
@@ -150,9 +162,12 @@ public class IKEPolicy extends GenericModel {
   /**
    * Gets the encryptionAlgorithm.
    *
-   * The encryption algorithm
+   * The encryption algorithm.
    *
    * The `triple_des` algorithm has been deprecated.
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the encryptionAlgorithm
    */
@@ -163,7 +178,7 @@ public class IKEPolicy extends GenericModel {
   /**
    * Gets the href.
    *
-   * The IKE policy's canonical URL.
+   * The URL for this IKE policy.
    *
    * @return the href
    */
@@ -218,7 +233,10 @@ public class IKEPolicy extends GenericModel {
   /**
    * Gets the negotiationMode.
    *
-   * The IKE negotiation mode. Only `main` is supported.
+   * The IKE negotiation mode.
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the negotiationMode
    */

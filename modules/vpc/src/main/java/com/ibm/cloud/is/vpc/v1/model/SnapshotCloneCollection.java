@@ -29,7 +29,7 @@ public class SnapshotCloneCollection extends GenericModel {
   /**
    * Gets the clones.
    *
-   * Collection of snapshot clones.
+   * The clones for the snapshot.
    *
    * @return the clones
    */

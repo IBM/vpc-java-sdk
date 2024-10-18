@@ -69,7 +69,7 @@ public class DedicatedHostProfileCollection extends GenericModel {
   /**
    * Gets the profiles.
    *
-   * Collection of dedicated host profiles.
+   * A page of dedicated host profiles.
    *
    * @return the profiles
    */

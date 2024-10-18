@@ -36,7 +36,7 @@ public class BareMetalServerCollection extends GenericModel {
   /**
    * Gets the bareMetalServers.
    *
-   * Collection of bare metal servers.
+   * A page of bare metal servers.
    *
    * @return the bareMetalServers
    */

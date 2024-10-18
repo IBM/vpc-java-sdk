@@ -32,9 +32,9 @@ public class GetVolumeProfileOptionsTest {
   @Test
   public void testGetVolumeProfileOptions() throws Throwable {
     GetVolumeProfileOptions getVolumeProfileOptionsModel = new GetVolumeProfileOptions.Builder()
-      .name("testString")
+      .name("10iops-tier")
       .build();
-    assertEquals(getVolumeProfileOptionsModel.name(), "testString");
+    assertEquals(getVolumeProfileOptionsModel.name(), "10iops-tier");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

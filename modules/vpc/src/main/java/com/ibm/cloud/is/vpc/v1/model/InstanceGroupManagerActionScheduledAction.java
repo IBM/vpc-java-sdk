@@ -36,7 +36,10 @@ public class InstanceGroupManagerActionScheduledAction extends InstanceGroupMana
    * - `completed`: Action was completed successfully
    * - `failed`: Action could not be completed successfully
    * - `incompatible`: Action parameters are not compatible with the group or manager
-   * - `omitted`: Action was not applied because this action's manager was disabled.
+   * - `omitted`: Action was not applied because this action's manager was disabled
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface Status {
     /** active. */

@@ -13,6 +13,7 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.ibm.cloud.is.vpc.v1.model.AccountReference;
 import com.ibm.cloud.is.vpc.v1.model.RegionReference;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotRemote;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
@@ -33,6 +34,7 @@ public class SnapshotRemoteTest {
   @Test
   public void testSnapshotRemote() throws Throwable {
     SnapshotRemote snapshotRemoteModel = new SnapshotRemote();
+    assertNull(snapshotRemoteModel.getAccount());
     assertNull(snapshotRemoteModel.getRegion());
   }
 }

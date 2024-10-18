@@ -32,9 +32,9 @@ public class GetShareProfileOptionsTest {
   @Test
   public void testGetShareProfileOptions() throws Throwable {
     GetShareProfileOptions getShareProfileOptionsModel = new GetShareProfileOptions.Builder()
-      .name("testString")
+      .name("dp2")
       .build();
-    assertEquals(getShareProfileOptionsModel.name(), "testString");
+    assertEquals(getShareProfileOptionsModel.name(), "dp2");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

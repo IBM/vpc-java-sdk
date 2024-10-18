@@ -33,16 +33,16 @@ public class LoadBalancerListenerPolicyTargetPatchLoadBalancerListenerPolicyRedi
   public void testLoadBalancerListenerPolicyTargetPatchLoadBalancerListenerPolicyRedirectURLPatch() throws Throwable {
     LoadBalancerListenerPolicyTargetPatchLoadBalancerListenerPolicyRedirectURLPatch loadBalancerListenerPolicyTargetPatchLoadBalancerListenerPolicyRedirectUrlPatchModel = new LoadBalancerListenerPolicyTargetPatchLoadBalancerListenerPolicyRedirectURLPatch.Builder()
       .httpStatusCode(Long.valueOf("301"))
-      .url("https://www.example.com")
+      .url("https://ibm.com:443/new/{path}?{query}")
       .build();
     assertEquals(loadBalancerListenerPolicyTargetPatchLoadBalancerListenerPolicyRedirectUrlPatchModel.httpStatusCode(), Long.valueOf("301"));
-    assertEquals(loadBalancerListenerPolicyTargetPatchLoadBalancerListenerPolicyRedirectUrlPatchModel.url(), "https://www.example.com");
+    assertEquals(loadBalancerListenerPolicyTargetPatchLoadBalancerListenerPolicyRedirectUrlPatchModel.url(), "https://ibm.com:443/new/{path}?{query}");
 
     String json = TestUtilities.serialize(loadBalancerListenerPolicyTargetPatchLoadBalancerListenerPolicyRedirectUrlPatchModel);
 
     LoadBalancerListenerPolicyTargetPatchLoadBalancerListenerPolicyRedirectURLPatch loadBalancerListenerPolicyTargetPatchLoadBalancerListenerPolicyRedirectUrlPatchModelNew = TestUtilities.deserialize(json, LoadBalancerListenerPolicyTargetPatchLoadBalancerListenerPolicyRedirectURLPatch.class);
     assertTrue(loadBalancerListenerPolicyTargetPatchLoadBalancerListenerPolicyRedirectUrlPatchModelNew instanceof LoadBalancerListenerPolicyTargetPatchLoadBalancerListenerPolicyRedirectURLPatch);
     assertEquals(loadBalancerListenerPolicyTargetPatchLoadBalancerListenerPolicyRedirectUrlPatchModelNew.httpStatusCode(), Long.valueOf("301"));
-    assertEquals(loadBalancerListenerPolicyTargetPatchLoadBalancerListenerPolicyRedirectUrlPatchModelNew.url(), "https://www.example.com");
+    assertEquals(loadBalancerListenerPolicyTargetPatchLoadBalancerListenerPolicyRedirectUrlPatchModelNew.url(), "https://ibm.com:443/new/{path}?{query}");
   }
 }

@@ -29,7 +29,7 @@ public class LoadBalancerPoolCollection extends GenericModel {
   /**
    * Gets the pools.
    *
-   * Collection of pools.
+   * The pools for the load balancer.
    *
    * @return the pools
    */

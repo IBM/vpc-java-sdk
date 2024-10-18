@@ -32,15 +32,15 @@ public class KeyIdentityByCRNTest {
   @Test
   public void testKeyIdentityByCRN() throws Throwable {
     KeyIdentityByCRN keyIdentityByCrnModel = new KeyIdentityByCRN.Builder()
-      .crn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::key:a6b1a881-2ce8-41a3-80fc-36316a73f803")
+      .crn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::key:82679077-ac3b-4c10-be16-63e9c21f0f45")
       .build();
-    assertEquals(keyIdentityByCrnModel.crn(), "crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::key:a6b1a881-2ce8-41a3-80fc-36316a73f803");
+    assertEquals(keyIdentityByCrnModel.crn(), "crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::key:82679077-ac3b-4c10-be16-63e9c21f0f45");
 
     String json = TestUtilities.serialize(keyIdentityByCrnModel);
 
     KeyIdentityByCRN keyIdentityByCrnModelNew = TestUtilities.deserialize(json, KeyIdentityByCRN.class);
     assertTrue(keyIdentityByCrnModelNew instanceof KeyIdentityByCRN);
-    assertEquals(keyIdentityByCrnModelNew.crn(), "crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::key:a6b1a881-2ce8-41a3-80fc-36316a73f803");
+    assertEquals(keyIdentityByCrnModelNew.crn(), "crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::key:82679077-ac3b-4c10-be16-63e9c21f0f45");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

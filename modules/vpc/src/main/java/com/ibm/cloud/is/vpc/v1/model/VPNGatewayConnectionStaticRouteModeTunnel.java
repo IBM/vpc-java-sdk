@@ -25,6 +25,9 @@ public class VPNGatewayConnectionStaticRouteModeTunnel extends GenericModel {
 
   /**
    * The status of the VPN Tunnel.
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface Status {
     /** down. */
@@ -56,6 +59,9 @@ public class VPNGatewayConnectionStaticRouteModeTunnel extends GenericModel {
    * Gets the status.
    *
    * The status of the VPN Tunnel.
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the status
    */

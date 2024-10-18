@@ -27,7 +27,7 @@ import com.ibm.cloud.sdk.core.util.GsonSingleton;
 public class VPNServerPatch extends GenericModel {
 
   /**
-   * The transport protocol used by this VPN server.
+   * The transport protocol to use for this VPN server.
    */
   public interface Protocol {
     /** tcp. */
@@ -390,7 +390,7 @@ public class VPNServerPatch extends GenericModel {
   /**
    * Gets the protocol.
    *
-   * The transport protocol used by this VPN server.
+   * The transport protocol to use for this VPN server.
    *
    * @return the protocol
    */

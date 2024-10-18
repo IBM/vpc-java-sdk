@@ -46,7 +46,7 @@ public class ReservedIPCollectionBareMetalServerNetworkInterfaceContext extends 
   /**
    * Gets the ips.
    *
-   * Collection of reserved IPs bound to a bare metal server network interface.
+   * A page of reserved IPs bound to the bare metal server network interface.
    *
    * @return the ips
    */

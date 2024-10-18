@@ -47,7 +47,7 @@ public class NetworkACLRulePrototypeNetworkACLRuleProtocolTCPUDPPrototype extend
   }
 
   /**
-   * The protocol to enforce.
+   * The network protocol.
    */
   public interface Protocol {
     /** tcp. */

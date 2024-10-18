@@ -33,12 +33,12 @@ public class ListShareMountTargetsOptionsTest {
   public void testListShareMountTargetsOptions() throws Throwable {
     ListShareMountTargetsOptions listShareMountTargetsOptionsModel = new ListShareMountTargetsOptions.Builder()
       .shareId("testString")
-      .name("testString")
+      .name("my-name")
       .start("testString")
       .limit(Long.valueOf("50"))
       .build();
     assertEquals(listShareMountTargetsOptionsModel.shareId(), "testString");
-    assertEquals(listShareMountTargetsOptionsModel.name(), "testString");
+    assertEquals(listShareMountTargetsOptionsModel.name(), "my-name");
     assertEquals(listShareMountTargetsOptionsModel.start(), "testString");
     assertEquals(listShareMountTargetsOptionsModel.limit(), Long.valueOf("50"));
   }

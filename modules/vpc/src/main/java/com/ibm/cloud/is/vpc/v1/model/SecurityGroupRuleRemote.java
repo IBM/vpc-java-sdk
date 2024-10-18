@@ -32,7 +32,7 @@ public class SecurityGroupRuleRemote extends GenericModel {
   @SerializedName("cidr_block")
   protected String cidrBlock;
   protected String crn;
-  protected SecurityGroupReferenceDeleted deleted;
+  protected Deleted deleted;
   protected String href;
   protected String id;
   protected String name;
@@ -70,7 +70,7 @@ public class SecurityGroupRuleRemote extends GenericModel {
   /**
    * Gets the crn.
    *
-   * The security group's CRN.
+   * The CRN for this security group.
    *
    * @return the crn
    */
@@ -86,14 +86,14 @@ public class SecurityGroupRuleRemote extends GenericModel {
    *
    * @return the deleted
    */
-  public SecurityGroupReferenceDeleted getDeleted() {
+  public Deleted getDeleted() {
     return deleted;
   }
 
   /**
    * Gets the href.
    *
-   * The security group's canonical URL.
+   * The URL for this security group.
    *
    * @return the href
    */

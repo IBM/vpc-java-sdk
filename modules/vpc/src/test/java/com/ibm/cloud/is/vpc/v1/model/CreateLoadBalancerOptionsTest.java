@@ -201,6 +201,7 @@ public class CreateLoadBalancerOptionsTest {
       .isPublic(true)
       .subnets(java.util.Arrays.asList(subnetIdentityModel))
       .dns(loadBalancerDnsPrototypeModel)
+      .isPrivatePath(true)
       .listeners(java.util.Arrays.asList(loadBalancerListenerPrototypeLoadBalancerContextModel))
       .logging(loadBalancerLoggingPrototypeModel)
       .name("my-load-balancer")
@@ -213,6 +214,7 @@ public class CreateLoadBalancerOptionsTest {
     assertEquals(createLoadBalancerOptionsModel.isPublic(), Boolean.valueOf(true));
     assertEquals(createLoadBalancerOptionsModel.subnets(), java.util.Arrays.asList(subnetIdentityModel));
     assertEquals(createLoadBalancerOptionsModel.dns(), loadBalancerDnsPrototypeModel);
+    assertEquals(createLoadBalancerOptionsModel.isPrivatePath(), Boolean.valueOf(true));
     assertEquals(createLoadBalancerOptionsModel.listeners(), java.util.Arrays.asList(loadBalancerListenerPrototypeLoadBalancerContextModel));
     assertEquals(createLoadBalancerOptionsModel.logging(), loadBalancerLoggingPrototypeModel);
     assertEquals(createLoadBalancerOptionsModel.name(), "my-load-balancer");

@@ -47,7 +47,7 @@ public class IKEPolicyCollection extends GenericModel {
   /**
    * Gets the ikePolicies.
    *
-   * Collection of IKE policies.
+   * A page of IKE policies.
    *
    * @return the ikePolicies
    */

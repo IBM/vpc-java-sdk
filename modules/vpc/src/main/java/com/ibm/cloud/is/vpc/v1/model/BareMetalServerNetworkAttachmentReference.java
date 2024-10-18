@@ -29,7 +29,7 @@ public class BareMetalServerNetworkAttachmentReference extends GenericModel {
     String BARE_METAL_SERVER_NETWORK_ATTACHMENT = "bare_metal_server_network_attachment";
   }
 
-  protected BareMetalServerNetworkAttachmentReferenceDeleted deleted;
+  protected Deleted deleted;
   protected String href;
   protected String id;
   protected String name;
@@ -38,6 +38,8 @@ public class BareMetalServerNetworkAttachmentReference extends GenericModel {
   @SerializedName("resource_type")
   protected String resourceType;
   protected SubnetReference subnet;
+  @SerializedName("virtual_network_interface")
+  protected VirtualNetworkInterfaceReferenceAttachmentContext virtualNetworkInterface;
 
   protected BareMetalServerNetworkAttachmentReference() { }
 
@@ -49,7 +51,7 @@ public class BareMetalServerNetworkAttachmentReference extends GenericModel {
    *
    * @return the deleted
    */
-  public BareMetalServerNetworkAttachmentReferenceDeleted getDeleted() {
+  public Deleted getDeleted() {
     return deleted;
   }
 
@@ -120,6 +122,17 @@ public class BareMetalServerNetworkAttachmentReference extends GenericModel {
    */
   public SubnetReference getSubnet() {
     return subnet;
+  }
+
+  /**
+   * Gets the virtualNetworkInterface.
+   *
+   * The virtual network interface for this bare metal server network attachment.
+   *
+   * @return the virtualNetworkInterface
+   */
+  public VirtualNetworkInterfaceReferenceAttachmentContext getVirtualNetworkInterface() {
+    return virtualNetworkInterface;
   }
 }
 

@@ -22,6 +22,9 @@ public class Region extends GenericModel {
 
   /**
    * The availability status of this region.
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface Status {
     /** available. */
@@ -74,6 +77,9 @@ public class Region extends GenericModel {
    * Gets the status.
    *
    * The availability status of this region.
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the status
    */

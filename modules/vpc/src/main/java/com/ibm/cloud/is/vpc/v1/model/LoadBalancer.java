@@ -25,7 +25,44 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class LoadBalancer extends GenericModel {
 
   /**
+   * The access mode for this load balancer:
+   * - `private`: reachable from within its VPC, at IP addresses in `private_ips`
+   * - `private_path`: reachable through an endpoint gateway
+   * - `public`: reachable from the internet at the IP addresses in `public_ips`.
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
+   */
+  public interface AccessMode {
+    /** private. */
+    String X_PRIVATE = "private";
+    /** private_path. */
+    String PRIVATE_PATH = "private_path";
+    /** public. */
+    String X_PUBLIC = "public";
+  }
+
+  /**
+   * The availability of this load balancer:
+   * - `subnet`: remains available if at least one zone that the load balancer's subnets reside
+   *   in is available
+   * - `region`: remains available if at least one zone in the region is available.
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
+   */
+  public interface Availability {
+    /** region. */
+    String REGION = "region";
+    /** subnet. */
+    String SUBNET = "subnet";
+  }
+
+  /**
    * The operating status of this load balancer.
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface OperatingStatus {
     /** offline. */
@@ -74,6 +111,9 @@ public class LoadBalancer extends GenericModel {
     String LOAD_BALANCER = "load_balancer";
   }
 
+  @SerializedName("access_mode")
+  protected String accessMode;
+  protected String availability;
   @SerializedName("created_at")
   protected Date createdAt;
   protected String crn;
@@ -83,6 +123,8 @@ public class LoadBalancer extends GenericModel {
   protected String id;
   @SerializedName("instance_groups_supported")
   protected Boolean instanceGroupsSupported;
+  @SerializedName("is_private_path")
+  protected Boolean isPrivatePath;
   @SerializedName("is_public")
   protected Boolean isPublic;
   protected List<LoadBalancerListenerReference> listeners;
@@ -92,7 +134,7 @@ public class LoadBalancer extends GenericModel {
   protected String operatingStatus;
   protected List<LoadBalancerPoolReference> pools;
   @SerializedName("private_ips")
-  protected List<LoadBalancerPrivateIpsItem> privateIps;
+  protected List<ReservedIPReference> privateIps;
   protected LoadBalancerProfileReference profile;
   @SerializedName("provisioning_status")
   protected String provisioningStatus;
@@ -108,11 +150,47 @@ public class LoadBalancer extends GenericModel {
   protected List<SecurityGroupReference> securityGroups;
   @SerializedName("security_groups_supported")
   protected Boolean securityGroupsSupported;
+  @SerializedName("source_ip_session_persistence_supported")
+  protected Boolean sourceIpSessionPersistenceSupported;
   protected List<SubnetReference> subnets;
   @SerializedName("udp_supported")
   protected Boolean udpSupported;
 
   protected LoadBalancer() { }
+
+  /**
+   * Gets the accessMode.
+   *
+   * The access mode for this load balancer:
+   * - `private`: reachable from within its VPC, at IP addresses in `private_ips`
+   * - `private_path`: reachable through an endpoint gateway
+   * - `public`: reachable from the internet at the IP addresses in `public_ips`.
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
+   *
+   * @return the accessMode
+   */
+  public String getAccessMode() {
+    return accessMode;
+  }
+
+  /**
+   * Gets the availability.
+   *
+   * The availability of this load balancer:
+   * - `subnet`: remains available if at least one zone that the load balancer's subnets reside
+   *   in is available
+   * - `region`: remains available if at least one zone in the region is available.
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
+   *
+   * @return the availability
+   */
+  public String getAvailability() {
+    return availability;
+  }
 
   /**
    * Gets the createdAt.
@@ -128,7 +206,7 @@ public class LoadBalancer extends GenericModel {
   /**
    * Gets the crn.
    *
-   * The load balancer's CRN.
+   * The CRN for this load balancer.
    *
    * @return the crn
    */
@@ -143,6 +221,8 @@ public class LoadBalancer extends GenericModel {
    *
    * If absent, DNS `A` records for this load balancer's `hostname` property will be added to
    * the public DNS zone `lb.appdomain.cloud`.
+   *
+   * Not supported by private path load balancers.
    *
    * @return the dns
    */
@@ -164,7 +244,7 @@ public class LoadBalancer extends GenericModel {
   /**
    * Gets the href.
    *
-   * The load balancer's canonical URL.
+   * The URL for this load balancer.
    *
    * @return the href
    */
@@ -192,6 +272,17 @@ public class LoadBalancer extends GenericModel {
    */
   public Boolean isInstanceGroupsSupported() {
     return instanceGroupsSupported;
+  }
+
+  /**
+   * Gets the isPrivatePath.
+   *
+   * Indicates whether this is a private path load balancer.
+   *
+   * @return the isPrivatePath
+   */
+  public Boolean isIsPrivatePath() {
+    return isPrivatePath;
   }
 
   /**
@@ -243,6 +334,9 @@ public class LoadBalancer extends GenericModel {
    *
    * The operating status of this load balancer.
    *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
+   *
    * @return the operatingStatus
    */
   public String getOperatingStatus() {
@@ -265,9 +359,11 @@ public class LoadBalancer extends GenericModel {
    *
    * The private IP addresses assigned to this load balancer.
    *
+   * Will be empty if `is_private` is `false`.
+   *
    * @return the privateIps
    */
-  public List<LoadBalancerPrivateIpsItem> getPrivateIps() {
+  public List<ReservedIPReference> getPrivateIps() {
     return privateIps;
   }
 
@@ -310,7 +406,7 @@ public class LoadBalancer extends GenericModel {
    *
    * The public IP addresses assigned to this load balancer.
    *
-   * Applicable only for public load balancers.
+   * Will be empty if `is_public` is `false`.
    *
    * @return the publicIps
    */
@@ -360,8 +456,6 @@ public class LoadBalancer extends GenericModel {
    *
    * If empty, all inbound and outbound traffic is allowed.
    *
-   * Applicable only for load balancers that support security groups.
-   *
    * @return the securityGroups
    */
   public List<SecurityGroupReference> getSecurityGroups() {
@@ -380,10 +474,20 @@ public class LoadBalancer extends GenericModel {
   }
 
   /**
+   * Gets the sourceIpSessionPersistenceSupported.
+   *
+   * Indicates whether this load balancer supports source IP session persistence.
+   *
+   * @return the sourceIpSessionPersistenceSupported
+   */
+  public Boolean isSourceIpSessionPersistenceSupported() {
+    return sourceIpSessionPersistenceSupported;
+  }
+
+  /**
    * Gets the subnets.
    *
-   * The subnets this load balancer is provisioned in.  The load balancer's availability depends on the availability of
-   * the zones that the subnets reside in.
+   * The subnets this load balancer is provisioned in.
    *
    * All subnets will be in the same VPC.
    *

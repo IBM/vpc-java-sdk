@@ -46,7 +46,7 @@ public class ReservedIPCollectionVirtualNetworkInterfaceContext extends GenericM
   /**
    * Gets the ips.
    *
-   * Collection of reserved IPs bound to the virtual network interface specified by the identifier in the URL.
+   * A page of reserved IPs bound to the virtual network interface specified by the identifier in the URL.
    *
    * @return the ips
    */

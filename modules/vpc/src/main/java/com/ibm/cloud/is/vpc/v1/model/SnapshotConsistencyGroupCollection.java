@@ -70,7 +70,7 @@ public class SnapshotConsistencyGroupCollection extends GenericModel {
   /**
    * Gets the snapshotConsistencyGroups.
    *
-   * Collection of snapshot consistency groups.
+   * A page of snapshot consistency groups.
    *
    * @return the snapshotConsistencyGroups
    */

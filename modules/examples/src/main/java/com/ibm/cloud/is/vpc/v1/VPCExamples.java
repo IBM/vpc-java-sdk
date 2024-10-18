@@ -194,7 +194,7 @@ import com.ibm.cloud.is.vpc.v1.model.EndpointGatewayPatch;
 import com.ibm.cloud.is.vpc.v1.model.EndpointGatewayReservedIP;
 import com.ibm.cloud.is.vpc.v1.model.EndpointGatewayReservedIPReservedIPIdentity;
 import com.ibm.cloud.is.vpc.v1.model.EndpointGatewayReservedIPReservedIPIdentityById;
-import com.ibm.cloud.is.vpc.v1.model.EndpointGatewayTargetPrototypeProviderCloudServiceIdentityProviderCloudServiceIdentityByCRN;
+import com.ibm.cloud.is.vpc.v1.model.EndpointGatewayTargetPrototypeEndpointGatewayTargetResourceTypeProviderCloudServicePrototype;
 import com.ibm.cloud.is.vpc.v1.model.EndpointGatewaysPager;
 import com.ibm.cloud.is.vpc.v1.model.FailoverShareOptions;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIP;
@@ -492,7 +492,7 @@ import com.ibm.cloud.is.vpc.v1.model.ReservedIPPatch;
 import com.ibm.cloud.is.vpc.v1.model.RestartBareMetalServerOptions;
 import com.ibm.cloud.is.vpc.v1.model.Route;
 import com.ibm.cloud.is.vpc.v1.model.RouteCollectionVPCContextRoutesItem;
-import com.ibm.cloud.is.vpc.v1.model.RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIPRouteNextHopPrototypeRouteNextHopIPRouteNextHopIPUnicastIP;
+import com.ibm.cloud.is.vpc.v1.model.RouteNextHopPrototypeRouteNextHopIPRouteNextHopIPUnicastIP;
 import com.ibm.cloud.is.vpc.v1.model.RoutePatch;
 import com.ibm.cloud.is.vpc.v1.model.RoutingTable;
 import com.ibm.cloud.is.vpc.v1.model.RoutingTableIdentityById;
@@ -1109,7 +1109,7 @@ public class VPCExamples {
       ZoneIdentityByName zoneIdentityModel = new ZoneIdentityByName.Builder()
         .name(zoneName)
         .build();
-        RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIPRouteNextHopPrototypeRouteNextHopIPRouteNextHopIPUnicastIP routePrototypeNextHopRouteNextHopPrototypeRouteNextHopIP = new RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIPRouteNextHopPrototypeRouteNextHopIPRouteNextHopIPUnicastIP.Builder()
+        RouteNextHopPrototypeRouteNextHopIPRouteNextHopIPUnicastIP routePrototypeNextHopRouteNextHopPrototypeRouteNextHopIP = new RouteNextHopPrototypeRouteNextHopIPRouteNextHopIPUnicastIP.Builder()
         .address("192.168.3.4")
         .build();
       CreateVpcRouteOptions createVpcRouteOptions = new CreateVpcRouteOptions.Builder()
@@ -6448,7 +6448,7 @@ public class VPCExamples {
       EndpointGatewayReservedIPReservedIPIdentity endpointGatewayReservedIPReservedIPIdentity = new EndpointGatewayReservedIPReservedIPIdentityById.Builder()
         .id(reservedIpId)
         .build();
-      EndpointGatewayTargetPrototypeProviderCloudServiceIdentityProviderCloudServiceIdentityByCRN endpointGatewayTargetPrototypeModel = new EndpointGatewayTargetPrototypeProviderCloudServiceIdentityProviderCloudServiceIdentityByCRN.Builder()
+        EndpointGatewayTargetPrototypeEndpointGatewayTargetResourceTypeProviderCloudServicePrototype endpointGatewayTargetPrototypeModel = new EndpointGatewayTargetPrototypeEndpointGatewayTargetResourceTypeProviderCloudServicePrototype.Builder()
         .resourceType("provider_infrastructure_service")
         .crn(crn)
         .build();

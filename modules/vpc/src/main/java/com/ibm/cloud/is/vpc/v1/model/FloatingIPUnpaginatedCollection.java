@@ -31,7 +31,7 @@ public class FloatingIPUnpaginatedCollection extends GenericModel {
   /**
    * Gets the floatingIps.
    *
-   * Collection of floating IPs.
+   * The floating IPs.
    *
    * @return the floatingIps
    */

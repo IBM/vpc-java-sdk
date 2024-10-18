@@ -35,7 +35,7 @@ public class ListInstancesOptionsTest {
       .start("testString")
       .limit(Long.valueOf("50"))
       .resourceGroupId("testString")
-      .name("testString")
+      .name("my-name")
       .dedicatedHostId("testString")
       .dedicatedHostCrn("crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::dedicated-host:1e09281b-f177-46fb-baf1-bc152b2e391a")
       .dedicatedHostName("my-dedicated-host")
@@ -52,7 +52,7 @@ public class ListInstancesOptionsTest {
     assertEquals(listInstancesOptionsModel.start(), "testString");
     assertEquals(listInstancesOptionsModel.limit(), Long.valueOf("50"));
     assertEquals(listInstancesOptionsModel.resourceGroupId(), "testString");
-    assertEquals(listInstancesOptionsModel.name(), "testString");
+    assertEquals(listInstancesOptionsModel.name(), "my-name");
     assertEquals(listInstancesOptionsModel.dedicatedHostId(), "testString");
     assertEquals(listInstancesOptionsModel.dedicatedHostCrn(), "crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::dedicated-host:1e09281b-f177-46fb-baf1-bc152b2e391a");
     assertEquals(listInstancesOptionsModel.dedicatedHostName(), "my-dedicated-host");

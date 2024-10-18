@@ -110,7 +110,7 @@ public class BareMetalServerProfile extends GenericModel {
   /**
    * Gets the disks.
    *
-   * Collection of the bare metal server profile's disks.
+   * The disks for a bare metal server with this profile.
    *
    * @return the disks
    */

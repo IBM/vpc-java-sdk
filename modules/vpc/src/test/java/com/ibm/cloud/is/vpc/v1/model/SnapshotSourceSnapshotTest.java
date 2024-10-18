@@ -13,8 +13,9 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.ibm.cloud.is.vpc.v1.model.AccountReference;
+import com.ibm.cloud.is.vpc.v1.model.Deleted;
 import com.ibm.cloud.is.vpc.v1.model.RegionReference;
-import com.ibm.cloud.is.vpc.v1.model.SnapshotReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotRemote;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotSourceSnapshot;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;

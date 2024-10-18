@@ -36,7 +36,7 @@ public class RouteCreator extends GenericModel {
   }
 
   protected String crn;
-  protected VPNGatewayReferenceDeleted deleted;
+  protected Deleted deleted;
   protected String href;
   protected String id;
   protected String name;
@@ -48,7 +48,7 @@ public class RouteCreator extends GenericModel {
   /**
    * Gets the crn.
    *
-   * The VPN gateway's CRN.
+   * The CRN for this VPN gateway.
    *
    * @return the crn
    */
@@ -64,14 +64,14 @@ public class RouteCreator extends GenericModel {
    *
    * @return the deleted
    */
-  public VPNGatewayReferenceDeleted getDeleted() {
+  public Deleted getDeleted() {
     return deleted;
   }
 
   /**
    * Gets the href.
    *
-   * The VPN gateway's canonical URL.
+   * The URL for this VPN gateway.
    *
    * @return the href
    */

@@ -33,10 +33,10 @@ public class ListImageExportJobsOptionsTest {
   public void testListImageExportJobsOptions() throws Throwable {
     ListImageExportJobsOptions listImageExportJobsOptionsModel = new ListImageExportJobsOptions.Builder()
       .imageId("testString")
-      .name("testString")
+      .name("my-name")
       .build();
     assertEquals(listImageExportJobsOptionsModel.imageId(), "testString");
-    assertEquals(listImageExportJobsOptionsModel.name(), "testString");
+    assertEquals(listImageExportJobsOptionsModel.name(), "my-name");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

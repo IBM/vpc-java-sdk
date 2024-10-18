@@ -32,9 +32,9 @@ public class ListRegionZonesOptionsTest {
   @Test
   public void testListRegionZonesOptions() throws Throwable {
     ListRegionZonesOptions listRegionZonesOptionsModel = new ListRegionZonesOptions.Builder()
-      .regionName("testString")
+      .regionName("us-south")
       .build();
-    assertEquals(listRegionZonesOptionsModel.regionName(), "testString");
+    assertEquals(listRegionZonesOptionsModel.regionName(), "us-south");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

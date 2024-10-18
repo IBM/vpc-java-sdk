@@ -29,7 +29,7 @@ public class LoadBalancerListenerPolicyCollection extends GenericModel {
   /**
    * Gets the policies.
    *
-   * Collection of policies.
+   * The policies for the load balancer listener.
    *
    * @return the policies
    */

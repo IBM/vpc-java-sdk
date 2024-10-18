@@ -33,10 +33,10 @@ public class ListBackupPolicyPlansOptionsTest {
   public void testListBackupPolicyPlansOptions() throws Throwable {
     ListBackupPolicyPlansOptions listBackupPolicyPlansOptionsModel = new ListBackupPolicyPlansOptions.Builder()
       .backupPolicyId("testString")
-      .name("testString")
+      .name("my-name")
       .build();
     assertEquals(listBackupPolicyPlansOptionsModel.backupPolicyId(), "testString");
-    assertEquals(listBackupPolicyPlansOptionsModel.name(), "testString");
+    assertEquals(listBackupPolicyPlansOptionsModel.name(), "my-name");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

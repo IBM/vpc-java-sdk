@@ -81,7 +81,7 @@ public class SecurityGroupRuleRemotePrototype extends GenericModel {
   /**
    * Gets the crn.
    *
-   * The security group's CRN.
+   * The CRN for this security group.
    *
    * @return the crn
    */
@@ -92,7 +92,7 @@ public class SecurityGroupRuleRemotePrototype extends GenericModel {
   /**
    * Gets the href.
    *
-   * The security group's canonical URL.
+   * The URL for this security group.
    *
    * @return the href
    */

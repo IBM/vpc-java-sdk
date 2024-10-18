@@ -53,9 +53,9 @@ public class CreateImageOptionsTest {
     assertEquals(imageFilePrototypeModel.href(), "cos://us-south/custom-image-vpc-bucket/customImage-0.vhd");
 
     OperatingSystemIdentityByName operatingSystemIdentityModel = new OperatingSystemIdentityByName.Builder()
-      .name("ubuntu-16-amd64")
+      .name("ubuntu-24-04-amd64")
       .build();
-    assertEquals(operatingSystemIdentityModel.name(), "ubuntu-16-amd64");
+    assertEquals(operatingSystemIdentityModel.name(), "ubuntu-24-04-amd64");
 
     ImagePrototypeImageByFile imagePrototypeModel = new ImagePrototypeImageByFile.Builder()
       .deprecationAt(DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"))

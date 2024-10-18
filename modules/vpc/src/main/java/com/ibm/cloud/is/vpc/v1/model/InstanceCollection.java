@@ -46,7 +46,7 @@ public class InstanceCollection extends GenericModel {
   /**
    * Gets the instances.
    *
-   * Collection of virtual server instances.
+   * A page of virtual server instances.
    *
    * @return the instances
    */

@@ -48,12 +48,16 @@ public class InstanceGroupManagerActionPatchTest {
     assertEquals(instanceGroupManagerActionManagerPatchModel.minMembershipCount(), Long.valueOf("10"));
 
     InstanceGroupManagerActionPatch instanceGroupManagerActionPatchModel = new InstanceGroupManagerActionPatch.Builder()
+      .autoDelete(true)
+      .autoDeleteTimeout(Long.valueOf("24"))
       .cronSpec("30 */2 * * 1-5")
       .group(instanceGroupManagerActionGroupPatchModel)
       .manager(instanceGroupManagerActionManagerPatchModel)
       .name("my-instance-group-manager-action")
       .runAt(DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"))
       .build();
+    assertEquals(instanceGroupManagerActionPatchModel.autoDelete(), Boolean.valueOf(true));
+    assertEquals(instanceGroupManagerActionPatchModel.autoDeleteTimeout(), Long.valueOf("24"));
     assertEquals(instanceGroupManagerActionPatchModel.cronSpec(), "30 */2 * * 1-5");
     assertEquals(instanceGroupManagerActionPatchModel.group(), instanceGroupManagerActionGroupPatchModel);
     assertEquals(instanceGroupManagerActionPatchModel.manager(), instanceGroupManagerActionManagerPatchModel);
@@ -64,6 +68,8 @@ public class InstanceGroupManagerActionPatchTest {
 
     InstanceGroupManagerActionPatch instanceGroupManagerActionPatchModelNew = TestUtilities.deserialize(json, InstanceGroupManagerActionPatch.class);
     assertTrue(instanceGroupManagerActionPatchModelNew instanceof InstanceGroupManagerActionPatch);
+    assertEquals(instanceGroupManagerActionPatchModelNew.autoDelete(), Boolean.valueOf(true));
+    assertEquals(instanceGroupManagerActionPatchModelNew.autoDeleteTimeout(), Long.valueOf("24"));
     assertEquals(instanceGroupManagerActionPatchModelNew.cronSpec(), "30 */2 * * 1-5");
     assertEquals(instanceGroupManagerActionPatchModelNew.group().toString(), instanceGroupManagerActionGroupPatchModel.toString());
     assertEquals(instanceGroupManagerActionPatchModelNew.manager().toString(), instanceGroupManagerActionManagerPatchModel.toString());
@@ -82,6 +88,8 @@ public class InstanceGroupManagerActionPatchTest {
       .build();
 
     InstanceGroupManagerActionPatch instanceGroupManagerActionPatchModel = new InstanceGroupManagerActionPatch.Builder()
+      .autoDelete(true)
+      .autoDeleteTimeout(Long.valueOf("24"))
       .cronSpec("30 */2 * * 1-5")
       .group(instanceGroupManagerActionGroupPatchModel)
       .manager(instanceGroupManagerActionManagerPatchModel)
@@ -91,6 +99,8 @@ public class InstanceGroupManagerActionPatchTest {
 
     Map<String, Object> mergePatch = instanceGroupManagerActionPatchModel.asPatch();
 
+    assertTrue(mergePatch.containsKey("auto_delete"));
+    assertTrue(mergePatch.containsKey("auto_delete_timeout"));
     assertEquals(mergePatch.get("cron_spec"), "30 */2 * * 1-5");
     assertTrue(mergePatch.containsKey("group"));
     assertTrue(mergePatch.containsKey("manager"));

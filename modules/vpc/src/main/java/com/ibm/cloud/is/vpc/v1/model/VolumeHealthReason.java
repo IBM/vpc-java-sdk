@@ -27,6 +27,8 @@ public class VolumeHealthReason extends GenericModel {
   public interface Code {
     /** initializing_from_snapshot. */
     String INITIALIZING_FROM_SNAPSHOT = "initializing_from_snapshot";
+    /** throttled_by_insufficient_instance_bandwidth. */
+    String THROTTLED_BY_INSUFFICIENT_INSTANCE_BANDWIDTH = "throttled_by_insufficient_instance_bandwidth";
   }
 
   protected String code;

@@ -135,7 +135,7 @@ public class VPNGateway extends GenericModel {
   /**
    * Gets the crn.
    *
-   * The VPN gateway's CRN.
+   * The CRN for this VPN gateway.
    *
    * @return the crn
    */
@@ -174,7 +174,7 @@ public class VPNGateway extends GenericModel {
   /**
    * Gets the href.
    *
-   * The VPN gateway's canonical URL.
+   * The URL for this VPN gateway.
    *
    * @return the href
    */
@@ -218,7 +218,7 @@ public class VPNGateway extends GenericModel {
   /**
    * Gets the members.
    *
-   * Collection of VPN gateway members.
+   * The members for the VPN gateway.
    *
    * @return the members
    */

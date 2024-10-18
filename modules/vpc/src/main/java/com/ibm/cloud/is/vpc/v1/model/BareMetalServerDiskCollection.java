@@ -29,7 +29,7 @@ public class BareMetalServerDiskCollection extends GenericModel {
   /**
    * Gets the disks.
    *
-   * Collection of the bare metal server's disks.
+   * The disks for the bare metal server.
    *
    * @return the disks
    */

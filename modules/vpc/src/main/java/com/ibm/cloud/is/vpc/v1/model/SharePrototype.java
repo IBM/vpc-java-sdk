@@ -248,8 +248,8 @@ public class SharePrototype extends GenericModel {
   /**
    * Gets the zone.
    *
-   * The zone this file share will reside in. For a replica share, this must be a different
-   * zone in the same region as the source share.
+   * The zone this file share will reside in. For a replica share in the same region as
+   * the source share, this must be a different zone from the source share.
    *
    * @return the zone
    */
@@ -263,6 +263,9 @@ public class SharePrototype extends GenericModel {
    * The cron specification for the file share replication schedule.
    *
    * Replication of a share can be scheduled to occur at most once per hour.
+   *
+   * The scheduling frequency for this property may
+   * [increase](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the replicationCronSpec
    */

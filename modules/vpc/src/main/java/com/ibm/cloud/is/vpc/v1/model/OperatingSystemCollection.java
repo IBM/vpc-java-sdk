@@ -70,7 +70,7 @@ public class OperatingSystemCollection extends GenericModel {
   /**
    * Gets the operatingSystems.
    *
-   * Collection of operating systems.
+   * A page of operating systems.
    *
    * @return the operatingSystems
    */

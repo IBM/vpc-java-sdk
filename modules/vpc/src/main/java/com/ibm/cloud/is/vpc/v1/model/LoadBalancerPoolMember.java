@@ -25,6 +25,9 @@ public class LoadBalancerPoolMember extends GenericModel {
 
   /**
    * Health of the server member in the pool.
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface Health {
     /** faulted. */
@@ -83,6 +86,9 @@ public class LoadBalancerPoolMember extends GenericModel {
    *
    * Health of the server member in the pool.
    *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
+   *
    * @return the health
    */
   public String getHealth() {
@@ -92,7 +98,7 @@ public class LoadBalancerPoolMember extends GenericModel {
   /**
    * Gets the href.
    *
-   * The member's canonical URL.
+   * The URL for this load balancer pool member.
    *
    * @return the href
    */
@@ -158,8 +164,9 @@ public class LoadBalancerPoolMember extends GenericModel {
   /**
    * Gets the weight.
    *
-   * Weight of the server member. Applicable only if the pool algorithm is
-   * `weighted_round_robin`.
+   * The weight of the server member.
+   *
+   * This property will be present if the pool algorithm is `weighted_round_robin`.
    *
    * @return the weight
    */

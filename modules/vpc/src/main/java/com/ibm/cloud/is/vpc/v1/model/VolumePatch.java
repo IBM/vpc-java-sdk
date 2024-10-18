@@ -166,12 +166,15 @@ public class VolumePatch extends GenericModel {
   /**
    * Gets the capacity.
    *
-   * The capacity to use for the volume (in gigabytes). The volume must be attached to a running virtual server
-   * instance, and the specified value must not be less than the current capacity. Additionally, if the volume is
-   * attached as a boot volume, the maximum value is 250 gigabytes.
-   *
-   * The minimum and maximum limits for this property may
-   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
+   * The capacity to use for the volume (in gigabytes). For the capacity to be changed the volume's current
+   * `attachment_state` must be one of the values included in
+   * `adjustable_capacity_states`. If `adjustable_capacity_states` is empty, then the volume capacity cannot be changed.
+   *  Additionally:
+   * - The specified value must not be less than the current capacity.
+   * - If the volume is attached as a boot volume, the specified value must not exceed
+   *   the `boot_capacity.max` of the volume profile.
+   * - If the volume is attached as a data volume, the specified value must not exceed
+   *   the `capacity.max` of the volume profile.
    *
    * @return the capacity
    */
@@ -182,8 +185,9 @@ public class VolumePatch extends GenericModel {
   /**
    * Gets the iops.
    *
-   * The maximum I/O operations per second (IOPS) to use for this volume. Applicable only to volumes using a profile
-   * `family` of `custom`. The volume must be attached as a data volume to a running virtual server instance.
+   * The maximum I/O operations per second (IOPS) to use for this volume.  For the IOPS to be changed the volume's
+   * current `attachment_state` must be one of the values included in `adjustable_iops_states`. If
+   * `adjustable_iops_states` is empty, then the IOPS cannot be changed.
    *
    * @return the iops
    */
@@ -206,9 +210,13 @@ public class VolumePatch extends GenericModel {
    * Gets the profile.
    *
    * The profile to use for this volume. The requested profile must be in the same
-   * `family` as the current profile. The volume must be attached as a data volume to
-   * a running virtual server instance, and must have a `capacity` within the range
-   * supported by the specified profile.
+   * `family` as the current profile.  Additionally:
+   * - If the volume is a boot volume then the value specified for `capacity` property
+   * must not be less than the `boot_capacity.min` and must not exceed the
+   * `boot_capacity.max` of the specified volume profile.
+   * - If the volume is a data volume then the value specified for `capacity` property
+   * must not be less than the `capacity.min` and must not exceed the `capacity.max`
+   * of the specified volume profile.
    *
    * @return the profile
    */

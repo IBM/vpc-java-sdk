@@ -20,7 +20,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class LoadBalancerPoolReference extends GenericModel {
 
-  protected LoadBalancerPoolReferenceDeleted deleted;
+  protected Deleted deleted;
   protected String href;
   protected String id;
   protected String name;
@@ -35,14 +35,14 @@ public class LoadBalancerPoolReference extends GenericModel {
    *
    * @return the deleted
    */
-  public LoadBalancerPoolReferenceDeleted getDeleted() {
+  public Deleted getDeleted() {
     return deleted;
   }
 
   /**
    * Gets the href.
    *
-   * The pool's canonical URL.
+   * The URL for this load balancer pool.
    *
    * @return the href
    */

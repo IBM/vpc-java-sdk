@@ -81,8 +81,8 @@ public class VolumeAttachmentPrototypeVolume extends GenericModel {
   /**
    * Gets the iops.
    *
-   * The maximum I/O operations per second (IOPS) to use for this volume. Applicable only to volumes using a profile
-   * `family` of `custom`.
+   * The maximum I/O operations per second (IOPS) to use for this volume. If specified, the `family` of the volume
+   * profile must be `custom` or `defined_performance`.
    *
    * @return the iops
    */
@@ -140,10 +140,8 @@ public class VolumeAttachmentPrototypeVolume extends GenericModel {
   /**
    * Gets the capacity.
    *
-   * The capacity to use for the volume (in gigabytes).
-   *
-   * The minimum and maximum limits for this property may
-   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
+   * The capacity to use for the volume (in gigabytes). The specified value must be within the `capacity` range of the
+   * volume's profile.
    *
    * @return the capacity
    */
@@ -167,7 +165,9 @@ public class VolumeAttachmentPrototypeVolume extends GenericModel {
   /**
    * Gets the sourceSnapshot.
    *
-   * The snapshot from which to clone the volume.
+   * The snapshot to use as a source for the volume's data.
+   *
+   * The specified snapshot may be in a different account, subject to IAM policies.
    *
    * @return the sourceSnapshot
    */

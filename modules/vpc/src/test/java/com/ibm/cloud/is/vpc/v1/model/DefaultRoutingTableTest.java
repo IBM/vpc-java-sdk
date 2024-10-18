@@ -14,11 +14,11 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.DefaultRoutingTable;
+import com.ibm.cloud.is.vpc.v1.model.Deleted;
 import com.ibm.cloud.is.vpc.v1.model.ResourceFilter;
+import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.RouteReference;
-import com.ibm.cloud.is.vpc.v1.model.RouteReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.SubnetReference;
-import com.ibm.cloud.is.vpc.v1.model.SubnetReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -40,11 +40,13 @@ public class DefaultRoutingTableTest {
     assertNull(defaultRoutingTableModel.getAcceptRoutesFrom());
     assertNull(defaultRoutingTableModel.getAdvertiseRoutesTo());
     assertNull(defaultRoutingTableModel.getCreatedAt());
+    assertNull(defaultRoutingTableModel.getCrn());
     assertNull(defaultRoutingTableModel.getHref());
     assertNull(defaultRoutingTableModel.getId());
     assertNull(defaultRoutingTableModel.isIsDefault());
     assertNull(defaultRoutingTableModel.getLifecycleState());
     assertNull(defaultRoutingTableModel.getName());
+    assertNull(defaultRoutingTableModel.getResourceGroup());
     assertNull(defaultRoutingTableModel.getResourceType());
     assertNull(defaultRoutingTableModel.isRouteDirectLinkIngress());
     assertNull(defaultRoutingTableModel.isRouteInternetIngress());

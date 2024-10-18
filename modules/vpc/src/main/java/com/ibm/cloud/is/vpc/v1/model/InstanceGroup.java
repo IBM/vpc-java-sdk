@@ -50,7 +50,10 @@ public class InstanceGroup extends GenericModel {
    * - `healthy`: Group has `membership_count` instances
    * - `scaling`: Instances in the group are being created or deleted to reach
    *              `membership_count`
-   * - `unhealthy`: Group is unable to reach `membership_count` instances.
+   * - `unhealthy`: Group is unable to reach `membership_count` instances
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface Status {
     /** deleting. */
@@ -244,7 +247,10 @@ public class InstanceGroup extends GenericModel {
    * - `healthy`: Group has `membership_count` instances
    * - `scaling`: Instances in the group are being created or deleted to reach
    *              `membership_count`
-   * - `unhealthy`: Group is unable to reach `membership_count` instances.
+   * - `unhealthy`: Group is unable to reach `membership_count` instances
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the status
    */

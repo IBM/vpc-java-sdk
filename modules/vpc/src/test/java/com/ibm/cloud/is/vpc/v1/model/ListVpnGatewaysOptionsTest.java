@@ -36,12 +36,12 @@ public class ListVpnGatewaysOptionsTest {
       .limit(Long.valueOf("50"))
       .resourceGroupId("testString")
       .sort("name")
-      .mode("route")
+      .mode("policy")
       .build();
     assertEquals(listVpnGatewaysOptionsModel.start(), "testString");
     assertEquals(listVpnGatewaysOptionsModel.limit(), Long.valueOf("50"));
     assertEquals(listVpnGatewaysOptionsModel.resourceGroupId(), "testString");
     assertEquals(listVpnGatewaysOptionsModel.sort(), "name");
-    assertEquals(listVpnGatewaysOptionsModel.mode(), "route");
+    assertEquals(listVpnGatewaysOptionsModel.mode(), "policy");
   }
 }

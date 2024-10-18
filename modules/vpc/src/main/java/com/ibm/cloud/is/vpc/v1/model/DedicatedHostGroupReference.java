@@ -30,7 +30,7 @@ public class DedicatedHostGroupReference extends GenericModel {
   }
 
   protected String crn;
-  protected DedicatedHostGroupReferenceDeleted deleted;
+  protected Deleted deleted;
   protected String href;
   protected String id;
   protected String name;
@@ -58,7 +58,7 @@ public class DedicatedHostGroupReference extends GenericModel {
    *
    * @return the deleted
    */
-  public DedicatedHostGroupReferenceDeleted getDeleted() {
+  public Deleted getDeleted() {
     return deleted;
   }
 

@@ -44,7 +44,7 @@ public class RoutePrototype extends GenericModel {
   protected String destination;
   protected String name;
   @SerializedName("next_hop")
-  protected RoutePrototypeNextHop nextHop;
+  protected RouteNextHopPrototype nextHop;
   protected Long priority;
   protected ZoneIdentity zone;
 
@@ -56,7 +56,7 @@ public class RoutePrototype extends GenericModel {
     private Boolean advertise;
     private String destination;
     private String name;
-    private RoutePrototypeNextHop nextHop;
+    private RouteNextHopPrototype nextHop;
     private Long priority;
     private ZoneIdentity zone;
 
@@ -151,7 +151,7 @@ public class RoutePrototype extends GenericModel {
      * @param nextHop the nextHop
      * @return the RoutePrototype builder
      */
-    public Builder nextHop(RoutePrototypeNextHop nextHop) {
+    public Builder nextHop(RouteNextHopPrototype nextHop) {
       this.nextHop = nextHop;
       return this;
     }
@@ -264,15 +264,15 @@ public class RoutePrototype extends GenericModel {
   /**
    * Gets the nextHop.
    *
-   * If `action` is `deliver`, the next hop that packets will be delivered to. For other
-   * `action` values, it must be omitted or specified as `0.0.0.0`.
+   * If `action` is `deliver`, the next hop that packets will be delivered to (must not be
+   * `0.0.0.0`). For other `action` values, it must be omitted or specified as `0.0.0.0`.
    *
    * At most two routes per `zone` in a table can have the same `destination` and `priority`,
    * and only when each route has an `action` of `deliver` and `next_hop` is an IP address.
    *
    * @return the nextHop
    */
-  public RoutePrototypeNextHop nextHop() {
+  public RouteNextHopPrototype nextHop() {
     return nextHop;
   }
 

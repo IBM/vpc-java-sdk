@@ -34,7 +34,7 @@ public class RouteNextHop extends GenericModel {
   }
 
   protected String address;
-  protected VPNGatewayConnectionReferenceDeleted deleted;
+  protected Deleted deleted;
   protected String href;
   protected String id;
   protected String name;
@@ -65,14 +65,14 @@ public class RouteNextHop extends GenericModel {
    *
    * @return the deleted
    */
-  public VPNGatewayConnectionReferenceDeleted getDeleted() {
+  public Deleted getDeleted() {
     return deleted;
   }
 
   /**
    * Gets the href.
    *
-   * The VPN connection's canonical URL.
+   * The URL for this VPN gateway connection.
    *
    * @return the href
    */

@@ -20,7 +20,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class InstanceGroupManagerReference extends GenericModel {
 
-  protected InstanceGroupManagerReferenceDeleted deleted;
+  protected Deleted deleted;
   protected String href;
   protected String id;
   protected String name;
@@ -35,7 +35,7 @@ public class InstanceGroupManagerReference extends GenericModel {
    *
    * @return the deleted
    */
-  public InstanceGroupManagerReferenceDeleted getDeleted() {
+  public Deleted getDeleted() {
     return deleted;
   }
 

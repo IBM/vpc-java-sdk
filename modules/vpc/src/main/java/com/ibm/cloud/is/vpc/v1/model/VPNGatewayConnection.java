@@ -36,7 +36,10 @@ public class VPNGatewayConnection extends GenericModel {
     discriminatorMapping.put("route", VPNGatewayConnectionRouteMode.class);
   }
   /**
-   * The authentication mode. Only `psk` is currently supported.
+   * The authentication mode.
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface AuthenticationMode {
     /** psk. */
@@ -61,6 +64,9 @@ public class VPNGatewayConnection extends GenericModel {
 
   /**
    * The mode of the VPN gateway.
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface Mode {
     /** policy. */
@@ -119,6 +125,8 @@ public class VPNGatewayConnection extends GenericModel {
   protected String status;
   @SerializedName("status_reasons")
   protected List<VPNGatewayConnectionStatusReason> statusReasons;
+  @SerializedName("distribute_traffic")
+  protected Boolean distributeTraffic;
   protected VPNGatewayConnectionStaticRouteModeLocal local;
   protected VPNGatewayConnectionStaticRouteModePeer peer;
   @SerializedName("routing_protocol")
@@ -141,7 +149,10 @@ public class VPNGatewayConnection extends GenericModel {
   /**
    * Gets the authenticationMode.
    *
-   * The authentication mode. Only `psk` is currently supported.
+   * The authentication mode.
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the authenticationMode
    */
@@ -191,7 +202,7 @@ public class VPNGatewayConnection extends GenericModel {
   /**
    * Gets the href.
    *
-   * The VPN connection's canonical URL.
+   * The URL for this VPN gateway connection.
    *
    * @return the href
    */
@@ -238,6 +249,9 @@ public class VPNGatewayConnection extends GenericModel {
    * Gets the mode.
    *
    * The mode of the VPN gateway.
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the mode
    */
@@ -298,6 +312,19 @@ public class VPNGatewayConnection extends GenericModel {
    */
   public List<VPNGatewayConnectionStatusReason> getStatusReasons() {
     return statusReasons;
+  }
+
+  /**
+   * Gets the distributeTraffic.
+   *
+   * Indicates whether the traffic is distributed between the `up` tunnels of the VPN gateway connection when the VPC
+   * route's next hop is a VPN connection. If `false`, the traffic is only routed through the `up` tunnel with the lower
+   * `public_ip` address.
+   *
+   * @return the distributeTraffic
+   */
+  public Boolean isDistributeTraffic() {
+    return distributeTraffic;
   }
 
   /**

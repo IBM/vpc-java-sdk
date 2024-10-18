@@ -14,10 +14,13 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfile;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileAccessModes;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileAvailabilityFixed;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileInstanceGroupsSupportedFixed;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileLoggingSupported;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileRouteModeSupportedFixed;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileSecurityGroupsSupportedFixed;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileSourceIPSessionPersistenceSupportedFixed;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileUDPSupportedFixed;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
@@ -37,6 +40,8 @@ public class LoadBalancerProfileTest {
   @Test
   public void testLoadBalancerProfile() throws Throwable {
     LoadBalancerProfile loadBalancerProfileModel = new LoadBalancerProfile();
+    assertNull(loadBalancerProfileModel.getAccessModes());
+    assertNull(loadBalancerProfileModel.getAvailability());
     assertNull(loadBalancerProfileModel.getFamily());
     assertNull(loadBalancerProfileModel.getHref());
     assertNull(loadBalancerProfileModel.getInstanceGroupsSupported());
@@ -44,6 +49,7 @@ public class LoadBalancerProfileTest {
     assertNull(loadBalancerProfileModel.getName());
     assertNull(loadBalancerProfileModel.getRouteModeSupported());
     assertNull(loadBalancerProfileModel.getSecurityGroupsSupported());
+    assertNull(loadBalancerProfileModel.getSourceIpSessionPersistenceSupported());
     assertNull(loadBalancerProfileModel.getUdpSupported());
   }
 }

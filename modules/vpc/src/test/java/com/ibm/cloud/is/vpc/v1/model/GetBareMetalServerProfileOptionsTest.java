@@ -32,9 +32,9 @@ public class GetBareMetalServerProfileOptionsTest {
   @Test
   public void testGetBareMetalServerProfileOptions() throws Throwable {
     GetBareMetalServerProfileOptions getBareMetalServerProfileOptionsModel = new GetBareMetalServerProfileOptions.Builder()
-      .name("testString")
+      .name("bx2-metal-192x768")
       .build();
-    assertEquals(getBareMetalServerProfileOptionsModel.name(), "testString");
+    assertEquals(getBareMetalServerProfileOptionsModel.name(), "bx2-metal-192x768");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

@@ -69,7 +69,7 @@ public class VolumeProfileCollection extends GenericModel {
   /**
    * Gets the profiles.
    *
-   * Collection of volume profiles.
+   * A page of volume profiles.
    *
    * @return the profiles
    */

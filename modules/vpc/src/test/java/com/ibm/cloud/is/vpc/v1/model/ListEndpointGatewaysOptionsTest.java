@@ -32,19 +32,21 @@ public class ListEndpointGatewaysOptionsTest {
   @Test
   public void testListEndpointGatewaysOptions() throws Throwable {
     ListEndpointGatewaysOptions listEndpointGatewaysOptionsModel = new ListEndpointGatewaysOptions.Builder()
-      .name("testString")
+      .name("my-name")
       .start("testString")
       .limit(Long.valueOf("50"))
       .resourceGroupId("testString")
+      .lifecycleState(java.util.Arrays.asList("stable"))
       .vpcId("testString")
       .vpcCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b")
       .vpcName("my-vpc")
       .allowDnsResolutionBinding(true)
       .build();
-    assertEquals(listEndpointGatewaysOptionsModel.name(), "testString");
+    assertEquals(listEndpointGatewaysOptionsModel.name(), "my-name");
     assertEquals(listEndpointGatewaysOptionsModel.start(), "testString");
     assertEquals(listEndpointGatewaysOptionsModel.limit(), Long.valueOf("50"));
     assertEquals(listEndpointGatewaysOptionsModel.resourceGroupId(), "testString");
+    assertEquals(listEndpointGatewaysOptionsModel.lifecycleState(), java.util.Arrays.asList("stable"));
     assertEquals(listEndpointGatewaysOptionsModel.vpcId(), "testString");
     assertEquals(listEndpointGatewaysOptionsModel.vpcCrn(), "crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b");
     assertEquals(listEndpointGatewaysOptionsModel.vpcName(), "my-vpc");

@@ -28,7 +28,10 @@ public class RouteCollectionVPCContextRoutesItem extends GenericModel {
    * - `delegate`: delegate to system-provided routes
    * - `delegate_vpc`: delegate to system-provided routes, ignoring Internet-bound routes
    * - `deliver`: deliver the packet to the specified `next_hop`
-   * - `drop`: drop the packet.
+   * - `drop`: drop the packet
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface Action {
     /** delegate. */
@@ -102,7 +105,10 @@ public class RouteCollectionVPCContextRoutesItem extends GenericModel {
    * - `delegate`: delegate to system-provided routes
    * - `delegate_vpc`: delegate to system-provided routes, ignoring Internet-bound routes
    * - `deliver`: deliver the packet to the specified `next_hop`
-   * - `drop`: drop the packet.
+   * - `drop`: drop the packet
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the action
    */

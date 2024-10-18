@@ -69,7 +69,7 @@ public class InstanceTemplateCollection extends GenericModel {
   /**
    * Gets the templates.
    *
-   * Collection of instance templates.
+   * A page of instance templates.
    *
    * @return the templates
    */

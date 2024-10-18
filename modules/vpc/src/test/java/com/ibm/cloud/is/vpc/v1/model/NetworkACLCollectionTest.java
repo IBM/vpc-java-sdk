@@ -13,18 +13,16 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.ibm.cloud.is.vpc.v1.model.Deleted;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACL;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLCollection;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLCollectionFirst;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLRuleItemNetworkACLRuleProtocolTCPUDP;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLRuleReference;
-import com.ibm.cloud.is.vpc.v1.model.NetworkACLRuleReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.SubnetReference;
-import com.ibm.cloud.is.vpc.v1.model.SubnetReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.VPCReference;
-import com.ibm.cloud.is.vpc.v1.model.VPCReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import com.ibm.cloud.sdk.core.util.DateUtils;

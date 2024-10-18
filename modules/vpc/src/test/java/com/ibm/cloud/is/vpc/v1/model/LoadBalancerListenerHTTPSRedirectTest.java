@@ -13,9 +13,9 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.ibm.cloud.is.vpc.v1.model.Deleted;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerHTTPSRedirect;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerReference;
-import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;

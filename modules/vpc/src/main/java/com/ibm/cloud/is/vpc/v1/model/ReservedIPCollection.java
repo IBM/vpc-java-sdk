@@ -70,7 +70,7 @@ public class ReservedIPCollection extends GenericModel {
   /**
    * Gets the reservedIps.
    *
-   * Collection of reserved IPs in this subnet.
+   * A page of reserved IPs in the subnet.
    *
    * @return the reservedIps
    */

@@ -37,6 +37,7 @@ public class LoadBalancerPoolHealthMonitorTest {
     assertNull(loadBalancerPoolHealthMonitorModel.getPort());
     assertNull(loadBalancerPoolHealthMonitorModel.getTimeout());
     assertNull(loadBalancerPoolHealthMonitorModel.getType());
+    assertNull(loadBalancerPoolHealthMonitorModel.getUrl());
     assertNull(loadBalancerPoolHealthMonitorModel.getUrlPath());
   }
 }

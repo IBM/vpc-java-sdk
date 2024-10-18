@@ -20,30 +20,35 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  * The target for this endpoint gateway.
  *
  * Classes which extend this class:
+ * - EndpointGatewayTargetPrivatePathServiceGatewayReference
  * - EndpointGatewayTargetProviderCloudServiceReference
  * - EndpointGatewayTargetProviderInfrastructureServiceReference
  */
 public class EndpointGatewayTarget extends GenericModel {
 
   /**
-   * The type of target.
+   * The resource type.
    */
   public interface ResourceType {
-    /** provider_cloud_service. */
-    String PROVIDER_CLOUD_SERVICE = "provider_cloud_service";
+    /** private_path_service_gateway. */
+    String PRIVATE_PATH_SERVICE_GATEWAY = "private_path_service_gateway";
   }
 
   protected String crn;
+  protected Deleted deleted;
+  protected String href;
+  protected String id;
+  protected String name;
+  protected PrivatePathServiceGatewayRemote remote;
   @SerializedName("resource_type")
   protected String resourceType;
-  protected String name;
 
   protected EndpointGatewayTarget() { }
 
   /**
    * Gets the crn.
    *
-   * The CRN for this provider cloud service, or the CRN for the user's instance of a provider cloud service.
+   * The CRN for this private path service gateway.
    *
    * @return the crn
    */
@@ -52,26 +57,72 @@ public class EndpointGatewayTarget extends GenericModel {
   }
 
   /**
-   * Gets the resourceType.
+   * Gets the deleted.
    *
-   * The type of target.
+   * If present, this property indicates the referenced resource has been deleted, and provides
+   * some supplementary information.
    *
-   * @return the resourceType
+   * @return the deleted
    */
-  public String getResourceType() {
-    return resourceType;
+  public Deleted getDeleted() {
+    return deleted;
+  }
+
+  /**
+   * Gets the href.
+   *
+   * The URL for this private path service gateway.
+   *
+   * @return the href
+   */
+  public String getHref() {
+    return href;
+  }
+
+  /**
+   * Gets the id.
+   *
+   * The unique identifier for this private path service gateway.
+   *
+   * @return the id
+   */
+  public String getId() {
+    return id;
   }
 
   /**
    * Gets the name.
    *
-   * The name of a provider infrastructure service. Must be:
-   * - `ibm-ntp-server`: An NTP (Network Time Protocol) server provided by IBM.
+   * The name for this private path service gateway. The name is unique across all private path service gateways in the
+   * VPC.
    *
    * @return the name
    */
   public String getName() {
     return name;
+  }
+
+  /**
+   * Gets the remote.
+   *
+   * If present, this property indicates that the resource associated with this reference
+   * is remote and therefore may not be directly retrievable.
+   *
+   * @return the remote
+   */
+  public PrivatePathServiceGatewayRemote getRemote() {
+    return remote;
+  }
+
+  /**
+   * Gets the resourceType.
+   *
+   * The resource type.
+   *
+   * @return the resourceType
+   */
+  public String getResourceType() {
+    return resourceType;
   }
 }
 

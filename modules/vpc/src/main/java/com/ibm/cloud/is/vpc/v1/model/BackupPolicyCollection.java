@@ -36,7 +36,7 @@ public class BackupPolicyCollection extends GenericModel {
   /**
    * Gets the backupPolicies.
    *
-   * Collection of backup policies.
+   * A page of backup policies.
    *
    * @return the backupPolicies
    */

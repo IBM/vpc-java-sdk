@@ -14,6 +14,8 @@
 package com.ibm.cloud.is.vpc.v1;
 
 import com.ibm.cloud.is.test.SdkIntegrationTestBase;
+import com.ibm.cloud.is.vpc.v1.model.AccountIdentity;
+import com.ibm.cloud.is.vpc.v1.model.AccountIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.AccountReference;
 import com.ibm.cloud.is.vpc.v1.model.ActivateReservationOptions;
 import com.ibm.cloud.is.vpc.v1.model.AddBareMetalServerNetworkInterfaceFloatingIpOptions;
@@ -59,7 +61,6 @@ import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanDeletionTriggerPrototype;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanPatch;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanPrototype;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanReference;
-import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanRemote;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanRemoteRegionPolicy;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanRemoteRegionPolicyPrototype;
@@ -83,7 +84,7 @@ import com.ibm.cloud.is.vpc.v1.model.BareMetalServerConsoleAccessToken;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerDisk;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerDiskCollection;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerDiskPatch;
-import com.ibm.cloud.is.vpc.v1.model.BareMetalServerDiskReferenceDeleted;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerFirmware;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerInitialization;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerInitializationPrototype;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerInitializationUserAccount;
@@ -106,7 +107,6 @@ import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkAttachmentPrototypeVi
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkAttachmentPrototypeVirtualNetworkInterfaceVirtualNetworkInterfaceIdentityVirtualNetworkInterfaceIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkAttachmentPrototypeVirtualNetworkInterfaceVirtualNetworkInterfacePrototypeBareMetalServerNetworkAttachmentContext;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkAttachmentReference;
-import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkAttachmentReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkAttachmentsPager;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkInterface;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkInterfaceByHiperSocket;
@@ -120,8 +120,6 @@ import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkInterfacePrototype;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByHiperSocketPrototype;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByPCIPrototype;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVLANPrototype;
-import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkInterfaceReferenceDeleted;
-import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkInterfaceReferenceTargetContextDeleted;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkInterfacesPager;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerPatch;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerPrimaryNetworkAttachmentPrototype;
@@ -194,7 +192,6 @@ import com.ibm.cloud.is.vpc.v1.model.CatalogOfferingVersionIdentityCatalogOfferi
 import com.ibm.cloud.is.vpc.v1.model.CatalogOfferingVersionPlanIdentity;
 import com.ibm.cloud.is.vpc.v1.model.CatalogOfferingVersionPlanIdentityCatalogOfferingVersionPlanByCRN;
 import com.ibm.cloud.is.vpc.v1.model.CatalogOfferingVersionPlanReference;
-import com.ibm.cloud.is.vpc.v1.model.CatalogOfferingVersionPlanReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.CatalogOfferingVersionReference;
 import com.ibm.cloud.is.vpc.v1.model.CertificateInstanceIdentity;
 import com.ibm.cloud.is.vpc.v1.model.CertificateInstanceIdentityByCRN;
@@ -242,6 +239,8 @@ import com.ibm.cloud.is.vpc.v1.model.CreateLoadBalancerPoolOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateNetworkAclOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateNetworkAclRuleOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreatePlacementGroupOptions;
+import com.ibm.cloud.is.vpc.v1.model.CreatePrivatePathServiceGatewayAccountPolicyOptions;
+import com.ibm.cloud.is.vpc.v1.model.CreatePrivatePathServiceGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreatePublicGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateReservationOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateSecurityGroupOptions;
@@ -292,7 +291,6 @@ import com.ibm.cloud.is.vpc.v1.model.DedicatedHostGroupIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostGroupPatch;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostGroupPrototypeDedicatedHostByZoneContext;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostGroupReference;
-import com.ibm.cloud.is.vpc.v1.model.DedicatedHostGroupReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostGroupsPager;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostNUMA;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostNUMANode;
@@ -332,7 +330,6 @@ import com.ibm.cloud.is.vpc.v1.model.DedicatedHostPrototype;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostPrototypeDedicatedHostByGroup;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostPrototypeDedicatedHostByZone;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostReference;
-import com.ibm.cloud.is.vpc.v1.model.DedicatedHostReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostsPager;
 import com.ibm.cloud.is.vpc.v1.model.DefaultNetworkACL;
 import com.ibm.cloud.is.vpc.v1.model.DefaultRoutingTable;
@@ -373,6 +370,8 @@ import com.ibm.cloud.is.vpc.v1.model.DeleteLoadBalancerPoolOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteNetworkAclOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteNetworkAclRuleOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeletePlacementGroupOptions;
+import com.ibm.cloud.is.vpc.v1.model.DeletePrivatePathServiceGatewayAccountPolicyOptions;
+import com.ibm.cloud.is.vpc.v1.model.DeletePrivatePathServiceGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeletePublicGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteReservationOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteSecurityGroupOptions;
@@ -401,6 +400,8 @@ import com.ibm.cloud.is.vpc.v1.model.DeleteVpnGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteVpnServerClientOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteVpnServerOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteVpnServerRouteOptions;
+import com.ibm.cloud.is.vpc.v1.model.Deleted;
+import com.ibm.cloud.is.vpc.v1.model.DenyPrivatePathServiceGatewayEndpointGatewayBindingOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeprecateImageOptions;
 import com.ibm.cloud.is.vpc.v1.model.DisconnectVpnClientOptions;
 import com.ibm.cloud.is.vpc.v1.model.EncryptionKeyIdentity;
@@ -413,7 +414,6 @@ import com.ibm.cloud.is.vpc.v1.model.EndpointGatewayCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.EndpointGatewayIpsPager;
 import com.ibm.cloud.is.vpc.v1.model.EndpointGatewayLifecycleReason;
 import com.ibm.cloud.is.vpc.v1.model.EndpointGatewayPatch;
-import com.ibm.cloud.is.vpc.v1.model.EndpointGatewayReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.EndpointGatewayReferenceRemote;
 import com.ibm.cloud.is.vpc.v1.model.EndpointGatewayRemote;
 import com.ibm.cloud.is.vpc.v1.model.EndpointGatewayReservedIP;
@@ -422,11 +422,11 @@ import com.ibm.cloud.is.vpc.v1.model.EndpointGatewayReservedIPReservedIPIdentity
 import com.ibm.cloud.is.vpc.v1.model.EndpointGatewayReservedIPReservedIPIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.EndpointGatewayReservedIPReservedIPPrototypeTargetContext;
 import com.ibm.cloud.is.vpc.v1.model.EndpointGatewayTarget;
+import com.ibm.cloud.is.vpc.v1.model.EndpointGatewayTargetPrivatePathServiceGatewayReference;
 import com.ibm.cloud.is.vpc.v1.model.EndpointGatewayTargetPrototype;
-import com.ibm.cloud.is.vpc.v1.model.EndpointGatewayTargetPrototypeProviderCloudServiceIdentity;
-import com.ibm.cloud.is.vpc.v1.model.EndpointGatewayTargetPrototypeProviderCloudServiceIdentityProviderCloudServiceIdentityByCRN;
-import com.ibm.cloud.is.vpc.v1.model.EndpointGatewayTargetPrototypeProviderInfrastructureServiceIdentity;
-import com.ibm.cloud.is.vpc.v1.model.EndpointGatewayTargetPrototypeProviderInfrastructureServiceIdentityProviderInfrastructureServiceIdentityByName;
+import com.ibm.cloud.is.vpc.v1.model.EndpointGatewayTargetPrototypeEndpointGatewayTargetResourceTypePrivatePathServiceGatewayPrototype;
+import com.ibm.cloud.is.vpc.v1.model.EndpointGatewayTargetPrototypeEndpointGatewayTargetResourceTypeProviderCloudServicePrototype;
+import com.ibm.cloud.is.vpc.v1.model.EndpointGatewayTargetPrototypeEndpointGatewayTargetResourceTypeProviderInfrastructureServicePrototype;
 import com.ibm.cloud.is.vpc.v1.model.EndpointGatewayTargetProviderCloudServiceReference;
 import com.ibm.cloud.is.vpc.v1.model.EndpointGatewayTargetProviderInfrastructureServiceReference;
 import com.ibm.cloud.is.vpc.v1.model.EndpointGatewaysPager;
@@ -443,7 +443,6 @@ import com.ibm.cloud.is.vpc.v1.model.FloatingIPPrototype;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPPrototypeFloatingIPByTarget;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPPrototypeFloatingIPByZone;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPReference;
-import com.ibm.cloud.is.vpc.v1.model.FloatingIPReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPTarget;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPTargetBareMetalServerNetworkInterfaceReference;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPTargetNetworkInterfaceReference;
@@ -509,7 +508,6 @@ import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorTargetSubnetReference;
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorTargetVPCReference;
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorTargetVirtualNetworkInterfaceReferenceAttachmentContext;
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorsPager;
-import com.ibm.cloud.is.vpc.v1.model.GenericResourceReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.GetBackupPolicyJobOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetBackupPolicyOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetBackupPolicyPlanOptions;
@@ -562,6 +560,9 @@ import com.ibm.cloud.is.vpc.v1.model.GetNetworkAclRuleOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetNetworkInterfaceFloatingIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetOperatingSystemOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetPlacementGroupOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetPrivatePathServiceGatewayAccountPolicyOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetPrivatePathServiceGatewayEndpointGatewayBindingOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetPrivatePathServiceGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetPublicGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetRegionOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetRegionZoneOptions;
@@ -610,7 +611,6 @@ import com.ibm.cloud.is.vpc.v1.model.IKEPolicyConnectionCollectionFirst;
 import com.ibm.cloud.is.vpc.v1.model.IKEPolicyConnectionCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.IKEPolicyPatch;
 import com.ibm.cloud.is.vpc.v1.model.IKEPolicyReference;
-import com.ibm.cloud.is.vpc.v1.model.IKEPolicyReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.IP;
 import com.ibm.cloud.is.vpc.v1.model.IPsecPolicy;
 import com.ibm.cloud.is.vpc.v1.model.IPsecPolicyCollection;
@@ -621,7 +621,6 @@ import com.ibm.cloud.is.vpc.v1.model.IPsecPolicyConnectionCollectionFirst;
 import com.ibm.cloud.is.vpc.v1.model.IPsecPolicyConnectionCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.IPsecPolicyPatch;
 import com.ibm.cloud.is.vpc.v1.model.IPsecPolicyReference;
-import com.ibm.cloud.is.vpc.v1.model.IPsecPolicyReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.IkePoliciesPager;
 import com.ibm.cloud.is.vpc.v1.model.IkePolicyConnectionsPager;
 import com.ibm.cloud.is.vpc.v1.model.Image;
@@ -645,7 +644,6 @@ import com.ibm.cloud.is.vpc.v1.model.ImagePrototype;
 import com.ibm.cloud.is.vpc.v1.model.ImagePrototypeImageByFile;
 import com.ibm.cloud.is.vpc.v1.model.ImagePrototypeImageBySourceVolume;
 import com.ibm.cloud.is.vpc.v1.model.ImageReference;
-import com.ibm.cloud.is.vpc.v1.model.ImageReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.ImageRemote;
 import com.ibm.cloud.is.vpc.v1.model.ImageStatusReason;
 import com.ibm.cloud.is.vpc.v1.model.ImagesPager;
@@ -667,7 +665,6 @@ import com.ibm.cloud.is.vpc.v1.model.InstanceDisk;
 import com.ibm.cloud.is.vpc.v1.model.InstanceDiskCollection;
 import com.ibm.cloud.is.vpc.v1.model.InstanceDiskPatch;
 import com.ibm.cloud.is.vpc.v1.model.InstanceDiskReference;
-import com.ibm.cloud.is.vpc.v1.model.InstanceDiskReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGPU;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroup;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupCollection;
@@ -688,7 +685,6 @@ import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerActionPrototypeSchedule
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerActionPrototypeScheduledActionPrototypeByRunAtByGroup;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerActionPrototypeScheduledActionPrototypeByRunAtByManager;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerActionReference;
-import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerActionReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerActionScheduledAction;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerActionScheduledActionGroupTarget;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerActionScheduledActionManagerTarget;
@@ -711,12 +707,10 @@ import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerPolicyPatch;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerPolicyPrototype;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerPolicyPrototypeInstanceGroupManagerTargetPolicyPrototype;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerPolicyReference;
-import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerPolicyReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerPrototype;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerPrototypeInstanceGroupManagerAutoScalePrototype;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerPrototypeInstanceGroupManagerScheduledPrototype;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerReference;
-import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerScheduled;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerScheduledActionGroup;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerScheduledActionGroupPrototype;
@@ -735,7 +729,6 @@ import com.ibm.cloud.is.vpc.v1.model.InstanceGroupMembershipPatch;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupMembershipsPager;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupPatch;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupReference;
-import com.ibm.cloud.is.vpc.v1.model.InstanceGroupReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupsPager;
 import com.ibm.cloud.is.vpc.v1.model.InstanceHealthReason;
 import com.ibm.cloud.is.vpc.v1.model.InstanceInitialization;
@@ -756,7 +749,6 @@ import com.ibm.cloud.is.vpc.v1.model.InstanceNetworkAttachmentPrototypeVirtualNe
 import com.ibm.cloud.is.vpc.v1.model.InstanceNetworkAttachmentPrototypeVirtualNetworkInterfaceVirtualNetworkInterfaceIdentityVirtualNetworkInterfaceIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.InstanceNetworkAttachmentPrototypeVirtualNetworkInterfaceVirtualNetworkInterfacePrototypeInstanceNetworkAttachmentContext;
 import com.ibm.cloud.is.vpc.v1.model.InstanceNetworkAttachmentReference;
-import com.ibm.cloud.is.vpc.v1.model.InstanceNetworkAttachmentReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.InstanceNetworkInterfaceIpsPager;
 import com.ibm.cloud.is.vpc.v1.model.InstancePatch;
 import com.ibm.cloud.is.vpc.v1.model.InstancePatchProfile;
@@ -871,7 +863,6 @@ import com.ibm.cloud.is.vpc.v1.model.InstancePrototypeInstanceByVolume;
 import com.ibm.cloud.is.vpc.v1.model.InstancePrototypeInstanceByVolumeInstanceByVolumeInstanceByNetworkAttachment;
 import com.ibm.cloud.is.vpc.v1.model.InstancePrototypeInstanceByVolumeInstanceByVolumeInstanceByNetworkInterface;
 import com.ibm.cloud.is.vpc.v1.model.InstanceReference;
-import com.ibm.cloud.is.vpc.v1.model.InstanceReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.InstanceReservationAffinity;
 import com.ibm.cloud.is.vpc.v1.model.InstanceReservationAffinityPatch;
 import com.ibm.cloud.is.vpc.v1.model.InstanceReservationAffinityPrototype;
@@ -906,7 +897,6 @@ import com.ibm.cloud.is.vpc.v1.model.InstanceTemplatePrototypeInstanceTemplateBy
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplatePrototypeInstanceTemplateBySourceSnapshotInstanceTemplateBySourceSnapshotInstanceByNetworkInterface;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplatePrototypeInstanceTemplateBySourceTemplate;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateReference;
-import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.InstanceVCPU;
 import com.ibm.cloud.is.vpc.v1.model.InstancesPager;
 import com.ibm.cloud.is.vpc.v1.model.IpsecPoliciesPager;
@@ -922,7 +912,6 @@ import com.ibm.cloud.is.vpc.v1.model.KeyIdentityByHref;
 import com.ibm.cloud.is.vpc.v1.model.KeyIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.KeyPatch;
 import com.ibm.cloud.is.vpc.v1.model.KeyReference;
-import com.ibm.cloud.is.vpc.v1.model.KeyReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.KeysPager;
 import com.ibm.cloud.is.vpc.v1.model.LegacyCloudObjectStorageBucketIdentity;
 import com.ibm.cloud.is.vpc.v1.model.LegacyCloudObjectStorageBucketIdentityCloudObjectStorageBucketIdentityByName;
@@ -978,6 +967,9 @@ import com.ibm.cloud.is.vpc.v1.model.ListNetworkAclsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListNetworkInterfaceFloatingIpsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListOperatingSystemsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListPlacementGroupsOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListPrivatePathServiceGatewayAccountPoliciesOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListPrivatePathServiceGatewayEndpointGatewayBindingsOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListPrivatePathServiceGatewaysOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListPublicGatewaysOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListRegionZonesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListRegionsOptions;
@@ -1039,13 +1031,11 @@ import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyCollection;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyPatch;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyPrototype;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyReference;
-import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyRule;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyRuleCollection;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyRulePatch;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyRulePrototype;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyRuleReference;
-import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyRuleReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTarget;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetLoadBalancerListenerPolicyHTTPSRedirect;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetLoadBalancerListenerPolicyRedirectURL;
@@ -1064,7 +1054,6 @@ import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetPrototypeLo
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetPrototypeLoadBalancerPoolIdentityLoadBalancerPoolIdentityLoadBalancerPoolIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPrototypeLoadBalancerContext;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerReference;
-import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerLogging;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerLoggingDatapath;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerLoggingDatapathPatch;
@@ -1086,7 +1075,6 @@ import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolMemberCollection;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolMemberPatch;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolMemberPrototype;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolMemberReference;
-import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolMemberReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolMemberTarget;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolMemberTargetIP;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolMemberTargetInstanceReference;
@@ -1099,12 +1087,14 @@ import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolMemberTargetPrototypeInstan
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolPatch;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolPrototype;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolReference;
-import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolSessionPersistence;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolSessionPersistencePatch;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolSessionPersistencePrototype;
-import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPrivateIpsItem;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfile;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileAccessModes;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileAvailability;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileAvailabilityDependent;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileAvailabilityFixed;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileCollection;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileCollectionFirst;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileCollectionNext;
@@ -1122,11 +1112,14 @@ import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileRouteModeSupportedFixed;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileSecurityGroupsSupported;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileSecurityGroupsSupportedDependent;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileSecurityGroupsSupportedFixed;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileSourceIPSessionPersistenceSupported;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileSourceIPSessionPersistenceSupportedDependent;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileSourceIPSessionPersistenceSupportedFixed;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileUDPSupported;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileUDPSupportedDependent;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileUDPSupportedFixed;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfilesPager;
-import com.ibm.cloud.is.vpc.v1.model.LoadBalancerReferenceDeleted;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerReference;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerStatistics;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancersPager;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACL;
@@ -1142,7 +1135,6 @@ import com.ibm.cloud.is.vpc.v1.model.NetworkACLPrototype;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLPrototypeNetworkACLByRules;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLPrototypeNetworkACLBySourceNetworkACL;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLReference;
-import com.ibm.cloud.is.vpc.v1.model.NetworkACLReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLRule;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLRuleBeforePatch;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLRuleBeforePatchNetworkACLRuleIdentityByHref;
@@ -1170,12 +1162,10 @@ import com.ibm.cloud.is.vpc.v1.model.NetworkACLRulePrototypeNetworkACLRuleProtoc
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLRulePrototypeNetworkACLRuleProtocolICMPPrototype;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLRulePrototypeNetworkACLRuleProtocolTCPUDPPrototype;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLRuleReference;
-import com.ibm.cloud.is.vpc.v1.model.NetworkACLRuleReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.NetworkAclRulesPager;
 import com.ibm.cloud.is.vpc.v1.model.NetworkAclsPager;
 import com.ibm.cloud.is.vpc.v1.model.NetworkInterface;
 import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceBareMetalServerContextReference;
-import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceBareMetalServerContextReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceFloatingIpsPager;
 import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceIPPrototype;
 import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceIPPrototypeReservedIPIdentity;
@@ -1183,11 +1173,8 @@ import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceIPPrototypeReservedIPIdenti
 import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceIPPrototypeReservedIPIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceIPPrototypeReservedIPPrototypeNetworkInterfaceContext;
 import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceInstanceContextReference;
-import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceInstanceContextReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.NetworkInterfacePatch;
 import com.ibm.cloud.is.vpc.v1.model.NetworkInterfacePrototype;
-import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceReferenceDeleted;
-import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceReferenceTargetContextDeleted;
 import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceUnpaginatedCollection;
 import com.ibm.cloud.is.vpc.v1.model.ObsoleteImageOptions;
 import com.ibm.cloud.is.vpc.v1.model.OperatingSystem;
@@ -1198,13 +1185,31 @@ import com.ibm.cloud.is.vpc.v1.model.OperatingSystemIdentity;
 import com.ibm.cloud.is.vpc.v1.model.OperatingSystemIdentityByHref;
 import com.ibm.cloud.is.vpc.v1.model.OperatingSystemIdentityByName;
 import com.ibm.cloud.is.vpc.v1.model.OperatingSystemsPager;
+import com.ibm.cloud.is.vpc.v1.model.PermitPrivatePathServiceGatewayEndpointGatewayBindingOptions;
 import com.ibm.cloud.is.vpc.v1.model.PlacementGroup;
 import com.ibm.cloud.is.vpc.v1.model.PlacementGroupCollection;
 import com.ibm.cloud.is.vpc.v1.model.PlacementGroupCollectionFirst;
 import com.ibm.cloud.is.vpc.v1.model.PlacementGroupCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.PlacementGroupPatch;
-import com.ibm.cloud.is.vpc.v1.model.PlacementGroupReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.PlacementGroupsPager;
+import com.ibm.cloud.is.vpc.v1.model.PrivatePathServiceGateway;
+import com.ibm.cloud.is.vpc.v1.model.PrivatePathServiceGatewayAccountPoliciesPager;
+import com.ibm.cloud.is.vpc.v1.model.PrivatePathServiceGatewayAccountPolicy;
+import com.ibm.cloud.is.vpc.v1.model.PrivatePathServiceGatewayAccountPolicyCollection;
+import com.ibm.cloud.is.vpc.v1.model.PrivatePathServiceGatewayAccountPolicyCollectionFirst;
+import com.ibm.cloud.is.vpc.v1.model.PrivatePathServiceGatewayAccountPolicyCollectionNext;
+import com.ibm.cloud.is.vpc.v1.model.PrivatePathServiceGatewayAccountPolicyPatch;
+import com.ibm.cloud.is.vpc.v1.model.PrivatePathServiceGatewayCollection;
+import com.ibm.cloud.is.vpc.v1.model.PrivatePathServiceGatewayCollectionFirst;
+import com.ibm.cloud.is.vpc.v1.model.PrivatePathServiceGatewayCollectionNext;
+import com.ibm.cloud.is.vpc.v1.model.PrivatePathServiceGatewayEndpointGatewayBinding;
+import com.ibm.cloud.is.vpc.v1.model.PrivatePathServiceGatewayEndpointGatewayBindingCollection;
+import com.ibm.cloud.is.vpc.v1.model.PrivatePathServiceGatewayEndpointGatewayBindingCollectionFirst;
+import com.ibm.cloud.is.vpc.v1.model.PrivatePathServiceGatewayEndpointGatewayBindingCollectionNext;
+import com.ibm.cloud.is.vpc.v1.model.PrivatePathServiceGatewayEndpointGatewayBindingsPager;
+import com.ibm.cloud.is.vpc.v1.model.PrivatePathServiceGatewayPatch;
+import com.ibm.cloud.is.vpc.v1.model.PrivatePathServiceGatewayRemote;
+import com.ibm.cloud.is.vpc.v1.model.PrivatePathServiceGatewaysPager;
 import com.ibm.cloud.is.vpc.v1.model.PublicGateway;
 import com.ibm.cloud.is.vpc.v1.model.PublicGatewayCollection;
 import com.ibm.cloud.is.vpc.v1.model.PublicGatewayCollectionFirst;
@@ -1223,8 +1228,8 @@ import com.ibm.cloud.is.vpc.v1.model.PublicGatewayIdentityPublicGatewayIdentityB
 import com.ibm.cloud.is.vpc.v1.model.PublicGatewayIdentityPublicGatewayIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.PublicGatewayPatch;
 import com.ibm.cloud.is.vpc.v1.model.PublicGatewayReference;
-import com.ibm.cloud.is.vpc.v1.model.PublicGatewayReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.PublicGatewaysPager;
+import com.ibm.cloud.is.vpc.v1.model.PublishPrivatePathServiceGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.Region;
 import com.ibm.cloud.is.vpc.v1.model.RegionCollection;
 import com.ibm.cloud.is.vpc.v1.model.RegionIdentity;
@@ -1238,6 +1243,7 @@ import com.ibm.cloud.is.vpc.v1.model.RemoveNetworkInterfaceFloatingIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.RemoveVirtualNetworkInterfaceIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.RemoveVpnGatewayConnectionsLocalCidrOptions;
 import com.ibm.cloud.is.vpc.v1.model.RemoveVpnGatewayConnectionsPeerCidrOptions;
+import com.ibm.cloud.is.vpc.v1.model.ReplaceBareMetalServerInitializationOptions;
 import com.ibm.cloud.is.vpc.v1.model.ReplaceLoadBalancerPoolMembersOptions;
 import com.ibm.cloud.is.vpc.v1.model.ReplaceSubnetNetworkAclOptions;
 import com.ibm.cloud.is.vpc.v1.model.ReplaceSubnetRoutingTableOptions;
@@ -1260,7 +1266,6 @@ import com.ibm.cloud.is.vpc.v1.model.ReservationProfile;
 import com.ibm.cloud.is.vpc.v1.model.ReservationProfilePatch;
 import com.ibm.cloud.is.vpc.v1.model.ReservationProfilePrototype;
 import com.ibm.cloud.is.vpc.v1.model.ReservationReference;
-import com.ibm.cloud.is.vpc.v1.model.ReservationReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.ReservationStatusReason;
 import com.ibm.cloud.is.vpc.v1.model.ReservationsPager;
 import com.ibm.cloud.is.vpc.v1.model.ReservedIP;
@@ -1281,7 +1286,6 @@ import com.ibm.cloud.is.vpc.v1.model.ReservedIPCollectionVirtualNetworkInterface
 import com.ibm.cloud.is.vpc.v1.model.ReservedIPCollectionVirtualNetworkInterfaceContextNext;
 import com.ibm.cloud.is.vpc.v1.model.ReservedIPPatch;
 import com.ibm.cloud.is.vpc.v1.model.ReservedIPReference;
-import com.ibm.cloud.is.vpc.v1.model.ReservedIPReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.ReservedIPTarget;
 import com.ibm.cloud.is.vpc.v1.model.ReservedIPTargetBareMetalServerNetworkInterfaceReferenceTargetContext;
 import com.ibm.cloud.is.vpc.v1.model.ReservedIPTargetEndpointGatewayReference;
@@ -1305,6 +1309,7 @@ import com.ibm.cloud.is.vpc.v1.model.ResourceGroupIdentity;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.RestartBareMetalServerOptions;
+import com.ibm.cloud.is.vpc.v1.model.RevokeAccountForPrivatePathServiceGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.Route;
 import com.ibm.cloud.is.vpc.v1.model.RouteCollection;
 import com.ibm.cloud.is.vpc.v1.model.RouteCollectionFirst;
@@ -1325,28 +1330,27 @@ import com.ibm.cloud.is.vpc.v1.model.RouteNextHopPatchRouteNextHopIPRouteNextHop
 import com.ibm.cloud.is.vpc.v1.model.RouteNextHopPatchVPNGatewayConnectionIdentity;
 import com.ibm.cloud.is.vpc.v1.model.RouteNextHopPatchVPNGatewayConnectionIdentityVPNGatewayConnectionIdentityByHref;
 import com.ibm.cloud.is.vpc.v1.model.RouteNextHopPatchVPNGatewayConnectionIdentityVPNGatewayConnectionIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.RouteNextHopPrototype;
+import com.ibm.cloud.is.vpc.v1.model.RouteNextHopPrototypeRouteNextHopIP;
+import com.ibm.cloud.is.vpc.v1.model.RouteNextHopPrototypeRouteNextHopIPRouteNextHopIPSentinelIP;
+import com.ibm.cloud.is.vpc.v1.model.RouteNextHopPrototypeRouteNextHopIPRouteNextHopIPUnicastIP;
+import com.ibm.cloud.is.vpc.v1.model.RouteNextHopPrototypeVPNGatewayConnectionIdentity;
+import com.ibm.cloud.is.vpc.v1.model.RouteNextHopPrototypeVPNGatewayConnectionIdentityVPNGatewayConnectionIdentityByHref;
+import com.ibm.cloud.is.vpc.v1.model.RouteNextHopPrototypeVPNGatewayConnectionIdentityVPNGatewayConnectionIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.RouteNextHopVPNGatewayConnectionReference;
 import com.ibm.cloud.is.vpc.v1.model.RoutePatch;
 import com.ibm.cloud.is.vpc.v1.model.RoutePrototype;
-import com.ibm.cloud.is.vpc.v1.model.RoutePrototypeNextHop;
-import com.ibm.cloud.is.vpc.v1.model.RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIP;
-import com.ibm.cloud.is.vpc.v1.model.RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIPRouteNextHopPrototypeRouteNextHopIPRouteNextHopIPSentinelIP;
-import com.ibm.cloud.is.vpc.v1.model.RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIPRouteNextHopPrototypeRouteNextHopIPRouteNextHopIPUnicastIP;
-import com.ibm.cloud.is.vpc.v1.model.RoutePrototypeNextHopRouteNextHopPrototypeVPNGatewayConnectionIdentity;
-import com.ibm.cloud.is.vpc.v1.model.RoutePrototypeNextHopRouteNextHopPrototypeVPNGatewayConnectionIdentityRouteNextHopPrototypeVPNGatewayConnectionIdentityVPNGatewayConnectionIdentityByHref;
-import com.ibm.cloud.is.vpc.v1.model.RoutePrototypeNextHopRouteNextHopPrototypeVPNGatewayConnectionIdentityRouteNextHopPrototypeVPNGatewayConnectionIdentityVPNGatewayConnectionIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.RouteReference;
-import com.ibm.cloud.is.vpc.v1.model.RouteReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.RoutingTable;
 import com.ibm.cloud.is.vpc.v1.model.RoutingTableCollection;
 import com.ibm.cloud.is.vpc.v1.model.RoutingTableCollectionFirst;
 import com.ibm.cloud.is.vpc.v1.model.RoutingTableCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.RoutingTableIdentity;
+import com.ibm.cloud.is.vpc.v1.model.RoutingTableIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.RoutingTableIdentityByHref;
 import com.ibm.cloud.is.vpc.v1.model.RoutingTableIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.RoutingTablePatch;
 import com.ibm.cloud.is.vpc.v1.model.RoutingTableReference;
-import com.ibm.cloud.is.vpc.v1.model.RoutingTableReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroup;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupCollection;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupCollectionFirst;
@@ -1357,7 +1361,6 @@ import com.ibm.cloud.is.vpc.v1.model.SecurityGroupIdentityByHref;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupPatch;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupReference;
-import com.ibm.cloud.is.vpc.v1.model.SecurityGroupReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRule;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleCollection;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleLocal;
@@ -1439,7 +1442,6 @@ import com.ibm.cloud.is.vpc.v1.model.ShareMountTargetPrototype;
 import com.ibm.cloud.is.vpc.v1.model.ShareMountTargetPrototypeShareMountTargetByAccessControlModeSecurityGroup;
 import com.ibm.cloud.is.vpc.v1.model.ShareMountTargetPrototypeShareMountTargetByAccessControlModeVPC;
 import com.ibm.cloud.is.vpc.v1.model.ShareMountTargetReference;
-import com.ibm.cloud.is.vpc.v1.model.ShareMountTargetReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.ShareMountTargetVirtualNetworkInterfacePrototype;
 import com.ibm.cloud.is.vpc.v1.model.ShareMountTargetVirtualNetworkInterfacePrototypeVirtualNetworkInterfaceIdentity;
 import com.ibm.cloud.is.vpc.v1.model.ShareMountTargetVirtualNetworkInterfacePrototypeVirtualNetworkInterfaceIdentityVirtualNetworkInterfaceIdentityByCRN;
@@ -1473,7 +1475,6 @@ import com.ibm.cloud.is.vpc.v1.model.SharePrototypeShareBySize;
 import com.ibm.cloud.is.vpc.v1.model.SharePrototypeShareBySourceShare;
 import com.ibm.cloud.is.vpc.v1.model.SharePrototypeShareContext;
 import com.ibm.cloud.is.vpc.v1.model.ShareReference;
-import com.ibm.cloud.is.vpc.v1.model.ShareReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.ShareRemote;
 import com.ibm.cloud.is.vpc.v1.model.ShareReplicationStatusReason;
 import com.ibm.cloud.is.vpc.v1.model.SharesPager;
@@ -1493,7 +1494,6 @@ import com.ibm.cloud.is.vpc.v1.model.SnapshotConsistencyGroupPatch;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotConsistencyGroupPrototype;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotConsistencyGroupPrototypeSnapshotConsistencyGroupBySnapshots;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotConsistencyGroupReference;
-import com.ibm.cloud.is.vpc.v1.model.SnapshotConsistencyGroupReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotConsistencyGroupsPager;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotCopiesItem;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotIdentity;
@@ -1506,7 +1506,6 @@ import com.ibm.cloud.is.vpc.v1.model.SnapshotPrototypeSnapshotBySourceSnapshot;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotPrototypeSnapshotBySourceVolume;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotPrototypeSnapshotConsistencyGroupContext;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotReference;
-import com.ibm.cloud.is.vpc.v1.model.SnapshotReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotRemote;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotSourceSnapshot;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotsPager;
@@ -1529,13 +1528,13 @@ import com.ibm.cloud.is.vpc.v1.model.SubnetPublicGatewayPatchPublicGatewayIdenti
 import com.ibm.cloud.is.vpc.v1.model.SubnetPublicGatewayPatchPublicGatewayIdentityByHref;
 import com.ibm.cloud.is.vpc.v1.model.SubnetPublicGatewayPatchPublicGatewayIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.SubnetReference;
-import com.ibm.cloud.is.vpc.v1.model.SubnetReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.SubnetReservedIpsPager;
 import com.ibm.cloud.is.vpc.v1.model.SubnetsPager;
 import com.ibm.cloud.is.vpc.v1.model.TrustedProfileIdentity;
 import com.ibm.cloud.is.vpc.v1.model.TrustedProfileIdentityTrustedProfileByCRN;
 import com.ibm.cloud.is.vpc.v1.model.TrustedProfileIdentityTrustedProfileById;
 import com.ibm.cloud.is.vpc.v1.model.TrustedProfileReference;
+import com.ibm.cloud.is.vpc.v1.model.UnpublishPrivatePathServiceGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.UnsetSubnetPublicGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateBackupPolicyOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateBackupPolicyPlanOptions;
@@ -1547,6 +1546,7 @@ import com.ibm.cloud.is.vpc.v1.model.UpdateDedicatedHostDiskOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateDedicatedHostGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateDedicatedHostOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateEndpointGatewayOptions;
+import com.ibm.cloud.is.vpc.v1.model.UpdateFirmwareForBareMetalServerOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateFloatingIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateFlowLogCollectorOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateIkePolicyOptions;
@@ -1574,6 +1574,8 @@ import com.ibm.cloud.is.vpc.v1.model.UpdateLoadBalancerPoolOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateNetworkAclOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateNetworkAclRuleOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdatePlacementGroupOptions;
+import com.ibm.cloud.is.vpc.v1.model.UpdatePrivatePathServiceGatewayAccountPolicyOptions;
+import com.ibm.cloud.is.vpc.v1.model.UpdatePrivatePathServiceGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdatePublicGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateReservationOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateSecurityGroupOptions;
@@ -1631,8 +1633,6 @@ import com.ibm.cloud.is.vpc.v1.model.VPCIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.VPCPatch;
 import com.ibm.cloud.is.vpc.v1.model.VPCReference;
 import com.ibm.cloud.is.vpc.v1.model.VPCReferenceDNSResolverContext;
-import com.ibm.cloud.is.vpc.v1.model.VPCReferenceDNSResolverContextDeleted;
-import com.ibm.cloud.is.vpc.v1.model.VPCReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.VPCReferenceRemote;
 import com.ibm.cloud.is.vpc.v1.model.VPCRemote;
 import com.ibm.cloud.is.vpc.v1.model.VPNGateway;
@@ -1690,7 +1690,6 @@ import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionPrototype;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionPrototypeVPNGatewayConnectionPolicyModePrototype;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionPrototypeVPNGatewayConnectionStaticRouteModePrototype;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionReference;
-import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionRouteMode;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionRouteModeVPNGatewayConnectionStaticRouteMode;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionStaticRouteModeLocal;
@@ -1714,7 +1713,6 @@ import com.ibm.cloud.is.vpc.v1.model.VPNGatewayPolicyMode;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayPrototype;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayPrototypeVPNGatewayPolicyModePrototype;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayPrototypeVPNGatewayRouteModePrototype;
-import com.ibm.cloud.is.vpc.v1.model.VPNGatewayReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayRouteMode;
 import com.ibm.cloud.is.vpc.v1.model.VPNServer;
 import com.ibm.cloud.is.vpc.v1.model.VPNServerAuthentication;
@@ -1735,7 +1733,6 @@ import com.ibm.cloud.is.vpc.v1.model.VPNServerCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.VPNServerHealthReason;
 import com.ibm.cloud.is.vpc.v1.model.VPNServerLifecycleReason;
 import com.ibm.cloud.is.vpc.v1.model.VPNServerPatch;
-import com.ibm.cloud.is.vpc.v1.model.VPNServerReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.VPNServerRoute;
 import com.ibm.cloud.is.vpc.v1.model.VPNServerRouteCollection;
 import com.ibm.cloud.is.vpc.v1.model.VPNServerRouteCollectionFirst;
@@ -1760,7 +1757,6 @@ import com.ibm.cloud.is.vpc.v1.model.VirtualNetworkInterfacePrimaryIPPrototypeRe
 import com.ibm.cloud.is.vpc.v1.model.VirtualNetworkInterfacePrimaryIPPrototypeReservedIPIdentityVirtualNetworkInterfacePrimaryIPContextById;
 import com.ibm.cloud.is.vpc.v1.model.VirtualNetworkInterfacePrimaryIPPrototypeReservedIPPrototypeVirtualNetworkInterfacePrimaryIPContext;
 import com.ibm.cloud.is.vpc.v1.model.VirtualNetworkInterfaceReferenceAttachmentContext;
-import com.ibm.cloud.is.vpc.v1.model.VirtualNetworkInterfaceReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.VirtualNetworkInterfaceTarget;
 import com.ibm.cloud.is.vpc.v1.model.VirtualNetworkInterfaceTargetBareMetalServerNetworkAttachmentReferenceVirtualNetworkInterfaceContext;
 import com.ibm.cloud.is.vpc.v1.model.VirtualNetworkInterfaceTargetInstanceNetworkAttachmentReferenceVirtualNetworkInterfaceContext;
@@ -1784,9 +1780,7 @@ import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototypeVolumeVolumeProtot
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeByCapacity;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeBySourceSnapshot;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentReferenceInstanceContext;
-import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentReferenceInstanceContextDeleted;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentReferenceVolumeContext;
-import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentReferenceVolumeContextDeleted;
 import com.ibm.cloud.is.vpc.v1.model.VolumeCatalogOffering;
 import com.ibm.cloud.is.vpc.v1.model.VolumeCollection;
 import com.ibm.cloud.is.vpc.v1.model.VolumeCollectionFirst;
@@ -1798,9 +1792,26 @@ import com.ibm.cloud.is.vpc.v1.model.VolumeIdentityByHref;
 import com.ibm.cloud.is.vpc.v1.model.VolumeIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.VolumePatch;
 import com.ibm.cloud.is.vpc.v1.model.VolumeProfile;
+import com.ibm.cloud.is.vpc.v1.model.VolumeProfileAdjustableCapacityStates;
+import com.ibm.cloud.is.vpc.v1.model.VolumeProfileAdjustableIOPSStates;
+import com.ibm.cloud.is.vpc.v1.model.VolumeProfileBootCapacity;
+import com.ibm.cloud.is.vpc.v1.model.VolumeProfileBootCapacityDependentRange;
+import com.ibm.cloud.is.vpc.v1.model.VolumeProfileBootCapacityEnum;
+import com.ibm.cloud.is.vpc.v1.model.VolumeProfileBootCapacityFixed;
+import com.ibm.cloud.is.vpc.v1.model.VolumeProfileBootCapacityRange;
+import com.ibm.cloud.is.vpc.v1.model.VolumeProfileCapacity;
+import com.ibm.cloud.is.vpc.v1.model.VolumeProfileCapacityDependentRange;
+import com.ibm.cloud.is.vpc.v1.model.VolumeProfileCapacityEnum;
+import com.ibm.cloud.is.vpc.v1.model.VolumeProfileCapacityFixed;
+import com.ibm.cloud.is.vpc.v1.model.VolumeProfileCapacityRange;
 import com.ibm.cloud.is.vpc.v1.model.VolumeProfileCollection;
 import com.ibm.cloud.is.vpc.v1.model.VolumeProfileCollectionFirst;
 import com.ibm.cloud.is.vpc.v1.model.VolumeProfileCollectionNext;
+import com.ibm.cloud.is.vpc.v1.model.VolumeProfileIOPS;
+import com.ibm.cloud.is.vpc.v1.model.VolumeProfileIOPSDependentRange;
+import com.ibm.cloud.is.vpc.v1.model.VolumeProfileIOPSEnum;
+import com.ibm.cloud.is.vpc.v1.model.VolumeProfileIOPSFixed;
+import com.ibm.cloud.is.vpc.v1.model.VolumeProfileIOPSRange;
 import com.ibm.cloud.is.vpc.v1.model.VolumeProfileIdentity;
 import com.ibm.cloud.is.vpc.v1.model.VolumeProfileIdentityByHref;
 import com.ibm.cloud.is.vpc.v1.model.VolumeProfileIdentityByName;
@@ -1812,9 +1823,7 @@ import com.ibm.cloud.is.vpc.v1.model.VolumePrototypeInstanceBySourceSnapshotCont
 import com.ibm.cloud.is.vpc.v1.model.VolumePrototypeVolumeByCapacity;
 import com.ibm.cloud.is.vpc.v1.model.VolumePrototypeVolumeBySourceSnapshot;
 import com.ibm.cloud.is.vpc.v1.model.VolumeReference;
-import com.ibm.cloud.is.vpc.v1.model.VolumeReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.VolumeReferenceVolumeAttachmentContext;
-import com.ibm.cloud.is.vpc.v1.model.VolumeReferenceVolumeAttachmentContextDeleted;
 import com.ibm.cloud.is.vpc.v1.model.VolumeRemote;
 import com.ibm.cloud.is.vpc.v1.model.VolumeStatusReason;
 import com.ibm.cloud.is.vpc.v1.model.VolumesPager;
@@ -1975,7 +1984,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       CreateVpcOptions createVpcOptions = new CreateVpcOptions.Builder()
-        .addressPrefixManagement("manual")
+        .addressPrefixManagement("auto")
         .classicAccess(false)
         .dns(vpcdnsPrototypeModel)
         .name("my-vpc")
@@ -2286,7 +2295,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .sort("name")
         .start("testString")
         .limit(Long.valueOf("10"))
-        .name("testString")
+        .name("my-name")
         .vpcCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b")
         .vpcName("my-vpc")
         .accountId("bb1b52262f7441a586f49068482f1e60")
@@ -2314,7 +2323,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .vpcId("testString")
         .sort("name")
         .limit(Long.valueOf("10"))
-        .name("testString")
+        .name("my-name")
         .vpcCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b")
         .vpcName("my-vpc")
         .accountId("bb1b52262f7441a586f49068482f1e60")
@@ -2489,7 +2498,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .name("us-south-1")
         .build();
 
-      RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIPRouteNextHopPrototypeRouteNextHopIPRouteNextHopIPSentinelIP routePrototypeNextHopModel = new RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIPRouteNextHopPrototypeRouteNextHopIPRouteNextHopIPSentinelIP.Builder()
+      RouteNextHopPrototypeRouteNextHopIPRouteNextHopIPSentinelIP routeNextHopPrototypeModel = new RouteNextHopPrototypeRouteNextHopIPRouteNextHopIPSentinelIP.Builder()
         .address("0.0.0.0")
         .build();
 
@@ -2500,7 +2509,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .action("deliver")
         .advertise(false)
         .name("my-route-1")
-        .nextHop(routePrototypeNextHopModel)
+        .nextHop(routeNextHopPrototypeModel)
         .priority(Long.valueOf("1"))
         .build();
 
@@ -2643,7 +2652,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .resourceType("vpn_server")
         .build();
 
-      RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIPRouteNextHopPrototypeRouteNextHopIPRouteNextHopIPSentinelIP routePrototypeNextHopModel = new RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIPRouteNextHopPrototypeRouteNextHopIPRouteNextHopIPSentinelIP.Builder()
+      RouteNextHopPrototypeRouteNextHopIPRouteNextHopIPSentinelIP routeNextHopPrototypeModel = new RouteNextHopPrototypeRouteNextHopIPRouteNextHopIPSentinelIP.Builder()
         .address("0.0.0.0")
         .build();
 
@@ -2656,7 +2665,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .advertise(false)
         .destination("192.168.3.0/24")
         .name("my-route-1")
-        .nextHop(routePrototypeNextHopModel)
+        .nextHop(routeNextHopPrototypeModel)
         .priority(Long.valueOf("1"))
         .zone(zoneIdentityModel)
         .build();
@@ -2816,7 +2825,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .name("us-south-1")
         .build();
 
-      RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIPRouteNextHopPrototypeRouteNextHopIPRouteNextHopIPSentinelIP routePrototypeNextHopModel = new RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIPRouteNextHopPrototypeRouteNextHopIPRouteNextHopIPSentinelIP.Builder()
+      RouteNextHopPrototypeRouteNextHopIPRouteNextHopIPSentinelIP routeNextHopPrototypeModel = new RouteNextHopPrototypeRouteNextHopIPRouteNextHopIPSentinelIP.Builder()
         .address("0.0.0.0")
         .build();
 
@@ -2828,7 +2837,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .action("deliver")
         .advertise(false)
         .name("my-route-1")
-        .nextHop(routePrototypeNextHopModel)
+        .nextHop(routeNextHopPrototypeModel)
         .priority(Long.valueOf("1"))
         .build();
 
@@ -3222,8 +3231,8 @@ public class VpcIT extends SdkIntegrationTestBase {
   @Test(dependsOnMethods = { "testGetSubnetRoutingTable" })
   public void testReplaceSubnetRoutingTable() throws Exception {
     try {
-      RoutingTableIdentityById routingTableIdentityModel = new RoutingTableIdentityById.Builder()
-        .id("r006-6885e83f-03b2-4603-8a86-db2a0f55c840")
+      RoutingTableIdentityByCRN routingTableIdentityModel = new RoutingTableIdentityByCRN.Builder()
+        .crn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc-routing-table:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b/r006-6885e83f-03b2-4603-8a86-db2a0f55c840")
         .build();
 
       ReplaceSubnetRoutingTableOptions replaceSubnetRoutingTableOptions = new ReplaceSubnetRoutingTableOptions.Builder()
@@ -3402,7 +3411,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .start("testString")
         .limit(Long.valueOf("10"))
         .resourceGroupId("testString")
-        .name("testString")
+        .name("my-name")
         .status(java.util.Arrays.asList("available"))
         .visibility("private")
         .userDataFormat(java.util.Arrays.asList("cloud_init"))
@@ -3429,7 +3438,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       ListImagesOptions options = new ListImagesOptions.Builder()
         .limit(Long.valueOf("10"))
         .resourceGroupId("testString")
-        .name("testString")
+        .name("my-name")
         .status(java.util.Arrays.asList("available"))
         .visibility("private")
         .userDataFormat(java.util.Arrays.asList("cloud_init"))
@@ -3601,7 +3610,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     try {
       ListImageExportJobsOptions listImageExportJobsOptions = new ListImageExportJobsOptions.Builder()
         .imageId("testString")
-        .name("testString")
+        .name("my-name")
         .build();
 
       // Invoke operation
@@ -3758,7 +3767,7 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testGetOperatingSystem() throws Exception {
     try {
       GetOperatingSystemOptions getOperatingSystemOptions = new GetOperatingSystemOptions.Builder()
-        .name("testString")
+        .name("red-7-amd64")
         .build();
 
       // Invoke operation
@@ -3839,7 +3848,7 @@ public class VpcIT extends SdkIntegrationTestBase {
 
       CreateKeyOptions createKeyOptions = new CreateKeyOptions.Builder()
         .publicKey("ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDDGe50Bxa5T5NDddrrtbx2Y4/VGbiCgXqnBsYToIUKoFSHTQl5IX3PasGnneKanhcLwWz5M5MoCRvhxTp66NKzIfAz7r+FX9rxgR+ZgcM253YAqOVeIpOU408simDZKriTlN8kYsXL7P34tsWuAJf4MgZtJAQxous/2byetpdCv8ddnT4X3ltOg9w+LqSCPYfNivqH00Eh7S1Ldz7I8aw5WOp5a+sQFP/RbwfpwHp+ny7DfeIOokcuI42tJkoBn7UsLTVpCSmXr2EDRlSWe/1M/iHNRBzaT3CK0+SwZWd2AEjePxSnWKNGIEUJDlUYp7hKhiQcgT5ZAnWU121oc5En")
-        .name("my-key")
+        .name("my-key-1")
         .resourceGroup(resourceGroupIdentityModel)
         .type("rsa")
         .build();
@@ -3885,7 +3894,7 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testUpdateKey() throws Exception {
     try {
       KeyPatch keyPatchModel = new KeyPatch.Builder()
-        .name("my-key")
+        .name("my-key-1")
         .build();
       Map<String, Object> keyPatchModelAsPatch = keyPatchModel.asPatch();
 
@@ -3933,7 +3942,7 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testGetInstanceProfile() throws Exception {
     try {
       GetInstanceProfileOptions getInstanceProfileOptions = new GetInstanceProfileOptions.Builder()
-        .name("testString")
+        .name("mx2-host-152x1216")
         .build();
 
       // Invoke operation
@@ -4185,7 +4194,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .start("testString")
         .limit(Long.valueOf("10"))
         .resourceGroupId("testString")
-        .name("testString")
+        .name("my-name")
         .dedicatedHostId("testString")
         .dedicatedHostCrn("crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::dedicated-host:1e09281b-f177-46fb-baf1-bc152b2e391a")
         .dedicatedHostName("my-dedicated-host")
@@ -4221,7 +4230,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       ListInstancesOptions options = new ListInstancesOptions.Builder()
         .limit(Long.valueOf("10"))
         .resourceGroupId("testString")
-        .name("testString")
+        .name("my-name")
         .dedicatedHostId("testString")
         .dedicatedHostCrn("crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::dedicated-host:1e09281b-f177-46fb-baf1-bc152b2e391a")
         .dedicatedHostName("my-dedicated-host")
@@ -5611,6 +5620,8 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       InstanceGroupManagerActionPatch instanceGroupManagerActionPatchModel = new InstanceGroupManagerActionPatch.Builder()
+        .autoDelete(true)
+        .autoDeleteTimeout(Long.valueOf("24"))
         .cronSpec("30 */2 * * 1-5")
         .group(instanceGroupManagerActionGroupPatchModel)
         .manager(instanceGroupManagerActionManagerPatchModel)
@@ -5869,6 +5880,7 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testUpdateInstanceGroupMembership() throws Exception {
     try {
       InstanceGroupMembershipPatch instanceGroupMembershipPatchModel = new InstanceGroupMembershipPatch.Builder()
+        .deleteInstanceOnMembershipDelete(true)
         .name("my-instance-group-membership")
         .build();
       Map<String, Object> instanceGroupMembershipPatchModelAsPatch = instanceGroupMembershipPatchModel.asPatch();
@@ -5900,7 +5912,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       ListReservationsOptions listReservationsOptions = new ListReservationsOptions.Builder()
         .start("testString")
         .limit(Long.valueOf("10"))
-        .name("testString")
+        .name("my-name")
         .resourceGroupId("testString")
         .zoneName("us-south-1")
         .build();
@@ -5925,7 +5937,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     try {
       ListReservationsOptions options = new ListReservationsOptions.Builder()
         .limit(Long.valueOf("10"))
-        .name("testString")
+        .name("my-name")
         .resourceGroupId("testString")
         .zoneName("us-south-1")
         .build();
@@ -6097,7 +6109,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .limit(Long.valueOf("10"))
         .resourceGroupId("testString")
         .zoneName("us-south-1")
-        .name("testString")
+        .name("my-name")
         .build();
 
       // Invoke operation
@@ -6122,7 +6134,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .limit(Long.valueOf("10"))
         .resourceGroupId("testString")
         .zoneName("us-south-1")
-        .name("testString")
+        .name("my-name")
         .build();
 
       // Test getNext().
@@ -6291,7 +6303,7 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testGetDedicatedHostProfile() throws Exception {
     try {
       GetDedicatedHostProfileOptions getDedicatedHostProfileOptions = new GetDedicatedHostProfileOptions.Builder()
-        .name("testString")
+        .name("mx2-host-152x1216")
         .build();
 
       // Invoke operation
@@ -6318,7 +6330,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .limit(Long.valueOf("10"))
         .resourceGroupId("testString")
         .zoneName("us-south-1")
-        .name("testString")
+        .name("my-name")
         .build();
 
       // Invoke operation
@@ -6344,7 +6356,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .limit(Long.valueOf("10"))
         .resourceGroupId("testString")
         .zoneName("us-south-1")
-        .name("testString")
+        .name("my-name")
         .build();
 
       // Test getNext().
@@ -6728,7 +6740,7 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testGetBareMetalServerProfile() throws Exception {
     try {
       GetBareMetalServerProfileOptions getBareMetalServerProfileOptions = new GetBareMetalServerProfileOptions.Builder()
-        .name("testString")
+        .name("bx2-metal-192x768")
         .build();
 
       // Invoke operation
@@ -6753,7 +6765,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .start("testString")
         .limit(Long.valueOf("10"))
         .resourceGroupId("testString")
-        .name("testString")
+        .name("my-name")
         .vpcId("testString")
         .vpcCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b")
         .vpcName("my-vpc")
@@ -6780,7 +6792,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       ListBareMetalServersOptions options = new ListBareMetalServersOptions.Builder()
         .limit(Long.valueOf("10"))
         .resourceGroupId("testString")
-        .name("testString")
+        .name("my-name")
         .vpcId("testString")
         .vpcCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b")
         .vpcName("my-vpc")
@@ -6883,14 +6895,14 @@ public class VpcIT extends SdkIntegrationTestBase {
       BareMetalServerNetworkAttachmentPrototypeBareMetalServerNetworkAttachmentByPCIPrototype bareMetalServerNetworkAttachmentPrototypeModel = new BareMetalServerNetworkAttachmentPrototypeBareMetalServerNetworkAttachmentByPCIPrototype.Builder()
         .name("my-bare-metal-server-network-attachment")
         .virtualNetworkInterface(bareMetalServerNetworkAttachmentPrototypeVirtualNetworkInterfaceModel)
-        .allowedVlans(java.util.Arrays.asList(Long.valueOf("4")))
+        .allowedVlans(java.util.Arrays.asList(Long.valueOf("")))
         .interfaceType("pci")
         .build();
 
       BareMetalServerPrimaryNetworkAttachmentPrototypeBareMetalServerPrimaryNetworkAttachmentByPCIPrototype bareMetalServerPrimaryNetworkAttachmentPrototypeModel = new BareMetalServerPrimaryNetworkAttachmentPrototypeBareMetalServerPrimaryNetworkAttachmentByPCIPrototype.Builder()
         .name("my-bare-metal-server-network-attachment")
         .virtualNetworkInterface(bareMetalServerNetworkAttachmentPrototypeVirtualNetworkInterfaceModel)
-        .allowedVlans(java.util.Arrays.asList(Long.valueOf("4")))
+        .allowedVlans(java.util.Arrays.asList(Long.valueOf("")))
         .interfaceType("pci")
         .build();
 
@@ -7124,7 +7136,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       BareMetalServerNetworkAttachmentPrototypeBareMetalServerNetworkAttachmentByPCIPrototype bareMetalServerNetworkAttachmentPrototypeModel = new BareMetalServerNetworkAttachmentPrototypeBareMetalServerNetworkAttachmentByPCIPrototype.Builder()
         .name("my-bare-metal-server-network-attachment")
         .virtualNetworkInterface(bareMetalServerNetworkAttachmentPrototypeVirtualNetworkInterfaceModel)
-        .allowedVlans(java.util.Arrays.asList(Long.valueOf("4")))
+        .allowedVlans(java.util.Arrays.asList(Long.valueOf("")))
         .interfaceType("pci")
         .build();
 
@@ -7535,6 +7547,25 @@ public class VpcIT extends SdkIntegrationTestBase {
   }
 
   @Test(dependsOnMethods = { "testUpdateBareMetalServer" })
+  public void testUpdateFirmwareForBareMetalServer() throws Exception {
+    try {
+      UpdateFirmwareForBareMetalServerOptions updateFirmwareForBareMetalServerOptions = new UpdateFirmwareForBareMetalServerOptions.Builder()
+        .id("testString")
+        .autoStart(true)
+        .build();
+
+      // Invoke operation
+      Response<Void> response = service.updateFirmwareForBareMetalServer(updateFirmwareForBareMetalServerOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 204);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testUpdateFirmwareForBareMetalServer" })
   public void testGetBareMetalServerInitialization() throws Exception {
     try {
       GetBareMetalServerInitializationOptions getBareMetalServerInitializationOptions = new GetBareMetalServerInitializationOptions.Builder()
@@ -7557,6 +7588,39 @@ public class VpcIT extends SdkIntegrationTestBase {
   }
 
   @Test(dependsOnMethods = { "testGetBareMetalServerInitialization" })
+  public void testReplaceBareMetalServerInitialization() throws Exception {
+    try {
+      ImageIdentityById imageIdentityModel = new ImageIdentityById.Builder()
+        .id("r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8")
+        .build();
+
+      KeyIdentityById keyIdentityModel = new KeyIdentityById.Builder()
+        .id("a6b1a881-2ce8-41a3-80fc-36316a73f803")
+        .build();
+
+      ReplaceBareMetalServerInitializationOptions replaceBareMetalServerInitializationOptions = new ReplaceBareMetalServerInitializationOptions.Builder()
+        .id("testString")
+        .image(imageIdentityModel)
+        .keys(java.util.Arrays.asList(keyIdentityModel))
+        .userData("testString")
+        .build();
+
+      // Invoke operation
+      Response<BareMetalServerInitialization> response = service.replaceBareMetalServerInitialization(replaceBareMetalServerInitializationOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      BareMetalServerInitialization bareMetalServerInitializationResult = response.getResult();
+
+      assertNotNull(bareMetalServerInitializationResult);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testReplaceBareMetalServerInitialization" })
   public void testRestartBareMetalServer() throws Exception {
     try {
       RestartBareMetalServerOptions restartBareMetalServerOptions = new RestartBareMetalServerOptions.Builder()
@@ -7669,7 +7733,7 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testGetVolumeProfile() throws Exception {
     try {
       GetVolumeProfileOptions getVolumeProfileOptions = new GetVolumeProfileOptions.Builder()
-        .name("testString")
+        .name("10iops-tier")
         .build();
 
       // Invoke operation
@@ -7693,7 +7757,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       ListVolumesOptions listVolumesOptions = new ListVolumesOptions.Builder()
         .start("testString")
         .limit(Long.valueOf("10"))
-        .name("testString")
+        .name("my-name")
         .attachmentState("attached")
         .encryption("provider_managed")
         .operatingSystemFamily("Ubuntu Server")
@@ -7722,7 +7786,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     try {
       ListVolumesOptions options = new ListVolumesOptions.Builder()
         .limit(Long.valueOf("10"))
-        .name("testString")
+        .name("my-name")
         .attachmentState("attached")
         .encryption("provider_managed")
         .operatingSystemFamily("Ubuntu Server")
@@ -7759,7 +7823,7 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testCreateVolume() throws Exception {
     try {
       VolumeProfileIdentityByName volumeProfileIdentityModel = new VolumeProfileIdentityByName.Builder()
-        .name("5iops-tier")
+        .name("custom")
         .build();
 
       ResourceGroupIdentityById resourceGroupIdentityModel = new ResourceGroupIdentityById.Builder()
@@ -7870,7 +7934,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .start("testString")
         .limit(Long.valueOf("10"))
         .resourceGroupId("testString")
-        .name("testString")
+        .name("my-name")
         .sort("name")
         .backupPolicyPlanId("testString")
         .build();
@@ -7896,7 +7960,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       ListSnapshotConsistencyGroupsOptions options = new ListSnapshotConsistencyGroupsOptions.Builder()
         .limit(Long.valueOf("10"))
         .resourceGroupId("testString")
-        .name("testString")
+        .name("my-name")
         .sort("name")
         .backupPolicyPlanId("testString")
         .build();
@@ -8028,7 +8092,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .limit(Long.valueOf("10"))
         .tag("testString")
         .resourceGroupId("testString")
-        .name("testString")
+        .name("my-name")
         .sourceVolumeId("testString")
         .sourceVolumeCrn("crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5")
         .sourceImageId("testString")
@@ -8037,7 +8101,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .backupPolicyPlanId("testString")
         .copiesId("testString")
         .copiesName("my-snapshot-copy")
-        .copiesCrn("testString")
+        .copiesCrn("crn:[...]")
         .copiesRemoteRegionName("us-south")
         .sourceSnapshotId("testString")
         .sourceSnapshotRemoteRegionName("us-south")
@@ -8070,7 +8134,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .limit(Long.valueOf("10"))
         .tag("testString")
         .resourceGroupId("testString")
-        .name("testString")
+        .name("my-name")
         .sourceVolumeId("testString")
         .sourceVolumeCrn("crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5")
         .sourceImageId("testString")
@@ -8079,7 +8143,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .backupPolicyPlanId("testString")
         .copiesId("testString")
         .copiesName("my-snapshot-copy")
-        .copiesCrn("testString")
+        .copiesCrn("crn:[...]")
         .copiesRemoteRegionName("us-south")
         .sourceSnapshotId("testString")
         .sourceSnapshotRemoteRegionName("us-south")
@@ -8239,7 +8303,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     try {
       GetSnapshotCloneOptions getSnapshotCloneOptions = new GetSnapshotCloneOptions.Builder()
         .id("testString")
-        .zoneName("testString")
+        .zoneName("us-south-1")
         .build();
 
       // Invoke operation
@@ -8262,7 +8326,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     try {
       CreateSnapshotCloneOptions createSnapshotCloneOptions = new CreateSnapshotCloneOptions.Builder()
         .id("testString")
-        .zoneName("testString")
+        .zoneName("us-south-1")
         .build();
 
       // Invoke operation
@@ -8340,7 +8404,7 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testGetShareProfile() throws Exception {
     try {
       GetShareProfileOptions getShareProfileOptions = new GetShareProfileOptions.Builder()
-        .name("testString")
+        .name("dp2")
         .build();
 
       // Invoke operation
@@ -8365,7 +8429,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .start("testString")
         .limit(Long.valueOf("10"))
         .resourceGroupId("testString")
-        .name("testString")
+        .name("my-name")
         .sort("name")
         .replicationRole("none")
         .build();
@@ -8391,7 +8455,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       ListSharesOptions options = new ListSharesOptions.Builder()
         .limit(Long.valueOf("10"))
         .resourceGroupId("testString")
-        .name("testString")
+        .name("my-name")
         .sort("name")
         .replicationRole("none")
         .build();
@@ -8696,7 +8760,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     try {
       ListShareMountTargetsOptions listShareMountTargetsOptions = new ListShareMountTargetsOptions.Builder()
         .shareId("testString")
-        .name("testString")
+        .name("my-name")
         .start("testString")
         .limit(Long.valueOf("10"))
         .build();
@@ -8721,7 +8785,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     try {
       ListShareMountTargetsOptions options = new ListShareMountTargetsOptions.Builder()
         .shareId("testString")
-        .name("testString")
+        .name("my-name")
         .limit(Long.valueOf("10"))
         .build();
 
@@ -8896,7 +8960,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .start("testString")
         .limit(Long.valueOf("10"))
         .resourceGroupId("testString")
-        .name("testString")
+        .name("my-name")
         .tag("testString")
         .build();
 
@@ -8921,7 +8985,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       ListBackupPoliciesOptions options = new ListBackupPoliciesOptions.Builder()
         .limit(Long.valueOf("10"))
         .resourceGroupId("testString")
-        .name("testString")
+        .name("my-name")
         .tag("testString")
         .build();
 
@@ -9123,7 +9187,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     try {
       ListBackupPolicyPlansOptions listBackupPolicyPlansOptions = new ListBackupPolicyPlansOptions.Builder()
         .backupPolicyId("testString")
-        .name("testString")
+        .name("my-name")
         .build();
 
       // Invoke operation
@@ -9364,7 +9428,7 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testGetRegion() throws Exception {
     try {
       GetRegionOptions getRegionOptions = new GetRegionOptions.Builder()
-        .name("testString")
+        .name("us-south")
         .build();
 
       // Invoke operation
@@ -9386,7 +9450,7 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testListRegionZones() throws Exception {
     try {
       ListRegionZonesOptions listRegionZonesOptions = new ListRegionZonesOptions.Builder()
-        .regionName("testString")
+        .regionName("us-south")
         .build();
 
       // Invoke operation
@@ -9408,8 +9472,8 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testGetRegionZone() throws Exception {
     try {
       GetRegionZoneOptions getRegionZoneOptions = new GetRegionZoneOptions.Builder()
-        .regionName("testString")
-        .name("testString")
+        .regionName("us-south")
+        .name("us-south-1")
         .build();
 
       // Invoke operation
@@ -11217,7 +11281,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .limit(Long.valueOf("10"))
         .resourceGroupId("testString")
         .sort("name")
-        .mode("route")
+        .mode("policy")
         .build();
 
       // Invoke operation
@@ -11242,7 +11306,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .limit(Long.valueOf("10"))
         .resourceGroupId("testString")
         .sort("name")
-        .mode("route")
+        .mode("policy")
         .build();
 
       // Test getNext().
@@ -11453,6 +11517,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .ipsecPolicy(vpnGatewayConnectionIPsecPolicyPrototypeModel)
         .name("my-vpn-connection")
         .psk("lkj14b1oi0alcniejkso")
+        .distributeTraffic(false)
         .local(vpnGatewayConnectionStaticRouteModeLocalPrototypeModel)
         .peer(vpnGatewayConnectionStaticRouteModePeerPrototypeModel)
         .routingProtocol("none")
@@ -11525,6 +11590,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       VPNGatewayConnectionPatch vpnGatewayConnectionPatchModel = new VPNGatewayConnectionPatch.Builder()
         .adminStateUp(true)
         .deadPeerDetection(vpnGatewayConnectionDpdPatchModel)
+        .distributeTraffic(true)
         .establishMode("bidirectional")
         .ikePolicy(vpnGatewayConnectionIkePolicyPatchModel)
         .ipsecPolicy(vpnGatewayConnectionIPsecPolicyPatchModel)
@@ -11685,7 +11751,7 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testListVpnServers() throws Exception {
     try {
       ListVpnServersOptions listVpnServersOptions = new ListVpnServersOptions.Builder()
-        .name("testString")
+        .name("my-name")
         .start("testString")
         .limit(Long.valueOf("10"))
         .resourceGroupId("testString")
@@ -11711,7 +11777,7 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testListVpnServersWithPager() throws Exception {
     try {
       ListVpnServersOptions options = new ListVpnServersOptions.Builder()
-        .name("testString")
+        .name("my-name")
         .limit(Long.valueOf("10"))
         .resourceGroupId("testString")
         .sort("name")
@@ -11858,7 +11924,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .enableSplitTunneling(true)
         .name("my-vpn-server")
         .port(Long.valueOf("443"))
-        .protocol("udp")
+        .protocol("tcp")
         .subnets(java.util.Arrays.asList(subnetIdentityModel))
         .build();
       Map<String, Object> vpnServerPatchModelAsPatch = vpnServerPatchModel.asPatch();
@@ -12199,7 +12265,7 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testGetLoadBalancerProfile() throws Exception {
     try {
       GetLoadBalancerProfileOptions getLoadBalancerProfileOptions = new GetLoadBalancerProfileOptions.Builder()
-        .name("testString")
+        .name("network-fixed")
         .build();
 
       // Invoke operation
@@ -12380,6 +12446,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .isPublic(true)
         .subnets(java.util.Arrays.asList(subnetIdentityModel))
         .dns(loadBalancerDnsPrototypeModel)
+        .isPrivatePath(true)
         .listeners(java.util.Arrays.asList(loadBalancerListenerPrototypeLoadBalancerContextModel))
         .logging(loadBalancerLoggingPrototypeModel)
         .name("my-load-balancer")
@@ -13207,10 +13274,11 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testListEndpointGateways() throws Exception {
     try {
       ListEndpointGatewaysOptions listEndpointGatewaysOptions = new ListEndpointGatewaysOptions.Builder()
-        .name("testString")
+        .name("my-name")
         .start("testString")
         .limit(Long.valueOf("10"))
         .resourceGroupId("testString")
+        .lifecycleState(java.util.Arrays.asList("stable"))
         .vpcId("testString")
         .vpcCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b")
         .vpcName("my-vpc")
@@ -13236,9 +13304,10 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testListEndpointGatewaysWithPager() throws Exception {
     try {
       ListEndpointGatewaysOptions options = new ListEndpointGatewaysOptions.Builder()
-        .name("testString")
+        .name("my-name")
         .limit(Long.valueOf("10"))
         .resourceGroupId("testString")
+        .lifecycleState(java.util.Arrays.asList("stable"))
         .vpcId("testString")
         .vpcCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b")
         .vpcName("my-vpc")
@@ -13272,9 +13341,9 @@ public class VpcIT extends SdkIntegrationTestBase {
   @Test(dependsOnMethods = { "testListEndpointGateways" })
   public void testCreateEndpointGateway() throws Exception {
     try {
-      EndpointGatewayTargetPrototypeProviderInfrastructureServiceIdentityProviderInfrastructureServiceIdentityByName endpointGatewayTargetPrototypeModel = new EndpointGatewayTargetPrototypeProviderInfrastructureServiceIdentityProviderInfrastructureServiceIdentityByName.Builder()
-        .resourceType("provider_infrastructure_service")
+      EndpointGatewayTargetPrototypeEndpointGatewayTargetResourceTypeProviderInfrastructureServicePrototype endpointGatewayTargetPrototypeModel = new EndpointGatewayTargetPrototypeEndpointGatewayTargetResourceTypeProviderInfrastructureServicePrototype.Builder()
         .name("ibm-ntp-server")
+        .resourceType("provider_infrastructure_service")
         .build();
 
       VPCIdentityById vpcIdentityModel = new VPCIdentityById.Builder()
@@ -13480,7 +13549,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .start("testString")
         .limit(Long.valueOf("10"))
         .resourceGroupId("testString")
-        .name("testString")
+        .name("my-name")
         .vpcId("testString")
         .vpcCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b")
         .vpcName("my-vpc")
@@ -13509,7 +13578,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       ListFlowLogCollectorsOptions options = new ListFlowLogCollectorsOptions.Builder()
         .limit(Long.valueOf("10"))
         .resourceGroupId("testString")
-        .name("testString")
+        .name("my-name")
         .vpcId("testString")
         .vpcCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b")
         .vpcName("my-vpc")
@@ -13631,6 +13700,474 @@ public class VpcIT extends SdkIntegrationTestBase {
   }
 
   @Test(dependsOnMethods = { "testUpdateFlowLogCollector" })
+  public void testListPrivatePathServiceGateways() throws Exception {
+    try {
+      ListPrivatePathServiceGatewaysOptions listPrivatePathServiceGatewaysOptions = new ListPrivatePathServiceGatewaysOptions.Builder()
+        .start("testString")
+        .limit(Long.valueOf("10"))
+        .resourceGroupId("testString")
+        .build();
+
+      // Invoke operation
+      Response<PrivatePathServiceGatewayCollection> response = service.listPrivatePathServiceGateways(listPrivatePathServiceGatewaysOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      PrivatePathServiceGatewayCollection privatePathServiceGatewayCollectionResult = response.getResult();
+
+      assertNotNull(privatePathServiceGatewayCollectionResult);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testListPrivatePathServiceGateways" })
+  public void testListPrivatePathServiceGatewaysWithPager() throws Exception {
+    try {
+      ListPrivatePathServiceGatewaysOptions options = new ListPrivatePathServiceGatewaysOptions.Builder()
+        .limit(Long.valueOf("10"))
+        .resourceGroupId("testString")
+        .build();
+
+      // Test getNext().
+      List<PrivatePathServiceGateway> allResults = new ArrayList<>();
+      PrivatePathServiceGatewaysPager pager = new PrivatePathServiceGatewaysPager(service, options);
+      while (pager.hasNext()) {
+        List<PrivatePathServiceGateway> nextPage = pager.getNext();
+        assertNotNull(nextPage);
+        allResults.addAll(nextPage);
+      }
+      assertFalse(allResults.isEmpty());
+
+      // Test getAll();
+      pager = new PrivatePathServiceGatewaysPager(service, options);
+      List<PrivatePathServiceGateway> allItems = pager.getAll();
+      assertNotNull(allItems);
+      assertFalse(allItems.isEmpty());
+
+      assertEquals(allItems.size(), allResults.size());
+      System.out.println(String.format("Retrieved a total of %d item(s) with pagination.", allResults.size()));
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testListPrivatePathServiceGateways" })
+  public void testCreatePrivatePathServiceGateway() throws Exception {
+    try {
+      LoadBalancerIdentityById loadBalancerIdentityModel = new LoadBalancerIdentityById.Builder()
+        .id("dd754295-e9e0-4c9d-bf6c-58fbc59e5727")
+        .build();
+
+      ResourceGroupIdentityById resourceGroupIdentityModel = new ResourceGroupIdentityById.Builder()
+        .id("fee82deba12e4c0fb69c3b09d1f12345")
+        .build();
+
+      CreatePrivatePathServiceGatewayOptions createPrivatePathServiceGatewayOptions = new CreatePrivatePathServiceGatewayOptions.Builder()
+        .loadBalancer(loadBalancerIdentityModel)
+        .serviceEndpoints(java.util.Arrays.asList("*.example.com"))
+        .defaultAccessPolicy("deny")
+        .name("my-private-path-service-gateway")
+        .resourceGroup(resourceGroupIdentityModel)
+        .zonalAffinity(false)
+        .build();
+
+      // Invoke operation
+      Response<PrivatePathServiceGateway> response = service.createPrivatePathServiceGateway(createPrivatePathServiceGatewayOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 201);
+
+      PrivatePathServiceGateway privatePathServiceGatewayResult = response.getResult();
+
+      assertNotNull(privatePathServiceGatewayResult);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testCreatePrivatePathServiceGateway" })
+  public void testGetPrivatePathServiceGateway() throws Exception {
+    try {
+      GetPrivatePathServiceGatewayOptions getPrivatePathServiceGatewayOptions = new GetPrivatePathServiceGatewayOptions.Builder()
+        .id("testString")
+        .build();
+
+      // Invoke operation
+      Response<PrivatePathServiceGateway> response = service.getPrivatePathServiceGateway(getPrivatePathServiceGatewayOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      PrivatePathServiceGateway privatePathServiceGatewayResult = response.getResult();
+
+      assertNotNull(privatePathServiceGatewayResult);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testGetPrivatePathServiceGateway" })
+  public void testUpdatePrivatePathServiceGateway() throws Exception {
+    try {
+      LoadBalancerIdentityById loadBalancerIdentityModel = new LoadBalancerIdentityById.Builder()
+        .id("dd754295-e9e0-4c9d-bf6c-58fbc59e5727")
+        .build();
+
+      PrivatePathServiceGatewayPatch privatePathServiceGatewayPatchModel = new PrivatePathServiceGatewayPatch.Builder()
+        .defaultAccessPolicy("deny")
+        .loadBalancer(loadBalancerIdentityModel)
+        .name("my-private-path-service-gateway")
+        .zonalAffinity(true)
+        .build();
+      Map<String, Object> privatePathServiceGatewayPatchModelAsPatch = privatePathServiceGatewayPatchModel.asPatch();
+
+      UpdatePrivatePathServiceGatewayOptions updatePrivatePathServiceGatewayOptions = new UpdatePrivatePathServiceGatewayOptions.Builder()
+        .id("testString")
+        .privatePathServiceGatewayPatch(privatePathServiceGatewayPatchModelAsPatch)
+        .build();
+
+      // Invoke operation
+      Response<PrivatePathServiceGateway> response = service.updatePrivatePathServiceGateway(updatePrivatePathServiceGatewayOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      PrivatePathServiceGateway privatePathServiceGatewayResult = response.getResult();
+
+      assertNotNull(privatePathServiceGatewayResult);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testUpdatePrivatePathServiceGateway" })
+  public void testListPrivatePathServiceGatewayAccountPolicies() throws Exception {
+    try {
+      ListPrivatePathServiceGatewayAccountPoliciesOptions listPrivatePathServiceGatewayAccountPoliciesOptions = new ListPrivatePathServiceGatewayAccountPoliciesOptions.Builder()
+        .privatePathServiceGatewayId("testString")
+        .start("testString")
+        .limit(Long.valueOf("10"))
+        .accountId("bb1b52262f7441a586f49068482f1e60")
+        .build();
+
+      // Invoke operation
+      Response<PrivatePathServiceGatewayAccountPolicyCollection> response = service.listPrivatePathServiceGatewayAccountPolicies(listPrivatePathServiceGatewayAccountPoliciesOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      PrivatePathServiceGatewayAccountPolicyCollection privatePathServiceGatewayAccountPolicyCollectionResult = response.getResult();
+
+      assertNotNull(privatePathServiceGatewayAccountPolicyCollectionResult);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testListPrivatePathServiceGatewayAccountPolicies" })
+  public void testListPrivatePathServiceGatewayAccountPoliciesWithPager() throws Exception {
+    try {
+      ListPrivatePathServiceGatewayAccountPoliciesOptions options = new ListPrivatePathServiceGatewayAccountPoliciesOptions.Builder()
+        .privatePathServiceGatewayId("testString")
+        .limit(Long.valueOf("10"))
+        .accountId("bb1b52262f7441a586f49068482f1e60")
+        .build();
+
+      // Test getNext().
+      List<PrivatePathServiceGatewayAccountPolicy> allResults = new ArrayList<>();
+      PrivatePathServiceGatewayAccountPoliciesPager pager = new PrivatePathServiceGatewayAccountPoliciesPager(service, options);
+      while (pager.hasNext()) {
+        List<PrivatePathServiceGatewayAccountPolicy> nextPage = pager.getNext();
+        assertNotNull(nextPage);
+        allResults.addAll(nextPage);
+      }
+      assertFalse(allResults.isEmpty());
+
+      // Test getAll();
+      pager = new PrivatePathServiceGatewayAccountPoliciesPager(service, options);
+      List<PrivatePathServiceGatewayAccountPolicy> allItems = pager.getAll();
+      assertNotNull(allItems);
+      assertFalse(allItems.isEmpty());
+
+      assertEquals(allItems.size(), allResults.size());
+      System.out.println(String.format("Retrieved a total of %d item(s) with pagination.", allResults.size()));
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testListPrivatePathServiceGatewayAccountPolicies" })
+  public void testCreatePrivatePathServiceGatewayAccountPolicy() throws Exception {
+    try {
+      AccountIdentityById accountIdentityModel = new AccountIdentityById.Builder()
+        .id("bb1b52262f7441a586f49068482f1e60")
+        .build();
+
+      CreatePrivatePathServiceGatewayAccountPolicyOptions createPrivatePathServiceGatewayAccountPolicyOptions = new CreatePrivatePathServiceGatewayAccountPolicyOptions.Builder()
+        .privatePathServiceGatewayId("testString")
+        .accessPolicy("deny")
+        .account(accountIdentityModel)
+        .build();
+
+      // Invoke operation
+      Response<PrivatePathServiceGatewayAccountPolicy> response = service.createPrivatePathServiceGatewayAccountPolicy(createPrivatePathServiceGatewayAccountPolicyOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 201);
+
+      PrivatePathServiceGatewayAccountPolicy privatePathServiceGatewayAccountPolicyResult = response.getResult();
+
+      assertNotNull(privatePathServiceGatewayAccountPolicyResult);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testCreatePrivatePathServiceGatewayAccountPolicy" })
+  public void testGetPrivatePathServiceGatewayAccountPolicy() throws Exception {
+    try {
+      GetPrivatePathServiceGatewayAccountPolicyOptions getPrivatePathServiceGatewayAccountPolicyOptions = new GetPrivatePathServiceGatewayAccountPolicyOptions.Builder()
+        .privatePathServiceGatewayId("testString")
+        .id("testString")
+        .build();
+
+      // Invoke operation
+      Response<PrivatePathServiceGatewayAccountPolicy> response = service.getPrivatePathServiceGatewayAccountPolicy(getPrivatePathServiceGatewayAccountPolicyOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      PrivatePathServiceGatewayAccountPolicy privatePathServiceGatewayAccountPolicyResult = response.getResult();
+
+      assertNotNull(privatePathServiceGatewayAccountPolicyResult);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testGetPrivatePathServiceGatewayAccountPolicy" })
+  public void testUpdatePrivatePathServiceGatewayAccountPolicy() throws Exception {
+    try {
+      PrivatePathServiceGatewayAccountPolicyPatch privatePathServiceGatewayAccountPolicyPatchModel = new PrivatePathServiceGatewayAccountPolicyPatch.Builder()
+        .accessPolicy("deny")
+        .build();
+      Map<String, Object> privatePathServiceGatewayAccountPolicyPatchModelAsPatch = privatePathServiceGatewayAccountPolicyPatchModel.asPatch();
+
+      UpdatePrivatePathServiceGatewayAccountPolicyOptions updatePrivatePathServiceGatewayAccountPolicyOptions = new UpdatePrivatePathServiceGatewayAccountPolicyOptions.Builder()
+        .privatePathServiceGatewayId("testString")
+        .id("testString")
+        .privatePathServiceGatewayAccountPolicyPatch(privatePathServiceGatewayAccountPolicyPatchModelAsPatch)
+        .build();
+
+      // Invoke operation
+      Response<PrivatePathServiceGatewayAccountPolicy> response = service.updatePrivatePathServiceGatewayAccountPolicy(updatePrivatePathServiceGatewayAccountPolicyOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      PrivatePathServiceGatewayAccountPolicy privatePathServiceGatewayAccountPolicyResult = response.getResult();
+
+      assertNotNull(privatePathServiceGatewayAccountPolicyResult);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testUpdatePrivatePathServiceGatewayAccountPolicy" })
+  public void testListPrivatePathServiceGatewayEndpointGatewayBindings() throws Exception {
+    try {
+      ListPrivatePathServiceGatewayEndpointGatewayBindingsOptions listPrivatePathServiceGatewayEndpointGatewayBindingsOptions = new ListPrivatePathServiceGatewayEndpointGatewayBindingsOptions.Builder()
+        .privatePathServiceGatewayId("testString")
+        .start("testString")
+        .limit(Long.valueOf("10"))
+        .status("abandoned")
+        .accountId("bb1b52262f7441a586f49068482f1e60")
+        .build();
+
+      // Invoke operation
+      Response<PrivatePathServiceGatewayEndpointGatewayBindingCollection> response = service.listPrivatePathServiceGatewayEndpointGatewayBindings(listPrivatePathServiceGatewayEndpointGatewayBindingsOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      PrivatePathServiceGatewayEndpointGatewayBindingCollection privatePathServiceGatewayEndpointGatewayBindingCollectionResult = response.getResult();
+
+      assertNotNull(privatePathServiceGatewayEndpointGatewayBindingCollectionResult);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testListPrivatePathServiceGatewayEndpointGatewayBindings" })
+  public void testListPrivatePathServiceGatewayEndpointGatewayBindingsWithPager() throws Exception {
+    try {
+      ListPrivatePathServiceGatewayEndpointGatewayBindingsOptions options = new ListPrivatePathServiceGatewayEndpointGatewayBindingsOptions.Builder()
+        .privatePathServiceGatewayId("testString")
+        .limit(Long.valueOf("10"))
+        .status("abandoned")
+        .accountId("bb1b52262f7441a586f49068482f1e60")
+        .build();
+
+      // Test getNext().
+      List<PrivatePathServiceGatewayEndpointGatewayBinding> allResults = new ArrayList<>();
+      PrivatePathServiceGatewayEndpointGatewayBindingsPager pager = new PrivatePathServiceGatewayEndpointGatewayBindingsPager(service, options);
+      while (pager.hasNext()) {
+        List<PrivatePathServiceGatewayEndpointGatewayBinding> nextPage = pager.getNext();
+        assertNotNull(nextPage);
+        allResults.addAll(nextPage);
+      }
+      assertFalse(allResults.isEmpty());
+
+      // Test getAll();
+      pager = new PrivatePathServiceGatewayEndpointGatewayBindingsPager(service, options);
+      List<PrivatePathServiceGatewayEndpointGatewayBinding> allItems = pager.getAll();
+      assertNotNull(allItems);
+      assertFalse(allItems.isEmpty());
+
+      assertEquals(allItems.size(), allResults.size());
+      System.out.println(String.format("Retrieved a total of %d item(s) with pagination.", allResults.size()));
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testListPrivatePathServiceGatewayEndpointGatewayBindings" })
+  public void testGetPrivatePathServiceGatewayEndpointGatewayBinding() throws Exception {
+    try {
+      GetPrivatePathServiceGatewayEndpointGatewayBindingOptions getPrivatePathServiceGatewayEndpointGatewayBindingOptions = new GetPrivatePathServiceGatewayEndpointGatewayBindingOptions.Builder()
+        .privatePathServiceGatewayId("testString")
+        .id("testString")
+        .build();
+
+      // Invoke operation
+      Response<PrivatePathServiceGatewayEndpointGatewayBinding> response = service.getPrivatePathServiceGatewayEndpointGatewayBinding(getPrivatePathServiceGatewayEndpointGatewayBindingOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      PrivatePathServiceGatewayEndpointGatewayBinding privatePathServiceGatewayEndpointGatewayBindingResult = response.getResult();
+
+      assertNotNull(privatePathServiceGatewayEndpointGatewayBindingResult);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testGetPrivatePathServiceGatewayEndpointGatewayBinding" })
+  public void testDenyPrivatePathServiceGatewayEndpointGatewayBinding() throws Exception {
+    try {
+      DenyPrivatePathServiceGatewayEndpointGatewayBindingOptions denyPrivatePathServiceGatewayEndpointGatewayBindingOptions = new DenyPrivatePathServiceGatewayEndpointGatewayBindingOptions.Builder()
+        .privatePathServiceGatewayId("testString")
+        .id("testString")
+        .setAccountPolicy(true)
+        .build();
+
+      // Invoke operation
+      Response<Void> response = service.denyPrivatePathServiceGatewayEndpointGatewayBinding(denyPrivatePathServiceGatewayEndpointGatewayBindingOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 204);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testDenyPrivatePathServiceGatewayEndpointGatewayBinding" })
+  public void testPermitPrivatePathServiceGatewayEndpointGatewayBinding() throws Exception {
+    try {
+      PermitPrivatePathServiceGatewayEndpointGatewayBindingOptions permitPrivatePathServiceGatewayEndpointGatewayBindingOptions = new PermitPrivatePathServiceGatewayEndpointGatewayBindingOptions.Builder()
+        .privatePathServiceGatewayId("testString")
+        .id("testString")
+        .setAccountPolicy(true)
+        .build();
+
+      // Invoke operation
+      Response<Void> response = service.permitPrivatePathServiceGatewayEndpointGatewayBinding(permitPrivatePathServiceGatewayEndpointGatewayBindingOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 204);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testPermitPrivatePathServiceGatewayEndpointGatewayBinding" })
+  public void testPublishPrivatePathServiceGateway() throws Exception {
+    try {
+      PublishPrivatePathServiceGatewayOptions publishPrivatePathServiceGatewayOptions = new PublishPrivatePathServiceGatewayOptions.Builder()
+        .privatePathServiceGatewayId("testString")
+        .build();
+
+      // Invoke operation
+      Response<Void> response = service.publishPrivatePathServiceGateway(publishPrivatePathServiceGatewayOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 204);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testPublishPrivatePathServiceGateway" })
+  public void testRevokeAccountForPrivatePathServiceGateway() throws Exception {
+    try {
+      AccountIdentityById accountIdentityModel = new AccountIdentityById.Builder()
+        .id("bb1b52262f7441a586f49068482f1e60")
+        .build();
+
+      RevokeAccountForPrivatePathServiceGatewayOptions revokeAccountForPrivatePathServiceGatewayOptions = new RevokeAccountForPrivatePathServiceGatewayOptions.Builder()
+        .privatePathServiceGatewayId("testString")
+        .account(accountIdentityModel)
+        .build();
+
+      // Invoke operation
+      Response<Void> response = service.revokeAccountForPrivatePathServiceGateway(revokeAccountForPrivatePathServiceGatewayOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 204);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testRevokeAccountForPrivatePathServiceGateway" })
+  public void testUnpublishPrivatePathServiceGateway() throws Exception {
+    try {
+      UnpublishPrivatePathServiceGatewayOptions unpublishPrivatePathServiceGatewayOptions = new UnpublishPrivatePathServiceGatewayOptions.Builder()
+        .privatePathServiceGatewayId("testString")
+        .build();
+
+      // Invoke operation
+      Response<Void> response = service.unpublishPrivatePathServiceGateway(unpublishPrivatePathServiceGatewayOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 204);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testUnpublishPrivatePathServiceGateway" })
   public void testDeleteVpc() throws Exception {
     try {
       DeleteVpcOptions deleteVpcOptions = new DeleteVpcOptions.Builder()
@@ -14341,7 +14878,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     try {
       DeleteSnapshotCloneOptions deleteSnapshotCloneOptions = new DeleteSnapshotCloneOptions.Builder()
         .id("testString")
-        .zoneName("testString")
+        .zoneName("us-south-1")
         .build();
 
       // Invoke operation
@@ -14493,10 +15030,14 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       // Invoke operation
-      Response<Void> response = service.deleteVirtualNetworkInterfaces(deleteVirtualNetworkInterfacesOptions).execute();
+      Response<VirtualNetworkInterface> response = service.deleteVirtualNetworkInterfaces(deleteVirtualNetworkInterfacesOptions).execute();
       // Validate response
       assertNotNull(response);
       assertEquals(response.getStatusCode(), 202);
+
+      VirtualNetworkInterface virtualNetworkInterfaceResult = response.getResult();
+
+      assertNotNull(virtualNetworkInterfaceResult);
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -15004,6 +15545,43 @@ public class VpcIT extends SdkIntegrationTestBase {
 
       // Invoke operation
       Response<Void> response = service.deleteFlowLogCollector(deleteFlowLogCollectorOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 204);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testDeleteFlowLogCollector" })
+  public void testDeletePrivatePathServiceGateway() throws Exception {
+    try {
+      DeletePrivatePathServiceGatewayOptions deletePrivatePathServiceGatewayOptions = new DeletePrivatePathServiceGatewayOptions.Builder()
+        .id("testString")
+        .build();
+
+      // Invoke operation
+      Response<Void> response = service.deletePrivatePathServiceGateway(deletePrivatePathServiceGatewayOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 204);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testDeletePrivatePathServiceGateway" })
+  public void testDeletePrivatePathServiceGatewayAccountPolicy() throws Exception {
+    try {
+      DeletePrivatePathServiceGatewayAccountPolicyOptions deletePrivatePathServiceGatewayAccountPolicyOptions = new DeletePrivatePathServiceGatewayAccountPolicyOptions.Builder()
+        .privatePathServiceGatewayId("testString")
+        .id("testString")
+        .build();
+
+      // Invoke operation
+      Response<Void> response = service.deletePrivatePathServiceGatewayAccountPolicy(deletePrivatePathServiceGatewayAccountPolicyOptions).execute();
       // Validate response
       assertNotNull(response);
       assertEquals(response.getStatusCode(), 204);

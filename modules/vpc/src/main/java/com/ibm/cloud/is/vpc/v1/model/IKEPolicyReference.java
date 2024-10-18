@@ -29,7 +29,7 @@ public class IKEPolicyReference extends GenericModel {
     String IKE_POLICY = "ike_policy";
   }
 
-  protected IKEPolicyReferenceDeleted deleted;
+  protected Deleted deleted;
   protected String href;
   protected String id;
   protected String name;
@@ -46,14 +46,14 @@ public class IKEPolicyReference extends GenericModel {
    *
    * @return the deleted
    */
-  public IKEPolicyReferenceDeleted getDeleted() {
+  public Deleted getDeleted() {
     return deleted;
   }
 
   /**
    * Gets the href.
    *
-   * The IKE policy's canonical URL.
+   * The URL for this IKE policy.
    *
    * @return the href
    */

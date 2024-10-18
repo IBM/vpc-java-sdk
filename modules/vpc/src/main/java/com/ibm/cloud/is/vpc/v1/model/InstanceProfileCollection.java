@@ -29,7 +29,7 @@ public class InstanceProfileCollection extends GenericModel {
   /**
    * Gets the profiles.
    *
-   * Collection of virtual server instance profiles.
+   * A page of virtual server instance profiles.
    *
    * @return the profiles
    */

@@ -36,12 +36,12 @@ public class ListDedicatedHostGroupsOptionsTest {
       .limit(Long.valueOf("50"))
       .resourceGroupId("testString")
       .zoneName("us-south-1")
-      .name("testString")
+      .name("my-name")
       .build();
     assertEquals(listDedicatedHostGroupsOptionsModel.start(), "testString");
     assertEquals(listDedicatedHostGroupsOptionsModel.limit(), Long.valueOf("50"));
     assertEquals(listDedicatedHostGroupsOptionsModel.resourceGroupId(), "testString");
     assertEquals(listDedicatedHostGroupsOptionsModel.zoneName(), "us-south-1");
-    assertEquals(listDedicatedHostGroupsOptionsModel.name(), "testString");
+    assertEquals(listDedicatedHostGroupsOptionsModel.name(), "my-name");
   }
 }

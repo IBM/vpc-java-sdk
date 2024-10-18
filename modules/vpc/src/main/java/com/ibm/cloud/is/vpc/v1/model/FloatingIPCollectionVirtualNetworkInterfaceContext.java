@@ -47,7 +47,7 @@ public class FloatingIPCollectionVirtualNetworkInterfaceContext extends GenericM
   /**
    * Gets the floatingIps.
    *
-   * Collection of floating IPs bound to the virtual network interface specified by the identifier in the URL.
+   * A page of floating IPs bound to the virtual network interface specified by the identifier in the URL.
    *
    * @return the floatingIps
    */

@@ -24,7 +24,10 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class Key extends GenericModel {
 
   /**
-   * The crypto-system used by this key.
+   * The crypto-system for this key.
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface Type {
     /** ed25519. */
@@ -153,7 +156,10 @@ public class Key extends GenericModel {
   /**
    * Gets the type.
    *
-   * The crypto-system used by this key.
+   * The crypto-system for this key.
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the type
    */

@@ -31,7 +31,7 @@ public class ImageExportJobUnpaginatedCollection extends GenericModel {
   /**
    * Gets the exportJobs.
    *
-   * Collection of image export jobs.
+   * The export jobs for the image.
    *
    * @return the exportJobs
    */

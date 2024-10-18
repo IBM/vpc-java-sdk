@@ -13,13 +13,13 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.ibm.cloud.is.vpc.v1.model.Deleted;
 import com.ibm.cloud.is.vpc.v1.model.IPsecPolicy;
 import com.ibm.cloud.is.vpc.v1.model.IPsecPolicyCollection;
 import com.ibm.cloud.is.vpc.v1.model.IPsecPolicyCollectionFirst;
 import com.ibm.cloud.is.vpc.v1.model.IPsecPolicyCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionReference;
-import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import com.ibm.cloud.sdk.core.util.DateUtils;

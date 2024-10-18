@@ -71,6 +71,7 @@ public class DefaultRoutingTable extends GenericModel {
   protected List<String> advertiseRoutesTo;
   @SerializedName("created_at")
   protected Date createdAt;
+  protected String crn;
   protected String href;
   protected String id;
   @SerializedName("is_default")
@@ -78,6 +79,8 @@ public class DefaultRoutingTable extends GenericModel {
   @SerializedName("lifecycle_state")
   protected String lifecycleState;
   protected String name;
+  @SerializedName("resource_group")
+  protected ResourceGroupReference resourceGroup;
   @SerializedName("resource_type")
   protected String resourceType;
   @SerializedName("route_direct_link_ingress")
@@ -134,6 +137,17 @@ public class DefaultRoutingTable extends GenericModel {
   }
 
   /**
+   * Gets the crn.
+   *
+   * The CRN for this VPC routing table.
+   *
+   * @return the crn
+   */
+  public String getCrn() {
+    return crn;
+  }
+
+  /**
    * Gets the href.
    *
    * The URL for this routing table.
@@ -187,6 +201,17 @@ public class DefaultRoutingTable extends GenericModel {
    */
   public String getName() {
     return name;
+  }
+
+  /**
+   * Gets the resourceGroup.
+   *
+   * The resource group for this routing table.
+   *
+   * @return the resourceGroup
+   */
+  public ResourceGroupReference getResourceGroup() {
+    return resourceGroup;
   }
 
   /**

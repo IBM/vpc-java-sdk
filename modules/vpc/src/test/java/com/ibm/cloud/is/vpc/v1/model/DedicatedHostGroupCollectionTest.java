@@ -18,7 +18,7 @@ import com.ibm.cloud.is.vpc.v1.model.DedicatedHostGroupCollection;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostGroupCollectionFirst;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostGroupCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostReference;
-import com.ibm.cloud.is.vpc.v1.model.DedicatedHostReferenceDeleted;
+import com.ibm.cloud.is.vpc.v1.model.Deleted;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileReference;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.ZoneReference;

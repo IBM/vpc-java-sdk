@@ -51,10 +51,4 @@ public class DNSServerPrototypeTest {
     assertEquals(dnsServerPrototypeModelNew.address(), "192.168.3.4");
     assertEquals(dnsServerPrototypeModelNew.zoneAffinity().toString(), zoneIdentityModel.toString());
   }
-
-  @Test(expectedExceptions = IllegalArgumentException.class)
-  public void testDNSServerPrototypeError() throws Throwable {
-    new DNSServerPrototype.Builder().build();
-  }
-
 }

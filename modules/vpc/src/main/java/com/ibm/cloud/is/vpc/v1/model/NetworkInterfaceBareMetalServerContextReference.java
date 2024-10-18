@@ -29,7 +29,7 @@ public class NetworkInterfaceBareMetalServerContextReference extends GenericMode
     String NETWORK_INTERFACE = "network_interface";
   }
 
-  protected NetworkInterfaceBareMetalServerContextReferenceDeleted deleted;
+  protected Deleted deleted;
   protected String href;
   protected String id;
   protected String name;
@@ -49,7 +49,7 @@ public class NetworkInterfaceBareMetalServerContextReference extends GenericMode
    *
    * @return the deleted
    */
-  public NetworkInterfaceBareMetalServerContextReferenceDeleted getDeleted() {
+  public Deleted getDeleted() {
     return deleted;
   }
 

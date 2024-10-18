@@ -70,7 +70,7 @@ public class PlacementGroupCollection extends GenericModel {
   /**
    * Gets the placementGroups.
    *
-   * Collection of placement groups.
+   * A page of placement groups.
    *
    * @return the placementGroups
    */

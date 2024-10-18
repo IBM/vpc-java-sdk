@@ -69,7 +69,7 @@ public class LoadBalancerProfileCollection extends GenericModel {
   /**
    * Gets the profiles.
    *
-   * Collection of load balancer profiles.
+   * A page of load balancer profiles.
    *
    * @return the profiles
    */

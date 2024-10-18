@@ -25,6 +25,10 @@ import com.ibm.cloud.sdk.core.util.GsonSingleton;
  */
 public class InstanceGroupManagerActionPatch extends GenericModel {
 
+  @SerializedName("auto_delete")
+  protected Boolean autoDelete;
+  @SerializedName("auto_delete_timeout")
+  protected Long autoDeleteTimeout;
   @SerializedName("cron_spec")
   protected String cronSpec;
   protected InstanceGroupManagerActionGroupPatch group;
@@ -37,6 +41,8 @@ public class InstanceGroupManagerActionPatch extends GenericModel {
    * Builder.
    */
   public static class Builder {
+    private Boolean autoDelete;
+    private Long autoDeleteTimeout;
     private String cronSpec;
     private InstanceGroupManagerActionGroupPatch group;
     private InstanceGroupManagerActionManagerPatch manager;
@@ -49,6 +55,8 @@ public class InstanceGroupManagerActionPatch extends GenericModel {
      * @param instanceGroupManagerActionPatch the instance to initialize the Builder with
      */
     private Builder(InstanceGroupManagerActionPatch instanceGroupManagerActionPatch) {
+      this.autoDelete = instanceGroupManagerActionPatch.autoDelete;
+      this.autoDeleteTimeout = instanceGroupManagerActionPatch.autoDeleteTimeout;
       this.cronSpec = instanceGroupManagerActionPatch.cronSpec;
       this.group = instanceGroupManagerActionPatch.group;
       this.manager = instanceGroupManagerActionPatch.manager;
@@ -69,6 +77,28 @@ public class InstanceGroupManagerActionPatch extends GenericModel {
      */
     public InstanceGroupManagerActionPatch build() {
       return new InstanceGroupManagerActionPatch(this);
+    }
+
+    /**
+     * Set the autoDelete.
+     *
+     * @param autoDelete the autoDelete
+     * @return the InstanceGroupManagerActionPatch builder
+     */
+    public Builder autoDelete(Boolean autoDelete) {
+      this.autoDelete = autoDelete;
+      return this;
+    }
+
+    /**
+     * Set the autoDeleteTimeout.
+     *
+     * @param autoDeleteTimeout the autoDeleteTimeout
+     * @return the InstanceGroupManagerActionPatch builder
+     */
+    public Builder autoDeleteTimeout(long autoDeleteTimeout) {
+      this.autoDeleteTimeout = autoDeleteTimeout;
+      return this;
     }
 
     /**
@@ -130,6 +160,8 @@ public class InstanceGroupManagerActionPatch extends GenericModel {
   protected InstanceGroupManagerActionPatch() { }
 
   protected InstanceGroupManagerActionPatch(Builder builder) {
+    autoDelete = builder.autoDelete;
+    autoDeleteTimeout = builder.autoDeleteTimeout;
     cronSpec = builder.cronSpec;
     group = builder.group;
     manager = builder.manager;
@@ -144,6 +176,30 @@ public class InstanceGroupManagerActionPatch extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
+  }
+
+  /**
+   * Gets the autoDelete.
+   *
+   * Indicates whether this scheduled action will be automatically deleted after it has completed and
+   * `auto_delete_timeout` hours have passed.
+   *
+   * @return the autoDelete
+   */
+  public Boolean autoDelete() {
+    return autoDelete;
+  }
+
+  /**
+   * Gets the autoDeleteTimeout.
+   *
+   * If `auto_delete` is `true`, and this scheduled action has finished, the hours after which it will be automatically
+   * deleted. If the value is `0`, the action will be deleted once it has finished.
+   *
+   * @return the autoDeleteTimeout
+   */
+  public Long autoDeleteTimeout() {
+    return autoDeleteTimeout;
   }
 
   /**

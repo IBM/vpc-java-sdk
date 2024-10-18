@@ -47,7 +47,7 @@ public class NetworkACLRulePrototypeNetworkACLRuleProtocolICMPPrototype extends 
   }
 
   /**
-   * The protocol to enforce.
+   * The network protocol.
    */
   public interface Protocol {
     /** icmp. */

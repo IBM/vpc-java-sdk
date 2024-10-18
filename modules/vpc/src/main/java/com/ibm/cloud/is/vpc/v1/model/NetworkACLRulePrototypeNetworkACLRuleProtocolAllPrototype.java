@@ -47,7 +47,7 @@ public class NetworkACLRulePrototypeNetworkACLRuleProtocolAllPrototype extends N
   }
 
   /**
-   * The protocol to enforce.
+   * The network protocol.
    */
   public interface Protocol {
     /** all. */

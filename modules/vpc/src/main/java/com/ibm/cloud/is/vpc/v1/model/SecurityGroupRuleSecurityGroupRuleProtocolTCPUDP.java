@@ -22,7 +22,7 @@ package com.ibm.cloud.is.vpc.v1.model;
 public class SecurityGroupRuleSecurityGroupRuleProtocolTCPUDP extends SecurityGroupRule {
 
   /**
-   * The direction of traffic to enforce.
+   * The direction of traffic to allow.
    */
   public interface Direction {
     /** inbound. */
@@ -32,11 +32,11 @@ public class SecurityGroupRuleSecurityGroupRuleProtocolTCPUDP extends SecurityGr
   }
 
   /**
-   * The IP version to enforce. The format of `local.address`, `remote.address`,
+   * The IP version to allow. The format of `local.address`, `remote.address`,
    * `local.cidr_block` or `remote.cidr_block` must match this property, if they are used.
    *
-   * If `remote` references a security group, then this rule only applies to IP addresses
-   * (network interfaces) in that group matching this IP version.
+   * If `remote` references a security group, then this rule only applies to IP addresses in that group matching this IP
+   * version.
    */
   public interface IpVersion {
     /** ipv4. */
@@ -44,7 +44,7 @@ public class SecurityGroupRuleSecurityGroupRuleProtocolTCPUDP extends SecurityGr
   }
 
   /**
-   * The protocol to enforce.
+   * The network protocol.
    */
   public interface Protocol {
     /** tcp. */

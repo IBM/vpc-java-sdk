@@ -45,7 +45,7 @@ public class NetworkACLRulePatch extends GenericModel {
   }
 
   /**
-   * The protocol to enforce.
+   * The network protocol.
    */
   public interface Protocol {
     /** all. */
@@ -396,7 +396,7 @@ public class NetworkACLRulePatch extends GenericModel {
   /**
    * Gets the protocol.
    *
-   * The protocol to enforce.
+   * The network protocol.
    *
    * @return the protocol
    */

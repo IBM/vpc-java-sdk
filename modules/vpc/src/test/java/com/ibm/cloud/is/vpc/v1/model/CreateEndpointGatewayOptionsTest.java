@@ -15,7 +15,7 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.CreateEndpointGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.EndpointGatewayReservedIPReservedIPIdentityById;
-import com.ibm.cloud.is.vpc.v1.model.EndpointGatewayTargetPrototypeProviderCloudServiceIdentityProviderCloudServiceIdentityByCRN;
+import com.ibm.cloud.is.vpc.v1.model.EndpointGatewayTargetPrototypeEndpointGatewayTargetResourceTypePrivatePathServiceGatewayPrototype;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.VPCIdentityById;
@@ -36,12 +36,12 @@ public class CreateEndpointGatewayOptionsTest {
 
   @Test
   public void testCreateEndpointGatewayOptions() throws Throwable {
-    EndpointGatewayTargetPrototypeProviderCloudServiceIdentityProviderCloudServiceIdentityByCRN endpointGatewayTargetPrototypeModel = new EndpointGatewayTargetPrototypeProviderCloudServiceIdentityProviderCloudServiceIdentityByCRN.Builder()
-      .resourceType("provider_cloud_service")
-      .crn("crn:v1:bluemix:public:cloudant:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:3527280b-9327-4411-8020-591092e60353::")
+    EndpointGatewayTargetPrototypeEndpointGatewayTargetResourceTypePrivatePathServiceGatewayPrototype endpointGatewayTargetPrototypeModel = new EndpointGatewayTargetPrototypeEndpointGatewayTargetResourceTypePrivatePathServiceGatewayPrototype.Builder()
+      .crn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::private-path-service-gateway:r134-fb880975-db45-4459-8548-64e3995ac213")
+      .resourceType("private_path_service_gateway")
       .build();
-    assertEquals(endpointGatewayTargetPrototypeModel.resourceType(), "provider_cloud_service");
-    assertEquals(endpointGatewayTargetPrototypeModel.crn(), "crn:v1:bluemix:public:cloudant:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:3527280b-9327-4411-8020-591092e60353::");
+    assertEquals(endpointGatewayTargetPrototypeModel.crn(), "crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::private-path-service-gateway:r134-fb880975-db45-4459-8548-64e3995ac213");
+    assertEquals(endpointGatewayTargetPrototypeModel.resourceType(), "private_path_service_gateway");
 
     VPCIdentityById vpcIdentityModel = new VPCIdentityById.Builder()
       .id("r006-4727d842-f94f-4a2d-824a-9bc9b02c523b")

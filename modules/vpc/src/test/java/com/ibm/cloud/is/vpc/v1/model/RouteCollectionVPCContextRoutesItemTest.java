@@ -43,6 +43,7 @@ public class RouteCollectionVPCContextRoutesItemTest {
     assertNull(routeCollectionVpcContextRoutesItemModel.getLifecycleState());
     assertNull(routeCollectionVpcContextRoutesItemModel.getName());
     assertNull(routeCollectionVpcContextRoutesItemModel.getNextHop());
+    assertNull(routeCollectionVpcContextRoutesItemModel.getOrigin());
     assertNull(routeCollectionVpcContextRoutesItemModel.getPriority());
     assertNull(routeCollectionVpcContextRoutesItemModel.getZone());
   }

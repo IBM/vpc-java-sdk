@@ -26,6 +26,7 @@ public class CreateLoadBalancerOptions extends GenericModel {
   protected Boolean isPublic;
   protected List<SubnetIdentity> subnets;
   protected LoadBalancerDNSPrototype dns;
+  protected Boolean isPrivatePath;
   protected List<LoadBalancerListenerPrototypeLoadBalancerContext> listeners;
   protected LoadBalancerLoggingPrototype logging;
   protected String name;
@@ -42,6 +43,7 @@ public class CreateLoadBalancerOptions extends GenericModel {
     private Boolean isPublic;
     private List<SubnetIdentity> subnets;
     private LoadBalancerDNSPrototype dns;
+    private Boolean isPrivatePath;
     private List<LoadBalancerListenerPrototypeLoadBalancerContext> listeners;
     private LoadBalancerLoggingPrototype logging;
     private String name;
@@ -60,6 +62,7 @@ public class CreateLoadBalancerOptions extends GenericModel {
       this.isPublic = createLoadBalancerOptions.isPublic;
       this.subnets = createLoadBalancerOptions.subnets;
       this.dns = createLoadBalancerOptions.dns;
+      this.isPrivatePath = createLoadBalancerOptions.isPrivatePath;
       this.listeners = createLoadBalancerOptions.listeners;
       this.logging = createLoadBalancerOptions.logging;
       this.name = createLoadBalancerOptions.name;
@@ -195,6 +198,17 @@ public class CreateLoadBalancerOptions extends GenericModel {
     }
 
     /**
+     * Set the isPrivatePath.
+     *
+     * @param isPrivatePath the isPrivatePath
+     * @return the CreateLoadBalancerOptions builder
+     */
+    public Builder isPrivatePath(Boolean isPrivatePath) {
+      this.isPrivatePath = isPrivatePath;
+      return this;
+    }
+
+    /**
      * Set the listeners.
      * Existing listeners will be replaced.
      *
@@ -296,6 +310,7 @@ public class CreateLoadBalancerOptions extends GenericModel {
     isPublic = builder.isPublic;
     subnets = builder.subnets;
     dns = builder.dns;
+    isPrivatePath = builder.isPrivatePath;
     listeners = builder.listeners;
     logging = builder.logging;
     name = builder.name;
@@ -320,7 +335,9 @@ public class CreateLoadBalancerOptions extends GenericModel {
    *
    * Indicates whether this load balancer is public.
    *
-   * At present, if route mode is enabled, the load balancer must not be public.
+   * At present,
+   * - If route mode is enabled, the load balancer must be private.
+   * - If `is_private_path` is specified, it must be set to `false`.
    *
    * @return the isPublic
    */
@@ -331,8 +348,11 @@ public class CreateLoadBalancerOptions extends GenericModel {
   /**
    * Gets the subnets.
    *
-   * The subnets to provision this load balancer in. The subnets must be in the same VPC. The load balancer's
-   * availability will depend on the availability of the zones that the subnets reside in.
+   * The subnets to provision this load balancer in.  The subnets must be in the same VPC.
+   * - If 'availability' is specified as `subnet` in the profile, the load balancer's availability will depend on the
+   * availability of the zones that the subnets reside in.
+   * - If 'availability' is specified as `region` in the profile, the load balancer remains available as long as any
+   * zone in the region is available. Only members in healthy zones will be sent new connections.
    *
    * Load balancers in the `network` family allow only one subnet to be specified.
    *
@@ -351,10 +371,23 @@ public class CreateLoadBalancerOptions extends GenericModel {
    * to the public DNS zone `lb.appdomain.cloud`. Otherwise, those DNS `A` records will be
    * added to the specified `zone`.
    *
+   * Not supported by private path load balancers.
+   *
    * @return the dns
    */
   public LoadBalancerDNSPrototype dns() {
     return dns;
+  }
+
+  /**
+   * Gets the isPrivatePath.
+   *
+   * Indicates whether this is a private path load balancer.
+   *
+   * @return the isPrivatePath
+   */
+  public Boolean isPrivatePath() {
+    return isPrivatePath;
   }
 
   /**

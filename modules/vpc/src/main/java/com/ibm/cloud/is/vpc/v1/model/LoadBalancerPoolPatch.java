@@ -63,7 +63,7 @@ public class LoadBalancerPoolPatch extends GenericModel {
    * - `v2`: Enabled with version 2 (binary header format)
    * - `disabled`: Disabled
    *
-   * Supported by load balancers in the `application` family (otherwise always `disabled`).
+   * For load balancers in the `network` family, this property must be `disabled`.
    */
   public interface ProxyProtocol {
     /** disabled. */
@@ -270,7 +270,7 @@ public class LoadBalancerPoolPatch extends GenericModel {
    * - `v2`: Enabled with version 2 (binary header format)
    * - `disabled`: Disabled
    *
-   * Supported by load balancers in the `application` family (otherwise always `disabled`).
+   * For load balancers in the `network` family, this property must be `disabled`.
    *
    * @return the proxyProtocol
    */

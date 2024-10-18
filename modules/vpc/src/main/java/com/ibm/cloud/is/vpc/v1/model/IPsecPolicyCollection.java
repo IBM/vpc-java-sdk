@@ -47,7 +47,7 @@ public class IPsecPolicyCollection extends GenericModel {
   /**
    * Gets the ipsecPolicies.
    *
-   * Collection of IPsec policies.
+   * A page of IPsec policies.
    *
    * @return the ipsecPolicies
    */

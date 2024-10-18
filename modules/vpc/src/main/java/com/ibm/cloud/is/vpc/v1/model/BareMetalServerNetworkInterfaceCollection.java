@@ -58,7 +58,7 @@ public class BareMetalServerNetworkInterfaceCollection extends GenericModel {
   /**
    * Gets the networkInterfaces.
    *
-   * Collection of bare metal server network interfaces.
+   * The network interfaces for the bare metal server.
    *
    * @return the networkInterfaces
    */

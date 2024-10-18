@@ -58,7 +58,7 @@ public class NetworkACLCollection extends GenericModel {
   /**
    * Gets the networkAcls.
    *
-   * Collection of network ACLs.
+   * A page of network ACLs.
    *
    * @return the networkAcls
    */

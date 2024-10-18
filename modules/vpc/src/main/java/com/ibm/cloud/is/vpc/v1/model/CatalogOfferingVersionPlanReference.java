@@ -21,7 +21,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class CatalogOfferingVersionPlanReference extends GenericModel {
 
   protected String crn;
-  protected CatalogOfferingVersionPlanReferenceDeleted deleted;
+  protected Deleted deleted;
 
   protected CatalogOfferingVersionPlanReference() { }
 
@@ -45,7 +45,7 @@ public class CatalogOfferingVersionPlanReference extends GenericModel {
    *
    * @return the deleted
    */
-  public CatalogOfferingVersionPlanReferenceDeleted getDeleted() {
+  public Deleted getDeleted() {
     return deleted;
   }
 }

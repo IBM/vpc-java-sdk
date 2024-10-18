@@ -68,13 +68,13 @@ public class CreateVpcOptionsTest {
     assertEquals(resourceGroupIdentityModel.id(), "fee82deba12e4c0fb69c3b09d1f12345");
 
     CreateVpcOptions createVpcOptionsModel = new CreateVpcOptions.Builder()
-      .addressPrefixManagement("manual")
+      .addressPrefixManagement("auto")
       .classicAccess(false)
       .dns(vpcdnsPrototypeModel)
       .name("my-vpc")
       .resourceGroup(resourceGroupIdentityModel)
       .build();
-    assertEquals(createVpcOptionsModel.addressPrefixManagement(), "manual");
+    assertEquals(createVpcOptionsModel.addressPrefixManagement(), "auto");
     assertEquals(createVpcOptionsModel.classicAccess(), Boolean.valueOf(false));
     assertEquals(createVpcOptionsModel.dns(), vpcdnsPrototypeModel);
     assertEquals(createVpcOptionsModel.name(), "my-vpc");

@@ -30,7 +30,7 @@ public class VPCReference extends GenericModel {
   }
 
   protected String crn;
-  protected VPCReferenceDeleted deleted;
+  protected Deleted deleted;
   protected String href;
   protected String id;
   protected String name;
@@ -58,7 +58,7 @@ public class VPCReference extends GenericModel {
    *
    * @return the deleted
    */
-  public VPCReferenceDeleted getDeleted() {
+  public Deleted getDeleted() {
     return deleted;
   }
 

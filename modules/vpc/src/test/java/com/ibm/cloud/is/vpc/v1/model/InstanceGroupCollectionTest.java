@@ -13,22 +13,18 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.ibm.cloud.is.vpc.v1.model.Deleted;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroup;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupCollection;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupCollectionFirst;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupLifecycleReason;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerReference;
-import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateReference;
-import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolReference;
-import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.SubnetReference;
-import com.ibm.cloud.is.vpc.v1.model.SubnetReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.VPCReference;
-import com.ibm.cloud.is.vpc.v1.model.VPCReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import com.ibm.cloud.sdk.core.util.DateUtils;

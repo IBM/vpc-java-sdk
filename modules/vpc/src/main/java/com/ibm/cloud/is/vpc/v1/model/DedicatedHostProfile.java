@@ -44,9 +44,9 @@ public class DedicatedHostProfile extends GenericModel {
    *   and usable.
    * - `current`: This dedicated host profile is the latest revision.
    *
-   * Revisions are indicated by the generation of a dedicated host profile. Refer to the [profile naming conventions]
-   * (https://cloud.ibm.com/docs/vpc?topic=vpc-dh-profiles&amp;interface=ui#profiles-naming-rule) for information on how
-   * generations are defined within a dedicated host profile.
+   * Revisions are indicated by the generation of a dedicated host profile. Refer to the [profile naming
+   * conventions](https://cloud.ibm.com/docs/vpc?topic=vpc-dh-profiles&amp;interface=ui#profiles-naming-rule) for
+   * information on how generations are defined within a dedicated host profile.
    *
    * The enumerated values for this property may
    * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
@@ -93,7 +93,7 @@ public class DedicatedHostProfile extends GenericModel {
   /**
    * Gets the disks.
    *
-   * Collection of the dedicated host profile's disks.
+   * The disks for a dedicated host with this profile.
    *
    * @return the disks
    */
@@ -163,9 +163,9 @@ public class DedicatedHostProfile extends GenericModel {
    *   and usable.
    * - `current`: This dedicated host profile is the latest revision.
    *
-   * Revisions are indicated by the generation of a dedicated host profile. Refer to the [profile naming conventions]
-   * (https://cloud.ibm.com/docs/vpc?topic=vpc-dh-profiles&amp;interface=ui#profiles-naming-rule) for information on how
-   * generations are defined within a dedicated host profile.
+   * Revisions are indicated by the generation of a dedicated host profile. Refer to the [profile naming
+   * conventions](https://cloud.ibm.com/docs/vpc?topic=vpc-dh-profiles&amp;interface=ui#profiles-naming-rule) for
+   * information on how generations are defined within a dedicated host profile.
    *
    * The enumerated values for this property may
    * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.

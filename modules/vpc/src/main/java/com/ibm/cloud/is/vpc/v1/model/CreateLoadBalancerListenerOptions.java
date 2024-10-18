@@ -452,9 +452,9 @@ public class CreateLoadBalancerListenerOptions extends GenericModel {
    *
    * The inclusive upper bound of the range of ports used by this listener. Must not be less than `port_min`.
    *
-   * At present, only load balancers operating with route mode enabled, and public load balancers in the `network`
-   * family support different values for `port_min` and
-   * `port_max`. When route mode is enabled, the value `65535` must be specified.
+   * Only load balancers with route mode enabled, or network load balancers with
+   * `is_public` or `is_private_path` set to `true` support different values for `port_min` and `port_max`. When route
+   * mode is enabled, the value `65535` must be specified.
    *
    * The specified port range must not overlap with port ranges used by other listeners for this load balancer using the
    * same protocol.
@@ -470,9 +470,9 @@ public class CreateLoadBalancerListenerOptions extends GenericModel {
    *
    * The inclusive lower bound of the range of ports used by this listener. Must not be greater than `port_max`.
    *
-   * At present, only load balancers operating with route mode enabled, and public load balancers in the `network`
-   * family support different values for `port_min` and
-   * `port_max`. When route mode is enabled, the value `1` must be specified.
+   * Only load balancers with route mode enabled, or network load balancers with
+   * `is_public` or `is_private_path` set to `true` support different values for `port_min` and `port_max`. When route
+   * mode is enabled, the value `1` must be specified.
    *
    * The specified port range must not overlap with port ranges used by other listeners for this load balancer using the
    * same protocol.

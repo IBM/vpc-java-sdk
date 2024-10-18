@@ -30,7 +30,7 @@ public class PublicGatewayReference extends GenericModel {
   }
 
   protected String crn;
-  protected PublicGatewayReferenceDeleted deleted;
+  protected Deleted deleted;
   protected String href;
   protected String id;
   protected String name;
@@ -58,7 +58,7 @@ public class PublicGatewayReference extends GenericModel {
    *
    * @return the deleted
    */
-  public PublicGatewayReferenceDeleted getDeleted() {
+  public Deleted getDeleted() {
     return deleted;
   }
 

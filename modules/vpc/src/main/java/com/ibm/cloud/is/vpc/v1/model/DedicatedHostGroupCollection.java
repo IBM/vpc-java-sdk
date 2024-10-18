@@ -46,7 +46,7 @@ public class DedicatedHostGroupCollection extends GenericModel {
   /**
    * Gets the groups.
    *
-   * Collection of dedicated host groups.
+   * A page of dedicated host groups.
    *
    * @return the groups
    */

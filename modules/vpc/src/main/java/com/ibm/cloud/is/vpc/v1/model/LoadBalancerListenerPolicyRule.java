@@ -24,7 +24,10 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class LoadBalancerListenerPolicyRule extends GenericModel {
 
   /**
-   * The condition of the rule.
+   * The condition for the rule.
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface Condition {
     /** contains. */
@@ -55,9 +58,11 @@ public class LoadBalancerListenerPolicyRule extends GenericModel {
   }
 
   /**
-   * The type of the rule.
+   * The type of the rule. Body rules are applied to form-encoded request bodies using the
+   * `UTF-8` character set.
    *
-   * Body rules are applied to form-encoded request bodies using the `UTF-8` character set.
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface Type {
     /** body. */
@@ -88,7 +93,10 @@ public class LoadBalancerListenerPolicyRule extends GenericModel {
   /**
    * Gets the condition.
    *
-   * The condition of the rule.
+   * The condition for the rule.
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the condition
    */
@@ -110,14 +118,7 @@ public class LoadBalancerListenerPolicyRule extends GenericModel {
   /**
    * Gets the field.
    *
-   * The field. This is applicable to `header`, `query`, and `body` rule types.
-   *
-   * If the rule type is `header`, this property is required.
-   *
-   * If the rule type is `query`, this is optional. If specified and the rule condition is not
-   * `matches_regex`, the value must be percent-encoded.
-   *
-   * If the rule type is `body`, this is optional.
+   * The field to match for this rule. If `condition` is not `matches_regex`, the value is percent-encoded.
    *
    * @return the field
    */
@@ -128,7 +129,7 @@ public class LoadBalancerListenerPolicyRule extends GenericModel {
   /**
    * Gets the href.
    *
-   * The rule's canonical URL.
+   * The URL for this load balancer listener policy rule.
    *
    * @return the href
    */
@@ -139,7 +140,7 @@ public class LoadBalancerListenerPolicyRule extends GenericModel {
   /**
    * Gets the id.
    *
-   * The rule's unique identifier.
+   * The unique identifier for this load balancer listener policy rule.
    *
    * @return the id
    */
@@ -164,9 +165,11 @@ public class LoadBalancerListenerPolicyRule extends GenericModel {
   /**
    * Gets the type.
    *
-   * The type of the rule.
+   * The type of the rule. Body rules are applied to form-encoded request bodies using the
+   * `UTF-8` character set.
    *
-   * Body rules are applied to form-encoded request bodies using the `UTF-8` character set.
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the type
    */
@@ -177,7 +180,7 @@ public class LoadBalancerListenerPolicyRule extends GenericModel {
   /**
    * Gets the value.
    *
-   * Value to be matched for rule condition.
+   * The value to be matched for the rule condition.
    *
    * If the rule type is `query` and the rule condition is not `matches_regex`, the value must be percent-encoded.
    *

@@ -69,7 +69,7 @@ public class RouteCollectionVPCContext extends GenericModel {
   /**
    * Gets the routes.
    *
-   * Collection of routes.
+   * A page of routes in the routing table.
    *
    * @return the routes
    */

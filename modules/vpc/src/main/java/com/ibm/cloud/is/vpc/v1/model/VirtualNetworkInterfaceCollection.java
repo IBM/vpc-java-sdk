@@ -81,7 +81,7 @@ public class VirtualNetworkInterfaceCollection extends GenericModel {
   /**
    * Gets the virtualNetworkInterfaces.
    *
-   * Collection of virtual network interfaces.
+   * A page of virtual network interfaces.
    *
    * @return the virtualNetworkInterfaces
    */

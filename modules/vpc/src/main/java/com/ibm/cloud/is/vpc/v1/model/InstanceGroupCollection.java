@@ -47,7 +47,7 @@ public class InstanceGroupCollection extends GenericModel {
   /**
    * Gets the instanceGroups.
    *
-   * Collection of instance groups.
+   * A page of instance groups.
    *
    * @return the instanceGroups
    */

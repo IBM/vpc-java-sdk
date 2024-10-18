@@ -31,7 +31,7 @@ public class InstanceNetworkAttachmentCollection extends GenericModel {
   /**
    * Gets the networkAttachments.
    *
-   * Collection of instance network attachments.
+   * The network attachments for the instance.
    *
    * @return the networkAttachments
    */

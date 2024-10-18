@@ -36,7 +36,7 @@ public class ListSnapshotsOptionsTest {
       .limit(Long.valueOf("50"))
       .tag("testString")
       .resourceGroupId("testString")
-      .name("testString")
+      .name("my-name")
       .sourceVolumeId("testString")
       .sourceVolumeCrn("crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5")
       .sourceImageId("testString")
@@ -45,7 +45,7 @@ public class ListSnapshotsOptionsTest {
       .backupPolicyPlanId("testString")
       .copiesId("testString")
       .copiesName("my-snapshot-copy")
-      .copiesCrn("testString")
+      .copiesCrn("crn:[...]")
       .copiesRemoteRegionName("us-south")
       .sourceSnapshotId("testString")
       .sourceSnapshotRemoteRegionName("us-south")
@@ -59,7 +59,7 @@ public class ListSnapshotsOptionsTest {
     assertEquals(listSnapshotsOptionsModel.limit(), Long.valueOf("50"));
     assertEquals(listSnapshotsOptionsModel.tag(), "testString");
     assertEquals(listSnapshotsOptionsModel.resourceGroupId(), "testString");
-    assertEquals(listSnapshotsOptionsModel.name(), "testString");
+    assertEquals(listSnapshotsOptionsModel.name(), "my-name");
     assertEquals(listSnapshotsOptionsModel.sourceVolumeId(), "testString");
     assertEquals(listSnapshotsOptionsModel.sourceVolumeCrn(), "crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5");
     assertEquals(listSnapshotsOptionsModel.sourceImageId(), "testString");
@@ -68,7 +68,7 @@ public class ListSnapshotsOptionsTest {
     assertEquals(listSnapshotsOptionsModel.backupPolicyPlanId(), "testString");
     assertEquals(listSnapshotsOptionsModel.copiesId(), "testString");
     assertEquals(listSnapshotsOptionsModel.copiesName(), "my-snapshot-copy");
-    assertEquals(listSnapshotsOptionsModel.copiesCrn(), "testString");
+    assertEquals(listSnapshotsOptionsModel.copiesCrn(), "crn:[...]");
     assertEquals(listSnapshotsOptionsModel.copiesRemoteRegionName(), "us-south");
     assertEquals(listSnapshotsOptionsModel.sourceSnapshotId(), "testString");
     assertEquals(listSnapshotsOptionsModel.sourceSnapshotRemoteRegionName(), "us-south");

@@ -14,11 +14,10 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkAttachmentReference;
-import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkAttachmentReferenceDeleted;
+import com.ibm.cloud.is.vpc.v1.model.Deleted;
 import com.ibm.cloud.is.vpc.v1.model.ReservedIPReference;
-import com.ibm.cloud.is.vpc.v1.model.ReservedIPReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.SubnetReference;
-import com.ibm.cloud.is.vpc.v1.model.SubnetReferenceDeleted;
+import com.ibm.cloud.is.vpc.v1.model.VirtualNetworkInterfaceReferenceAttachmentContext;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -44,5 +43,6 @@ public class BareMetalServerNetworkAttachmentReferenceTest {
     assertNull(bareMetalServerNetworkAttachmentReferenceModel.getPrimaryIp());
     assertNull(bareMetalServerNetworkAttachmentReferenceModel.getResourceType());
     assertNull(bareMetalServerNetworkAttachmentReferenceModel.getSubnet());
+    assertNull(bareMetalServerNetworkAttachmentReferenceModel.getVirtualNetworkInterface());
   }
 }

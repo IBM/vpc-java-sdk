@@ -46,7 +46,7 @@ public class BackupPolicyJobCollection extends GenericModel {
   /**
    * Gets the jobs.
    *
-   * Collection of backup policy jobs.
+   * A page of jobs for the backup policy.
    *
    * @return the jobs
    */

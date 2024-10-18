@@ -29,7 +29,7 @@ public class IPsecPolicyReference extends GenericModel {
     String IPSEC_POLICY = "ipsec_policy";
   }
 
-  protected IPsecPolicyReferenceDeleted deleted;
+  protected Deleted deleted;
   protected String href;
   protected String id;
   protected String name;
@@ -46,14 +46,14 @@ public class IPsecPolicyReference extends GenericModel {
    *
    * @return the deleted
    */
-  public IPsecPolicyReferenceDeleted getDeleted() {
+  public Deleted getDeleted() {
     return deleted;
   }
 
   /**
    * Gets the href.
    *
-   * The IPsec policy's canonical URL.
+   * The URL for this IPsec policy.
    *
    * @return the href
    */

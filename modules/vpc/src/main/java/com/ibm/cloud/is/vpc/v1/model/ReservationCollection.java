@@ -69,7 +69,7 @@ public class ReservationCollection extends GenericModel {
   /**
    * Gets the reservations.
    *
-   * Collection of reservations.
+   * A page of reservations.
    *
    * @return the reservations
    */

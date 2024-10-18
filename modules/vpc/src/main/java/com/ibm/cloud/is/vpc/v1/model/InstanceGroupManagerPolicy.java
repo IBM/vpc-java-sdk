@@ -27,7 +27,10 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class InstanceGroupManagerPolicy extends GenericModel {
 
   /**
-   * The type of metric to be evaluated.
+   * The type of metric to be evaluated
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface MetricType {
     /** cpu. */
@@ -41,7 +44,10 @@ public class InstanceGroupManagerPolicy extends GenericModel {
   }
 
   /**
-   * The type of policy for the instance group.
+   * The type of policy for the instance group
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface PolicyType {
     /** target. */
@@ -123,7 +129,10 @@ public class InstanceGroupManagerPolicy extends GenericModel {
   /**
    * Gets the metricType.
    *
-   * The type of metric to be evaluated.
+   * The type of metric to be evaluated
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the metricType
    */
@@ -145,7 +154,10 @@ public class InstanceGroupManagerPolicy extends GenericModel {
   /**
    * Gets the policyType.
    *
-   * The type of policy for the instance group.
+   * The type of policy for the instance group
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the policyType
    */

@@ -36,7 +36,7 @@ public class EndpointGatewayCollection extends GenericModel {
   /**
    * Gets the endpointGateways.
    *
-   * Collection of endpoint gateways.
+   * A page of endpoint gateways.
    *
    * @return the endpointGateways
    */

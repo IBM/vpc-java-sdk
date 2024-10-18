@@ -32,13 +32,13 @@ public class ListVpnServersOptionsTest {
   @Test
   public void testListVpnServersOptions() throws Throwable {
     ListVpnServersOptions listVpnServersOptionsModel = new ListVpnServersOptions.Builder()
-      .name("testString")
+      .name("my-name")
       .start("testString")
       .limit(Long.valueOf("50"))
       .resourceGroupId("testString")
       .sort("name")
       .build();
-    assertEquals(listVpnServersOptionsModel.name(), "testString");
+    assertEquals(listVpnServersOptionsModel.name(), "my-name");
     assertEquals(listVpnServersOptionsModel.start(), "testString");
     assertEquals(listVpnServersOptionsModel.limit(), Long.valueOf("50"));
     assertEquals(listVpnServersOptionsModel.resourceGroupId(), "testString");

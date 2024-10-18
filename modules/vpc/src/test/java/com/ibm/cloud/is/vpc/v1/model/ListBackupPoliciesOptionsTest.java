@@ -35,13 +35,13 @@ public class ListBackupPoliciesOptionsTest {
       .start("testString")
       .limit(Long.valueOf("50"))
       .resourceGroupId("testString")
-      .name("testString")
+      .name("my-name")
       .tag("testString")
       .build();
     assertEquals(listBackupPoliciesOptionsModel.start(), "testString");
     assertEquals(listBackupPoliciesOptionsModel.limit(), Long.valueOf("50"));
     assertEquals(listBackupPoliciesOptionsModel.resourceGroupId(), "testString");
-    assertEquals(listBackupPoliciesOptionsModel.name(), "testString");
+    assertEquals(listBackupPoliciesOptionsModel.name(), "my-name");
     assertEquals(listBackupPoliciesOptionsModel.tag(), "testString");
   }
 }

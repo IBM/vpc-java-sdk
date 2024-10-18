@@ -30,7 +30,7 @@ public class ReservationReference extends GenericModel {
   }
 
   protected String crn;
-  protected ReservationReferenceDeleted deleted;
+  protected Deleted deleted;
   protected String href;
   protected String id;
   protected String name;
@@ -58,7 +58,7 @@ public class ReservationReference extends GenericModel {
    *
    * @return the deleted
    */
-  public ReservationReferenceDeleted getDeleted() {
+  public Deleted getDeleted() {
     return deleted;
   }
 

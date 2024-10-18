@@ -18,7 +18,7 @@ import java.util.List;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * Collection of rules in a security group.
+ * SecurityGroupRuleCollection.
  */
 public class SecurityGroupRuleCollection extends GenericModel {
 
@@ -29,7 +29,7 @@ public class SecurityGroupRuleCollection extends GenericModel {
   /**
    * Gets the rules.
    *
-   * Array of rules.
+   * The rules for the security group.
    *
    * @return the rules
    */

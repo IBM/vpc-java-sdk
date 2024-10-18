@@ -35,7 +35,7 @@ public class ListImagesOptionsTest {
       .start("testString")
       .limit(Long.valueOf("50"))
       .resourceGroupId("testString")
-      .name("testString")
+      .name("my-name")
       .status(java.util.Arrays.asList("available"))
       .visibility("private")
       .userDataFormat(java.util.Arrays.asList("cloud_init"))
@@ -43,7 +43,7 @@ public class ListImagesOptionsTest {
     assertEquals(listImagesOptionsModel.start(), "testString");
     assertEquals(listImagesOptionsModel.limit(), Long.valueOf("50"));
     assertEquals(listImagesOptionsModel.resourceGroupId(), "testString");
-    assertEquals(listImagesOptionsModel.name(), "testString");
+    assertEquals(listImagesOptionsModel.name(), "my-name");
     assertEquals(listImagesOptionsModel.status(), java.util.Arrays.asList("available"));
     assertEquals(listImagesOptionsModel.visibility(), "private");
     assertEquals(listImagesOptionsModel.userDataFormat(), java.util.Arrays.asList("cloud_init"));

@@ -64,7 +64,7 @@ public class NetworkACLRulePrototypeNetworkACLContext extends GenericModel {
   }
 
   /**
-   * The protocol to enforce.
+   * The network protocol.
    */
   public interface Protocol {
     /** all. */
@@ -157,7 +157,7 @@ public class NetworkACLRulePrototypeNetworkACLContext extends GenericModel {
   /**
    * Gets the protocol.
    *
-   * The protocol to enforce.
+   * The network protocol.
    *
    * @return the protocol
    */

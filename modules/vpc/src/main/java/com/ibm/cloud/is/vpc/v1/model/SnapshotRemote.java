@@ -21,9 +21,22 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class SnapshotRemote extends GenericModel {
 
+  protected AccountReference account;
   protected RegionReference region;
 
   protected SnapshotRemote() { }
+
+  /**
+   * Gets the account.
+   *
+   * If present, this property indicates that the referenced resource is remote to this
+   * account, and identifies the owning account.
+   *
+   * @return the account
+   */
+  public AccountReference getAccount() {
+    return account;
+  }
 
   /**
    * Gets the region.

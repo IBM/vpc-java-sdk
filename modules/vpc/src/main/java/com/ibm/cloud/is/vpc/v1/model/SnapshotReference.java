@@ -30,7 +30,7 @@ public class SnapshotReference extends GenericModel {
   }
 
   protected String crn;
-  protected SnapshotReferenceDeleted deleted;
+  protected Deleted deleted;
   protected String href;
   protected String id;
   protected String name;
@@ -59,7 +59,7 @@ public class SnapshotReference extends GenericModel {
    *
    * @return the deleted
    */
-  public SnapshotReferenceDeleted getDeleted() {
+  public Deleted getDeleted() {
     return deleted;
   }
 

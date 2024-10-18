@@ -36,7 +36,7 @@ public class DedicatedHostCollection extends GenericModel {
   /**
    * Gets the dedicatedHosts.
    *
-   * Collection of dedicated hosts.
+   * A page of dedicated hosts.
    *
    * @return the dedicatedHosts
    */

@@ -70,7 +70,7 @@ public class PublicGatewayCollection extends GenericModel {
   /**
    * Gets the publicGateways.
    *
-   * Collection of public gateways.
+   * A page of public gateways.
    *
    * @return the publicGateways
    */

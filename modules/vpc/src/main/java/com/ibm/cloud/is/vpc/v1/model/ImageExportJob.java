@@ -35,7 +35,7 @@ public class ImageExportJob extends GenericModel {
   }
 
   /**
-   * The type of resource referenced.
+   * The resource type.
    */
   public interface ResourceType {
     /** image_export_job. */
@@ -51,6 +51,9 @@ public class ImageExportJob extends GenericModel {
    * - `succeeded`: Export job was completed successfully
    *
    * The exported image object is automatically deleted for `failed` jobs.
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface Status {
     /** deleting. */
@@ -179,7 +182,7 @@ public class ImageExportJob extends GenericModel {
   /**
    * Gets the resourceType.
    *
-   * The type of resource referenced.
+   * The resource type.
    *
    * @return the resourceType
    */
@@ -211,6 +214,9 @@ public class ImageExportJob extends GenericModel {
    * - `succeeded`: Export job was completed successfully
    *
    * The exported image object is automatically deleted for `failed` jobs.
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the status
    */

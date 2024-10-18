@@ -12,7 +12,7 @@
  */
 
 /*
- * IBM OpenAPI SDK Code Generator Version: 3.91.0-d9755c53-20240605-153412
+ * IBM OpenAPI SDK Code Generator Version: 3.92.2-3f2a0533-20240712-183330
  */
 
 package com.ibm.cloud.is.vpc.v1;
@@ -85,6 +85,8 @@ import com.ibm.cloud.is.vpc.v1.model.CreateLoadBalancerPoolOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateNetworkAclOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateNetworkAclRuleOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreatePlacementGroupOptions;
+import com.ibm.cloud.is.vpc.v1.model.CreatePrivatePathServiceGatewayAccountPolicyOptions;
+import com.ibm.cloud.is.vpc.v1.model.CreatePrivatePathServiceGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreatePublicGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateReservationOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateSecurityGroupOptions;
@@ -156,6 +158,8 @@ import com.ibm.cloud.is.vpc.v1.model.DeleteLoadBalancerPoolOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteNetworkAclOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteNetworkAclRuleOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeletePlacementGroupOptions;
+import com.ibm.cloud.is.vpc.v1.model.DeletePrivatePathServiceGatewayAccountPolicyOptions;
+import com.ibm.cloud.is.vpc.v1.model.DeletePrivatePathServiceGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeletePublicGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteReservationOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteSecurityGroupOptions;
@@ -184,6 +188,7 @@ import com.ibm.cloud.is.vpc.v1.model.DeleteVpnGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteVpnServerClientOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteVpnServerOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteVpnServerRouteOptions;
+import com.ibm.cloud.is.vpc.v1.model.DenyPrivatePathServiceGatewayEndpointGatewayBindingOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeprecateImageOptions;
 import com.ibm.cloud.is.vpc.v1.model.DisconnectVpnClientOptions;
 import com.ibm.cloud.is.vpc.v1.model.EndpointGateway;
@@ -248,6 +253,9 @@ import com.ibm.cloud.is.vpc.v1.model.GetNetworkAclRuleOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetNetworkInterfaceFloatingIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetOperatingSystemOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetPlacementGroupOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetPrivatePathServiceGatewayAccountPolicyOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetPrivatePathServiceGatewayEndpointGatewayBindingOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetPrivatePathServiceGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetPublicGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetRegionOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetRegionZoneOptions;
@@ -373,6 +381,9 @@ import com.ibm.cloud.is.vpc.v1.model.ListNetworkAclsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListNetworkInterfaceFloatingIpsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListOperatingSystemsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListPlacementGroupsOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListPrivatePathServiceGatewayAccountPoliciesOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListPrivatePathServiceGatewayEndpointGatewayBindingsOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListPrivatePathServiceGatewaysOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListPublicGatewaysOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListRegionZonesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListRegionsOptions;
@@ -430,10 +441,18 @@ import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceUnpaginatedCollection;
 import com.ibm.cloud.is.vpc.v1.model.ObsoleteImageOptions;
 import com.ibm.cloud.is.vpc.v1.model.OperatingSystem;
 import com.ibm.cloud.is.vpc.v1.model.OperatingSystemCollection;
+import com.ibm.cloud.is.vpc.v1.model.PermitPrivatePathServiceGatewayEndpointGatewayBindingOptions;
 import com.ibm.cloud.is.vpc.v1.model.PlacementGroup;
 import com.ibm.cloud.is.vpc.v1.model.PlacementGroupCollection;
+import com.ibm.cloud.is.vpc.v1.model.PrivatePathServiceGateway;
+import com.ibm.cloud.is.vpc.v1.model.PrivatePathServiceGatewayAccountPolicy;
+import com.ibm.cloud.is.vpc.v1.model.PrivatePathServiceGatewayAccountPolicyCollection;
+import com.ibm.cloud.is.vpc.v1.model.PrivatePathServiceGatewayCollection;
+import com.ibm.cloud.is.vpc.v1.model.PrivatePathServiceGatewayEndpointGatewayBinding;
+import com.ibm.cloud.is.vpc.v1.model.PrivatePathServiceGatewayEndpointGatewayBindingCollection;
 import com.ibm.cloud.is.vpc.v1.model.PublicGateway;
 import com.ibm.cloud.is.vpc.v1.model.PublicGatewayCollection;
+import com.ibm.cloud.is.vpc.v1.model.PublishPrivatePathServiceGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.Region;
 import com.ibm.cloud.is.vpc.v1.model.RegionCollection;
 import com.ibm.cloud.is.vpc.v1.model.RemoveBareMetalServerNetworkInterfaceFloatingIpOptions;
@@ -443,6 +462,7 @@ import com.ibm.cloud.is.vpc.v1.model.RemoveNetworkInterfaceFloatingIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.RemoveVirtualNetworkInterfaceIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.RemoveVpnGatewayConnectionsLocalCidrOptions;
 import com.ibm.cloud.is.vpc.v1.model.RemoveVpnGatewayConnectionsPeerCidrOptions;
+import com.ibm.cloud.is.vpc.v1.model.ReplaceBareMetalServerInitializationOptions;
 import com.ibm.cloud.is.vpc.v1.model.ReplaceLoadBalancerPoolMembersOptions;
 import com.ibm.cloud.is.vpc.v1.model.ReplaceSubnetNetworkAclOptions;
 import com.ibm.cloud.is.vpc.v1.model.ReplaceSubnetRoutingTableOptions;
@@ -456,6 +476,7 @@ import com.ibm.cloud.is.vpc.v1.model.ReservedIPCollectionInstanceNetworkInterfac
 import com.ibm.cloud.is.vpc.v1.model.ReservedIPCollectionVirtualNetworkInterfaceContext;
 import com.ibm.cloud.is.vpc.v1.model.ReservedIPReference;
 import com.ibm.cloud.is.vpc.v1.model.RestartBareMetalServerOptions;
+import com.ibm.cloud.is.vpc.v1.model.RevokeAccountForPrivatePathServiceGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.Route;
 import com.ibm.cloud.is.vpc.v1.model.RouteCollection;
 import com.ibm.cloud.is.vpc.v1.model.RouteCollectionVPCContext;
@@ -487,6 +508,7 @@ import com.ibm.cloud.is.vpc.v1.model.StartBareMetalServerOptions;
 import com.ibm.cloud.is.vpc.v1.model.StopBareMetalServerOptions;
 import com.ibm.cloud.is.vpc.v1.model.Subnet;
 import com.ibm.cloud.is.vpc.v1.model.SubnetCollection;
+import com.ibm.cloud.is.vpc.v1.model.UnpublishPrivatePathServiceGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.UnsetSubnetPublicGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateBackupPolicyOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateBackupPolicyPlanOptions;
@@ -498,6 +520,7 @@ import com.ibm.cloud.is.vpc.v1.model.UpdateDedicatedHostDiskOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateDedicatedHostGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateDedicatedHostOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateEndpointGatewayOptions;
+import com.ibm.cloud.is.vpc.v1.model.UpdateFirmwareForBareMetalServerOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateFloatingIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateFlowLogCollectorOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateIkePolicyOptions;
@@ -525,6 +548,8 @@ import com.ibm.cloud.is.vpc.v1.model.UpdateLoadBalancerPoolOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateNetworkAclOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateNetworkAclRuleOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdatePlacementGroupOptions;
+import com.ibm.cloud.is.vpc.v1.model.UpdatePrivatePathServiceGatewayAccountPolicyOptions;
+import com.ibm.cloud.is.vpc.v1.model.UpdatePrivatePathServiceGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdatePublicGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateReservationOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateSecurityGroupOptions;
@@ -589,7 +614,7 @@ import java.util.logging.Logger;
  * The IBM Cloud Virtual Private Cloud (VPC) API can be used to programmatically provision and manage virtual server
  * instances, along with subnets, volumes, load balancers, and more.
  *
- * API Version: 2024-07-04
+ * API Version: 2024-10-17
  */
 public class Vpc extends BaseService {
   private static final Logger LOGGER = Logger.getLogger(Vpc.class.getName());
@@ -606,7 +631,7 @@ public class Vpc extends BaseService {
 
   private Long generation = Long.valueOf("2");
 
-  private String version = "2024-07-02";
+  private String version = "2024-10-15";
 
  /**
    * Class method which constructs an instance of the `Vpc` client.
@@ -670,7 +695,7 @@ public class Vpc extends BaseService {
    * Gets the version.
    *
    * The API version, in format `YYYY-MM-DD`. For the API behavior documented here, specify any date between
-   * `2024-04-30` and `2024-07-03`.
+   * `2024-04-30` and `2024-10-17`.
    *
    * @return the version
    */
@@ -805,7 +830,8 @@ public class Vpc extends BaseService {
    * This request deletes a VPC. This operation cannot be reversed.
    *
    * For this request to succeed:
-   * - Instances, subnets, public gateways, and endpoint gateways must not reside in this VPC
+   * - Instances, subnets, public gateways, endpoint gateways, and private path service
+   *   gateways must not reside in this VPC
    * - The VPC must not be providing DNS resolution for any other VPCs
    * - If `dns.enable_hub` is `true`, `dns.resolution_binding_count` must be zero
    *
@@ -885,7 +911,7 @@ public class Vpc extends BaseService {
     }
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateVpcOptions.vpcPatch()), "application/merge-patch+json");
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithSerializeNulls().toJson(updateVpcOptions.vpcPatch()), "application/merge-patch+json");
     ResponseConverter<VPC> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<VPC>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -1118,7 +1144,7 @@ public class Vpc extends BaseService {
     builder.header("Accept", "application/json");
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateVpcAddressPrefixOptions.addressPrefixPatch()), "application/merge-patch+json");
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithSerializeNulls().toJson(updateVpcAddressPrefixOptions.addressPrefixPatch()), "application/merge-patch+json");
     ResponseConverter<AddressPrefix> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<AddressPrefix>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -1196,7 +1222,7 @@ public class Vpc extends BaseService {
    * For this request to succeed, `dns.enable_hub` must be `false` for the VPC specified by the identifier in the URL,
    * and the VPC must not already have a DNS resolution binding.
    *
-   * See [About DNS sharing for VPE gateways](/docs/vpc?topic=vpc-hub-spoke-model) for more information.
+   * See [About DNS sharing for VPE gateways](/docs/vpc?topic=vpc-vpe-dns-sharing) for more information.
    *
    * @param createVpcDnsResolutionBindingOptions the {@link CreateVpcDnsResolutionBindingOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link VPCDNSResolutionBinding}
@@ -1306,7 +1332,7 @@ public class Vpc extends BaseService {
     builder.header("Accept", "application/json");
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateVpcDnsResolutionBindingOptions.vpcdnsResolutionBindingPatch()), "application/merge-patch+json");
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithSerializeNulls().toJson(updateVpcDnsResolutionBindingOptions.vpcdnsResolutionBindingPatch()), "application/merge-patch+json");
     ResponseConverter<VPCDNSResolutionBinding> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<VPCDNSResolutionBinding>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -1486,7 +1512,7 @@ public class Vpc extends BaseService {
     builder.header("Accept", "application/json");
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateVpcRouteOptions.routePatch()), "application/merge-patch+json");
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithSerializeNulls().toJson(updateVpcRouteOptions.routePatch()), "application/merge-patch+json");
     ResponseConverter<Route> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<Route>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -1535,6 +1561,9 @@ public class Vpc extends BaseService {
    *
    * This request creates a routing table from a routing table prototype object. The prototype object is structured in
    * the same way as a retrieved routing table, and contains the information necessary to create the new routing table.
+   *
+   * At present, the routing table's `resource_group` will be inherited from its VPC, but may be specifiable in the
+   * future.
    *
    * @param createVpcRoutingTableOptions the {@link CreateVpcRoutingTableOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link RoutingTable}
@@ -1665,7 +1694,7 @@ public class Vpc extends BaseService {
     }
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateVpcRoutingTableOptions.routingTablePatch()), "application/merge-patch+json");
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithSerializeNulls().toJson(updateVpcRoutingTableOptions.routingTablePatch()), "application/merge-patch+json");
     ResponseConverter<RoutingTable> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<RoutingTable>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -1835,7 +1864,7 @@ public class Vpc extends BaseService {
     builder.header("Accept", "application/json");
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateVpcRoutingTableRouteOptions.routePatch()), "application/merge-patch+json");
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithSerializeNulls().toJson(updateVpcRoutingTableRouteOptions.routePatch()), "application/merge-patch+json");
     ResponseConverter<Route> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<Route>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -2009,7 +2038,7 @@ public class Vpc extends BaseService {
     builder.header("Accept", "application/json");
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateSubnetOptions.subnetPatch()), "application/merge-patch+json");
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithSerializeNulls().toJson(updateSubnetOptions.subnetPatch()), "application/merge-patch+json");
     ResponseConverter<Subnet> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<Subnet>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -2372,7 +2401,7 @@ public class Vpc extends BaseService {
     builder.header("Accept", "application/json");
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateSubnetReservedIpOptions.reservedIpPatch()), "application/merge-patch+json");
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithSerializeNulls().toJson(updateSubnetReservedIpOptions.reservedIpPatch()), "application/merge-patch+json");
     ResponseConverter<ReservedIP> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<ReservedIP>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -2542,7 +2571,7 @@ public class Vpc extends BaseService {
     builder.header("Accept", "application/json");
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateImageOptions.imagePatch()), "application/merge-patch+json");
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithSerializeNulls().toJson(updateImageOptions.imagePatch()), "application/merge-patch+json");
     ResponseConverter<Image> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<Image>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -2766,7 +2795,7 @@ public class Vpc extends BaseService {
     builder.header("Accept", "application/json");
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateImageExportJobOptions.imageExportJobPatch()), "application/merge-patch+json");
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithSerializeNulls().toJson(updateImageExportJobOptions.imageExportJobPatch()), "application/merge-patch+json");
     ResponseConverter<ImageExportJob> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<ImageExportJob>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -2993,7 +3022,7 @@ public class Vpc extends BaseService {
     builder.header("Accept", "application/json");
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateKeyOptions.keyPatch()), "application/merge-patch+json");
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithSerializeNulls().toJson(updateKeyOptions.keyPatch()), "application/merge-patch+json");
     ResponseConverter<Key> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<Key>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -3195,7 +3224,7 @@ public class Vpc extends BaseService {
     builder.header("Accept", "application/json");
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateInstanceTemplateOptions.instanceTemplatePatch()), "application/merge-patch+json");
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithSerializeNulls().toJson(updateInstanceTemplateOptions.instanceTemplatePatch()), "application/merge-patch+json");
     ResponseConverter<InstanceTemplate> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<InstanceTemplate>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -3394,7 +3423,7 @@ public class Vpc extends BaseService {
     }
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateInstanceOptions.instancePatch()), "application/merge-patch+json");
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithSerializeNulls().toJson(updateInstanceOptions.instancePatch()), "application/merge-patch+json");
     ResponseConverter<Instance> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<Instance>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -3572,7 +3601,7 @@ public class Vpc extends BaseService {
     builder.header("Accept", "application/json");
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateInstanceDiskOptions.instanceDiskPatch()), "application/merge-patch+json");
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithSerializeNulls().toJson(updateInstanceDiskOptions.instanceDiskPatch()), "application/merge-patch+json");
     ResponseConverter<InstanceDisk> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<InstanceDisk>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -3722,7 +3751,7 @@ public class Vpc extends BaseService {
     builder.header("Accept", "application/json");
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateInstanceNetworkAttachmentOptions.instanceNetworkAttachmentPatch()), "application/merge-patch+json");
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithSerializeNulls().toJson(updateInstanceNetworkAttachmentOptions.instanceNetworkAttachmentPatch()), "application/merge-patch+json");
     ResponseConverter<InstanceNetworkAttachment> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<InstanceNetworkAttachment>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -3901,7 +3930,7 @@ public class Vpc extends BaseService {
     builder.header("Accept", "application/json");
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateInstanceNetworkInterfaceOptions.networkInterfacePatch()), "application/merge-patch+json");
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithSerializeNulls().toJson(updateInstanceNetworkInterfaceOptions.networkInterfacePatch()), "application/merge-patch+json");
     ResponseConverter<NetworkInterface> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<NetworkInterface>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -4234,7 +4263,7 @@ public class Vpc extends BaseService {
     builder.header("Accept", "application/json");
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateInstanceVolumeAttachmentOptions.volumeAttachmentPatch()), "application/merge-patch+json");
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithSerializeNulls().toJson(updateInstanceVolumeAttachmentOptions.volumeAttachmentPatch()), "application/merge-patch+json");
     ResponseConverter<VolumeAttachment> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<VolumeAttachment>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -4401,7 +4430,7 @@ public class Vpc extends BaseService {
     builder.header("Accept", "application/json");
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateInstanceGroupOptions.instanceGroupPatch()), "application/merge-patch+json");
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithSerializeNulls().toJson(updateInstanceGroupOptions.instanceGroupPatch()), "application/merge-patch+json");
     ResponseConverter<InstanceGroup> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<InstanceGroup>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -4564,7 +4593,7 @@ public class Vpc extends BaseService {
     builder.header("Accept", "application/json");
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateInstanceGroupManagerOptions.instanceGroupManagerPatch()), "application/merge-patch+json");
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithSerializeNulls().toJson(updateInstanceGroupManagerOptions.instanceGroupManagerPatch()), "application/merge-patch+json");
     ResponseConverter<InstanceGroupManager> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<InstanceGroupManager>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -4708,7 +4737,7 @@ public class Vpc extends BaseService {
     builder.header("Accept", "application/json");
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateInstanceGroupManagerActionOptions.instanceGroupManagerActionPatch()), "application/merge-patch+json");
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithSerializeNulls().toJson(updateInstanceGroupManagerActionOptions.instanceGroupManagerActionPatch()), "application/merge-patch+json");
     ResponseConverter<InstanceGroupManagerAction> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<InstanceGroupManagerAction>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -4852,7 +4881,7 @@ public class Vpc extends BaseService {
     builder.header("Accept", "application/json");
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateInstanceGroupManagerPolicyOptions.instanceGroupManagerPolicyPatch()), "application/merge-patch+json");
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithSerializeNulls().toJson(updateInstanceGroupManagerPolicyOptions.instanceGroupManagerPolicyPatch()), "application/merge-patch+json");
     ResponseConverter<InstanceGroupManagerPolicy> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<InstanceGroupManagerPolicy>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -4990,7 +5019,7 @@ public class Vpc extends BaseService {
     builder.header("Accept", "application/json");
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateInstanceGroupMembershipOptions.instanceGroupMembershipPatch()), "application/merge-patch+json");
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithSerializeNulls().toJson(updateInstanceGroupMembershipOptions.instanceGroupMembershipPatch()), "application/merge-patch+json");
     ResponseConverter<InstanceGroupMembership> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<InstanceGroupMembership>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -5170,7 +5199,7 @@ public class Vpc extends BaseService {
     builder.header("Accept", "application/json");
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateReservationOptions.reservationPatch()), "application/merge-patch+json");
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithSerializeNulls().toJson(updateReservationOptions.reservationPatch()), "application/merge-patch+json");
     ResponseConverter<Reservation> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<Reservation>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -5203,8 +5232,8 @@ public class Vpc extends BaseService {
   /**
    * List dedicated host groups.
    *
-   * This request lists dedicated host groups in the region. Host groups are a collection of dedicated hosts for
-   * placement of instances. Each dedicated host must belong to one and only one group. Host groups do not span zones.
+   * This request lists dedicated host groups in the region. Each dedicated host must belong to exactly one group, which
+   * controls placement of instances. Dedicated host groups do not span zones.
    *
    * @param listDedicatedHostGroupsOptions the {@link ListDedicatedHostGroupsOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link DedicatedHostGroupCollection}
@@ -5244,8 +5273,8 @@ public class Vpc extends BaseService {
   /**
    * List dedicated host groups.
    *
-   * This request lists dedicated host groups in the region. Host groups are a collection of dedicated hosts for
-   * placement of instances. Each dedicated host must belong to one and only one group. Host groups do not span zones.
+   * This request lists dedicated host groups in the region. Each dedicated host must belong to exactly one group, which
+   * controls placement of instances. Dedicated host groups do not span zones.
    *
    * @return a {@link ServiceCall} with a result of type {@link DedicatedHostGroupCollection}
    */
@@ -5361,7 +5390,7 @@ public class Vpc extends BaseService {
     builder.header("Accept", "application/json");
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateDedicatedHostGroupOptions.dedicatedHostGroupPatch()), "application/merge-patch+json");
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithSerializeNulls().toJson(updateDedicatedHostGroupOptions.dedicatedHostGroupPatch()), "application/merge-patch+json");
     ResponseConverter<DedicatedHostGroup> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<DedicatedHostGroup>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -5593,7 +5622,7 @@ public class Vpc extends BaseService {
     builder.header("Accept", "application/json");
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateDedicatedHostDiskOptions.dedicatedHostDiskPatch()), "application/merge-patch+json");
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithSerializeNulls().toJson(updateDedicatedHostDiskOptions.dedicatedHostDiskPatch()), "application/merge-patch+json");
     ResponseConverter<DedicatedHostDisk> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<DedicatedHostDisk>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -5672,7 +5701,7 @@ public class Vpc extends BaseService {
     builder.header("Accept", "application/json");
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateDedicatedHostOptions.dedicatedHostPatch()), "application/merge-patch+json");
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithSerializeNulls().toJson(updateDedicatedHostOptions.dedicatedHostPatch()), "application/merge-patch+json");
     ResponseConverter<DedicatedHost> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<DedicatedHost>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -5827,7 +5856,7 @@ public class Vpc extends BaseService {
     builder.header("Accept", "application/json");
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updatePlacementGroupOptions.placementGroupPatch()), "application/merge-patch+json");
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithSerializeNulls().toJson(updatePlacementGroupOptions.placementGroupPatch()), "application/merge-patch+json");
     ResponseConverter<PlacementGroup> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<PlacementGroup>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -6102,7 +6131,7 @@ public class Vpc extends BaseService {
     builder.header("Accept", "application/json");
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateBareMetalServerDiskOptions.bareMetalServerDiskPatch()), "application/merge-patch+json");
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithSerializeNulls().toJson(updateBareMetalServerDiskOptions.bareMetalServerDiskPatch()), "application/merge-patch+json");
     ResponseConverter<BareMetalServerDisk> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<BareMetalServerDisk>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -6255,7 +6284,7 @@ public class Vpc extends BaseService {
     builder.header("Accept", "application/json");
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateBareMetalServerNetworkAttachmentOptions.bareMetalServerNetworkAttachmentPatch()), "application/merge-patch+json");
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithSerializeNulls().toJson(updateBareMetalServerNetworkAttachmentOptions.bareMetalServerNetworkAttachmentPatch()), "application/merge-patch+json");
     ResponseConverter<BareMetalServerNetworkAttachment> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<BareMetalServerNetworkAttachment>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -6426,7 +6455,7 @@ public class Vpc extends BaseService {
     builder.header("Accept", "application/json");
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateBareMetalServerNetworkInterfaceOptions.bareMetalServerNetworkInterfacePatch()), "application/merge-patch+json");
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithSerializeNulls().toJson(updateBareMetalServerNetworkInterfaceOptions.bareMetalServerNetworkInterfacePatch()), "application/merge-patch+json");
     ResponseConverter<BareMetalServerNetworkInterface> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<BareMetalServerNetworkInterface>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -6685,9 +6714,38 @@ public class Vpc extends BaseService {
     builder.header("Accept", "application/json");
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateBareMetalServerOptions.bareMetalServerPatch()), "application/merge-patch+json");
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithSerializeNulls().toJson(updateBareMetalServerOptions.bareMetalServerPatch()), "application/merge-patch+json");
     ResponseConverter<BareMetalServer> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<BareMetalServer>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Update firmware for a bare metal server.
+   *
+   * This request updates a bare metal server to the latest available firmware. The server must be stopped.
+   *
+   * @param updateFirmwareForBareMetalServerOptions the {@link UpdateFirmwareForBareMetalServerOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a void result
+   */
+  public ServiceCall<Void> updateFirmwareForBareMetalServer(UpdateFirmwareForBareMetalServerOptions updateFirmwareForBareMetalServerOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(updateFirmwareForBareMetalServerOptions,
+      "updateFirmwareForBareMetalServerOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", updateFirmwareForBareMetalServerOptions.id());
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/bare_metal_servers/{id}/firmware/update", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "updateFirmwareForBareMetalServer");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    final JsonObject contentJson = new JsonObject();
+    if (updateFirmwareForBareMetalServerOptions.autoStart() != null) {
+      contentJson.addProperty("auto_start", updateFirmwareForBareMetalServerOptions.autoStart());
+    }
+    builder.bodyJson(contentJson);
+    ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
     return createServiceCall(builder.build(), responseConverter);
   }
 
@@ -6714,6 +6772,40 @@ public class Vpc extends BaseService {
     builder.header("Accept", "application/json");
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<BareMetalServerInitialization> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<BareMetalServerInitialization>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Reinitialize a bare metal server.
+   *
+   * This request reinitializes a bare metal server with the specified image and SSH keys. The server must be stopped.
+   * Upon successful reinitiatilization, the bare metal server will be started automatically.
+   *
+   * @param replaceBareMetalServerInitializationOptions the {@link ReplaceBareMetalServerInitializationOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link BareMetalServerInitialization}
+   */
+  public ServiceCall<BareMetalServerInitialization> replaceBareMetalServerInitialization(ReplaceBareMetalServerInitializationOptions replaceBareMetalServerInitializationOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(replaceBareMetalServerInitializationOptions,
+      "replaceBareMetalServerInitializationOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", replaceBareMetalServerInitializationOptions.id());
+    RequestBuilder builder = RequestBuilder.put(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/bare_metal_servers/{id}/initialization", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "replaceBareMetalServerInitialization");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    final JsonObject contentJson = new JsonObject();
+    contentJson.add("image", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(replaceBareMetalServerInitializationOptions.image()));
+    contentJson.add("keys", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(replaceBareMetalServerInitializationOptions.keys()));
+    if (replaceBareMetalServerInitializationOptions.userData() != null) {
+      contentJson.addProperty("user_data", replaceBareMetalServerInitializationOptions.userData());
+    }
+    builder.bodyJson(contentJson);
     ResponseConverter<BareMetalServerInitialization> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<BareMetalServerInitialization>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -7036,7 +7128,7 @@ public class Vpc extends BaseService {
     }
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateVolumeOptions.volumePatch()), "application/merge-patch+json");
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithSerializeNulls().toJson(updateVolumeOptions.volumePatch()), "application/merge-patch+json");
     ResponseConverter<Volume> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<Volume>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -7204,7 +7296,7 @@ public class Vpc extends BaseService {
     }
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateSnapshotConsistencyGroupOptions.snapshotConsistencyGroupPatch()), "application/merge-patch+json");
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithSerializeNulls().toJson(updateSnapshotConsistencyGroupOptions.snapshotConsistencyGroupPatch()), "application/merge-patch+json");
     ResponseConverter<SnapshotConsistencyGroup> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<SnapshotConsistencyGroup>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -7441,7 +7533,7 @@ public class Vpc extends BaseService {
     }
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateSnapshotOptions.snapshotPatch()), "application/merge-patch+json");
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithSerializeNulls().toJson(updateSnapshotOptions.snapshotPatch()), "application/merge-patch+json");
     ResponseConverter<Snapshot> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<Snapshot>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -7796,14 +7888,14 @@ public class Vpc extends BaseService {
     }
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateShareOptions.sharePatch()), "application/merge-patch+json");
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithSerializeNulls().toJson(updateShareOptions.sharePatch()), "application/merge-patch+json");
     ResponseConverter<Share> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<Share>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
   }
 
   /**
-   * List accessor bindings for a share.
+   * List accessor bindings for a file share.
    *
    * This request lists accessor bindings for a share. Each accessor binding identifies a resource (possibly in another
    * account) with access to this file share's data.
@@ -7838,7 +7930,7 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * Delete a share accessor binding.
+   * Delete a file share accessor binding.
    *
    * This request deletes a share accessor binding. This operation cannot be reversed.
    *
@@ -7863,7 +7955,7 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * Retrieve a share accessor binding.
+   * Retrieve a file share accessor binding.
    *
    * This request retrieves a single accessor binding specified by the identifier in the URL.
    *
@@ -7995,7 +8087,7 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * Delete a share mount target.
+   * Delete a file share mount target.
    *
    * This request deletes a share mount target. This operation cannot be reversed.
    *
@@ -8025,7 +8117,7 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * Retrieve a share mount target.
+   * Retrieve a file share mount target.
    *
    * This request retrieves a single share mount target specified by the identifier in the URL.
    *
@@ -8052,7 +8144,7 @@ public class Vpc extends BaseService {
   }
 
   /**
-   * Update a share mount target.
+   * Update a file share mount target.
    *
    * This request updates a share mount target with the information provided in a share mount target patch object. The
    * share mount target patch object is structured in the same way as a retrieved share mount target and needs to
@@ -8075,14 +8167,14 @@ public class Vpc extends BaseService {
     builder.header("Accept", "application/json");
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateShareMountTargetOptions.shareMountTargetPatch()), "application/merge-patch+json");
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithSerializeNulls().toJson(updateShareMountTargetOptions.shareMountTargetPatch()), "application/merge-patch+json");
     ResponseConverter<ShareMountTarget> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<ShareMountTarget>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
   }
 
   /**
-   * Split the source file share from a replica share.
+   * Split the source file share from a replica file share.
    *
    * This request removes the replication relationship between a source share and the replica share specified by the
    * identifier in the URL. The replication relationship cannot be removed if a source share or the replica share has a
@@ -8468,7 +8560,7 @@ public class Vpc extends BaseService {
     }
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateBackupPolicyPlanOptions.backupPolicyPlanPatch()), "application/merge-patch+json");
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithSerializeNulls().toJson(updateBackupPolicyPlanOptions.backupPolicyPlanPatch()), "application/merge-patch+json");
     ResponseConverter<BackupPolicyPlan> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<BackupPolicyPlan>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -8558,7 +8650,7 @@ public class Vpc extends BaseService {
     }
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateBackupPolicyOptions.backupPolicyPatch()), "application/merge-patch+json");
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithSerializeNulls().toJson(updateBackupPolicyOptions.backupPolicyPatch()), "application/merge-patch+json");
     ResponseConverter<BackupPolicy> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<BackupPolicy>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -8819,9 +8911,9 @@ public class Vpc extends BaseService {
    * an instance.
    *
    * @param deleteVirtualNetworkInterfacesOptions the {@link DeleteVirtualNetworkInterfacesOptions} containing the options for the call
-   * @return a {@link ServiceCall} with a void result
+   * @return a {@link ServiceCall} with a result of type {@link VirtualNetworkInterface}
    */
-  public ServiceCall<Void> deleteVirtualNetworkInterfaces(DeleteVirtualNetworkInterfacesOptions deleteVirtualNetworkInterfacesOptions) {
+  public ServiceCall<VirtualNetworkInterface> deleteVirtualNetworkInterfaces(DeleteVirtualNetworkInterfacesOptions deleteVirtualNetworkInterfacesOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(deleteVirtualNetworkInterfacesOptions,
       "deleteVirtualNetworkInterfacesOptions cannot be null");
     Map<String, String> pathParamsMap = new HashMap<String, String>();
@@ -8831,9 +8923,11 @@ public class Vpc extends BaseService {
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
+    builder.header("Accept", "application/json");
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
+    ResponseConverter<VirtualNetworkInterface> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<VirtualNetworkInterface>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
   }
 
@@ -8886,7 +8980,7 @@ public class Vpc extends BaseService {
     builder.header("Accept", "application/json");
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateVirtualNetworkInterfaceOptions.virtualNetworkInterfacePatch()), "application/merge-patch+json");
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithSerializeNulls().toJson(updateVirtualNetworkInterfaceOptions.virtualNetworkInterfacePatch()), "application/merge-patch+json");
     ResponseConverter<VirtualNetworkInterface> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<VirtualNetworkInterface>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -9307,7 +9401,7 @@ public class Vpc extends BaseService {
     builder.header("Accept", "application/json");
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updatePublicGatewayOptions.publicGatewayPatch()), "application/merge-patch+json");
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithSerializeNulls().toJson(updatePublicGatewayOptions.publicGatewayPatch()), "application/merge-patch+json");
     ResponseConverter<PublicGateway> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<PublicGateway>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -9472,7 +9566,7 @@ public class Vpc extends BaseService {
     builder.header("Accept", "application/json");
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateFloatingIpOptions.floatingIpPatch()), "application/merge-patch+json");
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithSerializeNulls().toJson(updateFloatingIpOptions.floatingIpPatch()), "application/merge-patch+json");
     ResponseConverter<FloatingIP> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<FloatingIP>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -9626,7 +9720,7 @@ public class Vpc extends BaseService {
     builder.header("Accept", "application/json");
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateNetworkAclOptions.networkAclPatch()), "application/merge-patch+json");
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithSerializeNulls().toJson(updateNetworkAclOptions.networkAclPatch()), "application/merge-patch+json");
     ResponseConverter<NetworkACL> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<NetworkACL>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -9752,7 +9846,8 @@ public class Vpc extends BaseService {
    * Update a network ACL rule.
    *
    * This request updates a rule with the information in a provided rule patch. The rule patch object contains only the
-   * information to be updated. The request will fail if the information is not applicable to the rule's protocol.
+   * information to be updated. The request will fail if the provided patch includes properties that are not used by the
+   * rule's protocol.
    *
    * @param updateNetworkAclRuleOptions the {@link UpdateNetworkAclRuleOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link NetworkACLRule}
@@ -9771,7 +9866,7 @@ public class Vpc extends BaseService {
     builder.header("Accept", "application/json");
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateNetworkAclRuleOptions.networkAclRulePatch()), "application/merge-patch+json");
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithSerializeNulls().toJson(updateNetworkAclRuleOptions.networkAclRulePatch()), "application/merge-patch+json");
     ResponseConverter<NetworkACLRule> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<NetworkACLRule>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -9952,7 +10047,7 @@ public class Vpc extends BaseService {
     builder.header("Accept", "application/json");
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateSecurityGroupOptions.securityGroupPatch()), "application/merge-patch+json");
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithSerializeNulls().toJson(updateSecurityGroupOptions.securityGroupPatch()), "application/merge-patch+json");
     ResponseConverter<SecurityGroup> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<SecurityGroup>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -10074,8 +10169,8 @@ public class Vpc extends BaseService {
    * Update a security group rule.
    *
    * This request updates a security group rule with the information in a provided rule patch object. The rule patch
-   * object contains only the information to be updated. The request will fail if the information is not applicable to
-   * the rule's protocol.
+   * object contains only the information to be updated. The request will fail if the provided patch includes properties
+   * that are not used by the rule's protocol.
    *
    * @param updateSecurityGroupRuleOptions the {@link UpdateSecurityGroupRuleOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link SecurityGroupRule}
@@ -10094,7 +10189,7 @@ public class Vpc extends BaseService {
     builder.header("Accept", "application/json");
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateSecurityGroupRuleOptions.securityGroupRulePatch()), "application/merge-patch+json");
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithSerializeNulls().toJson(updateSecurityGroupRuleOptions.securityGroupRulePatch()), "application/merge-patch+json");
     ResponseConverter<SecurityGroupRule> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<SecurityGroupRule>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -10386,7 +10481,7 @@ public class Vpc extends BaseService {
     builder.header("Accept", "application/json");
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateIkePolicyOptions.ikePolicyPatch()), "application/merge-patch+json");
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithSerializeNulls().toJson(updateIkePolicyOptions.ikePolicyPatch()), "application/merge-patch+json");
     ResponseConverter<IKEPolicy> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<IKEPolicy>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -10576,7 +10671,7 @@ public class Vpc extends BaseService {
     builder.header("Accept", "application/json");
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateIpsecPolicyOptions.iPsecPolicyPatch()), "application/merge-patch+json");
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithSerializeNulls().toJson(updateIpsecPolicyOptions.iPsecPolicyPatch()), "application/merge-patch+json");
     ResponseConverter<IPsecPolicy> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<IPsecPolicy>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -10763,7 +10858,7 @@ public class Vpc extends BaseService {
     builder.header("Accept", "application/json");
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateVpnGatewayOptions.vpnGatewayPatch()), "application/merge-patch+json");
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithSerializeNulls().toJson(updateVpnGatewayOptions.vpnGatewayPatch()), "application/merge-patch+json");
     ResponseConverter<VPNGateway> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<VPNGateway>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -10906,7 +11001,7 @@ public class Vpc extends BaseService {
     builder.header("Accept", "application/json");
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateVpnGatewayConnectionOptions.vpnGatewayConnectionPatch()), "application/merge-patch+json");
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithSerializeNulls().toJson(updateVpnGatewayConnectionOptions.vpnGatewayConnectionPatch()), "application/merge-patch+json");
     ResponseConverter<VPNGatewayConnection> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<VPNGatewayConnection>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -11323,7 +11418,7 @@ public class Vpc extends BaseService {
     }
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateVpnServerOptions.vpnServerPatch()), "application/merge-patch+json");
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithSerializeNulls().toJson(updateVpnServerOptions.vpnServerPatch()), "application/merge-patch+json");
     ResponseConverter<VPNServer> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<VPNServer>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -11621,7 +11716,7 @@ public class Vpc extends BaseService {
     builder.header("Accept", "application/json");
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateVpnServerRouteOptions.vpnServerRoutePatch()), "application/merge-patch+json");
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithSerializeNulls().toJson(updateVpnServerRouteOptions.vpnServerRoutePatch()), "application/merge-patch+json");
     ResponseConverter<VPNServerRoute> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<VPNServerRoute>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -11764,6 +11859,9 @@ public class Vpc extends BaseService {
     if (createLoadBalancerOptions.dns() != null) {
       contentJson.add("dns", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createLoadBalancerOptions.dns()));
     }
+    if (createLoadBalancerOptions.isPrivatePath() != null) {
+      contentJson.addProperty("is_private_path", createLoadBalancerOptions.isPrivatePath());
+    }
     if (createLoadBalancerOptions.listeners() != null) {
       contentJson.add("listeners", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createLoadBalancerOptions.listeners()));
     }
@@ -11874,7 +11972,7 @@ public class Vpc extends BaseService {
     }
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateLoadBalancerOptions.loadBalancerPatch()), "application/merge-patch+json");
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithSerializeNulls().toJson(updateLoadBalancerOptions.loadBalancerPatch()), "application/merge-patch+json");
     ResponseConverter<LoadBalancer> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<LoadBalancer>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -12066,7 +12164,7 @@ public class Vpc extends BaseService {
     builder.header("Accept", "application/json");
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateLoadBalancerListenerOptions.loadBalancerListenerPatch()), "application/merge-patch+json");
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithSerializeNulls().toJson(updateLoadBalancerListenerOptions.loadBalancerListenerPatch()), "application/merge-patch+json");
     ResponseConverter<LoadBalancerListener> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<LoadBalancerListener>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -12220,7 +12318,7 @@ public class Vpc extends BaseService {
     builder.header("Accept", "application/json");
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateLoadBalancerListenerPolicyOptions.loadBalancerListenerPolicyPatch()), "application/merge-patch+json");
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithSerializeNulls().toJson(updateLoadBalancerListenerPolicyOptions.loadBalancerListenerPolicyPatch()), "application/merge-patch+json");
     ResponseConverter<LoadBalancerListenerPolicy> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<LoadBalancerListenerPolicy>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -12370,7 +12468,7 @@ public class Vpc extends BaseService {
     builder.header("Accept", "application/json");
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateLoadBalancerListenerPolicyRuleOptions.loadBalancerListenerPolicyRulePatch()), "application/merge-patch+json");
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithSerializeNulls().toJson(updateLoadBalancerListenerPolicyRuleOptions.loadBalancerListenerPolicyRulePatch()), "application/merge-patch+json");
     ResponseConverter<LoadBalancerListenerPolicyRule> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<LoadBalancerListenerPolicyRule>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -12520,7 +12618,7 @@ public class Vpc extends BaseService {
     builder.header("Accept", "application/json");
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateLoadBalancerPoolOptions.loadBalancerPoolPatch()), "application/merge-patch+json");
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithSerializeNulls().toJson(updateLoadBalancerPoolOptions.loadBalancerPoolPatch()), "application/merge-patch+json");
     ResponseConverter<LoadBalancerPool> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<LoadBalancerPool>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -12695,7 +12793,7 @@ public class Vpc extends BaseService {
     builder.header("Accept", "application/json");
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateLoadBalancerPoolMemberOptions.loadBalancerPoolMemberPatch()), "application/merge-patch+json");
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithSerializeNulls().toJson(updateLoadBalancerPoolMemberOptions.loadBalancerPoolMemberPatch()), "application/merge-patch+json");
     ResponseConverter<LoadBalancerPoolMember> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<LoadBalancerPoolMember>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -12733,6 +12831,9 @@ public class Vpc extends BaseService {
     }
     if (listEndpointGatewaysOptions.resourceGroupId() != null) {
       builder.query("resource_group.id", String.valueOf(listEndpointGatewaysOptions.resourceGroupId()));
+    }
+    if (listEndpointGatewaysOptions.lifecycleState() != null) {
+      builder.query("lifecycle_state", RequestUtils.join(listEndpointGatewaysOptions.lifecycleState(), ","));
     }
     if (listEndpointGatewaysOptions.vpcId() != null) {
       builder.query("vpc.id", String.valueOf(listEndpointGatewaysOptions.vpcId()));
@@ -13000,7 +13101,7 @@ public class Vpc extends BaseService {
     builder.header("Accept", "application/json");
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateEndpointGatewayOptions.endpointGatewayPatch()), "application/merge-patch+json");
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithSerializeNulls().toJson(updateEndpointGatewayOptions.endpointGatewayPatch()), "application/merge-patch+json");
     ResponseConverter<EndpointGateway> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<EndpointGateway>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -13009,8 +13110,10 @@ public class Vpc extends BaseService {
   /**
    * List flow log collectors.
    *
-   * This request lists flow log collectors in the region. A flow log collector summarizes data sent over the instance
-   * network interfaces and instance network attachments contained within its target.
+   * This request lists flow log collectors in the region. A [flow log
+   * collector](https://cloud.ibm.com/docs/vpc?topic=vpc-flow-logs) summarizes data sent over the instance network
+   * interfaces and instance network attachments contained within its target. The collected flow logs are written to a
+   * cloud object storage bucket, where they can be [viewed](https://cloud.ibm.com/docs/vpc?topic=vpc-fl-analyze).
    *
    * @param listFlowLogCollectorsOptions the {@link ListFlowLogCollectorsOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link FlowLogCollectorCollection}
@@ -13062,8 +13165,10 @@ public class Vpc extends BaseService {
   /**
    * List flow log collectors.
    *
-   * This request lists flow log collectors in the region. A flow log collector summarizes data sent over the instance
-   * network interfaces and instance network attachments contained within its target.
+   * This request lists flow log collectors in the region. A [flow log
+   * collector](https://cloud.ibm.com/docs/vpc?topic=vpc-flow-logs) summarizes data sent over the instance network
+   * interfaces and instance network attachments contained within its target. The collected flow logs are written to a
+   * cloud object storage bucket, where they can be [viewed](https://cloud.ibm.com/docs/vpc?topic=vpc-fl-analyze).
    *
    * @return a {@link ServiceCall} with a result of type {@link FlowLogCollectorCollection}
    */
@@ -13185,9 +13290,559 @@ public class Vpc extends BaseService {
     builder.header("Accept", "application/json");
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateFlowLogCollectorOptions.flowLogCollectorPatch()), "application/merge-patch+json");
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithSerializeNulls().toJson(updateFlowLogCollectorOptions.flowLogCollectorPatch()), "application/merge-patch+json");
     ResponseConverter<FlowLogCollector> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<FlowLogCollector>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * List private path service gateways.
+   *
+   * This request lists private path service gateways in the region. Private path service gateways allow
+   * [service
+   * providers](https://cloud.ibm.com/docs/private-path?topic=private-path-private-path-service-architecture#private-path-service-components)
+   * to make their services available using
+   * [private path
+   * connectivity](https://cloud.ibm.com/docs/private-path?topic=private-path-private-path-service-architecture#private-path-service-components).
+   * Private path service gateways are used to facilitate and manage the private path connectivity between private path
+   * network load balancers and their associated endpoint gateways.
+   *
+   * @param listPrivatePathServiceGatewaysOptions the {@link ListPrivatePathServiceGatewaysOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link PrivatePathServiceGatewayCollection}
+   */
+  public ServiceCall<PrivatePathServiceGatewayCollection> listPrivatePathServiceGateways(ListPrivatePathServiceGatewaysOptions listPrivatePathServiceGatewaysOptions) {
+    if (listPrivatePathServiceGatewaysOptions == null) {
+      listPrivatePathServiceGatewaysOptions = new ListPrivatePathServiceGatewaysOptions.Builder().build();
+    }
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/private_path_service_gateways"));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listPrivatePathServiceGateways");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    if (listPrivatePathServiceGatewaysOptions.start() != null) {
+      builder.query("start", String.valueOf(listPrivatePathServiceGatewaysOptions.start()));
+    }
+    if (listPrivatePathServiceGatewaysOptions.limit() != null) {
+      builder.query("limit", String.valueOf(listPrivatePathServiceGatewaysOptions.limit()));
+    }
+    if (listPrivatePathServiceGatewaysOptions.resourceGroupId() != null) {
+      builder.query("resource_group.id", String.valueOf(listPrivatePathServiceGatewaysOptions.resourceGroupId()));
+    }
+    ResponseConverter<PrivatePathServiceGatewayCollection> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<PrivatePathServiceGatewayCollection>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * List private path service gateways.
+   *
+   * This request lists private path service gateways in the region. Private path service gateways allow
+   * [service
+   * providers](https://cloud.ibm.com/docs/private-path?topic=private-path-private-path-service-architecture#private-path-service-components)
+   * to make their services available using
+   * [private path
+   * connectivity](https://cloud.ibm.com/docs/private-path?topic=private-path-private-path-service-architecture#private-path-service-components).
+   * Private path service gateways are used to facilitate and manage the private path connectivity between private path
+   * network load balancers and their associated endpoint gateways.
+   *
+   * @return a {@link ServiceCall} with a result of type {@link PrivatePathServiceGatewayCollection}
+   */
+  public ServiceCall<PrivatePathServiceGatewayCollection> listPrivatePathServiceGateways() {
+    return listPrivatePathServiceGateways(null);
+  }
+
+  /**
+   * Create a private path service gateway.
+   *
+   * This request creates a private path service gateway from a private path service gateway prototype object. The
+   * prototype object is structured in the same way as a retrieved private path service gateway, and contains the
+   * information necessary to create the new private path service gateway.
+   *
+   * @param createPrivatePathServiceGatewayOptions the {@link CreatePrivatePathServiceGatewayOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link PrivatePathServiceGateway}
+   */
+  public ServiceCall<PrivatePathServiceGateway> createPrivatePathServiceGateway(CreatePrivatePathServiceGatewayOptions createPrivatePathServiceGatewayOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(createPrivatePathServiceGatewayOptions,
+      "createPrivatePathServiceGatewayOptions cannot be null");
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/private_path_service_gateways"));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "createPrivatePathServiceGateway");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    final JsonObject contentJson = new JsonObject();
+    contentJson.add("load_balancer", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createPrivatePathServiceGatewayOptions.loadBalancer()));
+    contentJson.add("service_endpoints", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createPrivatePathServiceGatewayOptions.serviceEndpoints()));
+    if (createPrivatePathServiceGatewayOptions.defaultAccessPolicy() != null) {
+      contentJson.addProperty("default_access_policy", createPrivatePathServiceGatewayOptions.defaultAccessPolicy());
+    }
+    if (createPrivatePathServiceGatewayOptions.name() != null) {
+      contentJson.addProperty("name", createPrivatePathServiceGatewayOptions.name());
+    }
+    if (createPrivatePathServiceGatewayOptions.resourceGroup() != null) {
+      contentJson.add("resource_group", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createPrivatePathServiceGatewayOptions.resourceGroup()));
+    }
+    if (createPrivatePathServiceGatewayOptions.zonalAffinity() != null) {
+      contentJson.addProperty("zonal_affinity", createPrivatePathServiceGatewayOptions.zonalAffinity());
+    }
+    builder.bodyJson(contentJson);
+    ResponseConverter<PrivatePathServiceGateway> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<PrivatePathServiceGateway>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Delete a private path service gateway.
+   *
+   * This request deletes a private path service gateway.  For this request to succeed, the value of
+   * `endpoint_gateway_count` must be `0`. This operation cannot be reversed.
+   *
+   * @param deletePrivatePathServiceGatewayOptions the {@link DeletePrivatePathServiceGatewayOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a void result
+   */
+  public ServiceCall<Void> deletePrivatePathServiceGateway(DeletePrivatePathServiceGatewayOptions deletePrivatePathServiceGatewayOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(deletePrivatePathServiceGatewayOptions,
+      "deletePrivatePathServiceGatewayOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", deletePrivatePathServiceGatewayOptions.id());
+    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/private_path_service_gateways/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "deletePrivatePathServiceGateway");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Retrieve a private path service gateway.
+   *
+   * This request retrieves the private path service gateway specified by the identifier in the URL.
+   *
+   * @param getPrivatePathServiceGatewayOptions the {@link GetPrivatePathServiceGatewayOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link PrivatePathServiceGateway}
+   */
+  public ServiceCall<PrivatePathServiceGateway> getPrivatePathServiceGateway(GetPrivatePathServiceGatewayOptions getPrivatePathServiceGatewayOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(getPrivatePathServiceGatewayOptions,
+      "getPrivatePathServiceGatewayOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", getPrivatePathServiceGatewayOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/private_path_service_gateways/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getPrivatePathServiceGateway");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<PrivatePathServiceGateway> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<PrivatePathServiceGateway>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Update a private path service gateway.
+   *
+   * This request updates a private path service gateway with the information provided in a private path service gateway
+   * patch object. The private path service gateway patch object is structured in the same way as a retrieved private
+   * path service gateway and contains only the information to be updated.
+   *
+   * @param updatePrivatePathServiceGatewayOptions the {@link UpdatePrivatePathServiceGatewayOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link PrivatePathServiceGateway}
+   */
+  public ServiceCall<PrivatePathServiceGateway> updatePrivatePathServiceGateway(UpdatePrivatePathServiceGatewayOptions updatePrivatePathServiceGatewayOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(updatePrivatePathServiceGatewayOptions,
+      "updatePrivatePathServiceGatewayOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", updatePrivatePathServiceGatewayOptions.id());
+    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/private_path_service_gateways/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "updatePrivatePathServiceGateway");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithSerializeNulls().toJson(updatePrivatePathServiceGatewayOptions.privatePathServiceGatewayPatch()), "application/merge-patch+json");
+    ResponseConverter<PrivatePathServiceGateway> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<PrivatePathServiceGateway>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * List account policies for a private path service gateway.
+   *
+   * This request lists account policies for a private path service gateway. Each policy defines how requests to use the
+   * private path service gateway from that account will be handled.
+   *
+   * The account policies will be sorted by their `created_at` property values, with newest account policies first.
+   * Account policies with identical `created_at` property values will in turn be sorted by ascending `id` property
+   * values.
+   *
+   * @param listPrivatePathServiceGatewayAccountPoliciesOptions the {@link ListPrivatePathServiceGatewayAccountPoliciesOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link PrivatePathServiceGatewayAccountPolicyCollection}
+   */
+  public ServiceCall<PrivatePathServiceGatewayAccountPolicyCollection> listPrivatePathServiceGatewayAccountPolicies(ListPrivatePathServiceGatewayAccountPoliciesOptions listPrivatePathServiceGatewayAccountPoliciesOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(listPrivatePathServiceGatewayAccountPoliciesOptions,
+      "listPrivatePathServiceGatewayAccountPoliciesOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("private_path_service_gateway_id", listPrivatePathServiceGatewayAccountPoliciesOptions.privatePathServiceGatewayId());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/private_path_service_gateways/{private_path_service_gateway_id}/account_policies", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listPrivatePathServiceGatewayAccountPolicies");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    if (listPrivatePathServiceGatewayAccountPoliciesOptions.start() != null) {
+      builder.query("start", String.valueOf(listPrivatePathServiceGatewayAccountPoliciesOptions.start()));
+    }
+    if (listPrivatePathServiceGatewayAccountPoliciesOptions.limit() != null) {
+      builder.query("limit", String.valueOf(listPrivatePathServiceGatewayAccountPoliciesOptions.limit()));
+    }
+    if (listPrivatePathServiceGatewayAccountPoliciesOptions.accountId() != null) {
+      builder.query("account.id", String.valueOf(listPrivatePathServiceGatewayAccountPoliciesOptions.accountId()));
+    }
+    ResponseConverter<PrivatePathServiceGatewayAccountPolicyCollection> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<PrivatePathServiceGatewayAccountPolicyCollection>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Create an account policy for a private path service gateway.
+   *
+   * This request creates an account policy from an account policy prototype object. The prototype object is structured
+   * in the same way as a retrieved account policy, and contains the information necessary to create the new account
+   * policy.
+   *
+   * @param createPrivatePathServiceGatewayAccountPolicyOptions the {@link CreatePrivatePathServiceGatewayAccountPolicyOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link PrivatePathServiceGatewayAccountPolicy}
+   */
+  public ServiceCall<PrivatePathServiceGatewayAccountPolicy> createPrivatePathServiceGatewayAccountPolicy(CreatePrivatePathServiceGatewayAccountPolicyOptions createPrivatePathServiceGatewayAccountPolicyOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(createPrivatePathServiceGatewayAccountPolicyOptions,
+      "createPrivatePathServiceGatewayAccountPolicyOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("private_path_service_gateway_id", createPrivatePathServiceGatewayAccountPolicyOptions.privatePathServiceGatewayId());
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/private_path_service_gateways/{private_path_service_gateway_id}/account_policies", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "createPrivatePathServiceGatewayAccountPolicy");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    final JsonObject contentJson = new JsonObject();
+    contentJson.addProperty("access_policy", createPrivatePathServiceGatewayAccountPolicyOptions.accessPolicy());
+    contentJson.add("account", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createPrivatePathServiceGatewayAccountPolicyOptions.account()));
+    builder.bodyJson(contentJson);
+    ResponseConverter<PrivatePathServiceGatewayAccountPolicy> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<PrivatePathServiceGatewayAccountPolicy>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Delete an account policy for a private path service gateway.
+   *
+   * This request deletes an account policy. This operation cannot be reversed and it does not affect the `status` of
+   * any existing endpoint gateway bindings.
+   *
+   * @param deletePrivatePathServiceGatewayAccountPolicyOptions the {@link DeletePrivatePathServiceGatewayAccountPolicyOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a void result
+   */
+  public ServiceCall<Void> deletePrivatePathServiceGatewayAccountPolicy(DeletePrivatePathServiceGatewayAccountPolicyOptions deletePrivatePathServiceGatewayAccountPolicyOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(deletePrivatePathServiceGatewayAccountPolicyOptions,
+      "deletePrivatePathServiceGatewayAccountPolicyOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("private_path_service_gateway_id", deletePrivatePathServiceGatewayAccountPolicyOptions.privatePathServiceGatewayId());
+    pathParamsMap.put("id", deletePrivatePathServiceGatewayAccountPolicyOptions.id());
+    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/private_path_service_gateways/{private_path_service_gateway_id}/account_policies/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "deletePrivatePathServiceGatewayAccountPolicy");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Retrieve an account policy for a private path service gateway.
+   *
+   * This request retrieves a single account policy specified by the identifier in the URL.
+   *
+   * @param getPrivatePathServiceGatewayAccountPolicyOptions the {@link GetPrivatePathServiceGatewayAccountPolicyOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link PrivatePathServiceGatewayAccountPolicy}
+   */
+  public ServiceCall<PrivatePathServiceGatewayAccountPolicy> getPrivatePathServiceGatewayAccountPolicy(GetPrivatePathServiceGatewayAccountPolicyOptions getPrivatePathServiceGatewayAccountPolicyOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(getPrivatePathServiceGatewayAccountPolicyOptions,
+      "getPrivatePathServiceGatewayAccountPolicyOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("private_path_service_gateway_id", getPrivatePathServiceGatewayAccountPolicyOptions.privatePathServiceGatewayId());
+    pathParamsMap.put("id", getPrivatePathServiceGatewayAccountPolicyOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/private_path_service_gateways/{private_path_service_gateway_id}/account_policies/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getPrivatePathServiceGatewayAccountPolicy");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<PrivatePathServiceGatewayAccountPolicy> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<PrivatePathServiceGatewayAccountPolicy>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Update an account policy for a private path service gateway.
+   *
+   * This request updates an account policy with the information in a provided account policy patch. The account policy
+   * patch object is structured in the same way as a retrieved account policy and contains only the information to be
+   * updated.
+   *
+   * @param updatePrivatePathServiceGatewayAccountPolicyOptions the {@link UpdatePrivatePathServiceGatewayAccountPolicyOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link PrivatePathServiceGatewayAccountPolicy}
+   */
+  public ServiceCall<PrivatePathServiceGatewayAccountPolicy> updatePrivatePathServiceGatewayAccountPolicy(UpdatePrivatePathServiceGatewayAccountPolicyOptions updatePrivatePathServiceGatewayAccountPolicyOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(updatePrivatePathServiceGatewayAccountPolicyOptions,
+      "updatePrivatePathServiceGatewayAccountPolicyOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("private_path_service_gateway_id", updatePrivatePathServiceGatewayAccountPolicyOptions.privatePathServiceGatewayId());
+    pathParamsMap.put("id", updatePrivatePathServiceGatewayAccountPolicyOptions.id());
+    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/private_path_service_gateways/{private_path_service_gateway_id}/account_policies/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "updatePrivatePathServiceGatewayAccountPolicy");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithSerializeNulls().toJson(updatePrivatePathServiceGatewayAccountPolicyOptions.privatePathServiceGatewayAccountPolicyPatch()), "application/merge-patch+json");
+    ResponseConverter<PrivatePathServiceGatewayAccountPolicy> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<PrivatePathServiceGatewayAccountPolicy>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * List endpoint gateway bindings for a private path service gateway.
+   *
+   * This request lists endpoint gateway bindings for a private path service gateway. Each endpoint gateway binding is
+   * implicitly created when an endpoint gateway is created targeting the private path service gateway. The associated
+   * account policy is applied to all new endpoint gateway bindings. If an associated account policy doesn't exist, the
+   * private path service gateway's `default_access_policy` is used.
+   *
+   * The endpoint gateway bindings will be sorted by their `created_at` property values, with newest endpoint gateway
+   * bindings first. Endpoint gateway bindings with identical
+   * `created_at` property values will in turn be sorted by ascending `name` property values.
+   *
+   * @param listPrivatePathServiceGatewayEndpointGatewayBindingsOptions the {@link ListPrivatePathServiceGatewayEndpointGatewayBindingsOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link PrivatePathServiceGatewayEndpointGatewayBindingCollection}
+   */
+  public ServiceCall<PrivatePathServiceGatewayEndpointGatewayBindingCollection> listPrivatePathServiceGatewayEndpointGatewayBindings(ListPrivatePathServiceGatewayEndpointGatewayBindingsOptions listPrivatePathServiceGatewayEndpointGatewayBindingsOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(listPrivatePathServiceGatewayEndpointGatewayBindingsOptions,
+      "listPrivatePathServiceGatewayEndpointGatewayBindingsOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("private_path_service_gateway_id", listPrivatePathServiceGatewayEndpointGatewayBindingsOptions.privatePathServiceGatewayId());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/private_path_service_gateways/{private_path_service_gateway_id}/endpoint_gateway_bindings", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listPrivatePathServiceGatewayEndpointGatewayBindings");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    if (listPrivatePathServiceGatewayEndpointGatewayBindingsOptions.start() != null) {
+      builder.query("start", String.valueOf(listPrivatePathServiceGatewayEndpointGatewayBindingsOptions.start()));
+    }
+    if (listPrivatePathServiceGatewayEndpointGatewayBindingsOptions.limit() != null) {
+      builder.query("limit", String.valueOf(listPrivatePathServiceGatewayEndpointGatewayBindingsOptions.limit()));
+    }
+    if (listPrivatePathServiceGatewayEndpointGatewayBindingsOptions.status() != null) {
+      builder.query("status", String.valueOf(listPrivatePathServiceGatewayEndpointGatewayBindingsOptions.status()));
+    }
+    if (listPrivatePathServiceGatewayEndpointGatewayBindingsOptions.accountId() != null) {
+      builder.query("account.id", String.valueOf(listPrivatePathServiceGatewayEndpointGatewayBindingsOptions.accountId()));
+    }
+    ResponseConverter<PrivatePathServiceGatewayEndpointGatewayBindingCollection> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<PrivatePathServiceGatewayEndpointGatewayBindingCollection>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Retrieve an endpoint gateway binding for a private path service gateway.
+   *
+   * This request retrieves a single endpoint gateway binding specified by the identifier in the URL.
+   *
+   * @param getPrivatePathServiceGatewayEndpointGatewayBindingOptions the {@link GetPrivatePathServiceGatewayEndpointGatewayBindingOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link PrivatePathServiceGatewayEndpointGatewayBinding}
+   */
+  public ServiceCall<PrivatePathServiceGatewayEndpointGatewayBinding> getPrivatePathServiceGatewayEndpointGatewayBinding(GetPrivatePathServiceGatewayEndpointGatewayBindingOptions getPrivatePathServiceGatewayEndpointGatewayBindingOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(getPrivatePathServiceGatewayEndpointGatewayBindingOptions,
+      "getPrivatePathServiceGatewayEndpointGatewayBindingOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("private_path_service_gateway_id", getPrivatePathServiceGatewayEndpointGatewayBindingOptions.privatePathServiceGatewayId());
+    pathParamsMap.put("id", getPrivatePathServiceGatewayEndpointGatewayBindingOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/private_path_service_gateways/{private_path_service_gateway_id}/endpoint_gateway_bindings/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getPrivatePathServiceGatewayEndpointGatewayBinding");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<PrivatePathServiceGatewayEndpointGatewayBinding> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<PrivatePathServiceGatewayEndpointGatewayBinding>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Deny an endpoint gateway binding for a private path service gateway.
+   *
+   * This request denies a `pending` endpoint gateway request, and optionally sets the policy to deny future requests
+   * from the same account.
+   *
+   * @param denyPrivatePathServiceGatewayEndpointGatewayBindingOptions the {@link DenyPrivatePathServiceGatewayEndpointGatewayBindingOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a void result
+   */
+  public ServiceCall<Void> denyPrivatePathServiceGatewayEndpointGatewayBinding(DenyPrivatePathServiceGatewayEndpointGatewayBindingOptions denyPrivatePathServiceGatewayEndpointGatewayBindingOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(denyPrivatePathServiceGatewayEndpointGatewayBindingOptions,
+      "denyPrivatePathServiceGatewayEndpointGatewayBindingOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("private_path_service_gateway_id", denyPrivatePathServiceGatewayEndpointGatewayBindingOptions.privatePathServiceGatewayId());
+    pathParamsMap.put("id", denyPrivatePathServiceGatewayEndpointGatewayBindingOptions.id());
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/private_path_service_gateways/{private_path_service_gateway_id}/endpoint_gateway_bindings/{id}/deny", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "denyPrivatePathServiceGatewayEndpointGatewayBinding");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    final JsonObject contentJson = new JsonObject();
+    if (denyPrivatePathServiceGatewayEndpointGatewayBindingOptions.setAccountPolicy() != null) {
+      contentJson.addProperty("set_account_policy", denyPrivatePathServiceGatewayEndpointGatewayBindingOptions.setAccountPolicy());
+    }
+    builder.bodyJson(contentJson);
+    ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Permit an endpoint gateway binding for a private path service gateway.
+   *
+   * This request permits a `pending` endpoint gateway request, and optionally sets the policy to permit future requests
+   * from the same account.
+   *
+   * @param permitPrivatePathServiceGatewayEndpointGatewayBindingOptions the {@link PermitPrivatePathServiceGatewayEndpointGatewayBindingOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a void result
+   */
+  public ServiceCall<Void> permitPrivatePathServiceGatewayEndpointGatewayBinding(PermitPrivatePathServiceGatewayEndpointGatewayBindingOptions permitPrivatePathServiceGatewayEndpointGatewayBindingOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(permitPrivatePathServiceGatewayEndpointGatewayBindingOptions,
+      "permitPrivatePathServiceGatewayEndpointGatewayBindingOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("private_path_service_gateway_id", permitPrivatePathServiceGatewayEndpointGatewayBindingOptions.privatePathServiceGatewayId());
+    pathParamsMap.put("id", permitPrivatePathServiceGatewayEndpointGatewayBindingOptions.id());
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/private_path_service_gateways/{private_path_service_gateway_id}/endpoint_gateway_bindings/{id}/permit", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "permitPrivatePathServiceGatewayEndpointGatewayBinding");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    final JsonObject contentJson = new JsonObject();
+    if (permitPrivatePathServiceGatewayEndpointGatewayBindingOptions.setAccountPolicy() != null) {
+      contentJson.addProperty("set_account_policy", permitPrivatePathServiceGatewayEndpointGatewayBindingOptions.setAccountPolicy());
+    }
+    builder.bodyJson(contentJson);
+    ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Publish a private path service gateway.
+   *
+   * This request publishes a private path service gateway, allowing any account to request access to it.
+   *
+   * @param publishPrivatePathServiceGatewayOptions the {@link PublishPrivatePathServiceGatewayOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a void result
+   */
+  public ServiceCall<Void> publishPrivatePathServiceGateway(PublishPrivatePathServiceGatewayOptions publishPrivatePathServiceGatewayOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(publishPrivatePathServiceGatewayOptions,
+      "publishPrivatePathServiceGatewayOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("private_path_service_gateway_id", publishPrivatePathServiceGatewayOptions.privatePathServiceGatewayId());
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/private_path_service_gateways/{private_path_service_gateway_id}/publish", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "publishPrivatePathServiceGateway");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Revoke access to a private path service gateway for an account.
+   *
+   * This request revokes a consumer account. This operation cannot be reversed. The `status` of all endpoint gateway
+   * bindings associated with the specified private path service gateway become `denied`. If the specified account has
+   * an existing access policy, that policy will be updated to `denied`. Otherwise, a new `deny` access policy will be
+   * created for the account.
+   *
+   * @param revokeAccountForPrivatePathServiceGatewayOptions the {@link RevokeAccountForPrivatePathServiceGatewayOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a void result
+   */
+  public ServiceCall<Void> revokeAccountForPrivatePathServiceGateway(RevokeAccountForPrivatePathServiceGatewayOptions revokeAccountForPrivatePathServiceGatewayOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(revokeAccountForPrivatePathServiceGatewayOptions,
+      "revokeAccountForPrivatePathServiceGatewayOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("private_path_service_gateway_id", revokeAccountForPrivatePathServiceGatewayOptions.privatePathServiceGatewayId());
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/private_path_service_gateways/{private_path_service_gateway_id}/revoke_account", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "revokeAccountForPrivatePathServiceGateway");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    final JsonObject contentJson = new JsonObject();
+    contentJson.add("account", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(revokeAccountForPrivatePathServiceGatewayOptions.account()));
+    builder.bodyJson(contentJson);
+    ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Unpublish a private path service gateway.
+   *
+   * This request unpublishes a private path service gateway. For this request to succeed, any existing access from
+   * other accounts must first be revoked. Once unpublished, access will again be restricted to the account that created
+   * this private path service gateway.
+   *
+   * @param unpublishPrivatePathServiceGatewayOptions the {@link UnpublishPrivatePathServiceGatewayOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a void result
+   */
+  public ServiceCall<Void> unpublishPrivatePathServiceGateway(UnpublishPrivatePathServiceGatewayOptions unpublishPrivatePathServiceGatewayOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(unpublishPrivatePathServiceGatewayOptions,
+      "unpublishPrivatePathServiceGatewayOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("private_path_service_gateway_id", unpublishPrivatePathServiceGatewayOptions.privatePathServiceGatewayId());
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/private_path_service_gateways/{private_path_service_gateway_id}/unpublish", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "unpublishPrivatePathServiceGateway");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
     return createServiceCall(builder.build(), responseConverter);
   }
 

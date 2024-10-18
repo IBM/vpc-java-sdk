@@ -69,7 +69,7 @@ public class SnapshotCollection extends GenericModel {
   /**
    * Gets the snapshots.
    *
-   * Collection of snapshots.
+   * A page of snapshots.
    *
    * @return the snapshots
    */

@@ -42,6 +42,7 @@ public class LoadBalancerPoolHealthMonitor extends GenericModel {
   protected Long port;
   protected Long timeout;
   protected String type;
+  protected Object url;
   @SerializedName("url_path")
   protected String urlPath;
 
@@ -108,9 +109,23 @@ public class LoadBalancerPoolHealthMonitor extends GenericModel {
   }
 
   /**
+   * Gets the url.
+   *
+   * The health check URL path, in the format of an [origin-form request
+   * target](https://tools.ietf.org/html/rfc7230#section-5.3.1).
+   *
+   * If `type` is `tcp`, this property will be absent.
+   *
+   * @return the url
+   */
+  public Object getUrl() {
+    return url;
+  }
+
+  /**
    * Gets the urlPath.
    *
-   * The health check URL path. Applicable when `type` is `http` or `https`.
+   * The health check URL path.  If specified, `type` must be `http` or `https`.
    *
    * Must be in the format of an [origin-form request target](https://tools.ietf.org/html/rfc7230#section-5.3.1).
    *

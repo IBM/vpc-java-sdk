@@ -13,9 +13,9 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.ibm.cloud.is.vpc.v1.model.Deleted;
 import com.ibm.cloud.is.vpc.v1.model.IP;
 import com.ibm.cloud.is.vpc.v1.model.ReservedIPReference;
-import com.ibm.cloud.is.vpc.v1.model.ReservedIPReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayMember;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayMemberHealthReason;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayMemberLifecycleReason;

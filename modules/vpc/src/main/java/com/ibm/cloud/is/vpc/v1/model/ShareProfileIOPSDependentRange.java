@@ -22,8 +22,6 @@ public class ShareProfileIOPSDependentRange extends ShareProfileIOPS {
    * The type for this profile field.
    */
   public interface Type {
-    /** dependent. */
-    String DEPENDENT = "dependent";
     /** dependent_range. */
     String DEPENDENT_RANGE = "dependent_range";
   }

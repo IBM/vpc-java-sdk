@@ -29,7 +29,7 @@ public class BackupPolicyPlanReference extends GenericModel {
     String BACKUP_POLICY_PLAN = "backup_policy_plan";
   }
 
-  protected BackupPolicyPlanReferenceDeleted deleted;
+  protected Deleted deleted;
   protected String href;
   protected String id;
   protected String name;
@@ -47,7 +47,7 @@ public class BackupPolicyPlanReference extends GenericModel {
    *
    * @return the deleted
    */
-  public BackupPolicyPlanReferenceDeleted getDeleted() {
+  public Deleted getDeleted() {
     return deleted;
   }
 
