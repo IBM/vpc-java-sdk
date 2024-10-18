@@ -36,7 +36,7 @@ public class ShareAccessorBindingCollection extends GenericModel {
   /**
    * Gets the accessorBindings.
    *
-   * Collection of share accessor bindings.
+   * A page of accessor bindings for the share.
    *
    * @return the accessorBindings
    */

@@ -65,7 +65,10 @@ public class VPNServer extends GenericModel {
   }
 
   /**
-   * The transport protocol used by this VPN server.
+   * The transport protocol to use for this VPN server.
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface Protocol {
     /** tcp. */
@@ -361,7 +364,10 @@ public class VPNServer extends GenericModel {
   /**
    * Gets the protocol.
    *
-   * The transport protocol used by this VPN server.
+   * The transport protocol to use for this VPN server.
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the protocol
    */

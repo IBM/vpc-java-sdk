@@ -36,7 +36,7 @@ public class VPCDNSResolutionBindingCollection extends GenericModel {
   /**
    * Gets the dnsResolutionBindings.
    *
-   * Collection of DNS resolution bindings for this VPC.
+   * A page of DNS resolution bindings for the VPC.
    *
    * @return the dnsResolutionBindings
    */

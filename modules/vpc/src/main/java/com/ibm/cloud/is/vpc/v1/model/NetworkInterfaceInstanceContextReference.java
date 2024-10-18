@@ -29,7 +29,7 @@ public class NetworkInterfaceInstanceContextReference extends GenericModel {
     String NETWORK_INTERFACE = "network_interface";
   }
 
-  protected NetworkInterfaceInstanceContextReferenceDeleted deleted;
+  protected Deleted deleted;
   protected String href;
   protected String id;
   protected String name;
@@ -49,7 +49,7 @@ public class NetworkInterfaceInstanceContextReference extends GenericModel {
    *
    * @return the deleted
    */
-  public NetworkInterfaceInstanceContextReferenceDeleted getDeleted() {
+  public Deleted getDeleted() {
     return deleted;
   }
 

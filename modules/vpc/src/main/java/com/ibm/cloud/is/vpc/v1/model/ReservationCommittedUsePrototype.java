@@ -26,9 +26,6 @@ public class ReservationCommittedUsePrototype extends GenericModel {
    * - `release`: Release any available capacity and let the reservation expire.
    * - `renew`: Renew for another term, provided the term remains listed in the
    *   `reservation_terms` for the profile. Otherwise, let the reservation expire.
-   *
-   * The enumerated values for this property may
-   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface ExpirationPolicy {
     /** release. */
@@ -130,9 +127,6 @@ public class ReservationCommittedUsePrototype extends GenericModel {
    * - `release`: Release any available capacity and let the reservation expire.
    * - `renew`: Renew for another term, provided the term remains listed in the
    *   `reservation_terms` for the profile. Otherwise, let the reservation expire.
-   *
-   * The enumerated values for this property may
-   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the expirationPolicy
    */

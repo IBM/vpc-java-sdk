@@ -29,7 +29,7 @@ public class ZoneCollection extends GenericModel {
   /**
    * Gets the zones.
    *
-   * Collection of zones.
+   * The zones for the region.
    *
    * @return the zones
    */

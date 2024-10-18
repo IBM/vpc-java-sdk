@@ -22,7 +22,7 @@ public class PublicGatewayFloatingIp extends GenericModel {
 
   protected String address;
   protected String crn;
-  protected FloatingIPReferenceDeleted deleted;
+  protected Deleted deleted;
   protected String href;
   protected String id;
   protected String name;
@@ -59,7 +59,7 @@ public class PublicGatewayFloatingIp extends GenericModel {
    *
    * @return the deleted
    */
-  public FloatingIPReferenceDeleted getDeleted() {
+  public Deleted getDeleted() {
     return deleted;
   }
 

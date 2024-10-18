@@ -40,7 +40,10 @@ public class InstanceGroupManagerAction extends GenericModel {
    * - `completed`: Action was completed successfully
    * - `failed`: Action could not be completed successfully
    * - `incompatible`: Action parameters are not compatible with the group or manager
-   * - `omitted`: Action was not applied because this action's manager was disabled.
+   * - `omitted`: Action was not applied because this action's manager was disabled
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface Status {
     /** active. */
@@ -94,8 +97,7 @@ public class InstanceGroupManagerAction extends GenericModel {
    * Gets the autoDelete.
    *
    * Indicates whether this scheduled action will be automatically deleted after it has completed and
-   * `auto_delete_timeout` hours have passed. At present, this is always
-   * `true`, but may be modifiable in the future.
+   * `auto_delete_timeout` hours have passed.
    *
    * @return the autoDelete
    */
@@ -107,8 +109,7 @@ public class InstanceGroupManagerAction extends GenericModel {
    * Gets the autoDeleteTimeout.
    *
    * If `auto_delete` is `true`, and this scheduled action has finished, the hours after which it will be automatically
-   * deleted. If the value is `0`, the action will be deleted once it has finished. This value may be modifiable in the
-   * future.
+   * deleted. If the value is `0`, the action will be deleted once it has finished.
    *
    * @return the autoDeleteTimeout
    */
@@ -180,7 +181,10 @@ public class InstanceGroupManagerAction extends GenericModel {
    * - `completed`: Action was completed successfully
    * - `failed`: Action could not be completed successfully
    * - `incompatible`: Action parameters are not compatible with the group or manager
-   * - `omitted`: Action was not applied because this action's manager was disabled.
+   * - `omitted`: Action was not applied because this action's manager was disabled
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the status
    */

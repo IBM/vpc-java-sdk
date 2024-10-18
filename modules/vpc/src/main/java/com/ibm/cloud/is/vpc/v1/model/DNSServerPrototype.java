@@ -49,15 +49,6 @@ public class DNSServerPrototype extends GenericModel {
     }
 
     /**
-     * Instantiates a new builder with required properties.
-     *
-     * @param address the address
-     */
-    public Builder(String address) {
-      this.address = address;
-    }
-
-    /**
      * Builds a DNSServerPrototype.
      *
      * @return the new DNSServerPrototype instance
@@ -92,8 +83,6 @@ public class DNSServerPrototype extends GenericModel {
   protected DNSServerPrototype() { }
 
   protected DNSServerPrototype(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.address,
-      "address cannot be null");
     address = builder.address;
     zoneAffinity = builder.zoneAffinity;
   }
@@ -110,10 +99,7 @@ public class DNSServerPrototype extends GenericModel {
   /**
    * Gets the address.
    *
-   * The IP address.
-   *
-   * This property may [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) to support IPv6 addresses in
-   * the future.
+   * The DNS server IPv4 address.
    *
    * @return the address
    */

@@ -28,7 +28,10 @@ public class VPNGatewayConnectionRouteMode extends VPNGatewayConnection {
     discriminatorMapping.put("none", VPNGatewayConnectionRouteModeVPNGatewayConnectionStaticRouteMode.class);
   }
   /**
-   * The authentication mode. Only `psk` is currently supported.
+   * The authentication mode.
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface AuthenticationMode {
     /** psk. */
@@ -53,6 +56,9 @@ public class VPNGatewayConnectionRouteMode extends VPNGatewayConnection {
 
   /**
    * The mode of the VPN gateway.
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface Mode {
     /** policy. */

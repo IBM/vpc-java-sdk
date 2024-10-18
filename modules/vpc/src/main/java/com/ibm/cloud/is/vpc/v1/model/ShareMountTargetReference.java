@@ -29,7 +29,7 @@ public class ShareMountTargetReference extends GenericModel {
     String SHARE_MOUNT_TARGET = "share_mount_target";
   }
 
-  protected ShareMountTargetReferenceDeleted deleted;
+  protected Deleted deleted;
   protected String href;
   protected String id;
   protected String name;
@@ -46,7 +46,7 @@ public class ShareMountTargetReference extends GenericModel {
    *
    * @return the deleted
    */
-  public ShareMountTargetReferenceDeleted getDeleted() {
+  public Deleted getDeleted() {
     return deleted;
   }
 

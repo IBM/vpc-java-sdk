@@ -32,9 +32,9 @@ public class GetOperatingSystemOptionsTest {
   @Test
   public void testGetOperatingSystemOptions() throws Throwable {
     GetOperatingSystemOptions getOperatingSystemOptionsModel = new GetOperatingSystemOptions.Builder()
-      .name("testString")
+      .name("red-7-amd64")
       .build();
-    assertEquals(getOperatingSystemOptionsModel.name(), "testString");
+    assertEquals(getOperatingSystemOptionsModel.name(), "red-7-amd64");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

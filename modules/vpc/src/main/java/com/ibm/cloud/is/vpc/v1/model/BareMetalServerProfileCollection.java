@@ -69,7 +69,7 @@ public class BareMetalServerProfileCollection extends GenericModel {
   /**
    * Gets the profiles.
    *
-   * Collection of bare metal server profiles.
+   * A page of bare metal server profiles.
    *
    * @return the profiles
    */

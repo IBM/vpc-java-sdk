@@ -34,7 +34,7 @@ public class ListVolumesOptionsTest {
     ListVolumesOptions listVolumesOptionsModel = new ListVolumesOptions.Builder()
       .start("testString")
       .limit(Long.valueOf("50"))
-      .name("testString")
+      .name("my-name")
       .attachmentState("attached")
       .encryption("provider_managed")
       .operatingSystemFamily("Ubuntu Server")
@@ -44,7 +44,7 @@ public class ListVolumesOptionsTest {
       .build();
     assertEquals(listVolumesOptionsModel.start(), "testString");
     assertEquals(listVolumesOptionsModel.limit(), Long.valueOf("50"));
-    assertEquals(listVolumesOptionsModel.name(), "testString");
+    assertEquals(listVolumesOptionsModel.name(), "my-name");
     assertEquals(listVolumesOptionsModel.attachmentState(), "attached");
     assertEquals(listVolumesOptionsModel.encryption(), "provider_managed");
     assertEquals(listVolumesOptionsModel.operatingSystemFamily(), "Ubuntu Server");

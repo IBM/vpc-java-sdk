@@ -29,7 +29,10 @@ public class InstanceGroupMembership extends GenericModel {
    * - `failed`: Membership was unable to maintain dependent resources
    * - `healthy`: Membership is active and serving in the group
    * - `pending`: Membership is waiting for dependent resources
-   * - `unhealthy`: Membership has unhealthy dependent resources.
+   * - `unhealthy`: Membership has unhealthy dependent resources
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface Status {
     /** deleting. */
@@ -152,7 +155,10 @@ public class InstanceGroupMembership extends GenericModel {
    * - `failed`: Membership was unable to maintain dependent resources
    * - `healthy`: Membership is active and serving in the group
    * - `pending`: Membership is waiting for dependent resources
-   * - `unhealthy`: Membership has unhealthy dependent resources.
+   * - `unhealthy`: Membership has unhealthy dependent resources
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the status
    */

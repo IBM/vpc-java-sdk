@@ -32,9 +32,9 @@ public class GetInstanceProfileOptionsTest {
   @Test
   public void testGetInstanceProfileOptions() throws Throwable {
     GetInstanceProfileOptions getInstanceProfileOptionsModel = new GetInstanceProfileOptions.Builder()
-      .name("testString")
+      .name("mx2-host-152x1216")
       .build();
-    assertEquals(getInstanceProfileOptionsModel.name(), "testString");
+    assertEquals(getInstanceProfileOptionsModel.name(), "mx2-host-152x1216");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

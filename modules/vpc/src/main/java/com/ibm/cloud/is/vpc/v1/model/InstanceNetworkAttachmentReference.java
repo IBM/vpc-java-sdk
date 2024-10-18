@@ -29,7 +29,7 @@ public class InstanceNetworkAttachmentReference extends GenericModel {
     String INSTANCE_NETWORK_ATTACHMENT = "instance_network_attachment";
   }
 
-  protected InstanceNetworkAttachmentReferenceDeleted deleted;
+  protected Deleted deleted;
   protected String href;
   protected String id;
   protected String name;
@@ -38,6 +38,8 @@ public class InstanceNetworkAttachmentReference extends GenericModel {
   @SerializedName("resource_type")
   protected String resourceType;
   protected SubnetReference subnet;
+  @SerializedName("virtual_network_interface")
+  protected VirtualNetworkInterfaceReferenceAttachmentContext virtualNetworkInterface;
 
   protected InstanceNetworkAttachmentReference() { }
 
@@ -49,7 +51,7 @@ public class InstanceNetworkAttachmentReference extends GenericModel {
    *
    * @return the deleted
    */
-  public InstanceNetworkAttachmentReferenceDeleted getDeleted() {
+  public Deleted getDeleted() {
     return deleted;
   }
 
@@ -118,6 +120,17 @@ public class InstanceNetworkAttachmentReference extends GenericModel {
    */
   public SubnetReference getSubnet() {
     return subnet;
+  }
+
+  /**
+   * Gets the virtualNetworkInterface.
+   *
+   * The virtual network interface for this instance network attachment.
+   *
+   * @return the virtualNetworkInterface
+   */
+  public VirtualNetworkInterfaceReferenceAttachmentContext getVirtualNetworkInterface() {
+    return virtualNetworkInterface;
   }
 }
 

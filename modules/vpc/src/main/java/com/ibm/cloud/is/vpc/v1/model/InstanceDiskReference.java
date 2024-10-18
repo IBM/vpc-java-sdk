@@ -29,7 +29,7 @@ public class InstanceDiskReference extends GenericModel {
     String INSTANCE_DISK = "instance_disk";
   }
 
-  protected InstanceDiskReferenceDeleted deleted;
+  protected Deleted deleted;
   protected String href;
   protected String id;
   protected String name;
@@ -46,7 +46,7 @@ public class InstanceDiskReference extends GenericModel {
    *
    * @return the deleted
    */
-  public InstanceDiskReferenceDeleted getDeleted() {
+  public Deleted getDeleted() {
     return deleted;
   }
 

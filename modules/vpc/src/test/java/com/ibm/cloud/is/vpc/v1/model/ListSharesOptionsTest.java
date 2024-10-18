@@ -35,14 +35,14 @@ public class ListSharesOptionsTest {
       .start("testString")
       .limit(Long.valueOf("50"))
       .resourceGroupId("testString")
-      .name("testString")
+      .name("my-name")
       .sort("name")
       .replicationRole("none")
       .build();
     assertEquals(listSharesOptionsModel.start(), "testString");
     assertEquals(listSharesOptionsModel.limit(), Long.valueOf("50"));
     assertEquals(listSharesOptionsModel.resourceGroupId(), "testString");
-    assertEquals(listSharesOptionsModel.name(), "testString");
+    assertEquals(listSharesOptionsModel.name(), "my-name");
     assertEquals(listSharesOptionsModel.sort(), "name");
     assertEquals(listSharesOptionsModel.replicationRole(), "none");
   }

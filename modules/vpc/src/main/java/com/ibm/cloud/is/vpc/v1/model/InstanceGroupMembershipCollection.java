@@ -57,7 +57,7 @@ public class InstanceGroupMembershipCollection extends GenericModel {
   /**
    * Gets the memberships.
    *
-   * Collection of instance group memberships.
+   * A page of memberships for the instance group.
    *
    * @return the memberships
    */

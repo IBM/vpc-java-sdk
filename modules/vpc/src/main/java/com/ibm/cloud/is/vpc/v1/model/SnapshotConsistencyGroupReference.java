@@ -30,7 +30,7 @@ public class SnapshotConsistencyGroupReference extends GenericModel {
   }
 
   protected String crn;
-  protected SnapshotConsistencyGroupReferenceDeleted deleted;
+  protected Deleted deleted;
   protected String href;
   protected String id;
   protected String name;
@@ -58,7 +58,7 @@ public class SnapshotConsistencyGroupReference extends GenericModel {
    *
    * @return the deleted
    */
-  public SnapshotConsistencyGroupReferenceDeleted getDeleted() {
+  public Deleted getDeleted() {
     return deleted;
   }
 

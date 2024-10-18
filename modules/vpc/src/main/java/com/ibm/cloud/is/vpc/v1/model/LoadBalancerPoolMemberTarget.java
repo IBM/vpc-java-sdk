@@ -27,7 +27,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class LoadBalancerPoolMemberTarget extends GenericModel {
 
   protected String crn;
-  protected InstanceReferenceDeleted deleted;
+  protected Deleted deleted;
   protected String href;
   protected String id;
   protected String name;
@@ -54,7 +54,7 @@ public class LoadBalancerPoolMemberTarget extends GenericModel {
    *
    * @return the deleted
    */
-  public InstanceReferenceDeleted getDeleted() {
+  public Deleted getDeleted() {
     return deleted;
   }
 

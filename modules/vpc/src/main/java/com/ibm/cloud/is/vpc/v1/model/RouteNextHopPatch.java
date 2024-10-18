@@ -16,8 +16,9 @@ package com.ibm.cloud.is.vpc.v1.model;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * If `action` is `deliver`, the next hop that packets will be delivered to. For other
- * `action` values, specify `0.0.0.0` or remove it by specifying `null`.
+ * If `action` is `deliver`, the next hop that packets will be delivered to (must not be
+ * `0.0.0.0`). For other `action` values, specify `0.0.0.0` or remove it by specifying
+ * `null`.
  *
  * At most two routes per `zone` in a table can have the same `destination` and `priority`, and only when each route has
  * an `action` of `deliver` and `next_hop` is an IP address.
@@ -62,7 +63,7 @@ public class RouteNextHopPatch extends GenericModel {
   /**
    * Gets the href.
    *
-   * The VPN connection's canonical URL.
+   * The URL for this VPN gateway connection.
    *
    * @return the href
    */

@@ -29,7 +29,7 @@ public class DedicatedHostDiskCollection extends GenericModel {
   /**
    * Gets the disks.
    *
-   * Collection of the dedicated host's disks.
+   * The disks for the dedicated host.
    *
    * @return the disks
    */

@@ -47,7 +47,7 @@ public class NetworkACLRuleItemNetworkACLRuleProtocolAll extends NetworkACLRuleI
   }
 
   /**
-   * The protocol to enforce.
+   * The network protocol.
    */
   public interface Protocol {
     /** all. */

@@ -34,6 +34,9 @@ public class LoadBalancerProfile extends GenericModel {
     String NETWORK = "network";
   }
 
+  @SerializedName("access_modes")
+  protected LoadBalancerProfileAccessModes accessModes;
+  protected LoadBalancerProfileAvailability availability;
   protected String family;
   protected String href;
   @SerializedName("instance_groups_supported")
@@ -45,10 +48,30 @@ public class LoadBalancerProfile extends GenericModel {
   protected LoadBalancerProfileRouteModeSupported routeModeSupported;
   @SerializedName("security_groups_supported")
   protected LoadBalancerProfileSecurityGroupsSupported securityGroupsSupported;
+  @SerializedName("source_ip_session_persistence_supported")
+  protected LoadBalancerProfileSourceIPSessionPersistenceSupported sourceIpSessionPersistenceSupported;
   @SerializedName("udp_supported")
   protected LoadBalancerProfileUDPSupported udpSupported;
 
   protected LoadBalancerProfile() { }
+
+  /**
+   * Gets the accessModes.
+   *
+   * @return the accessModes
+   */
+  public LoadBalancerProfileAccessModes getAccessModes() {
+    return accessModes;
+  }
+
+  /**
+   * Gets the availability.
+   *
+   * @return the availability
+   */
+  public LoadBalancerProfileAvailability getAvailability() {
+    return availability;
+  }
 
   /**
    * Gets the family.
@@ -122,6 +145,15 @@ public class LoadBalancerProfile extends GenericModel {
    */
   public LoadBalancerProfileSecurityGroupsSupported getSecurityGroupsSupported() {
     return securityGroupsSupported;
+  }
+
+  /**
+   * Gets the sourceIpSessionPersistenceSupported.
+   *
+   * @return the sourceIpSessionPersistenceSupported
+   */
+  public LoadBalancerProfileSourceIPSessionPersistenceSupported getSourceIpSessionPersistenceSupported() {
+    return sourceIpSessionPersistenceSupported;
   }
 
   /**

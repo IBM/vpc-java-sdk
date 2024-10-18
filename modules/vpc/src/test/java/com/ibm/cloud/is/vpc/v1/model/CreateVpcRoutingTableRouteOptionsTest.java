@@ -14,7 +14,7 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.CreateVpcRoutingTableRouteOptions;
-import com.ibm.cloud.is.vpc.v1.model.RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIPRouteNextHopPrototypeRouteNextHopIPRouteNextHopIPSentinelIP;
+import com.ibm.cloud.is.vpc.v1.model.RouteNextHopPrototypeRouteNextHopIPRouteNextHopIPSentinelIP;
 import com.ibm.cloud.is.vpc.v1.model.ZoneIdentityByName;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
@@ -38,10 +38,10 @@ public class CreateVpcRoutingTableRouteOptionsTest {
       .build();
     assertEquals(zoneIdentityModel.name(), "us-south-1");
 
-    RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIPRouteNextHopPrototypeRouteNextHopIPRouteNextHopIPSentinelIP routePrototypeNextHopModel = new RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIPRouteNextHopPrototypeRouteNextHopIPRouteNextHopIPSentinelIP.Builder()
+    RouteNextHopPrototypeRouteNextHopIPRouteNextHopIPSentinelIP routeNextHopPrototypeModel = new RouteNextHopPrototypeRouteNextHopIPRouteNextHopIPSentinelIP.Builder()
       .address("0.0.0.0")
       .build();
-    assertEquals(routePrototypeNextHopModel.address(), "0.0.0.0");
+    assertEquals(routeNextHopPrototypeModel.address(), "0.0.0.0");
 
     CreateVpcRoutingTableRouteOptions createVpcRoutingTableRouteOptionsModel = new CreateVpcRoutingTableRouteOptions.Builder()
       .vpcId("testString")
@@ -51,7 +51,7 @@ public class CreateVpcRoutingTableRouteOptionsTest {
       .action("deliver")
       .advertise(false)
       .name("my-route-1")
-      .nextHop(routePrototypeNextHopModel)
+      .nextHop(routeNextHopPrototypeModel)
       .priority(Long.valueOf("1"))
       .build();
     assertEquals(createVpcRoutingTableRouteOptionsModel.vpcId(), "testString");
@@ -61,7 +61,7 @@ public class CreateVpcRoutingTableRouteOptionsTest {
     assertEquals(createVpcRoutingTableRouteOptionsModel.action(), "deliver");
     assertEquals(createVpcRoutingTableRouteOptionsModel.advertise(), Boolean.valueOf(false));
     assertEquals(createVpcRoutingTableRouteOptionsModel.name(), "my-route-1");
-    assertEquals(createVpcRoutingTableRouteOptionsModel.nextHop(), routePrototypeNextHopModel);
+    assertEquals(createVpcRoutingTableRouteOptionsModel.nextHop(), routeNextHopPrototypeModel);
     assertEquals(createVpcRoutingTableRouteOptionsModel.priority(), Long.valueOf("1"));
   }
 

@@ -33,25 +33,25 @@ public class KeyPatchTest {
   @Test
   public void testKeyPatch() throws Throwable {
     KeyPatch keyPatchModel = new KeyPatch.Builder()
-      .name("my-key")
+      .name("my-key-1")
       .build();
-    assertEquals(keyPatchModel.name(), "my-key");
+    assertEquals(keyPatchModel.name(), "my-key-1");
 
     String json = TestUtilities.serialize(keyPatchModel);
 
     KeyPatch keyPatchModelNew = TestUtilities.deserialize(json, KeyPatch.class);
     assertTrue(keyPatchModelNew instanceof KeyPatch);
-    assertEquals(keyPatchModelNew.name(), "my-key");
+    assertEquals(keyPatchModelNew.name(), "my-key-1");
   }
   @Test
   public void testKeyPatchAsPatch() throws Throwable {
     KeyPatch keyPatchModel = new KeyPatch.Builder()
-      .name("my-key")
+      .name("my-key-1")
       .build();
 
     Map<String, Object> mergePatch = keyPatchModel.asPatch();
 
-    assertEquals(mergePatch.get("name"), "my-key");
+    assertEquals(mergePatch.get("name"), "my-key-1");
   }
 
 }

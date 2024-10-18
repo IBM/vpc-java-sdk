@@ -25,6 +25,9 @@ public class VolumeAttachment extends GenericModel {
 
   /**
    * The status of this volume attachment.
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface Status {
     /** attached. */
@@ -39,6 +42,9 @@ public class VolumeAttachment extends GenericModel {
 
   /**
    * The type of volume attachment.
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface Type {
     /** boot. */
@@ -147,6 +153,9 @@ public class VolumeAttachment extends GenericModel {
    *
    * The status of this volume attachment.
    *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
+   *
    * @return the status
    */
   public String getStatus() {
@@ -157,6 +166,9 @@ public class VolumeAttachment extends GenericModel {
    * Gets the type.
    *
    * The type of volume attachment.
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the type
    */

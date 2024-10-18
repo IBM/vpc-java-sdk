@@ -32,15 +32,15 @@ public class OperatingSystemIdentityByNameTest {
   @Test
   public void testOperatingSystemIdentityByName() throws Throwable {
     OperatingSystemIdentityByName operatingSystemIdentityByNameModel = new OperatingSystemIdentityByName.Builder()
-      .name("ubuntu-16-amd64")
+      .name("ubuntu-24-04-amd64")
       .build();
-    assertEquals(operatingSystemIdentityByNameModel.name(), "ubuntu-16-amd64");
+    assertEquals(operatingSystemIdentityByNameModel.name(), "ubuntu-24-04-amd64");
 
     String json = TestUtilities.serialize(operatingSystemIdentityByNameModel);
 
     OperatingSystemIdentityByName operatingSystemIdentityByNameModelNew = TestUtilities.deserialize(json, OperatingSystemIdentityByName.class);
     assertTrue(operatingSystemIdentityByNameModelNew instanceof OperatingSystemIdentityByName);
-    assertEquals(operatingSystemIdentityByNameModelNew.name(), "ubuntu-16-amd64");
+    assertEquals(operatingSystemIdentityByNameModelNew.name(), "ubuntu-24-04-amd64");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

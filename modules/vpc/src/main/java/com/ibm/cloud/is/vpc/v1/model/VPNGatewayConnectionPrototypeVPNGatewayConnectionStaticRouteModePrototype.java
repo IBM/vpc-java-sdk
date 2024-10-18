@@ -54,6 +54,7 @@ public class VPNGatewayConnectionPrototypeVPNGatewayConnectionStaticRouteModePro
     private VPNGatewayConnectionIPsecPolicyPrototype ipsecPolicy;
     private String name;
     private String psk;
+    private Boolean distributeTraffic;
     private VPNGatewayConnectionStaticRouteModeLocalPrototype local;
     private VPNGatewayConnectionStaticRouteModePeerPrototype peer;
     private String routingProtocol;
@@ -73,6 +74,7 @@ public class VPNGatewayConnectionPrototypeVPNGatewayConnectionStaticRouteModePro
       this.psk = vpnGatewayConnectionPrototypeVpnGatewayConnectionStaticRouteModePrototype.psk;
       this.local = (VPNGatewayConnectionStaticRouteModeLocalPrototype) vpnGatewayConnectionPrototypeVpnGatewayConnectionStaticRouteModePrototype.local;
       this.peer = (VPNGatewayConnectionStaticRouteModePeerPrototype) vpnGatewayConnectionPrototypeVpnGatewayConnectionStaticRouteModePrototype.peer;
+      this.distributeTraffic = vpnGatewayConnectionPrototypeVpnGatewayConnectionStaticRouteModePrototype.distributeTraffic;
       this.routingProtocol = vpnGatewayConnectionPrototypeVpnGatewayConnectionStaticRouteModePrototype.routingProtocol;
     }
 
@@ -180,6 +182,17 @@ public class VPNGatewayConnectionPrototypeVPNGatewayConnectionStaticRouteModePro
     }
 
     /**
+     * Set the distributeTraffic.
+     *
+     * @param distributeTraffic the distributeTraffic
+     * @return the VPNGatewayConnectionPrototypeVPNGatewayConnectionStaticRouteModePrototype builder
+     */
+    public Builder distributeTraffic(Boolean distributeTraffic) {
+      this.distributeTraffic = distributeTraffic;
+      return this;
+    }
+
+    /**
      * Set the local.
      *
      * @param local the local
@@ -227,6 +240,7 @@ public class VPNGatewayConnectionPrototypeVPNGatewayConnectionStaticRouteModePro
     ipsecPolicy = builder.ipsecPolicy;
     name = builder.name;
     psk = builder.psk;
+    distributeTraffic = builder.distributeTraffic;
     local = builder.local;
     peer = builder.peer;
     routingProtocol = builder.routingProtocol;

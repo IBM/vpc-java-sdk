@@ -144,7 +144,7 @@ public class UpdateShareMountTargetOptions extends GenericModel {
   /**
    * Gets the id.
    *
-   * The share mount target identifier.
+   * The file share mount target identifier.
    *
    * @return the id
    */

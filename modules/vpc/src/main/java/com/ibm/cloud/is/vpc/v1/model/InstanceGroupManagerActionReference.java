@@ -29,7 +29,7 @@ public class InstanceGroupManagerActionReference extends GenericModel {
     String INSTANCE_GROUP_MANAGER_ACTION = "instance_group_manager_action";
   }
 
-  protected InstanceGroupManagerActionReferenceDeleted deleted;
+  protected Deleted deleted;
   protected String href;
   protected String id;
   protected String name;
@@ -46,7 +46,7 @@ public class InstanceGroupManagerActionReference extends GenericModel {
    *
    * @return the deleted
    */
-  public InstanceGroupManagerActionReferenceDeleted getDeleted() {
+  public Deleted getDeleted() {
     return deleted;
   }
 

@@ -29,7 +29,7 @@ public class RegionCollection extends GenericModel {
   /**
    * Gets the regions.
    *
-   * Collection of regions.
+   * The regions for the account.
    *
    * @return the regions
    */

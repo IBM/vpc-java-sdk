@@ -15,6 +15,7 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 import java.util.Map;
 
+import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 import com.ibm.cloud.sdk.core.util.GsonSingleton;
 
@@ -23,12 +24,15 @@ import com.ibm.cloud.sdk.core.util.GsonSingleton;
  */
 public class InstanceGroupMembershipPatch extends GenericModel {
 
+  @SerializedName("delete_instance_on_membership_delete")
+  protected Boolean deleteInstanceOnMembershipDelete;
   protected String name;
 
   /**
    * Builder.
    */
   public static class Builder {
+    private Boolean deleteInstanceOnMembershipDelete;
     private String name;
 
     /**
@@ -37,6 +41,7 @@ public class InstanceGroupMembershipPatch extends GenericModel {
      * @param instanceGroupMembershipPatch the instance to initialize the Builder with
      */
     private Builder(InstanceGroupMembershipPatch instanceGroupMembershipPatch) {
+      this.deleteInstanceOnMembershipDelete = instanceGroupMembershipPatch.deleteInstanceOnMembershipDelete;
       this.name = instanceGroupMembershipPatch.name;
     }
 
@@ -56,6 +61,17 @@ public class InstanceGroupMembershipPatch extends GenericModel {
     }
 
     /**
+     * Set the deleteInstanceOnMembershipDelete.
+     *
+     * @param deleteInstanceOnMembershipDelete the deleteInstanceOnMembershipDelete
+     * @return the InstanceGroupMembershipPatch builder
+     */
+    public Builder deleteInstanceOnMembershipDelete(Boolean deleteInstanceOnMembershipDelete) {
+      this.deleteInstanceOnMembershipDelete = deleteInstanceOnMembershipDelete;
+      return this;
+    }
+
+    /**
      * Set the name.
      *
      * @param name the name
@@ -70,6 +86,7 @@ public class InstanceGroupMembershipPatch extends GenericModel {
   protected InstanceGroupMembershipPatch() { }
 
   protected InstanceGroupMembershipPatch(Builder builder) {
+    deleteInstanceOnMembershipDelete = builder.deleteInstanceOnMembershipDelete;
     name = builder.name;
   }
 
@@ -80,6 +97,17 @@ public class InstanceGroupMembershipPatch extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
+  }
+
+  /**
+   * Gets the deleteInstanceOnMembershipDelete.
+   *
+   * If set to true, when deleting the membership the instance will also be deleted.
+   *
+   * @return the deleteInstanceOnMembershipDelete
+   */
+  public Boolean deleteInstanceOnMembershipDelete() {
+    return deleteInstanceOnMembershipDelete;
   }
 
   /**

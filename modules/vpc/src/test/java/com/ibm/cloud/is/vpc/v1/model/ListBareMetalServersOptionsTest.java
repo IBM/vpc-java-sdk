@@ -35,7 +35,7 @@ public class ListBareMetalServersOptionsTest {
       .start("testString")
       .limit(Long.valueOf("50"))
       .resourceGroupId("testString")
-      .name("testString")
+      .name("my-name")
       .vpcId("testString")
       .vpcCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b")
       .vpcName("my-vpc")
@@ -43,7 +43,7 @@ public class ListBareMetalServersOptionsTest {
     assertEquals(listBareMetalServersOptionsModel.start(), "testString");
     assertEquals(listBareMetalServersOptionsModel.limit(), Long.valueOf("50"));
     assertEquals(listBareMetalServersOptionsModel.resourceGroupId(), "testString");
-    assertEquals(listBareMetalServersOptionsModel.name(), "testString");
+    assertEquals(listBareMetalServersOptionsModel.name(), "my-name");
     assertEquals(listBareMetalServersOptionsModel.vpcId(), "testString");
     assertEquals(listBareMetalServersOptionsModel.vpcCrn(), "crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b");
     assertEquals(listBareMetalServersOptionsModel.vpcName(), "my-vpc");

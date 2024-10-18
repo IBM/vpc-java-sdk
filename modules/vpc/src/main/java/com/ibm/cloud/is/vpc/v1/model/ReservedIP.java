@@ -45,6 +45,9 @@ public class ReservedIP extends GenericModel {
 
   /**
    * The owner of the reserved IP.
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface Owner {
     /** provider. */
@@ -165,6 +168,9 @@ public class ReservedIP extends GenericModel {
    * Gets the owner.
    *
    * The owner of the reserved IP.
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the owner
    */

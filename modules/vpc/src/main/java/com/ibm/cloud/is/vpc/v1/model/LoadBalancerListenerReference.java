@@ -20,7 +20,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class LoadBalancerListenerReference extends GenericModel {
 
-  protected LoadBalancerListenerReferenceDeleted deleted;
+  protected Deleted deleted;
   protected String href;
   protected String id;
 
@@ -34,14 +34,14 @@ public class LoadBalancerListenerReference extends GenericModel {
    *
    * @return the deleted
    */
-  public LoadBalancerListenerReferenceDeleted getDeleted() {
+  public Deleted getDeleted() {
     return deleted;
   }
 
   /**
    * Gets the href.
    *
-   * The listener's canonical URL.
+   * The URL for this load balancer listener.
    *
    * @return the href
    */

@@ -37,7 +37,7 @@ public class ShareAccessorBindingAccessor extends GenericModel {
   }
 
   protected String crn;
-  protected ShareReferenceDeleted deleted;
+  protected Deleted deleted;
   protected String href;
   protected String id;
   protected String name;
@@ -66,7 +66,7 @@ public class ShareAccessorBindingAccessor extends GenericModel {
    *
    * @return the deleted
    */
-  public ShareReferenceDeleted getDeleted() {
+  public Deleted getDeleted() {
     return deleted;
   }
 

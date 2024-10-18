@@ -281,7 +281,7 @@ public class BareMetalServerNetworkInterface extends GenericModel {
    * Gets the macAddress.
    *
    * The MAC address of this bare metal server network interface. If the MAC address has not yet been selected, the
-   * value will be an empty string.
+   * value will be empty.
    *
    * If this bare metal server has network attachments, this network interface is a
    * [read-only representation](https://cloud.ibm.com/docs/vpc?topic=vpc-vni-about#vni-old-api-clients) of its

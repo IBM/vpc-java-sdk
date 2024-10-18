@@ -23,7 +23,7 @@ public class VPCDNSResolverTypeSystem extends VPCDNSResolver {
    *
    * - `custom_resolver`: A custom DNS resolver is configured for this VPC.
    *
-   * - `private_resolver`: A private DNS resolver is configured for this VPC. Applicable when
+   * - `private_resolver`: A private DNS resolver is configured for this VPC. Applies when
    *   the VPC has either or both of the following:
    *
    *     - at least one endpoint gateway residing in it

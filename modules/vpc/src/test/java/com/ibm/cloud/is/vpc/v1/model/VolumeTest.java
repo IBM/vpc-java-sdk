@@ -15,24 +15,20 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.AccountReference;
 import com.ibm.cloud.is.vpc.v1.model.CatalogOfferingVersionPlanReference;
-import com.ibm.cloud.is.vpc.v1.model.CatalogOfferingVersionPlanReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.CatalogOfferingVersionReference;
+import com.ibm.cloud.is.vpc.v1.model.Deleted;
 import com.ibm.cloud.is.vpc.v1.model.EncryptionKeyReference;
 import com.ibm.cloud.is.vpc.v1.model.ImageReference;
-import com.ibm.cloud.is.vpc.v1.model.ImageReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.ImageRemote;
 import com.ibm.cloud.is.vpc.v1.model.InstanceReference;
-import com.ibm.cloud.is.vpc.v1.model.InstanceReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.OperatingSystem;
 import com.ibm.cloud.is.vpc.v1.model.RegionReference;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotReference;
-import com.ibm.cloud.is.vpc.v1.model.SnapshotReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotRemote;
 import com.ibm.cloud.is.vpc.v1.model.Volume;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentDevice;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentReferenceVolumeContext;
-import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentReferenceVolumeContextDeleted;
 import com.ibm.cloud.is.vpc.v1.model.VolumeCatalogOffering;
 import com.ibm.cloud.is.vpc.v1.model.VolumeHealthReason;
 import com.ibm.cloud.is.vpc.v1.model.VolumeProfileReference;
@@ -57,6 +53,8 @@ public class VolumeTest {
   public void testVolume() throws Throwable {
     Volume volumeModel = new Volume();
     assertNull(volumeModel.isActive());
+    assertNull(volumeModel.getAdjustableCapacityStates());
+    assertNull(volumeModel.getAdjustableIopsStates());
     assertNull(volumeModel.getAttachmentState());
     assertNull(volumeModel.getBandwidth());
     assertNull(volumeModel.isBusy());

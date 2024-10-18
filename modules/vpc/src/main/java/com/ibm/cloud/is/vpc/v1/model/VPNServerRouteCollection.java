@@ -69,7 +69,7 @@ public class VPNServerRouteCollection extends GenericModel {
   /**
    * Gets the routes.
    *
-   * Collection of VPN routes.
+   * A page of routes for the VPN server.
    *
    * @return the routes
    */

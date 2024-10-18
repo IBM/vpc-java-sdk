@@ -26,6 +26,9 @@ public class LoadBalancerPool extends GenericModel {
 
   /**
    * The load balancing algorithm.
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface Algorithm {
     /** least_connections. */
@@ -78,7 +81,8 @@ public class LoadBalancerPool extends GenericModel {
    * - `v2`: Enabled with version 2 (binary header format)
    * - `disabled`: Disabled
    *
-   * Supported by load balancers in the `application` family (otherwise always `disabled`).
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface ProxyProtocol {
     /** disabled. */
@@ -115,6 +119,9 @@ public class LoadBalancerPool extends GenericModel {
    *
    * The load balancing algorithm.
    *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
+   *
    * @return the algorithm
    */
   public String getAlgorithm() {
@@ -146,7 +153,7 @@ public class LoadBalancerPool extends GenericModel {
   /**
    * Gets the href.
    *
-   * The pool's canonical URL.
+   * The URL for this load balancer pool.
    *
    * @return the href
    */
@@ -234,7 +241,8 @@ public class LoadBalancerPool extends GenericModel {
    * - `v2`: Enabled with version 2 (binary header format)
    * - `disabled`: Disabled
    *
-   * Supported by load balancers in the `application` family (otherwise always `disabled`).
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the proxyProtocol
    */

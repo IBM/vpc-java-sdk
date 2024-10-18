@@ -20,7 +20,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class NetworkACLRuleReference extends GenericModel {
 
-  protected NetworkACLRuleReferenceDeleted deleted;
+  protected Deleted deleted;
   protected String href;
   protected String id;
   protected String name;
@@ -35,7 +35,7 @@ public class NetworkACLRuleReference extends GenericModel {
    *
    * @return the deleted
    */
-  public NetworkACLRuleReferenceDeleted getDeleted() {
+  public Deleted getDeleted() {
     return deleted;
   }
 

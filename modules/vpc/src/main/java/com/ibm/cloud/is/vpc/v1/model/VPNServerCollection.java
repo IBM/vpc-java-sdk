@@ -81,7 +81,7 @@ public class VPNServerCollection extends GenericModel {
   /**
    * Gets the vpnServers.
    *
-   * Collection of VPN servers.
+   * A page of VPN servers.
    *
    * @return the vpnServers
    */

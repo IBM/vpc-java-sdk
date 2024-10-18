@@ -155,6 +155,8 @@ public class LoadBalancerPatch extends GenericModel {
    * records for this load balancer that had been added to `zone`, and add equivalent `A`
    * records to the public DNS zone `lb.appdomain.cloud`.
    *
+   * Not supported by private path load balancers.
+   *
    * @return the dns
    */
   public LoadBalancerDNSPatch dns() {

@@ -35,7 +35,7 @@ public class InstanceGroupManagerActionsCollection extends GenericModel {
   /**
    * Gets the actions.
    *
-   * Collection of instance group manager actions.
+   * A page of actions for the instance group manager.
    *
    * @return the actions
    */

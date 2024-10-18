@@ -161,8 +161,9 @@ public class RoutePatch extends GenericModel {
   /**
    * Gets the nextHop.
    *
-   * If `action` is `deliver`, the next hop that packets will be delivered to. For other
-   * `action` values, specify `0.0.0.0` or remove it by specifying `null`.
+   * If `action` is `deliver`, the next hop that packets will be delivered to (must not be
+   * `0.0.0.0`). For other `action` values, specify `0.0.0.0` or remove it by specifying
+   * `null`.
    *
    * At most two routes per `zone` in a table can have the same `destination` and `priority`,
    * and only when each route has an `action` of `deliver` and `next_hop` is an IP address.

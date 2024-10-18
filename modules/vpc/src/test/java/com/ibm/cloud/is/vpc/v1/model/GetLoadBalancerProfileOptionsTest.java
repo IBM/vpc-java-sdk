@@ -32,9 +32,9 @@ public class GetLoadBalancerProfileOptionsTest {
   @Test
   public void testGetLoadBalancerProfileOptions() throws Throwable {
     GetLoadBalancerProfileOptions getLoadBalancerProfileOptionsModel = new GetLoadBalancerProfileOptions.Builder()
-      .name("testString")
+      .name("network-fixed")
       .build();
-    assertEquals(getLoadBalancerProfileOptionsModel.name(), "testString");
+    assertEquals(getLoadBalancerProfileOptionsModel.name(), "network-fixed");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

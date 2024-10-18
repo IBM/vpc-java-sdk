@@ -23,6 +23,9 @@ public class VolumeAttachmentReferenceVolumeContext extends GenericModel {
 
   /**
    * The type of volume attachment.
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface Type {
     /** boot. */
@@ -33,7 +36,7 @@ public class VolumeAttachmentReferenceVolumeContext extends GenericModel {
 
   @SerializedName("delete_volume_on_instance_delete")
   protected Boolean deleteVolumeOnInstanceDelete;
-  protected VolumeAttachmentReferenceVolumeContextDeleted deleted;
+  protected Deleted deleted;
   protected VolumeAttachmentDevice device;
   protected String href;
   protected String id;
@@ -62,7 +65,7 @@ public class VolumeAttachmentReferenceVolumeContext extends GenericModel {
    *
    * @return the deleted
    */
-  public VolumeAttachmentReferenceVolumeContextDeleted getDeleted() {
+  public Deleted getDeleted() {
     return deleted;
   }
 
@@ -127,6 +130,9 @@ public class VolumeAttachmentReferenceVolumeContext extends GenericModel {
    * Gets the type.
    *
    * The type of volume attachment.
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the type
    */

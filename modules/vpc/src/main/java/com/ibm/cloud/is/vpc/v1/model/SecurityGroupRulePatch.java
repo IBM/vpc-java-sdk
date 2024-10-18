@@ -25,7 +25,7 @@ import com.ibm.cloud.sdk.core.util.GsonSingleton;
 public class SecurityGroupRulePatch extends GenericModel {
 
   /**
-   * The direction of traffic to enforce.
+   * The direction of traffic to allow.
    */
   public interface Direction {
     /** inbound. */
@@ -35,11 +35,11 @@ public class SecurityGroupRulePatch extends GenericModel {
   }
 
   /**
-   * The IP version to enforce. The format of `local.address`, `remote.address`,
+   * The IP version to allow. The format of `local.address`, `remote.address`,
    * `local.cidr_block` or `remote.cidr_block` must match this property, if they are used.
    *
-   * If `remote` references a security group, then this rule only applies to IP addresses
-   * (network interfaces) in that group matching this IP version.
+   * If `remote` references a security group, then this rule only applies to IP addresses in that group matching this IP
+   * version.
    */
   public interface IpVersion {
     /** ipv4. */
@@ -229,7 +229,7 @@ public class SecurityGroupRulePatch extends GenericModel {
   /**
    * Gets the direction.
    *
-   * The direction of traffic to enforce.
+   * The direction of traffic to allow.
    *
    * @return the direction
    */
@@ -240,11 +240,11 @@ public class SecurityGroupRulePatch extends GenericModel {
   /**
    * Gets the ipVersion.
    *
-   * The IP version to enforce. The format of `local.address`, `remote.address`,
+   * The IP version to allow. The format of `local.address`, `remote.address`,
    * `local.cidr_block` or `remote.cidr_block` must match this property, if they are used.
    *
-   * If `remote` references a security group, then this rule only applies to IP addresses
-   * (network interfaces) in that group matching this IP version.
+   * If `remote` references a security group, then this rule only applies to IP addresses in that group matching this IP
+   * version.
    *
    * @return the ipVersion
    */

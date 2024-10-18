@@ -288,9 +288,8 @@ public class InstancePatch extends GenericModel {
   /**
    * Gets the placementTarget.
    *
-   * The placement restrictions to use for the virtual server instance. For the placement
-   * restrictions to be changed, the instance `status` must be `stopping` or `stopped`.
-   *
+   * The placement restrictions to use for the virtual server instance. For the placement restrictions to be changed,
+   * the instance `status` must be `stopping` or `stopped`.
    * If set, `reservation_affinity.policy` must be `disabled`.
    *
    * @return the placementTarget

@@ -24,13 +24,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class BareMetalServerProfileDiskSupportedInterfaces extends GenericModel {
 
   /**
-   * The disk interface used for attaching the disk:
-   * - `fcp`: Attached using Fiber Channel Protocol
-   * - `sata`: Attached using Serial Advanced Technology Attachment
-   * - `nvme`: Attached using Non-Volatile Memory Express
-   *
-   * The enumerated values for this property may
-   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
+   * The default value for this profile field.
    */
   public interface XDefault {
     /** fcp. */
@@ -50,10 +44,10 @@ public class BareMetalServerProfileDiskSupportedInterfaces extends GenericModel 
   }
 
   /**
-   * The disk interface used for attaching the disk:
-   * - `fcp`: Attached using Fiber Channel Protocol
-   * - `sata`: Attached using Serial Advanced Technology Attachment
-   * - `nvme`: Attached using Non-Volatile Memory Express
+   * The disk attachment interface used:
+   * - `fcp`: Fiber Channel Protocol
+   * - `sata`: Serial Advanced Technology Attachment
+   * - `nvme`: Non-Volatile Memory Express
    *
    * The enumerated values for this property may
    * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
@@ -77,13 +71,7 @@ public class BareMetalServerProfileDiskSupportedInterfaces extends GenericModel 
   /**
    * Gets the xDefault.
    *
-   * The disk interface used for attaching the disk:
-   * - `fcp`: Attached using Fiber Channel Protocol
-   * - `sata`: Attached using Serial Advanced Technology Attachment
-   * - `nvme`: Attached using Non-Volatile Memory Express
-   *
-   * The enumerated values for this property may
-   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
+   * The default value for this profile field.
    *
    * @return the xDefault
    */

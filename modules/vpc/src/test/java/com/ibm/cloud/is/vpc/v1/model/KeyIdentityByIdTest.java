@@ -32,15 +32,15 @@ public class KeyIdentityByIdTest {
   @Test
   public void testKeyIdentityById() throws Throwable {
     KeyIdentityById keyIdentityByIdModel = new KeyIdentityById.Builder()
-      .id("a6b1a881-2ce8-41a3-80fc-36316a73f803")
+      .id("82679077-ac3b-4c10-be16-63e9c21f0f45")
       .build();
-    assertEquals(keyIdentityByIdModel.id(), "a6b1a881-2ce8-41a3-80fc-36316a73f803");
+    assertEquals(keyIdentityByIdModel.id(), "82679077-ac3b-4c10-be16-63e9c21f0f45");
 
     String json = TestUtilities.serialize(keyIdentityByIdModel);
 
     KeyIdentityById keyIdentityByIdModelNew = TestUtilities.deserialize(json, KeyIdentityById.class);
     assertTrue(keyIdentityByIdModelNew instanceof KeyIdentityById);
-    assertEquals(keyIdentityByIdModelNew.id(), "a6b1a881-2ce8-41a3-80fc-36316a73f803");
+    assertEquals(keyIdentityByIdModelNew.id(), "82679077-ac3b-4c10-be16-63e9c21f0f45");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

@@ -20,7 +20,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class VolumeAttachmentReferenceInstanceContext extends GenericModel {
 
-  protected VolumeAttachmentReferenceInstanceContextDeleted deleted;
+  protected Deleted deleted;
   protected VolumeAttachmentDevice device;
   protected String href;
   protected String id;
@@ -37,7 +37,7 @@ public class VolumeAttachmentReferenceInstanceContext extends GenericModel {
    *
    * @return the deleted
    */
-  public VolumeAttachmentReferenceInstanceContextDeleted getDeleted() {
+  public Deleted getDeleted() {
     return deleted;
   }
 

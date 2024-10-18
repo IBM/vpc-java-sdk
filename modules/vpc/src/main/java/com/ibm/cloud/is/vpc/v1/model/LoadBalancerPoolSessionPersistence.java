@@ -22,8 +22,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class LoadBalancerPoolSessionPersistence extends GenericModel {
 
   /**
-   * The session persistence type. The `http_cookie` and `app_cookie` types are applicable only to the `http` and
-   * `https` protocols.
+   * The session persistence type.
    *
    * The enumerated values for this property may
    * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
@@ -46,8 +45,7 @@ public class LoadBalancerPoolSessionPersistence extends GenericModel {
   /**
    * Gets the cookieName.
    *
-   * The session persistence cookie name. Applicable only for type `app_cookie`. Names starting with `IBM` are not
-   * allowed.
+   * The session persistence cookie name.
    *
    * @return the cookieName
    */
@@ -58,8 +56,7 @@ public class LoadBalancerPoolSessionPersistence extends GenericModel {
   /**
    * Gets the type.
    *
-   * The session persistence type. The `http_cookie` and `app_cookie` types are applicable only to the `http` and
-   * `https` protocols.
+   * The session persistence type.
    *
    * The enumerated values for this property may
    * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.

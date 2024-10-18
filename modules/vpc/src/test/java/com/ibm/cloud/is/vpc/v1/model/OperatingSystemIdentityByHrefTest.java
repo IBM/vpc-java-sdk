@@ -32,15 +32,15 @@ public class OperatingSystemIdentityByHrefTest {
   @Test
   public void testOperatingSystemIdentityByHref() throws Throwable {
     OperatingSystemIdentityByHref operatingSystemIdentityByHrefModel = new OperatingSystemIdentityByHref.Builder()
-      .href("https://us-south.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-16-amd64")
+      .href("https://us-south.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-24-04-amd64")
       .build();
-    assertEquals(operatingSystemIdentityByHrefModel.href(), "https://us-south.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-16-amd64");
+    assertEquals(operatingSystemIdentityByHrefModel.href(), "https://us-south.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-24-04-amd64");
 
     String json = TestUtilities.serialize(operatingSystemIdentityByHrefModel);
 
     OperatingSystemIdentityByHref operatingSystemIdentityByHrefModelNew = TestUtilities.deserialize(json, OperatingSystemIdentityByHref.class);
     assertTrue(operatingSystemIdentityByHrefModelNew instanceof OperatingSystemIdentityByHref);
-    assertEquals(operatingSystemIdentityByHrefModelNew.href(), "https://us-south.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-16-amd64");
+    assertEquals(operatingSystemIdentityByHrefModelNew.href(), "https://us-south.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-24-04-amd64");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

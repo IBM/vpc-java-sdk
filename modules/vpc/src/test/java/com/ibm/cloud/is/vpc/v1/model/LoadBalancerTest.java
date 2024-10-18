@@ -15,23 +15,19 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.DNSInstanceReferenceLoadBalancerDNSContext;
 import com.ibm.cloud.is.vpc.v1.model.DNSZoneReference;
+import com.ibm.cloud.is.vpc.v1.model.Deleted;
 import com.ibm.cloud.is.vpc.v1.model.IP;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancer;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerDNS;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerReference;
-import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerLogging;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerLoggingDatapath;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolReference;
-import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolReferenceDeleted;
-import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPrivateIpsItem;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileReference;
-import com.ibm.cloud.is.vpc.v1.model.ReservedIPReferenceDeleted;
+import com.ibm.cloud.is.vpc.v1.model.ReservedIPReference;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupReference;
-import com.ibm.cloud.is.vpc.v1.model.SecurityGroupReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.SubnetReference;
-import com.ibm.cloud.is.vpc.v1.model.SubnetReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -50,6 +46,8 @@ public class LoadBalancerTest {
   @Test
   public void testLoadBalancer() throws Throwable {
     LoadBalancer loadBalancerModel = new LoadBalancer();
+    assertNull(loadBalancerModel.getAccessMode());
+    assertNull(loadBalancerModel.getAvailability());
     assertNull(loadBalancerModel.getCreatedAt());
     assertNull(loadBalancerModel.getCrn());
     assertNull(loadBalancerModel.getDns());
@@ -57,6 +55,7 @@ public class LoadBalancerTest {
     assertNull(loadBalancerModel.getHref());
     assertNull(loadBalancerModel.getId());
     assertNull(loadBalancerModel.isInstanceGroupsSupported());
+    assertNull(loadBalancerModel.isIsPrivatePath());
     assertNull(loadBalancerModel.isIsPublic());
     assertNull(loadBalancerModel.getListeners());
     assertNull(loadBalancerModel.getLogging());
@@ -72,6 +71,7 @@ public class LoadBalancerTest {
     assertNull(loadBalancerModel.isRouteMode());
     assertNull(loadBalancerModel.getSecurityGroups());
     assertNull(loadBalancerModel.isSecurityGroupsSupported());
+    assertNull(loadBalancerModel.isSourceIpSessionPersistenceSupported());
     assertNull(loadBalancerModel.getSubnets());
     assertNull(loadBalancerModel.isUdpSupported());
   }

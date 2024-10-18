@@ -63,6 +63,7 @@ public class VPNGatewayConnectionPatchTest {
     VPNGatewayConnectionPatch vpnGatewayConnectionPatchModel = new VPNGatewayConnectionPatch.Builder()
       .adminStateUp(true)
       .deadPeerDetection(vpnGatewayConnectionDpdPatchModel)
+      .distributeTraffic(true)
       .establishMode("bidirectional")
       .ikePolicy(vpnGatewayConnectionIkePolicyPatchModel)
       .ipsecPolicy(vpnGatewayConnectionIPsecPolicyPatchModel)
@@ -72,6 +73,7 @@ public class VPNGatewayConnectionPatchTest {
       .build();
     assertEquals(vpnGatewayConnectionPatchModel.adminStateUp(), Boolean.valueOf(true));
     assertEquals(vpnGatewayConnectionPatchModel.deadPeerDetection(), vpnGatewayConnectionDpdPatchModel);
+    assertEquals(vpnGatewayConnectionPatchModel.distributeTraffic(), Boolean.valueOf(true));
     assertEquals(vpnGatewayConnectionPatchModel.establishMode(), "bidirectional");
     assertEquals(vpnGatewayConnectionPatchModel.ikePolicy(), vpnGatewayConnectionIkePolicyPatchModel);
     assertEquals(vpnGatewayConnectionPatchModel.ipsecPolicy(), vpnGatewayConnectionIPsecPolicyPatchModel);
@@ -85,6 +87,7 @@ public class VPNGatewayConnectionPatchTest {
     assertTrue(vpnGatewayConnectionPatchModelNew instanceof VPNGatewayConnectionPatch);
     assertEquals(vpnGatewayConnectionPatchModelNew.adminStateUp(), Boolean.valueOf(true));
     assertEquals(vpnGatewayConnectionPatchModelNew.deadPeerDetection().toString(), vpnGatewayConnectionDpdPatchModel.toString());
+    assertEquals(vpnGatewayConnectionPatchModelNew.distributeTraffic(), Boolean.valueOf(true));
     assertEquals(vpnGatewayConnectionPatchModelNew.establishMode(), "bidirectional");
     assertEquals(vpnGatewayConnectionPatchModelNew.ikePolicy().toString(), vpnGatewayConnectionIkePolicyPatchModel.toString());
     assertEquals(vpnGatewayConnectionPatchModelNew.ipsecPolicy().toString(), vpnGatewayConnectionIPsecPolicyPatchModel.toString());
@@ -115,6 +118,7 @@ public class VPNGatewayConnectionPatchTest {
     VPNGatewayConnectionPatch vpnGatewayConnectionPatchModel = new VPNGatewayConnectionPatch.Builder()
       .adminStateUp(true)
       .deadPeerDetection(vpnGatewayConnectionDpdPatchModel)
+      .distributeTraffic(true)
       .establishMode("bidirectional")
       .ikePolicy(vpnGatewayConnectionIkePolicyPatchModel)
       .ipsecPolicy(vpnGatewayConnectionIPsecPolicyPatchModel)
@@ -127,6 +131,7 @@ public class VPNGatewayConnectionPatchTest {
 
     assertTrue(mergePatch.containsKey("admin_state_up"));
     assertTrue(mergePatch.containsKey("dead_peer_detection"));
+    assertTrue(mergePatch.containsKey("distribute_traffic"));
     assertEquals(mergePatch.get("establish_mode"), "bidirectional");
     assertTrue(mergePatch.containsKey("ike_policy"));
     assertTrue(mergePatch.containsKey("ipsec_policy"));

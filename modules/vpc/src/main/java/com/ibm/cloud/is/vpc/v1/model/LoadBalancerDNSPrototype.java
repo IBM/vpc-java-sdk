@@ -20,6 +20,8 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  *
  * If unspecified, DNS `A` records for this load balancer's `hostname` property will be added to the public DNS zone
  * `lb.appdomain.cloud`. Otherwise, those DNS `A` records will be added to the specified `zone`.
+ *
+ * Not supported by private path load balancers.
  */
 public class LoadBalancerDNSPrototype extends GenericModel {
 

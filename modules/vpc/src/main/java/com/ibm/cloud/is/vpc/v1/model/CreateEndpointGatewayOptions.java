@@ -224,8 +224,10 @@ public class CreateEndpointGatewayOptions extends GenericModel {
   /**
    * Gets the target.
    *
-   * The target to use for this endpoint gateway. Must not already be the target of another
-   * endpoint gateway in the VPC.
+   * The target to use for this endpoint gateway. The target:
+   * - Must not already be the target of another endpoint gateway in the VPC
+   * - Must not have a service endpoint that duplicates or overlaps with any `service_endpoints`
+   *   of another endpoint gateway in the VPC.
    *
    * @return the target
    */

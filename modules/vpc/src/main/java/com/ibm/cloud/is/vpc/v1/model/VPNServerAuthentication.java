@@ -27,6 +27,9 @@ public class VPNServerAuthentication extends GenericModel {
 
   /**
    * The type of authentication.
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface Method {
     /** certificate. */
@@ -48,6 +51,9 @@ public class VPNServerAuthentication extends GenericModel {
    * Gets the method.
    *
    * The type of authentication.
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the method
    */

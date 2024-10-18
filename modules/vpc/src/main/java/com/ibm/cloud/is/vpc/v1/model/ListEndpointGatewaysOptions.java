@@ -13,6 +13,9 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
@@ -20,10 +23,28 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class ListEndpointGatewaysOptions extends GenericModel {
 
+  public interface LifecycleState {
+    /** deleting. */
+    String DELETING = "deleting";
+    /** failed. */
+    String FAILED = "failed";
+    /** pending. */
+    String PENDING = "pending";
+    /** stable. */
+    String STABLE = "stable";
+    /** suspended. */
+    String SUSPENDED = "suspended";
+    /** updating. */
+    String UPDATING = "updating";
+    /** waiting. */
+    String WAITING = "waiting";
+  }
+
   protected String name;
   protected String start;
   protected Long limit;
   protected String resourceGroupId;
+  protected List<String> lifecycleState;
   protected String vpcId;
   protected String vpcCrn;
   protected String vpcName;
@@ -37,6 +58,7 @@ public class ListEndpointGatewaysOptions extends GenericModel {
     private String start;
     private Long limit;
     private String resourceGroupId;
+    private List<String> lifecycleState;
     private String vpcId;
     private String vpcCrn;
     private String vpcName;
@@ -52,6 +74,7 @@ public class ListEndpointGatewaysOptions extends GenericModel {
       this.start = listEndpointGatewaysOptions.start;
       this.limit = listEndpointGatewaysOptions.limit;
       this.resourceGroupId = listEndpointGatewaysOptions.resourceGroupId;
+      this.lifecycleState = listEndpointGatewaysOptions.lifecycleState;
       this.vpcId = listEndpointGatewaysOptions.vpcId;
       this.vpcCrn = listEndpointGatewaysOptions.vpcCrn;
       this.vpcName = listEndpointGatewaysOptions.vpcName;
@@ -71,6 +94,22 @@ public class ListEndpointGatewaysOptions extends GenericModel {
      */
     public ListEndpointGatewaysOptions build() {
       return new ListEndpointGatewaysOptions(this);
+    }
+
+    /**
+     * Adds a new element to lifecycleState.
+     *
+     * @param lifecycleState the new element to be added
+     * @return the ListEndpointGatewaysOptions builder
+     */
+    public Builder addLifecycleState(String lifecycleState) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(lifecycleState,
+        "lifecycleState cannot be null");
+      if (this.lifecycleState == null) {
+        this.lifecycleState = new ArrayList<String>();
+      }
+      this.lifecycleState.add(lifecycleState);
+      return this;
     }
 
     /**
@@ -114,6 +153,18 @@ public class ListEndpointGatewaysOptions extends GenericModel {
      */
     public Builder resourceGroupId(String resourceGroupId) {
       this.resourceGroupId = resourceGroupId;
+      return this;
+    }
+
+    /**
+     * Set the lifecycleState.
+     * Existing lifecycleState will be replaced.
+     *
+     * @param lifecycleState the lifecycleState
+     * @return the ListEndpointGatewaysOptions builder
+     */
+    public Builder lifecycleState(List<String> lifecycleState) {
+      this.lifecycleState = lifecycleState;
       return this;
     }
 
@@ -169,6 +220,7 @@ public class ListEndpointGatewaysOptions extends GenericModel {
     start = builder.start;
     limit = builder.limit;
     resourceGroupId = builder.resourceGroupId;
+    lifecycleState = builder.lifecycleState;
     vpcId = builder.vpcId;
     vpcCrn = builder.vpcCrn;
     vpcName = builder.vpcName;
@@ -226,6 +278,18 @@ public class ListEndpointGatewaysOptions extends GenericModel {
    */
   public String resourceGroupId() {
     return resourceGroupId;
+  }
+
+  /**
+   * Gets the lifecycleState.
+   *
+   * Filters the collection to resources with a `lifecycle_state` property matching one of the specified comma-separated
+   * values.
+   *
+   * @return the lifecycleState
+   */
+  public List<String> lifecycleState() {
+    return lifecycleState;
   }
 
   /**

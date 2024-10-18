@@ -13,8 +13,8 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.ibm.cloud.is.vpc.v1.model.RouteNextHopPrototypeRouteNextHopIPRouteNextHopIPSentinelIP;
 import com.ibm.cloud.is.vpc.v1.model.RoutePrototype;
-import com.ibm.cloud.is.vpc.v1.model.RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIPRouteNextHopPrototypeRouteNextHopIPRouteNextHopIPSentinelIP;
 import com.ibm.cloud.is.vpc.v1.model.ZoneIdentityByName;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
@@ -33,10 +33,10 @@ public class RoutePrototypeTest {
 
   @Test
   public void testRoutePrototype() throws Throwable {
-    RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIPRouteNextHopPrototypeRouteNextHopIPRouteNextHopIPSentinelIP routePrototypeNextHopModel = new RoutePrototypeNextHopRouteNextHopPrototypeRouteNextHopIPRouteNextHopPrototypeRouteNextHopIPRouteNextHopIPSentinelIP.Builder()
+    RouteNextHopPrototypeRouteNextHopIPRouteNextHopIPSentinelIP routeNextHopPrototypeModel = new RouteNextHopPrototypeRouteNextHopIPRouteNextHopIPSentinelIP.Builder()
       .address("0.0.0.0")
       .build();
-    assertEquals(routePrototypeNextHopModel.address(), "0.0.0.0");
+    assertEquals(routeNextHopPrototypeModel.address(), "0.0.0.0");
 
     ZoneIdentityByName zoneIdentityModel = new ZoneIdentityByName.Builder()
       .name("us-south-1")
@@ -48,7 +48,7 @@ public class RoutePrototypeTest {
       .advertise(false)
       .destination("192.168.3.0/24")
       .name("my-route-1")
-      .nextHop(routePrototypeNextHopModel)
+      .nextHop(routeNextHopPrototypeModel)
       .priority(Long.valueOf("1"))
       .zone(zoneIdentityModel)
       .build();
@@ -56,7 +56,7 @@ public class RoutePrototypeTest {
     assertEquals(routePrototypeModel.advertise(), Boolean.valueOf(false));
     assertEquals(routePrototypeModel.destination(), "192.168.3.0/24");
     assertEquals(routePrototypeModel.name(), "my-route-1");
-    assertEquals(routePrototypeModel.nextHop(), routePrototypeNextHopModel);
+    assertEquals(routePrototypeModel.nextHop(), routeNextHopPrototypeModel);
     assertEquals(routePrototypeModel.priority(), Long.valueOf("1"));
     assertEquals(routePrototypeModel.zone(), zoneIdentityModel);
 
@@ -68,7 +68,7 @@ public class RoutePrototypeTest {
     assertEquals(routePrototypeModelNew.advertise(), Boolean.valueOf(false));
     assertEquals(routePrototypeModelNew.destination(), "192.168.3.0/24");
     assertEquals(routePrototypeModelNew.name(), "my-route-1");
-    assertEquals(routePrototypeModelNew.nextHop().toString(), routePrototypeNextHopModel.toString());
+    assertEquals(routePrototypeModelNew.nextHop().toString(), routeNextHopPrototypeModel.toString());
     assertEquals(routePrototypeModelNew.priority(), Long.valueOf("1"));
     assertEquals(routePrototypeModelNew.zone().toString(), zoneIdentityModel.toString());
   }

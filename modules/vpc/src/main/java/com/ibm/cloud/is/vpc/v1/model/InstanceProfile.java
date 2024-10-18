@@ -37,9 +37,9 @@ public class InstanceProfile extends GenericModel {
    *   usable.
    * - `current`:  This profile is the latest revision.
    *
-   * Revisions are indicated by the generation of an instance profile. Refer to the [profile naming conventions]
-   * (https://cloud.ibm.com/docs/vpc?topic=vpc-profiles&amp;interface=ui#profiles-naming-rule) for information on how
-   * generations are defined within an instance profile.
+   * Revisions are indicated by the generation of an instance profile. Refer to the [profile naming
+   * conventions](https://cloud.ibm.com/docs/vpc?topic=vpc-profiles&amp;interface=ui#profiles-naming-rule) for
+   * information on how generations are defined within an instance profile.
    *
    * The enumerated values for this property may
    * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
@@ -116,7 +116,7 @@ public class InstanceProfile extends GenericModel {
   /**
    * Gets the disks.
    *
-   * Collection of the instance profile's disks.
+   * The disks for an instance with this profile.
    *
    * @return the disks
    */
@@ -284,9 +284,9 @@ public class InstanceProfile extends GenericModel {
    *   usable.
    * - `current`:  This profile is the latest revision.
    *
-   * Revisions are indicated by the generation of an instance profile. Refer to the [profile naming conventions]
-   * (https://cloud.ibm.com/docs/vpc?topic=vpc-profiles&amp;interface=ui#profiles-naming-rule) for information on how
-   * generations are defined within an instance profile.
+   * Revisions are indicated by the generation of an instance profile. Refer to the [profile naming
+   * conventions](https://cloud.ibm.com/docs/vpc?topic=vpc-profiles&amp;interface=ui#profiles-naming-rule) for
+   * information on how generations are defined within an instance profile.
    *
    * The enumerated values for this property may
    * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.

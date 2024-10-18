@@ -80,7 +80,7 @@ public class VolumeCollection extends GenericModel {
   /**
    * Gets the volumes.
    *
-   * Collection of volumes.
+   * A page of volumes.
    *
    * @return the volumes
    */

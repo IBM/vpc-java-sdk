@@ -14,6 +14,11 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.VolumeProfile;
+import com.ibm.cloud.is.vpc.v1.model.VolumeProfileAdjustableCapacityStates;
+import com.ibm.cloud.is.vpc.v1.model.VolumeProfileAdjustableIOPSStates;
+import com.ibm.cloud.is.vpc.v1.model.VolumeProfileBootCapacityRange;
+import com.ibm.cloud.is.vpc.v1.model.VolumeProfileCapacityRange;
+import com.ibm.cloud.is.vpc.v1.model.VolumeProfileIOPSRange;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -32,8 +37,13 @@ public class VolumeProfileTest {
   @Test
   public void testVolumeProfile() throws Throwable {
     VolumeProfile volumeProfileModel = new VolumeProfile();
+    assertNull(volumeProfileModel.getAdjustableCapacityStates());
+    assertNull(volumeProfileModel.getAdjustableIopsStates());
+    assertNull(volumeProfileModel.getBootCapacity());
+    assertNull(volumeProfileModel.getCapacity());
     assertNull(volumeProfileModel.getFamily());
     assertNull(volumeProfileModel.getHref());
+    assertNull(volumeProfileModel.getIops());
     assertNull(volumeProfileModel.getName());
   }
 }

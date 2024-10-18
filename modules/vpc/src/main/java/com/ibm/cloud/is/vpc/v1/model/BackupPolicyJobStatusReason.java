@@ -24,9 +24,13 @@ public class BackupPolicyJobStatusReason extends GenericModel {
   /**
    * A reason code for the status:
    * - `internal_error`: Internal error (contact IBM support)
+   * - `snapshot_encryption_key_invalid`: The provided encryption key is unavailable
    * - `snapshot_pending`: Cannot delete backup (snapshot) in the `pending` lifecycle state
    * - `snapshot_volume_limit`: The snapshot limit for the source volume has been reached
    * - `source_volume_busy`: The source volume has `busy` set (after multiple retries)
+   * - `source_volume_too_large`: The source volume exceeds the [maximum supported
+   *   size](https://cloud.ibm.com/docs/vpc?topic=vpc-snapshots-vpc-about&amp;interface=api#snapshots-vpc-limitations)
+   * - `source_volume_unavailable`: The source volume is not attached to a running instance
    *
    * The enumerated values for this property may
    * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
@@ -34,12 +38,18 @@ public class BackupPolicyJobStatusReason extends GenericModel {
   public interface Code {
     /** internal_error. */
     String INTERNAL_ERROR = "internal_error";
+    /** snapshot_encryption_key_invalid. */
+    String SNAPSHOT_ENCRYPTION_KEY_INVALID = "snapshot_encryption_key_invalid";
     /** snapshot_pending. */
     String SNAPSHOT_PENDING = "snapshot_pending";
     /** snapshot_volume_limit. */
     String SNAPSHOT_VOLUME_LIMIT = "snapshot_volume_limit";
     /** source_volume_busy. */
     String SOURCE_VOLUME_BUSY = "source_volume_busy";
+    /** source_volume_too_large. */
+    String SOURCE_VOLUME_TOO_LARGE = "source_volume_too_large";
+    /** source_volume_unavailable. */
+    String SOURCE_VOLUME_UNAVAILABLE = "source_volume_unavailable";
   }
 
   protected String code;
@@ -54,9 +64,13 @@ public class BackupPolicyJobStatusReason extends GenericModel {
    *
    * A reason code for the status:
    * - `internal_error`: Internal error (contact IBM support)
+   * - `snapshot_encryption_key_invalid`: The provided encryption key is unavailable
    * - `snapshot_pending`: Cannot delete backup (snapshot) in the `pending` lifecycle state
    * - `snapshot_volume_limit`: The snapshot limit for the source volume has been reached
    * - `source_volume_busy`: The source volume has `busy` set (after multiple retries)
+   * - `source_volume_too_large`: The source volume exceeds the [maximum supported
+   *   size](https://cloud.ibm.com/docs/vpc?topic=vpc-snapshots-vpc-about&amp;interface=api#snapshots-vpc-limitations)
+   * - `source_volume_unavailable`: The source volume is not attached to a running instance
    *
    * The enumerated values for this property may
    * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.

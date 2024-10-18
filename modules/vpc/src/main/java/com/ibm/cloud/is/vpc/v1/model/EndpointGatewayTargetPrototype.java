@@ -17,25 +17,24 @@ import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * The target to use for this endpoint gateway. Must not already be the target of another endpoint gateway in the VPC.
+ * The target to use for this endpoint gateway. The target:
+ * - Must not already be the target of another endpoint gateway in the VPC
+ * - Must not have a service endpoint that duplicates or overlaps with any `service_endpoints`
+ *   of another endpoint gateway in the VPC.
  *
  * Classes which extend this class:
- * - EndpointGatewayTargetPrototypeProviderCloudServiceIdentity
- * - EndpointGatewayTargetPrototypeProviderInfrastructureServiceIdentity
+ * - EndpointGatewayTargetPrototypeEndpointGatewayTargetResourceTypePrivatePathServiceGatewayPrototype
+ * - EndpointGatewayTargetPrototypeEndpointGatewayTargetResourceTypeProviderCloudServicePrototype
+ * - EndpointGatewayTargetPrototypeEndpointGatewayTargetResourceTypeProviderInfrastructureServicePrototype
  */
 public class EndpointGatewayTargetPrototype extends GenericModel {
-  @SuppressWarnings("unused")
-  protected static String discriminatorPropertyName = "resource_type";
-  protected static java.util.Map<String, Class<?>> discriminatorMapping;
-  static {
-    discriminatorMapping = new java.util.HashMap<>();
-    discriminatorMapping.put("provider_cloud_service", EndpointGatewayTargetPrototypeProviderCloudServiceIdentity.class);
-    discriminatorMapping.put("provider_infrastructure_service", EndpointGatewayTargetPrototypeProviderInfrastructureServiceIdentity.class);
-  }
+
   /**
    * The type of target for this endpoint gateway.
    */
   public interface ResourceType {
+    /** private_path_service_gateway. */
+    String PRIVATE_PATH_SERVICE_GATEWAY = "private_path_service_gateway";
     /** provider_cloud_service. */
     String PROVIDER_CLOUD_SERVICE = "provider_cloud_service";
     /** provider_infrastructure_service. */
@@ -63,7 +62,7 @@ public class EndpointGatewayTargetPrototype extends GenericModel {
   /**
    * Gets the crn.
    *
-   * The CRN for this provider cloud service, or the CRN for the user's instance of a provider cloud service.
+   * The CRN for this private path service gateway.
    *
    * @return the crn
    */

@@ -33,24 +33,29 @@ public class InstanceGroupMembershipPatchTest {
   @Test
   public void testInstanceGroupMembershipPatch() throws Throwable {
     InstanceGroupMembershipPatch instanceGroupMembershipPatchModel = new InstanceGroupMembershipPatch.Builder()
+      .deleteInstanceOnMembershipDelete(true)
       .name("my-instance-group-membership")
       .build();
+    assertEquals(instanceGroupMembershipPatchModel.deleteInstanceOnMembershipDelete(), Boolean.valueOf(true));
     assertEquals(instanceGroupMembershipPatchModel.name(), "my-instance-group-membership");
 
     String json = TestUtilities.serialize(instanceGroupMembershipPatchModel);
 
     InstanceGroupMembershipPatch instanceGroupMembershipPatchModelNew = TestUtilities.deserialize(json, InstanceGroupMembershipPatch.class);
     assertTrue(instanceGroupMembershipPatchModelNew instanceof InstanceGroupMembershipPatch);
+    assertEquals(instanceGroupMembershipPatchModelNew.deleteInstanceOnMembershipDelete(), Boolean.valueOf(true));
     assertEquals(instanceGroupMembershipPatchModelNew.name(), "my-instance-group-membership");
   }
   @Test
   public void testInstanceGroupMembershipPatchAsPatch() throws Throwable {
     InstanceGroupMembershipPatch instanceGroupMembershipPatchModel = new InstanceGroupMembershipPatch.Builder()
+      .deleteInstanceOnMembershipDelete(true)
       .name("my-instance-group-membership")
       .build();
 
     Map<String, Object> mergePatch = instanceGroupMembershipPatchModel.asPatch();
 
+    assertTrue(mergePatch.containsKey("delete_instance_on_membership_delete"));
     assertEquals(mergePatch.get("name"), "my-instance-group-membership");
   }
 

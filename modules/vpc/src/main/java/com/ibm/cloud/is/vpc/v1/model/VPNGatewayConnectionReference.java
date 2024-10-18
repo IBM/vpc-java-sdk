@@ -29,7 +29,7 @@ public class VPNGatewayConnectionReference extends GenericModel {
     String VPN_GATEWAY_CONNECTION = "vpn_gateway_connection";
   }
 
-  protected VPNGatewayConnectionReferenceDeleted deleted;
+  protected Deleted deleted;
   protected String href;
   protected String id;
   protected String name;
@@ -46,14 +46,14 @@ public class VPNGatewayConnectionReference extends GenericModel {
    *
    * @return the deleted
    */
-  public VPNGatewayConnectionReferenceDeleted getDeleted() {
+  public Deleted getDeleted() {
     return deleted;
   }
 
   /**
    * Gets the href.
    *
-   * The VPN connection's canonical URL.
+   * The URL for this VPN gateway connection.
    *
    * @return the href
    */

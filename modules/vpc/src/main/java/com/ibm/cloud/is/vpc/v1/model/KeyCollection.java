@@ -46,7 +46,7 @@ public class KeyCollection extends GenericModel {
   /**
    * Gets the keys.
    *
-   * Collection of keys.
+   * A page of keys.
    *
    * @return the keys
    */

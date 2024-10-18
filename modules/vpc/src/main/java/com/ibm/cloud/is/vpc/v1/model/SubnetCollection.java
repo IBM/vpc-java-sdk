@@ -69,7 +69,7 @@ public class SubnetCollection extends GenericModel {
   /**
    * Gets the subnets.
    *
-   * Collection of subnets.
+   * A page of subnets.
    *
    * @return the subnets
    */

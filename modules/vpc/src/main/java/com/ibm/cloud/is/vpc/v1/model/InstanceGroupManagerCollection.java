@@ -57,7 +57,7 @@ public class InstanceGroupManagerCollection extends GenericModel {
   /**
    * Gets the managers.
    *
-   * Collection of instance group managers.
+   * A page of managers for the instance group.
    *
    * @return the managers
    */

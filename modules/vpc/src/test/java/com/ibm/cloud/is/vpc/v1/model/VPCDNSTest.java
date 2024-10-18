@@ -15,11 +15,11 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.AccountReference;
 import com.ibm.cloud.is.vpc.v1.model.DNSServer;
+import com.ibm.cloud.is.vpc.v1.model.Deleted;
 import com.ibm.cloud.is.vpc.v1.model.RegionReference;
 import com.ibm.cloud.is.vpc.v1.model.VPCDNS;
 import com.ibm.cloud.is.vpc.v1.model.VPCDNSResolverTypeDelegated;
 import com.ibm.cloud.is.vpc.v1.model.VPCReferenceDNSResolverContext;
-import com.ibm.cloud.is.vpc.v1.model.VPCReferenceDNSResolverContextDeleted;
 import com.ibm.cloud.is.vpc.v1.model.VPCRemote;
 import com.ibm.cloud.is.vpc.v1.model.ZoneReference;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;

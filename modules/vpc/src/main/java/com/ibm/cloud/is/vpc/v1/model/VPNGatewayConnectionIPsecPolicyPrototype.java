@@ -44,7 +44,7 @@ public class VPNGatewayConnectionIPsecPolicyPrototype extends GenericModel {
   /**
    * Gets the href.
    *
-   * The IPsec policy's canonical URL.
+   * The URL for this IPsec policy.
    *
    * @return the href
    */

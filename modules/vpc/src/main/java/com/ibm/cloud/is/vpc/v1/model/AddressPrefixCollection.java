@@ -36,7 +36,7 @@ public class AddressPrefixCollection extends GenericModel {
   /**
    * Gets the addressPrefixes.
    *
-   * Collection of address prefixes.
+   * A page of address prefixes for the VPC.
    *
    * @return the addressPrefixes
    */

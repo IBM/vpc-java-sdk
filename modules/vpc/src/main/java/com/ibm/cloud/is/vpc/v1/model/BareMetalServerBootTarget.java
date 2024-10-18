@@ -35,7 +35,7 @@ public class BareMetalServerBootTarget extends GenericModel {
     String BARE_METAL_SERVER_DISK = "bare_metal_server_disk";
   }
 
-  protected BareMetalServerDiskReferenceDeleted deleted;
+  protected Deleted deleted;
   protected String href;
   protected String id;
   protected String name;
@@ -52,7 +52,7 @@ public class BareMetalServerBootTarget extends GenericModel {
    *
    * @return the deleted
    */
-  public BareMetalServerDiskReferenceDeleted getDeleted() {
+  public Deleted getDeleted() {
     return deleted;
   }
 

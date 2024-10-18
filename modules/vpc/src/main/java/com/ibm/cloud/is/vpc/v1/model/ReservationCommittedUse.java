@@ -52,6 +52,8 @@ public class ReservationCommittedUse extends GenericModel {
    *
    * The expiration date and time for this committed use reservation.
    *
+   * This property will be absent if the reservation has a `status` of `inactive`.
+   *
    * @return the expirationAt
    */
   public Date getExpirationAt() {

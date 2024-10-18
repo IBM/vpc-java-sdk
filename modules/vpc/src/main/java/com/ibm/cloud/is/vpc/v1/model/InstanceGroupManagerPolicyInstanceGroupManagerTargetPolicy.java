@@ -19,7 +19,10 @@ package com.ibm.cloud.is.vpc.v1.model;
 public class InstanceGroupManagerPolicyInstanceGroupManagerTargetPolicy extends InstanceGroupManagerPolicy {
 
   /**
-   * The type of metric to be evaluated.
+   * The type of metric to be evaluated
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface MetricType {
     /** cpu. */
@@ -33,7 +36,10 @@ public class InstanceGroupManagerPolicyInstanceGroupManagerTargetPolicy extends 
   }
 
   /**
-   * The type of policy for the instance group.
+   * The type of policy for the instance group
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface PolicyType {
     /** target. */

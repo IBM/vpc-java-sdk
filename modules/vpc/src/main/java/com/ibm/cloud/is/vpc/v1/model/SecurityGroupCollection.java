@@ -70,7 +70,7 @@ public class SecurityGroupCollection extends GenericModel {
   /**
    * Gets the securityGroups.
    *
-   * Collection of security groups.
+   * A page of security groups.
    *
    * @return the securityGroups
    */

@@ -65,6 +65,9 @@ public class VPNGatewayMember extends GenericModel {
 
   /**
    * The high availability role assigned to the VPN gateway member.
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface Role {
     /** active. */
@@ -167,6 +170,9 @@ public class VPNGatewayMember extends GenericModel {
    * Gets the role.
    *
    * The high availability role assigned to the VPN gateway member.
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the role
    */

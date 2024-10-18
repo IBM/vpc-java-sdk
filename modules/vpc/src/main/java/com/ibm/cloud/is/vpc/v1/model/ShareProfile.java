@@ -23,6 +23,9 @@ public class ShareProfile extends GenericModel {
 
   /**
    * The product family this share profile belongs to.
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface Family {
     /** defined_performance. */
@@ -62,6 +65,9 @@ public class ShareProfile extends GenericModel {
    * Gets the family.
    *
    * The product family this share profile belongs to.
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the family
    */

@@ -41,6 +41,9 @@ public class Subnet extends GenericModel {
 
   /**
    * The status of the subnet.
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface Status {
     /** available. */
@@ -231,6 +234,9 @@ public class Subnet extends GenericModel {
    * Gets the status.
    *
    * The status of the subnet.
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the status
    */

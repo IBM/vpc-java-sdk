@@ -40,7 +40,7 @@ public class SecurityGroupTargetReference extends GenericModel {
     String NETWORK_INTERFACE = "network_interface";
   }
 
-  protected NetworkInterfaceReferenceTargetContextDeleted deleted;
+  protected Deleted deleted;
   protected String href;
   protected String id;
   protected String name;
@@ -61,7 +61,7 @@ public class SecurityGroupTargetReference extends GenericModel {
    *
    * @return the deleted
    */
-  public NetworkInterfaceReferenceTargetContextDeleted getDeleted() {
+  public Deleted getDeleted() {
     return deleted;
   }
 
@@ -121,7 +121,7 @@ public class SecurityGroupTargetReference extends GenericModel {
   /**
    * Gets the crn.
    *
-   * The load balancer's CRN.
+   * The CRN for this load balancer.
    *
    * @return the crn
    */

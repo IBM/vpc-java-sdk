@@ -80,7 +80,7 @@ public class VPCCollection extends GenericModel {
   /**
    * Gets the vpcs.
    *
-   * Collection of VPCs.
+   * A page of VPCs.
    *
    * @return the vpcs
    */

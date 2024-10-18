@@ -46,7 +46,7 @@ public class ImageCollection extends GenericModel {
   /**
    * Gets the images.
    *
-   * Collection of images.
+   * A page of images.
    *
    * @return the images
    */

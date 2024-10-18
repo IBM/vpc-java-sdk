@@ -32,9 +32,9 @@ public class GetDedicatedHostProfileOptionsTest {
   @Test
   public void testGetDedicatedHostProfileOptions() throws Throwable {
     GetDedicatedHostProfileOptions getDedicatedHostProfileOptionsModel = new GetDedicatedHostProfileOptions.Builder()
-      .name("testString")
+      .name("mx2-host-152x1216")
       .build();
-    assertEquals(getDedicatedHostProfileOptionsModel.name(), "testString");
+    assertEquals(getDedicatedHostProfileOptionsModel.name(), "mx2-host-152x1216");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

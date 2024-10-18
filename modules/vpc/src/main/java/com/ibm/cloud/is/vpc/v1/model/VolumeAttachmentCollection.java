@@ -31,7 +31,7 @@ public class VolumeAttachmentCollection extends GenericModel {
   /**
    * Gets the volumeAttachments.
    *
-   * Collection of volume attachments.
+   * The volume attachments for the instance.
    *
    * @return the volumeAttachments
    */

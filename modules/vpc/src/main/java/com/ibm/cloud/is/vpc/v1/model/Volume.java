@@ -30,6 +30,36 @@ public class Volume extends GenericModel {
    * - `attached`: Attached to a virtual server instance (even if the instance is stopped)
    * - `unusable`: Not able to be attached to any virtual server instances.
    */
+  public interface AdjustableCapacityStates {
+    /** attached. */
+    String ATTACHED = "attached";
+    /** unattached. */
+    String UNATTACHED = "unattached";
+    /** unusable. */
+    String UNUSABLE = "unusable";
+  }
+
+  /**
+   * The attachment state of the volume
+   * - `unattached`: Not attached to any virtual server instances
+   * - `attached`: Attached to a virtual server instance (even if the instance is stopped)
+   * - `unusable`: Not able to be attached to any virtual server instances.
+   */
+  public interface AdjustableIopsStates {
+    /** attached. */
+    String ATTACHED = "attached";
+    /** unattached. */
+    String UNATTACHED = "unattached";
+    /** unusable. */
+    String UNUSABLE = "unusable";
+  }
+
+  /**
+   * The attachment state of the volume
+   * - `unattached`: Not attached to any virtual server instances
+   * - `attached`: Attached to a virtual server instance (even if the instance is stopped)
+   * - `unusable`: Not able to be attached to any virtual server instances.
+   */
   public interface AttachmentState {
     /** attached. */
     String ATTACHED = "attached";
@@ -99,6 +129,10 @@ public class Volume extends GenericModel {
   }
 
   protected Boolean active;
+  @SerializedName("adjustable_capacity_states")
+  protected List<String> adjustableCapacityStates;
+  @SerializedName("adjustable_iops_states")
+  protected List<String> adjustableIopsStates;
   @SerializedName("attachment_state")
   protected String attachmentState;
   protected Long bandwidth;
@@ -151,6 +185,28 @@ public class Volume extends GenericModel {
    */
   public Boolean isActive() {
     return active;
+  }
+
+  /**
+   * Gets the adjustableCapacityStates.
+   *
+   * The attachment states that support adjustable capacity for this volume.
+   *
+   * @return the adjustableCapacityStates
+   */
+  public List<String> getAdjustableCapacityStates() {
+    return adjustableCapacityStates;
+  }
+
+  /**
+   * Gets the adjustableIopsStates.
+   *
+   * The attachment states that support adjustable IOPS for this volume.
+   *
+   * @return the adjustableIopsStates
+   */
+  public List<String> getAdjustableIopsStates() {
+    return adjustableIopsStates;
   }
 
   /**

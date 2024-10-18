@@ -13,11 +13,10 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.ibm.cloud.is.vpc.v1.model.Deleted;
 import com.ibm.cloud.is.vpc.v1.model.IKEPolicyReference;
-import com.ibm.cloud.is.vpc.v1.model.IKEPolicyReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.IP;
 import com.ibm.cloud.is.vpc.v1.model.IPsecPolicyReference;
-import com.ibm.cloud.is.vpc.v1.model.IPsecPolicyReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionDPD;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionIKEIdentityVPNGatewayConnectionIKEIdentityFQDN;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionRouteModeVPNGatewayConnectionStaticRouteMode;
@@ -59,6 +58,7 @@ public class VPNGatewayConnectionRouteModeVPNGatewayConnectionStaticRouteModeTes
     assertNull(vpnGatewayConnectionRouteModeVpnGatewayConnectionStaticRouteModeModel.getResourceType());
     assertNull(vpnGatewayConnectionRouteModeVpnGatewayConnectionStaticRouteModeModel.getStatus());
     assertNull(vpnGatewayConnectionRouteModeVpnGatewayConnectionStaticRouteModeModel.getStatusReasons());
+    assertNull(vpnGatewayConnectionRouteModeVpnGatewayConnectionStaticRouteModeModel.isDistributeTraffic());
     assertNull(vpnGatewayConnectionRouteModeVpnGatewayConnectionStaticRouteModeModel.getLocal());
     assertNull(vpnGatewayConnectionRouteModeVpnGatewayConnectionStaticRouteModeModel.getPeer());
     assertNull(vpnGatewayConnectionRouteModeVpnGatewayConnectionStaticRouteModeModel.getRoutingProtocol());

@@ -45,7 +45,7 @@ public class LoadBalancerIdentity extends GenericModel {
   /**
    * Gets the crn.
    *
-   * The load balancer's CRN.
+   * The CRN for this load balancer.
    *
    * @return the crn
    */
@@ -56,7 +56,7 @@ public class LoadBalancerIdentity extends GenericModel {
   /**
    * Gets the href.
    *
-   * The load balancer's canonical URL.
+   * The URL for this load balancer.
    *
    * @return the href
    */

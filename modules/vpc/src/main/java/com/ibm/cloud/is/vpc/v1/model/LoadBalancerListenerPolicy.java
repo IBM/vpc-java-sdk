@@ -25,8 +25,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class LoadBalancerListenerPolicy extends GenericModel {
 
   /**
-   * The policy action.
-   *
+   * The policy action:
    * - `forward`: Requests will be forwarded to the specified `target` pool
    * - `https_redirect`: Requests will be redirected to the specified target listener. The
    *   listener must have a `protocol` of `http`, and the target listener must have a
@@ -84,8 +83,7 @@ public class LoadBalancerListenerPolicy extends GenericModel {
   /**
    * Gets the action.
    *
-   * The policy action.
-   *
+   * The policy action:
    * - `forward`: Requests will be forwarded to the specified `target` pool
    * - `https_redirect`: Requests will be redirected to the specified target listener. The
    *   listener must have a `protocol` of `http`, and the target listener must have a
@@ -116,7 +114,7 @@ public class LoadBalancerListenerPolicy extends GenericModel {
   /**
    * Gets the href.
    *
-   * The listener policy's canonical URL.
+   * The URL for this load balancer policy.
    *
    * @return the href
    */
@@ -127,7 +125,7 @@ public class LoadBalancerListenerPolicy extends GenericModel {
   /**
    * Gets the id.
    *
-   * The policy's unique identifier.
+   * The unique identifier for this load balancer policy.
    *
    * @return the id
    */

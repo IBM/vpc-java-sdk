@@ -35,7 +35,7 @@ public class IKEPolicyConnectionCollection extends GenericModel {
   /**
    * Gets the connections.
    *
-   * Collection of VPN gateway connections that use a specified IKE policy specified by the identifier in the URL.
+   * A page of VPN gateway connections that use the IKE policy specified by the identifier in the URL.
    *
    * @return the connections
    */

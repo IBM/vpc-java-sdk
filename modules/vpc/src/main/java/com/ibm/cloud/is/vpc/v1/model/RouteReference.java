@@ -20,7 +20,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class RouteReference extends GenericModel {
 
-  protected RouteReferenceDeleted deleted;
+  protected Deleted deleted;
   protected String href;
   protected String id;
   protected String name;
@@ -35,7 +35,7 @@ public class RouteReference extends GenericModel {
    *
    * @return the deleted
    */
-  public RouteReferenceDeleted getDeleted() {
+  public Deleted getDeleted() {
     return deleted;
   }
 

@@ -24,17 +24,13 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class LoadBalancerListenerPolicyPrototype extends GenericModel {
 
   /**
-   * The policy action.
-   *
+   * The policy action:
    * - `forward`: Requests will be forwarded to the specified `target` pool
    * - `https_redirect`: Requests will be redirected to the specified target listener. The
    *   listener must have a `protocol` of `http`, and the target listener must have a
    *   `protocol` of `https`
    * - `redirect`: Requests will be redirected to the specified `target.url`
-   * - `reject`: Requests will be rejected with a `403` status code
-   *
-   * The enumerated values for this property may
-   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
+   * - `reject`: Requests will be rejected with a `403` status code.
    */
   public interface Action {
     /** forward. */
@@ -201,17 +197,13 @@ public class LoadBalancerListenerPolicyPrototype extends GenericModel {
   /**
    * Gets the action.
    *
-   * The policy action.
-   *
+   * The policy action:
    * - `forward`: Requests will be forwarded to the specified `target` pool
    * - `https_redirect`: Requests will be redirected to the specified target listener. The
    *   listener must have a `protocol` of `http`, and the target listener must have a
    *   `protocol` of `https`
    * - `redirect`: Requests will be redirected to the specified `target.url`
-   * - `reject`: Requests will be rejected with a `403` status code
-   *
-   * The enumerated values for this property may
-   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
+   * - `reject`: Requests will be rejected with a `403` status code.
    *
    * @return the action
    */

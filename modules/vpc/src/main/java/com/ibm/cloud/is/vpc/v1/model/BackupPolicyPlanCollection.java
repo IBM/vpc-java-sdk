@@ -69,7 +69,7 @@ public class BackupPolicyPlanCollection extends GenericModel {
   /**
    * Gets the plans.
    *
-   * Collection of backup policy plans.
+   * A page of plans for the backup policy.
    *
    * @return the plans
    */

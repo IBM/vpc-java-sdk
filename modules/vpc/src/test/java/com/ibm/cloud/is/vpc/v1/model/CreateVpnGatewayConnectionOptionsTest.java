@@ -84,6 +84,7 @@ public class CreateVpnGatewayConnectionOptionsTest {
       .ipsecPolicy(vpnGatewayConnectionIPsecPolicyPrototypeModel)
       .name("my-vpn-connection")
       .psk("lkj14b1oi0alcniejkso")
+      .distributeTraffic(false)
       .local(vpnGatewayConnectionStaticRouteModeLocalPrototypeModel)
       .peer(vpnGatewayConnectionStaticRouteModePeerPrototypeModel)
       .routingProtocol("none")
@@ -95,6 +96,7 @@ public class CreateVpnGatewayConnectionOptionsTest {
     assertEquals(vpnGatewayConnectionPrototypeModel.ipsecPolicy(), vpnGatewayConnectionIPsecPolicyPrototypeModel);
     assertEquals(vpnGatewayConnectionPrototypeModel.name(), "my-vpn-connection");
     assertEquals(vpnGatewayConnectionPrototypeModel.psk(), "lkj14b1oi0alcniejkso");
+    assertEquals(vpnGatewayConnectionPrototypeModel.distributeTraffic(), Boolean.valueOf(false));
     assertEquals(vpnGatewayConnectionPrototypeModel.local(), vpnGatewayConnectionStaticRouteModeLocalPrototypeModel);
     assertEquals(vpnGatewayConnectionPrototypeModel.peer(), vpnGatewayConnectionStaticRouteModePeerPrototypeModel);
     assertEquals(vpnGatewayConnectionPrototypeModel.routingProtocol(), "none");

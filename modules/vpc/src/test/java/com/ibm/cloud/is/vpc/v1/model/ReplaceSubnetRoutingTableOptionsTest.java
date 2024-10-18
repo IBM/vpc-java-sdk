@@ -14,7 +14,7 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.ReplaceSubnetRoutingTableOptions;
-import com.ibm.cloud.is.vpc.v1.model.RoutingTableIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.RoutingTableIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -32,10 +32,10 @@ public class ReplaceSubnetRoutingTableOptionsTest {
 
   @Test
   public void testReplaceSubnetRoutingTableOptions() throws Throwable {
-    RoutingTableIdentityById routingTableIdentityModel = new RoutingTableIdentityById.Builder()
-      .id("6885e83f-03b2-4603-8a86-db2a0f55c840")
+    RoutingTableIdentityByCRN routingTableIdentityModel = new RoutingTableIdentityByCRN.Builder()
+      .crn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc-routing-table:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b/r006-6885e83f-03b2-4603-8a86-db2a0f55c840")
       .build();
-    assertEquals(routingTableIdentityModel.id(), "6885e83f-03b2-4603-8a86-db2a0f55c840");
+    assertEquals(routingTableIdentityModel.crn(), "crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc-routing-table:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b/r006-6885e83f-03b2-4603-8a86-db2a0f55c840");
 
     ReplaceSubnetRoutingTableOptions replaceSubnetRoutingTableOptionsModel = new ReplaceSubnetRoutingTableOptions.Builder()
       .id("testString")

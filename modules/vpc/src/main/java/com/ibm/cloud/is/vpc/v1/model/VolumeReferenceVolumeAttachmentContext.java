@@ -30,7 +30,7 @@ public class VolumeReferenceVolumeAttachmentContext extends GenericModel {
   }
 
   protected String crn;
-  protected VolumeReferenceVolumeAttachmentContextDeleted deleted;
+  protected Deleted deleted;
   protected String href;
   protected String id;
   protected String name;
@@ -58,7 +58,7 @@ public class VolumeReferenceVolumeAttachmentContext extends GenericModel {
    *
    * @return the deleted
    */
-  public VolumeReferenceVolumeAttachmentContextDeleted getDeleted() {
+  public Deleted getDeleted() {
     return deleted;
   }
 

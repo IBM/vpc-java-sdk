@@ -32,15 +32,15 @@ public class KeyIdentityByHrefTest {
   @Test
   public void testKeyIdentityByHref() throws Throwable {
     KeyIdentityByHref keyIdentityByHrefModel = new KeyIdentityByHref.Builder()
-      .href("https://us-south.iaas.cloud.ibm.com/v1/keys/a6b1a881-2ce8-41a3-80fc-36316a73f803")
+      .href("https://us-south.iaas.cloud.ibm.com/v1/keys/82679077-ac3b-4c10-be16-63e9c21f0f45")
       .build();
-    assertEquals(keyIdentityByHrefModel.href(), "https://us-south.iaas.cloud.ibm.com/v1/keys/a6b1a881-2ce8-41a3-80fc-36316a73f803");
+    assertEquals(keyIdentityByHrefModel.href(), "https://us-south.iaas.cloud.ibm.com/v1/keys/82679077-ac3b-4c10-be16-63e9c21f0f45");
 
     String json = TestUtilities.serialize(keyIdentityByHrefModel);
 
     KeyIdentityByHref keyIdentityByHrefModelNew = TestUtilities.deserialize(json, KeyIdentityByHref.class);
     assertTrue(keyIdentityByHrefModelNew instanceof KeyIdentityByHref);
-    assertEquals(keyIdentityByHrefModelNew.href(), "https://us-south.iaas.cloud.ibm.com/v1/keys/a6b1a881-2ce8-41a3-80fc-36316a73f803");
+    assertEquals(keyIdentityByHrefModelNew.href(), "https://us-south.iaas.cloud.ibm.com/v1/keys/82679077-ac3b-4c10-be16-63e9c21f0f45");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

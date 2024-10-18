@@ -24,7 +24,7 @@ import com.ibm.cloud.sdk.core.util.GsonSingleton;
 public class LoadBalancerListenerPolicyRulePatch extends GenericModel {
 
   /**
-   * The condition of the rule.
+   * The condition for the rule.
    */
   public interface Condition {
     /** contains. */
@@ -36,9 +36,8 @@ public class LoadBalancerListenerPolicyRulePatch extends GenericModel {
   }
 
   /**
-   * The type of the rule.
-   *
-   * Body rules are applied to form-encoded request bodies using the `UTF-8` character set.
+   * The type of the rule. Body rules are applied to form-encoded request bodies using the
+   * `UTF-8` character set.
    */
   public interface Type {
     /** body. */
@@ -160,7 +159,7 @@ public class LoadBalancerListenerPolicyRulePatch extends GenericModel {
   /**
    * Gets the condition.
    *
-   * The condition of the rule.
+   * The condition for the rule.
    *
    * @return the condition
    */
@@ -171,14 +170,11 @@ public class LoadBalancerListenerPolicyRulePatch extends GenericModel {
   /**
    * Gets the field.
    *
-   * The field. This is applicable to `header`, `query`, and `body` rule types.
+   * The field to match for this rule. This property must be specified if the rule type is
+   * `header`, may be specified if the rule type is `body` or `query`, and must not be specified if the rule type is
+   * `hostname` or `path`.
    *
-   * If the rule type is `header`, this property is required.
-   *
-   * If the rule type is `query`, this is optional. If specified and the rule condition is not
-   * `matches_regex`, the value must be percent-encoded.
-   *
-   * If the rule type is `body`, this is optional.
+   * If the rule condition is not `matches_regex`, the value must be percent-encoded.
    *
    * @return the field
    */
@@ -189,9 +185,8 @@ public class LoadBalancerListenerPolicyRulePatch extends GenericModel {
   /**
    * Gets the type.
    *
-   * The type of the rule.
-   *
-   * Body rules are applied to form-encoded request bodies using the `UTF-8` character set.
+   * The type of the rule. Body rules are applied to form-encoded request bodies using the
+   * `UTF-8` character set.
    *
    * @return the type
    */
@@ -202,7 +197,7 @@ public class LoadBalancerListenerPolicyRulePatch extends GenericModel {
   /**
    * Gets the value.
    *
-   * Value to be matched for rule condition.
+   * The value to be matched for the rule condition.
    *
    * If the rule type is `query` and the rule condition is not `matches_regex`, the value must be percent-encoded.
    *

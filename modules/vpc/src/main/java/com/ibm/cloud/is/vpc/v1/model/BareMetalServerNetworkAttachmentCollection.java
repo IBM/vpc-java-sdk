@@ -58,7 +58,7 @@ public class BareMetalServerNetworkAttachmentCollection extends GenericModel {
   /**
    * Gets the networkAttachments.
    *
-   * Collection of bare metal server network attachments.
+   * The network attachments for the bare metal server.
    *
    * @return the networkAttachments
    */

@@ -69,7 +69,7 @@ public class ShareProfileCollection extends GenericModel {
   /**
    * Gets the profiles.
    *
-   * Collection of share profiles.
+   * A page of share profiles.
    *
    * @return the profiles
    */

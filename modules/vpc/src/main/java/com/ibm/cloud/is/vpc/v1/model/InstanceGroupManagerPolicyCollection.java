@@ -69,7 +69,7 @@ public class InstanceGroupManagerPolicyCollection extends GenericModel {
   /**
    * Gets the policies.
    *
-   * Collection of instance group manager policies.
+   * A page of policies for the instance group manager.
    *
    * @return the policies
    */

@@ -58,6 +58,7 @@ public class BareMetalServer extends GenericModel {
    * - `failed`: server is failed and not usable (see `status_reasons`)
    * - `maintenance`: server is undergoing maintenance (not usable)
    * - `pending`: server is being provisioned and not yet usable
+   * - `reinitializing`: server is reinitializing and not yet usable
    * - `restarting`: server is restarting and not yet usable
    * - `running`: server is powered on
    * - `starting`: server is starting and not yet usable
@@ -75,6 +76,8 @@ public class BareMetalServer extends GenericModel {
     String MAINTENANCE = "maintenance";
     /** pending. */
     String PENDING = "pending";
+    /** reinitializing. */
+    String REINITIALIZING = "reinitializing";
     /** restarting. */
     String RESTARTING = "restarting";
     /** running. */
@@ -95,6 +98,7 @@ public class BareMetalServer extends GenericModel {
   protected List<BareMetalServerDisk> disks;
   @SerializedName("enable_secure_boot")
   protected Boolean enableSecureBoot;
+  protected BareMetalServerFirmware firmware;
   protected String href;
   protected String id;
   @SerializedName("lifecycle_reasons")
@@ -207,6 +211,17 @@ public class BareMetalServer extends GenericModel {
    */
   public Boolean isEnableSecureBoot() {
     return enableSecureBoot;
+  }
+
+  /**
+   * Gets the firmware.
+   *
+   * Firmware information for the bare metal server.
+   *
+   * @return the firmware
+   */
+  public BareMetalServerFirmware getFirmware() {
+    return firmware;
   }
 
   /**
@@ -370,6 +385,7 @@ public class BareMetalServer extends GenericModel {
    * - `failed`: server is failed and not usable (see `status_reasons`)
    * - `maintenance`: server is undergoing maintenance (not usable)
    * - `pending`: server is being provisioned and not yet usable
+   * - `reinitializing`: server is reinitializing and not yet usable
    * - `restarting`: server is restarting and not yet usable
    * - `running`: server is powered on
    * - `starting`: server is starting and not yet usable

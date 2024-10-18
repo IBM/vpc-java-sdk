@@ -29,7 +29,7 @@ public class LoadBalancerListenerCollection extends GenericModel {
   /**
    * Gets the listeners.
    *
-   * Collection of listeners.
+   * The listeners for the load balancer.
    *
    * @return the listeners
    */

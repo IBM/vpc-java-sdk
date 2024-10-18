@@ -69,7 +69,7 @@ public class NetworkACLRuleCollection extends GenericModel {
   /**
    * Gets the rules.
    *
-   * Ordered collection of network ACL rules.
+   * A page of ordered rules (sorted based on the `before` property) for the network ACL.
    *
    * @return the rules
    */

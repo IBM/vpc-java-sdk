@@ -47,7 +47,7 @@ public class FloatingIPCollection extends GenericModel {
   /**
    * Gets the floatingIps.
    *
-   * Collection of floating IPs.
+   * A page of floating IPs.
    *
    * @return the floatingIps
    */

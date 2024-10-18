@@ -27,7 +27,7 @@ public class ImageFileChecksums extends GenericModel {
   /**
    * Gets the sha256.
    *
-   * The SHA256 fingerprint of the image file.
+   * The SHA256 fingerprint of the image file, in hexadecimal.
    *
    * @return the sha256
    */

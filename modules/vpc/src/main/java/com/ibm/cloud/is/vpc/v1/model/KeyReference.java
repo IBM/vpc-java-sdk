@@ -21,7 +21,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class KeyReference extends GenericModel {
 
   protected String crn;
-  protected KeyReferenceDeleted deleted;
+  protected Deleted deleted;
   protected String fingerprint;
   protected String href;
   protected String id;
@@ -48,7 +48,7 @@ public class KeyReference extends GenericModel {
    *
    * @return the deleted
    */
-  public KeyReferenceDeleted getDeleted() {
+  public Deleted getDeleted() {
     return deleted;
   }
 

@@ -51,7 +51,7 @@ public class LoadBalancerListenerDefaultPoolPatch extends GenericModel {
   /**
    * Gets the href.
    *
-   * The pool's canonical URL.
+   * The URL for this load balancer pool.
    *
    * @return the href
    */

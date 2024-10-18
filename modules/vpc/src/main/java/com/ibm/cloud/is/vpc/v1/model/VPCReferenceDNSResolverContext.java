@@ -32,7 +32,7 @@ public class VPCReferenceDNSResolverContext extends GenericModel {
   }
 
   protected String crn;
-  protected VPCReferenceDNSResolverContextDeleted deleted;
+  protected Deleted deleted;
   protected String href;
   protected String id;
   protected String name;
@@ -61,7 +61,7 @@ public class VPCReferenceDNSResolverContext extends GenericModel {
    *
    * @return the deleted
    */
-  public VPCReferenceDNSResolverContextDeleted getDeleted() {
+  public Deleted getDeleted() {
     return deleted;
   }
 

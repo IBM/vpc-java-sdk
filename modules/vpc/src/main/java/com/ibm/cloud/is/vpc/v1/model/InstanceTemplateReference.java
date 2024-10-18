@@ -21,7 +21,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class InstanceTemplateReference extends GenericModel {
 
   protected String crn;
-  protected InstanceTemplateReferenceDeleted deleted;
+  protected Deleted deleted;
   protected String href;
   protected String id;
   protected String name;
@@ -47,7 +47,7 @@ public class InstanceTemplateReference extends GenericModel {
    *
    * @return the deleted
    */
-  public InstanceTemplateReferenceDeleted getDeleted() {
+  public Deleted getDeleted() {
     return deleted;
   }
 

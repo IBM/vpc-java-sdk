@@ -29,7 +29,8 @@ public class RoutingTableReference extends GenericModel {
     String ROUTING_TABLE = "routing_table";
   }
 
-  protected RoutingTableReferenceDeleted deleted;
+  protected String crn;
+  protected Deleted deleted;
   protected String href;
   protected String id;
   protected String name;
@@ -39,6 +40,17 @@ public class RoutingTableReference extends GenericModel {
   protected RoutingTableReference() { }
 
   /**
+   * Gets the crn.
+   *
+   * The CRN for this VPC routing table.
+   *
+   * @return the crn
+   */
+  public String getCrn() {
+    return crn;
+  }
+
+  /**
    * Gets the deleted.
    *
    * If present, this property indicates the referenced resource has been deleted, and provides
@@ -46,7 +58,7 @@ public class RoutingTableReference extends GenericModel {
    *
    * @return the deleted
    */
-  public RoutingTableReferenceDeleted getDeleted() {
+  public Deleted getDeleted() {
     return deleted;
   }
 

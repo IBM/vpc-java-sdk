@@ -46,7 +46,7 @@ public class ReservedIPCollectionInstanceNetworkInterfaceContext extends Generic
   /**
    * Gets the ips.
    *
-   * Collection of reserved IPs bound to an instance network interface.
+   * A page of reserved IPs bound to the instance network interface.
    *
    * @return the ips
    */

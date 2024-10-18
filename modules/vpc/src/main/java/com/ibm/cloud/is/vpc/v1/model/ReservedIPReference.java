@@ -30,7 +30,7 @@ public class ReservedIPReference extends GenericModel {
   }
 
   protected String address;
-  protected ReservedIPReferenceDeleted deleted;
+  protected Deleted deleted;
   protected String href;
   protected String id;
   protected String name;
@@ -63,7 +63,7 @@ public class ReservedIPReference extends GenericModel {
    *
    * @return the deleted
    */
-  public ReservedIPReferenceDeleted getDeleted() {
+  public Deleted getDeleted() {
     return deleted;
   }
 

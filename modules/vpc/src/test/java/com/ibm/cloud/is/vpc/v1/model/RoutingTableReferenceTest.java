@@ -13,8 +13,8 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.ibm.cloud.is.vpc.v1.model.Deleted;
 import com.ibm.cloud.is.vpc.v1.model.RoutingTableReference;
-import com.ibm.cloud.is.vpc.v1.model.RoutingTableReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -33,6 +33,7 @@ public class RoutingTableReferenceTest {
   @Test
   public void testRoutingTableReference() throws Throwable {
     RoutingTableReference routingTableReferenceModel = new RoutingTableReference();
+    assertNull(routingTableReferenceModel.getCrn());
     assertNull(routingTableReferenceModel.getDeleted());
     assertNull(routingTableReferenceModel.getHref());
     assertNull(routingTableReferenceModel.getId());

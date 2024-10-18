@@ -25,7 +25,8 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class LoadBalancerPoolPrototype extends GenericModel {
 
   /**
-   * The load balancing algorithm.
+   * The load balancing algorithm. The `least_connections` algorithm is only supported for load balancers that have
+   * `availability` with value `subnet` in the profile.
    */
   public interface Algorithm {
     /** least_connections. */
@@ -58,7 +59,7 @@ public class LoadBalancerPoolPrototype extends GenericModel {
    * - `v2`: Enabled with version 2 (binary header format)
    * - `disabled`: Disabled
    *
-   * Supported by load balancers in the `application` family (otherwise always `disabled`).
+   * For load balancers in the `network` family, this property must be `disabled`.
    */
   public interface ProxyProtocol {
     /** disabled. */
@@ -260,7 +261,8 @@ public class LoadBalancerPoolPrototype extends GenericModel {
   /**
    * Gets the algorithm.
    *
-   * The load balancing algorithm.
+   * The load balancing algorithm. The `least_connections` algorithm is only supported for load balancers that have
+   * `availability` with value `subnet` in the profile.
    *
    * @return the algorithm
    */
@@ -324,7 +326,7 @@ public class LoadBalancerPoolPrototype extends GenericModel {
    * - `v2`: Enabled with version 2 (binary header format)
    * - `disabled`: Disabled
    *
-   * Supported by load balancers in the `application` family (otherwise always `disabled`).
+   * For load balancers in the `network` family, this property must be `disabled`.
    *
    * @return the proxyProtocol
    */
@@ -335,9 +337,10 @@ public class LoadBalancerPoolPrototype extends GenericModel {
   /**
    * Gets the sessionPersistence.
    *
-   * The session persistence of this pool. If unspecified, session persistence will be
-   * disabled, and traffic will be distributed across backend server members of the
-   * pool.
+   * The session persistence of this pool. If specified, the load balancer must have
+   * `source_ip_session_persistence_supported` set to `true` in its profile. If
+   * unspecified, session persistence will be disabled, and traffic will be distributed
+   * across backend server members of the pool.
    *
    * @return the sessionPersistence
    */

@@ -58,7 +58,7 @@ public class ShareMountTargetCollection extends GenericModel {
   /**
    * Gets the mountTargets.
    *
-   * Collection of share mount targets.
+   * A page of mount targets for the share.
    *
    * @return the mountTargets
    */

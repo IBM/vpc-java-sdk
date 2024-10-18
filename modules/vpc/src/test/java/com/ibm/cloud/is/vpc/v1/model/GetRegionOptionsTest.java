@@ -32,9 +32,9 @@ public class GetRegionOptionsTest {
   @Test
   public void testGetRegionOptions() throws Throwable {
     GetRegionOptions getRegionOptionsModel = new GetRegionOptions.Builder()
-      .name("testString")
+      .name("us-south")
       .build();
-    assertEquals(getRegionOptionsModel.name(), "testString");
+    assertEquals(getRegionOptionsModel.name(), "us-south");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

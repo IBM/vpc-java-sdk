@@ -44,6 +44,8 @@ public class VPNGatewayConnectionPatch extends GenericModel {
   protected Boolean adminStateUp;
   @SerializedName("dead_peer_detection")
   protected VPNGatewayConnectionDPDPatch deadPeerDetection;
+  @SerializedName("distribute_traffic")
+  protected Boolean distributeTraffic;
   @SerializedName("establish_mode")
   protected String establishMode;
   @SerializedName("ike_policy")
@@ -60,6 +62,7 @@ public class VPNGatewayConnectionPatch extends GenericModel {
   public static class Builder {
     private Boolean adminStateUp;
     private VPNGatewayConnectionDPDPatch deadPeerDetection;
+    private Boolean distributeTraffic;
     private String establishMode;
     private VPNGatewayConnectionIKEPolicyPatch ikePolicy;
     private VPNGatewayConnectionIPsecPolicyPatch ipsecPolicy;
@@ -75,6 +78,7 @@ public class VPNGatewayConnectionPatch extends GenericModel {
     private Builder(VPNGatewayConnectionPatch vpnGatewayConnectionPatch) {
       this.adminStateUp = vpnGatewayConnectionPatch.adminStateUp;
       this.deadPeerDetection = vpnGatewayConnectionPatch.deadPeerDetection;
+      this.distributeTraffic = vpnGatewayConnectionPatch.distributeTraffic;
       this.establishMode = vpnGatewayConnectionPatch.establishMode;
       this.ikePolicy = vpnGatewayConnectionPatch.ikePolicy;
       this.ipsecPolicy = vpnGatewayConnectionPatch.ipsecPolicy;
@@ -117,6 +121,17 @@ public class VPNGatewayConnectionPatch extends GenericModel {
      */
     public Builder deadPeerDetection(VPNGatewayConnectionDPDPatch deadPeerDetection) {
       this.deadPeerDetection = deadPeerDetection;
+      return this;
+    }
+
+    /**
+     * Set the distributeTraffic.
+     *
+     * @param distributeTraffic the distributeTraffic
+     * @return the VPNGatewayConnectionPatch builder
+     */
+    public Builder distributeTraffic(Boolean distributeTraffic) {
+      this.distributeTraffic = distributeTraffic;
       return this;
     }
 
@@ -192,6 +207,7 @@ public class VPNGatewayConnectionPatch extends GenericModel {
   protected VPNGatewayConnectionPatch(Builder builder) {
     adminStateUp = builder.adminStateUp;
     deadPeerDetection = builder.deadPeerDetection;
+    distributeTraffic = builder.distributeTraffic;
     establishMode = builder.establishMode;
     ikePolicy = builder.ikePolicy;
     ipsecPolicy = builder.ipsecPolicy;
@@ -229,6 +245,23 @@ public class VPNGatewayConnectionPatch extends GenericModel {
    */
   public VPNGatewayConnectionDPDPatch deadPeerDetection() {
     return deadPeerDetection;
+  }
+
+  /**
+   * Gets the distributeTraffic.
+   *
+   * Indicates whether the traffic is distributed between the `up` tunnels of the VPN gateway connection when the VPC
+   * route's next hop is a VPN connection. If `false`, the traffic is only routed through the `up` tunnel with the lower
+   * `public_ip` address. Before enabling it on VPN connections to on-prem private networks, review
+   * [distributing traffic
+   * restrictions](https://cloud.ibm.com/docs/vpc?topic=vpc-vpn-limitations#distributing-traffic-restrictions).
+   *
+   * If specified, `mode` must be `route`.
+   *
+   * @return the distributeTraffic
+   */
+  public Boolean distributeTraffic() {
+    return distributeTraffic;
   }
 
   /**

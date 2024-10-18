@@ -219,8 +219,9 @@ public class CreateLoadBalancerPoolMemberOptions extends GenericModel {
   /**
    * Gets the weight.
    *
-   * Weight of the server member. Applicable only if the pool algorithm is
-   * `weighted_round_robin`.
+   * The weight of the server member.
+   *
+   * If specified, the pool algorithm must be `weighted_round_robin`.
    *
    * @return the weight
    */

@@ -70,7 +70,7 @@ public class RoutingTableCollection extends GenericModel {
   /**
    * Gets the routingTables.
    *
-   * Collection of routing tables.
+   * A page of routing tables.
    *
    * @return the routingTables
    */

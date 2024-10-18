@@ -25,10 +25,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class DedicatedHostDisk extends GenericModel {
 
   /**
-   * The disk interface used for attaching the disk
-   *
-   * The enumerated values for this property may
-   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
+   * The disk interface used for attaching the disk.
    */
   public interface InterfaceType {
     /** nvme. */
@@ -155,10 +152,7 @@ public class DedicatedHostDisk extends GenericModel {
   /**
    * Gets the interfaceType.
    *
-   * The disk interface used for attaching the disk
-   *
-   * The enumerated values for this property may
-   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
+   * The disk interface used for attaching the disk.
    *
    * @return the interfaceType
    */
@@ -225,6 +219,9 @@ public class DedicatedHostDisk extends GenericModel {
    * Gets the supportedInstanceInterfaceTypes.
    *
    * The instance disk interfaces supported for this dedicated host disk.
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the supportedInstanceInterfaceTypes
    */

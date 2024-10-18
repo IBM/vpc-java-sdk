@@ -13,6 +13,7 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.ibm.cloud.is.vpc.v1.model.AccountReference;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyJob;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyJobCollection;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyJobCollectionFirst;
@@ -20,13 +21,11 @@ import com.ibm.cloud.is.vpc.v1.model.BackupPolicyJobCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyJobSourceVolumeReference;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyJobStatusReason;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanReference;
-import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanRemote;
+import com.ibm.cloud.is.vpc.v1.model.Deleted;
 import com.ibm.cloud.is.vpc.v1.model.RegionReference;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotReference;
-import com.ibm.cloud.is.vpc.v1.model.SnapshotReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotRemote;
-import com.ibm.cloud.is.vpc.v1.model.VolumeReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.VolumeRemote;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;

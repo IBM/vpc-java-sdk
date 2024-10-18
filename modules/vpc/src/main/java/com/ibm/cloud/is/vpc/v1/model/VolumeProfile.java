@@ -13,6 +13,7 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
@@ -29,15 +30,61 @@ public class VolumeProfile extends GenericModel {
   public interface Family {
     /** custom. */
     String CUSTOM = "custom";
+    /** defined_performance. */
+    String DEFINED_PERFORMANCE = "defined_performance";
     /** tiered. */
     String TIERED = "tiered";
   }
 
+  @SerializedName("adjustable_capacity_states")
+  protected VolumeProfileAdjustableCapacityStates adjustableCapacityStates;
+  @SerializedName("adjustable_iops_states")
+  protected VolumeProfileAdjustableIOPSStates adjustableIopsStates;
+  @SerializedName("boot_capacity")
+  protected VolumeProfileBootCapacity bootCapacity;
+  protected VolumeProfileCapacity capacity;
   protected String family;
   protected String href;
+  protected VolumeProfileIOPS iops;
   protected String name;
 
   protected VolumeProfile() { }
+
+  /**
+   * Gets the adjustableCapacityStates.
+   *
+   * @return the adjustableCapacityStates
+   */
+  public VolumeProfileAdjustableCapacityStates getAdjustableCapacityStates() {
+    return adjustableCapacityStates;
+  }
+
+  /**
+   * Gets the adjustableIopsStates.
+   *
+   * @return the adjustableIopsStates
+   */
+  public VolumeProfileAdjustableIOPSStates getAdjustableIopsStates() {
+    return adjustableIopsStates;
+  }
+
+  /**
+   * Gets the bootCapacity.
+   *
+   * @return the bootCapacity
+   */
+  public VolumeProfileBootCapacity getBootCapacity() {
+    return bootCapacity;
+  }
+
+  /**
+   * Gets the capacity.
+   *
+   * @return the capacity
+   */
+  public VolumeProfileCapacity getCapacity() {
+    return capacity;
+  }
 
   /**
    * Gets the family.
@@ -62,6 +109,15 @@ public class VolumeProfile extends GenericModel {
    */
   public String getHref() {
     return href;
+  }
+
+  /**
+   * Gets the iops.
+   *
+   * @return the iops
+   */
+  public VolumeProfileIOPS getIops() {
+    return iops;
   }
 
   /**

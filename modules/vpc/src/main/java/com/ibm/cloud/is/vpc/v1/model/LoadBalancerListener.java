@@ -155,7 +155,7 @@ public class LoadBalancerListener extends GenericModel {
   /**
    * Gets the href.
    *
-   * The listener's canonical URL.
+   * The URL for this load balancer listener.
    *
    * @return the href
    */

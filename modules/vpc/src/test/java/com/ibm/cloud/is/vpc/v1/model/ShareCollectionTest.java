@@ -14,6 +14,7 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.AccountReference;
+import com.ibm.cloud.is.vpc.v1.model.Deleted;
 import com.ibm.cloud.is.vpc.v1.model.EncryptionKeyReference;
 import com.ibm.cloud.is.vpc.v1.model.RegionReference;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;
@@ -27,10 +28,8 @@ import com.ibm.cloud.is.vpc.v1.model.ShareJobStatusReason;
 import com.ibm.cloud.is.vpc.v1.model.ShareLatestSync;
 import com.ibm.cloud.is.vpc.v1.model.ShareLifecycleReason;
 import com.ibm.cloud.is.vpc.v1.model.ShareMountTargetReference;
-import com.ibm.cloud.is.vpc.v1.model.ShareMountTargetReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.ShareProfileReference;
 import com.ibm.cloud.is.vpc.v1.model.ShareReference;
-import com.ibm.cloud.is.vpc.v1.model.ShareReferenceDeleted;
 import com.ibm.cloud.is.vpc.v1.model.ShareRemote;
 import com.ibm.cloud.is.vpc.v1.model.ShareReplicationStatusReason;
 import com.ibm.cloud.is.vpc.v1.model.ZoneReference;

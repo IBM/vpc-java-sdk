@@ -29,7 +29,7 @@ public class InstanceDiskCollection extends GenericModel {
   /**
    * Gets the disks.
    *
-   * Collection of the instance's disks.
+   * The disks for the instance.
    *
    * @return the disks
    */

@@ -79,6 +79,9 @@ public class BareMetalServerNetworkAttachment extends GenericModel {
 
   /**
    * The bare metal server network attachment type.
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface Type {
     /** primary. */
@@ -242,6 +245,9 @@ public class BareMetalServerNetworkAttachment extends GenericModel {
    * Gets the type.
    *
    * The bare metal server network attachment type.
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the type
    */

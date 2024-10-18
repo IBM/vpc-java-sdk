@@ -55,7 +55,7 @@ public class FlowLogCollectorTarget extends GenericModel {
     String NETWORK_INTERFACE = "network_interface";
   }
 
-  protected NetworkInterfaceReferenceTargetContextDeleted deleted;
+  protected Deleted deleted;
   protected String href;
   protected String id;
   protected String name;
@@ -65,6 +65,8 @@ public class FlowLogCollectorTarget extends GenericModel {
   @SerializedName("primary_ip")
   protected ReservedIPReference primaryIp;
   protected SubnetReference subnet;
+  @SerializedName("virtual_network_interface")
+  protected VirtualNetworkInterfaceReferenceAttachmentContext virtualNetworkInterface;
 
   protected FlowLogCollectorTarget() { }
 
@@ -76,7 +78,7 @@ public class FlowLogCollectorTarget extends GenericModel {
    *
    * @return the deleted
    */
-  public NetworkInterfaceReferenceTargetContextDeleted getDeleted() {
+  public Deleted getDeleted() {
     return deleted;
   }
 
@@ -165,6 +167,17 @@ public class FlowLogCollectorTarget extends GenericModel {
    */
   public SubnetReference getSubnet() {
     return subnet;
+  }
+
+  /**
+   * Gets the virtualNetworkInterface.
+   *
+   * The virtual network interface for this instance network attachment.
+   *
+   * @return the virtualNetworkInterface
+   */
+  public VirtualNetworkInterfaceReferenceAttachmentContext getVirtualNetworkInterface() {
+    return virtualNetworkInterface;
   }
 }
 

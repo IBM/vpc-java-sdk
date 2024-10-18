@@ -29,8 +29,8 @@ public class IPsecPolicy extends GenericModel {
    *
    * The `md5` and `sha1` algorithms have been deprecated
    *
-   * Must be `disabled` if and only if the `encryption_algorithm` is
-   * `aes128gcm16`, `aes192gcm16`, or `aes256gcm16`.
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface AuthenticationAlgorithm {
     /** disabled. */
@@ -48,7 +48,10 @@ public class IPsecPolicy extends GenericModel {
   }
 
   /**
-   * The encapsulation mode used. Only `tunnel` is supported.
+   * The encapsulation mode used.
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface EncapsulationMode {
     /** tunnel. */
@@ -60,9 +63,8 @@ public class IPsecPolicy extends GenericModel {
    *
    * The `triple_des` algorithm has been deprecated
    *
-   * The `authentication_algorithm` must be `disabled` if and only if
-   * `encryption_algorithm` is `aes128gcm16`, `aes192gcm16`, or
-   * `aes256gcm16`.
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface EncryptionAlgorithm {
     /** aes128. */
@@ -82,9 +84,12 @@ public class IPsecPolicy extends GenericModel {
   }
 
   /**
-   * Perfect Forward Secrecy
+   * The Perfect Forward Secrecy group
    *
-   * Groups `group_2` and `group_5` have been deprecated.
+   * Groups `group_2` and `group_5` have been deprecated
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface Pfs {
     /** disabled. */
@@ -128,7 +133,10 @@ public class IPsecPolicy extends GenericModel {
   }
 
   /**
-   * The transform protocol used. Only `esp` is supported.
+   * The transform protocol used.
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface TransformProtocol {
     /** esp. */
@@ -166,8 +174,8 @@ public class IPsecPolicy extends GenericModel {
    *
    * The `md5` and `sha1` algorithms have been deprecated
    *
-   * Must be `disabled` if and only if the `encryption_algorithm` is
-   * `aes128gcm16`, `aes192gcm16`, or `aes256gcm16`.
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the authenticationAlgorithm
    */
@@ -200,7 +208,10 @@ public class IPsecPolicy extends GenericModel {
   /**
    * Gets the encapsulationMode.
    *
-   * The encapsulation mode used. Only `tunnel` is supported.
+   * The encapsulation mode used.
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the encapsulationMode
    */
@@ -215,9 +226,8 @@ public class IPsecPolicy extends GenericModel {
    *
    * The `triple_des` algorithm has been deprecated
    *
-   * The `authentication_algorithm` must be `disabled` if and only if
-   * `encryption_algorithm` is `aes128gcm16`, `aes192gcm16`, or
-   * `aes256gcm16`.
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the encryptionAlgorithm
    */
@@ -228,7 +238,7 @@ public class IPsecPolicy extends GenericModel {
   /**
    * Gets the href.
    *
-   * The IPsec policy's canonical URL.
+   * The URL for this IPsec policy.
    *
    * @return the href
    */
@@ -272,9 +282,12 @@ public class IPsecPolicy extends GenericModel {
   /**
    * Gets the pfs.
    *
-   * Perfect Forward Secrecy
+   * The Perfect Forward Secrecy group
    *
-   * Groups `group_2` and `group_5` have been deprecated.
+   * Groups `group_2` and `group_5` have been deprecated
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the pfs
    */
@@ -307,7 +320,10 @@ public class IPsecPolicy extends GenericModel {
   /**
    * Gets the transformProtocol.
    *
-   * The transform protocol used. Only `esp` is supported.
+   * The transform protocol used.
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the transformProtocol
    */

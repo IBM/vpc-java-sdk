@@ -30,7 +30,7 @@ public class VolumeReference extends GenericModel {
   }
 
   protected String crn;
-  protected VolumeReferenceDeleted deleted;
+  protected Deleted deleted;
   protected String href;
   protected String id;
   protected String name;
@@ -59,7 +59,7 @@ public class VolumeReference extends GenericModel {
    *
    * @return the deleted
    */
-  public VolumeReferenceDeleted getDeleted() {
+  public Deleted getDeleted() {
     return deleted;
   }
 

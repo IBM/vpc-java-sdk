@@ -69,7 +69,7 @@ public class ShareCollection extends GenericModel {
   /**
    * Gets the shares.
    *
-   * Collection of file shares.
+   * A page of file shares.
    *
    * @return the shares
    */

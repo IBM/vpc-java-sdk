@@ -21,7 +21,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class CreateKeyOptions extends GenericModel {
 
   /**
-   * The crypto-system used by this key.
+   * The crypto-system for this key.
    */
   public interface Type {
     /** ed25519. */
@@ -188,7 +188,7 @@ public class CreateKeyOptions extends GenericModel {
   /**
    * Gets the type.
    *
-   * The crypto-system used by this key.
+   * The crypto-system for this key.
    *
    * @return the type
    */

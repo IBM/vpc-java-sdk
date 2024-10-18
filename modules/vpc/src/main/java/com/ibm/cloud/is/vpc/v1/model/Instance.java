@@ -387,6 +387,9 @@ public class Instance extends GenericModel {
    *
    * The amount of memory, truncated to whole gibibytes.
    *
+   * The maximum limit for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
+   *
    * @return the memory
    */
   public Long getMemory() {

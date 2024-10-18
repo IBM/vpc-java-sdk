@@ -73,7 +73,7 @@ public class VPNServerPatchTest {
       .enableSplitTunneling(true)
       .name("my-vpn-server")
       .port(Long.valueOf("443"))
-      .protocol("udp")
+      .protocol("tcp")
       .subnets(java.util.Arrays.asList(subnetIdentityModel))
       .build();
     assertEquals(vpnServerPatchModel.certificate(), certificateInstanceIdentityModel);
@@ -84,7 +84,7 @@ public class VPNServerPatchTest {
     assertEquals(vpnServerPatchModel.enableSplitTunneling(), Boolean.valueOf(true));
     assertEquals(vpnServerPatchModel.name(), "my-vpn-server");
     assertEquals(vpnServerPatchModel.port(), Long.valueOf("443"));
-    assertEquals(vpnServerPatchModel.protocol(), "udp");
+    assertEquals(vpnServerPatchModel.protocol(), "tcp");
     assertEquals(vpnServerPatchModel.subnets(), java.util.Arrays.asList(subnetIdentityModel));
 
     String json = TestUtilities.serialize(vpnServerPatchModel);
@@ -97,7 +97,7 @@ public class VPNServerPatchTest {
     assertEquals(vpnServerPatchModelNew.enableSplitTunneling(), Boolean.valueOf(true));
     assertEquals(vpnServerPatchModelNew.name(), "my-vpn-server");
     assertEquals(vpnServerPatchModelNew.port(), Long.valueOf("443"));
-    assertEquals(vpnServerPatchModelNew.protocol(), "udp");
+    assertEquals(vpnServerPatchModelNew.protocol(), "tcp");
   }
   @Test
   public void testVPNServerPatchAsPatch() throws Throwable {
@@ -131,7 +131,7 @@ public class VPNServerPatchTest {
       .enableSplitTunneling(true)
       .name("my-vpn-server")
       .port(Long.valueOf("443"))
-      .protocol("udp")
+      .protocol("tcp")
       .subnets(java.util.Arrays.asList(subnetIdentityModel))
       .build();
 
@@ -145,7 +145,7 @@ public class VPNServerPatchTest {
     assertTrue(mergePatch.containsKey("enable_split_tunneling"));
     assertEquals(mergePatch.get("name"), "my-vpn-server");
     assertTrue(mergePatch.containsKey("port"));
-    assertEquals(mergePatch.get("protocol"), "udp");
+    assertEquals(mergePatch.get("protocol"), "tcp");
     assertTrue(mergePatch.containsKey("subnets"));
   }
 

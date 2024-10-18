@@ -35,14 +35,14 @@ public class ListSnapshotConsistencyGroupsOptionsTest {
       .start("testString")
       .limit(Long.valueOf("50"))
       .resourceGroupId("testString")
-      .name("testString")
+      .name("my-name")
       .sort("name")
       .backupPolicyPlanId("testString")
       .build();
     assertEquals(listSnapshotConsistencyGroupsOptionsModel.start(), "testString");
     assertEquals(listSnapshotConsistencyGroupsOptionsModel.limit(), Long.valueOf("50"));
     assertEquals(listSnapshotConsistencyGroupsOptionsModel.resourceGroupId(), "testString");
-    assertEquals(listSnapshotConsistencyGroupsOptionsModel.name(), "testString");
+    assertEquals(listSnapshotConsistencyGroupsOptionsModel.name(), "my-name");
     assertEquals(listSnapshotConsistencyGroupsOptionsModel.sort(), "name");
     assertEquals(listSnapshotConsistencyGroupsOptionsModel.backupPolicyPlanId(), "testString");
   }

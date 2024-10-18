@@ -23,10 +23,7 @@ public class CreatePlacementGroupOptions extends GenericModel {
   /**
    * The strategy for this placement group:
    * - `host_spread`: place on different compute hosts
-   * - `power_spread`: place on compute hosts that use different power sources
-   *
-   * The enumerated values for this property may
-   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
+   * - `power_spread`: place on compute hosts that use different power sources.
    */
   public interface Strategy {
     /** host_spread. */
@@ -140,10 +137,7 @@ public class CreatePlacementGroupOptions extends GenericModel {
    *
    * The strategy for this placement group:
    * - `host_spread`: place on different compute hosts
-   * - `power_spread`: place on compute hosts that use different power sources
-   *
-   * The enumerated values for this property may
-   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
+   * - `power_spread`: place on compute hosts that use different power sources.
    *
    * @return the strategy
    */

@@ -33,10 +33,10 @@ public class GetSnapshotCloneOptionsTest {
   public void testGetSnapshotCloneOptions() throws Throwable {
     GetSnapshotCloneOptions getSnapshotCloneOptionsModel = new GetSnapshotCloneOptions.Builder()
       .id("testString")
-      .zoneName("testString")
+      .zoneName("us-south-1")
       .build();
     assertEquals(getSnapshotCloneOptionsModel.id(), "testString");
-    assertEquals(getSnapshotCloneOptionsModel.zoneName(), "testString");
+    assertEquals(getSnapshotCloneOptionsModel.zoneName(), "us-south-1");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

@@ -46,7 +46,7 @@ public class ReservedIPCollectionEndpointGatewayContext extends GenericModel {
   /**
    * Gets the ips.
    *
-   * Collection of reserved IPs bound to an endpoint gateway.
+   * A page of reserved IPs bound to the endpoint gateway.
    *
    * @return the ips
    */

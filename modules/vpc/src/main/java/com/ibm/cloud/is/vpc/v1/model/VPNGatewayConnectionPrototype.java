@@ -63,6 +63,8 @@ public class VPNGatewayConnectionPrototype extends GenericModel {
   protected String psk;
   protected VPNGatewayConnectionLocalPrototype local;
   protected VPNGatewayConnectionPeerPrototype peer;
+  @SerializedName("distribute_traffic")
+  protected Boolean distributeTraffic;
   @SerializedName("routing_protocol")
   protected String routingProtocol;
 
@@ -152,6 +154,21 @@ public class VPNGatewayConnectionPrototype extends GenericModel {
    */
   public String psk() {
     return psk;
+  }
+
+  /**
+   * Gets the distributeTraffic.
+   *
+   * Indicates whether the traffic is distributed between the `up` tunnels of the VPN gateway connection when the VPC
+   * route's next hop is a VPN connection. If `false`, the traffic is only routed through the `up` tunnel with the lower
+   * `public_ip` address. Before enabling it on VPN connections to on-prem private networks, review
+   * [distributing traffic
+   * restrictions](https://cloud.ibm.com/docs/vpc?topic=vpc-vpn-limitations#distributing-traffic-restrictions).
+   *
+   * @return the distributeTraffic
+   */
+  public Boolean distributeTraffic() {
+    return distributeTraffic;
   }
 
   /**

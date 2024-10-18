@@ -44,7 +44,7 @@ public class VPNGatewayConnectionIKEPolicyPatch extends GenericModel {
   /**
    * Gets the href.
    *
-   * The IKE policy's canonical URL.
+   * The URL for this IKE policy.
    *
    * @return the href
    */

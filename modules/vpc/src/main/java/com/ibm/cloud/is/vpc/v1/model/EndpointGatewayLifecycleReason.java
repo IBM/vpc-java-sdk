@@ -23,6 +23,9 @@ public class EndpointGatewayLifecycleReason extends GenericModel {
 
   /**
    * A reason code for this lifecycle state:
+   * - `access_denied`: endpoint gateway access was denied
+   * - `access_expired`: endpoint gateway access has expired
+   * - `access_pending`: endpoint gateway access is pending
    * - `dns_resolution_binding_pending`: the DNS resolution binding is being set up
    * - `internal_error`: internal error (contact IBM support)
    * - `resource_suspended_by_provider`: The resource has been suspended (contact IBM
@@ -32,6 +35,12 @@ public class EndpointGatewayLifecycleReason extends GenericModel {
    * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface Code {
+    /** access_denied. */
+    String ACCESS_DENIED = "access_denied";
+    /** access_expired. */
+    String ACCESS_EXPIRED = "access_expired";
+    /** access_pending. */
+    String ACCESS_PENDING = "access_pending";
     /** dns_resolution_binding_pending. */
     String DNS_RESOLUTION_BINDING_PENDING = "dns_resolution_binding_pending";
     /** internal_error. */
@@ -51,6 +60,9 @@ public class EndpointGatewayLifecycleReason extends GenericModel {
    * Gets the code.
    *
    * A reason code for this lifecycle state:
+   * - `access_denied`: endpoint gateway access was denied
+   * - `access_expired`: endpoint gateway access has expired
+   * - `access_pending`: endpoint gateway access is pending
    * - `dns_resolution_binding_pending`: the DNS resolution binding is being set up
    * - `internal_error`: internal error (contact IBM support)
    * - `resource_suspended_by_provider`: The resource has been suspended (contact IBM
