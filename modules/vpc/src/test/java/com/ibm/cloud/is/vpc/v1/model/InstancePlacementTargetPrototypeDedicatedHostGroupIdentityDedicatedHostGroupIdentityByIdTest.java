@@ -32,15 +32,15 @@ public class InstancePlacementTargetPrototypeDedicatedHostGroupIdentityDedicated
   @Test
   public void testInstancePlacementTargetPrototypeDedicatedHostGroupIdentityDedicatedHostGroupIdentityById() throws Throwable {
     InstancePlacementTargetPrototypeDedicatedHostGroupIdentityDedicatedHostGroupIdentityById instancePlacementTargetPrototypeDedicatedHostGroupIdentityDedicatedHostGroupIdentityByIdModel = new InstancePlacementTargetPrototypeDedicatedHostGroupIdentityDedicatedHostGroupIdentityById.Builder()
-      .id("bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0")
+      .id("0717-bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0")
       .build();
-    assertEquals(instancePlacementTargetPrototypeDedicatedHostGroupIdentityDedicatedHostGroupIdentityByIdModel.id(), "bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0");
+    assertEquals(instancePlacementTargetPrototypeDedicatedHostGroupIdentityDedicatedHostGroupIdentityByIdModel.id(), "0717-bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0");
 
     String json = TestUtilities.serialize(instancePlacementTargetPrototypeDedicatedHostGroupIdentityDedicatedHostGroupIdentityByIdModel);
 
     InstancePlacementTargetPrototypeDedicatedHostGroupIdentityDedicatedHostGroupIdentityById instancePlacementTargetPrototypeDedicatedHostGroupIdentityDedicatedHostGroupIdentityByIdModelNew = TestUtilities.deserialize(json, InstancePlacementTargetPrototypeDedicatedHostGroupIdentityDedicatedHostGroupIdentityById.class);
     assertTrue(instancePlacementTargetPrototypeDedicatedHostGroupIdentityDedicatedHostGroupIdentityByIdModelNew instanceof InstancePlacementTargetPrototypeDedicatedHostGroupIdentityDedicatedHostGroupIdentityById);
-    assertEquals(instancePlacementTargetPrototypeDedicatedHostGroupIdentityDedicatedHostGroupIdentityByIdModelNew.id(), "bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0");
+    assertEquals(instancePlacementTargetPrototypeDedicatedHostGroupIdentityDedicatedHostGroupIdentityByIdModelNew.id(), "0717-bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

@@ -95,7 +95,9 @@ public class CreateVpcOptions extends GenericModel {
      *
      * @param classicAccess the classicAccess
      * @return the CreateVpcOptions builder
+     * @deprecated this method is deprecated and may be removed in a future release
      */
+    @Deprecated
     public Builder classicAccess(Boolean classicAccess) {
       this.classicAccess = classicAccess;
       return this;
@@ -177,8 +179,14 @@ public class CreateVpcOptions extends GenericModel {
    * private network connectivity to the account's Classic Infrastructure resources. Only one VPC, per region, may be
    * connected in this way. This value is set at creation and subsequently immutable.
    *
+   * This property has been deprecated. Instead, use a [Transit Gateway](https://cloud.ibm.com/docs/transit-gateway) to
+   * connect this VPC to Classic Infrastructure. For more information, see [upcoming
+   * changes](https://cloud.ibm.com/docs/vpc?topic=vpc-api-change-log#upcoming-changes).
+   *
    * @return the classicAccess
+   * @deprecated this method is deprecated and may be removed in a future release
    */
+  @Deprecated
   public Boolean classicAccess() {
     return classicAccess;
   }

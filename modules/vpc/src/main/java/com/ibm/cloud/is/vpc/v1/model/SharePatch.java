@@ -335,7 +335,7 @@ public class SharePatch extends GenericModel {
    *
    * The cron specification for the file share replication schedule.
    *
-   * Replication of a share can be scheduled to occur at most once per hour.
+   * Replication of a share can be scheduled to occur at most once every 15 minutes.
    *
    * For this property to be changed, the share `replication_role` must be `replica`.
    *

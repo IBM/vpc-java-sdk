@@ -23,9 +23,9 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class ReservationCollection extends GenericModel {
 
-  protected ReservationCollectionFirst first;
+  protected PageLink first;
   protected Long limit;
-  protected ReservationCollectionNext next;
+  protected PageLink next;
   protected List<Reservation> reservations;
   @SerializedName("total_count")
   protected Long totalCount;
@@ -39,7 +39,7 @@ public class ReservationCollection extends GenericModel {
    *
    * @return the first
    */
-  public ReservationCollectionFirst getFirst() {
+  public PageLink getFirst() {
     return first;
   }
 
@@ -62,7 +62,7 @@ public class ReservationCollection extends GenericModel {
    *
    * @return the next
    */
-  public ReservationCollectionNext getNext() {
+  public PageLink getNext() {
     return next;
   }
 

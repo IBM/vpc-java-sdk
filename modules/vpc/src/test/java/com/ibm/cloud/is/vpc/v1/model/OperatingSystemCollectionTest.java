@@ -15,8 +15,7 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.OperatingSystem;
 import com.ibm.cloud.is.vpc.v1.model.OperatingSystemCollection;
-import com.ibm.cloud.is.vpc.v1.model.OperatingSystemCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.OperatingSystemCollectionNext;
+import com.ibm.cloud.is.vpc.v1.model.PageLink;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;

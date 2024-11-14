@@ -23,9 +23,9 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class PrivatePathServiceGatewayCollection extends GenericModel {
 
-  protected PrivatePathServiceGatewayCollectionFirst first;
+  protected PageLink first;
   protected Long limit;
-  protected PrivatePathServiceGatewayCollectionNext next;
+  protected PageLink next;
   @SerializedName("private_path_service_gateways")
   protected List<PrivatePathServiceGateway> privatePathServiceGateways;
   @SerializedName("total_count")
@@ -40,7 +40,7 @@ public class PrivatePathServiceGatewayCollection extends GenericModel {
    *
    * @return the first
    */
-  public PrivatePathServiceGatewayCollectionFirst getFirst() {
+  public PageLink getFirst() {
     return first;
   }
 
@@ -63,7 +63,7 @@ public class PrivatePathServiceGatewayCollection extends GenericModel {
    *
    * @return the next
    */
-  public PrivatePathServiceGatewayCollectionNext getNext() {
+  public PageLink getNext() {
     return next;
   }
 

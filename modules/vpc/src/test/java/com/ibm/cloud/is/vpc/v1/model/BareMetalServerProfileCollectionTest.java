@@ -19,8 +19,6 @@ import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileCPUArchitecture;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileCPUCoreCountFixed;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileCPUSocketCountFixed;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileCollection;
-import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileConsoleTypes;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileDisk;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileDiskQuantityFixed;
@@ -32,6 +30,7 @@ import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileNetworkInterfaceCount
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileOSArchitecture;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileSupportedTrustedPlatformModuleModes;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileVirtualNetworkInterfacesSupported;
+import com.ibm.cloud.is.vpc.v1.model.PageLink;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;

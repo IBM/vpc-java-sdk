@@ -34,9 +34,9 @@ public class ReplaceLoadBalancerPoolMembersOptionsTest {
   @Test
   public void testReplaceLoadBalancerPoolMembersOptions() throws Throwable {
     LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityById loadBalancerPoolMemberTargetPrototypeModel = new LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityById.Builder()
-      .id("0717_1e09281b-f177-46f2-b1f1-bc152b2e391a")
+      .id("0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0")
       .build();
-    assertEquals(loadBalancerPoolMemberTargetPrototypeModel.id(), "0717_1e09281b-f177-46f2-b1f1-bc152b2e391a");
+    assertEquals(loadBalancerPoolMemberTargetPrototypeModel.id(), "0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0");
 
     LoadBalancerPoolMemberPrototype loadBalancerPoolMemberPrototypeModel = new LoadBalancerPoolMemberPrototype.Builder()
       .port(Long.valueOf("80"))

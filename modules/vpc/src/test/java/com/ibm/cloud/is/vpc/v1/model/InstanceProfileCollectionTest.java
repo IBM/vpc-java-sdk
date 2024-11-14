@@ -13,8 +13,10 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.ibm.cloud.is.vpc.v1.model.ClusterNetworkProfileReference;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfile;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileBandwidthFixed;
+import com.ibm.cloud.is.vpc.v1.model.InstanceProfileClusterNetworkAttachmentCountDependent;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileCollection;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileDisk;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileDiskQuantityFixed;

@@ -13,12 +13,11 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
-import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkInterfaceByHiperSocket;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkInterfaceByPCI;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkInterfaceCollection;
-import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkInterfaceCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkInterfaceCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.Deleted;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPReference;
+import com.ibm.cloud.is.vpc.v1.model.PageLink;
 import com.ibm.cloud.is.vpc.v1.model.ReservedIPReference;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.SubnetReference;

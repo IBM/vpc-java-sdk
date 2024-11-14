@@ -24,9 +24,9 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class InstanceGroupManagerActionsCollection extends GenericModel {
 
   protected List<InstanceGroupManagerAction> actions;
-  protected InstanceGroupManagerActionsCollectionFirst first;
+  protected PageLink first;
   protected Long limit;
-  protected InstanceGroupManagerActionsCollectionNext next;
+  protected PageLink next;
   @SerializedName("total_count")
   protected Long totalCount;
 
@@ -50,7 +50,7 @@ public class InstanceGroupManagerActionsCollection extends GenericModel {
    *
    * @return the first
    */
-  public InstanceGroupManagerActionsCollectionFirst getFirst() {
+  public PageLink getFirst() {
     return first;
   }
 
@@ -73,7 +73,7 @@ public class InstanceGroupManagerActionsCollection extends GenericModel {
    *
    * @return the next
    */
-  public InstanceGroupManagerActionsCollectionNext getNext() {
+  public PageLink getNext() {
     return next;
   }
 

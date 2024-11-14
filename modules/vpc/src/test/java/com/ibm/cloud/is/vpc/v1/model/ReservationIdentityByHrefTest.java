@@ -32,15 +32,15 @@ public class ReservationIdentityByHrefTest {
   @Test
   public void testReservationIdentityByHref() throws Throwable {
     ReservationIdentityByHref reservationIdentityByHrefModel = new ReservationIdentityByHref.Builder()
-      .href("https://us-south.iaas.cloud.ibm.com/v1/reservations/7187-ba49df72-37b8-43ac-98da-f8e029de0e63")
+      .href("https://us-south.iaas.cloud.ibm.com/v1/reservations/0717-ba49df72-37b8-43ac-98da-f8e029de0e63")
       .build();
-    assertEquals(reservationIdentityByHrefModel.href(), "https://us-south.iaas.cloud.ibm.com/v1/reservations/7187-ba49df72-37b8-43ac-98da-f8e029de0e63");
+    assertEquals(reservationIdentityByHrefModel.href(), "https://us-south.iaas.cloud.ibm.com/v1/reservations/0717-ba49df72-37b8-43ac-98da-f8e029de0e63");
 
     String json = TestUtilities.serialize(reservationIdentityByHrefModel);
 
     ReservationIdentityByHref reservationIdentityByHrefModelNew = TestUtilities.deserialize(json, ReservationIdentityByHref.class);
     assertTrue(reservationIdentityByHrefModelNew instanceof ReservationIdentityByHref);
-    assertEquals(reservationIdentityByHrefModelNew.href(), "https://us-south.iaas.cloud.ibm.com/v1/reservations/7187-ba49df72-37b8-43ac-98da-f8e029de0e63");
+    assertEquals(reservationIdentityByHrefModelNew.href(), "https://us-south.iaas.cloud.ibm.com/v1/reservations/0717-ba49df72-37b8-43ac-98da-f8e029de0e63");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

@@ -192,8 +192,9 @@ public class VolumePrototypeInstanceByImageContext extends VolumePrototypeInstan
   /**
    * Gets the capacity.
    *
-   * The capacity to use for the volume (in gigabytes). Must be at least the image's
-   * `minimum_provisioned_size`. The maximum value may increase in the future.
+   * The capacity to use for the volume (in gigabytes). The specified value must be at least the image's
+   * `minimum_provisioned_size`, at most 250 gigabytes, and within the
+   * `boot_capacity` range of the volume's profile.
    *
    * If unspecified, the capacity will be the image's `minimum_provisioned_size`.
    *
@@ -219,8 +220,8 @@ public class VolumePrototypeInstanceByImageContext extends VolumePrototypeInstan
   /**
    * Gets the iops.
    *
-   * The maximum I/O operations per second (IOPS) to use for this volume. Applicable only to volumes using a profile
-   * `family` of `custom`.
+   * The maximum I/O operations per second (IOPS) to use for this volume. If specified, the `family` of the volume
+   * profile must be `custom` or `defined_performance`.
    *
    * @return the iops
    */

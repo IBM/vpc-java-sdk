@@ -23,9 +23,9 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class PublicGatewayCollection extends GenericModel {
 
-  protected PublicGatewayCollectionFirst first;
+  protected PageLink first;
   protected Long limit;
-  protected PublicGatewayCollectionNext next;
+  protected PageLink next;
   @SerializedName("public_gateways")
   protected List<PublicGateway> publicGateways;
   @SerializedName("total_count")
@@ -40,7 +40,7 @@ public class PublicGatewayCollection extends GenericModel {
    *
    * @return the first
    */
-  public PublicGatewayCollectionFirst getFirst() {
+  public PageLink getFirst() {
     return first;
   }
 
@@ -63,7 +63,7 @@ public class PublicGatewayCollection extends GenericModel {
    *
    * @return the next
    */
-  public PublicGatewayCollectionNext getNext() {
+  public PageLink getNext() {
     return next;
   }
 

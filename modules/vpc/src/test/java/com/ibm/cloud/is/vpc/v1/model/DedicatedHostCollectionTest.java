@@ -15,8 +15,6 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHost;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostCollection;
-import com.ibm.cloud.is.vpc.v1.model.DedicatedHostCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.DedicatedHostCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostDisk;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostNUMA;
@@ -26,6 +24,7 @@ import com.ibm.cloud.is.vpc.v1.model.Deleted;
 import com.ibm.cloud.is.vpc.v1.model.InstanceDiskReference;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileReference;
 import com.ibm.cloud.is.vpc.v1.model.InstanceReference;
+import com.ibm.cloud.is.vpc.v1.model.PageLink;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.VCPU;
 import com.ibm.cloud.is.vpc.v1.model.ZoneReference;

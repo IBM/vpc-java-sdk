@@ -23,10 +23,10 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class ReservedIPCollectionEndpointGatewayContext extends GenericModel {
 
-  protected ReservedIPCollectionEndpointGatewayContextFirst first;
+  protected PageLink first;
   protected List<ReservedIP> ips;
   protected Long limit;
-  protected ReservedIPCollectionEndpointGatewayContextNext next;
+  protected PageLink next;
   @SerializedName("total_count")
   protected Long totalCount;
 
@@ -39,7 +39,7 @@ public class ReservedIPCollectionEndpointGatewayContext extends GenericModel {
    *
    * @return the first
    */
-  public ReservedIPCollectionEndpointGatewayContextFirst getFirst() {
+  public PageLink getFirst() {
     return first;
   }
 
@@ -73,7 +73,7 @@ public class ReservedIPCollectionEndpointGatewayContext extends GenericModel {
    *
    * @return the next
    */
-  public ReservedIPCollectionEndpointGatewayContextNext getNext() {
+  public PageLink getNext() {
     return next;
   }
 

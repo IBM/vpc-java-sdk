@@ -38,17 +38,17 @@ public class DedicatedHostGroupPrototypeDedicatedHostByZoneContextTest {
     assertEquals(resourceGroupIdentityModel.id(), "fee82deba12e4c0fb69c3b09d1f12345");
 
     DedicatedHostGroupPrototypeDedicatedHostByZoneContext dedicatedHostGroupPrototypeDedicatedHostByZoneContextModel = new DedicatedHostGroupPrototypeDedicatedHostByZoneContext.Builder()
-      .name("my-host-group")
+      .name("my-dedicated-host-group")
       .resourceGroup(resourceGroupIdentityModel)
       .build();
-    assertEquals(dedicatedHostGroupPrototypeDedicatedHostByZoneContextModel.name(), "my-host-group");
+    assertEquals(dedicatedHostGroupPrototypeDedicatedHostByZoneContextModel.name(), "my-dedicated-host-group");
     assertEquals(dedicatedHostGroupPrototypeDedicatedHostByZoneContextModel.resourceGroup(), resourceGroupIdentityModel);
 
     String json = TestUtilities.serialize(dedicatedHostGroupPrototypeDedicatedHostByZoneContextModel);
 
     DedicatedHostGroupPrototypeDedicatedHostByZoneContext dedicatedHostGroupPrototypeDedicatedHostByZoneContextModelNew = TestUtilities.deserialize(json, DedicatedHostGroupPrototypeDedicatedHostByZoneContext.class);
     assertTrue(dedicatedHostGroupPrototypeDedicatedHostByZoneContextModelNew instanceof DedicatedHostGroupPrototypeDedicatedHostByZoneContext);
-    assertEquals(dedicatedHostGroupPrototypeDedicatedHostByZoneContextModelNew.name(), "my-host-group");
+    assertEquals(dedicatedHostGroupPrototypeDedicatedHostByZoneContextModelNew.name(), "my-dedicated-host-group");
     assertEquals(dedicatedHostGroupPrototypeDedicatedHostByZoneContextModelNew.resourceGroup().toString(), resourceGroupIdentityModel.toString());
   }
 }

@@ -47,13 +47,13 @@ public class CreateDedicatedHostGroupOptionsTest {
       .xClass("bx2")
       .family("balanced")
       .zone(zoneIdentityModel)
-      .name("my-host-group")
+      .name("my-dedicated-host-group")
       .resourceGroup(resourceGroupIdentityModel)
       .build();
     assertEquals(createDedicatedHostGroupOptionsModel.xClass(), "bx2");
     assertEquals(createDedicatedHostGroupOptionsModel.family(), "balanced");
     assertEquals(createDedicatedHostGroupOptionsModel.zone(), zoneIdentityModel);
-    assertEquals(createDedicatedHostGroupOptionsModel.name(), "my-host-group");
+    assertEquals(createDedicatedHostGroupOptionsModel.name(), "my-dedicated-host-group");
     assertEquals(createDedicatedHostGroupOptionsModel.resourceGroup(), resourceGroupIdentityModel);
   }
 

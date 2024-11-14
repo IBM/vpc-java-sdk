@@ -39,6 +39,7 @@ public class InstanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByI
    */
   public static class Builder {
     private InstanceAvailabilityPolicyPrototype availabilityPolicy;
+    private List<InstanceClusterNetworkAttachmentPrototypeInstanceContext> clusterNetworkAttachments;
     private String confidentialComputeMode;
     private InstanceDefaultTrustedProfilePrototype defaultTrustedProfile;
     private Boolean enableSecureBoot;
@@ -66,6 +67,7 @@ public class InstanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByI
      */
     public Builder(InstanceTemplatePrototypeInstanceTemplateByImage instanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByImageInstanceByNetworkAttachment) {
       this.availabilityPolicy = instanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByImageInstanceByNetworkAttachment.availabilityPolicy;
+      this.clusterNetworkAttachments = instanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByImageInstanceByNetworkAttachment.clusterNetworkAttachments;
       this.confidentialComputeMode = instanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByImageInstanceByNetworkAttachment.confidentialComputeMode;
       this.defaultTrustedProfile = instanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByImageInstanceByNetworkAttachment.defaultTrustedProfile;
       this.enableSecureBoot = instanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByImageInstanceByNetworkAttachment.enableSecureBoot;
@@ -113,6 +115,22 @@ public class InstanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByI
      */
     public InstanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByImageInstanceByNetworkAttachment build() {
       return new InstanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByImageInstanceByNetworkAttachment(this);
+    }
+
+    /**
+     * Adds a new element to clusterNetworkAttachments.
+     *
+     * @param clusterNetworkAttachments the new element to be added
+     * @return the InstanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByImageInstanceByNetworkAttachment builder
+     */
+    public Builder addClusterNetworkAttachments(InstanceClusterNetworkAttachmentPrototypeInstanceContext clusterNetworkAttachments) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(clusterNetworkAttachments,
+        "clusterNetworkAttachments cannot be null");
+      if (this.clusterNetworkAttachments == null) {
+        this.clusterNetworkAttachments = new ArrayList<InstanceClusterNetworkAttachmentPrototypeInstanceContext>();
+      }
+      this.clusterNetworkAttachments.add(clusterNetworkAttachments);
+      return this;
     }
 
     /**
@@ -171,6 +189,18 @@ public class InstanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByI
      */
     public Builder availabilityPolicy(InstanceAvailabilityPolicyPrototype availabilityPolicy) {
       this.availabilityPolicy = availabilityPolicy;
+      return this;
+    }
+
+    /**
+     * Set the clusterNetworkAttachments.
+     * Existing clusterNetworkAttachments will be replaced.
+     *
+     * @param clusterNetworkAttachments the clusterNetworkAttachments
+     * @return the InstanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByImageInstanceByNetworkAttachment builder
+     */
+    public Builder clusterNetworkAttachments(List<InstanceClusterNetworkAttachmentPrototypeInstanceContext> clusterNetworkAttachments) {
+      this.clusterNetworkAttachments = clusterNetworkAttachments;
       return this;
     }
 
@@ -397,6 +427,7 @@ public class InstanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByI
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.primaryNetworkAttachment,
       "primaryNetworkAttachment cannot be null");
     availabilityPolicy = builder.availabilityPolicy;
+    clusterNetworkAttachments = builder.clusterNetworkAttachments;
     confidentialComputeMode = builder.confidentialComputeMode;
     defaultTrustedProfile = builder.defaultTrustedProfile;
     enableSecureBoot = builder.enableSecureBoot;

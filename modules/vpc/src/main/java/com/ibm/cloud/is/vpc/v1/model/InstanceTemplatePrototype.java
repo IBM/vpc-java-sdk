@@ -43,6 +43,8 @@ public class InstanceTemplatePrototype extends GenericModel {
 
   @SerializedName("availability_policy")
   protected InstanceAvailabilityPolicyPrototype availabilityPolicy;
+  @SerializedName("cluster_network_attachments")
+  protected List<InstanceClusterNetworkAttachmentPrototypeInstanceContext> clusterNetworkAttachments;
   @SerializedName("confidential_compute_mode")
   protected String confidentialComputeMode;
   @SerializedName("default_trusted_profile")
@@ -95,6 +97,19 @@ public class InstanceTemplatePrototype extends GenericModel {
    */
   public InstanceAvailabilityPolicyPrototype availabilityPolicy() {
     return availabilityPolicy;
+  }
+
+  /**
+   * Gets the clusterNetworkAttachments.
+   *
+   * The cluster network attachments to create for this virtual server instance. A cluster network attachment represents
+   * a device that is connected to a cluster network. The number of network attachments must match one of the values
+   * from the instance profile's `cluster_network_attachment_count` before the instance can be started.
+   *
+   * @return the clusterNetworkAttachments
+   */
+  public List<InstanceClusterNetworkAttachmentPrototypeInstanceContext> clusterNetworkAttachments() {
+    return clusterNetworkAttachments;
   }
 
   /**

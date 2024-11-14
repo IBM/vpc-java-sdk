@@ -101,8 +101,8 @@ public class DefaultRoutingTable extends GenericModel {
    *
    * The filters specifying the resources that may create routes in this routing table.
    *
-   * At present, only the `resource_type` filter is permitted, and only the values
-   * `vpn_gateway` and `vpn_server` are supported, but filter support is expected to expand in the future.
+   * The resources and types of filters supported by this property is expected to
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the acceptRoutesFrom
    */

@@ -49,9 +49,9 @@ public class CreateInstanceNetworkInterfaceOptionsTest {
     assertEquals(networkInterfaceIpPrototypeModel.name(), "my-reserved-ip");
 
     SecurityGroupIdentityById securityGroupIdentityModel = new SecurityGroupIdentityById.Builder()
-      .id("be5df5ca-12a0-494b-907e-aa6ec2bfa271")
+      .id("r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271")
       .build();
-    assertEquals(securityGroupIdentityModel.id(), "be5df5ca-12a0-494b-907e-aa6ec2bfa271");
+    assertEquals(securityGroupIdentityModel.id(), "r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271");
 
     CreateInstanceNetworkInterfaceOptions createInstanceNetworkInterfaceOptionsModel = new CreateInstanceNetworkInterfaceOptions.Builder()
       .instanceId("testString")

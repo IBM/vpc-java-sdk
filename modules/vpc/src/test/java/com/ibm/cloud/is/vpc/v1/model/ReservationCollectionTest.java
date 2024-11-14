@@ -13,11 +13,10 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.ibm.cloud.is.vpc.v1.model.PageLink;
 import com.ibm.cloud.is.vpc.v1.model.Reservation;
 import com.ibm.cloud.is.vpc.v1.model.ReservationCapacity;
 import com.ibm.cloud.is.vpc.v1.model.ReservationCollection;
-import com.ibm.cloud.is.vpc.v1.model.ReservationCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.ReservationCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.ReservationCommittedUse;
 import com.ibm.cloud.is.vpc.v1.model.ReservationProfile;
 import com.ibm.cloud.is.vpc.v1.model.ReservationStatusReason;

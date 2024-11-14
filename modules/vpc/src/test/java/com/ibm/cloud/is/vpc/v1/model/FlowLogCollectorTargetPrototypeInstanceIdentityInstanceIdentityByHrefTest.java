@@ -32,15 +32,15 @@ public class FlowLogCollectorTargetPrototypeInstanceIdentityInstanceIdentityByHr
   @Test
   public void testFlowLogCollectorTargetPrototypeInstanceIdentityInstanceIdentityByHref() throws Throwable {
     FlowLogCollectorTargetPrototypeInstanceIdentityInstanceIdentityByHref flowLogCollectorTargetPrototypeInstanceIdentityInstanceIdentityByHrefModel = new FlowLogCollectorTargetPrototypeInstanceIdentityInstanceIdentityByHref.Builder()
-      .href("https://us-south.iaas.cloud.ibm.com/v1/instances/0717_1e09281b-f177-46fb-b1f1-bc152b2e391a")
+      .href("https://us-south.iaas.cloud.ibm.com/v1/instances/0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0")
       .build();
-    assertEquals(flowLogCollectorTargetPrototypeInstanceIdentityInstanceIdentityByHrefModel.href(), "https://us-south.iaas.cloud.ibm.com/v1/instances/0717_1e09281b-f177-46fb-b1f1-bc152b2e391a");
+    assertEquals(flowLogCollectorTargetPrototypeInstanceIdentityInstanceIdentityByHrefModel.href(), "https://us-south.iaas.cloud.ibm.com/v1/instances/0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0");
 
     String json = TestUtilities.serialize(flowLogCollectorTargetPrototypeInstanceIdentityInstanceIdentityByHrefModel);
 
     FlowLogCollectorTargetPrototypeInstanceIdentityInstanceIdentityByHref flowLogCollectorTargetPrototypeInstanceIdentityInstanceIdentityByHrefModelNew = TestUtilities.deserialize(json, FlowLogCollectorTargetPrototypeInstanceIdentityInstanceIdentityByHref.class);
     assertTrue(flowLogCollectorTargetPrototypeInstanceIdentityInstanceIdentityByHrefModelNew instanceof FlowLogCollectorTargetPrototypeInstanceIdentityInstanceIdentityByHref);
-    assertEquals(flowLogCollectorTargetPrototypeInstanceIdentityInstanceIdentityByHrefModelNew.href(), "https://us-south.iaas.cloud.ibm.com/v1/instances/0717_1e09281b-f177-46fb-b1f1-bc152b2e391a");
+    assertEquals(flowLogCollectorTargetPrototypeInstanceIdentityInstanceIdentityByHrefModelNew.href(), "https://us-south.iaas.cloud.ibm.com/v1/instances/0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

@@ -15,12 +15,11 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.AccountReference;
 import com.ibm.cloud.is.vpc.v1.model.Deleted;
+import com.ibm.cloud.is.vpc.v1.model.PageLink;
 import com.ibm.cloud.is.vpc.v1.model.RegionReference;
 import com.ibm.cloud.is.vpc.v1.model.ShareAccessorBinding;
 import com.ibm.cloud.is.vpc.v1.model.ShareAccessorBindingAccessorShareReference;
 import com.ibm.cloud.is.vpc.v1.model.ShareAccessorBindingCollection;
-import com.ibm.cloud.is.vpc.v1.model.ShareAccessorBindingCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.ShareAccessorBindingCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.ShareRemote;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;

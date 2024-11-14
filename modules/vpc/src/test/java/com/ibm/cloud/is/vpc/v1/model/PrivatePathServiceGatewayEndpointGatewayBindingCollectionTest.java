@@ -14,10 +14,9 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.AccountReference;
+import com.ibm.cloud.is.vpc.v1.model.PageLink;
 import com.ibm.cloud.is.vpc.v1.model.PrivatePathServiceGatewayEndpointGatewayBinding;
 import com.ibm.cloud.is.vpc.v1.model.PrivatePathServiceGatewayEndpointGatewayBindingCollection;
-import com.ibm.cloud.is.vpc.v1.model.PrivatePathServiceGatewayEndpointGatewayBindingCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.PrivatePathServiceGatewayEndpointGatewayBindingCollectionNext;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import com.ibm.cloud.sdk.core.util.DateUtils;

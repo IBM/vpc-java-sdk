@@ -14,14 +14,13 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.Deleted;
+import com.ibm.cloud.is.vpc.v1.model.PageLink;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroup;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupCollection;
-import com.ibm.cloud.is.vpc.v1.model.SecurityGroupCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.SecurityGroupCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleLocalIP;
-import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleRemoteIP;
-import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleSecurityGroupRuleProtocolAll;
+import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleRemoteCIDR;
+import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleSecurityGroupRuleProtocolTCPUDP;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupTargetReferenceNetworkInterfaceReferenceTargetContext;
 import com.ibm.cloud.is.vpc.v1.model.VPCReference;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;

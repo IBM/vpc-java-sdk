@@ -27,23 +27,38 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class EndpointGatewayTarget extends GenericModel {
 
   /**
-   * The resource type.
+   * The target resource type for this endpoint gateway.
    */
   public interface ResourceType {
     /** private_path_service_gateway. */
     String PRIVATE_PATH_SERVICE_GATEWAY = "private_path_service_gateway";
+    /** provider_cloud_service. */
+    String PROVIDER_CLOUD_SERVICE = "provider_cloud_service";
+    /** provider_infrastructure_service. */
+    String PROVIDER_INFRASTRUCTURE_SERVICE = "provider_infrastructure_service";
   }
 
+  @SerializedName("resource_type")
+  protected String resourceType;
   protected String crn;
   protected Deleted deleted;
   protected String href;
   protected String id;
   protected String name;
   protected PrivatePathServiceGatewayRemote remote;
-  @SerializedName("resource_type")
-  protected String resourceType;
 
   protected EndpointGatewayTarget() { }
+
+  /**
+   * Gets the resourceType.
+   *
+   * The target resource type for this endpoint gateway.
+   *
+   * @return the resourceType
+   */
+  public String getResourceType() {
+    return resourceType;
+  }
 
   /**
    * Gets the crn.
@@ -112,17 +127,6 @@ public class EndpointGatewayTarget extends GenericModel {
    */
   public PrivatePathServiceGatewayRemote getRemote() {
     return remote;
-  }
-
-  /**
-   * Gets the resourceType.
-   *
-   * The resource type.
-   *
-   * @return the resourceType
-   */
-  public String getResourceType() {
-    return resourceType;
   }
 }
 

@@ -23,10 +23,10 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class ReservedIPCollectionBareMetalServerNetworkInterfaceContext extends GenericModel {
 
-  protected ReservedIPCollectionBareMetalServerNetworkInterfaceContextFirst first;
+  protected PageLink first;
   protected List<ReservedIP> ips;
   protected Long limit;
-  protected ReservedIPCollectionBareMetalServerNetworkInterfaceContextNext next;
+  protected PageLink next;
   @SerializedName("total_count")
   protected Long totalCount;
 
@@ -39,7 +39,7 @@ public class ReservedIPCollectionBareMetalServerNetworkInterfaceContext extends 
    *
    * @return the first
    */
-  public ReservedIPCollectionBareMetalServerNetworkInterfaceContextFirst getFirst() {
+  public PageLink getFirst() {
     return first;
   }
 
@@ -73,7 +73,7 @@ public class ReservedIPCollectionBareMetalServerNetworkInterfaceContext extends 
    *
    * @return the next
    */
-  public ReservedIPCollectionBareMetalServerNetworkInterfaceContextNext getNext() {
+  public PageLink getNext() {
     return next;
   }
 

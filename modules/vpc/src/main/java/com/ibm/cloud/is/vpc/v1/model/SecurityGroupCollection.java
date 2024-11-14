@@ -23,9 +23,9 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class SecurityGroupCollection extends GenericModel {
 
-  protected SecurityGroupCollectionFirst first;
+  protected PageLink first;
   protected Long limit;
-  protected SecurityGroupCollectionNext next;
+  protected PageLink next;
   @SerializedName("security_groups")
   protected List<SecurityGroup> securityGroups;
   @SerializedName("total_count")
@@ -40,7 +40,7 @@ public class SecurityGroupCollection extends GenericModel {
    *
    * @return the first
    */
-  public SecurityGroupCollectionFirst getFirst() {
+  public PageLink getFirst() {
     return first;
   }
 
@@ -63,7 +63,7 @@ public class SecurityGroupCollection extends GenericModel {
    *
    * @return the next
    */
-  public SecurityGroupCollectionNext getNext() {
+  public PageLink getNext() {
     return next;
   }
 

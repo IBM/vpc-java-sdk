@@ -32,15 +32,15 @@ public class FlowLogCollectorTargetPrototypeNetworkInterfaceIdentityNetworkInter
   @Test
   public void testFlowLogCollectorTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceIdentityById() throws Throwable {
     FlowLogCollectorTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceIdentityById flowLogCollectorTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceIdentityByIdModel = new FlowLogCollectorTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceIdentityById.Builder()
-      .id("0717-10c02d81-0ecb-4dc5-897d-28392913b81e")
+      .id("0717-d54eb633-98ea-459d-aa00-6a8e780175a7")
       .build();
-    assertEquals(flowLogCollectorTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceIdentityByIdModel.id(), "0717-10c02d81-0ecb-4dc5-897d-28392913b81e");
+    assertEquals(flowLogCollectorTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceIdentityByIdModel.id(), "0717-d54eb633-98ea-459d-aa00-6a8e780175a7");
 
     String json = TestUtilities.serialize(flowLogCollectorTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceIdentityByIdModel);
 
     FlowLogCollectorTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceIdentityById flowLogCollectorTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceIdentityByIdModelNew = TestUtilities.deserialize(json, FlowLogCollectorTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceIdentityById.class);
     assertTrue(flowLogCollectorTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceIdentityByIdModelNew instanceof FlowLogCollectorTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceIdentityById);
-    assertEquals(flowLogCollectorTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceIdentityByIdModelNew.id(), "0717-10c02d81-0ecb-4dc5-897d-28392913b81e");
+    assertEquals(flowLogCollectorTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceIdentityByIdModelNew.id(), "0717-d54eb633-98ea-459d-aa00-6a8e780175a7");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

@@ -196,6 +196,9 @@ public class ReservedIP extends GenericModel {
    *
    * If absent, this reserved IP is provider-owned or unbound.
    *
+   * The resources supported by this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
+   *
    * @return the target
    */
   public ReservedIPTarget getTarget() {

@@ -23,9 +23,9 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class VirtualNetworkInterfaceCollection extends GenericModel {
 
-  protected VirtualNetworkInterfaceCollectionFirst first;
+  protected PageLink first;
   protected Long limit;
-  protected VirtualNetworkInterfaceCollectionNext next;
+  protected PageLink next;
   @SerializedName("total_count")
   protected Long totalCount;
   @SerializedName("virtual_network_interfaces")
@@ -40,7 +40,7 @@ public class VirtualNetworkInterfaceCollection extends GenericModel {
    *
    * @return the first
    */
-  public VirtualNetworkInterfaceCollectionFirst getFirst() {
+  public PageLink getFirst() {
     return first;
   }
 
@@ -63,7 +63,7 @@ public class VirtualNetworkInterfaceCollection extends GenericModel {
    *
    * @return the next
    */
-  public VirtualNetworkInterfaceCollectionNext getNext() {
+  public PageLink getNext() {
     return next;
   }
 

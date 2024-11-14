@@ -14,9 +14,8 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.Deleted;
+import com.ibm.cloud.is.vpc.v1.model.PageLink;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupTargetCollection;
-import com.ibm.cloud.is.vpc.v1.model.SecurityGroupTargetCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.SecurityGroupTargetCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupTargetReferenceNetworkInterfaceReferenceTargetContext;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;

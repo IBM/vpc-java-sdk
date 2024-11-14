@@ -23,9 +23,9 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class NetworkACLRuleCollection extends GenericModel {
 
-  protected NetworkACLRuleCollectionFirst first;
+  protected PageLink first;
   protected Long limit;
-  protected NetworkACLRuleCollectionNext next;
+  protected PageLink next;
   protected List<NetworkACLRuleItem> rules;
   @SerializedName("total_count")
   protected Long totalCount;
@@ -39,7 +39,7 @@ public class NetworkACLRuleCollection extends GenericModel {
    *
    * @return the first
    */
-  public NetworkACLRuleCollectionFirst getFirst() {
+  public PageLink getFirst() {
     return first;
   }
 
@@ -62,7 +62,7 @@ public class NetworkACLRuleCollection extends GenericModel {
    *
    * @return the next
    */
-  public NetworkACLRuleCollectionNext getNext() {
+  public PageLink getNext() {
     return next;
   }
 

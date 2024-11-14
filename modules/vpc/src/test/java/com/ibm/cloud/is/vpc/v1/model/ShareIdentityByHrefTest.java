@@ -32,15 +32,15 @@ public class ShareIdentityByHrefTest {
   @Test
   public void testShareIdentityByHref() throws Throwable {
     ShareIdentityByHref shareIdentityByHrefModel = new ShareIdentityByHref.Builder()
-      .href("https://us-south.iaas.cloud.ibm.com/v1/shares/0fe9e5d8-0a4d-4818-96ec-e99708644a58")
+      .href("https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58")
       .build();
-    assertEquals(shareIdentityByHrefModel.href(), "https://us-south.iaas.cloud.ibm.com/v1/shares/0fe9e5d8-0a4d-4818-96ec-e99708644a58");
+    assertEquals(shareIdentityByHrefModel.href(), "https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58");
 
     String json = TestUtilities.serialize(shareIdentityByHrefModel);
 
     ShareIdentityByHref shareIdentityByHrefModelNew = TestUtilities.deserialize(json, ShareIdentityByHref.class);
     assertTrue(shareIdentityByHrefModelNew instanceof ShareIdentityByHref);
-    assertEquals(shareIdentityByHrefModelNew.href(), "https://us-south.iaas.cloud.ibm.com/v1/shares/0fe9e5d8-0a4d-4818-96ec-e99708644a58");
+    assertEquals(shareIdentityByHrefModelNew.href(), "https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

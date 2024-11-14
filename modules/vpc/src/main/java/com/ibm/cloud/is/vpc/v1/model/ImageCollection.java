@@ -23,10 +23,10 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class ImageCollection extends GenericModel {
 
-  protected ImageCollectionFirst first;
+  protected PageLink first;
   protected List<Image> images;
   protected Long limit;
-  protected ImageCollectionNext next;
+  protected PageLink next;
   @SerializedName("total_count")
   protected Long totalCount;
 
@@ -39,7 +39,7 @@ public class ImageCollection extends GenericModel {
    *
    * @return the first
    */
-  public ImageCollectionFirst getFirst() {
+  public PageLink getFirst() {
     return first;
   }
 
@@ -73,7 +73,7 @@ public class ImageCollection extends GenericModel {
    *
    * @return the next
    */
-  public ImageCollectionNext getNext() {
+  public PageLink getNext() {
     return next;
   }
 

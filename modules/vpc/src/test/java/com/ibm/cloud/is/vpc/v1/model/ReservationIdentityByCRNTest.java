@@ -32,15 +32,15 @@ public class ReservationIdentityByCRNTest {
   @Test
   public void testReservationIdentityByCRN() throws Throwable {
     ReservationIdentityByCRN reservationIdentityByCrnModel = new ReservationIdentityByCRN.Builder()
-      .crn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::reservation:7187-ba49df72-37b8-43ac-98da-f8e029de0e63")
+      .crn("crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::reservation:0717-ba49df72-37b8-43ac-98da-f8e029de0e63")
       .build();
-    assertEquals(reservationIdentityByCrnModel.crn(), "crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::reservation:7187-ba49df72-37b8-43ac-98da-f8e029de0e63");
+    assertEquals(reservationIdentityByCrnModel.crn(), "crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::reservation:0717-ba49df72-37b8-43ac-98da-f8e029de0e63");
 
     String json = TestUtilities.serialize(reservationIdentityByCrnModel);
 
     ReservationIdentityByCRN reservationIdentityByCrnModelNew = TestUtilities.deserialize(json, ReservationIdentityByCRN.class);
     assertTrue(reservationIdentityByCrnModelNew instanceof ReservationIdentityByCRN);
-    assertEquals(reservationIdentityByCrnModelNew.crn(), "crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::reservation:7187-ba49df72-37b8-43ac-98da-f8e029de0e63");
+    assertEquals(reservationIdentityByCrnModelNew.crn(), "crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::reservation:0717-ba49df72-37b8-43ac-98da-f8e029de0e63");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

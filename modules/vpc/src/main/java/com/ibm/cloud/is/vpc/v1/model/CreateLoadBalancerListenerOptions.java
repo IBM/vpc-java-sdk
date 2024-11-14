@@ -366,7 +366,9 @@ public class CreateLoadBalancerListenerOptions extends GenericModel {
   /**
    * Gets the connectionLimit.
    *
-   * The connection limit of the listener.
+   * The concurrent connection limit for the listener. If reached, incoming connections may be queued or rejected.
+   *
+   * This property will be present for load balancers in the `application` family.
    *
    * @return the connectionLimit
    */
@@ -413,7 +415,9 @@ public class CreateLoadBalancerListenerOptions extends GenericModel {
   /**
    * Gets the idleConnectionTimeout.
    *
-   * The idle connection timeout of the listener in seconds. Supported for load balancers in the `application` family.
+   * The idle connection timeout of the listener in seconds.
+   *
+   * Supported for load balancers in the `application` family.
    *
    * @return the idleConnectionTimeout
    */

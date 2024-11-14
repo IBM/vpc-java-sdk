@@ -365,7 +365,7 @@ public class SharePrototypeShareContext extends GenericModel {
    *
    * The cron specification for the file share replication schedule.
    *
-   * Replication of a share can be scheduled to occur at most once per hour.
+   * Replication of a share can be scheduled to occur at most once every 15 minutes.
    *
    * @return the replicationCronSpec
    */

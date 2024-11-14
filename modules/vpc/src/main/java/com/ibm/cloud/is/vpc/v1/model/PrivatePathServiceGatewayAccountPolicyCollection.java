@@ -25,9 +25,9 @@ public class PrivatePathServiceGatewayAccountPolicyCollection extends GenericMod
 
   @SerializedName("account_policies")
   protected List<PrivatePathServiceGatewayAccountPolicy> accountPolicies;
-  protected PrivatePathServiceGatewayAccountPolicyCollectionFirst first;
+  protected PageLink first;
   protected Long limit;
-  protected PrivatePathServiceGatewayAccountPolicyCollectionNext next;
+  protected PageLink next;
   @SerializedName("total_count")
   protected Long totalCount;
 
@@ -51,7 +51,7 @@ public class PrivatePathServiceGatewayAccountPolicyCollection extends GenericMod
    *
    * @return the first
    */
-  public PrivatePathServiceGatewayAccountPolicyCollectionFirst getFirst() {
+  public PageLink getFirst() {
     return first;
   }
 
@@ -74,7 +74,7 @@ public class PrivatePathServiceGatewayAccountPolicyCollection extends GenericMod
    *
    * @return the next
    */
-  public PrivatePathServiceGatewayAccountPolicyCollectionNext getNext() {
+  public PageLink getNext() {
     return next;
   }
 

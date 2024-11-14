@@ -23,10 +23,10 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class InstanceCollection extends GenericModel {
 
-  protected InstanceCollectionFirst first;
+  protected PageLink first;
   protected List<Instance> instances;
   protected Long limit;
-  protected InstanceCollectionNext next;
+  protected PageLink next;
   @SerializedName("total_count")
   protected Long totalCount;
 
@@ -39,7 +39,7 @@ public class InstanceCollection extends GenericModel {
    *
    * @return the first
    */
-  public InstanceCollectionFirst getFirst() {
+  public PageLink getFirst() {
     return first;
   }
 
@@ -73,7 +73,7 @@ public class InstanceCollection extends GenericModel {
    *
    * @return the next
    */
-  public InstanceCollectionNext getNext() {
+  public PageLink getNext() {
     return next;
   }
 

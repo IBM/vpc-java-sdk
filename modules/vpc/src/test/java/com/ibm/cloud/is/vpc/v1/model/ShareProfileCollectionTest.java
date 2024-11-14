@@ -13,11 +13,10 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.ibm.cloud.is.vpc.v1.model.PageLink;
 import com.ibm.cloud.is.vpc.v1.model.ShareProfile;
 import com.ibm.cloud.is.vpc.v1.model.ShareProfileCapacityFixed;
 import com.ibm.cloud.is.vpc.v1.model.ShareProfileCollection;
-import com.ibm.cloud.is.vpc.v1.model.ShareProfileCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.ShareProfileCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.ShareProfileIOPSFixed;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;

@@ -15,13 +15,12 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.Deleted;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLReference;
+import com.ibm.cloud.is.vpc.v1.model.PageLink;
 import com.ibm.cloud.is.vpc.v1.model.PublicGatewayReference;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.RoutingTableReference;
 import com.ibm.cloud.is.vpc.v1.model.Subnet;
 import com.ibm.cloud.is.vpc.v1.model.SubnetCollection;
-import com.ibm.cloud.is.vpc.v1.model.SubnetCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.SubnetCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.VPCReference;
 import com.ibm.cloud.is.vpc.v1.model.ZoneReference;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;

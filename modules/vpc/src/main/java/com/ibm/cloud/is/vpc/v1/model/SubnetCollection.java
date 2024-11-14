@@ -23,9 +23,9 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class SubnetCollection extends GenericModel {
 
-  protected SubnetCollectionFirst first;
+  protected PageLink first;
   protected Long limit;
-  protected SubnetCollectionNext next;
+  protected PageLink next;
   protected List<Subnet> subnets;
   @SerializedName("total_count")
   protected Long totalCount;
@@ -39,7 +39,7 @@ public class SubnetCollection extends GenericModel {
    *
    * @return the first
    */
-  public SubnetCollectionFirst getFirst() {
+  public PageLink getFirst() {
     return first;
   }
 
@@ -62,7 +62,7 @@ public class SubnetCollection extends GenericModel {
    *
    * @return the next
    */
-  public SubnetCollectionNext getNext() {
+  public PageLink getNext() {
     return next;
   }
 

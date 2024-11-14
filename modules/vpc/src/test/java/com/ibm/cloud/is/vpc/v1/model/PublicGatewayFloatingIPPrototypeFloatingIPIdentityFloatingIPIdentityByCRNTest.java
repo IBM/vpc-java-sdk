@@ -32,15 +32,15 @@ public class PublicGatewayFloatingIPPrototypeFloatingIPIdentityFloatingIPIdentit
   @Test
   public void testPublicGatewayFloatingIPPrototypeFloatingIPIdentityFloatingIPIdentityByCRN() throws Throwable {
     PublicGatewayFloatingIPPrototypeFloatingIPIdentityFloatingIPIdentityByCRN publicGatewayFloatingIpPrototypeFloatingIpIdentityFloatingIpIdentityByCrnModel = new PublicGatewayFloatingIPPrototypeFloatingIPIdentityFloatingIPIdentityByCRN.Builder()
-      .crn("crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::floating-ip:39300233-9995-4806-89a5-3c1b6eb88689")
+      .crn("crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::floating-ip:r006-f45e0d90-12a8-4460-8210-290ff2ab75cd")
       .build();
-    assertEquals(publicGatewayFloatingIpPrototypeFloatingIpIdentityFloatingIpIdentityByCrnModel.crn(), "crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::floating-ip:39300233-9995-4806-89a5-3c1b6eb88689");
+    assertEquals(publicGatewayFloatingIpPrototypeFloatingIpIdentityFloatingIpIdentityByCrnModel.crn(), "crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::floating-ip:r006-f45e0d90-12a8-4460-8210-290ff2ab75cd");
 
     String json = TestUtilities.serialize(publicGatewayFloatingIpPrototypeFloatingIpIdentityFloatingIpIdentityByCrnModel);
 
     PublicGatewayFloatingIPPrototypeFloatingIPIdentityFloatingIPIdentityByCRN publicGatewayFloatingIpPrototypeFloatingIpIdentityFloatingIpIdentityByCrnModelNew = TestUtilities.deserialize(json, PublicGatewayFloatingIPPrototypeFloatingIPIdentityFloatingIPIdentityByCRN.class);
     assertTrue(publicGatewayFloatingIpPrototypeFloatingIpIdentityFloatingIpIdentityByCrnModelNew instanceof PublicGatewayFloatingIPPrototypeFloatingIPIdentityFloatingIPIdentityByCRN);
-    assertEquals(publicGatewayFloatingIpPrototypeFloatingIpIdentityFloatingIpIdentityByCrnModelNew.crn(), "crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::floating-ip:39300233-9995-4806-89a5-3c1b6eb88689");
+    assertEquals(publicGatewayFloatingIpPrototypeFloatingIpIdentityFloatingIpIdentityByCrnModelNew.crn(), "crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::floating-ip:r006-f45e0d90-12a8-4460-8210-290ff2ab75cd");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

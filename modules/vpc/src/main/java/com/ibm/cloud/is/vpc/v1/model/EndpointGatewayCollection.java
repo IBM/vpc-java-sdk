@@ -25,9 +25,9 @@ public class EndpointGatewayCollection extends GenericModel {
 
   @SerializedName("endpoint_gateways")
   protected List<EndpointGateway> endpointGateways;
-  protected EndpointGatewayCollectionFirst first;
+  protected PageLink first;
   protected Long limit;
-  protected EndpointGatewayCollectionNext next;
+  protected PageLink next;
   @SerializedName("total_count")
   protected Long totalCount;
 
@@ -51,7 +51,7 @@ public class EndpointGatewayCollection extends GenericModel {
    *
    * @return the first
    */
-  public EndpointGatewayCollectionFirst getFirst() {
+  public PageLink getFirst() {
     return first;
   }
 
@@ -74,7 +74,7 @@ public class EndpointGatewayCollection extends GenericModel {
    *
    * @return the next
    */
-  public EndpointGatewayCollectionNext getNext() {
+  public PageLink getNext() {
     return next;
   }
 

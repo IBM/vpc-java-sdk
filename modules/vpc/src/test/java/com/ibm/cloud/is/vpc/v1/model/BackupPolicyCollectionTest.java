@@ -14,14 +14,13 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyCollection;
-import com.ibm.cloud.is.vpc.v1.model.BackupPolicyCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.BackupPolicyCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyHealthReason;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyMatchResourceTypeInstance;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanReference;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanRemote;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyScopeEnterpriseReference;
 import com.ibm.cloud.is.vpc.v1.model.Deleted;
+import com.ibm.cloud.is.vpc.v1.model.PageLink;
 import com.ibm.cloud.is.vpc.v1.model.RegionReference;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;

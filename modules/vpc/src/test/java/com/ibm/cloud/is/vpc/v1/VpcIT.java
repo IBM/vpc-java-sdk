@@ -27,19 +27,13 @@ import com.ibm.cloud.is.vpc.v1.model.AddVpnGatewayConnectionsLocalCidrOptions;
 import com.ibm.cloud.is.vpc.v1.model.AddVpnGatewayConnectionsPeerCidrOptions;
 import com.ibm.cloud.is.vpc.v1.model.AddressPrefix;
 import com.ibm.cloud.is.vpc.v1.model.AddressPrefixCollection;
-import com.ibm.cloud.is.vpc.v1.model.AddressPrefixCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.AddressPrefixCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.AddressPrefixPatch;
 import com.ibm.cloud.is.vpc.v1.model.BackupPoliciesPager;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicy;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyCollection;
-import com.ibm.cloud.is.vpc.v1.model.BackupPolicyCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.BackupPolicyCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyHealthReason;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyJob;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyJobCollection;
-import com.ibm.cloud.is.vpc.v1.model.BackupPolicyJobCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.BackupPolicyJobCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyJobSource;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyJobSourceInstanceReference;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyJobSourceVolumeReference;
@@ -53,8 +47,6 @@ import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanClonePolicy;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanClonePolicyPatch;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanClonePolicyPrototype;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanCollection;
-import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanDeletionTrigger;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanDeletionTriggerPatch;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanDeletionTriggerPrototype;
@@ -78,8 +70,6 @@ import com.ibm.cloud.is.vpc.v1.model.BareMetalServerBootTarget;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerBootTargetBareMetalServerDiskReference;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerCPU;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerCollection;
-import com.ibm.cloud.is.vpc.v1.model.BareMetalServerCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.BareMetalServerCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerConsoleAccessToken;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerDisk;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerDiskCollection;
@@ -94,8 +84,6 @@ import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkAttachment;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkAttachmentByPCI;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkAttachmentByVLAN;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkAttachmentCollection;
-import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkAttachmentCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkAttachmentCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkAttachmentPatch;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkAttachmentPrototype;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkAttachmentPrototypeBareMetalServerNetworkAttachmentByPCIPrototype;
@@ -113,8 +101,6 @@ import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkInterfaceByHiperSocke
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkInterfaceByPCI;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkInterfaceByVLAN;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkInterfaceCollection;
-import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkInterfaceCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkInterfaceCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkInterfacePatch;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkInterfacePrototype;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByHiperSocketPrototype;
@@ -143,8 +129,6 @@ import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileCPUSocketCountEnum;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileCPUSocketCountFixed;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileCPUSocketCountRange;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileCollection;
-import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileConsoleTypes;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileDisk;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileDiskQuantity;
@@ -203,12 +187,65 @@ import com.ibm.cloud.is.vpc.v1.model.CloudObjectStorageBucketIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.CloudObjectStorageBucketIdentityCloudObjectStorageBucketIdentityByName;
 import com.ibm.cloud.is.vpc.v1.model.CloudObjectStorageBucketReference;
 import com.ibm.cloud.is.vpc.v1.model.CloudObjectStorageObjectReference;
+import com.ibm.cloud.is.vpc.v1.model.ClusterNetwork;
+import com.ibm.cloud.is.vpc.v1.model.ClusterNetworkCollection;
+import com.ibm.cloud.is.vpc.v1.model.ClusterNetworkInterface;
+import com.ibm.cloud.is.vpc.v1.model.ClusterNetworkInterfaceCollection;
+import com.ibm.cloud.is.vpc.v1.model.ClusterNetworkInterfaceLifecycleReason;
+import com.ibm.cloud.is.vpc.v1.model.ClusterNetworkInterfacePatch;
+import com.ibm.cloud.is.vpc.v1.model.ClusterNetworkInterfacePrimaryIPPrototype;
+import com.ibm.cloud.is.vpc.v1.model.ClusterNetworkInterfacePrimaryIPPrototypeClusterNetworkSubnetReservedIPIdentityClusterNetworkInterfacePrimaryIPContext;
+import com.ibm.cloud.is.vpc.v1.model.ClusterNetworkInterfacePrimaryIPPrototypeClusterNetworkSubnetReservedIPIdentityClusterNetworkInterfacePrimaryIPContextByHref;
+import com.ibm.cloud.is.vpc.v1.model.ClusterNetworkInterfacePrimaryIPPrototypeClusterNetworkSubnetReservedIPIdentityClusterNetworkInterfacePrimaryIPContextById;
+import com.ibm.cloud.is.vpc.v1.model.ClusterNetworkInterfacePrimaryIPPrototypeClusterNetworkSubnetReservedIPPrototypeClusterNetworkInterfacePrimaryIPContext;
+import com.ibm.cloud.is.vpc.v1.model.ClusterNetworkInterfaceReference;
+import com.ibm.cloud.is.vpc.v1.model.ClusterNetworkInterfaceTarget;
+import com.ibm.cloud.is.vpc.v1.model.ClusterNetworkInterfaceTargetInstanceClusterNetworkAttachmentReferenceClusterNetworkInterfaceContext;
+import com.ibm.cloud.is.vpc.v1.model.ClusterNetworkInterfacesPager;
+import com.ibm.cloud.is.vpc.v1.model.ClusterNetworkLifecycleReason;
+import com.ibm.cloud.is.vpc.v1.model.ClusterNetworkPatch;
+import com.ibm.cloud.is.vpc.v1.model.ClusterNetworkProfile;
+import com.ibm.cloud.is.vpc.v1.model.ClusterNetworkProfileCollection;
+import com.ibm.cloud.is.vpc.v1.model.ClusterNetworkProfileIdentity;
+import com.ibm.cloud.is.vpc.v1.model.ClusterNetworkProfileIdentityByHref;
+import com.ibm.cloud.is.vpc.v1.model.ClusterNetworkProfileIdentityByName;
+import com.ibm.cloud.is.vpc.v1.model.ClusterNetworkProfileReference;
+import com.ibm.cloud.is.vpc.v1.model.ClusterNetworkProfilesPager;
+import com.ibm.cloud.is.vpc.v1.model.ClusterNetworkReference;
+import com.ibm.cloud.is.vpc.v1.model.ClusterNetworkSubnet;
+import com.ibm.cloud.is.vpc.v1.model.ClusterNetworkSubnetCollection;
+import com.ibm.cloud.is.vpc.v1.model.ClusterNetworkSubnetIdentity;
+import com.ibm.cloud.is.vpc.v1.model.ClusterNetworkSubnetIdentityByHref;
+import com.ibm.cloud.is.vpc.v1.model.ClusterNetworkSubnetIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.ClusterNetworkSubnetLifecycleReason;
+import com.ibm.cloud.is.vpc.v1.model.ClusterNetworkSubnetPatch;
+import com.ibm.cloud.is.vpc.v1.model.ClusterNetworkSubnetPrefix;
+import com.ibm.cloud.is.vpc.v1.model.ClusterNetworkSubnetPrefixPrototype;
+import com.ibm.cloud.is.vpc.v1.model.ClusterNetworkSubnetPrototype;
+import com.ibm.cloud.is.vpc.v1.model.ClusterNetworkSubnetPrototypeClusterNetworkSubnetByIPv4CIDRBlockPrototype;
+import com.ibm.cloud.is.vpc.v1.model.ClusterNetworkSubnetPrototypeClusterNetworkSubnetByTotalCountPrototype;
+import com.ibm.cloud.is.vpc.v1.model.ClusterNetworkSubnetReference;
+import com.ibm.cloud.is.vpc.v1.model.ClusterNetworkSubnetReservedIP;
+import com.ibm.cloud.is.vpc.v1.model.ClusterNetworkSubnetReservedIPCollection;
+import com.ibm.cloud.is.vpc.v1.model.ClusterNetworkSubnetReservedIPLifecycleReason;
+import com.ibm.cloud.is.vpc.v1.model.ClusterNetworkSubnetReservedIPPatch;
+import com.ibm.cloud.is.vpc.v1.model.ClusterNetworkSubnetReservedIPReference;
+import com.ibm.cloud.is.vpc.v1.model.ClusterNetworkSubnetReservedIPTarget;
+import com.ibm.cloud.is.vpc.v1.model.ClusterNetworkSubnetReservedIPTargetClusterNetworkInterfaceReferenceClusterNetworkSubnetReservedIPTargetContext;
+import com.ibm.cloud.is.vpc.v1.model.ClusterNetworkSubnetReservedIpsPager;
+import com.ibm.cloud.is.vpc.v1.model.ClusterNetworkSubnetsPager;
+import com.ibm.cloud.is.vpc.v1.model.ClusterNetworksPager;
 import com.ibm.cloud.is.vpc.v1.model.CreateBackupPolicyOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateBackupPolicyPlanOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateBareMetalServerConsoleAccessTokenOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateBareMetalServerNetworkAttachmentOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateBareMetalServerNetworkInterfaceOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateBareMetalServerOptions;
+import com.ibm.cloud.is.vpc.v1.model.CreateClusterNetworkAttachmentOptions;
+import com.ibm.cloud.is.vpc.v1.model.CreateClusterNetworkInterfaceOptions;
+import com.ibm.cloud.is.vpc.v1.model.CreateClusterNetworkOptions;
+import com.ibm.cloud.is.vpc.v1.model.CreateClusterNetworkSubnetOptions;
+import com.ibm.cloud.is.vpc.v1.model.CreateClusterNetworkSubnetReservedIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateDedicatedHostGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateDedicatedHostOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateEndpointGatewayOptions;
@@ -275,15 +312,11 @@ import com.ibm.cloud.is.vpc.v1.model.DNSZoneIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.DNSZoneReference;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHost;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostCollection;
-import com.ibm.cloud.is.vpc.v1.model.DedicatedHostCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.DedicatedHostCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostDisk;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostDiskCollection;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostDiskPatch;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostGroup;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostGroupCollection;
-import com.ibm.cloud.is.vpc.v1.model.DedicatedHostGroupCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.DedicatedHostGroupCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostGroupIdentity;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostGroupIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostGroupIdentityByHref;
@@ -297,8 +330,6 @@ import com.ibm.cloud.is.vpc.v1.model.DedicatedHostNUMANode;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostPatch;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostProfile;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostProfileCollection;
-import com.ibm.cloud.is.vpc.v1.model.DedicatedHostProfileCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.DedicatedHostProfileCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostProfileDisk;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostProfileDiskInterface;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostProfileDiskQuantity;
@@ -339,6 +370,10 @@ import com.ibm.cloud.is.vpc.v1.model.DeleteBackupPolicyPlanOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteBareMetalServerNetworkAttachmentOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteBareMetalServerNetworkInterfaceOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteBareMetalServerOptions;
+import com.ibm.cloud.is.vpc.v1.model.DeleteClusterNetworkInterfaceOptions;
+import com.ibm.cloud.is.vpc.v1.model.DeleteClusterNetworkOptions;
+import com.ibm.cloud.is.vpc.v1.model.DeleteClusterNetworkSubnetOptions;
+import com.ibm.cloud.is.vpc.v1.model.DeleteClusterNetworkSubnetReservedIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteDedicatedHostGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteDedicatedHostOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteEndpointGatewayOptions;
@@ -347,6 +382,7 @@ import com.ibm.cloud.is.vpc.v1.model.DeleteFlowLogCollectorOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteIkePolicyOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteImageExportJobOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteImageOptions;
+import com.ibm.cloud.is.vpc.v1.model.DeleteInstanceClusterNetworkAttachmentOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteInstanceGroupLoadBalancerOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteInstanceGroupManagerActionOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteInstanceGroupManagerOptions;
@@ -409,8 +445,6 @@ import com.ibm.cloud.is.vpc.v1.model.EncryptionKeyIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.EncryptionKeyReference;
 import com.ibm.cloud.is.vpc.v1.model.EndpointGateway;
 import com.ibm.cloud.is.vpc.v1.model.EndpointGatewayCollection;
-import com.ibm.cloud.is.vpc.v1.model.EndpointGatewayCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.EndpointGatewayCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.EndpointGatewayIpsPager;
 import com.ibm.cloud.is.vpc.v1.model.EndpointGatewayLifecycleReason;
 import com.ibm.cloud.is.vpc.v1.model.EndpointGatewayPatch;
@@ -433,11 +467,7 @@ import com.ibm.cloud.is.vpc.v1.model.EndpointGatewaysPager;
 import com.ibm.cloud.is.vpc.v1.model.FailoverShareOptions;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIP;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPCollection;
-import com.ibm.cloud.is.vpc.v1.model.FloatingIPCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.FloatingIPCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPCollectionVirtualNetworkInterfaceContext;
-import com.ibm.cloud.is.vpc.v1.model.FloatingIPCollectionVirtualNetworkInterfaceContextFirst;
-import com.ibm.cloud.is.vpc.v1.model.FloatingIPCollectionVirtualNetworkInterfaceContextNext;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPPatch;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPPrototype;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPPrototypeFloatingIPByTarget;
@@ -474,8 +504,6 @@ import com.ibm.cloud.is.vpc.v1.model.FloatingIPUnpaginatedCollection;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIpsPager;
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollector;
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorCollection;
-import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorPatch;
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorTarget;
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorTargetInstanceNetworkAttachmentReference;
@@ -519,6 +547,11 @@ import com.ibm.cloud.is.vpc.v1.model.GetBareMetalServerNetworkInterfaceIpOptions
 import com.ibm.cloud.is.vpc.v1.model.GetBareMetalServerNetworkInterfaceOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetBareMetalServerOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetBareMetalServerProfileOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetClusterNetworkInterfaceOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetClusterNetworkOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetClusterNetworkProfileOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetClusterNetworkSubnetOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetClusterNetworkSubnetReservedIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetDedicatedHostDiskOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetDedicatedHostGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetDedicatedHostOptions;
@@ -530,6 +563,7 @@ import com.ibm.cloud.is.vpc.v1.model.GetFlowLogCollectorOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetIkePolicyOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetImageExportJobOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetImageOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetInstanceClusterNetworkAttachmentOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetInstanceDiskOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetInstanceGroupManagerActionOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetInstanceGroupManagerOptions;
@@ -604,21 +638,13 @@ import com.ibm.cloud.is.vpc.v1.model.GetVpnServerOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetVpnServerRouteOptions;
 import com.ibm.cloud.is.vpc.v1.model.IKEPolicy;
 import com.ibm.cloud.is.vpc.v1.model.IKEPolicyCollection;
-import com.ibm.cloud.is.vpc.v1.model.IKEPolicyCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.IKEPolicyCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.IKEPolicyConnectionCollection;
-import com.ibm.cloud.is.vpc.v1.model.IKEPolicyConnectionCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.IKEPolicyConnectionCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.IKEPolicyPatch;
 import com.ibm.cloud.is.vpc.v1.model.IKEPolicyReference;
 import com.ibm.cloud.is.vpc.v1.model.IP;
 import com.ibm.cloud.is.vpc.v1.model.IPsecPolicy;
 import com.ibm.cloud.is.vpc.v1.model.IPsecPolicyCollection;
-import com.ibm.cloud.is.vpc.v1.model.IPsecPolicyCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.IPsecPolicyCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.IPsecPolicyConnectionCollection;
-import com.ibm.cloud.is.vpc.v1.model.IPsecPolicyConnectionCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.IPsecPolicyConnectionCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.IPsecPolicyPatch;
 import com.ibm.cloud.is.vpc.v1.model.IPsecPolicyReference;
 import com.ibm.cloud.is.vpc.v1.model.IkePoliciesPager;
@@ -626,8 +652,6 @@ import com.ibm.cloud.is.vpc.v1.model.IkePolicyConnectionsPager;
 import com.ibm.cloud.is.vpc.v1.model.Image;
 import com.ibm.cloud.is.vpc.v1.model.ImageCatalogOffering;
 import com.ibm.cloud.is.vpc.v1.model.ImageCollection;
-import com.ibm.cloud.is.vpc.v1.model.ImageCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.ImageCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.ImageExportJob;
 import com.ibm.cloud.is.vpc.v1.model.ImageExportJobPatch;
 import com.ibm.cloud.is.vpc.v1.model.ImageExportJobStatusReason;
@@ -656,9 +680,23 @@ import com.ibm.cloud.is.vpc.v1.model.InstanceCatalogOffering;
 import com.ibm.cloud.is.vpc.v1.model.InstanceCatalogOfferingPrototype;
 import com.ibm.cloud.is.vpc.v1.model.InstanceCatalogOfferingPrototypeCatalogOfferingByOffering;
 import com.ibm.cloud.is.vpc.v1.model.InstanceCatalogOfferingPrototypeCatalogOfferingByVersion;
+import com.ibm.cloud.is.vpc.v1.model.InstanceClusterNetworkAttachment;
+import com.ibm.cloud.is.vpc.v1.model.InstanceClusterNetworkAttachmentBefore;
+import com.ibm.cloud.is.vpc.v1.model.InstanceClusterNetworkAttachmentBeforePrototype;
+import com.ibm.cloud.is.vpc.v1.model.InstanceClusterNetworkAttachmentBeforePrototypeInstanceClusterNetworkAttachmentIdentityByHref;
+import com.ibm.cloud.is.vpc.v1.model.InstanceClusterNetworkAttachmentBeforePrototypeInstanceClusterNetworkAttachmentIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.InstanceClusterNetworkAttachmentCollection;
+import com.ibm.cloud.is.vpc.v1.model.InstanceClusterNetworkAttachmentLifecycleReason;
+import com.ibm.cloud.is.vpc.v1.model.InstanceClusterNetworkAttachmentPatch;
+import com.ibm.cloud.is.vpc.v1.model.InstanceClusterNetworkAttachmentPrototypeClusterNetworkInterface;
+import com.ibm.cloud.is.vpc.v1.model.InstanceClusterNetworkAttachmentPrototypeClusterNetworkInterfaceClusterNetworkInterfaceIdentity;
+import com.ibm.cloud.is.vpc.v1.model.InstanceClusterNetworkAttachmentPrototypeClusterNetworkInterfaceClusterNetworkInterfaceIdentityClusterNetworkInterfaceIdentityByHref;
+import com.ibm.cloud.is.vpc.v1.model.InstanceClusterNetworkAttachmentPrototypeClusterNetworkInterfaceClusterNetworkInterfaceIdentityClusterNetworkInterfaceIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.InstanceClusterNetworkAttachmentPrototypeClusterNetworkInterfaceInstanceClusterNetworkInterfacePrototypeInstanceClusterNetworkAttachment;
+import com.ibm.cloud.is.vpc.v1.model.InstanceClusterNetworkAttachmentPrototypeInstanceContext;
+import com.ibm.cloud.is.vpc.v1.model.InstanceClusterNetworkAttachmentReference;
+import com.ibm.cloud.is.vpc.v1.model.InstanceClusterNetworkAttachmentsPager;
 import com.ibm.cloud.is.vpc.v1.model.InstanceCollection;
-import com.ibm.cloud.is.vpc.v1.model.InstanceCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.InstanceCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.InstanceConsoleAccessToken;
 import com.ibm.cloud.is.vpc.v1.model.InstanceDefaultTrustedProfilePrototype;
 import com.ibm.cloud.is.vpc.v1.model.InstanceDisk;
@@ -668,8 +706,6 @@ import com.ibm.cloud.is.vpc.v1.model.InstanceDiskReference;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGPU;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroup;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupCollection;
-import com.ibm.cloud.is.vpc.v1.model.InstanceGroupCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.InstanceGroupCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupLifecycleReason;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManager;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerAction;
@@ -689,19 +725,13 @@ import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerActionScheduledAction;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerActionScheduledActionGroupTarget;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerActionScheduledActionManagerTarget;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerActionsCollection;
-import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerActionsCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerActionsCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerActionsPager;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerAutoScale;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerCollection;
-import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerPatch;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerPoliciesPager;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerPolicy;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerPolicyCollection;
-import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerPolicyCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerPolicyCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerPolicyInstanceGroupManagerTargetPolicy;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerPolicyPatch;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerPolicyPrototype;
@@ -723,8 +753,6 @@ import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerScheduledActionManagerP
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagersPager;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupMembership;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupMembershipCollection;
-import com.ibm.cloud.is.vpc.v1.model.InstanceGroupMembershipCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.InstanceGroupMembershipCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupMembershipPatch;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupMembershipsPager;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupPatch;
@@ -786,6 +814,10 @@ import com.ibm.cloud.is.vpc.v1.model.InstanceProfileBandwidthDependent;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileBandwidthEnum;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileBandwidthFixed;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileBandwidthRange;
+import com.ibm.cloud.is.vpc.v1.model.InstanceProfileClusterNetworkAttachmentCount;
+import com.ibm.cloud.is.vpc.v1.model.InstanceProfileClusterNetworkAttachmentCountDependent;
+import com.ibm.cloud.is.vpc.v1.model.InstanceProfileClusterNetworkAttachmentCountEnum;
+import com.ibm.cloud.is.vpc.v1.model.InstanceProfileClusterNetworkAttachmentCountRange;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileCollection;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileDisk;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileDiskQuantity;
@@ -869,8 +901,6 @@ import com.ibm.cloud.is.vpc.v1.model.InstanceReservationAffinityPrototype;
 import com.ibm.cloud.is.vpc.v1.model.InstanceStatusReason;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplate;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateCollection;
-import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateIdentity;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateIdentityByHref;
@@ -903,8 +933,6 @@ import com.ibm.cloud.is.vpc.v1.model.IpsecPoliciesPager;
 import com.ibm.cloud.is.vpc.v1.model.IpsecPolicyConnectionsPager;
 import com.ibm.cloud.is.vpc.v1.model.Key;
 import com.ibm.cloud.is.vpc.v1.model.KeyCollection;
-import com.ibm.cloud.is.vpc.v1.model.KeyCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.KeyCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.KeyIdentity;
 import com.ibm.cloud.is.vpc.v1.model.KeyIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.KeyIdentityByFingerprint;
@@ -926,6 +954,11 @@ import com.ibm.cloud.is.vpc.v1.model.ListBareMetalServerNetworkInterfaceIpsOptio
 import com.ibm.cloud.is.vpc.v1.model.ListBareMetalServerNetworkInterfacesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListBareMetalServerProfilesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListBareMetalServersOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListClusterNetworkInterfacesOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListClusterNetworkProfilesOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListClusterNetworkSubnetReservedIpsOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListClusterNetworkSubnetsOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListClusterNetworksOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListDedicatedHostDisksOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListDedicatedHostGroupsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListDedicatedHostProfilesOptions;
@@ -938,6 +971,7 @@ import com.ibm.cloud.is.vpc.v1.model.ListIkePoliciesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListIkePolicyConnectionsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListImageExportJobsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListImagesOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListInstanceClusterNetworkAttachmentsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListInstanceDisksOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListInstanceGroupManagerActionsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListInstanceGroupManagerPoliciesOptions;
@@ -1005,8 +1039,6 @@ import com.ibm.cloud.is.vpc.v1.model.ListVpnServerRoutesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListVpnServersOptions;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancer;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerCollection;
-import com.ibm.cloud.is.vpc.v1.model.LoadBalancerCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.LoadBalancerCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerDNS;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerDNSPatch;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerDNSPrototype;
@@ -1096,8 +1128,6 @@ import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileAvailability;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileAvailabilityDependent;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileAvailabilityFixed;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileCollection;
-import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileIdentity;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileIdentityByHref;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileIdentityByName;
@@ -1124,8 +1154,6 @@ import com.ibm.cloud.is.vpc.v1.model.LoadBalancerStatistics;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancersPager;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACL;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLCollection;
-import com.ibm.cloud.is.vpc.v1.model.NetworkACLCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.NetworkACLCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLIdentity;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLIdentityByHref;
@@ -1143,8 +1171,6 @@ import com.ibm.cloud.is.vpc.v1.model.NetworkACLRuleBeforePrototype;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLRuleBeforePrototypeNetworkACLRuleIdentityByHref;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLRuleBeforePrototypeNetworkACLRuleIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLRuleCollection;
-import com.ibm.cloud.is.vpc.v1.model.NetworkACLRuleCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.NetworkACLRuleCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLRuleItem;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLRuleItemNetworkACLRuleProtocolAll;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLRuleItemNetworkACLRuleProtocolICMP;
@@ -1179,41 +1205,30 @@ import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceUnpaginatedCollection;
 import com.ibm.cloud.is.vpc.v1.model.ObsoleteImageOptions;
 import com.ibm.cloud.is.vpc.v1.model.OperatingSystem;
 import com.ibm.cloud.is.vpc.v1.model.OperatingSystemCollection;
-import com.ibm.cloud.is.vpc.v1.model.OperatingSystemCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.OperatingSystemCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.OperatingSystemIdentity;
 import com.ibm.cloud.is.vpc.v1.model.OperatingSystemIdentityByHref;
 import com.ibm.cloud.is.vpc.v1.model.OperatingSystemIdentityByName;
 import com.ibm.cloud.is.vpc.v1.model.OperatingSystemsPager;
+import com.ibm.cloud.is.vpc.v1.model.PageLink;
 import com.ibm.cloud.is.vpc.v1.model.PermitPrivatePathServiceGatewayEndpointGatewayBindingOptions;
 import com.ibm.cloud.is.vpc.v1.model.PlacementGroup;
 import com.ibm.cloud.is.vpc.v1.model.PlacementGroupCollection;
-import com.ibm.cloud.is.vpc.v1.model.PlacementGroupCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.PlacementGroupCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.PlacementGroupPatch;
 import com.ibm.cloud.is.vpc.v1.model.PlacementGroupsPager;
 import com.ibm.cloud.is.vpc.v1.model.PrivatePathServiceGateway;
 import com.ibm.cloud.is.vpc.v1.model.PrivatePathServiceGatewayAccountPoliciesPager;
 import com.ibm.cloud.is.vpc.v1.model.PrivatePathServiceGatewayAccountPolicy;
 import com.ibm.cloud.is.vpc.v1.model.PrivatePathServiceGatewayAccountPolicyCollection;
-import com.ibm.cloud.is.vpc.v1.model.PrivatePathServiceGatewayAccountPolicyCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.PrivatePathServiceGatewayAccountPolicyCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.PrivatePathServiceGatewayAccountPolicyPatch;
 import com.ibm.cloud.is.vpc.v1.model.PrivatePathServiceGatewayCollection;
-import com.ibm.cloud.is.vpc.v1.model.PrivatePathServiceGatewayCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.PrivatePathServiceGatewayCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.PrivatePathServiceGatewayEndpointGatewayBinding;
 import com.ibm.cloud.is.vpc.v1.model.PrivatePathServiceGatewayEndpointGatewayBindingCollection;
-import com.ibm.cloud.is.vpc.v1.model.PrivatePathServiceGatewayEndpointGatewayBindingCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.PrivatePathServiceGatewayEndpointGatewayBindingCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.PrivatePathServiceGatewayEndpointGatewayBindingsPager;
 import com.ibm.cloud.is.vpc.v1.model.PrivatePathServiceGatewayPatch;
 import com.ibm.cloud.is.vpc.v1.model.PrivatePathServiceGatewayRemote;
 import com.ibm.cloud.is.vpc.v1.model.PrivatePathServiceGatewaysPager;
 import com.ibm.cloud.is.vpc.v1.model.PublicGateway;
 import com.ibm.cloud.is.vpc.v1.model.PublicGatewayCollection;
-import com.ibm.cloud.is.vpc.v1.model.PublicGatewayCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.PublicGatewayCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.PublicGatewayFloatingIPPrototype;
 import com.ibm.cloud.is.vpc.v1.model.PublicGatewayFloatingIPPrototypeFloatingIPIdentity;
 import com.ibm.cloud.is.vpc.v1.model.PublicGatewayFloatingIPPrototypeFloatingIPIdentityFloatingIPIdentityByAddress;
@@ -1252,8 +1267,6 @@ import com.ibm.cloud.is.vpc.v1.model.ReservationCapacity;
 import com.ibm.cloud.is.vpc.v1.model.ReservationCapacityPatch;
 import com.ibm.cloud.is.vpc.v1.model.ReservationCapacityPrototype;
 import com.ibm.cloud.is.vpc.v1.model.ReservationCollection;
-import com.ibm.cloud.is.vpc.v1.model.ReservationCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.ReservationCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.ReservationCommittedUse;
 import com.ibm.cloud.is.vpc.v1.model.ReservationCommittedUsePatch;
 import com.ibm.cloud.is.vpc.v1.model.ReservationCommittedUsePrototype;
@@ -1271,19 +1284,9 @@ import com.ibm.cloud.is.vpc.v1.model.ReservationsPager;
 import com.ibm.cloud.is.vpc.v1.model.ReservedIP;
 import com.ibm.cloud.is.vpc.v1.model.ReservedIPCollection;
 import com.ibm.cloud.is.vpc.v1.model.ReservedIPCollectionBareMetalServerNetworkInterfaceContext;
-import com.ibm.cloud.is.vpc.v1.model.ReservedIPCollectionBareMetalServerNetworkInterfaceContextFirst;
-import com.ibm.cloud.is.vpc.v1.model.ReservedIPCollectionBareMetalServerNetworkInterfaceContextNext;
 import com.ibm.cloud.is.vpc.v1.model.ReservedIPCollectionEndpointGatewayContext;
-import com.ibm.cloud.is.vpc.v1.model.ReservedIPCollectionEndpointGatewayContextFirst;
-import com.ibm.cloud.is.vpc.v1.model.ReservedIPCollectionEndpointGatewayContextNext;
-import com.ibm.cloud.is.vpc.v1.model.ReservedIPCollectionFirst;
 import com.ibm.cloud.is.vpc.v1.model.ReservedIPCollectionInstanceNetworkInterfaceContext;
-import com.ibm.cloud.is.vpc.v1.model.ReservedIPCollectionInstanceNetworkInterfaceContextFirst;
-import com.ibm.cloud.is.vpc.v1.model.ReservedIPCollectionInstanceNetworkInterfaceContextNext;
-import com.ibm.cloud.is.vpc.v1.model.ReservedIPCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.ReservedIPCollectionVirtualNetworkInterfaceContext;
-import com.ibm.cloud.is.vpc.v1.model.ReservedIPCollectionVirtualNetworkInterfaceContextFirst;
-import com.ibm.cloud.is.vpc.v1.model.ReservedIPCollectionVirtualNetworkInterfaceContextNext;
 import com.ibm.cloud.is.vpc.v1.model.ReservedIPPatch;
 import com.ibm.cloud.is.vpc.v1.model.ReservedIPReference;
 import com.ibm.cloud.is.vpc.v1.model.ReservedIPTarget;
@@ -1312,12 +1315,7 @@ import com.ibm.cloud.is.vpc.v1.model.RestartBareMetalServerOptions;
 import com.ibm.cloud.is.vpc.v1.model.RevokeAccountForPrivatePathServiceGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.Route;
 import com.ibm.cloud.is.vpc.v1.model.RouteCollection;
-import com.ibm.cloud.is.vpc.v1.model.RouteCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.RouteCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.RouteCollectionVPCContext;
-import com.ibm.cloud.is.vpc.v1.model.RouteCollectionVPCContextFirst;
-import com.ibm.cloud.is.vpc.v1.model.RouteCollectionVPCContextNext;
-import com.ibm.cloud.is.vpc.v1.model.RouteCollectionVPCContextRoutesItem;
 import com.ibm.cloud.is.vpc.v1.model.RouteCreator;
 import com.ibm.cloud.is.vpc.v1.model.RouteCreatorVPNGatewayReference;
 import com.ibm.cloud.is.vpc.v1.model.RouteCreatorVPNServerReference;
@@ -1343,8 +1341,6 @@ import com.ibm.cloud.is.vpc.v1.model.RoutePrototype;
 import com.ibm.cloud.is.vpc.v1.model.RouteReference;
 import com.ibm.cloud.is.vpc.v1.model.RoutingTable;
 import com.ibm.cloud.is.vpc.v1.model.RoutingTableCollection;
-import com.ibm.cloud.is.vpc.v1.model.RoutingTableCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.RoutingTableCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.RoutingTableIdentity;
 import com.ibm.cloud.is.vpc.v1.model.RoutingTableIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.RoutingTableIdentityByHref;
@@ -1353,8 +1349,6 @@ import com.ibm.cloud.is.vpc.v1.model.RoutingTablePatch;
 import com.ibm.cloud.is.vpc.v1.model.RoutingTableReference;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroup;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupCollection;
-import com.ibm.cloud.is.vpc.v1.model.SecurityGroupCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.SecurityGroupCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupIdentity;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupIdentityByHref;
@@ -1399,8 +1393,6 @@ import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleSecurityGroupRuleProtocolA
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleSecurityGroupRuleProtocolICMP;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleSecurityGroupRuleProtocolTCPUDP;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupTargetCollection;
-import com.ibm.cloud.is.vpc.v1.model.SecurityGroupTargetCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.SecurityGroupTargetCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupTargetReference;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupTargetReferenceBareMetalServerNetworkInterfaceReferenceTargetContext;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupTargetReferenceEndpointGatewayReference;
@@ -1417,13 +1409,9 @@ import com.ibm.cloud.is.vpc.v1.model.ShareAccessorBindingAccessor;
 import com.ibm.cloud.is.vpc.v1.model.ShareAccessorBindingAccessorShareReference;
 import com.ibm.cloud.is.vpc.v1.model.ShareAccessorBindingAccessorWatsonxMachineLearningReference;
 import com.ibm.cloud.is.vpc.v1.model.ShareAccessorBindingCollection;
-import com.ibm.cloud.is.vpc.v1.model.ShareAccessorBindingCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.ShareAccessorBindingCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.ShareAccessorBindingReference;
 import com.ibm.cloud.is.vpc.v1.model.ShareAccessorBindingsPager;
 import com.ibm.cloud.is.vpc.v1.model.ShareCollection;
-import com.ibm.cloud.is.vpc.v1.model.ShareCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.ShareCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.ShareIdentity;
 import com.ibm.cloud.is.vpc.v1.model.ShareIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.ShareIdentityByHref;
@@ -1435,8 +1423,6 @@ import com.ibm.cloud.is.vpc.v1.model.ShareLatestSync;
 import com.ibm.cloud.is.vpc.v1.model.ShareLifecycleReason;
 import com.ibm.cloud.is.vpc.v1.model.ShareMountTarget;
 import com.ibm.cloud.is.vpc.v1.model.ShareMountTargetCollection;
-import com.ibm.cloud.is.vpc.v1.model.ShareMountTargetCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.ShareMountTargetCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.ShareMountTargetPatch;
 import com.ibm.cloud.is.vpc.v1.model.ShareMountTargetPrototype;
 import com.ibm.cloud.is.vpc.v1.model.ShareMountTargetPrototypeShareMountTargetByAccessControlModeSecurityGroup;
@@ -1455,10 +1441,7 @@ import com.ibm.cloud.is.vpc.v1.model.ShareProfileCapacity;
 import com.ibm.cloud.is.vpc.v1.model.ShareProfileCapacityDependentRange;
 import com.ibm.cloud.is.vpc.v1.model.ShareProfileCapacityEnum;
 import com.ibm.cloud.is.vpc.v1.model.ShareProfileCapacityFixed;
-import com.ibm.cloud.is.vpc.v1.model.ShareProfileCapacityRange;
 import com.ibm.cloud.is.vpc.v1.model.ShareProfileCollection;
-import com.ibm.cloud.is.vpc.v1.model.ShareProfileCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.ShareProfileCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.ShareProfileIOPS;
 import com.ibm.cloud.is.vpc.v1.model.ShareProfileIOPSDependentRange;
 import com.ibm.cloud.is.vpc.v1.model.ShareProfileIOPSEnum;
@@ -1484,12 +1467,8 @@ import com.ibm.cloud.is.vpc.v1.model.SnapshotClone;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotCloneCollection;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotClonePrototype;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotCollection;
-import com.ibm.cloud.is.vpc.v1.model.SnapshotCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.SnapshotCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotConsistencyGroup;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotConsistencyGroupCollection;
-import com.ibm.cloud.is.vpc.v1.model.SnapshotConsistencyGroupCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.SnapshotConsistencyGroupCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotConsistencyGroupPatch;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotConsistencyGroupPrototype;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotConsistencyGroupPrototypeSnapshotConsistencyGroupBySnapshots;
@@ -1513,8 +1492,6 @@ import com.ibm.cloud.is.vpc.v1.model.StartBareMetalServerOptions;
 import com.ibm.cloud.is.vpc.v1.model.StopBareMetalServerOptions;
 import com.ibm.cloud.is.vpc.v1.model.Subnet;
 import com.ibm.cloud.is.vpc.v1.model.SubnetCollection;
-import com.ibm.cloud.is.vpc.v1.model.SubnetCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.SubnetCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.SubnetIdentity;
 import com.ibm.cloud.is.vpc.v1.model.SubnetIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.SubnetIdentityByHref;
@@ -1531,8 +1508,8 @@ import com.ibm.cloud.is.vpc.v1.model.SubnetReference;
 import com.ibm.cloud.is.vpc.v1.model.SubnetReservedIpsPager;
 import com.ibm.cloud.is.vpc.v1.model.SubnetsPager;
 import com.ibm.cloud.is.vpc.v1.model.TrustedProfileIdentity;
-import com.ibm.cloud.is.vpc.v1.model.TrustedProfileIdentityTrustedProfileByCRN;
-import com.ibm.cloud.is.vpc.v1.model.TrustedProfileIdentityTrustedProfileById;
+import com.ibm.cloud.is.vpc.v1.model.TrustedProfileIdentityByCRN;
+import com.ibm.cloud.is.vpc.v1.model.TrustedProfileIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.TrustedProfileReference;
 import com.ibm.cloud.is.vpc.v1.model.UnpublishPrivatePathServiceGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.UnsetSubnetPublicGatewayOptions;
@@ -1542,6 +1519,10 @@ import com.ibm.cloud.is.vpc.v1.model.UpdateBareMetalServerDiskOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateBareMetalServerNetworkAttachmentOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateBareMetalServerNetworkInterfaceOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateBareMetalServerOptions;
+import com.ibm.cloud.is.vpc.v1.model.UpdateClusterNetworkInterfaceOptions;
+import com.ibm.cloud.is.vpc.v1.model.UpdateClusterNetworkOptions;
+import com.ibm.cloud.is.vpc.v1.model.UpdateClusterNetworkSubnetOptions;
+import com.ibm.cloud.is.vpc.v1.model.UpdateClusterNetworkSubnetReservedIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateDedicatedHostDiskOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateDedicatedHostGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateDedicatedHostOptions;
@@ -1552,6 +1533,7 @@ import com.ibm.cloud.is.vpc.v1.model.UpdateFlowLogCollectorOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateIkePolicyOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateImageExportJobOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateImageOptions;
+import com.ibm.cloud.is.vpc.v1.model.UpdateInstanceClusterNetworkAttachmentOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateInstanceDiskOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateInstanceGroupManagerActionOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateInstanceGroupManagerOptions;
@@ -1602,15 +1584,11 @@ import com.ibm.cloud.is.vpc.v1.model.VCPU;
 import com.ibm.cloud.is.vpc.v1.model.VPC;
 import com.ibm.cloud.is.vpc.v1.model.VPCCSESourceIP;
 import com.ibm.cloud.is.vpc.v1.model.VPCCollection;
-import com.ibm.cloud.is.vpc.v1.model.VPCCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.VPCCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.VPCDNS;
 import com.ibm.cloud.is.vpc.v1.model.VPCDNSPatch;
 import com.ibm.cloud.is.vpc.v1.model.VPCDNSPrototype;
 import com.ibm.cloud.is.vpc.v1.model.VPCDNSResolutionBinding;
 import com.ibm.cloud.is.vpc.v1.model.VPCDNSResolutionBindingCollection;
-import com.ibm.cloud.is.vpc.v1.model.VPCDNSResolutionBindingCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.VPCDNSResolutionBindingCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.VPCDNSResolutionBindingHealthReason;
 import com.ibm.cloud.is.vpc.v1.model.VPCDNSResolutionBindingPatch;
 import com.ibm.cloud.is.vpc.v1.model.VPCDNSResolver;
@@ -1637,13 +1615,9 @@ import com.ibm.cloud.is.vpc.v1.model.VPCReferenceRemote;
 import com.ibm.cloud.is.vpc.v1.model.VPCRemote;
 import com.ibm.cloud.is.vpc.v1.model.VPNGateway;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayCollection;
-import com.ibm.cloud.is.vpc.v1.model.VPNGatewayCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.VPNGatewayCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnection;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionCIDRs;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionCollection;
-import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionDPD;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionDPDPatch;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionDPDPrototype;
@@ -1725,25 +1699,17 @@ import com.ibm.cloud.is.vpc.v1.model.VPNServerAuthenticationPrototypeVPNServerAu
 import com.ibm.cloud.is.vpc.v1.model.VPNServerAuthenticationPrototypeVPNServerAuthenticationByUsernamePrototype;
 import com.ibm.cloud.is.vpc.v1.model.VPNServerClient;
 import com.ibm.cloud.is.vpc.v1.model.VPNServerClientCollection;
-import com.ibm.cloud.is.vpc.v1.model.VPNServerClientCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.VPNServerClientCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.VPNServerCollection;
-import com.ibm.cloud.is.vpc.v1.model.VPNServerCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.VPNServerCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.VPNServerHealthReason;
 import com.ibm.cloud.is.vpc.v1.model.VPNServerLifecycleReason;
 import com.ibm.cloud.is.vpc.v1.model.VPNServerPatch;
 import com.ibm.cloud.is.vpc.v1.model.VPNServerRoute;
 import com.ibm.cloud.is.vpc.v1.model.VPNServerRouteCollection;
-import com.ibm.cloud.is.vpc.v1.model.VPNServerRouteCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.VPNServerRouteCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.VPNServerRouteHealthReason;
 import com.ibm.cloud.is.vpc.v1.model.VPNServerRouteLifecycleReason;
 import com.ibm.cloud.is.vpc.v1.model.VPNServerRoutePatch;
 import com.ibm.cloud.is.vpc.v1.model.VirtualNetworkInterface;
 import com.ibm.cloud.is.vpc.v1.model.VirtualNetworkInterfaceCollection;
-import com.ibm.cloud.is.vpc.v1.model.VirtualNetworkInterfaceCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.VirtualNetworkInterfaceCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.VirtualNetworkInterfaceIPPrototype;
 import com.ibm.cloud.is.vpc.v1.model.VirtualNetworkInterfaceIPPrototypeReservedIPIdentityVirtualNetworkInterfaceIPsContext;
 import com.ibm.cloud.is.vpc.v1.model.VirtualNetworkInterfaceIPPrototypeReservedIPIdentityVirtualNetworkInterfaceIPsContextByHref;
@@ -1783,8 +1749,6 @@ import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentReferenceInstanceContext;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentReferenceVolumeContext;
 import com.ibm.cloud.is.vpc.v1.model.VolumeCatalogOffering;
 import com.ibm.cloud.is.vpc.v1.model.VolumeCollection;
-import com.ibm.cloud.is.vpc.v1.model.VolumeCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.VolumeCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.VolumeHealthReason;
 import com.ibm.cloud.is.vpc.v1.model.VolumeIdentity;
 import com.ibm.cloud.is.vpc.v1.model.VolumeIdentityByCRN;
@@ -1805,8 +1769,6 @@ import com.ibm.cloud.is.vpc.v1.model.VolumeProfileCapacityEnum;
 import com.ibm.cloud.is.vpc.v1.model.VolumeProfileCapacityFixed;
 import com.ibm.cloud.is.vpc.v1.model.VolumeProfileCapacityRange;
 import com.ibm.cloud.is.vpc.v1.model.VolumeProfileCollection;
-import com.ibm.cloud.is.vpc.v1.model.VolumeProfileCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.VolumeProfileCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.VolumeProfileIOPS;
 import com.ibm.cloud.is.vpc.v1.model.VolumeProfileIOPSDependentRange;
 import com.ibm.cloud.is.vpc.v1.model.VolumeProfileIOPSEnum;
@@ -1916,8 +1878,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       VPCCollection vpcCollectionResult = response.getResult();
-
       assertNotNull(vpcCollectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -1998,8 +1960,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 201);
 
       VPC vpcResult = response.getResult();
-
       assertNotNull(vpcResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -2020,8 +1982,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       VPC vpcResult = response.getResult();
-
       assertNotNull(vpcResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -2074,8 +2036,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       VPC vpcResult = response.getResult();
-
       assertNotNull(vpcResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -2096,8 +2058,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       DefaultNetworkACL defaultNetworkAclResult = response.getResult();
-
       assertNotNull(defaultNetworkAclResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -2118,8 +2080,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       DefaultRoutingTable defaultRoutingTableResult = response.getResult();
-
       assertNotNull(defaultRoutingTableResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -2140,8 +2102,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       DefaultSecurityGroup defaultSecurityGroupResult = response.getResult();
-
       assertNotNull(defaultSecurityGroupResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -2164,8 +2126,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       AddressPrefixCollection addressPrefixCollectionResult = response.getResult();
-
       assertNotNull(addressPrefixCollectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -2226,8 +2188,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 201);
 
       AddressPrefix addressPrefixResult = response.getResult();
-
       assertNotNull(addressPrefixResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -2249,8 +2211,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       AddressPrefix addressPrefixResult = response.getResult();
-
       assertNotNull(addressPrefixResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -2279,8 +2241,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       AddressPrefix addressPrefixResult = response.getResult();
-
       assertNotNull(addressPrefixResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -2308,8 +2270,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       VPCDNSResolutionBindingCollection vpcdnsResolutionBindingCollectionResult = response.getResult();
-
       assertNotNull(vpcdnsResolutionBindingCollectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -2373,8 +2335,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 201);
 
       VPCDNSResolutionBinding vpcdnsResolutionBindingResult = response.getResult();
-
       assertNotNull(vpcdnsResolutionBindingResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -2396,8 +2358,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       VPCDNSResolutionBinding vpcdnsResolutionBindingResult = response.getResult();
-
       assertNotNull(vpcdnsResolutionBindingResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -2425,8 +2387,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       VPCDNSResolutionBinding vpcdnsResolutionBindingResult = response.getResult();
-
       assertNotNull(vpcdnsResolutionBindingResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -2450,8 +2412,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       RouteCollectionVPCContext routeCollectionVpcContextResult = response.getResult();
-
       assertNotNull(routeCollectionVpcContextResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -2468,10 +2430,10 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       // Test getNext().
-      List<RouteCollectionVPCContextRoutesItem> allResults = new ArrayList<>();
+      List<Route> allResults = new ArrayList<>();
       VpcRoutesPager pager = new VpcRoutesPager(service, options);
       while (pager.hasNext()) {
-        List<RouteCollectionVPCContextRoutesItem> nextPage = pager.getNext();
+        List<Route> nextPage = pager.getNext();
         assertNotNull(nextPage);
         allResults.addAll(nextPage);
       }
@@ -2479,7 +2441,7 @@ public class VpcIT extends SdkIntegrationTestBase {
 
       // Test getAll();
       pager = new VpcRoutesPager(service, options);
-      List<RouteCollectionVPCContextRoutesItem> allItems = pager.getAll();
+      List<Route> allItems = pager.getAll();
       assertNotNull(allItems);
       assertFalse(allItems.isEmpty());
 
@@ -2520,8 +2482,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 201);
 
       Route routeResult = response.getResult();
-
       assertNotNull(routeResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -2543,8 +2505,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       Route routeResult = response.getResult();
-
       assertNotNull(routeResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -2579,8 +2541,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       Route routeResult = response.getResult();
-
       assertNotNull(routeResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -2604,8 +2566,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       RoutingTableCollection routingTableCollectionResult = response.getResult();
-
       assertNotNull(routingTableCollectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -2689,8 +2651,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 201);
 
       RoutingTable routingTableResult = response.getResult();
-
       assertNotNull(routingTableResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -2712,8 +2674,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       RoutingTable routingTableResult = response.getResult();
-
       assertNotNull(routingTableResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -2752,8 +2714,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       RoutingTable routingTableResult = response.getResult();
-
       assertNotNull(routingTableResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -2777,8 +2739,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       RouteCollection routeCollectionResult = response.getResult();
-
       assertNotNull(routeCollectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -2848,8 +2810,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 201);
 
       Route routeResult = response.getResult();
-
       assertNotNull(routeResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -2872,8 +2834,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       Route routeResult = response.getResult();
-
       assertNotNull(routeResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -2909,8 +2871,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       Route routeResult = response.getResult();
-
       assertNotNull(routeResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -2939,8 +2901,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       SubnetCollection subnetCollectionResult = response.getResult();
-
       assertNotNull(subnetCollectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -3035,8 +2997,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 201);
 
       Subnet subnetResult = response.getResult();
-
       assertNotNull(subnetResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -3057,8 +3019,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       Subnet subnetResult = response.getResult();
-
       assertNotNull(subnetResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -3100,8 +3062,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       Subnet subnetResult = response.getResult();
-
       assertNotNull(subnetResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -3122,8 +3084,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       NetworkACL networkAclResult = response.getResult();
-
       assertNotNull(networkAclResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -3149,8 +3111,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 201);
 
       NetworkACL networkAclResult = response.getResult();
-
       assertNotNull(networkAclResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -3171,8 +3133,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       PublicGateway publicGatewayResult = response.getResult();
-
       assertNotNull(publicGatewayResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -3198,8 +3160,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 201);
 
       PublicGateway publicGatewayResult = response.getResult();
-
       assertNotNull(publicGatewayResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -3220,8 +3182,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       RoutingTable routingTableResult = response.getResult();
-
       assertNotNull(routingTableResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -3247,8 +3209,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 201);
 
       RoutingTable routingTableResult = response.getResult();
-
       assertNotNull(routingTableResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -3276,8 +3238,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       ReservedIPCollection reservedIpCollectionResult = response.getResult();
-
       assertNotNull(reservedIpCollectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -3343,8 +3305,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 201);
 
       ReservedIP reservedIpResult = response.getResult();
-
       assertNotNull(reservedIpResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -3366,8 +3328,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       ReservedIP reservedIpResult = response.getResult();
-
       assertNotNull(reservedIpResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -3379,7 +3341,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     try {
       ReservedIPPatch reservedIpPatchModel = new ReservedIPPatch.Builder()
         .autoDelete(false)
-        .name("my-reserved-ip")
+        .name("my-reserved-ip-updated")
         .build();
       Map<String, Object> reservedIpPatchModelAsPatch = reservedIpPatchModel.asPatch();
 
@@ -3396,8 +3358,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       ReservedIP reservedIpResult = response.getResult();
-
       assertNotNull(reservedIpResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -3424,8 +3386,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       ImageCollection imageCollectionResult = response.getResult();
-
       assertNotNull(imageCollectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -3509,8 +3471,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 201);
 
       Image imageResult = response.getResult();
-
       assertNotNull(imageResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -3531,8 +3493,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       Image imageResult = response.getResult();
-
       assertNotNull(imageResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -3561,8 +3523,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       Image imageResult = response.getResult();
-
       assertNotNull(imageResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -3620,8 +3582,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       ImageExportJobUnpaginatedCollection imageExportJobUnpaginatedCollectionResult = response.getResult();
-
       assertNotNull(imageExportJobUnpaginatedCollectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -3649,8 +3611,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 201);
 
       ImageExportJob imageExportJobResult = response.getResult();
-
       assertNotNull(imageExportJobResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -3672,8 +3634,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       ImageExportJob imageExportJobResult = response.getResult();
-
       assertNotNull(imageExportJobResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -3701,8 +3663,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       ImageExportJob imageExportJobResult = response.getResult();
-
       assertNotNull(imageExportJobResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -3724,8 +3686,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       OperatingSystemCollection operatingSystemCollectionResult = response.getResult();
-
       assertNotNull(operatingSystemCollectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -3777,8 +3739,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       OperatingSystem operatingSystemResult = response.getResult();
-
       assertNotNull(operatingSystemResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -3791,6 +3753,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       ListKeysOptions listKeysOptions = new ListKeysOptions.Builder()
         .start("testString")
         .limit(Long.valueOf("10"))
+        .resourceGroupId("testString")
         .build();
 
       // Invoke operation
@@ -3800,8 +3763,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       KeyCollection keyCollectionResult = response.getResult();
-
       assertNotNull(keyCollectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -3813,6 +3776,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     try {
       ListKeysOptions options = new ListKeysOptions.Builder()
         .limit(Long.valueOf("10"))
+        .resourceGroupId("testString")
         .build();
 
       // Test getNext().
@@ -3860,8 +3824,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 201);
 
       Key keyResult = response.getResult();
-
       assertNotNull(keyResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -3882,8 +3846,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       Key keyResult = response.getResult();
-
       assertNotNull(keyResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -3910,8 +3874,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       Key keyResult = response.getResult();
-
       assertNotNull(keyResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -3930,8 +3894,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       InstanceProfileCollection instanceProfileCollectionResult = response.getResult();
-
       assertNotNull(instanceProfileCollectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -3952,8 +3916,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       InstanceProfile instanceProfileResult = response.getResult();
-
       assertNotNull(instanceProfileResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -3972,8 +3936,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       InstanceTemplateCollection instanceTemplateCollectionResult = response.getResult();
-
       assertNotNull(instanceTemplateCollectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -3987,7 +3951,29 @@ public class VpcIT extends SdkIntegrationTestBase {
         .hostFailure("restart")
         .build();
 
-      TrustedProfileIdentityTrustedProfileById trustedProfileIdentityModel = new TrustedProfileIdentityTrustedProfileById.Builder()
+      ClusterNetworkInterfacePrimaryIPPrototypeClusterNetworkSubnetReservedIPPrototypeClusterNetworkInterfacePrimaryIPContext clusterNetworkInterfacePrimaryIpPrototypeModel = new ClusterNetworkInterfacePrimaryIPPrototypeClusterNetworkSubnetReservedIPPrototypeClusterNetworkInterfacePrimaryIPContext.Builder()
+        .address("10.0.0.5")
+        .autoDelete(false)
+        .name("my-cluster-network-subnet-reserved-ip")
+        .build();
+
+      ClusterNetworkSubnetIdentityById clusterNetworkSubnetIdentityModel = new ClusterNetworkSubnetIdentityById.Builder()
+        .id("0717-7931845c-65c4-4b0a-80cd-7d9c1a6d7930")
+        .build();
+
+      InstanceClusterNetworkAttachmentPrototypeClusterNetworkInterfaceInstanceClusterNetworkInterfacePrototypeInstanceClusterNetworkAttachment instanceClusterNetworkAttachmentPrototypeClusterNetworkInterfaceModel = new InstanceClusterNetworkAttachmentPrototypeClusterNetworkInterfaceInstanceClusterNetworkInterfacePrototypeInstanceClusterNetworkAttachment.Builder()
+        .autoDelete(false)
+        .name("my-cluster-network-interface")
+        .primaryIp(clusterNetworkInterfacePrimaryIpPrototypeModel)
+        .subnet(clusterNetworkSubnetIdentityModel)
+        .build();
+
+      InstanceClusterNetworkAttachmentPrototypeInstanceContext instanceClusterNetworkAttachmentPrototypeInstanceContextModel = new InstanceClusterNetworkAttachmentPrototypeInstanceContext.Builder()
+        .clusterNetworkInterface(instanceClusterNetworkAttachmentPrototypeClusterNetworkInterfaceModel)
+        .name("my-instance-network-attachment")
+        .build();
+
+      TrustedProfileIdentityById trustedProfileIdentityModel = new TrustedProfileIdentityById.Builder()
         .id("Profile-9fd84246-7df4-4667-94e4-8ecde51d5ac5")
         .build();
 
@@ -4015,7 +4001,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       ReservationIdentityById reservationIdentityModel = new ReservationIdentityById.Builder()
-        .id("7187-ba49df72-37b8-43ac-98da-f8e029de0e63")
+        .id("0717-ba49df72-37b8-43ac-98da-f8e029de0e63")
         .build();
 
       InstanceReservationAffinityPrototype instanceReservationAffinityPrototypeModel = new InstanceReservationAffinityPrototype.Builder()
@@ -4080,7 +4066,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       SecurityGroupIdentityById securityGroupIdentityModel = new SecurityGroupIdentityById.Builder()
-        .id("be5df5ca-12a0-494b-907e-aa6ec2bfa271")
+        .id("r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271")
         .build();
 
       SubnetIdentityById subnetIdentityModel = new SubnetIdentityById.Builder()
@@ -4097,6 +4083,7 @@ public class VpcIT extends SdkIntegrationTestBase {
 
       InstanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByImageInstanceByNetworkInterface instanceTemplatePrototypeModel = new InstanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByImageInstanceByNetworkInterface.Builder()
         .availabilityPolicy(instanceAvailabilityPolicyPrototypeModel)
+        .clusterNetworkAttachments(java.util.Arrays.asList(instanceClusterNetworkAttachmentPrototypeInstanceContextModel))
         .confidentialComputeMode("disabled")
         .defaultTrustedProfile(instanceDefaultTrustedProfilePrototypeModel)
         .enableSecureBoot(true)
@@ -4129,8 +4116,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 201);
 
       InstanceTemplate instanceTemplateResult = response.getResult();
-
       assertNotNull(instanceTemplateResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -4151,8 +4138,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       InstanceTemplate instanceTemplateResult = response.getResult();
-
       assertNotNull(instanceTemplateResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -4179,8 +4166,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       InstanceTemplate instanceTemplateResult = response.getResult();
-
       assertNotNull(instanceTemplateResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -4195,6 +4182,9 @@ public class VpcIT extends SdkIntegrationTestBase {
         .limit(Long.valueOf("10"))
         .resourceGroupId("testString")
         .name("my-name")
+        .clusterNetworkId("testString")
+        .clusterNetworkCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::cluster-network:r010-82b8c783-15d6-4a51-95bf-0b4649d3ef94")
+        .clusterNetworkName("my-cluster-network")
         .dedicatedHostId("testString")
         .dedicatedHostCrn("crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::dedicated-host:1e09281b-f177-46fb-baf1-bc152b2e391a")
         .dedicatedHostName("my-dedicated-host")
@@ -4216,8 +4206,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       InstanceCollection instanceCollectionResult = response.getResult();
-
       assertNotNull(instanceCollectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -4231,6 +4221,9 @@ public class VpcIT extends SdkIntegrationTestBase {
         .limit(Long.valueOf("10"))
         .resourceGroupId("testString")
         .name("my-name")
+        .clusterNetworkId("testString")
+        .clusterNetworkCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::cluster-network:r010-82b8c783-15d6-4a51-95bf-0b4649d3ef94")
+        .clusterNetworkName("my-cluster-network")
         .dedicatedHostId("testString")
         .dedicatedHostCrn("crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::dedicated-host:1e09281b-f177-46fb-baf1-bc152b2e391a")
         .dedicatedHostName("my-dedicated-host")
@@ -4276,7 +4269,29 @@ public class VpcIT extends SdkIntegrationTestBase {
         .hostFailure("restart")
         .build();
 
-      TrustedProfileIdentityTrustedProfileById trustedProfileIdentityModel = new TrustedProfileIdentityTrustedProfileById.Builder()
+      ClusterNetworkInterfacePrimaryIPPrototypeClusterNetworkSubnetReservedIPPrototypeClusterNetworkInterfacePrimaryIPContext clusterNetworkInterfacePrimaryIpPrototypeModel = new ClusterNetworkInterfacePrimaryIPPrototypeClusterNetworkSubnetReservedIPPrototypeClusterNetworkInterfacePrimaryIPContext.Builder()
+        .address("10.0.0.5")
+        .autoDelete(false)
+        .name("my-cluster-network-subnet-reserved-ip")
+        .build();
+
+      ClusterNetworkSubnetIdentityById clusterNetworkSubnetIdentityModel = new ClusterNetworkSubnetIdentityById.Builder()
+        .id("0717-7931845c-65c4-4b0a-80cd-7d9c1a6d7930")
+        .build();
+
+      InstanceClusterNetworkAttachmentPrototypeClusterNetworkInterfaceInstanceClusterNetworkInterfacePrototypeInstanceClusterNetworkAttachment instanceClusterNetworkAttachmentPrototypeClusterNetworkInterfaceModel = new InstanceClusterNetworkAttachmentPrototypeClusterNetworkInterfaceInstanceClusterNetworkInterfacePrototypeInstanceClusterNetworkAttachment.Builder()
+        .autoDelete(false)
+        .name("my-cluster-network-interface")
+        .primaryIp(clusterNetworkInterfacePrimaryIpPrototypeModel)
+        .subnet(clusterNetworkSubnetIdentityModel)
+        .build();
+
+      InstanceClusterNetworkAttachmentPrototypeInstanceContext instanceClusterNetworkAttachmentPrototypeInstanceContextModel = new InstanceClusterNetworkAttachmentPrototypeInstanceContext.Builder()
+        .clusterNetworkInterface(instanceClusterNetworkAttachmentPrototypeClusterNetworkInterfaceModel)
+        .name("my-instance-network-attachment")
+        .build();
+
+      TrustedProfileIdentityById trustedProfileIdentityModel = new TrustedProfileIdentityById.Builder()
         .id("Profile-9fd84246-7df4-4667-94e4-8ecde51d5ac5")
         .build();
 
@@ -4304,7 +4319,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       ReservationIdentityById reservationIdentityModel = new ReservationIdentityById.Builder()
-        .id("7187-ba49df72-37b8-43ac-98da-f8e029de0e63")
+        .id("0717-ba49df72-37b8-43ac-98da-f8e029de0e63")
         .build();
 
       InstanceReservationAffinityPrototype instanceReservationAffinityPrototypeModel = new InstanceReservationAffinityPrototype.Builder()
@@ -4375,7 +4390,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       SecurityGroupIdentityById securityGroupIdentityModel = new SecurityGroupIdentityById.Builder()
-        .id("be5df5ca-12a0-494b-907e-aa6ec2bfa271")
+        .id("r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271")
         .build();
 
       SubnetIdentityById subnetIdentityModel = new SubnetIdentityById.Builder()
@@ -4392,6 +4407,7 @@ public class VpcIT extends SdkIntegrationTestBase {
 
       InstancePrototypeInstanceByImageInstanceByImageInstanceByNetworkInterface instancePrototypeModel = new InstancePrototypeInstanceByImageInstanceByImageInstanceByNetworkInterface.Builder()
         .availabilityPolicy(instanceAvailabilityPolicyPrototypeModel)
+        .clusterNetworkAttachments(java.util.Arrays.asList(instanceClusterNetworkAttachmentPrototypeInstanceContextModel))
         .confidentialComputeMode("disabled")
         .defaultTrustedProfile(instanceDefaultTrustedProfilePrototypeModel)
         .enableSecureBoot(true)
@@ -4424,8 +4440,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 201);
 
       Instance instanceResult = response.getResult();
-
       assertNotNull(instanceResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -4446,8 +4462,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       Instance instanceResult = response.getResult();
-
       assertNotNull(instanceResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -4476,7 +4492,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       ReservationIdentityById reservationIdentityModel = new ReservationIdentityById.Builder()
-        .id("7187-ba49df72-37b8-43ac-98da-f8e029de0e63")
+        .id("0717-ba49df72-37b8-43ac-98da-f8e029de0e63")
         .build();
 
       InstanceReservationAffinityPatch instanceReservationAffinityPatchModel = new InstanceReservationAffinityPatch.Builder()
@@ -4510,8 +4526,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       Instance instanceResult = response.getResult();
-
       assertNotNull(instanceResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -4532,8 +4548,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       InstanceInitialization instanceInitializationResult = response.getResult();
-
       assertNotNull(instanceInitializationResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -4556,8 +4572,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 201);
 
       InstanceAction instanceActionResult = response.getResult();
-
       assertNotNull(instanceActionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -4565,6 +4581,160 @@ public class VpcIT extends SdkIntegrationTestBase {
   }
 
   @Test(dependsOnMethods = { "testCreateInstanceAction" })
+  public void testListInstanceClusterNetworkAttachments() throws Exception {
+    try {
+      ListInstanceClusterNetworkAttachmentsOptions listInstanceClusterNetworkAttachmentsOptions = new ListInstanceClusterNetworkAttachmentsOptions.Builder()
+        .instanceId("testString")
+        .start("testString")
+        .limit(Long.valueOf("10"))
+        .build();
+
+      // Invoke operation
+      Response<InstanceClusterNetworkAttachmentCollection> response = service.listInstanceClusterNetworkAttachments(listInstanceClusterNetworkAttachmentsOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      InstanceClusterNetworkAttachmentCollection instanceClusterNetworkAttachmentCollectionResult = response.getResult();
+      assertNotNull(instanceClusterNetworkAttachmentCollectionResult);
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testListInstanceClusterNetworkAttachments" })
+  public void testListInstanceClusterNetworkAttachmentsWithPager() throws Exception {
+    try {
+      ListInstanceClusterNetworkAttachmentsOptions options = new ListInstanceClusterNetworkAttachmentsOptions.Builder()
+        .instanceId("testString")
+        .limit(Long.valueOf("10"))
+        .build();
+
+      // Test getNext().
+      List<InstanceClusterNetworkAttachment> allResults = new ArrayList<>();
+      InstanceClusterNetworkAttachmentsPager pager = new InstanceClusterNetworkAttachmentsPager(service, options);
+      while (pager.hasNext()) {
+        List<InstanceClusterNetworkAttachment> nextPage = pager.getNext();
+        assertNotNull(nextPage);
+        allResults.addAll(nextPage);
+      }
+      assertFalse(allResults.isEmpty());
+
+      // Test getAll();
+      pager = new InstanceClusterNetworkAttachmentsPager(service, options);
+      List<InstanceClusterNetworkAttachment> allItems = pager.getAll();
+      assertNotNull(allItems);
+      assertFalse(allItems.isEmpty());
+
+      assertEquals(allItems.size(), allResults.size());
+      System.out.println(String.format("Retrieved a total of %d item(s) with pagination.", allResults.size()));
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testListInstanceClusterNetworkAttachments" })
+  public void testCreateClusterNetworkAttachment() throws Exception {
+    try {
+      ClusterNetworkInterfacePrimaryIPPrototypeClusterNetworkSubnetReservedIPPrototypeClusterNetworkInterfacePrimaryIPContext clusterNetworkInterfacePrimaryIpPrototypeModel = new ClusterNetworkInterfacePrimaryIPPrototypeClusterNetworkSubnetReservedIPPrototypeClusterNetworkInterfacePrimaryIPContext.Builder()
+        .address("10.0.0.5")
+        .autoDelete(false)
+        .name("my-cluster-network-subnet-reserved-ip")
+        .build();
+
+      ClusterNetworkSubnetIdentityById clusterNetworkSubnetIdentityModel = new ClusterNetworkSubnetIdentityById.Builder()
+        .id("0717-7931845c-65c4-4b0a-80cd-7d9c1a6d7930")
+        .build();
+
+      InstanceClusterNetworkAttachmentPrototypeClusterNetworkInterfaceInstanceClusterNetworkInterfacePrototypeInstanceClusterNetworkAttachment instanceClusterNetworkAttachmentPrototypeClusterNetworkInterfaceModel = new InstanceClusterNetworkAttachmentPrototypeClusterNetworkInterfaceInstanceClusterNetworkInterfacePrototypeInstanceClusterNetworkAttachment.Builder()
+        .autoDelete(false)
+        .name("my-cluster-network-interface")
+        .primaryIp(clusterNetworkInterfacePrimaryIpPrototypeModel)
+        .subnet(clusterNetworkSubnetIdentityModel)
+        .build();
+
+      InstanceClusterNetworkAttachmentBeforePrototypeInstanceClusterNetworkAttachmentIdentityById instanceClusterNetworkAttachmentBeforePrototypeModel = new InstanceClusterNetworkAttachmentBeforePrototypeInstanceClusterNetworkAttachmentIdentityById.Builder()
+        .id("0717-fb880975-db45-4459-8548-64e3995ac213")
+        .build();
+
+      CreateClusterNetworkAttachmentOptions createClusterNetworkAttachmentOptions = new CreateClusterNetworkAttachmentOptions.Builder()
+        .instanceId("testString")
+        .clusterNetworkInterface(instanceClusterNetworkAttachmentPrototypeClusterNetworkInterfaceModel)
+        .before(instanceClusterNetworkAttachmentBeforePrototypeModel)
+        .name("my-instance-network-attachment")
+        .build();
+
+      // Invoke operation
+      Response<InstanceClusterNetworkAttachment> response = service.createClusterNetworkAttachment(createClusterNetworkAttachmentOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 201);
+
+      InstanceClusterNetworkAttachment instanceClusterNetworkAttachmentResult = response.getResult();
+      assertNotNull(instanceClusterNetworkAttachmentResult);
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testCreateClusterNetworkAttachment" })
+  public void testGetInstanceClusterNetworkAttachment() throws Exception {
+    try {
+      GetInstanceClusterNetworkAttachmentOptions getInstanceClusterNetworkAttachmentOptions = new GetInstanceClusterNetworkAttachmentOptions.Builder()
+        .instanceId("testString")
+        .id("testString")
+        .build();
+
+      // Invoke operation
+      Response<InstanceClusterNetworkAttachment> response = service.getInstanceClusterNetworkAttachment(getInstanceClusterNetworkAttachmentOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      InstanceClusterNetworkAttachment instanceClusterNetworkAttachmentResult = response.getResult();
+      assertNotNull(instanceClusterNetworkAttachmentResult);
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testGetInstanceClusterNetworkAttachment" })
+  public void testUpdateInstanceClusterNetworkAttachment() throws Exception {
+    try {
+      InstanceClusterNetworkAttachmentPatch instanceClusterNetworkAttachmentPatchModel = new InstanceClusterNetworkAttachmentPatch.Builder()
+        .name("my-instance-network-attachment-updated")
+        .build();
+      Map<String, Object> instanceClusterNetworkAttachmentPatchModelAsPatch = instanceClusterNetworkAttachmentPatchModel.asPatch();
+
+      UpdateInstanceClusterNetworkAttachmentOptions updateInstanceClusterNetworkAttachmentOptions = new UpdateInstanceClusterNetworkAttachmentOptions.Builder()
+        .instanceId("testString")
+        .id("testString")
+        .instanceClusterNetworkAttachmentPatch(instanceClusterNetworkAttachmentPatchModelAsPatch)
+        .build();
+
+      // Invoke operation
+      Response<InstanceClusterNetworkAttachment> response = service.updateInstanceClusterNetworkAttachment(updateInstanceClusterNetworkAttachmentOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      InstanceClusterNetworkAttachment instanceClusterNetworkAttachmentResult = response.getResult();
+      assertNotNull(instanceClusterNetworkAttachmentResult);
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testUpdateInstanceClusterNetworkAttachment" })
   public void testCreateInstanceConsoleAccessToken() throws Exception {
     try {
       CreateInstanceConsoleAccessTokenOptions createInstanceConsoleAccessTokenOptions = new CreateInstanceConsoleAccessTokenOptions.Builder()
@@ -4580,8 +4750,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       InstanceConsoleAccessToken instanceConsoleAccessTokenResult = response.getResult();
-
       assertNotNull(instanceConsoleAccessTokenResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -4602,8 +4772,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       InstanceDiskCollection instanceDiskCollectionResult = response.getResult();
-
       assertNotNull(instanceDiskCollectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -4625,8 +4795,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       InstanceDisk instanceDiskResult = response.getResult();
-
       assertNotNull(instanceDiskResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -4654,8 +4824,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       InstanceDisk instanceDiskResult = response.getResult();
-
       assertNotNull(instanceDiskResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -4676,8 +4846,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       InstanceNetworkAttachmentCollection instanceNetworkAttachmentCollectionResult = response.getResult();
-
       assertNotNull(instanceNetworkAttachmentCollectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -4704,7 +4874,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       SecurityGroupIdentityById securityGroupIdentityModel = new SecurityGroupIdentityById.Builder()
-        .id("be5df5ca-12a0-494b-907e-aa6ec2bfa271")
+        .id("r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271")
         .build();
 
       SubnetIdentityById subnetIdentityModel = new SubnetIdentityById.Builder()
@@ -4737,8 +4907,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 201);
 
       InstanceNetworkAttachment instanceNetworkAttachmentResult = response.getResult();
-
       assertNotNull(instanceNetworkAttachmentResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -4760,8 +4930,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       InstanceNetworkAttachment instanceNetworkAttachmentResult = response.getResult();
-
       assertNotNull(instanceNetworkAttachmentResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -4789,8 +4959,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       InstanceNetworkAttachment instanceNetworkAttachmentResult = response.getResult();
-
       assertNotNull(instanceNetworkAttachmentResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -4811,8 +4981,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       NetworkInterfaceUnpaginatedCollection networkInterfaceUnpaginatedCollectionResult = response.getResult();
-
       assertNotNull(networkInterfaceUnpaginatedCollectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -4833,7 +5003,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       SecurityGroupIdentityById securityGroupIdentityModel = new SecurityGroupIdentityById.Builder()
-        .id("be5df5ca-12a0-494b-907e-aa6ec2bfa271")
+        .id("r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271")
         .build();
 
       CreateInstanceNetworkInterfaceOptions createInstanceNetworkInterfaceOptions = new CreateInstanceNetworkInterfaceOptions.Builder()
@@ -4852,8 +5022,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 201);
 
       NetworkInterface networkInterfaceResult = response.getResult();
-
       assertNotNull(networkInterfaceResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -4875,8 +5045,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       NetworkInterface networkInterfaceResult = response.getResult();
-
       assertNotNull(networkInterfaceResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -4888,7 +5058,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     try {
       NetworkInterfacePatch networkInterfacePatchModel = new NetworkInterfacePatch.Builder()
         .allowIpSpoofing(true)
-        .name("my-network-interface-1")
+        .name("my-network-interface-updated")
         .build();
       Map<String, Object> networkInterfacePatchModelAsPatch = networkInterfacePatchModel.asPatch();
 
@@ -4905,8 +5075,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       NetworkInterface networkInterfaceResult = response.getResult();
-
       assertNotNull(networkInterfaceResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -4928,8 +5098,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       FloatingIPUnpaginatedCollection floatingIpUnpaginatedCollectionResult = response.getResult();
-
       assertNotNull(floatingIpUnpaginatedCollectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -4952,8 +5122,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       FloatingIP floatingIpResult = response.getResult();
-
       assertNotNull(floatingIpResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -4976,8 +5146,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 201);
 
       FloatingIP floatingIpResult = response.getResult();
-
       assertNotNull(floatingIpResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -5001,8 +5171,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       ReservedIPCollectionInstanceNetworkInterfaceContext reservedIpCollectionInstanceNetworkInterfaceContextResult = response.getResult();
-
       assertNotNull(reservedIpCollectionInstanceNetworkInterfaceContextResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -5058,8 +5228,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       ReservedIP reservedIpResult = response.getResult();
-
       assertNotNull(reservedIpResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -5080,8 +5250,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       VolumeAttachmentCollection volumeAttachmentCollectionResult = response.getResult();
-
       assertNotNull(volumeAttachmentCollectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -5109,8 +5279,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 201);
 
       VolumeAttachment volumeAttachmentResult = response.getResult();
-
       assertNotNull(volumeAttachmentResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -5132,8 +5302,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       VolumeAttachment volumeAttachmentResult = response.getResult();
-
       assertNotNull(volumeAttachmentResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -5162,8 +5332,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       VolumeAttachment volumeAttachmentResult = response.getResult();
-
       assertNotNull(volumeAttachmentResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -5185,8 +5355,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       InstanceGroupCollection instanceGroupCollectionResult = response.getResult();
-
       assertNotNull(instanceGroupCollectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -5265,8 +5435,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 201);
 
       InstanceGroup instanceGroupResult = response.getResult();
-
       assertNotNull(instanceGroupResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -5287,8 +5457,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       InstanceGroup instanceGroupResult = response.getResult();
-
       assertNotNull(instanceGroupResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -5337,8 +5507,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       InstanceGroup instanceGroupResult = response.getResult();
-
       assertNotNull(instanceGroupResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -5361,8 +5531,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       InstanceGroupManagerCollection instanceGroupManagerCollectionResult = response.getResult();
-
       assertNotNull(instanceGroupManagerCollectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -5426,8 +5596,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 201);
 
       InstanceGroupManager instanceGroupManagerResult = response.getResult();
-
       assertNotNull(instanceGroupManagerResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -5449,8 +5619,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       InstanceGroupManager instanceGroupManagerResult = response.getResult();
-
       assertNotNull(instanceGroupManagerResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -5483,8 +5653,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       InstanceGroupManager instanceGroupManagerResult = response.getResult();
-
       assertNotNull(instanceGroupManagerResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -5508,8 +5678,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       InstanceGroupManagerActionsCollection instanceGroupManagerActionsCollectionResult = response.getResult();
-
       assertNotNull(instanceGroupManagerActionsCollectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -5575,8 +5745,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 201);
 
       InstanceGroupManagerAction instanceGroupManagerActionResult = response.getResult();
-
       assertNotNull(instanceGroupManagerActionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -5599,8 +5769,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       InstanceGroupManagerAction instanceGroupManagerActionResult = response.getResult();
-
       assertNotNull(instanceGroupManagerActionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -5644,8 +5814,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       InstanceGroupManagerAction instanceGroupManagerActionResult = response.getResult();
-
       assertNotNull(instanceGroupManagerActionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -5669,8 +5839,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       InstanceGroupManagerPolicyCollection instanceGroupManagerPolicyCollectionResult = response.getResult();
-
       assertNotNull(instanceGroupManagerPolicyCollectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -5733,8 +5903,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 201);
 
       InstanceGroupManagerPolicy instanceGroupManagerPolicyResult = response.getResult();
-
       assertNotNull(instanceGroupManagerPolicyResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -5757,8 +5927,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       InstanceGroupManagerPolicy instanceGroupManagerPolicyResult = response.getResult();
-
       assertNotNull(instanceGroupManagerPolicyResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -5789,8 +5959,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       InstanceGroupManagerPolicy instanceGroupManagerPolicyResult = response.getResult();
-
       assertNotNull(instanceGroupManagerPolicyResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -5813,8 +5983,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       InstanceGroupMembershipCollection instanceGroupMembershipCollectionResult = response.getResult();
-
       assertNotNull(instanceGroupMembershipCollectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -5868,8 +6038,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       InstanceGroupMembership instanceGroupMembershipResult = response.getResult();
-
       assertNotNull(instanceGroupMembershipResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -5898,8 +6068,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       InstanceGroupMembership instanceGroupMembershipResult = response.getResult();
-
       assertNotNull(instanceGroupMembershipResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -5924,8 +6094,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       ReservationCollection reservationCollectionResult = response.getResult();
-
       assertNotNull(reservationCollectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -6008,8 +6178,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 201);
 
       Reservation reservationResult = response.getResult();
-
       assertNotNull(reservationResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -6030,8 +6200,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       Reservation reservationResult = response.getResult();
-
       assertNotNull(reservationResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -6075,8 +6245,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       Reservation reservationResult = response.getResult();
-
       assertNotNull(reservationResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -6119,8 +6289,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       DedicatedHostGroupCollection dedicatedHostGroupCollectionResult = response.getResult();
-
       assertNotNull(dedicatedHostGroupCollectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -6187,8 +6357,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 201);
 
       DedicatedHostGroup dedicatedHostGroupResult = response.getResult();
-
       assertNotNull(dedicatedHostGroupResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -6209,8 +6379,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       DedicatedHostGroup dedicatedHostGroupResult = response.getResult();
-
       assertNotNull(dedicatedHostGroupResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -6221,7 +6391,7 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testUpdateDedicatedHostGroup() throws Exception {
     try {
       DedicatedHostGroupPatch dedicatedHostGroupPatchModel = new DedicatedHostGroupPatch.Builder()
-        .name("my-host-group-updated")
+        .name("my-dedicated-host-group-updated")
         .build();
       Map<String, Object> dedicatedHostGroupPatchModelAsPatch = dedicatedHostGroupPatchModel.asPatch();
 
@@ -6237,8 +6407,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       DedicatedHostGroup dedicatedHostGroupResult = response.getResult();
-
       assertNotNull(dedicatedHostGroupResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -6260,8 +6430,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       DedicatedHostProfileCollection dedicatedHostProfileCollectionResult = response.getResult();
-
       assertNotNull(dedicatedHostProfileCollectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -6313,8 +6483,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       DedicatedHostProfile dedicatedHostProfileResult = response.getResult();
-
       assertNotNull(dedicatedHostProfileResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -6340,8 +6510,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       DedicatedHostCollection dedicatedHostCollectionResult = response.getResult();
-
       assertNotNull(dedicatedHostCollectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -6417,8 +6587,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 201);
 
       DedicatedHost dedicatedHostResult = response.getResult();
-
       assertNotNull(dedicatedHostResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -6439,8 +6609,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       DedicatedHostDiskCollection dedicatedHostDiskCollectionResult = response.getResult();
-
       assertNotNull(dedicatedHostDiskCollectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -6462,8 +6632,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       DedicatedHostDisk dedicatedHostDiskResult = response.getResult();
-
       assertNotNull(dedicatedHostDiskResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -6474,7 +6644,7 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testUpdateDedicatedHostDisk() throws Exception {
     try {
       DedicatedHostDiskPatch dedicatedHostDiskPatchModel = new DedicatedHostDiskPatch.Builder()
-        .name("my-disk-updated")
+        .name("my-dedicated-host-disk-updated")
         .build();
       Map<String, Object> dedicatedHostDiskPatchModelAsPatch = dedicatedHostDiskPatchModel.asPatch();
 
@@ -6491,8 +6661,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       DedicatedHostDisk dedicatedHostDiskResult = response.getResult();
-
       assertNotNull(dedicatedHostDiskResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -6513,8 +6683,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       DedicatedHost dedicatedHostResult = response.getResult();
-
       assertNotNull(dedicatedHostResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -6525,7 +6695,7 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testUpdateDedicatedHost() throws Exception {
     try {
       DedicatedHostPatch dedicatedHostPatchModel = new DedicatedHostPatch.Builder()
-        .instancePlacementEnabled(true)
+        .instancePlacementEnabled(false)
         .name("my-host")
         .build();
       Map<String, Object> dedicatedHostPatchModelAsPatch = dedicatedHostPatchModel.asPatch();
@@ -6542,8 +6712,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       DedicatedHost dedicatedHostResult = response.getResult();
-
       assertNotNull(dedicatedHostResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -6565,8 +6735,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       PlacementGroupCollection placementGroupCollectionResult = response.getResult();
-
       assertNotNull(placementGroupCollectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -6624,8 +6794,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 201);
 
       PlacementGroup placementGroupResult = response.getResult();
-
       assertNotNull(placementGroupResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -6646,8 +6816,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       PlacementGroup placementGroupResult = response.getResult();
-
       assertNotNull(placementGroupResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -6674,8 +6844,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       PlacementGroup placementGroupResult = response.getResult();
-
       assertNotNull(placementGroupResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -6697,8 +6867,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       BareMetalServerProfileCollection bareMetalServerProfileCollectionResult = response.getResult();
-
       assertNotNull(bareMetalServerProfileCollectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -6750,8 +6920,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       BareMetalServerProfile bareMetalServerProfileResult = response.getResult();
-
       assertNotNull(bareMetalServerProfileResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -6778,8 +6948,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       BareMetalServerCollection bareMetalServerCollectionResult = response.getResult();
-
       assertNotNull(bareMetalServerCollectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -6872,7 +7042,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       SecurityGroupIdentityById securityGroupIdentityModel = new SecurityGroupIdentityById.Builder()
-        .id("be5df5ca-12a0-494b-907e-aa6ec2bfa271")
+        .id("r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271")
         .build();
 
       SubnetIdentityById subnetIdentityModel = new SubnetIdentityById.Builder()
@@ -6931,8 +7101,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 201);
 
       BareMetalServer bareMetalServerResult = response.getResult();
-
       assertNotNull(bareMetalServerResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -6955,8 +7125,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       BareMetalServerConsoleAccessToken bareMetalServerConsoleAccessTokenResult = response.getResult();
-
       assertNotNull(bareMetalServerConsoleAccessTokenResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -6977,8 +7147,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       BareMetalServerDiskCollection bareMetalServerDiskCollectionResult = response.getResult();
-
       assertNotNull(bareMetalServerDiskCollectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -7000,8 +7170,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       BareMetalServerDisk bareMetalServerDiskResult = response.getResult();
-
       assertNotNull(bareMetalServerDiskResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -7029,8 +7199,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       BareMetalServerDisk bareMetalServerDiskResult = response.getResult();
-
       assertNotNull(bareMetalServerDiskResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -7053,8 +7223,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       BareMetalServerNetworkAttachmentCollection bareMetalServerNetworkAttachmentCollectionResult = response.getResult();
-
       assertNotNull(bareMetalServerNetworkAttachmentCollectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -7113,7 +7283,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       SecurityGroupIdentityById securityGroupIdentityModel = new SecurityGroupIdentityById.Builder()
-        .id("be5df5ca-12a0-494b-907e-aa6ec2bfa271")
+        .id("r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271")
         .build();
 
       SubnetIdentityById subnetIdentityModel = new SubnetIdentityById.Builder()
@@ -7152,8 +7322,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 201);
 
       BareMetalServerNetworkAttachment bareMetalServerNetworkAttachmentResult = response.getResult();
-
       assertNotNull(bareMetalServerNetworkAttachmentResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -7175,8 +7345,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       BareMetalServerNetworkAttachment bareMetalServerNetworkAttachmentResult = response.getResult();
-
       assertNotNull(bareMetalServerNetworkAttachmentResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -7205,8 +7375,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       BareMetalServerNetworkAttachment bareMetalServerNetworkAttachmentResult = response.getResult();
-
       assertNotNull(bareMetalServerNetworkAttachmentResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -7229,8 +7399,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       BareMetalServerNetworkInterfaceCollection bareMetalServerNetworkInterfaceCollectionResult = response.getResult();
-
       assertNotNull(bareMetalServerNetworkInterfaceCollectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -7279,7 +7449,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       SecurityGroupIdentityById securityGroupIdentityModel = new SecurityGroupIdentityById.Builder()
-        .id("be5df5ca-12a0-494b-907e-aa6ec2bfa271")
+        .id("r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271")
         .build();
 
       SubnetIdentityById subnetIdentityModel = new SubnetIdentityById.Builder()
@@ -7308,8 +7478,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 201);
 
       BareMetalServerNetworkInterface bareMetalServerNetworkInterfaceResult = response.getResult();
-
       assertNotNull(bareMetalServerNetworkInterfaceResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -7331,8 +7501,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       BareMetalServerNetworkInterface bareMetalServerNetworkInterfaceResult = response.getResult();
-
       assertNotNull(bareMetalServerNetworkInterfaceResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -7363,8 +7533,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       BareMetalServerNetworkInterface bareMetalServerNetworkInterfaceResult = response.getResult();
-
       assertNotNull(bareMetalServerNetworkInterfaceResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -7386,8 +7556,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       FloatingIPUnpaginatedCollection floatingIpUnpaginatedCollectionResult = response.getResult();
-
       assertNotNull(floatingIpUnpaginatedCollectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -7410,8 +7580,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       FloatingIP floatingIpResult = response.getResult();
-
       assertNotNull(floatingIpResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -7434,8 +7604,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 201);
 
       FloatingIP floatingIpResult = response.getResult();
-
       assertNotNull(floatingIpResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -7457,8 +7627,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       ReservedIPCollectionBareMetalServerNetworkInterfaceContext reservedIpCollectionBareMetalServerNetworkInterfaceContextResult = response.getResult();
-
       assertNotNull(reservedIpCollectionBareMetalServerNetworkInterfaceContextResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -7481,8 +7651,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       ReservedIP reservedIpResult = response.getResult();
-
       assertNotNull(reservedIpResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -7503,8 +7673,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       BareMetalServer bareMetalServerResult = response.getResult();
-
       assertNotNull(bareMetalServerResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -7538,8 +7708,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       BareMetalServer bareMetalServerResult = response.getResult();
-
       assertNotNull(bareMetalServerResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -7579,8 +7749,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       BareMetalServerInitialization bareMetalServerInitializationResult = response.getResult();
-
       assertNotNull(bareMetalServerInitializationResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -7612,8 +7782,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       BareMetalServerInitialization bareMetalServerInitializationResult = response.getResult();
-
       assertNotNull(bareMetalServerInitializationResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -7690,8 +7860,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       VolumeProfileCollection volumeProfileCollectionResult = response.getResult();
-
       assertNotNull(volumeProfileCollectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -7743,8 +7913,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       VolumeProfile volumeProfileResult = response.getResult();
-
       assertNotNull(volumeProfileResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -7773,8 +7943,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       VolumeCollection volumeCollectionResult = response.getResult();
-
       assertNotNull(volumeCollectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -7860,8 +8030,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 201);
 
       Volume volumeResult = response.getResult();
-
       assertNotNull(volumeResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -7882,8 +8052,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       Volume volumeResult = response.getResult();
-
       assertNotNull(volumeResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -7919,8 +8089,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       Volume volumeResult = response.getResult();
-
       assertNotNull(volumeResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -7946,8 +8116,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       SnapshotConsistencyGroupCollection snapshotConsistencyGroupCollectionResult = response.getResult();
-
       assertNotNull(snapshotConsistencyGroupCollectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -8024,8 +8194,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 201);
 
       SnapshotConsistencyGroup snapshotConsistencyGroupResult = response.getResult();
-
       assertNotNull(snapshotConsistencyGroupResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -8046,8 +8216,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       SnapshotConsistencyGroup snapshotConsistencyGroupResult = response.getResult();
-
       assertNotNull(snapshotConsistencyGroupResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -8076,8 +8246,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       SnapshotConsistencyGroup snapshotConsistencyGroupResult = response.getResult();
-
       assertNotNull(snapshotConsistencyGroupResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -8119,8 +8289,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       SnapshotCollection snapshotCollectionResult = response.getResult();
-
       assertNotNull(snapshotCollectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -8216,8 +8386,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 201);
 
       Snapshot snapshotResult = response.getResult();
-
       assertNotNull(snapshotResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -8238,8 +8408,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       Snapshot snapshotResult = response.getResult();
-
       assertNotNull(snapshotResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -8268,8 +8438,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       Snapshot snapshotResult = response.getResult();
-
       assertNotNull(snapshotResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -8290,8 +8460,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       SnapshotCloneCollection snapshotCloneCollectionResult = response.getResult();
-
       assertNotNull(snapshotCloneCollectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -8313,8 +8483,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       SnapshotClone snapshotCloneResult = response.getResult();
-
       assertNotNull(snapshotCloneResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -8336,8 +8506,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       SnapshotClone snapshotCloneResult = response.getResult();
-
       assertNotNull(snapshotCloneResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -8360,8 +8530,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       ShareProfileCollection shareProfileCollectionResult = response.getResult();
-
       assertNotNull(shareProfileCollectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -8414,8 +8584,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       ShareProfile shareProfileResult = response.getResult();
-
       assertNotNull(shareProfileResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -8441,8 +8611,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       ShareCollection shareCollectionResult = response.getResult();
-
       assertNotNull(shareCollectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -8504,7 +8674,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       SecurityGroupIdentityById securityGroupIdentityModel = new SecurityGroupIdentityById.Builder()
-        .id("be5df5ca-12a0-494b-907e-aa6ec2bfa271")
+        .id("r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271")
         .build();
 
       SubnetIdentityById subnetIdentityModel = new SubnetIdentityById.Builder()
@@ -8586,8 +8756,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 201);
 
       Share shareResult = response.getResult();
-
       assertNotNull(shareResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -8608,8 +8778,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       Share shareResult = response.getResult();
-
       assertNotNull(shareResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -8648,8 +8818,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       Share shareResult = response.getResult();
-
       assertNotNull(shareResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -8672,8 +8842,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       ShareAccessorBindingCollection shareAccessorBindingCollectionResult = response.getResult();
-
       assertNotNull(shareAccessorBindingCollectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -8727,8 +8897,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       ShareAccessorBinding shareAccessorBindingResult = response.getResult();
-
       assertNotNull(shareAccessorBindingResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -8772,8 +8942,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       ShareMountTargetCollection shareMountTargetCollectionResult = response.getResult();
-
       assertNotNull(shareMountTargetCollectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -8833,7 +9003,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       SecurityGroupIdentityById securityGroupIdentityModel = new SecurityGroupIdentityById.Builder()
-        .id("be5df5ca-12a0-494b-907e-aa6ec2bfa271")
+        .id("r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271")
         .build();
 
       SubnetIdentityById subnetIdentityModel = new SubnetIdentityById.Builder()
@@ -8871,8 +9041,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 201);
 
       ShareMountTarget shareMountTargetResult = response.getResult();
-
       assertNotNull(shareMountTargetResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -8894,8 +9064,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       ShareMountTarget shareMountTargetResult = response.getResult();
-
       assertNotNull(shareMountTargetResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -8923,8 +9093,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       ShareMountTarget shareMountTargetResult = response.getResult();
-
       assertNotNull(shareMountTargetResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -8945,8 +9115,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       ShareReference shareReferenceResult = response.getResult();
-
       assertNotNull(shareReferenceResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -8971,8 +9141,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       BackupPolicyCollection backupPolicyCollectionResult = response.getResult();
-
       assertNotNull(backupPolicyCollectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -9083,8 +9253,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 201);
 
       BackupPolicy backupPolicyResult = response.getResult();
-
       assertNotNull(backupPolicyResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -9113,8 +9283,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       BackupPolicyJobCollection backupPolicyJobCollectionResult = response.getResult();
-
       assertNotNull(backupPolicyJobCollectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -9174,8 +9344,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       BackupPolicyJob backupPolicyJobResult = response.getResult();
-
       assertNotNull(backupPolicyJobResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -9197,8 +9367,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       BackupPolicyPlanCollection backupPolicyPlanCollectionResult = response.getResult();
-
       assertNotNull(backupPolicyPlanCollectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -9255,8 +9425,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 201);
 
       BackupPolicyPlan backupPolicyPlanResult = response.getResult();
-
       assertNotNull(backupPolicyPlanResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -9278,8 +9448,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       BackupPolicyPlan backupPolicyPlanResult = response.getResult();
-
       assertNotNull(backupPolicyPlanResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -9343,8 +9513,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       BackupPolicyPlan backupPolicyPlanResult = response.getResult();
-
       assertNotNull(backupPolicyPlanResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -9365,8 +9535,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       BackupPolicy backupPolicyResult = response.getResult();
-
       assertNotNull(backupPolicyResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -9396,8 +9566,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       BackupPolicy backupPolicyResult = response.getResult();
-
       assertNotNull(backupPolicyResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -9416,8 +9586,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       RegionCollection regionCollectionResult = response.getResult();
-
       assertNotNull(regionCollectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -9438,8 +9608,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       Region regionResult = response.getResult();
-
       assertNotNull(regionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -9460,8 +9630,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       ZoneCollection zoneCollectionResult = response.getResult();
-
       assertNotNull(zoneCollectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -9483,8 +9653,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       Zone zoneResult = response.getResult();
-
       assertNotNull(zoneResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -9507,8 +9677,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       VirtualNetworkInterfaceCollection virtualNetworkInterfaceCollectionResult = response.getResult();
-
       assertNotNull(virtualNetworkInterfaceCollectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -9590,8 +9760,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 201);
 
       VirtualNetworkInterface virtualNetworkInterfaceResult = response.getResult();
-
       assertNotNull(virtualNetworkInterfaceResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -9612,8 +9782,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       VirtualNetworkInterface virtualNetworkInterfaceResult = response.getResult();
-
       assertNotNull(virtualNetworkInterfaceResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -9644,8 +9814,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       VirtualNetworkInterface virtualNetworkInterfaceResult = response.getResult();
-
       assertNotNull(virtualNetworkInterfaceResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -9669,8 +9839,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       FloatingIPCollectionVirtualNetworkInterfaceContext floatingIpCollectionVirtualNetworkInterfaceContextResult = response.getResult();
-
       assertNotNull(floatingIpCollectionVirtualNetworkInterfaceContextResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -9725,8 +9895,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       FloatingIPReference floatingIpReferenceResult = response.getResult();
-
       assertNotNull(floatingIpReferenceResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -9748,8 +9918,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       FloatingIPReference floatingIpReferenceResult = response.getResult();
-
       assertNotNull(floatingIpReferenceResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -9773,8 +9943,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       ReservedIPCollectionVirtualNetworkInterfaceContext reservedIpCollectionVirtualNetworkInterfaceContextResult = response.getResult();
-
       assertNotNull(reservedIpCollectionVirtualNetworkInterfaceContextResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -9829,8 +9999,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       ReservedIPReference reservedIpReferenceResult = response.getResult();
-
       assertNotNull(reservedIpReferenceResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -9852,8 +10022,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       ReservedIPReference reservedIpReferenceResult = response.getResult();
-
       assertNotNull(reservedIpReferenceResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -9861,6 +10031,680 @@ public class VpcIT extends SdkIntegrationTestBase {
   }
 
   @Test(dependsOnMethods = { "testAddVirtualNetworkInterfaceIp" })
+  public void testListClusterNetworkProfiles() throws Exception {
+    try {
+      ListClusterNetworkProfilesOptions listClusterNetworkProfilesOptions = new ListClusterNetworkProfilesOptions.Builder()
+        .start("testString")
+        .limit(Long.valueOf("10"))
+        .build();
+
+      // Invoke operation
+      Response<ClusterNetworkProfileCollection> response = service.listClusterNetworkProfiles(listClusterNetworkProfilesOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      ClusterNetworkProfileCollection clusterNetworkProfileCollectionResult = response.getResult();
+      assertNotNull(clusterNetworkProfileCollectionResult);
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testListClusterNetworkProfiles" })
+  public void testListClusterNetworkProfilesWithPager() throws Exception {
+    try {
+      ListClusterNetworkProfilesOptions options = new ListClusterNetworkProfilesOptions.Builder()
+        .limit(Long.valueOf("10"))
+        .build();
+
+      // Test getNext().
+      List<ClusterNetworkProfile> allResults = new ArrayList<>();
+      ClusterNetworkProfilesPager pager = new ClusterNetworkProfilesPager(service, options);
+      while (pager.hasNext()) {
+        List<ClusterNetworkProfile> nextPage = pager.getNext();
+        assertNotNull(nextPage);
+        allResults.addAll(nextPage);
+      }
+      assertFalse(allResults.isEmpty());
+
+      // Test getAll();
+      pager = new ClusterNetworkProfilesPager(service, options);
+      List<ClusterNetworkProfile> allItems = pager.getAll();
+      assertNotNull(allItems);
+      assertFalse(allItems.isEmpty());
+
+      assertEquals(allItems.size(), allResults.size());
+      System.out.println(String.format("Retrieved a total of %d item(s) with pagination.", allResults.size()));
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testListClusterNetworkProfiles" })
+  public void testGetClusterNetworkProfile() throws Exception {
+    try {
+      GetClusterNetworkProfileOptions getClusterNetworkProfileOptions = new GetClusterNetworkProfileOptions.Builder()
+        .name("h100")
+        .build();
+
+      // Invoke operation
+      Response<ClusterNetworkProfile> response = service.getClusterNetworkProfile(getClusterNetworkProfileOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      ClusterNetworkProfile clusterNetworkProfileResult = response.getResult();
+      assertNotNull(clusterNetworkProfileResult);
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testGetClusterNetworkProfile" })
+  public void testListClusterNetworks() throws Exception {
+    try {
+      ListClusterNetworksOptions listClusterNetworksOptions = new ListClusterNetworksOptions.Builder()
+        .start("testString")
+        .limit(Long.valueOf("10"))
+        .resourceGroupId("testString")
+        .name("my-name")
+        .sort("name")
+        .vpcId("testString")
+        .vpcCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b")
+        .vpcName("my-vpc")
+        .build();
+
+      // Invoke operation
+      Response<ClusterNetworkCollection> response = service.listClusterNetworks(listClusterNetworksOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      ClusterNetworkCollection clusterNetworkCollectionResult = response.getResult();
+      assertNotNull(clusterNetworkCollectionResult);
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testListClusterNetworks" })
+  public void testListClusterNetworksWithPager() throws Exception {
+    try {
+      ListClusterNetworksOptions options = new ListClusterNetworksOptions.Builder()
+        .limit(Long.valueOf("10"))
+        .resourceGroupId("testString")
+        .name("my-name")
+        .sort("name")
+        .vpcId("testString")
+        .vpcCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b")
+        .vpcName("my-vpc")
+        .build();
+
+      // Test getNext().
+      List<ClusterNetwork> allResults = new ArrayList<>();
+      ClusterNetworksPager pager = new ClusterNetworksPager(service, options);
+      while (pager.hasNext()) {
+        List<ClusterNetwork> nextPage = pager.getNext();
+        assertNotNull(nextPage);
+        allResults.addAll(nextPage);
+      }
+      assertFalse(allResults.isEmpty());
+
+      // Test getAll();
+      pager = new ClusterNetworksPager(service, options);
+      List<ClusterNetwork> allItems = pager.getAll();
+      assertNotNull(allItems);
+      assertFalse(allItems.isEmpty());
+
+      assertEquals(allItems.size(), allResults.size());
+      System.out.println(String.format("Retrieved a total of %d item(s) with pagination.", allResults.size()));
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testListClusterNetworks" })
+  public void testCreateClusterNetwork() throws Exception {
+    try {
+      ClusterNetworkProfileIdentityByName clusterNetworkProfileIdentityModel = new ClusterNetworkProfileIdentityByName.Builder()
+        .name("h100")
+        .build();
+
+      VPCIdentityById vpcIdentityModel = new VPCIdentityById.Builder()
+        .id("r006-4727d842-f94f-4a2d-824a-9bc9b02c523b")
+        .build();
+
+      ZoneIdentityByName zoneIdentityModel = new ZoneIdentityByName.Builder()
+        .name("us-south-1")
+        .build();
+
+      ResourceGroupIdentityById resourceGroupIdentityModel = new ResourceGroupIdentityById.Builder()
+        .id("fee82deba12e4c0fb69c3b09d1f12345")
+        .build();
+
+      ClusterNetworkSubnetPrefixPrototype clusterNetworkSubnetPrefixPrototypeModel = new ClusterNetworkSubnetPrefixPrototype.Builder()
+        .cidr("10.0.0.0/24")
+        .build();
+
+      CreateClusterNetworkOptions createClusterNetworkOptions = new CreateClusterNetworkOptions.Builder()
+        .profile(clusterNetworkProfileIdentityModel)
+        .vpc(vpcIdentityModel)
+        .zone(zoneIdentityModel)
+        .name("my-cluster-network")
+        .resourceGroup(resourceGroupIdentityModel)
+        .subnetPrefixes(java.util.Arrays.asList(clusterNetworkSubnetPrefixPrototypeModel))
+        .build();
+
+      // Invoke operation
+      Response<ClusterNetwork> response = service.createClusterNetwork(createClusterNetworkOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 201);
+
+      ClusterNetwork clusterNetworkResult = response.getResult();
+      assertNotNull(clusterNetworkResult);
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testCreateClusterNetwork" })
+  public void testListClusterNetworkInterfaces() throws Exception {
+    try {
+      ListClusterNetworkInterfacesOptions listClusterNetworkInterfacesOptions = new ListClusterNetworkInterfacesOptions.Builder()
+        .clusterNetworkId("testString")
+        .start("testString")
+        .limit(Long.valueOf("10"))
+        .name("my-name")
+        .sort("name")
+        .build();
+
+      // Invoke operation
+      Response<ClusterNetworkInterfaceCollection> response = service.listClusterNetworkInterfaces(listClusterNetworkInterfacesOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      ClusterNetworkInterfaceCollection clusterNetworkInterfaceCollectionResult = response.getResult();
+      assertNotNull(clusterNetworkInterfaceCollectionResult);
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testListClusterNetworkInterfaces" })
+  public void testListClusterNetworkInterfacesWithPager() throws Exception {
+    try {
+      ListClusterNetworkInterfacesOptions options = new ListClusterNetworkInterfacesOptions.Builder()
+        .clusterNetworkId("testString")
+        .limit(Long.valueOf("10"))
+        .name("my-name")
+        .sort("name")
+        .build();
+
+      // Test getNext().
+      List<ClusterNetworkInterface> allResults = new ArrayList<>();
+      ClusterNetworkInterfacesPager pager = new ClusterNetworkInterfacesPager(service, options);
+      while (pager.hasNext()) {
+        List<ClusterNetworkInterface> nextPage = pager.getNext();
+        assertNotNull(nextPage);
+        allResults.addAll(nextPage);
+      }
+      assertFalse(allResults.isEmpty());
+
+      // Test getAll();
+      pager = new ClusterNetworkInterfacesPager(service, options);
+      List<ClusterNetworkInterface> allItems = pager.getAll();
+      assertNotNull(allItems);
+      assertFalse(allItems.isEmpty());
+
+      assertEquals(allItems.size(), allResults.size());
+      System.out.println(String.format("Retrieved a total of %d item(s) with pagination.", allResults.size()));
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testListClusterNetworkInterfaces" })
+  public void testCreateClusterNetworkInterface() throws Exception {
+    try {
+      ClusterNetworkInterfacePrimaryIPPrototypeClusterNetworkSubnetReservedIPPrototypeClusterNetworkInterfacePrimaryIPContext clusterNetworkInterfacePrimaryIpPrototypeModel = new ClusterNetworkInterfacePrimaryIPPrototypeClusterNetworkSubnetReservedIPPrototypeClusterNetworkInterfacePrimaryIPContext.Builder()
+        .address("10.0.0.5")
+        .autoDelete(false)
+        .name("my-cluster-network-subnet-reserved-ip")
+        .build();
+
+      ClusterNetworkSubnetIdentityById clusterNetworkSubnetIdentityModel = new ClusterNetworkSubnetIdentityById.Builder()
+        .id("0717-7931845c-65c4-4b0a-80cd-7d9c1a6d7930")
+        .build();
+
+      CreateClusterNetworkInterfaceOptions createClusterNetworkInterfaceOptions = new CreateClusterNetworkInterfaceOptions.Builder()
+        .clusterNetworkId("testString")
+        .name("my-cluster-network-interface")
+        .primaryIp(clusterNetworkInterfacePrimaryIpPrototypeModel)
+        .subnet(clusterNetworkSubnetIdentityModel)
+        .build();
+
+      // Invoke operation
+      Response<ClusterNetworkInterface> response = service.createClusterNetworkInterface(createClusterNetworkInterfaceOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 201);
+
+      ClusterNetworkInterface clusterNetworkInterfaceResult = response.getResult();
+      assertNotNull(clusterNetworkInterfaceResult);
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testCreateClusterNetworkInterface" })
+  public void testGetClusterNetworkInterface() throws Exception {
+    try {
+      GetClusterNetworkInterfaceOptions getClusterNetworkInterfaceOptions = new GetClusterNetworkInterfaceOptions.Builder()
+        .clusterNetworkId("testString")
+        .id("testString")
+        .build();
+
+      // Invoke operation
+      Response<ClusterNetworkInterface> response = service.getClusterNetworkInterface(getClusterNetworkInterfaceOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      ClusterNetworkInterface clusterNetworkInterfaceResult = response.getResult();
+      assertNotNull(clusterNetworkInterfaceResult);
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testGetClusterNetworkInterface" })
+  public void testUpdateClusterNetworkInterface() throws Exception {
+    try {
+      ClusterNetworkInterfacePatch clusterNetworkInterfacePatchModel = new ClusterNetworkInterfacePatch.Builder()
+        .autoDelete(false)
+        .name("my-cluster-network-interface")
+        .build();
+      Map<String, Object> clusterNetworkInterfacePatchModelAsPatch = clusterNetworkInterfacePatchModel.asPatch();
+
+      UpdateClusterNetworkInterfaceOptions updateClusterNetworkInterfaceOptions = new UpdateClusterNetworkInterfaceOptions.Builder()
+        .clusterNetworkId("testString")
+        .id("testString")
+        .clusterNetworkInterfacePatch(clusterNetworkInterfacePatchModelAsPatch)
+        .ifMatch("W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"")
+        .build();
+
+      // Invoke operation
+      Response<ClusterNetworkInterface> response = service.updateClusterNetworkInterface(updateClusterNetworkInterfaceOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      ClusterNetworkInterface clusterNetworkInterfaceResult = response.getResult();
+      assertNotNull(clusterNetworkInterfaceResult);
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testUpdateClusterNetworkInterface" })
+  public void testListClusterNetworkSubnets() throws Exception {
+    try {
+      ListClusterNetworkSubnetsOptions listClusterNetworkSubnetsOptions = new ListClusterNetworkSubnetsOptions.Builder()
+        .clusterNetworkId("testString")
+        .start("testString")
+        .limit(Long.valueOf("10"))
+        .name("my-name")
+        .sort("name")
+        .build();
+
+      // Invoke operation
+      Response<ClusterNetworkSubnetCollection> response = service.listClusterNetworkSubnets(listClusterNetworkSubnetsOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      ClusterNetworkSubnetCollection clusterNetworkSubnetCollectionResult = response.getResult();
+      assertNotNull(clusterNetworkSubnetCollectionResult);
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testListClusterNetworkSubnets" })
+  public void testListClusterNetworkSubnetsWithPager() throws Exception {
+    try {
+      ListClusterNetworkSubnetsOptions options = new ListClusterNetworkSubnetsOptions.Builder()
+        .clusterNetworkId("testString")
+        .limit(Long.valueOf("10"))
+        .name("my-name")
+        .sort("name")
+        .build();
+
+      // Test getNext().
+      List<ClusterNetworkSubnet> allResults = new ArrayList<>();
+      ClusterNetworkSubnetsPager pager = new ClusterNetworkSubnetsPager(service, options);
+      while (pager.hasNext()) {
+        List<ClusterNetworkSubnet> nextPage = pager.getNext();
+        assertNotNull(nextPage);
+        allResults.addAll(nextPage);
+      }
+      assertFalse(allResults.isEmpty());
+
+      // Test getAll();
+      pager = new ClusterNetworkSubnetsPager(service, options);
+      List<ClusterNetworkSubnet> allItems = pager.getAll();
+      assertNotNull(allItems);
+      assertFalse(allItems.isEmpty());
+
+      assertEquals(allItems.size(), allResults.size());
+      System.out.println(String.format("Retrieved a total of %d item(s) with pagination.", allResults.size()));
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testListClusterNetworkSubnets" })
+  public void testCreateClusterNetworkSubnet() throws Exception {
+    try {
+      ClusterNetworkSubnetPrototypeClusterNetworkSubnetByTotalCountPrototype clusterNetworkSubnetPrototypeModel = new ClusterNetworkSubnetPrototypeClusterNetworkSubnetByTotalCountPrototype.Builder()
+        .ipVersion("ipv4")
+        .name("my-cluster-network-subnet")
+        .totalIpv4AddressCount(Long.valueOf("256"))
+        .build();
+
+      CreateClusterNetworkSubnetOptions createClusterNetworkSubnetOptions = new CreateClusterNetworkSubnetOptions.Builder()
+        .clusterNetworkId("testString")
+        .clusterNetworkSubnetPrototype(clusterNetworkSubnetPrototypeModel)
+        .build();
+
+      // Invoke operation
+      Response<ClusterNetworkSubnet> response = service.createClusterNetworkSubnet(createClusterNetworkSubnetOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 201);
+
+      ClusterNetworkSubnet clusterNetworkSubnetResult = response.getResult();
+      assertNotNull(clusterNetworkSubnetResult);
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testCreateClusterNetworkSubnet" })
+  public void testListClusterNetworkSubnetReservedIps() throws Exception {
+    try {
+      ListClusterNetworkSubnetReservedIpsOptions listClusterNetworkSubnetReservedIpsOptions = new ListClusterNetworkSubnetReservedIpsOptions.Builder()
+        .clusterNetworkId("testString")
+        .clusterNetworkSubnetId("testString")
+        .start("testString")
+        .limit(Long.valueOf("10"))
+        .name("my-name")
+        .sort("name")
+        .build();
+
+      // Invoke operation
+      Response<ClusterNetworkSubnetReservedIPCollection> response = service.listClusterNetworkSubnetReservedIps(listClusterNetworkSubnetReservedIpsOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      ClusterNetworkSubnetReservedIPCollection clusterNetworkSubnetReservedIpCollectionResult = response.getResult();
+      assertNotNull(clusterNetworkSubnetReservedIpCollectionResult);
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testListClusterNetworkSubnetReservedIps" })
+  public void testListClusterNetworkSubnetReservedIpsWithPager() throws Exception {
+    try {
+      ListClusterNetworkSubnetReservedIpsOptions options = new ListClusterNetworkSubnetReservedIpsOptions.Builder()
+        .clusterNetworkId("testString")
+        .clusterNetworkSubnetId("testString")
+        .limit(Long.valueOf("10"))
+        .name("my-name")
+        .sort("name")
+        .build();
+
+      // Test getNext().
+      List<ClusterNetworkSubnetReservedIP> allResults = new ArrayList<>();
+      ClusterNetworkSubnetReservedIpsPager pager = new ClusterNetworkSubnetReservedIpsPager(service, options);
+      while (pager.hasNext()) {
+        List<ClusterNetworkSubnetReservedIP> nextPage = pager.getNext();
+        assertNotNull(nextPage);
+        allResults.addAll(nextPage);
+      }
+      assertFalse(allResults.isEmpty());
+
+      // Test getAll();
+      pager = new ClusterNetworkSubnetReservedIpsPager(service, options);
+      List<ClusterNetworkSubnetReservedIP> allItems = pager.getAll();
+      assertNotNull(allItems);
+      assertFalse(allItems.isEmpty());
+
+      assertEquals(allItems.size(), allResults.size());
+      System.out.println(String.format("Retrieved a total of %d item(s) with pagination.", allResults.size()));
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testListClusterNetworkSubnetReservedIps" })
+  public void testCreateClusterNetworkSubnetReservedIp() throws Exception {
+    try {
+      CreateClusterNetworkSubnetReservedIpOptions createClusterNetworkSubnetReservedIpOptions = new CreateClusterNetworkSubnetReservedIpOptions.Builder()
+        .clusterNetworkId("testString")
+        .clusterNetworkSubnetId("testString")
+        .address("192.168.3.4")
+        .name("my-cluster-network-subnet-reserved-ip")
+        .build();
+
+      // Invoke operation
+      Response<ClusterNetworkSubnetReservedIP> response = service.createClusterNetworkSubnetReservedIp(createClusterNetworkSubnetReservedIpOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 201);
+
+      ClusterNetworkSubnetReservedIP clusterNetworkSubnetReservedIpResult = response.getResult();
+      assertNotNull(clusterNetworkSubnetReservedIpResult);
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testCreateClusterNetworkSubnetReservedIp" })
+  public void testGetClusterNetworkSubnetReservedIp() throws Exception {
+    try {
+      GetClusterNetworkSubnetReservedIpOptions getClusterNetworkSubnetReservedIpOptions = new GetClusterNetworkSubnetReservedIpOptions.Builder()
+        .clusterNetworkId("testString")
+        .clusterNetworkSubnetId("testString")
+        .id("testString")
+        .build();
+
+      // Invoke operation
+      Response<ClusterNetworkSubnetReservedIP> response = service.getClusterNetworkSubnetReservedIp(getClusterNetworkSubnetReservedIpOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      ClusterNetworkSubnetReservedIP clusterNetworkSubnetReservedIpResult = response.getResult();
+      assertNotNull(clusterNetworkSubnetReservedIpResult);
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testGetClusterNetworkSubnetReservedIp" })
+  public void testUpdateClusterNetworkSubnetReservedIp() throws Exception {
+    try {
+      ClusterNetworkSubnetReservedIPPatch clusterNetworkSubnetReservedIpPatchModel = new ClusterNetworkSubnetReservedIPPatch.Builder()
+        .autoDelete(false)
+        .name("my-cluster-network-subnet-reserved-ip")
+        .build();
+      Map<String, Object> clusterNetworkSubnetReservedIpPatchModelAsPatch = clusterNetworkSubnetReservedIpPatchModel.asPatch();
+
+      UpdateClusterNetworkSubnetReservedIpOptions updateClusterNetworkSubnetReservedIpOptions = new UpdateClusterNetworkSubnetReservedIpOptions.Builder()
+        .clusterNetworkId("testString")
+        .clusterNetworkSubnetId("testString")
+        .id("testString")
+        .clusterNetworkSubnetReservedIpPatch(clusterNetworkSubnetReservedIpPatchModelAsPatch)
+        .ifMatch("W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"")
+        .build();
+
+      // Invoke operation
+      Response<ClusterNetworkSubnetReservedIP> response = service.updateClusterNetworkSubnetReservedIp(updateClusterNetworkSubnetReservedIpOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      ClusterNetworkSubnetReservedIP clusterNetworkSubnetReservedIpResult = response.getResult();
+      assertNotNull(clusterNetworkSubnetReservedIpResult);
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testUpdateClusterNetworkSubnetReservedIp" })
+  public void testGetClusterNetworkSubnet() throws Exception {
+    try {
+      GetClusterNetworkSubnetOptions getClusterNetworkSubnetOptions = new GetClusterNetworkSubnetOptions.Builder()
+        .clusterNetworkId("testString")
+        .id("testString")
+        .build();
+
+      // Invoke operation
+      Response<ClusterNetworkSubnet> response = service.getClusterNetworkSubnet(getClusterNetworkSubnetOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      ClusterNetworkSubnet clusterNetworkSubnetResult = response.getResult();
+      assertNotNull(clusterNetworkSubnetResult);
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testGetClusterNetworkSubnet" })
+  public void testUpdateClusterNetworkSubnet() throws Exception {
+    try {
+      ClusterNetworkSubnetPatch clusterNetworkSubnetPatchModel = new ClusterNetworkSubnetPatch.Builder()
+        .name("my-cluster-network-subnet")
+        .build();
+      Map<String, Object> clusterNetworkSubnetPatchModelAsPatch = clusterNetworkSubnetPatchModel.asPatch();
+
+      UpdateClusterNetworkSubnetOptions updateClusterNetworkSubnetOptions = new UpdateClusterNetworkSubnetOptions.Builder()
+        .clusterNetworkId("testString")
+        .id("testString")
+        .clusterNetworkSubnetPatch(clusterNetworkSubnetPatchModelAsPatch)
+        .ifMatch("W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"")
+        .build();
+
+      // Invoke operation
+      Response<ClusterNetworkSubnet> response = service.updateClusterNetworkSubnet(updateClusterNetworkSubnetOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      ClusterNetworkSubnet clusterNetworkSubnetResult = response.getResult();
+      assertNotNull(clusterNetworkSubnetResult);
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testUpdateClusterNetworkSubnet" })
+  public void testGetClusterNetwork() throws Exception {
+    try {
+      GetClusterNetworkOptions getClusterNetworkOptions = new GetClusterNetworkOptions.Builder()
+        .id("testString")
+        .build();
+
+      // Invoke operation
+      Response<ClusterNetwork> response = service.getClusterNetwork(getClusterNetworkOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      ClusterNetwork clusterNetworkResult = response.getResult();
+      assertNotNull(clusterNetworkResult);
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testGetClusterNetwork" })
+  public void testUpdateClusterNetwork() throws Exception {
+    try {
+      ClusterNetworkPatch clusterNetworkPatchModel = new ClusterNetworkPatch.Builder()
+        .name("my-cluster-network")
+        .build();
+      Map<String, Object> clusterNetworkPatchModelAsPatch = clusterNetworkPatchModel.asPatch();
+
+      UpdateClusterNetworkOptions updateClusterNetworkOptions = new UpdateClusterNetworkOptions.Builder()
+        .id("testString")
+        .clusterNetworkPatch(clusterNetworkPatchModelAsPatch)
+        .ifMatch("W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"")
+        .build();
+
+      // Invoke operation
+      Response<ClusterNetwork> response = service.updateClusterNetwork(updateClusterNetworkOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      ClusterNetwork clusterNetworkResult = response.getResult();
+      assertNotNull(clusterNetworkResult);
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testUpdateClusterNetwork" })
   public void testListPublicGateways() throws Exception {
     try {
       ListPublicGatewaysOptions listPublicGatewaysOptions = new ListPublicGatewaysOptions.Builder()
@@ -9876,8 +10720,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       PublicGatewayCollection publicGatewayCollectionResult = response.getResult();
-
       assertNotNull(publicGatewayCollectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -9928,7 +10772,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       PublicGatewayFloatingIPPrototypeFloatingIPIdentityFloatingIPIdentityById publicGatewayFloatingIpPrototypeModel = new PublicGatewayFloatingIPPrototypeFloatingIPIdentityFloatingIPIdentityById.Builder()
-        .id("39300233-9995-4806-89a5-3c1b6eb88689")
+        .id("r006-f45e0d90-12a8-4460-8210-290ff2ab75cd")
         .build();
 
       ResourceGroupIdentityById resourceGroupIdentityModel = new ResourceGroupIdentityById.Builder()
@@ -9950,8 +10794,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 201);
 
       PublicGateway publicGatewayResult = response.getResult();
-
       assertNotNull(publicGatewayResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -9972,8 +10816,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       PublicGateway publicGatewayResult = response.getResult();
-
       assertNotNull(publicGatewayResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -10000,8 +10844,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       PublicGateway publicGatewayResult = response.getResult();
-
       assertNotNull(publicGatewayResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -10029,8 +10873,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       FloatingIPCollection floatingIpCollectionResult = response.getResult();
-
       assertNotNull(floatingIpCollectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -10102,8 +10946,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 201);
 
       FloatingIP floatingIpResult = response.getResult();
-
       assertNotNull(floatingIpResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -10124,8 +10968,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       FloatingIP floatingIpResult = response.getResult();
-
       assertNotNull(floatingIpResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -10136,7 +10980,7 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testUpdateFloatingIp() throws Exception {
     try {
       FloatingIPTargetPatchBareMetalServerNetworkInterfaceIdentityBareMetalServerNetworkInterfaceIdentityById floatingIpTargetPatchModel = new FloatingIPTargetPatchBareMetalServerNetworkInterfaceIdentityBareMetalServerNetworkInterfaceIdentityById.Builder()
-        .id("10c02d81-0ecb-4dc5-897d-28392913b81e")
+        .id("0717-da8c43ec-b6ca-4bd2-871e-72e288c66ee6")
         .build();
 
       FloatingIPPatch floatingIpPatchModel = new FloatingIPPatch.Builder()
@@ -10157,8 +11001,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       FloatingIP floatingIpResult = response.getResult();
-
       assertNotNull(floatingIpResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -10181,8 +11025,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       NetworkACLCollection networkAclCollectionResult = response.getResult();
-
       assertNotNull(networkAclCollectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -10264,8 +11108,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 201);
 
       NetworkACL networkAclResult = response.getResult();
-
       assertNotNull(networkAclResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -10286,8 +11130,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       NetworkACL networkAclResult = response.getResult();
-
       assertNotNull(networkAclResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -10314,8 +11158,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       NetworkACL networkAclResult = response.getResult();
-
       assertNotNull(networkAclResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -10339,8 +11183,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       NetworkACLRuleCollection networkAclRuleCollectionResult = response.getResult();
-
       assertNotNull(networkAclRuleCollectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -10414,8 +11258,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 201);
 
       NetworkACLRule networkAclRuleResult = response.getResult();
-
       assertNotNull(networkAclRuleResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -10437,8 +11281,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       NetworkACLRule networkAclRuleResult = response.getResult();
-
       assertNotNull(networkAclRuleResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -10482,8 +11326,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       NetworkACLRule networkAclRuleResult = response.getResult();
-
       assertNotNull(networkAclRuleResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -10509,8 +11353,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       SecurityGroupCollection securityGroupCollectionResult = response.getResult();
-
       assertNotNull(securityGroupCollectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -10593,8 +11437,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 201);
 
       SecurityGroup securityGroupResult = response.getResult();
-
       assertNotNull(securityGroupResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -10615,8 +11459,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       SecurityGroup securityGroupResult = response.getResult();
-
       assertNotNull(securityGroupResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -10643,8 +11487,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       SecurityGroup securityGroupResult = response.getResult();
-
       assertNotNull(securityGroupResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -10665,8 +11509,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       SecurityGroupRuleCollection securityGroupRuleCollectionResult = response.getResult();
-
       assertNotNull(securityGroupRuleCollectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -10704,8 +11548,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 201);
 
       SecurityGroupRule securityGroupRuleResult = response.getResult();
-
       assertNotNull(securityGroupRuleResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -10727,8 +11571,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       SecurityGroupRule securityGroupRuleResult = response.getResult();
-
       assertNotNull(securityGroupRuleResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -10742,8 +11586,8 @@ public class VpcIT extends SdkIntegrationTestBase {
         .address("192.168.3.4")
         .build();
 
-      SecurityGroupRuleRemotePatchIP securityGroupRuleRemotePatchModel = new SecurityGroupRuleRemotePatchIP.Builder()
-        .address("192.168.3.4")
+      SecurityGroupRuleRemotePatchCIDR securityGroupRuleRemotePatchModel = new SecurityGroupRuleRemotePatchCIDR.Builder()
+        .cidrBlock("10.0.0.0/8")
         .build();
 
       SecurityGroupRulePatch securityGroupRulePatchModel = new SecurityGroupRulePatch.Builder()
@@ -10771,8 +11615,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       SecurityGroupRule securityGroupRuleResult = response.getResult();
-
       assertNotNull(securityGroupRuleResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -10795,8 +11639,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       SecurityGroupTargetCollection securityGroupTargetCollectionResult = response.getResult();
-
       assertNotNull(securityGroupTargetCollectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -10850,8 +11694,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       SecurityGroupTargetReference securityGroupTargetReferenceResult = response.getResult();
-
       assertNotNull(securityGroupTargetReferenceResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -10873,8 +11717,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       SecurityGroupTargetReference securityGroupTargetReferenceResult = response.getResult();
-
       assertNotNull(securityGroupTargetReferenceResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -10896,8 +11740,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       IKEPolicyCollection ikePolicyCollectionResult = response.getResult();
-
       assertNotNull(ikePolicyCollectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -10959,8 +11803,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 201);
 
       IKEPolicy ikePolicyResult = response.getResult();
-
       assertNotNull(ikePolicyResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -10981,8 +11825,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       IKEPolicy ikePolicyResult = response.getResult();
-
       assertNotNull(ikePolicyResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -11014,8 +11858,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       IKEPolicy ikePolicyResult = response.getResult();
-
       assertNotNull(ikePolicyResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -11038,8 +11882,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       IKEPolicyConnectionCollection ikePolicyConnectionCollectionResult = response.getResult();
-
       assertNotNull(ikePolicyConnectionCollectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -11093,8 +11937,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       IPsecPolicyCollection iPsecPolicyCollectionResult = response.getResult();
-
       assertNotNull(iPsecPolicyCollectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -11155,8 +11999,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 201);
 
       IPsecPolicy iPsecPolicyResult = response.getResult();
-
       assertNotNull(iPsecPolicyResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -11177,8 +12021,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       IPsecPolicy iPsecPolicyResult = response.getResult();
-
       assertNotNull(iPsecPolicyResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -11209,8 +12053,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       IPsecPolicy iPsecPolicyResult = response.getResult();
-
       assertNotNull(iPsecPolicyResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -11233,8 +12077,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       IPsecPolicyConnectionCollection iPsecPolicyConnectionCollectionResult = response.getResult();
-
       assertNotNull(iPsecPolicyConnectionCollectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -11291,8 +12135,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       VPNGatewayCollection vpnGatewayCollectionResult = response.getResult();
-
       assertNotNull(vpnGatewayCollectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -11362,8 +12206,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 201);
 
       VPNGateway vpnGatewayResult = response.getResult();
-
       assertNotNull(vpnGatewayResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -11384,8 +12228,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       VPNGateway vpnGatewayResult = response.getResult();
-
       assertNotNull(vpnGatewayResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -11412,8 +12256,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       VPNGateway vpnGatewayResult = response.getResult();
-
       assertNotNull(vpnGatewayResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -11437,8 +12281,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       VPNGatewayConnectionCollection vpnGatewayConnectionCollectionResult = response.getResult();
-
       assertNotNull(vpnGatewayConnectionCollectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -11535,8 +12379,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 201);
 
       VPNGatewayConnection vpnGatewayConnectionResult = response.getResult();
-
       assertNotNull(vpnGatewayConnectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -11558,8 +12402,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       VPNGatewayConnection vpnGatewayConnectionResult = response.getResult();
-
       assertNotNull(vpnGatewayConnectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -11613,8 +12457,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       VPNGatewayConnection vpnGatewayConnectionResult = response.getResult();
-
       assertNotNull(vpnGatewayConnectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -11636,8 +12480,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       VPNGatewayConnectionCIDRs vpnGatewayConnectionCidRsResult = response.getResult();
-
       assertNotNull(vpnGatewayConnectionCidRsResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -11699,8 +12543,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       VPNGatewayConnectionCIDRs vpnGatewayConnectionCidRsResult = response.getResult();
-
       assertNotNull(vpnGatewayConnectionCidRsResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -11765,8 +12609,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       VPNServerCollection vpnServerCollectionResult = response.getResult();
-
       assertNotNull(vpnServerCollectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -11836,7 +12680,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       SecurityGroupIdentityById securityGroupIdentityModel = new SecurityGroupIdentityById.Builder()
-        .id("be5df5ca-12a0-494b-907e-aa6ec2bfa271")
+        .id("r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271")
         .build();
 
       CreateVpnServerOptions createVpnServerOptions = new CreateVpnServerOptions.Builder()
@@ -11861,8 +12705,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 201);
 
       VPNServer vpnServerResult = response.getResult();
-
       assertNotNull(vpnServerResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -11883,8 +12727,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       VPNServer vpnServerResult = response.getResult();
-
       assertNotNull(vpnServerResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -11942,8 +12786,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       VPNServer vpnServerResult = response.getResult();
-
       assertNotNull(vpnServerResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -11964,8 +12808,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       String resultResult = response.getResult();
-
       assertNotNull(resultResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -11989,8 +12833,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       VPNServerClientCollection vpnServerClientCollectionResult = response.getResult();
-
       assertNotNull(vpnServerClientCollectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -12045,8 +12889,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       VPNServerClient vpnServerClientResult = response.getResult();
-
       assertNotNull(vpnServerClientResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -12089,8 +12933,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       VPNServerRouteCollection vpnServerRouteCollectionResult = response.getResult();
-
       assertNotNull(vpnServerRouteCollectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -12147,8 +12991,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 201);
 
       VPNServerRoute vpnServerRouteResult = response.getResult();
-
       assertNotNull(vpnServerRouteResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -12170,8 +13014,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       VPNServerRoute vpnServerRouteResult = response.getResult();
-
       assertNotNull(vpnServerRouteResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -12199,8 +13043,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       VPNServerRoute vpnServerRouteResult = response.getResult();
-
       assertNotNull(vpnServerRouteResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -12222,8 +13066,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       LoadBalancerProfileCollection loadBalancerProfileCollectionResult = response.getResult();
-
       assertNotNull(loadBalancerProfileCollectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -12275,8 +13119,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       LoadBalancerProfile loadBalancerProfileResult = response.getResult();
-
       assertNotNull(loadBalancerProfileResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -12298,8 +13142,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       LoadBalancerCollection loadBalancerCollectionResult = response.getResult();
-
       assertNotNull(loadBalancerCollectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -12406,7 +13250,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityById loadBalancerPoolMemberTargetPrototypeModel = new LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityById.Builder()
-        .id("0717_1e09281b-f177-46f2-b1f1-bc152b2e391a")
+        .id("0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0")
         .build();
 
       LoadBalancerPoolMemberPrototype loadBalancerPoolMemberPrototypeModel = new LoadBalancerPoolMemberPrototype.Builder()
@@ -12439,7 +13283,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       SecurityGroupIdentityById securityGroupIdentityModel = new SecurityGroupIdentityById.Builder()
-        .id("be5df5ca-12a0-494b-907e-aa6ec2bfa271")
+        .id("r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271")
         .build();
 
       CreateLoadBalancerOptions createLoadBalancerOptions = new CreateLoadBalancerOptions.Builder()
@@ -12464,8 +13308,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 201);
 
       LoadBalancer loadBalancerResult = response.getResult();
-
       assertNotNull(loadBalancerResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -12486,8 +13330,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       LoadBalancer loadBalancerResult = response.getResult();
-
       assertNotNull(loadBalancerResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -12543,8 +13387,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       LoadBalancer loadBalancerResult = response.getResult();
-
       assertNotNull(loadBalancerResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -12565,8 +13409,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       LoadBalancerStatistics loadBalancerStatisticsResult = response.getResult();
-
       assertNotNull(loadBalancerStatisticsResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -12587,8 +13431,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       LoadBalancerListenerCollection loadBalancerListenerCollectionResult = response.getResult();
-
       assertNotNull(loadBalancerListenerCollectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -12657,8 +13501,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 201);
 
       LoadBalancerListener loadBalancerListenerResult = response.getResult();
-
       assertNotNull(loadBalancerListenerResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -12680,8 +13524,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       LoadBalancerListener loadBalancerListenerResult = response.getResult();
-
       assertNotNull(loadBalancerListenerResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -12736,8 +13580,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       LoadBalancerListener loadBalancerListenerResult = response.getResult();
-
       assertNotNull(loadBalancerListenerResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -12759,8 +13603,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       LoadBalancerListenerPolicyCollection loadBalancerListenerPolicyCollectionResult = response.getResult();
-
       assertNotNull(loadBalancerListenerPolicyCollectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -12798,8 +13642,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 201);
 
       LoadBalancerListenerPolicy loadBalancerListenerPolicyResult = response.getResult();
-
       assertNotNull(loadBalancerListenerPolicyResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -12822,8 +13666,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       LoadBalancerListenerPolicy loadBalancerListenerPolicyResult = response.getResult();
-
       assertNotNull(loadBalancerListenerPolicyResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -12858,8 +13702,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       LoadBalancerListenerPolicy loadBalancerListenerPolicyResult = response.getResult();
-
       assertNotNull(loadBalancerListenerPolicyResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -12882,8 +13726,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       LoadBalancerListenerPolicyRuleCollection loadBalancerListenerPolicyRuleCollectionResult = response.getResult();
-
       assertNotNull(loadBalancerListenerPolicyRuleCollectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -12910,8 +13754,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 201);
 
       LoadBalancerListenerPolicyRule loadBalancerListenerPolicyRuleResult = response.getResult();
-
       assertNotNull(loadBalancerListenerPolicyRuleResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -12935,8 +13779,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       LoadBalancerListenerPolicyRule loadBalancerListenerPolicyRuleResult = response.getResult();
-
       assertNotNull(loadBalancerListenerPolicyRuleResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -12969,8 +13813,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       LoadBalancerListenerPolicyRule loadBalancerListenerPolicyRuleResult = response.getResult();
-
       assertNotNull(loadBalancerListenerPolicyRuleResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -12991,8 +13835,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       LoadBalancerPoolCollection loadBalancerPoolCollectionResult = response.getResult();
-
       assertNotNull(loadBalancerPoolCollectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -13012,7 +13856,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityById loadBalancerPoolMemberTargetPrototypeModel = new LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityById.Builder()
-        .id("0717_1e09281b-f177-46f2-b1f1-bc152b2e391a")
+        .id("0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0")
         .build();
 
       LoadBalancerPoolMemberPrototype loadBalancerPoolMemberPrototypeModel = new LoadBalancerPoolMemberPrototype.Builder()
@@ -13044,8 +13888,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 201);
 
       LoadBalancerPool loadBalancerPoolResult = response.getResult();
-
       assertNotNull(loadBalancerPoolResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -13067,8 +13911,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       LoadBalancerPool loadBalancerPoolResult = response.getResult();
-
       assertNotNull(loadBalancerPoolResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -13115,8 +13959,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       LoadBalancerPool loadBalancerPoolResult = response.getResult();
-
       assertNotNull(loadBalancerPoolResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -13138,8 +13982,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       LoadBalancerPoolMemberCollection loadBalancerPoolMemberCollectionResult = response.getResult();
-
       assertNotNull(loadBalancerPoolMemberCollectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -13150,7 +13994,7 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testCreateLoadBalancerPoolMember() throws Exception {
     try {
       LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityById loadBalancerPoolMemberTargetPrototypeModel = new LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityById.Builder()
-        .id("0717_1e09281b-f177-46f2-b1f1-bc152b2e391a")
+        .id("0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0")
         .build();
 
       CreateLoadBalancerPoolMemberOptions createLoadBalancerPoolMemberOptions = new CreateLoadBalancerPoolMemberOptions.Builder()
@@ -13168,8 +14012,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 201);
 
       LoadBalancerPoolMember loadBalancerPoolMemberResult = response.getResult();
-
       assertNotNull(loadBalancerPoolMemberResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -13180,7 +14024,7 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testReplaceLoadBalancerPoolMembers() throws Exception {
     try {
       LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityById loadBalancerPoolMemberTargetPrototypeModel = new LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityById.Builder()
-        .id("0717_1e09281b-f177-46f2-b1f1-bc152b2e391a")
+        .id("0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0")
         .build();
 
       LoadBalancerPoolMemberPrototype loadBalancerPoolMemberPrototypeModel = new LoadBalancerPoolMemberPrototype.Builder()
@@ -13199,11 +14043,11 @@ public class VpcIT extends SdkIntegrationTestBase {
       Response<LoadBalancerPoolMemberCollection> response = service.replaceLoadBalancerPoolMembers(replaceLoadBalancerPoolMembersOptions).execute();
       // Validate response
       assertNotNull(response);
-      assertEquals(response.getStatusCode(), 202);
+      assertEquals(response.getStatusCode(), 200);
 
       LoadBalancerPoolMemberCollection loadBalancerPoolMemberCollectionResult = response.getResult();
-
       assertNotNull(loadBalancerPoolMemberCollectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -13226,8 +14070,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       LoadBalancerPoolMember loadBalancerPoolMemberResult = response.getResult();
-
       assertNotNull(loadBalancerPoolMemberResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -13238,7 +14082,7 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testUpdateLoadBalancerPoolMember() throws Exception {
     try {
       LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityById loadBalancerPoolMemberTargetPrototypeModel = new LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityById.Builder()
-        .id("0717_1e09281b-f177-46f2-b1f1-bc152b2e391a")
+        .id("0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0")
         .build();
 
       LoadBalancerPoolMemberPatch loadBalancerPoolMemberPatchModel = new LoadBalancerPoolMemberPatch.Builder()
@@ -13262,8 +14106,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       LoadBalancerPoolMember loadBalancerPoolMemberResult = response.getResult();
-
       assertNotNull(loadBalancerPoolMemberResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -13292,8 +14136,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       EndpointGatewayCollection endpointGatewayCollectionResult = response.getResult();
-
       assertNotNull(endpointGatewayCollectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -13379,8 +14223,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 201);
 
       EndpointGateway endpointGatewayResult = response.getResult();
-
       assertNotNull(endpointGatewayResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -13404,8 +14248,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       ReservedIPCollectionEndpointGatewayContext reservedIpCollectionEndpointGatewayContextResult = response.getResult();
-
       assertNotNull(reservedIpCollectionEndpointGatewayContextResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -13460,8 +14304,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       ReservedIP reservedIpResult = response.getResult();
-
       assertNotNull(reservedIpResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -13483,8 +14327,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 201);
 
       ReservedIP reservedIpResult = response.getResult();
-
       assertNotNull(reservedIpResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -13505,8 +14349,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       EndpointGateway endpointGatewayResult = response.getResult();
-
       assertNotNull(endpointGatewayResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -13534,8 +14378,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       EndpointGateway endpointGatewayResult = response.getResult();
-
       assertNotNull(endpointGatewayResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -13564,8 +14408,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       FlowLogCollectorCollection flowLogCollectorCollectionResult = response.getResult();
-
       assertNotNull(flowLogCollectorCollectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -13618,7 +14462,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       FlowLogCollectorTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceIdentityById flowLogCollectorTargetPrototypeModel = new FlowLogCollectorTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceIdentityById.Builder()
-        .id("0717-10c02d81-0ecb-4dc5-897d-28392913b81e")
+        .id("0717-d54eb633-98ea-459d-aa00-6a8e780175a7")
         .build();
 
       ResourceGroupIdentityById resourceGroupIdentityModel = new ResourceGroupIdentityById.Builder()
@@ -13640,8 +14484,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 201);
 
       FlowLogCollector flowLogCollectorResult = response.getResult();
-
       assertNotNull(flowLogCollectorResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -13662,8 +14506,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       FlowLogCollector flowLogCollectorResult = response.getResult();
-
       assertNotNull(flowLogCollectorResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -13691,8 +14535,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       FlowLogCollector flowLogCollectorResult = response.getResult();
-
       assertNotNull(flowLogCollectorResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -13715,8 +14559,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       PrivatePathServiceGatewayCollection privatePathServiceGatewayCollectionResult = response.getResult();
-
       assertNotNull(privatePathServiceGatewayCollectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -13782,8 +14626,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 201);
 
       PrivatePathServiceGateway privatePathServiceGatewayResult = response.getResult();
-
       assertNotNull(privatePathServiceGatewayResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -13804,8 +14648,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       PrivatePathServiceGateway privatePathServiceGatewayResult = response.getResult();
-
       assertNotNull(privatePathServiceGatewayResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -13839,8 +14683,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       PrivatePathServiceGateway privatePathServiceGatewayResult = response.getResult();
-
       assertNotNull(privatePathServiceGatewayResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -13864,8 +14708,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       PrivatePathServiceGatewayAccountPolicyCollection privatePathServiceGatewayAccountPolicyCollectionResult = response.getResult();
-
       assertNotNull(privatePathServiceGatewayAccountPolicyCollectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -13925,8 +14769,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 201);
 
       PrivatePathServiceGatewayAccountPolicy privatePathServiceGatewayAccountPolicyResult = response.getResult();
-
       assertNotNull(privatePathServiceGatewayAccountPolicyResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -13948,8 +14792,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       PrivatePathServiceGatewayAccountPolicy privatePathServiceGatewayAccountPolicyResult = response.getResult();
-
       assertNotNull(privatePathServiceGatewayAccountPolicyResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -13977,8 +14821,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       PrivatePathServiceGatewayAccountPolicy privatePathServiceGatewayAccountPolicyResult = response.getResult();
-
       assertNotNull(privatePathServiceGatewayAccountPolicyResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -14003,8 +14847,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       PrivatePathServiceGatewayEndpointGatewayBindingCollection privatePathServiceGatewayEndpointGatewayBindingCollectionResult = response.getResult();
-
       assertNotNull(privatePathServiceGatewayEndpointGatewayBindingCollectionResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -14060,8 +14904,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 200);
 
       PrivatePathServiceGatewayEndpointGatewayBinding privatePathServiceGatewayEndpointGatewayBindingResult = response.getResult();
-
       assertNotNull(privatePathServiceGatewayEndpointGatewayBindingResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -14220,8 +15064,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 202);
 
       VPCDNSResolutionBinding vpcdnsResolutionBindingResult = response.getResult();
-
       assertNotNull(vpcdnsResolutionBindingResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -14435,6 +15279,29 @@ public class VpcIT extends SdkIntegrationTestBase {
   }
 
   @Test(dependsOnMethods = { "testDeleteInstance" })
+  public void testDeleteInstanceClusterNetworkAttachment() throws Exception {
+    try {
+      DeleteInstanceClusterNetworkAttachmentOptions deleteInstanceClusterNetworkAttachmentOptions = new DeleteInstanceClusterNetworkAttachmentOptions.Builder()
+        .instanceId("testString")
+        .id("testString")
+        .build();
+
+      // Invoke operation
+      Response<InstanceClusterNetworkAttachment> response = service.deleteInstanceClusterNetworkAttachment(deleteInstanceClusterNetworkAttachmentOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 202);
+
+      InstanceClusterNetworkAttachment instanceClusterNetworkAttachmentResult = response.getResult();
+      assertNotNull(instanceClusterNetworkAttachmentResult);
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testDeleteInstanceClusterNetworkAttachment" })
   public void testDeleteInstanceNetworkAttachment() throws Exception {
     try {
       DeleteInstanceNetworkAttachmentOptions deleteInstanceNetworkAttachmentOptions = new DeleteInstanceNetworkAttachmentOptions.Builder()
@@ -14657,8 +15524,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 202);
 
       Reservation reservationResult = response.getResult();
-
       assertNotNull(reservationResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -14828,8 +15695,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 202);
 
       SnapshotConsistencyGroup snapshotConsistencyGroupResult = response.getResult();
-
       assertNotNull(snapshotConsistencyGroupResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -14907,8 +15774,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 202);
 
       Share shareResult = response.getResult();
-
       assertNotNull(shareResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -14949,8 +15816,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 202);
 
       ShareMountTarget shareMountTargetResult = response.getResult();
-
       assertNotNull(shareMountTargetResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -14991,8 +15858,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 202);
 
       BackupPolicyPlan backupPolicyPlanResult = response.getResult();
-
       assertNotNull(backupPolicyPlanResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -15014,8 +15881,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 202);
 
       BackupPolicy backupPolicyResult = response.getResult();
-
       assertNotNull(backupPolicyResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -15036,8 +15903,8 @@ public class VpcIT extends SdkIntegrationTestBase {
       assertEquals(response.getStatusCode(), 202);
 
       VirtualNetworkInterface virtualNetworkInterfaceResult = response.getResult();
-
       assertNotNull(virtualNetworkInterfaceResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -15083,6 +15950,102 @@ public class VpcIT extends SdkIntegrationTestBase {
   }
 
   @Test(dependsOnMethods = { "testRemoveVirtualNetworkInterfaceIp" })
+  public void testDeleteClusterNetworkInterface() throws Exception {
+    try {
+      DeleteClusterNetworkInterfaceOptions deleteClusterNetworkInterfaceOptions = new DeleteClusterNetworkInterfaceOptions.Builder()
+        .clusterNetworkId("testString")
+        .id("testString")
+        .ifMatch("W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"")
+        .build();
+
+      // Invoke operation
+      Response<ClusterNetworkInterface> response = service.deleteClusterNetworkInterface(deleteClusterNetworkInterfaceOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 202);
+
+      ClusterNetworkInterface clusterNetworkInterfaceResult = response.getResult();
+      assertNotNull(clusterNetworkInterfaceResult);
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testDeleteClusterNetworkInterface" })
+  public void testDeleteClusterNetworkSubnetReservedIp() throws Exception {
+    try {
+      DeleteClusterNetworkSubnetReservedIpOptions deleteClusterNetworkSubnetReservedIpOptions = new DeleteClusterNetworkSubnetReservedIpOptions.Builder()
+        .clusterNetworkId("testString")
+        .clusterNetworkSubnetId("testString")
+        .id("testString")
+        .ifMatch("W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"")
+        .build();
+
+      // Invoke operation
+      Response<ClusterNetworkSubnetReservedIP> response = service.deleteClusterNetworkSubnetReservedIp(deleteClusterNetworkSubnetReservedIpOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 202);
+
+      ClusterNetworkSubnetReservedIP clusterNetworkSubnetReservedIpResult = response.getResult();
+      assertNotNull(clusterNetworkSubnetReservedIpResult);
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testDeleteClusterNetworkSubnetReservedIp" })
+  public void testDeleteClusterNetworkSubnet() throws Exception {
+    try {
+      DeleteClusterNetworkSubnetOptions deleteClusterNetworkSubnetOptions = new DeleteClusterNetworkSubnetOptions.Builder()
+        .clusterNetworkId("testString")
+        .id("testString")
+        .ifMatch("W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"")
+        .build();
+
+      // Invoke operation
+      Response<ClusterNetworkSubnet> response = service.deleteClusterNetworkSubnet(deleteClusterNetworkSubnetOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 202);
+
+      ClusterNetworkSubnet clusterNetworkSubnetResult = response.getResult();
+      assertNotNull(clusterNetworkSubnetResult);
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testDeleteClusterNetworkSubnet" })
+  public void testDeleteClusterNetwork() throws Exception {
+    try {
+      DeleteClusterNetworkOptions deleteClusterNetworkOptions = new DeleteClusterNetworkOptions.Builder()
+        .id("testString")
+        .ifMatch("W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"")
+        .build();
+
+      // Invoke operation
+      Response<ClusterNetwork> response = service.deleteClusterNetwork(deleteClusterNetworkOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 202);
+
+      ClusterNetwork clusterNetworkResult = response.getResult();
+      assertNotNull(clusterNetworkResult);
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testDeleteClusterNetwork" })
   public void testDeletePublicGateway() throws Exception {
     try {
       DeletePublicGatewayOptions deletePublicGatewayOptions = new DeletePublicGatewayOptions.Builder()

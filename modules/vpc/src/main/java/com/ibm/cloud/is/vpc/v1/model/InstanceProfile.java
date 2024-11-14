@@ -52,6 +52,8 @@ public class InstanceProfile extends GenericModel {
   }
 
   protected InstanceProfileBandwidth bandwidth;
+  @SerializedName("cluster_network_attachment_count")
+  protected InstanceProfileClusterNetworkAttachmentCount clusterNetworkAttachmentCount;
   @SerializedName("confidential_compute_modes")
   protected InstanceProfileSupportedConfidentialComputeModes confidentialComputeModes;
   protected List<InstanceProfileDisk> disks;
@@ -84,6 +86,8 @@ public class InstanceProfile extends GenericModel {
   @SerializedName("secure_boot_modes")
   protected InstanceProfileSupportedSecureBootModes secureBootModes;
   protected String status;
+  @SerializedName("supported_cluster_network_profiles")
+  protected List<ClusterNetworkProfileReference> supportedClusterNetworkProfiles;
   @SerializedName("total_volume_bandwidth")
   protected InstanceProfileVolumeBandwidth totalVolumeBandwidth;
   @SerializedName("vcpu_architecture")
@@ -102,6 +106,15 @@ public class InstanceProfile extends GenericModel {
    */
   public InstanceProfileBandwidth getBandwidth() {
     return bandwidth;
+  }
+
+  /**
+   * Gets the clusterNetworkAttachmentCount.
+   *
+   * @return the clusterNetworkAttachmentCount
+   */
+  public InstanceProfileClusterNetworkAttachmentCount getClusterNetworkAttachmentCount() {
+    return clusterNetworkAttachmentCount;
   }
 
   /**
@@ -295,6 +308,17 @@ public class InstanceProfile extends GenericModel {
    */
   public String getStatus() {
     return status;
+  }
+
+  /**
+   * Gets the supportedClusterNetworkProfiles.
+   *
+   * The cluster network profiles that support this instance profile.
+   *
+   * @return the supportedClusterNetworkProfiles
+   */
+  public List<ClusterNetworkProfileReference> getSupportedClusterNetworkProfiles() {
+    return supportedClusterNetworkProfiles;
   }
 
   /**

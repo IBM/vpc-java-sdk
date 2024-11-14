@@ -301,12 +301,12 @@ public class InstancePatch extends GenericModel {
   /**
    * Gets the profile.
    *
-   * The profile to use for this virtual server instance. For the profile to be changed,
-   * the instance `status` must be `stopping` or `stopped`. In addition, the requested
-   * profile must:
-   * - Have matching instance disk support. Any disks associated with the current profile
-   *   will be deleted, and any disks associated with the requested profile will be
-   *   created.
+   * The profile to use for this virtual server instance. Any disks associated with the
+   * current profile will be deleted, and any disks associated with the requested profile
+   * will be created.
+   *
+   * For the profile to be changed, the instance `status` must be `stopping` or `stopped`.
+   * In addition, the requested profile must:
    * - Be compatible with any `placement_target` constraints. For example, if the
    *   instance is placed on a dedicated host, the requested profile `family` must be
    *   the same as the dedicated host `family`.

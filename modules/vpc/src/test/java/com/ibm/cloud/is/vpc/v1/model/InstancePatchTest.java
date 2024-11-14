@@ -63,9 +63,9 @@ public class InstancePatchTest {
     assertEquals(instancePatchProfileModel.name(), "bx2-4x16");
 
     ReservationIdentityById reservationIdentityModel = new ReservationIdentityById.Builder()
-      .id("7187-ba49df72-37b8-43ac-98da-f8e029de0e63")
+      .id("0717-ba49df72-37b8-43ac-98da-f8e029de0e63")
       .build();
-    assertEquals(reservationIdentityModel.id(), "7187-ba49df72-37b8-43ac-98da-f8e029de0e63");
+    assertEquals(reservationIdentityModel.id(), "0717-ba49df72-37b8-43ac-98da-f8e029de0e63");
 
     InstanceReservationAffinityPatch instanceReservationAffinityPatchModel = new InstanceReservationAffinityPatch.Builder()
       .policy("disabled")
@@ -130,7 +130,7 @@ public class InstancePatchTest {
       .build();
 
     ReservationIdentityById reservationIdentityModel = new ReservationIdentityById.Builder()
-      .id("7187-ba49df72-37b8-43ac-98da-f8e029de0e63")
+      .id("0717-ba49df72-37b8-43ac-98da-f8e029de0e63")
       .build();
 
     InstanceReservationAffinityPatch instanceReservationAffinityPatchModel = new InstanceReservationAffinityPatch.Builder()

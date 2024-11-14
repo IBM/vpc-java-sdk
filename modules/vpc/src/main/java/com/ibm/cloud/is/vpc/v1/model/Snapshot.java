@@ -87,6 +87,7 @@ public class Snapshot extends GenericModel {
   protected String name;
   @SerializedName("operating_system")
   protected OperatingSystem operatingSystem;
+  protected Long progress;
   @SerializedName("resource_group")
   protected ResourceGroupReference resourceGroup;
   @SerializedName("resource_type")
@@ -306,6 +307,18 @@ public class Snapshot extends GenericModel {
    */
   public OperatingSystem getOperatingSystem() {
     return operatingSystem;
+  }
+
+  /**
+   * Gets the progress.
+   *
+   * Indicates the progress (as a percentage) of storing this snapshot. Only stored snapshots can be used for
+   * restoration.
+   *
+   * @return the progress
+   */
+  public Long getProgress() {
+    return progress;
   }
 
   /**

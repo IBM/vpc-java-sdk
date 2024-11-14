@@ -24,6 +24,9 @@ public class ListInstancesOptions extends GenericModel {
   protected Long limit;
   protected String resourceGroupId;
   protected String name;
+  protected String clusterNetworkId;
+  protected String clusterNetworkCrn;
+  protected String clusterNetworkName;
   protected String dedicatedHostId;
   protected String dedicatedHostCrn;
   protected String dedicatedHostName;
@@ -45,6 +48,9 @@ public class ListInstancesOptions extends GenericModel {
     private Long limit;
     private String resourceGroupId;
     private String name;
+    private String clusterNetworkId;
+    private String clusterNetworkCrn;
+    private String clusterNetworkName;
     private String dedicatedHostId;
     private String dedicatedHostCrn;
     private String dedicatedHostName;
@@ -68,6 +74,9 @@ public class ListInstancesOptions extends GenericModel {
       this.limit = listInstancesOptions.limit;
       this.resourceGroupId = listInstancesOptions.resourceGroupId;
       this.name = listInstancesOptions.name;
+      this.clusterNetworkId = listInstancesOptions.clusterNetworkId;
+      this.clusterNetworkCrn = listInstancesOptions.clusterNetworkCrn;
+      this.clusterNetworkName = listInstancesOptions.clusterNetworkName;
       this.dedicatedHostId = listInstancesOptions.dedicatedHostId;
       this.dedicatedHostCrn = listInstancesOptions.dedicatedHostCrn;
       this.dedicatedHostName = listInstancesOptions.dedicatedHostName;
@@ -138,6 +147,39 @@ public class ListInstancesOptions extends GenericModel {
      */
     public Builder name(String name) {
       this.name = name;
+      return this;
+    }
+
+    /**
+     * Set the clusterNetworkId.
+     *
+     * @param clusterNetworkId the clusterNetworkId
+     * @return the ListInstancesOptions builder
+     */
+    public Builder clusterNetworkId(String clusterNetworkId) {
+      this.clusterNetworkId = clusterNetworkId;
+      return this;
+    }
+
+    /**
+     * Set the clusterNetworkCrn.
+     *
+     * @param clusterNetworkCrn the clusterNetworkCrn
+     * @return the ListInstancesOptions builder
+     */
+    public Builder clusterNetworkCrn(String clusterNetworkCrn) {
+      this.clusterNetworkCrn = clusterNetworkCrn;
+      return this;
+    }
+
+    /**
+     * Set the clusterNetworkName.
+     *
+     * @param clusterNetworkName the clusterNetworkName
+     * @return the ListInstancesOptions builder
+     */
+    public Builder clusterNetworkName(String clusterNetworkName) {
+      this.clusterNetworkName = clusterNetworkName;
       return this;
     }
 
@@ -281,6 +323,9 @@ public class ListInstancesOptions extends GenericModel {
     limit = builder.limit;
     resourceGroupId = builder.resourceGroupId;
     name = builder.name;
+    clusterNetworkId = builder.clusterNetworkId;
+    clusterNetworkCrn = builder.clusterNetworkCrn;
+    clusterNetworkName = builder.clusterNetworkName;
     dedicatedHostId = builder.dedicatedHostId;
     dedicatedHostCrn = builder.dedicatedHostCrn;
     dedicatedHostName = builder.dedicatedHostName;
@@ -346,6 +391,39 @@ public class ListInstancesOptions extends GenericModel {
    */
   public String name() {
     return name;
+  }
+
+  /**
+   * Gets the clusterNetworkId.
+   *
+   * Filters the collection to instances with a `cluster_network.id` property matching the specified identifier.
+   *
+   * @return the clusterNetworkId
+   */
+  public String clusterNetworkId() {
+    return clusterNetworkId;
+  }
+
+  /**
+   * Gets the clusterNetworkCrn.
+   *
+   * Filters the collection to instances with a `cluster_network.crn` property matching the specified CRN.
+   *
+   * @return the clusterNetworkCrn
+   */
+  public String clusterNetworkCrn() {
+    return clusterNetworkCrn;
+  }
+
+  /**
+   * Gets the clusterNetworkName.
+   *
+   * Filters the collection to resources with a `cluster_network.name` property matching the exact specified name.
+   *
+   * @return the clusterNetworkName
+   */
+  public String clusterNetworkName() {
+    return clusterNetworkName;
   }
 
   /**

@@ -23,10 +23,10 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class ReservedIPCollectionVirtualNetworkInterfaceContext extends GenericModel {
 
-  protected ReservedIPCollectionVirtualNetworkInterfaceContextFirst first;
+  protected PageLink first;
   protected List<ReservedIPReference> ips;
   protected Long limit;
-  protected ReservedIPCollectionVirtualNetworkInterfaceContextNext next;
+  protected PageLink next;
   @SerializedName("total_count")
   protected Long totalCount;
 
@@ -39,7 +39,7 @@ public class ReservedIPCollectionVirtualNetworkInterfaceContext extends GenericM
    *
    * @return the first
    */
-  public ReservedIPCollectionVirtualNetworkInterfaceContextFirst getFirst() {
+  public PageLink getFirst() {
     return first;
   }
 
@@ -73,7 +73,7 @@ public class ReservedIPCollectionVirtualNetworkInterfaceContext extends GenericM
    *
    * @return the next
    */
-  public ReservedIPCollectionVirtualNetworkInterfaceContextNext getNext() {
+  public PageLink getNext() {
     return next;
   }
 

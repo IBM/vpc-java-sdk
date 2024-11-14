@@ -14,6 +14,7 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.Deleted;
+import com.ibm.cloud.is.vpc.v1.model.PageLink;
 import com.ibm.cloud.is.vpc.v1.model.ReservedIPReference;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupReference;
@@ -21,8 +22,6 @@ import com.ibm.cloud.is.vpc.v1.model.SubnetReference;
 import com.ibm.cloud.is.vpc.v1.model.VPCReference;
 import com.ibm.cloud.is.vpc.v1.model.VirtualNetworkInterface;
 import com.ibm.cloud.is.vpc.v1.model.VirtualNetworkInterfaceCollection;
-import com.ibm.cloud.is.vpc.v1.model.VirtualNetworkInterfaceCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.VirtualNetworkInterfaceCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.VirtualNetworkInterfaceTargetShareMountTargetReference;
 import com.ibm.cloud.is.vpc.v1.model.ZoneReference;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;

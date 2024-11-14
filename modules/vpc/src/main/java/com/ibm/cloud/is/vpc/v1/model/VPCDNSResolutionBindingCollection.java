@@ -25,9 +25,9 @@ public class VPCDNSResolutionBindingCollection extends GenericModel {
 
   @SerializedName("dns_resolution_bindings")
   protected List<VPCDNSResolutionBinding> dnsResolutionBindings;
-  protected VPCDNSResolutionBindingCollectionFirst first;
+  protected PageLink first;
   protected Long limit;
-  protected VPCDNSResolutionBindingCollectionNext next;
+  protected PageLink next;
   @SerializedName("total_count")
   protected Long totalCount;
 
@@ -51,7 +51,7 @@ public class VPCDNSResolutionBindingCollection extends GenericModel {
    *
    * @return the first
    */
-  public VPCDNSResolutionBindingCollectionFirst getFirst() {
+  public PageLink getFirst() {
     return first;
   }
 
@@ -74,7 +74,7 @@ public class VPCDNSResolutionBindingCollection extends GenericModel {
    *
    * @return the next
    */
-  public VPCDNSResolutionBindingCollectionNext getNext() {
+  public PageLink getNext() {
     return next;
   }
 

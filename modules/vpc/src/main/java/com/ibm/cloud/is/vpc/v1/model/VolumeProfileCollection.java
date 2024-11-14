@@ -23,9 +23,9 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class VolumeProfileCollection extends GenericModel {
 
-  protected VolumeProfileCollectionFirst first;
+  protected PageLink first;
   protected Long limit;
-  protected VolumeProfileCollectionNext next;
+  protected PageLink next;
   protected List<VolumeProfile> profiles;
   @SerializedName("total_count")
   protected Long totalCount;
@@ -39,7 +39,7 @@ public class VolumeProfileCollection extends GenericModel {
    *
    * @return the first
    */
-  public VolumeProfileCollectionFirst getFirst() {
+  public PageLink getFirst() {
     return first;
   }
 
@@ -62,7 +62,7 @@ public class VolumeProfileCollection extends GenericModel {
    *
    * @return the next
    */
-  public VolumeProfileCollectionNext getNext() {
+  public PageLink getNext() {
     return next;
   }
 

@@ -23,10 +23,10 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class InstanceGroupManagerCollection extends GenericModel {
 
-  protected InstanceGroupManagerCollectionFirst first;
+  protected PageLink first;
   protected Long limit;
   protected List<InstanceGroupManager> managers;
-  protected InstanceGroupManagerCollectionNext next;
+  protected PageLink next;
   @SerializedName("total_count")
   protected Long totalCount;
 
@@ -39,7 +39,7 @@ public class InstanceGroupManagerCollection extends GenericModel {
    *
    * @return the first
    */
-  public InstanceGroupManagerCollectionFirst getFirst() {
+  public PageLink getFirst() {
     return first;
   }
 
@@ -73,7 +73,7 @@ public class InstanceGroupManagerCollection extends GenericModel {
    *
    * @return the next
    */
-  public InstanceGroupManagerCollectionNext getNext() {
+  public PageLink getNext() {
     return next;
   }
 

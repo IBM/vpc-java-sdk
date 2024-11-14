@@ -13,10 +13,9 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.ibm.cloud.is.vpc.v1.model.PageLink;
 import com.ibm.cloud.is.vpc.v1.model.Route;
 import com.ibm.cloud.is.vpc.v1.model.RouteCollection;
-import com.ibm.cloud.is.vpc.v1.model.RouteCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.RouteCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.RouteNextHopIP;
 import com.ibm.cloud.is.vpc.v1.model.ZoneReference;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;

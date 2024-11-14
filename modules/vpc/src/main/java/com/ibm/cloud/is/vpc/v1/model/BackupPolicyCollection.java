@@ -25,9 +25,9 @@ public class BackupPolicyCollection extends GenericModel {
 
   @SerializedName("backup_policies")
   protected List<BackupPolicy> backupPolicies;
-  protected BackupPolicyCollectionFirst first;
+  protected PageLink first;
   protected Long limit;
-  protected BackupPolicyCollectionNext next;
+  protected PageLink next;
   @SerializedName("total_count")
   protected Long totalCount;
 
@@ -51,7 +51,7 @@ public class BackupPolicyCollection extends GenericModel {
    *
    * @return the first
    */
-  public BackupPolicyCollectionFirst getFirst() {
+  public PageLink getFirst() {
     return first;
   }
 
@@ -74,7 +74,7 @@ public class BackupPolicyCollection extends GenericModel {
    *
    * @return the next
    */
-  public BackupPolicyCollectionNext getNext() {
+  public PageLink getNext() {
     return next;
   }
 

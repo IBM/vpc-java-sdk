@@ -23,10 +23,10 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class RouteCollectionVPCContext extends GenericModel {
 
-  protected RouteCollectionVPCContextFirst first;
+  protected PageLink first;
   protected Long limit;
-  protected RouteCollectionVPCContextNext next;
-  protected List<RouteCollectionVPCContextRoutesItem> routes;
+  protected PageLink next;
+  protected List<Route> routes;
   @SerializedName("total_count")
   protected Long totalCount;
 
@@ -39,7 +39,7 @@ public class RouteCollectionVPCContext extends GenericModel {
    *
    * @return the first
    */
-  public RouteCollectionVPCContextFirst getFirst() {
+  public PageLink getFirst() {
     return first;
   }
 
@@ -62,7 +62,7 @@ public class RouteCollectionVPCContext extends GenericModel {
    *
    * @return the next
    */
-  public RouteCollectionVPCContextNext getNext() {
+  public PageLink getNext() {
     return next;
   }
 
@@ -73,7 +73,7 @@ public class RouteCollectionVPCContext extends GenericModel {
    *
    * @return the routes
    */
-  public List<RouteCollectionVPCContextRoutesItem> getRoutes() {
+  public List<Route> getRoutes() {
     return routes;
   }
 

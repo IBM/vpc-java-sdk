@@ -25,9 +25,9 @@ public class DedicatedHostCollection extends GenericModel {
 
   @SerializedName("dedicated_hosts")
   protected List<DedicatedHost> dedicatedHosts;
-  protected DedicatedHostCollectionFirst first;
+  protected PageLink first;
   protected Long limit;
-  protected DedicatedHostCollectionNext next;
+  protected PageLink next;
   @SerializedName("total_count")
   protected Long totalCount;
 
@@ -51,7 +51,7 @@ public class DedicatedHostCollection extends GenericModel {
    *
    * @return the first
    */
-  public DedicatedHostCollectionFirst getFirst() {
+  public PageLink getFirst() {
     return first;
   }
 
@@ -74,7 +74,7 @@ public class DedicatedHostCollection extends GenericModel {
    *
    * @return the next
    */
-  public DedicatedHostCollectionNext getNext() {
+  public PageLink getNext() {
     return next;
   }
 

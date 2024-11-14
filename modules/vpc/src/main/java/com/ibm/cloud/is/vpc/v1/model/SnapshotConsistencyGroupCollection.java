@@ -23,9 +23,9 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class SnapshotConsistencyGroupCollection extends GenericModel {
 
-  protected SnapshotConsistencyGroupCollectionFirst first;
+  protected PageLink first;
   protected Long limit;
-  protected SnapshotConsistencyGroupCollectionNext next;
+  protected PageLink next;
   @SerializedName("snapshot_consistency_groups")
   protected List<SnapshotConsistencyGroup> snapshotConsistencyGroups;
   @SerializedName("total_count")
@@ -40,7 +40,7 @@ public class SnapshotConsistencyGroupCollection extends GenericModel {
    *
    * @return the first
    */
-  public SnapshotConsistencyGroupCollectionFirst getFirst() {
+  public PageLink getFirst() {
     return first;
   }
 
@@ -63,7 +63,7 @@ public class SnapshotConsistencyGroupCollection extends GenericModel {
    *
    * @return the next
    */
-  public SnapshotConsistencyGroupCollectionNext getNext() {
+  public PageLink getNext() {
     return next;
   }
 

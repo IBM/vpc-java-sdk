@@ -51,9 +51,9 @@ public class VolumePrototypeInstanceBySourceSnapshotContextTest {
     assertEquals(resourceGroupIdentityModel.id(), "fee82deba12e4c0fb69c3b09d1f12345");
 
     SnapshotIdentityById snapshotIdentityModel = new SnapshotIdentityById.Builder()
-      .id("349a61d8-7ab1-420f-a690-5fed76ef9d4f")
+      .id("r134-f6bfa329-0e36-433f-a3bb-0df632e79263")
       .build();
-    assertEquals(snapshotIdentityModel.id(), "349a61d8-7ab1-420f-a690-5fed76ef9d4f");
+    assertEquals(snapshotIdentityModel.id(), "r134-f6bfa329-0e36-433f-a3bb-0df632e79263");
 
     VolumePrototypeInstanceBySourceSnapshotContext volumePrototypeInstanceBySourceSnapshotContextModel = new VolumePrototypeInstanceBySourceSnapshotContext.Builder()
       .capacity(Long.valueOf("100"))

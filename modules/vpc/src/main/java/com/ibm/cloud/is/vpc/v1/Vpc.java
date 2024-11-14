@@ -12,7 +12,7 @@
  */
 
 /*
- * IBM OpenAPI SDK Code Generator Version: 3.92.2-3f2a0533-20240712-183330
+ * IBM OpenAPI SDK Code Generator Version: 3.96.0-d6dec9d7-20241008-212902
  */
 
 package com.ibm.cloud.is.vpc.v1;
@@ -49,12 +49,27 @@ import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfile;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileCollection;
 import com.ibm.cloud.is.vpc.v1.model.CheckVpnGatewayConnectionsLocalCidrOptions;
 import com.ibm.cloud.is.vpc.v1.model.CheckVpnGatewayConnectionsPeerCidrOptions;
+import com.ibm.cloud.is.vpc.v1.model.ClusterNetwork;
+import com.ibm.cloud.is.vpc.v1.model.ClusterNetworkCollection;
+import com.ibm.cloud.is.vpc.v1.model.ClusterNetworkInterface;
+import com.ibm.cloud.is.vpc.v1.model.ClusterNetworkInterfaceCollection;
+import com.ibm.cloud.is.vpc.v1.model.ClusterNetworkProfile;
+import com.ibm.cloud.is.vpc.v1.model.ClusterNetworkProfileCollection;
+import com.ibm.cloud.is.vpc.v1.model.ClusterNetworkSubnet;
+import com.ibm.cloud.is.vpc.v1.model.ClusterNetworkSubnetCollection;
+import com.ibm.cloud.is.vpc.v1.model.ClusterNetworkSubnetReservedIP;
+import com.ibm.cloud.is.vpc.v1.model.ClusterNetworkSubnetReservedIPCollection;
 import com.ibm.cloud.is.vpc.v1.model.CreateBackupPolicyOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateBackupPolicyPlanOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateBareMetalServerConsoleAccessTokenOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateBareMetalServerNetworkAttachmentOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateBareMetalServerNetworkInterfaceOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateBareMetalServerOptions;
+import com.ibm.cloud.is.vpc.v1.model.CreateClusterNetworkAttachmentOptions;
+import com.ibm.cloud.is.vpc.v1.model.CreateClusterNetworkInterfaceOptions;
+import com.ibm.cloud.is.vpc.v1.model.CreateClusterNetworkOptions;
+import com.ibm.cloud.is.vpc.v1.model.CreateClusterNetworkSubnetOptions;
+import com.ibm.cloud.is.vpc.v1.model.CreateClusterNetworkSubnetReservedIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateDedicatedHostGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateDedicatedHostOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateEndpointGatewayOptions;
@@ -127,6 +142,10 @@ import com.ibm.cloud.is.vpc.v1.model.DeleteBackupPolicyPlanOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteBareMetalServerNetworkAttachmentOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteBareMetalServerNetworkInterfaceOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteBareMetalServerOptions;
+import com.ibm.cloud.is.vpc.v1.model.DeleteClusterNetworkInterfaceOptions;
+import com.ibm.cloud.is.vpc.v1.model.DeleteClusterNetworkOptions;
+import com.ibm.cloud.is.vpc.v1.model.DeleteClusterNetworkSubnetOptions;
+import com.ibm.cloud.is.vpc.v1.model.DeleteClusterNetworkSubnetReservedIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteDedicatedHostGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteDedicatedHostOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteEndpointGatewayOptions;
@@ -135,6 +154,7 @@ import com.ibm.cloud.is.vpc.v1.model.DeleteFlowLogCollectorOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteIkePolicyOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteImageExportJobOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteImageOptions;
+import com.ibm.cloud.is.vpc.v1.model.DeleteInstanceClusterNetworkAttachmentOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteInstanceGroupLoadBalancerOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteInstanceGroupManagerActionOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteInstanceGroupManagerOptions;
@@ -212,6 +232,11 @@ import com.ibm.cloud.is.vpc.v1.model.GetBareMetalServerNetworkInterfaceIpOptions
 import com.ibm.cloud.is.vpc.v1.model.GetBareMetalServerNetworkInterfaceOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetBareMetalServerOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetBareMetalServerProfileOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetClusterNetworkInterfaceOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetClusterNetworkOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetClusterNetworkProfileOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetClusterNetworkSubnetOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetClusterNetworkSubnetReservedIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetDedicatedHostDiskOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetDedicatedHostGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetDedicatedHostOptions;
@@ -223,6 +248,7 @@ import com.ibm.cloud.is.vpc.v1.model.GetFlowLogCollectorOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetIkePolicyOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetImageExportJobOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetImageOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetInstanceClusterNetworkAttachmentOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetInstanceDiskOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetInstanceGroupManagerActionOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetInstanceGroupManagerOptions;
@@ -307,6 +333,8 @@ import com.ibm.cloud.is.vpc.v1.model.ImageExportJob;
 import com.ibm.cloud.is.vpc.v1.model.ImageExportJobUnpaginatedCollection;
 import com.ibm.cloud.is.vpc.v1.model.Instance;
 import com.ibm.cloud.is.vpc.v1.model.InstanceAction;
+import com.ibm.cloud.is.vpc.v1.model.InstanceClusterNetworkAttachment;
+import com.ibm.cloud.is.vpc.v1.model.InstanceClusterNetworkAttachmentCollection;
 import com.ibm.cloud.is.vpc.v1.model.InstanceCollection;
 import com.ibm.cloud.is.vpc.v1.model.InstanceConsoleAccessToken;
 import com.ibm.cloud.is.vpc.v1.model.InstanceDisk;
@@ -340,6 +368,11 @@ import com.ibm.cloud.is.vpc.v1.model.ListBareMetalServerNetworkInterfaceIpsOptio
 import com.ibm.cloud.is.vpc.v1.model.ListBareMetalServerNetworkInterfacesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListBareMetalServerProfilesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListBareMetalServersOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListClusterNetworkInterfacesOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListClusterNetworkProfilesOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListClusterNetworkSubnetReservedIpsOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListClusterNetworkSubnetsOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListClusterNetworksOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListDedicatedHostDisksOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListDedicatedHostGroupsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListDedicatedHostProfilesOptions;
@@ -352,6 +385,7 @@ import com.ibm.cloud.is.vpc.v1.model.ListIkePoliciesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListIkePolicyConnectionsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListImageExportJobsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListImagesOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListInstanceClusterNetworkAttachmentsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListInstanceDisksOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListInstanceGroupManagerActionsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListInstanceGroupManagerPoliciesOptions;
@@ -516,6 +550,10 @@ import com.ibm.cloud.is.vpc.v1.model.UpdateBareMetalServerDiskOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateBareMetalServerNetworkAttachmentOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateBareMetalServerNetworkInterfaceOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateBareMetalServerOptions;
+import com.ibm.cloud.is.vpc.v1.model.UpdateClusterNetworkInterfaceOptions;
+import com.ibm.cloud.is.vpc.v1.model.UpdateClusterNetworkOptions;
+import com.ibm.cloud.is.vpc.v1.model.UpdateClusterNetworkSubnetOptions;
+import com.ibm.cloud.is.vpc.v1.model.UpdateClusterNetworkSubnetReservedIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateDedicatedHostDiskOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateDedicatedHostGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateDedicatedHostOptions;
@@ -526,6 +564,7 @@ import com.ibm.cloud.is.vpc.v1.model.UpdateFlowLogCollectorOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateIkePolicyOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateImageExportJobOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateImageOptions;
+import com.ibm.cloud.is.vpc.v1.model.UpdateInstanceClusterNetworkAttachmentOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateInstanceDiskOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateInstanceGroupManagerActionOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateInstanceGroupManagerOptions;
@@ -614,7 +653,7 @@ import java.util.logging.Logger;
  * The IBM Cloud Virtual Private Cloud (VPC) API can be used to programmatically provision and manage virtual server
  * instances, along with subnets, volumes, load balancers, and more.
  *
- * API Version: 2024-10-17
+ * API Version: 2024-11-12
  */
 public class Vpc extends BaseService {
   private static final Logger LOGGER = Logger.getLogger(Vpc.class.getName());
@@ -631,7 +670,7 @@ public class Vpc extends BaseService {
 
   private Long generation = Long.valueOf("2");
 
-  private String version = "2024-10-15";
+  private String version = "2024-11-12";
 
  /**
    * Class method which constructs an instance of the `Vpc` client.
@@ -695,7 +734,7 @@ public class Vpc extends BaseService {
    * Gets the version.
    *
    * The API version, in format `YYYY-MM-DD`. For the API behavior documented here, specify any date between
-   * `2024-04-30` and `2024-10-17`.
+   * `2024-04-30` and `2024-11-13`.
    *
    * @return the version
    */
@@ -2896,6 +2935,9 @@ public class Vpc extends BaseService {
     if (listKeysOptions.limit() != null) {
       builder.query("limit", String.valueOf(listKeysOptions.limit()));
     }
+    if (listKeysOptions.resourceGroupId() != null) {
+      builder.query("resource_group.id", String.valueOf(listKeysOptions.resourceGroupId()));
+    }
     ResponseConverter<KeyCollection> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<KeyCollection>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -3262,6 +3304,15 @@ public class Vpc extends BaseService {
     if (listInstancesOptions.name() != null) {
       builder.query("name", String.valueOf(listInstancesOptions.name()));
     }
+    if (listInstancesOptions.clusterNetworkId() != null) {
+      builder.query("cluster_network.id", String.valueOf(listInstancesOptions.clusterNetworkId()));
+    }
+    if (listInstancesOptions.clusterNetworkCrn() != null) {
+      builder.query("cluster_network.crn", String.valueOf(listInstancesOptions.clusterNetworkCrn()));
+    }
+    if (listInstancesOptions.clusterNetworkName() != null) {
+      builder.query("cluster_network.name", String.valueOf(listInstancesOptions.clusterNetworkName()));
+    }
     if (listInstancesOptions.dedicatedHostId() != null) {
       builder.query("dedicated_host.id", String.valueOf(listInstancesOptions.dedicatedHostId()));
     }
@@ -3486,6 +3537,165 @@ public class Vpc extends BaseService {
     builder.bodyJson(contentJson);
     ResponseConverter<InstanceAction> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<InstanceAction>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * List cluster network attachments on an instance.
+   *
+   * This request lists cluster network attachments on an instance. A cluster network attachment represents a device on
+   * the instance to which a cluster network interface is attached.
+   *
+   * @param listInstanceClusterNetworkAttachmentsOptions the {@link ListInstanceClusterNetworkAttachmentsOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link InstanceClusterNetworkAttachmentCollection}
+   */
+  public ServiceCall<InstanceClusterNetworkAttachmentCollection> listInstanceClusterNetworkAttachments(ListInstanceClusterNetworkAttachmentsOptions listInstanceClusterNetworkAttachmentsOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(listInstanceClusterNetworkAttachmentsOptions,
+      "listInstanceClusterNetworkAttachmentsOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("instance_id", listInstanceClusterNetworkAttachmentsOptions.instanceId());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/instances/{instance_id}/cluster_network_attachments", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listInstanceClusterNetworkAttachments");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    if (listInstanceClusterNetworkAttachmentsOptions.start() != null) {
+      builder.query("start", String.valueOf(listInstanceClusterNetworkAttachmentsOptions.start()));
+    }
+    if (listInstanceClusterNetworkAttachmentsOptions.limit() != null) {
+      builder.query("limit", String.valueOf(listInstanceClusterNetworkAttachmentsOptions.limit()));
+    }
+    ResponseConverter<InstanceClusterNetworkAttachmentCollection> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<InstanceClusterNetworkAttachmentCollection>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Create a cluster network attachment.
+   *
+   * This request creates a cluster network attachment from an instance cluster network attachment prototype object. A
+   * cluster network attachment will attach the instance to a cluster network. The cluster network attachment prototype
+   * must specify a cluster network interface identity or a cluster network interface prototype.
+   *
+   * The instance must be in a `stopped` or `stopping` state to create an instance cluster network attachment.
+   *
+   * @param createClusterNetworkAttachmentOptions the {@link CreateClusterNetworkAttachmentOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link InstanceClusterNetworkAttachment}
+   */
+  public ServiceCall<InstanceClusterNetworkAttachment> createClusterNetworkAttachment(CreateClusterNetworkAttachmentOptions createClusterNetworkAttachmentOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(createClusterNetworkAttachmentOptions,
+      "createClusterNetworkAttachmentOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("instance_id", createClusterNetworkAttachmentOptions.instanceId());
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/instances/{instance_id}/cluster_network_attachments", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "createClusterNetworkAttachment");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    final JsonObject contentJson = new JsonObject();
+    contentJson.add("cluster_network_interface", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createClusterNetworkAttachmentOptions.clusterNetworkInterface()));
+    if (createClusterNetworkAttachmentOptions.before() != null) {
+      contentJson.add("before", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createClusterNetworkAttachmentOptions.before()));
+    }
+    if (createClusterNetworkAttachmentOptions.name() != null) {
+      contentJson.addProperty("name", createClusterNetworkAttachmentOptions.name());
+    }
+    builder.bodyJson(contentJson);
+    ResponseConverter<InstanceClusterNetworkAttachment> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<InstanceClusterNetworkAttachment>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Delete an instance cluster network attachment.
+   *
+   * This request deletes an instance cluster network attachment. The instance must be in a
+   * `stopped` or `stopping` state to delete an instance cluster network attachment.
+   *
+   * This operation cannot be reversed.
+   *
+   * @param deleteInstanceClusterNetworkAttachmentOptions the {@link DeleteInstanceClusterNetworkAttachmentOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link InstanceClusterNetworkAttachment}
+   */
+  public ServiceCall<InstanceClusterNetworkAttachment> deleteInstanceClusterNetworkAttachment(DeleteInstanceClusterNetworkAttachmentOptions deleteInstanceClusterNetworkAttachmentOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(deleteInstanceClusterNetworkAttachmentOptions,
+      "deleteInstanceClusterNetworkAttachmentOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("instance_id", deleteInstanceClusterNetworkAttachmentOptions.instanceId());
+    pathParamsMap.put("id", deleteInstanceClusterNetworkAttachmentOptions.id());
+    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/instances/{instance_id}/cluster_network_attachments/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "deleteInstanceClusterNetworkAttachment");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<InstanceClusterNetworkAttachment> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<InstanceClusterNetworkAttachment>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Retrieve an instance cluster network attachment.
+   *
+   * This request retrieves a single instance cluster network attachment specified by the identifier in the URL.
+   *
+   * @param getInstanceClusterNetworkAttachmentOptions the {@link GetInstanceClusterNetworkAttachmentOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link InstanceClusterNetworkAttachment}
+   */
+  public ServiceCall<InstanceClusterNetworkAttachment> getInstanceClusterNetworkAttachment(GetInstanceClusterNetworkAttachmentOptions getInstanceClusterNetworkAttachmentOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(getInstanceClusterNetworkAttachmentOptions,
+      "getInstanceClusterNetworkAttachmentOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("instance_id", getInstanceClusterNetworkAttachmentOptions.instanceId());
+    pathParamsMap.put("id", getInstanceClusterNetworkAttachmentOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/instances/{instance_id}/cluster_network_attachments/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getInstanceClusterNetworkAttachment");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<InstanceClusterNetworkAttachment> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<InstanceClusterNetworkAttachment>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Update an instance cluster network attachment.
+   *
+   * This request updates an instance cluster network attachment with the information provided in an instance network
+   * interface patch object. The instance cluster network attachment patch object is structured in the same way as a
+   * retrieved instance cluster network attachment and needs to contain only the information to be updated.
+   *
+   * @param updateInstanceClusterNetworkAttachmentOptions the {@link UpdateInstanceClusterNetworkAttachmentOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link InstanceClusterNetworkAttachment}
+   */
+  public ServiceCall<InstanceClusterNetworkAttachment> updateInstanceClusterNetworkAttachment(UpdateInstanceClusterNetworkAttachmentOptions updateInstanceClusterNetworkAttachmentOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(updateInstanceClusterNetworkAttachmentOptions,
+      "updateInstanceClusterNetworkAttachmentOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("instance_id", updateInstanceClusterNetworkAttachmentOptions.instanceId());
+    pathParamsMap.put("id", updateInstanceClusterNetworkAttachmentOptions.id());
+    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/instances/{instance_id}/cluster_network_attachments/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "updateInstanceClusterNetworkAttachment");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithSerializeNulls().toJson(updateInstanceClusterNetworkAttachmentOptions.instanceClusterNetworkAttachmentPatch()), "application/merge-patch+json");
+    ResponseConverter<InstanceClusterNetworkAttachment> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<InstanceClusterNetworkAttachment>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
   }
 
@@ -9234,6 +9444,775 @@ public class Vpc extends BaseService {
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<ReservedIPReference> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<ReservedIPReference>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * List cluster network profiles.
+   *
+   * This request lists cluster network profiles available in the region. A cluster network profile specifies the
+   * performance characteristics and capabilities for a cluster network.
+   *
+   * @param listClusterNetworkProfilesOptions the {@link ListClusterNetworkProfilesOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link ClusterNetworkProfileCollection}
+   */
+  public ServiceCall<ClusterNetworkProfileCollection> listClusterNetworkProfiles(ListClusterNetworkProfilesOptions listClusterNetworkProfilesOptions) {
+    if (listClusterNetworkProfilesOptions == null) {
+      listClusterNetworkProfilesOptions = new ListClusterNetworkProfilesOptions.Builder().build();
+    }
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/cluster_network/profiles"));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listClusterNetworkProfiles");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    if (listClusterNetworkProfilesOptions.start() != null) {
+      builder.query("start", String.valueOf(listClusterNetworkProfilesOptions.start()));
+    }
+    if (listClusterNetworkProfilesOptions.limit() != null) {
+      builder.query("limit", String.valueOf(listClusterNetworkProfilesOptions.limit()));
+    }
+    ResponseConverter<ClusterNetworkProfileCollection> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<ClusterNetworkProfileCollection>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * List cluster network profiles.
+   *
+   * This request lists cluster network profiles available in the region. A cluster network profile specifies the
+   * performance characteristics and capabilities for a cluster network.
+   *
+   * @return a {@link ServiceCall} with a result of type {@link ClusterNetworkProfileCollection}
+   */
+  public ServiceCall<ClusterNetworkProfileCollection> listClusterNetworkProfiles() {
+    return listClusterNetworkProfiles(null);
+  }
+
+  /**
+   * Retrieve a cluster network profile.
+   *
+   * This request retrieves a single cluster network profile specified by the name in the URL.
+   *
+   * @param getClusterNetworkProfileOptions the {@link GetClusterNetworkProfileOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link ClusterNetworkProfile}
+   */
+  public ServiceCall<ClusterNetworkProfile> getClusterNetworkProfile(GetClusterNetworkProfileOptions getClusterNetworkProfileOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(getClusterNetworkProfileOptions,
+      "getClusterNetworkProfileOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("name", getClusterNetworkProfileOptions.name());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/cluster_network/profiles/{name}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getClusterNetworkProfile");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<ClusterNetworkProfile> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<ClusterNetworkProfile>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * List cluster networks.
+   *
+   * This request lists [cluster networks](https://cloud.ibm.com/docs/vpc?topic=vpc-about-cluster-network) in the
+   * region. A cluster network is a grouping of resources in a separate networking space for high performance computing
+   * and networking.
+   *
+   * @param listClusterNetworksOptions the {@link ListClusterNetworksOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link ClusterNetworkCollection}
+   */
+  public ServiceCall<ClusterNetworkCollection> listClusterNetworks(ListClusterNetworksOptions listClusterNetworksOptions) {
+    if (listClusterNetworksOptions == null) {
+      listClusterNetworksOptions = new ListClusterNetworksOptions.Builder().build();
+    }
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/cluster_networks"));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listClusterNetworks");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    if (listClusterNetworksOptions.start() != null) {
+      builder.query("start", String.valueOf(listClusterNetworksOptions.start()));
+    }
+    if (listClusterNetworksOptions.limit() != null) {
+      builder.query("limit", String.valueOf(listClusterNetworksOptions.limit()));
+    }
+    if (listClusterNetworksOptions.resourceGroupId() != null) {
+      builder.query("resource_group.id", String.valueOf(listClusterNetworksOptions.resourceGroupId()));
+    }
+    if (listClusterNetworksOptions.name() != null) {
+      builder.query("name", String.valueOf(listClusterNetworksOptions.name()));
+    }
+    if (listClusterNetworksOptions.sort() != null) {
+      builder.query("sort", String.valueOf(listClusterNetworksOptions.sort()));
+    }
+    if (listClusterNetworksOptions.vpcId() != null) {
+      builder.query("vpc.id", String.valueOf(listClusterNetworksOptions.vpcId()));
+    }
+    if (listClusterNetworksOptions.vpcCrn() != null) {
+      builder.query("vpc.crn", String.valueOf(listClusterNetworksOptions.vpcCrn()));
+    }
+    if (listClusterNetworksOptions.vpcName() != null) {
+      builder.query("vpc.name", String.valueOf(listClusterNetworksOptions.vpcName()));
+    }
+    ResponseConverter<ClusterNetworkCollection> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<ClusterNetworkCollection>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * List cluster networks.
+   *
+   * This request lists [cluster networks](https://cloud.ibm.com/docs/vpc?topic=vpc-about-cluster-network) in the
+   * region. A cluster network is a grouping of resources in a separate networking space for high performance computing
+   * and networking.
+   *
+   * @return a {@link ServiceCall} with a result of type {@link ClusterNetworkCollection}
+   */
+  public ServiceCall<ClusterNetworkCollection> listClusterNetworks() {
+    return listClusterNetworks(null);
+  }
+
+  /**
+   * Create a cluster network.
+   *
+   * This request creates a new cluster network from a cluster network prototype object. The prototype object is
+   * structured in the same way as a retrieved cluster network, and contains the information necessary to create the new
+   * cluster network.
+   *
+   * @param createClusterNetworkOptions the {@link CreateClusterNetworkOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link ClusterNetwork}
+   */
+  public ServiceCall<ClusterNetwork> createClusterNetwork(CreateClusterNetworkOptions createClusterNetworkOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(createClusterNetworkOptions,
+      "createClusterNetworkOptions cannot be null");
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/cluster_networks"));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "createClusterNetwork");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    final JsonObject contentJson = new JsonObject();
+    contentJson.add("profile", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createClusterNetworkOptions.profile()));
+    contentJson.add("vpc", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createClusterNetworkOptions.vpc()));
+    contentJson.add("zone", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createClusterNetworkOptions.zone()));
+    if (createClusterNetworkOptions.name() != null) {
+      contentJson.addProperty("name", createClusterNetworkOptions.name());
+    }
+    if (createClusterNetworkOptions.resourceGroup() != null) {
+      contentJson.add("resource_group", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createClusterNetworkOptions.resourceGroup()));
+    }
+    if (createClusterNetworkOptions.subnetPrefixes() != null) {
+      contentJson.add("subnet_prefixes", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createClusterNetworkOptions.subnetPrefixes()));
+    }
+    builder.bodyJson(contentJson);
+    ResponseConverter<ClusterNetwork> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<ClusterNetwork>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * List cluster network interfaces.
+   *
+   * This request lists cluster network interfaces in the region. A cluster network interface is a logical abstraction
+   * of a cluster network interface in a subnet, and may be attached to a target resource.
+   *
+   * The cluster network interfaces will be sorted by their `created_at` property values, with newest cluster network
+   * interfaces first. Cluster network interfaces with identical
+   * `created_at` property values will in turn be sorted by ascending `name` property values.
+   *
+   * @param listClusterNetworkInterfacesOptions the {@link ListClusterNetworkInterfacesOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link ClusterNetworkInterfaceCollection}
+   */
+  public ServiceCall<ClusterNetworkInterfaceCollection> listClusterNetworkInterfaces(ListClusterNetworkInterfacesOptions listClusterNetworkInterfacesOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(listClusterNetworkInterfacesOptions,
+      "listClusterNetworkInterfacesOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("cluster_network_id", listClusterNetworkInterfacesOptions.clusterNetworkId());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/cluster_networks/{cluster_network_id}/interfaces", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listClusterNetworkInterfaces");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    if (listClusterNetworkInterfacesOptions.start() != null) {
+      builder.query("start", String.valueOf(listClusterNetworkInterfacesOptions.start()));
+    }
+    if (listClusterNetworkInterfacesOptions.limit() != null) {
+      builder.query("limit", String.valueOf(listClusterNetworkInterfacesOptions.limit()));
+    }
+    if (listClusterNetworkInterfacesOptions.name() != null) {
+      builder.query("name", String.valueOf(listClusterNetworkInterfacesOptions.name()));
+    }
+    if (listClusterNetworkInterfacesOptions.sort() != null) {
+      builder.query("sort", String.valueOf(listClusterNetworkInterfacesOptions.sort()));
+    }
+    ResponseConverter<ClusterNetworkInterfaceCollection> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<ClusterNetworkInterfaceCollection>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Create a cluster network interface.
+   *
+   * This request creates a new cluster network interface from a cluster network interface prototype object. The
+   * prototype object is structured in the same way as a retrieved cluster network interface, and contains the
+   * information necessary to create the new cluster network interface.
+   *
+   * @param createClusterNetworkInterfaceOptions the {@link CreateClusterNetworkInterfaceOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link ClusterNetworkInterface}
+   */
+  public ServiceCall<ClusterNetworkInterface> createClusterNetworkInterface(CreateClusterNetworkInterfaceOptions createClusterNetworkInterfaceOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(createClusterNetworkInterfaceOptions,
+      "createClusterNetworkInterfaceOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("cluster_network_id", createClusterNetworkInterfaceOptions.clusterNetworkId());
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/cluster_networks/{cluster_network_id}/interfaces", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "createClusterNetworkInterface");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    final JsonObject contentJson = new JsonObject();
+    if (createClusterNetworkInterfaceOptions.name() != null) {
+      contentJson.addProperty("name", createClusterNetworkInterfaceOptions.name());
+    }
+    if (createClusterNetworkInterfaceOptions.primaryIp() != null) {
+      contentJson.add("primary_ip", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createClusterNetworkInterfaceOptions.primaryIp()));
+    }
+    if (createClusterNetworkInterfaceOptions.subnet() != null) {
+      contentJson.add("subnet", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createClusterNetworkInterfaceOptions.subnet()));
+    }
+    builder.bodyJson(contentJson);
+    ResponseConverter<ClusterNetworkInterface> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<ClusterNetworkInterface>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Delete a cluster network interface.
+   *
+   * This request deletes a cluster network interface. This operation cannot be reversed. For this request to succeed,
+   * the cluster network interface must not be required by another resource, such as a cluster network attachment for a
+   * virtual server instance.
+   *
+   * @param deleteClusterNetworkInterfaceOptions the {@link DeleteClusterNetworkInterfaceOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link ClusterNetworkInterface}
+   */
+  public ServiceCall<ClusterNetworkInterface> deleteClusterNetworkInterface(DeleteClusterNetworkInterfaceOptions deleteClusterNetworkInterfaceOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(deleteClusterNetworkInterfaceOptions,
+      "deleteClusterNetworkInterfaceOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("cluster_network_id", deleteClusterNetworkInterfaceOptions.clusterNetworkId());
+    pathParamsMap.put("id", deleteClusterNetworkInterfaceOptions.id());
+    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/cluster_networks/{cluster_network_id}/interfaces/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "deleteClusterNetworkInterface");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    if (deleteClusterNetworkInterfaceOptions.ifMatch() != null) {
+      builder.header("If-Match", deleteClusterNetworkInterfaceOptions.ifMatch());
+    }
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<ClusterNetworkInterface> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<ClusterNetworkInterface>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Retrieve a cluster network interface.
+   *
+   * This request retrieves a single cluster network interface specified by the identifier in the URL.
+   *
+   * @param getClusterNetworkInterfaceOptions the {@link GetClusterNetworkInterfaceOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link ClusterNetworkInterface}
+   */
+  public ServiceCall<ClusterNetworkInterface> getClusterNetworkInterface(GetClusterNetworkInterfaceOptions getClusterNetworkInterfaceOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(getClusterNetworkInterfaceOptions,
+      "getClusterNetworkInterfaceOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("cluster_network_id", getClusterNetworkInterfaceOptions.clusterNetworkId());
+    pathParamsMap.put("id", getClusterNetworkInterfaceOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/cluster_networks/{cluster_network_id}/interfaces/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getClusterNetworkInterface");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<ClusterNetworkInterface> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<ClusterNetworkInterface>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Update a cluster network interface.
+   *
+   * This request updates a cluster network interface with the information provided in a cluster network interface patch
+   * object. The patch object is structured in the same way as a retrieved cluster network interface and needs to
+   * contain only the information to be updated.
+   *
+   * @param updateClusterNetworkInterfaceOptions the {@link UpdateClusterNetworkInterfaceOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link ClusterNetworkInterface}
+   */
+  public ServiceCall<ClusterNetworkInterface> updateClusterNetworkInterface(UpdateClusterNetworkInterfaceOptions updateClusterNetworkInterfaceOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(updateClusterNetworkInterfaceOptions,
+      "updateClusterNetworkInterfaceOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("cluster_network_id", updateClusterNetworkInterfaceOptions.clusterNetworkId());
+    pathParamsMap.put("id", updateClusterNetworkInterfaceOptions.id());
+    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/cluster_networks/{cluster_network_id}/interfaces/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "updateClusterNetworkInterface");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    if (updateClusterNetworkInterfaceOptions.ifMatch() != null) {
+      builder.header("If-Match", updateClusterNetworkInterfaceOptions.ifMatch());
+    }
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithSerializeNulls().toJson(updateClusterNetworkInterfaceOptions.clusterNetworkInterfacePatch()), "application/merge-patch+json");
+    ResponseConverter<ClusterNetworkInterface> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<ClusterNetworkInterface>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * List cluster network subnets.
+   *
+   * This request lists cluster network subnets in the cluster network. A cluster network subnet provides network
+   * routing between other cluster network subnets within a cluster network.
+   *
+   * @param listClusterNetworkSubnetsOptions the {@link ListClusterNetworkSubnetsOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link ClusterNetworkSubnetCollection}
+   */
+  public ServiceCall<ClusterNetworkSubnetCollection> listClusterNetworkSubnets(ListClusterNetworkSubnetsOptions listClusterNetworkSubnetsOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(listClusterNetworkSubnetsOptions,
+      "listClusterNetworkSubnetsOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("cluster_network_id", listClusterNetworkSubnetsOptions.clusterNetworkId());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/cluster_networks/{cluster_network_id}/subnets", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listClusterNetworkSubnets");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    if (listClusterNetworkSubnetsOptions.start() != null) {
+      builder.query("start", String.valueOf(listClusterNetworkSubnetsOptions.start()));
+    }
+    if (listClusterNetworkSubnetsOptions.limit() != null) {
+      builder.query("limit", String.valueOf(listClusterNetworkSubnetsOptions.limit()));
+    }
+    if (listClusterNetworkSubnetsOptions.name() != null) {
+      builder.query("name", String.valueOf(listClusterNetworkSubnetsOptions.name()));
+    }
+    if (listClusterNetworkSubnetsOptions.sort() != null) {
+      builder.query("sort", String.valueOf(listClusterNetworkSubnetsOptions.sort()));
+    }
+    ResponseConverter<ClusterNetworkSubnetCollection> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<ClusterNetworkSubnetCollection>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Create a cluster network subnet.
+   *
+   * This request creates a new cluster network subnet from a cluster network subnet prototype object. The prototype
+   * object is structured in the same way as a retrieved cluster network subnet, and contains the information necessary
+   * to create the new cluster network subnet.
+   *
+   * @param createClusterNetworkSubnetOptions the {@link CreateClusterNetworkSubnetOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link ClusterNetworkSubnet}
+   */
+  public ServiceCall<ClusterNetworkSubnet> createClusterNetworkSubnet(CreateClusterNetworkSubnetOptions createClusterNetworkSubnetOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(createClusterNetworkSubnetOptions,
+      "createClusterNetworkSubnetOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("cluster_network_id", createClusterNetworkSubnetOptions.clusterNetworkId());
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/cluster_networks/{cluster_network_id}/subnets", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "createClusterNetworkSubnet");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(createClusterNetworkSubnetOptions.clusterNetworkSubnetPrototype()), "application/json");
+    ResponseConverter<ClusterNetworkSubnet> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<ClusterNetworkSubnet>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * List cluster network subnet reserved IPs.
+   *
+   * This request lists cluster network subnet reserved IPs in the cluster network.
+   *
+   * @param listClusterNetworkSubnetReservedIpsOptions the {@link ListClusterNetworkSubnetReservedIpsOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link ClusterNetworkSubnetReservedIPCollection}
+   */
+  public ServiceCall<ClusterNetworkSubnetReservedIPCollection> listClusterNetworkSubnetReservedIps(ListClusterNetworkSubnetReservedIpsOptions listClusterNetworkSubnetReservedIpsOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(listClusterNetworkSubnetReservedIpsOptions,
+      "listClusterNetworkSubnetReservedIpsOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("cluster_network_id", listClusterNetworkSubnetReservedIpsOptions.clusterNetworkId());
+    pathParamsMap.put("cluster_network_subnet_id", listClusterNetworkSubnetReservedIpsOptions.clusterNetworkSubnetId());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/cluster_networks/{cluster_network_id}/subnets/{cluster_network_subnet_id}/reserved_ips", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listClusterNetworkSubnetReservedIps");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    if (listClusterNetworkSubnetReservedIpsOptions.start() != null) {
+      builder.query("start", String.valueOf(listClusterNetworkSubnetReservedIpsOptions.start()));
+    }
+    if (listClusterNetworkSubnetReservedIpsOptions.limit() != null) {
+      builder.query("limit", String.valueOf(listClusterNetworkSubnetReservedIpsOptions.limit()));
+    }
+    if (listClusterNetworkSubnetReservedIpsOptions.name() != null) {
+      builder.query("name", String.valueOf(listClusterNetworkSubnetReservedIpsOptions.name()));
+    }
+    if (listClusterNetworkSubnetReservedIpsOptions.sort() != null) {
+      builder.query("sort", String.valueOf(listClusterNetworkSubnetReservedIpsOptions.sort()));
+    }
+    ResponseConverter<ClusterNetworkSubnetReservedIPCollection> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<ClusterNetworkSubnetReservedIPCollection>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Create a cluster network subnet reserved IP.
+   *
+   * This request creates a new cluster network subnet reserved IP from a cluster network subnet reserved IP prototype
+   * object. The prototype object is structured in the same way as a retrieved cluster network subnet reserved IP, and
+   * contains the information necessary to create the new cluster network subnet reserved IP.
+   *
+   * @param createClusterNetworkSubnetReservedIpOptions the {@link CreateClusterNetworkSubnetReservedIpOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link ClusterNetworkSubnetReservedIP}
+   */
+  public ServiceCall<ClusterNetworkSubnetReservedIP> createClusterNetworkSubnetReservedIp(CreateClusterNetworkSubnetReservedIpOptions createClusterNetworkSubnetReservedIpOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(createClusterNetworkSubnetReservedIpOptions,
+      "createClusterNetworkSubnetReservedIpOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("cluster_network_id", createClusterNetworkSubnetReservedIpOptions.clusterNetworkId());
+    pathParamsMap.put("cluster_network_subnet_id", createClusterNetworkSubnetReservedIpOptions.clusterNetworkSubnetId());
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/cluster_networks/{cluster_network_id}/subnets/{cluster_network_subnet_id}/reserved_ips", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "createClusterNetworkSubnetReservedIp");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    final JsonObject contentJson = new JsonObject();
+    if (createClusterNetworkSubnetReservedIpOptions.address() != null) {
+      contentJson.addProperty("address", createClusterNetworkSubnetReservedIpOptions.address());
+    }
+    if (createClusterNetworkSubnetReservedIpOptions.name() != null) {
+      contentJson.addProperty("name", createClusterNetworkSubnetReservedIpOptions.name());
+    }
+    builder.bodyJson(contentJson);
+    ResponseConverter<ClusterNetworkSubnetReservedIP> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<ClusterNetworkSubnetReservedIP>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Delete a cluster network subnet reserved IP.
+   *
+   * This request deletes a cluster network subnet reserved IP. This operation cannot be reversed.
+   *
+   * For this request to succeed, the reserved IP must be unbound. A provider-owned reserved IP is not allowed to be
+   * deleted.
+   *
+   * @param deleteClusterNetworkSubnetReservedIpOptions the {@link DeleteClusterNetworkSubnetReservedIpOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link ClusterNetworkSubnetReservedIP}
+   */
+  public ServiceCall<ClusterNetworkSubnetReservedIP> deleteClusterNetworkSubnetReservedIp(DeleteClusterNetworkSubnetReservedIpOptions deleteClusterNetworkSubnetReservedIpOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(deleteClusterNetworkSubnetReservedIpOptions,
+      "deleteClusterNetworkSubnetReservedIpOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("cluster_network_id", deleteClusterNetworkSubnetReservedIpOptions.clusterNetworkId());
+    pathParamsMap.put("cluster_network_subnet_id", deleteClusterNetworkSubnetReservedIpOptions.clusterNetworkSubnetId());
+    pathParamsMap.put("id", deleteClusterNetworkSubnetReservedIpOptions.id());
+    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/cluster_networks/{cluster_network_id}/subnets/{cluster_network_subnet_id}/reserved_ips/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "deleteClusterNetworkSubnetReservedIp");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    if (deleteClusterNetworkSubnetReservedIpOptions.ifMatch() != null) {
+      builder.header("If-Match", deleteClusterNetworkSubnetReservedIpOptions.ifMatch());
+    }
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<ClusterNetworkSubnetReservedIP> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<ClusterNetworkSubnetReservedIP>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Retrieve a cluster network subnet reserved IP.
+   *
+   * This request retrieves a single cluster network subnet reserved IP specified by the identifier in the URL.
+   *
+   * @param getClusterNetworkSubnetReservedIpOptions the {@link GetClusterNetworkSubnetReservedIpOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link ClusterNetworkSubnetReservedIP}
+   */
+  public ServiceCall<ClusterNetworkSubnetReservedIP> getClusterNetworkSubnetReservedIp(GetClusterNetworkSubnetReservedIpOptions getClusterNetworkSubnetReservedIpOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(getClusterNetworkSubnetReservedIpOptions,
+      "getClusterNetworkSubnetReservedIpOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("cluster_network_id", getClusterNetworkSubnetReservedIpOptions.clusterNetworkId());
+    pathParamsMap.put("cluster_network_subnet_id", getClusterNetworkSubnetReservedIpOptions.clusterNetworkSubnetId());
+    pathParamsMap.put("id", getClusterNetworkSubnetReservedIpOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/cluster_networks/{cluster_network_id}/subnets/{cluster_network_subnet_id}/reserved_ips/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getClusterNetworkSubnetReservedIp");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<ClusterNetworkSubnetReservedIP> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<ClusterNetworkSubnetReservedIP>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Update a cluster network subnet reserved IP.
+   *
+   * This request updates a cluster network subnet reserved IP with the information provided in a cluster network subnet
+   * reserved IP patch object. The patch object is structured in the same way as a retrieved cluster network subnet
+   * reserved IP and needs to contain only the information to be updated.
+   *
+   * @param updateClusterNetworkSubnetReservedIpOptions the {@link UpdateClusterNetworkSubnetReservedIpOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link ClusterNetworkSubnetReservedIP}
+   */
+  public ServiceCall<ClusterNetworkSubnetReservedIP> updateClusterNetworkSubnetReservedIp(UpdateClusterNetworkSubnetReservedIpOptions updateClusterNetworkSubnetReservedIpOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(updateClusterNetworkSubnetReservedIpOptions,
+      "updateClusterNetworkSubnetReservedIpOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("cluster_network_id", updateClusterNetworkSubnetReservedIpOptions.clusterNetworkId());
+    pathParamsMap.put("cluster_network_subnet_id", updateClusterNetworkSubnetReservedIpOptions.clusterNetworkSubnetId());
+    pathParamsMap.put("id", updateClusterNetworkSubnetReservedIpOptions.id());
+    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/cluster_networks/{cluster_network_id}/subnets/{cluster_network_subnet_id}/reserved_ips/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "updateClusterNetworkSubnetReservedIp");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    if (updateClusterNetworkSubnetReservedIpOptions.ifMatch() != null) {
+      builder.header("If-Match", updateClusterNetworkSubnetReservedIpOptions.ifMatch());
+    }
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithSerializeNulls().toJson(updateClusterNetworkSubnetReservedIpOptions.clusterNetworkSubnetReservedIpPatch()), "application/merge-patch+json");
+    ResponseConverter<ClusterNetworkSubnetReservedIP> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<ClusterNetworkSubnetReservedIP>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Delete a cluster network subnet.
+   *
+   * This request deletes a cluster network subnet. This operation cannot be reversed.
+   *
+   * For this request to succeed, this cluster subnet must not be attached to a cluster network interface.
+   *
+   * @param deleteClusterNetworkSubnetOptions the {@link DeleteClusterNetworkSubnetOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link ClusterNetworkSubnet}
+   */
+  public ServiceCall<ClusterNetworkSubnet> deleteClusterNetworkSubnet(DeleteClusterNetworkSubnetOptions deleteClusterNetworkSubnetOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(deleteClusterNetworkSubnetOptions,
+      "deleteClusterNetworkSubnetOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("cluster_network_id", deleteClusterNetworkSubnetOptions.clusterNetworkId());
+    pathParamsMap.put("id", deleteClusterNetworkSubnetOptions.id());
+    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/cluster_networks/{cluster_network_id}/subnets/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "deleteClusterNetworkSubnet");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    if (deleteClusterNetworkSubnetOptions.ifMatch() != null) {
+      builder.header("If-Match", deleteClusterNetworkSubnetOptions.ifMatch());
+    }
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<ClusterNetworkSubnet> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<ClusterNetworkSubnet>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Retrieve a cluster network subnet.
+   *
+   * This request retrieves a single cluster network subnet specified by the identifier in the URL.
+   *
+   * @param getClusterNetworkSubnetOptions the {@link GetClusterNetworkSubnetOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link ClusterNetworkSubnet}
+   */
+  public ServiceCall<ClusterNetworkSubnet> getClusterNetworkSubnet(GetClusterNetworkSubnetOptions getClusterNetworkSubnetOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(getClusterNetworkSubnetOptions,
+      "getClusterNetworkSubnetOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("cluster_network_id", getClusterNetworkSubnetOptions.clusterNetworkId());
+    pathParamsMap.put("id", getClusterNetworkSubnetOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/cluster_networks/{cluster_network_id}/subnets/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getClusterNetworkSubnet");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<ClusterNetworkSubnet> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<ClusterNetworkSubnet>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Update a cluster network subnet.
+   *
+   * This request updates a cluster network subnet with the information provided in a cluster network subnet patch
+   * object. The patch object is structured in the same way as a retrieved cluster network subnet and needs to contain
+   * only the information to be updated.
+   *
+   * @param updateClusterNetworkSubnetOptions the {@link UpdateClusterNetworkSubnetOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link ClusterNetworkSubnet}
+   */
+  public ServiceCall<ClusterNetworkSubnet> updateClusterNetworkSubnet(UpdateClusterNetworkSubnetOptions updateClusterNetworkSubnetOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(updateClusterNetworkSubnetOptions,
+      "updateClusterNetworkSubnetOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("cluster_network_id", updateClusterNetworkSubnetOptions.clusterNetworkId());
+    pathParamsMap.put("id", updateClusterNetworkSubnetOptions.id());
+    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/cluster_networks/{cluster_network_id}/subnets/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "updateClusterNetworkSubnet");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    if (updateClusterNetworkSubnetOptions.ifMatch() != null) {
+      builder.header("If-Match", updateClusterNetworkSubnetOptions.ifMatch());
+    }
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithSerializeNulls().toJson(updateClusterNetworkSubnetOptions.clusterNetworkSubnetPatch()), "application/merge-patch+json");
+    ResponseConverter<ClusterNetworkSubnet> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<ClusterNetworkSubnet>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Delete a cluster network.
+   *
+   * This request deletes a cluster network. This operation cannot be reversed.
+   *
+   * For this request to succeed, virtual server instances must not reside in this cluster network.
+   *
+   * @param deleteClusterNetworkOptions the {@link DeleteClusterNetworkOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link ClusterNetwork}
+   */
+  public ServiceCall<ClusterNetwork> deleteClusterNetwork(DeleteClusterNetworkOptions deleteClusterNetworkOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(deleteClusterNetworkOptions,
+      "deleteClusterNetworkOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", deleteClusterNetworkOptions.id());
+    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/cluster_networks/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "deleteClusterNetwork");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    if (deleteClusterNetworkOptions.ifMatch() != null) {
+      builder.header("If-Match", deleteClusterNetworkOptions.ifMatch());
+    }
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<ClusterNetwork> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<ClusterNetwork>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Retrieve a cluster network.
+   *
+   * This request retrieves a single cluster network specified by the identifier in the URL.
+   *
+   * @param getClusterNetworkOptions the {@link GetClusterNetworkOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link ClusterNetwork}
+   */
+  public ServiceCall<ClusterNetwork> getClusterNetwork(GetClusterNetworkOptions getClusterNetworkOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(getClusterNetworkOptions,
+      "getClusterNetworkOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", getClusterNetworkOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/cluster_networks/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getClusterNetwork");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<ClusterNetwork> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<ClusterNetwork>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Update a cluster.
+   *
+   * This request updates a cluster network with the information provided in a cluster network patch object. The patch
+   * object is structured in the same way as a retrieved cluster network and needs to contain only the information to be
+   * updated.
+   *
+   * @param updateClusterNetworkOptions the {@link UpdateClusterNetworkOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link ClusterNetwork}
+   */
+  public ServiceCall<ClusterNetwork> updateClusterNetwork(UpdateClusterNetworkOptions updateClusterNetworkOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(updateClusterNetworkOptions,
+      "updateClusterNetworkOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", updateClusterNetworkOptions.id());
+    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/cluster_networks/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "updateClusterNetwork");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    if (updateClusterNetworkOptions.ifMatch() != null) {
+      builder.header("If-Match", updateClusterNetworkOptions.ifMatch());
+    }
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithSerializeNulls().toJson(updateClusterNetworkOptions.clusterNetworkPatch()), "application/merge-patch+json");
+    ResponseConverter<ClusterNetwork> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<ClusterNetwork>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
   }
 

@@ -13,10 +13,9 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.ibm.cloud.is.vpc.v1.model.PageLink;
 import com.ibm.cloud.is.vpc.v1.model.VPNServerRoute;
 import com.ibm.cloud.is.vpc.v1.model.VPNServerRouteCollection;
-import com.ibm.cloud.is.vpc.v1.model.VPNServerRouteCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.VPNServerRouteCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.VPNServerRouteHealthReason;
 import com.ibm.cloud.is.vpc.v1.model.VPNServerRouteLifecycleReason;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;

@@ -14,11 +14,10 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.Deleted;
+import com.ibm.cloud.is.vpc.v1.model.PageLink;
 import com.ibm.cloud.is.vpc.v1.model.ReservedIPReference;
 import com.ibm.cloud.is.vpc.v1.model.ShareMountTarget;
 import com.ibm.cloud.is.vpc.v1.model.ShareMountTargetCollection;
-import com.ibm.cloud.is.vpc.v1.model.ShareMountTargetCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.ShareMountTargetCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.SubnetReference;
 import com.ibm.cloud.is.vpc.v1.model.VPCReference;
 import com.ibm.cloud.is.vpc.v1.model.VirtualNetworkInterfaceReferenceAttachmentContext;
