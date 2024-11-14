@@ -40,16 +40,16 @@ public class CreateFloatingIpOptionsTest {
     assertEquals(resourceGroupIdentityModel.id(), "fee82deba12e4c0fb69c3b09d1f12345");
 
     FloatingIPTargetPrototypeBareMetalServerNetworkInterfaceIdentityBareMetalServerNetworkInterfaceIdentityById floatingIpTargetPrototypeModel = new FloatingIPTargetPrototypeBareMetalServerNetworkInterfaceIdentityBareMetalServerNetworkInterfaceIdentityById.Builder()
-      .id("69e55145-cc7d-4d8e-9e1f-cc3fb60b1793")
+      .id("0717-fa41aecb-4f21-423d-8082-630bfba1e1d9")
       .build();
-    assertEquals(floatingIpTargetPrototypeModel.id(), "69e55145-cc7d-4d8e-9e1f-cc3fb60b1793");
+    assertEquals(floatingIpTargetPrototypeModel.id(), "0717-fa41aecb-4f21-423d-8082-630bfba1e1d9");
 
     FloatingIPPrototypeFloatingIPByTarget floatingIpPrototypeModel = new FloatingIPPrototypeFloatingIPByTarget.Builder()
-      .name("my-new-floating-ip")
+      .name("my-floating-ip")
       .resourceGroup(resourceGroupIdentityModel)
       .target(floatingIpTargetPrototypeModel)
       .build();
-    assertEquals(floatingIpPrototypeModel.name(), "my-new-floating-ip");
+    assertEquals(floatingIpPrototypeModel.name(), "my-floating-ip");
     assertEquals(floatingIpPrototypeModel.resourceGroup(), resourceGroupIdentityModel);
     assertEquals(floatingIpPrototypeModel.target(), floatingIpTargetPrototypeModel);
 

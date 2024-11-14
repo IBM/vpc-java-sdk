@@ -23,9 +23,9 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class VPNServerRouteCollection extends GenericModel {
 
-  protected VPNServerRouteCollectionFirst first;
+  protected PageLink first;
   protected Long limit;
-  protected VPNServerRouteCollectionNext next;
+  protected PageLink next;
   protected List<VPNServerRoute> routes;
   @SerializedName("total_count")
   protected Long totalCount;
@@ -39,7 +39,7 @@ public class VPNServerRouteCollection extends GenericModel {
    *
    * @return the first
    */
-  public VPNServerRouteCollectionFirst getFirst() {
+  public PageLink getFirst() {
     return first;
   }
 
@@ -62,7 +62,7 @@ public class VPNServerRouteCollection extends GenericModel {
    *
    * @return the next
    */
-  public VPNServerRouteCollectionNext getNext() {
+  public PageLink getNext() {
     return next;
   }
 

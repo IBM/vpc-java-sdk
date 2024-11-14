@@ -19,8 +19,8 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  * Identifies a trusted profile by a unique property.
  *
  * Classes which extend this class:
- * - TrustedProfileIdentityTrustedProfileById
- * - TrustedProfileIdentityTrustedProfileByCRN
+ * - TrustedProfileIdentityById
+ * - TrustedProfileIdentityByCRN
  */
 public class TrustedProfileIdentity extends GenericModel {
 

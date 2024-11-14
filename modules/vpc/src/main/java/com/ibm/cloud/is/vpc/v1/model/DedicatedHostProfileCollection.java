@@ -23,9 +23,9 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class DedicatedHostProfileCollection extends GenericModel {
 
-  protected DedicatedHostProfileCollectionFirst first;
+  protected PageLink first;
   protected Long limit;
-  protected DedicatedHostProfileCollectionNext next;
+  protected PageLink next;
   protected List<DedicatedHostProfile> profiles;
   @SerializedName("total_count")
   protected Long totalCount;
@@ -39,7 +39,7 @@ public class DedicatedHostProfileCollection extends GenericModel {
    *
    * @return the first
    */
-  public DedicatedHostProfileCollectionFirst getFirst() {
+  public PageLink getFirst() {
     return first;
   }
 
@@ -62,7 +62,7 @@ public class DedicatedHostProfileCollection extends GenericModel {
    *
    * @return the next
    */
-  public DedicatedHostProfileCollectionNext getNext() {
+  public PageLink getNext() {
     return next;
   }
 

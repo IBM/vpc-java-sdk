@@ -32,15 +32,15 @@ public class InstancePlacementTargetPrototypePlacementGroupIdentityPlacementGrou
   @Test
   public void testInstancePlacementTargetPrototypePlacementGroupIdentityPlacementGroupIdentityByCRN() throws Throwable {
     InstancePlacementTargetPrototypePlacementGroupIdentityPlacementGroupIdentityByCRN instancePlacementTargetPrototypePlacementGroupIdentityPlacementGroupIdentityByCrnModel = new InstancePlacementTargetPrototypePlacementGroupIdentityPlacementGroupIdentityByCRN.Builder()
-      .crn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::placement-group:r018-418fe842-a3e9-47b9-a938-1aa5bd632871")
+      .crn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::placement-group:r006-418fe842-a3e9-47b9-a938-1aa5bd632871")
       .build();
-    assertEquals(instancePlacementTargetPrototypePlacementGroupIdentityPlacementGroupIdentityByCrnModel.crn(), "crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::placement-group:r018-418fe842-a3e9-47b9-a938-1aa5bd632871");
+    assertEquals(instancePlacementTargetPrototypePlacementGroupIdentityPlacementGroupIdentityByCrnModel.crn(), "crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::placement-group:r006-418fe842-a3e9-47b9-a938-1aa5bd632871");
 
     String json = TestUtilities.serialize(instancePlacementTargetPrototypePlacementGroupIdentityPlacementGroupIdentityByCrnModel);
 
     InstancePlacementTargetPrototypePlacementGroupIdentityPlacementGroupIdentityByCRN instancePlacementTargetPrototypePlacementGroupIdentityPlacementGroupIdentityByCrnModelNew = TestUtilities.deserialize(json, InstancePlacementTargetPrototypePlacementGroupIdentityPlacementGroupIdentityByCRN.class);
     assertTrue(instancePlacementTargetPrototypePlacementGroupIdentityPlacementGroupIdentityByCrnModelNew instanceof InstancePlacementTargetPrototypePlacementGroupIdentityPlacementGroupIdentityByCRN);
-    assertEquals(instancePlacementTargetPrototypePlacementGroupIdentityPlacementGroupIdentityByCrnModelNew.crn(), "crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::placement-group:r018-418fe842-a3e9-47b9-a938-1aa5bd632871");
+    assertEquals(instancePlacementTargetPrototypePlacementGroupIdentityPlacementGroupIdentityByCrnModelNew.crn(), "crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::placement-group:r006-418fe842-a3e9-47b9-a938-1aa5bd632871");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

@@ -46,9 +46,9 @@ public class CreatePublicGatewayOptionsTest {
     assertEquals(zoneIdentityModel.name(), "us-south-1");
 
     PublicGatewayFloatingIPPrototypeFloatingIPIdentityFloatingIPIdentityById publicGatewayFloatingIpPrototypeModel = new PublicGatewayFloatingIPPrototypeFloatingIPIdentityFloatingIPIdentityById.Builder()
-      .id("39300233-9995-4806-89a5-3c1b6eb88689")
+      .id("r006-f45e0d90-12a8-4460-8210-290ff2ab75cd")
       .build();
-    assertEquals(publicGatewayFloatingIpPrototypeModel.id(), "39300233-9995-4806-89a5-3c1b6eb88689");
+    assertEquals(publicGatewayFloatingIpPrototypeModel.id(), "r006-f45e0d90-12a8-4460-8210-290ff2ab75cd");
 
     ResourceGroupIdentityById resourceGroupIdentityModel = new ResourceGroupIdentityById.Builder()
       .id("fee82deba12e4c0fb69c3b09d1f12345")

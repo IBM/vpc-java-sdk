@@ -14,10 +14,9 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.Deleted;
+import com.ibm.cloud.is.vpc.v1.model.PageLink;
 import com.ibm.cloud.is.vpc.v1.model.PublicGateway;
 import com.ibm.cloud.is.vpc.v1.model.PublicGatewayCollection;
-import com.ibm.cloud.is.vpc.v1.model.PublicGatewayCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.PublicGatewayCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.PublicGatewayFloatingIp;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.VPCReference;

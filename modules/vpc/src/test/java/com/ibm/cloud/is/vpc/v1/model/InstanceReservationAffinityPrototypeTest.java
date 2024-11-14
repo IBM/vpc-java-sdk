@@ -33,9 +33,9 @@ public class InstanceReservationAffinityPrototypeTest {
   @Test
   public void testInstanceReservationAffinityPrototype() throws Throwable {
     ReservationIdentityById reservationIdentityModel = new ReservationIdentityById.Builder()
-      .id("7187-ba49df72-37b8-43ac-98da-f8e029de0e63")
+      .id("0717-ba49df72-37b8-43ac-98da-f8e029de0e63")
       .build();
-    assertEquals(reservationIdentityModel.id(), "7187-ba49df72-37b8-43ac-98da-f8e029de0e63");
+    assertEquals(reservationIdentityModel.id(), "0717-ba49df72-37b8-43ac-98da-f8e029de0e63");
 
     InstanceReservationAffinityPrototype instanceReservationAffinityPrototypeModel = new InstanceReservationAffinityPrototype.Builder()
       .policy("disabled")

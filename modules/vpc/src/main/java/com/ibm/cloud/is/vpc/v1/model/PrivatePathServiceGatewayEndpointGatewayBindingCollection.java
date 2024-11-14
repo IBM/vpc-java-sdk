@@ -25,9 +25,9 @@ public class PrivatePathServiceGatewayEndpointGatewayBindingCollection extends G
 
   @SerializedName("endpoint_gateway_bindings")
   protected List<PrivatePathServiceGatewayEndpointGatewayBinding> endpointGatewayBindings;
-  protected PrivatePathServiceGatewayEndpointGatewayBindingCollectionFirst first;
+  protected PageLink first;
   protected Long limit;
-  protected PrivatePathServiceGatewayEndpointGatewayBindingCollectionNext next;
+  protected PageLink next;
   @SerializedName("total_count")
   protected Long totalCount;
 
@@ -51,7 +51,7 @@ public class PrivatePathServiceGatewayEndpointGatewayBindingCollection extends G
    *
    * @return the first
    */
-  public PrivatePathServiceGatewayEndpointGatewayBindingCollectionFirst getFirst() {
+  public PageLink getFirst() {
     return first;
   }
 
@@ -74,7 +74,7 @@ public class PrivatePathServiceGatewayEndpointGatewayBindingCollection extends G
    *
    * @return the next
    */
-  public PrivatePathServiceGatewayEndpointGatewayBindingCollectionNext getNext() {
+  public PageLink getNext() {
     return next;
   }
 

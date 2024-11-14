@@ -23,9 +23,9 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class ShareProfileCollection extends GenericModel {
 
-  protected ShareProfileCollectionFirst first;
+  protected PageLink first;
   protected Long limit;
-  protected ShareProfileCollectionNext next;
+  protected PageLink next;
   protected List<ShareProfile> profiles;
   @SerializedName("total_count")
   protected Long totalCount;
@@ -39,7 +39,7 @@ public class ShareProfileCollection extends GenericModel {
    *
    * @return the first
    */
-  public ShareProfileCollectionFirst getFirst() {
+  public PageLink getFirst() {
     return first;
   }
 
@@ -62,7 +62,7 @@ public class ShareProfileCollection extends GenericModel {
    *
    * @return the next
    */
-  public ShareProfileCollectionNext getNext() {
+  public PageLink getNext() {
     return next;
   }
 

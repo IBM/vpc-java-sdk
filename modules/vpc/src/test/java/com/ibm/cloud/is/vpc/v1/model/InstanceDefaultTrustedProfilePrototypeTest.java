@@ -14,7 +14,7 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.InstanceDefaultTrustedProfilePrototype;
-import com.ibm.cloud.is.vpc.v1.model.TrustedProfileIdentityTrustedProfileById;
+import com.ibm.cloud.is.vpc.v1.model.TrustedProfileIdentityById;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -32,7 +32,7 @@ public class InstanceDefaultTrustedProfilePrototypeTest {
 
   @Test
   public void testInstanceDefaultTrustedProfilePrototype() throws Throwable {
-    TrustedProfileIdentityTrustedProfileById trustedProfileIdentityModel = new TrustedProfileIdentityTrustedProfileById.Builder()
+    TrustedProfileIdentityById trustedProfileIdentityModel = new TrustedProfileIdentityById.Builder()
       .id("Profile-9fd84246-7df4-4667-94e4-8ecde51d5ac5")
       .build();
     assertEquals(trustedProfileIdentityModel.id(), "Profile-9fd84246-7df4-4667-94e4-8ecde51d5ac5");

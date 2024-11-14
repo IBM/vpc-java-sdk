@@ -71,9 +71,9 @@ public class CreateVpnServerOptionsTest {
     assertEquals(resourceGroupIdentityModel.id(), "fee82deba12e4c0fb69c3b09d1f12345");
 
     SecurityGroupIdentityById securityGroupIdentityModel = new SecurityGroupIdentityById.Builder()
-      .id("be5df5ca-12a0-494b-907e-aa6ec2bfa271")
+      .id("r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271")
       .build();
-    assertEquals(securityGroupIdentityModel.id(), "be5df5ca-12a0-494b-907e-aa6ec2bfa271");
+    assertEquals(securityGroupIdentityModel.id(), "r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271");
 
     CreateVpnServerOptions createVpnServerOptionsModel = new CreateVpnServerOptions.Builder()
       .certificate(certificateInstanceIdentityModel)

@@ -262,7 +262,7 @@ public class SharePrototype extends GenericModel {
    *
    * The cron specification for the file share replication schedule.
    *
-   * Replication of a share can be scheduled to occur at most once per hour.
+   * Replication of a share can be scheduled to occur at most once every 15 minutes.
    *
    * The scheduling frequency for this property may
    * [increase](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.

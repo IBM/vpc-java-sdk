@@ -32,15 +32,15 @@ public class FloatingIPTargetPrototypeBareMetalServerNetworkInterfaceIdentityBar
   @Test
   public void testFloatingIPTargetPrototypeBareMetalServerNetworkInterfaceIdentityBareMetalServerNetworkInterfaceIdentityByHref() throws Throwable {
     FloatingIPTargetPrototypeBareMetalServerNetworkInterfaceIdentityBareMetalServerNetworkInterfaceIdentityByHref floatingIpTargetPrototypeBareMetalServerNetworkInterfaceIdentityBareMetalServerNetworkInterfaceIdentityByHrefModel = new FloatingIPTargetPrototypeBareMetalServerNetworkInterfaceIdentityBareMetalServerNetworkInterfaceIdentityByHref.Builder()
-      .href("https://us-south.iaas.cloud.ibm.com/v1/bare_metal_servers/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e")
+      .href("https://us-south.iaas.cloud.ibm.com/v1/bare_metal_servers/0717-aad10fd7-8a02-4f3e-97f3-b18bd82cf304/network_interfaces/0717-da8c43ec-b6ca-4bd2-871e-72e288c66ee6")
       .build();
-    assertEquals(floatingIpTargetPrototypeBareMetalServerNetworkInterfaceIdentityBareMetalServerNetworkInterfaceIdentityByHrefModel.href(), "https://us-south.iaas.cloud.ibm.com/v1/bare_metal_servers/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e");
+    assertEquals(floatingIpTargetPrototypeBareMetalServerNetworkInterfaceIdentityBareMetalServerNetworkInterfaceIdentityByHrefModel.href(), "https://us-south.iaas.cloud.ibm.com/v1/bare_metal_servers/0717-aad10fd7-8a02-4f3e-97f3-b18bd82cf304/network_interfaces/0717-da8c43ec-b6ca-4bd2-871e-72e288c66ee6");
 
     String json = TestUtilities.serialize(floatingIpTargetPrototypeBareMetalServerNetworkInterfaceIdentityBareMetalServerNetworkInterfaceIdentityByHrefModel);
 
     FloatingIPTargetPrototypeBareMetalServerNetworkInterfaceIdentityBareMetalServerNetworkInterfaceIdentityByHref floatingIpTargetPrototypeBareMetalServerNetworkInterfaceIdentityBareMetalServerNetworkInterfaceIdentityByHrefModelNew = TestUtilities.deserialize(json, FloatingIPTargetPrototypeBareMetalServerNetworkInterfaceIdentityBareMetalServerNetworkInterfaceIdentityByHref.class);
     assertTrue(floatingIpTargetPrototypeBareMetalServerNetworkInterfaceIdentityBareMetalServerNetworkInterfaceIdentityByHrefModelNew instanceof FloatingIPTargetPrototypeBareMetalServerNetworkInterfaceIdentityBareMetalServerNetworkInterfaceIdentityByHref);
-    assertEquals(floatingIpTargetPrototypeBareMetalServerNetworkInterfaceIdentityBareMetalServerNetworkInterfaceIdentityByHrefModelNew.href(), "https://us-south.iaas.cloud.ibm.com/v1/bare_metal_servers/1e09281b-f177-46fb-baf1-bc152b2e391a/network_interfaces/10c02d81-0ecb-4dc5-897d-28392913b81e");
+    assertEquals(floatingIpTargetPrototypeBareMetalServerNetworkInterfaceIdentityBareMetalServerNetworkInterfaceIdentityByHrefModelNew.href(), "https://us-south.iaas.cloud.ibm.com/v1/bare_metal_servers/0717-aad10fd7-8a02-4f3e-97f3-b18bd82cf304/network_interfaces/0717-da8c43ec-b6ca-4bd2-871e-72e288c66ee6");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

@@ -34,8 +34,10 @@ public class ListKeysOptionsTest {
     ListKeysOptions listKeysOptionsModel = new ListKeysOptions.Builder()
       .start("testString")
       .limit(Long.valueOf("50"))
+      .resourceGroupId("testString")
       .build();
     assertEquals(listKeysOptionsModel.start(), "testString");
     assertEquals(listKeysOptionsModel.limit(), Long.valueOf("50"));
+    assertEquals(listKeysOptionsModel.resourceGroupId(), "testString");
   }
 }

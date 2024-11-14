@@ -25,9 +25,9 @@ public class BareMetalServerCollection extends GenericModel {
 
   @SerializedName("bare_metal_servers")
   protected List<BareMetalServer> bareMetalServers;
-  protected BareMetalServerCollectionFirst first;
+  protected PageLink first;
   protected Long limit;
-  protected BareMetalServerCollectionNext next;
+  protected PageLink next;
   @SerializedName("total_count")
   protected Long totalCount;
 
@@ -51,7 +51,7 @@ public class BareMetalServerCollection extends GenericModel {
    *
    * @return the first
    */
-  public BareMetalServerCollectionFirst getFirst() {
+  public PageLink getFirst() {
     return first;
   }
 
@@ -74,7 +74,7 @@ public class BareMetalServerCollection extends GenericModel {
    *
    * @return the next
    */
-  public BareMetalServerCollectionNext getNext() {
+  public PageLink getNext() {
     return next;
   }
 

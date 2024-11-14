@@ -23,9 +23,9 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class OperatingSystemCollection extends GenericModel {
 
-  protected OperatingSystemCollectionFirst first;
+  protected PageLink first;
   protected Long limit;
-  protected OperatingSystemCollectionNext next;
+  protected PageLink next;
   @SerializedName("operating_systems")
   protected List<OperatingSystem> operatingSystems;
   @SerializedName("total_count")
@@ -40,7 +40,7 @@ public class OperatingSystemCollection extends GenericModel {
    *
    * @return the first
    */
-  public OperatingSystemCollectionFirst getFirst() {
+  public PageLink getFirst() {
     return first;
   }
 
@@ -63,7 +63,7 @@ public class OperatingSystemCollection extends GenericModel {
    *
    * @return the next
    */
-  public OperatingSystemCollectionNext getNext() {
+  public PageLink getNext() {
     return next;
   }
 

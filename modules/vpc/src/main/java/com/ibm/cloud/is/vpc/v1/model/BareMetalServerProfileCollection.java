@@ -23,9 +23,9 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class BareMetalServerProfileCollection extends GenericModel {
 
-  protected BareMetalServerProfileCollectionFirst first;
+  protected PageLink first;
   protected Long limit;
-  protected BareMetalServerProfileCollectionNext next;
+  protected PageLink next;
   protected List<BareMetalServerProfile> profiles;
   @SerializedName("total_count")
   protected Long totalCount;
@@ -39,7 +39,7 @@ public class BareMetalServerProfileCollection extends GenericModel {
    *
    * @return the first
    */
-  public BareMetalServerProfileCollectionFirst getFirst() {
+  public PageLink getFirst() {
     return first;
   }
 
@@ -62,7 +62,7 @@ public class BareMetalServerProfileCollection extends GenericModel {
    *
    * @return the next
    */
-  public BareMetalServerProfileCollectionNext getNext() {
+  public PageLink getNext() {
     return next;
   }
 

@@ -114,6 +114,10 @@ public class Instance extends GenericModel {
   protected VolumeAttachmentReferenceInstanceContext bootVolumeAttachment;
   @SerializedName("catalog_offering")
   protected InstanceCatalogOffering catalogOffering;
+  @SerializedName("cluster_network")
+  protected ClusterNetworkReference clusterNetwork;
+  @SerializedName("cluster_network_attachments")
+  protected List<InstanceClusterNetworkAttachmentReference> clusterNetworkAttachments;
   @SerializedName("confidential_compute_mode")
   protected String confidentialComputeMode;
   @SerializedName("created_at")
@@ -220,6 +224,30 @@ public class Instance extends GenericModel {
    */
   public InstanceCatalogOffering getCatalogOffering() {
     return catalogOffering;
+  }
+
+  /**
+   * Gets the clusterNetwork.
+   *
+   * If present, the cluster network that this virtual server instance resides in.
+   *
+   * @return the clusterNetwork
+   */
+  public ClusterNetworkReference getClusterNetwork() {
+    return clusterNetwork;
+  }
+
+  /**
+   * Gets the clusterNetworkAttachments.
+   *
+   * The cluster network attachments for this virtual server instance.
+   *
+   * The cluster network attachments are ordered for consistent instance configuration.
+   *
+   * @return the clusterNetworkAttachments
+   */
+  public List<InstanceClusterNetworkAttachmentReference> getClusterNetworkAttachments() {
+    return clusterNetworkAttachments;
   }
 
   /**

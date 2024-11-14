@@ -15,11 +15,10 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostGroup;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostGroupCollection;
-import com.ibm.cloud.is.vpc.v1.model.DedicatedHostGroupCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.DedicatedHostGroupCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostReference;
 import com.ibm.cloud.is.vpc.v1.model.Deleted;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileReference;
+import com.ibm.cloud.is.vpc.v1.model.PageLink;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.ZoneReference;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;

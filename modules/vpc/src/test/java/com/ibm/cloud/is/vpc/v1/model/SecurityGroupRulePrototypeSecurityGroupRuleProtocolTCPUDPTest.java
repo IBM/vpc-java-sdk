@@ -49,7 +49,7 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolTCPUDPTest {
       .local(securityGroupRuleLocalPrototypeModel)
       .portMax(Long.valueOf("22"))
       .portMin(Long.valueOf("22"))
-      .protocol("udp")
+      .protocol("tcp")
       .remote(securityGroupRuleRemotePrototypeModel)
       .build();
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudpModel.direction(), "inbound");
@@ -57,7 +57,7 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolTCPUDPTest {
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudpModel.local(), securityGroupRuleLocalPrototypeModel);
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudpModel.portMax(), Long.valueOf("22"));
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudpModel.portMin(), Long.valueOf("22"));
-    assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudpModel.protocol(), "udp");
+    assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudpModel.protocol(), "tcp");
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudpModel.remote(), securityGroupRuleRemotePrototypeModel);
 
     String json = TestUtilities.serialize(securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudpModel);
@@ -69,7 +69,7 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolTCPUDPTest {
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudpModelNew.local().toString(), securityGroupRuleLocalPrototypeModel.toString());
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudpModelNew.portMax(), Long.valueOf("22"));
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudpModelNew.portMin(), Long.valueOf("22"));
-    assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudpModelNew.protocol(), "udp");
+    assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudpModelNew.protocol(), "tcp");
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudpModelNew.remote().toString(), securityGroupRuleRemotePrototypeModel.toString());
   }
 

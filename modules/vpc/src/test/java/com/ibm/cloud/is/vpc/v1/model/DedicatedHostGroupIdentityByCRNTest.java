@@ -32,15 +32,15 @@ public class DedicatedHostGroupIdentityByCRNTest {
   @Test
   public void testDedicatedHostGroupIdentityByCRN() throws Throwable {
     DedicatedHostGroupIdentityByCRN dedicatedHostGroupIdentityByCrnModel = new DedicatedHostGroupIdentityByCRN.Builder()
-      .crn("crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::dedicated-host-group:bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0")
+      .crn("crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::dedicated-host-group:0717-bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0")
       .build();
-    assertEquals(dedicatedHostGroupIdentityByCrnModel.crn(), "crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::dedicated-host-group:bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0");
+    assertEquals(dedicatedHostGroupIdentityByCrnModel.crn(), "crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::dedicated-host-group:0717-bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0");
 
     String json = TestUtilities.serialize(dedicatedHostGroupIdentityByCrnModel);
 
     DedicatedHostGroupIdentityByCRN dedicatedHostGroupIdentityByCrnModelNew = TestUtilities.deserialize(json, DedicatedHostGroupIdentityByCRN.class);
     assertTrue(dedicatedHostGroupIdentityByCrnModelNew instanceof DedicatedHostGroupIdentityByCRN);
-    assertEquals(dedicatedHostGroupIdentityByCrnModelNew.crn(), "crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::dedicated-host-group:bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0");
+    assertEquals(dedicatedHostGroupIdentityByCrnModelNew.crn(), "crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::dedicated-host-group:0717-bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

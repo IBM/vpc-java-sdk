@@ -37,8 +37,6 @@ public class ShareMountTargetVirtualNetworkInterfacePrototypeVirtualNetworkInter
   public interface ProtocolStateFilteringMode {
     /** auto. */
     String AUTO = "auto";
-    /** disabled. */
-    String DISABLED = "disabled";
     /** enabled. */
     String ENABLED = "enabled";
   }

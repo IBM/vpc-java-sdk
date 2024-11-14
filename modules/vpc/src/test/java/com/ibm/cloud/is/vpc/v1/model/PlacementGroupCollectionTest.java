@@ -13,10 +13,9 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.ibm.cloud.is.vpc.v1.model.PageLink;
 import com.ibm.cloud.is.vpc.v1.model.PlacementGroup;
 import com.ibm.cloud.is.vpc.v1.model.PlacementGroupCollection;
-import com.ibm.cloud.is.vpc.v1.model.PlacementGroupCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.PlacementGroupCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;

@@ -13,8 +13,10 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.ibm.cloud.is.vpc.v1.model.ClusterNetworkProfileReference;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfile;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileBandwidthFixed;
+import com.ibm.cloud.is.vpc.v1.model.InstanceProfileClusterNetworkAttachmentCountDependent;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileDisk;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileDiskQuantityFixed;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileDiskSizeFixed;
@@ -55,6 +57,7 @@ public class InstanceProfileTest {
   public void testInstanceProfile() throws Throwable {
     InstanceProfile instanceProfileModel = new InstanceProfile();
     assertNull(instanceProfileModel.getBandwidth());
+    assertNull(instanceProfileModel.getClusterNetworkAttachmentCount());
     assertNull(instanceProfileModel.getConfidentialComputeModes());
     assertNull(instanceProfileModel.getDisks());
     assertNull(instanceProfileModel.getFamily());
@@ -74,6 +77,7 @@ public class InstanceProfileTest {
     assertNull(instanceProfileModel.getResourceType());
     assertNull(instanceProfileModel.getSecureBootModes());
     assertNull(instanceProfileModel.getStatus());
+    assertNull(instanceProfileModel.getSupportedClusterNetworkProfiles());
     assertNull(instanceProfileModel.getTotalVolumeBandwidth());
     assertNull(instanceProfileModel.getVcpuArchitecture());
     assertNull(instanceProfileModel.getVcpuCount());

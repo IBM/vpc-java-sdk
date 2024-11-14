@@ -45,6 +45,7 @@ public class InstancePrototypeInstanceBySourceTemplate extends InstancePrototype
    */
   public static class Builder {
     private InstanceAvailabilityPolicyPrototype availabilityPolicy;
+    private List<InstanceClusterNetworkAttachmentPrototypeInstanceContext> clusterNetworkAttachments;
     private String confidentialComputeMode;
     private InstanceDefaultTrustedProfilePrototype defaultTrustedProfile;
     private Boolean enableSecureBoot;
@@ -76,6 +77,7 @@ public class InstancePrototypeInstanceBySourceTemplate extends InstancePrototype
      */
     public Builder(InstancePrototype instancePrototypeInstanceBySourceTemplate) {
       this.availabilityPolicy = instancePrototypeInstanceBySourceTemplate.availabilityPolicy;
+      this.clusterNetworkAttachments = instancePrototypeInstanceBySourceTemplate.clusterNetworkAttachments;
       this.confidentialComputeMode = instancePrototypeInstanceBySourceTemplate.confidentialComputeMode;
       this.defaultTrustedProfile = instancePrototypeInstanceBySourceTemplate.defaultTrustedProfile;
       this.enableSecureBoot = instancePrototypeInstanceBySourceTemplate.enableSecureBoot;
@@ -123,6 +125,22 @@ public class InstancePrototypeInstanceBySourceTemplate extends InstancePrototype
      */
     public InstancePrototypeInstanceBySourceTemplate build() {
       return new InstancePrototypeInstanceBySourceTemplate(this);
+    }
+
+    /**
+     * Adds a new element to clusterNetworkAttachments.
+     *
+     * @param clusterNetworkAttachments the new element to be added
+     * @return the InstancePrototypeInstanceBySourceTemplate builder
+     */
+    public Builder addClusterNetworkAttachments(InstanceClusterNetworkAttachmentPrototypeInstanceContext clusterNetworkAttachments) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(clusterNetworkAttachments,
+        "clusterNetworkAttachments cannot be null");
+      if (this.clusterNetworkAttachments == null) {
+        this.clusterNetworkAttachments = new ArrayList<InstanceClusterNetworkAttachmentPrototypeInstanceContext>();
+      }
+      this.clusterNetworkAttachments.add(clusterNetworkAttachments);
+      return this;
     }
 
     /**
@@ -197,6 +215,18 @@ public class InstancePrototypeInstanceBySourceTemplate extends InstancePrototype
      */
     public Builder availabilityPolicy(InstanceAvailabilityPolicyPrototype availabilityPolicy) {
       this.availabilityPolicy = availabilityPolicy;
+      return this;
+    }
+
+    /**
+     * Set the clusterNetworkAttachments.
+     * Existing clusterNetworkAttachments will be replaced.
+     *
+     * @param clusterNetworkAttachments the clusterNetworkAttachments
+     * @return the InstancePrototypeInstanceBySourceTemplate builder
+     */
+    public Builder clusterNetworkAttachments(List<InstanceClusterNetworkAttachmentPrototypeInstanceContext> clusterNetworkAttachments) {
+      this.clusterNetworkAttachments = clusterNetworkAttachments;
       return this;
     }
 
@@ -464,6 +494,7 @@ public class InstancePrototypeInstanceBySourceTemplate extends InstancePrototype
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.sourceTemplate,
       "sourceTemplate cannot be null");
     availabilityPolicy = builder.availabilityPolicy;
+    clusterNetworkAttachments = builder.clusterNetworkAttachments;
     confidentialComputeMode = builder.confidentialComputeMode;
     defaultTrustedProfile = builder.defaultTrustedProfile;
     enableSecureBoot = builder.enableSecureBoot;

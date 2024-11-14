@@ -25,9 +25,9 @@ public class AddressPrefixCollection extends GenericModel {
 
   @SerializedName("address_prefixes")
   protected List<AddressPrefix> addressPrefixes;
-  protected AddressPrefixCollectionFirst first;
+  protected PageLink first;
   protected Long limit;
-  protected AddressPrefixCollectionNext next;
+  protected PageLink next;
   @SerializedName("total_count")
   protected Long totalCount;
 
@@ -51,7 +51,7 @@ public class AddressPrefixCollection extends GenericModel {
    *
    * @return the first
    */
-  public AddressPrefixCollectionFirst getFirst() {
+  public PageLink getFirst() {
     return first;
   }
 
@@ -74,7 +74,7 @@ public class AddressPrefixCollection extends GenericModel {
    *
    * @return the next
    */
-  public AddressPrefixCollectionNext getNext() {
+  public PageLink getNext() {
     return next;
   }
 

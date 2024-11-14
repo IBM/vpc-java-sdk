@@ -145,9 +145,9 @@ public class CreateLoadBalancerOptionsTest {
     assertEquals(loadBalancerPoolHealthMonitorPrototypeModel.urlPath(), "/");
 
     LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityById loadBalancerPoolMemberTargetPrototypeModel = new LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityById.Builder()
-      .id("0717_1e09281b-f177-46f2-b1f1-bc152b2e391a")
+      .id("0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0")
       .build();
-    assertEquals(loadBalancerPoolMemberTargetPrototypeModel.id(), "0717_1e09281b-f177-46f2-b1f1-bc152b2e391a");
+    assertEquals(loadBalancerPoolMemberTargetPrototypeModel.id(), "0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0");
 
     LoadBalancerPoolMemberPrototype loadBalancerPoolMemberPrototypeModel = new LoadBalancerPoolMemberPrototype.Builder()
       .port(Long.valueOf("80"))
@@ -193,9 +193,9 @@ public class CreateLoadBalancerOptionsTest {
     assertEquals(resourceGroupIdentityModel.id(), "fee82deba12e4c0fb69c3b09d1f12345");
 
     SecurityGroupIdentityById securityGroupIdentityModel = new SecurityGroupIdentityById.Builder()
-      .id("be5df5ca-12a0-494b-907e-aa6ec2bfa271")
+      .id("r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271")
       .build();
-    assertEquals(securityGroupIdentityModel.id(), "be5df5ca-12a0-494b-907e-aa6ec2bfa271");
+    assertEquals(securityGroupIdentityModel.id(), "r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271");
 
     CreateLoadBalancerOptions createLoadBalancerOptionsModel = new CreateLoadBalancerOptions.Builder()
       .isPublic(true)

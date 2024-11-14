@@ -67,9 +67,9 @@ public class VpcRoutesPager {
 
   /**
    * Returns the next page of results.
-   * @return a List&lt;RouteCollectionVPCContextRoutesItem&gt; that contains the next page of results
+   * @return a List&lt;Route&gt; that contains the next page of results
    */
-  public List<RouteCollectionVPCContextRoutesItem> getNext() {
+  public List<Route> getNext() {
     if (!hasNext()) {
       throw new NoSuchElementException("No more results available");
     }
@@ -99,12 +99,12 @@ public class VpcRoutesPager {
 
   /**
    * Returns all results by invoking getNext() repeatedly until all pages of results have been retrieved.
-   * @return a List&lt;RouteCollectionVPCContextRoutesItem&gt; containing all results returned by the "listVpcRoutes" method
+   * @return a List&lt;Route&gt; containing all results returned by the "listVpcRoutes" method
    */
-  public List<RouteCollectionVPCContextRoutesItem> getAll() {
-    List<RouteCollectionVPCContextRoutesItem> results = new ArrayList<>();
+  public List<Route> getAll() {
+    List<Route> results = new ArrayList<>();
     while (hasNext()) {
-      List<RouteCollectionVPCContextRoutesItem> nextPage = getNext();
+      List<Route> nextPage = getNext();
       results.addAll(nextPage);
     }
     return results;

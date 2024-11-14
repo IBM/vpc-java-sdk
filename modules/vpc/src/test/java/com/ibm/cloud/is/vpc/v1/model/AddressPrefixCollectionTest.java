@@ -15,8 +15,7 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.AddressPrefix;
 import com.ibm.cloud.is.vpc.v1.model.AddressPrefixCollection;
-import com.ibm.cloud.is.vpc.v1.model.AddressPrefixCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.AddressPrefixCollectionNext;
+import com.ibm.cloud.is.vpc.v1.model.PageLink;
 import com.ibm.cloud.is.vpc.v1.model.ZoneReference;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;

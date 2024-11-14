@@ -22,6 +22,7 @@ public class ListKeysOptions extends GenericModel {
 
   protected String start;
   protected Long limit;
+  protected String resourceGroupId;
 
   /**
    * Builder.
@@ -29,6 +30,7 @@ public class ListKeysOptions extends GenericModel {
   public static class Builder {
     private String start;
     private Long limit;
+    private String resourceGroupId;
 
     /**
      * Instantiates a new Builder from an existing ListKeysOptions instance.
@@ -38,6 +40,7 @@ public class ListKeysOptions extends GenericModel {
     private Builder(ListKeysOptions listKeysOptions) {
       this.start = listKeysOptions.start;
       this.limit = listKeysOptions.limit;
+      this.resourceGroupId = listKeysOptions.resourceGroupId;
     }
 
     /**
@@ -76,6 +79,17 @@ public class ListKeysOptions extends GenericModel {
       this.limit = limit;
       return this;
     }
+
+    /**
+     * Set the resourceGroupId.
+     *
+     * @param resourceGroupId the resourceGroupId
+     * @return the ListKeysOptions builder
+     */
+    public Builder resourceGroupId(String resourceGroupId) {
+      this.resourceGroupId = resourceGroupId;
+      return this;
+    }
   }
 
   protected ListKeysOptions() { }
@@ -83,6 +97,7 @@ public class ListKeysOptions extends GenericModel {
   protected ListKeysOptions(Builder builder) {
     start = builder.start;
     limit = builder.limit;
+    resourceGroupId = builder.resourceGroupId;
   }
 
   /**
@@ -114,6 +129,17 @@ public class ListKeysOptions extends GenericModel {
    */
   public Long limit() {
     return limit;
+  }
+
+  /**
+   * Gets the resourceGroupId.
+   *
+   * Filters the collection to resources with a `resource_group.id` property matching the specified identifier.
+   *
+   * @return the resourceGroupId
+   */
+  public String resourceGroupId() {
+    return resourceGroupId;
   }
 }
 

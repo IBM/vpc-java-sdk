@@ -23,9 +23,9 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class VPCCollection extends GenericModel {
 
-  protected VPCCollectionFirst first;
+  protected PageLink first;
   protected Long limit;
-  protected VPCCollectionNext next;
+  protected PageLink next;
   @SerializedName("total_count")
   protected Long totalCount;
   protected List<VPC> vpcs;
@@ -39,7 +39,7 @@ public class VPCCollection extends GenericModel {
    *
    * @return the first
    */
-  public VPCCollectionFirst getFirst() {
+  public PageLink getFirst() {
     return first;
   }
 
@@ -62,7 +62,7 @@ public class VPCCollection extends GenericModel {
    *
    * @return the next
    */
-  public VPCCollectionNext getNext() {
+  public PageLink getNext() {
     return next;
   }
 

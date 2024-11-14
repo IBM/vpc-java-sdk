@@ -15,8 +15,6 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostProfile;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostProfileCollection;
-import com.ibm.cloud.is.vpc.v1.model.DedicatedHostProfileCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.DedicatedHostProfileCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostProfileDisk;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostProfileDiskInterface;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostProfileDiskQuantity;
@@ -28,6 +26,7 @@ import com.ibm.cloud.is.vpc.v1.model.DedicatedHostProfileVCPUArchitecture;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostProfileVCPUFixed;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostProfileVCPUManufacturer;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileReference;
+import com.ibm.cloud.is.vpc.v1.model.PageLink;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;

@@ -25,16 +25,20 @@ import com.ibm.cloud.sdk.core.util.GsonSingleton;
 public class VirtualNetworkInterfacePatch extends GenericModel {
 
   /**
-   * The protocol state filtering mode used for this virtual network interface. If `auto`, protocol state packet
-   * filtering is enabled or disabled based on the virtual network interface's `target` resource type:
+   * The protocol state filtering mode to use for this virtual network interface. If
+   * `auto`, protocol state packet filtering is enabled or disabled based on the virtual network interface's `target`
+   * resource type:
    *
    * - `bare_metal_server_network_attachment`: disabled
    * - `instance_network_attachment`: enabled
    * - `share_mount_target`: enabled
    *
+   * Must not be `disabled` if the virtual network interface's `target` resource type is
+   * `share_mount_target`.
+   *
    * Protocol state filtering monitors each network connection flowing over this virtual network interface, and drops
    * any packets that are invalid based on the current connection state and protocol. See [Protocol state filtering
-   * mode](https://cloud.ibm.com/docs/vpc?topic=vpc-vni-about#protocol-state-filtering)) for more information.
+   * mode](https://cloud.ibm.com/docs/vpc?topic=vpc-vni-about#protocol-state-filtering) for more information.
    */
   public interface ProtocolStateFilteringMode {
     /** auto. */
@@ -228,16 +232,20 @@ public class VirtualNetworkInterfacePatch extends GenericModel {
   /**
    * Gets the protocolStateFilteringMode.
    *
-   * The protocol state filtering mode used for this virtual network interface. If `auto`, protocol state packet
-   * filtering is enabled or disabled based on the virtual network interface's `target` resource type:
+   * The protocol state filtering mode to use for this virtual network interface. If
+   * `auto`, protocol state packet filtering is enabled or disabled based on the virtual network interface's `target`
+   * resource type:
    *
    * - `bare_metal_server_network_attachment`: disabled
    * - `instance_network_attachment`: enabled
    * - `share_mount_target`: enabled
    *
+   * Must not be `disabled` if the virtual network interface's `target` resource type is
+   * `share_mount_target`.
+   *
    * Protocol state filtering monitors each network connection flowing over this virtual network interface, and drops
    * any packets that are invalid based on the current connection state and protocol. See [Protocol state filtering
-   * mode](https://cloud.ibm.com/docs/vpc?topic=vpc-vni-about#protocol-state-filtering)) for more information.
+   * mode](https://cloud.ibm.com/docs/vpc?topic=vpc-vni-about#protocol-state-filtering) for more information.
    *
    * @return the protocolStateFilteringMode
    */

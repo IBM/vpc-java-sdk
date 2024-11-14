@@ -25,9 +25,9 @@ public class ShareAccessorBindingCollection extends GenericModel {
 
   @SerializedName("accessor_bindings")
   protected List<ShareAccessorBinding> accessorBindings;
-  protected ShareAccessorBindingCollectionFirst first;
+  protected PageLink first;
   protected Long limit;
-  protected ShareAccessorBindingCollectionNext next;
+  protected PageLink next;
   @SerializedName("total_count")
   protected Long totalCount;
 
@@ -51,7 +51,7 @@ public class ShareAccessorBindingCollection extends GenericModel {
    *
    * @return the first
    */
-  public ShareAccessorBindingCollectionFirst getFirst() {
+  public PageLink getFirst() {
     return first;
   }
 
@@ -74,7 +74,7 @@ public class ShareAccessorBindingCollection extends GenericModel {
    *
    * @return the next
    */
-  public ShareAccessorBindingCollectionNext getNext() {
+  public PageLink getNext() {
     return next;
   }
 

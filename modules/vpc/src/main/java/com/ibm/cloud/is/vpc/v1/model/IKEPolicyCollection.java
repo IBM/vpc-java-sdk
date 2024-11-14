@@ -23,11 +23,11 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class IKEPolicyCollection extends GenericModel {
 
-  protected IKEPolicyCollectionFirst first;
+  protected PageLink first;
   @SerializedName("ike_policies")
   protected List<IKEPolicy> ikePolicies;
   protected Long limit;
-  protected IKEPolicyCollectionNext next;
+  protected PageLink next;
   @SerializedName("total_count")
   protected Long totalCount;
 
@@ -40,7 +40,7 @@ public class IKEPolicyCollection extends GenericModel {
    *
    * @return the first
    */
-  public IKEPolicyCollectionFirst getFirst() {
+  public PageLink getFirst() {
     return first;
   }
 
@@ -74,7 +74,7 @@ public class IKEPolicyCollection extends GenericModel {
    *
    * @return the next
    */
-  public IKEPolicyCollectionNext getNext() {
+  public PageLink getNext() {
     return next;
   }
 

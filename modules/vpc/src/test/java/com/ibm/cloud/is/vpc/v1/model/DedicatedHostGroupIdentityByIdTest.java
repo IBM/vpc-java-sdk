@@ -32,15 +32,15 @@ public class DedicatedHostGroupIdentityByIdTest {
   @Test
   public void testDedicatedHostGroupIdentityById() throws Throwable {
     DedicatedHostGroupIdentityById dedicatedHostGroupIdentityByIdModel = new DedicatedHostGroupIdentityById.Builder()
-      .id("bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0")
+      .id("0717-bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0")
       .build();
-    assertEquals(dedicatedHostGroupIdentityByIdModel.id(), "bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0");
+    assertEquals(dedicatedHostGroupIdentityByIdModel.id(), "0717-bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0");
 
     String json = TestUtilities.serialize(dedicatedHostGroupIdentityByIdModel);
 
     DedicatedHostGroupIdentityById dedicatedHostGroupIdentityByIdModelNew = TestUtilities.deserialize(json, DedicatedHostGroupIdentityById.class);
     assertTrue(dedicatedHostGroupIdentityByIdModelNew instanceof DedicatedHostGroupIdentityById);
-    assertEquals(dedicatedHostGroupIdentityByIdModelNew.id(), "bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0");
+    assertEquals(dedicatedHostGroupIdentityByIdModelNew.id(), "0717-bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

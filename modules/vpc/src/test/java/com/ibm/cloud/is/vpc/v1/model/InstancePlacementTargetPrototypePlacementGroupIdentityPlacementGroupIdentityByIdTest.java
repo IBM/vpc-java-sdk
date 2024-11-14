@@ -32,15 +32,15 @@ public class InstancePlacementTargetPrototypePlacementGroupIdentityPlacementGrou
   @Test
   public void testInstancePlacementTargetPrototypePlacementGroupIdentityPlacementGroupIdentityById() throws Throwable {
     InstancePlacementTargetPrototypePlacementGroupIdentityPlacementGroupIdentityById instancePlacementTargetPrototypePlacementGroupIdentityPlacementGroupIdentityByIdModel = new InstancePlacementTargetPrototypePlacementGroupIdentityPlacementGroupIdentityById.Builder()
-      .id("r018-418fe842-a3e9-47b9-a938-1aa5bd632871")
+      .id("r006-418fe842-a3e9-47b9-a938-1aa5bd632871")
       .build();
-    assertEquals(instancePlacementTargetPrototypePlacementGroupIdentityPlacementGroupIdentityByIdModel.id(), "r018-418fe842-a3e9-47b9-a938-1aa5bd632871");
+    assertEquals(instancePlacementTargetPrototypePlacementGroupIdentityPlacementGroupIdentityByIdModel.id(), "r006-418fe842-a3e9-47b9-a938-1aa5bd632871");
 
     String json = TestUtilities.serialize(instancePlacementTargetPrototypePlacementGroupIdentityPlacementGroupIdentityByIdModel);
 
     InstancePlacementTargetPrototypePlacementGroupIdentityPlacementGroupIdentityById instancePlacementTargetPrototypePlacementGroupIdentityPlacementGroupIdentityByIdModelNew = TestUtilities.deserialize(json, InstancePlacementTargetPrototypePlacementGroupIdentityPlacementGroupIdentityById.class);
     assertTrue(instancePlacementTargetPrototypePlacementGroupIdentityPlacementGroupIdentityByIdModelNew instanceof InstancePlacementTargetPrototypePlacementGroupIdentityPlacementGroupIdentityById);
-    assertEquals(instancePlacementTargetPrototypePlacementGroupIdentityPlacementGroupIdentityByIdModelNew.id(), "r018-418fe842-a3e9-47b9-a938-1aa5bd632871");
+    assertEquals(instancePlacementTargetPrototypePlacementGroupIdentityPlacementGroupIdentityByIdModelNew.id(), "r006-418fe842-a3e9-47b9-a938-1aa5bd632871");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

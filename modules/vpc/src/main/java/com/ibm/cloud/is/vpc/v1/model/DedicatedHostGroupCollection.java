@@ -23,10 +23,10 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class DedicatedHostGroupCollection extends GenericModel {
 
-  protected DedicatedHostGroupCollectionFirst first;
+  protected PageLink first;
   protected List<DedicatedHostGroup> groups;
   protected Long limit;
-  protected DedicatedHostGroupCollectionNext next;
+  protected PageLink next;
   @SerializedName("total_count")
   protected Long totalCount;
 
@@ -39,7 +39,7 @@ public class DedicatedHostGroupCollection extends GenericModel {
    *
    * @return the first
    */
-  public DedicatedHostGroupCollectionFirst getFirst() {
+  public PageLink getFirst() {
     return first;
   }
 
@@ -73,7 +73,7 @@ public class DedicatedHostGroupCollection extends GenericModel {
    *
    * @return the next
    */
-  public DedicatedHostGroupCollectionNext getNext() {
+  public PageLink getNext() {
     return next;
   }
 

@@ -45,9 +45,9 @@ public class DedicatedHostPrototypeDedicatedHostByGroupTest {
     assertEquals(resourceGroupIdentityModel.id(), "fee82deba12e4c0fb69c3b09d1f12345");
 
     DedicatedHostGroupIdentityById dedicatedHostGroupIdentityModel = new DedicatedHostGroupIdentityById.Builder()
-      .id("bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0")
+      .id("0717-bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0")
       .build();
-    assertEquals(dedicatedHostGroupIdentityModel.id(), "bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0");
+    assertEquals(dedicatedHostGroupIdentityModel.id(), "0717-bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0");
 
     DedicatedHostPrototypeDedicatedHostByGroup dedicatedHostPrototypeDedicatedHostByGroupModel = new DedicatedHostPrototypeDedicatedHostByGroup.Builder()
       .instancePlacementEnabled(true)

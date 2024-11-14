@@ -40,9 +40,9 @@ public class CreateFlowLogCollectorOptionsTest {
     assertEquals(legacyCloudObjectStorageBucketIdentityModel.name(), "bucket-27200-lwx4cfvcue");
 
     FlowLogCollectorTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceIdentityById flowLogCollectorTargetPrototypeModel = new FlowLogCollectorTargetPrototypeNetworkInterfaceIdentityNetworkInterfaceIdentityById.Builder()
-      .id("0717-10c02d81-0ecb-4dc5-897d-28392913b81e")
+      .id("0717-d54eb633-98ea-459d-aa00-6a8e780175a7")
       .build();
-    assertEquals(flowLogCollectorTargetPrototypeModel.id(), "0717-10c02d81-0ecb-4dc5-897d-28392913b81e");
+    assertEquals(flowLogCollectorTargetPrototypeModel.id(), "0717-d54eb633-98ea-459d-aa00-6a8e780175a7");
 
     ResourceGroupIdentityById resourceGroupIdentityModel = new ResourceGroupIdentityById.Builder()
       .id("fee82deba12e4c0fb69c3b09d1f12345")

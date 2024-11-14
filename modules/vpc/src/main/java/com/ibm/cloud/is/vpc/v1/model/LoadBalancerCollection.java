@@ -23,11 +23,11 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class LoadBalancerCollection extends GenericModel {
 
-  protected LoadBalancerCollectionFirst first;
+  protected PageLink first;
   protected Long limit;
   @SerializedName("load_balancers")
   protected List<LoadBalancer> loadBalancers;
-  protected LoadBalancerCollectionNext next;
+  protected PageLink next;
   @SerializedName("total_count")
   protected Long totalCount;
 
@@ -40,7 +40,7 @@ public class LoadBalancerCollection extends GenericModel {
    *
    * @return the first
    */
-  public LoadBalancerCollectionFirst getFirst() {
+  public PageLink getFirst() {
     return first;
   }
 
@@ -74,7 +74,7 @@ public class LoadBalancerCollection extends GenericModel {
    *
    * @return the next
    */
-  public LoadBalancerCollectionNext getNext() {
+  public PageLink getNext() {
     return next;
   }
 

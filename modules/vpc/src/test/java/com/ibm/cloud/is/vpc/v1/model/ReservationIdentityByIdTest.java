@@ -32,15 +32,15 @@ public class ReservationIdentityByIdTest {
   @Test
   public void testReservationIdentityById() throws Throwable {
     ReservationIdentityById reservationIdentityByIdModel = new ReservationIdentityById.Builder()
-      .id("7187-ba49df72-37b8-43ac-98da-f8e029de0e63")
+      .id("0717-ba49df72-37b8-43ac-98da-f8e029de0e63")
       .build();
-    assertEquals(reservationIdentityByIdModel.id(), "7187-ba49df72-37b8-43ac-98da-f8e029de0e63");
+    assertEquals(reservationIdentityByIdModel.id(), "0717-ba49df72-37b8-43ac-98da-f8e029de0e63");
 
     String json = TestUtilities.serialize(reservationIdentityByIdModel);
 
     ReservationIdentityById reservationIdentityByIdModelNew = TestUtilities.deserialize(json, ReservationIdentityById.class);
     assertTrue(reservationIdentityByIdModelNew instanceof ReservationIdentityById);
-    assertEquals(reservationIdentityByIdModelNew.id(), "7187-ba49df72-37b8-43ac-98da-f8e029de0e63");
+    assertEquals(reservationIdentityByIdModelNew.id(), "0717-ba49df72-37b8-43ac-98da-f8e029de0e63");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

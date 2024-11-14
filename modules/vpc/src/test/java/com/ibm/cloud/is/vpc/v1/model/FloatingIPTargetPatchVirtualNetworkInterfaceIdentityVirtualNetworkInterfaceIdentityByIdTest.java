@@ -32,15 +32,15 @@ public class FloatingIPTargetPatchVirtualNetworkInterfaceIdentityVirtualNetworkI
   @Test
   public void testFloatingIPTargetPatchVirtualNetworkInterfaceIdentityVirtualNetworkInterfaceIdentityById() throws Throwable {
     FloatingIPTargetPatchVirtualNetworkInterfaceIdentityVirtualNetworkInterfaceIdentityById floatingIpTargetPatchVirtualNetworkInterfaceIdentityVirtualNetworkInterfaceIdentityByIdModel = new FloatingIPTargetPatchVirtualNetworkInterfaceIdentityVirtualNetworkInterfaceIdentityById.Builder()
-      .id("0767-fa41aecb-4f21-423d-8082-630bfba1e1d9")
+      .id("0717-54eb57ee-86f2-4796-90bb-d7874e0831ef")
       .build();
-    assertEquals(floatingIpTargetPatchVirtualNetworkInterfaceIdentityVirtualNetworkInterfaceIdentityByIdModel.id(), "0767-fa41aecb-4f21-423d-8082-630bfba1e1d9");
+    assertEquals(floatingIpTargetPatchVirtualNetworkInterfaceIdentityVirtualNetworkInterfaceIdentityByIdModel.id(), "0717-54eb57ee-86f2-4796-90bb-d7874e0831ef");
 
     String json = TestUtilities.serialize(floatingIpTargetPatchVirtualNetworkInterfaceIdentityVirtualNetworkInterfaceIdentityByIdModel);
 
     FloatingIPTargetPatchVirtualNetworkInterfaceIdentityVirtualNetworkInterfaceIdentityById floatingIpTargetPatchVirtualNetworkInterfaceIdentityVirtualNetworkInterfaceIdentityByIdModelNew = TestUtilities.deserialize(json, FloatingIPTargetPatchVirtualNetworkInterfaceIdentityVirtualNetworkInterfaceIdentityById.class);
     assertTrue(floatingIpTargetPatchVirtualNetworkInterfaceIdentityVirtualNetworkInterfaceIdentityByIdModelNew instanceof FloatingIPTargetPatchVirtualNetworkInterfaceIdentityVirtualNetworkInterfaceIdentityById);
-    assertEquals(floatingIpTargetPatchVirtualNetworkInterfaceIdentityVirtualNetworkInterfaceIdentityByIdModelNew.id(), "0767-fa41aecb-4f21-423d-8082-630bfba1e1d9");
+    assertEquals(floatingIpTargetPatchVirtualNetworkInterfaceIdentityVirtualNetworkInterfaceIdentityByIdModelNew.id(), "0717-54eb57ee-86f2-4796-90bb-d7874e0831ef");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

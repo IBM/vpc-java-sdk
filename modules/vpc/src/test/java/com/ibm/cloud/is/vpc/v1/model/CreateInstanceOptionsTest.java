@@ -13,10 +13,14 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.ibm.cloud.is.vpc.v1.model.ClusterNetworkInterfacePrimaryIPPrototypeClusterNetworkSubnetReservedIPPrototypeClusterNetworkInterfacePrimaryIPContext;
+import com.ibm.cloud.is.vpc.v1.model.ClusterNetworkSubnetIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.CreateInstanceOptions;
 import com.ibm.cloud.is.vpc.v1.model.EncryptionKeyIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.ImageIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.InstanceAvailabilityPolicyPrototype;
+import com.ibm.cloud.is.vpc.v1.model.InstanceClusterNetworkAttachmentPrototypeClusterNetworkInterfaceInstanceClusterNetworkInterfacePrototypeInstanceClusterNetworkAttachment;
+import com.ibm.cloud.is.vpc.v1.model.InstanceClusterNetworkAttachmentPrototypeInstanceContext;
 import com.ibm.cloud.is.vpc.v1.model.InstanceDefaultTrustedProfilePrototype;
 import com.ibm.cloud.is.vpc.v1.model.InstanceMetadataServicePrototype;
 import com.ibm.cloud.is.vpc.v1.model.InstanceNetworkAttachmentPrototype;
@@ -30,7 +34,7 @@ import com.ibm.cloud.is.vpc.v1.model.ReservationIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.SubnetIdentityById;
-import com.ibm.cloud.is.vpc.v1.model.TrustedProfileIdentityTrustedProfileById;
+import com.ibm.cloud.is.vpc.v1.model.TrustedProfileIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.VPCIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.VirtualNetworkInterfaceIPPrototypeReservedIPPrototypeVirtualNetworkInterfaceIPsContext;
 import com.ibm.cloud.is.vpc.v1.model.VirtualNetworkInterfacePrimaryIPPrototypeReservedIPPrototypeVirtualNetworkInterfacePrimaryIPContext;
@@ -62,7 +66,39 @@ public class CreateInstanceOptionsTest {
       .build();
     assertEquals(instanceAvailabilityPolicyPrototypeModel.hostFailure(), "restart");
 
-    TrustedProfileIdentityTrustedProfileById trustedProfileIdentityModel = new TrustedProfileIdentityTrustedProfileById.Builder()
+    ClusterNetworkInterfacePrimaryIPPrototypeClusterNetworkSubnetReservedIPPrototypeClusterNetworkInterfacePrimaryIPContext clusterNetworkInterfacePrimaryIpPrototypeModel = new ClusterNetworkInterfacePrimaryIPPrototypeClusterNetworkSubnetReservedIPPrototypeClusterNetworkInterfacePrimaryIPContext.Builder()
+      .address("10.0.0.5")
+      .autoDelete(false)
+      .name("my-cluster-network-subnet-reserved-ip")
+      .build();
+    assertEquals(clusterNetworkInterfacePrimaryIpPrototypeModel.address(), "10.0.0.5");
+    assertEquals(clusterNetworkInterfacePrimaryIpPrototypeModel.autoDelete(), Boolean.valueOf(false));
+    assertEquals(clusterNetworkInterfacePrimaryIpPrototypeModel.name(), "my-cluster-network-subnet-reserved-ip");
+
+    ClusterNetworkSubnetIdentityById clusterNetworkSubnetIdentityModel = new ClusterNetworkSubnetIdentityById.Builder()
+      .id("0717-7931845c-65c4-4b0a-80cd-7d9c1a6d7930")
+      .build();
+    assertEquals(clusterNetworkSubnetIdentityModel.id(), "0717-7931845c-65c4-4b0a-80cd-7d9c1a6d7930");
+
+    InstanceClusterNetworkAttachmentPrototypeClusterNetworkInterfaceInstanceClusterNetworkInterfacePrototypeInstanceClusterNetworkAttachment instanceClusterNetworkAttachmentPrototypeClusterNetworkInterfaceModel = new InstanceClusterNetworkAttachmentPrototypeClusterNetworkInterfaceInstanceClusterNetworkInterfacePrototypeInstanceClusterNetworkAttachment.Builder()
+      .autoDelete(false)
+      .name("my-cluster-network-interface")
+      .primaryIp(clusterNetworkInterfacePrimaryIpPrototypeModel)
+      .subnet(clusterNetworkSubnetIdentityModel)
+      .build();
+    assertEquals(instanceClusterNetworkAttachmentPrototypeClusterNetworkInterfaceModel.autoDelete(), Boolean.valueOf(false));
+    assertEquals(instanceClusterNetworkAttachmentPrototypeClusterNetworkInterfaceModel.name(), "my-cluster-network-interface");
+    assertEquals(instanceClusterNetworkAttachmentPrototypeClusterNetworkInterfaceModel.primaryIp(), clusterNetworkInterfacePrimaryIpPrototypeModel);
+    assertEquals(instanceClusterNetworkAttachmentPrototypeClusterNetworkInterfaceModel.subnet(), clusterNetworkSubnetIdentityModel);
+
+    InstanceClusterNetworkAttachmentPrototypeInstanceContext instanceClusterNetworkAttachmentPrototypeInstanceContextModel = new InstanceClusterNetworkAttachmentPrototypeInstanceContext.Builder()
+      .clusterNetworkInterface(instanceClusterNetworkAttachmentPrototypeClusterNetworkInterfaceModel)
+      .name("my-instance-network-attachment")
+      .build();
+    assertEquals(instanceClusterNetworkAttachmentPrototypeInstanceContextModel.clusterNetworkInterface(), instanceClusterNetworkAttachmentPrototypeClusterNetworkInterfaceModel);
+    assertEquals(instanceClusterNetworkAttachmentPrototypeInstanceContextModel.name(), "my-instance-network-attachment");
+
+    TrustedProfileIdentityById trustedProfileIdentityModel = new TrustedProfileIdentityById.Builder()
       .id("Profile-9fd84246-7df4-4667-94e4-8ecde51d5ac5")
       .build();
     assertEquals(trustedProfileIdentityModel.id(), "Profile-9fd84246-7df4-4667-94e4-8ecde51d5ac5");
@@ -99,9 +135,9 @@ public class CreateInstanceOptionsTest {
     assertEquals(instanceProfileIdentityModel.name(), "cx2-16x32");
 
     ReservationIdentityById reservationIdentityModel = new ReservationIdentityById.Builder()
-      .id("7187-ba49df72-37b8-43ac-98da-f8e029de0e63")
+      .id("0717-ba49df72-37b8-43ac-98da-f8e029de0e63")
       .build();
-    assertEquals(reservationIdentityModel.id(), "7187-ba49df72-37b8-43ac-98da-f8e029de0e63");
+    assertEquals(reservationIdentityModel.id(), "0717-ba49df72-37b8-43ac-98da-f8e029de0e63");
 
     InstanceReservationAffinityPrototype instanceReservationAffinityPrototypeModel = new InstanceReservationAffinityPrototype.Builder()
       .policy("disabled")
@@ -199,9 +235,9 @@ public class CreateInstanceOptionsTest {
     assertEquals(virtualNetworkInterfacePrimaryIpPrototypeModel.name(), "my-reserved-ip");
 
     SecurityGroupIdentityById securityGroupIdentityModel = new SecurityGroupIdentityById.Builder()
-      .id("be5df5ca-12a0-494b-907e-aa6ec2bfa271")
+      .id("r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271")
       .build();
-    assertEquals(securityGroupIdentityModel.id(), "be5df5ca-12a0-494b-907e-aa6ec2bfa271");
+    assertEquals(securityGroupIdentityModel.id(), "r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271");
 
     SubnetIdentityById subnetIdentityModel = new SubnetIdentityById.Builder()
       .id("7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
@@ -240,6 +276,7 @@ public class CreateInstanceOptionsTest {
 
     InstancePrototypeInstanceByImageInstanceByImageInstanceByNetworkAttachment instancePrototypeModel = new InstancePrototypeInstanceByImageInstanceByImageInstanceByNetworkAttachment.Builder()
       .availabilityPolicy(instanceAvailabilityPolicyPrototypeModel)
+      .clusterNetworkAttachments(java.util.Arrays.asList(instanceClusterNetworkAttachmentPrototypeInstanceContextModel))
       .confidentialComputeMode("disabled")
       .defaultTrustedProfile(instanceDefaultTrustedProfilePrototypeModel)
       .enableSecureBoot(true)
@@ -261,6 +298,7 @@ public class CreateInstanceOptionsTest {
       .primaryNetworkAttachment(instanceNetworkAttachmentPrototypeModel)
       .build();
     assertEquals(instancePrototypeModel.availabilityPolicy(), instanceAvailabilityPolicyPrototypeModel);
+    assertEquals(instancePrototypeModel.clusterNetworkAttachments(), java.util.Arrays.asList(instanceClusterNetworkAttachmentPrototypeInstanceContextModel));
     assertEquals(instancePrototypeModel.confidentialComputeMode(), "disabled");
     assertEquals(instancePrototypeModel.defaultTrustedProfile(), instanceDefaultTrustedProfilePrototypeModel);
     assertEquals(instancePrototypeModel.enableSecureBoot(), Boolean.valueOf(true));

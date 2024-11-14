@@ -32,15 +32,15 @@ public class InstancePlacementTargetPatchDedicatedHostGroupIdentityDedicatedHost
   @Test
   public void testInstancePlacementTargetPatchDedicatedHostGroupIdentityDedicatedHostGroupIdentityByHref() throws Throwable {
     InstancePlacementTargetPatchDedicatedHostGroupIdentityDedicatedHostGroupIdentityByHref instancePlacementTargetPatchDedicatedHostGroupIdentityDedicatedHostGroupIdentityByHrefModel = new InstancePlacementTargetPatchDedicatedHostGroupIdentityDedicatedHostGroupIdentityByHref.Builder()
-      .href("https://us-south.iaas.cloud.ibm.com/v1/dedicated_host/groups/bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0")
+      .href("https://us-south.iaas.cloud.ibm.com/v1/dedicated_host/groups/0717-bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0")
       .build();
-    assertEquals(instancePlacementTargetPatchDedicatedHostGroupIdentityDedicatedHostGroupIdentityByHrefModel.href(), "https://us-south.iaas.cloud.ibm.com/v1/dedicated_host/groups/bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0");
+    assertEquals(instancePlacementTargetPatchDedicatedHostGroupIdentityDedicatedHostGroupIdentityByHrefModel.href(), "https://us-south.iaas.cloud.ibm.com/v1/dedicated_host/groups/0717-bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0");
 
     String json = TestUtilities.serialize(instancePlacementTargetPatchDedicatedHostGroupIdentityDedicatedHostGroupIdentityByHrefModel);
 
     InstancePlacementTargetPatchDedicatedHostGroupIdentityDedicatedHostGroupIdentityByHref instancePlacementTargetPatchDedicatedHostGroupIdentityDedicatedHostGroupIdentityByHrefModelNew = TestUtilities.deserialize(json, InstancePlacementTargetPatchDedicatedHostGroupIdentityDedicatedHostGroupIdentityByHref.class);
     assertTrue(instancePlacementTargetPatchDedicatedHostGroupIdentityDedicatedHostGroupIdentityByHrefModelNew instanceof InstancePlacementTargetPatchDedicatedHostGroupIdentityDedicatedHostGroupIdentityByHref);
-    assertEquals(instancePlacementTargetPatchDedicatedHostGroupIdentityDedicatedHostGroupIdentityByHrefModelNew.href(), "https://us-south.iaas.cloud.ibm.com/v1/dedicated_host/groups/bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0");
+    assertEquals(instancePlacementTargetPatchDedicatedHostGroupIdentityDedicatedHostGroupIdentityByHrefModelNew.href(), "https://us-south.iaas.cloud.ibm.com/v1/dedicated_host/groups/0717-bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

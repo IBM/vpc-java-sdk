@@ -14,10 +14,9 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.Deleted;
+import com.ibm.cloud.is.vpc.v1.model.PageLink;
 import com.ibm.cloud.is.vpc.v1.model.ReservedIP;
 import com.ibm.cloud.is.vpc.v1.model.ReservedIPCollectionEndpointGatewayContext;
-import com.ibm.cloud.is.vpc.v1.model.ReservedIPCollectionEndpointGatewayContextFirst;
-import com.ibm.cloud.is.vpc.v1.model.ReservedIPCollectionEndpointGatewayContextNext;
 import com.ibm.cloud.is.vpc.v1.model.ReservedIPTargetEndpointGatewayReference;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;

@@ -23,11 +23,11 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class FloatingIPCollectionVirtualNetworkInterfaceContext extends GenericModel {
 
-  protected FloatingIPCollectionVirtualNetworkInterfaceContextFirst first;
+  protected PageLink first;
   @SerializedName("floating_ips")
   protected List<FloatingIPReference> floatingIps;
   protected Long limit;
-  protected FloatingIPCollectionVirtualNetworkInterfaceContextNext next;
+  protected PageLink next;
   @SerializedName("total_count")
   protected Long totalCount;
 
@@ -40,7 +40,7 @@ public class FloatingIPCollectionVirtualNetworkInterfaceContext extends GenericM
    *
    * @return the first
    */
-  public FloatingIPCollectionVirtualNetworkInterfaceContextFirst getFirst() {
+  public PageLink getFirst() {
     return first;
   }
 
@@ -74,7 +74,7 @@ public class FloatingIPCollectionVirtualNetworkInterfaceContext extends GenericM
    *
    * @return the next
    */
-  public FloatingIPCollectionVirtualNetworkInterfaceContextNext getNext() {
+  public PageLink getNext() {
     return next;
   }
 

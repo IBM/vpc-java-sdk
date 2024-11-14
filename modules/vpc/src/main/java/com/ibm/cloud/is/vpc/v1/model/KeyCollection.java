@@ -23,10 +23,10 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class KeyCollection extends GenericModel {
 
-  protected KeyCollectionFirst first;
+  protected PageLink first;
   protected List<Key> keys;
   protected Long limit;
-  protected KeyCollectionNext next;
+  protected PageLink next;
   @SerializedName("total_count")
   protected Long totalCount;
 
@@ -39,7 +39,7 @@ public class KeyCollection extends GenericModel {
    *
    * @return the first
    */
-  public KeyCollectionFirst getFirst() {
+  public PageLink getFirst() {
     return first;
   }
 
@@ -73,7 +73,7 @@ public class KeyCollection extends GenericModel {
    *
    * @return the next
    */
-  public KeyCollectionNext getNext() {
+  public PageLink getNext() {
     return next;
   }
 

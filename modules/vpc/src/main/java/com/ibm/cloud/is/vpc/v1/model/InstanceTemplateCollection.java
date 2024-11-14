@@ -23,9 +23,9 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class InstanceTemplateCollection extends GenericModel {
 
-  protected InstanceTemplateCollectionFirst first;
+  protected PageLink first;
   protected Long limit;
-  protected InstanceTemplateCollectionNext next;
+  protected PageLink next;
   protected List<InstanceTemplate> templates;
   @SerializedName("total_count")
   protected Long totalCount;
@@ -39,7 +39,7 @@ public class InstanceTemplateCollection extends GenericModel {
    *
    * @return the first
    */
-  public InstanceTemplateCollectionFirst getFirst() {
+  public PageLink getFirst() {
     return first;
   }
 
@@ -62,7 +62,7 @@ public class InstanceTemplateCollection extends GenericModel {
    *
    * @return the next
    */
-  public InstanceTemplateCollectionNext getNext() {
+  public PageLink getNext() {
     return next;
   }
 

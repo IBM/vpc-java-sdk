@@ -39,6 +39,7 @@ public class InstancePrototypeInstanceByCatalogOfferingInstanceByCatalogOffering
    */
   public static class Builder {
     private InstanceAvailabilityPolicyPrototype availabilityPolicy;
+    private List<InstanceClusterNetworkAttachmentPrototypeInstanceContext> clusterNetworkAttachments;
     private String confidentialComputeMode;
     private InstanceDefaultTrustedProfilePrototype defaultTrustedProfile;
     private Boolean enableSecureBoot;
@@ -66,6 +67,7 @@ public class InstancePrototypeInstanceByCatalogOfferingInstanceByCatalogOffering
      */
     public Builder(InstancePrototypeInstanceByCatalogOffering instancePrototypeInstanceByCatalogOfferingInstanceByCatalogOfferingInstanceByNetworkInterface) {
       this.availabilityPolicy = instancePrototypeInstanceByCatalogOfferingInstanceByCatalogOfferingInstanceByNetworkInterface.availabilityPolicy;
+      this.clusterNetworkAttachments = instancePrototypeInstanceByCatalogOfferingInstanceByCatalogOfferingInstanceByNetworkInterface.clusterNetworkAttachments;
       this.confidentialComputeMode = instancePrototypeInstanceByCatalogOfferingInstanceByCatalogOfferingInstanceByNetworkInterface.confidentialComputeMode;
       this.defaultTrustedProfile = instancePrototypeInstanceByCatalogOfferingInstanceByCatalogOfferingInstanceByNetworkInterface.defaultTrustedProfile;
       this.enableSecureBoot = instancePrototypeInstanceByCatalogOfferingInstanceByCatalogOfferingInstanceByNetworkInterface.enableSecureBoot;
@@ -113,6 +115,22 @@ public class InstancePrototypeInstanceByCatalogOfferingInstanceByCatalogOffering
      */
     public InstancePrototypeInstanceByCatalogOfferingInstanceByCatalogOfferingInstanceByNetworkInterface build() {
       return new InstancePrototypeInstanceByCatalogOfferingInstanceByCatalogOfferingInstanceByNetworkInterface(this);
+    }
+
+    /**
+     * Adds a new element to clusterNetworkAttachments.
+     *
+     * @param clusterNetworkAttachments the new element to be added
+     * @return the InstancePrototypeInstanceByCatalogOfferingInstanceByCatalogOfferingInstanceByNetworkInterface builder
+     */
+    public Builder addClusterNetworkAttachments(InstanceClusterNetworkAttachmentPrototypeInstanceContext clusterNetworkAttachments) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(clusterNetworkAttachments,
+        "clusterNetworkAttachments cannot be null");
+      if (this.clusterNetworkAttachments == null) {
+        this.clusterNetworkAttachments = new ArrayList<InstanceClusterNetworkAttachmentPrototypeInstanceContext>();
+      }
+      this.clusterNetworkAttachments.add(clusterNetworkAttachments);
+      return this;
     }
 
     /**
@@ -171,6 +189,18 @@ public class InstancePrototypeInstanceByCatalogOfferingInstanceByCatalogOffering
      */
     public Builder availabilityPolicy(InstanceAvailabilityPolicyPrototype availabilityPolicy) {
       this.availabilityPolicy = availabilityPolicy;
+      return this;
+    }
+
+    /**
+     * Set the clusterNetworkAttachments.
+     * Existing clusterNetworkAttachments will be replaced.
+     *
+     * @param clusterNetworkAttachments the clusterNetworkAttachments
+     * @return the InstancePrototypeInstanceByCatalogOfferingInstanceByCatalogOfferingInstanceByNetworkInterface builder
+     */
+    public Builder clusterNetworkAttachments(List<InstanceClusterNetworkAttachmentPrototypeInstanceContext> clusterNetworkAttachments) {
+      this.clusterNetworkAttachments = clusterNetworkAttachments;
       return this;
     }
 
@@ -397,6 +427,7 @@ public class InstancePrototypeInstanceByCatalogOfferingInstanceByCatalogOffering
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.primaryNetworkInterface,
       "primaryNetworkInterface cannot be null");
     availabilityPolicy = builder.availabilityPolicy;
+    clusterNetworkAttachments = builder.clusterNetworkAttachments;
     confidentialComputeMode = builder.confidentialComputeMode;
     defaultTrustedProfile = builder.defaultTrustedProfile;
     enableSecureBoot = builder.enableSecureBoot;

@@ -15,9 +15,8 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.Deleted;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPCollectionVirtualNetworkInterfaceContext;
-import com.ibm.cloud.is.vpc.v1.model.FloatingIPCollectionVirtualNetworkInterfaceContextFirst;
-import com.ibm.cloud.is.vpc.v1.model.FloatingIPCollectionVirtualNetworkInterfaceContextNext;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIPReference;
+import com.ibm.cloud.is.vpc.v1.model.PageLink;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;

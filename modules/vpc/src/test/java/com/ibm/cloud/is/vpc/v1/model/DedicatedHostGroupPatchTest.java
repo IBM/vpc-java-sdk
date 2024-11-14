@@ -33,25 +33,25 @@ public class DedicatedHostGroupPatchTest {
   @Test
   public void testDedicatedHostGroupPatch() throws Throwable {
     DedicatedHostGroupPatch dedicatedHostGroupPatchModel = new DedicatedHostGroupPatch.Builder()
-      .name("my-host-group")
+      .name("my-dedicated-host-group")
       .build();
-    assertEquals(dedicatedHostGroupPatchModel.name(), "my-host-group");
+    assertEquals(dedicatedHostGroupPatchModel.name(), "my-dedicated-host-group");
 
     String json = TestUtilities.serialize(dedicatedHostGroupPatchModel);
 
     DedicatedHostGroupPatch dedicatedHostGroupPatchModelNew = TestUtilities.deserialize(json, DedicatedHostGroupPatch.class);
     assertTrue(dedicatedHostGroupPatchModelNew instanceof DedicatedHostGroupPatch);
-    assertEquals(dedicatedHostGroupPatchModelNew.name(), "my-host-group");
+    assertEquals(dedicatedHostGroupPatchModelNew.name(), "my-dedicated-host-group");
   }
   @Test
   public void testDedicatedHostGroupPatchAsPatch() throws Throwable {
     DedicatedHostGroupPatch dedicatedHostGroupPatchModel = new DedicatedHostGroupPatch.Builder()
-      .name("my-host-group")
+      .name("my-dedicated-host-group")
       .build();
 
     Map<String, Object> mergePatch = dedicatedHostGroupPatchModel.asPatch();
 
-    assertEquals(mergePatch.get("name"), "my-host-group");
+    assertEquals(mergePatch.get("name"), "my-dedicated-host-group");
   }
 
 }

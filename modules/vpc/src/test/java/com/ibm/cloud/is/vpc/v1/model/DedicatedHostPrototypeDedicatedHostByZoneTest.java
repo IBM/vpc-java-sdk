@@ -46,10 +46,10 @@ public class DedicatedHostPrototypeDedicatedHostByZoneTest {
     assertEquals(resourceGroupIdentityModel.id(), "fee82deba12e4c0fb69c3b09d1f12345");
 
     DedicatedHostGroupPrototypeDedicatedHostByZoneContext dedicatedHostGroupPrototypeDedicatedHostByZoneContextModel = new DedicatedHostGroupPrototypeDedicatedHostByZoneContext.Builder()
-      .name("my-host-group")
+      .name("my-dedicated-host-group")
       .resourceGroup(resourceGroupIdentityModel)
       .build();
-    assertEquals(dedicatedHostGroupPrototypeDedicatedHostByZoneContextModel.name(), "my-host-group");
+    assertEquals(dedicatedHostGroupPrototypeDedicatedHostByZoneContextModel.name(), "my-dedicated-host-group");
     assertEquals(dedicatedHostGroupPrototypeDedicatedHostByZoneContextModel.resourceGroup(), resourceGroupIdentityModel);
 
     ZoneIdentityByName zoneIdentityModel = new ZoneIdentityByName.Builder()

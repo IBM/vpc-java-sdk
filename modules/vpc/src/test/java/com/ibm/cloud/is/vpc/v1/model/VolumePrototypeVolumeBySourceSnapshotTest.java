@@ -57,9 +57,9 @@ public class VolumePrototypeVolumeBySourceSnapshotTest {
     assertEquals(encryptionKeyIdentityModel.crn(), "crn:v1:bluemix:public:kms:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179");
 
     SnapshotIdentityById snapshotIdentityModel = new SnapshotIdentityById.Builder()
-      .id("349a61d8-7ab1-420f-a690-5fed76ef9d4f")
+      .id("r134-f6bfa329-0e36-433f-a3bb-0df632e79263")
       .build();
-    assertEquals(snapshotIdentityModel.id(), "349a61d8-7ab1-420f-a690-5fed76ef9d4f");
+    assertEquals(snapshotIdentityModel.id(), "r134-f6bfa329-0e36-433f-a3bb-0df632e79263");
 
     VolumePrototypeVolumeBySourceSnapshot volumePrototypeVolumeBySourceSnapshotModel = new VolumePrototypeVolumeBySourceSnapshot.Builder()
       .iops(Long.valueOf("10000"))

@@ -34,9 +34,9 @@ public class FloatingIPPatchTest {
   @Test
   public void testFloatingIPPatch() throws Throwable {
     FloatingIPTargetPatchBareMetalServerNetworkInterfaceIdentityBareMetalServerNetworkInterfaceIdentityById floatingIpTargetPatchModel = new FloatingIPTargetPatchBareMetalServerNetworkInterfaceIdentityBareMetalServerNetworkInterfaceIdentityById.Builder()
-      .id("10c02d81-0ecb-4dc5-897d-28392913b81e")
+      .id("0717-da8c43ec-b6ca-4bd2-871e-72e288c66ee6")
       .build();
-    assertEquals(floatingIpTargetPatchModel.id(), "10c02d81-0ecb-4dc5-897d-28392913b81e");
+    assertEquals(floatingIpTargetPatchModel.id(), "0717-da8c43ec-b6ca-4bd2-871e-72e288c66ee6");
 
     FloatingIPPatch floatingIpPatchModel = new FloatingIPPatch.Builder()
       .name("my-floating-ip")
@@ -55,7 +55,7 @@ public class FloatingIPPatchTest {
   @Test
   public void testFloatingIPPatchAsPatch() throws Throwable {
     FloatingIPTargetPatchBareMetalServerNetworkInterfaceIdentityBareMetalServerNetworkInterfaceIdentityById floatingIpTargetPatchModel = new FloatingIPTargetPatchBareMetalServerNetworkInterfaceIdentityBareMetalServerNetworkInterfaceIdentityById.Builder()
-      .id("10c02d81-0ecb-4dc5-897d-28392913b81e")
+      .id("0717-da8c43ec-b6ca-4bd2-871e-72e288c66ee6")
       .build();
 
     FloatingIPPatch floatingIpPatchModel = new FloatingIPPatch.Builder()

@@ -36,6 +36,9 @@ public class ListInstancesOptionsTest {
       .limit(Long.valueOf("50"))
       .resourceGroupId("testString")
       .name("my-name")
+      .clusterNetworkId("testString")
+      .clusterNetworkCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::cluster-network:r010-82b8c783-15d6-4a51-95bf-0b4649d3ef94")
+      .clusterNetworkName("my-cluster-network")
       .dedicatedHostId("testString")
       .dedicatedHostCrn("crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::dedicated-host:1e09281b-f177-46fb-baf1-bc152b2e391a")
       .dedicatedHostName("my-dedicated-host")
@@ -53,6 +56,9 @@ public class ListInstancesOptionsTest {
     assertEquals(listInstancesOptionsModel.limit(), Long.valueOf("50"));
     assertEquals(listInstancesOptionsModel.resourceGroupId(), "testString");
     assertEquals(listInstancesOptionsModel.name(), "my-name");
+    assertEquals(listInstancesOptionsModel.clusterNetworkId(), "testString");
+    assertEquals(listInstancesOptionsModel.clusterNetworkCrn(), "crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::cluster-network:r010-82b8c783-15d6-4a51-95bf-0b4649d3ef94");
+    assertEquals(listInstancesOptionsModel.clusterNetworkName(), "my-cluster-network");
     assertEquals(listInstancesOptionsModel.dedicatedHostId(), "testString");
     assertEquals(listInstancesOptionsModel.dedicatedHostCrn(), "crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::dedicated-host:1e09281b-f177-46fb-baf1-bc152b2e391a");
     assertEquals(listInstancesOptionsModel.dedicatedHostName(), "my-dedicated-host");

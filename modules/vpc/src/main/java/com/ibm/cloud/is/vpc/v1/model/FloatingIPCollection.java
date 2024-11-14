@@ -23,11 +23,11 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class FloatingIPCollection extends GenericModel {
 
-  protected FloatingIPCollectionFirst first;
+  protected PageLink first;
   @SerializedName("floating_ips")
   protected List<FloatingIP> floatingIps;
   protected Long limit;
-  protected FloatingIPCollectionNext next;
+  protected PageLink next;
   @SerializedName("total_count")
   protected Long totalCount;
 
@@ -40,7 +40,7 @@ public class FloatingIPCollection extends GenericModel {
    *
    * @return the first
    */
-  public FloatingIPCollectionFirst getFirst() {
+  public PageLink getFirst() {
     return first;
   }
 
@@ -74,7 +74,7 @@ public class FloatingIPCollection extends GenericModel {
    *
    * @return the next
    */
-  public FloatingIPCollectionNext getNext() {
+  public PageLink getNext() {
     return next;
   }
 

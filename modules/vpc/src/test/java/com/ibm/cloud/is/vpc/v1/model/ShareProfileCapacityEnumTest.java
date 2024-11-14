@@ -32,7 +32,6 @@ public class ShareProfileCapacityEnumTest {
   @Test
   public void testShareProfileCapacityEnum() throws Throwable {
     ShareProfileCapacityEnum shareProfileCapacityEnumModel = new ShareProfileCapacityEnum();
-    assertNull(shareProfileCapacityEnumModel.getXDefault());
     assertNull(shareProfileCapacityEnumModel.getType());
     assertNull(shareProfileCapacityEnumModel.getValues());
   }

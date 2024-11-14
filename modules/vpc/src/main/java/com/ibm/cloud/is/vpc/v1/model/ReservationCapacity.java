@@ -27,8 +27,9 @@ public class ReservationCapacity extends GenericModel {
    * - `allocating`: The capacity reservation is being allocated for use
    * - `allocated`: The total capacity of the reservation has been allocated for use
    * - `degraded`: The capacity reservation has been allocated for use, but some of the
-   *   capacity is not available.
-   *   See https://cloud.ibm.com/docs/vpc?topic=vpc-capacity-status for more information.
+   *   capacity is not available. See [capacity status
+   *   reasons](https://cloud.ibm.com/docs/vpc?topic=vpc-reserved-capacity-status-reasons)
+   *   for more information.
    * - `unallocated`: The capacity reservation is not allocated for use
    *
    * The enumerated values for this property may
@@ -82,8 +83,9 @@ public class ReservationCapacity extends GenericModel {
    * - `allocating`: The capacity reservation is being allocated for use
    * - `allocated`: The total capacity of the reservation has been allocated for use
    * - `degraded`: The capacity reservation has been allocated for use, but some of the
-   *   capacity is not available.
-   *   See https://cloud.ibm.com/docs/vpc?topic=vpc-capacity-status for more information.
+   *   capacity is not available. See [capacity status
+   *   reasons](https://cloud.ibm.com/docs/vpc?topic=vpc-reserved-capacity-status-reasons)
+   *   for more information.
    * - `unallocated`: The capacity reservation is not allocated for use
    *
    * The enumerated values for this property may

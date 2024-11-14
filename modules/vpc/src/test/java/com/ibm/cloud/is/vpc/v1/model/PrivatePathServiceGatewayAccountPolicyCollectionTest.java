@@ -14,10 +14,9 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.AccountReference;
+import com.ibm.cloud.is.vpc.v1.model.PageLink;
 import com.ibm.cloud.is.vpc.v1.model.PrivatePathServiceGatewayAccountPolicy;
 import com.ibm.cloud.is.vpc.v1.model.PrivatePathServiceGatewayAccountPolicyCollection;
-import com.ibm.cloud.is.vpc.v1.model.PrivatePathServiceGatewayAccountPolicyCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.PrivatePathServiceGatewayAccountPolicyCollectionNext;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import com.ibm.cloud.sdk.core.util.DateUtils;

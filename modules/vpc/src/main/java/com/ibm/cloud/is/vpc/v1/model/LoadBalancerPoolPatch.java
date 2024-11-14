@@ -25,7 +25,8 @@ import com.ibm.cloud.sdk.core.util.GsonSingleton;
 public class LoadBalancerPoolPatch extends GenericModel {
 
   /**
-   * The load balancing algorithm.
+   * The load balancing algorithm. The `least_connections` algorithm is only supported for load balancers that have
+   * `availability` with value `subnet` in the profile.
    */
   public interface Algorithm {
     /** least_connections. */
@@ -214,7 +215,8 @@ public class LoadBalancerPoolPatch extends GenericModel {
   /**
    * Gets the algorithm.
    *
-   * The load balancing algorithm.
+   * The load balancing algorithm. The `least_connections` algorithm is only supported for load balancers that have
+   * `availability` with value `subnet` in the profile.
    *
    * @return the algorithm
    */

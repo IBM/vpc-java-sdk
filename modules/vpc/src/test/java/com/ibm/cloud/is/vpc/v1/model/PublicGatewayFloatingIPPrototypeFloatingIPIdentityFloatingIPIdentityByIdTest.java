@@ -32,15 +32,15 @@ public class PublicGatewayFloatingIPPrototypeFloatingIPIdentityFloatingIPIdentit
   @Test
   public void testPublicGatewayFloatingIPPrototypeFloatingIPIdentityFloatingIPIdentityById() throws Throwable {
     PublicGatewayFloatingIPPrototypeFloatingIPIdentityFloatingIPIdentityById publicGatewayFloatingIpPrototypeFloatingIpIdentityFloatingIpIdentityByIdModel = new PublicGatewayFloatingIPPrototypeFloatingIPIdentityFloatingIPIdentityById.Builder()
-      .id("39300233-9995-4806-89a5-3c1b6eb88689")
+      .id("r006-f45e0d90-12a8-4460-8210-290ff2ab75cd")
       .build();
-    assertEquals(publicGatewayFloatingIpPrototypeFloatingIpIdentityFloatingIpIdentityByIdModel.id(), "39300233-9995-4806-89a5-3c1b6eb88689");
+    assertEquals(publicGatewayFloatingIpPrototypeFloatingIpIdentityFloatingIpIdentityByIdModel.id(), "r006-f45e0d90-12a8-4460-8210-290ff2ab75cd");
 
     String json = TestUtilities.serialize(publicGatewayFloatingIpPrototypeFloatingIpIdentityFloatingIpIdentityByIdModel);
 
     PublicGatewayFloatingIPPrototypeFloatingIPIdentityFloatingIPIdentityById publicGatewayFloatingIpPrototypeFloatingIpIdentityFloatingIpIdentityByIdModelNew = TestUtilities.deserialize(json, PublicGatewayFloatingIPPrototypeFloatingIPIdentityFloatingIPIdentityById.class);
     assertTrue(publicGatewayFloatingIpPrototypeFloatingIpIdentityFloatingIpIdentityByIdModelNew instanceof PublicGatewayFloatingIPPrototypeFloatingIPIdentityFloatingIPIdentityById);
-    assertEquals(publicGatewayFloatingIpPrototypeFloatingIpIdentityFloatingIpIdentityByIdModelNew.id(), "39300233-9995-4806-89a5-3c1b6eb88689");
+    assertEquals(publicGatewayFloatingIpPrototypeFloatingIpIdentityFloatingIpIdentityByIdModelNew.id(), "r006-f45e0d90-12a8-4460-8210-290ff2ab75cd");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

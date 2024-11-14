@@ -25,16 +25,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  * - SecurityGroupRulePrototypeSecurityGroupRuleProtocolTCPUDP
  */
 public class SecurityGroupRulePrototype extends GenericModel {
-  @SuppressWarnings("unused")
-  protected static String discriminatorPropertyName = "protocol";
-  protected static java.util.Map<String, Class<?>> discriminatorMapping;
-  static {
-    discriminatorMapping = new java.util.HashMap<>();
-    discriminatorMapping.put("all", SecurityGroupRulePrototypeSecurityGroupRuleProtocolAll.class);
-    discriminatorMapping.put("icmp", SecurityGroupRulePrototypeSecurityGroupRuleProtocolICMP.class);
-    discriminatorMapping.put("tcp", SecurityGroupRulePrototypeSecurityGroupRuleProtocolTCPUDP.class);
-    discriminatorMapping.put("udp", SecurityGroupRulePrototypeSecurityGroupRuleProtocolTCPUDP.class);
-  }
+
   /**
    * The direction of traffic to allow.
    */

@@ -32,15 +32,15 @@ public class PublicGatewayFloatingIPPrototypeFloatingIPIdentityFloatingIPIdentit
   @Test
   public void testPublicGatewayFloatingIPPrototypeFloatingIPIdentityFloatingIPIdentityByHref() throws Throwable {
     PublicGatewayFloatingIPPrototypeFloatingIPIdentityFloatingIPIdentityByHref publicGatewayFloatingIpPrototypeFloatingIpIdentityFloatingIpIdentityByHrefModel = new PublicGatewayFloatingIPPrototypeFloatingIPIdentityFloatingIPIdentityByHref.Builder()
-      .href("https://us-south.iaas.cloud.ibm.com/v1/floating_ips/39300233-9995-4806-89a5-3c1b6eb88689")
+      .href("https://us-south.iaas.cloud.ibm.com/v1/floating_ips/r006-f45e0d90-12a8-4460-8210-290ff2ab75cd")
       .build();
-    assertEquals(publicGatewayFloatingIpPrototypeFloatingIpIdentityFloatingIpIdentityByHrefModel.href(), "https://us-south.iaas.cloud.ibm.com/v1/floating_ips/39300233-9995-4806-89a5-3c1b6eb88689");
+    assertEquals(publicGatewayFloatingIpPrototypeFloatingIpIdentityFloatingIpIdentityByHrefModel.href(), "https://us-south.iaas.cloud.ibm.com/v1/floating_ips/r006-f45e0d90-12a8-4460-8210-290ff2ab75cd");
 
     String json = TestUtilities.serialize(publicGatewayFloatingIpPrototypeFloatingIpIdentityFloatingIpIdentityByHrefModel);
 
     PublicGatewayFloatingIPPrototypeFloatingIPIdentityFloatingIPIdentityByHref publicGatewayFloatingIpPrototypeFloatingIpIdentityFloatingIpIdentityByHrefModelNew = TestUtilities.deserialize(json, PublicGatewayFloatingIPPrototypeFloatingIPIdentityFloatingIPIdentityByHref.class);
     assertTrue(publicGatewayFloatingIpPrototypeFloatingIpIdentityFloatingIpIdentityByHrefModelNew instanceof PublicGatewayFloatingIPPrototypeFloatingIPIdentityFloatingIPIdentityByHref);
-    assertEquals(publicGatewayFloatingIpPrototypeFloatingIpIdentityFloatingIpIdentityByHrefModelNew.href(), "https://us-south.iaas.cloud.ibm.com/v1/floating_ips/39300233-9995-4806-89a5-3c1b6eb88689");
+    assertEquals(publicGatewayFloatingIpPrototypeFloatingIpIdentityFloatingIpIdentityByHrefModelNew.href(), "https://us-south.iaas.cloud.ibm.com/v1/floating_ips/r006-f45e0d90-12a8-4460-8210-290ff2ab75cd");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

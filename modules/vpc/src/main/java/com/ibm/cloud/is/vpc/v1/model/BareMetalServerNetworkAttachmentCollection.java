@@ -23,11 +23,11 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class BareMetalServerNetworkAttachmentCollection extends GenericModel {
 
-  protected BareMetalServerNetworkAttachmentCollectionFirst first;
+  protected PageLink first;
   protected Long limit;
   @SerializedName("network_attachments")
   protected List<BareMetalServerNetworkAttachment> networkAttachments;
-  protected BareMetalServerNetworkAttachmentCollectionNext next;
+  protected PageLink next;
   @SerializedName("total_count")
   protected Long totalCount;
 
@@ -40,7 +40,7 @@ public class BareMetalServerNetworkAttachmentCollection extends GenericModel {
    *
    * @return the first
    */
-  public BareMetalServerNetworkAttachmentCollectionFirst getFirst() {
+  public PageLink getFirst() {
     return first;
   }
 
@@ -74,7 +74,7 @@ public class BareMetalServerNetworkAttachmentCollection extends GenericModel {
    *
    * @return the next
    */
-  public BareMetalServerNetworkAttachmentCollectionNext getNext() {
+  public PageLink getNext() {
     return next;
   }
 

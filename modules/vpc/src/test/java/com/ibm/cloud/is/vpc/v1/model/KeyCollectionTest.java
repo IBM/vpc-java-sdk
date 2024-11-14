@@ -15,8 +15,7 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.Key;
 import com.ibm.cloud.is.vpc.v1.model.KeyCollection;
-import com.ibm.cloud.is.vpc.v1.model.KeyCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.KeyCollectionNext;
+import com.ibm.cloud.is.vpc.v1.model.PageLink;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;

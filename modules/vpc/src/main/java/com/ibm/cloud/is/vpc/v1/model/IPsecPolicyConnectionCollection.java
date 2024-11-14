@@ -24,9 +24,9 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class IPsecPolicyConnectionCollection extends GenericModel {
 
   protected List<VPNGatewayConnection> connections;
-  protected IPsecPolicyConnectionCollectionFirst first;
+  protected PageLink first;
   protected Long limit;
-  protected IPsecPolicyConnectionCollectionNext next;
+  protected PageLink next;
   @SerializedName("total_count")
   protected Long totalCount;
 
@@ -50,7 +50,7 @@ public class IPsecPolicyConnectionCollection extends GenericModel {
    *
    * @return the first
    */
-  public IPsecPolicyConnectionCollectionFirst getFirst() {
+  public PageLink getFirst() {
     return first;
   }
 
@@ -73,7 +73,7 @@ public class IPsecPolicyConnectionCollection extends GenericModel {
    *
    * @return the next
    */
-  public IPsecPolicyConnectionCollectionNext getNext() {
+  public PageLink getNext() {
     return next;
   }
 

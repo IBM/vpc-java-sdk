@@ -32,15 +32,15 @@ public class InstancePlacementTargetPatchDedicatedHostGroupIdentityDedicatedHost
   @Test
   public void testInstancePlacementTargetPatchDedicatedHostGroupIdentityDedicatedHostGroupIdentityByCRN() throws Throwable {
     InstancePlacementTargetPatchDedicatedHostGroupIdentityDedicatedHostGroupIdentityByCRN instancePlacementTargetPatchDedicatedHostGroupIdentityDedicatedHostGroupIdentityByCrnModel = new InstancePlacementTargetPatchDedicatedHostGroupIdentityDedicatedHostGroupIdentityByCRN.Builder()
-      .crn("crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::dedicated-host-group:bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0")
+      .crn("crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::dedicated-host-group:0717-bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0")
       .build();
-    assertEquals(instancePlacementTargetPatchDedicatedHostGroupIdentityDedicatedHostGroupIdentityByCrnModel.crn(), "crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::dedicated-host-group:bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0");
+    assertEquals(instancePlacementTargetPatchDedicatedHostGroupIdentityDedicatedHostGroupIdentityByCrnModel.crn(), "crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::dedicated-host-group:0717-bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0");
 
     String json = TestUtilities.serialize(instancePlacementTargetPatchDedicatedHostGroupIdentityDedicatedHostGroupIdentityByCrnModel);
 
     InstancePlacementTargetPatchDedicatedHostGroupIdentityDedicatedHostGroupIdentityByCRN instancePlacementTargetPatchDedicatedHostGroupIdentityDedicatedHostGroupIdentityByCrnModelNew = TestUtilities.deserialize(json, InstancePlacementTargetPatchDedicatedHostGroupIdentityDedicatedHostGroupIdentityByCRN.class);
     assertTrue(instancePlacementTargetPatchDedicatedHostGroupIdentityDedicatedHostGroupIdentityByCrnModelNew instanceof InstancePlacementTargetPatchDedicatedHostGroupIdentityDedicatedHostGroupIdentityByCRN);
-    assertEquals(instancePlacementTargetPatchDedicatedHostGroupIdentityDedicatedHostGroupIdentityByCrnModelNew.crn(), "crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::dedicated-host-group:bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0");
+    assertEquals(instancePlacementTargetPatchDedicatedHostGroupIdentityDedicatedHostGroupIdentityByCrnModelNew.crn(), "crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::dedicated-host-group:0717-bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

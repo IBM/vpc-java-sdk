@@ -24,13 +24,13 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  *
  * Classes which extend this class:
  * - EndpointGatewayTargetPrototypeEndpointGatewayTargetResourceTypePrivatePathServiceGatewayPrototype
- * - EndpointGatewayTargetPrototypeEndpointGatewayTargetResourceTypeProviderCloudServicePrototype
  * - EndpointGatewayTargetPrototypeEndpointGatewayTargetResourceTypeProviderInfrastructureServicePrototype
+ * - EndpointGatewayTargetPrototypeEndpointGatewayTargetResourceTypeProviderCloudServicePrototype
  */
 public class EndpointGatewayTargetPrototype extends GenericModel {
 
   /**
-   * The type of target for this endpoint gateway.
+   * The target resource type for this endpoint gateway.
    */
   public interface ResourceType {
     /** private_path_service_gateway. */
@@ -51,7 +51,7 @@ public class EndpointGatewayTargetPrototype extends GenericModel {
   /**
    * Gets the resourceType.
    *
-   * The type of target for this endpoint gateway.
+   * The target resource type for this endpoint gateway.
    *
    * @return the resourceType
    */

@@ -24,9 +24,9 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class VPNServerClientCollection extends GenericModel {
 
   protected List<VPNServerClient> clients;
-  protected VPNServerClientCollectionFirst first;
+  protected PageLink first;
   protected Long limit;
-  protected VPNServerClientCollectionNext next;
+  protected PageLink next;
   @SerializedName("total_count")
   protected Long totalCount;
 
@@ -50,7 +50,7 @@ public class VPNServerClientCollection extends GenericModel {
    *
    * @return the first
    */
-  public VPNServerClientCollectionFirst getFirst() {
+  public PageLink getFirst() {
     return first;
   }
 
@@ -73,7 +73,7 @@ public class VPNServerClientCollection extends GenericModel {
    *
    * @return the next
    */
-  public VPNServerClientCollectionNext getNext() {
+  public PageLink getNext() {
     return next;
   }
 

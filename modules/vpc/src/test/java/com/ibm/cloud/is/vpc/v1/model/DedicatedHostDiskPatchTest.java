@@ -33,25 +33,25 @@ public class DedicatedHostDiskPatchTest {
   @Test
   public void testDedicatedHostDiskPatch() throws Throwable {
     DedicatedHostDiskPatch dedicatedHostDiskPatchModel = new DedicatedHostDiskPatch.Builder()
-      .name("my-disk-updated")
+      .name("my-dedicated-host-disk-updated")
       .build();
-    assertEquals(dedicatedHostDiskPatchModel.name(), "my-disk-updated");
+    assertEquals(dedicatedHostDiskPatchModel.name(), "my-dedicated-host-disk-updated");
 
     String json = TestUtilities.serialize(dedicatedHostDiskPatchModel);
 
     DedicatedHostDiskPatch dedicatedHostDiskPatchModelNew = TestUtilities.deserialize(json, DedicatedHostDiskPatch.class);
     assertTrue(dedicatedHostDiskPatchModelNew instanceof DedicatedHostDiskPatch);
-    assertEquals(dedicatedHostDiskPatchModelNew.name(), "my-disk-updated");
+    assertEquals(dedicatedHostDiskPatchModelNew.name(), "my-dedicated-host-disk-updated");
   }
   @Test
   public void testDedicatedHostDiskPatchAsPatch() throws Throwable {
     DedicatedHostDiskPatch dedicatedHostDiskPatchModel = new DedicatedHostDiskPatch.Builder()
-      .name("my-disk-updated")
+      .name("my-dedicated-host-disk-updated")
       .build();
 
     Map<String, Object> mergePatch = dedicatedHostDiskPatchModel.asPatch();
 
-    assertEquals(mergePatch.get("name"), "my-disk-updated");
+    assertEquals(mergePatch.get("name"), "my-dedicated-host-disk-updated");
   }
 
 }

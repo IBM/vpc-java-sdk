@@ -14,9 +14,8 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerPolicyCollection;
-import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerPolicyCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerPolicyCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerPolicyInstanceGroupManagerTargetPolicy;
+import com.ibm.cloud.is.vpc.v1.model.PageLink;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import com.ibm.cloud.sdk.core.util.DateUtils;

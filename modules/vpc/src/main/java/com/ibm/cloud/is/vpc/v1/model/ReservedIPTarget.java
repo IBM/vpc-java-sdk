@@ -21,6 +21,9 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  *
  * If absent, this reserved IP is provider-owned or unbound.
  *
+ * The resources supported by this property may
+ * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
+ *
  * Classes which extend this class:
  * - ReservedIPTargetEndpointGatewayReference
  * - ReservedIPTargetVirtualNetworkInterfaceReferenceReservedIPTargetContext

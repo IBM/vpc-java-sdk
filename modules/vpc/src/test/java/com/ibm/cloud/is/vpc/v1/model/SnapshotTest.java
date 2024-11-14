@@ -71,6 +71,7 @@ public class SnapshotTest {
     assertNull(snapshotModel.getMinimumCapacity());
     assertNull(snapshotModel.getName());
     assertNull(snapshotModel.getOperatingSystem());
+    assertNull(snapshotModel.getProgress());
     assertNull(snapshotModel.getResourceGroup());
     assertNull(snapshotModel.getResourceType());
     assertNull(snapshotModel.getServiceTags());

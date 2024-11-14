@@ -23,9 +23,9 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class RoutingTableCollection extends GenericModel {
 
-  protected RoutingTableCollectionFirst first;
+  protected PageLink first;
   protected Long limit;
-  protected RoutingTableCollectionNext next;
+  protected PageLink next;
   @SerializedName("routing_tables")
   protected List<RoutingTable> routingTables;
   @SerializedName("total_count")
@@ -40,7 +40,7 @@ public class RoutingTableCollection extends GenericModel {
    *
    * @return the first
    */
-  public RoutingTableCollectionFirst getFirst() {
+  public PageLink getFirst() {
     return first;
   }
 
@@ -63,7 +63,7 @@ public class RoutingTableCollection extends GenericModel {
    *
    * @return the next
    */
-  public RoutingTableCollectionNext getNext() {
+  public PageLink getNext() {
     return next;
   }
 

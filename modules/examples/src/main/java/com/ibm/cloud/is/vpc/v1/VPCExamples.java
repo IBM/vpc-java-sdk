@@ -53,11 +53,32 @@ import com.ibm.cloud.is.vpc.v1.model.CertificateInstanceIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.CheckVpnGatewayConnectionsLocalCidrOptions;
 import com.ibm.cloud.is.vpc.v1.model.CheckVpnGatewayConnectionsPeerCidrOptions;
 import com.ibm.cloud.is.vpc.v1.model.CloudObjectStorageBucketIdentityCloudObjectStorageBucketIdentityByName;
+import com.ibm.cloud.is.vpc.v1.model.ClusterNetwork;
+import com.ibm.cloud.is.vpc.v1.model.ClusterNetworkInterface;
+import com.ibm.cloud.is.vpc.v1.model.ClusterNetworkInterfacePatch;
+import com.ibm.cloud.is.vpc.v1.model.ClusterNetworkInterfacesPager;
+import com.ibm.cloud.is.vpc.v1.model.ClusterNetworkPatch;
+import com.ibm.cloud.is.vpc.v1.model.ClusterNetworkProfile;
+import com.ibm.cloud.is.vpc.v1.model.ClusterNetworkProfileIdentityByName;
+import com.ibm.cloud.is.vpc.v1.model.ClusterNetworkProfilesPager;
+import com.ibm.cloud.is.vpc.v1.model.ClusterNetworkSubnet;
+import com.ibm.cloud.is.vpc.v1.model.ClusterNetworkSubnetPatch;
+import com.ibm.cloud.is.vpc.v1.model.ClusterNetworkSubnetPrototypeClusterNetworkSubnetByTotalCountPrototype;
+import com.ibm.cloud.is.vpc.v1.model.ClusterNetworkSubnetReservedIP;
+import com.ibm.cloud.is.vpc.v1.model.ClusterNetworkSubnetReservedIPPatch;
+import com.ibm.cloud.is.vpc.v1.model.ClusterNetworkSubnetReservedIpsPager;
+import com.ibm.cloud.is.vpc.v1.model.ClusterNetworkSubnetsPager;
+import com.ibm.cloud.is.vpc.v1.model.ClusterNetworksPager;
 import com.ibm.cloud.is.vpc.v1.model.CreateBackupPolicyOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateBackupPolicyPlanOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateBareMetalServerConsoleAccessTokenOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateBareMetalServerNetworkInterfaceOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateBareMetalServerOptions;
+import com.ibm.cloud.is.vpc.v1.model.CreateClusterNetworkAttachmentOptions;
+import com.ibm.cloud.is.vpc.v1.model.CreateClusterNetworkInterfaceOptions;
+import com.ibm.cloud.is.vpc.v1.model.CreateClusterNetworkOptions;
+import com.ibm.cloud.is.vpc.v1.model.CreateClusterNetworkSubnetOptions;
+import com.ibm.cloud.is.vpc.v1.model.CreateClusterNetworkSubnetReservedIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateDedicatedHostGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateDedicatedHostOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateEndpointGatewayOptions;
@@ -130,6 +151,10 @@ import com.ibm.cloud.is.vpc.v1.model.DeleteBackupPolicyOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteBackupPolicyPlanOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteBareMetalServerNetworkInterfaceOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteBareMetalServerOptions;
+import com.ibm.cloud.is.vpc.v1.model.DeleteClusterNetworkInterfaceOptions;
+import com.ibm.cloud.is.vpc.v1.model.DeleteClusterNetworkOptions;
+import com.ibm.cloud.is.vpc.v1.model.DeleteClusterNetworkSubnetOptions;
+import com.ibm.cloud.is.vpc.v1.model.DeleteClusterNetworkSubnetReservedIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteDedicatedHostGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteDedicatedHostOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteEndpointGatewayOptions;
@@ -138,6 +163,7 @@ import com.ibm.cloud.is.vpc.v1.model.DeleteFlowLogCollectorOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteIkePolicyOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteImageExportJobOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteImageOptions;
+import com.ibm.cloud.is.vpc.v1.model.DeleteInstanceClusterNetworkAttachmentOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteInstanceGroupLoadBalancerOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteInstanceGroupManagerActionOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteInstanceGroupManagerOptions;
@@ -215,6 +241,11 @@ import com.ibm.cloud.is.vpc.v1.model.GetBareMetalServerNetworkInterfaceFloatingI
 import com.ibm.cloud.is.vpc.v1.model.GetBareMetalServerNetworkInterfaceOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetBareMetalServerOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetBareMetalServerProfileOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetClusterNetworkInterfaceOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetClusterNetworkOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetClusterNetworkProfileOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetClusterNetworkSubnetOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetClusterNetworkSubnetReservedIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetDedicatedHostDiskOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetDedicatedHostGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetDedicatedHostOptions;
@@ -226,6 +257,7 @@ import com.ibm.cloud.is.vpc.v1.model.GetFlowLogCollectorOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetIkePolicyOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetImageExportJobOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetImageOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetInstanceClusterNetworkAttachmentOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetInstanceDiskOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetInstanceGroupManagerActionOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetInstanceGroupManagerOptions;
@@ -307,6 +339,10 @@ import com.ibm.cloud.is.vpc.v1.model.ImagePrototypeImageByFile;
 import com.ibm.cloud.is.vpc.v1.model.ImagesPager;
 import com.ibm.cloud.is.vpc.v1.model.Instance;
 import com.ibm.cloud.is.vpc.v1.model.InstanceAction;
+import com.ibm.cloud.is.vpc.v1.model.InstanceClusterNetworkAttachment;
+import com.ibm.cloud.is.vpc.v1.model.InstanceClusterNetworkAttachmentPatch;
+import com.ibm.cloud.is.vpc.v1.model.InstanceClusterNetworkAttachmentPrototypeClusterNetworkInterfaceInstanceClusterNetworkInterfacePrototypeInstanceClusterNetworkAttachment;
+import com.ibm.cloud.is.vpc.v1.model.InstanceClusterNetworkAttachmentsPager;
 import com.ibm.cloud.is.vpc.v1.model.InstanceConsoleAccessToken;
 import com.ibm.cloud.is.vpc.v1.model.InstanceDisk;
 import com.ibm.cloud.is.vpc.v1.model.InstanceDiskCollection;
@@ -359,6 +395,11 @@ import com.ibm.cloud.is.vpc.v1.model.ListBareMetalServerNetworkInterfaceFloating
 import com.ibm.cloud.is.vpc.v1.model.ListBareMetalServerNetworkInterfacesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListBareMetalServerProfilesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListBareMetalServersOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListClusterNetworkInterfacesOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListClusterNetworkProfilesOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListClusterNetworkSubnetReservedIpsOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListClusterNetworkSubnetsOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListClusterNetworksOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListDedicatedHostDisksOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListDedicatedHostGroupsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListDedicatedHostProfilesOptions;
@@ -371,6 +412,7 @@ import com.ibm.cloud.is.vpc.v1.model.ListIkePoliciesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListIkePolicyConnectionsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListImageExportJobsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListImagesOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListInstanceClusterNetworkAttachmentsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListInstanceDisksOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListInstanceGroupManagerActionsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListInstanceGroupManagerPoliciesOptions;
@@ -491,7 +533,6 @@ import com.ibm.cloud.is.vpc.v1.model.ReservedIP;
 import com.ibm.cloud.is.vpc.v1.model.ReservedIPPatch;
 import com.ibm.cloud.is.vpc.v1.model.RestartBareMetalServerOptions;
 import com.ibm.cloud.is.vpc.v1.model.Route;
-import com.ibm.cloud.is.vpc.v1.model.RouteCollectionVPCContextRoutesItem;
 import com.ibm.cloud.is.vpc.v1.model.RouteNextHopPrototypeRouteNextHopIPRouteNextHopIPUnicastIP;
 import com.ibm.cloud.is.vpc.v1.model.RoutePatch;
 import com.ibm.cloud.is.vpc.v1.model.RoutingTable;
@@ -552,6 +593,10 @@ import com.ibm.cloud.is.vpc.v1.model.UpdateBackupPolicyPlanOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateBareMetalServerDiskOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateBareMetalServerNetworkInterfaceOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateBareMetalServerOptions;
+import com.ibm.cloud.is.vpc.v1.model.UpdateClusterNetworkInterfaceOptions;
+import com.ibm.cloud.is.vpc.v1.model.UpdateClusterNetworkOptions;
+import com.ibm.cloud.is.vpc.v1.model.UpdateClusterNetworkSubnetOptions;
+import com.ibm.cloud.is.vpc.v1.model.UpdateClusterNetworkSubnetReservedIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateDedicatedHostDiskOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateDedicatedHostGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateDedicatedHostOptions;
@@ -561,6 +606,7 @@ import com.ibm.cloud.is.vpc.v1.model.UpdateFlowLogCollectorOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateIkePolicyOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateImageExportJobOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateImageOptions;
+import com.ibm.cloud.is.vpc.v1.model.UpdateInstanceClusterNetworkAttachmentOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateInstanceDiskOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateInstanceGroupManagerActionOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateInstanceGroupManagerOptions;
@@ -686,6 +732,12 @@ public class VPCExamples {
   static String certificateCrn = "crn:v1:bluemix:public:secrets-manager:us-south:a/123456:36fa422d-080d-4d83-8d2d-86851b4001df:secret:2e786aab-42fa-63ed-14f8-d66d552f4dd5";
   static String cosBucketName = "bucket-27200-lwx4cfvcue";
   static String cosBucketUrl = "cos://us-south/my-bucket/my-image.qcow2";
+  static String clusterNetworkId;
+  static String clusterNetworkSubnetId;
+  static String clusterNetworkSubnetReservedIpId;
+  static String clusterNetworkInterfaceId;
+  static String clusterNetworkProfileName;
+  static String instanceClusterNetworkAttachmentId;
   static String dedicatedHostId;
   static String dedicatedHostDiskId;
   static String dedicatedHostGroupId;
@@ -1091,9 +1143,9 @@ public class VPCExamples {
         .build();
 
       VpcRoutesPager pager = new VpcRoutesPager(vpcService, listVpcRoutesOptions);
-      List<RouteCollectionVPCContextRoutesItem> allResults = new ArrayList<>();
+      List<Route> allResults = new ArrayList<>();
       while (pager.hasNext()) {
-        List<RouteCollectionVPCContextRoutesItem> nextPage = pager.getNext();
+        List<Route> nextPage = pager.getNext();
         allResults.addAll(nextPage);
       }
 
@@ -3067,6 +3119,89 @@ public class VPCExamples {
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
     }
 
+
+    try {
+      System.out.println("listInstanceClusterNetworkAttachments() result:");
+      // begin-list_instance_cluster_network_attachments
+      ListInstanceClusterNetworkAttachmentsOptions listInstanceClusterNetworkAttachmentsOptions = new ListInstanceClusterNetworkAttachmentsOptions.Builder()
+        .instanceId(instanceId)
+        .limit(Long.valueOf("10"))
+        .build();
+
+      InstanceClusterNetworkAttachmentsPager pager = new InstanceClusterNetworkAttachmentsPager(vpcService, listInstanceClusterNetworkAttachmentsOptions);
+      List<InstanceClusterNetworkAttachment> allResults = new ArrayList<>();
+      while (pager.hasNext()) {
+        List<InstanceClusterNetworkAttachment> nextPage = pager.getNext();
+        allResults.addAll(nextPage);
+      }
+
+      // end-list_instance_cluster_network_attachments
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("createClusterNetworkAttachment() result:");
+      // begin-create_cluster_network_attachment
+      InstanceClusterNetworkAttachmentPrototypeClusterNetworkInterfaceInstanceClusterNetworkInterfacePrototypeInstanceClusterNetworkAttachment instanceClusterNetworkAttachmentPrototypeClusterNetworkInterfaceModel = new InstanceClusterNetworkAttachmentPrototypeClusterNetworkInterfaceInstanceClusterNetworkInterfacePrototypeInstanceClusterNetworkAttachment.Builder()
+        .name("my-instance-network-attachment")
+        .build();
+      CreateClusterNetworkAttachmentOptions createClusterNetworkAttachmentOptions = new CreateClusterNetworkAttachmentOptions.Builder()
+        .instanceId(instanceId)
+        .clusterNetworkInterface(instanceClusterNetworkAttachmentPrototypeClusterNetworkInterfaceModel)
+        .build();
+
+      Response<InstanceClusterNetworkAttachment> response = vpcService.createClusterNetworkAttachment(createClusterNetworkAttachmentOptions).execute();
+      InstanceClusterNetworkAttachment instanceClusterNetworkAttachment = response.getResult();
+
+      // end-create_cluster_network_attachment
+      instanceClusterNetworkAttachmentId = instanceClusterNetworkAttachment.getId();
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("getInstanceClusterNetworkAttachment() result:");
+      // begin-get_instance_cluster_network_attachment
+      GetInstanceClusterNetworkAttachmentOptions getInstanceClusterNetworkAttachmentOptions = new GetInstanceClusterNetworkAttachmentOptions.Builder()
+        .instanceId(instanceId)
+        .id(instanceClusterNetworkAttachmentId)
+        .build();
+
+      Response<InstanceClusterNetworkAttachment> response = vpcService.getInstanceClusterNetworkAttachment(getInstanceClusterNetworkAttachmentOptions).execute();
+      InstanceClusterNetworkAttachment instanceClusterNetworkAttachment = response.getResult();
+
+      // end-get_instance_cluster_network_attachment
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("updateInstanceClusterNetworkAttachment() result:");
+      // begin-update_instance_cluster_network_attachment
+      InstanceClusterNetworkAttachmentPatch instanceClusterNetworkAttachmentPatchModel = new InstanceClusterNetworkAttachmentPatch.Builder()
+        .name("my-instance-network-attachment-updated")
+        .build();
+      Map<String, Object> instanceClusterNetworkAttachmentPatchModelAsPatch = instanceClusterNetworkAttachmentPatchModel.asPatch();
+      UpdateInstanceClusterNetworkAttachmentOptions updateInstanceClusterNetworkAttachmentOptions = new UpdateInstanceClusterNetworkAttachmentOptions.Builder()
+        .instanceId(instanceId)
+        .id(instanceClusterNetworkAttachmentId)
+        .instanceClusterNetworkAttachmentPatch(instanceClusterNetworkAttachmentPatchModelAsPatch)
+        .build();
+
+      Response<InstanceClusterNetworkAttachment> response = vpcService.updateInstanceClusterNetworkAttachment(updateInstanceClusterNetworkAttachmentOptions).execute();
+      InstanceClusterNetworkAttachment instanceClusterNetworkAttachment = response.getResult();
+
+      // end-update_instance_cluster_network_attachment
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+
     try {
       System.out.println("createInstanceConsoleAccessToken() result:");
       // begin-create_instance_console_access_token
@@ -4769,6 +4904,376 @@ public class VPCExamples {
       Zone zone = response.getResult();
 
       // end-get_region_zone
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+
+    try {
+      System.out.println("listClusterNetworkProfiles() result:");
+      // begin-list_cluster_network_profiles
+      ListClusterNetworkProfilesOptions listClusterNetworkProfilesOptions = new ListClusterNetworkProfilesOptions.Builder()
+        .limit(Long.valueOf("10"))
+        .build();
+
+      ClusterNetworkProfilesPager pager = new ClusterNetworkProfilesPager(vpcService, listClusterNetworkProfilesOptions);
+      List<ClusterNetworkProfile> allResults = new ArrayList<>();
+      while (pager.hasNext()) {
+        List<ClusterNetworkProfile> nextPage = pager.getNext();
+        allResults.addAll(nextPage);
+      }
+
+      // end-list_cluster_network_profiles
+      clusterNetworkProfileName = allResults.get(0).getName();
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("getClusterNetworkProfile() result:");
+      // begin-get_cluster_network_profile
+      GetClusterNetworkProfileOptions getClusterNetworkProfileOptions = new GetClusterNetworkProfileOptions.Builder()
+        .name(clusterNetworkProfileName)
+        .build();
+
+      Response<ClusterNetworkProfile> response = vpcService.getClusterNetworkProfile(getClusterNetworkProfileOptions).execute();
+      ClusterNetworkProfile clusterNetworkProfile = response.getResult();
+
+      System.out.println(clusterNetworkProfile);
+      // end-get_cluster_network_profile
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("listClusterNetworks() result:");
+      // begin-list_cluster_networks
+      ListClusterNetworksOptions listClusterNetworksOptions = new ListClusterNetworksOptions.Builder()
+        .limit(Long.valueOf("10"))
+        .vpcId(vpcId)
+        .build();
+
+      ClusterNetworksPager pager = new ClusterNetworksPager(vpcService, listClusterNetworksOptions);
+      List<ClusterNetwork> allResults = new ArrayList<>();
+      while (pager.hasNext()) {
+        List<ClusterNetwork> nextPage = pager.getNext();
+        allResults.addAll(nextPage);
+      }
+
+      // end-list_cluster_networks
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("createClusterNetwork() result:");
+      // begin-create_cluster_network
+      ClusterNetworkProfileIdentityByName clusterNetworkProfileIdentityModel = new ClusterNetworkProfileIdentityByName.Builder()
+        .name(clusterNetworkProfileName)
+        .build();
+      VPCIdentityById vpcIdentityModel = new VPCIdentityById.Builder()
+        .id(vpcId)
+        .build();
+      ZoneIdentityByName zoneIdentityModel = new ZoneIdentityByName.Builder()
+        .name(zoneName)
+        .build();
+      CreateClusterNetworkOptions createClusterNetworkOptions = new CreateClusterNetworkOptions.Builder()
+        .profile(clusterNetworkProfileIdentityModel)
+        .name("my-cluster-network")
+        .vpc(vpcIdentityModel)
+        .zone(zoneIdentityModel)
+        .build();
+
+      Response<ClusterNetwork> response = vpcService.createClusterNetwork(createClusterNetworkOptions).execute();
+      ClusterNetwork clusterNetwork = response.getResult();
+
+      // end-create_cluster_network
+      clusterNetworkId = clusterNetwork.getId();
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("listClusterNetworkInterfaces() result:");
+      // begin-list_cluster_network_interfaces
+      ListClusterNetworkInterfacesOptions listClusterNetworkInterfacesOptions = new ListClusterNetworkInterfacesOptions.Builder()
+        .clusterNetworkId(clusterNetworkId)
+        .limit(Long.valueOf("10"))
+        .build();
+
+      ClusterNetworkInterfacesPager pager = new ClusterNetworkInterfacesPager(vpcService, listClusterNetworkInterfacesOptions);
+      List<ClusterNetworkInterface> allResults = new ArrayList<>();
+      while (pager.hasNext()) {
+        List<ClusterNetworkInterface> nextPage = pager.getNext();
+        allResults.addAll(nextPage);
+      }
+
+      // end-list_cluster_network_interfaces
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("createClusterNetworkInterface() result:");
+      // begin-create_cluster_network_interface
+      CreateClusterNetworkInterfaceOptions createClusterNetworkInterfaceOptions = new CreateClusterNetworkInterfaceOptions.Builder()
+        .clusterNetworkId(clusterNetworkId)
+        .name("my-cluster-network-interface")
+        .build();
+
+      Response<ClusterNetworkInterface> response = vpcService.createClusterNetworkInterface(createClusterNetworkInterfaceOptions).execute();
+      ClusterNetworkInterface clusterNetworkInterface = response.getResult();
+
+      // end-create_cluster_network_interface
+      clusterNetworkInterfaceId = clusterNetworkInterface.getId();
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("getClusterNetworkInterface() result:");
+      // begin-get_cluster_network_interface
+      GetClusterNetworkInterfaceOptions getClusterNetworkInterfaceOptions = new GetClusterNetworkInterfaceOptions.Builder()
+        .clusterNetworkId(clusterNetworkId)
+        .id(clusterNetworkInterfaceId)
+        .build();
+
+      Response<ClusterNetworkInterface> response = vpcService.getClusterNetworkInterface(getClusterNetworkInterfaceOptions).execute();
+      ClusterNetworkInterface clusterNetworkInterface = response.getResult();
+
+      // end-get_cluster_network_interface
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("updateClusterNetworkInterface() result:");
+      // begin-update_cluster_network_interface
+      ClusterNetworkInterfacePatch clusterNetworkInterfacePatchModel = new ClusterNetworkInterfacePatch.Builder()
+        .name("my-cluster-network-interface-updated")
+        .build();
+      Map<String, Object> clusterNetworkInterfacePatchModelAsPatch = clusterNetworkInterfacePatchModel.asPatch();
+      UpdateClusterNetworkInterfaceOptions updateClusterNetworkInterfaceOptions = new UpdateClusterNetworkInterfaceOptions.Builder()
+        .clusterNetworkId(clusterNetworkId)
+        .id(clusterNetworkInterfaceId)
+        .clusterNetworkInterfacePatch(clusterNetworkInterfacePatchModelAsPatch)
+        .ifMatch("W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"")
+        .build();
+
+      Response<ClusterNetworkInterface> response = vpcService.updateClusterNetworkInterface(updateClusterNetworkInterfaceOptions).execute();
+      ClusterNetworkInterface clusterNetworkInterface = response.getResult();
+
+      // end-update_cluster_network_interface
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("listClusterNetworkSubnets() result:");
+      // begin-list_cluster_network_subnets
+      ListClusterNetworkSubnetsOptions listClusterNetworkSubnetsOptions = new ListClusterNetworkSubnetsOptions.Builder()
+        .clusterNetworkId(clusterNetworkId)
+        .limit(Long.valueOf("10"))
+        .build();
+
+      ClusterNetworkSubnetsPager pager = new ClusterNetworkSubnetsPager(vpcService, listClusterNetworkSubnetsOptions);
+      List<ClusterNetworkSubnet> allResults = new ArrayList<>();
+      while (pager.hasNext()) {
+        List<ClusterNetworkSubnet> nextPage = pager.getNext();
+        allResults.addAll(nextPage);
+      }
+
+      // end-list_cluster_network_subnets
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("createClusterNetworkSubnet() result:");
+      // begin-create_cluster_network_subnet
+      ClusterNetworkSubnetPrototypeClusterNetworkSubnetByTotalCountPrototype clusterNetworkSubnetPrototypeModel = new ClusterNetworkSubnetPrototypeClusterNetworkSubnetByTotalCountPrototype.Builder()
+        .name("my-cluster-network-subnet")
+        .totalIpv4AddressCount(Long.valueOf("256"))
+        .build();
+      CreateClusterNetworkSubnetOptions createClusterNetworkSubnetOptions = new CreateClusterNetworkSubnetOptions.Builder()
+        .clusterNetworkId(clusterNetworkId)
+        .clusterNetworkSubnetPrototype(clusterNetworkSubnetPrototypeModel)
+        .build();
+
+      Response<ClusterNetworkSubnet> response = vpcService.createClusterNetworkSubnet(createClusterNetworkSubnetOptions).execute();
+      ClusterNetworkSubnet clusterNetworkSubnet = response.getResult();
+
+      // end-create_cluster_network_subnet
+      clusterNetworkSubnetId = clusterNetworkSubnet.getId();
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("listClusterNetworkSubnetReservedIps() result:");
+      // begin-list_cluster_network_subnet_reserved_ips
+      ListClusterNetworkSubnetReservedIpsOptions listClusterNetworkSubnetReservedIpsOptions = new ListClusterNetworkSubnetReservedIpsOptions.Builder()
+        .clusterNetworkId(clusterNetworkId)
+        .clusterNetworkSubnetId(clusterNetworkSubnetId)
+        .limit(Long.valueOf("10"))
+        .build();
+
+      ClusterNetworkSubnetReservedIpsPager pager = new ClusterNetworkSubnetReservedIpsPager(vpcService, listClusterNetworkSubnetReservedIpsOptions);
+      List<ClusterNetworkSubnetReservedIP> allResults = new ArrayList<>();
+      while (pager.hasNext()) {
+        List<ClusterNetworkSubnetReservedIP> nextPage = pager.getNext();
+        allResults.addAll(nextPage);
+      }
+
+      // end-list_cluster_network_subnet_reserved_ips
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("createClusterNetworkSubnetReservedIp() result:");
+      // begin-create_cluster_network_subnet_reserved_ip
+      CreateClusterNetworkSubnetReservedIpOptions createClusterNetworkSubnetReservedIpOptions = new CreateClusterNetworkSubnetReservedIpOptions.Builder()
+        .clusterNetworkId(clusterNetworkId)
+        .clusterNetworkSubnetId(clusterNetworkSubnetId)
+        .build();
+
+      Response<ClusterNetworkSubnetReservedIP> response = vpcService.createClusterNetworkSubnetReservedIp(createClusterNetworkSubnetReservedIpOptions).execute();
+      ClusterNetworkSubnetReservedIP clusterNetworkSubnetReservedIp = response.getResult();
+
+      // end-create_cluster_network_subnet_reserved_ip
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("getClusterNetworkSubnetReservedIp() result:");
+      // begin-get_cluster_network_subnet_reserved_ip
+      GetClusterNetworkSubnetReservedIpOptions getClusterNetworkSubnetReservedIpOptions = new GetClusterNetworkSubnetReservedIpOptions.Builder()
+        .clusterNetworkId(clusterNetworkId)
+        .clusterNetworkSubnetId(clusterNetworkSubnetId)
+        .id(clusterNetworkSubnetReservedIpId)
+        .build();
+
+      Response<ClusterNetworkSubnetReservedIP> response = vpcService.getClusterNetworkSubnetReservedIp(getClusterNetworkSubnetReservedIpOptions).execute();
+      ClusterNetworkSubnetReservedIP clusterNetworkSubnetReservedIp = response.getResult();
+
+      // end-get_cluster_network_subnet_reserved_ip
+      clusterNetworkSubnetReservedIpId = clusterNetworkSubnetReservedIp.getId();
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("updateClusterNetworkSubnetReservedIp() result:");
+      // begin-update_cluster_network_subnet_reserved_ip
+      ClusterNetworkSubnetReservedIPPatch clusterNetworkSubnetReservedIpPatchModel = new ClusterNetworkSubnetReservedIPPatch.Builder()
+        .build();
+      Map<String, Object> clusterNetworkSubnetReservedIpPatchModelAsPatch = clusterNetworkSubnetReservedIpPatchModel.asPatch();
+      UpdateClusterNetworkSubnetReservedIpOptions updateClusterNetworkSubnetReservedIpOptions = new UpdateClusterNetworkSubnetReservedIpOptions.Builder()
+        .clusterNetworkId(clusterNetworkId)
+        .clusterNetworkSubnetId(clusterNetworkSubnetId)
+        .id(clusterNetworkSubnetReservedIpId)
+        .clusterNetworkSubnetReservedIpPatch(clusterNetworkSubnetReservedIpPatchModelAsPatch)
+        .ifMatch("W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"")
+        .build();
+
+      Response<ClusterNetworkSubnetReservedIP> response = vpcService.updateClusterNetworkSubnetReservedIp(updateClusterNetworkSubnetReservedIpOptions).execute();
+      ClusterNetworkSubnetReservedIP clusterNetworkSubnetReservedIp = response.getResult();
+
+      // end-update_cluster_network_subnet_reserved_ip
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("getClusterNetworkSubnet() result:");
+      // begin-get_cluster_network_subnet
+      GetClusterNetworkSubnetOptions getClusterNetworkSubnetOptions = new GetClusterNetworkSubnetOptions.Builder()
+        .clusterNetworkId(clusterNetworkId)
+        .id(clusterNetworkSubnetId)
+        .build();
+
+      Response<ClusterNetworkSubnet> response = vpcService.getClusterNetworkSubnet(getClusterNetworkSubnetOptions).execute();
+      ClusterNetworkSubnet clusterNetworkSubnet = response.getResult();
+
+      // end-get_cluster_network_subnet
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("updateClusterNetworkSubnet() result:");
+      // begin-update_cluster_network_subnet
+      ClusterNetworkSubnetPatch clusterNetworkSubnetPatchModel = new ClusterNetworkSubnetPatch.Builder()
+        .name("my-cluster-network-subnet-updated")
+        .build();
+      Map<String, Object> clusterNetworkSubnetPatchModelAsPatch = clusterNetworkSubnetPatchModel.asPatch();
+      UpdateClusterNetworkSubnetOptions updateClusterNetworkSubnetOptions = new UpdateClusterNetworkSubnetOptions.Builder()
+        .clusterNetworkId(clusterNetworkId)
+        .id(clusterNetworkSubnetId)
+        .clusterNetworkSubnetPatch(clusterNetworkSubnetPatchModelAsPatch)
+        .ifMatch("W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"")
+        .build();
+
+      Response<ClusterNetworkSubnet> response = vpcService.updateClusterNetworkSubnet(updateClusterNetworkSubnetOptions).execute();
+      ClusterNetworkSubnet clusterNetworkSubnet = response.getResult();
+
+      // end-update_cluster_network_subnet
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("getClusterNetwork() result:");
+      // begin-get_cluster_network
+      GetClusterNetworkOptions getClusterNetworkOptions = new GetClusterNetworkOptions.Builder()
+        .id(clusterNetworkId)
+        .build();
+
+      Response<ClusterNetwork> response = vpcService.getClusterNetwork(getClusterNetworkOptions).execute();
+      ClusterNetwork clusterNetwork = response.getResult();
+
+      // end-get_cluster_network
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("updateClusterNetwork() result:");
+      // begin-update_cluster_network
+      ClusterNetworkPatch clusterNetworkPatchModel = new ClusterNetworkPatch.Builder()
+        .name("my-cluster-network-updated")
+        .build();
+      Map<String, Object> clusterNetworkPatchModelAsPatch = clusterNetworkPatchModel.asPatch();
+      UpdateClusterNetworkOptions updateClusterNetworkOptions = new UpdateClusterNetworkOptions.Builder()
+        .id(clusterNetworkId)
+        .clusterNetworkPatch(clusterNetworkPatchModelAsPatch)
+        .ifMatch("W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"")
+        .build();
+
+      Response<ClusterNetwork> response = vpcService.updateClusterNetwork(updateClusterNetworkOptions).execute();
+      ClusterNetwork clusterNetwork = response.getResult();
+
+      // end-update_cluster_network
     } catch (ServiceResponseException e) {
         logger.error(String.format("Service returned status code %s: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
@@ -6648,6 +7153,82 @@ public class VPCExamples {
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
     }
 
+
+    try {
+      System.out.println("deleteClusterNetworkInterface() result:");
+      // begin-delete_cluster_network_interface
+      DeleteClusterNetworkInterfaceOptions deleteClusterNetworkInterfaceOptions = new DeleteClusterNetworkInterfaceOptions.Builder()
+        .clusterNetworkId(clusterNetworkId)
+        .id(clusterNetworkInterfaceId)
+        .ifMatch("W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"")
+        .build();
+
+      Response<ClusterNetworkInterface> response = vpcService.deleteClusterNetworkInterface(deleteClusterNetworkInterfaceOptions).execute();
+      ClusterNetworkInterface clusterNetworkInterface = response.getResult();
+
+      // end-delete_cluster_network_interface
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("deleteClusterNetworkSubnetReservedIp() result:");
+      // begin-delete_cluster_network_subnet_reserved_ip
+      DeleteClusterNetworkSubnetReservedIpOptions deleteClusterNetworkSubnetReservedIpOptions = new DeleteClusterNetworkSubnetReservedIpOptions.Builder()
+        .clusterNetworkId(clusterNetworkId)
+        .clusterNetworkSubnetId(clusterNetworkInterfaceId)
+        .id(clusterNetworkSubnetReservedIpId)
+        .ifMatch("W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"")
+        .build();
+
+      Response<ClusterNetworkSubnetReservedIP> response = vpcService.deleteClusterNetworkSubnetReservedIp(deleteClusterNetworkSubnetReservedIpOptions).execute();
+      ClusterNetworkSubnetReservedIP clusterNetworkSubnetReservedIp = response.getResult();
+
+      // end-delete_cluster_network_subnet_reserved_ip
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("deleteClusterNetworkSubnet() result:");
+      // begin-delete_cluster_network_subnet
+      DeleteClusterNetworkSubnetOptions deleteClusterNetworkSubnetOptions = new DeleteClusterNetworkSubnetOptions.Builder()
+        .clusterNetworkId(clusterNetworkId)
+        .id(clusterNetworkInterfaceId)
+        .ifMatch("W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"")
+        .build();
+
+      Response<ClusterNetworkSubnet> response = vpcService.deleteClusterNetworkSubnet(deleteClusterNetworkSubnetOptions).execute();
+      ClusterNetworkSubnet clusterNetworkSubnet = response.getResult();
+
+      System.out.println(clusterNetworkSubnet);
+      // end-delete_cluster_network_subnet
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+    try {
+      System.out.println("deleteClusterNetwork() result:");
+      // begin-delete_cluster_network
+      DeleteClusterNetworkOptions deleteClusterNetworkOptions = new DeleteClusterNetworkOptions.Builder()
+        .id(clusterNetworkId)
+        .ifMatch("W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"")
+        .build();
+
+      Response<ClusterNetwork> response = vpcService.deleteClusterNetwork(deleteClusterNetworkOptions).execute();
+      ClusterNetwork clusterNetwork = response.getResult();
+
+      System.out.println(clusterNetwork);
+      // end-delete_cluster_network
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
+
     try {
       // begin-unset_subnet_public_gateway
       UnsetSubnetPublicGatewayOptions unsetSubnetPublicGatewayOptions = new UnsetSubnetPublicGatewayOptions.Builder()
@@ -7320,6 +7901,25 @@ public class VPCExamples {
         logger.error(String.format("Service returned status code %s: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
     }
+
+
+    try {
+      System.out.println("deleteInstanceClusterNetworkAttachment() result:");
+      // begin-delete_instance_cluster_network_attachment
+      DeleteInstanceClusterNetworkAttachmentOptions deleteInstanceClusterNetworkAttachmentOptions = new DeleteInstanceClusterNetworkAttachmentOptions.Builder()
+        .instanceId(instanceId)
+        .id(instanceClusterNetworkAttachmentId)
+        .build();
+
+      Response<InstanceClusterNetworkAttachment> response = vpcService.deleteInstanceClusterNetworkAttachment(deleteInstanceClusterNetworkAttachmentOptions).execute();
+      InstanceClusterNetworkAttachment instanceClusterNetworkAttachment = response.getResult();
+
+      // end-delete_instance_cluster_network_attachment
+    } catch (ServiceResponseException e) {
+        logger.error(String.format("Service returned status code %s: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()), e);
+    }
+
 
     try {
       // begin-delete_instance_volume_attachment

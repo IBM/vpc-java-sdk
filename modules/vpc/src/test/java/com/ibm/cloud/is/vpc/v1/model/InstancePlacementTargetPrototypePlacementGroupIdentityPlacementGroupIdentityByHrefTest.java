@@ -32,15 +32,15 @@ public class InstancePlacementTargetPrototypePlacementGroupIdentityPlacementGrou
   @Test
   public void testInstancePlacementTargetPrototypePlacementGroupIdentityPlacementGroupIdentityByHref() throws Throwable {
     InstancePlacementTargetPrototypePlacementGroupIdentityPlacementGroupIdentityByHref instancePlacementTargetPrototypePlacementGroupIdentityPlacementGroupIdentityByHrefModel = new InstancePlacementTargetPrototypePlacementGroupIdentityPlacementGroupIdentityByHref.Builder()
-      .href("https://us-south.iaas.cloud.ibm.com/v1/placement_groups/r018-418fe842-a3e9-47b9-a938-1aa5bd632871")
+      .href("https://us-south.iaas.cloud.ibm.com/v1/placement_groups/r006-418fe842-a3e9-47b9-a938-1aa5bd632871")
       .build();
-    assertEquals(instancePlacementTargetPrototypePlacementGroupIdentityPlacementGroupIdentityByHrefModel.href(), "https://us-south.iaas.cloud.ibm.com/v1/placement_groups/r018-418fe842-a3e9-47b9-a938-1aa5bd632871");
+    assertEquals(instancePlacementTargetPrototypePlacementGroupIdentityPlacementGroupIdentityByHrefModel.href(), "https://us-south.iaas.cloud.ibm.com/v1/placement_groups/r006-418fe842-a3e9-47b9-a938-1aa5bd632871");
 
     String json = TestUtilities.serialize(instancePlacementTargetPrototypePlacementGroupIdentityPlacementGroupIdentityByHrefModel);
 
     InstancePlacementTargetPrototypePlacementGroupIdentityPlacementGroupIdentityByHref instancePlacementTargetPrototypePlacementGroupIdentityPlacementGroupIdentityByHrefModelNew = TestUtilities.deserialize(json, InstancePlacementTargetPrototypePlacementGroupIdentityPlacementGroupIdentityByHref.class);
     assertTrue(instancePlacementTargetPrototypePlacementGroupIdentityPlacementGroupIdentityByHrefModelNew instanceof InstancePlacementTargetPrototypePlacementGroupIdentityPlacementGroupIdentityByHref);
-    assertEquals(instancePlacementTargetPrototypePlacementGroupIdentityPlacementGroupIdentityByHrefModelNew.href(), "https://us-south.iaas.cloud.ibm.com/v1/placement_groups/r018-418fe842-a3e9-47b9-a938-1aa5bd632871");
+    assertEquals(instancePlacementTargetPrototypePlacementGroupIdentityPlacementGroupIdentityByHrefModelNew.href(), "https://us-south.iaas.cloud.ibm.com/v1/placement_groups/r006-418fe842-a3e9-47b9-a938-1aa5bd632871");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

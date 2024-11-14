@@ -32,15 +32,15 @@ public class FloatingIPTargetPrototypeVirtualNetworkInterfaceIdentityVirtualNetw
   @Test
   public void testFloatingIPTargetPrototypeVirtualNetworkInterfaceIdentityVirtualNetworkInterfaceIdentityById() throws Throwable {
     FloatingIPTargetPrototypeVirtualNetworkInterfaceIdentityVirtualNetworkInterfaceIdentityById floatingIpTargetPrototypeVirtualNetworkInterfaceIdentityVirtualNetworkInterfaceIdentityByIdModel = new FloatingIPTargetPrototypeVirtualNetworkInterfaceIdentityVirtualNetworkInterfaceIdentityById.Builder()
-      .id("0767-fa41aecb-4f21-423d-8082-630bfba1e1d9")
+      .id("0717-54eb57ee-86f2-4796-90bb-d7874e0831ef")
       .build();
-    assertEquals(floatingIpTargetPrototypeVirtualNetworkInterfaceIdentityVirtualNetworkInterfaceIdentityByIdModel.id(), "0767-fa41aecb-4f21-423d-8082-630bfba1e1d9");
+    assertEquals(floatingIpTargetPrototypeVirtualNetworkInterfaceIdentityVirtualNetworkInterfaceIdentityByIdModel.id(), "0717-54eb57ee-86f2-4796-90bb-d7874e0831ef");
 
     String json = TestUtilities.serialize(floatingIpTargetPrototypeVirtualNetworkInterfaceIdentityVirtualNetworkInterfaceIdentityByIdModel);
 
     FloatingIPTargetPrototypeVirtualNetworkInterfaceIdentityVirtualNetworkInterfaceIdentityById floatingIpTargetPrototypeVirtualNetworkInterfaceIdentityVirtualNetworkInterfaceIdentityByIdModelNew = TestUtilities.deserialize(json, FloatingIPTargetPrototypeVirtualNetworkInterfaceIdentityVirtualNetworkInterfaceIdentityById.class);
     assertTrue(floatingIpTargetPrototypeVirtualNetworkInterfaceIdentityVirtualNetworkInterfaceIdentityByIdModelNew instanceof FloatingIPTargetPrototypeVirtualNetworkInterfaceIdentityVirtualNetworkInterfaceIdentityById);
-    assertEquals(floatingIpTargetPrototypeVirtualNetworkInterfaceIdentityVirtualNetworkInterfaceIdentityByIdModelNew.id(), "0767-fa41aecb-4f21-423d-8082-630bfba1e1d9");
+    assertEquals(floatingIpTargetPrototypeVirtualNetworkInterfaceIdentityVirtualNetworkInterfaceIdentityByIdModelNew.id(), "0717-54eb57ee-86f2-4796-90bb-d7874e0831ef");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

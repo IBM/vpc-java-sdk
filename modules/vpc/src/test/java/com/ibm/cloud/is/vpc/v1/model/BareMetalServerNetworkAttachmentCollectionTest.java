@@ -13,11 +13,10 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
-import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkAttachmentByPCI;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkAttachmentByVLAN;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkAttachmentCollection;
-import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkAttachmentCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkAttachmentCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.Deleted;
+import com.ibm.cloud.is.vpc.v1.model.PageLink;
 import com.ibm.cloud.is.vpc.v1.model.ReservedIPReference;
 import com.ibm.cloud.is.vpc.v1.model.SubnetReference;
 import com.ibm.cloud.is.vpc.v1.model.VirtualNetworkInterfaceReferenceAttachmentContext;

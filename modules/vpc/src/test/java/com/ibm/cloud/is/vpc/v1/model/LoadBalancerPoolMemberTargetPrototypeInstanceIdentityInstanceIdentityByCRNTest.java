@@ -32,15 +32,15 @@ public class LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdenti
   @Test
   public void testLoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityByCRN() throws Throwable {
     LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityByCRN loadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityByCrnModel = new LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityByCRN.Builder()
-      .crn("crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::instance:0717_1e09281b-f177-46f2-b1f1-bc152b2e391a")
+      .crn("crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::instance:0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0")
       .build();
-    assertEquals(loadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityByCrnModel.crn(), "crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::instance:0717_1e09281b-f177-46f2-b1f1-bc152b2e391a");
+    assertEquals(loadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityByCrnModel.crn(), "crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::instance:0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0");
 
     String json = TestUtilities.serialize(loadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityByCrnModel);
 
     LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityByCRN loadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityByCrnModelNew = TestUtilities.deserialize(json, LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityByCRN.class);
     assertTrue(loadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityByCrnModelNew instanceof LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityByCRN);
-    assertEquals(loadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityByCrnModelNew.crn(), "crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::instance:0717_1e09281b-f177-46f2-b1f1-bc152b2e391a");
+    assertEquals(loadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityByCrnModelNew.crn(), "crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::instance:0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

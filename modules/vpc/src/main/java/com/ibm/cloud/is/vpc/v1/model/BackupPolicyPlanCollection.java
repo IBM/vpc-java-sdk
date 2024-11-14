@@ -23,9 +23,9 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class BackupPolicyPlanCollection extends GenericModel {
 
-  protected BackupPolicyPlanCollectionFirst first;
+  protected PageLink first;
   protected Long limit;
-  protected BackupPolicyPlanCollectionNext next;
+  protected PageLink next;
   protected List<BackupPolicyPlan> plans;
   @SerializedName("total_count")
   protected Long totalCount;
@@ -39,7 +39,7 @@ public class BackupPolicyPlanCollection extends GenericModel {
    *
    * @return the first
    */
-  public BackupPolicyPlanCollectionFirst getFirst() {
+  public PageLink getFirst() {
     return first;
   }
 
@@ -62,7 +62,7 @@ public class BackupPolicyPlanCollection extends GenericModel {
    *
    * @return the next
    */
-  public BackupPolicyPlanCollectionNext getNext() {
+  public PageLink getNext() {
     return next;
   }
 

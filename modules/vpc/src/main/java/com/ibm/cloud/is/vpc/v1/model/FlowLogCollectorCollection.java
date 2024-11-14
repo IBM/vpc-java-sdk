@@ -23,11 +23,11 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class FlowLogCollectorCollection extends GenericModel {
 
-  protected FlowLogCollectorCollectionFirst first;
+  protected PageLink first;
   @SerializedName("flow_log_collectors")
   protected List<FlowLogCollector> flowLogCollectors;
   protected Long limit;
-  protected FlowLogCollectorCollectionNext next;
+  protected PageLink next;
   @SerializedName("total_count")
   protected Long totalCount;
 
@@ -40,7 +40,7 @@ public class FlowLogCollectorCollection extends GenericModel {
    *
    * @return the first
    */
-  public FlowLogCollectorCollectionFirst getFirst() {
+  public PageLink getFirst() {
     return first;
   }
 
@@ -74,7 +74,7 @@ public class FlowLogCollectorCollection extends GenericModel {
    *
    * @return the next
    */
-  public FlowLogCollectorCollectionNext getNext() {
+  public PageLink getNext() {
     return next;
   }
 

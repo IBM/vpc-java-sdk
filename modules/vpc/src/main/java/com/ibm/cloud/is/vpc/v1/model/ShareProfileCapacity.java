@@ -23,8 +23,8 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  *
  * Classes which extend this class:
  * - ShareProfileCapacityFixed
- * - ShareProfileCapacityRange
  * - ShareProfileCapacityEnum
+ * - ShareProfileCapacityRange
  * - ShareProfileCapacityDependentRange
  */
 public class ShareProfileCapacity extends GenericModel {
@@ -39,12 +39,12 @@ public class ShareProfileCapacity extends GenericModel {
 
   protected String type;
   protected Long value;
+  protected List<Long> values;
   @SerializedName("default")
   protected Long xDefault;
   protected Long max;
   protected Long min;
   protected Long step;
-  protected List<Long> values;
 
   protected ShareProfileCapacity() { }
 
@@ -68,6 +68,17 @@ public class ShareProfileCapacity extends GenericModel {
    */
   public Long getValue() {
     return value;
+  }
+
+  /**
+   * Gets the values.
+   *
+   * The permitted values for this profile field.
+   *
+   * @return the values
+   */
+  public List<Long> getValues() {
+    return values;
   }
 
   /**
@@ -112,17 +123,6 @@ public class ShareProfileCapacity extends GenericModel {
    */
   public Long getStep() {
     return step;
-  }
-
-  /**
-   * Gets the values.
-   *
-   * The permitted values for this profile field.
-   *
-   * @return the values
-   */
-  public List<Long> getValues() {
-    return values;
   }
 }
 

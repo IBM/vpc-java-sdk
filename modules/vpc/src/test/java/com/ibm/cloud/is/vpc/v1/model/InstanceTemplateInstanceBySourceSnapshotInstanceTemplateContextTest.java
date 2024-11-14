@@ -13,8 +13,12 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.ibm.cloud.is.vpc.v1.model.ClusterNetworkInterfacePrimaryIPPrototypeClusterNetworkSubnetReservedIPPrototypeClusterNetworkInterfacePrimaryIPContext;
+import com.ibm.cloud.is.vpc.v1.model.ClusterNetworkSubnetIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.EncryptionKeyIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.InstanceAvailabilityPolicyPrototype;
+import com.ibm.cloud.is.vpc.v1.model.InstanceClusterNetworkAttachmentPrototypeClusterNetworkInterfaceInstanceClusterNetworkInterfacePrototypeInstanceClusterNetworkAttachment;
+import com.ibm.cloud.is.vpc.v1.model.InstanceClusterNetworkAttachmentPrototypeInstanceContext;
 import com.ibm.cloud.is.vpc.v1.model.InstanceDefaultTrustedProfilePrototype;
 import com.ibm.cloud.is.vpc.v1.model.InstanceMetadataServicePrototype;
 import com.ibm.cloud.is.vpc.v1.model.InstanceNetworkAttachmentPrototype;
@@ -32,7 +36,7 @@ import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.SubnetIdentityById;
-import com.ibm.cloud.is.vpc.v1.model.TrustedProfileIdentityTrustedProfileById;
+import com.ibm.cloud.is.vpc.v1.model.TrustedProfileIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.VPCIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.VirtualNetworkInterfaceIPPrototypeReservedIPPrototypeVirtualNetworkInterfaceIPsContext;
 import com.ibm.cloud.is.vpc.v1.model.VirtualNetworkInterfacePrimaryIPPrototypeReservedIPPrototypeVirtualNetworkInterfacePrimaryIPContext;

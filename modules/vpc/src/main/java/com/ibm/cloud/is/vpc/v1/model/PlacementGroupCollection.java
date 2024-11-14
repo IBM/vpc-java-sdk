@@ -23,9 +23,9 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class PlacementGroupCollection extends GenericModel {
 
-  protected PlacementGroupCollectionFirst first;
+  protected PageLink first;
   protected Long limit;
-  protected PlacementGroupCollectionNext next;
+  protected PageLink next;
   @SerializedName("placement_groups")
   protected List<PlacementGroup> placementGroups;
   @SerializedName("total_count")
@@ -40,7 +40,7 @@ public class PlacementGroupCollection extends GenericModel {
    *
    * @return the first
    */
-  public PlacementGroupCollectionFirst getFirst() {
+  public PageLink getFirst() {
     return first;
   }
 
@@ -63,7 +63,7 @@ public class PlacementGroupCollection extends GenericModel {
    *
    * @return the next
    */
-  public PlacementGroupCollectionNext getNext() {
+  public PageLink getNext() {
     return next;
   }
 

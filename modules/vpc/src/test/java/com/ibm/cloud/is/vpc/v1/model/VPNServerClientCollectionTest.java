@@ -14,10 +14,9 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.IP;
+import com.ibm.cloud.is.vpc.v1.model.PageLink;
 import com.ibm.cloud.is.vpc.v1.model.VPNServerClient;
 import com.ibm.cloud.is.vpc.v1.model.VPNServerClientCollection;
-import com.ibm.cloud.is.vpc.v1.model.VPNServerClientCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.VPNServerClientCollectionNext;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import com.ibm.cloud.sdk.core.util.DateUtils;

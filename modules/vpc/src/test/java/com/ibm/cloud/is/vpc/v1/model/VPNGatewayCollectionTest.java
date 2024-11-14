@@ -15,13 +15,12 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.Deleted;
 import com.ibm.cloud.is.vpc.v1.model.IP;
+import com.ibm.cloud.is.vpc.v1.model.PageLink;
 import com.ibm.cloud.is.vpc.v1.model.ReservedIPReference;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.SubnetReference;
 import com.ibm.cloud.is.vpc.v1.model.VPCReference;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayCollection;
-import com.ibm.cloud.is.vpc.v1.model.VPNGatewayCollectionFirst;
-import com.ibm.cloud.is.vpc.v1.model.VPNGatewayCollectionNext;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionReference;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayHealthReason;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayLifecycleReason;

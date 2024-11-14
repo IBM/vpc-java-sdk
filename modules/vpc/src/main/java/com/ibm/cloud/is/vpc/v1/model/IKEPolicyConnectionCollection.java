@@ -24,9 +24,9 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class IKEPolicyConnectionCollection extends GenericModel {
 
   protected List<VPNGatewayConnection> connections;
-  protected IKEPolicyConnectionCollectionFirst first;
+  protected PageLink first;
   protected Long limit;
-  protected IKEPolicyConnectionCollectionNext next;
+  protected PageLink next;
   @SerializedName("total_count")
   protected Long totalCount;
 
@@ -50,7 +50,7 @@ public class IKEPolicyConnectionCollection extends GenericModel {
    *
    * @return the first
    */
-  public IKEPolicyConnectionCollectionFirst getFirst() {
+  public PageLink getFirst() {
     return first;
   }
 
@@ -73,7 +73,7 @@ public class IKEPolicyConnectionCollection extends GenericModel {
    *
    * @return the next
    */
-  public IKEPolicyConnectionCollectionNext getNext() {
+  public PageLink getNext() {
     return next;
   }
 

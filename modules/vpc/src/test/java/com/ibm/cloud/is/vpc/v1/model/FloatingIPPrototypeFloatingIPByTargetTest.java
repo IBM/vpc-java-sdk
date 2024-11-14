@@ -39,9 +39,9 @@ public class FloatingIPPrototypeFloatingIPByTargetTest {
     assertEquals(resourceGroupIdentityModel.id(), "fee82deba12e4c0fb69c3b09d1f12345");
 
     FloatingIPTargetPrototypeBareMetalServerNetworkInterfaceIdentityBareMetalServerNetworkInterfaceIdentityById floatingIpTargetPrototypeModel = new FloatingIPTargetPrototypeBareMetalServerNetworkInterfaceIdentityBareMetalServerNetworkInterfaceIdentityById.Builder()
-      .id("10c02d81-0ecb-4dc5-897d-28392913b81e")
+      .id("0717-da8c43ec-b6ca-4bd2-871e-72e288c66ee6")
       .build();
-    assertEquals(floatingIpTargetPrototypeModel.id(), "10c02d81-0ecb-4dc5-897d-28392913b81e");
+    assertEquals(floatingIpTargetPrototypeModel.id(), "0717-da8c43ec-b6ca-4bd2-871e-72e288c66ee6");
 
     FloatingIPPrototypeFloatingIPByTarget floatingIpPrototypeFloatingIpByTargetModel = new FloatingIPPrototypeFloatingIPByTarget.Builder()
       .name("my-floating-ip")
