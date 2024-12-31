@@ -24,10 +24,15 @@ public class InstanceReservationAffinity extends GenericModel {
 
   /**
    * The reservation affinity policy to use for this virtual server instance:
+   * - `automatic`: Any reservations with an `affinity_policy` of `automatic`
+   *   that have the same `profile` and `zone` as this virtual server instance
+   *   are available for use.
    * - `disabled`: Reservations will not be used
    * - `manual`: Reservations in `pool` are available for use.
    */
   public interface Policy {
+    /** automatic. */
+    String AUTOMATIC = "automatic";
     /** disabled. */
     String DISABLED = "disabled";
     /** manual. */
@@ -43,6 +48,9 @@ public class InstanceReservationAffinity extends GenericModel {
    * Gets the policy.
    *
    * The reservation affinity policy to use for this virtual server instance:
+   * - `automatic`: Any reservations with an `affinity_policy` of `automatic`
+   *   that have the same `profile` and `zone` as this virtual server instance
+   *   are available for use.
    * - `disabled`: Reservations will not be used
    * - `manual`: Reservations in `pool` are available for use.
    *
@@ -55,7 +63,9 @@ public class InstanceReservationAffinity extends GenericModel {
   /**
    * Gets the pool.
    *
-   * The pool of reservations available for use by this virtual server instance.
+   * The pool of reservations available for use by this virtual server instance when the `policy` is `manual`. This must
+   * be empty if the `policy` is `automatic` or
+   * `disabled`.
    *
    * @return the pool
    */

@@ -33,9 +33,9 @@ public class NetworkACLRulePrototypeNetworkACLRuleProtocolICMPPrototypeTest {
   @Test
   public void testNetworkACLRulePrototypeNetworkACLRuleProtocolICMPPrototype() throws Throwable {
     NetworkACLRuleBeforePrototypeNetworkACLRuleIdentityById networkAclRuleBeforePrototypeModel = new NetworkACLRuleBeforePrototypeNetworkACLRuleIdentityById.Builder()
-      .id("8daca77a-4980-4d33-8f3e-7038797be8f9")
+      .id("r006-8daca77a-4980-4d33-8f3e-7038797be8f9")
       .build();
-    assertEquals(networkAclRuleBeforePrototypeModel.id(), "8daca77a-4980-4d33-8f3e-7038797be8f9");
+    assertEquals(networkAclRuleBeforePrototypeModel.id(), "r006-8daca77a-4980-4d33-8f3e-7038797be8f9");
 
     NetworkACLRulePrototypeNetworkACLRuleProtocolICMPPrototype networkAclRulePrototypeNetworkAclRuleProtocolIcmpPrototypeModel = new NetworkACLRulePrototypeNetworkACLRuleProtocolICMPPrototype.Builder()
       .action("allow")
@@ -43,7 +43,7 @@ public class NetworkACLRulePrototypeNetworkACLRuleProtocolICMPPrototypeTest {
       .destination("192.168.3.2/32")
       .direction("inbound")
       .ipVersion("ipv4")
-      .name("my-rule-2")
+      .name("my-network-acl-rule")
       .source("192.168.3.2/32")
       .code(Long.valueOf("0"))
       .protocol("icmp")
@@ -54,7 +54,7 @@ public class NetworkACLRulePrototypeNetworkACLRuleProtocolICMPPrototypeTest {
     assertEquals(networkAclRulePrototypeNetworkAclRuleProtocolIcmpPrototypeModel.destination(), "192.168.3.2/32");
     assertEquals(networkAclRulePrototypeNetworkAclRuleProtocolIcmpPrototypeModel.direction(), "inbound");
     assertEquals(networkAclRulePrototypeNetworkAclRuleProtocolIcmpPrototypeModel.ipVersion(), "ipv4");
-    assertEquals(networkAclRulePrototypeNetworkAclRuleProtocolIcmpPrototypeModel.name(), "my-rule-2");
+    assertEquals(networkAclRulePrototypeNetworkAclRuleProtocolIcmpPrototypeModel.name(), "my-network-acl-rule");
     assertEquals(networkAclRulePrototypeNetworkAclRuleProtocolIcmpPrototypeModel.source(), "192.168.3.2/32");
     assertEquals(networkAclRulePrototypeNetworkAclRuleProtocolIcmpPrototypeModel.code(), Long.valueOf("0"));
     assertEquals(networkAclRulePrototypeNetworkAclRuleProtocolIcmpPrototypeModel.protocol(), "icmp");
@@ -69,7 +69,7 @@ public class NetworkACLRulePrototypeNetworkACLRuleProtocolICMPPrototypeTest {
     assertEquals(networkAclRulePrototypeNetworkAclRuleProtocolIcmpPrototypeModelNew.destination(), "192.168.3.2/32");
     assertEquals(networkAclRulePrototypeNetworkAclRuleProtocolIcmpPrototypeModelNew.direction(), "inbound");
     assertEquals(networkAclRulePrototypeNetworkAclRuleProtocolIcmpPrototypeModelNew.ipVersion(), "ipv4");
-    assertEquals(networkAclRulePrototypeNetworkAclRuleProtocolIcmpPrototypeModelNew.name(), "my-rule-2");
+    assertEquals(networkAclRulePrototypeNetworkAclRuleProtocolIcmpPrototypeModelNew.name(), "my-network-acl-rule");
     assertEquals(networkAclRulePrototypeNetworkAclRuleProtocolIcmpPrototypeModelNew.source(), "192.168.3.2/32");
     assertEquals(networkAclRulePrototypeNetworkAclRuleProtocolIcmpPrototypeModelNew.code(), Long.valueOf("0"));
     assertEquals(networkAclRulePrototypeNetworkAclRuleProtocolIcmpPrototypeModelNew.protocol(), "icmp");

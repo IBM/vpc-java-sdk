@@ -41,12 +41,12 @@ public class CreateImageExportJobOptionsTest {
       .imageId("testString")
       .storageBucket(cloudObjectStorageBucketIdentityModel)
       .format("qcow2")
-      .name("my-image-export")
+      .name("my-image-export-job")
       .build();
     assertEquals(createImageExportJobOptionsModel.imageId(), "testString");
     assertEquals(createImageExportJobOptionsModel.storageBucket(), cloudObjectStorageBucketIdentityModel);
     assertEquals(createImageExportJobOptionsModel.format(), "qcow2");
-    assertEquals(createImageExportJobOptionsModel.name(), "my-image-export");
+    assertEquals(createImageExportJobOptionsModel.name(), "my-image-export-job");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

@@ -32,15 +32,15 @@ public class InstanceTemplateIdentityByIdTest {
   @Test
   public void testInstanceTemplateIdentityById() throws Throwable {
     InstanceTemplateIdentityById instanceTemplateIdentityByIdModel = new InstanceTemplateIdentityById.Builder()
-      .id("a6b1a881-2ce8-41a3-80fc-36316a73f803")
+      .id("0717-e6c2c7d8-ad57-4f38-a21c-a86265b6aeb2")
       .build();
-    assertEquals(instanceTemplateIdentityByIdModel.id(), "a6b1a881-2ce8-41a3-80fc-36316a73f803");
+    assertEquals(instanceTemplateIdentityByIdModel.id(), "0717-e6c2c7d8-ad57-4f38-a21c-a86265b6aeb2");
 
     String json = TestUtilities.serialize(instanceTemplateIdentityByIdModel);
 
     InstanceTemplateIdentityById instanceTemplateIdentityByIdModelNew = TestUtilities.deserialize(json, InstanceTemplateIdentityById.class);
     assertTrue(instanceTemplateIdentityByIdModelNew instanceof InstanceTemplateIdentityById);
-    assertEquals(instanceTemplateIdentityByIdModelNew.id(), "a6b1a881-2ce8-41a3-80fc-36316a73f803");
+    assertEquals(instanceTemplateIdentityByIdModelNew.id(), "0717-e6c2c7d8-ad57-4f38-a21c-a86265b6aeb2");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

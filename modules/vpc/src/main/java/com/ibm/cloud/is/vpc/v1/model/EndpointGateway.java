@@ -255,7 +255,7 @@ public class EndpointGateway extends GenericModel {
   /**
    * Gets the serviceEndpoint.
    *
-   * The fully qualified domain name for the target service.
+   * The fully qualified domain name for the target service. The domain name may have a wildcard prefix.
    *
    * @return the serviceEndpoint
    * @deprecated this method is deprecated and may be removed in a future release
@@ -268,7 +268,7 @@ public class EndpointGateway extends GenericModel {
   /**
    * Gets the serviceEndpoints.
    *
-   * The fully qualified domain names for the target service.
+   * The fully qualified domain names for the target service. A domain name may have a wildcard prefix.
    *
    * @return the serviceEndpoints
    */

@@ -145,10 +145,10 @@ public class InstanceTemplatePrototypeInstanceTemplateBySourceTemplateTest {
     assertEquals(reservationIdentityModel.id(), "0717-ba49df72-37b8-43ac-98da-f8e029de0e63");
 
     InstanceReservationAffinityPrototype instanceReservationAffinityPrototypeModel = new InstanceReservationAffinityPrototype.Builder()
-      .policy("disabled")
+      .policy("automatic")
       .pool(java.util.Arrays.asList(reservationIdentityModel))
       .build();
-    assertEquals(instanceReservationAffinityPrototypeModel.policy(), "disabled");
+    assertEquals(instanceReservationAffinityPrototypeModel.policy(), "automatic");
     assertEquals(instanceReservationAffinityPrototypeModel.pool(), java.util.Arrays.asList(reservationIdentityModel));
 
     ResourceGroupIdentityById resourceGroupIdentityModel = new ResourceGroupIdentityById.Builder()
@@ -314,9 +314,9 @@ public class InstanceTemplatePrototypeInstanceTemplateBySourceTemplateTest {
     assertEquals(networkInterfacePrototypeModel.subnet(), subnetIdentityModel);
 
     InstanceTemplateIdentityById instanceTemplateIdentityModel = new InstanceTemplateIdentityById.Builder()
-      .id("a6b1a881-2ce8-41a3-80fc-36316a73f803")
+      .id("0717-e6c2c7d8-ad57-4f38-a21c-a86265b6aeb2")
       .build();
-    assertEquals(instanceTemplateIdentityModel.id(), "a6b1a881-2ce8-41a3-80fc-36316a73f803");
+    assertEquals(instanceTemplateIdentityModel.id(), "0717-e6c2c7d8-ad57-4f38-a21c-a86265b6aeb2");
 
     ZoneIdentityByName zoneIdentityModel = new ZoneIdentityByName.Builder()
       .name("us-south-1")

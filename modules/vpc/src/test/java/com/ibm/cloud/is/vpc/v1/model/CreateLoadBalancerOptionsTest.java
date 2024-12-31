@@ -83,9 +83,9 @@ public class CreateLoadBalancerOptionsTest {
     assertEquals(loadBalancerPoolIdentityByNameModel.name(), "my-load-balancer-pool");
 
     LoadBalancerListenerIdentityById loadBalancerListenerIdentityModel = new LoadBalancerListenerIdentityById.Builder()
-      .id("70294e14-4e61-11e8-bcf4-0242ac110004")
+      .id("r006-97c05c26-4748-4db8-ac3f-d8a9c79a7091")
       .build();
-    assertEquals(loadBalancerListenerIdentityModel.id(), "70294e14-4e61-11e8-bcf4-0242ac110004");
+    assertEquals(loadBalancerListenerIdentityModel.id(), "r006-97c05c26-4748-4db8-ac3f-d8a9c79a7091");
 
     LoadBalancerListenerHTTPSRedirectPrototype loadBalancerListenerHttpsRedirectPrototypeModel = new LoadBalancerListenerHTTPSRedirectPrototype.Builder()
       .httpStatusCode(Long.valueOf("301"))

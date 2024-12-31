@@ -68,10 +68,10 @@ public class InstancePatchTest {
     assertEquals(reservationIdentityModel.id(), "0717-ba49df72-37b8-43ac-98da-f8e029de0e63");
 
     InstanceReservationAffinityPatch instanceReservationAffinityPatchModel = new InstanceReservationAffinityPatch.Builder()
-      .policy("disabled")
+      .policy("automatic")
       .pool(java.util.Arrays.asList(reservationIdentityModel))
       .build();
-    assertEquals(instanceReservationAffinityPatchModel.policy(), "disabled");
+    assertEquals(instanceReservationAffinityPatchModel.policy(), "automatic");
     assertEquals(instanceReservationAffinityPatchModel.pool(), java.util.Arrays.asList(reservationIdentityModel));
 
     InstancePatch instancePatchModel = new InstancePatch.Builder()
@@ -134,7 +134,7 @@ public class InstancePatchTest {
       .build();
 
     InstanceReservationAffinityPatch instanceReservationAffinityPatchModel = new InstanceReservationAffinityPatch.Builder()
-      .policy("disabled")
+      .policy("automatic")
       .pool(java.util.Arrays.asList(reservationIdentityModel))
       .build();
 

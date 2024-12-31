@@ -32,15 +32,15 @@ public class LoadBalancerIdentityByIdTest {
   @Test
   public void testLoadBalancerIdentityById() throws Throwable {
     LoadBalancerIdentityById loadBalancerIdentityByIdModel = new LoadBalancerIdentityById.Builder()
-      .id("dd754295-e9e0-4c9d-bf6c-58fbc59e5727")
+      .id("r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727")
       .build();
-    assertEquals(loadBalancerIdentityByIdModel.id(), "dd754295-e9e0-4c9d-bf6c-58fbc59e5727");
+    assertEquals(loadBalancerIdentityByIdModel.id(), "r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727");
 
     String json = TestUtilities.serialize(loadBalancerIdentityByIdModel);
 
     LoadBalancerIdentityById loadBalancerIdentityByIdModelNew = TestUtilities.deserialize(json, LoadBalancerIdentityById.class);
     assertTrue(loadBalancerIdentityByIdModelNew instanceof LoadBalancerIdentityById);
-    assertEquals(loadBalancerIdentityByIdModelNew.id(), "dd754295-e9e0-4c9d-bf6c-58fbc59e5727");
+    assertEquals(loadBalancerIdentityByIdModelNew.id(), "r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

@@ -33,9 +33,9 @@ public class CreateSubnetReservedIpOptionsTest {
   @Test
   public void testCreateSubnetReservedIpOptions() throws Throwable {
     ReservedIPTargetPrototypeEndpointGatewayIdentityEndpointGatewayIdentityById reservedIpTargetPrototypeModel = new ReservedIPTargetPrototypeEndpointGatewayIdentityEndpointGatewayIdentityById.Builder()
-      .id("r134-d7cc5196-9864-48c4-82d8-3f30da41fcc5")
+      .id("r006-7610ebfb-f5dc-4d42-bc18-287d47f7a5b0")
       .build();
-    assertEquals(reservedIpTargetPrototypeModel.id(), "r134-d7cc5196-9864-48c4-82d8-3f30da41fcc5");
+    assertEquals(reservedIpTargetPrototypeModel.id(), "r006-7610ebfb-f5dc-4d42-bc18-287d47f7a5b0");
 
     CreateSubnetReservedIpOptions createSubnetReservedIpOptionsModel = new CreateSubnetReservedIpOptions.Builder()
       .subnetId("testString")

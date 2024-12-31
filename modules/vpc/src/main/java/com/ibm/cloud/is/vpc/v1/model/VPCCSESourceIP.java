@@ -28,7 +28,7 @@ public class VPCCSESourceIP extends GenericModel {
   /**
    * Gets the ip.
    *
-   * The cloud service endpoint source IP address for this zone.
+   * A cloud service endpoint source IP address for this zone.
    *
    * @return the ip
    */

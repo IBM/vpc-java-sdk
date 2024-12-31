@@ -15,10 +15,9 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.Deleted;
 import com.ibm.cloud.is.vpc.v1.model.FloatingIP;
-import com.ibm.cloud.is.vpc.v1.model.FloatingIPTargetVirtualNetworkInterfaceReference;
+import com.ibm.cloud.is.vpc.v1.model.FloatingIPTargetNetworkInterfaceReference;
 import com.ibm.cloud.is.vpc.v1.model.ReservedIPReference;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;
-import com.ibm.cloud.is.vpc.v1.model.SubnetReference;
 import com.ibm.cloud.is.vpc.v1.model.ZoneReference;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;

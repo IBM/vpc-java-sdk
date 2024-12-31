@@ -28,6 +28,8 @@ public class BareMetalServerPatch extends GenericModel {
   @SerializedName("enable_secure_boot")
   protected Boolean enableSecureBoot;
   protected String name;
+  @SerializedName("reservation_affinity")
+  protected BareMetalServerReservationAffinityPatch reservationAffinity;
   @SerializedName("trusted_platform_module")
   protected BareMetalServerTrustedPlatformModulePatch trustedPlatformModule;
 
@@ -38,6 +40,7 @@ public class BareMetalServerPatch extends GenericModel {
     private Long bandwidth;
     private Boolean enableSecureBoot;
     private String name;
+    private BareMetalServerReservationAffinityPatch reservationAffinity;
     private BareMetalServerTrustedPlatformModulePatch trustedPlatformModule;
 
     /**
@@ -49,6 +52,7 @@ public class BareMetalServerPatch extends GenericModel {
       this.bandwidth = bareMetalServerPatch.bandwidth;
       this.enableSecureBoot = bareMetalServerPatch.enableSecureBoot;
       this.name = bareMetalServerPatch.name;
+      this.reservationAffinity = bareMetalServerPatch.reservationAffinity;
       this.trustedPlatformModule = bareMetalServerPatch.trustedPlatformModule;
     }
 
@@ -101,6 +105,17 @@ public class BareMetalServerPatch extends GenericModel {
     }
 
     /**
+     * Set the reservationAffinity.
+     *
+     * @param reservationAffinity the reservationAffinity
+     * @return the BareMetalServerPatch builder
+     */
+    public Builder reservationAffinity(BareMetalServerReservationAffinityPatch reservationAffinity) {
+      this.reservationAffinity = reservationAffinity;
+      return this;
+    }
+
+    /**
      * Set the trustedPlatformModule.
      *
      * @param trustedPlatformModule the trustedPlatformModule
@@ -118,6 +133,7 @@ public class BareMetalServerPatch extends GenericModel {
     bandwidth = builder.bandwidth;
     enableSecureBoot = builder.enableSecureBoot;
     name = builder.name;
+    reservationAffinity = builder.reservationAffinity;
     trustedPlatformModule = builder.trustedPlatformModule;
   }
 
@@ -167,6 +183,15 @@ public class BareMetalServerPatch extends GenericModel {
    */
   public String name() {
     return name;
+  }
+
+  /**
+   * Gets the reservationAffinity.
+   *
+   * @return the reservationAffinity
+   */
+  public BareMetalServerReservationAffinityPatch reservationAffinity() {
+    return reservationAffinity;
   }
 
   /**

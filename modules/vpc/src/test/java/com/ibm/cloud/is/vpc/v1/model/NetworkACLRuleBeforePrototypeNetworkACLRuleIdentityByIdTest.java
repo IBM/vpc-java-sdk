@@ -32,15 +32,15 @@ public class NetworkACLRuleBeforePrototypeNetworkACLRuleIdentityByIdTest {
   @Test
   public void testNetworkACLRuleBeforePrototypeNetworkACLRuleIdentityById() throws Throwable {
     NetworkACLRuleBeforePrototypeNetworkACLRuleIdentityById networkAclRuleBeforePrototypeNetworkAclRuleIdentityByIdModel = new NetworkACLRuleBeforePrototypeNetworkACLRuleIdentityById.Builder()
-      .id("8daca77a-4980-4d33-8f3e-7038797be8f9")
+      .id("r006-8daca77a-4980-4d33-8f3e-7038797be8f9")
       .build();
-    assertEquals(networkAclRuleBeforePrototypeNetworkAclRuleIdentityByIdModel.id(), "8daca77a-4980-4d33-8f3e-7038797be8f9");
+    assertEquals(networkAclRuleBeforePrototypeNetworkAclRuleIdentityByIdModel.id(), "r006-8daca77a-4980-4d33-8f3e-7038797be8f9");
 
     String json = TestUtilities.serialize(networkAclRuleBeforePrototypeNetworkAclRuleIdentityByIdModel);
 
     NetworkACLRuleBeforePrototypeNetworkACLRuleIdentityById networkAclRuleBeforePrototypeNetworkAclRuleIdentityByIdModelNew = TestUtilities.deserialize(json, NetworkACLRuleBeforePrototypeNetworkACLRuleIdentityById.class);
     assertTrue(networkAclRuleBeforePrototypeNetworkAclRuleIdentityByIdModelNew instanceof NetworkACLRuleBeforePrototypeNetworkACLRuleIdentityById);
-    assertEquals(networkAclRuleBeforePrototypeNetworkAclRuleIdentityByIdModelNew.id(), "8daca77a-4980-4d33-8f3e-7038797be8f9");
+    assertEquals(networkAclRuleBeforePrototypeNetworkAclRuleIdentityByIdModelNew.id(), "r006-8daca77a-4980-4d33-8f3e-7038797be8f9");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

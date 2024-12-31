@@ -32,15 +32,15 @@ public class LoadBalancerListenerDefaultPoolPatchLoadBalancerPoolIdentityByHrefT
   @Test
   public void testLoadBalancerListenerDefaultPoolPatchLoadBalancerPoolIdentityByHref() throws Throwable {
     LoadBalancerListenerDefaultPoolPatchLoadBalancerPoolIdentityByHref loadBalancerListenerDefaultPoolPatchLoadBalancerPoolIdentityByHrefModel = new LoadBalancerListenerDefaultPoolPatchLoadBalancerPoolIdentityByHref.Builder()
-      .href("https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004")
+      .href("https://us-south.iaas.cloud.ibm.com/v1/load_balancers/r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/r006-70294e14-4e61-11e8-bcf4-0242ac110004")
       .build();
-    assertEquals(loadBalancerListenerDefaultPoolPatchLoadBalancerPoolIdentityByHrefModel.href(), "https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004");
+    assertEquals(loadBalancerListenerDefaultPoolPatchLoadBalancerPoolIdentityByHrefModel.href(), "https://us-south.iaas.cloud.ibm.com/v1/load_balancers/r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/r006-70294e14-4e61-11e8-bcf4-0242ac110004");
 
     String json = TestUtilities.serialize(loadBalancerListenerDefaultPoolPatchLoadBalancerPoolIdentityByHrefModel);
 
     LoadBalancerListenerDefaultPoolPatchLoadBalancerPoolIdentityByHref loadBalancerListenerDefaultPoolPatchLoadBalancerPoolIdentityByHrefModelNew = TestUtilities.deserialize(json, LoadBalancerListenerDefaultPoolPatchLoadBalancerPoolIdentityByHref.class);
     assertTrue(loadBalancerListenerDefaultPoolPatchLoadBalancerPoolIdentityByHrefModelNew instanceof LoadBalancerListenerDefaultPoolPatchLoadBalancerPoolIdentityByHref);
-    assertEquals(loadBalancerListenerDefaultPoolPatchLoadBalancerPoolIdentityByHrefModelNew.href(), "https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/70294e14-4e61-11e8-bcf4-0242ac110004");
+    assertEquals(loadBalancerListenerDefaultPoolPatchLoadBalancerPoolIdentityByHrefModelNew.href(), "https://us-south.iaas.cloud.ibm.com/v1/load_balancers/r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/r006-70294e14-4e61-11e8-bcf4-0242ac110004");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

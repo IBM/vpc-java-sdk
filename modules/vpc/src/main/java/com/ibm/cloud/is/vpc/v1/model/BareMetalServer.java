@@ -25,6 +25,26 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class BareMetalServer extends GenericModel {
 
   /**
+   * The health of this resource:
+   * - `ok`: No abnormal behavior detected
+   * - `degraded`: Experiencing compromised performance, capacity, or connectivity
+   * - `faulted`: Completely unreachable, inoperative, or otherwise entirely incapacitated
+   * - `inapplicable`: The health state does not apply because of the current lifecycle
+   *    state. A resource with a lifecycle state of `failed` or `deleting` will have a
+   *    health state of `inapplicable`. A `pending` resource may also have this state.
+   */
+  public interface HealthState {
+    /** degraded. */
+    String DEGRADED = "degraded";
+    /** faulted. */
+    String FAULTED = "faulted";
+    /** inapplicable. */
+    String INAPPLICABLE = "inapplicable";
+    /** ok. */
+    String OK = "ok";
+  }
+
+  /**
    * The lifecycle state of the bare metal server.
    */
   public interface LifecycleState {
@@ -99,6 +119,10 @@ public class BareMetalServer extends GenericModel {
   @SerializedName("enable_secure_boot")
   protected Boolean enableSecureBoot;
   protected BareMetalServerFirmware firmware;
+  @SerializedName("health_reasons")
+  protected List<BareMetalServerHealthReason> healthReasons;
+  @SerializedName("health_state")
+  protected String healthState;
   protected String href;
   protected String id;
   @SerializedName("lifecycle_reasons")
@@ -116,6 +140,9 @@ public class BareMetalServer extends GenericModel {
   @SerializedName("primary_network_interface")
   protected NetworkInterfaceBareMetalServerContextReference primaryNetworkInterface;
   protected BareMetalServerProfileReference profile;
+  protected ReservationReference reservation;
+  @SerializedName("reservation_affinity")
+  protected BareMetalServerReservationAffinity reservationAffinity;
   @SerializedName("resource_group")
   protected ResourceGroupReference resourceGroup;
   @SerializedName("resource_type")
@@ -222,6 +249,43 @@ public class BareMetalServer extends GenericModel {
    */
   public BareMetalServerFirmware getFirmware() {
     return firmware;
+  }
+
+  /**
+   * Gets the healthReasons.
+   *
+   * The reasons for the current server `health_state` (if any):
+   * - `reservation_capacity_unavailable`: The reservation affinity pool has no
+   *   available capacity.
+   * - `reservation_deleted`: The reservation affinity pool has a deleted reservation.
+   * - `reservation_expired`: The reservation affinity pool has an expired reservation.
+   * - `reservation_failed`: The reservation affinity pool has a failed reservation.
+   *
+   * See [health status reasons](https://cloud.ibm.com/docs/vpc?topic=vpc-server-health-status-reasons) for details. The
+   * enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
+   *
+   * @return the healthReasons
+   */
+  public List<BareMetalServerHealthReason> getHealthReasons() {
+    return healthReasons;
+  }
+
+  /**
+   * Gets the healthState.
+   *
+   * The health of this resource:
+   * - `ok`: No abnormal behavior detected
+   * - `degraded`: Experiencing compromised performance, capacity, or connectivity
+   * - `faulted`: Completely unreachable, inoperative, or otherwise entirely incapacitated
+   * - `inapplicable`: The health state does not apply because of the current lifecycle
+   *    state. A resource with a lifecycle state of `failed` or `deleting` will have a
+   *    health state of `inapplicable`. A `pending` resource may also have this state.
+   *
+   * @return the healthState
+   */
+  public String getHealthState() {
+    return healthState;
   }
 
   /**
@@ -353,6 +417,27 @@ public class BareMetalServer extends GenericModel {
    */
   public BareMetalServerProfileReference getProfile() {
     return profile;
+  }
+
+  /**
+   * Gets the reservation.
+   *
+   * The reservation used by this bare metal server.
+   * If absent, no reservation is in use.
+   *
+   * @return the reservation
+   */
+  public ReservationReference getReservation() {
+    return reservation;
+  }
+
+  /**
+   * Gets the reservationAffinity.
+   *
+   * @return the reservationAffinity
+   */
+  public BareMetalServerReservationAffinity getReservationAffinity() {
+    return reservationAffinity;
   }
 
   /**

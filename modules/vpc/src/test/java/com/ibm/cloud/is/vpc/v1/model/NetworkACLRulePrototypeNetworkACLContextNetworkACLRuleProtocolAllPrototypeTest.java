@@ -36,7 +36,7 @@ public class NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolAllPr
       .destination("192.168.3.2/32")
       .direction("inbound")
       .ipVersion("ipv4")
-      .name("my-rule-2")
+      .name("my-network-acl-rule")
       .source("192.168.3.2/32")
       .protocol("all")
       .build();
@@ -44,7 +44,7 @@ public class NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolAllPr
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolAllPrototypeModel.destination(), "192.168.3.2/32");
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolAllPrototypeModel.direction(), "inbound");
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolAllPrototypeModel.ipVersion(), "ipv4");
-    assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolAllPrototypeModel.name(), "my-rule-2");
+    assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolAllPrototypeModel.name(), "my-network-acl-rule");
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolAllPrototypeModel.source(), "192.168.3.2/32");
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolAllPrototypeModel.protocol(), "all");
 
@@ -56,7 +56,7 @@ public class NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolAllPr
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolAllPrototypeModelNew.destination(), "192.168.3.2/32");
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolAllPrototypeModelNew.direction(), "inbound");
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolAllPrototypeModelNew.ipVersion(), "ipv4");
-    assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolAllPrototypeModelNew.name(), "my-rule-2");
+    assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolAllPrototypeModelNew.name(), "my-network-acl-rule");
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolAllPrototypeModelNew.source(), "192.168.3.2/32");
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolAllPrototypeModelNew.protocol(), "all");
   }

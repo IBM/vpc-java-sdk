@@ -204,8 +204,14 @@ public class Share extends GenericModel {
   @SerializedName("resource_type")
   protected String resourceType;
   protected Long size;
+  @SerializedName("snapshot_count")
+  protected Long snapshotCount;
+  @SerializedName("snapshot_size")
+  protected Long snapshotSize;
   @SerializedName("source_share")
   protected ShareReference sourceShare;
+  @SerializedName("source_snapshot")
+  protected ShareSourceSnapshot sourceSnapshot;
   @SerializedName("user_tags")
   protected List<String> userTags;
   protected ZoneReference zone;
@@ -250,7 +256,7 @@ public class Share extends GenericModel {
    * Gets the accessorBindings.
    *
    * The accessor bindings for this file share. Each accessor binding identifies a resource (possibly in another
-   * account) with access to this file share's data.
+   * account) with access to this file share's data and its snapshots.
    *
    * @return the accessorBindings
    */
@@ -548,7 +554,7 @@ public class Share extends GenericModel {
   /**
    * Gets the size.
    *
-   * The size of the file share rounded up to the next gigabyte.
+   * The size of the file share (in gigabytes), excluding share snapshots.
    *
    * The maximum size for a share may increase in the future.
    *
@@ -556,6 +562,28 @@ public class Share extends GenericModel {
    */
   public Long getSize() {
     return size;
+  }
+
+  /**
+   * Gets the snapshotCount.
+   *
+   * The total number of snapshots for this share.
+   *
+   * @return the snapshotCount
+   */
+  public Long getSnapshotCount() {
+    return snapshotCount;
+  }
+
+  /**
+   * Gets the snapshotSize.
+   *
+   * The total size (in gigabytes) of snapshots used for this file share.
+   *
+   * @return the snapshotSize
+   */
+  public Long getSnapshotSize() {
+    return snapshotSize;
   }
 
   /**
@@ -569,6 +597,23 @@ public class Share extends GenericModel {
    */
   public ShareReference getSourceShare() {
     return sourceShare;
+  }
+
+  /**
+   * Gets the sourceSnapshot.
+   *
+   * The snapshot this share was created from.
+   *
+   * This property will be present when the share was created from a snapshot.
+   *
+   * The resources supported by this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the
+   * future.
+   *
+   * @return the sourceSnapshot
+   */
+  public ShareSourceSnapshot getSourceSnapshot() {
+    return sourceSnapshot;
   }
 
   /**

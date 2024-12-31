@@ -33,17 +33,17 @@ public class ReservationProfilePrototypeTest {
   public void testReservationProfilePrototype() throws Throwable {
     ReservationProfilePrototype reservationProfilePrototypeModel = new ReservationProfilePrototype.Builder()
       .name("bx2-4x16")
-      .resourceType("instance_profile")
+      .resourceType("bare_metal_server_profile")
       .build();
     assertEquals(reservationProfilePrototypeModel.name(), "bx2-4x16");
-    assertEquals(reservationProfilePrototypeModel.resourceType(), "instance_profile");
+    assertEquals(reservationProfilePrototypeModel.resourceType(), "bare_metal_server_profile");
 
     String json = TestUtilities.serialize(reservationProfilePrototypeModel);
 
     ReservationProfilePrototype reservationProfilePrototypeModelNew = TestUtilities.deserialize(json, ReservationProfilePrototype.class);
     assertTrue(reservationProfilePrototypeModelNew instanceof ReservationProfilePrototype);
     assertEquals(reservationProfilePrototypeModelNew.name(), "bx2-4x16");
-    assertEquals(reservationProfilePrototypeModelNew.resourceType(), "instance_profile");
+    assertEquals(reservationProfilePrototypeModelNew.resourceType(), "bare_metal_server_profile");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

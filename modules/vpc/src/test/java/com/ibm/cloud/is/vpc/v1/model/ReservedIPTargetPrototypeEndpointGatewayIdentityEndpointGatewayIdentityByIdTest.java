@@ -32,15 +32,15 @@ public class ReservedIPTargetPrototypeEndpointGatewayIdentityEndpointGatewayIden
   @Test
   public void testReservedIPTargetPrototypeEndpointGatewayIdentityEndpointGatewayIdentityById() throws Throwable {
     ReservedIPTargetPrototypeEndpointGatewayIdentityEndpointGatewayIdentityById reservedIpTargetPrototypeEndpointGatewayIdentityEndpointGatewayIdentityByIdModel = new ReservedIPTargetPrototypeEndpointGatewayIdentityEndpointGatewayIdentityById.Builder()
-      .id("r134-d7cc5196-9864-48c4-82d8-3f30da41fcc5")
+      .id("r006-7610ebfb-f5dc-4d42-bc18-287d47f7a5b0")
       .build();
-    assertEquals(reservedIpTargetPrototypeEndpointGatewayIdentityEndpointGatewayIdentityByIdModel.id(), "r134-d7cc5196-9864-48c4-82d8-3f30da41fcc5");
+    assertEquals(reservedIpTargetPrototypeEndpointGatewayIdentityEndpointGatewayIdentityByIdModel.id(), "r006-7610ebfb-f5dc-4d42-bc18-287d47f7a5b0");
 
     String json = TestUtilities.serialize(reservedIpTargetPrototypeEndpointGatewayIdentityEndpointGatewayIdentityByIdModel);
 
     ReservedIPTargetPrototypeEndpointGatewayIdentityEndpointGatewayIdentityById reservedIpTargetPrototypeEndpointGatewayIdentityEndpointGatewayIdentityByIdModelNew = TestUtilities.deserialize(json, ReservedIPTargetPrototypeEndpointGatewayIdentityEndpointGatewayIdentityById.class);
     assertTrue(reservedIpTargetPrototypeEndpointGatewayIdentityEndpointGatewayIdentityByIdModelNew instanceof ReservedIPTargetPrototypeEndpointGatewayIdentityEndpointGatewayIdentityById);
-    assertEquals(reservedIpTargetPrototypeEndpointGatewayIdentityEndpointGatewayIdentityByIdModelNew.id(), "r134-d7cc5196-9864-48c4-82d8-3f30da41fcc5");
+    assertEquals(reservedIpTargetPrototypeEndpointGatewayIdentityEndpointGatewayIdentityByIdModelNew.id(), "r006-7610ebfb-f5dc-4d42-bc18-287d47f7a5b0");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

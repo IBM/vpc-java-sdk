@@ -26,6 +26,13 @@ public class BackupPolicyJobStatusReason extends GenericModel {
    * - `internal_error`: Internal error (contact IBM support)
    * - `snapshot_encryption_key_invalid`: The provided encryption key is unavailable
    * - `snapshot_pending`: Cannot delete backup (snapshot) in the `pending` lifecycle state
+   * - `snapshot_source_unsupported`: The source access control mode does not support
+   *   backups
+   * - `snapshot_rate_too_high`: The rate of backups for the resource is too high
+   * - `snapshot_share_limit`: The maximum limit for snapshots on this resource has been
+   *   reached
+   * - `snapshot_source_unavailable`: The source data is not available (for example,
+   *   because the source is still being created).
    * - `snapshot_volume_limit`: The snapshot limit for the source volume has been reached
    * - `source_volume_busy`: The source volume has `busy` set (after multiple retries)
    * - `source_volume_too_large`: The source volume exceeds the [maximum supported
@@ -42,6 +49,14 @@ public class BackupPolicyJobStatusReason extends GenericModel {
     String SNAPSHOT_ENCRYPTION_KEY_INVALID = "snapshot_encryption_key_invalid";
     /** snapshot_pending. */
     String SNAPSHOT_PENDING = "snapshot_pending";
+    /** snapshot_rate_too_high. */
+    String SNAPSHOT_RATE_TOO_HIGH = "snapshot_rate_too_high";
+    /** snapshot_share_limit. */
+    String SNAPSHOT_SHARE_LIMIT = "snapshot_share_limit";
+    /** snapshot_source_unavailable. */
+    String SNAPSHOT_SOURCE_UNAVAILABLE = "snapshot_source_unavailable";
+    /** snapshot_source_unsupported. */
+    String SNAPSHOT_SOURCE_UNSUPPORTED = "snapshot_source_unsupported";
     /** snapshot_volume_limit. */
     String SNAPSHOT_VOLUME_LIMIT = "snapshot_volume_limit";
     /** source_volume_busy. */
@@ -66,6 +81,13 @@ public class BackupPolicyJobStatusReason extends GenericModel {
    * - `internal_error`: Internal error (contact IBM support)
    * - `snapshot_encryption_key_invalid`: The provided encryption key is unavailable
    * - `snapshot_pending`: Cannot delete backup (snapshot) in the `pending` lifecycle state
+   * - `snapshot_source_unsupported`: The source access control mode does not support
+   *   backups
+   * - `snapshot_rate_too_high`: The rate of backups for the resource is too high
+   * - `snapshot_share_limit`: The maximum limit for snapshots on this resource has been
+   *   reached
+   * - `snapshot_source_unavailable`: The source data is not available (for example,
+   *   because the source is still being created).
    * - `snapshot_volume_limit`: The snapshot limit for the source volume has been reached
    * - `source_volume_busy`: The source volume has `busy` set (after multiple retries)
    * - `source_volume_too_large`: The source volume exceeds the [maximum supported

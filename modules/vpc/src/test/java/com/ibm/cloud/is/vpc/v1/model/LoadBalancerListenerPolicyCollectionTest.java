@@ -17,7 +17,7 @@ import com.ibm.cloud.is.vpc.v1.model.Deleted;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicy;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyCollection;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyRuleReference;
-import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetLoadBalancerPoolReference;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetLoadBalancerListenerPolicyRedirectURL;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import com.ibm.cloud.sdk.core.util.DateUtils;

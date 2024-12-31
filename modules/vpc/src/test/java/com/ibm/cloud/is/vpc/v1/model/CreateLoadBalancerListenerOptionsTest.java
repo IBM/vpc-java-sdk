@@ -44,14 +44,14 @@ public class CreateLoadBalancerListenerOptionsTest {
     assertEquals(certificateInstanceIdentityModel.crn(), "crn:v1:bluemix:public:secrets-manager:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:36fa422d-080d-4d83-8d2d-86851b4001df:secret:2e786aab-42fa-63ed-14f8-d66d552f4dd5");
 
     LoadBalancerPoolIdentityLoadBalancerPoolIdentityById loadBalancerPoolIdentityModel = new LoadBalancerPoolIdentityLoadBalancerPoolIdentityById.Builder()
-      .id("70294e14-4e61-11e8-bcf4-0242ac110004")
+      .id("r006-70294e14-4e61-11e8-bcf4-0242ac110004")
       .build();
-    assertEquals(loadBalancerPoolIdentityModel.id(), "70294e14-4e61-11e8-bcf4-0242ac110004");
+    assertEquals(loadBalancerPoolIdentityModel.id(), "r006-70294e14-4e61-11e8-bcf4-0242ac110004");
 
     LoadBalancerListenerIdentityById loadBalancerListenerIdentityModel = new LoadBalancerListenerIdentityById.Builder()
-      .id("70294e14-4e61-11e8-bcf4-0242ac110004")
+      .id("r006-97c05c26-4748-4db8-ac3f-d8a9c79a7091")
       .build();
-    assertEquals(loadBalancerListenerIdentityModel.id(), "70294e14-4e61-11e8-bcf4-0242ac110004");
+    assertEquals(loadBalancerListenerIdentityModel.id(), "r006-97c05c26-4748-4db8-ac3f-d8a9c79a7091");
 
     LoadBalancerListenerHTTPSRedirectPrototype loadBalancerListenerHttpsRedirectPrototypeModel = new LoadBalancerListenerHTTPSRedirectPrototype.Builder()
       .httpStatusCode(Long.valueOf("301"))
@@ -74,19 +74,19 @@ public class CreateLoadBalancerListenerOptionsTest {
     assertEquals(loadBalancerListenerPolicyRulePrototypeModel.value(), "testString");
 
     LoadBalancerListenerPolicyTargetPrototypeLoadBalancerPoolIdentityLoadBalancerPoolIdentityLoadBalancerPoolIdentityById loadBalancerListenerPolicyTargetPrototypeModel = new LoadBalancerListenerPolicyTargetPrototypeLoadBalancerPoolIdentityLoadBalancerPoolIdentityLoadBalancerPoolIdentityById.Builder()
-      .id("70294e14-4e61-11e8-bcf4-0242ac110004")
+      .id("r006-70294e14-4e61-11e8-bcf4-0242ac110004")
       .build();
-    assertEquals(loadBalancerListenerPolicyTargetPrototypeModel.id(), "70294e14-4e61-11e8-bcf4-0242ac110004");
+    assertEquals(loadBalancerListenerPolicyTargetPrototypeModel.id(), "r006-70294e14-4e61-11e8-bcf4-0242ac110004");
 
     LoadBalancerListenerPolicyPrototype loadBalancerListenerPolicyPrototypeModel = new LoadBalancerListenerPolicyPrototype.Builder()
       .action("forward")
-      .name("my-policy")
+      .name("my-load-balancer-listener-policy")
       .priority(Long.valueOf("5"))
       .rules(java.util.Arrays.asList(loadBalancerListenerPolicyRulePrototypeModel))
       .target(loadBalancerListenerPolicyTargetPrototypeModel)
       .build();
     assertEquals(loadBalancerListenerPolicyPrototypeModel.action(), "forward");
-    assertEquals(loadBalancerListenerPolicyPrototypeModel.name(), "my-policy");
+    assertEquals(loadBalancerListenerPolicyPrototypeModel.name(), "my-load-balancer-listener-policy");
     assertEquals(loadBalancerListenerPolicyPrototypeModel.priority(), Long.valueOf("5"));
     assertEquals(loadBalancerListenerPolicyPrototypeModel.rules(), java.util.Arrays.asList(loadBalancerListenerPolicyRulePrototypeModel));
     assertEquals(loadBalancerListenerPolicyPrototypeModel.target(), loadBalancerListenerPolicyTargetPrototypeModel);

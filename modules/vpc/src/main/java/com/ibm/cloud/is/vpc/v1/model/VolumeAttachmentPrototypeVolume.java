@@ -19,7 +19,8 @@ import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * An existing volume to attach to the instance, or a prototype object for a new volume.
+ * The volume to use for this attachment. This can be specified as an existing unattached volume, or a prototype object
+ * for a new volume.
  *
  * Classes which extend this class:
  * - VolumeAttachmentPrototypeVolumeVolumeIdentity

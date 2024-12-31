@@ -37,10 +37,10 @@ public class CreateEndpointGatewayOptionsTest {
   @Test
   public void testCreateEndpointGatewayOptions() throws Throwable {
     EndpointGatewayTargetPrototypeEndpointGatewayTargetResourceTypePrivatePathServiceGatewayPrototype endpointGatewayTargetPrototypeModel = new EndpointGatewayTargetPrototypeEndpointGatewayTargetResourceTypePrivatePathServiceGatewayPrototype.Builder()
-      .crn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::private-path-service-gateway:r134-fb880975-db45-4459-8548-64e3995ac213")
+      .crn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::private-path-service-gateway:r006-7268d425-59b7-48fd-9735-81a7271657d5")
       .resourceType("private_path_service_gateway")
       .build();
-    assertEquals(endpointGatewayTargetPrototypeModel.crn(), "crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::private-path-service-gateway:r134-fb880975-db45-4459-8548-64e3995ac213");
+    assertEquals(endpointGatewayTargetPrototypeModel.crn(), "crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::private-path-service-gateway:r006-7268d425-59b7-48fd-9735-81a7271657d5");
     assertEquals(endpointGatewayTargetPrototypeModel.resourceType(), "private_path_service_gateway");
 
     VPCIdentityById vpcIdentityModel = new VPCIdentityById.Builder()

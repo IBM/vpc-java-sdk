@@ -36,11 +36,11 @@ public class InstanceGroupManagerActionPrototypeScheduledActionPrototypeByRunAtB
     InstanceGroupManagerScheduledActionManagerPrototypeAutoScalePrototypeById instanceGroupManagerScheduledActionManagerPrototypeModel = new InstanceGroupManagerScheduledActionManagerPrototypeAutoScalePrototypeById.Builder()
       .maxMembershipCount(Long.valueOf("10"))
       .minMembershipCount(Long.valueOf("10"))
-      .id("1e09281b-f177-46fb-baf1-bc152b2e391a")
+      .id("r006-bd21f31f-8a05-4451-836d-ab0347e91fea")
       .build();
     assertEquals(instanceGroupManagerScheduledActionManagerPrototypeModel.maxMembershipCount(), Long.valueOf("10"));
     assertEquals(instanceGroupManagerScheduledActionManagerPrototypeModel.minMembershipCount(), Long.valueOf("10"));
-    assertEquals(instanceGroupManagerScheduledActionManagerPrototypeModel.id(), "1e09281b-f177-46fb-baf1-bc152b2e391a");
+    assertEquals(instanceGroupManagerScheduledActionManagerPrototypeModel.id(), "r006-bd21f31f-8a05-4451-836d-ab0347e91fea");
 
     InstanceGroupManagerActionPrototypeScheduledActionPrototypeByRunAtByManager instanceGroupManagerActionPrototypeScheduledActionPrototypeByRunAtByManagerModel = new InstanceGroupManagerActionPrototypeScheduledActionPrototypeByRunAtByManager.Builder()
       .name("my-instance-group-manager-action")

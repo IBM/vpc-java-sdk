@@ -348,8 +348,8 @@ public class SharePatch extends GenericModel {
   /**
    * Gets the size.
    *
-   * The size of the file share rounded up to the next gigabyte. The value must not be less than the share's current
-   * size, and must not exceed the maximum supported by the share's profile and IOPS.
+   * The size of the file share (in gigabytes), excluding share snapshots. The value must not be less than the share's
+   * current size, and must not exceed the maximum supported by the share's profile and IOPS.
    *
    * For this property to be changed:
    * - The share `lifecycle_state` must be `stable`

@@ -37,19 +37,19 @@ public class InstanceGroupPatchTest {
   @Test
   public void testInstanceGroupPatch() throws Throwable {
     InstanceTemplateIdentityById instanceTemplateIdentityModel = new InstanceTemplateIdentityById.Builder()
-      .id("a6b1a881-2ce8-41a3-80fc-36316a73f803")
+      .id("0717-e6c2c7d8-ad57-4f38-a21c-a86265b6aeb2")
       .build();
-    assertEquals(instanceTemplateIdentityModel.id(), "a6b1a881-2ce8-41a3-80fc-36316a73f803");
+    assertEquals(instanceTemplateIdentityModel.id(), "0717-e6c2c7d8-ad57-4f38-a21c-a86265b6aeb2");
 
     LoadBalancerIdentityById loadBalancerIdentityModel = new LoadBalancerIdentityById.Builder()
-      .id("dd754295-e9e0-4c9d-bf6c-58fbc59e5727")
+      .id("r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727")
       .build();
-    assertEquals(loadBalancerIdentityModel.id(), "dd754295-e9e0-4c9d-bf6c-58fbc59e5727");
+    assertEquals(loadBalancerIdentityModel.id(), "r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727");
 
     LoadBalancerPoolIdentityLoadBalancerPoolIdentityById loadBalancerPoolIdentityModel = new LoadBalancerPoolIdentityLoadBalancerPoolIdentityById.Builder()
-      .id("70294e14-4e61-11e8-bcf4-0242ac110004")
+      .id("r006-70294e14-4e61-11e8-bcf4-0242ac110004")
       .build();
-    assertEquals(loadBalancerPoolIdentityModel.id(), "70294e14-4e61-11e8-bcf4-0242ac110004");
+    assertEquals(loadBalancerPoolIdentityModel.id(), "r006-70294e14-4e61-11e8-bcf4-0242ac110004");
 
     SubnetIdentityById subnetIdentityModel = new SubnetIdentityById.Builder()
       .id("0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
@@ -87,15 +87,15 @@ public class InstanceGroupPatchTest {
   @Test
   public void testInstanceGroupPatchAsPatch() throws Throwable {
     InstanceTemplateIdentityById instanceTemplateIdentityModel = new InstanceTemplateIdentityById.Builder()
-      .id("a6b1a881-2ce8-41a3-80fc-36316a73f803")
+      .id("0717-e6c2c7d8-ad57-4f38-a21c-a86265b6aeb2")
       .build();
 
     LoadBalancerIdentityById loadBalancerIdentityModel = new LoadBalancerIdentityById.Builder()
-      .id("dd754295-e9e0-4c9d-bf6c-58fbc59e5727")
+      .id("r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727")
       .build();
 
     LoadBalancerPoolIdentityLoadBalancerPoolIdentityById loadBalancerPoolIdentityModel = new LoadBalancerPoolIdentityLoadBalancerPoolIdentityById.Builder()
-      .id("70294e14-4e61-11e8-bcf4-0242ac110004")
+      .id("r006-70294e14-4e61-11e8-bcf4-0242ac110004")
       .build();
 
     SubnetIdentityById subnetIdentityModel = new SubnetIdentityById.Builder()

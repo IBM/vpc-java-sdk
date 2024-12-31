@@ -25,6 +25,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  * - SharePrototypeShareBySize
  * - SharePrototypeShareBySourceShare
  * - SharePrototypeShareByOriginShare
+ * - SharePrototypeShareBySourceSnapshot
  */
 public class SharePrototype extends GenericModel {
 
@@ -86,6 +87,8 @@ public class SharePrototype extends GenericModel {
   protected ShareIdentity sourceShare;
   @SerializedName("origin_share")
   protected ShareIdentity originShare;
+  @SerializedName("source_snapshot")
+  protected ShareSourceSnapshotPrototype sourceSnapshot;
 
   protected SharePrototype() { }
 
@@ -235,7 +238,7 @@ public class SharePrototype extends GenericModel {
   /**
    * Gets the size.
    *
-   * The size of the file share rounded up to the next gigabyte.
+   * The size of the file share (in gigabytes), excluding share snapshots.
    *
    * The maximum size for a share may increase in the future.
    *
@@ -300,6 +303,21 @@ public class SharePrototype extends GenericModel {
    */
   public ShareIdentity originShare() {
     return originShare;
+  }
+
+  /**
+   * Gets the sourceSnapshot.
+   *
+   * The source snapshot for this file share.
+   *
+   * This file share will reside in the same zone as the specified source snapshot.
+   * The snapshot must have the `lifecycle_state` as `stable` and `status` as `available`
+   * to be able to restore a share for it.
+   *
+   * @return the sourceSnapshot
+   */
+  public ShareSourceSnapshotPrototype sourceSnapshot() {
+    return sourceSnapshot;
   }
 }
 

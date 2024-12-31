@@ -49,17 +49,19 @@ public class ReservationPatchTest {
 
     ReservationProfilePatch reservationProfilePatchModel = new ReservationProfilePatch.Builder()
       .name("bx2-4x16")
-      .resourceType("instance_profile")
+      .resourceType("bare_metal_server_profile")
       .build();
     assertEquals(reservationProfilePatchModel.name(), "bx2-4x16");
-    assertEquals(reservationProfilePatchModel.resourceType(), "instance_profile");
+    assertEquals(reservationProfilePatchModel.resourceType(), "bare_metal_server_profile");
 
     ReservationPatch reservationPatchModel = new ReservationPatch.Builder()
+      .affinityPolicy("automatic")
       .capacity(reservationCapacityPatchModel)
       .committedUse(reservationCommittedUsePatchModel)
       .name("my-reservation")
       .profile(reservationProfilePatchModel)
       .build();
+    assertEquals(reservationPatchModel.affinityPolicy(), "automatic");
     assertEquals(reservationPatchModel.capacity(), reservationCapacityPatchModel);
     assertEquals(reservationPatchModel.committedUse(), reservationCommittedUsePatchModel);
     assertEquals(reservationPatchModel.name(), "my-reservation");
@@ -69,6 +71,7 @@ public class ReservationPatchTest {
 
     ReservationPatch reservationPatchModelNew = TestUtilities.deserialize(json, ReservationPatch.class);
     assertTrue(reservationPatchModelNew instanceof ReservationPatch);
+    assertEquals(reservationPatchModelNew.affinityPolicy(), "automatic");
     assertEquals(reservationPatchModelNew.capacity().toString(), reservationCapacityPatchModel.toString());
     assertEquals(reservationPatchModelNew.committedUse().toString(), reservationCommittedUsePatchModel.toString());
     assertEquals(reservationPatchModelNew.name(), "my-reservation");
@@ -87,10 +90,11 @@ public class ReservationPatchTest {
 
     ReservationProfilePatch reservationProfilePatchModel = new ReservationProfilePatch.Builder()
       .name("bx2-4x16")
-      .resourceType("instance_profile")
+      .resourceType("bare_metal_server_profile")
       .build();
 
     ReservationPatch reservationPatchModel = new ReservationPatch.Builder()
+      .affinityPolicy("automatic")
       .capacity(reservationCapacityPatchModel)
       .committedUse(reservationCommittedUsePatchModel)
       .name("my-reservation")
@@ -99,6 +103,7 @@ public class ReservationPatchTest {
 
     Map<String, Object> mergePatch = reservationPatchModel.asPatch();
 
+    assertEquals(mergePatch.get("affinity_policy"), "automatic");
     assertTrue(mergePatch.containsKey("capacity"));
     assertTrue(mergePatch.containsKey("committed_use"));
     assertEquals(mergePatch.get("name"), "my-reservation");

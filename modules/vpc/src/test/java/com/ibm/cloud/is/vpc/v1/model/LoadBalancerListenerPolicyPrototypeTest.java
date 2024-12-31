@@ -45,19 +45,19 @@ public class LoadBalancerListenerPolicyPrototypeTest {
     assertEquals(loadBalancerListenerPolicyRulePrototypeModel.value(), "testString");
 
     LoadBalancerListenerPolicyTargetPrototypeLoadBalancerPoolIdentityLoadBalancerPoolIdentityLoadBalancerPoolIdentityById loadBalancerListenerPolicyTargetPrototypeModel = new LoadBalancerListenerPolicyTargetPrototypeLoadBalancerPoolIdentityLoadBalancerPoolIdentityLoadBalancerPoolIdentityById.Builder()
-      .id("70294e14-4e61-11e8-bcf4-0242ac110004")
+      .id("r006-70294e14-4e61-11e8-bcf4-0242ac110004")
       .build();
-    assertEquals(loadBalancerListenerPolicyTargetPrototypeModel.id(), "70294e14-4e61-11e8-bcf4-0242ac110004");
+    assertEquals(loadBalancerListenerPolicyTargetPrototypeModel.id(), "r006-70294e14-4e61-11e8-bcf4-0242ac110004");
 
     LoadBalancerListenerPolicyPrototype loadBalancerListenerPolicyPrototypeModel = new LoadBalancerListenerPolicyPrototype.Builder()
       .action("forward")
-      .name("my-policy")
+      .name("my-load-balancer-listener-policy")
       .priority(Long.valueOf("5"))
       .rules(java.util.Arrays.asList(loadBalancerListenerPolicyRulePrototypeModel))
       .target(loadBalancerListenerPolicyTargetPrototypeModel)
       .build();
     assertEquals(loadBalancerListenerPolicyPrototypeModel.action(), "forward");
-    assertEquals(loadBalancerListenerPolicyPrototypeModel.name(), "my-policy");
+    assertEquals(loadBalancerListenerPolicyPrototypeModel.name(), "my-load-balancer-listener-policy");
     assertEquals(loadBalancerListenerPolicyPrototypeModel.priority(), Long.valueOf("5"));
     assertEquals(loadBalancerListenerPolicyPrototypeModel.rules(), java.util.Arrays.asList(loadBalancerListenerPolicyRulePrototypeModel));
     assertEquals(loadBalancerListenerPolicyPrototypeModel.target(), loadBalancerListenerPolicyTargetPrototypeModel);
@@ -67,7 +67,7 @@ public class LoadBalancerListenerPolicyPrototypeTest {
     LoadBalancerListenerPolicyPrototype loadBalancerListenerPolicyPrototypeModelNew = TestUtilities.deserialize(json, LoadBalancerListenerPolicyPrototype.class);
     assertTrue(loadBalancerListenerPolicyPrototypeModelNew instanceof LoadBalancerListenerPolicyPrototype);
     assertEquals(loadBalancerListenerPolicyPrototypeModelNew.action(), "forward");
-    assertEquals(loadBalancerListenerPolicyPrototypeModelNew.name(), "my-policy");
+    assertEquals(loadBalancerListenerPolicyPrototypeModelNew.name(), "my-load-balancer-listener-policy");
     assertEquals(loadBalancerListenerPolicyPrototypeModelNew.priority(), Long.valueOf("5"));
     assertEquals(loadBalancerListenerPolicyPrototypeModelNew.target().toString(), loadBalancerListenerPolicyTargetPrototypeModel.toString());
   }

@@ -20,9 +20,21 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class ListReservationsOptions extends GenericModel {
 
+  /**
+   * Filters the collection to reservations with an `affinity_policy` property matching the specified value.
+   */
+  public interface AffinityPolicy {
+    /** automatic. */
+    String AUTOMATIC = "automatic";
+    /** restricted. */
+    String RESTRICTED = "restricted";
+  }
+
   protected String start;
   protected Long limit;
   protected String name;
+  protected String profileResourceType;
+  protected String affinityPolicy;
   protected String resourceGroupId;
   protected String zoneName;
 
@@ -33,6 +45,8 @@ public class ListReservationsOptions extends GenericModel {
     private String start;
     private Long limit;
     private String name;
+    private String profileResourceType;
+    private String affinityPolicy;
     private String resourceGroupId;
     private String zoneName;
 
@@ -45,6 +59,8 @@ public class ListReservationsOptions extends GenericModel {
       this.start = listReservationsOptions.start;
       this.limit = listReservationsOptions.limit;
       this.name = listReservationsOptions.name;
+      this.profileResourceType = listReservationsOptions.profileResourceType;
+      this.affinityPolicy = listReservationsOptions.affinityPolicy;
       this.resourceGroupId = listReservationsOptions.resourceGroupId;
       this.zoneName = listReservationsOptions.zoneName;
     }
@@ -98,6 +114,28 @@ public class ListReservationsOptions extends GenericModel {
     }
 
     /**
+     * Set the profileResourceType.
+     *
+     * @param profileResourceType the profileResourceType
+     * @return the ListReservationsOptions builder
+     */
+    public Builder profileResourceType(String profileResourceType) {
+      this.profileResourceType = profileResourceType;
+      return this;
+    }
+
+    /**
+     * Set the affinityPolicy.
+     *
+     * @param affinityPolicy the affinityPolicy
+     * @return the ListReservationsOptions builder
+     */
+    public Builder affinityPolicy(String affinityPolicy) {
+      this.affinityPolicy = affinityPolicy;
+      return this;
+    }
+
+    /**
      * Set the resourceGroupId.
      *
      * @param resourceGroupId the resourceGroupId
@@ -126,6 +164,8 @@ public class ListReservationsOptions extends GenericModel {
     start = builder.start;
     limit = builder.limit;
     name = builder.name;
+    profileResourceType = builder.profileResourceType;
+    affinityPolicy = builder.affinityPolicy;
     resourceGroupId = builder.resourceGroupId;
     zoneName = builder.zoneName;
   }
@@ -170,6 +210,28 @@ public class ListReservationsOptions extends GenericModel {
    */
   public String name() {
     return name;
+  }
+
+  /**
+   * Gets the profileResourceType.
+   *
+   * Filters the collection of resources with a `profile.resource_type` property matching the specified value.
+   *
+   * @return the profileResourceType
+   */
+  public String profileResourceType() {
+    return profileResourceType;
+  }
+
+  /**
+   * Gets the affinityPolicy.
+   *
+   * Filters the collection to reservations with an `affinity_policy` property matching the specified value.
+   *
+   * @return the affinityPolicy
+   */
+  public String affinityPolicy() {
+    return affinityPolicy;
   }
 
   /**

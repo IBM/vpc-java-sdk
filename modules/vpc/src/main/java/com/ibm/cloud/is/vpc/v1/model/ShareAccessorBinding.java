@@ -68,9 +68,6 @@ public class ShareAccessorBinding extends GenericModel {
    *
    * The accessor for this share accessor binding.
    *
-   * The resources supported by this property may
-   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
-   *
    * @return the accessor
    */
   public ShareAccessorBindingAccessor getAccessor() {

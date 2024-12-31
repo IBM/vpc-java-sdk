@@ -38,16 +38,16 @@ public class InstanceReservationAffinityPrototypeTest {
     assertEquals(reservationIdentityModel.id(), "0717-ba49df72-37b8-43ac-98da-f8e029de0e63");
 
     InstanceReservationAffinityPrototype instanceReservationAffinityPrototypeModel = new InstanceReservationAffinityPrototype.Builder()
-      .policy("disabled")
+      .policy("automatic")
       .pool(java.util.Arrays.asList(reservationIdentityModel))
       .build();
-    assertEquals(instanceReservationAffinityPrototypeModel.policy(), "disabled");
+    assertEquals(instanceReservationAffinityPrototypeModel.policy(), "automatic");
     assertEquals(instanceReservationAffinityPrototypeModel.pool(), java.util.Arrays.asList(reservationIdentityModel));
 
     String json = TestUtilities.serialize(instanceReservationAffinityPrototypeModel);
 
     InstanceReservationAffinityPrototype instanceReservationAffinityPrototypeModelNew = TestUtilities.deserialize(json, InstanceReservationAffinityPrototype.class);
     assertTrue(instanceReservationAffinityPrototypeModelNew instanceof InstanceReservationAffinityPrototype);
-    assertEquals(instanceReservationAffinityPrototypeModelNew.policy(), "disabled");
+    assertEquals(instanceReservationAffinityPrototypeModelNew.policy(), "automatic");
   }
 }

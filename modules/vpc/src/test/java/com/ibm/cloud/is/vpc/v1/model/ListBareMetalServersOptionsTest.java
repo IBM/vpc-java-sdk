@@ -36,6 +36,9 @@ public class ListBareMetalServersOptionsTest {
       .limit(Long.valueOf("50"))
       .resourceGroupId("testString")
       .name("my-name")
+      .reservationId("testString")
+      .reservationCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::reservation:7187-ba49df72-37b8-43ac-98da-f8e029de0e63")
+      .reservationName("my-reservation")
       .vpcId("testString")
       .vpcCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b")
       .vpcName("my-vpc")
@@ -44,6 +47,9 @@ public class ListBareMetalServersOptionsTest {
     assertEquals(listBareMetalServersOptionsModel.limit(), Long.valueOf("50"));
     assertEquals(listBareMetalServersOptionsModel.resourceGroupId(), "testString");
     assertEquals(listBareMetalServersOptionsModel.name(), "my-name");
+    assertEquals(listBareMetalServersOptionsModel.reservationId(), "testString");
+    assertEquals(listBareMetalServersOptionsModel.reservationCrn(), "crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::reservation:7187-ba49df72-37b8-43ac-98da-f8e029de0e63");
+    assertEquals(listBareMetalServersOptionsModel.reservationName(), "my-reservation");
     assertEquals(listBareMetalServersOptionsModel.vpcId(), "testString");
     assertEquals(listBareMetalServersOptionsModel.vpcCrn(), "crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b");
     assertEquals(listBareMetalServersOptionsModel.vpcName(), "my-vpc");

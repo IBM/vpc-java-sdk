@@ -33,9 +33,9 @@ public class NetworkACLRulePrototypeNetworkACLRuleProtocolAllPrototypeTest {
   @Test
   public void testNetworkACLRulePrototypeNetworkACLRuleProtocolAllPrototype() throws Throwable {
     NetworkACLRuleBeforePrototypeNetworkACLRuleIdentityById networkAclRuleBeforePrototypeModel = new NetworkACLRuleBeforePrototypeNetworkACLRuleIdentityById.Builder()
-      .id("8daca77a-4980-4d33-8f3e-7038797be8f9")
+      .id("r006-8daca77a-4980-4d33-8f3e-7038797be8f9")
       .build();
-    assertEquals(networkAclRuleBeforePrototypeModel.id(), "8daca77a-4980-4d33-8f3e-7038797be8f9");
+    assertEquals(networkAclRuleBeforePrototypeModel.id(), "r006-8daca77a-4980-4d33-8f3e-7038797be8f9");
 
     NetworkACLRulePrototypeNetworkACLRuleProtocolAllPrototype networkAclRulePrototypeNetworkAclRuleProtocolAllPrototypeModel = new NetworkACLRulePrototypeNetworkACLRuleProtocolAllPrototype.Builder()
       .action("allow")
@@ -43,7 +43,7 @@ public class NetworkACLRulePrototypeNetworkACLRuleProtocolAllPrototypeTest {
       .destination("192.168.3.2/32")
       .direction("inbound")
       .ipVersion("ipv4")
-      .name("my-rule-2")
+      .name("my-network-acl-rule")
       .source("192.168.3.2/32")
       .protocol("all")
       .build();
@@ -52,7 +52,7 @@ public class NetworkACLRulePrototypeNetworkACLRuleProtocolAllPrototypeTest {
     assertEquals(networkAclRulePrototypeNetworkAclRuleProtocolAllPrototypeModel.destination(), "192.168.3.2/32");
     assertEquals(networkAclRulePrototypeNetworkAclRuleProtocolAllPrototypeModel.direction(), "inbound");
     assertEquals(networkAclRulePrototypeNetworkAclRuleProtocolAllPrototypeModel.ipVersion(), "ipv4");
-    assertEquals(networkAclRulePrototypeNetworkAclRuleProtocolAllPrototypeModel.name(), "my-rule-2");
+    assertEquals(networkAclRulePrototypeNetworkAclRuleProtocolAllPrototypeModel.name(), "my-network-acl-rule");
     assertEquals(networkAclRulePrototypeNetworkAclRuleProtocolAllPrototypeModel.source(), "192.168.3.2/32");
     assertEquals(networkAclRulePrototypeNetworkAclRuleProtocolAllPrototypeModel.protocol(), "all");
 
@@ -65,7 +65,7 @@ public class NetworkACLRulePrototypeNetworkACLRuleProtocolAllPrototypeTest {
     assertEquals(networkAclRulePrototypeNetworkAclRuleProtocolAllPrototypeModelNew.destination(), "192.168.3.2/32");
     assertEquals(networkAclRulePrototypeNetworkAclRuleProtocolAllPrototypeModelNew.direction(), "inbound");
     assertEquals(networkAclRulePrototypeNetworkAclRuleProtocolAllPrototypeModelNew.ipVersion(), "ipv4");
-    assertEquals(networkAclRulePrototypeNetworkAclRuleProtocolAllPrototypeModelNew.name(), "my-rule-2");
+    assertEquals(networkAclRulePrototypeNetworkAclRuleProtocolAllPrototypeModelNew.name(), "my-network-acl-rule");
     assertEquals(networkAclRulePrototypeNetworkAclRuleProtocolAllPrototypeModelNew.source(), "192.168.3.2/32");
     assertEquals(networkAclRulePrototypeNetworkAclRuleProtocolAllPrototypeModelNew.protocol(), "all");
   }

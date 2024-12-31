@@ -32,15 +32,15 @@ public class ReservedIPTargetPrototypeEndpointGatewayIdentityEndpointGatewayIden
   @Test
   public void testReservedIPTargetPrototypeEndpointGatewayIdentityEndpointGatewayIdentityByHref() throws Throwable {
     ReservedIPTargetPrototypeEndpointGatewayIdentityEndpointGatewayIdentityByHref reservedIpTargetPrototypeEndpointGatewayIdentityEndpointGatewayIdentityByHrefModel = new ReservedIPTargetPrototypeEndpointGatewayIdentityEndpointGatewayIdentityByHref.Builder()
-      .href("https://us-south.iaas.cloud.ibm.com/v1/endpoint_gateways/r134-d7cc5196-9864-48c4-82d8-3f30da41fcc5")
+      .href("https://us-south.iaas.cloud.ibm.com/v1/endpoint_gateways/r006-7610ebfb-f5dc-4d42-bc18-287d47f7a5b0")
       .build();
-    assertEquals(reservedIpTargetPrototypeEndpointGatewayIdentityEndpointGatewayIdentityByHrefModel.href(), "https://us-south.iaas.cloud.ibm.com/v1/endpoint_gateways/r134-d7cc5196-9864-48c4-82d8-3f30da41fcc5");
+    assertEquals(reservedIpTargetPrototypeEndpointGatewayIdentityEndpointGatewayIdentityByHrefModel.href(), "https://us-south.iaas.cloud.ibm.com/v1/endpoint_gateways/r006-7610ebfb-f5dc-4d42-bc18-287d47f7a5b0");
 
     String json = TestUtilities.serialize(reservedIpTargetPrototypeEndpointGatewayIdentityEndpointGatewayIdentityByHrefModel);
 
     ReservedIPTargetPrototypeEndpointGatewayIdentityEndpointGatewayIdentityByHref reservedIpTargetPrototypeEndpointGatewayIdentityEndpointGatewayIdentityByHrefModelNew = TestUtilities.deserialize(json, ReservedIPTargetPrototypeEndpointGatewayIdentityEndpointGatewayIdentityByHref.class);
     assertTrue(reservedIpTargetPrototypeEndpointGatewayIdentityEndpointGatewayIdentityByHrefModelNew instanceof ReservedIPTargetPrototypeEndpointGatewayIdentityEndpointGatewayIdentityByHref);
-    assertEquals(reservedIpTargetPrototypeEndpointGatewayIdentityEndpointGatewayIdentityByHrefModelNew.href(), "https://us-south.iaas.cloud.ibm.com/v1/endpoint_gateways/r134-d7cc5196-9864-48c4-82d8-3f30da41fcc5");
+    assertEquals(reservedIpTargetPrototypeEndpointGatewayIdentityEndpointGatewayIdentityByHrefModelNew.href(), "https://us-south.iaas.cloud.ibm.com/v1/endpoint_gateways/r006-7610ebfb-f5dc-4d42-bc18-287d47f7a5b0");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

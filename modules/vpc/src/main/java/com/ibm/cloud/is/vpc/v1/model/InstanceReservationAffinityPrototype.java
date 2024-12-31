@@ -27,10 +27,17 @@ public class InstanceReservationAffinityPrototype extends GenericModel {
    * The reservation affinity policy to use for this virtual server instance:
    * - `disabled`: Reservations will not be used
    * - `manual`: Reservations in `pool` will be available for use
+   * - `automatic`: Reservations with an `affinity_policy` of `automatic` that have the same
+   *   `profile` and `zone` as this virtual server instance will be available for use.
    *
-   * The policy will default to `manual` if `pool` is not empty, and `disabled` otherwise.
+   * The policy will default to `manual` if `pool` is not empty. The policy will default to
+   * `disabled` if a `placement_target` is set. The policy will default to `automatic` in all other cases.
+   *
+   * The policy must be `disabled` if `placement_target` is specified.
    */
   public interface Policy {
+    /** automatic. */
+    String AUTOMATIC = "automatic";
     /** disabled. */
     String DISABLED = "disabled";
     /** manual. */
@@ -134,8 +141,13 @@ public class InstanceReservationAffinityPrototype extends GenericModel {
    * The reservation affinity policy to use for this virtual server instance:
    * - `disabled`: Reservations will not be used
    * - `manual`: Reservations in `pool` will be available for use
+   * - `automatic`: Reservations with an `affinity_policy` of `automatic` that have the same
+   *   `profile` and `zone` as this virtual server instance will be available for use.
    *
-   * The policy will default to `manual` if `pool` is not empty, and `disabled` otherwise.
+   * The policy will default to `manual` if `pool` is not empty. The policy will default to
+   * `disabled` if a `placement_target` is set. The policy will default to `automatic` in all other cases.
+   *
+   * The policy must be `disabled` if `placement_target` is specified.
    *
    * @return the policy
    */
@@ -148,11 +160,12 @@ public class InstanceReservationAffinityPrototype extends GenericModel {
    *
    * The pool of reservations available for use by this virtual server instance.
    *
-   * Specified reservations must have a `status` of `active`, and have the same
-   * `profile` and `zone` as this virtual server instance.
+   * Specified reservations must have a `status` of `active`, and have the same `profile` and `zone` as this virtual
+   * server instance.
    *
-   * If `policy` is `manual`, a pool must be specified with at least one reservation. If
-   * `policy` is `disabled` and a pool is specified, it must be empty.
+   * If `policy` is `manual`, `pool` must be specified with one reservation. If `policy` is `disabled` or `automatic`
+   * and `pool` is specified, it must be empty. If `policy` is `manual`, the `pool` must contain a reservation with
+   * available capacity.
    *
    * @return the pool
    */

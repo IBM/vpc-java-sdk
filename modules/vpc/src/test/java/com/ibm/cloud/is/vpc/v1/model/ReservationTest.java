@@ -16,7 +16,7 @@ package com.ibm.cloud.is.vpc.v1.model;
 import com.ibm.cloud.is.vpc.v1.model.Reservation;
 import com.ibm.cloud.is.vpc.v1.model.ReservationCapacity;
 import com.ibm.cloud.is.vpc.v1.model.ReservationCommittedUse;
-import com.ibm.cloud.is.vpc.v1.model.ReservationProfile;
+import com.ibm.cloud.is.vpc.v1.model.ReservationProfileInstanceProfileReference;
 import com.ibm.cloud.is.vpc.v1.model.ReservationStatusReason;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.ZoneReference;

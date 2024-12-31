@@ -32,15 +32,15 @@ public class NetworkACLRuleBeforePrototypeNetworkACLRuleIdentityByHrefTest {
   @Test
   public void testNetworkACLRuleBeforePrototypeNetworkACLRuleIdentityByHref() throws Throwable {
     NetworkACLRuleBeforePrototypeNetworkACLRuleIdentityByHref networkAclRuleBeforePrototypeNetworkAclRuleIdentityByHrefModel = new NetworkACLRuleBeforePrototypeNetworkACLRuleIdentityByHref.Builder()
-      .href("https://us-south.iaas.cloud.ibm.com/v1/network_acls/a4e28308-8ee7-46ab-8108-9f881f22bdbf/rules/8daca77a-4980-4d33-8f3e-7038797be8f9")
+      .href("https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-3217cb8b-5368-452a-9399-a84f14fb539d/rules/r006-8daca77a-4980-4d33-8f3e-7038797be8f9")
       .build();
-    assertEquals(networkAclRuleBeforePrototypeNetworkAclRuleIdentityByHrefModel.href(), "https://us-south.iaas.cloud.ibm.com/v1/network_acls/a4e28308-8ee7-46ab-8108-9f881f22bdbf/rules/8daca77a-4980-4d33-8f3e-7038797be8f9");
+    assertEquals(networkAclRuleBeforePrototypeNetworkAclRuleIdentityByHrefModel.href(), "https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-3217cb8b-5368-452a-9399-a84f14fb539d/rules/r006-8daca77a-4980-4d33-8f3e-7038797be8f9");
 
     String json = TestUtilities.serialize(networkAclRuleBeforePrototypeNetworkAclRuleIdentityByHrefModel);
 
     NetworkACLRuleBeforePrototypeNetworkACLRuleIdentityByHref networkAclRuleBeforePrototypeNetworkAclRuleIdentityByHrefModelNew = TestUtilities.deserialize(json, NetworkACLRuleBeforePrototypeNetworkACLRuleIdentityByHref.class);
     assertTrue(networkAclRuleBeforePrototypeNetworkAclRuleIdentityByHrefModelNew instanceof NetworkACLRuleBeforePrototypeNetworkACLRuleIdentityByHref);
-    assertEquals(networkAclRuleBeforePrototypeNetworkAclRuleIdentityByHrefModelNew.href(), "https://us-south.iaas.cloud.ibm.com/v1/network_acls/a4e28308-8ee7-46ab-8108-9f881f22bdbf/rules/8daca77a-4980-4d33-8f3e-7038797be8f9");
+    assertEquals(networkAclRuleBeforePrototypeNetworkAclRuleIdentityByHrefModelNew.href(), "https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-3217cb8b-5368-452a-9399-a84f14fb539d/rules/r006-8daca77a-4980-4d33-8f3e-7038797be8f9");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

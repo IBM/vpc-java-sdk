@@ -18,10 +18,12 @@ import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkInterfacePrototypeBar
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerPrimaryNetworkInterfacePrototype;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileIdentityByName;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerPrototypeBareMetalServerByNetworkInterface;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerReservationAffinityPrototype;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerTrustedPlatformModulePrototype;
 import com.ibm.cloud.is.vpc.v1.model.ImageIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.KeyIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceIPPrototypeReservedIPPrototypeNetworkInterfaceContext;
+import com.ibm.cloud.is.vpc.v1.model.ReservationIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.SubnetIdentityById;
@@ -67,6 +69,18 @@ public class BareMetalServerPrototypeBareMetalServerByNetworkInterfaceTest {
       .name("bx2-metal-192x768")
       .build();
     assertEquals(bareMetalServerProfileIdentityModel.name(), "bx2-metal-192x768");
+
+    ReservationIdentityById reservationIdentityModel = new ReservationIdentityById.Builder()
+      .id("0717-ba49df72-37b8-43ac-98da-f8e029de0e63")
+      .build();
+    assertEquals(reservationIdentityModel.id(), "0717-ba49df72-37b8-43ac-98da-f8e029de0e63");
+
+    BareMetalServerReservationAffinityPrototype bareMetalServerReservationAffinityPrototypeModel = new BareMetalServerReservationAffinityPrototype.Builder()
+      .policy("automatic")
+      .pool(java.util.Arrays.asList(reservationIdentityModel))
+      .build();
+    assertEquals(bareMetalServerReservationAffinityPrototypeModel.policy(), "automatic");
+    assertEquals(bareMetalServerReservationAffinityPrototypeModel.pool(), java.util.Arrays.asList(reservationIdentityModel));
 
     ResourceGroupIdentityById resourceGroupIdentityModel = new ResourceGroupIdentityById.Builder()
       .id("fee82deba12e4c0fb69c3b09d1f12345")
@@ -149,6 +163,7 @@ public class BareMetalServerPrototypeBareMetalServerByNetworkInterfaceTest {
       .initialization(bareMetalServerInitializationPrototypeModel)
       .name("my-bare-metal-server")
       .profile(bareMetalServerProfileIdentityModel)
+      .reservationAffinity(bareMetalServerReservationAffinityPrototypeModel)
       .resourceGroup(resourceGroupIdentityModel)
       .trustedPlatformModule(bareMetalServerTrustedPlatformModulePrototypeModel)
       .vpc(vpcIdentityModel)
@@ -161,6 +176,7 @@ public class BareMetalServerPrototypeBareMetalServerByNetworkInterfaceTest {
     assertEquals(bareMetalServerPrototypeBareMetalServerByNetworkInterfaceModel.initialization(), bareMetalServerInitializationPrototypeModel);
     assertEquals(bareMetalServerPrototypeBareMetalServerByNetworkInterfaceModel.name(), "my-bare-metal-server");
     assertEquals(bareMetalServerPrototypeBareMetalServerByNetworkInterfaceModel.profile(), bareMetalServerProfileIdentityModel);
+    assertEquals(bareMetalServerPrototypeBareMetalServerByNetworkInterfaceModel.reservationAffinity(), bareMetalServerReservationAffinityPrototypeModel);
     assertEquals(bareMetalServerPrototypeBareMetalServerByNetworkInterfaceModel.resourceGroup(), resourceGroupIdentityModel);
     assertEquals(bareMetalServerPrototypeBareMetalServerByNetworkInterfaceModel.trustedPlatformModule(), bareMetalServerTrustedPlatformModulePrototypeModel);
     assertEquals(bareMetalServerPrototypeBareMetalServerByNetworkInterfaceModel.vpc(), vpcIdentityModel);
@@ -177,6 +193,7 @@ public class BareMetalServerPrototypeBareMetalServerByNetworkInterfaceTest {
     assertEquals(bareMetalServerPrototypeBareMetalServerByNetworkInterfaceModelNew.initialization().toString(), bareMetalServerInitializationPrototypeModel.toString());
     assertEquals(bareMetalServerPrototypeBareMetalServerByNetworkInterfaceModelNew.name(), "my-bare-metal-server");
     assertEquals(bareMetalServerPrototypeBareMetalServerByNetworkInterfaceModelNew.profile().toString(), bareMetalServerProfileIdentityModel.toString());
+    assertEquals(bareMetalServerPrototypeBareMetalServerByNetworkInterfaceModelNew.reservationAffinity().toString(), bareMetalServerReservationAffinityPrototypeModel.toString());
     assertEquals(bareMetalServerPrototypeBareMetalServerByNetworkInterfaceModelNew.resourceGroup().toString(), resourceGroupIdentityModel.toString());
     assertEquals(bareMetalServerPrototypeBareMetalServerByNetworkInterfaceModelNew.trustedPlatformModule().toString(), bareMetalServerTrustedPlatformModulePrototypeModel.toString());
     assertEquals(bareMetalServerPrototypeBareMetalServerByNetworkInterfaceModelNew.vpc().toString(), vpcIdentityModel.toString());

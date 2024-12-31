@@ -33,6 +33,8 @@ public class BareMetalServerPrototype extends GenericModel {
   protected BareMetalServerInitializationPrototype initialization;
   protected String name;
   protected BareMetalServerProfileIdentity profile;
+  @SerializedName("reservation_affinity")
+  protected BareMetalServerReservationAffinityPrototype reservationAffinity;
   @SerializedName("resource_group")
   protected ResourceGroupIdentity resourceGroup;
   @SerializedName("trusted_platform_module")
@@ -108,6 +110,15 @@ public class BareMetalServerPrototype extends GenericModel {
    */
   public BareMetalServerProfileIdentity profile() {
     return profile;
+  }
+
+  /**
+   * Gets the reservationAffinity.
+   *
+   * @return the reservationAffinity
+   */
+  public BareMetalServerReservationAffinityPrototype reservationAffinity() {
+    return reservationAffinity;
   }
 
   /**

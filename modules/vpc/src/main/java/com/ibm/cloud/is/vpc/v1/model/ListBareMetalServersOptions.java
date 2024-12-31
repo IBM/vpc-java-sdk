@@ -24,6 +24,9 @@ public class ListBareMetalServersOptions extends GenericModel {
   protected Long limit;
   protected String resourceGroupId;
   protected String name;
+  protected String reservationId;
+  protected String reservationCrn;
+  protected String reservationName;
   protected String vpcId;
   protected String vpcCrn;
   protected String vpcName;
@@ -36,6 +39,9 @@ public class ListBareMetalServersOptions extends GenericModel {
     private Long limit;
     private String resourceGroupId;
     private String name;
+    private String reservationId;
+    private String reservationCrn;
+    private String reservationName;
     private String vpcId;
     private String vpcCrn;
     private String vpcName;
@@ -50,6 +56,9 @@ public class ListBareMetalServersOptions extends GenericModel {
       this.limit = listBareMetalServersOptions.limit;
       this.resourceGroupId = listBareMetalServersOptions.resourceGroupId;
       this.name = listBareMetalServersOptions.name;
+      this.reservationId = listBareMetalServersOptions.reservationId;
+      this.reservationCrn = listBareMetalServersOptions.reservationCrn;
+      this.reservationName = listBareMetalServersOptions.reservationName;
       this.vpcId = listBareMetalServersOptions.vpcId;
       this.vpcCrn = listBareMetalServersOptions.vpcCrn;
       this.vpcName = listBareMetalServersOptions.vpcName;
@@ -115,6 +124,39 @@ public class ListBareMetalServersOptions extends GenericModel {
     }
 
     /**
+     * Set the reservationId.
+     *
+     * @param reservationId the reservationId
+     * @return the ListBareMetalServersOptions builder
+     */
+    public Builder reservationId(String reservationId) {
+      this.reservationId = reservationId;
+      return this;
+    }
+
+    /**
+     * Set the reservationCrn.
+     *
+     * @param reservationCrn the reservationCrn
+     * @return the ListBareMetalServersOptions builder
+     */
+    public Builder reservationCrn(String reservationCrn) {
+      this.reservationCrn = reservationCrn;
+      return this;
+    }
+
+    /**
+     * Set the reservationName.
+     *
+     * @param reservationName the reservationName
+     * @return the ListBareMetalServersOptions builder
+     */
+    public Builder reservationName(String reservationName) {
+      this.reservationName = reservationName;
+      return this;
+    }
+
+    /**
      * Set the vpcId.
      *
      * @param vpcId the vpcId
@@ -155,6 +197,9 @@ public class ListBareMetalServersOptions extends GenericModel {
     limit = builder.limit;
     resourceGroupId = builder.resourceGroupId;
     name = builder.name;
+    reservationId = builder.reservationId;
+    reservationCrn = builder.reservationCrn;
+    reservationName = builder.reservationName;
     vpcId = builder.vpcId;
     vpcCrn = builder.vpcCrn;
     vpcName = builder.vpcName;
@@ -211,6 +256,39 @@ public class ListBareMetalServersOptions extends GenericModel {
    */
   public String name() {
     return name;
+  }
+
+  /**
+   * Gets the reservationId.
+   *
+   * Filters the collection to resources with a `reservation.id` property matching the specified identifier.
+   *
+   * @return the reservationId
+   */
+  public String reservationId() {
+    return reservationId;
+  }
+
+  /**
+   * Gets the reservationCrn.
+   *
+   * Filters the collection to resources with a `reservation.crn` property matching the specified identifier.
+   *
+   * @return the reservationCrn
+   */
+  public String reservationCrn() {
+    return reservationCrn;
+  }
+
+  /**
+   * Gets the reservationName.
+   *
+   * Filters the collection to resources with a `reservation.name` property matching the specified identifier.
+   *
+   * @return the reservationName
+   */
+  public String reservationName() {
+    return reservationName;
   }
 
   /**

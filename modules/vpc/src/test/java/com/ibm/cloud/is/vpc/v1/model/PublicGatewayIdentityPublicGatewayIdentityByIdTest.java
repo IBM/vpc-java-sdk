@@ -32,15 +32,15 @@ public class PublicGatewayIdentityPublicGatewayIdentityByIdTest {
   @Test
   public void testPublicGatewayIdentityPublicGatewayIdentityById() throws Throwable {
     PublicGatewayIdentityPublicGatewayIdentityById publicGatewayIdentityPublicGatewayIdentityByIdModel = new PublicGatewayIdentityPublicGatewayIdentityById.Builder()
-      .id("dc5431ef-1fc6-4861-adc9-a59d077d1241")
+      .id("r006-dc5431ef-1fc6-4861-adc9-a59d077d1241")
       .build();
-    assertEquals(publicGatewayIdentityPublicGatewayIdentityByIdModel.id(), "dc5431ef-1fc6-4861-adc9-a59d077d1241");
+    assertEquals(publicGatewayIdentityPublicGatewayIdentityByIdModel.id(), "r006-dc5431ef-1fc6-4861-adc9-a59d077d1241");
 
     String json = TestUtilities.serialize(publicGatewayIdentityPublicGatewayIdentityByIdModel);
 
     PublicGatewayIdentityPublicGatewayIdentityById publicGatewayIdentityPublicGatewayIdentityByIdModelNew = TestUtilities.deserialize(json, PublicGatewayIdentityPublicGatewayIdentityById.class);
     assertTrue(publicGatewayIdentityPublicGatewayIdentityByIdModelNew instanceof PublicGatewayIdentityPublicGatewayIdentityById);
-    assertEquals(publicGatewayIdentityPublicGatewayIdentityByIdModelNew.id(), "dc5431ef-1fc6-4861-adc9-a59d077d1241");
+    assertEquals(publicGatewayIdentityPublicGatewayIdentityByIdModelNew.id(), "r006-dc5431ef-1fc6-4861-adc9-a59d077d1241");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

@@ -40,16 +40,16 @@ public class NetworkACLPrototypeNetworkACLByRulesTest {
     assertEquals(resourceGroupIdentityModel.id(), "fee82deba12e4c0fb69c3b09d1f12345");
 
     VPCIdentityById vpcIdentityModel = new VPCIdentityById.Builder()
-      .id("cf7cd5a-2f30-4336-a495-6addc820cd61")
+      .id("r006-4727d842-f94f-4a2d-824a-9bc9b02c523b")
       .build();
-    assertEquals(vpcIdentityModel.id(), "cf7cd5a-2f30-4336-a495-6addc820cd61");
+    assertEquals(vpcIdentityModel.id(), "r006-4727d842-f94f-4a2d-824a-9bc9b02c523b");
 
     NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolTCPUDPPrototype networkAclRulePrototypeNetworkAclContextModel = new NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolTCPUDPPrototype.Builder()
       .action("allow")
       .destination("192.168.3.2/32")
       .direction("inbound")
       .ipVersion("ipv4")
-      .name("my-rule-2")
+      .name("my-network-acl-rule")
       .source("192.168.3.2/32")
       .destinationPortMax(Long.valueOf("22"))
       .destinationPortMin(Long.valueOf("22"))
@@ -61,7 +61,7 @@ public class NetworkACLPrototypeNetworkACLByRulesTest {
     assertEquals(networkAclRulePrototypeNetworkAclContextModel.destination(), "192.168.3.2/32");
     assertEquals(networkAclRulePrototypeNetworkAclContextModel.direction(), "inbound");
     assertEquals(networkAclRulePrototypeNetworkAclContextModel.ipVersion(), "ipv4");
-    assertEquals(networkAclRulePrototypeNetworkAclContextModel.name(), "my-rule-2");
+    assertEquals(networkAclRulePrototypeNetworkAclContextModel.name(), "my-network-acl-rule");
     assertEquals(networkAclRulePrototypeNetworkAclContextModel.source(), "192.168.3.2/32");
     assertEquals(networkAclRulePrototypeNetworkAclContextModel.destinationPortMax(), Long.valueOf("22"));
     assertEquals(networkAclRulePrototypeNetworkAclContextModel.destinationPortMin(), Long.valueOf("22"));

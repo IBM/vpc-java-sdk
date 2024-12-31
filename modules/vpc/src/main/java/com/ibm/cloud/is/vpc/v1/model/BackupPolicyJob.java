@@ -81,7 +81,7 @@ public class BackupPolicyJob extends GenericModel {
   @SerializedName("status_reasons")
   protected List<BackupPolicyJobStatusReason> statusReasons;
   @SerializedName("target_snapshots")
-  protected List<SnapshotReference> targetSnapshots;
+  protected List<BackupPolicyTargetSnapshot> targetSnapshots;
 
   protected BackupPolicyJob() { }
 
@@ -237,7 +237,7 @@ public class BackupPolicyJob extends GenericModel {
    *
    * @return the targetSnapshots
    */
-  public List<SnapshotReference> getTargetSnapshots() {
+  public List<BackupPolicyTargetSnapshot> getTargetSnapshots() {
     return targetSnapshots;
   }
 }

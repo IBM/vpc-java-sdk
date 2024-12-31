@@ -35,12 +35,16 @@ public class ListReservationsOptionsTest {
       .start("testString")
       .limit(Long.valueOf("50"))
       .name("my-name")
+      .profileResourceType("testString")
+      .affinityPolicy("automatic")
       .resourceGroupId("testString")
       .zoneName("us-south-1")
       .build();
     assertEquals(listReservationsOptionsModel.start(), "testString");
     assertEquals(listReservationsOptionsModel.limit(), Long.valueOf("50"));
     assertEquals(listReservationsOptionsModel.name(), "my-name");
+    assertEquals(listReservationsOptionsModel.profileResourceType(), "testString");
+    assertEquals(listReservationsOptionsModel.affinityPolicy(), "automatic");
     assertEquals(listReservationsOptionsModel.resourceGroupId(), "testString");
     assertEquals(listReservationsOptionsModel.zoneName(), "us-south-1");
   }

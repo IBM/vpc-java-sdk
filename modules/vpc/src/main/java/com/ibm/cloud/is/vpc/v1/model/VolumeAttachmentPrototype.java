@@ -148,7 +148,8 @@ public class VolumeAttachmentPrototype extends GenericModel {
   /**
    * Gets the volume.
    *
-   * An existing volume to attach to the instance, or a prototype object for a new volume.
+   * The volume to use for this attachment. This can be specified as an existing unattached
+   * volume, or a prototype object for a new volume.
    *
    * @return the volume
    */

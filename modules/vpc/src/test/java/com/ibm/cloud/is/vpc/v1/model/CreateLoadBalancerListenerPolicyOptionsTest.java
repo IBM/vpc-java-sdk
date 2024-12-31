@@ -45,16 +45,16 @@ public class CreateLoadBalancerListenerPolicyOptionsTest {
     assertEquals(loadBalancerListenerPolicyRulePrototypeModel.value(), "testString");
 
     LoadBalancerListenerPolicyTargetPrototypeLoadBalancerPoolIdentityLoadBalancerPoolIdentityLoadBalancerPoolIdentityById loadBalancerListenerPolicyTargetPrototypeModel = new LoadBalancerListenerPolicyTargetPrototypeLoadBalancerPoolIdentityLoadBalancerPoolIdentityLoadBalancerPoolIdentityById.Builder()
-      .id("70294e14-4e61-11e8-bcf4-0242ac110004")
+      .id("r006-70294e14-4e61-11e8-bcf4-0242ac110004")
       .build();
-    assertEquals(loadBalancerListenerPolicyTargetPrototypeModel.id(), "70294e14-4e61-11e8-bcf4-0242ac110004");
+    assertEquals(loadBalancerListenerPolicyTargetPrototypeModel.id(), "r006-70294e14-4e61-11e8-bcf4-0242ac110004");
 
     CreateLoadBalancerListenerPolicyOptions createLoadBalancerListenerPolicyOptionsModel = new CreateLoadBalancerListenerPolicyOptions.Builder()
       .loadBalancerId("testString")
       .listenerId("testString")
       .action("forward")
       .priority(Long.valueOf("5"))
-      .name("my-policy")
+      .name("my-load-balancer-listener-policy")
       .rules(java.util.Arrays.asList(loadBalancerListenerPolicyRulePrototypeModel))
       .target(loadBalancerListenerPolicyTargetPrototypeModel)
       .build();
@@ -62,7 +62,7 @@ public class CreateLoadBalancerListenerPolicyOptionsTest {
     assertEquals(createLoadBalancerListenerPolicyOptionsModel.listenerId(), "testString");
     assertEquals(createLoadBalancerListenerPolicyOptionsModel.action(), "forward");
     assertEquals(createLoadBalancerListenerPolicyOptionsModel.priority(), Long.valueOf("5"));
-    assertEquals(createLoadBalancerListenerPolicyOptionsModel.name(), "my-policy");
+    assertEquals(createLoadBalancerListenerPolicyOptionsModel.name(), "my-load-balancer-listener-policy");
     assertEquals(createLoadBalancerListenerPolicyOptionsModel.rules(), java.util.Arrays.asList(loadBalancerListenerPolicyRulePrototypeModel));
     assertEquals(createLoadBalancerListenerPolicyOptionsModel.target(), loadBalancerListenerPolicyTargetPrototypeModel);
   }
