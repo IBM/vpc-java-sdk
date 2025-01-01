@@ -51,6 +51,8 @@ public class BareMetalServerProfile extends GenericModel {
   protected BareMetalServerProfileNetworkInterfaceCount networkInterfaceCount;
   @SerializedName("os_architecture")
   protected BareMetalServerProfileOSArchitecture osArchitecture;
+  @SerializedName("reservation_terms")
+  protected BareMetalServerProfileReservationTerms reservationTerms;
   @SerializedName("resource_type")
   protected String resourceType;
   @SerializedName("supported_trusted_platform_module_modes")
@@ -185,6 +187,15 @@ public class BareMetalServerProfile extends GenericModel {
    */
   public BareMetalServerProfileOSArchitecture getOsArchitecture() {
     return osArchitecture;
+  }
+
+  /**
+   * Gets the reservationTerms.
+   *
+   * @return the reservationTerms
+   */
+  public BareMetalServerProfileReservationTerms getReservationTerms() {
+    return reservationTerms;
   }
 
   /**

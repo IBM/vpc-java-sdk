@@ -12,7 +12,7 @@
  */
 
 /*
- * IBM OpenAPI SDK Code Generator Version: 3.96.0-d6dec9d7-20241008-212902
+ * IBM OpenAPI SDK Code Generator Version: 3.96.1-5136e54a-20241108-203028
  */
 
 package com.ibm.cloud.is.vpc.v1;
@@ -109,6 +109,7 @@ import com.ibm.cloud.is.vpc.v1.model.CreateSecurityGroupRuleOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateSecurityGroupTargetBindingOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateShareMountTargetOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateShareOptions;
+import com.ibm.cloud.is.vpc.v1.model.CreateShareSnapshotOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateSnapshotCloneOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateSnapshotConsistencyGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateSnapshotOptions;
@@ -188,6 +189,7 @@ import com.ibm.cloud.is.vpc.v1.model.DeleteSecurityGroupTargetBindingOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteShareAccessorBindingOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteShareMountTargetOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteShareOptions;
+import com.ibm.cloud.is.vpc.v1.model.DeleteShareSnapshotOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteShareSourceOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteSnapshotCloneOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteSnapshotConsistencyGroupOptions;
@@ -293,6 +295,7 @@ import com.ibm.cloud.is.vpc.v1.model.GetShareAccessorBindingOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetShareMountTargetOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetShareOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetShareProfileOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetShareSnapshotOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetShareSourceOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetSnapshotCloneOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetSnapshotConsistencyGroupOptions;
@@ -428,6 +431,7 @@ import com.ibm.cloud.is.vpc.v1.model.ListSecurityGroupsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListShareAccessorBindingsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListShareMountTargetsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListShareProfilesOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListShareSnapshotsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListSharesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListSnapshotClonesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListSnapshotConsistencyGroupsOptions;
@@ -532,6 +536,8 @@ import com.ibm.cloud.is.vpc.v1.model.ShareMountTargetCollection;
 import com.ibm.cloud.is.vpc.v1.model.ShareProfile;
 import com.ibm.cloud.is.vpc.v1.model.ShareProfileCollection;
 import com.ibm.cloud.is.vpc.v1.model.ShareReference;
+import com.ibm.cloud.is.vpc.v1.model.ShareSnapshot;
+import com.ibm.cloud.is.vpc.v1.model.ShareSnapshotCollection;
 import com.ibm.cloud.is.vpc.v1.model.Snapshot;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotClone;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotCloneCollection;
@@ -595,6 +601,7 @@ import com.ibm.cloud.is.vpc.v1.model.UpdateSecurityGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateSecurityGroupRuleOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateShareMountTargetOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateShareOptions;
+import com.ibm.cloud.is.vpc.v1.model.UpdateShareSnapshotOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateSnapshotConsistencyGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateSnapshotOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateSubnetOptions;
@@ -653,7 +660,7 @@ import java.util.logging.Logger;
  * The IBM Cloud Virtual Private Cloud (VPC) API can be used to programmatically provision and manage virtual server
  * instances, along with subnets, volumes, load balancers, and more.
  *
- * API Version: 2024-11-12
+ * API Version: 2024-12-26
  */
 public class Vpc extends BaseService {
   private static final Logger LOGGER = Logger.getLogger(Vpc.class.getName());
@@ -670,7 +677,7 @@ public class Vpc extends BaseService {
 
   private Long generation = Long.valueOf("2");
 
-  private String version = "2024-11-12";
+  private String version = "2024-12-17";
 
  /**
    * Class method which constructs an instance of the `Vpc` client.
@@ -3331,6 +3338,9 @@ public class Vpc extends BaseService {
     if (listInstancesOptions.placementGroupName() != null) {
       builder.query("placement_group.name", String.valueOf(listInstancesOptions.placementGroupName()));
     }
+    if (listInstancesOptions.reservationAffinityPolicy() != null) {
+      builder.query("reservation_affinity.policy", String.valueOf(listInstancesOptions.reservationAffinityPolicy()));
+    }
     if (listInstancesOptions.reservationId() != null) {
       builder.query("reservation.id", String.valueOf(listInstancesOptions.reservationId()));
     }
@@ -5268,6 +5278,12 @@ public class Vpc extends BaseService {
     if (listReservationsOptions.name() != null) {
       builder.query("name", String.valueOf(listReservationsOptions.name()));
     }
+    if (listReservationsOptions.profileResourceType() != null) {
+      builder.query("profile.resource_type", String.valueOf(listReservationsOptions.profileResourceType()));
+    }
+    if (listReservationsOptions.affinityPolicy() != null) {
+      builder.query("affinity_policy", String.valueOf(listReservationsOptions.affinityPolicy()));
+    }
     if (listReservationsOptions.resourceGroupId() != null) {
       builder.query("resource_group.id", String.valueOf(listReservationsOptions.resourceGroupId()));
     }
@@ -5841,7 +5857,8 @@ public class Vpc extends BaseService {
   /**
    * Delete a dedicated host.
    *
-   * This request deletes a dedicated host.
+   * This request deletes a dedicated host. This operation cannot be reversed. For this request to succeed, `instances`
+   * must be empty and `instance_placement_enabled` must be `false`.
    *
    * @param deleteDedicatedHostOptions the {@link DeleteDedicatedHostOptions} containing the options for the call
    * @return a {@link ServiceCall} with a void result
@@ -6175,6 +6192,15 @@ public class Vpc extends BaseService {
     }
     if (listBareMetalServersOptions.name() != null) {
       builder.query("name", String.valueOf(listBareMetalServersOptions.name()));
+    }
+    if (listBareMetalServersOptions.reservationId() != null) {
+      builder.query("reservation.id", String.valueOf(listBareMetalServersOptions.reservationId()));
+    }
+    if (listBareMetalServersOptions.reservationCrn() != null) {
+      builder.query("reservation.crn", String.valueOf(listBareMetalServersOptions.reservationCrn()));
+    }
+    if (listBareMetalServersOptions.reservationName() != null) {
+      builder.query("reservation.name", String.valueOf(listBareMetalServersOptions.reservationName()));
     }
     if (listBareMetalServersOptions.vpcId() != null) {
       builder.query("vpc.id", String.valueOf(listBareMetalServersOptions.vpcId()));
@@ -8108,7 +8134,7 @@ public class Vpc extends BaseService {
    * List accessor bindings for a file share.
    *
    * This request lists accessor bindings for a share. Each accessor binding identifies a resource (possibly in another
-   * account) with access to this file share's data.
+   * account) with access to this file share including its snapshots.
    *
    * The share accessor bindings will be sorted by their `created_at` property values, with newest bindings first.
    *
@@ -8380,6 +8406,196 @@ public class Vpc extends BaseService {
     builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithSerializeNulls().toJson(updateShareMountTargetOptions.shareMountTargetPatch()), "application/merge-patch+json");
     ResponseConverter<ShareMountTarget> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<ShareMountTarget>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * List file share snapshots.
+   *
+   * This request lists snapshots for the specified file share, or across all accessible file shares. A snapshot
+   * preserves the data of a share at the time the snapshot was captured.
+   *
+   * If the file share is a replica, the list will contain snapshots corresponding to snapshots on the source.
+   *
+   * @param listShareSnapshotsOptions the {@link ListShareSnapshotsOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link ShareSnapshotCollection}
+   */
+  public ServiceCall<ShareSnapshotCollection> listShareSnapshots(ListShareSnapshotsOptions listShareSnapshotsOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(listShareSnapshotsOptions,
+      "listShareSnapshotsOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("share_id", listShareSnapshotsOptions.shareId());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/shares/{share_id}/snapshots", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listShareSnapshots");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    if (listShareSnapshotsOptions.backupPolicyPlanId() != null) {
+      builder.query("backup_policy_plan.id", String.valueOf(listShareSnapshotsOptions.backupPolicyPlanId()));
+    }
+    if (listShareSnapshotsOptions.name() != null) {
+      builder.query("name", String.valueOf(listShareSnapshotsOptions.name()));
+    }
+    if (listShareSnapshotsOptions.start() != null) {
+      builder.query("start", String.valueOf(listShareSnapshotsOptions.start()));
+    }
+    if (listShareSnapshotsOptions.limit() != null) {
+      builder.query("limit", String.valueOf(listShareSnapshotsOptions.limit()));
+    }
+    if (listShareSnapshotsOptions.sort() != null) {
+      builder.query("sort", String.valueOf(listShareSnapshotsOptions.sort()));
+    }
+    ResponseConverter<ShareSnapshotCollection> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<ShareSnapshotCollection>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Create a snapshot for a file share.
+   *
+   * This request creates a new share snapshot from a share snapshot prototype object. The prototype object is
+   * structured in the same way as a retrieved share snapshot, and contains the information necessary to create the new
+   * share snapshot.
+   *
+   * The share must have the `access_control_mode` set to `security_group`.
+   *
+   * At present, the snapshot's `resource_group` will be inherited from its share, but may be specifiable in the future.
+   *
+   * The new snapshot will inherit the encryption settings from its share, , and must have a
+   * `replication_role` of `source` or `none`.
+   *
+   * If the share has a `replication_role` of `source`, a corresponding snapshot on the replica share will be created
+   * with a `status` of `pending`. It will remain in
+   * `pending` until the data is synchronized per the replication schedule determined by the replica share's
+   * `replication_cron_spec`.
+   *
+   * @param createShareSnapshotOptions the {@link CreateShareSnapshotOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link ShareSnapshot}
+   */
+  public ServiceCall<ShareSnapshot> createShareSnapshot(CreateShareSnapshotOptions createShareSnapshotOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(createShareSnapshotOptions,
+      "createShareSnapshotOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("share_id", createShareSnapshotOptions.shareId());
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/shares/{share_id}/snapshots", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "createShareSnapshot");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    final JsonObject contentJson = new JsonObject();
+    if (createShareSnapshotOptions.name() != null) {
+      contentJson.addProperty("name", createShareSnapshotOptions.name());
+    }
+    if (createShareSnapshotOptions.userTags() != null) {
+      contentJson.add("user_tags", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createShareSnapshotOptions.userTags()));
+    }
+    builder.bodyJson(contentJson);
+    ResponseConverter<ShareSnapshot> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<ShareSnapshot>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Delete a share snapshot.
+   *
+   * This request deletes a share snapshot. This operation cannot be reversed. For this request to succeed, the share
+   * must have a `replication_role` of `source` or `none`.
+   *
+   * If the request is accepted, the share snapshot `lifecycle_state` will be set to
+   * `deleting`. Once deletion processing completes, the share snapshot will no longer be retrievable.
+   *
+   * Deleting a share snapshot will not affect any previously-accepted requests to create a share from it.
+   *
+   * If the share has a `replication_role` of `source`, the corresponding snapshot on the replica share will be
+   * subsequently moved to a `lifecycle_state` of `deleting`. If the data for the corresponding snapshot has already
+   * been synchronized via the replication schedule determined by `replication_cron_spec`, the snapshot will remain
+   * available in the replica share's `.snapshot` directory until the next replication sync.
+   *
+   * @param deleteShareSnapshotOptions the {@link DeleteShareSnapshotOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link ShareSnapshot}
+   */
+  public ServiceCall<ShareSnapshot> deleteShareSnapshot(DeleteShareSnapshotOptions deleteShareSnapshotOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(deleteShareSnapshotOptions,
+      "deleteShareSnapshotOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("share_id", deleteShareSnapshotOptions.shareId());
+    pathParamsMap.put("id", deleteShareSnapshotOptions.id());
+    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/shares/{share_id}/snapshots/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "deleteShareSnapshot");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<ShareSnapshot> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<ShareSnapshot>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Retrieve a share snapshot.
+   *
+   * This request retrieves a single share snapshot specified by the identifier in the URL.
+   *
+   * @param getShareSnapshotOptions the {@link GetShareSnapshotOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link ShareSnapshot}
+   */
+  public ServiceCall<ShareSnapshot> getShareSnapshot(GetShareSnapshotOptions getShareSnapshotOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(getShareSnapshotOptions,
+      "getShareSnapshotOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("share_id", getShareSnapshotOptions.shareId());
+    pathParamsMap.put("id", getShareSnapshotOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/shares/{share_id}/snapshots/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getShareSnapshot");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<ShareSnapshot> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<ShareSnapshot>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Update a share snapshot.
+   *
+   * This request updates a share snapshot with the information provided in a share snapshot patch object. The share
+   * snapshot patch object is structured in the same way as a retrieved share snapshot and needs to contain only the
+   * information to be updated.
+   *
+   * @param updateShareSnapshotOptions the {@link UpdateShareSnapshotOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link ShareSnapshot}
+   */
+  public ServiceCall<ShareSnapshot> updateShareSnapshot(UpdateShareSnapshotOptions updateShareSnapshotOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(updateShareSnapshotOptions,
+      "updateShareSnapshotOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("share_id", updateShareSnapshotOptions.shareId());
+    pathParamsMap.put("id", updateShareSnapshotOptions.id());
+    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/shares/{share_id}/snapshots/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "updateShareSnapshot");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    if (updateShareSnapshotOptions.ifMatch() != null) {
+      builder.header("If-Match", updateShareSnapshotOptions.ifMatch());
+    }
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithSerializeNulls().toJson(updateShareSnapshotOptions.shareSnapshotPatch()), "application/merge-patch+json");
+    ResponseConverter<ShareSnapshot> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<ShareSnapshot>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
   }
 

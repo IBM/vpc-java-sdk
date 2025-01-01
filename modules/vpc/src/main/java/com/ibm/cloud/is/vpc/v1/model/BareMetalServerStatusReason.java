@@ -23,12 +23,17 @@ public class BareMetalServerStatusReason extends GenericModel {
 
   /**
    * The status reason code:
+   * - `cannot_reinitialize`: An error occurred while reinitializing bare metal server
    * - `cannot_start`: Failed to start due to an internal error
    * - `cannot_start_capacity`: Insufficient capacity within the selected zone
    * - `cannot_start_compute`: An error occurred while allocating compute resources
    * - `cannot_start_ip_address`: An error occurred while allocating an IP address
    * - `cannot_start_network`: An error occurred while allocating network resources
    * - `cannot_update_firmware`: An error occurred while updating bare metal server firmware
+   * - `cannot_start_reservation_capacity`: Failed to start because the reservation has
+   *   insufficient capacity
+   * - `cannot_start_reservation_expired`: Failed to start because the reservation has
+   *   expired
    *
    * The enumerated values for this property may
    * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
@@ -46,6 +51,10 @@ public class BareMetalServerStatusReason extends GenericModel {
     String CANNOT_START_IP_ADDRESS = "cannot_start_ip_address";
     /** cannot_start_network. */
     String CANNOT_START_NETWORK = "cannot_start_network";
+    /** cannot_start_reservation_capacity. */
+    String CANNOT_START_RESERVATION_CAPACITY = "cannot_start_reservation_capacity";
+    /** cannot_start_reservation_expired. */
+    String CANNOT_START_RESERVATION_EXPIRED = "cannot_start_reservation_expired";
     /** cannot_update_firmware. */
     String CANNOT_UPDATE_FIRMWARE = "cannot_update_firmware";
   }
@@ -61,12 +70,17 @@ public class BareMetalServerStatusReason extends GenericModel {
    * Gets the code.
    *
    * The status reason code:
+   * - `cannot_reinitialize`: An error occurred while reinitializing bare metal server
    * - `cannot_start`: Failed to start due to an internal error
    * - `cannot_start_capacity`: Insufficient capacity within the selected zone
    * - `cannot_start_compute`: An error occurred while allocating compute resources
    * - `cannot_start_ip_address`: An error occurred while allocating an IP address
    * - `cannot_start_network`: An error occurred while allocating network resources
    * - `cannot_update_firmware`: An error occurred while updating bare metal server firmware
+   * - `cannot_start_reservation_capacity`: Failed to start because the reservation has
+   *   insufficient capacity
+   * - `cannot_start_reservation_expired`: Failed to start because the reservation has
+   *   expired
    *
    * The enumerated values for this property may
    * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.

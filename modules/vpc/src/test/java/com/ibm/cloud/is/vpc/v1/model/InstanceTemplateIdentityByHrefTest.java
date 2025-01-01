@@ -32,15 +32,15 @@ public class InstanceTemplateIdentityByHrefTest {
   @Test
   public void testInstanceTemplateIdentityByHref() throws Throwable {
     InstanceTemplateIdentityByHref instanceTemplateIdentityByHrefModel = new InstanceTemplateIdentityByHref.Builder()
-      .href("https://us-south.iaas.cloud.ibm.com/v1/instance/templates/1e09281b-f177-46fb-baf1-bc152b2e391a")
+      .href("https://us-south.iaas.cloud.ibm.com/v1/instance/templates/0717-e6c2c7d8-ad57-4f38-a21c-a86265b6aeb2")
       .build();
-    assertEquals(instanceTemplateIdentityByHrefModel.href(), "https://us-south.iaas.cloud.ibm.com/v1/instance/templates/1e09281b-f177-46fb-baf1-bc152b2e391a");
+    assertEquals(instanceTemplateIdentityByHrefModel.href(), "https://us-south.iaas.cloud.ibm.com/v1/instance/templates/0717-e6c2c7d8-ad57-4f38-a21c-a86265b6aeb2");
 
     String json = TestUtilities.serialize(instanceTemplateIdentityByHrefModel);
 
     InstanceTemplateIdentityByHref instanceTemplateIdentityByHrefModelNew = TestUtilities.deserialize(json, InstanceTemplateIdentityByHref.class);
     assertTrue(instanceTemplateIdentityByHrefModelNew instanceof InstanceTemplateIdentityByHref);
-    assertEquals(instanceTemplateIdentityByHrefModelNew.href(), "https://us-south.iaas.cloud.ibm.com/v1/instance/templates/1e09281b-f177-46fb-baf1-bc152b2e391a");
+    assertEquals(instanceTemplateIdentityByHrefModelNew.href(), "https://us-south.iaas.cloud.ibm.com/v1/instance/templates/0717-e6c2c7d8-ad57-4f38-a21c-a86265b6aeb2");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

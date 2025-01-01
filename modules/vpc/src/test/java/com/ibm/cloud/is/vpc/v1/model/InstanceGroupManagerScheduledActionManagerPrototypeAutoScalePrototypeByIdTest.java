@@ -34,11 +34,11 @@ public class InstanceGroupManagerScheduledActionManagerPrototypeAutoScalePrototy
     InstanceGroupManagerScheduledActionManagerPrototypeAutoScalePrototypeById instanceGroupManagerScheduledActionManagerPrototypeAutoScalePrototypeByIdModel = new InstanceGroupManagerScheduledActionManagerPrototypeAutoScalePrototypeById.Builder()
       .maxMembershipCount(Long.valueOf("10"))
       .minMembershipCount(Long.valueOf("10"))
-      .id("1e09281b-f177-46fb-baf1-bc152b2e391a")
+      .id("r006-bd21f31f-8a05-4451-836d-ab0347e91fea")
       .build();
     assertEquals(instanceGroupManagerScheduledActionManagerPrototypeAutoScalePrototypeByIdModel.maxMembershipCount(), Long.valueOf("10"));
     assertEquals(instanceGroupManagerScheduledActionManagerPrototypeAutoScalePrototypeByIdModel.minMembershipCount(), Long.valueOf("10"));
-    assertEquals(instanceGroupManagerScheduledActionManagerPrototypeAutoScalePrototypeByIdModel.id(), "1e09281b-f177-46fb-baf1-bc152b2e391a");
+    assertEquals(instanceGroupManagerScheduledActionManagerPrototypeAutoScalePrototypeByIdModel.id(), "r006-bd21f31f-8a05-4451-836d-ab0347e91fea");
 
     String json = TestUtilities.serialize(instanceGroupManagerScheduledActionManagerPrototypeAutoScalePrototypeByIdModel);
 
@@ -46,7 +46,7 @@ public class InstanceGroupManagerScheduledActionManagerPrototypeAutoScalePrototy
     assertTrue(instanceGroupManagerScheduledActionManagerPrototypeAutoScalePrototypeByIdModelNew instanceof InstanceGroupManagerScheduledActionManagerPrototypeAutoScalePrototypeById);
     assertEquals(instanceGroupManagerScheduledActionManagerPrototypeAutoScalePrototypeByIdModelNew.maxMembershipCount(), Long.valueOf("10"));
     assertEquals(instanceGroupManagerScheduledActionManagerPrototypeAutoScalePrototypeByIdModelNew.minMembershipCount(), Long.valueOf("10"));
-    assertEquals(instanceGroupManagerScheduledActionManagerPrototypeAutoScalePrototypeByIdModelNew.id(), "1e09281b-f177-46fb-baf1-bc152b2e391a");
+    assertEquals(instanceGroupManagerScheduledActionManagerPrototypeAutoScalePrototypeByIdModelNew.id(), "r006-bd21f31f-8a05-4451-836d-ab0347e91fea");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

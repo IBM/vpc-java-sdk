@@ -37,7 +37,7 @@ public class ListFloatingIpsOptionsTest {
       .resourceGroupId("testString")
       .sort("name")
       .targetId("testString")
-      .targetCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::load-balancer:dd754295-e9e0-4c9d-bf6c-58fbc59e5727")
+      .targetCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::load-balancer:r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727")
       .targetName("my-resource")
       .targetResourceType("testString")
       .build();
@@ -46,7 +46,7 @@ public class ListFloatingIpsOptionsTest {
     assertEquals(listFloatingIpsOptionsModel.resourceGroupId(), "testString");
     assertEquals(listFloatingIpsOptionsModel.sort(), "name");
     assertEquals(listFloatingIpsOptionsModel.targetId(), "testString");
-    assertEquals(listFloatingIpsOptionsModel.targetCrn(), "crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::load-balancer:dd754295-e9e0-4c9d-bf6c-58fbc59e5727");
+    assertEquals(listFloatingIpsOptionsModel.targetCrn(), "crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::load-balancer:r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727");
     assertEquals(listFloatingIpsOptionsModel.targetName(), "my-resource");
     assertEquals(listFloatingIpsOptionsModel.targetResourceType(), "testString");
   }

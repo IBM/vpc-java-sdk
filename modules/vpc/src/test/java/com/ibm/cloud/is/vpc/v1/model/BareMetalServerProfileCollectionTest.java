@@ -28,6 +28,7 @@ import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileMemoryFixed;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileNetworkAttachmentCountRange;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileNetworkInterfaceCountRange;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileOSArchitecture;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileReservationTerms;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileSupportedTrustedPlatformModuleModes;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileVirtualNetworkInterfacesSupported;
 import com.ibm.cloud.is.vpc.v1.model.PageLink;

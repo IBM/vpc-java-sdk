@@ -37,7 +37,7 @@ public class ListSubnetReservedIpsOptionsTest {
       .limit(Long.valueOf("50"))
       .sort("name")
       .targetId("testString")
-      .targetCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::load-balancer:dd754295-e9e0-4c9d-bf6c-58fbc59e5727")
+      .targetCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::load-balancer:r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727")
       .targetName("my-resource")
       .targetResourceType("testString")
       .build();
@@ -46,7 +46,7 @@ public class ListSubnetReservedIpsOptionsTest {
     assertEquals(listSubnetReservedIpsOptionsModel.limit(), Long.valueOf("50"));
     assertEquals(listSubnetReservedIpsOptionsModel.sort(), "name");
     assertEquals(listSubnetReservedIpsOptionsModel.targetId(), "testString");
-    assertEquals(listSubnetReservedIpsOptionsModel.targetCrn(), "crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::load-balancer:dd754295-e9e0-4c9d-bf6c-58fbc59e5727");
+    assertEquals(listSubnetReservedIpsOptionsModel.targetCrn(), "crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::load-balancer:r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727");
     assertEquals(listSubnetReservedIpsOptionsModel.targetName(), "my-resource");
     assertEquals(listSubnetReservedIpsOptionsModel.targetResourceType(), "testString");
   }

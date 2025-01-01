@@ -44,20 +44,6 @@ public class NetworkACLRulePatch extends GenericModel {
     String OUTBOUND = "outbound";
   }
 
-  /**
-   * The network protocol.
-   */
-  public interface Protocol {
-    /** all. */
-    String ALL = "all";
-    /** icmp. */
-    String ICMP = "icmp";
-    /** tcp. */
-    String TCP = "tcp";
-    /** udp. */
-    String UDP = "udp";
-  }
-
   protected String action;
   protected NetworkACLRuleBeforePatch before;
   protected Long code;
@@ -68,7 +54,6 @@ public class NetworkACLRulePatch extends GenericModel {
   protected Long destinationPortMin;
   protected String direction;
   protected String name;
-  protected String protocol;
   protected String source;
   @SerializedName("source_port_max")
   protected Long sourcePortMax;
@@ -88,7 +73,6 @@ public class NetworkACLRulePatch extends GenericModel {
     private Long destinationPortMin;
     private String direction;
     private String name;
-    private String protocol;
     private String source;
     private Long sourcePortMax;
     private Long sourcePortMin;
@@ -108,7 +92,6 @@ public class NetworkACLRulePatch extends GenericModel {
       this.destinationPortMin = networkAclRulePatch.destinationPortMin;
       this.direction = networkAclRulePatch.direction;
       this.name = networkAclRulePatch.name;
-      this.protocol = networkAclRulePatch.protocol;
       this.source = networkAclRulePatch.source;
       this.sourcePortMax = networkAclRulePatch.sourcePortMax;
       this.sourcePortMin = networkAclRulePatch.sourcePortMin;
@@ -219,17 +202,6 @@ public class NetworkACLRulePatch extends GenericModel {
     }
 
     /**
-     * Set the protocol.
-     *
-     * @param protocol the protocol
-     * @return the NetworkACLRulePatch builder
-     */
-    public Builder protocol(String protocol) {
-      this.protocol = protocol;
-      return this;
-    }
-
-    /**
      * Set the source.
      *
      * @param source the source
@@ -285,7 +257,6 @@ public class NetworkACLRulePatch extends GenericModel {
     destinationPortMin = builder.destinationPortMin;
     direction = builder.direction;
     name = builder.name;
-    protocol = builder.protocol;
     source = builder.source;
     sourcePortMax = builder.sourcePortMax;
     sourcePortMin = builder.sourcePortMin;
@@ -391,17 +362,6 @@ public class NetworkACLRulePatch extends GenericModel {
    */
   public String name() {
     return name;
-  }
-
-  /**
-   * Gets the protocol.
-   *
-   * The network protocol.
-   *
-   * @return the protocol
-   */
-  public String protocol() {
-    return protocol;
   }
 
   /**

@@ -23,6 +23,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  * Classes which extend this class:
  * - BackupPolicyJobSourceVolumeReference
  * - BackupPolicyJobSourceInstanceReference
+ * - BackupPolicyJobSourceShareReference
  */
 public class BackupPolicyJobSource extends GenericModel {
 

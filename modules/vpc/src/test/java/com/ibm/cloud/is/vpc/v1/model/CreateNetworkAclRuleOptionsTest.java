@@ -34,9 +34,9 @@ public class CreateNetworkAclRuleOptionsTest {
   @Test
   public void testCreateNetworkAclRuleOptions() throws Throwable {
     NetworkACLRuleBeforePrototypeNetworkACLRuleIdentityById networkAclRuleBeforePrototypeModel = new NetworkACLRuleBeforePrototypeNetworkACLRuleIdentityById.Builder()
-      .id("8daca77a-4980-4d33-8f3e-7038797be8f9")
+      .id("r006-8daca77a-4980-4d33-8f3e-7038797be8f9")
       .build();
-    assertEquals(networkAclRuleBeforePrototypeModel.id(), "8daca77a-4980-4d33-8f3e-7038797be8f9");
+    assertEquals(networkAclRuleBeforePrototypeModel.id(), "r006-8daca77a-4980-4d33-8f3e-7038797be8f9");
 
     NetworkACLRulePrototypeNetworkACLRuleProtocolTCPUDPPrototype networkAclRulePrototypeModel = new NetworkACLRulePrototypeNetworkACLRuleProtocolTCPUDPPrototype.Builder()
       .action("allow")
@@ -44,7 +44,7 @@ public class CreateNetworkAclRuleOptionsTest {
       .destination("192.168.3.2/32")
       .direction("inbound")
       .ipVersion("ipv4")
-      .name("my-rule-2")
+      .name("my-network-acl-rule")
       .source("192.168.3.2/32")
       .destinationPortMax(Long.valueOf("22"))
       .destinationPortMin(Long.valueOf("22"))
@@ -57,7 +57,7 @@ public class CreateNetworkAclRuleOptionsTest {
     assertEquals(networkAclRulePrototypeModel.destination(), "192.168.3.2/32");
     assertEquals(networkAclRulePrototypeModel.direction(), "inbound");
     assertEquals(networkAclRulePrototypeModel.ipVersion(), "ipv4");
-    assertEquals(networkAclRulePrototypeModel.name(), "my-rule-2");
+    assertEquals(networkAclRulePrototypeModel.name(), "my-network-acl-rule");
     assertEquals(networkAclRulePrototypeModel.source(), "192.168.3.2/32");
     assertEquals(networkAclRulePrototypeModel.destinationPortMax(), Long.valueOf("22"));
     assertEquals(networkAclRulePrototypeModel.destinationPortMin(), Long.valueOf("22"));

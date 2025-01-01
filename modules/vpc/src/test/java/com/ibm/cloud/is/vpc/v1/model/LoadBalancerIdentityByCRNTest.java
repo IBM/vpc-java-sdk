@@ -32,15 +32,15 @@ public class LoadBalancerIdentityByCRNTest {
   @Test
   public void testLoadBalancerIdentityByCRN() throws Throwable {
     LoadBalancerIdentityByCRN loadBalancerIdentityByCrnModel = new LoadBalancerIdentityByCRN.Builder()
-      .crn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::load-balancer:dd754295-e9e0-4c9d-bf6c-58fbc59e5727")
+      .crn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::load-balancer:r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727")
       .build();
-    assertEquals(loadBalancerIdentityByCrnModel.crn(), "crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::load-balancer:dd754295-e9e0-4c9d-bf6c-58fbc59e5727");
+    assertEquals(loadBalancerIdentityByCrnModel.crn(), "crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::load-balancer:r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727");
 
     String json = TestUtilities.serialize(loadBalancerIdentityByCrnModel);
 
     LoadBalancerIdentityByCRN loadBalancerIdentityByCrnModelNew = TestUtilities.deserialize(json, LoadBalancerIdentityByCRN.class);
     assertTrue(loadBalancerIdentityByCrnModelNew instanceof LoadBalancerIdentityByCRN);
-    assertEquals(loadBalancerIdentityByCrnModelNew.crn(), "crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::load-balancer:dd754295-e9e0-4c9d-bf6c-58fbc59e5727");
+    assertEquals(loadBalancerIdentityByCrnModelNew.crn(), "crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::load-balancer:r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

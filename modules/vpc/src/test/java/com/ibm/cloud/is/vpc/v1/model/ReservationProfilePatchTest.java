@@ -33,16 +33,16 @@ public class ReservationProfilePatchTest {
   public void testReservationProfilePatch() throws Throwable {
     ReservationProfilePatch reservationProfilePatchModel = new ReservationProfilePatch.Builder()
       .name("bx2-4x16")
-      .resourceType("instance_profile")
+      .resourceType("bare_metal_server_profile")
       .build();
     assertEquals(reservationProfilePatchModel.name(), "bx2-4x16");
-    assertEquals(reservationProfilePatchModel.resourceType(), "instance_profile");
+    assertEquals(reservationProfilePatchModel.resourceType(), "bare_metal_server_profile");
 
     String json = TestUtilities.serialize(reservationProfilePatchModel);
 
     ReservationProfilePatch reservationProfilePatchModelNew = TestUtilities.deserialize(json, ReservationProfilePatch.class);
     assertTrue(reservationProfilePatchModelNew instanceof ReservationProfilePatch);
     assertEquals(reservationProfilePatchModelNew.name(), "bx2-4x16");
-    assertEquals(reservationProfilePatchModelNew.resourceType(), "instance_profile");
+    assertEquals(reservationProfilePatchModelNew.resourceType(), "bare_metal_server_profile");
   }
 }

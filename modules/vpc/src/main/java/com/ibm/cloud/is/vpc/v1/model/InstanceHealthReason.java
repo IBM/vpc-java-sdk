@@ -29,7 +29,8 @@ public class InstanceHealthReason extends GenericModel {
    * - `reservation_expired`: The reservation affinity pool has an expired reservation.
    * - `reservation_failed`: The reservation affinity pool has a failed reservation.
    *
-   * The enumerated values for this property may
+   * See [health status reasons](https://cloud.ibm.com/docs/vpc?topic=vpc-server-health-status-reasons) for details. The
+   * enumerated values for this property may
    * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface Code {
@@ -60,7 +61,8 @@ public class InstanceHealthReason extends GenericModel {
    * - `reservation_expired`: The reservation affinity pool has an expired reservation.
    * - `reservation_failed`: The reservation affinity pool has a failed reservation.
    *
-   * The enumerated values for this property may
+   * See [health status reasons](https://cloud.ibm.com/docs/vpc?topic=vpc-server-health-status-reasons) for details. The
+   * enumerated values for this property may
    * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the code

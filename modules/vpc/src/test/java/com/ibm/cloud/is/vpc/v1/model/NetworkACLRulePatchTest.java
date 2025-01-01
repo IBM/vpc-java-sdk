@@ -34,9 +34,9 @@ public class NetworkACLRulePatchTest {
   @Test
   public void testNetworkACLRulePatch() throws Throwable {
     NetworkACLRuleBeforePatchNetworkACLRuleIdentityById networkAclRuleBeforePatchModel = new NetworkACLRuleBeforePatchNetworkACLRuleIdentityById.Builder()
-      .id("8daca77a-4980-4d33-8f3e-7038797be8f9")
+      .id("r006-8daca77a-4980-4d33-8f3e-7038797be8f9")
       .build();
-    assertEquals(networkAclRuleBeforePatchModel.id(), "8daca77a-4980-4d33-8f3e-7038797be8f9");
+    assertEquals(networkAclRuleBeforePatchModel.id(), "r006-8daca77a-4980-4d33-8f3e-7038797be8f9");
 
     NetworkACLRulePatch networkAclRulePatchModel = new NetworkACLRulePatch.Builder()
       .action("allow")
@@ -46,8 +46,7 @@ public class NetworkACLRulePatchTest {
       .destinationPortMax(Long.valueOf("22"))
       .destinationPortMin(Long.valueOf("22"))
       .direction("inbound")
-      .name("my-rule-1")
-      .protocol("tcp")
+      .name("my-network-acl-rule")
       .source("192.168.3.2/32")
       .sourcePortMax(Long.valueOf("65535"))
       .sourcePortMin(Long.valueOf("49152"))
@@ -60,8 +59,7 @@ public class NetworkACLRulePatchTest {
     assertEquals(networkAclRulePatchModel.destinationPortMax(), Long.valueOf("22"));
     assertEquals(networkAclRulePatchModel.destinationPortMin(), Long.valueOf("22"));
     assertEquals(networkAclRulePatchModel.direction(), "inbound");
-    assertEquals(networkAclRulePatchModel.name(), "my-rule-1");
-    assertEquals(networkAclRulePatchModel.protocol(), "tcp");
+    assertEquals(networkAclRulePatchModel.name(), "my-network-acl-rule");
     assertEquals(networkAclRulePatchModel.source(), "192.168.3.2/32");
     assertEquals(networkAclRulePatchModel.sourcePortMax(), Long.valueOf("65535"));
     assertEquals(networkAclRulePatchModel.sourcePortMin(), Long.valueOf("49152"));
@@ -78,8 +76,7 @@ public class NetworkACLRulePatchTest {
     assertEquals(networkAclRulePatchModelNew.destinationPortMax(), Long.valueOf("22"));
     assertEquals(networkAclRulePatchModelNew.destinationPortMin(), Long.valueOf("22"));
     assertEquals(networkAclRulePatchModelNew.direction(), "inbound");
-    assertEquals(networkAclRulePatchModelNew.name(), "my-rule-1");
-    assertEquals(networkAclRulePatchModelNew.protocol(), "tcp");
+    assertEquals(networkAclRulePatchModelNew.name(), "my-network-acl-rule");
     assertEquals(networkAclRulePatchModelNew.source(), "192.168.3.2/32");
     assertEquals(networkAclRulePatchModelNew.sourcePortMax(), Long.valueOf("65535"));
     assertEquals(networkAclRulePatchModelNew.sourcePortMin(), Long.valueOf("49152"));
@@ -88,7 +85,7 @@ public class NetworkACLRulePatchTest {
   @Test
   public void testNetworkACLRulePatchAsPatch() throws Throwable {
     NetworkACLRuleBeforePatchNetworkACLRuleIdentityById networkAclRuleBeforePatchModel = new NetworkACLRuleBeforePatchNetworkACLRuleIdentityById.Builder()
-      .id("8daca77a-4980-4d33-8f3e-7038797be8f9")
+      .id("r006-8daca77a-4980-4d33-8f3e-7038797be8f9")
       .build();
 
     NetworkACLRulePatch networkAclRulePatchModel = new NetworkACLRulePatch.Builder()
@@ -99,8 +96,7 @@ public class NetworkACLRulePatchTest {
       .destinationPortMax(Long.valueOf("22"))
       .destinationPortMin(Long.valueOf("22"))
       .direction("inbound")
-      .name("my-rule-1")
-      .protocol("tcp")
+      .name("my-network-acl-rule")
       .source("192.168.3.2/32")
       .sourcePortMax(Long.valueOf("65535"))
       .sourcePortMin(Long.valueOf("49152"))
@@ -116,8 +112,7 @@ public class NetworkACLRulePatchTest {
     assertTrue(mergePatch.containsKey("destination_port_max"));
     assertTrue(mergePatch.containsKey("destination_port_min"));
     assertEquals(mergePatch.get("direction"), "inbound");
-    assertEquals(mergePatch.get("name"), "my-rule-1");
-    assertEquals(mergePatch.get("protocol"), "tcp");
+    assertEquals(mergePatch.get("name"), "my-network-acl-rule");
     assertEquals(mergePatch.get("source"), "192.168.3.2/32");
     assertTrue(mergePatch.containsKey("source_port_max"));
     assertTrue(mergePatch.containsKey("source_port_min"));

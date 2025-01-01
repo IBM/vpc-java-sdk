@@ -32,15 +32,15 @@ public class SubnetPublicGatewayPatchPublicGatewayIdentityByIdTest {
   @Test
   public void testSubnetPublicGatewayPatchPublicGatewayIdentityById() throws Throwable {
     SubnetPublicGatewayPatchPublicGatewayIdentityById subnetPublicGatewayPatchPublicGatewayIdentityByIdModel = new SubnetPublicGatewayPatchPublicGatewayIdentityById.Builder()
-      .id("dc5431ef-1fc6-4861-adc9-a59d077d1241")
+      .id("r006-dc5431ef-1fc6-4861-adc9-a59d077d1241")
       .build();
-    assertEquals(subnetPublicGatewayPatchPublicGatewayIdentityByIdModel.id(), "dc5431ef-1fc6-4861-adc9-a59d077d1241");
+    assertEquals(subnetPublicGatewayPatchPublicGatewayIdentityByIdModel.id(), "r006-dc5431ef-1fc6-4861-adc9-a59d077d1241");
 
     String json = TestUtilities.serialize(subnetPublicGatewayPatchPublicGatewayIdentityByIdModel);
 
     SubnetPublicGatewayPatchPublicGatewayIdentityById subnetPublicGatewayPatchPublicGatewayIdentityByIdModelNew = TestUtilities.deserialize(json, SubnetPublicGatewayPatchPublicGatewayIdentityById.class);
     assertTrue(subnetPublicGatewayPatchPublicGatewayIdentityByIdModelNew instanceof SubnetPublicGatewayPatchPublicGatewayIdentityById);
-    assertEquals(subnetPublicGatewayPatchPublicGatewayIdentityByIdModelNew.id(), "dc5431ef-1fc6-4861-adc9-a59d077d1241");
+    assertEquals(subnetPublicGatewayPatchPublicGatewayIdentityByIdModelNew.id(), "r006-dc5431ef-1fc6-4861-adc9-a59d077d1241");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

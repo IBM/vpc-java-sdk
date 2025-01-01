@@ -19,9 +19,6 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 /**
  * The accessor for this share accessor binding.
  *
- * The resources supported by this property may
- * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
- *
  * Classes which extend this class:
  * - ShareAccessorBindingAccessorShareReference
  * - ShareAccessorBindingAccessorWatsonxMachineLearningReference

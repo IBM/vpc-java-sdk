@@ -34,16 +34,16 @@ public class LoadBalancerListenerPolicyPatchTest {
   @Test
   public void testLoadBalancerListenerPolicyPatch() throws Throwable {
     LoadBalancerListenerPolicyTargetPatchLoadBalancerPoolIdentityLoadBalancerPoolIdentityLoadBalancerPoolIdentityById loadBalancerListenerPolicyTargetPatchModel = new LoadBalancerListenerPolicyTargetPatchLoadBalancerPoolIdentityLoadBalancerPoolIdentityLoadBalancerPoolIdentityById.Builder()
-      .id("70294e14-4e61-11e8-bcf4-0242ac110004")
+      .id("r006-70294e14-4e61-11e8-bcf4-0242ac110004")
       .build();
-    assertEquals(loadBalancerListenerPolicyTargetPatchModel.id(), "70294e14-4e61-11e8-bcf4-0242ac110004");
+    assertEquals(loadBalancerListenerPolicyTargetPatchModel.id(), "r006-70294e14-4e61-11e8-bcf4-0242ac110004");
 
     LoadBalancerListenerPolicyPatch loadBalancerListenerPolicyPatchModel = new LoadBalancerListenerPolicyPatch.Builder()
-      .name("my-policy")
+      .name("my-load-balancer-listener-policy")
       .priority(Long.valueOf("5"))
       .target(loadBalancerListenerPolicyTargetPatchModel)
       .build();
-    assertEquals(loadBalancerListenerPolicyPatchModel.name(), "my-policy");
+    assertEquals(loadBalancerListenerPolicyPatchModel.name(), "my-load-balancer-listener-policy");
     assertEquals(loadBalancerListenerPolicyPatchModel.priority(), Long.valueOf("5"));
     assertEquals(loadBalancerListenerPolicyPatchModel.target(), loadBalancerListenerPolicyTargetPatchModel);
 
@@ -51,25 +51,25 @@ public class LoadBalancerListenerPolicyPatchTest {
 
     LoadBalancerListenerPolicyPatch loadBalancerListenerPolicyPatchModelNew = TestUtilities.deserialize(json, LoadBalancerListenerPolicyPatch.class);
     assertTrue(loadBalancerListenerPolicyPatchModelNew instanceof LoadBalancerListenerPolicyPatch);
-    assertEquals(loadBalancerListenerPolicyPatchModelNew.name(), "my-policy");
+    assertEquals(loadBalancerListenerPolicyPatchModelNew.name(), "my-load-balancer-listener-policy");
     assertEquals(loadBalancerListenerPolicyPatchModelNew.priority(), Long.valueOf("5"));
     assertEquals(loadBalancerListenerPolicyPatchModelNew.target().toString(), loadBalancerListenerPolicyTargetPatchModel.toString());
   }
   @Test
   public void testLoadBalancerListenerPolicyPatchAsPatch() throws Throwable {
     LoadBalancerListenerPolicyTargetPatchLoadBalancerPoolIdentityLoadBalancerPoolIdentityLoadBalancerPoolIdentityById loadBalancerListenerPolicyTargetPatchModel = new LoadBalancerListenerPolicyTargetPatchLoadBalancerPoolIdentityLoadBalancerPoolIdentityLoadBalancerPoolIdentityById.Builder()
-      .id("70294e14-4e61-11e8-bcf4-0242ac110004")
+      .id("r006-70294e14-4e61-11e8-bcf4-0242ac110004")
       .build();
 
     LoadBalancerListenerPolicyPatch loadBalancerListenerPolicyPatchModel = new LoadBalancerListenerPolicyPatch.Builder()
-      .name("my-policy")
+      .name("my-load-balancer-listener-policy")
       .priority(Long.valueOf("5"))
       .target(loadBalancerListenerPolicyTargetPatchModel)
       .build();
 
     Map<String, Object> mergePatch = loadBalancerListenerPolicyPatchModel.asPatch();
 
-    assertEquals(mergePatch.get("name"), "my-policy");
+    assertEquals(mergePatch.get("name"), "my-load-balancer-listener-policy");
     assertTrue(mergePatch.containsKey("priority"));
     assertTrue(mergePatch.containsKey("target"));
   }

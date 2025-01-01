@@ -34,11 +34,11 @@ public class InstanceGroupManagerScheduledActionManagerPrototypeAutoScalePrototy
     InstanceGroupManagerScheduledActionManagerPrototypeAutoScalePrototypeByHref instanceGroupManagerScheduledActionManagerPrototypeAutoScalePrototypeByHrefModel = new InstanceGroupManagerScheduledActionManagerPrototypeAutoScalePrototypeByHref.Builder()
       .maxMembershipCount(Long.valueOf("10"))
       .minMembershipCount(Long.valueOf("10"))
-      .href("https://us-south.iaas.cloud.ibm.com/v1/instance_groups/1e09281b-f177-46fb-baf1-bc152b2e391a/managers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727")
+      .href("https://us-south.iaas.cloud.ibm.com/v1/instance_groups/r006-7b3ac170-01f3-43d6-87ec-f0ed11ed3f60/managers/r006-bd21f31f-8a05-4451-836d-ab0347e91fea")
       .build();
     assertEquals(instanceGroupManagerScheduledActionManagerPrototypeAutoScalePrototypeByHrefModel.maxMembershipCount(), Long.valueOf("10"));
     assertEquals(instanceGroupManagerScheduledActionManagerPrototypeAutoScalePrototypeByHrefModel.minMembershipCount(), Long.valueOf("10"));
-    assertEquals(instanceGroupManagerScheduledActionManagerPrototypeAutoScalePrototypeByHrefModel.href(), "https://us-south.iaas.cloud.ibm.com/v1/instance_groups/1e09281b-f177-46fb-baf1-bc152b2e391a/managers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727");
+    assertEquals(instanceGroupManagerScheduledActionManagerPrototypeAutoScalePrototypeByHrefModel.href(), "https://us-south.iaas.cloud.ibm.com/v1/instance_groups/r006-7b3ac170-01f3-43d6-87ec-f0ed11ed3f60/managers/r006-bd21f31f-8a05-4451-836d-ab0347e91fea");
 
     String json = TestUtilities.serialize(instanceGroupManagerScheduledActionManagerPrototypeAutoScalePrototypeByHrefModel);
 
@@ -46,7 +46,7 @@ public class InstanceGroupManagerScheduledActionManagerPrototypeAutoScalePrototy
     assertTrue(instanceGroupManagerScheduledActionManagerPrototypeAutoScalePrototypeByHrefModelNew instanceof InstanceGroupManagerScheduledActionManagerPrototypeAutoScalePrototypeByHref);
     assertEquals(instanceGroupManagerScheduledActionManagerPrototypeAutoScalePrototypeByHrefModelNew.maxMembershipCount(), Long.valueOf("10"));
     assertEquals(instanceGroupManagerScheduledActionManagerPrototypeAutoScalePrototypeByHrefModelNew.minMembershipCount(), Long.valueOf("10"));
-    assertEquals(instanceGroupManagerScheduledActionManagerPrototypeAutoScalePrototypeByHrefModelNew.href(), "https://us-south.iaas.cloud.ibm.com/v1/instance_groups/1e09281b-f177-46fb-baf1-bc152b2e391a/managers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727");
+    assertEquals(instanceGroupManagerScheduledActionManagerPrototypeAutoScalePrototypeByHrefModelNew.href(), "https://us-south.iaas.cloud.ibm.com/v1/instance_groups/r006-7b3ac170-01f3-43d6-87ec-f0ed11ed3f60/managers/r006-bd21f31f-8a05-4451-836d-ab0347e91fea");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

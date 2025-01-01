@@ -41,9 +41,9 @@ public class SubnetPatchTest {
     assertEquals(networkAclIdentityModel.id(), "a4e28308-8ee7-46ab-8108-9f881f22bdbf");
 
     SubnetPublicGatewayPatchPublicGatewayIdentityById subnetPublicGatewayPatchModel = new SubnetPublicGatewayPatchPublicGatewayIdentityById.Builder()
-      .id("dc5431ef-1fc6-4861-adc9-a59d077d1241")
+      .id("r006-dc5431ef-1fc6-4861-adc9-a59d077d1241")
       .build();
-    assertEquals(subnetPublicGatewayPatchModel.id(), "dc5431ef-1fc6-4861-adc9-a59d077d1241");
+    assertEquals(subnetPublicGatewayPatchModel.id(), "r006-dc5431ef-1fc6-4861-adc9-a59d077d1241");
 
     RoutingTableIdentityById routingTableIdentityModel = new RoutingTableIdentityById.Builder()
       .id("6885e83f-03b2-4603-8a86-db2a0f55c840")
@@ -77,7 +77,7 @@ public class SubnetPatchTest {
       .build();
 
     SubnetPublicGatewayPatchPublicGatewayIdentityById subnetPublicGatewayPatchModel = new SubnetPublicGatewayPatchPublicGatewayIdentityById.Builder()
-      .id("dc5431ef-1fc6-4861-adc9-a59d077d1241")
+      .id("r006-dc5431ef-1fc6-4861-adc9-a59d077d1241")
       .build();
 
     RoutingTableIdentityById routingTableIdentityModel = new RoutingTableIdentityById.Builder()

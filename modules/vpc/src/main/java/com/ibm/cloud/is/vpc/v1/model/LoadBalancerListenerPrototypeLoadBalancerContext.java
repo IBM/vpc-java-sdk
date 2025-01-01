@@ -291,7 +291,7 @@ public class LoadBalancerListenerPrototypeLoadBalancerContext extends GenericMod
    *
    * The concurrent connection limit for the listener. If reached, incoming connections may be queued or rejected.
    *
-   * This property will be present for load balancers in the `application` family.
+   * Supported for load balancers in the `application` family.
    *
    * @return the connectionLimit
    */

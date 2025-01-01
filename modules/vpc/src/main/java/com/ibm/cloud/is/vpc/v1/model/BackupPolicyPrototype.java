@@ -24,6 +24,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  * Classes which extend this class:
  * - BackupPolicyPrototypeBackupPolicyMatchResourceTypeVolumePrototype
  * - BackupPolicyPrototypeBackupPolicyMatchResourceTypeInstancePrototype
+ * - BackupPolicyPrototypeBackupPolicyMatchResourceTypeSharePrototype
  */
 public class BackupPolicyPrototype extends GenericModel {
 
@@ -34,6 +35,8 @@ public class BackupPolicyPrototype extends GenericModel {
   public interface MatchResourceType {
     /** instance. */
     String INSTANCE = "instance";
+    /** share. */
+    String SHARE = "share";
     /** volume. */
     String VOLUME = "volume";
   }

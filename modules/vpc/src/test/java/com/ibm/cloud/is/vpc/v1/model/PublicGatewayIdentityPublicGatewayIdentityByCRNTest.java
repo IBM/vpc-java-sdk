@@ -32,15 +32,15 @@ public class PublicGatewayIdentityPublicGatewayIdentityByCRNTest {
   @Test
   public void testPublicGatewayIdentityPublicGatewayIdentityByCRN() throws Throwable {
     PublicGatewayIdentityPublicGatewayIdentityByCRN publicGatewayIdentityPublicGatewayIdentityByCrnModel = new PublicGatewayIdentityPublicGatewayIdentityByCRN.Builder()
-      .crn("crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::public-gateway:dc5431ef-1fc6-4861-adc9-a59d077d1241")
+      .crn("crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::public-gateway:r006-dc5431ef-1fc6-4861-adc9-a59d077d1241")
       .build();
-    assertEquals(publicGatewayIdentityPublicGatewayIdentityByCrnModel.crn(), "crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::public-gateway:dc5431ef-1fc6-4861-adc9-a59d077d1241");
+    assertEquals(publicGatewayIdentityPublicGatewayIdentityByCrnModel.crn(), "crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::public-gateway:r006-dc5431ef-1fc6-4861-adc9-a59d077d1241");
 
     String json = TestUtilities.serialize(publicGatewayIdentityPublicGatewayIdentityByCrnModel);
 
     PublicGatewayIdentityPublicGatewayIdentityByCRN publicGatewayIdentityPublicGatewayIdentityByCrnModelNew = TestUtilities.deserialize(json, PublicGatewayIdentityPublicGatewayIdentityByCRN.class);
     assertTrue(publicGatewayIdentityPublicGatewayIdentityByCrnModelNew instanceof PublicGatewayIdentityPublicGatewayIdentityByCRN);
-    assertEquals(publicGatewayIdentityPublicGatewayIdentityByCrnModelNew.crn(), "crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::public-gateway:dc5431ef-1fc6-4861-adc9-a59d077d1241");
+    assertEquals(publicGatewayIdentityPublicGatewayIdentityByCrnModelNew.crn(), "crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::public-gateway:r006-dc5431ef-1fc6-4861-adc9-a59d077d1241");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

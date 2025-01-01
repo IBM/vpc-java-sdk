@@ -34,9 +34,9 @@ public class PrivatePathServiceGatewayPatchTest {
   @Test
   public void testPrivatePathServiceGatewayPatch() throws Throwable {
     LoadBalancerIdentityById loadBalancerIdentityModel = new LoadBalancerIdentityById.Builder()
-      .id("dd754295-e9e0-4c9d-bf6c-58fbc59e5727")
+      .id("r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727")
       .build();
-    assertEquals(loadBalancerIdentityModel.id(), "dd754295-e9e0-4c9d-bf6c-58fbc59e5727");
+    assertEquals(loadBalancerIdentityModel.id(), "r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727");
 
     PrivatePathServiceGatewayPatch privatePathServiceGatewayPatchModel = new PrivatePathServiceGatewayPatch.Builder()
       .defaultAccessPolicy("deny")
@@ -61,7 +61,7 @@ public class PrivatePathServiceGatewayPatchTest {
   @Test
   public void testPrivatePathServiceGatewayPatchAsPatch() throws Throwable {
     LoadBalancerIdentityById loadBalancerIdentityModel = new LoadBalancerIdentityById.Builder()
-      .id("dd754295-e9e0-4c9d-bf6c-58fbc59e5727")
+      .id("r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727")
       .build();
 
     PrivatePathServiceGatewayPatch privatePathServiceGatewayPatchModel = new PrivatePathServiceGatewayPatch.Builder()

@@ -32,15 +32,15 @@ public class SubnetPublicGatewayPatchPublicGatewayIdentityByHrefTest {
   @Test
   public void testSubnetPublicGatewayPatchPublicGatewayIdentityByHref() throws Throwable {
     SubnetPublicGatewayPatchPublicGatewayIdentityByHref subnetPublicGatewayPatchPublicGatewayIdentityByHrefModel = new SubnetPublicGatewayPatchPublicGatewayIdentityByHref.Builder()
-      .href("https://us-south.iaas.cloud.ibm.com/v1/public_gateways/dc5431ef-1fc6-4861-adc9-a59d077d1241")
+      .href("https://us-south.iaas.cloud.ibm.com/v1/public_gateways/r006-dc5431ef-1fc6-4861-adc9-a59d077d1241")
       .build();
-    assertEquals(subnetPublicGatewayPatchPublicGatewayIdentityByHrefModel.href(), "https://us-south.iaas.cloud.ibm.com/v1/public_gateways/dc5431ef-1fc6-4861-adc9-a59d077d1241");
+    assertEquals(subnetPublicGatewayPatchPublicGatewayIdentityByHrefModel.href(), "https://us-south.iaas.cloud.ibm.com/v1/public_gateways/r006-dc5431ef-1fc6-4861-adc9-a59d077d1241");
 
     String json = TestUtilities.serialize(subnetPublicGatewayPatchPublicGatewayIdentityByHrefModel);
 
     SubnetPublicGatewayPatchPublicGatewayIdentityByHref subnetPublicGatewayPatchPublicGatewayIdentityByHrefModelNew = TestUtilities.deserialize(json, SubnetPublicGatewayPatchPublicGatewayIdentityByHref.class);
     assertTrue(subnetPublicGatewayPatchPublicGatewayIdentityByHrefModelNew instanceof SubnetPublicGatewayPatchPublicGatewayIdentityByHref);
-    assertEquals(subnetPublicGatewayPatchPublicGatewayIdentityByHrefModelNew.href(), "https://us-south.iaas.cloud.ibm.com/v1/public_gateways/dc5431ef-1fc6-4861-adc9-a59d077d1241");
+    assertEquals(subnetPublicGatewayPatchPublicGatewayIdentityByHrefModelNew.href(), "https://us-south.iaas.cloud.ibm.com/v1/public_gateways/r006-dc5431ef-1fc6-4861-adc9-a59d077d1241");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

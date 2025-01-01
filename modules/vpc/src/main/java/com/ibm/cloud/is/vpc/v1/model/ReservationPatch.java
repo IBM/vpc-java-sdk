@@ -24,6 +24,22 @@ import com.ibm.cloud.sdk.core.util.GsonSingleton;
  */
 public class ReservationPatch extends GenericModel {
 
+  /**
+   * The affinity policy to use for this reservation:
+   * - `automatic`: The reservation will be automatically selected
+   * - `restricted`: The reservation must be manually requested
+   *
+   * The affinity policy can only be changed for a reservation with a `status` of `inactive`.
+   */
+  public interface AffinityPolicy {
+    /** automatic. */
+    String AUTOMATIC = "automatic";
+    /** restricted. */
+    String RESTRICTED = "restricted";
+  }
+
+  @SerializedName("affinity_policy")
+  protected String affinityPolicy;
   protected ReservationCapacityPatch capacity;
   @SerializedName("committed_use")
   protected ReservationCommittedUsePatch committedUse;
@@ -34,6 +50,7 @@ public class ReservationPatch extends GenericModel {
    * Builder.
    */
   public static class Builder {
+    private String affinityPolicy;
     private ReservationCapacityPatch capacity;
     private ReservationCommittedUsePatch committedUse;
     private String name;
@@ -45,6 +62,7 @@ public class ReservationPatch extends GenericModel {
      * @param reservationPatch the instance to initialize the Builder with
      */
     private Builder(ReservationPatch reservationPatch) {
+      this.affinityPolicy = reservationPatch.affinityPolicy;
       this.capacity = reservationPatch.capacity;
       this.committedUse = reservationPatch.committedUse;
       this.name = reservationPatch.name;
@@ -64,6 +82,17 @@ public class ReservationPatch extends GenericModel {
      */
     public ReservationPatch build() {
       return new ReservationPatch(this);
+    }
+
+    /**
+     * Set the affinityPolicy.
+     *
+     * @param affinityPolicy the affinityPolicy
+     * @return the ReservationPatch builder
+     */
+    public Builder affinityPolicy(String affinityPolicy) {
+      this.affinityPolicy = affinityPolicy;
+      return this;
     }
 
     /**
@@ -114,6 +143,7 @@ public class ReservationPatch extends GenericModel {
   protected ReservationPatch() { }
 
   protected ReservationPatch(Builder builder) {
+    affinityPolicy = builder.affinityPolicy;
     capacity = builder.capacity;
     committedUse = builder.committedUse;
     name = builder.name;
@@ -127,6 +157,21 @@ public class ReservationPatch extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
+  }
+
+  /**
+   * Gets the affinityPolicy.
+   *
+   * The affinity policy to use for this reservation:
+   * - `automatic`: The reservation will be automatically selected
+   * - `restricted`: The reservation must be manually requested
+   *
+   * The affinity policy can only be changed for a reservation with a `status` of `inactive`.
+   *
+   * @return the affinityPolicy
+   */
+  public String affinityPolicy() {
+    return affinityPolicy;
   }
 
   /**
@@ -167,8 +212,10 @@ public class ReservationPatch extends GenericModel {
   /**
    * Gets the profile.
    *
-   * The [profile](https://cloud.ibm.com/docs/vpc?topic=vpc-profiles) to use for this
-   * reservation.
+   * The [instance profile](https://cloud.ibm.com/docs/vpc?topic=vpc-profiles) or
+   * [bare metal server
+   * profile](https://cloud.ibm.com/docs/vpc?topic=vpc-bare-metal-servers-profile)
+   * to use for this reservation.
    *
    * @return the profile
    */

@@ -145,10 +145,8 @@ public class LoadBalancerPoolMemberPrototype extends GenericModel {
   /**
    * Gets the target.
    *
-   * The pool member target. Load balancers in the `network` family support virtual server
-   * instances. Load balancers in the `application` family support IP addresses. If the load
-   * balancer has route mode enabled, the member must be in a zone the load balancer has a
-   * subnet in.
+   * The pool member target. If the load balancer has route mode enabled, the member must be
+   * in a zone the load balancer has a subnet in.
    *
    * @return the target
    */

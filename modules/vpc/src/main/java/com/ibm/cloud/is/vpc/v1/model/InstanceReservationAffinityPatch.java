@@ -25,12 +25,17 @@ public class InstanceReservationAffinityPatch extends GenericModel {
 
   /**
    * The reservation affinity policy to use for this virtual server instance:
+   * - `automatic`: Any reservations with an `affinity_policy` of `automatic`
+   *   that have the same `profile` and `zone` as this virtual server instance
+   *   are available for use.
    * - `disabled`: Reservations will not be used
    * - `manual`: Reservations in `pool` will be available for use
    *
    * The policy must be `disabled` if `placement_target` is set.
    */
   public interface Policy {
+    /** automatic. */
+    String AUTOMATIC = "automatic";
     /** disabled. */
     String DISABLED = "disabled";
     /** manual. */
@@ -132,6 +137,9 @@ public class InstanceReservationAffinityPatch extends GenericModel {
    * Gets the policy.
    *
    * The reservation affinity policy to use for this virtual server instance:
+   * - `automatic`: Any reservations with an `affinity_policy` of `automatic`
+   *   that have the same `profile` and `zone` as this virtual server instance
+   *   are available for use.
    * - `disabled`: Reservations will not be used
    * - `manual`: Reservations in `pool` will be available for use
    *
@@ -149,10 +157,11 @@ public class InstanceReservationAffinityPatch extends GenericModel {
    * The pool of reservations available for use by this virtual server instance, replacing the existing pool of
    * reservations.
    *
-   * Specified reservations must have a `status` of `active`, and have the same
-   * `profile` and `zone` as this virtual server instance.
+   * Specified reservations must have a `status` of `active`, and have the same `profile` and `zone` as this virtual
+   * server instance.
    *
-   * If `policy` is `manual`, `pool` must have one reservation. If `policy` is `disabled`, `pool` must be empty.
+   * If `policy` is `manual`, `pool` must have one reservation. If `policy` is `disabled` or `automatic`, `pool` must be
+   * empty. If `policy` is `manual`, the `pool` must contain a reservation with available capacity.
    *
    * @return the pool
    */

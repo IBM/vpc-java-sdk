@@ -50,10 +50,10 @@ public class CreateReservationOptionsTest {
 
     ReservationProfilePrototype reservationProfilePrototypeModel = new ReservationProfilePrototype.Builder()
       .name("bx2-4x16")
-      .resourceType("instance_profile")
+      .resourceType("bare_metal_server_profile")
       .build();
     assertEquals(reservationProfilePrototypeModel.name(), "bx2-4x16");
-    assertEquals(reservationProfilePrototypeModel.resourceType(), "instance_profile");
+    assertEquals(reservationProfilePrototypeModel.resourceType(), "bare_metal_server_profile");
 
     ZoneIdentityByName zoneIdentityModel = new ZoneIdentityByName.Builder()
       .name("us-south-1")
@@ -70,7 +70,7 @@ public class CreateReservationOptionsTest {
       .committedUse(reservationCommittedUsePrototypeModel)
       .profile(reservationProfilePrototypeModel)
       .zone(zoneIdentityModel)
-      .affinityPolicy("restricted")
+      .affinityPolicy("automatic")
       .name("my-reservation")
       .resourceGroup(resourceGroupIdentityModel)
       .build();
@@ -78,7 +78,7 @@ public class CreateReservationOptionsTest {
     assertEquals(createReservationOptionsModel.committedUse(), reservationCommittedUsePrototypeModel);
     assertEquals(createReservationOptionsModel.profile(), reservationProfilePrototypeModel);
     assertEquals(createReservationOptionsModel.zone(), zoneIdentityModel);
-    assertEquals(createReservationOptionsModel.affinityPolicy(), "restricted");
+    assertEquals(createReservationOptionsModel.affinityPolicy(), "automatic");
     assertEquals(createReservationOptionsModel.name(), "my-reservation");
     assertEquals(createReservationOptionsModel.resourceGroup(), resourceGroupIdentityModel);
   }

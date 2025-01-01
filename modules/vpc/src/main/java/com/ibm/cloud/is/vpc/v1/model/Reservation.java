@@ -26,12 +26,15 @@ public class Reservation extends GenericModel {
 
   /**
    * The affinity policy to use for this reservation:
+   * - `automatic`: The reservation will be automatically selected
    * - `restricted`: The reservation must be manually requested
    *
    * The enumerated values for this property may
    * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface AffinityPolicy {
+    /** automatic. */
+    String AUTOMATIC = "automatic";
     /** restricted. */
     String RESTRICTED = "restricted";
   }
@@ -114,6 +117,7 @@ public class Reservation extends GenericModel {
    * Gets the affinityPolicy.
    *
    * The affinity policy to use for this reservation:
+   * - `automatic`: The reservation will be automatically selected
    * - `restricted`: The reservation must be manually requested
    *
    * The enumerated values for this property may
@@ -220,7 +224,10 @@ public class Reservation extends GenericModel {
   /**
    * Gets the profile.
    *
-   * The [profile](https://cloud.ibm.com/docs/vpc?topic=vpc-profiles) for this reservation.
+   * The [instance profile](https://cloud.ibm.com/docs/vpc?topic=vpc-profiles) or
+   * [bare metal server
+   * profile](https://cloud.ibm.com/docs/vpc?topic=vpc-bare-metal-servers-profile)
+   * for this reservation.
    *
    * @return the profile
    */

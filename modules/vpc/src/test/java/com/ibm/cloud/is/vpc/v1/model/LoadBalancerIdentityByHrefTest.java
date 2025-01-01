@@ -32,15 +32,15 @@ public class LoadBalancerIdentityByHrefTest {
   @Test
   public void testLoadBalancerIdentityByHref() throws Throwable {
     LoadBalancerIdentityByHref loadBalancerIdentityByHrefModel = new LoadBalancerIdentityByHref.Builder()
-      .href("https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727")
+      .href("https://us-south.iaas.cloud.ibm.com/v1/load_balancers/r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727")
       .build();
-    assertEquals(loadBalancerIdentityByHrefModel.href(), "https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727");
+    assertEquals(loadBalancerIdentityByHrefModel.href(), "https://us-south.iaas.cloud.ibm.com/v1/load_balancers/r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727");
 
     String json = TestUtilities.serialize(loadBalancerIdentityByHrefModel);
 
     LoadBalancerIdentityByHref loadBalancerIdentityByHrefModelNew = TestUtilities.deserialize(json, LoadBalancerIdentityByHref.class);
     assertTrue(loadBalancerIdentityByHrefModelNew instanceof LoadBalancerIdentityByHref);
-    assertEquals(loadBalancerIdentityByHrefModelNew.href(), "https://us-south.iaas.cloud.ibm.com/v1/load_balancers/dd754295-e9e0-4c9d-bf6c-58fbc59e5727");
+    assertEquals(loadBalancerIdentityByHrefModelNew.href(), "https://us-south.iaas.cloud.ibm.com/v1/load_balancers/r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

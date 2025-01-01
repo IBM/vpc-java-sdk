@@ -36,7 +36,7 @@ public class NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolTCPUD
       .destination("192.168.3.2/32")
       .direction("inbound")
       .ipVersion("ipv4")
-      .name("my-rule-2")
+      .name("my-network-acl-rule")
       .source("192.168.3.2/32")
       .destinationPortMax(Long.valueOf("22"))
       .destinationPortMin(Long.valueOf("22"))
@@ -48,7 +48,7 @@ public class NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolTCPUD
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolTcpudpPrototypeModel.destination(), "192.168.3.2/32");
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolTcpudpPrototypeModel.direction(), "inbound");
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolTcpudpPrototypeModel.ipVersion(), "ipv4");
-    assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolTcpudpPrototypeModel.name(), "my-rule-2");
+    assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolTcpudpPrototypeModel.name(), "my-network-acl-rule");
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolTcpudpPrototypeModel.source(), "192.168.3.2/32");
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolTcpudpPrototypeModel.destinationPortMax(), Long.valueOf("22"));
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolTcpudpPrototypeModel.destinationPortMin(), Long.valueOf("22"));
@@ -64,7 +64,7 @@ public class NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolTCPUD
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolTcpudpPrototypeModelNew.destination(), "192.168.3.2/32");
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolTcpudpPrototypeModelNew.direction(), "inbound");
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolTcpudpPrototypeModelNew.ipVersion(), "ipv4");
-    assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolTcpudpPrototypeModelNew.name(), "my-rule-2");
+    assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolTcpudpPrototypeModelNew.name(), "my-network-acl-rule");
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolTcpudpPrototypeModelNew.source(), "192.168.3.2/32");
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolTcpudpPrototypeModelNew.destinationPortMax(), Long.valueOf("22"));
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolTcpudpPrototypeModelNew.destinationPortMin(), Long.valueOf("22"));

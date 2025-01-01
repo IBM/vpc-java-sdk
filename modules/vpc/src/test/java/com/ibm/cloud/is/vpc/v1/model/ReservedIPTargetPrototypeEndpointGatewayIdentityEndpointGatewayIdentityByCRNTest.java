@@ -32,15 +32,15 @@ public class ReservedIPTargetPrototypeEndpointGatewayIdentityEndpointGatewayIden
   @Test
   public void testReservedIPTargetPrototypeEndpointGatewayIdentityEndpointGatewayIdentityByCRN() throws Throwable {
     ReservedIPTargetPrototypeEndpointGatewayIdentityEndpointGatewayIdentityByCRN reservedIpTargetPrototypeEndpointGatewayIdentityEndpointGatewayIdentityByCrnModel = new ReservedIPTargetPrototypeEndpointGatewayIdentityEndpointGatewayIdentityByCRN.Builder()
-      .crn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::endpoint-gateway:r134-d7cc5196-9864-48c4-82d8-3f30da41fcc5")
+      .crn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::endpoint-gateway:r006-7610ebfb-f5dc-4d42-bc18-287d47f7a5b0")
       .build();
-    assertEquals(reservedIpTargetPrototypeEndpointGatewayIdentityEndpointGatewayIdentityByCrnModel.crn(), "crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::endpoint-gateway:r134-d7cc5196-9864-48c4-82d8-3f30da41fcc5");
+    assertEquals(reservedIpTargetPrototypeEndpointGatewayIdentityEndpointGatewayIdentityByCrnModel.crn(), "crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::endpoint-gateway:r006-7610ebfb-f5dc-4d42-bc18-287d47f7a5b0");
 
     String json = TestUtilities.serialize(reservedIpTargetPrototypeEndpointGatewayIdentityEndpointGatewayIdentityByCrnModel);
 
     ReservedIPTargetPrototypeEndpointGatewayIdentityEndpointGatewayIdentityByCRN reservedIpTargetPrototypeEndpointGatewayIdentityEndpointGatewayIdentityByCrnModelNew = TestUtilities.deserialize(json, ReservedIPTargetPrototypeEndpointGatewayIdentityEndpointGatewayIdentityByCRN.class);
     assertTrue(reservedIpTargetPrototypeEndpointGatewayIdentityEndpointGatewayIdentityByCrnModelNew instanceof ReservedIPTargetPrototypeEndpointGatewayIdentityEndpointGatewayIdentityByCRN);
-    assertEquals(reservedIpTargetPrototypeEndpointGatewayIdentityEndpointGatewayIdentityByCrnModelNew.crn(), "crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::endpoint-gateway:r134-d7cc5196-9864-48c4-82d8-3f30da41fcc5");
+    assertEquals(reservedIpTargetPrototypeEndpointGatewayIdentityEndpointGatewayIdentityByCrnModelNew.crn(), "crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::endpoint-gateway:r006-7610ebfb-f5dc-4d42-bc18-287d47f7a5b0");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

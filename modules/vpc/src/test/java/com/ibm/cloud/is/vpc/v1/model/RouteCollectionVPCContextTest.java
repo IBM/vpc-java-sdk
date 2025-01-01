@@ -13,9 +13,11 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.ibm.cloud.is.vpc.v1.model.Deleted;
 import com.ibm.cloud.is.vpc.v1.model.PageLink;
 import com.ibm.cloud.is.vpc.v1.model.Route;
 import com.ibm.cloud.is.vpc.v1.model.RouteCollectionVPCContext;
+import com.ibm.cloud.is.vpc.v1.model.RouteCreatorVPNGatewayReference;
 import com.ibm.cloud.is.vpc.v1.model.RouteNextHopIP;
 import com.ibm.cloud.is.vpc.v1.model.ZoneReference;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;

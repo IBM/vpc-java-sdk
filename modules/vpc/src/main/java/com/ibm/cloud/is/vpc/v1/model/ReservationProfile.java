@@ -17,7 +17,13 @@ import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * The [profile](https://cloud.ibm.com/docs/vpc?topic=vpc-profiles) for this reservation.
+ * The [instance profile](https://cloud.ibm.com/docs/vpc?topic=vpc-profiles) or
+ * [bare metal server profile](https://cloud.ibm.com/docs/vpc?topic=vpc-bare-metal-servers-profile) for this
+ * reservation.
+ *
+ * Classes which extend this class:
+ * - ReservationProfileInstanceProfileReference
+ * - ReservationProfileBareMetalServerProfileReference
  */
 public class ReservationProfile extends GenericModel {
 

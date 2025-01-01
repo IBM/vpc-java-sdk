@@ -18,13 +18,16 @@ import com.ibm.cloud.is.vpc.v1.model.BareMetalServerBootTargetBareMetalServerDis
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerCPU;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerDisk;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerFirmware;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerHealthReason;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerLifecycleReason;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkAttachmentReference;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileReference;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerReservationAffinity;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerStatusReason;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerTrustedPlatformModule;
 import com.ibm.cloud.is.vpc.v1.model.Deleted;
 import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceBareMetalServerContextReference;
+import com.ibm.cloud.is.vpc.v1.model.ReservationReference;
 import com.ibm.cloud.is.vpc.v1.model.ReservedIPReference;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.SubnetReference;
@@ -58,6 +61,8 @@ public class BareMetalServerTest {
     assertNull(bareMetalServerModel.getDisks());
     assertNull(bareMetalServerModel.isEnableSecureBoot());
     assertNull(bareMetalServerModel.getFirmware());
+    assertNull(bareMetalServerModel.getHealthReasons());
+    assertNull(bareMetalServerModel.getHealthState());
     assertNull(bareMetalServerModel.getHref());
     assertNull(bareMetalServerModel.getId());
     assertNull(bareMetalServerModel.getLifecycleReasons());
@@ -69,6 +74,8 @@ public class BareMetalServerTest {
     assertNull(bareMetalServerModel.getPrimaryNetworkAttachment());
     assertNull(bareMetalServerModel.getPrimaryNetworkInterface());
     assertNull(bareMetalServerModel.getProfile());
+    assertNull(bareMetalServerModel.getReservation());
+    assertNull(bareMetalServerModel.getReservationAffinity());
     assertNull(bareMetalServerModel.getResourceGroup());
     assertNull(bareMetalServerModel.getResourceType());
     assertNull(bareMetalServerModel.getStatus());

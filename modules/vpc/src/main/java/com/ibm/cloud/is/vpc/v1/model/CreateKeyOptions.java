@@ -148,11 +148,13 @@ public class CreateKeyOptions extends GenericModel {
   /**
    * Gets the publicKey.
    *
-   * A unique public SSH key to import, in OpenSSH format (consisting of three space-separated fields: the algorithm
-   * name, base64-encoded key, and a comment). The algorithm and comment fields may be omitted, as only the key field is
-   * imported.
+   * The public SSH key to use, in OpenSSH format (consisting of three space-separated fields: the algorithm name,
+   * base64-encoded key value, and a comment). The algorithm and comment fields may be omitted, as only the key field is
+   * used.
    *
-   * Keys of type `rsa` may be 2048 or 4096 bits in length, however 4096 is recommended. Keys of type `ed25519` are 256
+   * The key field must not match another key in the region.
+   *
+   * Keys of type `rsa` must be 2048 or 4096 bits in length (4096 is recommended). Keys of type `ed25519` must be 256
    * bits in length.
    *
    * @return the publicKey

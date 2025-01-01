@@ -44,9 +44,9 @@ public class CreateSubnetOptionsTest {
     assertEquals(networkAclIdentityModel.id(), "a4e28308-8ee7-46ab-8108-9f881f22bdbf");
 
     PublicGatewayIdentityPublicGatewayIdentityById publicGatewayIdentityModel = new PublicGatewayIdentityPublicGatewayIdentityById.Builder()
-      .id("dc5431ef-1fc6-4861-adc9-a59d077d1241")
+      .id("r006-dc5431ef-1fc6-4861-adc9-a59d077d1241")
       .build();
-    assertEquals(publicGatewayIdentityModel.id(), "dc5431ef-1fc6-4861-adc9-a59d077d1241");
+    assertEquals(publicGatewayIdentityModel.id(), "r006-dc5431ef-1fc6-4861-adc9-a59d077d1241");
 
     ResourceGroupIdentityById resourceGroupIdentityModel = new ResourceGroupIdentityById.Builder()
       .id("fee82deba12e4c0fb69c3b09d1f12345")

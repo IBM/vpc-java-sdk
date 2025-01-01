@@ -31,6 +31,7 @@ public class BareMetalServerPrototypeBareMetalServerByNetworkAttachment extends 
     private BareMetalServerInitializationPrototype initialization;
     private String name;
     private BareMetalServerProfileIdentity profile;
+    private BareMetalServerReservationAffinityPrototype reservationAffinity;
     private ResourceGroupIdentity resourceGroup;
     private BareMetalServerTrustedPlatformModulePrototype trustedPlatformModule;
     private VPCIdentity vpc;
@@ -49,6 +50,7 @@ public class BareMetalServerPrototypeBareMetalServerByNetworkAttachment extends 
       this.initialization = bareMetalServerPrototypeBareMetalServerByNetworkAttachment.initialization;
       this.name = bareMetalServerPrototypeBareMetalServerByNetworkAttachment.name;
       this.profile = bareMetalServerPrototypeBareMetalServerByNetworkAttachment.profile;
+      this.reservationAffinity = bareMetalServerPrototypeBareMetalServerByNetworkAttachment.reservationAffinity;
       this.resourceGroup = bareMetalServerPrototypeBareMetalServerByNetworkAttachment.resourceGroup;
       this.trustedPlatformModule = bareMetalServerPrototypeBareMetalServerByNetworkAttachment.trustedPlatformModule;
       this.vpc = bareMetalServerPrototypeBareMetalServerByNetworkAttachment.vpc;
@@ -159,6 +161,17 @@ public class BareMetalServerPrototypeBareMetalServerByNetworkAttachment extends 
     }
 
     /**
+     * Set the reservationAffinity.
+     *
+     * @param reservationAffinity the reservationAffinity
+     * @return the BareMetalServerPrototypeBareMetalServerByNetworkAttachment builder
+     */
+    public Builder reservationAffinity(BareMetalServerReservationAffinityPrototype reservationAffinity) {
+      this.reservationAffinity = reservationAffinity;
+      return this;
+    }
+
+    /**
      * Set the resourceGroup.
      *
      * @param resourceGroup the resourceGroup
@@ -242,6 +255,7 @@ public class BareMetalServerPrototypeBareMetalServerByNetworkAttachment extends 
     initialization = builder.initialization;
     name = builder.name;
     profile = builder.profile;
+    reservationAffinity = builder.reservationAffinity;
     resourceGroup = builder.resourceGroup;
     trustedPlatformModule = builder.trustedPlatformModule;
     vpc = builder.vpc;

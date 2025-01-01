@@ -20,6 +20,18 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class ListInstancesOptions extends GenericModel {
 
+  /**
+   * Filters the collection to instances with a `reservation_affinity.policy` property matching the specified value.
+   */
+  public interface ReservationAffinityPolicy {
+    /** automatic. */
+    String AUTOMATIC = "automatic";
+    /** disabled. */
+    String DISABLED = "disabled";
+    /** manual. */
+    String MANUAL = "manual";
+  }
+
   protected String start;
   protected Long limit;
   protected String resourceGroupId;
@@ -33,6 +45,7 @@ public class ListInstancesOptions extends GenericModel {
   protected String placementGroupId;
   protected String placementGroupCrn;
   protected String placementGroupName;
+  protected String reservationAffinityPolicy;
   protected String reservationId;
   protected String reservationCrn;
   protected String reservationName;
@@ -57,6 +70,7 @@ public class ListInstancesOptions extends GenericModel {
     private String placementGroupId;
     private String placementGroupCrn;
     private String placementGroupName;
+    private String reservationAffinityPolicy;
     private String reservationId;
     private String reservationCrn;
     private String reservationName;
@@ -83,6 +97,7 @@ public class ListInstancesOptions extends GenericModel {
       this.placementGroupId = listInstancesOptions.placementGroupId;
       this.placementGroupCrn = listInstancesOptions.placementGroupCrn;
       this.placementGroupName = listInstancesOptions.placementGroupName;
+      this.reservationAffinityPolicy = listInstancesOptions.reservationAffinityPolicy;
       this.reservationId = listInstancesOptions.reservationId;
       this.reservationCrn = listInstancesOptions.reservationCrn;
       this.reservationName = listInstancesOptions.reservationName;
@@ -250,6 +265,17 @@ public class ListInstancesOptions extends GenericModel {
     }
 
     /**
+     * Set the reservationAffinityPolicy.
+     *
+     * @param reservationAffinityPolicy the reservationAffinityPolicy
+     * @return the ListInstancesOptions builder
+     */
+    public Builder reservationAffinityPolicy(String reservationAffinityPolicy) {
+      this.reservationAffinityPolicy = reservationAffinityPolicy;
+      return this;
+    }
+
+    /**
      * Set the reservationId.
      *
      * @param reservationId the reservationId
@@ -332,6 +358,7 @@ public class ListInstancesOptions extends GenericModel {
     placementGroupId = builder.placementGroupId;
     placementGroupCrn = builder.placementGroupCrn;
     placementGroupName = builder.placementGroupName;
+    reservationAffinityPolicy = builder.reservationAffinityPolicy;
     reservationId = builder.reservationId;
     reservationCrn = builder.reservationCrn;
     reservationName = builder.reservationName;
@@ -493,6 +520,17 @@ public class ListInstancesOptions extends GenericModel {
    */
   public String placementGroupName() {
     return placementGroupName;
+  }
+
+  /**
+   * Gets the reservationAffinityPolicy.
+   *
+   * Filters the collection to instances with a `reservation_affinity.policy` property matching the specified value.
+   *
+   * @return the reservationAffinityPolicy
+   */
+  public String reservationAffinityPolicy() {
+    return reservationAffinityPolicy;
   }
 
   /**

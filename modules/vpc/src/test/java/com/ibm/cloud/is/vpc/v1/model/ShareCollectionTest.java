@@ -31,6 +31,7 @@ import com.ibm.cloud.is.vpc.v1.model.ShareProfileReference;
 import com.ibm.cloud.is.vpc.v1.model.ShareReference;
 import com.ibm.cloud.is.vpc.v1.model.ShareRemote;
 import com.ibm.cloud.is.vpc.v1.model.ShareReplicationStatusReason;
+import com.ibm.cloud.is.vpc.v1.model.ShareSourceSnapshotShareSnapshotReference;
 import com.ibm.cloud.is.vpc.v1.model.ZoneReference;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;

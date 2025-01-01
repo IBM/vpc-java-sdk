@@ -33,25 +33,25 @@ public class ImageExportJobPatchTest {
   @Test
   public void testImageExportJobPatch() throws Throwable {
     ImageExportJobPatch imageExportJobPatchModel = new ImageExportJobPatch.Builder()
-      .name("my-image-export")
+      .name("my-image-export-job")
       .build();
-    assertEquals(imageExportJobPatchModel.name(), "my-image-export");
+    assertEquals(imageExportJobPatchModel.name(), "my-image-export-job");
 
     String json = TestUtilities.serialize(imageExportJobPatchModel);
 
     ImageExportJobPatch imageExportJobPatchModelNew = TestUtilities.deserialize(json, ImageExportJobPatch.class);
     assertTrue(imageExportJobPatchModelNew instanceof ImageExportJobPatch);
-    assertEquals(imageExportJobPatchModelNew.name(), "my-image-export");
+    assertEquals(imageExportJobPatchModelNew.name(), "my-image-export-job");
   }
   @Test
   public void testImageExportJobPatchAsPatch() throws Throwable {
     ImageExportJobPatch imageExportJobPatchModel = new ImageExportJobPatch.Builder()
-      .name("my-image-export")
+      .name("my-image-export-job")
       .build();
 
     Map<String, Object> mergePatch = imageExportJobPatchModel.asPatch();
 
-    assertEquals(mergePatch.get("name"), "my-image-export");
+    assertEquals(mergePatch.get("name"), "my-image-export-job");
   }
 
 }

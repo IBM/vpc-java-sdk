@@ -32,15 +32,15 @@ public class InstanceTemplateIdentityByCRNTest {
   @Test
   public void testInstanceTemplateIdentityByCRN() throws Throwable {
     InstanceTemplateIdentityByCRN instanceTemplateIdentityByCrnModel = new InstanceTemplateIdentityByCRN.Builder()
-      .crn("crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::instance-template:1e09281b-f177-46fb-baf1-bc152b2e391a")
+      .crn("crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::instance-template:0717-e6c2c7d8-ad57-4f38-a21c-a86265b6aeb2")
       .build();
-    assertEquals(instanceTemplateIdentityByCrnModel.crn(), "crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::instance-template:1e09281b-f177-46fb-baf1-bc152b2e391a");
+    assertEquals(instanceTemplateIdentityByCrnModel.crn(), "crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::instance-template:0717-e6c2c7d8-ad57-4f38-a21c-a86265b6aeb2");
 
     String json = TestUtilities.serialize(instanceTemplateIdentityByCrnModel);
 
     InstanceTemplateIdentityByCRN instanceTemplateIdentityByCrnModelNew = TestUtilities.deserialize(json, InstanceTemplateIdentityByCRN.class);
     assertTrue(instanceTemplateIdentityByCrnModelNew instanceof InstanceTemplateIdentityByCRN);
-    assertEquals(instanceTemplateIdentityByCrnModelNew.crn(), "crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::instance-template:1e09281b-f177-46fb-baf1-bc152b2e391a");
+    assertEquals(instanceTemplateIdentityByCrnModelNew.crn(), "crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::instance-template:0717-e6c2c7d8-ad57-4f38-a21c-a86265b6aeb2");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)
