@@ -1,0 +1,91 @@
+name: CI
+
+on:
+  push:
+    branches: [ master ]
+    tags: [ 'v*' ]
+  pull_request:
+    branches: [ master ]
+
+env:
+  MVN_ARGS: "--settings .github/maven-settings.xml"
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    environment: ci
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Set up JDK 11
+      uses: actions/setup-java@v3
+      with:
+        java-version: '11'
+        distribution: 'temurin'
+        cache: maven
+
+    - name: Set Maven version
+      run: ./build/setMavenVersion.sh
+
+    - name: Build and test
+      run: mvn verify -fae -DskipITs ${{ env.MVN_ARGS }}
+
+  semantic-release:
+    needs: build-test
+    if: github.ref == 'refs/heads/master' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    environment: ci
+    
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'
+
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        pip install bump2version
+        sudo npm install -g npm@latest || sudo npm install -g npm@9
+        sudo npm install -g \
+          @semantic-release/changelog \
+          @semantic-release/exec \
+          @semantic-release/git \
+          @semantic-release/github
+
+    - name: Semantic Release
+      run: npx semantic-release
+
+  publish:
+    needs: build-test
+    if: startsWith(github.ref, 'refs/tags/')
+    runs-on: ubuntu-latest
+    environment: ci
+    
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up JDK 11
+      uses: actions/setup-java@v3
+      with:
+        java-version: '11'
+        distribution: 'temurin'
+        cache: maven
+
+    - name: Set Maven version
+      run: ./build/setMavenVersion.sh
+
+    - name: Publish Javadoc
+      run: |
+        mvn clean javadoc:aggregate ${{ env.MVN_ARGS }}
+        ./build/publishJavadoc.sh
+
+    - name: Setup signing
+      run: ./build/setupSigning.sh
+
+    - name: Publish to Maven Central
+      run: mvn deploy ${{ env.MVN_ARGS }} -DskipTests -P central
