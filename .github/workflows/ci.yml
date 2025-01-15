@@ -62,8 +62,12 @@ jobs:
       run: |
         sudo apt-get update
         pip install bump2version
-        npm install semantic-release @semantic-release/changelog @semantic-release/exec @semantic-release/git @semantic-release/github --save-dev
-        npm install
+        npm install --save-dev \
+          semantic-release@latest \
+          @semantic-release/changelog@latest \
+          @semantic-release/exec@latest \
+          @semantic-release/git@latest \
+          @semantic-release/github@latest
 
     - name: Semantic Release and Publish
       env:
