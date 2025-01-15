@@ -53,16 +53,17 @@ jobs:
       with:
         python-version: '3.x'
 
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 'lts/*'
+
     - name: Install dependencies
       run: |
         sudo apt-get update
         pip install bump2version
-        sudo npm install -g npm@latest || sudo npm install -g npm@9
-        sudo npm install -g \
-          @semantic-release/changelog \
-          @semantic-release/exec \
-          @semantic-release/git \
-          @semantic-release/github
+        npm install semantic-release @semantic-release/changelog @semantic-release/exec @semantic-release/git @semantic-release/github --save-dev
+        npm install
 
     - name: Semantic Release and Publish
       env:
