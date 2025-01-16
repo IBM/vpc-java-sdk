@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"com.ibm.cloud.is.common"},{"l":"com.ibm.cloud.is.vpc.v1"},{"l":"com.ibm.cloud.is.vpc.v1.model"}];updateSearchResults();
