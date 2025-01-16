@@ -90,9 +90,15 @@ jobs:
         npx semantic-release
         if [ $? -eq 0 ]; then
           echo "Semantic release has successfully created a new tagged-release"
-          
-          # Set version again after tag
-          ./build/setMavenVersion.sh
+
+          # Fetch the new tag
+          git fetch --tags
+
+          # Get latest tag
+          TAG=$(git describe --tags `git rev-list --tags --max-count=1`)
+          echo "Latest tag is: $TAG"
+          # Set version using tag directly
+          mvn versions:set -DnewVersion=${TAG} -DgenerateBackupPoms=false
           
           # Now deploy with the release version
           if mvn deploy -X ${{ env.MVN_ARGS }} -DskipTests -P central; then
