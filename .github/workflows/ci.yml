@@ -29,6 +29,9 @@ jobs:
 
     - name: Build and test
       run: mvn verify -fae -DskipITs ${{ env.MVN_ARGS }}
+      
+    - name: Echo success
+      run: echo "Build is successful"
 
   release-and-publish:
     needs: build-test
@@ -61,8 +64,8 @@ jobs:
     - name: Install dependencies
       run: |
         sudo apt-get update
+        npm install -g npm@latest || npm install -g npm@9
         pip install bump2version
-        # Install semantic-release and plugins locally
         npm install --save-dev \
           semantic-release@latest \
           @semantic-release/changelog@latest \
@@ -83,24 +86,26 @@ jobs:
         # Setup GPG first
         ./build/setupSigning.sh
         
-        # Try deployment first - this will fail if there are issues
-        if mvn deploy ${{ env.MVN_ARGS }} -DskipTests -P central; then
-          echo "Maven deployment successful"
+        # Run semantic-release to tag
+        npx semantic-release
+        if [ $? -eq 0 ]; then
+          echo "Semantic release has successfully created a new tagged-release"
           
-          # Run semantic-release only after successful deployment
-          npx semantic-release
-          RELEASE_STATUS=$?
+          # Set version again after tag
+          ./build/setMavenVersion.sh
           
-          if [ $RELEASE_STATUS -eq 0 ]; then
-            echo "Release successful, publishing javadoc..."
+          # Now deploy with the release version
+          if mvn deploy -X ${{ env.MVN_ARGS }} -DskipTests -P central; then
+            echo "Maven artifacts successfully published to Maven Central!"
+            echo "Publishing javadoc..."
             mvn clean javadoc:aggregate ${{ env.MVN_ARGS }}
             ./build/publishJavadoc.sh
-            echo "Publishing completed successfully!"
+            echo "Javadocs successfully published to gh-pages!"
           else
-            echo "Semantic release failed with status: $RELEASE_STATUS"
+            echo "Maven deployment failed"
             exit 1
           fi
         else
-          echo "Maven deployment failed"
+          echo "Semantic release failed"
           exit 1
         fi
