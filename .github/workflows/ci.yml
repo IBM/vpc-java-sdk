@@ -48,6 +48,9 @@ jobs:
         distribution: 'temurin'
         cache: maven
 
+    - name: Set Maven version
+      run: ./build/setMavenVersion.sh
+
     - name: Setup Python
       uses: actions/setup-python@v4
       with:
@@ -84,7 +87,7 @@ jobs:
         ./build/setupSigning.sh
         
         # Try deployment first - this will fail if there are issues
-        if mvn deploy ${{ env.MVN_ARGS }} -DskipTests -P central; then
+        if mvn deploy -X ${{ env.MVN_ARGS }} -DskipTests -P central; then
           echo "Maven deployment successful"
           
           # Run semantic-release only after successful deployment
