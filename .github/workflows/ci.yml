@@ -62,6 +62,7 @@ jobs:
       run: |
         sudo apt-get update
         pip install bump2version
+        # Install semantic-release and plugins locally
         npm install --save-dev \
           semantic-release@latest \
           @semantic-release/changelog@latest \
@@ -69,7 +70,7 @@ jobs:
           @semantic-release/git@latest \
           @semantic-release/github@latest
 
-    - name: Semantic Release and Publish
+    - name: Release and Publish
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         GH_TOKEN: ${{ secrets.GH_TOKEN }}
@@ -77,30 +78,29 @@ jobs:
         OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
         GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
         GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+        GPG_KEYNAME: ${{ secrets.GPG_KEYNAME }}
       run: |
-        # Run semantic-release
-        npx semantic-release
+        # Setup GPG first
+        ./build/setupSigning.sh
         
-        # Store the exit status
-        RELEASE_STATUS=$?
-        echo "Semantic release exit status: $RELEASE_STATUS"
-        
-        # Only publish if semantic-release was successful
-        if [ $RELEASE_STATUS -eq 0 ]; then
-          echo "Semantic release successful, publishing..."
+        # Try deployment first - this will fail if there are issues
+        if mvn deploy ${{ env.MVN_ARGS }} -DskipTests -P central; then
+          echo "Maven deployment successful"
           
-          # Set Maven version
-          ./build/setMavenVersion.sh
+          # Run semantic-release only after successful deployment
+          npx semantic-release
+          RELEASE_STATUS=$?
           
-          # Publish Javadoc
-          mvn clean javadoc:aggregate ${{ env.MVN_ARGS }}
-          ./build/publishJavadoc.sh
-          
-          # Setup signing and publish to Maven Central
-          ./build/setupSigning.sh
-          mvn deploy ${{ env.MVN_ARGS }} -DskipTests -P central
-          
-          echo "Publishing completed successfully!"
+          if [ $RELEASE_STATUS -eq 0 ]; then
+            echo "Release successful, publishing javadoc..."
+            mvn clean javadoc:aggregate ${{ env.MVN_ARGS }}
+            ./build/publishJavadoc.sh
+            echo "Publishing completed successfully!"
+          else
+            echo "Semantic release failed with status: $RELEASE_STATUS"
+            exit 1
+          fi
         else
-          echo "Semantic release did not create a new version, skipping publish"
+          echo "Maven deployment failed"
+          exit 1
         fi
