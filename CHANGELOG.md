@@ -1,3 +1,15 @@
+# [0.23.0](https://github.com/IBM/vpc-java-sdk/compare/0.22.0...0.23.0) (2025-01-16)
+
+
+### Features
+
+* cleaned up unwanted changes ([#65](https://github.com/IBM/vpc-java-sdk/issues/65)) ([d0aa7ed](https://github.com/IBM/vpc-java-sdk/commit/d0aa7ed1534cdf784dc3d16e44c69ac58ec7ef50))
+* **release:** fixed ci.yml ([#62](https://github.com/IBM/vpc-java-sdk/issues/62)) ([de68af4](https://github.com/IBM/vpc-java-sdk/commit/de68af40cbc5543455ae45eebd4875719959d577))
+* **release:** fixed mvn versions issue ([#66](https://github.com/IBM/vpc-java-sdk/issues/66)) ([e71a131](https://github.com/IBM/vpc-java-sdk/commit/e71a1315cdd3d83d073afe0591690746ee7be500))
+* **release:** fixed release maven changes ([#63](https://github.com/IBM/vpc-java-sdk/issues/63)) ([0a3d31e](https://github.com/IBM/vpc-java-sdk/commit/0a3d31ea2c5dd524c339b777f1fa46be4a080f81))
+* **release:** fixed the release, added ci.yml ([#61](https://github.com/IBM/vpc-java-sdk/issues/61)) ([000ebb2](https://github.com/IBM/vpc-java-sdk/commit/000ebb24185e7c4a30595aa5409de6c5a6a190e1))
+* **spec:** updated the sdk as per the api spec released on 2024-12-26 ([#60](https://github.com/IBM/vpc-java-sdk/issues/60)) ([77c9d37](https://github.com/IBM/vpc-java-sdk/commit/77c9d37c7632ee50a09d395f0e5e53ae5e6f4e5e))
+
 # [0.22.0](https://github.com/IBM/vpc-java-sdk/compare/0.21.0...0.22.0) (2024-11-14)
 
 
