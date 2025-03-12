@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022, 2023, 2024.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -478,7 +478,7 @@ import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyRulePatch;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPatch;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPool;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolCollection;
-import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolHealthMonitorPrototype;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolHealthMonitorPrototypeLoadBalancerPoolHealthMonitorTypeHTTPHTTPSPrototype;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolMember;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolMemberCollection;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolMemberPatch;
@@ -6758,7 +6758,7 @@ public class VPCExamples {
     try {
       System.out.println("createLoadBalancerPool() result:");
       // begin-create_load_balancer_pool
-      LoadBalancerPoolHealthMonitorPrototype loadBalancerPoolHealthMonitorPrototypeModel = new LoadBalancerPoolHealthMonitorPrototype.Builder()
+      LoadBalancerPoolHealthMonitorPrototypeLoadBalancerPoolHealthMonitorTypeHTTPHTTPSPrototype loadBalancerPoolHealthMonitorPrototypeModel = new LoadBalancerPoolHealthMonitorPrototypeLoadBalancerPoolHealthMonitorTypeHTTPHTTPSPrototype.Builder()
         .delay(Long.valueOf("5"))
         .maxRetries(Long.valueOf("2"))
         .timeout(Long.valueOf("2"))
@@ -7650,7 +7650,7 @@ public class VPCExamples {
         .ifMatch(ifMatchSnapshotCopy)
         .build();
 
-      Response<Void> responseCopy = vpcService.deleteSnapshot(deleteSnapshotCopyOptions).execute();
+      Response<Snapshot> responseCopy = vpcService.deleteSnapshot(deleteSnapshotCopyOptions).execute();
       System.out.printf("deleteSnapshot() copy response status code: %d%n", responseCopy.getStatusCode());
       // begin-delete_snapshot
       DeleteSnapshotOptions deleteSnapshotOptions = new DeleteSnapshotOptions.Builder()
@@ -7658,7 +7658,7 @@ public class VPCExamples {
         .ifMatch(ifMatchSnapshotCopy)
         .build();
 
-      Response<Void> response = vpcService.deleteSnapshot(deleteSnapshotOptions).execute();
+      Response<Snapshot> response = vpcService.deleteSnapshot(deleteSnapshotOptions).execute();
       // end-delete_snapshot
       System.out.printf("deleteSnapshot() response status code: %d%n", response.getStatusCode());
     } catch (ServiceResponseException e) {

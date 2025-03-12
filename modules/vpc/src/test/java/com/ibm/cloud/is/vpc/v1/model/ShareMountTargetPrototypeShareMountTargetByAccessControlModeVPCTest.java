@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022, 2023, 2024.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -33,9 +33,9 @@ public class ShareMountTargetPrototypeShareMountTargetByAccessControlModeVPCTest
   @Test
   public void testShareMountTargetPrototypeShareMountTargetByAccessControlModeVPC() throws Throwable {
     VPCIdentityById vpcIdentityModel = new VPCIdentityById.Builder()
-      .id("7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
+      .id("r006-4727d842-f94f-4a2d-824a-9bc9b02c523b")
       .build();
-    assertEquals(vpcIdentityModel.id(), "7ec86020-1c6e-4889-b3f0-a15f2e50f87e");
+    assertEquals(vpcIdentityModel.id(), "r006-4727d842-f94f-4a2d-824a-9bc9b02c523b");
 
     ShareMountTargetPrototypeShareMountTargetByAccessControlModeVPC shareMountTargetPrototypeShareMountTargetByAccessControlModeVpcModel = new ShareMountTargetPrototypeShareMountTargetByAccessControlModeVPC.Builder()
       .name("my-share-mount-target")

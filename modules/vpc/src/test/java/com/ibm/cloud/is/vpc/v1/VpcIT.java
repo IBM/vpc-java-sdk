@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022, 2023, 2024.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -1110,9 +1110,19 @@ import com.ibm.cloud.is.vpc.v1.model.LoadBalancerLoggingPrototype;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPatch;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPool;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolCollection;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolFailsafePolicy;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolFailsafePolicyPatch;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolFailsafePolicyPrototype;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolFailsafePolicyTargetPatch;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolFailsafePolicyTargetPatchLoadBalancerPoolIdentityByHref;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolFailsafePolicyTargetPatchLoadBalancerPoolIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolHealthMonitor;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolHealthMonitorPatch;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolHealthMonitorPrototype;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolHealthMonitorPrototypeLoadBalancerPoolHealthMonitorTypeHTTPHTTPSPrototype;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolHealthMonitorPrototypeLoadBalancerPoolHealthMonitorTypeTCPPrototype;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolHealthMonitorTypeHTTPHTTPS;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolHealthMonitorTypeTCP;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolIdentity;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolIdentityByName;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolIdentityLoadBalancerPoolIdentityByHref;
@@ -1132,7 +1142,7 @@ import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolMemberTargetPrototypeInstan
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityByHref;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolPatch;
-import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolPrototype;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolPrototypeLoadBalancerContext;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolReference;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolSessionPersistence;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolSessionPersistencePatch;
@@ -1143,6 +1153,9 @@ import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileAvailability;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileAvailabilityDependent;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileAvailabilityFixed;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileCollection;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileFailsafePolicyActions;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileFailsafePolicyActionsDependent;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileFailsafePolicyActionsEnum;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileIdentity;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileIdentityByHref;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileIdentityByName;
@@ -1811,6 +1824,7 @@ import com.ibm.cloud.is.vpc.v1.model.VolumeProfileIdentity;
 import com.ibm.cloud.is.vpc.v1.model.VolumeProfileIdentityByHref;
 import com.ibm.cloud.is.vpc.v1.model.VolumeProfileIdentityByName;
 import com.ibm.cloud.is.vpc.v1.model.VolumeProfileReference;
+import com.ibm.cloud.is.vpc.v1.model.VolumeProfileStorageGenerationFixed;
 import com.ibm.cloud.is.vpc.v1.model.VolumeProfilesPager;
 import com.ibm.cloud.is.vpc.v1.model.VolumePrototype;
 import com.ibm.cloud.is.vpc.v1.model.VolumePrototypeInstanceByImageContext;
@@ -4016,7 +4030,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       KeyIdentityById keyIdentityModel = new KeyIdentityById.Builder()
-        .id("363f6d70-0000-0001-0000-00000013b96c")
+        .id("r006-82679077-ac3b-4c10-be16-63e9c21f0f45")
         .build();
 
       InstanceMetadataServicePrototype instanceMetadataServicePrototypeModel = new InstanceMetadataServicePrototype.Builder()
@@ -4030,7 +4044,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       InstanceProfileIdentityByName instanceProfileIdentityModel = new InstanceProfileIdentityByName.Builder()
-        .name("bx2-2x8")
+        .name("bx2-4x16")
         .build();
 
       ReservationIdentityById reservationIdentityModel = new ReservationIdentityById.Builder()
@@ -4057,7 +4071,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       VPCIdentityById vpcIdentityModel = new VPCIdentityById.Builder()
-        .id("dc201ab2-8536-4904-86a8-084d84582133")
+        .id("r006-4727d842-f94f-4a2d-824a-9bc9b02c523b")
         .build();
 
       EncryptionKeyIdentityByCRN encryptionKeyIdentityModel = new EncryptionKeyIdentityByCRN.Builder()
@@ -4072,7 +4086,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .capacity(Long.valueOf("100"))
         .encryptionKey(encryptionKeyIdentityModel)
         .iops(Long.valueOf("10000"))
-        .name("my-volume")
+        .name("my-boot-volume")
         .profile(volumeProfileIdentityModel)
         .resourceGroup(resourceGroupIdentityModel)
         .userTags(java.util.Arrays.asList())
@@ -4085,14 +4099,20 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       ImageIdentityById imageIdentityModel = new ImageIdentityById.Builder()
-        .id("3f9a2d96-830e-4100-9b4c-663225a3f872")
+        .id("r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8")
         .build();
 
       ZoneIdentityByName zoneIdentityModel = new ZoneIdentityByName.Builder()
         .name("us-south-1")
         .build();
 
-      NetworkInterfaceIPPrototypeReservedIPPrototypeNetworkInterfaceContext networkInterfaceIpPrototypeModel = new NetworkInterfaceIPPrototypeReservedIPPrototypeNetworkInterfaceContext.Builder()
+      VirtualNetworkInterfaceIPPrototypeReservedIPPrototypeVirtualNetworkInterfaceIPsContext virtualNetworkInterfaceIpPrototypeModel = new VirtualNetworkInterfaceIPPrototypeReservedIPPrototypeVirtualNetworkInterfaceIPsContext.Builder()
+        .address("10.0.0.5")
+        .autoDelete(false)
+        .name("my-reserved-ip")
+        .build();
+
+      VirtualNetworkInterfacePrimaryIPPrototypeReservedIPPrototypeVirtualNetworkInterfacePrimaryIPContext virtualNetworkInterfacePrimaryIpPrototypeModel = new VirtualNetworkInterfacePrimaryIPPrototypeReservedIPPrototypeVirtualNetworkInterfacePrimaryIPContext.Builder()
         .address("10.0.0.5")
         .autoDelete(false)
         .name("my-reserved-ip")
@@ -4106,15 +4126,25 @@ public class VpcIT extends SdkIntegrationTestBase {
         .id("7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
         .build();
 
-      NetworkInterfacePrototype networkInterfacePrototypeModel = new NetworkInterfacePrototype.Builder()
+      InstanceNetworkAttachmentPrototypeVirtualNetworkInterfaceVirtualNetworkInterfacePrototypeInstanceNetworkAttachmentContext instanceNetworkAttachmentPrototypeVirtualNetworkInterfaceModel = new InstanceNetworkAttachmentPrototypeVirtualNetworkInterfaceVirtualNetworkInterfacePrototypeInstanceNetworkAttachmentContext.Builder()
         .allowIpSpoofing(true)
-        .name("my-instance-network-interface")
-        .primaryIp(networkInterfaceIpPrototypeModel)
+        .autoDelete(false)
+        .enableInfrastructureNat(true)
+        .ips(java.util.Arrays.asList(virtualNetworkInterfaceIpPrototypeModel))
+        .name("my-virtual-network-interface")
+        .primaryIp(virtualNetworkInterfacePrimaryIpPrototypeModel)
+        .protocolStateFilteringMode("auto")
+        .resourceGroup(resourceGroupIdentityModel)
         .securityGroups(java.util.Arrays.asList(securityGroupIdentityModel))
         .subnet(subnetIdentityModel)
         .build();
 
-      InstanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByImageInstanceByNetworkInterface instanceTemplatePrototypeModel = new InstanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByImageInstanceByNetworkInterface.Builder()
+      InstanceNetworkAttachmentPrototype instanceNetworkAttachmentPrototypeModel = new InstanceNetworkAttachmentPrototype.Builder()
+        .name("my-instance-network-attachment")
+        .virtualNetworkInterface(instanceNetworkAttachmentPrototypeVirtualNetworkInterfaceModel)
+        .build();
+
+      InstanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByImageInstanceByNetworkAttachment instanceTemplatePrototypeModel = new InstanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByImageInstanceByNetworkAttachment.Builder()
         .availabilityPolicy(instanceAvailabilityPolicyPrototypeModel)
         .clusterNetworkAttachments(java.util.Arrays.asList(instanceClusterNetworkAttachmentPrototypeInstanceContextModel))
         .confidentialComputeMode("disabled")
@@ -4122,7 +4152,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .enableSecureBoot(true)
         .keys(java.util.Arrays.asList(keyIdentityModel))
         .metadataService(instanceMetadataServicePrototypeModel)
-        .name("my-instance-template")
+        .name("my-instance")
         .placementTarget(instancePlacementTargetPrototypeModel)
         .profile(instanceProfileIdentityModel)
         .reservationAffinity(instanceReservationAffinityPrototypeModel)
@@ -4134,8 +4164,8 @@ public class VpcIT extends SdkIntegrationTestBase {
         .bootVolumeAttachment(volumeAttachmentPrototypeInstanceByImageContextModel)
         .image(imageIdentityModel)
         .zone(zoneIdentityModel)
-        .networkInterfaces(java.util.Arrays.asList(networkInterfacePrototypeModel))
-        .primaryNetworkInterface(networkInterfacePrototypeModel)
+        .networkAttachments(java.util.Arrays.asList(instanceNetworkAttachmentPrototypeModel))
+        .primaryNetworkAttachment(instanceNetworkAttachmentPrototypeModel)
         .build();
 
       CreateInstanceTemplateOptions createInstanceTemplateOptions = new CreateInstanceTemplateOptions.Builder()
@@ -4183,7 +4213,7 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testUpdateInstanceTemplate() throws Exception {
     try {
       InstanceTemplatePatch instanceTemplatePatchModel = new InstanceTemplatePatch.Builder()
-        .name("my-instance-template")
+        .name("my-instance-template-updated")
         .build();
       Map<String, Object> instanceTemplatePatchModelAsPatch = instanceTemplatePatchModel.asPatch();
 
@@ -4216,17 +4246,17 @@ public class VpcIT extends SdkIntegrationTestBase {
         .resourceGroupId("testString")
         .name("my-name")
         .clusterNetworkId("testString")
-        .clusterNetworkCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::cluster-network:r010-82b8c783-15d6-4a51-95bf-0b4649d3ef94")
+        .clusterNetworkCrn("crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::cluster-network:0717-da0df18c-7598-4633-a648-fdaac28a5573")
         .clusterNetworkName("my-cluster-network")
         .dedicatedHostId("testString")
-        .dedicatedHostCrn("crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::dedicated-host:1e09281b-f177-46fb-baf1-bc152b2e391a")
+        .dedicatedHostCrn("crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::dedicated-host:0717-1e09281b-f177-46fb-baf1-bc152b2e391a")
         .dedicatedHostName("my-dedicated-host")
         .placementGroupId("testString")
         .placementGroupCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::placement-group:r006-418fe842-a3e9-47b9-a938-1aa5bd632871")
         .placementGroupName("my-placement-group")
         .reservationAffinityPolicy("automatic")
         .reservationId("testString")
-        .reservationCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::reservation:7187-ba49df72-37b8-43ac-98da-f8e029de0e63")
+        .reservationCrn("crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::reservation:0717-ba49df72-37b8-43ac-98da-f8e029de0e63")
         .reservationName("my-reservation")
         .vpcId("testString")
         .vpcCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b")
@@ -4256,17 +4286,17 @@ public class VpcIT extends SdkIntegrationTestBase {
         .resourceGroupId("testString")
         .name("my-name")
         .clusterNetworkId("testString")
-        .clusterNetworkCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::cluster-network:r010-82b8c783-15d6-4a51-95bf-0b4649d3ef94")
+        .clusterNetworkCrn("crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::cluster-network:0717-da0df18c-7598-4633-a648-fdaac28a5573")
         .clusterNetworkName("my-cluster-network")
         .dedicatedHostId("testString")
-        .dedicatedHostCrn("crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::dedicated-host:1e09281b-f177-46fb-baf1-bc152b2e391a")
+        .dedicatedHostCrn("crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::dedicated-host:0717-1e09281b-f177-46fb-baf1-bc152b2e391a")
         .dedicatedHostName("my-dedicated-host")
         .placementGroupId("testString")
         .placementGroupCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::placement-group:r006-418fe842-a3e9-47b9-a938-1aa5bd632871")
         .placementGroupName("my-placement-group")
         .reservationAffinityPolicy("automatic")
         .reservationId("testString")
-        .reservationCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::reservation:7187-ba49df72-37b8-43ac-98da-f8e029de0e63")
+        .reservationCrn("crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::reservation:0717-ba49df72-37b8-43ac-98da-f8e029de0e63")
         .reservationName("my-reservation")
         .vpcId("testString")
         .vpcCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b")
@@ -4336,7 +4366,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       KeyIdentityById keyIdentityModel = new KeyIdentityById.Builder()
-        .id("363f6d70-0000-0001-0000-00000013b96c")
+        .id("r006-82679077-ac3b-4c10-be16-63e9c21f0f45")
         .build();
 
       InstanceMetadataServicePrototype instanceMetadataServicePrototypeModel = new InstanceMetadataServicePrototype.Builder()
@@ -4346,7 +4376,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       InstancePlacementTargetPrototypeDedicatedHostIdentityDedicatedHostIdentityById instancePlacementTargetPrototypeModel = new InstancePlacementTargetPrototypeDedicatedHostIdentityDedicatedHostIdentityById.Builder()
-        .id("0787-84e4793a-7cd8-4a7b-b253-818aa19d0512")
+        .id("r006-418fe842-a3e9-47b9-a938-1aa5bd632871")
         .build();
 
       InstanceProfileIdentityByName instanceProfileIdentityModel = new InstanceProfileIdentityByName.Builder()
@@ -4371,7 +4401,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       EncryptionKeyIdentityByCRN encryptionKeyIdentityModel = new EncryptionKeyIdentityByCRN.Builder()
-        .crn("crn:[...]")
+        .crn("crn:v1:bluemix:public:kms:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179")
         .build();
 
       VolumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeByCapacity volumeAttachmentPrototypeVolumeModel = new VolumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeByCapacity.Builder()
@@ -4391,7 +4421,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       VPCIdentityById vpcIdentityModel = new VPCIdentityById.Builder()
-        .id("f0aae929-7047-46d1-92e1-9102b07a7f6f")
+        .id("r006-4727d842-f94f-4a2d-824a-9bc9b02c523b")
         .build();
 
       VolumePrototypeInstanceByImageContext volumePrototypeInstanceByImageContextModel = new VolumePrototypeInstanceByImageContext.Builder()
@@ -4411,7 +4441,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       ImageIdentityById imageIdentityModel = new ImageIdentityById.Builder()
-        .id("9aaf3bcb-dcd7-4de7-bb60-24e39ff9d366")
+        .id("r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8")
         .build();
 
       ZoneIdentityByName zoneIdentityModel = new ZoneIdentityByName.Builder()
@@ -6597,7 +6627,7 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testCreateDedicatedHost() throws Exception {
     try {
       DedicatedHostProfileIdentityByName dedicatedHostProfileIdentityModel = new DedicatedHostProfileIdentityByName.Builder()
-        .name("m-62x496")
+        .name("mx2-host-152x1216")
         .build();
 
       ResourceGroupIdentityById resourceGroupIdentityModel = new ResourceGroupIdentityById.Builder()
@@ -6605,7 +6635,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       DedicatedHostGroupIdentityById dedicatedHostGroupIdentityModel = new DedicatedHostGroupIdentityById.Builder()
-        .id("0c8eccb4-271c-4518-956c-32bfce5cf83b")
+        .id("0717-bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0")
         .build();
 
       DedicatedHostPrototypeDedicatedHostByGroup dedicatedHostPrototypeModel = new DedicatedHostPrototypeDedicatedHostByGroup.Builder()
@@ -6977,7 +7007,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .resourceGroupId("testString")
         .name("my-name")
         .reservationId("testString")
-        .reservationCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::reservation:7187-ba49df72-37b8-43ac-98da-f8e029de0e63")
+        .reservationCrn("crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::reservation:0717-ba49df72-37b8-43ac-98da-f8e029de0e63")
         .reservationName("my-reservation")
         .vpcId("testString")
         .vpcCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b")
@@ -7007,7 +7037,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .resourceGroupId("testString")
         .name("my-name")
         .reservationId("testString")
-        .reservationCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::reservation:7187-ba49df72-37b8-43ac-98da-f8e029de0e63")
+        .reservationCrn("crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::reservation:0717-ba49df72-37b8-43ac-98da-f8e029de0e63")
         .reservationName("my-reservation")
         .vpcId("testString")
         .vpcCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b")
@@ -7120,14 +7150,14 @@ public class VpcIT extends SdkIntegrationTestBase {
       BareMetalServerNetworkAttachmentPrototypeBareMetalServerNetworkAttachmentByPCIPrototype bareMetalServerNetworkAttachmentPrototypeModel = new BareMetalServerNetworkAttachmentPrototypeBareMetalServerNetworkAttachmentByPCIPrototype.Builder()
         .name("my-bare-metal-server-network-attachment")
         .virtualNetworkInterface(bareMetalServerNetworkAttachmentPrototypeVirtualNetworkInterfaceModel)
-        .allowedVlans(java.util.Arrays.asList(Long.valueOf("4")))
+        .allowedVlans(java.util.Arrays.asList(Long.valueOf("")))
         .interfaceType("pci")
         .build();
 
       BareMetalServerPrimaryNetworkAttachmentPrototypeBareMetalServerPrimaryNetworkAttachmentByPCIPrototype bareMetalServerPrimaryNetworkAttachmentPrototypeModel = new BareMetalServerPrimaryNetworkAttachmentPrototypeBareMetalServerPrimaryNetworkAttachmentByPCIPrototype.Builder()
         .name("my-bare-metal-server-network-attachment")
         .virtualNetworkInterface(bareMetalServerNetworkAttachmentPrototypeVirtualNetworkInterfaceModel)
-        .allowedVlans(java.util.Arrays.asList(Long.valueOf("4")))
+        .allowedVlans(java.util.Arrays.asList(Long.valueOf("")))
         .interfaceType("pci")
         .build();
 
@@ -7362,7 +7392,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       BareMetalServerNetworkAttachmentPrototypeBareMetalServerNetworkAttachmentByPCIPrototype bareMetalServerNetworkAttachmentPrototypeModel = new BareMetalServerNetworkAttachmentPrototypeBareMetalServerNetworkAttachmentByPCIPrototype.Builder()
         .name("my-bare-metal-server-network-attachment")
         .virtualNetworkInterface(bareMetalServerNetworkAttachmentPrototypeVirtualNetworkInterfaceModel)
-        .allowedVlans(java.util.Arrays.asList(Long.valueOf("4")))
+        .allowedVlans(java.util.Arrays.asList(Long.valueOf("")))
         .interfaceType("pci")
         .build();
 
@@ -8294,7 +8324,7 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testUpdateSnapshotConsistencyGroup() throws Exception {
     try {
       SnapshotConsistencyGroupPatch snapshotConsistencyGroupPatchModel = new SnapshotConsistencyGroupPatch.Builder()
-        .deleteSnapshotsOnDelete(true)
+        .deleteSnapshotsOnDelete(false)
         .name("my-snapshot-consistency-group")
         .build();
       Map<String, Object> snapshotConsistencyGroupPatchModelAsPatch = snapshotConsistencyGroupPatchModel.asPatch();
@@ -8330,22 +8360,22 @@ public class VpcIT extends SdkIntegrationTestBase {
         .resourceGroupId("testString")
         .name("my-name")
         .sourceVolumeId("testString")
-        .sourceVolumeCrn("crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5")
+        .sourceVolumeCrn("crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::volume:r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5")
         .sourceImageId("testString")
-        .sourceImageCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8")
+        .sourceImageCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::image:r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8")
         .sort("name")
         .backupPolicyPlanId("testString")
         .copiesId("testString")
         .copiesName("my-snapshot-copy")
-        .copiesCrn("crn:[...]")
+        .copiesCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r006-f6bfa329-0e36-433f-a3bb-0df632e79263")
         .copiesRemoteRegionName("us-south")
         .sourceSnapshotId("testString")
         .sourceSnapshotRemoteRegionName("us-south")
-        .sourceVolumeRemoteRegionName("us-south")
+        .sourceVolumeRemoteRegionName("us-east")
         .sourceImageRemoteRegionName("us-south")
         .clonesZoneName("us-south-1")
         .snapshotConsistencyGroupId("testString")
-        .snapshotConsistencyGroupCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot-consistency-group:r134-fa329f6b-0e36-433f-a3bb-0df632e79263")
+        .snapshotConsistencyGroupCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot-consistency-group:r006-fa329f6b-0e36-433f-a3bb-0df632e79263")
         .build();
 
       // Invoke operation
@@ -8372,22 +8402,22 @@ public class VpcIT extends SdkIntegrationTestBase {
         .resourceGroupId("testString")
         .name("my-name")
         .sourceVolumeId("testString")
-        .sourceVolumeCrn("crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5")
+        .sourceVolumeCrn("crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::volume:r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5")
         .sourceImageId("testString")
-        .sourceImageCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8")
+        .sourceImageCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::image:r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8")
         .sort("name")
         .backupPolicyPlanId("testString")
         .copiesId("testString")
         .copiesName("my-snapshot-copy")
-        .copiesCrn("crn:[...]")
+        .copiesCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r006-f6bfa329-0e36-433f-a3bb-0df632e79263")
         .copiesRemoteRegionName("us-south")
         .sourceSnapshotId("testString")
         .sourceSnapshotRemoteRegionName("us-south")
-        .sourceVolumeRemoteRegionName("us-south")
+        .sourceVolumeRemoteRegionName("us-east")
         .sourceImageRemoteRegionName("us-south")
         .clonesZoneName("us-south-1")
         .snapshotConsistencyGroupId("testString")
-        .snapshotConsistencyGroupCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot-consistency-group:r134-fa329f6b-0e36-433f-a3bb-0df632e79263")
+        .snapshotConsistencyGroupCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot-consistency-group:r006-fa329f6b-0e36-433f-a3bb-0df632e79263")
         .build();
 
       // Test getNext().
@@ -8486,7 +8516,7 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testUpdateSnapshot() throws Exception {
     try {
       SnapshotPatch snapshotPatchModel = new SnapshotPatch.Builder()
-        .name("my-snapshot")
+        .name("my-snapshot-updated")
         .userTags(java.util.Arrays.asList("testString"))
         .build();
       Map<String, Object> snapshotPatchModelAsPatch = snapshotPatchModel.asPatch();
@@ -8866,7 +8896,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .name("my-share")
         .profile(shareProfileIdentityModel)
         .replicationCronSpec("0 */5 * * *")
-        .size(Long.valueOf("200"))
+        .size(Long.valueOf("8000"))
         .userTags(java.util.Arrays.asList("testString"))
         .build();
       Map<String, Object> sharePatchModelAsPatch = sharePatchModel.asPatch();
@@ -11130,14 +11160,14 @@ public class VpcIT extends SdkIntegrationTestBase {
         .id("fee82deba12e4c0fb69c3b09d1f12345")
         .build();
 
-      ZoneIdentityByName zoneIdentityModel = new ZoneIdentityByName.Builder()
-        .name("us-south-1")
+      FloatingIPTargetPrototypeBareMetalServerNetworkInterfaceIdentityBareMetalServerNetworkInterfaceIdentityById floatingIpTargetPrototypeModel = new FloatingIPTargetPrototypeBareMetalServerNetworkInterfaceIdentityBareMetalServerNetworkInterfaceIdentityById.Builder()
+        .id("0717-54eb57ee-86f2-4796-90bb-d7874e0831ef")
         .build();
 
-      FloatingIPPrototypeFloatingIPByZone floatingIpPrototypeModel = new FloatingIPPrototypeFloatingIPByZone.Builder()
+      FloatingIPPrototypeFloatingIPByTarget floatingIpPrototypeModel = new FloatingIPPrototypeFloatingIPByTarget.Builder()
         .name("my-floating-ip")
         .resourceGroup(resourceGroupIdentityModel)
-        .zone(zoneIdentityModel)
+        .target(floatingIpTargetPrototypeModel)
         .build();
 
       CreateFloatingIpOptions createFloatingIpOptions = new CreateFloatingIpOptions.Builder()
@@ -11281,18 +11311,14 @@ public class VpcIT extends SdkIntegrationTestBase {
         .id("r006-4727d842-f94f-4a2d-824a-9bc9b02c523b")
         .build();
 
-      NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolTCPUDPPrototype networkAclRulePrototypeNetworkAclContextModel = new NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolTCPUDPPrototype.Builder()
+      NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolAllPrototype networkAclRulePrototypeNetworkAclContextModel = new NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolAllPrototype.Builder()
         .action("allow")
         .destination("192.168.3.2/32")
         .direction("inbound")
         .ipVersion("ipv4")
         .name("my-network-acl-rule")
         .source("192.168.3.2/32")
-        .destinationPortMax(Long.valueOf("22"))
-        .destinationPortMin(Long.valueOf("22"))
-        .protocol("udp")
-        .sourcePortMax(Long.valueOf("65535"))
-        .sourcePortMin(Long.valueOf("49152"))
+        .protocol("all")
         .build();
 
       NetworkACLPrototypeNetworkACLByRules networkAclPrototypeModel = new NetworkACLPrototypeNetworkACLByRules.Builder()
@@ -11436,7 +11462,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .id("r006-8daca77a-4980-4d33-8f3e-7038797be8f9")
         .build();
 
-      NetworkACLRulePrototypeNetworkACLRuleProtocolTCPUDPPrototype networkAclRulePrototypeModel = new NetworkACLRulePrototypeNetworkACLRuleProtocolTCPUDPPrototype.Builder()
+      NetworkACLRulePrototypeNetworkACLRuleProtocolAllPrototype networkAclRulePrototypeModel = new NetworkACLRulePrototypeNetworkACLRuleProtocolAllPrototype.Builder()
         .action("allow")
         .before(networkAclRuleBeforePrototypeModel)
         .destination("192.168.3.2/32")
@@ -11444,11 +11470,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .ipVersion("ipv4")
         .name("my-network-acl-rule")
         .source("192.168.3.2/32")
-        .destinationPortMax(Long.valueOf("22"))
-        .destinationPortMin(Long.valueOf("22"))
-        .protocol("udp")
-        .sourcePortMax(Long.valueOf("65535"))
-        .sourcePortMin(Long.valueOf("49152"))
+        .protocol("all")
         .build();
 
       CreateNetworkAclRuleOptions createNetworkAclRuleOptions = new CreateNetworkAclRuleOptions.Builder()
@@ -11623,8 +11645,8 @@ public class VpcIT extends SdkIntegrationTestBase {
         .direction("inbound")
         .ipVersion("ipv4")
         .local(securityGroupRuleLocalPrototypeModel)
-        .protocol("all")
         .remote(securityGroupRuleRemotePrototypeModel)
+        .protocol("all")
         .build();
 
       CreateSecurityGroupOptions createSecurityGroupOptions = new CreateSecurityGroupOptions.Builder()
@@ -11736,8 +11758,8 @@ public class VpcIT extends SdkIntegrationTestBase {
         .direction("inbound")
         .ipVersion("ipv4")
         .local(securityGroupRuleLocalPrototypeModel)
-        .protocol("all")
         .remote(securityGroupRuleRemotePrototypeModel)
+        .protocol("all")
         .build();
 
       CreateSecurityGroupRuleOptions createSecurityGroupRuleOptions = new CreateSecurityGroupRuleOptions.Builder()
@@ -12970,7 +12992,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .clientIdleTimeout(Long.valueOf("600"))
         .clientIpPool("172.16.0.0/16")
         .enableSplitTunneling(true)
-        .name("my-vpn-server")
+        .name("my-vpn-server-updated")
         .port(Long.valueOf("443"))
         .protocol("tcp")
         .subnets(java.util.Arrays.asList(subnetIdentityModel))
@@ -13444,13 +13466,12 @@ public class VpcIT extends SdkIntegrationTestBase {
         .datapath(loadBalancerLoggingDatapathPrototypeModel)
         .build();
 
-      LoadBalancerPoolHealthMonitorPrototype loadBalancerPoolHealthMonitorPrototypeModel = new LoadBalancerPoolHealthMonitorPrototype.Builder()
+      LoadBalancerPoolHealthMonitorPrototypeLoadBalancerPoolHealthMonitorTypeTCPPrototype loadBalancerPoolHealthMonitorPrototypeModel = new LoadBalancerPoolHealthMonitorPrototypeLoadBalancerPoolHealthMonitorTypeTCPPrototype.Builder()
         .delay(Long.valueOf("5"))
         .maxRetries(Long.valueOf("2"))
         .port(Long.valueOf("22"))
         .timeout(Long.valueOf("2"))
-        .type("http")
-        .urlPath("/")
+        .type("tcp")
         .build();
 
       LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityById loadBalancerPoolMemberTargetPrototypeModel = new LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityById.Builder()
@@ -13468,7 +13489,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .type("app_cookie")
         .build();
 
-      LoadBalancerPoolPrototype loadBalancerPoolPrototypeModel = new LoadBalancerPoolPrototype.Builder()
+      LoadBalancerPoolPrototypeLoadBalancerContext loadBalancerPoolPrototypeLoadBalancerContextModel = new LoadBalancerPoolPrototypeLoadBalancerContext.Builder()
         .algorithm("least_connections")
         .healthMonitor(loadBalancerPoolHealthMonitorPrototypeModel)
         .members(java.util.Arrays.asList(loadBalancerPoolMemberPrototypeModel))
@@ -13498,7 +13519,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .listeners(java.util.Arrays.asList(loadBalancerListenerPrototypeLoadBalancerContextModel))
         .logging(loadBalancerLoggingPrototypeModel)
         .name("my-load-balancer")
-        .pools(java.util.Arrays.asList(loadBalancerPoolPrototypeModel))
+        .pools(java.util.Arrays.asList(loadBalancerPoolPrototypeLoadBalancerContextModel))
         .profile(loadBalancerProfileIdentityModel)
         .resourceGroup(resourceGroupIdentityModel)
         .routeMode(true)
@@ -14050,13 +14071,21 @@ public class VpcIT extends SdkIntegrationTestBase {
   @Test(dependsOnMethods = { "testListLoadBalancerPools" })
   public void testCreateLoadBalancerPool() throws Exception {
     try {
-      LoadBalancerPoolHealthMonitorPrototype loadBalancerPoolHealthMonitorPrototypeModel = new LoadBalancerPoolHealthMonitorPrototype.Builder()
+      LoadBalancerPoolHealthMonitorPrototypeLoadBalancerPoolHealthMonitorTypeTCPPrototype loadBalancerPoolHealthMonitorPrototypeModel = new LoadBalancerPoolHealthMonitorPrototypeLoadBalancerPoolHealthMonitorTypeTCPPrototype.Builder()
         .delay(Long.valueOf("5"))
         .maxRetries(Long.valueOf("2"))
         .port(Long.valueOf("22"))
         .timeout(Long.valueOf("2"))
-        .type("http")
-        .urlPath("/")
+        .type("tcp")
+        .build();
+
+      LoadBalancerPoolIdentityLoadBalancerPoolIdentityById loadBalancerPoolIdentityModel = new LoadBalancerPoolIdentityLoadBalancerPoolIdentityById.Builder()
+        .id("r006-70294e14-4e61-11e8-bcf4-0242ac110004")
+        .build();
+
+      LoadBalancerPoolFailsafePolicyPrototype loadBalancerPoolFailsafePolicyPrototypeModel = new LoadBalancerPoolFailsafePolicyPrototype.Builder()
+        .action("forward")
+        .target(loadBalancerPoolIdentityModel)
         .build();
 
       LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityById loadBalancerPoolMemberTargetPrototypeModel = new LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityById.Builder()
@@ -14079,6 +14108,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .algorithm("least_connections")
         .healthMonitor(loadBalancerPoolHealthMonitorPrototypeModel)
         .protocol("http")
+        .failsafePolicy(loadBalancerPoolFailsafePolicyPrototypeModel)
         .members(java.util.Arrays.asList(loadBalancerPoolMemberPrototypeModel))
         .name("my-load-balancer-pool")
         .proxyProtocol("disabled")
@@ -14126,6 +14156,15 @@ public class VpcIT extends SdkIntegrationTestBase {
   @Test(dependsOnMethods = { "testGetLoadBalancerPool" })
   public void testUpdateLoadBalancerPool() throws Exception {
     try {
+      LoadBalancerPoolFailsafePolicyTargetPatchLoadBalancerPoolIdentityById loadBalancerPoolFailsafePolicyTargetPatchModel = new LoadBalancerPoolFailsafePolicyTargetPatchLoadBalancerPoolIdentityById.Builder()
+        .id("r006-70294e14-4e61-11e8-bcf4-0242ac110004")
+        .build();
+
+      LoadBalancerPoolFailsafePolicyPatch loadBalancerPoolFailsafePolicyPatchModel = new LoadBalancerPoolFailsafePolicyPatch.Builder()
+        .action("forward")
+        .target(loadBalancerPoolFailsafePolicyTargetPatchModel)
+        .build();
+
       LoadBalancerPoolHealthMonitorPatch loadBalancerPoolHealthMonitorPatchModel = new LoadBalancerPoolHealthMonitorPatch.Builder()
         .delay(Long.valueOf("5"))
         .maxRetries(Long.valueOf("2"))
@@ -14142,6 +14181,7 @@ public class VpcIT extends SdkIntegrationTestBase {
 
       LoadBalancerPoolPatch loadBalancerPoolPatchModel = new LoadBalancerPoolPatch.Builder()
         .algorithm("weighted_round_robin")
+        .failsafePolicy(loadBalancerPoolFailsafePolicyPatchModel)
         .healthMonitor(loadBalancerPoolHealthMonitorPatchModel)
         .name("my-load-balancer-pool")
         .protocol("http")
@@ -15934,10 +15974,14 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       // Invoke operation
-      Response<Void> response = service.deleteSnapshot(deleteSnapshotOptions).execute();
+      Response<Snapshot> response = service.deleteSnapshot(deleteSnapshotOptions).execute();
       // Validate response
       assertNotNull(response);
       assertEquals(response.getStatusCode(), 202);
+
+      Snapshot snapshotResult = response.getResult();
+      assertNotNull(snapshotResult);
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));

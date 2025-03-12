@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022, 2023, 2024.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -13,6 +13,8 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolFailsafePolicyPatch;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolFailsafePolicyTargetPatchLoadBalancerPoolIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolHealthMonitorPatch;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolPatch;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolSessionPersistencePatch;
@@ -34,6 +36,18 @@ public class LoadBalancerPoolPatchTest {
 
   @Test
   public void testLoadBalancerPoolPatch() throws Throwable {
+    LoadBalancerPoolFailsafePolicyTargetPatchLoadBalancerPoolIdentityById loadBalancerPoolFailsafePolicyTargetPatchModel = new LoadBalancerPoolFailsafePolicyTargetPatchLoadBalancerPoolIdentityById.Builder()
+      .id("r006-70294e14-4e61-11e8-bcf4-0242ac110004")
+      .build();
+    assertEquals(loadBalancerPoolFailsafePolicyTargetPatchModel.id(), "r006-70294e14-4e61-11e8-bcf4-0242ac110004");
+
+    LoadBalancerPoolFailsafePolicyPatch loadBalancerPoolFailsafePolicyPatchModel = new LoadBalancerPoolFailsafePolicyPatch.Builder()
+      .action("forward")
+      .target(loadBalancerPoolFailsafePolicyTargetPatchModel)
+      .build();
+    assertEquals(loadBalancerPoolFailsafePolicyPatchModel.action(), "forward");
+    assertEquals(loadBalancerPoolFailsafePolicyPatchModel.target(), loadBalancerPoolFailsafePolicyTargetPatchModel);
+
     LoadBalancerPoolHealthMonitorPatch loadBalancerPoolHealthMonitorPatchModel = new LoadBalancerPoolHealthMonitorPatch.Builder()
       .delay(Long.valueOf("5"))
       .maxRetries(Long.valueOf("2"))
@@ -58,6 +72,7 @@ public class LoadBalancerPoolPatchTest {
 
     LoadBalancerPoolPatch loadBalancerPoolPatchModel = new LoadBalancerPoolPatch.Builder()
       .algorithm("least_connections")
+      .failsafePolicy(loadBalancerPoolFailsafePolicyPatchModel)
       .healthMonitor(loadBalancerPoolHealthMonitorPatchModel)
       .name("my-load-balancer-pool")
       .protocol("http")
@@ -65,6 +80,7 @@ public class LoadBalancerPoolPatchTest {
       .sessionPersistence(loadBalancerPoolSessionPersistencePatchModel)
       .build();
     assertEquals(loadBalancerPoolPatchModel.algorithm(), "least_connections");
+    assertEquals(loadBalancerPoolPatchModel.failsafePolicy(), loadBalancerPoolFailsafePolicyPatchModel);
     assertEquals(loadBalancerPoolPatchModel.healthMonitor(), loadBalancerPoolHealthMonitorPatchModel);
     assertEquals(loadBalancerPoolPatchModel.name(), "my-load-balancer-pool");
     assertEquals(loadBalancerPoolPatchModel.protocol(), "http");
@@ -76,6 +92,7 @@ public class LoadBalancerPoolPatchTest {
     LoadBalancerPoolPatch loadBalancerPoolPatchModelNew = TestUtilities.deserialize(json, LoadBalancerPoolPatch.class);
     assertTrue(loadBalancerPoolPatchModelNew instanceof LoadBalancerPoolPatch);
     assertEquals(loadBalancerPoolPatchModelNew.algorithm(), "least_connections");
+    assertEquals(loadBalancerPoolPatchModelNew.failsafePolicy().toString(), loadBalancerPoolFailsafePolicyPatchModel.toString());
     assertEquals(loadBalancerPoolPatchModelNew.healthMonitor().toString(), loadBalancerPoolHealthMonitorPatchModel.toString());
     assertEquals(loadBalancerPoolPatchModelNew.name(), "my-load-balancer-pool");
     assertEquals(loadBalancerPoolPatchModelNew.protocol(), "http");
@@ -84,6 +101,15 @@ public class LoadBalancerPoolPatchTest {
   }
   @Test
   public void testLoadBalancerPoolPatchAsPatch() throws Throwable {
+    LoadBalancerPoolFailsafePolicyTargetPatchLoadBalancerPoolIdentityById loadBalancerPoolFailsafePolicyTargetPatchModel = new LoadBalancerPoolFailsafePolicyTargetPatchLoadBalancerPoolIdentityById.Builder()
+      .id("r006-70294e14-4e61-11e8-bcf4-0242ac110004")
+      .build();
+
+    LoadBalancerPoolFailsafePolicyPatch loadBalancerPoolFailsafePolicyPatchModel = new LoadBalancerPoolFailsafePolicyPatch.Builder()
+      .action("forward")
+      .target(loadBalancerPoolFailsafePolicyTargetPatchModel)
+      .build();
+
     LoadBalancerPoolHealthMonitorPatch loadBalancerPoolHealthMonitorPatchModel = new LoadBalancerPoolHealthMonitorPatch.Builder()
       .delay(Long.valueOf("5"))
       .maxRetries(Long.valueOf("2"))
@@ -100,6 +126,7 @@ public class LoadBalancerPoolPatchTest {
 
     LoadBalancerPoolPatch loadBalancerPoolPatchModel = new LoadBalancerPoolPatch.Builder()
       .algorithm("least_connections")
+      .failsafePolicy(loadBalancerPoolFailsafePolicyPatchModel)
       .healthMonitor(loadBalancerPoolHealthMonitorPatchModel)
       .name("my-load-balancer-pool")
       .protocol("http")
@@ -110,6 +137,7 @@ public class LoadBalancerPoolPatchTest {
     Map<String, Object> mergePatch = loadBalancerPoolPatchModel.asPatch();
 
     assertEquals(mergePatch.get("algorithm"), "least_connections");
+    assertTrue(mergePatch.containsKey("failsafe_policy"));
     assertTrue(mergePatch.containsKey("health_monitor"));
     assertEquals(mergePatch.get("name"), "my-load-balancer-pool");
     assertEquals(mergePatch.get("protocol"), "http");

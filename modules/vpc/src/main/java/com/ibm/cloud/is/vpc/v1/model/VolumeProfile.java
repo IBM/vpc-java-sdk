@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022, 2023, 2024.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -47,6 +47,8 @@ public class VolumeProfile extends GenericModel {
   protected String href;
   protected VolumeProfileIOPS iops;
   protected String name;
+  @SerializedName("storage_generation")
+  protected VolumeProfileStorageGenerationFixed storageGeneration;
 
   protected VolumeProfile() { }
 
@@ -129,6 +131,17 @@ public class VolumeProfile extends GenericModel {
    */
   public String getName() {
     return name;
+  }
+
+  /**
+   * Gets the storageGeneration.
+   *
+   * The storage generation value of volumes of this profile.
+   *
+   * @return the storageGeneration
+   */
+  public VolumeProfileStorageGenerationFixed getStorageGeneration() {
+    return storageGeneration;
   }
 }
 

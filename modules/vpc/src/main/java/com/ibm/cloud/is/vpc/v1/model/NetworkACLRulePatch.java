@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022, 2023, 2024.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -323,7 +323,9 @@ public class NetworkACLRulePatch extends GenericModel {
   /**
    * Gets the destinationPortMax.
    *
-   * The inclusive upper bound of TCP/UDP destination port range.
+   * The inclusive upper bound of the TCP or UDP destination port range.
+   *
+   * Must be larger than or equal to `destination_port_min`.
    *
    * @return the destinationPortMax
    */
@@ -334,7 +336,9 @@ public class NetworkACLRulePatch extends GenericModel {
   /**
    * Gets the destinationPortMin.
    *
-   * The inclusive lower bound of TCP/UDP destination port range.
+   * The inclusive lower bound of the TCP or UDP destination port range.
+   *
+   * Must be smaller than or equal to `destination_port_max`.
    *
    * @return the destinationPortMin
    */
@@ -378,7 +382,9 @@ public class NetworkACLRulePatch extends GenericModel {
   /**
    * Gets the sourcePortMax.
    *
-   * The inclusive upper bound of TCP/UDP source port range.
+   * The inclusive upper bound of the TCP or UDP source port range.
+   *
+   * Must be larger than or equal to `source_port_min`.
    *
    * @return the sourcePortMax
    */
@@ -389,7 +395,9 @@ public class NetworkACLRulePatch extends GenericModel {
   /**
    * Gets the sourcePortMin.
    *
-   * The inclusive lower bound of TCP/UDP source port range.
+   * The inclusive lower bound of the TCP or UDP source port range.
+   *
+   * Must be smaller than or equal to `source_port_max`.
    *
    * @return the sourcePortMin
    */

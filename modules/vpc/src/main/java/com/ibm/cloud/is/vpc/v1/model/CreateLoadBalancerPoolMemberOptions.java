@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022, 2023, 2024.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -219,7 +219,10 @@ public class CreateLoadBalancerPoolMemberOptions extends GenericModel {
    *
    * The weight of the server member.
    *
-   * If specified, the pool algorithm must be `weighted_round_robin`.
+   * If specified, the pool algorithm must be `weighted_round_robin` and the load balancer must be in the `application`
+   * family.
+   *
+   * If unspecified, the weight will be `50` for load balancers in the `application` family.
    *
    * @return the weight
    */

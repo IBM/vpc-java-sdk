@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022, 2023, 2024.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -37,6 +37,8 @@ public class LoadBalancerProfile extends GenericModel {
   @SerializedName("access_modes")
   protected LoadBalancerProfileAccessModes accessModes;
   protected LoadBalancerProfileAvailability availability;
+  @SerializedName("failsafe_policy_actions")
+  protected LoadBalancerProfileFailsafePolicyActions failsafePolicyActions;
   protected String family;
   protected String href;
   @SerializedName("instance_groups_supported")
@@ -71,6 +73,15 @@ public class LoadBalancerProfile extends GenericModel {
    */
   public LoadBalancerProfileAvailability getAvailability() {
     return availability;
+  }
+
+  /**
+   * Gets the failsafePolicyActions.
+   *
+   * @return the failsafePolicyActions
+   */
+  public LoadBalancerProfileFailsafePolicyActions getFailsafePolicyActions() {
+    return failsafePolicyActions;
   }
 
   /**

@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022, 2023, 2024.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -13,8 +13,11 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.ibm.cloud.is.vpc.v1.model.EncryptionKeyIdentityByCRN;
+import com.ibm.cloud.is.vpc.v1.model.ResourceGroupIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototype;
-import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototypeVolumeVolumeIdentityVolumeIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeByCapacity;
+import com.ibm.cloud.is.vpc.v1.model.VolumeProfileIdentityByName;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -32,10 +35,37 @@ public class VolumeAttachmentPrototypeTest {
 
   @Test
   public void testVolumeAttachmentPrototype() throws Throwable {
-    VolumeAttachmentPrototypeVolumeVolumeIdentityVolumeIdentityById volumeAttachmentPrototypeVolumeModel = new VolumeAttachmentPrototypeVolumeVolumeIdentityVolumeIdentityById.Builder()
-      .id("r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5")
+    VolumeProfileIdentityByName volumeProfileIdentityModel = new VolumeProfileIdentityByName.Builder()
+      .name("5iops-tier")
       .build();
-    assertEquals(volumeAttachmentPrototypeVolumeModel.id(), "r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5");
+    assertEquals(volumeProfileIdentityModel.name(), "5iops-tier");
+
+    ResourceGroupIdentityById resourceGroupIdentityModel = new ResourceGroupIdentityById.Builder()
+      .id("fee82deba12e4c0fb69c3b09d1f12345")
+      .build();
+    assertEquals(resourceGroupIdentityModel.id(), "fee82deba12e4c0fb69c3b09d1f12345");
+
+    EncryptionKeyIdentityByCRN encryptionKeyIdentityModel = new EncryptionKeyIdentityByCRN.Builder()
+      .crn("crn:v1:bluemix:public:kms:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179")
+      .build();
+    assertEquals(encryptionKeyIdentityModel.crn(), "crn:v1:bluemix:public:kms:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179");
+
+    VolumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeByCapacity volumeAttachmentPrototypeVolumeModel = new VolumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeByCapacity.Builder()
+      .iops(Long.valueOf("10000"))
+      .name("my-data-volume")
+      .profile(volumeProfileIdentityModel)
+      .resourceGroup(resourceGroupIdentityModel)
+      .userTags(java.util.Arrays.asList())
+      .capacity(Long.valueOf("1000"))
+      .encryptionKey(encryptionKeyIdentityModel)
+      .build();
+    assertEquals(volumeAttachmentPrototypeVolumeModel.iops(), Long.valueOf("10000"));
+    assertEquals(volumeAttachmentPrototypeVolumeModel.name(), "my-data-volume");
+    assertEquals(volumeAttachmentPrototypeVolumeModel.profile(), volumeProfileIdentityModel);
+    assertEquals(volumeAttachmentPrototypeVolumeModel.resourceGroup(), resourceGroupIdentityModel);
+    assertEquals(volumeAttachmentPrototypeVolumeModel.userTags(), java.util.Arrays.asList());
+    assertEquals(volumeAttachmentPrototypeVolumeModel.capacity(), Long.valueOf("1000"));
+    assertEquals(volumeAttachmentPrototypeVolumeModel.encryptionKey(), encryptionKeyIdentityModel);
 
     VolumeAttachmentPrototype volumeAttachmentPrototypeModel = new VolumeAttachmentPrototype.Builder()
       .deleteVolumeOnInstanceDelete(false)

@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022, 2023, 2024.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -14,7 +14,7 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 /**
- * NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolICMPPrototype.
+ * A rule for ICMP traffic.
  */
 public class NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolICMPPrototype extends NetworkACLRulePrototypeNetworkACLContext {
 
@@ -47,7 +47,7 @@ public class NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolICMPP
   }
 
   /**
-   * The network protocol.
+   * The name of the network protocol.
    */
   public interface Protocol {
     /** icmp. */

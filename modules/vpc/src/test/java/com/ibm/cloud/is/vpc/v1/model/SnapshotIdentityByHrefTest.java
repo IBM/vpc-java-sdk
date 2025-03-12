@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022, 2023, 2024.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -32,15 +32,15 @@ public class SnapshotIdentityByHrefTest {
   @Test
   public void testSnapshotIdentityByHref() throws Throwable {
     SnapshotIdentityByHref snapshotIdentityByHrefModel = new SnapshotIdentityByHref.Builder()
-      .href("https://us-south.iaas.cloud.ibm.com/v1/snapshots/r134-f6bfa329-0e36-433f-a3bb-0df632e79263")
+      .href("https://us-south.iaas.cloud.ibm.com/v1/snapshots/r006-f6bfa329-0e36-433f-a3bb-0df632e79263")
       .build();
-    assertEquals(snapshotIdentityByHrefModel.href(), "https://us-south.iaas.cloud.ibm.com/v1/snapshots/r134-f6bfa329-0e36-433f-a3bb-0df632e79263");
+    assertEquals(snapshotIdentityByHrefModel.href(), "https://us-south.iaas.cloud.ibm.com/v1/snapshots/r006-f6bfa329-0e36-433f-a3bb-0df632e79263");
 
     String json = TestUtilities.serialize(snapshotIdentityByHrefModel);
 
     SnapshotIdentityByHref snapshotIdentityByHrefModelNew = TestUtilities.deserialize(json, SnapshotIdentityByHref.class);
     assertTrue(snapshotIdentityByHrefModelNew instanceof SnapshotIdentityByHref);
-    assertEquals(snapshotIdentityByHrefModelNew.href(), "https://us-south.iaas.cloud.ibm.com/v1/snapshots/r134-f6bfa329-0e36-433f-a3bb-0df632e79263");
+    assertEquals(snapshotIdentityByHrefModelNew.href(), "https://us-south.iaas.cloud.ibm.com/v1/snapshots/r006-f6bfa329-0e36-433f-a3bb-0df632e79263");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

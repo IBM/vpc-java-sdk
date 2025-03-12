@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022, 2023, 2024.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -13,10 +13,10 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
-import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolHealthMonitorPrototype;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolHealthMonitorPrototypeLoadBalancerPoolHealthMonitorTypeTCPPrototype;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolMemberPrototype;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityById;
-import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolPrototype;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolPrototypeLoadBalancerContext;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolSessionPersistencePrototype;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
@@ -27,28 +27,26 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
 /**
- * Unit test class for the LoadBalancerPoolPrototype model.
+ * Unit test class for the LoadBalancerPoolPrototypeLoadBalancerContext model.
  */
-public class LoadBalancerPoolPrototypeTest {
+public class LoadBalancerPoolPrototypeLoadBalancerContextTest {
   final HashMap<String, InputStream> mockStreamMap = TestUtilities.createMockStreamMap();
   final List<FileWithMetadata> mockListFileWithMetadata = TestUtilities.creatMockListFileWithMetadata();
 
   @Test
-  public void testLoadBalancerPoolPrototype() throws Throwable {
-    LoadBalancerPoolHealthMonitorPrototype loadBalancerPoolHealthMonitorPrototypeModel = new LoadBalancerPoolHealthMonitorPrototype.Builder()
+  public void testLoadBalancerPoolPrototypeLoadBalancerContext() throws Throwable {
+    LoadBalancerPoolHealthMonitorPrototypeLoadBalancerPoolHealthMonitorTypeTCPPrototype loadBalancerPoolHealthMonitorPrototypeModel = new LoadBalancerPoolHealthMonitorPrototypeLoadBalancerPoolHealthMonitorTypeTCPPrototype.Builder()
       .delay(Long.valueOf("5"))
       .maxRetries(Long.valueOf("2"))
       .port(Long.valueOf("22"))
       .timeout(Long.valueOf("2"))
-      .type("http")
-      .urlPath("/")
+      .type("tcp")
       .build();
     assertEquals(loadBalancerPoolHealthMonitorPrototypeModel.delay(), Long.valueOf("5"));
     assertEquals(loadBalancerPoolHealthMonitorPrototypeModel.maxRetries(), Long.valueOf("2"));
     assertEquals(loadBalancerPoolHealthMonitorPrototypeModel.port(), Long.valueOf("22"));
     assertEquals(loadBalancerPoolHealthMonitorPrototypeModel.timeout(), Long.valueOf("2"));
-    assertEquals(loadBalancerPoolHealthMonitorPrototypeModel.type(), "http");
-    assertEquals(loadBalancerPoolHealthMonitorPrototypeModel.urlPath(), "/");
+    assertEquals(loadBalancerPoolHealthMonitorPrototypeModel.type(), "tcp");
 
     LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityById loadBalancerPoolMemberTargetPrototypeModel = new LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityById.Builder()
       .id("0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0")
@@ -71,7 +69,7 @@ public class LoadBalancerPoolPrototypeTest {
     assertEquals(loadBalancerPoolSessionPersistencePrototypeModel.cookieName(), "my-cookie-name");
     assertEquals(loadBalancerPoolSessionPersistencePrototypeModel.type(), "app_cookie");
 
-    LoadBalancerPoolPrototype loadBalancerPoolPrototypeModel = new LoadBalancerPoolPrototype.Builder()
+    LoadBalancerPoolPrototypeLoadBalancerContext loadBalancerPoolPrototypeLoadBalancerContextModel = new LoadBalancerPoolPrototypeLoadBalancerContext.Builder()
       .algorithm("least_connections")
       .healthMonitor(loadBalancerPoolHealthMonitorPrototypeModel)
       .members(java.util.Arrays.asList(loadBalancerPoolMemberPrototypeModel))
@@ -80,29 +78,29 @@ public class LoadBalancerPoolPrototypeTest {
       .proxyProtocol("disabled")
       .sessionPersistence(loadBalancerPoolSessionPersistencePrototypeModel)
       .build();
-    assertEquals(loadBalancerPoolPrototypeModel.algorithm(), "least_connections");
-    assertEquals(loadBalancerPoolPrototypeModel.healthMonitor(), loadBalancerPoolHealthMonitorPrototypeModel);
-    assertEquals(loadBalancerPoolPrototypeModel.members(), java.util.Arrays.asList(loadBalancerPoolMemberPrototypeModel));
-    assertEquals(loadBalancerPoolPrototypeModel.name(), "my-load-balancer-pool");
-    assertEquals(loadBalancerPoolPrototypeModel.protocol(), "http");
-    assertEquals(loadBalancerPoolPrototypeModel.proxyProtocol(), "disabled");
-    assertEquals(loadBalancerPoolPrototypeModel.sessionPersistence(), loadBalancerPoolSessionPersistencePrototypeModel);
+    assertEquals(loadBalancerPoolPrototypeLoadBalancerContextModel.algorithm(), "least_connections");
+    assertEquals(loadBalancerPoolPrototypeLoadBalancerContextModel.healthMonitor(), loadBalancerPoolHealthMonitorPrototypeModel);
+    assertEquals(loadBalancerPoolPrototypeLoadBalancerContextModel.members(), java.util.Arrays.asList(loadBalancerPoolMemberPrototypeModel));
+    assertEquals(loadBalancerPoolPrototypeLoadBalancerContextModel.name(), "my-load-balancer-pool");
+    assertEquals(loadBalancerPoolPrototypeLoadBalancerContextModel.protocol(), "http");
+    assertEquals(loadBalancerPoolPrototypeLoadBalancerContextModel.proxyProtocol(), "disabled");
+    assertEquals(loadBalancerPoolPrototypeLoadBalancerContextModel.sessionPersistence(), loadBalancerPoolSessionPersistencePrototypeModel);
 
-    String json = TestUtilities.serialize(loadBalancerPoolPrototypeModel);
+    String json = TestUtilities.serialize(loadBalancerPoolPrototypeLoadBalancerContextModel);
 
-    LoadBalancerPoolPrototype loadBalancerPoolPrototypeModelNew = TestUtilities.deserialize(json, LoadBalancerPoolPrototype.class);
-    assertTrue(loadBalancerPoolPrototypeModelNew instanceof LoadBalancerPoolPrototype);
-    assertEquals(loadBalancerPoolPrototypeModelNew.algorithm(), "least_connections");
-    assertEquals(loadBalancerPoolPrototypeModelNew.healthMonitor().toString(), loadBalancerPoolHealthMonitorPrototypeModel.toString());
-    assertEquals(loadBalancerPoolPrototypeModelNew.name(), "my-load-balancer-pool");
-    assertEquals(loadBalancerPoolPrototypeModelNew.protocol(), "http");
-    assertEquals(loadBalancerPoolPrototypeModelNew.proxyProtocol(), "disabled");
-    assertEquals(loadBalancerPoolPrototypeModelNew.sessionPersistence().toString(), loadBalancerPoolSessionPersistencePrototypeModel.toString());
+    LoadBalancerPoolPrototypeLoadBalancerContext loadBalancerPoolPrototypeLoadBalancerContextModelNew = TestUtilities.deserialize(json, LoadBalancerPoolPrototypeLoadBalancerContext.class);
+    assertTrue(loadBalancerPoolPrototypeLoadBalancerContextModelNew instanceof LoadBalancerPoolPrototypeLoadBalancerContext);
+    assertEquals(loadBalancerPoolPrototypeLoadBalancerContextModelNew.algorithm(), "least_connections");
+    assertEquals(loadBalancerPoolPrototypeLoadBalancerContextModelNew.healthMonitor().toString(), loadBalancerPoolHealthMonitorPrototypeModel.toString());
+    assertEquals(loadBalancerPoolPrototypeLoadBalancerContextModelNew.name(), "my-load-balancer-pool");
+    assertEquals(loadBalancerPoolPrototypeLoadBalancerContextModelNew.protocol(), "http");
+    assertEquals(loadBalancerPoolPrototypeLoadBalancerContextModelNew.proxyProtocol(), "disabled");
+    assertEquals(loadBalancerPoolPrototypeLoadBalancerContextModelNew.sessionPersistence().toString(), loadBalancerPoolSessionPersistencePrototypeModel.toString());
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)
-  public void testLoadBalancerPoolPrototypeError() throws Throwable {
-    new LoadBalancerPoolPrototype.Builder().build();
+  public void testLoadBalancerPoolPrototypeLoadBalancerContextError() throws Throwable {
+    new LoadBalancerPoolPrototypeLoadBalancerContext.Builder().build();
   }
 
 }

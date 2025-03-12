@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022, 2023, 2024.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -47,14 +47,14 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolAllTest {
       .direction("inbound")
       .ipVersion("ipv4")
       .local(securityGroupRuleLocalPrototypeModel)
-      .protocol("all")
       .remote(securityGroupRuleRemotePrototypeModel)
+      .protocol("all")
       .build();
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolAllModel.direction(), "inbound");
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolAllModel.ipVersion(), "ipv4");
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolAllModel.local(), securityGroupRuleLocalPrototypeModel);
-    assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolAllModel.protocol(), "all");
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolAllModel.remote(), securityGroupRuleRemotePrototypeModel);
+    assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolAllModel.protocol(), "all");
 
     String json = TestUtilities.serialize(securityGroupRulePrototypeSecurityGroupRuleProtocolAllModel);
 
@@ -63,8 +63,8 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolAllTest {
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolAllModelNew.direction(), "inbound");
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolAllModelNew.ipVersion(), "ipv4");
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolAllModelNew.local().toString(), securityGroupRuleLocalPrototypeModel.toString());
-    assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolAllModelNew.protocol(), "all");
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolAllModelNew.remote().toString(), securityGroupRuleRemotePrototypeModel.toString());
+    assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolAllModelNew.protocol(), "all");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

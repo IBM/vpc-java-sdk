@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022, 2023, 2024.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -25,7 +25,8 @@ import com.ibm.cloud.sdk.core.util.GsonSingleton;
 public class LoadBalancerListenerPatch extends GenericModel {
 
   /**
-   * The listener protocol. Each listener in the load balancer must have a unique `port` and `protocol` combination.
+   * The listener protocol. Each listener in the load balancer must have a non-overlapping port range and `protocol`
+   * combination.
    *
    * Load balancers in the `network` family support `tcp` and `udp` (if `udp_supported` is `true`). Load balancers in
    * the `application` family support `tcp`, `http` and
@@ -343,10 +344,15 @@ public class LoadBalancerListenerPatch extends GenericModel {
   /**
    * Gets the port.
    *
-   * The listener port number, or the inclusive lower bound of the port range. Each listener in the load balancer must
-   * have a unique `port` and `protocol` combination.
+   * The inclusive lower bound of the range of ports used by this listener. Must not be greater than `port_max`.
+   * Updating `port` updates `port_min` to the same value.
    *
-   * Not supported for load balancers operating with route mode enabled.
+   * Only load balancers with route mode enabled, or network load balancers with
+   * `is_public` or `is_private_path` set to `true` support different values for `port_min` and `port_max`. When route
+   * mode is enabled, the value must be `1`.
+   *
+   * Each listener in the load balancer must have a non-overlapping port range and
+   * `protocol` combination.
    *
    * @return the port
    */
@@ -361,7 +367,7 @@ public class LoadBalancerListenerPatch extends GenericModel {
    *
    * Only load balancers with route mode enabled, or network load balancers with
    * `is_public` or `is_private_path` set to `true` support different values for `port_min` and `port_max`. When route
-   * mode is enabled, the value `65535` must be specified.
+   * mode is enabled, `65535` must be specified.
    *
    * The specified port range must not overlap with port ranges used by other listeners for this load balancer using the
    * same protocol.
@@ -376,13 +382,14 @@ public class LoadBalancerListenerPatch extends GenericModel {
    * Gets the portMin.
    *
    * The inclusive lower bound of the range of ports used by this listener. Must not be greater than `port_max`.
+   * Updating `port_min` updates `port` to the same value.
    *
    * Only load balancers with route mode enabled, or network load balancers with
    * `is_public` or `is_private_path` set to `true` support different values for `port_min` and `port_max`. When route
-   * mode is enabled, the value `1` must be specified.
+   * mode is enabled, the value must be `1`.
    *
-   * The specified port range must not overlap with port ranges used by other listeners for this load balancer using the
-   * same protocol.
+   * Each listener in the load balancer must have a non-overlapping port range and
+   * `protocol` combination.
    *
    * @return the portMin
    */
@@ -393,7 +400,8 @@ public class LoadBalancerListenerPatch extends GenericModel {
   /**
    * Gets the protocol.
    *
-   * The listener protocol. Each listener in the load balancer must have a unique `port` and `protocol` combination.
+   * The listener protocol. Each listener in the load balancer must have a non-overlapping port range and `protocol`
+   * combination.
    *
    * Load balancers in the `network` family support `tcp` and `udp` (if `udp_supported` is `true`). Load balancers in
    * the `application` family support `tcp`, `http` and

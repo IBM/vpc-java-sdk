@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022, 2023, 2024.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -14,9 +14,9 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.CreateFloatingIpOptions;
-import com.ibm.cloud.is.vpc.v1.model.FloatingIPPrototypeFloatingIPByTarget;
-import com.ibm.cloud.is.vpc.v1.model.FloatingIPTargetPrototypeBareMetalServerNetworkInterfaceIdentityBareMetalServerNetworkInterfaceIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.FloatingIPPrototypeFloatingIPByZone;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.ZoneIdentityByName;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -39,19 +39,19 @@ public class CreateFloatingIpOptionsTest {
       .build();
     assertEquals(resourceGroupIdentityModel.id(), "fee82deba12e4c0fb69c3b09d1f12345");
 
-    FloatingIPTargetPrototypeBareMetalServerNetworkInterfaceIdentityBareMetalServerNetworkInterfaceIdentityById floatingIpTargetPrototypeModel = new FloatingIPTargetPrototypeBareMetalServerNetworkInterfaceIdentityBareMetalServerNetworkInterfaceIdentityById.Builder()
-      .id("0717-fa41aecb-4f21-423d-8082-630bfba1e1d9")
+    ZoneIdentityByName zoneIdentityModel = new ZoneIdentityByName.Builder()
+      .name("us-south-1")
       .build();
-    assertEquals(floatingIpTargetPrototypeModel.id(), "0717-fa41aecb-4f21-423d-8082-630bfba1e1d9");
+    assertEquals(zoneIdentityModel.name(), "us-south-1");
 
-    FloatingIPPrototypeFloatingIPByTarget floatingIpPrototypeModel = new FloatingIPPrototypeFloatingIPByTarget.Builder()
+    FloatingIPPrototypeFloatingIPByZone floatingIpPrototypeModel = new FloatingIPPrototypeFloatingIPByZone.Builder()
       .name("my-floating-ip")
       .resourceGroup(resourceGroupIdentityModel)
-      .target(floatingIpTargetPrototypeModel)
+      .zone(zoneIdentityModel)
       .build();
     assertEquals(floatingIpPrototypeModel.name(), "my-floating-ip");
     assertEquals(floatingIpPrototypeModel.resourceGroup(), resourceGroupIdentityModel);
-    assertEquals(floatingIpPrototypeModel.target(), floatingIpTargetPrototypeModel);
+    assertEquals(floatingIpPrototypeModel.zone(), zoneIdentityModel);
 
     CreateFloatingIpOptions createFloatingIpOptionsModel = new CreateFloatingIpOptions.Builder()
       .floatingIpPrototype(floatingIpPrototypeModel)

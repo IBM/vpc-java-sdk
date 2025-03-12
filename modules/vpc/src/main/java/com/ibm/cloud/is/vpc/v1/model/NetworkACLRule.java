@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022, 2023, 2024.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -22,9 +22,9 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  * NetworkACLRule.
  *
  * Classes which extend this class:
- * - NetworkACLRuleNetworkACLRuleProtocolTCPUDP
- * - NetworkACLRuleNetworkACLRuleProtocolICMP
  * - NetworkACLRuleNetworkACLRuleProtocolAll
+ * - NetworkACLRuleNetworkACLRuleProtocolICMP
+ * - NetworkACLRuleNetworkACLRuleProtocolTCPUDP
  */
 public class NetworkACLRule extends GenericModel {
   @SuppressWarnings("unused")
@@ -66,7 +66,10 @@ public class NetworkACLRule extends GenericModel {
   }
 
   /**
-   * The network protocol.
+   * The name of the network protocol.
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface Protocol {
     /** all. */
@@ -92,6 +95,8 @@ public class NetworkACLRule extends GenericModel {
   protected String name;
   protected String protocol;
   protected String source;
+  protected Long code;
+  protected Long type;
   @SerializedName("destination_port_max")
   protected Long destinationPortMax;
   @SerializedName("destination_port_min")
@@ -100,8 +105,6 @@ public class NetworkACLRule extends GenericModel {
   protected Long sourcePortMax;
   @SerializedName("source_port_min")
   protected Long sourcePortMin;
-  protected Long code;
-  protected Long type;
 
   protected NetworkACLRule() { }
 
@@ -207,7 +210,10 @@ public class NetworkACLRule extends GenericModel {
   /**
    * Gets the protocol.
    *
-   * The network protocol.
+   * The name of the network protocol.
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the protocol
    */
@@ -224,50 +230,6 @@ public class NetworkACLRule extends GenericModel {
    */
   public String getSource() {
     return source;
-  }
-
-  /**
-   * Gets the destinationPortMax.
-   *
-   * The inclusive upper bound of TCP/UDP destination port range.
-   *
-   * @return the destinationPortMax
-   */
-  public Long getDestinationPortMax() {
-    return destinationPortMax;
-  }
-
-  /**
-   * Gets the destinationPortMin.
-   *
-   * The inclusive lower bound of TCP/UDP destination port range.
-   *
-   * @return the destinationPortMin
-   */
-  public Long getDestinationPortMin() {
-    return destinationPortMin;
-  }
-
-  /**
-   * Gets the sourcePortMax.
-   *
-   * The inclusive upper bound of TCP/UDP source port range.
-   *
-   * @return the sourcePortMax
-   */
-  public Long getSourcePortMax() {
-    return sourcePortMax;
-  }
-
-  /**
-   * Gets the sourcePortMin.
-   *
-   * The inclusive lower bound of TCP/UDP source port range.
-   *
-   * @return the sourcePortMin
-   */
-  public Long getSourcePortMin() {
-    return sourcePortMin;
   }
 
   /**
@@ -294,6 +256,50 @@ public class NetworkACLRule extends GenericModel {
    */
   public Long getType() {
     return type;
+  }
+
+  /**
+   * Gets the destinationPortMax.
+   *
+   * The inclusive upper bound of the TCP or UDP destination port range.
+   *
+   * @return the destinationPortMax
+   */
+  public Long getDestinationPortMax() {
+    return destinationPortMax;
+  }
+
+  /**
+   * Gets the destinationPortMin.
+   *
+   * The inclusive lower bound of the TCP or UDP destination port range.
+   *
+   * @return the destinationPortMin
+   */
+  public Long getDestinationPortMin() {
+    return destinationPortMin;
+  }
+
+  /**
+   * Gets the sourcePortMax.
+   *
+   * The inclusive upper bound of the TCP or UDP source port range.
+   *
+   * @return the sourcePortMax
+   */
+  public Long getSourcePortMax() {
+    return sourcePortMax;
+  }
+
+  /**
+   * Gets the sourcePortMin.
+   *
+   * The inclusive lower bound of the TCP or UDP source port range.
+   *
+   * @return the sourcePortMin
+   */
+  public Long getSourcePortMin() {
+    return sourcePortMin;
   }
 }
 

@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022, 2023, 2024.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -138,9 +138,11 @@ public class LoadBalancerListenerPolicyPatch extends GenericModel {
   /**
    * Gets the target.
    *
-   * - If `action` is `forward`, specify a `LoadBalancerPoolIdentity`.
+   * - If `action` is `forward`, specify a `LoadBalancerPoolIdentity` for a pool in this load
+   *   balancer.
    * - If `action` is `https_redirect`, specify a
-   * `LoadBalancerListenerPolicyHTTPSRedirectPatch`.
+   *   `LoadBalancerListenerPolicyHTTPSRedirectPatch` for a listener in this load balancer
+   *   with a `protocol` of `https`.
    * - If `action` is `redirect`, specify a `LoadBalancerListenerPolicyRedirectURLPatch`.
    *
    * @return the target

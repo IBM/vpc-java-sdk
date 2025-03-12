@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022, 2023, 2024.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -44,32 +44,32 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolICMPTest {
     assertEquals(securityGroupRuleRemotePrototypeModel.address(), "192.168.3.4");
 
     SecurityGroupRulePrototypeSecurityGroupRuleProtocolICMP securityGroupRulePrototypeSecurityGroupRuleProtocolIcmpModel = new SecurityGroupRulePrototypeSecurityGroupRuleProtocolICMP.Builder()
-      .code(Long.valueOf("0"))
       .direction("inbound")
       .ipVersion("ipv4")
       .local(securityGroupRuleLocalPrototypeModel)
-      .protocol("icmp")
       .remote(securityGroupRuleRemotePrototypeModel)
+      .code(Long.valueOf("0"))
+      .protocol("icmp")
       .type(Long.valueOf("8"))
       .build();
-    assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolIcmpModel.code(), Long.valueOf("0"));
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolIcmpModel.direction(), "inbound");
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolIcmpModel.ipVersion(), "ipv4");
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolIcmpModel.local(), securityGroupRuleLocalPrototypeModel);
-    assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolIcmpModel.protocol(), "icmp");
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolIcmpModel.remote(), securityGroupRuleRemotePrototypeModel);
+    assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolIcmpModel.code(), Long.valueOf("0"));
+    assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolIcmpModel.protocol(), "icmp");
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolIcmpModel.type(), Long.valueOf("8"));
 
     String json = TestUtilities.serialize(securityGroupRulePrototypeSecurityGroupRuleProtocolIcmpModel);
 
     SecurityGroupRulePrototypeSecurityGroupRuleProtocolICMP securityGroupRulePrototypeSecurityGroupRuleProtocolIcmpModelNew = TestUtilities.deserialize(json, SecurityGroupRulePrototypeSecurityGroupRuleProtocolICMP.class);
     assertTrue(securityGroupRulePrototypeSecurityGroupRuleProtocolIcmpModelNew instanceof SecurityGroupRulePrototypeSecurityGroupRuleProtocolICMP);
-    assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolIcmpModelNew.code(), Long.valueOf("0"));
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolIcmpModelNew.direction(), "inbound");
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolIcmpModelNew.ipVersion(), "ipv4");
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolIcmpModelNew.local().toString(), securityGroupRuleLocalPrototypeModel.toString());
-    assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolIcmpModelNew.protocol(), "icmp");
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolIcmpModelNew.remote().toString(), securityGroupRuleRemotePrototypeModel.toString());
+    assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolIcmpModelNew.code(), Long.valueOf("0"));
+    assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolIcmpModelNew.protocol(), "icmp");
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolIcmpModelNew.type(), Long.valueOf("8"));
   }
 

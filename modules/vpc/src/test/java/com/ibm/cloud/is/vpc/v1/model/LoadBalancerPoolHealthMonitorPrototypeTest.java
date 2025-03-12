@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022, 2023, 2024.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -29,38 +29,10 @@ public class LoadBalancerPoolHealthMonitorPrototypeTest {
   final HashMap<String, InputStream> mockStreamMap = TestUtilities.createMockStreamMap();
   final List<FileWithMetadata> mockListFileWithMetadata = TestUtilities.creatMockListFileWithMetadata();
 
+  // TODO: Add tests for models that are abstract
   @Test
   public void testLoadBalancerPoolHealthMonitorPrototype() throws Throwable {
-    LoadBalancerPoolHealthMonitorPrototype loadBalancerPoolHealthMonitorPrototypeModel = new LoadBalancerPoolHealthMonitorPrototype.Builder()
-      .delay(Long.valueOf("5"))
-      .maxRetries(Long.valueOf("2"))
-      .port(Long.valueOf("22"))
-      .timeout(Long.valueOf("2"))
-      .type("http")
-      .urlPath("/")
-      .build();
-    assertEquals(loadBalancerPoolHealthMonitorPrototypeModel.delay(), Long.valueOf("5"));
-    assertEquals(loadBalancerPoolHealthMonitorPrototypeModel.maxRetries(), Long.valueOf("2"));
-    assertEquals(loadBalancerPoolHealthMonitorPrototypeModel.port(), Long.valueOf("22"));
-    assertEquals(loadBalancerPoolHealthMonitorPrototypeModel.timeout(), Long.valueOf("2"));
-    assertEquals(loadBalancerPoolHealthMonitorPrototypeModel.type(), "http");
-    assertEquals(loadBalancerPoolHealthMonitorPrototypeModel.urlPath(), "/");
-
-    String json = TestUtilities.serialize(loadBalancerPoolHealthMonitorPrototypeModel);
-
-    LoadBalancerPoolHealthMonitorPrototype loadBalancerPoolHealthMonitorPrototypeModelNew = TestUtilities.deserialize(json, LoadBalancerPoolHealthMonitorPrototype.class);
-    assertTrue(loadBalancerPoolHealthMonitorPrototypeModelNew instanceof LoadBalancerPoolHealthMonitorPrototype);
-    assertEquals(loadBalancerPoolHealthMonitorPrototypeModelNew.delay(), Long.valueOf("5"));
-    assertEquals(loadBalancerPoolHealthMonitorPrototypeModelNew.maxRetries(), Long.valueOf("2"));
-    assertEquals(loadBalancerPoolHealthMonitorPrototypeModelNew.port(), Long.valueOf("22"));
-    assertEquals(loadBalancerPoolHealthMonitorPrototypeModelNew.timeout(), Long.valueOf("2"));
-    assertEquals(loadBalancerPoolHealthMonitorPrototypeModelNew.type(), "http");
-    assertEquals(loadBalancerPoolHealthMonitorPrototypeModelNew.urlPath(), "/");
+    LoadBalancerPoolHealthMonitorPrototype loadBalancerPoolHealthMonitorPrototypeModel = new LoadBalancerPoolHealthMonitorPrototype();
+    assertNotNull(loadBalancerPoolHealthMonitorPrototypeModel);
   }
-
-  @Test(expectedExceptions = IllegalArgumentException.class)
-  public void testLoadBalancerPoolHealthMonitorPrototypeError() throws Throwable {
-    new LoadBalancerPoolHealthMonitorPrototype.Builder().build();
-  }
-
 }

@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022, 2023, 2024.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -48,6 +48,8 @@ public class Snapshot extends GenericModel {
     String STABLE = "stable";
     /** suspended. */
     String SUSPENDED = "suspended";
+    /** unusable. */
+    String UNUSABLE = "unusable";
     /** updating. */
     String UPDATING = "updating";
     /** waiting. */
@@ -103,6 +105,8 @@ public class Snapshot extends GenericModel {
   protected SnapshotSourceSnapshot sourceSnapshot;
   @SerializedName("source_volume")
   protected VolumeReference sourceVolume;
+  @SerializedName("storage_generation")
+  protected Long storageGeneration;
   @SerializedName("user_tags")
   protected List<String> userTags;
 
@@ -410,6 +414,23 @@ public class Snapshot extends GenericModel {
    */
   public VolumeReference getSourceVolume() {
     return sourceVolume;
+  }
+
+  /**
+   * Gets the storageGeneration.
+   *
+   * The [storage
+   * generation](https://cloud.ibm.com/docs/vpc?topic=vpc-block-storage-profiles&amp;interface=api#using-api-iops-profiles):
+   * - `1`: The first storage generation
+   * - `2`: The second storage generation
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
+   *
+   * @return the storageGeneration
+   */
+  public Long getStorageGeneration() {
+    return storageGeneration;
   }
 
   /**

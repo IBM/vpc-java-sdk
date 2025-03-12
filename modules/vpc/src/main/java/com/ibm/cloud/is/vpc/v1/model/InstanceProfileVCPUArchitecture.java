@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022, 2023, 2024.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -13,7 +13,6 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
-import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
@@ -29,23 +28,10 @@ public class InstanceProfileVCPUArchitecture extends GenericModel {
     String FIXED = "fixed";
   }
 
-  @SerializedName("default")
-  protected String xDefault;
   protected String type;
   protected String value;
 
   protected InstanceProfileVCPUArchitecture() { }
-
-  /**
-   * Gets the xDefault.
-   *
-   * The default VCPU architecture for an instance with this profile.
-   *
-   * @return the xDefault
-   */
-  public String getXDefault() {
-    return xDefault;
-  }
 
   /**
    * Gets the type.

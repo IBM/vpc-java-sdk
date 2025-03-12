@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022, 2023, 2024.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -29,14 +29,10 @@ public class LoadBalancerPoolHealthMonitorTest {
   final HashMap<String, InputStream> mockStreamMap = TestUtilities.createMockStreamMap();
   final List<FileWithMetadata> mockListFileWithMetadata = TestUtilities.creatMockListFileWithMetadata();
 
+  // TODO: Add tests for models that are abstract
   @Test
   public void testLoadBalancerPoolHealthMonitor() throws Throwable {
     LoadBalancerPoolHealthMonitor loadBalancerPoolHealthMonitorModel = new LoadBalancerPoolHealthMonitor();
-    assertNull(loadBalancerPoolHealthMonitorModel.getDelay());
-    assertNull(loadBalancerPoolHealthMonitorModel.getMaxRetries());
-    assertNull(loadBalancerPoolHealthMonitorModel.getPort());
-    assertNull(loadBalancerPoolHealthMonitorModel.getTimeout());
-    assertNull(loadBalancerPoolHealthMonitorModel.getType());
-    assertNull(loadBalancerPoolHealthMonitorModel.getUrlPath());
+    assertNotNull(loadBalancerPoolHealthMonitorModel);
   }
 }

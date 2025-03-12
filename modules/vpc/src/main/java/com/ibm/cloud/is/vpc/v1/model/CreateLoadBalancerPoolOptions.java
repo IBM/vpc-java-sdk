@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022, 2023, 2024.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -73,6 +73,7 @@ public class CreateLoadBalancerPoolOptions extends GenericModel {
   protected String algorithm;
   protected LoadBalancerPoolHealthMonitorPrototype healthMonitor;
   protected String protocol;
+  protected LoadBalancerPoolFailsafePolicyPrototype failsafePolicy;
   protected List<LoadBalancerPoolMemberPrototype> members;
   protected String name;
   protected String proxyProtocol;
@@ -86,6 +87,7 @@ public class CreateLoadBalancerPoolOptions extends GenericModel {
     private String algorithm;
     private LoadBalancerPoolHealthMonitorPrototype healthMonitor;
     private String protocol;
+    private LoadBalancerPoolFailsafePolicyPrototype failsafePolicy;
     private List<LoadBalancerPoolMemberPrototype> members;
     private String name;
     private String proxyProtocol;
@@ -101,6 +103,7 @@ public class CreateLoadBalancerPoolOptions extends GenericModel {
       this.algorithm = createLoadBalancerPoolOptions.algorithm;
       this.healthMonitor = createLoadBalancerPoolOptions.healthMonitor;
       this.protocol = createLoadBalancerPoolOptions.protocol;
+      this.failsafePolicy = createLoadBalancerPoolOptions.failsafePolicy;
       this.members = createLoadBalancerPoolOptions.members;
       this.name = createLoadBalancerPoolOptions.name;
       this.proxyProtocol = createLoadBalancerPoolOptions.proxyProtocol;
@@ -198,6 +201,17 @@ public class CreateLoadBalancerPoolOptions extends GenericModel {
     }
 
     /**
+     * Set the failsafePolicy.
+     *
+     * @param failsafePolicy the failsafePolicy
+     * @return the CreateLoadBalancerPoolOptions builder
+     */
+    public Builder failsafePolicy(LoadBalancerPoolFailsafePolicyPrototype failsafePolicy) {
+      this.failsafePolicy = failsafePolicy;
+      return this;
+    }
+
+    /**
      * Set the members.
      * Existing members will be replaced.
      *
@@ -258,6 +272,7 @@ public class CreateLoadBalancerPoolOptions extends GenericModel {
     algorithm = builder.algorithm;
     healthMonitor = builder.healthMonitor;
     protocol = builder.protocol;
+    failsafePolicy = builder.failsafePolicy;
     members = builder.members;
     name = builder.name;
     proxyProtocol = builder.proxyProtocol;
@@ -321,6 +336,19 @@ public class CreateLoadBalancerPoolOptions extends GenericModel {
   }
 
   /**
+   * Gets the failsafePolicy.
+   *
+   * The failsafe policy to use for this pool.
+   *
+   * If unspecified, the default failsafe policy action from the profile will be used.
+   *
+   * @return the failsafePolicy
+   */
+  public LoadBalancerPoolFailsafePolicyPrototype failsafePolicy() {
+    return failsafePolicy;
+  }
+
+  /**
    * Gets the members.
    *
    * The members for this load balancer pool. For load balancers in the `network` family, the same `port` and `target`
@@ -364,9 +392,10 @@ public class CreateLoadBalancerPoolOptions extends GenericModel {
    * Gets the sessionPersistence.
    *
    * The session persistence of this pool. If specified, the load balancer must have
-   * `source_ip_session_persistence_supported` set to `true` in its profile. If
-   * unspecified, session persistence will be disabled, and traffic will be distributed
-   * across backend server members of the pool.
+   * `source_ip_session_persistence_supported` set to `true` in its profile.
+   *
+   * If unspecified, session persistence will be disabled, and traffic will be distributed
+   * across members of the pool.
    *
    * @return the sessionPersistence
    */

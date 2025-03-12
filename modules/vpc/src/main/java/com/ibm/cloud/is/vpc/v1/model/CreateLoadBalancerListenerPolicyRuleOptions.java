@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022, 2023, 2024.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -33,8 +33,13 @@ public class CreateLoadBalancerListenerPolicyRuleOptions extends GenericModel {
   }
 
   /**
-   * The type of the rule. Body rules are applied to form-encoded request bodies using the
-   * `UTF-8` character set.
+   * The content the rule applies to:
+   * - `body`: The UTF-8 form-encoded HTTP request body
+   * - `header`: The HTTP header
+   * - `hostname`: The fully-qualified domain name of the server specified in the Host
+   *   HTTP request header
+   * - `path`: The path of the HTTP request
+   * - `query`: The query of the HTTP request URL.
    */
   public interface Type {
     /** body. */
@@ -276,8 +281,13 @@ public class CreateLoadBalancerListenerPolicyRuleOptions extends GenericModel {
   /**
    * Gets the type.
    *
-   * The type of the rule. Body rules are applied to form-encoded request bodies using the
-   * `UTF-8` character set.
+   * The content the rule applies to:
+   * - `body`: The UTF-8 form-encoded HTTP request body
+   * - `header`: The HTTP header
+   * - `hostname`: The fully-qualified domain name of the server specified in the Host
+   *   HTTP request header
+   * - `path`: The path of the HTTP request
+   * - `query`: The query of the HTTP request URL.
    *
    * @return the type
    */

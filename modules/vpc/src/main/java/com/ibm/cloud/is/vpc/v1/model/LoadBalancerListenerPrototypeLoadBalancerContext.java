@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022, 2023, 2024.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -22,7 +22,8 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class LoadBalancerListenerPrototypeLoadBalancerContext extends GenericModel {
 
   /**
-   * The listener protocol. Each listener in the load balancer must have a unique `port` and `protocol` combination.
+   * The listener protocol. Each listener in the load balancer must have a non-overlapping port range and `protocol`
+   * combination.
    *
    * Load balancers in the `network` family support `tcp` and `udp` (if `udp_supported` is `true`). Load balancers in
    * the `application` family support `tcp`, `http` and
@@ -293,6 +294,8 @@ public class LoadBalancerListenerPrototypeLoadBalancerContext extends GenericMod
    *
    * Supported for load balancers in the `application` family.
    *
+   * If unspecified, the limit will be `15000` for load balancers in the `application` family.
+   *
    * @return the connectionLimit
    */
   public Long connectionLimit() {
@@ -341,6 +344,8 @@ public class LoadBalancerListenerPrototypeLoadBalancerContext extends GenericMod
    *
    * Supported for load balancers in the `application` family.
    *
+   * If unspecified, the timeout will be `50` for load balancers in the `application` family.
+   *
    * @return the idleConnectionTimeout
    */
   public Long idleConnectionTimeout() {
@@ -350,10 +355,10 @@ public class LoadBalancerListenerPrototypeLoadBalancerContext extends GenericMod
   /**
    * Gets the port.
    *
-   * The listener port number, or the inclusive lower bound of the port range. Each listener in the load balancer must
-   * have a unique `port` and `protocol` combination.
+   * The listener port number. Each listener in the load balancer must have a non-overlapping port range and `protocol`
+   * combination.
    *
-   * Not supported for load balancers operating with route mode enabled.
+   * If `port_min` is also specified, `port` must have the same value as `port_min`.
    *
    * @return the port
    */
@@ -368,7 +373,7 @@ public class LoadBalancerListenerPrototypeLoadBalancerContext extends GenericMod
    *
    * Only load balancers with route mode enabled, or network load balancers with
    * `is_public` or `is_private_path` set to `true` support different values for `port_min` and `port_max`. When route
-   * mode is enabled, the value `65535` must be specified.
+   * mode is enabled, `65535` must be specified.
    *
    * The specified port range must not overlap with port ranges used by other listeners for this load balancer using the
    * same protocol.
@@ -384,9 +389,14 @@ public class LoadBalancerListenerPrototypeLoadBalancerContext extends GenericMod
    *
    * The inclusive lower bound of the range of ports used by this listener. Must not be greater than `port_max`.
    *
+   * If specified, `port_max` must also be specified, and must not be smaller. If unspecified, `port_max` must also be
+   * unspecified.
+   *
+   * If `port` is also specified, `port_min` must have the same value as `port`.
+   *
    * Only load balancers with route mode enabled, or network load balancers with
    * `is_public` or `is_private_path` set to `true` support different values for `port_min` and `port_max`. When route
-   * mode is enabled, the value `1` must be specified.
+   * mode is enabled, `1` must be specified.
    *
    * The specified port range must not overlap with port ranges used by other listeners for this load balancer using the
    * same protocol.
@@ -400,7 +410,8 @@ public class LoadBalancerListenerPrototypeLoadBalancerContext extends GenericMod
   /**
    * Gets the protocol.
    *
-   * The listener protocol. Each listener in the load balancer must have a unique `port` and `protocol` combination.
+   * The listener protocol. Each listener in the load balancer must have a non-overlapping port range and `protocol`
+   * combination.
    *
    * Load balancers in the `network` family support `tcp` and `udp` (if `udp_supported` is `true`). Load balancers in
    * the `application` family support `tcp`, `http` and

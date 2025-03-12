@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022, 2023, 2024.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -14,7 +14,7 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 /**
- * A rule allowing traffic for all supported protocols.
+ * A rule allowing all ICMP, TCP and UDP traffic.
  */
 public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolAll extends SecurityGroupRulePrototype {
 
@@ -41,7 +41,7 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolAll extends Secu
   }
 
   /**
-   * The network protocol.
+   * The name of the network protocol.
    */
   public interface Protocol {
     /** all. */
@@ -56,8 +56,8 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolAll extends Secu
     private String direction;
     private String ipVersion;
     private SecurityGroupRuleLocalPrototype local;
-    private String protocol;
     private SecurityGroupRuleRemotePrototype remote;
+    private String protocol;
 
     /**
      * Instantiates a new Builder from an existing SecurityGroupRulePrototypeSecurityGroupRuleProtocolAll instance.
@@ -68,8 +68,8 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolAll extends Secu
       this.direction = securityGroupRulePrototypeSecurityGroupRuleProtocolAll.direction;
       this.ipVersion = securityGroupRulePrototypeSecurityGroupRuleProtocolAll.ipVersion;
       this.local = securityGroupRulePrototypeSecurityGroupRuleProtocolAll.local;
-      this.protocol = securityGroupRulePrototypeSecurityGroupRuleProtocolAll.protocol;
       this.remote = securityGroupRulePrototypeSecurityGroupRuleProtocolAll.remote;
+      this.protocol = securityGroupRulePrototypeSecurityGroupRuleProtocolAll.protocol;
     }
 
     /**
@@ -132,17 +132,6 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolAll extends Secu
     }
 
     /**
-     * Set the protocol.
-     *
-     * @param protocol the protocol
-     * @return the SecurityGroupRulePrototypeSecurityGroupRuleProtocolAll builder
-     */
-    public Builder protocol(String protocol) {
-      this.protocol = protocol;
-      return this;
-    }
-
-    /**
      * Set the remote.
      *
      * @param remote the remote
@@ -150,6 +139,17 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolAll extends Secu
      */
     public Builder remote(SecurityGroupRuleRemotePrototype remote) {
       this.remote = remote;
+      return this;
+    }
+
+    /**
+     * Set the protocol.
+     *
+     * @param protocol the protocol
+     * @return the SecurityGroupRulePrototypeSecurityGroupRuleProtocolAll builder
+     */
+    public Builder protocol(String protocol) {
+      this.protocol = protocol;
       return this;
     }
   }
@@ -164,8 +164,8 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolAll extends Secu
     direction = builder.direction;
     ipVersion = builder.ipVersion;
     local = builder.local;
-    protocol = builder.protocol;
     remote = builder.remote;
+    protocol = builder.protocol;
   }
 
   /**
